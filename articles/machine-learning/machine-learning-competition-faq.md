@@ -1,23 +1,22 @@
-<properties
-	pageTitle="Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen | Microsoft Azure"
-	description="Häufig gestellte Fragen zu Microsoft Cortana Intelligence-Wettbewerben."
-	services="machine-learning"
-	documentationCenter=""
-	authors="hning86"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen | Microsoft Docs
+description: Häufig gestellte Fragen zu Microsoft Cortana Intelligence-Wettbewerben.
+services: machine-learning
+documentationcenter: ''
+author: hning86
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/06/2016"
-	ms.author="haining;chlovel;garye"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/06/2016
+ms.author: haining;chlovel;garye
 
+---
 # Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
-
 **Was sind Cortana Intelligence-Wettbewerbe?**
 
 Microsoft kündigt Cortana Intelligence-Wettbewerbe an. Cortana Intelligence-Wettbewerbe ermöglichen uns, eine globale Community Datenbegeisterter durch das gemeinsame Lösen einiger der komplexesten Data Science-Probleme der Welt zu vereinen. Cortana Intelligence-Wettbewerbe ermöglichen Datenbegeisterten aus der ganzen Welt, zu wetteifern und äußerst präzise und intelligente Data Science-Modelle zu erstellen. Unsere ausgerichteten Wettbewerbe basieren auf eindeutigen Datasets, die erstmals öffentlich verfügbar gemacht wurden. Teilnehmer können Preise gewinnen oder über unsere öffentliche Bestenliste (Top 10) Anerkennung erhalten. Klicken Sie [hier](http://aka.ms/CIComp), um auf die Wettbewerbshomepage zu gelangen.
@@ -35,11 +34,8 @@ Bitte verwenden Sie unser [Microsoft Azure Machine Learning-Forum](https://socia
 Greifen Sie über den Cortana Intelligence-Katalog auf die Wettbewerbshomepage zu. Diese Seite enthält alle aktuellen Wettbewerbe. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs. Klicken Sie [hier](http://aka.ms/CIComp), um auf die Wettbewerbshomepage zu gelangen.
 
 1. Suchen Sie den Wettbewerb, an dem Sie teilnehmen möchten, im Cortana Intelligence-Katalog. Lesen Sie sich alle Anweisungen durch, und schauen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche „Enter Competition“ (am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Wahrscheinlich verwenden Sie den Großteil Ihrer Zeit für diesen Schritt.
-
 2. Erstellen Sie mit dem trainierten Modell aus dem Starterexperiment ein Vorhersageexperiment. Passen Sie anschließend sorgfältig das Ein- und Ausgabeschema des Webdiensts an, um sicherzustellen, dass diese den in der Wettbewerbsdokumentation angegeben Anforderungen entsprechen. Das Tutorialdokument wird im Allgemeinen detaillierte Anweisungen hierzu enthalten. Sie können auch das Videotutorial anschauen, falls eines existiert.
-
 3. Stellen Sie aus Ihrem Vorhersageexperiment heraus einen Webdienst bereit. Testen Sie Ihren Webdienst mithilfe der Schaltfläche „Test“ oder der für Sie automatisch erstellten Excel-Vorlage, um sicherzustellen, dass er ordnungsgemäß funktioniert.
-
 4. Reichen Sie Ihren Webdienst als Wettbewerbsbeitrag ein, und sehen Sie sich Ihre öffentliche Bewertung auf der Wettbewerbsseite des Cortana Intelligence-Katalogs an. Und freuen Sie sich, wenn Sie es in die Bestenliste schaffen! Nachdem Sie einen Beitrag erfolgreich eingereicht haben, können Sie zurück zum kopierten Starterexperiment gehen, den Vorgang wiederholen, Ihr Vorhersageexperiment und Ihren Webdienst aktualisieren und einen neuen Beitrag einreichen.
 
 **Kann ich Open Source-Tools für die Teilnahme an diesen Wettbewerben verwenden?**
@@ -51,11 +47,8 @@ Die Wettbewerbsteilnehmer verwenden zum Entwickeln der Data Science-Modelle Azur
 Nein. Wir empfehlen Datenbegeisterten, Data Science-Interessierten und anderen angehenden Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Sie richten sich an:
 
 * Datenentwickler, Datenexperten, BI- und Analyseexperten – Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind
-
 * Data Stewards – Personen, die sich mit den Daten auskennen, und sowohl wissen was sie bedeuten als auch wie und wofür sie genutzt werden sollen
-
 * Studenten und Forscher – Personen, die derzeit datenbezogene Fähigkeiten über akademische Programme an Universitäten erlernen, oder Teilnehmer an MOOC-Kursen (Massive Open Online Courses)
-
 
 **Kann ich mit meinen Kollegen zusammen als Team teilnehmen?**
 
@@ -65,22 +58,17 @@ Die Wettbewerbsplattform unterstützt derzeit keine Teilnahme als Team. Jeder We
 
 Die Teilnahme an Wettbewerben ist kostenlos. Jedoch ist für die Teilnahme der Zugriff auf einen Azure Machine Learning-Arbeitsbereich erforderlich. Sie können einen kostenlosen Arbeitsbereich ohne eine Kreditkarte erstellen, indem Sie sich einfach mit einem gültigen Microsoft- oder Office 365-Konto anmelden. Wenn Sie bereits Azure- oder Cortana Intelligence Suite-Kunde sind, können Sie innerhalb desselben Azure-Abonnements einen Standardarbeitsbereich erstellen und verwenden. Wenn Sie ein Azure-Abonnement erwerben möchten, klicken Sie [hier](https://azure.microsoft.com/pricing). Beachten Sie, dass die üblichen Gebühren anfallen, wenn Sie einen Standardarbeitsbereich zum Erstellen von Experimenten verwenden. Preisinformationen zu Azure Machine Learning finden Sie [hier](https://azure.microsoft.com/pricing/details/machine-learning/).
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 **Was sind öffentliche und private Bewertungen?**
 
 Bei den meisten Wettbewerben werden Sie feststellen, dass Sie für jeden Ihrer Beiträge im Allgemeinen innerhalb von 10-20 Minuten eine öffentliche Bewertung erhalten. Nach Ende des Wettbewerbs erhalten Sie jedoch eine private Bewertung, die für die endgültige Rangliste verwendet wird. Folgendes geschieht:
 
 * Das gesamte im Wettbewerb verwendete Dataset wird nach dem Zufallsprinzip mit Schichtung in Trainings- und Testdaten (die restlichen Daten) aufgeteilt. Die Zufallsaufteilung ist geschichtet, um sicherzustellen, dass die Bezeichnungsverteilungen in den Trainings- sowie den Testdaten konsistent sind.
- 
 * Die Trainingsdaten werden hochgeladen und Ihnen als Teil des Starterexperiments in der „Import Data“-Modulkonfiguration zur Verfügung gestellt.
-
 * Die Testdaten werden weiter unterteilt in öffentliche und private Testdaten mit derselben Schichtung.
-
 * Die öffentlichen Testdaten werden für die erste Bewertungsrunde verwendet. Das Ergebnis wird als öffentliche Bewertung bezeichnet und ist das, was beim Einreichen Ihres Beitrags in Ihrem Einreichungsverlauf angezeigt wird. Diese Bewertung wird für jeden Beitrag, den Sie einreichen, berechnet. Auf Grundlage dieser öffentlichen Bewertung werden Sie in die öffentliche Bestenliste eingeordnet.
-
 * Die privaten Testdaten werden für die finale Bewertungsrunde nach Ende des Wettbewerbs verwendet. Dies wird als private Bewertung bezeichnet.
-
 * Von jedem Teilnehmer wird aus den Beiträgen mit der höchsten öffentlichen Bewertung eine feste Anzahl Beiträge, die je nach Wettbewerb variieren kann, automatisch für die private Bewertungsrunde ausgewählt. Der Beitrag mit der höchsten privaten Bewertung wird dann für die endgültige Rangliste ausgewählt, auf Grundlage derer schließlich die Gewinner bestimmt werden.
 
 **Können Kunden einen Wettbewerb auf unserer Plattform ausrichten?**

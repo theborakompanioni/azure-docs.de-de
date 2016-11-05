@@ -1,26 +1,25 @@
-<properties
-   pageTitle="Create Table As Select (CTAS) in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps für die Codierung mit der Anweisung „Create Table As Select“ (CTAS) in Azure SQL Data Warehouse zum Entwickeln von Lösungen"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Create Table As Select (CTAS) in SQL Data Warehouse | Microsoft Docs
+description: Tipps für die Codierung mit der Anweisung „Create Table As Select“ (CTAS) in Azure SQL Data Warehouse zum Entwickeln von Lösungen
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # Create Table As Select (CTAS) in SQL Data Warehouse
 „Create Table As Select“ (`CTAS`) ist eines der wichtigsten verfügbaren T-SQL-Features. Es handelt sich dabei um einen vollständig parallelisierten Vorgang, bei dem eine neue Tabelle anhand der Ausgabe einer SELECT-Anweisung erstellt wird. `CTAS` ist die einfachste und schnellste Möglichkeit, eine Kopie einer Tabelle zu erstellen. Sie können sich dies wie eine Turboversion von `SELECT..INTO` vorstellen. Dieses Dokument beinhaltet sowohl Beispiele als auch bewährte Methoden für `CTAS`.
 
 ## Kopieren einer Tabelle mithilfe von CTAS
-
 Einer der häufigsten Verwendungszwecke für `CTAS` ist womöglich das Kopieren einer Tabelle, um den DDL-Code ändern zu können. Wenn Sie z.B. die Tabelle ursprünglich als `ROUND_ROBIN` erstellt haben und sie nun in eine Tabelle ändern möchten, die über eine Spalte verteilt ist, können Sie die Verteilungsspalte mit `CTAS` ändern. `CTAS` kann auch zum Ändern der Partitionierung, Indizierung oder Spaltentypen verwendet werden.
 
 Nehmen wir an, dass Sie diese Tabelle mit dem Standardverteilungstyp `ROUND_ROBIN` erstellt haben, da keine Verteilungsspalte in `CREATE TABLE` angegeben wurde.
@@ -28,29 +27,29 @@ Nehmen wir an, dass Sie diese Tabelle mit dem Standardverteilungstyp `ROUND_ROBI
 ```sql
 CREATE TABLE FactInternetSales
 (
-	ProductKey int NOT NULL,
-	OrderDateKey int NOT NULL,
-	DueDateKey int NOT NULL,
-	ShipDateKey int NOT NULL,
-	CustomerKey int NOT NULL,
-	PromotionKey int NOT NULL,
-	CurrencyKey int NOT NULL,
-	SalesTerritoryKey int NOT NULL,
-	SalesOrderNumber nvarchar(20) NOT NULL,
-	SalesOrderLineNumber tinyint NOT NULL,
-	RevisionNumber tinyint NOT NULL,
-	OrderQuantity smallint NOT NULL,
-	UnitPrice money NOT NULL,
-	ExtendedAmount money NOT NULL,
-	UnitPriceDiscountPct float NOT NULL,
-	DiscountAmount float NOT NULL,
-	ProductStandardCost money NOT NULL,
-	TotalProductCost money NOT NULL,
-	SalesAmount money NOT NULL,
-	TaxAmt money NOT NULL,
-	Freight money NOT NULL,
-	CarrierTrackingNumber nvarchar(25),
-	CustomerPONumber nvarchar(25)
+    ProductKey int NOT NULL,
+    OrderDateKey int NOT NULL,
+    DueDateKey int NOT NULL,
+    ShipDateKey int NOT NULL,
+    CustomerKey int NOT NULL,
+    PromotionKey int NOT NULL,
+    CurrencyKey int NOT NULL,
+    SalesTerritoryKey int NOT NULL,
+    SalesOrderNumber nvarchar(20) NOT NULL,
+    SalesOrderLineNumber tinyint NOT NULL,
+    RevisionNumber tinyint NOT NULL,
+    OrderQuantity smallint NOT NULL,
+    UnitPrice money NOT NULL,
+    ExtendedAmount money NOT NULL,
+    UnitPriceDiscountPct float NOT NULL,
+    DiscountAmount float NOT NULL,
+    ProductStandardCost money NOT NULL,
+    TotalProductCost money NOT NULL,
+    SalesAmount money NOT NULL,
+    TaxAmt money NOT NULL,
+    Freight money NOT NULL,
+    CarrierTrackingNumber nvarchar(25),
+    CustomerPONumber nvarchar(25)
 );
 ```
 
@@ -84,19 +83,23 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-> [AZURE.NOTE] Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie unter dem Thema [Statistiken][] in der Entwicklungsgruppe der Themen.
+> [!NOTE]
+> Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie unter dem Thema [Statistiken][Statistiken] in der Entwicklungsgruppe der Themen.
+> 
+> 
 
 ## Umgehen von nicht unterstützten Funktionen mit CTAS
+Mit `CTAS` können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Dies kann häufig zu einer Win-Win-Situation führen, da Ihr Code nicht nur kompatibel ist, sondern unter SQL Data Warehouse häufig auch schneller ausgeführt wird. Der Grund hierfür ist das vollständig parallelisierte Design. Szenarien, die mit CTAS umgangen werden können, sind z. B.:
 
-Mit `CTAS` können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Dies kann häufig zu einer Win-Win-Situation führen, da Ihr Code nicht nur kompatibel ist, sondern unter SQL Data Warehouse häufig auch schneller ausgeführt wird. Der Grund hierfür ist das vollständig parallelisierte Design. Szenarien, die mit CTAS umgangen werden können, sind z. B.:
+* SELECT..INTO
+* ANSI JOINS bei UPDATEs
+* ANSI JOINs bei DELETEs
+* MERGE-Anweisung
 
-- SELECT..INTO
-- ANSI JOINS bei UPDATEs
-- ANSI JOINs bei DELETEs
-- MERGE-Anweisung
-
-> [AZURE.NOTE] Denken Sie zuerst an „CTAS“. Wenn Sie ein Problem voraussichtlich mit `CTAS` lösen können, ist dies meist der beste Ansatz. Dies gilt auch, wenn Sie dabei mehr Daten schreiben.
->
+> [!NOTE]
+> Denken Sie zuerst an „CTAS“. Wenn Sie ein Problem voraussichtlich mit `CTAS` lösen können, ist dies meist der beste Ansatz. Dies gilt auch, wenn Sie dabei mehr Daten schreiben.
+> 
+> 
 
 ## SELECT..INTO
 Unter Umständen kommt `SELECT..INTO` an einigen Stellen Ihrer Lösung vor.
@@ -123,23 +126,25 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-> [AZURE.NOTE] Für CTAS muss derzeit eine Verteilungsspalte angegeben werden. Wenn Sie die Verteilungsspalte nicht absichtlich ändern möchten, wird Ihr `CTAS` optimal ausgeführt, wenn Sie eine Verteilungsspalte auswählen, die mit der zugrunde liegenden Tabelle identisch ist, da Sie auf diese Weise eine Datenverschiebung vermeiden. Wenn Sie eine kleine Tabelle erstellen, bei der Leistung keine Rolle spielt, können Sie `ROUND_ROBIN` angeben, um keine Verteilungsspalte auswählen zu müssen.
+> [!NOTE]
+> Für CTAS muss derzeit eine Verteilungsspalte angegeben werden. Wenn Sie die Verteilungsspalte nicht absichtlich ändern möchten, wird Ihr `CTAS` optimal ausgeführt, wenn Sie eine Verteilungsspalte auswählen, die mit der zugrunde liegenden Tabelle identisch ist, da Sie auf diese Weise eine Datenverschiebung vermeiden. Wenn Sie eine kleine Tabelle erstellen, bei der Leistung keine Rolle spielt, können Sie `ROUND_ROBIN` angeben, um keine Verteilungsspalte auswählen zu müssen.
+> 
+> 
 
 ## ANSI-Verknüpfungsersatz für update-Anweisungen
-
 Unter Umständen verfügen Sie über ein komplexes Update, mit dem zwei oder mehr Tabellen verknüpft werden, indem ANSI-Verknüpfungssyntax zum Durchführen des UPDATE- oder DELETE-Vorgangs genutzt wird.
 
 Stellen Sie sich vor, Sie müssen diese Tabelle aktualisieren:
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
-(	[EnglishProductCategoryName]	NVARCHAR(50)	NOT NULL
-,	[CalendarYear]					SMALLINT		NOT NULL
-,	[TotalSalesAmount]				MONEY			NOT NULL
+(    [EnglishProductCategoryName]    NVARCHAR(50)    NOT NULL
+,    [CalendarYear]                    SMALLINT        NOT NULL
+,    [TotalSalesAmount]                MONEY            NOT NULL
 )
 WITH
 (
-	DISTRIBUTION = ROUND_ROBIN
+    DISTRIBUTION = ROUND_ROBIN
 )
 ;
 ```
@@ -147,25 +152,25 @@ WITH
 Die ursprüngliche Abfrage könnte etwa wie folgt ausgesehen haben:
 
 ```sql
-UPDATE	acs
-SET		[TotalSalesAmount] = [fis].[TotalSalesAmount]
-FROM	[dbo].[AnnualCategorySales] 	AS acs
-JOIN	(
-		SELECT	[EnglishProductCategoryName]
-		,		[CalendarYear]
-		,		SUM([SalesAmount])				AS [TotalSalesAmount]
-		FROM	[dbo].[FactInternetSales]		AS s
-		JOIN	[dbo].[DimDate]					AS d	ON s.[OrderDateKey]				= d.[DateKey]
-		JOIN	[dbo].[DimProduct]				AS p	ON s.[ProductKey]				= p.[ProductKey]
-		JOIN	[dbo].[DimProductSubCategory]	AS u	ON p.[ProductSubcategoryKey]	= u.[ProductSubcategoryKey]
-		JOIN	[dbo].[DimProductCategory]		AS c	ON u.[ProductCategoryKey]		= c.[ProductCategoryKey]
-		WHERE 	[CalendarYear] = 2004
-		GROUP BY
-				[EnglishProductCategoryName]
-		,		[CalendarYear]
-		) AS fis
-ON	[acs].[EnglishProductCategoryName]	= [fis].[EnglishProductCategoryName]
-AND	[acs].[CalendarYear]				= [fis].[CalendarYear]
+UPDATE    acs
+SET        [TotalSalesAmount] = [fis].[TotalSalesAmount]
+FROM    [dbo].[AnnualCategorySales]     AS acs
+JOIN    (
+        SELECT    [EnglishProductCategoryName]
+        ,        [CalendarYear]
+        ,        SUM([SalesAmount])                AS [TotalSalesAmount]
+        FROM    [dbo].[FactInternetSales]        AS s
+        JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
+        JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
+        JOIN    [dbo].[DimProductSubCategory]    AS u    ON p.[ProductSubcategoryKey]    = u.[ProductSubcategoryKey]
+        JOIN    [dbo].[DimProductCategory]        AS c    ON u.[ProductCategoryKey]        = c.[ProductCategoryKey]
+        WHERE     [CalendarYear] = 2004
+        GROUP BY
+                [EnglishProductCategoryName]
+        ,        [CalendarYear]
+        ) AS fis
+ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
+AND    [acs].[CalendarYear]                = [fis].[CalendarYear]
 ;
 ```
 
@@ -178,18 +183,18 @@ Sie können eine Kombination aus `CTAS` und einer impliziten Verknüpfung verwen
 CREATE TABLE CTAS_acs
 WITH (DISTRIBUTION = ROUND_ROBIN)
 AS
-SELECT	ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0)	AS [EnglishProductCategoryName]
-,		ISNULL(CAST([CalendarYear] AS SMALLINT),0) 						AS [CalendarYear]
-,		ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)						AS [TotalSalesAmount]
-FROM	[dbo].[FactInternetSales]		AS s
-JOIN	[dbo].[DimDate]					AS d	ON s.[OrderDateKey]				= d.[DateKey]
-JOIN	[dbo].[DimProduct]				AS p	ON s.[ProductKey]				= p.[ProductKey]
-JOIN	[dbo].[DimProductSubCategory]	AS u	ON p.[ProductSubcategoryKey]	= u.[ProductSubcategoryKey]
-JOIN	[dbo].[DimProductCategory]		AS c	ON u.[ProductCategoryKey]		= c.[ProductCategoryKey]
-WHERE 	[CalendarYear] = 2004
+SELECT    ISNULL(CAST([EnglishProductCategoryName] AS NVARCHAR(50)),0)    AS [EnglishProductCategoryName]
+,        ISNULL(CAST([CalendarYear] AS SMALLINT),0)                         AS [CalendarYear]
+,        ISNULL(CAST(SUM([SalesAmount]) AS MONEY),0)                        AS [TotalSalesAmount]
+FROM    [dbo].[FactInternetSales]        AS s
+JOIN    [dbo].[DimDate]                    AS d    ON s.[OrderDateKey]                = d.[DateKey]
+JOIN    [dbo].[DimProduct]                AS p    ON s.[ProductKey]                = p.[ProductKey]
+JOIN    [dbo].[DimProductSubCategory]    AS u    ON p.[ProductSubcategoryKey]    = u.[ProductSubcategoryKey]
+JOIN    [dbo].[DimProductCategory]        AS c    ON u.[ProductCategoryKey]        = c.[ProductCategoryKey]
+WHERE     [CalendarYear] = 2004
 GROUP BY
-		[EnglishProductCategoryName]
-,		[CalendarYear]
+        [EnglishProductCategoryName]
+,        [CalendarYear]
 ;
 
 -- Use an implicit join to perform the update
@@ -265,7 +270,6 @@ RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
 ```
 
 ## CTAS-Empfehlung: Explizites Angeben des Datentyps und der NULL-Zulässigkeit der Ausgabe
-
 Beim Migrieren von Code stoßen Sie unter Umständen auf diese Art von Codiermuster:
 
 ```sql
@@ -335,12 +339,16 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
 Beachten Sie Folgendes:
-- CAST oder CONVERT hätten verwendet werden können
-- ISNULL wird zum Erzwingen der NULL-Zulässigkeit verwendet, nicht COALESCE
-- ISNULL ist die äußerste Funktion
-- Der zweite Teil von ISNULL ist eine Konstante, also 0
 
-> [AZURE.NOTE] Damit die NULL-Zulässigkeit richtig festgelegt wird, muss unbedingt `ISNULL` und nicht `COALESCE` verwendet werden. `COALESCE` ist keine deterministische Funktion, sodass für das Ergebnis des Ausdrucks immer NULL-Werte zulässig wären. Dies ist bei. `ISNULL` anders. Die Funktion ist deterministisch. Wenn der zweite Teil der `ISNULL`-Funktion eine Konstante oder ein Literal ist, ist der sich ergebende Wert NICHT NULL.
+* CAST oder CONVERT hätten verwendet werden können
+* ISNULL wird zum Erzwingen der NULL-Zulässigkeit verwendet, nicht COALESCE
+* ISNULL ist die äußerste Funktion
+* Der zweite Teil von ISNULL ist eine Konstante, also 0
+
+> [!NOTE]
+> Damit die NULL-Zulässigkeit richtig festgelegt wird, muss unbedingt `ISNULL` und nicht `COALESCE` verwendet werden. `COALESCE` ist keine deterministische Funktion, sodass für das Ergebnis des Ausdrucks immer NULL-Werte zulässig wären. Dies ist bei. `ISNULL` anders. Die Funktion ist deterministisch. Wenn der zweite Teil der `ISNULL`-Funktion eine Konstante oder ein Literal ist, ist der sich ergebende Wert NICHT NULL.
+> 
+> 
 
 Dieser Tipp ist nicht nur nützlich, um die Integrität der Berechnungen sicherzustellen. Er ist auch für das Wechseln der Tabellenpartition wichtig. Stellen Sie sich vor, Sie haben die folgende Tabelle als Faktentabelle definiert:
 
@@ -416,10 +424,10 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Sie sehen also, dass die Typkonsistenz und die Pflege der Eigenschaften für die NULL-Zulässigkeit für CTAS eine bewährte Methode für das Engineering sind. Es ist hilfreich, die Integrität in Ihren Berechnungen zu wahren. Außerdem wird so sichergestellt, dass der Partitionswechsel möglich ist.
 
-Weitere Informationen zur Verwendung von [CTAS][] finden Sie auf der MSDN-Website. Dabei handelt es sich um eine der wichtigsten Anweisungen in Azure SQL Data Warehouse. Machen Sie sich damit eingehend vertraut.
+Weitere Informationen zur Verwendung von [CTAS][CTAS] finden Sie auf der MSDN-Website. Dabei handelt es sich um eine der wichtigsten Anweisungen in Azure SQL Data Warehouse. Machen Sie sich damit eingehend vertraut.
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-ctas/ctas-results.png

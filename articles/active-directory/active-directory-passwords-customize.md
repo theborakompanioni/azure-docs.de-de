@@ -1,45 +1,45 @@
-<properties
-    pageTitle="Anpassen: Azure AD-Kennwortverwaltung | Microsoft Azure"
-    description="Vorgehensweise zum Anpassen von Aussehen und Verhalten der Kennwortverwaltung und von Benachrichtigungen in Azure AD an Ihre Anforderungen."
-    services="active-directory"
-    documentationCenter=""
-    authors="asteen"
-    manager="femila"
-    editor="curtand"/>
+---
+title: 'Anpassen: Azure AD-Kennwortverwaltung | Microsoft Docs'
+description: Vorgehensweise zum Anpassen von Aussehen und Verhalten der Kennwortverwaltung und von Benachrichtigungen in Azure AD an Ihre Anforderungen.
+services: active-directory
+documentationcenter: ''
+author: asteen
+manager: femila
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/03/2016"
-    ms.author="asteen"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/03/2016
+ms.author: asteen
 
-
+---
 # <a name="customizing-password-management-to-fit-your-organization's-needs"></a>Anpassen der Kennwortverwaltung an die Anforderungen Ihrer Organisation
-
-> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+> [!IMPORTANT]
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+> 
+> 
 
 Es wird empfohlen, alle verfügbaren Konfigurationsoptionen für die Kennwortverwaltung zu untersuchen und auszuprobieren, um Ihren Benutzern das bestmögliche Ergebnis zu bieten. Tatsächlich können Sie sofort damit anfangen, indem Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) zur Registerkarte „Konfiguration“ der **Active Directory-Erweiterung** wechseln. Dieses Thema führt Sie durch alle Anpassungen zur Kennwortverwaltung, die Sie als Administrator über die Registerkarte **Konfigurieren** für Ihr Verzeichnis im [klassischen Azure-Portal](https://manage.windowsazure.com) vornehmen können. Dazu gehören:
 
 | Thema |  |
-| --------- | --------- |
-| Wie aktiviere oder deaktiviere ich das Zurücksetzen von Kennwörtern? | [Einstellung: Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist](#users-enabled-for-password-reset) |
-| Wie beschränke ich das Zurücksetzen von Kennwörtern auf eine bestimmte Gruppe von Benutzern? | [Beschränken der Kennwortzurücksetzung auf bestimmte Benutzer](#restrict-access-to-password-reset) |
-| Wie ändere ich die unterstützten Authentifizierungsmethoden? | [Einstellung: Für Benutzer verfügbare Authentifizierungsmethoden](#authentication-methods-available-to-users) |
-| Wie ändere ich die Anzahl erforderlicher Authentifizierungsmethoden? | [Einstellung: Anzahl erforderlicher Authentifizierungsmethoden](#number-of-authentication-methods-required) |
-| Wie richte ich benutzerdefinierte Sicherheitsfragen ein? | [Einstellung: Benutzerdefinierte Sicherheitsfragen](#custom-security-questions) |
-| Wie richte ich vorgefertigte lokalisierte Sicherheitsfragen ein? | [Einstellung: Informationsbasierte Sicherheitsfragen](#knowledge-based-security-questions) |
-| Wie kann ich ändern, wie viele Sicherheitsfragen erforderlich sind? | [Einstellung: Anzahl der Sicherheitsfragen für die Registrierung oder das Zurücksetzen](#number-of-questions-required-to-register) |
-| Wie kann ich meine Benutzer bei der Anmeldung zum Registrieren zwingen? | [Erzwungene registrierungsbasierte Einführung der Kennwortzurücksetzung](#require-users-to-register-when-signing-in) |
-| Wie kann ich veranlassen, dass meine Benutzer ihre registrierten Authentifizierungsdaten in regelmäßigen Abständen erneut bestätigen müssen? | [Einstellung: Anzahl der Tage, bis die Benutzer ihre Authentifizierungsdaten erneut bestätigen müssen](#number-of-days-before-users-must-confirm-their-contact-data) |
-| Wie kann ich anpassen, wie ein Benutzer mit dem Administrator in Kontakt tritt? | [Einstellung: Link „Wenden Sie sich Ihren Administrator“ anpassen](#customize-the-contact-your-administrator-link) |
-| Wie kann ich Benutzern das Entsperren von AD-Konten ohne Zurücksetzen eines Kennworts ermöglichen? | [Einstellung: Benutzern ermöglichen, ihre AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](#allow-users-to-unlock-accounts-without-resetting-their-password) |
-| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Benutzer aktivieren? | [Einstellung: Benutzer benachrichtigen, wenn ihre Kennwörter zurückgesetzt wurden](#notify-users-and-admins-when-their-own-password-has-been-reset) |
-| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Administratoren aktivieren? | [Einstellung: Andere Administratoren benachrichtigen, wenn ein Administrator sein eigenes Kennwort zurückgesetzt hat](#notify-admins-when-other-admins-reset-their-own-passwords) |
-| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? | [Einstellung: Firmenname, Branding und Logo ](#password-management-look-and-feel) |
-
+| --- | --- |
+| Wie aktiviere oder deaktiviere ich das Zurücksetzen von Kennwörtern? |[Einstellung: Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist](#users-enabled-for-password-reset) |
+| Wie beschränke ich das Zurücksetzen von Kennwörtern auf eine bestimmte Gruppe von Benutzern? |[Beschränken der Kennwortzurücksetzung auf bestimmte Benutzer](#restrict-access-to-password-reset) |
+| Wie ändere ich die unterstützten Authentifizierungsmethoden? |[Einstellung: Für Benutzer verfügbare Authentifizierungsmethoden](#authentication-methods-available-to-users) |
+| Wie ändere ich die Anzahl erforderlicher Authentifizierungsmethoden? |[Einstellung: Anzahl erforderlicher Authentifizierungsmethoden](#number-of-authentication-methods-required) |
+| Wie richte ich benutzerdefinierte Sicherheitsfragen ein? |[Einstellung: Benutzerdefinierte Sicherheitsfragen](#custom-security-questions) |
+| Wie richte ich vorgefertigte lokalisierte Sicherheitsfragen ein? |[Einstellung: Informationsbasierte Sicherheitsfragen](#knowledge-based-security-questions) |
+| Wie kann ich ändern, wie viele Sicherheitsfragen erforderlich sind? |[Einstellung: Anzahl der Sicherheitsfragen für die Registrierung oder das Zurücksetzen](#number-of-questions-required-to-register) |
+| Wie kann ich meine Benutzer bei der Anmeldung zum Registrieren zwingen? |[Erzwungene registrierungsbasierte Einführung der Kennwortzurücksetzung](#require-users-to-register-when-signing-in) |
+| Wie kann ich veranlassen, dass meine Benutzer ihre registrierten Authentifizierungsdaten in regelmäßigen Abständen erneut bestätigen müssen? |[Einstellung: Anzahl der Tage, bis die Benutzer ihre Authentifizierungsdaten erneut bestätigen müssen](#number-of-days-before-users-must-confirm-their-contact-data) |
+| Wie kann ich anpassen, wie ein Benutzer mit dem Administrator in Kontakt tritt? |[Einstellung: Link „Wenden Sie sich Ihren Administrator“ anpassen](#customize-the-contact-your-administrator-link) |
+| Wie kann ich Benutzern das Entsperren von AD-Konten ohne Zurücksetzen eines Kennworts ermöglichen? |[Einstellung: Benutzern ermöglichen, ihre AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](#allow-users-to-unlock-accounts-without-resetting-their-password) |
+| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Benutzer aktivieren? |[Einstellung: Benutzer benachrichtigen, wenn ihre Kennwörter zurückgesetzt wurden](#notify-users-and-admins-when-their-own-password-has-been-reset) |
+| Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Administratoren aktivieren? |[Einstellung: Andere Administratoren benachrichtigen, wenn ein Administrator sein eigenes Kennwort zurückgesetzt hat](#notify-admins-when-other-admins-reset-their-own-passwords) |
+| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? |[Einstellung: Firmenname, Branding und Logo ](#password-management-look-and-feel) |
 
 ## <a name="password-management-look-and-feel"></a>Aussehen und Verhalten der Kennwortverwaltung
 In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente auf die bereitgestellte Funktionalität für Benutzer beschrieben, die sich für die Kennwortzurücksetzung registrieren und ihre Kennwörter zurücksetzen.  Sie können diese Optionen im Abschnitt **Verzeichniseigenschaften** auf der Registerkarte **Konfigurieren** Ihres Verzeichnisses innerhalb des [Azure-Verwaltungsportals](https://manage.windowsazure.com) konfigurieren.
@@ -134,7 +134,10 @@ Legt fest, ob Ihr Logo am Ende der E-Mail-Nachrichten angezeigt wird, die an Ben
 ## <a name="password-management-behavior"></a>Verhalten der Kennwortverwaltung
 In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente auf die bereitgestellte Funktionalität für Benutzer beschrieben, die sich für die Kennwortzurücksetzung registrieren und ihre Kennwörter zurücksetzen.  Sie können diese Optionen im Abschnitt **Richtlinie** zum Zurücksetzen des Benutzerkennworts auf der Registerkarte **Konfigurieren** Ihres Verzeichnisses im [Azure-Verwaltungsportal](https://manage.windowsazure.com) konfigurieren.
 
-> [AZURE.NOTE] Dem Administratorkonto, das Sie verwenden, muss eine AAD Premium-Lizenz zugewiesen sein, damit diese Richtliniensteuerelemente angezeigt werden.<br><br>Diese Richtliniensteuerelemente gelten nur für Endbenutzer, die ihre Kennwörter zurücksetzen, nicht für Administratoren.  **Administratoren besitzen eine Standardrichtlinie einer alternativen E-Mail-Adresse und/oder eines Mobiltelefons. Diese wird von Microsoft angegeben und kann nicht geändert werden.**
+> [!NOTE]
+> Dem Administratorkonto, das Sie verwenden, muss eine AAD Premium-Lizenz zugewiesen sein, damit diese Richtliniensteuerelemente angezeigt werden.<br><br>Diese Richtliniensteuerelemente gelten nur für Endbenutzer, die ihre Kennwörter zurücksetzen, nicht für Administratoren.  **Administratoren besitzen eine Standardrichtlinie einer alternativen E-Mail-Adresse und/oder eines Mobiltelefons. Diese wird von Microsoft angegeben und kann nicht geändert werden.**
+> 
+> 
 
 <table>
             <tbody><tr>
@@ -440,9 +443,9 @@ Zum Zeitpunkt der Kennwortzurücksetzung wird diese Anzahl von Fragen nach dem Z
                 </p>
                 <ul>
                   <li class="unordered">
-Alle Fragen der Wissensdatenbank werden anhand des Gebietsschemas im Browser in den vollständigen Satz von Office 365-Sprachen lokalisiert. <br><br></li>
+Alle Fragen der Wissensdatenbank werden anhand des Gebietsschemas im Browser in den vollständigen Satz von Office 365-Sprachen lokalisiert. <br><br></li>
                   <li class="unordered">
-Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
+Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
                  <li class="unordered">
 Die Mindestanzahl von Zeichen für Antworten ist 3 Zeichen.<br><br></li>
                   <li class="unordered">
@@ -491,7 +494,7 @@ Legt fest, welche Fragen ein Benutzer zum Zurücksetzen eines Kennworts verwende
                 </p>
                 <ul>
                   <li class="unordered">
-Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
+Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
                   <li class="unordered">
 Die maximale Zeichenanzahl für Fragen ist 200 Zeichen.<br><br></li>
                   <li class="unordered">
@@ -537,7 +540,7 @@ Legt fest, welche Fragen ein Benutzer zum Zurücksetzen eines Kennworts verwende
               <td>
                 <p>Legt fest, ob ein Benutzer bei der nächsten Anmeldung Kontaktdaten für die Kennwortzurücksetzung registrieren muss.  
                 </p>
-                <p>Diese Funktion funktioniert auf jeder Anmeldeseite, die ein Geschäfts- oder Schulkonto verwendet.  Zu diesen Seiten gehören alle Office 365-Seiten, das Azure-Verwaltungsportal, der Zugriffsbereich und alle Verbundbenutzer oder speziell entwickelten Anwendungen, bei denen die Anmeldung über Azure AD erfolgt.
+                <p>Diese Funktion funktioniert auf jeder Anmeldeseite, die ein Geschäfts- oder Schulkonto verwendet.  Zu diesen Seiten gehören alle Office 365-Seiten, das Azure-Verwaltungsportal, der Zugriffsbereich und alle Verbundbenutzer oder speziell entwickelten Anwendungen, bei denen die Anmeldung über Azure AD erfolgt.
                 </p>
                 <p>
 
@@ -702,7 +705,7 @@ Wenn Sie eine URL angeben, wird der Link zu einem standardmäßigen "href", der 
                 <p>
 
                 </p>
-                <p>Diese Einstellung ist nützlich, wenn Sie den Dienst vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.</p>
+                <p>Diese Einstellung ist nützlich, wenn Sie den Dienst vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.</p>
               </td>
               <td>
                 <p>
@@ -747,7 +750,7 @@ Wenn die Option auf <strong>Ja</strong> gesetzt ist, wird das Rückschreiben akt
               </td>
               <td>
 
-              <p>Legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden Azure AD-Konten beim Zurücksetzen von Kennwörtern stets entsperrt – mit dieser Einstellung können Sie diese beiden Vorgänge trennen.</p>
+              <p>Legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden Azure AD-Konten beim Zurücksetzen von Kennwörtern stets entsperrt – mit dieser Einstellung können Sie diese beiden Vorgänge trennen.</p>
 
               <p>Bei der Einstellung „Ja“ erhalten die Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos, und auch die Option des Entsperrens ohne ein Zurücksetzen des Kennworts. </p>
 
@@ -760,7 +763,7 @@ Wenn die Option auf <strong>Ja</strong> gesetzt ist, wird das Rückschreiben akt
                 </p>
                 <ul>
                   <li class="unordered">
-Um dieses Feature verwenden zu können, müssen Sie die Azure AD Connect-Version von August 2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen.</a></li>
+Um dieses Feature verwenden zu können, müssen Sie die Azure AD Connect-Version von August 2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen.</a></li>
 
                   <li class="unordered">
                     <strong>Hinweis</strong>: Um diese Funktion zu testen, muss das Kennwortrückschreiben aktiviert sein sowie ein lokal erstelltes Konto (beispielsweise eines Verbundbenutzers oder synchronisierten Benutzers) verwendet werden, bei dem ein gesperrtes Konto vorliegt.  Benutzern, die nicht lokal bereitgestellt sind und über kein gesperrtes Konto verfügen, wird die Option zum Entsperren ihres Kontos nicht angezeigt.</li>
@@ -858,7 +861,7 @@ Diese Benachrichtigung wird per E-Mail an den Benutzerprinzipalnamen und die alt
 <br/>
 
 ## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
 * **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
@@ -868,7 +871,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 * [**Häufig gestellte Fragen**](active-directory-passwords-faq.md) – Hier erhalten Sie Antworten auf häufig gestellte Fragen.
 * [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
 * [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
-
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 

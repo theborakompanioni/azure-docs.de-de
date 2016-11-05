@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Architektur des Ressourcen-Managers | Microsoft Azure"
-   description="Übersicht über die Architektur des Clusterressourcen-Managers von Service Fabric"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Architektur des Ressourcen-Managers | Microsoft Docs
+description: Übersicht über die Architektur des Clusterressourcen-Managers von Service Fabric
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Übersicht über die Architektur des Clusterressourcen-Managers
 Um die Ressourcen in Ihrem Cluster zu verwalten, benötigt der Clusterressourcen-Manager von Service Fabric verschiedene Informationen. Er muss wissen, welche Dienste derzeit vorhanden sind und wie viele Ressourcen diese Dienste aktuell (oder standardmäßig) belegen. Eine weitere Information ist die tatsächliche Kapazität der Knoten im Cluster und somit die Anzahl der verfügbaren Ressourcen, sowohl im Cluster als Ganzes und als auch auf einem bestimmten Knoten. Die Ressourcennutzung eines bestimmten Diensts kann sich mit der Zeit ändern, und Dienste benötigen meist mehr als nur eine Ressource. Bei vielen Diensten können sowohl echte physische Ressourcen (z.B. die Nutzung von Arbeitsspeicher und Datenträgern) als auch logische Metriken (z.B. WorkQueueDepth oder TotalRequests) erfasst und als Metriken angezeigt werden, wobei die Erfassung logischer Metriken tatsächlich gängiger ist. Sowohl logische als auch physische Metriken können für eine Vielzahl verschiedener Arten von Diensten oder nur für eine Reihe von Diensten verwendet werden.
 
@@ -34,7 +34,7 @@ Betrachten Sie das folgende Diagramm, und sehen Sie sich an, was als Nächstes g
 ![Resource Balancer-Architektur][Image2]
 
 ## Nächste Schritte
-- Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
+* Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png

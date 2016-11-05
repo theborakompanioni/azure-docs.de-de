@@ -1,29 +1,31 @@
-<properties
-	pageTitle="Erste Schritte mit der Offlinedatensynchronisierung in Mobile Services (iOS) | Microsoft Azure"
-	description="Erfahren Sie, wie Sie Azure Mobile Services verwenden, um Offlinedaten in Ihrer iOS-Anwendung zwischenzuspeichern und zu synchronisieren."
-	documentationCenter="ios"
-	authors="krisragh"
-	manager="erikre"
-	editor=""
-	services="mobile-services"/>
+---
+title: Erste Schritte mit der Offlinedatensynchronisierung in Mobile Services (iOS) | Microsoft Docs
+description: Erfahren Sie, wie Sie Azure Mobile Services verwenden, um Offlinedaten in Ihrer iOS-Anwendung zwischenzuspeichern und zu synchronisieren.
+documentationcenter: ios
+author: krisragh
+manager: erikre
+editor: ''
+services: mobile-services
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="krisragh;donnam"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-ios
+ms.devlang: objective-c
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: krisragh;donnam
 
+---
 # Erste Schritte mit der Synchronisierung von Offlinedaten in Mobile Services
-
-[AZURE.INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
+[!INCLUDE [mobile-services-selector-offline](../../includes/mobile-services-selector-offline.md)]
 
 &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
 > Informationen für die entsprechende Mobile Apps-Version dieses Themas finden Sie unter [Aktivieren der Offlinesynchronisierung für Ihre mobile iOS-App](../app-service-mobile/app-service-mobile-ios-get-started-offline-data.md).
+> 
+> 
 
 Die Offlinesynchronisierung ermöglicht Ihnen, Daten in einer mobilen Anwendung anzuzeigen und Daten hinzuzufügen oder zu ändern, auch wenn keine Netzwerkverbindung verfügbar ist. In diesem Lernprogramm erfahren Sie, wie Sie Ihre App so konfigurieren, dass Änderungen automatisch in einer lokalen Offlinedatenbank gespeichert werden und die Daten synchronisiert werden, sobald die App wieder online ist.
 
@@ -35,18 +37,20 @@ Die Offlinesynchronisierung bietet mehrere Vorteile:
 * Synchronisiert Daten auf mehreren Geräten
 * Erkennt Konflikte, wenn derselbe Datensatz von zwei Geräten geändert wird
 
-> [AZURE.NOTE] Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie [kostenlose mobile Dienste, die Sie auch nach Ablauf der Testversion weiter nutzen können](https://azure.microsoft.com/pricing/details/mobile-services/). Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target="\_blank").
+> [!NOTE]
+> Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie [kostenlose mobile Dienste, die Sie auch nach Ablauf der Testversion weiter nutzen können](https://azure.microsoft.com/pricing/details/mobile-services/). Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28 target="_blank").
+> 
+> 
 
 Dieses Lernprogramm baut auf dem Schnellstartlernprogramm [Erste Schritte mit Mobile Services] auf, das Sie zuerst abschließen müssen. Sehen sich zunächst den Code im Zusammenhang mit der Offlinesynchronisierung aus dem Schnellstart an.
 
 ## <a name="review-sync"></a>Überprüfen von Mobile Services-Synchronisierungscode
-
 Mit der Offlinesynchronisierung von Azure Mobile Services können Endbenutzer mit einer lokalen Datenbank interagieren, wenn das Netzwerk nicht verfügbar ist. Um diese Funktionen in Ihrer App zu verwenden, initialisieren Sie den Synchronisierungskontext von `MSClient`, und verweisen Sie auf einen lokalen Datenspeicher. Erstellen Sie dann über die `MSSyncTable`-Schnittstelle einen Verweis für die Tabelle.
 
 * Beachten Sie in **QSTodoService.m**, dass der Typ des Mitglieds `syncTable` `MSSyncTable` ist. Die Offlinesynchronisierung verwendet diesen Typ anstelle von `MSTable`. Wenn eine Synchronisierungstabelle verwendet wird, werden alle Vorgänge im lokalen Speicher gespeichert und nur mit expliziten Push- und Pullvorgängen mit dem Remotedienst synchronisiert.
 
 ```
-		@property (nonatomic, strong)   MSSyncTable *syncTable;
+        @property (nonatomic, strong)   MSSyncTable *syncTable;
 ```
 
 Um einen Verweis auf eine Synchronisierungstabelle zu erstellen, verwenden Sie die `syncTableWithName`-Methode. Zum Entfernen der Offlinesynchronisierung verwenden Sie stattdessen `tableWithName`.
@@ -54,8 +58,8 @@ Um einen Verweis auf eine Synchronisierungstabelle zu erstellen, verwenden Sie d
 * In **QSTodoService.m** wird vor der Durchführung von Tabellenvorgänge der lokale Speicher in `QSTodoService.init` initialisiert:
 
 ```
-		MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
-		self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
+        MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
+        self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
 ```
 
 Hierdurch wird ein lokaler Speicher mit der `MSCoreDataStore`-Schnittstelle erstellt. Sie können stattdessen auch einen anderen lokalen Speicher bereitstellen, indem Sie das `MSSyncContextDataSource`-Protokoll implementieren.
@@ -80,7 +84,7 @@ In diesem Beispiel ist der Pushvorgang nicht unbedingt notwendig. Wenn im Synchr
 
 * Als nächstes werden in **QSTodoService.m** mit `pullData` neue Daten abgerufen, die einer Abfrage entsprechen. `pullData` ruft `MSSyncTable.pullWithQuery` auf, um Remotedaten abzurufen und lokal zu speichern. `pullWithQuery` ermöglicht Ihnen zudem, eine Abfrage zum Filtern der Datensätze anzugeben, die Sie abrufen möchten. In diesem Beispiel ruft die Abfrage einfach alle Datensätze in der Remotetabelle `TodoItem` ab.
 
-Der zweite Parameter für `pullWithQuery` ist eine Abfrage-ID, für die _inkrementelle Synchronisierung_. Die inkrementelle Synchronisierung ruft nur die Datensätze ab, die seit der letzten Synchronisierung geändert wurden. Dafür wird der Zeitstempel `UpdatedAt` (im lokalen Speicher `ms_updatedAt`) des Datensatzes verwendet. Die Abfrage-ID ist eine beschreibende Zeichenfolge sein, die für jede logische Abfrage in Ihrer App eindeutig ist. Um die inkrementelle Synchronisierung zu deaktivieren, übergeben Sie als Abfrage-ID `nil`. Dies ist ineffizient, da hierdurch alle Datensätze bei jedem Pullvorgang abgerufen werden.
+Der zweite Parameter für `pullWithQuery` ist eine Abfrage-ID, für die *inkrementelle Synchronisierung*. Die inkrementelle Synchronisierung ruft nur die Datensätze ab, die seit der letzten Synchronisierung geändert wurden. Dafür wird der Zeitstempel `UpdatedAt` (im lokalen Speicher `ms_updatedAt`) des Datensatzes verwendet. Die Abfrage-ID ist eine beschreibende Zeichenfolge sein, die für jede logische Abfrage in Ihrer App eindeutig ist. Um die inkrementelle Synchronisierung zu deaktivieren, übergeben Sie als Abfrage-ID `nil`. Dies ist ineffizient, da hierdurch alle Datensätze bei jedem Pullvorgang abgerufen werden.
 
 ```
       -(void)pullData:(QSCompletionBlock)completion
@@ -102,51 +106,51 @@ Der zweite Parameter für `pullWithQuery` ist eine Abfrage-ID, für die _inkreme
 ```
 
 
->[AZURE.NOTE] Um Datensätze aus dem lokalen Speicher des Geräts zu entfernen, wenn sie in der Datenbank des mobilen Diensts gelöscht wurden, aktivieren Sie [Vorläufiges Löschen]. Andernfalls sollte Ihre App in regelmäßigen Abständen `MSSyncTable.purgeWithQuery` aufrufen, um den lokalen Speicher zu löschen.
-
+> [!NOTE]
+> Um Datensätze aus dem lokalen Speicher des Geräts zu entfernen, wenn sie in der Datenbank des mobilen Diensts gelöscht wurden, aktivieren Sie [Vorläufiges Löschen]. Andernfalls sollte Ihre App in regelmäßigen Abständen `MSSyncTable.purgeWithQuery` aufrufen, um den lokalen Speicher zu löschen.
+> 
+> 
 
 * In **QSTodoService.m** rufen die Methoden `addItem` und `completeItem` nach dem Ändern von Daten `syncData` auf. In **QSTodoListViewController.m** ruft die Methode `refresh` auch `syncData` auf, damit in der GUI bei jeder Aktualisierung und jedem Start die neuesten Daten angezeigt werden (`init` ruft `refresh` auf).
 
 Da die App jedes Mal `syncData` aufruft, wenn Sie Daten ändern, setzt die App voraus, dass Sie online sind, wenn Sie Daten in der App bearbeiten.
 
 ## <a name="review-core-data"></a>Überprüfen des Core-Datenmodells
-
 Bei Verwendung des Core-Offlinedatenspeichers müssen Sie bestimmte Tabellen und Felder in Ihrem Datenmodell definieren. Die Beispiel-App enthält bereits ein Datenmodell mit dem richtigen Format. In diesem Abschnitt werden die Tabellen und ihre Verwendung erläutert.
 
-- Öffnen Sie **QSDataModel.xcdatamodeld**. Es sind vier Tabellen definiert – drei, die durch das SDK verwendet werden, und eine Tabelle für die Todo-Elemente selbst:
-
+* Öffnen Sie **QSDataModel.xcdatamodeld**. Es sind vier Tabellen definiert – drei, die durch das SDK verwendet werden, und eine Tabelle für die Todo-Elemente selbst:
+  
       * MS\_TableOperations: Zum Nachverfolgen von Elementen, die mit dem Server synchronisiert werden müssen.
       * MS\_TableOperationErrors: Zum Nachverfolgen von Fehlern, die während der Offlinesynchronisierung auftreten.
       * MS\_TableConfig: Zum Nachverfolgen der letzten aktualisierten Zeit für die letzte Synchronisierung für alle Pullvorgänge.
       * TodoItem: Zum Speichern von TODO-Elementen. Die Systemspalten **ms\_createdAt**, **ms\_updatedAt** und **ms\_version** sind optionale Systemeigenschaften.
 
->[AZURE.NOTE] Das Mobile Services-SDK reserviert Spaltennamen, die mit "**`ms_`**" beginnen. Verwenden Sie dieses Präfix ausschließlich für Systemspalten. Andernfalls ändern sich die Spaltennamen bei Verwendung des Remotedienstes.
+> [!NOTE]
+> Das Mobile Services-SDK reserviert Spaltennamen, die mit "**`ms_`**" beginnen. Verwenden Sie dieses Präfix ausschließlich für Systemspalten. Andernfalls ändern sich die Spaltennamen bei Verwendung des Remotedienstes.
+> 
+> 
 
-- Zur Verwendung der Funktion zur Offlinesynchronisierung müssen Sie die Systemtabellen definieren, wie unten dargestellt.
-
-    ### Systemtabellen
-
-    #### MS\_TableOperations
-
-    | Attribut | Typ |
-    |-------------- |   ------    |
-    | ID (erforderlich) | Integer 64 |
-    | itemId | String |
-    | Eigenschaften | Binärdaten |
-    | Tabelle | String |
-    | tableKind | Integer 16 |
-
-    #### MS\_TableOperationErrors
-
-    | Attribut | Typ |
-    |-------------- | ----------  |
-    | ID (erforderlich) | String |
-    | operationId | Integer 64 |
-    | Eigenschaften | Binärdaten |
-    | tableKind | Integer 16 |
-
-    #### MS\_TableConfig
-
+* Zur Verwendung der Funktion zur Offlinesynchronisierung müssen Sie die Systemtabellen definieren, wie unten dargestellt.
+  
+  ### Systemtabellen
+  #### MS\_TableOperations
+  | Attribut | Typ |
+  | --- | --- |
+  | ID (erforderlich) |Integer 64 |
+  | itemId |String |
+  | Eigenschaften |Binärdaten |
+  | Tabelle |String |
+  | tableKind |Integer 16 |
+  
+  #### MS\_TableOperationErrors
+  | Attribut | Typ |
+  | --- | --- |
+  | ID (erforderlich) |String |
+  | operationId |Integer 64 |
+  | Eigenschaften |Binärdaten |
+  | tableKind |Integer 16 |
+  
+  #### MS\_TableConfig
 
     | Attribut | Typ |
     |-------------- | ----------  |
@@ -172,11 +176,9 @@ Bei Verwendung des Core-Offlinedatenspeichers müssen Sie bestimmte Tabellen und
 
 
 ## <a name="setup-sync"></a>Ändern des Synchronisierungsverhaltens der App
-
 In diesem Abschnitt ändern Sie die Anwendung, sodass beim Starten der App oder beim Einfügen und Aktualisieren von Elementen keine Synchronisierung erfolgt, sondern nur, wenn die Aktualisierungsbewegung durchgeführt wird.
 
 * Ändern Sie in **QSTodoListViewController.m**, die `viewDidLoad`-Methode, um den Aufruf von `[self refresh]` am Ende der Methode zu entfernen. Die Daten werden jetzt beim Starten der App nicht mit dem Server synchronisiert, sondern stattdessen nur lokal gespeichert.
-
 * Ändern Sie in **QSTodoService.m** die Definition von `addItem`, sodass nach dem Einfügen des Elements keine Synchronisierung erfolgt. Entfernen Sie den `self syncData`-Block, und ersetzen Sie ihn durch Folgendes:
 
 ```
@@ -194,44 +196,34 @@ In diesem Abschnitt ändern Sie die Anwendung, sodass beim Starten der App oder 
 ```
 
 ## <a name="test-app"></a>Test-App
-
 In diesem Abschnitt werden Sie im Simulator Wi-Fi deaktivieren, um ein Offlineszenario zu erzeugen. Wenn Sie Datenelemente hinzufügen, werden diese im lokalen Core-Datenspeicher vorgehalten, jedoch nicht mit dem mobilen Dienst synchronisiert.
 
 1. Deaktivieren Sie die Internetverbindung auf Ihrem Macintosh. Das alleinige Deaktivieren des WLAN im iOS-Simulator hat unter Umständen keinerlei Auswirkung, da der Simulator die Internetverbindung des Macintosh-Hostcomputers nutzt. Sie sollten daher die Internetverbindung des Computers trennen. So wird ein Offlineszenario simuliert.
-
 2. Fügen Sie einige TODO-Elemente hinzu, oder schließen Sie einige Elemente ab. Beenden Sie den Simulator (oder Erzwingen Sie das Schließen der App), und starten Sie ihn neu. Stellen Sie sicher, dass die Änderungen erhalten geblieben sind. Beachten Sie, dass die Datenelemente weiterhin angezeigt werden, da sie im lokalen Core-Datenspeicher gespeichert sind.
-
-3. Zeigen Sie den Inhalt der TodoItem-Remotetabelle an. Stellen Sie sicher, dass die neuen Elemente _nicht_ auf dem Server synchronisiert wurden.
-
-   - Klicken Sie für das JavaScript-Back-End im [klassischen Azure-Portal](http://manage.windowsazure.com) auf die Registerkarte "Daten", um den Inhalt der `TodoItem`-Tabelle anzuzeigen.
-   - Zeigen Sie für das .NET-Back-End den Inhalt der Tabelle entweder mit einem SQL-Tool wie SQL Server Management Studio oder einen REST-Client wie Fiddler oder Postman an.
-
+3. Zeigen Sie den Inhalt der TodoItem-Remotetabelle an. Stellen Sie sicher, dass die neuen Elemente *nicht* auf dem Server synchronisiert wurden.
+   
+   * Klicken Sie für das JavaScript-Back-End im [klassischen Azure-Portal](http://manage.windowsazure.com) auf die Registerkarte "Daten", um den Inhalt der `TodoItem`-Tabelle anzuzeigen.
+   * Zeigen Sie für das .NET-Back-End den Inhalt der Tabelle entweder mit einem SQL-Tool wie SQL Server Management Studio oder einen REST-Client wie Fiddler oder Postman an.
 4. Aktivieren Sie Wi-Fi im iOS-Simulator. Führen Sie als Nächstes die Aktualisierungsbewegung aus, indem Sie die Elementliste nach unten ziehen. Eine Synchronisierungsanzeige und der Hinweis „Syncing...“ werden angezeigt.
-
 5. Zeigen Sie die TodoItem-Daten erneut an. Es sollten jetzt die neuen und geänderten TodoItems angezeigt werden.
 
 ## Zusammenfassung
-
 Um die Offlinefunktionen mobiler Dienste zu unterstützen, wurde die `MSSyncTable`-Schnittstelle verwendet und `MSClient.syncContext` mit einem lokalen Speicher initialisiert. In diesem Fall war der lokale Speicher eine auf Core-Daten basierende Datenbank.
 
 Wenn Sie einen lokalen Core-Datenspeicher verwenden, definieren Sie mehrere Tabellen mit [korrekten Systemeigenschaften][Review the Core Data model]. Die normalen Operationen für mobile Dienste funktionieren so, als ob die App immer noch verbunden wäre. Alle Operationen erfolgen jedoch nur im lokalen Speicher.
 
 Um den lokalen Speicher mit dem Server zu synchronisieren, wurden `MSSyncTable.pullWithQuery` und `MSClient.syncContext.pushWithCompletion` verwendet:
 
-		* To push changes to the server, you called `pushWithCompletion`. This method is in `MSSyncContext` instead of the sync table because it will push changes across all tables. Only records that are modified in some way locally (through CUD operations) are be sent to the server.
+        * To push changes to the server, you called `pushWithCompletion`. This method is in `MSSyncContext` instead of the sync table because it will push changes across all tables. Only records that are modified in some way locally (through CUD operations) are be sent to the server.
 
-		* To pull data from a table on the server to the app, you called `MSSyncTable.pullWithQuery`. A pull always issues a push first. This is to ensure all tables in the local store along with relationships remain consistent. `pullWithQuery` can also be used to filter the data that is stored on the client, by customizing the `query` parameter.
+        * To pull data from a table on the server to the app, you called `MSSyncTable.pullWithQuery`. A pull always issues a push first. This is to ensure all tables in the local store along with relationships remain consistent. `pullWithQuery` can also be used to filter the data that is stored on the client, by customizing the `query` parameter.
 
 ## Nächste Schritte
-
 * [Behandeln von Konflikten mit der Offlineunterstützung für Mobile Services]
-
 * [Vorläufiges Löschen in Mobile Services][Soft Delete]
 
 ## Zusätzliche Ressourcen
-
 * [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]
-
 * [Azure Friday: Offlinefähige Apps in Azure Mobile Services] \(Hinweis: Demos sind für Windows, Funktionserläuterungen gelten jedoch für alle Plattformen)
 
 <!-- URLs. -->

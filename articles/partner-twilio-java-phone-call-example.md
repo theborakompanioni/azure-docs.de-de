@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="Tätigen eines Telefonanrufs über Twilio (Java) | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie mithilfe von Twilio in einer Java-Anwendung in Azure einen Anruf von einer Webseite tätigen." 
-	services="" 
-	documentationCenter="java" 
-	authors="devinrader" 
-	manager="twilio" 
-	editor="mollybos"/>
+---
+title: Tätigen eines Telefonanrufs über Twilio (Java) | Microsoft Docs
+description: Erfahren Sie, wie Sie mithilfe von Twilio in einer Java-Anwendung in Azure einen Anruf von einer Webseite tätigen.
+services: ''
+documentationcenter: java
+author: devinrader
+manager: twilio
+editor: mollybos
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
-	ms.author="microsofthelp@twilio.com"/>
+ms.service: multiple
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 11/25/2014
+ms.author: microsofthelp@twilio.com
 
-# Tätigen eines Telefonanrufs mithilfe von Twilio in einer Java-Anwendung auf Azure 
-
+---
+# Tätigen eines Telefonanrufs mithilfe von Twilio in einer Java-Anwendung auf Azure
 Das folgende Beispiel zeigt, wie Sie von einer in Azure gehosteten Webseite einen Anruf über Twilio tätigen können. Die Anwendung fragt den Benutzer nach Werten für den Telefonanruf, wie im folgenden Screenshot gezeigt.
 
 ![Azure-Anrufformular mit Twilio und Java][twilio_java]
@@ -33,7 +32,6 @@ Sie benötigen Folgendes, um den Code in diesem Artikel ausführen zu können:
 Außerdem sollten Sie sich mit den Informationen unter [Erstellen einer Hello World-Anwendung mithilfe des Azure Toolkit für Eclipse][azure_java_eclipse_hello_world] oder mit anderen Techniken zum Hosten von Java-Anwendungen in Azure vertraut machen, falls Sie Eclipse nicht verwenden.
 
 ## Erstellen eines Webformulars für den Anruf
-
 Der folgende Code erstellt ein Web-Formular zur Eingabe der Benutzerdaten für den Anruf. Für dieses Beispiel wurde ein neues dynamisches Webprojekt mit dem Namen **TwilioCloud** erstellt und **callform.jsp** als JSP-Datei hinzugefügt.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -99,7 +97,7 @@ Der folgende Code wird aufgerufen wenn der Benutzer das Formular aus callform.js
          // of the placeholders shown here.
          String accountSID = "your_twilio_account";
          String authToken = "your_twilio_authentication_token";
-     
+
          // Instantiate an instance of the Twilio client.     
          TwilioRestClient client;
          client = new TwilioRestClient(accountSID, authToken);
@@ -109,37 +107,37 @@ Der folgende Code wird aufgerufen wenn der Benutzer das Formular aus callform.js
 
          // Display the client endpoint. 
          out.println("<p>Using Twilio endpoint " + client.getEndpoint() + ".</p>");
-     
+
          // Display the API version.
          String APIVERSION = TwilioRestClient.DEFAULT_VERSION;
          out.println("<p>Twilio client API version is " + APIVERSION + ".</p>");
-    
+
          // Retrieve the values entered by the user.
          String callTo = request.getParameter("callTo");  
          // The Outgoing Caller ID, used for the From parameter,
          // must have previously been verified with Twilio.
          String callFrom = request.getParameter("callFrom");
          String userText = request.getParameter("callText");
-     
+
          // Replace spaces in the user's text with '%20', 
          // to make the text suitable for a URL.
          userText = userText.replace(" ", "%20");
-     
+
          // Create a URL using the Twilio message and the user-entered text.
          String Url="http://twimlets.com/message";
          Url = Url + "?Message%5B0%5D=" + userText;
-     
+
          // Display the message URL.
          out.println("<p>");
          out.println("The URL is " + Url);
          out.println("</p>");
-    
+
          // Place the call From, To and URL values into a hash map. 
          HashMap<String, String> params = new HashMap<String, String>();
          params.put("From", callFrom);
          params.put("To", callTo);
          params.put("Url", Url);
-     
+
          CallFactory callFactory = account.getCallFactory();
          Call call = callFactory.create(params);
          out.println("<p>Call status: " + call.getStatus()  + "</p>"); 
@@ -179,7 +177,7 @@ Dieser Code demonstriert die allgemeinen Funktionen für die Verwendung von Twil
 
 * Anstelle eines Web-Formulars könnten Sie Azure-Speicher-Blobs oder eine SQL-Datenbank zum Speichern von Telefonnummern und Anruftexten verwenden. Weitere Informationen zur Verwendung von Azure-Speicher-Blobs in Java finden Sie unter [Verwenden des Blob-Speicherdiensts in Java][howto_blob_storage_java]. Informationen zur Verwendung von SQL-Datenbanken in Java finden Sie unter [Verwenden der SQL-Datenbank in Java][howto_sql_azure_java].
 * Sie können **RoleEnvironment.getConfigurationSettings** verwenden, um die Twilio-Konto-ID und das Authentifizierungs-Token aus den Konfigurationseinstellungen Ihrer Anwendung abzurufen, anstelle diese Werte in makecall.jsp fest einzuprogrammieren. Weitere Informationen zur **RoleEnvironment**-Klasse finden Sie unter [Verwenden der Azure-Dienst-Runtimebibliothek JSP][azure_runtime_jsp] und in der Dokumentation der Azure-Dienst-Runtimebibliothek unter [http://dl.windowsazure.com/javadoc][azure_javadoc].
-* Der Code von makecall.jsp weist die von Twilio bereitgestellte URL [http://twimlets.com/message][twimlet_message_url] an die Variable **Url** zu. Diese URL gibt eine Antwort in der Twilio Markup Language (TwiML), die Twilio mitteilt, wie mit dem Anruf verfahren werden soll. Der zurückgegebene TwiML-Code kann z. B. ein **&lt;Say&gt;**-Verb enthalten, das bewirkt, dass dem Anrufempfänger ein bestimmter Text vorgesprochen wird. Anstelle der von Twilio bereitgestellten URL können Sie auch mit einem eigenen Dienst auf die Twilio-Anfrage antworten. Weitere Informationen finden Sie unter [Verwenden von Twilio für Telefonie- und SMS-Funktionen in Java][howto_twilio_voice_sms_java]. Weitere Informationen zu TwiML finden Sie unter [http://www.twilio.com/docs/api/twiml][twiml]. Weitere Informationen zu **&lt;Say&gt;** und anderen Twilio-Verben finden Sie unter [http://www.twilio.com/docs/api/twiml/say][twilio_say].
+* Der Code von makecall.jsp weist die von Twilio bereitgestellte URL [http://twimlets.com/message][twimlet_message_url] an die Variable **Url** zu. Diese URL gibt eine Antwort in der Twilio Markup Language (TwiML), die Twilio mitteilt, wie mit dem Anruf verfahren werden soll. Der zurückgegebene TwiML-Code kann z. B. ein **&lt;Say&gt;**-Verb enthalten, das bewirkt, dass dem Anrufempfänger ein bestimmter Text vorgesprochen wird. Anstelle der von Twilio bereitgestellten URL können Sie auch mit einem eigenen Dienst auf die Twilio-Anfrage antworten. Weitere Informationen finden Sie unter [Verwenden von Twilio für Telefonie- und SMS-Funktionen in Java][howto_twilio_voice_sms_java]. Weitere Informationen zu TwiML finden Sie unter [http://www.twilio.com/docs/api/twiml][twiml]. Weitere Informationen zu **&lt;Say&gt;** und anderen Twilio-Verben finden Sie unter [http://www.twilio.com/docs/api/twiml/say][twilio_say].
 * Lesen Sie die Twilio-Sicherheitsrichtlinien unter [https://www.twilio.com/docs/security][twilio_docs_security].
 
 Weitere Informationen zu Twilio finden Sie unter [https://www.twilio.com/docs][twilio_docs].

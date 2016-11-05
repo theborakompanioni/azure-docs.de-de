@@ -1,174 +1,172 @@
-<properties 
-	pageTitle="Veröffentlichen von Azure Media Services-Inhalten mit .NET" 
-	description="Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET." 
-	authors="juliako" 
-	manager="erikre" 
-	editor="" 
-	services="media-services" 
-	documentationCenter=""/>
+---
+title: Veröffentlichen von Azure Media Services-Inhalten mit .NET
+description: Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET.
+author: juliako
+manager: erikre
+editor: ''
+services: media-services
+documentationcenter: ''
 
-<tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/30/2016"
-	ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/30/2016
+ms.author: juliako
 
-
+---
 # Veröffentlichen von Azure Media Services-Inhalten mit .NET
- 
-> [AZURE.SELECTOR]
-- [REST](media-services-rest-deliver-streaming-content.md)
-- [.NET](media-services-deliver-streaming-content.md)
-- [Portal](media-services-portal-publish.md)
+> [!div class="op_single_selector"]
+> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [.NET](media-services-deliver-streaming-content.md)
+> * [Portal](media-services-portal-publish.md)
+> 
+> 
 
-##Übersicht
-
+## Übersicht
 Sie können einen MP4-Satz mit adaptiver Bitrate streamen, indem Sie einen OnDemand-Streaminglocator und eine Streaming-URL erstellen. Im Thema [Codieren eines Medienobjekts](media-services-encode-asset.md) wird die Codierung in einen MP4-Satz mit adaptiver Bitrate erläutert.
 
->[AZURE.NOTE]Wenn Ihr Inhalt verschlüsselt ist, konfigurieren Sie vor dem Erstellen eines Locators die Bereitstellungsrichtlinie für Medienobjekte (wie in [diesem](media-services-dotnet-configure-asset-delivery-policy.md) Thema beschrieben).
+> [!NOTE]
+> Wenn Ihr Inhalt verschlüsselt ist, konfigurieren Sie vor dem Erstellen eines Locators die Bereitstellungsrichtlinie für Medienobjekte (wie in [diesem](media-services-dotnet-configure-asset-delivery-policy.md) Thema beschrieben).
+> 
+> 
 
 Sie können auch einen OnDemand-Streaminglocator zum Erstellen von URLs verwenden, die auf MP4-Dateien verweisen, die progressiv heruntergeladen werden können.
 
 In diesem Thema wird erläutert, wie Sie einen OnDemand-Streaminglocator erstellen, um Ihr Medienobjekt zu veröffentlichen und Smooth-, MPEG-DASH- sowie HLS-Streaming-URLs zu erstellen. Außerdem wird veranschaulicht, wie Sie URLs für progressive Downloads erstellen.
-  	 
-##Erstellen eines OnDemand-Streaminglocators
 
+## Erstellen eines OnDemand-Streaminglocators
 Verfahren Sie zum Erstellen des OnDemand-Streaminglocators und Abrufen von URLs wie folgt:
 
-   1. Wenn der Inhalt verschlüsselt ist, definieren Sie eine Zugriffsrichtlinie.
-   2. Erstellen Sie einen OnDemand-Streaminglocator.
-   3. Wenn Sie ein Streaming planen, rufen Sie die Streaming-Manifestdatei (ISM) im Medienobjekt ab.
-   		
-	Wenn Sie einen progressiven Download ausführen möchten, rufen Sie die Namen der MP4-Dateien im Medienobjekt ab.
-   4. Erstellen Sie URLs für die Manifestdatei oder MP4-Dateien.
+1. Wenn der Inhalt verschlüsselt ist, definieren Sie eine Zugriffsrichtlinie.
+2. Erstellen Sie einen OnDemand-Streaminglocator.
+3. Wenn Sie ein Streaming planen, rufen Sie die Streaming-Manifestdatei (ISM) im Medienobjekt ab.
    
+   Wenn Sie einen progressiven Download ausführen möchten, rufen Sie die Namen der MP4-Dateien im Medienobjekt ab.
+4. Erstellen Sie URLs für die Manifestdatei oder MP4-Dateien.
 
-###Verwenden des Media Services .NET SDKs 
-
+### Verwenden des Media Services .NET SDKs
 Erstellen von Streaming-URLs
 
-	private static void BuildStreamingURLs(IAsset asset)
-	{
-	
-	    // Create a 30-day readonly access policy. 
-      	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.
-	    IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
-	        TimeSpan.FromDays(30),
-	        AccessPermissions.Read);
-	
-	    // Create a locator to the streaming content on an origin. 
-	    ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
-	        policy,
-	        DateTime.UtcNow.AddMinutes(-5));
-	
-	    // Display some useful values based on the locator.
-	    Console.WriteLine("Streaming asset base path on origin: ");
-	    Console.WriteLine(originLocator.Path);
-	    Console.WriteLine();
-	
-	    // Get a reference to the streaming manifest file from the  
-	    // collection of files in the asset. 
-	    var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
-	                                EndsWith(".ism")).
-	                                FirstOrDefault();
-	    
-	    // Create a full URL to the manifest file. Use this for playback
-	    // in streaming media clients. 
-	    string urlForClientStreaming = originLocator.Path + manifestFile.Name + "/manifest";
-	    Console.WriteLine("URL to manifest for client streaming using Smooth Streaming protocol: ");
-	    Console.WriteLine(urlForClientStreaming);
-	    Console.WriteLine("URL to manifest for client streaming using HLS protocol: ");
-	    Console.WriteLine(urlForClientStreaming + "(format=m3u8-aapl)");
-	    Console.WriteLine("URL to manifest for client streaming using MPEG DASH protocol: ");
-	    Console.WriteLine(urlForClientStreaming + "(format=mpd-time-csf)"); 
-	    Console.WriteLine();
-	}
+    private static void BuildStreamingURLs(IAsset asset)
+    {
+
+        // Create a 30-day readonly access policy. 
+          // You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.
+        IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
+            TimeSpan.FromDays(30),
+            AccessPermissions.Read);
+
+        // Create a locator to the streaming content on an origin. 
+        ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
+            policy,
+            DateTime.UtcNow.AddMinutes(-5));
+
+        // Display some useful values based on the locator.
+        Console.WriteLine("Streaming asset base path on origin: ");
+        Console.WriteLine(originLocator.Path);
+        Console.WriteLine();
+
+        // Get a reference to the streaming manifest file from the  
+        // collection of files in the asset. 
+        var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+                                    EndsWith(".ism")).
+                                    FirstOrDefault();
+
+        // Create a full URL to the manifest file. Use this for playback
+        // in streaming media clients. 
+        string urlForClientStreaming = originLocator.Path + manifestFile.Name + "/manifest";
+        Console.WriteLine("URL to manifest for client streaming using Smooth Streaming protocol: ");
+        Console.WriteLine(urlForClientStreaming);
+        Console.WriteLine("URL to manifest for client streaming using HLS protocol: ");
+        Console.WriteLine(urlForClientStreaming + "(format=m3u8-aapl)");
+        Console.WriteLine("URL to manifest for client streaming using MPEG DASH protocol: ");
+        Console.WriteLine(urlForClientStreaming + "(format=mpd-time-csf)"); 
+        Console.WriteLine();
+    }
 
 Codeausgabe:
-	
-	URL to manifest for client streaming using Smooth Streaming protocol:
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
-	URL to manifest for client streaming using HLS protocol:
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
-	URL to manifest for client streaming using MPEG DASH protocol:
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
-	
 
->[AZURE.NOTE]Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen.
+    URL to manifest for client streaming using Smooth Streaming protocol:
+    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
+    URL to manifest for client streaming using HLS protocol:
+    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+    URL to manifest for client streaming using MPEG DASH protocol:
+    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
+
+
+> [!NOTE]
+> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen.
+> 
+> 
 
 Erstellen von URLs für progressive Downloads
 
-	private static void BuildProgressiveDownloadURLs(IAsset asset)
-	{
-	    // Create a 30-day readonly access policy. 
-	    IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
-	        TimeSpan.FromDays(30),
-	        AccessPermissions.Read);
-	
-	    // Create an OnDemandOrigin locator to the asset. 
-	    ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
-	        policy,
-	        DateTime.UtcNow.AddMinutes(-5));
-	
-	    // Display some useful values based on the locator.
-	    Console.WriteLine("Streaming asset base path on origin: ");
-	    Console.WriteLine(originLocator.Path);
-	    Console.WriteLine();
-	
-	    // Get MP4 files.
-	    IEnumerable<IAssetFile> mp4AssetFiles = asset
-	        .AssetFiles
-	        .ToList()
-	        .Where(af => af.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase));
-	            
-	    // Create a full URL to the MP4 files. Use this to progressively download files.
-	    foreach (var pd in mp4AssetFiles)
-	        Console.WriteLine(originLocator.Path + pd.Name);
-	}
+    private static void BuildProgressiveDownloadURLs(IAsset asset)
+    {
+        // Create a 30-day readonly access policy. 
+        IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
+            TimeSpan.FromDays(30),
+            AccessPermissions.Read);
+
+        // Create an OnDemandOrigin locator to the asset. 
+        ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
+            policy,
+            DateTime.UtcNow.AddMinutes(-5));
+
+        // Display some useful values based on the locator.
+        Console.WriteLine("Streaming asset base path on origin: ");
+        Console.WriteLine(originLocator.Path);
+        Console.WriteLine();
+
+        // Get MP4 files.
+        IEnumerable<IAssetFile> mp4AssetFiles = asset
+            .AssetFiles
+            .ToList()
+            .Where(af => af.Name.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase));
+
+        // Create a full URL to the MP4 files. Use this to progressively download files.
+        foreach (var pd in mp4AssetFiles)
+            Console.WriteLine(originLocator.Path + pd.Name);
+    }
 
 Codeausgabe:
-	
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
-	
-	. . . 
 
-###Verwenden von Media Services .NET SDK-Erweiterungen
+    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
+    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
+    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
 
+    . . . 
+
+### Verwenden von Media Services .NET SDK-Erweiterungen
 Im folgenden Code werden .NET SDK-Erweiterungsmethoden aufgerufen, durch die ein Locator erstellt und die Smooth Streaming-, HLS- und MPEG-DASH-URLs für adaptives Streaming generiert werden.
 
-	// Create a loctor.
-	_context.Locators.Create(
-	    LocatorType.OnDemandOrigin,
-	    inputAsset,
-	    AccessPermissions.Read,
-	    TimeSpan.FromDays(30));
-	
-	// Get the streaming URLs.
-	Uri smoothStreamingUri = inputAsset.GetSmoothStreamingUri();
-	Uri hlsUri = inputAsset.GetHlsUri();
-	Uri mpegDashUri = inputAsset.GetMpegDashUri();
-	
-	Console.WriteLine(smoothStreamingUri);
-	Console.WriteLine(hlsUri);
-	Console.WriteLine(mpegDashUri);
+    // Create a loctor.
+    _context.Locators.Create(
+        LocatorType.OnDemandOrigin,
+        inputAsset,
+        AccessPermissions.Read,
+        TimeSpan.FromDays(30));
+
+    // Get the streaming URLs.
+    Uri smoothStreamingUri = inputAsset.GetSmoothStreamingUri();
+    Uri hlsUri = inputAsset.GetHlsUri();
+    Uri mpegDashUri = inputAsset.GetMpegDashUri();
+
+    Console.WriteLine(smoothStreamingUri);
+    Console.WriteLine(hlsUri);
+    Console.WriteLine(mpegDashUri);
 
 
-##Media Services-Lernpfade
+## Media Services-Lernpfade
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+## Feedback geben
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##Feedback geben
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-##Weitere Informationen
-
+## Weitere Informationen
 [Herunterladen von Assets](media-services-deliver-asset-download.md) [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md)
 
 <!---HONumber=AcomDC_0831_2016-->

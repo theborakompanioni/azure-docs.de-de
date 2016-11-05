@@ -1,55 +1,52 @@
-<properties 
-   pageTitle="Syslog-Nachrichten in Log Analytics | Microsoft Azure"
-   description="Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.   Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
-   services="log-analytics"
-   documentationCenter=""
-   authors="bwren"
-   manager="jwhit"
-   editor="tysonn" />
-<tags 
-   ms.service="log-analytics"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/06/2016"
-   ms.author="bwren" />
+---
+title: Syslog-Nachrichten in Log Analytics | Microsoft Docs
+description: Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.   Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden.
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: tysonn
 
+ms.service: log-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/06/2016
+ms.author: bwren
 
-
+---
 # <a name="syslog-data-sources-in-log-analytics"></a>Syslog-Datenquellen in Log Analytics
-
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.  Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können.  Wenn der OMS-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent.  Der Agent sendet die Nachricht dann an Log Analytics, wo ein entsprechender Datensatz im OMS-Repository erstellt wird.  
 
-> [AZURE.NOTE]Log Analytics unterstützt die Sammlung der von „rsyslog“ oder „syslog-ng“ gesendeten Nachrichten. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der [Rsyslog-Daemon](http://rsyslog.com) sollte installiert und so konfiguriert werden, dass er Sysklog ersetzt, um Syslog-Daten von dieser Version dieser Verteilungen zu sammeln.
+> [!NOTE]
+> Log Analytics unterstützt die Sammlung der von „rsyslog“ oder „syslog-ng“ gesendeten Nachrichten. Der Standard-syslog-Daemon in Version 5 von Red Hat Enterprise Linux, CentOS und Oracle Linux-Version (sysklog) wird für die syslog-Ereigniserfassung nicht unterstützt. Der [Rsyslog-Daemon](http://rsyslog.com) sollte installiert und so konfiguriert werden, dass er Sysklog ersetzt, um Syslog-Daten von dieser Version dieser Verteilungen zu sammeln.
+> 
+> 
 
 ![Syslog-Sammlung](media/log-analytics-data-sources-syslog/overview.png)
-
 
 ## <a name="configuring-syslog"></a>Konfigurieren von Syslog
 Der OMS-Agent für Linux sammelt nur Ereignisse mit den Einrichtungen und Schweregraden, die in ihrer Konfiguration angegeben werden.  Sie können Syslog über das OMS-Portal oder durch die Verwaltung von Konfigurationsdateien für die Linux-Agents konfigurieren.
 
-
 ### <a name="configure-syslog-in-the-oms-portal"></a>Konfigurieren von Syslog im OMS-Portal
-
 Konfigurieren Sie Syslog über das [Menü „Daten“ in den Einstellungen von Log Analytics](log-analytics-data-sources.md#configuring-data-sources).  Diese Konfiguration wird in der Konfigurationsdatei für jeden Linux-Agent bereitgestellt.
 
 Sie können eine neue Einrichtung hinzufügen, indem Sie ihren Namen eingeben und auf **+**.  Für jede Einrichtung werden nur Ereignisse mit den ausgewählten Schweregraden gesammelt.  Markieren Sie die Schweregrade für die jeweilige Einrichtung, aus der Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien angeben, um Nachrichten zu filtern.
 
 ![Konfigurieren von Syslog](media/log-analytics-data-sources-syslog/configure.png)
 
-
 Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Wenn Sie Syslog manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*.
 
-
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurieren von Syslog auf dem Linux-Agent
-
 Wenn der [OMS-Agent auf einem Linux-Client installiert ist](log-analytics-linux-agents.md), installiert er eine standardmäßige Syslog-Konfigurationsdatei, die Einrichtung und Schweregrad der gesammelten Nachrichten definiert.  Sie können diese Datei ändern, um die Konfiguration zu ändern.  Die Konfigurationsdatei unterscheidet sich je nach dem Syslog-Daemon, den der Client installiert hat.
 
-> [AZURE.NOTE] Wenn Sie die syslog-Konfiguration bearbeiten, müssen Sie den syslog-Daemon neu starten, damit die Änderungen wirksam werden.
+> [!NOTE]
+> Wenn Sie die syslog-Konfiguration bearbeiten, müssen Sie den syslog-Daemon neu starten, damit die Änderungen wirksam werden.
+> 
+> 
 
 #### <a name="rsyslog"></a>rsyslog
-
 Die Konfigurationsdatei für rsyslog befindet sich unter **/etc/rsyslog.d/95-omsagent.conf**.  Ihr Standardinhalt wird unten aufgeführt.  So werden Syslog-Nachrichten gesammelt, die der lokale Agent für alle Einrichtungen auf Warnungsebene oder höher gesendet hat.
 
     kern.warning       @127.0.0.1:25224
@@ -76,7 +73,6 @@ Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfig
 
 
 #### <a name="syslog-ng"></a>syslog-ng
-
 Die Konfigurationsdatei für rsyslog befindet sich am Speicherort **/etc/syslog-ng/syslog-ng.conf**.  Ihr Standardinhalt wird unten aufgeführt.  So werden Syslog-Nachrichten gesammelt, die der lokale Agent für alle Einrichtungen und alle Schweregrade gesendet hat.   
 
     #
@@ -84,7 +80,7 @@ Die Konfigurationsdatei für rsyslog befindet sich am Speicherort **/etc/syslog-
     #
     destination warn { file("/var/log/warn" fsync(yes)); };
     log { source(src); filter(f_warn); destination(warn); };
-    
+
     #OMS_Destination
     destination d_oms { udp("127.0.0.1" port(25224)); };
 
@@ -107,23 +103,23 @@ Die Konfigurationsdatei für rsyslog befindet sich am Speicherort **/etc/syslog-
     #OMS_facility = kern
     filter f_kern_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(kern); };
     log { source(src); filter(f_kern_oms); destination(d_oms); };
-    
+
     #OMS_facility = local0
     filter f_local0_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(local0); };
     log { source(src); filter(f_local0_oms); destination(d_oms); };
-    
+
     #OMS_facility = local1
     filter f_local1_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(local1); };
     log { source(src); filter(f_local1_oms); destination(d_oms); };
-    
+
     #OMS_facility = mail
     filter f_mail_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(mail); };
     log { source(src); filter(f_mail_oms); destination(d_oms); };
-    
+
     #OMS_facility = syslog
     filter f_syslog_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(syslog); };
     log { source(src); filter(f_syslog_oms); destination(d_oms); };
-    
+
     #OMS_facility = user
     filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
     log { source(src); filter(f_user_oms); destination(d_oms); };
@@ -136,7 +132,6 @@ Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfig
 
 
 ### <a name="changing-the-syslog-port"></a>Ändern des Syslog-Ports
-
 Der OMS-Agent lauscht auf dem lokalen Client am Port 25224 auf Syslog-Nachrichten.  Sie können diesen Port ändern, indem Sie der OMS-Agent-Konfigurationsdatei unter **/etc/opt/microsoft/omsagent/conf/omsagent.conf**den folgenden Abschnitt hinzufügen.  Ersetzen Sie 25224 im Eintrag **port** mit Ihrer gewünschten Portnummer.  Beachten Sie, dass Sie auch die Konfigurationsdatei für den Syslog-Daemon ändern müssen, um Nachrichten an diesen Port zu senden.
 
     <source>
@@ -149,45 +144,36 @@ Der OMS-Agent lauscht auf dem lokalen Client am Port 25224 auf Syslog-Nachrichte
 
 
 ## <a name="data-collection"></a>Datensammlung
-
 Der OMS-Agent lauscht auf dem lokalen Client am Port 25224 auf Syslog-Nachrichten. Die Konfigurationsdatei für den Syslog-Daemon leitet von der Anwendung gesendete Syslog-Nachrichten an diesen Port weiter, wo sie von Log Analytics gesammelt werden.
 
-
 ## <a name="syslog-record-properties"></a>Eigenschaften der Syslog-Datensätze
-
 Syslog-Datensätze sind vom Typ **Syslog** und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.
 
 | Eigenschaft | Beschreibung |
-|:--|:--|
-| Computer | Computer, auf dem das Ereignis gesammelt wurde. |
-| Facility | Definiert den Teil des Systems, der die Meldung generiert hat. |
-| HostIP | IP-Adresse des Systems, das die Nachricht sendet.  |
-| HostName | Name des Systems, das die Nachricht sendet. |
-| SeverityLevel | Schweregrad des Ereignisses. |
-| SyslogMessage | Text der Nachricht. |
-| ProcessID | ID des Prozesses, der die Meldung generiert hat. |
-| EventTime | Datum und Uhrzeit der Ereignisgenerierung.
-
-
+|:--- |:--- |
+| Computer |Computer, auf dem das Ereignis gesammelt wurde. |
+| Facility |Definiert den Teil des Systems, der die Meldung generiert hat. |
+| HostIP |IP-Adresse des Systems, das die Nachricht sendet. |
+| HostName |Name des Systems, das die Nachricht sendet. |
+| SeverityLevel |Schweregrad des Ereignisses. |
+| SyslogMessage |Text der Nachricht. |
+| ProcessID |ID des Prozesses, der die Meldung generiert hat. |
+| EventTime |Datum und Uhrzeit der Ereignisgenerierung. |
 
 ## <a name="log-queries-with-syslog-records"></a>Protokollieren von Abfragen mit Syslog-Datensätzen
-
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Syslog-Protokolldatensätze abrufen.
 
 | Abfrage | Beschreibung |
-|:--|:--|
-| Type=Syslog | Alle Syslog-Datensätze. |
-| Type=Syslog SeverityLevel=error | Alle Syslog-Datensätze mit Fehlerschweregrad. |
-| Type=Syslog &#124; measure count() by Computer | Anzahl der Syslog-Datensätze je Computer. |
-| Type=Syslog &#124; measure count() by Facility | Anzahl der Syslog-Datensätze je Einrichtung. |
+|:--- |:--- |
+| Type=Syslog |Alle Syslog-Datensätze. |
+| Type=Syslog SeverityLevel=error |Alle Syslog-Datensätze mit Fehlerschweregrad. |
+| Type=Syslog &#124; measure count() by Computer |Anzahl der Syslog-Datensätze je Computer. |
+| Type=Syslog &#124; measure count() by Facility |Anzahl der Syslog-Datensätze je Einrichtung. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
-- Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
-- [Konfigurieren Sie Linux-Agents](log-analytics-linux-agents.md) zum Sammeln anderer Datentypen. 
-
-
+* Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+* Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
+* [Konfigurieren Sie Linux-Agents](log-analytics-linux-agents.md) zum Sammeln anderer Datentypen. 
 
 <!--HONumber=Oct16_HO2-->
 

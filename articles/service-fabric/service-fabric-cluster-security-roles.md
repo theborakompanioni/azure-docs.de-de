@@ -1,38 +1,31 @@
 
-<properties
-   pageTitle="Service Fabric-Clustersicherheit: Clientrollen | Microsoft Azure"
-   description="Dieser Artikel beschreibt die zwei Clientrollen und die für die Rollen bereitgestellten Berechtigungen."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="mani-ramaswamy"
-   manager="coreysa"
-   editor=""/>
+---
+title: 'Service Fabric-Clustersicherheit: Clientrollen | Microsoft Docs'
+description: Dieser Artikel beschreibt die zwei Clientrollen und die für die Rollen bereitgestellten Berechtigungen.
+services: service-fabric
+documentationcenter: .net
+author: mani-ramaswamy
+manager: coreysa
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/14/2016"
-   ms.author="subramar"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/14/2016
+ms.author: subramar
 
-
-
-# Rollenbasierte Zugriffssteuerung für Service Fabric-Clients
-
-Azure Service Fabric unterstützt zwei unterschiedliche Zugriffsberechtigungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind: Administrator und Benutzer. Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird.
+---
+# Rollenbasierte Zugriffssteuerung für Service Fabric-Clients
+Azure Service Fabric unterstützt zwei unterschiedliche Zugriffsberechtigungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind: Administrator und Benutzer. Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird.
 
 **Administratoren** haben Vollzugriff auf Verwaltungsfunktionen (einschließlich Lese-/Schreibzugriff). **Benutzer** haben standardmäßig nur Lesezugriff auf Verwaltungsfunktionen (z. B. Abfragefunktionen) sowie die Möglichkeit, Anwendungen und Dienste aufzulösen.
 
 Sie geben die beiden Clientrollen (Administrator und Client) zum Zeitpunkt der Clustererstellung an, indem Sie für jede separate Zertifikate bereitstellen. Ausführliche Informationen zum Einrichten eines sicheren Service Fabric-Clusters finden Sie unter [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md).
 
-
 ## Standardeinstellungen für die Zugriffssteuerung
-
-
 Der Administrator-Zugriffssteuerungstyp hat vollen Zugriff auf die FabricClient-APIs. Mit ihm können alle Lese- und Schreibvorgänge für den Service Fabric-Cluster ausgeführt werden, einschließlich der folgenden:
-
 
 ### Anwendungs- und Dienstvorgänge
 * **CreateService**: Diensterstellung
@@ -53,7 +46,6 @@ Der Administrator-Zugriffssteuerungstyp hat vollen Zugriff auf die FabricClient-
 * **RecoverPartitions**: Wiederherstellen von Partitionen
 * **RecoverServicePartitions**: Wiederherstellen von Dienstpartitionen
 * **RecoverSystemPartitions**: Wiederherstellen von Systemdienstpartitionen
-
 
 ### Clustervorgänge
 * **ProvisionFabric**: MSI- und/oder Clustermanifest-Bereitstellung
@@ -84,8 +76,6 @@ Der Administrator-Zugriffssteuerungstyp hat vollen Zugriff auf die FabricClient-
 * **Query**: Alle Abfragen zulässig
 * **NameExists**: Überprüfung auf vorhandene URI-Namen
 
-
-
 Die Zugriffssteuerung vom Typ „Benutzer“ ist standardmäßig auf die folgenden Vorgänge beschränkt:
 
 * **EnumerateSubnames**: Benennen der URI-Enumeration
@@ -106,11 +96,9 @@ Die Zugriffssteuerung vom Typ „Benutzer“ ist standardmäßig auf die folgend
 Die Zugriffssteuerung des Typs „Admin“ kann auch auf die zuvor genannten Vorgänge zugreifen.
 
 ## Ändern der Standardeinstellungen für Clientrollen
-
 In der Manifestdatei des Clusters können bei Bedarf Administratorfunktionen für den Client bereitgestellt werden. Sie können die Standardeinstellungen ändern, indem Sie während der [Clustererstellung](service-fabric-cluster-creation-via-portal.md) die Option **Fabric-Einstellungen** auswählen und die zuvor beschriebenen Einstellungen in den Feldern **name**, **admin**, **user** und **value** angeben.
 
 ## Nächste Schritte
-
 [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md)
 
 [Service Fabric-Clustererstellung](service-fabric-cluster-creation-via-portal.md)

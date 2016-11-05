@@ -1,37 +1,37 @@
-<properties 
-   pageTitle="Benutzeroberfläche von Azure Mobile Engagement – Dashboard" 
-   description="Informationen zum Überwachen und Verwalten von Datendiagrammen zu Ihrer Anwendung mithilfe von Azure Mobile Engagement" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
-   editor=""/>
+---
+title: Benutzeroberfläche von Azure Mobile Engagement – Dashboard
+description: Informationen zum Überwachen und Verwalten von Datendiagrammen zu Ihrer Anwendung mithilfe von Azure Mobile Engagement
+services: mobile-engagement
+documentationcenter: ''
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="mobile-engagement"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
-   ms.date="08/19/2016"
-   ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # Anzeigen und Verwalten von Datendiagrammen zu Ihrer Anwendung
 Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen angepasster Diagramme, indem zeitsparend genau die gewünschten Informationen bereitgestellt werden, ohne dass diese im Abschnitt "Analyse" gesucht werden müssen. Ein Dashboard zeigt Trends der Anwendung und die Anzahl aktiver Benutzer für die verschiedenen Versionen der Anwendung über einen bestimmten Zeitraum (Stunde/Tag/Woche/Monat/benutzerdefiniert). Die gezeigten Trends basieren auf den letzten sieben Tagen.
 
 ### Siehe auch
--  [Handbuch zur Problembehandlung - Analyse][Link 21]
+* [Handbuch zur Problembehandlung - Analyse][Link 21]
 
 ## Dashboard
-- Sie können einem leeren Dashboard Diagramme hinzufügen, indem Sie im Abschnitt "Analyse" der Benutzeroberfläche die Aktion "An Dashboard senden" im Zahnradmenü eines Diagramms auswählen, das in einem Dashboard angezeigt werden soll.
- 
+* Sie können einem leeren Dashboard Diagramme hinzufügen, indem Sie im Abschnitt "Analyse" der Benutzeroberfläche die Aktion "An Dashboard senden" im Zahnradmenü eines Diagramms auswählen, das in einem Dashboard angezeigt werden soll.
+
 ## + (Dashboard hinzufügen)
-- Sie können auf dem Menüband auf das Menüelement "+" klicken, um ein neues Dashboard zu erstellen, das im Menübandmenü angezeigt wird.
- 
+* Sie können auf dem Menüband auf das Menüelement "+" klicken, um ein neues Dashboard zu erstellen, das im Menübandmenü angezeigt wird.
+
 ## Zahnradmenü
-- Im Zahnradmenü eines Dashboards können Sie Ihr Dashboard löschen, umbenennen, freigeben oder den E-Mail-Empfang planen. Mithilfe der Zeitplanoption können Sie den Zeitplan definieren, gemäß dem Sie Ihr benutzerdefiniertes Dashboard per E-Mail empfangen möchten. Sie können planen, es täglich, wöchentlich oder monatlich zu empfangen. Sie können die Tageszeit und den Wochentag oder Tag des Monats wählen, an dem Sie die E-Mail empfangen möchten. Ihre E-Mail-Adresse und Zeitzone basieren auf den Einstellungen, die Sie im Abschnitt "Mein Konto" der Benutzeroberfläche konfiguriert haben.
- 
- ![dashboard1][34]
+* Im Zahnradmenü eines Dashboards können Sie Ihr Dashboard löschen, umbenennen, freigeben oder den E-Mail-Empfang planen. Mithilfe der Zeitplanoption können Sie den Zeitplan definieren, gemäß dem Sie Ihr benutzerdefiniertes Dashboard per E-Mail empfangen möchten. Sie können planen, es täglich, wöchentlich oder monatlich zu empfangen. Sie können die Tageszeit und den Wochentag oder Tag des Monats wählen, an dem Sie die E-Mail empfangen möchten. Ihre E-Mail-Adresse und Zeitzone basieren auf den Einstellungen, die Sie im Abschnitt "Mein Konto" der Benutzeroberfläche konfiguriert haben.
+  
+  ![dashboard1][34]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -127,6 +127,6 @@ Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen a
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
- 
+
 
 <!---HONumber=AcomDC_0824_2016-->

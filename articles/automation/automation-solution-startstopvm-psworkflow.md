@@ -1,50 +1,47 @@
-<properties 
-    pageTitle="Starten und Beenden von virtuellen Computern mit Azure Automation - PowerShell-Workflow | Microsoft Azure"
-    description="Grafische Version des Azure Automation-Szenarios, einschließlich Runbooks zum Starten und Beenden von klassischen virtuellen Computern."
-    services="automation"
-    documentationCenter=""
-    authors="mgoedtel"
-    manager="jwhit"
-    editor="tysonn" />
-<tags 
-    ms.service="automation"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="07/06/2016"
-    ms.author="bwren" />
+---
+title: Starten und Beenden von virtuellen Computern mit Azure Automation - PowerShell-Workflow | Microsoft Docs
+description: Grafische Version des Azure Automation-Szenarios, einschließlich Runbooks zum Starten und Beenden von klassischen virtuellen Computern.
+services: automation
+documentationcenter: ''
+author: mgoedtel
+manager: jwhit
+editor: tysonn
 
+ms.service: automation
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 07/06/2016
+ms.author: bwren
 
+---
 # <a name="azure-automation-scenario---starting-and-stopping-virtual-machines"></a>Azure Automation-Szenario – Starten und Beenden virtueller Computer
-
 Dieses Azure Automation-Szenario enthält Runbooks zum Starten und Beenden klassischer virtueller Computer.  Sie können das Szenario für folgende Zwecke einsetzen:  
 
-- Verwenden Sie die Runbooks unverändert in Ihrer eigenen Umgebung. 
-- Ändern Sie die Runbooks, um benutzerdefinierte Funktionen auszuführen.  
-- Rufen Sie die Runbooks im Rahmen einer Gesamtlösung aus einem anderen Runbook auf. 
-- Verwenden Sie die Runbooks als Tutorials zur Runbookerstellung. 
+* Verwenden Sie die Runbooks unverändert in Ihrer eigenen Umgebung. 
+* Ändern Sie die Runbooks, um benutzerdefinierte Funktionen auszuführen.  
+* Rufen Sie die Runbooks im Rahmen einer Gesamtlösung aus einem anderen Runbook auf. 
+* Verwenden Sie die Runbooks als Tutorials zur Runbookerstellung. 
 
-> [AZURE.SELECTOR]
-- [Grafisch](automation-solution-startstopvm-graphical.md)
-- [PowerShell-Workflow](automation-solution-startstopvm-psworkflow.md)
+> [!div class="op_single_selector"]
+> * [Grafisch](automation-solution-startstopvm-graphical.md)
+> * [PowerShell-Workflow](automation-solution-startstopvm-psworkflow.md)
+> 
+> 
 
 Dies ist die PowerShell-Workflow-Runbookversion dieses Szenarios. Sie ist auch über [grafische Runbooks](automation-solution-startstopvm-graphical.md)verfügbar.
 
 ## <a name="getting-the-scenario"></a>Abrufen des Szenarios
-
 Dieses Szenario besteht aus zwei PowerShell-Workflow-Runbooks, die Sie unter den folgenden Links herunterladen können.  Links zu den grafischen Runbooks finden Sie in der [grafischen Version](automation-solution-startstopvm-graphical.md) dieses Szenarios.
 
 | Runbook | Link | Typ | Beschreibung |
-|:---|:---|:---|:---|
-| Start-AzureVMs | [Starten von klassischen virtuellen Azure-Computern](https://gallery.technet.microsoft.com/Start-Azure-Classic-VMs-86ef746b) | PowerShell-Workflow | Startet alle klassischen virtuellen Computer in einem Azure-Abonnement oder alle virtuellen Computer mit einem bestimmten Dienstnamen. |
-| Stop-AzureVMs | [Beenden von klassischen virtuellen Azure-Computern](https://gallery.technet.microsoft.com/Stop-Azure-Classic-VMs-7a4ae43e) | PowerShell-Workflow | Beendet alle virtuellen Computer eines Automatisierungskontos oder alle virtuellen Computer mit einem bestimmten Dienstnamen.  |
-
+|:--- |:--- |:--- |:--- |
+| Start-AzureVMs |[Starten von klassischen virtuellen Azure-Computern](https://gallery.technet.microsoft.com/Start-Azure-Classic-VMs-86ef746b) |PowerShell-Workflow |Startet alle klassischen virtuellen Computer in einem Azure-Abonnement oder alle virtuellen Computer mit einem bestimmten Dienstnamen. |
+| Stop-AzureVMs |[Beenden von klassischen virtuellen Azure-Computern](https://gallery.technet.microsoft.com/Stop-Azure-Classic-VMs-7a4ae43e) |PowerShell-Workflow |Beendet alle virtuellen Computer eines Automatisierungskontos oder alle virtuellen Computer mit einem bestimmten Dienstnamen. |
 
 ## <a name="installing-and-configuring-the-scenario"></a>Installieren und Konfigurieren des Szenarios
-
 ### <a name="1.-install-the-runbooks"></a>1. Installieren der Runbooks
-
 Nach dem Herunterladen der Runbooks können Sie sie mit dem Verfahren unter [Importieren eines Runbooks](http://msdn.microsoft.com/library/dn643637.aspx#ImportRunbook)importieren.
 
 ### <a name="2.-review-the-description-and-requirements"></a>2. Überprüfen der Beschreibung und der Anforderungen
@@ -54,24 +51,21 @@ Die Runbooks enthalten einen kommentierten Hilfetext mit einer Beschreibung und 
 Die Runbooks erfordern die folgenden Assets, die Sie erstellen und mit den entsprechenden Werten füllen müssen.
 
 | Assettyp | Assetname | Beschreibung |
-|:---|:---|:---|:---|
-| Credential | AzureCredential | Enthält die Anmeldeinformationen für ein Konto mit der Berechtigung zum Starten und Beenden von virtuellen Computern im Azure-Abonnement.  Alternativ können Sie ein anderes Anmeldeinformationsasset im Parameter **Credential** der Aktivität **Add-AzureAccount** angeben. |
-| Variable | AzureSubscriptionId | Enthält die Abonnement-ID Ihres Azure-Abonnements. |
+|:--- |:--- |:--- |:--- |
+| Credential |AzureCredential |Enthält die Anmeldeinformationen für ein Konto mit der Berechtigung zum Starten und Beenden von virtuellen Computern im Azure-Abonnement.  Alternativ können Sie ein anderes Anmeldeinformationsasset im Parameter **Credential** der Aktivität **Add-AzureAccount** angeben. |
+| Variable |AzureSubscriptionId |Enthält die Abonnement-ID Ihres Azure-Abonnements. |
 
 ## <a name="using-the-scenario"></a>Verwenden des Szenarios
-
 ### <a name="parameters"></a>Parameter
-
 Die Runbooks verfügen jeweils über die folgenden Parameter.  Sie müssen Werte für alle obligatorischen Parameter angeben und können optional Werte für andere Parameter je nach Bedarf bereitstellen.
 
 | Parameter | Typ | Erforderlich | Beschreibung |
-|:---|:---|:---|:---|
-| ServiceName | string | Nein | Wenn ein Wert angegeben wird, werden alle virtuellen Computer mit diesem Dienstnamen gestartet oder beendet.  Wenn kein Wert angegeben wird, werden alle klassischen virtuellen Computer im Azure-Abonnement gestartet oder beendet. |
-| AzureSubscriptionIdAssetName | string | Nein | Enthält den Namen des [Variablen-Assets](#installing-and-configuring-the-scenario) , in dem die Abonnement-ID des Azure-Abonnements enthalten ist.  Wenn Sie keinen Wert angeben, wird *AzureSubscriptionId* verwendet.  |
-| AzureCredentialAssetName | string | Nein | Enthält den Namen des [Anmeldeinformationsassets](#installing-and-configuring-the-scenario) , in dem die Anmeldeinformationen für das zu verwendende Runbook enthalten sind.  Wenn Sie keinen Wert angeben, wird *AzureCredential* verwendet.  |
+|:--- |:--- |:--- |:--- |
+| ServiceName |string |Nein |Wenn ein Wert angegeben wird, werden alle virtuellen Computer mit diesem Dienstnamen gestartet oder beendet.  Wenn kein Wert angegeben wird, werden alle klassischen virtuellen Computer im Azure-Abonnement gestartet oder beendet. |
+| AzureSubscriptionIdAssetName |string |Nein |Enthält den Namen des [Variablen-Assets](#installing-and-configuring-the-scenario) , in dem die Abonnement-ID des Azure-Abonnements enthalten ist.  Wenn Sie keinen Wert angeben, wird *AzureSubscriptionId* verwendet. |
+| AzureCredentialAssetName |string |Nein |Enthält den Namen des [Anmeldeinformationsassets](#installing-and-configuring-the-scenario) , in dem die Anmeldeinformationen für das zu verwendende Runbook enthalten sind.  Wenn Sie keinen Wert angeben, wird *AzureCredential* verwendet. |
 
 ### <a name="starting-the-runbooks"></a>Starten der Runbooks
-
 Sie können eine der Methoden unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md) verwenden, um die Runbooks in diesem Szenario zu starten.
 
 In den folgenden Beispielbefehlen wird Windows PowerShell verwendet, um **StartAzureVMs** auszuführen und alle virtuellen Computer mit dem Dienstnamen *MyVMService*zu starten.
@@ -80,17 +74,16 @@ In den folgenden Beispielbefehlen wird Windows PowerShell verwendet, um **StartA
     Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Start-AzureVMs" –Parameters $params
 
 ### <a name="output"></a>Ausgabe
-
 Die Runbooks [geben eine Meldung für jeden virtuellen Computer aus](automation-runbook-output-and-messages.md), um anzuzeigen, ob die Anweisung zum Starten bzw. Beenden erfolgreich übermittelt wurde.  Sie können in der Ausgabe nach einer bestimmten Zeichenfolge suchen, um das Ergebnis für jedes Runbook zu ermitteln.  In der folgenden Tabelle sind die möglichen ausgegebenen Zeichenfolgen aufgeführt.
 
 | Runbook | Bedingung | Nachricht |
-|:---|:---|:---|
-| Start-AzureVMs | Virtueller Computer wird bereits ausgeführt  | MyVM wird bereits ausgeführt |
-| Start-AzureVMs | Startanforderung für virtuellen Computer wurde übermittelt | MyVM wurde gestartet |
-| Start-AzureVMs | Fehler bei der Startanforderung für den virtuellen Computer  | MyVM konnte nicht gestartet werden |
-| Stop-AzureVMs | Der virtuelle Computer ist bereits beendet  | MyVM wurde bereits beendet |
-| Stop-AzureVMs | Beendigungsanforderung für virtuellen Computer wurde erfolgreich übermittelt | MyVM wurde beendet |
-| Stop-AzureVMs | Fehler bei der Beendigungsanforderung für den virtuellen Computer  | MyVM konnte nicht beendet werden |
+|:--- |:--- |:--- |
+| Start-AzureVMs |Virtueller Computer wird bereits ausgeführt |MyVM wird bereits ausgeführt |
+| Start-AzureVMs |Startanforderung für virtuellen Computer wurde übermittelt |MyVM wurde gestartet |
+| Start-AzureVMs |Fehler bei der Startanforderung für den virtuellen Computer |MyVM konnte nicht gestartet werden |
+| Stop-AzureVMs |Der virtuelle Computer ist bereits beendet |MyVM wurde bereits beendet |
+| Stop-AzureVMs |Beendigungsanforderung für virtuellen Computer wurde erfolgreich übermittelt |MyVM wurde beendet |
+| Stop-AzureVMs |Fehler bei der Beendigungsanforderung für den virtuellen Computer |MyVM konnte nicht beendet werden |
 
 Der folgende Codeausschnitt aus einem Runbook versucht beispielsweise, alle virtuellen Computer mit dem Dienstnamen *MyServiceName*zu starten.  Wenn eine der Startanforderungen einen Fehler verursacht, können Fehleraktionen ausgeführt werden. 
 
@@ -106,15 +99,13 @@ Der folgende Codeausschnitt aus einem Runbook versucht beispielsweise, alle virt
 
 
 ## <a name="detailed-breakdown"></a>Detaillierte Aufschlüsselung
-
 Es folgt eine detaillierte Aufschlüsselung der Runbooks in diesem Szenario.  Sie können diese Informationen verwenden, um die Runbooks anzupassen oder sie als Referenz für die Erstellung Ihrer eigenen Automatisierungsszenarien zu nutzen.
 
 ### <a name="parameters"></a>Parameter
-
     param (
         [Parameter(Mandatory=$false)] 
         [String]  $AzureCredentialAssetName = 'AzureCredential',
-        
+
         [Parameter(Mandatory=$false)]
         [String] $AzureSubscriptionIdAssetName = 'AzureSubscriptionId',
 
@@ -125,14 +116,12 @@ Es folgt eine detaillierte Aufschlüsselung der Runbooks in diesem Szenario.  Si
 Der Workflow startet durch Abrufen der Werte für die [Eingabeparameter](#using-the-scenario).  Wenn die Assetnamen nicht bereitgestellt werden, werden Standardnamen verwendet.
 
 ### <a name="output"></a>Ausgabe
-
     # Returns strings with status messages
     [OutputType([String])]
 
 Diese Zeile deklariert, dass es sich bei der Ausgabe des Runbooks um eine Zeichenfolge handelt.  Dies ist nicht erforderlich, wird jedoch für den Fall empfohlen, dass das Runbook als [untergeordnetes Runbook](automation-child-runbooks.md) verwendet wird. So wird einem übergeordneten Runbook mitgeteilt, welcher Ausgabetyp zu erwarten ist.
 
 ### <a name="authentication"></a>Authentifizierung
-
     # Connect to Azure and select the subscription to work against
     $Cred = Get-AutomationPSCredential -Name $AzureCredentialAssetName
     $null = Add-AzureAccount -Credential $Cred -ErrorAction Stop
@@ -145,7 +134,6 @@ Zunächst verwenden wir **Get-AutomationPSCredential** , um das Asset abzurufen,
 Das Variablenasset mit der Abonnement-ID wird dann mit **Get-AutomationVariable** abgerufen, und das Abonnement wird mit **Select-AzureSubscription** festgelegt.
 
 ### <a name="get-vms"></a>VMs abrufen
-
     # If there is a specific cloud service, then get all VMs in the service,
     # otherwise get all VMs in the subscription.
     if ($ServiceName) 
@@ -160,7 +148,6 @@ Das Variablenasset mit der Abonnement-ID wird dann mit **Get-AutomationVariable*
 **Get-AzureVM** werden die virtuellen Computer abgerufen, mit denen das Runbook arbeiten soll.  Wenn ein Wert in der Eingabevariablen **ServiceName** bereitgestellt wird, werden nur die virtuellen Computer mit dem jeweiligen Dienstnamen abgerufen.  Wenn **ServiceName** leer ist, werden alle virtuellen Computer abgerufen.
 
 ### <a name="start/stop-virtual-machines-and-send-output"></a>Starten/Beenden virtueller Computer und Senden der Ausgabe
-
     # Start each of the stopped VMs
     foreach ($VM in $VMs)
     {
@@ -189,13 +176,9 @@ Das Variablenasset mit der Abonnement-ID wird dann mit **Get-AutomationVariable*
 
 In den nächsten Zeilen werden die einzelnen virtuellen Computer schrittweise durchlaufen.  Zuerst wird **PowerState** des virtuellen Computers überprüft, um festzustellen, ob er je nach Runbook bereits ausgeführt wird oder beendet wurde.  Wenn er sich bereits im Zielstatus befindet, wird eine Meldung an die Ausgabe gesendet und das Runbook beendet.  Andernfalls wird mit **Start-AzureVM** oder **Stop-AzureVM** versucht, den virtuellen Computer zu starten oder zu beenden. Das Ergebnis der Anforderung wird in einer Variablen gespeichert.  Eine Meldung wird dann zur Ausgabe gesendet, die angibt, ob die Anforderung zum Starten oder Beenden erfolgreich gesendet wurde.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Weitere Informationen zum Arbeiten mit untergeordneten Runbooks finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md) 
-- Weitere Informationen zu ausgehenden Nachrichten während der Runbookausführung und Protokollierung zur Unterstützung der Problembehandlung finden Sie unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
-
-
+* Weitere Informationen zum Arbeiten mit untergeordneten Runbooks finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md) 
+* Weitere Informationen zu ausgehenden Nachrichten während der Runbookausführung und Protokollierung zur Unterstützung der Problembehandlung finden Sie unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
 
 <!--HONumber=Oct16_HO2-->
 

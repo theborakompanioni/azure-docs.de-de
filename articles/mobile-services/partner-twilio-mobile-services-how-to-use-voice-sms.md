@@ -1,24 +1,22 @@
-<properties
-	pageTitle="Verwenden von Twilio für Telefonie- und SMS-Funktionen | Microsoft Azure"
-	description="Erfahren Sie, wie Sie häufige Aufgaben über die Twilio-API mit Azure Mobile Services durchführen."
-	services="mobile-services"
-	documentationCenter=""
-	authors="devinrader"
-	manager="dwrede"
-	editor=""/>
+---
+title: Verwenden von Twilio für Telefonie- und SMS-Funktionen | Microsoft Docs
+description: Erfahren Sie, wie Sie häufige Aufgaben über die Twilio-API mit Azure Mobile Services durchführen.
+services: mobile-services
+documentationcenter: ''
+author: devinrader
+manager: dwrede
+editor: ''
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="glenga"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: multiple
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: glenga
 
-
+---
 # Verwenden von Twilio für Telefonie- und SMS-Funktionen aus Mobile Services
-
 Dieser Artikel beschreibt gängige Szenarien für die Verwendung der Twilio-API für Azure Mobile Services. Dieses Lernprogramm beschreibt die Erstellung benutzerdefinierter API-Skripts zur Verwendung der Twilio-API, um Telefonanrufe auszuführen und SMS-Nachrichten zu verschicken.
 
 ## <a id="WhatIs"></a>Was ist Twilio?
@@ -27,7 +25,7 @@ Twilio ist ein leistungsstarkes und zukunftsorientiertes Tool für die Unternehm
 **Twilio Voice** ermöglicht Anwendungen das Tätigen und Entgegennehmen von Telefonanrufen. **Twilio SMS** ermöglicht Anwendungen das Senden und Empfangen von SMS-Nachrichten. **Twilio Client** ermöglicht Ihnen das Tätigen von VoIP-Anrufen von jedem Telefon, Tablet-PC oder Browser und unterstützt WebRTC.
 
 ## <a id="Pricing"></a>Twilio-Preise und -Sonderangebote
-Azure-Kunden erhalten ein [Sonderangebot][special_offer]\: eine Twilio-Gutschrift in Höhe von 10 US-Dollar bei einem Upgrade Ihres Twilio-Kontos. Diese Twilio-Gutschrift kann für jede beliebige Twilio-Nutzung ausgegeben werden (eine Gutschrift von 10 US-Dollar reicht für den Versand von 1.000 SMS-Nachrichten oder für bis zu 1.000 eingehende Telefonminuten, abhängig vom Standort der Telefonnummer und dem Nachrichten- oder Anrufziel). Lösen Sie diese Twilio-Gutschrift ein, und legen Sie los auf [ahoy.twilio.com/azure][special_offer].
+Azure-Kunden erhalten ein [Sonderangebot][special_offer]\: eine Twilio-Gutschrift in Höhe von 10 US-Dollar bei einem Upgrade Ihres Twilio-Kontos. Diese Twilio-Gutschrift kann für jede beliebige Twilio-Nutzung ausgegeben werden (eine Gutschrift von 10 US-Dollar reicht für den Versand von 1.000 SMS-Nachrichten oder für bis zu 1.000 eingehende Telefonminuten, abhängig vom Standort der Telefonnummer und dem Nachrichten- oder Anrufziel). Lösen Sie diese Twilio-Gutschrift ein, und legen Sie los auf [ahoy.twilio.com/azure][special_offer].
 
 Twilio ist ein Pay-as-you-go-Dienst, also vertragsungebunden. Es fallen keine Einrichtungsgebühren an, und Sie können Ihr Konto jederzeit schließen. Weitere Informationen finden Sie unter [Twilio-Preise][twilio_pricing].
 
@@ -80,36 +78,36 @@ Twilio stellt eine Node.js-Bibliothek zur Verfügung, die verschiedene Aspekte v
 Sie müssen das npm-Modul von Mobile Services verwenden, um die Twilio Node.js-Bibliothek in Ihrem Mobile Service nutzen zu können. Legen Sie Ihre Skripts dazu in einer Quellcodeverwaltung ab.
 
 1. Schließen Sie das Lernprogramm [Speichern von Skripts in der Quellcodeverwaltung](mobile-services-store-scripts-source-control.md) ab. Dieses Lernprogramm führt Sie durch die Einrichtung der Quellcodeverwaltung für Mobile Services und das Speichern Ihrer Serverskripts in einem Git-Repository.
-
 2. Nachdem Sie die Quellcodeverwaltung für Ihren mobilen Dienst eingerichtet haben, öffnen Sie das Repository auf dem lokalen Computer, navigieren Sie zum Unterordner `\services`, öffnen Sie die Datei "package.json" in einem Text-Editor, und fügen Sie dem **dependencies**-Objekt das folgende Feld hinzu:
-
-		"twilio": "~1.7.0"
-
+   
+        "twilio": "~1.7.0"
 3. Nachdem Sie den Twilio-Paketverweis dem **dependencies**-Objekt hinzugefügt haben, sollte die Datei "package.json" folgendermaßen aussehen:
-
-		{
-		  "name": "todolist",
-		  "version": "1.0.0",
-		  "description": "todolist - hosted on Azure Mobile Services",
-		  "main": "server.js",
-		  "engines": {
-		    "node": ">= 0.8.19"
-		  },
-		  "dependencies": {
-			"twilio": "~1.7.0"
-		  },
-		  "devDependencies": {},
-		  "scripts": {},
-		  "author": "unknown",
-		  "licenses": [],
-		  "keywords":[]
-		}
-
-	>[AZURE.NOTE]Die Abhängigkeit für Twilio sollte als `"twilio": "~1.7.0"` mit einer Tilde (~) hinzugefügt werden. Verweise mit Caret-Zeichen (^) werden nicht unterstützt.
-
+   
+        {
+          "name": "todolist",
+          "version": "1.0.0",
+          "description": "todolist - hosted on Azure Mobile Services",
+          "main": "server.js",
+          "engines": {
+            "node": ">= 0.8.19"
+          },
+          "dependencies": {
+            "twilio": "~1.7.0"
+          },
+          "devDependencies": {},
+          "scripts": {},
+          "author": "unknown",
+          "licenses": [],
+          "keywords":[]
+        }
+   
+   > [!NOTE]
+   > Die Abhängigkeit für Twilio sollte als `"twilio": "~1.7.0"` mit einer Tilde (~) hinzugefügt werden. Verweise mit Caret-Zeichen (^) werden nicht unterstützt.
+   > 
+   > 
 4. Bestätigen Sie diese Dateiaktualisierung, und übertragen Sie die Aktualisierung per Pushvorgang auf den mobilen Dienst.
-
-	Durch die Aktualisierung der Datei "package.json" wird der mobile Dienst neu gestartet.
+   
+    Durch die Aktualisierung der Datei "package.json" wird der mobile Dienst neu gestartet.
 
 Der mobile Dienst installiert und lädt nun das Twilio-Paket, sodass Sie die Twilio-Bibliothek in Ihrer benutzerdefinierten API und in Tabellenskripts verwenden und Verweise zu ihr erstellen können.
 
@@ -167,10 +165,12 @@ Das folgende Beispiel zeigt, wie Sie eine SMS-Nachricht mit der **sendSms**-Funk
 
 
 ## <a id="howto_provide_twiml_responses"></a>Bereitstellen von TwiML-Antworten von der eigenen Website
+Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert – z. B. über die client.InitiateOutboundCall-Methode – sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das Beispiel unter "Tätigen eines ausgehenden Anrufs" verwendet die von Twilio bereitgestellte URL http://twimlets.com/message für die Rückgabe der Antwort.
 
-Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert – z. B. über die client.InitiateOutboundCall-Methode – sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das Beispiel unter "Tätigen eines ausgehenden Anrufs" verwendet die von Twilio bereitgestellte URL http://twimlets.com/message für die Rückgabe der Antwort.
-
-> [AZURE.NOTE] TwiML wurde für die Verwendung durch Webdienste konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie z. B. auf [twimlet\_message\_url](http://twimlets.com/message), um ein leeres &lt;Response&gt;-Element anzuzeigen, oder klicken Sie auf [twimlet\_message\_url\_hello\_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World), um ein &lt;Response&gt;-Element mit einem &lt;Say&gt;-Element anzuzeigen.
+> [!NOTE]
+> TwiML wurde für die Verwendung durch Webdienste konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie z. B. auf [twimlet\_message\_url](http://twimlets.com/message), um ein leeres &lt;Response&gt;-Element anzuzeigen, oder klicken Sie auf [twimlet\_message\_url\_hello\_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World), um ein &lt;Response&gt;-Element mit einem &lt;Say&gt;-Element anzuzeigen.
+> 
+> 
 
 Anstelle der von Twilio bereitgestellten URL können Sie auch Ihre eigene URL-Website für die Rückgabe von HTTP-Antworten erstellen. Sie können die Website mit jeder Sprache erstellen, die HTTP-Antworten zurückgibt. In diesem Thema wird davon ausgegangen, dass Sie die URL von einem generischen ASP.NET-Handler hosten.
 
@@ -207,8 +207,7 @@ Nachdem Sie die URL zur Bereitstellung von TwiML-Antworten eingerichtet haben, k
         });
     };
 
-[AZURE.INCLUDE [twilio-additional-services-and-next-steps](../../includes/twilio-additional-services-and-next-steps.md)]
-
+[!INCLUDE [twilio-additional-services-and-next-steps](../../includes/twilio-additional-services-and-next-steps.md)]
 
 [twilio_rest_making_calls]: http://www.twilio.com/docs/api/rest/making-calls
 

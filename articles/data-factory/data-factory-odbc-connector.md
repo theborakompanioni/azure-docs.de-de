@@ -1,27 +1,25 @@
-<properties 
-    pageTitle="Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory | Azure Data Factory" 
-    description="Erfahren Sie, wie Sie Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory verschieben." 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="linda33wj" 
-    manager="jhubbard" 
-    editor="monicar"/>
+---
+title: Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory | Microsoft Docs
+description: Erfahren Sie, wie Sie Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory verschieben.
+services: data-factory
+documentationcenter: ''
+author: linda33wj
+manager: jhubbard
+editor: monicar
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/12/2016" 
-    ms.author="jingwang"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/12/2016
+ms.author: jingwang
 
-
+---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Factory verwenden können, um Daten aus einem lokalen ODBC-Datenspeicher in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem lokalen ODBC-Datenspeicher in andere Datenspeicher. Verschieben von Daten aus anderen Datenspeichern in einen lokalen ODBC-Datenspeicher wird nicht unterstützt.
-
 
 ## <a name="enabling-connectivity"></a>Herstellen der Verbindung
 Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit lokalen ODBC-Datenquellen über das Datenverwaltungsgateway. Im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) erfahren mehr zum Datenverwaltungsgateway und erhalten eine schrittweise Anleitung zum Einrichten des Gateways. Nutzen Sie das Gateway, um eine Verbindung mit einem ODBC-Datenspeicher herzustellen, auch wenn der Datenspeicher auf einer Azure IaaS-VM gehostet wird. 
@@ -30,25 +28,26 @@ Sie können das Gateway auf dem gleichen lokalen Computer oder der Azure-VM als 
 
 Neben dem Datenverwaltungsgateway müssen Sie auch den ODBC-Treiber für den Datenspeicher auf dem Gatewaycomputer installieren. 
 
-> [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen. 
+> [!NOTE]
+> Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen. 
+> 
+> 
 
 ## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
 Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten aus einer ODBC-Quelle kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
 
 Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer ODBC-Quelle in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
-
-## <a name="sample:-copy-data-from-odbc-data-store-to-azure-blob"></a>Beispiel: Kopieren von Daten aus dem ODBC-Datenspeicher in ein Azure-Blob 
-
+## <a name="sample:-copy-data-from-odbc-data-store-to-azure-blob"></a>Beispiel: Kopieren von Daten aus dem ODBC-Datenspeicher in ein Azure-Blob
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einem ODBC-Datenspeicher in Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.  
- 
+
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
-1.  Einen verknüpften Dienst des Typs [OnPremisesOdbc](#odbc-linked-service-properties)
-2.  Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
-3.  Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [RelationalTable](#odbc-dataset-type-properties)
-4.  Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-4.  Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](#odbc-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
+1. Einen verknüpften Dienst des Typs [OnPremisesOdbc](#odbc-linked-service-properties)
+2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
+3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [RelationalTable](#odbc-dataset-type-properties)
+4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
+5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](#odbc-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
 Das Beispiel kopiert stündlich Daten aus einem Abfrageergebnis in einem ODBC-Datenspeicher in ein Blob. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen. 
 
@@ -89,7 +88,7 @@ Als Erstes richten Sie das Datenverwaltungsgateway ein. Anweisungen dazu finden 
 Im Beispiel wird vorausgesetzt, dass Sie die Tabelle „MyTable“ in einer ODBC-Datenbank erstellt haben, die für Zeitreihendaten eine Spalte namens „timestampcolumn“ enthält.
 
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
-    
+
     {
         "name": "ODBCDataSet",
         "properties": {
@@ -177,7 +176,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 **Pipeline mit Kopieraktivität**
 
 Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **RelationalSource** und der Typ **sink** auf **BlobSink** festgelegt. Die für die **query** -Eigenschaft angegebene SQL-Abfrage wählt die aus der letzten Stunde zu kopierenden Daten aus.
-    
+
     {
         "name": "CopyODBCToBlob",
         "properties": {
@@ -225,24 +224,21 @@ Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der Ein- und
 
 
 ## <a name="odbc-linked-service-properties"></a>Eigenschaften des mit ODBC verknüpften Diensts
-
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit ODBC verknüpften Dienst spezifisch sind.
 
 | Eigenschaft | Beschreibung | Erforderlich |
-| -------- | ----------- | -------- | 
-| type | Die type-Eigenschaft muss auf **OnPremisesOdbc** | Ja |
-| connectionString | Der nicht für den Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge sowie optional verschlüsselte Anmeldeinformationen. Siehe Beispiele in den folgenden Abschnitten. | Ja
-| credential | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. | Nein
-| authenticationType | Typ der Authentifizierung für die Verbindung mit dem ODBC-Datenspeicher. Mögliche Werte: „Anonymous“ und „Basic“. | Ja | 
-| username | Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. | Nein | 
-| password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. | Nein | 
-| gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem ODBC-Datenspeicher verwenden soll. | Ja |
-
+| --- | --- | --- |
+| type |Die type-Eigenschaft muss auf **OnPremisesOdbc** |Ja |
+| connectionString |Der nicht für den Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge sowie optional verschlüsselte Anmeldeinformationen. Siehe Beispiele in den folgenden Abschnitten. |Ja |
+| credential |Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. |Nein |
+| authenticationType |Typ der Authentifizierung für die Verbindung mit dem ODBC-Datenspeicher. Mögliche Werte: „Anonymous“ und „Basic“. |Ja |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Nein |
+| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
+| gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem ODBC-Datenspeicher verwenden soll. |Ja |
 
 Ausführliche Informationen zum Festlegen von Anmeldeinformationen für einen lokalen ODBC-Datenspeicher finden Sie unter [Festlegen von Anmeldeinformationen und Sicherheit](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security) .
 
 ### <a name="using-basic-authentication"></a>Verwenden der Standardauthentifizierung
-
     {
         "name": "odbc",
         "properties":
@@ -278,7 +274,6 @@ Sie können die Anmeldeinformationen mithilfe des Cmdlets [New-AzureRMDataFactor
 
 
 ### <a name="using-anonymous-authentication"></a>Verwenden der anonymen Authentifizierung
-
     {
         "name": "odbc",
         "properties":
@@ -297,17 +292,15 @@ Sie können die Anmeldeinformationen mithilfe des Cmdlets [New-AzureRMDataFactor
 
 
 ## <a name="odbc-dataset-type-properties"></a>Eigenschaften des Dataset-Typs „ODBC“
-
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **RelationalTable** (mit ODBC-Dataset) hat folgende Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
-| -------- | ----------- | -------- |
-| tableName | Der Name der Tabelle im ODBC-Datenspeicher. | Ja | 
+| --- | --- | --- |
+| tableName |Der Name der Tabelle im ODBC-Datenspeicher. |Ja |
 
 ## <a name="odbc-copy-activity-type-properties"></a>Eigenschaften von ODBC-Kopieraktivitätstyp
-
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinien sind für alle Arten von Aktivitäten verfügbar. 
 
 Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
@@ -315,13 +308,12 @@ Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je 
 Wenn bei der Kopieraktivität eine Quelle vom Typ **RelationalSource** (mit ODBC) verwendet wird, sind im Abschnitt typeProperties folgende Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
-| -------- | ----------- | -------------- | -------- |
-| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. | Ja | 
+| --- | --- | --- | --- |
+| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Ja |
 
-[AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-odbc"></a>Typzuordnung für ODBC
-
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
@@ -329,10 +321,9 @@ Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activ
 
 Beim Verschieben von Daten aus ODBC-Datenspeichern werden die ODBC-Datentypen den .NET-Typen zugeordnet, wie im Thema [ODBC-Datentypmappings](https://msdn.microsoft.com/library/cc668763.aspx) beschrieben.
 
+[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-[AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
-
-[AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+[!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## <a name="ge-historian-store"></a>GE Historian-Speicher
 Sie können einen über ODBC verknüpften Dienst erstellen, um einen [GE Historian](http://www.geautomation.com/products/proficy-historian) -Datenspeicher (vormals „GE Proficy Historian“) mit einer Azure Data Factory zu verknüpfen, wie im folgenden Beispiel zu sehen: 
@@ -363,20 +354,17 @@ Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Ve
 Um Verbindungsprobleme zu behandeln, verwenden Sie die Registerkarte **Diagnose** im **Datenverwaltungsgateway-Konfigurations-Manager**. 
 
 1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**. Sie können entweder „C:\Programme\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe“ direkt ausführen oder nach **Gateway** suchen, um einen Link zur Anwendung **Microsoft-Datenverwaltungsgateway** zu finden, wie in der folgenden Abbildung dargestellt: 
-
+   
     ![Gateway suchen](./media/data-factory-odbc-connector/search-gateway.png)
 2. Wechseln Sie zur Registerkarte **Diagnose** .
-
+   
     ![Gatewaydiagnose](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png) 
 3. Wählen Sie den **Typ** von Datenspeicher (verknüpfter Dienst) aus. 
 4. Geben Sie die **Authentifizierung** an, und geben Sie **Anmeldeinformationen** oder die **Verbindungszeichenfolge** ein, um eine Verbindung mit dem Datenspeicher herzustellen. 
 5. Klicken Sie auf **Verbindung testen** , um die Verbindung mit dem Datenspeicher zu testen. 
 
-## <a name="performance-and-tuning"></a>Leistung und Optimierung  
+## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
-
 
 <!--HONumber=Oct16_HO2-->
 

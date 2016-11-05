@@ -1,34 +1,31 @@
-<properties
-   pageTitle="SQL Data Warehouse-Referenzthemen | Microsoft Azure"
-   description="Links zu Referenzinhalten für SQL Data Warehouse."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="barbkess"
-   manager="jhubbard"
-   editor=""/>
+---
+title: SQL Data Warehouse-Referenzthemen | Microsoft Docs
+description: Links zu Referenzinhalten für SQL Data Warehouse.
+services: sql-data-warehouse
+documentationcenter: NA
+author: barbkess
+manager: jhubbard
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/08/2016"
-   ms.author="barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/08/2016
+ms.author: barbkess;sonyama
 
+---
 # Referenzthemen für SQL Data Warehouse
-
 Diese Artikel enthalten Referenzinformationen für SQL Data Warehouse.
 
-- [Transact-SQL-Sprachelemente][]
-- [Transact-SQL-Anweisungen][]
-- [Transact-SQL-Systemsichten][]
-- [PowerShell-Cmdlets][]
-
-
+* [Transact-SQL-Sprachelemente][Transact-SQL-Sprachelemente]
+* [Transact-SQL-Anweisungen][Transact-SQL-Anweisungen]
+* [Transact-SQL-Systemsichten][Transact-SQL-Systemsichten]
+* [PowerShell-Cmdlets][PowerShell-Cmdlets]
 
 ## Nächste Schritte
-Weitere Informationen zur Entwicklung finden Sie unter [Entwicklungsübersicht][].
+Weitere Informationen zur Entwicklung finden Sie unter [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
 

@@ -1,34 +1,34 @@
-<properties 
-    pageTitle="So funktioniert Azure App Service" 
-    description="Erfahren Sie, wie App Service funktioniert." 
-    keywords="app service, azure app service, scale, scalable, app service plan, app service cost"
-    services="app-service" 
-    documentationCenter="" 
-    authors="yochay" 
-    manager="wpickett" 
-    editor=""/>
+---
+title: So funktioniert Azure App Service
+description: Erfahren Sie, wie App Service funktioniert.
+keywords: app service, azure app service, scale, scalable, app service plan, app service cost
+services: app-service
+documentationcenter: ''
+author: yochay
+manager: wpickett
+editor: ''
 
-<tags 
-    ms.service="app-service" 
-    ms.workload="na" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="hero-article" 
-    ms.date="02/10/2016" 
-    ms.author="yochay"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 02/10/2016
+ms.author: yochay
 
-
+---
 # <a name="how-app-service-works"></a>So funktioniert App Service
-
 Azure App Service ist ein Clouddienst, der entwickelt wurde, um die praktischen Probleme zu lösen, mit denen Entwickler heutzutage konfrontiert werden. App Service zielt darauf ab, einzigartige Entwicklerproduktivität bereitzustellen ohne Abstriche beim Bedürfnis, die Anwendungen auf Cloud-Niveau bereitstellen zu wollen, machen zu müssen. App Service bietet auch Funktionen und Frameworks zum Erstellen von Branchenanwendungen. Gleichzeitig werden Entwickler durch die mögliche Verwendung der beliebtesten Entwicklungssprachen (.NET, Java, PHP, Node.JS und Python) unterstützt.
 App Service ermöglicht Entwicklern Folgendes:
 
 * Erstellen von hochgradig skalierbaren Web-Apps
-* Schnelle Erstellung von Mobile App-Back-Ends mit vielen benutzerfreundlichen mobilen Funktionen, wie z. B. Daten Back-Ends, Benutzerauthentifizierung und Push-Benachrichtigungen mit Mobile Apps. 
+* Schnelle Erstellung von Mobile App-Back-Ends mit vielen benutzerfreundlichen mobilen Funktionen, wie z. B. Daten Back-Ends, Benutzerauthentifizierung und Push-Benachrichtigungen mit Mobile Apps. 
 * Implementieren, Bereitstellen und Veröffentlichen von APIs mit API-Apps.
 * Verknüpfen von Geschäftsanwendungen in Workflows und Transformieren von Daten mit Logik-Apps.
 
->[AZURE.INCLUDE [app-service-linux](../../includes/app-service-linux.md)] 
+> [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
+> 
+> 
 
 Alle App-Typen basieren auf der skalierbaren und flexiblen Web App-Plattform, wodurch Entwicklern über den kompletten Lebenszyklus einer App eine Erfahrung ermöglicht wird – vom App-Design bis hin zur App-Wartung. Die Lebenszyklus-Funktionen ermöglichen Folgendes:
 
@@ -38,12 +38,10 @@ Alle App-Typen basieren auf der skalierbaren und flexiblen Web App-Plattform, wo
 * Ausführen von asynchronen Aufgaben und Batchaufträgen – Führen Sie Code in einem Hintergrundprozess aus, oder aktivieren Sie Ihren Code auf Grundlage von Ereignissen (z.B. Nachrichten in einer Azure-Speicherwarteschlange) und zu festgelegten Zeiten (CRON).
 * Skalieren der App – Verwenden Sie eine von vielen Optionen, um Ihren Dienst basierend auf Datenverkehr und Ressourcennutzung automatisch horizontal und vertikal zu skalieren. Konfigurieren Sie private Umgebungen, die für Ihre Apps dediziert sind.   
 * Verwalten der App – Nutzen Sie viele der Debug- und Diagnosefunktionen, um Problemen einen Schritt voraus zu sein und sie effizient zu lösen, entweder in Echtzeit (mit Funktionen wie Selbstkonfiguration und Live-Debuggen) oder anschließend durch Analyse der Protokolle und Speicherabbilder.
- 
+
 Zusammengefasst ermöglichen die App Service-Funktionen Entwicklern, sich auf ihren Code zu konzentrieren und schnell einen stabilen, hochgradig skalierbaren Produktionszustand zu erreichen. Mit den API und Logik-App-Funktionen können Entwickler reale Anwendung für Unternehmen erstellen, die Barrieren zwischen Business-Lösungen und lokalen Lösungen zur Cloudintegrationen überbrücken.  
 
-[AZURE.INCLUDE [app-service-blueprint-how-app-service-works](../../includes/app-service-blueprint-how-app-service-works.md)]
-
-
+[!INCLUDE [app-service-blueprint-how-app-service-works](../../includes/app-service-blueprint-how-app-service-works.md)]
 
 <!--HONumber=Oct16_HO2-->
 

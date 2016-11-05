@@ -1,28 +1,25 @@
-<properties 
-	pageTitle="Anmelden über eine alternative Methode mit Azure Multi-Factor Authentication"
-	description="Auf dieser Seite wird beschrieben, wie ein Benutzer sich über eine alternative Methode mit Azure MFA anmelden kann."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femilao"
-	editor="curtland"/>
+---
+title: Anmelden über eine alternative Methode mit Azure Multi-Factor Authentication
+description: Auf dieser Seite wird beschrieben, wie ein Benutzer sich über eine alternative Methode mit Azure MFA anmelden kann.
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femilao
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Anmelden über eine alternative Methode mit Azure Multi-Factor Authentication
-
-
 Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.
 
 ## So melden Sie sich mit einer alternativen Methode an
-
 <ol>
 
 <li>Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office&#160;365 an.</li>

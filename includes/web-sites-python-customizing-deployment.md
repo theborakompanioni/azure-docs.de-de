@@ -1,14 +1,14 @@
 Azure bestimmt, dass Ihre Anwendung Python verwendet, **wenn beide der folgenden Bedingungen zutreffen**:
 
-- requirements.txt-Datei im Stammordner
-- eine .py-Datei im Stammordner ODER eine runtime.txt-Datei, die Python angibt
+* requirements.txt-Datei im Stammordner
+* eine .py-Datei im Stammordner ODER eine runtime.txt-Datei, die Python angibt
 
 Wenn dies der Fall ist, wird ein Python-Bereitstellungsskript verwendet, das die standardmäßige Synchronisierung von Dateien sowie zusätzliche Python-Vorgänge ausführt, beispielsweise:
 
-- Automatische Verwaltung der virtuellen Umgebung
-- Installation von in requirements.txt aufgelisteten Paketen mit Pip
-- Die Erstellung der entsprechenden web.config basierend auf der ausgewählten Python-Version
-- Sammeln von statischen Dateien für Django-Anwendungen
+* Automatische Verwaltung der virtuellen Umgebung
+* Installation von in requirements.txt aufgelisteten Paketen mit Pip
+* Die Erstellung der entsprechenden web.config basierend auf der ausgewählten Python-Version
+* Sammeln von statischen Dateien für Django-Anwendungen
 
 Sie können bestimmte Aspekte der Standardbereitstellungsschritte steuern, ohne das Skript anzupassen.
 
@@ -21,7 +21,7 @@ Für mehr Kontrolle über die Bereitstellung können Sie das Standardskript für
     \.deployment
     \deploy.cmd
 
-Sie können die [Azure-Befehlszeilenschnittstelle][] verwenden, um die Dateien zu erstellen. Verwenden Sie diesen Befehl vom Projektordner aus:
+Sie können die [Azure-Befehlszeilenschnittstelle][Azure-Befehlszeilenschnittstelle] verwenden, um die Dateien zu erstellen. Verwenden Sie diesen Befehl vom Projektordner aus:
 
     azure site deploymentscript --python
 

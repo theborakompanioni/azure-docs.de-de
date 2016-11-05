@@ -1,31 +1,28 @@
-<properties
- pageTitle="Logik-App-Vorlagen | Microsoft Azure"
- description="Erfahren Sie, wie Sie zuvor erstellte Logik-App-Vorlagen verwenden, die Ihnen beim Einstieg helfen."
- authors="kevinlam1"
- manager="dwrede"
- editor=""
- services="app-service\logic"
- documentationCenter=""/>
+---
+title: Logik-App-Vorlagen | Microsoft Docs
+description: Erfahren Sie, wie Sie zuvor erstellte Logik-App-Vorlagen verwenden, die Ihnen beim Einstieg helfen.
+author: kevinlam1
+manager: dwrede
+editor: ''
+services: app-service\logic
+documentationcenter: ''
 
-<tags
-	ms.service="app-service-logic"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2016"
-	ms.author="klam"/>
+ms.service: app-service-logic
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2016
+ms.author: klam
 
+---
 # Logik-App-Vorlagen
-
 ## Verwenden von Logik-App-Vorlagen
-
 Eine Logik-App-Vorlage ist eine vorgefertigte Logik-App, mit der Sie schnell mit dem Erstellen Ihrer eigenen Workflows beginnen können.
 
 Diese Vorlagen eignen sich gut, um verschiedene Muster kennenzulernen, die mit Logik-Apps erstellt werden können. Sie können diese Vorlagen unverändert nutzen oder Ihrem Szenario anpassen.
 
 ## Übersicht über die verfügbaren Vorlagen
-
 Auf der Logik-App-Plattform wurden bereits zahlreiche Vorlagen veröffentlicht. Einige Beispielkategorien sowie die darin aufgeführten Connectorarten sind nachfolgend aufgeführt.
 
 ### Enterprise Cloud-Vorlagen
@@ -43,8 +40,7 @@ Vorlagen zum Steigern der persönlichen Produktivität enthalten Vorlagen, mit d
 ### Vorlagen für die Cloud für Consumer
 Einfache Vorlagen für die Integration in Social Media Services wie Twitter, Slack und E-Mail, mit denen Sie Marketing-Initiativen in sozialen Medien verstärken können. Dazu zählen auch Vorlagen zum Cloudkopieren, mit denen Sie die Produktivität steigern, da Sie die Zeit für wiederkehrende Aufgaben sparen.
 
-## Erstellen einer Logik-App mithilfe einer Vorlage 
-
+## Erstellen einer Logik-App mithilfe einer Vorlage
 Um mit der Verwendung von Logik-App-Vorlagen zu beginnen, wechseln Sie zum Logik-App-Designer. Wenn Sie den Designer über eine vorhandene Logik-App öffnen, wird die Logik-App automatisch in Ihrer Designeransicht geladen. Wenn Sie jedoch eine neue Logik-App erstellen, sehen Sie den folgenden Bildschirm. ![](../../includes/media/app-service-logic-templates/template7.png)
 
 In diesem Bildschirm können Sie wahlweise mit einer leeren Logik-App oder einer vorgefertigten Vorlage beginnen. Wenn Sie eine der Vorlagen auswählen, erhalten Sie weitere Informationen darüber. In diesem Beispiel verwenden wir die Vorlage *When a new file is created in Dropbox, copy it to OneDrive* (Wenn eine neue Datei in Dropbox erstellt wird, in OneDrive kopieren). ![](../../includes/media/app-service-logic-templates/template2.png)
@@ -58,7 +54,6 @@ Im obigen Beispiel sind (wie bei vielen Vorlagen) einige der erforderlichen Eige
 Wenn Sie in die Vorlagenansicht zurückkehren möchten, wählen Sie die Schaltfläche *Vorlagen* in der oberen Navigationsleiste. Wenn Sie zur Vorlagenansicht zurückwechseln, werden nicht gespeicherte Fortschritte verworfen. Bevor Sie zur Vorlagenansicht zurückwechseln, werden Sie mit einer Meldung davor gewarnt. ![](../../includes/media/app-service-logic-templates/template5.png)
 
 ## Bereitstellen einer Logik-App aus einer Vorlage
-
 Wenn Sie Ihre Vorlage geladen und alle gewünschten Änderungen vorgenommen haben, wählen Sie die Schaltfläche „Speichern“ in der oberen linken Ecke. So wird Ihre Logik-App gespeichert veröffentlicht. ![](../../includes/media/app-service-logic-templates/template6.png)
 
 Wenn Sie weitere Informationen über das Hinzufügen weiterer Schritte zu einer vorhandenen Logik-App-Vorlage oder das Bearbeiten im Allgemeinen wünschen, können Sie unter [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) mehr erfahren.

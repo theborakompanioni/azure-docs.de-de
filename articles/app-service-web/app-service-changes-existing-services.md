@@ -1,38 +1,35 @@
-<properties
-	pageTitle="Azure App Service und seine Auswirkungen auf vorhandene Azure-Dienste"
-	description="Erläutert, wie sich der neue Azure App Service und seine Funktionen auf vorhandene Dienste in Azure auswirken."
-	services="app-service"
-    documentationCenter=""
-	authors="yochay"
-	manager="nirma"
-	editor=""/>
+---
+title: Azure App Service und seine Auswirkungen auf vorhandene Azure-Dienste
+description: Erläutert, wie sich der neue Azure App Service und seine Funktionen auf vorhandene Dienste in Azure auswirken.
+services: app-service
+documentationcenter: ''
+author: yochay
+manager: nirma
+editor: ''
 
-<tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="02/12/2016"
-	ms.author="yochayk"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 02/12/2016
+ms.author: yochayk
 
-
+---
 # Azure App Service und vorhandene Azure-Dienste
-
 Dieser Artikel beschreibt die Änderungen an vorhandenen Azure-Diensten, die im Rahmen der Zusammenfassung verschiedener Azure-Dienste im neuen integrierten Angebot [Azure App Service](https://azure.microsoft.com/services/app-service/) erfolgen.
 
-[AZURE.INCLUDE [app-service-mobile-to-web-and-api](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-mobile-to-web-and-api](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## Übersicht
-
 [Azure App Service](https://azure.microsoft.com/services/app-service/) ist ein neuer, besonderer Clouddienst, der es Entwicklern ermöglicht, Web- und mobile Anwendungen für beliebige Plattformen und Geräte zu entwickeln. App Service ist eine integrierte Lösung für die Optimierung wiederholt ausgeführter Codierungsaufgaben, die Integration in Unternehmens- und SaaS-Systeme und die Automatisierung von Geschäftsprozessen bei gleichzeitiger Erfüllung Ihrer Anforderungen an Sicherheit, Zuverlässigkeit und Skalierbarkeit.
 
 App Service vereint verschiedene vorhandene Azure-Dienste – [Websites](https://azure.microsoft.com/services/websites/), [Mobile Services](https://azure.microsoft.com/services/mobile-services/) und [Biztalk Services](https://azure.microsoft.com/services/biztalk-services/) – zu einem einzelnen kombinierten Dienst, der leistungsfähige neue Funktionen bietet. Mit App Service können Sie die folgenden App-Typen hosten:
 
--   Web-Apps
--   Mobile Apps
--   API-Apps
--   Logik-Apps
+* Web-Apps
+* Mobile Apps
+* API-Apps
+* Logik-Apps
 
 In der folgenden Tabelle wird erläutert, wie vorhandene Azure-Dienste App Service und den verfügbaren App-Typen zugeordnet sind.
 

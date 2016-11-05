@@ -1,24 +1,22 @@
-<properties 
-	pageTitle="Problembehandlung und Fragen zu Application Insights" 
-	description="Ist Ihnen irgendetwas in Visual Studio Application Insights unklar oder funktioniert nicht wie erwartet? Versuchen Sie es hier." 
-	services="application-insights" 
-    documentationCenter=".net"
-	authors="alancameronwills" 
-	manager="douge"/>
+---
+title: Problembehandlung und Fragen zu Application Insights
+description: Ist Ihnen irgendetwas in Visual Studio Application Insights unklar oder funktioniert nicht wie erwartet? Versuchen Sie es hier.
+services: application-insights
+documentationcenter: .net
+author: alancameronwills
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="awills"/>
- 
+ms.service: application-insights
+ms.workload: mobile
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2016
+ms.author: awills
+
+---
 # Fragen – Application Insights für ASP.NET
-
 ## Konfigurationsprobleme
-
 *Ich benötige Hilfe beim Einrichten von Folgendem:*
 
 * [.NET-App](app-insights-asp-net-troubleshoot-no-data.md)
@@ -33,14 +31,10 @@
 * [Einrichten eines ASP.NET-Servers](app-insights-monitor-performance-live-website-now.md)
 * [Einrichten eines Java-Servers](app-insights-java-agent.md)
 
-
 ## Kann ich Application Insights mit ... verwenden?
-
 [Informationen hierzu finden Sie unter "Plattformen"][platforms]
 
-
 ## Ist es kostenlos?
-
 * Ja, wenn Sie sich für den [Tarif](app-insights-pricing.md) "Free" entscheiden. Sie erhalten Zugriff auf die meisten Funktionen sowie ein großzügiges Datenkontingent.
 * Sie müssen Ihre Kreditkartendaten angeben, um sich bei Microsoft Azure registrieren zu können. Es werden jedoch keinerlei Gebühren abgebucht, sofern Sie keinen kostenpflichtigen Azure-Dienst nutzen oder explizit auf einen kostenpflichtigen Tarif aktualisieren.
 * Wenn Ihre App mehr Daten sendet, als in Ihrem Kontingent für den Free-Tarif enthalten sind, wird die Protokollierung eingestellt. In diesem Fall können Sie zu einem kostenpflichtigen Tarif wechseln oder warten, bis das Kontingent am Monatsende zurückgesetzt wird.
@@ -49,76 +43,50 @@
 * Jede Anwendungsressource verfügt über ein eigenes Kontingent, und Sie können den Tarif für jede Ressource unabhängig von den anderen festlegen.
 
 #### Was beinhalten die kostenpflichtigen Tarife?
-
 * Ein größeres [monatliches Datenkontingent](https://azure.microsoft.com/pricing/details/application-insights/).
 * Eine Option zur "Überschreitung", um weiterhin Daten zu sammeln, obwohl das monatliche Kontingent erreicht ist. Wenn Ihre Daten das Kontingent überschreiten, wird Ihnen die Nutzung pro MB berechnet.
 * [Fortlaufender Export](app-insights-export-telemetry.md)
 
-
 ## <a name="q14"></a>Welche Änderungen nimmt Application Insights in meinem Projekt vor?
-
 Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 
-
-+ Fügen Sie folgende Dateien zu Ihrem Projekt hinzu:
-
- + ApplicationInsights.config
- + ai.js
-
-
-+ Diese NuGet-Pakete werden installiert:
-
- -  *Application Insights API* - die Haupt-API
-
- -  *Application Insights API for Web Applications* - zum Senden von Telemetrie vom Server
-
- -  *Application Insights API for JavaScript Applications* - zum Senden von Telemetrie vom Client
-
+* Fügen Sie folgende Dateien zu Ihrem Projekt hinzu:
+  
+  * ApplicationInsights.config
+  * ai.js
+* Diese NuGet-Pakete werden installiert:
+  
+  * *Application Insights API* - die Haupt-API
+  * *Application Insights API for Web Applications* - zum Senden von Telemetrie vom Server
+  * *Application Insights API for JavaScript Applications* - zum Senden von Telemetrie vom Client
+    
     Die Pakete umfassen folgende Assemblys:
-
- - Microsoft.ApplicationInsights
-
- - Microsoft.ApplicationInsights.Platform
-
-+ Fügt Elemente ein in:
-
- - Web.config
-
- - packages.config
-
-+ (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie dies manuell ausführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite "Views/Shared/\_Layout.cshtml" eingefügt.
-
+  * Microsoft.ApplicationInsights
+  * Microsoft.ApplicationInsights.Platform
+* Fügt Elemente ein in:
+  
+  * Web.config
+  * packages.config
+* (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie dies manuell ausführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite "Views/Shared/\_Layout.cshtml" eingefügt.
 
 ## Wie aktualisiere ich von älteren SDK-Versionen?
-
 Informationen hierzu finden Sie in den [Versionshinweisen](app-insights-release-notes.md) für das SDK, das für Ihren Anwendungstyp geeignet ist.
 
-
-
 ## <a name="update"></a>Wie kann ich ändern, an welche Azure-Ressource mein Projekt Daten sendet?
-
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Sie können die Daten an eine vorhandene oder neue Ressource in Azure senden. Der Assistent ändert den Instrumentationsschlüssel in ApplicationInsights.config. Dadurch wird bestimmt, wohin das Server-SDK die Daten sendet. Wenn Sie "Alle aktualisieren" deaktivieren, wird auch der Anzeigeort des Schlüssels auf Ihren Webseiten geändert.
 
-
 #### <a name="data"></a>Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?
-
 Informationen hierzu finden Sie unter [Datenaufbewahrung und Datenschutz][data].
 
 ## Protokollierung
-
 #### <a name="post"></a>Wie zeige ich POST-Daten in der Diagnosesuche an?
-
 POST-Daten werden nicht automatisch protokolliert, Sie können jedoch einen TrackTrace-Aufruf verwenden und die Daten in den Nachrichtenparameter einfügen. Die Größenbegrenzung hierfür ist höher als bei Zeichenfolgeneigenschaften, Sie können jedoch nicht danach filtern.
 
 ## Sicherheit
-
 #### Sind meine Daten im Portal sicher? Wie lange werden sie aufbewahrt?
-
 Informationen hierzu finden Sie unter [Datenaufbewahrung und Datenschutz][data].
 
-
 ## <a name="q17"></a> Habe ich alles in Application Insights aktiviert?
-
 <table border="1">
 <tr><th>Diese Daten sollten angezeigt werden</th><th>So erhalten Sie die Daten</th><th>Deshalb benötigen Sie die Daten</th></tr>
 <tr><td>Verfügbarkeitsdiagramme</td><td><a href="../app-insights-monitor-web-app-availability/">Webtests</a></td><td>Information, ob Ihre Web-App verfügbar ist</td></tr>
@@ -134,13 +102,10 @@ Informationen hierzu finden Sie unter [Datenaufbewahrung und Datenschutz][data].
 
 
 ## Automation
-
 Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md), um Application Insights-Ressourcen zu erstellen und zu aktualisieren.
 
 ## Weitere Antworten
-
 * [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/de-DE/home?forum=ApplicationInsights)
-
 
 <!--Link references-->
 
@@ -149,6 +114,6 @@ Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md), um Appli
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
 
- 
+
 
 <!---HONumber=AcomDC_0824_2016-->

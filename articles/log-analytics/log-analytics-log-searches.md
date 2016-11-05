@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Protokollsuchen in Log Analytics | Microsoft Azure"
-    description="Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung."
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Protokollsuchen in Log Analytics | Microsoft Docs
+description: Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung.
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: banders
 
-
+---
 # <a name="log-searches-in-log-analytics"></a>Protokollsuchen in Log Analytics
-
 Der Kern von Log Analytics ist die Protokollsuchfunktion, die Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung ermöglicht. Lösungen werden auch von der Protokollsuche beim Bereitstellen von Metriken unterstützt, die eine Pivotierung in Bezug auf einen bestimmten Problembereich bieten.
 
 Auf der Seite Search können Sie eine Abfrage erstellen und die Ergebnisse dann bei der Suche anhand von Facetsteuerelementen filtern. Sie können auch erweiterte Abfragen zum Transformieren, Filtern und Berichten für Ihre Ergebnisse erstellen.
@@ -32,11 +30,9 @@ Es geht los mit einfachen und praktischen Beispielen, auf denen dann aufgebaut w
 Nachdem Sie sich mit den Suchtechniken vertraut gemacht haben, können Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md)ansehen.
 
 ## <a name="use-basic-filters"></a>Verwenden einfacher Filter
-
 Als Erstes sollten Sie wissen, dass der erste Teil einer Suchabfrage vor einem senkrechten Strich (Pipe-Zeichen „|“) immer ein *Filter* ist. Sie können sich dies als WHERE-Klausel in TSQL vorstellen: Der Filter bestimmt, *welche* Teilmenge der Daten aus dem Datenspeicher von OMS abgerufen werden soll. Beim Suchen im Datenspeicher geht es größtenteils um die Angabe der Merkmale der Daten, die Sie extrahieren möchten. Daher ist es normal, dass eine Abfrage mit der WHERE-Klausel beginnt.
 
 Die grundlegendsten Filter, die Sie verwenden können, sind *Schlüsselwörter*wie 'Error' oder 'Timeout', oder ein Computername. Diese Typen von einfachen Abfragen geben in der Regel verschiedene Datenformen innerhalb des gleichen Ergebnissatzes zurück. Dies liegt daran, dass Log Analytics unterschiedliche *Arten* von Daten im System enthält.
-
 
 ### <a name="to-conduct-a-simple-search"></a>Durchführen einer einfachen Suche
 1. Klicken Sie im OMS-Portal auf **Protokollsuche**.  
@@ -57,7 +53,7 @@ Wenn also die Type=Perf-Datensätze ein Feld namens „CounterName“ aufweisen,
 Dadurch erhalten Sie nur die Leistungsdaten, bei denen der Name des Leistungsindikators "Prozessorzeit (%)" ist.
 
 ### <a name="to-search-for-processor-time-performance-data"></a>Suche nach Leistungsdaten zur Prozessorzeit
-- Geben Sie im Suchabfragefeld `Type=Perf CounterName="% Processor Time"`
+* Geben Sie im Suchabfragefeld `Type=Perf CounterName="% Processor Time"`
 
 Sie können auch spezifischer sein und **InstanceName=_'Total'** in der Abfrage verwenden, was ein Windows-Leistungsindikator ist. Sie können auch eine Facette und einen weiteren Wert **field:value**auswählen. Der Filter wird automatisch zu Ihrem Filter in der Abfrageleiste hinzugefügt. Dies wird in der folgenden Abbildung veranschaulicht. Hier erfahren Sie, wo Sie zum Hinzufügen von **InstanceName:'_Total'** zur Abfrage klicken müssen, ohne etwas einzugeben.
 
@@ -66,6 +62,7 @@ Sie können auch spezifischer sein und **InstanceName=_'Total'** in der Abfrage 
 Ihre Abfrage wird jetzt zu `Type=Perf CounterName="% Processor Time" InstanceName="_Total"`
 
 In diesem Beispiel müssen Sie **Type=Perf** nicht angeben, um dieses Ergebnis zu erhalten. Da die Felder „CounterName“ und „InstanceName“ nur für Datensätze vom Typ „Type=Perf“ vorhanden sind, ist die Abfrage spezifisch genug, um die gleichen Ergebnisse wie die vorherige längere Abfrage zurückzugeben:
+
 ```
 CounterName="% Processor Time" InstanceName="_Total"
 ```
@@ -94,7 +91,6 @@ EventLog=Application EventLog=System
 
 
 ## <a name="use-additional-filters"></a>Verwenden zusätzlicher Filter
-
 Die folgende Abfrage gibt Einträge für zwei Ereignisprotokolle für alle Computer zurück, die Daten gesendet haben.
 
 ```
@@ -137,7 +133,6 @@ CounterName="% Processor Time"  AND InstanceName="_Total" AND (Computer=SERVER1.
 ### <a name="boolean-operators"></a>Boolesche Operatoren
 Mit „datetime“- und numerischen Feldern können Sie Werte mit *größer als*, *kleiner als*, und *kleiner als oder gleich* suchen. Sie können einfache Operatoren wie z. B. >, <, >=, < =,! = in der Suchabfrageleiste verwenden.
 
-
 Sie können ein bestimmtes Ereignisprotokoll für einen bestimmten Zeitraum abfragen. Beispielsweise werden die letzten 24 Stunden mit dem folgenden mnemonischen Ausdruck dargestellt.
 
 ```
@@ -146,7 +141,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 
 #### <a name="to-search-using-a-boolean-operator"></a>Suchen mithilfe eines booleschen Operators
-- Geben Sie im Suchabfragefeld `EventLog=System TimeGenerated>NOW-24HOURS"`  
+* Geben Sie im Suchabfragefeld `EventLog=System TimeGenerated>NOW-24HOURS"`  
     ![Boolesche Suche](./media/log-analytics-log-searches/oms-search-boolean.png)
 
 Sie können das Zeitintervall zwar grafisch steuern, was die meiste Zeit auch sinnvoll ist, es hat jedoch auch Vorteile, einen Zeitfilter direkt in die Abfrage einzuschließen. Beispielsweise funktioniert dies hervorragend mit Dashboards, bei denen Sie die Zeit für jede Kachel überschreiben können, unabhängig von der *globalen* Zeitauswahl auf der Dashboardseite. Weitere Informationen finden Sie unter [Time Matters in Dashboard](http://cloudadministrator.wordpress.com/2014/10/19/system-center-advisor-restarted-time-matters-in-dashboard-part-6/)("Zeit spielt in Dashboards eine Rolle", auf Englisch).
@@ -161,9 +156,9 @@ Vergleichsoperatoren für das Feld "TimeGenerated" sind auch in anderen Situatio
 
 Beispielsweise wird angenommen, dass Warnungen für die Konfigurationsbewertung die folgenden Schweregrade haben:
 
-- 0 = Information
-- 1 = Warnung
-- 2 = Kritischer Fehler
+* 0 = Information
+* 1 = Warnung
+* 2 = Kritischer Fehler
 
 Sie können mit der folgenden Abfrage sowohl nach Warnungen als auch kritischen Fehler filtern und Informationen ausschließen:
 
@@ -179,10 +174,12 @@ Type=Event EventLog="Operations Manager" EventID:[2100..2199]
 ```
 
 
->[AZURE.NOTE] Die zu verwendende Bereichssyntax ist der Doppelpunkt (:) "Feld:Trennzeichen"  und *nicht* das Gleichheitszeichen (=). Schließen Sie das untere und obere Ende des Bereichs in eckige Klammern ein, und trennen Sie diese durch zwei Punkte (..).
+> [!NOTE]
+> Die zu verwendende Bereichssyntax ist der Doppelpunkt (:) "Feld:Trennzeichen"  und *nicht* das Gleichheitszeichen (=). Schließen Sie das untere und obere Ende des Bereichs in eckige Klammern ein, und trennen Sie diese durch zwei Punkte (..).
+> 
+> 
 
 ## <a name="manipulate-search-results"></a>Bearbeiten von Suchergebnissen
-
 Wenn Sie nach Daten suchen, sollten Sie Ihre Suchabfrage verfeinern und die Ergebnisse gut kontrollieren können. Wenn Ergebnisse abgerufen werden, können Sie die Befehle anwenden, um sie zu verändern.
 
 Befehle in Log Analytics-Suchen *müssen* nach dem senkrechten Strich (|) folgen. Ein Filter muss immer der erste Teil einer Abfragezeichenfolge sein. Er definiert den Datensatz, mit dem Sie arbeiten, und "leitet" diese Ergebnisse dann in einen Befehl. Mit der Pipe können Sie anschließend zusätzliche Befehle hinzufügen. Dies ist in etwa mit der Windows PowerShell-Pipeline vergleichbar.
@@ -192,7 +189,6 @@ Im Allgemeinen versucht die Log Analytics-Suchsprache, sich am PowerShell-Stil u
 Befehle bestehen aus Verben, sodass Sie leicht erkennen können, was diese tun.  
 
 ### <a name="sort"></a>Sortieren
-
 Mit dem Sortierbefehl können Sie die Sortierreihenfolge durch ein oder mehrere Felder festlegen. Auch wenn Sie ihn in der Standardeinstellung nicht verwenden, wird eine zeitlich absteigende Reihenfolge erzwungen. Die aktuellsten Ergebnisse stehen immer am Anfang der Suchergebnisse. Das bedeutet, dass beim Ausführen einer Suche mit `Type=Event EventID=1234` Folgendes wirklich ausgeführt wird:
 
 ```
@@ -231,17 +227,15 @@ Type=Event EventID=600 | Top 1
 
 
 #### <a name="to-search-using-top"></a>Suchen mit "Top"
-- Geben Sie im Suchabfragefeld `Type=Event EventID=600 | Top 1`  ein  
+* Geben Sie im Suchabfragefeld `Type=Event EventID=600 | Top 1`  ein  
     ![Suchen mit „Top“](./media/log-analytics-log-searches/oms-search-top.png)
 
 In der Abbildung oben gibt es 358.000 Datensätze mit EventID=600. Die Felder, Facetten und Filter auf der linken Seite zeigen immer Informationen zu den Ergebnissen an, die *vom Filterteil* der Abfrage zurückgegeben werden, also jeweils dem Teil vor dem senkrechten Strich. Im **Ergebnis** -Bereich wird nur das einzelne neueste Ergebnis zurückgegeben, da der Beispielbefehl die Ergebnisse geformt und transformiert hat.
 
 ### <a name="select"></a>Wählen Sie
-
 Der SELECT-Befehl verhält sich wie das Select-Objekt in PowerShell. Er gibt gefilterte Ergebnisse zurück, die nicht all ihre ursprünglichen Eigenschaften aufweisen. Stattdessen wählt er nur die Eigenschaften aus, die Sie angeben.
 
 #### <a name="to-run-a-search-using-the-select-command"></a>Suchen mit dem "Select"-Befehl
-
 1. Geben Sie in der Suche `Type=Event` ein und klicken Sie dann auf **Search**.
 2. Klicken Sie in einem der Ergebnisse auf **+ mehr anzeigen** , um alle Eigenschaften der Ergebnisse anzuzeigen.
 3. Wählen Sie einige davon explizit aus, und die Abfrage ändert sich zu `Type=Event | Select Computer,EventID,RenderedDescription`.  
@@ -249,14 +243,10 @@ Der SELECT-Befehl verhält sich wie das Select-Objekt in PowerShell. Er gibt gef
 
 Dieser Befehl ist besonders nützlich, wenn Sie die Suchergebnisse steuern möchten und nur die Teile der Daten wählen, die für Ihre Untersuchung eine Rolle spielen, also häufig nicht der vollständige Datensatz. Dies ist auch nützlich, wenn Datensätze verschiedener Typen *einige* gemeinsame Eigenschaften aufweisen, dies aber nicht für *alle* Eigenschaften gilt. Sie können Ausgaben generieren, die natürlicher wie eine Tabelle aussehen oder gut funktionieren, wenn sie in eine CSV-Datei exportiert und dann in Excel bearbeitet werden.
 
-
-
 ## <a name="use-the-measure-command"></a>Verwenden des "Measure"-Befehls
-
 MEASURE ist einer der vielseitigsten Befehle von Log Analytics-Suchen. Sie können damit statistische *Funktionen* auf Ihre Daten anwenden und die Ergebnisse nach einem bestimmten Feld gruppieren. Es gibt mehrere statistische Funktionen, die "Measure" unterstützt.
 
 ### <a name="measure-count()"></a>"Measure count()"
-
 Die erste statistische Funktion, die verwendet werden kann und leicht zu verstehen ist, ist die *count()* -Funktion.
 
 Ergebnisse aus einer beliebigen Suchabfrage wie z. B. `Type=Event` zeigen auf der linken Seite der Suchergebnisse Filter, die auch als Facetten bezeichnet werden. Die Filter zeigen eine Verteilung der Werte anhand eines bestimmten Felds für die Ergebnisse in der ausgeführten Suche an.
@@ -264,7 +254,6 @@ Ergebnisse aus einer beliebigen Suchabfrage wie z. B. `Type=Event` zeigen auf de
 !["search measure count" ("Measure"-Count durchsuchen)](./media/log-analytics-log-searches/oms-search-measure-count01.png)
 
 Zum Beispiel sehen Sie in der Abbildung oben das **Computer**-Feld, das anzeigt, dass innerhalb der fast 739 Millionen Ereignisse in den Ergebnissen 68 einmalige und eindeutige Werte für das **Computer**-Feld in diesen Datensätzen vorhanden sind. Die Kachel zeigt nur die fünf obersten an, welche die fünf häufigsten Werte sind, die in die **Computer** -Felder geschrieben werden, sortiert nach der Anzahl der Dokumente, die diesen bestimmten Wert in dem Feld enthalten. In der Abbildung sehen Sie, dass unter diesen fast 369.000 Ereignissen insgesamt 90.000 aus dem „OpsInsights04.contoso.com“-Computer stammen, 83.000 aus dem „DB03.contoso.com“-Computer usw.
-
 
 Was geschieht, wenn Sie alle Werte sehen möchten, obwohl die Kachel nur die ersten fünf anzeigt?
 
@@ -293,11 +282,9 @@ Type=Event | Measure count() by EventID | Select EventID | Sort EventID asc
 ```
 
 #### <a name="to-search-using-measure-count"></a>Suchen mit dem "Measures"-Count
-
-- Geben Sie im Suchabfragefeld `Type=Event | Measure count() by EventID`
-- Fügen Sie `| Select EventID` an das Ende der Abfrage.
-- Fügen Sie schließlich `| Sort EventID asc` an das Ende der Abfrage.
-
+* Geben Sie im Suchabfragefeld `Type=Event | Measure count() by EventID`
+* Fügen Sie `| Select EventID` an das Ende der Abfrage.
+* Fügen Sie schließlich `| Sort EventID asc` an das Ende der Abfrage.
 
 Einige wichtige Punkte sind zu beachten und hervorzuheben:
 
@@ -306,7 +293,6 @@ Erstens sind die angezeigten Ergebnisse nicht mehr die ursprünglichen Rohergebn
 Zweitens gibt der **Measure-Count** zurzeit nur die ersten 100 unterschiedlichen Ergebnisse zurück. Diese Beschränkung gilt nicht für andere statistische Funktionen. Daher müssen Sie in der Regel zunächst einen genaueren Filter für bestimmte Elemente zur Suche angeben, bevor Sie "Measure count()" anwenden.
 
 ## <a name="use-the-max-and-min-functions-with-the-measure-command"></a>Verwenden der "Max"- und "Min"-Funktion mit dem "Measure"-Befehl
-
 Es gibt verschiedene Szenarios, in denen **Measure Max()** und **Measure Min()** nützlich sind. Da die Funktionen jedoch genau gegensätzlich sind, illustrieren wie "Max()", sodass Sie mit "Min()" selbst experimentieren können.
 
 Wenn Sie nach Sicherheitsereignissen abfragen, haben diese eine **Ebenen**-Eigenschaft, die variieren kann. Beispiel:
@@ -340,7 +326,6 @@ Type=ConfigurationChange | Measure Max(TimeGenerated) by Computer
 ```
 
 ## <a name="use-the-avg-function-with-the-measure-command"></a>Verwenden der "Avg"-Funktion mit dem Measure-Befehl
-
 Die statistische "Avg()"-Funktion kann zusammen mit "Measure" verwendet werden, sodass Sie den Durchschnittswert für ein Feld berechnen, und die Ergebnisse nach dem gleichen oder einem anderen Feld gruppieren können. Dies ist in einer Vielzahl von Fällen nützlich, z. B. für Leistungsdaten.
 
 Wir beginnen mit den Leistungsdaten. Beachten Sie, dass mit OMS derzeit Leistungsindikatoren für Windows- und Linux-Computer erfasst werden.
@@ -357,9 +342,9 @@ Das Erste, was Sie sehen werden, sind drei Perspektiven, die Log Analytics anzei
 
 In der Abbildung oben gibt es zwei Sätze von gekennzeichneten Feldern, die auf Folgendes hinweisen:
 
-- Der erste Satz identifiziert den Namen des Windows-Leistungsindikators, den Objektnamen und den Instanznamen im Abfragefilter. Dies sind die Felder, die Sie wahrscheinlich am häufigsten als Facetten/Filter verwenden.
-- **CounterValue** ist der tatsächliche Wert des Zählers. In diesem Beispiel ist der Wert *75*.
-- **TimeGenerated** ist 12:51 Uhr im 24-Stunden-Format.
+* Der erste Satz identifiziert den Namen des Windows-Leistungsindikators, den Objektnamen und den Instanznamen im Abfragefilter. Dies sind die Felder, die Sie wahrscheinlich am häufigsten als Facetten/Filter verwenden.
+* **CounterValue** ist der tatsächliche Wert des Zählers. In diesem Beispiel ist der Wert *75*.
+* **TimeGenerated** ist 12:51 Uhr im 24-Stunden-Format.
 
 Hier finden Sie eine Ansicht der Metriken in einem Diagramm.
 
@@ -382,8 +367,7 @@ Type=Perf  ObjectName:Processor  InstanceName:_Total  CounterName:"% Processor T
 ```
 
 ### <a name="to-search-using-the-avg-function-with-the-measure-command"></a>Verwenden der "Avg"-Funktion zur Suche mit dem "Measure"-Befehl
-- Geben Sie im Suchabfragefeld `Type=Perf  ObjectName:Processor  InstanceName:_Total  CounterName:"% Processor Time" TimeGenerated>NOW-6HOURS | Measure Avg(CounterValue) by Computer`ein.
-
+* Geben Sie im Suchabfragefeld `Type=Perf  ObjectName:Processor  InstanceName:_Total  CounterName:"% Processor Time" TimeGenerated>NOW-6HOURS | Measure Avg(CounterValue) by Computer`ein.
 
 Sie können Daten von *mehreren* Computern aggregieren und korrelieren. Angenommen, Sie haben eine Reihe von Hosts in einer Farm, in der jeder Knoten dem anderen entspricht und alle die gleiche Art von Arbeit verrichten und die Last ungefähr ausgeglichen ist. Sie können alle Indikatoren mit der folgenden Abfrage in einem Durchgang abrufen und Durchschnittswerte für die gesamte Farm erhalten. Sie beginnen damit, die Computer wie in folgendem Beispiel auszuwählen:
 
@@ -413,13 +397,11 @@ Dadurch erhalten Sie eine nützliche, kompakte Ansicht von einigen KPIs in Ihrer
 
 !["search avg grouping" ("Avg"-Gruppierung durchsuchen)](./media/log-analytics-log-searches/oms-search-avg04.png)
 
-
 Sie können die Suchabfrage problemlos in einem Dashboard verwenden. Sie können zum Beispiel die Suchabfrage speichern und ein Dashboard daraus erstellen mit der Bezeichnung *Web Farm KPIs*. Weitere Informationen zur Verwendung von Dashboards finden Sie unter [Erstellen eines benutzerdefinierten Dashboards in Log Analytics](log-analytics-dashboards.md).
 
 !["search avg dashboard" ("Avg"-Dashboard durchsuchen)](./media/log-analytics-log-searches/oms-search-avg05.png)
 
 ### <a name="use-the-sum-function-with-the-measure-command"></a>Verwenden der "Sum"-Funktion mit dem "Measure"-Befehl
-
 Die "Sum"-Funktion ähnelt anderen Funktionen des "Measure"-Befehls. Ein Beispiel zur Verwendung der "Sum"-Funktion finden Sie auf [W3C IIS Logs Search in Microsoft Azure Operational Insights](http://blogs.msdn.com/b/dmuscett/archive/2014/09/20/w3c-iis-logs-search-in-system-center-advisor-limited-preview.aspx)("W3C-IIS-Protokollsuche in Microsoft Azure Operational Insights", auf Englisch).
 
 Sie können „Max()“ und „Min()“ mit Zahlen, Datums-/Uhrzeitangaben und Textzeichenfolgen verwenden. Mit Textzeichenfolgen sind diese alphabetisch sortiert, und Sie erhalten die erste und letzte.
@@ -427,7 +409,6 @@ Sie können „Max()“ und „Min()“ mit Zahlen, Datums-/Uhrzeitangaben und T
 Sie können "Sum()" ausschließlich mit numerischen Feldern verwenden. Dies gilt auch für "Avg()".
 
 ### <a name="use-the-percentile-function-with-the-measure-command"></a>Verwenden der „percentile“-Funktion mit dem „Measure“-Befehl
-
 Die Funktion „percentile“ ähnelt „Avg()“ und „Sum()“ darin, dass Sie sie nur für numerische Felder verwenden können. Sie können ein beliebiges Perzentil zwischen 1 und 99 in einem numerischen Feld verwenden. Außerdem können Sie sowohl den Befehl **percentile** als auch den Befehl **pct** verwenden. Hier sind einige Beispiele angegeben:  
 
 ```
@@ -438,7 +419,6 @@ Type:Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Compute
 ```
 
 ## <a name="use-the-where-command"></a>Verwenden des "Where"-Befehls
-
 Der Befehl funktioniert wie ein Filter, kann aber in der Pipeline angewendet werden, um aggregierte Ergebnisse weiter zu filtern, die von einem "Measure"-Befehl erzeugt wurden – im Gegensatz zu reinen Ergebnisse, die am Beginn einer Abfrage gefiltert werden.
 
 Beispiel:
@@ -460,7 +440,6 @@ Sie können die Abfrage als Kachel in **Mein Dashboard**verwenden, als eine Art 
 !["mobile dashboard" ("mobiles Dashboard")](./media/log-analytics-log-searches/oms-search-mobile.png)
 
 ## <a name="use-the-in-operator"></a>Verwenden des Operators „IN“
-
 Mit dem Operator *IN* zusammen mit *NOT IN* können Sie so genannte „Untersuchen“ (Subsearches) verwenden. Dies sind Suchen, die eine weitere Suche als Argument enthalten. Sie sind in einer anderen *primären* oder *äußeren* Suche in geschweiften Klammern ({}) angeordnet. Das Ergebnis einer Untersuche, wobei es sich häufig um eine Liste mit unterschiedlichen Ergebnissen handelt, wird dann als Argument der primären Suche verwendet.
 
 Sie können Untersuchen verwenden, um Übereinstimmungen für Teilmengen der Daten zu erzielen, die Sie nicht direkt in einem Suchausdruck beschreiben können, aber die aus einer Suche generiert werden können. Wenn Sie beispielsweise daran interessiert sind, mit einer Suche alle Ereignisse von *Computern mit fehlenden Sicherheitsupdates* zu finden, gehen Sie wie folgt vor: Entwerfen Sie eine Untersuche, mit der zuerst identifiziert wird, dass *Computer mit fehlenden Sicherheitsupdates* vorhanden sind, bevor nach Ereignissen gesucht wird, die zu diesen Hosts gehören.
@@ -480,7 +459,6 @@ Type=Event Computer IN {Type:Update UpdateState=Needed Optional=false Classifica
 ```
 ![Beispiel für Suche mit IN](./media/log-analytics-log-searches/oms-search-in02-revised.png)
 
-
 Beachten Sie auch den Zeitfilter, der für die innere Suche verwendet wird, da von System Update Assessment alle 24 Stunden eine Momentaufnahme aller Computer erstellt wird. Sie können die innere Abfrage einfacher und präziser gestalten, indem Sie nur nach einem Tag suchen. Für die äußere Suche wird dagegen die Zeitauswahl der Benutzeroberfläche verwendet, und es werden Ereignisse der letzten sieben Tage abgerufen. Weitere Informationen zu Zeitoperatoren finden Sie unter [Boolesche Operatoren](#boolean-operators) .
 
 Da Sie eigentlich nur die Ergebnisse der inneren Suche als Filterwert für die äußere Suche nutzen, können Sie auf die äußere Suche weiterhin Befehle anwenden. Beispielsweise können Sie die obigen Ereignisse weiterhin mit einem anderen „Measure“-Befehl gruppieren:
@@ -490,7 +468,6 @@ Type=Event Computer IN {Type:Update UpdateState=Needed Optional=false Classifica
 ```
 
 ![Beispiel für Suche mit IN](./media/log-analytics-log-searches/oms-search-in03-revised.png)
-
 
 Im Allgemeinen möchten Sie, dass Ihre innere Abfrage schnell ausgeführt wird, da Log Analytics über dienstseitige Timeouts dafür verfügt, und außerdem soll eine kleine Menge an Ergebnissen zurückgegeben werden. Wenn die innere Abfrage mehr Ergebnisse zurückgibt, wird die Ergebnisliste abgeschnitten. Dies kann unter Umständen dazu führen, dass die äußere Suche fehlerhafte Ergebnisse zurückgibt.
 
@@ -525,7 +502,6 @@ Type=SecurityEvent EventID=4624   Account!="BACONLAND\\jochan" Computer IN { Typ
 ```
 
 ## <a name="use-the-distinct-command"></a>Verwenden des Befehls „DISTINCT“
-
 Wie der Name schon vermuten lässt, wird mit diesem Befehl eine Liste mit unterschiedlichen Werten für ein Feld bereitgestellt. Er ist erstaunlich einfach, aber gleichzeitig sehr nützlich. Das gleiche Ergebnis lässt sich wie unten gezeigt mit dem Befehl „measure count()“ erzielen.
 
 ```
@@ -583,19 +559,17 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 ![OMS-multiaggregates1](./media/log-analytics-log-searches/oms-multiaggregates1.png)
 
 Hier ist ein weiteres Beispiel angegeben:
+
  ```
 * | measure countdistinct(Computer) as Computers, count() as TotalRecords by Type
 ```
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Weitere Informationen zu Protokollsuchen finden Sie hier:
 
-- Verwenden Sie [benutzerdefinierte Felder in Log Analytics](log-analytics-custom-fields.md) , um Protokollsuchen zu erweitern.
-- Lesen Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md) durch, um sich über alle Suchfelder und Facetten zu informieren, die in Log Analytics verfügbar sind.
-
-
+* Verwenden Sie [benutzerdefinierte Felder in Log Analytics](log-analytics-custom-fields.md) , um Protokollsuchen zu erweitern.
+* Lesen Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md) durch, um sich über alle Suchfelder und Facetten zu informieren, die in Log Analytics verfügbar sind.
 
 <!--HONumber=Oct16_HO2-->
 

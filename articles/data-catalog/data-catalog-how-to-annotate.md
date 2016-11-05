@@ -1,24 +1,23 @@
-<properties
-   pageTitle="Hinzufügen von Anmerkungen zu Datenquellen | Microsoft Azure"
-   description="Anleitungsartikel zum Hinzufügen von Anmerkungen zu Datenressourcen in Azure Data Catalog, einschließlich Anzeigenamen, Tags, Beschreibungen und Experten."
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
-<tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="09/21/2016"
-   ms.author="maroche"/>
+---
+title: Hinzufügen von Anmerkungen zu Datenquellen | Microsoft Docs
+description: Anleitungsartikel zum Hinzufügen von Anmerkungen zu Datenressourcen in Azure Data Catalog, einschließlich Anzeigenamen, Tags, Beschreibungen und Experten.
+services: data-catalog
+documentationcenter: ''
+author: steelanddata
+manager: NA
+editor: ''
+tags: ''
 
+ms.service: data-catalog
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-catalog
+ms.date: 09/21/2016
+ms.author: maroche
 
+---
 # Hinzufügen von Anmerkungen zu Datenquellen
-
 ## Einführung
 **Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Data Catalog unterstützt Benutzer also beim Ermitteln, Nachvollziehen und Verwenden von Datenquellen und Unternehmen dabei, mehr Nutzen aus ihren vorhandenen Daten zu ziehen. Wenn eine Datenquelle in Data Catalog registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Das ist aber noch nicht alles. Data Catalog bietet Benutzern die Möglichkeit, die aus der Datenquelle extrahierten Metadaten durch eigene beschreibende Metadaten (beispielsweise Beschreibungen und Tags) zu ergänzen, um die Datenquelle für andere Benutzer verständlicher zu machen.
 
@@ -37,20 +36,22 @@ Da jede dieser Perspektiven wertvoll ist, verwendet Data Catalog einen Crowdsour
 Data Catalog unterstützt folgende Anmerkungstypen:
 
 | Anmerkung | Hinweise |
-|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Anzeigename | Anzeigenamen können auf der Datenressourcenebene angegeben werden, um das Verständnis der Datenressource zu erleichtern. Anzeigenamen sind besonders hilfreich, wenn der zugrunde liegende Objektname unverständlich, abgekürzt oder für Benutzer nicht aussagekräftig ist. |
-| Beschreibung | Beschreibungen können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Beschreibungen sind kurze Textanmerkungen ohne vorgegebene Form, die beschreiben, was der Benutzer über die Datenressource weiß oder wie er sie verwendet. |
-| Tags (Benutzertags) | Tags können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Benutzertags sind benutzerdefinierte Bezeichnungen, die zum Kategorisieren von Datenassets oder Attributen verwendet werden können. |
-| Tags (Glossartags) | Tags können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Glossartags sind zentral definierte Glossarbegriffe, die zum Kategorisieren von Datenassets oder Attributen mithilfe einer allgemeinen Unternehmenstaxonomie verwendet werden können. Weitere Informationen finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md). |
-| Experten | Experten können auf der Datenressourcenebene angegeben werden. Experten sind Benutzer oder Gruppen, die über fundiertes Wissen über die Daten verfügen und als Ansprechpartner für Benutzer fungieren können, die die registrierten Datenquellen finden und Fragen haben, die durch die vorhandenen Anmerkungen nicht beantwortet werden. |
-| Zugriff anfordern | Anmerkungen vom Typ „Zugriff anfordern“ können auf der Datenressourcenebene angegeben werden. Diese Anmerkung ist für Benutzer vorgesehen, die eine Datenquelle finden, für die sie noch keine Zugriffsberechtigung besitzen. Benutzer können die E-Mail-Adresse des Benutzers oder der Gruppe, der bzw. die für die Erteilung der Zugriffsberechtigung zuständig ist, die URL des für den Zugriff erforderlichen Prozesses oder Tools oder den Prozess selbst als Text eingeben. |
-| Dokumentation | Eine Dokumentation kann auf der Datenressourcenebene angegeben werden. Bei einer Ressourcendokumentation handelt es sich um Rich-Text-Informationen, die Links und Bilder enthalten und somit Informationen vermitteln können, die sich nicht über Beschreibungen und Tags bereitstellen lassen. |
-
+| --- | --- |
+| Anzeigename |Anzeigenamen können auf der Datenressourcenebene angegeben werden, um das Verständnis der Datenressource zu erleichtern. Anzeigenamen sind besonders hilfreich, wenn der zugrunde liegende Objektname unverständlich, abgekürzt oder für Benutzer nicht aussagekräftig ist. |
+| Beschreibung |Beschreibungen können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Beschreibungen sind kurze Textanmerkungen ohne vorgegebene Form, die beschreiben, was der Benutzer über die Datenressource weiß oder wie er sie verwendet. |
+| Tags (Benutzertags) |Tags können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Benutzertags sind benutzerdefinierte Bezeichnungen, die zum Kategorisieren von Datenassets oder Attributen verwendet werden können. |
+| Tags (Glossartags) |Tags können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Glossartags sind zentral definierte Glossarbegriffe, die zum Kategorisieren von Datenassets oder Attributen mithilfe einer allgemeinen Unternehmenstaxonomie verwendet werden können. Weitere Informationen finden Sie unter [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md). |
+| Experten |Experten können auf der Datenressourcenebene angegeben werden. Experten sind Benutzer oder Gruppen, die über fundiertes Wissen über die Daten verfügen und als Ansprechpartner für Benutzer fungieren können, die die registrierten Datenquellen finden und Fragen haben, die durch die vorhandenen Anmerkungen nicht beantwortet werden. |
+| Zugriff anfordern |Anmerkungen vom Typ „Zugriff anfordern“ können auf der Datenressourcenebene angegeben werden. Diese Anmerkung ist für Benutzer vorgesehen, die eine Datenquelle finden, für die sie noch keine Zugriffsberechtigung besitzen. Benutzer können die E-Mail-Adresse des Benutzers oder der Gruppe, der bzw. die für die Erteilung der Zugriffsberechtigung zuständig ist, die URL des für den Zugriff erforderlichen Prozesses oder Tools oder den Prozess selbst als Text eingeben. |
+| Dokumentation |Eine Dokumentation kann auf der Datenressourcenebene angegeben werden. Bei einer Ressourcendokumentation handelt es sich um Rich-Text-Informationen, die Links und Bilder enthalten und somit Informationen vermitteln können, die sich nicht über Beschreibungen und Tags bereitstellen lassen. |
 
 ## Hinzufügen einer Anmerkung zu mehreren Datenressourcen
 Benutzer können im Data Catalog-Portal mehrere Datenressourcen auswählen und allen ausgewählten Ressourcen in nur einem Arbeitsschritt eine Anmerkung hinzufügen. Da Anmerkungen für alle ausgewählten Datenressourcen gelten, ist es ganz einfach, einheitliche Beschreibungen, Tags und Experten für verwandte Datenressourcen bereitzustellen.
 
-> [AZURE.NOTE] Tags und Experten können auch beim Registrieren von Datenressourcen mit dem Data Catalog-Tool zur Datenquellenregistrierung angegeben werden.
+> [!NOTE]
+> Tags und Experten können auch beim Registrieren von Datenressourcen mit dem Data Catalog-Tool zur Datenquellenregistrierung angegeben werden.
+> 
+> 
 
 Bei Auswahl mehrerer Tabellen und Ansichten werden im Data Catalog-Portal nur Spalten angezeigt, die in allen Datenressourcen vorhanden sind. So können Benutzer Tags und Beschreibungen für alle Spalten hinzufügen, die für alle ausgewählten Datenressourcen den gleichen Namen aufweisen.
 
@@ -61,6 +62,6 @@ Genau wie die Metadaten, die bei der Registrierung aus der Datenquelle extrahier
 Durch die Registrierung einer Datenquelle in Data Catalog werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Sobald eine Datenquelle registriert wurde, können Benutzer im Data Catalog-Portal Anmerkungen hinzufügen, um das Verständnis der Daten zu erleichtern und die Ermittlung zu vereinfachen.
 
 ## Siehe auch
-- Eine detaillierte Anleitung zum Hinzufügen von Anmerkungen zu Datenquellen finden Sie im Tutorial [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md).
+* Eine detaillierte Anleitung zum Hinzufügen von Anmerkungen zu Datenquellen finden Sie im Tutorial [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md).
 
 <!---HONumber=AcomDC_0921_2016-->

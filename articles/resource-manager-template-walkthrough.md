@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Resource Manager-Vorlage – Exemplarische Vorgehensweise | Microsoft Azure"
-   description="Enthält eine exemplarische Schritt-für-Schritt-Vorgehensweise für eine Resource Manager-Vorlage zur Bereitstellung einer grundlegenden Azure-IaaS-Architektur."
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="navalev"
-   manager=""
-   editor=""/>
+---
+title: Resource Manager-Vorlage – Exemplarische Vorgehensweise | Microsoft Docs
+description: Enthält eine exemplarische Schritt-für-Schritt-Vorgehensweise für eine Resource Manager-Vorlage zur Bereitstellung einer grundlegenden Azure-IaaS-Architektur.
+services: azure-resource-manager
+documentationcenter: na
+author: navalev
+manager: ''
+editor: ''
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/04/2016"
-   ms.author="navale;tomfitz"/>
-   
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/04/2016
+ms.author: navale;tomfitz
+
+---
 # Resource Manager-Vorlage – Exemplarische Vorgehensweise
-
 Beim Erstellen einer Vorlage müssen Sie sich unter anderem zuerst überlegen, wie Sie anfangen möchten. Sie können beispielsweise mit einer leeren Vorlage beginnen und unter Berücksichtigung der grundlegenden, im Artikel [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md#template-format) beschriebenen Struktur Ressourcen und entsprechende Parameter und Variablen hinzufügen. Eine gute Alternative wäre, im [Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates) zunächst nach ähnlichen Szenarien zu suchen. Sie können mehrere Vorlagen zusammenführen oder eine bereits vorhandene Vorlage an Ihr individuelles Szenario anpassen.
 
 Die Infrastruktur besteht im Allgemeinen aus Folgendem:
@@ -32,10 +31,12 @@ In diesem Thema werden die Schritte zum Erstellen einer Resource Manager-Vorlage
 
 Das wäre aber ein bisschen viel auf einmal. Daher erstellen wir zunächst ein Speicherkonto und stellen es bereit. Nachdem Sie sich mit der Erstellung des Speicherkontos vertraut gemacht haben, können Sie die anderen Ressourcen hinzufügen und die Vorlage erneut bereitstellen, um die Infrastruktur fertigzustellen.
 
->[AZURE.NOTE] Sie können beim Erstellen der Vorlage eine beliebige Art von Editor verwenden. Visual Studio enthält Tools, mit denen die Vorlagenentwicklung vereinfacht wird, aber Sie benötigen Visual Studio für dieses Tutorial nicht. Ein Tutorial zur Verwendung von Visual Studio für die Erstellung einer Bereitstellung mit Web-App und SQL-Datenbank finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+> [!NOTE]
+> Sie können beim Erstellen der Vorlage eine beliebige Art von Editor verwenden. Visual Studio enthält Tools, mit denen die Vorlagenentwicklung vereinfacht wird, aber Sie benötigen Visual Studio für dieses Tutorial nicht. Ein Tutorial zur Verwendung von Visual Studio für die Erstellung einer Bereitstellung mit Web-App und SQL-Datenbank finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+> 
+> 
 
 ## Erstellen der Resource Manager-Vorlage
-
 Die Vorlage ist eine JSON-Datei, mit der alle von Ihnen bereitgestellten Ressourcen definiert werden. Hiermit können Sie auch Folgendes definieren: Parameter, die während der Bereitstellung angegeben werden, Variablen, die aus anderen Werten und Ausdrücken erstellt werden, sowie Ausgaben der Bereitstellung.
 
 Wir beginnen mit der einfachsten Vorlage:
@@ -78,7 +79,7 @@ Kommen wir nun zurück zum Abschnitt **parameters**, wo wir uns mit dem Definier
 
 ```json
 "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -96,7 +97,7 @@ Wir verfügen über eine vollständige Vorlage zum Erstellen eines neuen Speiche
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters" : {
-	"storageAccountName": {
+    "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Storage Account Name"
@@ -161,14 +162,15 @@ Der Wert, den Sie für **type** angeben, enthält sowohl den Ressourcenanbieter 
 ```
 
 Falls Sie die Azure-Befehlszeilenschnittstelle verwenden, können Sie den folgenden Befehl ausführen:
+
 ```
     azure provider list
 ```
 Da Sie die Erstellung in diesem Thema mit Speicherkonten, virtuellen Computern und virtuellen Netzwerken durchführen, arbeiten Sie mit folgenden Elementen:
 
-- Microsoft.Storage
-- Microsoft.Compute
-- Microsoft.Network
+* Microsoft.Storage
+* Microsoft.Compute
+* Microsoft.Network
 
 Führen Sie den folgenden PowerShell-Befehl aus, um die Ressourcentypen für einen bestimmten Anbieter anzuzeigen:
 
@@ -384,7 +386,7 @@ Sie erstellen zwei Netzwerkschnittstellen, und zwar eine für jeden virtuellen C
 ## Virtueller Computer
 Sie erstellen zwei virtuelle Computer. Dabei verwenden Sie genau wie bei der Erstellung der [Netzwerkschnittstellen](#network-interface) die copyIndex()-Funktion. Die VM-Erstellung hängt vom Speicherkonto, der Netzwerkschnittstelle und der Verfügbarkeitsgruppe ab. Dieser VM wird auf der Grundlage eines Marketplace-Image erstellt (gemäß Definition in der `storageProfile`-Eigenschaft). `imageReference` wird verwendet, um für das Image Herausgeber, Angebot, SKU und Version zu definieren. Zuletzt wird ein Diagnoseprofil konfiguriert, um die Diagnose für die VM zu ermöglichen.
 
-Befolgen Sie die Anweisungen im Artikel zum [Auswählen virtueller Linux-Computer](./virtual-machines/virtual-machines-linux-cli-ps-findimage.md) bzw. im Artikel zum [Auswählen virtueller Windows-Computer](./virtual-machines/virtual-machines-windows-cli-ps-findimage.md), um nach den relevanten Eigenschaften für ein Marketplace-Image zu suchen.
+Befolgen Sie die Anweisungen im Artikel zum [Auswählen virtueller Linux-Computer](virtual-machines/virtual-machines-linux-cli-ps-findimage.md) bzw. im Artikel zum [Auswählen virtueller Windows-Computer](virtual-machines/virtual-machines-windows-cli-ps-findimage.md), um nach den relevanten Eigenschaften für ein Marketplace-Image zu suchen.
 
 ```json
 {
@@ -445,12 +447,14 @@ Befolgen Sie die Anweisungen im Artikel zum [Auswählen virtueller Linux-Compute
 }
 ```
 
->[AZURE.NOTE] Für Images, die von Drittanbietern veröffentlicht werden, müssen Sie eine andere Eigenschaft namens `plan` angeben. Ein Beispiel hierfür finden Sie in [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic) im Schnellstartkatalog.
+> [!NOTE]
+> Für Images, die von Drittanbietern veröffentlicht werden, müssen Sie eine andere Eigenschaft namens `plan` angeben. Ein Beispiel hierfür finden Sie in [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic) im Schnellstartkatalog.
+> 
+> 
 
 Sie haben das Definieren der Ressourcen für die Vorlage abgeschlossen.
 
 ## Parameter
-
 Definieren Sie im Abschnitt „parameters“ die Werte, die beim Bereitstellen der Vorlage angegeben werden können. Definieren Sie nur Parameter für Werte, die während der Bereitstellung ggf. variiert werden sollen. Sie können einen Standardwert für einen Parameter angeben, der verwendet wird, falls während der Bereitstellung kein Wert angegeben wird. Sie können auch die zulässigen Werte definieren, wie für den Parameter **imageSKU** gezeigt.
 
 ```json
@@ -551,7 +555,6 @@ Definieren Sie im Abschnitt „parameters“ die Werte, die beim Bereitstellen d
 ```
 
 ## Variablen
-
 Im Abschnitt „variables“ können Sie Werte definieren, die an mehr als einer Stelle in Ihrer Vorlage verwendet werden, oder Werte, die aus anderen Ausdrücken oder Variablen erstellt werden. Variablen werden häufig verwendet, um die Syntax der Vorlage zu vereinfachen.
 
 ```json
@@ -574,9 +577,8 @@ Ihre Vorlage ist nun fertig. Sie können Ihre Vorlage mit der vollständigen Vor
 Sie können die Vorlage mithilfe der Befehle, die Sie auch zum Bereitstellen des Speicherkontos verwendet haben, erneut bereitstellen. Das Speicherkonto muss vor dem erneuten Bereitstellen nicht gelöscht werden, da Resource Manager die Neuerstellung von Ressourcen überspringt, die bereits vorhanden sind und nicht geändert wurden.
 
 ## Nächste Schritte
-
-- [Azure Resource Manager Template Visualizer (ARMViz)](http://armviz.io/#/) ist ein praktisches Tool zum Anzeigen von ARM-Vorlagen, die sich aufgrund ihrer Größe womöglich nicht mehr ohne Weiteres nur anhand des Inhalts der JSON-Datei nachvollziehen lassen.
-- Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-- Informationen zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
+* [Azure Resource Manager Template Visualizer (ARMViz)](http://armviz.io/#/) ist ein praktisches Tool zum Anzeigen von ARM-Vorlagen, die sich aufgrund ihrer Größe womöglich nicht mehr ohne Weiteres nur anhand des Inhalts der JSON-Datei nachvollziehen lassen.
+* Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
+* Informationen zum Bereitstellen einer Vorlage finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
 
 <!---HONumber=AcomDC_0810_2016-->

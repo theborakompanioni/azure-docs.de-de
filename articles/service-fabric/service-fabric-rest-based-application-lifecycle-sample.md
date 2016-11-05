@@ -1,51 +1,48 @@
-<properties
-   pageTitle="REST-basierter Anwendungslebenszyklus – Beispiel | Microsoft Azure"
-   description="Ein Microsoft Azure Service Fabric-Beispiel, in dem der Anwendungslebenszyklus anhand der Service Fabric-REST-Schnittstelle veranschaulicht wird."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="rwike77"
-   manager="timlt"
-   editor=""/>
+---
+title: REST-basierter Anwendungslebenszyklus – Beispiel | Microsoft Docs
+description: Ein Microsoft Azure Service Fabric-Beispiel, in dem der Anwendungslebenszyklus anhand der Service Fabric-REST-Schnittstelle veranschaulicht wird.
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="rest-api"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/25/2016"
-   ms.author="ryanwi"/>
+ms.service: service-fabric
+ms.devlang: rest-api
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/25/2016
+ms.author: ryanwi
 
+---
 # REST-basierter Anwendungslebenszyklus – Beispiel
-
 Dieses Beispiel veranschaulicht den Service Fabric-Anwendungslebenszyklus anhand von REST-API-Aufrufen. Weitere Informationen zum Service Fabric-Anwendungslebenszyklus finden Sie unter [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md).
 
 In diesem Beispiel wird Folgendes durchgeführt:
 
-* Das **WordCount 1.0.0**-Beispiel wird aus dem WordCount-Anwendungspaket im Imagespeicher bereitgestellt.
-* Die Liste mit den Anwendungstypen wird angezeigt, darunter WordCount 1.0.0.
+* Das **WordCount 1.0.0**-Beispiel wird aus dem WordCount-Anwendungspaket im Imagespeicher bereitgestellt.
+* Die Liste mit den Anwendungstypen wird angezeigt, darunter WordCount 1.0.0.
 * Die WordCount-Anwendung wird als **fabric:/WordCount** erstellt.
-* Die Liste mit den Anwendungen wird angezeigt, darunter „fabric:/WordCount Version 1.0.0“.
-* Die Version 1.1.0 des WordCount-Beispiels wird aus dem **WordCountUpgrade**-Anwendungspaket im Imagespeicher bereitgestellt.
-* Die Liste mit den Anwendungstypen wird angezeigt, darunter sowohl WordCount 1.0.0 als auch **WordCount 1.1.0**.
-* Die WordCount-Anwendung wird auf Version 1.1.0 aktualisiert.
-* Die Liste mit den Anwendungen wird angezeigt, darunter WordCount Version 1.1.0, aber jetzt ohne WordCount Version 1.0.0.
+* Die Liste mit den Anwendungen wird angezeigt, darunter „fabric:/WordCount Version 1.0.0“.
+* Die Version 1.1.0 des WordCount-Beispiels wird aus dem **WordCountUpgrade**-Anwendungspaket im Imagespeicher bereitgestellt.
+* Die Liste mit den Anwendungstypen wird angezeigt, darunter sowohl WordCount 1.0.0 als auch **WordCount 1.1.0**.
+* Die WordCount-Anwendung wird auf Version 1.1.0 aktualisiert.
+* Die Liste mit den Anwendungen wird angezeigt, darunter WordCount Version 1.1.0, aber jetzt ohne WordCount Version 1.0.0.
 * Die WordCount-Anwendung wird gelöscht.
 * Die Liste mit den Anwendungen wird angezeigt, aber jetzt ohne „fabric:/WordCount“.
-* Die Bereitstellung der Version 1.1.0 des WordCount-Beispiels wird aufgehoben.
-* Die Liste mit den Anwendungstypen wird angezeigt, darunter WordCount 1.0.0, aber jetzt ohne WordCount 1.1.0.
-* Die Bereitstellung von Version 1.0.0 des WordCount-Beispiels wird aufgehoben.
+* Die Bereitstellung der Version 1.1.0 des WordCount-Beispiels wird aufgehoben.
+* Die Liste mit den Anwendungstypen wird angezeigt, darunter WordCount 1.0.0, aber jetzt ohne WordCount 1.1.0.
+* Die Bereitstellung von Version 1.0.0 des WordCount-Beispiels wird aufgehoben.
 * Die Liste mit den Anwendungstypen wird angezeigt, aber jetzt ohne WordCount.
 
-
 ## Voraussetzungen
-
 Dieses Beispiel verwendet das [WordCount-Beispiel](http://aka.ms/servicefabricsamples) (aus den Beispielen für die **ersten Schritte**). Das WordCount-Beispiel muss zuerst erstellt werden, und dann müssen zwei Anwendungspakete in den Imagespeicher kopiert werden.
 
-|Ordner|Beschreibung|
-|------|-----------|
-|WordCount|Die WordCount-Beispielanwendung. Die Datei **ApplicationManifest.xml** enthält **ApplicationTypeVersion=„1.0.0“**.|
-|WordCountUpgrade|Die WordCount-Beispielanwendung. Die Datei „ApplicationManifest.xml“ muss in **ApplicationTypeVersion=„1.1.0“** geändert werden, damit das Upgrade der Anwendung durchgeführt werden kann.|
+| Ordner | Beschreibung |
+| --- | --- |
+| WordCount |Die WordCount-Beispielanwendung. Die Datei **ApplicationManifest.xml** enthält **ApplicationTypeVersion=„1.0.0“**. |
+| WordCountUpgrade |Die WordCount-Beispielanwendung. Die Datei „ApplicationManifest.xml“ muss in **ApplicationTypeVersion=„1.1.0“** geändert werden, damit das Upgrade der Anwendung durchgeführt werden kann. |
 
 Führen Sie die folgenden Schritte aus, um die Anwendungspakete zu erstellen und in den Imagespeicher zu kopieren:
 
@@ -74,7 +71,6 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPathUpg
 Nachdem das PowerShell-Skript abgeschlossen wurde, ist diese Anwendung zur Ausführung bereit.
 
 ## Beispiel
-
 Im folgenden Beispiel wird der Service Fabric-Anwendungslebenszyklus veranschaulicht.
 
 ```csharp
@@ -706,7 +702,6 @@ namespace ServiceFabricRestCaller
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
-
 [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md)
 
 <!---HONumber=AcomDC_0831_2016-->

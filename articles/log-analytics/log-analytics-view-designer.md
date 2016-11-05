@@ -1,39 +1,37 @@
-<properties
-    pageTitle="Ansicht-Designer in Log Analytics | Microsoft Azure"
-    description="Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten."
-    services="log-analytics"
-    documentationCenter=""
-    authors="bwren"
-    manager="jwhit"
-    editor=""/>
+---
+title: Ansicht-Designer in Log Analytics | Microsoft Docs
+description: Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/27/2016"
-    ms.author="bwren"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: bwren
 
-
+---
 # <a name="log-analytics-view-designer"></a>Ansicht-Designer in Log Analytics
 Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 
 Weitere verfügbare Artikel für den Ansicht-Designer:
 
-- [Referenz der Kacheln](log-analytics-view-designer-tiles.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind. 
-- [Referenz der Visualisierungskomponenten](log-analytics-view-designer-parts.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind. 
-
+* [Referenz der Kacheln](log-analytics-view-designer-tiles.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind. 
+* [Referenz der Visualisierungskomponenten](log-analytics-view-designer-parts.md): Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind. 
 
 ## <a name="concepts"></a>Konzepte
 Mit dem Ansicht-Designer erstellte Ansichten enthalten die Elemente der folgenden Tabelle.
 
 | Teil | Beschreibung |
-|:--|:--|
-| Kachel | Wird auf dem Hauptdashboard mit der Log Analytics-Übersicht angezeigt.  Enthält ein visuelle Zusammenfassung der in der benutzerdefinierten Ansicht enthaltenen Informationen.  Verschiedene Kacheltypen bieten unterschiedliche Visualisierungen von Datensätzen im OMS-Repository.  Klicken Sie auf die Kachel, um die benutzerdefinierte Ansicht zu öffnen. |
-| Benutzerdefinierte Ansicht | Wird angezeigt, wenn der Benutzer auf die Kachel klickt.  Enthält eine oder mehrere Visualisierungskomponenten. |
-| Visualisierungskomponenten | Visualisierung von Daten im OMS-Repository basierend auf einem oder mehreren [Protokollsuchvorgängen](log-analytics-log-searches.md).  Die meisten Komponenten enthalten eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste der wichtigsten Ergebnisse.  Verschiedene Komponententypen bieten unterschiedliche Visualisierungen von Datensätzen im OMS-Repository.  Klicken Sie auf Elemente in der Komponente, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
+|:--- |:--- |
+| Kachel |Wird auf dem Hauptdashboard mit der Log Analytics-Übersicht angezeigt.  Enthält ein visuelle Zusammenfassung der in der benutzerdefinierten Ansicht enthaltenen Informationen.  Verschiedene Kacheltypen bieten unterschiedliche Visualisierungen von Datensätzen im OMS-Repository.  Klicken Sie auf die Kachel, um die benutzerdefinierte Ansicht zu öffnen. |
+| Benutzerdefinierte Ansicht |Wird angezeigt, wenn der Benutzer auf die Kachel klickt.  Enthält eine oder mehrere Visualisierungskomponenten. |
+| Visualisierungskomponenten |Visualisierung von Daten im OMS-Repository basierend auf einem oder mehreren [Protokollsuchvorgängen](log-analytics-log-searches.md).  Die meisten Komponenten enthalten eine Kopfzeile mit einer allgemeinen Visualisierung und eine Liste der wichtigsten Ergebnisse.  Verschiedene Komponententypen bieten unterschiedliche Visualisierungen von Datensätzen im OMS-Repository.  Klicken Sie auf Elemente in der Komponente, um einen Protokollsuchvorgang auszuführen, der detaillierte Datensätze bereitstellt. |
 
 ![Übersicht über den Ansicht-Designer](media/log-analytics-view-designer/overview.png)
 
@@ -43,7 +41,6 @@ Während sich der Ansicht-Designer in der Vorschauphase befindet, müssen Sie ih
 ![Aktivieren der Vorschau](media/log-analytics-view-designer/preview.png)
 
 ## <a name="creating-and-editing-views"></a>Erstellen und Bearbeiten von Ansichten
-
 ### <a name="create-a-new-view"></a>Erstellen einer neuen Ansicht
 Öffnen Sie eine neue Ansicht im **Ansicht-Designer**, indem Sie im OMS-Hauptdashboard auf die Kachel für den Ansicht-Designer klicken.
 
@@ -91,13 +88,9 @@ Sie können eine Visualisierungskomponente aus der Ansicht entfernen, indem Sie 
 ### <a name="rearrange-visualization-parts"></a>Ändern der Anordnung von Visualisierungskomponenten
 Ansichten weisen nur eine Zeile mit Visualisierungskomponenten auf.  Sie können vorhandene Komponenten in einer Ansicht neu anordnen, indem Sie darauf klicken und sie an eine neue Position ziehen.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Fügen Sie [Kacheln](log-analytics-view-designer-tiles.md) zu Ihrer benutzerdefinierten Ansicht hinzu.
-- Fügen Sie [Visualisierungskomponenten](log-analytics-view-designer-parts.md) zu Ihrer benutzerdefinierten Ansicht hinzu.
-
-
+* Fügen Sie [Kacheln](log-analytics-view-designer-tiles.md) zu Ihrer benutzerdefinierten Ansicht hinzu.
+* Fügen Sie [Visualisierungskomponenten](log-analytics-view-designer-parts.md) zu Ihrer benutzerdefinierten Ansicht hinzu.
 
 <!--HONumber=Oct16_HO2-->
 

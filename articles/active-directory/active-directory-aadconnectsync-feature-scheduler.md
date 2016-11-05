@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Azure AD Connect Sync: Scheduler | Microsoft Azure"
-   description="Dieses Thema beschreibt das integrierte Schedulerfeature in Azure AD Connect Sync."
-   services="active-directory"
-   documentationCenter=""
-   authors="AndKjell"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect Sync: Scheduler | Microsoft Docs'
+description: Dieses Thema beschreibt das integrierte Schedulerfeature in Azure AD Connect Sync.
+services: active-directory
+documentationcenter: ''
+author: AndKjell
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="08/04/2016"
-   ms.author="billmath"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/04/2016
+ms.author: billmath
 
-
+---
 # <a name="azure-ad-connect-sync:-scheduler"></a>Azure AD Connect Sync: Scheduler
 Dieses Thema beschreibt den integrierten Scheduler in Azure AD Connect Sync (auch bekannt als  Synchronisierungsmodul).
 
@@ -29,8 +28,8 @@ In früheren Versionen befand sich der Scheduler für Objekte und Attribute auß
 
 Der Scheduler ist für zwei Tasks zuständig:
 
-- **Synchronisierungszyklus**. Der Prozess zum Importieren, Synchronisieren und Exportieren von Änderungen.
-- **Wartungstasks**. Erneuern von Schlüsseln und Zertifikaten für das Zurücksetzen von Kennwörtern und für den Geräteregistrierungsdienst (Device Registration Service, DRS). Löschen alter Einträge im Vorgangsprotokoll.
+* **Synchronisierungszyklus**. Der Prozess zum Importieren, Synchronisieren und Exportieren von Änderungen.
+* **Wartungstasks**. Erneuern von Schlüsseln und Zertifikaten für das Zurücksetzen von Kennwörtern und für den Geräteregistrierungsdienst (Device Registration Service, DRS). Löschen alter Einträge im Vorgangsprotokoll.
 
 Der Scheduler selbst wird immer ausgeführt, kann jedoch so konfiguriert werden, dass er nur einen oder keinen dieser Tasks ausführt. Wenn Sie beispielsweise einen eigenen Prozess für den Synchronisierungszyklus verwenden, können Sie diesen Task im Scheduler deaktivieren, den Wartungstask aber weiterhin ausführen.
 
@@ -41,25 +40,25 @@ Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerSh
 
 Wenn beim Ausführen dieses Cmdlets die Meldung angezeigt wird, dass der **** Befehl oder das Cmdlet zur Synchronisierung nicht verfügbar ist, ist das PowerShell-Modul nicht geladen. Dies kann passieren, wenn Sie Azure AD Connect auf einem Domänencontroller oder einem Server mit höherer PowerShell-Einschränkungsebene ausführen als in den Standardeinstellungen festgelegt. Wenn dieser Fehler angezeigt wird, führen Sie `Import-Module ADSync` aus, um das Cmdlet verfügbar zu machen.
 
-- **AllowedSyncCycleInterval**. Die höchste von Azure AD zugelassene Synchronisierungshäufigkeit. Eine höhere Synchronisierungsfrequenz als hier angegeben wird nicht unterstützt.
-- **CurrentlyEffectiveSyncCycleInterval**. Der momentan verwendete Zeitplan. Er besitzt den gleichen Wert wie CustomizedSyncInterval (falls festgelegt), falls er keine höhere Häufigkeit als AllowedSyncInterval aufweist. Wenn Sie CustomizedSyncCycleInterval ändern, tritt diese Änderung nach dem nächsten Synchronisierungszyklus in Kraft.
-- **CustomizedSyncCycleInterval**. Wenn der Scheduler mit einer beliebigen anderen Häufigkeit als der Standardfrequenz von 30 Minuten ausgeführt werden soll, konfigurieren Sie diese Einstellung. In der oben gezeigten Abbildung wurde der Scheduler stattdessen auf einmal pro Stunde festgelegt. Wenn Sie diese Einstellung auf einen niedrigeren Wert als AllowedSyncInterval festlegen, wird stattdessen AllowedSyncInterval verwendet.
-- **NextSyncCyclePolicyType**. Entweder „Delta“ oder „Initial“. Legt fest, ob bei der nächsten Ausführung nur Deltaänderungen verarbeitet werden sollen oder ob bei der nächsten Ausführung ein vollständiger Import mit Synchronisierung stattfinden soll. Dabei werden auch neue oder geänderte Regeln erneut verarbeitet.
-- **NextSyncCycleStartTimeInUTC**. Der nächste Zeitpunkt, zu dem der Scheduler den nächsten Synchronisierungszyklus startet.
-- **PurgeRunHistoryInterval**. Der Zeitraum, für den die Vorgangsprotokolle aufbewahrt werden sollen. Diese können im Synchronization Service Manager überprüft werden. Standardmäßig werden sie sieben Tage lang gespeichert.
-- **SyncCycleEnabled**. Gibt an, ob der Scheduler die Import-, Synchronisierungs- und Exportprozesse als Teil seiner Operation ausführt.
-- **MaintenanceEnabled**. Zeigt an, ob der Wartungsprozess aktiviert ist. Dabei werden die Zertifikate/Schlüssel aktualisiert und das Vorgangsprotokoll bereinigt.
-- **IsStagingModeEnabled**. Zeigt an, ob der [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) aktiviert ist.
+* **AllowedSyncCycleInterval**. Die höchste von Azure AD zugelassene Synchronisierungshäufigkeit. Eine höhere Synchronisierungsfrequenz als hier angegeben wird nicht unterstützt.
+* **CurrentlyEffectiveSyncCycleInterval**. Der momentan verwendete Zeitplan. Er besitzt den gleichen Wert wie CustomizedSyncInterval (falls festgelegt), falls er keine höhere Häufigkeit als AllowedSyncInterval aufweist. Wenn Sie CustomizedSyncCycleInterval ändern, tritt diese Änderung nach dem nächsten Synchronisierungszyklus in Kraft.
+* **CustomizedSyncCycleInterval**. Wenn der Scheduler mit einer beliebigen anderen Häufigkeit als der Standardfrequenz von 30 Minuten ausgeführt werden soll, konfigurieren Sie diese Einstellung. In der oben gezeigten Abbildung wurde der Scheduler stattdessen auf einmal pro Stunde festgelegt. Wenn Sie diese Einstellung auf einen niedrigeren Wert als AllowedSyncInterval festlegen, wird stattdessen AllowedSyncInterval verwendet.
+* **NextSyncCyclePolicyType**. Entweder „Delta“ oder „Initial“. Legt fest, ob bei der nächsten Ausführung nur Deltaänderungen verarbeitet werden sollen oder ob bei der nächsten Ausführung ein vollständiger Import mit Synchronisierung stattfinden soll. Dabei werden auch neue oder geänderte Regeln erneut verarbeitet.
+* **NextSyncCycleStartTimeInUTC**. Der nächste Zeitpunkt, zu dem der Scheduler den nächsten Synchronisierungszyklus startet.
+* **PurgeRunHistoryInterval**. Der Zeitraum, für den die Vorgangsprotokolle aufbewahrt werden sollen. Diese können im Synchronization Service Manager überprüft werden. Standardmäßig werden sie sieben Tage lang gespeichert.
+* **SyncCycleEnabled**. Gibt an, ob der Scheduler die Import-, Synchronisierungs- und Exportprozesse als Teil seiner Operation ausführt.
+* **MaintenanceEnabled**. Zeigt an, ob der Wartungsprozess aktiviert ist. Dabei werden die Zertifikate/Schlüssel aktualisiert und das Vorgangsprotokoll bereinigt.
+* **IsStagingModeEnabled**. Zeigt an, ob der [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) aktiviert ist.
 
 Sie können einige dieser Einstellungen mit `Set-ADSyncScheduler`ändern. Folgende Parameter können geändert werden:
 
-- CustomizedSyncCycleInterval
-- NextSyncCyclePolicyType
-- PurgeRunHistoryInterval
-- SyncCycleEnabled
-- MaintenanceEnabled
+* CustomizedSyncCycleInterval
+* NextSyncCyclePolicyType
+* PurgeRunHistoryInterval
+* SyncCycleEnabled
+* MaintenanceEnabled
 
-Die Konfiguration des Schedulers wird in Azure AD gespeichert. Wenn Sie über einen Stagingserver verfügen, wirken sich alle Änderungen am primären Server auch auf den Stagingserver aus (mit Ausnahme von „IsStagingModeEnabled“).
+Die Konfiguration des Schedulers wird in Azure AD gespeichert. Wenn Sie über einen Stagingserver verfügen, wirken sich alle Änderungen am primären Server auch auf den Stagingserver aus (mit Ausnahme von „IsStagingModeEnabled“).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 Syntax: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
@@ -77,24 +76,24 @@ Der Scheduler wird standardmäßig alle 30 Minuten ausgeführt. In einigen Fäll
 **Deltasynchronisierungszyklus**  
 : Ein Deltasynchronisierungszyklus umfasst die folgenden Schritte:
 
-- Deltaimport auf allen Connectors
-- Deltasynchronisierung auf allen Connectors
-- Export auf allen Connectors
+* Deltaimport auf allen Connectors
+* Deltasynchronisierung auf allen Connectors
+* Export auf allen Connectors
 
 Es kann vorkommen, dass eine dringende Änderung sofort synchronisiert werden muss. In diesem Fall müssen Sie einen Zyklus manuell ausführen. Wenn Sie einen Zyklus manuell ausführen müssen, führen Sie in PowerShell den Befehl `Start-ADSyncSyncCycle -PolicyType Delta` aus.
 
 **Vollständiger Synchronisierungszyklus**  
 Wenn Sie eine der folgenden Konfigurationsänderungen vorgenommen haben, müssen Sie einen vollständigen Synchronisierungszyklus ausführen (auch als Erstsynchronisierung bezeichnet):
 
-- Sie haben weitere Objekte oder Attribute hinzugefügt, die aus einem Quellverzeichnis importiert werden müssen.
-- Sie haben Änderungen an den Synchronisierungsregeln vorgenommen.
-- Sie haben die [Filterung](active-directory-aadconnectsync-configure-filtering.md) geändert, sodass eine andere Anzahl von Objekten einbezogen werden soll.
+* Sie haben weitere Objekte oder Attribute hinzugefügt, die aus einem Quellverzeichnis importiert werden müssen.
+* Sie haben Änderungen an den Synchronisierungsregeln vorgenommen.
+* Sie haben die [Filterung](active-directory-aadconnectsync-configure-filtering.md) geändert, sodass eine andere Anzahl von Objekten einbezogen werden soll.
 
 Wenn Sie eine dieser Änderungen vorgenommen haben, müssen Sie einen vollständigen Synchronisierungszyklus ausführen, damit das Synchronisierungsmodul die Möglichkeit hat, die Connectorbereiche neu zu konsolidieren. Ein vollständiger Synchronisierungszyklus umfasst die folgenden Schritte:
 
-- Vollständiger Import auf allen Connectors
-- Vollständige Synchronisierung auf allen Connectors
-- Export auf allen Connectors
+* Vollständiger Import auf allen Connectors
+* Vollständige Synchronisierung auf allen Connectors
+* Export auf allen Connectors
 
 Um einen vollständigen Synchronisierungszyklus zu initiieren, führen Sie an einer PowerShell-Eingabeaufforderung den Befehl `Start-ADSyncSyncCycle -PolicyType Initial` aus. Dadurch wird ein vollständiger Synchronisierungszyklus gestartet.
 
@@ -107,7 +106,7 @@ Während ein Synchronisierungszyklus ausgeführt wird, sind Änderungen an der K
 
 1. Weisen Sie den Scheduler zunächst mit dem PowerShell-Cmdlet `Stop-ADSyncSyncCycle` an, den aktuellen Zyklus zu beenden.
 2. Durch das Beenden des Schedulers wird der aktuelle Task des aktuellen Connectors nicht unterbrochen. Um ein Beenden des Connectors zu erzwingen, führen Sie folgende Aktionen aus: ![StopAConnector](./media/active-directory-aadconnectsync-feature-scheduler/stopaconnector.png).
-    - Starten Sie den **Synchronisierungsdienst** über das Startmenü. Wechseln Sie zu **Connectors**, markieren Sie den Connector mit dem Status **Wird ausgeführt**, und wählen Sie unter „Aktionen“ die Option **Beenden** aus.
+   * Starten Sie den **Synchronisierungsdienst** über das Startmenü. Wechseln Sie zu **Connectors**, markieren Sie den Connector mit dem Status **Wird ausgeführt**, und wählen Sie unter „Aktionen“ die Option **Beenden** aus.
 
 Der Scheduler ist noch immer aktiv und wird bei der nächsten Gelegenheit wieder gestartet.
 
@@ -157,8 +156,6 @@ Wenn Sie den Installations-Assistenten starten, wird der Scheduler vorübergehen
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

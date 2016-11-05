@@ -1,36 +1,35 @@
-<properties
-   pageTitle="Azure AD Connect: Aktualisieren von einer früheren Version | Microsoft Azure"
-   description="Erläutert die verschiedenen Methoden für das Upgrade auf die aktuelle Version von Azure Active Directory Connect, einschließlich des direkten Upgrades und der Swing-Migration."
-   services="active-directory"
-   documentationCenter=""
-   authors="AndKjell"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect: Aktualisieren von einer früheren Version | Microsoft Docs'
+description: Erläutert die verschiedenen Methoden für das Upgrade auf die aktuelle Version von Azure Active Directory Connect, einschließlich des direkten Upgrades und der Swing-Migration.
+services: active-directory
+documentationcenter: ''
+author: AndKjell
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="Identity"
-   ms.date="06/27/2016"
-   ms.author="billmath"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: Identity
+ms.date: 06/27/2016
+ms.author: billmath
 
-
+---
 # <a name="azure-ad-connect:-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure AD Connect-Installation auf die aktuelle Version zu aktualisieren. Wir empfehlen, dass Sie immer die aktuelle Version von Azure AD Connect nutzen.
 
-Wenn Sie von DirSync aktualisieren möchten, lesen Sie stattdessen [Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md).
+Wenn Sie von DirSync aktualisieren möchten, lesen Sie stattdessen [Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md).
 
 Es gibt verschiedene Strategien für das Upgrade von Azure AD Connect.
 
-Methode | Beschreibung
---- | ---
-[Automatisches Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) | Für Kunden mit einer Expressinstallation ist dies die einfachste Methode.
-[Direktes Upgrade](#in-place-upgrade) | Wenn Sie über einen einzelnen Server verfügen, aktualisieren Sie die Installation direkt auf dem Server.
-[Swing-Migration](#swing-migration) | Wenn Sie über zwei Server verfügen, können Sie einen der Server mit der neuen Version vorbereiten und den aktiven Server ändern, wenn Sie bereit sind.
+| Methode | Beschreibung |
+| --- | --- |
+| [Automatisches Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) |Für Kunden mit einer Expressinstallation ist dies die einfachste Methode. |
+| [Direktes Upgrade](#in-place-upgrade) |Wenn Sie über einen einzelnen Server verfügen, aktualisieren Sie die Installation direkt auf dem Server. |
+| [Swing-Migration](#swing-migration) |Wenn Sie über zwei Server verfügen, können Sie einen der Server mit der neuen Version vorbereiten und den aktiven Server ändern, wenn Sie bereit sind. |
 
-Die erforderlichen Berechtigungen für das Upgrade finden Sie [hier](./aad-connect/active-directory-aadconnect-accounts-permissions.md#upgrade).
+Die erforderlichen Berechtigungen für das Upgrade finden Sie [hier](active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 ## <a name="in-place-upgrade"></a>Direktes Upgrade
 Ein direktes Upgrade funktioniert für das Aktualisieren von Azure AD Sync oder Azure AD Connect. Es funktioniert nicht für DirSync oder für eine Lösung mit FIM und Azure AD-Connector.
@@ -52,10 +51,9 @@ Auf den beiden Servern können verschiedene Versionen verwendet werden. Sie kön
 
 Hinweis: Es wurde festgestellt, dass einige Kunden für dieses Verfahren drei oder vier Server verwenden möchten. Da der Stagingserver aktualisiert wird, verfügen Sie während dieser Zeit nicht über einen Sicherungsserver für eine etwaige [Notfallwiederherstellung](active-directory-aadconnectsync-operations.md#disaster-recovery). Mit maximal vier Servern kann ein neuer Satz aus primären/Standbyservern mit der neuen Version vorbereitet werden. Dadurch ist sichergestellt, dass immer ein Stagingserver zur Verfügung steht.
 
-Diese Schritte funktionieren auch bei einem Wechsel von Azure AD Sync oder einer Lösung mit FIM und Azure AD-Connector. Diese Schritte funktionieren nicht für DirSync, aber die entsprechende Methode einer Swing-Migration (wird auch als parallele Bereitstellung bezeichnet) mit den Schritten für DirSync finden Sie unter [Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md).
+Diese Schritte funktionieren auch bei einem Wechsel von Azure AD Sync oder einer Lösung mit FIM und Azure AD-Connector. Diese Schritte funktionieren nicht für DirSync, aber die entsprechende Methode einer Swing-Migration (wird auch als parallele Bereitstellung bezeichnet) mit den Schritten für DirSync finden Sie unter [Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md).
 
 ### <a name="swing-migration-steps"></a>Schritte bei der Swing-Migration
-
 1. Wenn Sie Azure AD Connect auf beiden Servern verwenden, stellen Sie sicher, dass sowohl auf dem aktiven als auch auf dem Stagingserver die gleiche Version verwendet wird, bevor Sie mit dem Upgrade beginnen. So können Sie später Unterschiede leichter vergleichen. Wenn Sie ein Upgrade von Azure AD Sync durchführen, weisen diese Server verschiedene Versionen auf.
 2. Wenn Sie benutzerdefinierte Konfigurationen vorgenommen haben, die auf dem Stagingserver nicht vorhanden sind, führen Sie die Schritte unter [Verschieben der benutzerdefinierten Konfiguration vom aktiven Server auf den Stagingserver](#move-custom-configuration-from-active-to-staging-server)aus.
 3. Wenn Sie ein Upgrade von einer früheren Version von Azure AD Connect durchführen, aktualisieren Sie den Stagingserver auf die neueste Version. Wenn Sie eine Verschiebung von Azure AD Sync durchführen, installieren Sie Azure AD Connect auf Ihrem Stagingserver.
@@ -71,24 +69,22 @@ Die benutzerdefinierten Synchronisierungsregeln, die Sie erstellt haben, können
 
 Folgendes muss auf beiden Servern auf die gleiche Weise konfiguriert sein:
 
-- Verbindung mit den gleichen Gesamtstrukturen.
-- Filter von Domänen und Organisationseinheiten.
-- Die gleichen optionalen Funktionen wie Kennwortsynchronisierung und Kennwortrückschreiben.
+* Verbindung mit den gleichen Gesamtstrukturen.
+* Filter von Domänen und Organisationseinheiten.
+* Die gleichen optionalen Funktionen wie Kennwortsynchronisierung und Kennwortrückschreiben.
 
 **Verschieben von Synchronisierungsregeln**  
  Gehen Sie folgendermaßen vor, um eine benutzerdefinierte Synchronisierungsregel zu verschieben:
 
 1. Öffnen Sie den **Synchronisierungsregel-Editor** auf dem aktiven Server.
 2. Wählen Sie die benutzerdefinierte Regel aus. Klicken Sie auf **Exportieren**. Hierdurch wird ein Editor-Fenster angezeigt. Speichern Sie die temporäre Datei mit der Erweiterung PS1. Dadurch wird sie zu einem PowerShell-Skript. Kopieren Sie die PS1-Datei auf den Stagingserver.
-![Exportieren von Synchronisierungsregeln](./media/active-directory-aadconnect-upgrade-previous-version/exportrule.png)
+   ![Exportieren von Synchronisierungsregeln](./media/active-directory-aadconnect-upgrade-previous-version/exportrule.png)
 3. Die Connector-GUID ist auf dem Stagingserver anders. Um die GUID abzurufen, starten Sie den **Synchronisierungsregel-Editor**. Wählen Sie eine der standardmäßigen Regeln aus, die das gleiche verbundene System darstellen, und klicken Sie auf **Exportieren**. Ersetzen Sie die GUID in der PS1-Datei durch die GUID des Stagingservers.
 4. Führen Sie die PS1-Datei an einer PowerShell-Eingabeaufforderung aus. Dadurch wird die benutzerdefinierte Synchronisierungsregel auf dem Stagingserver erstellt.
 5. Wenn Sie über mehrere benutzerdefinierte Regeln verfügen, wiederholen Sie die Schritte für alle benutzerdefinierten Regeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

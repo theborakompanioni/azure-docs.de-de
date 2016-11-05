@@ -5,11 +5,9 @@ Verwenden Sie die folgenden Cmdlets zum Beenden und Starten eines virtuellen Ger
 
 `Stop-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
-    
-#### So starten Sie ein virtuelles Gerät neu
 
+#### So starten Sie ein virtuelles Gerät neu
 Wenn ein virtuelles Gerät ausgeführt wird und Sie dieses neu starten möchten, klicken Sie auf den Namen und anschließend auf **Neu starten**. Während des Neustarts des virtuellen Geräts wird der Status **Wird neu gestartet** angezeigt. Wenn das virtuelle Gerät zur Verwendung bereit ist, wird der Status **Wird ausgeführt** angezeigt.
 
 Verwenden Sie die folgenden Cmdlets für den Neustart eines virtuellen Geräts.

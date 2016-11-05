@@ -1,65 +1,57 @@
-<properties
-	pageTitle="Hochladen von Bildern in Azure-Blobspeicher über eine universelle Windows-App | Microsoft Azure"
-	description="Erfahren Sie, wie mithilfe eines mobilen JavaScript-Back-End-Dienstes Bilder in Azure-BLOB-Speicher hochladen und dann über Ihre universelle Windows-App darauf zugreifen."
-	services="mobile-services,storage"
-	documentationCenter="windows"
-	authors="ggailey777"
-	manager="dwrede"
-	editor=""/>
+---
+title: Hochladen von Bildern in Azure-Blobspeicher über eine universelle Windows-App | Microsoft Docs
+description: Erfahren Sie, wie mithilfe eines mobilen JavaScript-Back-End-Dienstes Bilder in Azure-BLOB-Speicher hochladen und dann über Ihre universelle Windows-App darauf zugreifen.
+services: mobile-services,storage
+documentationcenter: windows
+author: ggailey777
+manager: dwrede
+editor: ''
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows-store"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="glenga"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-windows-store
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: glenga
 
+---
 # Hochladen von Bildern in Azure-BLOB-Speicher mithilfe von Mobile Services
+[!INCLUDE [mobile-services-selector-upload-data-blob-storage](../../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
-[AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../../includes/mobile-services-selector-upload-data-blob-storage.md)]
-
-##Übersicht
-
+## Übersicht
 In diesem Thema wird erläutert, wie Sie Azure Mobile Services dazu verwenden können, Ihre App für das Hochladen und Speichern von durch Benutzer erzeugten Bildern in Azure Storage zu aktivieren. Mobile Services verwendet zur Datenspeicherung eine SQL-Datenbank. BLOB (Binary Large Object)-Daten lassen sich allerdings effizienter im Azure-Blob-Speicherdienst speichern.
 
 Die Anmeldeinformationen zum sicheren Hochladen von Daten in den Blob-Speicherdienst können mit der Client-App nicht sicher zugewiesen werden. Stattdessen müssen Sie diese Anmeldeinformationen in Ihrem mobilen Dienst speichern und dazu verwenden, eine Shared Access Signature (SAS) zu erstellen, die dann zum Hochladen eines neuen Bildes verwendet wird. Die SAS, eine Anmeldeinformation mit einer kurzen Laufzeit &mdash; in diesem Falle 5 Minuten –, wird durch Mobile Services sicher an die Client-App zurückgegeben. Anschließend nutzt die App diese temporäre Anmeldeinformation zum Hochladen des Bildes. In diesem Beispiel sind Downloads vom Blob-Dienst öffentlich.
 
 In diesem Lernprogramm fügen Sie der Mobile Services-Schnellstartapp Funktionen zum Aufnehmen von Bildern und Hochladen dieser Bilder unter Verwendung einer von Mobile Services erzeugten SAS in Azure hinzu.
 
-##Voraussetzungen
-
+## Voraussetzungen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-+ Microsoft Visual Studio 2013 Update 3 oder eine höhere Version.
-+ [Azure-Speicherkonto](../storage/storage-create-storage-account.md)
-+ Eine Kamera oder ein anderes an Ihren Computer angeschlossenes Bildaufnahmegerät
+* Microsoft Visual Studio 2013 Update 3 oder eine höhere Version.
+* [Azure-Speicherkonto](../storage/storage-create-storage-account.md)
+* Eine Kamera oder ein anderes an Ihren Computer angeschlossenes Bildaufnahmegerät
 
 Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie zunächst [Erste Schritte mit Mobile Services] abschließen.
 
-##Aktualisieren des registrierten Einfügeskripts im klassischen Azure-Portal
+## Aktualisieren des registrierten Einfügeskripts im klassischen Azure-Portal
+[!INCLUDE [mobile-services-configure-blob-storage](../../includes/mobile-services-configure-blob-storage.md)]
 
-[AZURE.INCLUDE [mobile-services-configure-blob-storage](../../includes/mobile-services-configure-blob-storage.md)]
+[!INCLUDE [mobile-services-windows-universal-dotnet-upload-to-blob-storage](../../includes/mobile-services-windows-universal-dotnet-upload-to-blob-storage.md)]
 
-[AZURE.INCLUDE [mobile-services-windows-universal-dotnet-upload-to-blob-storage](../../includes/mobile-services-windows-universal-dotnet-upload-to-blob-storage.md)]
-
-##Nächste Schritte
-
+## Nächste Schritte
 Nachdem Sie nun gelernt haben, Ihre Bilder durch die Integration Ihres mobilen Dienstes in den Blob-Dienst sicher hochzuladen, können Sie sich einigen anderen Themen aus dem Bereich Backend-Dienste und Integration zuwenden:
 
-+ [Planen von Back-End-Aufträgen in Mobile Services]
-
-  	Lernen Sie, wie Sie die Auftragsplanerfunktoin in Mobile Services zur Definition von Skriptcode verwenden können, der gemäß einem von Ihnen definierten Zeitplan ausgeführt wird.
-
-+ [Mobile Services: Serverskriptreferenz]
-
+* [Planen von Back-End-Aufträgen in Mobile Services]
+  
+      Lernen Sie, wie Sie die Auftragsplanerfunktoin in Mobile Services zur Definition von Skriptcode verwenden können, der gemäß einem von Ihnen definierten Zeitplan ausgeführt wird.
+* [Mobile Services: Serverskriptreferenz]
+  
     Referenzthemen zur Verwendung von Serverskripts zur Ausführung serverseitiger Tasks sowie zur Integration in andere Azure-Komponenten und externe Ressourcen.
-
-+ [Mobile Services .NET-Anleitungen: Konzeptionelle Referenz]
-
+* [Mobile Services .NET-Anleitungen: Konzeptionelle Referenz]
+  
     Lernen Sie mehr über die Verwendung von Mobile Services mit .NET
-
 
 <!-- Anchors. -->
 [Install the Storage Client library]: #install-storage-client

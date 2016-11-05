@@ -1,31 +1,30 @@
-<properties
-    pageTitle="Verschieben von Daten aus Salesforce mit Data Factory | Microsoft Azure"
-    description="Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory aus Salesforce verschieben."
-    services="data-factory"
-    documentationCenter=""
-    authors="linda33wj"
-    manager="jhubbard"
-    editor="monicar"/>
+---
+title: Verschieben von Daten aus Salesforce mit Data Factory | Microsoft Docs
+description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory aus Salesforce verschieben.
+services: data-factory
+documentationcenter: ''
+author: linda33wj
+manager: jhubbard
+editor: monicar
 
-<tags
-    ms.service="data-factory"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/26/2016"
-    ms.author="jingwang"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: jingwang
 
-
+---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Verschieben von Daten aus Salesforce mithilfe von Azure Data Factory
 In diesem Artikel wird die Verwendung der Kopieraktivität in einer Azure Data Factory beschrieben, um Daten aus Salesforce in einen Datenspeicher zu kopieren, der in der Tabelle [Unterstützte Quellen und Senken](data-factory-data-movement-activities.md#supported-data-stores) in der Spalte „Senke“ aufgeführt ist. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
 Azure Data Factory unterstützt derzeit nur das Verschieben von Daten aus Salesforce in [Unterstützte Senkendatenspeicher]((data-factory-data-movement-activities.md#supported-data-stores), aber nicht das Verschieben von Daten aus anderen Datenspeichern nach Salesforce.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Sie müssen eine der folgenden Editionen von Salesforce verwenden: Developer Edition, Professional Edition, Enterprise Edition oder Unlimited Edition.
-- API-Berechtigungen müssen aktiviert sein. Informationen hierzu finden Sie unter [How do I enable API access in Salesforce by permission set?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
-- Um Daten aus Salesforce in lokale Datenspeicher zu kopieren, muss in Ihrer lokalen Umgebung mindestens das Datenverwaltungsgateway 2.0 installiert sein.
+* Sie müssen eine der folgenden Editionen von Salesforce verwenden: Developer Edition, Professional Edition, Enterprise Edition oder Unlimited Edition.
+* API-Berechtigungen müssen aktiviert sein. Informationen hierzu finden Sie unter [How do I enable API access in Salesforce by permission set?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
+* Um Daten aus Salesforce in lokale Datenspeicher zu kopieren, muss in Ihrer lokalen Umgebung mindestens das Datenverwaltungsgateway 2.0 installiert sein.
 
 ## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
 Die einfachste Art, eine Pipeline zu erstellen, die Daten aus Salesforce in einen der unterstützten Senkendatenspeicher kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
@@ -37,11 +36,11 @@ In diesem Beispiel werden stündlich Daten aus Salesforce in ein Azure-Blob kopi
 
 Hier sind die Data Factory-Artefakte angegeben, die Sie zum Implementieren des Szenarios erstellen müssen. Die darauffolgenden Abschnitte enthalten die Details zu diesen Schritten.
 
-- Verknüpfter Dienst des Typs [Salesforce](#salesforce-linked-service-properties)
-- Verknüpfter Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
-- Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [RelationalTable](#salesforce-dataset-properties)
-- Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-- Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](#relationalsource-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
+* Verknüpfter Dienst des Typs [Salesforce](#salesforce-linked-service-properties)
+* Verknüpfter Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
+* Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [RelationalTable](#salesforce-dataset-properties)
+* Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
+* Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](#relationalsource-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
 **Verknüpfter Salesforce-Dienst**
 
@@ -100,7 +99,10 @@ In diesem Beispiel wird der verknüpfte Dienst **Salesforce** verwendet. Im Absc
 
 Durch Festlegen von **external** auf **true** wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
-> [AZURE.IMPORTANT] Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
+> [!IMPORTANT]
+> Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
+> 
+> 
 
 ![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
@@ -178,32 +180,36 @@ Unter [RelationalSource-Typeigenschaften](#relationalsource-type-properties) fin
         }
     }
 
-> [AZURE.IMPORTANT] Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
+> [!IMPORTANT]
+> Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
+> 
+> 
 
 ![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 ## <a name="salesforce-linked-service-properties"></a>Eigenschaften des verknüpften Salesforce-Diensts
-
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den verknüpften Salesforce-Dienst spezifisch sind.
 
 | Eigenschaft | Beschreibung | Erforderlich |
-| -------- | ----------- | -------- |
-| Typ | Die type-Eigenschaft muss auf **Salesforce**festgelegt sein. | Ja |
-| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. | Ja |
-| password | Geben Sie ein Kennwort für das Benutzerkonto an.  | Ja |
-| securityToken | Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API).  | Ja |
+| --- | --- | --- |
+| Typ |Die type-Eigenschaft muss auf **Salesforce**festgelegt sein. |Ja |
+| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
+| password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja |
+| securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Zurücksetzen Ihres Sicherheitstokens](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). |Ja |
 
 ## <a name="salesforce-dataset-properties"></a>Salesforce-Dataseteigenschaften
-
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md) . Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **RelationalTable** hat die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
-| -------- | ----------- | -------- |
-| tableName | Name der Tabelle in Salesforce. | Nein (wenn eine **Abfrage** von **RelationalSource** angegeben ist) |
+| --- | --- | --- |
+| tableName |Name der Tabelle in Salesforce. |Nein (wenn eine **Abfrage** von **RelationalSource** angegeben ist) |
 
-> [AZURE.IMPORTANT]  Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
+> [!IMPORTANT]
+> Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.
+> 
+> 
 
 ![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
@@ -215,11 +221,14 @@ Die Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dageg
 Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** aufweist (dies schließt Salesforce ein), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
-| -------- | ----------- | -------------- | -------- |
-| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | Eine SQL-92-Abfrage oder eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). Beispiel: `select * from MyTable__c`. | Nein (wenn **tableName** von **dataset** angegeben ist) |
+| --- | --- | --- | --- |
+| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Eine SQL-92-Abfrage oder eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). Beispiel: `select * from MyTable__c`. |Nein (wenn **tableName** von **dataset** angegeben ist) |
 
-> [AZURE.IMPORTANT] Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.<br>
-Verwenden Sie SOQL, wenn Sie eine Abfrage angeben, die die **where** -Klausel in der Spalte „DateTime“ enthält. Beispiel: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), or SQL query e.g. $$Text.Format('SELECT * FROM Account  WHERE LastModifiedDate   >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate  < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`.
+> [!IMPORTANT]
+> Der Abschnitt „__c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.<br>
+> Verwenden Sie SOQL, wenn Sie eine Abfrage angeben, die die **where** -Klausel in der Spalte „DateTime“ enthält. Beispiel: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), or SQL query e.g. $$Text.Format('SELECT * FROM Account  WHERE LastModifiedDate   >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate  < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`.
+> 
+> 
 
 ![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
@@ -231,39 +240,37 @@ Salesforce weist Grenzwerte sowohl für die Gesamtanzahl von API-Anforderungen a
 
 Wenn die Anzahl von gleichzeitigen Anforderungen das Limit überschreitet, setzt eine Drosselung ein, und es werden zufällig generierte Fehler angezeigt. Wenn die Gesamtanzahl von Anforderungen das Limit überschreitet, wird das Salesforce-Konto 24 Stunden lang gesperrt. In beiden Szenarien erhalten Sie möglicherweise auch den Fehler „REQUEST_LIMIT_EXCEEDED“.  
 
-
-[AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-salesforce"></a>Typzuordnung für Salesforce
-Salesforce-Typ | .NET-basierter Typ
---------------- | ---------------
-Auto Number | String
-Kontrollkästchen | Boolean
-Currency | Doppelt
-Datum | DateTime
-Datum/Uhrzeit | DateTime
-E-Mail | String
-ID | String
-Lookup Relationship | String
-Multi-Select Picklist | String
-Number | Doppelt
-Prozent | Doppelt
-Phone | String
-Picklist | String
-Text | String
-Text Area | String
-Text Area (Long) | String
-Text Area (Rich) | String
-Text (Encrypted) | String
-URL | String
+| Salesforce-Typ | .NET-basierter Typ |
+| --- | --- |
+| Auto Number |String |
+| Kontrollkästchen |Boolean |
+| Currency |Doppelt |
+| Datum |DateTime |
+| Datum/Uhrzeit |DateTime |
+| E-Mail |String |
+| ID |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
+| Number |Doppelt |
+| Prozent |Doppelt |
+| Phone |String |
+| Picklist |String |
+| Text |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
-[AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
-[AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-## <a name="performance-and-tuning"></a>Leistung und Optimierung  
+[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+
+## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
 
 <!--HONumber=Oct16_HO2-->
 

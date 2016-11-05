@@ -1,36 +1,43 @@
-<properties
-   pageTitle="Problembehandlung bei Systemintegritätsberichten | Microsoft Azure"
-   description="Beschreibt die von Komponenten des Azure Fabric-Diensts versendeten Integritätsberichte und ihre Verwendung bei der Behandlung von Problemen mit Clustern oder Anwendungen."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="oanapl"
-   manager="timlt"
-   editor=""/>
+---
+title: Problembehandlung bei Systemintegritätsberichten | Microsoft Docs
+description: Beschreibt die von Komponenten des Azure Fabric-Diensts versendeten Integritätsberichte und ihre Verwendung bei der Behandlung von Problemen mit Clustern oder Anwendungen.
+services: service-fabric
+documentationcenter: .net
+author: oanapl
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/28/2016"
-   ms.author="oanapl"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/28/2016
+ms.author: oanapl
 
-
+---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
-
 Für Azure Service Fabric-Komponenten werden für alle Entitäten im Cluster standardmäßig Berichte erstellt. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
 
-> [AZURE.NOTE] Informationen zu integritätsbezogenen Konzepten finden Sie unter [Einführung in die Service Fabric-Integritätsüberwachung](service-fabric-health-introduction.md).
+> [!NOTE]
+> Informationen zu integritätsbezogenen Konzepten finden Sie unter [Einführung in die Service Fabric-Integritätsüberwachung](service-fabric-health-introduction.md).
+> 
+> 
 
 Die Systemintegritätsberichte sorgen für Transparenz in Bezug auf die Cluster- und Anwendungsfunktionen und weisen auf Probleme mit der Integrität hin. Für Anwendungen und Dienste wird mit den Systemintegritätsberichten überprüft, ob Entitäten implementiert sind und sich aus Sicht von Service Fabric richtig verhalten. Die Berichte umfassen keine Integritätsüberwachung der Geschäftslogik des Diensts und keine Erkennung von hängenden Prozessen. Benutzerdienste können die Integritätsdaten um spezielle Informationen zu ihrer Logik erweitern.
 
-> [AZURE.NOTE] Watchdog-Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Das gleiche gilt, wenn eine neue Instanz der Entität erstellt wird (z. B. eine neue Dienstreplikatinstanz). Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
+> [!NOTE]
+> Watchdog-Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Das gleiche gilt, wenn eine neue Instanz der Entität erstellt wird (z. B. eine neue Dienstreplikatinstanz). Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
+> 
+> 
 
 Die Systemkomponentenberichte werden über die Quelle identifiziert. Diese beginnt mit dem „**System.**“- Präfix. Watchdogs können nicht das gleiche Präfix für ihre Quellen verwenden, da Berichte mit ungültigen Parametern abgelehnt werden.
 Wir sehen uns nun einige Systemberichte an, um zu verstehen, wodurch sie ausgelöst werden und wie mögliche Probleme behoben werden, die damit verbunden sind.
 
-> [AZURE.NOTE] Service Fabric fügt weiterhin Berichte für relevante Bedingungen hinzu, die zu einer besseren Transparenz in Bezug auf die Vorgänge im Cluster und in der Anwendung führen.
+> [!NOTE]
+> Service Fabric fügt weiterhin Berichte für relevante Bedingungen hinzu, die zu einer besseren Transparenz in Bezug auf die Vorgänge im Cluster und in der Anwendung führen.
+> 
+> 
 
 ## <a name="cluster-system-health-reports"></a>Cluster-Systemintegritätsberichte
 Die Entität für die Clusterintegrität wird im Integritätsspeicher automatisch erstellt. Wenn alles ordnungsgemäß funktioniert, liegt kein Systembericht vor.
@@ -40,9 +47,9 @@ Die Entität für die Clusterintegrität wird im Integritätsspeicher automatisc
 
 Im Bericht wird das Global Lease-Timeout als Gültigkeitsdauer (Time to Live, TTL) angegeben. Der Bericht wird jeweils zur Hälfte der Gültigkeitsdauer erneut gesendet, solange die Bedingung aktiv ist. Wenn das Ereignis abläuft, wird es automatisch entfernt. Durch dieses Verhalten ist selbst bei einem Ausfall des berichtenden Knotens eine ordnungsgemäße Bereinigung des Integritätsspeichers gewährleistet.
 
-- **SourceId**: System.Federation
-- **Property**: Beginnt mit **Neighborhood** und enthält Knoteninformationen.
-- **Nächste Schritte**: Untersuchen Sie, warum die Nachbarschaft verloren geht (überprüfen Sie beispielsweise die Kommunikation zwischen Clusterknoten).
+* **SourceId**: System.Federation
+* **Property**: Beginnt mit **Neighborhood** und enthält Knoteninformationen.
+* **Nächste Schritte**: Untersuchen Sie, warum die Nachbarschaft verloren geht (überprüfen Sie beispielsweise die Kommunikation zwischen Clusterknoten).
 
 ## <a name="node-system-health-reports"></a>Knoten-Systemintegritätsberichte
 **System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, mit der die Informationen zu Clusterknoten verwaltet werden. Jeder Knoten sollte über einen Bericht von System.FM verfügen, in dem der Zustand angegeben wird. Die Knotenentitäten werden entfernt, wenn der Knotenstatus entfernt wird (siehe [RemoveNodeStateAsync](https://msdn.microsoft.com/library/azure/mt161348.aspx)).
@@ -50,9 +57,9 @@ Im Bericht wird das Global Lease-Timeout als Gültigkeitsdauer (Time to Live, TT
 ### <a name="node-up/down"></a>Knoten heraufgefahren/heruntergefahren
 System.FM meldet „OK“, wenn der Knoten dem Ring beitritt (betriebsbereit). Ein Fehler wird gemeldet, wenn der Knoten den Ring verlässt (nicht betriebsbereit, entweder aufgrund eines Upgrades oder eines Fehlers). Die vom Integritätsspeicher erstellte Integritätshierarchie wird für bereitgestellte Entitäten in Korrelation mit System.FM-Knotenberichten aktiv. Ein Knoten wird als virtuelles übergeordnetes Element aller bereitgestellten Entitäten angesehen. Die bereitgestellten Entitäten auf diesem Knoten werden über Abfragen verfügbar gemacht, wenn der Knoten von System.FM als aktiv gemeldet wird. Dabei wird die gleiche Instanz verwendet, die auch den Entitäten zugeordnet ist. Wenn System.FM meldet, dass der Knoten inaktiv ist oder neu gestartet wurde (neue Instanz), werden im Integritätsspeicher automatisch die bereitgestellten Entitäten bereinigt, die nur auf dem inaktiven Knoten oder der vorherigen Instanz des Knoten vorhanden sein können.
 
-- **SourceId**: System.FM
-- **Property**: State
-- **Nächste Schritte**: Wenn der Knoten aufgrund eines Upgrades inaktiv ist, sollte er nach Abschluss des Upgrades wieder hochfahren. In diesem Fall sollte als Integritätsstatus wieder „OK“ gemeldet werden. Falls der Knoten nicht hochfährt oder ein Fehler auftritt, muss das Problem genauer untersucht werden.
+* **SourceId**: System.FM
+* **Property**: State
+* **Nächste Schritte**: Wenn der Knoten aufgrund eines Upgrades inaktiv ist, sollte er nach Abschluss des Upgrades wieder hochfahren. In diesem Fall sollte als Integritätsstatus wieder „OK“ gemeldet werden. Falls der Knoten nicht hochfährt oder ein Fehler auftritt, muss das Problem genauer untersucht werden.
 
 Das folgende Beispiel zeigt das System.FM-Ereignis mit dem Integritätsstatus „OK“ für einen aktiven Knoten:
 
@@ -80,16 +87,16 @@ HealthEvents          :
 ### <a name="certificate-expiration"></a>Zertifikatablauf
 **System.FabricNode** gibt eine Warnung aus, wenn vom Knoten verwendete Zertifikate kurz vor dem Ablauf stehen. Es gibt drei Zertifikate pro Knoten: **Certificate_cluster**, **Certificate_server** und **Certificate_default_client**. Wenn das Ablaufdatum noch mindestens zwei Wochen entfernt ist, lautet der Berichtsintegritätsstatus „OK“. Wenn der Ablauf in weniger als zwei Wochen erfolgt, wird als Berichtstyp eine Warnung erstellt. Die Gültigkeitsdauer (TTL) dieser Ereignisse ist unendlich. Sie werden entfernt, wenn ein Knoten den Cluster verlässt.
 
-- **SourceId**: System.FabricNode
-- **Property**: Beginnt mit **Certificate** und enthält weitere Informationen zum Zertifikattyp.
-- **Nächste Schritte**: Aktualisieren Sie die Zertifikate, wenn sie in Kürze ablaufen.
+* **SourceId**: System.FabricNode
+* **Property**: Beginnt mit **Certificate** und enthält weitere Informationen zum Zertifikattyp.
+* **Nächste Schritte**: Aktualisieren Sie die Zertifikate, wenn sie in Kürze ablaufen.
 
 ### <a name="load-capacity-violation"></a>Verletzung der Ladekapazität
 Der Service Fabric Load Balancer gibt eine Warnung aus, wenn eine Verletzung einer Knotenkapazität erkannt wird.
 
- - **SourceId**: System.PLB
- - **Property**: Beginnt mit **Capacity**.
- - **Nächste Schritte**: Überprüfen Sie die bereitgestellten Metriken, und zeigen Sie die aktuelle Kapazität auf dem Knoten an.
+* **SourceId**: System.PLB
+* **Property**: Beginnt mit **Capacity**.
+* **Nächste Schritte**: Überprüfen Sie die bereitgestellten Metriken, und zeigen Sie die aktuelle Kapazität auf dem Knoten an.
 
 ## <a name="application-system-health-reports"></a>Systemintegritätsberichte für Anwendungen
 **System.CM**steht für den Cluster-Manager-Dienst und ist die Autorität, die die Informationen zu einer Anwendung verwaltet.
@@ -97,9 +104,9 @@ Der Service Fabric Load Balancer gibt eine Warnung aus, wenn eine Verletzung ein
 ### <a name="state"></a>Zustand
 System.CM gibt die Meldung „OK“ aus, wenn die Anwendung erstellt oder aktualisiert wurde. Der Integritätsspeicher wird informiert, wenn die Anwendung gelöscht wurde, damit sie aus dem Speicher entfernt werden kann.
 
-- **SourceId**: System.CM
-- **Property**: State
-- **Nächste Schritte**: Wenn die Anwendung erstellt wurde, sollte sie den Cluster-Manager-Integritätsbericht enthalten. Überprüfen Sie andernfalls den Zustand der Anwendung, indem Sie eine Abfrage durchführen (z.B. das PowerShell-Cmdlet **Get-ServiceFabricApplication -ApplicationName *applicationName***).
+* **SourceId**: System.CM
+* **Property**: State
+* **Nächste Schritte**: Wenn die Anwendung erstellt wurde, sollte sie den Cluster-Manager-Integritätsbericht enthalten. Überprüfen Sie andernfalls den Zustand der Anwendung, indem Sie eine Abfrage durchführen (z.B. das PowerShell-Cmdlet **Get-ServiceFabricApplication -ApplicationName *applicationName***).
 
 Das folgende Beispiel zeigt das Zustandsereignis für die Anwendung **fabric:/WordCount** :
 
@@ -130,8 +137,8 @@ HealthEvents                    :
 ### <a name="state"></a>Zustand
 System.FM gibt die Meldung „OK“ aus, wenn der Dienst erstellt wurde. Die Entität wird aus dem Integritätsspeicher gelöscht, wenn der Dienst gelöscht wurde.
 
-- **SourceId**: System.FM
-- **Property**: State
+* **SourceId**: System.FM
+* **Property**: State
 
 Das folgende Beispiel zeigt das Zustandsereignis für den Dienst **fabric:/WordCount/WordCountService**:
 
@@ -161,9 +168,9 @@ HealthEvents          :
 ### <a name="unplaced-replicas-violation"></a>Verletzung aufgrund von nicht platzierten Replikaten
 **System.PLB** meldet eine Warnung, wenn keine Platzierung für ein oder mehrere Dienstreplikate gefunden werden kann. Der Bericht wird entfernt, wenn er abgelaufen ist.
 
-- **SourceId**: System.FM
-- **Property**: State
-- **Nächste Schritte**: Überprüfen Sie die Diensteinschränkungen und den aktuellen Zustand der Platzierung.
+* **SourceId**: System.FM
+* **Property**: State
+* **Nächste Schritte**: Überprüfen Sie die Diensteinschränkungen und den aktuellen Zustand der Platzierung.
 
 Das folgende Beispiel zeigt einen Verstoß für einen Dienst, der mit sieben Zielreplikaten in einem Cluster mit fünf Knoten konfiguriert ist:
 
@@ -244,9 +251,9 @@ Wenn die Replikatanzahl der Partition unterhalb des Mindestwerts liegt, wird ein
 
 Andere wichtige Ereignisse sind unter anderem eine Warnung, wenn die Neukonfiguration länger als erwartet dauert und wenn die Erstellung länger als erwartet dauert. Die erwarteten Zeiträume für die Erstellung und Neukonfiguration sind basierend auf Dienstszenarien konfigurierbar. Wenn ein Dienst beispielsweise über Zustandsdaten im Terabytebereich verfügt (etwa SQL-Datenbank), dauert die Erstellung länger als bei einem Dienst mit einer geringeren Menge an Zustandsdaten.
 
-- **SourceId**: System.FM
-- **Property**: State
-- **Nächste Schritte**: Wenn der Integritätsstatus nicht „OK“ lautet, ist es möglich, dass einige Replikate nicht richtig erstellt, geöffnet oder auf primäre oder sekundäre Elemente heraufgestuft wurden. Häufig ist die Hauptursache ein Dienstfehler bei der Implementierung zum Öffnen oder Ändern von Rollen.
+* **SourceId**: System.FM
+* **Property**: State
+* **Nächste Schritte**: Wenn der Integritätsstatus nicht „OK“ lautet, ist es möglich, dass einige Replikate nicht richtig erstellt, geöffnet oder auf primäre oder sekundäre Elemente heraufgestuft wurden. Häufig ist die Hauptursache ein Dienstfehler bei der Implementierung zum Öffnen oder Ändern von Rollen.
 
 Das folgende Beispiel zeigt eine fehlerfreie Partition:
 
@@ -315,8 +322,8 @@ PS C:\> @(Get-ServiceFabricNode).Count
 ### <a name="replica-constraint-violation"></a>Verletzung der Replikateinschränkung
 **System.PLB** gibt eine Warnung aus, wenn eine Verletzung der Replikateinschränkung erkannt wird und Replikate der Partition nicht platziert werden können.
 
-- **SourceId**: System.PLB
-- **Property**: Beginnt mit **ReplicaConstraintViolation**.
+* **SourceId**: System.PLB
+* **Property**: Beginnt mit **ReplicaConstraintViolation**.
 
 ## <a name="replica-system-health-reports"></a>Systemintegritätsberichte für Replikate
 **System.RA**steht für die Reconfiguration Agent-Komponente und ist die Autorität für den Replikatzustand.
@@ -324,8 +331,8 @@ PS C:\> @(Get-ServiceFabricNode).Count
 ### <a name="state"></a>Zustand
 **System.RA** gibt die Meldung „OK“ aus, wenn das Replikat erstellt wurde.
 
-- **SourceId**: System.RA
-- **Property**: State
+* **SourceId**: System.RA
+* **Property**: State
 
 Das folgende Beispiel zeigt ein fehlerfreies Replikat:
 
@@ -351,18 +358,18 @@ HealthEvents          :
 ### <a name="replica-open-status"></a>Öffnungszustand des Replikats
 Die Beschreibung dieses Integritätsberichts enthält den Startzeitpunkt (koordinierte Weltzeit), zu dem der API-Aufruf erfolgt ist.
 
-**System.RA** gibt eine Warnung aus, wenn das Öffnen des Replikats länger länger dauert, als die Konfiguration für den Zeitraum vorgibt (Standardwert: 30 Minuten). Wenn die API sich auf die Dienstverfügbarkeit auswirkt, wird der Bericht deutlich schneller ausgegeben (konfigurierbares Intervall, Standardwert: 30 Sekunden). Die gemessene Zeit enthält auch die Zeit für das Öffnen des Replikators und des Diensts. Die Eigenschaft ändert sich in „OK“, wenn das Öffnen abgeschlossen ist.
+**System.RA** gibt eine Warnung aus, wenn das Öffnen des Replikats länger länger dauert, als die Konfiguration für den Zeitraum vorgibt (Standardwert: 30 Minuten). Wenn die API sich auf die Dienstverfügbarkeit auswirkt, wird der Bericht deutlich schneller ausgegeben (konfigurierbares Intervall, Standardwert: 30 Sekunden). Die gemessene Zeit enthält auch die Zeit für das Öffnen des Replikators und des Diensts. Die Eigenschaft ändert sich in „OK“, wenn das Öffnen abgeschlossen ist.
 
-- **SourceId**: System.RA
-- **Property**: **ReplicaOpenStatus**
-- **Nächste Schritte**: Wenn der Integritätsstatus nicht „OK“ lautet, sollten Sie untersuchen, warum das Öffnen des Replikats länger dauert als erwartet.
+* **SourceId**: System.RA
+* **Property**: **ReplicaOpenStatus**
+* **Nächste Schritte**: Wenn der Integritätsstatus nicht „OK“ lautet, sollten Sie untersuchen, warum das Öffnen des Replikats länger dauert als erwartet.
 
 ### <a name="slow-service-api-call"></a>Langsamer Dienst-API-Aufruf
 **System.RAP** und **System.Replicator** geben eine Warnung aus, wenn ein Aufruf des Benutzerdienstcodes länger dauert als in der Konfiguration angegeben. Die Warnung wird gelöscht, wenn der Aufruf abgeschlossen ist.
 
-- **SourceId**: System.RAP oder System.Replicator
-- **Property**: Name der langsamen API. Die Beschreibung liefert weitere Details dazu, wie lange die API bereits aussteht.
-- **Nächste Schritte**: Untersuchen Sie, warum der Aufruf länger dauert als erwartet.
+* **SourceId**: System.RAP oder System.Replicator
+* **Property**: Name der langsamen API. Die Beschreibung liefert weitere Details dazu, wie lange die API bereits aussteht.
+* **Nächste Schritte**: Untersuchen Sie, warum der Aufruf länger dauert als erwartet.
 
 Das folgende Beispiel zeigt eine Partition mit Quorumverlust und die Schritte zur Ermittlung der Ursache. Eines der Replikate weist den Integritätsstatus „Warning“ auf, sodass Sie über die Integrität informiert sind. Es wird angezeigt, dass der Dienstvorgang länger als erwartet dauert. Das Ereignis wird von System.RAP gemeldet. Wenn Sie diese Informationen erhalten haben, besteht der nächste Schritt darin, sich den Dienstcode anzusehen und ihn zu untersuchen. Für diesen Fall löst die **RunAsync**-Implementierung des zustandsbehafteten Diensts einen Ausnahmefehler aus. Da die Replikate recycelt werden, sind unter Umständen keine Replikate mit dem Zustand „Warning“ zu sehen. Sie können den Integritätsstatus erneut abrufen und die Replikat-ID auf Unterschiede überprüfen. In bestimmten Fällen können die erneuten Versuche aufschlussreich sein.
 
@@ -460,7 +467,7 @@ HealthEvents          :
 
 Wenn Sie die fehlerhafte Anwendung mit aktiviertem Debugger starten, wird in den Fenstern mit den Diagnoseereignissen die von RunAsync ausgelöste Ausnahme angezeigt:
 
-![Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in „fabric:/HelloWorldStatefulApplication“.][1]
+![Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in „fabric:/HelloWorldStatefulApplication“.][1]
 
 Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in **fabric:/HelloWorldStatefulApplication**.
 
@@ -470,20 +477,22 @@ Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in **fabric:/HelloWorldSt
 ### <a name="replication-queue-full"></a>Replikationswarteschlange ist voll
 **System.Replicator** gibt eine Warnung aus, wenn die Replikationswarteschlange voll ist. Beim primären Element passiert dies in der Regel, weil sekundäre Replikate beim Bestätigen von Vorgängen sehr langsam sind. Beim sekundären Element geschieht dies gewöhnlich, wenn der Dienst langsam beim Anwenden der Vorgänge ist. Die Warnung wird gelöscht, wenn die Warteschlange nicht mehr voll ist.
 
-- **SourceId**: System.Replicator
-- **Property**: **PrimaryReplicationQueueStatus** oder **SecondaryReplicationQueueStatus**, je nach Replikatrolle.
+* **SourceId**: System.Replicator
+* **Property**: **PrimaryReplicationQueueStatus** oder **SecondaryReplicationQueueStatus**, je nach Replikatrolle.
 
 ### <a name="slow-naming-operations"></a>Langsame Naming-Vorgänge
-
 **System.NamingService** liefert Informationen zur Integrität des entsprechenden primären Replikats, wenn ein Naming-Vorgang zu lang dauert. Beispiele für Naming-Vorgänge sind [CreateServiceAsync](https://msdn.microsoft.com/library/azure/mt124028.aspx) und [DeleteServiceAsync](https://msdn.microsoft.com/library/azure/mt124029.aspx). Weitere Methoden finden Sie unter FabricClient (beispielsweise unter [Dienstverwaltungsmethoden](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.aspx) sowie unter [Eigenschaftsverwaltungsmethoden](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.propertymanagementclient.aspx)).
 
-> [AZURE.NOTE] Der Naming-Dienst löst die Dienstnamen in einen Speicherort im Cluster auf und ermöglicht Benutzern, Dienstnamen und -eigenschaften zu verwalten. Hierbei handelt es sich um einen partitionierten, persistenten Service Fabric-Dienst. Eine der Partitionen stellt den Autoritätsbesitzer dar, der Metadaten zu allen Service Fabric-Namen und -Diensten enthält. Die Service Fabric-Namen werden verschiedenen Partitionen (so genannten Namensbesitzerpartitionen) zugeordnet, um die Erweiterung des Diensts zu ermöglichen. Weitere Informationen finden Sie unter [Service Fabric-Architektur](service-fabric-architecture.md).
+> [!NOTE]
+> Der Naming-Dienst löst die Dienstnamen in einen Speicherort im Cluster auf und ermöglicht Benutzern, Dienstnamen und -eigenschaften zu verwalten. Hierbei handelt es sich um einen partitionierten, persistenten Service Fabric-Dienst. Eine der Partitionen stellt den Autoritätsbesitzer dar, der Metadaten zu allen Service Fabric-Namen und -Diensten enthält. Die Service Fabric-Namen werden verschiedenen Partitionen (so genannten Namensbesitzerpartitionen) zugeordnet, um die Erweiterung des Diensts zu ermöglichen. Weitere Informationen finden Sie unter [Service Fabric-Architektur](service-fabric-architecture.md).
+> 
+> 
 
 Wenn ein Naming-Vorgang unerwartet lang dauert, wird der Vorgang im *primären Replikat der Naming-Dienstpartition, die den Vorgang abwickelt*, mit einem Warnungsbericht gekennzeichnet. Ist der Vorgang erfolgreich, wird die Warnung gelöscht. Wird der Vorgang mit einem Fehler abgeschlossen, enthält der Integritätsbericht Einzelheiten zu dem Fehler.
 
-- **SourceId**: System.NamingService
-- **Property**: Beginnt mit dem Präfix **Duration_** und identifiziert den langsamen Vorgang und den Service Fabric-Namen, auf den der Vorgang angewendet wird. Ein Beispiel: Wenn die Diensterstellung für den Namen „fabric:/MyApp/MyService“ zu lang dauert, lautet die Eigenschaft „Duration_AOCreateService.fabric:/MyApp/MyService“. AO verweist auf die Rolle der Naming-Partition für diesen Namen und Vorgang.
-- **Nächste Schritte**: Überprüfen Sie, warum der Naming-Vorgang nicht erfolgreich ist. Bei jedem Vorgang können andere Ursachen vorliegen. So kann beispielsweise auf einem Knoten ein Problem mit dem Befehl zum Löschen des Diensts vorliegen, da der Anwendungshost auf einem Knoten aufgrund eines Benutzerfehlers im Dienstcode immer wieder abstürzt.
+* **SourceId**: System.NamingService
+* **Property**: Beginnt mit dem Präfix **Duration_** und identifiziert den langsamen Vorgang und den Service Fabric-Namen, auf den der Vorgang angewendet wird. Ein Beispiel: Wenn die Diensterstellung für den Namen „fabric:/MyApp/MyService“ zu lang dauert, lautet die Eigenschaft „Duration_AOCreateService.fabric:/MyApp/MyService“. AO verweist auf die Rolle der Naming-Partition für diesen Namen und Vorgang.
+* **Nächste Schritte**: Überprüfen Sie, warum der Naming-Vorgang nicht erfolgreich ist. Bei jedem Vorgang können andere Ursachen vorliegen. So kann beispielsweise auf einem Knoten ein Problem mit dem Befehl zum Löschen des Diensts vorliegen, da der Anwendungshost auf einem Knoten aufgrund eines Benutzerfehlers im Dienstcode immer wieder abstürzt.
 
 Im Anschluss sehen Sie ein Beispiel für einen Diensterstellungsvorgang. Der Vorgang dauerte länger als in der Konfiguration festgelegt. AO wiederholt den Vorgang und sendet Arbeit an NO. NO hat den letzten Vorgang mit Timeout abgeschlossen. In diesem Fall wird sowohl für die AO- als auch für die NO-Rolle das gleiche Replikat als primäres Replikat verwendet.
 
@@ -538,9 +547,9 @@ HealthEvents          :
 ### <a name="activation"></a>Aktivierung
 System.Hosting gibt die Meldung „OK“ aus, wenn eine Anwendung auf dem Knoten aktiviert wurde. Andernfalls wird ein Fehler gemeldet.
 
-- **SourceId**: System.Hosting
-- **Property**: Activation (einschließlich der Rolloutversion)
-- **Nächste Schritte**: Falls die Anwendung fehlerhaft ist, untersuchen Sie, warum die Aktivierung nicht erfolgreich war.
+* **SourceId**: System.Hosting
+* **Property**: Activation (einschließlich der Rolloutversion)
+* **Nächste Schritte**: Falls die Anwendung fehlerhaft ist, untersuchen Sie, warum die Aktivierung nicht erfolgreich war.
 
 Das folgende Beispiel zeigt eine erfolgreiche Aktivierung:
 
@@ -572,9 +581,9 @@ HealthEvents                       :
 ### <a name="download"></a>Download
 **System.Hosting** meldet einen Fehler, wenn das Herunterladen des Anwendungspakets nicht erfolgreich war.
 
-- **SourceId**: System.Hosting
-- **Property**: **Download:*RolloutVersion***.
-- **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
+* **SourceId**: System.Hosting
+* **Property**: **Download:*RolloutVersion***.
+* **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage-Systemintegritätsberichte
 **System.Hosting** ist die Autorität für bereitgestellte Entitäten.
@@ -582,21 +591,21 @@ HealthEvents                       :
 ### <a name="service-package-activation"></a>Aktivierung des Dienstpakets
 System.Hosting gibt die Meldung „OK“ aus, wenn die Aktivierung des Dienstpakets auf dem Knoten erfolgreich ist. Andernfalls wird ein Fehler gemeldet.
 
-- **SourceId**: System.Hosting
-- **Property**: Activation
-- **Nächste Schritte**: Untersuchen Sie, warum die Aktivierung nicht erfolgreich war.
+* **SourceId**: System.Hosting
+* **Property**: Activation
+* **Nächste Schritte**: Untersuchen Sie, warum die Aktivierung nicht erfolgreich war.
 
 ### <a name="code-package-activation"></a>Aktivierung des Codepakets
 **System.Hosting** gibt für jedes Codepaket die Meldung „OK“ aus, wenn die Aktivierung erfolgreich ist. Wenn die Aktivierung nicht erfolgreich ist, wird gemäß Konfiguration eine Warnung ausgegeben. Wenn **CodePackage** nicht aktiviert werden kann oder mit einem Fehler beendet wird, der über den unter **CodePackageHealthErrorThreshold** konfigurierten Wert hinausgeht, meldet Hosting einen Fehler. Wenn ein Dienstpaket mehrere Codepakete enthält, wird jeweils ein eigener Aktivierungsbericht erstellt.
 
-- **SourceId**: System.Hosting
-- **Property**: Verwendet das Präfix **CodePackageActivation** und enthält den Namen des Codepakets und den Einstiegspunkt im Format **CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** (beispielsweise **CodePackageActivation:Code:SetupEntryPoint**).
+* **SourceId**: System.Hosting
+* **Property**: Verwendet das Präfix **CodePackageActivation** und enthält den Namen des Codepakets und den Einstiegspunkt im Format **CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint*** (beispielsweise **CodePackageActivation:Code:SetupEntryPoint**).
 
 ### <a name="service-type-registration"></a>Diensttypregistrierung
 **System.Hosting** gibt die Meldung „OK“ aus, wenn der Diensttyp erfolgreich registriert wurde. Wenn die Registrierung nicht in der vorgegebenen Zeit erfolgt ist (gemäß Konfiguration mit **ServiceTypeRegistrationTimeout**), wird ein Fehler gemeldet. Die Registrierung des Diensttyps wird für den Knoten aufgehoben, weil die Laufzeit geschlossen wurde. In diesem Fall gibt Hosting eine Warnung aus.
 
-- **SourceId**: System.Hosting
-- **Property**: Verwendet das Präfix **ServiceTypeRegistration** und enthält den Diensttypnamen (beispielsweise **ServiceTypeRegistration:FileStoreServiceType**).
+* **SourceId**: System.Hosting
+* **Property**: Verwendet das Präfix **ServiceTypeRegistration** und enthält den Diensttypnamen (beispielsweise **ServiceTypeRegistration:FileStoreServiceType**).
 
 Das folgende Beispiel zeigt ein fehlerfreies bereitgestelltes Dienstpaket:
 
@@ -649,16 +658,16 @@ HealthEvents          :
 ### <a name="download"></a>Download
 **System.Hosting** meldet einen Fehler, wenn das Herunterladen des Dienstpakets nicht erfolgreich war.
 
-- **SourceId**: System.Hosting
-- **Property**: **Download:*RolloutVersion***.
-- **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
+* **SourceId**: System.Hosting
+* **Property**: **Download:*RolloutVersion***.
+* **Nächste Schritte**: Untersuchen Sie, warum das Herunterladen auf dem Knoten nicht erfolgreich war.
 
 ### <a name="upgrade-validation"></a>Upgradeüberprüfung
 **System.Hosting** meldet einen Fehler, wenn die Überprüfung während des Upgrades nicht erfolgreich war oder wenn das Upgrade auf dem Knoten zu einem Fehler führt.
 
-- **SourceId**: System.Hosting
-- **Property**: Verwendet das Präfix **FabricUpgradeValidation** und enthält die Upgradeversion.
-- **Description**: Verweist auf den aufgetretenen Fehler
+* **SourceId**: System.Hosting
+* **Property**: Verwendet das Präfix **FabricUpgradeValidation** und enthält die Upgradeversion.
+* **Description**: Verweist auf den aufgetretenen Fehler
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Anzeigen von Service Fabric-Integritätsberichten](service-fabric-view-entities-aggregated-health.md)
@@ -668,8 +677,6 @@ HealthEvents          :
 [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

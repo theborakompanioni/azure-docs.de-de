@@ -1,33 +1,32 @@
-<properties
-	pageTitle="Azure AD v2.0: AngularJS – Erste Schritte | Microsoft Azure"
-	description="Vorgehensweise beim Erstellen einer einseitigen AngularJS-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+---
+title: 'Azure AD v2.0: AngularJS – Erste Schritte | Microsoft Docs'
+description: Vorgehensweise beim Erstellen einer einseitigen AngularJS-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können.
+services: active-directory
+documentationcenter: ''
+author: dstrockis
+manager: mbaldwin
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="javascript"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="dastrock"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: javascript
+ms.topic: article
+ms.date: 09/16/2016
+ms.author: dastrock
 
-
+---
 # Hinzufügen der Anmeldung zu einer einseitigen AngularJS-App – Node.js
-
 In diesem Artikel verwenden wir den v2.0-Endpunkt von Azure Active Directory, um einer AngularJS-App eine Anmeldung mit Microsoft-basierten Konten hinzuzufügen. Mit dem v2.0-Endpunkt können Sie eine einzelne Integration in Ihrer App ausführen und Benutzer mit persönlichen Konten sowie mit Geschäfts-, Schul- oder Unikonten authentifizieren.
 
-Bei dem Beispiel handelt es sich um eine einfache Aufgabenlisten-App mit einer Seite, die die Aufgaben in einer Back-End-REST-API speichert. Sie ist in NodeJS geschrieben und wird mit einem OAuth-Bearertoken aus Azure AD gesichert. Die AngularJS-App verwendet unsere Open Source JavaScript-Authentifizierungsbibliothek [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js), um den gesamten Anmeldeprozess abzuwickeln und Token für den Aufruf der REST-API abzurufen. Nach dem gleichen Muster kann die Authentifizierung auch bei anderen REST-APIs ausgeführt werden, z. B. bei den [Microsoft Graph](https://graph.microsoft.com)- oder den Azure-Ressourcen-Manager-APIs.
+Bei dem Beispiel handelt es sich um eine einfache Aufgabenlisten-App mit einer Seite, die die Aufgaben in einer Back-End-REST-API speichert. Sie ist in NodeJS geschrieben und wird mit einem OAuth-Bearertoken aus Azure AD gesichert. Die AngularJS-App verwendet unsere Open Source JavaScript-Authentifizierungsbibliothek [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js), um den gesamten Anmeldeprozess abzuwickeln und Token für den Aufruf der REST-API abzurufen. Nach dem gleichen Muster kann die Authentifizierung auch bei anderen REST-APIs ausgeführt werden, z. B. bei den [Microsoft Graph](https://graph.microsoft.com)- oder den Azure-Ressourcen-Manager-APIs.
 
-> [AZURE.NOTE]
-	Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+> [!NOTE]
+> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+> 
+> 
 
 ## Download
-
 Bevor Sie anfangen können, müssen Sie [node.js](https://nodejs.org) herunterladen und installieren. Anschließend können Sie eine Skelett-App [herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-NodeJS/archive/skeleton.zip) oder klonen:
 
 ```
@@ -41,17 +40,17 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-NodeJS.git
 ```
 
 ## Registrieren einer App
-
 Erstellen Sie zuerst eine App im [App-Registrierungsportal](https://apps.dev.microsoft.com), oder führen Sie [diese detailliert beschriebenen Schritte](active-directory-v2-app-registration.md) aus. Stellen Sie sicher, dass Sie:
 
-- die **Web**-Plattform für Ihre App hinzufügen.
-- den richtigen **Umleitungs-URI** eingeben. Die Standardeinstellung für dieses Beispiel lautet `http://localhost:8080`.
-- das Kontrollkästchen **Impliziten Fluss zulassen** aktiviert lassen.
+* die **Web**-Plattform für Ihre App hinzufügen.
+* den richtigen **Umleitungs-URI** eingeben. Die Standardeinstellung für dieses Beispiel lautet `http://localhost:8080`.
+* das Kontrollkästchen **Impliziten Fluss zulassen** aktiviert lassen.
 
 Kopieren oder notieren Sie die Ihrer App zugewiesene **Anwendungs-ID**. Sie benötigen Sie in Kürze.
 
 ## Installieren von „adal.js“
 Navigieren Sie zunächst zum heruntergeladenen Projekt, und installieren Sie „adal.js“. Wenn bei Ihnen [bower](http://bower.io/) installiert ist, können Sie einfach diesen Befehl ausführen. Falls Abhängigkeitsversionskonflikte auftreten, wählen Sie die höhere Version.
+
 ```
 bower install adal-angular#experimental
 ```
@@ -72,7 +71,6 @@ Alternativ können Sie [adal.js](https://raw.githubusercontent.com/AzureAD/azure
 ```
 
 ## Einrichten der REST-API
-
 Kümmern wir uns nun bei der Einrichtung um die Back-End-REST-API. Installieren Sie über eine Eingabeaufforderung alle nötigen Pakete, indem Sie in der obersten Verzeichnisebene des Projekts folgenden Befehl ausführen:
 
 ```
@@ -83,11 +81,11 @@ npm install
 
 ```js
 exports.creds = {
-     
+
      // TODO: Replace this value with the Application ID from the registration portal
      audience: '<Your-application-id>',
-	 
-	 ...
+
+     ...
 }
 ```
 
@@ -116,19 +114,19 @@ Nun können Sie den `adalProvider` mit Ihrer Anwendungs-ID initialisieren:
 ...
 
 adalProvider.init({
-        
+
         // Use this value for the public instance of Azure AD
         instance: 'https://login.microsoftonline.com/', 
-        
+
         // The 'common' endpoint is used for multi-tenant applications like this one
         tenant: 'common',
-        
+
         // Your application id from the registration portal
         clientId: '<Your-application-id>',
-        
+
         // If you're using IE, uncommment this line - the default HTML5 sessionStorage does not work for localhost.
         //cacheLocation: 'localStorage',
-         
+
     }, $httpProvider);
 ```
 
@@ -157,16 +155,16 @@ angular.module('todoApp')
 // Load adal.js the same way for use in controllers and views   
 .controller('homeCtrl', ['$scope', 'adalAuthenticationService','$location', function ($scope, adalService, $location) {
     $scope.login = function () {
-        
+
         // Redirect the user to sign in
         adalService.login();
-        
+
     };
     $scope.logout = function () {
-        
+
         // Redirect the user to log out    
         adalService.logOut();
-    
+
     };
 ...
 ```
@@ -227,7 +225,7 @@ return $http.get('/api/tasks');
 ...
 ```
 
-Glückwunsch! Ihre in Azure AD integrierte einseitige App ist nun vollständig. Genießen Sie das. Jetzt können Benutzer authentifiziert werden, die zugehörige Back-End-REST-API kann mit OpenID Connect sicher aufgerufen werden, und es können grundlegende Informationen zum Benutzer abgerufen werden. Von Anfang an werden alle Benutzer mit einem persönlichen Microsoft-Konto oder einem Geschäfts-/Schulkonto von Azure AD unterstützt. Testen Sie nun die App, indem Sie Folgendes ausführen:
+Glückwunsch! Ihre in Azure AD integrierte einseitige App ist nun vollständig. Genießen Sie das. Jetzt können Benutzer authentifiziert werden, die zugehörige Back-End-REST-API kann mit OpenID Connect sicher aufgerufen werden, und es können grundlegende Informationen zum Benutzer abgerufen werden. Von Anfang an werden alle Benutzer mit einem persönlichen Microsoft-Konto oder einem Geschäfts-/Schulkonto von Azure AD unterstützt. Testen Sie nun die App, indem Sie Folgendes ausführen:
 
 ```
 node server.js
@@ -237,12 +235,11 @@ Navigieren Sie in einem Browser zu `http://localhost:8080`. Melden Sie sich mit 
 
 Weitere Informationen zum v2.0-Endpunkt finden Sie im [v2.0-Entwicklerhandbuch](active-directory-appmodel-v2-overview.md). Weitere Ressourcen:
 
-- [Azure-Beispiele auf GitHub >>](https://github.com/Azure-Samples)
-- [Azure AD auf Stack Overflow >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
-- Azure AD-Dokumentation auf [Azure.com >>](https://azure.microsoft.com/documentation/services/active-directory/)
+* [Azure-Beispiele auf GitHub >>](https://github.com/Azure-Samples)
+* [Azure AD auf Stack Overflow >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* Azure AD-Dokumentation auf [Azure.com >>](https://azure.microsoft.com/documentation/services/active-directory/)
 
 ## Abrufen von Sicherheitsupdates für unsere Produkte
-
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
 
 <!---HONumber=AcomDC_0921_2016-->

@@ -1,25 +1,23 @@
-<properties 
-   pageTitle="Nachverfolgen von B2B-Nachrichten in Ihren Logik-Apps in Azure App Service | Microsoft Azure" 
-   description="In diesem Thema wird die Nachverfolgung der B2B-Verarbeitung behandelt." 
-   services="logic-apps" 
-   documentationCenter=".net,nodejs,java" 
-   authors="rajram" 
-   manager="erikre" 
-   editor=""/>
+---
+title: Nachverfolgen von B2B-Nachrichten in Ihren Logik-Apps in Azure App Service | Microsoft Docs
+description: In diesem Thema wird die Nachverfolgung der B2B-Verarbeitung behandelt.
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: rajram
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="04/20/2016"
-   ms.author="rajram"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 04/20/2016
+ms.author: rajram
 
-
+---
 # Nachverfolgen von B2B-Nachrichten
-
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 ## B2B-Nachverfolgungsinformationen
 Die B2B-Kommunikation umfasst die Nachrichtenverarbeitung zwischen Handelspartnern. Die Beziehungen werden als Vereinbarungen zwischen zwei Handelspartnern definiert. Nachdem die Kommunikation eingerichtet wurde, wird eine Möglichkeit zur Überwachung benötigt, ob die Kommunikation wie erwartet erfolgt.

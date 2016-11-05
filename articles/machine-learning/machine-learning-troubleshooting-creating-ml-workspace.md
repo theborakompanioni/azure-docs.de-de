@@ -1,31 +1,28 @@
-<properties
-	pageTitle="Problembehandlung: Erstellen eines Azure Machine Learning-Arbeitsbereichs und Verbindungsaufbau | Microsoft Azure"
-	description="Lösungen für häufige Probleme beim Erstellen eines Azure Machine Learning-Arbeitsbereichs und beim Herstellen einer Verbindung zu diesem Bereich"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: 'Problembehandlung: Erstellen eines Azure Machine Learning-Arbeitsbereichs und Verbindungsaufbau | Microsoft Docs'
+description: Lösungen für häufige Probleme beim Erstellen eines Azure Machine Learning-Arbeitsbereichs und beim Herstellen einer Verbindung zu diesem Bereich
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/09/2016"
-	ms.author="garye"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/09/2016
+ms.author: garye
 
-
+---
 # Handbuch zur Problembehandlung: Erstellen eines Azure Machine Learning-Arbeitsbereichs und Verbindungsaufbau
-
 Dieser Leitfaden bietet Lösungen für einige gängige Schwierigkeiten beim Einrichten von Azure Machine Learning-Arbeitsbereichen.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## Besitzer des Arbeitsbereichs
-
-Beim Erstellen eines neuen Azure Machine Learning-Arbeitsbereichs müssen Sie im Feld "WORKSPACE OWNER" ein gültiges Microsoft-Konto (ehemals "Windows Live ID") eingeben, z. B. john-contoso@live.com oder john-contoso@hotmail.com. Es muss ein Microsoft-Konto sein, z. B. kann es nicht Ihr Unternehmens-E-Mail-Konto sein. Besuchen Sie [www.live.com](http://www.live.com), um ein kostenloses Microsoft-Konto zu erstellen.
+Beim Erstellen eines neuen Azure Machine Learning-Arbeitsbereichs müssen Sie im Feld "WORKSPACE OWNER" ein gültiges Microsoft-Konto (ehemals "Windows Live ID") eingeben, z. B. john-contoso@live.com oder john-contoso@hotmail.com. Es muss ein Microsoft-Konto sein, z. B. kann es nicht Ihr Unternehmens-E-Mail-Konto sein. Besuchen Sie [www.live.com](http://www.live.com), um ein kostenloses Microsoft-Konto zu erstellen.
 
 Beachten Sie, dass das Konto, mit dem Sie sich am Azure-Portal angemeldet haben, um einen Arbeitsbereich zu erstellen, nicht automatisch über die Berechtigung zum *Öffnen* dieses Arbeitsbereichs verfügt, sofern Sie nicht dieses Konto als Besitzer angeben. Um einen Arbeitsbereich in Machine Learning Studio zu öffnen, müssen Sie bei dem Microsoft-Konto angemeldet sein, das als Besitzer des Arbeitsbereichs definiert wurde, oder Sie müssen eine Einladung des Besitzers zur Teilnahme am Arbeitsbereich erhalten haben. Sie können jedoch im klassischen Azure-Portal den Arbeitsbereich *verwalten*, einschließlich der Möglichkeit zum Ändern des Besitzers und der Zugriffskonfiguration.
 
@@ -34,7 +31,6 @@ Weitere Informationen zum Verwalten eines Arbeitsbereichs finden Sie unter [Verw
 [Verwalten eines Azure Machine Learning-Arbeitsbereichs]: machine-learning-manage-workspace.md
 
 ## Zulässige Regionen
-
 Machine Learning ist derzeit in einer begrenzten Anzahl an Regionen verfügbar. Falls Ihr Abonnement keine dieser Regionen beinhaltet, wird eventuell die Fehlermeldung „Sie verfügen über keine Abonnements für die zulässigen Regionen“ angezeigt.
 
 Um anzufordern, dass Ihrem Abonnement eine Region hinzugefügt wird, wählen Sie im klassischen Azure-Portal **Microsoft-Support kontaktieren** und dann **Abrechnung** als Problemtyp aus. Folgen Sie dann den Anweisungen, um Ihre Anfrage zu übermitteln.
@@ -42,7 +38,6 @@ Um anzufordern, dass Ihrem Abonnement eine Region hinzugefügt wird, wählen Sie
 ![Microsoft-Support kontaktieren][screen1]
 
 ## Speicherkonto
-
 Der Machine Learning-Dienst benötigt ein Speicherkonto zum Speichern von Daten. Sie können ein bestehendes Speicherkonto verwenden oder ein neues Speicherkonto erstellen, wenn Sie den neuen Machine Learning-Arbeitsbereich einrichten (falls Ihr Kontingent ausreicht, um ein neues Speicherkonto zu erstellen).
 
 <!-- These instructions no longer work, but I'm not sure what to replace them with

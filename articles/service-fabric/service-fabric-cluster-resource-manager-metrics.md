@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Verwalten von Metriken mit dem Clusterressourcen-Manager von Azure Service Fabric | Microsoft Azure"
-   description="Enthält Informationen zum Konfigurieren und Verwenden von Metriken in Service Fabric."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Verwalten von Metriken mit dem Clusterressourcen-Manager von Azure Service Fabric | Microsoft Docs
+description: Enthält Informationen zum Konfigurieren und Verwenden von Metriken in Service Fabric.
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
 „Metriken“ sind in Service Fabric die generische Bezeichnung für die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Im Allgemeinen ist eine Metrik jedes Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu steuern.
 
@@ -24,21 +24,22 @@ Arbeitsspeicher, Festplatten, CPU-Auslastung – all dies sind Beispiele für Me
 ## Standardmetriken
 Angenommen, Sie möchten die ersten Schritte ausführen und wissen nicht, welche Ressourcen genutzt werden bzw. welche Ressourcen wichtig sein werden. Sie führen also die Implementierung durch und erstellen die Dienste, ohne Metriken anzugeben. Das ist kein Problem. Wir wählen einige Metriken für Sie aus. Die Standardmetriken, die wir derzeit für Sie verwenden, wenn Sie keine eigenen Metriken angeben, haben die Bezeichnungen „PrimaryCount“, „ReplicaCount“ und (zugegebenermaßen etwas vage) „Count“. In der folgenden Tabelle ist angegeben, welche Auslastung für diese Metriken mit jedem Dienstobjekt verbunden ist:
 
-| Metrik | Auslastung für zustandslose Instanz |	Zustandsbehaftete sekundäre Auslastung |	Zustandsbehaftete primäre Auslastung |
-|--------|--------------------------|-------------------------|-----------------------|
-| PrimaryCount | 0 |	0 |	1 |
-| ReplicaCount | 0 | 1 | 1 |
-| Count |	1 |	1 |	1 |
+| Metrik | Auslastung für zustandslose Instanz | Zustandsbehaftete sekundäre Auslastung | Zustandsbehaftete primäre Auslastung |
+| --- | --- | --- | --- |
+| PrimaryCount |0 |0 |1 |
+| ReplicaCount |0 |1 |1 |
+| Count |1 |1 |1 |
 
-Was erhalten Sie bei diesen Standardmetriken? Für einfache Workloads erhalten Sie eine ziemlich gute Verteilung der Arbeit. Im Beispiel unten wird veranschaulicht, was passiert, wenn wir einen zustandsbehafteten Dienst mit drei Partitionen und einer Größe der Zielreplikatgruppe von „3“ erstellen. Außerdem erstellen wir einen einzelnen zustandslosen Dienst mit einer Instanzanzahl von 3. Das Ergebnis ist wie folgt:
+Was erhalten Sie bei diesen Standardmetriken? Für einfache Workloads erhalten Sie eine ziemlich gute Verteilung der Arbeit. Im Beispiel unten wird veranschaulicht, was passiert, wenn wir einen zustandsbehafteten Dienst mit drei Partitionen und einer Größe der Zielreplikatgruppe von „3“ erstellen. Außerdem erstellen wir einen einzelnen zustandslosen Dienst mit einer Instanzanzahl von 3. Das Ergebnis ist wie folgt:
 
 ![Clusterlayout mit Standardmetriken][Image1]
 
 In diesem Beispiel ist Folgendes zu beobachten:
--	Primäre Replikate für den zustandsbehafteten Dienst sind nicht auf einem einzelnen Knoten gestapelt.
--	Die Replikate einer Partition befinden sich nicht auf demselben Knoten.
--	Die primären und sekundären Replikate sind im Cluster gut verteilt.
--	Die Dienstobjekte (zustandslos und zustandsbehaftet) sind gleichmäßig auf die einzelnen Knoten verteilt.
+
+* Primäre Replikate für den zustandsbehafteten Dienst sind nicht auf einem einzelnen Knoten gestapelt.
+* Die Replikate einer Partition befinden sich nicht auf demselben Knoten.
+* Die primären und sekundären Replikate sind im Cluster gut verteilt.
+* Die Dienstobjekte (zustandslos und zustandsbehaftet) sind gleichmäßig auf die einzelnen Knoten verteilt.
 
 Das ist gut!
 
@@ -51,7 +52,7 @@ Wir haben bereits erörtert, dass es sowohl physische als auch logische Metriken
 
 Beachten Sie Folgendes: Wenn Sie mit dem Definieren von benutzerdefinierten Metriken beginnen, müssen Sie die Standardmetriken explizit wieder hinzufügen, wenn Sie möchten, dass diese von uns ebenfalls zum Ausbalancieren Ihres Diensts verwendet werden sollen. Der Grund ist, dass Sie sich über die Beziehung zwischen Standardmetriken und Ihren benutzerdefinierten Metriken im Klaren sein sollen. Es kann beispielsweise sein, dass die Arbeitsspeicherauslastung bzw. WorkQueueDepth für Sie deutlich wichtiger als die Verteilung der primären Replikate ist.
 
-Angenommen, Sie möchten einen Dienst konfigurieren, von dem eine Metrik mit der Bezeichnung „Arbeitsspeicher“ gemeldet wird (zusätzlich zu den Standardmetriken). Sie haben einige grundlegende Messungen für den Arbeitsspeicher durchgeführt und ermittelt, dass für ein primäres Replikat des Diensts 20 MB Arbeitsspeicher verbraucht werden, während für sekundäre Replikate desselben Diensts 5 MB benötigt werden. Sie wissen, dass „Arbeitsspeicher“ die wichtigste Metrik in Bezug auf die Verwaltung der Leistung dieses Diensts ist. Sie möchten aber trotzdem erreichen, dass primäre Replikate gleichmäßig verteilt werden, damit beim Verlust eines Knotens oder einer Fehlerdomäne nicht eine übermäßig hohe Zahl von primären Replikaten ebenfalls verloren geht. Ansonsten verwenden Sie die Standardmetriken.
+Angenommen, Sie möchten einen Dienst konfigurieren, von dem eine Metrik mit der Bezeichnung „Arbeitsspeicher“ gemeldet wird (zusätzlich zu den Standardmetriken). Sie haben einige grundlegende Messungen für den Arbeitsspeicher durchgeführt und ermittelt, dass für ein primäres Replikat des Diensts 20 MB Arbeitsspeicher verbraucht werden, während für sekundäre Replikate desselben Diensts 5 MB benötigt werden. Sie wissen, dass „Arbeitsspeicher“ die wichtigste Metrik in Bezug auf die Verwaltung der Leistung dieses Diensts ist. Sie möchten aber trotzdem erreichen, dass primäre Replikate gleichmäßig verteilt werden, damit beim Verlust eines Knotens oder einer Fehlerdomäne nicht eine übermäßig hohe Zahl von primären Replikaten ebenfalls verloren geht. Ansonsten verwenden Sie die Standardmetriken.
 
 Gehen Sie wie folgt vor:
 
@@ -101,13 +102,13 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 Nachdem Sie erfahren haben, wie Sie Ihre eigenen Metriken definieren, geht es nun um die unterschiedlichen Eigenschaften, die Metriken aufweisen können. Wir haben sie Ihnen bereits gezeigt, aber jetzt wird beschrieben, was sie genau bedeuten. Derzeit kann eine Metrik vier verschiedene Eigenschaften haben:
 
--	Metrikname: Dies ist der Name der Metrik. Es handelt sich hierbei um einen eindeutigen Bezeichner für die Metrik im Cluster aus Resource Manager-Sicht.
-- Standardauslastung: Die Standardauslastung wird unterschiedlich repräsentiert, je nachdem, ob der Dienst zustandslos oder zustandsbehaftet ist.
-  - Bei zustandslosen Diensten weist jede Metrik nur eine einzige Eigenschaft für die Standardauslastung auf.
-  - Für zustandsbehaftete Dienste definieren Sie
-    -	PrimaryDefaultLoad: Dies ist die standardmäßige Auslastungsmenge, die für den Dienst für diese Metrik als primäres Replikat anfällt.
-    -	SecondaryDefaultLoad: Dies ist die standardmäßige Auslastungsmenge, die für den Dienst für diese Metrik als sekundäres Replikat anfällt.
--	Gewichtung: Gibt an, wie wichtig die Metrik relativ zu den anderen konfigurierten Metriken dieses Diensts ist.
+* Metrikname: Dies ist der Name der Metrik. Es handelt sich hierbei um einen eindeutigen Bezeichner für die Metrik im Cluster aus Resource Manager-Sicht.
+* Standardauslastung: Die Standardauslastung wird unterschiedlich repräsentiert, je nachdem, ob der Dienst zustandslos oder zustandsbehaftet ist.
+  * Bei zustandslosen Diensten weist jede Metrik nur eine einzige Eigenschaft für die Standardauslastung auf.
+  * Für zustandsbehaftete Dienste definieren Sie
+    * PrimaryDefaultLoad: Dies ist die standardmäßige Auslastungsmenge, die für den Dienst für diese Metrik als primäres Replikat anfällt.
+    * SecondaryDefaultLoad: Dies ist die standardmäßige Auslastungsmenge, die für den Dienst für diese Metrik als sekundäres Replikat anfällt.
+* Gewichtung: Gibt an, wie wichtig die Metrik relativ zu den anderen konfigurierten Metriken dieses Diensts ist.
 
 ## Laden
 Die Last oder auch Auslastung ist eine allgemeine Angabe, welcher Anteil einer bestimmten Metrik von einer Dienstinstanz oder einem Replikat auf einem bestimmten Knoten verbraucht wird.
@@ -151,15 +152,15 @@ Ein mögliches Clusterlayout kann beispielsweise wie folgt aussehen:
 
 Beachten Sie folgende Punkte:
 
--	Da Replikate oder Instanzen die Standardauslastung des Diensts verwenden, bis sie ihre eigene Auslastung melden, wissen wir, dass die Replikate in Partition 1 des zustandsbehafteten Diensts noch keine eigene Auslastung gemeldet haben.
--	Sekundäre Replikate innerhalb einer Partition können über eine eigene Auslastung verfügen.
--	Insgesamt sehen die Metriken ziemlich gut aus. Die Differenz zwischen der maximalen und minimalen Auslastung eines Knotens (für den Arbeitsspeicher, der uns in diesem Fall am wichtigsten ist) weist nur einen Faktor von 1,75 auf (der Knoten mit der höchsten Auslastung für den Arbeitsspeicher ist N3, und N2 hat die geringste Auslastung, also gilt 28/16 = 1,75). Das ist ein guter Ausgleichswert!
+* Da Replikate oder Instanzen die Standardauslastung des Diensts verwenden, bis sie ihre eigene Auslastung melden, wissen wir, dass die Replikate in Partition 1 des zustandsbehafteten Diensts noch keine eigene Auslastung gemeldet haben.
+* Sekundäre Replikate innerhalb einer Partition können über eine eigene Auslastung verfügen.
+* Insgesamt sehen die Metriken ziemlich gut aus. Die Differenz zwischen der maximalen und minimalen Auslastung eines Knotens (für den Arbeitsspeicher, der uns in diesem Fall am wichtigsten ist) weist nur einen Faktor von 1,75 auf (der Knoten mit der höchsten Auslastung für den Arbeitsspeicher ist N3, und N2 hat die geringste Auslastung, also gilt 28/16 = 1,75). Das ist ein guter Ausgleichswert!
 
 Einige zu klärende Punkte
 
--	Wie wird bestimmt, ob ein Verhältnis von 1,75 gut oder nicht gut ist? Wie können wir sicher sein, dass der Wert gut genug ist und nicht noch mehr Arbeit erforderlich ist?
--	Wann wird ein Lastenausgleich durchgeführt?
--	Was bedeutet es, dass „Memory“ die Gewichtung „Hoch“ erhalten hat?
+* Wie wird bestimmt, ob ein Verhältnis von 1,75 gut oder nicht gut ist? Wie können wir sicher sein, dass der Wert gut genug ist und nicht noch mehr Arbeit erforderlich ist?
+* Wann wird ein Lastenausgleich durchgeführt?
+* Was bedeutet es, dass „Memory“ die Gewichtung „Hoch“ erhalten hat?
 
 ## Metrikgewichtungen
 Anhand von Metrikgewichtungen können zwei unterschiedliche Dienste die gleichen Metriken melden, die Wichtigkeit eines Ausgleichs für diese Metriken aber anders bewerten. Beispiele hierfür sind ein In-Memory-Analysemodul und eine dauerhafte Datenbank. Für beide ist die Metrik „Memory“ sicherlich von Bedeutung, aber für den In-Memory-Dienst ist die Metrik „Disk“ wahrscheinlich weniger wichtig. Unter Umständen wird diese Metrik in geringem Umfang genutzt, aber sie ist für die Leistung des Diensts nicht entscheidend, und daher meldet der Dienst sie möglicherweise nicht einmal. Es ist hilfreich, die gleichen Metriken über unterschiedliche Dienste hinweg nachverfolgen zu können, da der Clusterressourcen-Manager so die tatsächliche Nutzung im Cluster überwachen, die Einhaltung der Kapazitätsobergrenze sicherstellen und vieles mehr tun kann.
@@ -190,11 +191,11 @@ Im unteren Beispiel haben wir die Replikate sowohl basierend auf dem globalen Au
 Indem die Metrikgewichtungen berücksichtigt werden, wird der globale Ausgleich basierend auf dem Durchschnitt der Metrikgewichtungen berechnet, die für jeden Dienst konfiguriert wurden. Wir führen den Ausgleich für einen Dienst in Bezug auf seine eigenen definierten Metrikgewichtungen durch.
 
 ## Nächste Schritte
-- Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen unter [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
-- Das Definieren von Defragmentierungsmetriken ist eine Möglichkeit, die Last auf Knoten zu konsolidieren, statt sie auszubreiten. Informationen zum Konfigurieren der Defragmentierung finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-defragmentation-metrics.md).
-- Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md).
-- Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
-- Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md).
+* Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen unter [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
+* Das Definieren von Defragmentierungsmetriken ist eine Möglichkeit, die Last auf Knoten zu konsolidieren, statt sie auszubreiten. Informationen zum Konfigurieren der Defragmentierung finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-defragmentation-metrics.md).
+* Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md).
+* Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
+* Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md).
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png

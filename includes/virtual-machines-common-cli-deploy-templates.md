@@ -1,40 +1,40 @@
 
-- [Schnelles Erstellen eines virtuellen Computers in Azure](#quick-create-a-vm-in-azure)
-- [Bereitstellen eines virtuellen Computers in Azure anhand einer Vorlage](#deploy-a-vm-in-azure-from-a-template)
-- [Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image](#create-a-custom-vm-image)
-- [Bereitstellen eines virtuellen Computers, der ein virtuelles Netzwerk und einen Load Balancer verwendet](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
-- [Entfernen einer Ressourcengruppe](#remove-a-resource-group)
-- [Anzeigen des Protokolls für die Ressourcengruppenbereitstellung](#show-the-log-for-a-resource-group-deployment)
-- [Anzeigen von Informationen zu einem virtuellen Computer](#display-information-about-a-virtual-machine)
-- [Anmelden bei einem auf Linux basierten virtuellen Computer](#log-on-to-a-linux-based-virtual-machine)
-- [Beenden eines virtuellen Computers](#stop-a-virtual-machine)
-- [Starten eines virtuellen Computers](#start-a-virtual-machine)
-- [Anfügen eines Datenträgers](#attach-a-data-disk)
+* [Schnelles Erstellen eines virtuellen Computers in Azure](#quick-create-a-vm-in-azure)
+* [Bereitstellen eines virtuellen Computers in Azure anhand einer Vorlage](#deploy-a-vm-in-azure-from-a-template)
+* [Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image](#create-a-custom-vm-image)
+* [Bereitstellen eines virtuellen Computers, der ein virtuelles Netzwerk und einen Load Balancer verwendet](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
+* [Entfernen einer Ressourcengruppe](#remove-a-resource-group)
+* [Anzeigen des Protokolls für die Ressourcengruppenbereitstellung](#show-the-log-for-a-resource-group-deployment)
+* [Anzeigen von Informationen zu einem virtuellen Computer](#display-information-about-a-virtual-machine)
+* [Anmelden bei einem auf Linux basierten virtuellen Computer](#log-on-to-a-linux-based-virtual-machine)
+* [Beenden eines virtuellen Computers](#stop-a-virtual-machine)
+* [Starten eines virtuellen Computers](#start-a-virtual-machine)
+* [Anfügen eines Datenträgers](#attach-a-data-disk)
 
 ## Vorbereitung
-
 Vor der Verwendung der Azure-CLI mit Azure-Ressourcengruppen benötigen Sie die richtige Version der Azure-CLI und ein Azure-Konto. Wenn Sie nicht über die Azure-CLI verfügen, [installieren Sie sie](../articles/xplat-cli-install.md).
 
 ### Aktualisieren Ihrer Azure-CLI auf Version 0.9.0 oder höher
+Geben Sie `azure --version` ein, um zu prüfen, ob Sie bereits Version 0.9.0 oder höher installiert haben.
 
-Geben Sie `azure --version` ein, um zu prüfen, ob Sie bereits Version 0.9.0 oder höher installiert haben.
-
-	azure --version
+    azure --version
     0.9.0 (node: 0.10.25)
 
 Wenn Ihre Version nicht 0.9.0 oder höher ist, müssen Sie sie mithilfe eines der systemeigenen Installer oder über **npm** durch Eingabe von `npm update -g azure-cli` aktualisieren.
 
 Sie können die Azure-CLI mit dem folgenden [Docker-Image](https://registry.hub.docker.com/u/microsoft/azure-cli/) auch als Docker-Container ausführen. Führen Sie von einem Docker-Host den folgenden Befehl aus:
 
-	docker run -it microsoft/azure-cli
+    docker run -it microsoft/azure-cli
 
 ### Festlegen Ihres Azure-Kontos und -Abonnements
-
 Wenn Sie noch kein Azure-Abonnement aber ein MDSN-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren. Oder Sie registrieren sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 [Melden Sie sich jetzt interaktiv bei Ihrem Azure-Konto an](../articles/xplat-cli-connect.md#use-the-log-in-method), indem Sie `azure login` eingeben. Folgen Sie dann den Aufforderungen für eine interaktive Anmeldung bei Ihrem Azure-Konto.
 
-> [AZURE.NOTE] Wenn Sie über eine Arbeits- oder Schulkonto-ID verfügen und wissen, dass die zweistufige Authentifizierung nicht aktiviert ist, können Sie **auch** `azure login -u` zusammen mit der Arbeits- oder Schulkonto-ID verwenden, um sich *ohne* interaktive Sitzung anzumelden. Wenn Sie nicht über eine Arbeits- oder Schulkonto-ID verfügen, können Sie [eine Arbeits- oder Schulkonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md), um sich in gleicher Weise anzumelden.
+> [!NOTE]
+> Wenn Sie über eine Arbeits- oder Schulkonto-ID verfügen und wissen, dass die zweistufige Authentifizierung nicht aktiviert ist, können Sie **auch** `azure login -u` zusammen mit der Arbeits- oder Schulkonto-ID verwenden, um sich *ohne* interaktive Sitzung anzumelden. Wenn Sie nicht über eine Arbeits- oder Schulkonto-ID verfügen, können Sie [eine Arbeits- oder Schulkonto-ID mit Ihrem persönlichen Microsoft-Konto erstellen](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md), um sich in gleicher Weise anzumelden.
+> 
+> 
 
 Ihr Konto kann über mehrere Abonnements verfügen. Sie können Ihre Abonnements durch Eingabe von `azure account list` auflisten, was etwa wie folgt aussieht:
 
@@ -49,33 +49,30 @@ Ihr Konto kann über mehrere Abonnements verfügen. Sie können Ihre Abonnements
 
 Sie können das aktuelle Azure-Abonnement durch Eingabe des Folgenden festlegen. Verwenden Sie den Abonnementnamen oder die ID, die über die Ressourcen verfügt, die Sie verwalten möchten.
 
-	azure account set <subscription name or ID> true
+    azure account set <subscription name or ID> true
 
 
 
 ### Wechseln in den Azure CLI-Ressourcengruppenmodus
-
 Standardmäßig startet die Azure-CLI im Service Management-Modus (**asm**-Modus). Geben Sie Folgendes ein, um in den Ressourcengruppen-Modus zu wechseln.
 
-	azure config mode arm
+    azure config mode arm
 
 ## Grundlegendes zu Azure-Ressourcenvorlagen und -Ressourcengruppen
-
 Die meisten Anwendungen werden aus einer Kombination verschiedener Ressourcentypen (z. B. ein oder mehrere virtuelle Computer und Speicherkonten, SQL-Datenbank, virtuelles Netzwerk oder ein Content Delivery Network) erstellt. Die standardmäßige Azure-Service-Management-API und das klassische Azure-Portal stellte diese Elemente mithilfe eines Ansatzes auf Dienstbasis dar. Bei dieser Vorgehensweise müssen Sie die einzelnen Dienste einzeln und nicht als eine logische Bereitstellungseinheit bereitstellen und verwalten (oder weitere Tools suchen, die dies ermöglichen).
 
 *Azure-Ressourcen-Manager-Vorlagen* ermöglichen Ihnen jedoch, diese verschiedenen Ressourcen als eine logische Bereitstellungseinheit auf deklarative Weise bereitzustellen und zu verwalten. Anstatt Azure imperativisch mitzuteilen, wie ein Befehl nach dem anderen bereitgestellt wird, beschreiben Sie die gesamte Bereitstellung in einer JSON-Datei – alle Ressourcen und zugeordnete Konfigurations- und Bereitstellungsparameter – und geben an Azure weiter, dass diese Ressourcen als eine Gruppe bereitgestellt werden sollen.
 
 Sie können dann den gesamten Lebenszyklus der Gruppenressourcen mithilfe von Ressourcenverwaltungsbefehlen in der Azure-CLI verwalten:
 
-- Alle Ressourcen in der Gruppe auf einmal beenden, starten oder löschen.
-- Role-Based Access Control (RBAC)-Regeln zum Sperren von Sicherheitsberechtigungen.
-- Vorgänge zu überwachen.
-- Ressourcen mit zusätzlichen Metadaten zur besseren Nachverfolgung auszuzeichnen.
+* Alle Ressourcen in der Gruppe auf einmal beenden, starten oder löschen.
+* Role-Based Access Control (RBAC)-Regeln zum Sperren von Sicherheitsberechtigungen.
+* Vorgänge zu überwachen.
+* Ressourcen mit zusätzlichen Metadaten zur besseren Nachverfolgung auszuzeichnen.
 
 Weitere Informationen zu Azure-Ressourcengruppen und wie Sie sie nutzen können finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../articles/resource-group-overview.md). Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../articles/resource-group-authoring-templates.md).
 
 ## <a id="quick-create-a-vm-in-azure"></a>Aufgabe: Schnelles Erstellen eines virtuellen Computers in Azure
-
 Manchmal wissen Sie, welches Image Sie benötigen, Sie benötigen eine VM von dem Image in diesem Moment und die Infrastruktur ist Ihnen dabei egal – vielleicht müssen Sie etwas auf einer sauberen VM testen. Dann verwenden Sie den Befehl `azure vm quick-create` und übergehen die zum Erstellen eines virtuellen Computers und seiner Infrastruktur erforderlichen Argumente.
 
 Erstellen Sie zunächst die Ressourcengruppe.
@@ -96,27 +93,30 @@ Erstellen Sie zunächst die Ressourcengruppe.
 
 Zweitens benötigen Sie ein Image. Informationen zur Suche eines Images mit der Azure-CLI finden Sie unter [Navigieren zwischen und Aussuchen von Azure Virtual Machine-Images mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md). Doch für diesen Artikel finden Sie hier eine kurze Liste beliebter Images. Für diese Schnellerfassung verwenden wir das CoreOSs Stable-Image.
 
-> [AZURE.NOTE] Sie können für "ComputeImageVersion" sowohl in der Vorlagensprache als auch in der Azure-Befehlszeilenschnittstelle auch einfach "latest" als Parameter angeben. Dies ermöglicht es Ihnen, immer die neueste gepatchte Version des Image zu verwenden, ohne Ihre Skripts oder Vorlagen ändern zu müssen. Dies wird nachfolgend gezeigt.
+> [!NOTE]
+> Sie können für "ComputeImageVersion" sowohl in der Vorlagensprache als auch in der Azure-Befehlszeilenschnittstelle auch einfach "latest" als Parameter angeben. Dies ermöglicht es Ihnen, immer die neueste gepatchte Version des Image zu verwenden, ohne Ihre Skripts oder Vorlagen ändern zu müssen. Dies wird nachfolgend gezeigt.
+> 
+> 
 
 | PublisherName | Angebot | Sku | Version |
-|:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| OpenLogic | CentOS | 7 | 7\.0.201503 |
-| OpenLogic | CentOS | 7,1 | 7\.1.201504 |
-| CoreOS | CoreOS | Beta | 647\.0.0 |
-| CoreOS | CoreOS | Stable | 633\.1.0 |
-| MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8\.0.40459 |
-| MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1\.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Standard | 1\.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Enterprise | 1\.0.0 |
-| MicrosoftSQLServer | SQL 2014 WS2012R2 | Enterprise-Optimized-for-DW | 12\.0.2430 |
-| MicrosoftSQLServer | SQL 2014 WS2012R2 | Enterprise-Optimized-for-OLTP | 12\.0.2430 |
-| Canonical | UbuntuServer | 12\.04.5-LTS | 12\.04.201504230 |
-| Canonical | UbuntuServer | 14\.04.2-LTS | 14\.04.201503090 |
-| MicrosoftWindowsServer | Windows Server | 2012-Datacenter | 3\.0.201503 |
-| MicrosoftWindowsServer | Windows Server | 2012-R2-Datacenter | 4\.0.201503 |
-| MicrosoftWindowsServer | Windows Server | Windows-Server-Technical-Preview | 5\.0.201504 |
-| MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials | 1\.0.141204 |
-| MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 | 4\.3.4665 |
+|:--- |:--- |:--- |:--- |
+| OpenLogic |CentOS |7 |7\.0.201503 |
+| OpenLogic |CentOS |7,1 |7\.1.201504 |
+| CoreOS |CoreOS |Beta |647\.0.0 |
+| CoreOS |CoreOS |Stable |633\.1.0 |
+| MicrosoftDynamicsNAV |DynamicsNAV |2015 |8\.0.40459 |
+| MicrosoftSharePoint |MicrosoftSharePointServer |2013 |1\.0.0 |
+| msopentech |Oracle-Database-12c-Weblogic-Server-12c |Standard |1\.0.0 |
+| msopentech |Oracle-Database-12c-Weblogic-Server-12c |Enterprise |1\.0.0 |
+| MicrosoftSQLServer |SQL 2014 WS2012R2 |Enterprise-Optimized-for-DW |12\.0.2430 |
+| MicrosoftSQLServer |SQL 2014 WS2012R2 |Enterprise-Optimized-for-OLTP |12\.0.2430 |
+| Canonical |UbuntuServer |12\.04.5-LTS |12\.04.201504230 |
+| Canonical |UbuntuServer |14\.04.2-LTS |14\.04.201503090 |
+| MicrosoftWindowsServer |Windows Server |2012-Datacenter |3\.0.201503 |
+| MicrosoftWindowsServer |Windows Server |2012-R2-Datacenter |4\.0.201503 |
+| MicrosoftWindowsServer |Windows Server |Windows-Server-Technical-Preview |5\.0.201504 |
+| MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |1\.0.141204 |
+| MicrosoftWindowsServerHPCPack |WindowsServerHPCPack |2012R2 |4\.3.4665 |
 
 Erstellen Sie Ihren virtuellen Computer einfach durch Eingabe des Befehls `azure vm quick-create`, sodass er für Eingabeaufforderungen bereit ist. Das sollte in etwa so aussehen:
 
@@ -204,26 +204,24 @@ Erstellen Sie Ihren virtuellen Computer einfach durch Eingabe des Befehls `azure
 Und los geht's mit Ihrem neuen virtuellen Computer.
 
 ## <a id="deploy-a-vm-in-azure-from-a-template"></a>Aufgabe: Bereitstellen eines virtuellen Computers in Azure anhand einer Vorlage
-
 Verwenden Sie die Anweisungen in den folgenden Abschnitten, um einen neuen virtuellen Azure-Computer mithilfe einer Vorlage in der Azure-Befehlszeilenschnittstelle bereitzustellen. Diese Vorlage erstellt einen einzelnen virtuellen Computer in einem neuen virtuellen Netzwerk mit nur einem Subnetz und ermöglicht Ihnen im Gegensatz zu `azure vm quick-create` die genaue Beschreibung Ihrer Anforderungen, ohne Fehler zu wiederholen. Durch die Vorlage wird Folgendes erstellt:
 
 ![](./media/virtual-machines-common-cli-deploy-templates/new-vm.png)
 
 ### Schritt 1: Untersuchen der JSON-Datei für die Vorlagenparameter
-
 Dies ist der Inhalt der JSON-Datei für die Vorlage. (Die Vorlage befindet sich auch in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json).)
 
 Vorlagen sind flexibel. Der Entwickler hat sich möglicherweise dazu entschlossen, viele Parameter zur Verfügung zu stellen oder nur einige wenige, indem eine Vorlage erstellt wurde, die stärker festgelegt ist. Um die Informationen zu sammeln, müssen Sie die Vorlage als Parameter übergeben, die Vorlagendatei öffnen (unten in diesem Thema finden Sie ein Vorlagen-Inline), und die **Parameter**werte untersuchen.
 
 In diesem Fall fragt die untere Vorlage nach:
 
-- einem eindeutigen Speicherkontonamen
-- einem Administratorbenutzernamen für den virtuellen Computer
-- einem Kennwort
-- einem Domänennamen, den Externe verwenden können
-- einer Ubuntu-Server-Versionsnummer, die jedoch nur eine aus einer Liste akzeptiert
+* einem eindeutigen Speicherkontonamen
+* einem Administratorbenutzernamen für den virtuellen Computer
+* einem Kennwort
+* einem Domänennamen, den Externe verwenden können
+* einer Ubuntu-Server-Versionsnummer, die jedoch nur eine aus einer Liste akzeptiert
 
-Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm).
+Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../articles/virtual-machines/virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm).
 
 Sobald Sie diese Werte eingegeben haben, können Sie eine Gruppe erstellen und die Vorlage in Ihrem Azure-Abonnement bereitstellen.
 
@@ -404,7 +402,6 @@ Sobald Sie diese Werte eingegeben haben, können Sie eine Gruppe erstellen und d
 
 
 ### Schritt 2: Erstellen des virtuellen Computers mit der Vorlage
-
 Sobald Sie die Parameterwerte bereit haben, müssen Sie für die Vorlagenbereitstellung eine Ressourcengruppe erstellen und dann die Vorlage bereitstellen.
 
 Geben Sie zum Erstellen der Ressourcengruppe `azure group create <group name> <location>` mit dem Namen der gewünschten Gruppe ein sowie den Ort des Rechenzentrums, in dem Sie die Gruppe bereitstellen möchten. Dies geschieht schnell:
@@ -425,10 +422,10 @@ Geben Sie zum Erstellen der Ressourcengruppe `azure group create <group name> <l
 
 Erstellen Sie nun die Bereitstellung, rufen Sie `azure group deployment create` auf und übergeben Sie:
 
-- die Vorlagendatei (im Fall, dass Sie die oben genannte JSON-Vorlage in einer lokalen Datei gespeichert haben)
-- eine URI-Vorlage (im Fall, dass Sie auf die Datei in GitHub oder auf einigen anderen Webadressen verweisen möchten)
-- die Ressourcengruppe, in der Sie bereitstellen möchten
-- einen optionalen Bereitstellungsnamen
+* die Vorlagendatei (im Fall, dass Sie die oben genannte JSON-Vorlage in einer lokalen Datei gespeichert haben)
+* eine URI-Vorlage (im Fall, dass Sie auf die Datei in GitHub oder auf einigen anderen Webadressen verweisen möchten)
+* die Ressourcengruppe, in der Sie bereitstellen möchten
+* einen optionalen Bereitstellungsnamen
 
 Sie werden aufgefordert, Parameterwerte im Abschnitt „Parameter“ der JSON-Datei anzugeben. Wenn Sie alle Parameterwerte angegeben haben, beginnt die Bereitstellung.
 
@@ -471,11 +468,9 @@ Sie erhalten den folgenden Informationstyp:
 
 
 ## <a id="create-a-custom-vm-image"></a>Aufgabe: Erstellen eines benutzerdefinierten VM-Images
-
 Sie haben oben die grundlegende Verwendung von Vorlagen gesehen, sodass wir nun ähnliche Anweisungen zum Erstellen eines benutzerdefinierten virtuellen Computers aus einer spezifischen VHD-Datei in Azure mit einer Vorlage über die Azure-CLI verwenden können. Der Unterschied ist hier, dass diese Vorlage einen einzelnen virtuellen Computer von einer angegebenen virtuellen Festplatte (VHD) erstellt.
 
 ### Schritt 1: Untersuchen der JSON-Datei für die Vorlage
-
 Hier sind die Inhalte der JSON-Datei für die Vorlage, die in diesem Abschnitt als Beispiel verwendet werden. (Die Vorlage befindet sich auch in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).)
 
 Auch hier müssen Sie die Werte finden, die Sie für die Parameter eingeben, die keine Standardwerte besitzen. Beim Ausführen des Befehls `azure group deployment create` fordert die Azure-CLI Sie dazu auf, diese Werte eingeben.
@@ -662,7 +657,6 @@ Auch hier müssen Sie die Werte finden, die Sie für die Parameter eingeben, die
     }
 
 ### Schritt 2: Abrufen der virtuellen Festplatte
-
 Natürlich benötigen Sie dafür eine VHD-Datei. Sie können entweder eine bereits vorhandene Datei in Azure verwenden oder eine hochladen.
 
 Informationen zu Windows-basierten virtuellen Computern finden Sie in [Erstellen und Hochladen einer Windows Server-VHD in Azure](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md).
@@ -670,7 +664,6 @@ Informationen zu Windows-basierten virtuellen Computern finden Sie in [Erstellen
 Anweisungen für Linux-basierte virtuelle Computer finden Sie unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md).
 
 ### Schritt 3: Erstellen des virtuellen Computers mit der Vorlage
-
 Sie nun können einen neuen virtuellen Computer basierend auf der VHD-Datei erstellen. Erstellen Sie mit `azure group create <location>` eine Gruppe für die Bereitstellung:
 
     azure group create myResourceGroupUser eastus
@@ -736,17 +729,14 @@ Die Ausgabe sollte wie folgt angezeigt werden:
 
 
 ## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Aufgabe: Bereitstellen einer Anwendung mit mehreren virtuellen Computern, die ein virtuelles Netzwerk und einen Load Balancer verwendet
-
-Mit dieser Vorlage können Sie zwei virtuelle Computer unter einem Load Balancer erstellen und eine Lastenausgleichsregel für Port 80 konfigurieren. Diese Vorlage stellt außerdem ein Speicherkonto, virtuelles Netzwerk, eine öffentliche IP-Adresse, Verfügbarkeitsgruppe und Netzwerkschnittstellen bereit.
+Mit dieser Vorlage können Sie zwei virtuelle Computer unter einem Load Balancer erstellen und eine Lastenausgleichsregel für Port 80 konfigurieren. Diese Vorlage stellt außerdem ein Speicherkonto, virtuelles Netzwerk, eine öffentliche IP-Adresse, Verfügbarkeitsgruppe und Netzwerkschnittstellen bereit.
 
 ![](./media/virtual-machines-common-cli-deploy-templates/multivmextlb.png)
 
 Befolgen Sie diese Anweisungen zum Bereitstellen einer Anwendung mit mehreren virtuellen Computern, die ein virtuelles Netzwerk und einen Load Balancer verwendet, indem Sie eine Ressourcen-Manager-Vorlage im Github-Vorlagenrepository mithilfe von Azure PowerShell-Befehlen verwenden.
 
 ### Schritt 1: Untersuchen der JSON-Datei für die Vorlage
-
 Dies ist der Inhalt der JSON-Datei für die Vorlage. Die neueste Version befindet sich im [GitHub-Repository für Vorlagen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json) (in englischer Sprache). In diesem Thema wird der Switch `--template-uri` verwendet, um die Vorlage aufzurufen, aber Sie können auch den Switch `--template-file` nehmen, um eine lokale Version zu übergeben.
-
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
@@ -1080,9 +1070,7 @@ Dies ist der Inhalt der JSON-Datei für die Vorlage. Die neueste Version befinde
     }
 
 ### Schritt 2: Erstellen der Bereitstellung mit der Vorlage
-
 Erstellen Sie eine Ressourcengruppe für die Vorlage mithilfe von `azure group create <location>`. Erstellen Sie dann eine Bereitstellung in dieser Ressourcengruppe mit `azure group deployment create`. Übergeben Sie die Ressourcengruppe, einen Bereitstellungsnamen, und beantworten Sie die Eingabeaufforderungen für Parameter in der Vorlage, die nicht über Standardwerte verfügt.
-
 
     azure group create lbgroup westus
     info:    Executing command group create
@@ -1148,7 +1136,6 @@ Verwenden Sie jetzt den Befehl `azure group deployment create` und die Option `-
 Beachten Sie, dass diese Vorlage ein Windows Server-Image bereitstellt. Allerdings kann es leicht durch ein beliebiges Linux-Image ersetzt werden. Sie möchten ein Docker-Cluster mit mehreren Swarm-Managern erstellen? [Das ist kein Problem.](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)
 
 ## <a id="remove-a-resource-group"></a>Aufgabe: Entfernen einer Ressourcengruppe
-
 Beachten Sie, dass erneute Bereitstellungen in einer Ressourcengruppe möglich sind. Wenn Sie eine Ressourcengruppe jedoch nicht mehr benötigen, können Sie sie mit `azure group delete <group name>` löschen.
 
     azure group delete myResourceGroup
@@ -1158,7 +1145,6 @@ Beachten Sie, dass erneute Bereitstellungen in einer Ressourcengruppe möglich s
     info:    group delete command OK
 
 ## <a id="show-the-log-for-a-resource-group-deployment"></a>Aufgabe: Anzeigen des Protokolls zu einer Ressourcengruppenbereitstellung
-
 Dieses tritt häufig beim Erstellen oder Verwenden von Vorlagen auf. Der Aufruf zur Anzeige von Bereitstellungsprotokollen für eine Gruppe ist `azure group log show <groupname>`. Es werden eine Menge Informationen angezeigt, die für das Verständnis hilfreich sind, warum etwas passiert ist oder auch nicht. (Weitere Informationen zur Problembehandlung für Ihre Bereitstellungen sowie andere Informationen zu Problemen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](../articles/resource-manager-troubleshoot-deployments-cli.md).)
 
 Auf bestimmte Ziel-Fehler z. B. können Sie Tools wie **Jq** verwenden, um Dinge genauer abzufragen. Zum Beispiel, welche individuellen Fehler Sie korrigieren müssen. Im folgenden Beispiel wird **jq** zum Analysieren eines Bereitstellungsprotokolls für die **lbgroup** verwendet, um nach Fehlern zu suchen.
@@ -1174,7 +1160,6 @@ Sie können sehr schnell ermitteln, welche Fehler aufgetreten sind, sie beheben 
 
 
 ## <a id="display-information-about-a-virtual-machine"></a>Aufgabe: Anzeigen von Informationen zu einem virtuellen Computer
-
 Informationen zu spezifischen virtuellen Computern in Ihrer Ressourcengruppe können Sie mithilfe des Befehls `azure vm show <groupname> <vmname>` sehen. Wenn Sie über mehr als einen virtuellen Computer in der Gruppe verfügen, müssen Sie womöglich zuerst die virtuellen Computer in einer Gruppe mithilfe von `azure vm list <groupname>` auflisten.
 
     azure vm list zoo
@@ -1238,28 +1223,30 @@ Suchen Sie dann nach "myVM1":
     info:    vm show command OK
 
 
-> [AZURE.NOTE] Wenn Sie die Ausgabe der Konsolenbefehle programmgesteuert speichern und bearbeiten möchten, sollten Sie möglicherweise ein JSON-Analysetool verwenden, z. B. **[jq](https://github.com/stedolan/jq)**, **[jsawk](https://github.com/micha/jsawk)** oder für die Aufgabe geeignete Sprachbibliotheken.
+> [!NOTE]
+> Wenn Sie die Ausgabe der Konsolenbefehle programmgesteuert speichern und bearbeiten möchten, sollten Sie möglicherweise ein JSON-Analysetool verwenden, z. B. **[jq](https://github.com/stedolan/jq)**, **[jsawk](https://github.com/micha/jsawk)** oder für die Aufgabe geeignete Sprachbibliotheken.
+> 
+> 
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>Aufgabe: Anmelden bei einem Linux-basierten virtuellen Computer
-
 In der Regel sind Linux-Computer über SSH verbunden. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux auf Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md).
 
 ## <a id="stop-a-virtual-machine"></a>Aufgabe: Anhalten eines virtuellen Computers
-
 Führen Sie den folgenden Befehl aus:
 
     azure vm stop <group name> <virtual machine name>
 
->[AZURE.IMPORTANT] Verwenden Sie diesen Parameter, um die virtuelle IP-Adresse des VNETs beizubehalten, falls es sich um den letzten virtuellen Computer in diesem VNET handelt. <br><br> Auch wenn Sie den `StayProvisioned`-Parameter verwenden, wird der virtuelle Computer in Rechnung gestellt.
+> [!IMPORTANT]
+> Verwenden Sie diesen Parameter, um die virtuelle IP-Adresse des VNETs beizubehalten, falls es sich um den letzten virtuellen Computer in diesem VNET handelt. <br><br> Auch wenn Sie den `StayProvisioned`-Parameter verwenden, wird der virtuelle Computer in Rechnung gestellt.
+> 
+> 
 
 ## <a id="start-a-virtual-machine"></a>Aufgabe: Starten eines virtuellen Computers
-
 Führen Sie den folgenden Befehl aus:
 
     azure vm start <group name> <virtual machine name>
 
 ## <a id="attach-a-data-disk"></a>Aufgabe: Anfügen eines Datenträgers
-
 Sie müssen auch entscheiden, ob Sie einen neuen Datenträger anfügen oder einen, der Daten enthält. Für einen neuen Datenträger erstellt der Befehl die VHD-Datei und fügt sie im selben Befehl an.
 
 Um einen neuen Datenträger anzufügen, führen Sie den folgenden Befehl aus:
@@ -1272,11 +1259,8 @@ Um einen vorhandenen Datenträger anzufügen, führen Sie den folgenden Befehl a
 
 Anschließend müssen Sie den Datenträger wie gewohnt in Linux einbinden.
 
-
 ## Nächste Schritte
-
 Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit dem **arm**-Modus finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager](../articles/xplat-cli-azure-resource-manager.md). Weitere Informationen zu Azure-Ressourcen und deren Konzepten erhalten Sie unter [Übersicht über den Azure-Ressourcen-Manager](../articles/resource-group-overview.md).
-
 
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
 

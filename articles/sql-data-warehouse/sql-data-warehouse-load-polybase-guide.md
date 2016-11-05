@@ -1,31 +1,27 @@
-<properties
-   pageTitle="Anleitung für die Verwendung von PolyBase in SQL Data Warehouse | Microsoft Azure"
-   description="Richtlinien und Empfehlungen zur Verwendung von PolyBase in SQL Data Warehouse-Szenarios."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="ckarst"
-   manager="barbkess"
-   editor=""/>
+---
+title: Anleitung für die Verwendung von PolyBase in SQL Data Warehouse | Microsoft Docs
+description: Richtlinien und Empfehlungen zur Verwendung von PolyBase in SQL Data Warehouse-Szenarios.
+services: sql-data-warehouse
+documentationcenter: NA
+author: ckarst
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/30/2016
+ms.author: cakarst;barbkess;sonyama
 
-
+---
 # Anleitung für die Verwendung von PolyBase in SQL Data Warehouse
-
 Diese Anleitung bietet praktische Informationen zur Verwendung von PolyBase in SQL Data Warehouse.
 
-Zum Einstieg folgen Sie dem Tutorial [Laden von Daten mit PolyBase][].
-
+Zum Einstieg folgen Sie dem Tutorial [Laden von Daten mit PolyBase][Laden von Daten mit PolyBase].
 
 ## Wechseln von Speicherschlüsseln
-
 Von Zeit zu Zeit sollten Sie den Zugriffsschlüssel für den Blob-Speicher aus Sicherheitsgründen ändern.
 
 Die eleganteste Möglichkeit zum Ausführen dieser Aufgabe bietet ein Prozess, der als "Wechseln der Schlüssel" bezeichnet wird. Sie haben wahrscheinlich bemerkt, dass Sie über zwei Speicherschlüssel für Ihr Blob-Speicherkonto verfügen, sodass Sie wechseln können.
@@ -51,8 +47,10 @@ SELECT * FROM [ext].[CarSensor_Data]
 ;
 ```
 
-> [AZURE.NOTE] Eine Abfrage für eine externe Tabelle kann mit folgendem Fehler fehlschlagen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Dies weist darauf hin, dass die externen Daten *fehlerhafte* Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die tatsächlichen Datentypen/Anzahl der Spalten nicht den Spaltendefinitionen der externen Tabelle entsprechen, oder wenn die Daten nicht im angegebenen Format der externen Datei vorliegen. Um dieses Problem zu beheben, stellen Sie sicher, dass die Formatdefinitionen der externen Tabelle und Datei richtig und Ihre externen Daten diesen Definitionen entsprechen. Für den Fall, dass eine Teilmenge der Datensätze für externe Daten fehlerhaft sind, können Sie diese Datensätze für Ihre Abfragen mit den Ablehnungsoptionen in „CREATE EXTERNAL TABLE DDL“ ablehnen.
-
+> [!NOTE]
+> Eine Abfrage für eine externe Tabelle kann mit folgendem Fehler fehlschlagen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Dies weist darauf hin, dass die externen Daten *fehlerhafte* Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die tatsächlichen Datentypen/Anzahl der Spalten nicht den Spaltendefinitionen der externen Tabelle entsprechen, oder wenn die Daten nicht im angegebenen Format der externen Datei vorliegen. Um dieses Problem zu beheben, stellen Sie sicher, dass die Formatdefinitionen der externen Tabelle und Datei richtig und Ihre externen Daten diesen Definitionen entsprechen. Für den Fall, dass eine Teilmenge der Datensätze für externe Daten fehlerhaft sind, können Sie diese Datensätze für Ihre Abfragen mit den Ablehnungsoptionen in „CREATE EXTERNAL TABLE DDL“ ablehnen.
+> 
+> 
 
 ## Laden von Daten aus dem Azure-Blob-Speicher
 In diesem Beispiel werden Daten aus dem Azure-Blob-Speicher in die SQL Data Warehouse-Datenbank geladen.
@@ -70,7 +68,7 @@ CREATE TABLE [dbo].[Customer_Speed]
 WITH
 (   
     CLUSTERED COLUMNSTORE INDEX
-,	DISTRIBUTION = HASH([CarSensor_Data].[CustomerKey])
+,    DISTRIBUTION = HASH([CarSensor_Data].[CustomerKey])
 )
 AS
 SELECT *
@@ -78,11 +76,10 @@ FROM   [ext].[CarSensor_Data]
 ;
 ```
 
-Siehe [CREATE TABLE AS SELECT (Transact-SQL)][].
+Siehe [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)].
 
 ## Erstellen von Statistiken für die neu geladenen Daten
-
-Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie im Thema [Statistiken][] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
+Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie im Thema [Statistiken][Statistiken] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -125,7 +122,6 @@ Die beste Möglichkeit zum Umgehen dieser Anforderung ist das erneute Schreiben 
 Dazu gibt es verschiedene Möglichkeiten. Nachfolgend sind zwei Methoden angegeben, bei denen Powershell verwendet wird:
 
 ### Einfaches Beispiel für kleine Dateien
-
 Nachfolgend sehen Sie ein einfaches einzeiliges Powershell-Skript, das die Datei erstellt.
 
 ```PowerShell
@@ -135,7 +131,6 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 Obwohl dies eine einfache Methode zum erneuten Codieren der Daten darstellt, ist sie keinesfalls die effizienteste. Das folgende Beispiel für E/A-Streaming ist sehr viel schneller und erzielt dasselbe Ergebnis.
 
 ### E/A-Streaming-Beispiel für größere Dateien
-
 Das folgende Codebeispiel ist komplexer, doch da die Datenzeilen aus der Quelle in das Ziel gestreamt werden, ist es wesentlich effizienter. Verwenden Sie diese Methode für größere Dateien.
 
 ```PowerShell
@@ -173,7 +168,7 @@ $write.Dispose()
 ```
 
 ## Nächste Schritte
-Weitere Informationen zum Verschieben von Daten in SQL Data Warehouse finden Sie unter der [Übersicht über die Datenmigration][].
+Weitere Informationen zum Verschieben von Daten in SQL Data Warehouse finden Sie unter der [Übersicht über die Datenmigration][Übersicht über die Datenmigration].
 
 <!--Image references-->
 

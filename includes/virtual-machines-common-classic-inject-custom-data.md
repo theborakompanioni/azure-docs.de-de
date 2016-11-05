@@ -3,16 +3,16 @@
 
 In diesem Thema wird Folgendes beschrieben:
 
-- Das Einfügen von Daten in einen virtuellen Azure-Computer (VM), während dieser bereitgestellt wird.
+* Das Einfügen von Daten in einen virtuellen Azure-Computer (VM), während dieser bereitgestellt wird.
+* Das Abrufen des virtuellen Computers für Windows und Linux.
+* Verwenden von speziellen Tools, die auf einigen Systemen zum automatischen Ermitteln und Verarbeiten benutzerdefinierter Daten verfügbar sind.
 
-- Das Abrufen des virtuellen Computers für Windows und Linux.
-
-- Verwenden von speziellen Tools, die auf einigen Systemen zum automatischen Ermitteln und Verarbeiten benutzerdefinierter Daten verfügbar sind.
-
-> [AZURE.NOTE] Dieser Artikel beschreibt, wie benutzerdefinierte Daten mithilfe eines virtuellen Computers, der mit der Azure-Dienstverwaltungs-API erstellt wurde, injiziert werden können. Informationen zur Verwendung der Azure-Dienstverwaltungs-API finden Sie in [der Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+> [!NOTE]
+> Dieser Artikel beschreibt, wie benutzerdefinierte Daten mithilfe eines virtuellen Computers, der mit der Azure-Dienstverwaltungs-API erstellt wurde, injiziert werden können. Informationen zur Verwendung der Azure-Dienstverwaltungs-API finden Sie in [der Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+> 
+> 
 
 ## Einfügen benutzerdefinierter Daten in einem virtuellen Azure-Computer
-
 Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli) unterstützt. Hier erstellen wir eine `custom-data.txt`-Datei, die unsere Daten enthält, und fügen sie während der Bereitstellung in die VM ein. Sie können für den Befehl `azure vm create` jede der Optionen verwenden. Der folgende Ansatz ist sehr allgemein gehalten:
 
 ```
@@ -23,34 +23,28 @@ Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https:
 
 
 ## Verwenden von benutzerdefinierten Daten im virtuellen Computer
-
-+ Wenn es sich bei Ihrer Azure-VM um eine VM auf Windows-Basis handelt, wird die benutzerdefinierte Datendatei unter `%SYSTEMDRIVE%\AzureData\CustomData.bin` gespeichert. Auch wenn sie für die Übertragung vom lokalen Computer zur neuen VM base64-codiert war, wird sie automatisch decodiert und kann sofort geöffnet oder verwendet werden.
-
-   > [AZURE.NOTE] Wenn die Datei vorhanden ist, wird sie überschrieben. Die Sicherheit im Verzeichnis ist auf **System:Full Control** und **Administrators:Full Control** festgelegt.
-
-+ Wenn es sich bei Ihrer Azure-VM um eine VM auf Linux-Basis handelt, befindet sich die benutzerdefinierte Datendatei abhängig von Ihrer Distribution an einem der folgenden zwei Orte. Die Daten könnten jedoch base64-codiert sein, sodass Sie sie zunächst decodieren müssen.
-
-    - `/var/lib/waagent/ovf-env.xml`
-    - `/var/lib/waagent/CustomData`
-    - `/var/lib/cloud/instance/user-data.txt` 
-
-
+* Wenn es sich bei Ihrer Azure-VM um eine VM auf Windows-Basis handelt, wird die benutzerdefinierte Datendatei unter `%SYSTEMDRIVE%\AzureData\CustomData.bin` gespeichert. Auch wenn sie für die Übertragung vom lokalen Computer zur neuen VM base64-codiert war, wird sie automatisch decodiert und kann sofort geöffnet oder verwendet werden.
+  
+  > [!NOTE]
+  > Wenn die Datei vorhanden ist, wird sie überschrieben. Die Sicherheit im Verzeichnis ist auf **System:Full Control** und **Administrators:Full Control** festgelegt.
+  > 
+  > 
+* Wenn es sich bei Ihrer Azure-VM um eine VM auf Linux-Basis handelt, befindet sich die benutzerdefinierte Datendatei abhängig von Ihrer Distribution an einem der folgenden zwei Orte. Die Daten könnten jedoch base64-codiert sein, sodass Sie sie zunächst decodieren müssen.
+  
+  * `/var/lib/waagent/ovf-env.xml`
+  * `/var/lib/waagent/CustomData`
+  * `/var/lib/cloud/instance/user-data.txt` 
 
 ## Cloud-Init in Azure
-
 Wenn Ihre Azure-VM von einem Ubuntu- oder CoreOS-Image erstellt wurde, können Sie mit CustomData eine Cloud-Config-Datei an Cloud-Init senden. Wenn Ihre benutzerdefinierte Datendatei ein Skript ist, kann dieses einfach von Cloud-Init ausgeführt werden.
 
 ### Ubuntu-Cloud-Images
-
 In den meisten Azure Linux-Images bearbeiten Sie "/ /etc/waagent.conf", um den temporären Ressourcendatenträger und die Auslagerungsdatei zu konfigurieren. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md).
 
 Bei Ubuntu-Cloud-Images muss zum Konfigurieren des Ressourcendatenträgers (auch als "kurzlebiger" Datenträger bezeichnet) und der Swap-Partition jedoch Cloud-Init verwendet werden. Weitere Details finden Sie auf der folgenden Seite im Ubuntu-Wiki: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
 
-
-
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte: Verwenden von Cloud-Init
-
 Weitere Informationen finden Sie unter [cloud-init documentation for Ubuntu](https://help.ubuntu.com/community/CloudInit) (cloud-init-Dokumentation für Ubuntu) (in englischer Sprache).
 
 <!--Link references-->

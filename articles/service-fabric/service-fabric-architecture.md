@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Service Fabric-Architektur | Microsoft Azure"
-   description="Service Fabric ist eine Plattform für verteilte Systeme zum Erstellen skalierbarer, zuverlässiger und einfach zu verwaltender Anwendungen für die Cloud. Dieser Artikel beschreibt die Architektur von Service Fabric."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="rishirsinha"
-   manager="timlt"
-   editor="rishirsinha"/>
+---
+title: Service Fabric-Architektur | Microsoft Docs
+description: Service Fabric ist eine Plattform für verteilte Systeme zum Erstellen skalierbarer, zuverlässiger und einfach zu verwaltender Anwendungen für die Cloud. Dieser Artikel beschreibt die Architektur von Service Fabric.
+services: service-fabric
+documentationcenter: .net
+author: rishirsinha
+manager: timlt
+editor: rishirsinha
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="06/09/2016"
-   ms.author="rsinha"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 06/09/2016
+ms.author: rsinha
 
+---
 # Service Fabric-Architektur
-
 Service Fabric besteht aus Subsystemen, die auf verschiedenen Ebenen liegen. Diese Subsysteme ermöglichen Ihnen, Anwendungen mit folgenden Eigenschaften zu schreiben:
 
 * Hoch verfügbar
@@ -35,10 +34,10 @@ In einem verteilten System ist die Fähigkeit zur sicheren Kommunikation zwische
 Das Transportsubsystem implementiert einen Punkt-zu-Punkt-Kanal für die Datagramkommunikation. Dieser Kanal wird für die Kommunikation in Service Fabric-Clustern und zwischen Service Fabric-Clustern und -Clients verwendet. Der Kanal unterstützt unidirektionale Kommunikationsmodelle sowie solche nach dem Muster „Anforderung/Antwort“ und bildet so die Grundlage für das Implementieren von Broadcast und Multicast in der Verbundebene. Das Transportsubsystem sichert die Kommunikation mithilfe von X509-Zertifikaten oder der Windows-Sicherheit. Dieses Subsystem wird intern von Service Fabric verwendet und steht Entwicklern bei der Anwendungsprogrammierung nicht direkt zur Verfügung.
 
 ## Verbundsubsystem
-Um die Bedeutung einer Gruppe von Knoten in einem verteilten System beurteilen zu können, müssen Sie das gesamte System als Ganzes verstehen. Das Verbundsubsystem verwendet die vom Transportsubsystem bereitgestellten Kommunikationsstammfunktionen und fügt die verschiedenen Knoten zu einem einzelnen einheitlichen Cluster zusammen, der als Ganzes betrachtet wird. Es stellt die Stammfunktionen des verteilten Systems bereit, die von den anderen Subsystemen benötigt werden, d. h. Fehlererkennung, Leader Election und konsistente Weiterleitung. Das Verbundsubsystem baut auf verteilten Hashtabellen mit einem 128-Bit-Tokenbereich auf. Das Subsystem erstellt eine Ringtopologie über die Knoten, wobei jedem Knoten im Ring eine Teilmenge des Tokenspeichers zugeordnet wird. Zur Fehlererkennung verwendet die Ebene einen Leasing-Mechanismus, der auf Überwachung von Heart Beats und Vermittlung basiert. Das Verbundsubsystem stellt mit komplexen Beitritts- und Austrittsprotokollen sicher, dass jeweils nur ein Benutzer im Besitz des Tokens sein kann. Dies ist die Voraussetzung, um Leader Election und konsistente Weiterleitung garantieren zu können.
+Um die Bedeutung einer Gruppe von Knoten in einem verteilten System beurteilen zu können, müssen Sie das gesamte System als Ganzes verstehen. Das Verbundsubsystem verwendet die vom Transportsubsystem bereitgestellten Kommunikationsstammfunktionen und fügt die verschiedenen Knoten zu einem einzelnen einheitlichen Cluster zusammen, der als Ganzes betrachtet wird. Es stellt die Stammfunktionen des verteilten Systems bereit, die von den anderen Subsystemen benötigt werden, d. h. Fehlererkennung, Leader Election und konsistente Weiterleitung. Das Verbundsubsystem baut auf verteilten Hashtabellen mit einem 128-Bit-Tokenbereich auf. Das Subsystem erstellt eine Ringtopologie über die Knoten, wobei jedem Knoten im Ring eine Teilmenge des Tokenspeichers zugeordnet wird. Zur Fehlererkennung verwendet die Ebene einen Leasing-Mechanismus, der auf Überwachung von Heart Beats und Vermittlung basiert. Das Verbundsubsystem stellt mit komplexen Beitritts- und Austrittsprotokollen sicher, dass jeweils nur ein Benutzer im Besitz des Tokens sein kann. Dies ist die Voraussetzung, um Leader Election und konsistente Weiterleitung garantieren zu können.
 
 ## Zuverlässigkeitssubsystem
-Das Zuverlässigkeitssubsystem stellt den Mechanismus für den Hochverfügbarkeitsstatus des Service Fabric-Diensts bereit. Hierbei werden der _Replicator_, der _Failover-Manager_ und der _Resource Balancer_ verwendet.
+Das Zuverlässigkeitssubsystem stellt den Mechanismus für den Hochverfügbarkeitsstatus des Service Fabric-Diensts bereit. Hierbei werden der *Replicator*, der *Failover-Manager* und der *Resource Balancer* verwendet.
 
 * Der Replicator stellt sicher, dass Statusänderungen im primären Dienstreplikat automatisch in sekundären Replikaten repliziert werden, um Konsistenz zwischen den primären und sekundären Replikaten in einer Replikatgruppe zu gewährleisten. Der Replicator ist für die Quorumverwaltung zwischen den Replikaten in der Replikatgruppe verantwortlich. Er interagiert mit der Failovereinheit, um die Liste der zu replizierenden Vorgänge abzurufen. Der Agent für die Neukonfiguration stellt die Konfiguration der Replikatgruppe bereit. Diese Konfiguration gibt an, auf welche Replikate die Vorgänge repliziert werden sollen. Der standardmäßige Replikator in Service Fabric heißt Fabric Replicator. Die Programmierungsmodell-API kann den Fabric Replicator verwenden, um hoch verfügbare und zuverlässige Dienste zu entwickeln.
 * Der Failover-Manager stellt sicher, dass die Last automatisch auf die verfügbaren Knoten umverteilt wird, wenn Konten einem Cluster hinzugefügt oder aus dem Cluster entfernt werden. Fällt ein Knoten im Cluster aus, konfiguriert der Cluster die Dienstreplikate automatisch neu, um Verfügbarkeit zu gewährleisten.
@@ -50,7 +49,6 @@ Das Verwaltungssubsystem stellt den End-to-End-Dienst und die Lebenszyklusverwal
 * **Cluster Manager**: Der primäre Dienst, der mit dem Failover-Manager aus dem Zuverlässigkeitssubsystem interagiert, um die Anwendungen auf den Knoten gemäß den Einschränkungen für die Dienstplatzierung zu platzieren. Der Ressourcen-Manager im Failoversubsystem stellt sicher, dass die Einschränkungen immer eingehalten werden. Der Cluster-Manager verwaltet den Lebenszyklus der Anwendungen von der Bereitstellung bis zum Aufheben der Bereitstellung. Er ist im Health Manager integriert, um sicherzustellen, dass die Anwendungsverfügbarkeit aus der Perspektive der semantischen Integrität während eines Upgrades nicht beeinträchtigt wird.
 * **Health Manager**: Dieser Dienst ermöglicht die Überwachung der Integrität von Anwendungen, Diensten und Clusterentitäten. Clusterentitäten (z. B. Knoten, Dienstpartitionen und Replikate) können Zustandsinformationen melden, die dann im zentralen Integritätsspeicher aggregiert werden. Diese Integritätsinformationen bieten eine allgemeine Momentaufnahme der Integrität der Dienste und Knoten, die auf mehreren Knoten im Cluster verteilt sind. Anhand dieser Informationen können Sie erforderliche Korrekturmaßnahmen treffen. Zum Abfragen von Integritätsereignissen, die an das Integritätssubsystem gemeldet wurden, werden Integritätsabfrage-APIs verwendet. Die Integritätsabfrage-APIs geben die im Integritätsspeicher gespeicherten rohen Integritätsdaten oder die aggregierten, interpretierten Integritätsdaten für eine bestimmte Clusterentität zurück.
 * **Imagespeicher**: Dieser Dienst ermöglicht das Speichern und Verteilen von Anwendungsbinärdateien. Der Dienst bietet einen einfachen verteilten Dateispeicher, in den die Anwendungen hochgeladen bzw. aus dem die Anwendungen heruntergeladen werden.
-
 
 ## Hostingsubsystem
 Der Cluster Manager informiert das Hostingsubsystem (auf jedem Knoten ausgeführt) über die Dienste, die er für das Verwalten eines bestimmten Knotens benötigt. Das Hostingsubsystem verwaltet dann die Lebenszyklus der Anwendung auf diesem Knoten. Es interagiert mit den Zuverlässigkeits- und Integritätskomponenten, um sicherzustellen, dass die Replikate ordnungsgemäß platziert sind und deren Integrität gewährleistet ist.

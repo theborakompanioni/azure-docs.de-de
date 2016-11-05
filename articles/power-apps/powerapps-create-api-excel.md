@@ -1,28 +1,30 @@
-<properties
-	pageTitle="Hinzufügen der Excel-API zu PowerApps Enterprise | Microsoft Azure"
-	description="Erstellen oder Konfigurieren einer neuen Excel-API in der App Service-Umgebung Ihrer Organisation"
-	services=""
-    suite="powerapps"
-	documentationCenter="" 
-	authors="rajeshramabathiran"
-	manager="erikre"
-	editor=""/>
+---
+title: Hinzufügen der Excel-API zu PowerApps Enterprise | Microsoft Docs
+description: Erstellen oder Konfigurieren einer neuen Excel-API in der App Service-Umgebung Ihrer Organisation
+services: ''
+suite: powerapps
+documentationcenter: ''
+author: rajeshramabathiran
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="powerapps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/02/2016"
-   ms.author="litran"/>
+ms.service: powerapps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/02/2016
+ms.author: litran
 
+---
 # Erstellen einer neuen Excel-API in PowerApps Enterprise
-
-> [AZURE.IMPORTANT] Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
+> [!IMPORTANT]
+> Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
 > 
-> - Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
-> - Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen). 
+> * Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
+> * Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen). 
+> 
+> 
 
 <!--Archived
 Add the Excel API to your organization's (tenant) app service environment. 
@@ -30,7 +32,7 @@ Add the Excel API to your organization's (tenant) app service environment.
 ## Create the API in the Azure portal
 
 1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
- 
+
 2. Select **Browse** in the task bar:  
 ![][4]
 
@@ -44,7 +46,7 @@ Add the Excel API to your organization's (tenant) app service environment.
 ![Add API][2]
 
 6. Enter a descriptive **name** for your API.  
-	
+
 7. In **Source**, select **Available APIs** to select the pre-built APIs, and then select **Excel**:  
 ![select Excel api][3]
 

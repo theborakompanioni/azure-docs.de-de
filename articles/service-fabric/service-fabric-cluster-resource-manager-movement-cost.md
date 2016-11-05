@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Der Clusterressourcen-Manager von Service Fabric – Verschiebungskosten | Microsoft Azure"
-   description="Übersicht über die Verschiebungskosten für Service Fabric-Dienste"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Der Clusterressourcen-Manager von Service Fabric – Verschiebungskosten | Microsoft Docs
+description: Übersicht über die Verschiebungskosten für Service Fabric-Dienste
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Kosten von Dienstverschiebungen zum Beeinflussen der Optionen im Clusterressourcen-Manager
 Ein wichtiger Faktor bei den Überlegungen zu Veränderungen an einem Cluster und der Bewertung einer Lösung sind die Gesamtkosten, die mit der Umsetzung dieser Lösung verbunden sind.
 
@@ -40,13 +40,13 @@ MoveCost hat vier Stufen: Zero, Low, Medium und High. Diese stehen zueinander in
 
 MoveCost hilft Ihnen dabei, Lösungen zu finden, die insgesamt die geringsten Unterbrechungen verursachen, am leichtesten umzusetzen sind und dabei das beste Gleichgewicht versprechen. Die Kosten für einen Dienst können von Vielem abhängen. Die gängigsten Faktoren bei der Berechnung der Kosten von Verschiebungen sind:
 
-- Die Menge von Zuständen oder Daten, die ein Dienst verschieben soll.
-- Die Kosten der Trennung von Clients. Die Kosten für das Verschieben eines primären Replikats sind normalerweise höher als die für ein sekundäres Replikat.
-- Die Kosten für Unterbrechungen einer sich in der Ausführung befindenden Operation. Einige Operationen auf Datenspeicherebene oder Operationen, die als Antwort auf einen Clientaufruf ausgeführt werden, sind kostenaufwendig. Ab einem bestimmten Punkt werden sie nicht mehr unnötigerweise freiwillig abgebrochen. Für die Dauer der Operation stufen Sie die Kosten hoch, um die Wahrscheinlichkeit zu minimieren, dass das Replikat oder die Instanz des Diensts verschoben wird. Wenn die Operation abgeschlossen ist, können Sie sie auf normal zurückstufen.
+* Die Menge von Zuständen oder Daten, die ein Dienst verschieben soll.
+* Die Kosten der Trennung von Clients. Die Kosten für das Verschieben eines primären Replikats sind normalerweise höher als die für ein sekundäres Replikat.
+* Die Kosten für Unterbrechungen einer sich in der Ausführung befindenden Operation. Einige Operationen auf Datenspeicherebene oder Operationen, die als Antwort auf einen Clientaufruf ausgeführt werden, sind kostenaufwendig. Ab einem bestimmten Punkt werden sie nicht mehr unnötigerweise freiwillig abgebrochen. Für die Dauer der Operation stufen Sie die Kosten hoch, um die Wahrscheinlichkeit zu minimieren, dass das Replikat oder die Instanz des Diensts verschoben wird. Wenn die Operation abgeschlossen ist, können Sie sie auf normal zurückstufen.
 
 ## Nächste Schritte
-- Der Clusterressourcen-Manager von Service Fabric verwendet Metriken, um den Ressourcenverbrauch und die Kapazität im Cluster zu verwalten. Weitere Informationen zu Metriken und deren Konfiguration finden Sie unter [Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken](service-fabric-cluster-resource-manager-metrics.md).
-- Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie unter [Lastenausgleich für Service Fabric-Cluster](service-fabric-cluster-resource-manager-balancing.md).
+* Der Clusterressourcen-Manager von Service Fabric verwendet Metriken, um den Ressourcenverbrauch und die Kapazität im Cluster zu verwalten. Weitere Informationen zu Metriken und deren Konfiguration finden Sie unter [Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken](service-fabric-cluster-resource-manager-metrics.md).
+* Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie unter [Lastenausgleich für Service Fabric-Cluster](service-fabric-cluster-resource-manager-balancing.md).
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
 

@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Azure Active Directory Domain Services: Übersicht | Microsoft Azure"
-    description="Übersicht über Azure Active Directory Domain Services"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+---
+title: 'Azure Active Directory Domain Services: Übersicht | Microsoft Docs'
+description: Übersicht über Azure Active Directory Domain Services
+services: active-directory-ds
+documentationcenter: ''
+author: mahesh-unnikrishnan
+manager: stevenpo
+editor: curtand
 
-<tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/07/2016"
-    ms.author="maheshu"/>
+ms.service: active-directory-ds
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/07/2016
+ms.author: maheshu
 
-
+---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
-
 ## <a name="overview"></a>Übersicht
 Mithilfe von Azure-Infrastrukturdiensten können Sie eine Vielzahl von Computinglösungen auf flexible Weise bereitstellen. Dank Azure Virtual Machines können Sie Ihre Produkte praktisch sofort bereitstellen und erhalten eine minutengenaue Abrechnung. Mit der Unterstützung für Windows, Linux, SQL Server, Oracle, IBM, SAP und BizTalk ist die Bereitstellung jeder Workload in jeder Sprache auf fast jedem Betriebssystem möglich. Diese Vorteile versetzen Sie in die Lage, lokal bereitgestellte Legacyanwendungen zu Azure zu migrieren, um Betriebskosten zu sparen.
 
@@ -26,14 +24,13 @@ Ein wichtiger Aspekt der Migration von lokalen Anwendung zu Azure ist der Umgang
 
 Administratoren nutzen häufig eine der folgenden Lösungen, um die Identitätsanforderungen der unter Azure bereitgestellten Anwendungen zu erfüllen:
 
-- Bereitstellen einer Standort-zu-Standort-VPN-Verbindung zwischen Workloads, die in Azure-Infrastrukturdiensten ausgeführt werden, und dem lokalen Unternehmensverzeichnis
-- Erweitern der AD-Domäne/Gesamtstruktur-Infrastruktur des Unternehmens, indem Replikatdomänencontroller mithilfe von virtuellen Azure-Computern eingerichtet werden
-- Bereitstellen einer eigenständigen Domäne in Azure, indem als virtuelle Azure-Computer bereitgestellte Domänencontroller verwendet werden
+* Bereitstellen einer Standort-zu-Standort-VPN-Verbindung zwischen Workloads, die in Azure-Infrastrukturdiensten ausgeführt werden, und dem lokalen Unternehmensverzeichnis
+* Erweitern der AD-Domäne/Gesamtstruktur-Infrastruktur des Unternehmens, indem Replikatdomänencontroller mithilfe von virtuellen Azure-Computern eingerichtet werden
+* Bereitstellen einer eigenständigen Domäne in Azure, indem als virtuelle Azure-Computer bereitgestellte Domänencontroller verwendet werden
 
 All diese Ansätze sind mit hohen Kosten und hohem Verwaltungsaufwand verbunden. Administratoren müssen Domänencontroller mithilfe von virtuellen Azure-Computern bereitstellen. Sie müssen diese virtuellen Computer außerdem verwalten, schützen, patchen, überwachen und sichern und die Problembehandlung dafür durchführen. Aufgrund der Abhängigkeit von VPN-Verbindungen vom lokalen Verzeichnis sind unter Azure bereitgestellte Workloads für vorübergehende Netzwerkprobleme oder -ausfälle anfällig. Diese Netzwerkausfälle führen zu einer kürzere Betriebszeit und Zuverlässigkeit für diese Anwendungen.
 
 Die Azure AD-Domänendienste sind für die Bereitstellung einer deutlich einfacheren Alternative konzipiert.
-
 
 ## <a name="introducing-azure-ad-domain-services"></a>Einführung in Azure AD-Domänendienste
 Azure AD Domain Services stellen verwaltete Domänendienste bereit, z.B. Domänenbeitritt, Gruppenrichtlinie, LDAP, Kerberos/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Sie können diese Domänendienste nutzen, ohne dass Sie Domänencontroller in der Cloud bereitstellen, verwalten und patchen müssen. Die Azure AD-Domänendienste können in Ihren vorhandenen Azure AD-Mandanten integriert werden, wodurch es Benutzern ermöglicht wird, sich mit ihren Unternehmensanmeldeinformationen anzumelden. Außerdem können Sie vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen zu schützen. So stellen Sie sicher, dass die Verlagerung von lokalen Ressourcen auf Azure-Infrastrukturdienste reibungsloser verläuft.
@@ -49,17 +46,19 @@ Der IT-Administrator von Contoso kann Azure AD-Domänendienste für den Azure AD
 
 Einige wichtige Aspekte der verwalteten Domäne, die von den Azure AD-Domänendiensten bereitgestellt wird, lauten:
 
-- Der IT-Administrator von Contoso muss diese Domäne oder die Domänencontroller für diese verwaltete Domäne nicht verwalten, patchen oder überwachen.
-- Es ist nicht erforderlich, die AD-Replikation für diese Domäne zu verwalten. Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen für den Azure AD-Mandanten von Contoso stehen innerhalb dieser verwalteten Domäne automatisch zur Verfügung.
-- Da die Domäne über die Azure AD-Domänendienste verwaltet wird, verfügt der IT-Administrator von Contoso in dieser Domäne nicht über Domänenadministrator- oder Unternehmensadministratorrechte.
-
+* Der IT-Administrator von Contoso muss diese Domäne oder die Domänencontroller für diese verwaltete Domäne nicht verwalten, patchen oder überwachen.
+* Es ist nicht erforderlich, die AD-Replikation für diese Domäne zu verwalten. Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen für den Azure AD-Mandanten von Contoso stehen innerhalb dieser verwalteten Domäne automatisch zur Verfügung.
+* Da die Domäne über die Azure AD-Domänendienste verwaltet wird, verfügt der IT-Administrator von Contoso in dieser Domäne nicht über Domänenadministrator- oder Unternehmensadministratorrechte.
 
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Azure Active Directory-Domänendienste für Hybridunternehmen
 Unternehmen mit einer IT-Hybridinfrastruktur nutzen eine Mischung aus Cloudressourcen und lokalen Ressourcen. In diesen Unternehmen werden Identitätsinformationen im lokalen Verzeichnis mit dem Azure AD-Mandanten synchronisiert. Wenn Hybridorganisationen weitere lokale Anwendungen zur Cloud migrieren möchten, insbesondere verzeichnisfähige Legacyanwendungen, können die Azure AD-Domänendienste hierfür nützlich sein.
 
 Die Litware Corporation hat [Azure AD Connect](../active-directory/active-directory-aadconnect.md)bereitgestellt, um Identitätsinformationen aus dem lokalen Verzeichnis mit dem Azure AD-Mandanten zu synchronisieren. Zu den synchronisierten Identitätsinformationen zählen Benutzerkonten, Anmeldeinformationshashes für die Authentifizierung (Kennwortsynchronisierung) und Gruppenmitgliedschaften.
 
-> [AZURE.NOTE] **Die Kennwortsynchronisierung für Hybridorganisationen ist für die Verwendung von Azure AD-Domänendiensten verpflichtend**. Dies liegt daran, dass die Anmeldeinformationen der Benutzer in der von den Azure AD-Domänendiensten bereitgestellten verwalteten Domäne erforderlich sind, um diese Benutzer mithilfe von NTLM- oder Kerberos-Authentifizierungsverfahren authentifizieren zu können.
+> [!NOTE]
+> **Die Kennwortsynchronisierung für Hybridorganisationen ist für die Verwendung von Azure AD-Domänendiensten verpflichtend**. Dies liegt daran, dass die Anmeldeinformationen der Benutzer in der von den Azure AD-Domänendiensten bereitgestellten verwalteten Domäne erforderlich sind, um diese Benutzer mithilfe von NTLM- oder Kerberos-Authentifizierungsverfahren authentifizieren zu können.
+> 
+> 
 
 ![Azure AD-Domänendienste für Litware Corporation](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
 
@@ -67,24 +66,18 @@ In der obigen Abbildung ist zu sehen, wie Unternehmen mit IT-Hybridinfrastruktur
 
 Einige wichtige Aspekte der verwalteten Domäne, die von den Azure AD-Domänendiensten bereitgestellt wird, lauten:
 
-- Die verwaltete Domäne ist eine eigenständige Domäne. Sie stellt keine Erweiterung der lokalen Domäne von Litware dar.
-- Der IT-Administrator von Litware muss die Domänencontroller für diese verwaltete Domäne nicht verwalten, patchen oder überwachen.
-- Es ist nicht erforderlich, die AD-Replikation für diese Domäne zu verwalten. Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen aus dem lokalen Verzeichnis von Litware werden über Azure AD Connect mit Azure AD synchronisiert. Diese Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen stehen innerhalb der verwalteten Domäne automatisch zur Verfügung.
-- Da die Domäne über die Azure AD-Domänendienste verwaltet wird, verfügt der IT-Administrator von Litware in dieser Domäne nicht über Domänenadministrator- oder Unternehmensadministratorrechte.
-
+* Die verwaltete Domäne ist eine eigenständige Domäne. Sie stellt keine Erweiterung der lokalen Domäne von Litware dar.
+* Der IT-Administrator von Litware muss die Domänencontroller für diese verwaltete Domäne nicht verwalten, patchen oder überwachen.
+* Es ist nicht erforderlich, die AD-Replikation für diese Domäne zu verwalten. Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen aus dem lokalen Verzeichnis von Litware werden über Azure AD Connect mit Azure AD synchronisiert. Diese Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationen stehen innerhalb der verwalteten Domäne automatisch zur Verfügung.
+* Da die Domäne über die Azure AD-Domänendienste verwaltet wird, verfügt der IT-Administrator von Litware in dieser Domäne nicht über Domänenadministrator- oder Unternehmensadministratorrechte.
 
 ## <a name="benefits"></a>Vorteile
 Mit Azure AD-Domänendiensten kommen Sie in den Genuss der folgenden Vorteile:
 
--   **Einfach:** Sie können die Identitätsanforderungen für virtuelle Computer, die in den Azure-Infrastrukturdiensten bereitgestellt wurden, mit einigen wenigen Klicks erfüllen. Es ist nicht erforderlich, eine Identitätsinfrastruktur in Azure bereitzustellen und zu verwalten oder Konnektivität mit Ihrer lokalen Identitätsinfrastruktur einzurichten.
-
--   **Integration:** Die Azure AD-Domänendienste sind tief in Ihren Azure AD-Mandanten integriert. Sie können Azure AD jetzt als integriertes cloudbasiertes Unternehmensverzeichnis nutzen, das sowohl die Anforderungen Ihrer modernen Anwendungen als auch die Anforderungen von traditionellen verzeichnisorientierten Anwendungen erfüllt.
-
--   **Kompatibel:** Die Azure AD-Domänendienste basieren auf der bewährten, für Unternehmen konzipierten Infrastruktur von Windows Server Active Directory. Aus diesem Grund sind Ihre Anwendungen in höherem Maße mit Windows Server Active Directory-Features kompatibel. Derzeit sind nicht alle in Windows Server AD verfügbaren Features in den Azure AD-Domänendiensten verfügbar. Die verfügbaren Features sind aber mit den entsprechenden Windows Server AD-Features kompatibel, die Sie in Ihrer lokalen Infrastruktur nutzen. LDAP, Kerberos, NTLM, Gruppenrichtlinie und Domänenbeitritt sind ausgereifte Features, die über mehrere Windows Server-Versionen hinweg getestet und optimiert wurde.
-
--   **Kosteneffektivität:** Mit Azure AD-Domänendiensten können Sie den Infrastruktur- und Verwaltungsaufwand vermeiden, der mit der Verwaltung der Identitätsinfrastruktur zur Unterstützung herkömmlicher verzeichnisorientierter Anwendungen verbunden ist. Sie können diese Anwendungen auf die Azure-Infrastrukturdienste verlagern und von höheren Einsparungen bei den Betriebskosten profitieren.
-
-
+* **Einfach:** Sie können die Identitätsanforderungen für virtuelle Computer, die in den Azure-Infrastrukturdiensten bereitgestellt wurden, mit einigen wenigen Klicks erfüllen. Es ist nicht erforderlich, eine Identitätsinfrastruktur in Azure bereitzustellen und zu verwalten oder Konnektivität mit Ihrer lokalen Identitätsinfrastruktur einzurichten.
+* **Integration:** Die Azure AD-Domänendienste sind tief in Ihren Azure AD-Mandanten integriert. Sie können Azure AD jetzt als integriertes cloudbasiertes Unternehmensverzeichnis nutzen, das sowohl die Anforderungen Ihrer modernen Anwendungen als auch die Anforderungen von traditionellen verzeichnisorientierten Anwendungen erfüllt.
+* **Kompatibel:** Die Azure AD-Domänendienste basieren auf der bewährten, für Unternehmen konzipierten Infrastruktur von Windows Server Active Directory. Aus diesem Grund sind Ihre Anwendungen in höherem Maße mit Windows Server Active Directory-Features kompatibel. Derzeit sind nicht alle in Windows Server AD verfügbaren Features in den Azure AD-Domänendiensten verfügbar. Die verfügbaren Features sind aber mit den entsprechenden Windows Server AD-Features kompatibel, die Sie in Ihrer lokalen Infrastruktur nutzen. LDAP, Kerberos, NTLM, Gruppenrichtlinie und Domänenbeitritt sind ausgereifte Features, die über mehrere Windows Server-Versionen hinweg getestet und optimiert wurde.
+* **Kosteneffektivität:** Mit Azure AD-Domänendiensten können Sie den Infrastruktur- und Verwaltungsaufwand vermeiden, der mit der Verwaltung der Identitätsinfrastruktur zur Unterstützung herkömmlicher verzeichnisorientierter Anwendungen verbunden ist. Sie können diese Anwendungen auf die Azure-Infrastrukturdienste verlagern und von höheren Einsparungen bei den Betriebskosten profitieren.
 
 <!--HONumber=Oct16_HO2-->
 

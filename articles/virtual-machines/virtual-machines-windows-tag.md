@@ -1,32 +1,29 @@
-<properties
-   pageTitle="Kennzeichnen eines virtuellen Computers | Microsoft Azure"
-   description="Informieren Sie sich über das Markieren eines virtuellen Windows-Computers, der in Azure mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurde."
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="mmccrory"
-   manager="timlt"
-   editor="tysonn"
-   tags="azure-resource-manager"/>
+---
+title: Kennzeichnen eines virtuellen Computers | Microsoft Docs
+description: Informieren Sie sich über das Markieren eines virtuellen Windows-Computers, der in Azure mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurde.
+services: virtual-machines-windows
+documentationcenter: ''
+author: mmccrory
+manager: timlt
+editor: tysonn
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure-services"
-   ms.date="07/05/2016"
-   ms.author="memccror"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 07/05/2016
+ms.author: memccror
 
+---
 # So markieren Sie einen virtuellen Windows-Computer in Azure
-
-
 In diesem Artikel werden verschiedene Methoden zum Markieren eines virtuellen Windows-Computers in Azure mithilfe des Resource Manager-Bereitstellungsmodells beschrieben. Tags sind benutzerdefinierte Schlüssel-Wert-Paare, die direkt auf einer Ressource oder einer Ressourcengruppe platziert werden können. Azure unterstützt derzeit bis zu 15 Tags pro Ressource und Ressourcengruppe. Tags können zum Zeitpunkt der Erstellung auf einer Ressource platziert werden oder zu einer vorhandenen Ressource hinzugefügt werden. Beachten Sie, dass Tags nur für Ressourcen unterstützt werden, die über das Resource Manager-Bereitstellungsmodell erstellt wurden. Wenn Sie einen virtuellen Linux-Computer markieren möchten, finden Sie weitere Informationen unter [How to tag a Linux virtual machine in Azure](virtual-machines-linux-tag.md) (So markieren Sie einen virtuellen Linux-Computer in Azure).
 
-[AZURE.INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
+[!INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## Markieren mit PowerShell
-
-Zum Erstellen, Hinzufügen und Löschen von Tags über PowerShell müssen Sie zunächst Ihre [PowerShell-Umgebung mit dem Azure-Ressourcen-Manager][] einrichten. Sobald Sie die Einrichtung abgeschlossen haben, können Sie die Tags auf Compute-, Netzwerk- und Speicherressourcen platzieren, entweder während der Erstellung oder nachdem die Ressource mithilfe von PowerShell erstellt wurde. Dieser Artikel konzentriert sich auf das Anzeigen und Bearbeiten von Tags, die auf virtuellen Computern platziert sind.
+Zum Erstellen, Hinzufügen und Löschen von Tags über PowerShell müssen Sie zunächst Ihre [PowerShell-Umgebung mit dem Azure-Ressourcen-Manager][PowerShell-Umgebung mit dem Azure-Ressourcen-Manager] einrichten. Sobald Sie die Einrichtung abgeschlossen haben, können Sie die Tags auf Compute-, Netzwerk- und Speicherressourcen platzieren, entweder während der Erstellung oder nachdem die Ressource mithilfe von PowerShell erstellt wurde. Dieser Artikel konzentriert sich auf das Anzeigen und Bearbeiten von Tags, die auf virtuellen Computern platziert sind.
 
 Navigieren Sie zuerst über das `Get-AzureRmVM`-Cmdlet zu einem virtuellen Computer.
 
@@ -51,16 +48,16 @@ Der zweite Befehl zeigt die Tags für die angegebene Variable an.
 
         PS C:\> $tags
 
-        Name		Value
+        Name        Value
         ----                           -----
-        Value		MyDepartment
-        Name		Department
-        Value		MyApp1
-        Name		Application
-        Value		MyName
-        Name		Created By
-        Value		Production
-        Name		Environment
+        Value        MyDepartment
+        Name        Department
+        Value        MyApp1
+        Name        Application
+        Value        MyName
+        Name        Created By
+        Value        Production
+        Name        Environment
 
 Der dritte Befehl fügt ein zusätzliches Tag für die *$tags*-Variable hinzu. Beachten Sie, wie **+=** verwendet wird, um das neue Schlüssel-Wert-Paar an die *$tags*-Liste anzufügen.
 
@@ -74,27 +71,26 @@ Der fünfte Befehl zeigt alle Tags auf der Ressource an. Wie Sie sehen können, 
 
         PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
-        Name		Value
+        Name        Value
         ----                           -----
-        Value		MyDepartment
-        Name		Department
-        Value		MyApp1
-        Name		Application
-        Value		MyName
-        Name		Created By
-        Value		Production
-        Name		Environment
-        Value		MyLocation
-        Name		Location
+        Value        MyDepartment
+        Name        Department
+        Value        MyApp1
+        Name        Application
+        Value        MyName
+        Name        Created By
+        Value        Production
+        Name        Environment
+        Value        MyLocation
+        Name        Location
 
-Weitere Informationen zum Festlegen von Tags über PowerShell finden Sie in den [Azure Resource-Cmdlets][].
+Weitere Informationen zum Festlegen von Tags über PowerShell finden Sie in den [Azure Resource-Cmdlets][Azure Resource-Cmdlets].
 
-[AZURE.INCLUDE [virtual-machines-common-tag-usage](../../includes/virtual-machines-common-tag-usage.md)]
+[!INCLUDE [virtual-machines-common-tag-usage](../../includes/virtual-machines-common-tag-usage.md)]
 
 ## Nächste Schritte
-
-* Weitere Informationen zum Markieren Ihrer Azure-Ressourcen finden Sie unter [Übersicht über den Azure Resource Manager][] und [Verwenden von Tags zum Organisieren von Azure-Ressourcen][].
-* Informationen dazu, wie Tags Ihnen helfen können, die Verwendung Ihrer Azure-Ressourcen zu verwalten, finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure][] und [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure][].
+* Weitere Informationen zum Markieren Ihrer Azure-Ressourcen finden Sie unter [Übersicht über den Azure Resource Manager][Übersicht über den Azure Resource Manager] und [Verwenden von Tags zum Organisieren von Azure-Ressourcen][Verwenden von Tags zum Organisieren von Azure-Ressourcen].
+* Informationen dazu, wie Tags Ihnen helfen können, die Verwendung Ihrer Azure-Ressourcen zu verwalten, finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure][Informationen zu Ihrer Rechnung für Microsoft Azure] und [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure][Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure].
 
 [PowerShell-Umgebung mit dem Azure-Ressourcen-Manager]: ../powershell-azure-resource-manager.md
 [Azure Resource-Cmdlets]: https://msdn.microsoft.com/library/azure/dn757692.aspx

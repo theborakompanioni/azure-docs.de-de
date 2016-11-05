@@ -1,51 +1,47 @@
-<properties
-    pageTitle="Tutorial: Azure Active Directory-Integration mit PerformanceCentre | Microsoft Azure"
-    description="Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und PerformanceCentre konfigurieren."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+---
+title: 'Tutorial: Azure Active Directory-Integration mit PerformanceCentre | Microsoft Docs'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und PerformanceCentre konfigurieren.
+services: active-directory
+documentationcenter: ''
+author: jeevansd
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/26/2016"
-    ms.author="jeedes"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: jeedes
 
-
-
+---
 # <a name="tutorial:-azure-active-directory-integration-with-performancecentre"></a>Tutorial: Azure Active Directory-Integration mit PerformanceCentre
-
 Dieses Tutorial soll Ihnen zeigen, wie Sie PerformanceCentre in Azure Active Directory (Azure AD) integrieren können.  
 Die Integration von PerformanceCentre in Azure AD bietet die folgenden Vorteile: 
 
-- Sie können in Azure AD steuern, wer Zugriff auf PerformanceCentre hat. 
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei PerformanceCentre anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten: im klassischen Azure Active Directory-Portal.
+* Sie können in Azure AD steuern, wer Zugriff auf PerformanceCentre hat. 
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei PerformanceCentre anzumelden (einmaliges Anmelden).
+* Sie können Ihre Konten an einem zentralen Ort verwalten: im klassischen Azure Active Directory-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Voraussetzungen 
-
+## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit PerformanceCentre konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein PerformanceCentre-Abonnement, für das die einmalige Anmeldung aktiviert ist
+* Ein Azure AD-Abonnement
+* Ein PerformanceCentre-Abonnement, für das die einmalige Anmeldung aktiviert ist
 
-
-> [AZURE.NOTE] Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+> 
+> 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-- Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern. 
+* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern. 
 
- 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.  
 Das in diesem Tutorial beschriebene Szenario besteht aus drei großen Bausteinen:
@@ -53,116 +49,90 @@ Das in diesem Tutorial beschriebene Szenario besteht aus drei großen Bausteinen
 1. Hinzufügen von PerformanceCentre aus dem Katalog 
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-
 ## <a name="adding-performancecentre-from-the-gallery"></a>Hinzufügen von PerformanceCentre aus dem Katalog
 Zum Konfigurieren der Integration von PerformanceCentre in Azure AD müssen Sie PerformanceCentre aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um PerformanceCentre aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
-
+   
     ![Active Directory][1]
-
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-
+   
     ![Anwendungen][2]
-
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-
+   
     ![Anwendungen][3]
-
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-
+   
     ![Anwendungen][4]
-
 6. Geben Sie in das Suchfeld als Suchbegriff **PerformanceCentre**ein.
- 
+   
     ![Anwendungen][5]
-
 7. Wählen Sie im Ergebnisbereich die Option **PerformanceCentre** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-
+   
     ![Anwendungen][500]
 
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD in PerformanceCentre konfiguriert und getestet werden kann.
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD in PerformanceCentre konfiguriert und getestet werden kann.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in PerformanceCentre als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in PerformanceCentre muss eine Linkbeziehung eingerichtet werden.  
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen** **in Azure AD dem Benutzernamen** **in PerformanceCentre zuweisen.
- 
+
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei PerformanceCentre müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines PerformanceCentre-Testbenutzers](#creating-a-halogen-software-test-user)** , um eine Entsprechung von Britta Simon in PerformanceCentre zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+3. **[Erstellen eines PerformanceCentre-Testbenutzers](#creating-a-halogen-software-test-user)** , um eine Entsprechung von Britta Simon in PerformanceCentre zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-
 Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure AD-Portal zu aktivieren und in Ihrer PerformanceCentre-Anwendung zu konfigurieren.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens in Azure AD mit PerformanceCentre die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure AD-Portal auf der Anwendungsintegrationsseite für **PerformanceCentre** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-
+   
     ![Einmaliges Anmelden konfigurieren][6] 
-
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei PerformanceCentre anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
-
+   
     ![Azure AD – einmaliges Anmelden][7] 
-
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
-
+   
     ![Azure AD – einmaliges Anmelden][8] 
- 
+   
      a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer PerformanceCentre-Website verwenden (beispielsweise *http://companyname.performancecentre.com/saml/SSO*).
- 
+   
      b. Klicken Sie auf **Next**.
- 
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für PerformanceCentre** die folgenden Schritte aus:
-
+   
     ![Azure AD – einmaliges Anmelden][9] 
-
+   
     a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-
-
-
-1. Melden Sie sich bei Ihrer **PerformanceCentre** -Unternehmenswebsite als Administrator an.
-
-2. Klicken Sie auf der Registerkarte links auf **Configure**.
-
+5. Melden Sie sich bei Ihrer **PerformanceCentre** -Unternehmenswebsite als Administrator an.
+6. Klicken Sie auf der Registerkarte links auf **Configure**.
+   
     ![Azure AD – einmaliges Anmelden][10]
-
-2. Klicken Sie auf der Registerkarte links auf **Verschiedenes** und anschließend auf **Einmaliges Anmelden**.
-
+7. Klicken Sie auf der Registerkarte links auf **Verschiedenes** und anschließend auf **Einmaliges Anmelden**.
+   
     ![Azure AD – einmaliges Anmelden][11]
-
-2. Wählen Sie unter **Protokoll** die Option **SAML** aus.
-
+8. Wählen Sie unter **Protokoll** die Option **SAML** aus.
+   
     ![Azure AD – einmaliges Anmelden][12]
-
-2. Öffnen Sie die heruntergeladene Metadatendatei, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Identity Provider Metadata** (Metadaten des Identitätsanbieters) ein. Klicken Sie anschließend auf **Speichern**.
-
+9. Öffnen Sie die heruntergeladene Metadatendatei, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Identity Provider Metadata** (Metadaten des Identitätsanbieters) ein. Klicken Sie anschließend auf **Speichern**.
+   
     ![Azure AD – einmaliges Anmelden][13]
-
-2. Vergewissern Sie sich, dass die Werte für **Entity Base URL** (Entitätsbasis-URL) und **Entity ID URL** (Entitäts-ID-URL) korrekt sind.
-
-    ![Azure AD – einmaliges Anmelden][14]
-
-
-6. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
-
-    ![Azure AD – einmaliges Anmelden][15]
-
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
-
-    ![Azure AD – einmaliges Anmelden][16]
-
-
-
+10. Vergewissern Sie sich, dass die Werte für **Entity Base URL** (Entitätsbasis-URL) und **Entity ID URL** (Entitäts-ID-URL) korrekt sind.
+    
+     ![Azure AD – einmaliges Anmelden][14]
+11. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
+    
+     ![Azure AD – einmaliges Anmelden][15]
+12. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+    
+     ![Azure AD – einmaliges Anmelden][16]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.  
@@ -172,76 +142,66 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-
+   
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_09.png)  
-
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-
+   
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_03.png) 
- 
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. 
-
+   
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_04.png) 
-
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: 
-
+   
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_05.png)  
-
+   
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-
+   
     b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-
+   
     c. Klicken Sie auf **Weiter**.
-
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: 
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_06.png) 
- 
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-    e. Klicken Sie auf **Weiter**.
-
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: 
+   
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_06.png) 
+   
+   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   
+   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   
+   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   
+   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   e. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-
+   
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_07.png) 
- 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-
+   
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_08.png) 
-  
+   
     a. Notieren Sie den Wert von **Neues Kennwort**.
-
+   
     b. Klicken Sie auf **Fertig stellen**.   
 
-  
- 
 ### <a name="creating-a-performancecentre-test-user"></a>Erstellen eines PerformanceCentre-Testbenutzers
-
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in PerformanceCentre.
 
 **Um einen Benutzer namens Britta Simon in PerformanceCentre zu erstellen, führen Sie die folgenden Schritte aus:**
 
 1. Melden Sie sich bei Ihrer PerformanceCentre-Unternehmenswebsite als Administrator an.
-
 2. Klicken Sie im Menü auf der linken Seite auf **Interrelate** (Verknüpfen) und anschließend auf **Create Participant** (Teilnehmer erstellen).
-
+   
     ![Benutzer erstellen][400]
-
-4. Führen Sie auf der Dialogfeldseite **Interrelate - Create Participant** die folgenden Schritte aus:
-
+3. Führen Sie auf der Dialogfeldseite **Interrelate - Create Participant** die folgenden Schritte aus:
+   
     ![Create User][401]
-
+   
     a. Geben Sie die erforderlichen Attribute für Britta Simon in die entsprechenden Textfelder ein.
-    
-    > [AZURE.IMPORTANT] Das Attribut für den Benutzernamen von Britta in PerformanceCentre muss mit dem Benutzernamen in Azure AD identisch sein.
-
+   
+   > [!IMPORTANT]
+   > Das Attribut für den Benutzernamen von Britta in PerformanceCentre muss mit dem Benutzernamen in Azure AD identisch sein.
+   > 
+   > 
 
     b. Wählen Sie unter **Rolle auswählen** die Option **Clientadministrator** aus. 
 
@@ -249,7 +209,6 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
 Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf PerformanceCentre erhält.
 
 ![Benutzer zuweisen][200] 
@@ -257,37 +216,26 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
 **Um Britta Simon PerformanceCentre zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-
+   
     ![Benutzer zuweisen][201]
-
 2. Wählen Sie in der Anwendungsliste **PerformanceCentre**aus.
-
+   
     ![Benutzer zuweisen][202]
-
-1. Klicken Sie im oberen Menü auf **Benutzer**.
-
+3. Klicken Sie im oberen Menü auf **Benutzer**.
+   
     ![Benutzer zuweisen][203]
-
-1. Wählen Sie in der Benutzerliste **Britta Simon**aus.
-
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-
+4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+   
     ![Benutzer zuweisen][205]
 
-
-
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-
 Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.  
 Wenn Sie im Zugriffsbereich auf die Kachel „PerformanceCentre“ klicken, sollten Sie automatisch bei Ihrer PerformanceCentre-Anwendung angemeldet werden.
 
-
 ## <a name="additional-resources"></a>Weitere Ressourcen
-
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

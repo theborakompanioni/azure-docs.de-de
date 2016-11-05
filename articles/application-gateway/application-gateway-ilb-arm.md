@@ -1,54 +1,47 @@
-<properties
-   pageTitle="Erstellen und Konfigurieren eines Application Gateways mit einem internen Lastenausgleich (ILB) mit Azure-Ressourcen-Manager | Microsoft Azure"
-   description="Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure Application Gateways mit internem Lastenausgleich (ILB) mit Azure-Ressourcen-Manager."
-   documentationCenter="na"
-   services="application-gateway"
-   authors="georgewallace"
-   manager="carmonm"
-   editor="tysonn"/>
-<tags
-   ms.service="application-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/19/2016"
-   ms.author="gwallace"/>
+---
+title: Erstellen und Konfigurieren eines Application Gateways mit einem internen Lastenausgleich (ILB) mit Azure-Ressourcen-Manager | Microsoft Docs
+description: Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure Application Gateways mit internem Lastenausgleich (ILB) mit Azure-Ressourcen-Manager.
+documentationcenter: na
+services: application-gateway
+author: georgewallace
+manager: carmonm
+editor: tysonn
 
+ms.service: application-gateway
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 08/19/2016
+ms.author: gwallace
 
-
+---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-(ilb)-by-using-azure-resource-manager"></a>Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB) mit Azure-Ressourcen-Manager
-
-> [AZURE.SELECTOR]
-- [Schritte für klassisches Azure](application-gateway-ilb.md)
-- [Resource Manager PowerShell-Schritte](application-gateway-ilb-arm.md)
+> [!div class="op_single_selector"]
+> * [Schritte für klassisches Azure](application-gateway-ilb.md)
+> * [Resource Manager PowerShell-Schritte](application-gateway-ilb-arm.md)
+> 
+> 
 
 Ein Azure Application Gateway kann mit einer VIP mit Internetzugriff oder mit einem internen Endpunkt konfiguriert werden, der nicht über das Internet erreichbar ist. Dies wird auch als Endpunkt für internen Lastenausgleich (Internal Load Balancer, ILB) bezeichnet. Das Konfigurieren des Gateways mit einem ILB ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für die Dienste und Ebenen in einer Anwendung mit mehreren Ebenen, die sich innerhalb einer Sicherheitsgrenze befinden und nicht für das Internet verfügbar gemacht werden, aber dennoch eine Round-Robin-Lastverteilung, Sitzungsbindungen oder SSL-Beendigung erfordern.
 
 Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application Gateways mit einem ILB.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-
 1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/)herunterladen und installieren.
 2. Sie erstellen ein virtuelles Netzwerk und ein Subnetz für das Application Gateway. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Anwendungsgateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
 3. Die Server, die Sie für die Verwendung des Anwendungsgateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
 
 ## <a name="what-is-required-to-create-an-application-gateway?"></a>Was ist zum Erstellen eines Anwendungsgateways erforderlich?
-
-
-- **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder zum virtuellen Netzwerk gehören, dann aber in einem anderen Subnetz für das Application Gateway, oder es sollte sich um eine öffentliche IP/VIP handeln.
-- **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-- **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-- **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
-- **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
-
-
+* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder zum virtuellen Netzwerk gehören, dann aber in einem anderen Subnetz für das Application Gateway, oder es sollte sich um eine öffentliche IP/VIP handeln.
+* **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
+* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
+* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
-
 Der Unterschied zwischen dem klassischen Azure-Modell und Azure Resource Manager besteht in der Reihenfolge, in der Sie ein Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen.
 Beim Resource Manager werden alle Elemente, die ein Application Gateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um die Application Gateway-Ressource zu erstellen.
-
 
 Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways angegeben:
 
@@ -57,33 +50,26 @@ Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways a
 3. Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
 4. Erstellen einer Anwendungsgatewayressource
 
-
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erstellen einer Ressourcengruppe für den Resource Manager
-
 Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Azure-Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>Schritt 1
-
+### <a name="step-1"></a>Schritt 1
     Login-AzureRmAccount
 
-### <a name="step-2"></a>Schritt 2
-
+### <a name="step-2"></a>Schritt 2
 Überprüfen Sie die Abonnements für das Konto.
 
     Get-AzureRmSubscription
 
 Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.<BR>
 
-### <a name="step-3"></a>Schritt 3
-
+### <a name="step-3"></a>Schritt 3
 Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten. <BR>
-
 
     Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
-### <a name="step-4"></a>Schritt 4
-
+### <a name="step-4"></a>Schritt 4
 Erstellen Sie eine neue Ressourcengruppe (Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.)
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
@@ -93,107 +79,89 @@ Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speich
 Im obigen Beispiel haben wir eine Ressourcengruppe namens „appgw-rg“ mit dem Standort „USA, Westen“ erstellt.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway
-
 Das folgende Beispiel zeigt, wie Sie mit dem Ressourcen-Manager ein virtuelles Netzwerk erstellen:
 
-### <a name="step-1"></a>Schritt 1
-
+### <a name="step-1"></a>Schritt 1
     $subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
 Dieser Befehl weist den Adressbereich 10.0.0.0/24 einer Subnetzvariablen zu, die zum Erstellen eines virtuellen Netzwerks verwendet wird.
 
-### <a name="step-2"></a>Schritt 2
-
+### <a name="step-2"></a>Schritt 2
     $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 
 Ein virtuelles Netzwerk mit dem Namen „appgwvnet“ wird in der Ressourcengruppe „appgw-rg“ für die Region „USA, Westen“ mit dem Präfix 10.0.0.0/16 und dem Subnetz 10.0.0.0/24 erstellt.
 
-### <a name="step-3"></a>Schritt 3
-
+### <a name="step-3"></a>Schritt 3
     $subnet = $vnet.subnets[0]
 
 Der Variablen „$subnet“ wird das Subnetzobjekt für die nächsten Schritte zugewiesen.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
-
-### <a name="step-1"></a>Schritt 1
-
+### <a name="step-1"></a>Schritt 1
     $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
 Eine IP-Konfiguration für das Anwendungsgateway mit dem Namen „gatewayIP01“ wird erstellt. Beim Starten des Anwendungsgateways wird eine IP-Adresse aus dem konfigurierten Subnetz ausgewählt, und der Netzwerkdatenverkehr wird an die IP-Adressen im Back-End-IP-Pool weitergeleitet. Beachten Sie, dass jede Instanz eine eigene IP-Adresse benötigt.
 
-
-### <a name="step-2"></a>Schritt 2
-
+### <a name="step-2"></a>Schritt 2
     $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
 Es wird der Back-End-IP-Adresspool „pool01“ mit den IP-Adressen 134.170.185.46, 134.170.188.221 und 134.170.185.50 erstellt. Dies sind die IP-Adressen, die den Netzwerkdatenverkehr vom Front-End-IP-Endpunkt empfangen. Ersetzen Sie die obigen IP-Adressen durch Ihre eigenen IP-Adressendpunkte der Anwendung.
 
-### <a name="step-3"></a>Schritt 3
-
+### <a name="step-3"></a>Schritt 3
     $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 
 Die Application Gateway-Einstellung „poolsetting01“ für den Lastenausgleich des Netzwerkdatenverkehrs im Back-End-Pool wird erstellt.
 
-### <a name="step-4"></a>Schritt 4
-
+### <a name="step-4"></a>Schritt 4
     $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 
 Der Front-End-IP-Port mit dem Namen „frontendport01“ für den ILB wird konfiguriert.
 
 ### <a name="step-5"></a>Schritt 5
-
     $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 
 Die Front-End-IP-Adresskonfiguration „fipconfig01“ wird erstellt und einer privaten IP-Adresse im aktuellen Subnetz des virtuellen Netzwerks zugewiesen.
 
-### <a name="step-6"></a>Schritt 6
-
+### <a name="step-6"></a>Schritt 6
     $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
 Der Listener „listener01“ wird erstellt, und der Front-End-Port wird der Front-End-IP-Konfiguration zugewiesen.
 
 ### <a name="step-7"></a>Schritt 7
-
     $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
 Die Load Balancer-Routingregel mit dem Namen „rule01“, mit der das Load Balancer-Verhalten konfiguriert wird, wird erstellt.
 
 ### <a name="step-8"></a>Schritt 8
-
     $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
 Die Instanzgröße des Application Gateways wird konfiguriert.
 
->[AZURE.NOTE]  Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". Sie können zwischen „Standard_Small“, „Standard_Medium“ und „Standard_Large“ wählen.
+> [!NOTE]
+> Der Standardwert für *InstanceCount* ist 2, der Maximalwert ist 10. Der Standardwert für *GatewaySize* ist "Medium". Sie können zwischen „Standard_Small“, „Standard_Medium“ und „Standard_Large“ wählen.
+> 
+> 
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Erstellen eines Application Gateways mit dem New-AzureApplicationGateway-Cmdlet
-
 Mit diesem Befehl wird ein Application Gateway mit allen Konfigurationselementen aus den vorangegangenen Schritten erstellt. In diesem Beispiel heißt das Anwendungsgateway „appgwtest“.
-
 
     $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 
 Hierbei wird ein Application Gateway mit allen Konfigurationselementen der vorangegangenen Schritte erstellt. Im Beispiel heißt das Application Gateway „appgwtest“.
 
-
 ## <a name="delete-an-application-gateway"></a>Löschen eines Application Gateways
-
 Um ein Application Gateway zu löschen, müssen Sie die folgenden Schritte in der angegebenen Reihenfolge ausführen:
 
 1. Verwenden Sie das **Stop-AzureRmApplicationGateway** -Cmdlet, um das Gateway zu beenden.
 2. Verwenden Sie das **Remove-AzureRmApplicationGateway** -Cmdlet, um das Gateway zu entfernen.
 3. Stellen Sie sicher, dass das Gateway entfernt wurde, indem Sie das **Get-AzureApplicationGateway** -Cmdlet verwenden.
 
-
-### <a name="step-1"></a>Schritt 1
-
+### <a name="step-1"></a>Schritt 1
 Rufen Sie das Anwendungsgatewayobjekt ab, und ordnen Sie es einer „$getgw“-Variablen zu.
 
     $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
-### <a name="step-2"></a>Schritt 2
-
+### <a name="step-2"></a>Schritt 2
 Verwenden Sie das **Stop-AzureRmApplicationGateway** -Cmdlet, um das Application Gateway zu beenden. Dieses Beispiel zeigt das **Stop-AzureRmApplicationGateway** -Cmdlet in der ersten Zeile, gefolgt von der Ausgabe.
 
     PS C:\> Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
@@ -206,7 +174,6 @@ Verwenden Sie das **Stop-AzureRmApplicationGateway** -Cmdlet, um das Application
 
 Verwenden Sie das **Remove-AzureRmApplicationGateway** -Cmdlet, um den Dienst zu entfernen, sobald das Application Gateway beendet wurde.
 
-
     PS C:\> Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
 
     VERBOSE: 10:49:34 PM - Begin Operation: Remove-AzureApplicationGateway
@@ -215,11 +182,12 @@ Verwenden Sie das **Remove-AzureRmApplicationGateway** -Cmdlet, um den Dienst zu
     ----       ----------------     ------------                             ----
     Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 
->[AZURE.NOTE] Mit dem optionalen Switch **-force** kann diese Bestätigungsmeldung unterdrückt werden.
-
+> [!NOTE]
+> Mit dem optionalen Switch **-force** kann diese Bestätigungsmeldung unterdrückt werden.
+> 
+> 
 
 Um sicherzustellen, dass der Dienst entfernt wurde, können Sie das **Get-AzureRmApplicationGateway** -Cmdlet verwenden. Dieser Schritt ist nicht erforderlich.
-
 
     PS C:\>Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
@@ -229,17 +197,14 @@ Um sicherzustellen, dass der Dienst entfernt wurde, können Sie das **Get-AzureR
     .....
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
 
 Wenn Sie ein Application Gateway für ILB konfigurieren möchten, lesen Sie [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 
 Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unter:
 
-- [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
-- [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
+* [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,30 +1,29 @@
-<properties 
-	pageTitle="App Service-Umgebung | Microsoft Azure" 
-	description="Was ist eine Azure App Service-Umgebung? Einführung in die App Service-Umgebung." 
-	keywords="Azure App Service-Umgebung, virtuelles Netzwerk, sicheres Netzwerk"
-	services="app-service" 
-	documentationCenter="" 
-	authors="yochay" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: App Service-Umgebung | Microsoft Docs
+description: Was ist eine Azure App Service-Umgebung? Einführung in die App Service-Umgebung.
+keywords: Azure App Service-Umgebung, virtuelles Netzwerk, sicheres Netzwerk
+services: app-service
+documentationcenter: ''
+author: yochay
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/15/2016" 
-	ms.author="stefsch"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/15/2016
+ms.author: stefsch
 
+---
 # Dokumentation zur App Service-Umgebung
-
 Eine App Service-Umgebung ist eine Option des [Premium][PremiumTier]-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung zahlreicher Azure App Service-Apps einschließlich [Web-Apps][WebApps], [Mobile Apps][MobileApps] und [API-Apps][APIApps] bereitstellt.
 
 App Service-Umgebungen sind ideal für Anwendungsworkloads mit folgenden Anforderungen:
 
-- Unterstützung sehr vieler Apps
-- Isolierung und sicherer Netzwerkzugriff
+* Unterstützung sehr vieler Apps
+* Isolierung und sicherer Netzwerkzugriff
 
 Kunden können mehrere App Service-Umgebungen innerhalb einer einzelnen Azure-Region sowie über mehrere Azure-Regionen verteilt einrichten. Dadurch eignen sich App Service-Umgebungen hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
 
@@ -41,14 +40,14 @@ Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webd
 * [Netzwerksicherheit und -architektur](../app-service-web/app-service-app-service-environment-network-architecture-overview.md)
 
 ## Anleitungen zur Vorgehensweise
-
-[AZURE.INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
-
+[!INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
 
 ## Videos
-[AZURE.VIDEO azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps]
+[!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON325/player]
 
-[AZURE.VIDEO microsoft-ignite-2015-running-enterprise-web-and-mobile-apps-on-azure-app-service]
+
+[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player]
+
 
 
 <!-- LINKS -->

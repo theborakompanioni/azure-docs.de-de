@@ -1,24 +1,22 @@
-<properties
-   pageTitle="Zertifizieren von AppSource für Azure Active Directory | Microsoft Azure"
-   description="Detailinformationen zur Zertifizierung Ihrer AppSource-Anwendung für Azure Active Directory."
-   services="active-directory"
-   documentationCenter=""
-   authors="skwan"
-   manager="mbaldwin"
-   editor=""/>
+---
+title: Zertifizieren von AppSource für Azure Active Directory | Microsoft Docs
+description: Detailinformationen zur Zertifizierung Ihrer AppSource-Anwendung für Azure Active Directory.
+services: active-directory
+documentationcenter: ''
+author: skwan
+manager: mbaldwin
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/22/2016"
-   ms.author="skwan;bryanla"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/22/2016
+ms.author: skwan;bryanla
 
-
-#<a name="how-to-get-appsource-certified-for-azure-active-directory-(ad)"></a>Zertifizieren von AppSource für Azure Active Directory (AD) 
-
+---
+# <a name="how-to-get-appsource-certified-for-azure-active-directory-(ad)"></a>Zertifizieren von AppSource für Azure Active Directory (AD)
 Um die AppSource-Zertifizierung für Azure AD zu erhalten, muss Ihre Anwendung das mehrinstanzenfähige Anmeldemuster mit Azure AD mithilfe der Protokolle OpenID Connect, OAuth 2.0 oder SAML 2.0 umsetzen. 
 
 Wenn Sie nicht mit der Azure AD-Anmeldung oder der mehrinstanzenfähigen Anwendungsentwicklung vertraut sind:

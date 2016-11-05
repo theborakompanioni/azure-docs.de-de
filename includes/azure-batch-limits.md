@@ -1,8 +1,8 @@
-**Ressource**|**Standardlimit**|**Maximales Limit**
----|---|---
-Kerne pro Batch-Konto|20|N/V<sup>1</sup>
-Aufträge und Auftragszeitpläne<sup>2</sup> pro Batch-Konto|20|10\.000
-Pools pro Batch-Konto|20|5\.000
+| **Ressource** | **Standardlimit** | **Maximales Limit** |
+| --- | --- | --- |
+| Kerne pro Batch-Konto |20 |N/V<sup>1</sup> |
+| Aufträge und Auftragszeitpläne<sup>2</sup> pro Batch-Konto |20 |10\.000 |
+| Pools pro Batch-Konto |20 |5\.000 |
 
 <sup>1</sup> Die Anzahl der Kerne pro Batch-Konto kann erhöht werden, die maximale Anzahl ist jedoch nicht festgelegt. Wenden Sie sich an den Kundensupport, um Fragen der Erhöhung zu erörtern.
 

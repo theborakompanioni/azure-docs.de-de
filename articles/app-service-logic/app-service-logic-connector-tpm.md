@@ -1,32 +1,30 @@
-<properties 
-   pageTitle="Verwendung des BizTalk-Handelspartnerverwaltungs-Connectors in Logik-Apps | Microsoft Azure App Service" 
-   description="Erstellen und Konfigurieren des BizTalk-Handelspartnerverwaltungs-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service" 
-   services="logic-apps" 
-   documentationCenter=".net,nodejs,java" 
-   authors="rajeshramabathiran" 
-   manager="erikre" 
-   editor=""/>
+---
+title: Verwendung des BizTalk-Handelspartnerverwaltungs-Connectors in Logik-Apps | Microsoft Docs
+description: Erstellen und Konfigurieren des BizTalk-Handelspartnerverwaltungs-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: rajeshramabathiran
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="04/20/2016"
-   ms.author="rajram"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 04/20/2016
+ms.author: rajram
 
+---
 # Erste Schritte mit der BizTalk-Handelspartnerverwaltung und das Hinzufügen zur Logik-App
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
-
-
-Mit dem BizTalk-Dienst für die Handelspartnerverwaltung (Trading Partner Management, TPM) können Sie Business-to-Business-Beziehungen, z. B. Partner und Vereinbarungen, zusammen mit zugeordneten Artefakten, z. B. Schemas und Zertifikaten, definieren und dauerhaft einrichten. Diese Beziehungen können dann von verwandten API-Diensten, z. B. AS2, EDIFACT und X12, durchgesetzt werden.
+Mit dem BizTalk-Dienst für die Handelspartnerverwaltung (Trading Partner Management, TPM) können Sie Business-to-Business-Beziehungen, z. B. Partner und Vereinbarungen, zusammen mit zugeordneten Artefakten, z. B. Schemas und Zertifikaten, definieren und dauerhaft einrichten. Diese Beziehungen können dann von verwandten API-Diensten, z. B. AS2, EDIFACT und X12, durchgesetzt werden.
 
 Die TPM-API-App ist die Basisanforderung des AS2-Connectors und der X12- oder EDIFACT-API-Apps. Sie können die BizTalk-Handelspartnerverwaltung dem geschäftlichen Workflow hinzufügen und Daten im Rahmen dieses Business-to-Business-Workflows in einer Logik-App verarbeiten.
 
 ## Voraussetzungen
-- Leere SQL Azure-Datenbank – Sie müssen zuerst eine leere SQL Azure-Datenbank erstellen, bevor Sie eine neue TPM-API-App erstellen.
+* Leere SQL Azure-Datenbank – Sie müssen zuerst eine leere SQL Azure-Datenbank erstellen, bevor Sie eine neue TPM-API-App erstellen.
 
 ## Grundlegendes zu Partnern, Vereinbarungen und Profilen
 Erfahren Sie mehr über das [Erstellen einer Handelspartnervereinbarung][1].
@@ -34,7 +32,10 @@ Erfahren Sie mehr über das [Erstellen einer Handelspartnervereinbarung][1].
 ## Mehr mit Ihrem Connector machen
 Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
->[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) sofort kostenlos eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> [!NOTE]
+> Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) sofort kostenlos eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> 
+> 
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
 

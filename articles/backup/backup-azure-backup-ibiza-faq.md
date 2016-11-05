@@ -1,27 +1,28 @@
-<properties
-   pageTitle="Recovery Services-Tresor – häufig gestellte Fragen | Microsoft Azure"
-   description="Diese Version der häufig gestellten Fragen dient als Unterstützung für die öffentliche Vorschauversion des Azure Backup-Diensts. Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Azure Backup-Lösung."
-   services="backup"
-   documentationCenter=""
-   authors="markgalioto"
-   manager="jwhit"
-   editor=""
-   keywords="Backup-Lösung; Backup-Dienst"/>
+---
+title: Recovery Services-Tresor – häufig gestellte Fragen | Microsoft Docs
+description: Diese Version der häufig gestellten Fragen dient als Unterstützung für die öffentliche Vorschauversion des Azure Backup-Diensts. Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Azure Backup-Lösung.
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: jwhit
+editor: ''
+keywords: Backup-Lösung; Backup-Dienst
 
-<tags
-   ms.service="backup"
-   ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="get-started-article"
-	 ms.date="08/21/2016"
-	 ms.author="trinadhk; markgal; jimpark;"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/21/2016
+ms.author: trinadhk; markgal; jimpark;
 
+---
 # Recovery Services-Tresor – häufig gestellte Fragen
-
-> [AZURE.SELECTOR]
-- [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
-- [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
+> [!div class="op_single_selector"]
+> * [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
+> * [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
+> 
+> 
 
 Dieser Artikel enthält Informationen zum Recovery Services-Tresor und ergänzt die [häufig gestellten Fragen zu Azure Backup](backup-azure-backup-faq.md). Der Artikel „Azure Backup – Häufig gestellte Fragen“ enthält alle Fragen und Antworten zum Azure Backup-Dienst.
 

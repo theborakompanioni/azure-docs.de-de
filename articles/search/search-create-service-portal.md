@@ -1,41 +1,39 @@
-<properties
-	pageTitle="Erstellen eines Azure Search-Diensts mit dem Azure-Portal | Microsoft Azure | Gehosteter Cloudsuchdienst"
-	description="Erlernen Sie das Bereitstellen eines Azure Search-Diensts über das Azure-Portal."
-	services="search"
-	authors="ashmaka"
-	documentationCenter=""/>
+---
+title: Erstellen eines Azure Search-Diensts mit dem Azure-Portal | Microsoft Docs
+description: Erlernen Sie das Bereitstellen eines Azure Search-Diensts über das Azure-Portal.
+services: search
+author: ashmaka
+documentationcenter: ''
 
-<tags
-	ms.service="search"
-	ms.devlang="NA"
-	ms.workload="search"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.date="08/29/2016"
-	ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: NA
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
-# Erstellen eines Azure Search-Diensts über das Azure-Portal
-
+---
+# Erstellen eines Azure Search-Diensts über das Azure-Portal
 In diesem Leitfaden lernen Sie, wie Sie einen Azure Search-Dienst mithilfe des [Azure-Portals](https://portal.azure.com/) erstellen (oder bereitstellen).
 
 In diesem Leitfaden wird davon ausgegangen, dass Sie bereits über ein Azure-Abonnement verfügen und sich beim Azure-Portal anmelden können.
 
 ## Suchen Sie Azure Search im Azure-Portal.
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich an.
-1. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+“).
-2. Wählen Sie **Daten und Speicher**.
-3. Wählen Sie **Azure Search** aus.
+2. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+“).
+3. Wählen Sie **Daten und Speicher**.
+4. Wählen Sie **Azure Search** aus.
 
 ![](./media/search-create-service-portal/find-search.png)
 
 ## Wählen Sie einen Dienstnamen und einen URL-Endpunkt für den Dienst.
 1. Ihr Dienstname wird Teil der Endpunkt-URL für den Azure Search-Dienst. Anhand dieser URL führen Sie Ihre API-Aufrufe zum Verwalten und Verwenden des Search-Diensts durch.
 2. Geben Sie den Dienstnamen im Feld **URL** ein. Der Dienstname:
-  * darf nur Kleinbuchstaben, Ziffern oder Bindestriche („-“) enthalten.
-  * darf in den ersten beiden und als letztes Zeichen keinen Bindestrich („-“) enthalten.
-  * darf keine aufeinander folgenden Bindestriche enthalten („--“).
-  * ist auf eine Länge zwischen 2 und 60 Zeichen beschränkt.
-
+   * darf nur Kleinbuchstaben, Ziffern oder Bindestriche („-“) enthalten.
+   * darf in den ersten beiden und als letztes Zeichen keinen Bindestrich („-“) enthalten.
+   * darf keine aufeinander folgenden Bindestriche enthalten („--“).
+   * ist auf eine Länge zwischen 2 und 60 Zeichen beschränkt.
 
 ## Wählen Sie ein Abonnement zum Verwalten Ihres Diensts aus.
 Wenn Sie über mehrere Abonnements verfügen, können Sie auswählen, welches davon diesen Azure Search-Dienst enthalten soll.
@@ -52,22 +50,20 @@ Als Azure-Dienst kann Azure Search in Rechenzentren auf der ganzen Welt gehostet
 In diesem Fall haben wir den Standard-Tarif für unseren Dienst gewählt.
 
 ## Wählen Sie die Schaltfläche „Erstellen“, um Ihren Dienst bereitzustellen.
-
 ![](./media/search-create-service-portal/create-service.png)
 
 ## Skalieren Sie den Dienst.
-
 Nach der Bereitstellung Ihres Diensts können Sie ihn Ihren Anforderungen entsprechend skalieren. Wenn Sie den Standard-Tarif für Ihren Azure Search-Dienst ausgewählt haben, können Sie Ihren Dienst in zwei Dimensionen skalieren: Replikate und Partitionen. Wenn Sie den Basic-Tarif ausgewählt haben, können Sie nur Replikate hinzufügen.
 
-*__Partitionen__* ermöglichen Ihrem Dienst das Speichern und Durchsuchen weiterer Dokumente.
+***Partitionen*** ermöglichen Ihrem Dienst das Speichern und Durchsuchen weiterer Dokumente.
 
-Mit *__Replikaten__* kann Ihr Dienst eine höhere Auslastung von Suchabfragen verarbeiten. [Ein Dienst benötigt zwei Replikate, um eine schreibgeschützte SLA zu erreichen, und drei Replikate zum Erreichen einer SLA mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Mit ***Replikaten*** kann Ihr Dienst eine höhere Auslastung von Suchabfragen verarbeiten. [Ein Dienst benötigt zwei Replikate, um eine schreibgeschützte SLA zu erreichen, und drei Replikate zum Erreichen einer SLA mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-1. Öffnen Sie im Azure-Portal das Verwaltungsblatt für Ihren Azure Search-Dienst.
+1. Öffnen Sie im Azure-Portal das Verwaltungsblatt für Ihren Azure Search-Dienst.
 2. Wählen Sie auf dem Blatt **Einstellungen** die Option **Skalieren** aus.
 3. Sie können den Dienst skalieren, indem Sie Replikate oder Partitionen hinzufügen.
-  * Der Dienst kann nicht über 36 Sucheinheiten hinaus skaliert werden. Die Gesamtzahl von Sucheinheiten entspricht dem Produkt der Replikate und Partitionen (Replikate * Partitionen = Sucheinheiten insgesamt).
-  * Wenn Sie den Basic-Tarif ausgewählt haben, können Sie nur auf drei Replikate skalieren. Basic-Dienste sind an eine einzelne Partition gebunden.
+   * Der Dienst kann nicht über 36 Sucheinheiten hinaus skaliert werden. Die Gesamtzahl von Sucheinheiten entspricht dem Produkt der Replikate und Partitionen (Replikate * Partitionen = Sucheinheiten insgesamt).
+   * Wenn Sie den Basic-Tarif ausgewählt haben, können Sie nur auf drei Replikate skalieren. Basic-Dienste sind an eine einzelne Partition gebunden.
 
 ![](./media/search-create-service-portal/scale-service.png)
 

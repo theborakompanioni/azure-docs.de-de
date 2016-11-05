@@ -1,23 +1,22 @@
-<properties 
-   pageTitle="Alert Management in Microsoft-Überwachungsprodukten | Microsoft Azure"
-   description="Mit einer Warnung wird auf ein Problem hingewiesen, für das die Aufmerksamkeit eines Administrators erforderlich ist.  In diesem Artikel werden die Unterschiede der Erstellung und Verwaltung von Warnungen in System Center Operations Manager (SCOM) und Log Analytics beschrieben. Außerdem enthält der Artikel die bewährten Methoden zur Nutzung der beiden Produkte für eine Alert Management-Hybridstrategie." 
-   services="operations-management-suite"
-   documentationCenter=""
-   authors="bwren"
-   manager="jwhit"
-   editor="tysonn" />
-<tags 
-   ms.service="operations-management-suite"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/06/2016"
-   ms.author="bwren" />
+---
+title: Alert Management in Microsoft-Überwachungsprodukten | Microsoft Docs
+description: Mit einer Warnung wird auf ein Problem hingewiesen, für das die Aufmerksamkeit eines Administrators erforderlich ist.  In diesem Artikel werden die Unterschiede der Erstellung und Verwaltung von Warnungen in System Center Operations Manager (SCOM) und Log Analytics beschrieben. Außerdem enthält der Artikel die bewährten Methoden zur Nutzung der beiden Produkte für eine Alert Management-Hybridstrategie.
+services: operations-management-suite
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: tysonn
 
+ms.service: operations-management-suite
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/06/2016
+ms.author: bwren
 
-# <a name="managing-alerts-with-microsoft-monitoring"></a>Verwalten von Warnungen per Microsoft-Überwachung 
-
+---
+# <a name="managing-alerts-with-microsoft-monitoring"></a>Verwalten von Warnungen per Microsoft-Überwachung
 Mit einer Warnung wird auf ein Problem hingewiesen, für das die Aufmerksamkeit eines Administrators erforderlich ist.  Es gibt deutliche Unterschiede zwischen System Center Operations Manager (SCOM) und Log Analytics in Operations Management Suite (OMS), was die Erstellung von Warnungen, deren Verwaltung und Analyse sowie die Art der Benachrichtigung über die Erkennung eines schwerwiegenden Problems betrifft.
 
 ## <a name="alerts-in-operations-manager"></a>Warnungen in Operations Manager
@@ -59,7 +58,7 @@ Sie können SCOM-Warnungen aber nicht vollständig in Log Analytics verwalten, d
 
 ## <a name="alert-remediation"></a>Beheben von Warnungen
 [Behebung](http://technet.microsoft.com/library/mt614775.aspx) bezieht sich auf den Versuch, das von einer Warnung identifizierte Problem automatisch zu beheben.
-  
+
 Mit SCOM können Sie die Diagnose und Wiederherstellungen durchführen, um zu reagieren, wenn eine Überwachungseinheit in einen Fehlerzustand wechselt.  Dies passiert gleichzeitig mit der Erstellung der Warnung durch die Überwachungseinheit.  Die Diagnose und Wiederherstellungen werden in der Regel als Skript implementiert, das auf dem Agent ausgeführt wird.  Bei einer Diagnose wird versucht, weitere Informationen zum erkannten Problem zu sammeln, und bei einer Wiederherstellung wird versucht, das Problem zu beheben.
 
 Mit Log Analytics können Sie als Reaktion auf eine Log Analytics-Warnung ein [Azure Automation-Runbook](https://azure.microsoft.com/documentation/services/automation/) starten oder einen Webhook aufrufen.  Runbooks können eine komplexe Logik enthalten, die in PowerShell implementiert ist.  Das Skript wird in Azure ausgeführt und ermöglicht den Zugriff auf alle Azure-Ressourcen oder externen Ressourcen, die in der Cloud verfügbar sind.  Azure Automation verfügt über die Funktion zum Ausführen von Runbooks auf einem Server in Ihrem lokalen Rechenzentrum, aber dieses Feature ist derzeit nicht verfügbar, wenn das Runbook als Reaktion auf Log Analytics-Warnungen gestartet wird.
@@ -69,9 +68,7 @@ Sowohl Wiederherstellungen in SCOM als auch Runbooks in OMS können PowerShell-S
 Wenn Sie SCOM als Datenquelle für Log Analytics verwenden, können Sie eine Log Analytics-Warnung mit einer Protokollabfrage erstellen, um im OMS-Repository gespeicherte SCOM-Warnungen abzurufen.  Dies ermöglicht Ihnen die Ausführung eines Azure Automation-Runbooks als Reaktion auf eine SCOM-Warnung.  Da das Runbook in Azure ausgeführt wird, ist dies keine wettbewerbsfähige Strategie für Wiederherstellungen bei lokalen Problemen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Informieren Sie sich näher über [Warnungen in System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh212913.aspx).
-
+* Informieren Sie sich näher über [Warnungen in System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh212913.aspx).
 
 <!--HONumber=Oct16_HO2-->
 

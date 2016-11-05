@@ -1,29 +1,27 @@
-<properties
-   pageTitle="Verknüpfte Vorlagen mit Resource Manager | Microsoft Azure"
-   description="Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden."
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="timlt"
-   editor="tysonn"/>
+---
+title: Verknüpfte Vorlagen mit Resource Manager | Microsoft Docs
+description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
+services: azure-resource-manager
+documentationcenter: na
+author: tfitzmac
+manager: timlt
+editor: tysonn
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/02/2016"
-   ms.author="tomfitz"/>
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/02/2016
+ms.author: tomfitz
 
+---
 # Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager
-
 Aus einer Azure Resource Manager-Vorlage heraus können Sie einen Link zu einer anderen Vorlage herstellen, sodass Sie die Bereitstellung in eine Reihe von ausgewählten und zweckgebundenen Vorlagen zerlegen können. Wie das Zerlegen einer Anwendung in mehrere Codeklassen bietet diese Zerlegung Vorteile in Bezug auf Tests, Wiederverwendung und Lesbarkeit.
 
 Sie können Parameter aus einer Hauptvorlage an eine verknüpfte Vorlage übergeben, und diese Parameter können direkt Parametern oder Variablen zugeordnet werden, die von der aufrufenden Vorlage verfügbar gemacht werden. Die verknüpfte Vorlage kann auch eine Ausgabevariable zurück an die Quellvorlage übergeben, wodurch ein bidirektionaler Datenaustausch zwischen Vorlagen ermöglicht wird.
 
 ## Verknüpfen mit einer Vorlage
-
 Sie erstellen einen Link zwischen zwei Vorlagen durch Hinzufügen einer Bereitstellungsressource innerhalb der Hauptvorlage, die auf die verknüpfte Vorlage verweist. Sie legen die **templateLink**-Eigenschaft für den URI der verknüpften Vorlage fest. Für die verknüpfte Vorlage können Sie Parameterwerte angeben, indem Sie die Werte entweder direkt in der Vorlage oder per Verknüpfung mit einer Parameterdatei angeben. Im folgenden Beispiel wird die **parameters**-Eigenschaft verwendet, um direkt einen Parameterwert anzugeben.
 
     "resources": [ 
@@ -76,7 +74,6 @@ Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer an
 Obwohl das Token als sichere Zeichenfolge übergeben wird, wird der URI der verknüpften Vorlage samt SAS-Token in den Bereitstellungsvorgängen für diese Ressourcengruppe protokolliert. Legen Sie ein Ablaufdatum für das Token fest, um den Zugriff zu beschränken.
 
 ## Verknüpfen mit einer Parameterdatei
-
 Im nächsten Beispiel wird die **parametersLink**-Eigenschaft genutzt, um eine Verknüpfung mit einer Parameterdatei herzustellen.
 
     "resources": [ 
@@ -101,7 +98,6 @@ Im nächsten Beispiel wird die **parametersLink**-Eigenschaft genutzt, um eine V
 Der URI-Wert für die verknüpfte Parameterdatei darf keine lokale Datei sein und muss entweder **http** oder **https** enthalten. Für die Parameterdatei kann auch die Einschränkung gelten, dass der Zugriff nur mithilfe eines SAS-Tokens möglich ist.
 
 ## Verwenden von Variablen für das Verknüpfen von Vorlagen
-
 Die vorherigen Beispiele zeigen hartcodierte URL-Werte für die Vorlagenlinks. Dieser Ansatz funktioniert u. U. für eine einfache Vorlage, aber er funktioniert nicht gut bei der Arbeit mit einer großen Anzahl von modularen Vorlagen. Stattdessen können Sie eine statische Variable erstellen, die eine Basis-URL für die Hauptvorlage speichert, und dann aus dieser Basis-URL dynamisch URLs für die verknüpften Vorlagen erstellen. Der Vorteil dieses Ansatzes besteht darin, dass Sie die Vorlage problemlos verschieben oder verzweigen können, da Sie nur die statische Variable in der Hauptvorlage ändern müssen. Die Hauptvorlage übergibt die richtigen URIs an die zerlegten Vorlagen.
 
 Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei URLs für verknüpfte Vorlagen (**sharedTemplateUrl** und **vmTemplate**) zu erstellen.
@@ -132,7 +128,6 @@ Sie können auch [Bereitstellung()](resource-group-template-functions.md#deploym
     }
 
 ## Bedingtes Verknüpfen mit Vorlagen
-
 Sie können eine Verknüpfung mit verschiedenen Vorlagen erstellen, indem Sie einen Parameterwert übergeben, der zum Erstellen des URIs der verknüpften Vorlage verwendet wird. Dieser Ansatz eignet sich gut, wenn Sie während der Bereitstellung angeben müssen, welche verknüpfte Vorlage verwendet werden soll. Geben Sie beispielsweise eine Vorlage an, die für ein vorhandenes Speicherkonto verwendet werden soll, und geben Sie eine andere Vorlage an, die für ein neues Speicherkonto verwendet werden soll.
 
 Im folgenden Beispiel sehen Sie einen Parameter für einen Speicherkontonamen und einen Parameter, der angibt, ob das Speicherkonto neu oder bereits vorhanden ist.
@@ -233,7 +228,6 @@ Das nächste Beispiel zeigt die Vorlage **newStorageAccount.json**. Beachten Sie
     }
 
 ## Vollständiges Beispiel
-
 Die folgenden Beispielvorlagen zeigen eine vereinfachte Anordnung verknüpfter Vorlagen zum Erläutern verschiedener Konzepte in diesem Artikel. Es wird davon ausgegangen, dass die Vorlagen demselben Container in einem Speicherkonto mit aktiviertem öffentlichen Zugriff hinzugefügt wurden. Im Abschnitt **outputs** übergibt die verknüpfte Vorlage einen Wert zurück an die Hauptvorlage.
 
 Die Datei **parent.json** besteht aus Folgendem:
@@ -269,19 +263,19 @@ Die Datei **parent.json** besteht aus Folgendem:
 Die Datei **helloworld.json** besteht aus Folgendem:
 
     {
-	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	  "contentVersion": "1.0.0.0",
-	  "parameters": {},
-	  "variables": {},
-	  "resources": [],
-	  "outputs": {
-		"result": {
-			"value": "Hello World",
-			"type" : "string"
-		}
-	  }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {
+        "result": {
+            "value": "Hello World",
+            "type" : "string"
+        }
+      }
     }
-    
+
 In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit:
 
     Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -297,7 +291,7 @@ An der Azure-Befehlszeilenschnittstelle (CLI) rufen Sie ein Token für den Conta
 Sie werden aufgefordert, das SAS-Token als Parameter anzugeben. Sie müssen dem Token **?** voranstellen.
 
 ## Nächste Schritte
-- Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
-- Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
+* Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
+* Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
 <!---HONumber=AcomDC_0907_2016-->

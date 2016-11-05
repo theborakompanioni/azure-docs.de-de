@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Clusterressourcen-Manager von Service Fabric – Affinität | Microsoft Azure"
-   description="Übersicht über die Konfiguration der Affinität für Service Fabric-Dienste"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Clusterressourcen-Manager von Service Fabric – Affinität | Microsoft Docs
+description: Übersicht über die Konfiguration der Affinität für Service Fabric-Dienste
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Konfigurieren und Verwenden der Dienstaffinität in Service Fabric
-
 Affinität ist ein Steuerelement, das hauptsächlich bereitgestellt wird, um den Übergang von größeren monolithischen Anwendungen in die Welt der Cloud und Microservices zu vereinfachen. Sie kann in bestimmten Fällen auch als legitime Optimierung zum Verbessern der Leistung von Diensten verwendet werden, obwohl dabei Nebeneffekte auftreten können.
 
 Angenommen, Sie überführen eine größere App bzw. eine, die nicht mit Blick auf Microservices entwickelt wurde, in Service Fabric. Dieser Vorgang ist tatsächlich ziemlich üblich, und wir hatten einige Kunden (intern und extern) in dieser Situation. Sie beginnen mit dem Überführen der gesamten App in die Umgebung, verpacken sie und führen sie aus. Anschließend unterteilen Sie sie in verschiedene kleinere Dienste, die alle miteinander kommunizieren.
@@ -25,8 +24,8 @@ Angenommen, Sie überführen eine größere App bzw. eine, die nicht mit Blick a
 Doch dann ertönt ein „Huch“. Das „Huch“ gehört meist zu einer dieser Kategorien:
 
 1. Eine Komponente X in der monolithischen App verfügt über eine nicht dokumentierte Abhängigkeit von Komponente Y, und die beiden Komponenten wurden soeben in separate Dienste umgewandelt. Die beiden Komponenten wurden voneinander getrennt und werden jetzt auf unterschiedlichen Knoten innerhalb des Clusters ausgeführt.
-2.	Diese Elemente kommunizieren über (lokale Named Pipes | freigegebenen Speicher | Dateien auf dem Datenträger), doch ich muss unbedingt in der Lage sein, sie unabhängig voneinander zu aktualisieren, um die Sache ein wenig zu beschleunigen. Ich entferne die harte Abhängigkeit später.
-3.	Alles ist in Ordnung, doch es stellt sich heraus, dass diese beiden Komponenten sehr kommunikativ bzw. leistungsabhängig sein. Beim Verschieben der Komponenten in unterschiedliche Dienste hat die Leistung der Anwendung rapide abgenommen, oder die Latenz ist gestiegen. Folglich wird die erwartete Leistung der Anwendung nicht mehr erreicht.
+2. Diese Elemente kommunizieren über (lokale Named Pipes | freigegebenen Speicher | Dateien auf dem Datenträger), doch ich muss unbedingt in der Lage sein, sie unabhängig voneinander zu aktualisieren, um die Sache ein wenig zu beschleunigen. Ich entferne die harte Abhängigkeit später.
+3. Alles ist in Ordnung, doch es stellt sich heraus, dass diese beiden Komponenten sehr kommunikativ bzw. leistungsabhängig sein. Beim Verschieben der Komponenten in unterschiedliche Dienste hat die Leistung der Anwendung rapide abgenommen, oder die Latenz ist gestiegen. Folglich wird die erwartete Leistung der Anwendung nicht mehr erreicht.
 
 Nun muss eine Lösung gefunden werden, bei der der Umgestaltungsaufwand nicht umsonst war und nicht erneut auf die monolithische Anwendung zurückgegriffen wird. Allerdings muss die Positionierung der Komponenten berücksichtigt werden. Diese Lösung muss umgesetzt werden, bis die Komponenten so neu entworfen werden können, dass sie selbst als Dienste ausgeführt werden, oder bis die erwartete Leistung auf andere Weise erreicht wird.
 
@@ -62,8 +61,8 @@ Eine weitere Eigenschaft derzeitiger Affinitätsbeziehungen ist, dass sie gerich
 Der letzte wichtige Affinitätsaspekt ist, dass Affinitätsbeziehungen nicht unterstützt werden, wenn das übergeordnete Element partitioniert ist. Dies wird ggf. künftig unterstützt werden, ist derzeit aber nicht zulässig.
 
 ## Nächste Schritte
-- Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen, [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
-- Viele Gründe, weshalb Benutzer Affinität verwenden, z.B. das Einschränken von Diensten auf eine kleine Gruppe von Computern, und der Versuch, die Last einer Sammlung von Diensten zu aggregieren, werden besser durch Anwendungsgruppen unterstützt. Weitere Informationen finden Sie unter [Introduction to Application Groups](service-fabric-cluster-resource-manager-application-groups.md) (Einführung zu Anwendungsgruppen).
+* Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen, [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
+* Viele Gründe, weshalb Benutzer Affinität verwenden, z.B. das Einschränken von Diensten auf eine kleine Gruppe von Computern, und der Versuch, die Last einer Sammlung von Diensten zu aggregieren, werden besser durch Anwendungsgruppen unterstützt. Weitere Informationen finden Sie unter [Introduction to Application Groups](service-fabric-cluster-resource-manager-application-groups.md) (Einführung zu Anwendungsgruppen).
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png

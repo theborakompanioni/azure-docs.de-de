@@ -1,26 +1,26 @@
 
-<properties
-    pageTitle="Speichern Sie vertrauliche Daten niemals in benutzerdefinierten Images für Azure RemoteApp. | Microsoft Azure"
-    description="Erfahren Sie mehr über die Richtlinien zum Speichern von Daten in benutzerdefinierten Images in Azure RemoteApp."
-    services="remoteapp"
-    documentationCenter=""
-    authors="lizap"
-    manager="mbaldwin" />
+---
+title: Speichern Sie vertrauliche Daten niemals in benutzerdefinierten Images für Azure RemoteApp. | Microsoft Docs
+description: Erfahren Sie mehr über die Richtlinien zum Speichern von Daten in benutzerdefinierten Images in Azure RemoteApp.
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
+---
 # Speichern Sie vertrauliche Daten niemals in benutzerdefinierten Images.
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> [!IMPORTANT]
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
 Wenn Sie Ihre eigene Anwendung in Azure RemoteApp hosten, besteht der erste Schritt darin, ein benutzerdefiniertes Image zu erstellen. Wir verwenden dieses benutzerdefinierte Image, um VM-Instanzen zu erstellen, die Ihre Apps für Ihre Benutzer bereitstellen. Das benutzerdefinierte Image sollte NUR Anwendungen enthalten, niemals vertrauliche Daten, die nicht verloren gehen dürfen – beispielsweise SQL-Datenbanken, Personaldateien oder spezielle Datendateien wie QuickBooks-Unternehmensdateien. Alle vertraulichen Daten sollten außerhalb von Azure RemoteApp auf einem Dateiserver, einer anderen Azure-VM oder in SQL Azure gespeichert werden. Das Image sollte nur die Anwendung hosten, die eine Verbindung mit der Datenquelle herstellt und die Daten bereitstellt. Weitere Informationen finden Sie unter [Anforderungen für Azure RemoteApp-Images](remoteapp-imagereqs.md).
 
@@ -30,19 +30,19 @@ Sobald eine Sammlung bereitgestellt wurde und Benutzer damit beginnen, Verbindun
 
 Beispiele für Daten, die nicht im Image gespeichert werden sollten:
 
-- Freigegebene Daten für den Benutzerzugriff
-- SQL-Datenbank oder QuickBooks-Datenbank
-- Jegliche Daten in D:\\
+* Freigegebene Daten für den Benutzerzugriff
+* SQL-Datenbank oder QuickBooks-Datenbank
+* Jegliche Daten in D:\\
 
 Beispiele für Daten, die sich im Standardprofil befinden können, das in den UPD jedes Benutzers kopiert wird:
 
-- Konfigurationsdateien für die Benutzer
-- Skripts, die Benutzer in ihrem UPD benötigen
+* Konfigurationsdateien für die Benutzer
+* Skripts, die Benutzer in ihrem UPD benötigen
 
 Die wichtigsten Punkte:
 
-- Speichern Sie in einem benutzerdefinierten Image keine vertraulichen Daten, die nicht verloren gehen dürfen.
-- Vertrauliche Daten sollten immer auf einem separaten Dateiserver, einer separaten Azure-VM oder in der Cloud gespeichert werden – auf jeden Fall außerhalb der VM-Instanzen, die Ihre Anwendungen in Azure RemoteApp hosten.
-- Benutzerdaten werden auf dem Benutzerprofil-Datenträger gespeichert und beibehalten.
+* Speichern Sie in einem benutzerdefinierten Image keine vertraulichen Daten, die nicht verloren gehen dürfen.
+* Vertrauliche Daten sollten immer auf einem separaten Dateiserver, einer separaten Azure-VM oder in der Cloud gespeichert werden – auf jeden Fall außerhalb der VM-Instanzen, die Ihre Anwendungen in Azure RemoteApp hosten.
+* Benutzerdaten werden auf dem Benutzerprofil-Datenträger gespeichert und beibehalten.
 
 <!---HONumber=AcomDC_0817_2016-->

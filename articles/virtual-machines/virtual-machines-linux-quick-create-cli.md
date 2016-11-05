@@ -1,36 +1,31 @@
-<properties
-   pageTitle="Erstellen einer Linux-VM in Azure mithilfe der CLI| Microsoft Azure"
-   description="Erstellen Sie mithilfe der CLI eine Linux-VM in Azure."
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="vlivech"
-   manager="timlt"
-   editor=""/>
+---
+title: Erstellen einer Linux-VM in Azure mithilfe der CLI| Microsoft Docs
+description: Erstellen Sie mithilfe der CLI eine Linux-VM in Azure.
+services: virtual-machines-linux
+documentationcenter: ''
+author: vlivech
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="NA"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="09/08/2016"
-   ms.author="v-livech"/>
+ms.service: virtual-machines-linux
+ms.devlang: NA
+ms.topic: hero-article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 09/08/2016
+ms.author: v-livech
 
-
+---
 # Erstellen einer Linux-VM in Azure mithilfe der CLI
-
 In diesem Artikel wird erläutert, wie Sie mit dem Befehl `azure vm quick-create` in der Azure-Befehlszeilenschnittstelle (CLI) schnell einen virtuellen Linux-Computer (VM) bereitstellen können. Der Befehl `quick-create` stellt eine VM in einer sicheren Basisinfrastruktur bereit, mit der Sie rasch einen Prototyp erstellen oder ein Konzept testen können. Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:
 
-- Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/))
-
-- [Azure-CLI](../xplat-cli-install.md), angemeldet mit `azure login`
-
-- Azure-CLI _muss im_ Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden
+* Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/))
+* [Azure-CLI](../xplat-cli-install.md), angemeldet mit `azure login`
+* Azure-CLI *muss im* Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden
 
 Sie können eine Linux-VM auch schnell über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md) bereitstellen.
 
 ## Schnellbefehle
-
 Das folgende Beispiel zeigt, wie Sie eine CoreOS-VM bereitstellen und Ihren SSH-Schlüssel (Secure Shell) anfügen (Ihre Argumente können sich von den hier verwendeten Argumenten unterscheiden):
 
 ```bash
@@ -40,29 +35,27 @@ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
 In den folgenden Abschnitten wird zur Erläuterung des Befehls und der Anforderungen Ubuntu Server 14.04 LTS als Linux-Distribution verwendet.
 
 ## Aliase für die Schnellerstellung mit „vm quick-create“
-
 Eine schnelle Möglichkeit zum Auswählen einer Distribution ist die Verwendung der entsprechenden Azure-CLI-Aliase für die am häufigsten verwendeten OS-Distributionen. Die folgende Tabelle enthält eine Liste der Aliase (ab Azure-CLI Version 0.10). Bei allen Bereitstellungen mit `quick-create` werden standardmäßig VMs mit SSD-Speicher (Solid State Drive) erstellt, die eine schnellere Bereitstellung und hohe Leistung für den Datenträgerzugriff bieten. (Diese Aliase stellen einen kleinen Teil der in Azure verfügbaren Distributionen dar. Sie können auf dem Azure Marketplace auf weitere Images zugreifen, indem Sie [nach einem Image suchen](virtual-machines-linux-cli-ps-findimage.md), oder [ein eigenes benutzerdefiniertes Image hochladen](virtual-machines-linux-create-upload-generic.md).)
 
 | Alias | Herausgeber | Angebot | SKU | Version |
-|:----------|:----------|:-------------|:------------|:--------|
-| CentOS | OpenLogic | CentOS | 7,2 | neueste |
-| CoreOS | CoreOS | CoreOS | Stable | neueste |
-| Debian | credativ | Debian | 8 | neueste |
-| openSUSE | SUSE | openSUSE | 13\.2 | neueste |
-| RHEL | Red Hat | RHEL | 7\.2 | neueste |
-| UbuntuLTS | Canonical | Ubuntu Server | 14\.04.4-LTS | neueste |
+|:--- |:--- |:--- |:--- |:--- |
+| CentOS |OpenLogic |CentOS |7,2 |neueste |
+| CoreOS |CoreOS |CoreOS |Stable |neueste |
+| Debian |credativ |Debian |8 |neueste |
+| openSUSE |SUSE |openSUSE |13\.2 |neueste |
+| RHEL |Red Hat |RHEL |7\.2 |neueste |
+| UbuntuLTS |Canonical |Ubuntu Server |14\.04.4-LTS |neueste |
 
 In den folgenden Abschnitten wird der Alias `UbuntuLTS` für die Option **ImageURN** (`-Q`) verwendet, um einen Ubuntu 14.04.4 LTS-Server bereitzustellen.
 
 ## Ausführliche exemplarische Vorgehensweise
-
 Im vorherigen Beispiel für `quick-create` wurde nur das Flag `-M` aufgerufen, um den hochzuladenden öffentlichen SSH-Schlüssel zu identifizieren, während SSH-Kennwörter deaktiviert wurden. Sie werden daher zum Angeben der folgenden Argumente aufgefordert:
 
-- Ressourcengruppenname (für Ihre erste Azure-Ressourcengruppe ist in der Regel eine beliebige Zeichenfolge ausreichend)
-- Name des virtuellen Computers
-- Standort (`westus` oder `westeurope` sind gute Standardwerte)
-- Linux (um Azure das zu verwendende Betriebssystem mitzuteilen)
-- username
+* Ressourcengruppenname (für Ihre erste Azure-Ressourcengruppe ist in der Regel eine beliebige Zeichenfolge ausreichend)
+* Name des virtuellen Computers
+* Standort (`westus` oder `westeurope` sind gute Standardwerte)
+* Linux (um Azure das zu verwendende Betriebssystem mitzuteilen)
+* username
 
 Da im folgenden Beispiel alle Werte angegeben werden, sind keine weiteren Eingabeaufforderungen erforderlich. Sofern Sie über eine Datei `~/.ssh/id_rsa.pub` als öffentliche Schlüsseldatei im ssh-rsa-Format verfügen, sind keine Änderungen erforderlich:
 
@@ -196,12 +189,11 @@ exampleAdminUser@exampleVMName:~$
 ```
 
 ## Nächste Schritte
-
 Der Befehl `azure vm quick-create` ermöglicht die schnelle Bereitstellung einer VM – Sie können sich bei einer Bash-Shell anmelden und mit der Arbeit beginnen. Bei der Verwendung von `vm quick-create` haben Sie jedoch weder umfassende Kontrolle, noch können Sie eine komplexere Umgebung erstellen. Informationen zum Bereitstellen einer für Ihre Infrastruktur angepassten Linux-VM finden Sie in den Artikeln zu folgenden Themen:
 
-- [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
-- [Direktes Erstellen einer benutzerdefinierten Umgebung für einen virtuellen Linux-Computer über Azure-CLI-Befehle](virtual-machines-linux-create-cli-complete.md)
-- [Erstellen einer SSH-geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+* [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
+* [Direktes Erstellen einer benutzerdefinierten Umgebung für einen virtuellen Linux-Computer über Azure-CLI-Befehle](virtual-machines-linux-create-cli-complete.md)
+* [Erstellen einer SSH-geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 
 Sie können auch [den Azure-Treiber `docker-machine` mit verschiedenen Befehlen verwenden, um eine Linux-VM schnell als Docker-Host zu erstellen](virtual-machines-linux-docker-machine.md).
 

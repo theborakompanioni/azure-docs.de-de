@@ -1,133 +1,131 @@
-<properties 
-   pageTitle="Azure Mobile Engagement – Benutzeroberfläche – Reichweiteninhalt" 
-   description="Erfahren Sie, wie Sie den eindeutigen Inhalt der verschiedenen Kampagnenarten für Pushbenachrichtigungen in Azure Mobile Engagement verwalten" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
-   editor=""/>
+---
+title: Azure Mobile Engagement – Benutzeroberfläche – Reichweiteninhalt
+description: Erfahren Sie, wie Sie den eindeutigen Inhalt der verschiedenen Kampagnenarten für Pushbenachrichtigungen in Azure Mobile Engagement verwalten
+services: mobile-engagement
+documentationcenter: ''
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="mobile-engagement"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
-   ms.date="08/19/2016"
-   ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # Verwaltung des eindeutigen Inhalts der verschiedenen Kampagnenarten für Pushbenachrichtigungen
- 
 Im Abschnitt "Inhalt" einer neuen Reichweitenkampagne können Sie den Inhalt Ihrer Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone) ändern. Die Einstellung "Inhalt" von Pushkampagnen ist spezifisch für den Typ der Kampagne.
- 
+
 ### Inhaltstypen:
-- Ankündigungen
-- Umfragen
-- Datenpush
-- Kacheln (nur Windows Phone)
- 
+* Ankündigungen
+* Umfragen
+* Datenpush
+* Kacheln (nur Windows Phone)
+
 ## Inhalt von Ankündigungen
  ![Reichweiteninhalt1][30]
 
 ### Wählen Sie den Typ der Ankündigung:
--    Nur Benachrichtigung: Dies ist eine einfache Standardbenachrichtigung. Das bedeutet, dass, wenn ein Benutzer darauf klickt, keine zusätzliche Ansicht angezeigt wird, sondern nur die zugeordnete Aktion erfolgt.
--    Textankündigung: Dies ist eine Benachrichtigung, die den Benutzer auffordert, einen Blick auf eine Textansicht zu werfen.
--    Web-Ankündigung: Dies ist eine Benachrichtigung, die den Benutzer auffordert, einen Blick auf eine Webansicht zu werfen.
+* Nur Benachrichtigung: Dies ist eine einfache Standardbenachrichtigung. Das bedeutet, dass, wenn ein Benutzer darauf klickt, keine zusätzliche Ansicht angezeigt wird, sondern nur die zugeordnete Aktion erfolgt.
+* Textankündigung: Dies ist eine Benachrichtigung, die den Benutzer auffordert, einen Blick auf eine Textansicht zu werfen.
+* Web-Ankündigung: Dies ist eine Benachrichtigung, die den Benutzer auffordert, einen Blick auf eine Webansicht zu werfen.
 
 ### Siehe auch
-- [Reichweite – Anleitungen – Ankündigungen][Link 3]
+* [Reichweite – Anleitungen – Ankündigungen][Link 3]
 
 ### Informationen zu Ankündigungen von Webansichten:
 Vorkommen des Musters "{deviceid}" im HTML- oder JavaScript-Code, den Sie hier bereitstellen, werden automatisch durch den Bezeichner des Geräts ersetzt, das die Ankündigung anzeigt. Dies ist eine einfache Möglichkeit zum Abrufen von Azure Mobile Engagement-Gerätekennungen in einem externen Webdienst, der in Ihrem Backoffice gehostet wird. Wenn Sie eine Vollbildwebansicht (ohne die Standardschaltflächen "Aktion" und "Beenden", die wir bereitstellen) erstellen möchten, können Sie die folgenden Funktionen aus dem JavaScript-Code Ihrer Ankündigung einer Webansicht verwenden:
 
--    Durchführen der Ankündigungsaktion: ReachContent.actionContent()
--    Beenden der Ankündigung: ReachContent.exitContent()
- 
-### Wählen Ihrer Aktion:
+* Durchführen der Ankündigungsaktion: ReachContent.actionContent()
+* Beenden der Ankündigung: ReachContent.exitContent()
 
+### Wählen Ihrer Aktion:
 ### Informationen zu Aktions-URLs:
 Jede URL, die vom Betriebssystem eines Zielgeräts interpretiert werden kann, kann als Aktions-URL verwendet werden. Dedizierte URLs, die Ihre Anwendung ggf. unterstützt (z. B. damit Benutzer zu einem bestimmten Bildschirm wechseln), können auch in einer Aktions-URL verwendet werden. Jedes Vorkommen des Musters {deviceid} wird automatisch durch die Kennung des Geräts ersetzt, das die Aktion ausführt. Dies ist eine einfache Möglichkeit zum Abrufen von Azure Mobile Engagement-Gerätekennungen über einen externen Webdienst, der in Ihrem Backoffice gehostet wird.
 
-- **Android + iOS-Aktionen**
-    - Öffnen einer Webseite
-    - http://[web-site-domain\]
-    - Beispiel:http://www.azure.com
-    - Senden einer E-Mail
-    - mailto:[e-mail-recipient]?subject=[subject]&body=[message]
-    - Beispiel: mailto:foo@example.com?subject=Grüße%20von%20Azure%20Mobile%20Engagement!&body=Tolle%20Sache!
-    - Senden einer SMS
-    - sms:[phone-number]
-    - Beispiel: sms:2125551212
-    - Wählen einer Telefonnummer
-    - tel:[phone-number]
-    - Beispiel: tel:2125551212
-- **Aktionen nur für Android**
-    - Herunterladen einer Anwendung aus dem Play Store
-    - market://details?id=[app package]
-    - Beispiel:market://details?id=com.microsoft.office.word
-    - Starten einer Geolocationsuche
-    - geo:0,0?q=[search query]
-    - Beispiel: geo:0,0?q=starbucks,paris
-- **Aktionen nur für iOS**
-    - Herunterladen einer Anwendung aus dem App Store
-    - http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8
-    - Beispiel:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
-    - Windows-Aktionen
-    - Öffnen einer Webseite
-    - http://[web-site-domain\]
-    - Beispiel:http://www.azure.com
-    - Senden einer E-Mail
-    - mailto:[e-mail-recipient]?subject=[subject]&body=[message]
-    - Beispiel: mailto:foo@example.com?subject=Grüße%20von%20Azure%20Mobile%20Engagement!&body=Tolle%20Sache!
-    - Senden einer SMS (Skype Store App erforderlich)
-    - sms:[phone-number]
-    - Beispiel: sms:2125551212
-    - Wählen einer Telefonnummer (Skype Store App erforderlich)
-    - tel:[phone-number]
-    - Beispiel: tel:2125551212
-    - Herunterladen einer Anwendung aus dem Play Store
-    - ms-windows-store:PDP?PFN=[app package ID]
-    - Beispiel: ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
-    - Starten einer Bingmaps-Suche
-    - bingmaps:?q=[search query]
-    - Beispiel: bingmaps:?q=starbucks,paris
-    - Verwenden eines benutzerdefinierten Schemas
-    - [custom scheme]://[custom scheme params]
-    - Beispiel:myCustomProtocol://myCustomParams
-    - Verwenden von Paketdaten (Store App für das Lesen von Erweiterungen erforderlich)
-    - [folder][data].[extension]
-    - Beispiel: MeineOrdnerDaten.txt
- 
+* **Android + iOS-Aktionen**
+  * Öffnen einer Webseite
+  * http://[web-site-domain\]
+  * Beispiel:http://www.azure.com
+  * Senden einer E-Mail
+  * mailto:[e-mail-recipient]?subject=[subject]&body=[message]
+  * Beispiel: mailto:foo@example.com?subject=Grüße%20von%20Azure%20Mobile%20Engagement!&body=Tolle%20Sache!
+  * Senden einer SMS
+  * sms:[phone-number]
+  * Beispiel: sms:2125551212
+  * Wählen einer Telefonnummer
+  * tel:[phone-number]
+  * Beispiel: tel:2125551212
+* **Aktionen nur für Android**
+  * Herunterladen einer Anwendung aus dem Play Store
+  * market://details?id=[app package]
+  * Beispiel:market://details?id=com.microsoft.office.word
+  * Starten einer Geolocationsuche
+  * geo:0,0?q=[search query]
+  * Beispiel: geo:0,0?q=starbucks,paris
+* **Aktionen nur für iOS**
+  * Herunterladen einer Anwendung aus dem App Store
+  * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8
+  * Beispiel:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * Windows-Aktionen
+  * Öffnen einer Webseite
+  * http://[web-site-domain\]
+  * Beispiel:http://www.azure.com
+  * Senden einer E-Mail
+  * mailto:[e-mail-recipient]?subject=[subject]&body=[message]
+  * Beispiel: mailto:foo@example.com?subject=Grüße%20von%20Azure%20Mobile%20Engagement!&body=Tolle%20Sache!
+  * Senden einer SMS (Skype Store App erforderlich)
+  * sms:[phone-number]
+  * Beispiel: sms:2125551212
+  * Wählen einer Telefonnummer (Skype Store App erforderlich)
+  * tel:[phone-number]
+  * Beispiel: tel:2125551212
+  * Herunterladen einer Anwendung aus dem Play Store
+  * ms-windows-store:PDP?PFN=[app package ID]
+  * Beispiel: ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
+  * Starten einer Bingmaps-Suche
+  * bingmaps:?q=[search query]
+  * Beispiel: bingmaps:?q=starbucks,paris
+  * Verwenden eines benutzerdefinierten Schemas
+  * [custom scheme]://[custom scheme params]
+  * Beispiel:myCustomProtocol://myCustomParams
+  * Verwenden von Paketdaten (Store App für das Lesen von Erweiterungen erforderlich)
+  * [folder][data].[extension]
+  * Beispiel: MeineOrdnerDaten.txt
+
 ### Erstellen einer Nachverfolgungs-URL:
--    Im Abschnitt „Einstellungen“ der <Benutzeroberflächendokumentation> finden Sie Anweisungen zum Erstellen einer Nachverfolgungs-URL, mit deren Hilfe Benutzer eine Ihrer anderen Anwendungen herunterladen können.
- 
+* Im Abschnitt „Einstellungen“ der <Benutzeroberflächendokumentation> finden Sie Anweisungen zum Erstellen einer Nachverfolgungs-URL, mit deren Hilfe Benutzer eine Ihrer anderen Anwendungen herunterladen können.
+
 ### Festlegen der Texte Ihrer Ankündigung
 Füllen Sie den Titel, Inhalt und die Schaltflächentexte Ihrer Ankündigung aus. Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann basieren auf dem Feedback, dass diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde.
 
 ### Siehe auch
-- [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
+* [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ## Inhalt von Umfragen
 ![Reichweiteninhalt2][31] Füllen Sie Titel, Beschreibung und Schaltflächentext der Ankündigung aus. Fügen Sie dann Optionen und Antworten zum Beantworten Ihrer Fragen hinzu. Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann darauf basieren, ob diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde. Die Zielgruppenadressierung kann auch auf Antwortfeedback auf eine Umfrage basieren, wobei die Fragen und Antwortoptionen als Kriterien verwendet werden.
 
 ### Siehe auch
-- [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
- 
+* [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
+
 ## Inhalt von Datenpushes
 ![Reichweiteninhalt3][32]
 
 ### Auswählen des Datentyps:
-- Text
-- Binärdaten
-- Base64-Daten
+* Text
+* Binärdaten
+* Base64-Daten
 
 ### Definieren des Inhalts Ihrer Daten
-- Wenn Sie die Pushübertragung von Textdaten ausgewählt haben, kopieren Sie den Text, und fügen Sie in das Feld "Inhalt" ein.
-- Wenn Sie die Pushübertragung von Binär- oder Base64-Daten ausgewählt haben, verwenden Sie die Schaltfläche "Datei hochladen" zum Hochladen Ihrer Datei.
-- Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann darauf basieren, ob diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde.
+* Wenn Sie die Pushübertragung von Textdaten ausgewählt haben, kopieren Sie den Text, und fügen Sie in das Feld "Inhalt" ein.
+* Wenn Sie die Pushübertragung von Binär- oder Base64-Daten ausgewählt haben, verwenden Sie die Schaltfläche "Datei hochladen" zum Hochladen Ihrer Datei.
+* Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann darauf basieren, ob diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde.
 
 ### Siehe auch
-- [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
+* [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ## Inhalt von Kacheln (nur Windows Phone)
 ![Reichweiteninhalt4][33]
@@ -136,7 +134,7 @@ Füllen Sie den Titel, Inhalt und die Schaltflächentexte Ihrer Ankündigung aus
 Die Kachelnutzlast ist der Text, der auf der Kachel Ihrer App auf Windows Phone-Geräten angezeigt wird. Ein Kachelpushvorgang ist die MPNS-Version (Microsoft Push Notification Service, Pushbenachrichtigungsdienst) eines systemeigenen Push für Windows Phone. Der Kachelpushtyp ist der einzige Pushtyp, der keine Antwort liefert, weshalb die Zielgruppe künftiger Kampagnen nicht auf den Ergebnissen einer Kachelpushkampagne basieren kann.
 
 ### Siehe auch
-- [API-Dokumentation – Reichweiten-API – Systemeigenener Push][Link 4]
+* [API-Dokumentation – Reichweiten-API – Systemeigenener Push][Link 4]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -228,6 +226,6 @@ Die Kachelnutzlast ist der Text, der auf der Kachel Ihrer App auf Windows Phone-
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
- 
+
 
 <!---HONumber=AcomDC_0824_2016-->

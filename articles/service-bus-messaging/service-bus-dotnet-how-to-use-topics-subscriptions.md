@@ -1,59 +1,53 @@
-<properties
-    pageTitle="Verwenden von Service Bus-Themen mit .NET | Microsoft Azure"
-    description="Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements mit .NET in Azure. Die Codebeispiele wurden für .NET-Anwendungen geschrieben."
-    services="service-bus"
-    documentationCenter=".net"
-    authors="sethmanheim"
-    manager="timlt"
-    editor=""/>
+---
+title: Verwenden von Service Bus-Themen mit .NET | Microsoft Docs
+description: Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements mit .NET in Azure. Die Codebeispiele wurden für .NET-Anwendungen geschrieben.
+services: service-bus
+documentationcenter: .net
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="service-bus"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="get-started-article"
-    ms.date="09/16/2016"
-    ms.author="sethm"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: get-started-article
+ms.date: 09/16/2016
+ms.author: sethm
 
-
+---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Verwenden von Service Bus-Themen und -Abonnements
-
-[AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele sind in C# geschrieben und verwenden die .NET APIs. Die behandelten Szenarien umfassen das Erstellen von Themen und Abonnements, das Erstellen von Abonnementfiltern, das Senden von Nachrichten an ein Thema, das Empfangen von Nachrichten von einem Abonnement und das Löschen von Themen und Abonnements. Weitere Informationen zu Themen und Abonnements finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
-[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
+[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-[AZURE.INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="configure-the-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-
 Wenn Sie eine Anwendung erstellen, die den Servicebus verwendet, müssen Sie zu der Servicebus-Assembly eine Referenz hinzufügen und die zugehörigen Namespaces einbinden. Die einfachste Möglichkeit besteht hierbei darin, das entsprechende [NuGet](https://www.nuget.org)-Paket herunterzuladen.
 
 ## <a name="get-the-service-bus-nuget-package"></a>Abrufen des NuGet-Pakets "Service Bus"
-
 Das [NuGet-Paket „Service Bus “](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt die einfachste Möglichkeit zum Abrufen der Service Bus-API und zum Konfigurieren der Anwendung mit allen erforderlichen Service Bus-Abhängigkeiten dar. Gehen Sie wie folgt vor, um das NuGet-Paket „Service Bus“ in Ihrem Projekt zu installieren:
 
-1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-2.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation durchzuführen. Schließen Sie danach das folgende Dialogfeld:
-
-    ![][7]
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
+2. Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation durchzuführen. Schließen Sie danach das folgende Dialogfeld:
+   
+   ![][7]
 
 Sie können nun Code für Service Bus erstellen.
 
 ## <a name="create-a-service-bus-connection-string"></a>Erstellen einer Service Bus-Verbindungszeichenfolge
-
 Service Bus verwendet eine Verbindungszeichenfolge zum Speichern von Endpunkten und Anmeldeinformationen. Sie können die Verbindungszeichenfolge in einer Konfigurationsdatei ablegen, statt sie fest zu programmieren:
 
-- Bei der Verwendung von Azure-Diensten empfiehlt es sich, die Verbindungszeichenfolge mithilfe des Azure-Dienstkonfigurationssystems (CSDEF- und CSCFG-Dateien) zu speichern.
-- Bei der Verwendung von Azure-Websites oder Azure Virtual Machines sollten Sie Ihre Verbindungszeichenfolge mithilfe des .NET-Konfigurationssystems speichern (z. B. die Web.config-Datei).
+* Bei der Verwendung von Azure-Diensten empfiehlt es sich, die Verbindungszeichenfolge mithilfe des Azure-Dienstkonfigurationssystems (CSDEF- und CSCFG-Dateien) zu speichern.
+* Bei der Verwendung von Azure-Websites oder Azure Virtual Machines sollten Sie Ihre Verbindungszeichenfolge mithilfe des .NET-Konfigurationssystems speichern (z. B. die Web.config-Datei).
 
 In beiden Fällen können Sie Ihre Verbindungszeichenfolge über die `CloudConfigurationManager.GetSetting`-Methode abrufen, wie später in diesem Artikel beschrieben.
 
 ### <a name="configure-your-connection-string"></a>Konfigurieren der Verbindungszeichenfolge
-
-Der Dienstkonfigurationsmechanismus ermöglicht das dynamische Ändern der Konfigurationseinstellungen im [Azure-Portal][], ohne dass die Anwendung neu bereitgestellt werden muss. Fügen Sie beispielsweise der Dienstdefinitionsdatei (**.csdef**) eine `Setting`-Bezeichnung hinzu. Dies ist im folgenden Beispiel dargestellt:
+Der Dienstkonfigurationsmechanismus ermöglicht das dynamische Ändern der Konfigurationseinstellungen im [Azure-Portal][Azure-Portal], ohne dass die Anwendung neu bereitgestellt werden muss. Fügen Sie beispielsweise der Dienstdefinitionsdatei (**.csdef**) eine `Setting`-Bezeichnung hinzu. Dies ist im folgenden Beispiel dargestellt:
 
 ```
 <ServiceDefinition name="Azure1">
@@ -85,8 +79,7 @@ Anschließend geben Sie Werte in der Dienstkonfigurationsdatei (.cscfg) an:
 Verwenden Sie die aus dem Portal abgerufenen SAS-Schlüsselwerte und -Schlüsselnamen (Shared Access Signature). Dieses Verfahren wurde weiter oben beschrieben.
 
 ### <a name="configure-your-connection-string-when-using-azure-websites-or-azure-virtual-machines"></a>Konfigurieren der Verbindungszeichenfolge bei Verwendung von Azure-Websites oder virtuellen Azure-Computern
-
-Bei der Verwendung von Websites oder virtuellen Computern wird empfohlen, das .NET-Konfigurationssystem zu verwenden (z. B. Web.config). Sie speichern die Verbindungszeichenfolge mit dem `<appSettings>`-Element.
+Bei der Verwendung von Websites oder virtuellen Computern wird empfohlen, das .NET-Konfigurationssystem zu verwenden (z. B. Web.config). Sie speichern die Verbindungszeichenfolge mit dem `<appSettings>`-Element.
 
 ```
 <configuration>
@@ -97,10 +90,9 @@ Bei der Verwendung von Websites oder virtuellen Computern wird empfohlen, das .N
 </configuration>
 ```
 
-Verwenden Sie die aus dem [Azure-Portal][] abgerufenen SAS-Namenswerte und -Schlüsselwerte. Dieses Verfahren wurde weiter oben beschrieben.
+Verwenden Sie die aus dem [Azure-Portal][Azure-Portal] abgerufenen SAS-Namenswerte und -Schlüsselwerte. Dieses Verfahren wurde weiter oben beschrieben.
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
-
 Verwaltungsvorgänge für Service Bus-Themen und -Abonnements können über die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse durchgeführt werden. Diese Klasse stellt Methoden zum Erstellen, Aufzählen und Löschen von Themen zur Verfügung.
 
 Im folgenden Beispiel wird ein `NamespaceManager`-Objekt mit der Azure-Klasse `CloudConfigurationManager` mit einer Verbindungszeichenfolge erstellt, die aus der Basisadresse eines Service Bus-Namespace und den entsprechenden SAS-Anmeldeinformationen mit Berechtigungen für dessen Verwaltung besteht. Diese Verbindungszeichenfolge weist die folgende Form auf:
@@ -146,16 +138,20 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-> [AZURE.NOTE] Sie können die [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx)-Methode in [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Objekten verwenden, um zu prüfen, ob ein Thema mit einem bestimmten Namen innerhalb eines Namespace bereits vorhanden ist.
+> [!NOTE]
+> Sie können die [TopicExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx)-Methode in [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Objekten verwenden, um zu prüfen, ob ein Thema mit einem bestimmten Namen innerhalb eines Namespace bereits vorhanden ist.
+> 
+> 
 
 ## <a name="create-a-subscription"></a>Erstellen eines Abonnements
-
 Sie können auch Themenabonnements mithilfe der [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse erstellen. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übergeben werden.
 
-> [AZURE.IMPORTANT] Damit Nachrichten von einem Abonnement empfangen werden können, müssen Sie das Abonnement erstellen, bevor Sie Nachrichten an das Thema senden. Sind für ein Thema keine Abonnements vorhanden, verwirft das Thema die Nachrichten.
+> [!IMPORTANT]
+> Damit Nachrichten von einem Abonnement empfangen werden können, müssen Sie das Abonnement erstellen, bevor Sie Nachrichten an das Thema senden. Sind für ein Thema keine Abonnements vorhanden, verwirft das Thema die Nachrichten.
+> 
+> 
 
 ### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
-
 **MatchAll** ist der Standardfilter, der verwendet wird, wenn beim Erstellen eines neuen Abonnements kein Filter angegeben wird. Wenn Sie den Filter **MatchAll** verwenden, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements eingereiht. Mit dem folgenden Beispiel wird ein Abonnement namens „AllMessages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
 
 ```
@@ -172,12 +168,11 @@ if (!namespaceManager.SubscriptionExists("TestTopic", "AllMessages"))
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Erstellen von Abonnements mit Filtern
-
 Sie können auch Filter einrichten, durch die Sie angeben können, welche an ein Thema gesendeten Nachrichten in einem bestimmten Themenabonnement angezeigt werden sollen.
 
-Der von Abonnements unterstützte flexibelste Filtertyp ist die [SqlFilter][]-Klasse, die eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax [SqlFilter.SqlExpression][].
+Der von Abonnements unterstützte flexibelste Filtertyp ist die [SqlFilter][SqlFilter]-Klasse, die eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
-Mit dem folgenden Beispiel wird ein Abonnement namens **HighMessages** mit einem [SqlFilter][]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte **MessageNumber**-Eigenschaft größer als 3 ist.
+Mit dem folgenden Beispiel wird ein Abonnement namens **HighMessages** mit einem [SqlFilter][SqlFilter]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte **MessageNumber**-Eigenschaft größer als 3 ist.
 
 ```
 // Create a "HighMessages" filtered subscription.
@@ -189,7 +184,7 @@ namespaceManager.CreateSubscription("TestTopic",
    highMessagesFilter);
 ```
 
-Im folgenden Beispiel wird in ähnlicher Weise ein Abonnement namens **LowMessages** mit einem [SqlFilter][]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte **MessageNumber**-Eigenschaft kleiner oder gleich 3 ist.
+Im folgenden Beispiel wird in ähnlicher Weise ein Abonnement namens **LowMessages** mit einem [SqlFilter][SqlFilter]-Objekt erstellt, bei dem nur Nachrichten ausgewählt werden, deren benutzerdefinierte **MessageNumber**-Eigenschaft kleiner oder gleich 3 ist.
 
 ```
 // Create a "LowMessages" filtered subscription.
@@ -204,7 +199,6 @@ namespaceManager.CreateSubscription("TestTopic",
 Wenn eine Nachricht an `TestTopic` gesendet wird, wird diese nun stets an die Empfänger des Themenabonnements **AllMessages** zugestellt. Sie wird selektiv an die Empfänger der Themenabonnements **HighMessages** und **LowMessages** zugestellt (je nach Inhalt der Nachricht).
 
 ## <a name="send-messages-to-a-topic"></a>Senden von Nachrichten an ein Thema
-
 Um eine Nachricht an ein Service Bus-Thema zu senden, erstellt die Anwendung ein [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx)-Objekt mithilfe der Verbindungszeichenfolge.
 
 Der folgende Code veranschaulicht, wie ein [TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx)-Objekt für das **TestTopic**-Thema erstellt wird, das Sie gerade mit dem Aufruf der [`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.createfromconnectionstring.aspx)-API erstellt haben.
@@ -237,10 +231,9 @@ for (int i=0; i<5; i++)
 }
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Wenn Partitionierung aktiviert ist, ist die Obergrenze höher. Weitere Informationen finden Sie unter [Partitionierte Nachrichtenentitäten](service-bus-partitioning.md).
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Wenn Partitionierung aktiviert ist, ist die Obergrenze höher. Weitere Informationen finden Sie unter [Partitionierte Nachrichtenentitäten](service-bus-partitioning.md).
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
-
 Die empfohlene Möglichkeit, Nachrichten aus einem Abonnement zu empfangen, besteht in der Verwendung eines [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx)-Objekts. [SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx)-Objekte können in zwei unterschiedlichen Modi verwendet werden: [*ReceiveAndDelete* und *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx).
 
 Bei Verwendung des **ReceiveAndDelete**-Modus ist der Nachrichtenempfang ein Single-Shot-Vorgang. Dies bedeutet: Wenn Service Bus eine Leseanforderung für eine Nachricht in einem Abonnement erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgesendet. Der **ReceiveAndDelete**-Modus ist das einfachste Modell. Es wird am besten für Szenarien eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
@@ -287,7 +280,6 @@ Client.OnMessage((message) =>
 Das folgende Beispiel konfiguriert den [OnMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx)-Rückruf mithilfe eines [OnMessageOptions](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx)-Objekts. [AutoComplete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) ist auf **false** festgelegt, um die manuelle Steuerung für den Aufruf [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) für die empfangene Nachricht zu aktivieren. [AutoRenewTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) ist auf „1 Minute“ festgelegt. Der Client wartet also bis zu eine Minute lang, bevor das Feature für die automatische Verlängerung beendet wird und der Client einen neuen Aufruf durchführt, um das Vorhandensein von Nachrichten zu prüfen. Dieser Eigenschaftswert verringert die Anzahl der kostenpflichtigen Aufrufe des Clients, bei denen keine Nachrichten abgerufen werden.
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
-
 Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine empfangene Anwendung eine Nachricht aus einem beliebigen Grund nicht verarbeiten kann, kann sie die [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.abandon.aspx)-Methode für die empfangene Nachricht aufrufen (anstatt der [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)-Methode). Dies führt dazu, dass Service Bus die Nachricht innerhalb des Abonnements entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
 Zudem wird einer im Abonnement gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel wenn die Anwendung abstürzt) entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
@@ -295,7 +287,6 @@ Zudem wird einer im Abonnement gesperrten Anwendung ein Zeitlimit zugeordnet. We
 Falls die Anwendung nach der Verarbeitung der Nachricht – aber vor Ausgabe der [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)-Anforderung – abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* (Verarbeitung mindestens einmal) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen unter Umständen erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) -Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
-
 Das folgende Beispiel zeigt, wie das Thema **TestTopic** aus dem **HowToSample**-Dienstnamespace gelöscht wird.
 
 ```
@@ -310,25 +301,24 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Nachdem Sie nun mit den Grundlagen der Service Bus-Themen und -Abonnements vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
--   [Warteschlangen, Themen und Abonnements][]
--   [Themenfilter – Beispiel][]
--   API-Referenz für [SqlFilter][].
--   Erstellen Sie eine Anwendung, die Nachrichten an eine Service Bus-Warteschlange sendet und von dort empfängt: [.NET-Tutorial zu Service Bus-Brokermessaging][].
--   Service Bus-Beispiele: Laden Sie diese aus den [Azure-Beispielen][] herunter, oder sehen Sie sich die [Übersicht](service-bus-samples.md) an.
+* [Warteschlangen, Themen und Abonnements][Warteschlangen, Themen und Abonnements]
+* [Themenfilter – Beispiel][Themenfilter – Beispiel]
+* API-Referenz für [SqlFilter][SqlFilter].
+* Erstellen Sie eine Anwendung, die Nachrichten an eine Service Bus-Warteschlange sendet und von dort empfängt: [.NET-Tutorial zu Service Bus-Brokermessaging][.NET-Tutorial zu Service Bus-Brokermessaging].
+* Service Bus-Beispiele: Laden Sie diese aus den [Azure-Beispielen][] herunter, oder sehen Sie sich die [Übersicht](../service-bus/service-bus-samples.md) an.
 
-  [Azure-Portal]: https://portal.azure.com
+[Azure-Portal]: https://portal.azure.com
 
-  [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
+[7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
-  [Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
-  [Themenfilter – Beispiel]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
-  [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
-  [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [.NET-Tutorial zu Service Bus-Brokermessaging]: service-bus-brokered-tutorial-dotnet.md
-  [Azure-Beispiele]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+[Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
+[Themenfilter – Beispiel]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
+[SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[.NET-Tutorial zu Service Bus-Brokermessaging]: service-bus-brokered-tutorial-dotnet.md
+[Azure-Beispiele]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
 
 

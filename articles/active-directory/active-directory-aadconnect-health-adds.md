@@ -1,22 +1,22 @@
 
-<properties
-	pageTitle="Verwenden von Azure AD Connect Health mit AD DS | Microsoft Azure"
-	description="Auf dieser Seite zu Azure AD Connect Health wird beschrieben, wie Sie AD DS überwachen."
-	services="active-directory"
-	documentationCenter=""
-	authors="arluca"
-	manager="samueld"
-	editor="curtand"/>
+---
+title: Verwenden von Azure AD Connect Health mit AD DS | Microsoft Docs
+description: Auf dieser Seite zu Azure AD Connect Health wird beschrieben, wie Sie AD DS überwachen.
+services: active-directory
+documentationcenter: ''
+author: arluca
+manager: samueld
+editor: curtand
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/30/2016"
-	ms.author="arluca"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/30/2016
+ms.author: arluca
 
+---
 # Verwenden von Azure AD Connect Health mit AD DS
 Die folgende Dokumentation gilt speziell für die Überwachung von Active Directory-Domänendiensten mit Azure AD Connect Health. Folgende AD DS-Versionen werden unterstützt: Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2.
 
@@ -51,7 +51,6 @@ Dieses Feature bietet grafische Trends für verschiedene Leistungsindikatoren, d
 Standardmäßig sind vorab vier Leistungsindikatoren ausgewählt. Sie können aber weitere Leistungsindikatoren hinzufügen, indem Sie auf den Befehl „Filter“ klicken und alle gewünschten Leistungsindikatoren aktivieren oder deaktivieren. Darüber hinaus können Sie auf ein Leistungsindikatordiagramm doppelklicken, um ein neues Blatt mit Datenpunkten für die einzelnen überwachten Domänencontroller zu öffnen.
 
 ## Verwandte Links
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Installieren des Azure AD Connect Health-Agents](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health-Vorgänge](active-directory-aadconnect-health-operations.md)

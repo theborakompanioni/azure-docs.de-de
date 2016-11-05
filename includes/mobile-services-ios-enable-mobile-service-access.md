@@ -28,8 +28,6 @@ Ersetzen Sie diesen Kommentar durch die folgende Zeile in der `@interface`-Dekla
 
 
 * Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) auf **Mobile Services** und dann auf den mobilen Dienst. Klicken Sie auf die Registerkarte **Dashboard**, und notieren Sie sich die **Site-URL**. Klicken Sie dann auf **Schlüssel verwalten** und notieren Sie den **Anwendungsschlüssel**. Sie benötigen diese Werte beim Zugriff auf den mobilen Dienst von Ihrem App-Code aus.
-
-
 * Suchen Sie in **TodoService.m** die folgende Zeile:
 
 ```

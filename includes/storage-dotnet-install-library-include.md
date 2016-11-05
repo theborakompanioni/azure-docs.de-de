@@ -1,5 +1,4 @@
 ### Erstellen der Konsolenanwendung und Abrufen der Assembly
-
 So erstellen Sie eine neue Konsolenanwendung in Visual Studio und installieren das NuGet-Paket mit der Clientbibliothek von Azure Storage:
 
 1. Wählen Sie in Visual Studio **Datei -> Neues Projekt**, und wählen Sie dann **Windows -> Konsolenanwendung** aus der Liste der Visual C#-Vorlagen aus.

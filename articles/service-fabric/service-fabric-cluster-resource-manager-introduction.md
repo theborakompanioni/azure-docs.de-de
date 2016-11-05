@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Einführung in den Clusterressourcen-Manager von Service Fabric | Microsoft Azure"
-   description="Eine Einführung in den Clusterressourcen-Manager von Service Fabric."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Einführung in den Clusterressourcen-Manager von Service Fabric | Microsoft Docs
+description: Eine Einführung in den Clusterressourcen-Manager von Service Fabric.
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Einführung in den Clusterressourcen-Manager von Service Fabric
 Zur Verwaltung von IT-Systemen oder einer Gruppe von Diensten wurden bisher üblicherweise physische oder virtuelle Computer beschafft und für diese Dienste oder Systeme eingerichtet. Viele wichtige Dienste wurden in eine „Web“- und eine „Daten“- oder „Speicher“-Schicht unterteilt, ggf. mit anderen speziellen Komponenten wie einem Cache. Andere Anwendungstypen verfügten über eine Messagingschicht, auf der Anforderungen ein- und ausgehen, und waren mit einer Verarbeitungsschicht verbunden, auf der die für das Messaging erforderlichen Analysen und Transformationen erfolgen. Für jede Art von Workload gab es bestimmte fest zugeordnete Computer oder Computergruppen, so z.B. für die Datenbank und die Webserver. Wenn eine bestimmte Workload eine Überlastung der entsprechenden Computer verursachte, wurden weitere für die Ausführung dieser Workloads konfigurierte Computer hinzugefügt oder einige der vorhandenen Computer durch größere Computer ersetzt. Ganz einfach. Wenn ein Computer ausfiel, wurde dieser Teil der gesamten Anwendung mit niedriger Kapazität ausgeführt, bis der Computer wiederhergestellt werden konnte. Noch immer recht einfach (wenn auch nicht unbedingt spaßig).
 
@@ -42,18 +42,18 @@ Die Aufgabe des Orchestrators in einem Service Fabric-Cluster übernimmt haupts�
 3. Unterstützen anderer Prozesse
 
 ### Was der Clusterressourcen-Manager nicht ist
-Bei herkömmlichen Web-Apps mit „n“ Schichten gab es stets einen bestimmten „Lastenausgleich“ (auch Netzwerk- oder Anwendungslastenausgleich [NLB/ALB]), und zwar abhängig von dessen Position im Netzwerkstapel. Einige Load Balancer sind hardwarebasiert, wie z. B. das Big-IP-Angebot von F5, während andere softwarebasiert sind, wie z. B. Microsoft-Netzwerklastenausgleich (NLB). In anderen Umgebungen wird der Lastenausgleich möglicherweise von HAProxy oder einer ähnlichen Software ausgeführt. In diesen Architekturen ist es die Aufgabe des Lastenausgleichs sicherzustellen, dass alle zustandslosen Front-End-Computer bzw. die verschiedenen Computer im Cluster (ungefähr) dieselbe Verarbeitungslast erhalten. Hierfür gab es verschiedene Strategien, wie z. B. das Senden jedes unterschiedlichen Aufrufs an einen anderen Server, die Sitzungsbindung oder die tatsächliche Schätzung und Aufrufzuteilung basierend auf den erwarteten Kosten und der aktuellen Computerlast.
+Bei herkömmlichen Web-Apps mit „n“ Schichten gab es stets einen bestimmten „Lastenausgleich“ (auch Netzwerk- oder Anwendungslastenausgleich [NLB/ALB]), und zwar abhängig von dessen Position im Netzwerkstapel. Einige Load Balancer sind hardwarebasiert, wie z. B. das Big-IP-Angebot von F5, während andere softwarebasiert sind, wie z. B. Microsoft-Netzwerklastenausgleich (NLB). In anderen Umgebungen wird der Lastenausgleich möglicherweise von HAProxy oder einer ähnlichen Software ausgeführt. In diesen Architekturen ist es die Aufgabe des Lastenausgleichs sicherzustellen, dass alle zustandslosen Front-End-Computer bzw. die verschiedenen Computer im Cluster (ungefähr) dieselbe Verarbeitungslast erhalten. Hierfür gab es verschiedene Strategien, wie z. B. das Senden jedes unterschiedlichen Aufrufs an einen anderen Server, die Sitzungsbindung oder die tatsächliche Schätzung und Aufrufzuteilung basierend auf den erwarteten Kosten und der aktuellen Computerlast.
 
 Beachten Sie, dass dies bestenfalls ein Mechanismus war, um sicherzustellen, dass die Webschicht ausgewogen ausgelastet war. Strategien für einen Lastenausgleich auf der Datenschicht waren vollkommen anders und hingen vom Datenspeichermechanismus ab, wobei der Fokus meist auf dem Sharding und Zwischenspeichern von Daten, von der Datenbank verwalteten Sichten und gespeicherten Prozeduren usw. lag.
 
 Während einige dieser Strategien interessant sind, ist der Clusterressourcen-Manager von Service Fabric mit einem NLB oder Cache nicht vergleichbar. Ein Netzwerklastenausgleichsmodul stellt sicher, dass die Front-Ends gleichmäßig ausgelastet sind, indem Datenverkehr dorthin verlagert wird, wo die Dienste ausgeführt werden. Der Clusterressourcen-Manager von Service Fabric verfolgt eine vollkommen andere Strategie: Service Fabric verschiebt *Dienste* dorthin, wo es am sinnvollsten ist (und erwartet, dass Datenverkehr bzw. Last dorthin folgen). Dies können z.B. Knoten sein, die nicht viel zu tun haben, da die vorhandenen Dienste gerade nicht viel Arbeit verrichten oder da die Dienste gelöscht oder woandershin verschoben wurden. In einem anderen Beispiel könnte der Clusterressourcen-Manager auch einen Dienst aus einem Computer verschieben, der kurz vor einem Upgrade steht oder aufgrund einer Nutzungsspitze der darauf ausgeführten Dienste überlastet ist. Da der Clusterressourcen-Manager für das Verschieben von Diensten zuständig ist (nicht dafür, den Netzwerkdatenverkehr dort bereitzustellen, wo sich die Dienste bereits befinden), umfasst er einen wesentlich Funktionssatz als ein Netzwerklastenausgleichsmodul und verfolgt grundlegend andere Strategien, um sicherzustellen, dass die Hardwareressourcen im Cluster gut genutzt werden.
 
 ## Nächste Schritte
-- Informationen über die Architektur und den Informationsfluss innerhalb des Clusterressourcen-Managers finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-architecture.md).
-- Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
-- Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen unter [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
-- Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
-- Der Clusterressourcen-Manager arbeitet mit den Verwaltungsfunktionen von Service Fabric. Weitere Informationen hierzu finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-management-integration.md).
-- Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md).
+* Informationen über die Architektur und den Informationsfluss innerhalb des Clusterressourcen-Managers finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-architecture.md).
+* Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
+* Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen unter [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
+* Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
+* Der Clusterressourcen-Manager arbeitet mit den Verwaltungsfunktionen von Service Fabric. Weitere Informationen hierzu finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-management-integration.md).
+* Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md).
 
 <!---HONumber=AcomDC_0824_2016-->

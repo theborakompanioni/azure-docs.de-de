@@ -1,47 +1,46 @@
-<properties
-	pageTitle="Bereitstellen und Verwalten von Sicherungen für Windows-Server/Windows-Clients mit PowerShell | Microsoft Azure"
-	description="Erfahren Sie, wie Sie Azure Backup mit PowerShell bereitstellen und verwalten."
-	services="backup"
-	documentationCenter=""
-	authors="saurabhsensharma"
-	manager="shivamg"
-	editor=""/>
+---
+title: Bereitstellen und Verwalten von Sicherungen für Windows-Server/Windows-Clients mit PowerShell | Microsoft Docs
+description: Erfahren Sie, wie Sie Azure Backup mit PowerShell bereitstellen und verwalten.
+services: backup
+documentationcenter: ''
+author: saurabhsensharma
+manager: shivamg
+editor: ''
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2016"
-	ms.author="saurabhsensharma;markgal;jimpark;nkolli;trinadhk"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/01/2016
+ms.author: saurabhsensharma;markgal;jimpark;nkolli;trinadhk
 
-
-# Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
-
-> [AZURE.SELECTOR]
-- [ARM](backup-client-automation.md)
-- [Klassisch](backup-client-automation-classic.md)
+---
+# Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
+> [!div class="op_single_selector"]
+> * [ARM](backup-client-automation.md)
+> * [Klassisch](backup-client-automation-classic.md)
+> 
+> 
 
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows-Server oder Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 
 ## Installieren von Azure PowerShell
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
-
-Im Oktober 2015 wurde Azure PowerShell 1.0 veröffentlicht. Diese Version war der Nachfolger der Version 0.9.8 und brachte einige bedeutende Änderungen, insbesondere beim Benennungsmuster von Cmdlets. Cmdlet-Namen der Version 1.0 haben das Muster {Verb}-AzureRm{Nomen}, während Namen der Version 0.9.8 nicht **Rm** enthalten (z. B. „New-AzureRmResourceGroup“ statt „New-AzureResourceGroup“). Wenn Sie Azure PowerShell 0.9.8 verwenden, müssen Sie zunächst den Ressourcen-Manager-Modus aktivieren, indem Sie den Befehl **Switch-AzureMode AzureResourceManager** ausführen. Dieser Befehl ist ab Version 1.0 nicht erforderlich.
+Im Oktober 2015 wurde Azure PowerShell 1.0 veröffentlicht. Diese Version war der Nachfolger der Version 0.9.8 und brachte einige bedeutende Änderungen, insbesondere beim Benennungsmuster von Cmdlets. Cmdlet-Namen der Version 1.0 haben das Muster {Verb}-AzureRm{Nomen}, während Namen der Version 0.9.8 nicht **Rm** enthalten (z. B. „New-AzureRmResourceGroup“ statt „New-AzureResourceGroup“). Wenn Sie Azure PowerShell 0.9.8 verwenden, müssen Sie zunächst den Ressourcen-Manager-Modus aktivieren, indem Sie den Befehl **Switch-AzureMode AzureResourceManager** ausführen. Dieser Befehl ist ab Version 1.0 nicht erforderlich.
 
 Wenn Sie Ihre Skripts, die für Version 0.9.8 geschrieben wurden, in einer Umgebung mit Versionen ab 1.0 verwenden möchten, sollten Sie die Skripts in einer Prädproduktionsumgebung sorgfältig testen, bevor Sie sie in der Produktion einsetzen, um unerwartete Auswirkungen zu vermeiden.
 
 [Laden Sie die neueste PowerShell-Version herunter](https://github.com/Azure/azure-powershell/releases) (erforderliche Mindestversion: 1.0.0).
 
-
-[AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
-
+[!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
 ## Erstellen eines Sicherungstresors
-
-> [AZURE.WARNING] Kunden, die Azure Backup zum ersten Mal verwenden, müssen den Azure Backup-Anbieter registrieren, der mit ihrem Abonnement verwendet werden soll. Führen Sie hierzu den folgenden Befehl aus: Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
+> [!WARNING]
+> Kunden, die Azure Backup zum ersten Mal verwenden, müssen den Azure Backup-Anbieter registrieren, der mit ihrem Abonnement verwendet werden soll. Führen Sie hierzu den folgenden Befehl aus: Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
+> 
+> 
 
 Sie können mit dem Cmdlet **New-AzureRMBackupVault** einen neuen Sicherungstresor erstellen. Der Sicherungstresor ist eine ARM-Ressource. Deshalb müssen Sie ihn innerhalb einer Ressourcengruppe einfügen. Führen Sie die folgenden Befehle in einer Azure PowerShell-Konsole mit erhöhten Rechten aus:
 
@@ -51,7 +50,6 @@ PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg”
 ```
 
 Mit dem Cmdlet **Get-AzureRMBackupVault** können Sie die Sicherungstresore in einem Abonnement auflisten.
-
 
 ## Installieren des Azure Backup-Agents
 Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](http://aka.ms/azurebackup_agent) oder im Dashboard des Sicherungstresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie *C:\\Downloads*.
@@ -69,7 +67,6 @@ Um die Liste der installierten Programme anzuzeigen, wechseln Sie zu **Systemste
 ![Agent installiert](./media/backup-client-automation/installed-agent-listing.png)
 
 ### Installationsoptionen
-
 Um alle über die Befehlszeile verfügbaren Optionen anzuzeigen, verwenden Sie den folgenden Befehl:
 
 ```
@@ -79,24 +76,23 @@ PS C:\> MARSAgentInstaller.exe /?
 Die verfügbaren Optionen umfassen:
 
 | Option | Details | Standard |
-| ---- | ----- | ----- |
-| /q | Unbeaufsichtigte Installation | - |
-| /p: "location" | Der Pfad zum Installationsordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
-| /s: "Location" | Der Pfad zum Cacheordner für den Azure Backup-Agent. | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
-| /m | Microsoft Update abonnieren | - |
-| /nu | Nach Abschluss der Installation nicht nach Updates suchen | - |
-| /d | Microsoft Azure Recovery Services Agent wird deinstalliert | - |
-| /ph | Proxyhostadresse | - |
-| /po | Proxyhost-Portnummer | - |
-| /pu | Proxyhost-Benutzername | - |
-| /pw | Proxykennwort | - |
-
+| --- | --- | --- |
+| /q |Unbeaufsichtigte Installation |- |
+| /p: "location" |Der Pfad zum Installationsordner für den Azure Backup-Agent. |C:\\Program Files\\Microsoft Azure Recovery Services Agent |
+| /s: "Location" |Der Pfad zum Cacheordner für den Azure Backup-Agent. |C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
+| /m |Microsoft Update abonnieren |- |
+| /nu |Nach Abschluss der Installation nicht nach Updates suchen |- |
+| /d |Microsoft Azure Recovery Services Agent wird deinstalliert |- |
+| /ph |Proxyhostadresse |- |
+| /po |Proxyhost-Portnummer |- |
+| /pu |Proxyhost-Benutzername |- |
+| /pw |Proxykennwort |- |
 
 ## Registrieren beim Azure Backup-Dienst
 Vor der Registrierung beim Azure Backup-Dienst müssen Sie sicherstellen, dass die [Voraussetzungen](backup-configure-vault.md) erfüllt sind. Die Voraussetzungen lauten wie folgt:
 
-- Gültiges Azure-Abonnement
-- Ein Sicherungstresor
+* Gültiges Azure-Abonnement
+* Ein Sicherungstresor
 
 Führen Sie zum Herunterladen der Tresoranmeldedaten das Cmdlet **Get-AzureRMBackupVaultCredentials** in einer Azure PowerShell-Konsole aus, und speichern Sie sie an einem geeigneten Speicherort, z.B. *C:\\Downloads*.
 
@@ -121,7 +117,10 @@ Region              : West US
 Machine registration succeeded.
 ```
 
-> [AZURE.IMPORTANT] Verwenden Sie keine relativen Pfade, um die Tresoranmeldedatendatei anzugeben. Sie müssen einen absoluten Pfad als Eingabe für das Cmdlet angeben.
+> [!IMPORTANT]
+> Verwenden Sie keine relativen Pfade, um die Tresoranmeldedatendatei anzugeben. Sie müssen einen absoluten Pfad als Eingabe für das Cmdlet angeben.
+> 
+> 
 
 ## Netzwerkeinstellungen
 Wenn die Konnektivität des Windows-Computers mit dem Internet über einen Proxyserver hergestellt wird, können die Proxyeinstellungen auch dem Agent bereitgestellt werden. Da es in diesem Beispiel keinen Proxyserver gibt, löschen wir explizit alle Proxy-bezogenen Informationen.
@@ -146,7 +145,10 @@ PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force 
 Server properties updated successfully
 ```
 
-> [AZURE.IMPORTANT] Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Es ist nicht möglich, Daten aus Azure ohne diese Passphrase wiederherzustellen.
+> [!IMPORTANT]
+> Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Es ist nicht möglich, Daten aus Azure ohne diese Passphrase wiederherzustellen.
+> 
+> 
 
 ## Sichern von Dateien und Ordnern
 All Ihre Sicherungen von Windows-Servern und -Clients in Azure Backup werden durch eine Richtlinie gesteuert. Die Richtlinie besteht aus drei Teilen:
@@ -166,8 +168,8 @@ Die Richtlinie ist jetzt noch leer. Um zu definieren, welche Elemente ein- oder 
 ### Konfigurieren des Sicherungszeitplans
 Der erste der drei Teile einer Richtlinie ist der Sicherungszeitplan, der mit dem [New-OBSchedule](https://technet.microsoft.com/library/hh770401) Cmdlet erstellt wird. Der Sicherungszeitplan definiert, wann Sicherungen ausgeführt werden müssen. Beim Erstellen eines Zeitplans müssen Sie zwei Eingabeparameter angeben:
 
-- **Tage der Woche**, an denen die Sicherung ausgeführt werden soll. Sie können den Sicherungsauftrag nur an einem Tag, an jedem Tag der Woche oder an einer beliebigen Kombination von Tagen ausführen.
-- **Tageszeiten**, zu denen die Sicherung ausgeführt werden soll. Sie können bis zu drei verschiedene Tageszeiten definieren, zu denen die Sicherung ausgelöst wird.
+* **Tage der Woche**, an denen die Sicherung ausgeführt werden soll. Sie können den Sicherungsauftrag nur an einem Tag, an jedem Tag der Woche oder an einer beliebigen Kombination von Tagen ausführen.
+* **Tageszeiten**, zu denen die Sicherung ausgeführt werden soll. Sie können bis zu drei verschiedene Tageszeiten definieren, zu denen die Sicherung ausgelöst wird.
 
 Sie können z. B. eine Sicherungsrichtlinie konfigurieren, die jeden Samstag und Sonntag um 16:00 Uhr ausgeführt wird.
 
@@ -215,13 +217,13 @@ PolicyState     : Valid
 ### Einschließen und Ausschließen zu sichernder Dateien
 Ein ```OBFileSpec```-Objekt definiert die Dateien, die in eine Sicherung eingeschlossen oder von ihr ausgeschlossen werden. Es handelt sich dabei um einen Satz von Regeln, die die geschützten Dateien und Ordner auf einem Computer festlegen. Sie können beliebig viele Einschluss- oder Ausschlussregeln für Dateien festlegen und sie einer Richtlinie zuordnen. Beim Erstellen eines neuen OBFileSpec-Objekts können Sie:
 
-- die einzuschließenden Dateien und Ordner angeben,
-- die auszuschließenden Dateien und Ordner angeben und
-- eine rekursive Sicherung der Daten in einem Ordner festlegen (oder) angeben, ob nur die Dateien der obersten Ebene im angegebenen Ordner gesichert werden sollen.
+* die einzuschließenden Dateien und Ordner angeben,
+* die auszuschließenden Dateien und Ordner angeben und
+* eine rekursive Sicherung der Daten in einem Ordner festlegen (oder) angeben, ob nur die Dateien der obersten Ebene im angegebenen Ordner gesichert werden sollen.
 
 Letzteres wird durch Verwendung des -NonRecursive-Kennzeichens im New-OBFileSpec-Befehl erreicht.
 
-Im folgenden Beispiel sichern wir Volume „C:“ und „D:“ und schließen die Binärdateien des Betriebssystems im Windows-Ordner sowie alle temporären Ordner aus. Dazu erstellen wir zwei Dateispezifikationen mithilfe des [New-OBFileSpec](https://technet.microsoft.com/library/hh770408)-Cmdlets – eine Spezifikation für Einschluss und eine für Ausschluss. Nachdem die Dateispezifikationen erstellt wurden, werden sie mithilfe des [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424)-Cmdlets mit der Richtlinie verknüpft.
+Im folgenden Beispiel sichern wir Volume „C:“ und „D:“ und schließen die Binärdateien des Betriebssystems im Windows-Ordner sowie alle temporären Ordner aus. Dazu erstellen wir zwei Dateispezifikationen mithilfe des [New-OBFileSpec](https://technet.microsoft.com/library/hh770408)-Cmdlets – eine Spezifikation für Einschluss und eine für Ausschluss. Nachdem die Dateispezifikationen erstellt wurden, werden sie mithilfe des [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424)-Cmdlets mit der Richtlinie verknüpft.
 
 ```
 PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:", "D:")
@@ -351,7 +353,7 @@ DsList : {DataSource
          FileSpec:D:\
          IsExclude:False
          IsRecursive:True
-	}
+    }
 PolicyName : c2eb6568-8a06-49f4-a20e-3019ae411bac
 RetentionPolicy : Retention Days : 7
               WeeklyLTRSchedule :
@@ -551,9 +553,9 @@ PS C:\> .\MARSAgentInstaller.exe /d /q
 
 Die Deinstallation der Binärdateien des Agents vom Computer hat einige Folgen, die berücksichtigt werden müssen:
 
-- Der Dateifilter wird vom Computer entfernt, und die Nachverfolgung von Änderungen wird beendet.
-- Alle Richtlinieninformationen werden vom Computer entfernt, aber weiterhin im Dienst gespeichert.
-- Alle Sicherungszeitpläne werden entfernt, und es werden keine weiteren Sicherungen erstellt.
+* Der Dateifilter wird vom Computer entfernt, und die Nachverfolgung von Änderungen wird beendet.
+* Alle Richtlinieninformationen werden vom Computer entfernt, aber weiterhin im Dienst gespeichert.
+* Alle Sicherungszeitpläne werden entfernt, und es werden keine weiteren Sicherungen erstellt.
 
 Die in Azure gespeicherten Daten bleiben jedoch erhalten und werden gemäß der von Ihnen eingerichteten Aufbewahrungsrichtlinie beibehalten. Ältere Punkte werden automatisch ersetzt.
 
@@ -596,7 +598,7 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 ## Nächste Schritte
 Weitere Informationen zu Azure Backup für Windows-Server und -Clients finden Sie unter
 
-- [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
-- [Sichern von Windows-Servern](backup-configure-vault.md)
+* [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
+* [Sichern von Windows-Servern](backup-configure-vault.md)
 
 <!---HONumber=AcomDC_0907_2016-->

@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Dynamischer SQL-Code in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps zur Verwendung von dynamischem SQL-Code in Azure SQL Data Warehouse für die Entwickelung von Lösungen"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Dynamischer SQL-Code in SQL Data Warehouse | Microsoft Docs
+description: Tipps zur Verwendung von dynamischem SQL-Code in Azure SQL Data Warehouse für die Entwickelung von Lösungen
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # Dynamischer SQL-Code in SQL Data Warehouse
 Beim Entwickeln von Anwendungscode für SQL Data Warehouse müssen Sie unter Umständen dynamischen SQL-Code verwenden, um flexible, generische und modulare Lösungen bereitstellen zu können. SQL Data Warehouse unterstützt derzeit keine BLOB-Datentypen. Dadurch kann die Größe Ihrer Zeichenfolgen verringert werden, weil Blob-Typen sowohl varchar(max)- als auch nvarchar(max)-Typen umfassen. Wenn Sie diese Typen im Anwendungscode verwendet haben und sehr große Zeichenfolgen erstellen, müssen Sie den Code in Segmente unterteilen und stattdessen die EXEC-Anweisung verwenden.
 
@@ -29,12 +29,15 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-Wenn die Zeichenfolge kurz ist, können Sie [sp\_executesql][] normal verwenden.
+Wenn die Zeichenfolge kurz ist, können Sie [sp\_executesql][sp\_executesql] normal verwenden.
 
-> [AZURE.NOTE] Anweisungen, die als dynamisches SQL ausgeführt werden, unterliegen weiterhin allen TSQL-Validierungsregeln.
+> [!NOTE]
+> Anweisungen, die als dynamisches SQL ausgeführt werden, unterliegen weiterhin allen TSQL-Validierungsregeln.
+> 
+> 
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
 

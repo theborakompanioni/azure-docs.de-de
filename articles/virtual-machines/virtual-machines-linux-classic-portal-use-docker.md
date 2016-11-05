@@ -1,46 +1,51 @@
-<properties
-	pageTitle="Verwenden der Docker-VM-Erweiterung für Linux | Microsoft Azure"
-	description="Beschreibt die Docker- und Azure Virtual Machines-Erweiterungen und zeigt die Erstellung von virtuellen Azure-Computern, die als Docker-Hosts verwendet werden, über die Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell."
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="squillace"
-	manager="timlt"
-	editor="tysonn"
-	tags="azure-service-management"/>
+---
+title: Verwenden der Docker-VM-Erweiterung für Linux | Microsoft Docs
+description: Beschreibt die Docker- und Azure Virtual Machines-Erweiterungen und zeigt die Erstellung von virtuellen Azure-Computern, die als Docker-Hosts verwendet werden, über die Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell.
+services: virtual-machines-linux
+documentationcenter: ''
+author: squillace
+manager: timlt
+editor: tysonn
+tags: azure-service-management
 
-<tags
-	ms.service="virtual-machines-linux"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-linux"
-	ms.workload="infrastructure-services"
-	ms.date="05/27/2016"
-	ms.author="rasquill"/>
+ms.service: virtual-machines-linux
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 05/27/2016
+ms.author: rasquill
 
-
+---
 # Verwenden der Docker-VM-Erweiterung mit dem klassischen Azure-Portal
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [Docker](https://www.docker.com/) ist einer der beliebtesten Virtualisierungsansätze, der für das Isolieren von Daten und Computing auf gemeinsamen Ressourcen [Linux-Container](http://en.wikipedia.org/wiki/LXC) statt virtueller Computer verwendet. Verwenden Sie die Docker-VM-Erweiterung des [Azure Linux-Agents], um einen virtuellen Docker-Computer zu erstellen, der eine beliebige Anzahl von Containern für Ihre Anwendungen in Azure hostet.
 
-> [AZURE.NOTE] Dieses Thema beschreibt das Erstellen eines virtuellen Docker-Computers im klassischen Azure-Portal. Informationen zum Erstellen eines virtuellen Docker-Computers an der Befehlszeile finden Sie unter [Verwenden der Docker-VM-Erweiterung über die Azure-Befehlszeilenschnittstelle (Azure-CLI)]. Eine allgemeine Diskussion über die Container und ihre Vorteile finden Sie unter [Docker High Level Whiteboard](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard) (Whiteboard auf hoher Ebene zu Docker) (in englischer Sprache).
+> [!NOTE]
+> Dieses Thema beschreibt das Erstellen eines virtuellen Docker-Computers im klassischen Azure-Portal. Informationen zum Erstellen eines virtuellen Docker-Computers an der Befehlszeile finden Sie unter [Verwenden der Docker-VM-Erweiterung über die Azure-Befehlszeilenschnittstelle (Azure-CLI)]. Eine allgemeine Diskussion über die Container und ihre Vorteile finden Sie unter [Docker High Level Whiteboard](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard) (Whiteboard auf hoher Ebene zu Docker) (in englischer Sprache).
+> 
+> 
 
 ## Erstellen eines neuen virtuellen Computers über den Image-Katalog
 Für den ersten Schritt ist ein virtueller Azure-Computer von einem Linux-Image erforderlich, das die Docker-VM-Erweiterung unterstützt, mit einem Ubuntu 14.04 LTS-Image aus der Image-Galerie als einen Beispielserver und Ubuntu 14.04 Desktop als einen Client. Klicken Sie im Portal in der unteren linken Ecke auf **+ Neu** zum Erstellen einer neuen Instanz für einen virtuellen Computer, und wählen Sie ein Ubuntu 14.04 LTS-Image aus den verfügbaren Optionen oder analog zur folgenden Darstellung aus der vollständigen Image-Galerie aus.
 
-> [AZURE.NOTE] Zurzeit unterstützen nur Ubuntu 14.04 LTS-Abbilder nach Juli 2014 die Docker-VM-Erweiterung.
+> [!NOTE]
+> Zurzeit unterstützen nur Ubuntu 14.04 LTS-Abbilder nach Juli 2014 die Docker-VM-Erweiterung.
+> 
+> 
 
 ![Erstellen eines neuen Ubuntu-Images](./media/virtual-machines-linux-classic-portal-use-docker/ChooseUbuntu.png)
 
 ## Erstellen von Docker-Zertifikaten
-
 Stellen Sie nach dem Erstellen des virtuellen Computers sicher, dass der Docker auf Ihrem Clientcomputer installiert ist. (Einzelheiten finden Sie in den [Installationsanweisungen für Docker](https://docs.docker.com/installation/#installation).)
 
 Erstellen Sie das Zertifikat und Schlüsseldateien für die Docker-Kommunikation gemäß [Running Docker with https]\(Ausführen von Docker mit HTTPS, in englischer Sprache), und speichern Sie sie im Verzeichnis **`~/.docker`** auf Ihrem Clientcomputer.
 
-> [AZURE.NOTE] Für die Docker-VM-Erweiterung im Portal sind zurzeit base64-codierte Anmeldeinformationen erforderlich.
+> [!NOTE]
+> Für die Docker-VM-Erweiterung im Portal sind zurzeit base64-codierte Anmeldeinformationen erforderlich.
+> 
+> 
 
 Verwenden Sie an der Befehlszeile **`base64`** oder ein anderes bevorzugtes Codierungstool zum Erstellen base64-codierter Themen. Wenn Sie dies mit ein paar einfachen Zertifikaten und Schlüsseldateien vornehmen, sieht das möglicherweise in etwa so aus:
 
@@ -57,26 +62,35 @@ Verwenden Sie an der Befehlszeile **`base64`** oder ein anderes bevorzugtes Codi
 
 ## Hinzufügen der Docker-VM-Erweiterung
 Suchen Sie zum Hinzufügen der Docker-VM-Erweiterung die von Ihnen erstellte VM-Instanz, führen Sie einen Bildlauf zu **Erweiterungen** durch, um „VM-Erweiterungen“ analog zur unteren Beschreibung anzuzeigen.
-> [AZURE.NOTE] Diese Funktionalität wird nur im Vorschauportal unterstützt: https://portal.azure.com/
+
+> [!NOTE]
+> Diese Funktionalität wird nur im Vorschauportal unterstützt: https://portal.azure.com/
+> 
+> 
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/ClickExtensions.png)
+
 ### Hinzufügen einer Erweiterung
 Klicken Sie auf **+ Hinzufügen**, um die möglichen VM-Erweiterungen anzuzeigen, die Sie zu diesem virtuellen Computer hinzufügen können.
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/ClickAdd.png)
+
 ### Auswählen der Docker-VM-Erweiterung
 Wählen Sie die Docker-VM-Erweiterung aus, wodurch die Docker-Beschreibung und wichtige Links angezeigt werden, und klicken Sie dann unten auf **Erstellen**, um die Installationsprozedur zu starten.
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/ChooseDockerExtension.png)
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/CreateButtonFocus.png)
-### Fügen Sie Ihr Zertifikat und Schlüsseldateien hinzu:
 
+### Fügen Sie Ihr Zertifikat und Schlüsseldateien hinzu:
 Geben Sie in den Formularfeldern die base64-codierten Versionen Ihres ZS-Zertifikats, Ihr Serverzertifikat und Ihren Serverschlüssel ein, wie dies in der folgenden Grafik gezeigt wird.
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/AddExtensionFormFilled.png)
 
-> [AZURE.NOTE] Beachten Sie (analog zur vorherigen Abbildung), dass 2376 standardmäßig aufgefüllt wird. Sie können hier einen beliebigen Endpunkt eingeben. Der nächste Schritt ist jedoch für den übereinstimmenden Endpunkt gedacht. Wenn Sie den Standardwert ändern, müssen Sie die Erschließung des übereinstimmenden Endpunkts im nächsten Schritt sicherstellen.
+> [!NOTE]
+> Beachten Sie (analog zur vorherigen Abbildung), dass 2376 standardmäßig aufgefüllt wird. Sie können hier einen beliebigen Endpunkt eingeben. Der nächste Schritt ist jedoch für den übereinstimmenden Endpunkt gedacht. Wenn Sie den Standardwert ändern, müssen Sie die Erschließung des übereinstimmenden Endpunkts im nächsten Schritt sicherstellen.
+> 
+> 
 
 ## Hinzufügen des Docker-Kommunikationsendpunkts
 Wählen Sie beim Anzeigen der von Ihnen erstellten Ressourcengruppe die Netzwerksicherheitsgruppe aus, die Ihrem virtuellen Computer zugeordnet ist. Klicken Sie dann auf **Eingangssicherheitsregeln**, um die Regeln anzuzeigen (siehe Abbildung).
@@ -86,7 +100,6 @@ Wählen Sie beim Anzeigen der von Ihnen erstellten Ressourcengruppe die Netzwerk
 Klicken Sie zum Hinzufügen einer weiteren Regel auf **+ Hinzufügen**, und geben Sie im Standardfall einen Namen für den Endpunkt ein (hier: **Docker**). Geben Sie für den Zielportbereich den Wert „2376“ ein. Legen Sie den Wert für das Protokoll auf **TCP** fest, und klicken Sie auf **OK**, um den Regel zu erstellen.
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/AddEndpointFormFilledOut.png)
-
 
 ## Testen des Docker-Clients und des Azure Docker-Hosts
 Suchen und kopieren Sie den Namen der Domäne Ihres virtuellen Computers. Geben Sie zudem an der Befehlszeile Ihres Clientcomputers `docker --tls -H tcp://`*dockerextension*`.cloudapp.net:2376 info` ein (wobei *dockerextension* durch die Unterdomäne für Ihren virtuellen Computer ersetzt wird).
@@ -116,7 +129,6 @@ Nachdem Sie die oben genannten Schritte abgeschlossen haben, verfügen Sie nun �
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
-
 Sie sind nun bereit, das [Docker-Benutzerhandbuch] und Ihren virtuellen Docker-Computer zu verwenden. Informationen zum Automatisieren der Erstellung von Docker-Hosts auf Azure-VMs über die Befehlszeilenschnittstelle finden Sie unter [Verwenden der Docker-VM-Erweiterung über die Azure-Befehlszeilenschnittstelle (Azure-CLI)].
 
 <!--Anchors-->

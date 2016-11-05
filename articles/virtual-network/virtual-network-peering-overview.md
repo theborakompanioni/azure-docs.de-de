@@ -1,40 +1,39 @@
 
-<properties
-   pageTitle="Peering in virtuellen Azure-Netzwerken | Microsoft Azure"
-   description="Enthält Informationen zum VNet-Peering in Azure."
-   services="virtual-network"
-   documentationCenter="na"
-   authors="NarayanAnnamalai"
-   manager="jefco"
-   editor="tysonn" />
-<tags
-   ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/28/2016"
-   ms.author="narayan" />
+---
+title: Peering in virtuellen Azure-Netzwerken | Microsoft Docs
+description: Enthält Informationen zum VNet-Peering in Azure.
+services: virtual-network
+documentationcenter: na
+author: NarayanAnnamalai
+manager: jefco
+editor: tysonn
 
+ms.service: virtual-network
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 07/28/2016
+ms.author: narayan
+
+---
 # VNet-Peering
-
 VNet-Peering ist ein Mechanismus, mit dem zwei virtuelle Netzwerke in der gleichen Region über das Azure-Backbonenetzwerk miteinander verbunden werden können. Nach dem Peering werden die beiden virtuellen Netzwerke für alle Verbindungszwecke als einzelnes Element angezeigt. Sie werden zwar weiterhin als separate Ressourcen verwaltet, virtuelle Computer in diesen virtuellen Netzwerken können aber über private IP-Adressen direkt miteinander kommunizieren.
 
 Der Datenverkehr zwischen virtuellen Computern in den virtuellen Netzwerken, die mittels Peering verknüpft sind, wird ähnlich wie der Datenverkehr zwischen virtuellen Computern im gleichen Netzwerk über die Azure-Infrastruktur geleitet. Die Verwendung von VNet-Peering bietet unter anderem folgende Vorteile:
 
-- Niedrige Latenz, Verbindung mit hoher Bandbreite zwischen Ressourcen in unterschiedlichen virtuellen Netzwerken
-- Möglichkeit zur Verwendung von Ressourcen wie virtuellen Netzwerkgeräten und VPN-Gateways als Transitpunkte in einem per Peering verknüpften VNet
-- Möglichkeit zur Verknüpfung eines virtuellen Netzwerks, das auf dem Azure Resource Manager basiert, mit einem virtuellen Netzwerk, das auf dem klassischen Bereitstellungsmodell basiert, und Nutzung der uneingeschränkten Konnektivität zwischen Ressourcen in diesen virtuellen Netzwerken
+* Niedrige Latenz, Verbindung mit hoher Bandbreite zwischen Ressourcen in unterschiedlichen virtuellen Netzwerken
+* Möglichkeit zur Verwendung von Ressourcen wie virtuellen Netzwerkgeräten und VPN-Gateways als Transitpunkte in einem per Peering verknüpften VNet
+* Möglichkeit zur Verknüpfung eines virtuellen Netzwerks, das auf dem Azure Resource Manager basiert, mit einem virtuellen Netzwerk, das auf dem klassischen Bereitstellungsmodell basiert, und Nutzung der uneingeschränkten Konnektivität zwischen Ressourcen in diesen virtuellen Netzwerken
 
 Anforderungen und zentrale Aspekte des VNet-Peerings:
 
-- Die beiden mittels Peering verknüpften virtuellen Netzwerke müssen sich in der gleichen Azure-Region befinden.
-- Die mittels Peering verknüpften virtuellen Netzwerke müssen über IP-Adressräume ohne Überschneidungen verfügen.
-- VNet-Peering erfolgt zwischen zwei virtuellen Netzwerken, und es besteht keine abgeleitete transitive Beziehung. Wenn also beispielsweise das virtuelle Netzwerk A mittels Peering mit dem virtuellen Netzwerk B und das virtuelle Netzwerk B mittels Peering mit dem virtuellen Netzwerk C verknüpft ist, ergibt sich daraus keine Verknüpfung zwischen dem virtuellen Netzwerk A und dem virtuellen Netzwerk C.
-- Das Peering kann zwischen virtuellen Netzwerken in zwei verschiedenen Abonnements hergestellt werden, sofern ein privilegierter Benutzer beider Abonnements das Peering autorisiert und die Abonnements dem gleichen Active Directory-Mandanten zugewiesen sind.
-- Ein virtuelles Netzwerk, das auf dem Resource Manager-Bereitstellungsmodell basiert, kann mittels Peering mit einem anderen virtuellen Netzwerk verknüpft werden, das ebenfalls auf diesem Modell oder aber auf dem klassischen Bereitstellungsmodell basiert. Virtuelle Netzwerke, die auf dem klassischen Bereitstellungsmodell basieren, können hingegen nicht untereinander mittels Peering verknüpft werden.
-- Für die Kommunikation zwischen virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken bestehen zwar keine weiteren Bandbreiteneinschränkungen, es gilt jedoch die auf der VM-Größe basierende Bandbreitenobergrenze.
-
+* Die beiden mittels Peering verknüpften virtuellen Netzwerke müssen sich in der gleichen Azure-Region befinden.
+* Die mittels Peering verknüpften virtuellen Netzwerke müssen über IP-Adressräume ohne Überschneidungen verfügen.
+* VNet-Peering erfolgt zwischen zwei virtuellen Netzwerken, und es besteht keine abgeleitete transitive Beziehung. Wenn also beispielsweise das virtuelle Netzwerk A mittels Peering mit dem virtuellen Netzwerk B und das virtuelle Netzwerk B mittels Peering mit dem virtuellen Netzwerk C verknüpft ist, ergibt sich daraus keine Verknüpfung zwischen dem virtuellen Netzwerk A und dem virtuellen Netzwerk C.
+* Das Peering kann zwischen virtuellen Netzwerken in zwei verschiedenen Abonnements hergestellt werden, sofern ein privilegierter Benutzer beider Abonnements das Peering autorisiert und die Abonnements dem gleichen Active Directory-Mandanten zugewiesen sind.
+* Ein virtuelles Netzwerk, das auf dem Resource Manager-Bereitstellungsmodell basiert, kann mittels Peering mit einem anderen virtuellen Netzwerk verknüpft werden, das ebenfalls auf diesem Modell oder aber auf dem klassischen Bereitstellungsmodell basiert. Virtuelle Netzwerke, die auf dem klassischen Bereitstellungsmodell basieren, können hingegen nicht untereinander mittels Peering verknüpft werden.
+* Für die Kommunikation zwischen virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken bestehen zwar keine weiteren Bandbreiteneinschränkungen, es gilt jedoch die auf der VM-Größe basierende Bandbreitenobergrenze.
 
 ![Einfaches VNet-Peering](./media/virtual-networks-peering-overview/figure01.png)
 
@@ -82,10 +81,9 @@ Pro virtuellem Netzwerk ist nur eine begrenzte Anzahl von Peerings zulässig. We
 ## Preise
 Während der Beurteilungsphase fallen für das VNet-Peering keine Kosten an. Nach der Veröffentlichung fällt eine geringe Gebühr für eingehenden und ausgehenden Datenverkehr an, für den das Peering verwendet wird. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/virtual-network).
 
-
 ## Nächste Schritte
-- [Einrichten des Peerings zwischen virtuellen Netzwerken](virtual-networks-create-vnetpeering-arm-portal.md)
-- Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
-- Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
+* [Einrichten des Peerings zwischen virtuellen Netzwerken](virtual-networks-create-vnetpeering-arm-portal.md)
+* Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
+* Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
 <!---HONumber=AcomDC_0928_2016-->

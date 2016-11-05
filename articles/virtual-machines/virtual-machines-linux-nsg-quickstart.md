@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Öffnen von Ports für einen virtuellen Linux-Computer | Microsoft Azure"
-   description="Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und der Azure-Befehlszeilenschnittstelle für Ihren virtuellen Linux-Computer einen Port öffnen oder einen Endpunkt erstellen."
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Öffnen von Ports für einen virtuellen Linux-Computer | Microsoft Docs
+description: Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und der Azure-Befehlszeilenschnittstelle für Ihren virtuellen Linux-Computer einen Port öffnen oder einen Endpunkt erstellen.
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="08/08/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 08/08/2016
+ms.author: iainfou
 
+---
 # Öffnen von Ports für eine Linux-VM in Azure
 In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80.
 
@@ -57,8 +57,8 @@ Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen
 ## Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
-- [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
-- [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
-- [Unterstützung von Azure Resource Manager für Load Balancer](../load-balancer2 /load-balancer-arm.md)
+* [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
+* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
+* [Unterstützung von Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
 
 <!---HONumber=AcomDC_0907_2016-->

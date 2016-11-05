@@ -1,147 +1,123 @@
-<properties 
-pageTitle="Cloud Services-Rollenkonfiguration-XPath-Spickzettel | Microsoft Azure" 
-description="Die verschiedenen XPath-Einstellungen, die Sie in der Clouddienst-Rollenkonfiguration verwenden können, um Einstellungen als Umgebungsvariable verfügbar zu machen." 
-services="cloud-services" 
-documentationCenter="" 
-authors="Thraka" 
-manager="timlt" 
-editor=""/>
-<tags 
-ms.service="cloud-services" 
-ms.workload="tbd" 
-ms.tgt_pltfrm="na" 
-ms.devlang="na" 
-ms.topic="article" 
-ms.date="08/10/2016" 
-ms.author="adegeo"/>
+---
+title: Cloud Services-Rollenkonfiguration-XPath-Spickzettel | Microsoft Docs
+description: Die verschiedenen XPath-Einstellungen, die Sie in der Clouddienst-Rollenkonfiguration verwenden können, um Einstellungen als Umgebungsvariable verfügbar zu machen.
+services: cloud-services
+documentationcenter: ''
+author: Thraka
+manager: timlt
+editor: ''
 
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/10/2016
+ms.author: adegeo
+
+---
 # Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath
-
 In der Dienstdefinitionsdatei der Clouddienst-Worker- oder Webrolle können Sie Laufzeitkonfigurationswerte als Umgebungsvariablen verfügbar machen. Die folgenden XPath-Werte (die API-Werten entsprechen) werden unterstützt.
 
 Diese XPath-Werte sind auch über die [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx)-Bibliothek verfügbar.
 
 ## Im Emulator ausgeführte App
-
 Gibt an, dass die Anwendung im Emulator ausgeführt wird
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/Deployment/@emulated" |
-| Code | var x = RoleEnvironment.IsEmulated; |
-
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
+| Code |var x = RoleEnvironment.IsEmulated; |
 
 ## Bereitstellungs-ID
-
 Ruft die Bereitstellungs-ID für die Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/Deployment/@id" |
-| Code | var deploymentId = RoleEnvironment.DeploymentId; |
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/Deployment/@id" |
+| Code |var deploymentId = RoleEnvironment.DeploymentId; |
 
-
-## Rollen-ID 
-
+## Rollen-ID
 Ruft die aktuelle Rollen-ID für die Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/@id" |
-| Code | var id = RoleEnvironment.CurrentRoleInstance.Id; |
-
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
+| Code |var id = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## Domäne aktualisieren
-
 Ruft die Updatedomäne der Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
-| Code | var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
-
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
+| Code |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
 
 ## Fehlerdomäne
-
 Ruft die Fehlerdomäne der Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
-| Code | var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
-
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
+| Code |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
 
 ## Rollenname
-
 Ruft den Rollennamen der Instanzen ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/@roleName" |
-| Code | var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
-
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
+| Code |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## Konfigurationseinstellung
-
 Ruft den Wert der angegebenen Konfigurationseinstellung ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
-| Code | var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
- 
-## Lokaler Speicherpfad
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
+| Code |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
 
+## Lokaler Speicherpfad
 Ruft den lokalen Speicherpfad für die Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@path" |
-| Code | var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1").RootPath; |
-
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@path" |
+| Code |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1").RootPath; |
 
 ## Größe des lokalen Speichers
-
 Ruft die Größe des lokalen Speichers für die Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@sizeInMB" |
-| Code | var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1").MaximumSizeInMegabytes; |
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@sizeInMB" |
+| Code |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1").MaximumSizeInMegabytes; |
 
-## Endpunktprotokoll 
-
+## Endpunktprotokoll
 Ruft das Endpunktprotokoll für die Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@protocol" |
-| Code | var prot = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].Protocol; |
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@protocol" |
+| Code |var prot = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].Protocol; |
 
 ## Endpunkt-IP
-
 Ruft die IP-Adresse des angegebenen Endpunkts ab
 
 | Typ | Beispiel |
-| ----- | ---- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@address" |
-| Code | var address = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Address |
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@address" |
+| Code |var address = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Address |
 
-## Endpunktport 
-
+## Endpunktport
 Ruft den Endpunktport für die Instanz ab
 
 | Typ | Beispiel |
-| ----- | ------- |
-| XPath | xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@port" |
-| Code | var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |
-
-
-
-
+| --- | --- |
+| XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@port" |
+| Code |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |
 
 ## Beispiel
-
 Hier ist ein Beispiel für eine Workerrolle, die eine Startaufgabe mit der Umgebungsvariable `TestIsEmulated` erstellt, festgelegt auf den [XPath-Wert @emulated](#app-running-in-emulator).
 
 ```xml
@@ -182,7 +158,6 @@ Hier ist ein Beispiel für eine Workerrolle, die eine Startaufgabe mit der Umgeb
 ```
 
 ## Nächste Schritte
-
 Erfahren Sie mehr über die Datei [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg).
 
 Erstellen Sie ein [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg)-Paket.

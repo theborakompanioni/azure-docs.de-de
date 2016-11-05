@@ -1,63 +1,55 @@
-<properties
-    pageTitle="Azure AD Connect Health – FAQ"
-    description="Dieses FAQ-Dokument beantwortet Fragen zu Azure AD Connect Health. Dazu gehören Fragen zur Verwendung des Diensts, einschließlich Abrechnungsmodell, Funktionen, Einschränkungen und Unterstützung."
-    services="active-directory"
-    documentationCenter=""
-    authors="billmath"
-    manager="femila"
-    editor="curtand"/>
+---
+title: Azure AD Connect Health – FAQ
+description: Dieses FAQ-Dokument beantwortet Fragen zu Azure AD Connect Health. Dazu gehören Fragen zur Verwendung des Diensts, einschließlich Abrechnungsmodell, Funktionen, Einschränkungen und Unterstützung.
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: curtand
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/14/2016"
-    ms.author="vakarand"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/14/2016
+ms.author: vakarand
 
-
-
+---
 # <a name="azure-ad-connect-health-frequently-asked-questions-(faq)"></a>Häufig gestellte Fragen zu Azure AD Connect Health
-
-Dieses FAQ-Dokument beantwortet Fragen zu Azure AD Connect Health. Dazu gehören Fragen zur Verwendung des Diensts, einschließlich Abrechnungsmodell, Funktionen, Einschränkungen und Unterstützung.
+Dieses FAQ-Dokument beantwortet Fragen zu Azure AD Connect Health. Dazu gehören Fragen zur Verwendung des Diensts, einschließlich Abrechnungsmodell, Funktionen, Einschränkungen und Unterstützung.
 
 ## <a name="general-questions"></a>Allgemeine Fragen
-
-
-
 **F: Ich verwalte mehrere Azure AD-Verzeichnisse. Wie kann ich zu dem Mandanten mit Azure Active Directory Premium wechseln?**
 
 Sie können zwischen verschiedenen Azure AD-Verzeichnissen wechseln, indem Sie in der rechten oberen Ecke den derzeit angemeldeten Benutzernamen sowie das entsprechende Konto auswählen. Wenn das Konto hier nicht aufgeführt ist, wählen Sie "Abmelden" aus, und melden Sie sich dann mit den globalen Administratoranmeldeinformationen des Verzeichnisses an, für das Azure Active Directory Premium aktiviert ist.
 
 ## <a name="installation-questions"></a>Fragen zur Installation
-
-
-
-**F: Wie wirkt sich die Installation des Azure AD Connect Health-Agents auf die einzelnen Server aus?**
+**F: Wie wirkt sich die Installation des Azure AD Connect Health-Agents auf die einzelnen Server aus?**
 
 Die Installation des Azure AD Connect Health-Agents auf den AD FS-Servern oder -Domänencontrollern wirkt sich in Bezug auf CPU, Arbeitsspeichernutzung, Netzwerkbandbreite und Speicher nur minimal aus.
 
 Die folgenden Zahlen stellen Näherungswerte dar.
 
-- CPU-Auslastung: ~ 1 % Zunahme
-- Arbeitsspeichernutzung: bis zu 10 % des insgesamt verfügbaren Systemarbeitsspeichers
-- Nutzung der Netzwerkbandbreite: ~ 1 MB pro 1000 AD FS-Anforderungen
+* CPU-Auslastung: ~ 1 % Zunahme
+* Arbeitsspeichernutzung: bis zu 10 % des insgesamt verfügbaren Systemarbeitsspeichers
+* Nutzung der Netzwerkbandbreite: ~ 1 MB pro 1000 AD FS-Anforderungen
 
->[AZURE.NOTE]Falls der Agent nicht mit Azure kommunizieren kann, speichert er die Daten bis zu einem definierten maximalen Grenzwert lokal. Sobald der Agent diesen Grenzwert erreicht, überschreiben die neuen ADFS-Transaktionen alle zwischengespeicherten Transaktionen, falls  der Agent die Daten nicht auf den Dienst hochladen konnte. Die am seltensten verwendeten Transaktionen werden dabei zuerst überschrieben.
+> [!NOTE]
+> Falls der Agent nicht mit Azure kommunizieren kann, speichert er die Daten bis zu einem definierten maximalen Grenzwert lokal. Sobald der Agent diesen Grenzwert erreicht, überschreiben die neuen ADFS-Transaktionen alle zwischengespeicherten Transaktionen, falls  der Agent die Daten nicht auf den Dienst hochladen konnte. Die am seltensten verwendeten Transaktionen werden dabei zuerst überschrieben.
+> 
+> 
 
-- Lokaler Pufferspeicher für AD Connect Health-Agent: ca. 20 MB
-- Datenspeicher für Überwachungskanal erforderlich
+* Lokaler Pufferspeicher für AD Connect Health-Agent: ca. 20 MB
+* Datenspeicher für Überwachungskanal erforderlich
 
+Es wird empfohlen, 1024 MB (1 GB) Festplattenspeicher für den AD FS-Überwachungskanal für AD Connect Health-Agents bereitzustellen, um sämtliche Daten zu verarbeiten.
 
-Es wird empfohlen, 1024 MB (1 GB) Festplattenspeicher für den AD FS-Überwachungskanal für AD Connect Health-Agents bereitzustellen, um sämtliche Daten zu verarbeiten.
-
-**F: Muss ich meine Server während der Installation der Azure AD Connect Health-Agents neu starten?**
+**F: Muss ich meine Server während der Installation der Azure AD Connect Health-Agents neu starten?**
 
 Nein. Die Installation der Agents erfordert keinen Serverneustart. Während der Installation einiger vorbereitender Schritte muss der Server jedoch möglicherweise neu gestartet werden.
 
-Beispielsweise erfordert die Installation des .NET 4.5-Frameworks unter Windows Server 2008 R2 einen Neustart des Servers.
-
+Beispielsweise erfordert die Installation des .NET 4.5-Frameworks unter Windows Server 2008 R2 einen Neustart des Servers.
 
 **F: Nutzt der Azure AD Connect Health-Dienst einen Passthrough-Proxy über HTTP?**
 
@@ -68,41 +60,30 @@ Wenn Sie einen Proxy während der Agent-Registrierung konfigurieren müssen, mü
 Wählen Sie „Proxyserver für das LAN verwenden“ aus.<br>
 Wählen Sie „Erweitert“ aus, FALLS Sie über unterschiedliche Proxyports für HTTP und HTTPS/Secure verfügen.<br>
 
-
-**F: Unterstützt der Azure AD Connect Health-Dienst die Standardauthentifizierung bei der Verbindung mit HTTP-Proxys?**
+**F: Unterstützt der Azure AD Connect Health-Dienst die Standardauthentifizierung bei der Verbindung mit HTTP-Proxys?**
 
 Nein. Ein Mechanismus zum Angeben eines frei wählbaren Benutzernamens und Kennworts für die Standardauthentifizierung wird derzeit nicht unterstützt.
-
 
 **F: Welche Version von AD DS wird von Azure AD Connect Health für AD DS unterstützt?**
 
 Die Überwachung von AD DS wird unterstützt, wenn AD DS unter den folgenden Betriebssystemversionen installiert wird: 
 
-- Windows Server 2008 R2
-- Windows Server 2012
-- Windows Server 2012 R2
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
 
 ## <a name="operations-questions"></a>Fragen zum Betrieb
+**F: Muss ich die Überwachung auf meinen AD FS-Anwendungsproxyservern oder meinen Webanwendungsproxyservern aktivieren?**
 
+Nein, die Überwachung muss auf den AD FS-Anwendungsproxyservern oder Webanwendungsproxyservern nicht aktiviert sein. Sie muss nur auf den AD FS-Verbundservern aktiviert sein.
 
+**F: Wie werden Azure AD Connect Health-Warnungen aufgelöst?**
 
-**F: Muss ich die Überwachung auf meinen AD FS-Anwendungsproxyservern oder meinen Webanwendungsproxyservern aktivieren?**
+Azure AD Connect Health-Warnungen werden basierend auf einer Erfolgsbedingung aufgelöst. Azure AD Connect Health-Agents erkennen und melden die Erfolgsbedingungen in regelmäßigen Abständen an den Dienst. Bei einigen Warnungen gilt eine zeitbasierte Unterdrückung. Dies bedeutet: Wenn die gleiche Fehlerbedingung nicht innerhalb von 72 Stunden nach Generieren der Warnung erneut festgestellt wird, wird die Warnung automatisch aufgelöst.
 
-Nein, die Überwachung muss auf den AD FS-Anwendungsproxyservern oder Webanwendungsproxyservern nicht aktiviert sein. Sie muss nur auf den AD FS-Verbundservern aktiviert sein.
+**F: Welche Firewallports muss ich öffnen, damit der Azure AD Connect Health-Agent funktioniert?**
 
-
-
-**F: Wie werden Azure AD Connect Health-Warnungen aufgelöst?**
-
-Azure AD Connect Health-Warnungen werden basierend auf einer Erfolgsbedingung aufgelöst. Azure AD Connect Health-Agents erkennen und melden die Erfolgsbedingungen in regelmäßigen Abständen an den Dienst. Bei einigen Warnungen gilt eine zeitbasierte Unterdrückung. Dies bedeutet: Wenn die gleiche Fehlerbedingung nicht innerhalb von 72 Stunden nach Generieren der Warnung erneut festgestellt wird, wird die Warnung automatisch aufgelöst.
-
-
-
-
-**F: Welche Firewallports muss ich öffnen, damit der Azure AD Connect Health-Agent funktioniert?**
-
-Sie müssen die TCP/UDP-Ports 80, 443 und 5671 öffnen, damit der Azure AD Connect Health-Agent mit den Azure AD Connect Health-Dienstendpunkten kommunizieren kann.
-
+Sie müssen die TCP/UDP-Ports 80, 443 und 5671 öffnen, damit der Azure AD Connect Health-Agent mit den Azure AD Connect Health-Dienstendpunkten kommunizieren kann.
 
 **F: Warum sehe ich zwei Server mit dem gleichen Namen im Azure AD Connect Health-Portal?**
 
@@ -110,7 +91,6 @@ Wenn Sie einen Agent von einem Server entfernen, wird der Server nicht automatis
 Wenn Sie das Image eines Servers neu erstellt oder einen neuen Server mit den gleichen Details(z. B. Computername) erstellt haben, den Server aber nicht aus dem Azure AD Connect Health-Portal entfernt und dann den Agent auf dem neuen Server installiert haben, werden jetzt unter Umständen zwei Einträge für den Server angezeigt.  In diesem Fall sollten Sie den Eintrag für den älteren Server manuell löschen.  Die Daten mit diesem Eintrag sind in der Regel veraltet.
 
 ## <a name="related-links"></a>Verwandte Links
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Installieren des Azure AD Connect Health-Agents](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health-Vorgänge](active-directory-aadconnect-health-operations.md)
@@ -118,8 +98,6 @@ Wenn Sie das Image eines Servers neu erstellt oder einen neuen Server mit den gl
 * [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
 * [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md) 
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

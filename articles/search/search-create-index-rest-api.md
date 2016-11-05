@@ -1,36 +1,36 @@
-<properties
-    pageTitle="Erstellen eines Azure Search-Indexes mit einer REST-API | Microsoft Azure | Gehosteter Cloudsuchdienst"
-    description="Erstellen Sie einen Index im Code mithilfe der Azure Search HTTP-REST-API."
-    services="search"
-    documentationCenter=""
-    authors="ashmaka"
-    manager=""
-    editor=""
-    tags="azure-portal"/>
+---
+title: Erstellen eines Azure Search-Indexes mit einer REST-API | Microsoft Docs
+description: Erstellen Sie einen Index im Code mithilfe der Azure Search HTTP-REST-API.
+services: search
+documentationcenter: ''
+author: ashmaka
+manager: ''
+editor: ''
+tags: azure-portal
 
-<tags
-    ms.service="search"
-    ms.devlang="rest-api"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: rest-api
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
+---
 # Erstellen eines Azure Search-Indexes mit der REST-API
-> [AZURE.SELECTOR]
-- [Übersicht](search-what-is-an-index.md)
-- [Portal](search-create-index-portal.md)
-- [.NET](search-create-index-dotnet.md)
-- [REST](search-create-index-rest-api.md)
-
+> [!div class="op_single_selector"]
+> * [Übersicht](search-what-is-an-index.md)
+> * [Portal](search-create-index-portal.md)
+> * [.NET](search-create-index-dotnet.md)
+> * [REST](search-create-index-rest-api.md)
+> 
+> 
 
 In diesem Artikel lernen Sie, wie Sie einen Azure Search-[Index](https://msdn.microsoft.com/library/azure/dn798941.aspx) mithilfe der Azure Search REST-API erstellen.
 
 Bevor Sie dieser Anleitung folgen und einen Index erstellen, müssen Sie einen [Azure Search-Dienst erstellen](search-create-service-portal.md).
 
 Zum Erstellen des Azure Search-Indexes mithilfe der REST-API können Sie eine einzelne HTTP POST-Anforderung an den URL-Endpunkt Ihres Azure Search-Diensts ausgeben. Ihre Indexdefinition ist im Anforderungstext als richtig formatierter JSON-Inhalt enthalten.
-
 
 ## I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, können Sie HTTP-Anforderungen für den URL-Endpunkt Ihres Diensts mithilfe der REST-API ausgeben. Allerdings müssen *alle* API-Anforderungen den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
@@ -41,8 +41,8 @@ Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, können Sie HTTP-Anf
 
 Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 
- - Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
- - Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
+* Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
+* Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
 
 Verwenden Sie zum Erstellen eines Indexes entweder den primären oder den sekundären Admin-Schlüssel.
 
@@ -86,9 +86,7 @@ Diese Indexdefinition verwendet für das Feld `description_fr` eine benutzerdefi
 1. Stellen Sie eine HTTP POST-Anforderung an die Endpunkt-URL des Azure Search-Diensts, indem Sie Ihre Indexdefinition als Anforderungstext verwenden. Verwenden Sie in der URL Ihren Dienstnamen als Hostnamen, und geben Sie die richtige `api-version` als Abfragezeichenfolgeparameter ein (zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2015-02-28` die aktuelle API-Version).
 2. Legen Sie im Anforderungsheader `Content-Type` als `application/json` fest. Sie müssen außerdem den Admin-Schlüssel des Diensts angeben, den Sie in Schritt I im Header `api-key` identifiziert haben.
 
-
 Zum Übermitteln der folgenden Anforderung müssen Sie Ihren Dienstnamen und API-Schlüssel angeben:
-
 
     POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
     Content-Type: application/json

@@ -1,41 +1,37 @@
-<properties
-   pageTitle="Informationen zur Docker-VM-Erweiterung in Azure | Microsoft Azure"
-   description="Erfahren Sie, wie die Docker-VM-Erweiterung verwendet wird, um schnell und sicher eine Docker-Umgebung in Azure bereitzustellen"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Informationen zur Docker-VM-Erweiterung in Azure | Microsoft Docs
+description: Erfahren Sie, wie die Docker-VM-Erweiterung verwendet wird, um schnell und sicher eine Docker-Umgebung in Azure bereitzustellen
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="10/10/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 10/10/2016
+ms.author: iainfou
 
-
+---
 # <a name="using-the-docker-vm-extension-to-deploy-your-environment"></a>Verwenden der Docker-VM-Erweiterung zum Bereitstellen Ihrer Umgebung
-
 Docker ist eine beliebte Plattform für Containerverwaltung und Imageerstellung, die es Ihnen ermöglicht, schnell mit Containern unter Linux (und auch Windows) zu arbeiten. Mit Azure haben Sie die Flexibilität, Docker abhängig von Ihrem Bedarf auf unterschiedliche Arten bereitzustellen:
 
-- Wenn Sie schnell einen Prototyp einer App erstellen möchten, können Sie [den Azure-Treiber für Docker Machine verwenden](./virtual-machines-linux-docker-machine.md) , um Docker-Hosts in Azure bereitzustellen.
-- Die Docker-VM-Erweiterung für virtuelle Azure-Computer wird für vorlagenbasierte Bereitstellungen verwendet. Dieser Ansatz kann in Azure Resource Manager-Vorlagenbereitstellungen integriert werden und umfasst alle zugehörigen Vorteile, wie z.B. rollenbasierter Zugriff, Diagnose und Konfiguration nach der Bereitstellung.
-- Die Docker-VM-Erweiterung unterstützt auch Docker Compose. Docker Compose verwendet eine deklarative YAML-Datei, um aus einer auf einem Entwicklermodell basierenden Anwendung umgebungsübergreifend eine einheitliche Bereitstellung zu generieren.
-- Sie können auch [einen vollständigen Docker Swarm-Cluster in Azure Container Services bereitstellen](../container-service/container-service-deployment.md) , um produktionsbereite, skalierbare Bereitstellungen zu erhalten, die die zusätzlichen Tools für die Planung und Verwaltung von Swarm nutzen.
+* Wenn Sie schnell einen Prototyp einer App erstellen möchten, können Sie [den Azure-Treiber für Docker Machine verwenden](virtual-machines-linux-docker-machine.md) , um Docker-Hosts in Azure bereitzustellen.
+* Die Docker-VM-Erweiterung für virtuelle Azure-Computer wird für vorlagenbasierte Bereitstellungen verwendet. Dieser Ansatz kann in Azure Resource Manager-Vorlagenbereitstellungen integriert werden und umfasst alle zugehörigen Vorteile, wie z.B. rollenbasierter Zugriff, Diagnose und Konfiguration nach der Bereitstellung.
+* Die Docker-VM-Erweiterung unterstützt auch Docker Compose. Docker Compose verwendet eine deklarative YAML-Datei, um aus einer auf einem Entwicklermodell basierenden Anwendung umgebungsübergreifend eine einheitliche Bereitstellung zu generieren.
+* Sie können auch [einen vollständigen Docker Swarm-Cluster in Azure Container Services bereitstellen](../container-service/container-service-deployment.md) , um produktionsbereite, skalierbare Bereitstellungen zu erhalten, die die zusätzlichen Tools für die Planung und Verwaltung von Swarm nutzen.
 
 Dieser Artikel befasst sich mit der Verwendung von Resource Manager-Vorlagen, um die Docker-VM-Erweiterung in einer von Ihnen definierten angepassten, produktionsbereiten Umgebung bereitzustellen.
 
 ## <a name="azure-docker-vm-extension-for-template-deployments"></a>Docker-VM-Erweiterung von Azure für Vorlagenbereitstellungen
-
 Die Azure Docker-VM-Erweiterung installiert und konfiguriert den Docker-Daemon, Docker-Client und Docker Compose auf dem virtuellen Linux-Computer. Die Erweiterung wird auch verwendet, um Containeranwendungen mit Docker Compose zu definieren und bereitzustellen. Sie verfügen über zusätzliche Steuerelemente zur Verwendung von Docker Machine oder zur Erstellung des Docker-Hosts, somit eignet sich diese Lösung besser für stabilere Entwickler- oder Produktionsumgebungen.
 
 Über Azure Resource Manager können Sie Vorlagen erstellen und bereitstellen, die die gesamte Struktur Ihrer Umgebung definieren. Mit Vorlagen können Sie Docker-Hosts, Speicher, rollenbasierte Zugriffssteuerung (RBAC), Diagnosen usw. definieren. [Informieren Sie sich über Resource Manager](../resource-group-overview.md) und Vorlagen, um einige der Vorteile besser zu verstehen. Mit Resource Manager-Vorlagen können Sie Ihre Bereitstellungen ganz nach Bedarf auch in Zukunft reproduzieren.
 
 ## <a name="deploy-a-template-with-the-docker-vm-extension:"></a>Bereitstellen einer Vorlage mit der Docker-VM-Erweiterung:
-
 Wir verwenden eine vorhandene Vorlage für den Schnellstart, um zu veranschaulichen, wie ein virtueller Ubuntu-Computer bereitgestellt wird, auf dem die Docker-VM-Erweiterung installiert ist. Die Vorlage finden Sie hier: [Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)(Einfache Bereitstellung eines virtuellen Ubuntu-Computers mit Docker). Sie benötigen auch die [neueste Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
 
 Stellen Sie die Vorlage mithilfe der Azure-Befehlszeilenschnittstelle bereit. Geben Sie dabei einen Namen für die neue Ressourcengruppe (hier `myDockerResourceGroup`) und den Vorlagen-URI an:
@@ -106,7 +102,6 @@ Im oberen Bereich der Ausgabe finden Sie den `ProvisioningState` -Wert für den 
 
 Im unteren Bereich der Ausgabe zeigt `FQDN` den vollqualifizierten Domänennamen basierend auf dem von Ihnen bereitgestellten DNS-Namen und dem von Ihnen ausgewählten Speicherort an. In den weiteren Schritten verwenden Sie den vollqualifizierten Domänennamen, um sich per SSH beim virtuellen Computer anzumelden.
 
-
 ## <a name="deploy-your-first-nginx-container"></a>Bereitstellen des ersten nginx-Containers
 Stellen Sie nach Abschluss der Bereitstellung eine SSH-Verbindung mit dem neuen Docker-Host her. Verwenden Sie dazu den DNS-Namen, den Sie während der Bereitstellung angegeben haben:
 
@@ -148,7 +143,6 @@ b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute 
 Sie möchten möglicherweise mithilfe von Docker Compose den Docker-Daemon-TCP-Port und Sicherheit konfigurieren oder Container bereitstellen. Weitere Informationen finden Sie im [GitHub-Projekt für die Azure-VM-Erweiterung für Docker](https://github.com/Azure/azure-docker-extension/).
 
 ## <a name="docker-vm-extension-json-template-reference"></a>JSON-Vorlagenreferenz für die Docker-VM-Erweiterung
-
 In diesem Beispiel wurde eine Vorlage für den Schnellstart verwendet. Um die Docker-VM-Erweiterung in Azure mit Ihren eigenen Resource Manager-Vorlagen bereitzustellen, fügen Sie folgende JSON hinzu:
 
 ```
@@ -174,15 +168,12 @@ In diesem Beispiel wurde eine Vorlage für den Schnellstart verwendet. Um die Do
 Eine ausführlichere exemplarische Vorgehensweise zur Verwendung von Resource Manager-Vorlagen finden Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Informieren Sie sich über die genaueren Schritte für die verschiedenen Bereitstellungsoptionen:
 
-1. [Verwenden eines Docker-Computers mit dem Azure-Treiber](./virtual-machines-linux-docker-machine.md)  
-2. [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](./virtual-machines-linux-classic-cli-use-docker.md)  
+1. [Verwenden eines Docker-Computers mit dem Azure-Treiber](virtual-machines-linux-docker-machine.md)  
+2. [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](virtual-machines-linux-classic-cli-use-docker.md)  
 3. [Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern auf einem virtuellen Azure-Computer](virtual-machines-linux-docker-compose-quickstart.md)
-3. [Bereitstellen eines Azure Container Service-Clusters](../container-service/container-service-deployment.md)
-
-
+4. [Bereitstellen eines Azure Container Service-Clusters](../container-service/container-service-deployment.md)
 
 <!--HONumber=Oct16_HO2-->
 

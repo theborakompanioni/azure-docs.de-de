@@ -9,26 +9,21 @@ articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
 ## Herstellen einer Verbindung mit dem Azure-Portal mit einem Abonnement
-
 Zum Herstellen einer Verbindung mit dem Azure-Portal benötigen Sie ein Abonnement.
 
 ### Einrichten eines neuen Kontos
-
 Falls Sie noch nicht über ein Azure-Konto verfügen, verwenden Sie eine der folgenden Optionen, um ein Konto zu erhalten:
 
-- [Kostenloses Konto erhalten](https://azure.microsoft.com/get-started/)
-- [MSDN-Abonnement verwenden](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)
+* [Kostenloses Konto erhalten](https://azure.microsoft.com/get-started/)
+* [MSDN-Abonnement verwenden](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)
 
 ### Anmelden mit einem vorhandenen Konto
-
 Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorhandenen Abonnements](https://account.windowsazure.com/Home/Index) eine Verbindung mit dem Azure-Portal herzustellen.
 
 1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/) her.
-
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/) an.
-
-1. Geben Sie auf der Anmeldeseite die Anmeldeinformationen für Ihr Abonnement ein.
-
+2. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/) an.
+3. Geben Sie auf der Anmeldeseite die Anmeldeinformationen für Ihr Abonnement ein.
+   
    ![Anmelden](./media/azure-getting-started-portal-login/login.png)
 
 <!----HONumber=AcomDC_0912_2016-->

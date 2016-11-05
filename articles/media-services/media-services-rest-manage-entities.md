@@ -1,47 +1,48 @@
 
-<properties 
-    pageTitle="Verwalten von Media Services-Entitäten mit der REST-API | Microsoft Azure" 
-    description="Hier erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten." 
-    authors="juliako" 
-    manager="dwrede" 
-    editor="" 
-    services="media-services" 
-    documentationCenter=""/>
+---
+title: Verwalten von Media Services-Entitäten mit der REST-API | Microsoft Docs
+description: Hier erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten.
+author: juliako
+manager: dwrede
+editor: ''
+services: media-services
+documentationcenter: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/26/2016" 
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-#<a name="managing-media-services-entities-with-rest-api"></a>Verwalten von Media Services-Entitäten mit der REST-API
-
-> [AZURE.SELECTOR]
-- [REST](media-services-rest-manage-entities.md)
-- [.NET](media-services-dotnet-manage-entities.md)
+---
+# <a name="managing-media-services-entities-with-rest-api"></a>Verwalten von Media Services-Entitäten mit der REST-API
+> [!div class="op_single_selector"]
+> * [REST](media-services-rest-manage-entities.md)
+> * [.NET](media-services-dotnet-manage-entities.md)
+> 
+> 
 
 Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von OData v3. Aus diesem Grund können Sie Entitäten genauso wie bei anderen OData-Diensten hinzufügen, abfragen, aktualisieren und löschen. Auf Ausnahmen wird ggf. hingewiesen. Weitere Informationen zu OData finden Sie in der [Dokumentation zu Open Data Protocol](http://www.odata.org/documentation/).
 
-- Hinzufügen von Entitäten 
-- Abfragen von Entitäten 
-- Auflisten von großen Auflistungen von Entitäten
-- Aktualisieren von Entitäten 
-- Löschen von Entitäten 
+* Hinzufügen von Entitäten 
+* Abfragen von Entitäten 
+* Auflisten von großen Auflistungen von Entitäten
+* Aktualisieren von Entitäten 
+* Löschen von Entitäten 
 
->[AZURE.NOTE] Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
->
->Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
+> [!NOTE]
+> Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
+> 
+> Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
+> 
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
+> 
+> 
 
->Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
-
-
-##<a name="adding-entities"></a>Hinzufügen von Entitäten
-
-Jede Entität in Media Services wird über eine POST-HTTP-Anforderung einer Entitätenmenge hinzugefügt, z. B. Medienobjekten.
+## <a name="adding-entities"></a>Hinzufügen von Entitäten
+Jede Entität in Media Services wird über eine POST-HTTP-Anforderung einer Entitätenmenge hinzugefügt, z. B. Medienobjekten.
 
 Im folgenden Beispiel wird veranschaulicht, wie eine AccessPolicy erstellt wird:
 
@@ -55,12 +56,11 @@ Im folgenden Beispiel wird veranschaulicht, wie eine AccessPolicy erstellt wird:
     Host: media.windows.net
     Content-Length: 74
     Expect: 100-continue
-    
+
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
- 
-##<a name="querying-entities"></a>Abfragen von Entitäten
 
+## <a name="querying-entities"></a>Abfragen von Entitäten
 Das Abfragen und Auflisten von Entitäten ist unkompliziert und umfasst nur die HTTP-Anforderung GET und optional OData-Vorgänge.
 Im folgenden Beispiel wird eine Liste aller MediaProcessor-Entitäten abgerufen.
 
@@ -115,11 +115,13 @@ Das folgende Beispiel gibt alle JobTemplates mit dem Namen „SampleTemplate“ 
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
->[AZURE.NOTE]Der $expand-Vorgang wird in Media Services nicht unterstützt, ebenso wie die in den LINQ-Informationen (WCF Data Services) beschriebenen LINQ-Methoden.
+> [!NOTE]
+> Der $expand-Vorgang wird in Media Services nicht unterstützt, ebenso wie die in den LINQ-Informationen (WCF Data Services) beschriebenen LINQ-Methoden.
+> 
+> 
 
-##<a name="enumerating-through-large-collections-of-entities"></a>Auflisten von großen Auflistungen von Entitäten
-
-Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Verwenden Sie **skip** und **top**, um die große Sammlung von Entitäten aufzuzählen. 
+## <a name="enumerating-through-large-collections-of-entities"></a>Auflisten von großen Auflistungen von Entitäten
+Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Verwenden Sie **skip** und **top**, um die große Sammlung von Entitäten aufzuzählen. 
 
 Das folgende Beispiel zeigt, wie Sie **skip** und **top** zum Überspringen der ersten 2000 Aufträge und Abrufen der nächsten 1000 Aufträge verwenden.  
 
@@ -132,8 +134,7 @@ Das folgende Beispiel zeigt, wie Sie **skip** und **top** zum Überspringen der 
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
-##<a name="updating-entities"></a>Aktualisieren von Entitäten
-
+## <a name="updating-entities"></a>Aktualisieren von Entitäten
 Abhängig vom Typ und dem Status der Entität können Sie Eigenschaften für diese Entität über die HTTP-Anforderungen PATCH, PUT oder MERGE aktualisieren. Weitere Informationen zu diesen Vorgängen finden Sie unter [PATCH, PUT, MERGE](https://msdn.microsoft.com/library/dd541276.aspx).
 
 Im folgenden Codebeispiel wird veranschaulicht, wie die Name-Eigenschaft für eine Asset-Entität aktualisiert wird.
@@ -148,12 +149,11 @@ Im folgenden Codebeispiel wird veranschaulicht, wie die Name-Eigenschaft für ei
     Host: media.windows.net
     Content-Length: 21
     Expect: 100-continue
-    
+
     {"Name" : "NewName" }
 
-##<a name="deleting-entities"></a>Löschen von Entitäten
-
-Entitäten können in Media Services mithilfe der HTTP-Anforderung DELETE gelöscht werden. Abhängig von der Entität kann die Reihenfolge, in der Sie Entitäten löschen, wichtig sein. Für Entitäten wie Medienobjekte müssen Sie z. B. alle Locators widerrufen (oder löschen), die auf ein bestimmtes Medienobjekt verweisen, bevor das Medienobjekt gelöscht wird.
+## <a name="deleting-entities"></a>Löschen von Entitäten
+Entitäten können in Media Services mithilfe der HTTP-Anforderung DELETE gelöscht werden. Abhängig von der Entität kann die Reihenfolge, in der Sie Entitäten löschen, wichtig sein. Für Entitäten wie Medienobjekte müssen Sie z. B. alle Locators widerrufen (oder löschen), die auf ein bestimmtes Medienobjekt verweisen, bevor das Medienobjekt gelöscht wird.
 
 Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem eine Datei in den BLOB-Speicher hochgeladen wurde.
 
@@ -169,15 +169,11 @@ Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem e
 
 
 
-##<a name="media-services-learning-paths"></a>Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##<a name="provide-feedback"></a>Feedback geben
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
+## <a name="provide-feedback"></a>Feedback geben
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

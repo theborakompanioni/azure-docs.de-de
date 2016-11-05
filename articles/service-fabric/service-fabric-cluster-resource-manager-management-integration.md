@@ -1,29 +1,28 @@
-<properties
-   pageTitle="Clusterressourcen-Manager von Service Fabric – Integration der Verwaltung | Microsoft Azure"
-   description="Übersicht über die Integrationspunkte zwischen dem Clusterressourcen-Manager und der Service Fabric-Verwaltung."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Clusterressourcen-Manager von Service Fabric – Integration der Verwaltung | Microsoft Docs
+description: Übersicht über die Integrationspunkte zwischen dem Clusterressourcen-Manager und der Service Fabric-Verwaltung.
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
-
+---
 # Integration des Clusterressourcen-Managers in die Service Fabric-Clusterverwaltung
 Der Clusterressourcen-Manager von Service Fabric ist zwar nicht die Hauptkomponente von Service Fabric für die Ausführung von Verwaltungsvorgängen (wie z.B. Anwendungsupgrades), jedoch daran beteiligt. Die erste Unterstützung, die der Clusterressourcen-Manager bei der Verwaltung bietet, ist die Nachverfolgung des gewünschten Status des Clusters und der darin enthaltenen Dienste aus Perspektive der Ressourcen und des Lastenausgleichs. Zudem sendet der Clusterressourcen-Manager Integritätsberichte, wenn die gewünschte Konfiguration für den Cluster nicht umgesetzt werden kann (Beispiel: nicht genügend Kapazität, oder in Konflikt stehende Regeln zur Platzierung eines Diensts). Ein weiterer Teil der Integration hat mit der Funktionsweise von Upgrades zu tun: Während Upgrades ändert der Clusterressourcen-Manager das Verhalten. Darauf gehen wir weiter unten ein.
 
 ## Integration von Integrität
 Der Clusterressourcen-Manager verfolgt ständig die Regeln, die Sie für Ihre Dienste definiert haben, sowie die verfügbaren Kapazitäten auf den Knoten und im Cluster und gibt Integritätswarnungen und Fehlermeldungen aus, wenn diese Regeln nicht erfüllt werden können oder die Kapazität nicht ausreicht. Wenn z.B. ein Knoten seine Kapazität vollständig ausgeschöpft hat und der Clusterressourcen-Manager die Situation nicht korrigieren kann, wird eine Integritätswarnung ausgegeben, die angibt, welcher Knoten bei welchen Metriken keine Kapazität mehr hat.
 
-Ein weiteres Beispiel der Anzeige von Integritätswarnungen durch den Ressourcen-Manager ist, wenn Sie eine Platzierungseinschränkung (z. B. „NodeColor == Blue“) definiert haben und ein Verstoß gegen diese Einschränkung erkannt wird. Dies erfolgt sowohl für benutzerdefinierte Einschränkungen als auch für die Standardeinschränkungen (z.B. Einschränkungen von Fehler- und Upgradedomänen), die automatisch erzwungen werden.
+Ein weiteres Beispiel der Anzeige von Integritätswarnungen durch den Ressourcen-Manager ist, wenn Sie eine Platzierungseinschränkung (z. B. „NodeColor == Blue“) definiert haben und ein Verstoß gegen diese Einschränkung erkannt wird. Dies erfolgt sowohl für benutzerdefinierte Einschränkungen als auch für die Standardeinschränkungen (z.B. Einschränkungen von Fehler- und Upgradedomänen), die automatisch erzwungen werden.
 
 Hier ein Beispiel eines solchen Integritätsberichts. In diesem Fall gilt der Integritätsbericht einer der Partitionen des Systemdiensts, da die Replikate dieser Partition vorübergehend in zu wenig Upgradedomänen abgelegt sind, was bei einer Kette von Ausfällen passieren kann:
 
@@ -69,29 +68,29 @@ HealthEvents          :
 
 Diese Integritätsmeldung gibt Folgendes an:
 
-1.	Alle Replikate selbst sind fehlerfrei (dies hat für Service Fabric erste Priorität).
-2.	Derzeit wird gegen die Einschränkung für die Verteilung von Upgradedomänen verstoßen (was heißt, dass eine bestimmte Upgradedomäne mehr Replikate für diese Partition aufweist, als sie sollte).
-3.	Den Knoten mit dem Replikat, der den Verstoß verursacht (mit der ID „3d1a4a68b2592f55125328cd0f8ed477“).
-4.	Den Zeitpunkt des Auftretens des Verstoßes (10.08.2015 19:13:02 Uhr).
+1. Alle Replikate selbst sind fehlerfrei (dies hat für Service Fabric erste Priorität).
+2. Derzeit wird gegen die Einschränkung für die Verteilung von Upgradedomänen verstoßen (was heißt, dass eine bestimmte Upgradedomäne mehr Replikate für diese Partition aufweist, als sie sollte).
+3. Den Knoten mit dem Replikat, der den Verstoß verursacht (mit der ID „3d1a4a68b2592f55125328cd0f8ed477“).
+4. Den Zeitpunkt des Auftretens des Verstoßes (10.08.2015 19:13:02 Uhr).
 
 Dies sind aussagekräftige Daten für eine Warnung, die in der Produktion ausgelöst wird, um Sie zu informieren, dass etwas falsch gelaufen ist und Sie einen Blick darauf werfen sollten. In diesem Fall möchten wir herausfinden, warum der Ressourcen-Manager keine andere Wahl hatte, als die Replikate in der Upgradedomäne abzulegen. Eine Möglichkeit ist, dass alle Knoten in den anderen Upgradedomänen ausgefallen waren und es nicht genügend Ersatzdomänen gab. Oder wenn es genügend aktive Domänen gab, ist etwas anderes vorgefallen, das bewirkt hat, dass die Knoten in diesen anderen Upgradedomänen ungültig waren (z.B. eine Platzierungsrichtlinie für den Dienst oder zu wenig Kapazität).
 
 Angenommen, Sie möchten einen Dienst erstellen oder der Ressourcen-Manager versucht, einen Ort zu finden, an dem verschiedene Dienste platziert werden können, doch es gibt anscheinend keine Lösungen, die funktionieren. Dafür kann es zahlreiche Gründe geben, doch meist ist eine der beiden folgenden Bedingungen dafür verantwortlich:
 
-1.	Eine vorübergehende Bedingung hat es unmöglich gemacht, diese Dienstinstanz bzw. dieses Replikat ordnungsgemäß zu platzieren.
-2.	Die Anforderungen des Diensts sind auf eine Weise falsch konfiguriert, die das Erfüllen seiner Anforderungen unmöglich machen.
+1. Eine vorübergehende Bedingung hat es unmöglich gemacht, diese Dienstinstanz bzw. dieses Replikat ordnungsgemäß zu platzieren.
+2. Die Anforderungen des Diensts sind auf eine Weise falsch konfiguriert, die das Erfüllen seiner Anforderungen unmöglich machen.
 
 Bei beiden Bedingungen zeigt der Clusterressourcen-Manager einen Integritätsbericht an, mit dessen Informationen Sie ermitteln können, was passiert ist und warum der Dienst nicht platziert werden kann. Wir nennen diesen Prozess „Sequenz zum Entfernen von Einschränkungen“. Im Verlauf dieses Prozesses durchläuft das System die konfigurierten Einschränkungen, die sich auf den Dienst auswirken, und zeichnet auf, was die Einschränkungen entfernen. Wenn Dienste nicht platziert werden können, lässt sich so prüfen, welche Knoten entfernt wurden und warum.
 
 ## Einschränkungstypen
 Nun wollen wir uns die verschiedenen Einschränkungen und ihre Prüfungen in diesen Integritätsberichten genauer ansehen. Im Allgemeinen werden Sie nicht feststellen, dass diese Einschränkungen Knoten entfernen, da sich die Einschränkungen standardmäßig auf den Stufen „Soft“ oder „Optimize“ befinden (im weiteren Verlauf dieses Artikels erfahren Sie mehr über Einschränkungsprioritäten). Möglicherweise werden aber Integritätsmeldungen zu diesen Einschränkungen angezeigt, wenn sie als „harte“ Einschränkungen konfiguriert wurden oder in den seltenen Fällen, in denen sie doch dafür sorgen, dass Knoten entfernt werden. Daher führen wir sie der Vollständigkeit halber hier auf:
 
--	„ReplicaExclusionStatic“ und „ReplicaExclusionDynamic“: Dies ist eine interne Einschränkung, die darauf hinweist, dass während der Suche festgestellt wurde, dass zwei zustandsbehaftete Replikate oder zustandslose Instanzen aus der gleichen Partition auf einem Knoten platziert werden müssten (was nicht zulässig ist). Die Regel für „ReplicaExclusionStatic“ und „ReplicaExclusionDynamic“ ist fast identisch. Die Einschränkung „ReplicaExclusionDynamic“ besagt, dass wir dieses Replikat hier nicht platzieren können, da die einzige vorgeschlagene Lösung hier bereits ein Replikat platziert hat. Dies unterscheidet sich vom Ausschluss „ReplicaExclusionStatic“, der nicht auf einen vermeintlichen Konflikt, sondern auf einen tatsächlichen verweist, denn es gibt bereits ein Replikat auf dem Knoten. Ist das verwirrend? Ja. Ist das wirklich ein Problem? Nein. Wenn Sie eine Sequenz zum Entfernen von Einschränkungen sehen, die entweder die Einschränkung „ReplicaExclusionStatic“ oder „ReplicaExclusionDynamic“ aufweist, geht der Clusterressourcen-Manager davon aus, dass nicht genügend Knoten zur Platzierung aller Replikate vorhanden sind. Die weiteren Einschränkungen informieren uns meist, wie wir enden, wenn von Anfang an zu wenig vorhanden sind.
--	PlacementConstraint: Wenn diese Meldung angezeigt wird, bedeutet dies, dass wir einige Knoten entfernt haben, da sie nicht mit den Platzierungseinschränkungen des Diensts übereinstimmen. Als Teil dieser Nachricht finden wir die derzeit konfigurierten Platzierungseinschränkungen. Dies ist in der Regel normal, wenn Sie Platzierungseinschränkungen bereitgestellt haben. Wenn eine Platzierungseinschränkung jedoch einen Fehler aufweist, aufgrund dessen zu viele Knoten entfernt werden, könnte dieses Ergebnis angezeigt werden.
--	NodeCapacity: Wenn Sie diese Einschränkung sehen, bedeutet dies, dass wir die Replikate nicht auf den angegebenen Knoten platzieren konnten, da dadurch die Kapazität des Knotens überschritten würde.
--	Affinity: Diese Einschränkung gibt an, dass wir das Replikat nicht auf den betroffenen Knoten platzieren konnten, da dies zu einem Verstoß gegen die Affinitätseinschränkung führen würde.
--	FaultDomain und UpgradeDomain: Diese Einschränkung entfernt Knoten, wenn das Platzieren des Replikats auf den angegebenen Knoten eine Überlastung in einer bestimmten Fehler- oder Upgradedomäne bewirken würde. Sie finden verschiedene Beispiele zu dieser Einschränkung im Thema zu [Einschränkungen und daraus resultierendes Verhalten von Fehler- und Upgradedomänen](service-fabric-cluster-resource-manager-cluster-description.md).
--	PreferredLocation: Diese Einschränkung wird normalerweise nicht angezeigt. Sie bewirkt, dass Knoten aus der Lösung entfernt werden, da sie standardmäßig nur auf Optimierung ausgelegt ist. Darüber hinaus ist die Einschränkung „PreferredLocation“ meist nur während Upgrades vorhanden (wenn sie verwendet wird, um Replikate dorthin zurück zu verschieben, wo sie bei Beginn des Upgrades waren). Sie wird jedoch möglicherweise angezeigt.
+* „ReplicaExclusionStatic“ und „ReplicaExclusionDynamic“: Dies ist eine interne Einschränkung, die darauf hinweist, dass während der Suche festgestellt wurde, dass zwei zustandsbehaftete Replikate oder zustandslose Instanzen aus der gleichen Partition auf einem Knoten platziert werden müssten (was nicht zulässig ist). Die Regel für „ReplicaExclusionStatic“ und „ReplicaExclusionDynamic“ ist fast identisch. Die Einschränkung „ReplicaExclusionDynamic“ besagt, dass wir dieses Replikat hier nicht platzieren können, da die einzige vorgeschlagene Lösung hier bereits ein Replikat platziert hat. Dies unterscheidet sich vom Ausschluss „ReplicaExclusionStatic“, der nicht auf einen vermeintlichen Konflikt, sondern auf einen tatsächlichen verweist, denn es gibt bereits ein Replikat auf dem Knoten. Ist das verwirrend? Ja. Ist das wirklich ein Problem? Nein. Wenn Sie eine Sequenz zum Entfernen von Einschränkungen sehen, die entweder die Einschränkung „ReplicaExclusionStatic“ oder „ReplicaExclusionDynamic“ aufweist, geht der Clusterressourcen-Manager davon aus, dass nicht genügend Knoten zur Platzierung aller Replikate vorhanden sind. Die weiteren Einschränkungen informieren uns meist, wie wir enden, wenn von Anfang an zu wenig vorhanden sind.
+* PlacementConstraint: Wenn diese Meldung angezeigt wird, bedeutet dies, dass wir einige Knoten entfernt haben, da sie nicht mit den Platzierungseinschränkungen des Diensts übereinstimmen. Als Teil dieser Nachricht finden wir die derzeit konfigurierten Platzierungseinschränkungen. Dies ist in der Regel normal, wenn Sie Platzierungseinschränkungen bereitgestellt haben. Wenn eine Platzierungseinschränkung jedoch einen Fehler aufweist, aufgrund dessen zu viele Knoten entfernt werden, könnte dieses Ergebnis angezeigt werden.
+* NodeCapacity: Wenn Sie diese Einschränkung sehen, bedeutet dies, dass wir die Replikate nicht auf den angegebenen Knoten platzieren konnten, da dadurch die Kapazität des Knotens überschritten würde.
+* Affinity: Diese Einschränkung gibt an, dass wir das Replikat nicht auf den betroffenen Knoten platzieren konnten, da dies zu einem Verstoß gegen die Affinitätseinschränkung führen würde.
+* FaultDomain und UpgradeDomain: Diese Einschränkung entfernt Knoten, wenn das Platzieren des Replikats auf den angegebenen Knoten eine Überlastung in einer bestimmten Fehler- oder Upgradedomäne bewirken würde. Sie finden verschiedene Beispiele zu dieser Einschränkung im Thema zu [Einschränkungen und daraus resultierendes Verhalten von Fehler- und Upgradedomänen](service-fabric-cluster-resource-manager-cluster-description.md).
+* PreferredLocation: Diese Einschränkung wird normalerweise nicht angezeigt. Sie bewirkt, dass Knoten aus der Lösung entfernt werden, da sie standardmäßig nur auf Optimierung ausgelegt ist. Darüber hinaus ist die Einschränkung „PreferredLocation“ meist nur während Upgrades vorhanden (wenn sie verwendet wird, um Replikate dorthin zurück zu verschieben, wo sie bei Beginn des Upgrades waren). Sie wird jedoch möglicherweise angezeigt.
 
 ### Einschränkungsprioritäten
 Bei allen diesen Einschränkungen haben Sie vielleicht gedacht: „Hallo – ich glaube, dass Platzierungseinschränkungen in meinem System das Wichtigste sind. Ich bin bereit, andere Einschränkungen zu verletzen, auch Dinge wie Affinität und Kapazität, wenn dies sicherstellt, dass die Platzierungseinschränkungen niemals verletzt werden.“
@@ -135,6 +134,6 @@ Wichtig ist der Hinweis, dass der Clusterressourcen-Manager während des Upgrade
 Einer der Aspekte, der allgemein für Upgrades gilt, ist, dass Sie wollen, dass das Upgrade abgeschlossen wird, auch wenn der Cluster insgesamt einschränkt oder voll ist. Während Upgrades ist es sogar noch wichtiger als sonst, die Kapazität des Clusters verwalten zu können, da üblicherweise zwischen 5 und 20 Prozent der Kapazität nicht verfügbar sind, während das Upgrade nach und nach im gesamten Cluster ausgeführt wird. Die betreffenden Workloads müssen also anderweitig untergebracht werden. Hier kommt das Konzept der [gepufferten Kapazitäten](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) zum Tragen. Während die gepufferte Kapazität während des Normalbetriebs berücksichtigt wird (und für Mehraufwand sorgt), füllt der Clusterressourcen-Manager diese im Verlauf von Upgrades bis zur Gesamtkapazität auf (und verbraucht dabei den Puffer).
 
 ## Nächste Schritte
-- Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
+* Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md).
 
 <!---HONumber=AcomDC_0824_2016-->

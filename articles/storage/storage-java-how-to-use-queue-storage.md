@@ -1,45 +1,41 @@
-<properties
-	pageTitle="Verwenden des Warteschlangenspeichers mit Java | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den Azure-Warteschlangendienst zum Erstellen und Löschen von Warteschlangen sowie zum Einfügen, Abrufen und Löschen von Nachrichten verwenden. Die Beispiele wurden in Java geschrieben."
-	services="storage"
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor="tysonn"/>
+---
+title: Verwenden des Warteschlangenspeichers mit Java | Microsoft Docs
+description: Erfahren Sie, wie Sie den Azure-Warteschlangendienst zum Erstellen und Löschen von Warteschlangen sowie zum Einfügen, Abrufen und Löschen von Nachrichten verwenden. Die Beispiele wurden in Java geschrieben.
+services: storage
+documentationcenter: java
+author: rmcmurray
+manager: wpickett
+editor: tysonn
 
-<tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="cbrooks;robmcm"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 08/11/2016
+ms.author: cbrooks;robmcm
 
+---
 # Verwenden des Warteschlangenspeichers mit Java
+[!INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## Übersicht
+In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Warteschlangen-Speicherdienst demonstriert. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][Azure Storage-SDK für Java]. Zu den Szenarien gehören das **Einfügen**, **Einsehen**, **Abrufen** und **Löschen** von Warteschlangennachrichten sowie das **Erstellen** und **Löschen** von Warteschlangen. Weitere Informationen zu Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#Next-Steps).
 
-In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Warteschlangen-Speicherdienst demonstriert. Die Beispiele wurden in Java geschrieben und verwenden das [Azure Storage-SDK für Java][]. Zu den Szenarien gehören das **Einfügen**, **Einsehen**, **Abrufen** und **Löschen** von Warteschlangennachrichten sowie das **Erstellen** und **Löschen** von Warteschlangen. Weitere Informationen zu Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#Next-Steps).
+Hinweis: Es steht ein SDK für Entwickler zur Verfügung, die Azure Storage auf Android-Geräten verwenden. Weitere Informationen finden Sie unter [Azure Storage-SDK für Android][Azure Storage-SDK für Android].
 
-Hinweis: Es steht ein SDK für Entwickler zur Verfügung, die Azure Storage auf Android-Geräten verwenden. Weitere Informationen finden Sie unter [Azure Storage-SDK für Android][].
+[!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
-
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## Erstellen einer Java-Anwendung
-
 In diesem Leitfaden verwenden Sie Speicherfunktionen, die lokal innerhalb einer Java-Anwendung oder in Code innerhalb einer Webrolle oder Workerrolle in Azure ausgeführt werden können.
 
-Dafür müssen Sie das Java Development Kit (JDK) installieren und ein Azure Storage-Konto in Ihrem Azure-Abonnement erstellen. Sobald Sie dies erledigt haben, müssen Sie sicherstellen, dass Ihre Entwicklungssystem die minimalen Anforderungen und Abhängigkeiten erfüllt, die im Repository [Azure Storage-SDK für Java][] auf GitHub aufgelistet sind. Wenn Ihr System diese Anforderungen erfüllt, können Sie die Anweisungen für das Herunterladen und Installieren der Azure Storage-Bibliotheken für Java auf Ihr System von diesem Repository befolgen. Sobald Sie diese Aufgaben abgeschlossen haben, können Sie eine Java-Anwendung erstellen, die die Beispiele in diesem Artikel verwendet.
+Dafür müssen Sie das Java Development Kit (JDK) installieren und ein Azure Storage-Konto in Ihrem Azure-Abonnement erstellen. Sobald Sie dies erledigt haben, müssen Sie sicherstellen, dass Ihre Entwicklungssystem die minimalen Anforderungen und Abhängigkeiten erfüllt, die im Repository [Azure Storage-SDK für Java][Azure Storage-SDK für Java] auf GitHub aufgelistet sind. Wenn Ihr System diese Anforderungen erfüllt, können Sie die Anweisungen für das Herunterladen und Installieren der Azure Storage-Bibliotheken für Java auf Ihr System von diesem Repository befolgen. Sobald Sie diese Aufgaben abgeschlossen haben, können Sie eine Java-Anwendung erstellen, die die Beispiele in diesem Artikel verwendet.
 
 ## Konfigurieren Ihrer Anwendung für den Zugriff auf den Warteschlangenspeicher
-
 Fügen Sie folgende Import-Anweisungen am Anfang der Java-Datei dort ein, wo Azure-Speicher-APIs auf Warteschlangen zugreifen sollen:
 
     // Include the following imports to use queue APIs.
@@ -47,7 +43,6 @@ Fügen Sie folgende Import-Anweisungen am Anfang der Java-Datei dort ein, wo Azu
     import com.microsoft.azure.storage.queue.*;
 
 ## Einrichten einer Azure-Speicherverbindungszeichenfolge
-
 Ein Azure-Speicherclient verwendet eine Speicherverbindungszeichenfolge zum Speichern von Endpunkten und Anmeldeinformationen für den Zugriff auf Datenverwaltungsdienste. Bei der Ausführung in einer Clientanwendung muss die Speicherverbindungszeichenfolge in dem unten gezeigten Format angegeben werden. Dabei müssen der Name Ihres Speicherkontos und der primäre Zugriffsschlüssel für das im [Azure-Portal](https://portal.azure.com) aufgeführte Speicherkonto als Werte für *AccountName* und *AccountKey* eingegeben werden. Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Verbindungszeichenfolge deklarieren:
 
     // Define the connection-string with your values.
@@ -65,25 +60,24 @@ In einer Anwendung, die in einer Microsoft Azure-Rolle ausgeführt wird, kann di
 In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser zwei Methoden verwendet haben, um die Speicherverbindungszeichenfolge abzurufen.
 
 ## Erstellen einer Warteschlange
-
 Mit einem **CloudQueueClient**-Objekt können Sie Referenzobjekte für Warteschlangen abrufen. Der folgende Code erstellt ein **CloudQueueClient**-Objekt. (Hinweis: Es gibt zusätzliche Möglichkeiten zum Erstellen von **CloudStorageAccount**-Objekten. Weitere Informationen finden Sie unter **CloudStorageAccount** in der [Azure Storage-Client-SDK-Referenz].)
 
 Mithilfe des **CloudQueueClient**-Objekts können Sie einen Verweis auf die Warteschlange abrufen, die Sie verwenden möchten. Sie können die Warteschlange erstellen, wenn sie nicht vorhanden ist.
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-	   // Create the queue client.
-	   CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
+       // Create the queue client.
+       CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-	   // Retrieve a reference to a queue.
-	   CloudQueue queue = queueClient.getQueueReference("myqueue");
+       // Retrieve a reference to a queue.
+       CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-	   // Create the queue if it doesn't already exist.
-	   queue.createIfNotExists();
+       // Create the queue if it doesn't already exist.
+       queue.createIfNotExists();
     }
     catch (Exception e)
     {
@@ -92,27 +86,26 @@ Mithilfe des **CloudQueueClient**-Objekts können Sie einen Verweis auf die Wart
     }
 
 ## Hinzufügen einer Nachricht zu einer Warteschlange
-
 Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zuerst ein neues **CloudQueueMessage**-Objekt. Anschließend rufen Sie die **addMessage**-Methode auf. Die **CloudQueueMessage** kann entweder aus einer Zeichenfolge (im UTF-8-Format) oder aus einem Bytearray erstellt werden. Dieser Code erstellte eine Warteschlange (falls noch nicht vorhanden) und fügt die Nachricht "Hello, World" ein.
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the queue client.
-    	CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
+        // Create the queue client.
+        CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    	// Retrieve a reference to a queue.
-    	CloudQueue queue = queueClient.getQueueReference("myqueue");
+        // Retrieve a reference to a queue.
+        CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    	// Create the queue if it doesn't already exist.
-    	queue.createIfNotExists();
+        // Create the queue if it doesn't already exist.
+        queue.createIfNotExists();
 
-    	// Create a message and add it to the queue.
-    	CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-    	queue.addMessage(message);
+        // Create a message and add it to the queue.
+        CloudQueueMessage message = new CloudQueueMessage("Hello, World");
+        queue.addMessage(message);
     }
     catch (Exception e)
     {
@@ -121,29 +114,28 @@ Um eine Nachricht in eine vorhandene Warteschlange einzufügen, erstellen Sie zu
     }
 
 ## Einsehen der nächsten Nachricht
-
 Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode **peekMessage** aufrufen.
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the queue client.
-    	CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
+        // Create the queue client.
+        CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    	// Retrieve a reference to a queue.
-    	CloudQueue queue = queueClient.getQueueReference("myqueue");
+        // Retrieve a reference to a queue.
+        CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    	// Peek at the next message.
-    	CloudQueueMessage peekedMessage = queue.peekMessage();
+        // Peek at the next message.
+        CloudQueueMessage peekedMessage = queue.peekMessage();
 
-    	// Output the message value.
-    	if (peekedMessage != null)
-    	{
-		  System.out.println(peekedMessage.getMessageContentAsString());
-	   }
+        // Output the message value.
+        if (peekedMessage != null)
+        {
+          System.out.println(peekedMessage.getMessageContentAsString());
+       }
     }
     catch (Exception e)
     {
@@ -152,7 +144,6 @@ Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, 
     }
 
 ## Ändern des Inhalts von Nachrichten in der Warteschlange
-
 Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wenn die Nachricht eine Arbeitsaufgabe darstellt, können Sie diese Funktion verwenden, um den Status der Aufgabe zu aktualisieren. Mit dem folgenden Code wird die Warteschlangennachricht mit neuem Inhalt aktualisiert und das Sichtbarkeits-Zeitlimit um weitere 60 Sekunden verlängert. Dadurch wird der mit der Nachricht verknüpfte Arbeitsstatus gespeichert, und der Client erhält eine weitere Minute zur Bearbeitung der Nachricht. Sie können diese Technik verwenden, um Workflows mit mehreren Schritten in Warteschlangennachrichten zu verfolgen, ohne von vorn beginnen zu müssen, wenn ein Verarbeitungsschritt aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In der Regel behalten Sie auch die Anzahl der Wiederholungen bei, und wenn die Nachricht mehr als *n* Mal wiederholt wurde, wird sie gelöscht. Dies verhindert, dass eine Nachricht bei jeder Verarbeitung einen Anwendungsfehler auslöst.
 
 Im folgenden Codebeispiel wird die Nachrichtenwartschlange durchsucht, und es wird die erste Nachricht, die mit "Hello, World" übereinstimmt, ausfindig gemacht. Anschließend wird der Nachrichteninhalt geändert, bevor sie verlassen wird.
@@ -163,11 +154,11 @@ Im folgenden Codebeispiel wird die Nachrichtenwartschlange durchsucht, und es wi
         CloudStorageAccount storageAccount =
             CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the queue client.
-    	CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
+        // Create the queue client.
+        CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    	// Retrieve a reference to a queue.
-    	CloudQueue queue = queueClient.getQueueReference("myqueue");
+        // Retrieve a reference to a queue.
+        CloudQueue queue = queueClient.getQueueReference("myqueue");
 
         // The maximum number of messages that can be retrieved is 32.
         final int MAX_NUMBER_OF_MESSAGES_TO_PEEK = 32;
@@ -200,21 +191,21 @@ Alternativ aktualisiert das folgende Codebeispiel einfach die erste sichtbare Na
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the queue client.
-    	CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
+        // Create the queue client.
+        CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    	// Retrieve a reference to a queue.
-    	CloudQueue queue = queueClient.getQueueReference("myqueue");
+        // Retrieve a reference to a queue.
+        CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    	// Retrieve the first visible message in the queue.
-    	CloudQueueMessage message = queue.retrieveMessage();
+        // Retrieve the first visible message in the queue.
+        CloudQueueMessage message = queue.retrieveMessage();
 
-    	if (message != null)
-    	{
+        if (message != null)
+        {
             // Modify the message content.
             message.setMessageContent("Updated contents.");
             // Set it to be visible in 60 seconds.
@@ -223,7 +214,7 @@ Alternativ aktualisiert das folgende Codebeispiel einfach die erste sichtbare Na
                 MessageUpdateFields.VISIBILITY);
             // Update the message.
             queue.updateMessage(message, 60, updateFields, null, null);
-    	}
+        }
     }
     catch (Exception e)
     {
@@ -232,29 +223,28 @@ Alternativ aktualisiert das folgende Codebeispiel einfach die erste sichtbare Na
     }
 
 ## Abrufen der Warteschlangenlänge
-
 Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die **downloadAttributes**-Methode fragt verschiedene aktuelle Werte, darunter die Anzahl der Nachrichten in einer Warteschlange, aus dem Warteschlangendienst ab. Die Anzahl ist nur ein ungefährer Wert, da seit der Antwort des Warteschlangendiensts möglicherweise bereits Nachrichten hinzugefügt oder gelöscht wurden. Die **getApproximateMessageCount**-Methode gibt den letzten von **downloadAttributes** abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-	       CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+           CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the queue client.
-    	CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
+        // Create the queue client.
+        CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    	// Retrieve a reference to a queue.
-    	CloudQueue queue = queueClient.getQueueReference("myqueue");
+        // Retrieve a reference to a queue.
+        CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-	   // Download the approximate message count from the server.
-    	queue.downloadAttributes();
+       // Download the approximate message count from the server.
+        queue.downloadAttributes();
 
-    	// Retrieve the newly cached approximate message count.
-    	long cachedMessageCount = queue.getApproximateMessageCount();
+        // Retrieve the newly cached approximate message count.
+        long cachedMessageCount = queue.getApproximateMessageCount();
 
-    	// Display the queue length.
-    	System.out.println(String.format("Queue length: %d", cachedMessageCount));
+        // Display the queue length.
+        System.out.println(String.format("Queue length: %d", cachedMessageCount));
     }
     catch (Exception e)
     {
@@ -263,29 +253,28 @@ Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. 
     }
 
 ## Entfernen der nächsten Nachricht aus der Warteschlange
-
 Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wenn Sie **retrieveMessage** aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für **retrieveMessage** zurückgegebene Nachricht ist für andere Codes nicht mehr sichtbar, die Nachrichten aus dieser Warteschlange lesen. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem **deleteMessage** aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. Der Code ruft **deleteMessage** direkt nach der Verarbeitung der Nachricht auf.
 
     try
     {
-    	// Retrieve storage account from connection-string.
-    	CloudStorageAccount storageAccount =
-    	    CloudStorageAccount.parse(storageConnectionString);
+        // Retrieve storage account from connection-string.
+        CloudStorageAccount storageAccount =
+            CloudStorageAccount.parse(storageConnectionString);
 
-    	// Create the queue client.
-    	CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
+        // Create the queue client.
+        CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-    	// Retrieve a reference to a queue.
-    	CloudQueue queue = queueClient.getQueueReference("myqueue");
+        // Retrieve a reference to a queue.
+        CloudQueue queue = queueClient.getQueueReference("myqueue");
 
-    	// Retrieve the first visible message in the queue.
-    	CloudQueueMessage retrievedMessage = queue.retrieveMessage();
+        // Retrieve the first visible message in the queue.
+        CloudQueueMessage retrievedMessage = queue.retrieveMessage();
 
-    	if (retrievedMessage != null)
-    	{
-    		// Process the message in less than 30 seconds, and then delete the message.
-    		queue.deleteMessage(retrievedMessage);
-    	}
+        if (retrievedMessage != null)
+        {
+            // Process the message in less than 30 seconds, and then delete the message.
+            queue.deleteMessage(retrievedMessage);
+        }
     }
     catch (Exception e)
     {
@@ -295,7 +284,6 @@ Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wen
 
 
 ## Zusätzliche Optionen für das Entfernen von Nachrichten aus der Warteschlange
-
 Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können. Erstens können Sie einen Nachrichtenstapel abrufen (bis zu 32). Zweitens können Sie das Unsichtbarkeits-Zeitlimit verkürzen oder verlängern, sodass der Code mehr oder weniger Zeit zur vollständigen Verarbeitung jeder Nachricht benötigt.
 
 Im folgenden Codebeispiel wird **retrieveMessages** verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer **for**-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten (300 Sekunden) pro Nachricht festgelegt. Beachten Sie, dass die fünf Minuten für alle Nachrichten gleichzeitig beginnen, sodass fünf Minuten nach dem Aufruf von **retrieveMessages** alle Nachrichten, die nicht gelöscht wurden, wieder sichtbar werden.
@@ -326,7 +314,6 @@ Im folgenden Codebeispiel wird **retrieveMessages** verwendet, um 20 Nachrichten
     }
 
 ## Auflisten der Warteschlangen
-
 Rufen Sie zum Abrufen einer Liste der aktuellen Warteschlangen die Methode **CloudQueueClient.listQueues()** auf, die eine Sammlung an **CloudQueue**-Objekten zurückgibt.
 
     try
@@ -353,7 +340,6 @@ Rufen Sie zum Abrufen einer Liste der aktuellen Warteschlangen die Methode **Clo
     }
 
 ## Löschen von Warteschlangen
-
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **deleteIfExists** im Objekt **CloudQueue** auf.
 
     try
@@ -378,13 +364,12 @@ Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen S
     }
 
 ## Nächste Schritte
-
 Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-- [Azure Storage-SDK für Java][]
-- [Referenz für Azure Storage-Client-SDKs][]
-- [REST-API für Azure-Speicherdienste][]
-- [Azure Storage-Teamblog][]
+* [Azure Storage-SDK für Java][Azure Storage-SDK für Java]
+* [Referenz für Azure Storage-Client-SDKs][Referenz für Azure Storage-Client-SDKs]
+* [REST-API für Azure-Speicherdienste][REST-API für Azure-Speicherdienste]
+* [Azure Storage-Teamblog][Azure Storage-Teamblog]
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage-SDK für Java]: https://github.com/azure/azure-storage-java

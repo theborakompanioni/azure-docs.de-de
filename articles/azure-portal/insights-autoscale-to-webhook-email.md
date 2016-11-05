@@ -1,23 +1,22 @@
-<properties
-	pageTitle="Azure Insights: Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen | Microsoft Azure"
-	description="Erfahren Sie, wie Sie automatischer Skalierungsvorgänge in Azure Insights nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden. "
-	authors="kamathashwin"
-	manager=""
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: 'Azure Insights: Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen | Microsoft Docs'
+description: 'Erfahren Sie, wie Sie automatischer Skalierungsvorgänge in Azure Insights nutzen können, um Web-URLs aufzurufen oder E-Mail-Benachrichtigungen zu senden. '
+author: kamathashwin
+manager: ''
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/19/2016"
-	ms.author="ashwink"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/19/2016
+ms.author: ashwink
 
+---
 # Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights
-
 In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basierend auf Skalierungsvorgängen in Azure bestimmte Web-URLs aufrufen oder E-Mails senden können.
 
 ## Webhooks
@@ -26,11 +25,10 @@ Mithilfe von Webhooks können Sie die Azure-Warnbenachrichtigungen für die Nach
 ## E-Mail
 E-Mails können an eine beliebige gültige E-Mail-Adresse gesendet werden. Administratoren und Co-Administratoren des Abonnements, in der die Regel ausgeführt wird, werden ebenfalls benachrichtigt.
 
-
 ## Clouddienste und Web-Apps
 Sie können über das Azure-Portal für Cloud-Dienste und Serverfarmen (Web-Apps) teilnehmen.
 
-- Wählen Sie die Metrik **skalieren nach**.
+* Wählen Sie die Metrik **skalieren nach**.
 
 ![skalieren nach](./media/insights-autoscale-to-webhook-email/insights-autoscale-scale-by.png)
 
@@ -61,16 +59,15 @@ Bei neueren, mit Resource Manager erstellten virtuellen Computern (Skalierungsgr
       }
     ]
 ```
-|Feld |Erforderlich?|	Beschreibung|
-|---|---|---|
-|operation |Ja |Als Wert muss „Scale“ angegeben werden.|
-|sendToSubscriptionAdministrator |Ja |Als Wert muss „true“ oder „false“ festgelegt werden.|
-|sendToSubscriptionCoAdministrators |Ja |Als Wert muss „true“ oder „false“ festgelegt werden.|
-|customEmails |Ja |Der Wert kann NULL oder ein Zeichenfolgenarray aus E-Mail-Adressen sein.|
-|Webhooks |Ja |Der Wert kann NULL oder ein gültiger URI sein.|
-|serviceUri |Ja |Ein gültiger HTTPS-URI|
-|Eigenschaften |Ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten.|
-
+| Feld | Erforderlich? | Beschreibung |
+| --- | --- | --- |
+| operation |Ja |Als Wert muss „Scale“ angegeben werden. |
+| sendToSubscriptionAdministrator |Ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
+| sendToSubscriptionCoAdministrators |Ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
+| customEmails |Ja |Der Wert kann NULL oder ein Zeichenfolgenarray aus E-Mail-Adressen sein. |
+| Webhooks |Ja |Der Wert kann NULL oder ein gültiger URI sein. |
+| serviceUri |Ja |Ein gültiger HTTPS-URI |
+| Eigenschaften |Ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten. |
 
 ## Authentifizierung in Webhooks
 Es gibt zwei Arten von Authentifizierungs-URIs:
@@ -108,23 +105,23 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 ```
 
 
-|Feld |Erforderlich?|	Beschreibung|
-|---|---|---|
-|status |Ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde|
-|Vorgang|	Ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen.|
-|context|	Ja |Der Kontext des automatischen Skalierungsvorgangs|
-|timestamp|	Ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs|
-|id |Ja|	Resource Manager-ID der Einstellung für die automatische Skalierung|
-|Name |Ja|	Name der Einstellung für die automatische Skalierung|
-|Details|	Ja |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl|
-|subscriptionId|	Ja |Abonnement-ID der Zielressource, die skaliert wird|
-|ResourceGroupName|	Ja|	Ressourcengruppenname der Zielressource, die skaliert wird|
-|resourceName |Ja|	Name der Zielressource, die skaliert wird|
-|resourceType |Ja|	Die drei unterstützten Werte: „microsoft.classiccompute/domainnames/slots/roles“ – Clouddienstrollen, „microsoft.compute/virtualmachinescalesets“ – Skalierungsgruppen für virtuelle Computer und „Microsoft.Web/serverfarms“ – Web-App|
-|Ressourcen-ID |Ja|Resource Manager-ID der Zielressource, die skaliert wird|
-|portalLink |Ja |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource|
-|oldCapacity|	Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat|
-|newCapacity|	Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat|
-|Eigenschaften|	Nein|	Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Dictionary <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden.|
+| Feld | Erforderlich? | Beschreibung |
+| --- | --- | --- |
+| status |Ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde |
+| Vorgang |Ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |
+| context |Ja |Der Kontext des automatischen Skalierungsvorgangs |
+| timestamp |Ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
+| id |Ja |Resource Manager-ID der Einstellung für die automatische Skalierung |
+| Name |Ja |Name der Einstellung für die automatische Skalierung |
+| Details |Ja |Erläuterung der Aktion, die der Dienst für die automatische Skalierung ausgeführt hat und der Änderung der Instanzenanzahl |
+| subscriptionId |Ja |Abonnement-ID der Zielressource, die skaliert wird |
+| ResourceGroupName |Ja |Ressourcengruppenname der Zielressource, die skaliert wird |
+| resourceName |Ja |Name der Zielressource, die skaliert wird |
+| resourceType |Ja |Die drei unterstützten Werte: „microsoft.classiccompute/domainnames/slots/roles“ – Clouddienstrollen, „microsoft.compute/virtualmachinescalesets“ – Skalierungsgruppen für virtuelle Computer und „Microsoft.Web/serverfarms“ – Web-App |
+| Ressourcen-ID |Ja |Resource Manager-ID der Zielressource, die skaliert wird |
+| portalLink |Ja |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource |
+| oldCapacity |Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
+| newCapacity |Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
+| Eigenschaften |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Dictionary <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
 
 <!---HONumber=AcomDC_0810_2016-->

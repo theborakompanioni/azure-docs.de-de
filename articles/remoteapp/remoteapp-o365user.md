@@ -1,34 +1,33 @@
 
-<properties 
-    pageTitle="Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten | Microsoft Azure"
-	description="Informationen zum Verwenden von Azure RemoteApp mit meinen Office 365-Benutzerkonten"
-	services="remoteapp"
-	documentationCenter="" 
-	authors="piotrci" 
-	manager="mbaldwin" />
+---
+title: Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten | Microsoft Docs
+description: Informationen zum Verwenden von Azure RemoteApp mit meinen Office 365-Benutzerkonten
+services: remoteapp
+documentationcenter: ''
+author: piotrci
+manager: mbaldwin
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
+---
+# Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten
+> [!IMPORTANT]
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
-
-# Verwenden von Azure RemoteApp mit Office 365-Benutzerkonten
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
-
-Wenn Sie über ein Office 365-Abonnement verfügen, haben Sie ein Azure Active Directory, in dem Ihre Benutzernamen und Kennwörter für den Zugriff auf Office 365-Dienste gespeichert werden. Wenn Ihre Benutzer z. B. Office 365 ProPlus aktivieren, authentifizieren sie sich bei Azure AD, um das Vorhandensein von Lizenzen zu überprüfen. Die meisten Kunden möchten das gleiche Verzeichnis mit Azure RemoteApp verwenden.
+Wenn Sie über ein Office 365-Abonnement verfügen, haben Sie ein Azure Active Directory, in dem Ihre Benutzernamen und Kennwörter für den Zugriff auf Office 365-Dienste gespeichert werden. Wenn Ihre Benutzer z. B. Office 365 ProPlus aktivieren, authentifizieren sie sich bei Azure AD, um das Vorhandensein von Lizenzen zu überprüfen. Die meisten Kunden möchten das gleiche Verzeichnis mit Azure RemoteApp verwenden.
 
 Bei der Bereitstellung von Azure RemoteApp verwenden Sie wahrscheinlich ein Azure-Abonnement, das mit einem anderen Azure AD verknüpft ist. Um Ihr Office 365-Verzeichnis verwenden zu können, müssen Sie das Azure-Abonnement in das betreffende Verzeichnis verschieben.
 
 Informationen zum Bereitstellen von Office 365-Clientanwendungen finden Sie unter [Verwenden Ihres Office 365-Abonnements mit Azure RemoteApp](remoteapp-officesubscription.md).
- 
+
 ## Phase 1: Registrieren Sie Ihr kostenloses Abonnement für Office 365 Azure Active Directory.
 Wenn Sie das klassische Azure-Portal verwenden, gehen Sie anhand der Schritte unter [Registrieren Ihres kostenlosen Azure Active Directory-Abonnements](https://technet.microsoft.com/library/dn832618.aspx) vor, um Administratorzugriff auf Ihr Azure AD über das Azure-Verwaltungsportal zu erhalten. Als Ergebnis dieses Prozesses sollten Sie sich beim Azure-Portal anmelden können und dort Ihr Verzeichnis sehen – an diesem Punkt wird nicht viel mehr angezeigt, da sich das vollständige Azure-Abonnement, das Sie mit Azure RemoteApp verwenden, in einem anderen Verzeichnis befindet.
 
@@ -41,11 +40,10 @@ Wir werden Ihr Azure-Abonnement von ihrem aktuellen Verzeichnis in das Office 36
 
 Befolgen Sie die Anweisungen in [Ändern des Azure Active Directory-Mandanten in Azure RemoteApp](remoteapp-changetenant.md). Achten Sie besonders auf die folgenden Schritte:
 
-- Schritt 1: Wenn Sie Azure RemoteApp (ARA) in diesem Abonnement bereitgestellt haben, stellen Sie sicher, dass Sie zuerst alle Azure AD-Benutzerkonten aus allen ARA-Sammlungen entfernen, bevor Sie versuchen, etwas anderes zu tun. Alternativ können Sie erwägen, alle vorhandenen Sammlungen zu löschen.
-- Schritt 2: Dies ist ein wichtiger Schritt. Sie müssen ein Microsoft-Konto (z.B. @outlook.com) als Dienstadministrator des Abonnements verwenden, weil keine Benutzerkonten aus dem vorhandenen Azure AD dem Abonnement angefügt sein dürfen – andernfalls können wir es nicht in ein anderes Azure AD verschieben.
-- Schritt 4: Wenn Sie ein vorhandenes Verzeichnis hinzufügen, fordert das System Sie auf, sich mit dem Administratorkonto für dieses Verzeichnis anzumelden. Stellen Sie sicher, dass Sie das Administratorkonto aus Phase 1 verwenden.
-- Schritt 5: Ändern Sie das übergeordnete Verzeichnis des Abonnements in Ihr Office 365-Verzeichnis. Das Endergebnis sollte sein, dass Ihr Abonnement unter „Einstellungen > Abonnements“ das Office 365-Verzeichnis auflistet. ![Ändern des übergeordneten Verzeichnisses des Abonnements](./media/remoteapp-o365user/settings.png)
- 
+* Schritt 1: Wenn Sie Azure RemoteApp (ARA) in diesem Abonnement bereitgestellt haben, stellen Sie sicher, dass Sie zuerst alle Azure AD-Benutzerkonten aus allen ARA-Sammlungen entfernen, bevor Sie versuchen, etwas anderes zu tun. Alternativ können Sie erwägen, alle vorhandenen Sammlungen zu löschen.
+* Schritt 2: Dies ist ein wichtiger Schritt. Sie müssen ein Microsoft-Konto (z.B. @outlook.com) als Dienstadministrator des Abonnements verwenden, weil keine Benutzerkonten aus dem vorhandenen Azure AD dem Abonnement angefügt sein dürfen – andernfalls können wir es nicht in ein anderes Azure AD verschieben.
+* Schritt 4: Wenn Sie ein vorhandenes Verzeichnis hinzufügen, fordert das System Sie auf, sich mit dem Administratorkonto für dieses Verzeichnis anzumelden. Stellen Sie sicher, dass Sie das Administratorkonto aus Phase 1 verwenden.
+* Schritt 5: Ändern Sie das übergeordnete Verzeichnis des Abonnements in Ihr Office 365-Verzeichnis. Das Endergebnis sollte sein, dass Ihr Abonnement unter „Einstellungen > Abonnements“ das Office 365-Verzeichnis auflistet. ![Ändern des übergeordneten Verzeichnisses des Abonnements](./media/remoteapp-o365user/settings.png)
 
 An diesem Punkt ist Ihr Azure RemoteApp-Abonnement Ihrem Office 365 Azure AD zugeordnet. Sie können die vorhandenen Office 365-Benutzerkonten mit Azure RemoteApp verwenden!
 

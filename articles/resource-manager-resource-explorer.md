@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Azure-Ressourcen-Explorer | Microsoft Azure"
-   description="Beschreibt den Azure-Ressourcen-Explorer, und wie er zum Anzeigen und Aktualisieren von Bereitstellungen über den Azure Resource Manager verwendet werden kann"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="stuartleeks"
-   manager="ankodu"
-   editor=""/>
+---
+title: Azure-Ressourcen-Explorer | Microsoft Docs
+description: Beschreibt den Azure-Ressourcen-Explorer, und wie er zum Anzeigen und Aktualisieren von Bereitstellungen über den Azure Resource Manager verwendet werden kann
+services: azure-resource-manager
+documentationcenter: na
+author: stuartleeks
+manager: ankodu
+editor: ''
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/01/2016"
-   ms.author="stuartle;tomfitz"/>
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/01/2016
+ms.author: stuartle;tomfitz
 
+---
 # Verwenden des Azure-Ressourcen-Explorer zum Anzeigen und Ändern von Ressourcen
 Der [Azure-Ressourcen-Explorer](https://resources.azure.com) eignet sich hervorragend zum Untersuchen von Ressourcen, die Sie bereits in Ihrem Abonnement erstellt haben. Mit diesem Tool können Sie ermitteln, wie die Ressourcen strukturiert sind, und welche Eigenschaften den Ressourcen zugewiesen sind. Sie erfahren, welche REST-API-Vorgänge und PowerShell-Cmdlets für einen Ressourcentyp verfügbar sind, und Sie können Befehle über die Benutzeroberfläche ausführen lassen. Der Ressourcen-Explorer kann für Sie beim Erstellen von Ressourcen-Manager-Vorlagen von besonderem Nutzen sein, da Sie mit seiner Hilfe die Eigenschaften vorhandener Ressourcen anzeigen können.
 
@@ -45,7 +45,6 @@ Indem Sie eine Datenbank untersuchen, lernen Sie ihre Eigenschaften kennen. Im f
 ![SQL-Datenbank](./media/resource-manager-resource-explorer/are-04-database-get.png)
 
 ## Ändern von Ressourcen
-
 Sobald Sie zu einer Ressource navigiert sind, können Sie die Schaltfläche „Bearbeiten“ auswählen, damit der JSON-Inhalt bearbeitbar wird. Anschließend können Sie mit dem Ressourcen-Explorer den JSON-Inhalt bearbeiten und eine PUT-Anforderung zum Ändern der Ressource senden. Die folgende Abbildung zeigt z. B. die in `S0` geänderte Datenbankebene:
 
 ![Datenbank – PUT-Anforderung](./media/resource-manager-resource-explorer/are-05-database-put.png)
@@ -57,13 +56,12 @@ Sobald die Anforderung gesendet wurde, initiiert der Ressourcen-Explorer die GET
 ![Datenbank – GET-Anforderung](./media/resource-manager-resource-explorer/are-06-database-get2.png)
 
 ## Ausführen von Aktionen für Ressourcen
-
-Auf der Registerkarte **Aktionen** können Sie zusätzliche REST-Vorgänge anzeigen und ausführen. Wenn Sie z. B. eine Websiteressource ausgewählt haben, wird auf der Registerkarte „Aktionen“ eine lange Liste verfügbarer Vorgänge angezeigt, von denen einige unten dargestellt werden.
+Auf der Registerkarte **Aktionen** können Sie zusätzliche REST-Vorgänge anzeigen und ausführen. Wenn Sie z. B. eine Websiteressource ausgewählt haben, wird auf der Registerkarte „Aktionen“ eine lange Liste verfügbarer Vorgänge angezeigt, von denen einige unten dargestellt werden.
 
 ![Web – POST-Anforderung](./media/resource-manager-resource-explorer/are-web-post.png)
 
 ## Aufrufen der API über PowerShell
-Auf der PowerShell-Registerkarte im Ressourcen-Explorer werden die Cmdlets für die Interaktion mit der Ressource angezeigt, die Sie derzeit untersuchen. Je nach Typ der Ressource, die Sie ausgewählt haben, reicht das angezeigte PowerShell-Skript von einfachen Cmdlets (z. B. `Get-AzureRmResource` und `Set-AzureRmResource`) bis zu komplizierteren Cmdlets (z. B. das Austauschen von Slots auf einer Website).
+Auf der PowerShell-Registerkarte im Ressourcen-Explorer werden die Cmdlets für die Interaktion mit der Ressource angezeigt, die Sie derzeit untersuchen. Je nach Typ der Ressource, die Sie ausgewählt haben, reicht das angezeigte PowerShell-Skript von einfachen Cmdlets (z. B. `Get-AzureRmResource` und `Set-AzureRmResource`) bis zu komplizierteren Cmdlets (z. B. das Austauschen von Slots auf einer Website).
 
 ![PowerShell](./media/resource-manager-resource-explorer/are-07-powershell.png)
 

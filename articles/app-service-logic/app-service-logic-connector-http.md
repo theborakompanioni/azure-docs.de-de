@@ -1,31 +1,32 @@
-<properties
-   pageTitle="Verwendung des HTTP-Listeners und -Connectors in Logik-Apps | Microsoft Azure App Service "
-   description="Erstellen und Konfigurieren des Connectors für HTTP-Listener und -Aktionen oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="erikre"
-   editor=""/>
+---
+title: Verwendung des HTTP-Listeners und -Connectors in Logik-Apps | Microsoft Docs
+description: Erstellen und Konfigurieren des Connectors für HTTP-Listener und -Aktionen oder einer API-App und Verwenden in einer Logik-App in Azure App Service
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: anuragdalmia
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/31/2016"
-   ms.author="prkumar"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 08/31/2016
+ms.author: prkumar
 
-
+---
 # Erste Schritte mit HTTP-Listenern und HTTP-Aktionen und das Hinzufügen zur Logik-App
-
-> [AZURE.NOTE] Die Unterstützung für diesen Connector läuft aus, weil seine Funktionalität jetzt standardmäßig als **manueller Trigger** beim Erstellen neuer Logik-Apps enthalten ist. Es wird empfohlen, dass Sie alle Logik-Apps aktualisieren, die diesen Connector verwenden. Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+> [!NOTE]
+> Die Unterstützung für diesen Connector läuft aus, weil seine Funktionalität jetzt standardmäßig als **manueller Trigger** beim Erstellen neuer Logik-Apps enthalten ist. Es wird empfohlen, dass Sie alle Logik-Apps aktualisieren, die diesen Connector verwenden. Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+> 
+> 
 
 Stellen Sie eine direkte Verbindung mit HTTP-Ressourcen her, um HTTP-Anforderungen zu überwachen und HTTP-Webanfragen zu konfigurieren. Es gibt einige Szenarios, in denen Sie möglicherweise mit direkten HTTP-Verbindungen arbeiten müssen, einschließlich:
 
-1.	Zum Entwickeln einer Logik-App, die ein interaktives Front-End für Web- oder mobile Benutzer unterstützt.
-2.	Zum Abrufen und Verarbeiten von Daten von einem Webdienst, der keinen vorgefertigten Connector aufweist.
-3.	Zum Ausführen von Aktionen, die bereits als Webdienst verfügbar gemacht wurden, aber nicht als API-App verfügbar sind.
+1. Zum Entwickeln einer Logik-App, die ein interaktives Front-End für Web- oder mobile Benutzer unterstützt.
+2. Zum Abrufen und Verarbeiten von Daten von einem Webdienst, der keinen vorgefertigten Connector aufweist.
+3. Zum Ausführen von Aktionen, die bereits als Webdienst verfügbar gemacht wurden, aber nicht als API-App verfügbar sind.
 
 Für diese Szenarios stehen zwei Optionen zur Verfügung:
 
@@ -39,15 +40,12 @@ Ein Connector kann innerhalb einer Logik-App erstellt werden oder direkt aus dem
 
 1. Wählen Sie im Azure-Startmenü **Marketplace** aus.
 2. Suchen Sie nach "HTTP", wählen Sie den HTTP-Listener, und wählen Sie dann **Erstellen** aus.
-3.	Konfigurieren Sie den HTTP-Listener wie folgt: ![][1]
-
-4.	Beim Einrichten der Paketeinstellungen wird Ihnen die folgende Option angezeigt, mit der Sie festlegen, ob der Listener automatisch reagieren oder Sie zum Senden einer expliziten Antwort auffordern soll. Legen Sie diesen Wert auf **False** fest, um eine eigene Antwort zu senden: ![][2]
-
-5.	Klicken Sie zum Erstellen auf **OK**.
-6.	Sobald die API-App-Instanz erstellt wurde, öffnen Sie die Einstellungen zum Konfigurieren der Sicherheit. Der HTTP-Listener unterstützt derzeit die Standardauthentifizierung. Sie können dies über die Sicherheitsoption beim Öffnen des HTTP-Listeners konfigurieren: ![][3]
-  
-	**Bekanntes Problem** *Die Sicherheitseinstellungen zeigen "Kein" als Standardwert an, der jedoch nicht definiert ist. Sie müssen die Einstellung vor dem Speichern in "Basic" und dann wieder in "Kein" ändern, um sicherzustellen, dass der HTTP-Listener ordnungsgemäß konfiguriert ist.*
-
+3. Konfigurieren Sie den HTTP-Listener wie folgt: ![][1]
+4. Beim Einrichten der Paketeinstellungen wird Ihnen die folgende Option angezeigt, mit der Sie festlegen, ob der Listener automatisch reagieren oder Sie zum Senden einer expliziten Antwort auffordern soll. Legen Sie diesen Wert auf **False** fest, um eine eigene Antwort zu senden: ![][2]
+5. Klicken Sie zum Erstellen auf **OK**.
+6. Sobald die API-App-Instanz erstellt wurde, öffnen Sie die Einstellungen zum Konfigurieren der Sicherheit. Der HTTP-Listener unterstützt derzeit die Standardauthentifizierung. Sie können dies über die Sicherheitsoption beim Öffnen des HTTP-Listeners konfigurieren: ![][3]
+   
+   **Bekanntes Problem** *Die Sicherheitseinstellungen zeigen "Kein" als Standardwert an, der jedoch nicht definiert ist. Sie müssen die Einstellung vor dem Speichern in "Basic" und dann wieder in "Kein" ändern, um sicherzustellen, dass der HTTP-Listener ordnungsgemäß konfiguriert ist.*
 7. Abschließend legen Sie die Sicherheitseinstellungen der API-App auf "Öffentlich (Anonym)" fest, um externen Clients den Zugriff auf den Endpunkt zu erlauben. Sie finden diese Einstellung unter "Alle Einstellungen > Anwendungseinstellungen" der HTTP-Listener-API-App: ![][10]
 
 Sobald Sie fertig sind, können Sie jetzt eine Logik-App zur Verwendung des HTTP-Listeners erstellen.
@@ -55,13 +53,12 @@ Sobald Sie fertig sind, können Sie jetzt eine Logik-App zur Verwendung des HTTP
 ## Verwenden des HTTP-Listeners in Ihrer Logik-App
 Sobald Ihre API-App erstellt wurde, können Sie jetzt den HTTP-Listener als Trigger oder Aktion für Ihre Logik-App verwenden. Gehen Sie hierzu wie folgt vor:
 
-4.	Erstellen Sie eine neue Logik-App.
-5.	Öffnen Sie "Trigger und Aktionen", um den Logik-Apps-Designer zu öffnen und den Datenfluss zu konfigurieren. Der HTTP-Listener wird im Katalog aufgeführt. Wählen Sie dies aus.
-6.	Sie können jetzt die HTTP-Methode und die relative URL festlegen, an der der Listener zum Auslösen des Datenflusses erforderlich ist: ![][4] ![][5]
-
-7.	Zum Abrufen des vollständigen URI doppelklicken Sie auf den HTTP-Listener, um die Konfigurationseinstellungen anzuzeigen, und kopieren Sie die URL für den "Host" der API-App: ![][6]
-8.	Sie können nun die in der HTTP-Anforderung empfangenen Daten wie folgt in anderen Aktionen im Datenfluss verwenden: ![][7] ![][8]
-9.	Um schließlich eine Antwort zu senden, fügen Sie einen weiteren HTTP-Listener hinzu, und wählen Sie die Aktion zum Senden der HTTP-Antwort aus. Legen Sie die Anforderungs-ID auf die vom HTTP-Listener erhaltene "RequestID" fest, und füllen Sie den Antworttext und den HTTP-Status auf, der zurückgegeben werden soll: ![][9]
+1. Erstellen Sie eine neue Logik-App.
+2. Öffnen Sie "Trigger und Aktionen", um den Logik-Apps-Designer zu öffnen und den Datenfluss zu konfigurieren. Der HTTP-Listener wird im Katalog aufgeführt. Wählen Sie dies aus.
+3. Sie können jetzt die HTTP-Methode und die relative URL festlegen, an der der Listener zum Auslösen des Datenflusses erforderlich ist: ![][4] ![][5]
+4. Zum Abrufen des vollständigen URI doppelklicken Sie auf den HTTP-Listener, um die Konfigurationseinstellungen anzuzeigen, und kopieren Sie die URL für den "Host" der API-App: ![][6]
+5. Sie können nun die in der HTTP-Anforderung empfangenen Daten wie folgt in anderen Aktionen im Datenfluss verwenden: ![][7] ![][8]
+6. Um schließlich eine Antwort zu senden, fügen Sie einen weiteren HTTP-Listener hinzu, und wählen Sie die Aktion zum Senden der HTTP-Antwort aus. Legen Sie die Anforderungs-ID auf die vom HTTP-Listener erhaltene "RequestID" fest, und füllen Sie den Antworttext und den HTTP-Status auf, der zurückgegeben werden soll: ![][9]
 
 ## Verwenden der HTTP-Aktion
 Die HTTP-Aktion wird systemeigen von Logik-Apps unterstützt. Zu ihrer Verwendung ist es nicht erforderlich, zuerst eine API-App zu erstellen. Sie können eine HTTP-Aktion an einem beliebigen Punkt in Ihrer Logik-App einfügen und den URI, die Header und den Text für den Aufruf auswählen. Die HTTP-Aktion unterstützt mehrere Optionen für die clientseitige Sicherheit. Siehe [clientseitige Sicherheitsoptionen](../scheduler/scheduler-outbound-authentication.md).
@@ -75,7 +72,10 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 
 Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connector steuern. Informationen finden Sie unter [Verwalten und Überwachen integrierter API-Apps und Connectors](app-service-logic-monitor-your-connectors.md).
 
-> [AZURE.NOTE] Wenn Sie Azure Logic Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> [!NOTE]
+> Wenn Sie Azure Logic Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> 
+> 
 
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-http/1.png

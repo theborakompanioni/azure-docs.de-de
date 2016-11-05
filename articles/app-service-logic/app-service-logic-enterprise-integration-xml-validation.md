@@ -1,28 +1,27 @@
-<properties 
-	pageTitle="Übersicht über die XML-Überprüfung im Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-	description="Erfahren Sie, wie die Überprüfung im Enterprise Integration Pack und in Logik-Apps erfolgt" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+---
+title: Übersicht über die XML-Überprüfung im Enterprise Integration Pack | Microsoft Docs
+description: Erfahren Sie, wie die Überprüfung im Enterprise Integration Pack und in Logik-Apps erfolgt
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: msftman
+manager: erikre
+editor: cgronlun
 
-<tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/08/2016
+ms.author: deonhe
 
+---
 # Unternehmensintegration mit XML-Überprüfung
-
 ## Übersicht
 In B2B-Szenarien müssen die Vereinbarungspartner häufig überprüfen, ob die untereinander ausgetauschten Nachrichten gültig sind, ehe die Verarbeitung der Daten beginnen kann. Im Enterprise Integration Pack können Sie den XML-Connector „Überprüfung“ verwenden, um Dokumente im Abgleich mit einem vordefinierten Schema auf Gültigkeit zu überprüfen.
 
 ## Überprüfen eines Dokuments mit dem XML-Connector „Überprüfung“
-1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](./app-service-logic-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"), das das Schema enthält, das Sie zum Überprüfen der XML-Daten verwenden.
+1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](app-service-logic-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"), das das Schema enthält, das Sie zum Überprüfen der XML-Daten verwenden.
 2. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu. ![](./media/app-service-logic-enterprise-integration-xml/xml-1.png)
 3. Fügen Sie die Aktion **XML-Überprüfung** hinzu, indem Sie zuerst **Aktion hinzufügen** auswählen.
 4. Geben Sie *xml* in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten.
@@ -37,7 +36,6 @@ An diesem Punkt ist das Einrichten des Überprüfungsconnectors abgeschlossen. I
 Sie können jetzt Ihre Überprüfungsaktion testen, indem Sie eine Anforderung an den HTTP-Endpunkt stellen.
 
 ## Nächste Schritte
-
-[Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
+[Weitere Informationen zum Enterprise Integration Pack](app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
 <!---HONumber=AcomDC_0803_2016-->

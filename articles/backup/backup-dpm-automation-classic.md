@@ -1,34 +1,32 @@
-<properties
-    pageTitle="Azure Backup: Bereitstellen und Verwalten von Sicherungen für DPM mit PowerShell | Microsoft Azure"
-    description="Erfahren Sie, wie Sie Azure Backup für Data Protection Manager (DPM) mithilfe von PowerShell bereitstellen und verwalten."
-    services="backup"
-    documentationCenter=""
-    authors="Nkolli1"
-    manager="shreeshd"
-    editor=""/>
+---
+title: 'Azure Backup: Bereitstellen und Verwalten von Sicherungen für DPM mit PowerShell | Microsoft Docs'
+description: Erfahren Sie, wie Sie Azure Backup für Data Protection Manager (DPM) mithilfe von PowerShell bereitstellen und verwalten.
+services: backup
+documentationcenter: ''
+author: Nkolli1
+manager: shreeshd
+editor: ''
 
-<tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/27/2016"
-    ms.author="jimpark; trinadhk; anuragm; markgal"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: jimpark; trinadhk; anuragm; markgal
 
-
-
+---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-(dpm)-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
-
-> [AZURE.SELECTOR]
-- [ARM](backup-dpm-automation.md)
-- [Klassisch](backup-dpm-automation-classic.md)
+> [!div class="op_single_selector"]
+> * [ARM](backup-dpm-automation.md)
+> * [Klassisch](backup-dpm-automation-classic.md)
+> 
+> 
 
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem DPM-Server sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 
 ## <a name="setting-up-the-powershell-environment"></a>Einrichten der PowerShell-Umgebung
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 Bevor Sie mit PowerShell Sicherungen von Data Protection Manager auf Azure verwalten können, benötigen Sie die richtige Umgebung in PowerShell. Zu Beginn der PowerShell-Sitzung müssen Sie den folgenden Befehl ausführen, um die richtigen Module zu importieren und korrekt auf die DPM-Cmdlets verweisen zu können:
 
@@ -57,15 +55,17 @@ PS C:\> Switch-AzureMode AzureResourceManager
 
 Die folgenden Installations- und Registrierungsaufgaben können mit PowerShell automatisiert werden:
 
-- Erstellen eines Sicherungstresors
-- Installieren des Azure Backup-Agents
-- Registrieren beim Azure Backup-Dienst
-- Netzwerkeinstellungen
-- Verschlüsselungseinstellungen
+* Erstellen eines Sicherungstresors
+* Installieren des Azure Backup-Agents
+* Registrieren beim Azure Backup-Dienst
+* Netzwerkeinstellungen
+* Verschlüsselungseinstellungen
 
 ### <a name="create-a-backup-vault"></a>Erstellen eines Sicherungstresors
-
-> [AZURE.WARNING] Kunden, die Azure Backup zum ersten Mal verwenden, müssen den Azure Backup-Anbieter registrieren, der mit ihrem Abonnement verwendet werden soll. Führen Sie hierzu den folgenden Befehl aus: Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
+> [!WARNING]
+> Kunden, die Azure Backup zum ersten Mal verwenden, müssen den Azure Backup-Anbieter registrieren, der mit ihrem Abonnement verwendet werden soll. Führen Sie hierzu den folgenden Befehl aus: Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
+> 
+> 
 
 Sie können mit dem Cmdlet **New-AzureRMBackupVault** einen neuen Sicherungstresor erstellen. Der Sicherungstresor ist eine ARM-Ressource. Deshalb müssen Sie ihn innerhalb einer Ressourcengruppe einfügen. Führen Sie die folgenden Befehle in einer Azure PowerShell-Konsole mit erhöhten Rechten aus:
 
@@ -75,7 +75,6 @@ PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg”
 ```
 
 Mit dem Cmdlet **Get-AzureRMBackupVault** können Sie eine Liste aller Sicherungstresore in einem bestimmten Abonnement abrufen.
-
 
 ### <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>Installieren des Azure Backup-Agents auf einem DPM-Server
 Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](http://aka.ms/azurebackup_agent) oder im Dashboard des Sicherungstresors. Speichern Sie das Installationsprogramm an einem leicht zugänglichen Speicherort wie *C:\Downloads\*.
@@ -102,23 +101,23 @@ PS C:\> MARSAgentInstaller.exe /?
 Die verfügbaren Optionen umfassen:
 
 | Option | Details | Standard |
-| ---- | ----- | ----- |
-| /q | Installation im Hintergrund | - |
-| /p:"location" | Pfad zum Installationsordner für den Azure Backup-Agent | C:\Programme\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Pfad zum Cacheordner für den Azure Backup-Agent | C:\Programme\Microsoft Azure Recovery Services Agent\Scratch |
-| /m | Microsoft Update abonnieren | - |
-| /nu | Nach Abschluss der Installation nicht nach Updates suchen | - |
-| /d | Microsoft Azure Recovery Services-Agent deinstallieren | - |
-| /ph | Proxyhostadresse | - |
-| /po | Proxyhost-Portnummer | - |
-| /pu | Proxyhost-Benutzername | - |
-| /pw | Proxykennwort | - |
+| --- | --- | --- |
+| /q |Installation im Hintergrund |- |
+| /p:"location" |Pfad zum Installationsordner für den Azure Backup-Agent |C:\Programme\Microsoft Azure Recovery Services Agent |
+| /s:"location" |Pfad zum Cacheordner für den Azure Backup-Agent |C:\Programme\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Microsoft Update abonnieren |- |
+| /nu |Nach Abschluss der Installation nicht nach Updates suchen |- |
+| /d |Microsoft Azure Recovery Services-Agent deinstallieren |- |
+| /ph |Proxyhostadresse |- |
+| /po |Proxyhost-Portnummer |- |
+| /pu |Proxyhost-Benutzername |- |
+| /pw |Proxykennwort |- |
 
 ### <a name="registering-with-the-azure-backup-service"></a>Registrieren beim Azure Backup-Dienst
 Vor der Registrierung beim Azure Backup-Dienst müssen Sie sicherstellen, dass die [Voraussetzungen](backup-azure-dpm-introduction.md) erfüllt sind. Die Voraussetzungen lauten wie folgt:
 
-- Gültiges Azure-Abonnement
-- Ein Sicherungstresor
+* Gültiges Azure-Abonnement
+* Ein Sicherungstresor
 
 Führen Sie zum Herunterladen der Tresoranmeldedaten das Cmdlet **Get-AzureBackupVaultCredentials** in einer Azure PowerShell-Konsole aus, und speichern Sie sie an einem geeigneten Speicherort, z.B. *C:\Downloads\*.
 
@@ -138,7 +137,10 @@ PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredenti
 
 Dadurch wird der DPM-Server mit dem Namen „TestingServer“ unter Verwendung der angegebenen Tresoranmeldedaten im Microsoft Azure-Tresor registriert.
 
-> [AZURE.IMPORTANT] Verwenden Sie keine relativen Pfade, um die Tresoranmeldedatendatei anzugeben. Sie müssen einen absoluten Pfad als Eingabe für das Cmdlet angeben.
+> [!IMPORTANT]
+> Verwenden Sie keine relativen Pfade, um die Tresoranmeldedatendatei anzugeben. Sie müssen einen absoluten Pfad als Eingabe für das Cmdlet angeben.
+> 
+> 
 
 ### <a name="initial-configuration-settings"></a>Anfängliche Konfigurationseinstellungen
 Sobald der DPM-Server beim Azure Backup-Tresor registriert ist, wird er mit den standardmäßigen Abonnementeinstellungen gestartet. Diese Abonnementeinstellungen umfassen Netzwerk, Verschlüsselung und den Stagingbereich. Um die Abonnementeinstellungen zu ändern, müssen Sie zunächst mit dem [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) -Cmdlet ein Handle für die vorhandenen (standardmäßigen) Einstellungen abrufen:
@@ -175,7 +177,6 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 
 Im obigen Beispiel wird der Stagingbereich im PowerShell-Objekt ```$setting``` auf *C:\StagingArea* festgelegt. Stellen Sie sicher, dass der angegebene Ordner bereits vorhanden ist. Andernfalls schlägt der endgültige Commit für die Abonnementeinstellungen fehl.
 
-
 ### <a name="encryption-settings"></a>Verschlüsselungseinstellungen
 Die Sicherungsdaten, die an Azure Backup gesendet werden, werden verschlüsselt, um die Vertraulichkeit der Daten zu schützen. Die Verschlüsselungspassphrase ist das "Kennwort" zum Entschlüsseln der Daten zum Zeitpunkt der Wiederherstellung. Es ist wichtig, diese Informationen nach dem Festlegen zu sichern.
 
@@ -187,7 +188,10 @@ PS C:\> $Passphrase = ConvertTo-SecureString -string "passphrase123456789" -AsPl
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -EncryptionPassphrase $Passphrase
 ```
 
-> [AZURE.IMPORTANT] Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Es ist nicht möglich, Daten aus Azure ohne diese Passphrase wiederherzustellen.
+> [!IMPORTANT]
+> Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Es ist nicht möglich, Daten aus Azure ohne diese Passphrase wiederherzustellen.
+> 
+> 
 
 Jetzt sollten Sie alle erforderlichen Änderungen am ```$setting``` -Objekt vorgenommen haben. Denken Sie daran, einen Commit für die Änderungen auszuführen:
 
@@ -198,7 +202,7 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 ## <a name="protect-data-to-azure-backup"></a>Schützen von Daten auf Azure Backup
 In diesem Abschnitt fügen Sie DPM einen Produktionsserver hinzu, und anschließend schützen Sie die Daten im lokalen DPM-Speicher und auf Azure Backup. In den Beispielen wird das Sichern von Dateien und Ordnern demonstriert. Die Logik kann problemlos erweitert werden, um beliebige von DPM unterstützte Datenquellen zu sichern. Alle DPM-Sicherungen werden durch eine Schutzgruppe (Protection Group, PG) mit vier Teilen gesteuert:
 
-1. **Gruppenmitglieder** ist eine Liste der zu schützenden Objekte (in DPM auch als *Datenquellen* bezeichnet), die in der gleichen Schutzgruppe geschützt werden sollen. Sie können aufgrund der unterschiedlichen Sicherungsanforderungen z. B. Produktions-VMs in einer Schutzgruppe und SQL-Serverdatenbanken in einer anderen Schutzgruppe schützen. Bevor Sie eine Datenquelle auf einem Produktionsserver sichern können, müssen Sie sicherstellen, dass der DPM-Agent auf dem Server installiert ist und von DPM verwaltet wird. Führen Sie die Schritte zum [Installieren des DPM-Agents](https://technet.microsoft.com/library/bb870935.aspx) und Verknüpfen des DPM-Agents mit dem entsprechenden DPM-Server aus.
+1. **Gruppenmitglieder** ist eine Liste der zu schützenden Objekte (in DPM auch als *Datenquellen* bezeichnet), die in der gleichen Schutzgruppe geschützt werden sollen. Sie können aufgrund der unterschiedlichen Sicherungsanforderungen z. B. Produktions-VMs in einer Schutzgruppe und SQL-Serverdatenbanken in einer anderen Schutzgruppe schützen. Bevor Sie eine Datenquelle auf einem Produktionsserver sichern können, müssen Sie sicherstellen, dass der DPM-Agent auf dem Server installiert ist und von DPM verwaltet wird. Führen Sie die Schritte zum [Installieren des DPM-Agents](https://technet.microsoft.com/library/bb870935.aspx) und Verknüpfen des DPM-Agents mit dem entsprechenden DPM-Server aus.
 2. Die **Datenschutzmethode** gibt die Zielspeicherorte für Sicherungen an, d.h. Band, Datenträger und Cloud. In diesem Beispiel werden Daten auf dem lokalen Datenträger und in der Cloud geschützt.
 3. Ein **Sicherungszeitplan** gibt an, wann Sicherungen ausgeführt und wie oft die Daten zwischen dem DPM-Server und dem Produktionsserver synchronisiert werden müssen.
 4. Ein **Aufbewahrungszeitplan** , der angibt, wie lange die Wiederherstellungspunkte in Azure beibehalten werden sollen.
@@ -306,9 +310,10 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 ## <a name="view-the-backup-points"></a>Anzeigen der Sicherungspunkte
 Sie können das [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) -Cmdlet verwenden, um eine Liste aller Wiederherstellungspunkte für eine Datenquelle abzurufen. In diesem Beispiel werden wir:
-- alle Schutzgruppen auf dem DPM-Server aufrufen, die in einem Array ```$PG```
-- die Datenquellen abrufen, die ```$PG[0]```
-- alle Wiederherstellungspunkte für eine Datenquelle abrufen.
+
+* alle Schutzgruppen auf dem DPM-Server aufrufen, die in einem Array ```$PG```
+* die Datenquellen abrufen, die ```$PG[0]```
+* alle Wiederherstellungspunkte für eine Datenquelle abrufen.
 
 ```
 PS C:\> $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -321,9 +326,9 @@ Zum Wiederherstellen von Daten wird eine Kombination aus einem ```RecoverableIte
 
 Das folgende Beispiel zeigt, wie Sie eine virtuelle Hyper-V-Maschine in Azure Backup wiederherstellen, indem Sie Sicherungspunkte mit dem Wiederherstellungsziel kombinieren. Dies umfasst:
 
-- Erstellen einer Wiederherstellungsoption mit dem [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592)-Cmdlet
-- Abrufen des Arrays von Sicherungspunkten mit dem ```Get-DPMRecoveryPoint```-Cmdlet
-- Auswählen eines Sicherungspunkts für die Wiederherstellung
+* Erstellen einer Wiederherstellungsoption mit dem [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592)-Cmdlet
+* Abrufen des Arrays von Sicherungspunkten mit dem ```Get-DPMRecoveryPoint```-Cmdlet
+* Auswählen eines Sicherungspunkts für die Wiederherstellung
 
 ```
 PS C:\> $RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
@@ -338,10 +343,7 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 Die Befehle können mühelos für beliebige Datenquellentypen erweitert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Weitere Informationen zu Azure Backup für DPM finden Sie unter [Einführung in DPM Backup](backup-azure-dpm-introduction.md)
-
-
+* Weitere Informationen zu Azure Backup für DPM finden Sie unter [Einführung in DPM Backup](backup-azure-dpm-introduction.md)
 
 <!--HONumber=Oct16_HO2-->
 

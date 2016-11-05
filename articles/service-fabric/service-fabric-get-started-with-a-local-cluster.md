@@ -1,25 +1,28 @@
-<properties
-   pageTitle="Erste Schritte beim Bereitstellen und Aktualisieren von Apps im lokalen Cluster | Microsoft Azure"
-   description="Richten Sie einen lokalen Service Fabric-Cluster ein, stellen Sie eine vorhandene Anwendung in dem Cluster bereit, und aktualisieren Sie die Anwendung."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="rwike77"
-   manager="timlt"
-   editor=""/>
+---
+title: Erste Schritte beim Bereitstellen und Aktualisieren von Apps im lokalen Cluster | Microsoft Docs
+description: Richten Sie einen lokalen Service Fabric-Cluster ein, stellen Sie eine vorhandene Anwendung in dem Cluster bereit, und aktualisieren Sie die Anwendung.
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotNet"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/09/2016"
-   ms.author="ryanwi;mikhegn"/>
+ms.service: service-fabric
+ms.devlang: dotNet
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/09/2016
+ms.author: ryanwi;mikhegn
 
+---
 # Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
 Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgebung, die Sie verwenden können, um schnell mit der Bereitstellung und Verwaltung von Anwendungen in einem lokalen Cluster zu beginnen. In diesem Artikel verwenden Sie Windows PowerShell, um einen lokalen Cluster zu erstellen, eine vorhandene Anwendung bereitzustellen und die Anwendung auf eine neue Version zu aktualisieren.
 
-> [AZURE.NOTE] In diesem Artikel wird vorausgesetzt, dass Sie bereits [eine Entwicklungsumgebung eingerichtet haben](service-fabric-get-started.md).
+> [!NOTE]
+> In diesem Artikel wird vorausgesetzt, dass Sie bereits [eine Entwicklungsumgebung eingerichtet haben](service-fabric-get-started.md).
+> 
+> 
 
 ## Erstellen eines lokalen Clusters
 Ein Service Fabric-Cluster ist ein Satz von Hardwareressourcen, auf dem Sie Anwendungen bereitstellen können. Normalerweise umfasst ein Cluster zwischen fünf und mehreren Tausend Computern. Das Service Fabric-SDK enthält aber eine Clusterkonfiguration, die auf einem einzelnen Computer ausgeführt werden kann.
@@ -28,21 +31,22 @@ Sie müssen dabei bedenken, dass der lokale Service Fabric-Cluster kein Emulator
 
 Das SDK bietet zwei Möglichkeiten zum Einrichten eines lokalen Clusters: ein Windows PowerShell-Skript und die Taskleisten-App Local Cluster Manager. In diesem Tutorial wird das PowerShell-Skript verwendet.
 
-> [AZURE.NOTE] Wenn Sie bereits einen lokalen Cluster durch die Bereitstellung einer Anwendung über Visual Studio erstellt haben, können Sie diesen Abschnitt überspringen.
-
+> [!NOTE]
+> Wenn Sie bereits einen lokalen Cluster durch die Bereitstellung einer Anwendung über Visual Studio erstellt haben, können Sie diesen Abschnitt überspringen.
+> 
+> 
 
 1. Starten Sie als Administrator ein neues PowerShell-Fenster.
-
 2. Führen Sie das Skript für die Clustereinrichtung aus dem SDK-Ordner aus:
-
-	```powershell
-	& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
-	```
-
+   
+    ```powershell
+    & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+    ```
+   
     Die Clustereinrichtung dauert einen Moment. Nach Abschluss des Setups wird in etwa die folgende Ausgabe angezeigt:
-
+   
     ![Ausgabe bei der Clustereinrichtung][cluster-setup-success]
-
+   
     Sie können nun damit beginnen, eine Anwendung in Ihrem Cluster bereitzustellen.
 
 ## Bereitstellen von Anwendungen
@@ -50,86 +54,80 @@ Das Service Fabric-SDK umfasst eine Vielzahl von Frameworks und Entwicklertools 
 
 In diesem Tutorial verwenden wir eine vorhandene Beispielanwendung (mit dem Namen WordCount), damit wir uns auf die Verwaltung der Plattform konzentrieren können, einschließlich Bereitstellung, Überwachung und Upgrade.
 
-
 1. Starten Sie als Administrator ein neues PowerShell-Fenster.
-
-2. Importieren Sie das Service Fabric-SDK für das PowerShell-Modul.
-
+2. Importieren Sie das Service Fabric-SDK für das PowerShell-Modul.
+   
     ```powershell
     Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
     ```
-
 3. Erstellen Sie ein Verzeichnis zum Speichern der Anwendung, die Sie herunterladen und bereitstellen möchten, z.B. „C:\\ServiceFabric“.
-
+   
     ```powershell
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
-
 4. [Laden Sie die WordCount-Anwendung](http://aka.ms/servicefabric-wordcountapp) an den Speicherort herunter, den Sie erstellt haben. Hinweis: Der Microsoft Edge-Browser speichert die Datei mit der Erweiterung *.zip*. Ändern Sie die Dateierweiterung in *.sfpkg*.
-
 5. Stellen Sie eine Verbindung mit dem lokalen Cluster her:
-
+   
     ```powershell
     Connect-ServiceFabricCluster localhost:19000
     ```
-
 6. Erstellen Sie eine neue Anwendung, indem Sie den Bereitstellungsbefehl des SDK mit einem Namen und Pfad zum Anwendungspaket verwenden.
-
+   
     ```powershell  
-  Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
+   Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
     ```
-
+   
     Wenn alles funktioniert, sollte folgende Ausgabe angezeigt werden:
-
+   
     ![Bereitstellen einer Anwendung im lokalen Cluster][deploy-app-to-local-cluster]
-
 7. Um die Anwendung in Aktion zu sehen, starten Sie den Browser und navigieren zu [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). Folgendes sollte angezeigt werden:
-
+   
     ![Benutzeroberfläche der bereitgestellten Anwendung][deployed-app-ui]
-
+   
     Die WordCount-Anwendung ist sehr einfach. Sie enthält clientseitigen JavaScript-Code zum Generieren von zufälligen „Wörtern“ mit fünf Zeichen, die dann per ASP.NET-Web-API an die Anwendung weitergeleitet werden. Bei einem zustandsbehafteten Dienst wird die Anzahl von Wörtern nachverfolgt. Sie werden basierend auf dem ersten Buchstaben des Worts partitioniert. Den Quellcode für die WordCount-App finden Sie unter [Getting Started Samples](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/) (Beispiele für erste Schritte).
-
+   
     Die Anwendung, die wir bereitgestellt haben, enthält vier Partitionen. Wörter, die mit A bis G beginnen, werden in der ersten Partition gespeichert, Wörter mit H bis N in der zweiten Partition usw.
 
 ## Anzeigen von Anwendungsdetails und des Anwendungsstatus
 Nach dem Bereitstellen der Anwendung sehen wir uns nun die App-Details in PowerShell an.
 
 1. Fragen Sie alle bereitgestellten Anwendungen im Cluster ab:
-
+   
     ```powershell
     Get-ServiceFabricApplication
     ```
-
+   
     Falls Sie nur die WordCount-App bereitgestellt haben, sehen Sie etwa Folgendes:
-
+   
     ![Abfrage aller bereitgestellten Anwendungen in PowerShell][ps-getsfapp]
-
 2. Machen Sie den nächsten Schritt, indem Sie die Dienste abfragen, die in der WordCount-Anwendung enthalten sind.
-
+   
     ```powershell
     Get-ServiceFabricService -ApplicationName 'fabric:/WordCount'
     ```
-
+   
     ![Auflisten von Diensten für die Anwendung in PowerShell][ps-getsfsvc]
-
+   
     Die Anwendung besteht aus zwei Diensten: dem Web-Front-End- und dem zustandsbehafteten Dienst, der die Wörter verwaltet.
-
 3. Sehen Sie sich schließlich die Liste der Partitionen für WordCountService an:
-
+   
     ```powershell
     Get-ServiceFabricPartition 'fabric:/WordCount/WordCountService'
     ```
-
+   
     ![Anzeigen der Dienstpartitionen in PowerShell][ps-getsfpartitions]
-
+   
     Die Befehle, die Sie verwendet haben, sind wie alle Service Fabric-PowerShell-Befehle für alle Cluster verfügbar, mit denen Sie eine Verbindung herstellen – lokal oder remote.
-
+   
     Für eine eher visuelle Möglichkeit der Interaktion mit dem Cluster können Sie das webbasierte Tool Service Fabric-Explorer verwenden, indem Sie im Browser zu [http://localhost:19080/Explorer](http://localhost:19080/Explorer) navigieren.
-
+   
     ![Anzeigen von Anwendungsdetails im Service Fabric-Explorer][sfx-service-overview]
-
-    > [AZURE.NOTE] Weitere Informationen zum Service Fabric Explorer finden Sie unter [Visualisieren des Clusters mit dem Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+   
+   > [!NOTE]
+   > Weitere Informationen zum Service Fabric Explorer finden Sie unter [Visualisieren des Clusters mit dem Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+   > 
+   > 
 
 ## Upgraden einer Anwendung
 Service Fabric ermöglicht Upgrades ohne Ausfallzeit, indem die Integrität der Anwendung überwacht wird, während sie im Cluster bereitgestellt wird. Führen Sie nun ein einfaches Upgrade der WordCount-Anwendung durch.
@@ -137,96 +135,92 @@ Service Fabric ermöglicht Upgrades ohne Ausfallzeit, indem die Integrität der 
 Die neue Version der Anwendung zählt nur die Wörter, die mit einem Vokal beginnen. Während das Upgrade bereitgestellt wird, sehen wir zwei Änderungen im Verhalten der Anwendung. Erstens sollte sich die Rate verlangsamen, mit der die Anzahl zunimmt, da weniger Wörter gezählt werden. Da die erste Partition zwei Vokale enthält („A“ und „E“) und alle anderen Partitionen nur einen enthalten, sollte zweitens die Anzahl dieser Partition letztlich größer als die der anderen sein.
 
 1. [Laden Sie das Paket für WordCount Version 2](http://aka.ms/servicefabric-wordcountappv2) an denselben Speicherort herunter, an den Sie das Paket für Version 1 heruntergeladen haben.
-
 2. Kehren Sie zum PowerShell-Fenster zurück, und verwenden Sie den Upgradebefehl des SDK, um die neue Version des Clusters zu registrieren. Beginnen Sie dann mit dem Upgrade der Anwendung „fabric:/WordCount“.
-
+   
     ```powershell
     Publish-UpgradedServiceFabricApplication -ApplicationPackagePath C:\ServiceFabric\WordCountV2.sfpkg -ApplicationName "fabric:/WordCount" -UpgradeParameters @{"FailureAction"="Rollback"; "UpgradeReplicaSetCheckTimeout"=1; "Monitored"=$true; "Force"=$true}
     ```
-
+   
     Sie sehen in PowerShell eine Ausgabe wie in der folgenden Abbildung, wenn das Upgrade beginnt.
-
+   
     ![Upgradestatus in PowerShell][ps-appupgradeprogress]
-
 3. Möglicherweise ist es für Sie während des Upgrades einfacher, dessen Status über den Service Fabric-Explorer zu überwachen. Öffnen Sie ein Browserfenster, und navigieren Sie zu [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Erweitern Sie in der Struktur links **Anwendungen**, und wählen Sie **WordCount** und anschließend **fabric:/WordCount**. Auf der Registerkarte „Zusammenfassung“ sehen Sie den Status des Upgrades, während es die Upgradedomänen des Clusters durchläuft.
-
+   
     ![Upgradestatus im Service Fabric-Explorer][sfx-upgradeprogress]
-
+   
     Während das Upgrade in den einzelnen Domänen durchgeführt wird, werden Integritätsprüfungen ausgeführt, um sicherzustellen, dass sich die Anwendung richtig verhält.
-
 4. Wenn Sie die vorherige Abfrage für die Dienste der Anwendung „fabric:/WordCount“ erneut ausführen, stellen Sie Folgendes fest: Die Version von WordCountService hat sich geändert, die Version von WordCountWebService aber nicht. Dies ist hier dargestellt:
-
+   
     ```powershell
     Get-ServiceFabricService -ApplicationName 'fabric:/WordCount'
     ```
-
+   
     ![Abfragen der Anwendungsdienste nach dem Upgrade][ps-getsfsvc-postupgrade]
-
+   
     Dies verdeutlicht, wie Anwendungsupgrades von Service Fabric verwaltet werden. Es ist nur die Gruppe der Dienste (bzw. der Code-/Konfigurationspakete in diesen Diensten) betroffen, die sich geändert haben, und der Upgradevorgang wird schneller und zuverlässiger.
-
 5. Kehren Sie schließlich zum Browser zurück, um das Verhalten der neuen Anwendungsversion zu beobachten. Die Anzahl steigt wie erwartet langsamer an, und die erste Partition enthält eine etwas größere Zahl.
-
+   
     ![Anzeigen der neuen Version der Anwendung im Browser][deployed-app-ui-v2]
 
 ## Bereinigen
-
 Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster real ist. Anwendungen werden im Hintergrund so lange weiter ausgeführt, bis Sie sie entfernen. Je nach Art Ihrer Apps kann eine ausgeführte App erhebliche Ressourcen auf dem Computer beanspruchen. Sie haben mehrere Optionen zum Verwalten der Anwendungen und des Clusters:
 
 1. Führen Sie Folgendes aus, um eine einzelne Anwendung und alle dazugehörigen Daten zu entfernen:
-
+   
     ```powershell
     Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
     ```
-
+   
     Oder löschen Sie die Anwendung über das Menü **AKTIONEN** von Service Fabric Explorer oder das Kontextmenü in der Anwendungsliste im linken Bereich.
-
+   
     ![Löschen einer Anwendung in Service Fabric-Explorer][sfe-delete-application]
-
 2. Nach dem Löschen der Anwendung aus dem Cluster können Sie die Registrierung der Versionen 1.0.0 und 2.0.0 des WordCount-Anwendungstyps aufheben. Beim Löschen werden die Anwendungspakete, einschließlich des Codes und der Konfiguration, aus dem Imagespeicher des Clusters entfernt.
-
+   
     ```powershell
     Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
     Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0
     ```
-
+   
     Oder wählen Sie im Service Fabric Explorer für die Anwendung die Option **Unprovision Type** (Bereitstellung des Typs aufheben).
-
 3. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
-
 4. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Entfernen Sie den lokalen Cluster nur, wenn Sie nicht beabsichtigen, ihn einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
 
 ## Clustermodi „1 Knoten“ und „5 Knoten“
-
 Beim Verwenden des lokalen Clusters zum Entwickeln von Anwendungen kommt es häufig zu schnellen Abläufen, die sich auch wiederholen können: Schreiben von Code, Debuggen, Ändern von Code, Debuggen usw. Zur Optimierung dieses Prozesses kann der lokale Cluster in zwei Modi ausgeführt werden: „1 Knoten“ oder „5 Knoten“. Beide Clustermodi haben bestimmte Vorteile. Im Clustermodus mit fünf Knoten können Sie mit einem echten Cluster arbeiten. Sie können Failoverszenarien testen und mit mehr Instanzen und Replikaten Ihres Diensts arbeiten. Der Clustermodus mit einem Knoten wurde für die schnelle Bereitstellung und Registrierung von Diensten optimiert, damit Sie mit der Service Fabric-Laufzeit in kurzer Zeit Code überprüfen können.
 
 Weder beim Clustermodus mit einem Knoten noch mit fünf Knoten handelt es sich um einen Emulator oder Simulator. Er führt den gleichen Plattformcode wie Cluster mit mehreren Computern aus.
 
-> [AZURE.NOTE] Dieses Feature ist in SDK-Version 5.2 und höher verfügbar.
+> [!NOTE]
+> Dieses Feature ist in SDK-Version 5.2 und höher verfügbar.
+> 
+> 
 
 Verwenden Sie zum Wechseln in den Clustermodus mit nur einem Knoten entweder den Service Fabric-Manager für lokale Cluster oder PowerShell. Gehen Sie wie folgt vor:
 
 1. Starten Sie als Administrator ein neues PowerShell-Fenster.
-
 2. Führen Sie das Skript für die Clustereinrichtung aus dem SDK-Ordner aus:
-
-	```powershell
-	& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
-	```
-
+   
+    ```powershell
+    & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
+    ```
+   
     Die Clustereinrichtung dauert einen Moment. Nach Abschluss des Setups wird in etwa die folgende Ausgabe angezeigt:
-    
+   
     ![Ausgabe bei der Clustereinrichtung][cluster-setup-success-1-node]
 
 Bei Verwendung des Service Fabric-Managers für lokale Cluster:
 
 ![Wechseln des Clustermodus][switch-cluster-mode]
 
-> [AZURE.WARNING] Wenn Sie den Clustermodus ändern, wird der aktuelle Cluster aus Ihrem System entfernt und ein neuer Cluster erstellt. Die Daten, die im Cluster gespeichert sein müssen, werden gelöscht, wenn Sie den Clustermodus ändern.
+> [!WARNING]
+> Wenn Sie den Clustermodus ändern, wird der aktuelle Cluster aus Ihrem System entfernt und ein neuer Cluster erstellt. Die Daten, die im Cluster gespeichert sein müssen, werden gelöscht, wenn Sie den Clustermodus ändern.
+> 
+> 
 
 ## Nächste Schritte
-- Nachdem Sie nun einige vordefinierte Anwendungen bereitgestellt und aktualisiert haben, können Sie [selbst eine Anwendung in Visual Studio erstellen](service-fabric-create-your-first-application-in-visual-studio.md).
-- Alle Aktionen, die für den lokalen Cluster in diesem Artikel ausgeführt werden, können auch in einem [Azure-Cluster](service-fabric-cluster-creation-via-portal.md) ausgeführt werden.
-- Das Upgrade, das wir in diesem Artikel durchgeführt haben, ist einfach. In der [Dokumentation zu Upgrades](service-fabric-application-upgrade.md) erfahren Sie mehr über die Leistungsfähigkeit und Flexibilität von Service Fabric-Upgrades.
+* Nachdem Sie nun einige vordefinierte Anwendungen bereitgestellt und aktualisiert haben, können Sie [selbst eine Anwendung in Visual Studio erstellen](service-fabric-create-your-first-application-in-visual-studio.md).
+* Alle Aktionen, die für den lokalen Cluster in diesem Artikel ausgeführt werden, können auch in einem [Azure-Cluster](service-fabric-cluster-creation-via-portal.md) ausgeführt werden.
+* Das Upgrade, das wir in diesem Artikel durchgeführt haben, ist einfach. In der [Dokumentation zu Upgrades](service-fabric-application-upgrade.md) erfahren Sie mehr über die Leistungsfähigkeit und Flexibilität von Service Fabric-Upgrades.
 
 <!-- Images -->
 

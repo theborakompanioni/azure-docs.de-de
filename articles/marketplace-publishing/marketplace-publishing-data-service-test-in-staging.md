@@ -1,24 +1,26 @@
-<properties
-   pageTitle="Testen des Datendienstangebots für den Marketplace | Microsoft Azure"
-   description="Grundlegendes zum Testen Ihres Datendienstangebots für den Azure Marketplace."
-   services="marketplace-publishing"
-   documentationCenter=""
-   authors="HannibalSII"
-   manager=""
-   editor=""/>
+---
+title: Testen des Datendienstangebots für den Marketplace | Microsoft Docs
+description: Grundlegendes zum Testen Ihres Datendienstangebots für den Azure Marketplace.
+services: marketplace-publishing
+documentationcenter: ''
+author: HannibalSII
+manager: ''
+editor: ''
 
-<tags
-   ms.service="marketplace"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/26/2016"
-   ms.author="hascipio; avikova" />
+ms.service: marketplace
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/26/2016
+ms.author: hascipio; avikova
 
+---
 # Testen des Datendienstangebots im Staging
-
->[AZURE.IMPORTANT] **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
+> [!IMPORTANT]
+> **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
+> 
+> 
 
 Nach Abschluss der ersten beiden Schritte zum [Erstellen Ihres Microsoft-Developer-Kontos](marketplace-publishing-accounts-creation-registration.md) und zum [Erstellen des Datendienstangebots im Veröffentlichungsportal](marketplace-publishing-data-service-creation.md) können Sie Ihr Angebot im Azure Marketplace verfügbar machen. Dieses Thema führt Sie durch den ersten Zwischenschritt namens „Staging“.
 
@@ -29,11 +31,11 @@ Durch das Übertragen Ihres Angebots in die Stagingumgebung können Sie es teste
 
   ![Abbildung](media/marketplace-publishing-data-service-test-in-staging/step-1.1.png)
 
-1.	Melden Sie sich beim [Veröffentlichungsportal](https://publish.windowsazure.com) an.
-2.	Wählen Sie im linken Navigationsbereich die Option **Datendienste** aus.
-3.	Wählen Sie das Angebot aus, das Sie zum Staging übertragen möchten. Der oben dargestellte Bildschirm wird angezeigt.
-4.	Klicken Sie auf die Schaltfläche **Push To Staging**.
-5.	Treten Probleme mit dem Angebot auf, die vor der Übertragung in die Stagingumgebung gelöst werden müssen, werden diese in einer Liste angezeigt. Korrigieren Sie diese Probleme durch Klicken auf die einzelnen Elemente in der Liste. Wenn Sie sämtliche Korrekturen vorgenommen haben, klicken Sie erneut auf die Schaltfläche **Push to Staging**.
+1. Melden Sie sich beim [Veröffentlichungsportal](https://publish.windowsazure.com) an.
+2. Wählen Sie im linken Navigationsbereich die Option **Datendienste** aus.
+3. Wählen Sie das Angebot aus, das Sie zum Staging übertragen möchten. Der oben dargestellte Bildschirm wird angezeigt.
+4. Klicken Sie auf die Schaltfläche **Push To Staging**.
+5. Treten Probleme mit dem Angebot auf, die vor der Übertragung in die Stagingumgebung gelöst werden müssen, werden diese in einer Liste angezeigt. Korrigieren Sie diese Probleme durch Klicken auf die einzelnen Elemente in der Liste. Wenn Sie sämtliche Korrekturen vorgenommen haben, klicken Sie erneut auf die Schaltfläche **Push to Staging**.
 
 Wenn mit Ihrem Angebot keine Probleme auftreten, wird das unten dargestellte Popupfenster angezeigt.
 
@@ -45,17 +47,19 @@ Schneiden Sie Ihre Abonnement-ID aus, fügen Sie sie ein, und klicken Sie auf da
 
   ![Abbildung](media/marketplace-publishing-data-service-test-in-staging/step-1.2.png)
 
-> [AZURE.NOTE] Diese Azure-Abonnement-IDs sind nur für Tests und Staging im [Azure-Verwaltungsportal](https://manage.windowsazure.com) erforderlich. Für das Testen im Azure Marketplace sind sie erforderlich.
+> [!NOTE]
+> Diese Azure-Abonnement-IDs sind nur für Tests und Staging im [Azure-Verwaltungsportal](https://manage.windowsazure.com) erforderlich. Für das Testen im Azure Marketplace sind sie erforderlich.
+> 
+> 
 
-Der nächste Bildschirm zeigt durch das unten gelb markierte Symbol „In Bearbeitung“ an, dass die Veröffentlichung durchgeführt wird. Die Übertragung in die Stagingumgebung dauert zwischen 10 und 15 Minuten. Wenn es länger dauert, aktualisieren Sie zunächst Ihren Browser (drücken Sie in Internet Explorer F5). Wenn Ihr Angebot in seltenen Fällen nach einer Stunde immer noch in die Stagingumgebung übertragen wird, klicken Sie auf den Kontaktlink, um uns über das Problem zu informieren.
+Der nächste Bildschirm zeigt durch das unten gelb markierte Symbol „In Bearbeitung“ an, dass die Veröffentlichung durchgeführt wird. Die Übertragung in die Stagingumgebung dauert zwischen 10 und 15 Minuten. Wenn es länger dauert, aktualisieren Sie zunächst Ihren Browser (drücken Sie in Internet Explorer F5). Wenn Ihr Angebot in seltenen Fällen nach einer Stunde immer noch in die Stagingumgebung übertragen wird, klicken Sie auf den Kontaktlink, um uns über das Problem zu informieren.
 
   ![Abbildung](media/marketplace-publishing-data-service-test-in-staging/step-1.3.png)
 
 Nach Abschluss der Übertragung in die Stagingumgebung wird die Animation des Symbols „In Bearbeitung“ beendet, und der Status wird in „Bereitgestellt“ geändert. Sie können das Angebot jetzt testen.
 
 ## Schritt 2: Testen des bereitgestellten Angebots im DataMarket
-
-Klicken Sie auf den Link hinter dem Text **See Your service offer at ...**, um den Bildschirm anzuzeigen, der Abonnenten angezeigt wird, wenn Ihr Angebot in die Produktionsumgebung wechselt und im DataMarket verfügbar ist.
+Klicken Sie auf den Link hinter dem Text **See Your service offer at ...**, um den Bildschirm anzuzeigen, der Abonnenten angezeigt wird, wenn Ihr Angebot in die Produktionsumgebung wechselt und im DataMarket verfügbar ist.
 
   ![Abbildung](media/marketplace-publishing-data-service-test-in-staging/step-2.2.png)
 
@@ -74,12 +78,12 @@ Klicken Sie auf den Link hinter dem Text **See Your service offer at ...**, um 
 11. Nutzungsbedingungen für das Angebot
 12. Vorschau der Angebotsdaten
 
-
 Überprüfen Sie abschließend, ob der Dienst über den DataMarket funktioniert, indem Sie auf den Link „EXPLORE THIS DATASET“ klicken. Im Tool wird das Fenster „Dienst-Explorer“ geöffnet, in dem Sie eine Vorschau der Ergebnisse einer Abfrage an Ihren Dienst anzeigen können. Sie können in diesem Fenster die erforderlichen Parameter eingeben. Die Ergebnisse einer Abfrage an Ihren Dienst werden daraufhin angezeigt. Außerdem wird die URL für die Abfrage angezeigt.
 
-> [AZURE.NOTE] Überprüfen Sie unbedingt die oben angezeigte Beschreibung des Diensts. Wenn Ihr Angebot mehrere Dienste umfasst, klicken Sie auf die Registerkarten im unteren Bereich, um zwischen den Diensten zu wechseln und diese zu überprüfen und zu testen.
-
-
+> [!NOTE]
+> Überprüfen Sie unbedingt die oben angezeigte Beschreibung des Diensts. Wenn Ihr Angebot mehrere Dienste umfasst, klicken Sie auf die Registerkarten im unteren Bereich, um zwischen den Diensten zu wechseln und diese zu überprüfen und zu testen.
+> 
+> 
 
 ## Nächster Schritt
 Wenn Probleme auftreten und Sie Hilfe benötigen, wenden Sie sich an den [Azure-Support für Herausgeber](http://go.microsoft.com/fwlink/?LinkId=272975).
@@ -87,6 +91,6 @@ Wenn Probleme auftreten und Sie Hilfe benötigen, wenden Sie sich an den [Azure-
 Wenn Sie mit den Ergebnissen zufrieden und bereit für die Veröffentlichung Ihres Angebots sind, lesen Sie das Thema [Anfordern der Genehmigung für das Übertragen in die Produktion](marketplace-publishing-push-to-production.md).
 
 ## Weitere Informationen
-- [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
 <!---HONumber=AcomDC_0831_2016-->

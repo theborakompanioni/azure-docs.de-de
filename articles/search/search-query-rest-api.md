@@ -1,26 +1,27 @@
-<properties
-    pageTitle="Abfragen des Azure Search-Indexes mithilfe der REST-API | Microsoft Azure | Gehosteter Cloudsuchdienst"
-    description="Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie Suchparameter zum Filtern und Sortieren von Suchergebnissen."
-    services="search"
-    documentationCenter=""
-	authors="ashmaka"
-/>
+---
+title: Abfragen des Azure Search-Indexes mithilfe der REST-API | Microsoft Docs
+description: Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie Suchparameter zum Filtern und Sortieren von Suchergebnissen.
+services: search
+documentationcenter: ''
+author: ashmaka
 
-<tags
-    ms.service="search"
-    ms.devlang="na"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
 
+---
 # Abfragen des Azure Search-Indexes mit der REST-API
-> [AZURE.SELECTOR]
-- [Übersicht](search-query-overview.md)
-- [Portal](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Übersicht](search-query-overview.md)
+> * [Portal](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 Dieser Artikel beschreibt, wie Sie einen Index mithilfe der [Azure Search-REST-API](https://msdn.microsoft.com/library/azure/dn798935.aspx) abfragen.
 
@@ -35,8 +36,8 @@ Eine wichtige Komponente jedes Suchvorgangs für die Azure Search-REST-API ist d
 
 Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 
- - Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
- - Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
+* Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
+* Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
 
 Zum Abfragen eines Indexes können Sie einen der Abfrageschlüssel verwenden. Admin-Schlüssel können auch für Abfragen verwendet werden, Sie sollten jedoch einen Abfrageschlüssel in Ihrem Anwendungscode verwenden, da dies dem [Prinzip der geringsten Rechte](https://en.wikipedia.org/wiki/Principle_of_least_privilege) besser entspricht.
 
@@ -49,10 +50,7 @@ Sowohl für POST als auch für GET müssen Sie in der Anforderungs-URL Ihren *Di
 
 Das Format für POST ist das Gleiche, allerdings mit der API-Version in den Parametern für die Abfragezeichenfolge.
 
-
-
 #### Beispielabfragen
-
 Hier finden Sie einige Beispielabfragen für einen Index mit dem Namen „hotels“. Diese Abfragen werden sowohl im GET- als auch im POST-Format dargestellt.
 
 Durchsuchen des gesamten Index nach dem Wort „budget“, zurückgegeben wird nur das Feld `hotelName`:
@@ -67,7 +65,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Anwenden eines Filters auf den Index für die Suche nach Hotels, die weniger als 150 US-Dollar pro Nacht kosten, zurückgegeben werden `hotelId` und `description`:
+Anwenden eines Filters auf den Index für die Suche nach Hotels, die weniger als 150 US-Dollar pro Nacht kosten, zurückgegeben werden `hotelId` und `description`:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2015-02-28
@@ -99,6 +97,7 @@ Da Sie nun Ihre Abfrage als Teil Ihrer HTTP-Anforderungs-URL (für GET) oder des
 
 #### Anforderung und Anforderungsheader
 Sie müssen zwei Anforderungsheader für GET bzw. drei für POST definieren:
+
 1. Der Header `api-key` muss auf den Abfrageschlüssel aus Schritt I oben festgelegt werden. Sie können auch den Admin-Schlüssel als Header `api-key` festlegen. Wir empfehlen allerdings, dass Sie einen Abfrageschlüssel verwenden, da dieser ausschließlich Lesezugriff auf Indizes und Dokumente gewährt.
 2. Der Header `Accept` muss auf `application/json` festgelegt sein.
 3. Nur im Fall von POST muss der Header `Content-Type` auch auf `application/json` festgelegt sein.

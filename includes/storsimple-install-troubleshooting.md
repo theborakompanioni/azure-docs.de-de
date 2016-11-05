@@ -1,7 +1,6 @@
 <!--author=alkohli last changed: 03/17/16-->
 
 ## Problembehandlung bei Update-Fehlern
-
 **Was geschieht, wenn über eine Meldung angezeigt wird, dass die Prüfungen vor dem Upgrade fehlgeschlagen sind?**
 
 Wenn eine Vorabprüfung fehlschlägt, beachten Sie unbedingt die ausführliche Benachrichtigungsleiste unten auf der Seite. Dort erfahren Sie, welche Vorabprüfung fehlgeschlagen ist. Die folgende Abbildung zeigt ein Beispiel, in dem eine solche Benachrichtigung angezeigt wird. In diesem Fall sind die Integritätsprüfungen für Controller und für Hardware-Komponenten fehlgeschlagen. Im Abschnitt **Hardwarestatus** können Sie sehen, dass **Controller 0**- und **Controller 1**-Komponenten Ihre Aufmerksamkeit erfordern.

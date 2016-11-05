@@ -1,6 +1,6 @@
 **1. Wie werden Kunden über die Deaktivierung eines SDK benachrichtigt?**
 
-Bei Deaktivierung eines SDK benachrichtigt Microsoft seine Kunden 12 Monate vor Beendigung der Unterstützung, um einen reibungslosen Übergang zu einem unterstützten SDK sicherzustellen. Kunden werden über verschiedene Kommunikationskanäle benachrichtigt: Azure-Verwaltungsportal, Developer Center, Blogbeitrag und direkter Austausch mit den Administratoren der entsprechenden Dienste.
+Bei Deaktivierung eines SDK benachrichtigt Microsoft seine Kunden 12 Monate vor Beendigung der Unterstützung, um einen reibungslosen Übergang zu einem unterstützten SDK sicherzustellen. Kunden werden über verschiedene Kommunikationskanäle benachrichtigt: Azure-Verwaltungsportal, Developer Center, Blogbeitrag und direkter Austausch mit den Administratoren der entsprechenden Dienste.
 
 **2. Können Kunden mit einem DocumentDB SDK, das deaktiviert werden soll, während des 12-monatigen Zeitraums Anwendungen entwickeln?**
 
@@ -20,6 +20,6 @@ Neue Features und Funktionen werden nur neuen Versionen hinzugefügt. Wenn Sie e
 
 **6. Was muss ich tun, wenn ich meine Anwendung nicht vor einem Stichtag aktualisieren kann?**
 
-Es wird empfohlen, so früh wie möglich auf das neueste SDK zu aktualisieren. Sobald ein SDK für die Deaktivierung markiert wurde, bleiben Ihnen 12 Monate zur Aktualisierung Ihrer Anwendung. Wenn Sie aus einem beliebigen Grund die Aktualisierung der Anwendung in diesem Zeitraum nicht schaffen, kontaktieren Sie das [DocumentDB-Team](mailto:askdocdb@microsoft.com), und bitten Sie vor dem Stichtag um Hilfe.
+Es wird empfohlen, so früh wie möglich auf das neueste SDK zu aktualisieren. Sobald ein SDK für die Deaktivierung markiert wurde, bleiben Ihnen 12 Monate zur Aktualisierung Ihrer Anwendung. Wenn Sie aus einem beliebigen Grund die Aktualisierung der Anwendung in diesem Zeitraum nicht schaffen, kontaktieren Sie das [DocumentDB-Team](mailto:askdocdb@microsoft.com), und bitten Sie vor dem Stichtag um Hilfe.
 
 <!---HONumber=AcomDC_1203_2015-->

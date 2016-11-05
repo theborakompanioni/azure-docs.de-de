@@ -1,28 +1,27 @@
-<properties
-	pageTitle="Verwenden eines Bürotelefons als Kontaktmethode mit Azure MFA"
-	description="Auf dieser Seite erfahren Benutzer, wie sie ihr Bürotelefon als primäre Kontaktmethode für Azure MFA verwenden."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: Verwenden eines Bürotelefons als Kontaktmethode mit Azure MFA
+description: Auf dieser Seite erfahren Benutzer, wie sie ihr Bürotelefon als primäre Kontaktmethode für Azure MFA verwenden.
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Verwenden eines Bürotelefons als Kontaktmethode mit Azure Multi-Factor Authentication
-
 Wenn Sie Ihr Bürotelefon als primäre Kontaktmethode verwenden möchten, finden Sie weitere Informationen in diesem Artikel. Hier erfahren Sie, wie Sie Multi-Factor Authentication einrichten, um Ihr Bürotelefon als Kontaktmethode zu verwenden.
 
 ## So verwenden Sie Ihr Bürotelefon als Kontaktmethode
-
 <ol>
+
 <li>Wählen Sie in der Dropdownliste "Bürotelefon" aus.</li>
 
 <center>![Setup](./media/multi-factor-authentication-end-user-first-time-office-phone/office.png)</center>

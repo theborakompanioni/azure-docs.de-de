@@ -1,28 +1,25 @@
-<properties
-   pageTitle="Logik-Apps: Ausnahmebehandlung | Microsoft Azure"
-   description="Enthält eine Beschreibung der Muster für die Fehler- und Ausnahmebehandlung mit Azure Logic Apps."
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="jeffhollan"
-   manager="erikre"
-   editor=""/>
+---
+title: 'Logik-Apps: Ausnahmebehandlung | Microsoft Docs'
+description: Enthält eine Beschreibung der Muster für die Fehler- und Ausnahmebehandlung mit Azure Logic Apps.
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: jeffhollan
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="10/18/2016"
-   ms.author="jehollan"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 10/18/2016
+ms.author: jehollan
 
-
+---
 # <a name="logic-apps-error-and-exception-handling"></a>Logik-Apps: Fehler- und Ausnahmebehandlung
-
 Logik-Apps verfügen über ein umfassendes Angebot an Tools und Mustern, damit Sie sicherstellen können, dass Ihre Integrationen robust und widerstandsfähig gegen Fehler sind.  Eine Anforderung in Bezug auf eine Integrationsarchitektur ist die Sicherstellung, dass Ausfallzeiten oder Probleme abhängiger Systeme richtig behandelt werden.  Mit Logik-Apps wird die Behandlung von Fehlern deutlich vereinfacht, da Sie über die Tools verfügen, die Sie zum Reagieren auf Ausnahmen und Fehler in Ihren Workflows benötigen.
 
 ## <a name="retry-policies"></a>Wiederholungsrichtlinien
-
 Die einfachste Form der Ausnahme- und Fehlerbehandlung ist eine Wiederholungsrichtlinie.  Mit dieser Richtlinie wird definiert, ob für die Aktion ein Wiederholungsversuch durchgeführt werden soll, wenn bei der ersten Anforderung ein Timeout oder ein Fehler aufgetreten ist (Anforderung mit der Antwort 429 oder 5xx).  Standardmäßig wird versucht, alle Aktionen in Intervallen von jeweils 20 Sekunden vier weitere Male zu wiederholen.  Wenn für die erste Anforderung die Antwort `500 Internal Server Error` empfangen wurde, wartet das Workflowmodul also 20 Sekunden und startet dann einen Wiederholungsversuch für die Anforderung.  Wenn für die Anforderung nach allen Wiederholungsversuchen immer noch eine Ausnahme oder ein Fehler vorliegt, wird der Workflow fortgesetzt, und der Status der Aktion lautet `Failed`.
 
 Sie können Wiederholungsrichtlinien in den **Eingaben** einer bestimmten Aktion konfigurieren.  Eine Wiederholungsrichtlinie kann so konfiguriert werden, dass bis zu vier Wiederholungsversuche im Abstand einer Stunde durchgeführt werden.  Ausführliche Informationen zu den Eingabeeigenschaften finden Sie auf der [MSDN-Website][retryPolicyMSDN].
@@ -57,7 +54,6 @@ Wenn für die HTTP-Aktion vier Wiederholungsversuche in einem Intervall von 10 M
 Weitere Informationen zur unterstützten Syntax finden Sie im [retryPolicy-Abschnitt auf der MSDN-Website][retryPolicyMSDN].
 
 ## <a name="runafter-property-to-catch-failures"></a>RunAfter-Eigenschaft zum Abfangen von Fehlern
-
 Für jede Logik-App-Aktion wird deklariert, welche Aktionen abgeschlossen werden müssen, bevor die Aktion gestartet wird.  Sie können sich dies wie die Sortierung von Schritten in Ihrem Workflow vorstellen.  Diese Sortierung wird in der Aktionsdefinition als `runAfter` -Eigenschaft bezeichnet.  Mit diesem Objekt wird beschrieben, für welche Aktionen und Aktionsstatus die Aktion ausgeführt wird.  Standardmäßig werden alle Aktionen, die mit dem Designer hinzugefügt werden, auf die Ausführung nach dem vorherigen Schritt (`runAfter`) festgelegt, wenn der vorherige Schritt `Succeeded` lautet.  Sie können diesen Wert aber so anpassen, dass Aktionen ausgelöst werden, wenn die vorherigen Aktionen `Failed` oder `Skipped` lauten oder ein möglicher Satz mit diesen Werten gilt.  Wenn Sie ein Element einem angegebenen Service Bus-Thema hinzufügen möchten, nachdem eine bestimmte Aktion `Insert_Row` fehlschlägt, verwenden Sie die folgende `runAfter`-Konfiguration:
 
 ```json
@@ -96,16 +92,17 @@ Beachten Sie, dass die `runAfter`-Eigenschaft für die Auslösung festgelegt wir
     }
 ```
 
->[AZURE.TIP] Aktionen, die nach dem Fehlschlagen einer vorhergehenden Aktion ausgeführt werden und erfolgreich sind, werden als `Succeeded` gekennzeichnet.  Dies bedeutet Folgendes: Wenn das Abfangen aller Fehler eines Workflows erfolgreich ist, wird die gesamte Ausführung als `Succeeded`gekennzeichnet.
+> [!TIP]
+> Aktionen, die nach dem Fehlschlagen einer vorhergehenden Aktion ausgeführt werden und erfolgreich sind, werden als `Succeeded` gekennzeichnet.  Dies bedeutet Folgendes: Wenn das Abfangen aller Fehler eines Workflows erfolgreich ist, wird die gesamte Ausführung als `Succeeded`gekennzeichnet.
+> 
+> 
 
 ## <a name="scopes-and-results-to-evaluate-actions"></a>Bereiche und Ergebnisse zum Auswerten von Aktionen
-
 Ähnlich wie bei der Ausführung nach einzelnen Aktionen, können Sie Aktionen auch in einem [Bereich](app-service-logic-loops-and-scopes.md) gruppieren. Ein Bereich dient also als logische Gruppierung von Aktionen.  Bereich sind nützlich, um Logik-App-Aktionen zu organisieren und Gesamtauswertungen zum Status eines Bereichs durchzuführen.  Der Bereich selbst erhält einen Status, nachdem alle Aktionen innerhalb eines Bereichs abgeschlossen wurden.  Der Bereichsstatus wird anhand der gleichen Kriterien wie bei einer Ausführung bestimmt. Wenn die letzte Aktion einer Ausführungsverzweigung `Failed` oder `Aborted` lautet, ergibt sich der Status `Failed`.
 
 Sie können `runAfter` verwenden, wenn ein Bereich als `Failed` gekennzeichnet wurde, um bestimmte Aktionen für Fehler auszulösen, die innerhalb des Bereichs aufgetreten sind.  Durch die Ausführung nach dem Fehlschlagen eines Bereichs können Sie ein einzelne Aktion erstellen, um Fehler abzufangen, wenn für *beliebige* Aktionen im Bereich Fehler auftreten.
 
 ### <a name="getting-the-context-of-failures-with-results"></a>Abrufen des Kontexts von Fehlern mit Ergebnissen
-
 Das Abfangen der Fehler eines Bereichs ist sehr nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden.  Die Workflowfunktion `@result()` liefert Kontext zum Ergebnis aller Aktionen innerhalb eines Bereichs.
 
 Für `@result()` wird ein einzelner Parameter (Bereichsname) verwendet und ein Array mit allen Aktionsergebnissen des Bereichs zurückgegeben.  Diese Aktionsobjekte enthalten die gleichen Attribute wie das `@actions()`-Objekt, z.B. Aktionsstartzeit, Aktionsendzeit, Aktionsstatus, Aktionseingaben, Korrelations-IDs der Aktion und Aktionsausgaben.  Sie können eine `@result()`-Funktion problemlos mit `runAfter` koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
@@ -154,11 +151,11 @@ Wenn Sie für *jede Aktion* eines Bereichs, für die der Status `Failed` lautet,
 Hier ist eine ausführliche exemplarische Vorgehensweise des Ablaufs angegeben:
 
 1. Durchführen der Aktion **Array filtern** zum Filtern von `@result('My_Scope')`, um das Ergebnis aller Aktionen in `My_Scope` zu erhalten.
-1. Die Bedingung von **Array filtern** ist ein beliebiges `@result()`-Element mit dem Status `Failed`.  Das Array mit allen Aktionsergebnissen aus `My_Scope` wird gefiltert, um ein Array nur mit Aktionen mit Fehlerergebnissen zu erhalten.
-1. Durchführen einer **For Each**-Aktion für Ausgaben vom Typ **Array gefiltert**.  Hierdurch wird eine Aktion für jede ** Aktion mit Fehlerergebnis durchgeführt, die wir oben herausgefiltert haben.
-    - Falls der Bereich nur eine fehlgeschlagene Aktion umfasst, werden die Aktionen in `foreach` nur einmal ausgeführt.  Viele fehlgeschlagene Aktionen führen zu einer Aktion pro Fehler.
-1. Senden von HTTP POST für den Antworttext des `foreach`-Elements oder `@item()['outputs']['body']`.  Die `@result()`-Elementform ist mit der `@actions()`-Form identisch und kann auch genauso analysiert werden.
-1. Außerdem sind zwei benutzerdefinierte Header mit dem Namen der Fehleraktion `@item()['name']` und der Clientnachverfolgungs-ID der Fehlerausführung `@item()['clientTrackingId']` enthalten.
+2. Die Bedingung von **Array filtern** ist ein beliebiges `@result()`-Element mit dem Status `Failed`.  Das Array mit allen Aktionsergebnissen aus `My_Scope` wird gefiltert, um ein Array nur mit Aktionen mit Fehlerergebnissen zu erhalten.
+3. Durchführen einer **For Each**-Aktion für Ausgaben vom Typ **Array gefiltert**.  Hierdurch wird eine Aktion für jede ** Aktion mit Fehlerergebnis durchgeführt, die wir oben herausgefiltert haben.
+   * Falls der Bereich nur eine fehlgeschlagene Aktion umfasst, werden die Aktionen in `foreach` nur einmal ausgeführt.  Viele fehlgeschlagene Aktionen führen zu einer Aktion pro Fehler.
+4. Senden von HTTP POST für den Antworttext des `foreach`-Elements oder `@item()['outputs']['body']`.  Die `@result()`-Elementform ist mit der `@actions()`-Form identisch und kann auch genauso analysiert werden.
+5. Außerdem sind zwei benutzerdefinierte Header mit dem Namen der Fehleraktion `@item()['name']` und der Clientnachverfolgungs-ID der Fehlerausführung `@item()['clientTrackingId']` enthalten.
 
 Zu Referenzzwecken ist hier ein Beispiel für ein einzelnes `@result()` -Element angegeben.  Sie sehen die Eigenschaften `name`, `body` und `clientTrackingId`, die im obigen Beispiel analysiert wurden.  Beachten Sie auch, dass außerhalb eines `foreach`-Elements für `@result()` ein Array mit diesen Objekten zurückgegeben wird.
 
@@ -195,15 +192,13 @@ Zu Referenzzwecken ist hier ein Beispiel für ein einzelnes `@result()` -Element
 Sie können die obigen Ausdrücke verwenden, um unterschiedliche Muster für die Ausnahmebehandlung zu nutzen.  Sie können auch die Entscheidung treffen, eine einzelne Aktion für die Ausnahmebehandlung außerhalb des Bereichs durchzuführen, bei der das gesamte gefilterte Array mit Fehlern akzeptiert wird, und das `foreach`-Element entfernen.  Außerdem können Sie andere nützliche Eigenschaften aus der obigen `@result()` -Antwort einfügen.
 
 ## <a name="azure-diagnostics-and-telemetry"></a>Azure-Diagnose und Telemetrie
-
 Die oben beschriebenen Muster eignen sich gut zum Behandeln von Fehlern und Ausnahmen in einer Ausführung, aber Sie können auch unabhängig von der eigentlichen Ausführung Fehler identifizieren und darauf reagieren.  [Azure-Diagnose](app-service-logic-monitor-your-logic-apps.md) ist eine einfache Möglichkeit zum Senden aller Workflowereignisse (einschließlich aller Ausführungs- und Aktionsstatus) an ein Azure Storage-Konto oder einen Azure Event Hub.  Sie können die Protokolle und Metriken überwachen oder mit einem von Ihnen bevorzugten Überwachungstool veröffentlichen, um jeweils den Ausführungsstatus auszuwerten.  Eine potenzielle Option ist das Streamen aller Ereignisse über den Azure Event Hub in [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).  In Stream Analytics können Sie Liveabfragen für Anomalien, Mittelwerte oder Fehler aus den Diagnoseprotokollen schreiben.  Für Stream Analytics ist die Ausgabe in andere Datenquellen wie Warteschlangen, Themen, SQL, DocumentDB und Power BI problemlos möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Protokollierung und Fehlerbehandlung in Logik-Apps (Beispiel eines Kunden)](app-service-logic-scenario-error-and-exception-handling.md)
-- [Beispiele und häufige Szenarios für Logik-Apps](app-service-logic-examples-and-scenarios.md)
-- [Erstellen einer Bereitstellungsvorlage für Logik-Apps](app-service-logic-create-deploy-template.md)
-- [Erstellen und Bereitstellen von Logik-Apps in Visual Studio](app-service-logic-deploy-from-vs.md)
-
+* [Protokollierung und Fehlerbehandlung in Logik-Apps (Beispiel eines Kunden)](app-service-logic-scenario-error-and-exception-handling.md)
+* [Beispiele und häufige Szenarios für Logik-Apps](app-service-logic-examples-and-scenarios.md)
+* [Erstellen einer Bereitstellungsvorlage für Logik-Apps](app-service-logic-create-deploy-template.md)
+* [Erstellen und Bereitstellen von Logik-Apps in Visual Studio](app-service-logic-deploy-from-vs.md)
 
 <!-- References -->
 [retryPolicyMSDN]: https://msdn.microsoft.com/library/azure/mt643939.aspx#Anchor_9

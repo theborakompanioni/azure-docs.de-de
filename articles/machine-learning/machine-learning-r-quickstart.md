@@ -1,38 +1,33 @@
-<properties
-    pageTitle="Schnellstart-Lernprogramm für die Sprache R fürMachine Learning | Microsoft Azure"
-    description="Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten."
-    keywords="Schnellstart,Sprache R,Programmiersprache R,R-Programmierungs-Lernprogramm"
-    services="machine-learning"
-    documentationCenter=""
-    authors="garyericson"
-    manager="jhubbard"
-    editor="cgronlun"/>
+---
+title: Schnellstart-Lernprogramm für die Sprache R fürMachine Learning | Microsoft Docs
+description: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
+keywords: Schnellstart,Sprache R,Programmiersprache R,R-Programmierungs-Lernprogramm
+services: machine-learning
+documentationcenter: ''
+author: garyericson
+manager: jhubbard
+editor: cgronlun
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/12/2016"
-    ms.author="garye"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/12/2016
+ms.author: garye
 
-
+---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Schnellstart-Lernprogramm für die Programmiersprache R für Azure Machine Learning
-
 Stephen F. Elston, PhD.
 
-##  <a name="introduction"></a>Einführung
-
-Dieses Schnellstart-Lernprogramm hilft Ihnen bei der schnellen Erweiterung von Azure Machine Learning mithilfe der Programmiersprache R. Führen Sie dieses Lernprogramm für die Programmierung mit R aus, um R-Code innerhalb von Azure Machine Learning zu erstellen, zu testen und auszuführen. Beim Durcharbeiten dieses Lernprogramms erstellen Sie unter Verwendung der Sprache R in Azure Machine Learning eine vollständige Vorhersagelösung.  
+## <a name="introduction"></a>Einführung
+Dieses Schnellstart-Lernprogramm hilft Ihnen bei der schnellen Erweiterung von Azure Machine Learning mithilfe der Programmiersprache R. Führen Sie dieses Lernprogramm für die Programmierung mit R aus, um R-Code innerhalb von Azure Machine Learning zu erstellen, zu testen und auszuführen. Beim Durcharbeiten dieses Lernprogramms erstellen Sie unter Verwendung der Sprache R in Azure Machine Learning eine vollständige Vorhersagelösung.  
 
 Microsoft Azure Machine Learning enthält viele leistungsfähige Module für Machine Learning und Datenbearbeitung. Die leistungsfähige Sprache R wurde als die Lingua franca der Analytik beschrieben. Glücklicherweise lassen sich Analyse und Datenbearbeitung in Azure Machine Learning mithilfe von R erweitern. Diese Kombination bietet die einfache Skalierbarkeit von Bereitstellungen aus Azure Machine Learning zusammen mit der Flexibilität und den tief greifenden Analysefunktionen von R.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-
-###<a name="forecasting-and-the-dataset"></a>Vorhersagen und das DataSet
-
+### <a name="forecasting-and-the-dataset"></a>Vorhersagen und das DataSet
 Vorhersagen stellen eine verbreitet angewendete und durchaus nützliche Analysemethode dar. Allgemeine Anwendungen reichen von der Vorhersage der Umsätze für Saisonartikel, über die Bestimmung der optimalen Lagerbestände bis hin zur Vorhersage makroökonomischer Variablen. Vorhersagen werden normalerweise mit Zeitreihenmodellen erstellt.
 
 Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex kann regelmäßig sein, z. B. monatlich oder jede Minute, oder auch unregelmäßig. Ein Zeitreihenmodell basiert auf Zeitreihendaten. Die Programmiersprache R enthält ein flexibles Framework sowie umfassende Analysefunktionen für Zeitreihendaten.
@@ -42,58 +37,45 @@ In diesem Schnellstarthandbuch arbeiten wir mit kalifornischen Milchproduktions-
 Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier heruntergeladen][Herunterladen] werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
 
 ### <a name="organization"></a>Organisation
-
 Wir werden mehrere Schritte durchlaufen, in denen Sie erfahren, wie Sie in der Azure Machine Learning-Umgebung R-Code zur Analyse und Datenbearbeitung erstellen, testen und ausführen.  
 
-* Zunächst werden die Grundlagen der Verwendung der Sprache R in der Azure Machine Learning Studio-Umgebung behandelt.
-
+* Zunächst werden die Grundlagen der Verwendung der Sprache R in der Azure Machine Learning Studio-Umgebung behandelt.
 * Wir fahren dann mit der Erläuterung verschiedener E/A-Aspekte von Daten, R-Code und Grafiken in der Azure Machine Learning-Umgebung fort.
-
 * Danach erstellen wir den ersten Teil der Vorhersagelösung, indem wir Code für die Datenbereinigung und -transformation erstellen.
-
 * Mit den vorbereiteten Daten führen wir eine Analyse der Korrelationen zwischen mehreren der Variablen in unserem DataSet durch.
-
 * Schließlich erstellen wir ein saisonales Zeitreihen-Vorhersagemodell für die Produktion von Milcherzeugnissen.
 
-##<a name="a-idmlstudioainteract-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>Interagieren mit der Sprache R in Machine Learning Studio
-
-Dieser Abschnitt führt Sie durch einige Grundlagen der Interaktion mit der Programmiersprache R in der Machine Learning Studio-Umgebung. Die Sprache R stellt ein leistungsfähiges Tool zum Erstellen benutzerdefinierter Analyse- und Datenbearbeitungsmodule innerhalb der Azure Machine Learning-Umgebung bereit.
+## <a name="a-idmlstudioainteract-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>Interagieren mit der Sprache R in Machine Learning Studio
+Dieser Abschnitt führt Sie durch einige Grundlagen der Interaktion mit der Programmiersprache R in der Machine Learning Studio-Umgebung. Die Sprache R stellt ein leistungsfähiges Tool zum Erstellen benutzerdefinierter Analyse- und Datenbearbeitungsmodule innerhalb der Azure Machine Learning-Umgebung bereit.
 
 Wir verwenden RStudio, um R-Code in geringem Umfang zu entwickeln, zu testen und zu debuggen. Dieser Code wird dann ausgeschnitten und in ein ausführbereites [Execute R Script][execute-r-script]-Modul in Machine Learning Studio eingefügt.  
 
-###<a name="the-execute-r-script-module"></a>Das "Execute R Script"-Modul
+### <a name="the-execute-r-script-module"></a>Das "Execute R Script"-Modul
+In Machine Learning Studio werden R-Skripts innerhalb des [Execute R Script][execute-r-script]-Moduls ausgeführt. Ein Beispiel für das [Execute R Script][execute-r-script]-Modul in Machine Learning Studio sehen Sie in Abbildung 1.
 
-In Machine Learning Studio werden R-Skripts innerhalb des [Execute R Script][execute-r-script]-Moduls ausgeführt. Ein Beispiel für das [Execute R Script][execute-r-script]-Modul in Machine Learning Studio sehen Sie in Abbildung 1.
+ ![Programmiersprache R: Die Machine Learning Studio-Umgebung mit dem ausgewählten "Execute R Script"-Modul][1]
 
- ![Programmiersprache R: Die Machine Learning Studio-Umgebung mit dem ausgewählten "Execute R Script"-Modul][1]
+*Abbildung 1: Die Machine Learning Studio-Umgebung, in der das ausgewählte "Execute R Script"-Modul angezeigt wird.*
 
-*Abbildung 1: Die Machine Learning Studio-Umgebung, in der das ausgewählte "Execute R Script"-Modul angezeigt wird.*
+Sehen wir uns unter Bezugnahme auf Abbildung 1 einige der Hauptteile der Machine Learning Studio-Umgebung für die Arbeit mit dem [Execute R Script][execute-r-script]-Modul an.
 
-Sehen wir uns unter Bezugnahme auf Abbildung 1 einige der Hauptteile der Machine Learning Studio-Umgebung für die Arbeit mit dem [Execute R Script][execute-r-script]-Modul an.
-
-- Die Module in dem Experiment werden im mittleren Bereich angezeigt.
-
-- Der obere Teil des rechten Bereichs enthält ein Fenster zum Anzeigen und Bearbeiten Ihrer R-Skripts.  
-
-- Im unteren Teil des rechten Bereichs werden einige Eigenschaften des [Execute R Script][execute-r-script]-Moduls angezeigt. Sie können die Fehler- und Ausgabeprotokolle anzeigen, indem Sie auf die entsprechenden Stellen dieses Bereichs klicken.
+* Die Module in dem Experiment werden im mittleren Bereich angezeigt.
+* Der obere Teil des rechten Bereichs enthält ein Fenster zum Anzeigen und Bearbeiten Ihrer R-Skripts.  
+* Im unteren Teil des rechten Bereichs werden einige Eigenschaften des [Execute R Script][execute-r-script]-Moduls angezeigt. Sie können die Fehler- und Ausgabeprotokolle anzeigen, indem Sie auf die entsprechenden Stellen dieses Bereichs klicken.
 
 Natürlich wird das [Execute R Script][execute-r-script]-Modul ausführlicher im Rest dieses Dokuments behandelt.
 
 Bei der Arbeit mit komplexen R-Funktionen empfiehlt es sich, dass Sie das Bearbeiten, Testen und Debuggen in RStudio durchführen. Wie bei jeder Softwareentwicklung erweitern Sie Ihren Code schrittweise und testen ihn mit kleinen, einfachen Testfällen. Danach schneiden Sie Ihre Funktionen aus und fügen sie in das Fenster des [Execute R Script][execute-r-script]-Moduls ein. Dieser Ansatz erlaubt es Ihnen, sowohl die RStudio-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) als auch die Leistungsfähigkeit von Azure Machine Learning zu nutzen.  
 
-####<a name="execute-r-code"></a>Ausführen von R-Code
-
+#### <a name="execute-r-code"></a>Ausführen von R-Code
 Jeder R-Code im [Execute R Script][execute-r-script]-Modul wird ausgeführt, wenn Sie das Experiment ausführen, indem Sie auf die Schaltfläche **Rund** klicken. Nach Abschluss der Ausführung wird ein Häkchen auf dem Symbol [Execute R Script][execute-r-script] angezeigt.
 
-####<a name="defensive-r-coding-for-azure-machine-learning"></a>Defensive R-Codierung für Azure Machine Learning
-
+#### <a name="defensive-r-coding-for-azure-machine-learning"></a>Defensive R-Codierung für Azure Machine Learning
 Wenn Sie R-Code für beispielsweise einen Webdienst mithilfe von Azure Machine Learning entwickeln, sollten Sie auf jeden Fall planen, wie Ihr Code eine unerwartete Dateneingabe und Ausnahmen behandeln soll. Um Übersichtlichkeit zu gewährleisten, wurden in die meisten der dargestellten Codebeispiele kaum Testverfahren oder Verfahren zur Behandlung von Ausnahmen aufgenommen. Im weiteren Verlauf erhalten Sie jedoch einige Beispiele für Funktionen, die die Ausnahmebehandlungsfunktionen von R verwenden.  
 
-Wenn Sie eine umfassendere Erläuterung der Ausnahmebehandlung in R benötigen, lesen Sie die entsprechenden Abschnitte des Buchs von Wickham, das in [Anhang B – Weitere Informationen](#appendixb)aufgeführt ist
+Wenn Sie eine umfassendere Erläuterung der Ausnahmebehandlung in R benötigen, lesen Sie die entsprechenden Abschnitte des Buchs von Wickham, das in [Anhang B – Weitere Informationen](#appendixb)aufgeführt ist
 
-
-####<a name="debug-and-test-r-in-machine-learning-studio"></a>Debuggen und Testen von R in Machine Learning Studio
-
+#### <a name="debug-and-test-r-in-machine-learning-studio"></a>Debuggen und Testen von R in Machine Learning Studio
 Zu Wiederholungszwecken empfehlen wir Ihnen, Ihren R-Code in geringem Umfang in RStudio zu testen und zu debuggen. Es gibt jedoch Fälle, in denen Sie Probleme im R-Code im [Execute R Script][execute-r-script]-Modul selbst ermitteln müssen. Darüber hinaus ist es eine bewährte Praxis, die eigenen Ergebnisse in Machine Learning Studio zu überprüfen.
 
 Ausgaben der Ausführung Ihres R-Codes und von der Azure Machine Learning-Plattform finden sich hauptsächlich in der Datei "output.log". Einige zusätzliche Informationen befinden sich auch in der Datei "error.log".  
@@ -109,16 +91,15 @@ Die Ausführung dieses Codes schlägt fehl, was zu einem Fehlerzustand führt. W
 
   ![Popupfenster mit Fehlermeldung][2]
 
-*Abbildung 2: Popupfenster mit Fehlermeldung*
+*Abbildung 2: Popupfenster mit Fehlermeldung*
 
 Sie müssen sich anscheinend in der Datei "output.log" die R-Fehlermeldung ansehen. Klicken Sie auf das [Execute R Script][execute-r-script]-Modul und dann rechts im Bereich **Properties** auf **View output.log**. Ein neues Browserfenster wird geöffnet, in dem Folgendes angezeigt wird:
-
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
     object 'y' not found
-    
-    
+
+
     object 'y' not found
     ----------- End of error message from R -----------
 
@@ -126,8 +107,7 @@ Diese Fehlermeldung enthält keine Überraschungen, und das Problem wird eindeut
 
 Um den Wert eines beliebigen Objekts in R zu überprüfen, können Sie diese Werte in die Datei "output.log" ausgeben. Die Regeln zum Untersuchen von Objektwerten sind im Wesentlichen mit denen in einer interaktiven R-Sitzung identisch. Wenn Sie beispielsweise einen Variablennamen in eine Zeile eingeben, wird der Wert des Objekts in die Datei "output.log" ausgegeben.  
 
-####<a name="packages-in-machine-learning-studio"></a>Pakete in Machine Learning Studio
-
+#### <a name="packages-in-machine-learning-studio"></a>Pakete in Machine Learning Studio
 Azure Machine Learning verfügt über mehr als 350 vorinstallierte R-Sprachpakete. Sie können den folgenden Code im [Execute R Script][execute-r-script]-Modul verwenden, um eine Liste der vorinstallierten Pakete abzurufen.
 
     data.set <- data.frame(installed.packages())
@@ -136,7 +116,6 @@ Azure Machine Learning verfügt über mehr als 350 vorinstallierte R-Sprachpaket
 Wenn Sie die letzte Zeile des Codes im Moment noch nicht verstehen, lesen Sie trotzdem weiter. Die Verwendung von R in der Azure Machine Learning-Umgebung wird im restlichen Teil dieses Dokuments noch ausführlich erörtert.
 
 ### <a name="introduction-to-rstudio"></a>Einführung in RStudio
-
 RStudio ist eine weit verbreitete IDE für R. Wir verwenden RStudio zum Bearbeiten, Testen und Debuggen einiger R-Codeabschnitte, die in diesem Schnellstarthandbuch verwendet werden. Nachdem R-Code getestet wurde und bereitet ist, schneiden Sie ihn einfach im RStudio-Editor aus und fügen ihn in ein [Execute R Script][execute-r-script]Modul in Machine Learning Studio ein.  
 
 Wenn die Programmiersprache R nicht auf Ihrem Desktopcomputer installiert ist, sollten Sie die Installation jetzt durchführen. Kostenlose Downloads der Open Source-Sprache R sind im CRAN (Comprehensive R Archive Network) unter [http://www.r-project.org/](http://www.r-project.org/)verfügbar. Es stehen dort Downloads für Windows, Mac OS und Linux/UNIX zur Verfügung. Wählen Sie einen Spiegelserver in Ihrer Nähe aus, und befolgen Sie die Downloadanweisungen. Zusätzlich finden Sie im CRAN eine Fülle von nützlichen Analyse- und Datenbearbeitungspaketen.
@@ -147,68 +126,50 @@ Ein Einführungslernprogramm zu RStudio finden Sie unter „https://support.rstu
 
 Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][Anhang A]].  
 
-##<a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>Durchführen von Dateneingaben und -ausgaben im "Execute R Script"-Modul
-
+## <a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>Durchführen von Dateneingaben und -ausgaben im "Execute R Script"-Modul
 In diesem Abschnitt wird erörtert, wie Sie Daten in das [Execute R Script][execute-r-script]-Modul ein- und daraus ausgeben können. Sie erfahren, wie verschiedene Datentypen, die vom [Execute R Script][execute-r-script]-Modul ein- und ausgelesen werden, zu handhaben sind.
 
 Der vollständige Code für diesen Abschnitt befindet sich in der ZIP-Datei, die Sie zuvor heruntergeladen haben.
 
-###<a name="load-and-check-data-in-machine-learning-studio"></a>Laden und Überprüfen von Daten in Machine Learning Studio
-
-####<a name="a-idloadingaload-the-dataset"></a><a id="loading"></a>Laden des DataSets
-
+### <a name="load-and-check-data-in-machine-learning-studio"></a>Laden und Überprüfen von Daten in Machine Learning Studio
+#### <a name="a-idloadingaload-the-dataset"></a><a id="loading"></a>Laden des DataSets
 Wir beginnen damit, dass wir die Datei **csdairydata.csv** in Azure Machine Learning Studio laden.
 
-- Starten der Azure Machine Learning Studio-Umgebung
+* Starten der Azure Machine Learning Studio-Umgebung
+* Klicken Sie unten links auf dem Bildschirm auf **+ NEW**, und wählen Sie **Dataset** aus.
+* Klicken Sie auf **From Local File** und anschließend auf **Browse**, um die Daten auszuwählen.
+* Stellen Sie sicher, dass Sie als DataSet-Typ **Generische CSV-Datei mit Header (.csv)** ausgewählt haben.
+* Klicken Sie auf das Häkchen.
+* Nachdem das DataSet hochgeladen wurde, können Sie es anzeigen, indem Sie auf die Registerkarte **DataSets** klicken.  
 
-- Klicken Sie unten links auf dem Bildschirm auf __+ NEW__, und wählen Sie **Dataset** aus.
-
-- Klicken Sie auf **From Local File** und anschließend auf **Browse**, um die Daten auszuwählen.
-
-- Stellen Sie sicher, dass Sie als DataSet-Typ **Generische CSV-Datei mit Header (.csv)** ausgewählt haben.
-
-- Klicken Sie auf das Häkchen.
-
-- Nachdem das DataSet hochgeladen wurde, können Sie es anzeigen, indem Sie auf die Registerkarte **DataSets** klicken.  
-
-####<a name="create-an-experiment"></a>Erstellen eines Experiments
-
+#### <a name="create-an-experiment"></a>Erstellen eines Experiments
 Nachdem wir nun einige Daten in Machine Learning Studio geladen haben, erstellen wir ein Experiment, um die Analyse durchführen zu können.  
 
-- Klicken Sie unten links auf __+ NEW__, und wählen Sie **Experiment** und anschließend **Blank Experiment** aus.
-
-- Sie können das Experiment benennen, indem Sie oben auf der Seite den Titel **Experiment erstellt am...** auswählen und bearbeiten. Ändern Sie den Titel beispielsweise zu **CA Dairy Analysis**.
-
-- Erweitern Sie links auf der Experimentseite die Einträge **Saved Datasets** und **My Datasets**. Hier wird die Datei **cadairydata.csv** angezeigt, die Sie zuvor hochgeladen haben.
-
-- Ziehen Sie das DataSet **csdairydata.csv** per Drag &amp; Drop in das Experiment.
-
-- Geben Sie im linken Bereich oben in das Feld **Search experiment items** als Suchbegriff [Execute R Script][execute-r-script] ein. Daraufhin wird das Modul in der Suchliste angezeigt.
-
-- Ziehen Sie das [Execute R Script][execute-r-script]-Modul per Drag & Drop auf Ihre Palette.  
-
-- Verbinden Sie die Ausgabe des Datasets **csdairydata.csv** mit der ganz linken Eingabe (**Dataset1**) von [Execute R Script][execute-r-script].
-
-- **Vergessen Sie nicht, auf "Speichern" zu klicken.**  
+* Klicken Sie unten links auf **+ NEW**, und wählen Sie **Experiment** und anschließend **Blank Experiment** aus.
+* Sie können das Experiment benennen, indem Sie oben auf der Seite den Titel **Experiment erstellt am...** auswählen und bearbeiten. Ändern Sie den Titel beispielsweise zu **CA Dairy Analysis**.
+* Erweitern Sie links auf der Experimentseite die Einträge **Saved Datasets** und **My Datasets**. Hier wird die Datei **cadairydata.csv** angezeigt, die Sie zuvor hochgeladen haben.
+* Ziehen Sie das DataSet **csdairydata.csv** per Drag &amp; Drop in das Experiment.
+* Geben Sie im linken Bereich oben in das Feld **Search experiment items** als Suchbegriff [Execute R Script][execute-r-script] ein. Daraufhin wird das Modul in der Suchliste angezeigt.
+* Ziehen Sie das [Execute R Script][execute-r-script]-Modul per Drag & Drop auf Ihre Palette.  
+* Verbinden Sie die Ausgabe des Datasets **csdairydata.csv** mit der ganz linken Eingabe (**Dataset1**) von [Execute R Script][execute-r-script].
+* **Vergessen Sie nicht, auf "Speichern" zu klicken.**  
 
 An diesem Punkt sollte das Experiment ungefähr wie in Abbildung 3 aussehen.
 
 ![Das "CA Dairy Analysis"-Experiment mit DataSet und "Execute R Script"-Modul][3]
 
-*Abbildung 3: Das "CA Dairy Analysis"-Experiment mit DataSet und "Execute R Script"-Modul.*
+*Abbildung 3: Das "CA Dairy Analysis"-Experiment mit DataSet und "Execute R Script"-Modul.*
 
-####<a name="check-on-the-data"></a>Überprüfen der Daten
-
+#### <a name="check-on-the-data"></a>Überprüfen der Daten
 Lassen Sie uns einen Blick auf die Daten werfen, die wir in unser Experiment geladen haben. Klicken Sie im Experiment auf die Ausgabe des Datasets **cadairydata.csv**, und wählen Sie **Visualize** aus. Ihre Anzeige sollte etwa wie in Abbildung 4 aussehen.  
 
 ![Zusammenfassung des DataSets "cadairydata.csv".][4]
 
-*Abbildung 4: Zusammenfassung des DataSets "cadairydata.csv".*
+*Abbildung 4: Zusammenfassung des DataSets "cadairydata.csv".*
 
-In dieser Ansicht sehen wir viele nützliche Informationen. Wir sehen die ersten Zeilen dieses DataSets. Wenn wir eine Spalte auswählen, werden im Statistikabschnitt weitere Informationen zu der Spalte angezeigt. Die Zeile "Feature Type" zeigt z. B. an, welche Datentypen Azure Machine Learning Studio den Spalten zuweist. Ein solch kurzer Blick ist eine gute Funktionsüberprüfung, bevor wir mit der wirklichen Arbeit beginnen.
+In dieser Ansicht sehen wir viele nützliche Informationen. Wir sehen die ersten Zeilen dieses DataSets. Wenn wir eine Spalte auswählen, werden im Statistikabschnitt weitere Informationen zu der Spalte angezeigt. Die Zeile "Feature Type" zeigt z. B. an, welche Datentypen Azure Machine Learning Studio den Spalten zuweist. Ein solch kurzer Blick ist eine gute Funktionsüberprüfung, bevor wir mit der wirklichen Arbeit beginnen.
 
 ### <a name="first-r-script"></a>Erstes R-Skript
-
 Lassen Sie uns zuerst ein einfaches erstes R-Skript erstellen, um damit in Azure Machine Learning Studio zu experimentieren. Wir haben folgendes Skript in RStudio erstellt und getestet:  
 
     ## Only one of the following two lines should be used
@@ -225,7 +186,6 @@ Lassen Sie uns zuerst ein einfaches erstes R-Skript erstellen, um damit in Azure
 Jetzt müssen wir dieses Skript in Azure Machine Learning Studio übertragen. Wir könnten es einfach ausschneiden und einfügen. In diesem Fall jedoch übertragen wird unser R-Skript mithilfe einer ZIP-Datei.
 
 ### <a name="data-input-to-the-execute-r-script-module"></a>Dateneingabe in das "Execute R Script"-Modul
-
 Sehen Sie sich die Eingaben für das [Execute R Script][execute-r-script]-Modul an. In diesem Beispiel lesen wir die kalifornischen Milchproduktdaten in das [Execute R Script][execute-r-script]-Modul ein.  
 
 Es gibt drei mögliche Eingaben für das [Execute R Script][execute-r-script]-Modul. Sie können eine davon oder alle diese Eingaben verwenden, abhängig von Ihrer Anwendung. Es ist auch absolut sinnvoll, ein R-Skript zu verwenden, das gar keine Eingaben akzeptiert.  
@@ -233,18 +193,20 @@ Es gibt drei mögliche Eingaben für das [Execute R Script][execute-r-script]-Mo
 Betrachten wir nun jede dieser Eingaben von links nach rechts. Sie können den Namen jeder einzelnen Eingabe anzeigen, indem Sie mit dem Mauszeiger auf die Eingabe zeigen und die QuickInfo lesen.  
 
 #### <a name="script-bundle"></a>Script Bundle
-
 Die Eingabe „Script Bundle“ erlaubt Ihnen, den Inhalt einer ZIP-Datei an das [Execute R Script][execute-r-script]-Modul zu übergeben. Sie können einen der folgenden Befehle verwenden, um den Inhalt der ZIP-Datei in Ihren R-Code einzulesen:
 
     source("src/yourfile.R") # Reads a zipped R script
     load("src/yourData.rdata") # Reads a zipped R data file
 
-> [AZURE.NOTE] Azure Machine Learning behandelt Dateien in dem ZIP, als wären sie im Verzeichnis "src/", weshalb Sie Ihren Dateinamen diesen Ordnernamen als Präfix voranstellen müssen. Wenn der Stamm der ZIP-Datei beispielsweise die Dateien `yourfile.R` und `yourData.rdata` enthält, würden Sie diese bei Verwendung von `source` und `load` als `src/yourfile.R` und `src/yourData.rdata` adressieren.
+> [!NOTE]
+> Azure Machine Learning behandelt Dateien in dem ZIP, als wären sie im Verzeichnis "src/", weshalb Sie Ihren Dateinamen diesen Ordnernamen als Präfix voranstellen müssen. Wenn der Stamm der ZIP-Datei beispielsweise die Dateien `yourfile.R` und `yourData.rdata` enthält, würden Sie diese bei Verwendung von `source` und `load` als `src/yourfile.R` und `src/yourData.rdata` adressieren.
+> 
+> 
 
 Das Laden von Datasets haben wir bereits unter [Laden des Datasets](#loading) erläutert. Nachdem Sie das im vorherigen Abschnitt gezeigte R-Skript erstellt und getestet haben, führen Sie folgende Schritte aus:
 
 1. Speichern Sie das R-Skript in einer ".R"-Datei. Wir geben unserer Skriptdatei den Namen "simpleplot.R". Der Inhalt lautet wie folgt:
-
+   
         ## Only one of the following two lines should be used
         ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
         ## If in RStudio, use the second line with read.csv()
@@ -255,28 +217,21 @@ Das Laden von Datasets haben wir bereits unter [Laden des Datasets](#loading) er
         ## The following line should be executed only when running in
         ## Azure Machine Learning Studio
         maml.mapOutputPort('cadairydata')
+2. Erstellen Sie eine ZIP-Datei, und kopieren Sie Ihr Skript in diese ZIP-Datei. Unter Windows können Sie mit der rechten Maustaste auf die Datei klicken, **Senden an** wählen und dann auf **Komprimierter Ordner** klicken. Dadurch entsteht eine neue ZIP-Datei, die die Datei „simpleplot.R“ enthält.
+3. Fügen Sie Ihre Datei den **Datasets** in Machine Learning Studio hinzu, und geben Sie dabei den Typ **zip** an. Die ZIP-Datei sollte jetzt in Ihren DataSets angezeigt werden.
+4. Ziehen Sie die ZIP-Datei aus **Datasets** auf den **ML Studio-Bereich**, und legen Sie sie dort ab.
+5. Verbinden Sie die Ausgabe des **ZIP-Daten**-Symbols mit der Eingabe **Script Bundle** des [Execute R Script][execute-r-script]-Moduls.
+6. Geben Sie die `source()`-Funktion mit dem Namen Ihrer ZIP-Datei in das Codefenster des [Execute R Script][execute-r-script]-Moduls ein. In diesem Fall geben Sie `source("src/simpleplot.R")` ein.  
+7. Denken Sie daran, auf **Speichern**zu klicken.
 
-2.  Erstellen Sie eine ZIP-Datei, und kopieren Sie Ihr Skript in diese ZIP-Datei. Unter Windows können Sie mit der rechten Maustaste auf die Datei klicken, __Senden an__ wählen und dann auf __Komprimierter Ordner__ klicken. Dadurch entsteht eine neue ZIP-Datei, die die Datei „simpleplot.R“ enthält.
-
-3.  Fügen Sie Ihre Datei den **Datasets** in Machine Learning Studio hinzu, und geben Sie dabei den Typ **zip** an. Die ZIP-Datei sollte jetzt in Ihren DataSets angezeigt werden.
-
-4.  Ziehen Sie die ZIP-Datei aus **Datasets** auf den **ML Studio-Bereich**, und legen Sie sie dort ab.
-
-5.  Verbinden Sie die Ausgabe des **ZIP-Daten**-Symbols mit der Eingabe **Script Bundle** des [Execute R Script][execute-r-script]-Moduls.
-
-6.  Geben Sie die `source()`-Funktion mit dem Namen Ihrer ZIP-Datei in das Codefenster des [Execute R Script][execute-r-script]-Moduls ein. In diesem Fall geben Sie `source("src/simpleplot.R")` ein.  
-
-7.  Denken Sie daran, auf **Speichern**zu klicken.
-
-Nachdem diese Schritte abgeschlossen sind, führt das [Execute R Script][execute-r-script]-Modul das R-Skript aus der ZIP-Datei aus, wenn das Experiment ausgeführt wird. An diesem Punkt sollte das Experiment ungefähr wie in Abbildung 5 aussehen.
+Nachdem diese Schritte abgeschlossen sind, führt das [Execute R Script][execute-r-script]-Modul das R-Skript aus der ZIP-Datei aus, wenn das Experiment ausgeführt wird. An diesem Punkt sollte das Experiment ungefähr wie in Abbildung 5 aussehen.
 
 ![Experiment unter Verwendung des ZIP-komprimierten R-Skripts][6]
 
-*Abbildung 5: Experiment unter Verwendung des ZIP-komprimierten R-Skripts.*
+*Abbildung 5: Experiment unter Verwendung des ZIP-komprimierten R-Skripts.*
 
 #### <a name="dataset1"></a>Dataset1
-
-Sie können mithilfe der Eingabe "Dataset1" eine rechteckige Datentabelle an Ihren R-Code übergeben. In unserem einfachen Skript liest die `maml.mapInputPort(1)` -Funktion die Daten von Port 1. Diese Daten werden dann einem Dataframe-Variablennamen in Ihrem Code zugewiesen. In unserem einfachen Skript führt die erste Zeile des Codes die Zuweisung durch.
+Sie können mithilfe der Eingabe "Dataset1" eine rechteckige Datentabelle an Ihren R-Code übergeben. In unserem einfachen Skript liest die `maml.mapInputPort(1)` -Funktion die Daten von Port 1. Diese Daten werden dann einem Dataframe-Variablennamen in Ihrem Code zugewiesen. In unserem einfachen Skript führt die erste Zeile des Codes die Zuweisung durch.
 
     cadairydata <- maml.mapInputPort(1)
 
@@ -317,46 +272,44 @@ Weiter unten auf der Seite finden Sie ausführlichere Informationen zu den Spalt
 
 Diese Ergebnisse sind größtenteils wie erwartet, mit 228 Beobachtungen und 9 Spalten im Dataframe. Wir sehen die Spaltennamen, den R-Datentyp und ein Beispiel für jede Spalte.
 
-> [AZURE.NOTE] Dieselbe Druckausgabe steht bequem über die Ausgabe „R Device“ des [Execute R Script][execute-r-script]-Moduls zur Verfügung. Die Ausgaben des [Execute R Script][execute-r-script]-Moduls werden im nächsten Abschnitt erklärt.  
+> [!NOTE]
+> Dieselbe Druckausgabe steht bequem über die Ausgabe „R Device“ des [Execute R Script][execute-r-script]-Moduls zur Verfügung. Die Ausgaben des [Execute R Script][execute-r-script]-Moduls werden im nächsten Abschnitt erklärt.  
+> 
+> 
 
-####<a name="dataset2"></a>Dataset2
+#### <a name="dataset2"></a>Dataset2
+Das Verhalten der Eingabe "Dataset2" ist mit der von Dataset1 identisch. Mit dieser Eingabe können Sie eine zweite rechteckige Datentabelle an Ihren R-Code übergeben. Die `maml.mapInputPort(2)`-Funktion wird mit dem Argument 2 verwendet, um diese Daten zu übergeben.  
 
-Das Verhalten der Eingabe "Dataset2" ist mit der von Dataset1 identisch. Mit dieser Eingabe können Sie eine zweite rechteckige Datentabelle an Ihren R-Code übergeben. Die `maml.mapInputPort(2)`-Funktion wird mit dem Argument 2 verwendet, um diese Daten zu übergeben.  
-
-###<a name="execute-r-script-outputs"></a>"Execute R Script"-Ausgaben
-
-####<a name="output-a-dataframe"></a>Ausgeben eines Dataframes
-
+### <a name="execute-r-script-outputs"></a>"Execute R Script"-Ausgaben
+#### <a name="output-a-dataframe"></a>Ausgeben eines Dataframes
 Sie können den Inhalt eines R-Dataframes mithilfe der `maml.mapOutputPort()` -Funktion als rechteckige Tabelle über den Ergebnisport "Dataset1" ausgeben. In unserem einfachen R-Skript erfolgt dies durch die folgende Zeile.
 
     maml.mapOutputPort('cadairydata')
 
-Klicken Sie nach dem Ausführen des Experiments auf den Ergebnisausgabeport "Dataset1" und dann auf **Visualisieren**. Ihre Anzeige sollte der in Abbildung 6 ähneln.
+Klicken Sie nach dem Ausführen des Experiments auf den Ergebnisausgabeport "Dataset1" und dann auf **Visualisieren**. Ihre Anzeige sollte der in Abbildung 6 ähneln.
 
 ![Visualisierung der Ausgabe der kalifornischen Milchproduktdaten][7]
 
-*Abbildung 6: Visualisierung der Ausgabe der kalifornischen Milchproduktdaten.*
+*Abbildung 6: Visualisierung der Ausgabe der kalifornischen Milchproduktdaten.*
 
 Diese Ausgabe ist identisch mit der Eingabe, genau wie erwartet.  
 
 ### <a name="r-device-output"></a>"R Device"-Ausgabe
-
 Die „R Device“-Ausgabe des [Execute R Script][execute-r-script]-Moduls enthält Meldungen und Grafikausgaben. Sowohl die Standardausgabe als auch die Standardfehlermeldungen von R werden an den "R Device"-Ausgabeport gesendet.  
 
 Um die "R Device"-Ausgabe anzuzeigen, klicken Sie auf den Port und dann auf **Visualisieren**. Die Standardausgabe und Standardfehlermeldung des R-Skripts werden wie in Abbildung 7 angezeigt.
 
 ![Standardausgabe und Standardfehlermeldung des "R Device"-Ports][8]
 
-*Abbildung 7: Standardausgabe und Standardfehlermeldung des "R Device"-Ports.*
+*Abbildung 7: Standardausgabe und Standardfehlermeldung des "R Device"-Ports.*
 
 Wenn wir nach unten scrollen, sehen wir die Grafikausgabe unseres R-Skripts wie in Abbildung 8.  
 
 ![Grafikausgabe des "R Device"-Ports][9]
 
-*Abbildung 8: Grafikausgabe des "R Device"-Ports.*  
+*Abbildung 8: Grafikausgabe des "R Device"-Ports.*  
 
-##<a name="a-idfilteringadata-filtering-and-transformation"></a><a id="filtering"></a>Filtern und Transformieren von Daten
-
+## <a name="a-idfilteringadata-filtering-and-transformation"></a><a id="filtering"></a>Filtern und Transformieren von Daten
 In diesem Abschnitt werden wir einige grundlegende Vorgänge zum Filtern und Transformieren von Daten mit den kalifornischen Milchproduktdaten ausführen. Am Ende dieses Abschnitts erhalten wir dann Daten in einem Format, das für die Erstellung eines Analysemodells geeignet ist.  
 
 Wir werden in diesem Abschnitt insbesondere mehrere allgemeine Aufgaben zur Datenbereinigung und -transformation durchführen: Typtransformationen, Filtern von Dataframes, Hinzufügen neuer, berechneter Spalten und Werttransformationen. Dieser Hintergrund sollte Ihnen beim Umgang mit den vielen Variationen, mit denen Sie in Szenarios der Realität konfrontiert werden, helfen.
@@ -364,23 +317,19 @@ Wir werden in diesem Abschnitt insbesondere mehrere allgemeine Aufgaben zur Date
 Der vollständige R-Code für diesen Abschnitt befindet sich in der ZIP-Datei, die Sie zuvor heruntergeladen haben.
 
 ### <a name="type-transformations"></a>Typtransformationen
-
 Nachdem wir nun die kalifornischen Milchproduktdaten in den R-Code im [Execute R Script][execute-r-script]-Modul einlesen können, müssen wir sicherstellen, dass die Daten in den Spalten den gewünschten Typ und das gewünschte Format aufweisen.  
 
-R ist eine dynamisch typisierte Sprache, d. h., dass die Datentypen ganz nach Bedarf vom einen in den anderen umgewandelt werden. Die atomaren Datentypen in R umfassen die Typen numerisch, logisch und Zeichen. Der Faktortyp wird verwendet, um Kategoriedaten kompakt zu speichern. Weitere Informationen zu Datentypen finden Sie in den Verweisen im [Anhang B – Weitere Informationen](#appendixb).
+R ist eine dynamisch typisierte Sprache, d. h., dass die Datentypen ganz nach Bedarf vom einen in den anderen umgewandelt werden. Die atomaren Datentypen in R umfassen die Typen numerisch, logisch und Zeichen. Der Faktortyp wird verwendet, um Kategoriedaten kompakt zu speichern. Weitere Informationen zu Datentypen finden Sie in den Verweisen im [Anhang B – Weitere Informationen](#appendixb).
 
-Wenn die Tabellendaten aus einer externen Quelle in R eingelesen werden, ist es immer eine gute Idee, die resultierenden Typen in den Spalten zu überprüfen. Möglicherweise benötigen Sie eine Spalte vom Typ "Zeichen", aber in vielen Fällen wird diese als "Faktor" oder umgekehrt angezeigt. In anderen Fällen werden die Daten in einer Spalte, die eigentlich numerisch sein sollte, als Zeichendaten dargestellt, z. B. "1,23" anstelle der Gleitkommazahl 1,23.  
+Wenn die Tabellendaten aus einer externen Quelle in R eingelesen werden, ist es immer eine gute Idee, die resultierenden Typen in den Spalten zu überprüfen. Möglicherweise benötigen Sie eine Spalte vom Typ "Zeichen", aber in vielen Fällen wird diese als "Faktor" oder umgekehrt angezeigt. In anderen Fällen werden die Daten in einer Spalte, die eigentlich numerisch sein sollte, als Zeichendaten dargestellt, z. B. "1,23" anstelle der Gleitkommazahl 1,23.  
 
 Glücklicherweise lassen sich die Typen einfach untereinander, solange eine Zuordnung möglich ist. Zum Beispiel können Sie "Nevada" nicht in einen numerischen Wert konvertieren, aber Sie können es in einen Faktor (Kategorievariable) konvertieren. Als weiteres Beispiel können Sie eine numerische 1 in ein Zeichen "1" oder einen Faktor konvertieren.  
 
 Die Syntax für jede dieser Konvertierungen ist einfach: `as.datatype()`. Diese Typkonvertierungsfunktionen umfassen Folgendes:
 
 * `as.numeric()`
-
 * `as.character()`
-
 * `as.logical()`
-
 * `as.factor()`
 
 Untersuchen der Datentypen der Spalten, die wir im vorherigen Abschnitt eingegeben haben: Alle Spalten sind vom Typ "numerisch", mit Ausnahme der Spalte mit der Bezeichnung "Month", die vom Typ "Zeichen" ist. Lassen Sie uns nun diese Spalte in den Typ "Faktor" konvertieren und die Ergebnisse testen.  
@@ -399,7 +348,7 @@ Ich haben die Zeile gelöscht, die die Punktdiagrammmatrix erstellt, und eine Ze
     ## Azure Machine Learning Studio
     maml.mapOutputPort('cadairydata')
 
-Führen wir nun diesen Code aus, und sehen wir uns die Ausgabe des R-Skripts an. Die relevanten Daten aus dem Protokoll werden in Abbildung 9 gezeigt.
+Führen wir nun diesen Code aus, und sehen wir uns die Ausgabe des R-Skripts an. Die relevanten Daten aus dem Protokoll werden in Abbildung 9 gezeigt.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -427,7 +376,7 @@ Führen wir nun diesen Code aus, und sehen wir uns die Ausgabe des R-Skripts an.
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Abbildung 9: Zusammenfassung des Dataframes mit einer Faktor-Variable.*
+*Abbildung 9: Zusammenfassung des Dataframes mit einer Faktor-Variable.*
 
 Der Typ von "Month" sollte nun "**Factor w/ 14 levels**" lauten. Dies ist ein Problem, weil es nur 12 Monate pro Jahr gibt. Sie können auch überprüfen, ob der Typ in **Visualize** des „Result Dataset“-Ports **Categorical** ist.
 
@@ -436,7 +385,7 @@ Das Problem ist, dass die Spalte "Month" nicht systematisch codiert wurde. In ei
     ## Ensure the coding is consistent and convert column to a factor
     cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 
-Führen Sie das Experiment erneut aus, und zeigen Sie die Ausgabe an. Die erwarteten Ergebnisse werden in Abbildung 10 dargestellt.  
+Führen Sie das Experiment erneut aus, und zeigen Sie die Ausgabe an. Die erwarteten Ergebnisse werden in Abbildung 10 dargestellt.  
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -464,24 +413,26 @@ Führen Sie das Experiment erneut aus, und zeigen Sie die Ausgabe an. Die erwart
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Abbildung 10: Zusammenfassung des Dataframes mit korrekter Anzahl von Faktorebenen.*
+*Abbildung 10: Zusammenfassung des Dataframes mit korrekter Anzahl von Faktorebenen.*
 
 Unsere Faktor-Variable verfügt jetzt über die gewünschten 12 Ebenen.
 
-###<a name="basic-data-frame-filtering"></a>Grundlegendes Filtern von Dataframes
-
-R-Dataframes unterstützen leistungsstarke Filterfunktionen. Datasets können mithilfe von auf Zeilen oder Spalten angewendeten logischen Filtern in Teilmengen unterteilt werden. In vielen Fällen sind komplexe Filterkriterien erforderlich. Die Verweise in [Anhang B – Weitere Informationen](#appendixb) enthalten ausführliche Beispiele zum Filtern von Dataframes.  
+### <a name="basic-data-frame-filtering"></a>Grundlegendes Filtern von Dataframes
+R-Dataframes unterstützen leistungsstarke Filterfunktionen. Datasets können mithilfe von auf Zeilen oder Spalten angewendeten logischen Filtern in Teilmengen unterteilt werden. In vielen Fällen sind komplexe Filterkriterien erforderlich. Die Verweise in [Anhang B – Weitere Informationen](#appendixb) enthalten ausführliche Beispiele zum Filtern von Dataframes.  
 
 Wir sollten unser Dataset ein wenig filtern. Wenn Sie die Spalten im Dataframe "cadariydata" betrachten, sehen Sie zwei nicht benötigte Spalten. Die erste Spalte enthält lediglich eine Zeilennummer, die nicht sehr nützlich ist. Die zweite Spalte, "Year.Month", enthält redundante Informationen. Wir können diese Spalten ganz einfach mithilfe des folgenden R-Codes ausschließen.
 
-> [AZURE.NOTE] Von nun an zeige ich Ihnen in diesem Abschnitt nur noch den zusätzlichen Code, den wir im [Execute R Script][execute-r-script]-Modul hinzufügen. Alle neuen Zeilen werden **vor** der `str()`-Funktion eingefügt. Wir verwenden diese Funktion zum Überprüfen unserer Ergebnisse in Azure Machine Learning Studio.
+> [!NOTE]
+> Von nun an zeige ich Ihnen in diesem Abschnitt nur noch den zusätzlichen Code, den wir im [Execute R Script][execute-r-script]-Modul hinzufügen. Alle neuen Zeilen werden **vor** der `str()`-Funktion eingefügt. Wir verwenden diese Funktion zum Überprüfen unserer Ergebnisse in Azure Machine Learning Studio.
+> 
+> 
 
 Wir fügen die folgende Zeile dem R-Code im [Execute R Script][execute-r-script]-Modul hinzu.
 
     # Remove two columns we do not need
     cadairydata <- cadairydata[, c(-1, -2)]
 
-Führen Sie diesen Code in Ihrem Experiment aus, und überprüfen Sie das Ergebnis im Ausgabeprotokoll. Die Ergebnisse werden in Abbildung 11 dargestellt.
+Führen Sie diesen Code in Ihrem Experiment aus, und überprüfen Sie das Ergebnis im Ausgabeprotokoll. Die Ergebnisse werden in Abbildung 11 dargestellt.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -505,12 +456,11 @@ Führen Sie diesen Code in Ihrem Experiment aus, und überprüfen Sie das Ergebn
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Abbildung 11: Zusammenfassung des Dataframes mit zwei entfernten Spalten.*
+*Abbildung 11: Zusammenfassung des Dataframes mit zwei entfernten Spalten.*
 
 Gute Nachrichten! Wir haben die erwarteten Ergebnisse erhalten.
 
-###<a name="add-a-new-column"></a>Hinzufügen einer neuen Spalte
-
+### <a name="add-a-new-column"></a>Hinzufügen einer neuen Spalte
 Beim Erstellen von Zeitreihenmodellen ist es praktisch, wenn eine Spalte vorhanden ist, die die Monate seit dem Start der Zeitreihe enthält. Wir erstellen eine neue Spalte "Month.Count".
 
 Zur besseren Organisation des Codes erstellen wir unsere erste einfache Funktion: `num.month()`. Wir wenden diese Funktion dann an, um im Dataframe eine neue Spalte zu erstellen. Der neue Code lautet wie folgt:
@@ -555,15 +505,14 @@ Führen Sie nun das aktualisierte Experiment aus, und überprüfen Sie die Ergeb
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Abbildung 12: Zusammenfassung des Dataframes mit der zusätzlichen Spalte.*
+*Abbildung 12: Zusammenfassung des Dataframes mit der zusätzlichen Spalte.*
 
 Es scheint alles zu funktionieren. Wir haben jetzt die neue Spalte mit den erwarteten Werten in unserem Dataframe.
 
-###<a name="value-transformations"></a>Werttransformationen
+### <a name="value-transformations"></a>Werttransformationen
+In diesem Abschnitt führen wir einige einfache Transformationen der Werte in einigen Spalten unseres Dataframes durch. Die R-Sprache unterstützt nahezu beliebige Werttransformationen. Die Verweise in [Anhang B – Weitere Informationen](#appendixb) enthalten ausführliche Beispiele.
 
-In diesem Abschnitt führen wir einige einfache Transformationen der Werte in einigen Spalten unseres Dataframes durch. Die R-Sprache unterstützt nahezu beliebige Werttransformationen. Die Verweise in [Anhang B – Weitere Informationen](#appendixb) enthalten ausführliche Beispiele.
-
-Wenn Sie sich die Werte in den Zusammenfassungen unseres Dataframes ansehen, sollte Ihnen etwas unpassend vorkommen. Wird in Kalifornien mehr Speiseeis erzeugt, als Milch produziert wird? Nein, natürlich nicht, da dies sinnlos ist, wenn diese Tatsache die Eisliebhaber unter uns auch traurig stimmen mag. Die Einheiten sind unterschiedlich. Der Preis wird in Einheiten von US-Pfund angegeben, Milch in Einheiten von 1 M US-Pfund und Speiseeis in Einheiten von 1.000 US-Gallonen sowie Hüttenkäse in Einheiten von 1.000 US-Pfund. Wenn Speiseeis z. B. ca. 6,5 Pfund pro Gallone wiegt, können wir ganz einfach die Multiplikation durchführen, um diese Werte so zu konvertieren, dass sie alle in gleichen Einheiten von 1.000 Pfund angegeben werden.
+Wenn Sie sich die Werte in den Zusammenfassungen unseres Dataframes ansehen, sollte Ihnen etwas unpassend vorkommen. Wird in Kalifornien mehr Speiseeis erzeugt, als Milch produziert wird? Nein, natürlich nicht, da dies sinnlos ist, wenn diese Tatsache die Eisliebhaber unter uns auch traurig stimmen mag. Die Einheiten sind unterschiedlich. Der Preis wird in Einheiten von US-Pfund angegeben, Milch in Einheiten von 1 M US-Pfund und Speiseeis in Einheiten von 1.000 US-Gallonen sowie Hüttenkäse in Einheiten von 1.000 US-Pfund. Wenn Speiseeis z. B. ca. 6,5 Pfund pro Gallone wiegt, können wir ganz einfach die Multiplikation durchführen, um diese Werte so zu konvertieren, dass sie alle in gleichen Einheiten von 1.000 Pfund angegeben werden.
 
 Für unser Vorhersagemodell verwenden wir ein multiplikatives Modell für die Trend- und saisonale Anpassung dieser Daten. Eine logarithmische Transformation ermöglicht uns, ein lineares Modell zu verwenden, was diesen Prozess vereinfacht. Wir können die logarithmische Transformation in derselben Funktion anwenden, in der der Multiplikator angewendet wird.
 
@@ -607,14 +556,11 @@ Ziel der defensiven Programmierung ist es, den Ausfall einer einzelnen Funktion 
 Wenn Sie mit der defensiven Programmierung in R nicht vertraut sind, kann dieser Code ein wenig verwirrend sein. Wir gehen die wichtigsten Schritte gemeinsam durch:
 
 1. Ein Vektor aus vier Meldungen wird definiert. Diese dienen der Kommunikation von Informationen über einige der möglichen Fehler und Ausnahmen, die bei diesem Code auftreten können.
-
 2. Für jeden Fall geben wir einen Wert von "NA" zurück. Es gibt viele weitere Möglichkeiten, die eventuell weniger Nebeneffekte haben. Wir könnten einen Vektor aus Nullen zurückgeben oder z. B. den ursprünglichen Eingabevektor.
-
-3. Es werden Tests mit den Argumenten der Funktion ausgeführt. In jedem Fall wird beim Erkennen eines Fehlers ein Standardwert zurückgegeben und von der `warning()`-Funktion eine Meldung erzeugt. Wir verwenden `warning()` anstelle von `stop()`, da die letztere Funktion die Ausführung beendet – und genau das versuchen wir zu vermeiden. Beachten Sie, dass dieser Code in einem prozeduralen Stil geschrieben ist, da in diesem Fall ein funktionaler Ansatz zu komplex und undurchsichtig erschien.
-
+3. Es werden Tests mit den Argumenten der Funktion ausgeführt. In jedem Fall wird beim Erkennen eines Fehlers ein Standardwert zurückgegeben und von der `warning()`-Funktion eine Meldung erzeugt. Wir verwenden `warning()` anstelle von `stop()`, da die letztere Funktion die Ausführung beendet – und genau das versuchen wir zu vermeiden. Beachten Sie, dass dieser Code in einem prozeduralen Stil geschrieben ist, da in diesem Fall ein funktionaler Ansatz zu komplex und undurchsichtig erschien.
 4. Die logarithmischen Berechnungen sind in `tryCatch()` eingeschlossen, damit Ausnahmen keine abrupte Unterbrechung der Verarbeitung verursachen können. Ohne `tryCatch()` erzeugen die meisten von R-Funktionen ausgelösten Fehler ein Stoppsignal (Beenden), was genau dies bewirkt.
 
-Führen Sie diesen R-Code in Ihrem Experiment aus, und sehen Sie sich die Ausgabe in der Datei "output.log" an. Es werden die transformierten Werte der vier Spalten im Protokoll wie in Abbildung 13 dargestellt angezeigt.
+Führen Sie diesen R-Code in Ihrem Experiment aus, und sehen Sie sich die Ausgabe in der Datei "output.log" an. Es werden die transformierten Werte der vier Spalten im Protokoll wie in Abbildung 13 dargestellt angezeigt.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -640,40 +586,36 @@ Führen Sie diesen R-Code in Ihrem Experiment aus, und sehen Sie sich die Ausgab
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Abbildung 13: Zusammenfassung der transformierten Werte im Dataframe.*
+*Abbildung 13: Zusammenfassung der transformierten Werte im Dataframe.*
 
 Wir sehen, dass die Werte transformiert wurden. Die Milchproduktion überschreitet nun erheblich die Produktion aller anderen Milchprodukte, wobei Sie sich in Erinnerung rufen müssen, dass wir jetzt eine logarithmische Skalierung verwenden.
 
 An diesem Punkt sind unsere Daten bereinigt, und wir sind zur Modellierung bereit. Wenn Sie die Visualisierungszusammenfassung für die Ausgabe „Result Dataset“ unseres [Execute R Script][execute-r-script]-Moduls betrachten, stellen Sie fest, dass die Spalte „Month“ genau wie beabsichtigt „Categorical“ mit 12 eindeutigen Werten ist.
 
-##<a name="a-idtimeseriesatime-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>Zeitreihenobjekte und Korrelationsanalyse
-
+## <a name="a-idtimeseriesatime-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>Zeitreihenobjekte und Korrelationsanalyse
 In diesem Abschnitt behandeln wir ein paar grundlegende R-Zeitreihenobjekte und analysieren die Korrelationen zwischen einigen der Variablen. Unser Ziel ist es, ein Dataframe auszugeben, das die paarweisen Korrelationsinformationen an mehreren Verzögerungen enthält.
 
 Der vollständige R-Code für diesen Abschnitt befindet sich in der ZIP-Datei, die Sie zuvor heruntergeladen haben.
 
-###<a name="time-series-objects-in-r"></a>Zeitreihenobjekte in R
-
+### <a name="time-series-objects-in-r"></a>Zeitreihenobjekte in R
 Wie bereits erwähnt, sind Zeitreihen Reihen von Datenwerten, die einen Zeitindex besitzen. R-Zeitreihenobjekte dienen zum Erstellen und Verwalten des Zeitindex. Es gibt mehrere Vorteile bei der Verwendung von Zeitreihenobjekten. Zeitreihenobjekte übernehmen für Sie zahlreiche Details der Verwaltung der Zeitreihen-Indexwerte, die im Objekt gekapselt sind. Darüber hinaus ermöglichen Zeitreihenobjekte die Verwendung der zahlreichen Zeitreihenmethoden zum Plotten, Drucken, Modellieren usw.
 
 Die Zeitreihenklasse "POSIXct" wird häufig verwendet und ist relativ einfach. Diese Zeitreihenklasse misst die Zeit seit Beginn der Epoche, 1. Januar 1970. Wir verwenden in diesem Beispiel POSIXct-Zeitreihenobjekte. Andere weit verbreitete R-Zeitreihen-Objektklassen umfassen "zoo" und "xts", die "extensible time series" (erweiterbare Zeitreihe).
 <!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ### <a name="time-series-object-example"></a>Beispiel für Zeitreihenobjekte
-
 Beginnen wir mit unserem Beispiel. Ziehen Sie ein **neues** [Execute R Script][execute-r-script]-Modul per Drag & Drop in Ihr Experiment. Verbinden Sie den „Result Dataset1“-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem „Dataset1“-Eingabeport des neuen [Execute R Script][execute-r-script]-Moduls.
 
 Wie bei den ersten Beispielen werden auch hier beim Durchlaufen des Beispiels an einigen Stellen nur die inkrementellen, zusätzlichen R-Codezeilen im jeweiligen Schritt gezeigt.  
 
-####    <a name="reading-the-dataframe"></a>Lesen des Dataframes
-
+#### <a name="reading-the-dataframe"></a>Lesen des Dataframes
 Als ersten Schritt lesen wir einen Dataframe ein und stellen sicher, dass wir die erwarteten Ergebnisse erhalten. Der folgende Code sollte diese Aufgabe erledigen:
 
     # Comment the following if using RStudio
     cadairydata <- maml.mapInputPort(1)
     str(cadairydata) # Check the results
 
-Führen Sie jetzt das Experiment aus. Das Protokoll für die neue Form von "Execute R Script" sollte wie in Abbildung 14 aussehen.
+Führen Sie jetzt das Experiment aus. Das Protokoll für die neue Form von "Execute R Script" sollte wie in Abbildung 14 aussehen.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -695,12 +637,11 @@ Führen Sie jetzt das Experiment aus. Das Protokoll für die neue Form von "Exec
     [ModuleOutput] 
     [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
 
-*Abbildung 14: Zusammenfassung des Dataframes im "Execute R Script"-Modul.*
+*Abbildung 14: Zusammenfassung des Dataframes im "Execute R Script"-Modul.*
 
 Diese Daten haben die erwarteten Typen und Formate. Beachten Sie, dass die Spalte "Month" vom Typ "Faktor" ist und die erwartete Anzahl von Ebenen besitzt.
 
-####<a name="creating-a-time-series-object"></a>Erstellen eines Zeitreihenobjekts
-
+#### <a name="creating-a-time-series-object"></a>Erstellen eines Zeitreihenobjekts
 Wir müssen unserem Dataframe ein Zeitreihenobjekt hinzufügen. Ersetzen Sie den aktuellen Code durch den folgenden, der eine neue Spalte der "POSIXct"-Klasse hinzufügt.
 
     # Comment the following if using RStudio
@@ -736,12 +677,11 @@ Prüfen Sie jetzt das Protokoll. Diese sollte wie in Abbildung 15 aussehen.
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*Abbildung 15: Zusammenfassung des Dataframes mit einem Zeitreihenobjekt.*
+*Abbildung 15: Zusammenfassung des Dataframes mit einem Zeitreihenobjekt.*
 
 In der Zusammenfassung können wir sehen, dass die neue Spalte tatsächlich zur POSIXct-Klasse gehört.
 
-###<a name="exploring-and-transforming-the-data"></a>Untersuchen und Transformieren der Daten
-
+### <a name="exploring-and-transforming-the-data"></a>Untersuchen und Transformieren der Daten
 Lassen Sie uns einige der Variablen in diesem DataSet untersuchen. Eine Streudiagrammmatrix ist eine gute Möglichkeit, um einen schnellen Einblick zu gewinnen. Wir ersetzen die `str()` -Funktion im vorherigen R-Code durch die folgende Zeile:
 
     pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata, main = "Pairwise Scatterplots of dairy time series")
@@ -750,12 +690,11 @@ Führen Sie diesen Code aus, und sehen Sie, was passiert. Die am "R Device"-Port
 
 ![Punktdiagrammmatrix der ausgewählten Variablen][17]
 
-*Abbildung 16: Punktdiagrammmatrix der ausgewählten Variablen.*
+*Abbildung 16: Punktdiagrammmatrix der ausgewählten Variablen.*
 
 Es gibt eine seltsam aussehende Struktur in den Beziehungen zwischen diesen Variablen. Möglicherweise wird diese von Trends in den Daten und durch die Tatsache erzeugt, dass wir die Variablen nicht standardisiert haben.
 
-###<a name="correlation-analysis"></a>Korrelationsanalyse
-
+### <a name="correlation-analysis"></a>Korrelationsanalyse
 Um die Korrelationsanalyse durchzuführen, müssen wir Trends aus den Variablen entfernen und sie standardisieren. Wir könnten einfach die R-Funktion `scale()` verwenden, die Variablen sowohl zentriert als auch skaliert. Diese Funktion dürfte schneller ausgeführt werden. Ich möchte Ihnen aber ein Beispiel für defensive Programmierung in R zeigen.
 
 Die unten dargestellte `ts.detrend()` -Funktion führt diesen beiden Vorgänge aus. Die folgenden zwei Codezeilen entfernen Trends aus den Daten und standardisieren dann die Werte.
@@ -811,11 +750,11 @@ Beachten Sie, dass die für die Beseitigung von Trends verwendete lineare Regres
 
 Nachdem `ts.detrend()` definiert wurde, wenden wir die Funktion auf die für uns interessanten Variablen in unserem Dataframe an. Wir müssen die resultierende Liste, die von `lapply()` erstellt wurde, mithilfe von `as.data.frame()` in ein Dataframe umwandeln. Aufgrund der defensiven Aspekte von `ts.detrend()`verhindert ein Fehler bei der Verarbeitung einer der Variablen nicht die ordnungsgemäße Verarbeitung der anderen.  
 
-Die letzte Zeile des Codes erstellt ein paarweises Streudiagramm. Nach der Ausführung des R-Codes werden die Ergebnisse des Punktdiagramms in Abbildung 17 dargestellt.
+Die letzte Zeile des Codes erstellt ein paarweises Streudiagramm. Nach der Ausführung des R-Codes werden die Ergebnisse des Punktdiagramms in Abbildung 17 dargestellt.
 
 ![Paarweises Punktdiagramm der von Trends befreiten und standardisierten Zeitreihe][18]
 
-*Abbildung 17: Paarweises Punktdiagramm der von Trends befreiten und standardisierten Zeitreihe.*
+*Abbildung 17: Paarweises Punktdiagramm der von Trends befreiten und standardisierten Zeitreihe.*
 
 Sie können diese Ergebnisse mit den in Abbildung 16 dargestellten vergleichen. Nachdem Trends aus den Variablen entfernt und sie standardisiert wurden, sehen wir viel weniger Strukturen in den Beziehungen zwischen diesen Variablen.
 
@@ -835,7 +774,7 @@ Der Code zum Berechnen der Korrelationen als ccf-Objekte in R lautet wie folgt:
 
     cadairycorrelations
 
-Das Ausführen des Codes erzeugt das in Abbildung 18 dargestellte Protokoll.
+Das Ausführen des Codes erzeugt das in Abbildung 18 dargestellte Protokoll.
 
     [ModuleOutput] Loading objects:
     [ModuleOutput]   port1
@@ -889,12 +828,11 @@ Das Ausführen des Codes erzeugt das in Abbildung 18 dargestellte Protokoll.
     [ModuleOutput]     -1      0      1 
     [ModuleOutput] -0.002 -0.074 -0.124 
 
-*Abbildung 18: Liste der ccf-Objekte aus der paarweisen Korrelationsanalyse.*
+*Abbildung 18: Liste der ccf-Objekte aus der paarweisen Korrelationsanalyse.*
 
 Es gibt einen Korrelationswert für jede Verzögerung. Keiner dieser Korrelationswerte ist groß genug, um signifikant zu sein. Wir können daher daraus schließen, dass wir jede Variable unabhängig modellieren können.
 
-###<a name="output-a-dataframe"></a>Ausgeben eines Dataframes
-
+### <a name="output-a-dataframe"></a>Ausgeben eines Dataframes
 Wir haben die paarweisen Korrelationen als Liste von ccf-Objekten in R berechnet. Dies stellt ein gewisses Problem dar, da der "Result Dataset"-Ausgabeport tatsächlich ein Dataframe erfordert. Darüber hinaus ist das ccf-Objekt selbst eine Liste, und wir benötigen nur die Werte im ersten Element dieser Liste, also die Korrelationen an den verschiedenen Verzögerungen.
 
 Der folgende Code extrahiert die Verzögerungswerte aus der Liste der ccf-Objekte, die ihrerseits aufgelistet werden:
@@ -923,22 +861,19 @@ Der folgende Code extrahiert die Verzögerungswerte aus der Liste der ccf-Objekt
 
 Die erste Codezeile ist etwas schwieriger, doch einige Erläuterungen sollten Ihnen helfen, sie zu verstehen. Wenn wir von innen nach außen vorgehen, erhalten wir Folgendes:
 
-1.  Der '**[[**'-Operator wählt mit dem '**1**'-Argument den Vektor der Korrelationen an den Verzögerungen aus dem ersten Element der ccf-Objektliste aus.
-
-2.  Die `do.call()`-Funktion wendet die `rbind()`-Funktion auf die Elemente der Liste an, die von `lapply()` zurückgegeben wird.
-
-3.  Die `data.frame()`-Funktion wandelt das von `do.call()` erzeugte Ergebnis in ein Dataframe um.
+1. Der '**[[**'-Operator wählt mit dem '**1**'-Argument den Vektor der Korrelationen an den Verzögerungen aus dem ersten Element der ccf-Objektliste aus.
+2. Die `do.call()`-Funktion wendet die `rbind()`-Funktion auf die Elemente der Liste an, die von `lapply()` zurückgegeben wird.
+3. Die `data.frame()`-Funktion wandelt das von `do.call()` erzeugte Ergebnis in ein Dataframe um.
 
 Beachten Sie, dass sich die Zeilennamen in einer Spalte des Dataframes befinden. Auf diese Weise bleiben die Zeilennamen erhalten, wenn sie von [Execute R Script][execute-r-script] ausgegeben werden.
 
-Das Ausführen des Codes erzeugt die in Abbildung 19 dargestellte Ausgabe, wenn Sie die Ausgabe am "Result Dataset"-Port **Visualisieren** . Die Zeilennamen sind wie vorgesehen in der ersten Spalte.
+Das Ausführen des Codes erzeugt die in Abbildung 19 dargestellte Ausgabe, wenn Sie die Ausgabe am "Result Dataset"-Port **Visualisieren** . Die Zeilennamen sind wie vorgesehen in der ersten Spalte.
 
 ![Ergebnisausgabe der Korrelationsanalyse][20]
 
-*Abbildung 19: Ergebnisausgabe der Korrelationsanalyse.*
+*Abbildung 19: Ergebnisausgabe der Korrelationsanalyse.*
 
-##<a name="a-idseasonalforecastingatime-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>Zeitreihenbeispiel: saisonale Vorhersagen
-
+## <a name="a-idseasonalforecastingatime-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>Zeitreihenbeispiel: saisonale Vorhersagen
 Unsere Daten liegen nun in einer Form vor, die für die Analyse geeignet ist, und wir haben festgestellt, dass keine nennenswerten Korrelationen zwischen den Variablen bestehen. Lassen Sie uns nun fortfahren und ein Zeitreihen-Vorhersagemodell erstellen. Mit diesem Modell werden wir die kalifornische Milchproduktion für die 12 Monate von 2013 vorhersagen.
 
 Unser Vorhersagemodell wird aus zwei Komponenten bestehen: einer Trendkomponente und einer saisonalen Komponente. Die vollständige Vorhersage ist das Produkt aus diesen beiden Komponenten. Dieser Typ von Modell ist auch als multiplikatives Modell bekannt. Die Alternative ist ein additives Modell. Wir haben bereits eine logarithmische Transformation auf die betreffenden Variablen angewendet, wodurch diese Analyse kontrollierbar wird.
@@ -946,12 +881,11 @@ Unser Vorhersagemodell wird aus zwei Komponenten bestehen: einer Trendkomponente
 Der vollständige R-Code für diesen Abschnitt befindet sich in der ZIP-Datei, die Sie zuvor heruntergeladen haben.
 
 ### <a name="creating-the-dataframe-for-analysis"></a>Erstellen des Dataframes für die Analyse
-
 Beginnen Sie damit, dass Sie Ihrem Experiment ein **neues** [Execute R Script][execute-r-script]-Modul hinzufügen. Verbinden Sie den **Result Datase**t-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem **Dataset1**-Eingabeport des neuen Moduls. Das Ergebnis sollte in etwa wie in Abbildung 20 aussehen.
 
 ![Das Experiment mit hinzugefügtem neuem "Execute R Script"-Modul][21]
 
-*Abbildung 20: Das Experiment mit hinzugefügtem neuem "Execute R Script"-Modul.*
+*Abbildung 20: Das Experiment mit hinzugefügtem neuem "Execute R Script"-Modul.*
 
 Wie bei der gerade abgeschlossenen Korrelationsanalyse, müssen wir eine Spalte mit einem POSIXct-Zeitreihenobjekt hinzufügen. Der folgende Code soll genau diese Aufgabe erledigen:
 
@@ -988,12 +922,11 @@ Führen Sie diesen Code aus, und überprüfen Sie das Protokoll. Das Ergebnis so
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*Abbildung 21: Eine Zusammenfassung des Dataframes.*
+*Abbildung 21: Eine Zusammenfassung des Dataframes.*
 
 Mit diesem Ergebnis sind wir bereit, um unsere Analyse zu starten.
 
-###<a name="create-a-training-dataset"></a>Erstellen eines Trainings-DataSets
-
+### <a name="create-a-training-dataset"></a>Erstellen eines Trainings-DataSets
 Mit dem erzeugten Dataframe müssen wir ein Trainings-Dataset erstellen. Diese Daten enthalten dann alle Beobachtungen im Jahr 2013, außer den letzten 12, bei denen es sich um unser Testdataset handelt. Der folgende Code unterteilt das Dataframe in Teilmengen und erstellt grafische Darstellungen der Milchproduktions- und -preisvariablen. Anschließend erstellen wir grafische Darstellungen der vier Produktions- und Preisvariablen. Es wird eine anonyme Funktion verwendet, um einige Argumente zur grafischen Darstellung zu definieren und dann eine Iteration durch die Liste der anderen beiden Argumente mit `Map()`durchzuführen. Wenn Sie der Meinung sind, dass an dieser Stelle auch eine For-Schleife gut funktioniert hätte, liegen Sie richtig. Aber da R eine funktionale Sprache ist, zeigen wir Ihnen hier einen funktionalen Ansatz.
 
     cadairytrain <- cadairydata[1:216, ]
@@ -1015,10 +948,9 @@ Das Ausführen des Codes erzeugt die Serie von Zeitreihengrafiken aus der "R Dev
 
 ![Vierte Zeitreihengrafik von kalifornischen Milchproduktions- und -preisdaten](./media/machine-learning-r-quickstart/unnamed-chunk-164.png)
 
-*Abbildung 22: Zeitreihengrafiken von kalifornischen Milchproduktions- und -preisdaten.*
+*Abbildung 22: Zeitreihengrafiken von kalifornischen Milchproduktions- und -preisdaten.*
 
 ### <a name="a-trend-model"></a>Ein Trendmodell
-
 Nachdem wir nun ein Zeitreihenobjekt erstellt und uns die Daten angesehen haben, beginnen wir nun damit, ein Trendmodell für die kalifornischen Milchproduktionsdaten zu erstellen. Hierzu können wir eine Zeitreihenregression verwenden. Aus der Grafik wird jedoch deutlich, dass wir mehr als eine Steigung (slope) und ein konstantes Glied (intercept) benötigen, um den in den Trainingsdaten beobachteten Trend präzise zu modellieren.
 
 Angesichts des geringen Umfangs der Daten erstellen wir das Modell für den Trend in RStudio, schneiden das resultierende Modell dann aus und fügen es in Azure Machine Learning ein. RStudio bietet eine interaktive Umgebung für diese Art von interaktiver Analyse.
@@ -1081,7 +1013,7 @@ Diese generiert Folgendes:
 
 Das sieht schon besser aus. Alle Terme sind signifikant. Der "2e-16"-Wert ist aber ein Standardwert und sollte nicht zu ernst genommen werden.  
 
-Als Funktionstest erstellen wir eine Zeitreihengrafik der kalifornischen Milchproduktionsdaten mit der angezeigten Trendkurve. Ich habe den folgenden Code im [Execute R Script][execute-r-script]-Modul von Azure Machine Learning (nicht in RStudio) hinzugefügt, um das Modell sowie eine Grafik davon zu erstellen. Das Ergebnis wird in Abbildung 23 dargestellt.
+Als Funktionstest erstellen wir eine Zeitreihengrafik der kalifornischen Milchproduktionsdaten mit der angezeigten Trendkurve. Ich habe den folgenden Code im [Execute R Script][execute-r-script]-Modul von Azure Machine Learning (nicht in RStudio) hinzugefügt, um das Modell sowie eine Grafik davon zu erstellen. Das Ergebnis wird in Abbildung 23 dargestellt.
 
     milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1090,12 +1022,11 @@ Als Funktionstest erstellen wir eine Zeitreihengrafik der kalifornischen Milchpr
 
 ![Kalifornische Milchproduktionsdaten mit angezeigtem Trendmodell](./media/machine-learning-r-quickstart/unnamed-chunk-18.png)
 
-*Abbildung 23: Kalifornische Milchproduktionsdaten mit angezeigtem Trendmodell.*
+*Abbildung 23: Kalifornische Milchproduktionsdaten mit angezeigtem Trendmodell.*
 
 Es sieht so aus, als ob das Trendmodell ziemlich gut den Daten angepasst ist. Darüber hinaus scheint es keine Anzeichen für Überanpassung zu geben, wie z. B. merkwürdige Ausreißer in der Modellkurve.  
 
-###<a name="seasonal-model"></a>Saisonales Modell
-
+### <a name="seasonal-model"></a>Saisonales Modell
 Mit dem uns jetzt zur Verfügung stehenden Trendmodell fahren wir fort und berücksichtigen die saisonalen Auswirkungen. Wir verwenden den Monat des Jahres als Platzhaltervariable im linearen Modell, um die Auswirkungen von Monat zu Monat zu erfassen. Beachten Sie, dass bei Einführung von Faktorvariablen in einem Modell das konstante Glied nicht berechnet werden darf. Wenn Sie dies versäumen, ist die Gleichung überspezifiziert, und R lässt einen der gewünschten Faktoren fallen, behält aber den konstanten Gliedterm bei.
 
 Da wir ein zufriedenstellendes Trendmodell haben, können wir die `update()` -Funktion verwenden, um dem vorhandenen Modell die neuen Terme hinzuzufügen. Durch die "-1" in der "update"-Gleichung wird der konstante Gliedterm fallen gelassen. Für den Moment fahren wir in RStudio fort:
@@ -1146,11 +1077,11 @@ Lassen Sie uns eine weitere Zeitreihengrafik der kalifornischen Milchproduktions
     plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
     lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 
-Das Ausführen des Codes in Azure Machine Learning erzeugt die in Abbildung 24 dargestellte Grafik.
+Das Ausführen des Codes in Azure Machine Learning erzeugt die in Abbildung 24 dargestellte Grafik.
 
 ![Kalifornische Milchproduktion mit Modell einschließlich saisonaler Auswirkungen](./media/machine-learning-r-quickstart/unnamed-chunk-20.png)
 
-*Abbildung 24: Kalifornische Milchproduktion mit Modell, einschließlich saisonaler Auswirkungen.*
+*Abbildung 24: Kalifornische Milchproduktion mit Modell, einschließlich saisonaler Auswirkungen.*
 
 Die in Abbildung 24 dargestellte Anpassung an die Daten ist ziemlich vielversprechend. Sowohl der Trend als auch die saisonalen Auswirkungen (monatliche Variation) sehen vernünftig aus.
 
@@ -1168,18 +1099,18 @@ Die Residuengrafik sehen Sie in Abbildung 25.
 
 ![Restdaten des saisonalen Modells für die Trainingsdaten](./media/machine-learning-r-quickstart/unnamed-chunk-21.png)
 
-*Abbildung 25: Restdaten des saisonalen Modells für die Trainingsdaten.*
+*Abbildung 25: Restdaten des saisonalen Modells für die Trainingsdaten.*
 
 Die Restwerte sehen vernünftig aus. Es gibt keine bestimmte Struktur, mit Ausnahme der Auswirkungen der Rezession 2008 bis 2009, die unser Modell nicht besonders gut abbildet.
 
-Die in Abbildung 25 dargestellte Grafik eignet sich zum Erkennen von zeitabhängigen Mustern in den Restdaten. Durch den verwendeten expliziten Ansatz der Berechnung und Darstellung der Residuale werden diese in zeitlicher Reihenfolge in der Grafik platziert. Wenn wir die Grafik mit `milk.lm$residuals`erstellt hätten, würde die Grafik nicht die zeitliche Reihenfolge widerspiegeln.
+Die in Abbildung 25 dargestellte Grafik eignet sich zum Erkennen von zeitabhängigen Mustern in den Restdaten. Durch den verwendeten expliziten Ansatz der Berechnung und Darstellung der Residuale werden diese in zeitlicher Reihenfolge in der Grafik platziert. Wenn wir die Grafik mit `milk.lm$residuals`erstellt hätten, würde die Grafik nicht die zeitliche Reihenfolge widerspiegeln.
 
 Sie können auch `plot.lm()` verwenden, um eine Reihe von Diagnosegrafiken zu erzeugen:
 
     ## Show the diagnostic plots for the model
     plot(milk.lm2, ask = FALSE)
 
-Dieser Code erzeugt eine Reihe von Diagnosegrafiken, die in Abbildung 26 dargestellt sind.
+Dieser Code erzeugt eine Reihe von Diagnosegrafiken, die in Abbildung 26 dargestellt sind.
 
 ![Erste Diagnosegrafik für das saisonale Modell](./media/machine-learning-r-quickstart/unnamed-chunk-221.png)
 
@@ -1189,12 +1120,11 @@ Dieser Code erzeugt eine Reihe von Diagnosegrafiken, die in Abbildung 26 darges
 
 ![Vierte Diagnosegrafik für das saisonale Modell](./media/machine-learning-r-quickstart/unnamed-chunk-224.png)
 
-*Abbildung 26: Diagnosegrafiken für das saisonale Modell.*
+*Abbildung 26: Diagnosegrafiken für das saisonale Modell.*
 
 In diesen Grafiken werden einige hoch einflussreiche Größen identifiziert, aber nichts, was uns Sorgen bereiten sollte. Außerdem können wir in der "Normal Q-Q"-Grafik ablesen, dass die Residuale fast normal verteilt sind – eine wichtige Voraussetzung für lineare Modelle.
 
-###<a name="forecasting-and-model-evaluation"></a>Vorhersage und Modellevaluierung
-
+### <a name="forecasting-and-model-evaluation"></a>Vorhersage und Modellevaluierung
 Es gibt nur noch eine Sache zu tun, um unser Beispiel abzuschließen. Wir müssen Vorhersagen berechnen und den Fehler gegenüber den tatsächlichen Daten berechnen. Unsere Vorhersage erstellen wir für 12 Monate in 2013. Wir können ein Fehlermaß für diese Vorhersage gegenüber den tatsächlichen Daten berechnen, die nicht Bestandteil unseres Trainings-DataSets sind. Darüber hinaus können vergleichen wir die Leistung bei den Trainingsdaten aus 18 Jahren gegenüber den Testdaten aus 12 Monaten.  
 
 Eine Reihe von Metriken wird zum Messen der Leistung von Zeitreihenmodellen verwendet. In unserem Fall verwenden wir die mittlere quadratische Abweichung (RMS-Fehler). Die folgende Funktion berechnet den RMS-Fehler zwischen zwei Reihen:  
@@ -1269,49 +1199,40 @@ Das Ausführen des Codes erzeugt die in Abbildung 27 dargestellte Ausgabe am "Re
 
 ![Vergleich des RMS-Fehlers für die Modelle][26]
 
-*Abbildung 27: Vergleich des RMS-Fehlers für die Modelle.*
+*Abbildung 27: Vergleich des RMS-Fehlers für die Modelle.*
 
 Anhand dieser Ergebnisse können wir erkennen, dass der RMS-Fehler durch das Hinzufügen der saisonalen Faktoren zu dem Modell signifikant abnimmt. Es überrascht uns nicht allzu sehr, dass der RMS-Fehler für die Trainingsdaten ein wenig niedriger ist für die Vorhersage.
 
-##<a name="a-idappendixaaappendix-a-guide-to-rstudio"></a><a id="appendixa"></a>ANHANG A – Anleitung für RStudio
-
+## <a name="a-idappendixaaappendix-a-guide-to-rstudio"></a><a id="appendixa"></a>ANHANG A – Anleitung für RStudio
 RStudio ist sehr gut dokumentiert, weshalb ich in diesem Anhang einige Links zu den wichtigsten Abschnitten der RStudio-Dokumentation bereitstelle, um Ihnen einen schnellen Einstieg zu ermöglichen.
 
-1.  Erstellen von Projekten
+1. Erstellen von Projekten
+   
+   Sie können Ihren R-Code mit RStudio in Projekten organisieren. Die Dokumentation zur Verwendung von Projekten finden Sie unter „https://support.rstudio.com/hc/articles/200526207-Using-Projects“.
+   
+   Ich empfehle Ihnen, diese Anweisungen zu befolgen und ein Projekt für die R-Codebeispiele in diesem Dokument zu erstellen.  
+2. Bearbeiten und Ausführen von R-Code
+   
+   RStudio bietet eine integrierte Umgebung zum Bearbeiten und Ausführen von R-Code. Die Dokumentation hierzu finden Sie unter „https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code“.
+3. Debuggen
+   
+   RStudio enthält leistungsfähige Debugfunktionen. Die Dokumentation zu diesen Funktionen finden Sie unter „https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio“.
+   
+   Die Problembehandlungsfunktionen für Haltepunkte (breakpoints) finden Sie unter „https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting“.
 
-    Sie können Ihren R-Code mit RStudio in Projekten organisieren. Die Dokumentation zur Verwendung von Projekten finden Sie unter „https://support.rstudio.com/hc/articles/200526207-Using-Projects“.
+## <a name="a-idappendixbaappendix-b-further-reading"></a><a id="appendixb"></a>ANHANG B – Weitere Informationen
+Dieses Lernprogramm für die Programmierung in R behandelt die Grundlagen der Sprache R mit Azure Machine Learning Studio. Wenn Sie nicht mit R vertraut sind, finden Sie zwei Einführungen im CRAN.
 
-    Ich empfehle Ihnen, diese Anweisungen zu befolgen und ein Projekt für die R-Codebeispiele in diesem Dokument zu erstellen.  
-
-2.  Bearbeiten und Ausführen von R-Code
-
-    RStudio bietet eine integrierte Umgebung zum Bearbeiten und Ausführen von R-Code. Die Dokumentation hierzu finden Sie unter „https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code“.
-
-3.  Debuggen
-
-    RStudio enthält leistungsfähige Debugfunktionen. Die Dokumentation zu diesen Funktionen finden Sie unter „https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio“.
-
-    Die Problembehandlungsfunktionen für Haltepunkte (breakpoints) finden Sie unter „https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting“.
-
-##<a name="a-idappendixbaappendix-b-further-reading"></a><a id="appendixb"></a>ANHANG B – Weitere Informationen
-
-Dieses Lernprogramm für die Programmierung in R behandelt die Grundlagen der Sprache R mit Azure Machine Learning Studio. Wenn Sie nicht mit R vertraut sind, finden Sie zwei Einführungen im CRAN.
-
-- "R for Beginners", von Emmanuel Paradis, ist ein guter Ausgangspunkt unter "http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf".  
-
-- "An Introduction to R" von W. N. Venables  u.a.  geht ein wenig mehr in die Tiefe; zu finden unter „http://cran.r-project.org/doc/manuals/R-intro.html“.
+* "R for Beginners", von Emmanuel Paradis, ist ein guter Ausgangspunkt unter "http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf".  
+* "An Introduction to R" von W. N. Venables  u.a.  geht ein wenig mehr in die Tiefe; zu finden unter „http://cran.r-project.org/doc/manuals/R-intro.html“.
 
 Es gibt viele Bücher zu R, die Ihnen beim Einstieg helfen können. Hier finden Sie ein paar, die ich nützlich finde:
 
-- "The Art of R Programming: A Tour of Statistical Software Design" von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.  
-
-- Das "R Cookbook" von Paul Teetor bietet einen Problem-Lösung-Ansatz für die Verwendung von R.  
-
-- "R in Action" von Robert Kabacoff ist eine weitere nützliche Einführung. Die begleitende Website „Quick R“ ist eine nützliche Ressource unter „http://www.statmethods.net/“.
-
-- „R Inferno“ von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter „http://www.burns-stat.com/documents/books/the-r-inferno/“ kostenlos erhältlich.
-
-- Wenn Sie eine gründliche Erörterung komplexerer Themen in R benötigen, werfen Sie einen Blick in das Buch „Advanced R“ von Hadley Wickham. Die Onlineversion dieses Buchs ist kostenlos erhältlich unter "http://adv-r.had.co.nz/".
+* "The Art of R Programming: A Tour of Statistical Software Design" von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.  
+* Das "R Cookbook" von Paul Teetor bietet einen Problem-Lösung-Ansatz für die Verwendung von R.  
+* "R in Action" von Robert Kabacoff ist eine weitere nützliche Einführung. Die begleitende Website „Quick R“ ist eine nützliche Ressource unter „http://www.statmethods.net/“.
+* „R Inferno“ von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter „http://www.burns-stat.com/documents/books/the-r-inferno/“ kostenlos erhältlich.
+* Wenn Sie eine gründliche Erörterung komplexerer Themen in R benötigen, werfen Sie einen Blick in das Buch „Advanced R“ von Hadley Wickham. Die Onlineversion dieses Buchs ist kostenlos erhältlich unter "http://adv-r.had.co.nz/".
 
 Einen Katalog mit R-Zeitreihenpaketen finden Sie in "CRAN Task View: Time Series Analysis" unter „http://cran.r-project.org/web/views/TimeSeries.html“. Informationen zu speziellen Zeitreihen-Objektpaketen finden Sie in der Dokumentation für das jeweilige Paket.
 
@@ -1319,11 +1240,9 @@ Das Buch "Introductory Time Series with R" von Paul Cowpertwait und Andrew Metca
 
 Einige weitere nützliche Internetressourcen:
 
-- DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Nutzen Sie das kostenlose interaktive R-Tutorial unter „https://www.datacamp.com/courses/introduction-to-r“.  
-
-- Ein R-Schnelltutorial von Kelly Black von der Clarkson University unter „http://www.cyclismo.org/tutorial/R/“.
-
-- Unter „http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html“ finden Sie über 60 R-Ressourcen.
+* DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Nutzen Sie das kostenlose interaktive R-Tutorial unter „https://www.datacamp.com/courses/introduction-to-r“.  
+* Ein R-Schnelltutorial von Kelly Black von der Clarkson University unter „http://www.cyclismo.org/tutorial/R/“.
+* Unter „http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html“ finden Sie über 60 R-Ressourcen.
 
 <!--Image references-->
 [1]: ./media/machine-learning-r-quickstart/fig1.png

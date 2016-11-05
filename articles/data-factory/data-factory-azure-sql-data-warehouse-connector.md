@@ -1,50 +1,46 @@
-<properties 
-    pageTitle="Verschieben von Daten in/aus Azure SQL Data Warehouse | Microsoft Azure" 
-    description="Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure SQL Data Warehouse verschoben werden." 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="linda33wj" 
-    manager="jhubbard" 
-    editor="monicar"/>
+---
+title: Verschieben von Daten in/aus Azure SQL Data Warehouse | Microsoft Docs
+description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure SQL Data Warehouse verschoben werden.
+services: data-factory
+documentationcenter: ''
+author: linda33wj
+manager: jhubbard
+editor: monicar
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/20/2016" 
-    ms.author="jingwang"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/20/2016
+ms.author: jingwang
 
-
+---
 # <a name="move-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory
-
 In diesem Artikel erfahren Sie, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Azure SQL Data Warehouse in einen anderen Datenspeicher zu verschieben (und umgekehrt). 
 
 Sie können angeben, ob Sie PolyBase beim Laden von Daten in Azure SQL Data Warehouse verwenden möchten. Es wird empfohlen, dass Sie PolyBase verwenden, um beim Laden von Daten in Azure SQL Data Warehouse eine optimale Leistung zu erzielen. Details finden Sie im Abschnitt [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . 
-
 
 ## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
 Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure SQL Data Warehouse kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
 
 Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen Ihnen das Kopieren von Daten in und aus Azure SQL Data Warehouse und Azure Blob Storage. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
-
-> [AZURE.NOTE] 
+> [!NOTE]
 > Eine Übersicht über den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md). 
 > 
 > Dieser Artikel bietet JSON-Beispiele, aber keine detaillierten Anleitungen zum Erstellen einer Data Factory. Unter [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory. 
-
+> 
+> 
 
 ## <a name="sample:-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>Beispiel: Kopieren von Daten aus Azure SQL Data Warehouse in ein Azure-Blob
-
 Das Beispiel definiert folgende Data Factory-Entitäten:
 
 1. Einen verknüpften Dienst des Typs [AzureSqlDW](#azure-sql-data-warehouse-linked-service-properties)
 2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 
 3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureSqlDWTable](#azure-sql-data-warehouse-dataset-type-properties) 
 4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-4. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [SqlDWSource](#azure-sql-data-warehouse-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
+5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [SqlDWSource](#azure-sql-data-warehouse-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
 In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) aus einer Tabelle in einer Azure SQL Data Warehouse-Datenbank in ein Blob kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
@@ -75,7 +71,7 @@ In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) a
 **Azure SQL Data Warehouse-Eingabedataset:**
 
 Im Beispiel wird vorausgesetzt, dass Sie die Tabelle "MyTable" in Azure SQL Data Warehouse erstellt haben, die für Zeitreihendaten eine Spalte namens "timestampcolumn" enthält.
- 
+
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
     {
@@ -209,22 +205,23 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
        }
     }
 
-> [AZURE.NOTE] In dem Beispiel wird **sqlReaderQuery** für „SqlSWSource“ angegeben. Mit der Kopieraktivität wird diese Abfrage für die Azure SQL Data Warehouse-Quelle ausgeführt, um die Daten abzurufen.
->  
+> [!NOTE]
+> In dem Beispiel wird **sqlReaderQuery** für „SqlSWSource“ angegeben. Mit der Kopieraktivität wird diese Abfrage für die Azure SQL Data Warehouse-Quelle ausgeführt, um die Daten abzurufen.
+> 
 > Alternativ dazu können Sie eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben (sofern die gespeicherten Prozeduren Parameter verwenden).
->  
+> 
 > Wenn Sie "sqlReaderQuery" oder "sqlReaderStoredProcedureName" nicht angeben, werden die im Strukturabschnitt des DataSet-JSON-Bereichs definierten Spalten verwendet, um eine Abfrage ("select column1, column2 from mytable") zur Ausführung für das SQL Data Warehouse zu erstellen. Falls die DataSet-Definition nicht über die Struktur verfügt, werden alle Spalten der Tabelle ausgewählt.
+> 
+> 
 
 ## <a name="sample:-copy-data-from-azure-blob-to-azure-sql-data-warehouse"></a>Beispiel: Kopieren von Daten aus einem Azure-Blob in Azure SQL Data Warehouse
-
 Das Beispiel definiert folgende Data Factory-Entitäten:
 
-1.  Einen verknüpften Dienst des Typs [AzureSqlDW](#azure-sql-data-warehouse-linked-service-properties)
-2.  Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
-3.  Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-4.  Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureSqlDWTable](#azure-sql-data-warehouse-dataset-type-properties)
-4.  Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) und [SqlDWSink](#azure-sql-data-warehouse-copy-activity-type-properties) verwendet
-
+1. Einen verknüpften Dienst des Typs [AzureSqlDW](#azure-sql-data-warehouse-linked-service-properties)
+2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
+3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
+4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureSqlDWTable](#azure-sql-data-warehouse-dataset-type-properties)
+5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) und [SqlDWSink](#azure-sql-data-warehouse-copy-activity-type-properties) verwendet
 
 In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) aus einem Azure-Blob in eine Tabelle in einer Azure SQL Data Warehouse-Datenbank kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen. 
 
@@ -390,44 +387,45 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 Eine exemplarische Vorgehensweise finden Sie im Artikel [Laden von Daten mit Azure Data Factory](../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md) der Azure SQL Data Warehouse-Dokumentation.
 
 ## <a name="azure-sql-data-warehouse-linked-service-properties"></a>Eigenschaften des mit Azure SQL Data Warehouse verknüpften Diensts
-
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure SQL Data Warehouse verknüpften Dienst spezifisch sind. 
 
-Eigenschaft | Beschreibung | Erforderlich
--------- | ----------- | --------
-Typ | Die "type"-Eigenschaft muss auf **AzureSqlDW** | Ja
-**connectionString** | Geben Sie Informationen, die zur Verbindung mit der Azure SQL Data Warehouse-Instanz erforderlich sind, für die Eigenschaft "connectionString" ein. | Ja
+| Eigenschaft | Beschreibung | Erforderlich |
+| --- | --- | --- |
+| Typ |Die "type"-Eigenschaft muss auf **AzureSqlDW** |Ja |
+| **connectionString** |Geben Sie Informationen, die zur Verbindung mit der Azure SQL Data Warehouse-Instanz erforderlich sind, für die Eigenschaft "connectionString" ein. |Ja |
 
-> [AZURE.IMPORTANT] Konfigurieren Sie die [Azure SQL-Datenbankfirewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) und den Datenbankserver, um [Azure-Diensten den Zugriff auf den Server zu ermöglichen](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Wenn Sie nicht aus Azure stammende Daten in Azure SQL Data Warehouse kopieren, müssen Sie außerdem den entsprechenden IP-Adressbereich für den Computer konfigurieren, der Daten an Azure SQL Data Warehouse sendet. Dies gilt auch beim Kopieren von Daten aus lokalen Datenquellen mit Data Factory-Gateway. 
+> [!IMPORTANT]
+> Konfigurieren Sie die [Azure SQL-Datenbankfirewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) und den Datenbankserver, um [Azure-Diensten den Zugriff auf den Server zu ermöglichen](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Wenn Sie nicht aus Azure stammende Daten in Azure SQL Data Warehouse kopieren, müssen Sie außerdem den entsprechenden IP-Adressbereich für den Computer konfigurieren, der Daten an Azure SQL Data Warehouse sendet. Dies gilt auch beim Kopieren von Daten aus lokalen Datenquellen mit Data Factory-Gateway. 
+> 
+> 
 
 ## <a name="azure-sql-data-warehouse-dataset-type-properties"></a>Eigenschaften des Dataset-Typs „Azure SQL Data Warehouse“
-
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich. 
 
 Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureSqlDWTable** weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Beschreibung | Erforderlich |
-| -------- | ----------- | -------- |
-| tableName | Name der Tabelle in der Azure SQL Data Warehouse-Datenbank, auf die der verknüpfte Dienst verweist. | Ja |
+| --- | --- | --- |
+| tableName |Name der Tabelle in der Azure SQL Data Warehouse-Datenbank, auf die der verknüpfte Dienst verweist. |Ja |
 
 ## <a name="azure-sql-data-warehouse-copy-activity-type-properties"></a>Eigenschaften des Kopieraktivitätstyps „Azure SQL Data Warehouse“
-
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
 
-> [AZURE.NOTE]
-Die Kopieraktivität verwendet nur eine Eingabe und erzeugt nur eine Ausgabe.
+> [!NOTE]
+> Die Kopieraktivität verwendet nur eine Eingabe und erzeugt nur eine Ausgabe.
+> 
+> 
 
 Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
 
 ### <a name="sqldwsource"></a>SqlDWSource
-
 Bei einer Quelle vom Typ **SqlDWSource** sind im Abschnitt **typeProperties** folgende Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
-| -------- | ----------- | -------------- | -------- |
-| SqlReaderQuery | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. | Nein |
-| sqlReaderStoredProcedureName | Der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. | Name der gespeicherten Prozedur. | Nein |
-| storedProcedureParameters | Parameter für die gespeicherte Prozedur. | Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein |
+| --- | --- | --- | --- |
+| SqlReaderQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein |
+| sqlReaderStoredProcedureName |Der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. |Name der gespeicherten Prozedur. |Nein |
+| storedProcedureParameters |Parameter für die gespeicherte Prozedur. |Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein |
 
 Wenn **sqlReaderQuery** für "SqlDWSource" angegeben ist, führt die Kopieraktivität diese Abfrage für die Azure SQL Data Warehouse-Quelle aus, um die Daten abzurufen. 
 
@@ -436,7 +434,6 @@ Alternativ dazu können Sie eine gespeicherte Prozedur angeben, indem Sie **sqlR
 Ohne Angabe von „sqlReaderQuery“ oder „sqlReaderStoredProcedureName“ werden die im Strukturabschnitt des DataSet-JSON-Bereichs definierten Spalten verwendet, um eine Abfrage für SQL Data Warehouse zu erstellen. Beispiel: `select column1, column2 from mytable`. Falls die DataSet-Definition nicht über die Struktur verfügt, werden alle Spalten der Tabelle ausgewählt.
 
 #### <a name="sqldwsource-example"></a>Beispiel für "SqlDWSource"
-
     "source": {
         "type": "SqlDWSource",
         "sqlReaderStoredProcedureName": "CopyTestSrcStoredProcedureWithParameters",
@@ -462,27 +459,24 @@ Ohne Angabe von „sqlReaderQuery“ oder „sqlReaderStoredProcedureName“ wer
         and dbo.UnitTestSrcTable.id != id
     END
     GO
- 
+
 
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** unterstützt die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
-| -------- | ----------- | -------------- | -------- |
-| writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. | Integer (Gesamtanzahl von Zeilen) | Nein (Standard = 10000) |
-| writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. | Zeitraum<br/><br/>  Beispiel: 00:30:00 (30 Minuten) | Nein | 
-| sqlWriterCleanupScript | Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. Ausführlichere Informationen finden Sie im [Abschnitt zur Wiederholbarkeit](#repeatability-during-copy). | Eine Abfrageanweisung.  | Nein |
-| allowPolyBase | Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus zum Laden von Daten in Azure SQL Data Warehouse verwendet werden soll. <br/><br/>Derzeit kann nur ein Quelldataset vom Typ **Azure-Blob** verwendet werden, bei dem **format** auf **TextFormat** festgelegt ist. <br/><br/>Einschränkungen und Einzelheiten finden Sie im Abschnitt [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . | True  <br/>False (Standardwert) | Nein |  
-| polyBaseSettings | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn die **allowPolybase**-Eigenschaft auf **true** festgelegt ist. | &nbsp; | Nein |  
-| rejectValue | Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt. <br/><br/>Weitere Informationen zu den PolyBase-Ablehnungsoptionen finden Sie im Abschnitt **Argumente** des Themas [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . | 0 (Standardwert), 1, 2, … | Nein |  
-| rejectType | Gibt an, ob die rejectValue-Option als Literalwert oder Prozentsatz angegeben ist. | Value (Standardwert), Percentage | Nein |   
-| rejectSampleValue | Gibt die Anzahl von Zeilen an, die abgerufen werden, bevor PolyBase den Prozentsatz der abgelehnten Zeilen neu berechnet. | 1, 2, … | Ja, wenn für **rejectType** der Wert **percentage** festgelegt ist. |  
-| useTypeDefault | Gibt an, wie fehlende Werte in durch Trennzeichen getrennten Textdateien verarbeitet werden sollen, wenn PolyBase Daten aus der Textdatei abruft.<br/><br/>Weitere Informationen zu dieser Eigenschaft finden Sie im Abschnitt zu Argumenten im Thema [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)verwenden können. | True/False (Standardwert) | Nein | 
-
+| --- | --- | --- | --- |
+| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standard = 10000) |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. |Zeitraum<br/><br/>  Beispiel: 00:30:00 (30 Minuten) |Nein |
+| sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. Ausführlichere Informationen finden Sie im [Abschnitt zur Wiederholbarkeit](#repeatability-during-copy). |Eine Abfrageanweisung. |Nein |
+| allowPolyBase |Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus zum Laden von Daten in Azure SQL Data Warehouse verwendet werden soll. <br/><br/>Derzeit kann nur ein Quelldataset vom Typ **Azure-Blob** verwendet werden, bei dem **format** auf **TextFormat** festgelegt ist. <br/><br/>Einschränkungen und Einzelheiten finden Sie im Abschnitt [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |True  <br/>False (Standardwert) |Nein |
+| polyBaseSettings |Eine Gruppe von Eigenschaften, die angegeben werden können, wenn die **allowPolybase**-Eigenschaft auf **true** festgelegt ist. |&nbsp; |Nein |
+| rejectValue |Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt. <br/><br/>Weitere Informationen zu den PolyBase-Ablehnungsoptionen finden Sie im Abschnitt **Argumente** des Themas [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (Standardwert), 1, 2, … |Nein |
+| rejectType |Gibt an, ob die rejectValue-Option als Literalwert oder Prozentsatz angegeben ist. |Value (Standardwert), Percentage |Nein |
+| rejectSampleValue |Gibt die Anzahl von Zeilen an, die abgerufen werden, bevor PolyBase den Prozentsatz der abgelehnten Zeilen neu berechnet. |1, 2, … |Ja, wenn für **rejectType** der Wert **percentage** festgelegt ist. |
+| useTypeDefault |Gibt an, wie fehlende Werte in durch Trennzeichen getrennten Textdateien verarbeitet werden sollen, wenn PolyBase Daten aus der Textdatei abruft.<br/><br/>Weitere Informationen zu dieser Eigenschaft finden Sie im Abschnitt zu Argumenten im Thema [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)verwenden können. |True/False (Standardwert) |Nein |
 
 #### <a name="sqldwsink-example"></a>Beispiel für "SqlDWSink"
-
-
     "sink": {
         "type": "SqlDWSink",
         "writeBatchSize": 1000000,
@@ -493,7 +487,6 @@ Ohne Angabe von „sqlReaderQuery“ oder „sqlReaderStoredProcedureName“ wer
 Mit **PolyBase** lassen sich große Datenmengen effizient und mit hohem Durchsatz in Azure SQL Data Warehouse laden.  Wenn Sie PolyBase anstelle des standardmäßigen BULKINSERT-Mechanismus verwenden, wird der Durchsatz erheblich gesteigert.
 
 Legen Sie für die **allowPolyBase**-Eigenschaft den Wert **true** fest, wie im folgenden Beispiel für Azure Data Factory gezeigt, um Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse zu kopieren. Wenn Sie „allowPolyBase“ auf „true“ festlegen, können Sie über die **polyBaseSettings** -Eigenschaftengruppe PolyBase-spezifische Eigenschaften festlegen. Im Abschnitt [SqlDWSink](#SqlDWSink) finden Sie Einzelheiten zu den Eigenschaften, die mit „polyBaseSettings“ verwendet werden können.   
-
 
     "sink": {
         "type": "SqlDWSink",
@@ -513,36 +506,40 @@ Wenn Ihre Daten die in diesem Abschnitt beschriebenen Kriterien erfüllen, könn
 
 Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory die Einstellungen und greift bei der Datenverschiebung automatisch auf den BULKINSERT-Mechanismus zurück.
 
-1.  **Der mit der Quelle verknüpfte Dienst** ist vom Typ **Azure Storage**. Außerdem ist dieser Dienst nicht für die Verwendung der SAS-Authentifizierung (Shared Access Signature) konfiguriert. Ausführliche Informationen finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service).  
+1. **Der mit der Quelle verknüpfte Dienst** ist vom Typ **Azure Storage**. Außerdem ist dieser Dienst nicht für die Verwendung der SAS-Authentifizierung (Shared Access Signature) konfiguriert. Ausführliche Informationen finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service).  
 2. Das **Eingabedataset** ist vom Typ **Azure-Blob**, und der Formattyp unter den Typeigenschaften lautet **OrcFormat** oder **TextFormat** mit folgenden Konfigurationen:
-    1. **rowDelimiter** muss **\n** sein. 
-    2. **nullValue** ist auf eine ****leere Zeichenfolge ("") festgelegt. 
-    3. **encodingName** ist auf **utf-8** festgelegt. Dies ist der **Standardwert**. Legen Sie keinen anderen Wert fest. 
-    4. **escapeChar** und **quoteChar** sind nicht angegeben. 
-    5. **Compression** lautet nicht **BZIP2**.
-     
-            "typeProperties": {
-                "folderPath": "<blobpath>",
-                "format": {
-                    "type": "TextFormat",     
-                    "columnDelimiter": "<any delimiter>", 
-                    "rowDelimiter": "\n",       
-                    "nullValue": "",           
-                    "encodingName": "utf-8"    
-                },
-                "compression": {  
-                    "type": "GZip",  
-                    "level": "Optimal"  
-                }  
-            },
-3.  Unter **BlobSource** ist keine **skipHeaderLineCount**-Einstellung für die Kopieraktivität in der Pipeline vorhanden. 
-4.  Unter **SqlDWSink** ist keine **sliceIdentifierColumnName**-Einstellung für die Kopieraktivität in der Pipeline vorhanden. (PolyBase stellt sicher, dass in einem Durchlauf entweder alle oder keine Daten aktualisiert werden). Um **Wiederholbarkeit** zu erreichen, kann **sqlWriterCleanupScript** verwendet werden.
-5.  In der zugehörigen Kopieraktivität wird **columnMapping** nicht verwendet. 
+   
+   1. **rowDelimiter** muss **\n** sein. 
+   2. **nullValue** ist auf eine ****leere Zeichenfolge ("") festgelegt. 
+   3. **encodingName** ist auf **utf-8** festgelegt. Dies ist der **Standardwert**. Legen Sie keinen anderen Wert fest. 
+   4. **escapeChar** und **quoteChar** sind nicht angegeben. 
+   5. **Compression** lautet nicht **BZIP2**.
+      
+           "typeProperties": {
+               "folderPath": "<blobpath>",
+               "format": {
+                   "type": "TextFormat",     
+                   "columnDelimiter": "<any delimiter>", 
+                   "rowDelimiter": "\n",       
+                   "nullValue": "",           
+                   "encodingName": "utf-8"    
+               },
+               "compression": {  
+                   "type": "GZip",  
+                   "level": "Optimal"  
+               }  
+           },
+3. Unter **BlobSource** ist keine **skipHeaderLineCount**-Einstellung für die Kopieraktivität in der Pipeline vorhanden. 
+4. Unter **SqlDWSink** ist keine **sliceIdentifierColumnName**-Einstellung für die Kopieraktivität in der Pipeline vorhanden. (PolyBase stellt sicher, dass in einem Durchlauf entweder alle oder keine Daten aktualisiert werden). Um **Wiederholbarkeit** zu erreichen, kann **sqlWriterCleanupScript** verwendet werden.
+5. In der zugehörigen Kopieraktivität wird **columnMapping** nicht verwendet. 
 
 ### <a name="staged-copy-using-polybase"></a>gestaffeltes Kopieren mit PolyBase
 Falls Ihre Quelldaten die Kriterien aus dem vorherigen Abschnitt nicht erfüllen, können Sie die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher kopieren. In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um die Datenformatanforderungen von PolyBase zu erfüllen, und die Daten werden anschließend mithilfe von PolyBase in SQL Data Warehouse geladen. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen zur allgemeinen Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
 
-> [AZURE.IMPORTANT] Beim Kopieren von Daten aus einem lokalen Datenspeicher in Azure SQL Data Warehouse mithilfe von PolyBase und einem Stagingverfahren müssen Sie die JRE 8 (Java Runtime Environment) auf dem Gatewaycomputer installieren, mit dem die Quelldaten in das richtige Format transformiert werden. Für ein 64-Bit-Gateway ist die 64-Bit-JRE erforderlich, für ein 32-Bit-Gateway eine 32-Bit-JRE. Die passende Version können Sie [hier](http://go.microsoft.com/fwlink/?LinkId=808605)herunterladen.
+> [!IMPORTANT]
+> Beim Kopieren von Daten aus einem lokalen Datenspeicher in Azure SQL Data Warehouse mithilfe von PolyBase und einem Stagingverfahren müssen Sie die JRE 8 (Java Runtime Environment) auf dem Gatewaycomputer installieren, mit dem die Quelldaten in das richtige Format transformiert werden. Für ein 64-Bit-Gateway ist die 64-Bit-JRE erforderlich, für ein 32-Bit-Gateway eine 32-Bit-JRE. Die passende Version können Sie [hier](http://go.microsoft.com/fwlink/?LinkId=808605)herunterladen.
+> 
+> 
 
 Erstellen Sie zum Verwenden dieses Features einen [verknüpften Azure Storage-Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service), der auf das Azure Storage-Konto mit dem zwischengeschalteten Blobspeicher verweist. Geben Sie dann die Eigenschaften **enableStaging** und **stagingSettings** für die Kopieraktivität an, wie im folgenden Code zu sehen:
 
@@ -570,7 +567,6 @@ Erstellen Sie zum Verwenden dieses Features einen [verknüpften Azure Storage-Di
 
 
 ### <a name="best-practices-when-using-polybase"></a>Bewährte Methoden bei Verwendung von PolyBase
-
 #### <a name="row-size-limitation"></a>Zeilengrößeneinschränkung
 Polybase unterstützt eine maximale Zeilengröße von 32 KB. Beim Versuch, eine Tabelle mit Zeilen zu laden, die größer sind als 32 KB, tritt der folgende Fehler auf: 
 
@@ -582,11 +578,11 @@ Wenn Sie über Quelldaten mit Zeilen verfügen, deren Größe über 32 KB liegt,
 Die folgende Tabelle enthält Beispiele für das Angeben der **tableName** -Eigenschaft in Dataset-JSON für diverse Kombinationen aus Schema und Tabellenname:
 
 | Datenbankschema | Tabellenname | JSON-Eigenschaft „tableName“ |
-| --------- | -----------| ----------------------- | 
-| dbo | MyTable | MyTable oder dbo.MyTable oder [dbo].[MyTable] |
-| dbo1 | MyTable | dbo1.MyTable oder [dbo1].[MyTable] |
-| dbo | My.Table | [My.Table] oder [dbo].[My.Table] |
-| dbo1 | My.Table | [dbo1].[My.Table] |
+| --- | --- | --- |
+| dbo |MyTable |MyTable oder dbo.MyTable oder [dbo].[MyTable] |
+| dbo1 |MyTable |dbo1.MyTable oder [dbo1].[MyTable] |
+| dbo |My.Table |[My.Table] oder [dbo].[My.Table] |
+| dbo1 |My.Table |[dbo1].[My.Table] |
 
 Sollte der folgende Fehler auftreten, liegt dies unter Umständen am Wert für die tableName-Eigenschaft. Informationen zur korrekten Angabe von Werten für die JSON-Eigenschaft „tableName“ finden Sie in der Tabelle.  
 
@@ -599,13 +595,11 @@ Das PolyBase-Feature in Data Factory akzeptiert aktuell lediglich dieselbe Anzah
 
 Der NULL-Wert ist eine Sonderform eines Standardwerts. Wenn die Spalte NULL-Werte zulässt, könnten die Eingabedaten (im Blob) für diese Spalte leer sein (sie dürfen im Eingabedataset nicht fehlen). PolyBase fügt für diese Daten in Azure SQL Data Warehouse den Wert „NULL“ ein.  
 
+[!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
-[AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)] 
-
-[AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-azure-sql-data-warehouse"></a>Typzuordnung für Azure SQL Data Warehouse
-
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe der beiden folgenden Schritte automatische Typkonvertierungen von Quelltypen in Senkentypen durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
@@ -616,50 +610,46 @@ Beim Verschieben von Daten in und aus Azure SQL, SQL Server und Sybase werden di
 Die Zuordnung ist mit der [SQL Server-Datentypzuordnung für ADO.NET](https://msdn.microsoft.com/library/cc716729.aspx)identisch.
 
 | Typ "SQL Server-Datenbankmodul" | Typ ".NET Framework" |
-| ------------------------------- | ------------------- |
-| bigint | Int64 |
-| binary | Byte[] |
-| Bit | Boolean |
-| char | String, Char[] |
-| date | DateTime |
-| DateTime | DateTime |
-| datetime2 | DateTime |
-| Datetimeoffset | Datetimeoffset |
-| Decimal | Decimal |
-| FILESTREAM-Attribut (varbinary(max)) | Byte[] |
-| Float | Doppelt |
-| image | Byte[] | 
-| int | Int32 | 
-| money | Decimal |
-| nchar | String, Char[] |
-| ntext | String, Char[] |
-| numeric | Decimal |
-| nvarchar | String, Char[] |
-| real | Single |
-| rowversion | Byte[] |
-| smalldatetime | DateTime |
-| smallint | Int16 |
-| smallmoney | Decimal | 
-| sql_variant | Object * |
-| text | String, Char[] |
-| in | Zeitraum |
-| timestamp | Byte[] |
-| tinyint | Byte |
-| uniqueidentifier | GUID |
-| varbinary |  Byte[] |
-| varchar | String, Char[] |
-| xml | xml |
+| --- | --- |
+| bigint |Int64 |
+| binary |Byte[] |
+| Bit |Boolean |
+| char |String, Char[] |
+| date |DateTime |
+| DateTime |DateTime |
+| datetime2 |DateTime |
+| Datetimeoffset |Datetimeoffset |
+| Decimal |Decimal |
+| FILESTREAM-Attribut (varbinary(max)) |Byte[] |
+| Float |Doppelt |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
+| smalldatetime |DateTime |
+| smallint |Int16 |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
+| in |Zeitraum |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |GUID |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |xml |
 
+[!INCLUDE [data-factory-type-conversion-sample](../../includes/data-factory-type-conversion-sample.md)]
 
+[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-[AZURE.INCLUDE [data-factory-type-conversion-sample](../../includes/data-factory-type-conversion-sample.md)]
-
-[AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
-
-## <a name="performance-and-tuning"></a>Leistung und Optimierung  
+## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
 
 <!--HONumber=Oct16_HO2-->
 

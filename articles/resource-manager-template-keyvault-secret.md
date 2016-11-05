@@ -1,27 +1,25 @@
-<properties
-   pageTitle="Ressourcen-Manager-Vorlage für einen geheimen Schlüssel in einem Schlüsseltresor | Microsoft Azure"
-   description="Zeigt das Ressourcen-Manager-Schema für die Bereitstellung geheimer Schlüssel in einem Schlüsseltresor über eine Vorlage."
-   services="azure-resource-manager,key-vault"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="timlt"
-   editor=""/>
+---
+title: Ressourcen-Manager-Vorlage für einen geheimen Schlüssel in einem Schlüsseltresor | Microsoft Docs
+description: Zeigt das Ressourcen-Manager-Schema für die Bereitstellung geheimer Schlüssel in einem Schlüsseltresor über eine Vorlage.
+services: azure-resource-manager,key-vault
+documentationcenter: na
+author: tfitzmac
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="06/23/2016"
-   ms.author="tomfitz"/>
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 06/23/2016
+ms.author: tomfitz
 
+---
 # Vorlagenschema für einen geheimen Schlüssel in einem Schlüsseltresor
-
 Erstellt einen geheimen Schlüssel, der in einem Schlüsseltresor gespeichert wird. Dieser Ressourcentyp wird häufig als untergeordnete Ressource des [Schlüsseltresors](resource-manager-template-keyvault.md) bereitgestellt.
 
 ## Schemaformat
-
 Fügen Sie zum Erstellen eines geheimen Schlüssels im Schlüsseltresor das folgende Schema in der Vorlage hinzu. Der geheime Schlüssel kann als untergeordnete Ressource eines Schlüsseltresors oder als Ressource der obersten Ebene definiert werden. Sie können ihn als untergeordnete Ressource definieren, wenn der Schlüsseltresor in der gleichen Vorlage bereitgestellt wird. Sie müssen den geheimen Schlüssel als Ressource der obersten Ebene definieren, wenn der Schlüsseltresor nicht in der gleichen Vorlage bereitgestellt wird oder wenn Sie durch Schleifenbildung des Ressourcentyps mehrere geheime Schlüssel erstellen.
 
     {
@@ -35,27 +33,24 @@ Fügen Sie zum Erstellen eines geheimen Schlüssels im Schlüsseltresor das folg
     }
 
 ## Werte
-
 In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlegen müssen.
 
 | Name | Wert |
-| ---- | ---- | 
-| type | Enum<br />Erforderlich<br />**secrets** (wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt) oder<br /> **Microsoft.KeyVault/vaults/secrets** (wenn als Ressource der obersten Ebene bereitgestellt)<br /><br />Der zu erstellende Ressourcentyp. |
-| "apiVersion": | Enum<br />Erforderlich<br />**2015-06-01** oder **2014-12-19-preview**<br /><br />Die API-Version zum Erstellen der Ressource. | 
-| name | String<br />Erforderlich<br />Ein einzelnes Wort, wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt, oder im Format **{Schlüsseltresorname}/{Name des geheimen Schlüssels}**, wenn als Ressource der obersten Ebene zum Hinzufügen zu einem vorhandenen Schlüsseltresor bereitgestellt.<br /><br />Der Name des zu erstellenden geheimen Schlüssels. |
-| Eigenschaften | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das den Wert des zu erstellenden geheimen Schlüssels angibt. |
-| dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste mit Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Sammlung von Ressourcen, von denen dieser Link abhängt. Wenn der Schlüsseltresor für den geheimen Schlüssel in der gleichen Vorlage bereitgestellt wird, fügen Sie den Namen des Schlüsseltresors in diesem Element ein, um sicherzustellen, dass der Tresor zuerst bereitgestellt wird. |
+| --- | --- |
+| type |Enum<br />Erforderlich<br />**secrets** (wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt) oder<br /> **Microsoft.KeyVault/vaults/secrets** (wenn als Ressource der obersten Ebene bereitgestellt)<br /><br />Der zu erstellende Ressourcentyp. |
+| "apiVersion": |Enum<br />Erforderlich<br />**2015-06-01** oder **2014-12-19-preview**<br /><br />Die API-Version zum Erstellen der Ressource. |
+| name |String<br />Erforderlich<br />Ein einzelnes Wort, wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt, oder im Format **{Schlüsseltresorname}/{Name des geheimen Schlüssels}**, wenn als Ressource der obersten Ebene zum Hinzufügen zu einem vorhandenen Schlüsseltresor bereitgestellt.<br /><br />Der Name des zu erstellenden geheimen Schlüssels. |
+| Eigenschaften |Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das den Wert des zu erstellenden geheimen Schlüssels angibt. |
+| dependsOn |Array<br />Optional<br />Eine durch Kommas getrennte Liste mit Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Sammlung von Ressourcen, von denen dieser Link abhängt. Wenn der Schlüsseltresor für den geheimen Schlüssel in der gleichen Vorlage bereitgestellt wird, fügen Sie den Namen des Schlüsseltresors in diesem Element ein, um sicherzustellen, dass der Tresor zuerst bereitgestellt wird. |
 
 <a id="properties" />
+
 ### properties-Objekt
-
 | Name | Wert |
-| ---- | ---- | 
-| value | String<br />Erforderlich<br /><br />Der im Schlüsseltresor zu speichernde Wert des geheimen Schlüssels. Wenn Sie einen Wert für diese Eigenschaft übergeben, verwenden Sie einen Parameter des Typs **securestring**. |
+| --- | --- |
+| value |String<br />Erforderlich<br /><br />Der im Schlüsseltresor zu speichernde Wert des geheimen Schlüssels. Wenn Sie einen Wert für diese Eigenschaft übergeben, verwenden Sie einen Parameter des Typs **securestring**. |
 
-	
 ## Beispiele
-
 Im ersten Beispiel wird ein geheimer Schlüssel als untergeordnete Ressource eines Schlüsseltresors bereitgestellt.
 
     {
@@ -223,8 +218,7 @@ Im zweiten Beispiel wird der geheime Schlüssel als Ressource der obersten Ebene
 
 
 ## Nächste Schritte
-
-- Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](./key-vault/key-vault-get-started.md).
-- Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
+* Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault/key-vault-get-started.md).
+* Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
 <!---HONumber=AcomDC_0629_2016-->

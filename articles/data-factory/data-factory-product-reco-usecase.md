@@ -1,33 +1,30 @@
-<properties 
-	pageTitle="Data Factory-Anwendungsfall – Produktempfehlungen" 
-	description="Informationen zu einem Anwendungsfall, der mithilfe von Azure Data Factory zusammen mit anderen Diensten implementiert wurde." 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+---
+title: Data Factory-Anwendungsfall – Produktempfehlungen
+description: Informationen zu einem Anwendungsfall, der mithilfe von Azure Data Factory zusammen mit anderen Diensten implementiert wurde.
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/01/2016" 
-	ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/01/2016
+ms.author: spelluru
 
-# Anwendungsfall – Produktempfehlungen 
-
+---
+# Anwendungsfall – Produktempfehlungen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden. Auf der Seite [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
 
 ## Szenario
-
 Onlinehändler möchten ihre Kunden zum Kauf von Produkten verleiten, indem sie ihnen Produkte präsentieren, an denen sie am wahrscheinlichsten interessiert sind und die sie daher am wahrscheinlichsten kaufen werden. Hierzu müssen Onlinehändler die Onlineerfahrung der einzelnen Benutzer mithilfe personalisierter Produktempfehlungen anpassen. Diese personalisierten Produktempfehlungen basieren auf aktuellen und historischen Daten zum Kaufverhalten, auf Produktinformationen, auf neu eingeführten Marken sowie auf Produkt- und Kundensegmentierungsdaten. Darüber hinaus können dem Benutzer Produktempfehlungen auf der Grundlage der Analyse des kombinierten Gesamtverhaltens aller Benutzer gezeigt werden.
 
 Ziel dieser Händler ist es, mehr Interessenten in Käufer umzuwandeln, um einen höheren Umsatzerlös zu generieren. Diese Conversion wird durch die Bereitstellung kontextbezogener, verhaltensbasierter Produktempfehlungen auf der Grundlage von Kundeninteressen und Aktionen erreicht. Für diesen Anwendungsfall verwenden wir Onlinehändler als Beispiel für Unternehmen, die die Produktpräsentation für ihre Kunden optimieren möchten. Diese Prinzipien gelten jedoch für alle Unternehmen, die ihre Kunden an ihre Waren und Dienstleistungen binden und deren Kauferfahrung mit personalisierten Produktempfehlungen verbessern möchten.
 
 ## Herausforderungen
-
 Es gibt viele Herausforderungen, mit denen Onlinehänder bei dem Versuch konfrontiert sind, diese Art von Anwendungsfall zu implementieren.
 
 Zunächst einmal müssen verschiedenste Daten aus mehreren (lokalen und cloudbasierten) Datenquellen erfasst werden. Hierzu zählen Produktdaten, historische Daten zum Kundenverhalten und Benutzerdaten, die während der Navigation des Benutzers auf der Website des Onlinehändlers gesammelt werden.
@@ -39,7 +36,6 @@ Drittens müssen die Empfehlungen dem Kunden sofort zur Verfügung stehen, um ih
 Drittens müssen Onlinehändler die Effektivität des Vorgehens ermitteln, indem sie den Gesamterfolg von Up-Selling und Cross-Selling beim Verkauf nachverfolgen und ihre künftigen Empfehlungen entsprechend anpassen.
 
 ## Lösungsübersicht
-
 Dieser Beispielanwendungsfall wurde von realen Azure-Benutzern mit Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert. Dabei kamen unter anderem [HDInsight](https://azure.microsoft.com/services/hdinsight/) und [Power BI](https://powerbi.microsoft.com/) zum Einsatz.
 
 Der Onlinehändler verwendet einen Azure-Blobspeicher, einen lokalen SQL-Server, Azure SQL-Datenbank und einen relationalen Datamart als Datenspeicheroptionen im gesamten Workflow. Der Blobspeicher enthält Kundeninformationen, Daten zum Kundenverhalten und Produktdaten. Die Produktdaten enthalten Informationen zur Produktmarke und einen Produktkatalog, der lokal in einem SQL Data Warehouse gespeichert ist.
@@ -55,13 +51,8 @@ Das durch maschinelles Lernen gestützte Empfehlungssystem in diesem Beispiel is
 Schließlich wird das Resultset der personalisierten Produktempfehlungen in einen relationalen Datamart zur Nutzung auf der Website des Onlinehändlers verschoben. Auf das Resultset im Blobspeicher können andere Anwendungen auch direkt zugreifen. Es kann auch für andere Nutzer und Anwendungsfälle in weitere Datenspeicher verschoben werden.
 
 ## Vorteile
-
 Durch Optimieren ihrer Produktempfehlungsstrategie und deren Ausrichtung auf Unternehmensziele erfüllt die Lösung die Verkaufsförderungs- und Marketingziele des Onlinehändlers. Darüber hinaus kann das Unternehmen den Workflow für Produktempfehlungen nun effizient, zuverlässig und wirtschaftlich betreiben und verwalten. Das Modell kann mühelos aktualisiert und seine Effektivität basierend auf den Kennzahlen für die Kundengewinnung und -bindung optimiert werden. Mithilfe von Azure Data Factory konnte der Onlinehändler von seiner zeitaufwändigen und kostspieligen manuellen Cloudressourcenverwaltung zu einer bedarfsgesteuerten Lösung wechseln. Dadurch konnte er nicht nur Zeit und Geld sparen, sondern auch die Zeit bis zur Lösungsbereitstellung verkürzen. Ansichten der Datenherkunft und Integrität von Diensten lassen sich dank der intuitiven Data Factory-Benutzeroberfläche für Überwachung und Verwaltung im Azure-Portal einfach visualisieren. Die Lösung kann nun so geplant und verwaltet werden, dass zuverlässig relevante Daten erzeugt und den Benutzern bereitgestellt werden. Zudem werden Daten- und Verarbeitungsabhängigkeiten automatisch verwaltet.
 
 Durch dieses personalisierte Einkaufserlebnis hat der Onlinehändler eine wettbewerbsfähigere, ansprechende Kundenerfahrung geschaffen, die zu mehr Umsatz und höherer Kundenzufriedenheit führt.
-
-
-
-  
 
 <!---HONumber=AcomDC_0907_2016-->

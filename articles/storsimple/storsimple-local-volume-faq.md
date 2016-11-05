@@ -1,36 +1,34 @@
-<properties 
-   pageTitle="Lokale StorSimple-Volumes: Häufig gestellte Fragen |Microsoft Azure"
-   description="Enthält Antworten auf häufig gestellte Fragen zu lokalen StorSimple-Volumes."
-   services="storsimple"
-   documentationCenter="NA"
-   authors="manuaery"
-   manager="syadav"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/16/2016"
-   ms.author="manuaery" />
+---
+title: 'Lokale StorSimple-Volumes: Häufig gestellte Fragen | Microsoft Docs'
+description: Enthält Antworten auf häufig gestellte Fragen zu lokalen StorSimple-Volumes.
+services: storsimple
+documentationcenter: NA
+author: manuaery
+manager: syadav
+editor: ''
 
+ms.service: storsimple
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/16/2016
+ms.author: manuaery
+
+---
 # Lokale StorSimple-Volumes: Häufig gestellte Fragen (FAQ)
-
 ## Übersicht
-
 Hier finden Sie Fragen und Antworten, die sich auf das Erstellen eines lokalen StorSimple-Volumes, Konvertieren eines mehrstufigen Volumes in ein lokales Volume (und umgekehrt) oder Sichern und Wiederherstellen eines lokalen Volumes beziehen.
 
 Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 
-- Erstellen eines lokalen Volumes
-- Sichern eines lokalen Volumes
-- Konvertieren eines mehrstufigen Volumes in ein lokales Volume
-- Wiederherstellen eines lokalen Volumes
-- Ausführen eines Failovers für ein lokales Volume
+* Erstellen eines lokalen Volumes
+* Sichern eines lokalen Volumes
+* Konvertieren eines mehrstufigen Volumes in ein lokales Volume
+* Wiederherstellen eines lokalen Volumes
+* Ausführen eines Failovers für ein lokales Volume
 
 ## Fragen zum Erstellen eines lokalen Volumes
-
 **F.** Wie groß kann ein lokales Volume auf Geräten der 8000-Serie maximal sein?
 
 **A** Sie können lokale Volumes von bis zu 8,5 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 22,5 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen.
@@ -41,16 +39,15 @@ Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 
 Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssatzes mehrstufiger Volumes verwendet wird, verringert sich der verfügbare Speicherplatz für die Erstellung eines lokalen Volumes, wenn das Gerät über mehrstufige Volumes verfügt. Umgekehrt verringert sich beim Erstellen eines lokalen Volumes der verfügbare Speicherplatz für mehrstufige Volumes proportional. In der folgenden Tabelle wird die Kapazität für mehrstufige Volumes auf 8100- und 8600-Geräten bei der Erstellung lokaler Volumes zusammengefasst.
 
-|Bereitgestellte Kapazität lokaler Volumes|Verfügbare Kapazität für mehrstufige Volumes – 8100|Verfügbare Kapazität für mehrstufige Volumes – 8600|
-|-----|------|------|
-|0 | 200 TB | 500 TB |
-|1 TB | 176,5 TB | 477,8 TB|
-|4 TB | 105,9 TB | 411,1 TB |
-|8,5 TB | 0 TB | 311,1 TB|
-|10 TB | NA | 277,8 TB |
-|15 TB | NA | 166,7 TB |
-|22,5 TB | NA | 0 TB |
-
+| Bereitgestellte Kapazität lokaler Volumes | Verfügbare Kapazität für mehrstufige Volumes – 8100 | Verfügbare Kapazität für mehrstufige Volumes – 8600 |
+| --- | --- | --- |
+| 0 |200 TB |500 TB |
+| 1 TB |176,5 TB |477,8 TB |
+| 4 TB |105,9 TB |411,1 TB |
+| 8,5 TB |0 TB |311,1 TB |
+| 10 TB |NA |277,8 TB |
+| 15 TB |NA |166,7 TB |
+| 22,5 TB |NA |0 TB |
 
 **F.** Warum dauert die Erstellung eines lokalen Volumes so lange?
 
@@ -58,20 +55,17 @@ Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssat
 
 **F.** Wie lange dauert die Erstellung eines lokalen Volumes?
 
-**A.** Da lokal angeheftete Volumes mit vollständiger Speicherzuweisung bereitgestellt werden, werden vorhandene Daten von mehrstufigen Volumes während der Bereitstellung möglicherweise in die Cloud übertragen. Daher hängt die Dauer zum Erstellen eines lokalen Volumes von mehreren Faktoren ab, u. a. von der Größe des Volumes, den Daten auf dem Gerät und der verfügbaren Bandbreite. Auf einem neu installierten Gerät ohne Volumes dauert die Erstellung eines lokalen Volumes etwa zehn Minuten pro Terabyte an Daten. Die Erstellung eines lokalen Volumes kann jedoch basierend auf den oben erläuterten Faktoren auf einem verwendeten Gerät mehrere Stunden dauern.
+**A.** Da lokal angeheftete Volumes mit vollständiger Speicherzuweisung bereitgestellt werden, werden vorhandene Daten von mehrstufigen Volumes während der Bereitstellung möglicherweise in die Cloud übertragen. Daher hängt die Dauer zum Erstellen eines lokalen Volumes von mehreren Faktoren ab, u. a. von der Größe des Volumes, den Daten auf dem Gerät und der verfügbaren Bandbreite. Auf einem neu installierten Gerät ohne Volumes dauert die Erstellung eines lokalen Volumes etwa zehn Minuten pro Terabyte an Daten. Die Erstellung eines lokalen Volumes kann jedoch basierend auf den oben erläuterten Faktoren auf einem verwendeten Gerät mehrere Stunden dauern.
 
 **F.** Ich möchte ein lokales Volume erstellen. Gibt es bewährte Verfahren, die beachtet werden sollten?
 
 **A.** Lokale Volumes eignen sich für Workloads, die jederzeit lokale Garantien für Daten erfordern und empfindlich auf Cloudlatenzen reagieren. Wenn Sie die Nutzung lokaler Volumes für Ihre Workloads in Betracht ziehen, berücksichtigen Sie Folgendes:
 
-- Lokale Volumes werden mit vollständiger Speicherzuweisung bereitgestellt. Die Erstellung lokaler Volumes wirkt sich auf den verfügbaren Platz für mehrstufige Volumes aus. Aus diesem Grund wird empfohlen, mit kleineren Volumes zu beginnen und bei steigenden Speicheranforderungen zentral hochzuskalieren.
+* Lokale Volumes werden mit vollständiger Speicherzuweisung bereitgestellt. Die Erstellung lokaler Volumes wirkt sich auf den verfügbaren Platz für mehrstufige Volumes aus. Aus diesem Grund wird empfohlen, mit kleineren Volumes zu beginnen und bei steigenden Speicheranforderungen zentral hochzuskalieren.
+* Die Bereitstellung lokaler Volumes ist ein zeitintensiver Vorgang, bei dem unter Umständen vorhandene Daten von mehrstufigen Volumes in die Cloud übertragen werden. Dies kann zu einer Beeinträchtigung der Leistung auf diesen Volumes führen.
+* Die Bereitstellung von lokalen Volumes ist ein zeitaufwendiger Vorgang. Die tatsächliche Dauer hängt von mehreren Faktoren ab: der Größe des Volumes, das bereitgestellt wird, den Daten auf Ihrem Gerät und der verfügbaren Bandbreite. Wenn Sie Ihre vorhandenen Volumes nicht in der Cloud gesichert haben, dauert die Volumeerstellung länger. Es wird empfohlen, vor dem Bereitstellen eines lokalen Volumes Cloudmomentaufnahmen Ihrer vorhandenen Volumes zu erstellen.
+* Sie können vorhandene mehrstufige Volumes in lokale Volumes konvertieren. Bei dieser Konvertierung muss auf dem Gerät Platz für das geplante lokale Volume geschaffen werden (zudem müssen ggf. ausgelagerte Daten aus der Cloud geladen werden). Dies ist ein zeitaufwendiger Vorgang, der von den oben besprochenen Faktoren abhängig ist. Sie sollten Ihre vorhandenen Volumes vor der Konvertierung sichern, da der Prozess langsamer ist, wenn vorhandene Volumes nicht gesichert wurden. Während dieses Vorgangs treten auf dem Gerät möglicherweise Leistungseinbußen auf.
 
-- Die Bereitstellung lokaler Volumes ist ein zeitintensiver Vorgang, bei dem unter Umständen vorhandene Daten von mehrstufigen Volumes in die Cloud übertragen werden. Dies kann zu einer Beeinträchtigung der Leistung auf diesen Volumes führen.
-
-- Die Bereitstellung von lokalen Volumes ist ein zeitaufwendiger Vorgang. Die tatsächliche Dauer hängt von mehreren Faktoren ab: der Größe des Volumes, das bereitgestellt wird, den Daten auf Ihrem Gerät und der verfügbaren Bandbreite. Wenn Sie Ihre vorhandenen Volumes nicht in der Cloud gesichert haben, dauert die Volumeerstellung länger. Es wird empfohlen, vor dem Bereitstellen eines lokalen Volumes Cloudmomentaufnahmen Ihrer vorhandenen Volumes zu erstellen.
- 
-- Sie können vorhandene mehrstufige Volumes in lokale Volumes konvertieren. Bei dieser Konvertierung muss auf dem Gerät Platz für das geplante lokale Volume geschaffen werden (zudem müssen ggf. ausgelagerte Daten aus der Cloud geladen werden). Dies ist ein zeitaufwendiger Vorgang, der von den oben besprochenen Faktoren abhängig ist. Sie sollten Ihre vorhandenen Volumes vor der Konvertierung sichern, da der Prozess langsamer ist, wenn vorhandene Volumes nicht gesichert wurden. Während dieses Vorgangs treten auf dem Gerät möglicherweise Leistungseinbußen auf.
-	
 Weitere Informationen zum [Erstellen eines lokalen Volumes](storsimple-manage-volumes-u2.md#add-a-volume)
 
 **F.** Kann ich mehrere lokale Volumes gleichzeitig erstellen?
@@ -97,7 +91,6 @@ Sie können diese Aufträge im Azure StorSimple Manager-Dienst auf der Seite **A
 **A.** Nein, Sie können keine lokalen Volumes über Azure PowerShell-Cmdlets erstellen (alle mithilfe von Azure PowerShell erstellten Volumes sind mehrstufig). Darüber hinaus wird empfohlen, die Azure PowerShell-Cmdlets nicht zum Ändern der Eigenschaften eines lokalen Volumes zu verwenden, da dadurch das Volume ungewollt in ein mehrstufiges Volume geändert wird.
 
 ## Fragen zum Sichern eines lokalen Volumes
-
 **F.** Werden lokale Momentaufnahmen der lokalen Volumes unterstützt?
 
 **A.** Ja, Sie können lokale Momentaufnahmen der lokalen Volumes erstellen. Es wird jedoch dringend empfohlen, die lokalen Volumes regelmäßig mit Cloudmomentaufnahmen zu sichern, um den Schutz Ihrer Daten im Notfall zu gewährleisten.
@@ -115,21 +108,18 @@ Die Warnmeldung soll Sie darüber informieren, dass solch eine Situation eintret
 Wenn die lokalen Momentaufnahmen ungültig werden, erhalten Sie eine Warnung mit der Information, dass die lokalen Momentaufnahmen für die spezifische Sicherungsrichtlinie ungültig gemacht wurden, sowie die Liste mit den Zeitstempeln der lokalen Momentaufnahmen, die ungültig gemacht wurden. Diese Momentaufnahmen werden automatisch gelöscht, und Sie können sie nicht mehr auf der Seite **Sicherungskataloge** im klassischen Azure-Portal anzeigen.
 
 ## Fragen zum Konvertieren eines mehrstufigen Volumes in ein lokales Volume
-
 **F.** Ich habe bemerkt, dass das Gerät beim Konvertieren eines mehrstufigen Volumes in ein lokales Volume langsam reagiert. Warum ist das so?
 
 **A.** Die Konvertierung umfasst zwei Schritte:
 
-  1. Bereitstellen von Speicherplatz auf dem Gerät für das lokale Volume, das in Kürze konvertiert wird
-  2. Herunterladen ausgelagerter Daten aus der Cloud, um lokale Garantien zu gewährleisten
+1. Bereitstellen von Speicherplatz auf dem Gerät für das lokale Volume, das in Kürze konvertiert wird
+2. Herunterladen ausgelagerter Daten aus der Cloud, um lokale Garantien zu gewährleisten
 
 Bei beiden Schritten handelt es sich um Vorgänge mit langer Ausführungsdauer, die von der Größe des zu konvertierenden Volumes, den Daten auf dem Gerät und der verfügbaren Bandbreite abhängig sind. Da einige Daten von vorhandenen mehrstufigen Volumes im Rahmen des Bereitstellungsprozesses möglicherweise in die Cloud übergehen, kann es während dieser Zeit zu Leistungseinbußen auf dem Gerät kommen. Darüber hinaus kann der Konvertierungsprozess in folgenden Fällen langsamer sein:
 
-- Vorhandene Volumes wurden nicht in der Cloud gesichert. Daher wird empfohlen, die Volumes vor dem Initiieren einer Konvertierung zu sichern.
-
-- Richtlinien zur Bandbreitendrosselung wurden angewendet, die die verfügbare Bandbreite der Cloudverbindung einschränken können. Aus diesem Grund sollten Sie sicherstellen, dass eine dedizierte Bandbreite von mindestens 40 MBit/s für die Cloudverbindung verfügbar ist.
-
-- Der Konvertierungsvorgang kann aufgrund der oben erläuterten Faktoren einige Stunden dauern. Daher wird empfohlen, den Vorgang am Wochenende bzw. nicht während Spitzenzeiten auszuführen, damit Endbenutzer nicht beeinträchtigt werden.
+* Vorhandene Volumes wurden nicht in der Cloud gesichert. Daher wird empfohlen, die Volumes vor dem Initiieren einer Konvertierung zu sichern.
+* Richtlinien zur Bandbreitendrosselung wurden angewendet, die die verfügbare Bandbreite der Cloudverbindung einschränken können. Aus diesem Grund sollten Sie sicherstellen, dass eine dedizierte Bandbreite von mindestens 40 MBit/s für die Cloudverbindung verfügbar ist.
+* Der Konvertierungsvorgang kann aufgrund der oben erläuterten Faktoren einige Stunden dauern. Daher wird empfohlen, den Vorgang am Wochenende bzw. nicht während Spitzenzeiten auszuführen, damit Endbenutzer nicht beeinträchtigt werden.
 
 Weitere Informationen zum [Konvertieren eines mehrstufigen Volumes in ein lokales Volume](storsimple-manage-volumes-u2.md#change-the-volume-type)
 
@@ -141,14 +131,11 @@ Weitere Informationen zum [Konvertieren eines mehrstufigen Volumes in ein lokale
 
 **A.** Bei der Volumekonvertierung können aufgrund von Cloudkonnektivitätsproblemen Fehler auftreten. Nach mehreren nicht erfolgreichen Versuchen, ausgelagerte Dateien aus der Cloud abzurufen, beendet das Gerät die Konvertierung möglicherweise. In solch einem Szenario ist der Volumetyp der gleiche wie vor der Konvertierung. Zudem geschieht Folgendes:
 
-- Eine kritische Warnung wird angezeigt, um Sie über den Volumekonvertierungsfehler zu informieren. Weitere Informationen zu [Warnungen im Zusammenhang mit lokalen Volumes](storsimple-manage-alerts.md#locally-pinned-volume-alerts)
-
-- Wenn Sie ein mehrstufiges Volume in ein lokales Volume konvertieren, weist das Volume weiterhin Eigenschaften eines mehrstufigen Volumes auf, da sich möglicherweise immer noch Daten in der Cloud befinden. Es wird empfohlen, die Konnektivitätsprobleme zu beheben und den Konvertierungsvorgang zu wiederholen.
- 
-- Dasselbe gilt bei der fehlgeschlagenen Konvertierung eines lokalen Volumes in ein mehrstufiges Volume: Obwohl das Volume als lokales Volume gekennzeichnet wird, wird es als mehrstufiges Volume ausgeführt (da Daten möglicherweise in die Cloud übergegangen sind). Es belegt jedoch weiterhin Speicherplatz auf den lokalen Ebenen des Geräts. Dieser Speicherplatz ist nicht für andere lokale Volumes verfügbar. Es wird empfohlen, den Vorgang zu wiederholen, um sicherzustellen, dass die Volumekonvertierung abgeschlossen ist und der lokale Speicherplatz auf dem Gerät freigegeben werden kann.
+* Eine kritische Warnung wird angezeigt, um Sie über den Volumekonvertierungsfehler zu informieren. Weitere Informationen zu [Warnungen im Zusammenhang mit lokalen Volumes](storsimple-manage-alerts.md#locally-pinned-volume-alerts)
+* Wenn Sie ein mehrstufiges Volume in ein lokales Volume konvertieren, weist das Volume weiterhin Eigenschaften eines mehrstufigen Volumes auf, da sich möglicherweise immer noch Daten in der Cloud befinden. Es wird empfohlen, die Konnektivitätsprobleme zu beheben und den Konvertierungsvorgang zu wiederholen.
+* Dasselbe gilt bei der fehlgeschlagenen Konvertierung eines lokalen Volumes in ein mehrstufiges Volume: Obwohl das Volume als lokales Volume gekennzeichnet wird, wird es als mehrstufiges Volume ausgeführt (da Daten möglicherweise in die Cloud übergegangen sind). Es belegt jedoch weiterhin Speicherplatz auf den lokalen Ebenen des Geräts. Dieser Speicherplatz ist nicht für andere lokale Volumes verfügbar. Es wird empfohlen, den Vorgang zu wiederholen, um sicherzustellen, dass die Volumekonvertierung abgeschlossen ist und der lokale Speicherplatz auf dem Gerät freigegeben werden kann.
 
 ## Fragen zum Wiederherstellen eines lokalen Volumes
-
 **F.** Werden lokale Volumes sofort wiederhergestellt?
 
 **A.** Ja, lokale Volumes werden sofort wiederhergestellt. Sobald die Metadateninformationen für das Volume im Rahmen des Wiederherstellungsvorgangs aus der Cloud abgerufen werden, wird das Volume online geschaltet, und vom Host kann darauf zugegriffen werden. Lokale Garantien für die Volumedaten sind erst vorhanden, wenn alle Daten aus der Cloud heruntergeladen wurden. Während der Wiederherstellung kann die Leistung auf diesen Volumes beeinträchtigt sein.
@@ -169,10 +156,9 @@ Weitere Informationen zum [Konvertieren eines mehrstufigen Volumes in ein lokale
 
 **A.** Nein, Sie können den Volumetyp während der Wiederherstellung nicht ändern.
 
-- Volumes, die gelöscht wurden, werden als der in der Momentaufnahme gespeicherte Typ wiederhergestellt.
+* Volumes, die gelöscht wurden, werden als der in der Momentaufnahme gespeicherte Typ wiederhergestellt.
+* Vorhandene Volumes werden basierend auf ihrem aktuellen Typ wiederhergestellt und zwar unabhängig von dem in der Momentaufnahme gespeicherten Typ (siehe die zwei vorherigen Fragen).
 
-- Vorhandene Volumes werden basierend auf ihrem aktuellen Typ wiederhergestellt und zwar unabhängig von dem in der Momentaufnahme gespeicherten Typ (siehe die zwei vorherigen Fragen).
- 
 **F.** Ich muss mein lokales Volume wiederherstellen, habe jedoch die Momentaufnahme des falschen Zeitpunkts ausgewählt. Kann ich den aktuellen Wiederherstellungsvorgang abbrechen?
 
 **A.** Ja, Sie können einen gerade ausgeführten Wiederherstellungsvorgang abbrechen. Das Volume wird auf den Zustand zu Beginn der Wiederherstellung zurückgesetzt. Alle Schreibvorgänge, die auf dem Volume während der Wiederherstellung vorgenommen wurden, gehen jedoch verloren.
@@ -186,14 +172,13 @@ Weitere Informationen zum [Konvertieren eines mehrstufigen Volumes in ein lokale
 **A.** Ja, das ist möglich. Das lokale Volume wird jedoch standardmäßig als mehrstufiges Volume geklont. Weitere Informationen zum [Klonen eines lokalen Volumes](storsimple-clone-volume-u2.md)
 
 ## Fragen zum Ausführen eines Failovers für ein lokales Volume
-
 **F.** Ich muss für mein Gerät ein Failover auf ein anderes physisches Gerät ausführen. Erhalte ich beim Failover meiner lokalen Volumes lokale oder mehrstufige Volumes?
 
 **A.** Abhängig von der Softwareversion des Zielgeräts erhalten Sie beim Failover lokaler Volumes Folgendes:
 
-- Lokale Volumes, wenn auf dem Zielgerät Update 2 für die StorSimple 8000-Serie ausgeführt wird
-- Mehrstufige Volumes, wenn auf dem Zielgerät Update 1.x für die StorSimple 8000-Serie ausgeführt wird
-- Mehrstufige Volumes, wenn es sich beim Zielgerät um die Cloud Appliance handelt (Softwareversion Update 2 oder Update 1.x)
+* Lokale Volumes, wenn auf dem Zielgerät Update 2 für die StorSimple 8000-Serie ausgeführt wird
+* Mehrstufige Volumes, wenn auf dem Zielgerät Update 1.x für die StorSimple 8000-Serie ausgeführt wird
+* Mehrstufige Volumes, wenn es sich beim Zielgerät um die Cloud Appliance handelt (Softwareversion Update 2 oder Update 1.x)
 
 Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volumes mit verschiedenen Versionen](storsimple-device-failover-disaster-recovery.md#device-failover-across-software-versions)
 
@@ -207,7 +192,7 @@ Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volu
 
 **F.** Kann ich den Volumetyp während des Failovers ändern?
 
-**A.** Nein, Sie können den Volumetyp während eines Failovers nicht ändern. Bei einem Failover auf ein anderes physisches Gerät, auf dem Update 2 der StorSimple 8000-Serie ausgeführt wird, wird für die Volumes basierend auf dem in der Momentaufnahme gespeicherten Volumetyp ein Failover ausgeführt. Bei einem Failover auf eine andere Geräteversion lesen Sie oben die Frage zum Volumetyp nach einem Failover.
+**A.** Nein, Sie können den Volumetyp während eines Failovers nicht ändern. Bei einem Failover auf ein anderes physisches Gerät, auf dem Update 2 der StorSimple 8000-Serie ausgeführt wird, wird für die Volumes basierend auf dem in der Momentaufnahme gespeicherten Volumetyp ein Failover ausgeführt. Bei einem Failover auf eine andere Geräteversion lesen Sie oben die Frage zum Volumetyp nach einem Failover.
 
 **F.** Kann ich für einen Volumecontainer mit lokalen Volumes ein Failover auf die Cloud Appliance ausführen?
 

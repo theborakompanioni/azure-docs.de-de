@@ -1,45 +1,46 @@
-<properties
-   pageTitle="Übersicht über die Konfiguration von Azure Service Fabric Reliable Actors vom Typ „ReliableDictionaryActorStateProvider“ | Microsoft Azure"
-   description="Erfahren Sie mehr über das Konfigurieren von statusbehafteten Azure Service Fabric Actors vom Typ „ReliableDictionaryActorStateProvider“"
-   services="Service-Fabric"
-   documentationCenter=".net"
-   authors="sumukhs"
-   manager="timlt"
-   editor=""/>
+---
+title: Übersicht über die Konfiguration von Azure Service Fabric Reliable Actors vom Typ „ReliableDictionaryActorStateProvider“ | Microsoft Docs
+description: Erfahren Sie mehr über das Konfigurieren von statusbehafteten Azure Service Fabric Actors vom Typ „ReliableDictionaryActorStateProvider“
+services: Service-Fabric
+documentationcenter: .net
+author: sumukhs
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="07/18/2016"
-   ms.author="sumukhs"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 07/18/2016
+ms.author: sumukhs
 
+---
 # Konfigurieren von Reliable Actors –ReliableDictionaryActorStateProvider
 Sie können die Standardkonfiguration von „ReliableDictionaryActorStateProvider“ ändern, indem Sie die Datei „settings.xml“, die im Stammverzeichnis des Visual Studio-Pakets im Ordner „Config“ generiert wurde, für den betreffenden Actor ändern.
 
 Standardmäßig sucht die Azure Service Fabric-Laufzeit in der Datei „settings.xml“ nach vordefinierten Abschnittsnamen und nutzt die Konfigurationswerte beim Erstellen der zugrunde liegenden Laufzeitkomponenten.
 
->[AZURE.NOTE] Löschen bzw. ändern Sie **nicht** die Abschnittsnamen der folgenden Konfigurationen in der Datei „settings.xml“, die in der Visual Studio-Lösung generiert wird.
+> [!NOTE]
+> Löschen bzw. ändern Sie **nicht** die Abschnittsnamen der folgenden Konfigurationen in der Datei „settings.xml“, die in der Visual Studio-Lösung generiert wird.
+> 
+> 
 
 Es gibt auch globale Einstellungen, die sich auf die Konfiguration von ReliableDictionaryActorStateProvider auswirken.
 
 ## Globale Konfiguration
-
 Die globale Konfiguration wird im Clustermanifest für den Cluster im Abschnitt KtlLogger angegeben. So können für das freigegebene Protokoll der Speicherort und die Größe sowie die vom Protokollierungstool verwendeten globalen Speicherlimits konfiguriert werden. Beachten Sie, dass sich die Änderungen im Clustermanifest auf alle Dienste auswirken, die ReliableDictionaryActorStateProvider und zuverlässige zustandsbehaftete Dienste verwenden.
 
 Das Clustermanifest ist eine einzelne XML-Datei mit Einstellungen und Konfigurationen, die für alle Knoten und Dienste im Cluster gelten. Die Datei heißt normalerweise „ClusterManifest.xml“. Mit dem PowerShell-Befehl Get-ServiceFabricClusterManifest können Sie das Clustermanifest für Ihren Cluster sehen.
 
 ### Konfigurationsnamen
-
-|Name|Unit|Standardwert|Anmerkungen|
-|----|----|-------------|-------|
-|WriteBufferMemoryPoolMinimumInKB|Kilobytes|8388608|KB-Mindestwert, der im Kernelmodus dem Schreibpuffer-Speicherpool des Protokollierungstools zugeordnet wird. Dieser Speicherpool wird zum Zwischenspeichern von Zustandsinformationen verwendet, bevor auf den Datenträger geschrieben wird.|
-|WriteBufferMemoryPoolMaximumInKB|Kilobytes|Keine Begrenzung|Maximale Größe, auf die der Schreibpuffer-Speicherpool des Protokollierungstools anwachsen kann.|
-|SharedLogId|GUID|""|Gibt eine eindeutige GUID an, die zum Identifizieren der standardmäßigen freigegebenen Protokolldatei verwendet wird. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht die SharedLogId angeben. Falls SharedLogId angegeben wird, muss SharedLogPath ebenfalls angegeben werden.|
-|SharedLogPath|Vollständig qualifizierter Pfadname|""|Gibt den vollständig qualifizierten Pfad zur freigegebenen Protokolldatei an. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht den SharedLogPath angeben. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden.|
-|SharedLogSizeInMB|Megabytes|8192|Gibt den MB-Wert für den Festplattenspeicher an, der für das freigegebene Protokoll statisch zugeordnet wird. Der Wert muss größer oder gleich 2.048 sein.|
+| Name | Unit | Standardwert | Anmerkungen |
+| --- | --- | --- | --- |
+| WriteBufferMemoryPoolMinimumInKB |Kilobytes |8388608 |KB-Mindestwert, der im Kernelmodus dem Schreibpuffer-Speicherpool des Protokollierungstools zugeordnet wird. Dieser Speicherpool wird zum Zwischenspeichern von Zustandsinformationen verwendet, bevor auf den Datenträger geschrieben wird. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobytes |Keine Begrenzung |Maximale Größe, auf die der Schreibpuffer-Speicherpool des Protokollierungstools anwachsen kann. |
+| SharedLogId |GUID |"" |Gibt eine eindeutige GUID an, die zum Identifizieren der standardmäßigen freigegebenen Protokolldatei verwendet wird. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht die SharedLogId angeben. Falls SharedLogId angegeben wird, muss SharedLogPath ebenfalls angegeben werden. |
+| SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad zur freigegebenen Protokolldatei an. Die Datei wird von allen Reliable Services auf allen Knoten im Cluster verwendet, die in ihren dienstspezifischen Konfigurationen nicht den SharedLogPath angeben. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
+| SharedLogSizeInMB |Megabytes |8192 |Gibt den MB-Wert für den Festplattenspeicher an, der für das freigegebene Protokoll statisch zugeordnet wird. Der Wert muss größer oder gleich 2.048 sein. |
 
 ### Beispiel für einen Clustermanifestabschnitt
 ```xml
@@ -72,23 +73,20 @@ Replicator-Konfigurationen werden zum Konfigurieren des Replicators verwendet, d
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### Konfigurationsnamen
-
-|Name|Unit|Standardwert|Hinweise|
-|----|----|-------------|-------|
-|BatchAcknowledgementInterval|Sekunden|0,015|So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet.||
-|ReplicatorEndpoint|N/V|Kein Standardwert – Erforderlicher Parameter|Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen im Dienstmanifest finden Sie unter [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md). |
-|MaxReplicationMessageSize|Byte|50 MB|Die maximale Größe der Replikationsdaten, die in einer einzelnen Nachricht übertragen werden können.|
-|MaxPrimaryReplicationQueueSize|Anzahl der Vorgänge|8192|Die maximale Anzahl der Vorgänge in der primären Warteschlange. Ein Vorgang wird freigegeben, nachdem der primäre Replicator eine Bestätigung von allen sekundären Replicators empfangen hat. Dieser Wert muss größer als 64 und eine Potenz von 2 sein.|
-|MaxSecondaryReplicationQueueSize|Anzahl der Vorgänge|16384|Die maximale Anzahl der Vorgänge in der sekundären Warteschlange. Ein Vorgang wird freigegeben, nachdem sein Zustand durch Persistenz hochverfügbar gemacht wurde. Dieser Wert muss größer als 64 und eine Potenz von 2 sein.|
-|CheckpointThresholdInMB|MB|200|Die Menge an Speicherplatz für Protokolldateien, nach dem der Status geprüft wird.|
-|MaxRecordSizeInKB|KB|1024|Die maximale Datensatzgröße, die der Replicator in das Protokoll schreiben kann. Dieser Wert muss ein Vielfaches von 4 und größer als 16 sein.|
-|OptimizeLogForLowerDiskUsage|Boolean|true|Wenn „true“ festgelegt ist, wird das Protokoll so konfiguriert, dass die dedizierte Protokolldatei des Replikats mithilfe einer NTFS-Datei mit geringer Datendichte erstellt wird. Auf diese Weise verkleinert sich die Datei und damit der Speicherplatzbedarf. Wenn „false“ festgelegt ist, wird die Datei mit festen Zuordnungen erstellt. Dies ermöglicht die beste Schreibleistung.|
-|SharedLogId|GUID|""|Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden.|
-|SharedLogPath|Vollständig qualifizierter Pfadname|""|Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden.|
-
+| Name | Unit | Standardwert | Hinweise |
+| --- | --- | --- | --- |
+| BatchAcknowledgementInterval |Sekunden |0,015 |So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet. |
+| ReplicatorEndpoint |N/V |Kein Standardwert – Erforderlicher Parameter |Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen im Dienstmanifest finden Sie unter [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md). |
+| MaxReplicationMessageSize |Byte |50 MB |Die maximale Größe der Replikationsdaten, die in einer einzelnen Nachricht übertragen werden können. |
+| MaxPrimaryReplicationQueueSize |Anzahl der Vorgänge |8192 |Die maximale Anzahl der Vorgänge in der primären Warteschlange. Ein Vorgang wird freigegeben, nachdem der primäre Replicator eine Bestätigung von allen sekundären Replicators empfangen hat. Dieser Wert muss größer als 64 und eine Potenz von 2 sein. |
+| MaxSecondaryReplicationQueueSize |Anzahl der Vorgänge |16384 |Die maximale Anzahl der Vorgänge in der sekundären Warteschlange. Ein Vorgang wird freigegeben, nachdem sein Zustand durch Persistenz hochverfügbar gemacht wurde. Dieser Wert muss größer als 64 und eine Potenz von 2 sein. |
+| CheckpointThresholdInMB |MB |200 |Die Menge an Speicherplatz für Protokolldateien, nach dem der Status geprüft wird. |
+| MaxRecordSizeInKB |KB |1024 |Die maximale Datensatzgröße, die der Replicator in das Protokoll schreiben kann. Dieser Wert muss ein Vielfaches von 4 und größer als 16 sein. |
+| OptimizeLogForLowerDiskUsage |Boolean |true |Wenn „true“ festgelegt ist, wird das Protokoll so konfiguriert, dass die dedizierte Protokolldatei des Replikats mithilfe einer NTFS-Datei mit geringer Datendichte erstellt wird. Auf diese Weise verkleinert sich die Datei und damit der Speicherplatzbedarf. Wenn „false“ festgelegt ist, wird die Datei mit festen Zuordnungen erstellt. Dies ermöglicht die beste Schreibleistung. |
+| SharedLogId |GUID |"" |Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden. |
+| SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 
 ## Beispiel einer Konfigurationsdatei
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">

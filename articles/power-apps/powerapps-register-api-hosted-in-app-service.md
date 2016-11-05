@@ -1,29 +1,31 @@
-<properties
-	pageTitle="Entwickeln oder Erstellen einer in der App Service-Umgebung gehosteten API in PowerApps Enterprise | Microsoft Azure"
-	description="Erfahren Sie, wie Sie eine benutzerdefinierte in der App Service-Umgebung gehostete API im Azure-Portal registrieren."
-	services=""
-    suite="powerapps"
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="dwrede"
-	editor=""/>
+---
+title: Entwickeln oder Erstellen einer in der App Service-Umgebung gehosteten API in PowerApps Enterprise | Microsoft Docs
+description: Erfahren Sie, wie Sie eine benutzerdefinierte in der App Service-Umgebung gehostete API im Azure-Portal registrieren.
+services: ''
+suite: powerapps
+documentationcenter: ''
+author: MandiOhlinger
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="powerapps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/02/2016"
-   ms.author="guayan"/>
+ms.service: powerapps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/02/2016
+ms.author: guayan
 
+---
 # Registrieren einer in Ihrer App Service-Umgebung gehosteten API
-
-> [AZURE.IMPORTANT] Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
+> [!IMPORTANT]
+> Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
 > 
-> - Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
-> - Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen).  
-> - Weitere Informationen zu benutzerdefinierten APIs in PowerApps finden Sie unter [What are Custom APIs](https://powerapps.microsoft.com/tutorials/register-custom-api/) (Was sind benutzerdefinierte APIs?). 
+> * Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
+> * Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen).  
+> * Weitere Informationen zu benutzerdefinierten APIs in PowerApps finden Sie unter [What are Custom APIs](https://powerapps.microsoft.com/tutorials/register-custom-api/) (Was sind benutzerdefinierte APIs?). 
+> 
+> 
 
 <!--Archived
 PowerApps supports registering existing APIs hosted anywhere in the cloud or on-premises, which is really powerful. In some scenarios, you may want to develop or create some new APIs. For example, you may want to:
@@ -68,9 +70,9 @@ After the API is deployed to your app service environment, use the following ste
 ![][12]  
 3. In **Add API**, enter the API properties:  
 
-	- In **Name**, enter a name for your API. Notice that the name you enter is included in the runtime URL of the API. Make the name meaningful and unique within your organization.	
-	- In **Source**, select **Import from APIs hosted in App Service Environment**:  
-	![][13]
+    - In **Name**, enter a name for your API. Notice that the name you enter is included in the runtime URL of the API. Make the name meaningful and unique within your organization.    
+    - In **Source**, select **Import from APIs hosted in App Service Environment**:  
+    ![][13]
 4. In **API hosted in App Service Environment**, select the API you want to import. This list shows every web app, API app, and mobile app in your app service environment  that has its **apiDefinition.url** property configured. To import the API, it uses the Swagger 2.0 API definition exposed using this property. Make sure this URL is publicly accessible when you register the API:  
 ![][14]
 5. Select **ADD** to complete these steps.

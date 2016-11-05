@@ -1,43 +1,41 @@
-<properties
-	pageTitle="Hinzufügen von Pushbenachrichtigungen zur App (iOS) | .NET-Back-End"
-	description="Erfahren Sie mehr über die Verwendung von Azure Mobile Services zum Senden von Pushbenachrichtigungen an Ihre iOS-App."
-	services="mobile-services,notification-hubs"
-	documentationCenter="ios"
-	manager="dwrede"
-	editor=""
-	authors="krisragh"/>
+---
+title: Hinzufügen von Pushbenachrichtigungen zur App (iOS) | Microsoft Docs
+description: Erfahren Sie mehr über die Verwendung von Azure Mobile Services zum Senden von Pushbenachrichtigungen an Ihre iOS-App.
+services: mobile-services,notification-hubs
+documentationcenter: ios
+manager: dwrede
+editor: ''
+author: krisragh
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="krisragh"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: ios
+ms.devlang: objective-c
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: krisragh
 
-
+---
 # Hinzufügen von Pushbenachrichtigungen zur iOS-App und zum .NET-Back-End
-
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
+[!INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
 &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
 > Informationen für die entsprechende Mobile Apps-Version dieses Themas finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+> 
+> 
 
 In diesem Thema wird das Hinzufügen von Pushbenachrichtigungen zum [Schnellstartprojekt](mobile-services-dotnet-backend-ios-get-started.md) gezeigt, sodass Ihnen der mobile Dienst eine Pushbenachrichtigung sendet, wenn ein Datensatz eingefügt wird. Sie müssen zunächst [Erste Schritte mit Mobile Services] abschließen.
 
-[AZURE.INCLUDE [Aktivieren von Apple-Pushbenachrichtigungen](../../includes/enable-apple-push-notifications.md)]
+[!INCLUDE [Aktivieren von Apple-Pushbenachrichtigungen](../../includes/enable-apple-push-notifications.md)]
 
 ## <a id="configure"></a>Konfigurieren von Azure zum Senden von Pushbenachrichtigungen
+[!INCLUDE [Konfigurieren von Pushbenachrichtigungen in Azure Mobile Services](../../includes/mobile-services-apns-configure-push.md)]
 
-[AZURE.INCLUDE [Konfigurieren von Pushbenachrichtigungen in Azure Mobile Services](../../includes/mobile-services-apns-configure-push.md)]
-
-##<a id="update-server"></a>Aktualisieren des Back-End-Codes zum Senden von Pushbenachrichtigungen
-
+## <a id="update-server"></a>Aktualisieren des Back-End-Codes zum Senden von Pushbenachrichtigungen
 * Öffnen Sie den Visual Studio-Projektordner **Controllers** > **TodoItemController.cs** > Methode `PostTodoItem`. Ersetzen Sie die Methode durch folgenden Code. Wenn ein TODO-Element eingefügt wird, sendet dieser Code eine Pushbenachrichtigung mit dem Text. Wenn ein Fehler vorliegt, fügt der Code einen Fehlerprotokolleintrag hinzu, der über den Abschnitt "Protokolle" des Portals angezeigt werden kann.
-
 
 ```
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
@@ -59,13 +57,12 @@ In diesem Thema wird das Hinzufügen von Pushbenachrichtigungen zum [Schnellstar
         }
 ```
 
-##<a name="publish-the-service"></a>Veröffentlichen des mobilen Diensts in Azure
+## <a name="publish-the-service"></a>Veröffentlichen des mobilen Diensts in Azure
+[!INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
 
-[AZURE.INCLUDE [mobile-services-dotnet-backend-publish-service](../../includes/mobile-services-dotnet-backend-publish-service.md)]
+[!INCLUDE [Hinzufügen von Pushbenachrichtigungen zur App](../../includes/add-push-notifications-to-app.md)]
 
-[AZURE.INCLUDE [Hinzufügen von Pushbenachrichtigungen zur App](../../includes/add-push-notifications-to-app.md)]
-
-[AZURE.INCLUDE [Testen von Pushbenachrichtigungen in einer App](../../includes/test-push-notifications-in-app.md)]
+[!INCLUDE [Testen von Pushbenachrichtigungen in einer App](../../includes/test-push-notifications-in-app.md)]
 
 <!-- Anchors.  -->
 [Generate the certificate signing request]: #certificates

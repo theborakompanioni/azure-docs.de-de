@@ -1,25 +1,23 @@
-<properties
-   pageTitle="Verwenden von Power BI Embedded mit REST | Microsoft Azure"
-   description="Verwenden von Power BI Embedded mit REST  "
-   services="power-bi-embedded"
-   documentationCenter=""
-   authors="guyinacube"
-   manager="erikre"
-   editor=""
-   tags=""/>
-<tags
-   ms.service="power-bi-embedded"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="powerbi"
-   ms.date="10/04/2016"
-   ms.author="asaxton"/>
+---
+title: Verwenden von Power BI Embedded mit REST | Microsoft Docs
+description: 'Verwenden von Power BI Embedded mit REST  '
+services: power-bi-embedded
+documentationcenter: ''
+author: guyinacube
+manager: erikre
+editor: ''
+tags: ''
 
+ms.service: power-bi-embedded
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: powerbi
+ms.date: 10/04/2016
+ms.author: asaxton
 
+---
 # <a name="how-to-use-power-bi-embedded-with-rest"></a>Verwendung von Power BI Embedded mit REST
-
-
 ## <a name="power-bi-embedded:-what-it-is-and-what-it's-for"></a>Power BI Embedded: Gegenstand und Funktionsbeschreibung
 Einen Überblick über Power BI Embedded finden Sie auf der offiziellen Website von [Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/). Verschaffen wir uns zunächst einen Eindruck, bevor wir uns näher mit der Verwendung mit REST beschäftigen.
 
@@ -42,23 +40,25 @@ Bevor wir mit der Anwendungsentwicklung beginnen, müssen wir über das Azure-Po
 
 Jeder Arbeitsbereich von Power BI Embedded ist der Arbeitsbereich für einen Kunden (Mandanten), und wir können jeder Arbeitsbereichssammlung zahlreiche Arbeitsbereiche hinzufügen. In jeder Arbeitsbereichssammlung wird der gleiche Zugriffsschlüssel verwendet. Die Arbeitsbereichssammlung ist die Sicherheitsgrenze für Power BI Embedded.
 
-![](media\power-bi-embedded-iframe\create-workspace.png)
+![](media\\power-bi-embedded-iframe\\create-workspace.png)
 
 Kopieren Sie den Zugriffsschlüssel aus dem Azure-Portal, wenn Sie die Erstellung der Arbeitsbereichssammlung abgeschlossen haben.
 
-![](media\power-bi-embedded-iframe\copy-access-key.png)
+![](media\\power-bi-embedded-iframe\\copy-access-key.png)
 
-> [AZURE.NOTE] Sie können die Arbeitsbereichssammlung auch bereitstellen und den Zugriffsschlüssel über die REST-API beziehen. Weitere Informationen finden Sie unter [Power BI Resource Provider APIs](https://msdn.microsoft.com/library/azure/mt712306.aspx)(Power BI-Ressourcenanbieter-APIs).
+> [!NOTE]
+> Sie können die Arbeitsbereichssammlung auch bereitstellen und den Zugriffsschlüssel über die REST-API beziehen. Weitere Informationen finden Sie unter [Power BI Resource Provider APIs](https://msdn.microsoft.com/library/azure/mt712306.aspx)(Power BI-Ressourcenanbieter-APIs).
+> 
+> 
 
 ## <a name="create-.pbix-file-with-power-bi-desktop"></a>Erstellen einer PBIX-Datei mit Power BI Desktop
 Im nächsten Schritt müssen wir die Datenverbindung und die Berichte erstellen, die eingebettet werden sollen.
 Für diese Aufgabe gibt es keine Programmierung und keinen Code. Wir verwenden ausschließlich Power BI Desktop.
 In diesem Artikel werden keine Details zur Verwendung von Power BI Desktop erläutert. Falls Sie hierbei Unterstützung benötigen, finden Sie weitere Informationen unter [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/). In unserem Beispiel verwenden wir das [Analysebeispiel für den Einzelhandel](https://powerbi.microsoft.com/documentation/powerbi-sample-datasets/).
 
-![](media\power-bi-embedded-iframe\power-bi-desktop-1.png)
+![](media\\power-bi-embedded-iframe\\power-bi-desktop-1.png)
 
 ## <a name="create-a-power-bi-workspace"></a>Erstellen eines Power BI-Arbeitsbereichs
-
 Nachdem die Bereitstellung vollständig abgeschlossen ist, beginnen wir jetzt damit, mithilfe von REST-APIs einen Kundenarbeitsbereich in der Arbeitsbereichssammlung zu erstellen. Die folgende HTTP POST-Anforderung (REST) erstellt einen neuen Arbeitsbereich in unserer bestehenden Arbeitsbereichssammlung. In unserem Beispiel lautet der Name der Arbeitsbereichssammlung **mypbiapp**.
 Wir legen den Zugriffsschlüssel, den wir zuvor kopiert haben, als **AppKey**fest. So ist die Authentifizierung ganz einfach!
 
@@ -244,21 +244,26 @@ Content-Type: application/json; charset=utf-8
 
 Alternativ können wir die Sicherheit auf Zeilenebene in Power BI Embedded verwenden und die Daten für jeden einzelnen Benutzer in getrennten Berichten separieren. Dementsprechend können wir jeden Kundenbericht mit derselben PBIX-Datei \(Benutzeroberfläche usw.) und unterschiedlichen Datenquellen bereitstellen.
 
-> [AZURE.NOTE] Wenn Sie anstelle des **DirectQuery-Modus** den **Importmodus** verwenden, besteht keine Möglichkeit, die Modelle über die API zu aktualisieren. Zudem bietet Power BI Embedded noch keine Unterstützung für lokale Datenquellen über Power BI Gateway. Besuchen Sie regelmäßig den [Power BI-Blog](https://powerbi.microsoft.com/blog/) , um sich über Neuigkeiten und zukünftige Releases zu informieren.
+> [!NOTE]
+> Wenn Sie anstelle des **DirectQuery-Modus** den **Importmodus** verwenden, besteht keine Möglichkeit, die Modelle über die API zu aktualisieren. Zudem bietet Power BI Embedded noch keine Unterstützung für lokale Datenquellen über Power BI Gateway. Besuchen Sie regelmäßig den [Power BI-Blog](https://powerbi.microsoft.com/blog/) , um sich über Neuigkeiten und zukünftige Releases zu informieren.
+> 
+> 
 
 ## <a name="authentication-and-hosting-(embedding)-reports-in-our-web-page"></a>Authentifizierung und Einbetten von Berichten in unsere Webseite
-
 Bei der vorherigen REST-API können wir den Zugriffsschlüssel **AppKey** selbst als Autorisierungsheader verwenden. Da diese Aufrufe seitens des Back-End-Servers verarbeitet werden können, ist dies eine sichere Vorgehensweise.
 
 Wenn wir allerdings den Bericht in unsere Webseite einbetten, wird diese Art von Sicherheitsinformationen über JavaScript \(Front-End) verarbeitet. In diesem Fall muss der Wert des Autorisierungsheaders gesichert werden. Falls unser Zugriffsschlüssel von einem böswilligen Benutzer oder einer Schadsoftware entdeckt wird, kann der Benutzer bzw. die Software mit diesem Schlüssel sämtliche Vorgänge aufrufen.
 
 Beim Einbetten des Berichts in unsere Webseite müssen wir anstelle des **AppKey**-Zugriffsschlüssels das berechnete Token verwenden. Unsere Anwendung muss das OAuth Json Web Token \(JWT) erstellen, das aus den Ansprüchen und der berechneten digitalen Signatur besteht. Wie im Folgenden dargestellt, besteht dieses OAuth JWT aus codierten Zeichenfolgentoken, die durch Punkte getrennt sind.
 
-![](media\power-bi-embedded-iframe\oauth-jwt.png)
+![](media\\power-bi-embedded-iframe\\oauth-jwt.png)
 
 Zunächst müssen wir den Eingabewert vorbereiten, der später signiert wird. Dieser Wert ist die Base64-URL-codierte (rfc4648) Zeichenfolge der folgenden JSON. Die Trennung erfolgt durch einen Punkt \(.). Später erläutern wir, wie Sie die Berichts-ID abrufen.
 
-> [AZURE.NOTE] Um die Sicherheit auf Zeilenebene (Row Level Security, RLS) in Power BI Embedded zu verwenden, müssen wir zudem **Benutzername** und **Rollen** in den Ansprüchen festlegen.
+> [!NOTE]
+> Um die Sicherheit auf Zeilenebene (Row Level Security, RLS) in Power BI Embedded zu verwenden, müssen wir zudem **Benutzername** und **Rollen** in den Ansprüchen festlegen.
+> 
+> 
 
 ```
 {
@@ -334,7 +339,6 @@ function rfc4648_base64_encode($arg) {
 ```
 
 ## <a name="finally,-embed-the-report-into-the-web-page"></a>Einbetten des Berichts in die Webseite
-
 Damit wir unseren Bericht einbetten können, müssen wir mithilfe der folgenden REST-API die eingebettete URL und die Berichts- **ID** aufrufen.
 
 **HTTP-Anforderung**
@@ -368,7 +372,10 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 Wir können den Bericht mithilfe des vorherigen App-Tokens in unsere Web-App einbetten.
 Wenn Sie den nächsten Beispielcode betrachten, fällt auf, dass der Anfang mit dem vorherigen Beispiel identisch ist. Im unteren Teil zeigt dieses Beispiel die **embedUrl** \(siehe vorheriges Ergebnis) im IFrame und stellt das App-Token im IFrame bereit.
 
-> [AZURE.NOTE] Sie müssen den Wert der Berichts-ID in den Wert einer Ihrer eigenen Berichts-IDs ändern. Aufgrund eines Fehlers in unserem Content Management-System wird das IFrame-Tag im Codebeispiel wörtlich gelesen. Entfernen Sie den gekappten Text aus dem Tag, wenn Sie diesen Beispielcode kopieren und einfügen.
+> [!NOTE]
+> Sie müssen den Wert der Berichts-ID in den Wert einer Ihrer eigenen Berichts-IDs ändern. Aufgrund eines Fehlers in unserem Content Management-System wird das IFrame-Tag im Codebeispiel wörtlich gelesen. Entfernen Sie den gekappten Text aus dem Tag, wenn Sie diesen Beispielcode kopieren und einfügen.
+> 
+> 
 
 ```
     <?php
@@ -450,15 +457,12 @@ Wenn Sie den nächsten Beispielcode betrachten, fällt auf, dass der Anfang mit 
 
 Das ist unser Ergebnis:
 
-![](media\power-bi-embedded-iframe\view-report.png)
+![](media\\power-bi-embedded-iframe\\view-report.png)
 
 Aktuell zeigt Power BI Embedded den Bericht nur im IFrame an. Besuchen Sie regelmäßig den [Power BI-Blog](). Zukünftige Verbesserungen beinhalten möglicherweise neue clientseitige APIs, mit denen Sie Informationen an den IFrame senden und aus diesem abrufen können. Alles sehr spannend!
 
-
 ## <a name="see-also"></a>Siehe auch
-- [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
-
-
+* [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
 <!--HONumber=Oct16_HO2-->
 

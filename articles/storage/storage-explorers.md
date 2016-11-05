@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Azure Storage-Clienttools | Microsoft Azure"
-    description="Enthält eine Liste der Tools, die das Anzeigen von bzw. Interagieren mit Azure Storage-Daten ermöglichen."
-    services="storage"
-    documentationCenter=""
-    authors="micurd"
-    manager="jahogg"
-    editor="tysonn"/>
+---
+title: Azure Storage-Clienttools | Microsoft Docs
+description: Enthält eine Liste der Tools, die das Anzeigen von bzw. Interagieren mit Azure Storage-Daten ermöglichen.
+services: storage
+documentationcenter: ''
+author: micurd
+manager: jahogg
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="micurd"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: micurd
 
-
+---
 # <a name="azure-storage-client-tools"></a>Azure Storage-Clienttools
-
 Häufig möchten Benutzer von Azure Storage ihre Daten mithilfe eines Azure Storage-Clienttools anzeigen oder mit den Daten interagieren. In den folgenden Tabellen sind eine Reihe von Tools aufgeführt, die Ihnen dies ermöglichen. Ein Block ist jeweils mit „X“ gekennzeichnet, wenn er das Aufzählen bzw. Zugreifen auf die Datenabstraktion ermöglicht. In der Tabelle ist auch angegeben, ob die Tools kostenlos sind. Mit „Testversion“ wird angegeben, dass es eine kostenlose Testversion gibt, das vollständige Produkt aber nicht kostenfrei ist. Mit „J/N“ wird angegeben, dass eine Version kostenlos erhältlich ist und eine andere Version zum Kauf zur Verfügung steht.
 
 Dies ist nur eine Momentaufnahme der verfügbaren Azure Storage-Clienttools. Diese Tools werden ggf. weiterentwickelt und mit weiteren Funktionen ausgestattet. Wenn Korrekturen oder Updates vorhanden sind, können Sie einen Kommentar hinterlassen, um uns dies mitzuteilen. Dies gilt auch, wenn Sie Tools kennen, die hier aufgeführt sein sollten. Wir fügen sie dann gerne hinzu.

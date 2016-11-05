@@ -1,36 +1,33 @@
-<properties
-	pageTitle="Beispiele für Azure Storage | Microsoft Azure"
-	description="Sie können Beispielcode und -anwendungen für Azure Storage anzeigen, herunterladen und ausführen. Entdecken Sie Schnellstart-Beispiele für Blobs, Warteschlangen, Tabellen und Dateien, indem Sie die Speicherclientbibliotheken für .NET, Java, Node.js und C++ verwenden."
-	services="storage"
-	documentationCenter="na"
-	authors="tamram"
-	manager="carmonm"
-	editor="tysonn" />
-<tags
-	ms.service="storage"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="storage"
-	ms.date="09/21/2016"
-	ms.author="micurd;tamram" />
+---
+title: Beispiele für Azure Storage | Microsoft Docs
+description: Sie können Beispielcode und -anwendungen für Azure Storage anzeigen, herunterladen und ausführen. Entdecken Sie Schnellstart-Beispiele für Blobs, Warteschlangen, Tabellen und Dateien, indem Sie die Speicherclientbibliotheken für .NET, Java, Node.js und C++ verwenden.
+services: storage
+documentationcenter: na
+author: tamram
+manager: carmonm
+editor: tysonn
 
+ms.service: storage
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: storage
+ms.date: 09/21/2016
+ms.author: micurd;tamram
+
+---
 # Beispiele für Azure Storage
-
 ## Übersicht
 Verwenden Sie die unten aufgeführten Links, um Arbeitsbeispiele für Azure-Speicher anzuzeigen und herunterzuladen.
 
 ## Bibliothek mit Azure-Codebeispielen
-
-Die [Bibliothek mit Azure-Codebeispielen](https://azure.microsoft.com/documentation/samples/?service=storage) enthält Beispiele für Azure Storage, die Sie herunterladen und lokal ausführen können. Die Bibliothek mit Codebeispielen enthält Beispielcode im ZIP-Format. Alternativ können Sie die einzelnen Beispiele im GitHub-Repository suchen und klonen.
+Die [Bibliothek mit Azure-Codebeispielen](https://azure.microsoft.com/documentation/samples/?service=storage) enthält Beispiele für Azure Storage, die Sie herunterladen und lokal ausführen können. Die Bibliothek mit Codebeispielen enthält Beispielcode im ZIP-Format. Alternativ können Sie die einzelnen Beispiele im GitHub-Repository suchen und klonen.
 
 ## Beispiele für erste Schritte
-
 * [Erste Schritte mit Azure Storage – Einstieg in fünf Minuten](storage-getting-started-guide.md)
 * [Visual Studio-Schnellstart für Azure Storage](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
 
 ## Beispiele für .NET
-
 Um die Beispiele für .NET zu untersuchen, laden Sie die [Speicherclientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) aus NuGet herunter. Die .NET-Speicherclientbibliothek ist auch im [Azure SDK für .NET](https://azure.microsoft.com/downloads/) verfügbar.
 
 * [Erste Schritte mit dem Azure Blob-Dienst in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
@@ -41,7 +38,6 @@ Um die Beispiele für .NET zu untersuchen, laden Sie die [Speicherclientbiblioth
 * [Managing concurrency using Azure Storage (Verwalten von Nebenläufigkeit mit Azure Storage)](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
 
 ## Beispiele für Java
-
 Um die Beispiele für Java zu untersuchen, laden Sie die [Speicherclientbibliothek für Java](https://github.com/azure/azure-storage-java) herunter.
 
 * [Erste Schritte mit Blobs](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/blob/gettingstarted)
@@ -49,7 +45,6 @@ Um die Beispiele für Java zu untersuchen, laden Sie die [Speicherclientbiblioth
 * [Erste Schritte mit Warteschlangen](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/queue/gettingstarted)
 
 ## Beispiele für Node.js
-
 Um die Beispiele für Node.js zu untersuchen, laden Sie die [Speicherclientbibliothek für Node.js](https://github.com/Azure/azure-storage-node) herunter.
 
 * [Blob-Ladeprogramm](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
@@ -61,7 +56,6 @@ Um die Beispiele für Node.js zu untersuchen, laden Sie die [Speicherclientbibli
 * [Tabellenabfrage](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
 
 ## Beispiele für C++
-
 Um die Beispiele für C++ zu untersuchen, laden Sie die [Speicherclientbibliothek für C++](https://www.nuget.org/packages/wastorage/) aus NuGet herunter.
 
 * [Erste Schritte mit Blobs](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
@@ -69,25 +63,20 @@ Um die Beispiele für C++ zu untersuchen, laden Sie die [Speicherclientbibliothe
 * [Erste Schritte mit Warteschlangen](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
 
 ## Siehe auch
-
 ### .NET-Ressourcen
-
-- [Quellcode für die Speicherclientbibliothek für .NET](https://github.com/Azure/azure-storage-net)
-- [Referenz zur .NET-Clientbibliothek](https://msdn.microsoft.com/library/azure/dn261237.aspx)
+* [Quellcode für die Speicherclientbibliothek für .NET](https://github.com/Azure/azure-storage-net)
+* [Referenz zur .NET-Clientbibliothek](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 
 ### Java-Ressourcen
-
-- [Quellcode für die Speicherclientbibliothek für Java](https://github.com/azure/azure-storage-java)
-- [Referenz zur Java-Clientbibliothek](http://dl.windowsazure.com/storage/javadoc/)
+* [Quellcode für die Speicherclientbibliothek für Java](https://github.com/azure/azure-storage-java)
+* [Referenz zur Java-Clientbibliothek](http://dl.windowsazure.com/storage/javadoc/)
 
 ### Node.js-Ressourcen
-
-- [Quellcode für die Speicherclientbibliothek für Node.js](https://github.com/Azure/azure-storage-node)
-- [Referenz zurNode.js-Clientbibliothek](http://dl.windowsazure.com/nodestoragedocs/index.html)
+* [Quellcode für die Speicherclientbibliothek für Node.js](https://github.com/Azure/azure-storage-node)
+* [Referenz zurNode.js-Clientbibliothek](http://dl.windowsazure.com/nodestoragedocs/index.html)
 
 ### C++-Ressourcen
-
-- [Quellcode für die Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)
-- [Referenz zur C++-Clientbibliothek](http://azure.github.io/azure-storage-cpp/)
+* [Quellcode für die Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)
+* [Referenz zur C++-Clientbibliothek](http://azure.github.io/azure-storage-cpp/)
 
 <!---HONumber=AcomDC_0921_2016-->

@@ -1,29 +1,27 @@
-<properties
-	pageTitle="Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer | Microsoft Azure"
-	description="Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer einen persistenten Datenträger hinzufügen."
-	keywords="virtueller Linux-Computer,Ressourcendatenträger hinzufügen"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="rickstercdn"
-	manager="timlt"
-	editor="tysonn"
-	tags="azure-resource-manager" />
+---
+title: Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer | Microsoft Docs
+description: Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer einen persistenten Datenträger hinzufügen.
+keywords: virtueller Linux-Computer,Ressourcendatenträger hinzufügen
+services: virtual-machines-linux
+documentationcenter: ''
+author: rickstercdn
+manager: timlt
+editor: tysonn
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-linux"
-	ms.topic="article"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.date="09/06/2016"
-	ms.author="rclaus"/>
+ms.service: virtual-machines-linux
+ms.topic: article
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.date: 09/06/2016
+ms.author: rclaus
 
+---
 # Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
-
 In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. Zum Hinzufügen eines Datenträgers benötigen Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), die im Resource Manager-Modus (`azure config mode arm`) konfiguriert wurde.
 
 ## Schnellbefehle
-
 Ersetzen Sie in den folgenden Befehlsbeispielen die Werte zwischen &lt; und &gt; durch die Werte aus Ihrer eigenen Umgebung.
 
 ```bash
@@ -31,7 +29,6 @@ azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>
 ```
 
 ## Anfügen eines Datenträgers
-
 Neue Datenträger lassen sich schnell anfügen. Geben Sie `azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Das Ergebnis sollte etwa wie folgt aussehen:
 
 ```bash
@@ -49,8 +46,10 @@ info:    vm disk attach-new command OK
 ```
 
 ## Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
-
-> [AZURE.NOTE] In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-mac-create-ssh-keys.md). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
+> [!NOTE]
+> In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-mac-create-ssh-keys.md). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
+> 
+> 
 
 Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Falls Sie mit dem Herstellen einer Verbindung über **SSH** nicht vertraut sind: Der Befehl hat das Format `ssh <username>@<FQDNofAzureVM> -p <the ssh port>` und sieht wie folgt aus:
 
@@ -110,7 +109,7 @@ Ausgabe
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Wir verwenden den Datenträger `sdc`. Partitionieren Sie nun den Datenträger mit `sudo fdisk /dev/sdc` – wir gehen davon aus, dass der Datenträger `sdc` war. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte.
+Wir verwenden den Datenträger `sdc`. Partitionieren Sie nun den Datenträger mit `sudo fdisk /dev/sdc` – wir gehen davon aus, dass der Datenträger `sdc` war. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte.
 
 ```bash
 sudo fdisk /dev/sdc
@@ -184,7 +183,7 @@ Maximum filesystem blocks=1342177280
 32768 blocks per group, 32768 fragments per group
 8192 inodes per group
 Superblock backups stored on blocks:
-	32768, 98304, 163840, 229376, 294912, 819200, 884736
+    32768, 98304, 163840, 229376, 294912, 819200, 884736
 Allocating group tables: done
 Writing inode tables: done
 Creating journal (32768 blocks): done
@@ -230,7 +229,10 @@ Die Ausgabe sieht in etwa wie folgt aus:
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
->[AZURE.NOTE] Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+> [!NOTE]
+> Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+> 
+> 
 
 Öffnen Sie als Nächstes die Datei **/etc/fstab** in einem Text-Editor:
 
@@ -244,37 +246,37 @@ In diesem Beispiel verwenden wir den UUID-Wert für das neue Gerät **/dev/sdc1*
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
 ```
 
->[AZURE.NOTE] Wenn Sie später einen Datenträger entfernen, ohne „fstab“ zu bearbeiten, kann der Start des virtuellen Computers fehlschlagen. Bei den meisten Distributionen wird entweder die fstab-Option `nofail` oder `nobootwait` bereitgestellt (bzw. auch beide). Mit diesen Optionen kann ein System auch dann starten, wenn der Datenträger beim Start nicht bereitgestellt wird. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution.
-
+> [!NOTE]
+> Wenn Sie später einen Datenträger entfernen, ohne „fstab“ zu bearbeiten, kann der Start des virtuellen Computers fehlschlagen. Bei den meisten Distributionen wird entweder die fstab-Option `nofail` oder `nobootwait` bereitgestellt (bzw. auch beide). Mit diesen Optionen kann ein System auch dann starten, wenn der Datenträger beim Start nicht bereitgestellt wird. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution.
+> 
+> 
 
 ### TRIM/UNMAP-Unterstützung für Linux in Azure
 Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann Kosten sparen, wenn Sie große Dateien erstellen und diese dann löschen.
 
 Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
 
-- Verwenden Sie die Bereitstellungsoption `discard` in `/etc/fstab`, z.B.:
-
-		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
-
-- Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
-
-	**Ubuntu**
-
-		# sudo apt-get install util-linux
-		# sudo fstrim /datadrive
-
-	**RHEL/CentOS**
-
-		# sudo yum install util-linux
-		# sudo fstrim /datadrive
+* Verwenden Sie die Bereitstellungsoption `discard` in `/etc/fstab`, z.B.:
+  
+        UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+* Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
+  
+    **Ubuntu**
+  
+        # sudo apt-get install util-linux
+        # sudo fstrim /datadrive
+  
+    **RHEL/CentOS**
+  
+        # sudo yum install util-linux
+        # sudo fstrim /datadrive
 
 ## Problembehandlung
-[AZURE.INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
+[!INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
 
 ## Nächste Schritte
-
-- Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
-- Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](virtual-machines-linux-optimization.md), um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
-- Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung.
+* Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
+* Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](virtual-machines-linux-optimization.md), um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
+* Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung.
 
 <!---HONumber=AcomDC_0914_2016-->

@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Penetrationstests | Microsoft Azure"
-   description="Der Artikel bietet einen Überblick über den Penetrationstestprozess und dazu, wie Sie Penetrationstests an Ihren in der Azure-Infrastruktur ausgeführten Apps durchführen können."
-   services="security"
-   documentationCenter="na"
-   authors="YuriDio"
-   manager="swadhwa"
-   editor="TomSh"/>
+---
+title: Penetrationstests | Microsoft Docs
+description: Der Artikel bietet einen Überblick über den Penetrationstestprozess und dazu, wie Sie Penetrationstests an Ihren in der Azure-Infrastruktur ausgeführten Apps durchführen können.
+services: security
+documentationcenter: na
+author: YuriDio
+manager: swadhwa
+editor: TomSh
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/09/2016"
-   ms.author="yurid"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/09/2016
+ms.author: yurid
 
+---
 # Penetrationstests
-
 Einer der größten Vorteile von Microsoft Azure bei Test und Bereitstellung von Anwendungen ist, dass Sie keine lokale Infrastruktur zum Entwickeln, Testen und Bereitstellen der Anwendungen zusammenstellen müssen. Die Microsoft Azure-Plattformdienste stellen die gesamte Infrastruktur bereit. Sie müssen sich keine Gedanken über Anforderung, Erwerb und Aufbau eigener lokaler Hardware machen.
 
 Das ist hervorragend – Sie müssen jedoch noch sicherstellen, dass Sie mit angemessener Sorgfalt für Sicherheit sorgen. Sie müssen u.a. einen Penetrationstest der Anwendungen durchführen, die Sie in Azure bereitstellen.
@@ -32,9 +31,9 @@ Vorgehensweise
 
 Wenn Sie bereit sind, einen Penetrationstest Ihrer auf Azure gehosteten Anwendungen durchzuführen, müssen Sie uns das mitteilen. Sobald wir wissen, dass Sie bestimmte Tests durchführen möchten, werden wir Sie nicht versehentlich herunterfahren (z.B. die IP-Adresse blockieren, über die Sie testen), solange Ihre Tests den Bedingungen von Azure für Penetrationstests entsprechen. Folgende Standardtests können Sie durchführen:
 
-- Tests an Ihren Endpunkten, um die [wichtigsten 10 OWASP-Sicherheitsrisiken (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) aufzudecken
-- [Fuzzing](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) Ihrer Endpunkte
-- [Portüberwachung](https://en.wikipedia.org/wiki/Port_scanner) Ihrer Endpunkte
+* Tests an Ihren Endpunkten, um die [wichtigsten 10 OWASP-Sicherheitsrisiken (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) aufzudecken
+* [Fuzzing](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) Ihrer Endpunkte
+* [Portüberwachung](https://en.wikipedia.org/wiki/Port_scanner) Ihrer Endpunkte
 
 Ein Testtyp, denn Sie nicht ausführen können, ist jegliche Form eines [Denial-of-Service](https://en.wikipedia.org/wiki/Denial-of-service_attack)-Angriffs (DoS). Dies schließt einen selbst initiierten DoS-Angriff bzw. das Durchführen zugehöriger Tests ein, die einen DoS-Angriff bestimmen, demonstrieren oder simulieren könnten.
 

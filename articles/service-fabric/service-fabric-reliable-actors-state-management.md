@@ -1,35 +1,33 @@
-<properties
-   pageTitle="Reliable Actors-Zustandsverwaltung | Microsoft Azure"
-   description="Hier wird beschrieben, wie der Reliable Actors-Zustand für hohe Verfügbarkeit verwaltet, persistent gespeichert und repliziert wird."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="vturecek"
-   manager="timlt"
-   editor=""/>
+---
+title: Reliable Actors-Zustandsverwaltung | Microsoft Docs
+description: Hier wird beschrieben, wie der Reliable Actors-Zustand für hohe Verfügbarkeit verwaltet, persistent gespeichert und repliziert wird.
+services: service-fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="07/06/2016"
-   ms.author="vturecek"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 07/06/2016
+ms.author: vturecek
 
+---
 # Reliable Actors-Zustandsverwaltung
-
 Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleiche Persistenz- und Replikationsmechanismen wie Reliable Services verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, nach der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.
 
 ## Zustandspersistenz und -replikation
-
 Alle Reliable Actors werden als *zustandsbehaftet* betrachtet, da jeder Akteurinstanz eine eindeutige ID zugewiesen ist. Das bedeutet, dass wiederholte Aufrufe derselben Akteur-ID an dieselbe Akteurinstanz weitergeleitet werden. Hier besteht ein Unterschied zu einem zustandslosen System, bei dem Clientaufrufe nicht unbedingt jedes Mal an denselben Server weitergeleitet werden. Aus diesem Grund sind Akteurdienste immer zustandsbehaftete Dienste.
 
 Obwohl Akteure als zustandsbehaftet gelten, bedeutet das nicht, dass sie den Zustand zuverlässig speichern müssen. Akteure können die Ebene der Zustandspersistenz und -replikation basierend auf ihren Datenspeicheranforderungen auswählen:
 
- - **Persistenter Zustand:** Der Zustand wird persistent auf einem Datenträger gespeichert, und es werden mindestens drei Replikate davon erstellt. Dies ist die dauerhafteste Option für die Zustandsspeicherung, mit der der Zustand bei einem vollständigen Clusterausfall beibehalten werden kann.
- - **Flüchtiger Zustand:** Es werden mindestens drei Replikate des Zustands erstellt, und der Zustand wird nur im Arbeitsspeicher gespeichert. Dadurch wird Ausfallsicherheit bei Knotenausfällen, Akteurausfällen, Upgrades und Ressourcenausgleich gewährleistet. Der Zustand wird jedoch nicht persistent auf einem Datenträger gespeichert. Wenn alle Replikate gleichzeitig verloren gehen, geht auch der Zustand verloren.
- - **Kein persistenter Zustand:** Der Zustand wird weder repliziert noch auf den Datenträger geschrieben. Dies eignet sich für Akteure, die den Zustand nicht zuverlässig beibehalten müssen.
- 
+* **Persistenter Zustand:** Der Zustand wird persistent auf einem Datenträger gespeichert, und es werden mindestens drei Replikate davon erstellt. Dies ist die dauerhafteste Option für die Zustandsspeicherung, mit der der Zustand bei einem vollständigen Clusterausfall beibehalten werden kann.
+* **Flüchtiger Zustand:** Es werden mindestens drei Replikate des Zustands erstellt, und der Zustand wird nur im Arbeitsspeicher gespeichert. Dadurch wird Ausfallsicherheit bei Knotenausfällen, Akteurausfällen, Upgrades und Ressourcenausgleich gewährleistet. Der Zustand wird jedoch nicht persistent auf einem Datenträger gespeichert. Wenn alle Replikate gleichzeitig verloren gehen, geht auch der Zustand verloren.
+* **Kein persistenter Zustand:** Der Zustand wird weder repliziert noch auf den Datenträger geschrieben. Dies eignet sich für Akteure, die den Zustand nicht zuverlässig beibehalten müssen.
+
 Jede Persistenzebene stellt einfach einen anderen *Zustandsanbieter* und eine andere *Replikationskonfiguration* Ihres Diensts dar. Ob der Zustand auf einen Datenträger geschrieben wird, ist abhängig vom *Zustandsanbieter* – der Komponente in einer Reliable Services-Instanz, die den Zustand speichert. Die Replikation hängt davon ab, mit wie vielen Replikaten ein Dienst bereitgestellt wird. Wie bei Reliable Services können der Zustandsanbieter und die Replikatanzahl einfach manuell festgelegt werden. Das Akteurframework enthält ein Attribut, das bei Verwendung für einen Akteur automatisch einen Standardzustandsanbieter auswählt und Einstellungen für die Replikatanzahl erstellt, um eine der folgenden drei Persistenzeinstellungen zu erreichen.
 
 ### Persistenter Zustand
@@ -51,7 +49,6 @@ class MyActor : Actor, IMyActor
 Diese Einstellung verwendet einen rein speicherinternen Zustandsanbieter und legt die Replikatanzahl auf drei fest.
 
 ### Kein persistenter Zustand
-
 ```csharp
 [StatePersistence(StatePersistence.None)]
 class MyActor : Actor, IMyActor
@@ -61,7 +58,6 @@ class MyActor : Actor, IMyActor
 Diese Einstellung verwendet einen rein speicherinternen Zustandsanbieter und legt die Replikatanzahl auf eins fest.
 
 ### Standardeinstellungen und generierte Einstellungen
-
 Bei Verwendung des `StatePersistence`-Attributs wird zur Laufzeit automatisch ein Zustandsanbieter für Sie ausgewählt, wenn der Akteurdienst gestartet wird. Die Replikatanzahl wird jedoch zum Zeitpunkt der Kompilierung von den Visual Studio-Akteur-Buildtools festgelegt. Die Buildtools generieren in der Datei „ApplicationManifest.xml“ automatisch einen *Standarddienst* für den Akteurdienst. Für **Mindestgröße des Replikatsatzes** und **Zielgröße des Replikatsatzes** werden Parameter erstellt. Sie können diese Parameter natürlich manuell ändern. Bei jeder Änderung des `StatePersistence`-Attributs werden die Parameter jedoch auf die Standardwerte der Replikatgruppengröße für das ausgewählte `StatePersistence`-Attribut festgelegt. Dabei werden vorherige Werte überschrieben. Das bedeutet, dass die in „ServiceManifest.xml“ festgelegten Werte **nur** zum Erstellungszeitpunkt überschrieben werden, wenn Sie den Attributwert `StatePersistence` ändern.
 
 ```xml
@@ -85,7 +81,6 @@ Bei Verwendung des `StatePersistence`-Attributs wird zur Laufzeit automatisch ei
 ```
 
 ## Zustands-Manager
-
 Jede Akteurinstanz verfügt über einen eigenen Zustands-Manager: Dabei handelt es sich um eine wörterbuchähnliche Datenstruktur, die zuverlässig Schlüssel-Wert-Paare speichert. Der Zustands-Manager ist ein Wrapper für einen Zustandsanbieter. Er kann unabhängig von der verwendeten Persistenzeinstellung zum Speichern von Daten genutzt werden. Es kann jedoch nicht garantiert werden, dass sich ein ausgeführter Akteurdienst mithilfe eines parallelen Upgrades und unter Beibehaltung der Daten von einem flüchtigen (ausschließlich speicherinternen) Zustand in einen persistenten Zustand überführen lässt. Die Replikatanzahl kann jedoch für einen ausgeführten Dienst geändert werden.
 
 Die Zustands-Manager-Schlüssel müssen als Zeichenfolge angegeben werden, wohingegen Werte generisch sind und von beliebiger Art (u.a. benutzerdefiniert) sein können. Im Zustands-Manager gespeicherte Werte müssen für den Datenvertrag serialisierbar sein, da sie abhängig von der Zustandspersistenzeinstellung eines Akteurs während der Replikation möglicherweise über das Netzwerk an andere Knoten übertragen und auf Datenträger geschrieben werden.
@@ -93,12 +88,11 @@ Die Zustands-Manager-Schlüssel müssen als Zeichenfolge angegeben werden, wohin
 Der Zustands-Manager macht allgemeine Wörterbuchmethoden zum Verwalten des Zustands verfügbar. Diese ähneln den Methoden in Reliable Dictionary.
 
 ### Zugreifen auf den Zustand
-
 Auf den Zustand kann nach Schlüssel über den Zustands-Manager zugegriffen werden. Alle Zustands-Manager-Methoden sind asynchron, da sie u.U. Datenträger-E/A erfordern, wenn Akteure über einen persistenten Zustand verfügen. Beim ersten Zugriff werden Zustandsobjekte im Arbeitsspeicher zwischengespeichert. Bei wiederholten Zugriffsvorgängen wird direkt aus dem Speicher auf Objekte zugegriffen, und die Rückgabe erfolgt synchron, ohne dass dabei Datenträger-E/A entstehen oder Aufwand für den asynchronen Kontextwechsel anfällt. In den folgenden Fällen wird ein Zustandsobjekt aus dem Cache entfernt:
 
- - Eine Akteurmethode löst nach dem Abrufen eines Objekts aus dem Zustands-Manager eine nicht behandelte Ausnahme aus.
- - Ein Akteur wird entweder nach seiner Deaktivierung oder aufgrund eines Fehlers wieder aktiviert.
- - Wenn der Zustandsanbieter den Zustand an den Datenträger auslagert. Dieses Verhalten hängt von der Implementierung des Zustandsanbieters ab. Der Standardzustandsanbieter für die Einstellung `Persisted` weist dieses Verhalten auf.
+* Eine Akteurmethode löst nach dem Abrufen eines Objekts aus dem Zustands-Manager eine nicht behandelte Ausnahme aus.
+* Ein Akteur wird entweder nach seiner Deaktivierung oder aufgrund eines Fehlers wieder aktiviert.
+* Wenn der Zustandsanbieter den Zustand an den Datenträger auslagert. Dieses Verhalten hängt von der Implementierung des Zustandsanbieters ab. Der Standardzustandsanbieter für die Einstellung `Persisted` weist dieses Verhalten auf.
 
 Der Zustand kann mit einem *Get*-Standardvorgang abgerufen werden, der `KeyNotFoundException` auslöst, wenn kein Eintrag für den angegebenen Schlüssel vorhanden ist:
 
@@ -132,7 +126,6 @@ class MyActor : Actor, IMyActor
 ```
 
 ### Speichern des Zustands
-
 Mit den Abrufmethoden des Zustands-Managers wird ein Verweis auf ein Objekt im lokalen Speicher zurückgegeben. Eine Änderung dieses Objekts im lokalen Speicher bewirkt nicht, dass es dauerhaft gespeichert wird. Wenn ein Objekt vom Zustands-Manager abgerufen und geändert wird, muss es wieder in den Zustands-Manager eingefügt werden, damit es dauerhaft gespeichert wird.
 
 Der Zustand kann über eine nicht bedingte *Set*-Methode eingefügt werden. Dies entspricht der Syntax `dictionary["key"] = value`:
@@ -187,13 +180,12 @@ Der Zustand kann durch Aufrufen der `SaveStateAsync`-Methode für die Actor-Basi
 async Task IMyActor.SetCountAsync(int count)
 {
     await this.StateManager.AddOrUpdateStateAsync("count", count, (key, value) => count > value ? count : value);
-            
+
     await this.SaveStateAsync();
 }
 ```
 
 ### Entfernen des Zustands
-
 Der Zustand kann durch Aufrufen der *Remove*-Methode dauerhaft aus dem Zustands-Manager eines Actors entfernt werden . Diese Methode löst beim Versuch, einen nicht vorhandenen Schlüssel zu entfernen, `KeyNotFoundException` aus:
 
 ```csharp
@@ -226,10 +218,10 @@ class MyActor : Actor, IMyActor
 ```
 
 ## Nächste Schritte
- - [Akteurtypserialisierung](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
- - [Actor-Polymorphie und objektorientierte Entwurfsmuster](service-fabric-reliable-actors-polymorphism.md)
- - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
- - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [Beispielcode](https://github.com/Azure/servicefabric-samples)
+* [Akteurtypserialisierung](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+* [Actor-Polymorphie und objektorientierte Entwurfsmuster](service-fabric-reliable-actors-polymorphism.md)
+* [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
+* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
 <!---HONumber=AcomDC_0713_2016-->

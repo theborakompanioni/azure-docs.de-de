@@ -2,10 +2,10 @@
 Zum Sichern von Dateien und Daten von Windows Server oder System Center Data Protection Manager (SCDPM) in Azure oder beim Sichern von IaaS-VMs in Azure müssen Sie einen Sicherungstresor in der geografischen Region erstellen, in der die Daten gespeichert werden sollen.
 
 ### Exemplarische Vorgehensweise per Video
-
 Hier ist eine kurze Video des Verfahrens.
 
-[AZURE.VIDEO azure-backup-vault-creation]
+[!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Backup-Vault-Creation/player]
+
 
 Mit den folgenden Schritten erstellen Sie den zum Speichern von Sicherungen verwendeten Tresor.
 
@@ -15,14 +15,15 @@ Mit den folgenden Schritten erstellen Sie den zum Speichern von Sicherungen verw
 3. Geben Sie für den Parameter **Name** einen benutzerfreundlichen Namen zur Identifizierung des Sicherungstresors ein. Dieser muss für jedes Abonnement eindeutig sein.
 4. Wählen Sie für den Parameter **Region** die geografische Region für den Sicherungstresor aus. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden. Wenn Sie eine geografische Region in der Nähe Ihres eigenen Standorts auswählen, können Sie dadurch die Netzwerklatenz beim Sichern in Azure reduzieren.
 5. Klicken Sie auf **Tresor erstellen**, um den Workflow abzuschließen. Es kann eine Weile dauern, bis der Sicherungstresor fertiggestellt wird. Sie können die Benachrichtigungen unten im Portal überwachen, um den Status zu überprüfen.
-
+   
     ![Erstellen eines Tresors](./media/backup-create-vault-wgif/create-vault-wgif.gif)
-
 6. Nach dem erfolgreichen Erstellen des Sicherungstresors wird dies in einer entsprechenden Meldung angezeigt. Der Tresor wird zudem in den Ressourcen für Recovery Services als **Aktiv** aufgeführt.
 
 ### Azure Backup – Speicherredundanzoptionen
-
-> [AZURE.IMPORTANT]Der beste Zeitpunkt zum Identifizieren von Speicherredundanzoptionen ist unmittelbar nach der Erstellung des Tresors, bevor Computer beim Tresor registriert werden. Sobald ein Element beim Tresor registriert wurde, wird die Speicherredundanzoption gesperrt und kann nicht mehr geändert werden.
+> [!IMPORTANT]
+> Der beste Zeitpunkt zum Identifizieren von Speicherredundanzoptionen ist unmittelbar nach der Erstellung des Tresors, bevor Computer beim Tresor registriert werden. Sobald ein Element beim Tresor registriert wurde, wird die Speicherredundanzoption gesperrt und kann nicht mehr geändert werden.
+> 
+> 
 
 Die Speicherredundanz des Back-End-Speichers von Azure Backup wird durch Ihre geschäftlichen Anforderungen bestimmt. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden (wenn Sie beispielsweise von einem Windows Server in Azure sichern), sollten Sie die Option "Georedundanter Speicher" in Betracht ziehen (Standardeinstellung). Diese finden Sie unter der Option **Konfigurieren** Ihres Sicherungstresors.
 

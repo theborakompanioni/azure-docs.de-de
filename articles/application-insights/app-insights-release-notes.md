@@ -1,23 +1,21 @@
-<properties 
-	pageTitle="Versionshinweise für Application Insights" 
-	description="Die neuesten Updates." 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+---
+title: Versionshinweise für Application Insights
+description: Die neuesten Updates.
+services: application-insights
+documentationcenter: ''
+author: alancameronwills
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/28/2016" 
-	ms.author="awills"/>
- 
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 01/28/2016
+ms.author: awills
+
+---
 # SDK-Versionshinweise – Application Insights
-
-
 Hier finden Sie detaillierte Versionsinformationen und Updateanweisungen für unsere SDKs:
 
 * [ASP.NET Web Server SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)

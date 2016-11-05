@@ -1,46 +1,45 @@
-<properties
-    pageTitle="PowerShell-Skript zum Identifizieren einzelner für einen Pool geeignete Datenbanken | Microsoft Azure"
-    description="Ein elastischer Datenbankpool stellt eine Sammlung der verfügbaren Ressourcen dar, die von einer Gruppe von elastischen Datenbanken gemeinsam verwendet werden. Dieses Dokument enthält ein PowerShell-Skript, das Ihnen helfen soll, die Eignung eines Pools für elastische Datenbanken für eine Gruppe von Datenbanken einzuschätzen."
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+---
+title: PowerShell-Skript zum Identifizieren einzelner für einen Pool geeignete Datenbanken | Microsoft Docs
+description: Ein elastischer Datenbankpool stellt eine Sammlung der verfügbaren Ressourcen dar, die von einer Gruppe von elastischen Datenbanken gemeinsam verwendet werden. Dieses Dokument enthält ein PowerShell-Skript, das Ihnen helfen soll, die Eignung eines Pools für elastische Datenbanken für eine Gruppe von Datenbanken einzuschätzen.
+services: sql-database
+documentationcenter: ''
+author: stevestein
+manager: jhubbard
+editor: ''
 
-<tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.date="09/28/2016"
-    ms.author="sstein"
-    ms.workload="data-management"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"/>
+ms.service: sql-database
+ms.devlang: NA
+ms.date: 09/28/2016
+ms.author: sstein
+ms.workload: data-management
+ms.topic: article
+ms.tgt_pltfrm: NA
 
-
+---
 # <a name="powershell-script-for-identifying-databases-suitable-for-an-elastic-database-pool"></a>PowerShell-Skript zum Ermitteln der für einen Pool für elastische Datenbanken geeigneten Datenbanken
-
 Mit dem PowerShell-Skript in diesem Artikel werden die zusammengefassten eDTU-Werte für Benutzerdatenbanken auf einem SQL-Datenbankserver geschätzt. Mit dem Skript werden Daten erfasst, während es ausgeführt wird. Für eine typische Produktionsworkload sollten Sie das Skript für mindestens einen Tag ausführen. Idealerweise führen Sie das Skript für einen Zeitraum aus, der die typische Workload Ihrer Datenbanken repräsentiert. Führen Sie das Skript so lange aus, dass Daten erfasst werden, die die normale Auslastung und die Spitzenauslastung für die Datenbanken repräsentieren. Wenn Sie das Skript eine Woche oder auch länger ausführen, erhalten Sie wahrscheinlich eine genauere Schätzung.
 
 Dieses Skript ist für die Evaluierung von Datenbanken auf v11-Servern nützlich, die zu v12-Servern migriert werden sollen, bei denen Pools unterstützt werden. Auf v12-Servern verfügt SQL-Datenbank über integrierte intelligente Funktionen, die den Verlauf der Nutzungstelemetrie analysieren und einen Pool empfehlen, wenn dies die kostengünstigere Lösung ist. Informationen dazu finden Sie unter [Erstellen, Verwalten und Anpassen der Größe eines elastischen Datenbankpools](sql-database-elastic-pool-manage-portal.md).
 
-> [AZURE.IMPORTANT] Lassen Sie das PowerShell-Fenster während der Ausführung des Skripts offen. Schließen Sie das PowerShell-Fenster erst, wenn Sie das Skript für die erforderliche Zeit ausgeführt haben. 
+> [!IMPORTANT]
+> Lassen Sie das PowerShell-Fenster während der Ausführung des Skripts offen. Schließen Sie das PowerShell-Fenster erst, wenn Sie das Skript für die erforderliche Zeit ausgeführt haben. 
+> 
+> 
 
-## <a name="prerequisites"></a>Voraussetzungen 
-
+## <a name="prerequisites"></a>Voraussetzungen
 Installieren Sie Folgendes, bevor Sie das Skript ausführen:
 
-- Aktuelle Azure PowerShell-Version. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
-- Das [SQL Server 2014-Featurepack](https://www.microsoft.com/download/details.aspx?id=42295).
+* Aktuelle Azure PowerShell-Version. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* Das [SQL Server 2014-Featurepack](https://www.microsoft.com/download/details.aspx?id=42295).
 
 ## <a name="script-details"></a>Details zum Skript
-
 Sie können das Skript auf Ihrem lokalen Computer oder in einem virtuellen Computer in der Cloud ausführen. Wenn Sie es auf Ihrem lokalen Computer ausführen, kann dies Gebühren für die Datenübergabe verursachen, da das Skript Daten aus den Zieldatenbanken herunterladen muss. Nachstehend sind die Schätzungen für das Datenvolumen basierend auf der Anzahl von Zieldatenbanken und der Ausführungsdauer des Skripts angegeben. Informationen zu Azure-Datenübertragungskosten finden Sie unter [Details zu den Datenübertragungskosten](https://azure.microsoft.com/pricing/details/data-transfers/).
-       
- -     Eine Datenbank pro Stunde = 38 KB
- -     Eine Datenbank pro Tag = 900 KB
- -     Eine Datenbank pro Woche = 6 MB
- -     100 Datenbanken pro Tag = 90 MB
- -     500 Datenbanken pro Woche = 3 GB
+
+* Eine Datenbank pro Stunde = 38 KB
+* Eine Datenbank pro Tag = 900 KB
+* Eine Datenbank pro Woche = 6 MB
+* 100 Datenbanken pro Tag = 90 MB
+* 500 Datenbanken pro Woche = 3 GB
 
 Das Skript kompiliert keine Informationen für die folgenden Datenbanken:
 
@@ -54,16 +53,14 @@ Für das Skript ist eine Ausgabedatenbank zum Speichern von Zwischendaten zwecks
 Für das Skript müssen Sie Anmeldeinformationen angeben, um die Verbindung mit dem Zielserver herzustellen (dem Kandidaten für den Pool für elastische Datenbanken), und zwar mit einem vollständigen Servernamen wie <*dbname*>**.database.windows.net**. Das Skript unterstützt die gleichzeitige Analyse mehrerer Server nicht.
 
 Nach der Übermittlung von Werten für den anfänglichen Parametersatz werden Sie aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Hiermit melden Sie sich beim Zielserver und nicht beim Datenbankausgabeserver an.
-    
+
 Wenn beim Ausführen des Skripts die folgenden Warnungen ausgegeben werden, können Sie diese ignorieren:
 
-- WARNUNG: Das Cmdlet „Switch-AzureMode“ ist veraltet.
-- WARNUNG: Es konnten keine SQL Server-Dienstinformationen abgerufen werden. Fehler bei einem Versuch, eine Verbindung zu WMI auf 'Microsoft.Azure.Commands.Sql.dll' herzustellen: Der RPC-Server ist nicht verfügbar.
+* WARNUNG: Das Cmdlet „Switch-AzureMode“ ist veraltet.
+* WARNUNG: Es konnten keine SQL Server-Dienstinformationen abgerufen werden. Fehler bei einem Versuch, eine Verbindung zu WMI auf 'Microsoft.Azure.Commands.Sql.dll' herzustellen: Der RPC-Server ist nicht verfügbar.
 
 Nach Abschluss des Skripts wird die geschätzte Anzahl eDTUs ausgegeben, die für einen Pool erforderlich sind, der alle Datenbankkandidaten auf dem Zielserver enthalten soll. Diese geschätzten eDTUs können zum Erstellen und Konfigurieren des Pools verwendet werden. Nachdem der Pool erstellt wurde und Datenbanken in diesen Pool verschoben wurden, überwachen Sie ihn für einige Tage genauestens, und nehmen Sie im Bedarfsfall Anpassungen an der Konfiguration der Pool-eDTUs vor. Informationen finden Sie unter [Überwachen, Verwalten und Skalieren eines Pools für elastische Datenbanken](sql-database-elastic-pool-manage-portal.md)
 
-
-    
 ```
 param (
 [Parameter(Mandatory=$true)][string]$AzureSubscriptionName, # Azure Subscription name - can be found on the Azure portal: https://portal.azure.com/
@@ -270,7 +267,7 @@ $data = Invoke-Sqlcmd -ServerInstance $outputServerName -Database $outputdatabas
 $data | %{'{0}' -f $_[0]}
 }
 ```
-        
+
 
 
 

@@ -1,26 +1,23 @@
-<properties
-    pageTitle="Übersicht über IPv6 für Azure Load Balancer | Microsoft Azure"
-    description="Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich bereitstellen."
-    services="load-balancer"
-    documentationCenter="na"
-    authors="sdwheeler"
-    manager="carmonm"
-    editor=""
-    keywords="IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT"
-/>
-<tags
-    ms.service="load-balancer"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="09/14/2016"
-    ms.author="sewhee"
-/>
+---
+title: Übersicht über IPv6 für Azure Load Balancer | Microsoft Docs
+description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich bereitstellen.
+services: load-balancer
+documentationcenter: na
+author: sdwheeler
+manager: carmonm
+editor: ''
+keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv6, mobil, IoT
 
+ms.service: load-balancer
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/14/2016
+ms.author: sewhee
 
+---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
-
 Load Balancer mit Internetzugriff können mit einer IPv6-Adresse bereitgestellt werden. Zusätzlich zu IPv4-Konnektivität werden dadurch die folgenden Funktionen ermöglicht:
 
 * Native End-to-End-IPv6-Konnektivität zwischen öffentlichen Internetclients und Azure Virtual Machines (VMs) über den Load Balancer.
@@ -33,7 +30,6 @@ Die folgende Abbildung zeigt die IPv6-Funktionalität für Azure Load Balancer.
 Nach der Bereitstellung kann ein IPv4- oder IPv6-fähiger Internetclient mit den öffentlichen IPv4- oder IPv6-Adressen (oder Hostnamen) des Azure Load Balancers mit Internetzugriff kommunizieren. Der Load Balancer leitet mithilfe der Netzwerkadressübersetzung (NAT) die IPv6-Pakete an private IPv6-Adressen von VMs weiter. Der IPv6-Internetclient kann nicht direkt mit der IPv6-Adresse der VMs kommunizieren.
 
 ## <a name="features"></a>Features
-
 Native IPv6-Unterstützung für über Azure Resource Manager bereitgestellte VMs ermöglicht:
 
 1. IPv6-Dienste mit Lastenausgleich für IPv6-Clients im Internet
@@ -42,14 +38,12 @@ Native IPv6-Unterstützung für über Azure Resource Manager bereitgestellte VMs
 4. Unterstützte Protokolle wie TCP, UDP und HTTP(S) ermöglichen eine Vielzahl von Dienstarchitekturen
 
 ## <a name="benefits"></a>Vorteile
-
 Diese Funktionalität ermöglicht folgende wichtige Vorteile:
 
 * Erfüllen von gesetzlichen Vorschriften, die es erfordern, dass auf neue Anwendungen mit reinen IPv6-Clients zugegriffen werden kann
 * Ermöglichen, dass mobile Entwickler und Entwickler für das Internet der Dinge (IOT) Azure Virtual Machines mit dualem Stapel (IPv4 und IPv6) verwenden können, um die wachsende Märkte Mobilität und IOT zu bedienen
 
 ## <a name="details-and-limitations"></a>Details und Einschränkungen
-
 Details
 
 * Der Azure DNS-Dienst enthält IPv4-A- und IPv6-AAAA-Namenseinträge und antwortet für den Load Balancer mit beiden Einträgen. Der Client wählt die Adresse (IPv4 oder IPv6) für die Kommunikation aus.
@@ -71,15 +65,12 @@ Einschränkungen
 * Das Ändern des Parameters „IdleTimeout“ wird für IPv6 **derzeit nicht unterstützt**. Der Standardwert ist vier Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Erfahren Sie, wie Sie einen Load Balancer mit IPv6 bereitstellen.
 
 * [Verfügbarkeit von IPv6 nach Region](https://go.microsoft.com/fwlink/?linkid=828357)
 * [Bereitstellen eines Load Balancers mit IPv6 mithilfe einer Vorlage](load-balancer-ipv6-internet-template.md)
 * [Bereitstellen eines Load Balancers mit IPv6 mithilfe von Azure PowerShell](load-balancer-ipv6-internet-ps.md)
 * [Bereitstellen eines Load Balancers mit IPv6 mithilfe der Azure-CLI](load-balancer-ipv6-internet-cli.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

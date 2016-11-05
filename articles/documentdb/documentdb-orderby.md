@@ -1,29 +1,34 @@
-<properties 
-	pageTitle="Sortieren von DocumentDB-Daten mit ";Order By"; | Microsoft Azure" 
-	description="Erfahren Sie, wie ORDER BY in DocumentDB-Abfragen in LINQ und SQL verwendet wird und wie eine Indizierungsrichtlinie für ORDER BY-Abfragen angegeben wird." 
-	services="documentdb" 
-	authors="arramac" 
-	manager="jhubbard" 
-	editor="cgronlun" 
-	documentationCenter=""/>
+---
+title: 'Sortieren von DocumentDB-Daten mit '
+;order: ''
+by";: ''
+'|': ''
+microsoft: ''
+azure": ''
+description: Erfahren Sie, wie ORDER BY in DocumentDB-Abfragen in LINQ und SQL verwendet wird und wie eine Indizierungsrichtlinie für ORDER BY-Abfragen angegeben wird.
+services: documentdb
+author: arramac
+manager: jhubbard
+editor: cgronlun
+documentationcenter: ''
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2016" 
-	ms.author="arramac"/>
+ms.service: documentdb
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/07/2016
+ms.author: arramac
 
+---
 # Sortieren von DocumentDB-Daten mit "Order By"
 Microsoft Azure DocumentDB unterstützt Dokumentabfragen mit SQL über JSON-Dokumente. Abfrageergebnisse können mit der ORDER BY-Klausel in SQL-Abfrageanweisungen sortiert werden.
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
-- Wie erstelle ich Abfragen mit "Order By"?
-- Wie konfiguriere ich eine Indexrichtlinie für "Order By"?
-- Neue Entwicklungen
+* Wie erstelle ich Abfragen mit "Order By"?
+* Wie konfiguriere ich eine Indexrichtlinie für "Order By"?
+* Neue Entwicklungen
 
 [Beispiele](#samples) und [Häufig gestellte Fragen](#faq) werden ebenfalls bereitgestellt.
 
@@ -60,38 +65,43 @@ Mit .NET SDK, Version 1.2.0 und höher, können Sie auch die "OrderBy()"- oder "
 DocumentDB unterstützt die Sortierung mit einer einzelnen numerischen, Zeichenfolgen- oder booleschen Eigenschaft pro Abfrage. Weitere Abfragetypen werden in Kürze zur Verfügung stehen. Weitere Informationen finden Sie unter [Neue Entwicklungen](#Whats_coming_next).
 
 ## Konfigurieren einer Indexrichtlinie für "Order By"
-
 Denken Sie daran, dass DocumentDB zwei Arten von Indizes (Hash und Bereich) unterstützt, die für unterschiedliche Pfade/Eigenschaften, Datentypen (Zeichenfolgen/Zahlen) und auf verschiedene Präzisionswerte (maximale Genauigkeit oder einen festen Genauigkeitswert) festgelegt werden können. Da DocumentDB standardmäßig Hash-Indizes verwendet, müssen Sie eine neue Sammlung mit einer benutzerdefinierten Indizierungsrichtlinie mit „Bereich“ für Zahlen, Zeichenfolgen oder beide Optionen erstellen, um „Order By“ zu verwenden.
 
->[AZURE.NOTE] Indizes für Zeichenfolgenbereiche wurden am 7. Juli 2015 mit der REST-API-Version 2015-06-03 eingeführt. Um Richtlinien für „Order By“ für Zeichenfolgen zu erstellen, müssen Sie die SDK-Version 1.2.0 des .NET-SDK oder Version 1.1.0 des Python-, Node.js- oder Java-SDK verwenden.
->
->Vor der REST-API-Version 2015-06-03 war „Hash“ die Standardsammlung der Indizierungsrichtlinie für Zeichenfolgen und Zahlen. Dies wurde in „Hash“ für Zeichenfolgen und „Bereich“ für Zahlen geändert.
+> [!NOTE]
+> Indizes für Zeichenfolgenbereiche wurden am 7. Juli 2015 mit der REST-API-Version 2015-06-03 eingeführt. Um Richtlinien für „Order By“ für Zeichenfolgen zu erstellen, müssen Sie die SDK-Version 1.2.0 des .NET-SDK oder Version 1.1.0 des Python-, Node.js- oder Java-SDK verwenden.
+> 
+> Vor der REST-API-Version 2015-06-03 war „Hash“ die Standardsammlung der Indizierungsrichtlinie für Zeichenfolgen und Zahlen. Dies wurde in „Hash“ für Zeichenfolgen und „Bereich“ für Zahlen geändert.
+> 
+> 
 
 Weitere Informationen finden Sie unter [DocumentDB-Indizierungsrichtlinien](documentdb-indexing-policies.md).
 
 ### Indizierung für „Order By“ für alle Eigenschaften
 Hier erfahren Sie, wie Sie eine Sammlung mit „All Range“-Indizierung für „Order By“ für alle bzw. alle numerischen Eigenschaften oder Zeichenfolgeneigenschaften erstellen, die in JSON-Dokumenten angezeigt werden. Hier legen wir für String-Werte „Range“ statt dem standardmäßig eingestellten Indextyp fest und verwenden die maximale Genauigkeit (-1).
-                   
+
     DocumentCollection books = new DocumentCollection();
     books.Id = "books";
     books.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
-    
+
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), books);  
 
->[AZURE.NOTE] Beachten Sie, dass „Order By“ nur Ergebnisse der Datentypen (Zeichenfolge und Anzahl) ausgibt, die mit einem RangeIndex indiziert werden. Verwenden Sie z. B. die Standardindizierungsrichtlinie, die nur RangeIndex für Zahlen verwendet, wird „Order By“ für einen Pfad mit Zeichenfolgenwerten keine Dokumente zurückgeben.
->
+> [!NOTE]
+> Beachten Sie, dass „Order By“ nur Ergebnisse der Datentypen (Zeichenfolge und Anzahl) ausgibt, die mit einem RangeIndex indiziert werden. Verwenden Sie z. B. die Standardindizierungsrichtlinie, die nur RangeIndex für Zahlen verwendet, wird „Order By“ für einen Pfad mit Zeichenfolgenwerten keine Dokumente zurückgeben.
+> 
 > Wenn Sie für Ihre Sammlungen einen Partitionsschlüssel definiert haben, beachten Sie, dass „Order By“ nur in Abfragen unterstützt wird, die nach einem einzelnen Partitionsschlüssel filtern.
+> 
+> 
 
 ### Indizierung für "Order By" für eine einzelne Eigenschaft
-Hier erfahren Sie, wie Sie eine Sammlung mit der Indizierung für „Order By“ für die „Title“-Eigenschaft erstellen können, bei der es sich um eine Zeichenfolge handelt. Hierfür gibt es zwei Pfade – einen für die „Title“-Eigenschaft (/Title/?) mit der Bereichsindizierung und den anderen für jede andere Eigenschaft mit dem Standardindizierungsschema („Hash“ für Zeichenfolgen und „Bereich“ für Zahlen).
-    
+Hier erfahren Sie, wie Sie eine Sammlung mit der Indizierung für „Order By“ für die „Title“-Eigenschaft erstellen können, bei der es sich um eine Zeichenfolge handelt. Hierfür gibt es zwei Pfade – einen für die „Title“-Eigenschaft (/Title/?) mit der Bereichsindizierung und den anderen für jede andere Eigenschaft mit dem Standardindizierungsschema („Hash“ für Zeichenfolgen und „Bereich“ für Zahlen).
+
     booksCollection.IndexingPolicy.IncludedPaths.Add(
         new IncludedPath { 
             Path = "/Title/?", 
             Indexes = new Collection<Index> { 
                 new RangeIndex(DataType.String) { Precision = -1 } } 
             });
-    
+
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), booksCollection);  
 
 
@@ -99,11 +109,9 @@ Hier erfahren Sie, wie Sie eine Sammlung mit der Indizierung für „Order By“
 Sehen Sie sich dieses [Github-Beispielprojekt](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) an, das veranschaulicht, wie "Order By" verwendet wird, einschließlich Erstellen von Richtlinien für die Indizierung und Paging mit "Order By". Diese Beispiele sind Open-Source-basiert, und wir freuen uns, wenn Sie Pullanforderungen mit Beiträgen senden, von denen andere DocumentDB-Entwickler profitieren können. In den [Anleitungen für Beiträge](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md) finden Sie Informationen dazu, wie Sie beitragen können.
 
 ## Häufig gestellte Fragen
-
 **Was ist der erwartete Anforderungseinheitsverbrauch (Request Unit, RU) der "Order By"-Abfragen?**
 
 Da "Order By" den DocumentDB-Index für Suchvorgänge verwendet, wird die Anzahl der Anforderungseinheiten, die von "Order By"-Abfragen verwendet werden, ungefähr den Abfragen ohne "Order By" entsprechen. Die Anzahl der Anforderungseinheiten hängt wie bei jedem anderen Vorgang für DocumentDB von den Größen/Formen Dokumente sowie von der Komplexität der Abfrage ab.
-
 
 **Was ist der erwartete Indizierungsaufwand für "Order By"?**
 
@@ -118,15 +126,14 @@ Um die Ergebnisse der Abfrage mit „Order By“ zu sortieren, muss die Indizier
 „Order By“ kann nur für eine Eigenschaft angegeben werden (numerisch oder Zeichenfolgen), wenn der Bereich mit der maximalen. Genauigkeit (-1) indiziert wird.
 
 Sie können Folgendes nicht durchführen:
- 
-- "Order By" mit internen Zeichenfolgeneigenschaften wie id, \_rid und \_self (demnächst verfügbar).
-- "Order By" mit Eigenschaften, die vom Ergebnis einer dokumentinternen Verknüpfung abgeleitet werden (demnächst verfügbar).
-- "Order By" mit mehreren Eigenschaften (demnächst verfügbar).
-- „Order By“ mit Abfragen für Datenbanken, Sammlungen, Benutzer, Berechtigungen oder Anlagen (in Kürze verfügbar).
-- "Order By" mit berechneten Eigenschaften, z. B. das Ergebnis eines Ausdrucks oder eine UDF-Funktion/integrierte Funktion.
+
+* "Order By" mit internen Zeichenfolgeneigenschaften wie id, \_rid und \_self (demnächst verfügbar).
+* "Order By" mit Eigenschaften, die vom Ergebnis einer dokumentinternen Verknüpfung abgeleitet werden (demnächst verfügbar).
+* "Order By" mit mehreren Eigenschaften (demnächst verfügbar).
+* „Order By“ mit Abfragen für Datenbanken, Sammlungen, Benutzer, Berechtigungen oder Anlagen (in Kürze verfügbar).
+* "Order By" mit berechneten Eigenschaften, z. B. das Ergebnis eines Ausdrucks oder eine UDF-Funktion/integrierte Funktion.
 
 ## Nächste Schritte
-
 Verwenden Sie das [Github-Beispielprojekt](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) und starten Sie die Sortierung Ihrer Daten!
 
 ## Referenzen
@@ -134,6 +141,5 @@ Verwenden Sie das [Github-Beispielprojekt](https://github.com/Azure/azure-docume
 * [DocumentDB-Indizierungsrichtlinienreferenz](documentdb-indexing-policies.md)
 * [DocumentDB-SQL-Referenz](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 * [DocumentDB-"Order By"-Beispiele](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
- 
 
 <!---HONumber=AcomDC_0713_2016-->

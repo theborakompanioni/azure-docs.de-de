@@ -1,31 +1,32 @@
-<properties
-   pageTitle="Benutzerdefinierte Schemas in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps für die Verwendung von Transact-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Benutzerdefinierte Schemas in SQL Data Warehouse | Microsoft Docs
+description: Tipps für die Verwendung von Transact-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # Benutzerdefinierte Schemas in SQL Data Warehouse
-
 Herkömmliche Data Warehouses verwenden häufig separate Datenbanken, um Anwendungsgrenzen auf Basis von Workload, Domäne oder Sicherheit zu erstellen. Ein herkömmliches Data Warehouse in SQL Server kann z. B. eine Stagingdatenbank, eine Data Warehouse-Datenbank und einige Data Mart-Datenbanken enthalten. In dieser Topologie funktioniert jede Datenbank als Workload und Sicherheitsgrenze in der Architektur.
 
 Im Gegensatz dazu werden mit SQL Data Warehouse die gesamten Data Warehouse-Workloads innerhalb einer Datenbank ausgeführt. Datenbankübergreifende Verknüpfungen sind nicht zulässig. SQL Data Warehouse erwartet daher, dass alle vom Warehouse verwendeten Tabellen innerhalb der einen Datenbank gespeichert werden.
 
-> [AZURE.NOTE] SQL Data Warehouse unterstützt keine datenbankübergreifenden Abfragen. Data Warehouse-Implementierungen, die diese Funktion nutzen, müssen daher überarbeitet werden.
+> [!NOTE]
+> SQL Data Warehouse unterstützt keine datenbankübergreifenden Abfragen. Data Warehouse-Implementierungen, die diese Funktion nutzen, müssen daher überarbeitet werden.
+> 
+> 
 
 ## Recommendations
-
 Hierbei handelt es sich um Empfehlungen für die Konsolidierung der Workload-, Sicherheits-, Domänen- und Funktionsgrenzen mithilfe von benutzerdefinierten Schemas.
 
 1. Verwenden Sie eine SQL Data Warehouse-Datenbank zum Ausführen Ihrer gesamten Data Warehouse-Workloads.
@@ -40,11 +41,12 @@ Wenn bereits Schemas verwendet wurden, stehen Ihnen einige Optionen zur Verfügu
 2. Behalten Sie die älteren Schemanamen bei, indem Sie diese vorab an den Tabellennamen anhängen.
 3. Behalten Sie die älteren Schemanamen bei, indem Sie Sichten auf die Tabelle in einem zusätzlichen Schema zum Neuerstellen der alten Schemastruktur implementieren.
 
-> [AZURE.NOTE] Option 3 mag auf den ersten Blick die attraktivste Option sein. Bei genauerem Hinsehen treten jedoch Probleme zutage. Sichten werden nur in SQL Data Warehouse gelesen. Jede Änderung von Daten oder Tabellen muss für die Basistabelle ausgeführt werden. Option 3 führt außerdem eine Schicht von Sichten im System ein. Sie sollten dies besonders berücksichtigen, wenn Sie in Ihrer Architektur bereits Sichten verwenden.
-
+> [!NOTE]
+> Option 3 mag auf den ersten Blick die attraktivste Option sein. Bei genauerem Hinsehen treten jedoch Probleme zutage. Sichten werden nur in SQL Data Warehouse gelesen. Jede Änderung von Daten oder Tabellen muss für die Basistabelle ausgeführt werden. Option 3 führt außerdem eine Schicht von Sichten im System ein. Sie sollten dies besonders berücksichtigen, wenn Sie in Ihrer Architektur bereits Sichten verwenden.
+> 
+> 
 
 ### Beispiele:
-
 Implementieren von benutzerdefinierten Schemas basierend auf Datenbanknamen
 
 ```sql
@@ -91,12 +93,12 @@ GO
 CREATE SCHEMA [dim]; -- edw defines the legacy schema name boundary
 GO
 CREATE TABLE [stg].[customer] -- create the base staging tables in the staging boundary
-(       CustKey	BIGINT NOT NULL
+(       CustKey    BIGINT NOT NULL
 ,       ...
 )
 GO
 CREATE TABLE [edw].[customer] -- create the base data warehouse tables in the data warehouse boundary
-(       CustKey	BIGINT NOT NULL
+(       CustKey    BIGINT NOT NULL
 ,       ...
 )
 GO
@@ -104,14 +106,17 @@ CREATE VIEW [dim].[customer] -- create a view in the legacy schema name boundary
 AS
 SELECT  CustKey
 ,       ...
-FROM	[edw].customer
+FROM    [edw].customer
 ;
 ```
 
-> [AZURE.NOTE] Jede Änderung in der Schemastrategie erfordert eine Überprüfung des Sicherheitsmodells für die Datenbank. In vielen Fällen können Sie das Sicherheitsmodell vereinfachen, indem Sie Berechtigungen auf Schemaebene zuweisen. Wenn präzisere Berechtigungen erforderlich sind, können Sie Datenbankrollen verwenden.
+> [!NOTE]
+> Jede Änderung in der Schemastrategie erfordert eine Überprüfung des Sicherheitsmodells für die Datenbank. In vielen Fällen können Sie das Sicherheitsmodell vereinfachen, indem Sie Berechtigungen auf Schemaebene zuweisen. Wenn präzisere Berechtigungen erforderlich sind, können Sie Datenbankrollen verwenden.
+> 
+> 
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
 

@@ -1,24 +1,26 @@
-<properties
-   pageTitle="Entwickeln mit regionsübergreifenden DocumentDB-Konten | Microsoft Azure"
-   description="Erfahren Sie, wie Sie über Azure DocumentDB, einen vollständig verwalteten NoSQL-Datenbankdienst, auf Ihre auf mehrere Regionen verteilten Daten zugreifen."
-   services="documentdb"
-   documentationCenter=""
-   authors="kiratp"
-   manager="jhubbard"
-   editor=""/>
+---
+title: Entwickeln mit regionsübergreifenden DocumentDB-Konten | Microsoft Docs
+description: Erfahren Sie, wie Sie über Azure DocumentDB, einen vollständig verwalteten NoSQL-Datenbankdienst, auf Ihre auf mehrere Regionen verteilten Daten zugreifen.
+services: documentdb
+documentationcenter: ''
+author: kiratp
+manager: jhubbard
+editor: ''
 
-<tags
-   ms.service="documentdb"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/25/2016"
-   ms.author="kipandya"/>
-   
+ms.service: documentdb
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/25/2016
+ms.author: kipandya
+
+---
 # Entwickeln mit regionsübergreifenden DocumentDB-Konten
-
-> [AZURE.NOTE] Die globale Verteilung von DocumentDB-Datenbanken ist allgemein verfügbar und für alle neu erstellten DocumentDB-Konten automatisch aktiviert. Wir arbeiten daran, die globale Verteilung für alle vorhandenen Konten zu aktivieren. Wenn Sie jedoch in der Zwischenzeit die globale Verteilung für Ihr Konto aktivieren möchten, [kontaktieren Sie den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), der diesen Schritt für Sie ausführt.
+> [!NOTE]
+> Die globale Verteilung von DocumentDB-Datenbanken ist allgemein verfügbar und für alle neu erstellten DocumentDB-Konten automatisch aktiviert. Wir arbeiten daran, die globale Verteilung für alle vorhandenen Konten zu aktivieren. Wenn Sie jedoch in der Zwischenzeit die globale Verteilung für Ihr Konto aktivieren möchten, [kontaktieren Sie den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), der diesen Schritt für Sie ausführt.
+> 
+> 
 
 Um von der [globalen Verteilung](documentdb-distribute-data-globally.md) zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Dies lässt sich durch Einrichten einer Verbindungsrichtlinie erreichen. Basierend auf der Azure DocumentDB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Reihenfolgeliste der bevorzugten Regionen wählt das SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
 
@@ -34,7 +36,6 @@ Die Anwendung kann die vom SDK ausgewählten aktuellen Schreib- und Leseendpunkt
 
 Wenn die PreferredLocations-Eigenschaft nicht festgelegt ist, werden alle Anforderungen von der aktuellen Schreibregion verarbeitet.
 
-
 ## .NET SDK
 Das SDK kann ohne Codeänderungen verwendet werden. In diesem Fall sendet das SDK automatisch sowohl Lese- als auch Schreibvorgänge an die aktuelle Schreibregion.
 
@@ -42,7 +43,10 @@ Im .NET SDK, Version 1.8 oder höher, besitzt der ConnectionPolicy-Parameter fü
 
 Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.WriteEndpoint bzw. DocumentClient.ReadEndpoint verfügbar.
 
-> [AZURE.NOTE] Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
+> [!NOTE]
+> Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
+> 
+> 
 
     // Getting endpoints from application settings or other configuration location
     Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
@@ -70,24 +74,27 @@ In Version 1.8 oder höher jedes SDKs weist der ConnectionPolicy-Parameter für 
 
 Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.getWriteEndpoint bzw. DocumentClient.getReadEndpoint verfügbar.
 
-> [AZURE.NOTE] Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
+> [!NOTE]
+> Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
+> 
+> 
 
 Im Folgenden finden Sie ein Codebeispiel für NodeJS/Javascript. Python und Java folgen demselben Muster.
 
     // Creating a ConnectionPolicy object
     var connectionPolicy = new DocumentBase.ConnectionPolicy();
-    
+
     // Setting read region selection preference, in the following order -
     // 1 - West US
     // 2 - East US
     // 3 - North Europe
     connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
-    
+
     // initialize the connection
     var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
 
 
-## REST 
+## REST
 Sobald ein Datenbankkonto in mehreren Regionen zur Verfügung gestellt wurde, können Clients mithilfe einer GET-Anforderung über den folgenden URI die Verfügbarkeit des Kontos abfragen.
 
     https://{databaseaccount}.documents.azure.com/dbs
@@ -127,21 +134,20 @@ Beispielantwort
     }
 
 
--	Alle PUT-, POST- und DELETE-Anforderungen müssen an den angegebenen Schreib-URI gesendet werden.
--	Alle GET-Anforderungen sowie weitere Anforderungen ohne Schreibzugriff (z.B. Abfragen) können an einen beliebigen vom Client ausgewählten Endpunkt gesendet werden.
+* Alle PUT-, POST- und DELETE-Anforderungen müssen an den angegebenen Schreib-URI gesendet werden.
+* Alle GET-Anforderungen sowie weitere Anforderungen ohne Schreibzugriff (z.B. Abfragen) können an einen beliebigen vom Client ausgewählten Endpunkt gesendet werden.
 
 Bei Schreibanforderungen an schreibgeschützte Regionen tritt der HTTP-Fehler 403 („Verboten“) auf.
 
 Wenn sich nach der anfänglichen Ermittlungsphase des Clients die Schreibregion ändert, tritt bei nachfolgenden Schreibanforderungen an die vorherige Schreibregion der HTTP-Fehler 403 („Verboten“) auf. Der Client sollte dann erneut eine GET-Anforderung senden, um die Liste der Regionen erneut abzurufen und die aktualisierte Schreibregion zu empfangen.
 
 ## Nächste Schritte
-
 In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Daten mit DocumentDB:
 
-- [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md)
-- [Konsistenzebenen](documentdb-consistency-levels.md)
-- [So funktioniert der Durchsatz mit mehreren Regionen](documentdb-manage.md#how-throughput-works-with-multiple-regions)
-- [Hinzufügen von Regionen über das Azure-Portal](documentdb-portal-global-replication.md)
+* [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md)
+* [Konsistenzebenen](documentdb-consistency-levels.md)
+* [So funktioniert der Durchsatz mit mehreren Regionen](documentdb-manage.md#how-throughput-works-with-multiple-regions)
+* [Hinzufügen von Regionen über das Azure-Portal](documentdb-portal-global-replication.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

@@ -1,24 +1,26 @@
-<properties
-   pageTitle="Leitfaden für das Erstellen eines Datendiensts für den Marketplace | Microsoft Azure"
-   description="Detaillierte Anweisungen zum Erstellen, Zertifizieren und Bereitstellen eines Datendiensts für den Erwerb im Azure Marketplace."
-   services="marketplace-publishing"
-   documentationCenter=""
-   authors="HannibalSII"
-   manager=""
-   editor=""/>
+---
+title: Leitfaden für das Erstellen eines Datendiensts für den Marketplace | Microsoft Docs
+description: Detaillierte Anweisungen zum Erstellen, Zertifizieren und Bereitstellen eines Datendiensts für den Erwerb im Azure Marketplace.
+services: marketplace-publishing
+documentationcenter: ''
+author: HannibalSII
+manager: ''
+editor: ''
 
-   <tags
-      ms.service="marketplace"
-      ms.devlang="na"
-      ms.topic="article"
-      ms.tgt_pltfrm="na"
-      ms.workload="na"
-      ms.date="08/26/2016"
-      ms.author="hascipio; avikova" />
+ms.service: marketplace
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/26/2016
+ms.author: hascipio; avikova
 
+---
 # Beispiele für das Zuordnen eines vorhandenen Webdiensts zu OData über CSDLs
-
->[AZURE.IMPORTANT] **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
+> [!IMPORTANT]
+> **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
+> 
+> 
 
 ## Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "POST" zurückgegeben
 Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurückgeben seiner serverdefinierten URL (Speicherort) oder zum Aktualisieren eines Teils der Unterordnung in der serverdefinierten URL. Dabei ist die Unterordnung ein Datenstrom, d. h. unstrukturiert, wie beispielsweise eine Textdatei. Beachten Sie, dass POST ohne Speicherort nicht idempotent ist.
@@ -95,7 +97,7 @@ Verwenden Sie PUT zum Erstellen einer neuen Unterordnung oder zum Aktualisieren 
         </d:Namespaces>
         </FunctionImport>
         <EntityType Name="UpdateAnExistingModelEntity" d:Map="//string">
-        <Property Name="string" 	Type="String" Nullable="true" d:Map="./string" />
+        <Property Name="string"     Type="String" Nullable="true" d:Map="./string" />
         </EntityType>
 
 
@@ -141,9 +143,9 @@ Verwenden Sie GET-Rohdaten, um eine Unterordnung zurückzugeben, die unstrukturi
 Verwenden Sie mit GET „Implementieren von RESTful-Paging“ für die Daten. Das Standardpaging ist auf 100 Zeilen pro Seite an Daten festgelegt.
 
         <EntitySet Name=”CropEntitySet" EntityType="MyOffer.CropEntity" />
-        <FunctionImport	Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
+        <FunctionImport    Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
         <Parameter Name="report" Type="Int32" Mode="In" Nullable="false" d:SampleValues="4"  d:enum="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19"  />
-        <Parameter Name="series"	Type="String"	Mode="In" Nullable="false" d:SampleValues="FARM" />
+        <Parameter Name="series"    Type="String"    Mode="In" Nullable="false" d:SampleValues="FARM" />
         <d:Headers>
         <d:Header d:Name="Content-Type" d:Value="text/xml;charset=UTF-8" />
         </d:Headers>
@@ -153,8 +155,8 @@ Verwenden Sie mit GET „Implementieren von RESTful-Paging“ für die Daten. Da
         </FunctionImport>
 
 ## Weitere Informationen
-- Wenn Sie sich über den gesamten OData-Zuordnungsprozess und seinen Zweck informieren möchten, lesen Sie den Artikel [OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping.md), um Definitionen, Strukturen und Anweisungen kennenzulernen.
-- Wenn Sie mehr über bestimmte Knoten und ihre Parameter erfahren möchten, lesen Sie den Artikel [OData-Zuordnungsknoten für Datendienste](marketplace-publishing-data-service-creation-odata-mapping-nodes.md). Dort finden Sie Definitionen und Erläuterungen, Beispiele und Kontext für Anwendungsfälle.
-- Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
+* Wenn Sie sich über den gesamten OData-Zuordnungsprozess und seinen Zweck informieren möchten, lesen Sie den Artikel [OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping.md), um Definitionen, Strukturen und Anweisungen kennenzulernen.
+* Wenn Sie mehr über bestimmte Knoten und ihre Parameter erfahren möchten, lesen Sie den Artikel [OData-Zuordnungsknoten für Datendienste](marketplace-publishing-data-service-creation-odata-mapping-nodes.md). Dort finden Sie Definitionen und Erläuterungen, Beispiele und Kontext für Anwendungsfälle.
+* Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
 <!---HONumber=AcomDC_0831_2016-->

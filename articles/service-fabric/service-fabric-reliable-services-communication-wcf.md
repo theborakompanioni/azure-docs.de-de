@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Zuverlässige WCF-Dienste Kommunikationsstapel von Reliable Services | Microsoft Azure"
-   description="Der integrierte WCF-Kommunikationsstapel in Service Fabric bietet Clientdienst-WCF-Kommunikation für Reliable Services."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="BharatNarasimman"
-   manager="timlt"
-   editor="vturecek"/>
+---
+title: Zuverlässige WCF-Dienste Kommunikationsstapel von Reliable Services | Microsoft Docs
+description: Der integrierte WCF-Kommunikationsstapel in Service Fabric bietet Clientdienst-WCF-Kommunikation für Reliable Services.
+services: service-fabric
+documentationcenter: .net
+author: BharatNarasimman
+manager: timlt
+editor: vturecek
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="07/26/2016"
-   ms.author="bharatn"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: required
+ms.date: 07/26/2016
+ms.author: bharatn
 
+---
 # WCF-basierter Kommunikationsstapel für Reliable Services
 Das Reliable Services-Framework ermöglicht Dienstautoren, den Kommunikationsstapel für ihren Dienst zu wählen. Sie können den Kommunikationsstapel ihrer Wahl über den von der [CreateServiceReplicaListeners- oder CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md)-Methode zurückgegebenen **ICommunicationListener** implementieren. Das Framework bietet eine Implementierung des auf WCF (Windows Communication Foundation) basierenden Kommunikationsstapels für Dienstautoren, die eine WCF-basierte Kommunikation verwenden möchten.
 
@@ -113,13 +113,14 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
                 client => client.Channel.Add(2, 3)).Result;
 
 ```
->[AZURE.NOTE] Der Standard-ServicePartitionResolver geht davon aus, dass der Client im selben Cluster wie der Dienst ausgeführt wird. Wenn das nicht der Fall ist, erstellen Sie ein ServicePartitionResolver-Objekt, und übergeben Sie die Cluster-Verbindungsendpunkte.
+> [!NOTE]
+> Der Standard-ServicePartitionResolver geht davon aus, dass der Client im selben Cluster wie der Dienst ausgeführt wird. Wenn das nicht der Fall ist, erstellen Sie ein ServicePartitionResolver-Objekt, und übergeben Sie die Cluster-Verbindungsendpunkte.
+> 
+> 
 
 ## Nächste Schritte
 * [Remoteprozeduraufruf mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
-
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
-
 * [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
 
 <!---HONumber=AcomDC_0727_2016-->

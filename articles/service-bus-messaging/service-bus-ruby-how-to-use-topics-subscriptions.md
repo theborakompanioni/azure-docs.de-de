@@ -1,30 +1,27 @@
-<properties
-    pageTitle="Verwenden von Service Bus-Themen (Ruby) | Microsoft Azure"
-    description="Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements in Azure. Die Codebeispiele wurden für Ruby-Anwendungen geschrieben."
-    services="service-bus"
-    documentationCenter="ruby"
-    authors="sethmanheim"
-    manager="timlt"
-    editor=""/>
+---
+title: Verwenden von Service Bus-Themen (Ruby) | Microsoft Docs
+description: Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements in Azure. Die Codebeispiele wurden für Ruby-Anwendungen geschrieben.
+services: service-bus
+documentationcenter: ruby
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="service-bus"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="ruby"
-    ms.topic="article"
-    ms.date="10/04/2016"
-    ms.author="sethm"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: ruby
+ms.topic: article
+ms.date: 10/04/2016
+ms.author: sethm
 
-
+---
 # <a name="how-to-use-service-bus-topics/subscriptions"></a>Verwenden von Servicebus-Themen und -Abonnements
-
-[AZURE.INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements aus Ruby-Anwendungen verwenden. Die behandelten Szenarios umfassen **das Erstellen von Themen und Abonnements, das Erstellen von Abonnementfiltern, das Senden von Nachrichten** an ein Thema, **das Empfangen von Nachrichten von einem Abonnement** und **das Löschen von Themen und Abonnements**. Weitere Informationen zu Themen und Abonnements finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-Themen und -Abonnements
-
 Service Bus-Themen und -Abonnements unterstützen ein Modell der Messagingkommunikation über das *Veröffentlichen/Abonnieren* . Bei der Verwendung von Themen und Abonnements kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über ein Thema aus, das als Zwischenstufe fungiert.
 
 ![TopicConcepts](./media/service-bus-ruby-how-to-use-topics-subscriptions/sb-topics-01.png)
@@ -36,48 +33,42 @@ Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nach
 Mit Service Bus-Themen und -Abonnements können Sie viele Nachrichten an eine große Anzahl von Benutzern und Anwendungen verarbeiten.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
-
-Um mit der Verwendung von Service Bus-Warteschlangen in Azure beginnen zu können, müssen Sie zuerst einen Namespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. Da das [Azure-Portal][] den Namespace nicht mit einer ACS-Verbindung erstellt, müssen Sie den Namespace über die Befehlszeilenschnittstelle erstellen.
+Um mit der Verwendung von Service Bus-Warteschlangen in Azure beginnen zu können, müssen Sie zuerst einen Namespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. Da das [Azure-Portal][Azure-Portal] den Namespace nicht mit einer ACS-Verbindung erstellt, müssen Sie den Namespace über die Befehlszeilenschnittstelle erstellen.
 
 So erstellen Sie einen Namespace
 
 1. Öffnen Sie ein Azure PowerShell-Konsolenfenster.
-
 2. Geben Sie den folgenden Befehl ein, um einen Namespace zu erstellen. Geben Sie einen eigenen Namespacewert und dieselbe Region wie für Ihre Anwendung an.
-
+   
     ```
     New-AzureSBNamespace -Name 'yourexamplenamespace' -Location 'West US' -NamespaceType 'Messaging' -CreateACSNamespace $true
     ```
-
+   
     ![Erstellen des Namespaces](./media/service-bus-ruby-how-to-use-topics-subscriptions/showcmdcreate.png)
 
 ## <a name="obtain-default-management-credentials-for-the-namespace"></a>Abrufen der Standard-Verwaltungsanmeldeinformationen für den Namespace
-
-Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung einer Warteschlange im neuen Namespace, müssen Sie die Anmeldeinformationen für den Namespace abrufen.
+Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung einer Warteschlange im neuen Namespace, müssen Sie die Anmeldeinformationen für den Namespace abrufen.
 
 Das PowerShell-Cmdlet, das Sie zum Erstellen des Service Bus-Namespaces ausgeführt haben, zeigt den Schlüssel an, mit dem Sie den Namespace verwalten können. Kopieren Sie den Wert **DefaultKey**. Sie verwenden diesen Wert später in diesem Tutorial in Ihrem Code.
 
 ![Kopieren des Schlüssels](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
 
-> [AZURE.NOTE]
-> Sie können diesen Wert auch ermitteln, indem Sie sich beim [Azure-Portal][] anmelden und zu den Verbindungsinformationen für Ihren Namespace navigieren.
+> [!NOTE]
+> Sie können diesen Wert auch ermitteln, indem Sie sich beim [Azure-Portal][Azure-Portal] anmelden und zu den Verbindungsinformationen für Ihren Namespace navigieren.
+> 
+> 
 
 ## <a name="create-a-ruby-application"></a>Erstellen einer Ruby-Anwendung
-
 Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-
 Um Service Bus zu verwenden, müssen Sie das Ruby-Azure-Paket herunterladen und verwenden. Dieses enthält eine Reihe von Bibliotheken, die mit den Speicher-REST-Diensten kommunizieren.
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>Verwenden von RubyGems zum Abrufen des Pakets
-
 1. Verwenden Sie eine Befehlszeilenschnittstelle wie **PowerShell** (Windows), **Terminal** (Mac) oder **Bash** (Unix).
-
 2. Geben Sie "gem install azure" in das Befehlsfenster ein, um das Gem und Abhängigkeiten zu installieren.
 
 ### <a name="import-the-package"></a>Importieren des Pakets
-
 Fügen Sie mit Ihrem bevorzugten Texteditor Folgendes oben in die Ruby-Datei an der Stelle ein, an der Sie den Speicher verwenden möchten:
 
 ```
@@ -85,7 +76,6 @@ require "azure"
 ```
 
 ## <a name="set-up-a-service-bus-connection"></a>Einrichten einer Service Bus-Verbindung
-
 Das Azure-Modul liest die Umgebungsvariablen **AZURE\_SERVICEBUS\_NAMESPACE** und **AZURE\_SERVICEBUS\_ACCESS\_KEY** nach Informationen aus, die für eine Verbindung zu Ihrem Namespace benötigt werden. Wenn diese Umgebungsvariablen nicht festgelegt werden, müssen Sie die Kontoinformationen vor dem Verwenden von **Azure::ServiceBusService** mit dem folgenden Code angeben:
 
 ```
@@ -96,7 +86,6 @@ Azure.config.sb_access_key = "<your azure service bus access key>"
 Legen Sie den Wert für den Namespace auf den von Ihnen erstellten Wert statt auf die gesamte URL fest. Verwenden Sie beispielsweise **Beispielnamespace**, anstelle von „Beispielnamespace.servicebus.windows.net“.
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
-
 Das **Azure::ServiceBusService**-Objekt ermöglicht es Ihnen, mit Themen zu arbeiten. Der folgende Code erstellt ein **Azure::ServiceBusService**-Objekt. Verwenden Sie die Methode **create\_topic()**, um ein Thema zu erstellen. Im folgenden Beispiel wird ein Thema erstellt oder ggf. ein Fehler ausgegeben.
 
 ```
@@ -108,7 +97,7 @@ rescue
 end
 ```
 
-Sie können außerdem ein **Azure::ServiceBus::Topic**-Objekt mit weiteren Optionen übergeben, mit denen Sie die Standardthemeneinstellungen, wie etwa Nachrichtenlebensdauer oder maximale Warteschlangengröße, überschreiben können. Das folgende Beispiel zeigt, wie Sie die maximale Warteschlangengröße auf 5 GB bei einer Gültigkeitsdauer von 1 Minute festlegen:
+Sie können außerdem ein **Azure::ServiceBus::Topic**-Objekt mit weiteren Optionen übergeben, mit denen Sie die Standardthemeneinstellungen, wie etwa Nachrichtenlebensdauer oder maximale Warteschlangengröße, überschreiben können. Das folgende Beispiel zeigt, wie Sie die maximale Warteschlangengröße auf 5 GB bei einer Gültigkeitsdauer von 1 Minute festlegen:
 
 ```
 topic = Azure::ServiceBus::Topic.new("test-topic")
@@ -119,13 +108,11 @@ topic = azure_service_bus_service.create_topic(topic)
 ```
 
 ## <a name="create-subscriptions"></a>Erstellen von Abonnements
-
 Themenabonnements werden ebenfalls mit dem **Azure::ServiceBusService**-Objekt erstellt. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übermittelt werden.
 
 Abonnements sind persistent und bleiben erhalten, bis sie selbst oder die mit ihnen verbundenen Themen gelöscht werden. Wenn Ihre Anwendung Logik beinhaltet, sollte sie bei der Erstellung eines Abonnements zuerst mithilfe der getSubscription-Methode überprüfen, ob das Abonnement bereits vorhanden ist.
 
 ### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
-
 **MatchAll** ist der Standardfilter, der verwendet wird, wenn beim Erstellen eines neuen Abonnements kein Filter angegeben wird. Wenn der Filter **MatchAll** verwendet wird, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements gestellt. Mit dem folgenden Beispiel wird ein Abonnement namens „all-messages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
 
 ```
@@ -133,7 +120,6 @@ subscription = azure_service_bus_service.create_subscription("test-topic", "all-
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Erstellen von Abonnements mit Filtern
-
 Sie können auch Filter definieren, durch die Sie angeben können, welche an ein Thema gesendeten Nachrichten in einem bestimmten Abonnement angezeigt werden sollen.
 
 Der von Abonnements unterstützte flexibelste Filtertyp ist **Azure::ServiceBus::SqlFilter**, der eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax [SqlFilter.SqlExpression](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx).
@@ -173,7 +159,6 @@ rule = azure_service_bus_service.create_rule(rule)
 Wenn eine Nachricht an „test-topic“ gesendet wird, wird diese nun stets den Empfängern des Themenabonnements „all-messages“ zugestellt. Sie wird selektiv den Empfängern der Themenabonnements „high-messages“ und „low-messages“ zugestellt (je nach Inhalt der Nachricht).
 
 ## <a name="send-messages-to-a-topic"></a>Senden von Nachrichten an ein Thema
-
 Um eine Nachricht an ein Service Bus-Thema zu senden, muss die Anwendung die Methode **send\_topic\_message()** des **Azure::ServiceBusService**-Objekts verwenden. Nachrichten, die an Service Bus-Themen gesendet werden, sind **Azure::ServiceBus::BrokeredMessage**-Objekte. **Azure::ServiceBus::BrokeredMessage**-Objekte weisen eine Reihe von Standardeigenschaften (wie etwa **label** und **time\_to\_live**), ein Wörterbuch zur Aufnahme benutzerdefinierter, anwendungsspezifischer Eigenschaften, und einen aus Zeichenkettendaten bestehenden Nachrichtentext auf. Eine Anwendung kann den Nachrichtentext festlegen, indem sie einen Zeichenkettenwert an die Methode **send\_topic\_message()** weitergibt. Erforderliche Standardeigenschaften werden mit den Standardwerten gefüllt.
 
 Das folgende Beispiel zeigt, wie Sie fünf Testnachrichten an "test-topic" senden. Beachten Sie, dass der benutzerdefinierte Eigenschaftswert **message_number** jeder Nachricht gemäß der Iteration der Schleife variiert (dadurch wird bestimmt, welches Abonnement die Nachricht erhält):
@@ -186,10 +171,9 @@ Das folgende Beispiel zeigt, wie Sie fünf Testnachrichten an "test-topic" sende
 end
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
-
 Nachrichten werden von einem Abonnement über die Methode **receive\_subscription\_message** auf dem **Azure::ServiceBusService**-Objekt empfangen. Standardmäßig werden Nachrichten gelesen(peak) und gesperrt, ohne aus dem Abonnement gelöscht zu werden. Sie können die Nachricht aus dem Abonnement löschen, indem Sie die Option **peek\_lock** auf **FALSE** setzen.
 
 Im Standardverhalten sind Empfang und Löschung von Nachrichten zweistufig. Dadurch können Anwendungen unterstützt werden, die das Auslassen bzw. Fehlen von Nachrichten nicht zulassen können. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt Sie die zweite Phase des Empfangsprozesses durch Aufruf der Methode **delete\_subscription\_message()** und Bereitstellen der Nachricht durch, die als Parameter gelöscht wird. Die Methode **delete\_subscription\_message()** markiert die Nachricht als verarbeitet und entfernt sie aus dem Abonnement.
@@ -207,7 +191,6 @@ azure_service_bus_service.delete_subscription_message(message)
 ```
 
 ## <a name="handle-application-crashes-and-unreadable-messages"></a>Umgang mit Anwendungsabstürzen und nicht lesbaren Nachrichten
-
 Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine Empfängeranwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, so kann sie die Methode **unlock\_subscription\_message()** für das **Azure::ServiceBusService**-Objekt aufrufen. Dies führt dazu, dass Service Bus die Nachricht innerhalb des Abonnements entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
 Zudem wird der im Abonnement gesperrten Anwendung ein Timeout zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Timeouts nicht verarbeiten kann (zum Beispiel, wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
@@ -215,8 +198,7 @@ Zudem wird der im Abonnement gesperrten Anwendung ein Timeout zugeordnet. Wenn d
 Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der Methode **delete\_subscription\_message()** abstürzt, wird die Nachricht erneut der Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing** (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Diese Logik wird häufig durch die Verwendung der Eigenschaft **Message\_id** der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
-
-Themen und Abonnements sind persistent und müssen über das [Azure-Portal][] oder programmgesteuert explizit gelöscht werden. Das folgende Beispiel zeigt, wie Sie das Thema namens "test-topic" löschen.
+Themen und Abonnements sind persistent und müssen über das [Azure-Portal][Azure-Portal] oder programmgesteuert explizit gelöscht werden. Das folgende Beispiel zeigt, wie Sie das Thema namens "test-topic" löschen.
 
 ```
 azure_service_bus_service.delete_topic("test-topic")
@@ -229,13 +211,12 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
-- Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md).
-- API-Referenz für [SqlFilter](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx).
-- Besuchen Sie das [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby)-Repository auf GitHub.
- 
+* Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md).
+* API-Referenz für [SqlFilter](http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx).
+* Besuchen Sie das [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby)-Repository auf GitHub.
+
 [Azure-Portal]: https://portal.azure.com
 
 

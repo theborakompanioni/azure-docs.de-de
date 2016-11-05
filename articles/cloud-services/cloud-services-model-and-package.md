@@ -1,37 +1,38 @@
-<properties
-    pageTitle="Was ist ein Clouddienstmodell, und wie kann es gepackt werden? | Microsoft Azure"
-    description="Beschreibung des Clouddienstmodells (.csdef, .cscfg) und der Paketdatei (.cspkg) in Azure"
-    services="cloud-services"
-    documentationCenter=""
-    authors="Thraka"
-    manager="timlt"
-    editor=""/>
-<tags
-    ms.service="cloud-services"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/06/2016"
-    ms.author="adegeo"/>
+---
+title: Was ist ein Clouddienstmodell, und wie kann es gepackt werden? | Microsoft Docs
+description: Beschreibung des Clouddienstmodells (.csdef, .cscfg) und der Paketdatei (.cspkg) in Azure
+services: cloud-services
+documentationcenter: ''
+author: Thraka
+manager: timlt
+editor: ''
 
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/06/2016
+ms.author: adegeo
+
+---
 # Was ist das Clouddienstmodell, und wie kann es gepackt werden?
-Ein Clouddienst wird aus drei Komponenten erstellt: aus der Dienstdefinition _(.csdef)_, der Dienstkonfiguration _(.cscfg)_ und einem Dienstpaket _(.cspkg)_. Die beiden Dateien **ServiceDefinition.csdef** und **ServiceConfig.cscfg** sind XML-basiert und beschreiben die Struktur und Konfiguration des Clouddiensts; zusammen werden sie als Modell bezeichnet. Die Datei **ServicePackage.cspkg** ist eine Zip-Datei, die aus der Datei **ServiceDefinition.csdef** generiert wird und unter anderem alle erforderlichen binärbasierten Abhängigkeiten enthält. In Azure wird ein Clouddienst aus der Datei **ServicePackage.cspkg** sowie der Datei **ServiceConfig.cscfg** erstellt.
+Ein Clouddienst wird aus drei Komponenten erstellt: aus der Dienstdefinition *(.csdef)*, der Dienstkonfiguration *(.cscfg)* und einem Dienstpaket *(.cspkg)*. Die beiden Dateien **ServiceDefinition.csdef** und **ServiceConfig.cscfg** sind XML-basiert und beschreiben die Struktur und Konfiguration des Clouddiensts; zusammen werden sie als Modell bezeichnet. Die Datei **ServicePackage.cspkg** ist eine Zip-Datei, die aus der Datei **ServiceDefinition.csdef** generiert wird und unter anderem alle erforderlichen binärbasierten Abhängigkeiten enthält. In Azure wird ein Clouddienst aus der Datei **ServicePackage.cspkg** sowie der Datei **ServiceConfig.cscfg** erstellt.
 
 Wenn der Clouddienst in Azure ausgeführt wird, können Sie ihn über die Datei **ServiceConfig.cscfg** neu konfigurieren, die Definition können Sie jedoch nicht ändern.
 
 ## Zu welchen Punkten möchten Sie mehr erfahren?
-
 * Ich benötige weitere Informationen zu den Dateien [ServiceDefinition.csdef](#csdef) und [ServiceConfig.cscfg](#cscfg).
 * Damit bin ich bereits vertraut, ich benötige [einige Beispiele](#next-steps) zur Konfiguration.
 * Ich möchte die Datei [ServicePackage.cspkg](#cspkg) erstellen.
-* Ich verwende Visual Studio und möchte ...
-    * [Erstellen eines Azure-Projekts mit Visual Studio][vs_create]
-    * [Einen vorhandenen Clouddienst neu konfigurieren][vs_reconfigure]
-    * [Ein Clouddienstprojekt bereitstellen][vs_deploy]
-    * [Eine Remotedesktopverbindung für eine Clouddienstinstanz einrichten][remotedesktop]
+* Ich verwende Visual Studio und möchte ...
+  * [Erstellen eines Azure-Projekts mit Visual Studio][vs_create]
+  * [Einen vorhandenen Clouddienst neu konfigurieren][vs_reconfigure]
+  * [Ein Clouddienstprojekt bereitstellen][vs_deploy]
+  * [Eine Remotedesktopverbindung für eine Clouddienstinstanz einrichten][remotedesktop]
 
 <a name="csdef"></a>
+
 ## ServiceDefinition.csdef
 Die Datei **ServiceDefinition.csdef** gibt die Einstellungen an, mit denen ein Clouddienst in Azure konfiguriert wird. Das [Azure-Dienstdefinitionsschema (CSDEF-Datei)](https://msdn.microsoft.com/library/azure/ee758711.aspx) gibt das zulässige Format für eine Dienstdefinitionsdatei an. Im folgenden Beispiel sind die Einstellungen dargestellt, die für die Web- und Workerrollen definiert werden können:
 
@@ -102,9 +103,8 @@ Ausführliche Informationen zu dem hier verwendeten XML-Schema finden Sie unter 
 
 **Startup** enthält Aufgaben, die beim Starten der Rolle ausgeführt werden. Die Aufgaben werden in einer CMD-Datei oder einer ausführbaren Datei definiert.
 
-
-
 <a name="cscfg"></a>
+
 ## ServiceConfiguration.cscfg
 Die Konfiguration der Einstellungen für den Clouddienst wird durch die Werte in der Datei **ServiceConfiguration.cscfg** festgelegt. Sie geben in dieser Datei die Anzahl der Instanzen an, die bereitgestellt werden sollen. Die Werte für die Konfigurationseinstellungen, die Sie in der Dienstdefinitionsdatei definiert haben, werden der Dienstkonfigurationsdatei hinzugefügt. Die Fingerabdrücke für alle Verwaltungszertifikate, die dem Clouddienst zugeordnet sind, werden der Datei ebenfalls hinzugefügt. Das [Azure-Dienstkonfigurationsschema (CSCFG-Datei)](https://msdn.microsoft.com/library/azure/ee758710.aspx) gibt das zulässige Format für eine Dienstkonfigurationsdatei an.
 
@@ -130,7 +130,7 @@ Die Dienstkonfigurationsdatei wird nicht mit der Anwendung gepackt, sondern als 
 
 Ausführliche Informationen zu dem hier verwendeten XML-Schema finden Sie unter [Dienstkonfigurationsschema](https://msdn.microsoft.com/library/azure/ee758710.aspx). Im Folgenden werden die Elemente jedoch kurz erläutert:
 
-**Instances** konfiguriert die Anzahl der ausgeführten Instanzen für die Rolle. Um zu verhindern, dass der Clouddienst während Aktualisierungen nicht verfügbar ist, wird empfohlen, dass Sie mehr als eine Instanz der Rollen mit Webzugriff bereitstellen. Auf diese Weise befolgen Sie die Richtlinien in der [Azure-Vereinbarung zum Servicelevel (SLA)](http://azure.microsoft.com/support/legal/sla/), in der eine Verfügbarkeit der externen Verbindungen von 99,95 % für Rollen mit Internetzugriff garantiert wird, wenn mindestens zwei Rolleninstanzen für einen Dienst bereitgestellt werden.
+**Instances** konfiguriert die Anzahl der ausgeführten Instanzen für die Rolle. Um zu verhindern, dass der Clouddienst während Aktualisierungen nicht verfügbar ist, wird empfohlen, dass Sie mehr als eine Instanz der Rollen mit Webzugriff bereitstellen. Auf diese Weise befolgen Sie die Richtlinien in der [Azure-Vereinbarung zum Servicelevel (SLA)](http://azure.microsoft.com/support/legal/sla/), in der eine Verfügbarkeit der externen Verbindungen von 99,95 % für Rollen mit Internetzugriff garantiert wird, wenn mindestens zwei Rolleninstanzen für einen Dienst bereitgestellt werden.
 
 **ConfigurationSettings** konfiguriert die Einstellungen für die ausgeführten Instanzen einer Rolle. Der Name der `<Setting>`-Elemente muss mit den Einstellungsdefinitionen in der Dienstdefinitionsdatei übereinstimmen.
 
@@ -138,14 +138,15 @@ Ausführliche Informationen zu dem hier verwendeten XML-Schema finden Sie unter 
 
 <p/>
 
- >[AZURE.NOTE] Der Fingerabdruck des Zertifikats kann der Konfigurationsdatei mit einem Texteditor hinzugefügt oder in Visual Studio auf der Registerkarte **Zertifikate** auf der Seite **Eigenschaften** der Rolle eingefügt werden.
-
-
+> [!NOTE]
+> Der Fingerabdruck des Zertifikats kann der Konfigurationsdatei mit einem Texteditor hinzugefügt oder in Visual Studio auf der Registerkarte **Zertifikate** auf der Seite **Eigenschaften** der Rolle eingefügt werden.
+> 
+> 
 
 ## Definieren von Ports für Rolleninstanzen
 In Azure ist nur ein Einstiegspunkt für eine Webrolle zulässig. Das bedeutet, dass der gesamte Datenverkehr über eine IP-Adresse erfolgt. Sie können Ihre Websites für die gemeinsame Nutzung eines Ports konfigurieren, indem Sie den Hostheader so konfigurieren, dass Anforderungen an den richtigen Ort geleitet werden. Sie können Ihre Anwendungen zudem so konfigurieren, dass sie bekannte Ports in der IP-Adresse abhören.
 
-Im folgenden Beispiel ist die Konfiguration für eine Webrolle mit einer Website und Webanwendung dargestellt. Die Website ist als Standardeinstiegspunkt auf Port 80 konfiguriert. Die Webanwendungen sind so konfiguriert, dass sie Anforderungen von einem alternativen Hostheader mit dem Namen "mail.mysite.cloudapp.net" empfangen.
+Im folgenden Beispiel ist die Konfiguration für eine Webrolle mit einer Website und Webanwendung dargestellt. Die Website ist als Standardeinstiegspunkt auf Port 80 konfiguriert. Die Webanwendungen sind so konfiguriert, dass sie Anforderungen von einem alternativen Hostheader mit dem Namen "mail.mysite.cloudapp.net" empfangen.
 
 ```xml
 <WebRole>
@@ -183,21 +184,23 @@ Im folgenden Beispiel ist die Konfiguration für eine Webrolle mit einer Website
 ## Ändern der Konfiguration einer Rolle
 Sie können die Konfiguration des Clouddiensts aktualisieren, während er in Azure ausgeführt wird, ohne den Dienst offline zu schalten. Zum Ändern der Konfigurationsinformationen können Sie entweder eine neue Konfigurationsdatei hochladen oder die vorhandene Konfigurationsdatei bearbeiten und auf den ausgeführten Dienst anwenden. An der Konfiguration eines Diensts können die folgenden Änderungen vorgenommen werden:
 
-- **Ändern der Werte von Konfigurationseinstellungen:** Wenn sich eine Konfigurationseinstellung ändert, kann eine Rolleninstanz entweder die Änderung anwenden, während die Instanz online ist, oder die Instanz ordnungsgemäß neu starten und die Änderung anwenden, während die Instanz offline geschaltet ist.
-
-- **Ändern der Diensttopologie von Rolleninstanzen:** Topologieänderungen wirken sich nicht auf ausgeführte Instanzen aus, sofern keine Instanz entfernt wird. Alle verbleibenden Instanzen müssen im Allgemeinen nicht neu gestartet werden. Sie können jedoch festlegen, dass Rolleninstanzen als Reaktion auf eine Topologieänderung neu gestartet werden.
-
-- **Ändern des Zertifikatfingerabdrucks:** Sie können ein Zertifikat nur aktualisieren, wenn eine Rolleninstanz offline ist. Wenn ein Zertifikat hinzugefügt, gelöscht oder geändert wird, während eine Rolleninstanz online ist, schaltet Azure die Instanz ordnungsgemäß offline, um das Zertifikat zu aktualisieren, und schaltet sie nach der Änderung wieder online.
+* **Ändern der Werte von Konfigurationseinstellungen:** Wenn sich eine Konfigurationseinstellung ändert, kann eine Rolleninstanz entweder die Änderung anwenden, während die Instanz online ist, oder die Instanz ordnungsgemäß neu starten und die Änderung anwenden, während die Instanz offline geschaltet ist.
+* **Ändern der Diensttopologie von Rolleninstanzen:** Topologieänderungen wirken sich nicht auf ausgeführte Instanzen aus, sofern keine Instanz entfernt wird. Alle verbleibenden Instanzen müssen im Allgemeinen nicht neu gestartet werden. Sie können jedoch festlegen, dass Rolleninstanzen als Reaktion auf eine Topologieänderung neu gestartet werden.
+* **Ändern des Zertifikatfingerabdrucks:** Sie können ein Zertifikat nur aktualisieren, wenn eine Rolleninstanz offline ist. Wenn ein Zertifikat hinzugefügt, gelöscht oder geändert wird, während eine Rolleninstanz online ist, schaltet Azure die Instanz ordnungsgemäß offline, um das Zertifikat zu aktualisieren, und schaltet sie nach der Änderung wieder online.
 
 ### Behandeln von Konfigurationsänderungen mit Dienstlaufzeitereignissen
 Die [Azure-Laufzeitbibliothek](https://msdn.microsoft.com/library/azure/mt419365.aspx) enthält den [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx)-Namespace, der Klassen für die Interaktion mit der Azure-Umgebung aus dem Code bereitstellt, der in einer Instanz einer Rolle ausgeführt wird. Die [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx)-Klasse definiert die folgenden Ereignisse, die vor und nach einer Konfigurationsänderung ausgelöst werden:
 
-- **[Changing](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx)-Ereignis:** Dieses Ereignis wird ausgelöst, bevor die Konfigurationsänderung auf eine angegebene Instanz einer Rolle angewendet wird, sodass Sie die Möglichkeit haben, die Rolleninstanzen bei Bedarf offline zu schalten.
-- **[Changed](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changed.aspx)-Ereignis:** Wird ausgelöst, nachdem die Konfigurationsänderung auf eine angegebene Instanz einer Rolle angewendet wurde.
+* **[Changing](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx)-Ereignis:** Dieses Ereignis wird ausgelöst, bevor die Konfigurationsänderung auf eine angegebene Instanz einer Rolle angewendet wird, sodass Sie die Möglichkeit haben, die Rolleninstanzen bei Bedarf offline zu schalten.
+* **[Changed](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changed.aspx)-Ereignis:** Wird ausgelöst, nachdem die Konfigurationsänderung auf eine angegebene Instanz einer Rolle angewendet wurde.
 
-> [AZURE.NOTE] Da die Instanzen einer Rolle bei Zertifikatänderungen immer offline geschaltet werden, werden die RoleEnvironment.Changing- oder RoleEnvironment.Changed-Ereignisse nicht ausgelöst.
+> [!NOTE]
+> Da die Instanzen einer Rolle bei Zertifikatänderungen immer offline geschaltet werden, werden die RoleEnvironment.Changing- oder RoleEnvironment.Changed-Ereignisse nicht ausgelöst.
+> 
+> 
 
 <a name="cspkg"></a>
+
 ## ServicePackage.cspkg
 Um eine Anwendung als Clouddienst in Azure bereitzustellen, müssen Sie zunächst die Anwendung im entsprechenden Format packen. Als Alternative zu Visual Studio können Sie das Befehlszeilentool **CSPack** (wird mit dem [Azure SDK](https://azure.microsoft.com/downloads/) installiert) verwenden, um die Paketdatei zu erstellen.
 
@@ -205,15 +208,19 @@ Um eine Anwendung als Clouddienst in Azure bereitzustellen, müssen Sie zunächs
 
 **CSPack** befindet sich im Allgemeinen unter `C:\Program Files\Microsoft SDKs\Azure\.NET SDK[sdk-version]\bin`.
 
->[AZURE.NOTE]
-"CSPack.exe" ist (unter Windows) durch Ausführen der Verknüpfung **Microsoft Azure-Eingabeaufforderung** verfügbar, die mit dem SDK installiert wird.
->  
->Führen Sie das Programm "CSPack.exe" aus, um die Dokumentation zu allen möglichen Schaltern und Befehlen anzuzeigen.
+> [!NOTE]
+> "CSPack.exe" ist (unter Windows) durch Ausführen der Verknüpfung **Microsoft Azure-Eingabeaufforderung** verfügbar, die mit dem SDK installiert wird.
+> 
+> Führen Sie das Programm "CSPack.exe" aus, um die Dokumentation zu allen möglichen Schaltern und Befehlen anzuzeigen.
+> 
+> 
 
 <p />
 
->[AZURE.TIP]
-Führen Sie den Clouddienst lokal im **Microsoft Azure-Serveremulator** aus, und verwenden Sie dabei die Option **/copyonly**. Mit dieser Option werden die Binärdateien für die Anwendung in ein Verzeichnislayout kopiert, aus dem sie im Serveremulator ausgeführt werden können.
+> [!TIP]
+> Führen Sie den Clouddienst lokal im **Microsoft Azure-Serveremulator** aus, und verwenden Sie dabei die Option **/copyonly**. Mit dieser Option werden die Binärdateien für die Anwendung in ein Verzeichnislayout kopiert, aus dem sie im Serveremulator ausgeführt werden können.
+> 
+> 
 
 ### Beispielbefehl zum Packen eines Clouddiensts
 Mit dem folgenden Codebeispiel wird ein Anwendungspaket erstellt, das die Informationen für eine Webrolle enthält. Mit dem Befehl werden die zu verwendende Dienstdefinitionsdatei, das Verzeichnis, in dem sich die Binärdateien befinden, und der Name der Paketdatei angegeben.
@@ -234,25 +241,23 @@ Wenn die Anwendung eine Webrolle und eine Workerrolle enthält, wird der folgend
 Die Variablen sind dabei wie folgt definiert:
 
 | Variable | Wert |
-| ------------------------- | ----- |
-| [DirectoryName] | Das Unterverzeichnis unter dem Stammverzeichnis des Projekts, das die CSDEF-Datei des Azure-Projekts enthält.|
-| [ServiceDefinition] | Der Name der Dienstdefinitionsdatei. Standardmäßig heißt diese Datei "ServiceDefinition.csdef". |
-| [OutputFileName] | Der Name der generierten Paketdatei. In der Regel wird der Name der Anwendung verwendet. Wenn kein Dateiname angegeben wird, wird das Anwendungspaket unter dem Namen "[ApplicationName].cspkg" erstellt.|
-| [RoleName] | Der Name der Rolle entsprechend der Definition in der Dienstdefinitionsdatei.|
-| [RoleBinariesDirectory] | Der Speicherort der Binärdateien für die Rolle.|
-| [VirtualPath] | Die physischen Verzeichnisse für die einzelnen virtuellen Pfade, die im Abschnitt "Sites" der Dienstdefinition definiert sind.|
-| [PhysicalPath] | Die physischen Verzeichnisse des Inhalts für die einzelnen virtuellen Pfade, die im Knoten "Site" der Dienstdefinition definiert sind.|
-| [RoleAssemblyName] | Der Name der Binärdatei für die Rolle.| 
-
+| --- | --- |
+| [DirectoryName] |Das Unterverzeichnis unter dem Stammverzeichnis des Projekts, das die CSDEF-Datei des Azure-Projekts enthält. |
+| [ServiceDefinition] |Der Name der Dienstdefinitionsdatei. Standardmäßig heißt diese Datei "ServiceDefinition.csdef". |
+| [OutputFileName] |Der Name der generierten Paketdatei. In der Regel wird der Name der Anwendung verwendet. Wenn kein Dateiname angegeben wird, wird das Anwendungspaket unter dem Namen "[ApplicationName].cspkg" erstellt. |
+| [RoleName] |Der Name der Rolle entsprechend der Definition in der Dienstdefinitionsdatei. |
+| [RoleBinariesDirectory] |Der Speicherort der Binärdateien für die Rolle. |
+| [VirtualPath] |Die physischen Verzeichnisse für die einzelnen virtuellen Pfade, die im Abschnitt "Sites" der Dienstdefinition definiert sind. |
+| [PhysicalPath] |Die physischen Verzeichnisse des Inhalts für die einzelnen virtuellen Pfade, die im Knoten "Site" der Dienstdefinition definiert sind. |
+| [RoleAssemblyName] |Der Name der Binärdatei für die Rolle. |
 
 ## Nächste Schritte
-
-Ich erstelle ein Clouddienstpaket und möchte ...
+Ich erstelle ein Clouddienstpaket und möchte ...
 
 * [Eine Remotedesktopverbindung für eine Clouddienstinstanz einrichten][remotedesktop]
 * [Ein Clouddienstprojekt bereitstellen][deploy]
 
-Ich verwende Visual Studio und möchte ...
+Ich verwende Visual Studio und möchte ...
 
 * [Erstellen eines Azure-Projekts mit Visual Studio][vs_create]
 * [Einen vorhandenen Clouddienst neu konfigurieren][vs_reconfigure]

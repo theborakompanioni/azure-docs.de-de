@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Zuschneiden von Video | Microsoft Azure"
-    description="In diesem Artikel wird erläutert, wie Videos mit Media Encoder Standard zugeschnitten werden."
-    services="media-services"
-    documentationCenter=""
-    authors="anilmur"
-    manager="erikre"
-    editor=""/>
+---
+title: Zuschneiden von Video | Microsoft Docs
+description: In diesem Artikel wird erläutert, wie Videos mit Media Encoder Standard zugeschnitten werden.
+services: media-services
+documentationcenter: ''
+author: anilmur
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="media-services"
-    ms.workload="media"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="09/26/2016"  
-    ms.author="anilmur;juliako;"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: anilmur;juliako;
 
-
+---
 # <a name="crop-videos-with-media-encoder-standard"></a>Zuschneiden von Videos mit Media Encoder Standard
-
 Mit Media Encoder Standard (MES) können Sie Ihr Eingabevideo zuschneiden. Zuschneiden ist der Prozess der Auswahl eines rechteckigen Fensters innerhalb des Videoframes und die ausschließliche Codierung der Pixel innerhalb dieses Fensters. Das folgende Diagramm veranschaulicht diesen Prozess.
 
 ![Zuschneiden eines Videos](./media/media-services-crop-video/media-services-crop-video01.png)
@@ -30,18 +28,15 @@ Das Zuschneiden im MES ist eine Vorverarbeitungsphase, weshalb die Zuschneidepar
 Im [folgenden](media-services-advanced-encoding-with-mes.md#encoding_with_dotnet) Thema wird gezeigt, wie Sie mit MES einen Codierungsauftrag erstellen und für die Codierungsaufgabe eine benutzerdefinierte Voreinstellung angeben. 
 
 ## <a name="creating-a-custom-preset"></a>Erstellen einer benutzerdefinierten Voreinstellung
-
 Für das im Diagramm gezeigte Beispiel gilt Folgendes:
 
 1. Die ursprüngliche Eingabe ist 1920 x 1080.
-1. Sie muss für eine Ausgabe von 1440 x 1080 zugeschnitten werden, die im Eingabeframe zentriert wird.
-1. Dies bedeutet den X-Offset (1920-1440):2 = 240 und den Y-Offset = 0 (null).
-1. Breite und Höhe des Zuschnittrechtecks sind 1440 bzw. 1080.
-1. Die Aufgabe in der Codierungsphase ist das Erstellen von drei Ebenen mit den Auflösungen 1440 x 1080, 960 x 720 und 480 x 360.
+2. Sie muss für eine Ausgabe von 1440 x 1080 zugeschnitten werden, die im Eingabeframe zentriert wird.
+3. Dies bedeutet den X-Offset (1920-1440):2 = 240 und den Y-Offset = 0 (null).
+4. Breite und Höhe des Zuschnittrechtecks sind 1440 bzw. 1080.
+5. Die Aufgabe in der Codierungsphase ist das Erstellen von drei Ebenen mit den Auflösungen 1440 x 1080, 960 x 720 und 480 x 360.
 
-###<a name="json-preset"></a>JSON-Voreinstellung
-
-
+### <a name="json-preset"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Sources": [
@@ -126,28 +121,23 @@ Für das im Diagramm gezeigte Beispiel gilt Folgendes:
     }
 
 
-##<a name="restrictions-on-cropping"></a>Einschränkungen beim Zuschneiden
-
+## <a name="restrictions-on-cropping"></a>Einschränkungen beim Zuschneiden
 Das Zuschneiden ist eine manuelle Aufgabe. Sie müssen Ihr Eingabevideo in ein geeignetes Schneidetool hochladen, in dem Sie die gewünschten Frames auswählen, den Cursor zum Bestimmen der Offsets für das Zuschnittrechteck positionieren, die Codierungsvoreinstellung bestimmen, die für das jeweilige Video optimiert ist, usw. Aufgabe dieses Features ist nicht das Ermöglichen von Aufgaben wie automatische Erkennung und Entfernen von schwarzen Letterbox-/Pillarbox-Rändern in Ihrem Eingabevideo.
 
 Folgende Einschränkungen gelten für das Zuschnittfeature. Wenn diese nicht berücksichtigt werden, kann entweder die Codierungsaufgabe misslingen oder es zu einer unerwarteten Ausgabe kommen.
 
 1. Die Koordinaten und Größe des Zuschnittrechtecks müssen in das Eingabevideo passen.
-1. Wie bereits erwähnt, müssen Breite und Höhe in den Codierungseinstellungen dem zugeschnittenen Video entsprechen.
-1. Das Zuschneiden ist nur für im Querformat aufgezeichnete Videos möglich (d.h. nicht für mit einem Smartphone im Hochformat aufgezeichnete Videos).
-1. Es funktioniert am besten mit progressiven Video, das mit quadratischen Pixeln aufgezeichnet wurde.
+2. Wie bereits erwähnt, müssen Breite und Höhe in den Codierungseinstellungen dem zugeschnittenen Video entsprechen.
+3. Das Zuschneiden ist nur für im Querformat aufgezeichnete Videos möglich (d.h. nicht für mit einem Smartphone im Hochformat aufgezeichnete Videos).
+4. Es funktioniert am besten mit progressiven Video, das mit quadratischen Pixeln aufgezeichnet wurde.
 
-##<a name="provide-feedback"></a>Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-##<a name="next-step"></a>Nächster Schritt
- 
+## <a name="next-step"></a>Nächster Schritt
 Unter den Azure Media Services-Lernpfaden finden Sie Informationen zu weiteren AMS-Features.  
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

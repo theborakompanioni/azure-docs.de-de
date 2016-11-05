@@ -1,30 +1,27 @@
-<properties
-    pageTitle="Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen | Microsoft Azure"
-    description="Schritte zum Bereitstellen (Kopieren) eines neuen Webdiensts in anderen Regionen."
-    services="machine-learning"
-    documentationCenter=""
-    authors="vDonGlover"
-    manager="raymondl"
-    editor="cgronlun"/>
+---
+title: 'Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen | Microsoft Docs'
+description: Schritte zum Bereitstellen (Kopieren) eines neuen Webdiensts in anderen Regionen.
+services: machine-learning
+documentationcenter: ''
+author: vDonGlover
+manager: raymondl
+editor: cgronlun
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/05/2016"
-    ms.author="v-donglo"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/05/2016
+ms.author: v-donglo
 
-
+---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen
-
 Die neuen Azure-Webdienste ermöglichen Ihnen das einfache Bereitstellen eines Webdiensts in mehreren Regionen, ohne dass mehrere Abonnements oder Arbeitsbereiche erforderlich sind. 
 
 Die Preise sind regionsspezifisch. Daher müssen Sie einen Abrechnungsplan für jede Region definieren, in der der Webdienst bereitgestellt wird.
 
 ## <a name="to-create-a-plan-in-another-region"></a>So erstellen Sie einen Plan in einer anderen Region
-
 1. Melden Sie sich bei [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/)an.
 2. Klicken Sie auf die Menüoption **Plans** .
 3. Klicken Sie auf der Übersichtsseite „Plans“ auf **New**.
@@ -35,9 +32,7 @@ Die Preise sind regionsspezifisch. Daher müssen Sie einen Abrechnungsplan für 
 8. Klicken Sie unter **Plan Options**auf den Abrechnungstarif des neuen Plans.
 9. Klicken Sie auf **Erstellen**.
 
-
 ## <a name="deploying-the-web-service-to-another-region"></a>Bereitstellen des Webdiensts in einer anderen Region
-
 1. Klicken Sie auf die Menüoption **Web Services** .
 2. Wählen Sie den Webdienst aus, den Sie in einer neuen Region bereitstellen.
 3. Klicken Sie auf **Copy**.
@@ -49,9 +44,6 @@ Die Preise sind regionsspezifisch. Daher müssen Sie einen Abrechnungsplan für 
 9. Wählen Sie in der Dropdownliste **Storage account** ein Speicherkonto aus, in dem der Webdienst gespeichert werden soll.
 10. Wählen Sie in der Dropdownliste **Price Plan** einen Plan für die Region aus, die Sie in Schritt 8 gewählt haben.
 11. Klicken Sie auf **Copy**.
-
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,38 +1,39 @@
-<properties
-    pageTitle="Verwenden des Blobspeichers (Objektspeicher) mit C++ | Microsoft Azure"
-    description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
-    services="storage"
-    documentationCenter=".net"
-    authors="dineshmurthy"
-    manager="jahogg"
-    editor="tysonn"/>
+---
+title: Verwenden des Blobspeichers (Objektspeicher) mit C++ | Microsoft Docs
+description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
+services: storage
+documentationcenter: .net
+author: dineshmurthy
+manager: jahogg
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="dineshm"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: dineshm
 
+---
+# <a name="how-to-use-blob-storage-from-c++"></a>Verwenden des Blob-Speichers mit C++
+[!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
-# <a name="how-to-use-blob-storage-from-c++"></a>Verwenden des Blob-Speichers mit C++  
-
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
+[!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Übersicht
-
-Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
+Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Cloud als Objekte/Blobs gespeichert werden. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet.
 
 In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure Blob-Speicherdienst demonstriert. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück. Die behandelten Szenarien umfassen das **Hochladen**, **Auflisten**, **Herunterladen** und **Löschen** von Blobs.  
 
->[AZURE.NOTE] Diese Anleitung gilt für die Azure Storage-Clientbibliothek für C++ in der Version 1.0.0 und höher. Die empfohlene Version ist Storage-Clientbibliothek 2.2.0, die über [NuGet](http://www.nuget.org/packages/wastorage) oder [GitHub](https://github.com/Azure/azure-storage-cpp) verfügbar ist.
+> [!NOTE]
+> Diese Anleitung gilt für die Azure Storage-Clientbibliothek für C++ in der Version 1.0.0 und höher. Die empfohlene Version ist Storage-Clientbibliothek 2.2.0, die über [NuGet](http://www.nuget.org/packages/wastorage) oder [GitHub](https://github.com/Azure/azure-storage-cpp) verfügbar ist.
+> 
+> 
 
-[AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
+
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c++-application"></a>Erstellen einer C++-Anwendung
 In diesem Handbuch werden Sie Speicherfunktionen verwenden, die innerhalb einer C++-Anwendung ausgeführt werden können.  
@@ -41,12 +42,12 @@ Dafür müssen Sie die Azure-Speicherclientbibliothek für C++ installieren und 
 
 Zum Installieren der Azure-Speicherclientbibliothek für C++ können Sie die folgenden Methoden verwenden:
 
--   **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).  
--   **Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:  
+* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).  
+* **Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:  
+  
+      Install-Package wastorage
 
-        Install-Package wastorage
-
-## <a name="configure-your-application-to-access-blob-storage"></a>Konfigurieren der Anwendung für den Zugriff auf Blob-Speicher  
+## <a name="configure-your-application-to-access-blob-storage"></a>Konfigurieren der Anwendung für den Zugriff auf Blob-Speicher
 Fügen Sie die folgenden "include"-Anweisungen am Anfang der C++-Datei hinzu, um die Stellen anzugeben, an denen Azure-Speicher-APIs auf Blobs zugreifen sollen:  
 
     #include "was/storage_account.h"
@@ -79,8 +80,7 @@ Rufen Sie als nächstes einen Verweis auf die Klasse **cloud_blob_client** ab, d
     azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
 
 ## <a name="how-to:-create-a-container"></a>Erstellen von Containern
-
-[AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
+[!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
 Dieses Beispiel zeigt, wie Sie einen Container erstellen, falls er nicht bereits vorhanden ist.  
 
@@ -238,14 +238,12 @@ Zum Löschen eines Blobs rufen Sie zunächst einen Blobverweis ab, und rufen Sie
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen von Blob-Speichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr über Azure-Speicher zu erfahren.  
 
--   [Verwenden des Warteschlangenspeichers in C++](storage-c-plus-plus-how-to-use-queues.md)
--   [Verwenden des Tabellenspeichers mit C++](storage-c-plus-plus-how-to-use-tables.md)
--   [Auflisten von Azure Storage-Ressourcen in C++](storage-c-plus-plus-enumeration.md)
--   [Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
--   [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
-- [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
-
-
+* [Verwenden des Warteschlangenspeichers in C++](storage-c-plus-plus-how-to-use-queues.md)
+* [Verwenden des Tabellenspeichers mit C++](storage-c-plus-plus-how-to-use-tables.md)
+* [Auflisten von Azure Storage-Ressourcen in C++](storage-c-plus-plus-enumeration.md)
+* [Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
+* [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
+* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
 <!--HONumber=Oct16_HO2-->
 

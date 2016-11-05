@@ -1,35 +1,31 @@
-<properties
-	pageTitle="Azure Insights: PowerShell-Schnellstartbeispiele für Azure Insights | Microsoft Azure"
-	description="Mit den PowerShell-Schnellstart-Beispielbefehlen für Azure Insights können Sie schnell auf Azure Insights-Überwachungsfunktionen zugreifen."
-	authors="kamathashwin"
-	manager=""
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: 'Azure Insights: PowerShell-Schnellstartbeispiele für Azure Insights | Microsoft Docs'
+description: Mit den PowerShell-Schnellstart-Beispielbefehlen für Azure Insights können Sie schnell auf Azure Insights-Überwachungsfunktionen zugreifen.
+author: kamathashwin
+manager: ''
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2016"
-	ms.author="ashwink"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/30/2016
+ms.author: ashwink
 
+---
 # Azure Insights – PowerShell-Schnellstartbeispiele
-
 In diesem Artikel lernen Sie PowerShell-Beispielbefehle kennen, mit denen Sie schnell auf Azure Insights-Überwachungsfunktionen zugreifen können. Azure Insights ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
 
 ## Einrichten von PowerShell
 Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 ## Beispiele in diesem Artikel
-
 Mit den Beispielen in diesem Artikel wird veranschaulicht, wie Sie Azure Insights-Cmdlets verwenden können. Die vollständige Liste der Azure Insights-PowerShell-Cmdlets (Überwachung) finden Sie unter [Azure Insights-Cmdlets](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx).
 
-
 ## Anmelden und Verwenden von Abonnements
-
 Melden Sie sich zuerst bei Ihrem Azure-Abonnement an.
 
 ```
@@ -90,7 +86,10 @@ Get-AzureRmLog -MaxEvents 1000
 
 `Get-AzureRmLog` unterstützt viele weitere Parameter. Weitere Informationen finden Sie in der `Get-AzureRmLog`-Referenz.
 
->[AZURE.NOTE] `Get-AzureRmLog` stellt nur den Verlauf für 15 Tage bereit. Mithilfe des **-MaxEvents**-Parameters können Sie die letzten N Ereignisse für mehr als 15 Tage abfragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK (C#-Beispiel mit dem SDK). Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus 1 Stunde. Wenn Sie **EndTime** nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
+> [!NOTE]
+> `Get-AzureRmLog` stellt nur den Verlauf für 15 Tage bereit. Mithilfe des **-MaxEvents**-Parameters können Sie die letzten N Ereignisse für mehr als 15 Tage abfragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK (C#-Beispiel mit dem SDK). Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus 1 Stunde. Wenn Sie **EndTime** nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
+> 
+> 
 
 ## Abrufen des Verlaufs von Warnungen
 Um alle Warnereignisse anzuzeigen, können Sie die Azure Resource Manager-Protokolle (ARM) mit den folgenden Beispielen abfragen.
@@ -106,7 +105,6 @@ Get-AzureRmAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/provide
 ```
 
 Das Cmdlet `Get-AzureRmAlertHistory` unterstützt verschiedene Parameter. Weitere Informationen finden Sie unter [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
-
 
 ## Abrufen von Informationen zu Warnungsregeln
 Die folgenden Befehle beziehen sich auf eine Ressourcengruppe mit dem Namen „montest“.
@@ -141,20 +139,19 @@ Der nächste Abschnitt enthält ein Beispiel, das zeigt, wie eine Warnungsregel 
 ### Warnungsregel für eine Metrik
 In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Erstellen einer Warnung mithilfe einer Metrik verwendet werden.
 
-
-|Parameter|value|
-|---|---|
-|Name|	simpletestdiskwrite|
-|Standort für diese Warnungsregel|	USA (Ost)|
-|ResourceGroup|	montest|
-|TargetResourceId|	/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig|
-|„MetricName“ für die Warnung, die erstellt wird|	\\PhysicalDisk(\_Total)\\Schreibvorgänge/s. Unter den Informationen zum Cmdlet `Get-MetricDefinitions` weiter unten finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen.|
-|operator|	GreaterThan|
-|Schwellenwert (Anzahl/s für diese Metrik)|	1|
-|WindowSize (Format: hh:mm:ss)|	00:05:00|
-|Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet)|	Durchschnitt|
-|Benutzerdefinierte E-Mail-Adressen (Zeichenfolgenarray)|'foo@example.com','bar@example.com'|
-|E-Mail an Besitzer, Mitwirkende und Leser senden|	-SendToServiceOwners|
+| Parameter | value |
+| --- | --- |
+| Name |simpletestdiskwrite |
+| Standort für diese Warnungsregel |USA (Ost) |
+| ResourceGroup |montest |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| „MetricName“ für die Warnung, die erstellt wird |\\PhysicalDisk(\_Total)\\Schreibvorgänge/s. Unter den Informationen zum Cmdlet `Get-MetricDefinitions` weiter unten finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen. |
+| operator |GreaterThan |
+| Schwellenwert (Anzahl/s für diese Metrik) |1 |
+| WindowSize (Format: hh:mm:ss) |00:05:00 |
+| Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet) |Durchschnitt |
+| Benutzerdefinierte E-Mail-Adressen (Zeichenfolgenarray) |'foo@example.com','bar@example.com' |
+| E-Mail an Besitzer, Mitwirkende und Leser senden |-SendToServiceOwners |
 
 Erstellen einer E-Mail-Aktion
 
@@ -183,8 +180,10 @@ Get-AzureRmAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 Das Cmdlet zum Hinzufügen einer Warnung aktualisiert die Regel auch, wenn für die angegebenen Eigenschaften bereits eine Warnungsregel vorhanden ist. Um eine Warnungsregel zu deaktivieren, fügen Sie den **-DisableRule**-Parameter hinzu.
 
 ### Warnung zum Überwachungsprotokollereignis
-
->[AZURE.NOTE] Diese Funktion befindet sich noch in der Vorschauphase.
+> [!NOTE]
+> Diese Funktion befindet sich noch in der Vorschauphase.
+> 
+> 
 
 In diesem Szenario senden Sie eine E-Mail, wenn eine Website im Abonnement in der Ressourcengruppe *abhingrgtest123* erfolgreich gestartet wurde.
 
@@ -229,7 +228,6 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 Eine vollständige Liste der verfügbaren Optionen für `Get-AzureRmMetricDefinition` finden Sie unter [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
-
 ## Erstellen und Verwalten von Einstellungen zur automatischen Skalierung
 Für eine Ressource wie eine Web-App, eine VM, ein Clouddienst oder eine VM-Skalierungsgruppe kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden. Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasierte Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../cloud-services/cloud-services-how-to-scale.md).
 
@@ -246,7 +244,7 @@ Erstellen Sie zunächst eine Regel für das horizontale Hochskalieren mit einer 
 
 ```
 $rule1 = New-AzureRmAutoscaleRule -MetricName "\Processor(_Total)\% Processor Time" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 0.01 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue 1
-```		
+```        
 
 Erstellen Sie dann eine Regel für das horizontale Herunterskalieren mit einer Verringerung der Anzahl der Instanzen.
 
@@ -318,26 +316,22 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## Verwalten von Protokollprofilen für Überwachungsprotokolle
-
 Sie können ein *Protokollprofil* erstellen, Daten aus Ihren Überwachungsprotokollen in ein Speicherkonto exportieren und die Aufbewahrungsdauer für diese festlegen. Optional können Sie die Daten auch an Ihren Event Hub streamen. Beachten Sie, dass sich diese Funktion derzeit in Vorschauphase befindet und Sie nur ein Protokollprofil pro Abonnement erstellen können. Sie können die folgenden Cmdlets mit Ihrem aktuellen Abonnement verwenden, um Protokollprofile zu erstellen und zu verwalten. Sie können auch ein bestimmtes Abonnement auswählen. Obwohl in PowerShell standardmäßig das aktuelle Abonnement verwendet wird, können Sie dies jederzeit mit `Set-AzureRmContext` ändern. Sie können Überwachungsprotokolle so konfigurieren, dass Daten an ein beliebiges Speicherkonto oder einen Event Hub im Abonnement weitergeleitet werden. Daten werden als Blobdateien im JSON-Format geschrieben.
 
 ### Abrufen eines Protokollprofils
 Verwenden Sie zum Abrufen Ihrer vorhandenen Protokollprofile das Cmdlet `Get-AzureRmLogProfile`.
 
 ### Hinzufügen eines Protokollprofils ohne Datenaufbewahrung
-
 ```
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
 ### Entfernen eines Protokollprofils
-
 ```
 Remove-AzureRmLogProfile -name my_log_profile_s1
 ```
 
 ### Hinzufügen eines Protokollprofils mit Datenaufbewahrung
-
 Sie können die **-RetentionInDays**-Eigenschaft mit der Anzahl von Tagen (als positive ganze Zahl) für die Aufbewahrung der Daten angeben.
 
 ```
@@ -355,7 +349,6 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 Viele Azure-Dienste bieten zusätzliche Protokolle und Telemetriedaten. Dazu gehören Azure-Netzwerk-Sicherheitsgruppen, Software-Lastenausgleichsmodule, Key Vault, Azure Search-Dienste und Logik-Apps. Diese Dienste können zum Speichern von Daten in Ihrem Azure-Speicherkonto konfiguriert werden. Dieser Vorgang kann nur auf Ressourcenebene ausgeführt werden, und das Speicherkonto sollte in der gleichen Region wie die Zielressource, in der die Diagnoseeinstellung konfiguriert ist, vorhanden sein.
 
 ### Abrufen der Diagnoseeinstellung
-
 ```
 Get-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Logic/workflows/andy0315logicapp
 ```

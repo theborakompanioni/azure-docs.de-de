@@ -3,32 +3,27 @@
 Die neuen Twitter v1.1 APIs erfordern eine Authentifizierung Ihrer App, um auf Ressourcen zugreifen zu können. Zunächst müssen Sie sich die Anmeldedaten für Zugriff mithilfe von OAuth 2.0 besorgen. Anschließend speichern Sie diese sicher in den App-Einstellungen für Ihren mobilen Service.
 
 1. Führen Sie die Schritte im Thema [Registrieren Ihrer App für die Twitter-Anmeldung mit Mobile Services](../articles/mobile-services/mobile-services-how-to-register-twitter-authentication.md) durch, falls noch nicht geschehen. 
-  
-  	Twitter erstellt die Anmeldedaten, mithilfe derer Sie auf Twitter v1.1 APIs zugreifen können. Diese Anmeldeinformationen erhalten Sie über die Website für Twitter-Entwickler.
-
+   
+      Twitter erstellt die Anmeldedaten, mithilfe derer Sie auf Twitter v1.1 APIs zugreifen können. Diese Anmeldeinformationen erhalten Sie über die Website für Twitter-Entwickler.
 2. Navigieren Sie zur Website für [Twitter-Entwickler](http://go.microsoft.com/fwlink/p/?LinkId=268300), melden Sie sich mit den Anmeldeinformationen für Ihr Twitter-Konto an, und wählen Sie Ihre Twitter-App aus.
-
 3. Notieren Sie sich auf der Registerkarte für die **Schlüssel und Zugriffstoken** der App die folgenden Werte:
-
-	+ **Consumer key**
-	+ **Consumer secret**
-	+ **Access token**
-	+ **Access token secret**
-
+   
+   * **Consumer key**
+   * **Consumer secret**
+   * **Access token**
+   * **Access token secret**
 4. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an, klicken Sie auf **Mobile Services** und dann auf Ihren mobilen Dienst.
-
 5. Klicken Sie auf die Registerkarte **Identität**, geben Sie die von Twitter erhaltenen Werte für **Consumer key** und **Consumer secret** ein, und klicken Sie dann auf **Speichern**.
-
-	![](./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png)
-
-2. Klicken Sie auf die Registerkarte **Konfigurieren**, führen Sie einen Bildlauf nach unten bis **App-Einstellungen** durch, und geben Sie ein Paar aus **Name** und **Wert** für jedes der folgenden Elemente ein, die Sie von der Twitter-Site erhalten haben. Klicken Sie anschließend auf **Speichern**.
-
-	+ `TWITTER_ACCESS_TOKEN`
-	+ `TWITTER_ACCESS_TOKEN_SECRET`
-
-	![](./media/mobile-services-register-twitter-access/mobile-schedule-job-app-settings.png)
-
-	Dadurch wird das Twitter-Zugriffstoken in den App-Einstellungen gespeichert. Wie die Benutzeranmeldeinformationen auf der Registerkarte **Identität** werden auch die Zugangsberechtigungsdaten verschlüsselt in den App-Einstellungen gespeichert, sodass Sie auf diese in Ihren Serverskripts zugreifen können, ohne die Daten hart in der Skriptdatei codieren zu müssen. Weitere Informationen finden Sie unter [App-Einstellungen].
+   
+    ![](./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png)
+6. Klicken Sie auf die Registerkarte **Konfigurieren**, führen Sie einen Bildlauf nach unten bis **App-Einstellungen** durch, und geben Sie ein Paar aus **Name** und **Wert** für jedes der folgenden Elemente ein, die Sie von der Twitter-Site erhalten haben. Klicken Sie anschließend auf **Speichern**.
+   
+   * `TWITTER_ACCESS_TOKEN`
+   * `TWITTER_ACCESS_TOKEN_SECRET`
+     
+     ![](./media/mobile-services-register-twitter-access/mobile-schedule-job-app-settings.png)
+     
+     Dadurch wird das Twitter-Zugriffstoken in den App-Einstellungen gespeichert. Wie die Benutzeranmeldeinformationen auf der Registerkarte **Identität** werden auch die Zugangsberechtigungsdaten verschlüsselt in den App-Einstellungen gespeichert, sodass Sie auf diese in Ihren Serverskripts zugreifen können, ohne die Daten hart in der Skriptdatei codieren zu müssen. Weitere Informationen finden Sie unter [App-Einstellungen].
 
 <!-- URLs. -->
 [Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293

@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschungen | Microsoft Azure"
-   description="In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben."
-   services="active-directory"
-   documentationCenter=""
-   authors="AndKjell"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschungen | Microsoft Docs'
+description: In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
+services: active-directory
+documentationcenter: ''
+author: AndKjell
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/01/2016"
-   ms.author="andkjell"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/01/2016
+ms.author: andkjell
 
+---
 # Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen
 In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
 
@@ -23,17 +23,19 @@ Bei der Installation von Azure AD Connect wird die Funktion zum Schutz vor unbea
 
 Häufige Szenarios für Löschvorgänge sind beispielsweise:
 
-- Änderungen an der [Filterung](active-directory-aadconnectsync-configure-filtering.md), bei denen die Auswahl einer gesamten [Organisationseinheit](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) oder [Domäne](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) aufgehoben wird.
-- Das Löschen aller Objekte in einer Organisationseinheit.
-- Das Umbenennen einer Organisationseinheit, sodass alle darin enthaltenen Objekte als außerhalb des Synchronisierungsbereichs liegend betrachtet werden.
+* Änderungen an der [Filterung](active-directory-aadconnectsync-configure-filtering.md), bei denen die Auswahl einer gesamten [Organisationseinheit](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) oder [Domäne](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) aufgehoben wird.
+* Das Löschen aller Objekte in einer Organisationseinheit.
+* Das Umbenennen einer Organisationseinheit, sodass alle darin enthaltenen Objekte als außerhalb des Synchronisierungsbereichs liegend betrachtet werden.
 
-Der Standardwert von 500 Objekten kann mit PowerShell mithilfe von `Enable-ADSyncExportDeletionThreshold` geändert werden. Sie sollten diesen Wert entsprechend der Größe Ihres Unternehmens konfigurieren. Da der Synchronisierungsplaner alle 30 Minuten ausgeführt wird, entspricht der Wert der Anzahl von Löschvorgängen, die innerhalb von 30 Minuten erfolgen.
+Der Standardwert von 500 Objekten kann mit PowerShell mithilfe von `Enable-ADSyncExportDeletionThreshold` geändert werden. Sie sollten diesen Wert entsprechend der Größe Ihres Unternehmens konfigurieren. Da der Synchronisierungsplaner alle 30 Minuten ausgeführt wird, entspricht der Wert der Anzahl von Löschvorgängen, die innerhalb von 30 Minuten erfolgen.
 
 Wenn zu viele Löschungen in Azure AD exportiert werden sollen, wird der Export angehalten, und Sie erhalten eine E-Mail-Nachricht wie die folgende:
 
 ![E-Mail zum Verhindern von versehentlichen Löschungen](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
 > *Hallo (Ansprechpartner für Technik), am (Datum und Uhrzeit) hat der Dienst für die Identitätssynchronisierung festgestellt, dass die Anzahl von Löschvorgängen den für (Name der Organisation) konfigurierten Schwellenwert überschritten hat. Es wurden insgesamt (Anzahl) Objekte bei dieser Ausführung der Identitätssynchronisierung zum Löschen gesendet. Dies entspricht dem konfigurierten Schwellenwert für Löschungen von (Anzahl) Objekten bzw. überschreitet ihn. Sie müssen vor dem Fortfahren bestätigen, dass diese Löschvorgänge durchgeführt werden sollen. Weitere Informationen zu dem in dieser E-Mail-Nachricht genannten Fehler finden Sie unter „Verhindern von zufälligem Löschen“.*
+> 
+> 
 
 Sie können den Status `stopped-deletion-threshold-exceeded` auch auf der **Synchronization Service Manager**-Benutzeroberfläche für das Exportprofil sehen. ![Synchronization Service Manager-Benutzeroberfläche zum Verhindern von versehentlichen Löschungen](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
@@ -54,10 +56,9 @@ Wenn alle Löschvorgänge gewünscht sind, gehen Sie folgendermaßen vor:
 3. Führen Sie zum erneuten Aktivieren des Schutzes folgendes PowerShell-Cmdlet aus: `Enable-ADSyncExportDeletionThreshold`.
 
 ## Nächste Schritte
-
 **Übersichtsthemen**
 
-- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
-- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+* [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+* [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
 <!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,6 @@ Nachteile:
 1. Kann in einer Skalierungsgruppe keine Datenträger an VM-Instanzen anfügen. Muss stattdessen Azure Blob Storage, Azure Files Storage, Azure Table Storage oder andere Speicherlösungen verwenden.
 
 ## Schnellerfassung mithilfe der Azure-Befehlszeilenschnittstelle
-
 Falls Sie dies nicht bereits getan haben, können Sie ein [Azure-Abonnement als kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) und die [Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) erhalten, die [mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Sobald Sie dies getan haben, können Sie die folgenden Befehle ausführen, um eine Schnellerfassung für eine VM-Skalierungsgruppe durchzuführen:
 
 ```bash
@@ -71,7 +70,6 @@ ssh -p 50000 $FQDN
 ```
 
 ## Nächste Schritte
-
 Weitere allgemeine Informationen finden Sie unter der [Hauptseite für VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 
 Weitere Dokumenten finden Sie unter der [Hauptseite für VM-Skalierungsgruppen](https://azure.microsoft.com/documentation/services/virtual-machines-scale-sets/).

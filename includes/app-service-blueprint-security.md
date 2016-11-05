@@ -11,7 +11,7 @@
 * [Entfernen von Serverstandardheadern, um zu verhindern, dass Tools Fingerabdrücke Ihrer App erfassen](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
 * [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe eines Punkt-zu-Standort-VPNs](../articles/app-service-web/web-sites-integrate-with-vnet.md)
 * [Herstellen einer sicheren Verbindung zwischen Ihrer App und Ressourcen in einem privaten Netzwerk mithilfe von Hybridverbindungen](../articles/app-service-web/web-sites-hybrid-connection-get-started.md)
-* [Erzielen der Sicherheitsisolation für Ihre Apps mit App Service-Umgebungen (App Service Environments, ASE)](../articles/app-service-web/app-service-app-service-environment-intro.md)
+* [Erzielen der Sicherheitsisolation für Ihre Apps mit App Service-Umgebungen (App Service Environments, ASE)](../articles/app-service-web/app-service-app-service-environment-intro.md)
   * [Konfigurieren einer Web Application Firewall (WAF) vor Ihrer ASE](../articles/app-service-web/app-service-app-service-environment-web-application-firewall.md)
   * [Konfigurieren der Zugriffssteuerung für eingehenden Netzwerkdatenverkehr für Ihre ASE](../articles/app-service-web/app-service-app-service-environment-control-inbound-traffic.md)
   * [Herstellen einer sicheren Verbindung mit Back-End-Ressourcen von Ihrer ASE](../articles/app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md)

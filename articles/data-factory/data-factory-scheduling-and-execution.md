@@ -1,34 +1,32 @@
-<properties
-    pageTitle="Planung und Ausführung mit Data Factory | Microsoft Azure"
-    description="Informationen zu den Planungs- und Ausführungsaspekten des Azure Data Factory-Anwendungsmodells."
-    services="data-factory"
-    documentationCenter=""
-    authors="spelluru"
-    manager="jhubbard"
-    editor="monicar"/>
+---
+title: Planung und Ausführung mit Data Factory | Microsoft Docs
+description: Informationen zu den Planungs- und Ausführungsaspekten des Azure Data Factory-Anwendungsmodells.
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags
-    ms.service="data-factory"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/22/2016"
-    ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/22/2016
+ms.author: spelluru
 
-
+---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory – Planung und Ausführung
 In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird vorausgesetzt, dass Sie mit den Grundbegriffen des Data Factory-Anwendungsmodells vertraut sind, z.B. Aktivität, Pipelines, verknüpfte Dienste und Datasets. Grundlegende Konzepte von Azure Data Factory finden Sie in den folgenden Artikeln:
 
-- [Einführung in Data Factory](data-factory-introduction.md)
-- [Pipelines](data-factory-create-pipelines.md)
-- [Datasets](data-factory-create-datasets.md) 
+* [Einführung in Data Factory](data-factory-introduction.md)
+* [Pipelines](data-factory-create-pipelines.md)
+* [Datasets](data-factory-create-datasets.md) 
 
 ## <a name="schedule-an-activity"></a>Planen einer Aktivität
-
 Im Abschnitt „scheduler“ im JSON-Code der Aktivität können Sie eine Zeitplanserie für die Aktivität angeben. Beispielsweise können Sie wie folgt eine stündliche Ausführung einer Aktivität planen:
 
     "scheduler": {
@@ -47,7 +45,6 @@ Die **scheduler**-Eigenschaft unterstützt dieselben untergeordneten Eigenschaft
 Sie können optional **scheduler**-Eigenschaften für eine Aktivität angeben. Diese Eigenschaft ist allerdings **optional**. Wenn Sie eine Eigenschaft angeben, muss sie mit dem Rhythmus übereinstimmen, den Sie in der Definition des Ausgabedatasets angegeben haben. Derzeit steuert das Ausgabedataset den Zeitplan, sodass Sie auch dann ein Ausgabedataset erstellen müssen, wenn die Aktivität keine Ausgabe erzeugt. Wenn die Aktivität keine Eingabe akzeptiert, können Sie das Erstellen des Eingabedatasets überspringen.
 
 ## <a name="time-series-datasets-and-data-slices"></a>Datasets und Datenslices von Zeitreihen
-
 Zeitreihendaten stellen eine fortlaufende Abfolge von Datenpunkten dar, die in der Regel aus aufeinander folgenden Messungen in einem Zeitintervall bestehen. Gängige Beispiele für Zeitreihendaten sind Sensordaten und Anwendungstelemetriedaten.
 
 Mithilfe von Data Factory können Sie Zeitreihendaten in Form von Aktivitätsausführungen im Batchmodus verarbeiten. Es gibt in der Regel einen regelmäßigen Rhythmus, in dem Eingabedaten erfasst und Ausgabedaten erstellt werden müssen. Dieser Rhythmus wird durch das Festlegen der Verfügbarkeit ( **availability** ) für das Dataset wie folgt bestimmt:
@@ -70,7 +67,6 @@ Derzeit ist es für Data Factory erforderlich, dass der in der Aktivität angege
 Weitere Informationen zu verschiedenen Eigenschaften, die im Abschnitt „availability“ verfügbar sind, finden Sie unter [Datasets in Azure Data Factory](data-factory-create-datasets.md).
 
 ## <a name="move-data-from-sql-database-to-blob-storage"></a>Verschieben von Daten aus Azure SQL-Datenbank in Azure Blob Storage
-
 Nun wollen wir uns diese Dinge in Aktion ansehen, indem wir eine Pipeline erstellen, die Daten stündlich aus einer Azure SQL-Datenbanktabelle in Azure-Blobspeicher kopiert.
 
 **Eingabe: Azure SQL-Datenbankdataset**
@@ -154,8 +150,6 @@ Im Abschnitt „availability“ ist **Frequency** auf **Hour** und **interval** 
 
 Im Abschnitt „availability“ ist **Frequency** auf **Hour** und **interval** auf **1** festgelegt.
 
-
-
 **Aktivität: Kopieraktivität**
 
     {
@@ -208,23 +202,24 @@ Wenn drei der Slices zwischen 8 und 11 Uhr ausgeführt werden, lauten die Daten 
 
 Nach der Bereitstellung der Pipeline wird das Azure-Blob wie folgt aufgefüllt:
 
--   Datei „mypath/2015/1/1/8/Data.&lt;GUID&gt;.txt“ mit Daten
-
-            10002345,334,2,2015-01-01 08:24:00.3130000
-            10002345,347,15,2015-01-01 08:24:00.6570000
-            10991568,2,7,2015-01-01 08:56:34.5300000
-
-    > [AZURE.NOTE] &lt;Guid&gt; wird durch eine tatsächliche GUID ersetzt. Beispieldateiname: Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
--   Datei „mypath/2015/1/1/9/Data.&lt;GUID&gt;.txt“ mit Daten:
-
-            10002345,334,1,2015-01-01 09:13:00.3900000
-            24379245,569,23,2015-01-01 09:25:00.3130000
-            16777799,21,115,2015-01-01 09:47:34.3130000
--   Datei „mypath/2015/1/1/10/Data.&lt;GUID&gt;.txt“ ohne Daten:
-
+* Datei „mypath/2015/1/1/8/Data.&lt;GUID&gt;.txt“ mit Daten
+  
+          10002345,334,2,2015-01-01 08:24:00.3130000
+          10002345,347,15,2015-01-01 08:24:00.6570000
+          10991568,2,7,2015-01-01 08:56:34.5300000
+  
+  > [!NOTE]
+  > &lt;Guid&gt; wird durch eine tatsächliche GUID ersetzt. Beispieldateiname: Data.bcde1348-7620-4f93-bb89-0eed3455890b.txt
+  > 
+  > 
+* Datei „mypath/2015/1/1/9/Data.&lt;GUID&gt;.txt“ mit Daten:
+  
+          10002345,334,1,2015-01-01 09:13:00.3900000
+          24379245,569,23,2015-01-01 09:25:00.3130000
+          16777799,21,115,2015-01-01 09:47:34.3130000
+* Datei „mypath/2015/1/1/10/Data.&lt;GUID&gt;.txt“ ohne Daten:
 
 ## <a name="active-period-for-pipeline"></a>Aktiver Zeitraum für Pipeline
-
 Unter [Pipelines und Aktivitäten in Azure Data Factory: Erstellen/Planen von Pipelines und Kettenaktivitäten](data-factory-create-pipelines.md) wurde das Konzept eines aktiven Zeitraums für eine Pipeline vorgestellt, der durch das Festlegen der Eigenschaften **start** und **end** angegeben wird.
 
 Sie können das Startdatum für den aktiven Zeitraum der Pipeline auf ein Datum in der Vergangenheit festlegen. Data Factory führt automatisch eine Berechnung (einen Abgleich) aller Datenslices in der Vergangenheit aus und beginnt mit ihrer Verarbeitung.
@@ -232,7 +227,7 @@ Sie können das Startdatum für den aktiven Zeitraum der Pipeline auf ein Datum 
 ## <a name="parallel-processing-of-data-slices"></a>Parallele Verarbeitung von Datenslices
 Sie können abgeglichene Datenslices für eine parallele Ausführung konfigurieren, indem Sie die Eigenschaft **concurrency** im Abschnitt „policy“ des JSON-Codes der Aktivität festlegen. Weitere Informationen zu dieser Eigenschaft finden Sie unter [Erstellen von Pipelines](data-factory-create-pipelines.md).
 
-## <a name="rerun-a-failed-data-slice"></a>Wiederholen eines fehlerhaften Datenslices 
+## <a name="rerun-a-failed-data-slice"></a>Wiederholen eines fehlerhaften Datenslices
 Sie können die Ausführung von Slices umfassend visuell überwachen. Ausführliche Informationen finden Sie unter [Überwachen und Verwalten von Pipelines mithilfe von Blättern im Azure-Portal](data-factory-monitor-manage-pipelines.md) oder [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
 Betrachten Sie das folgende Beispiel mit zwei Aktivitäten. Aktivität1 erstellt ein Zeitreihen-Dataset mit Slices als Ausgabe, die als Eingabe von Aktivität2 verwendet wird, um die endgültige Ausgabe des Zeitreihen-Datasets zu erstellen.
@@ -252,8 +247,8 @@ Sie können zwei Aktivitäten verketten (nacheinander ausführen), indem Sie das
 
 Betrachten Sie beispielsweise den folgenden Fall:
 
-1.  Die Pipeline P1 enthält die Aktivität A1, für die das externe Eingabedataset D1 erforderlich ist und die das Ausgabedataset D2 generiert.
-2.  Die Pipeline P2 enthält die Aktivität A2, für die eine Eingabe aus dem Dataset D2 erforderlich ist und die das Ausgabedataset D3 generiert.
+1. Die Pipeline P1 enthält die Aktivität A1, für die das externe Eingabedataset D1 erforderlich ist und die das Ausgabedataset D2 generiert.
+2. Die Pipeline P2 enthält die Aktivität A2, für die eine Eingabe aus dem Dataset D2 erforderlich ist und die das Ausgabedataset D3 generiert.
 
 In diesem Szenario befinden sich die Aktivitäten A1 und A2 in verschiedenen Pipelines. Die Aktivität A1 wird ausgeführt, wenn die externen Daten verfügbar sind und die Häufigkeit für die geplante Verfügbarkeit erreicht ist. Die Aktivität A2 wird ausgeführt, wenn die geplanten Slices von D2 verfügbar werden und die Häufigkeit für die geplante Verfügbarkeit erreicht ist. Wenn ein Fehler in einem der Slices im Dataset D2 auftritt, wird A2 für diesen Slice nicht ausgeführt, bis er verfügbar wird.
 
@@ -452,17 +447,13 @@ Eingaben: Dataset3, Dataset2 Ausgabe: Dataset4
 
 Beachten Sie, dass im Beispiel zwei Eingabedatasets für die zweite Kopieraktivität angegeben sind. Wenn mehrere Eingaben angegeben wurden, wird nur das erste Eingabedataset zum Kopieren der Daten verwendet, aber die anderen Datasets werden als Abhängigkeiten verwendet. CopyActivity2 wird erst gestartet, nachdem die folgenden Bedingungen erfüllt sind:
 
-- CopyActivity1 wurde erfolgreich abgeschlossen und Dataset2 ist verfügbar. Dieses Dataset wird beim Kopieren von Daten in Dataset4 nicht verwendet. Es fungiert nur als Terminplanungs-Abhängigkeit für CopyActivity2.   
-- Dataset3 ist verfügbar. Dieses Dataset stellt die Daten dar, die zum Ziel kopiert werden.  
-
-
+* CopyActivity1 wurde erfolgreich abgeschlossen und Dataset2 ist verfügbar. Dieses Dataset wird beim Kopieren von Daten in Dataset4 nicht verwendet. Es fungiert nur als Terminplanungs-Abhängigkeit für CopyActivity2.   
+* Dataset3 ist verfügbar. Dieses Dataset stellt die Daten dar, die zum Ziel kopiert werden.  
 
 ## <a name="model-datasets-with-different-frequencies"></a>Modellieren von Datasets mit unterschiedlichen Frequenzen
-
 In den Beispielen waren die Frequenzen für Eingabe- und Ausgabedatasets und das Aktivitätszeitfenster identisch. Einige Szenarien erfordern die Fähigkeit, eine Ausgabe mit einer Frequenz zu erzeugen, die sich von den Frequenzen einer oder mehrerer Eingaben unterscheidet. Data Factory unterstützt die Modellierung dieser Szenarien.
 
 ### <a name="sample-1:-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Beispiel 1: Erzeugen eines täglichen Ausgabeberichts für Eingabedaten, die stündlich verfügbar sind
-
 In diesem Szenario verwenden Sie Eingabemessdaten von Sensoren, die stündlich im Azure-Blobspeicher verfügbar sind. Sie möchten einen täglichen Aggregationsbericht mit Statistiken wie Mittel-, Höchst- und Mindestwert für den Tag mit der [Hive-Aktivität](data-factory-hive-activity.md)von Data Factory erstellen.
 
 Dieses Szenario können Sie wie folgt mit Data Factory realisieren:
@@ -498,7 +489,6 @@ Die stündlichen Eingabedateien werden im Ordner für den jeweiligen Tag abgeleg
 **Ausgabedataset**
 
 Jeden Tag wird eine Ausgabedatei im Ordner des jeweiligen Tags erstellt. Für die Ausgabe ist „availability“ auf „Täglich“ festgelegt (frequency: **Day** , interval: 1).
-
 
     {
       "name": "AzureBlobOutput",
@@ -578,9 +568,7 @@ Das folgende Diagramm zeigt das Szenario im Hinblick auf eine Datenabhängigkeit
 
 Der Ausgabeslice für jeden Tag hängt von 24 stündlichen Slices aus einem Eingabedataset ab. Data Factory berechnet diese Abhängigkeiten automatisch, indem die Eingabedatenslices ermittelt werden, die in demselben Zeitraum wie der zu erzeugende Ausgabeslice liegen. Ist einer der 24 Eingabeslices nicht verfügbar, wartet Data Factory, bis der Eingabeslice bereit ist. Erst dann wird die tägliche Aktivitätsausführung gestartet.
 
-
 ### <a name="sample-2:-specify-dependency-with-expressions-and-data-factory-functions"></a>Beispiel 2: Angeben von Abhängigkeiten mit Ausdrücken und Data Factory-Funktionen
-
 Lassen Sie uns ein weiteres Szenario betrachten. Angenommen, Sie verwenden eine Hive-Aktivität, die zwei Eingabedatasets verarbeitet. Eines davon verfügt über neue tägliche Daten, und eines erhält jede Woche neue Daten. Angenommen, Sie möchten einen Join-Vorgang auf zwei Eingaben anwenden und eine tägliche Ausgabe erzeugen.
 
 Der einfache Ansatz, bei dem Data Factory die zu verarbeitenden Eingabeslices automatisch durch Abstimmung mit dem Zeitraum des Ausgabedatenslice bestimmt, funktioniert in diesem Fall nicht mehr.
@@ -725,12 +713,10 @@ Die Hive-Aktivität verwendet zwei Eingaben und erzeugt täglich einen Ausgabesl
     }
 
 
-## <a name="data-factory-functions-and-system-variables"></a>Data Factory – Funktionen und Systemvariablen   
-
+## <a name="data-factory-functions-and-system-variables"></a>Data Factory – Funktionen und Systemvariablen
 Unter [Data Factory – Funktionen und Systemvariablen](data-factory-functions-variables.md) finden Sie eine Liste mit den Funktionen und Systemvariablen, die von Data Factory unterstützt werden.
 
 ## <a name="data-dependency-deep-dive"></a>Datenabhängigkeiten – Detaillierte Informationen
-
 Zum Generieren eines Datasetslices mittels einer Aktivitätsausführung verwendet Data Factory das folgende *Abhängigkeitsmodell* , um die Beziehungen zwischen den von einer Aktivität genutzten und erzeugten Datasets zu bestimmen.
 
 Der Zeitraum der Eingabedatasets, der zum Generieren des Slice des Ausgabedatasets erforderlich ist, wird als *Abhängigkeitszeitraum*bezeichnet.
@@ -751,7 +737,6 @@ Beispiel: Beim Aggregationsbeispiel, bei dem die Ausgabe täglich erzeugt wird u
 Wie im Beispiel, bei dem eine der Eingaben wöchentlich erfolgt und der Ausgabeslice täglich erzeugt wird, können Sie auch eine eigene Zuordnung für den Abhängigkeitszeitraum angeben.
 
 ## <a name="data-dependency-and-validation"></a>Datenabhängigkeit und -überprüfung
-
 Für ein Dataset kann eine Überprüfungsrichtlinie definiert sein, die angibt, wie die von einer Sliceausführung generierten Daten überprüft werden können, ehe sie zur Nutzung bereit sind. Weitere Informationen finden Sie unter [Datasets in Azure Data Factory](data-factory-create-datasets.md) .
 
 In solchen Fällen wird nach Beendigung der Sliceausführung der Status des Ausgabeslice in **Warten** mit dem Unterstatus **Überprüfung** geändert. Nach der Überprüfung der Slices ändert sich der Slicestatus in **Bereit**.
@@ -761,7 +746,6 @@ Wenn ein Datenslice erstellt wurde, aber die Überprüfung nicht bestanden hat, 
 [Überwachen und Verwalten von Pipelines](data-factory-monitor-manage-pipelines.md) behandelt.
 
 ## <a name="external-data"></a>Externe Daten
-
 Ein Dataset kann (wie im folgenden JSON-Codeausschnitt gezeigt) als extern gekennzeichnet werden, um anzugeben, dass es nicht mit Data Factory erstellt wurde. In einem solchen Fall kann die Datasetrichtlinie eine Reihe zusätzliche Parameter zum Beschreiben der Überprüfung und eine Wiederholungsrichtlinie für das Dataset aufweisen. Eine Beschreibung aller Eigenschaften finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory: Erstellen/Planen von Pipelines und Kettenaktivitäten](data-factory-create-pipelines.md) .
 
 Ähnlich wie Datasets, die von Data Factory erstellt werden, müssen die Datenslices für externe Daten bereit sein, ehe abhängige Slices verarbeitet werden können.
@@ -834,12 +818,10 @@ Sie können eine Pipeline erstellen und zur regelmäßigen Ausführung (z.B. st�
 
 Beachten Sie Folgendes:
 
-- Es werden keine Start- und Endzeiten (**start** und **end**) für die Pipeline angegeben.
-- Die Verfügbarkeit (**availability**) von Ein- und Ausgabedatasets (**frequency** und **interval**) wird angegeben, auch wenn die Werte von Data Factory nicht verwendet werden.  
-- Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dieses Verhalten ist beabsichtigt.
-- Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen.
-
-
+* Es werden keine Start- und Endzeiten (**start** und **end**) für die Pipeline angegeben.
+* Die Verfügbarkeit (**availability**) von Ein- und Ausgabedatasets (**frequency** und **interval**) wird angegeben, auch wenn die Werte von Data Factory nicht verwendet werden.  
+* Die Diagrammansicht zeigt einmalig ausgeführte Pipelines nicht an. Dieses Verhalten ist beabsichtigt.
+* Einmalige Pipelines können nicht aktualisiert werden. Sie können eine einmalige Pipeline klonen, umbenennen, deren Eigenschaften aktualisieren und sie bereitstellen, um eine andere Pipeline zu erstellen.
 
 <!--HONumber=Oct16_HO2-->
 

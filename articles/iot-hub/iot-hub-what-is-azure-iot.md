@@ -1,31 +1,30 @@
-<properties
- pageTitle="Azure-Lösungen für das Internet der Dinge | Microsoft Azure"
- description="Eine Übersicht über IoT in Azure einschließlich einer beispielhaften Lösungsarchitektur und Informationen zur Beziehung zu Azure IoT Hub, Geräte-SDKs und vorkonfigurierten Lösungen."
- services="iot-hub"
- documentationCenter=""
- authors="dominicbetts"
- manager="timlt"
- editor=""/>
+---
+title: Azure-Lösungen für das Internet der Dinge | Microsoft Docs
+description: Eine Übersicht über IoT in Azure einschließlich einer beispielhaften Lösungsarchitektur und Informationen zur Beziehung zu Azure IoT Hub, Geräte-SDKs und vorkonfigurierten Lösungen.
+services: iot-hub
+documentationcenter: ''
+author: dominicbetts
+manager: timlt
+editor: ''
 
-<tags
- ms.service="iot-hub"
- ms.devlang="na"
- ms.topic="get-started-article"
- ms.tgt_pltfrm="na"
- ms.workload="na"
- ms.date="10/05/2016"
- ms.author="dobett"/>
+ms.service: iot-hub
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/05/2016
+ms.author: dobett
 
-[AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
+---
+[!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Nächste Schritte
-
 Azure IoT Hub ist ein Azure-Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Ihrem Anwendungs-Back-End und Millionen von Geräten ermöglicht. Dies ermöglicht dem Anwendungs-Back-End Folgendes:
 
-- Empfangen umfangreicher Telemetriedaten von Ihren Geräten
-- Weiterleiten von Gerätedaten an einen Datenstrom-Ereignisprozessor
-- Empfangen von Dateiuploads von Geräten
-- Senden von Cloud-zu-Gerät-Befehlen an bestimmte Geräte
+* Empfangen umfangreicher Telemetriedaten von Ihren Geräten
+* Weiterleiten von Gerätedaten an einen Datenstrom-Ereignisprozessor
+* Empfangen von Dateiuploads von Geräten
+* Senden von Cloud-zu-Gerät-Befehlen an bestimmte Geräte
 
 Sie können IoT Hub zum Implementieren Ihrer eigenen Back-End-Lösung verwenden. Darüber hinaus umfasst IoT Hub eine Geräte-Identitätsregistrierung, die zum Bereitstellen von Geräten, ihren sicherheitsbezogenen Anmeldeinformationen und ihren Rechten zum Herstellen einer Verbindung mit dem Hub dient. Weitere Informationen zu IoT Hub finden Sie unter [Was ist IoT Hub?][lnk-iot-hub].
 

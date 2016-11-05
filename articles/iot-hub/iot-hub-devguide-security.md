@@ -1,73 +1,68 @@
-<properties
- pageTitle="Entwicklerhandbuch – Steuern des Zugriffs auf IoT Hub | Microsoft Azure"
- description="Azure IoT Hub-Entwicklerhandbuch – Steuern des Zugriffs auf IoT Hub und Verwalten von Sicherheit"
- services="iot-hub"
- documentationCenter=".net"
- authors="dominicbetts"
- manager="timlt"
- editor=""/>
+---
+title: Entwicklerhandbuch – Steuern des Zugriffs auf IoT Hub | Microsoft Docs
+description: Azure IoT Hub-Entwicklerhandbuch – Steuern des Zugriffs auf IoT Hub und Verwalten von Sicherheit
+services: iot-hub
+documentationcenter: .net
+author: dominicbetts
+manager: timlt
+editor: ''
 
-<tags
- ms.service="iot-hub"
- ms.devlang="multiple"
- ms.topic="article"
- ms.tgt_pltfrm="na"
- ms.workload="na"
- ms.date="09/30/2016" 
- ms.author="dobett"/>
+ms.service: iot-hub
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/30/2016
+ms.author: dobett
 
-
+---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
-
 ## <a name="overview"></a>Übersicht
-
 In diesem Artikel werden die Optionen zum Sichern Ihres IoT Hubs beschrieben. IoT Hub verwendet *Berechtigungen*, um Zugriff auf den Endpunkt jedes IoT Hubs zu gewähren. Berechtigungen beschränkten den Zugriff auf einen IoT Hub basierend auf der Funktionalität.
 
 Dieser Artikel beschreibt Folgendes:
 
-- Die verschiedenen Berechtigungen, die Sie einem Gerät oder einer Back-End-App für den Zugriff auf Ihre IoT Hubs gewähren können.
-- Der Authentifizierungsvorgangs und die verwendeten Token zum Überprüfen der Berechtigungen.
-- Festlegen des Geltungsbereichs für Anmeldeinformationen zum Begrenzen des Zugriffs auf bestimmte Ressourcen.
-- IoT Hub-Unterstützung für X.509-Zertifikate.
-- Benutzerdefinierte Authentifizierungsmechanismen, die auf vorhandene Geräteidentitätsregistrierungen Authentifizierungsschemas zurückgreifen.
+* Die verschiedenen Berechtigungen, die Sie einem Gerät oder einer Back-End-App für den Zugriff auf Ihre IoT Hubs gewähren können.
+* Der Authentifizierungsvorgangs und die verwendeten Token zum Überprüfen der Berechtigungen.
+* Festlegen des Geltungsbereichs für Anmeldeinformationen zum Begrenzen des Zugriffs auf bestimmte Ressourcen.
+* IoT Hub-Unterstützung für X.509-Zertifikate.
+* Benutzerdefinierte Authentifizierungsmechanismen, die auf vorhandene Geräteidentitätsregistrierungen Authentifizierungsschemas zurückgreifen.
 
 ### <a name="when-to-use"></a>Einsatzgebiete
-
 Sie müssen über Berechtigungen für den Zugriff auf IoT Hub-Endpunkte verfügen. Beispielsweise muss ein Gerät ein Token mit den Anmeldeinformationen zusammen mit jeder an IoT Hub gesendeten Nachricht enthalten.
 
 ## <a name="access-control-and-permissions"></a>Access Control und Berechtigungen
-
 Sie können [Berechtigungen](#iot-hub-permissions) auf folgende Weise gewähren:
 
 * **Richtlinien für den gemeinsamen Zugriff auf Hubebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal] oder programmgesteuert mithilfe von [Azure IoT Hub-Ressourcenanbieter-APIs][lnk-resource-provider-apis] definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
-
-    - **iothubowner**: Richtlinie mit sämtlichen Berechtigungen.
-    - **service**: Richtlinie mit ServiceConnect-Berechtigung.
-    - **device**: Richtlinie mit DeviceConnect-Berechtigung.
-    - **registryRead**: Richtlinie mit RegistryRead-Berechtigung.
-    - **registryReadWrite**: Richtlinie mit den Berechtigungen „RegistryRead“ und „RegistryWrite“.
-
-
+  
+  * **iothubowner**: Richtlinie mit sämtlichen Berechtigungen.
+  * **service**: Richtlinie mit ServiceConnect-Berechtigung.
+  * **device**: Richtlinie mit DeviceConnect-Berechtigung.
+  * **registryRead**: Richtlinie mit RegistryRead-Berechtigung.
+  * **registryReadWrite**: Richtlinie mit den Berechtigungen „RegistryRead“ und „RegistryWrite“.
 * **Sicherheitsanmeldeinformationen auf Gerätebasis**. Jeder IoT Hub enthält eine [Geräteidentitätsregistrierung][lnk-identity-registry]. Sie können für jedes Gerät in dieser Registrierung Sicherheitsanmeldeinformationen konfigurieren, die **DeviceConnect** -Berechtigungen erteilen, deren Gültigkeitsbereich auf die entsprechenden Geräteendpunkte festgelegt ist.
 
 Beispielsweise In einer normalen IoT-Lösung:
-- Die Geräteverwaltungskomponente verwendet die Richtlinie *registryReadWrite* .
-- Die Ereignisprozessorkomponente verwendet die Richtlinie *service* .
-- Die Laufzeit-Geschäftslogikkomponente für Geräte verwendet die Richtlinie *service* .
-- Einzelne Geräte stellen unter Verwendung von Anmeldeinformationen eine Verbindung her, die in der IoT Hub-Identitätsregistrierung gespeichert sind.
+
+* Die Geräteverwaltungskomponente verwendet die Richtlinie *registryReadWrite* .
+* Die Ereignisprozessorkomponente verwendet die Richtlinie *service* .
+* Die Laufzeit-Geschäftslogikkomponente für Geräte verwendet die Richtlinie *service* .
+* Einzelne Geräte stellen unter Verwendung von Anmeldeinformationen eine Verbindung her, die in der IoT Hub-Identitätsregistrierung gespeichert sind.
 
 ## <a name="authentication"></a>Authentifizierung
-
 Azure IoT Hub gewährt Zugriff auf Endpunkte, indem ein Token zur Verifizierung mit gemeinsam genutzten Zugriffsrichtlinien und Sicherheitsanmeldeinformationen für die Geräteidentität verglichen wird.
 
 Sicherheitsanmeldeinformationen, beispielsweise symmetrische Schlüssel, werden niemals über eine physische Verbindung gesendet.
 
-> [AZURE.NOTE] Der Azure IoT Hub-Ressourcenanbieter wird über Ihr Azure-Abonnement geschützt, ebenso wie alle Anbieter im [Azure Resource Manager][lnk-azure-resource-manager].
+> [!NOTE]
+> Der Azure IoT Hub-Ressourcenanbieter wird über Ihr Azure-Abonnement geschützt, ebenso wie alle Anbieter im [Azure Resource Manager][lnk-azure-resource-manager].
+> 
+> 
 
 Weitere Informationen zur Erstellung und Verwendung von Sicherheitstoken finden Sie im Artikel zu den [IoT Hub-Sicherheitstoken][lnk-sas-tokens].
 
 ### <a name="protocol-specifics"></a>Protokolldetails
-
 Jedes unterstützte Protokoll, z.B. MQTT, AMQP und HTTP, transportiert Token auf unterschiedliche Weise.
 
 Bei Verwendung von MQTT weist das CONNECT-Paket die Geräte-ID als Client-ID, {iothubhostname}/{deviceId} im Feld „Benutzername“ und ein SAS-Token im Feld „Kennwort“ auf. {iothubhostname} sollte der vollständige CNAME des IoT Hubs (z.B. „contoso.azure-devices.net“) sein.
@@ -86,28 +81,27 @@ In beiden Fällen enthält das Kennwortfeld das Token gemäß der Beschreibung u
 HTTP implementiert die Authentifizierung, indem ein gültiges Token in den Anforderungsheader **Authorization** eingeschlossen wird.
 
 #### <a name="example"></a>Beispiel
-
 Benutzername (bei der Geräte-ID wird Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
 
 Kennwort (SAS mit dem Geräte-Explorer generieren): `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
-> [AZURE.NOTE] Die [Azure IoT Hub-SDKs][lnk-sdks] generieren automatisch Token, wenn eine Verbindung mit dem Dienst hergestellt wird. In einigen Fällen unterstützen die SDKs nicht alle Protokolle oder Authentifizierungsmethoden.
+> [!NOTE]
+> Die [Azure IoT Hub-SDKs][lnk-sdks] generieren automatisch Token, wenn eine Verbindung mit dem Dienst hergestellt wird. In einigen Fällen unterstützen die SDKs nicht alle Protokolle oder Authentifizierungsmethoden.
+> 
+> 
 
 ### <a name="special-considerations-for-sasl-plain"></a>Besonderheiten für SASL PLAIN
-
 Bei Verwendung von SASL PLAIN mit AMQP kann ein Client, der eine Verbindung mit einem IoT Hub herstellt, ein einziges Token für jede TCP-Verbindung verwenden. Wenn das Token abläuft, wird die TCP-Verbindung mit dem Dienst getrennt, und es wird ein Versuch zur erneuten Verbindungsherstellung ausgelöst. Dieses Verhalten ist für eine Komponente im Anwendungs-Back-End unproblematisch, kann für eine geräteseitige Anwendung jedoch sehr schädlich sein. Dies hat folgende Gründe:
 
-*  Gateways stellen eine Verbindung üblicherweise für eine Vielzahl von Geräten her. Bei Verwendung von SASL PLAIN muss für jedes Gerät, das eine Verbindung mit einem IoT Hub herstellen möchte, eine eigene TCP-Verbindung erstellt werden. Bei diesem Szenario erhöht sich der Verbrauch von Rechen- und Netzwerkressourcen erheblich, und es kommt zu einer höheren Latenz für jede Geräteverbindung.
+* Gateways stellen eine Verbindung üblicherweise für eine Vielzahl von Geräten her. Bei Verwendung von SASL PLAIN muss für jedes Gerät, das eine Verbindung mit einem IoT Hub herstellen möchte, eine eigene TCP-Verbindung erstellt werden. Bei diesem Szenario erhöht sich der Verbrauch von Rechen- und Netzwerkressourcen erheblich, und es kommt zu einer höheren Latenz für jede Geräteverbindung.
 * Der erhöhte Ressourcenverbrauch bei der erneuten Verbindungsherstellung nach jedem Tokenablauf wirkt sich negativ auf Geräte mit Ressourceneinschränkungen aus.
 
 ## <a name="scope-hub-level-credentials"></a>Gültigkeitsbereich für Anmeldeinformationen auf Hubebene
-
 Sie können den Bereich für Sicherheitsrichtlinien auf Hubebene festlegen, indem Sie Token mit eingeschränktem Ressourcen-URI erstellen. Beispielsweise ist der Endpunkt zum Senden von Gerät-zu-Cloud-Nachrichten von einem Gerät **/devices/{deviceId}/messages/events**. Sie können eine SAS-Richtlinie auf Hubebene mit **DeviceConnect**-Berechtigungen auch dazu verwenden, ein Token zu signieren, dessen resourceURI-Element **/devices/{deviceId}** ist. Bei diesem Ansatz wird ein Token erstellt, das nur zum Senden von Nachrichten im Namen der des Geräts **deviceId** verwendet werden kann.
 
 Dieser Mechanismus ist mit einer [Event Hubs-Herausgeberrichtlinie][lnk-event-hubs-publisher-policy] vergleichbar und ermöglicht die Implementierung von benutzerdefinierten Authentifizierungsmethoden.
 
 ## <a name="security-tokens"></a>Sicherheitstoken
-
 IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT Hub-SDKs][lnk-sdks] generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. In einigen Szenarien muss der Benutzer Sicherheitstoken jedoch direkt generieren und verwenden. Dazu gehören die direkte Verwendung von MQTT-, AMQP- oder HTTP-Oberflächen oder die Implementierung des Tokendienstmusters, wie unter [Benutzerdefinierte Geräteauthentifizierung][lnk-custom-auth] erläutert.
 
 IoT Hub ermöglicht Geräten darüber hinaus die Authentifizierung bei IoT Hub mithilfe von [X.509-Zertifikaten][lnk-x509]. 
@@ -124,12 +118,12 @@ Das Sicherheitstoken weist das folgende Format auf:
 Es werden die folgenden Werte erwartet:
 
 | Wert | Beschreibung |
-| ----- | ----------- |
-| {signature} | Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig:**Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet. |
-| {resourceURI} | Das URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann, beginnend mit dem Hostnamen des IoT Hubs (kein Protokoll). Beispiel: `myHub.azure-devices.net/devices/device1` |
-| {expiry} | UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC. |
-| {URL-encoded-resourceURI} | URL-Codierung des Ressourcen-URI (beides in Kleinbuchstaben) |
-| {policyName} | Der Name der gemeinsam genutzten Zugriffsrichtlinie, auf die dieses Token verweist. Nicht vorhanden, wenn Token auf Anmeldeinformationen der Geräteregistrierung verweisen. |
+| --- | --- |
+| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig:**Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet. |
+| {resourceURI} |Das URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann, beginnend mit dem Hostnamen des IoT Hubs (kein Protokoll). Beispiel: `myHub.azure-devices.net/devices/device1` |
+| {expiry} |UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC. |
+| {URL-encoded-resourceURI} |URL-Codierung des Ressourcen-URI (beides in Kleinbuchstaben) |
+| {policyName} |Der Name der gemeinsam genutzten Zugriffsrichtlinie, auf die dieses Token verweist. Nicht vorhanden, wenn Token auf Anmeldeinformationen der Geräteregistrierung verweisen. |
 
 **Hinweis zum Präfix**: Das URI-Präfix wird nach Segment, nicht nach Zeichen berechnet. Beispielsweise ist `/a/b` ein Präfix für `/a/b/c`, aber nicht für `/a/bc`.
 
@@ -159,19 +153,19 @@ Im Folgenden ist eine Node.js-Funktion angegeben, die das Token aus den Eingaben
         // console.log("signature:" + token);
         return token;
     };
- 
+
  Hier ist der entsprechende Python-Code zum Vergleich:
- 
+
     from base64 import b64encode, b64decode
     from hashlib import sha256
     from hmac import HMAC
     from urllib import urlencode
-    
+
     def generate_sas_token(uri, key, policy_name='device', expiry=3600):
         ttl = time() + expiry
         sign_key = "%s\n%d" % (uri, int(ttl))
         signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
-     
+
         return 'SharedAccessSignature ' + urlencode({
             'sr' :  uri,
             'sig': signature,
@@ -179,25 +173,29 @@ Im Folgenden ist eine Node.js-Funktion angegeben, die das Token aus den Eingaben
             'skn': policy_name
         })
 
-> [AZURE.NOTE] Da der Gültigkeitszeitraum des Tokens auf dem IoT Hub-Computer überprüft wird, ist es wichtig, dass die Abweichung der Uhr des Computers, auf dem das Token generiert wird, minimal ist.
+> [!NOTE]
+> Da der Gültigkeitszeitraum des Tokens auf dem IoT Hub-Computer überprüft wird, ist es wichtig, dass die Abweichung der Uhr des Computers, auf dem das Token generiert wird, minimal ist.
+> 
+> 
 
 ### <a name="use-sas-tokens-in-a-device-client"></a>Verwenden von SAS-Token in einem Geräteclient
-
 Es gibt zwei Methoden zum Abrufen von **DeviceConnect**-Berechtigungen mit IoT Hub mit Sicherheitstoken: mit einem [symmetrischen Identitätsschlüssel aus der Geräteidentitätsregistrierung](#use-a-symmetric-key-in-the-identity-registry) oder mit einem [SAS-Richtlinienschlüssel](#use-a-shared-access-policy).
 
 Denken Sie daran, dass alle Funktionen, auf die auf Geräten zugegriffen werden kann, für Endpunkte mit dem Präfix `/devices/{deviceId}` absichtlich verfügbar gemacht werden.
 
-> [AZURE.IMPORTANT] Die einzige Möglichkeit, dass IoT Hub ein bestimmtes Gerät authentifiziert, ist durch die Verwendung des symmetrischen Schlüssels der Geräteidentität. Wenn eine SAS-Richtlinie verwendet wird, um auf Gerätefunktionen zuzugreifen, muss die Lösung die Komponente, die das Sicherheitstoken ausgibt, als vertrauenswürdige Unterkomponente ansehen.
+> [!IMPORTANT]
+> Die einzige Möglichkeit, dass IoT Hub ein bestimmtes Gerät authentifiziert, ist durch die Verwendung des symmetrischen Schlüssels der Geräteidentität. Wenn eine SAS-Richtlinie verwendet wird, um auf Gerätefunktionen zuzugreifen, muss die Lösung die Komponente, die das Sicherheitstoken ausgibt, als vertrauenswürdige Unterkomponente ansehen.
+> 
+> 
 
 Die geräteseitigen Endpunkte sind (unabhängig vom Protokoll):
 
 | Endpunkt | Funktionalität |
-| ----- | ----------- |
-| `{iot hub host name}/devices/{deviceId}/messages/events` | Senden von Gerät-an-Cloud-Nachrichten. |
-| `{iot hub host name}/devices/{deviceId}/devicebound` | Empfangen von Cloud-an-Gerät-Nachrichten. |
+| --- | --- |
+| `{iot hub host name}/devices/{deviceId}/messages/events` |Senden von Gerät-an-Cloud-Nachrichten. |
+| `{iot hub host name}/devices/{deviceId}/devicebound` |Empfangen von Cloud-an-Gerät-Nachrichten. |
 
 ### <a name="use-a-symmetric-key-in-the-identity-registry"></a>Verwenden eines symmetrischen Schlüssels in der Identitätsregistrierung
-
 Wenn Sie den symmetrischen Schlüssel einer Geräteidentität zum Generieren eines Tokens verwenden, wird das policyName-Element (`skn`) des Tokens nicht angegeben.
 
 Beispielsweise muss ein Token, das für den Zugriff auf alle Gerätefunktionen erstellt wird, die folgenden Parameter aufweisen:
@@ -218,10 +216,12 @@ Das Ergebnis, das Zugriff auf alle Funktionen für „device1“ gewährt wird, 
 
     SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697
 
-> [AZURE.NOTE] Es ist möglich, ein sicheres Token mit dem .NET-Tool [Geräte-Explorer][lnk-device-explorer] zu generieren.
+> [!NOTE]
+> Es ist möglich, ein sicheres Token mit dem .NET-Tool [Geräte-Explorer][lnk-device-explorer] zu generieren.
+> 
+> 
 
 ### <a name="use-a-shared-access-policy"></a>Verwenden einer SAS-Richtlinie
-
 Beim Erstellen eines Tokens aus einer SAS-Richtlinie muss das Feld für den Richtliniennamen `skn` auf den Namen der verwendeten Richtlinie festgelegt werden. Darüber hinaus muss die Richtlinie die **DeviceConnect** -Berechtigung erteilen.
 
 Die beiden wichtigsten Szenarien für die Verwendung von SAS-Richtlinien für den Zugriff auf Gerätefunktionen sind:
@@ -253,17 +253,16 @@ Das Ergebnis, das Zugriff auf alle Funktionen für „device1“ gewährt wird, 
 Ein Protokollgateway könnte das gleiche Token für alle Geräte verwenden, indem einfach der Ressourcen-URI auf `myhub.azure-devices.net/devices`festgelegt wird.
 
 ### <a name="use-security-tokens-from-service-components"></a>Verwenden der Sicherheitstoken von Dienstkomponenten
-
 Dienstkomponenten können nur Sicherheitstoken mithilfe von SAS-Richtlinien generieren, die die entsprechenden Berechtigungen erteilen, wie bereits erläutert.
 
 Dies sind die Dienstfunktionen, die für die Endpunkte verfügbar gemacht werden:
 
 | Endpunkt | Funktionalität |
-| ----- | ----------- |
-| `{iot hub host name}/devices` | Erstellen, Aktualisieren, Abrufen und Löschen von Geräteidentitäten. |
-| `{iot hub host name}/messages/events` | Empfangen von Gerät-an-Cloud-Nachrichten. |
-| `{iot hub host name}/servicebound/feedback` | Empfangen von Feedback für Cloud-an-Gerät-Nachrichten. |
-| `{iot hub host name}/devicebound` | Senden von Cloud-an-Gerät-Nachrichten. |
+| --- | --- |
+| `{iot hub host name}/devices` |Erstellen, Aktualisieren, Abrufen und Löschen von Geräteidentitäten. |
+| `{iot hub host name}/messages/events` |Empfangen von Gerät-an-Cloud-Nachrichten. |
+| `{iot hub host name}/servicebound/feedback` |Empfangen von Feedback für Cloud-an-Gerät-Nachrichten. |
+| `{iot hub host name}/devicebound` |Senden von Cloud-an-Gerät-Nachrichten. |
 
 Beispielsweise würde ein Dienst, der zum Generieren die vorab erstellte SAS-Richtlinie mit dem Namen **registryRead** verwendet, ein Token mit den folgenden Parametern erstellen:
 
@@ -271,9 +270,9 @@ Beispielsweise würde ein Dienst, der zum Generieren die vorab erstellte SAS-Ric
 * Signaturschlüssel: einer der Schlüssel der `registryRead` -Richtlinie
 * Richtlinienname: `registryRead`
 * Eine Ablaufzeit
-
+  
     var endpoint ="myhub.azure-devices.net/devices";   var policyName = 'device';   var policyKey = '...';
-
+  
     var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, wäre:
@@ -281,26 +280,24 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
     SharedAccessSignature sr=myhub.azure-devices.net%2fdevices&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=registryRead
 
 ## <a name="supported-x.509-certificates"></a>Unterstützte X.509-Zertifikate
-
 Sie können ein beliebiges X.509-Zertifikat zum Authentifizieren eines Geräts bei IoT Hub verwenden. Dies umfasst:
 
--   **Ein vorhandenes X.509-Zertifikat**. Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
-
--   **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können Tools wie [OpenSSL][lnk-openssl] und das Windows-Hilfsprogramm [SelfSignedCertificate][lnk-selfsigned] dafür verwenden.
-
--   **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren.
+* **Ein vorhandenes X.509-Zertifikat**. Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
+* **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können Tools wie [OpenSSL][lnk-openssl] und das Windows-Hilfsprogramm [SelfSignedCertificate][lnk-selfsigned] dafür verwenden.
+* **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren.
 
 Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
 
 ### <a name="register-an-x.509-client-certificate-for-a-device"></a>Registrieren eines X.509-Clientzertifikats für ein Gerät
-
 Das [Azure IoT-Dienst-SDK für C#][lnk-service-sdk] (mindestens Version 1.0.8) unterstützt Geräte, die ein X.509-Clientzertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Clientzertifikate.
 
 ### <a name="c\#-support"></a>C\#-Unterstützung
-
 Die **RegistryManager** -Klasse stellt eine programmgesteuerte Methode zum Registrieren eines Geräts bereit. Insbesondere die Methoden **AddDeviceAsync** und **UpdateDeviceAsync** ermöglichen einem Benutzer die Registrierung und Aktualisierung eines Geräts in der IoT Hub-Geräteidentitätsregistrierung. Diese beiden Methoden nutzen eine **Device** -Instanz als Eingabe. Die **Device**-Klasse enthält eine **Authentication**-Eigenschaft, die dem Benutzer die Angabe primärer und sekundärer X.509-Zertifikatfingerabdrücke ermöglicht. Der Fingerabdruck stellt einen SHA-1-Hash des X.509-Zertifikats dar (gespeichert mithilfe binärer DER-Codierung). Benutzer haben die Möglichkeit, einen primären Fingerabdruck oder einen sekundären Fingerabdruck oder beides anzugeben. Primäre und sekundäre Fingerabdrücke werden unterstützt, um Szenarios mit Zertifikat-Rollover zu behandeln.
 
-> [AZURE.NOTE] IoT Hub benötigt oder speichert nicht das gesamte X.509-Clientzertifikat, sondern nur den Fingerabdruck.
+> [!NOTE]
+> IoT Hub benötigt oder speichert nicht das gesamte X.509-Clientzertifikat, sondern nur den Fingerabdruck.
+> 
+> 
 
 Hier sehen Sie einen C\#-Beispielcodeausschnitt zum Registrieren eines Geräts mithilfe eines X.509-Clientzertifikats:
 
@@ -320,11 +317,9 @@ await registryManager.AddDeviceAsync(device);
 ```
 
 ### <a name="use-an-x.509-client-certificate-during-runtime-operations"></a>Verwenden eines X.509-Clientzertifikats während Laufzeitvorgängen
-
 Das [Azure IoT-Geräte-SDK für .NET][lnk-client-sdk] (mindestens Version 1.0.11) unterstützt die Verwendung von X.509-Clientzertifikaten.
 
 ### <a name="c\#-support"></a>C\#-Unterstützung
-
 Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von  **DeviceClient**-Instanzen mithilfe eines X.509-Clientzertifikats.
 
 Hier sehen Sie ein Beispiel für einen Codeausschnitt:
@@ -336,7 +331,6 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 ```
 
 ## <a name="custom-device-authentication"></a>Benutzerdefinierte Geräteauthentifizierung
-
 Mit der [Geräteidentitätsregistrierung][lnk-identity-registry] von IoT Hub können Sie Sicherheitsanmeldeinformationen und Access Control pro Gerät mithilfe von [Token][lnk-sas-tokens] konfigurieren. Auch wenn eine IoT-Lösung bereits erheblichen Anteil an einer benutzerdefinierten Geräteidentitätsregistrierung bzw. einem Authentifizierungsschema hat, können Sie diese vorhandene Infrastruktur durch Erstellen eines *Tokendiensts* in IoT Hub integrieren. Auf diese Weise können Sie andere IoT-Features in der Lösung nutzen.
 
 Ein Tokendienst ist ein benutzerdefinierter Clouddienst. Er verwendet eine *SAS-Richtlinie* von IoT Hub mit **DeviceConnect**-Berechtigungen, um Token mit *Gerätebereich* zu erstellen. Mit diesen Token kann ein Gerät eine Verbindung mit Ihrem IoT Hub herstellen.
@@ -350,52 +344,50 @@ Dies sind die wichtigsten Schritte des Tokendienstmusters:
 3. Der Tokendienst gibt ein Token zurück. Das Token wird mit `/devices/{deviceId}` als `resourceURI` erstellt, wobei `deviceId` das authentifizierte Gerät ist. Der Tokendienst verwendet die SAS-Richtlinie, um das Token zu erstellen.
 4. Das Gerät nutzt das Token direkt mit IoT Hub.
 
-> [AZURE.NOTE] Sie können die .NET-Klasse [SharedAccessSignatureBuilder][lnk-dotnet-sas] oder die Java-Klasse [IotHubServiceSasToken][lnk-java-sas] zum Erstellen eines Tokens im Tokendienst verwenden.
+> [!NOTE]
+> Sie können die .NET-Klasse [SharedAccessSignatureBuilder][lnk-dotnet-sas] oder die Java-Klasse [IotHubServiceSasToken][lnk-java-sas] zum Erstellen eines Tokens im Tokendienst verwenden.
+> 
+> 
 
 Der Tokendienst kann die Gültigkeitsdauer für das Token wie gewünscht festlegen. Wenn das Token abläuft, trennt IoT Hub die Geräteverbindung. Das Gerät muss dann ein neues Token vom Tokendienst anfordern. Wenn Sie eine kurze Ablaufzeit verwenden, erhöht sich die Last für das Gerät und den Tokendienst gleichermaßen.
 
 Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es der IoT Hub-Geräteidentitätsregistrierung hinzufügen – auch wenn das Gerät für die Verbindung ein Token und keinen Geräteschlüssel verwendet. Aus diesem Grund können Sie weiterhin Access Control pro Gerät nutzen, indem Sie Geräteidentitäten in der [IoT Hub-Identitätsregistrierung][lnk-identity-registry] aktivieren oder deaktivieren, wenn sich das Gerät mit einem Token authentifiziert. Dies verringert die Risiken der Verwendung von Token mit langen Ablaufzeiten.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Vergleich mit einem benutzerdefinierten Gateway
-
 Das Tokendienstmuster ist der empfohlene Weg zur Implementierung einer benutzerdefinierten Identitätsregistrierung bzw. eines Authentifizierungsschemas mit IoT Hub. Dies wird empfohlen, da der größte Teil des Lösungsdatenverkehrs weiterhin über IoT Hub abgewickelt wird. Es gibt aber auch Fälle, in denen das benutzerdefinierte Authentifizierungsschema so eng mit dem Protokoll verknüpft ist, dass ein Dienst zum Verarbeiten des gesamten Datenverkehrs (*benutzerdefiniertes Gateway*) erforderlich ist. Beispiele hierfür sind [Transport Layer Security (TLS) und vorinstallierte Schlüssel (PSKs)][lnk-tls-psk]. Weitere Informationen finden Sie im Thema [Protokollgateway][lnk-protocols].
 
 ## <a name="reference"></a>Referenz
-
 ### <a name="iot-hub-permissions"></a>IoT Hub-Berechtigungen
-
 In der folgenden Tabelle werden die Berechtigungen aufgeführt, die Sie zum Steuern des Zugriffs auf den IoT Hub verwenden können.
 
-| Berechtigung            | Hinweise |
-| --------------------- | ----- |
-| **RegistryRead**      | Diese Berechtigung gewährt Lesezugriff auf die Geräteidentitätsregistrierung. Weitere Informationen finden Sie unter [Geräteidentitätsregistrierung][lnk-identity-registry]. |
-| **RegistryReadWrite** | Diese Berechtigung gewährt Lese- und Schreibzugriff auf die Geräteidentitätsregistrierung. Weitere Informationen finden Sie unter [Geräteidentitätsregistrierung][lnk-identity-registry]. |
-| **ServiceConnect**    | Diese Berechtigung gewährt Zugriff auf die clouddienstseitigen Endpunkte für Kommunikation und Überwachung. Beispielsweise wird Back-End-Clouddiensten die Berechtigung erteilt, D2C-Nachrichten zu empfangen, C2D-Nachrichten zu senden und die zugehörigen Übermittlungsbestätigungen zu empfangen. |
-| **DeviceConnect**     | Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte für die Kommunikation. Beispielsweise wird die Berechtigung zum Senden von D2C-Nachrichten und das Empfangen von C2D-Nachrichten erteilt. Diese Berechtigung wird von Geräten verwendet. |
+| Berechtigung | Hinweise |
+| --- | --- |
+| **RegistryRead** |Diese Berechtigung gewährt Lesezugriff auf die Geräteidentitätsregistrierung. Weitere Informationen finden Sie unter [Geräteidentitätsregistrierung][lnk-identity-registry]. |
+| **RegistryReadWrite** |Diese Berechtigung gewährt Lese- und Schreibzugriff auf die Geräteidentitätsregistrierung. Weitere Informationen finden Sie unter [Geräteidentitätsregistrierung][lnk-identity-registry]. |
+| **ServiceConnect** |Diese Berechtigung gewährt Zugriff auf die clouddienstseitigen Endpunkte für Kommunikation und Überwachung. Beispielsweise wird Back-End-Clouddiensten die Berechtigung erteilt, D2C-Nachrichten zu empfangen, C2D-Nachrichten zu senden und die zugehörigen Übermittlungsbestätigungen zu empfangen. |
+| **DeviceConnect** |Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte für die Kommunikation. Beispielsweise wird die Berechtigung zum Senden von D2C-Nachrichten und das Empfangen von C2D-Nachrichten erteilt. Diese Berechtigung wird von Geräten verwendet. |
 
 ### <a name="additional-reference-material"></a>Weiteres Referenzmaterial
-
 Weitere Referenzthemen im Entwicklerhandbuch umfassen:
 
-- Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
-- Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
-- [IoT Hub-Geräte und -Dienst-SDKs][lnk-sdks] listet die verschiedenen Sprach-SDKs auf, die Sie bei der Entwicklung von Geräte- und Dienstanwendungen für die Interaktion mit IoT Hub verwenden können.
-- Unter [Abfragesprache für Zwillinge, Methoden und Aufträge][lnk-query] wird die Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen über Ihre Gerätezwillinge, Methoden und Aufträge abrufen können.
-- [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] bietet weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
+* Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
+* Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
+* [IoT Hub-Geräte und -Dienst-SDKs][lnk-sdks] listet die verschiedenen Sprach-SDKs auf, die Sie bei der Entwicklung von Geräte- und Dienstanwendungen für die Interaktion mit IoT Hub verwenden können.
+* Unter [Abfragesprache für Zwillinge, Methoden und Aufträge][lnk-query] wird die Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen über Ihre Gerätezwillinge, Methoden und Aufträge abrufen können.
+* [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] bietet weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Nachdem Sie gelernt haben, wie Sie den Zugriff auf IoT Hub beschränken, sind möglicherweise die folgenden Themen im Entwicklerhandbuch für Sie interessant:
 
-- [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen][lnk-devguide-device-twins]
-- [Aufrufen einer direkten Methode auf einem Gerät][lnk-devguide-directmethods]
-- [Planen von Aufträgen auf mehreren Geräten][lnk-devguide-jobs]
+* [Verwenden von Gerätezwillingen zum Synchronisieren von Status und Konfigurationen][lnk-devguide-device-twins]
+* [Aufrufen einer direkten Methode auf einem Gerät][lnk-devguide-directmethods]
+* [Planen von Aufträgen auf mehreren Geräten][lnk-devguide-jobs]
 
 Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, sind möglicherweise die folgenden IoT Hub-Tutorials für Sie interessant:
 
-- [Erste Schritte mit Azure IoT Hub][lnk-getstarted-tutorial]
-- [Gewusst wie: Senden von Cloud-to-Device-Nachrichten mit IoT Hub][lnk-c2d-tutorial]
-- [Gewusst wie: Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-d2c-tutorial]
+* [Erste Schritte mit Azure IoT Hub][lnk-getstarted-tutorial]
+* [Gewusst wie: Senden von Cloud-to-Device-Nachrichten mit IoT Hub][lnk-c2d-tutorial]
+* [Gewusst wie: Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-d2c-tutorial]
 
 <!-- links and images -->
 

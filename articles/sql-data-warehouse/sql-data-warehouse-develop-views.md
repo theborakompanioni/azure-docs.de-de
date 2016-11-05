@@ -1,27 +1,28 @@
-<properties
-   pageTitle="Sichten in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps für die Verwendung von Transact-SQL-Sichten in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Sichten in SQL Data Warehouse | Microsoft Docs
+description: Tipps für die Verwendung von Transact-SQL-Sichten in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="07/01/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 07/01/2016
+ms.author: jrj;barbkess;sonyama
 
-
+---
 # Sichten in SQL Data Warehouse
-
 Sichten sind in SQL Data Warehouse besonders nützlich. Sie können auf verschiedene Weisen zur Verbesserung der Qualität der Lösung verwendet werden. Dieser Artikel enthält einige Beispiele dafür, wie Sie Ihre Lösung mit Sichten bereichern können, sowie Informationen zu den Einschränkungen, die zu berücksichtigen sind.
 
-> [AZURE.NOTE] Die Syntax für `CREATE VIEW` wird in diesem Artikel nicht erörtert. Sie finden diese Informationen unter [CREATE VIEW][] auf der MSDN-Website.
+> [!NOTE]
+> Die Syntax für `CREATE VIEW` wird in diesem Artikel nicht erörtert. Sie finden diese Informationen unter [CREATE VIEW][CREATE VIEW] auf der MSDN-Website.
+> 
+> 
 
 ## Architekturabstraktion
 Ein häufig verwendetes Anwendungsmuster ist das erneute Erstellen von Tabellen mit CREATE TABLE AS SELECT (CTAS) gefolgt von einem Muster zur Objektumbenennung beim Laden von Daten.
@@ -54,15 +55,14 @@ Sichten können auch genutzt werden, um leistungsoptimierte Verknüpfungen zwisc
 ## Einschränkungen
 Sichten in SQL Data Warehouse bestehen nur aus Metadaten Daher sind die folgenden Optionen nicht verfügbar:
 
-- 	Es gibt keine Schemabindungsoption.
-- 	Basistabellen können nicht über die Ansicht aktualisiert werden.
-- 	Sichten können nicht für temporäre Tabellen erstellt werden.
-- 	EXPAND/NOEXPAND-Hinweise werden nicht unterstützt.
-- 	Es sind keine indizierten Sichten in SQL Data Warehouse verfügbar.
-
+* Es gibt keine Schemabindungsoption.
+* Basistabellen können nicht über die Ansicht aktualisiert werden.
+* Sichten können nicht für temporäre Tabellen erstellt werden.
+* EXPAND/NOEXPAND-Hinweise werden nicht unterstützt.
+* Es sind keine indizierten Sichten in SQL Data Warehouse verfügbar.
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][]. Die Syntax für `CREATE VIEW` finden Sie unter [CREATE VIEW][].
+Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][SQL Data Warehouse-Entwicklungsübersicht]. Die Syntax für `CREATE VIEW` finden Sie unter [CREATE VIEW][CREATE VIEW].
 
 <!--Image references-->
 

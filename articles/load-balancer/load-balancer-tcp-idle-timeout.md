@@ -1,23 +1,23 @@
-<properties
-   pageTitle="Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer | Microsoft Azure"
-   description="Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer"
-   services="load-balancer"
-   documentationCenter="na"
-   authors="sdwheeler"
-   manager="carmonm"
-   editor="" />
-<tags
-   ms.service="load-balancer"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
-   ms.author="sewhee" />
+---
+title: Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer | Microsoft Docs
+description: Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer
+services: load-balancer
+documentationcenter: na
+author: sdwheeler
+manager: carmonm
+editor: ''
 
+ms.service: load-balancer
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 03/03/2016
+ms.author: sewhee
+
+---
 # Ändern von TCP-Leerlauftimeout-Einstellungen für den Load Balancer
-
-In der Standardkonfiguration ist der Azure Load Balancer auf ein Leerlauftimeout von 4 Minuten eingestellt.
+In der Standardkonfiguration ist der Azure Load Balancer auf ein Leerlauftimeout von 4 Minuten eingestellt.
 
 Dies bedeutet: Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Clouddienst noch besteht.
 
@@ -35,18 +35,22 @@ Für solche Szenarien haben wir Unterstützung für konfigurierbare Leerlauftime
 
 In den folgenden Abschnitten wird das Ändern von Leerlauftimeout-Einstellungen von virtuellen Computern und Clouddiensten beschrieben.
 
->[AZURE.NOTE] Um die Konfiguration dieser Einstellungen zu unterstützen, stellen Sie sicher, dass Sie das neueste Azure PowerShell-Paket installiert haben.
+> [!NOTE]
+> Um die Konfiguration dieser Einstellungen zu unterstützen, stellen Sie sicher, dass Sie das neueste Azure PowerShell-Paket installiert haben.
+> 
+> 
 
 ## Festlegen des TCP-Timeouts für Ihre öffentliche IP auf Instanzebene auf 15 Minuten
-
     Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
 
 `IdleTimeoutInMinutes` ist optional. Wenn dieser Wert nicht festgelegt ist, beträgt das Standardtimeout 4 Minuten.
 
->[AZURE.NOTE] Der zulässige Timeoutbereich beträgt 4 bis 30 Minuten.
+> [!NOTE]
+> Der zulässige Timeoutbereich beträgt 4 bis 30 Minuten.
+> 
+> 
 
 ## Festlegen des Leerlauftimeouts beim Erstellen eines Azure-Endpunkts auf einem virtuellen Computer
-
 Ändern der Timeouteinstellung für einen Endpunkt:
 
     Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
@@ -72,13 +76,11 @@ Abrufen Ihrer Leerlauftimeout-Konfiguration:
     IdleTimeoutInMinutes : 15
 
 ## Festlegen des TCP-Timeouts für einen Endpunktsatz mit Lastenausgleich
-
 Wenn Endpunkte Bestandteil eines Endpunktsatzes mit Lastenausgleich sind, muss das TCP-Timeout für den Endpunktsatz mit Lastenausgleich festgelegt werden:
 
     Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
 
 ## Ändern von Timeouteinstellungen für Clouddienste
-
 Sie können das Azure SDK für .NET 2.4 verwenden, um Ihren Clouddienst zu aktualisieren.
 
 Endpunkteinstellungen für Clouddienste nehmen Sie in der CSDEF-Datei vor. Das Aktualisieren des TCP-Timeouts für die Bereitstellung eines Clouddiensts erfordert ein Upgrade der Bereitstellung. Ausnahme: Das TCP-Timeout wird nur für eine öffentliche IP festgelegt. Einstellungen für die öffentliche IP sind in der CSCFG-Datei gespeichert, und Sie können sie während des Updates und Upgrades der Bereitstellung aktualisieren.
@@ -105,7 +107,6 @@ Die Änderungen in der CSCFG-Datei für die Timeouteinstellung für öffentliche
     </NetworkConfiguration>
 
 ## REST-API-Beispiel
-
 Sie können das TCP-Leerlauftimeout mithilfe der Dienstverwaltungs-API konfigurieren. Stellen Sie sicher, dass der x-ms-version-Header auf Version 2014-06-01 oder höher festgelegt ist.
 
 Aktualisieren Sie die Konfiguration der angegebenen Eingabeendpunkte mit Lastenausgleich auf allen virtuellen Computern in einer Bereitstellung.
@@ -147,7 +148,6 @@ Aktualisieren Sie die Konfiguration der angegebenen Eingabeendpunkte mit Lastena
     </LoadBalancedEndpointList>
 
 ## Nächste Schritte
-
 [Interner Lastenausgleich (Übersicht)](load-balancer-internal-overview.md)
 
 [Erste Schritte zum Konfigurieren eines Lastenausgleichs für Internetverbindungen](load-balancer-get-started-internet-arm-ps.md)

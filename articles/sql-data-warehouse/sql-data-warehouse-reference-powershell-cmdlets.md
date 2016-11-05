@@ -1,32 +1,33 @@
-<properties
-   pageTitle="PowerShell-Cmdlets für Azure SQL Data Warehouse"
-   description="Hier finden Sie die wichtigsten PowerShell-Cmdlets für Azure SQL Data Warehouse, einschließlich der Cmdlets zum Anhalten und Fortsetzen einer Datenbank."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
-   editor=""/>
+---
+title: PowerShell-Cmdlets für Azure SQL Data Warehouse
+description: Hier finden Sie die wichtigsten PowerShell-Cmdlets für Azure SQL Data Warehouse, einschließlich der Cmdlets zum Anhalten und Fortsetzen einer Datenbank.
+services: sql-data-warehouse
+documentationcenter: NA
+author: sonyam
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/16/2016"
-   ms.author="sonyama;barbkess;mausher"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/16/2016
+ms.author: sonyama;barbkess;mausher
 
+---
 # PowerShell-Cmdlets und REST-APIs für SQL Data Warehouse
+Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs verwaltet werden. Die folgenden Beispiele zeigen einen Einblick, wie PowerShell-Befehle verwendet werden, um häufige Aufgaben in SQL Data Warehouse zu automatisieren. Einige gute REST-Beispiele finden Sie im Artikel [Verwalten von Computeleistung in Azure SQL Data Warehouse (REST)][Verwalten von Computeleistung in Azure SQL Data Warehouse (REST)].
 
-Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure PowerShell-Cmdlets oder REST-APIs verwaltet werden. Die folgenden Beispiele zeigen einen Einblick, wie PowerShell-Befehle verwendet werden, um häufige Aufgaben in SQL Data Warehouse zu automatisieren. Einige gute REST-Beispiele finden Sie im Artikel [Verwalten von Computeleistung in Azure SQL Data Warehouse (REST)][].
-
-> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, benötigen Sie Azure Powershell Version 1.0.3 oder höher. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+> [!NOTE]
+> Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, benötigen Sie Azure Powershell Version 1.0.3 oder höher. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft Web Platform Installer][Microsoft Web Platform Installer] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][Installieren und Konfigurieren von Azure PowerShell].
+> 
+> 
 
 ## Erste Schritte mit Azure PowerShell-Cmdlets
-
 1. Öffnen Sie Windows PowerShell.
 2. Zum Anmelden bei Azure Resource Manager und Auswählen Ihres Abonnements führen Sie bei der PowerShell-Eingabeaufforderung die folgenden Befehle aus:
-
+   
     ```PowerShell
     Login-AzureRmAccount
     Get-AzureRmSubscription
@@ -34,13 +35,12 @@ Viele SQL Data Warehouse-Verwaltungsaufgaben können entweder mithilfe von Azure
     ```
 
 ## Beispiel für das Anhalten von Azure SQL Data Warehouse
-
 Halten Sie eine Datenbank mit dem Namen „Database02“ an, die auf einem Server mit dem Namen „Server01“ gehostet wird. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
 
 ```Powershell
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-Variation: Das Beispiel leitet das abgerufene Objekt an [Suspend-AzureRmSqlDatabase][] weiter. Dadurch wird die Datenbank angehalten. Der letzte Befehl zeigt die Ergebnisse an.
+Variation: Das Beispiel leitet das abgerufene Objekt an [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase] weiter. Dadurch wird die Datenbank angehalten. Der letzte Befehl zeigt die Ergebnisse an.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -49,44 +49,45 @@ $resultDatabase
 ```
 
 ## Beispiel für das Starten von Azure SQL Data Warehouse
-
 Setzen Sie den Betrieb der auf dem Server „Server01“ gehosteten Datenbank „Database02“ fort. Der Server befindet sich in einer Ressourcengruppe namens „ResourceGroup1“.
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Abweichung: Eine Datenbank „Database02“ von einem Server „Server01“, der sich in einer Ressourcengruppe „ResourceGroup1“ befindet, wird abgerufen. Das abgerufene Objekt wird an [Resume-AzureRmSqlDatabase][] weitergeleitet.
+Abweichung: Eine Datenbank „Database02“ von einem Server „Server01“, der sich in einer Ressourcengruppe „ResourceGroup1“ befindet, wird abgerufen. Das abgerufene Objekt wird an [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase] weitergeleitet.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Resume-AzureRmSqlDatabase
 ```
 
-> [AZURE.NOTE] Hinweis: Wenn Ihr Server „foo.database.windows.net“ heißt, verwenden Sie in den PowerShell-Cmdlets für „-ServerName“ den Namen „foo“.
+> [!NOTE]
+> Hinweis: Wenn Ihr Server „foo.database.windows.net“ heißt, verwenden Sie in den PowerShell-Cmdlets für „-ServerName“ den Namen „foo“.
+> 
+> 
 
 ## Häufig verwendete PowerShell-Cmdlets
-
 Diese PowerShell-Cmdlets werden häufig mit Azure SQL Data Warehouse verwendet.
 
-- [Get-AzureRmSqlDatabase][]
-- [Get-AzureRmSqlDeletedDatabaseBackup][]
-- [Get-AzureRmSqlDatabaseRestorePoints][]
-- [New-AzureRmSqlDatabase][]
-- [Remove-AzureRmSqlDatabase][]
-- [Restore-AzureRmSqlDatabase][]
-- [Resume-AzureRmSqlDatabase][]
-- [Select-AzureRmSubscription][]
-- [Set-AzureRmSqlDatabase][]
-- [Suspend-AzureRmSqlDatabase][]
+* [Get-AzureRmSqlDatabase][Get-AzureRmSqlDatabase]
+* [Get-AzureRmSqlDeletedDatabaseBackup][Get-AzureRmSqlDeletedDatabaseBackup]
+* [Get-AzureRmSqlDatabaseRestorePoints][Get-AzureRmSqlDatabaseRestorePoints]
+* [New-AzureRmSqlDatabase][New-AzureRmSqlDatabase]
+* [Remove-AzureRmSqlDatabase][Remove-AzureRmSqlDatabase]
+* [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase]
+* [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase]
+* [Select-AzureRmSubscription][Select-AzureRmSubscription]
+* [Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase]
+* [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]
 
 ## Nächste Schritte
 Weitere PowerShell-Beispiele finden Sie unter:
 
-- [Erstellen von SQL Data Warehouse mithilfe von PowerShell][]
-- [Datenbankwiederherstellung][]
+* [Erstellen von SQL Data Warehouse mithilfe von PowerShell][Erstellen von SQL Data Warehouse mithilfe von PowerShell]
+* [Datenbankwiederherstellung][Datenbankwiederherstellung]
 
-Eine Liste mit allen Aufgaben, die mit PowerShell automatisiert werden können, finden Sie unter [Azure SQL Database Cmdlets][] \(Azure SQL-Datenbank-Cmdlets). Eine Liste mit Aufgaben, die mit REST automatisiert werden können, finden Sie unter [Vorgänge für Azure SQL-Datenbanken][].
+Eine Liste mit allen Aufgaben, die mit PowerShell automatisiert werden können, finden Sie unter [Azure SQL Database Cmdlets][Azure SQL Database Cmdlets] \(Azure SQL-Datenbank-Cmdlets). Eine Liste mit Aufgaben, die mit REST automatisiert werden können, finden Sie unter [Vorgänge für Azure SQL-Datenbanken][Vorgänge für Azure SQL-Datenbanken].
 
 <!--Image references-->
 

@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="Bereitstellen einer Web-App, die eine SQL-Datenbank verwendet" 
-	description="Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App bereitzustellen, die eine SQL-Datenbank enthält." 
-	services="app-service" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: Bereitstellen einer Web-App, die eine SQL-Datenbank verwendet
+description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App bereitzustellen, die eine SQL-Datenbank enthält.
+services: app-service
+documentationcenter: ''
+author: cephalin
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2016" 
-	ms.author="cephalin"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 04/27/2016
+ms.author: cephalin
 
+---
 # Bereitstellen einer Web-App mit einer SQL-Datenbank
-
 In diesem Thema erfahren Sie, wie Sie eine Azure-Ressourcen-Manager-Vorlage erstellen, die eine Web-App und eine SQL-Datenbank bereitstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
@@ -26,29 +25,26 @@ Weitere Informationen zum Bereitstellen von Apps finden Sie unter [Vorhersagbare
 
 Die vollständige Vorlage finden Sie unter [Web-App mit SQL-Datenbankvorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## Was Sie bereitstellen
-
 In dieser Vorlage stellen Sie Folgendes bereit:
 
-- eine Web-App
-- SQL-Datenbankserver
-- SQL-Datenbank
-- Einstellungen für automatische Skalierung
-- Warnungsregeln
-- App Insights
+* eine Web-App
+* SQL-Datenbankserver
+* SQL-Datenbank
+* Einstellungen für automatische Skalierung
+* Warnungsregeln
+* App Insights
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
 [![Bereitstellen in Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
 ## Anzugebende Parameter
-
-[AZURE.INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
+[!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### administratorLogin
-
 Der Kontoname für den Datenbankserveradministrator.
 
     "administratorLogin": {
@@ -56,7 +52,6 @@ Der Kontoname für den Datenbankserveradministrator.
     }
 
 ### administratorLoginPassword
-
 Das Kennwort für den Datenbankserveradministrator.
 
     "administratorLoginPassword": {
@@ -64,7 +59,6 @@ Das Kennwort für den Datenbankserveradministrator.
     }
 
 ### databaseName
-
 Der Name der zu erstellenden neuen Datenbank.
 
     "databaseName": {
@@ -73,7 +67,6 @@ Der Name der zu erstellenden neuen Datenbank.
     }
 
 ### collation
-
 Die Datenbanksortierung zum Steuern der ordnungsgemäßen Verwendung von Zeichen.
 
     "collation": {
@@ -82,7 +75,6 @@ Die Datenbanksortierung zum Steuern der ordnungsgemäßen Verwendung von Zeichen
     }
 
 ### Edition
-
 Der Typ der zu erstellenden Datenbank.
 
     "edition": {
@@ -99,7 +91,6 @@ Der Typ der zu erstellenden Datenbank.
     }
 
 ### maxSizeBytes
-
 Die maximale Größe (in Bytes) der Datenbank.
 
     "maxSizeBytes": {
@@ -108,7 +99,6 @@ Die maximale Größe (in Bytes) der Datenbank.
     }
 
 ### requestedServiceObjectiveName
-
 Der Name entsprechend der Leistungsebene der Edition.
 
     "requestedServiceObjectiveName": {
@@ -129,7 +119,6 @@ Der Name entsprechend der Leistungsebene der Edition.
     }
 
 ## Variablen für Namen
-
 Diese Vorlage enthält Variablen, die die in der Vorlage verwendeten Namen erstellen. Die Variablenwerte verwenden die **uniqueString**-Funktion, um aus der Ressourcengruppen-ID einen Namen zu generieren.
 
     "variables": {
@@ -140,9 +129,7 @@ Diese Vorlage enthält Variablen, die die in der Vorlage verwendeten Namen erste
 
 
 ## Bereitzustellende Ressourcen
-
 ### SQL-Server und Datenbank
-
 Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im **serverName**-Parameter und der Speicherort im **serverLocation**-Parameter angegeben. Wenn Sie den neuen Server erstellen, müssen Sie einen Benutzernamen und ein Kennwort für den Datenbankserveradministrator bereitstellen.
 
     {
@@ -192,11 +179,9 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
       ]
     },
 
-[AZURE.INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
-
+[!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### Web-App
-
     {
       "apiVersion": "2015-08-01",
       "name": "[variables('webSiteName')]",
@@ -233,7 +218,6 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
 
 
 ### AutoScale
-
     {
       "apiVersion": "2014-04-01",
       "name": "[concat(variables('hostingPlanName'), '-', resourceGroup().name)]",
@@ -302,8 +286,7 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
     },
 
 
-### Warnregeln für Statuscodes 403 und 500er, hohe CPU-Auslastung und HTTP-Warteschlangenlänge 
-
+### Warnregeln für Statuscodes 403 und 500er, hohe CPU-Auslastung und HTTP-Warteschlangenlänge
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('ServerErrors ', variables('webSiteName'))]",
@@ -440,9 +423,8 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
         }
       }
     },
-    
-### App Insights
 
+### App Insights
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('AppInsights', variables('webSiteName'))]",
@@ -461,18 +443,15 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
     }
 
 ## Befehle zum Ausführen der Bereitstellung
-
-[AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### PowerShell
-
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 ### Azure-Befehlszeilenschnittstelle
-
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 
- 
+
 
 <!---HONumber=AcomDC_0810_2016-->

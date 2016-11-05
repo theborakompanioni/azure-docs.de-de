@@ -4,79 +4,79 @@ Ein Lastenausgleichsmodul wird verwendet, wenn Sie Ihre Anwendungen skalieren m�
 ![NICs auf einem einzelnen virtuellen Computer](./media/resource-groups-networking/figure8.png)
 
 | Eigenschaft | Beschreibung |
-|---|---|
-| *frontendIPConfigurations* | Ein Load Balancer kann ein oder mehrere Front-End-IP-Adressen umfassen, auch als virtuelle IPs (VIPs) bekannt. Diese IP-Adressen dienen als Eingang für den Datenverkehr und sind öffentliche oder private IP-Adressen. |
-|*backendAddressPools* | Dies sind IP-Adressen, die den VM NICs zugeordnet sind, an die die Last verteilt wird. |
-|*loadBalancingRules* | Eine Regeleigenschaft ordnet eine bestimmte Front-End-IP-/Port-Kombination einer Back-End-IP-Adressen-/Port-Kombination zu. Mit einer einzelnen Definition einer Load Balancer-Ressource können Sie mehrere Lastenausgleichsregeln definieren, von denen jede eine Kombination aus Front-End-IP und Port sowie Back-End-IP und Port darstellt, die dem virtuellen Computer zugeordnet ist. Die Regel ist ein Port im Front-End-Pool für viele virtuelle Computer im Back-End-Pool. |  
-| *Tests* | Mit Tests können Sie die Integrität der VM-Instanzen nachverfolgen. Schlägt eine Integritätsüberprüfung fehl, wird die Instanz des virtuellen Computers automatisch aus der Rotation entfernt. |
-| *inboundNatRules* | NAT-Regeln definieren den Eingangsdatenverkehr, der durch die Front-End-IP fließt und an die Back-End-IP an eine bestimmte Instanz eines virtuellen Computers verteilt wird. Die NAT-Regel ist ein Port im Front-End-Pool für einen virtuellen Computer im Back-End-Pool. | 
+| --- | --- |
+| *frontendIPConfigurations* |Ein Load Balancer kann ein oder mehrere Front-End-IP-Adressen umfassen, auch als virtuelle IPs (VIPs) bekannt. Diese IP-Adressen dienen als Eingang für den Datenverkehr und sind öffentliche oder private IP-Adressen. |
+| *backendAddressPools* |Dies sind IP-Adressen, die den VM NICs zugeordnet sind, an die die Last verteilt wird. |
+| *loadBalancingRules* |Eine Regeleigenschaft ordnet eine bestimmte Front-End-IP-/Port-Kombination einer Back-End-IP-Adressen-/Port-Kombination zu. Mit einer einzelnen Definition einer Load Balancer-Ressource können Sie mehrere Lastenausgleichsregeln definieren, von denen jede eine Kombination aus Front-End-IP und Port sowie Back-End-IP und Port darstellt, die dem virtuellen Computer zugeordnet ist. Die Regel ist ein Port im Front-End-Pool für viele virtuelle Computer im Back-End-Pool. |
+| *Tests* |Mit Tests können Sie die Integrität der VM-Instanzen nachverfolgen. Schlägt eine Integritätsüberprüfung fehl, wird die Instanz des virtuellen Computers automatisch aus der Rotation entfernt. |
+| *inboundNatRules* |NAT-Regeln definieren den Eingangsdatenverkehr, der durch die Front-End-IP fließt und an die Back-End-IP an eine bestimmte Instanz eines virtuellen Computers verteilt wird. Die NAT-Regel ist ein Port im Front-End-Pool für einen virtuellen Computer im Back-End-Pool. |
 
 Beispiel für eine Vorlage für einen Load Balancer im Json-Format:
 
-	{
-	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	  "contentVersion": "1.0.0.0",
-	  "parameters": {
-	    "dnsNameforLBIP": {
-	      "type": "string",
-	      "metadata": {
-	        "description": "Unique DNS name"
-	      }
-	    },
-	    "location": {
-	      "type": "string",
-	      "allowedValues": [
-	        "East US",
-	        "West US",
-	        "West Europe",
-	        "East Asia",
-	        "Southeast Asia"
-	      ],
-	      "metadata": {
-	        "description": "Location to deploy"
-	      }
-	    },
-	    "addressPrefix": {
-	      "type": "string",
-	      "defaultValue": "10.0.0.0/16",
-	      "metadata": {
-	        "description": "Address Prefix"
-	      }
-	    },
-	    "subnetPrefix": {
-	      "type": "string",
-	      "defaultValue": "10.0.0.0/24",
-	      "metadata": {
-	        "description": "Subnet Prefix"
-	      }
-	    },
-	    "publicIPAddressType": {
-	      "type": "string",
-	      "defaultValue": "Dynamic",
-	      "allowedValues": [
-	        "Dynamic",
-	        "Static"
-	      ],
-	      "metadata": {
-	        "description": "Public IP type"
-	      }
-	    }
-	  },
-	  "variables": {
-	    "virtualNetworkName": "virtualNetwork1",
-	    "publicIPAddressName": "publicIp1",
-	    "subnetName": "subnet1",
-	    "loadBalancerName": "loadBalancer1",
-	    "nicName": "networkInterface1",
-	    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
-	    "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
-	    "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]",
-	    "lbID": "[resourceId('Microsoft.Network/loadBalancers',variables('loadBalancerName'))]",
-	    "nicId": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]",
-	    "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
-	    "backEndIPConfigID": "[concat(variables('nicId'),'/ipConfigurations/ipconfig1')]"
-	  },
-	  "resources": [
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "dnsNameforLBIP": {
+          "type": "string",
+          "metadata": {
+            "description": "Unique DNS name"
+          }
+        },
+        "location": {
+          "type": "string",
+          "allowedValues": [
+            "East US",
+            "West US",
+            "West Europe",
+            "East Asia",
+            "Southeast Asia"
+          ],
+          "metadata": {
+            "description": "Location to deploy"
+          }
+        },
+        "addressPrefix": {
+          "type": "string",
+          "defaultValue": "10.0.0.0/16",
+          "metadata": {
+            "description": "Address Prefix"
+          }
+        },
+        "subnetPrefix": {
+          "type": "string",
+          "defaultValue": "10.0.0.0/24",
+          "metadata": {
+            "description": "Subnet Prefix"
+          }
+        },
+        "publicIPAddressType": {
+          "type": "string",
+          "defaultValue": "Dynamic",
+          "allowedValues": [
+            "Dynamic",
+            "Static"
+          ],
+          "metadata": {
+            "description": "Public IP type"
+          }
+        }
+      },
+      "variables": {
+        "virtualNetworkName": "virtualNetwork1",
+        "publicIPAddressName": "publicIp1",
+        "subnetName": "subnet1",
+        "loadBalancerName": "loadBalancer1",
+        "nicName": "networkInterface1",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
+        "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]",
+        "lbID": "[resourceId('Microsoft.Network/loadBalancers',variables('loadBalancerName'))]",
+        "nicId": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]",
+        "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
+        "backEndIPConfigID": "[concat(variables('nicId'),'/ipConfigurations/ipconfig1')]"
+      },
+      "resources": [
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -183,11 +183,10 @@ Beispiel für eine Vorlage für einen Load Balancer im Json-Format:
         ]
       }
     }
-	  ]
-	}
+      ]
+    }
 
 ### Zusätzliche Ressourcen
-
 Weitere Informationen finden Sie unter [Lastenausgleich für REST-API](https://msdn.microsoft.com/library/azure/mt163651.aspx).
 
 <!---HONumber=AcomDC_1223_2015-->

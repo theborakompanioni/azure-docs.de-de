@@ -1,29 +1,29 @@
-<properties
-   pageTitle="Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Azure Service Fabric | Microsoft Azure"
-   description="Eine Einführung in den Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Service Fabric."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Azure Service Fabric | Microsoft Docs
+description: Eine Einführung in den Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Service Fabric.
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Lastenausgleich für Service Fabric-Cluster
 Der Clusterressourcen-Manager von Service Fabric ermöglicht Folgendes: Melden dynamischer Lasten, Reagieren auf Änderungen im Cluster, Korrigieren von Einschränkungsverletzungen sowie bei Bedarf das Ausführen eines Lastenausgleichs für den Cluster. Doch wie häufig werden diese Vorgänge ausgeführt, und wodurch werden sie ausgelöst? Hierfür gibt es mehrere Steuerungsmöglichkeiten.
 
 Die ersten Steuerelemente im Zusammenhang mit dem Lastenausgleich sind eine Reihe von Timern. Diese Timer legen fest, wie oft der Clusterressourcen-Manager den Zustand des Clusters überprüft, um Situationen zu ermitteln, die Maßnahmen erfordern. Es gibt drei verschiedene Kategorien von Tasks, für die jeweils ein Timer verfügbar ist. Sie lauten wie folgt:
 
-1.	Platzierung – In dieser Phase erfolgt die Platzierung von zustandsbehafteten und zustandslosen Instanzen, die fehlen. Dies umfasst sowohl neue Dienste als auch die Behandlung von zustandsbehafteten Replikaten oder zustandslosen Instanzen, die ausgefallen sind und neu erstellt werden müssen. Das Löschen und Ablegen von Replikaten oder Instanzen erfolgt auch in dieser Phase.
-2.	Einschränkungsüberprüfungen – In dieser Phase erfolgt eine Überprüfung auf und Korrektur bei Verstößen gegen verschiedene Platzierungseinschränkungen (Regeln) im System. Beispiele hierfür sind z. B. das Sicherstellen, dass Knoten nicht ihre Kapazität überschreiten und die Platzierungseinschränkungen eines Diensts erfüllt werden (mehr dazu weiter unten).
-3.	Lastenausgleich – In dieser Phase wird geprüft, ob basierend auf dem gewünschten Ausgleichsgrad für verschiedene Metriken ein proaktiver erneuter Ausgleich erforderlich ist. Falls ja, wird versucht, eine ausgeglichenere Anordnung im Cluster zu finden.
+1. Platzierung – In dieser Phase erfolgt die Platzierung von zustandsbehafteten und zustandslosen Instanzen, die fehlen. Dies umfasst sowohl neue Dienste als auch die Behandlung von zustandsbehafteten Replikaten oder zustandslosen Instanzen, die ausgefallen sind und neu erstellt werden müssen. Das Löschen und Ablegen von Replikaten oder Instanzen erfolgt auch in dieser Phase.
+2. Einschränkungsüberprüfungen – In dieser Phase erfolgt eine Überprüfung auf und Korrektur bei Verstößen gegen verschiedene Platzierungseinschränkungen (Regeln) im System. Beispiele hierfür sind z. B. das Sicherstellen, dass Knoten nicht ihre Kapazität überschreiten und die Platzierungseinschränkungen eines Diensts erfüllt werden (mehr dazu weiter unten).
+3. Lastenausgleich – In dieser Phase wird geprüft, ob basierend auf dem gewünschten Ausgleichsgrad für verschiedene Metriken ein proaktiver erneuter Ausgleich erforderlich ist. Falls ja, wird versucht, eine ausgeglichenere Anordnung im Cluster zu finden.
 
 ## Konfigurieren von Schritten und Timern für den Clusterressourcen-Manager
 Für all diese Typen von Korrekturen, die der Clusterressourcen-Manager durchführen kann, sind unterschiedliche Timer verfügbar, mit denen festgelegt wird, wie häufig die Vorgänge ausgeführt werden. Wenn Sie z.B. stündlich neue Dienstworkloads im Cluster platzieren möchten (um diese zu Batches zusammenzufassen), jedoch regelmäßig alle paar Sekunden Lastenausgleichsprüfungen wünschen, können Sie dieses Verhalten konfigurieren. Beim Auslösen der einzelnen Timer wird der Task geplant. Standardmäßig überprüft der Ressourcen-Manager jede Zehntelsekunde seinen Zustand und wendet Updates (Zusammenfassung aller Änderungen seit der letzten Prüfung, z.B. das Ermitteln eines ausgefallenen Knotens) ebenfalls mit diesem Intervall an. Die Kennzeichen für die Platzierungs- und Einschränkungsüberprüfung werden auf „Jede Sekunde“, das Kennzeichen für den Ausgleich auf „Alle 5 Sekunden“ festgelegt.
@@ -97,17 +97,16 @@ Sehen wir uns folgendes Beispiel mit den Diensten Service1, Service2, Service3 u
 
 ![Gemeinsamer Lastenausgleich von Diensten][Image4]
 
-Daher ist es möglich, dass ein Ungleichgewicht bei Metric1 bewirken kann, dass Replikate oder Instanzen, die zu Service3 gehören, verschoben werden. In der Regel sind diese Verschiebungen eher begrenzt, können aber umfassender sein, was genau davon abhängt, wie unausgeglichen Metrik 1 geworden ist und welche Änderungen im Cluster für die Korrektur erforderlich waren. Wir können auch mit Sicherheit sagen, dass ein Ungleichgewicht bei den Metriken 1, 2 oder 3 nie Verschiebungen in Dienst 4 bewirkt. Dies wäre sinnlos, da das Verschieben von Replikaten oder Instanzen, die zu Dienst 4 gehören, keinerlei Auswirkung auf die Ausgeglichenheit der Metriken 1, 2 oder 3 hat.
+Daher ist es möglich, dass ein Ungleichgewicht bei Metric1 bewirken kann, dass Replikate oder Instanzen, die zu Service3 gehören, verschoben werden. In der Regel sind diese Verschiebungen eher begrenzt, können aber umfassender sein, was genau davon abhängt, wie unausgeglichen Metrik 1 geworden ist und welche Änderungen im Cluster für die Korrektur erforderlich waren. Wir können auch mit Sicherheit sagen, dass ein Ungleichgewicht bei den Metriken 1, 2 oder 3 nie Verschiebungen in Dienst 4 bewirkt. Dies wäre sinnlos, da das Verschieben von Replikaten oder Instanzen, die zu Dienst 4 gehören, keinerlei Auswirkung auf die Ausgeglichenheit der Metriken 1, 2 oder 3 hat.
 
-Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste in Beziehung stehen, da Dienste ggf. hinzugefügt oder entfernt werden oder sich die Konfiguration ihrer Metriken geändert haben könnte. Zwischen zwei Ausführungen des Lastenausgleichs könnte Service2 z.B. so neu konfiguriert worden sein, dass Metric2 entfernt wurde. Dadurch wird die Kette zwischen Dienst 1 und Dienst 2 unterbrochen. Dann haben Sie anstelle von zwei Dienstgruppen drei:
+Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste in Beziehung stehen, da Dienste ggf. hinzugefügt oder entfernt werden oder sich die Konfiguration ihrer Metriken geändert haben könnte. Zwischen zwei Ausführungen des Lastenausgleichs könnte Service2 z.B. so neu konfiguriert worden sein, dass Metric2 entfernt wurde. Dadurch wird die Kette zwischen Dienst 1 und Dienst 2 unterbrochen. Dann haben Sie anstelle von zwei Dienstgruppen drei:
 
 ![Gemeinsamer Lastenausgleich von Diensten][Image5]
 
 ## Nächste Schritte
-- Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
-- Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md).
-- Der Clusterressourcen-Manager bietet mehrere Drosselungen, die Sie konfigurieren können, um Änderungen im Cluster zu verlangsamen. Sie sind normalerweise nicht erforderlich, aber bei Bedarf finden Sie [hier](service-fabric-cluster-resource-manager-advanced-throttling.md) weitere Informationen.
-
+* Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
+* Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md).
+* Der Clusterressourcen-Manager bietet mehrere Drosselungen, die Sie konfigurieren können, um Änderungen im Cluster zu verlangsamen. Sie sind normalerweise nicht erforderlich, aber bei Bedarf finden Sie [hier](service-fabric-cluster-resource-manager-advanced-throttling.md) weitere Informationen.
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

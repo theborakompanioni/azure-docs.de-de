@@ -1,23 +1,26 @@
-<properties
-   pageTitle="Verwendung des Azure-Ressourcen-Connectors in Logik-Apps | Microsoft Azure App Service"
-   description="Erstellen und Konfigurieren des Azure-Ressourcen-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="stepsic-microsoft-com"
-   manager="erikre"
-   editor=""/>
+---
+title: Verwendung des Azure-Ressourcen-Connectors in Logik-Apps | Microsoft Docs
+description: Erstellen und Konfigurieren des Azure-Ressourcen-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: stepsic-microsoft-com
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="09/01/2016"
-   ms.author="stepsic"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 09/01/2016
+ms.author: stepsic
 
+---
 # Erste Schritte mit dem Azure-Ressourcen-Connector und das Hinzufügen zur Logik-App
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+> [!NOTE]
+> Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+> 
+> 
 
 Der Azure-Ressourcen-Connector bietet eine einfache Möglichkeit zum Verwalten von Azure-Ressourcen in Ihrer Logik-App.
 
@@ -32,64 +35,66 @@ David Ebbo hat [einen hervorragenden Blogbeitrag](http://blog.davidebbo.com/2014
 ### Trigger
 Es gibt zwei Trigger, die im Connector unterstützt werden:
 
-Name | Beschreibung
----- | -----------
-Ereignis tritt auf | Trigger, wenn ein Ereignis für eine Ressource in Ihrem Abonnement auftritt.
-Metrik überschreitet Schwellenwert | Trigger, wenn eine Metrik einen bestimmten Schwellenwert erreicht.
+| Name | Beschreibung |
+| --- | --- |
+| Ereignis tritt auf |Trigger, wenn ein Ereignis für eine Ressource in Ihrem Abonnement auftritt. |
+| Metrik überschreitet Schwellenwert |Trigger, wenn eine Metrik einen bestimmten Schwellenwert erreicht. |
 
 ### Aktion
-
 Ebenso können Sie eine große Anzahl von Aktionen innerhalb Ihres Azure-Abonnements bereitstellen:
 
 Aktionen für **Ressourcengruppen**:
 
-Name | Beschreibung
----- | -----------
-Ressourcengruppen auflisten | Listen Sie alle Ressourcengruppen im Abonnement auf.
-Ressourcengruppe abrufen | Rufen Sie eine Ressourcengruppe mit der ID ab.
-Ressourcengruppe erstellen | Erstellen oder aktualisieren Sie eine Ressourcengruppe.
-Ressourcengruppe löschen | Löschen Sie eine Ressourcengruppe.
+| Name | Beschreibung |
+| --- | --- |
+| Ressourcengruppen auflisten |Listen Sie alle Ressourcengruppen im Abonnement auf. |
+| Ressourcengruppe abrufen |Rufen Sie eine Ressourcengruppe mit der ID ab. |
+| Ressourcengruppe erstellen |Erstellen oder aktualisieren Sie eine Ressourcengruppe. |
+| Ressourcengruppe löschen |Löschen Sie eine Ressourcengruppe. |
 
 Aktionen für **Ressourcen**:
 
-Name | Beschreibung
----- | -----------
-Ressourcen auflisten | Listen Sie Ressourcen in Ihrem Abonnement mit verschiedenen Arten von Filtern auf.
-Ressource abrufen | Rufen Sie eine einzelne Ressource mit der Ressourcen-ID ab.
-Ressource erstellen oder aktualisieren | Erstellen Sie eine Ressource, oder aktualisieren Sie eine vorhandene Ressource. Sie müssen alle Eigenschaften für diese Ressource angeben.
-Ressourcenaktion | Führen Sie eine andere Aktion für eine Ressource aus. Sie müssen den Namen der Aktion und die etwaige Nutzlast dieser Aktion kennen.
-Ressource löschen | Löschen Sie eine Ressource.
+| Name | Beschreibung |
+| --- | --- |
+| Ressourcen auflisten |Listen Sie Ressourcen in Ihrem Abonnement mit verschiedenen Arten von Filtern auf. |
+| Ressource abrufen |Rufen Sie eine einzelne Ressource mit der Ressourcen-ID ab. |
+| Ressource erstellen oder aktualisieren |Erstellen Sie eine Ressource, oder aktualisieren Sie eine vorhandene Ressource. Sie müssen alle Eigenschaften für diese Ressource angeben. |
+| Ressourcenaktion |Führen Sie eine andere Aktion für eine Ressource aus. Sie müssen den Namen der Aktion und die etwaige Nutzlast dieser Aktion kennen. |
+| Ressource löschen |Löschen Sie eine Ressource. |
 
 Aktionen für **Ressourcenanbieter**:
 
-Name | Beschreibung
----- | -----------
-Ressourcenanbieter auflisten | Listen Sie alle verfügbaren Ressourcenanbieter im Abonnement auf.
+| Name | Beschreibung |
+| --- | --- |
+| Ressourcenanbieter auflisten |Listen Sie alle verfügbaren Ressourcenanbieter im Abonnement auf. |
 
 Aktionen für **Ressourcengruppenbereitstellungen**:
 
-Name | Beschreibung
----- | -----------
-Bereitstellungen auflisten | Listen Sie alle Bereitstellungen in einer Ressourcengruppe auf.
-Bereitstellung abrufen | Rufen Sie eine Vorlagenbereitstellung mit der ID ab.
-Bereitstellung erstellen | Erstellen Sie eine neue Ressourcengruppenbereitstellung durch Bereitstellen einer Vorlage.
+| Name | Beschreibung |
+| --- | --- |
+| Bereitstellungen auflisten |Listen Sie alle Bereitstellungen in einer Ressourcengruppe auf. |
+| Bereitstellung abrufen |Rufen Sie eine Vorlagenbereitstellung mit der ID ab. |
+| Bereitstellung erstellen |Erstellen Sie eine neue Ressourcengruppenbereitstellung durch Bereitstellen einer Vorlage. |
 
 Aktionen für **Ereignisse** zu Ressourcen:
 
-Name | Beschreibung
----- | -----------
-Ereignisse abrufen | Rufen Sie Ereignisse in einem Abonnement für eine Ressource ab.
+| Name | Beschreibung |
+| --- | --- |
+| Ereignisse abrufen |Rufen Sie Ereignisse in einem Abonnement für eine Ressource ab. |
 
 Aktionen für **Metriken**:
 
-Name | Beschreibung
----- | -----------
-Metriken abrufen | Rufen Sie eine Metrik für eine Ressourcen-ID ab.
+| Name | Beschreibung |
+| --- | --- |
+| Metriken abrufen |Rufen Sie eine Metrik für eine Ressourcen-ID ab. |
 
 ## Mehr mit Ihrem Connector machen
 Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
->[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> [!NOTE]
+> Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> 
+> 
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
 

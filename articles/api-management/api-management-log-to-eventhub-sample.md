@@ -1,23 +1,22 @@
-<properties
-    pageTitle="Überwachen von APIs mit Azure API Management, Event Hubs und Runscope"
-    description="Beispielanwendung zur Veranschaulichung der log-to-eventhub-Richtlinie, indem Azure API Management, Azure Event Hubs und Runscope für die HTTP-Protokollierung und -Überwachung verbunden werden."
-    services="api-management"
-    documentationCenter=""
-    authors="darrelmiller"
-    manager=""
-    editor=""/>
+---
+title: Überwachen von APIs mit Azure API Management, Event Hubs und Runscope
+description: Beispielanwendung zur Veranschaulichung der log-to-eventhub-Richtlinie, indem Azure API Management, Azure Event Hubs und Runscope für die HTTP-Protokollierung und -Überwachung verbunden werden.
+services: api-management
+documentationcenter: ''
+author: darrelmiller
+manager: ''
+editor: ''
 
-<tags
-    ms.service="api-management"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="08/09/2016"
-    ms.author="darrmi"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 08/09/2016
+ms.author: darrmi
 
+---
 # Überwachen von APIs mit Azure API Management, Event Hubs und Runscope
-
 Für den [API Management-Dienst](api-management-key-concepts.md) werden viele Funktionen bereitgestellt, mit denen die Verarbeitung von HTTP-Anforderungen verbessert werden kann, die an Ihre HTTP-API gesendet werden. Die Anforderungen und Antworten sind aber nur vorübergehend vorhanden. Die Anforderung wird ausgeführt und fließt durch den API Management-Dienst an Ihre Back-End-API. Ihre API verarbeitet die Anforderung, und eine Antwort fließt zurück an den API-Consumer. Der API Management-Dienst führt einige wichtige Statistiken zu den APIs für die Anzeige im Herausgeberportal-Dashboard, aber darüber hinaus gehen die Details verloren.
 
 Mithilfe der [Richtlinie](api-management-howto-policies.md) [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) im API Management-Dienst können Sie alle Details der Anforderung und Antwort an einen [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) senden. Es gibt zahlreiche Gründe, warum es hilfreich sein kann, Ereignisse aus HTTP-Nachrichten zu generieren, die an Ihre APIs gesendet werden. Beispiele hierfür sind der Überwachungspfad für Updates, Nutzungsanalysen, Warnungen zu Ausnahmen und Drittanbieterintegrationen.
@@ -41,7 +40,7 @@ Für Event Hubs ist es möglich, Ereignisse an mehrere Consumergruppen zu stream
 ## Richtlinie zum Senden von Anwendungs-/HTTP-Nachrichten
 Ein Event Hub akzeptiert Ereignisdaten als einfache Zeichenfolge. Der Inhalt dieser Zeichenfolge bleibt vollständig Ihnen überlassen. Um eine HTTP-Anforderung verpacken und an Event Hubs senden zu können, müssen wir die Zeichenfolge mit den Informationen zur Anforderung/Antwort formatieren. Wenn in diesen Fällen ein Format vorhanden ist, das wir wiederverwenden können, müssen wir ggf. nicht unseren eigenen Analysecode schreiben. Zuerst wurde erwägt, [HAR](http://www.softwareishard.com/blog/har-12-spec/) zum Senden von HTTP-Anforderungen und -Antworten zu verwenden. Dieses Format ist zum Speichern einer Sequenz von HTTP-Anforderungen in einem JSON-basierten Format optimiert. Es enthält eine Reihe von obligatorischen Elementen, die für das Szenario zum Übergeben der HTTP-Nachricht per Übertragung mit unnötiger Komplexität verbunden ist.
 
-Eine alternative Option ist die Verwendung des Medientyps `application/http`, wie in der HTTP-Spezifikation [RFC 7230](http://tools.ietf.org/html/rfc7230) beschrieben. Für diesen Medientyp wird genau das gleiche Format genutzt, das zum tatsächlichen Übertragen von HTTP-Nachrichten verwendet wird, aber die gesamte Nachricht kann in den Textkörper einer anderen HTTP-Anforderung eingefügt werden. In unserem Fall verwenden wir lediglich den Textkörper als Nachricht zum Senden an Event Hubs. Glücklicherweise ist in [Microsoft ASP.NET Web API 2.2-Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)-Bibliotheken ein Parser vorhanden, mit dem dieses Format analysiert und in systemeigene `HttpRequestMessage`- und `HttpResponseMessage`-Objekte konvertiert werden kann.
+Eine alternative Option ist die Verwendung des Medientyps `application/http`, wie in der HTTP-Spezifikation [RFC 7230](http://tools.ietf.org/html/rfc7230) beschrieben. Für diesen Medientyp wird genau das gleiche Format genutzt, das zum tatsächlichen Übertragen von HTTP-Nachrichten verwendet wird, aber die gesamte Nachricht kann in den Textkörper einer anderen HTTP-Anforderung eingefügt werden. In unserem Fall verwenden wir lediglich den Textkörper als Nachricht zum Senden an Event Hubs. Glücklicherweise ist in [Microsoft ASP.NET Web API 2.2-Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)-Bibliotheken ein Parser vorhanden, mit dem dieses Format analysiert und in systemeigene `HttpRequestMessage`- und `HttpResponseMessage`-Objekte konvertiert werden kann.
 
 Zum Erstellen dieser Nachricht müssen wir die C#-basierten [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx) in Azure API Management verwenden. Dies ist die Richtlinie, mit der eine HTTP-Anforderungsnachricht an Azure Event Hubs gesendet wird.
 
@@ -76,10 +75,11 @@ Zu diesem Richtlinienausdruck gibt es einige Anmerkungen. Die log-to-eventhub-Ri
 Um sicherzustellen, dass unsere Nachrichten in der richtigen Reihenfolge an Consumer geliefert werden, und die Funktionen zur Lastverteilung von Partitionen zu nutzen, habe ich mich dafür entschieden, HTTP-Anforderungsnachrichten an eine Partition und HTTP-Antwortnachrichten an eine zweite Partition zu senden. So wird eine gleichmäßige Lastverteilung sichergestellt, und wir können garantieren, dass alle Anforderungen und auch alle Antworten in der richtigen Reihenfolge verarbeitet werden. Es kann passieren, dass eine Antwort vor der entsprechenden Anforderung verarbeitet wird. Dies ist aber kein Problem, weil ein anderer Mechanismus zum Korrelieren von Anforderungen mit Antworten vorhanden ist und wir wissen, dass Anforderungen immer vor Antworten kommen.
 
 ### HTTP-Nutzlasten
-Nach der Erstellung von `requestLine` überprüfen wir, ob der Anforderungstext abgeschnitten werden muss. Der Anforderungstext wird auf 1024 Zeichen abgeschnitten. Dieser Wert kann auch erhöht werden. Da einzelne Event Hub-Nachrichten aber auf 256 KB beschränkt sind, kann es sein, dass einige HTTP-Nachrichtentexte nicht in eine einzelne Nachricht passen. Bei der Protokollierung und Analyse lässt sich nur aus HTTP-Anforderungszeilen und -Headern eine beträchtliche Menge an Daten ableiten. Außerdem geben viele API-Anforderungen nur kleine Textkörper zurück. Daher ist der Verlust des Informationswerts durch das Abschneiden großer Textkörper im Vergleich zur Reduzierung des Aufwands für die Übertragung, Verarbeitung und Speicherung für die Beibehaltung des gesamten Textkörperinhalts relativ gering. Ein letzter Hinweis zur Verarbeitung des Textkörpers: Wir müssen `true` an die As<string>()-Methode übergeben, weil wir die Textkörperinhalte lesen, die Back-End-API den Text aber auch lesen können muss. Indem wir „true“ an diese Methode übergeben, erreichen wir, dass der Text gepuffert wird. Er kann dann ein zweites Mal gelesen werden. Es ist wichtig, dass Ihnen dies bewusst ist, wenn Sie eine API nutzen, mit der sehr große Dateien hochgeladen werden oder für die lange Abrufvorgänge verwendet werden. In diesen Fällen wäre es am besten, das Lesen des Texts ganz zu vermeiden.
+Nach der Erstellung von `requestLine` überprüfen wir, ob der Anforderungstext abgeschnitten werden muss. Der Anforderungstext wird auf 1024 Zeichen abgeschnitten. Dieser Wert kann auch erhöht werden. Da einzelne Event Hub-Nachrichten aber auf 256 KB beschränkt sind, kann es sein, dass einige HTTP-Nachrichtentexte nicht in eine einzelne Nachricht passen. Bei der Protokollierung und Analyse lässt sich nur aus HTTP-Anforderungszeilen und -Headern eine beträchtliche Menge an Daten ableiten. Außerdem geben viele API-Anforderungen nur kleine Textkörper zurück. Daher ist der Verlust des Informationswerts durch das Abschneiden großer Textkörper im Vergleich zur Reduzierung des Aufwands für die Übertragung, Verarbeitung und Speicherung für die Beibehaltung des gesamten Textkörperinhalts relativ gering. Ein letzter Hinweis zur Verarbeitung des Textkörpers: Wir müssen `true` an die As<string>()-Methode übergeben, weil wir die Textkörperinhalte lesen, die Back-End-API den Text aber auch lesen können muss. Indem wir „true“ an diese Methode übergeben, erreichen wir, dass der Text gepuffert wird. Er kann dann ein zweites Mal gelesen werden. Es ist wichtig, dass Ihnen dies bewusst ist, wenn Sie eine API nutzen, mit der sehr große Dateien hochgeladen werden oder für die lange Abrufvorgänge verwendet werden. In diesen Fällen wäre es am besten, das Lesen des Texts ganz zu vermeiden.
 
 ### HTTP-Header
 HTTP-Header können einfach in das Nachrichtenformat übertragen werden (in einem einfachen Schlüssel-Wert-Paar-Format). Wir haben uns dafür entschieden, bestimmte sicherheitsrelevante Felder wegzulassen, um das unnötige Offenlegen von vertraulichen Informationen zu vermeiden. Es ist unwahrscheinlich, dass API-Schlüssel und andere Anmeldeinformationen zu Analysezwecken verwendet werden. Wenn wir eine Analyse des Benutzers und des jeweils verwendeten Produkts durchführen möchten, können wir diese Daten über das `context`-Objekt ermitteln und der Nachricht hinzufügen.
+
 ### Metadaten von Nachrichten
 Bei der Erstellung der vollständigen Nachricht für das Senden an den Event Hub ist die erste Zeile nicht Bestandteil der `application/http`-Nachricht. Die erste Zeile umfasst zusätzliche Metadaten. Hiermit wird angegeben, ob die Nachricht eine Anforderungs- oder Antwortnachricht ist, und eine Nachrichten-ID wird verwendet, um Anforderungen und Antworten zu korrelieren. Die Nachrichten-ID wird mit einer anderen Richtlinie erstellt, die wie folgt aussieht:
 
@@ -90,9 +90,9 @@ Wir hätten die Anforderungsnachricht erstellen und in einer Variablen speichern
 Die Richtlinie zum Senden der HTTP-Antwortnachricht ähnelt der Anforderung, und die vollständige Richtlinienkonfiguration sieht wie folgt aus:
 
       <policies>
-      	<inbound>
-      		<set-variable name="message-id" value="@(Guid.NewGuid())" />
-      		<log-to-eventhub logger-id="conferencelogger" partition-id="0">
+          <inbound>
+              <set-variable name="message-id" value="@(Guid.NewGuid())" />
+              <log-to-eventhub logger-id="conferencelogger" partition-id="0">
               @{
                   var requestLine = string.Format("{0} {1} HTTP/1.1\r\n",
                                                               context.Request.Method,
@@ -115,12 +115,12 @@ Die Richtlinie zum Senden der HTTP-Antwortnachricht ähnelt der Anforderung, und
                                       + requestLine + headerString + "\r\n" + body;
               }
           </log-to-eventhub>
-      	</inbound>
-      	<backend>
-      		<forward-request follow-redirects="true" />
-      	</backend>
-      	<outbound>
-      		<log-to-eventhub logger-id="conferencelogger" partition-id="1">
+          </inbound>
+          <backend>
+              <forward-request follow-redirects="true" />
+          </backend>
+          <outbound>
+              <log-to-eventhub logger-id="conferencelogger" partition-id="1">
               @{
                   var statusLine = string.Format("HTTP/1.1 {0} {1}\r\n",
                                                       context.Response.StatusCode,
@@ -142,7 +142,7 @@ Die Richtlinie zum Senden der HTTP-Antwortnachricht ähnelt der Anforderung, und
                                       + statusLine + headerString + "\r\n" + body;
              }
           </log-to-eventhub>
-      	</outbound>
+          </outbound>
       </policies>
 
 Mit der Richtlinie `set-variable` wird ein Wert erstellt, auf den von der Richtlinie `log-to-eventhub` sowohl im Abschnitt `<inbound>` als auch im Abschnitt `<outbound>` zugegriffen werden kann.
@@ -195,7 +195,6 @@ Die `HttpMessage`-Instanz enthält eine `MessageId`-GUID, die uns für die HTTP-
 
 ### IHttpMessageProcessor
 Die `HttpMessage`-Instanz wird dann an die Implementierung von `IHttpMessageProcessor` weitergeleitet. Diese Schnittstelle habe ich erstellt, um den Empfang und die Interpretation des Ereignisses aus Azure Event Hub von der eigentlichen Verarbeitung abzukoppeln.
-
 
 ## Weiterleiten der HTTP-Meldung
 Für dieses Beispiel habe ich entschieden, dass es interessant wäre, die HTTP-Anforderung auf [Runscope](http://www.runscope.com) zu verschieben. Runscope ist ein cloudbasierter Dienst, der für HTTP-Debuggen, Protokollierung und Überwachung ausgelegt ist. Es gibt einen Free-Tarif, sodass der Dienst problemlos ausprobiert werden kann. Wir können verfolgen, wie die HTTP-Anforderungen in Echtzeit durch den API Management-Dienst fließen.
@@ -258,14 +257,13 @@ Im folgenden animierten Bild sehen Sie, wie eine Anforderung an eine API im Entw
 Der Azure API Management-Dienst ist ein idealer Ort zum Erfassen des HTTP-Datenverkehrs, der an Ihre APIs fließt und von den APIs gesendet wird. Azure Event Hubs ist eine hoch skalierbare, kostengünstige Lösung zum Erfassen dieses Datenverkehrs und zum Bereitstellen für sekundäre Verarbeitungssysteme für die Protokollierung und Überwachung sowie andere anspruchsvolle Analysevorgänge. Das Verbinden mit Datenverkehr-Überwachungssystemen von Drittanbietern wie Runscope ist so einfach wie das Schreiben einiger Dutzend Codezeilen.
 
 ## Nächste Schritte
--	Weitere Informationen zu Azure Event Hubs
-	-	[Erste Schritte mit Azure Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-	-	[Empfangen von Nachrichten mit EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)
-	-	[Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md)
--	Erfahren Sie mehr über die Integration der API-Verwaltung und Event Hubs
-	-	[Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](api-management-howto-log-event-hubs.md)
-	-	[Verweis zu Protokollierungstool](https://msdn.microsoft.com/library/azure/mt592020.aspx)
-	-	[log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
-	
+* Weitere Informationen zu Azure Event Hubs
+  * [Erste Schritte mit Azure Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+  * [Empfangen von Nachrichten mit EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)
+  * [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md)
+* Erfahren Sie mehr über die Integration der API-Verwaltung und Event Hubs
+  * [Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](api-management-howto-log-event-hubs.md)
+  * [Verweis zu Protokollierungstool](https://msdn.microsoft.com/library/azure/mt592020.aspx)
+  * [log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
 
 <!---HONumber=AcomDC_0810_2016-->

@@ -1,37 +1,38 @@
-<properties
-	pageTitle="Geofencing-Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data | Microsoft Azure"
-	description="In diesem Tutorial erfahren Sie, wie Sie standortbasierte Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data bereitstellen."
-	services="notification-hubs"
-	documentationCenter="windows"
-    keywords="Pushbenachrichtigungen,Pushbenachrichtigung"
-	authors="dend"
-	manager="yuaxu"
-	editor="dend"/>
+---
+title: Geofencing-Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data | Microsoft Docs
+description: In diesem Tutorial erfahren Sie, wie Sie standortbasierte Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data bereitstellen.
+services: notification-hubs
+documentationcenter: windows
+keywords: Pushbenachrichtigungen,Pushbenachrichtigung
+author: dend
+manager: yuaxu
+editor: dend
 
-<tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows-phone"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="05/31/2016"
-	ms.author="dendeli"/>
-    
+ms.service: notification-hubs
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-windows-phone
+ms.devlang: dotnet
+ms.topic: hero-article
+ms.date: 05/31/2016
+ms.author: dendeli
+
+---
 # Geofencing-Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data
- 
- > [AZURE.NOTE] Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02).
+> [!NOTE]
+> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02).
+> 
+> 
 
 In diesem Tutorial erfahren Sie, wie Sie standortbasierte Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data aus einer Anwendung der universellen Windows-Plattform bereitstellen.
 
-##Voraussetzungen
+## Voraussetzungen
 Zunächst müssen Sie sicherstellen, dass alle Voraussetzungen in Bezug auf Software und Dienste erfüllt sind:
 
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/de-DE/downloads/download-visual-studio-vs.aspx) oder höher ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) ist ebenfalls geeignet) 
 * Neueste Version des [Azure SDK](https://azure.microsoft.com/downloads/) 
 * [Bing Maps Dev Center-Konto](https://www.bingmapsportal.com/) (Sie können kostenlos ein Konto erstellen und Ihrem Microsoft-Konto zuordnen) 
 
-##Erste Schritte
-
+## Erste Schritte
 Erstellen Sie als Erstes das Projekt. Starten Sie in Visual Studio ein neues Projekt vom Typ **Leere App (Universelle Windows-App)**.
 
 ![](./media/notification-hubs-geofence/notification-hubs-create-blank-app.png)
@@ -39,17 +40,16 @@ Erstellen Sie als Erstes das Projekt. Starten Sie in Visual Studio ein neues Pro
 Nachdem die Projekterstellung abgeschlossen ist, sollten Sie über das Grundgerüst der App verfügen. Nun führen wir die Einrichtung für die Geofencing-Infrastruktur durch. Da wir hierfür Bing-Dienste verwenden, ist ein öffentlicher REST-API-Endpunkt vorhanden, mit dem wir spezielle Standortrahmen abfragen:
 
     http://spatial.virtualearth.net/REST/v1/data/
-    
+
 Hierfür müssen Sie die folgenden Parameter angeben:
 
 * **Datenquellen-ID** und **Datenquellenname**: In der Bing Maps-API enthalten Datenquellen Metadaten in verschiedenen „Buckets“, z.B. Standorte und Geschäftszeiten. Weitere Informationen hierzu finden Sie hier. 
 * **Entitätsname**: Gibt die Entität an, die Sie als Referenzpunkt für die Benachrichtigung verwenden möchten. 
 * **Bing Maps-API-Schlüssel**: Dies ist der Schlüssel, den Sie beim Erstellen des Bing Dev Center-Kontos abgerufen haben.
- 
+
 Wir sehen uns die Einrichtung der obigen Elemente nun genauer an.
 
-##Einrichten der Datenquelle
-
+## Einrichten der Datenquelle
 Hierfür können Sie das Bing Maps Dev Center verwenden. Klicken Sie in der oberen Navigationsleiste einfach auf **Datenquellen**, und wählen Sie **Datenquellen verwalten**.
 
 ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
@@ -63,14 +63,17 @@ Vielleicht stellen Sie sich folgende Frage: Wie sieht die Datendatei aus, und wa
     Bing Spatial Data Services, 1.0, TestBoundaries
     EntityID(Edm.String,primaryKey)|Name(Edm.String)|Longitude(Edm.Double)|Latitude(Edm.Double)|Boundary(Edm.Geography)
     1|SanFranciscoPier|||POLYGON ((-122.389825 37.776598,-122.389438 37.773087,-122.381885 37.771849,-122.382186 37.777022,-122.389825 37.776598))
-    
+
 Der obige Code steht für diese Entität:
 
 ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 
 Kopieren Sie einfach die obige Zeichenfolge, und fügen Sie sie in eine neue Datei ein. Speichern Sie die Datei unter dem Namen **NotificationHubsGeofence.pipe**, und laden Sie sie in Bing Dev Center hoch.
 
->[AZURE.NOTE]Unter Umständen werden Sie aufgefordert, einen neuen Schlüssel als **Hauptschlüssel** anzugeben, der sich vom **Abfrageschlüssel** unterscheidet. Erstellen Sie im Dashboard einfach einen neuen Schlüssel, und aktualisieren Sie die Seite zum Hochladen der Datenquelle.
+> [!NOTE]
+> Unter Umständen werden Sie aufgefordert, einen neuen Schlüssel als **Hauptschlüssel** anzugeben, der sich vom **Abfrageschlüssel** unterscheidet. Erstellen Sie im Dashboard einfach einen neuen Schlüssel, und aktualisieren Sie die Seite zum Hochladen der Datenquelle.
+> 
+> 
 
 Nachdem Sie die Datendatei hochgeladen haben, müssen Sie sicherstellen, dass Sie die Datenquelle veröffentlichen.
 
@@ -100,8 +103,7 @@ Diese Antwort erfolgt nur, wenn sich der Punkt tatsächlich innerhalb der festge
 
 ![](./media/notification-hubs-geofence/bing-maps-nores.png)
 
-##Einrichten der UWP-Anwendung
-
+## Einrichten der UWP-Anwendung
 Da die Datenquelle jetzt bereitsteht, können wir mit der Arbeit an der UWP-Anwendung beginnen, für die wir zuvor das Bootstrapping durchgeführt haben.
 
 Zuallererst müssen wir die Standortdienste für die Anwendung aktivieren. Doppelklicken Sie hierzu im **Projektmappen-Explorer** auf die Datei `Package.appxmanifest`.
@@ -198,8 +200,7 @@ Die Implementierung zeigt die Standortkoordinaten im Fenster **Ausgabe** an:
         });
     }
 
-##Einrichten des Back-Ends
-
+## Einrichten des Back-Ends
 Laden Sie das [.NET-Back-End-Beispiel von GitHub herunter](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers). Öffnen Sie nach Abschluss des Downloads den Ordner `NotifyUsers` und anschließend die Datei `NotifyUsers.sln`.
 
 Geben Sie das Projekt `AppBackend` mit der Option **Als Startprojekt festlegen** als Startprojekt an, und starten Sie es.
@@ -275,7 +276,10 @@ Erstellen Sie im Projekt eine neue Klasse mit dem Namen `ApiHelper.cs`. Wir verw
         }
     }
 
->[AZURE.NOTE] Stellen Sie sicher, dass Sie den API-Endpunkt durch die Abfrage-URL ersetzen, die Sie weiter oben aus Bing Dev Center abgerufen haben (dasselbe gilt für den API-Schlüssel).
+> [!NOTE]
+> Stellen Sie sicher, dass Sie den API-Endpunkt durch die Abfrage-URL ersetzen, die Sie weiter oben aus Bing Dev Center abgerufen haben (dasselbe gilt für den API-Schlüssel).
+> 
+> 
 
 Wenn die Abfrage zu einem Ergebnis führt, bedeutet dies, dass sich der angegebene Punkt innerhalb der Grenzen des Geofence befindet. Wir geben also `true` zurück. Wenn keine Ergebnisse vorliegen, teilt Bing uns mit, dass sich der Punkt außerhalb des Suchbereichs befindet. Wir geben `false` zurück.
 
@@ -302,8 +306,7 @@ Wechseln Sie zurück zu `NotificationsController.cs`, und erstellen Sie direkt v
 
 Auf diese Weise wird die Benachrichtigung nur gesendet, wenn sich der Punkt innerhalb der Grenzen befindet.
 
-##Testen von Pushbenachrichtigungen in der UWP-App
-
+## Testen von Pushbenachrichtigungen in der UWP-App
 In der UWP-App sollte es jetzt möglich sein, Benachrichtigungen zu testen. Erstellen Sie in der `LocationHelper`-Klasse die neue Funktion `SendLocationToBackend`:
 
     public static async Task SendLocationToBackend(string pns, string userTag, string message, string latitude, string longitude)
@@ -325,7 +328,10 @@ In der UWP-App sollte es jetzt möglich sein, Benachrichtigungen zu testen. Erst
         }
     }
 
->[AZURE.NOTE] Tauschen Sie die `POST_URL` durch den Standort Ihrer bereitgestellten Webanwendung aus, die wir im vorherigen Abschnitt erstellt haben. Die lokale Ausführung ist vorerst in Ordnung. Wenn Sie an der Bereitstellung einer öffentlichen Version arbeiten, müssen Sie diese aber über einen externen Anbieter hosten.
+> [!NOTE]
+> Tauschen Sie die `POST_URL` durch den Standort Ihrer bereitgestellten Webanwendung aus, die wir im vorherigen Abschnitt erstellt haben. Die lokale Ausführung ist vorerst in Ordnung. Wenn Sie an der Bereitstellung einer öffentlichen Version arbeiten, müssen Sie diese aber über einen externen Anbieter hosten.
+> 
+> 
 
 Als Nächstes stellen wir sicher, dass wir die UWP-App für Pushbenachrichtigungen registrieren. Klicken Sie in Visual Studio auf **Projekt** > **Store** > **App mit Store verknüpfen**.
 
@@ -370,8 +376,7 @@ Da wir nicht die echten Koordinaten übergeben (die sich derzeit ggf. nicht inne
 
 ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-##Nächste Schritte
-
+## Nächste Schritte
 Es gibt einige Schritte, deren Ausführung zusätzlich zu den obigen Schritten unter Umständen erforderlich ist, um sicherzustellen, dass die Lösung bereit für die Produktion ist.
 
 Zunächst sollten Sie ggf. sicherstellen, dass die Geofences dynamisch sind. Hierfür ist etwas zusätzliche Arbeit mit der Bing-API erforderlich, um neue Grenzen innerhalb der vorhandenen Datenquelle hochzuladen. Weitere Informationen zu diesem Thema finden Sie in der API-Dokumentation zu [Bing Spatial Data Services](https://msdn.microsoft.com/library/ff701734.aspx).

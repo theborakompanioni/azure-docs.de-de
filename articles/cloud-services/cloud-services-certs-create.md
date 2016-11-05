@@ -1,25 +1,25 @@
-<properties 
-	pageTitle="Clouddienste und Verwaltungszertifikate | Microsoft Azure" 
-	description="Informationen zum Erstellen und Verwenden von Zertifikaten mit Microsoft Azure" 
-	services="cloud-services" 
-	documentationCenter=".net" 
-	authors="Thraka" 
-	manager="timlt" 
-	editor=""/>
+---
+title: Clouddienste und Verwaltungszertifikate | Microsoft Docs
+description: Informationen zum Erstellen und Verwenden von Zertifikaten mit Microsoft Azure
+services: cloud-services
+documentationcenter: .net
+author: Thraka
+manager: timlt
+editor: ''
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/05/2016"
-	ms.author="adegeo"/>
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/05/2016
+ms.author: adegeo
 
+---
 # Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)), und sie werden für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates), wenn das klassische Azure-Portal und nicht Azure-Ressourcen-Manager verwendet wird). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und [Bereitstellung](#deploy) in Azure.
 
-Die in Azure verwendeten Zertifikate sind X.509 v3-Zertifikate und können von einem anderen vertrauenswürdigen Zertifikat signiert werden oder selbstsigniert sein. Ein selbstsigniertes Zertifikat wird vom eigenen Ersteller signiert und ist daher standardmäßig nicht vertrauenswürdig. Die meisten Browser können dies ignorieren. Nur Sie selbst sollten beim Entwickeln und Testen Ihrer Clouddienste selbstsignierte Zertifikate verwenden.
+Die in Azure verwendeten Zertifikate sind X.509 v3-Zertifikate und können von einem anderen vertrauenswürdigen Zertifikat signiert werden oder selbstsigniert sein. Ein selbstsigniertes Zertifikat wird vom eigenen Ersteller signiert und ist daher standardmäßig nicht vertrauenswürdig. Die meisten Browser können dies ignorieren. Nur Sie selbst sollten beim Entwickeln und Testen Ihrer Clouddienste selbstsignierte Zertifikate verwenden.
 
 Die in Azure verwendeten Zertifikate können einen privaten oder einen öffentlichen Schlüssel enthalten. Zertifikate verfügen über einen Fingerabdruck, durch den sie eindeutig identifiziert werden. Mithilfe dieses Fingerabdrucks wird in der Azure-[Konfigurationsdatei](cloud-services-configure-ssl-certificate.md) ermittelt, welches Zertifikat ein Clouddienst verwenden soll.
 
@@ -31,17 +31,20 @@ Sie können Dienstzertifikate entweder über das klassische Azure-Portal oder mi
 Dienstzertifikate können gesondert von Ihren Diensten sowie von verschiedenen Personen verwaltet werden. Beispielsweise kann ein Entwickler ein Dienstpaket hochladen, das auf ein Zertifikat verweist, das ein IT-Manager zuvor in Azure hochgeladen hat. Ein IT-Manager kann dieses Zertifikat verwalten und erneuern und die Konfiguration des Diensts ändern, ohne ein neues Dienstpaket hochladen zu müssen. Dies ist möglich, da der logische Name für das Zertifikat und sein Speichername und Speicherort in der Dienstdefinitionsdatei angegeben sind, während der Zertifikatfingerabdruck in der Dienstkonfigurationsdatei angegeben ist. Um das Zertifikat zu aktualisieren, muss lediglich ein neues Zertifikat hochgeladen und der Fingerabdruckwert in der Dienstkonfigurationsdatei geändert werden.
 
 ## Was sind Verwaltungszertifikate?
-Mit Verwaltungszertifikaten können Sie eine Authentifizierung mit der Dienstverwaltungs-API durchführen, die vom klassischen Azure bereitgestellt wird. Diese Zertifikate werden in vielen Programmen und Tools (z. B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. Diese stehen eigentlich nicht in Zusammenhang mit Clouddiensten.
+Mit Verwaltungszertifikaten können Sie eine Authentifizierung mit der Dienstverwaltungs-API durchführen, die vom klassischen Azure bereitgestellt wird. Diese Zertifikate werden in vielen Programmen und Tools (z. B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. Diese stehen eigentlich nicht in Zusammenhang mit Clouddiensten.
 
->[AZURE.WARNING] Vorsicht ist geboten! Alle Personen, die die Authentifizierung mit diesen Zertifikaten durchführen, können das zugeordnete Abonnement verwalten.
+> [!WARNING]
+> Vorsicht ist geboten! Alle Personen, die die Authentifizierung mit diesen Zertifikaten durchführen, können das zugeordnete Abonnement verwalten.
+> 
+> 
 
 ### Einschränkungen
-Pro Abonnement sind maximal 100 Verwaltungszertifikate zulässig. Ebenso sind maximal 100 Verwaltungszertifikate für alle Abonnements unter der Benutzer-ID eines bestimmten Dienstadministrators zulässig. Wenn über die Benutzer-ID für den Kontoadministrator bereits 100 Verwaltungszertifikate hinzugefügt wurden und weitere Zertifikate benötigt werden, können Sie einen Co-Administrator festlegen, um die zusätzlichen Zertifikate hinzuzufügen.
+Pro Abonnement sind maximal 100 Verwaltungszertifikate zulässig. Ebenso sind maximal 100 Verwaltungszertifikate für alle Abonnements unter der Benutzer-ID eines bestimmten Dienstadministrators zulässig. Wenn über die Benutzer-ID für den Kontoadministrator bereits 100 Verwaltungszertifikate hinzugefügt wurden und weitere Zertifikate benötigt werden, können Sie einen Co-Administrator festlegen, um die zusätzlichen Zertifikate hinzuzufügen.
 
-Prüfen Sie vor dem Hinzufügen von mehr als 100 Zertifikaten, ob Sie stattdessen nicht ein vorhandenes Zertifikat wiederverwenden können. Durch die Verwendung von Co-Administratoren kann sich Ihr Zertifikatverwaltungsprozess unnötigerweise verkomplizieren.
-
+Prüfen Sie vor dem Hinzufügen von mehr als 100 Zertifikaten, ob Sie stattdessen nicht ein vorhandenes Zertifikat wiederverwenden können. Durch die Verwendung von Co-Administratoren kann sich Ihr Zertifikatverwaltungsprozess unnötigerweise verkomplizieren.
 
 <a name="create"></a>
+
 ## Erstellen eines neuen selbstsignierten Zertifikats
 Ein selbstsigniertes Zertifikat können Sie mit allen verfügbaren Tools erstellen, sofern die folgenden Einstellungen beachtet werden:
 
@@ -56,19 +59,19 @@ Ein selbstsigniertes Zertifikat können Sie mit allen verfügbaren Tools erstell
 Es gibt zwei einfache Möglichkeiten zum Erstellen eines Zertifikats unter Windows: mithilfe des Dienstprogramms `makecert.exe` oder mit IIS.
 
 ### makecert.exe
-
 Dieses Hilfsprogramm ist veraltet und wird hier nicht länger beschrieben. Weitere Informationen hierzu finden Sie in [diesem MSDN-Artikel](https://msdn.microsoft.com/library/windows/desktop/aa386968).
 
 ### PowerShell
-
 ```powershell
 $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
 
->[AZURE.NOTE] Wenn Sie das Zertifikat mit einer IP-Adresse anstelle einer Domäne verwenden möchten, verwenden Sie die IP-Adresse im Parameter -DnsName.
-
+> [!NOTE]
+> Wenn Sie das Zertifikat mit einer IP-Adresse anstelle einer Domäne verwenden möchten, verwenden Sie die IP-Adresse im Parameter -DnsName.
+> 
+> 
 
 Wenn Sie dieses [Zertifikat mit dem Verwaltungsportal](../azure-api-management-certs.md) verwenden möchten, exportieren Sie es in eine **CER**-Datei:
 
@@ -77,7 +80,6 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
 ### Internetinformationsdienste (IIS)
-
 Im Internet wird auf vielen Seiten erläutert, wie mit IIS Zertifikate erstellt werden können. [Hier](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) eine Seite, auf der dies nach meinem Empfinden anschaulich erklärt wird.
 
 ### Java
@@ -87,11 +89,13 @@ Auch mit Java können Sie [ein Zertifikat erstellen](../app-service-web/java-cre
 In [diesem](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) Artikel wird beschrieben, wie Zertifikate mit SSH erstellt werden.
 
 ## Nächste Schritte
-
 [Hochladen des Dienstzertifikats in das klassische Azure-Portal](cloud-services-configure-ssl-certificate.md) (oder das [Azure-Portal](cloud-services-configure-ssl-certificate-portal.md)).
 
 Hochladen des [Verwaltungs-API-Zertifikats](../azure-api-management-certs.md) in das klassische Azure-Portal.
 
->[AZURE.NOTE] Im Azure-Portal erfolgt der Zugriff auf die API nicht über Verwaltungszertifikate, sondern über Benutzerkonten.
+> [!NOTE]
+> Im Azure-Portal erfolgt der Zugriff auf die API nicht über Verwaltungszertifikate, sondern über Benutzerkonten.
+> 
+> 
 
 <!---HONumber=AcomDC_0914_2016-->

@@ -1,27 +1,27 @@
-<properties
-	pageTitle="Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager | Microsoft Azure"
-	description="Vorgehensweise zum Einrichten des WinRM-Zugriffs zur Verwendung mit einem virtuellen Azure Resource Manager-Computer"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="singhkays"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+---
+title: Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager | Microsoft Docs
+description: Vorgehensweise zum Einrichten des WinRM-Zugriffs zur Verwendung mit einem virtuellen Azure Resource Manager-Computer
+services: virtual-machines-windows
+documentationcenter: ''
+author: singhkays
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/16/2016"
-	ms.author="singhkay"/>
+ms.service: virtual-machines-windows
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 06/16/2016
+ms.author: singhkay
 
+---
 # Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager
-
 ## WinRM in Azure Service Management im Vergleich zu Azure Resource Manager
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell
+Klassisches Bereitstellungsmodell
 
 * Eine Übersicht über Azure Resource Manager finden Sie in diesem [Artikel](../resource-group-overview.md).
 * Unterschiede zwischen Azure Service Management und Azure Resource Manager können Sie diesem [Artikel](../resource-manager-deployment-model.md) entnehmen.
@@ -37,7 +37,6 @@ Sie müssen folgende Schritte ausführen, um einen virtuellen Computer mit WinRM
 5. Verweisen auf die URL für selbstsignierte Zertifikate beim Erstellen eines virtuellen Computers
 
 ## Schritt 1: Erstellen eines Schlüsseltresors
-
 Sie können den folgenden Befehl verwenden, um den Schlüsseltresor zu erstellen.
 
 ```
@@ -60,7 +59,6 @@ Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $
 ```
 
 ## Schritt 3: Hochladen eines selbstsignierten Zertifikats in den Schlüsseltresor
-
 Vor dem Hochladen des Zertifikats in den in Schritt 1 erstellten Schlüsseltresor muss es in ein Format konvertiert werden, das für den Microsoft.Compute-Ressourcenanbieter verständlich ist. Dies können Sie mit dem unten stehenden PowerShell-Skript tun.
 
 ```
@@ -84,31 +82,28 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 ```
 
 ## Schritt 4: Abrufen der URL für das selbstsignierte Zertifikat im Schlüsseltresor
-
 Der Microsoft.Compute-Ressourcenanbieter benötigt bei der Bereitstellung des virtuellen Computers eine URL für den geheimen Schlüssel im Schlüsseltresor. Dadurch kann der Microsoft.Compute-Ressourcenanbieter den geheimen Schlüssel herunterladen und das entsprechende Zertifikat auf dem virtuellen Computer erstellen.
 
->[AZURE.NOTE]Die URL des geheimen Schlüssels muss auch die Version enthalten. Eine Beispiel-URL sieht wie folgt aus: https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
-
+> [!NOTE]
+> Die URL des geheimen Schlüssels muss auch die Version enthalten. Eine Beispiel-URL sieht wie folgt aus: https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> 
+> 
 
 #### Vorlagen
-
 Sie erhalten den Link zur URL in der Vorlage mit folgendem Code:
 
     "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
 
 #### PowerShell
-
 Sie erhalten diese URL durch den folgenden PowerShell-Befehl:
 
-	$secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
 ## Schritt 5: Verweisen auf die URL für selbstsignierte Zertifikate beim Erstellen eines virtuellen Computers
-
 #### Azure Resource Manager-Vorlagen
-
 Beim Erstellen eines virtuellen Computers mittels Vorlagen wird im Abschnitt mit dem geheimen Schlüssel und im Abschnitt „winRM“ wie folgt auf das Zertifikat verwiesen:
 
-	"osProfile": {
+    "osProfile": {
           ...
           "secrets": [
             {
@@ -145,21 +140,23 @@ Eine Vorlage zum oben genannten Beispiel finden Sie unter [201-vm-winrm-keyvault
 Den Quellcode für diese Vorlage finden Sie auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
 
 #### PowerShell
-
-	$vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
-	$credential = Get-Credential
-	$secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-	$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
-	$sourceVaultId = (Get-AzureRmKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
-	$CertificateStore = "My"
-	$vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
+    $vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
+    $credential = Get-Credential
+    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
+    $sourceVaultId = (Get-AzureRmKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
+    $CertificateStore = "My"
+    $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
 ## Schritt 6: Herstellen einer Verbindung mit dem virtuellen Computer
 Bevor Sie eine Verbindung mit dem virtuellen Computer herstellen können, müssen Sie sicherstellen, dass Ihr Computer für die WinRM-Remoteverwaltung konfiguriert ist. Starten Sie PowerShell als Administrator, und führen Sie den folgenden Befehl aus, um zu überprüfen, ob das Setup abgeschlossen ist.
 
     Enable-PSRemoting -Force
 
->[AZURE.NOTE] Wenn die oben genannte Methode nicht funktioniert, müssen Sie sicherstellen, dass der WinRM-Dienst ausgeführt wird. Verwenden Sie dazu `Get-Service WinRM`.
+> [!NOTE]
+> Wenn die oben genannte Methode nicht funktioniert, müssen Sie sicherstellen, dass der WinRM-Dienst ausgeführt wird. Verwenden Sie dazu `Get-Service WinRM`.
+> 
+> 
 
 Wenn das Setup abgeschlossen ist, können Sie mit dem folgenden Befehl eine Verbindung mit dem virtuellen Computer erstellen:
 

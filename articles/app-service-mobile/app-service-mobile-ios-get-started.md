@@ -1,44 +1,37 @@
-<properties
-	pageTitle="Erstellen einer iOS-App für mobile Azure App Service-Apps | Microsoft Azure"
-	description="Befolgen Sie dieses Tutorial für die ersten Schritte bei der Verwendung mobiler Azure-App-Back-Ends für die iOS-Entwicklung in Objective-C oder Swift."
-	services="app-service\mobile"
-	documentationCenter="ios"
-	authors="yuaxu"
-	manager="yochayk"
-	editor=""/>
+---
+title: Erstellen einer iOS-App für mobile Azure App Service-Apps | Microsoft Docs
+description: Befolgen Sie dieses Tutorial für die ersten Schritte bei der Verwendung mobiler Azure-App-Back-Ends für die iOS-Entwicklung in Objective-C oder Swift.
+services: app-service\mobile
+documentationcenter: ios
+author: yuaxu
+manager: yochayk
+editor: ''
 
-<tags
-	ms.service="app-service-mobile"
-	ms.workload="na"
-	ms.tgt_pltfrm="mobile-ios"
-	ms.devlang="objective-c"
-	ms.topic="hero-article"
-	ms.date="10/01/2016"
-	ms.author="yuaxu"/>
+ms.service: app-service-mobile
+ms.workload: na
+ms.tgt_pltfrm: mobile-ios
+ms.devlang: objective-c
+ms.topic: hero-article
+ms.date: 10/01/2016
+ms.author: yuaxu
 
-#Erstellen einer iOS-App
-
-[AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+---
+# Erstellen einer iOS-App
+[!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## Übersicht
-
-In diesem Tutorial erfahren Sie, wie Sie [Azure Mobile Apps](app-service-mobile-value-prop.md), einen Cloud-Back-End-Dienst, zu einer iOS-App hinzufügen können. Wir erstellen zunächst ein neues mobiles Back-End. Anschließend verwenden wir eine einfache _Aufgabenlisten-_-iOS-App zum Speichern von Daten in Azure.
+In diesem Tutorial erfahren Sie, wie Sie [Azure Mobile Apps](app-service-mobile-value-prop.md), einen Cloud-Back-End-Dienst, zu einer iOS-App hinzufügen können. Wir erstellen zunächst ein neues mobiles Back-End. Anschließend verwenden wir eine einfache *Aufgabenlisten-*-iOS-App zum Speichern von Daten in Azure.
 
 Sie benötigen einen Mac und ein [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), um dieses Lernprogramm auszuführen.
 
-
 ## Schritt I: Erstellen eines neuen Azure-Back-Ends für mobile Apps
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
+[!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 ## Schritt II: Konfigurieren des Back-End-Projekts
-
-[AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
+[!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## Schritt III: Herunterladen und Ausführen der iOS-App
-
-[AZURE.INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
-
+[!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
 <!-- Images. -->
 

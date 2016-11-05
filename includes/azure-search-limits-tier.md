@@ -1,7 +1,7 @@
-Ressource|Kostenlos|Basic (Vorschau)|S1|S2
----|---|---|---|----
-Maximale Dienste in jedem Tarif pro Abonnement <sup>1</sup>|1 |12 |12 |1
-Maximale Skalierung pro Tarif <sup>2</sup>|–|3 SU (bis zu 3 Replikate und 1 Partition)|36 SU|36 SU  
+| Ressource | Kostenlos | Basic (Vorschau) | S1 | S2 |
+| --- | --- | --- | --- | --- |
+| Maximale Dienste in jedem Tarif pro Abonnement <sup>1</sup> |1 |12 |12 |1 |
+| Maximale Skalierung pro Tarif <sup>2</sup> |– |3 SU (bis zu 3 Replikate und 1 Partition) |36 SU |36 SU |
 
 <sup>1</sup> Jeder Dienst wird in einem bestimmten Tarif bereitgestellt. Dabei gelten Grenzwerte für die Anzahl der Dienste, die in jedem Tarif in einem einzelnen Azure-Abonnement bereitgestellt werden können. Während der Vorschauphase sind Tarife zu einem Einführungspreis mit 50 Prozent Nachlass auf den vollen Preis erhältlich.
 

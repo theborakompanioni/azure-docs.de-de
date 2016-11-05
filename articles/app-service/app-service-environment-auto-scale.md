@@ -1,25 +1,22 @@
-<properties
-	pageTitle="Automatische Skalierung und App Service-Umgebung | Microsoft Azure"
-	description="Automatische Skalierung und App Service-Umgebung"
-	services="app-service"
-	documentationCenter=""
-	authors="btardif"
-	manager="wpickett"
-	editor=""
-/>
+---
+title: Automatische Skalierung und App Service-Umgebung | Microsoft Docs
+description: Automatische Skalierung und App Service-Umgebung
+services: app-service
+documentationcenter: ''
+author: btardif
+manager: wpickett
+editor: ''
 
-<tags
-	ms.service="app-service"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/07/2016"
-	ms.author="byvinyal"
-/>
+ms.service: app-service
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/07/2016
+ms.author: byvinyal
 
+---
 # Automatische Skalierung und App Service-Umgebung
-
 Azure App Service-Umgebungen unterstützen die *automatische Skalierung*. Sie können einzelne Workerpools basierend auf Metriken oder nach einem Zeitplan automatisch skalieren.
 
 ![Optionen für automatische Skalierung für einen Workerpool][intro]
@@ -27,7 +24,6 @@ Azure App Service-Umgebungen unterstützen die *automatische Skalierung*. Sie k�
 Durch die automatische Skalierung wird die Ressourcenverwendung optimiert, indem Sie eine App Service-Umgebung automatisch vergrößern und verkleinern, sodass sie zu Ihrem Budget und Lastprofil passt.
 
 ## Konfigurieren der automatischen Skalierung für Workerpools
-
 Sie können auf die Funktionalität für die automatische Skalierung über die Registerkarte **Einstellungen** des Workerpools zugreifen.
 
 ![Registerkarte „Einstellungen“ des Workerpools][settings-scale]
@@ -51,13 +47,11 @@ Nach dem Definieren eines Profils können Sie Regeln für die automatische Skali
  Alle Workerpool- oder Front-End-Metriken können zum Definieren von Regeln für die automatische Skalierung verwendet werden. Hierbei handelt es sich um die gleichen Metriken, die Sie in den Diagrammen des Ressourcenblatts überwachen oder für die Sie Warnungen festlegen können.
 
 ## Beispiel für die automatische Skalierung
-
 Die automatische Skalierung einer App Service-Umgebung kann am besten anhand eines Szenarios dargestellt werden.
 
 In diesem Artikel werden alle erforderlichen Punkte der Einrichtung einer automatischen Skalierung und alle Interaktionen beschrieben, die für die automatische Skalierung von App Service-Umgebungen gelten.
 
 ### Einführung in das Szenario
-
 Frank ist Systemadministrator in einem Unternehmen. Er hat einen Teil der Workloads, die er verwaltet, zu einer App Service-Umgebung migriert.
 
 Die App Service-Umgebung ist wie folgt für die manuelle Skalierung konfiguriert:
@@ -75,37 +69,36 @@ Frank ist mit der Anwendung gut vertraut. Er weiß, dass die Spitzenzeiten mit d
 
 ![Spezifische Einstellungen für Branchen-App][asp-scale]
 
-|	**Profil für die automatische Skalierung – Werktage – App Service-Plan** |	**Profil für die automatische Skalierung – Wochenenden – App Service-Plan** |
-|	----------------------------------------------------	|	----------------------------------------------------	|
-|	**Name:** Profil für Werktage |	**Name:** Profil für Wochenenden |
-|	**Skalieren nach:** Zeitplan und Leistungsregeln |	**Skalieren nach:** Zeitplan und Leistungsregeln |
-|	**Profil:** Werktage |	**Profil:** Wochenende |
-|	**Typ:** Serie |	**Typ:** Serie |
-|	**Zielbereich:** 5 bis 20 Instanzen |	**Zielbereich:** 3 bis 10 Instanzen |
-|	**Tage:** Montag, Dienstag, Mittwoch, Donnerstag, Freitag |	**Tage:** Samstag, Sonntag |
-|	**Startzeit:** 9:00 Uhr |	**Startzeit:** 9:00 Uhr |
-|	**Zeitzone:** UTC-08 |	**Zeitzone:** UTC-08 |
-| | |
-|	**Regel für die automatische Skalierung (Zentral hochskalieren)** |	**Regel für die automatische Skalierung (Zentral hochskalieren)** |
-|	**Ressource:** Produktion (App Service-Umgebung) |	**Ressource:** Produktion (App Service-Umgebung) |
-|	**Metrik:** CPU in % |	**Metrik:** CPU in % |
-|	**Operation:** Größer als 60 % |	**Operation:** Größer als 80 % |
-|	**Dauer:** 5 Minuten |	**Dauer:** 10 Minuten |
-|	**Zeitaggregation:** Durchschnitt |	**Zeitaggregation:** Durchschnitt |
-|	**Aktion:** Anzahl um 2 erhöhen |	**Aktion:** Anzahl um 1 erhöhen |
-|	**Abkühlen (Minuten):** 15 |	**Abkühlen (Minuten):** 20 |
-| | |
- |	**Regel für die automatische Skalierung (Zentral herunterskalieren)** |	**Regel für die automatische Skalierung (Zentral herunterskalieren)** |
-|	**Ressource:** Produktion (App Service-Umgebung) |	**Ressource:** Produktion (App Service-Umgebung) |
-|	**Metrik:** CPU in % |	**Metrik:** CPU in % |
-|	**Betrieb:** Weniger als 30% |	**Betrieb:** Weniger als 20% |
-|	**Dauer:** 10 Minuten |	**Dauer:** 15 Minuten |
-|	**Zeitaggregation:** Durchschnitt |	**Zeitaggregation:** Durchschnitt |
-|	**Aktion:** Anzahl um 1 verringern |	**Aktion:** Anzahl um 1 verringern |
-|	**Abkühlen (Minuten):** 20 |	**Abkühlen (Minuten):** 10 |
+| **Profil für die automatische Skalierung – Werktage – App Service-Plan** | **Profil für die automatische Skalierung – Wochenenden – App Service-Plan** |
+| --- | --- |
+| **Name:** Profil für Werktage |**Name:** Profil für Wochenenden |
+| **Skalieren nach:** Zeitplan und Leistungsregeln |**Skalieren nach:** Zeitplan und Leistungsregeln |
+| **Profil:** Werktage |**Profil:** Wochenende |
+| **Typ:** Serie |**Typ:** Serie |
+| **Zielbereich:** 5 bis 20 Instanzen |**Zielbereich:** 3 bis 10 Instanzen |
+| **Tage:** Montag, Dienstag, Mittwoch, Donnerstag, Freitag |**Tage:** Samstag, Sonntag |
+| **Startzeit:** 9:00 Uhr |**Startzeit:** 9:00 Uhr |
+| **Zeitzone:** UTC-08 |**Zeitzone:** UTC-08 |
+|  | |
+| **Regel für die automatische Skalierung (Zentral hochskalieren)** |**Regel für die automatische Skalierung (Zentral hochskalieren)** |
+| **Ressource:** Produktion (App Service-Umgebung) |**Ressource:** Produktion (App Service-Umgebung) |
+| **Metrik:** CPU in % |**Metrik:** CPU in % |
+| **Operation:** Größer als 60 % |**Operation:** Größer als 80 % |
+| **Dauer:** 5 Minuten |**Dauer:** 10 Minuten |
+| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
+| **Aktion:** Anzahl um 2 erhöhen |**Aktion:** Anzahl um 1 erhöhen |
+| **Abkühlen (Minuten):** 15 |**Abkühlen (Minuten):** 20 |
+|  | |
+| **Regel für die automatische Skalierung (Zentral herunterskalieren)** |**Regel für die automatische Skalierung (Zentral herunterskalieren)** |
+| **Ressource:** Produktion (App Service-Umgebung) |**Ressource:** Produktion (App Service-Umgebung) |
+| **Metrik:** CPU in % |**Metrik:** CPU in % |
+| **Betrieb:** Weniger als 30% |**Betrieb:** Weniger als 20% |
+| **Dauer:** 10 Minuten |**Dauer:** 15 Minuten |
+| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
+| **Aktion:** Anzahl um 1 verringern |**Aktion:** Anzahl um 1 verringern |
+| **Abkühlen (Minuten):** 20 |**Abkühlen (Minuten):** 10 |
 
 ### Inflationsrate für den App Service-Plan
-
 App Service-Pläne, die für die automatische Skalierung konfiguriert sind, nutzen dafür eine maximale Rate pro Stunde. Diese Rate kann basierend auf den Werten berechnet werden, die in der Regel für die automatische Skalierung bereitgestellt werden.
 
 Das Verstehen und Berechnen der *Inflationsrate für den App Service-Plan* ist wichtig für die automatische Skalierung in einer App-Service-Umgebung, da Größenänderungen bei einem Workerpool erst nach einiger Zeit wirksam werden.
@@ -139,7 +132,6 @@ Wenn mehrere App Service-Pläne in einem Workerpool gehostet werden, müssen Sie
 ![Berechnung der Gesamtinflationsrate für mehrere App Service-Pläne, die in einem Workerpool gehostet werden][ASP-Total-Inflation]
 
 ### Verwenden der Inflationsrate für den App Service-Plan zum Definieren von Regeln für die automatische Skalierung für Workerpools
-
 Workerpools, von denen App Service-Pläne gehostet werden, die für die automatische Skalierung konfiguriert sind, muss ein Kapazitätspuffer zugeordnet werden. Der Puffer ermöglicht, dass die Vorgänge der automatischen Skalierung den App Service-Plan je nach Bedarf erhöhen oder verringern. Die Mindestgröße des Puffers wäre die berechnete Gesamtinflationsrate für den App Service-Plan.
 
 Da Skalierungsvorgänge in der App Service-Umgebung einige Zeit dauern, sollten bei jeder Änderung weitere Bedarfsänderungen berücksichtigt werden, die stattfinden können, während eine Skalierung ausgeführt wird. Zur Berücksichtigung dieser Latenz empfehlen wir Ihnen, die berechnete Gesamtinflationsrate für den App Service-Plan als Mindestanzahl von Instanzen zu verwenden, die der automatischen Skalierung für jeden Vorgang hinzugefügt werden.
@@ -148,34 +140,34 @@ Mit diesen Informationen kann Frank die folgenden Profile und Regeln für die au
 
 ![Regeln für die automatische Skalierung für Branchenbeispiel][Worker-Pool-Scale]
 
-|	**Profil für die automatische Skalierung – Werktage** |	**Profil für die automatische Skalierung – Wochenenden** |
-|	----------------------------------------------------	|	--------------------------------------------	|
-|	**Name:** Profil für Werktage |	**Name:** Profil für Wochenenden |
-|	**Skalieren nach:** Zeitplan und Leistungsregeln |	**Skalieren nach:** Zeitplan und Leistungsregeln |
-|	**Profil:** Werktage |	**Profil:** Wochenende |
-|	**Typ:** Serie |	**Typ:** Serie |
-|	**Zielbereich:** 13 bis 25 Instanzen |	**Zielbereich:** 6 bis 15 Instanzen |
-|	**Tage:** Montag, Dienstag, Mittwoch, Donnerstag, Freitag |	**Tage:** Samstag, Sonntag |
-|	**Startzeit:** 7:00 Uhr |	**Startzeit:** 9:00 Uhr |
-|	**Zeitzone:** UTC-08 |	**Zeitzone:** UTC-08 |
-| | |
-|	**Regel für die automatische Skalierung (Zentral hochskalieren)** |	**Regel für die automatische Skalierung (Zentral hochskalieren)** |
-|	**Ressource:** Workerpool 1 |	**Ressource:** Workerpool 1 |
-|	**Metrik:** Verfügbare Worker |	**Metrik:** Verfügbare Worker |
-|	**Operation:** Weniger als 8 |	**Operation:** Weniger als 3 |
-|	**Dauer:** 20 Minuten |	**Dauer:** 30 Minuten |
-|	**Zeitaggregation:** Durchschnitt |	**Zeitaggregation:** Durchschnitt |
-|	**Aktion:** Anzahl um 8 erhöhen |	**Aktion:** Anzahl um 3 erhöhen |
-|	**Abkühlen (Minuten):** 180 |	**Abkühlen (Minuten):** 180 |
-| | |
-|	**Regel für die automatische Skalierung (Zentral herunterskalieren)** |	**Regel für die automatische Skalierung (Zentral herunterskalieren)** |
-|	**Ressource:** Workerpool 1 |	**Ressource:** Workerpool 1 |
-|	**Metrik:** Verfügbare Worker |	**Metrik:** Verfügbare Worker |
-|	**Operation:** Größer als 8 |	**Operation:** Größer als 3 |
-|	**Dauer:** 20 Minuten |	**Dauer:** 15 Minuten |
-|	**Zeitaggregation:** Durchschnitt |	**Zeitaggregation:** Durchschnitt |
-|	**Aktion:** Anzahl um 2 verringern |	**Aktion:** Anzahl um 3 verringern |
-|	**Abkühlen (Minuten):** 120 |	**Abkühlen (Minuten):** 120 |
+| **Profil für die automatische Skalierung – Werktage** | **Profil für die automatische Skalierung – Wochenenden** |
+| --- | --- |
+| **Name:** Profil für Werktage |**Name:** Profil für Wochenenden |
+| **Skalieren nach:** Zeitplan und Leistungsregeln |**Skalieren nach:** Zeitplan und Leistungsregeln |
+| **Profil:** Werktage |**Profil:** Wochenende |
+| **Typ:** Serie |**Typ:** Serie |
+| **Zielbereich:** 13 bis 25 Instanzen |**Zielbereich:** 6 bis 15 Instanzen |
+| **Tage:** Montag, Dienstag, Mittwoch, Donnerstag, Freitag |**Tage:** Samstag, Sonntag |
+| **Startzeit:** 7:00 Uhr |**Startzeit:** 9:00 Uhr |
+| **Zeitzone:** UTC-08 |**Zeitzone:** UTC-08 |
+|  | |
+| **Regel für die automatische Skalierung (Zentral hochskalieren)** |**Regel für die automatische Skalierung (Zentral hochskalieren)** |
+| **Ressource:** Workerpool 1 |**Ressource:** Workerpool 1 |
+| **Metrik:** Verfügbare Worker |**Metrik:** Verfügbare Worker |
+| **Operation:** Weniger als 8 |**Operation:** Weniger als 3 |
+| **Dauer:** 20 Minuten |**Dauer:** 30 Minuten |
+| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
+| **Aktion:** Anzahl um 8 erhöhen |**Aktion:** Anzahl um 3 erhöhen |
+| **Abkühlen (Minuten):** 180 |**Abkühlen (Minuten):** 180 |
+|  | |
+| **Regel für die automatische Skalierung (Zentral herunterskalieren)** |**Regel für die automatische Skalierung (Zentral herunterskalieren)** |
+| **Ressource:** Workerpool 1 |**Ressource:** Workerpool 1 |
+| **Metrik:** Verfügbare Worker |**Metrik:** Verfügbare Worker |
+| **Operation:** Größer als 8 |**Operation:** Größer als 3 |
+| **Dauer:** 20 Minuten |**Dauer:** 15 Minuten |
+| **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
+| **Aktion:** Anzahl um 2 verringern |**Aktion:** Anzahl um 3 verringern |
+| **Abkühlen (Minuten):** 120 |**Abkühlen (Minuten):** 120 |
 
 Der im Profil definierte Zielbereich wird anhand der minimalen Instanzen, die im Profil für den App Service-Plan definiert sind, plus dem Puffer berechnet.
 
@@ -186,41 +178,40 @@ Bei den Regeln für das zentrale Hochskalieren sollte die Anzahl, um die erhöht
 Die Anzahl, um die verringert wird, kann zwischen dem 0,5- und 1-Fachen der Inflationsrate für den App Service-Plan für das zentrale Herunterskalieren liegen.
 
 ### Automatische Skalierung für Front-End-Pool
-
 Regeln für die automatische Front-End-Skalierung sind einfacher als für Workerpools. Sie sollten in erster Linie sicherstellen, dass für die Dauer der Messung und die Abkühltimer berücksichtigt wird, dass Skalierungsvorgänge eines App Service-Plans nicht sofort wirksam werden.
 
 Bei diesem Szenario weiß Frank, dass die Fehlerrate ansteigt, nachdem Front-Ends eine CPU-Auslastung von 80% erreichen. Um dies zu verhindern, legt er für die Regel für die automatische Skalierung wie folgt fest, dass Instanzen erhöht werden sollen:
 
 ![Einstellungen für automatische Skalierung für Front-End-Pool][Front-End-Scale]
 
-|	**Profil für die automatische Skalierung – Front-Ends** |
-|	--------------------------------------------	|
-|	**Name:** Automatische Skalierung – Front-Ends |
-|	**Skalieren nach:** Zeitplan und Leistungsregeln |
-|	**Profil:** Täglich |
-|	**Typ:** Serie |
-|	**Zielbereich:** 3 bis 10 Instanzen |
-|	**Tage:** Täglich |
-|	**Startzeit:** 9:00 Uhr |
-|	**Zeitzone:** UTC-08 |
-| |
-|	**Regel für die automatische Skalierung (Zentral hochskalieren)** |
-|	**Ressource:** Front-End-Pool |
-|	**Metrik:** CPU in % |
-|	**Operation:** Größer als 60 % |
-|	**Dauer:** 20 Minuten |
-|	**Zeitaggregation:** Durchschnitt |
-|	**Aktion:** Anzahl um 3 erhöhen |
-|	**Abkühlen (Minuten):** 120 |
-| |
-|	**Regel für die automatische Skalierung (Zentral herunterskalieren)** |
-|	**Ressource:** Workerpool 1 |
-|	**Metrik:** CPU in % |
-|	**Betrieb:** Weniger als 30% |
-|	**Dauer:** 20 Minuten |
-|	**Zeitaggregation:** Durchschnitt |
-|	**Aktion:** Anzahl um 3 verringern |
-|	**Abkühlen (Minuten):** 120 |
+| **Profil für die automatische Skalierung – Front-Ends** |
+| --- |
+| **Name:** Automatische Skalierung – Front-Ends |
+| **Skalieren nach:** Zeitplan und Leistungsregeln |
+| **Profil:** Täglich |
+| **Typ:** Serie |
+| **Zielbereich:** 3 bis 10 Instanzen |
+| **Tage:** Täglich |
+| **Startzeit:** 9:00 Uhr |
+| **Zeitzone:** UTC-08 |
+|  |
+| **Regel für die automatische Skalierung (Zentral hochskalieren)** |
+| **Ressource:** Front-End-Pool |
+| **Metrik:** CPU in % |
+| **Operation:** Größer als 60 % |
+| **Dauer:** 20 Minuten |
+| **Zeitaggregation:** Durchschnitt |
+| **Aktion:** Anzahl um 3 erhöhen |
+| **Abkühlen (Minuten):** 120 |
+|  |
+| **Regel für die automatische Skalierung (Zentral herunterskalieren)** |
+| **Ressource:** Workerpool 1 |
+| **Metrik:** CPU in % |
+| **Betrieb:** Weniger als 30% |
+| **Dauer:** 20 Minuten |
+| **Zeitaggregation:** Durchschnitt |
+| **Aktion:** Anzahl um 3 verringern |
+| **Abkühlen (Minuten):** 120 |
 
 <!-- IMAGES -->
 [intro]: ./media/app-service-environment-auto-scale/introduction.png

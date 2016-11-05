@@ -1,29 +1,28 @@
-<properties
-	 pageTitle="Gewusst wie: Erstellen einer Azure-Supportanfrage | Microsoft Azure"
-	 description="Erfahren Sie, wie Sie eine Azure-Supportanfrage erstellen."
-	 services="Azure Supportability"
-	 documentationCenter=""
-	 authors="ganganarayanan"
-	 manager="scotthit"
-	 editor=""/>
+---
+title: 'Gewusst wie: Erstellen einer Azure-Supportanfrage | Microsoft Docs'
+description: Erfahren Sie, wie Sie eine Azure-Supportanfrage erstellen.
+services: Azure Supportability
+documentationcenter: ''
+author: ganganarayanan
+manager: scotthit
+editor: ''
 
-<tags
-	 ms.service="azure-supportability"
-	 ms.workload="na"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="article"
-	 ms.date="07/25/2016"
-	 ms.author="gangan"/>
+ms.service: azure-supportability
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/25/2016
+ms.author: gangan
 
+---
 # Gewusst wie: Erstellen einer Azure-Supportanfrage
-
 ## Zusammenfassung
 Azure-Kunden können Supportanfragen im Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) erstellen und verwalten. Basierend auf Kundenfeedback haben wir die Benutzeroberfläche für Supportanfragen aktualisiert, um drei Hauptziele zu erreichen:
 
-- **Optimierung**: Die Anzahl von Klicks und Blättern wurde reduziert, um die Übermittlung einer Supportanfrage zu vereinfachen.
-- **Integration**: Wenn Sie die Problembehandlung für ein Problem mit einer Azure-Ressource durchführen, sollte das Öffnen einer Supportanfrage für diese Ressource leicht möglich sein, ohne den Kontext zu wechseln.
-- **Effizienz**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
+* **Optimierung**: Die Anzahl von Klicks und Blättern wurde reduziert, um die Übermittlung einer Supportanfrage zu vereinfachen.
+* **Integration**: Wenn Sie die Problembehandlung für ein Problem mit einer Azure-Ressource durchführen, sollte das Öffnen einer Supportanfrage für diese Ressource leicht möglich sein, ohne den Kontext zu wechseln.
+* **Effizienz**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
 
 ## Erste Schritte
 Sie können eine Supportanfrage oben über das Navigationsmenü oder direkt auf dem Blatt einer Ressource erstellen.
@@ -43,7 +42,10 @@ Beispiel: Für Ihren virtuellen Computer sind technische Schwierigkeiten aufgetr
 
 ![Blatt "Grundlagen"](./media/how-to-create-azure-support-request/Basics.png)
 
->[AZURE.NOTE] In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt (Dinge wie Abrechnung, Kontingentanpassungen und Kontenübertragungen). Für technischen Support benötigen Sie einen Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
+> [!NOTE]
+> In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt (Dinge wie Abrechnung, Kontingentanpassungen und Kontenübertragungen). Für technischen Support benötigen Sie einen Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
+> 
+> 
 
 ## Problem
 Im zweiten Schritt des Assistenten werden weitere Details zum Problem gesammelt. Indem in diesem Schritt genaue Details bereitgestellt werden, können wir Ihren Fall an den besten Supporttechniker für das Problem weiterleiten und so schnell wie möglich mit der Diagnose des Problems beginnen.
@@ -75,7 +77,10 @@ Wenn Sie den Schweregrad der Anfrage ändern möchten, können Sie auf die Kache
 
 Wenn Sie auf die Kachel klicken, wird die Liste mit den Schweregraden angezeigt, die Sie einer offenen Supportanfrage zuweisen können.
 
->[AZURE.NOTE] Der maximale Schweregrad richtet sich nach Ihrem Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
+> [!NOTE]
+> Der maximale Schweregrad richtet sich nach Ihrem Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
+> 
+> 
 
 ![VID-2](./media/how-to-create-azure-support-request/VID-2.png)
 

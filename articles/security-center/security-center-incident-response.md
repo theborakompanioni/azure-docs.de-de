@@ -1,26 +1,25 @@
-<properties
-   pageTitle="Verwenden von Azure Security Center zur Reaktion auf Vorfälle | Microsoft Azure"
-   description="In diesem Dokument wird beschrieben, wie Sie Azure Security Center für die Reaktion auf Vorfälle nutzen."
-   services="security-center"
-   documentationCenter="na"
-   authors="YuriDio"
-   manager="swadhwa"
-   editor=""/>
+---
+title: Verwenden von Azure Security Center zur Reaktion auf Vorfälle | Microsoft Docs
+description: In diesem Dokument wird beschrieben, wie Sie Azure Security Center für die Reaktion auf Vorfälle nutzen.
+services: security-center
+documentationcenter: na
+author: YuriDio
+manager: swadhwa
+editor: ''
 
-<tags
-   ms.service="security-center"
-   ms.topic="hero-article"
-   ms.devlang="na"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/20/2016"
-   ms.author="yurid"/>
+ms.service: security-center
+ms.topic: hero-article
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/20/2016
+ms.author: yurid
 
+---
 # Verwenden von Azure Security Center zur Reaktion auf Vorfälle
 Viele Organisationen lernen erst nach einem Angriff, wie auf Sicherheitsvorfälle reagiert werden sollte. Zur Reduzierung von Kosten und Schäden ist es wichtig, dass ein Plan zur Reaktion auf Vorfälle vorhanden ist, bevor es zu einem Angriff kommt. Azure Security Center kann in unterschiedlichen Phasen der Reaktion auf Vorfälle genutzt werden.
 
 ## Reaktion auf Vorfälle
-
 Ein effektiver Plan basiert auf drei Hauptmaßnahmen: dem Schutz, der Erkennung und der Reaktion auf Bedrohungen. Beim Schutz geht es um die Verhinderung von Vorfällen, bei der Erkennung sollen Bedrohungen zu einem frühen Zeitpunkt erkannt werden, und bei der Reaktion geht es um das Aussperren des Angreifers und das Wiederherstellen der Systeme, um die Auswirkungen einer Sicherheitsverletzung möglichst gering zu halten.
 
 In diesem Artikel werden die Phasen zur Reaktion auf Sicherheitsvorfälle aus dem Artikel [Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678) (Microsoft Azure Security Response in der Cloud) verwendet. Diese sind in der folgenden Abbildung dargestellt:
@@ -29,17 +28,16 @@ In diesem Artikel werden die Phasen zur Reaktion auf Sicherheitsvorfälle aus de
 
 Security Center kann während der Phasen der Erkennung, Bewertung und Diagnose eingesetzt werden. Hier erhalten Sie weitere Informationen zu diesen Phasen. Es folgt ein Beispiel dafür, wie Security Center in den drei ersten Phasen der Reaktion auf Vorfälle nützlich sein kann:
 
-- **Erkennen**: Erstes Anzeichen für die Untersuchung eines Vorfalls
-	- Beispiel: Erste Bestätigung, dass eine Sicherheitswarnung mit hoher Priorität im Security Center-Dashboard ausgelöst wurde.
-- **Bewerten**: Durchführen der ersten Bewertung, um weitere Informationen zur verdächtigen Aktivität zu erhalten
-	- Beispiel: Beschaffung weiterer Informationen zur Sicherheitswarnung.
-- **Diagnostizieren**: Durchführen von technischer Untersuchung, Identifizieren von Strategien für Einschluss, Eindämmung und Problemlösung
-	- Beispiel: Ausführen der Schritte zur Behebung, die von Security Center in der jeweiligen Sicherheitswarnung angegeben werden.
+* **Erkennen**: Erstes Anzeichen für die Untersuchung eines Vorfalls
+  * Beispiel: Erste Bestätigung, dass eine Sicherheitswarnung mit hoher Priorität im Security Center-Dashboard ausgelöst wurde.
+* **Bewerten**: Durchführen der ersten Bewertung, um weitere Informationen zur verdächtigen Aktivität zu erhalten
+  * Beispiel: Beschaffung weiterer Informationen zur Sicherheitswarnung.
+* **Diagnostizieren**: Durchführen von technischer Untersuchung, Identifizieren von Strategien für Einschluss, Eindämmung und Problemlösung
+  * Beispiel: Ausführen der Schritte zur Behebung, die von Security Center in der jeweiligen Sicherheitswarnung angegeben werden.
 
 Im folgenden Szenario wird gezeigt, wie Sie Security Center während der Erkennung, Bewertung und Diagnose/Reaktion bei einem Sicherheitsvorfall nutzen können. In Security Center ist ein [Sicherheitsvorfall](security-center-incident.md) eine Aggregation aller Warnungen für eine Ressource, die [Kill Chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)-Mustern entsprechen. Eine „Kill Chain“ ist die Schrittfolge eines Angreifers. Vorfälle werden auf der Kachel bzw. auf dem Blatt [Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) angezeigt. Bei einem Vorfall wird die Liste mit den dazugehörigen Warnungen eingeblendet, damit Sie mehr Informationen zu den einzelnen Fällen einsehen können. In Security Center werden auch eigenständige Sicherheitswarnungen angezeigt, die ebenfalls zum Nachverfolgen einer verdächtigen Aktivität verwendet werden können.
 
 ## Szenario
-
 Contoso hat vor Kurzem einige lokale Ressourcen zu Azure migriert. Darunter sind auch einige VM-basierte Branchenworkloads und SQL-Datenbanken. Das Core Computer Security Incident Response Team (CSIRT) von Contoso hat ein Problem mit der Untersuchung von Sicherheitsvorfällen, da Security Intelligence-Funktionen nicht ausreichend in die aktuellen Tools für die Reaktion auf Vorfälle integriert sind. Diese unzureichende Integration führt zu einem Problem während der Erkennung (zu viele falsch positive Ergebnisse) und während der Bewertung und Diagnose. Im Rahmen der Migration wurde die Entscheidung getroffen, Security Center zu verwenden, um dieses Problem zu beheben.
 
 Die erste Phase dieser Migration endete nach der Aufnahme aller Ressourcen und der Umsetzung aller Sicherheitsempfehlungen aus Security Center. Contoso CSIRT ist der zentrale Anlaufpunkt für Vorfälle, die sich auf die Computersicherheit beziehen. Das Team besteht aus einer Gruppe von Personen, die für die Bearbeitung aller Sicherheitsvorfälle zuständig sind. Die Teammitglieder haben klar definierte Pflichten, damit sichergestellt ist, dass kein Verantwortungsbereich offen bleibt.
@@ -49,56 +47,53 @@ In diesem Szenario konzentrieren wir uns auf die Rollen der folgenden „Persona
 ![Lebenszyklus der Reaktion auf Vorfälle](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
 Judy arbeitet im Bereich Security Operations und ist für folgende Aufgaben verantwortlich:
-- Überwachen von und Reagieren auf Sicherheitsbedrohungen rund um die Uhr
-- Eskalieren an Besitzer von Cloudworkloads oder Sicherheitsanalysten (falls erforderlich)
+
+* Überwachen von und Reagieren auf Sicherheitsbedrohungen rund um die Uhr
+* Eskalieren an Besitzer von Cloudworkloads oder Sicherheitsanalysten (falls erforderlich)
 
 Sam ist Security Analyst und für folgende Aufgaben verantwortlich:
-- Untersuchen von Angriffen
-- Lösen von Warnungen
-- Zusammenarbeiten mit Besitzern von Workloads zur Ermittlung und Anwendung von Lösungen
+
+* Untersuchen von Angriffen
+* Lösen von Warnungen
+* Zusammenarbeiten mit Besitzern von Workloads zur Ermittlung und Anwendung von Lösungen
 
 Sie sehen, dass Judy und Sam für unterschiedliche Aufgaben verantwortlich sind und zusammenarbeiten und Informationen aus Security Center austauschen müssen.
 
 ## Empfohlene Lösung
-
 Da Judy und Sam unterschiedliche Rollen haben, nutzen sie jeweils andere Bereiche von Security Center, um die benötigten Informationen für ihre täglichen Aktivitäten zu erhalten. Judy nutzt Sicherheitswarnungen im Rahmen der täglichen Überwachungsarbeit.
 
 ![Sicherheitswarnung](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
 Judy nutzt Sicherheitswarnungen während der Erkennungs- und Bewertungsphase. Nachdem Judy die erste Bewertung durchgeführt hat, kann sie das Problem an Sam eskalieren, falls eine weiter gehende Untersuchung erforderlich ist. An diesem Punkt nutzt Sam die Informationen in Security Center – ggf. auch in Verbindung mit anderen Datenquellen –, um zur Phase „Diagnose“ zu gelangen.
 
-
-## Implementieren dieser Lösung 
-
+## Implementieren dieser Lösung
 Zur Veranschaulichung der Nutzung von Azure Security Center bei einer Reaktion auf einen Vorfall folgen wir den Schritten von Judy in den Phasen „Erkennen“ und „Bewerten“ und sehen uns dann an, wie Sam beim Diagnostizieren des Problems vorgeht.
 
-### Phasen bei der Reaktion auf Vorfälle: Erkennung und Bewertung 
-
+### Phasen bei der Reaktion auf Vorfälle: Erkennung und Bewertung
 Judy hat sich am Azure-Portal angemeldet und befindet sich in der Security Center-Konsole. Im Rahmen ihrer täglichen Überwachungsaktivitäten überprüft sie Sicherheitswarnungen mit hoher Priorität, indem sie die folgenden Schritte ausführt:
 
 1. Klicken Sie auf die Kachel **Sicherheitswarnungen**, und greifen Sie auf das Blatt **Sicherheitswarnungen** zu. ![Blatt „Sicherheitswarnung“](./media/security-center-incident-response/security-center-incident-response-fig4.png)
-
-	> [AZURE.NOTE] In diesem Szenario führt Judy eine Bewertung der Warnung zu einer Aktivität mit schädlichen SQL-Befehlen durch. Dies ist in der Abbildung oben dargestellt.
+   
+   > [!NOTE]
+   > In diesem Szenario führt Judy eine Bewertung der Warnung zu einer Aktivität mit schädlichen SQL-Befehlen durch. Dies ist in der Abbildung oben dargestellt.
+   > 
+   > 
 2. Klicken Sie auf die Warnung **Malicious SQL activity** (Aktivität mit schädlichen SQL-Befehlen), und überprüfen Sie die angegriffenen Ressourcen auf dem Blatt **Malicious SQL Activity** (Aktivität mit schädlichen SQL-Befehlen): ![Details zum Vorfall](./media/security-center-incident-response/security-center-incident-response-fig5.png)
-	
-	Auf diesem Blatt kann Judy sich Notizen dazu machen, welche Ressourcen angegriffen wurden, wie oft der Angriff durchgeführt wurde und wann er erkannt wurde.
+   
+    Auf diesem Blatt kann Judy sich Notizen dazu machen, welche Ressourcen angegriffen wurden, wie oft der Angriff durchgeführt wurde und wann er erkannt wurde.
 3. Klicken Sie auf die **Angegriffene Ressource**, um weitere Informationen zum Angriff zu erhalten.
 
 Nach dem Lesen der Beschreibung ist Judy davon überzeugt, dass es sich nicht um ein falsch positives Ergebnis handelt und dass die Eskalation an Sam erforderlich ist.
 
-### Phase bei der Reaktion auf Vorfälle: Diagnose 
-
+### Phase bei der Reaktion auf Vorfälle: Diagnose
 Sam erhält die Informationen zu diesem Fall von Judy und beginnt damit, die von Security Center vorgeschlagenen Lösungsschritte zu sichten.
 
 ![Lebenszyklus der Reaktion auf Vorfälle](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### Zusätzliche Ressourcen
-
 Das Incident Response Team kann auch die [Security Center Power BI](security-center-powerbi.md)-Funktion nutzen, um verschiedene Arten von Berichten anzuzeigen, die bei der weiteren Untersuchung und beim Visualisieren, Analysieren und Filtern von Empfehlungen und Sicherheitswarnungen hilfreich sind. Für Unternehmen mit einer eigenen SIEM-Lösung (Security Information and Event Management), die zur Untersuchung eingesetzt wird, ist auch die [Integration von Security Center in die Lösung](security-center-integrating-alerts-with-log-integration.md) möglich. Außerdem können Azure-Überwachungsprotokolle und VM-Sicherheitsereignisse mit dem [Azure-Tool für die Integration von Protokollen](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/) integriert werden. Diese Informationen können zusammen mit den Informationen genutzt werden, die von Security Center für die Untersuchung eines Angriffs bereitgestellt werden.
 
-
 ## Zusammenfassung
-
 Es ist für Ihre Organisation sehr wichtig, vor dem Eintreten eines Vorfalls ein Team zusammenzustellen. Dies hat einen positiven Einfluss auf den Umgang mit Sicherheitsvorfällen. Mit den richtigen Tools für die Überwachung von Ressourcen kann das Team präzise Schritte zur Lösung eines Sicherheitsvorfalls ausführen. Mit den [Erkennungsfunktionen](security-center-detection-capabilities.md) von Security Center erhält die IT-Abteilung hilfreiche Werkzeuge zum schnellen Reagieren auf Sicherheitsvorfälle und Lösen von Sicherheitsproblemen.
 
 <!---HONumber=AcomDC_0921_2016-->

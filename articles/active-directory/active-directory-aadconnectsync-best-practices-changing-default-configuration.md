@@ -1,22 +1,21 @@
-<properties
-	pageTitle="Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration | Microsoft Azure"
-	description="Stellt bewährte Methoden zum Ändern der Standardkonfiguration der Azure AD Connect-Synchronisierung vor."
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+---
+title: 'Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration | Microsoft Docs'
+description: Stellt bewährte Methoden zum Ändern der Standardkonfiguration der Azure AD Connect-Synchronisierung vor.
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="markvi;andkjell"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/22/2016
+ms.author: markvi;andkjell
 
-
+---
 # Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration
 Dieses Thema dient zur Beschreibung der unterstützten und nicht unterstützten Änderungen der Azure AD Connect-Synchronisierung.
 
@@ -25,21 +24,24 @@ Die von Azure AD Connect erstellte Konfiguration funktioniert in der vorliegende
 ## Änderungen des Dienstkontos
 Die Azure AD Connect-Synchronisierung läuft unter einem Dienstkonto, das vom Installations-Assistenten erstellt wurde. Dieses Dienstkonto enthält die Verschlüsselungsschlüssel für die von der Synchronisierung verwendete Datenbank. Es ist mit einem 127 Zeichen langen Kennwort erstellt, das nicht abläuft.
 
-- Das Ändern oder Zurücksetzen des Kennworts des Dienstkontos wird **nicht unterstützt**. Dadurch würden die Verschlüsselungsschlüssel gelöscht, und der Dienst wäre nicht in der Lage, auf die Datenbank zuzugreifen und zu starten.
+* Das Ändern oder Zurücksetzen des Kennworts des Dienstkontos wird **nicht unterstützt**. Dadurch würden die Verschlüsselungsschlüssel gelöscht, und der Dienst wäre nicht in der Lage, auf die Datenbank zuzugreifen und zu starten.
 
 ## Änderungen am Scheduler
-Ab den Versionen von Build 1.1 (Februar 2016) können Sie den [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) so konfigurieren, dass ein anderer Synchronisierungszyklus als der Standardwert von 30 Minuten verwendet wird.
+Ab den Versionen von Build 1.1 (Februar 2016) können Sie den [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) so konfigurieren, dass ein anderer Synchronisierungszyklus als der Standardwert von 30 Minuten verwendet wird.
 
 ## Änderungen an Synchronisierungsregeln
 Der Installations-Assistent verfügt über eine Konfiguration, die für die meisten gängigen Szenarien funktioniert. Falls Sie Änderungen an der Konfiguration vornehmen müssen, müssen Sie diese Regeln befolgen, um weiterhin über eine unterstützte Konfiguration zu verfügen.
 
-- Sie können [Attributflüsse ändern](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes), wenn die standardmäßig festgelegten direkten Attributflüsse für Ihre Organisation nicht geeignet sind.
-- Wenn Sie das [„Fließen“ eines Attributs verhindern](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) und alle vorhandenen Attributwerte in Azure AD entfernen möchten, müssen Sie für dieses Szenario eine Regel erstellen.
-- [Deaktivieren Sie eine unerwünschte Synchronisierungsregel](#disable-an-unwanted-sync-rule), statt sie zu löschen. Eine gelöschte Regel wird bei einem Upgrade neu erstellt.
-- Zum [Ändern einer standardmäßigen Regel](#change-an-out-of-box-rule) müssen Sie eine Kopie der Originalregel erstellen und die standardmäßige Regel deaktivieren. Der Synchronisierungsregel-Editor fordert Sie dazu auf und unterstützt Sie dabei.
-- Exportieren Sie Ihre benutzerdefinierten Synchronisierungsregeln mit dem Synchronisierungsregel-Editor. Vom Editor erhalten Sie ein PowerShell-Skript, mit dem Sie die Regeln bei einem Notfallwiederherstellungsszenario problemlos neu erstellen können.
+* Sie können [Attributflüsse ändern](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes), wenn die standardmäßig festgelegten direkten Attributflüsse für Ihre Organisation nicht geeignet sind.
+* Wenn Sie das [„Fließen“ eines Attributs verhindern](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) und alle vorhandenen Attributwerte in Azure AD entfernen möchten, müssen Sie für dieses Szenario eine Regel erstellen.
+* [Deaktivieren Sie eine unerwünschte Synchronisierungsregel](#disable-an-unwanted-sync-rule), statt sie zu löschen. Eine gelöschte Regel wird bei einem Upgrade neu erstellt.
+* Zum [Ändern einer standardmäßigen Regel](#change-an-out-of-box-rule) müssen Sie eine Kopie der Originalregel erstellen und die standardmäßige Regel deaktivieren. Der Synchronisierungsregel-Editor fordert Sie dazu auf und unterstützt Sie dabei.
+* Exportieren Sie Ihre benutzerdefinierten Synchronisierungsregeln mit dem Synchronisierungsregel-Editor. Vom Editor erhalten Sie ein PowerShell-Skript, mit dem Sie die Regeln bei einem Notfallwiederherstellungsszenario problemlos neu erstellen können.
 
->[AZURE.WARNING] Die standardmäßigen Synchronisierungsregeln verfügen über einen Fingerabdruck. Wenn Sie diese Regeln ändern, stimmt der Fingerabdruck nicht mehr überein. In Zukunft treten unter Umständen Probleme auf, wenn Sie eine neue Version von Azure AD Connect anwenden möchten. Führen Sie Änderungen nur wie in diesem Artikel beschrieben durch.
+> [!WARNING]
+> Die standardmäßigen Synchronisierungsregeln verfügen über einen Fingerabdruck. Wenn Sie diese Regeln ändern, stimmt der Fingerabdruck nicht mehr überein. In Zukunft treten unter Umständen Probleme auf, wenn Sie eine neue Version von Azure AD Connect anwenden möchten. Führen Sie Änderungen nur wie in diesem Artikel beschrieben durch.
+> 
+> 
 
 ### Deaktivieren einer unerwünschten Synchronisierungsregel
 Löschen Sie keine standardmäßige Synchronisierungsregel. Sie wird beim nächsten Upgrade wiederhergestellt.
@@ -58,10 +60,9 @@ Wählen Sie **Ja**, um eine Kopie der Regel zu erstellen. Die geklonte Regel wir
 Nehmen Sie an dieser geklonten Regel die erforderlichen Änderungen für Bereich, Verknüpfung und Transformationen vor.
 
 ## Nächste Schritte
-
 **Übersichtsthemen**
 
-- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
-- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+* [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+* [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
 <!---HONumber=AcomDC_0907_2016-->

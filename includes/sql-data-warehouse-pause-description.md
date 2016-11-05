@@ -14,9 +14,9 @@ Um Kosten zu sparen, können Sie Computeressourcen bei Bedarf anhalten und forts
 
 Wenn Sie eine Datenbank anhalten, geschieht Folgendes:
 
-- Compute- und Speicherressourcen werden an den Pool der verfügbaren Ressourcen im Rechenzentrum zurückgegeben.
-- Die DWU-Kosten sind für die Dauer der Pause gleich null.
-- Die Speicherung von Daten ist nicht betroffen, und Ihre Daten bleiben intakt. 
-- SQL Data Warehouse bricht alle Vorgänge ab, die gerade ausgeführt werden oder in der Warteschlange stehen.
+* Compute- und Speicherressourcen werden an den Pool der verfügbaren Ressourcen im Rechenzentrum zurückgegeben.
+* Die DWU-Kosten sind für die Dauer der Pause gleich null.
+* Die Speicherung von Daten ist nicht betroffen, und Ihre Daten bleiben intakt. 
+* SQL Data Warehouse bricht alle Vorgänge ab, die gerade ausgeführt werden oder in der Warteschlange stehen.
 
 <!---HONumber=AcomDC_0427_2016-->

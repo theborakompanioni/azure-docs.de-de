@@ -1,27 +1,25 @@
-<properties
-   pageTitle="Wie werden Anwendungen zu Azure Active Directory hinzugefügt?"
-   description="Dieser Artikel beschreibt, wie Anwendungen zu einer Instanz von Azure Active Directory hinzugefügt werden."
-   services="active-directory"
-   documentationCenter=""
-   authors="shoatman"
-   manager="kbrint"
-   editor=""/>
+---
+title: Wie werden Anwendungen zu Azure Active Directory hinzugefügt?
+description: Dieser Artikel beschreibt, wie Anwendungen zu einer Instanz von Azure Active Directory hinzugefügt werden.
+services: active-directory
+documentationcenter: ''
+author: shoatman
+manager: kbrint
+editor: ''
 
-   <tags
-      ms.service="active-directory"
-      ms.devlang="na"
-      ms.topic="article"
-      ms.tgt_pltfrm="na"
-      ms.workload="identity"
-      ms.date="02/09/2016"
-      ms.author="shoatman"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 02/09/2016
+ms.author: shoatman
 
+---
 # Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
-
 Wenn Sie in Ihrer Instanz von Azure Active Directory eine Anwendungsliste anzeigen, fragen Sie sich vielleicht zunächst, woher die Anwendungen stammen und warum sie dort angezeigt werden. Dieser Artikel beschreibt im Überblick, wie Anwendungen im Verzeichnis dargestellt werden, und vermittelt Kontext, anhand dem Sie besser verstehen, wie die Anwendungen in Ihr Verzeichnis kamen.
 
 ## Welche Services bietet Azure AD Anwendungen?
-
 Anwendungen werden zu Azure AD hinzugefügt, damit sie die von Azure AD bereitgestellten Dienste nutzen können. Diese Dienste umfassen:
 
 * Authentifizierung und Autorisierung von Anwendungen
@@ -33,7 +31,6 @@ Anwendungen werden zu Azure AD hinzugefügt, damit sie die von Azure AD bereitge
 * Anwendungsveröffentlichung und Proxy (Veröffentlichung einer Anwendung aus einem privaten Netzwerk im Internet)
 
 ## Wie werden die Anwendungen im Verzeichnis dargestellt?
-
 Anwendungen werden in Azure AD durch zwei Objekttypen dargestellt: das Anwendungsobjekt und das Dienstprinzipalobjekt. Eine Anwendung wird in jedem Verzeichnis, in dem sie agiert, durch ein Anwendungsobjekt, das in einem „home“-, „owner“- oder „publishing“-Verzeichnis registriert ist, und durch ein oder mehrere Dienstprinzipalobjekte dargestellt.
 
 Das Anwendungsobjekt beschreibt die Anwendung für Azure AD (dem mehrinstanzenfähigen Dienst). Es darf keines der folgenden Elemente enthalten: (*Hinweis*: Dies ist keine vollständige Liste.)
@@ -52,16 +49,15 @@ Der Dienstprinzipal ist ein Anwendungsdatensatz in jedem Verzeichnis, in dem die
 * Er verweist mit der Eigenschaft „App-ID“ auf ein Anwendungsobjekt.
 * Er zeichnet Anwendungsrollenzuweisungen der lokalen Benutzer und Gruppen auf.
 * Er zeichnet die der Anwendung erteilten Berechtigungen für lokale Benutzer und Administratoren auf.
-    * Beispiel: die Berechtigung für die Anwendung, auf die E-Mail eines bestimmten Benutzers zuzugreifen
+  * Beispiel: die Berechtigung für die Anwendung, auf die E-Mail eines bestimmten Benutzers zuzugreifen
 * Er zeichnet lokale Richtlinien einschließlich der geräteabhängigen Zugriffsrichtlinie auf.
 * Er zeichnet alternative lokale Einstellungen einer Anwendung auf:
-    * Transformationsregeln für Ansprüche
-    * Attributzuordnungen (Benutzerbereitstellung)
-    * Mandantenspezifische Anwendungsrollen (wenn die Anwendung benutzerdefinierte Rollen unterstützt)
-    * Name/Logo
+  * Transformationsregeln für Ansprüche
+  * Attributzuordnungen (Benutzerbereitstellung)
+  * Mandantenspezifische Anwendungsrollen (wenn die Anwendung benutzerdefinierte Rollen unterstützt)
+  * Name/Logo
 
 ### Diagramm der Anwendungsobjekte und Dienstprinzipale in Verzeichnissen
-
 ![Ein Diagramm zur Veranschaulichung der Anwendungsobjekte und Dienstprinzipale in Azure AD-Instanzen][apps_service_principals_directory]
 
 Wie Sie dem vorangegangenen Diagramm entnehmen können, stellt Microsoft intern (auf der linken Seite) zwei Verzeichnisse für die Veröffentlichung von Anwendungen bereit.
@@ -78,35 +74,32 @@ Sie selbst können zum Beispiel folgende Anwendungen hinzufügen:
 * Anwendungen, die Sie mithilfe des Azure AD-Anwendungsproxys veröffentlicht haben
 
 ### Hinweise und Ausnahmen
-
 * Nicht alle Dienstprinzipale verweisen zurück auf Anwendungsobjekte. Wie das? In den Anfängen von Azure AD wurden den Anwendungen wesentlich eingeschränktere Dienste bereitgestellt und der Dienstprinzipal reichte zur Einrichtung einer Anwendungsidentität völlig aus. Der ursprüngliche Dienstprinzipal sah dem Active Directory-Dienstkonto von Windows Server noch wesentlich ähnlicher. Aus diesem Grund ist die Erstellung von Dienstprinzipalen mit Azure AD PowerShell nach wie vor ohne vorherige Erstellung eines Anwendungsobjekts möglich. Die Graph-API setzt hingegen für die Erstellung eines Dienstprinzipals ein Anwendungsobjekt voraus.
 * Nicht alle oben beschriebenen Informationen werden derzeit programmgesteuert bereitgestellt. Die folgenden Informationen sind nur in der Benutzeroberfläche verfügbar:
-    * Transformationsregeln für Ansprüche
-    * Attributzuordnungen (Benutzerbereitstellung)
+  * Transformationsregeln für Ansprüche
+  * Attributzuordnungen (Benutzerbereitstellung)
 * Weitere Informationen zu Dienstprinzipalen und Anwendungsobjekten finden Sie in der Referenzdokumentation zur Azure AD Graph-REST-API. *Hinweis*: Die Dokumentation zur Azure AD Graph-API ist das Dokument, das zurzeit am nächsten an eine Schemareferenz für Azure AD herankommt.  
-    * [Anwendung](https://msdn.microsoft.com/library/azure/dn151677.aspx)
-    * [Dienstprinzipal](https://msdn.microsoft.com/library/azure/dn194452.aspx)
-
+  * [Anwendung](https://msdn.microsoft.com/library/azure/dn151677.aspx)
+  * [Dienstprinzipal](https://msdn.microsoft.com/library/azure/dn194452.aspx)
 
 ## Wie werden Anwendungen meiner Azure AD-Instanz hinzugefügt?
 Es gibt viele Möglichkeiten, eine Anwendung in Azure AD hinzuzufügen:
 
 * Hinzufügen einer Anwendung aus dem [Anwendungskatalog von Azure Active Directory](https://azure.microsoft.com/updates/azure-active-directory-over-1000-apps/)
 * Anmelden bei einer in Azure Active Directory integrierten Anwendung eines Drittanbieters (z. B. [Smartsheet](https://app.smartsheet.com/b/home) oder [DocuSign](https://www.docusign.net/member/MemberLogin.aspx))
-    * Bei der Anmeldung werden die Benutzer aufgefordert, der Anwendung neben weiteren Berechtigungen auch die Berechtigung für den Zugriff auf deren Profil zu erteilen. Der erste Benutzer, der hierzu seine Zustimmung erteilt, bewirkt, dass dem Verzeichnis ein Dienstprinzipal für die Anwendung hinzugefügt wird.
+  * Bei der Anmeldung werden die Benutzer aufgefordert, der Anwendung neben weiteren Berechtigungen auch die Berechtigung für den Zugriff auf deren Profil zu erteilen. Der erste Benutzer, der hierzu seine Zustimmung erteilt, bewirkt, dass dem Verzeichnis ein Dienstprinzipal für die Anwendung hinzugefügt wird.
 * Anmeldung bei Microsoft-Onlinediensten wie [Office 365](http://products.office.com/)
-    * Wenn Sie Office 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Office 365 bereitgestellt werden.
-    * Einige Office 365-Dienste wie SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten, einschließlich Workflows, sicherzustellen.
+  * Wenn Sie Office 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Office 365 bereitgestellt werden.
+  * Einige Office 365-Dienste wie SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten, einschließlich Workflows, sicherzustellen.
 * Hinzufügen einer im Azure-Verwaltungsportal entwickelten Anwendung; siehe: https://msdn.microsoft.com/library/azure/dn132599.aspx
 * Hinzufügen einer in Visual Studio entwickelten Anwendung; siehe:
-    * [Authentifizierungsmethoden für ASP.Net](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
-    * [Verbundene Dienste](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+  * [Authentifizierungsmethoden für ASP.Net](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
+  * [Verbundene Dienste](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 * Hinzufügen einer Anwendung für die Verwendung des [Azure AD-Anwendungsproxy](https://msdn.microsoft.com/library/azure/dn768219.aspx)
 * Verbinden einer Anwendung für die einmalige Anmeldung (Single-Sign-On) über SAML oder Kennwort-SSO
 * Verschiedene weitere Methoden wie entwicklerspezifische Methoden in Azure oder API-Explorer-Methoden in einem Developer Center
 
 ## Wer hat die Berechtigung zum Hinzufügen von Anwendungen zu meiner Azure AD-Instanz?
-
 Nur globale Administratoren können Folgendes machen:
 
 * Hinzufügen von Anwendungen aus dem Azure AD-Anwendungskatalog (bereits integrierte Anwendungen von Drittanbietern)
@@ -129,10 +122,8 @@ Bei all dem muss auch gesagt werden, dass es nach wie vor möglich ist, zu verhi
 
 ![Ein Screenshot der Benutzeroberfläche für die Konfiguration der Einstellungen integrierter Anwendungen][app_settings]
 
-
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
-
 Holen Sie weitere Informationen zum Hinzufügen von Anwendungen in Azure AD und zum Konfigurieren von Diensten für Anwendungen ein.
 
 * Entwickler: [Informieren Sie sich, wie Sie eine Anwendung in AAD integrieren](https://msdn.microsoft.com/library/azure/dn151122.aspx)
@@ -143,8 +134,7 @@ Holen Sie weitere Informationen zum Hinzufügen von Anwendungen in Azure AD und 
 * IT-Experten: [Informieren Sie sich über die Veröffentlichung von Anwendungen mithilfe des Azure Active Directory-Anwendungsproxy](https://msdn.microsoft.com/library/azure/dn768219.aspx)
 
 ## Weitere Informationen
-
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
 <!--Image references-->
 [apps_service_principals_directory]: media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg

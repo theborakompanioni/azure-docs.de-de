@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Auslösen von Chaos in Service Fabric-Clustern | Microsoft Azure"
-   description="Verwenden von Fault Injection und Cluster Analysis Service-APIs zum Verwalten von Chaostests im Cluster."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="motanv"
-   manager="rsinha"
-   editor="toddabel"/>
+---
+title: Auslösen von Chaos in Service Fabric-Clustern | Microsoft Docs
+description: Verwenden von Fault Injection und Cluster Analysis Service-APIs zum Verwalten von Chaostests im Cluster.
+services: service-fabric
+documentationcenter: .net
+author: motanv
+manager: rsinha
+editor: toddabel
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/19/2016"
-   ms.author="motanv"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/19/2016
+ms.author: motanv
 
+---
 # Auslösen von kontrolliertem Chaos in Service Fabric-Clustern
 Große verteilte Systeme wie Cloudinfrastrukturen sind grundsätzlich unzuverlässig. Azure Service Fabric ermöglicht Entwicklern, aufbauend auf einer unzuverlässigen Infrastruktur zuverlässige Dienste zu erstellen. Um zuverlässige Dienste programmieren zu können, müssen Entwickler Fehler in eine solche unzuverlässige Infrastruktur einschleusen können, um die Stabilität ihrer Dienste zu testen.
 
@@ -24,12 +24,12 @@ Der Fault Injection and Cluster Analysis Service (kurz FAS) gibt Entwicklern die
 ## Im Chaostest ausgelöste Fehler
 Der Chaostest generiert Fehler im gesamten Service Fabric-Cluster und komprimiert in Monaten oder Jahren auftretende Fehler zu einigen wenigen Stunden. Bei dieser Kombination aus überlappenden Fehlern mit der hohen Fehlerrate werden auch Spezialfälle erkannt, die sonst nicht auffallen. Dieser Chaostest führt zu einer erheblichen Verbesserung der Codequalität des Diensts. Der Chaostest verursacht Fehler in den folgenden Kategorien:
 
- - Neustart eines Knotens
- - Neustart eines bereitgestellten Codepakets
- - Entfernung eines Replikats
- - Neustart eines Replikats
- - Verschiebung eines primären Replikats (konfigurierbar)
- - Verschiebung eines sekundären Replikats (konfigurierbar)
+* Neustart eines Knotens
+* Neustart eines bereitgestellten Codepakets
+* Entfernung eines Replikats
+* Neustart eines Replikats
+* Verschiebung eines primären Replikats (konfigurierbar)
+* Verschiebung eines sekundären Replikats (konfigurierbar)
 
 Beim Chaostest erfolgen im angegebenen Zeitraum mehrere Iterationen von Fehlern und Clusterüberprüfungen. Die Dauer der Stabilisierung des Clusters und des erfolgreichen Abschlusses der Überprüfung kann konfiguriert werden. Wenn bei der Clusterüberprüfung ein Fehler gefunden wird, wird vom Chaostest ein „ValidationFailedEvent“-Ereignis mit dem UTC-Zeitstempel und den Fehlerdetails generiert und gespeichert.
 
@@ -38,16 +38,16 @@ Nehmen wir beispielsweise an, ein Chaostest soll eine Stunde lang ausgeführt we
 In seiner aktuellen Form schleust der Chaostest nur sichere Fehler ein. Das heißt, dass es bei Nichtauftreten externer Fehler nicht zu einem Quorum- oder Datenverlust kommt.
 
 ## Wichtige Konfigurationsoptionen
- - **TimeToRun**: Gesamtdauer der Ausführung des Chaostests, bevor er erfolgreich abgeschlossen wird. Mithilfe der „StopChaos“-API kann der Chaostest vor Ablauf des Zeitraums von „TimeToRun“ beendet werden.
- - **MaxClusterStabilizationTimeout**: Maximale Wartezeit, bis der Cluster wieder fehlerfrei ist, ehe eine erneute Prüfung erfolgt. Diese Wartezeit soll die Last im Cluster verringern, während er wiederhergestellt wird. Die folgenden Prüfungen erfolgen:
-    - Ob die Clusterintegrität in Ordnung ist
-    - Ob die Dienstintegrität in Ordnung ist
-    - Ob die Größe der Zielreplikatgruppe für die Dienstpartition erreicht wurde
-    - Ob keine „InBuild“-Replikate vorhanden sind
- - **MaxConcurrentFaults**: Maximale Anzahl von gleichzeitigen Fehlern, die bei jeder Iteration ausgelöst werden. Je höher die Anzahl, desto aggressiver der Chaostest. Dies führt zu komplexeren Failover- und Übergangskombinationen. Der Chaostest garantiert, dass es bei Nichtauftreten externer Fehler nicht zu einem Quorum- oder Datenverlust kommt, und zwar unabhängig von der Höhe des Werts dieser Konfiguration.
- - **EnableMoveReplicaFaults**: Aktiviert oder deaktiviert die Fehler, die zur Verschiebung der primären oder sekundären Replikate führen. Diese Fehler sind standardmäßig deaktiviert.
- - **WaitTimeBetweenIterations**: Gibt an, wie lange zwischen Iterationen gewartet wird (also nach einer Fehlerrunde und der entsprechenden Überprüfung).
- - **WaitTimeBetweenFaults**: Wartezeit zwischen zwei aufeinander folgenden Fehlern in einer Iteration.
+* **TimeToRun**: Gesamtdauer der Ausführung des Chaostests, bevor er erfolgreich abgeschlossen wird. Mithilfe der „StopChaos“-API kann der Chaostest vor Ablauf des Zeitraums von „TimeToRun“ beendet werden.
+* **MaxClusterStabilizationTimeout**: Maximale Wartezeit, bis der Cluster wieder fehlerfrei ist, ehe eine erneute Prüfung erfolgt. Diese Wartezeit soll die Last im Cluster verringern, während er wiederhergestellt wird. Die folgenden Prüfungen erfolgen:
+  * Ob die Clusterintegrität in Ordnung ist
+  * Ob die Dienstintegrität in Ordnung ist
+  * Ob die Größe der Zielreplikatgruppe für die Dienstpartition erreicht wurde
+  * Ob keine „InBuild“-Replikate vorhanden sind
+* **MaxConcurrentFaults**: Maximale Anzahl von gleichzeitigen Fehlern, die bei jeder Iteration ausgelöst werden. Je höher die Anzahl, desto aggressiver der Chaostest. Dies führt zu komplexeren Failover- und Übergangskombinationen. Der Chaostest garantiert, dass es bei Nichtauftreten externer Fehler nicht zu einem Quorum- oder Datenverlust kommt, und zwar unabhängig von der Höhe des Werts dieser Konfiguration.
+* **EnableMoveReplicaFaults**: Aktiviert oder deaktiviert die Fehler, die zur Verschiebung der primären oder sekundären Replikate führen. Diese Fehler sind standardmäßig deaktiviert.
+* **WaitTimeBetweenIterations**: Gibt an, wie lange zwischen Iterationen gewartet wird (also nach einer Fehlerrunde und der entsprechenden Überprüfung).
+* **WaitTimeBetweenFaults**: Wartezeit zwischen zwei aufeinander folgenden Fehlern in einer Iteration.
 
 ## Ausführen des Chaostests
 C#-Beispiel

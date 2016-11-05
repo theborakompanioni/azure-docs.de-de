@@ -1,32 +1,31 @@
-<properties
-	pageTitle="Benutzerdefiniertes Caching in Azure API Management"
-	description="Erfahren Sie, wie Sie Elemente durch einen Schlüssel in Azure API Management zwischenspeichern."
-	services="api-management"
-	documentationCenter=""
-	authors="darrelmiller"
-	manager=""
-	editor=""/>
+---
+title: Benutzerdefiniertes Caching in Azure API Management
+description: Erfahren Sie, wie Sie Elemente durch einen Schlüssel in Azure API Management zwischenspeichern.
+services: api-management
+documentationcenter: ''
+author: darrelmiller
+manager: ''
+editor: ''
 
-<tags
-	ms.service="api-management"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/09/2016"
-	ms.author="darrmi"/>
+ms.service: api-management
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/09/2016
+ms.author: darrmi
 
+---
 # Benutzerdefiniertes Caching in Azure API Management
 Der Azure API Management-Dienst verfügt über eine integrierte Unterstützung für das [HTTP-Antwort-Caching](api-management-howto-cache.md) mit der Ressourcen-URL als Schlüssel. Der Schlüssel kann durch Anforderungsheader mithilfe der `vary-by`-Eigenschaften geändert werden. Dies ist nützlich, wenn ganze HTTP-Antworten (auch als Darstellungen bezeichnet) zwischengespeichert werden sollen. Manchmal ist es aber auch sinnvoll, nur einen Teil einer Darstellung zwischenzuspeichern. Die neuen Richtlinien [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) und [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) bieten die Möglichkeit zum Speichern und Abrufen von zufälligen Datenelementen aus Richtliniendefinitionen: Diese Möglichkeit bereichert auch die zuvor eingeführte [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest)-Richtlinie, da Sie nun Antworten von externen Diensten zwischenspeichern können.
 
-## Architektur  
+## Architektur
 Der API Management-Dienst verwendet einen freigegebenen Einzelmandanten-Datencache, sodass Sie beim Skalieren auf mehrere Einheiten weiterhin Zugriff auf die gleichen zwischengespeicherten Daten erhalten. Wenn Sie jedoch mit einer Bereitstellung arbeiten, die mehrere Regionen umfasst, gibt es in allen Regionen unabhängige Caches. Aus diesem Grund ist es wichtig, den Cache nicht als Datenspeicher zu behandeln, der als einzige Quelle für einzelne Informationen fungiert. Wenn dies der Fall ist und Sie sich später dazu entschieden haben, die Vorteile der Bereitstellung in mehreren Regionen zu nutzen, könnten Kunden mit Benutzern, die in mehreren Regionen unterwegs sind, den Zugriff auf die zwischengespeicherten Daten verlieren.
 
 ## Fragment-Caching
 Es gibt bestimmte Fälle, in denen die zurückgegebenen Antworten Daten enthalten, die teuer zu bestimmen sind und dennoch für einen angemessenen Zeitraum aktuell bleiben. Nehmen Sie beispielsweise einen Dienst, der von einer Fluggesellschaft erstellt wurde, um Informationen zu Flugreservierungen, dem Status von Flügen usw. bereitzustellen. Wenn der Benutzer am Punkteprogramm der Fluggesellschaft teilnimmt, sind zusätzlich dazu Informationen zum aktuellen Status und den gesammelten Meilen vorhanden. Diese benutzerbezogenen Informationen können in einem separaten System gespeichert werden; es kann aber auch wünschenswert sein, dass sie in den Antworten enthalten sind, die zum Flugstatus und den Reservierungen zurückgegeben werden. Dies kann durch einen Prozess namens Fragment-Caching erreicht werden. Die primäre Darstellung kann vom Ursprungsserver zurückgegeben werden, indem irgendein Token verwendet wird, das angibt, wo die benutzerbezogenen Informationen eingefügt werden sollen.
 
 Betrachten Sie die folgende JSON-Antwort aus einer Back-End-API:
-
 
     {
       "airline" : "Air Canada",
@@ -49,7 +48,7 @@ Um die geeigneten Benutzerinformationen zu bestimmen, die enthalten sein sollen,
 
 Wir speichern diesen `enduserid`-Wert zur späteren Verwendung in einer Kontextvariablen. Im nächsten Schritt wird festgestellt, ob eine vorherige Anforderung bereits die Benutzerinformationen abgerufen und im Cache gespeichert hat. Dazu verwenden wir die `cache-lookup-value`-Richtlinie.
 
-	  <cache-lookup-value
+      <cache-lookup-value
       key="@("userprofile-" + context.Variables["enduserid"])"
       variable-name="userprofile" />
 
@@ -64,7 +63,7 @@ Wenn kein Eintrag im Cache vorhanden ist, der dem Schlüsselwert entspricht, wir
 
 Wenn die `userprofile`-Kontextvariable nicht vorhanden ist, werden wir eine HTTP-Anforderung zum Abrufen vornehmen müssen.
 
-	<send-request
+    <send-request
       mode="new"
       response-variable-name="userprofileresponse"
       timeout="10"
@@ -75,7 +74,7 @@ Wenn die `userprofile`-Kontextvariable nicht vorhanden ist, werden wir eine HTTP
           (string)context.Variables["enduserid"]).AbsoluteUri)
       </set-url>
       <set-method>GET</set-method>
-	</send-request>
+    </send-request>
 
 Wir verwenden die `enduserid`, um die URL in der Profilressource zu erstellen. Nachdem wir die Antwort erhalten haben, können wir den Textkörper aus der Antwort ziehen und sie wieder in einer Kontextvariablen speichern.
 
@@ -85,7 +84,7 @@ Wir verwenden die `enduserid`, um die URL in der Profilressource zu erstellen. N
 
 Um eine erneute HTTP-Anforderung zu vermeiden, wenn derselbe Benutzer eine weitere Anforderung sendet, können wir das Benutzerprofil im Cache speichern.
 
-	<cache-store-value
+    <cache-store-value
         key="@("userprofile-" + context.Variables["enduserid"])"
         value="@((string)context.Variables["userprofile"])" duration="100000" />
 
@@ -105,53 +104,53 @@ Ich habe mich dazu entschieden, die Anführungszeichen als Teil des Tokens hinzu
 Nachdem Sie alle Schritte miteinander kombiniert haben, ist das Endergebnis eine Richtlinie, die wie folgt aussieht:
 
      <policies>
-    	<inbound>
-    		<!-- How you determine user identity is application dependent -->
-    		<set-variable
+        <inbound>
+            <!-- How you determine user identity is application dependent -->
+            <set-variable
               name="enduserid"
               value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 
-    		<!--Look for userprofile for this user in the cache -->
-    		<cache-lookup-value
+            <!--Look for userprofile for this user in the cache -->
+            <cache-lookup-value
               key="@("userprofile-" + context.Variables["enduserid"])"
               variable-name="userprofile" />
 
-    		<!-- If we don’t find it in the cache, make a request for it and store it -->
-    		<choose>
-    			<when condition="@(!context.Variables.ContainsKey("userprofile"))">
-    				<!—Make HTTP request to get user profile -->
-    				<send-request
+            <!-- If we don’t find it in the cache, make a request for it and store it -->
+            <choose>
+                <when condition="@(!context.Variables.ContainsKey("userprofile"))">
+                    <!—Make HTTP request to get user profile -->
+                    <send-request
                       mode="new"
                       response-variable-name="userprofileresponse"
                       timeout="10"
                       ignore-error="true">
 
                        <!-- Build a URL that points to the profile for the current end-user -->
-    					<set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),(string)context.Variables["enduserid"]).AbsoluteUri)</set-url>
-    					<set-method>GET</set-method>
-    				</send-request>
+                        <set-url>@(new Uri(new Uri("https://apimairlineapi.azurewebsites.net/UserProfile/"),(string)context.Variables["enduserid"]).AbsoluteUri)</set-url>
+                        <set-method>GET</set-method>
+                    </send-request>
 
-    				<!—Store response body in context variable -->
-    				<set-variable
+                    <!—Store response body in context variable -->
+                    <set-variable
                       name="userprofile"
                       value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 
-    				<!—Store result in cache -->
-    				<cache-store-value
+                    <!—Store result in cache -->
+                    <cache-store-value
                       key="@("userprofile-" + context.Variables["enduserid"])"
                       value="@((string)context.Variables["userprofile"])"
                       duration="100000" />
-    			</when>
-    		</choose>
-    		<base />
-    	</inbound>
-    	<outbound>
-    		<!—Update response body with user profile-->
-    		<find-and-replace
+                </when>
+            </choose>
+            <base />
+        </inbound>
+        <outbound>
+            <!—Update response body with user profile-->
+            <find-and-replace
                   from='"$userprofile$"'
                   to="@((string)context.Variables["userprofile"])" />
-    		<base />
-    	</outbound>
+            <base />
+        </outbound>
      </policies>
 
 Dieser Ansatz des Zwischenspeicherns wird hauptsächlich für Websites verwendet, bei denen HTML auf der Serverseite verwendet wird, sodass sie als einzelne Seite gerendert werden können. Er kann aber auch für APIs nützlich sein, bei denen Clients kein clientseitiges HTTP-Caching durchführen können oder es wünschenswert ist, diese Verantwortung nicht auf den Client zu übertragen.
@@ -165,29 +164,29 @@ Statt die Cliententwickler dazu anzuhalten, die URLs von `/v1/customers` auf `/v
 
 Der erste Schritt besteht darin, den für die Konfiguration der gewünschten Version verwendeten Bezeichner zu bestimmen. In diesem Beispiel habe ich die Version dem Abonnement-Produktschlüssel zugeordnet.
 
-		<set-variable name="clientid" value="@(context.Subscription.Key)" />
+        <set-variable name="clientid" value="@(context.Subscription.Key)" />
 
 Wir führen anschließend eine Cachesuche durch, um festzustellen, ob wir bereits die gewünschte Clientversion abgerufen haben.
 
-		<cache-lookup-value
+        <cache-lookup-value
         key="@("clientversion-" + context.Variables["clientid"])"
         variable-name="clientversion" />
 
 Dann prüfen wir, ob wir sie nicht im Cache finden.
 
-	<choose>
-		<when condition="@(!context.Variables.ContainsKey("clientversion"))">
+    <choose>
+        <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 
 Falls dies nicht der Fall ist, rufen wir sie ab.
 
-	<send-request
+    <send-request
         mode="new"
         response-variable-name="clientconfiguresponse"
         timeout="10"
         ignore-error="true">
-        		<set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
-        		<set-method>GET</set-method>
-	</send-request>
+                <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
+                <set-method>GET</set-method>
+    </send-request>
 
 Wir extrahieren den Text aus der Antwort.
 
@@ -204,37 +203,36 @@ Wie speichern sie für die zukünftige Verwendung im Cache.
 
 Schließlich aktualisieren wir die Back-End-URL, sodass die Version des Diensts ausgewählt wird, die vom Client gewünscht ist.
 
-	<set-backend-service
+    <set-backend-service
           base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
 
 Die vollständige Richtlinie sieht wie folgt aus.
 
-	 <inbound>
-		<base />
-		<set-variable name="clientid" value="@(context.Subscription.Key)" />
-		<cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
+     <inbound>
+        <base />
+        <set-variable name="clientid" value="@(context.Subscription.Key)" />
+        <cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
 
-		<!-- If we don’t find it in the cache, make a request for it and store it -->
-		<choose>
-			<when condition="@(!context.Variables.ContainsKey("clientversion"))">
-				<send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
-					<set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
-					<set-method>GET</set-method>
-				</send-request>
-				<!-- Store response body in context variable -->
-				<set-variable name="clientversion" value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
-				<!-- Store result in cache -->
-				<cache-store-value key="@("clientversion-" + context.Variables["clientid"])" value="@((string)context.Variables["clientversion"])" duration="100000" />
-			</when>
-		</choose>
-		<set-backend-service base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
-	</inbound>
+        <!-- If we don’t find it in the cache, make a request for it and store it -->
+        <choose>
+            <when condition="@(!context.Variables.ContainsKey("clientversion"))">
+                <send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
+                    <set-url>@(new Uri(new Uri(context.Api.ServiceUrl.ToString() + "api/ClientConfig/"),(string)context.Variables["clientid"]).AbsoluteUri)</set-url>
+                    <set-method>GET</set-method>
+                </send-request>
+                <!-- Store response body in context variable -->
+                <set-variable name="clientversion" value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
+                <!-- Store result in cache -->
+                <cache-store-value key="@("clientversion-" + context.Variables["clientid"])" value="@((string)context.Variables["clientversion"])" duration="100000" />
+            </when>
+        </choose>
+        <set-backend-service base-url="@(context.Api.ServiceUrl.ToString() + "api/" + (string)context.Variables["clientversion"] + "/")" />
+    </inbound>
 
 
 Dass API-Benutzer transparent steuern können, auf welche Back-End-Version Clients zugreifen können, ohne Clients aktualisieren und erneut bereitstellen zu müssen, ist eine elegante Lösung, die viele Schwierigkeiten bei der API-Versionsverwaltung beseitigt.
 
 ## Mandantenisolation
-
 In größeren Bereitstellungen mit mehreren Mandanten erstellen einige Unternehmen separate Mandantengruppen auf unterschiedlichen Bereitstellungen von Back-End-Hardware. Dies minimiert die Anzahl der Kunden, die von Hardwareproblemen auf dem Back-End betroffen sind. Darüber hinaus können neue Softwareversionen phasenweise eingeführt werden. Im Idealfall sollte diese Back-End-Architektur für API-Benutzer transparent sein. Dies kann auf eine ähnliche Weise wie die transparente Versionsverwaltung geschehen, denn sie basiert auf der gleichen Technik der Bearbeitung der Back-End-URL mithilfe des Konfigurationsstatus pro API-Schlüssel.
 
 Anstatt eine bevorzugte Version der API für jeden Abonnement-Schlüssel zurückzugeben, geben Sie einen Bezeichner zurück, der einen Mandanten mit der zugewiesenen Hardwaregruppe verknüpft. Dieser Bezeichner kann zur Erstellung der entsprechenden Back-End-URL verwendet werden.

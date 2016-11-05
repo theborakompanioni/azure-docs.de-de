@@ -1,28 +1,27 @@
-<properties
-   pageTitle="Zuweisen von Variablen in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps zum Zuweisen von Transact-SQL-Variablen in Azure SQL Data Warehouse für die Entwicklung von Lösungen."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Zuweisen von Variablen in SQL Data Warehouse | Microsoft Docs
+description: Tipps zum Zuweisen von Transact-SQL-Variablen in Azure SQL Data Warehouse für die Entwicklung von Lösungen.
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # Zuweisen von Variablen in SQL Data Warehouse
 Variablen werden in SQL Data Warehouse mit der `DECLARE`-Anweisung oder der `SET`-Anweisung festgelegt.
 
 Im Folgenden sind Möglichkeiten zum Festlegen eines Variablenwerts aufgeführt:
 
 ## Festlegen von Variablen mit DECLARE
-
 Das Initialisieren von Variablen mit DECLARE ist eine der flexibelsten Möglichkeiten zum Festlegen eines Variablenwerts in SQL Data Warehouse.
 
 ```sql
@@ -63,9 +62,8 @@ Sie können mit SET nur jeweils eine einzige Variable festlegen. Wie oben zu seh
 ## Einschränkungen
 Sie können nicht SELECT oder UPDATE für die Zuweisung von Variablen verwenden.
 
-
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
 

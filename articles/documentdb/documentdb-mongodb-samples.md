@@ -1,35 +1,33 @@
-<properties 
-    pageTitle="Beispiele für DocumentDB für MongoDB | Microsoft Azure" 
-    description="Sehen Sie sich Beispiele für die DocumentDB-Protokollunterstützung für MongoDB an." 
-    keywords="MongoDB-Beispiele"
-    services="documentdb" 
-    authors="AndrewHoh" 
-    manager="jhubbard" 
-    editor="" 
-    documentationCenter=""/>
+---
+title: Beispiele für DocumentDB für MongoDB | Microsoft Docs
+description: Sehen Sie sich Beispiele für die DocumentDB-Protokollunterstützung für MongoDB an.
+keywords: MongoDB-Beispiele
+services: documentdb
+author: AndrewHoh
+manager: jhubbard
+editor: ''
+documentationcenter: ''
 
-<tags 
-    ms.service="documentdb" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/23/2016" 
-    ms.author="anhoh"/>
+ms.service: documentdb
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/23/2016
+ms.author: anhoh
 
-
+---
 # <a name="documentdb-protocol-support-for-mongodb-examples"></a>Beispiele für die DocumentDB-Protokollunterstützung für MongoDB
 Um diese Beispiele verwenden zu können, müssen Sie folgende Aktionen ausführen:
 
-- [Erstellen](documentdb-create-mongodb-account.md) eines Azure DocumentDB-Kontos mit Protokollunterstützung für MongoDB.
-- Abrufen der Informationen zur [Verbindungszeichenfolge](documentdb-connect-mongodb-account.md) für das DocumentDB-Konto mit Protokollunterstützung für MongoDB.
+* [Erstellen](documentdb-create-mongodb-account.md) eines Azure DocumentDB-Kontos mit Protokollunterstützung für MongoDB.
+* Abrufen der Informationen zur [Verbindungszeichenfolge](documentdb-connect-mongodb-account.md) für das DocumentDB-Konto mit Protokollunterstützung für MongoDB.
 
 ## <a name="get-started-with-a-sample-asp.net-mvc-task-list-application"></a>Erste Schritte mit einer Beispielanwendung für eine ASP.NET-MVC-Aufgabenliste
-
 Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung mit einer auf einem virtuellen Computer ausgeführten MongoDB herstellt](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md) mit minimalen Änderungen verwenden, um schnell eine MongoDB-Anwendung einzurichten (lokal oder veröffentlicht in einer Azure-Web-App), die mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verbunden wird.  
 
 1. Führen Sie das Tutorial mit einer Änderung durch.  Ersetzen Sie den Code „Dal.cs“ durch Folgendes:
-    
+   
         using System;
         using System.Collections.Generic;
         using System.Linq;
@@ -39,14 +37,14 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
         using MongoDB.Bson;
         using System.Configuration;
         using System.Security.Authentication;
-
+   
         namespace MyTaskListApp
         {
             public class Dal : IDisposable
             {
                 //private MongoServer mongoServer = null;
                 private bool disposed = false;
-
+   
                 // To do: update the connection string with the DNS name
                 // or IP address of your server. 
                 //For example, "mongodb://testlinux.cloudapp.net
@@ -54,18 +52,18 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
                 private string userName = "<your user name>";
                 private string host = "<your host>";
                 private string password = "<your password>";
-
+   
                 // This sample uses a database named "Tasks" and a 
                 //collection named "TasksList".  The database and collection 
                 //will be automatically created if they don't already exist.
                 private string dbName = "Tasks";
                 private string collectionName = "TasksList";
-
+   
                 // Default constructor.        
                 public Dal()
                 {
                 }
-
+   
                 // Gets all Task items from the MongoDB server.        
                 public List<MyTask> GetAllTasks()
                 {
@@ -79,7 +77,7 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
                         return new List<MyTask>();
                     }
                 }
-
+   
                 // Creates a Task and inserts it into the collection in MongoDB.
                 public void CreateTask(MyTask task)
                 {
@@ -93,7 +91,7 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
                         string msg = ex.Message;
                     }
                 }
-        
+   
                 private IMongoCollection<MyTask> GetTasksCollection()
                 {
                     MongoClientSettings settings = new MongoClientSettings();
@@ -101,21 +99,21 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
                     settings.UseSsl = true;
                     settings.SslSettings = new SslSettings();
                     settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
-        
+   
                     MongoIdentity identity = new MongoInternalIdentity(dbName, userName);
                     MongoIdentityEvidence evidence = new PasswordEvidence(password);
-        
+   
                     settings.Credentials = new List<MongoCredential>()
                     {
                         new MongoCredential("SCRAM-SHA-1", identity, evidence)
                     };
-
+   
                     MongoClient client = new MongoClient(settings);
                     var database = client.GetDatabase(dbName);
                     var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
                     return todoTaskCollection;
                 }
-        
+   
                 private IMongoCollection<MyTask> GetTasksCollectionForEdit()
                 {
                     MongoClientSettings settings = new MongoClientSettings();
@@ -123,10 +121,10 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
                     settings.UseSsl = true;
                     settings.SslSettings = new SslSettings();
                     settings.SslSettings.EnabledSslProtocols = SslProtocols.Tls12;
-        
+   
                     MongoIdentity identity = new MongoInternalIdentity(dbName, userName);
                     MongoIdentityEvidence evidence = new PasswordEvidence(password);
-        
+   
                     settings.Credentials = new List<MongoCredential>()
                     {
                         new MongoCredential("SCRAM-SHA-1", identity, evidence)
@@ -136,15 +134,15 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
                     var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
                     return todoTaskCollection;
                 }
-
+   
                 # region IDisposable
-        
+   
                 public void Dispose()
                 {
                     this.Dispose(true);
                     GC.SuppressFinalize(this);
                 }
-
+   
                 protected virtual void Dispose(bool disposing)
                 {
                     if (!this.disposed)
@@ -153,29 +151,22 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
                         {
                         }
                     }
-
+   
                     this.disposed = true;
                 }
-
+   
                 # endregion
             }
         }
-
-2.  Ändern Sie die folgenden Variablen in der Datei „Dal.cs“ entsprechend den Einstellungen Ihres Kontos:
-
-        private string userName = "<your user name>";
-        private string host = "<your host>";
-        private string password = "<your password>";
-
+2. Ändern Sie die folgenden Variablen in der Datei „Dal.cs“ entsprechend den Einstellungen Ihres Kontos:
+   
+       private string userName = "<your user name>";
+       private string host = "<your host>";
+       private string password = "<your password>";
 3. Verwenden Sie die App.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Erfahren Sie, wie Sie [MongoChef](documentdb-mongodb-mongochef.md) mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verwenden.
-
- 
-
-
+* Erfahren Sie, wie Sie [MongoChef](documentdb-mongodb-mongochef.md) mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verwenden.
 
 <!--HONumber=Oct16_HO2-->
 

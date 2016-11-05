@@ -1,21 +1,21 @@
-<properties
-	pageTitle="Azure AD und Anwendungen: Zuweisen von Gruppen zu einer Anwendung | Microsoft Azure"
-	description="Informationen zum Implementieren der Zuweisung von Gruppen für Azure-Anwendungen"
-	services="active-directory"
-	documentationCenter=""
-	authors="IHenkel"
-	manager="femila"
-	editor=""/>
+---
+title: 'Azure AD und Anwendungen: Zuweisen von Gruppen zu einer Anwendung | Microsoft Docs'
+description: Informationen zum Implementieren der Zuweisung von Gruppen für Azure-Anwendungen
+services: active-directory
+documentationcenter: ''
+author: IHenkel
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="12/03/2015"
-	ms.author="inhenk"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 12/03/2015
+ms.author: inhenk
 
+---
 # Azure AD und Anwendungen: Zuweisen von Gruppen zu einer Anwendung
 Bevor Sie einer Anwendung Benutzer und Gruppen zuweisen können, müssen Sie die Benutzerzuweisung erfordern. Informationen zum Erfordern der Benutzerzuweisung finden Sie im Artikel zum [Erfordern der Benutzerzuweisung](active-directory-applications-guiding-developers-requiring-user-assignment.md).
 
@@ -34,6 +34,6 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits Gruppen in Active Dir
 10. Klicken Sie auf **Ja**, wenn Sie dazu aufgefordert werden.
 
 ## Nächste Schritte
-[AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
+[!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
 <!---HONumber=AcomDC_0928_2016-->

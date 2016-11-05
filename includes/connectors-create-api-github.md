@@ -1,5 +1,5 @@
 ### Voraussetzungen
-- Ein [GitHub](http://GitHub.com)-Konto 
+* Ein [GitHub](http://GitHub.com)-Konto 
 
 Bevor Sie Ihr GitHub-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem GitHub-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.
 
@@ -10,3 +10,4 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 3. Geben Sie Ihren GitHub-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an: ![](./media/connectors-create-api-github/github-3.png)   
 4. Bestätigen Sie Ihre Änderungen: ![](./media/connectors-create-api-github/github-4.png)   
 5. Beachten Sie, dass die Verbindung im Portal erstellt wurde. Sie können nun mit dem Erstellen Ihrer Logik-App fortfahren und darin GitHub verwenden: ![](./media/connectors-create-api-github/github-5.png)   
+

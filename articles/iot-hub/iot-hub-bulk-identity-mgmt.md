@@ -1,23 +1,22 @@
-<properties
- pageTitle="Importieren und Exportieren von IoT Hub-Geräte-Identitäten | Microsoft Azure"
- description="Konzepte und .NET-Codeausschnitte für die Massenverwaltung von IoT Hub-Geräte-Identitäten"
- services="iot-hub"
- documentationCenter=".net"
- authors="dominicbetts"
- manager="timlt"
- editor=""/>
+---
+title: Importieren und Exportieren von IoT Hub-Geräte-Identitäten | Microsoft Docs
+description: Konzepte und .NET-Codeausschnitte für die Massenverwaltung von IoT Hub-Geräte-Identitäten
+services: iot-hub
+documentationcenter: .net
+author: dominicbetts
+manager: timlt
+editor: ''
 
-<tags
- ms.service="iot-hub"
- ms.devlang="na"
- ms.topic="article"
- ms.tgt_pltfrm="na"
- ms.workload="na"
- ms.date="07/19/2016"
- ms.author="dobett"/>
+ms.service: iot-hub
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/19/2016
+ms.author: dobett
 
+---
 # Massenverwaltung von IoT Hub-Geräte-Identitäten
-
 Jeder IoT Hub verfügt über eine Geräte-Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Hierzu zählt beispielsweise eine Warteschlange mit gesendeten C2D-Nachrichten. Außerdem wird der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräte-Identitäten in und aus einer Geräte-Identitätsregistrierung beschrieben.
 
 Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Benutzern das Anwenden von Massendienstvorgängen auf einen IoT Hub ermöglichen.
@@ -25,11 +24,10 @@ Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Benutzern 
 Die **RegistryManager**-Klasse enthält die Methoden **ExportDevicesAsync** und **ImportDevicesAsync**, die das **Job**-Framework verwenden. Diese Methoden ermöglichen das Exportieren, Importieren und Synchronisieren der gesamten IoT Hub-Geräteregistrierung.
 
 ## Was sind Aufträge?
-
 Geräte-Identitätsregistrierungsvorgänge verwenden das **Job**-System, wenn der Vorgang:
 
-*  eine potenziell lange Ausführungsdauer im Vergleich mit standardmäßigen Laufzeitvorgängen hat oder
-*  eine große Menge von Daten an den Benutzer zurückgibt.
+* eine potenziell lange Ausführungsdauer im Vergleich mit standardmäßigen Laufzeitvorgängen hat oder
+* eine große Menge von Daten an den Benutzer zurückgibt.
 
 Anstatt dass in diesen Fällen ein einzelner API-Aufruf auf das Ergebnis des Vorgangs wartet oder ihn blockiert, erstellt der Vorgang asynchron einen **Auftrag** für den jeweiligen IoT Hub. Anschließend gibt der Vorgang sofort ein **JobProperties**-Objekt zurück.
 
@@ -62,20 +60,18 @@ while(true)
 ```
 
 ## Exportieren von Geräten
-
 Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Geräteregistrierung mithilfe einer [Shared Access Signature](https://msdn.microsoft.com/library/ee395415.aspx) in einen [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainer zu exportieren.
 
 Mit dieser Methode können Sie zuverlässige Sicherungen Ihrer Geräte-Informationen in einem Blobcontainer erstellen, den Sie steuern.
 
 Die **ExportDevicesAsync**-Methode erfordert zwei Parameter:
 
-*  Eine *Zeichenfolge*, die einen URI eines Blobcontainers enthält. Dieser URI muss ein SAS-Token enthalten, das Schreibzugriff auf den Container gewährt. Der Auftrag erstellt zum Speichern der serialisierten Exportgerätedaten ein Blockblob in diesem Container. Das SAS-Token muss diese Berechtigungen enthalten:
-    
-    ```
-    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
-    ```
-
-*  Einen *booleschen Wert*, der angibt, ob Sie Authentifizierungsschlüssel aus Ihren Exportdaten ausschließen möchten. Falls **false**, werden Authentifizierungsschlüssel in die Exportausgabe eingeschlossen. Andernfalls werden Schlüssel als **null** exportiert.
+* Eine *Zeichenfolge*, die einen URI eines Blobcontainers enthält. Dieser URI muss ein SAS-Token enthalten, das Schreibzugriff auf den Container gewährt. Der Auftrag erstellt zum Speichern der serialisierten Exportgerätedaten ein Blockblob in diesem Container. Das SAS-Token muss diese Berechtigungen enthalten:
+  
+   ```
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   ```
+* Einen *booleschen Wert*, der angibt, ob Sie Authentifizierungsschlüssel aus Ihren Exportdaten ausschließen möchten. Falls **false**, werden Authentifizierungsschlüssel in die Exportausgabe eingeschlossen. Andernfalls werden Schlüssel als **null** exportiert.
 
 Der folgende C#-Codeausschnitt zeigt, wie Sie einen Exportauftrag initiieren, der Geräteauthentifizierungsschlüssel in die exportierten Daten einbezieht und für den Abschluss eine Umfrage durchführt:
 
@@ -127,31 +123,38 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 }
 ```
 
-> [AZURE.NOTE]  Sie können auch die **GetDevicesAsync**-Methode der **RegistryManager**-Klasse verwenden, um eine Liste Ihrer Geräte abzurufen. Bei diesem Ansatz gilt jedoch eine feste Obergrenze von 1000 für die Anzahl der Geräteobjekte, die zurückgegeben werden. Die **GetDevicesAsync**-Methode sollte nur in Entwicklungsszenarien zum Unterstützen des Debuggens verwendet werden und wird für Produktionsworkloads nicht empfohlen.
+> [!NOTE]
+> Sie können auch die **GetDevicesAsync**-Methode der **RegistryManager**-Klasse verwenden, um eine Liste Ihrer Geräte abzurufen. Bei diesem Ansatz gilt jedoch eine feste Obergrenze von 1000 für die Anzahl der Geräteobjekte, die zurückgegeben werden. Die **GetDevicesAsync**-Methode sollte nur in Entwicklungsszenarien zum Unterstützen des Debuggens verwendet werden und wird für Produktionsworkloads nicht empfohlen.
+> 
+> 
 
 ## Importieren von Geräten
-
 Die **ImportDevicesAsync**-Methode in der **RegistryManager**-Klasse ermöglicht Ihnen das Anwenden von Massenvorgängen (Import/Synchronisierung) auf eine IoT Hub-Geräteregistrierung. Wie die **ExportDevicesAsync**-Methode verwendet die **ImportDevicesAsync**-Methode das **Job**-Framework.
 
 Sie müssen die **ImportDevicesAsync**-Methode umsichtig verwenden, damit ihr nicht nur neue Geräte in der Geräteidentitätsregistrierung bereitgestellt, sondern auch vorhandene Geräte aktualisiert und gelöscht werden können.
 
-> [AZURE.WARNING]  Ein Importvorgang kann nicht rückgängig gemacht werden. Sichern Sie stets Ihre vorhandenen Daten vor Verwenden der **ExportDevicesAsync**-Methode in einem anderen Blobcontainer, bevor Sie Massenänderungen an Ihrer Geräteidentitätsregistrierung vornehmen.
+> [!WARNING]
+> Ein Importvorgang kann nicht rückgängig gemacht werden. Sichern Sie stets Ihre vorhandenen Daten vor Verwenden der **ExportDevicesAsync**-Methode in einem anderen Blobcontainer, bevor Sie Massenänderungen an Ihrer Geräteidentitätsregistrierung vornehmen.
+> 
+> 
 
 Die **ImportDevicesAsync**-Methode erfordert zwei Parameter:
 
-*  Eine *Zeichenfolge*, die einen URI eines [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainers als *Eingabe* in den Auftrag enthält. Dieser URI muss ein SAS-Token enthalten, das Lesezugriff auf den Container gewährt. Dieser Container muss ein Blob mit dem Namen **devices.txt** enthalten, das die serialisierten Gerätedaten enthält, die in Ihre Geräteidentitätsregistrierung importiert werden sollen. Die importierten Daten müssen Geräteinformationen in dem gleichen JSON-Format enthalten, das der **ExportImportDevice**-Auftrag verwendet, wenn er ein **devices.txt**-Blob erstellt. Das SAS-Token muss diese Berechtigungen enthalten:
+* Eine *Zeichenfolge*, die einen URI eines [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainers als *Eingabe* in den Auftrag enthält. Dieser URI muss ein SAS-Token enthalten, das Lesezugriff auf den Container gewährt. Dieser Container muss ein Blob mit dem Namen **devices.txt** enthalten, das die serialisierten Gerätedaten enthält, die in Ihre Geräteidentitätsregistrierung importiert werden sollen. Die importierten Daten müssen Geräteinformationen in dem gleichen JSON-Format enthalten, das der **ExportImportDevice**-Auftrag verwendet, wenn er ein **devices.txt**-Blob erstellt. Das SAS-Token muss diese Berechtigungen enthalten:
+  
+   ```
+   SharedAccessBlobPermissions.Read
+   ```
+* Eine *Zeichenfolge*, die einen URI eines [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainers als *Ausgabe* aus dem Auftrag enthält. Der Auftrag erstellt in diesem Container ein Blockblob zum Speichern von Fehlerinformationen aus dem abgeschlossenen **Importauftrag**. Das SAS-Token muss diese Berechtigungen enthalten:
+  
+   ```
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   ```
 
-    ```
-    SharedAccessBlobPermissions.Read
-    ```
-
-*  Eine *Zeichenfolge*, die einen URI eines [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainers als *Ausgabe* aus dem Auftrag enthält. Der Auftrag erstellt in diesem Container ein Blockblob zum Speichern von Fehlerinformationen aus dem abgeschlossenen **Importauftrag**. Das SAS-Token muss diese Berechtigungen enthalten:
-    
-    ```
-    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
-    ```
-
-> [AZURE.NOTE]  Die beiden Parameter können auf den gleichen Blobcontainer verweisen. Die separaten Parameter ermöglichen einfach mehr Kontrolle über Ihre Daten, da der Ausgabecontainer zusätzliche Berechtigungen erfordert.
+> [!NOTE]
+> Die beiden Parameter können auf den gleichen Blobcontainer verweisen. Die separaten Parameter ermöglichen einfach mehr Kontrolle über Ihre Daten, da der Ausgabecontainer zusätzliche Berechtigungen erfordert.
+> 
+> 
 
 Der folgende C#-Codeausschnitt zeigt, wie ein Importauftrag ausgelöst wird:
 
@@ -160,33 +163,34 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 ```
 
 ## Importverhalten
-
 Sie können die **ImportDevicesAsync**-Methode zum Anwenden der folgenden Massenvorgänge auf Ihre Geräteidentitätsregistrierung verwenden:
 
--   Massenregistrierung neuer Geräte
--   Massenlöschung vorhandener Geräte
--   Massenstatusänderungen (Aktivieren oder Deaktivieren von Geräten)
--   Massenzuweisung neuer Geräteauthentifizierungsschlüssel
--   Automatische Massenneugenerierung von Geräteauthentifizierungsschlüsseln
+* Massenregistrierung neuer Geräte
+* Massenlöschung vorhandener Geräte
+* Massenstatusänderungen (Aktivieren oder Deaktivieren von Geräten)
+* Massenzuweisung neuer Geräteauthentifizierungsschlüssel
+* Automatische Massenneugenerierung von Geräteauthentifizierungsschlüsseln
 
 Sie können eine beliebige Kombination der genannten Vorgänge innerhalb eines einzelnen Aufrufs von **ImportDevicesAsync** ausführen. Sie können beispielsweise gleichzeitig neue Geräte registrieren oder vorhandene Geräte aktualisieren und löschen. Bei Verwendung zusammen mit der **ExportDevicesAsync**-Methode können Sie alle Ihre Geräte vollständig von einem IoT Hub zu einem anderen migrieren.
 
 Sie können den Importprozess gerätebezogen steuern, indem Sie die optionale **importMode**-Eigenschaft in den Importserialisierungsdaten für jedes Gerät verwenden. Die **importMode**-Eigenschaft hat die folgenden Optionen:
 
 | importMode | Beschreibung |
-| -------- | ----------- |
-| **createOrUpdate** | Wenn ein Gerät mit der angegebenen **ID** nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag**-Werts überschrieben. |
-| **create** | Wenn ein Gerät mit der angegebenen **ID** nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
-| **update** | Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag**-Werts überschrieben. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
-| **updateIfMatchETag** | Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
-| **createOrUpdateIfMatchETag** | Wenn ein Gerät mit der angegebenen **ID** nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
-| **delete** | Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es ohne Bezug auf den **ETag**-Wert gelöscht. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
-| **deleteIfMatchETag** | Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es nur gelöscht, wenn es eine Übereinstimmung mit einem **ETag** gibt. Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem ETag gibt, wird ein Fehler in die Protokolldatei geschrieben. |
+| --- | --- |
+| **createOrUpdate** |Wenn ein Gerät mit der angegebenen **ID** nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag**-Werts überschrieben. |
+| **create** |Wenn ein Gerät mit der angegebenen **ID** nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
+| **update** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag**-Werts überschrieben. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
+| **updateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
+| **createOrUpdateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
+| **delete** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es ohne Bezug auf den **ETag**-Wert gelöscht. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
+| **deleteIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es nur gelöscht, wenn es eine Übereinstimmung mit einem **ETag** gibt. Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem ETag gibt, wird ein Fehler in die Protokolldatei geschrieben. |
 
-> [AZURE.NOTE] Wenn die Serialisierungsdaten nicht explizit ein **importMode**-Flag für ein Gerät definieren, wird standardmäßig **createOrUpdate** während des Importvorgangs gewählt.
+> [!NOTE]
+> Wenn die Serialisierungsdaten nicht explizit ein **importMode**-Flag für ein Gerät definieren, wird standardmäßig **createOrUpdate** während des Importvorgangs gewählt.
+> 
+> 
 
-## Beispiel für das Importieren von Geräten – Massengerätebereitstellung 
-
+## Beispiel für das Importieren von Geräten – Massengerätebereitstellung
 Das folgende C#-Codebeispiel veranschaulicht, wie mehrere Geräte-Identitäten generiert werden, die Authentifizierungsschlüssel enthalten, diese Geräte-Informationen in einen Azure Storage-Blockblob geschrieben werden und die Geräte anschließend in die Geräte-Identitätsregistrierung importiert werden:
 
 ```
@@ -251,7 +255,6 @@ while(true)
 ```
 
 ## Beispiel für das Importieren von Geräten – Massenlöschung
-
 Im folgenden Codebeispiel wird das Löschen der Geräte gezeigt, die Sie mithilfe des vorherigen Codebeispiels hinzugefügt haben:
 
 ```
@@ -302,8 +305,6 @@ while(true)
 ```
 
 ## Abrufen des SAS-URI des Containers
-
-
 Das folgende Codebeispiel veranschaulicht das Erstellen eines [SAS-URI](../storage/storage-dotnet-shared-access-signature-part-2.md) mit Lese-, Schreib- und Löschberechtigungen für einen Blobcontainer:
 
 ```
@@ -331,19 +332,18 @@ static string GetContainerSasUri(CloudBlobContainer container)
 ```
 
 ## Nächste Schritte
-
 In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Geräte-Identitätsregistrierung in einem IoT Hub angewendet werden. Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
-- [Nutzungsmetriken][lnk-metrics]
-- [Vorgangsüberwachung][lnk-monitor]
-- [Verwalten des Zugriffs auf IoT Hub][lnk-itpro]
+* [Nutzungsmetriken][lnk-metrics]
+* [Vorgangsüberwachung][lnk-monitor]
+* [Verwalten des Zugriffs auf IoT Hub][lnk-itpro]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-- [Entwerfen Ihrer Lösung][lnk-design]
-- [Entwicklerhandbuch][lnk-devguide]
-- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
-- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+* [Entwerfen Ihrer Lösung][lnk-design]
+* [Entwicklerhandbuch][lnk-devguide]
+* [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+* [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
 
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-monitor]: iot-hub-operations-monitoring.md

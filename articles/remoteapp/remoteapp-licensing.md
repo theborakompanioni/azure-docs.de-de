@@ -1,25 +1,25 @@
-<properties
-    pageTitle="Lizenzieren von Azure RemoteApp | Microsoft Azure"
-    description="Erfahren Sie, wie die Lizenzierung in Azure RemoteApp funktioniert."
-    services="remoteapp"
-    documentationCenter=""
-    authors="lizap"
-    manager="mbaldwin" />
+---
+title: Lizenzieren von Azure RemoteApp | Microsoft Docs
+description: Erfahren Sie, wie die Lizenzierung in Azure RemoteApp funktioniert.
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
+---
 # Wie funktioniert die Lizenzierung in Azure RemoteApp?
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> [!IMPORTANT]
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
 Sie haben Ihren Azure RemoteApp-Dienst eingerichtet, die Vorlagen erstellt und sind nun bereit, Apps für Ihre Benutzer zu veröffentlichen. Es gibt allerdings noch einen letzten Punkt, der zu berücksichtigt bleibt: die Lizenzierung. Wie genau funktioniert die Lizenzierung für RemoteApp und die Apps, die Sie über RemoteApp freigeben?
 
@@ -27,7 +27,7 @@ RemoteApp erfordert keine Windows-Lizenzen oder Remote Desktop-Clientzugriffsliz
 
 Wenn Sie eines der in Ihrem Abonnement enthaltenen Images verwenden, können Sie beliebige der Apps freigeben, die Sie unter diesem Image installiert haben. In diesem Fall ist keine separate Lizenz erforderlich. Wenn Sie beispielsweise das Windows Server 2012 R2-Vorlagenimage zum Erstellen Ihrer Sammlung verwenden, können Sie System Center Endpoint Protection für Ihre Benutzer freigeben. Ausgenommen von dieser Regel sind nur Office 365 ProPlus, für das ein separates Abonnement erforderlich ist, und Office 2013, das in einer Produktionssammlung nicht freigegeben werden kann.
 
-Wenn Sie das in RemoteApp enthaltene Office 365-Vorlagenimage verwenden möchten, benötigen Sie einen *vorhandenen* Office 365 ProPlus-Plan. Dasselbe gilt für alle Office 365-Apps, die Sie mithilfe einer benutzerdefinierten Vorlage veröffentlichen. Sie müssen die Apps mit Ihrem eigenen Abonnement aktivieren. Dies gilt sowohl für Testabonnements als auch für kostenpflichtige Abonnements. Wenn Sie während des Testzeitraums das Office 365-Vorlagenimage verwenden möchten *und noch nicht über ein Abonnement verfügen*, rufen Sie die Office 365-Seite auf, um sich für ein Testabonnement zu [registrieren](https://go.microsoft.com/fwlink/p/?LinkID=403802). Weitere Informationen finden Sie unter [Wie arbeiten RemoteApp und Office zusammen?](remoteapp-o365.md).
+Wenn Sie das in RemoteApp enthaltene Office 365-Vorlagenimage verwenden möchten, benötigen Sie einen *vorhandenen* Office 365 ProPlus-Plan. Dasselbe gilt für alle Office 365-Apps, die Sie mithilfe einer benutzerdefinierten Vorlage veröffentlichen. Sie müssen die Apps mit Ihrem eigenen Abonnement aktivieren. Dies gilt sowohl für Testabonnements als auch für kostenpflichtige Abonnements. Wenn Sie während des Testzeitraums das Office 365-Vorlagenimage verwenden möchten *und noch nicht über ein Abonnement verfügen*, rufen Sie die Office 365-Seite auf, um sich für ein Testabonnement zu [registrieren](https://go.microsoft.com/fwlink/p/?LinkID=403802). Weitere Informationen finden Sie unter [Wie arbeiten RemoteApp und Office zusammen?](remoteapp-o365.md).
 
 Wenn Sie während des Testzeitraums kein Office 365-Testabonnement verwenden möchten, verwenden Sie das im Lieferumfang von RemoteApp enthaltene Vorlagenimage von Office 2013 Professional Plus. Dieses Vorlagenimage kann nur 30 Tage verwendet und nicht in eine kostenpflichtige Sammlung konvertiert werden.
 

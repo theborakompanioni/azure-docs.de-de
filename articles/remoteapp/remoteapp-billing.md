@@ -1,27 +1,26 @@
 
-<properties
-    pageTitle="Ändern der Abrechnung für Azure RemoteApp | Microsoft Azure"
-    description="Erfahren Sie, wie Sie die Abrechnung für Azure RemoteApp beenden."
-    services="remoteapp"
-    documentationCenter=""
-    authors="lizap"
-    manager="mbaldwin" />
+---
+title: Ändern der Abrechnung für Azure RemoteApp | Microsoft Docs
+description: Erfahren Sie, wie Sie die Abrechnung für Azure RemoteApp beenden.
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
-
+---
 # Beenden der Abrechnung für Azure RemoteApp
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> [!IMPORTANT]
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
 Solange Sie über Azure RemoteApp-Sammlungen verfügen, selbst wenn diesen keine Benutzer zugewiesen sind, wird Ihnen RemoteApp in Rechnung gestellt. Um dies zu beenden, löschen Sie all Ihre Sammlungen.
 

@@ -1,48 +1,48 @@
-<properties
-   pageTitle="Azure Active Directory-Glossar für Entwickler | Microsoft Azure"
-   description="Eine Liste mit häufig verwendeten Konzepten und Features für Azure Active Directory-Entwickler."
-   services="active-directory"
-   documentationCenter=""
-   authors="bryanla"
-   manager="mbaldwin"
-   editor=""/>
+---
+title: Azure Active Directory-Glossar für Entwickler | Microsoft Docs
+description: Eine Liste mit häufig verwendeten Konzepten und Features für Azure Active Directory-Entwickler.
+services: active-directory
+documentationcenter: ''
+author: bryanla
+manager: mbaldwin
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="08/31/2016"
-   ms.author="bryanla"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/31/2016
+ms.author: bryanla
 
+---
 # Azure Active Directory-Glossar für Entwickler
 Dieser Artikel enthält hilfreiche Definitionen für einige der zentralen Entwicklerkonzepte von Azure Active Directory (AD) im Zusammenhang mit der Anwendungsentwicklung für Azure AD.
 
-## Zugriffstoken 
+## Zugriffstoken
 Eine Art von [Sicherheitstoken](#security-token). Wird von einem [Autorisierungsserver](#authorization-server) ausgestellt und von einer [Clientanwendung](#client-application) für den Zugriff auf einen [geschützten Ressourcenserver](#resource-server) verwendet. Das Token liegt in der Regel in Form eines [JSON Web Token (JWT)][JWT] vor und stellt die Autorisierung dar, die dem Client durch den [Ressourcenbesitzer](#resource-owner) für eine angeforderte Zugriffsstufe gewährt wurde. Das Token enthält alle geltenden [Ansprüche](#claim) für den Antragsteller und kann von der Clientanwendung beim Zugriff auf eine bestimmte Ressource als eine Art von Anmeldeinformationen verwendet werden. Der Ressourcenbesitzer muss somit gegenüber dem Client keine Anmeldeinformationen angeben.
 
 Zugriffstoken werden abhängig von den vorgelegten Anmeldeinformationen gelegentlich auch als „Benutzer- und App-Token“ oder als „ App-exklusives Token“ bezeichnet. Beispielverwendungsszenarien für die Clientanwendung:
 
-- [Autorisierungsgewährung mit Autorisierungscode](#authorization-grant): In diesem Fall wird der Endbenutzer zunächst als Ressourcenbesitzer authentifiziert, und die Autorisierung für den Ressourcenzugriff wird an den Client delegiert. Der Client wird später beim Beziehen des Zugriffstokens authentifiziert. Das Token wird gelegentlich spezifischer als Benutzer- und App-Token bezeichnet, da es sowohl den Benutzer, der die Clientanwendung autorisiert hat, als auch die Anwendung darstellt.
-- [Autorisierungsgewährung mit Clientanmeldeinformationen](#authorization-grant): In diesem Fall stellt der Client die einzige Authentifizierung (ohne Authentifizierung/Autorisierung des Ressourcenbesitzers) bereit, weshalb das Token gelegentlich als App-exklusives Token bezeichnet wird.
+* [Autorisierungsgewährung mit Autorisierungscode](#authorization-grant): In diesem Fall wird der Endbenutzer zunächst als Ressourcenbesitzer authentifiziert, und die Autorisierung für den Ressourcenzugriff wird an den Client delegiert. Der Client wird später beim Beziehen des Zugriffstokens authentifiziert. Das Token wird gelegentlich spezifischer als Benutzer- und App-Token bezeichnet, da es sowohl den Benutzer, der die Clientanwendung autorisiert hat, als auch die Anwendung darstellt.
+* [Autorisierungsgewährung mit Clientanmeldeinformationen](#authorization-grant): In diesem Fall stellt der Client die einzige Authentifizierung (ohne Authentifizierung/Autorisierung des Ressourcenbesitzers) bereit, weshalb das Token gelegentlich als App-exklusives Token bezeichnet wird.
 
 Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
 
-## Anwendungsmanifest  
+## Anwendungsmanifest
 Ein Feature des [klassischen Azure-Portals][AZURE-classic-portal], das eine JSON-Darstellung der Identitätskonfiguration der Anwendung generiert. Diese wird als Mechanismus für die Aktualisierung der zugehörigen Entitäten [Anwendung][AAD-Graph-App-Entity] und [ServicePrincipal][AAD-Graph-Sp-Entity] verwendet. Ausführlichere Informationen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest][AAD-App-Manifest].
 
-## Anwendungsobjekt  
+## Anwendungsobjekt
 Wenn Sie eine Anwendung im [klassischen Azure-Portal][AZURE-classic-portal] registrieren/aktualisieren, erstellt/aktualisiert das Portal sowohl ein Anwendungsobjekt als auch ein entsprechendes [Dienstprinzipalobjekt](#service-principal-object) für den Mandanten. Das Anwendungsobjekt *definiert* die Identitätskonfiguration der Anwendung global (also für alle Mandanten, auf die es Zugriff hat) und stellte eine Vorlage bereit, von der die entsprechenden Dienstprinzipalobjekte für die lokale Verwendung zur Laufzeit (in einem bestimmten Mandanten) *abgeleitet* werden.
 
 Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte][AAD-App-SP-Objects].
 
-## Anwendungsregistrierung  
+## Anwendungsregistrierung
 Um einer Anwendung die Integration in Azure AD sowie die Delegierung von Identitäts- und Zugriffsverwaltungsfunktionen an Azure AD zu ermöglichen, muss sie bei einem Azure AD-[Mandanten](#tenant) registriert werden. Wenn Sie Ihre Anwendung bei Azure AD registrieren, stellen Sie eine Identitätskonfiguration für Ihre Anwendung bereit. Dies ermöglicht neben der Integration in Azure AD unter anderem auch die Verwendung folgender Features:
 
-- Stabile Verwaltung von einmaligem Anmelden mit Azure AD-Identitätsverwaltung und [OpenID Connect][OpenIDConnect]-Protokollimplementierung
-- Vermittelter Zugriff auf [geschützte Ressourcen](#resource-server) durch [Clientanwendungen](#client-application) über die [Autorisierungsserver](#authorization-server)-Implementierung (OAuth 2.0) von Azure AD
-- [Consent Framework](#consent) zum Verwalten des Clientzugriffs auf geschützte Ressourcen auf der Grundlage der Ressourcenbesitzerautorisierung
+* Stabile Verwaltung von einmaligem Anmelden mit Azure AD-Identitätsverwaltung und [OpenID Connect][OpenIDConnect]-Protokollimplementierung
+* Vermittelter Zugriff auf [geschützte Ressourcen](#resource-server) durch [Clientanwendungen](#client-application) über die [Autorisierungsserver](#authorization-server)-Implementierung (OAuth 2.0) von Azure AD
+* [Consent Framework](#consent) zum Verwalten des Clientzugriffs auf geschützte Ressourcen auf der Grundlage der Ressourcenbesitzerautorisierung
 
 Ausführlichere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory][AAD-Integrating-Apps].
 
@@ -52,8 +52,8 @@ Die Anforderung ordnungsgemäßer Anmeldeinformationen von einer Partei. Bildet 
 ## Autorisierung
 Die Gewährung einer Handlungsberechtigung für einen authentifizierten Sicherheitsprinzipal. Im Programmiermodell von Azure AD sind im Wesentlichen zwei Anwendungsfälle vorgesehen:
 
-- Im Rahmen einer [OAuth2-Autorisierungsgewährung](#authorization-grant): Wenn der [Ressourcenbesitzer](#resource-owner) die [Clientanwendung](#client-application) autorisiert und dem Client dadurch Zugriff auf Ressourcen der Ressourcenbesitzers gewährt.
-- Im Rahmen des Ressourcenzugriffs durch den Client: Gemäß Implementierung durch den [Ressourcenserver](#resource-server) unter Verwendung der Werte des [Anspruchs](#claim) aus dem [Zugriffstoken](#access-token), die als Grundlage für Zugriffssteuerungsentscheidungen herangezogen werden.
+* Im Rahmen einer [OAuth2-Autorisierungsgewährung](#authorization-grant): Wenn der [Ressourcenbesitzer](#resource-owner) die [Clientanwendung](#client-application) autorisiert und dem Client dadurch Zugriff auf Ressourcen der Ressourcenbesitzers gewährt.
+* Im Rahmen des Ressourcenzugriffs durch den Client: Gemäß Implementierung durch den [Ressourcenserver](#resource-server) unter Verwendung der Werte des [Anspruchs](#claim) aus dem [Zugriffstoken](#access-token), die als Grundlage für Zugriffssteuerungsentscheidungen herangezogen werden.
 
 ## Autorisierungscode
 Ein kurzlebiges Token, das einer [Clientanwendung](#client-application) vom [Autorisierungsendpunkt](#authorization-endpoint) im Rahmen des Autorisierungscodeablaufs bereitgestellt wird (eine der vier OAuth2-[Autorisierungsgewährungen](#authorization-grant)). Der Code wird als Antwort auf die Authentifizierung eines [Ressourcenbesitzers](#resource-owner) an die Clientanwendung zurückgegeben und gibt an, dass der Ressourcenbesitzer die Autorisierung delegiert hat, um den Ressourcenzugriff zu ermöglichen. Im Rahmen des Ablaufs wird der Code gegen ein [Zugriffstoken](#access-token) eingetauscht.
@@ -76,7 +76,7 @@ Ein [Sicherheitstoken](#security-token) enthält Ansprüche, die Assertionen zu 
 
 Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
 
-## Clientanwendung  
+## Clientanwendung
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine Anwendung, die im Auftrag des [Ressourcenbesitzers](#resource-owner) geschützte Ressourcen anfordert. Der Begriff „Client“ impliziert keine bestimmte Hardwareimplementierung (also beispielsweise, ob die Anwendung auf einem Server, Desktopcomputer oder anderen Gerät ausgeführt wird).
 
 Eine Clientanwendung fordert eine [Autorisierung](#authorization) von einem Ressourcenbesitzer an, um an einer [OAuth2-Autorisierungsgewährung](#authorization-grant) teilzunehmen, und greift ggf. im Auftrag des Ressourcenbesitzers auf APIs/Daten zu. Das OAuth2-Autorisierungsframework [definiert zwei Arten von Clients][OAuth2-Client-Types]\: „vertraulich“ und „öffentlich“ (abhängig davon, ob der Client die Vertraulichkeit seiner Anmeldeinformationen gewährleisten kann). Anwendungen können einen auf einem Webserver ausgeführten [Webclient (vertraulich)](#web-client), einen auf einem Gerät installierten [native Client (öffentlich)](#native-client) oder einen im Browser eines Geräts ausgeführten [Benutzer-Agent-basierten Client (öffentlich)](#user-agent-based-client) implementieren.
@@ -100,8 +100,8 @@ Eine Art von [Clientanwendung](#client-application), die nativ auf einem Gerät 
 ## Berechtigungen
 Eine [Clientanwendung](#client-application) erhält Zugriff auf einen [Ressourcenserver](#resource-server), indem sie Berechtigungsanforderungen deklariert. Zwei Arten sind verfügbar:
 
-- Delegierte Berechtigungen: Fordern [bereichsbasierten](#scopes) Zugriff unter der delegierten Autorisierung des angemeldeten [Ressourcenbesitzers](#resource-owner) an und werden der Ressource zur Laufzeit als [SCP-Ansprüche](#claim) im [Zugriffstoken](#access-token) des Clients präsentiert.
-- Anwendungsberechtigungen: Fordern [rollenbasierten](#roles) Zugriff unter den Anmeldeinformationen/der Identität der Anwendung an und werden der Ressource zur Laufzeit als [Rollenansprüche](#claim) im Zugriffstoken des Clients präsentiert.
+* Delegierte Berechtigungen: Fordern [bereichsbasierten](#scopes) Zugriff unter der delegierten Autorisierung des angemeldeten [Ressourcenbesitzers](#resource-owner) an und werden der Ressource zur Laufzeit als [SCP-Ansprüche](#claim) im [Zugriffstoken](#access-token) des Clients präsentiert.
+* Anwendungsberechtigungen: Fordern [rollenbasierten](#roles) Zugriff unter den Anmeldeinformationen/der Identität der Anwendung an und werden der Ressource zur Laufzeit als [Rollenansprüche](#claim) im Zugriffstoken des Clients präsentiert.
 
 Darüber hinaus werden sie im Rahmen des [Zustimmungsprozesses](#consent) verwendet, um dem Administrator oder Ressourcenbesitzer die Möglichkeit zu geben, den Clientzugriff auf Ressourcen in seinem Mandanten zu gewähren oder zu verweigern.
 
@@ -150,9 +150,9 @@ Die Aufhebung der Authentifizierung eines Benutzers, wobei der Benutzerzustand, 
 ## Mandant
 Eine Instanz eines Azure AD-Verzeichnisses wird als Azure AD-Mandant bezeichnet. Dieser bietet eine Vielzahl von Features, z. B.:
 
-- ein Registrierungsdienst für integrierte Anwendungen
-- Authentifizierung von Benutzerkonten und registrierten Anwendungen
-- REST-Endpunkte, die zur Unterstützung verschiedener Protokolle (einschließlich OAuth2 und SAML) erforderlich sind, z. B. der [Autorisierungsendpunkt](#authorization-endpoint), der [Tokenendpunkt](#token-endpoint) und der allgemeine, von [mehrinstanzenfähigen Anwendungen](#multi-tenant-application) verwendete Endpunkt.
+* ein Registrierungsdienst für integrierte Anwendungen
+* Authentifizierung von Benutzerkonten und registrierten Anwendungen
+* REST-Endpunkte, die zur Unterstützung verschiedener Protokolle (einschließlich OAuth2 und SAML) erforderlich sind, z. B. der [Autorisierungsendpunkt](#authorization-endpoint), der [Tokenendpunkt](#token-endpoint) und der allgemeine, von [mehrinstanzenfähigen Anwendungen](#multi-tenant-application) verwendete Endpunkt.
 
 Ein Mandant wird während der Bereitstellung des Abonnements auch mit einem Azure AD oder Office 365-Abonnement verbunden und stellt Features zur Identitäts- und Zugriffsverwaltung für das Abonnement bereit. Ausführliche Informationen zu den verschiedenen Mandantenzugriffsmöglichkeiten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten][AAD-How-To-Tenant]. Unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory][AAD-How-Subscriptions-Assoc] erfahren Sie mehr über die Beziehung zwischen Abonnements und Azure AD-Mandanten.
 

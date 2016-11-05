@@ -5,20 +5,17 @@ In bestimmten Situationen müssen Sie eventuell das Löschen dieser virtuellen U
 Es gibt mehrere Möglichkeiten, die vorhandene virtuelle Umgebung auf Azure zu verwalten:
 
 ### Option 1: Verwenden von FTP
-
 Stellen Sie mit einem FTP-Client eine Verbindung mit dem Server her, sodass Sie den Ordner "env" löschen können. Beachten Sie, dass einige FTP-Clients (z. B. Webbrowser) möglicherweise nur Lesezugriff haben und das Löschen von Ordnern nicht erlauben, daher sollten Sie sicherstellen, dass Sie einen FTP-Client mit dieser Funktion verwenden. Der FTP-Hostname und Benutzer werden auf dem Blatt Ihrer Web-App im [Azure-Portal](https://portal.azure.com) angezeigt.
 
 ### Option 2: Ein-/Ausschalten von Runtime
-
 Hier ist eine Alternative, welche die Tatsache nutzt, dass das Bereitstellungsskript den env-Ordner löscht, wenn die gewünschte Version von Python nicht übereinstimmt. Dadurch wird effektiv die vorhandene Umgebung gelöscht und eine neue erstellt.
 
 1. Wechseln Sie zu einer anderen Version von Python (über "runtime.txt" oder das Blatt **Anwendungseinstellungen** im Azure-Portal)
-1. Übertragen Sie einige Änderungen durch Git-Push (mögliche pip-Installationsfehler ignorieren, falls vorhanden)
-1. Wechseln Sie zurück zur ersten Version von Python
-1. Übertragen Sie erneut einige Änderungen durch Git-Push
+2. Übertragen Sie einige Änderungen durch Git-Push (mögliche pip-Installationsfehler ignorieren, falls vorhanden)
+3. Wechseln Sie zurück zur ersten Version von Python
+4. Übertragen Sie erneut einige Änderungen durch Git-Push
 
 ### Option 3: Anpassen des Bereitstellungsskripts
-
 Wenn Sie das Bereitstellungsskript angepasst haben, können Sie den Code in "deploy.cmd" ändern, um das Löschen des Ordners "env" zu erzwingen.
 
 <!---HONumber=AcomDC_1125_2015-->

@@ -1,46 +1,49 @@
-<properties
-   pageTitle="Service Fabric und Bereitstellung von Containern | Microsoft Azure"
-   description="Es wird beschrieben, wie Sie Service Fabric und Container zur Bereitstellung von Microserviceanwendungen nutzen. In diesem Artikel geht es um die Funktionen, die in Service Fabric für Container enthalten sind, und um die Bereitstellung von Containerimages in einem Cluster."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="msfussell"
-   manager=""
-   editor=""/>
+---
+title: Service Fabric und Bereitstellung von Containern | Microsoft Docs
+description: Es wird beschrieben, wie Sie Service Fabric und Container zur Bereitstellung von Microserviceanwendungen nutzen. In diesem Artikel geht es um die Funktionen, die in Service Fabric für Container enthalten sind, und um die Bereitstellung von Containerimages in einem Cluster.
+services: service-fabric
+documentationcenter: .net
+author: msfussell
+manager: ''
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/25/2016"
-   ms.author="msfussell"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/25/2016
+ms.author: msfussell
 
-
+---
 # <a name="preview:-deploy-a-container-to-service-fabric"></a>Vorschau: Bereitstellen eines Containers in Service Fabric
-
->[AZURE.NOTE] Dieses Feature befindet sich für Linux in der Vorschauphase und ist für Windows Server derzeit nicht verfügbar. Die Vorschauphase für Windows Server beginnt mit der nächsten Version von Service Fabric nach Windows Server 2016 GA, und das Feature wird in der darauffolgenden Version unterstützt.
+> [!NOTE]
+> Dieses Feature befindet sich für Linux in der Vorschauphase und ist für Windows Server derzeit nicht verfügbar. Die Vorschauphase für Windows Server beginnt mit der nächsten Version von Service Fabric nach Windows Server 2016 GA, und das Feature wird in der darauffolgenden Version unterstützt.
+> 
+> 
 
 Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung von Anwendungen, die sich aus Microservices in Containern zusammensetzen. Diese werden als Dienste in Containern bezeichnet. Die Funktionen sind:
 
-- Bereitstellung und Aktivierung von Containerimages
-- Ressourcenkontrolle
-- Repositoryauthentifizierung
-- Containerport zum Hosten der Portzuordnung
-- Container-zu-Container-Ermittlung und -Kommunikation
-- Möglichkeit zum Konfigurieren und Festlegen von Umgebungsvariablen
+* Bereitstellung und Aktivierung von Containerimages
+* Ressourcenkontrolle
+* Repositoryauthentifizierung
+* Containerport zum Hosten der Portzuordnung
+* Container-zu-Container-Ermittlung und -Kommunikation
+* Möglichkeit zum Konfigurieren und Festlegen von Umgebungsvariablen
 
 Wir sehen uns nacheinander die Funktionen an, die beim Verpacken eines in einem Container enthaltenen Diensts für Ihre Anwendung verwendet werden.
 
 ## <a name="packaging-a-container"></a>Packen eines Containers
-
 Beim Packen eines Containers können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit dem neuen Projekt-Assistenten für Sie erstellt.
 
 ## <a name="using-visual-studio-to-package-an-existing-executable"></a>Verwenden von Visual Studio zum Packen einer vorhandenen ausführbaren Datei
-
->[AZURE.NOTE] In einer zukünftigen Version des SDK mit den Visual Studio-Tools können Sie einer Anwendung einen Container auf ähnliche Weise hinzufügen, wie Sie dies bereits von einer ausführbaren Gastanwendung kennen. Weitere Informationen finden Sie im Thema [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md) . Derzeit müssen Sie das Packen wie unten beschrieben manuell durchführen.
+> [!NOTE]
+> In einer zukünftigen Version des SDK mit den Visual Studio-Tools können Sie einer Anwendung einen Container auf ähnliche Weise hinzufügen, wie Sie dies bereits von einer ausführbaren Gastanwendung kennen. Weitere Informationen finden Sie im Thema [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md) . Derzeit müssen Sie das Packen wie unten beschrieben manuell durchführen.
+> 
+> 
 
 <a id="manually"></a>
+
 ## <a name="manually-packaging-and-deploying-container"></a>Manuelles Packen und Bereitstellen von Containern
 Der Vorgang zum manuellen Packen eines Diensts in einem Container basiert auf folgenden Schritten:
 
@@ -68,14 +71,16 @@ Sie können für das Containerimage Eingabebefehle angeben, indem Sie das option
 ## <a name="resource-governance"></a>Ressourcenkontrolle
 Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen beschränkt werden, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, können Ressourcenbegrenzungen für ein Dienstcodepaket deklariert werden. Ressourcenbegrenzungen können für Folgendes festgelegt werden:
 
-- Arbeitsspeicher
-- MemorySwap
-- CpuShares (relative CPU-Gewichtung)
-- MemoryReservationInMB  
-- BlkioWeight (relative BlockIO-Gewichtung) 
+* Arbeitsspeicher
+* MemorySwap
+* CpuShares (relative CPU-Gewichtung)
+* MemoryReservationInMB  
+* BlkioWeight (relative BlockIO-Gewichtung) 
 
->[AZURE.NOTE] In einer zukünftigen Version wird die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten möglich sein, z.B. IOPS, Bit/s (Lesen/Schreiben) und andere.
-
+> [!NOTE]
+> In einer zukünftigen Version wird die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten möglich sein, z.B. IOPS, Bit/s (Lesen/Schreiben) und andere.
+> 
+> 
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
@@ -89,7 +94,6 @@ Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen
 ## <a name="repository-authentication"></a>Repositoryauthentifizierung
 Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinformationen für das Containerrepository angeben. Die Anmeldeinformationen, die im *Anwendungs* manifest enthalten sind, werden zum Angeben der Anmeldeinformationen oder des SSH-Schlüssels zum Herunterladen des Containerimage aus dem Imagerepository verwendet.  Das folgende Beispiel enthält ein Konto mit dem Namen *TestUser* und dem Kennwort als Klartext. Dies ist **nicht** zu empfehlen.
 
-
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <Policies>
@@ -102,7 +106,6 @@ Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinfor
 Das Kennwort kann und muss verschlüsselt werden, indem ein für den Computer bereitgestelltes Zertifikat verwendet wird.
 
 Im folgenden Beispiel wird ein Konto mit dem Namen *TestUser* verwendet, dessen Kennwort mit dem Zertifikat *MyCert* verschlüsselt wird. Sie können den PowerShell-Befehl `Invoke-ServiceFabricEncryptText` verwenden, um den Verschlüsselungstext für den geheimen Schlüssel für das Kennwort zu erstellen. Der Artikel [Verwalten von geheimen Daten in Service Fabric-Anwendungen](service-fabric-application-secret-management.md) enthält Details hierzu. Der private Schlüssel des Zertifikats zum Entschlüsseln des Kennworts muss auf dem lokalen Computer mit einer Out-of-Band-Methode bereitgestellt werden (in Azure über den Resource Manager). Wenn Service Fabric das Dienstpaket dann auf dem Computer bereitstellt, kann der geheime Schlüssel entschlüsselt und zusammen mit dem Kontonamen zum Authentifizieren für das Containerrepository mit diesen Anmeldeinformationen verwendet werden.
-
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
@@ -118,7 +121,6 @@ Im folgenden Beispiel wird ein Konto mit dem Namen *TestUser* verwendet, dessen 
 
 ## <a name="container-port-to-host-port-mapping"></a>Containerport zum Hosten der Portzuordnung
 Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, indem Sie im Anwendungsmanifest ein `PortBinding` -Element angeben. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet.
-
 
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
@@ -184,7 +186,6 @@ Im obigen Beispiel haben wir einen expliziten Wert für die Umgebungsvariable `H
 
 ## <a name="complete-examples-for-application-and-service-manifest"></a>Vollständige Beispiele für Anwendungs- und Dienstmanifest
 Hier ist ein Beispiel für ein Anwendungsmanifest angegeben, in dem die Containerfunktionen enthalten sind:
-
 
     <ApplicationManifest ApplicationTypeName="SimpleContainerApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <Description>A simple service container application</Description>

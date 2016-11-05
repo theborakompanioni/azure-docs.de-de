@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Gespeicherte Prozeduren in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps zum Implementieren von gespeicherten Prozeduren in Azure SQL Data Warehouse für die Entwicklung von Lösungen"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Gespeicherte Prozeduren in SQL Data Warehouse | Microsoft Docs
+description: Tipps zum Implementieren von gespeicherten Prozeduren in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/30/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # Gespeicherte Prozeduren in SQL Data Warehouse
-
 SQL Data Warehouse unterstützt viele Transact-SQL-Features aus SQL Server. Darüber hinaus sind bestimmte Features für das horizontale Hochskalieren vorhanden, die genutzt werden sollten, um die Leistung einer Lösung zu verbessern.
 
 In Bezug auf die Verwaltung der Skalierung und Leistung von SQL Data Warehouse sind auch einige Features und Funktionen vorhanden, die Unterschiede beim Verhalten aufweisen. Es gibt auch Features, die nicht unterstützt werden.
@@ -34,14 +33,15 @@ Wenn SQL Data Warehouse Ihre gespeicherte Prozedur ausführt, werden die SQL-Anw
 ## Schachteln von gespeicherten Prozeduren
 Wenn gespeicherte Prozeduren andere gespeicherte Prozeduren aufrufen oder dynamischen SQL-Code ausführen, wird die innere gespeicherte Prozedur bzw. der Codeaufruf als „geschachtelt“ bezeichnet.
 
-SQL Data Warehouse unterstützt maximal acht Schachtelungsebenen. Dies ist ein Unterschied zu SQL Server. In SQL Server sind 32 Schachtelungsebenen zulässig.
+SQL Data Warehouse unterstützt maximal acht Schachtelungsebenen. Dies ist ein Unterschied zu SQL Server. In SQL Server sind 32 Schachtelungsebenen zulässig.
 
-Der Aufruf der obersten gespeicherten Prozedur entspricht Schachtelungsebene 1.
+Der Aufruf der obersten gespeicherten Prozedur entspricht Schachtelungsebene 1.
 
 ```sql
 EXEC prc_nesting
 ```
 Wenn die gespeicherte Prozedur auch einen weiteren EXEC-Aufruf durchführt, wird dadurch die Schachtelungsebene auf 2 erhöht.
+
 ```sql
 CREATE PROCEDURE prc_nesting
 AS
@@ -50,6 +50,7 @@ GO
 EXEC prc_nesting
 ```
 Wenn die zweite Prozedur dann dynamischen SQL-Code ausführt, wird dadurch die Schachtelungsebene auf 3 erhöht.
+
 ```sql
 CREATE PROCEDURE prc_nesting_2
 AS
@@ -66,25 +67,24 @@ SQL Data Warehouse lässt nicht zu, dass Sie das Resultset einer gespeicherten P
 Ein Beispiel hierzu finden Sie im folgenden Artikel zu [temporären Tabellen].
 
 ## Einschränkungen
-
 Es gibt einige Aspekte von gespeicherten Transact-SQL-Prozeduren, die in SQL Data Warehouse nicht implementiert sind.
 
 Sie lauten wie folgt:
 
-- Temporäre gespeicherte Prozeduren
-- Nummerierte gespeicherte Prozeduren
-- Erweiterte gespeicherte Prozeduren
-- Gespeicherte CLR-Prozeduren
-- Verschlüsselungsoption
-- Replikationsoption
-- Tabellenwertparameter
-- Schreibgeschützte Parameter
-- Standardparameter
-- Ausführungskontexte
-- return-Anweisung
+* Temporäre gespeicherte Prozeduren
+* Nummerierte gespeicherte Prozeduren
+* Erweiterte gespeicherte Prozeduren
+* Gespeicherte CLR-Prozeduren
+* Verschlüsselungsoption
+* Replikationsoption
+* Tabellenwertparameter
+* Schreibgeschützte Parameter
+* Standardparameter
+* Ausführungskontexte
+* return-Anweisung
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
 

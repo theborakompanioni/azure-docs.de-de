@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Optimieren von ExpressRoute-Routing | Microsoft Azure"
-   description="Diese Seite enthält Informationen zur Optimierung des Routings, wenn ein Kunde über mehr als eine ExpressRoute-Verbindung verfügt, mit der die Verbindung zwischen Microsoft und dem Unternehmensnetzwerk des Kunden hergestellt werden kann."
-   documentationCenter="na"
-   services="expressroute"
-   authors="charwen"
-   manager="carmonm"
-   editor=""/>
-<tags
-   ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/10/2016"
-   ms.author="charwen"/>
+---
+title: Optimieren von ExpressRoute-Routing | Microsoft Docs
+description: Diese Seite enthält Informationen zur Optimierung des Routings, wenn ein Kunde über mehr als eine ExpressRoute-Verbindung verfügt, mit der die Verbindung zwischen Microsoft und dem Unternehmensnetzwerk des Kunden hergestellt werden kann.
+documentationcenter: na
+services: expressroute
+author: charwen
+manager: carmonm
+editor: ''
 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/10/2016
+ms.author: charwen
 
+---
 # <a name="optimize-expressroute-routing"></a>Optimieren von ExpressRoute-Routing
 Wenn Sie mehrere ExpressRoute-Verbindungen nutzen, verfügen Sie über mehr als einen Weg zur Herstellung einer Verbindung mit Microsoft. Dies kann ein suboptimales Routing zur Folge haben. Es kann also sein, dass Ihr Datenverkehr für den Weg zu Microsoft und von Microsoft in Ihr Netzwerk mehr Zeit benötigt. Je länger der Netzwerkpfad, desto höher die Latenz. Die Latenz wirkt sich direkt auf die Anwendungsleistung und die Benutzerfreundlichkeit aus. In diesem Artikel wird dieses Problem veranschaulicht, und es wird beschrieben, wie Sie das Routing mit den standardmäßigen Routingtechnologien optimieren.
 
@@ -39,13 +39,17 @@ Es gibt zwei Lösungen des Problems. Die erste Lösung besteht darin, dass Sie e
 
 Die zweite Lösung besteht darin, weiterhin beide Präfixe unter beiden ExpressRoute-Verbindungen anzukündigen und darauf hinzuweisen, welches Präfix in der Nähe welcher Niederlassung liegt. Da die BGP-Voranstellung von AS Path unterstützt wird, können Sie AS Path für Ihr Präfix konfigurieren, um das Routing zu beeinflussen. In diesem Beispiel können Sie AS PATH für 172.2.0.0/31 in „USA, Osten“ verlängern, damit die ExpressRoute-Verbindung in „USA, Westen“ für Datenverkehr vorgezogen wird, der für dieses Präfix bestimmt ist (da von unserem Netzwerk angenommen wird, dass der Weg zu diesem Präfix im Westen kürzer ist). Auf ähnliche Weise können Sie AS PATH für 172.2.0.2/31 in „USA, Westen“ verlängern, damit von uns die ExpressRoute-Verbindung in „USA, Osten“ vorgezogen wird. Das Routing ist dann für beide Büros optimiert. Wenn bei diesem Aufbau eine ExpressRoute-Verbindung unterbrochen wird, kann Exchange Online Sie trotzdem noch über eine andere ExpressRoute-Verbindung und Ihr WAN erreichen. 
 
->[AZURE.IMPORTANT] Wir entfernen private AS-Nummern in AS PATH für die unter Microsoft-Peering empfangenen Präfixe. Sie müssen in AS PATH öffentliche AS-Nummern anfügen, um das Routing für Microsoft-Peering zu beeinflussen.
+> [!IMPORTANT]
+> Wir entfernen private AS-Nummern in AS PATH für die unter Microsoft-Peering empfangenen Präfixe. Sie müssen in AS PATH öffentliche AS-Nummern anfügen, um das Routing für Microsoft-Peering zu beeinflussen.
+> 
+> 
 
 ![](./media/expressroute-optimize-routing/expressroute-case2-solution.png)
 
->[AZURE.IMPORTANT] Die hier aufgeführten Beispiele gelten zwar für Microsoft-Peering und öffentliches Peering, für privates Peering werden jedoch die gleichen Funktionen unterstützt. Das Voranstellen von AS PATH funktioniert darüber hinaus in einer einzelnen ExpressRoute-Verbindung, sodass die Auswahl der primären und sekundären Pfade beeinflusst werden kann.
-
-
+> [!IMPORTANT]
+> Die hier aufgeführten Beispiele gelten zwar für Microsoft-Peering und öffentliches Peering, für privates Peering werden jedoch die gleichen Funktionen unterstützt. Das Voranstellen von AS PATH funktioniert darüber hinaus in einer einzelnen ExpressRoute-Verbindung, sodass die Auswahl der primären und sekundären Pfade beeinflusst werden kann.
+> 
+> 
 
 <!--HONumber=Oct16_HO2-->
 

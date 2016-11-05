@@ -1,5 +1,4 @@
 ## WordPress und Azure App Service
-
 * [Was ist WordPress?](https://wordpress.org/)
 * [Gewusst wie: Einrichten der leistungsstarken WordPress-Web-App](../articles/app-service-web/web-sites-php-enterprise-wordpress.md)
 * [Gewusst wie: Erwerben von ClearDB Shared MySQL-Hosting für Ihre WordPress-App](http://blog.syntaxc4.net/post/2012/12/03/provisioning-a-mysql-database-from-the-windows-azure-store.aspx)
@@ -8,9 +7,8 @@
 * [Erstellen eines eigenen Master-Master-MySQL-Clusters mit Percona Cluster](/documentation/templates/mysql-ha-pxc/) und [Weitere Informationen zum Verwalten des Clusters](https://github.com/fanjeffrey/axiom.articles/tree/master/pxc)
 * [Bereitstellen einer durch einen MySQL-Replikationscluster unterstützten WordPress-App mit Master-Slave-Konfiguration](/documentation/templates/mysql-replication/)
 * [Bereitstellen einer WordPress-App, die durch eine von ProjectNami verwaltete SQL Azure-DB unterstützt wird](/marketplace/partners/projectnami/projectnami/)
-  
-## Fehlerbehebung für die WordPress-Anwendung
 
+## Fehlerbehebung für die WordPress-Anwendung
 * [Gewusst wie: Problembehandlung für Ihre WordPress-App](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
 * [Sammeln von Nutzungstelemetriedaten mithilfe des Azure Application Insights-Diensts](https://azure.microsoft.com/blog/usage-analytics-for-wordpress-with-azure-app-insights/)
 * [Ausführen des Zend Zray-Profilers für Ihre Web-App zum Diagnostizieren von Problemen und Leistung](https://sunithamk.wordpress.com/2015/08/04/profiling-php-application-on-azure-web-apps/)
@@ -19,7 +17,6 @@
 * [Gewusst wie: Sichern Ihrer Web-App](../articles/app-service-web/web-sites-backup.md) und [Gewusst wie: Wiederherstellen Ihrer Web-App](../articles/app-service-web/web-sites-restore.md)
 
 ## Leistung
-
 * [Gewusst wie: Beschleunigen der WordPress-Web-App](https://sunithamk.wordpress.com/2014/08/01/10-ways-to-speed-up-your-wordpress-site-on-azure-websites/)
 * [Gewusst wie: Aktivieren von Redis Cache](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md) mit dem [Redis Cache-Plug-In](https://wordpress.org/plugins/wp-redis/)
 * [Gewusst wie: Aktivieren von Memcached Object Cache für WordPress](../articles/app-service-web/web-sites-connect-to-redis-using-memcache-protocol.md) mit [Memcached Object Cache](https://wordpress.org/plugins/memcached/)

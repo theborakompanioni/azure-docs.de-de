@@ -1,28 +1,28 @@
-<properties
-	pageTitle="Automatisches Aktivieren von Diagnoseeinstellungen mithilfe einer Resource Manager-Vorlage | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie mithilfe einer Resource Manager-Vorlage Diagnoseeinstellungen erstellen, mit denen Sie Ihre Diagnoseprotokolle an Event Hubs streamen oder in einem Speicherkonto speichern können."
-	authors="johnkemnetz"
-	manager="rboucher"
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: Automatisches Aktivieren von Diagnoseeinstellungen mithilfe einer Resource Manager-Vorlage | Microsoft Docs
+description: Hier erfahren Sie, wie Sie mithilfe einer Resource Manager-Vorlage Diagnoseeinstellungen erstellen, mit denen Sie Ihre Diagnoseprotokolle an Event Hubs streamen oder in einem Speicherkonto speichern können.
+author: johnkemnetz
+manager: rboucher
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/26/2016"
-	ms.author="johnkem"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: johnkem
 
+---
 # Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
 
 Die Methode zum Aktivieren von Diagnoseprotokollen mithilfe einer Resource Manager-Vorlage hängt vom Ressourcentyp ab.
 
-- Die von **computefremden Ressourcen** (Netzwerksicherheitsgruppen, Logik-Apps, Automation oder Ähnliches) verwendeten Diagnoseeinstellungen finden Sie in [diesem Artikel](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
-- Die von **Computeressourcen** (WAD-LAD-basierte Ressourcen) verwendete WAD-/LAD-Konfigurationsdatei wird in [diesem Artikel](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) beschrieben.
+* Die von **computefremden Ressourcen** (Netzwerksicherheitsgruppen, Logik-Apps, Automation oder Ähnliches) verwendeten Diagnoseeinstellungen finden Sie in [diesem Artikel](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+* Die von **Computeressourcen** (WAD-LAD-basierte Ressourcen) verwendete WAD-/LAD-Konfigurationsdatei wird in [diesem Artikel](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) beschrieben.
 
 In diesem Artikel erfahren Sie, wie Sie die Diagnose mit diesen Methoden konfigurieren.
 
@@ -37,7 +37,7 @@ Im Anschluss finden Sie ein Beispiel für die JSON-Vorlagendatei, die für compu
 Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
 
 1. Fügen Sie Parameter für den Speicherkontonamen, die Service Bus-Regel-ID und/oder die OMS Log Analytics-Arbeitsbereichs-ID zum Parameterblob hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Log Analytics zu ermöglichen).
-
+   
     ```json
     "storageAccountName": {
       "type": "string",
@@ -59,7 +59,7 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
     }
     ```
 2. Fügen Sie im Ressourcenarray der Ressource, für die Sie Diagnoseprotokolle aktivieren möchten, eine Ressource vom Typ `[resource namespace]/providers/diagnosticSettings` hinzu.
-
+   
     ```json
     "resources": [
       {
@@ -180,13 +180,15 @@ Führen Sie die folgenden Schritte aus, um die Diagnose für eine Computeressour
 2. Geben Sie ein Speicherkonto und/oder eine Event Hub-Instanz als Parameter an.
 3. Fügen Sie den Inhalt der WADCfg-XML-Datei in die XMLCfg-Eigenschaft ein, und achten Sie dabei darauf, dass alle XML-Zeichen ordnungsgemäß mit Escapezeichen versehen sind.
 
-> [AZURE.WARNING] Der letzte Schritt ist unter Umständen nicht ganz einfach. In [diesem Artikel](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md#diagnostics-configuration-variables) finden Sie ein Beispiel, in dem das Diagnosekonfigurationsschema in Variablen aufgeteilt wird, die korrekt mit Escapezeichen versehen und ordnungsgemäß formatiert sind.
+> [!WARNING]
+> Der letzte Schritt ist unter Umständen nicht ganz einfach. In [diesem Artikel](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md#diagnostics-configuration-variables) finden Sie ein Beispiel, in dem das Diagnosekonfigurationsschema in Variablen aufgeteilt wird, die korrekt mit Escapezeichen versehen und ordnungsgemäß formatiert sind.
+> 
+> 
 
 Der gesamte Prozess wird in [diesem Dokument](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md) beschrieben (einschließlich Beispielen).
 
-
 ## Nächste Schritte
-- [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](./monitoring-overview-of-diagnostic-logs.md)
-- [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](./monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](monitoring-overview-of-diagnostic-logs.md)
+* [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
 <!---HONumber=AcomDC_0928_2016-->

@@ -1,32 +1,28 @@
-<properties
-	pageTitle="Machine Learning Cheat Sheet für Algorithmen | Microsoft Azure"
-	description="Eine druckbare Version des Machine Learning Cheat Sheet für Algorithmen, mit dem Sie den richtigen Algorithmus für Ihr Vorhersagemodell in Azure Machine Learning Studio auswählen können."
-	keywords="Algorithmus-Cheat Sheet,Cheat Sheet,Algorithmus für maschinelles Lernen"
-	services="machine-learning"
-	documentationCenter=""
-	authors="brohrer"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: Machine Learning Cheat Sheet für Algorithmen | Microsoft Docs
+description: Eine druckbare Version des Machine Learning Cheat Sheet für Algorithmen, mit dem Sie den richtigen Algorithmus für Ihr Vorhersagemodell in Azure Machine Learning Studio auswählen können.
+keywords: Algorithmus-Cheat Sheet,Cheat Sheet,Algorithmus für maschinelles Lernen
+services: machine-learning
+documentationcenter: ''
+author: brohrer
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/09/2016"
-	ms.author="brohrer;garye" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/09/2016
+ms.author: brohrer;garye
 
-
+---
 # Machine Learning – Cheat Sheet für Algorithmen für Microsoft Azure Machine Learning Studio
-
 Mithilfe des **Cheat Sheet für Algorithmen für Microsoft Azure Machine Learning** können Sie den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Regression***, ***Klassifizierung***, ***Clustering*** und ***Erkennung von Anomalien***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
-
 ## Herunterladen: Cheat Sheet für Machine Learning-Algorithmen
-
 **Das Cheat Sheet hier herunterladen: [Cheat Sheet für Microsoft Azure Machine Learning-Algorithmen (28 x 43 cm)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)** (in englischer Sprache).
 
 ![Machine Learning Cheat Sheet für Algorithmen: Wie wähle ich einen Algorithmus für maschinelles Lernen aus?][cheat-sheet]
@@ -35,17 +31,18 @@ Mithilfe des **Cheat Sheet für Algorithmen für Microsoft Azure Machine Learnin
 
 Sie können das Cheat Sheet für Machine Learning-Algorithmen im Kleinformat herunterladen und drucken, um praktische Hilfe bei der Wahl eines Algorithmus zu erhalten.
 
-> [AZURE.NOTE] Eine ausführliche Anleitung zur Verwendung des Cheat Sheets finden Sie im Artikel [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
+> [!NOTE]
+> Eine ausführliche Anleitung zur Verwendung des Cheat Sheets finden Sie im Artikel [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
+> 
+> 
 
 ## Weitere Hilfe zu Algorithmen
-
 * Eine eingehendere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen, ihrer Verwendung und der Verwendung dieses Cheat Sheets für die Auswahl des richtigen Algorithmus finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 * Eine in Kategorien unterteilte Liste aller in Machine Learning verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning unter [Modell initialisieren][initialize-model].
 * Eine vollständige Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
 * Informationen zum Herunterladen und Drucken des Diagramms, mit dem Sie sich einen Überblick über die Machine Learning Studio-Funktionen verschaffen können, finden Sie unter [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](machine-learning-studio-overview-diagram.md).
 
-
-[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
 <!-- This needs to be updated based on the new Choosing and Algorithm article
 

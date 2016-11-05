@@ -1,24 +1,26 @@
-<properties
-	pageTitle="Best Practices: Azure AD-Kennwortverwaltung | Microsoft Azure"
-	description="Best Practices für die Bereitstellung und Nutzung, Beispieldokumentation für Endbenutzer und Schulungshandbücher für die Kennwortverwaltung in Azure Active Directory."
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="femila"
-	editor="curtand"/>
+---
+title: 'Best Practices: Azure AD-Kennwortverwaltung | Microsoft Docs'
+description: Best Practices für die Bereitstellung und Nutzung, Beispieldokumentation für Endbenutzer und Schulungshandbücher für die Kennwortverwaltung in Azure Active Directory.
+services: active-directory
+documentationcenter: ''
+author: asteen
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="asteen"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/12/2016
+ms.author: asteen
 
+---
 # Bereitstellen der Kennwortverwaltung und Schulen der Benutzer zu deren Verwendung
-
-> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+> [!IMPORTANT]
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+> 
+> 
 
 Nachdem Sie die Kennwortzurücksetzung aktiviert haben, müssen Sie als Nächstes die Benutzer dazu anhalten, diesen Dienst in Ihrer Organisation zu verwenden. Zu diesem Zweck müssen Sie sicherstellen, dass Ihre Benutzer so konfiguriert sind, dass sie den Dienst ordnungsgemäß verwenden können. Außerdem müssen die Benutzer für die Verwaltung ihrer eigenen Kennwörter geschult werden. In diesem Artikel werden die folgenden Konzepte erläutert:
 
@@ -38,23 +40,23 @@ Dieser Abschnitt beschreibt verschiedene Methoden, mit denen Sie sicherstellen k
 ### Erforderliche Kontokonfiguration
 Bevor ein Benutzer die Kennwortzurücksetzung verwenden kann, müssen **alle** folgenden Bedingungen erfüllt sein:
 
-1.	Die Kennwortzurücksetzung muss im Verzeichnis aktiviert sein. Informationen zum Aktivieren der Kennwortzurücksetzung finden Sie unter [Aktivieren von Benutzern für das Zurücksetzen ihrer Azure AD-Kennwörter](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords) oder unter [Aktivieren von Benutzern für das Zurücksetzen ihrer AD-Kennwörter](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords).
-2.	Der Benutzer muss lizenziert sein.
- - Für Cloudbenutzer muss dem Benutzer **eine beliebige kostenpflichtige Office 365-Lizenz** oder eine **AAD Basic**- oder eine **AAD Premium-Lizenz** zugewiesen sein.
- - Für lokale Benutzer (Verbund oder hashsynchronisiert) muss dem Benutzer **eine AAD Premium-Lizenz zugewiesen sein**.
-3.	Für den Benutzer muss der **Mindestsatz an Authentifizierungsdaten definiert** sein in Übereinstimmung mit der aktuellen Kontozurücksetzungsrichtlinie.
- - Authentifizierungsdaten gelten als definiert, wenn das entsprechende Feld im Verzeichnis wohlgeformte Daten enthält.
- - Ein Mindestsatz von Authentifizierungsdaten ist definiert als **mindestens eine** der aktivierten Authentifizierungsoptionen, wenn eine Richtlinie für die einstufige Überprüfung konfiguriert ist, bzw. **mindestens zwei** der aktivierten Authentifizierungsoptionen, wenn eine Richtlinie für die zweistufige Überprüfung konfiguriert ist.
-4.	Wenn der Benutzer ein lokales Konto verwendet, muss die [Kennwortrückschreibung](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) aktiviert sein.
+1. Die Kennwortzurücksetzung muss im Verzeichnis aktiviert sein. Informationen zum Aktivieren der Kennwortzurücksetzung finden Sie unter [Aktivieren von Benutzern für das Zurücksetzen ihrer Azure AD-Kennwörter](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords) oder unter [Aktivieren von Benutzern für das Zurücksetzen ihrer AD-Kennwörter](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords).
+2. Der Benutzer muss lizenziert sein.
+   * Für Cloudbenutzer muss dem Benutzer **eine beliebige kostenpflichtige Office 365-Lizenz** oder eine **AAD Basic**- oder eine **AAD Premium-Lizenz** zugewiesen sein.
+   * Für lokale Benutzer (Verbund oder hashsynchronisiert) muss dem Benutzer **eine AAD Premium-Lizenz zugewiesen sein**.
+3. Für den Benutzer muss der **Mindestsatz an Authentifizierungsdaten definiert** sein in Übereinstimmung mit der aktuellen Kontozurücksetzungsrichtlinie.
+   * Authentifizierungsdaten gelten als definiert, wenn das entsprechende Feld im Verzeichnis wohlgeformte Daten enthält.
+   * Ein Mindestsatz von Authentifizierungsdaten ist definiert als **mindestens eine** der aktivierten Authentifizierungsoptionen, wenn eine Richtlinie für die einstufige Überprüfung konfiguriert ist, bzw. **mindestens zwei** der aktivierten Authentifizierungsoptionen, wenn eine Richtlinie für die zweistufige Überprüfung konfiguriert ist.
+4. Wenn der Benutzer ein lokales Konto verwendet, muss die [Kennwortrückschreibung](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) aktiviert sein.
 
 ### Möglichkeiten zum Auffüllen von Authentifizierungsdaten
 Sie haben mehrere Möglichkeiten, für Organisationsbenutzer Daten einzugeben, die für das Zurücksetzen von Kennwörtern verwendet werden.
 
-- Bearbeiten Sie Benutzer im [Azure-Verwaltungsportal](https://manage.windowsazure.com) oder im [Office 365-Verwaltungsportal](https://portal.microsoftonline.com).
-- Verwenden Sie Azure AD Sync, um Benutzereigenschaften aus einer lokalen Active Directory-Domäne mit Azure AD zu synchronisieren.
-- [Führen Sie die folgenden Schritte aus](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users), um Windows PowerShell zum Bearbeiten der Benutzereigenschaften zu verwenden.
-- Ermöglichen Sie es Benutzern, ihre eigenen Daten zu registrieren, indem Sie sie auf das Registrierungsportal unter [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) weiterleiten.
-- Legen Sie die Benutzerregistrierung für die Kennwortzurücksetzung bei Anmeldung in ihrem Azure AD-Konto als erforderlich fest, indem Sie die Konfigurationsoption [**Sollen sich Benutzer bei der Anmeldung registrieren müssen?**](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) auf **Ja** festlegen.
+* Bearbeiten Sie Benutzer im [Azure-Verwaltungsportal](https://manage.windowsazure.com) oder im [Office 365-Verwaltungsportal](https://portal.microsoftonline.com).
+* Verwenden Sie Azure AD Sync, um Benutzereigenschaften aus einer lokalen Active Directory-Domäne mit Azure AD zu synchronisieren.
+* [Führen Sie die folgenden Schritte aus](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users), um Windows PowerShell zum Bearbeiten der Benutzereigenschaften zu verwenden.
+* Ermöglichen Sie es Benutzern, ihre eigenen Daten zu registrieren, indem Sie sie auf das Registrierungsportal unter [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) weiterleiten.
+* Legen Sie die Benutzerregistrierung für die Kennwortzurücksetzung bei Anmeldung in ihrem Azure AD-Konto als erforderlich fest, indem Sie die Konfigurationsoption [**Sollen sich Benutzer bei der Anmeldung registrieren müssen?**](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) auf **Ja** festlegen.
 
 Benutzer müssen sich für die Kennwortzurücksetzung nicht registrieren, damit das System funktioniert. Wenn Sie beispielsweise über vorhandene Mobil- oder geschäftliche Rufnummern in Ihrem lokalen Verzeichnis verfügen, können Sie diese in Azure AD synchronisieren, und wir verwenden sie automatisch für die Kennwortzurücksetzung.
 
@@ -63,12 +65,12 @@ Es gibt auch weitere Informationen zur [Verwendung von Daten nach der Kennwortzu
 ## Welche Möglichkeit ist am besten zum Einführen der Kennwortzurücksetzung für Benutzer geeignet?
 Im Folgenden finden Sie allgemeine Schritte zur Einführung der Kennwortrücksetzung:
 
-1.	Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis, indem Sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) auf der Registerkarte **Konfigurieren** die Option **Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist** auf **Ja** setzen.
-2.	Weisen Sie jedem Benutzer, dem Sie die Kennwortzurücksetzung bieten möchten, auf der Registerkarte **Lizenzen** im [Azure-Verwaltungsportal](https://manage.windowsazure.com) die entsprechenden Lizenzen zu.
-3.	Beschränken Sie die Kennwortzurücksetzung optional auf eine Gruppe von Benutzern, um das Feature langsam über einen gewissen Zeitraum einzuführen, indem Sie die Option **Zugriff auf die Kennwortrücksetzung beschränken** auf **Ja** festlegen und eine Sicherheitsgruppe für das Aktivieren der Kennwortzurücksetzung auswählen. (Beachten Sie, dass all diesen Benutzern Lizenzen zugewiesen sein müssen.)
-4.	Weisen Sie die Benutzer zum Verwenden der Kennwortzurücksetzung an, indem Sie ihnen entweder eine E-Mail mit Anweisungen zur Registrierung senden und die erzwungene Registrierung im Zugriffsbereich aktivieren, oder indem Sie die entsprechenden Authentifizierungsdaten für diese Benutzer selbst über DirSync, PowerShell oder das [Azure-Verwaltungsportal](https://manage.windowsazure.com) hochladen. Weitere Informationen hierzu finden Sie im Folgenden.
-5.	Überprüfen Sie die sich im Laufe der Zeit registrierenden Benutzer, indem Sie auf der Registerkarte "Berichte" den Bericht [**Aktivität "Registrierung für Zurücksetzen des Kennworts"**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) anzeigen.
-6.	Sobald sich zahlreiche Benutzer registriert haben, beobachten Sie sie bei der Verwendung der Kennwortzurücksetzung, indem Sie auf der Registerkarte "Berichte" den Bericht [**Aktivität "Zurücksetzen des Kennworts"**](active-directory-passwords-get-insights.md#view-password-reset-activity) anzeigen.
+1. Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis, indem Sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) auf der Registerkarte **Konfigurieren** die Option **Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist** auf **Ja** setzen.
+2. Weisen Sie jedem Benutzer, dem Sie die Kennwortzurücksetzung bieten möchten, auf der Registerkarte **Lizenzen** im [Azure-Verwaltungsportal](https://manage.windowsazure.com) die entsprechenden Lizenzen zu.
+3. Beschränken Sie die Kennwortzurücksetzung optional auf eine Gruppe von Benutzern, um das Feature langsam über einen gewissen Zeitraum einzuführen, indem Sie die Option **Zugriff auf die Kennwortrücksetzung beschränken** auf **Ja** festlegen und eine Sicherheitsgruppe für das Aktivieren der Kennwortzurücksetzung auswählen. (Beachten Sie, dass all diesen Benutzern Lizenzen zugewiesen sein müssen.)
+4. Weisen Sie die Benutzer zum Verwenden der Kennwortzurücksetzung an, indem Sie ihnen entweder eine E-Mail mit Anweisungen zur Registrierung senden und die erzwungene Registrierung im Zugriffsbereich aktivieren, oder indem Sie die entsprechenden Authentifizierungsdaten für diese Benutzer selbst über DirSync, PowerShell oder das [Azure-Verwaltungsportal](https://manage.windowsazure.com) hochladen. Weitere Informationen hierzu finden Sie im Folgenden.
+5. Überprüfen Sie die sich im Laufe der Zeit registrierenden Benutzer, indem Sie auf der Registerkarte "Berichte" den Bericht [**Aktivität "Registrierung für Zurücksetzen des Kennworts"**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) anzeigen.
+6. Sobald sich zahlreiche Benutzer registriert haben, beobachten Sie sie bei der Verwendung der Kennwortzurücksetzung, indem Sie auf der Registerkarte "Berichte" den Bericht [**Aktivität "Zurücksetzen des Kennworts"**](active-directory-passwords-get-insights.md#view-password-reset-activity) anzeigen.
 
 Es gibt mehrere Möglichkeiten, die Benutzer darüber informieren, dass sie sich in Ihrer Organisation für die Kennwortzurücksetzung registrieren und diese verwenden können. Sie werden nachfolgend beschrieben.
 
@@ -82,7 +84,7 @@ Sie können [die E-Mail-Vorlage hier herunterladen](http://1drv.ms/1xWFtQM).
 ### Erstellen eines eigenen Kennwortportals
 Eine für größere Kunden gut geeignete Strategie zur Bereitstellung der Möglichkeit einer Kennwortverwaltung ist die Einrichtung eines einheitlichen „Kennwortportals“, auf dem die Benutzer alle Aufgaben in Bezug auf Kennwörter an einem zentralen Ort durchführen können.
 
-Viele der größten Microsoft-Kunden entscheiden sich für das Erstellen eines Stamm-DNS-Eintrags wie beispielsweise https://passwords.contoso.com mit Links auf das Azure AD-Kennwortzurücksetzungsportal, das Kennwortzurücksetzungs-Registrierungsportal und auf Seiten zur Kennwortänderung. Auf diese Weise lässt sich in alle ausgesendeten E-Mails oder Flyer ein kurzer, einprägsamer URL einfügen, auf den Benutzer im Bedarfsfall klicken können, um die Nutzung des Diensts zu beginnen.
+Viele der größten Microsoft-Kunden entscheiden sich für das Erstellen eines Stamm-DNS-Eintrags wie beispielsweise https://passwords.contoso.com mit Links auf das Azure AD-Kennwortzurücksetzungsportal, das Kennwortzurücksetzungs-Registrierungsportal und auf Seiten zur Kennwortänderung. Auf diese Weise lässt sich in alle ausgesendeten E-Mails oder Flyer ein kurzer, einprägsamer URL einfügen, auf den Benutzer im Bedarfsfall klicken können, um die Nutzung des Diensts zu beginnen.
 
 Um einen Einstieg zu schaffen, haben wir eine einfache Seite erstellt, in der aktuelle Konzepte für reaktionsfähige Benutzeroberflächen eingesetzt werden und die auf allen Browsern und mobilen Geräten lauffähig ist.
 
@@ -112,17 +114,16 @@ Informationen zu den Eigenschaften, die Sie über AAD Connect oder Windows Power
 
 Sie können die Authentifizierungsdaten über das [Azure-Verwaltungsportal](https://manage.windowsazure.com) hochladen, indem Sie die folgenden Schritte durchführen:
 
-1.	Navigieren Sie im **Azure-Verwaltungsportal** in der [Active Directory-Erweiterung](https://manage.windowsazure.com) zu Ihrem Verzeichnis.
-2.	Klicken Sie auf die Registerkarte **Benutzer**.
-3.	Wählen Sie den für Sie relevanten Benutzer aus der Liste aus.
-4.	Auf der ersten Registerkarte finden Sie **Alternative E-Mail-Adresse**, die als Eigenschaft zum Aktivieren der Kennwortzurücksetzung verwendet werden kann.
-
-    ![][005]
-
-5.	Klicken Sie auf die Registerkarte **Arbeitsinformationen**.
-6.	Auf dieser Seite finden Sie **Bürotelefon**, **Mobiltelefon**, **Telefon für Authentifizierung** und **Authentifizierungs-E-Mail**. Diese Eigenschaften können auch so festgelegt werden, dass sie einem Benutzer das Zurücksetzen des Kennworts ermöglichen.
-
-    ![][006]
+1. Navigieren Sie im **Azure-Verwaltungsportal** in der [Active Directory-Erweiterung](https://manage.windowsazure.com) zu Ihrem Verzeichnis.
+2. Klicken Sie auf die Registerkarte **Benutzer**.
+3. Wählen Sie den für Sie relevanten Benutzer aus der Liste aus.
+4. Auf der ersten Registerkarte finden Sie **Alternative E-Mail-Adresse**, die als Eigenschaft zum Aktivieren der Kennwortzurücksetzung verwendet werden kann.
+   
+   ![][005]
+5. Klicken Sie auf die Registerkarte **Arbeitsinformationen**.
+6. Auf dieser Seite finden Sie **Bürotelefon**, **Mobiltelefon**, **Telefon für Authentifizierung** und **Authentifizierungs-E-Mail**. Diese Eigenschaften können auch so festgelegt werden, dass sie einem Benutzer das Zurücksetzen des Kennworts ermöglichen.
+   
+   ![][006]
 
 Unter [Von der Kennwortzurücksetzung verwendete Daten](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) erfahren Sie, wie die einzelnen Eigenschaften verwendet werden können.
 
@@ -131,11 +132,10 @@ Unter [Zugriff auf Daten zur Kennwortrücksetzung für Ihre Benutzer in PowerShe
 ## Beispielschulungsmaterial
 Wir arbeiten an Beispielschulungsmaterial, mit dem Sie Ihre IT-Organisation und Ihre Benutzer im Hinblick auf die Bereitstellung und Verwendung der Kennwortzurücksetzung schnell auf den neuesten Stand bringen können. Halten Sie sich auf dem Laufenden.
 
-
 <br/> <br/> <br/>
 
 ## Links zur Dokumentation für die Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
 * **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
@@ -145,8 +145,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 * [**Häufig gestellte Fragen**](active-directory-passwords-faq.md) – Hier erhalten Sie Antworten auf häufig gestellte Fragen.
 * [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
 * [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
-
-
 
 [001]: ./media/active-directory-passwords-best-practices/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-best-practices/002.jpg "Image_002.jpg"

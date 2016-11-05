@@ -1,21 +1,21 @@
-<properties
-	pageTitle="Benutzer mit anomalen Anmeldeaktivitäten"
-	description="Ein Bericht, der auf alle Benutzerkonten hinweist, für die eine anomale Anmeldeaktivität erkannt wurde."
-	services="active-directory"
-	documentationCenter=""
-	authors="SSalahAhmed"
-	manager="gchander"
-	editor=""/>
+---
+title: Benutzer mit anomalen Anmeldeaktivitäten
+description: Ein Bericht, der auf alle Benutzerkonten hinweist, für die eine anomale Anmeldeaktivität erkannt wurde.
+services: active-directory
+documentationcenter: ''
+author: SSalahAhmed
+manager: gchander
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/04/2016"
-	ms.author="saah;kenhoff"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/04/2016
+ms.author: saah;kenhoff
 
+---
 # Benutzer mit anomalen Anmeldeaktivitäten
 Dies ist ein zusammenfassender Bericht, der verdächtige Anmeldungen aus den folgenden Berichten kombiniert:
 

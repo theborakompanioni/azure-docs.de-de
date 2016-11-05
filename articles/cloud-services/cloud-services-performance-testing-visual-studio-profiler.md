@@ -1,33 +1,28 @@
-<properties 
-	pageTitle="Lokale Profilerstellung eines Clouddiensts im Serveremulator | Microsoft Azure" 
-	services="cloud-services"
-	description="Untersuchen von Leistungsproblemen in Clouddiensten mit der Visual Studio-Profilerstellung" 
-	documentationCenter=""
-	authors="TomArcher" 
-	manager="douge" 
-	editor=""
-	tags="" 
-	/>
+---
+title: Lokale Profilerstellung eines Clouddiensts im Serveremulator | Microsoft Docs
+services: cloud-services
+description: Untersuchen von Leistungsproblemen in Clouddiensten mit der Visual Studio-Profilerstellung
+documentationcenter: ''
+author: TomArcher
+manager: douge
+editor: ''
+tags: ''
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="07/30/2016" 
-	ms.author="tarcher"/>
+ms.service: cloud-services
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: multiple
+ms.topic: article
+ms.date: 07/30/2016
+ms.author: tarcher
 
+---
 # Lokales Testen der Leistung eines Clouddiensts im Azure-Serveremulator mithilfe des Visual Studio-Profiler
-
 Für das Testen der Leistung von Clouddiensten stehen zahlreiche Tools und Techniken zur Verfügung. Wenn Sie einen Clouddienst in Azure veröffentlichen, können Sie Visual Studio zum Erfassen von Profildaten und zum lokalen Analysieren dieser Daten verwenden, wie in [Profilerstellung einer Azure-Anwendung][1] beschrieben. Sie können zudem Diagnosen verwenden, um unterschiedliche Leistungsindikatoren nachzuverfolgen, wie in [Verwenden von Leistungsindikatoren in Azure][2] beschrieben. Sie können Ihre Anwendung auch lokal im Serveremulator profilieren, bevor Sie sie in der Cloud bereitstellen.
 
 Dieser Artikel behandelt die CPU-Sampling-Methode der Profilerstellung, welche lokal im Emulator erfolgen kann. CPU-Sampling ist eine wenig intrusive Profilerstellungsmethode. Zu einem festgelegten Sampling-Intervall erstellt der Profiler eine Momentaufnahme der Aufrufliste. Die Daten werden über einen bestimmte Zeitraum hinweg erfasst und in einem Bericht angezeigt. Diese Profilerstellungsmethode gibt vor allem an, wo in einer rechenintensiven Anwendung die meiste CPU-Arbeit erfolgt. Dadurch können Sie sich auf den "Hot Path" konzentrieren, wo Ihre Anwendung die meiste Zeit verbringt.
 
-
-
 ## 1: Konfigurieren von Visual Studio für die Profilerstellung
-
 Es gibt wenige Visual Studio-Konfigurationsoptionen, die für die Profilerstellung hilfreich sind. Um Profilberichte sinnvoll zu nutzen, benötigen Sie sowohl Symbole (.pdb-Dateien) für die Anwendung als auch Symbole für Systembibliotheken. Sie möchten möglicherweise überprüfen, dass Sie auf die verfügbaren Symbolserver verweisen. Wählen Sie dazu im Menü **Extras** in Visual Studio **Optionen**, und wählen Sie dann **Debugging** und anschließend **Symbole**. Überprüfen Sie, dass Microsoft Symbol Servers unter **Speicherorte für Symboldateien (.pdb)** aufgelistet ist. Sie können auch auf http://referencesource.microsoft.com/symbols verweisen, wo möglicherweise zusätzliche Symboldateien verfügbar sind.
 
 ![Symboloptionen][4]
@@ -42,19 +37,19 @@ Sie können diese Anweisungen mit einem vorhandenen Projekt oder einem neuen Pro
 
 Fügen Sie zum Beispiel Code zu Ihrem Projekt hinzu, der viel Zeit in Anspruch nimmt und zu offenslichtlichen Leistungsproblemen führt. Fügen Sie zum Beispiel folgenden Code zu einem Workerrollenprojekt hinzu:
 
-	public class Concatenator
-	{
-	    public static string Concatenate(int number)
-	    {
-	        int count;
-	        string s = "";
-	        for (count = 0; count < number; count++)
-	        {
-	            s += "\n" + count.ToString();
-	        }
-	        return s;
-	    }
-	}
+    public class Concatenator
+    {
+        public static string Concatenate(int number)
+        {
+            int count;
+            string s = "";
+            for (count = 0; count < number; count++)
+            {
+                s += "\n" + count.ToString();
+            }
+            return s;
+        }
+    }
 
 Rufen Sie diesen Code von der RunAsync-Methode in der RoleEntryPoint-abgeleiteten Klasse der Workerrolle ab. (Ignorieren Sie die Warnung über die gleichzeitig ausgeführte Methode.)
 
@@ -71,7 +66,6 @@ Rufen Sie diesen Code von der RunAsync-Methode in der RoleEntryPoint-abgeleitete
 Erstellen Sie den Clouddienst und führen Sie ihn lokal ohne Debuggen (Strg+F5) aus, wobei die Lösungskonfiguration auf **Release** festgelegt ist. Dadurch wird sichergestellt, dass alle Dateien und Ordner für das lokale Ausführen der Anwendung erstellt wurden und der Emulator gestartet wurde. Starten Sie die Serveremulator-Benutzeroberfläche über die Taskleiste, um zu überprüfen, ob die Workerrolle aktiv ist.
 
 ## 2: Anfügen an einen Prozess
-
 Anstatt die Profilerstellung der Anwendung über die Visual Studio 2010-IDE-Schnittstelle zu starten, müssen Sie den Profiler an einen laufenden Prozess anfügen.
 
 Um den Profiler an einen Prozess anzufügen, wählen Sie im Menü **Analysieren** die Option **Profiler** und **Anfügen/Trennen**.
@@ -86,9 +80,9 @@ Wenn sich der Projektordner auf einem Netzwerklaufwerk befindet, fragt Sie der P
 
  Sie können auch eine Webrolle anfügen, indem Sie diese zu "WaIISHost.exe" hinzufügen. Wenn es mehrere Workerrollenprozesse in Ihrer Anwendung gibt, müssen Sie die "processID" verwenden, um sie zu unterscheiden. Sie können die "processID" programmgesteuert abfragen, indem Sie auf das Prozessobjekt zugreifen. Wenn Sie diesen Code zum Beispiel zur Ausführungsmethode der RoleEntryPoint-abgeleiteten Klasse in einer Rolle hinzufügen, können Sie sich das Protokoll in der Serveremulator-Benutzeroberfläche ansehen, um herauszufinden, mit welchem Prozess eine Verbindung hergestellt werden muss.
 
-	var process = System.Diagnostics.Process.GetCurrentProcess();
-	var message = String.Format("Process ID: {0}", process.Id);
-	Trace.WriteLine(message, "Information");
+    var process = System.Diagnostics.Process.GetCurrentProcess();
+    var message = String.Format("Process ID: {0}", process.Id);
+    Trace.WriteLine(message, "Information");
 
 Starten Sie die Serveremulator-Benutzeroberfläche, um das Protokoll anzuzeigen.
 
@@ -105,13 +99,11 @@ Wenn Sie die Profilerstellung beenden möchten, wählen Sie den Link **Beenden S
 ![Option zum Beenden der Profilerstellung][10]
 
 ## 3: Anzeigen der Leistungsberichte
-
 Der Leistungsbericht für Ihre Anwendung wird angezeigt.
 
 Zu diesem Zeitpunkt stoppt der Profiler die Ausführung, speichert die Daten in einer .vsp-Datei, und zeigt einen Bericht an, der eine Analyse dieser Daten enthält.
 
 ![Profilerbericht][11]
-
 
 Wenn Sie "String.wstrcpy" im Hot Path sehen, klicken Sie auf "Nur eigenen Code", um die Ansicht so zu ändern, dass nur Benutzercode angezeigt wird. Wenn Sie "String.Concat" sehen, sollten Sie auf "Gesamten Code anzeigen" drücken.
 
@@ -124,19 +116,18 @@ Wenn Sie den Zeichenkettenverkettungscode in diesem Artikel hinzugefügt haben, 
 ![Leistungswarnungen][14]
 
 ## 4: Vornehmen von Änderungen und Vergleichen der Leistung
-
 Sie können auch die Leistung vor und nach einer Codeänderung vergleichen. Beenden Sie den laufenden Prozess, und bearbeiten Sie den Code, um den Zeichenkettenverkettungsvorgang durch die Verwendung von StringBuilder zu ersetzen:
 
-	public static string Concatenate(int number)
-	{
-	    int count;
-	    System.Text.StringBuilder builder = new System.Text.StringBuilder("");
-	    for (count = 0; count < number; count++)
-	    {
-	         builder.Append("\n" + count.ToString());
-	    }
-	    return builder.ToString();
-	}
+    public static string Concatenate(int number)
+    {
+        int count;
+        System.Text.StringBuilder builder = new System.Text.StringBuilder("");
+        for (count = 0; count < number; count++)
+        {
+             builder.Append("\n" + count.ToString());
+        }
+        return builder.ToString();
+    }
 
 Führen Sie eine andere Leistungsausführung durch, und vergleichen Sie dann die Leistung. Im Leistungs-Explorer können Sie, wenn die Ausführungen sich in derselben Sitzung befinden, nur beide Berichte auswählen, das Kurzwahlmenü öffnen und **Leistungsberichte vergleichen** auswählen. Wenn Sie dies mit einer Ausführung in einer anderen Leistungssitzung vergleichen möchten, öffnen Sie das Menü **Analysieren**, und wählen Sie **Leistungsberichte vergleichen**. Geben Sie beide Dateien im Dialogfeld ein, das angezeigt wird.
 
@@ -149,24 +140,15 @@ Der Bericht zeigt die Unterschiede zwischen den beiden Ausführungen an.
 Glückwunsch! Sie haben die ersten Schritte mit dem Profiler geschafft.
 
 ## Problembehandlung
-
-- Stellen Sie sicher, dass Sie eine Releaseversion profilieren, und starten Sie ohne Debugging.
-
-- Führen Sie den Leistungsassistenten aus, wenn die Anfügen/Trennen-Option nicht im Profilermenü aktiviert ist.
-
-- Verwenden Sie die Serveremulator-Benutzeroberfläche, um den Status der Anwendung anzuzeigen.
-
-- Wenn Sie Probleme beim Starten der Anwendungen im Emulator oder beim Anfügen an den Profiler haben, sollten Sie den Serveremulator herunterfahren und neu starten. Wenn das Problem dadurch nicht behoben wird, sollten Sie einen Neustart versuchen. Das Problem kann auftreten, wenn Sie den Serveremulator verwenden, um laufende Bereitstellungen anzuhalten und zu entfernen.
-
-- Wenn Sie Profilbefehle aus der Befehlszeile verwendet haben, insbesondere in den globalen Einstellungen, sollten Sie sicherstellen, dass "VSPerfClrEnv /globaloff" aufgerufen und "VsPerfMon.exe" beendet wurde.
-
-- Wenn beim Sampling die Meldung "PRF0025: Es wurden keine Daten gesammelt" angezeigt wird, müssen Sie sicherstellen, dass der Prozess, den Sie als Anhangsanker verwendet haben, über CPU-Aktivität verfügt. Anwendungen, die keine Berechnungen vornehmen, produzieren möglicherweise keine Samplingdaten. Es ist auch möglich, dass der Vorgang beendet wurde, bevor das Sampling erfolgte. Überprüfen Sie, dass die Ausführungsmethode für eine Rolle, für die Sie ein Profil erstellen, nicht bendet wurde.
+* Stellen Sie sicher, dass Sie eine Releaseversion profilieren, und starten Sie ohne Debugging.
+* Führen Sie den Leistungsassistenten aus, wenn die Anfügen/Trennen-Option nicht im Profilermenü aktiviert ist.
+* Verwenden Sie die Serveremulator-Benutzeroberfläche, um den Status der Anwendung anzuzeigen.
+* Wenn Sie Probleme beim Starten der Anwendungen im Emulator oder beim Anfügen an den Profiler haben, sollten Sie den Serveremulator herunterfahren und neu starten. Wenn das Problem dadurch nicht behoben wird, sollten Sie einen Neustart versuchen. Das Problem kann auftreten, wenn Sie den Serveremulator verwenden, um laufende Bereitstellungen anzuhalten und zu entfernen.
+* Wenn Sie Profilbefehle aus der Befehlszeile verwendet haben, insbesondere in den globalen Einstellungen, sollten Sie sicherstellen, dass "VSPerfClrEnv /globaloff" aufgerufen und "VsPerfMon.exe" beendet wurde.
+* Wenn beim Sampling die Meldung "PRF0025: Es wurden keine Daten gesammelt" angezeigt wird, müssen Sie sicherstellen, dass der Prozess, den Sie als Anhangsanker verwendet haben, über CPU-Aktivität verfügt. Anwendungen, die keine Berechnungen vornehmen, produzieren möglicherweise keine Samplingdaten. Es ist auch möglich, dass der Vorgang beendet wurde, bevor das Sampling erfolgte. Überprüfen Sie, dass die Ausführungsmethode für eine Rolle, für die Sie ein Profil erstellen, nicht bendet wurde.
 
 ## Nächste Schritte
-
 Die Instrumentierung von Azure-Binärdateien im Emulator wird im Visual Studio-Profiler nicht unterstützt, aber wenn Sie die Speicherzuteilung testen möchten, können Sie diese Option bei der Profilerstellung auswählen. Sie können zudem die Parallelitätsprofilerstellung auswählen, mit der Sie bestimmen können, ob Threads beim Kampf um Sperren Zeit verschwenden, oder die Profilerstellung für Ebeneninteraktion, mit der Sie Leistungsprobleme bei der Interaktion zwischen den Ebenen einer Anwendung aufspüren können, meistens zwischen der Datenebene und einer Workerrolle. Sie können die Datenbankabfragen, welche die Anwendung generiert, anzeigen sowie die Profilerstellungsdaten zur Verbesserung der Datenbankverwendung nutzen. Informationen zur Profilerstellung für Ebeneninteraktion finden Sie im Blogeintrag [Walkthrough: Using the Tier Interaction Profiler in Visual Studio Team System 2010][3] \(auf Englisch).
-
-
 
 [1]: http://msdn.microsoft.com/library/azure/hh369930.aspx
 [2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
@@ -184,6 +166,6 @@ Die Instrumentierung von Azure-Binärdateien im Emulator wird im Visual Studio-P
 [15]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally013.png
 [16]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally012.png
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
- 
+
 
 <!---HONumber=AcomDC_0803_2016-->

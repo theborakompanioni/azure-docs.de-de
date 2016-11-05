@@ -1,5 +1,5 @@
 ### Voraussetzungen
-- Ein [Trello](http://trello.com)-Konto 
+* Ein [Trello](http://trello.com)-Konto 
 
 Bevor Sie Ihr Trello-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem Trello-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.
 
@@ -10,3 +10,4 @@ Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen 
 3. Erlauben Sie das Verbinden mit Trello: ![](./media/connectors-create-api-trello/trello-3.png)   
 4. Geben Sie Ihren Trello-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an: ![](./media/connectors-create-api-trello/trello-4.png)  
 5. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können: ![](./media/connectors-create-api-trello/trello-5.png)
+

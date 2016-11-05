@@ -1,25 +1,25 @@
-<properties
-    pageTitle="Verwenden von Outlook in Azure RemoteApp | Microsoft Azure" 
-    description="Informationen zum Konfigurieren und Verwenden von Outlook in Azure RemoteApp | Microsoft Azure"
-    services="remoteapp"
-    documentationCenter=""
-    authors="pavithir"
-    manager="mbaldwin" />
+---
+title: Verwenden von Outlook in Azure RemoteApp | Microsoft Docs
+description: Informationen zum Konfigurieren und Verwenden von Outlook in Azure RemoteApp | Microsoft Azure
+services: remoteapp
+documentationcenter: ''
+author: pavithir
+manager: mbaldwin
 
-<tags
-    ms.service="remoteapp"
-    ms.workload="compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/15/2016"
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: hero-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-
+---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>Verwenden Microsoft Outlook in Azure RemoteApp
-
-> [AZURE.IMPORTANT]
+> [!IMPORTANT]
 > Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
+> 
+> 
 
 Azure RemoteApp unterstützt Microsoft Outlook O365. Erfahren Sie mehr über das Verwenden von [Office in Azure RemoteApp](remoteapp-officesubscription.md). Für die Verwendung von Outlook in Azure RemoteApp werden einige  Einstellungen empfohlen.
 
@@ -32,8 +32,6 @@ Informationen dazu finden Sie unter [Schrittweise Anweisungen zum Aktivieren des
 
 ## <a name="search"></a>Suche
 In Azure RemoteApp ist die Suche in Outlook eingeschränkt. Azure RemoteApp verwendet VM-Pools, um Benutzersitzungen zu ermöglichen. Die Suchindizierung hängt von der VM-ID ab, die sich je nach virtueller Maschine unterscheidet. So ist es möglich, dass ein Benutzer bei jeder Anmeldung bei der Azure RemoteApp an eine neue virtuelle Maschine weitergeleitet wird. Bei Aktivierung der lokalen Suche würde bei jeder Änderung der VM-ID (wenn der Benutzer an eine andere virtuelle Maschine geleitet wird) der Indexer ausgeführt werden. Je nach Größe der OST-Datei könnte die Ausführung des Indexers sehr lange dauern und die erforderlichen Ressourcen für andere Apps belegen. Die Suche wäre nicht nur langsam, sondern ergäbe möglicherweise keine Ergebnisse. Mit einem Kontoprofil im Onlinemodus können Sie dieses Problem umgehen, die Gesamtleistung wäre jedoch aufgrund des fehlenden lokalen Cache beeinträchtigt (unter dem oben genannten Link finden Sie weitere Informationen zum Unterschied zwischen dem Cache- und dem Onlinemodel). Leider kann die indizierte/lokale Suche nicht deaktiviert werden, und die Online-Suche kann in Outlook 2013 nicht standardmäßig aktiviert werden.
-
-
 
 <!--HONumber=Oct16_HO2-->
 

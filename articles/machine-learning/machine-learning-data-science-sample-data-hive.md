@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen | Microsoft Azure"
-    description="Komprimieren von Daten in Azure HDInsight (Hadoop) Hive-Tabellen"
-    services="machine-learning,hdinsight"
-    documentationCenter=""
-    authors="bradsev"
-    manager="jhubbard"
-    editor="cgronlun"  />
+---
+title: Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen | Microsoft Docs
+description: Komprimieren von Daten in Azure HDInsight (Hadoop) Hive-Tabellen
+services: machine-learning,hdinsight
+documentationcenter: ''
+author: bradsev
+manager: jhubbard
+editor: cgronlun
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/19/2016"
-    ms.author="hangzh;bradsev" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/19/2016
+ms.author: hangzh;bradsev
 
-
+---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen
-
 In diesem Artikel wird das Komprimieren von in Azure HDInsight Hive-Tabellen gespeicherten Daten mithilfe von Hive-Abfragen beschrieben. Dabei werden drei häufig verwendete Samplingmethoden behandelt:
 
 * Einheitliche Stichproben
@@ -30,10 +28,9 @@ In diesem Artikel wird das Komprimieren von in Azure HDInsight Hive-Tabellen ges
 
 Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden.
 
-[AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
+[!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
-
 
 ## <a name="how-to-submit-hive-queries"></a>Gewusst wie: Übermitteln von Hive-Abfragen
 Hive-Abfragen können an der Hadoop-Befehlszeile auf dem Hauptknoten des Hadoop-Clusters übermittelt werden. Dazu melden Sie sich auf dem Hauptknoten des Hadoop-Clusters an, öffnen die Hadoop-Befehlszeile und übermitteln die Hive-Abfragen von dort aus. Informationen zum Übermitteln von Hive-Abfragen an der Hadoop-Befehlszeile finden Sie unter [Übermitteln von Hive-Abfragen](machine-learning-data-science-move-hive-tables.md#submit).
@@ -57,9 +54,8 @@ Dies ist eine Beispielabfrage:
 Dabei gibt `<sample rate, 0-1>` den Anteil von Datensätzen an, den die Benutzer erfassen möchten.
 
 ## <a name="<a-name="group"></a>-random-sampling-by-groups"></a><a name="group"></a> Zufällige Stichproben nach Gruppen
-
 Beim Extrahieren von Stichproben aus kategorischen Daten sollten Sie entweder alle Instanzen eines bestimmten Werts einer kategorischen Variable ein- oder ausschließen. Das ist mit "Stichprobe nach Gruppe" gemeint.
-Wenn Sie z. B. die kategorische Variable "State" haben, die als Werte "NY", "MA", "CA", "NJ", "PA" usw. hat, möchten Sie natürlich, dass Datensätze desselben Bundesstaates immer zusammenbleiben, ob als Stichprobe oder auch sonst.
+Wenn Sie z. B. die kategorische Variable "State" haben, die als Werte "NY", "MA", "CA", "NJ", "PA" usw. hat, möchten Sie natürlich, dass Datensätze desselben Bundesstaates immer zusammenbleiben, ob als Stichprobe oder auch sonst.
 
 Dies ist eine Beispielabfrage für das Erstellen einer Stichprobe nach Gruppe:
 
@@ -88,8 +84,7 @@ Dies ist eine Beispielabfrage für das Erstellen einer Stichprobe nach Gruppe:
     on b.catfield=c.catfield
 
 ## <a name="<a-name="stratified"></a>stratified-sampling"></a><a name="stratified"></a>Geschichtete Stichproben
-
-Stichproben sind in Bezug auf eine kategorische Variable geschichtet, wenn die abgerufenen Beispieldaten Werte dieser Kategorie enthalten, und zwar im gleichen Verhältnis wie in der übergeordneten Datenmenge, aus der die Stichproben abgerufen wurden. Bei dem oben genannten Beispiel besitzen Ihre Daten Teilmengen nach Bundesstaat, "NJ" hat z. B. 100 Vorkommen, "NY" 60 und "WA" hat 300. Wenn Sie die Rate für die geschichtete Stichprobe auf 0,5 festlegen, sollte die abgerufene Stichprobe ungefähr 50, 30 und 150 Vorkommen für "NJ", "NY" und "WA" aufweisen.
+Stichproben sind in Bezug auf eine kategorische Variable geschichtet, wenn die abgerufenen Beispieldaten Werte dieser Kategorie enthalten, und zwar im gleichen Verhältnis wie in der übergeordneten Datenmenge, aus der die Stichproben abgerufen wurden. Bei dem oben genannten Beispiel besitzen Ihre Daten Teilmengen nach Bundesstaat, "NJ" hat z. B. 100 Vorkommen, "NY" 60 und "WA" hat 300. Wenn Sie die Rate für die geschichtete Stichprobe auf 0,5 festlegen, sollte die abgerufene Stichprobe ungefähr 50, 30 und 150 Vorkommen für "NJ", "NY" und "WA" aufweisen.
 
 Dies ist eine Beispielabfrage:
 
@@ -108,8 +103,6 @@ Dies ist eine Beispielabfrage:
 
 
 Informationen zu komplexeren Methoden für das Extrahieren von Stichproben, die in Hive verfügbar sind, finden Sie unter [LanguageManual Sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)(in englischer Sprache).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

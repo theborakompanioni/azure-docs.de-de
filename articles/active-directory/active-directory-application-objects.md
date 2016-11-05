@@ -1,21 +1,21 @@
-<properties
-pageTitle="Azure Active Directory-Anwendungs- und -Dienstprinzipalobjekte | Microsoft Azure"
-description="Enthält eine Beschreibung der Beziehung zwischen Anwendungsobjekten und Dienstprinzipalobjekten in Azure Active Directory."
-documentationCenter="dev-center-name"
-authors="bryanla"
-manager="mbaldwin"
-services="active-directory"
-editor=""/>
+---
+title: Azure Active Directory-Anwendungs- und -Dienstprinzipalobjekte | Microsoft Docs
+description: Enthält eine Beschreibung der Beziehung zwischen Anwendungsobjekten und Dienstprinzipalobjekten in Azure Active Directory.
+documentationcenter: dev-center-name
+author: bryanla
+manager: mbaldwin
+services: active-directory
+editor: ''
 
-<tags
-ms.service="active-directory"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="na"
-ms.workload="identity"
-ms.date="08/10/2016"
-ms.author="bryanla;mbaldwin"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 08/10/2016
+ms.author: bryanla;mbaldwin
 
+---
 # Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 Wenn Sie Azure Active Directory-„Anwendung“ (AD) lesen, ist vielleicht nicht immer völlig klar, was der Autor damit genau meint. Das Ziel dieses Artikels besteht darin, dies zu verdeutlichen. Hierzu werden die konzeptuellen und konkreten Aspekte der Azure AD-Anwendungsintegration definiert, gefolgt von einem Beispiel für die Registrierung und Zustimmung zu einer [mehrinstanzenfähigen Anwendung](active-directory-dev-glossary.md#multi-tenant-application).
 
@@ -35,14 +35,17 @@ Das Dienstprinzipalobjekt definiert die Richtlinie und Berechtigungen für eine 
 
 Ein Dienstprinzipalobjekt ist in jedem Mandanten erforderlich, für den eine Instanz der Anwendungsnutzung repräsentiert werden muss. So wird der sichere Zugriff von diesem Mandanten auf die Ressourcen ermöglicht, die sich im Besitz von Benutzerkonten befinden. Eine Anwendung mit nur einem Mandanten besitzt nur einen Dienstprinzipal (im eigenen Home-Mandanten). Eine mehrinstanzenfähige [Webanwendung](active-directory-dev-glossary.md#web-client) verfügt ebenfalls über einen Dienstprinzipal in jedem Mandanten, in dem ein Administrator oder mindestens ein Benutzer dieses Mandanten ihre Zustimmung gegeben haben, dass die Anwendung auf die Ressourcen des Mandanten zugreifen darf. Nach der Erteilung der Zustimmung wird das Dienstprinzipalobjekt bei zukünftigen Autorisierungsanforderungen herangezogen.
 
-> [AZURE.NOTE] Alle Änderungen, die Sie an Ihrem Anwendungsobjekt vornehmen, werden auch in seinem Dienstprinzipalobjekt ausschließlich im Home-Mandanten der Anwendung widergespiegelt (der Mandant, für den die Registrierung durchgeführt wurde). Bei mehrinstanzenfähigen Anwendungen werden Änderungen am Anwendungsobjekt erst dann in den Dienstprinzipalobjekten von Endkundenmandanten widergespiegelt, wenn der Endkundenmandant den Zugriff entfernt und wieder gewährt.
+> [!NOTE]
+> Alle Änderungen, die Sie an Ihrem Anwendungsobjekt vornehmen, werden auch in seinem Dienstprinzipalobjekt ausschließlich im Home-Mandanten der Anwendung widergespiegelt (der Mandant, für den die Registrierung durchgeführt wurde). Bei mehrinstanzenfähigen Anwendungen werden Änderungen am Anwendungsobjekt erst dann in den Dienstprinzipalobjekten von Endkundenmandanten widergespiegelt, wenn der Endkundenmandant den Zugriff entfernt und wieder gewährt.
+> 
+> 
 
 ## Beispiel
 Das folgende Diagramm veranschaulicht die Beziehung zwischen einem Anwendungsobjekt der Anwendung und den entsprechenden Dienstprinzipalobjekten im Kontext einer mehrinstanzenfähigen Beispielanwendung mit dem Namen **HR App**. In diesem Szenario werden drei Azure AD-Mandanten verwendet:
 
-- **Adatum**: Der Mandant, der von dem Unternehmen verwendet wird, das die **HR App** entwickelt hat.
-- **Contoso**: Der Mandant, der von der Organisation Contoso (einem Endkunden der **HR App**) verwendet wird.
-- **Fabrikam**: Der von der Organisation Fabrikam (ebenfalls ein Endkunde der **HR App**) verwendete Mandant.
+* **Adatum**: Der Mandant, der von dem Unternehmen verwendet wird, das die **HR App** entwickelt hat.
+* **Contoso**: Der Mandant, der von der Organisation Contoso (einem Endkunden der **HR App**) verwendet wird.
+* **Fabrikam**: Der von der Organisation Fabrikam (ebenfalls ein Endkunde der **HR App**) verwendete Mandant.
 
 ![Beziehung zwischen einem Anwendungsobjekt und einem Dienstprinzipalobjekt](./media/active-directory-application-objects/application-objects-relationship.png)
 
@@ -56,8 +59,6 @@ In Schritt 3 erhalten die Endkundenmandanten der HR-Anwendung (Contoso und Fabri
 Sie können auf das Anwendungsobjekt einer Anwendung über die Azure AD Graph-API zugreifen, wie von der OData-[Application-Entität][AAD-Graph-App-Entity] dargestellt.
 
 Sie können auf das Dienstprinzipalobjekt einer Anwendung über die Azure AD Graph-API zugreifen, wie von der OData-[ServicePrincipal-Entität][AAD-Graph-Sp-Entity] dargestellt.
-
-
 
 <!--Image references-->
 

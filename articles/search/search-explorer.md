@@ -1,26 +1,27 @@
-<properties
-    pageTitle="Abfragen des Azure Search-Indexes mit dem Azure-Portal | Microsoft Azure | Gehosteter Cloudsuchdienst"
-    description="Eingeben einer Suchabfrage in den Suchexplorer im Azure-Portal."
-    services="search"
-    documentationCenter=""
-	authors="ashmaka"
-/>
+---
+title: Abfragen des Azure Search-Indexes mit dem Azure-Portal | Microsoft Docs
+description: Eingeben einer Suchabfrage in den Suchexplorer im Azure-Portal.
+services: search
+documentationcenter: ''
+author: ashmaka
 
-<tags
-    ms.service="search"
-    ms.devlang="NA"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"
-/>
+ms.service: search
+ms.devlang: NA
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: ashmaka
+
+---
 # Abfragen des Azure Search-Indexes mit dem Azure-Portal
-> [AZURE.SELECTOR]
-- [Übersicht](search-query-overview.md)
-- [Portal](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Übersicht](search-query-overview.md)
+> * [Portal](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 In diesem Leitfaden erfahren Sie, wie Sie Ihren Azure Search-Index im Azure-Portal abfragen.
 
@@ -40,8 +41,8 @@ In diesem Leitfaden erfahren Sie, wie Sie Ihren Azure Search-Index im Azure-Port
 
 ## III. Beginnen Sie mit der Suche.
 1. Beginnen Sie mit einer Texteingabe in das Feld „ *Abfragezeichenfolge* “, und drücken Sie danach auf „**Suchen**“.
- * Wenn Sie den Suchexplorer verwenden, können Sie alle beliebigen [Abfrageparameter](https://msdn.microsoft.com/library/dn798927.aspx) festlegen.
-
+   
+   * Wenn Sie den Suchexplorer verwenden, können Sie alle beliebigen [Abfrageparameter](https://msdn.microsoft.com/library/dn798927.aspx) festlegen.
 2. Im Abschnitt „ *Ergebnisse* “ werden die Abfrageergebnisse im unformatierten JSON-Format angezeigt, das Sie bei Suchanfragen an die Azure Search REST-API in einem HTML-Antworttext erhalten würden.
 3. Die Abfragezeichenfolge wird automatisch in die richtige Anforderungs-URL gelesen, um eine HTTP-Anforderung für die Azure Search REST-API zu übermitteln.
 

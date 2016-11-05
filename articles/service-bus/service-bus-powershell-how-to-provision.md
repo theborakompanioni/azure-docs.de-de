@@ -1,39 +1,33 @@
-<properties
-	pageTitle="Verwalten von Service Bus mit PowerShell | Microsoft Azure"
-	description="Verwalten von Service Bus mit PowerShell-Skripts"
-	services="service-bus"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+---
+title: Verwalten von Service Bus mit PowerShell | Microsoft Docs
+description: Verwalten von Service Bus mit PowerShell-Skripts
+services: service-bus
+documentationcenter: .net
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-	ms.service="service-bus"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/02/2016"
-	ms.author="sethm"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/02/2016
+ms.author: sethm
 
+---
 # Verwalten von Service Bus mit PowerShell
-
 ## Übersicht
-
 Microsoft Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Workloads in Azure steuern und automatisieren können. In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell Service Bus-Entitäten wie Namespaces, Warteschlangen und Event Hubs über eine lokale Azure PowerShell-Konsole bereitstellen und verwalten.
 
 ## Voraussetzungen
-
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][], [Spezielle Angebote][] oder [Einen Monat kostenlos testen!][].
-
-- Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
-
-- Allgemeine Kenntnisse über PowerShell-Skripts, NuGet-Pakete und .NET Framework.
+* Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][Azure erwerben], [Spezielle Angebote][Spezielle Angebote] oder [Einen Monat kostenlos testen!][Einen Monat kostenlos testen!].
+* Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][Installieren und Konfigurieren von Azure PowerShell].
+* Allgemeine Kenntnisse über PowerShell-Skripts, NuGet-Pakete und .NET Framework.
 
 ## Einschließen eines Verweises auf die .NET-Assembly für Service Bus
-
 Es gibt eine begrenzte Anzahl von PowerShell-Cmdlets zur Verwaltung von Service Bus. Für die Bereitstellung von Entitäten, die nicht über die vorhandenen Cmdlets verfügbar gemacht werden, können Sie den .NET-Client für Service Bus im [Service Bus-NuGet-Paket] verwenden.
 
 Sie müssen zunächst sicherstellen, dass Ihr Skript die Assembly **Microsoft.ServiceBus.dll** findet, die zusammen mit dem NuGet-Paket installiert wird. Aus Gründen der Flexibilität führt das Skript folgende Schritte aus:
@@ -65,14 +59,13 @@ catch [System.Exception]
 ```
 
 ## Bereitstellen eines Service Bus-Namespace
-
-Zwei PowerShell-Cmdlets unterstützen Service Bus-Namespacevorgänge. Anstelle der .NET SDK-APIs können Sie [Get-AzureSBNamespace][] und [New-AzureSBNamespace][] verwenden.
+Zwei PowerShell-Cmdlets unterstützen Service Bus-Namespacevorgänge. Anstelle der .NET SDK-APIs können Sie [Get-AzureSBNamespace][Get-AzureSBNamespace] und [New-AzureSBNamespace][New-AzureSBNamespace] verwenden.
 
 In diesem Beispiel werden einige lokale Variablen im Skript erstellt: `$Namespace` und `$Location`.
 
-- `$Namespace` ist der Name des Service Bus-Namespace, mit dem Sie arbeiten möchten.
-- `$Location` identifiziert das Rechenzentrum, in dem das Skript den Namespace bereitstellt.
-- `$CurrentNamespace` speichert den Referenznamespace, den das Skript abruft (oder erstellt).
+* `$Namespace` ist der Name des Service Bus-Namespace, mit dem Sie arbeiten möchten.
+* `$Location` identifiziert das Rechenzentrum, in dem das Skript den Namespace bereitstellt.
+* `$CurrentNamespace` speichert den Referenznamespace, den das Skript abruft (oder erstellt).
 
 In einem tatsächlichen Skript können `$Namespace` und `$Location` als Parameter übergeben werden.
 
@@ -81,30 +74,30 @@ Dieser Teil des Skripts führt Folgendes aus:
 1. Es wird versucht, einen Service Bus-Namespace mit dem angegebenen Namen zu finden.
 2. Wenn der Namespace gefunden wird, erfolgt eine Meldung, was gefunden wurde.
 3. Wenn der Namespace nicht gefunden wird, wird der Namespace erstellt und anschließend der neu erstellte Namespace abgerufen.
+   
+    ```
+    $Namespace = "MyServiceBusNS"
+    $Location = "West US"
+   
+    # Query to see if the namespace currently exists
+    $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
+   
+    # Check if the namespace already exists or needs to be created
+    if ($CurrentNamespace)
+    {
+        Write-Output "The namespace [$Namespace] already exists in the [$($CurrentNamespace.Region)] region."
+    }
+    else
+    {
+        Write-Host "The [$Namespace] namespace does not exist."
+        Write-Output "Creating the [$Namespace] namespace in the [$Location] region..."
+        New-AzureSBNamespace -Name $Namespace -Location $Location -CreateACSNamespace $false -NamespaceType Messaging
+        $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
+        Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
+    }
+    ```
 
-	```
-	$Namespace = "MyServiceBusNS"
-	$Location = "West US"
-	
-	# Query to see if the namespace currently exists
-	$CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
-	
-	# Check if the namespace already exists or needs to be created
-	if ($CurrentNamespace)
-	{
-	    Write-Output "The namespace [$Namespace] already exists in the [$($CurrentNamespace.Region)] region."
-	}
-	else
-	{
-	    Write-Host "The [$Namespace] namespace does not exist."
-	    Write-Output "Creating the [$Namespace] namespace in the [$Location] region..."
-	    New-AzureSBNamespace -Name $Namespace -Location $Location -CreateACSNamespace $false -NamespaceType Messaging
-	    $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
-	    Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
-	}
-	```
-
-Um weitere Service Bus-Entitäten bereitstellen zu können, erstellen Sie eine Instanz der [NamespaceManager][]-Klasse aus dem SDK. Sie können mithilfe des Cmdlets [Get-AzureSBAuthorizationRule][] eine Autorisierungsregel abrufen, die zur Bereitstellung einer Verbindungszeichenfolge verwendet wird. Sie speichern einen Verweis auf die `NamespaceManager`-Instanz in der `$NamespaceManager`-Variablen. Sie werden `$NamespaceManager` später im Skript verwenden, um weitere Entitäten bereitzustellen.
+Um weitere Service Bus-Entitäten bereitstellen zu können, erstellen Sie eine Instanz der [NamespaceManager][NamespaceManager]-Klasse aus dem SDK. Sie können mithilfe des Cmdlets [Get-AzureSBAuthorizationRule][Get-AzureSBAuthorizationRule] eine Autorisierungsregel abrufen, die zur Bereitstellung einer Verbindungszeichenfolge verwendet wird. Sie speichern einen Verweis auf die `NamespaceManager`-Instanz in der `$NamespaceManager`-Variablen. Sie werden `$NamespaceManager` später im Skript verwenden, um weitere Entitäten bereitzustellen.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -115,49 +108,47 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 ```
 
 ## Bereitstellen weiterer Service Bus-Entitäten
-
-Um weitere Entitäten wie z. B. Warteschlangen, Themen und Event Hubs bereitzustellen, verwenden Sie die [.NET-API für Service Bus][]. In diesem Artikel geht es nur um Event Hubs, die Schritte sind für andere Entitäten jedoch ähnlich. Darüber hinaus finden Sie am Ende dieses Artikels Hinweise auf einige detaillierte Beispiele, auch für andere Entitäten.
+Um weitere Entitäten wie z. B. Warteschlangen, Themen und Event Hubs bereitzustellen, verwenden Sie die [.NET-API für Service Bus][.NET-API für Service Bus]. In diesem Artikel geht es nur um Event Hubs, die Schritte sind für andere Entitäten jedoch ähnlich. Darüber hinaus finden Sie am Ende dieses Artikels Hinweise auf einige detaillierte Beispiele, auch für andere Entitäten.
 
 In diesem Teil des Skripts werden vier weitere lokale Variablen erstellt. Diese Variablen werden zum Instanziieren eines `EventHubDescription`-Objekts verwendet. Das Skript führt Folgendes aus:
 
 1. Überprüfen Sie zunächst mithilfe des `NamespaceManager`-Objekts, ob der durch `$Path` identifizierte Event Hub vorhanden ist.
 2. Wenn dieser nicht vorhanden ist, erstellen Sie ein `EventHubDescription`-Objekt und übergeben dieses an die `CreateEventHubIfNotExists`-Methode der `NamespaceManager`-Klasse.
 3. Nachdem Sie nun wissen, dass der Event Hub verfügbar ist, erstellen Sie mithilfe von `ConsumerGroupDescription` und `NamespaceManager` eine Verbrauchergruppe.
-
-	```
-	$Path  = "MyEventHub"
-	$PartitionCount = 12
-	$MessageRetentionInDays = 7
-	$UserMetadata = $null
-	$ConsumerGroupName = "MyConsumerGroup"
-		
-	# Check to see if the Event Hub already exists
-	if ($NamespaceManager.EventHubExists($Path))
-	{
-	    Write-Output "The [$Path] event hub already exists in the [$Namespace] namespace."  
-	}
-	else
-	{
-	    Write-Output "Creating the [$Path] event hub in the [$Namespace] namespace: PartitionCount=[$PartitionCount] MessageRetentionInDays=[$MessageRetentionInDays]..."
-	    $EventHubDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.EventHubDescription -ArgumentList $Path
-	    $EventHubDescription.PartitionCount = $PartitionCount
-	    $EventHubDescription.MessageRetentionInDays = $MessageRetentionInDays
-	    $EventHubDescription.UserMetadata = $UserMetadata
-	    $EventHubDescription.Path = $Path
-	    $NamespaceManager.CreateEventHubIfNotExists($EventHubDescription);
-	    Write-Output "The [$Path] event hub in the [$Namespace] namespace has been successfully created."
-	}
-		
-	# Create the consumer group if it doesn't exist
-	Write-Output "Creating the consumer group [$ConsumerGroupName] for the [$Path] event hub..."
-	$ConsumerGroupDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.ConsumerGroupDescription -ArgumentList $Path, $ConsumerGroupName
-	$ConsumerGroupDescription.UserMetadata = $ConsumerGroupUserMetadata
-	$NamespaceManager.CreateConsumerGroupIfNotExists($ConsumerGroupDescription);
-	Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
-	```
+   
+    ```
+    $Path  = "MyEventHub"
+    $PartitionCount = 12
+    $MessageRetentionInDays = 7
+    $UserMetadata = $null
+    $ConsumerGroupName = "MyConsumerGroup"
+   
+    # Check to see if the Event Hub already exists
+    if ($NamespaceManager.EventHubExists($Path))
+    {
+        Write-Output "The [$Path] event hub already exists in the [$Namespace] namespace."  
+    }
+    else
+    {
+        Write-Output "Creating the [$Path] event hub in the [$Namespace] namespace: PartitionCount=[$PartitionCount] MessageRetentionInDays=[$MessageRetentionInDays]..."
+        $EventHubDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.EventHubDescription -ArgumentList $Path
+        $EventHubDescription.PartitionCount = $PartitionCount
+        $EventHubDescription.MessageRetentionInDays = $MessageRetentionInDays
+        $EventHubDescription.UserMetadata = $UserMetadata
+        $EventHubDescription.Path = $Path
+        $NamespaceManager.CreateEventHubIfNotExists($EventHubDescription);
+        Write-Output "The [$Path] event hub in the [$Namespace] namespace has been successfully created."
+    }
+   
+    # Create the consumer group if it doesn't exist
+    Write-Output "Creating the consumer group [$ConsumerGroupName] for the [$Path] event hub..."
+    $ConsumerGroupDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.ConsumerGroupDescription -ArgumentList $Path, $ConsumerGroupName
+    $ConsumerGroupDescription.UserMetadata = $ConsumerGroupUserMetadata
+    $NamespaceManager.CreateConsumerGroupIfNotExists($ConsumerGroupDescription);
+    Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
+    ```
 
 ## Migrieren eines Namespaces zu einem anderen Azure-Abonnement
-
 Mit der folgenden Befehlssequenz wird ein Namespace aus einem Azure-Abonnement in ein anderes verschoben. Um diesen Vorgang auszuführen, muss der Namespace bereits aktiv sein und der Benutzer, der die PowerShell-Befehle ausführt, muss sowohl im Quell- als auch im Zielabonnement Administratorrechte besitzen.
 
 ```
@@ -172,16 +163,16 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 ```
 
 ## Nächste Schritte
-
 Dieser Artikel beschreibt die grundlegenden Schritte zur Bereitstellung von Service Bus-Entitäten mithilfe von PowerShell. Alle Aufgaben, die Sie mithilfe der .NET-Clientbibliotheken ausführen können, können Sie auch in einem PowerShell-Skript erledigen.
 
 In den folgenden Blogbeiträgen finden Sie ausführlichere Beispiele:
 
-- [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
 Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
-- [Service Bus PowerShell-Skripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+
+* [Service Bus PowerShell-Skripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Link references-->
 [Azure erwerben]: http://azure.microsoft.com/pricing/purchase-options/

@@ -1,35 +1,34 @@
-<properties
-	pageTitle="Erste Schritte mit Azure-Clouddiensten und ASP.NET | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie mit ASP.NET MVC und Azure eine Anwendung mit mehreren Ebenen erstellen. Die Anwendung wird in einem Clouddienst mit Webrolle und Workerrolle ausgeführt. Sie verwendet Entity Framework, SQL-Datenbank und Azure Storage-Warteschlangen und -Blobs."
-	services="cloud-services, storage"
-	documentationCenter=".net"
-	authors="Thraka"
-	manager="timlt"
-	editor=""/>
+---
+title: Erste Schritte mit Azure-Clouddiensten und ASP.NET | Microsoft Docs
+description: Hier erfahren Sie, wie Sie mit ASP.NET MVC und Azure eine Anwendung mit mehreren Ebenen erstellen. Die Anwendung wird in einem Clouddienst mit Webrolle und Workerrolle ausgeführt. Sie verwendet Entity Framework, SQL-Datenbank und Azure Storage-Warteschlangen und -Blobs.
+services: cloud-services, storage
+documentationcenter: .net
+author: Thraka
+manager: timlt
+editor: ''
 
-<tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="06/10/2016"
-	ms.author="adegeo"/>
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: hero-article
+ms.date: 06/10/2016
+ms.author: adegeo
 
+---
 # Erste Schritte mit Azure-Clouddiensten und ASP.NET
-
-> [AZURE.SELECTOR]
-- [Node.js](cloud-services-nodejs-develop-deploy-app.md)
-- [.NET](cloud-services-dotnet-get-started.md)
+> [!div class="op_single_selector"]
+> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
+> * [.NET](cloud-services-dotnet-get-started.md)
+> 
+> 
 
 ## Übersicht
-
 Dieses Tutorial behandelt die Erstellung einer .NET-Anwendung mit mehreren Ebenen und einem ASP.NET MVC-Front-End sowie die Bereitstellung dieser Anwendung in einem [Azure-Clouddienst](cloud-services-choose-me.md). Die Anwendung verwendet eine [Azure SQL-Datenbank](http://msdn.microsoft.com/library/azure/ee336279), den [Azure-Blobdienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) und den [Azure-Warteschlangendienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Sie können das [Visual Studio-Projekt](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) aus dem MSDN-Codekatalog herunterladen.
 
 In diesem Tutorial erfahren Sie, wie Sie die Anwendung erstellen und lokal ausführen, in Azure bereitstellen und in der Cloud ausführen und zuletzt auch von Grund auf erstellen können. Sie können auch mit der Erstellung von Grund auf beginnen und die Test- und Bereitstellungsschritte anschließend ausführen.
 
 ## Contoso Ads-Anwendung
-
 Bei dieser Anwendung handelt es sich um ein Bulletin Board für Werbung. Benutzer können eine Werbung erstellen, indem sie Text eingeben und ein Bild hochladen. Die Anwendung zeigt eine Liste von Werbeeinblendungen mit Miniaturbildern an, und Benutzer können auf eine Werbung klicken, um das Bild in voller Größe anzuzeigen.
 
 ![Werbungsliste](./media/cloud-services-dotnet-get-started/list.png)
@@ -37,11 +36,9 @@ Bei dieser Anwendung handelt es sich um ein Bulletin Board für Werbung. Benutze
 Die Anwendung verwendet das [warteschlangenorientierte Arbeitsmuster](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), um die CPU-intensive Last der Erstellung von Miniaturbildern an einen Back-End-Prozess auszulagern.
 
 ## Alternative Architektur: Websites und WebJobs
-
 In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-Clouddienst ausführen können. Alternativ können Sie das Front-End in einer [Azure-Website](/services/web-sites/) ausführen und die [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226)-Funktion (momentan in der Vorschauphase) für das Back-End verwenden. Ein Lernprogramm zu WebJobs finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md). Informationen zur Auswahl der optimalen Dienste für Ihr Szenario finden Sie unter [Vergleich von Websites, Clouddiensten und virtuellen Computern in Azure](../app-service-web/choose-web-site-cloud-service-vm.md).
 
 ## Sie lernen Folgendes
-
 * Ermöglichen der Azure-Entwicklung auf Ihrem Computer durch Installieren des Azure SDK
 * Erstellen eines Clouddienst-Projekts in Visual Studio mit einer ASP.NET MVC-Webrolle und einer Workerrolle.
 * Lokale Tests des Clouddienstprojekts mithilfe des Azure-Speicheremulators.
@@ -50,7 +47,6 @@ In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-C
 * Verwenden des Azure-Warteschlangendiensts für die Kommunikation zwischen Ebenen.
 
 ## Voraussetzungen
-
 Dieses Tutorial setzt voraus, dass Sie mit den [Grundkonzepten von Azure-Clouddiensten](cloud-services-choose-me.md) wie z. B. den Begriffen *Webrollen* und *Workerrollen* vertraut sind. Außerdem wird vorausgesetzt, dass Sie mit der Arbeit mit [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)- oder [Web Forms](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)-Projekten in Visual Studio vertraut sind. Die Beispielanwendung verwendet MVC, aber ein Großteil des Tutorial gilt auch für Web Forms.
 
 Sie können die Anwendung ohne Azure-Abonnement lokal ausführen, aber für die Bereitstellung der Anwendung in der Cloud benötigen Sie ein Abonnement. Wenn Sie kein Konto haben, können Sie [Ihre MSDN-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) oder [sich für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A55E3C668).
@@ -60,10 +56,9 @@ Die Anweisungen im Tutorial funktionieren mit den folgenden beiden Produkten:
 * Visual Studio 2013
 * Visual Studio 2015
 
-Falls Sie keines dieser Produkte besitzen, wird Visual Studio 2015 automatisch zusammen mit dem Azure SDK installiert.
+Falls Sie keines dieser Produkte besitzen, wird Visual Studio 2015 automatisch zusammen mit dem Azure SDK installiert.
 
 ## Anwendungsarchitektur
-
 Die Anwendung speichert Werbungen in einer SQL-Datenbank und verwendet Entity Framework Code First, um Tabellen zu erstellen und auf Daten zuzugreifen. Pro Werbung werden in der Datenbank zwei URLs gespeichert, eine für das Bild in voller Größe und eine für die Miniaturansicht.
 
 ![Ad-Tabelle](./media/cloud-services-dotnet-get-started/adtable.png)
@@ -72,54 +67,42 @@ Wenn ein Benutzer ein Bild hochlädt, speichert das in einer Webrolle ausgeführ
 
 ![Contoso Ads-Architektur](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
-[AZURE.INCLUDE [install-sdk](../../includes/install-sdk-2015-2013.md)]
+[!INCLUDE [install-sdk](../../includes/install-sdk-2015-2013.md)]
 
 ## Herunterladen und Ausführen der abgeschlossenen Lösung
-
 1. Laden Sie die [abgeschlossene Lösung](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) herunter und entzippen Sie das Archiv.
-
 2. Starten Sie Visual Studio.
-
 3. Wählen Sie im Menü **Datei** die Option **Projekt öffnen**, navigieren Sie zu dem Ort, an dem Sie die Lösung gespeichert haben und öffnen Sie die Lösungsdatei.
-
-3. Drücken Sie STRG+UMSCH+B, um die Lösung zu erstellen.
-
-	Standardmäßig stellt Visual Studio den Inhalt des NuGet-Pakets automatisch wieder her, das nicht in der *.zip*-Datei enthalten war. Wenn die Pakete nicht wiederhergestellt werden, installieren Sie diese manuell, indem Sie das Dialogfeld **NuGet-Pakete verwalten** öffnen und rechts oben auf **Wiederherstellen** klicken.
-
-3. Vergewissern Sie sich im **Projektmappen-Explorer**, dass **ContosoAdsCloudService** als Startprojekt ausgewählt ist.
-
-2. Wenn Sie Visual Studio 2015 verwenden, ändern Sie die SQL Server-Verbindungszeichenfolge in der Anwendungsdatei *Web.config* des ContosoAdsWeb-Projekts und in der Datei *ServiceConfiguration.Local.cscfg* des ContosoAdsCloudService-Projekts. Ändern Sie in beiden Fällen „(localdb)\\v11.0“ in „(localdb)\\MSSQLLocalDB“.
-
-1. Drücken Sie STRG+F5, um die Anwendung auszuführen.
-
-	Wenn Sie ein Clouddienst-Projekt lokal ausführen, startet Visual Studio automatisch Azure-*Serveremulator* und Azure-*Speicheremulator*. Der Serveremulator verwendet die Ressourcen Ihres Computers, um die Umgebungen von Web- und Workerrolle zu simulieren. Der Speicheremulator verwendet eine [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx)-Datenbank, um den Azure-Cloudspeicher zu simulieren.
-
-	Wenn Sie ein Clouddienstprojekt zum ersten Mal ausführen, kann der Start der Emulatoren ca. eine Minute in Anspruch nehmen. Wenn die Emulatoren gestartet sind, wird der Standardbrowser mit der Startseite der Anwendung geöffnet.
-
-	![Contoso Ads-Architektur](./media/cloud-services-dotnet-get-started/home.png)
-
-2. Klicken Sie auf **Werbung erstellen**.
-
-2. Geben Sie einige Testdaten ein, wählen Sie ein hochzuladendes *.jpg*-Bild aus, und klicken Sie auf **Erstellen**.
-
-	![Seite erstellen](./media/cloud-services-dotnet-get-started/create.png)
-
-	Die Anwendung wechselt zur Indexseite, zeigt jedoch noch keine Miniaturansicht für die neue Werbung an, da diese Verarbeitung noch nicht erfolgt ist.
-
-3. Warten Sie einen Moment und aktualisieren Sie die Indexseite, um die Miniaturansicht zu sehen.
-
-	![Indexseite](./media/cloud-services-dotnet-get-started/list.png)
-
-4. Klicken Sie auf **Details** für Ihre Werbung, um das Bild in voller Größe anzuzeigen.
-
-	![Detailseite](./media/cloud-services-dotnet-get-started/details.png)
+4. Drücken Sie STRG+UMSCH+B, um die Lösung zu erstellen.
+   
+    Standardmäßig stellt Visual Studio den Inhalt des NuGet-Pakets automatisch wieder her, das nicht in der *.zip*-Datei enthalten war. Wenn die Pakete nicht wiederhergestellt werden, installieren Sie diese manuell, indem Sie das Dialogfeld **NuGet-Pakete verwalten** öffnen und rechts oben auf **Wiederherstellen** klicken.
+5. Vergewissern Sie sich im **Projektmappen-Explorer**, dass **ContosoAdsCloudService** als Startprojekt ausgewählt ist.
+6. Wenn Sie Visual Studio 2015 verwenden, ändern Sie die SQL Server-Verbindungszeichenfolge in der Anwendungsdatei *Web.config* des ContosoAdsWeb-Projekts und in der Datei *ServiceConfiguration.Local.cscfg* des ContosoAdsCloudService-Projekts. Ändern Sie in beiden Fällen „(localdb)\\v11.0“ in „(localdb)\\MSSQLLocalDB“.
+7. Drücken Sie STRG+F5, um die Anwendung auszuführen.
+   
+    Wenn Sie ein Clouddienst-Projekt lokal ausführen, startet Visual Studio automatisch Azure-*Serveremulator* und Azure-*Speicheremulator*. Der Serveremulator verwendet die Ressourcen Ihres Computers, um die Umgebungen von Web- und Workerrolle zu simulieren. Der Speicheremulator verwendet eine [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx)-Datenbank, um den Azure-Cloudspeicher zu simulieren.
+   
+    Wenn Sie ein Clouddienstprojekt zum ersten Mal ausführen, kann der Start der Emulatoren ca. eine Minute in Anspruch nehmen. Wenn die Emulatoren gestartet sind, wird der Standardbrowser mit der Startseite der Anwendung geöffnet.
+   
+    ![Contoso Ads-Architektur](./media/cloud-services-dotnet-get-started/home.png)
+8. Klicken Sie auf **Werbung erstellen**.
+9. Geben Sie einige Testdaten ein, wählen Sie ein hochzuladendes *.jpg*-Bild aus, und klicken Sie auf **Erstellen**.
+   
+    ![Seite erstellen](./media/cloud-services-dotnet-get-started/create.png)
+   
+    Die Anwendung wechselt zur Indexseite, zeigt jedoch noch keine Miniaturansicht für die neue Werbung an, da diese Verarbeitung noch nicht erfolgt ist.
+10. Warten Sie einen Moment und aktualisieren Sie die Indexseite, um die Miniaturansicht zu sehen.
+    
+     ![Indexseite](./media/cloud-services-dotnet-get-started/list.png)
+11. Klicken Sie auf **Details** für Ihre Werbung, um das Bild in voller Größe anzuzeigen.
+    
+     ![Detailseite](./media/cloud-services-dotnet-get-started/details.png)
 
 Sie haben die Anwendung bislang komplett auf Ihrem lokalen Computer ausgeführt, ohne Verbindung mit der Cloud. Der Speicheremulator speichert die Warteschlangen- und Blobdaten in einer SQL Server Express LocalDB-Datenbank, und die Anwendung speichert die Werbedaten in einer weiteren LocalDB-Datenbank. Entity Framework Code First hat die Werbedatenbank automatisch erstellt, als die Webanwendung zum ersten Mal versucht hat, darauf zuzugreifen.
 
 Im folgenden Abschnitt werden Sie die Lösung so konfigurieren, dass diese Azure-Cloudressourcen für Warteschlangen, Blobs und die Anwendungsdatenbank verwendet, wenn sie in der Cloud ausgeführt wird. Sie könnten die Anwendung auch weiterhin lokal ausführen und Speicher- und Datenbankressourcen in der Cloud verwenden, all dies lässt sich über Verbindungszeichenfolgen konfigurieren.
 
 ## Bereitstellen der Anwendung in Azure
-
 Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 
 * Erstellen eines Azure-Clouddiensts
@@ -130,164 +113,128 @@ Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 * Bereitstellen des Projekts in Ihrem Azure-Clouddienst
 
 ### Erstellen eines Azure-Clouddiensts
-
 Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 
 1. Öffnen Sie das [klassische Azure-Portal](http://manage.windowsazure.com) in Ihrem Browser.
-
 2. Klicken Sie auf **Neu > Compute > Clouddienst > Benutzerdefiniert erstellen**.
-
-4. Geben Sie ein URL-Präfix in das URL-Eingabefeld ein.
-
-	Diese URL muss eindeutig sein. Sie erhalten eine Fehlermeldung, falls das eingegebene Präfix bereits von einer anderen Person verwendet wird.
-
-5. Wählen Sie die Region aus, in der Sie Ihre Anwendung bereitstellen möchten.
-
-	Dieses Feld gibt an, in welchem Datencenter der Clouddienst gehostet wird. Für eine Produktionsanwendung würden Sie die für Ihre Kunden am nächsten gelegene Region auswählen. Wählen Sie für dieses Tutorial die Ihnen am nächsten gelegene Region aus.
-
-6. Klicken Sie auf **Clouddienst erstellen**.
-
-	In der folgenden Abbildung wird ein Clouddienst mit der URL contosoads.cloudapp.net erstellt.
-
-	![Neuer Clouddienst](./media/cloud-services-dotnet-get-started/newcs.png)
+3. Geben Sie ein URL-Präfix in das URL-Eingabefeld ein.
+   
+    Diese URL muss eindeutig sein. Sie erhalten eine Fehlermeldung, falls das eingegebene Präfix bereits von einer anderen Person verwendet wird.
+4. Wählen Sie die Region aus, in der Sie Ihre Anwendung bereitstellen möchten.
+   
+    Dieses Feld gibt an, in welchem Datencenter der Clouddienst gehostet wird. Für eine Produktionsanwendung würden Sie die für Ihre Kunden am nächsten gelegene Region auswählen. Wählen Sie für dieses Tutorial die Ihnen am nächsten gelegene Region aus.
+5. Klicken Sie auf **Clouddienst erstellen**.
+   
+    In der folgenden Abbildung wird ein Clouddienst mit der URL contosoads.cloudapp.net erstellt.
+   
+    ![Neuer Clouddienst](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### Erstellen einer Azure SQL-Datenbank
-
 Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasierte Datenbank.
 
 1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) auf **Neu > Data Services > SQL-Datenbank > Schnellerfassung**.
-
-1. Geben Sie unter **Datenbankname** den Wert *contosoads* ein.
-
-1. Wählen Sie in der Dropdownliste **Server** den Eintrag **Neuer SQL-Datenbankserver** aus.
-
-	Falls Ihr Konto bereits einen Server enthält, können Sie auch diesen Server aus der Dropdownliste auswählen.
-
-1. Wählen Sie dieselbe **Region** wie für Ihren Clouddienst aus.
-
-	Wenn sich Clouddienst und Datenbank in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
-
-1. Geben Sie unter **Anmeldename** und **Kennwort** die Anmeldedaten eines Administrators ein.
-
-	Wenn Sie **New SQL Database server** ausgewählt haben, geben Sie hier keinen vorhandenen Namen und kein vorhandenes Kennwort ein. Stattdessen definieren Sie jetzt einen neuen Namen und ein neues Kennwort zur späteren Verwendung beim Datenbankzugriff. Wenn Sie einen zuvor erstellten Server ausgewählt haben, werden Sie aufgefordert, das Kennwort für den zuvor erstellten Administratorbenutzer einzugeben.
-
-1. Klicken Sie auf **SQL-Datenbank erstellen**.
-
-	![Neue SQL-Datenbank](./media/cloud-services-dotnet-get-started/newdb.png)
-
-1. Wenn Azure die Datenbank erstellt hat, klicken Sie auf die Registerkarte **SQL-Datenbanken** im linken Bereich des Portals, und klicken Sie dann auf den Namen der neuen Datenbank.
-
-2. Klicken Sie auf die Registerkarte **Dashboard**.
-
-3. Klicken Sie auf **Zulässige IP-Adressen verwalten**.
-
-4. Ändern Sie unter **Zulässige Dienste** die Einstellung für **Azure-Dienste** zu **Ja**.
-
-5. Klicken Sie auf **Speichern**.
+2. Geben Sie unter **Datenbankname** den Wert *contosoads* ein.
+3. Wählen Sie in der Dropdownliste **Server** den Eintrag **Neuer SQL-Datenbankserver** aus.
+   
+    Falls Ihr Konto bereits einen Server enthält, können Sie auch diesen Server aus der Dropdownliste auswählen.
+4. Wählen Sie dieselbe **Region** wie für Ihren Clouddienst aus.
+   
+    Wenn sich Clouddienst und Datenbank in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
+5. Geben Sie unter **Anmeldename** und **Kennwort** die Anmeldedaten eines Administrators ein.
+   
+    Wenn Sie **New SQL Database server** ausgewählt haben, geben Sie hier keinen vorhandenen Namen und kein vorhandenes Kennwort ein. Stattdessen definieren Sie jetzt einen neuen Namen und ein neues Kennwort zur späteren Verwendung beim Datenbankzugriff. Wenn Sie einen zuvor erstellten Server ausgewählt haben, werden Sie aufgefordert, das Kennwort für den zuvor erstellten Administratorbenutzer einzugeben.
+6. Klicken Sie auf **SQL-Datenbank erstellen**.
+   
+    ![Neue SQL-Datenbank](./media/cloud-services-dotnet-get-started/newdb.png)
+7. Wenn Azure die Datenbank erstellt hat, klicken Sie auf die Registerkarte **SQL-Datenbanken** im linken Bereich des Portals, und klicken Sie dann auf den Namen der neuen Datenbank.
+8. Klicken Sie auf die Registerkarte **Dashboard**.
+9. Klicken Sie auf **Zulässige IP-Adressen verwalten**.
+10. Ändern Sie unter **Zulässige Dienste** die Einstellung für **Azure-Dienste** zu **Ja**.
+11. Klicken Sie auf **Speichern**.
 
 ### Erstellen eines Azure-Speicherkontos
-
 Azure-Speicherkonten bieten Ressourcen zum Speichern von Warteschlangen- und Blobdaten in der Cloud.
 
 In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für Anwendungsdaten und Protokolldaten sowie für Test- und Produktionsdaten erstellen. In diesem Tutorial verwenden wir nur ein einziges Konto.
 
 1. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) auf **Neu > Data Services > Speicher > Schnellerfassung**.
-
-4. Geben Sie ein URL-Präfix in das **URL**-Eingabefeld ein.
-
-	Dieses Präfix zusammen mit dem Text unterhalb des Eingabefelds ergibt die eindeutige URL Ihres Speicherkontos. Falls das eingegebene Präfix bereits von einer anderen Person verwendet wird, müssen Sie ein anderes Präfix auswählen.
-
-5. Wählen Sie in der Dropdownliste **Region** dieselbe Region aus, die Sie für den Clouddienst ausgewählt haben.
-
-	Wenn sich Clouddienst und Speicherkonto in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
-
-	Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](http://msdn.microsoft.com/library/jj156209.aspx).
-
-6. Wählen Sie in der Dropdownliste **Replikation** den Wert **Lokal redundant** aus.
-
-	Wenn Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte an ein zweites Datencenter repliziert, um im Katastrophenfall eine Failover-Instanz an diesem zweiten Standort zur Verfügung zu haben. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage/storage-create-storage-account.md#replication-options).
-
+2. Geben Sie ein URL-Präfix in das **URL**-Eingabefeld ein.
+   
+    Dieses Präfix zusammen mit dem Text unterhalb des Eingabefelds ergibt die eindeutige URL Ihres Speicherkontos. Falls das eingegebene Präfix bereits von einer anderen Person verwendet wird, müssen Sie ein anderes Präfix auswählen.
+3. Wählen Sie in der Dropdownliste **Region** dieselbe Region aus, die Sie für den Clouddienst ausgewählt haben.
+   
+    Wenn sich Clouddienst und Speicherkonto in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
+   
+    Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](http://msdn.microsoft.com/library/jj156209.aspx).
+4. Wählen Sie in der Dropdownliste **Replikation** den Wert **Lokal redundant** aus.
+   
+    Wenn Georeplikation für ein Speicherkonto aktiviert ist, werden dessen Inhalte an ein zweites Datencenter repliziert, um im Katastrophenfall eine Failover-Instanz an diesem zweiten Standort zur Verfügung zu haben. Für die Georeplikation können zusätzliche Kosten anfallen. Für Test- und Entwicklungskonten macht es wenig Sinn, für Georeplikation zu bezahlen. Weitere Informationen finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos](../storage/storage-create-storage-account.md#replication-options).
 5. Klicken Sie auf **Speicherkonto erstellen**.
-
-	![Neues Speicherkonto](./media/cloud-services-dotnet-get-started/newstorage.png)
-
-	In der Abbildung wird ein Speicherkonto mit der URL `contosoads.core.windows.net` erstellt.
+   
+    ![Neues Speicherkonto](./media/cloud-services-dotnet-get-started/newstorage.png)
+   
+    In der Abbildung wird ein Speicherkonto mit der URL `contosoads.core.windows.net` erstellt.
 
 ### Konfigurieren der Lösung zur Verwendung Ihrer Azure SQL-Datenbank bei der Ausführung in Azure
-
 Webprojekt und Workerrollenprojekt haben je eine eigene Verbindungszeichenfolge für die Datenbank. Beide müssen auf die Azure SQL-Datenbank zeigen, wenn die Anwendung in Azure ausgeführt wird.
 
 Sie werden eine [Web.config-Transformation](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) für die Webrolle und eine Clouddienst-Umgebungseinstellung für die Workerrolle verwenden.
 
->[AZURE.NOTE] In diesem und im nächsten Abschnitt speichern Sie Anmeldeinformationen in Projektdateien. [Sie sollten keine sensiblen Daten in öffentlichen Quellcode-Repositorys speichern](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets).
+> [!NOTE]
+> In diesem und im nächsten Abschnitt speichern Sie Anmeldeinformationen in Projektdateien. [Sie sollten keine sensiblen Daten in öffentlichen Quellcode-Repositorys speichern](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets).
+> 
+> 
 
 1. Öffnen Sie im ContosoAdsWeb-Projekt die *Web.Release.config*-Transformationsdatei für die Anwendungsdatei *Web.config*, löschen Sie den Kommentarblock, der ein `<connectionStrings>`-Element enthält, und fügen Sie den folgenden Code an derselben Stelle ein.
-
+   
     ```xml
     <connectionStrings>
         <add name="ContosoAdsContext" connectionString="{connectionstring}"
         providerName="System.Data.SqlClient" xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
     </connectionStrings>
     ```
-
-	Lassen Sie die Datei geöffnet.
-
+   
+    Lassen Sie die Datei geöffnet.
 2. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) im linken Bereich auf **SQL-Datenbanken**, klicken Sie auf die Datenbank, die Sie für dieses Tutorial erstellt haben, dann auf die Registerkarte **Dashboard** und dann auf **Verbindungszeichenfolgen anzeigen**.
-
-	![Verbindungszeichenfolgen anzeigen](./media/cloud-services-dotnet-get-started/showcs.png)
-
-	Die Verbindungszeichenfolgen werden im Portal angezeigt, mit einem Platzhalter für das Kennwort.
-
-	![Verbindungszeichenfolgen](./media/cloud-services-dotnet-get-started/connstrings.png)
-
-4. Löschen Sie in der Transformationsdatei *Web.Release.config* den Teil `{connectionstring}`, und fügen Sie an dessen Stelle die ADO.NET-Verbindungszeichenfolge aus dem klassischen Azure-Portal ein.
-
-5. Ersetzen Sie in der Verbindungszeichenfolge, die Sie in die Transformationsdatei *Web.Release.config* eingefügt haben, `{your_password_here}` durch das Kennwort, das Sie für die neue SQL-Datenbank eingerichtet haben.
-
-7. Speichern Sie die Datei.
-
+   
+    ![Verbindungszeichenfolgen anzeigen](./media/cloud-services-dotnet-get-started/showcs.png)
+   
+    Die Verbindungszeichenfolgen werden im Portal angezeigt, mit einem Platzhalter für das Kennwort.
+   
+    ![Verbindungszeichenfolgen](./media/cloud-services-dotnet-get-started/connstrings.png)
+3. Löschen Sie in der Transformationsdatei *Web.Release.config* den Teil `{connectionstring}`, und fügen Sie an dessen Stelle die ADO.NET-Verbindungszeichenfolge aus dem klassischen Azure-Portal ein.
+4. Ersetzen Sie in der Verbindungszeichenfolge, die Sie in die Transformationsdatei *Web.Release.config* eingefügt haben, `{your_password_here}` durch das Kennwort, das Sie für die neue SQL-Datenbank eingerichtet haben.
+5. Speichern Sie die Datei.
 6. Kopieren Sie die Verbindungszeichenfolge (ohne die umgebenden Anführungszeichen), um diese in den folgenden Schritten bei der Konfiguration des Workerrollen-Projekts zur Verfügung zu haben.
-
-5. Klicken Sie im **Projektmappen-Explorer** unter **Rollen** im Clouddienstprojekt mit der rechten Maustaste auf **ContosoAdsWorker**, und klicken Sie auf **Eigenschaften**.
-
-	![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
-
-6. Klicken Sie auf die Registerkarte **Einstellungen**.
-
-7. Ändern Sie die **Dienstkonfiguration** zu **Cloud**.
-
-7. Wählen Sie für die `ContosoAdsDbConnectionString`-Einstellung das Feld **Wert** aus, und fügen Sie die Verbindungszeichenfolge ein, die Sie im vorherigen Abschnitt des Tutorials kopiert haben.
-
-	![Datenbank-Verbindungszeichenfolge für Workerrolle](./media/cloud-services-dotnet-get-started/workerdbcs.png)
-
-7. Speichern Sie die Änderungen.
+7. Klicken Sie im **Projektmappen-Explorer** unter **Rollen** im Clouddienstprojekt mit der rechten Maustaste auf **ContosoAdsWorker**, und klicken Sie auf **Eigenschaften**.
+   
+    ![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
+8. Klicken Sie auf die Registerkarte **Einstellungen**.
+9. Ändern Sie die **Dienstkonfiguration** zu **Cloud**.
+10. Wählen Sie für die `ContosoAdsDbConnectionString`-Einstellung das Feld **Wert** aus, und fügen Sie die Verbindungszeichenfolge ein, die Sie im vorherigen Abschnitt des Tutorials kopiert haben.
+    
+     ![Datenbank-Verbindungszeichenfolge für Workerrolle](./media/cloud-services-dotnet-get-started/workerdbcs.png)
+11. Speichern Sie die Änderungen.
 
 ### Konfigurieren der Lösung zur Verwendung Ihres Azure-Speicherkontos bei der Ausführung in Azure
-
 Die Verbindungszeichenfolgen für das Azure-Speicherkonto für das Web- und Workerrollenprojekt werden in Umgebungseinstellungen für das Clouddienstprojekt gespeichert. Für jedes Projekt existiert je ein separater Satz von Einstellungen für die lokale Ausführung und die Ausführung in der Cloud. Sie werden die Cloudumgebungseinstellungen für Web- und Workerrollenprojekt ändern.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **ContosoAdsWeb** unter **Rollen** im Projekt **ContosoAdsCloudService**, und klicken Sie dann auf **Eigenschaften**.
-
-	![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/roleproperties.png)
-
+   
+    ![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. Klicken Sie auf die Registerkarte **Einstellungen**. Wählen Sie in der Dropdownliste **Dienstkonfiguration** den Wert **Cloud** aus.
-
-	![Cloudkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
-
+   
+    ![Cloudkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Wenn Sie den Eintrag **StorageConnectionString** auswählen, sehen Sie eine elliptische Schaltfläche (**...**) am Ende der Zeile. Klicken Sie auf die elliptische Schaltfläche, um das Dialogfeld **Verbindungszeichenfolge für Speicherkonto erstellen** zu öffnen.
-
-	![Erstellungsdialog für Verbindungszeichenfolge](./media/cloud-services-dotnet-get-started/opencscreate.png)
-
+   
+    ![Erstellungsdialog für Verbindungszeichenfolge](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. Klicken Sie im Dialogfeld **Verbindungszeichenfolge für Speicherkonto** auf **Mit meinem Abonnement**, wählen Sie das zuvor erstellte Speicherkonto aus, und klicken Sie auf **OK**. Falls Sie noch nicht angemeldet sind, werden Sie zur Eingabe Ihrer Azure-Anmeldeinformationen aufgefordert.
-
-	![Speicherkonto-Verbindungszeichenfolge erstellen](./media/cloud-services-dotnet-get-started/createstoragecs.png)
-
+   
+    ![Speicherkonto-Verbindungszeichenfolge erstellen](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 5. Speichern Sie die Änderungen.
-
 6. Führen Sie zum Einrichten der `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`-Verbindungszeichenfolge die gleichen Schritte aus, die Sie auch für die `StorageConnectionString`-Verbindungszeichenfolge ausgeführt haben.
-
-	Diese Verbindungszeichenfolge wird für die Protokollierung verwendet.
-
+   
+    Diese Verbindungszeichenfolge wird für die Protokollierung verwendet.
 7. Wiederholen Sie die Prozedur, die Sie für die **ContosoAdsWeb**-Rolle verwendet haben, um die beiden Verbindungszeichenfolgen für die **ContosoAdsWorker**-Rolle zu setzen. Vergessen Sie nicht, die **Dienstkonfiguration** auf **Cloud** zu setzen.
 
 Die Einstellungen, die Sie für die Rollenumgebung in der Visual Studio-GUI konfiguriert haben, werden in den folgenden Dateien im ContosoAdsCloudService-Projekt gespeichert:
@@ -323,42 +270,37 @@ Und die Datei *ServiceConfiguration.Cloud.cscfg* enthält die Werte, die Sie fü
 
 Die `<Instances>`-Einstellung definiert die Anzahl der virtuellen Computer, auf denen Azure den Code der Workerrolle ausführt. Im Bereich [Nächste Schritte](#next-steps) finden Sie Links zu weiteren Hinweisen zur Skalierung von Clouddiensten.
 
-###  Bereitstellen des Projekts in Azure
-
-1.	Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Cloudprojekt **ContosoAdsCloudService**, und wählen Sie **Veröffentlichen** aus.
-
-	![Veröffentlichungsmenü](./media/cloud-services-dotnet-get-started/pubmenu.png)
-
+### Bereitstellen des Projekts in Azure
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Cloudprojekt **ContosoAdsCloudService**, und wählen Sie **Veröffentlichen** aus.
+   
+   ![Veröffentlichungsmenü](./media/cloud-services-dotnet-get-started/pubmenu.png)
 2. Klicken Sie im Schritt **Anmelden** des **Assistenten zum Veröffentlichen einer Azure-Anwendung** auf **Weiter**.
-
-	![Anmeldung](./media/cloud-services-dotnet-get-started/pubsignin.png)
-
+   
+    ![Anmeldung](./media/cloud-services-dotnet-get-started/pubsignin.png)
 3. Klicken Sie im Schritt **Einstellungen** des Assistenten auf **Weiter**.
-
-	![Einstellungen](./media/cloud-services-dotnet-get-started/pubsettings.png)
-
-	Die Standardeinstellungen in der Registerkarte **Erweitert** brauchen für dieses Tutorial nicht geändert werden. Weitere Informationen zur Registerkarte Erweitert finden Sie unter [Assistent zum Veröffentlichen einer Azure-Anwendung](http://msdn.microsoft.com/library/hh535756.aspx).
-
+   
+    ![Einstellungen](./media/cloud-services-dotnet-get-started/pubsettings.png)
+   
+    Die Standardeinstellungen in der Registerkarte **Erweitert** brauchen für dieses Tutorial nicht geändert werden. Weitere Informationen zur Registerkarte Erweitert finden Sie unter [Assistent zum Veröffentlichen einer Azure-Anwendung](http://msdn.microsoft.com/library/hh535756.aspx).
 4. Klicken Sie auf der Seite **Zusammenfassung** auf **Veröffentlichen**.
-
-	![Zusammenfassung](./media/cloud-services-dotnet-get-started/pubsummary.png)
-
+   
+    ![Zusammenfassung](./media/cloud-services-dotnet-get-started/pubsummary.png)
+   
    Das **Azure-Aktivitätsprotokoll** wird in Visual Studio geöffnet.
-
 5. Klicken Sie auf den Pfeil nach rechts, um die Bereitstellungsdetails zu erweitern.
-
-	Die Bereitstellung kann 5 oder mehr Minuten in Anspruch nehmen.
-
-	![Azure-Aktivitätsprotokoll](./media/cloud-services-dotnet-get-started/waal.png)
-
+   
+    Die Bereitstellung kann 5 oder mehr Minuten in Anspruch nehmen.
+   
+    ![Azure-Aktivitätsprotokoll](./media/cloud-services-dotnet-get-started/waal.png)
 6. Klicken Sie nach Abschluss der Bereitstellung auf die **Web-App-URL**, um die Anwendung zu starten.
-
 7. Sie können die Anwendung nun testen und Werbungen erstellen, anzeigen und bearbeiten, wie Sie dies bereits bei der lokalen Ausführung getan haben.
 
->[AZURE.NOTE] Nach Abschluss der Tests sollten Sie den Clouddienst anhalten oder löschen. Selbst wenn Sie den Clouddienst nicht nutzen, fallen Kosten an, da Ressourcen auf virtuellen Computern für den Dienst reserviert sind. Wenn Sie den Dienst laufen lassen, kann jeder, der die URL findet, Werbungen erstellen und anzeigen. Navigieren Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) zur Registerkarte **Dashboard** für Ihren Clouddienst, und klicken Sie am unteren Seitenrand auf **Löschen**. Klicken Sie stattdessen auf **Anhalten**, um vorübergehend zu verhindern, dass andere Personen auf die Website zugreifen. In diesem Fall entstehen weiterhin Kosten. Sie können die SQL-Datenbank und das Speicherkonto auf ähnliche Weise löschen, wenn Sie diese nicht mehr benötigen.
+> [!NOTE]
+> Nach Abschluss der Tests sollten Sie den Clouddienst anhalten oder löschen. Selbst wenn Sie den Clouddienst nicht nutzen, fallen Kosten an, da Ressourcen auf virtuellen Computern für den Dienst reserviert sind. Wenn Sie den Dienst laufen lassen, kann jeder, der die URL findet, Werbungen erstellen und anzeigen. Navigieren Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) zur Registerkarte **Dashboard** für Ihren Clouddienst, und klicken Sie am unteren Seitenrand auf **Löschen**. Klicken Sie stattdessen auf **Anhalten**, um vorübergehend zu verhindern, dass andere Personen auf die Website zugreifen. In diesem Fall entstehen weiterhin Kosten. Sie können die SQL-Datenbank und das Speicherkonto auf ähnliche Weise löschen, wenn Sie diese nicht mehr benötigen.
+> 
+> 
 
 ## Neuerstellen der Anwendung
-
 Falls Sie die [komplette Anwendung](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) noch nicht heruntergeladen haben, tun Sie dies jetzt. Sie kopieren Dateien aus dem heruntergeladenen Projekt in das neue Projekt.
 
 Die Erstellung der Contoso-Werbeanwendung umfasst die folgenden Schritte:
@@ -372,122 +314,93 @@ Die Erstellung der Contoso-Werbeanwendung umfasst die folgenden Schritte:
 Nach der Erstellung der Lösung werden Sie den Code prüfen, der speziell für Clouddienst-Projekte, Azure-Blobs und -Warteschlangen gilt.
 
 ### Erstellen einer Clouddienst-Lösung in Visual Studio
-
 1. Klicken Sie in Visual Studio im Menü **Datei** auf **Neues Projekt**.
-
 2. Erweitern Sie im linken Bereich des Dialogfelds **Neues Projekt** den Eintrag **Visual C#**, wählen Sie **Cloud**-Vorlagen aus, und klicken Sie auf die Vorlage **Azure Cloud Service**.
-
 3. Geben Sie den Namen ContosoAdsCloudService für Projekt und Lösung ein, und klicken Sie auf **OK**.
-
-	![Neues Projekt](./media/cloud-services-dotnet-get-started/newproject.png)
-
+   
+    ![Neues Projekt](./media/cloud-services-dotnet-get-started/newproject.png)
 4. Fügen Sie im Dialogfeld **Neuer Azure-Clouddienst** eine Web- und eine Workerrolle hinzu. Nennen Sie die Webrolle ContosoAdsWeb und die Workerrolle ContosoAdsWorker. (Klicken Sie auf das Stiftsymbol auf der rechten Seite, um die Standardnamen der Rollen zu ändern.)
-
-	![Neues Clouddienst-Projekt](./media/cloud-services-dotnet-get-started/newcsproj.png)
-
+   
+    ![Neues Clouddienst-Projekt](./media/cloud-services-dotnet-get-started/newcsproj.png)
 5. Wenn das Dialogfeld **Neues ASP.NET-Projekt** für die Webrolle angezeigt wird, wählen Sie die MVC-Vorlage aus, und klicken Sie auf **Authentifizierung ändern**.
-
-	![Authentifizierung ändern](./media/cloud-services-dotnet-get-started/chgauth.png)
-
-7. Klicken Sie im Dialogfeld **Authentifizierung ändern** auf **Keine Authentifizierung** und dann auf **OK**.
-
-	![Keine Authentifizierung](./media/cloud-services-dotnet-get-started/noauth.png)
-
-8. Klicken Sie im Dialogfeld **Neues ASP.Net-Projekt** auf **OK**.
-
-9. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Lösung (nicht auf eines der Projekte), und klicken Sie auf **Hinzufügen – Neues Projekt**.
-
-11. Klicken Sie im Dialogfeld **Neues Projekt hinzufügen** unter **Visual C#** im linken Bereich auf **Windows**, und klicken Sie auf die Vorlage **Klassenbibliothek**.
-
+   
+    ![Authentifizierung ändern](./media/cloud-services-dotnet-get-started/chgauth.png)
+6. Klicken Sie im Dialogfeld **Authentifizierung ändern** auf **Keine Authentifizierung** und dann auf **OK**.
+   
+    ![Keine Authentifizierung](./media/cloud-services-dotnet-get-started/noauth.png)
+7. Klicken Sie im Dialogfeld **Neues ASP.Net-Projekt** auf **OK**.
+8. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Lösung (nicht auf eines der Projekte), und klicken Sie auf **Hinzufügen – Neues Projekt**.
+9. Klicken Sie im Dialogfeld **Neues Projekt hinzufügen** unter **Visual C#** im linken Bereich auf **Windows**, und klicken Sie auf die Vorlage **Klassenbibliothek**.
 10. Benennen Sie das Projekt *ContosoAdsCommon*, und klicken Sie auf **OK**.
-
-	Sie müssen in Web- und Workerrolle auf den Entity Framework-Kontext und das Datenmodell verweisen. Alternativ könnten Sie die EF-verwandten Klassen im Webrollen-Projekt definieren und im Workerrollen-Projekt auf dieses Projekt verweisen. In diesem Fall würde Ihr Workerrollenprojekt jedoch auf Webassemblys verweisen, die es nicht benötigt.
+    
+    Sie müssen in Web- und Workerrolle auf den Entity Framework-Kontext und das Datenmodell verweisen. Alternativ könnten Sie die EF-verwandten Klassen im Webrollen-Projekt definieren und im Workerrollen-Projekt auf dieses Projekt verweisen. In diesem Fall würde Ihr Workerrollenprojekt jedoch auf Webassemblys verweisen, die es nicht benötigt.
 
 ### Aktualisieren und Hinzufügen von NuGet-Paketen
-
 1. Öffnen Sie das Dialogfeld **NuGet-Pakete verwalten** für die Lösung.
-
 2. Wählen Sie oben im Fenster **Updates** aus.
-
 3. Suchen Sie das Paket *WindowsAzure.Storage*. Wenn es sich in der Liste befindet, wählen Sie es aus, und wählen Sie anschließend die Web- und Workerprojekte aus, in denen es aktualisiert werden soll. Klicken Sie dann auf **Aktualisieren**.
-
-	Die Speicherclient-Bibliothek wird häufiger aktualisiert als die Visual Studio-Projektvorlagen. Daher wird es öfter vorkommen, dass Sie die Version in einem neu erstellten Projekt aktualisieren müssen.
-
+   
+    Die Speicherclient-Bibliothek wird häufiger aktualisiert als die Visual Studio-Projektvorlagen. Daher wird es öfter vorkommen, dass Sie die Version in einem neu erstellten Projekt aktualisieren müssen.
 4. Wählen Sie oben im Fenster **Durchsuchen** aus.
-
 5. Suchen Sie das NuGet-Paket *EntityFramework* und installieren Sie es in allen drei Projekten.
-
 6. Suchen Sie das NuGet-Paket *Microsoft.WindowsAzure.ConfigurationManager*, und installieren Sie es im Workerrollenprojekt.
 
 ### Setzen von Projektverweisen
-
 1. Fügen Sie im Projekt ContosoAdsWeb einen Verweis auf das Projekt ContosoAdsCommon ein. Klicken Sie mit der rechten Maustaste auf das Projekt ContosoAdsWeb, und klicken Sie auf **Verweise** – **Verweise hinzufügen**. Wählen Sie im Dialogfeld **Verweis-Manager** im linken Bereich **Projektmappe – Projekte** aus, wählen Sie **ContosoAdsCommon** aus, und klicken Sie auf **OK**.
-
 2. Fügen Sie im Projekt ContosoAdsWorker einen Verweis auf das Projekt ContosoAdsCommon ein.
-
-	ContosoAdsCommon wird Datenmodell und Kontextklasse für das Entity Framework enthalten, das sowohl von Front-End als auch von Back-End verwendet wird.
-
+   
+    ContosoAdsCommon wird Datenmodell und Kontextklasse für das Entity Framework enthalten, das sowohl von Front-End als auch von Back-End verwendet wird.
 3. Fügen Sie im Projekt "ContosoAdsWorker" einen Verweis auf `System.Drawing` ein.
-
-	Diese Assembly wird vom Back-End für die Konvertierung von Bildern zu Miniaturansichten verwendet.
+   
+    Diese Assembly wird vom Back-End für die Konvertierung von Bildern zu Miniaturansichten verwendet.
 
 ### Konfigurieren von Verbindungszeichenfolgen
-
 In diesem Abschnitt konfigurieren Sie die Verbindungszeichenfolgen für den Azure-Speicher und SQL für lokale Tests. In den Bereitstellungsanweisungen weiter oben in diesem Tutorial wurde beschrieben, wie Sie die Verbindungszeichenfolgen für die Ausführung der Anwendung in der Cloud einrichten.
 
 1. Öffnen Sie im Projekt "ContosoAdsWeb" die Datei "Web.config" der Anwendung, und fügen Sie das folgende `connectionStrings`-Element nach dem `configSections`-Element ein.
-
+   
     ```xml
     <connectionStrings>
         <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
-
-	Wenn Sie Visual Studio 2015 verwenden, ersetzen Sie „v11.0“ durch „MSSQLLocalDB“.
-
+   
+    Wenn Sie Visual Studio 2015 verwenden, ersetzen Sie „v11.0“ durch „MSSQLLocalDB“.
 2. Speichern Sie die Änderungen.
-
 3. Klicken Sie im Projekt ContosoAdsCloudService mit der rechten Maustaste auf ContosoAdsWeb unter **Rollen**, und klicken Sie auf **Eigenschaften**.
-
-	![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/roleproperties.png)
-
+   
+    ![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/roleproperties.png)
 4. Klicken Sie im **ContosAdsWeb [Rolle]**-Eigenschaftenfenster auf die Registerkarte **Einstellungen**, und klicken Sie auf **Einstellung hinzufügen**.
-
-	Lassen Sie den Wert von **Dienstkonfiguration** auf **Alle Konfigurationen**.
-
+   
+    Lassen Sie den Wert von **Dienstkonfiguration** auf **Alle Konfigurationen**.
 5. Fügen Sie eine neue Einstellung mit dem Namen *StorageConnectionString* hinzu. Setzen Sie **Typ** auf *ConnectionString*, und setzen Sie den **Wert** auf *UseDevelopmentStorage=true*.
-
-	![Neue Verbindungszeichenfolge](./media/cloud-services-dotnet-get-started/scall.png)
-
+   
+    ![Neue Verbindungszeichenfolge](./media/cloud-services-dotnet-get-started/scall.png)
 6. Speichern Sie die Änderungen.
-
 7. Wiederholen Sie die Prozedur, mit der Sie eine Speicher-Verbindungszeichenfolge zu den ContosoAdsWorker-Rolleneigenschaften hinzugefügt haben.
-
 8. Fügen Sie ebenfalls im **ContosoAdsWorker [Role]**-Eigenschaftenfenster eine weitere Verbindungszeichenfolge hinzu:
-
-	* Name: ContosoAdsDbConnectionString
-	* Typ: Zeichenfolge
-	* Wert: Fügen Sie dieselbe Verbindungszeichenfolge ein, die Sie auch für das Webrollenprojekt verwendet haben. (Das folgende Beispiel bezieht sich auf Visual Studio 2013. Wenn Sie Visual Studio 2015 verwenden und dieses Beispiel kopieren, dürfen sich nicht vergessen, den Wert für „Data Source“ zu ändern.)
-
-	    ```
-        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
-        ```
+   
+   * Name: ContosoAdsDbConnectionString
+   * Typ: Zeichenfolge
+   * Wert: Fügen Sie dieselbe Verbindungszeichenfolge ein, die Sie auch für das Webrollenprojekt verwendet haben. (Das folgende Beispiel bezieht sich auf Visual Studio 2013. Wenn Sie Visual Studio 2015 verwenden und dieses Beispiel kopieren, dürfen sich nicht vergessen, den Wert für „Data Source“ zu ändern.)
+     
+       ```
+       Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
+       ```
 
 ### Hinzufügen von Codedateien
-
 In diesem Abschnitt kopieren Sie Codedateien aus der heruntergeladenen Lösung in die neue Lösung. In den folgenden Abschnitten werden die wichtigsten Bereiche des Codes erläutert.
 
 Um Dateien zu einem Projekt oder einem Ordner hinzuzufügen, klicken Sie mit der rechten Maustaste auf das Projekt bzw. den Ordner, und klicken Sie auf **Hinzufügen** - **Vorhandenes Element**. Wählen Sie die gewünschten Dateien aus, und klicken Sie auf **Hinzufügen**. Klicken Sie auf **Ja**, wenn Sie gefragt werden, ob Sie vorhandene Dateien ersetzen möchten.
 
-3. Löschen Sie im Projekt ContosoAdsCommon die Datei *Class1.cs* und fügen Sie an deren Stelle die Dateien *Ad.cs* und *ContosoAdscontext.cs* aus dem heruntergeladenen Projekt hinzu.
-
-3. Fügen Sie im Projekt ContosoAdsWeb die folgenden Dateien aus dem heruntergeladenen Projekt hinzu.
-	- *Global.asax.cs*.
-	- Im Ordner *Views\\Shared*: *\_Layout.cshtml*
-	- Im Ordner *Views\\Home*: *Index.cshtml*
-	- Im Ordner *Controllers*: *AdController.cs*
-	- Im Ordner *Views\\Ad* (Ordner zuerst erstellen): fünf *CSHTML*-Dateien
-
+1. Löschen Sie im Projekt ContosoAdsCommon die Datei *Class1.cs* und fügen Sie an deren Stelle die Dateien *Ad.cs* und *ContosoAdscontext.cs* aus dem heruntergeladenen Projekt hinzu.
+2. Fügen Sie im Projekt ContosoAdsWeb die folgenden Dateien aus dem heruntergeladenen Projekt hinzu.
+   
+   * *Global.asax.cs*.
+   * Im Ordner *Views\\Shared*: *\_Layout.cshtml*
+   * Im Ordner *Views\\Home*: *Index.cshtml*
+   * Im Ordner *Controllers*: *AdController.cs*
+   * Im Ordner *Views\\Ad* (Ordner zuerst erstellen): fünf *CSHTML*-Dateien
 3. Fügen Sie im Projekt ContosoAdsWorker die Datei *WorkerRole.cs* aus dem heruntergeladenen Projekt hinzu.
 
 Sie können die Anwendung nun anhand der weiter oben in diesem Tutorial beschriebenen Prozedur erstellen und ausführen, und die Anwendung wird eine lokale Datenbank und den Speicheremulator verwenden.
@@ -499,7 +412,6 @@ In den folgenden Abschnitten wird der Code für die Arbeit mit Azure-Umgebung, B
 * [Einführung in die asynchrone Programmierung in .NET 4.5](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
 
 ### ContosoAdsCommon - Ad.cs
-
 Die Datei Ad.cs definiert eine Enumeration für Werbekategorien und eine POCO-Entitätsklasse für Werbeinformationen.
 
 ```csharp
@@ -544,7 +456,6 @@ public class Ad
 ```
 
 ### ContosoAdsCommon - ContosoAdsContext.cs
-
 Die Klasse ContosoAdsContext gibt an, dass die Ad-Klasse in einer DbSet-Sammlung verwendet wird, die von Entity Framework in einer SQL-Datenbank gespeichert wird.
 
 ```csharp
@@ -564,7 +475,6 @@ public class ContosoAdsContext : DbContext
 Die Klasse besitzt zwei Konstruktoren. Der erste Konstruktor wird vom Webprojekt verwendet und gibt den Namen einer Verbindungszeichenfolge an, die in der Datei Web.config gespeichert ist. Mit dem zweiten Konstruktor können Sie die eigentliche Verbindungszeichenfolge übergeben. Diese wird vom Workerrollen-Projekt benötigt, da dieses keine eigene Web.config-Datei hat. Sie haben weiter oben gesehen, wo diese Verbindungszeichenfolge gespeichert wird, und weiter unten werden Sie sehen, wie der Code die Verbindungszeichenfolge beim Instanziieren der DbContext-Klasse abruft.
 
 ### ContosoAdsWeb - Global.asax.cs
-
 Der aus der `Application_Start`-Methode aufgerufene Code erstellt einen *images*-Blobcontainer und eine *images*-Warteschlange, falls diese noch nicht vorhanden sind. Damit wird sichergestellt, dass Blobcontainer und Warteschlange immer automatisch erstellt werden, wenn Sie ein neues Speicherkonto verwenden oder den Speicheremulator auf einem neuen Computer verwenden.
 
 Der Code verwendet die Speicher-Verbindungszeichenfolge aus der *.cscfg*-Datei für den Zugriff auf das Speicherkonto.
@@ -598,11 +508,9 @@ imagesQueue.CreateIfNotExists();
 ```
 
 ### ContosoAdsWeb - \_Layout.cshtml
-
 Die Datei *\_Layout.cshtml* setzt den App-Namen in Kopf- und Fußzeile und erstellt den Menüeintrag „Ads“.
 
 ### ContosoAdsWeb - Views\\Home\\Index.cshtml
-
 Die *Views\\Home\\Index.cshtml*-Datei zeigt Links zu den Kategorien auf der Startseite an. Die Links übergeben den ganzzahligen Wert aus der `Category`-Enumeration in einer querystring-Variable an die Ads-Indexseite.
 
 ```razor
@@ -613,7 +521,6 @@ Die *Views\\Home\\Index.cshtml*-Datei zeigt Links zu den Kategorien auf der Star
 ```
 
 ### ContosoAdsWeb - AdController.cs
-
 In der *AdController.cs*-Datei ruft der Konstruktor die `InitializeStorage`-Methode auf, um Objekte der Azure-Speicherclient-Bibliothek zu erstellen, die eine API für die Arbeit mit Blobs und Warteschlangen bereitstellen.
 
 Anschließend ruft der Code einen Verweis auf den *images*-Blobcontainer ab, wie weiter oben in *Global.asax.cs* gezeigt. Gleichzeitig wird eine angemessene Standard-[Wiederholungs-Richtlinie](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) für eine Webanwendung gesetzt. Mit der Standardrichtlinie (exponentiell ansteigende Wartezeiten) kann es passieren, dass die Webanwendung im Fall eines vorübergehenden Fehlers über eine Minute lang stehen bleibt. Die hier gezeigte Richtlinie wartet 3 Sekunden nach jedem Versuch für bis zu 3 Versuche.
@@ -711,7 +618,6 @@ private static async Task DeleteAdBlobAsync(Uri blobUri)
 ```
 
 ### ContosoAdsWeb - Views\\Ad\\Index.cshtml und Details.cshtml
-
 Die Datei *Index.cshtml* zeigt Miniaturansichten zusammen mit den restlichen Werbedaten an.
 
 ```razor
@@ -725,7 +631,6 @@ Die Datei *Details.cshtml* zeigt das Bild in voller Größe an.
 ```
 
 ### ContosoAdsWeb - Views\\Ad\\Create.cshtml und Edit.cshtml
-
 Die Dateien *Create.cshtml* und *Edit.cshtml* geben die Formularcodierung an, mit der der Controller das `HttpPostedFileBase`-Objekt abruft.
 
 ```razor
@@ -739,7 +644,6 @@ Ein `<input>`-Element weist den Browser an, ein Dateiauswahl-Dialogfeld zu öffn
 ```
 
 ### ContosoAdsWorker - WorkerRole.cs - OnStart-Methode
-
 Die Azure Workerrollen-Umgebung ruft die `OnStart`-Methode in der `WorkerRole`-Klasse auf, wenn die Workerrolle gestartet wird, und ruft die `Run`-Methode auf, wenn die `OnStart`-Methode abgeschlossen wird.
 
 Die `OnStart`-Methode ruft die Datenbank-Verbindungszeichenfolge aus der *CSCFG*-Datei ab und übergibt sie an die DbContext-Klasse des Entity Framework. Der SQLClient-Anbieter wird standardmäßig verwendet, daher muss kein Anbieter angegeben werden.
@@ -752,7 +656,6 @@ db = new ContosoAdsContext(dbConnString);
 Anschließend ruft die Methode einen Verweis auf das Speicherkonto ab und erstellt Blobcontainer und Warteschlange, falls diese noch nicht existieren. Dieser Code ähnelt dem Code, den Sie bereits in der `Application_Start`-Methode der Webrolle gesehen haben.
 
 ### ContosoAdsWorker - WorkerRole.cs - Run-Methode
-
 Die `Run`-Methode wird aufgerufen, wenn die Initialisierung der `OnStart`-Methode abgeschlossen ist. Die Methode führt eine Endlosschleife aus, die nach neuen Nachrichten in der Warteschlange sucht und diese beim Eintreffen verarbeitet.
 
 ```csharp
@@ -823,26 +726,25 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 
 Der Code liest die Bild-URL aus der Datenbank, konvertiert das Bild zu einer Miniaturansicht, speichert die Miniaturansicht in einem Blob, aktualisiert die Datenbank mit der URL der Miniaturansicht und löscht die Warteschlangen-Nachricht.
 
->[AZURE.NOTE] Der Code in der `ConvertImageToThumbnailJPG`-Methode verwendet zur Vereinfachung Klassen aus dem System.Drawing-Namespace. Die Klassen in diesem Namespace wurden jedoch für den Einsatz mit Windows Forms entwickelt. Sie werden nicht für die Verwendung in einem Windows- oder ASP.NET-Dienst unterstützt. Weitere Informationen zu Bildverarbeitungsoptionen finden Sie unter [Dynamic Image Generation](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx) und [Deep Inside Image Resizing](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na).
+> [!NOTE]
+> Der Code in der `ConvertImageToThumbnailJPG`-Methode verwendet zur Vereinfachung Klassen aus dem System.Drawing-Namespace. Die Klassen in diesem Namespace wurden jedoch für den Einsatz mit Windows Forms entwickelt. Sie werden nicht für die Verwendung in einem Windows- oder ASP.NET-Dienst unterstützt. Weitere Informationen zu Bildverarbeitungsoptionen finden Sie unter [Dynamic Image Generation](http://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx) und [Deep Inside Image Resizing](http://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na).
+> 
+> 
 
 ## Problembehandlung
-
 Falls bei der Ausführung der Anweisungen in diesem Tutorial Probleme auftreten, finden Sie hier einige gängige Fehler und Ansätze zu deren Lösung.
 
 ### ServiceRuntime.RoleEnvironmentException
-
 Das `RoleEnvironment`-Objekt wird von Azure bereitgestellt, wenn Sie eine Anwendung in Azure ausführen oder den Azure-Serveremulator lokal verwenden. Wenn Sie diesen Fehler bei der lokalen Ausführung erhalten, vergewissern Sie sich, dass Sie das ContosoAdsCloudService-Projekt als Startprojekt gesetzt haben. Damit wird festgelegt, dass die Anwendung im Azure-Serveremulator ausgeführt werden soll.
 
 Die Anwendung verwendet die Azure-Rollenumgebung z. B. zum Abrufen der Verbindungszeichenfolgen aus den *.cscfg*-Dateien. Dieser Fehler kann also auch durch eine fehlende Verbindungszeichenfolge verursacht werden. Stellen Sie sicher, dass Sie die StorageConnectionString-Einstellung sowohl für die lokale als auch für die Cloudkonfiguration im ContosoAdsWeb-Projekt erstellt haben und dass Sie beide Verbindungszeichenfolgen für beide Konfigurationen im ContosoAdsWorker-Projekt erstellt haben. Mit einer **Alles durchsuchen**-Suche nach StorageConnectionString in der gesamten Lösung sollten Sie die Zeichenfolge 9 Mal in 6 Dateien finden.
 
 ### Port xxx kann nicht überschrieben werden. Neuer Port unterhalb des zulässigen Mindestwerts 8080 für das HTTP-Protokoll
-
 Versuchen Sie, die Portnummer für das Webprojekt zu ändern. Klicken Sie mit der rechten Maustaste auf das ContosoAdsWeb-Projekt, und klicken Sie auf **Eigenschaften**. Klicken Sie auf die Registerkarte **Web** und ändern Sie die Portnummer in der Einstellung **Project-Url**.
 
 Eine weitere Möglichkeit zur Behebung dieses Problems finden Sie im nächsten Abschnitt.
 
 ### Sonstige Fehler bei der lokalen Ausführung
-
 Standardmäßig verwenden neue Clouddienstprojekte den Azure-Serveremulator Express, um die Azure-Umgebung zu simulieren. Dies ist eine abgespeckte Version der Serveremulator-Vollversion. Unter bestimmten Umständen kann es passieren, dass die Vollversion funktioniert und die Express-Version einen Fehler verursacht.
 
 Um das Projekt mit der Emulator-Vollversion zu verwenden, klicken Sie mit der rechten Maustaste auf das ContosoAdsCloudService-Projekt, und klicken anschließend auf **Eigenschaften**. Klicken Sie im **Properties**-Fenster auf die Registerkarte **Web**, und klicken Sie auf das Optionsfeld **Emulator-Vollversion verwenden**.
@@ -850,13 +752,12 @@ Um das Projekt mit der Emulator-Vollversion zu verwenden, klicken Sie mit der re
 Um die Anwendung mit der Emulator-Vollversion zu verwenden, müssen Sie Visual Studio mit Administratorrechten öffnen.
 
 ## Nächste Schritte
-
 Die Contoso Ads-Anwendung wurde für dieses Tutorial bewusst einfach gehalten. Sie implementiert z. B. keine [Abhängigkeitsinjektion](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) oder [Repository und Arbeitseinheit](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), verwendet keine [Schnittstelle für die Protokollierung](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log) und keine [EF Code First-Migrationen](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) zur Verwaltung von Datenmodellen oder [EF-Verbindungsstabilität](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) für vorübergehende Verbindungsfehler, usw.
 
 Hier finden Sie einige Beispielanwendungen für Clouddienste mit realitätsnäheren Programmierpraktiken, geordnet vom einfachsten hin zum komplexesten Projekt:
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Ähnlich der Contoso Ads-Anwendung, jedoch mit mehr Funktionen und realitätsnäheren Programmierpraktiken.
-* [Azure-Clouddienst-Anwendung mit mehreren Ebenen mit Tabellen, Warteschlangen und Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Bietet eine Einführung in Azure-Speichertabellen sowie in Blobs und Warteschlangen. Dieser Artikel basiert auf einer älteren Version des Azure SDK für .NET. Es müssen einige Änderungen vorgenommen werden, damit die Anweisungen für die aktuelle Version funktionieren.
+* [Azure-Clouddienst-Anwendung mit mehreren Ebenen mit Tabellen, Warteschlangen und Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Bietet eine Einführung in Azure-Speichertabellen sowie in Blobs und Warteschlangen. Dieser Artikel basiert auf einer älteren Version des Azure SDK für .NET. Es müssen einige Änderungen vorgenommen werden, damit die Anweisungen für die aktuelle Version funktionieren.
 * [Clouddienstgrundlagen in Microsoft Azure](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ein umfassendes Beispiel mit einer breiten Palette bewährter Methoden, erarbeitet von der Microsoft Patterns and Practices-Gruppe.
 
 Weitere Informationen zur Entwicklung für die Cloud finden Sie unter [Erstellen von Cloud-Apps mit Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).

@@ -1,53 +1,50 @@
-<properties 
-	pageTitle="Von Application Insights verwendete IP-Adressen | Microsoft Azure"
-	description="Für Application Insights erforderliche Serverfirewallausnahmen" 
-	services="application-insights"
-    documentationCenter=".net"
-	authors="alancameronwills" 
-	manager="douge"/>
+---
+title: Von Application Insights verwendete IP-Adressen | Microsoft Docs
+description: Für Application Insights erforderliche Serverfirewallausnahmen
+services: application-insights
+documentationcenter: .net
+author: alancameronwills
+manager: douge
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="awills"/>
- 
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2016
+ms.author: awills
+
+---
 # Von Application Insights verwendete IP-Adressen
-
 Der Dienst [Visual Studio Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
 
-> [AZURE.NOTE] Diese Adressen sind zwar statisch, müssen jedoch unter Umständen gelegentlich geändert werden.
-
+> [!NOTE]
+> Diese Adressen sind zwar statisch, müssen jedoch unter Umständen gelegentlich geändert werden.
+> 
+> 
 
 ## Ausgehende Ports
-
 In der Serverfirewall müssen einige ausgehende Ports geöffnet werden, damit das Application Insights-SDK und/oder der Statusmonitor Daten an das Portal senden kann:
 
-|Zweck|URL|IP|Ports
-|---|---|---|---
-| Telemetrie|dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com| 40\.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221|443
-|LiveStream|rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |variable|443
+| Zweck | URL | IP | Ports |
+| --- | --- | --- | --- |
+| Telemetrie |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40\.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221 |443 |
+| LiveStream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |variable |443 |
 
-
-
-+ Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen werden:
- -	`management.core.windows.net:443`
- -	`management.azure.com:443`
- -	`login.windows.net:443`
- -	`login.microsoftonline.com:443`
- -	`secure.aadcdn.microsoftonline-p.com:443`
- -	`auth.gfx.ms:443`
- -	`login.live.com:443`
-+ Statusmonitorinstallation:
- +	`packages.nuget.org:443`
+* Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen werden:
+  * `management.core.windows.net:443`
+  * `management.azure.com:443`
+  * `login.windows.net:443`
+  * `login.microsoftonline.com:443`
+  * `secure.aadcdn.microsoftonline-p.com:443`
+  * `auth.gfx.ms:443`
+  * `login.live.com:443`
+* Statusmonitorinstallation:
+  * `packages.nuget.org:443`
 
 Diese Liste kann sich von Zeit zu Zeit ändern.
 
 ## Verfügbarkeitstests
-
 Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
 
 Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen:
@@ -170,18 +167,9 @@ Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-i
 ```  
 
 ## Datenzugriffs-API
-
-
-
-|URI|IP|Ports
-|---|---|---
-|api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io|13\.82.26.252<br/>40.76.213.73|80, 443
-|dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com|13\.82.24.149<br/>40.114.82.10|80, 443
-
-
-
-
-
- 
+| URI | IP | Ports |
+| --- | --- | --- |
+| api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13\.82.26.252<br/>40.76.213.73 |80, 443 |
+| dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13\.82.24.149<br/>40.114.82.10 |80, 443 |
 
 <!---HONumber=AcomDC_0824_2016-->

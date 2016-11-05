@@ -1,21 +1,21 @@
-<properties 
-    pageTitle="Tools für elastische Datenbanken – Glossar | Microsoft Azure" 
-    description="Erläuterung von Begriffen, die für die Tools für flexible Datenbanken verwendet werden" 
-    services="sql-database" 
-    documentationCenter="" 
-    manager="jhubbard" 
-    authors="ddove" 
-    editor=""/>
+---
+title: Tools für elastische Datenbanken – Glossar | Microsoft Docs
+description: Erläuterung von Begriffen, die für die Tools für flexible Datenbanken verwendet werden
+services: sql-database
+documentationcenter: ''
+manager: jhubbard
+author: ddove
+editor: ''
 
-<tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="05/27/2016" 
-    ms.author="ddove"/>
+ms.service: sql-database
+ms.workload: sql-database
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/27/2016
+ms.author: ddove
 
+---
 # Tools für elastische Datenbanken – Glossar
 Die folgenden Begriffe werden für die [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md), einem Feature von Azure SQL-Datenbank, definiert. Die Tools werden zur Verwaltung von [Shard-Zuordnungen](sql-database-elastic-scale-shard-map-management.md) verwendet. Sie beinhalten die [Clientbibliothek](sql-database-elastic-database-client-library.md), das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md), [elastische Pools](sql-database-elastic-pool.md) und [Abfragen](sql-database-elastic-query-overview.md).
 
@@ -45,7 +45,7 @@ Hier ist eine Darstellung von Einzelmandanten- und mehrinstanzenfähigen **Shard
 
 **Bereichs-Shard-Zuordnung:** eine Shard-Zuordnung, in der die Shard-Verteilungsstrategie auf mehreren Bereichen zusammenhängender Werte basiert.
 
-**Verweistabellen:** Tabellen, die nicht partitioniert sind, aber über mehrere Shards hinweg repliziert werden. Postleitzahlen können z. B. in einer Verweistabelle gespeichert werden.
+**Verweistabellen:** Tabellen, die nicht partitioniert sind, aber über mehrere Shards hinweg repliziert werden. Postleitzahlen können z. B. in einer Verweistabelle gespeichert werden.
 
 **Shard:** eine Azure SQL-Datenbank, in der die Daten aus einem horizontal partitionierten DataSet gespeichert werden.
 
@@ -65,9 +65,7 @@ Hier ist eine Darstellung von Einzelmandanten- und mehrinstanzenfähigen **Shard
 
 ![Zuordnungen][2]
 
-
-##Verben
-
+## Verben
 **Horizontales Skalieren:** das Skalieren einer Auflistung von Shards durch Hinzufügen oder Entfernen von Shards zu bzw. aus einer Shard-Zuordnung, wie unten dargestellt.
 
 ![Horizontale und vertikale Skalierung][3]
@@ -78,16 +76,16 @@ Hier ist eine Darstellung von Einzelmandanten- und mehrinstanzenfähigen **Shard
 
 **Shard:** das horizontale Partitionieren identisch strukturierter Daten über mehrere Datenbanken anhand eines Sharding-Schlüssels.
 
-**Aufteilen:** das Verschieben mehrerer Shardlets aus einem Shard in einen anderen (i. d. R. neuen) Shard. Als Aufteilungspunkt wird ein Sharding-Schlüssel vom Benutzer bereitgestellt.
+**Aufteilen:** das Verschieben mehrerer Shardlets aus einem Shard in einen anderen (i. d. R. neuen) Shard. Als Aufteilungspunkt wird ein Sharding-Schlüssel vom Benutzer bereitgestellt.
 
-**Vertikales Skalieren:** das Heraufskalieren (oder Herunterskalieren) der Leistungsstufe eines einzelnen Shards. Dies erfolgt z. B. durch Ändern eines Shards von Standard in Premium (wodurch mehr Computerressourcen zur Verfügung stehen).
+**Vertikales Skalieren:** das Heraufskalieren (oder Herunterskalieren) der Leistungsstufe eines einzelnen Shards. Dies erfolgt z. B. durch Ändern eines Shards von Standard in Premium (wodurch mehr Computerressourcen zur Verfügung stehen).
 
-[AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-glossary/glossary.png
 [2]: ./media/sql-database-elastic-scale-glossary/mappings.png
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
- 
+
 
 <!---HONumber=AcomDC_0601_2016-->

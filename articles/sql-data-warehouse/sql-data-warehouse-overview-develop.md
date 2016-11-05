@@ -1,52 +1,51 @@
-<properties
-   pageTitle="Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse-Entwicklung | Microsoft Azure"
-   description="Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für SQL Data Warehouse."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse-Entwicklung | Microsoft Docs
+description: Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für SQL Data Warehouse.
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/16/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/16/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse
-
 Lesen Sie diese Entwicklungsartikel, um ein besseres Verständnis der wesentlichen Entwurfsentscheidungen, der Empfehlungen und der Programmiertechniken für SQL Data Warehouse zu erlangen.
 
 ## Wesentliche Entwurfsentscheidungen
 In den folgenden Artikeln werden einige der zentralen Konzepte und Entwurfsentscheidungen hervorgehoben, die Sie für die Entwicklung Ihres verteilten Data Warehouses mit SQL Data Warehouse verstehen müssen:
 
-- [Verbindungen][]
-- [Parallelität][]
-- [Transaktionen][]
-- [Benutzerdefinierte Schemas][]
-- [Tabellenverteilung][]
-- [Tabellenindizes][]
-- [Tabellenpartitionen][]
-- [CTAS][]
-- [Statistiken][]
+* [Verbindungen][Verbindungen]
+* [Parallelität][Parallelität]
+* [Transaktionen][Transaktionen]
+* [Benutzerdefinierte Schemas][Benutzerdefinierte Schemas]
+* [Tabellenverteilung][Tabellenverteilung]
+* [Tabellenindizes][Tabellenindizes]
+* [Tabellenpartitionen][Tabellenpartitionen]
+* [CTAS][CTAS]
+* [Statistiken][Statistiken]
 
 ## Entwicklungsempfehlungen und Programmiertechniken
 In diesen Artikeln werden bestimmte Programmiertechniken, Tipps und Empfehlungen für die Entwicklung eines SQL Data Warehouse behandelt:
 
-- [Gespeicherte Prozeduren][]
-- [Bezeichnungen][]
-- [Ansichten][]
-- [Temporäre Tabellen][]
-- [Dynamisches SQL][]
-- [Schleifen][]
-- [Gruppierungsoptionen][]
-- [Variablenzuweisung][]
+* [Gespeicherte Prozeduren][Gespeicherte Prozeduren]
+* [Bezeichnungen][Bezeichnungen]
+* [Ansichten][Ansichten]
+* [Temporäre Tabellen][Temporäre Tabellen]
+* [Dynamisches SQL][Dynamisches SQL]
+* [Schleifen][Schleifen]
+* [Gruppierungsoptionen][Gruppierungsoptionen]
+* [Variablenzuweisung][Variablenzuweisung]
 
 ## Nächste Schritte
-Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite [Transact-SQL-Referenz][] weitere Informationen zur unterstützten Syntax für SQL Data Warehouse.
+Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite [Transact-SQL-Referenz][Transact-SQL-Referenz] weitere Informationen zur unterstützten Syntax für SQL Data Warehouse.
 
 <!--Image references-->
 

@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure | Microsoft Azure"
-   description=" In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierbaren Azure-Dienste und -Features die Sicherheit von Lösungen für das Gesundheitswesen verbessern. "
-   services="security"
-   documentationCenter="na"
-   authors="TomShinder"
-   manager="MBaldwin"
-   editor="TomSh"/>
+---
+title: Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure | Microsoft Docs
+description: " In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierbaren Azure-Dienste und -Features die Sicherheit von Lösungen für das Gesundheitswesen verbessern. "
+services: security
+documentationcenter: na
+author: TomShinder
+manager: MBaldwin
+editor: TomSh
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/06/2016"
-   ms.author="terrylan"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/06/2016
+ms.author: terrylan
 
+---
 # Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure
-
 Startups im Gesundheitswesen, Systemintegratoren (SIs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und im Gesundheitswesen tätige Organisationen, die die Einführung von Azure in Erwägung ziehen, benötigen Unterstützung beim Integrieren geeigneter Sicherheitsmaßnahmen für ihre Complianceanforderungen.
 
 In der [praktischen Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Microsoft Azure](https://aka.ms/azureindustrysecurity) erfahren Sie, wie Sie mithilfe der bedarfsgerecht konfigurierbaren Azure-Dienste und Features die Sicherheit Ihrer Lösungen erhöhen. Der Inhalt ist in drei Hauptabschnitte unterteilt:

@@ -1,27 +1,26 @@
-<properties
-   pageTitle="Konfigurieren eines Azure AD-Benutzerkontos | Microsoft Azure"
-   description="In diesem Artikel wird beschrieben, wie Sie Azure AD-Benutzerkonto-Anmeldeinformationen für Runbooks in Azure Automation zum Authentifizieren für ARM und ASM konfigurieren."
-   services="automation"
-   documentationCenter=""
-   authors="MGoedtel"
-   manager="jwhit"
-   editor="tysonn"
-   keywords="Azure Active Directory-Benutzer, Azure Service Management, Azure AD-Benutzerkonto" />
-<tags
-   ms.service="automation"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/12/2016"
-   ms.author="magoedte" />
+---
+title: Konfigurieren eines Azure AD-Benutzerkontos | Microsoft Docs
+description: In diesem Artikel wird beschrieben, wie Sie Azure AD-Benutzerkonto-Anmeldeinformationen für Runbooks in Azure Automation zum Authentifizieren für ARM und ASM konfigurieren.
+services: automation
+documentationcenter: ''
+author: MGoedtel
+manager: jwhit
+editor: tysonn
+keywords: Azure Active Directory-Benutzer, Azure Service Management, Azure AD-Benutzerkonto
 
+ms.service: automation
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/12/2016
+ms.author: magoedte
+
+---
 # Authentifizieren von Runbooks mit Azure-Dienstverwaltung und Resource Manager
-
 In diesem Artikel werden die Schritte beschrieben, die Sie zum Konfigurieren eines Azure AD-Benutzerkontos für Azure Automation-Runbooks ausführen müssen, die für Ressourcen der Azure-Dienstverwaltung (Azure Service Management, ASM) oder von Azure Resource Manager (ARM) ausgeführt werden. Diese Authentifizierungsidentität wird für ARM-basierte Runbooks zwar weiterhin unterstützt, aber die empfohlene Methode ist die Verwendung des neuen ausführenden Kontos von Azure.
 
 ## Erstellen eines neuen Azure Active Directory-Benutzers
-
 1. Melden Sie sich im klassischen Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
 2. Wählen Sie **Active Directory** und dann den Namen des Verzeichnisses Ihrer Organisation.
 3. Wählen Sie die Registerkarte **Benutzer** und dann im Befehlsbereich die Option **Benutzer hinzufügen**.
@@ -35,12 +34,13 @@ In diesem Artikel werden die Schritte beschrieben, die Sie zum Konfigurieren ein
 11. Wählen Sie das Abonnement aus, das der Benutzer verwalten soll.
 12. Melden Sie sich bei Azure ab, und melden Sie sich anschließend mit den soeben erstellten Anmeldeinformationen wieder an. Sie werden aufgefordert, das Kennwort des Benutzers zu ändern.
 
-
 ## Erstellen eines Automation-Kontos im klassischen Azure-Portal
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um ein neues Azure Automation-Konto im Azure-Portal zu erstellen, das für Ihre Runbooks zum Verwalten von Ressourcen im ASM- und ARM-Modus verwendet wird.
 
->[AZURE.NOTE] Mit dem klassischen Azure-Portal erstellte Automation-Konten können sowohl mit dem klassischen Azure-Portal als auch mit dem Azure-Portal und beiden Cmdlet-Sätzen verwaltet werden. Nach dem Erstellen des Kontos macht es keinen Unterschied, wie Sie Ressourcen innerhalb des Kontos erstellen und verwalten. Wenn Sie planen, auch weiterhin das klassische Azure-Portal zu verwenden, sollten Sie dieses anstelle des Azure-Portals für das Erstellen von Automation-Konten verwenden.
-
+> [!NOTE]
+> Mit dem klassischen Azure-Portal erstellte Automation-Konten können sowohl mit dem klassischen Azure-Portal als auch mit dem Azure-Portal und beiden Cmdlet-Sätzen verwaltet werden. Nach dem Erstellen des Kontos macht es keinen Unterschied, wie Sie Ressourcen innerhalb des Kontos erstellen und verwalten. Wenn Sie planen, auch weiterhin das klassische Azure-Portal zu verwenden, sollten Sie dieses anstelle des Azure-Portals für das Erstellen von Automation-Konten verwenden.
+> 
+> 
 
 1. Melden Sie sich im klassischen Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
 2. Wählen Sie **Automation**.
@@ -56,35 +56,35 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um ein neues Azure A
 12. Geben Sie auf der folgenden Seite **Anmeldeinformationen definieren** den Benutzernamen des zuvor erstellten AD-Benutzerkontos im Feld **Benutzername** und das Kennwort in den Feldern **Kennwort** und **Kennwort bestätigen** ein. Klicken Sie zum Speichern der Änderungen auf **OK**.
 
 ## Erstellen eines Automation-Kontos im Azure-Portal
-
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um ein neues Azure Automation-Konto im Azure-Portal zu erstellen, das für Ihre Runbooks zum Verwalten von Ressourcen im ARM-Modus verwendet wird.
 
 1. Melden Sie sich im Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
 2. Wählen Sie die Option **Automation-Konten**.
 3. Klicken Sie im Blatt „Automation-Konten“ auf **Hinzufügen**.<br>![Automation-Konto hinzufügen](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties.png)
-2. Geben Sie im Blatt **Automation-Konto hinzufügen** im Feld **Name** einen Namen für das neue Automation-Konto ein.
+4. Geben Sie im Blatt **Automation-Konto hinzufügen** im Feld **Name** einen Namen für das neue Automation-Konto ein.
 5. Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement für das neue Konto sowie eine neue oder vorhandene **Ressourcengruppe** und den **Speicherort** eines Azure-Rechenzentrums an.
-3. Wählen Sie **Nein** für die Option **Ausführendes Azure-Konto erstellen**, und klicken Sie auf die Schaltfläche **Erstellen**.
-
-    >[AZURE.NOTE] Wenn Sie sich dafür entscheiden, das ausführende Konto nicht zu erstellen, indem Sie die Option **Nein** wählen, wird im Blatt **Automation-Konto hinzufügen** eine Warnmeldung angezeigt. Das Konto wird zwar erstellt und der Rolle **Mitwirkender** des Abonnements zugewiesen, es verfügt aber über keine entsprechende Authentifizierungsidentität in Ihrem Abonnementverzeichnisdienst und somit auch nicht über Zugriffsressourcen in Ihrem Abonnement. So wird verhindert, dass Runbooks, die auf dieses Konto verweisen, sich authentifizieren und Aufgaben für ARM-Ressourcen durchführen können.
-
+6. Wählen Sie **Nein** für die Option **Ausführendes Azure-Konto erstellen**, und klicken Sie auf die Schaltfläche **Erstellen**.
+   
+   > [!NOTE]
+   > Wenn Sie sich dafür entscheiden, das ausführende Konto nicht zu erstellen, indem Sie die Option **Nein** wählen, wird im Blatt **Automation-Konto hinzufügen** eine Warnmeldung angezeigt. Das Konto wird zwar erstellt und der Rolle **Mitwirkender** des Abonnements zugewiesen, es verfügt aber über keine entsprechende Authentifizierungsidentität in Ihrem Abonnementverzeichnisdienst und somit auch nicht über Zugriffsressourcen in Ihrem Abonnement. So wird verhindert, dass Runbooks, die auf dieses Konto verweisen, sich authentifizieren und Aufgaben für ARM-Ressourcen durchführen können.
+   > 
+   > 
+   
     ![Automation-Konto hinzufügen – Warnung](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties-error.png)
+7. Während das Automation-Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen.
 
-4. Während das Automation-Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen.
-
-Nachdem die Erstellung der Anmeldeinformationen abgeschlossen ist, müssen Sie ein Anmeldeinformationsobjekt erstellen, um das Automation-Konto dem zuvor erstellten AD-Benutzerkonto zuzuordnen. Beachten Sie, dass wir das Automation-Konto bisher nur erstellt und noch keiner Authentifizierungsidentität zugeordnet haben. Führen Sie die Schritte im Artikel [Anmeldeinformationsobjekte in Azure Automation](../automation/automation-credentials.md#creating-a-new-credential) aus, und geben Sie den Wert für **Benutzername** im Format **Domäne\\Benutzer** ein.
+Nachdem die Erstellung der Anmeldeinformationen abgeschlossen ist, müssen Sie ein Anmeldeinformationsobjekt erstellen, um das Automation-Konto dem zuvor erstellten AD-Benutzerkonto zuzuordnen. Beachten Sie, dass wir das Automation-Konto bisher nur erstellt und noch keiner Authentifizierungsidentität zugeordnet haben. Führen Sie die Schritte im Artikel [Anmeldeinformationsobjekte in Azure Automation](automation-credentials.md#creating-a-new-credential) aus, und geben Sie den Wert für **Benutzername** im Format **Domäne\\Benutzer** ein.
 
 ## Verwenden der Anmeldeinformationen in einem Runbook
-
 Sie können die Anmeldeinformationen in einem Runbook mithilfe der Aktivität [Get-AutomationPSCredential](http://msdn.microsoft.com/library/dn940015.aspx) abrufen und dann mit [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) eine Verbindung mit Ihrem Azure-Abonnement herstellen. Wenn die Anmeldeinformationen mit einem Administrator für mehrere Azure-Abonnements verknüpft sind, sollten Sie mithilfe von [Select-AzureSubscription](http://msdn.microsoft.com/library/dn495203.aspx) das richtige Abonnement angeben. Dies wird im nachstehenden Windows PowerShell-Beispiel gezeigt, das typischerweise im oberen Bereich der meisten Azure Automation-Runbooks angezeigt wird.
 
     $cred = Get-AutomationPSCredential –Name "myuseraccount.onmicrosoft.com"
-	Add-AzureAccount –Credential $cred
-	Select-AzureSubscription –SubscriptionName "My Subscription"
+    Add-AzureAccount –Credential $cred
+    Select-AzureSubscription –SubscriptionName "My Subscription"
 
 Diese Zeilen sollten nach jedem [Prüfpunkt](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints) wiederholt werden. Wenn das Runbook angehalten und später von einem anderen Benutzer fortgesetzt wird, muss die Authentifizierung erneut durchgeführt werden.
 
 ## Nächste Schritte
-* Informieren Sie sich über die unterschiedlichen Runbooktypen und die Schritte zum Erstellen Ihrer eigenen Runbooks im Artikel [Azure Automation-Runbooktypen](../automation/automation-runbook-types.md).
+* Informieren Sie sich über die unterschiedlichen Runbooktypen und die Schritte zum Erstellen Ihrer eigenen Runbooks im Artikel [Azure Automation-Runbooktypen](automation-runbook-types.md).
 
 <!---HONumber=AcomDC_0914_2016-->

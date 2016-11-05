@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="Verwenden von Twilio für Sprachanrufe und SMS (Java) | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Java geschrieben." 
-	services="" 
-	documentationCenter="java" 
-	authors="devinrader" 
-	manager="twilio" 
-	editor="mollybos"/>
+---
+title: Verwenden von Twilio für Sprachanrufe und SMS (Java) | Microsoft Docs
+description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Java geschrieben.
+services: ''
+documentationcenter: java
+author: devinrader
+manager: twilio
+editor: mollybos
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
-	ms.author="microsofthelp@twilio.com"/>
+ms.service: multiple
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 11/25/2014
+ms.author: microsofthelp@twilio.com
 
+---
 # Verwenden von Twilio für Telefonie- und SMS-Funktionen in Java
-
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps).
 
 ## <a id="WhatIs"></a>Was ist Twilio?
@@ -144,18 +143,18 @@ Das folgende Beispiel zeigt, wie Sie eine SMS-Nachricht mit der **SmsFactory**-K
 
     // Send an SMS message.
     MessageFactory messageFactory = account.getMessageFactory();
-    
+
     List<NameValuePair> params = new ArrayList<NameValuePair>();
     params.add(new BasicNameValuePair("To", "+14159352345")); // Replace with a valid phone number for your account.
     params.add(new BasicNameValuePair("From", "+14158141829")); // Replace with a valid phone number for your account.
     params.add(new BasicNameValuePair("Body", "Where's Wallace?"));
-    
+
     Message sms = messageFactory.create(params);
-        
+
 Weitere Informationen zu den an die **SmsFactory.create**-Methode übergebenen Parametern finden Sie unter [http://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms].
 
 ## <a id="howto_provide_twiml_responses"></a>Bereitstellen von TwiML-Antworten von der eigenen Website
-Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert – z. B. über die **CallFactory.create**-Methode – sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das obige Beispiel verwendet die von Twilio bereitgestellte URL [http://twimlets.com/message][twimlet_message_url]. (TwiML wurde für die Verwendung durch Webdienste konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie beispielsweise auf [http://twimlets.com/message][twimlet_message_url], um ein leeres **&lt;Response&gt;**-Element anzuzeigen. Klicken Sie auf [http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world], um ein weiteres Beispiel mit einem **&lt;Response&gt;**-Element anzuzeigen, das ein **&lt;Say&gt;**-Element enthält.)
+Wenn Ihre Anwendung einen Anruf an die Twilio-API initiiert – z. B. über die **CallFactory.create**-Methode – sendet Twilio Ihre Anforderung an eine URL, von der die Rückgabe einer TwiML-Antwort erwartet wird. Das obige Beispiel verwendet die von Twilio bereitgestellte URL [http://twimlets.com/message][twimlet_message_url]. (TwiML wurde für die Verwendung durch Webdienste konzipiert, kann jedoch im Browser angezeigt werden. Klicken Sie beispielsweise auf [http://twimlets.com/message][twimlet_message_url], um ein leeres **&lt;Response&gt;**-Element anzuzeigen. Klicken Sie auf [http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world], um ein weiteres Beispiel mit einem **&lt;Response&gt;**-Element anzuzeigen, das ein **&lt;Say&gt;**-Element enthält.)
 
 Anstelle der von Twilio bereitgestellten URL können Sie auch Ihre eigene URL-Website für die Rückgabe von HTTP-Antworten erstellen. Sie können die Website in allen Sprachen erstellen, die HTTP-Antworten zurückgeben. Dieses Beispiel geht davon aus, dass Sie die URL in einer JSP-Seite hosten.
 
@@ -167,7 +166,6 @@ Die folgende JSP-Seite erstellt eine TwiML-Antwort, die beim Anruf **Hello World
     </Response>
 
 Die folgende JSP-Seite erstellt eine TwiML-Antwort, die zunächst etwas Text spricht, mehrere Pausen enthält, und anschließend Informationen über die Version der Twilio-API und den Azure-Rollennamen spricht.
-
 
     <%@ page contentType="text/xml" %>
     <Response> 

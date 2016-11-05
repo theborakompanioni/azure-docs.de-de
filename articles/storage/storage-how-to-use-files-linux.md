@@ -1,55 +1,55 @@
-<properties
-	pageTitle="Verwenden von Azure Files mit Linux | Microsoft Azure"
-        description="Erstellen Sie mit diesem Schritt-für-Schritt-Tutorial eine Azure-Dateifreigabe in der Cloud. Verwalten Sie Ihre freigegebenen Inhalte und stellen Sie eine Dateifreigabe aus einem virtuellen Azure-Computer (VM) unter Linux oder einer lokalen Anwendung bereit, die SMB 3.0 unterstützt."
-        services="storage"
-        documentationCenter="na"
-        authors="mine-msft"
-        manager="aungoo"
-        editor="tysonn" />
+---
+title: Verwenden von Azure Files mit Linux | Microsoft Docs
+description: Erstellen Sie mit diesem Schritt-für-Schritt-Tutorial eine Azure-Dateifreigabe in der Cloud. Verwalten Sie Ihre freigegebenen Inhalte und stellen Sie eine Dateifreigabe aus einem virtuellen Azure-Computer (VM) unter Linux oder einer lokalen Anwendung bereit, die SMB 3.0 unterstützt.
+services: storage
+documentationcenter: na
+author: mine-msft
+manager: aungoo
+editor: tysonn
 
-<tags ms.service="storage"
-      ms.workload="storage"
-      ms.tgt_pltfrm="na"
-      ms.devlang="na"
-      ms.topic="article"
-      ms.date="02/29/2016"
-      ms.author="minet;robinsh" />
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 02/29/2016
+ms.author: minet;robinsh
 
-
+---
 # Verwenden des Azure-Dateispeichers unter Linux
-
 ## Übersicht
-
-Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Mit Azure Files können Sie Unternehmensanwendungen migrieren, die auf Dateiservern in Azure basieren. Anwendungen, die in Azure ausgeführt werden, können Dateifreigaben von virtuellen Azure-Computern unter Linux problemlos einbinden. Mit der neuesten Version des Dateispeichers können Sie außerdem eine Dateifreigabe aus einer lokalen Anwendung einbinden, die SMB 3.0 unterstützt.
+Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Mit Azure Files können Sie Unternehmensanwendungen migrieren, die auf Dateiservern in Azure basieren. Anwendungen, die in Azure ausgeführt werden, können Dateifreigaben von virtuellen Azure-Computern unter Linux problemlos einbinden. Mit der neuesten Version des Dateispeichers können Sie außerdem eine Dateifreigabe aus einer lokalen Anwendung einbinden, die SMB 3.0 unterstützt.
 
 Sie können Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. Da es sich bei den Dateifreigaben um SMB-Freigaben handelt, können Sie darauf außerdem über standardmäßige Dateisystem-APIs zugreifen.
 
 Der Dateispeicher beruht auf der gleichen Technologie wie Blob-, Tabellen-, und Warteschlangendienste. Dies bedeutet, dass der Dateispeicher die Verfügbarkeit, Dauerhaftigkeit, Skalierbarkeit und geografische Redundanz bietet, die in die Azure Storage-Plattform integriert ist. Weitere Informationen zu Leistungszielen und Grenzwerten des Dateispeichers finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md).
 
-Der Dateispeicher ist jetzt allgemein verfügbar und unterstützt sowohl SMB 2.1 als auch SMB 3.0. Zusätzliche Informationen zu File Storage finden Sie unter [Dateidienst-REST-API](https://msdn.microsoft.com/library/azure/dn167006.aspx).
+Der Dateispeicher ist jetzt allgemein verfügbar und unterstützt sowohl SMB 2.1 als auch SMB 3.0. Zusätzliche Informationen zu File Storage finden Sie unter [Dateidienst-REST-API](https://msdn.microsoft.com/library/azure/dn167006.aspx).
 
->[AZURE.NOTE] Weil der Linux-SMB-Client noch keine Verschlüsselung unterstützt, muss sich der Client, wenn eine Dateifreigabe aus Linux eingebunden wird, in derselben Azure-Region befinden wie die Dateifreigabe. Allerdings arbeiten die Linux-Entwickler, die für die SMB-Funktionalität verantwortlich sind, an der Verschlüsselungsunterstützung für Linux. Linux-Distributionen, in denen zukünftig Verschlüsselung unterstützt wird, werden ebenfalls von überall eine Azure-Dateifreigabe einbinden können.
+> [!NOTE]
+> Weil der Linux-SMB-Client noch keine Verschlüsselung unterstützt, muss sich der Client, wenn eine Dateifreigabe aus Linux eingebunden wird, in derselben Azure-Region befinden wie die Dateifreigabe. Allerdings arbeiten die Linux-Entwickler, die für die SMB-Funktionalität verantwortlich sind, an der Verschlüsselungsunterstützung für Linux. Linux-Distributionen, in denen zukünftig Verschlüsselung unterstützt wird, werden ebenfalls von überall eine Azure-Dateifreigabe einbinden können.
+> 
+> 
 
 ## Video: Verwenden des Azure-Dateispeichers unter Linux
-
 Dieses Video veranschaulicht das Erstellen und Verwenden von Azure-Dateifreigaben unter Linux.
 
-> [AZURE.VIDEO azure-file-storage-with-linux]
+> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Linux/player]
+> 
+> 
 
-## Wählen einer zu verwendenden Linux-Distribution ##
-
+## Wählen einer zu verwendenden Linux-Distribution
 Wenn Sie in Azure einen virtuellen Linux-Computer erstellen, können Sie im Azure-Image-Katalog ein Linux-Image angeben, das SMB 2.1 oder höher unterstützt. Dies ist die Liste der empfohlenen Linux-Images:
 
-- Ubuntu Server 14.04+
-- RHEL 7+
-- CentOS 7+
-- Debian 8
-- openSUSE 13.2+
-- SUSE Linux Enterprise Server 12
-- SUSE Linux Enterprise Server 12 (Premium-Image)
+* Ubuntu Server 14.04+
+* RHEL 7+
+* CentOS 7+
+* Debian 8
+* openSUSE 13.2+
+* SUSE Linux Enterprise Server 12
+* SUSE Linux Enterprise Server 12 (Premium-Image)
 
-## Einbinden der Dateifreigabe ##
-
+## Einbinden der Dateifreigabe
 Um die Dateifreigabe aus einem virtuellen Linux-Computer einzubinden, müssen Sie möglicherweise einen SMB/CIFS-Client installieren, wenn die von Ihnen verwendete Distribution keinen integrierten Client hat. Dies ist der aus Ubuntu auszuführende Befehl, wenn cifs-utils als Client installiert werden soll:
 
     sudo apt-get install cifs-utils
@@ -92,52 +92,44 @@ Wenn Sie die Open SUSE 13.2 verwenden, können Sie die Datei wie folgt einbinden
     Filesystem  Size  Used Avail Use% Mounted on
     //myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
 
-## Verwalten der Dateifreigabe ##
-
+## Verwalten der Dateifreigabe
 Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche zum Verwalten von Azure File Storage. Sie können in Ihrem Webbrowser die folgenden Aktionen ausführen:
 
-- Hoch- und Herunterladen von Dateien für die Dateifreigabe
-- Überwachen der tatsächlichen Nutzung der einzelnen Dateifreigaben
-- Anpassen des Kontingents für die Dateifreigabegröße
-- Kopieren Sie den `net use`-Befehl, der zum Einbinden Ihrer Dateifreigabe auf einem Windows-Client verwendet werden soll.
+* Hoch- und Herunterladen von Dateien für die Dateifreigabe
+* Überwachen der tatsächlichen Nutzung der einzelnen Dateifreigaben
+* Anpassen des Kontingents für die Dateifreigabegröße
+* Kopieren Sie den `net use`-Befehl, der zum Einbinden Ihrer Dateifreigabe auf einem Windows-Client verwendet werden soll.
 
 Sie können auch die plattformübergreifende Azure-Befehlszeilenschnittstelle (Azure CLI) von Linux verwenden, um die Dateifreigabe zu verwalten. Die Azure-Befehlszeilenschnittstelle bietet eine Reihe plattformübergreifender Open-Source-Befehle für die Arbeit mit Azure Storage, einschließlich File Storage. Sie bietet im Wesentlichen die gleiche Funktionalität wie das Azure-Portal sowie umfangreiche Datenzugriffsfunktionen. Beispiele finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Storage](storage-azure-cli.md).
 
-## Entwickeln mit Dateispeicher ##
-
+## Entwickeln mit Dateispeicher
 Als Entwickler können Sie eine Anwendung mit File Storage erstellen, indem Sie die [Azure Storage-Clientbibliothek für Java](https://github.com/azure/azure-storage-java) verwenden. Codebeispiele finden Sie unter [Verwenden von File Storage aus Java](storage-java-how-to-use-file-storage.md).
 
 Sie können auch die [Azure Storage-Clientbibliothek für Node.js](https://github.com/Azure/azure-storage-node) zum Entwickeln für File Storage verwenden.
 
-## Feedback und weitere Informationen ##
-
+## Feedback und weitere Informationen
 Linux-Benutzer, wir möchten von Ihnen hören!
 
 Der Gruppe "Azure File Storage for Linux users" bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure File Storage for Linux Users](mailto:azurefileslinuxusers@microsoft.com), um der Benutzergruppe beizutreten.
 
 ## Nächste Schritte
-
 Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 
 ### Konzeptionelle Artikel und Videos
-
-- [Azure-Dateispeicher: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-- [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
+* [Azure-Dateispeicher: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
 
 ### Toolunterstützung für Dateispeicher
-
-- [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
-- [Erstellen und Verwalten von Dateifreigaben](storage-azure-cli.md#create-and-manage-file-shares) mithilfe der Azure-Befehlszeilenschnittstelle
+* [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
+* [Erstellen und Verwalten von Dateifreigaben](storage-azure-cli.md#create-and-manage-file-shares) mithilfe der Azure-Befehlszeilenschnittstelle
 
 ### Referenz
-
-- [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
+* [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 
 ### Blogbeiträge
-
-- [Azure-Dateispeicher ist jetzt allgemein verfügbar](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-- [Azure-Dateispeicher](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-- [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-- [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Azure-Dateispeicher ist jetzt allgemein verfügbar](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Azure-Dateispeicher](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 <!---HONumber=AcomDC_0928_2016-->

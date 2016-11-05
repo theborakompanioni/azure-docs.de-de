@@ -1,33 +1,34 @@
-<properties
-   pageTitle="Übersicht über Tabellen in SQL Data Warehouse | Microsoft Azure"
-   description="Enthält Informationen zu den ersten Schritten mit Azure SQL Data Warehouse-Tabellen."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
-   editor=""/>
+---
+title: Übersicht über Tabellen in SQL Data Warehouse | Microsoft Docs
+description: Enthält Informationen zu den ersten Schritten mit Azure SQL Data Warehouse-Tabellen.
+services: sql-data-warehouse
+documentationcenter: NA
+author: sonyam
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/04/2016"
-   ms.author="sonyama;barbkess;jrj"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/04/2016
+ms.author: sonyama;barbkess;jrj
 
+---
 # Übersicht über Tabellen in SQL Data Warehouse
+> [!div class="op_single_selector"]
+> * [Übersicht][Übersicht]
+> * [Datentypen][Datentypen]
+> * [Verteilen][Verteilen]
+> * [Index][Index]
+> * [Partition][Partition]
+> * [Statistiken][Statistiken]
+> * [Temporär][Temporär]
+> 
+> 
 
-> [AZURE.SELECTOR]
-- [Übersicht][]
-- [Datentypen][]
-- [Verteilen][]
-- [Index][]
-- [Partition][]
-- [Statistiken][]
-- [Temporär][]
-
-Die ersten Schritte zur Erstellung von Tabellen in SQL Data Warehouse sind einfach. Die grundlegende [CREATE TABLE][]-Syntax basiert auf der allgemeinen Syntax, mit der Sie aufgrund der Arbeit mit anderen Datenbanken wahrscheinlich bereits vertraut sind. Zum Erstellen einer Tabelle müssen Sie nur der Tabelle einen Namen geben, die Spalten benennen und Datentypen für jede Spalte definieren. Wenn Sie schon Tabellen in anderen Datenbanken erstellt haben, sollte Ihnen dies bekannt vorkommen.
+Die ersten Schritte zur Erstellung von Tabellen in SQL Data Warehouse sind einfach. Die grundlegende [CREATE TABLE][CREATE TABLE]-Syntax basiert auf der allgemeinen Syntax, mit der Sie aufgrund der Arbeit mit anderen Datenbanken wahrscheinlich bereits vertraut sind. Zum Erstellen einer Tabelle müssen Sie nur der Tabelle einen Namen geben, die Spalten benennen und Datentypen für jede Spalte definieren. Wenn Sie schon Tabellen in anderen Datenbanken erstellt haben, sollte Ihnen dies bekannt vorkommen.
 
 ```sql  
 CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
@@ -42,45 +43,38 @@ RENAME OBJECT Customer TO CustomerOrig;
  ```
 
 ## Verteilte Tabellen
-
 Ein neues grundlegendes Attribut, das mit verteilten Systemen wie SQL Data Warehouse eingeführt wird, ist die **Verteilungsspalte**. Der Zweck der Verteilungsspalte lässt sich schon am Namen erkennen. Anhand dieser Spalte wird bestimmt, wie Ihre Daten im Hintergrund verteilt bzw. aufgeteilt werden. Wenn Sie eine Tabelle erstellen, ohne die Verteilungsspalte anzugeben, wird für die Tabelle automatisch die **Roundrobin**-Verteilung verwendet. In einigen Szenarien können Roundrobin-Tabellen ausreichend sein, aber durch das Definieren von Verteilungsspalten kann die Datenverschiebung bei Abfragen deutlich reduziert werden, was zu einer Leistungssteigerung führt. Weitere Informationen zur Auswahl einer Verteilungsspalte finden Sie unter [Verteilen einer Tabelle][Distribute].
 
 ## Indizieren und Partitionieren von Tabellen
-
 Wenn Sie Erfahrung mit der Verwendung von SQL Data Warehouse gesammelt haben und die Leistung optimieren möchten, ist es ratsam, sich über den Tabellenentwurf zu informieren. Weitere Informationen finden Sie in den Artikeln [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index] und [Partitionieren einer Tabelle][Partition].
 
 ## Tabellenstatistiken
-
-Statistiken sind sehr wichtig, um für SQL Data Warehouse die bestmögliche Leistung zu erzielen. Da SQL Data Warehouse noch nicht automatisch Statistiken für Sie erstellt und aktualisiert, wie Sie dies von Azure SQL-Datenbank kennen, ist es unter Umständen sehr wichtig, dass Sie den Artikel über [Statistiken][] lesen. Mit den darin enthaltenen Informationen können Sie sicherstellen, dass Sie für Ihre Abfragen die beste Leistung erzielen.
+Statistiken sind sehr wichtig, um für SQL Data Warehouse die bestmögliche Leistung zu erzielen. Da SQL Data Warehouse noch nicht automatisch Statistiken für Sie erstellt und aktualisiert, wie Sie dies von Azure SQL-Datenbank kennen, ist es unter Umständen sehr wichtig, dass Sie den Artikel über [Statistiken][Statistiken] lesen. Mit den darin enthaltenen Informationen können Sie sicherstellen, dass Sie für Ihre Abfragen die beste Leistung erzielen.
 
 ## Temporäre Tabellen
-
 Temporäre Tabellen sind Tabellen, die nur für die Dauer Ihrer Anmeldung vorhanden sind und anderen Benutzern nicht angezeigt werden. Temporäre Tabellen können eine gute Möglichkeit sein, um zu verhindern, dass andere Benutzer temporäre Ergebnisse sehen, und um die Notwendigkeit von Bereinigungen zu reduzieren. Da temporäre Tabellen auch lokalen Speicher nutzen, bieten Sie für einige Vorgänge eine schnellere Leistung. Ausführlichere Informationen zu temporären Tabellen finden Sie unter [Temporäre Tabelle][Temporary].
 
 ## Externe Tabellen
-
-Externe Tabellen, die auch als PolyBase-Tabellen bezeichnet werden, sind Tabellen, die von SQL Data Warehouse abgefragt werden können, aber auf Daten außerhalb von SQL Data Warehouse verweisen. Beispielsweise können Sie eine externe Tabelle erstellen, die auf Dateien in Azure Blob Storage verweist. Weitere Informationen zum Erstellen und Abfragen einer externen Tabelle finden Sie unter [Laden von Daten mit PolyBase][].
+Externe Tabellen, die auch als PolyBase-Tabellen bezeichnet werden, sind Tabellen, die von SQL Data Warehouse abgefragt werden können, aber auf Daten außerhalb von SQL Data Warehouse verweisen. Beispielsweise können Sie eine externe Tabelle erstellen, die auf Dateien in Azure Blob Storage verweist. Weitere Informationen zum Erstellen und Abfragen einer externen Tabelle finden Sie unter [Laden von Daten mit PolyBase][Laden von Daten mit PolyBase].
 
 ## Nicht unterstützte Tabellenfunktionen
-
 SQL Data Warehouse enthält zwar viele Tabellenfunktionen, die auch für andere Datenbanken vorhanden sind, aber es gibt einige Funktionen, die noch nicht unterstützt werden. Unten ist eine Liste mit den Tabellenfunktionen angegeben, die noch nicht unterstützt werden.
 
 | Nicht unterstützte Funktionen |
 | --- |
-|[Identity-Eigenschaft][] \(siehe [Assigning Surrogate Key Workaround][] \(Zuweisen von Ersatzschlüsseln – Problemumgehung))|
-|Primary Key, Foreign Key, Unique und Check – [Tabelleneinschränkungen][]|
-|[Eindeutige Indizes][]|
-|[Berechnete Spalten][]|
-|[Spalten mit geringer Dichte][]|
-|[Benutzerdefinierte Typen][]|
-|[Sequenz][]|
-|[Trigger][]|
-|[Indizierte Sichten][]|
-|[Synonyme][]|
+| [Identity-Eigenschaft][Identity-Eigenschaft] \(siehe [Assigning Surrogate Key Workaround][Assigning Surrogate Key Workaround] \(Zuweisen von Ersatzschlüsseln – Problemumgehung)) |
+| Primary Key, Foreign Key, Unique und Check – [Tabelleneinschränkungen][Tabelleneinschränkungen] |
+| [Eindeutige Indizes][Eindeutige Indizes] |
+| [Berechnete Spalten][Berechnete Spalten] |
+| [Spalten mit geringer Dichte][Spalten mit geringer Dichte] |
+| [Benutzerdefinierte Typen][Benutzerdefinierte Typen] |
+| [Sequenz][Sequenz] |
+| [Trigger][Trigger] |
+| [Indizierte Sichten][Indizierte Sichten] |
+| [Synonyme][Synonyme] |
 
 ## Abfragen für die Tabellengröße
-
-Eine einfache Möglichkeit, den jeweiligen Speicherplatz- und Zeilenverbrauch einer Tabelle in den 60 Verteilungen zu ermitteln, ist die Verwendung von [DBCC PDW\_SHOWSPACEUSED][].
+Eine einfache Möglichkeit, den jeweiligen Speicherplatz- und Zeilenverbrauch einer Tabelle in den 60 Verteilungen zu ermitteln, ist die Verwendung von [DBCC PDW\_SHOWSPACEUSED][DBCC PDW\_SHOWSPACEUSED].
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -201,7 +195,6 @@ FROM size
 ```
 
 ### Tabellenspeicherplatz – Zusammenfassung
-
 Diese Abfrage gibt die Zeilen und den Speicherplatz nach Tabelle zurück. Diese Abfrage eignet sich hervorragend dazu, anzuzeigen, welche Tabellen die größten Tabellen sind und ob es sich um Roundrobin-Tabellen oder Tabellen mit Hashverteilung handelt. Für Tabellen mit Hashverteilung wird zudem die Verteilungsspalte angezeigt. In den meisten Fällen sollte es sich bei der größten Tabelle um eine Tabelle mit Hashverteilung mit einem gruppierten Columnstore-Index ausgeführt handeln.
 
 ```sql
@@ -210,7 +203,7 @@ SELECT
 ,    schema_name
 ,    table_name
 ,    distribution_policy_name
-,	  distribution_column
+,      distribution_column
 ,    index_type_desc
 ,    COUNT(distinct partition_nmbr) as nbr_partitions
 ,    SUM(row_count)                 as table_row_count
@@ -225,7 +218,7 @@ GROUP BY
 ,    schema_name
 ,    table_name
 ,    distribution_policy_name
-,	  distribution_column
+,      distribution_column
 ,    index_type_desc
 ORDER BY
     table_reserved_space_GB desc
@@ -233,7 +226,6 @@ ORDER BY
 ```
 
 ### Tabellenspeicherplatz nach Verteilungstyp
-
 ```sql
 SELECT 
      distribution_policy_name
@@ -248,7 +240,6 @@ GROUP BY distribution_policy_name
 ```
 
 ### Tabellenspeicherplatz nach Indextyp
-
 ```sql
 SELECT 
      index_type_desc
@@ -263,7 +254,6 @@ GROUP BY index_type_desc
 ```
 
 ### Verteilungsspeicherplatz – Zusammenfassung
-
 ```sql
 SELECT 
     distribution_id
@@ -279,8 +269,7 @@ ORDER BY    distribution_id
 ```
 
 ## Nächste Schritte
-
-Weitere Informationen finden Sie in den Artikeln [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Statistiken für Tabellen in SQL Data Warehouse][Statistics] und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+Weitere Informationen finden Sie in den Artikeln [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Statistiken für Tabellen in SQL Data Warehouse][Statistics] und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
 
 <!--Image references-->
 

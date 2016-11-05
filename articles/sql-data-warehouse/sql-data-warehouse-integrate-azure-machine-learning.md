@@ -1,58 +1,51 @@
-<properties
-   pageTitle="Verwenden von Azure Machine Learning mit SQL Data Warehouse | Microsoft Azure"
-   description="Tipps für die Verwendung von Azure Machine Learning mit Azure SQL Data Warehouse für die Entwicklung von Lösungen."
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="kevinvngo"
-   manager="barbkess"
-   editor=""/>
+---
+title: Verwenden von Azure Machine Learning mit SQL Data Warehouse | Microsoft Docs
+description: Tipps für die Verwendung von Azure Machine Learning mit Azure SQL Data Warehouse für die Entwicklung von Lösungen.
+services: sql-data-warehouse
+documentationcenter: NA
+author: kevinvngo
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/16/2016"
-   ms.author="kevin;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 08/16/2016
+ms.author: kevin;barbkess;sonyama
 
+---
 # Verwenden von Azure Machine Learning mit SQL Data Warehouse
+Azure Machine Learning ist ein vollständig verwalteter Predictive Analytics-Dienst, für das Erstellen von Vorhersagemodellen anhand Ihrer Daten in SQL Data Warehouse. Diese können Sie anschließend als sofort nutzbare Webdienste veröffentlichen. Zum Erlernen der Grundlagen von Vorhersageanalysen und vom maschinellen Lernen lesen Sie [Einführung in Machine Learning in Azure][Einführung in Machine Learning in Azure]. Anschließend erfahren Sie im [Lernprogramm zum Erstellen eines Experiments][Lernprogramm zum Erstellen eines Experiments] wie Sie ein Modell zum maschinellen Lernen erstellen, trainieren, bewerten und testen.
 
-Azure Machine Learning ist ein vollständig verwalteter Predictive Analytics-Dienst, für das Erstellen von Vorhersagemodellen anhand Ihrer Daten in SQL Data Warehouse. Diese können Sie anschließend als sofort nutzbare Webdienste veröffentlichen. Zum Erlernen der Grundlagen von Vorhersageanalysen und vom maschinellen Lernen lesen Sie [Einführung in Machine Learning in Azure][]. Anschließend erfahren Sie im [Lernprogramm zum Erstellen eines Experiments][] wie Sie ein Modell zum maschinellen Lernen erstellen, trainieren, bewerten und testen.
+In diesem Artikel erfahren Sie, wie Sie Folgendes mit [Azure Machine Learning Studio][Azure Machine Learning Studio] ausführen:
 
-In diesem Artikel erfahren Sie, wie Sie Folgendes mit [Azure Machine Learning Studio][] ausführen:
-
-- Lesen von Daten aus der Datenbank zum Erstellen, Trainieren und Bewerten eines Vorhersagemodells
-- Schreiben von Daten in die Datenbank
-
+* Lesen von Daten aus der Datenbank zum Erstellen, Trainieren und Bewerten eines Vorhersagemodells
+* Schreiben von Daten in die Datenbank
 
 ## Lesen von Daten aus SQL Data Warehouse
-
 Wie werden Daten aus der Product-Tabelle in der AdventureWorksDW-Datenbank lesen.
 
-### Schritt 1
+### Schritt 1
+Starten Sie ein neues Experiment, indem Sie am unteren Rand des Fensters von Machine Learning Studio auf "+NEU" klicken und anschließend "EXPERIMENT" und dann "Blank Experiment" auswählen. Wählen Sie den Standardnamen am oberen Rand des Bereichs aus, und geben Sie einen aussagekräftigeren Namen ein, z. B. "Fahrradpreisvorhersage".
 
-Starten Sie ein neues Experiment, indem Sie am unteren Rand des Fensters von Machine Learning Studio auf "+NEU" klicken und anschließend "EXPERIMENT" und dann "Blank Experiment" auswählen. Wählen Sie den Standardnamen am oberen Rand des Bereichs aus, und geben Sie einen aussagekräftigeren Namen ein, z. B. "Fahrradpreisvorhersage".
-
-### Schritt 2
-
+### Schritt 2
 Suchen Sie in der Palette von DataSets und Modulen auf der linken Seite im Experimentbereich nach dem Reader-Modul. Ziehen Sie das Modul in den Experimentbereich. ![][drag_reader]
 
-### Schritt 3
-
+### Schritt 3
 Wählen Sie das Reader-Modul aus, und füllen Sie das Eigenschaftenfenster aus.
 
 1. Wählen Sie „Azure SQL-Datenbank“ als Datenquelle aus.
-2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [Azure-Portal][].
+2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [Azure-Portal][Azure-Portal].
 
 ![][server_name]
 
-3. Datenbankname: Geben Sie den Namen einer Datenbank auf dem Server ein, den Sie soeben angegeben haben.
-4. Server user account name: Geben Sie den Benutzernamen eines Kontos ein, das über Zugriffsberechtigungen für die Datenbank verfügt.
-5. Server user account password: Geben Sie das Kennwort für das angegebene Benutzerkonto ein.
-6. Accept any server certificate: Verwenden Sie diese (weniger sichere) Option, um das Überprüfen des Websitezertifikats vor dem Lesen Ihrer Daten zu überspringen.
-7. Datenbankabfrage: Geben Sie eine SQL-­Anweisung ein, die die Daten beschreibt, die Sie lesen möchten. In diesem Fall lesen wir mit der folgenden Abfrage Daten aus der Product-Tabelle.
-
+1. Datenbankname: Geben Sie den Namen einer Datenbank auf dem Server ein, den Sie soeben angegeben haben.
+2. Server user account name: Geben Sie den Benutzernamen eines Kontos ein, das über Zugriffsberechtigungen für die Datenbank verfügt.
+3. Server user account password: Geben Sie das Kennwort für das angegebene Benutzerkonto ein.
+4. Accept any server certificate: Verwenden Sie diese (weniger sichere) Option, um das Überprüfen des Websitezertifikats vor dem Lesen Ihrer Daten zu überspringen.
+5. Datenbankabfrage: Geben Sie eine SQL-­Anweisung ein, die die Daten beschreibt, die Sie lesen möchten. In diesem Fall lesen wir mit der folgenden Abfrage Daten aus der Product-Tabelle.
 
 ```SQL
 SELECT ProductKey, EnglishProductName, StandardCost,
@@ -63,45 +56,38 @@ FROM dbo.DimProduct;
 
 ![][reader_properties]
 
-### Schritt 4
-
+### Schritt 4
 1. Führen Sie das Experiment aus, indem Sie unterhalb des Experimentbereichs auf "Ausführen" klicken.
 2. Nach Abschluss des Experiments ist das Reader-Modul mit einem grünen Häkchen markiert, um anzuzeigen, dass es erfolgreich abgeschlossen wurde. Beachten Sie auch den Status Finished running in der oberen rechten Ecke.
 
 ![][run]
 
-3. Sie können auf den Ausgabeport im unteren Bereich des Automobil-DataSets klicken und "Visualisieren" auswählen, um die importierten Daten anzuzeigen.
-
+1. Sie können auf den Ausgabeport im unteren Bereich des Automobil-DataSets klicken und "Visualisieren" auswählen, um die importierten Daten anzuzeigen.
 
 ## Erstellen, Trainieren und Bewerten eines Modells
-
 Sie können das Dataset jetzt für Folgendes verwenden:
 
-- Erstellen eines Modells: Verarbeiten von Daten und Definieren von Funktionen
-- Trainieren des Modells: Auswählen und Anwenden eines Lernalgorithmus
-- Bewerten und Testen des Modells: Vorhersagen eines neuen Fahrradpreises
-
+* Erstellen eines Modells: Verarbeiten von Daten und Definieren von Funktionen
+* Trainieren des Modells: Auswählen und Anwenden eines Lernalgorithmus
+* Bewerten und Testen des Modells: Vorhersagen eines neuen Fahrradpreises
 
 ![][model]
 
-Im [Lernprogramm zum Erstellen eines Experiments][] erfahren Sie, wie Sie ein Modell zum maschinellen Lernen erstellen, trainieren, bewerten und testen.
+Im [Lernprogramm zum Erstellen eines Experiments][Lernprogramm zum Erstellen eines Experiments] erfahren Sie, wie Sie ein Modell zum maschinellen Lernen erstellen, trainieren, bewerten und testen.
 
 ## Schreiben von Daten in Azure SQL Data Warehouse
-
 Wir schreiben das Resultset in die ProductPriceForecast-Tabelle in der AdventureWorksDW-Datenbank.
 
-### Schritt 1
-
+### Schritt 1
 Suchen Sie in der Palette von DataSets und Modulen auf der linken Seite im Experimentbereich nach dem Writer-Modul. Ziehen Sie das Modul in den Experimentbereich.
 
 ![][drag_writer]
 
-### Schritt 2
-
+### Schritt 2
 Wählen Sie das Writer-Modul aus, und füllen Sie das Eigenschaftenfenster aus.
 
 1. Wählen Sie "Azure SQL-Datenbank" als Datenziel aus.
-2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [Azure-Portal][].
+2. Datenbank-Servername: Geben Sie den Namen des Servers ein. Diese Angaben finden Sie im [Azure-Portal][Azure-Portal].
 3. Datenbankname: Geben Sie den Namen einer Datenbank auf dem Server ein, den Sie soeben angegeben haben.
 4. Server user account name: Geben Sie den Benutzernamen eines Kontos ein, das über Schreibberechtigungen für die Datenbank verfügt.
 5. Server user account password: Geben Sie das Kennwort für das angegebene Benutzerkonto ein.
@@ -113,14 +99,12 @@ Wählen Sie das Writer-Modul aus, und füllen Sie das Eigenschaftenfenster aus.
 
 ![][writer_properties]
 
-### Schritt 3
-
+### Schritt 3
 1. Führen Sie das Experiment aus, indem Sie unterhalb des Experimentbereichs auf "Ausführen" klicken.
 2. Nach Abschluss des Experiments sind alle Module mit einem grünen Häkchen markiert, um anzuzeigen, dass diese erfolgreich abgeschlossen wurden.
 
 ## Nächste Schritte
-
-Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][SQL Data Warehouse-Entwicklungsübersicht].
 
 <!--Image references-->
 

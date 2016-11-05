@@ -1,34 +1,33 @@
-<properties
-	pageTitle="Assistent zum Kopieren in Data Factory | Microsoft Azure"
-	description="Erfahren Sie, wie Sie den Data Factory-Kopier-Assistenten verwenden, um Daten aus unterstützten Datenquellen in Senken zu kopieren."
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
-	editor="monicar"/>
+---
+title: Assistent zum Kopieren in Data Factory | Microsoft Docs
+description: Erfahren Sie, wie Sie den Data Factory-Kopier-Assistenten verwenden, um Daten aus unterstützten Datenquellen in Senken zu kopieren.
+services: data-factory
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: monicar
 
-<tags
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/27/2016"
-	ms.author="spelluru"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/27/2016
+ms.author: spelluru
 
+---
 # Assistent zum Kopieren in Data Factory
 Der Azure Data Factory-Kopier-Assistent ermöglicht das Erstellen einer Pipeline, mit der Sie Daten aus unterstützten Quellen an Ziele kopieren können, ohne JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines zu schreiben. Klicken Sie zum Starten des Kopier-Assistenten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren**.
 
 ![Kopier-Assistent](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
 ## Features
-
 ### Ein intuitiver und unkomplizierter Assistent zum Kopieren von Daten
 Mit diesem Assistenten können Sie problemlos innerhalb weniger Minuten Daten von einer Quelle zu einem Ziel verschieben. Führen Sie dazu die folgenden einfachen Schritte aus:
 
-1.	Wählen Sie die Quelle aus.
-2.	Wählen Sie das Ziel aus.
-3.	Konfigurieren Sie die Einstellungen.
+1. Wählen Sie die Quelle aus.
+2. Wählen Sie das Ziel aus.
+3. Konfigurieren Sie die Einstellungen.
 
 ![Auswählen einer Datenquelle](./media/data-factory-copy-wizard/select-data-source-page.png)
 
@@ -63,10 +62,10 @@ Sie können Variablen im Ordnerpfad verwenden, um Daten aus einem Ordner zu kopi
 
 Angenommen, Sie haben Eingabeordner im folgenden Format:
 
-	2016/03/01/01
-	2016/03/01/02
-	2016/03/01/03
-	...
+    2016/03/01/01
+    2016/03/01/02
+    2016/03/01/03
+    ...
 
 Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, navigieren Sie zu einem der Ordner (z.B. 2016->03->01->02), und klicken Sie auf **Auswählen**. Das Textfeld sollte jetzt **2016/03/01/02** enthalten. Ersetzen Sie nun **2016** durch **{year}**, **03** durch **{month}**, **01** durch **{day}**, **02** durch **{hour}**, und drücken Sie die TAB-Taste. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
 

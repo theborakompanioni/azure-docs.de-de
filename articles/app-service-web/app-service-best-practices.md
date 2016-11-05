@@ -1,30 +1,29 @@
-<properties
-	pageTitle="Empfohlene Methoden für Azure App Service"
-	description="Informationen zu empfohlenen Methoden und zur Problembehandlung für Azure App Service."
-	services="app-service"
-	documentationCenter=""
-	authors="dariagrigoriu"
-	manager="wpickett"
-	editor="mollybos"/>
+---
+title: Empfohlene Methoden für Azure App Service
+description: Informationen zu empfohlenen Methoden und zur Problembehandlung für Azure App Service.
+services: app-service
+documentationcenter: ''
+author: dariagrigoriu
+manager: wpickett
+editor: mollybos
 
-<tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2016"
-	ms.author="dariagrigoriu"/>
-    
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/30/2016
+ms.author: dariagrigoriu
+
+---
 # Empfohlene Methoden für Azure App Service
-
 In diesem Artikel werden die empfohlenen Methoden für die Verwendung von [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) zusammengefasst.
 
 ## <a name="colocation"></a>Zusammenstellen
 Befinden sich Azure-Ressourcen, aus denen sich eine Lösung zusammensetzt (beispielsweise eine Web-App und eine Datenbank), in unterschiedlichen Regionen, kann sich dies folgendermaßen auswirken:
 
-*  erhöhte Latenz bei der Kommunikation zwischen den Ressourcen
-*  Kosten für ausgehende, regionsübergreifende Datenübertragung, Details finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/details/data-transfers)
+* erhöhte Latenz bei der Kommunikation zwischen den Ressourcen
+* Kosten für ausgehende, regionsübergreifende Datenübertragung, Details finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/details/data-transfers)
 
 Das Zusammenstellen in derselben Region eignet sich am besten für Azure-Ressourcen, die zusammen eine Lösung bilden, wie z.B. eine Web-App und eine Datenbank oder ein Speicherkonto für die Inhalte oder Daten. Beim Erstellen von Ressourcen sollten Sie sicherstellen, dass sich diese in derselben Azure-Region befinden, es sei denn, es sprechen geschäftliche oder entwurfstechnische Gründe dagegen. Mithilfe der [App Service-Klonfunktion](app-service-web-app-cloning-portal.md), die derzeit für Premium-App Service-Plan-Apps verfügbar ist, können Sie eine App Service-App in die gleiche Region wie Ihre Datenbank verschieben.
 

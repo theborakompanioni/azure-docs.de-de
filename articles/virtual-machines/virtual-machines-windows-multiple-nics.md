@@ -1,25 +1,28 @@
-<properties
-   pageTitle="Konfigurieren von mehreren Netzwerkkarten auf einem virtuellen Windows-Computer | Microsoft Azure"
-   description="Erfahren Sie, wie Sie über Azure PowerShell oder mithilfe von Resource Manager-Vorlagen einen virtuellen Computer mit mehreren angefügten Netzwerkkarten erstellen."
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Konfigurieren von mehreren Netzwerkkarten auf einem virtuellen Windows-Computer | Microsoft Docs
+description: Erfahren Sie, wie Sie über Azure PowerShell oder mithilfe von Resource Manager-Vorlagen einen virtuellen Computer mit mehreren angefügten Netzwerkkarten erstellen.
+services: virtual-machines-windows
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure"
-   ms.date="08/04/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
+ms.date: 08/04/2016
+ms.author: iainfou
 
+---
 # Erstellen eines virtuellen Computers mit mehreren Netzwerkkarten
 Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. Dieser Artikel bietet Informationen zu Schnellbefehlen zum Erstellen eines virtuellen Computers, an den mehrere Netzwerkkarten angefügt werden. Ausführliche Informationen hierzu sowie zum Erstellen von mehreren Netzwerkkarten in Ihren eigenen PowerShell-Skripts finden Sie unter [Bereitstellen von Multi-NIC-VMs](../virtual-network/virtual-network-deploy-multinic-arm-ps.md). Verschiedene [VM-Größen](virtual-machines-windows-sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
 
->[AZURE.WARNING] Das Anfügen der Netzwerkkarten muss während der Erstellung des virtuellen Computers erfolgen – Sie können keine Netzwerkkarten an einen vorhandenen virtuellen Computer anfügen. Sie können [einen neuen virtuellen Computer basierend auf dem/den ursprünglichen virtuellen Datenträger(n) erstellen](virtual-machines-windows-specialized-image.md) und beim Bereitstellen des virtuellen Computers mehrere Netzwerkkarten erstellen.
+> [!WARNING]
+> Das Anfügen der Netzwerkkarten muss während der Erstellung des virtuellen Computers erfolgen – Sie können keine Netzwerkkarten an einen vorhandenen virtuellen Computer anfügen. Sie können [einen neuen virtuellen Computer basierend auf dem/den ursprünglichen virtuellen Datenträger(n) erstellen](virtual-machines-windows-specialized-image.md) und beim Bereitstellen des virtuellen Computers mehrere Netzwerkkarten erstellen.
+> 
+> 
 
 ## Erstellen von Kernressourcen
 Stellen Sie sicher, dass Sie die [neueste Azure PowerShell-Version installiert und konfiguriert](../powershell-install-configure.md) haben.
@@ -67,7 +70,6 @@ $NIC2 = New-AzureRmNetworkInterface -Name NIC2 -ResourceGroupName TestRG `
 ```
 
 Üblicherweise erstellen Sie auch eine [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) oder einen [Lastenausgleich](../load-balancer/load-balancer-overview.md), um den Datenverkehr zwischen den virtuellen Computern zu verwalten und zu verteilen. Im [detaillierteren Artikel zu virtuellen Computern mit mehreren Netzwerkkarten](../virtual-network/virtual-network-deploy-multinic-arm-ps.md) finden Sie ausführlichere Informationen zum Erstellen einer Netzwerksicherheitsgruppe und zum Zuweisen von Netzwerkkarten.
-
 
 ## Erstellen des virtuellen Computers
 Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe weist eine maximale Anzahl von Netzwerkkarten auf, die Sie einem virtuellen Computer hinzufügen können. Weitere Informationen finden Sie unter [Windows-VM-Größen](virtual-machines-windows-sizes.md). Das folgende Beispiel verwendet eine VM-Größe, die bis zu zwei Netzwerkkarten unterstützt (`Standard_DS2_v2`):

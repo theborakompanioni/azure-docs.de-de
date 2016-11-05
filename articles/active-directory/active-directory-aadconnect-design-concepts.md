@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Entwurfskonzepte für Azure AD Connect | Microsoft Azure"
-   description="In diesem Thema werden bestimmte Aspekte des Implementierungsentwurfs beschrieben."
-   services="active-directory"
-   documentationCenter=""
-   authors="billmath"
-   manager="femila"
-   editor=""/>
+---
+title: Entwurfskonzepte für Azure AD Connect | Microsoft Docs
+description: In diesem Thema werden bestimmte Aspekte des Implementierungsentwurfs beschrieben.
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.custom = "azure-ad-connect"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="Identity"
-   ms.date="09/13/2016"
-   ms.author="billmath"/>
+ms.service: active-directory
+ms.custom: azure-ad-connect
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: Identity
+ms.date: 09/13/2016
+ms.author: billmath
 
-
+---
 # <a name="azure-ad-connect:-design-concepts"></a>Azure AD Connect: Designkonzepte
 Dieses Themas beschreibt, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Bestimmte Aspekte werden in diesem Thema sehr gründlich behandelt, und diese Konzepte werden in anderen Themen ebenfalls kurz beschrieben.
 
@@ -28,23 +27,23 @@ Das Wort „unveränderlich“ ist in diesem Thema wichtig. Da der Wert dieses A
 
 Das Attribut wird für die folgenden Szenarien verwendet:
 
-- Wenn Sie einen neuen Synchronisierungsmodulserver erstellen oder nach einem Notfallwiederherstellungsszenario erneut erstellen, verknüpft dieses Attribut vorhandene Objekte in Azure AD mit lokalen Objekten.
-- Wenn Sie von einer ausschließlichen Cloudidentität zu einem synchronisierten Identitätsmodell wechseln, ermöglicht dieses Attribut die genaue Übereinstimmung vorhandener Objekte in Azure AD mit lokalen Objekten.
-- Bei Verwendung des Verbunds wird dieses Attribut zusammen mit **userPrincipalName** im Anspruch zur eindeutigen Identifizierung eines Benutzers verwendet.
+* Wenn Sie einen neuen Synchronisierungsmodulserver erstellen oder nach einem Notfallwiederherstellungsszenario erneut erstellen, verknüpft dieses Attribut vorhandene Objekte in Azure AD mit lokalen Objekten.
+* Wenn Sie von einer ausschließlichen Cloudidentität zu einem synchronisierten Identitätsmodell wechseln, ermöglicht dieses Attribut die genaue Übereinstimmung vorhandener Objekte in Azure AD mit lokalen Objekten.
+* Bei Verwendung des Verbunds wird dieses Attribut zusammen mit **userPrincipalName** im Anspruch zur eindeutigen Identifizierung eines Benutzers verwendet.
 
 In diesem Thema wird nur „sourceAnchor“ behandelt, da sich das Element auf Benutzer bezieht. Die gleichen Regeln gelten für alle Objekttypen, doch üblicherweise ist dieses Problem nur für Benutzer von besonderem Belang.
 
 ### <a name="selecting-a-good-sourceanchor-attribute"></a>Auswählen eines guten Attributs sourceAnchor
 Der Attributwert muss den folgenden Regeln entsprechen:
 
-- Weniger als 60 Zeichen lang
-    - Zeichen, bei denen es sich nicht um a-z, A-Z oder 0-9 handelt, werden als drei Zeichen codiert und gezählt.
-- Keine Sonderzeichen: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
-- Global eindeutig
-- Zeichenfolge, Ganzzahl oder Binärzahl
-- Sollte nicht auf einem Benutzernamen beruhen, da dieser geändert werden kann.
-- Groß-/Kleinschreibung sollte nicht relevant sein und Werte, die sich nach Groß-/Kleinschreibung unterscheiden, sollten vermieden werden.
-- Sollte bei Erstellung des Objekts zugewiesen werden.
+* Weniger als 60 Zeichen lang
+  * Zeichen, bei denen es sich nicht um a-z, A-Z oder 0-9 handelt, werden als drei Zeichen codiert und gezählt.
+* Keine Sonderzeichen: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
+* Global eindeutig
+* Zeichenfolge, Ganzzahl oder Binärzahl
+* Sollte nicht auf einem Benutzernamen beruhen, da dieser geändert werden kann.
+* Groß-/Kleinschreibung sollte nicht relevant sein und Werte, die sich nach Groß-/Kleinschreibung unterscheiden, sollten vermieden werden.
+* Sollte bei Erstellung des Objekts zugewiesen werden.
 
 Ist das ausgewählte Attribut „sourceAnchor“ nicht vom Typ „Zeichenfolge“, unterzieht Azure AD Connect den Wert des Attributs einem Base64Encode-Prozess, um sicherzustellen, dass keine Sonderzeichen angezeigt werden. Wenn Sie einen anderen Verbundserver als AD FS verwenden, stellen Sie sicher, dass Ihr Server auch in der Lage ist, das Attribut einem Base64Encode-Prozess zu unterziehen.
 
@@ -63,9 +62,9 @@ Der Wert des Attributs sourceAnchor kann nicht geändert werden, nachdem das Obj
 
 Aus diesem Grund gelten die folgenden Einschränkungen für Azure AD Connect:
 
-- Das Attribut sourceAnchor kann nur bei der Erstinstallation festgelegt werden. Diese Option ist schreibgeschützt, wenn Sie den Installations-Assistenten erneut ausführen. Wenn Sie diese Einstellung ändern müssen, müssen Sie deinstallieren und neu installieren.
-- Wenn Sie einen anderen Azure AD Connect-Server installieren, müssen Sie das gleiche Attribut sourceAnchor wie zuvor auswählen. Wenn Sie zuvor bereits DirSync verwendet haben und zu Azure AD wechseln, müssen Sie **objectGUID** verwenden, da dieses Attribut von DirSync verwendet wird.
-- Wenn der Wert für „sourceAnchor“ geändert wird, nachdem das Objekt nach Azure AD exportiert wurde, meldet die Azure AD Connect-Synchronisierung einen Fehler und lässt keine weiteren Änderungen am Objekt zu, bevor das Problem behoben und die Änderung von „sourceAnchor2 im Quellverzeichnis wieder rückgängig gemacht wurde.
+* Das Attribut sourceAnchor kann nur bei der Erstinstallation festgelegt werden. Diese Option ist schreibgeschützt, wenn Sie den Installations-Assistenten erneut ausführen. Wenn Sie diese Einstellung ändern müssen, müssen Sie deinstallieren und neu installieren.
+* Wenn Sie einen anderen Azure AD Connect-Server installieren, müssen Sie das gleiche Attribut sourceAnchor wie zuvor auswählen. Wenn Sie zuvor bereits DirSync verwendet haben und zu Azure AD wechseln, müssen Sie **objectGUID** verwenden, da dieses Attribut von DirSync verwendet wird.
+* Wenn der Wert für „sourceAnchor“ geändert wird, nachdem das Objekt nach Azure AD exportiert wurde, meldet die Azure AD Connect-Synchronisierung einen Fehler und lässt keine weiteren Änderungen am Objekt zu, bevor das Problem behoben und die Änderung von „sourceAnchor2 im Quellverzeichnis wieder rückgängig gemacht wurde.
 
 ## <a name="azure-ad-sign-in"></a>Azure AD-Anmeldung
 Bei der Integration Ihres lokalen Verzeichnisses in Azure AD ist es wichtig zu wissen, wie sich die Synchronisierungseinstellungen auf die Art und Weise auswirken, in der ein Benutzer sich authentifiziert. Azure AD verwendet einen Benutzerprinzipalname (User Principal Name, UPN, ), um den Benutzer zu authentifizieren. Wenn Sie jedoch Ihre Benutzer synchronisieren, müssen Sie das Attribut, das als Wert für „userPrincipalName“ verwendet werden soll, sehr sorgfältig auswählen.
@@ -73,8 +72,8 @@ Bei der Integration Ihres lokalen Verzeichnisses in Azure AD ist es wichtig zu w
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Auswählen des Attributs für userPrincipalName
 Bei Auswahl des Attributs, das den in Azure zu verwendenden UPN-Wert bereitstellt, sollten Sie Folgendes sicherstellen:
 
-- Die Attributwerte entsprechen der UPN-Syntax (RFC 822) und müssen somit im Format username@domain
-- Das Suffix in den Werten stimmt mit einer der überprüften benutzerdefinierten Domänen in Azure AD überein.
+* Die Attributwerte entsprechen der UPN-Syntax (RFC 822) und müssen somit im Format username@domain
+* Das Suffix in den Werten stimmt mit einer der überprüften benutzerdefinierten Domänen in Azure AD überein.
 
 In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen. Falls das userPrincipalName-Attribut nicht den Wert enthält, den Ihre Benutzer zum Anmelden bei Azure verwenden sollen, müssen Sie **Benutzerdefinierte Installation**wählen.
 
@@ -92,8 +91,6 @@ Azure AD Connect erkennt, ob Sie eine nicht routingfähige Domänenumgebung ausf
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

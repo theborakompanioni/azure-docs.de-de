@@ -1,30 +1,29 @@
-<properties 
-	pageTitle="Einführung in die App Service-Umgebung" 
-	description="Lernen Sie die App Service-Umgebung kennen, die sichere, mit dem VNet verknüpfte, dedizierte Skalierungseinheiten für die Ausführung all Ihrer Apps bietet." 
-	services="app-service" 
-	documentationCenter="" 
-	authors="ccompy" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: Einführung in die App Service-Umgebung
+description: Lernen Sie die App Service-Umgebung kennen, die sichere, mit dem VNet verknüpfte, dedizierte Skalierungseinheiten für die Ausführung all Ihrer Apps bietet.
+services: app-service
+documentationcenter: ''
+author: ccompy
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/11/2016"
-	ms.author="stefsch"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/11/2016
+ms.author: stefsch
 
+---
 # Einführung in die App Service-Umgebung
-
-## Übersicht ##
+## Übersicht
 Eine App Service-Umgebung ist eine Option des [Premium][PremiumTier]-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung zahlreicher Azure App Service-Apps einschließlich [Web-Apps][WebApps], [Mobile Apps][MobileApps] und [API-Apps][APIApps] bereitstellt.
 
 App Service-Umgebungen sind ideal für Anwendungsworkloads mit folgenden Anforderungen:
 
-- Unterstützung sehr vieler Apps
-- Isolierung und sicherer Netzwerkzugriff
+* Unterstützung sehr vieler Apps
+* Isolierung und sicherer Netzwerkzugriff
 
 Kunden können mehrere App Service-Umgebungen innerhalb einer einzelnen Azure-Region sowie über mehrere Azure-Regionen verteilt einrichten. Dadurch eignen sich App Service-Umgebungen hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
 
@@ -38,11 +37,11 @@ Eine ausführliche Betrachtung von horizontaler Skalierung mit mehreren App Serv
 
 Informationen darüber, wie die in AzureCon Deep Dive gezeigte Sicherheitsarchitektur konfiguriert wurde, finden Sie im Artikel über das Implementieren einer [Mehrschicht-Sicherheitsarchitektur](app-service-app-service-environment-layered-security.md) in App Service-Umgebungen.
 
-Der Zugriff von Apps für App-Umgebungen kann durch Upstreamgeräte wie z. B. Web Application Firewalls (WAF) abgegrenzt werden. Im Artikel zum [Konfigurieren einer WAF für App-Umgebungen](app-service-app-service-environment-web-application-firewall.md) wird dieses Szenario behandelt.
+Der Zugriff von Apps für App-Umgebungen kann durch Upstreamgeräte wie z. B. Web Application Firewalls (WAF) abgegrenzt werden. Im Artikel zum [Konfigurieren einer WAF für App-Umgebungen](app-service-app-service-environment-web-application-firewall.md) wird dieses Szenario behandelt.
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## Dedizierte Serverressourcen ##
+## Dedizierte Serverressourcen
 Alle Serverressourcen in einer App Service-Umgebung sind ausschließlich für ein einzelnes Abonnement reserviert. Eine App Service-Umgebung kann mit bis zu fünfzig (50) Serverressourcen konfiguriert werden, die ausschließlich von einer einzelnen Anwendung genutzt werden.
 
 Eine App Service-Umgebung besteht aus einem Front-End-Serverressourcenpool sowie ein bis drei Worker-Serverressourcenpools.
@@ -57,7 +56,7 @@ Ausführliche Informationen über die Menge von Computeressourcen, die den Front
 
 Weitere Informationen zu den verfügbaren Computeressourcengrößen, die in einer App Service-Umgebung unterstützt werden, finden Sie auf der Seite [App Service-Preise][AppServicePricing]. Sehen Sie sich die verfügbaren Optionen für App Service-Umgebungen im Premium-Tarif an.
 
-## Unterstützung für virtuelle Netzwerke ##
+## Unterstützung für virtuelle Netzwerke
 Eine App Service-Umgebung kann **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem virtuellen Netzwerk eines klassischen Bereitstellungsmodells ([weitere Informationen zu virtuellen Netzwerken][MoreInfoOnVirtualNetworks]) erstellt werden. Da eine App Service-Umgebung sich immer in einem virtuellen Netzwerk, genauer gesagt, in einem Subnetz eines virtuellen Netzwerks befindet, können Sie die Sicherheitsfunktionen virtueller Netzwerke zum Steuern sowohl der eingehenden als auch der ausgehenden Netzwerkkommunikation nutzen.
 
 Mithilfe von [Netzwerksicherheitsgruppen][NetworkSecurityGroups] können Sie die eingehende Netzwerkkommunikation mit dem Subnetz einschränken, das eine App Service-Umgebung enthält. Dadurch können Sie Apps hinter Upstreamgeräten und -diensten ausführen wie z. B. Web Application Firewalls und Netzwerk-SaaS-Anbietern.
@@ -67,7 +66,6 @@ Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und
 Für weitere Details zur Funktionsweise der App Service-Umgebungen mit virtuellen und lokalen Netzwerken finden Sie in den folgenden Artikeln [Übersicht über die Netzwerkarchitektur von App Service-Umgebungen][NetworkArchitectureOverview], [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung][ControllingInboundTraffic] und [Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus][SecurelyConnectingToBackends].
 
 ## Erste Schritte
-
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer App Service-Umgebung][HowToCreateAnAppServiceEnvironment]
 
 Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
@@ -78,9 +76,9 @@ Eine Übersicht über die Netzwerkarchitektur der App Service-Umgebung finden Si
 
 Informationen zur Verwendung einer App Service-Umgebung mit ExpressRoute finden Sie im folgenden Artikel [Details zur Netzwerkkonfiguration für App Service-Umgebungen mit ExpressRoute][NetworkConfigDetailsForExpressRoute].
 
-[AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
+[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
+[!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
 [PremiumTier]: http://azure.microsoft.com/pricing/details/app-service/
@@ -106,6 +104,6 @@ Informationen zur Verwendung einer App Service-Umgebung mit ExpressRoute finden 
 
 <!-- IMAGES -->
 
- 
+
 
 <!---HONumber=AcomDC_0810_2016-->

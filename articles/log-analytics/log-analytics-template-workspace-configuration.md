@@ -1,59 +1,54 @@
 
 
-<properties
-    pageTitle="Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft Azure"
-    description="Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden."
-    services="log-analytics"
-    documentationCenter=""
-    authors="richrundmsft"
-    manager="jochan"
-    editor=""/>
+---
+title: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft Docs
+description: Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden.
+services: log-analytics
+documentationcenter: ''
+author: richrundmsft
+manager: jochan
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="json"
-    ms.topic="article"
-    ms.date="08/25/2016"
-    ms.author="richrund"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: json
+ms.topic: article
+ms.date: 08/25/2016
+ms.author: richrund
 
-
+---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
+Sie können [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
 
-Sie können [Azure Resource Manager-Vorlagen] (../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
-
-+ Erstellen eines Arbeitsbereichs
-+ Hinzufügen einer Lösung
-+ Erstellen gespeicherter Suchvorgänge
-+ Erstellen einer Computergruppe
-+ Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
-+ Sammeln von Leistungsindikatoren von Windows- und Linux-Computern
-+ Sammeln von Ereignissen aus Syslog auf Linux-Computern 
-+ Sammeln von Ereignissen aus Windows-Ereignisprotokollen
-+ Sammeln von benutzerdefinierten Ereignisprotokollen
-+ Hinzufügen des Log Analytics-Agents auf virtuellen Azure-Computern
-+ Konfiguration von Log Analytics zum Indizieren der Daten, die mit der Azure-Diagnose gesammelt werden
-
+* Erstellen eines Arbeitsbereichs
+* Hinzufügen einer Lösung
+* Erstellen gespeicherter Suchvorgänge
+* Erstellen einer Computergruppe
+* Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
+* Sammeln von Leistungsindikatoren von Windows- und Linux-Computern
+* Sammeln von Ereignissen aus Syslog auf Linux-Computern 
+* Sammeln von Ereignissen aus Windows-Ereignisprotokollen
+* Sammeln von benutzerdefinierten Ereignisprotokollen
+* Hinzufügen des Log Analytics-Agents auf virtuellen Azure-Computern
+* Konfiguration von Log Analytics zum Indizieren der Daten, die mit der Azure-Diagnose gesammelt werden
 
 Dieser Artikel enthält Vorlagenbeispiele, die einen Teil der Konfiguration veranschaulichen, die Sie mit Vorlagen ausführen können.
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs
-
 Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
 
-1.  Erstellen eines Arbeitsbereichs
-2.  Hinzufügen von Lösungen zum Arbeitsbereich
-3.  Erstellen gespeicherter Suchvorgänge
-4.  Erstellen einer Computergruppe
-5.  Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
-6.  Sammeln von Leistungsindikatoren logischer Datenträger von Linux-Computern (Prozentsatz verwendeter I-Knoten, MB frei, Prozentsatz des verwendeten Speicherplatzes, Übertragungen/s, Lesevorgänge/s, Schreibvorgänge/s)
-7.  Sammeln von Syslog-Ereignissen auf Linux-Computern
-8.  Sammeln von Fehler- und Warnereignissen aus dem Anwendungsereignisprotokoll von Windows-Computern
-9.  Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
+1. Erstellen eines Arbeitsbereichs
+2. Hinzufügen von Lösungen zum Arbeitsbereich
+3. Erstellen gespeicherter Suchvorgänge
+4. Erstellen einer Computergruppe
+5. Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
+6. Sammeln von Leistungsindikatoren logischer Datenträger von Linux-Computern (Prozentsatz verwendeter I-Knoten, MB frei, Prozentsatz des verwendeten Speicherplatzes, Übertragungen/s, Lesevorgänge/s, Schreibvorgänge/s)
+7. Sammeln von Syslog-Ereignissen auf Linux-Computern
+8. Sammeln von Fehler- und Warnereignissen aus dem Anwendungsereignisprotokoll von Windows-Computern
+9. Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
 10. Erfassen eines benutzerdefinierten Protokolls 
 11. Sammeln von IIS-Protokollen und Windows-Ereignisprotokollen, die von der Azure-Diagnose in ein Speicherkonto geschrieben werden
-
 
 ```
 {
@@ -420,7 +415,6 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
 
 ```
 ### <a name="deploying-the-sample-template"></a>Bereitstellen der Beispielvorlage
-
 So stellen Sie die Beispielvorlage bereit
 
 1. Speichern Sie das angefügte Beispiel in einer Datei, z.B. `azuredeploy.json`. 
@@ -428,11 +422,9 @@ So stellen Sie die Beispielvorlage bereit
 3. Verwenden Sie PowerShell oder die Befehlszeile zum Bereitstellen der Vorlage.
 
 #### <a name="powershell"></a>PowerShell
-
 `New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
 
 #### <a name="command-line"></a>Befehlszeile
-
 ```
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
@@ -440,26 +432,18 @@ azure group deployment create <my-resource-group> <my-deployment-name> --Templat
 
 
 ## <a name="example-resource-manager-templates"></a>Resource Manager-Beispielvorlagen
-
 Der Katalog mit Azure-Schnellstartvorlagen enthält u.a. folgende Vorlagen für Log Analytics:
 
-+ [Bereitstellen eines virtuellen Computers unter Windows mit der Log Analytics-VM-Erweiterung](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-+ [Bereitstellen eines virtuellen Computers unter Linux mit der Log Analytics-VM-Erweiterung](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
-+ [Überwachen von Azure Site Recovery mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
-+ [Überwachen von Azure-Web-Apps mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-+ [Überwachen von SQL Azure mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-+ [Bereitstellen eines Service Fabric-Clusters und Überwachen des Clusters mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-+ [Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
-
+* [Bereitstellen eines virtuellen Computers unter Windows mit der Log Analytics-VM-Erweiterung](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Bereitstellen eines virtuellen Computers unter Linux mit der Log Analytics-VM-Erweiterung](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Überwachen von Azure Site Recovery mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
+* [Überwachen von Azure-Web-Apps mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
+* [Überwachen von SQL Azure mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
+* [Bereitstellen eines Service Fabric-Clusters und Überwachen des Clusters mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
+* [Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-+ [Bereitstellen von Agents in Azure-VMs mit Resource Manager-Vorlagen](log-analytics-azure-vm-extension.md)
-
-
-
-
-
+* [Bereitstellen von Agents in Azure-VMs mit Resource Manager-Vorlagen](log-analytics-azure-vm-extension.md)
 
 <!--HONumber=Oct16_HO2-->
 

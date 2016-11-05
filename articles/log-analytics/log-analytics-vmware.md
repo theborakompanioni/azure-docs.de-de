@@ -1,31 +1,28 @@
-<properties
-    pageTitle="VMware-Überwachungslösung in Log Analytics | Microsoft Azure"
-    description="Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen."
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: VMware-Überwachungslösung in Log Analytics | Microsoft Docs
+description: Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen.
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/23/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/23/2016
+ms.author: banders
 
-
+---
 # <a name="vmware-monitoring-(preview)-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
-
 Die VMware-Überwachungslösung in Log Analytics ist eine Lösung, die Ihnen dabei hilft, eine Methode für die zentralisierte Protokollierung und Überwachung für große VMware-Protokolle zu erstellen. Dieser Artikel beschreibt, wie Sie mithilfe der Lösung an einem Ort Probleme mit ESXi-Hosts beheben und die Hosts erfassen und verwalten. Mit der Lösung können Sie detaillierte Daten für alle ESXi-Hosts an einem einzigen Ort anzeigen. Sie sehen die wichtigsten Ereigniszahlen, Statusangaben und Trends der VM- und ESXi-Hosts, die über ESXi-Hostprotokolle bereitgestellt werden. Sie können Probleme behandeln, indem Sie zentralisierte ESXi-Hostprotokolle anzeigen und durchsuchen. Zudem können Sie Warnungen auf der Grundlage von Protokollsuchabfragen erstellen.
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
-
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-- Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die VMware-Überwachungslösung hinzu.
+* Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die VMware-Überwachungslösung hinzu.
 
 #### <a name="supported-vmware-esxi-hosts"></a>Unterstützte VMware ESXi-Hosts
 vSphere ESXi-Host 5.5 und 6.0
@@ -36,94 +33,80 @@ Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESX
    ![Syslog-Datenfluss](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Konfigurieren der Syslog-Sammlung
-
 1. Richten Sie die Syslog-Weiterleitung für VSphere ein. Ausführliche Informationen zur Einrichtung der Syslog-Weiterleitung finden Sie unter [Configuring syslog on ESXi 5.x and 6.0 (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322) (Konfigurieren von Syslog auf ESXi 5.x und 6.0 (2003322)). Wechseln Sie zu **ESXi Host Configuration** > **Software** > **Advanced Settings** > **Syslog**.
-  ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
-
+   ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. Fügen Sie im Feld *Syslog.global.logHost* Ihren Linux-Server und die Portnummer *1514* hinzu. Beispiel: `tcp://hostname:1514` oder `tcp://123.456.789.101:1514`
-
 3. Öffnen Sie die ESXi-Hostfirewall für Syslog. **ESXi Host Configuration** > **Software** > **Security Profile** > **Firewall**, und öffnen Sie **Properties**.  
-
+   
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
-
+   
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
-
 4. Überprüfen Sie die vSphere-Konsole, um sicherzustellen, dass Syslog ordnungsgemäß eingerichtet ist. Vergewissern Sie sich auf dem ESXI-Host, dass der Port **1514** konfiguriert ist.
-
 5. Testen Sie die Konnektivität zwischen dem Linux-Server und dem ESXi-Host mithilfe des Befehls `nc` auf dem ESXi-Host. Beispiel:
-
+   
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
-
 6. Laden Sie den OMS-Agent für Linux auf den Linux-Server herunter, und installieren Sie ihn. Weitere Informationen finden Sie in der [Dokumentation zum OMS-Agent für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-
 7. Nachdem der OMS-Agent für Linux installiert wurde, wechseln Sie zum Verzeichnis „/etc/opt/microsoft/omsagent/sysconf/omsagent.d“, und kopieren Sie die Datei „vmware_esxi.conf“ in das Verzeichnis „/etc/opt/microsoft/omsagent/conf/omsagent.d“. Ändern Sie dann den Besitzer/die Gruppe und die Berechtigungen der Datei. Beispiel:
-
+   
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
-sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
+   sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-
-8.  Starten Sie den OMS-Agent für Linux neu, indem Sie `sudo /opt/microsoft/omsagent/bin/service_control restart` ausführen.
-
+8. Starten Sie den OMS-Agent für Linux neu, indem Sie `sudo /opt/microsoft/omsagent/bin/service_control restart` ausführen.
 9. Führen Sie im OMS-Portal eine Protokollsuche nach `Type=VMware_CL` aus. Wenn OMS die Syslog-Daten sammelt, bleibt das Syslog-Format erhalten. Im Portal werden einige bestimmte Felder erfasst, z.B. *Hostname* und *ProcessName*.  
-
+   
     ![type](./media/log-analytics-vmware/type.png)  
-
+   
     Wenn die Protokollsuchergebnisse Ihrer Ansicht so ähnlich wie die Abbildung oben aussehen, können Sie das OMS-Dashboard für die VMware-Überwachungslösung verwenden.  
 
 ## <a name="vmware-data-collection-details"></a>Details zur VMware-Datensammlung
-
 Die VMware-Überwachungslösung sammelt die verschiedenen Leistungsmetriken und Protokolldateien von ESXi-Hosts mithilfe des OMS-Agents für Linux, den Sie aktiviert haben.
 
 Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, wie Daten gesammelt werden.
 
 | Plattform | OMS-Agent für Linux | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
-|---|---|---|---|---|---|---|
-| Linux|![Ja](./media/log-analytics-vmware/oms-bullet-green.png)|![Nein](./media/log-analytics-vmware/oms-bullet-red.png)|![Nein](./media/log-analytics-vmware/oms-bullet-red.png)|            ![Nein](./media/log-analytics-containers/oms-bullet-red.png)|![Nein](./media/log-analytics-vmware/oms-bullet-red.png)| Alle 3 Minuten|
-
+| --- | --- | --- | --- | --- | --- | --- |
+| Linux |![Ja](./media/log-analytics-vmware/oms-bullet-green.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |![Nein](./media/log-analytics-containers/oms-bullet-red.png) |![Nein](./media/log-analytics-vmware/oms-bullet-red.png) |Alle 3 Minuten |
 
 In der folgenden Tabelle sind Beispiele für Datenfelder aufgeführt, die von der VMware-Überwachungslösung erfasst werden:
 
 | Feldname | Beschreibung |
 | --- | --- |
-| Device_s| VMware-Speichergeräte |
-| ESXIFailure_s | Fehlertypen |
-| EventTime_t | Zeitpunkt, zu dem das Ereignis aufgetreten ist |
-| HostName_s | ESXi-Hostname |
-| Operation_s | VM erstellen oder VM löschen |
-| ProcessName_s | Ereignisname |
-| ResourceId_s | Name des VMware-Hosts |
-| ResourceLocation_s | VMware |
-| ResourceName_s | VMware |
-| ResourceType_s | Hyper-V |
-| SCSIStatus_s | VMware-SCSI-Status |
-| SyslogMessage_s | Syslog-Daten |
-| UserName_s | Benutzer, der die VM erstellt oder gelöscht hat |
-| VMName_s | Name des virtuellen Computers |
-| Computer | Hostcomputer |
-| TimeGenerated | Zeitpunkt, zu dem die Daten generiert wurden |
-| DataCenter_s | VMware-Rechenzentrum |
-| StorageLatency_s | Speicherlatenz (ms) |
+| Device_s |VMware-Speichergeräte |
+| ESXIFailure_s |Fehlertypen |
+| EventTime_t |Zeitpunkt, zu dem das Ereignis aufgetreten ist |
+| HostName_s |ESXi-Hostname |
+| Operation_s |VM erstellen oder VM löschen |
+| ProcessName_s |Ereignisname |
+| ResourceId_s |Name des VMware-Hosts |
+| ResourceLocation_s |VMware |
+| ResourceName_s |VMware |
+| ResourceType_s |Hyper-V |
+| SCSIStatus_s |VMware-SCSI-Status |
+| SyslogMessage_s |Syslog-Daten |
+| UserName_s |Benutzer, der die VM erstellt oder gelöscht hat |
+| VMName_s |Name des virtuellen Computers |
+| Computer |Hostcomputer |
+| TimeGenerated |Zeitpunkt, zu dem die Daten generiert wurden |
+| DataCenter_s |VMware-Rechenzentrum |
+| StorageLatency_s |Speicherlatenz (ms) |
 
 ## <a name="vmware-monitoring-solution-overview"></a>Übersicht über die VMware-Überwachungslösung
-
 Die VMware-Kachel wird im OMS-Portal angezeigt. Sie bietet eine allgemeine Ansicht der Fehler. Wenn Sie auf die Kachel klicken, gelangen Sie zu einer Dashboardansicht.
 
 ![Kachel](./media/log-analytics-vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Navigieren in der Dashboardansicht
-
 In der **VMware**-Dashboardansicht sind die Blätter nach Folgendem angeordnet:
 
-- Anzahl von Fehlerstatuswerten
-- Wichtigste Hosts nach Ereignisanzahl
-- Am häufigsten aufgetretene Ereignisse
-- Aktivitäten virtueller Computer
-- Datenträgerereignisse auf ESXi-Hosts
-
+* Anzahl von Fehlerstatuswerten
+* Wichtigste Hosts nach Ereignisanzahl
+* Am häufigsten aufgetretene Ereignisse
+* Aktivitäten virtueller Computer
+* Datenträgerereignisse auf ESXi-Hosts
 
 ![Lösung1](./media/log-analytics-vmware/solutionview1-1.png)
 
@@ -134,7 +117,6 @@ Klicken Sie auf ein Blatt, um den Log Analytics-Suchbereich zu öffnen, der deta
 Hier können Sie die Suchabfrage bearbeiten, um nach etwas Bestimmtem zu suchen. Ein Tutorial zu den Grundlagen der OMS-Suche finden Sie im [Tutorial zur OMS-Protokollsuche](log-analytics-log-searches.md).
 
 #### <a name="find-esxi-host-events"></a>Suchen von ESXi-Hostereignissen
-
 Ein einzelner ESXi-Host generiert basierend auf seinen Prozessen mehrere Protokolle. Die VMware-Überwachungslösung zentralisiert sie und fasst die auftretenden Ereignisse zusammen. Mit dieser zentralisierten Ansicht können Sie erkennen, auf welchem ESXi-Host eine große Anzahl von Ereignissen auftritt und welche Ereignisse in Ihrer Umgebung am häufigsten vorkommen.
 
 ![event](./media/log-analytics-vmware/events.png)
@@ -146,7 +128,6 @@ Wenn Sie auf einen ESXi-Hostnamen klicken, sehen Sie Informationen von diesem ES
 ![Details](./media/log-analytics-vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>Suchen nach umfangreichen VM-Aktivitäten
-
 Ein virtueller Computer kann auf einem ESXi-Host erstellt und gelöscht werden. Es ist hilfreich für den Administrator zu bestimmen, wie viele virtuelle Computer ein ESXi-Host erstellt. Dies hilft wiederum dabei, die Leistungs- und Kapazitätsplanung zu verstehen. Die Nachverfolgung von VM-Aktivitätsereignissen ist entscheidend, wenn Sie Ihre Umgebung verwalten.
 
 ![Details](./media/log-analytics-vmware/vmactivities1.png)
@@ -156,29 +137,22 @@ Wenn Sie zusätzliche Daten zur VM-Erstellung auf einem ESXi-Host anzeigen möch
 ![Details](./media/log-analytics-vmware/createvm.png)
 
 #### <a name="common-search-queries"></a>Allgemeine Suchabfragen
-
 Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer ESXi-Hosts unterstützen, z.B. hoher Speicherplatzbedarf, Speicherlatenz und Pfadfehler.
 
 ![Abfragen](./media/log-analytics-vmware/queries.png)
 
 #### <a name="save-queries"></a>Speichern von Abfragen
-
 Das Speichern von Suchabfragen ist ein Standardfeature in OMS und hilft Ihnen, Abfragen zu behalten, die Sie für nützlich befunden haben. Nachdem Sie eine Abfrage erstellt haben, die für Sie nützlich ist, speichern Sie sie, indem Sie auf **Favoriten** klicken. Eine gespeicherte Abfrage können Sie später auf einfache Weise über die Seite [Mein Dashboard](log-analytics-dashboards.md) wiederverwenden, wo Sie eigene benutzerdefinierte Dashboards erstellen können.
 
 ![Docker-Dashboardansicht](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Erstellen von Warnungen aus Abfragen
-
 Nachdem Sie Ihre Abfragen erstellt haben, könnten Sie die Abfragen dazu verwenden, dass Sie auf bestimmte Ereignisse hingewiesen werden. Informationen zum Erstellen von Warnungen finden Sie unter [Warnungen in Log Analytics](log-analytics-alerts.md). Beispiele für Warnungen durch Abfragen und weitere Beispiele für Abfragen finden Sie im Blogbeitrag [Monitor VMware using OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) (Überwachen von VMware mit OMS Log Analytics).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Verwenden Sie [Protokollsuchvorgänge](log-analytics-log-searches.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
-- [Erstellen Sie eigene Dashboards](log-analytics-dashboards.md), die VMware-Hostdaten anzeigen.
-- [Erstellen Sie Warnungen](log-analytics-alerts.md) für das Auftreten bestimmter VMware-Hostereignisse.
-
-
+* Verwenden Sie [Protokollsuchvorgänge](log-analytics-log-searches.md) in Log Analytics, um ausführliche VMware-Hostdaten anzuzeigen.
+* [Erstellen Sie eigene Dashboards](log-analytics-dashboards.md), die VMware-Hostdaten anzeigen.
+* [Erstellen Sie Warnungen](log-analytics-alerts.md) für das Auftreten bestimmter VMware-Hostereignisse.
 
 <!--HONumber=Oct16_HO2-->
 

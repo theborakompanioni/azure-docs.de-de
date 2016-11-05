@@ -1,27 +1,25 @@
-<properties
-	pageTitle="Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy | Microsoft Azure"
-	description="In diesem Artikel wird erläutert, wie Sie mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy arbeiten."
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy | Microsoft Docs
+description: In diesem Artikel wird erläutert, wie Sie mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy arbeiten.
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/22/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/22/2016
+ms.author: kgremban
 
+---
 # Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
-
 Durch das Verwenden von Standarddomänen können Sie dieselbe URL als interne und externe URL für den Zugriff auf eine Anwendung festlegen, sodass Ihre Benutzer sich nur eine URL für den Zugriff merken müssen – unabhängig davon, von wo sie auf die Anwendung zugreifen. Außerdem können Sie im Zugriffsbereich eine zentrale Verknüpfung für die Anwendung erstellen. Wenn Sie die von Azure AD-Anwendungsproxy bereitgestellte Standarddomäne verwenden, ist keine weitere Konfiguration zum Aktivieren Ihrer Domäne erforderlich. Falls Sie eine benutzerdefinierte Domäne einsetzen, müssen Sie verschiedene Punkte berücksichtigen, damit der Anwendungsproxy Ihre Domäne erkennt und die zugehörigen Zertifikate überprüft.
 
 ## Auswählen Ihrer benutzerdefinierten Domäne
-
 1. Veröffentlichen Sie Ihre Anwendung, indem Sie die Anweisungen im Abschnitt [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md) befolgen.
 2. Sobald die Anwendung in der Liste der Anwendungen angezeigt wird, wählen Sie sie aus, und klicken Sie auf **Konfigurieren**.
 3. Geben Sie unter **Externe URL** Ihre benutzerdefinierte Domäne ein.
@@ -29,7 +27,6 @@ Durch das Verwenden von Standarddomänen können Sie dieselbe URL als interne un
 5. Stellen Sie sicher, dass ein DNS-Eintrag hinzugefügt wird, der die interne URL an die Anwendung weiterleitet. Auf diese Weise können Sie dieselbe URL für den internen und den externen Zugriff und eine einzige Verknüpfung mit der Anwendung in der Liste der Benutzeranwendungen verwenden.
 
 ## Häufig gestellte Fragen zur Arbeit mit benutzerdefinierten Domänen
-
 F: Kann ich ein bereits hochgeladenes Zertifikat auswählen, ohne es erneut hochzuladen? A: Bereits hochgeladene Zertifikate werden automatisch an eine Anwendung gebunden, und es stimmt genau ein Zertifikat mit dem Hostnamen der Anwendung überein.
 
 F: Wie füge ich ein Zertifikat hinzu, und in welchem Format sollte das exportierte Zertifikat hochgeladen werden? A: Das Zertifikat sollte von der Seite für die Anwendungskonfiguration hochgeladen werden. Beim Zertifikat sollte es sich um eine PFX-Datei handeln.
@@ -56,13 +53,11 @@ F: Kann ich ein selbstsigniertes Zertifikat verwenden? A: Ja, selbstsignierte Ze
 
 F: Gibt es eine Ansicht, über die alle Zertifikate für einen Mandanten angezeigt werden können? A: Diese Funktion wird in der aktuellen Version nicht unterstützt.
 
-
 ## Weitere Informationen
-
-- [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
-- [Einmaliges Anmelden aktivieren](active-directory-application-proxy-sso-using-kcd.md)
-- [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
-- [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md)
+* [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
+* [Einmaliges Anmelden aktivieren](active-directory-application-proxy-sso-using-kcd.md)
+* [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
+* [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md)
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 

@@ -1,23 +1,22 @@
-<properties
-	pageTitle="Schützen Ihrer API mit Azure API Management | Microsoft Azure"
-	description="Erfahren Sie, wie Sie Ihre API mithilfe von Richtlinien für Kontingente und Drosselung (Beschränken der Aufrufhäufigkeit) schützen."
-	services="api-management"
-	documentationCenter=""
-	authors="steved0x"
-	manager="erikre"
-	editor=""/>
+---
+title: Schützen Ihrer API mit Azure API Management | Microsoft Docs
+description: Erfahren Sie, wie Sie Ihre API mithilfe von Richtlinien für Kontingente und Drosselung (Beschränken der Aufrufhäufigkeit) schützen.
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags
-	ms.service="api-management"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/24/2016"
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/24/2016
+ms.author: sdanie
 
+---
 # Schützen Ihrer API mithilfe von Aufruflimits in Azure API Management
-
 In diesem Leitfaden wird gezeigt, wie einfach Sie Ihre Back-End-API schützen können, indem Sie Richtlinien für Aufruflimits und Kontingente mithilfe von API Management konfigurieren.
 
 In diesem Tutorial erstellen Sie ein kostenloses API-Testprodukt, das es Entwicklern auf der Grundlage der Richtlinien [Aufrufrate nach Abonnement einschränken](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) und [Nutzungskontingent nach Abonnement festlegen](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) ermöglicht, bis zu zehn Aufrufe pro Minute und maximal 200 Aufrufe pro Woche an Ihre API zu richten. Anschließend veröffentlichen Sie die API und testen die Richtlinie für das Aufruflimit.
@@ -25,16 +24,20 @@ In diesem Tutorial erstellen Sie ein kostenloses API-Testprodukt, das es Entwick
 Informationen zu fortgeschritteneren Drosselungsszenarien mithilfe der Richtlinien [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) und [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) finden Sie unter [Erweiterte Anforderungsbegrenzung mit Azure API Management](api-management-sample-flexible-throttling.md).
 
 ## <a name="create-product"> </a>So erstellen Sie ein Produkt
-
 In diesem Schritt erstellen Sie ein kostenloses Testprodukt, für das keine Abonnementgenehmigung erforderlich ist.
 
->[AZURE.NOTE] Wenn Sie bereits ein Produkt konfiguriert haben und dieses für das Lernprogramm verwenden möchten, können Sie direkt zum Abschnitt [Konfigurieren von Richtlinien für Aufruflimits und Kontingente][] wechseln und die weiteren Schritte im Lernprogramm ausführen. Ersetzen Sie hierbei die kostenlose Testversion durch Ihr Produkt.
+> [!NOTE]
+> Wenn Sie bereits ein Produkt konfiguriert haben und dieses für das Lernprogramm verwenden möchten, können Sie direkt zum Abschnitt [Konfigurieren von Richtlinien für Aufruflimits und Kontingente][Konfigurieren von Richtlinien für Aufruflimits und Kontingente] wechseln und die weiteren Schritte im Lernprogramm ausführen. Ersetzen Sie hierbei die kostenlose Testversion durch Ihr Produkt.
+> 
+> 
 
 Klicken Sie zunächst im klassischen Azure-Portal für Ihren API Management-Dienst auf **Verwalten**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
 
 ![Herausgeberportal][api-management-management-console]
 
->Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][] des Tutorials [Verwalten Ihrer ersten API in Azure API Management][].
+> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] des Tutorials [Verwalten Ihrer ersten API in Azure API Management][Verwalten Ihrer ersten API in Azure API Management].
+> 
+> 
 
 Klicken Sie auf **Produkte** im Menü **API Management** auf der linken Seite, um Seite **Produkte** anzuzeigen.
 
@@ -60,17 +63,20 @@ Geben Sie alle Werte ein und klicken Sie auf **Speichern**, um das Produkt zu er
 
 Standardmäßig sind neue Produkte für Benutzer in der Gruppe **Administratoren** sichtbar. Wir werden die Gruppe **Entwickler** hinzufügen. Klicken Sie auf **Kostenloser Test** und anschließend auf die Registerkarte **Sichtbarkeit**.
 
->In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten für Entwickler zu verwalten. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen in Azure API Management][].
+> In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten für Entwickler zu verwalten. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen in Azure API Management][Erstellen und Verwenden von Gruppen in Azure API Management].
+> 
+> 
 
 ![Hinzufügen der Gruppe "Entwickler"][api-management-add-developers-group]
 
 Wählen Sie das Kontrollkästchen **Entwickler**, und klicken Sie dann auf **Speichern**.
 
 ## <a name="add-api"> </a>So fügen Sie eine API zum Produkt hinzu
-
 In diesem Schritt des Lernprogramms werden Sie die Echo API zu dem neu erstellten Produkt "Kostenloser Test" hinzufügen.
 
->Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Verwalten Ihrer ersten API in Azure API Management][].
+> Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Verwalten Ihrer ersten API in Azure API Management][Verwalten Ihrer ersten API in Azure API Management].
+> 
+> 
 
 Klicken Sie auf **Produkte** im Menü **API Management** auf der linken Seite, und klicken Sie dann auf **Kostenlose Testversion**, um das Produkt zu konfigurieren.
 
@@ -85,7 +91,6 @@ Wählen Sie **Echo API** aus, und klicken Sie dann auf **Speichern**.
 ![Echo API hinzufügen][api-management-add-echo-api]
 
 ## <a name="policies"> </a>So konfigurieren Sie Richtlinien für Aufruflimits und Kontingente
-
 Aufruflimits und Kontingente werden im Richtlinien-Editor konfiguriert. Klicken Sie im Menü **API-Verwaltung** auf der linken Seite auf **Richtlinien**. Klicken Sie in der Liste **Produkt** auf **Kostenlose Testversion**.
 
 ![Produktrichtlinie][api-management-product-policy]
@@ -104,71 +109,72 @@ In diesem Tutorial erstellen wir die Richtlinien [Aufruflimit pro Abonnement](ht
 
 Nachdem Sie den Cursor im Richtlinienelement **Eingehend** platziert haben, klicken Sie auf den Pfeil neben **Aufruflimit pro Abonnement**, um die Richtlinienvorlage einzufügen.
 
-	<rate-limit calls="number" renewal-period="seconds">
-	<api name="name" calls="number">
-	<operation name="name" calls="number" />
-	</api>
-	</rate-limit>
+    <rate-limit calls="number" renewal-period="seconds">
+    <api name="name" calls="number">
+    <operation name="name" calls="number" />
+    </api>
+    </rate-limit>
 
 **Aufruflimit pro Abonnement** kann auf der Produktebene sowie auf der API- und auf der Namensebene für einzelne Vorgänge verwendet werden. Dieses Lernprogramm verwendet Richtlinien auf Produktebene. Löschen Sie also die Elemente **api** und **operation** aus dem Element **rate-limit**, sodass nur das äußere **rate-limit**-Element verbleibt, wie im folgenden Beispiel gezeigt.
 
-	<rate-limit calls="number" renewal-period="seconds">
-	</rate-limit>
+    <rate-limit calls="number" renewal-period="seconds">
+    </rate-limit>
 
 Die Produkt "Kostenloser Test" soll bis zu 10 Aufrufe pro Minute erlauben. Geben Sie also **10** als Wert für das **calls**-Attribut ein und **60** für das **renewal-period**-Attribut.
 
-	<rate-limit calls="10" renewal-period="60">
-	</rate-limit>
+    <rate-limit calls="10" renewal-period="60">
+    </rate-limit>
 
 Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzieren Sie Ihren Cursor innerhalb des **inbound**-Elements direkt unterhalb des neu erstellten **rate-limit**-Elements, und klicken Sie dann auf den Pfeil links neben **Nutzungskontingent pro Abonnement einstellen**.
 
-	<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-	<api name="name" calls="number" bandwidth="kilobytes">
-	<operation name="name" calls="number" bandwidth="kilobytes" />
-	</api>
-	</quota>
+    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+    <api name="name" calls="number" bandwidth="kilobytes">
+    <operation name="name" calls="number" bandwidth="kilobytes" />
+    </api>
+    </quota>
 
 Da diese Richtlinie auf der Produktebene arbeiten soll, löschen Sie die Elemente mit den Namen **api** und **operation**, wie im folgenden Beispiel gezeigt.
 
-	<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-	</quota>
+    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+    </quota>
 
 Kontingente können basierend auf der Anzahl von Aufrufen pro Intervall, der Bandbreite oder beiden Werten konfiguriert werden. In diesem Lernprogramm drosseln wir nicht nach Bandbreite. Löschen Sie also das **bandwidth**-Attribut.
 
-	<quota calls="number" renewal-period="seconds">
-	</quota>
+    <quota calls="number" renewal-period="seconds">
+    </quota>
 
 Für das Produkt Kostenloser Test gilt ein Kontingent von 200 Aufrufen pro Woche. Geben Sie **200** als Wert für das **calls**-Attribut ein, und dann **604800** als Wert für das **renewal-period**-Attribut.
 
-	<quota calls="200" renewal-period="604800">
-	</quota>
+    <quota calls="200" renewal-period="604800">
+    </quota>
 
->Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl von Tagen (7) mit der Anzahl von Stunden pro Tag (24), der Anzahl von Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 · 24 · 60 · 60 = 604.800.
+> Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl von Tagen (7) mit der Anzahl von Stunden pro Tag (24), der Anzahl von Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 · 24 · 60 · 60 = 604.800.
+> 
+> 
 
 Konfigurieren Sie die Richtlinie, sodass diese dem folgenden Beispiel entspricht.
 
-	<policies>
-		<inbound>
-			<rate-limit calls="10" renewal-period="60">
-			</rate-limit>
-			<quota calls="200" renewal-period="604800">
-			</quota>
-			<base />
+    <policies>
+        <inbound>
+            <rate-limit calls="10" renewal-period="60">
+            </rate-limit>
+            <quota calls="200" renewal-period="604800">
+            </quota>
+            <base />
 
-	</inbound>
-	<outbound>
+    </inbound>
+    <outbound>
 
-		<base />
+        <base />
 
-		</outbound>
-	</policies>
+        </outbound>
+    </policies>
 
 Nachdem Sie die gewünschten Richtlinien konfiguriert haben, klicken Sie auf **Speichern**.
 
 ![Richtlinie speichern][api-management-policy-save]
 
 ## <a name="publish-product"> </a>So veröffentlichen Sie das Produkt
-
 Nachdem Sie die APIs hinzugefügt und die Richtlinien konfiguriert haben, muss das Produkt veröffentlicht werden, damit es von Entwicklern verwendet werden kann. Klicken Sie auf **Produkte** im Menü **API Management** auf der linken Seite, und klicken Sie dann auf **Kostenlose Testversion**, um das Produkt zu konfigurieren.
 
 ![Produkt konfigurieren][api-management-configure-product]
@@ -178,10 +184,11 @@ Klicken Sie auf **Veröffentlichen** und anschließend zur Bestätigung auf **Ja
 ![Veröffentlichen des Produkts][api-management-publish-product]
 
 ## <a name="subscribe-account"> </a>So abonnieren Sie das Produkt über ein Entwicklerkonto
-
 Ihr Produkt ist nun veröffentlicht und kann von Entwicklern abonniert und verwendet werden.
 
->Administratoren einer API Management-Instanz werden automatisch für alle Produkte abonniert. In diesem Schritt des Lernprogramms werden wir das Produkt "Kostenloser Test" mit einem Entwicklerkonto abonnieren, bei dem es sich nicht um ein Administratorkonto handelt. Falls Ihr Entwicklerkonto Teil der Administratorrolle ist, können Sie diesen Schritt dennoch mitverfolgen, auch wenn Sie das Produkt bereits abonniert haben.
+> Administratoren einer API Management-Instanz werden automatisch für alle Produkte abonniert. In diesem Schritt des Lernprogramms werden wir das Produkt "Kostenloser Test" mit einem Entwicklerkonto abonnieren, bei dem es sich nicht um ein Administratorkonto handelt. Falls Ihr Entwicklerkonto Teil der Administratorrolle ist, können Sie diesen Schritt dennoch mitverfolgen, auch wenn Sie das Produkt bereits abonniert haben.
+> 
+> 
 
 Klicken Sie im Menü **API Management** auf der linken Seite auf **Benutzer**, und klicken Sie dann auf den Namen Ihres Entwicklerkontos. In diesem Beispiel verwenden wir das Entwicklerkonto **Clayton Gragg**.
 
@@ -195,7 +202,10 @@ Wählen Sie **Kostenlose Testversion** und klicken Sie dann auf **Abonnieren**.
 
 ![Abonnement hinzufügen][api-management-add-subscription]
 
->[AZURE.NOTE] In diesem Tutorial sind für das Produkt „Kostenlose Testversion“ keine gleichzeitigen Abonnements aktiviert. Wenn Sie diese Option aktivieren, werden Sie zur Angabe des Abonnements aufgefordert, wie im folgenden Beispiel gezeigt.
+> [!NOTE]
+> In diesem Tutorial sind für das Produkt „Kostenlose Testversion“ keine gleichzeitigen Abonnements aktiviert. Wenn Sie diese Option aktivieren, werden Sie zur Angabe des Abonnements aufgefordert, wie im folgenden Beispiel gezeigt.
+> 
+> 
 
 ![Abonnement hinzufügen][api-management-add-subscription-multiple]
 
@@ -204,7 +214,6 @@ Nach dem Klicken auf **Abonnieren** wird das Produkt in der Abonnementliste für
 ![Abonnement hinzugefügt][api-management-subscription-added]
 
 ## <a name="test-rate-limit"> </a>So rufen Sie eine Operation auf und testen das Aufruflimit
-
 Sie haben das Produkt "Kostenloser Test" nun konfiguriert und veröffentlicht und können Operationen aufrufen, um die Richtlinie für das Aufruflimit zu testen. Klicken Sie im Menü oben rechts auf **Entwicklerportal**, um zum Entwicklerportal zu gelangen.
 
 ![Entwicklerportal][api-management-developer-portal-menu]
@@ -221,7 +230,10 @@ Behalten Sie die standardmäßigen Parameterwerte bei, und wählen Sie Ihren Abo
 
 ![Abonnementschlüssel][api-management-select-key]
 
->[AZURE.NOTE] Falls Sie mehrere Abonnements haben, achten Sie darauf, den Schlüssel für **Kostenlose Testversion** auszuwählen. Andernfalls treten die in den vorherigen Schritten konfigurierten Richtlinien nicht in Kraft.
+> [!NOTE]
+> Falls Sie mehrere Abonnements haben, achten Sie darauf, den Schlüssel für **Kostenlose Testversion** auszuwählen. Andernfalls treten die in den vorherigen Schritten konfigurierten Richtlinien nicht in Kraft.
+> 
+> 
 
 Klicken Sie auf **Senden**, und sehen Sie sich dann die Antwort an. Beachten Sie den **Antwortstatus** von **200 OK**.
 
@@ -233,14 +245,14 @@ Klicken Sie häufiger als das konfigurierte Limit von zehnmal pro Minute auf **S
 
 Der **Antwortinhalt** gibt das verbleibende Intervall an, bis neue Aufrufe möglich sind.
 
-Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende Aufrufe fehlschlagen, bis 60 Sekunden nach dem ersten der 10 erfolgreichen Aufrufe an das Produkt vergangen sind, bevor das Aufruflimit überschritten wurde. In diesem Beispiel beträgt das verbleibende Intervall 54 Sekunden.
+Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende Aufrufe fehlschlagen, bis 60 Sekunden nach dem ersten der 10 erfolgreichen Aufrufe an das Produkt vergangen sind, bevor das Aufruflimit überschritten wurde. In diesem Beispiel beträgt das verbleibende Intervall 54 Sekunden.
 
 ## <a name="next-steps"> </a>Nächste Schritte
+* Das folgende Video zeige eine Demo zum Festlegen von Aufruflimits und Kontingenten.
 
--	Das folgende Video zeige eine Demo zum Festlegen von Aufruflimits und Kontingenten.
-
-> [AZURE.VIDEO rate-limits-and-quotas]
-
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
+> 
+> 
 
 [api-management-management-console]: ./media/api-management-howto-product-with-rules/api-management-management-console.png
 [api-management-add-product]: ./media/api-management-howto-product-with-rules/api-management-add-product.png

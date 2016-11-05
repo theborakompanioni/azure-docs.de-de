@@ -7,7 +7,6 @@ Sie können Azure-Warteschlangen erstellen, indem Sie den **Server-Explorer** vo
 3. Wählen Sie den Knoten **Warteschlangen** aus, und wählen Sie im Kontextmenü **Warteschlange erstellen** aus.
 4. Geben Sie einen Namen für die Warteschlange ein, und wählen Sie **OK** aus.   
 
-
 [Image1]: ./media/vs-create-queue-in-server-explorer/vs-storage-queues-create-in-server-explorer.png
 
 <!---HONumber=Oct15_HO3-->

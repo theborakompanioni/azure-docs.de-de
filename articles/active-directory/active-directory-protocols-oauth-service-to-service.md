@@ -1,28 +1,25 @@
-<properties
-    pageTitle="Dienst-zu-Dienst-Authentifizierung für Azure AD mit OAuth 2.0 | Microsoft Azure"
-    description="In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen verwenden."
-    services="active-directory"
-    documentationCenter=".net"
-    authors="priyamohanram"
-    manager="mbaldwin"
-    editor=""/>
+---
+title: Dienst-zu-Dienst-Authentifizierung für Azure AD mit OAuth 2.0 | Microsoft Docs
+description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen verwenden.
+services: active-directory
+documentationcenter: .net
+author: priyamohanram
+manager: mbaldwin
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="priyamo"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/03/2016
+ms.author: priyamo
 
-
+---
 # <a name="service-to-service-calls-using-client-credentials"></a>Verwenden von Clientanmeldeinformationen für Dienst-zu-Dienst-Aufrufe
-
 Beim Fluss zum Erteilen von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein *vertraulicher Client*) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines anderen Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website.
 
 ## <a name="client-credentials-grant-flow-diagram"></a>Diagramm: Fluss zur Gewährung von Clientanmeldeinformationen
-
 Im folgenden Diagramm wird veranschaulicht, wie der Fluss zur Gewährung von Clientanmeldeinformationen in Azure Active Directory (Azure AD) funktioniert.
 
 ![Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen](media/active-directory-protocols-oauth-service-to-service/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
@@ -33,11 +30,9 @@ Im folgenden Diagramm wird veranschaulicht, wie der Fluss zur Gewährung von Cli
 4. Die Daten aus der geschützten Ressource werden an die Webanwendung zurückgegeben.
 
 ## <a name="register-the-services-in-azure-ad"></a>Registrieren der Dienste in Azure AD
-
 Registrieren Sie sowohl den aufrufenden Dienst als auch den empfangenden Dienst in Azure Active Directory (Azure AD). Eine ausführliche Anleitung finden Sie unter [Hinzufügen, Aktualisieren und Entfernen einer App](active-directory-integrating-applications.md#BKMK_Native)
 
 ## <a name="request-an-access-token"></a>Anfordern eines Zugriffstokens
-
 Verwenden Sie zum Anfordern eines Zugriffstokens ein HTTP POST-Element für den mandantenspezifischen Azure AD-Endpunkt.
 
 ```
@@ -45,18 +40,16 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
 ## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
-
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung enthält die folgenden Parameter:
 
-| Parameter | | Beschreibung |
-|-----------|------|------------|
-| response_type | erforderlich | Gibt den angeforderten Antworttyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten.|
-| client_id | erforderlich | Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**.|
-| client_secret | erforderlich |  Geben Sie einen Schlüssel ein, der für den aufrufenden Webdienst in Azure AD registriert ist. Klicken Sie zum Erstellen eines Schlüssels im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
-| resource | erforderlich | Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
+| Parameter |  | Beschreibung |
+| --- | --- | --- |
+| response_type |erforderlich |Gibt den angeforderten Antworttyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
+| client_id |erforderlich |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
+| client_secret |erforderlich |Geben Sie einen Schlüssel ein, der für den aufrufenden Webdienst in Azure AD registriert ist. Klicken Sie zum Erstellen eines Schlüssels im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
+| resource |erforderlich |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
 
 ## <a name="example"></a>Beispiel
-
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst „https://service.contoso.com/“ angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
@@ -68,19 +61,17 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ```
 
 ## <a name="service-to-service-access-token-response"></a>Dienst-zu-Dienst-Zugriffstokenantwort
-
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern:
 
-| Parameter   | Beschreibung |
-|-------------|-------------|
-|access_token |Das angeforderte Zugriffstoken. Der aufrufende Webdienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Webdienst durchzuführen. |
-|access_type  | Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)(OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)).
-|expires_in   | Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist.|
-|expires_on   |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
-|resource     | Der App-ID-URI des empfangenden Webdiensts. |
+| Parameter | Beschreibung |
+| --- | --- |
+| access_token |Das angeforderte Zugriffstoken. Der aufrufende Webdienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Webdienst durchzuführen. |
+| access_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)(OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)). |
+| expires_in |Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist. |
+| expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
+| resource |Der App-ID-URI des empfangenden Webdiensts. |
 
 ## <a name="example"></a>Beispiel
-
 Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für ein Zugriffstoken von einem Webdienst.
 
 ```
@@ -94,10 +85,7 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für 
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-
-* [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md)
-
-
+* [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md)
 
 <!--HONumber=Oct16_HO2-->
 

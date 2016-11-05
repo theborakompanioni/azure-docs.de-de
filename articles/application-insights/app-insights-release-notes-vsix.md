@@ -1,21 +1,23 @@
-<properties
-	pageTitle="Versionshinweise für Visual Studio-Erweiterung für Developer Analytics"
-	description="Neueste Updates für Visual Studio-Tools für Developer Analytics"
-	services="application-insights"
-    documentationCenter=""
-	authors="acearun"
-	manager="douge"/>
-<tags
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/09/2016"
-	ms.author="acearun"/>
+---
+title: Versionshinweise für Visual Studio-Erweiterung für Developer Analytics
+description: Neueste Updates für Visual Studio-Tools für Developer Analytics
+services: application-insights
+documentationcenter: ''
+author: acearun
+manager: douge
 
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 06/09/2016
+ms.author: acearun
+
+---
 # Versionshinweise für Developer Analytics Tools
 Neuerungen: Application Insights- und HockeyApp-Analysen in Visual Studio.
+
 ## Version 7.0
 ### Visual Studio Application Insights-Trends
 Visual Studio Application Insights ist ein neues Tool in Visual Studio, mit dem Sie den Betrieb Ihrer App über die Zeit besser analysieren können. Wählen Sie zuerst über die Symbolleistenschaltfläche **Application Insights** oder im Suchfenster von Application Insights die Option **Telemetrietrends untersuchen**. Alternativ dazu können Sie auch im Menü **Ansicht** auf die Option **Andere Fenster** und dann auf **Application Insights-Trends** klicken. Wählen Sie eine der fünf allgemeinen Abfragen aus, um zu beginnen. Sie können unterschiedliche Datasets basierend auf Telemetrietypen, Zeiträumen und anderen Eigenschaften analysieren. Wählen Sie zum Ermitteln von Anomalien in Ihren Daten in der Dropdownliste **Ansichtstyp** eine Anomalieoption. Mit den Filteroptionen am unteren Rand des Fensters ist es einfach, bestimmte Teilmengen Ihrer Telemetriedaten anzuzeigen.
@@ -52,6 +54,7 @@ Wir freuen uns, die Einführung von HockeyApp-Szenarien in Visual Studio ankünd
 Mit der Beta-Distribution laden Sie frühe Versionen Ihrer Apps für die Verteilung an eine ausgewählte Gruppe von Kunden oder Testpersonen in HockeyApp hoch. Die Beta-Distribution kann vor einer größeren Veröffentlichung in Kombination mit der HockeyApp-Absturzerfassung und den Funktionen für Benutzerfeedback wertvolle Informationen zu Ihrer App liefern. Sie können diese Informationen verwenden, um Probleme mit Ihrer App zu behandeln. So können Sie zukünftige Probleme vermeiden oder eindämmen, z.B. schlechte App-Bewertungen, negatives Feedback usw.
 
 Informieren Sie sich darüber, wie einfach es ist, Builds für die Beta-Distribution aus Visual Studio hochzuladen.
+
 ### Universelle Windows-Apps
 Das Kontextmenü eines Projektknotens für universelle Windows-Apps enthält jetzt eine Option zum Hochladen Ihres Builds in HockeyApp.
 
@@ -91,7 +94,8 @@ Beachten Sie, dass dieser Assistent ein neues Feld zum Angeben der App-Version e
 Der Rest des Ablaufs ähnelt dem Ablauf für universelle Windows-Apps: Build und Optionen für die Veröffentlichung auswählen, Versionshinweise hinzufügen, Daten hochladen und die Verwaltung im HockeyApp-Portal durchführen.
 
 So einfach ist dieser Vorgang. Probieren Sie es aus, und teilen Sie uns Ihre Meinung mit.
-## Version 4.3
+
+## Version 4.3
 ### Suchen von Telemetriedaten aus lokalen Debugsitzungen
 In dieser Version können Sie nun nach den Application Insights-Telemetriedaten suchen, die in der Visual Studio-Debugsitzung generiert wurden. Bisher konnten Sie die Suche nur verwenden, wenn Sie die App bei Application Insights registriert haben. Jetzt muss für die App nur das Application Insights-SDK installiert werden, um nach lokalen Telemetriedaten suchen zu können.
 
@@ -99,9 +103,9 @@ Führen Sie zur Verwendung der Suche die folgenden Schritte aus, wenn Sie eine A
 
 1. Debuggen Sie die Anwendung.
 2. Öffnen Sie die Application Insights-Suche mit einer der folgenden Vorgehensweisen:
-	- Klicken Sie im Menü **Ansicht** auf **Andere Fenster** und dann auf **Application Insights-Suche**.
-	- Klicken Sie auf die Symbolleistenschaltfläche **Application Insights**.
-	- Erweitern Sie im Projektmappen-Explorer die Option **ApplicationInsights.config**, und klicken Sie auf **Nach Telemetriedaten der Debugsitzung suchen**.
+   * Klicken Sie im Menü **Ansicht** auf **Andere Fenster** und dann auf **Application Insights-Suche**.
+   * Klicken Sie auf die Symbolleistenschaltfläche **Application Insights**.
+   * Erweitern Sie im Projektmappen-Explorer die Option **ApplicationInsights.config**, und klicken Sie auf **Nach Telemetriedaten der Debugsitzung suchen**.
 3. Wenn Sie nicht bei Application Insights registriert sind, wird das Suchfenster im Modus „Telemetriedaten der Debugsitzung“ geöffnet.
 4. Klicken Sie auf das Symbol **Suche**, um Ihre lokalen Telemetriedaten anzuzeigen.
 
@@ -109,8 +113,10 @@ Führen Sie zur Verwendung der Suche die folgenden Schritte aus, wenn Sie eine A
 
 ## Version 4.2
 In dieser Version haben wir Features zum Suchen nach Daten im Ereigniskontext hinzugefügt (mit der Möglichkeit, aus mehr Datenereignissen in den Code zu springen) und das Senden von Protokolldaten an Application Insights vereinfacht. Diese Erweiterung wird monatlich aktualisiert. Feedback oder Funktionswünsche können Sie an aidevtools@microsoft.com senden.
+
 ### Protokollierung ohne Klicks
 Falls Sie bereits NLog, log4net oder System.Diagnostics.Tracing nutzen, müssen Sie sich keine Sorgen machen, dass Sie alle Ablaufverfolgungen nach Application Insights verschieben müssen. In dieser Version haben wir die Application Insights-Protokollierungsadapter in die normale Benutzeroberfläche für die Konfiguration integriert. Wenn Sie bereits eines dieser Protokollierungsframeworks konfiguriert haben, helfen Ihnen die Funktionen zur Verwendung im folgenden Abschnitt weiter. **Wenn Sie Application Insights bereits hinzugefügt haben:**
+
 1. Klicken Sie mit der rechten Maustaste auf den Projektknoten, und klicken Sie dann auf **Application Insights** und **Application Insights konfigurieren**. Vergewissern Sie sich, dass die Option zum Hinzufügen des richtigen Adapters im Konfigurationsfenster angezeigt wird.
 2. Alternativ dazu können Sie beim Erstellen der Projektmappe auch das oben rechts angezeigte Popupfenster verwenden und darin auf **Konfigurieren** klicken.
 
@@ -164,27 +170,23 @@ Ein Popupdialogfeld wird angezeigt, nachdem das Projekt online veröffentlicht w
 
 ![Benachrichtigung „Veröffentlichung abgeschlossen“](./media/app-insights-release-notes-vsix/publishtoast.png)
 
-## Version 4.0
-
+## Version 4.0
 ### Durchsuchen von Application Insights-Daten in Visual Studio
 Genau wie bei der Suchfunktion im Application Insights-Portal können Sie in Visual Studio jetzt filtern und nach Ereignistypen, Eigenschaftswerten und Text suchen und dann einzelne Ereignisse überprüfen.
 
 ![Fenster „Suchen“](./media/app-insights-release-notes-vsix/search.png)
 
 ### Anzeigen von Daten von Ihrem lokalen Computer in den Diagnosetools
-
 Sie können Ihre Telemetriedaten zusätzlich zu anderen Debugdaten auf der Seite mit den Visual Studio-Diagnosetools anzeigen. Nur ASP.NET 4.5 wird unterstützt.
 
 ![Seite „Diagnosetools“](./media/app-insights-release-notes-vsix/diagtools.png)
 
 ### Hinzufügen des SDK zum Projekt ohne Anmeldung bei Azure
-
 Sie müssen sich nicht mehr bei Azure anmelden, um Application Insights-Pakete Ihrem Projekt hinzuzufügen, egal ob im Dialogfeld **Neues Projekt** oder im Kontextmenü des Projekts. Wenn Sie sich anmelden, wird das SDK wie üblich installiert und für das Senden von Telemetriedaten konfiguriert. Wenn Sie sich nicht anmelden, wird das SDK Ihrem Projekt hinzugefügt, und es werden Telemetriedaten für den Diagnosehub generiert. Sie können dies später konfigurieren, wenn Sie möchten.
 
 ![Dialogfeld "Neues Projekt"](./media/app-insights-release-notes-vsix/newproject.png)
 
 ### Unterstützung für Geräte
-
 Im Rahmen der *Connect();* 2015 haben wir [angekündigt](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/), dass HockeyApp unsere mobile Entwicklerumgebung für Geräte ist. HockeyApp unterstützt Sie beim Verteilen der Beta-Builds an Ihre Tester, beim Sammeln und Analysieren von allen Abstürzen Ihrer App und beim Sammeln von Feedback direkt von Ihren Kunden. HockeyApp unterstützt Ihre App auf jeder Plattform, die Sie für die Erstellung wählen. Dies kann iOS, Android oder Windows oder eine plattformübergreifende Lösung wie Xamarin, Cordova oder Unity sein.
 
 In zukünftigen Versionen der Application Insights-Erweiterung werden wir eine stärkere Integration zwischen HockeyApp und Visual Studio ermöglichen. Sie können vorerst mit der Verwendung von HockeyApp beginnen, indem Sie einfach den NuGet-Verweis hinzufügen. Weitere Informationen finden Sie in der [Dokumentation](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone).

@@ -1,54 +1,51 @@
-<properties
-   pageTitle="Bewährte Methoden für die Azure-Netzwerksicherheit | Microsoft Azure"
-   description="Dieser Artikel enthält eine Reihe von bewährten Methoden für die Netzwerksicherheit unter Verwendung der integrierten Azure-Funktionen."
-   services="security"
-   documentationCenter="na"
-   authors="TomShinder"
-   manager="swadhwa"
-   editor="TomShinder"/>
+---
+title: Bewährte Methoden für die Azure-Netzwerksicherheit | Microsoft Docs
+description: Dieser Artikel enthält eine Reihe von bewährten Methoden für die Netzwerksicherheit unter Verwendung der integrierten Azure-Funktionen.
+services: security
+documentationcenter: na
+author: TomShinder
+manager: swadhwa
+editor: TomShinder
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/25/2016"
-   ms.author="TomSh"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/25/2016
+ms.author: TomSh
 
+---
 # Bewährte Methoden für die Azure-Netzwerksicherheit
-
 Mit Microsoft Azure können Sie virtuelle Computer und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in Azure Virtual Networks anordnen. Ein Azure Virtual Network ist ein virtuelles Netzwerkkonstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Azure Virtual Machines die mit einem Azure Virtual Network verbunden sind, können eine Verbindung mit Geräten in demselben Azure Virtual Network, anderen Azure Virtual Networks, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.
 
 In diesem Artikel werden die bewährten Methoden für die Azure-Netzwerksicherheit beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
 Für jede bewährte Methode wird Folgendes beschrieben:
 
-- Wobei es bei der bewährten Methode geht
-- Warum Sie die bewährte Methode nutzen sollten
-- Was die Folge sein könnte, wenn Sie die bewährte Methode nicht aktivieren
-- Mögliche Alternativen zur bewährten Methode
-- Wie Sie erfahren können, wie Sie die bewährte Methode aktivieren
+* Wobei es bei der bewährten Methode geht
+* Warum Sie die bewährte Methode nutzen sollten
+* Was die Folge sein könnte, wenn Sie die bewährte Methode nicht aktivieren
+* Mögliche Alternativen zur bewährten Methode
+* Wie Sie erfahren können, wie Sie die bewährte Methode aktivieren
 
 Dieser Artikel zu den bewährten Methoden für die Azure-Netzwerksicherheit basiert auf einer Konsensmeinung und den Fähigkeiten und Funktionssätzen der Azure-Plattform, wie sie zum Erstellungszeitpunkt dieses Artikels existierten. Meinungen und Technologien ändern sich im Laufe der Zeit. Dieser Artikel wird daher regelmäßig aktualisiert, um diese Änderungen widerzuspiegeln.
 
 Bewährte Methoden zur Azure-Netzwerksicherheit, die in diesem Artikel beschrieben werden:
 
-- Logische Segmentsubnetze
-- Steuern des Routingverhaltens
-- Aktivieren der Tunnelerzwingung
-- Verwenden virtueller Network Appliances
-- Bereitstellen von DMZs für Sicherheitszonen
-- Vermeiden der Offenlegung gegenüber dem Internet mit dedizierten WAN-Links
-- Optimieren der Betriebszeit und Leistung
-- Verwenden des globalen Lastenausgleichs
-- Deaktivieren des RDP-Zugriffs auf Azure Virtual Machines
-- Aktivieren von Azure Security Center
-- Erweitern des Rechenzentrums auf Azure
-
+* Logische Segmentsubnetze
+* Steuern des Routingverhaltens
+* Aktivieren der Tunnelerzwingung
+* Verwenden virtueller Network Appliances
+* Bereitstellen von DMZs für Sicherheitszonen
+* Vermeiden der Offenlegung gegenüber dem Internet mit dedizierten WAN-Links
+* Optimieren der Betriebszeit und Leistung
+* Verwenden des globalen Lastenausgleichs
+* Deaktivieren des RDP-Zugriffs auf Azure Virtual Machines
+* Aktivieren von Azure Security Center
+* Erweitern des Rechenzentrums auf Azure
 
 ## Logische Segmentsubnetze
-
 [Azure Virtual Networks](https://azure.microsoft.com/documentation/services/virtual-network/) ähneln einem LAN in Ihrem lokalen Netzwerk. Die Idee hinter einem Azure Virtual Network ist, dass Sie ein Netzwerk mit nur einem privaten IP-Adressraum erstellen, in dem Sie alle [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) anordnen können. Die verfügbaren privaten IP-Adressräume liegen in den Bereichen der Klasse A (10.0.0.0/8), Klasse B (172.16.0.0/12) und Klasse C (192.168.0.0/16).
 
 Sie gehen ähnlich wie in Ihrem lokalen Netzwerk vor und segmentieren die größeren Adressräume in Subnetze. Sie können [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-basierte Subnetzprinzipien verwenden, um die Subnetze zu erstellen.
@@ -59,26 +56,27 @@ Eine Möglichkeit zur Erreichung dieses Ziels ist die Nutzung einer [Netzwerksic
 
 Die Verwendung von NSGs für die Netzwerkzugriffssteuerung zwischen Subnetzen ermöglicht Ihnen das Anordnen von Ressourcen, die zu derselben Sicherheitszone oder Rolle gehören, in eigenen Subnetzen. Stellen Sie sich beispielsweise eine einfache Anwendung mit drei Ebenen vor, z.B. einer Webebene, einer Ebene für die Anwendungslogik und einer Datenbankebene. Sie ordnen virtuelle Computer, die zu diesen Ebenen gehören, jeweils in eigenen Subnetzen an. Anschließend verwenden Sie Netzwerksicherheitsgruppen, um den Datenverkehr zwischen den Subnetzen zu steuern:
 
-- Virtuelle Computer der Webebene können nur Verbindungen mit den Computern der Anwendungslogik initiieren und nur Verbindungen aus dem Internet akzeptieren.
-- Virtuelle Computer der Anwendungslogik können nur Verbindungen mit der Datenbankebene initiieren und nur Verbindungen der Webebene akzeptieren.
-- Virtuelle Computer der Datenbankebene können keine Verbindung mit Elementen außerhalb ihres eigenen Subnetzes initiieren und nur Verbindungen von der Ebene für die Anwendungslogik akzeptieren.
+* Virtuelle Computer der Webebene können nur Verbindungen mit den Computern der Anwendungslogik initiieren und nur Verbindungen aus dem Internet akzeptieren.
+* Virtuelle Computer der Anwendungslogik können nur Verbindungen mit der Datenbankebene initiieren und nur Verbindungen der Webebene akzeptieren.
+* Virtuelle Computer der Datenbankebene können keine Verbindung mit Elementen außerhalb ihres eigenen Subnetzes initiieren und nur Verbindungen von der Ebene für die Anwendungslogik akzeptieren.
 
 Weitere Informationen zu Netzwerksicherheitsgruppen und deren Verwendung zum logischen Segmentieren von Azure Virtual Networks finden Sie im Artikel [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md).
 
 ## Steuern des Routingverhaltens
-
 Wenn Sie einen virtuellen Computer in einem Azure Virtual Network anordnen, werden Sie merken, dass der virtuelle Computer eine Verbindung mit jedem anderen virtuellen Computer in demselben Azure Virtual Network herstellen kann. Dies gilt auch, wenn sich die anderen virtuellen Computer in unterschiedlichen Subnetzen befinden. Dies ist möglich, weil standardmäßig aktivierte Systemrouten vorhanden sind, mit denen diese Art der Kommunikation durchgeführt werden kann. Diese Standardrouten ermöglichen virtuellen Computern in demselben Azure Virtual Network die Initiierung von Verbindungen untereinander und mit dem Internet (gilt nur für ausgehende Kommunikation mit dem Internet).
 
 Die standardmäßigen Systemrouten sind zwar für viele Bereitstellungsszenarien nützlich, aber es kann auch vorkommen, dass Sie die Routingkonfiguration für Ihre Bereitstellungen anpassen möchten. Diese Anpassungen ermöglichen Ihnen die Konfiguration der nächsten Hopadresse, um bestimmte Ziele zu erreichen.
 
 Wir empfehlen Ihnen, beim Bereitstellen einer Sicherheitsappliance für ein virtuelles Netzwerk benutzerdefinierte Routen zu konfigurieren. Dies wird unter einer anderen bewährten Methode noch beschrieben.
 
-> [AZURE.NOTE] Benutzerdefinierte Routen sind nicht unbedingt erforderlich, und die standardmäßigen Systemrouten funktionieren in den meisten Fällen.
+> [!NOTE]
+> Benutzerdefinierte Routen sind nicht unbedingt erforderlich, und die standardmäßigen Systemrouten funktionieren in den meisten Fällen.
+> 
+> 
 
 Weitere Informationen zu benutzerdefinierten Routen und deren Konfiguration finden Sie im Artikel [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](../virtual-network/virtual-networks-udr-overview.md).
 
 ## Aktivieren der Tunnelerzwingung
-
 Zum besseren Verständnis der Tunnelerzwingung ist es hilfreich, wenn Sie wissen, um was es bei „getrennten Tunneln“ geht. Das häufigste Beispiel für getrennte Tunnels tritt bei VPN-Verbindungen auf. Stellen Sie sich vor, dass Sie von Ihrem Hotelzimmer aus eine VPN-Verbindung mit dem Netzwerk Ihres Unternehmens herstellen. Über diese Verbindung können Sie auf Ressourcen in Ihrem Unternehmensnetzwerk zugreifen, und die gesamte Kommunikation mit den Ressourcen im Unternehmensnetzwerk verläuft durch den VPN-Tunnel.
 
 Was passiert, wenn Sie eine Verbindung mit Ressourcen im Internet herstellen möchten? Wenn getrennte Tunnel aktiviert sind, verlaufen diese Verbindungen direkt ins Internet und nicht über den VPN-Tunnel. Einige Sicherheitsexperten sehen diese Vorgehensweise als potenzielles Risiko an und empfehlen deshalb, die Nutzung getrennter Tunnel zu deaktivieren. Stattdessen sollen alle Verbindungen – ins Internet und mit Unternehmensressourcen – über den VPN-Tunnel verlaufen. Der Vorteil besteht hierbei darin, dass Verbindungen ins Internet dann die Sicherheitsgeräte des Unternehmensnetzwerks durchlaufen müssen. Dies wäre nicht der Fall, wenn sich der mit dem Internet verbundene VPN-Client außerhalb des VPN-Tunnels befinden würde.
@@ -90,25 +88,24 @@ Falls Sie keine standortübergreifende Verbindung verwenden, sollten Sie sichers
 Weitere Informationen zur Tunnelerzwingung und deren Aktivierung finden Sie im Artikel [Konfigurieren der Tunnelerzwingung mit PowerShell und dem Azure Resource Manager](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md).
 
 ## Verwenden virtueller Network Appliances
-
 Netzwerksicherheitsgruppen und benutzerdefiniertes Routing kann zwar ein gewisses Maß an Netzwerksicherheit auf der Vermittlungs- und Transportebene des [OSI-Modells](https://en.wikipedia.org/wiki/OSI_model) bieten, aber es kann auch zu Situationen kommen, in denen Sie die Sicherheit für die höheren Ebenen des Stapels aktivieren möchten bzw. müssen. In diesen Situationen ist es ratsam, von Azure-Partnern angebotene Appliances für die Sicherheit virtueller Netzwerke bereitzustellen.
 
 Sicherheitsappliances für Azure-Netzwerke können gegenüber den Steuerungen auf Netzwerkebene erheblich bessere Sicherheitsstufen bieten. Beispiele für Netzwerksicherheitsfunktionen, die von Sicherheitsappliances für virtuelle Netzwerke bereitgestellt werden:
 
-- Firewall
-- Angriffserkennung/Eindringschutz
-- Verwaltung von Sicherheitsrisiken
-- Anwendungssteuerung
-- Netzwerkbasierte Erkennung von Anomalien
-- Webfilterung
-- Virenschutz
-- Botnet-Schutz
+* Firewall
+* Angriffserkennung/Eindringschutz
+* Verwaltung von Sicherheitsrisiken
+* Anwendungssteuerung
+* Netzwerkbasierte Erkennung von Anomalien
+* Webfilterung
+* Virenschutz
+* Botnet-Schutz
 
 Wenn Sie eine höhere Netzwerksicherheitsstufe benötigen, als mit der Zugriffssteuerung auf Netzwerkebene möglich ist, empfehlen wir Ihnen, sich mit Sicherheitsappliances für Azure Virtual Networks zu beschäftigen und diese bereitzustellen.
 
 Informationen dazu, welche Sicherheitsappliances für Azure Virtual Networks und welche dazugehörigen Funktionen verfügbar sind, finden Sie auf dem [Azure Marketplace](https://azure.microsoft.com/marketplace/). Suchen Sie nach den Begriffen „Sicherheit“ und „Netzwerksicherheit“.
 
-##Bereitstellen von DMZs für Sicherheitszonen
+## Bereitstellen von DMZs für Sicherheitszonen
 Eine DMZ bzw. ein „Umkreisnetzwerk“ ist ein physisches oder logisches Netzwerksegment, das dafür ausgelegt ist, als zusätzliche Sicherheitsebene zwischen Ihren Ressourcen und dem Internet zu dienen. Das Ziel besteht bei der DMZ darin, am Rand des DMZ-Netzwerks spezielle Geräte für die Netzwerkzugriffssteuerung anzuordnen, sodass nur der gewünschte Datenverkehr über das Netzwerksicherheitsgerät in Ihr Azure Virtual Network gelangen kann.
 
 DMZs sind nützlich, da Sie sich bei der Verwaltung, Überwachung, Protokollierung und Berichterstellung für die Netzwerkzugriffssteuerung auf die Geräte am Rand des Azure Virtual Network konzentrieren können. Normalerweise aktivieren Sie DDoS-Verhinderung, Angriffserkennungs-/Eindringschutzsysteme, Firewallregeln und -richtlinien, Webfilterung, Antischadsoftware für das Netzwerk usw. Die Geräte für die Netzwerksicherheit sind zwischen dem Internet und Ihrem Azure Virtual Network angeordnet und verfügen in beiden Netzwerken über eine Schnittstelle.
@@ -124,8 +121,8 @@ Viele Organisationen haben sich für die Hybrid-IT-Route entschieden. Bei Hybrid
 
 Beim Hybrid-IT-Szenario wird normalerweise eine Art von standortübergreifender Konnektivität verwendet. Diese standortübergreifende Konnektivität ermöglicht es dem Unternehmen, seine lokalen Netzwerke mit Azure Virtual Networks zu verbinden. Zwei Lösungen für standortübergreifende Konnektivität sind verfügbar:
 
-- Standort-zu-Standort-VPN-Verbindung
-- ExpressRoute
+* Standort-zu-Standort-VPN-Verbindung
+* ExpressRoute
 
 Eine [Site-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-site-to-site-create.md) ist eine virtuelle private Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk. Diese Verbindung wird über das Internet hergestellt und ermöglicht Ihnen das Übertragen von Informationen in einem „Tunnel“ innerhalb eines verschlüsselten Links zwischen Ihrem Netzwerk und Azure. Eine Site-to-Site-VPN-Verbindung ist eine sichere, ausgereifte Technologie, die seit Jahrzehnten von Unternehmen aller Größen eingesetzt wird. Die Tunnelverschlüsselung wird mit dem [IPSec-Tunnelmodus](https://technet.microsoft.com/library/cc786385.aspx) durchgeführt.
 
@@ -144,18 +141,18 @@ Die Verteilung von Datenverkehr erhöht die Verfügbarkeit, weil Folgendes passi
 
 Wir empfehlen Ihnen, den Lastenausgleich nach Möglichkeit immer zu nutzen, wenn diese Vorgehensweise für Ihre Dienste geeignet ist. Auf die Eignung wird in den folgenden Abschnitten näher eingegangen. Auf Azure Virtual Network-Ebene bietet Azure Ihnen drei Hauptoptionen für den Lastenausgleich:
 
-- HTTP-basierter Lastenausgleich
-- Externer Lastenausgleich
-- Interner Lastenausgleich
+* HTTP-basierter Lastenausgleich
+* Externer Lastenausgleich
+* Interner Lastenausgleich
 
 ## HTTP-basierter Lastenausgleich
 Beim HTTP-basierten Lastenausgleich werden Entscheidungen darüber, an welchen Server Verbindungen gesendet werden, anhand der Merkmale des HTTP-Protokolls getroffen. Azure verfügt über einen HTTP-Lastenausgleich, der als Application Gateway bezeichnet wird.
 
 Es wird empfohlen, Azure Application Gateway in folgenden Fällen zu verwenden:
 
-- Anwendungen, bei denen Anforderungen einer Benutzer-/Clientsitzung den gleichen virtuellen Back-End-Computer erreichen müssen. Beispiele hierfür wären Einkaufswagen-Apps und Web-E-Mail-Server.
-- Anwendungen, bei denen der Mehraufwand für die SSL-Beendigung für Webserverfarmen beseitigt werden soll, indem das Feature [SSL-Auslagerung](https://f5.com/glossary/ssl-offloading) von Application Gateway genutzt wird.
-- Anwendungen wie Content Delivery Network, für die mehrere HTTP-Anforderungen auf der gleichen lange bestehenden TCP-Verbindung an verschiedene Back-End-Server weitergeleitet bzw. dort ausgeglichen werden.
+* Anwendungen, bei denen Anforderungen einer Benutzer-/Clientsitzung den gleichen virtuellen Back-End-Computer erreichen müssen. Beispiele hierfür wären Einkaufswagen-Apps und Web-E-Mail-Server.
+* Anwendungen, bei denen der Mehraufwand für die SSL-Beendigung für Webserverfarmen beseitigt werden soll, indem das Feature [SSL-Auslagerung](https://f5.com/glossary/ssl-offloading) von Application Gateway genutzt wird.
+* Anwendungen wie Content Delivery Network, für die mehrere HTTP-Anforderungen auf der gleichen lange bestehenden TCP-Verbindung an verschiedene Back-End-Server weitergeleitet bzw. dort ausgeglichen werden.
 
 Weitere Informationen zur Funktionsweise von Azure Application Gateway und zur Verwendung in Ihren Bereitstellungen finden Sie im Artikel [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md).
 
@@ -197,9 +194,9 @@ Das potenzielle Sicherheitsproblem bei der Verwendung dieser Protokolle über da
 
 Aus diesem Grund empfehlen wir Ihnen, den direkten RDP- und SSH-Zugriff auf Ihre Azure Virtual Machines über das Internet zu deaktivieren. Nachdem der direkte RDP- und SSH-Zugriff über das Internet deaktiviert wurde, haben Sie andere Möglichkeiten, um für die Durchführung der Remoteverwaltung auf diese virtuellen Computer zuzugreifen:
 
-- Point-to-Site-VPN-Verbindung
-- Standort-zu-Standort-VPN-Verbindung
-- ExpressRoute
+* Point-to-Site-VPN-Verbindung
+* Standort-zu-Standort-VPN-Verbindung
+* ExpressRoute
 
 [Point-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-point-to-site-create.md) ist ein anderer Ausdruck für eine VPN-Client/Server-Verbindung mit Remotezugriff. Bei einer Point-to-Site-VPN-Verbindung kann ein Benutzer eine Verbindung mit einem Azure Virtual Network über das Internet herstellen. Nachdem die Point-to-Site-Verbindung hergestellt wurde, kann der Benutzer per RDP oder SSH eine Verbindung mit allen virtuellen Computern im Azure Virtual Network herstellen, mit denen der Benutzer per Point-to-Site-VPN-Verbindung verbunden ist. Hierbei wird davon ausgegangen, dass der Benutzer dazu berechtigt ist, auf diese virtuellen Computer zuzugreifen.
 
@@ -214,9 +211,9 @@ Azure Security Center unterstützt Sie beim Verhindern, Erkennen und Beheben von
 
 Mit Azure Security Center können Sie die Netzwerksicherheit wie folgt optimieren und überwachen:
 
-- Angeben von Empfehlungen zur Netzwerksicherheit
-- Überwachen des Zustands Ihrer Konfiguration der Netzwerksicherheit
-- Warnen von netzwerkbasierten Bedrohungen auf Endpunkt- und Netzwerkebene
+* Angeben von Empfehlungen zur Netzwerksicherheit
+* Überwachen des Zustands Ihrer Konfiguration der Netzwerksicherheit
+* Warnen von netzwerkbasierten Bedrohungen auf Endpunkt- und Netzwerkebene
 
 Wir empfehlen Ihnen dringend, Azure Security Center für alle Azure-Bereitstellungen zu aktivieren.
 

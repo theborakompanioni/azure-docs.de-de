@@ -1,39 +1,35 @@
-<properties
-	pageTitle="Verwalten von virtuellen Computern mit Resource Manager und PowerShell | Microsoft Azure"
-	description="Verwalten Sie virtuelle Computer mit Azure Resource Manager und PowerShell"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="davidmu1"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+---
+title: Verwalten von virtuellen Computern mit Resource Manager und PowerShell | Microsoft Docs
+description: Verwalten Sie virtuelle Computer mit Azure Resource Manager und PowerShell
+services: virtual-machines-windows
+documentationcenter: ''
+author: davidmu1
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-windows"
-	ms.workload="na"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/07/2016"
-	ms.author="davidmu"/>
+ms.service: virtual-machines-windows
+ms.workload: na
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 06/07/2016
+ms.author: davidmu
 
+---
 # Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell
-
 ## Installieren von Azure PowerShell
- 
 Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) finden Sie Informationen dazu, wie Sie die neueste Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich bei Ihrem Azure-Konto anmelden.
 
 ## Festlegen von Variablen
-
 Alle Befehle in diesem Artikel benötigen den Namen der Ressourcengruppe, in der sich der virtuelle Computer befindet, und den Name des zu verwaltenden virtuellen Computers. Ersetzen Sie den Wert von **$rgName** durch den Namen der Ressourcengruppe, die den virtuellen Computer enthält. Ersetzen Sie den Wert von **$vmName** durch den Namen des virtuellen Computers. Erstellen Sie die Variablen.
 
     $rgName = "resource-group-name"
     $vmName = "VM-name"
 
 ## Anzeigen von Informationen zu einem virtuellen Computer
-
 Rufen Sie die Informationen zum virtuellen Computers ab.
-  
+
     Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 
 Folgendes sollte angezeigt werden:
@@ -105,7 +101,6 @@ Folgendes sollte angezeigt werden:
                                 rg1/providers/Microsoft.Network/networkInterfaces/nc1}
 
 ## Starten eines virtuellen Computers
-
 Starten Sie den virtuellen Computer.
 
     Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -117,7 +112,6 @@ Nach ein paar Minuten sollte eine Ausgabe ähnlich der folgenden angezeigt werde
                               True          OK  OK
 
 ## Beenden eines virtuellen Computers
-
 Beenden Sie den virtuellen Computer.
 
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -127,7 +121,7 @@ Sie werden aufgefordert, den Vorgang zu bestätigen:
     Virtual machine stopping operation
     This cmdlet will stop the specified virtual machine. Do you want to continue?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
-        
+
 Geben Sie **Y** ein, um den virtuellen Computer zu beenden.
 
 Nach ein paar Minuten sollte eine Ausgabe ähnlich der folgenden angezeigt werden:
@@ -137,7 +131,6 @@ Nach ein paar Minuten sollte eine Ausgabe ähnlich der folgenden angezeigt werde
                               True          OK  OK
 
 ## Neustarten eines virtuellen Computers
-
 Starten Sie den virtuellen Computer neu.
 
     Restart-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -149,12 +142,14 @@ Folgendes sollte angezeigt werden:
                               True          OK  OK
 
 ## Löschen eines virtuellen Computers
-
 Löschen Sie den virtuellen Computer.
 
     Remove-AzureRmVM -ResourceGroupName $rgName –Name $vmName
 
-> [AZURE.NOTE] Mit dem Parameter **- Force** können Sie die Bestätigungsaufforderung überspringen.
+> [!NOTE]
+> Mit dem Parameter **- Force** können Sie die Bestätigungsaufforderung überspringen.
+> 
+> 
 
 Wenn Sie den Parameter "-Force" nicht verwendet haben, werden Sie aufgefordert, den Vorgang zu bestätigen:
 
@@ -169,24 +164,22 @@ Folgendes sollte angezeigt werden:
                               True          OK  OK
 
 ## Ändern der Größe eines virtuellen Computers
-
 Dieses Beispiel zeigt, wie Sie die Größe des virtuellen Computers aktualisieren.
-        
+
     $vmSize = "Standard_A1"
     $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     $vm.HardwareProfile.vmSize = $vmSize
     Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
-    
+
 Folgendes sollte angezeigt werden:
 
     RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
     ---------  -------------------  ----------  ------------
                               True          OK  OK
-                              
+
 Eine Liste mit den verfügbaren Größen für einen virtuellen Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md).
 
 ## Hinzufügen eines Datenträgers zu einem virtuellen Computer
-
 Dieses Beispiel zeigt, wie Sie einem vorhandenen virtuellen Computer einen Datenträger hinzufügen.
 
     $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
@@ -219,7 +212,6 @@ Der Skriptdateiinhalt für die Datenträgerinitialisierung kann etwa wie folgt a
     }
 
 ## Nächste Schritte
-
 Sollten bei einer Bereitstellung Probleme aufgetreten sein, helfen Ihnen ggf. die Informationen unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) weiter.
 
 <!---HONumber=AcomDC_0907_2016-->

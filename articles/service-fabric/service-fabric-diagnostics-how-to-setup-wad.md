@@ -1,30 +1,29 @@
-<properties
-   pageTitle="Sammeln von Protokollen mit der Azure-Diagnose | Microsoft Azure"
-   description="In diesem Artikel wird beschrieben, wie Sie die Azure-Diagnose so konfigurieren, dass Protokolle aus einem Service Fabric-Cluster unter Azure gesammelt werden."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="ms-toddabel"
-   manager="timlt"
-   editor=""/>
+---
+title: Sammeln von Protokollen mit der Azure-Diagnose | Microsoft Docs
+description: In diesem Artikel wird beschrieben, wie Sie die Azure-Diagnose so konfigurieren, dass Protokolle aus einem Service Fabric-Cluster unter Azure gesammelt werden.
+services: service-fabric
+documentationcenter: .net
+author: ms-toddabel
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/28/2016"
-   ms.author="toddabel"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/28/2016
+ms.author: toddabel
 
-
-
+---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Sammeln von Protokollen mit der Azure-Diagnose
+> [!div class="op_single_selector"]
+> * [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
+> * [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+> 
+> 
 
-> [AZURE.SELECTOR]
-- [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
-- [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
-
-Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort hilft Ihnen bei Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten.
+Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort hilft Ihnen bei Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten.
 
 Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung „Azure-Diagnose“, mit der Protokolle an Azure Storage hochgeladen werden. Im Speicher sind die Protokolle allerdings nicht sehr nützlich. Sie können jedoch einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Produkt wie [Log Analytics](../log-analytics/log-analytics-service-fabric.md), [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder in einer anderen Protokollanalyselösung zu verwenden.
 
@@ -37,17 +36,15 @@ Sie verwenden diese Tools, um einige Vorgänge in diesem Dokument durchzuführen
 * [Azure Resource Manager-Client](https://github.com/projectkudu/ARMClient)
 * [Azure Resource Manager-Vorlage](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 
-
 ## <a name="log-sources-that-you-might-want-to-collect"></a>Protokollquellen, die gesammelt werden können
-- **Service Fabric-Protokolle**: Werden von der Plattform für standardmäßige Kanäle der Ereignisablaufverfolgung für Windows und EventSource-Kanäle ausgegeben. Protokolle können unterschiedlicher Art sein:
-  - Betriebsereignisse: Protokolle für Vorgänge, die von der Service Fabric-Plattform durchgeführt werden. Beispiele hierfür wären die Erstellung von Anwendungen und Diensten, Knotenzustandsänderungen und Upgradeinformationen.
-  - [Ereignisse des Reliable Actors-Programmiermodells](service-fabric-reliable-actors-diagnostics.md)
-  - [Ereignisse des Reliable Services-Programmiermodells](service-fabric-reliable-services-diagnostics.md)
-- **Anwendungsereignisse**: Ereignisse, die vom Code Ihres Diensts ausgegeben werden und mit der EventSource-Hilfsklasse der Visual Studio-Vorlagen ausgegeben werden. Weitere Informationen zum Schreiben von Protokollen aus Ihrer Anwendung finden Sie unter [Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-
+* **Service Fabric-Protokolle**: Werden von der Plattform für standardmäßige Kanäle der Ereignisablaufverfolgung für Windows und EventSource-Kanäle ausgegeben. Protokolle können unterschiedlicher Art sein:
+  * Betriebsereignisse: Protokolle für Vorgänge, die von der Service Fabric-Plattform durchgeführt werden. Beispiele hierfür wären die Erstellung von Anwendungen und Diensten, Knotenzustandsänderungen und Upgradeinformationen.
+  * [Ereignisse des Reliable Actors-Programmiermodells](service-fabric-reliable-actors-diagnostics.md)
+  * [Ereignisse des Reliable Services-Programmiermodells](service-fabric-reliable-services-diagnostics.md)
+* **Anwendungsereignisse**: Ereignisse, die vom Code Ihres Diensts ausgegeben werden und mit der EventSource-Hilfsklasse der Visual Studio-Vorlagen ausgegeben werden. Weitere Informationen zum Schreiben von Protokollen aus Ihrer Anwendung finden Sie unter [Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 
 ## <a name="deploy-the-diagnostics-extension"></a>Bereitstellen der Diagnoseerweiterung
-Zum Sammeln von Protokollen muss zunächst die Diagnoseerweiterung auf allen VMs des Service Fabric-Clusters bereitgestellt werden. Die Diagnoseerweiterung sammelt Protokolle auf allen VMs und lädt sie in das angegebene Speicherkonto hoch. Die auszuführenden Schritte variieren ein wenig, je nachdem, ob Sie das Azure-Portal oder Azure Resource Manager verwenden. Diese Schritte hängen auch davon ab, ob die Bereitstellung während der Clustererstellung oder für einen bereits vorhandenen Cluster erfolgt. Wir sehen uns nun die Schritte für die einzelnen Szenarien an.
+Zum Sammeln von Protokollen muss zunächst die Diagnoseerweiterung auf allen VMs des Service Fabric-Clusters bereitgestellt werden. Die Diagnoseerweiterung sammelt Protokolle auf allen VMs und lädt sie in das angegebene Speicherkonto hoch. Die auszuführenden Schritte variieren ein wenig, je nachdem, ob Sie das Azure-Portal oder Azure Resource Manager verwenden. Diese Schritte hängen auch davon ab, ob die Bereitstellung während der Clustererstellung oder für einen bereits vorhandenen Cluster erfolgt. Wir sehen uns nun die Schritte für die einzelnen Szenarien an.
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-the-portal"></a>Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung über das Portal
 Um die Diagnoseerweiterung im Rahmen der Clustererstellung für die im Cluster enthaltenen VMs bereitzustellen, wird verwenden Sie das in der folgenden Abbildung gezeigte Fenster „Diagnoseeinstellungen“. Stellen Sie sicher, dass für die Diagnose **Ein**(Standardeinstellung) festgelegt ist, um die Reliable Actors- oder Reliable Services-Ereignissammlung zu aktivieren. Nach der Erstellung des Clusters können Sie diese Einstellung nicht im Portal ändern.
@@ -77,7 +74,6 @@ So verwenden Sie die heruntergeladene Vorlage, um eine Konfiguration zu aktualis
 2. Ändern Sie den Inhalt, sodass er die neue Konfiguration widerspiegelt.
 3. Starten Sie PowerShell, und wechseln Sie zu dem Ordner, in dem Sie den Inhalt extrahiert haben.
 4. Führen Sie **deploy.ps1** aus, und geben Sie Abonnement-ID, Ressourcengruppenname (verwenden Sie den gleichen Namen, um die Konfiguration zu aktualisieren) und einen eindeutigen Bereitstellungsnamen an.
-
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung mithilfe des Azure-Ressourcen-Managers
 Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen Sie der Resource Manager-Vorlage für einen vollständigen Cluster vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad).
@@ -193,7 +189,6 @@ Aktualisieren Sie dann den Abschnitt `VirtualMachineProfile` der template.json-D
 
 Nachdem Sie die Datei „template.json“ wie beschrieben geändert haben, veröffentlichen Sie die Resource Manager-Vorlage erneut. Wenn die Vorlage exportiert wurde, wird sie durch Ausführen der Datei „deploy.ps1“ neu veröffentlicht. Stellen Sie nach der Bereitstellung sicher, dass **ProvisioningState** den Status **Erfolgreich** aufweist.
 
-
 ## <a name="update-diagnostics-to-collect-and-upload-logs-from-new-eventsource-channels"></a>Aktualisieren der Diagnose zum Sammeln und Hochladen von Protokollen aus neuen EventSource-Kanälen
 Wenn Sie die Diagnose aktualisieren möchten, damit Protokolle aus neuen EventSource-Kanälen gesammelt werden, die eine neu bereitzustellende Anwendung darstellen, führen Sie einfach die gleichen Schritte aus wie im [vorherigen Abschnitt](#deploywadarm), um die Diagnose für einen vorhandenen Cluster einzurichten.
 
@@ -216,12 +211,9 @@ Um Leistungsindikatoren oder Ereignisprotokolle zu sammeln, ändern Sie die Reso
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) und [Reliable Services](service-fabric-reliable-services-diagnostics.md) ausgegeben werden, um besser zu verstehen, welche Ereignisse Sie beim Behandeln von Problemen untersuchen sollten.
 
-
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 * [Service Fabric-Lösung in Log Analytics](../log-analytics/log-analytics-service-fabric.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

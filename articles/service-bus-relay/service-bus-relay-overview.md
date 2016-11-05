@@ -1,25 +1,22 @@
-<properties
-    pageTitle="Übersicht über Service Bus Relay | Microsoft Azure"
-    description="Übersicht über Service Bus Relay"
-    services="service-bus"
-    documentationCenter=".net"
-    authors="sethmanheim"
-    manager="timlt"
-    editor=""/>
+---
+title: Übersicht über Service Bus Relay | Microsoft Docs
+description: Übersicht über Service Bus Relay
+services: service-bus
+documentationcenter: .net
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags
-    ms.service="service-bus"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="multiple"
-    ms.topic="get-started-article"
-    ms.date="09/01/2016"
-    ms.author="sethm"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: multiple
+ms.topic: get-started-article
+ms.date: 09/01/2016
+ms.author: sethm
 
-
-
+---
 # <a name="overview-of-service-bus-relay"></a>Übersicht über Service Bus Relay
-
 Eine wichtige Komponente von Service Bus ist ein zentralisierter *Relaydienst* (mit starkem Lastenausgleich), der Ihnen die Erstellung von Hybridanwendungen ermöglicht, die sowohl in einem Azure-Datencenter als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden.  Das Service Bus Relay unterstützt eine Vielzahl verschiedener Transportprotokolle und Webdienststandards. Dies schließt SOAP, WS-* und sogar REST ein. Der Relaydienst unterstützt Ihre Hybridanwendungen, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation) in einem Unternehmensnetzwerk sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung geöffnet werden muss oder tiefgreifende Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden. 
 
 ![Relaykonzepte](./media/service-bus-relay-overview/sb-relay-01.png)
@@ -31,14 +28,10 @@ Im Relaymessaging stellt ein lokaler Dienst eine Verbindung zu dem Relaydienst �
 Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-"Relay"-Bindungen. Im Prinzip werden die Relaybindungen neuen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die mit Service Bus in der Cloud integriert werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Weitere Informationen zum Service Bus Relay finden Sie in den folgenden Themen:
 
-- [Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
-- [Verwenden des Azure Service Bus Relay-Diensts](service-bus-dotnet-how-to-use-relay.md)
-
- 
-
+* [Azure Service Bus](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+* [Verwenden des Azure Service Bus Relay-Diensts](service-bus-dotnet-how-to-use-relay.md)
 
 <!--HONumber=Oct16_HO2-->
 

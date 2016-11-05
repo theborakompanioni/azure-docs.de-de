@@ -4,11 +4,11 @@ Der Abschnitt "structure" in der JSON von Datasets ist ein **optionaler** Abschn
 Jede Spalte enthält die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
-| -------- | ----------- | -------- |
-| name | Name der Spalte. | Ja |
-| type | Datentyp der Spalte. Im nachstehenden Abschnitt "Typkonvertierungen" finden Sie Details zur Angabe von Typinformationen. | Nein |
-| culture | Zu verwendendes .NET-basiertes Gebietsschema, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. Die Standardeinstellung ist "de-DE". | Nein |
-| format | Zu verwendende Formatzeichenfolge, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. | Nein |
+| --- | --- | --- |
+| name |Name der Spalte. |Ja |
+| type |Datentyp der Spalte. Im nachstehenden Abschnitt "Typkonvertierungen" finden Sie Details zur Angabe von Typinformationen. |Nein |
+| culture |Zu verwendendes .NET-basiertes Gebietsschema, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. Die Standardeinstellung ist "de-DE". |Nein |
+| format |Zu verwendende Formatzeichenfolge, wenn "type" angegeben ist und den .NET-Typ "Datetime" oder "Datetimeoffset" hat. |Nein |
 
 Das folgende Beispiel zeigt den Abschnitt "structure" der JSON für eine Tabelle mit den drei Spalten "userid", "name" und "lastlogindate".
 
@@ -21,29 +21,29 @@ Das folgende Beispiel zeigt den Abschnitt "structure" der JSON für eine Tabelle
 
 Befolgen Sie die folgenden Angaben dazu, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte.
 
-- **Für strukturierte Datenquellen**, die Datenschema- und Typinformationen neben den Daten selbst speichern (wie z. B. SQL Server, Oracle, Azure-Tabelle usw.), sollten Sie den Abschnitt "structure" nur angeben, wenn bestimmte Quellspalten bestimmten Zielspalten in der Senke zugewiesen werden sollen und deren Namen nicht identisch sind (Einzelheiten finden Sie im nachfolgenden Abschnitt zur Spaltenzuordnung).
+* **Für strukturierte Datenquellen**, die Datenschema- und Typinformationen neben den Daten selbst speichern (wie z. B. SQL Server, Oracle, Azure-Tabelle usw.), sollten Sie den Abschnitt "structure" nur angeben, wenn bestimmte Quellspalten bestimmten Zielspalten in der Senke zugewiesen werden sollen und deren Namen nicht identisch sind (Einzelheiten finden Sie im nachfolgenden Abschnitt zur Spaltenzuordnung).
+  
+    Wie bereits erwähnt, ist die Information "type" im Abschnitt "structure" optional. Für strukturierte Datenquellen steht die Information "type" bereits als Teil der Datasetdefinition im Datenspeicher zur Verfügung, weshalb Sie Typinformationen nicht dem Abschnitt "structure" hinzufügen müssen.
+* **Für das Schema von Lesedatenquellen (insbesondere Azure-Blob)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Bei diesen Typen von Datenquellen sollten Sie den Abschnitt "structure" in den beiden folgenden Fällen hinzufügen:
+  * Sie wünschen eine Spaltenzuordnung.
+  * Wenn das Dataset eine Quelle in einer Kopieraktivität ist, können Sie Typinformationen in "structure" bereitstellen. Data Factory verwendet diese Typinformationen für die Konvertierung in systemeigene Typen für die Senke. Weitere Informationen finden Sie im Artikel [Verschieben von Daten in und aus einem Azure-Blob](../articles/data-factory/data-factory-azure-blob-connector.md).
 
-	Wie bereits erwähnt, ist die Information "type" im Abschnitt "structure" optional. Für strukturierte Datenquellen steht die Information "type" bereits als Teil der Datasetdefinition im Datenspeicher zur Verfügung, weshalb Sie Typinformationen nicht dem Abschnitt "structure" hinzufügen müssen.
-- **Für das Schema von Lesedatenquellen (insbesondere Azure-Blob)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Bei diesen Typen von Datenquellen sollten Sie den Abschnitt "structure" in den beiden folgenden Fällen hinzufügen:
-	- Sie wünschen eine Spaltenzuordnung.
-	- Wenn das Dataset eine Quelle in einer Kopieraktivität ist, können Sie Typinformationen in "structure" bereitstellen. Data Factory verwendet diese Typinformationen für die Konvertierung in systemeigene Typen für die Senke. Weitere Informationen finden Sie im Artikel [Verschieben von Daten in und aus einem Azure-Blob](../articles/data-factory/data-factory-azure-blob-connector.md).
-
-### Unterstützte .NET-basierte Typen 
+### Unterstützte .NET-basierte Typen
 Data Factory unterstützt die folgenden CLS-konformen auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in "structure" für das Schema von Lesedatenquellen wie Azure-Blob.
 
-- Int16
-- Int32
-- Int64
-- Single
-- Double
-- Decimal
-- Byte
-- Bool
-- String
-- Guid
-- Datetime
-- Datetimeoffset
-- Timespan
+* Int16
+* Int32
+* Int64
+* Single
+* Double
+* Decimal
+* Byte
+* Bool
+* String
+* Guid
+* Datetime
+* Datetimeoffset
+* Timespan
 
 Für "Datetime" und "Datetimeoffset" können Sie optional auch die Zeichenfolgen "culture" und "format" angeben, um das Analysieren Ihrer benutzerdefinierten "Datetime"-Zeichenfolge zu erleichtern. Nachstehend sehen Sie ein Beispiel einer Typumwandlung.
 

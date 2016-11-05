@@ -1,26 +1,27 @@
-<properties
-    pageTitle="Abfragen des Azure Search-Indexes mit dem .NET SDK | Microsoft Azure | Gehosteter Cloudsuchdienst"
-    description="Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie Suchparameter zum Filtern und Sortieren von Suchergebnissen."
-    services="search"
-    documentationCenter=""
-    authors="brjohnstmsft"
-/>
+---
+title: Abfragen des Azure Search-Indexes mit dem .NET SDK | Microsoft Docs
+description: Erstellen Sie eine Suchabfrage in Azure Search, und verwenden Sie Suchparameter zum Filtern und Sortieren von Suchergebnissen.
+services: search
+documentationcenter: ''
+author: brjohnstmsft
 
-<tags
-    ms.service="search"
-    ms.devlang="dotnet"
-    ms.workload="search"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="brjohnst"/>
+ms.service: search
+ms.devlang: dotnet
+ms.workload: search
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.date: 08/29/2016
+ms.author: brjohnst
 
+---
 # Abfragen des Azure Search-Index mit dem .NET SDK
-> [AZURE.SELECTOR]
-- [Übersicht](search-query-overview.md)
-- [Portal](search-explorer.md)
-- [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+> [!div class="op_single_selector"]
+> * [Übersicht](search-query-overview.md)
+> * [Portal](search-explorer.md)
+> * [.NET](search-query-dotnet.md)
+> * [REST](search-query-rest-api.md)
+> 
+> 
 
 Dieser Artikel beschreibt, wie Sie einen Index mithilfe des [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) abfragen.
 
@@ -37,8 +38,8 @@ Nach der Erstellung eines Azure Search-Index sind Sie nun fast bereit, Abfragen 
 
 Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 
-  - Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
-  - Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
+* Die primären und sekundären *Admin-Schlüssel* gewähren Ihnen Vollzugriff auf alle Vorgänge. Dazu zählen die Dienstverwaltung und das Erstellen und Löschen von Indizes, Indexern und Datenquellen. Ihnen stehen zwei Schlüssel zur Verfügung, damit Sie den sekundären Schlüssel weiterhin nutzen können, wenn Sie den primären Schlüssel neu generieren möchten, und umgekehrt.
+* Die *Abfrageschlüssel* gewähren Ihnen Lesezugriff auf Indizes und Dokumente. Diese werden in der Regel auf Clientanwendungen verteilt, die Suchanfragen ausgeben.
 
 Zum Abfragen eines Indexes können Sie einen der Abfrageschlüssel verwenden. Admin-Schlüssel können auch für Abfragen verwendet werden, Sie sollten jedoch einen Abfrageschlüssel in Ihrem Anwendungscode verwenden, da dies dem [Prinzip der geringsten Rechte](https://en.wikipedia.org/wiki/Principle_of_least_privilege) besser entspricht.
 
@@ -60,12 +61,11 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 Die Suche mit dem .NET SDK erfolgt ganz einfach durch Aufrufen der `Documents.Search`-Methode für `SearchIndexClient`. Diese Methode verwendet einige Parameter, einschließlich des Suchtexts, zusammen mit einem `SearchParameters`-Objekt, mit dem die Abfrage weiter verfeinert werden kann.
 
 #### Abfragetypen
-Die zwei wichtigsten [Abfragetypen](search-query-overview.md#types-of-queries), die Sie verwenden werden, sind `search` und `filter`. Eine `search`-Abfrage sucht nach einem oder mehreren Begriffen in allen _durchsuchbaren_ Feldern in Ihrem Index. Eine `filter`-Abfrage wertet einen booleschen Ausdruck für alle _filterbaren_ Felder in einem Index aus.
+Die zwei wichtigsten [Abfragetypen](search-query-overview.md#types-of-queries), die Sie verwenden werden, sind `search` und `filter`. Eine `search`-Abfrage sucht nach einem oder mehreren Begriffen in allen *durchsuchbaren* Feldern in Ihrem Index. Eine `filter`-Abfrage wertet einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus.
 
 Suchen und Filtern erfolgt mithilfe der `Documents.Search`-Methode. Eine Suchabfrage kann im Parameter `searchText` und ein Filterausdruck kann in der Eigenschaft `Filter` der Klasse `SearchParameters` übergeben werden. Um ohne Suche zu filtern, übergeben Sie einfach `"*"` für den Parameter `searchText`. Wenn Sie ohne Filter suchen möchten, legen Sie die Eigenschaft `Filter` nicht fest, oder übergeben Sie einfach keine `SearchParameters`-Instanz.
 
 #### Beispielabfragen
-
 Der folgende Beispielcode zeigt verschiedene Methoden zum Abfragen des Index „hotel“, der unter [Erstellen eines Azure Search-Indexes mit dem .NET SDK](search-create-index-dotnet.md#DefineIndex) definiert wurde. Beachten Sie, dass die in den Suchergebnissen zurückgegebenen Dokumente Instanzen der Klasse `Hotel` sind, die unter [Importieren von Daten in Azure Search mit dem .NET SDK](search-import-data-dotnet.md#HotelClass) definiert wurde. Der Beispielcode nutzt eine `WriteDocuments`-Methode, um die Suchergebnisse auf der Konsole auszugeben. Diese Methode wird im nächsten Abschnitt beschrieben.
 
 ```csharp

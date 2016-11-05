@@ -1,27 +1,27 @@
-<properties
-    pageTitle="Verwenden der rollenbasierten Zugriffssteuerung im Azure-Portal | Microsoft Azure"
-    description="Führen Sie die ersten Schritte der Zugriffsverwaltung mit der rollenbasierten Zugriffssteuerung im Azure-Portal aus. Verwenden Sie Rollenzuweisungen, um Ihren Ressourcen Berechtigungen zuzuweisen."
-    services="active-directory"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor=""/>
+---
+title: Verwenden der rollenbasierten Zugriffssteuerung im Azure-Portal | Microsoft Docs
+description: Führen Sie die ersten Schritte der Zugriffsverwaltung mit der rollenbasierten Zugriffssteuerung im Azure-Portal aus. Verwenden Sie Rollenzuweisungen, um Ihren Ressourcen Berechtigungen zuzuweisen.
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.workload="identity"
-    ms.date="10/10/2016"
-    ms.author="kgremban"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 10/10/2016
+ms.author: kgremban
 
-
+---
 # <a name="use-role-assignments-to-manage-access-to-your-azure-subscription-resources"></a>Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen
-
-> [AZURE.SELECTOR]
-- [Verwalten des Zugriffs nach Benutzer oder Gruppe](role-based-access-control-manage-assignments.md)
-- [Verwalten des Zugriffs nach Ressource](role-based-access-control-configure.md)
+> [!div class="op_single_selector"]
+> * [Verwalten des Zugriffs nach Benutzer oder Gruppe](role-based-access-control-manage-assignments.md)
+> * [Verwalten des Zugriffs nach Ressource](role-based-access-control-configure.md)
+> 
+> 
 
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Benutzern nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen. Dieser Artikel hilft Ihnen bei der Einrichtung von RBAC im Azure-Portal. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Get started with access management in the Azure portal](role-based-access-control-what-is.md)(Erste Schritte mit der Zugriffsverwaltung im Azure-Portal).
 
@@ -33,13 +33,15 @@ Im Hauptblatt im [Azure-Portal](https://portal.azure.com)können Sie anzeigen, w
 2. Wählen Sie im Blatt **Ressourcengruppen** den Namen der Ressourcengruppe aus.
 3. Wählen Sie im linken Menü **Zugriffssteuerung (IAM)**.  
 4. Auf dem Blatt für die Zugriffssteuerung werden alle Benutzer, Gruppen und Anwendungen aufgeführt, denen Zugriff auf die Ressourcengruppe gewährt wurde.  
-
+   
     ![Blatt „Benutzer“ – geerbter und zugewiesener Zugriff – Screenshot](./media/role-based-access-control-configure/view-access.png)
 
 Beachten Sie, dass einigen Benutzern der Zugriff **zugewiesen** wurde, während andere ihn **geerbt** haben. Der Zugriff wird entweder speziell der Ressourcengruppe zugewiesen oder von einer Zuweisung des übergeordneten Abonnements geerbt.
 
-> [AZURE.NOTE] Klassische Administratoren und Co-Admins für Abonnements werden im neuen RBAC-Modell als Besitzer des Abonnements betrachtet.
-
+> [!NOTE]
+> Klassische Administratoren und Co-Admins für Abonnements werden im neuen RBAC-Modell als Besitzer des Abonnements betrachtet.
+> 
+> 
 
 ## <a name="add-access"></a>Zugriff hinzufügen
 Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnement, die bzw. das als Bereich der Rollenzuweisung gilt.
@@ -47,16 +49,14 @@ Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnemen
 1. Wählen Sie auf dem Blatt für die Zugriffssteuerung die Option **Hinzufügen**.  
 2. Wählen Sie auf dem Blatt **Rolle auswählen** auf die Rolle, die Sie zuweisen möchten.
 3. Wählen Sie den Benutzer, die Gruppe oder die Anwendung als das Element in Ihrem Verzeichnis aus, für das Sie Zugriff gewähren möchten. Sie können das Verzeichnis mit Anzeigenamen, E-Mail-Adressen und Objektbezeichnern durchsuchen.  
-
+   
     ![Blatt „Benutzer hinzufügen“ – Durchsuchen – Screenshot](./media/role-based-access-control-configure/grant-access2.png)
-
 4. Wählen Sie **OK** , um die Zuweisung zu erstellen. Das Popupfenster **Der Benutzer wird hinzugefügt** zeigt den Fortschritt an.  
     ![Statusanzeige „Der Benutzer wird hinzugefügt“ – Screenshot](./media/role-based-access-control-configure/addinguser_popup.png)
 
 Wenn die Rollenzuweisung hinzugefügt wurde, erscheint sie auf dem Blatt **Benutzer** .
 
 ## <a name="remove-access"></a>Zugriff entfernen
-
 1. Wählen Sie die Rollenzuweisung auf dem Blatt für die Zugriffssteuerung.
 2. Wählen Sie auf dem Blatt mit den Zuweisungsdetails auf **Entfernen** .  
 3. Wählen Sie **Ja** , um die Entfernung zu bestätigen.  
@@ -69,16 +69,14 @@ Geerbte Zuweisungen können nicht entfernt werden. In der folgenden Abbildung se
 ## <a name="other-tools-to-manage-access"></a>Andere Tools zum Verwalten des Zugriffs
 Sie können auch mit Azure RBAC-Befehlen in anderen Tools als dem Azure-Portal Rollen zuweisen und den Zugriff verwalten.  Folgen Sie den Links, um weitere Informationen zu den Voraussetzungen und Hilfe bei den ersten Schritten mit Azure RBAC-Befehlen zu erhalten.
 
-- [Azure PowerShell](role-based-access-control-manage-access-powershell.md)
-- [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
-- [REST-API](role-based-access-control-manage-access-rest.md)
+* [Azure PowerShell](role-based-access-control-manage-access-powershell.md)
+* [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
+* [REST-API](role-based-access-control-manage-access-rest.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen eines Verlaufsberichts zu Zugriffsänderungen](role-based-access-control-access-change-history-report.md)
-- Weitere Informationen finden Sie unter [Integrierte RBAC-Rollen in Azure](role-based-access-built-in-roles.md)
-- Definieren Sie Ihre eigenen [benutzerdefinierten Rollen in Azure RBAC](role-based-access-control-custom-roles.md)
-
-
+* [Erstellen eines Verlaufsberichts zu Zugriffsänderungen](role-based-access-control-access-change-history-report.md)
+* Weitere Informationen finden Sie unter [Integrierte RBAC-Rollen in Azure](role-based-access-built-in-roles.md)
+* Definieren Sie Ihre eigenen [benutzerdefinierten Rollen in Azure RBAC](role-based-access-control-custom-roles.md)
 
 <!--HONumber=Oct16_HO2-->
 

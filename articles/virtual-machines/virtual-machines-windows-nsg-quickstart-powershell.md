@@ -1,23 +1,23 @@
-<properties
-   pageTitle="Öffnen von Ports für einen virtuellen Computer mithilfe von PowerShell | Microsoft Azure"
-   description="Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und Azure PowerShell für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen."
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Öffnen von Ports für einen virtuellen Computer mithilfe von PowerShell | Microsoft Docs
+description: Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und Azure PowerShell für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen.
+services: virtual-machines-windows
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure-services"
-   ms.date="08/08/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 08/08/2016
+ms.author: iainfou
 
+---
 # Öffnen von Ports für einen virtuellen Computer in Azure mithilfe von PowerShell
-[AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
+[!INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## Schnellbefehle
 Zum Erstellen einer Netzwerksicherheitsgruppe und von ACL-Regeln (Access Control Lists, Zugriffssteuerungslisten) müssen Sie [die neueste Version von Azure PowerShell installieren](../powershell-install-configure.md). Sie können [diese Schritte auch über das Azure-Portal ausführen](virtual-machines-windows-nsg-quickstart-portal.md).
@@ -68,8 +68,8 @@ Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen
 ## Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
-- [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
-- [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
-- [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
+* [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
+* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
+* [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
 
 <!---HONumber=AcomDC_0907_2016-->

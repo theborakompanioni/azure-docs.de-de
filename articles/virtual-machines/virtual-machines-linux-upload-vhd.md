@@ -1,25 +1,23 @@
-<properties
-    pageTitle="Erstellen und Hochladen eines benutzerdefinierten Linux-Images | Microsoft Azure"
-    description="Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit einem benutzerdefinierten Linux-Image mithilfe des Resource Manager-Bereitstellungsmodells, und laden Sie sie in Azure hoch."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="iainfoulds"
-    manager="timlt"
-    editor="tysonn"
-    tags="azure-resource-manager"/>
+---
+title: Erstellen und Hochladen eines benutzerdefinierten Linux-Images | Microsoft Docs
+description: Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit einem benutzerdefinierten Linux-Image mithilfe des Resource Manager-Bereitstellungsmodells, und laden Sie sie in Azure hoch.
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: tysonn
+tags: azure-resource-manager
 
-<tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: iainfou
 
-
+---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage
-
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem Resource Manager-Bereitstellungsmodell in Azure hochladen und virtuelle Linux-Computer aus diesem benutzerdefinierten Image erstellen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -78,15 +76,18 @@ Das Zielspeicherkonto muss mit dem Konto identisch sein, in das Sie den virtuell
 ## <a name="requirements"></a>Anforderungen
 Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
 
-- **In einer VHD-Datei installiertes Linux-Betriebssystem:** Installieren Sie auf einer virtuellen Festplatte im VHD-Format eine [von Azure unterstützte Linux-Distribution](virtual-machines-linux-endorsed-distros.md). (Informationen zu nicht unterstützten Distributionen finden Sie [hier](virtual-machines-linux-create-upload-generic.md).) Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
-    - Installieren und konfigurieren Sie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) oder [KVM](http://www.linux-kvm.org/page/RunningKVM), und verwenden Sie dabei „VHD“ als Imageformat. Bei Bedarf können Sie ein Image mithilfe von `qemu-img convert` [konvertieren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats).
-    - Unter [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) und [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) können Sie auch Hyper-V verwenden.
+* **In einer VHD-Datei installiertes Linux-Betriebssystem:** Installieren Sie auf einer virtuellen Festplatte im VHD-Format eine [von Azure unterstützte Linux-Distribution](virtual-machines-linux-endorsed-distros.md). (Informationen zu nicht unterstützten Distributionen finden Sie [hier](virtual-machines-linux-create-upload-generic.md).) Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
+  * Installieren und konfigurieren Sie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) oder [KVM](http://www.linux-kvm.org/page/RunningKVM), und verwenden Sie dabei „VHD“ als Imageformat. Bei Bedarf können Sie ein Image mithilfe von `qemu-img convert` [konvertieren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats).
+  * Unter [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) und [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) können Sie auch Hyper-V verwenden.
 
-> [AZURE.NOTE] Das modernere VHDX-Format wird in Azure noch nicht unterstützt. Wenn Sie einen virtuellen Computer erstellen, geben Sie als Format VHD an. VHDX-Datenträger können bei Bedarf mit [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) oder mit dem PowerShell-Cmdlet [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) in VHD konvertiert werden. Azure unterstützt außerdem das Hochladen von dynamischen VHDs nicht, daher müssen Sie solche Datenträger vor dem Hochladen in statische VHDs konvertieren. Mit Tools wie [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) (Azure-VHD-Hilfsprogramme für Go) können Sie dynamische Datenträger im Zuge des Uploads zu Azure konvertieren.
+> [!NOTE]
+> Das modernere VHDX-Format wird in Azure noch nicht unterstützt. Wenn Sie einen virtuellen Computer erstellen, geben Sie als Format VHD an. VHDX-Datenträger können bei Bedarf mit [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) oder mit dem PowerShell-Cmdlet [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) in VHD konvertiert werden. Azure unterstützt außerdem das Hochladen von dynamischen VHDs nicht, daher müssen Sie solche Datenträger vor dem Hochladen in statische VHDs konvertieren. Mit Tools wie [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) (Azure-VHD-Hilfsprogramme für Go) können Sie dynamische Datenträger im Zuge des Uploads zu Azure konvertieren.
+> 
+> 
 
-- Virtuelle Computer, die aus dem benutzerdefinierten Image erstellt werden, müssen sich im gleichen Speicherkonto wie das eigentliche Image befinden.
-    - Erstellen Sie ein Speicherkonto und einen Container für Ihr benutzerdefiniertes Image und die erstellten virtuellen Computer.
-    - Nachdem Sie Ihre virtuellen Computer erstellt haben, können Sie das Image problemlos löschen
+* Virtuelle Computer, die aus dem benutzerdefinierten Image erstellt werden, müssen sich im gleichen Speicherkonto wie das eigentliche Image befinden.
+  * Erstellen Sie ein Speicherkonto und einen Container für Ihr benutzerdefiniertes Image und die erstellten virtuellen Computer.
+  * Nachdem Sie Ihre virtuellen Computer erstellt haben, können Sie das Image problemlos löschen
 
 Vergewissern Sie sich, dass die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) angemeldet ist und den Resource Manager-Modus nutzt:
 
@@ -96,24 +97,25 @@ azure config mode arm
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Beispielparameternamen zählen `myResourceGroup`, `mystorageaccount` und `myimages`.
 
-
 <a id="prepimage"> </a>
-## <a name="prepare-the-image-to-be-uploaded"></a>Vorbereiten des hochzuladenden Images
 
+## <a name="prepare-the-image-to-be-uploaded"></a>Vorbereiten des hochzuladenden Images
 Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden:
 
-- **[CentOS-basierte Verteilungen](virtual-machines-linux-create-upload-centos.md)**
-- **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
-- **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md)**
-- **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md)**
-- **[SLES und openSUSE](virtual-machines-linux-suse-create-upload-vhd.md)**
-- **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
-- **[Sonstige – nicht unterstützte Distributionen](virtual-machines-linux-create-upload-generic.md)**
+* **[CentOS-basierte Verteilungen](virtual-machines-linux-create-upload-centos.md)**
+* **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
+* **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md)**
+* **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md)**
+* **[SLES und openSUSE](virtual-machines-linux-suse-create-upload-vhd.md)**
+* **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
+* **[Sonstige – nicht unterstützte Distributionen](virtual-machines-linux-create-upload-generic.md)**
 
 Beachten Sie auch die **[Installationshinweise für Linux](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)**. Diese enthalten allgemeine Tipps zur Vorbereitung von Linux-Images für Azure.
 
-> [AZURE.NOTE] Die [Azure Platform-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) gilt nur dann für virtuelle Computer unter Linux, wenn eine der unterstützten Distributionen mit Konfigurationsdetails verwendet wird, die im Abschnitt mit den unterstützten Versionen unter [Linux auf von Azure unterstützten Verteilungen](virtual-machines-linux-endorsed-distros.md) angegeben sind.
-
+> [!NOTE]
+> Die [Azure Platform-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) gilt nur dann für virtuelle Computer unter Linux, wenn eine der unterstützten Distributionen mit Konfigurationsdetails verwendet wird, die im Abschnitt mit den unterstützten Versionen unter [Linux auf von Azure unterstützten Verteilungen](virtual-machines-linux-endorsed-distros.md) angegeben sind.
+> 
+> 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Ressourcengruppen verknüpfen logisch alle Azure-Ressourcen zur Unterstützung Ihrer virtuellen Computer, z.B. das virtuelle Netzwerk und den Speicher. Erfahren Sie [hier](../resource-group-overview.md) mehr über Azure-Ressourcengruppen. Vor dem Hochladen Ihres benutzerdefinierten Datenträgerimages und dem Erstellen virtueller Computer müssen Sie zuerst eine Ressourcengruppe erstellen. 
@@ -180,7 +182,6 @@ azure storage blob upload --blobtype page --account-name mystorageaccount \
 ## <a name="create-vm-from-custom-image"></a>Erstellen von virtuellen Computern aus dem benutzerdefinierten Image
 Wenn Sie virtuelle Computer aus Ihrem benutzerdefinierten Datenträgerimage erstellen, geben Sie den URI zum Datenträgerimage an. Stellen Sie sicher, dass das Zielspeicherkonto dem Speicherkonto entspricht, in dem Ihr benutzerdefiniertes Datenträgerimage gespeichert ist. Sie können Ihren virtuellen Computer mithilfe der Azure-Befehlszeilenschnittstelle oder einer Resource Manager-JSON-Vorlage erstellen.
 
-
 ### <a name="create-a-vm-using-the-azure-cli"></a>Erstellen eines virtuellen Computers mit der Azure-Befehlszeilenschnittstelle
 Sie geben den Parameter `--image-urn` mit dem Befehl `azure vm create` an, um auf Ihr benutzerdefiniertes Datenträgerimage zu verweisen. Stellen Sie sicher, dass `--storage-account-name` dem Speicherkonto entspricht, in dem Ihr benutzerdefiniertes Datenträgerimage gespeichert ist. Sie müssen nicht den gleichen Container verwenden wie das benutzerdefinierte Datenträgerimage, um Ihre virtuellen Computer zu speichern. Stellen Sie sicher, dass Sie jegliche weiteren Container auf die gleiche Weise erstellen, wie in den vorherigen Schritten beschrieben, bevor Sie Ihre benutzerdefinierten Datenträgerimages hochladen.
 
@@ -234,7 +235,6 @@ azure group deployment create --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie den benutzerdefinierten virtuellen Datenträger vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../resource-group-overview.md)beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](virtual-machines-linux-add-disk.md) . Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](virtual-machines-linux-nsg-quickstart.md).
-
 
 <!--HONumber=Oct16_HO2-->
 

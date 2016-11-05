@@ -1,58 +1,51 @@
-<properties 
-    pageTitle="Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten | Microsoft Azure" 
-    description="In diesem Artikel erhalten Sie Anweisungen zum Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten." 
-    services="media-services" 
-    documentationCenter="" 
-    authors="Juliako" 
-    manager="erikre" 
-    editor=""/>
+---
+title: Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten | Microsoft Docs
+description: In diesem Artikel erhalten Sie Anweisungen zum Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten.
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/26/2016"    
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-
-#<a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten
-
+---
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten
 Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto mehrere Speicherkonten anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
 
-- Lastenausgleich der Assets für mehrere Speicherkonten.
-- Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
+* Lastenausgleich der Assets für mehrere Speicherkonten.
+* Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
 
 In diesem Thema wird erläutert, wie mehrere Speicherkonten mit der Azure-Dienstverwaltungs-REST-API an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
 
-##<a name="considerations"></a>Überlegungen
-
+## <a name="considerations"></a>Überlegungen
 Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die folgenden Überlegungen:
 
-- Alle an ein Media Services-Konto angefügten Speicherkonten müssen sich im gleichen Rechenzentrum wie das Media Services-Konto befinden.
-- Derzeit kann ein Speicherkonto nicht mehr getrennt werden, nachdem es an ein Media Services-Konto angefügt wurde.
-- Das primäre Speicherkonto wird zum Zeitpunkt der Erstellung des Media Services-Kontos angegeben. Derzeit können Sie das Standardspeicherkonto nicht ändern. 
+* Alle an ein Media Services-Konto angefügten Speicherkonten müssen sich im gleichen Rechenzentrum wie das Media Services-Konto befinden.
+* Derzeit kann ein Speicherkonto nicht mehr getrennt werden, nachdem es an ein Media Services-Konto angefügt wurde.
+* Das primäre Speicherkonto wird zum Zeitpunkt der Erstellung des Media Services-Kontos angegeben. Derzeit können Sie das Standardspeicherkonto nicht ändern. 
 
 Weitere Überlegungen:
 
 Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der Name-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen enthalten](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Es darf außerdem nur ein „.“ für die Dateinamenerweiterung vorhanden sein.
 
-##<a name="to-attach-a-storage-account-with-azure-service-management-rest-api"></a>So fügen Sie ein Speicherkonto mit der Azure-Dienstverwaltungs-REST-API an
-
+## <a name="to-attach-a-storage-account-with-azure-service-management-rest-api"></a>So fügen Sie ein Speicherkonto mit der Azure-Dienstverwaltungs-REST-API an
 Zum gegenwärtigen Zeitpunkt können mehrere Speicherkonten nur mithilfe der [Azure-Dienstverwaltungs-REST-API](http://msdn.microsoft.com/library/azure/dn167014.aspx)angefügt werden. Das Codebeispiel im Thema [How to: Use Media Services Management REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) (Gewusst wie: Verwenden der Media Services-Verwaltungs-REST-API) definiert die **AttachStorageAccountToMediaServiceAccount** -Methode, mit der ein Speicherkonto an das angegebene Media Services-Konto angefügt wird. Der Code im gleichen Thema definiert die **ListStorageAccountDetails** -Methode, mit der alle an das angegebene Media Services-Konto angefügten Speicherkonten aufgelistet werden.
 
-
-##<a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>So verwalten Sie Media Services-Medienobjekte für mehrere Speicherkonten
-
+## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>So verwalten Sie Media Services-Medienobjekte für mehrere Speicherkonten
 Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufgaben ausgeführt:
 
 1. Anzeigen aller Speicherkonten, die dem angegebenen Media Services-Konto zugeordnet sind.
-1. Abrufen des Namens des Standardspeicherkontos.
-1. Erstellen eines neuen Medienobjekts im Standardspeicherkonto.
-1. Erstellen eines Ausgabemedienobjekts für den Codierungsauftrag im angegebenen Speicherkonto.
-    
+2. Abrufen des Namens des Standardspeicherkontos.
+3. Erstellen eines neuen Medienobjekts im Standardspeicherkonto.
+4. Erstellen eines Ausgabemedienobjekts für den Codierungsauftrag im angegebenen Speicherkonto.
+   
         using Microsoft.WindowsAzure.MediaServices.Client;
         using System;
         using System.Collections.Generic;
@@ -62,7 +55,7 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
         using System.Text;
         using System.Threading;
         using System.Threading.Tasks;
-        
+   
         namespace MultipleStorageAccounts
         {
             class Program
@@ -70,73 +63,72 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
                 // Location of the media file that you want to encode. 
                 private static readonly string _singleInputFilePath =
                     Path.GetFullPath(@"../..\supportFiles\multifile\interview2.wmv");
-        
+   
                 private static readonly string MediaServicesAccountName = 
                     ConfigurationManager.AppSettings["MediaServicesAccountName"];
                 private static readonly string MediaServicesAccountKey = 
                     ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-        
+   
                 private static CloudMediaContext _context;
                 private static MediaServicesCredentials _cachedCredentials = null;
-    
+   
                 static void Main(string[] args)
                 {
-    
+   
                     // Create and cache the Media Services credentials in a static class variable.
                     _cachedCredentials = new MediaServicesCredentials(
                                     MediaServicesAccountName,
                                     MediaServicesAccountKey);
                     // Used the cached credentials to create CloudMediaContext.
                     _context = new CloudMediaContext(_cachedCredentials);
-    
-        
+
                     // Display the storage accounts associated with 
                     // the specified Media Services account:
                     foreach (var sa in _context.StorageAccounts)
                         Console.WriteLine(sa.Name);
-        
+
                     // Retrieve the name of the default storage account.
                     var defaultStorageName = _context.StorageAccounts.Where(s => s.IsDefault == true).FirstOrDefault();
                     Console.WriteLine("Name: {0}", defaultStorageName.Name);
                     Console.WriteLine("IsDefault: {0}", defaultStorageName.IsDefault);
-        
+
                     // Retrieve the name of a storage account that is not the default one.
                     var notDefaultStroageName = _context.StorageAccounts.Where(s => s.IsDefault == false).FirstOrDefault();
                     Console.WriteLine("Name: {0}", notDefaultStroageName.Name);
                     Console.WriteLine("IsDefault: {0}", notDefaultStroageName.IsDefault);
-                    
+
                     // Create the original asset in the default storage account.
                     IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None, 
                         defaultStorageName.Name, _singleInputFilePath);
                     Console.WriteLine("Created the asset in the {0} storage account", asset.StorageAccountName);
-                    
+
                     // Create an output asset of the encoding job in the other storage account.
                     IAsset outputAsset = CreateEncodingJob(asset, notDefaultStroageName.Name, _singleInputFilePath);
                     if(outputAsset!=null)
                         Console.WriteLine("Created the output asset in the {0} storage account", outputAsset.StorageAccountName);
-        
+
                 }
-        
+
                 static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string storageName, string singleFilePath)
                 {
                     var assetName = "UploadSingleFile_" + DateTime.UtcNow.ToString();
-                    
+
                     // If you are creating an asset in the default storage account, you can omit the StorageName parameter.
                     var asset = _context.Assets.Create(assetName, storageName, assetCreationOptions);
-        
+
                     var fileName = Path.GetFileName(singleFilePath);
-        
+
                     var assetFile = asset.AssetFiles.Create(fileName);
-        
+
                     Console.WriteLine("Created assetFile {0}", assetFile.Name);
-        
+
                     assetFile.Upload(singleFilePath);
-                    
+
                     Console.WriteLine("Done uploading {0}", assetFile.Name);
-        
+
                     return asset;
                 }
-        
+
                 static IAsset CreateEncodingJob(IAsset asset, string storageName, string inputMediaFilePath)
                 {
                     // Declare a new job.
@@ -144,13 +136,13 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
                     // Get a media processor reference, and pass to it the name of the 
                     // processor to use for the specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-        
+
                     // Create a task with the encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("My encoding task",
                         processor,
                         "H264 Multiple Bitrate 720p",
                         Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.ProtectedConfiguration);
-        
+
                     // Specify the input asset to be encoded.
                     task.InputAssets.Add(asset);
                     // Add an output asset to contain the results of the job. 
@@ -158,21 +150,21 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
                     // means the output asset is not encrypted. 
                     task.OutputAssets.AddNew("Output asset", storageName,
                         AssetCreationOptions.None);
-        
+
                     // Use the following event handler to check job progress.  
                     job.StateChanged += new
                             EventHandler<JobStateChangedEventArgs>(StateChanged);
-        
+
                     // Launch the job.
                     job.Submit();
-        
+
                     // Check job execution and wait for job to finish. 
                     Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
                     progressJobTask.Wait();
-        
+
                     // Get an updated job reference.
                     job = GetJob(job.Id);
-        
+
                     // If job state is Error the event handling 
                     // method for job progress should log errors.  Here we check 
                     // for error state and exit if needed.
@@ -181,31 +173,31 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
                         Console.WriteLine("\nExiting method due to job error.");
                         return null;
                     }
-        
+
                     // Get a reference to the output asset from the job.
                     IAsset outputAsset = job.OutputMediaAssets[0];
-        
+
                     return outputAsset;
                 }
-        
-        
+
+
                 private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
                 {
                     var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
                         ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-        
+
                     if (processor == null)
                         throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-        
+
                     return processor;
                 }
-        
+
                 private static void StateChanged(object sender, JobStateChangedEventArgs e)
                 {
                     Console.WriteLine("Job state changed event:");
                     Console.WriteLine("  Previous state: " + e.PreviousState);
                     Console.WriteLine("  Current state: " + e.CurrentState);
-        
+
                     switch (e.CurrentState)
                     {
                         case JobState.Finished:
@@ -234,7 +226,7 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
                             break;
                     }
                 }
-        
+
                 static IJob GetJob(string jobId)
                 {
                     // Use a Linq select query to get an updated 
@@ -245,22 +237,18 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
                         select j;
                     // Return the job reference as an Ijob. 
                     IJob job = jobInstance.FirstOrDefault();
-        
+
                     return job;
                 }
             }
         }
- 
-
-##<a name="media-services-learning-paths"></a>Media Services-Lernpfade
-
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
-##<a name="provide-feedback"></a>Feedback geben
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+
+## <a name="provide-feedback"></a>Feedback geben
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

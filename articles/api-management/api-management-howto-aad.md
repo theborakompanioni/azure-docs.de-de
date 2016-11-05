@@ -1,36 +1,37 @@
-<properties 
-	pageTitle="Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management" 
-	description="Erfahren Sie, wie Benutzer mithilfe von Active Directory in Azure API Management autorisiert werden." 
-	services="api-management" 
-	documentationCenter="API Management" 
-	authors="steved0x" 
-	manager="erikre" 
-	editor=""/>
+---
+title: Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management
+description: Erfahren Sie, wie Benutzer mithilfe von Active Directory in Azure API Management autorisiert werden.
+services: api-management
+documentationcenter: API Management
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2016
+ms.author: sdanie
 
+---
 # Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management
-
-
 ## Übersicht
 Dieser Leitfaden zeigt, wie Sie den Zugriff auf das Entwicklerportal für alle Benutzer in einem oder mehreren Azure Active Directory-Verzeichnissen aktivieren. Außerdem erfahren Sie, wie Sie Azure Active Directory-Benutzergruppen verwalten, indem Sie externe Gruppen hinzufügen, die Benutzer eines anderen Azure Active Directory-Verzeichnisses enthalten.
 
->Zum Ausführen der hier genannten Schritte müssen Sie über ein Azure Active Directory-Verzeichnis verfügen, in dem eine Anwendung erstellt wird.
+> Zum Ausführen der hier genannten Schritte müssen Sie über ein Azure Active Directory-Verzeichnis verfügen, in dem eine Anwendung erstellt wird.
+> 
+> 
 
 ## Autorisieren von Entwicklerkonten mithilfe von Active Directory
-
 Klicken Sie zunächst im klassischen Azure-Portal für Ihren API Management-Dienst auf **Verwalten**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
 
 ![Herausgeberportal][api-management-management-console]
 
->Falls Sie noch keine API-Verwaltungs-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API-Verwaltungsinstanz][] im Lernprogramm [Erste Schritte mit der Azure API-Verwaltung][].
+> Falls Sie noch keine API-Verwaltungs-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API-Verwaltungsinstanz][Erstellen einer API-Verwaltungsinstanz] im Lernprogramm [Erste Schritte mit der Azure API-Verwaltung][Erste Schritte mit der Azure API-Verwaltung].
+> 
+> 
 
 Klicken Sie im Menü **API Management** auf der linken Seite auf **Sicherheit**, und klicken Sie dann auf **Externe Identitäten**.
 
@@ -74,7 +75,9 @@ Aktivieren Sie die Dropdownliste **Berechtigungen der Stellvertretung**, und akt
 
 ![Berechtigungen der Stellvertretung][api-management-aad-delegated-permissions]
 
->Weitere Informationen zu Anwendungen und delegierten Berechtigungen finden Sie unter [Zugreifen auf die Graph-API][].
+> Weitere Informationen zu Anwendungen und delegierten Berechtigungen finden Sie unter [Zugreifen auf die Graph-API][Zugreifen auf die Graph-API].
+> 
+> 
 
 Kopieren Sie die **Client-ID** in die Zwischenablage.
 
@@ -84,13 +87,15 @@ Wechseln Sie zurück zum Herausgeberportal, und fügen Sie die aus der Azure Act
 
 ![Client-ID][api-management-client-id]
 
-Wechseln Sie zurück zur Azure Active Directory-Konfiguration, klicken Sie im Abschnitt **Schlüssel** auf die Dropdownliste **Dauer auswählen**, und geben Sie ein Intervall an. In diesem Beispiel wird der Wert **1 Jahr** verwendet.
+Wechseln Sie zurück zur Azure Active Directory-Konfiguration, klicken Sie im Abschnitt **Schlüssel** auf die Dropdownliste **Dauer auswählen**, und geben Sie ein Intervall an. In diesem Beispiel wird der Wert **1 Jahr** verwendet.
 
 ![Schlüssel][api-management-aad-key-before-save]
 
 Klicken Sie auf **Speichern**, um die Konfiguration zu speichern und den Schlüssel anzuzeigen. Kopieren Sie den Schlüssel in die Zwischenablage.
 
->Notieren Sie sich diesen Schlüssel. Nachdem Sie das Fenster für die Azure Active Directory-Konfiguration geschlossen haben, ist eine Anzeige des Schlüssels nicht mehr möglich.
+> Notieren Sie sich diesen Schlüssel. Nachdem Sie das Fenster für die Azure Active Directory-Konfiguration geschlossen haben, ist eine Anzeige des Schlüssels nicht mehr möglich.
+> 
+> 
 
 ![Schlüssel][api-management-aad-key-after-save]
 
@@ -106,19 +111,22 @@ Im Abschnitt **Zulässige Mandanten** können mehrere Domänen angegeben werden.
 
 ![Berechtigungen][api-management-permissions-form]
 
->Wenn ein nicht globaler Administrator versucht, sich anzumelden, bevor Berechtigungen durch einen globalen Administrator erteilt wurden, tritt ein Anmeldefehler auf, und ein Fehlerbildschirm wird angezeigt.
+> Wenn ein nicht globaler Administrator versucht, sich anzumelden, bevor Berechtigungen durch einen globalen Administrator erteilt wurden, tritt ein Anmeldefehler auf, und ein Fehlerbildschirm wird angezeigt.
+> 
+> 
 
 Nachdem die gewünschte Konfiguration angegeben wurde, klicken Sie auf **Speichern**.
 
 ![Speichern][api-management-client-allowed-tenants-save]
 
-Nachdem die Änderungen gespeichert wurden, können sich Benutzer aus dem angegebenen Azure Active Directory-Verzeichnis beim Entwicklerportal anmelden, indem sie die unter [Anmelden beim Entwicklerportal mit einem Azure Active Directory-Konto][] beschriebenen Schritte ausführen.
+Nachdem die Änderungen gespeichert wurden, können sich Benutzer aus dem angegebenen Azure Active Directory-Verzeichnis beim Entwicklerportal anmelden, indem sie die unter [Anmelden beim Entwicklerportal mit einem Azure Active Directory-Konto][Anmelden beim Entwicklerportal mit einem Azure Active Directory-Konto] beschriebenen Schritte ausführen.
 
 ## Hinzufügen einer externen Azure Active Directory-Gruppe
-
 Nachdem der Zugriff für Benutzer in einem Azure Active Directory-Verzeichnis aktiviert wurde, können Sie Azure Active Directory-Gruppen in API Management hinzufügen, um die Zuweisung der Entwickler in der Gruppe zu den gewünschten Produkten zu vereinfachen.
 
 > Um eine externe Azure Active Directory-Gruppe zu konfigurieren, muss Azure Active Directory zunächst – wie in der Vorgehensweise im vorherigen Abschnitt beschrieben – über die Registerkarte "Identitäten" konfiguriert werden.
+> 
+> 
 
 Externe Azure Active Directory-Gruppen werden über die Registerkarte **Sichtbarkeit** des Produkts hinzugefügt, für das Sie der Gruppe Zugriff gewähren möchten. Klicken Sie auf **Produkte** und anschließend auf den Namen des gewünschten Produkts.
 
@@ -155,7 +163,6 @@ Auf dieser Registerkarte können Sie **Name** und **Beschreibung** der Gruppe be
 Benutzer aus dem konfigurierten Azure Active Directory-Verzeichnis können sich beim Entwicklerportal anmelden und beliebige Gruppen abonnieren, die sie anzeigen können. Hierbei müssen die Anweisungen im folgenden Abschnitt befolgt werden.
 
 ## So melden Sie sich mit einem Azure Active Directory-Konto beim Entwicklerportal an
-
 Um sich mit einem im vorherigen Abschnitt konfigurierten Azure Active Directory-Konto beim Entwicklerportal anzumelden, öffnen Sie ein neues Browserfenster mit der **Anmelde-URL** aus der Active Directory-Anwendungskonfiguration, und klicken Sie auf **Azure Active Directory**.
 
 ![Entwicklerportal][api-management-dev-portal-signin]
@@ -171,8 +178,6 @@ Es wird möglicherweise ein Registrierungsformular angezeigt, wenn weitere Infor
 Der Benutzer ist jetzt beim Entwicklerportal für Ihre API Management-Dienstinstanz angemeldet.
 
 ![Registrierung abgeschlossen][api-management-registration-complete]
-
-
 
 [api-management-management-console]: ./media/api-management-howto-aad/api-management-management-console.png
 [api-management-security-external-identities]: ./media/api-management-howto-aad/api-management-security-external-identities.png

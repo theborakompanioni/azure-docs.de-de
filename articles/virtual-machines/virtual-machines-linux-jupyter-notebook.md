@@ -1,43 +1,39 @@
-<properties
-	pageTitle="Erstellen eines Jupyter/IPython Notebooks | Microsoft Azure"
-	description="In diesem Artikel erfahren Sie, wie Sie Jupyter/IPython Notebook auf einem virtuellen Linux-Computer bereitstellen, der mit dem Ressourcen-Manager-Bereitstellungsmodell in Azure erstellt wurde."
-	services="virtual-machines-linux"
-	documentationCenter="python"
-	authors="crwilcox"
-	manager="wpickett"
-	editor=""
-	tags="azure-service-management,azure-resource-manager"/>
+---
+title: Erstellen eines Jupyter/IPython Notebooks | Microsoft Docs
+description: In diesem Artikel erfahren Sie, wie Sie Jupyter/IPython Notebook auf einem virtuellen Linux-Computer bereitstellen, der mit dem Ressourcen-Manager-Bereitstellungsmodell in Azure erstellt wurde.
+services: virtual-machines-linux
+documentationcenter: python
+author: crwilcox
+manager: wpickett
+editor: ''
+tags: azure-service-management,azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="python"
-	ms.topic="article"
-	ms.date="11/10/2015"
-	ms.author="crwilcox"/>
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: python
+ms.topic: article
+ms.date: 11/10/2015
+ms.author: crwilcox
 
+---
 # Jupyter Notebook in Azure
-
 Das [Jupyter-Projekt](http://jupyter.org), früher das [IPython-Projekt](http://ipython.org), bietet eine Sammlung von Tools für wissenschaftliche Berechnungen mithilfe leistungsstarker interaktiver Shells, die Codeausführung mit der Erstellung eines Live-Berechnungsdokuments vereinen. Diese Notebook-Dateien enthalten beliebigen Text, mathematische Formeln, Eingabecode, Ergebnisse, Grafiken, Videos und beliebige andere Medientypen, die in modernen Webbrowsern angezeigt werden können. Jupyter Notebook ist eine hervorragende Wahl, ganz gleich, ob Sie Python-Anfänger sind und die Sprache in einer interessanten und interaktiven Umgebung erlernen möchten, oder ob Sie ernsthafte parallele und technische Berechnungen durchführen möchten.
 
 ![Screenshot](./media/virtual-machines-linux-jupyter-notebook/ipy-notebook-spectral.png) Analysieren der Struktur einer Tonaufnahme mithilfe von SciPy- und Matplotlib-Paketen
-
 
 ## Zwei Möglichkeiten der Verwendung von Jupyter: Azure-Notebooks oder benutzerdefinierte Bereitstellung
 Azure umfasst einen Dienst, den Sie für [den schnellen Einstieg in Jupyter](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx) verwenden können. Mit dem Azure Notebook-Dienst erhalten Sie schnell und einfach Zugriff auf die webbasierte Jupyter-Schnittstelle für skalierbare Rechenressourcen mit dem gesamten Funktionsumfang von Python und den zahlreichen Bibliotheken. Da die Installation über den Dienst erfolgt, können Benutzer auf diese Ressourcen zugreifen, ohne dass Verwaltung und Konfiguration erforderlich sind.
 
 Wenn der Notebook-Dienst für Ihr Szenario nicht ausgeführt werden kann, finden Sie später in diesem Artikel Informationen zum Bereitstellen von Jupyter Notebook in Microsoft Azure unter Verwendung von virtuellen Linux-Computern.
 
-[AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
+[!INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
 ## Erstellen und Konfigurieren einer VM in Azure
-
 Zunächst müssen Sie einen virtuellen Computer (VM) in Azure erstellen. Dieser virtuelle Computer ist ein komplettes Betriebssystem in der Cloud und wird für die Ausführung von Jupyter Notebook verwendet. Azure unterstützt sowohl virtuelle Linux- als auch virtuelle Windows-Computer. Daher wird die Einrichtung von Jupyter für beide virtuelle Computertypen erläutert.
 
 ### Erstellen eines virtuellen Linux-Computers und Öffnen eines Ports für Jupyter
-
-Befolgen Sie die [hier][portal-vm-linux] aufgeführten Anweisungen, um einen virtuellen Computer der *Ubuntu*-Distribution zu erstellen. In diesem Lernprogramm wird Ubuntu Server 14.04 LTS verwendet. Wir gehen vom Standardbenutzernamen *azureuser* aus.
+Befolgen Sie die [hier][portal-vm-linux] aufgeführten Anweisungen, um einen virtuellen Computer der *Ubuntu*-Distribution zu erstellen. In diesem Lernprogramm wird Ubuntu Server 14.04 LTS verwendet. Wir gehen vom Standardbenutzernamen *azureuser* aus.
 
 Nachdem der virtuelle Computer bereitgestellt wurde, muss eine Sicherheitsregel für die Netzwerksicherheitsgruppe geöffnet werden. Wechseln Sie im Azure-Portal zu **Netzwerksicherheitsgruppen**, und öffnen Sie die Registerkarte für die Sicherheitsgruppe, die Ihrem virtuellen Computer entspricht. Sie müssen eine Regel für die Sicherheit eingehender Verbindungen mit den folgenden Einstellungen hinzufügen: **TCP** für das Protokoll, ***** für den (öffentlichen) Quellport und **9999** für den (privaten) Zielport.
 
@@ -46,7 +42,6 @@ Nachdem der virtuelle Computer bereitgestellt wurde, muss eine Sicherheitsregel 
 Klicken Sie in Ihrer Netzwerksicherheitsgruppe auf **Netzwerkschnittstellen**, und notieren Sie sich die **öffentliche IP-Adresse**, da diese im nächsten Schritt für die Verbindung zum virtuellen Computer benötigt wird.
 
 ## Installieren der erforderlichen Software auf der VM
-
 Um Jupyter Notebook auf dem virtuellen Computer ausführen zu können, müssen zunächst Jupyter und die entsprechenden Abhängigkeiten installiert werden. Stellen Sie eine Verbindung mit dem virtuellen Linux-Computer her. Verwenden Sie dazu SSH und das Benutzername/Kennwort-Paar, das Sie beim Erstellen des virtuellen Computers gewählt haben. In diesem Lernprogramm wird PuTTY verwendet und die Verbindung über Windows hergestellt.
 
 ### Installieren von Jupyter unter Ubuntu
@@ -58,44 +53,43 @@ Installieren Sie Anaconda, eine beliebte Python-Distribution für Data Science, 
   <th>Python 2.7</th>
   <tr>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh'>64&#160;Bit</href>
-	</td>
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh'>64&#160;Bit</href>
+    </td>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh'>64&#160;Bit</href>
-	</td>
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh'>64&#160;Bit</href>
+    </td>
   </tr>
   <tr>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86.sh'>32&#160;Bit</href>
-	</td>
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86.sh'>32&#160;Bit</href>
+    </td>
     <td>
-		<a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86.sh'>32&#160;Bit</href>
-	</td>  
+        <a href='https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86.sh'>32&#160;Bit</href>
+    </td>  
   </tr>
 </table>
 
 
-#### Installieren von Anaconda3 2.3.0 64 Bit unter Ubuntu
+#### Installieren von Anaconda3 2.3.0 64 Bit unter Ubuntu
 Es folgt ein Beispiel, wie Sie Anaconda unter Ubuntu installieren können.
 
-	# install anaconda
-	cd ~
-	mkdir -p anaconda
-	cd anaconda/
-	curl -O https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh
-	sudo bash Anaconda3-2.3.0-Linux-x86_64.sh -b -f -p /anaconda3
+    # install anaconda
+    cd ~
+    mkdir -p anaconda
+    cd anaconda/
+    curl -O https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.3.0-Linux-x86_64.sh
+    sudo bash Anaconda3-2.3.0-Linux-x86_64.sh -b -f -p /anaconda3
 
-	# clean up home directory
-	cd ..
-	rm -rf anaconda/
+    # clean up home directory
+    cd ..
+    rm -rf anaconda/
 
-	# Update Jupyter to the latest install and generate its config file
-	sudo /anaconda3/bin/conda install jupyter -y
-	/anaconda3/bin/jupyter-notebook --generate-config
+    # Update Jupyter to the latest install and generate its config file
+    sudo /anaconda3/bin/conda install jupyter -y
+    /anaconda3/bin/jupyter-notebook --generate-config
 
 
 ![Screenshot](./media/virtual-machines-linux-jupyter-notebook/anaconda-install.png)
-
 
 ### Konfigurieren von Jupyter und Verwenden von SSL
 Nach der Installation müssen die Konfigurationsdateien für Jupyter eingerichtet werden. Wenn Probleme beim Konfigurieren von Jupyter auftreten, finden Sie möglicherweise nützliche Hinweise in der [Jupyter-Dokumentation für die Ausführung eines Notebook-Servers](http://jupyter-notebook.readthedocs.org/en/latest/public_server.html) (in englischer Sprache).
@@ -139,19 +133,17 @@ Als Nächstes bearbeiten wir die Konfigurationsdatei des Profils. Hierbei handel
     c.NotebookApp.open_browser = False
 
 ### Ausführen von Jupyter Notebook
-
 Nun können wir Jupyter Notebook starten. Navigieren Sie dazu in das Verzeichnis, in dem Sie Notebooks speichern möchten, und führen Sie den Jupyter Notebook-Server mit dem folgenden Befehl aus.
 
     /anaconda3/bin/jupyter-notebook
 
 Jetzt sollten Sie in der Lage sein, unter der Adresse `https://[PUBLIC-IP-ADDRESS]:9999` auf Jupyter Notebook zuzugreifen.
 
-Beim ersten Zugriff auf IPython Notebook müssen Sie auf der Anmeldungsseite Ihr Kennwort eingeben. Nach der Anmeldung sehen Sie das Jupyter Notebook-Dashboard, d. h. die Steuerzentrale für sämtliche Notebook-Vorgänge. Auf dieser Seite können Sie neue Notebooks erstellen und bestehende Notebooks öffnen.
+Beim ersten Zugriff auf IPython Notebook müssen Sie auf der Anmeldungsseite Ihr Kennwort eingeben. Nach der Anmeldung sehen Sie das Jupyter Notebook-Dashboard, d. h. die Steuerzentrale für sämtliche Notebook-Vorgänge. Auf dieser Seite können Sie neue Notebooks erstellen und bestehende Notebooks öffnen.
 
 ![Screenshot](./media/virtual-machines-linux-jupyter-notebook/jupyter-tree-view.png)
 
 ### Verwenden von Jupyter Notebook
-
 Wenn Sie auf die Schaltfläche **Neu** klicken, wird die folgende Seite geöffnet.
 
 ![Screenshot](./media/virtual-machines-linux-jupyter-notebook/jupyter-untitled-notebook.png)
@@ -159,7 +151,6 @@ Wenn Sie auf die Schaltfläche **Neu** klicken, wird die folgende Seite geöffne
 In dem mit der `In []:`-Eingabeaufforderung gekennzeichneten Bereich können Sie gültigen Python-Code eingeben und diesen ausführen, indem Sie `Shift-Enter` drücken oder auf das "Wiedergabe"-Symbol klicken (ein nach rechts zeigendes Dreieck auf der Symbolleiste).
 
 ## Ein mächtiges Paradigma: Live-Berechnungsdokumente mit Rich-Media-Objekten
-
 Das Notebook ist sehr intuitiv für Benutzer, die mit Python und Textverarbeitungsprogrammen vertraut sind, da es sich in gewisser Weise um beides handelt: Sie können Blöcke von Python-Code ausführen und gleichzeitig Notizen und anderen Text erstellen, indem Sie den Stil einer Zelle im Dropdownmenü der Symbolleiste von "Code" zu "Markdown" ändern.
 
 Jupyter ist weit mehr als ein reines Textverarbeitungsprogramm, da Sie mit Jupyter Berechnungen und Rich-Media-Inhalte (Text, Grafiken, Videos und praktisch alle in einem modernen Browser darstellbaren Elemente) kombinieren können. Sie können Text, Code, Videos und vieles mehr kombinieren!
@@ -171,26 +162,19 @@ Mit den vielen hervorragenden Python-Bibliotheken für wissenschaftliche und tec
 Dieses Paradigma der Mischung aus modernem Web und Live-Berechnungen bietet zahlreiche Vorzüge und eignet sich hervorragend für die Cloud. Notebooks können zu folgenden Zwecken verwendet werden:
 
 * Als Berechnungs-Notizblock für die Aufzeichnung von Erforschungsdaten zu einem Problem.
-
 * Für die Weitergabe von Ergebnissen an Kollegen, entweder in Form von Live-Berechnungen oder als Kopie mit festem Format (HTML, PDF).
-
 * Für die Verteilung und Präsentation von Live-Unterrichtsmaterialien inklusive Berechnungen, anhand derer die Studenten mit dem tatsächlichen Code experimentieren, diesen verändern und sofort erneut ausführen können.
-
 * Für die Bereitstellung von "ausführbaren Arbeiten", die Forschungsergebnisse auf eine Weise präsentieren, die von anderen sofort nachvollzogen, validiert und erweitert werden können.
-
 * Als Plattform für gemeinschaftliche Berechnungen: Mehrere Benutzer können sich bei einem Notebook-Server anmelden und eine Live-Berechnungssitzung gemeinsam nutzen.
 
-
-Im IPython-Quellcode-[Repository][] finden Sie ein gesamtes Verzeichnis mit Notebook-Beispielen, die Sie herunterladen und anschließend auf Ihrem eigenen virtuellen Jupyter-Computer in Azure ausprobieren können. Laden Sie einfach die `.ipynb`-Dateien von der Website herunter, und laden Sie die Dateien auf das Dashboard Ihrer Notebook-Azure-VM hoch(oder laden Sie sie direkt in die VM herunter).
+Im IPython-Quellcode-[Repository][Repository] finden Sie ein gesamtes Verzeichnis mit Notebook-Beispielen, die Sie herunterladen und anschließend auf Ihrem eigenen virtuellen Jupyter-Computer in Azure ausprobieren können. Laden Sie einfach die `.ipynb`-Dateien von der Website herunter, und laden Sie die Dateien auf das Dashboard Ihrer Notebook-Azure-VM hoch(oder laden Sie sie direkt in die VM herunter).
 
 ## Zusammenfassung
-
 Jupyter Notebook bietet eine leistungsstarke Schnittstelle für die interaktive Nutzung des Funktionsumfangs des Python-Ökosystems in Azure. Die Notebooks decken ein breites Spektrum von Anwendungsfällen ab, inklusive Erkundung und Erlernen von Python, Datenanalyse und -Darstellung, Simulation und parallele Berechnungen. Die resultierenden Notebook-Dokumente enthalten eine komplette Aufzeichnung aller ausgeführten Berechnungen und können an andere Jupyter-Benutzer weitergegeben werden. Jupyter Notebook kann als lokale Anwendung verwendet werden, eignet sich jedoch vor allem ideal für Cloudbereitstellungen in Azure.
 
-Die Kernfunktionen von Jupyter sind auch in Visual Studio unter [Python Tools for Visual Studio][] \(PTVS) verfügbar. PTVS ist ein kostenloses Open Source-Plug-In von Microsoft und verwandelt Visual Studio in eine umfangreiche Python-Entwicklungsumgebung mit einem modernen Editor inklusive IntelliSense, Debugging, Profilerstellung und Integration für parallele Berechnungen.
+Die Kernfunktionen von Jupyter sind auch in Visual Studio unter [Python Tools for Visual Studio][Python Tools for Visual Studio] \(PTVS) verfügbar. PTVS ist ein kostenloses Open Source-Plug-In von Microsoft und verwandelt Visual Studio in eine umfangreiche Python-Entwicklungsumgebung mit einem modernen Editor inklusive IntelliSense, Debugging, Profilerstellung und Integration für parallele Berechnungen.
 
 ## Nächste Schritte
-
 Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 
 [portal-vm-linux]: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-tutorial-portal-rm/

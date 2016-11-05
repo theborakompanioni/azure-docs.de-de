@@ -1,28 +1,30 @@
-<properties
-   pageTitle="Integritätsüberwachung in Service Fabric | Microsoft Azure"
-   description="Eine Einführung in das Service Fabric-Integritätsüberwachungsmodell von Azure, das die Überwachung des Clusters sowie seiner Programme und Dienste ermöglicht."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="oanapl"
-   manager="timlt"
-   editor=""/>
+---
+title: Integritätsüberwachung in Service Fabric | Microsoft Docs
+description: Eine Einführung in das Service Fabric-Integritätsüberwachungsmodell von Azure, das die Überwachung des Clusters sowie seiner Programme und Dienste ermöglicht.
+services: service-fabric
+documentationcenter: .net
+author: oanapl
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/28/2016"
-   ms.author="oanapl"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/28/2016
+ms.author: oanapl
 
-
+---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Einführung in die Service Fabric-Integritätsüberwachung
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
 
 Die Service Fabric-Komponenten verwenden dieses umfangreiche Integritätsmodell, um ihren aktuellen Zustand zu melden. Sie können den gleichen Mechanismus verwenden, um Integritätsberichte für Anwendungen zu erstellen. Wenn Sie in hochwertige Integritätsberichte zur Erfassung Ihrer individuellen Bedingungen investieren, können Sie Probleme für Ihre ausgeführte Anwendung viel leichter erkennen und beheben.
 
-> [AZURE.NOTE] Das Integritätssubsystem wurde ursprünglich für das Überwachen von Upgrades eingeführt. Service Fabric bietet überwachte Anwendungs- und Clusterupgrades mit uneingeschränkter Verfügbarkeit, ohne Ausfallzeit und mit minimaler oder sogar ganz ohne Benutzerinteraktion. Hierzu prüft das Upgrade die Integrität basierend auf den konfigurierten Upgraderichtlinien und lässt die Fortsetzung des Upgrades nur dann zu, wenn die Integrität die gewünschten Schwellenwerte erfüllt. Werden die Schwellenwerte nicht erfüllt, wird entweder automatisch ein Rollback des Upgrades durchgeführt oder das Upgrade angehalten, damit Administratoren das Problem beheben können. Weitere Informationen zu Anwendungsupgrades finden Sie in [diesem Artikel](service-fabric-application-upgrade.md).
+> [!NOTE]
+> Das Integritätssubsystem wurde ursprünglich für das Überwachen von Upgrades eingeführt. Service Fabric bietet überwachte Anwendungs- und Clusterupgrades mit uneingeschränkter Verfügbarkeit, ohne Ausfallzeit und mit minimaler oder sogar ganz ohne Benutzerinteraktion. Hierzu prüft das Upgrade die Integrität basierend auf den konfigurierten Upgraderichtlinien und lässt die Fortsetzung des Upgrades nur dann zu, wenn die Integrität die gewünschten Schwellenwerte erfüllt. Werden die Schwellenwerte nicht erfüllt, wird entweder automatisch ein Rollback des Upgrades durchgeführt oder das Upgrade angehalten, damit Administratoren das Problem beheben können. Weitere Informationen zu Anwendungsupgrades finden Sie in [diesem Artikel](service-fabric-application-upgrade.md).
+> 
+> 
 
 ## <a name="health-store"></a>Integritätsspeicher
 Der Integritätsspeicher speichert integritätsbezogene Informationen zu Entitäten im Cluster, um Informationen auf einfache Weise abrufen und evaluieren zu können. Er ist als persistent zustandsbehafteter Service Fabric-Dienst implementiert, um hohe Verfügbarkeit und Skalierbarkeit zu bieten. Der Integritätsspeicher ist Teil der Anwendung **fabric:/System** und verfügbar, sobald der Cluster eingerichtet wurde und ausgeführt wird.
@@ -41,27 +43,20 @@ Die Integritätsentitäten und die Hierarchie ermöglichen das effektive Melden,
 
 Zu den Integritätsentitäten zählen Folgende:
 
-- **Cluster**. Stellt die Integrität eines Service Fabric-Clusters dar. Clusterintegritätsberichte beschreiben Bedingungen, die den gesamten Cluster betreffen; das Eingrenzen auf ein oder mehrere untergeordnete fehlerhafte Elemente ist nicht möglich. Beispiele hierfür sind das Split-Brain-Syndrom des Clusters aufgrund von Problemen mit der Netzwerkpartitionierung oder der Kommunikation.
-
-- **Knoten**. Stellt die Integrität eines Service Fabric-Knotens dar. In Knotenintegritätsberichten werden Bedingungen beschrieben, die sich auf die Knotenfunktionen auswirken. Sie wirken sich normalerweise auf alle bereitgestellten Entitäten aus, die darauf ausgeführt werden. Beispiele hierfür sind ein Knoten ohne verbleibenden Festplattenplatz (oder eine andere computerweite Eigenschaft, z. B. Arbeitsspeicher, Verbindungen) und der Ausfall eines Knotens. Die Knotenentität wird anhand des Knotennamens (Zeichenfolge) identifiziert.
-
-- **Anwendung**. Stellt die Integrität einer im Cluster ausgeführten Anwendungsinstanz dar. In Berichten zur Anwendungsintegrität werden Bedingungen beschrieben, die sich auf die Gesamtintegrität der Anwendung auswirken. Sie können nicht auf einzelne untergeordnete Elemente (Dienste oder bereitgestellte Anwendungen) eingegrenzt werden. Ein Beispiel hierfür ist die End-to-End-Interaktion zwischen verschiedenen Diensten in der Anwendung. Die Anwendungsentität wird anhand des Anwendungsnamens (URI) identifiziert.
-
-- **Dienst**. Stellt die Integrität eines im Cluster ausgeführten Diensts dar. Dienstintegritätsberichte beschreiben Bedingungen, die Auswirkungen auf die allgemeine Integrität des Diensts haben. Das Eingrenzen auf eine Partition oder ein Replikat ist nicht möglich. Ein Beispiel hierfür ist eine Dienstkonfiguration (z. B. ein Port oder eine externe Dateifreigabe), die in allen Partitionen Probleme verursacht. Die Dienstentität wird anhand des Dienstnamens (URI) identifiziert.
-
-- **Partition**. Stellt die Integrität einer Dienstpartition dar. Partitionsintegritätsberichte beschreiben Bedingungen, die Auswirkungen auf die gesamte Replikatgruppe haben. Beispiele hierfür sind eine Anzahl der Replikate unterhalb der Zielanzahl und eine Partition mit Quorumverlust. Die Entität für die Partition wird anhand der Partitions-ID (GUID) identifiziert.
-
-- **Replica**: Stellt die Integrität eines zustandsbehafteten Dienstreplikats oder einer zustandslosen Dienstinstanz dar. Dies ist die kleinste Einheit einer Anwendung, für die Watchdogs und Systemkomponenten Berichte erstellen können. Beispiele für zustandsbehaftete Dienste: Ein primäres Replikat, das meldet, wenn Vorgänge in sekundären Replikaten nicht repliziert werden können, oder eine Replikation, die nicht mit der erwarteten Geschwindigkeit durchgeführt wird. Außerdem kann für eine zustandslose Instanz gemeldet werden, wenn die Instanz nicht mehr über genügend Ressourcen verfügt oder Konnektivitätsprobleme bestehen. Die Replikatentität wird anhand der Partitions-ID (GUID) und der Replikat- bzw. Instanz-ID (lang) identifiziert.
-
-- **DeployedApplication**. Stellt die Integrität einer *auf einem Knoten ausgeführten Anwendung* dar. Integritätsberichte zu bereitgestellten Anwendungen beschreiben Bedingungen, die sich auf die Anwendung auf dem Knoten beziehen; das Eingrenzen auf Dienstpakete, die im gleichen Knoten bereitgestellt sind, ist nicht möglich. Beispiele: Das Anwendungspaket kann nicht auf den Knoten heruntergeladen werden, oder beim Einrichten der Sicherheitsprinzipale der Anwendung auf dem Knoten tritt ein Problem auf. Die bereitgestellte Anwendung wird anhand des Anwendungsnamens (URI) und des Knotennamens (Zeichenfolge) identifiziert.
-
-- **DeployedServicePackage**. Stellt die Integrität des Dienstpakets dar, das auf einem Knoten im Cluster ausgeführt wird. Es beschreibt Bedingungen, die sich auf das Dienstpaket beziehen und keine Auswirkungen auf andere Dienstpakete haben, die für die gleiche Anwendung auf demselben Knoten bereitgestellt sind. Beispiele hierfür sind ein Codepaket im Dienstpaket, das nicht gestartet werden kann, und ein Konfigurationspaket, das nicht gelesen werden kann. Das bereitgestellte Dienstpaket wird anhand des Anwendungsnamens (URI), Knotennamens (Zeichenfolge) und Dienstmanifestnamens (Zeichenfolge) identifiziert.
+* **Cluster**. Stellt die Integrität eines Service Fabric-Clusters dar. Clusterintegritätsberichte beschreiben Bedingungen, die den gesamten Cluster betreffen; das Eingrenzen auf ein oder mehrere untergeordnete fehlerhafte Elemente ist nicht möglich. Beispiele hierfür sind das Split-Brain-Syndrom des Clusters aufgrund von Problemen mit der Netzwerkpartitionierung oder der Kommunikation.
+* **Knoten**. Stellt die Integrität eines Service Fabric-Knotens dar. In Knotenintegritätsberichten werden Bedingungen beschrieben, die sich auf die Knotenfunktionen auswirken. Sie wirken sich normalerweise auf alle bereitgestellten Entitäten aus, die darauf ausgeführt werden. Beispiele hierfür sind ein Knoten ohne verbleibenden Festplattenplatz (oder eine andere computerweite Eigenschaft, z. B. Arbeitsspeicher, Verbindungen) und der Ausfall eines Knotens. Die Knotenentität wird anhand des Knotennamens (Zeichenfolge) identifiziert.
+* **Anwendung**. Stellt die Integrität einer im Cluster ausgeführten Anwendungsinstanz dar. In Berichten zur Anwendungsintegrität werden Bedingungen beschrieben, die sich auf die Gesamtintegrität der Anwendung auswirken. Sie können nicht auf einzelne untergeordnete Elemente (Dienste oder bereitgestellte Anwendungen) eingegrenzt werden. Ein Beispiel hierfür ist die End-to-End-Interaktion zwischen verschiedenen Diensten in der Anwendung. Die Anwendungsentität wird anhand des Anwendungsnamens (URI) identifiziert.
+* **Dienst**. Stellt die Integrität eines im Cluster ausgeführten Diensts dar. Dienstintegritätsberichte beschreiben Bedingungen, die Auswirkungen auf die allgemeine Integrität des Diensts haben. Das Eingrenzen auf eine Partition oder ein Replikat ist nicht möglich. Ein Beispiel hierfür ist eine Dienstkonfiguration (z. B. ein Port oder eine externe Dateifreigabe), die in allen Partitionen Probleme verursacht. Die Dienstentität wird anhand des Dienstnamens (URI) identifiziert.
+* **Partition**. Stellt die Integrität einer Dienstpartition dar. Partitionsintegritätsberichte beschreiben Bedingungen, die Auswirkungen auf die gesamte Replikatgruppe haben. Beispiele hierfür sind eine Anzahl der Replikate unterhalb der Zielanzahl und eine Partition mit Quorumverlust. Die Entität für die Partition wird anhand der Partitions-ID (GUID) identifiziert.
+* **Replica**: Stellt die Integrität eines zustandsbehafteten Dienstreplikats oder einer zustandslosen Dienstinstanz dar. Dies ist die kleinste Einheit einer Anwendung, für die Watchdogs und Systemkomponenten Berichte erstellen können. Beispiele für zustandsbehaftete Dienste: Ein primäres Replikat, das meldet, wenn Vorgänge in sekundären Replikaten nicht repliziert werden können, oder eine Replikation, die nicht mit der erwarteten Geschwindigkeit durchgeführt wird. Außerdem kann für eine zustandslose Instanz gemeldet werden, wenn die Instanz nicht mehr über genügend Ressourcen verfügt oder Konnektivitätsprobleme bestehen. Die Replikatentität wird anhand der Partitions-ID (GUID) und der Replikat- bzw. Instanz-ID (lang) identifiziert.
+* **DeployedApplication**. Stellt die Integrität einer *auf einem Knoten ausgeführten Anwendung* dar. Integritätsberichte zu bereitgestellten Anwendungen beschreiben Bedingungen, die sich auf die Anwendung auf dem Knoten beziehen; das Eingrenzen auf Dienstpakete, die im gleichen Knoten bereitgestellt sind, ist nicht möglich. Beispiele: Das Anwendungspaket kann nicht auf den Knoten heruntergeladen werden, oder beim Einrichten der Sicherheitsprinzipale der Anwendung auf dem Knoten tritt ein Problem auf. Die bereitgestellte Anwendung wird anhand des Anwendungsnamens (URI) und des Knotennamens (Zeichenfolge) identifiziert.
+* **DeployedServicePackage**. Stellt die Integrität des Dienstpakets dar, das auf einem Knoten im Cluster ausgeführt wird. Es beschreibt Bedingungen, die sich auf das Dienstpaket beziehen und keine Auswirkungen auf andere Dienstpakete haben, die für die gleiche Anwendung auf demselben Knoten bereitgestellt sind. Beispiele hierfür sind ein Codepaket im Dienstpaket, das nicht gestartet werden kann, und ein Konfigurationspaket, das nicht gelesen werden kann. Das bereitgestellte Dienstpaket wird anhand des Anwendungsnamens (URI), Knotennamens (Zeichenfolge) und Dienstmanifestnamens (Zeichenfolge) identifiziert.
 
 Die Granularität des Integritätsmodells erleichtert das Erkennen und Beheben von Problemen. Wenn ein Dienst beispielsweise nicht reagiert, kann gemeldet werden, dass die Anwendungsinstanz nicht „integer“ (also fehlerhaft) ist. Eine Berichterstellung auf dieser Ebene ist nicht optimal, da das Problem unter Umständen nicht alle Dienste innerhalb dieser Anwendung betrifft. Der Bericht sollte auf den fehlerhaften Dienst oder eine bestimmte untergeordnete Partition angewendet werden, falls weitere Informationen auf diese Partition hindeuten. Die Daten werden automatisch in der Hierarchie angezeigt, und eine fehlerhafte Partition wird auf Dienst- und Anwendungsebene sichtbar gemacht. Durch diese Aggregierung kann die zugrunde liegende Ursache des Problems schneller ermittelt und behoben werden.
 
 Die Integritätshierarchie besteht aus Beziehungen zwischen übergeordneten und untergeordneten Elementen. Ein Cluster besteht aus Knoten und Anwendungen. Anwendungen verfügen über Dienste und bereitgestellte Anwendungen. Bereitgestellte Anwendungen verfügen über bereitgestellte Pakete. Dienste verfügen über Partitionen, wobei jede Partition über ein oder mehrere Replikate verfügt. Zwischen Knoten und bereitgestellten Entitäten besteht eine besondere Beziehung. Wird ein Knoten von der übergeordneten Systemkomponente (Failover-Manager-Dienst) als fehlerhaft gemeldet, hat dies Auswirkungen auf die darauf bereitgestellten Anwendungen, Dienstpakete und Replikate.
 
-Die Integritätshierarchie stellt den aktuellen Zustand des Systems basierend auf den aktuellen Integritätsberichten dar, d. h., die Informationen sind nahezu in Echtzeit verfügbar.
+Die Integritätshierarchie stellt den aktuellen Zustand des Systems basierend auf den aktuellen Integritätsberichten dar, d. h., die Informationen sind nahezu in Echtzeit verfügbar.
 Interne und externe Watchdogs können auf der Grundlage von anwendungsspezifischer Logik oder benutzerdefinierten überwachten Bedingungen Berichte zu den gleichen Entitäten erstellen. Benutzerberichte können zusammen mit den Systemberichten verwendet werden.
 
 Setzen Sie sich bei der Gestaltung eines umfangreichen Clouddiensts mit der Frage auseinander, wie Integritätsprobleme gemeldet und behandelt werden sollen, um das Debugging, die Überwachung und den Betrieb des Diensts zu vereinfachen.
@@ -71,18 +66,18 @@ Service Fabric verwendet drei Zustände, um die Integrität einer Entität zu be
 
 Mögliche [Integritätszustände](https://msdn.microsoft.com/library/azure/system.fabric.health.healthstate) :
 
-- **OK**. Die Entität ist fehlerfrei. Es wurden keine bekannten Probleme für das Element oder eines seiner untergeordneten Elemente (falls zutreffend) gemeldet.
-
-- **Warnung**. Bei der Entität liegen Probleme vor, sie ist jedoch noch nicht fehlerhaft. (Es kommt also beispielsweise zu Verzögerungen, die Funktion ist dadurch jedoch noch nicht beeinträchtigt.) In einigen Fällen wird die Warnungsbedingung von selbst wieder behoben, ohne dass ein Benutzereingriff erforderlich ist. Es empfiehlt sich jedoch, die Warnung näher zu untersuchen. In anderen Fällen kann sich die Warnungsbedingung ohne Benutzereingriff zu einem schwerwiegenden Problem entwickeln.
-
-- **Error**. Die Entität ist fehlerhaft. Eine fehlerhafte Entität funktioniert nicht richtig, und der fehlerhafte Zustand der Entität muss durch einen Benutzereingriff behoben werden.
-
-- **Unknown**. Die Entität ist im Integritätsspeicher nicht vorhanden. Dieses Ergebnis kann über die verteilten Abfragen abgerufen werden, mit denen Ergebnisse mehrerer Komponenten zusammengeführt werden. Die Abfrage zum Abrufen der Knotenliste z.B. wird an **FailoverManager** und **HealthManager** gesendet, die Abfrage zum Abrufen der Anwendungsliste dagegen wird an **ClusterManager** und **HealthManager** gesendet. Diese Abfragen führen die Ergebnisse aus mehreren Systemkomponenten zusammen. Gibt eine andere Systemkomponente eine Entität zurück, die den Integritätsspeicher noch nicht erreicht hat oder aus dem Integritätsspeicher entfernt wurde, besitzt das zusammengeführte Ergebnis einen unbekannten Integritätszustand.
+* **OK**. Die Entität ist fehlerfrei. Es wurden keine bekannten Probleme für das Element oder eines seiner untergeordneten Elemente (falls zutreffend) gemeldet.
+* **Warnung**. Bei der Entität liegen Probleme vor, sie ist jedoch noch nicht fehlerhaft. (Es kommt also beispielsweise zu Verzögerungen, die Funktion ist dadurch jedoch noch nicht beeinträchtigt.) In einigen Fällen wird die Warnungsbedingung von selbst wieder behoben, ohne dass ein Benutzereingriff erforderlich ist. Es empfiehlt sich jedoch, die Warnung näher zu untersuchen. In anderen Fällen kann sich die Warnungsbedingung ohne Benutzereingriff zu einem schwerwiegenden Problem entwickeln.
+* **Error**. Die Entität ist fehlerhaft. Eine fehlerhafte Entität funktioniert nicht richtig, und der fehlerhafte Zustand der Entität muss durch einen Benutzereingriff behoben werden.
+* **Unknown**. Die Entität ist im Integritätsspeicher nicht vorhanden. Dieses Ergebnis kann über die verteilten Abfragen abgerufen werden, mit denen Ergebnisse mehrerer Komponenten zusammengeführt werden. Die Abfrage zum Abrufen der Knotenliste z.B. wird an **FailoverManager** und **HealthManager** gesendet, die Abfrage zum Abrufen der Anwendungsliste dagegen wird an **ClusterManager** und **HealthManager** gesendet. Diese Abfragen führen die Ergebnisse aus mehreren Systemkomponenten zusammen. Gibt eine andere Systemkomponente eine Entität zurück, die den Integritätsspeicher noch nicht erreicht hat oder aus dem Integritätsspeicher entfernt wurde, besitzt das zusammengeführte Ergebnis einen unbekannten Integritätszustand.
 
 ## <a name="health-policies"></a>Integritätsrichtlinien
 Der Integritätsspeicher wendet Integritätsrichtlinien an, um basierend auf den Berichten und untergeordneten Elementen einer Entität festzustellen, ob die Entität fehlerfrei ist.
 
-> [AZURE.NOTE] Integritätsrichtlinien werden im Clustermanifest (für die Integritätsevaluierung von Cluster und Knoten) oder im Anwendungsmanifest (für die Evaluierung einer Anwendung und der untergeordneten Elemente) angegeben. Integritätsevaluierungsanforderungen können auch benutzerdefinierte Richtlinien zur Integritätsevaluierung übergeben, die nur für diese eine Evaluierung verwendet werden.
+> [!NOTE]
+> Integritätsrichtlinien werden im Clustermanifest (für die Integritätsevaluierung von Cluster und Knoten) oder im Anwendungsmanifest (für die Evaluierung einer Anwendung und der untergeordneten Elemente) angegeben. Integritätsevaluierungsanforderungen können auch benutzerdefinierte Richtlinien zur Integritätsevaluierung übergeben, die nur für diese eine Evaluierung verwendet werden.
+> 
+> 
 
 Standardmäßig wendet Service Fabric strenge Regeln (alles muss fehlerfrei sein) auf hierarchische Beziehungen von über- und untergeordneten Elementen an. Wenn auch nur eines der untergeordneten Elemente ein fehlerhaftes Ereignis aufweist, wird das übergeordnete Element als fehlerhaft angesehen.
 
@@ -90,14 +85,11 @@ Standardmäßig wendet Service Fabric strenge Regeln (alles muss fehlerfrei sein
 Die [Clusterintegritätsrichtlinie](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.aspx) wird zum Auswerten des Integritätszustands des Clusters und der Knoten verwendet. Die Richtlinie kann im Clustermanifest definiert werden. Falls sie nicht vorhanden ist, wird die Standardrichtlinie (keine Fehler zulässig) verwendet.
 Die Clusterintegritätsrichtlinie enthält Folgendes:
 
-- [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.considerwarningaserror.aspx). Gibt an, ob während der Integritätsevaluierung Integritätsberichte mit dem Ergebnis „Warning“ als Fehler zu behandeln sind. Standardwert: false.
-
-- [MaxPercentUnhealthyApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications.aspx). Gibt den maximal tolerierten Prozentsatz an Anwendungen an, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird.
-
-- [MaxPercentUnhealthyNodes](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes.aspx). Gibt den maximal tolerierten Prozentsatz an Knoten an, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Beim Konfigurieren dieses Prozentsatzes muss berücksichtigt werden, dass in großen Clustern immer einige Knoten inaktiv oder aufgrund von Wartungsarbeiten nicht verfügbar sind.
-
-- [ApplicationTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap.aspx). Die Zuordnung der Anwendungstyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Anwendungstypen zu beschreiben. Standardmäßig werden alle Anwendungen in einen Pool eingefügt und anhand von MaxPercentUnhealthyApplications bewertet. Sollte bei bestimmten Anwendungstypen eine abweichende Behandlung erforderlich sein, können diese vom globalen Pool ausgenommen werden. Sie werden dann stattdessen auf der Grundlage der Prozentwerte bewertet, die dem Namen ihres Anwendungstyps in der Zuordnung zugeordnet sind. Beispielsweise enthält ein Cluster Tausende von Anwendungen mit unterschiedlichen Typen und wenige Steueranwendungsinstanzen eines besonderen Anwendungstyps. Die Steueranwendungen dürfen niemals einen Fehlerstatus aufweisen. Sie können den globalen MaxPercentUnhealthyApplications-Wert auf 20 Prozent festlegen, um einige Fehler zu tolerieren, für den Anwendungstyp „ControlApplicationType“ muss der MaxPercentUnhealthyApplications-Wert jedoch auf „0“ festgelegt werden. Wenn einige der zahlreichen Anwendungen fehlerhaft sind, aber unter dem globalen Prozentsatz für fehlerhafte Anwendungen liegen, wird der Cluster mit einer Warnung ausgewertet. Der Integritätszustand „Warnung“ wirkt sich nicht auf ein Clusterupgrade oder auf andere Überwachungen aus, die durch den Integritätszustand „Fehler“ ausgelöst werden. Weist aber auch nur eine einzelne Steueranwendung den Zustand „Fehler“ auf, ist der gesamte Cluster fehlerhaft, was je nach Upgradekonfiguration zu einem Rollback oder zum Anhalten des Clusters führt.
-Für die in der Zuordnung definierten Anwendungstypen werden alle Anwendungsinstanzen aus dem globalen Anwendungspool entfernt. Sie werden anhand des speziellen MaxPercentUnhealthyApplications-Werts aus der Zuordnung basierend auf der Gesamtanzahl von Anwendungen des Anwendungstyps ausgewertet. Die restlichen Anwendungen verbleiben im globalen Pool und werden mit MaxPercentUnhealthyApplications ausgewertet.
+* [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.considerwarningaserror.aspx). Gibt an, ob während der Integritätsevaluierung Integritätsberichte mit dem Ergebnis „Warning“ als Fehler zu behandeln sind. Standardwert: false.
+* [MaxPercentUnhealthyApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications.aspx). Gibt den maximal tolerierten Prozentsatz an Anwendungen an, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird.
+* [MaxPercentUnhealthyNodes](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes.aspx). Gibt den maximal tolerierten Prozentsatz an Knoten an, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Beim Konfigurieren dieses Prozentsatzes muss berücksichtigt werden, dass in großen Clustern immer einige Knoten inaktiv oder aufgrund von Wartungsarbeiten nicht verfügbar sind.
+* [ApplicationTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap.aspx). Die Zuordnung der Anwendungstyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Anwendungstypen zu beschreiben. Standardmäßig werden alle Anwendungen in einen Pool eingefügt und anhand von MaxPercentUnhealthyApplications bewertet. Sollte bei bestimmten Anwendungstypen eine abweichende Behandlung erforderlich sein, können diese vom globalen Pool ausgenommen werden. Sie werden dann stattdessen auf der Grundlage der Prozentwerte bewertet, die dem Namen ihres Anwendungstyps in der Zuordnung zugeordnet sind. Beispielsweise enthält ein Cluster Tausende von Anwendungen mit unterschiedlichen Typen und wenige Steueranwendungsinstanzen eines besonderen Anwendungstyps. Die Steueranwendungen dürfen niemals einen Fehlerstatus aufweisen. Sie können den globalen MaxPercentUnhealthyApplications-Wert auf 20 Prozent festlegen, um einige Fehler zu tolerieren, für den Anwendungstyp „ControlApplicationType“ muss der MaxPercentUnhealthyApplications-Wert jedoch auf „0“ festgelegt werden. Wenn einige der zahlreichen Anwendungen fehlerhaft sind, aber unter dem globalen Prozentsatz für fehlerhafte Anwendungen liegen, wird der Cluster mit einer Warnung ausgewertet. Der Integritätszustand „Warnung“ wirkt sich nicht auf ein Clusterupgrade oder auf andere Überwachungen aus, die durch den Integritätszustand „Fehler“ ausgelöst werden. Weist aber auch nur eine einzelne Steueranwendung den Zustand „Fehler“ auf, ist der gesamte Cluster fehlerhaft, was je nach Upgradekonfiguration zu einem Rollback oder zum Anhalten des Clusters führt.
+  Für die in der Zuordnung definierten Anwendungstypen werden alle Anwendungsinstanzen aus dem globalen Anwendungspool entfernt. Sie werden anhand des speziellen MaxPercentUnhealthyApplications-Werts aus der Zuordnung basierend auf der Gesamtanzahl von Anwendungen des Anwendungstyps ausgewertet. Die restlichen Anwendungen verbleiben im globalen Pool und werden mit MaxPercentUnhealthyApplications ausgewertet.
 
 Das folgende Beispiel zeigt einen Auszug aus einem Clustermanifest. Ordnen Sie dem Parameternamen „ApplicationTypeMaxPercentUnhealthyApplications-“ gefolgt von dem Namen des Anwendungstyps als Präfixe zu, um Einträge in der Anwendungstypzuordnung zu definieren.
 
@@ -116,22 +108,17 @@ Das folgende Beispiel zeigt einen Auszug aus einem Clustermanifest. Ordnen Sie d
 Die [Anwendungsintegritätsrichtlinie](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.aspx) beschreibt, wie die Auswertung von Ereignissen und Aggregationen der Zustände von untergeordneten Elementen für eine Anwendung und ihre untergeordneten Elemente erfolgen soll. Diese Richtlinie kann im Anwendungsmanifest ( **ApplicationManifest.xml**) im Anwendungspaket definiert werden. Wenn keine Richtlinien angegeben sind, geht Service Fabric davon aus, dass die Entität fehlerhaft ist, sofern sie über einen Integritätsbericht oder ein untergeordnetes Element mit dem Integritätsstatus „Warning“ oder „Error“ verfügt.
 Die folgenden Richtlinien sind konfigurierbar:
 
-- [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx). Gibt an, ob während der Integritätsevaluierung Integritätsberichte mit dem Ergebnis „Warning“ als Fehler zu behandeln sind. Standardwert: false.
-
-- [MaxPercentUnhealthyDeployedApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications.aspx). Gibt den maximal tolerierten Prozentsatz an bereitgestellten Anwendungen an, die fehlerhaft sein können, bevor eine Anwendung als fehlerhaft behandelt wird. Zur Berechnung dieses Prozentsatzes wird die Anzahl fehlerhafter bereitgestellter Anwendungen durch die Anzahl von Knoten geteilt, auf denen die Anwendungen derzeit im Cluster bereitgestellt sind. Die Berechnung wird aufgerundet, um einen Fehler auf einer kleinen Anzahl von Knoten zu tolerieren. Standardprozentsatz : null.
-
-- [DefaultServiceTypeHealthPolicy](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy.aspx). Gibt die standardmäßige Diensttyp-Integritätsrichtlinie an, die die Standardintegritätsrichtlinie für alle Diensttypen in der Anwendung ersetzt.
-
-- [ServiceTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap.aspx). Bietet eine Übersicht über Dienstintegritätsrichtlinien pro Diensttyp. Diese Richtlinien ersetzen die standardmäßigen Diensttyp-Integritätsrichtlinien für die angegebenen Diensttypen. Wenn also beispielsweise eine Anwendung einen zustandslosen Gatewaydiensttyp und einen zustandsbehafteten Moduldiensttyp besitzt, können Sie für deren Evaluierung unterschiedliche Integritätsrichtlinien konfigurieren. Wenn Sie die Richtlinie pro Diensttyp angeben, können Sie die Integrität des Diensts genauer steuern.
+* [ConsiderWarningAsError](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx). Gibt an, ob während der Integritätsevaluierung Integritätsberichte mit dem Ergebnis „Warning“ als Fehler zu behandeln sind. Standardwert: false.
+* [MaxPercentUnhealthyDeployedApplications](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications.aspx). Gibt den maximal tolerierten Prozentsatz an bereitgestellten Anwendungen an, die fehlerhaft sein können, bevor eine Anwendung als fehlerhaft behandelt wird. Zur Berechnung dieses Prozentsatzes wird die Anzahl fehlerhafter bereitgestellter Anwendungen durch die Anzahl von Knoten geteilt, auf denen die Anwendungen derzeit im Cluster bereitgestellt sind. Die Berechnung wird aufgerundet, um einen Fehler auf einer kleinen Anzahl von Knoten zu tolerieren. Standardprozentsatz : null.
+* [DefaultServiceTypeHealthPolicy](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy.aspx). Gibt die standardmäßige Diensttyp-Integritätsrichtlinie an, die die Standardintegritätsrichtlinie für alle Diensttypen in der Anwendung ersetzt.
+* [ServiceTypeHealthPolicyMap](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap.aspx). Bietet eine Übersicht über Dienstintegritätsrichtlinien pro Diensttyp. Diese Richtlinien ersetzen die standardmäßigen Diensttyp-Integritätsrichtlinien für die angegebenen Diensttypen. Wenn also beispielsweise eine Anwendung einen zustandslosen Gatewaydiensttyp und einen zustandsbehafteten Moduldiensttyp besitzt, können Sie für deren Evaluierung unterschiedliche Integritätsrichtlinien konfigurieren. Wenn Sie die Richtlinie pro Diensttyp angeben, können Sie die Integrität des Diensts genauer steuern.
 
 ### <a name="service-type-health-policy"></a>Diensttyp-Integritätsrichtlinie
 Die [Diensttyp-Integritätsrichtlinie](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.aspx) gibt an, wie die Dienste und die untergeordneten Elemente von Diensten ausgewertet und aggregiert werden sollen. Die Richtlinie enthält Folgendes:
 
-- [MaxPercentUnhealthyPartitionsPerService](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice.aspx). Gibt den maximal tolerierten Prozentsatz an fehlerhaften Partitionen an, ab dem ein Dienst als fehlerhaft angesehen wird. Standardprozentsatz : null.
-
-- [MaxPercentUnhealthyReplicasPerPartition](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition.aspx). Gibt den maximal tolerierten Prozentsatz an fehlerhaften Replikaten an, ab dem eine Partition als fehlerhaft angesehen wird. Standardprozentsatz : null.
-
-- [MaxPercentUnhealthyServices](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices.aspx). Gibt den maximal tolerierten Prozentsatz an fehlerhaften Diensten an, ab dem eine Anwendung als fehlerhaft angesehen wird. Standardprozentsatz : null.
+* [MaxPercentUnhealthyPartitionsPerService](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice.aspx). Gibt den maximal tolerierten Prozentsatz an fehlerhaften Partitionen an, ab dem ein Dienst als fehlerhaft angesehen wird. Standardprozentsatz : null.
+* [MaxPercentUnhealthyReplicasPerPartition](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition.aspx). Gibt den maximal tolerierten Prozentsatz an fehlerhaften Replikaten an, ab dem eine Partition als fehlerhaft angesehen wird. Standardprozentsatz : null.
+* [MaxPercentUnhealthyServices](https://msdn.microsoft.com/library/azure/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices.aspx). Gibt den maximal tolerierten Prozentsatz an fehlerhaften Diensten an, ab dem eine Anwendung als fehlerhaft angesehen wird. Standardprozentsatz : null.
 
 Das folgende Beispiel zeigt einen Auszug aus einem Anwendungsmanifest:
 
@@ -188,13 +175,10 @@ Aggregation untergeordneter Elemente basierend auf Integritätsrichtlinien
 
 Nachdem der Integritätsspeicher alle untergeordneten Elemente ausgewertet hat, werden deren Integritätszustände auf der Grundlage des konfigurierten maximalen Prozentsatzes für fehlerhafte untergeordnete Elemente aggregiert. Dieser Prozentsatz wird der Richtlinie auf der Grundlage der Entität und der Art des untergeordneten Elements entnommen.
 
-- Wenn alle untergeordneten Elemente den Zustand „OK“ aufweisen, lautet der aggregierte Integritätszustand „OK“.
-
-- Wenn sowohl untergeordnete Elemente mit dem Status „OK“ als auch mit dem Status „Warning“ vorliegen, lautet der aggregierte Integritätszustand „Warning“.
-
-- Wenn untergeordnete Elemente mit dem Status „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente überschritten wird, lautet der aggregierte Integritätszustand „Error“.
-
-- Wenn untergeordnete Elemente mit dem Zustand „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente nicht überschritten wird, lautet der aggregierte Integritätszustand „Warning“.
+* Wenn alle untergeordneten Elemente den Zustand „OK“ aufweisen, lautet der aggregierte Integritätszustand „OK“.
+* Wenn sowohl untergeordnete Elemente mit dem Status „OK“ als auch mit dem Status „Warning“ vorliegen, lautet der aggregierte Integritätszustand „Warning“.
+* Wenn untergeordnete Elemente mit dem Status „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente überschritten wird, lautet der aggregierte Integritätszustand „Error“.
+* Wenn untergeordnete Elemente mit dem Zustand „Error“ vorliegen und der maximal zulässige Prozentsatz für fehlerhafte untergeordnete Elemente nicht überschritten wird, lautet der aggregierte Integritätszustand „Warning“.
 
 ## <a name="health-reporting"></a>Integritätsberichterstellung
 Berichte für Service Fabric-Entitäten können von Systemkomponenten, System Fabric-Anwendungen und internen/externen Watchdogs erstellt werden. Die Berichterstatter führen eine *lokale* Ermittlung der Integrität der überwachten Entitäten basierend auf den Bedingungen durch, die sie überwachen. Globale Zustände oder aggregierte Daten werden von den Berichterstattern nicht berücksichtigt. Das Ziel sind einfache Berichterstatter und keine komplexen Gebilde, die zahlreiche Aspekte prüfen müssen, um zu entscheiden, welche Informationen gesendet werden sollen.
@@ -204,37 +188,23 @@ Um die Integritätsdaten an den Integritätsspeicher zu senden, muss ein Bericht
 ### <a name="health-reports"></a>Integritätsberichte
 Die [Integritätsberichte](https://msdn.microsoft.com/library/azure/system.fabric.health.healthreport.aspx) für die einzelnen Entitäten im Cluster enthalten die folgenden Informationen:
 
-- **SourceId**. Eine Zeichenfolge, die den Berichterstatter des Integritätsereignisses eindeutig identifiziert.
-
-- **Entitätsbezeichner**. Identifiziert die Entität, für die der Bericht erstellt wird. Er unterscheidet sich abhängig vom [Entitätstyp](service-fabric-health-introduction.md#health-entities-and-hierarchy):
-
-  - Cluster: Keine
-
-  - Knoten: Knotenname (Zeichenfolge).
-
-  - Anwendung: Anwendungsname (URI). Stellt den Namen der im Cluster bereitgestellten Anwendungsinstanz dar.
-
-  - Dienst: Dienstname (URI). Stellt den Namen der im Cluster bereitgestellten Dienstinstanz dar.
-
-  - Partition: Partitions-ID (GUID). Stellt den eindeutigen Bezeichner der Partition dar.
-
-  - Replikat: Die ID des zustandsbehafteten Dienstreplikats oder die ID der zustandslosen Dienstinstanz (INT64).
-
-  - DeployedApplication: Anwendungsname (URI) und Knotenname (Zeichenfolge).
-
-  - DeployedServicePackage: Anwendungsname (URI), Knotenname (Zeichenfolge) und Dienstmanifestname (Zeichenfolge).
-
-- **Eigenschaft**. Ein *Zeichenfolge* (keine feste Enumeration), mit der Berichtersteller das Integritätsereignis für eine bestimmte Eigenschaft der Entität kategorisieren. Beispiel: Berichterstatter A kann einen Integritätsbericht für die Eigenschaft „storage“ auf Node01 erstellen, und Berichterstatter B kann einen Integritätsbericht für die Eigenschaft „connectivity“ auf Node01 erstellen. Im Integritätsspeicher werden diese Berichte als separate Integritätsereignisse für die Entität „Node01“ behandelt.
-
-- **Beschreibung**. Eine Zeichenfolge, die es einem Berichterstatter ermöglicht, detaillierte Informationen zum Integritätsereignis bereitzustellen. Die Verwendung von **SourceId**, **Property** und **HealthState** reicht in der Regel aus, um den Bericht vollständig zu beschreiben. Mit der Beschreibung werden dem Bericht für Menschen lesbare Informationen hinzugefügt. Der Text macht den Integritätsbericht für Administratoren und Benutzer leichter verständlich.
-
-- **HealthState**. Eine [Enumeration](service-fabric-health-introduction.md#health-states), die den Integritätszustand des Berichts beschreibt. Zulässige Werte sind "Ok", "Warning" und "Error".
-
-- **TimeToLive**. Ein Zeitraum, der angibt, wie lange der Integritätsbericht gültig ist. In Kombination mit **RemoveWhenExpired** weist dieser Wert den Integritätsspeicher an, wie abgelaufene Ereignisse ausgewertet werden sollen. Der Zeitraum ist standardmäßig unendlich, und der Bericht ist immer gültig.
-
-- **RemoveWhenExpired**. Ein boolescher Wert. Wenn dieser Wert auf „true“ festgelegt ist, wird der abgelaufene Integritätsbericht automatisch aus dem Integritätsspeicher entfernt, und der Bericht wirkt sich nicht auf die Integritätsevaluierung der Entität aus. Wird verwendet, wenn der Bericht nur für einen bestimmten Zeitraum gilt und der Berichterstatter den Bericht nicht explizit bereinigen muss. Das Verfahren wird auch zum Löschen von Berichten aus dem Integritätsspeicher verwendet (z. B. wird ein Watchdog geändert und beendet das Senden von Berichten für die vorherige Quelle und Eigenschaft). Hierbei kann ein Bericht mit einer kurzen TimeToLive zusammen mit RemoveWhenExpired gesendet werden, um alle vorherigen Zustände aus dem Integritätsspeicher zu löschen. Wenn der Wert auf „false“ festgelegt ist, wird der abgelaufene Bericht bei der Integritätsevaluierung als Fehler („Error“) behandelt. Mit dem Wert „false“ wird für den Integritätsspeicher angegeben, dass die Quelle regelmäßig Berichte zu dieser Eigenschaft senden soll. Wenn dies nicht der Fall ist, muss ein Fehler für den Watchdog vorliegen. Die Integrität des Watchdogs wird berücksichtigt, indem das Ereignis als Fehler behandelt wird.
-
-- **SequenceNumber**. Eine positive ganze Zahl, mit der die Reihenfolge der Berichte dargestellt wird und die daher stetig erhöht wird. Der Wert wird vom Integritätsspeicher verwendet, um überfällige Berichte zu ermitteln, die wegen Netzwerkverzögerungen oder anderen Problemen verspätet empfangen werden. Ein Bericht wird abgelehnt, wenn die Sequenznummer kleiner oder gleich der zuletzt angewendeten Nummer für dieselbe Entität, Quelle und Eigenschaft ist. Wenn sie nicht angegeben wird, wird die Sequenznummer automatisch generiert. Die Sequenznummer muss nur angegeben werden, wenn Berichte zu Statusübergängen erstellt werden. In diesem Fall muss für die Quelle gespeichert werden, welche Berichte gesendet werden, und die Informationen müssen für die Wiederherstellung bei einem Failover vorgehalten werden.
+* **SourceId**. Eine Zeichenfolge, die den Berichterstatter des Integritätsereignisses eindeutig identifiziert.
+* **Entitätsbezeichner**. Identifiziert die Entität, für die der Bericht erstellt wird. Er unterscheidet sich abhängig vom [Entitätstyp](service-fabric-health-introduction.md#health-entities-and-hierarchy):
+  
+  * Cluster: Keine
+  * Knoten: Knotenname (Zeichenfolge).
+  * Anwendung: Anwendungsname (URI). Stellt den Namen der im Cluster bereitgestellten Anwendungsinstanz dar.
+  * Dienst: Dienstname (URI). Stellt den Namen der im Cluster bereitgestellten Dienstinstanz dar.
+  * Partition: Partitions-ID (GUID). Stellt den eindeutigen Bezeichner der Partition dar.
+  * Replikat: Die ID des zustandsbehafteten Dienstreplikats oder die ID der zustandslosen Dienstinstanz (INT64).
+  * DeployedApplication: Anwendungsname (URI) und Knotenname (Zeichenfolge).
+  * DeployedServicePackage: Anwendungsname (URI), Knotenname (Zeichenfolge) und Dienstmanifestname (Zeichenfolge).
+* **Eigenschaft**. Ein *Zeichenfolge* (keine feste Enumeration), mit der Berichtersteller das Integritätsereignis für eine bestimmte Eigenschaft der Entität kategorisieren. Beispiel: Berichterstatter A kann einen Integritätsbericht für die Eigenschaft „storage“ auf Node01 erstellen, und Berichterstatter B kann einen Integritätsbericht für die Eigenschaft „connectivity“ auf Node01 erstellen. Im Integritätsspeicher werden diese Berichte als separate Integritätsereignisse für die Entität „Node01“ behandelt.
+* **Beschreibung**. Eine Zeichenfolge, die es einem Berichterstatter ermöglicht, detaillierte Informationen zum Integritätsereignis bereitzustellen. Die Verwendung von **SourceId**, **Property** und **HealthState** reicht in der Regel aus, um den Bericht vollständig zu beschreiben. Mit der Beschreibung werden dem Bericht für Menschen lesbare Informationen hinzugefügt. Der Text macht den Integritätsbericht für Administratoren und Benutzer leichter verständlich.
+* **HealthState**. Eine [Enumeration](service-fabric-health-introduction.md#health-states), die den Integritätszustand des Berichts beschreibt. Zulässige Werte sind "Ok", "Warning" und "Error".
+* **TimeToLive**. Ein Zeitraum, der angibt, wie lange der Integritätsbericht gültig ist. In Kombination mit **RemoveWhenExpired** weist dieser Wert den Integritätsspeicher an, wie abgelaufene Ereignisse ausgewertet werden sollen. Der Zeitraum ist standardmäßig unendlich, und der Bericht ist immer gültig.
+* **RemoveWhenExpired**. Ein boolescher Wert. Wenn dieser Wert auf „true“ festgelegt ist, wird der abgelaufene Integritätsbericht automatisch aus dem Integritätsspeicher entfernt, und der Bericht wirkt sich nicht auf die Integritätsevaluierung der Entität aus. Wird verwendet, wenn der Bericht nur für einen bestimmten Zeitraum gilt und der Berichterstatter den Bericht nicht explizit bereinigen muss. Das Verfahren wird auch zum Löschen von Berichten aus dem Integritätsspeicher verwendet (z. B. wird ein Watchdog geändert und beendet das Senden von Berichten für die vorherige Quelle und Eigenschaft). Hierbei kann ein Bericht mit einer kurzen TimeToLive zusammen mit RemoveWhenExpired gesendet werden, um alle vorherigen Zustände aus dem Integritätsspeicher zu löschen. Wenn der Wert auf „false“ festgelegt ist, wird der abgelaufene Bericht bei der Integritätsevaluierung als Fehler („Error“) behandelt. Mit dem Wert „false“ wird für den Integritätsspeicher angegeben, dass die Quelle regelmäßig Berichte zu dieser Eigenschaft senden soll. Wenn dies nicht der Fall ist, muss ein Fehler für den Watchdog vorliegen. Die Integrität des Watchdogs wird berücksichtigt, indem das Ereignis als Fehler behandelt wird.
+* **SequenceNumber**. Eine positive ganze Zahl, mit der die Reihenfolge der Berichte dargestellt wird und die daher stetig erhöht wird. Der Wert wird vom Integritätsspeicher verwendet, um überfällige Berichte zu ermitteln, die wegen Netzwerkverzögerungen oder anderen Problemen verspätet empfangen werden. Ein Bericht wird abgelehnt, wenn die Sequenznummer kleiner oder gleich der zuletzt angewendeten Nummer für dieselbe Entität, Quelle und Eigenschaft ist. Wenn sie nicht angegeben wird, wird die Sequenznummer automatisch generiert. Die Sequenznummer muss nur angegeben werden, wenn Berichte zu Statusübergängen erstellt werden. In diesem Fall muss für die Quelle gespeichert werden, welche Berichte gesendet werden, und die Informationen müssen für die Wiederherstellung bei einem Failover vorgehalten werden.
 
 Die vier Informationselemente – SourceId, Entitätsbezeichner, Property und HealthState – sind für jeden Integritätsbericht erforderlich. Die SourceId-Zeichenfolge darf nicht mit dem Präfix **System.** beginnen, da dieses Präfix Systemberichten vorbehalten ist. Für eine Entität wird für dieselbe Quelle und Eigenschaft nur ein Bericht verwendet. Mehrere Berichte für die gleiche Quelle und Eigenschaft überschreiben sich gegenseitig – entweder aufseiten des Integritätsclients (bei einem Batch) oder aufseiten des Integritätsspeichers. Das Überschreiben erfolgt anhand von Sequenznummern. Neuere Berichte (mit höheren Sequenznummern) überschreiben ältere Berichte.
 
@@ -243,21 +213,16 @@ Intern werden im Integritätsspeicher [Integritätsereignisse](https://msdn.micr
 
 Die hinzugefügten Metadaten enthalten Folgendes:
 
-- **SourceUtcTimestamp**. Gibt den Zeitpunkt an, an dem der Bericht an den Integritätsclient übergeben wurde (Coordinated Universal Time).
-
-- **LastModifiedUtcTimestamp**. Gibt die Uhrzeit der letzten Änderung des Berichts auf der Serverseite (Coordinated Universal Time) an.
-
-- **IsExpired**. Ein Flag, mit dem angegeben wird, ob der Bericht zum Zeitpunkt der Ausführung der Abfrage durch den Integritätsspeicher bereits abgelaufen war. Ein Ereignis kann nur ablaufen, wenn RemoveWhenExpired auf „false“ festgelegt ist. Andernfalls wird das Ereignis von der Abfrage nicht zurückgegeben und aus dem Speicher entfernt.
-
-- **LastOkTransitionAt**, **LastWarningTransitionAt**, **LastErrorTransitionAt**. Zeitpunkt des letzten Übergangs des Zustands „OK“/„Warning“/„Error“. Diese Felder geben den Verlauf der Integritätszustandsübergänge für das Ereignis an.
+* **SourceUtcTimestamp**. Gibt den Zeitpunkt an, an dem der Bericht an den Integritätsclient übergeben wurde (Coordinated Universal Time).
+* **LastModifiedUtcTimestamp**. Gibt die Uhrzeit der letzten Änderung des Berichts auf der Serverseite (Coordinated Universal Time) an.
+* **IsExpired**. Ein Flag, mit dem angegeben wird, ob der Bericht zum Zeitpunkt der Ausführung der Abfrage durch den Integritätsspeicher bereits abgelaufen war. Ein Ereignis kann nur ablaufen, wenn RemoveWhenExpired auf „false“ festgelegt ist. Andernfalls wird das Ereignis von der Abfrage nicht zurückgegeben und aus dem Speicher entfernt.
+* **LastOkTransitionAt**, **LastWarningTransitionAt**, **LastErrorTransitionAt**. Zeitpunkt des letzten Übergangs des Zustands „OK“/„Warning“/„Error“. Diese Felder geben den Verlauf der Integritätszustandsübergänge für das Ereignis an.
 
 Die Felder für die Zustandsübergänge können für erweiterte Warnungen verwendet werden und geben Verlaufsinformationen für das Integritätsereignis an. Sie ermöglichen beispielsweise folgende Szenarien:
 
-- Warnung ausgeben, wenn der Zustand einer Eigenschaft länger als X Minuten den Zustand „Warning/Error“ aufweist: Die zeitlich begrenzte Überprüfung der Bedingung ermöglicht die Vermeidung von Warnungen bei vorübergehenden Bedingungen. Eine Warnung, die ausgegeben wird, wenn der Integritätsstatus „Warning“ länger als 5 Minuten besteht, wird beispielsweise wie folgt angegeben: (HealthState == Warning and Now – LastWarningTransitionTime > 5 minutes).
-
-- Warnung nur zu Bedingungen ausgeben, die sich in den letzten X Minuten geändert haben: Wenn ein Bericht schon vor dem angegebenen Zeitpunkt den Zustand „Error“ erreicht hat, kann er ignoriert werden, da dies bereits signalisiert wurde.
-
-- Beim Wechsel des Zustands einer Eigenschaft zwischen „Warning“ und „Error“ bestimmen, wie lange die Eigenschaft fehlerhaft (nicht „OK“) war. Eine Warnung, die ausgegeben wird, wenn die Eigenschaft länger als fünf Minuten fehlerhaft war, wird beispielsweise wie folgt angegeben: (HealthState != Ok and Now - LastOkTransitionTime > 5 minutes).
+* Warnung ausgeben, wenn der Zustand einer Eigenschaft länger als X Minuten den Zustand „Warning/Error“ aufweist: Die zeitlich begrenzte Überprüfung der Bedingung ermöglicht die Vermeidung von Warnungen bei vorübergehenden Bedingungen. Eine Warnung, die ausgegeben wird, wenn der Integritätsstatus „Warning“ länger als 5 Minuten besteht, wird beispielsweise wie folgt angegeben: (HealthState == Warning and Now – LastWarningTransitionTime > 5 minutes).
+* Warnung nur zu Bedingungen ausgeben, die sich in den letzten X Minuten geändert haben: Wenn ein Bericht schon vor dem angegebenen Zeitpunkt den Zustand „Error“ erreicht hat, kann er ignoriert werden, da dies bereits signalisiert wurde.
+* Beim Wechsel des Zustands einer Eigenschaft zwischen „Warning“ und „Error“ bestimmen, wie lange die Eigenschaft fehlerhaft (nicht „OK“) war. Eine Warnung, die ausgegeben wird, wenn die Eigenschaft länger als fünf Minuten fehlerhaft war, wird beispielsweise wie folgt angegeben: (HealthState != Ok and Now - LastOkTransitionTime > 5 minutes).
 
 ## <a name="example:-report-and-evaluate-application-health"></a>Beispiel: Melden und Evaluieren der Anwendungsintegrität
 Im folgenden Beispiel wird über PowerShell ein Integritätsbericht zur Anwendung **fabric:/WordCount** aus der Quelle **MyWatchdog** gesendet. Der Integritätsbericht enthält Informationen zur Integritätseigenschaft „Availability“, die den Integritätszustand „Error“ und den TimeToLive-Wert „Infinite“ aufweist. Anschließend wird die Anwendungsintegrität abgefragt. Die Abfrage gibt den aggregierten Integritätszustand „Error“ und die gemeldeten Integritätsereignisse in der Liste mit den Integritätsereignissen zurück.
@@ -345,8 +310,6 @@ Das Integritätsmodell wird hauptsächlich für die Überwachung und Diagnose, E
 [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,29 +1,27 @@
-<properties 
-    pageTitle="Service Bus-Warteschlangen, -Themen und -Abonnements | Microsoft Azure"
-    description="Überblick über Service Bus-Nachrichtenentitäten"
-    services="service-bus"
-    documentationCenter="na"
-    authors="sethmanheim"
-    manager="timlt"
-    editor="" />
-<tags 
-    ms.service="service-bus"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="10/14/2016"
-    ms.author="sethm" />
+---
+title: Service Bus-Warteschlangen, -Themen und -Abonnements | Microsoft Docs
+description: Überblick über Service Bus-Nachrichtenentitäten
+services: service-bus
+documentationcenter: na
+author: sethmanheim
+manager: timlt
+editor: ''
 
+ms.service: service-bus
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/14/2016
+ms.author: sethm
 
+---
 # <a name="service-bus-queues,-topics,-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
-
 Microsoft Azure Service Bus unterstützt einen Satz cloudbasierter, nachrichtenorientierter Middlewaretechnologien, darunter zuverlässiges Message Queuing und dauerhaftes Veröffentlichungs-/Abonnementmessaging. Diese Brokermessagingfunktionen kann man sich als asynchrone, entkoppelte Messagingfeatures vorstellen, die unter Verwendung des Service Bus-Messagingfabric verschiedene Szenarien wie Veröffentlichung/Abonnements, vorübergehende Entkopplung und Lastenausgleich unterstützen. Entkoppelte Kommunikation hat viele Vorteile, beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
 
 Den Kern der Brokermessagingfunktionen in Service Bus bilden die folgenden Messagingentitäten: Warteschlangen, Themen/Abonnements und Regeln/Aktionen.
 
 ## <a name="queues"></a>Warteschlangen
-
 Warteschlangen liefern die Nachrichten im First In, First Out (FIFO)-Verfahren an einen oder mehrere Consumer. Dies bedeutet, dass Nachrichten normalerweise von den Empfängern in der Reihenfolge empfangen und verarbeitet werden, in der sie der Warteschlange hinzugefügt wurden, und dass jede Nachricht nur von einem Nachrichtenconsumer empfangen und verarbeitet wird. Als Hauptvorteil ergibt sich bei der Verwendung von Warteschlangen eine "vorübergehende Entkopplung" von Anwendungskomponenten. Anders ausgedrückt, die Producer (Absender) und Consumer (Empfänger) müssen Nachrichten nicht gleichzeitig senden und empfangen, da Nachrichten dauerhaft in der Warteschlange gespeichert werden. Außerdem muss der Producer nicht auf eine Antwort vom Consumer warten, um weiterhin Nachrichten zu verarbeiten und zu senden.
 
 Ein weiterer Vorteil ist der Belastungsausgleich, durch den Producer und Consumer die Möglichkeit haben, Nachrichten mit unterschiedlichen Raten zu senden und zu empfangen. In vielen Anwendungen schwankt die Systemlast mit der Zeit, jedoch ist die erforderliche Verarbeitungsdauer pro Arbeitseinheit üblicherweise konstant. Durch die Zwischenschaltung einer Warteschlange zwischen Nachrichtenproducer und -consumer reicht es aus, wenn die konsumierende Anwendung für die Durchschnittslast anstatt für die Spitzenlast ausgelegt ist. Die Tiefe der Warteschlange erhöht und verringert sich mit der eingehenden Last. Auf diese Weise sparen Sie direkt Geld, da Sie weniger Infrastruktur für Ihre Anwendungslast benötigen. Mit zunehmender Last können weitere Arbeitsprozesse hinzugefügt werden, die Nachrichten aus der Warteschlange abrufen. Jede Nachricht wird nur von einem der Arbeitsprozesse verarbeitet. Außerdem ermöglicht dieser Pull-basierte Lastenausgleich eine optimale Nutzung der Workercomputer, selbst wenn diese über unterschiedliche Leistung verfügen, da jeder von ihnen die Nachrichten in der eigenen Maximalgeschwindigkeit abruft. Dieses Schema wird auch als „Konkurrierende Consumer“ bezeichnet.
@@ -83,7 +81,6 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, jedoch vor Ausgabe der 
 Weitere Informationen und ein praktisches Beispiel für das Erstellen von Nachrichten und das Senden von Nachrichten an oder aus Warteschlangen finden Sie im [.NET-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-dotnet.md).
 
 ## <a name="topics-and-subscriptions"></a>Themen und Abonnements
-
 Im Gegensatz zu Warteschlangen, bei denen jede Nachricht von einem einzigen Consumer verarbeitet wird, bieten *Themen* und *Abonnements* eine 1:n-Kommunikationsform, die nach dem Muster *Veröffentlichen/Abonnieren* abläuft. Jede veröffentlichte Nachricht wird für jedes beim Thema registrierte Abonnement verfügbar gemacht, was für die Skalierung in Szenarien mit sehr vielen Benutzern hilfreich ist. Nachrichten werden an ein Thema gesendet und an ein oder mehrere zugeordnete Abonnements übermittelt, abhängig von Filterregeln, die für jedes Abonnement einzeln festlegt werden können. In Abonnements können die zu empfangenden Nachrichten mithilfe zusätzlicher Filter eingeschränkt werden. Nachrichten werden auf die gleiche Weise an ein Thema gesendet wie an eine Warteschlange, sie werden jedoch nicht direkt vom Thema empfangen. Stattdessen werden sie von Abonnements empfangen. Ein Themenabonnement ist mit einer virtuellen Warteschlange vergleichbar, die Kopien der an das Thema gesendeten Nachrichten empfängt. Nachrichten werden von einem Abonnement auf die gleiche Weise empfangen wie von einer Warteschlange.
 
 Zum Vergleich: Die Sendefunktionalität einer Warteschlange ist direkt einem Thema zuzuordnen, und die Empfangsfunktionalität ist einem Abonnement zuzuordnen. Dies bedeutet unter anderem, dass Abonnements das weiter oben in diesem Abschnitt im Hinblick auf Warteschlangen beschriebene Muster unterstützen: konkurrierender Consumer, vorübergehende Entkopplung, Belastungsausgleich und Lastenausgleich.
@@ -144,7 +141,6 @@ while ((message = auditSubscriptionClient.Receive(TimeSpan.FromSeconds(5))) != n
 ```
 
 ### <a name="rules-and-actions"></a>Regeln und Aktionen
-
 In vielen Fällen müssen Nachrichten mit bestimmten Merkmalen auf unterschiedliche Weise verarbeitet werden. Damit dies möglich ist, können Sie Abonnements so konfigurieren, dass sie nach Nachrichten mit bestimmten Eigenschaften suchen und dann bestimmte Änderungen an diesen Eigenschaften vornehmen. Auch wenn Service Bus-Abonnements alle Nachrichten angezeigt werden, die an das Thema gesendet wurden, können Sie nur eine Teilmenge dieser Nachrichten in die virtuelle Abonnementwarteschlange kopieren. Dies wird mithilfe von Abonnementfiltern erreicht. Solche Änderungen werden als *Filteraktionen* bezeichnet. Beim Erstellen eines Abonnements können Sie einen Filterausdruck angeben, der auf die Eigenschaften der Nachricht angewendet wird, und zwar sowohl auf die Systemeigenschaften (z.B. **Label**) als auch auf benutzerdefinierte Anwendungseigenschaften (z.B. **StoreName**.) Der SQL-Filterausdruck ist in diesem Fall optional. Ohne SQL-Filterausdruck wird jede für ein Abonnement definierte Filteraktion für alle Nachrichten in diesem Abonnement ausgeführt.
 
 Wenn Sie im vorherigen Beispiel nur Nachrichten von **Store1** herausfiltern möchten, erstellen Sie das Dashboard-Abonnement wie folgt:
@@ -158,17 +154,13 @@ Mit diesem Abonnementfilter werden nur Nachrichten, deren Eigenschaft `StoreName
 Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentation zu den Klassen [SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) und [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx). Weitere Informationen finden Sie außerdem in den Beispielen [Brokermessaging: Erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) und [Themenfilter](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters).
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Weitere Informationen und Beispiele für die Verwendung von Service Bus-Brokermessagingentitäten finden Sie in den folgenden erweiterten Themen.
 
-- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
-- [.NET-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-dotnet.md)
-- [REST-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-rest.md)
-- [Themenfilter – Beispiel](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
-- [Brokermessaging: Beispiel für erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
-
-
-
+* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+* [.NET-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-dotnet.md)
+* [REST-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-rest.md)
+* [Themenfilter – Beispiel](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
+* [Brokermessaging: Beispiel für erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Azure AD Connect: Funktionen in der Vorschau | Microsoft Azure"
-   description="In diesem Thema werden Funktionen detaillierter beschrieben, die sich in Azure AD Connect in der Preview befinden."
-   services="active-directory"
-   documentationCenter=""
-   authors="andkjell"
-   manager="femila"
-   editor=""/>
+---
+title: 'Azure AD Connect: Funktionen in der Vorschau | Microsoft Docs'
+description: In diesem Thema werden Funktionen detaillierter beschrieben, die sich in Azure AD Connect in der Preview befinden.
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"  
-   ms.workload="identity"
-   ms.tgt_pltfrm="na"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.date="06/27/2016"
-   ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/27/2016
+ms.author: billmath
 
-
+---
 # <a name="more-details-about-features-in-preview"></a>Weitere Informationen zu den Funktionen in der Vorschau
 In diesem Thema wird beschrieben, wie Sie Funktionen verwenden, die sich derzeit in der Vorschau befinden.
 
@@ -25,26 +24,30 @@ Mit der Option zum Gruppenrückschreiben, die unter den optionalen Features aufg
 
 Weitere Informationen zu Office 365-Gruppen und zu deren Verwendung finden Sie [hier](http://aka.ms/O365g).
 
-Diese Gruppe wird als Verteilergruppe im lokalen AD DS dargestellt. Auf dem lokalen Exchange-Server muss das kumulative Update 8 für Exchange Server 2013 (vom März 2015) oder Exchange 2016 installiert sein, damit dieser neue Gruppentyp erkannt wird.
+Diese Gruppe wird als Verteilergruppe im lokalen AD DS dargestellt. Auf dem lokalen Exchange-Server muss das kumulative Update 8 für Exchange Server 2013 (vom März 2015) oder Exchange 2016 installiert sein, damit dieser neue Gruppentyp erkannt wird.
 
 **Hinweise während der Vorschau**
 
-- Das Adressbuchattribut ist in der Vorschau derzeit nicht aufgefüllt. Ohne dieses Attribut ist diese Gruppe in der GAL (Global Address List, globale Adressliste) nicht sichtbar. Am einfachsten können Sie dieses Attribut mit dem Exchange PowerShell-Cmdlet `update-recipient`auffüllen.
-- Nur Gesamtstrukturen mit dem Exchange-Schema sind gültige Ziele für Gruppen. Wenn kein Exchange-Schema erkannt wurde, kann das Gruppenrückschreiben nicht aktiviert werden.
-- Derzeit werden nur Bereitstellungen unterstützt, bei der eine Exchange-Organisation eine einzelne Gesamtstruktur darstellt. Wenn Sie lokal über mehrere Exchange-Organisationen verfügen, benötigen Sie eine lokale GAL-Synchronisierungslösung, damit diese Gruppen in Ihren anderen Gesamtstrukturen angezeigt werden können.
-- Das Feature „Gruppenrückschreiben“ verarbeitet derzeit keine Sicherheitsgruppen oder Verteilergruppen.
+* Das Adressbuchattribut ist in der Vorschau derzeit nicht aufgefüllt. Ohne dieses Attribut ist diese Gruppe in der GAL (Global Address List, globale Adressliste) nicht sichtbar. Am einfachsten können Sie dieses Attribut mit dem Exchange PowerShell-Cmdlet `update-recipient`auffüllen.
+* Nur Gesamtstrukturen mit dem Exchange-Schema sind gültige Ziele für Gruppen. Wenn kein Exchange-Schema erkannt wurde, kann das Gruppenrückschreiben nicht aktiviert werden.
+* Derzeit werden nur Bereitstellungen unterstützt, bei der eine Exchange-Organisation eine einzelne Gesamtstruktur darstellt. Wenn Sie lokal über mehrere Exchange-Organisationen verfügen, benötigen Sie eine lokale GAL-Synchronisierungslösung, damit diese Gruppen in Ihren anderen Gesamtstrukturen angezeigt werden können.
+* Das Feature „Gruppenrückschreiben“ verarbeitet derzeit keine Sicherheitsgruppen oder Verteilergruppen.
 
->[AZURE.NOTE] Für das Gruppenrückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
+> [!NOTE]
+> Für das Gruppenrückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
+> 
+> 
 
 ## <a name="user-writeback"></a>Rückschreiben von Benutzern
-> [AZURE.IMPORTANT] Die Vorschaufunktion „Rückschreiben von Benutzern“ wurde im Azure AD Connect-Update vom August 2015 entfernt. Wenn Sie diese Funktion aktiviert haben, sollten Sie sie deaktivieren.
+> [!IMPORTANT]
+> Die Vorschaufunktion „Rückschreiben von Benutzern“ wurde im Azure AD Connect-Update vom August 2015 entfernt. Wenn Sie diese Funktion aktiviert haben, sollten Sie sie deaktivieren.
+> 
+> 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Fahren Sie mit Ihrer [benutzerdefinierten Installation von Azure AD Connect](./aad-connect/active-directory-aadconnect-get-started-custom.md)fort.
+Fahren Sie mit Ihrer [benutzerdefinierten Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md)fort.
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

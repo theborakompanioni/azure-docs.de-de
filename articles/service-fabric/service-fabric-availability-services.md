@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Verfügbarkeit von Service Fabric-Diensten | Microsoft Azure"
-   description="Beschreibt Fehlererkennung, Failover und Wiederherstellung für Dienste"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="appi101"
-   manager="timlt"
-   editor=""/>
+---
+title: Verfügbarkeit von Service Fabric-Diensten | Microsoft Docs
+description: Beschreibt Fehlererkennung, Failover und Wiederherstellung für Dienste
+services: service-fabric
+documentationcenter: .net
+author: appi101
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/10/2016"
-   ms.author="aprameyr"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/10/2016
+ms.author: aprameyr
 
+---
 # Verfügbarkeit der Service Fabric-Dienste
 Azure Service Fabric-Dienste können zustandsbehaftet oder zustandslos sein. Dieser Artikel bietet eine Übersicht darüber, wie Service Fabric die Verfügbarkeit eines Diensts bei einem Ausfall aufrechterhält.
 
@@ -38,16 +38,16 @@ Dieses Konzept, bei dem ein Replikat ein primäres oder ein aktives sekundäres 
 ### Replikatrollen
 Die Rolle eines Replikats wird zum Verwalten des Lebenszyklus des Zustands verwendet, der von diesem Replikat verwaltet wird. Ein Replikat mit der Rolle eines primären Replikats verarbeitet Leseanforderungen. Es verarbeitet auch Schreibanforderungen, indem es seinen Zustand aktualisiert und die Änderungen in den aktiven sekundären Replikaten in der Replikatgruppe repliziert. Die Rolle eines aktiven sekundären Replikats ist es, die vom primären Replikat replizierten Zustandsänderungen zu empfangen und den eigenen Zustand entsprechend zu aktualisieren.
 
->[AZURE.NOTE] In komplexen Programmiermodellen, wie z. B. im [Reliable Actors-Framework](service-fabric-reliable-actors-introduction.md), ist das Konzept der Replikatrolle für Entwickler abstrahiert.
+> [!NOTE]
+> In komplexen Programmiermodellen, wie z. B. im [Reliable Actors-Framework](service-fabric-reliable-actors-introduction.md), ist das Konzept der Replikatrolle für Entwickler abstrahiert.
+> 
+> 
 
 ## Nächste Schritte
-
 Weitere Informationen zu den Service Fabric-Konzepten finden Sie hier:
 
-- [Scaling Service Fabric Applications (in englischer Sprache)](service-fabric-concepts-scalability.md)
-
-- [Partitionieren von Service Fabric-Diensten](service-fabric-concepts-partitioning.md)
-
-- [Definieren und Verwalten von Zuständen](service-fabric-concepts-state.md)
+* [Scaling Service Fabric Applications (in englischer Sprache)](service-fabric-concepts-scalability.md)
+* [Partitionieren von Service Fabric-Diensten](service-fabric-concepts-partitioning.md)
+* [Definieren und Verwalten von Zuständen](service-fabric-concepts-state.md)
 
 <!---HONumber=AcomDC_0810_2016-->

@@ -1,78 +1,69 @@
-<properties
- pageTitle="Informationen zu rechenintensiven virtuellen Computern mit Linux | Microsoft Azure"
- description="Hier finden Sie Hintergrundinformationen und Überlegungen zur Verwendung der H-Serie und der rechenintensiven Größen A8, A9, A10 und A11 für virtuelle Linux-Computer."
- services="virtual-machines-linux"
- documentationCenter=""
- authors="dlepow"
- manager="timlt"
- editor=""
- tags="azure-resource-manager,azure-service-management"/>
-<tags
-ms.service="virtual-machines-linux"
- ms.devlang="na"
- ms.topic="article"
- ms.tgt_pltfrm="vm-linux"
- ms.workload="infrastructure-services"
- ms.date="09/21/2016"
- ms.author="danlep"/>
+---
+title: Informationen zu rechenintensiven virtuellen Computern mit Linux | Microsoft Docs
+description: Hier finden Sie Hintergrundinformationen und Überlegungen zur Verwendung der H-Serie und der rechenintensiven Größen A8, A9, A10 und A11 für virtuelle Linux-Computer.
+services: virtual-machines-linux
+documentationcenter: ''
+author: dlepow
+manager: timlt
+editor: ''
+tags: azure-resource-manager,azure-service-management
 
-# Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie 
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 09/21/2016
+ms.author: danlep
 
+---
+# Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie
 Hier finden Sie Hintergrundinformationen und einige Überlegungen zur Verwendung der neueren Azure H-Serie und der älteren Größen A8, A9, A10 und A11, die auch als *rechenintensive* Instanzen bezeichnet werden. Dieser Artikel konzentriert sich auf die Verwendung dieser Größen für virtuelle Linux-Computer. Dieser Artikel ist auch für [virtuelle Windows-Computer](virtual-machines-windows-a8-a9-a10-a11-specs.md) verfügbar.
 
-
-
-
-[AZURE.INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
+[!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 ## Zugreifen auf das RDMA-Netzwerk
-
 Sie können Cluster mit RDMA-fähigen virtuellen Linux-Computern erstellen, auf denen eine der folgenden unterstützten Linux-HPC-Distributionen und eine unterstützte MPI-Implementierung ausgeführt werden, um von den Vorteilen des Azure RDMA-Netzwerks zu profitieren. Bereitstellungsoptionen und Beispielkonfigurationsschritte finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
 * **Distributionen:** Sie müssen virtuelle Computer auf der Grundlage von RDMA-fähigen SLES-basierten (SUSE Linux Enterprise Server) oder OpenLogic CentOS-basierten HPC-Images aus dem Azure Marketplace bereitstellen. Die erforderlichen Linux RDMA-Treiber werden nur von den folgenden Marketplace-Images unterstützt:
-
-    * SLES 12 SP1 für HPC, SLES 12 SP1 für HPC (Premium)
+  
+  * SLES 12 SP1 für HPC, SLES 12 SP1 für HPC (Premium)
+  * SLES 12 für HPC, SLES 12 für HPC (Premium)
+  * 7\.1 HPC (CentOS-basiert)
+  * 6\.5 HPC (CentOS-basiert)
     
-    * SLES 12 für HPC, SLES 12 für HPC (Premium)
-    
-    * 7\.1 HPC (CentOS-basiert)
-    
-    * 6\.5 HPC (CentOS-basiert)
-    
-    >[AZURE.NOTE]Für virtuelle Computer der H-Serie empfehlen wir entweder ein Image vom Typ „SLES 12 SP1 für HPC“ oder ein Image vom Typ „7.1 HPC (CentOS-basiert)“.
-    >
-    >Bei den CentOS-basierten HPC-Images sind Kernel-Updates in der **yum**-Konfigurationsdatei deaktiviert. Der Grund: Die Linux RDMA-Treiber werden als RPM-Paket verteilt, und Treiberupdates funktionieren möglicherweise nicht, wenn der Kernel aktualisiert wird.
-
+    > [!NOTE]
+    > Für virtuelle Computer der H-Serie empfehlen wir entweder ein Image vom Typ „SLES 12 SP1 für HPC“ oder ein Image vom Typ „7.1 HPC (CentOS-basiert)“.
+    > 
+    > Bei den CentOS-basierten HPC-Images sind Kernel-Updates in der **yum**-Konfigurationsdatei deaktiviert. Der Grund: Die Linux RDMA-Treiber werden als RPM-Paket verteilt, und Treiberupdates funktionieren möglicherweise nicht, wenn der Kernel aktualisiert wird.
+    > 
+    > 
 * **MPI**: Intel MPI Library 5.x
-
+  
     Je nach verwendetem Marketplace-Image sind für Intel MPI unter Umständen zusätzliche Lizenzierungs-, Installations- oder Konfigurationsschritte erforderlich:
+  
+  * **SLES 12 SP1 für HPC**: Führen Sie den folgenden Befehl aus, um die auf dem virtuellen Computer bereitgestellten Intel MPI-Pakete zu installieren:
     
-    * **SLES 12 SP1 für HPC**: Führen Sie den folgenden Befehl aus, um die auf dem virtuellen Computer bereitgestellten Intel MPI-Pakete zu installieren:
+          sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+  * **SLES 12 für HPC**: Zum Herunterladen und Installieren von Intel MPI ist eine separate Registrierung erforderlich. Weitere Informationen finden Sie im [Installationshandbuch für die Intel MPI-Bibliothek](https://software.intel.com/sites/default/files/managed/7c/2c/intelmpi-2017-installguide-linux.pdf).
+  * **CentOS-basierte HPC-Images**: Intel MPI 5.1 ist bereits vorinstalliert.
     
-            sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-
-    * **SLES 12 für HPC**: Zum Herunterladen und Installieren von Intel MPI ist eine separate Registrierung erforderlich. Weitere Informationen finden Sie im [Installationshandbuch für die Intel MPI-Bibliothek](https://software.intel.com/sites/default/files/managed/7c/2c/intelmpi-2017-installguide-linux.pdf).
-    
-    * **CentOS-basierte HPC-Images**: Intel MPI 5.1 ist bereits vorinstalliert.
-
     Wenn Sie MPI-Aufträge auf gruppierten virtuellen Computer ausführen möchten, sind zusätzliche Konfigurationsschritte erforderlich. So müssen Sie in einem Cluster mit virtuellen Computern beispielsweise die Vertrauensstellung zwischen den Computeknoten einrichten. Informationen zu typischen Einstellungen finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
-
 ## Überlegungen zu HPC Pack und Linux
-
 [HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) ist eine kostenlose HPC-Cluster- und Auftragsverwaltungslösung von Microsoft und bietet eine Option für die Verwendung der rechenintensiven Instanzen mit Linux. Die neuesten Versionen von HPC Pack 2012 R2 unterstützen das Ausführen von mehreren Linux-Distributionen auf Computeknoten, die auf virtuellen Azure-Computern bereitgestellt wurden und von einem Windows Server-Hauptknoten verwaltet werden. Mit RDMA-fähigen Linux-Computeknoten, auf denen Intel MPI ausgeführt wird, kann HPC Pack Linux-basierte MPI-Anwendungen mit Zugriff auf das RDMA-Netzwerk planen und ausführen. Eine Einführung finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
 
 ## Überlegungen zur Netzwerktopologie
-
 * Auf RDMA-fähigen virtuellen Linux-Computern in Azure ist „Eth1“ für RDMA-Netzwerkdatenverkehr reserviert. Ändern Sie keine Eth1-Einstellungen oder anderen Informationen in der Konfigurationsdatei, die sich auf dieses Netzwerk beziehen. „Eth0“ ist für den regulären Azure-Netzwerkverkehr reserviert.
-
 * In Azure wird IP over InfiniBand (IB) nicht unterstützt. Nur RDMA over IB wird unterstützt.
 
 ## RDMA-Treiberupdates für SLES 12
-
 Nach dem Erstellen eines virtuellen Computers auf der Grundlage eines SLES 12-HPC-Images müssen unter Umständen die RDMA-Treiber auf den virtuellen Computern aktualisiert werden, um eine RDMA-Netzwerkverbindung zu ermöglichen.
 
->[AZURE.IMPORTANT]Bei SLES 12 ist dieser Schritt für die Bereitstellung virtueller HPC-Computer in allen Azure-Regionen **erforderlich**. Der Schritt ist nicht erforderlich, wenn Sie einen virtuellen Computer mit SLES 12 SP1 für HPC, 7.1 HPC (CentOS-basiert) oder 6.5 HPC (CentOS-basiert) bereitstellen.
+> [!IMPORTANT]
+> Bei SLES 12 ist dieser Schritt für die Bereitstellung virtueller HPC-Computer in allen Azure-Regionen **erforderlich**. Der Schritt ist nicht erforderlich, wenn Sie einen virtuellen Computer mit SLES 12 SP1 für HPC, 7.1 HPC (CentOS-basiert) oder 6.5 HPC (CentOS-basiert) bereitstellen.
+> 
+> 
 
 Beenden Sie alle **Zypper**-Prozesse oder alle Prozesse, die die SUSE-Repository-Datenbanken auf dem virtuellen Computer sperren, bevor Sie die Treiber aktualisieren. Andernfalls werden die Treiber möglicherweise nicht korrekt aktualisiert.
 
@@ -94,10 +85,12 @@ azure config mode arm
 azure vm extension set <resource-group> <vm-name> RDMAUpdateForLinux Microsoft.OSTCExtensions 0.1
 ```
 
->[AZURE.NOTE]Die Treiberinstallation kann einige Zeit dauern, und der Befehl wird ohne Ausgabe abgeschlossen. Nach dem Update wird Ihr virtueller Computer neu gestartet und sollte innerhalb weniger Minuten einsatzbereit sein.
+> [!NOTE]
+> Die Treiberinstallation kann einige Zeit dauern, und der Befehl wird ohne Ausgabe abgeschlossen. Nach dem Update wird Ihr virtueller Computer neu gestartet und sollte innerhalb weniger Minuten einsatzbereit sein.
+> 
+> 
 
 ### Beispielskript für Treiberupdates
-
 Wenn Sie über einen Cluster mit virtuellen Computern mit SLES 12 für HPC verfügen, können Sie das Treiberupdate für alle Knoten im Cluster durchführen. Das folgende Skript aktualisiert z.B. die Treiber in einem Cluster mit 8 Knoten.
 
 ```
@@ -126,11 +119,8 @@ done
 
 
 ## Nächste Schritte
-
 * Ausführliche Informationen zu Verfügbarkeit und Preisen rechenintensiver Größen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux).
-
 * Informationen zu Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md).
-
 * Informationen zu ersten Schritten bei der Bereitstellung und Verwendung rechenintensiver Größen mit RDMA unter Linux finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
 <!---HONumber=AcomDC_0928_2016-->

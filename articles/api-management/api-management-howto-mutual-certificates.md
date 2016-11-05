@@ -1,38 +1,37 @@
-<properties 
-	pageTitle="Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management" 
-	description="Erfahren Sie, wie Sie Back-End-Dienste über eine Clientzertifikatauthentifizierung in Azure API Management sichern." 
-	services="api-management" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="erikre" 
-	editor=""/>
+---
+title: Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
+description: Erfahren Sie, wie Sie Back-End-Dienste über eine Clientzertifikatauthentifizierung in Azure API Management sichern.
+services: api-management
+documentationcenter: ''
+author: steved0x
+manager: erikre
+editor: ''
 
-<tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="sdanie"/>
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2016
+ms.author: sdanie
 
+---
 # Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
-
 API Management bietet die Möglichkeit, den Zugriff auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten abzusichern. Diese Anleitung beschreibt, wie Zertifikate im API-Herausgeberportal verwaltet werden und eine API zur Verwendung eines Zertifikats für den Zugriff auf ihren Back-End-Dienst konfiguriert wird.
 
-Weitere Informationen zur Verwaltung von Zertifikaten mit der API Management-REST-API finden Sie unter [Azure API Management-REST-API-Zertifikatsentität][].
+Weitere Informationen zur Verwaltung von Zertifikaten mit der API Management-REST-API finden Sie unter [Azure API Management-REST-API-Zertifikatsentität][Azure API Management-REST-API-Zertifikatsentität].
 
 ## <a name="prerequisites"> </a>Voraussetzungen
-
-Diese Anleitung beschreibt, wie Sie Ihre Instanz des API Management-Diensts konfigurieren, um für den Zugriff auf den Back-End-Dienst einer API die Clientzertifikatauthentifizierung zu verwenden. Bevor Sie die Schritte in diesem Thema ausführen, müssen Sie Ihren Back-End-Dienst für die Clientzertifikatauthentifizierung konfiguriert haben und auf das Zertifikat und das Kennwort zum Hochladen in das API Management-Herausgeberportal zugreifen können ([Ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in diesem Artikel][]).
+Diese Anleitung beschreibt, wie Sie Ihre Instanz des API Management-Diensts konfigurieren, um für den Zugriff auf den Back-End-Dienst einer API die Clientzertifikatauthentifizierung zu verwenden. Bevor Sie die Schritte in diesem Thema ausführen, müssen Sie Ihren Back-End-Dienst für die Clientzertifikatauthentifizierung konfiguriert haben und auf das Zertifikat und das Kennwort zum Hochladen in das API Management-Herausgeberportal zugreifen können ([Ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in diesem Artikel][Ausführliche Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure WebSites finden Sie in diesem Artikel]).
 
 ## <a name="step1"> </a>Hochladen eines Clientzertifikats
-
 Klicken Sie zunächst im klassischen Azure-Portal für Ihren API Management-Dienst auf **Verwalten**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
 
 ![API-Herausgeberportal][api-management-management-console]
 
->Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][] im Lernprogramm [Erste Schritte mit Azure API Management][].
+> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] im Lernprogramm [Erste Schritte mit Azure API Management][Erste Schritte mit Azure API Management].
+> 
+> 
 
 Klicken Sie auf **Sicherheit** im Menü **API Management** auf der linken Seite und dann auf **Clientzertifikate**.
 
@@ -44,20 +43,23 @@ Um ein neues Zertifikat hochzuladen, klicken Sie auf **Hochladen des Zertifikats
 
 Navigieren Sie zu Ihrem Zertifikat, und geben Sie das Kennwort für das Zertifikat ein.
 
->Das Zertifikat muss im **.pfx**-Format vorliegen. Selbstsignierte Zertifikate sind zulässig.
+> Das Zertifikat muss im **.pfx**-Format vorliegen. Selbstsignierte Zertifikate sind zulässig.
+> 
+> 
 
 ![Hochladen des Zertifikats][api-management-upload-certificate-form]
 
 Klicken Sie auf **Hochladen**, um das Zertifikat hochzuladen.
 
->Zu diesem Zeitpunkt wird das Kennwort des Zertifikats überprüft. Falls es fehlerhaft ist, wird eine Fehlermeldung angezeigt.
+> Zu diesem Zeitpunkt wird das Kennwort des Zertifikats überprüft. Falls es fehlerhaft ist, wird eine Fehlermeldung angezeigt.
+> 
+> 
 
 ![Zertifikat hochgeladen][api-management-certificate-uploaded]
 
-Sobald das Zertifikat hochgeladen ist, wird es auf der Registerkarte **Clientzertifikate** angezeigt. Falls Sie über mehrere Zertifikate verfügen, notieren Sie sich den Zweck und die letzten vier Zeichen des Fingerabdrucks, anhand derer Sie das Zertifikat auswählen, wenn Sie API zum Verwenden von Zertifikaten konfigurieren. Weitere Informationen zu diesem Thema finden Sie unter [Konfigurieren einer API zum Verwenden eines Clientzertifikats zur Gatewayauthentifizierung][].
+Sobald das Zertifikat hochgeladen ist, wird es auf der Registerkarte **Clientzertifikate** angezeigt. Falls Sie über mehrere Zertifikate verfügen, notieren Sie sich den Zweck und die letzten vier Zeichen des Fingerabdrucks, anhand derer Sie das Zertifikat auswählen, wenn Sie API zum Verwenden von Zertifikaten konfigurieren. Weitere Informationen zu diesem Thema finden Sie unter [Konfigurieren einer API zum Verwenden eines Clientzertifikats zur Gatewayauthentifizierung][Konfigurieren einer API zum Verwenden eines Clientzertifikats zur Gatewayauthentifizierung].
 
 ## <a name="step1a"> </a>Löschen eines Clientzertifikats
-
 Um ein Zertifikat zu löschen, klicken Sie neben dem betreffenden Zertifikat auf **Löschen**.
 
 ![Löschen eines Zertifikats][api-management-certificate-delete]
@@ -71,7 +73,6 @@ Falls das Zertifikat von einer API verwendet wird, wird ein Warnbildschirm angez
 ![Bestätigen des Löschens][api-management-confirm-delete-policy]
 
 ## <a name="step2"> </a>Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung
-
 Klicken Sie auf **APIs** im Menü **API Management** auf der linken Seite, klicken Sie auf die gewünschte API und dann auf die Registerkarte **Sicherheit**.
 
 ![API-Sicherheit][api-management-api-security]
@@ -86,19 +87,24 @@ Wählen Sie in der Dropdownliste **Clientzertifikate** das gewünschte Zertifika
 
 Klicken Sie auf **Speichern**, um die Konfigurationsänderungen der API zu speichern.
 
->Die Änderungen werden unmittelbar übernommen, und Funktionsaufrufe dieser API verwenden das Zertifikat für die Authentifizierung beim Back-End-Server.
+> Die Änderungen werden unmittelbar übernommen, und Funktionsaufrufe dieser API verwenden das Zertifikat für die Authentifizierung beim Back-End-Server.
+> 
+> 
 
 ![API-Änderungen speichern][api-management-save-api]
 
->Wenn für den Back-End-Dienst einer API ein Zertifikat zur Gateway-authentifizierung angegeben ist, wird es Teil der Richtlinie dieser API und kann im Richtlinien-Editor angezeigt werden.
+> Wenn für den Back-End-Dienst einer API ein Zertifikat zur Gateway-authentifizierung angegeben ist, wird es Teil der Richtlinie dieser API und kann im Richtlinien-Editor angezeigt werden.
+> 
+> 
 
 ![Zertifikatrichtlinie][api-management-certificate-policy]
 
 ## Nächste Schritte
+Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absichern von Back-End-Diensten es gibt, z. B. HTTP-Standardauthentifizierung oder Authentifizierung mit gemeinsamem geheimen Schlüssel.
 
-Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absichern von Back-End-Diensten es gibt, z. B. HTTP-Standardauthentifizierung oder Authentifizierung mit gemeinsamem geheimen Schlüssel.
-
-> [AZURE.VIDEO last-mile-security]
+> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Last-mile-Security/player]
+> 
+> 
 
 [api-management-management-console]: ./media/api-management-howto-mutual-certificates/api-management-management-console.png
 [api-management-security-client-certificates]: ./media/api-management-howto-mutual-certificates/api-management-security-client-certificates.png
@@ -138,6 +144,6 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 [Next steps]: #next-steps
 
 
- 
+
 
 <!---HONumber=AcomDC_0831_2016-->

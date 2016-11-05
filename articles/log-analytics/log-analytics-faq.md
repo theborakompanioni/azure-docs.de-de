@@ -1,28 +1,25 @@
-<properties
-    pageTitle="Häufig gestellte Fragen zu Log Analytics | Microsoft Azure"
-    description="Antworten auf häufig gestellte Fragen zum Log Analytics-Dienst."
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
+description: Antworten auf häufig gestellte Fragen zum Log Analytics-Dienst.
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: banders
 
-
+---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
-
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Operations Management Suite (OMS). Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) , und stellen Sie Ihre Fragen. Ein Mitglied der Community hilft Ihnen dabei, Ihre Antworten zu erhalten. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 ## <a name="general"></a>Allgemein
-
 **F: Welche Überprüfungen werden von den AD- und SQL-Bewertungslösungen durchgeführt?**
 
 a. Die folgende Abfrage zeigt eine Beschreibung aller Überprüfungen, die derzeit ausgeführt werden:
@@ -58,7 +55,7 @@ Sobald Dienstbereitstellungen erfolgen, ändern sich die tatsächlichen IP-Adres
 
 **F: Ich verwende ExpressRoute für die Verbindung mit Azure. Wird für meinen Log Analytics-Datenverkehr meine ExpressRoute-Verbindung verwendet?**  
 
-a. Die verschiedenen Typen von ExpressRoute-Datenverkehr werden in der [ExpressRoute-Dokumentation](./expressroute/expressroute-faqs.md#supported-services) beschrieben.
+a. Die verschiedenen Typen von ExpressRoute-Datenverkehr werden in der [ExpressRoute-Dokumentation](../expressroute/expressroute-faqs.md#supported-services) beschrieben.
 
 Für Datenverkehr zu Log Analytics wird eine ExpressRoute-Verbindung mit öffentlichem Peering verwendet.
 
@@ -90,7 +87,6 @@ A: Entfernen Sie in SCOM den Computer aus der von OMS verwalteten Liste. Dadurch
 Entfernen Sie unter **Azure Log Analytics (OMS)**alle aufgeführten Arbeitsbereiche.
 
 ## <a name="agent-data"></a>Agent-Daten
-
 **F: Wie viele Daten kann ich über den Agent an Log Analytics senden? Gibt es eine maximale Datenmenge pro Kunde?**  
 a. Im Tarif Free gilt eine tägliche Obergrenze von 500 MB pro Arbeitsbereich. Die Tarife Standard und Premium sehen keine Begrenzung der Datenmenge vor, die hochgeladen werden kann. Als Clouddienst ist OMS so ausgelegt, dass ein automatisches Hochskalieren erfolgt, um das vom Kunden eingehende Datenvolumen zu bewältigen, selbst wenn es sich um mehrere Terabytes pro Tag handelt.
 
@@ -106,9 +102,9 @@ a. Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimi
 
 a. Dies hängt größtenteils von Folgendem ab:
 
-- den Lösungen, die Sie aktiviert haben
-- der Anzahl der Protokolle und Leistungsindikatoren, die gesammelt werden
-- der Menge der Daten in den Protokollen
+* den Lösungen, die Sie aktiviert haben
+* der Anzahl der Protokolle und Leistungsindikatoren, die gesammelt werden
+* der Menge der Daten in den Protokollen
 
 Der Tarif Free ist eine gute Möglichkeit, dem Dienst mehrere Server hinzuzufügen und das typische Datenvolumen zu messen. Die Gesamtverwendung wird auf der Seite **Verwendung** gezeigt.
 Für Computer, die den WireData-Agent ausführen können, wird mithilfe der folgenden Abfrage gezeigt, wie viele Daten gesendet werden:
@@ -120,10 +116,7 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- [Erste Schritte mit Log Analytics](log-analytics-get-started.md). Hier erfahren Sie mehr über Log Analytics und wie Sie binnen Minuten loslegen können.
-
-
+* [Erste Schritte mit Log Analytics](log-analytics-get-started.md). Hier erfahren Sie mehr über Log Analytics und wie Sie binnen Minuten loslegen können.
 
 <!--HONumber=Oct16_HO2-->
 

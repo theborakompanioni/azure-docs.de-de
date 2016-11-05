@@ -1,24 +1,23 @@
-<properties
-pageTitle="Hinzufügen des Excel-Connectors | Microsoft Azure"
-description="Übersicht über den Excel-Connector mit REST-API-Parametern"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
-editor=""
-tags="connectors"/>
+---
+title: Hinzufügen des Excel-Connectors | Microsoft Docs
+description: Übersicht über den Excel-Connector mit REST-API-Parametern
+services: ''
+documentationcenter: ''
+author: msftman
+manager: erikre
+editor: ''
+tags: connectors
 
-<tags
-ms.service="multiple"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="08/23/2016"
-ms.author="deonhe"/>
+ms.service: multiple
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/23/2016
+ms.author: deonhe
 
+---
 # Erste Schritte mit dem Excel-Connector
-
 Derzeit steht in Logic Apps kein Excel-Connector zur Verfügung.
 
 ## So verwenden Sie Excel-Daten

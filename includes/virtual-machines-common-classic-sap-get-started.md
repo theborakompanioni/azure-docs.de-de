@@ -1,6 +1,5 @@
 
 ## Planung und Implementierung
-
 Titel: SAP NetWeaver in Azure Virtual Machines – Planungs- und Implementierungshandbuch
 
 Zusammenfassung: Mit diesem Whitepaper sollten Sie beginnen, wenn Sie planen, SAP NetWeaver in Azure Virtual Machines zu verwenden. Mithilfe dieses Planungs- und Implementierungshandbuchs können Sie bewerten, ob ein vorhandenes oder geplantes SAP NetWeaver-basiertes System in einer Azure Virtual Machines-Umgebung bereitgestellt werden kann. Es beschreibt mehrere SAP NetWeaver-Bereitstellungsszenarien und enthält SAP-Konfigurationen, die nur für Azure gelten. Im Whitepaper werden alle erforderlichen Konfigurationsinformationen aufgelistet und beschrieben, die Sie in SAP bzw. Azure benötigen, um eine hybride SAP-Umgebung auszuführen. Zudem werden Maßnahmen erläutert, die Sie ergreifen können, um eine hohe Verfügbarkeit von SAP NetWeaver-basierten Systemen auf IaaS sicherzustellen.
@@ -8,6 +7,7 @@ Zusammenfassung: Mit diesem Whitepaper sollten Sie beginnen, wenn Sie planen, SA
 Aktualisierung: August 2015
 
 [Dieses Handbuch jetzt herunterladen](http://go.microsoft.com/fwlink/?LinkId=397963)
+
 ## Bereitstellung
 Titel: SAP NetWeaver auf Azure Virtual Machines – Bereitstellungshandbuch
 
@@ -27,7 +27,6 @@ Aktualisiert: Dezember 2015
 [Dieses Handbuch jetzt herunterladen](http://go.microsoft.com/fwlink/?LinkId=397965)
 
 ## SAP NetWeaver in Azure
-
 Titel: SAP NetWeaver – Erstellen einer auf Azure basierenden Lösung für die Notfallwiederherstellung
 
 Zusammenfassung: Dieses Dokument enthält eine Schrittanleitung zum Erstellen einer auf Azure basierenden Lösung für die Notfallwiederherstellung für SAP NetWeaver. Für die beschriebene Lösung wird davon ausgegangen, dass die SAP-Umgebung virtualisiert und lokal basierend auf Hyper-V ausgeführt wird. Im ersten Teil des Dokuments werden die Komponenten von Azure Site Recovery-Diensten (ASR) vorgestellt. Im zweiten Teil des Dokuments geht es um die Besonderheiten SAP NetWeaver-basierter Umgebungen. Hier werden Einsatzmöglichkeiten für ASR mit SAP NetWeaver-Anwendungsinstanzen und SAP Central Services erläutert und beschrieben. Ein Schwerpunkt des zweiten Teils ist die Nutzung von ASR für SAP Central Services, die mit Windows Server-Failoverclusterkonfigurationen geschützt werden.

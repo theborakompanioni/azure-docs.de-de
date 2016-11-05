@@ -1,31 +1,32 @@
-<properties 
-	pageTitle="Einrichten und Verwenden der Machine Learning-Empfehlungen-API | Microsoft Azure" 
-	description="FAQ zur mit Azure Machine Learning erstellten Microsoft RECOMMENDATIONS API" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="LuisCabrer" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Einrichten und Verwenden der Machine Learning-Empfehlungen-API | Microsoft Docs
+description: FAQ zur mit Azure Machine Learning erstellten Microsoft RECOMMENDATIONS API
+services: machine-learning
+documentationcenter: ''
+author: LuisCabrer
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2016" 
-	ms.author="luisca"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/08/2016
+ms.author: luisca
 
-#Häufig gestellte Fragen zur Einrichtung und Verwendung der Machine Learning RECOMMENDATIONS-API
-
-
+---
+# Häufig gestellte Fragen zur Einrichtung und Verwendung der Machine Learning RECOMMENDATIONS-API
 **Was ist RECOMMENDATIONS?**
 
->[AZURE.NOTE] Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
+> [!NOTE]
+> Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
+> 
+> 
 
 Für Organisationen und Unternehmen, die für Cross-Selling und Up-Selling auf Empfehlungen bauen, ist RECOMMENDATIONS von Azure Machine Learning ein Self-Service-Empfehlungsmodul. Es handelt sich um eine Implementierung von kombinierten Filtern, die als Kernalgorithmus eine Matrixfaktorisierung einsetzen. Anwendungsentwickler können mithilfe von REST-APIs auf RECOMMENDATIONS zugreifen.
 
-[AZURE.INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
 
 **Was kann ich mit RECOMMENDATIONS tun?**
 
@@ -34,15 +35,14 @@ RECOMMENDATIONS akzeptiert als Eingabe ein Element oder einen Satz von Elementen
 **Gibt es Nutzungsbeschränkungen?**
 
 Azure Machine Learning-Empfehlungen hat die folgenden Nutzungsbeschränkungen:
+
 * Maximale Anzahl von Modellen pro Abonnement: 10
 * Maximale Anzahl von Elementen, die ein Katalog aufnehmen kann: 100.000
 * Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
-* Die maximale Größe der Daten, die per E-Mail gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Ein aktives Empfehlungsmodellbuild kann bis zu 20 TPS aufnehmen.
+* Die maximale Größe der Daten, die per E-Mail gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
+* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Ein aktives Empfehlungsmodellbuild kann bis zu 20 TPS aufnehmen.
 
-##Einkauf und Abrechnung 
-
-
+## Einkauf und Abrechnung
 **Wie hoch ist der Preis für RECOMMENDATIONS während der Startphase?**
 
 RECOMMENDATIONS ist ein abonnementbasierter Dienst. Das Aufladen erfolgt anhand der Anzahl von Transaktionen pro Monat. Auf der [Angebotsseite](https://datamarket.azure.com/dataset/amla/recommendations) des Microsoft Azure Marketplace finden Sie Preisinformationen.
@@ -53,7 +53,7 @@ Nicht im Moment.
 
 **Gibt es eine kostenlose Testversion von RECOMMENDATIONS?**
 
-Es gibt eine kostenlose Testversion, die auf 10.000 Transaktionen pro Monat beschränkt ist.
+Es gibt eine kostenlose Testversion, die auf 10.000 Transaktionen pro Monat beschränkt ist.
 
 **Wann erhalte ich eine Rechnung für RECOMMENDATIONS?**
 
@@ -93,8 +93,7 @@ Gehen Sie folgendermaßen vor, um Ihr Abonnement zu kündigen. Wenn Ihr aktuelle
 
 Wenn Sie Ihr Abonnement sofort kündigen möchten, damit Sie ein neues Abonnement erwerben können, können Sie hier beim [Microsoft Support](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn) ein Ticket beantragen.
 
-##Erste Schritte mit RECOMMENDATIONS
-
+## Erste Schritte mit RECOMMENDATIONS
 **Lohnt sich RECOMMENDATIONS für mich?**
 
 RECOMMENDATIONS in Machine Learning eignet sich für Organisationen und Unternehmen, die beim Cross- und Upselling von Produkten und Dienstleistungen an ihre Kunden auf Empfehlungen bauen. Wenn Sie über eine kundenorientierte Website, Verkaufspersonal, Vertriebsmitarbeiter oder ein Callcenter ebenso verfügen wie über einen Katalog mit mehr als nur einigen Dutzend Produkten oder Dienstleistungen, kann Ihr Betriebsergebnis von RECOMMENDATIONS profitieren.
@@ -119,8 +118,7 @@ Die API-Dokumentation ist [Azure Machine Learning Recommendations – Quick Star
 
 Zum Hochladen der Katalog- und Nutzungsdaten verfügen Sie über zwei Optionen. Entweder exportieren Sie diese Daten aus Ihrem CRM-System oder anderen Protokollen und laden sie in RECOMMENDATIONS hoch, oder Sie fügen Ihrer Website Markierungen hinzu, um die Benutzeraktivitäten zu verfolgen. Wenn Sie die zweite Methode verwenden, werden die Daten in Azure gespeichert.
 
-##Wartung und Support
-
+## Wartung und Support
 **Wie groß dürfen meine Datensätze sein?**
 
 Jedes Dataset können bis zu 100.000 Katalogelemente enthalten und bis zu 2048 MB mit Nutzungsdaten. Darüber hinaus kann ein Abonnement bis zu 10 Datensätze (Modelle) enthalten.
@@ -132,9 +130,5 @@ Der technische Support ist auf der Website des [Microsoft Azure-Supports](https:
 **Wo finde ich die Nutzungsbedingungen?**
 
 [Microsoft Azure Machine Learning Recommendations API Terms of Service](https://datamarket.azure.com/dataset/amla/recommendations#terms) (in englischer Sprache).
-
-
-
- 
 
 <!---HONumber=AcomDC_0914_2016-->

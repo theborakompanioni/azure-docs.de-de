@@ -1,41 +1,44 @@
-<properties 
-    pageTitle="Datentransformation: Verarbeiten und Transformieren von Daten | Microsoft Azure" 
-    description="Informationen Sie zum Transformieren von Daten oder Verarbeiten von Daten in Azure Data Factory mit Hadoop, Machine Learning und Azure Data Lake Analytics." 
-    keywords="Datentransformation, Daten verarbeiten, Daten transformieren, Transformationsaktivität"
-    services="data-factory" 
-    documentationCenter="" 
-    authors="sharonlo101" 
-    manager="jhubbard" 
-    editor="monicar"/>
+---
+title: 'Datentransformation: Verarbeiten und Transformieren von Daten | Microsoft Docs'
+description: Informationen Sie zum Transformieren von Daten oder Verarbeiten von Daten in Azure Data Factory mit Hadoop, Machine Learning und Azure Data Lake Analytics.
+keywords: Datentransformation, Daten verarbeiten, Daten transformieren, Transformationsaktivität
+services: data-factory
+documentationcenter: ''
+author: sharonlo101
+manager: jhubbard
+editor: monicar
 
-<tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/23/2016" 
-    ms.author="shlo"/>
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/23/2016
+ms.author: shlo
 
-
+---
 # <a name="transform-data-in-azure-data-factory"></a>Transformieren von Data in Azure Data Factory
-> [AZURE.SELECTOR]
-[Hive](data-factory-hive-activity.md)  
-[Pig](data-factory-pig-activity.md)  
-[MapReduce](data-factory-map-reduce.md)  
-[Hadoop-Datenströme](data-factory-hadoop-streaming-activity.md)
-[Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
-[Gespeicherte Prozedur](data-factory-stored-proc-activity.md)
-[Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-[Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
-   
+> [!div class="op_single_selector"]
+> [Hive](data-factory-hive-activity.md)  
+> [Pig](data-factory-pig-activity.md)  
+> [MapReduce](data-factory-map-reduce.md)  
+> [Hadoop-Datenströme](data-factory-hadoop-streaming-activity.md)
+> [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+> [Gespeicherte Prozedur](data-factory-stored-proc-activity.md)
+> [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+> [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
+> 
+> 
 
-## <a name="overview"></a>Übersicht 
+## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Informationen zu Datentransformationsaktivitäten in Azure Data Factory, mit denen Sie Ihre Rohdaten in Vorhersagen und Einblicke transformieren und verarbeiten können. Transformationsaktivitäten erfolgen in einer Compute-Umgebung wie Azure HDInsight-Cluster oder einem Azure Batch. Sie finden hier Links zu Artikeln mit detaillierten Informationen zu jeder Transformationsaktivität.
- 
+
 Data Factory unterstützt die folgenden Transformationsaktivitäten, die [Pipelines](data-factory-create-pipelines.md) entweder einzeln oder mit einer anderen Aktivität verkettet hinzugefügt werden können.
 
-> [AZURE.NOTE] Eine exemplarische Vorgehensweise mit einer detaillierten Anleitung finden Sie im Artikel [Erstellen einer Pipeline mit Hive-Transformation](data-factory-build-your-first-pipeline.md) .  
+> [!NOTE]
+> Eine exemplarische Vorgehensweise mit einer detaillierten Anleitung finden Sie im Artikel [Erstellen einer Pipeline mit Hive-Transformation](data-factory-build-your-first-pipeline.md) .  
+> 
+> 
 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive-Aktivität
 Die HDInsight Hive-Aktivität in einer Data Factory-Pipeline wendet Hive-Abfragen auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Im Artikel [Hive-Aktivität](data-factory-hive-activity.md) finden Sie Details zu dieser Aktivität. 
@@ -77,24 +80,19 @@ Sie erstellen einen verknüpften Dienst für die Computeumgebung und verwenden d
 
 Unter dem Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md) finden Sie Informationen zu Computediensten, die von Data Factory unterstützt werden. 
 
-
 ## <a name="summary"></a>Zusammenfassung
 Azure Data Factory unterstützt für die Aktivitäten die folgenden Datentransformationsaktivitäten und Compute-Umgebungen. Die Transformationsaktivitäten werden Pipelines entweder einzeln oder mit einer anderen Aktivität verkettet hinzugefügt.
 
-Datentransformationsaktivität |  Compute-Umgebung 
-:----------------------- | :--------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] 
-[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop]  
-[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop]  
-[Hadoop-Datenströme](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop]
-[Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) | Azure-VM 
-[Gespeicherte Prozedur](data-factory-stored-proc-activity.md) | Azure SQL, Azure SQL Data Warehouse oder SQL Server |
-[Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
-[DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] oder Azure Batch
-   
-
-
-
+| Datentransformationsaktivität | Compute-Umgebung |
+|:--- |:--- |
+| [Hive](data-factory-hive-activity.md) |HDInsight [Hadoop] |
+| [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
+| [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
+| [Hadoop-Datenströme](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
+| [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |Azure-VM |
+| [Gespeicherte Prozedur](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse oder SQL Server |
+| [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
+| [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] oder Azure Batch |
 
 <!--HONumber=Oct16_HO2-->
 

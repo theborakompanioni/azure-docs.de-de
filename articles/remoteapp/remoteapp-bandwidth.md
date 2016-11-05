@@ -1,25 +1,26 @@
 
-<properties 
-    pageTitle="Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp | Microsoft Azure"
-	description="Lernen Sie die Anforderungen an die Netzwerkbandbreite für Azure RemoteApp-Sammlungen und -Apps kennen."
-	services="remoteapp"
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" />
+---
+title: Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp | Microsoft Docs
+description: Lernen Sie die Anforderungen an die Netzwerkbandbreite für Azure RemoteApp-Sammlungen und -Apps kennen.
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
 
-<tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="elizapo" />
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: elizapo
 
-# Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp 
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+---
+# Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp
+> [!IMPORTANT]
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
 Azure RemoteApp verwendet das Remotedesktopprotokoll (Remote Desktop Protocol, RDP) zur Kommunikation zwischen Anwendungen, die in der Azure-Cloud ausgeführt werden, und Ihren Benutzern. Dieser Artikel enthält einige grundlegende Richtlinien, mit der Sie diese Netzwerknutzung einschätzen und potenziell die Nutzung der Netzwerkbandbreite durch die einzelnen Azure RemoteApp-Benutzer beurteilen können.
 
@@ -29,13 +30,11 @@ Bevor wir fortfahren, beachten Sie bitte, dass wir voraussetzen, dass RDP in den
 
 Informieren Sie sich jetzt in den folgenden Artikeln über die Details, inklusive zu berücksichtigender Faktoren, grundsätzlicher Empfehlungen und dessen, was wir nicht in unsere Schätzungen einbezogen haben.
 
-- [Wie wirken Netzwerkbandbreite und Qualität der Benutzerfreundlichkeit zusammen?](remoteapp-bandwidthexperience.md)
-- [Testen Ihrer Netzwerkbandbreiten-Nutzung mit einigen gängigen Szenarien](remoteapp-bandwidthtests.md)
-- [Kurzrichtlinien, falls Ihnen die Zeit oder die Möglichkeit zum Testen fehlt](remoteapp-bandwidthguidelines.md)
-
+* [Wie wirken Netzwerkbandbreite und Qualität der Benutzerfreundlichkeit zusammen?](remoteapp-bandwidthexperience.md)
+* [Testen Ihrer Netzwerkbandbreiten-Nutzung mit einigen gängigen Szenarien](remoteapp-bandwidthtests.md)
+* [Kurzrichtlinien, falls Ihnen die Zeit oder die Möglichkeit zum Testen fehlt](remoteapp-bandwidthguidelines.md)
 
 ## Was beziehen wir nicht ein?
-
 Beachten Sie bei der Durchsicht der vorgeschlagenen Tests und unseren gesamten (und zugegebenermaßen allgemeinen) Empfehlungen, dass wir einige Faktoren nicht berücksichtigt haben. Dazu zählen z. B. die Komplikationen hinsichtlich der Benutzerfreundlichkeit, die der asymmetrische Charakter der Upload- bzw. Downloadbandbreite mit sich bringt. Der asymmetrische Charakter der meisten Wi-Fi-Netzwerke wirkt sich außerdem auf die Leistung und die Benutzerfreundlichkeit aus. In interaktiven Szenarien kann der Downstreamdatenverkehr eine niedrigere Priorität erhalten als der Upstreamdatenverkehr. Dies kann die Anzahl der verloren gegangenen Video- oder Audioframes erhöhen und so die Benutzerfreundlichkeit beim Streaming beeinträchtigen. Sie können mit eigenen Experimenten feststellen, was für Ihren konkreten Anwendungsfall und Ihr Netzwerk gut ist.
 
 Wir behandeln zwar die Geräteumleitung, berücksichtigen jedoch nicht die Auswirkung des durch angeschlossene Geräte wie Speicher, Drucker, Scanner, Webcams und andere USB-Geräte verursachten Netzwerkverkehrs auf die Bandbreite. Diese Geräte verursachen in der Regel einen vorübergehenden Spitzenbedarf an Netzwerkbandbreite, der verschwindet, wenn der Vorgang abgeschlossen ist. Wenn dies jedoch häufig vorkommt, könnte sich dieser Bandbreitenbedarf bemerkbar machen.

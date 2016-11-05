@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="Übersicht zu Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-	description="Nutzen Sie die Enterprise Integration Pack-Features, um die Integration von Geschäftsprozessen mithilfe des Microsoft Azure App Service-Diensts zu ermöglichen." 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+---
+title: Übersicht zu Enterprise Integration Pack | Microsoft Docs
+description: Nutzen Sie die Enterprise Integration Pack-Features, um die Integration von Geschäftsprozessen mithilfe des Microsoft Azure App Service-Diensts zu ermöglichen.
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: msftman
+manager: erikre
+editor: cgronlun
 
-<tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/08/2016
+ms.author: deonhe
 
+---
 # Unternehmensintegration mit XML-Transformationen
-
 ## Übersicht
 Der Unternehmensintegrationsconnector „Transformieren“ wandelt Daten von einem Format in ein anderes um. Angenommen, es gibt eine eingehende Nachricht, die das aktuelle Datum im Format „JahrMonatTag“ enthält. Mithilfe einer Transformation können Sie das Datum in das Format „TagMonatJahr“ umformatieren.
 
@@ -32,18 +31,21 @@ Nachdem Sie die Transformation in Ihr Integrationskonto hochgeladen haben, könn
 
 **So erfolgt eine Transformation**:
 
-### Voraussetzungen 
+### Voraussetzungen
 Führen Sie in der Vorschauversion die folgenden Schritte aus:
 
--  [Erstellen eines Azure Functions-Containers](https://ms.portal.azure.com/#create/Microsoft.FunctionApp "Erstellen eines Azure Functions-Containers")
--  [Hinzufügen einer Funktion zum Azure Functions-Container](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-transform-function%2Fazuredeploy.json "Diese Vorlage erstellt eine auf einem Webhook basierende in C# geschriebene Azure-Funktion mit Transformationsfunktionen zur Verwendung von Logik-Apps in Integrationsszenarien.")
--  Erstellen eines Integrationskontos und Hinzufügen einer Zuordnung
+* [Erstellen eines Azure Functions-Containers](https://ms.portal.azure.com/#create/Microsoft.FunctionApp "Erstellen eines Azure Functions-Containers")
+* [Hinzufügen einer Funktion zum Azure Functions-Container](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-transform-function%2Fazuredeploy.json "Diese Vorlage erstellt eine auf einem Webhook basierende in C# geschriebene Azure-Funktion mit Transformationsfunktionen zur Verwendung von Logik-Apps in Integrationsszenarien.")
+* Erstellen eines Integrationskontos und Hinzufügen einer Zuordnung
 
->[AZURE.TIP] Notieren Sie sich den Namen des Azure Functions-Containers sowie der Azure-Funktion; Sie werden sie im nächsten Schritt benötigen.
+> [!TIP]
+> Notieren Sie sich den Namen des Azure Functions-Containers sowie der Azure-Funktion; Sie werden sie im nächsten Schritt benötigen.
+> 
+> 
 
 Sobald die Voraussetzungen erfüllt sind, können Sie Ihre Logik-App erstellen:
 
-1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](./app-service-logic-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"), das die Zuordnung enthält.
+1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](app-service-logic-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"), das die Zuordnung enthält.
 2. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu. ![](./media/app-service-logic-enterprise-integration-transforms/transform-1.png)
 3. Fügen Sie die Aktion **XML transformieren** hinzu, indem Sie zuerst **Aktion hinzufügen** auswählen. ![](./media/app-service-logic-enterprise-integration-transforms/transform-2.png)
 4. Geben Sie *Transformieren* in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten. ![](./media/app-service-logic-enterprise-integration-transforms/transform-3.png)
@@ -59,19 +61,16 @@ An diesem Punkt ist das Einrichten der Zuordnung abgeschlossen. In einer realen 
 Sie können jetzt Ihre Transformation testen, indem Sie eine Anforderung an den HTTP-Endpunkt stellen.
 
 ## Features und Anwendungsfälle
-
-- Die in einer Zuordnung erstellte Transformation kann einfach sein, beispielsweise das Kopieren eines Namen und einer Adresse aus einem Dokument in ein anderes. Oder Sie können mithilfe der standardmäßigen Zuordnungsvorgänge komplexere Transformationen erstellen.
-- Mehrere Zuordnungsvorgänge oder Funktionen sind verfügbar, einschließlich Zeichenfolgen, Datum-Uhrzeit-Funktionen usw.
-- Sie können Daten zwischen den Schemas direkt kopieren. Im Mapper, der im SDK enthalten ist, ist dies so einfach wie das Zeichnen einer Linie, die die Elemente im Quellschema mit ihren Gegenstücken im Zielschema verbindet.
-- Wenn Sie eine Zuordnung erstellen, zeigen Sie eine grafische Darstellung der Zuordnung einschließlich aller erstellten Beziehungen und Links an.
-- Verwenden Sie das Feature Testzuordnung zum Hinzufügen einer XML-Beispielnachricht. Mit einem einfachen Mausklick können Sie die erstellte Zuordnung testen und die generierte Ausgabe anzeigen.
-- Hochladen vorhandener Zuordnungen
-- Unterstützung für das XML-Format.
-
+* Die in einer Zuordnung erstellte Transformation kann einfach sein, beispielsweise das Kopieren eines Namen und einer Adresse aus einem Dokument in ein anderes. Oder Sie können mithilfe der standardmäßigen Zuordnungsvorgänge komplexere Transformationen erstellen.
+* Mehrere Zuordnungsvorgänge oder Funktionen sind verfügbar, einschließlich Zeichenfolgen, Datum-Uhrzeit-Funktionen usw.
+* Sie können Daten zwischen den Schemas direkt kopieren. Im Mapper, der im SDK enthalten ist, ist dies so einfach wie das Zeichnen einer Linie, die die Elemente im Quellschema mit ihren Gegenstücken im Zielschema verbindet.
+* Wenn Sie eine Zuordnung erstellen, zeigen Sie eine grafische Darstellung der Zuordnung einschließlich aller erstellten Beziehungen und Links an.
+* Verwenden Sie das Feature Testzuordnung zum Hinzufügen einer XML-Beispielnachricht. Mit einem einfachen Mausklick können Sie die erstellte Zuordnung testen und die generierte Ausgabe anzeigen.
+* Hochladen vorhandener Zuordnungen
+* Unterstützung für das XML-Format.
 
 ## Weitere Informationen
-- [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
-- [Weitere Informationen zu Zuordnungen](./app-service-logic-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")
- 
+* [Weitere Informationen zum Enterprise Integration Pack](app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
+* [Weitere Informationen zu Zuordnungen](app-service-logic-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")
 
 <!---HONumber=AcomDC_0803_2016-->

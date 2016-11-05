@@ -1,50 +1,52 @@
-<properties
-   pageTitle="Erstellen eines Index für Dokumente in mehreren Sprachen in Azure Search | Microsoft Azure | Gehosteter Cloudsuchdienst"
-   description=" Azure Search unterstützt 56 Sprachen und nutzt Sprachanalysen mit Lucene- und Natural Language Processing-Technologie von Microsoft."
-   services="search"
-   documentationCenter=""
-   authors="yahnoosh"
-   manager="pablocas"
-   editor=""/>
+---
+title: Erstellen eines Index für Dokumente in mehreren Sprachen in Azure Search | Microsoft Docs
+description: " Azure Search unterstützt 56 Sprachen und nutzt Sprachanalysen mit Lucene- und Natural Language Processing-Technologie von Microsoft."
+services: search
+documentationcenter: ''
+author: yahnoosh
+manager: pablocas
+editor: ''
 
-<tags
-   ms.service="search"
-   ms.devlang="na"
-   ms.workload="search"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.date="07/14/2016"
-   ms.author="jlembicz"/>
+ms.service: search
+ms.devlang: na
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 07/14/2016
+ms.author: jlembicz
 
+---
 # Erstellen eines Index für Dokumente in mehreren Sprachen in Azure Search
-> [AZURE.SELECTOR]
-- [Portal](search-language-support.md)
-- [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
-- [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
+> [!div class="op_single_selector"]
+> * [Portal](search-language-support.md)
+> * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
+> * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
+> 
+> 
 
 Sie können die Vorteile von Sprachanalysen einfach nutzen, indem Sie eine Eigenschaft für ein durchsuchbares Feld in der Indexdefinition festlegen. Diesen Schritt können Sie jetzt im Portal ausführen.
 
 Nachfolgend finden Sie Screenshots der Azure-Portalblätter für Azure Search, über die Benutzer ein Indexschema definieren können. Auf diesem Blatt können Benutzer alle Felder erstellen und die Analyseeigenschaften für die einzelnen Felder festlegen.
 
-> [AZURE.IMPORTANT] Eine Sprachanalyse kann nur während der Felddefinition festgelegt werden, also nur beim Erstellen eines neuen Index und beim Hinzufügen eines neuen Felds zu einem vorhandenen Index. Stellen Sie sicher, dass Sie beim Erstellen des Felds alle Attribute, einschließlich der Analyse, vollständig angeben. Sie können die Attribute nicht mehr bearbeiten und den Analysetyp nicht mehr ändern, nachdem Ihre Änderungen gespeichert wurden.
+> [!IMPORTANT]
+> Eine Sprachanalyse kann nur während der Felddefinition festgelegt werden, also nur beim Erstellen eines neuen Index und beim Hinzufügen eines neuen Felds zu einem vorhandenen Index. Stellen Sie sicher, dass Sie beim Erstellen des Felds alle Attribute, einschließlich der Analyse, vollständig angeben. Sie können die Attribute nicht mehr bearbeiten und den Analysetyp nicht mehr ändern, nachdem Ihre Änderungen gespeichert wurden.
+> 
+> 
 
 ## Definieren einer neuen Felddefinition
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Dienstblatt für Ihren Suchdienst.
 2. Klicken Sie oben im Dienstdashboard auf der Befehlsleiste auf **Index hinzufügen**, um einen neuen Index zu beginnen, oder öffnen Sie einen vorhandenen Index, um eine Analyse für neue Felder festzulegen, die Sie einem vorhandenen Index hinzufügen.
 3. Das Blatt „Felder“ mit Optionen zum Festlegen des Indexschemas wird angezeigt. Hier sehen Sie auch die Registerkarte für die Analyse, über die Sie eine Sprachanalyse auswählen.
 4. Beginnen Sie unter „Felder“ mit einer Felddefinition, indem Sie einen Namen angeben, den Datentyp auswählen und Attribute festlegen. Mit diesen Attributen geben Sie u. a. an, dass das Feld für die Volltextsuche verwendet, in Suchergebnissen abgerufen, in Facettennavigationsstrukturen verwendet und sortiert werden kann.
 5. Bevor Sie mit dem nächsten Feld fortfahren, öffnen Sie die Registerkarte **Analyse**.
 
-   
 ![][1] *Klicken Sie zum Auswählen einer Analyse auf dem Blatt „Felder“ auf die Registerkarte „Analyse“.*
 
 ## Auswählen einer Analyse
-
-6. Führen Sie einen Bildlauf zu dem Feld durch, das Sie definieren.
-7. Wenn Sie das Feld noch nicht als durchsuchbar gekennzeichnet haben, aktivieren Sie jetzt das Kontrollkästchen, um es als **durchsuchbar** zu kennzeichnen.
-8. Klicken Sie auf den Bereich „Analyse“, um die Liste der verfügbaren Analysen anzuzeigen.
-9. Wählen Sie die zu verwendende Analyse aus.
+1. Führen Sie einen Bildlauf zu dem Feld durch, das Sie definieren.
+2. Wenn Sie das Feld noch nicht als durchsuchbar gekennzeichnet haben, aktivieren Sie jetzt das Kontrollkästchen, um es als **durchsuchbar** zu kennzeichnen.
+3. Klicken Sie auf den Bereich „Analyse“, um die Liste der verfügbaren Analysen anzuzeigen.
+4. Wählen Sie die zu verwendende Analyse aus.
 
 ![][2] *Wählen Sie für jedes Feld eine der unterstützten Analysen aus.*
 

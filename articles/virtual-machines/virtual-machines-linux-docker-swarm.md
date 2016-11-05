@@ -1,33 +1,33 @@
-<properties
-   pageTitle="Verwenden von Docker mit Swarm auf Azure – Erste Schritte"
-   description="Beschreibt das Erstellen einer Gruppe von VMs mit der Docker-VM-Erweiterung sowie die Verwendung von Swarm zum Erstellen eines Docker-Clusters."
-   services="virtual-machines-linux"
-   documentationCenter="virtual-machines"
-   authors="squillace"
-   manager="timlt"
-   editor="tysonn"
-   tags="azure-service-management"/>
+---
+title: Verwenden von Docker mit Swarm auf Azure – Erste Schritte
+description: Beschreibt das Erstellen einer Gruppe von VMs mit der Docker-VM-Erweiterung sowie die Verwendung von Swarm zum Erstellen eines Docker-Clusters.
+services: virtual-machines-linux
+documentationcenter: virtual-machines
+author: squillace
+manager: timlt
+editor: tysonn
+tags: azure-service-management
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="01/04/2016"
-   ms.author="rasquill"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 01/04/2016
+ms.author: rasquill
 
+---
 # Verwenden von Docker mit Swarm
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 In diesem Thema wird erläutert, wie Sie mithilfe von [Docker](https://www.docker.com/) mit [Swarm](https://github.com/docker/swarm) auf einfache Weise ein über Swarm verwaltetes Cluster auf Azure erstellen. Hierbei werden vier virtuelle Computer in Azure erstellt, von denen einer als Swarm-Manager fungiert und drei als Bestandteil des Clusters aus Docker-Hosts verwendet werden. Wenn Sie fertig sind, können Sie mithilfe von Swarm den Cluster anzeigen und mit der Verwendung von Docker beginnen. Darüber hinaus werden die Azure-CLI-Aufrufe in diesem Thema im ASM-Modus (Azure Service Management) ausgeführt.
 
-> [AZURE.NOTE] In diesem Thema wird Docker mit Swarm und der Azure-Befehlszeilenschnittstelle *ohne* **docker-machine** eingesetzt. Dies soll zeigen, wie die verschiedenen Tools zusammenarbeiten, aber dennoch unabhängig bleiben. **docker-machine** verfügt über **--swarm**-Optionen, sodass Sie einem Swarm Knoten mithilfe von **docker-machine** direkt hinzufügen können. Ein Beispiel finden Sie in der Dokumentation zu [docker-machine](https://github.com/docker/machine). Informationen zur Ausführung von **docker-machine** für Azure-VMs finden Sie unter [Verwenden von "docker-machine" mit Azure](virtual-machines-linux-docker-machine.md).
+> [!NOTE]
+> In diesem Thema wird Docker mit Swarm und der Azure-Befehlszeilenschnittstelle *ohne* **docker-machine** eingesetzt. Dies soll zeigen, wie die verschiedenen Tools zusammenarbeiten, aber dennoch unabhängig bleiben. **docker-machine** verfügt über **--swarm**-Optionen, sodass Sie einem Swarm Knoten mithilfe von **docker-machine** direkt hinzufügen können. Ein Beispiel finden Sie in der Dokumentation zu [docker-machine](https://github.com/docker/machine). Informationen zur Ausführung von **docker-machine** für Azure-VMs finden Sie unter [Verwenden von "docker-machine" mit Azure](virtual-machines-linux-docker-machine.md).
+> 
+> 
 
 ## Erstellen von Docker-Hosts mit Azure-VMs
-
 In diesem Thema werden vier VMs erstellt, aber Sie können eine beliebige Anzahl von VMs erstellen. Führen Sie den folgenden Aufruf aus, und ersetzen Sie *&lt;Kennwort&gt;* durch das gewählte Kennwort.
 
     azure vm docker create swarm-master -l "East US" -e 22 $imagename ops <password>
@@ -44,7 +44,6 @@ Im Anschluss sollten Sie in der Lage sein, über **azure vm list** Ihre Azure-VM
     data:    swarm-node-3     ReadyRole           East US       swarm-node-3.cloudapp.net                               100.78.24.68  
 
 ## Installieren von Swarm auf der Swarm-Master-VM
-
 In diesem Thema wird das [Containerinstallationsmodell aus der Docker Swarm-Dokumentation](https://github.com/docker/swarm#1---docker-image) verwendet. Sie können jedoch auch per SSH eine Verbindung mit **Swarm-Master** herstellen. In diesem Modell wird **Swarm** als Docker-Container heruntergeladen, der Swarm ausführt. Nachfolgend wird dieser Schritt *remote über den Laptop unter Verwendung von Docker* ausgeführt, um eine Verbindung mit der **Swarm-Master**-VM herzustellen und diese anzuweisen, den Befehl **swarm create** zur Cluster-ID-Erstellung zu verwenden. Über die Cluster-ID ermittelt **Swarm** die Mitglieder der Swarm-Gruppe. (Sie können das Repository auch klonen und die Erstellung selbst durchführen, so haben Sie vollständige Kontrolle und können das Debugging aktivieren.)
 
     $ docker --tls -H tcp://swarm-master.cloudapp.net:2376 run --rm swarm create
@@ -63,10 +62,12 @@ In diesem Thema wird das [Containerinstallationsmodell aus der Docker Swarm-Doku
 
 Die letzte Zeile ist die Cluster-ID. Kopieren Sie diese an einen beliebigen Ort, da Sie sie beim Beitritt der Knoten-VM zum Swarm-Master erneut benötigen, um den "swarm" zu erstellen. In diesem Beispiel lautet die Cluster-ID **36731c17189fd8f450c395db8437befd**.
 
-> [AZURE.NOTE] Beachten Sie, dass wir zum Verbinden mit der **Swarm-Master**-VM in Azure unsere lokale Docker-Installation verwenden. Dabei wird **Swarm-Master** angewiesen, mit dem Befehl **create** den Swarm herunterzuladen, zu installieren und auszuführen. Dieser Befehl gibt unsere Cluster-ID zurück, die wir später zu Ermittlungszwecken verwenden.
-<!-- -->
+> [!NOTE]
+> Beachten Sie, dass wir zum Verbinden mit der **Swarm-Master**-VM in Azure unsere lokale Docker-Installation verwenden. Dabei wird **Swarm-Master** angewiesen, mit dem Befehl **create** den Swarm herunterzuladen, zu installieren und auszuführen. Dieser Befehl gibt unsere Cluster-ID zurück, die wir später zu Ermittlungszwecken verwenden.
+> <!-- -->
 > Führen Sie zur Bestätigung `docker -H tcp://`*&lt;hostname&gt;* ` images` aus, um die Containerprozesse in der **Swarm-Master**-VM aufzulisten. Wiederholen Sie die Ausführung zum Vergleich auf einem anderen Knoten (da wir den vorherigen Swarm-Befehl mit der Option **--rm** ausgeführt haben, wurde der Container nach Fertigstellung entfernt, sodass **docker ps -a** keine Ergebnisse zurückgibt):
-
+> 
+> 
 
         $ docker --tls -H tcp://swarm-master.cloudapp.net:2376 images
         REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
@@ -75,10 +76,12 @@ Die letzte Zeile ist die Cluster-ID. Kopieren Sie diese an einen beliebigen Ort,
         REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
         $
 <P />
+
 > Wenn Sie mit **Docker** vertraut sind, wissen Sie, dass die anderen Knoten keine Einträge aufweisen, da noch keine Images heruntergeladen und ausgeführt wurden.
+> 
+> 
 
 ## Hinzufügen der Knoten-VMs zum Docker-Cluster
-
 Listen Sie für jeden Knoten mit der Azure-CLI die Endpunktinformationen auf. Nachstehend wird dieser Schritt für den Docker-Host **swarm-node-1** ausgeführt, um den Docker-Port des Knotens zu ermitteln.
 
     $ azure vm endpoint list swarm-node-1
@@ -116,7 +119,6 @@ Das sieht gut aus. Geben Sie Folgendes ein, um zu bestätigen, dass **Swarm** au
 Wiederholen Sie diesen Vorgang für alle Knoten im Cluster. Im vorliegenden Fall sind dies **swarm-node-2** und **swarm-node-3**.
 
 ## Beginnen Sie mit der Verwaltung des Swarm-Clusters,
-
     $ docker --tls -H tcp://swarm-master.cloudapp.net:2376 run -d -p 2375:2375 swarm manage token://36731c17189fd8f450c395db8437befd
     d7e87c2c147ade438cb4b663bda0ee20981d4818770958f5d317d6aebdcaedd5
 
@@ -129,12 +131,11 @@ damit Sie anschließend Ihre Knoten im Cluster auflisten können:
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
-
 Führen Sie Aufgaben im Swarm aus. Anregungen finden Sie unter [https://github.com/docker/swarm/](https://github.com/docker/swarm/) oder in diesem [Video](https://www.youtube.com/watch?v=EC25ARhZ5bI).
 
 <!-- links -->
 
 [docker-machine-azure]: virtual-machines-linux-docker-machine.md
- 
+
 
 <!---HONumber=AcomDC_0629_2016-->

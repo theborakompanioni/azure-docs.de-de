@@ -1,40 +1,37 @@
-<properties
-   pageTitle="Behandeln von Problemen beim Bereitstellen virtueller Linux-Computer (Ressourcen-Manager) | Microsoft Azure"
-   description="Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure"
-   services="virtual-machines-linux, azure-resource-manager"
-   documentationCenter=""
-   authors="JiangChen79"
-   manager="felixwu"
-   editor=""
-   tags="top-support-issue, azure-resource-manager"/>
+---
+title: Behandeln von Problemen beim Bereitstellen virtueller Linux-Computer (Ressourcen-Manager) | Microsoft Docs
+description: Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
+services: virtual-machines-linux, azure-resource-manager
+documentationcenter: ''
+author: JiangChen79
+manager: felixwu
+editor: ''
+tags: top-support-issue, azure-resource-manager
 
-<tags
-  ms.service="virtual-machines-linux"
-  ms.workload="na"
-  ms.tgt_pltfrm="vm-linux"
-  ms.devlang="na"
-  ms.topic="article"
-  ms.date="09/09/2016"
-  ms.author="cjiang"/>
+ms.service: virtual-machines-linux
+ms.workload: na
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 09/09/2016
+ms.author: cjiang
 
-
+---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
+[!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
-
-[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+[!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="collect-audit-logs"></a>Sammeln von Überwachungsprotokollen
-
 Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise.
 
 [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md)
 
 [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md)
 
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
+[!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
-[AZURE.INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
+[!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
 **Y** : Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
 
@@ -65,26 +62,24 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
 
 **Lösung 1:**
 
-- Wiederholen Sie die Anforderung mit einer geringeren Größe des virtuellen Computers.
-- Wenn die Größe des angeforderten virtuellen Computers nicht geändert werden kann:
-  - Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe.
-  Klicken Sie auf **Ressourcengruppen** > *Ihre Ressourcengruppe* > **Ressourcen** > *Ihre Verfügbarkeitsgruppe* > **Virtuelle Computer** > *Ihr virtueller Computer* > **Beenden**.
-  - Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
-  - Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
+* Wiederholen Sie die Anforderung mit einer geringeren Größe des virtuellen Computers.
+* Wenn die Größe des angeforderten virtuellen Computers nicht geändert werden kann:
+  * Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe.
+    Klicken Sie auf **Ressourcengruppen** > *Ihre Ressourcengruppe* > **Ressourcen** > *Ihre Verfügbarkeitsgruppe* > **Virtuelle Computer** > *Ihr virtueller Computer* > **Beenden**.
+  * Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
+  * Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
 
 **Ursache 2:** Der Cluster besitzt keine freien Ressourcen.
 
 **Lösung 2:**
 
-- Wiederholen Sie die Anforderung zu einem späteren Zeitpunkt.
-- Wenn der neue virtuelle Computer Teil einer anderen Verfügbarkeitsgruppe sein kann
-  - Erstellen Sie einen neuen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).
-  - Fügen Sie den neuen virtuellen Computer zum gleichen virtuellen Netzwerk hinzu.
+* Wiederholen Sie die Anforderung zu einem späteren Zeitpunkt.
+* Wenn der neue virtuelle Computer Teil einer anderen Verfügbarkeitsgruppe sein kann
+  * Erstellen Sie einen neuen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).
+  * Fügen Sie den neuen virtuellen Computer zum gleichen virtuellen Netzwerk hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn beim Starten eines beendeten virtuellen Linux-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Linux-Computers Probleme in Azure auftreten, finden Sie Informationen unter [Problembehandlung von Resource Manager-Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure](virtual-machines-linux-restart-resize-error-troubleshooting.md).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

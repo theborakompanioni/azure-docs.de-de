@@ -1,21 +1,21 @@
-<properties
-	pageTitle="Azure Monitoring-REST-API – exemplarische Vorgehensweise | Microsoft Azure"
-	description="Authentifizieren von Anforderungen und Verwenden der Azure Monitor-REST-API."
-	authors="mcollier, rboucher"
-	manager=""
-	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+---
+title: Azure Monitoring-REST-API – exemplarische Vorgehensweise | Microsoft Docs
+description: Authentifizieren von Anforderungen und Verwenden der Azure Monitor-REST-API.
+author: mcollier
+manager: ''
+editor: ''
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
 
-<tags
-	ms.service="monitoring-and-diagnostics"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/27/2016"
-	ms.author="mcollier"/>
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/27/2016
+ms.author: mcollier
 
+---
 # Exemplarische Vorgehensweise für die Azure Monitor-REST-API
 In diesem Artikel erfahren Sie, wie Sie die Authentifizierungen so durchführen, dass Ihr Code die [REST-API-Referenz für Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx) nutzen kann.
 
@@ -24,7 +24,6 @@ Mit der Azure Monitor-API können Sie die verfügbaren Standardmetrikdefinitione
 Außer dem Arbeiten mit verschiedenen Metrikdatenpunkten – wie in diesem Artikel beschrieben – können Sie mit der Monitor-API auch Warnungsregeln auflisten, Aktivitätsprotokolle anzeigen und vieles mehr. Eine vollständige Liste aller verfügbaren Vorgänge finden Sie in der [REST-API-Referenz für Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 ## Authentifizieren von Azure Monitor-Anforderungen
-
 Zunächst muss die Anforderung authentifiziert werden.
 
 Alle für die Azure Monitor-API ausgeführten Aufgaben verwenden das Azure Resource Manager-Authentifizierungsmodell. Daher müssen alle Anforderungen mithilfe von Azure Active Directory (Azure AD) authentifiziert werden. Ein Ansatz für die Authentifizierung der Clientanwendung ist die Erstellung eines Azure AD-Dienstprinzipals und das Abrufen des Authentifizierungstokens (JWT). Das folgende Beispielskript zeigt, wie ein Azure AD-Dienstprinzipal mithilfe von PowerShell erstellt werden kann. Eine ausführlichere Anleitung finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../resource-group-authenticate-service-principal.md#authenticate-service-principal-with-password—powershell). Es ist außerdem möglich, [einen Dienstprinzipal über das Azure-Portal zu erstellen](../resource-group-create-service-principal-portal.md).
@@ -69,7 +68,7 @@ $authUrl = "https://login.windows.net/${tenantId}"
 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]$authUrl
 $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($clientId, $pwd)
- 
+
 $result = $AuthContext.AcquireToken("https://management.core.windows.net/", $cred)
 
 # Build an array of HTTP header values 
@@ -83,12 +82,13 @@ $authHeader = @{
 Sobald die Authentifizierungseinrichtung abgeschlossen ist, können Abfragen für die Azure Monitor-REST-API ausgeführt werden. Es stehen zwei hilfreiche Abfragen zur Verfügung:
 
 1. Auflisten der Metrikdefinitionen für eine Ressource
-
 2. Abrufen der Metrikwerte
 
-
 ## Abrufen der Metrikdefinitionen
->[AZURE.NOTE] Zum Abrufen der Metrikdefinitionen mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version 2016-03-01.
+> [!NOTE]
+> Zum Abrufen der Metrikdefinitionen mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version 2016-03-01.
+> 
+> 
 
 ```PowerShell
 $apiVersion = "2016-03-01"
@@ -108,11 +108,14 @@ Weitere Informationen finden Sie in der Dokumentation zum [Auflisten der Metrikd
 ## Abrufen von Metrikwerten
 Sobald die verfügbaren Metrikdefinitionen bekannt sind, können die entsprechenden Metrikwerte abgerufen werden. Für sämtliche Filteranforderungen verwenden Sie den Metriknamen „value“ (nicht „localizedValue“; z.B. zum Abrufen der Metrikdatenpunkte „CpuTime“ und „Requests“). Werden keine Filter verwendet, wird die Standardmetrik zurückgegeben.
 
->[AZURE.NOTE] Zum Abrufen der Metrikwerte mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version 2016-06-01.
+> [!NOTE]
+> Zum Abrufen der Metrikwerte mithilfe der Azure Monitor-REST-API verwenden Sie die API-Version 2016-06-01.
+> 
+> 
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/_{resource-provider-namespace}_/_{resource-type}_/_{resource-name}_/providers/microsoft.insights/metrics?$filter=_{filter}_&api-version=_{apiVersion}_
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*
 
 Um zum Beispiel RunsSucceeded-Metrikdatenpunkte für einen bestimmten Zeitraum und ein Aggregationsintervall von einer Stunde abzurufen, sähe die Anforderung wie folgt aus:
 
@@ -146,16 +149,11 @@ $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourc
 Eine Alternative zur Verwendung von PowerShell (wie oben dargestellt) ist die Verwendung von [ARMClient](https://github.com/projectkudu/ARMClient) auf Ihrem Windows-Computer. ARMClient führt die Azure AD-Authentifizierung automatisch durch (und verwendet das entsprechende JWT-Token). Die folgenden Schritte beschreiben die Nutzung von ARMClient zum Abrufen von Metrikdaten:
 
 1. Installieren Sie [Chocolatey](https://chocolatey.org/) und [ARMClient](https://github.com/projectkudu/ARMClient).
-
-2. Geben Sie in einem Terminalfenster _armclient.exe login_ ein. Danach werden Sie dazu aufgefordert, sich bei Azure anzumelden.
-
-3. Geben Sie _armclient GET [Ihre\_Ressourcen\_ID]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01_ ein.
-
-4. Geben Sie _armclient GET [Ihre\_Ressourcen\_ID]/providers/microsoft.insights/metrics?api-version=2016-06-01_ ein.
-
+2. Geben Sie in einem Terminalfenster *armclient.exe login* ein. Danach werden Sie dazu aufgefordert, sich bei Azure anzumelden.
+3. Geben Sie *armclient GET [Ihre\_Ressourcen\_ID]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01* ein.
+4. Geben Sie *armclient GET [Ihre\_Ressourcen\_ID]/providers/microsoft.insights/metrics?api-version=2016-06-01* ein.
 
 ![Alt "Verwenden von ARMClient zum Arbeiten mit der Azure Monitor-REST-API"](./media/monitoring-rest-api-walkthrough/armclient_metricdefinitions.png)
-
 
 ## Abrufen der Ressourcen-ID
 Die Verwendung der REST-API kann Ihnen dabei helfen, die verfügbaren Metrikdefinitionen, die Granularität und die entsprechenden Werte zu verstehen. Diese Informationen sind für die Nutzung der [Azure-Verwaltungsbibliothek](https://msdn.microsoft.com/library/azure/mt417623.aspx) hilfreich.
@@ -166,20 +164,13 @@ Für den oben angegebenen Code muss als Ressourcen-ID der vollständige Pfad zur
 
 Die folgende Liste enthält einige Beispiele für Ressourcen-ID-Formate für verschiedene Azure-Ressourcen:
 
-* **IoT Hub** - /subscriptions/_{abonnement-id}_/resourceGroups/_{ressourcengruppenname}_/providers/Microsoft.Devices/IotHubs/_{iot-hub-name}_
-
-* **Elastic SQL Pool** - /subscriptions/_{abonnement-id}_/resourceGroups/_{ressourcengruppenname}_/providers/Microsoft.Sql/servers/_{pool-db}_/elasticpools/_{sql-poolname}_
-
-* **SQL Database (v12)** - /subscriptions/_{abonnement-id}_/resourceGroups/_{ressourcengruppenname}_/providers/Microsoft.Sql/servers/_{servername}_/databases/_{datenbankname}_
-
-* **Service Bus** - /subscriptions/_{abonnement-id}_/resourceGroups/_{ressourcengruppenname}_/providers/Microsoft.ServiceBus/_{namespace}_/_{servicebus-name}_
-
-* **VM Scale Sets** - /subscriptions/_{abonnement-id}_/resourceGroups/_{ressourcengruppenname}_/providers/Microsoft.Compute/virtualMachineScaleSets/_{vm-name}_
-
-* **VMs** - /subscriptions/_{abonnement-id}_/resourceGroups/_{ressourcengruppenname}_/providers/Microsoft.Compute/virtualMachines/_{vm-name}_
-
-* **Event Hubs** - /subscriptions/_{subscription-id}_/resourceGroups/_{resource-group-name}_/providers/Microsoft.EventHub/namespaces/_{eventhub-namespace}_
-
+* **IoT Hub** - /subscriptions/*{abonnement-id}*/resourceGroups/*{ressourcengruppenname}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
+* **Elastic SQL Pool** - /subscriptions/*{abonnement-id}*/resourceGroups/*{ressourcengruppenname}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-poolname}*
+* **SQL Database (v12)** - /subscriptions/*{abonnement-id}*/resourceGroups/*{ressourcengruppenname}*/providers/Microsoft.Sql/servers/*{servername}*/databases/*{datenbankname}*
+* **Service Bus** - /subscriptions/*{abonnement-id}*/resourceGroups/*{ressourcengruppenname}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
+* **VM Scale Sets** - /subscriptions/*{abonnement-id}*/resourceGroups/*{ressourcengruppenname}*/providers/Microsoft.Compute/virtualMachineScaleSets/*{vm-name}*
+* **VMs** - /subscriptions/*{abonnement-id}*/resourceGroups/*{ressourcengruppenname}*/providers/Microsoft.Compute/virtualMachines/*{vm-name}*
+* **Event Hubs** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
 
 Es gibt alternative Ansätze für das Abrufen von Ressourcen-ID – darunter die Verwendung von Azure-Ressourcen-Explorers – und für das Anzeigen der gewünschten Ressource im Azure-Portal, über PowerShell oder die Azure-CLI.
 
@@ -196,12 +187,12 @@ Die Ressourcen-ID finden Sie auch im Azure-Portal. Navigieren Sie dazu zur gewü
 ### Azure PowerShell
 Die Ressourcen-ID kann auch mithilfe von Azure PowerShell-Cmdlets abgerufen werden. Um zum Beispiel die Ressourcen-ID für eine Azure-Web-App abzurufen, führen Sie das Cmdlet Get-AzureRmWebApp aus, wie im folgenden Screenshot dargestellt:
 
-![Alt "Ressourcen-ID wird über PowerShell abgerufen"](./media\monitoring-rest-api-walkthrough\resourceid_powershell.png)
+![Alt "Ressourcen-ID wird über PowerShell abgerufen"](./media\\monitoring-rest-api-walkthrough\\resourceid_powershell.png)
 
 ### Azure-Befehlszeilenschnittstelle
 Um die Ressourcen-ID mithilfe der Azure-CLI abzurufen, führen Sie den Befehl „azure webapp show“ aus, und geben Sie die Option „--json“ an, wie im folgenden Screenshot dargestellt:
 
-![Alt "Ressourcen-ID wird über PowerShell abgerufen"](./media\monitoring-rest-api-walkthrough\resourceid_azurecli.png)
+![Alt "Ressourcen-ID wird über PowerShell abgerufen"](./media\\monitoring-rest-api-walkthrough\\resourceid_azurecli.png)
 
 ## Abrufen von Aktivitätsprotokolldaten
 Außer Metrikdefinitionen und den entsprechenden Werten können auch zusätzliche interessante Informationen über Ihre Azure-Ressourcen abgerufen werden. So können beispielsweise [Aktivitätsprotokolldaten](https://msdn.microsoft.com/library/azure/dn931934.aspx) abgefragt werden. Das folgende Muster zeigt die Verwendung der Azure Monitor-REST-API, um Aktivitätsprotokolldaten innerhalb eines bestimmten Zeitraums für Ihr Azure-Abonnement abzufragen:

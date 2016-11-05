@@ -1,53 +1,44 @@
 ## Senden einer Cloud-zu-Gerät-Nachricht vom App-Back-End
-
 In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die Cloud-zu-Gerät-Nachrichten an die simulierte Geräte-App sendet.
 
 1. Erstellen Sie in der aktuellen Visual Studio-Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktop-App-Projekt. Nennen Sie das Projekt **SendCloudToDevice**.
-
-   	![Neues Projekt in Visual Studio][20]
-
+   
+       ![Neues Projekt in Visual Studio][20]
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete verwalten...**
-
-	Daraufhin wird das Fenster **NuGet-Pakete verwalten** geöffnet.
-
+   
+    Daraufhin wird das Fenster **NuGet-Pakete verwalten** geöffnet.
 3. Suchen Sie nach `Microsoft Azure Devices`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
-
-	Daraufhin wird das [NuGet-Paket mit dem Dienst-SDK für Azure IoT] heruntergeladen, installiert und mit einem Verweis versehen.
-
+   
+    Daraufhin wird das [NuGet-Paket mit dem Dienst-SDK für Azure IoT] heruntergeladen, installiert und mit einem Verweis versehen.
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
-
-		using Microsoft.Azure.Devices;
-
+   
+        using Microsoft.Azure.Devices;
 5. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge aus [Erste Schritte mit IoT Hub]\:
-
-		static ServiceClient serviceClient;
+   
+        static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
-
 6. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
-
-		private async static Task SendCloudToDeviceMessageAsync()
+   
+        private async static Task SendCloudToDeviceMessageAsync()
         {
             var commandMessage = new Message(Encoding.ASCII.GetBytes("Cloud to device message."));
             await serviceClient.SendAsync("myFirstDevice", commandMessage);
         }
-
-	Diese Methode sendet eine neue C2D-Nachricht an das Gerät mit der ID, `myFirstDevice`. Ändern Sie diesen Parameter entsprechend, falls Sie den in [Erste Schritte mit IoT Hub] verwendeten Parameter geändert haben.
-
+   
+    Diese Methode sendet eine neue C2D-Nachricht an das Gerät mit der ID, `myFirstDevice`. Ändern Sie diesen Parameter entsprechend, falls Sie den in [Erste Schritte mit IoT Hub] verwendeten Parameter geändert haben.
 7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
-
+   
         Console.WriteLine("Send Cloud-to-Device message\n");
         serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
-
+   
         Console.WriteLine("Press any key to send a C2D message.");
         Console.ReadLine();
         SendCloudToDeviceMessageAsync().Wait();
         Console.ReadLine();
-
 8. Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen** aus. Wählen Sie **Mehrere Startprojekte** aus, und wählen Sie dann die Aktion **Starten** für **ProcessDeviceToCloudMessages**, **SimulatedDevice** und **SendCloudToDevice** aus.
-
-9.  Drücken Sie **F5**. Alle drei Anwendungen sollten beginnen. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie **EINGABE**. Die von der simulierten Anwendung empfangene Meldung sollte angezeigt werden.
-
-    ![Nachrichtenempfangs-App][21]
+9. Drücken Sie **F5**. Alle drei Anwendungen sollten beginnen. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie **EINGABE**. Die von der simulierten Anwendung empfangene Meldung sollte angezeigt werden.
+   
+   ![Nachrichtenempfangs-App][21]
 
 ## Empfangen von Übermittlungsfeedback
 Es ist möglich, für jede C2D-Nachricht Übermittlungsbestätigungen (oder Ablaufbestätigungen) von IoT Hub anzufordern. Auf diese Weise kann die Wiederholungs- oder Kompensierungslogik einfach vom Cloud-Back-End informiert werden. Weitere Informationen zu C2D-Feedback finden Sie im [Entwicklungsleitfaden für IoT Hub][IoT Hub Developer Guide - C2D].
@@ -59,36 +50,36 @@ In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedb
         private async static void ReceiveFeedbackAsync()
         {
             var feedbackReceiver = serviceClient.GetFeedbackReceiver();
-
+   
             Console.WriteLine("\nReceiving c2d feedback from service");
             while (true)
             {
                 var feedbackBatch = await feedbackReceiver.ReceiveAsync();
                 if (feedbackBatch == null) continue;
-
+   
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Received feedback: {0}", string.Join(", ", feedbackBatch.Records.Select(f => f.StatusCode)));
                 Console.ResetColor();
-
+   
                 await feedbackReceiver.CompleteAsync(feedbackBatch);
             }
         }
-
+   
     Beachten Sie, dass das Empfangsmuster mit dem Muster zum Empfangen von Cloud-zu-Gerät-Nachrichten von der Geräte-App identisch ist.
-
 2. Fügen Sie in der **Main**-Methode unmittelbar nach der Zeile `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` folgende Methode hinzu:
-
+   
         ReceiveFeedbackAsync();
-
 3. Um für die Übermittlung der C2D-Nachricht Feedback anzufordern, müssen Sie in der **SendCloudToDeviceMessageAsync**-Methode eine Eigenschaft angeben. Fügen Sie direkt nach der Zeile `var commandMessage = new Message(...);` folgende Zeile hinzu:
-
+   
         commandMessage.Ack = DeliveryAcknowledgement.Full;
+4. Drücken Sie **F5**, um die Apps auszuführen. Alle drei Anwendungen sollten gestartet werden. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie **EINGABE**. Sie sollten sehen, dass die Nachricht von der simulierten App empfangen wird. Nach einigen Sekunden sollte die Feedbacknachricht von der **SendCloudToDevice**-Anwendung empfangen werden.
+   
+   ![Nachrichtenempfangs-App][22]
 
-4.  Drücken Sie **F5**, um die Apps auszuführen. Alle drei Anwendungen sollten gestartet werden. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie **EINGABE**. Sie sollten sehen, dass die Nachricht von der simulierten App empfangen wird. Nach einigen Sekunden sollte die Feedbacknachricht von der **SendCloudToDevice**-Anwendung empfangen werden.
-
-    ![Nachrichtenempfangs-App][22]
-
-> [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
+> [!NOTE]
+> Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
+> 
+> 
 
 <!-- Links -->
 

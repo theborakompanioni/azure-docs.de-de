@@ -1,54 +1,49 @@
-<properties
-    pageTitle="Azure AD Domain Services: Vergleich zwischen Azure AD Domain Services und DIY-Domänencontrollern | Microsoft Azure"
-    description="Vergleich zwischen Azure Active Directory Domain Services und DIY-Domänencontrollern"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+---
+title: 'Azure AD Domain Services: Vergleich zwischen Azure AD Domain Services und DIY-Domänencontrollern | Microsoft Docs'
+description: Vergleich zwischen Azure Active Directory Domain Services und DIY-Domänencontrollern
+services: active-directory-ds
+documentationcenter: ''
+author: mahesh-unnikrishnan
+manager: stevenpo
+editor: curtand
 
-<tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="maheshu"/>
+ms.service: active-directory-ds
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/01/2016
+ms.author: maheshu
 
-
+---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>So entscheiden Sie, ob die Azure AD Domain Services für Ihren Anwendungsfall geeignet sind
 Die Azure AD Domain Services ermöglichen es Ihnen, Ihre Workloads in Azure-Infrastrukturdiensten bereitzustellen, ohne sich über die Wartung Ihrer Identitätsinfrastruktur Gedanken machen zu müssen. Dieser verwaltete Dienst unterscheidet sich von einer typischen Windows Server Active Directory-Bereitstellung, die Sie selbst bereitstellen und verwalten. Der Dienst ist für eine einfache Bereitstellung, eine automatisierte Integritätsüberwachung und -bereinigung sowie eine einfache Identitätsstruktur für die Cloud konzipiert. Wir verbessern den Dienst fortlaufend, um Unterstützung für gängige Bereitstellungsszenarios hinzuzufügen.
 
 Um zu entscheiden, ob Sie die Azure AD Domain Services verwenden oder in Azure eine eigene AD-Infrastruktur (Do-It-Yourself) einrichten und verwalten sollten, können Sie folgende Ressourcen heranziehen:
 
-- Sehen Sie sich die Liste der [Azure AD Domain Services-Features](active-directory-ds-features.md)an.
-
-- Informieren Sie sich über die [Bereitstellungsszenarios für die Azure AD Domain Services](active-directory-ds-scenarios.md).
-
-- Und schließlich sollten Sie sich den [Vergleich zwischen Azure AD Domain Services und einer DIY-AD-Option](active-directory-ds-comparison.md#compare-azure-ad-domain-services-to-diy-ad-domain-in-azure)ansehen.
-
+* Sehen Sie sich die Liste der [Azure AD Domain Services-Features](active-directory-ds-features.md)an.
+* Informieren Sie sich über die [Bereitstellungsszenarios für die Azure AD Domain Services](active-directory-ds-scenarios.md).
+* Und schließlich sollten Sie sich den [Vergleich zwischen Azure AD Domain Services und einer DIY-AD-Option](active-directory-ds-comparison.md#compare-azure-ad-domain-services-to-diy-ad-domain-in-azure)ansehen.
 
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Vergleich zwischen Azure AD Domain Services und einer DYI-AD-Domäne in Azure
 Die folgende Tabelle dient als Entscheidungshilfe bei der Auswahl zwischen der Verwendung der Azure AD Domain Services und der Verwaltung einer eigenen AD-Infrastruktur in Azure.
 
-|**Feature**|**Azure AD Domain Services**|**„Do-It-Yourself“ AD in Azure-VMs**|
-|---|:---:|:---:|
-|[**Verwalteter Dienst**](active-directory-ds-comparison.md#managed-service)|**&#x2713;**|**&#x2715;**|
-|[**Sichere Bereitstellungen**](active-directory-ds-comparison.md#secure-deployments)|**&#x2713;**|Der Administrator muss die Bereitstellung absichern.|
-|[**DNS-Server**](active-directory-ds-comparison.md#dns-server)|**&#x2713;** (verwalteter Dienst)|**&#x2713;**|
-|[**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges)|**&#x2715;**|**&#x2713;**|
-|[**Domänenbeitritt**](active-directory-ds-comparison.md#domain-join)|**&#x2713;**|**&#x2713;**|
-|[**Domänenauthentifizierung mithilfe von NTLM und Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos)|**&#x2713;**|**&#x2713;**|
-|[**Benutzerdefinierte OE-Struktur**](active-directory-ds-comparison.md#custom-ou-structure)|**&#x2713;**|**&#x2713;**|
-|[**Schemaerweiterungen**](active-directory-ds-comparison.md#schema-extensions)|**&#x2715;**|**&#x2713;**|
-|[**AD-Domänen-/Gesamtstrukturvertrauensstellungen**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts)|**&#x2715;**|**&#x2713;**|
-|[**LDAP read**](active-directory-ds-comparison.md#ldap-read)|**&#x2713;**|**&#x2713;**|
-|[**Sicheres LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap)|**&#x2713;**|**&#x2713;**|
-|[**LDAP write**](active-directory-ds-comparison.md#ldap-write)|**&#x2715;**|**&#x2713;**|
-|[**Group Policy**](active-directory-ds-comparison.md#group-policy)|Einfach|Vollständig|
-|[**Geografisch verteilte Bereitstellungen**](active-directory-ds-comparison.md#geo-dispersed-deployments)|**&#x2715;**|**&#x2713;**|
-
+| **Feature** | **Azure AD Domain Services** | **„Do-It-Yourself“ AD in Azure-VMs** |
+| --- |:---:|:---:|
+| [**Verwalteter Dienst**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
+| [**Sichere Bereitstellungen**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Der Administrator muss die Bereitstellung absichern. |
+| [**DNS-Server**](active-directory-ds-comparison.md#dns-server) |**&#x2713;** (verwalteter Dienst) |**&#x2713;** |
+| [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
+| [**Domänenbeitritt**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
+| [**Domänenauthentifizierung mithilfe von NTLM und Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
+| [**Benutzerdefinierte OE-Struktur**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
+| [**Schemaerweiterungen**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
+| [**AD-Domänen-/Gesamtstrukturvertrauensstellungen**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
+| [**LDAP read**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
+| [**Sicheres LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
+| [**LDAP write**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
+| [**Group Policy**](active-directory-ds-comparison.md#group-policy) |Einfach |Vollständig |
+| [**Geografisch verteilte Bereitstellungen**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Verwalteter Dienst
 Azure AD Domain Services-Domänen werden von Microsoft verwaltet. Sie müssen sich weder um Patches, Updates, Überwachung oder Sicherung noch um die Gewährleistung der Verfügbarkeit Ihrer Domäne kümmern. Diese Verwaltungsaufgaben werden als Dienst von Microsoft Azure für Ihre verwalteten Domänen angeboten.
@@ -92,29 +87,24 @@ Komplexe Gruppenrichtlinienelemente werden in der verwalteten AAD DS-Domäne nic
 #### <a name="geo-dispersed-deployments"></a>Geografisch verteilte Bereitstellungen
 Verwaltete Azure AD Domain Services-Domänen stehen in einem einzigen virtuellen Netzwerk in Azure zur Verfügung. Für Szenarios, die es erforderlich machen, dass Domänencontroller in mehreren Azure-Regionen weltweit zur Verfügung stehen, stellt das Einrichten von Domänencontrollern in Azure-IaaS-VMs möglicherweise die bessere Alternative dar.
 
-
 ## <a name="'do-it-yourself'-(diy)-ad-deployment-options"></a>DIY-AD-Bereitstellungsoptionen
 Es gibt Anwendungsfälle, bei denen möglicherweise einige der Funktionen einer Windows Server AD-Installation benötigt werden. Erwägen Sie in diesen Fällen eine der folgenden DIY-Optionen (Do-It-Yourself):
 
-- **Eigenständige Clouddomäne:** Sie können eine eigenständige Clouddomäne mithilfe von virtuellen Azure-Computern einrichten, die als Domänencontroller konfiguriert wurden. Diese Infrastruktur kann nicht in Ihre lokale AD-Umgebung integriert werden. Diese Option erfordert einen anderen Satz mit Anmeldeinformationen, um sich bei den VMs in der Cloud anzumelden und diese zu verwalten.
+* **Eigenständige Clouddomäne:** Sie können eine eigenständige Clouddomäne mithilfe von virtuellen Azure-Computern einrichten, die als Domänencontroller konfiguriert wurden. Diese Infrastruktur kann nicht in Ihre lokale AD-Umgebung integriert werden. Diese Option erfordert einen anderen Satz mit Anmeldeinformationen, um sich bei den VMs in der Cloud anzumelden und diese zu verwalten.
+* **Ressourcengesamtstruktur-Bereitstellung:** Sie können unter Verwendung von virtuellen Azure-Computern, die als Domänencontroller konfiguriert sind, eine Domäne in der Ressourcengesamtstruktur-Topologie einrichten. Als Nächstes können Sie eine AD-Vertrauensstellung mit Ihrer lokalen AD-Umgebung konfigurieren. Dann können Sie in die Domäne eingebundene Computer (Azure-VMs) zu dieser Ressourcengesamtstruktur in der Cloud hinzufügen. Die Benutzerauthentifizierung erfolgt über eine VPN- oder ExpressRoute-Verbindung mit Ihrem lokalen Verzeichnis.
+* **Ausweitung Ihrer lokalen Domäne auf Azure:** Sie können ein virtuelles Azure-Netzwerk über eine VPN-/ExpressRoute-Verbindung mit Ihrem lokalen Netzwerk verbinden, sodass Sie Azure-VMs in Ihre lokale AD-Umgebung einbinden können. Eine weitere Alternative besteht darin, Replikatdomänencontroller Ihrer lokalen Domäne zu einer VM in Azure heraufzustufen. Anschließend können Sie eine Replikation über eine VPN- oder ExpressRoute-Verbindung mit Ihrem lokalen Verzeichnis einrichten. Durch diese Bereitstellung wird Ihre lokale Domäne effizient auf Azure ausgeweitet.
 
-- **Ressourcengesamtstruktur-Bereitstellung:** Sie können unter Verwendung von virtuellen Azure-Computern, die als Domänencontroller konfiguriert sind, eine Domäne in der Ressourcengesamtstruktur-Topologie einrichten. Als Nächstes können Sie eine AD-Vertrauensstellung mit Ihrer lokalen AD-Umgebung konfigurieren. Dann können Sie in die Domäne eingebundene Computer (Azure-VMs) zu dieser Ressourcengesamtstruktur in der Cloud hinzufügen. Die Benutzerauthentifizierung erfolgt über eine VPN- oder ExpressRoute-Verbindung mit Ihrem lokalen Verzeichnis.
-
-- **Ausweitung Ihrer lokalen Domäne auf Azure:** Sie können ein virtuelles Azure-Netzwerk über eine VPN-/ExpressRoute-Verbindung mit Ihrem lokalen Netzwerk verbinden, sodass Sie Azure-VMs in Ihre lokale AD-Umgebung einbinden können. Eine weitere Alternative besteht darin, Replikatdomänencontroller Ihrer lokalen Domäne zu einer VM in Azure heraufzustufen. Anschließend können Sie eine Replikation über eine VPN- oder ExpressRoute-Verbindung mit Ihrem lokalen Verzeichnis einrichten. Durch diese Bereitstellung wird Ihre lokale Domäne effizient auf Azure ausgeweitet.
-
-> [AZURE.NOTE] Sie stellen möglicherweise fest, dass für Ihre Anwendungsfälle eine DIY-Option besser geeignet ist. Wir würden uns über [Ihr Feedback](active-directory-ds-contact-us.md) freuen, damit wir besser verstehen, welche Features Sie benötigen, um sich in Zukunft für die Azure AD Domain Services zu entscheiden. Dieses Feedback hilft uns dabei, den Dienst weiter zu verbessern und an die Anforderungen Ihrer Bereitstellungen und Anwendungsfälle anzupassen.
+> [!NOTE]
+> Sie stellen möglicherweise fest, dass für Ihre Anwendungsfälle eine DIY-Option besser geeignet ist. Wir würden uns über [Ihr Feedback](active-directory-ds-contact-us.md) freuen, damit wir besser verstehen, welche Features Sie benötigen, um sich in Zukunft für die Azure AD Domain Services zu entscheiden. Dieses Feedback hilft uns dabei, den Dienst weiter zu verbessern und an die Anforderungen Ihrer Bereitstellungen und Anwendungsfälle anzupassen.
+> 
+> 
 
 Wir haben [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx) veröffentlicht, um DIY-Installationen zu vereinfachen.
 
-
 ## <a name="related-content"></a>Verwandte Inhalte
-- [Features: Azure AD Domain Services](active-directory-ds-features.md)
-
-- [Bereitstellungsszenarios: Azure AD Domain Services](active-directory-ds-scenarios.md)
-
-- [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-
-
+* [Features: Azure AD Domain Services](active-directory-ds-features.md)
+* [Bereitstellungsszenarios: Azure AD Domain Services](active-directory-ds-scenarios.md)
+* [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,29 +1,27 @@
-<properties
-	pageTitle="Herunterladen des Azure SDK für PHP"
-	description="Erfahren Sie mehr über das Herunterladen und Installieren von Azure SDK für PHP."
-	documentationCenter="php"
-	services="app-service\web"
-	authors="allclark"
-	manager="douge"
-	editor=""/>
+---
+title: Herunterladen des Azure SDK für PHP
+description: Erfahren Sie mehr über das Herunterladen und Installieren von Azure SDK für PHP.
+documentationcenter: php
+services: app-service\web
+author: allclark
+manager: douge
+editor: ''
 
-<tags
-	ms.service="app-service-web"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="PHP"
-	ms.topic="article"
-	ms.date="06/01/2016"
-	ms.author="allclark;yaqiyang"/>
+ms.service: app-service-web
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: PHP
+ms.topic: article
+ms.date: 06/01/2016
+ms.author: allclark;yaqiyang
 
-#Herunterladen des Azure SDK für PHP
-
+---
+# Herunterladen des Azure SDK für PHP
 ## Übersicht
-
 Das Azure SDK für PHP enthält Komponenten, mit deren Hilfe Sie PHP-Anwendungen für Azure entwickeln, bereitstellen und verwalten können. insbesondere enthält das Azure SDK für PHP Folgendes:
 
 * **Die PHP-Clientbibliotheken für Azure**. Diese Basisklassenbibliotheken bieten eine Schnittstelle für den Zugriff auf Azure-Funktionen wie Datenverwaltungs- und Clouddienste.  
-* **Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI)** Dies ist eine Gruppe von Befehlen zum Bereitstellen und Verwalten von Azure-Diensten wie Azure-Websites und virtuellen Azure-Computern. Die Azure-Befehlszeilenschnittstelle funktioniert auf allen Plattformen, z. B. Mac, Linux und Windows.
+* **Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI)** Dies ist eine Gruppe von Befehlen zum Bereitstellen und Verwalten von Azure-Diensten wie Azure-Websites und virtuellen Azure-Computern. Die Azure-Befehlszeilenschnittstelle funktioniert auf allen Plattformen, z. B. Mac, Linux und Windows.
 * **Azure PowerShell (nur Windows)**. Dies ist eine Gruppe von PowerShell-Cmdlets zum Bereitstellen und Verwalten von Azure-Diensten wie Clouddiensten und virtuellen Computern.
 * **Die Azure-Emulatoren (nur Windows)**. Die Rechen- und Speicheremulatoren sind lokale Emulatoren von Datenverwaltungs- und Clouddiensten, mit denen Sie eine Anwendung lokal testen können. Die Azure-Emulatoren laufen nur unter Windows.
 
@@ -31,51 +29,45 @@ In den Abschnitten unten wird erläutert, wie Sie die oben beschriebenen Kompone
 
 Für die Anweisungen in diesem Thema wird vorausgesetzt, dass Sie [PHP][install-php] installiert haben.
 
-> [AZURE.NOTE] Sie müssen PHP 5.5 oder höher besitzen, um die PHP-Clientbibliotheken für Azure verwenden zu können.
+> [!NOTE]
+> Sie müssen PHP 5.5 oder höher besitzen, um die PHP-Clientbibliotheken für Azure verwenden zu können.
+> 
+> 
 
-##PHP-Clientbibliotheken für Azure
-
+## PHP-Clientbibliotheken für Azure
 Die PHP Clientbibliotheken für Azure bieten eine Schnittstelle zum Zugriff auf Azure-Funktionen wie Datenverwaltungs- und Clouddienste auf jedem Betriebssystem. Diese Bibliotheken können über Composer installiert werden.
 
 Informationen über die Verwendung der PHP-Clientbibliotheken für Azure finden Sie unter [Verwenden des Blob-Dienstes][blob-service], [Verwenden des Tabellendienstes][table-service] und [Verwenden des Warteschlangendienstes][queue-service].
 
-###Installation mithilfe von Composer
-
+### Installation mithilfe von Composer
 1. [Git installieren][install-git].
 
+    > [AZURE.NOTE] Unter Windows muss die ausführbare Git-Datei zu Ihrer PATH-Umgebungsvariable hinzugefügt werden.
 
-	> [AZURE.NOTE] Unter Windows muss die ausführbare Git-Datei zu Ihrer PATH-Umgebungsvariable hinzugefügt werden.
-
-2. Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei namens **composer.json**, und fügen Sie zu dieser den folgenden Code hinzu:
-
+1. Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei namens **composer.json**, und fügen Sie zu dieser den folgenden Code hinzu:
+   
         {
-			"require": {
-				"microsoft/windowsazure": "^0.4"
-			}
+            "require": {
+                "microsoft/windowsazure": "^0.4"
+            }
         }
+2. Laden Sie **[composer.phar][composer-phar]** in Ihr Projektverzeichnis herunter.
+3. Öffnen Sie eine Eingabeaufforderung, und führen Sie in Ihrem Projektverzeichnis folgenden Befehl aus
+   
+        php composer.phar install
 
-3. Laden Sie **[composer.phar][composer-phar]** in Ihr Projektverzeichnis herunter.
-
-4. Öffnen Sie eine Eingabeaufforderung, und führen Sie in Ihrem Projektverzeichnis folgenden Befehl aus
-
-		php composer.phar install
-
-##Azure PowerShell und Azure-Emulatoren
-
+## Azure PowerShell und Azure-Emulatoren
 Azure PowerShell ist eine Gruppe von PowerShell-Cmdlets zum Bereitstellen und Verwalten von Azure-Diensten (wie Clouddiensten und virtuellen Computern). Die Azure-Emulatoren sind Emulatoren von Clouddiensten und Datenverwaltungsdiensten, mit denen Sie eine Anwendung lokal testen können. Diese Komponenten werden nur unter Windows unterstützt.
 
 Die empfohlene Methode zur Installation von Azure PowerShell sowie der Azure-Emulatoren ist die Verwendung des [Microsoft-Webplattform-Installers][download-wpi]. Bitte beachten Sie, dass Sie auch noch weitere Entwicklungskomponenten wie PHP, SQL Server, die Microsoft-Treiber für SQL Server für PHP und WebMatrix installieren können.
 
 Informationen zur Verwendung von Azure finden Sie unter [Verwenden von Azure PowerShell][powershell-tools].
 
-##Azure-Befehlszeilenschnittstelle
-
+## Azure-Befehlszeilenschnittstelle
 Die Azure-Befehlszeilenschnittstelle ist eine Gruppe von Befehlen zum Bereitstellen und Verwalten von Azure-Diensten wie Azure-Websites und virtuellen Azure-Computern. Informationen zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md).
 
 ## Nächste Schritte
-
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
-
 
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer

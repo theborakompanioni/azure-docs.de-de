@@ -1,25 +1,26 @@
-<properties 
-	pageTitle="Was ist Azure RemoteApp? | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie Apps und Ressourcen über Azure RemoteApp auf beliebigen Geräten nutzen können." 
-	services="remoteapp" 
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" 
-	editor=""/>
+---
+title: Was ist Azure RemoteApp? | Microsoft Docs
+description: Erfahren Sie, wie Sie Apps und Ressourcen über Azure RemoteApp auf beliebigen Geräten nutzen können.
+services: remoteapp
+documentationcenter: ''
+author: lizap
+manager: mbaldwin
+editor: ''
 
-<tags 
-	ms.service="remoteapp" 
-	ms.workload="compute" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/15/2016" 
-	ms.author="elizapo"/>
+ms.service: remoteapp
+ms.workload: compute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/15/2016
+ms.author: elizapo
 
+---
 # Was ist Azure RemoteApp?
-
-> [AZURE.IMPORTANT]
-Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> [!IMPORTANT]
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> 
+> 
 
 Azure RemoteApp stattet Azure mit der Funktionalität des lokalen Microsoft RemoteApp-Programms, unterstützt von Remotedesktopdiensten, aus. Azure RemoteApp sorgt für den sicheren Remotezugriff auf Anwendungen von vielen unterschiedlichen Benutzergeräten aus. Im Wesentlichen hostet Azure RemoteApp nicht persistente Terminal Server-Sitzungen in der Cloud, die Sie verwenden und an Ihre Benutzer freigeben können.
 
@@ -36,23 +37,20 @@ Azure RemoteApp ist Teil der [Microsoft Virtual Desktop Infrastructure](http://w
 ## Azure RemoteApp-Sammlungen
 Es gibt zwei Arten von [Azure RemoteApp-Sammlungen](remoteapp-collections.md):
 
-
-- Eine **Cloudsammlung** wird in der Cloud gehostet und speichert dort Daten für Programme. Benutzer können sich mit ihrem Microsoft-Konto oder mit den Anmeldeinformationen des Unternehmens, die mit Azure Active Directory verbunden sind oder synchronisiert werden, anmelden und auf die Apps zugreifen.
-
-	Verwenden Sie eine Cloud-Sammlung, wenn die Anwendung, die Sie freigeben möchten, keine Verbindung mit einer Ressource im privaten Netzwerk Ihres Unternehmens (beispielsweise über ein VPN-Gerät) erfordert. Eine Cloud-Sammlung ist geeignet, wenn die Anwendung Ressourcen wie das Internet, OneDrive oder Azure verwendet. Darüber hinaus lässt sie sich am schnellsten erstellen.
-
-- Eine **Hybrid-Sammlung** wird in der Azure-Cloud gehostet und speichert dort die Daten. Benutzer können aber auch auf die Daten und Ressourcen zugreifen, die im lokalen Netzwerk gespeichert sind. Benutzer können sich mit den Anmeldeinformationen des Unternehmens, die mit Azure Active Directory verbunden sind oder synchronisiert werden, anmelden und auf die Apps zugreifen.
-
-	Wählen Sie eine Hybrid-Sammlung, wenn Sie eine Verbindung mit Ressourcen im privaten Netzwerk Ihres Unternehmens benötigen. Dies ist beispielsweise der Fall, wenn die Anwendung Zugriff Folgendes benötigt:
-
-	- Dateiserver in Ihrem Intranet
-	- Quicken
-	- Datenbanken hinter einer Firewall
-
-	Hybrid eignet sich in der Regel eher für große Unternehmen, deren private Netzwerke zahlreiche Ressourcen enthalten, die nicht in die Cloud verschoben werden können.
+* Eine **Cloudsammlung** wird in der Cloud gehostet und speichert dort Daten für Programme. Benutzer können sich mit ihrem Microsoft-Konto oder mit den Anmeldeinformationen des Unternehmens, die mit Azure Active Directory verbunden sind oder synchronisiert werden, anmelden und auf die Apps zugreifen.
+  
+    Verwenden Sie eine Cloud-Sammlung, wenn die Anwendung, die Sie freigeben möchten, keine Verbindung mit einer Ressource im privaten Netzwerk Ihres Unternehmens (beispielsweise über ein VPN-Gerät) erfordert. Eine Cloud-Sammlung ist geeignet, wenn die Anwendung Ressourcen wie das Internet, OneDrive oder Azure verwendet. Darüber hinaus lässt sie sich am schnellsten erstellen.
+* Eine **Hybrid-Sammlung** wird in der Azure-Cloud gehostet und speichert dort die Daten. Benutzer können aber auch auf die Daten und Ressourcen zugreifen, die im lokalen Netzwerk gespeichert sind. Benutzer können sich mit den Anmeldeinformationen des Unternehmens, die mit Azure Active Directory verbunden sind oder synchronisiert werden, anmelden und auf die Apps zugreifen.
+  
+    Wählen Sie eine Hybrid-Sammlung, wenn Sie eine Verbindung mit Ressourcen im privaten Netzwerk Ihres Unternehmens benötigen. Dies ist beispielsweise der Fall, wenn die Anwendung Zugriff Folgendes benötigt:
+  
+  * Dateiserver in Ihrem Intranet
+  * Quicken
+  * Datenbanken hinter einer Firewall
+    
+    Hybrid eignet sich in der Regel eher für große Unternehmen, deren private Netzwerke zahlreiche Ressourcen enthalten, die nicht in die Cloud verschoben werden können.
 
 Die verschiedenen Sammlungen verfügen über verschiedene Optionen, einschließlich Netzwerkoptionen, sodass Sie herausfinden können, [welche Sammlung](remoteapp-collections.md) für Sie am Besten funktioniert.
-
 
 ### Aktualisieren Ihrer Sammlung
 Einer der Hauptunterschiede zwischen Hybrid- und Cloud-Sammlungen ist die Behandlung von Softwareupdates. Bei einer Cloud-Sammlung, die das vorinstallierte Image von Office 365 ProPlus oder Office 2013 verwendet, brauchen Sie sich nicht um Updates zu kümmern. Der Dienst verwaltet sich selbst und stellt fortlaufend Updates für Apps und Betriebssystem bereit.
@@ -71,16 +69,15 @@ Weitere Informationen zu den Clients finden Sie unter [Zugreifen auf Ihre Apps i
 ## Nächste Schritte
 Los! Probieren Sie es aus! Diese Artikel helfen Ihnen beim Einstieg in Azure RemoteApp:
 
-- [Welche Art von Sammlung benötigen Sie für Azure RemoteApp?](remoteapp-collections.md)
-- [Erstellen von Azure RemoteApp-Images](remoteapp-imageoptions.md)
-- [Erstellen einer Cloudsammlung von Azure RemoteApp](remoteapp-create-cloud-deployment.md)
-- [Erstellen einer Hybridsammlung von Azure RemoteApp](remoteapp-create-hybrid-deployment.md)
-- [Wie funktioniert die Lizenzierung in Azure RemoteApp?](remoteapp-licensing.md)
-- [Bewährte Methoden für die Verwendung von Azure RemoteApp](remoteapp-bestpractices.md)
-- [Azure RemoteApp – Häufig gestellte Fragen](remoteapp-faq.md)
- 
+* [Welche Art von Sammlung benötigen Sie für Azure RemoteApp?](remoteapp-collections.md)
+* [Erstellen von Azure RemoteApp-Images](remoteapp-imageoptions.md)
+* [Erstellen einer Cloudsammlung von Azure RemoteApp](remoteapp-create-cloud-deployment.md)
+* [Erstellen einer Hybridsammlung von Azure RemoteApp](remoteapp-create-hybrid-deployment.md)
+* [Wie funktioniert die Lizenzierung in Azure RemoteApp?](remoteapp-licensing.md)
+* [Bewährte Methoden für die Verwendung von Azure RemoteApp](remoteapp-bestpractices.md)
+* [Azure RemoteApp – Häufig gestellte Fragen](remoteapp-faq.md)
 
-### Helfen Sie uns, Ihnen zu helfen 
+### Helfen Sie uns, Ihnen zu helfen
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **In GitHub bearbeiten** oder **Bearbeiten**, um die gewünschten Änderungen vorzunehmen und uns zur Prüfung zu übermitteln. Nachdem wir sie bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
 <!---HONumber=AcomDC_0817_2016-->

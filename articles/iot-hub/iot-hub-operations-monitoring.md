@@ -1,51 +1,45 @@
-<properties
- pageTitle="IoT Hub-Vorgangsüberwachung"
- description="Eine Übersicht über die IoT Hub-Vorgangsüberwachung, die Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit ermöglicht"
- services="iot-hub"
- documentationCenter=""
- authors="nberdy"
- manager="timlt"
- editor=""/>
+---
+title: IoT Hub-Vorgangsüberwachung
+description: Eine Übersicht über die IoT Hub-Vorgangsüberwachung, die Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit ermöglicht
+services: iot-hub
+documentationcenter: ''
+author: nberdy
+manager: timlt
+editor: ''
 
-<tags
- ms.service="iot-hub"
- ms.devlang="na"
- ms.topic="article"
- ms.tgt_pltfrm="na"
- ms.workload="na"
- ms.date="08/11/2016"
- ms.author="nberdy"/>
+ms.service: iot-hub
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/11/2016
+ms.author: nberdy
 
+---
 # Einführung in Vorgangsüberwachung
-
 Die IoT Hub-Vorgangsüberwachung ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in mehreren Vorgangskategorien. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt Ihres IoT Hubs gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
 
 IoT Hub überwacht fünf Ereigniskategorien:
 
-- Geräte-Identitätsvorgänge
-- Gerätetelemetrie
-- C2D-Befehle
-- Verbindungen
-- Dateiuploads
+* Geräte-Identitätsvorgänge
+* Gerätetelemetrie
+* C2D-Befehle
+* Verbindungen
+* Dateiuploads
 
 ## Aktivieren der Vorgangsüberwachung
-
 1. Erstellen Sie einen IoT Hub. Anweisungen zum Erstellen eines IoT Hubs finden Sie in der Anleitung mit den [ersten Schritten][lnk-get-started].
-
 2. Öffnen Sie das Blatt Ihres IoT Hubs. Klicken Sie dort auf **Vorgangsüberwachung**.
-
+   
     ![][1]
-
 3. Wählen Sie die Kategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse können aus dem Event Hub-kompatiblen Endpunkt gelesen werden, der in **Überwachungseinstellungen** aufgelistet ist. Der IoT Hub-Endpunkt heißt `messages/operationsmonitoringevents`.
-
+   
     ![][2]
 
 ## Ereigniskategorien und ihre Verwendung
-
 Jede Vorgangsüberwachungskategorie dient der Nachverfolgung eines anderen Interaktionstyps mit dem IoT Hub. Jede Überwachungskategorie hat ein Schema, das festlegt, wie Ereignisse in dieser Kategorie strukturiert sind.
 
 ### Geräte-Identitätsvorgänge
-
 Die Kategorie für Geräte-Identitätsvorgänge dient der Nachverfolgung von Fehlern, die auftreten, wenn Sie versuchen, einen Eintrag in der Identitätsregistrierung Ihres IoT Hubs zu erstellen, zu aktualisieren oder zu löschen. Das Nachverfolgen dieser Kategorie ist für Bereitstellungsszenarien nützlich.
 
     {
@@ -62,7 +56,6 @@ Die Kategorie für Geräte-Identitätsvorgänge dient der Nachverfolgung von Feh
     }
 
 ### Gerätetelemetrie
-
 Die Kategorie für Gerätetelemetrie dient der Nachverfolgung von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Telemetriepipeline stehen. Zu dieser Kategorie gehören Fehler, die beim Senden von Telemetrie-Ereignissen (z.B. Drosselung) und Empfangen von Telemetrie-Ereignissen (z.B. nicht autorisierte Leser) auftreten. Beachten Sie, dass diese Kategorie keine Fehler abfangen kann, die vom Code verursacht werden, der auf dem Gerät selbst ausgeführt wird.
 
     {
@@ -84,7 +77,6 @@ Die Kategorie für Gerätetelemetrie dient der Nachverfolgung von Fehlern, die a
     }
 
 ### C2D-Befehle
-
 Die Kategorie der C2D-Befehle dient der Nachverfolgung von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Gerätebefehlspipeline stehen. Zu dieser Kategorie gehören Fehler, die beim Senden von Befehlen (z.B. nicht autorisierter Absender), Empfangen von Befehlen (Zustellungsanzahl überschritten) und Empfangen von Feedback zu Befehlen (z.B. Feedback abgelaufen) auftreten. Diese Kategorie fängt keine Fehler eines Geräts ab, das einen Befehl nicht ordnungsgemäß verarbeitet, wenn der Befehl erfolgreich übermittelt wurde.
 
     {
@@ -106,7 +98,6 @@ Die Kategorie der C2D-Befehle dient der Nachverfolgung von Fehlern, die auf dem 
     }
 
 ### Verbindungen
-
 Die Kategorie für Verbindungen verfolgt Fehler nach, die auftreten, wenn Geräte Verbindungen mit dem IoT Hub herstellen oder trennen. Das Nachverfolgen dieser Kategorie ist nützlich zum Bestimmen nicht autorisierter Verbindungsversuche und zum Nachverfolgen, wann eine Verbindung mit Geräten in Bereichen mit schlechter Konnektivität unterbrochen wird.
 
     {
@@ -124,7 +115,6 @@ Die Kategorie für Verbindungen verfolgt Fehler nach, die auftreten, wenn Gerät
     }
 
 ### Dateiuploads
-
 Die Dateiuploadkategorie dient der Nachverfolgung von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Dateiuploadfunktionalität stehen. Zu dieser Kategorie gehören Fehler, die in Verbindung mit dem SAS-URI auftreten (z.B. wenn dieser abläuft, bevor ein Gerät den Hub über einen abgeschlossenen Upload unterrichtet), vom Gerät gemeldete fehlerhafte Uploads, und wenn eine Datei während der Erstellung der IoT Hub-Nachricht nicht im Speicher gefunden wird. Beachten Sie, dass diese Kategorie keine Fehler abfangen kann, die auftreten, während das Gerät eine Datei in den Speicher hochlädt.
 
     {
@@ -143,15 +133,14 @@ Die Dateiuploadkategorie dient der Nachverfolgung von Fehlern, die auf dem IoT H
     }
 
 ## Nächste Schritte
-
 Nachdem Sie sich nun einen Überblick über die Überwachung von Vorgängen verschafft haben, finden Sie unter [Verwalten des Zugriffs auf IoT Hub][lnk-itpro] zusätzliche Informationen zum Verwalten von IoT Hub.
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-- [Entwerfen Ihrer Lösung][lnk-design]
-- [Entwicklerhandbuch][lnk-devguide]
-- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
-- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+* [Entwerfen Ihrer Lösung][lnk-design]
+* [Entwicklerhandbuch][lnk-devguide]
+* [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+* [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
 
 <!-- Links and images -->
 [1]: media/iot-hub-operations-monitoring/enable-OM-1.png

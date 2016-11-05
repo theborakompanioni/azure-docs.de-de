@@ -1,25 +1,22 @@
-<properties
-    pageTitle="Azure-SAML-Protokoll für einmaliges Abmelden | Microsoft Azure"
-    description="In diesem Artikel wird das SAML-Protokoll für einmaliges Abmelden in Azure Active Directory beschrieben."
-    services="active-directory"
-    documentationCenter=".net"
-    authors="priyamohanram"
-    manager="mbaldwin"
-    editor=""/>
+---
+title: Azure-SAML-Protokoll für einmaliges Abmelden | Microsoft Docs
+description: In diesem Artikel wird das SAML-Protokoll für einmaliges Abmelden in Azure Active Directory beschrieben.
+services: active-directory
+documentationcenter: .net
+author: priyamohanram
+manager: mbaldwin
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="priyamo"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/03/2016
+ms.author: priyamo
 
-
-
+---
 # <a name="single-sign-out-saml-protocol"></a>SAML-Protokoll für einmaliges Abmelden
-
 Azure Active Directory (Azure AD) unterstützt das SAML 2.0-Webbrowserprofil für einmaliges Abmelden. Damit das einmalige Abmelden richtig funktioniert, muss Azure AD seine Metadaten-URL während der Anwendungsregistrierung registrieren. Azure AD ruft die Abmelde-URL und den Signaturschlüssel des Clouddiensts aus den Metadaten ab. Azure AD verwendet den Signaturschlüssel zum Überprüfen der Signatur für das eingehende LogoutRequest-Element. Die LogoutURL wird dann verwendet, um Benutzer nach dem Abmelden umzuleiten.
 
 Wenn der Clouddienst keinen Metadatenendpunkt unterstützt, muss sich der Entwickler nach dem Registrieren der Anwendung an den Microsoft Support wenden, um die Abmelde-URL und den Signaturschlüssel anzugeben.
@@ -29,7 +26,6 @@ In diesem Diagramm ist der Workflow des Azure AD-Prozesses für das einmalige Ab
 ![Workflow für einmaliges Abmelden](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
-
 Der Clouddienst sendet eine `LogoutRequest` -Nachricht an Azure AD, um anzugeben, dass eine Sitzung beendet wurde. Der folgende Auszug enthält ein `LogoutRequest` -Beispielelement.
 
 ```
@@ -40,26 +36,20 @@ Der Clouddienst sendet eine `LogoutRequest` -Nachricht an Azure AD, um anzugeben
 ```
 
 ### <a name="logoutrequest"></a>LogoutRequest
-
 Für das an Azure AD gesendete `LogoutRequest` -Element sind die folgenden Attribute erforderlich:
 
-- `ID` : Dient zum Identifizieren der Abmeldeanforderung. Der Wert von `ID` darf nicht mit einer Zahl beginnen. Die übliche Vorgehensweise besteht darin, **id** an die Zeichenfolgendarstellung einer GUID anzufügen.
-
-- `Version` : Legen Sie den Wert dieses Elements auf **2.0**fest. Dieser Wert ist erforderlich.
-
-- `IssueInstant`: Eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
-
-- Die Attribute `Consent`, `Destination`, `NotOnOrAfter` und `Reason` werden ignoriert, wenn sie in ein `LogoutRequest`-Element eingebunden sind.
+* `ID` : Dient zum Identifizieren der Abmeldeanforderung. Der Wert von `ID` darf nicht mit einer Zahl beginnen. Die übliche Vorgehensweise besteht darin, **id** an die Zeichenfolgendarstellung einer GUID anzufügen.
+* `Version` : Legen Sie den Wert dieses Elements auf **2.0**fest. Dieser Wert ist erforderlich.
+* `IssueInstant`: Eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
+* Die Attribute `Consent`, `Destination`, `NotOnOrAfter` und `Reason` werden ignoriert, wenn sie in ein `LogoutRequest`-Element eingebunden sind.
 
 ### <a name="issuer"></a>Issuer (Aussteller)
-
 Das `Issuer`-Element in einem `LogoutRequest`-Element muss mit einem der **ServicePrincipalNames**-Werte im Clouddienst von Azure AD exakt übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der bei der Anwendungsregistrierung angegeben wird.
 
 ### <a name="nameid"></a>NameID
-
 Der Wert des `NameID`-Elements muss genau mit `NameID` des Benutzers übereinstimmen, der abgemeldet wird.
-## <a name="logoutresponse"></a>LogoutResponse
 
+## <a name="logoutresponse"></a>LogoutResponse
 Azure AD sendet als Antwort auf ein `LogoutRequest`-Element ein `LogoutResponse`-Element. Der folgende Auszug enthält ein Beispiel für `LogoutResponse`.
 
 ```
@@ -72,20 +62,15 @@ Azure AD sendet als Antwort auf ein `LogoutRequest`-Element ein `LogoutResponse`
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-
 Azure AD legt die Werte `ID`, `Version` und `IssueInstant` im `LogoutResponse`-Element fest. Außerdem wird das `InResponseTo`-Element auf den Wert des `ID`-Attributs des `LogoutRequest`-Elements festgelegt, von dem die Antwort stammt.
 
 ### <a name="issuer"></a>Issuer (Aussteller)
-
 Azure AD legt diesen Wert auf `https://login.microsoftonline.com/<TenantIdGUID>/` fest, wobei <TenantIdGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 Verwenden Sie zum Auswerten des Werts für das `Issuer` -Element den Wert für **App-ID-URI** , der bei der Anwendungsregistrierung angegeben wurde.
 
 ### <a name="status"></a>Status
-
 Azure AD verwendet das `StatusCode`-Element im `Status`-Element, um anzugeben, ob die Abmeldung erfolgreich war. Wenn beim Abmelden ein Fehler auftritt, kann das `StatusCode` -Element auch benutzerdefinierte Fehlermeldungen enthalten.
-
-
 
 <!--HONumber=Oct16_HO2-->
 

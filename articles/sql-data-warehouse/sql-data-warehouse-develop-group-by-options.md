@@ -1,29 +1,29 @@
-<properties
-   pageTitle="Group By-Optionen in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps zum Implementieren von Group By-Optionen in Azure SQL Data Warehouse für die Entwicklung von Lösungen"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="jrowlandjones"
-   manager="barbkess"
-   editor=""/>
+---
+title: Group By-Optionen in SQL Data Warehouse | Microsoft Docs
+description: Tipps zum Implementieren von Group By-Optionen in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+services: sql-data-warehouse
+documentationcenter: NA
+author: jrowlandjones
+manager: barbkess
+editor: ''
 
-<tags
-   ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.date: 06/14/2016
+ms.author: jrj;barbkess;sonyama
 
+---
 # Group By-Optionen in SQL Data Warehouse
-
-Die [GROUP BY][]-Klausel wird verwendet, um Daten zu einer Gruppe von Zeilen zusammenzufassen. Außerdem verfügt sie über einige Optionen zur Erweiterung der Funktionalität, die umgangen werden müssen, da sie von Azure SQL Data Warehouse nicht direkt unterstützt werden.
+Die [GROUP BY][GROUP BY]-Klausel wird verwendet, um Daten zu einer Gruppe von Zeilen zusammenzufassen. Außerdem verfügt sie über einige Optionen zur Erweiterung der Funktionalität, die umgangen werden müssen, da sie von Azure SQL Data Warehouse nicht direkt unterstützt werden.
 
 Die Optionen sind:
-- GROUP BY mit ROLLUP
-- GROUPING SETS
-- GROUP BY mit CUBE
+
+* GROUP BY mit ROLLUP
+* GROUPING SETS
+* GROUP BY mit CUBE
 
 ## Rollup- und Grouping Set-Optionen
 Die einfachste Möglichkeit ist hierbei die alternative Verwendung von `UNION ALL`, um das Rollup durchzuführen, anstatt sich auf die explizite Syntax zu verlassen. Das Ergebnis ist identisch.
@@ -44,9 +44,10 @@ GROUP BY ROLLUP (
 ```
 
 Durch die Verwendung von ROLLUP haben wir die folgenden Aggregationen angefordert:
-- Land und Region
-- Land
-- Gesamtergebnis
+
+* Land und Region
+* Land
+* Gesamtergebnis
 
 Um dies zu ersetzen, müssen Sie `UNION ALL` verwenden. Für das Angeben der Aggregationen war die explizite Rückgabe der gleichen Ergebnisse erforderlich:
 
@@ -175,9 +176,8 @@ ORDER BY 1,2,3
 
 Indem wir den Code in Abschnitte unterteilen und eine Schleife generieren, wird die Verwaltung und Pflege der Codeerstellung verbessert.
 
-
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png

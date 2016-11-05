@@ -1,40 +1,35 @@
-<properties
-	pageTitle="Lokale Anwendungen mit Blob-Speicher (Java) | Microsoft Azure"
-	description="Lernen Sie, wie Sie eine Konsolenanwendung erstellen, die ein Bild in Azure hochlädt und anschließend das Bild in Ihrem Browser anzeigt. Die Codebeispiele wurden in Java geschrieben."
-	services="storage"
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor="tysonn"/>
+---
+title: Lokale Anwendungen mit Blob-Speicher (Java) | Microsoft Docs
+description: Lernen Sie, wie Sie eine Konsolenanwendung erstellen, die ein Bild in Azure hochlädt und anschließend das Bild in Ihrem Browser anzeigt. Die Codebeispiele wurden in Java geschrieben.
+services: storage
+documentationcenter: java
+author: rmcmurray
+manager: wpickett
+editor: tysonn
 
-<tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="jwillis;rmcmurray"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: Java
+ms.topic: article
+ms.date: 08/11/2016
+ms.author: jwillis;rmcmurray
 
+---
 # Lokale Anwendungen mit Blob-Speicher
-
 ## Übersicht
-
 Das folgende Beispiel zeigt, wie Sie den Azure-Speicher zur Speicherung von Bildern in Azure verwenden können. Der Code in diesem Artikel implementiert eine Konsolenanwendung, die ein Bild in Azure hochlädt und anschließend eine HTML-Datei erstellt, die das Bild in Ihrem Browser anzeigt.
 
 ## Voraussetzungen
+* Java Developer Kit (JDK), Version 1.6 oder höher ist installiert.
+* Das Azure SDK ist installiert.
+* Die JAR-Datei der Azure-Bibliotheken für Java und alle sonstigen JAR-Abhängigkeiten sind installiert und im Buildpfad Ihres Java-Compilers eingebunden. Weitere Informationen zur Installation der Azure-Bibliotheken für Java finden Sie auf der [Downloadseite des Azure SDK für Java](../java-download-azure-sdk.md).
+* Ein Azure-Speicherkonto wurde eingerichtet. Der Code in diesem Artikel verwendet Kontonamen und Kontoschlüssel des Speicherkontos. Unter [Gewusst wie: Erstellen von Speicherkonten](storage-create-storage-account.md#create-a-storage-account) finden Sie Informationen zum Erstellen von Speicherkonten, und unter [Anzeigen und Verwalten von Speicherzugriffsschlüsseln](storage-create-storage-account.md#view-and-copy-storage-access-keys) erfahren Sie, wie Sie den Kontoschlüssel abrufen.
+* Sie haben eine lokale Bilddatei unter dem Pfad c:\\myimages\\image1.jpg erstellt. Alternativ können Sie den **FileInputStream**-Konstruktor im Beispiel verändern, um einen anderen Pfad bzw. Dateinamen zu verwenden.
 
-- Java Developer Kit (JDK), Version 1.6 oder höher ist installiert.
-- Das Azure SDK ist installiert.
-- Die JAR-Datei der Azure-Bibliotheken für Java und alle sonstigen JAR-Abhängigkeiten sind installiert und im Buildpfad Ihres Java-Compilers eingebunden. Weitere Informationen zur Installation der Azure-Bibliotheken für Java finden Sie auf der [Downloadseite des Azure SDK für Java](../../articles/java-download-azure-sdk.md).
-- Ein Azure-Speicherkonto wurde eingerichtet. Der Code in diesem Artikel verwendet Kontonamen und Kontoschlüssel des Speicherkontos. Unter [Gewusst wie: Erstellen von Speicherkonten](storage-create-storage-account.md#create-a-storage-account) finden Sie Informationen zum Erstellen von Speicherkonten, und unter [Anzeigen und Verwalten von Speicherzugriffsschlüsseln](storage-create-storage-account.md#view-and-copy-storage-access-keys) erfahren Sie, wie Sie den Kontoschlüssel abrufen.
-
-- Sie haben eine lokale Bilddatei unter dem Pfad c:\\myimages\\image1.jpg erstellt. Alternativ können Sie den **FileInputStream**-Konstruktor im Beispiel verändern, um einen anderen Pfad bzw. Dateinamen zu verwenden.
-
-[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
+[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## Verwenden von Azure Blob-Speicher für Dateiuploads
-
 Hier finden Sie eine Schritt-für-Schritt-Anleitung. Falls Sie diese überspringen möchten, finden Sie den vollständigen Code weiter unten in diesem Artikel.
 
 Importieren Sie zunächst die Core-Klassen für den Azure-Speicher, die Azure Blob-Clientklassen, die Java IO-Klassen und die **URISyntaxException**-Klasse.
@@ -64,10 +59,10 @@ Fügen Sie die **main**-Deklaration hinzu, öffnen Sie einen **try**-Block und f
 
 Deklarieren die folgenden Variablen (die Beschreibung gibt deren Verwendungszweck an):
 
--   **CloudStorageAccount**: Wird zur Initialisierung des Kontoobjekts mit Ihrem Azure-Speicherkontonamen und -schlüssel und zur Erstellung des Blob-Clientobjekts verwendet.
--   **CloudBlobClient**: Dient zum Zugriff auf den Blob-Dienst.
--   **CloudBlobContainer**: Dient zum Erstellen eines Blob-Containers, zum Auflisten der Blobs im Container und zum Löschen des Containers.
--   **CloudBlockBlob**: Ermöglicht das Hochladen einer lokalen Imagedatei in den Container.
+* **CloudStorageAccount**: Wird zur Initialisierung des Kontoobjekts mit Ihrem Azure-Speicherkontonamen und -schlüssel und zur Erstellung des Blob-Clientobjekts verwendet.
+* **CloudBlobClient**: Dient zum Zugriff auf den Blob-Dienst.
+* **CloudBlobContainer**: Dient zum Erstellen eines Blob-Containers, zum Auflisten der Blobs im Container und zum Löschen des Containers.
+* **CloudBlockBlob**: Ermöglicht das Hochladen einer lokalen Imagedatei in den Container.
 
 <!-- -->
 
@@ -126,10 +121,10 @@ Schließen Sie den **try**-Block mit einer geschweiften Klammer: **}**.
 
 Behandeln Sie die folgenden Ausnahmen:
 
--   **FileNotFoundException**: Kann vom **FileInputStream**- oder **FileOutputStream**-Konstruktor ausgelöst werden.
--   **StorageException**: Kann von der Clientbibliothek für den Azure-Speicher ausgelöst werden.
--   **URISyntaxException**: Kann von der **ListBlobItem.getUri**-Methode ausgelöst werden.
--   **Exception**: Allgemeine Behandlung von Ausnahmen
+* **FileNotFoundException**: Kann vom **FileInputStream**- oder **FileOutputStream**-Konstruktor ausgelöst werden.
+* **StorageException**: Kann von der Clientbibliothek für den Azure-Speicher ausgelöst werden.
+* **URISyntaxException**: Kann von der **ListBlobItem.getUri**-Methode ausgelöst werden.
+* **Exception**: Allgemeine Behandlung von Ausnahmen
 
 <!-- -->
 
@@ -298,7 +293,6 @@ Der Beispielcode lädt nicht nur eine lokale Datei in Ihren Azure-Speicher hoch,
 Der Code enthält Ihren Kontonamen und Kontoschlüssel. Stellen Sie daher sicher, dass der Code an einem sicheren Ort liegt.
 
 ## So löschen Sie einen Container
-
 Da der Speicher kostenpflichtig ist, sollten Sie den **gettingstarted**-Container löschen, nachdem Sie dieses Beispiel abgeschlossen haben. Verwenden Sie zum Löschen eines Containers die Methode **CloudBlobContainer.delete**.
 
     container = serviceClient.getContainerReference("gettingstarted");
@@ -351,12 +345,11 @@ Um die **CloudBlobContainer.delete**-Methode aufzurufen, müssen Sie die **Cloud
 Eine Übersicht über andere Blob Storage-Klassen und -Methoden finden Sie unter [Gewusst wie: Verwenden von Blob Storage mit Java](storage-java-how-to-use-blob-storage.md).
 
 ## Nächste Schritte
-
 Unter den folgenden Links erhalten Sie weitere Informationen zu komplexeren Speicheraufgaben:
 
-- [Azure Storage-SDK für Java](https://github.com/azure/azure-storage-java)
-- [Referenz für Azure Storage-Client-SDKs](http://dl.windowsazure.com/storage/javadoc/)
-- [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Storage-SDK für Java](https://github.com/azure/azure-storage-java)
+* [Referenz für Azure Storage-Client-SDKs](http://dl.windowsazure.com/storage/javadoc/)
+* [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
 
 <!---HONumber=AcomDC_0928_2016-->

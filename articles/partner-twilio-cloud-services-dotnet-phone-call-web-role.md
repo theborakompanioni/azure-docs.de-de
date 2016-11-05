@@ -1,32 +1,27 @@
-<properties 
-	pageTitle="Tätigen eines Telefonanrufs über Twilio (.NET) | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. In .NET geschriebene Codebeispiele." 
-	services="" 
-	documentationCenter=".net" 
-	authors="devinrader" 
-	manager="timlt" 
-	editor=""/>
+---
+title: Tätigen eines Telefonanrufs über Twilio (.NET) | Microsoft Docs
+description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. In .NET geschriebene Codebeispiele.
+services: ''
+documentationcenter: .net
+author: devinrader
+manager: timlt
+editor: ''
 
-<tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/04/2016" 
-	ms.author="microsofthelp@twilio.com"/>
+ms.service: cloud-services
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 05/04/2016
+ms.author: microsofthelp@twilio.com
 
-
-
-
+---
 # Tätigen eines Telefonanrufs mithilfe von Twilio in einer Webrolle auf Azure
-
 In diesem Leitfaden wird veranschaulicht, wie Sie von einer in Azure gehosteten Webseite einen Anruf über Twilio tätigen können. Die Anwendung fragt den Benutzer nach Werten für den Telefonanruf, wie im folgenden Screenshot gezeigt.
 
 ![Azure-Anrufformular mit Twilio und ASP.NET][twilio_dotnet_basic_form]
 
 ## <a name="twilio-prereqs"></a>Voraussetzungen
-
 Sie benötigen Folgendes, um den Code in diesem Artikel ausführen zu können:
 
 1. Ein Twilio-Konto und ein Authentifizierungs-Token. Registrieren Sie sich unter [https://www.twilio.com/try-twilio][try_twilio], um mit Twilio zu beginnen. Sie finden Preisinformationen unter [http://www.twilio.com/pricing][twilio_pricing]. Weitere Informationen über die von Twilio bereitgestellte API finden Sie unter [http://www.twilio.com/voice/api][twilio_api].
@@ -35,15 +30,14 @@ Sie benötigen Folgendes, um den Code in diesem Artikel ausführen zu können:
 Sie sollten mit der Erstellung einer einfachen Webrolle in Azure vertraut sein.
 
 ## <a name="howtocreateform"></a>Erstellen eines Webformulars für einen Anruf
-
 <a id="use_nuget"></a>So fügen Sie dem Webrollenprojekt die Twilio-Bibliotheken hinzu:
 
-1.  Öffnen Sie Ihre Projektmappe in Visual Studio.
-2.  Klicken Sie mit der rechten Maustaste auf **References**.
-3.  Klicken Sie auf **Manage NuGet Packages**.
-4.  Klicken Sie auf **Online**.
-5.  Geben Sie in das Onlinesuchfeld *twilio* ein.
-6.  Klicken Sie auf **Install** für das Twilio-Paket.
+1. Öffnen Sie Ihre Projektmappe in Visual Studio.
+2. Klicken Sie mit der rechten Maustaste auf **References**.
+3. Klicken Sie auf **Manage NuGet Packages**.
+4. Klicken Sie auf **Online**.
+5. Geben Sie in das Onlinesuchfeld *twilio* ein.
+6. Klicken Sie auf **Install** für das Twilio-Paket.
 
 Der folgende Code erstellt ein Web-Formular zur Eingabe der Benutzerdaten für den Anruf. In diesem Beispiel wird eine ASP.NET-Webrolle mit dem Namen **TwilioCloud** erstellt.
 
@@ -163,7 +157,7 @@ Dieser Code demonstriert die allgemeinen Funktionen für die Verwendung von Twil
 * Lesen Sie die Twilio-Sicherheitsrichtlinien unter [https://www.twilio.com/docs/security][twilio_docs_security].
 * Weitere Informationen zu Twilio finden Sie unter [https://www.twilio.com/docs][twilio_docs].
 
-##<a name="seealso"></a>Weitere Informationen
+## <a name="seealso"></a>Weitere Informationen
 * [Verwenden von Twilio für Telefonie- und SMS-Funktionen aus Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_pricing]: http://www.twilio.com/pricing

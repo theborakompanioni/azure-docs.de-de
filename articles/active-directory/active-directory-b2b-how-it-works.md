@@ -1,22 +1,22 @@
-<properties
-   pageTitle="Vorschau der Azure AD B2B-Zusammenarbeit: Funktionsweise | Microsoft Azure"
-   description="Beschreibt, wie die Azure Active Directory B2B-Zusammenarbeit Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen ermöglicht und so Ihre unternehmensübergreifenden Beziehungen unterstützt."
-   services="active-directory"
-   documentationCenter=""
-   authors="viv-liu"
-   manager="cliffdi"
-   editor=""
-   tags=""/>
+---
+title: 'Vorschau der Azure AD B2B-Zusammenarbeit: Funktionsweise | Microsoft Docs'
+description: Beschreibt, wie die Azure Active Directory B2B-Zusammenarbeit Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen ermöglicht und so Ihre unternehmensübergreifenden Beziehungen unterstützt.
+services: active-directory
+documentationcenter: ''
+author: viv-liu
+manager: cliffdi
+editor: ''
+tags: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="identity"
-   ms.date="05/09/2016"
-   ms.author="viviali"/>
+ms.service: active-directory
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: identity
+ms.date: 05/09/2016
+ms.author: viviali
 
+---
 # Vorschau der Azure AD B2B-Zusammenarbeit: Funktionsweise
 Die Azure AD-B2B-Zusammenarbeit basiert auf einem Einladungs- und Einlösemodell. Sie geben die E-Mail-Adressen der Parteien, mit denen Sie zusammenarbeiten möchten, sowie die Anwendungen ein, die sie verwenden sollen. Azure AD sendet den Parteien eine E-Mail-Einladung mit einem Link. Der Partnerbenutzer folgt dem Link und wird aufgefordert, sich über sein Azure AD-Konto anzumelden oder sich für ein neues Azure AD-Konto zu registrieren.
 
@@ -30,18 +30,18 @@ Partnerbenutzer sind in Ihrem Azure AD als externe Benutzer vorhanden. Das bedeu
 
 Obwohl zur Nutzung von Azure AD B2B kein kostenpflichtiges Azure AD-Abonnement (Basic oder Premium) erforderlich ist, profitieren Mandanten mit einem kostenpflichtigen Azure AD-Abonnement (Basic oder Premium) von den folgenden zusätzlichen Vorteilen:
 
- - Administratoren können Apps Gruppen zuweisen, sodass sich die Verwaltung des Zugriffs für eingeladene Benutzer vereinfacht.
- - Für das Branding der Einladungs-E-Mails und beim Einlösen wird das Mandantenbranding verwendet, sodass den eingeladenen Partnerbenutzern mehr Kontext zur Verfügung steht.
+* Administratoren können Apps Gruppen zuweisen, sodass sich die Verwaltung des Zugriffs für eingeladene Benutzer vereinfacht.
+* Für das Branding der Einladungs-E-Mails und beim Einlösen wird das Mandantenbranding verwendet, sodass den eingeladenen Partnerbenutzern mehr Kontext zur Verfügung steht.
 
 ## Verwandte Artikel
  Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
- - [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
- - [Ausführliche exemplarische Vorgehensweise](active-directory-b2b-detailed-walkthrough.md)
- - [Referenz zum CSV-Dateiformat](active-directory-b2b-references-csv-file-format.md)
- - [Tokenformat für externe Benutzer](active-directory-b2b-references-external-user-token-format.md)
- - [Objektattributänderungen für externe Benutzer](active-directory-b2b-references-external-user-object-attribute-changes.md)
- - [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
- - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+* [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
+* [Ausführliche exemplarische Vorgehensweise](active-directory-b2b-detailed-walkthrough.md)
+* [Referenz zum CSV-Dateiformat](active-directory-b2b-references-csv-file-format.md)
+* [Tokenformat für externe Benutzer](active-directory-b2b-references-external-user-token-format.md)
+* [Objektattributänderungen für externe Benutzer](active-directory-b2b-references-external-user-object-attribute-changes.md)
+* [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
+* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
 <!---HONumber=AcomDC_0511_2016-->

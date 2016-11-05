@@ -1,21 +1,21 @@
-<properties 
-   pageTitle="Unterstützungs- und Deaktivierungsrichtlinien für Azure-Gastbetriebssysteme | Microsoft Azure" 
-   description="Bietet Informationen zu den Elementen, die Microsoft hinsichtlich des von Clouddiensten verwendeten Azure-Gastbetriebssystems unterstützt." 
-   services="cloud-services" 
-   documentationCenter="na" 
-   authors="yuemlu" 
-   manager="timlt" 
-   editor=""/>
+---
+title: Unterstützungs- und Deaktivierungsrichtlinien für Azure-Gastbetriebssysteme | Microsoft Docs
+description: Bietet Informationen zu den Elementen, die Microsoft hinsichtlich des von Clouddiensten verwendeten Azure-Gastbetriebssystems unterstützt.
+services: cloud-services
+documentationcenter: na
+author: yuemlu
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="cloud-services"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd" 
-   ms.date="04/19/2016"
-   ms.author="yuemlu"/>
+ms.service: cloud-services
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: tbd
+ms.date: 04/19/2016
+ms.author: yuemlu
 
+---
 # Unterstützungs- und Deaktivierungsrichtlinie für Azure-Gastbetriebssysteme
 Die Informationen auf dieser Seite beziehen sich auf das Azure-Gastbetriebssystem ([Gast-BS](cloud-services-guestos-update-matrix.md)) für Worker- und Webrollen für Clouddienste (PaaS). Sie gelten nicht für virtuelle Computer (IaaS).
 
@@ -23,26 +23,21 @@ Microsoft verfügt über eine veröffentlichte [Unterstützungsrichtlinie für d
 
 Die Richtlinie lautet:
 
-1. Microsoft unterstützt **mindestens die beiden neuesten Gastbetriebssystemfamilien**. Wenn eine Familie deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere unterstützte Gastbetriebssystemfamilie zu aktualisieren.
+1. Microsoft unterstützt **mindestens die beiden neuesten Gastbetriebssystemfamilien**. Wenn eine Familie deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere unterstützte Gastbetriebssystemfamilie zu aktualisieren.
 2. Microsoft unterstützt **mindestens die beiden neuesten Versionen der unterstützten Gastbetriebssystemfamilien**. 
-3. Microsoft unterstützt **mindestens die beiden neuesten Versionen des Azure SDK**. Wenn eine SDK-Version deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere Version zu aktualisieren. 
+3. Microsoft unterstützt **mindestens die beiden neuesten Versionen des Azure SDK**. Wenn eine SDK-Version deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere Version zu aktualisieren. 
 
 Es werden möglicherweise mehr als zwei Familien oder Versionen gleichzeitig unterstützt. Offizielle Informationen zur Unterstützung von Gastbetriebssystemen finden Sie auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).
 
-
-## Wann wird eine Gast-BS-Familie oder ein Gast-BS-Release deaktiviert? 
-
-
+## Wann wird eine Gast-BS-Familie oder ein Gast-BS-Release deaktiviert?
 Eine neue **Familie** eines Gastbetriebssystems wird einige Zeit nach Veröffentlichung der neuen offiziellen Version eines Windows Server-Betriebssystems eingeführt. Wenn eine neue Gastbetriebssystemfamilie eingeführt wird, deaktiviert Microsoft die älteste Gastbetriebssystemfamilie.
 
-Neue **Versionen** von Gastbetriebssystemen werden etwa jeden Monat eingeführt und enthalten die neuesten MSRC-Updates. Aufgrund dieser regelmäßigen monatlichen Updates wird eine Gastbetriebssystemversion normalerweise 60 Tage nach ihrer Veröffentlichung deaktiviert. Auf diese Weise sind mindestens zwei Versionen jeder Gastbetriebssystemfamilie zur Verwendung verfügbar.
+Neue **Versionen** von Gastbetriebssystemen werden etwa jeden Monat eingeführt und enthalten die neuesten MSRC-Updates. Aufgrund dieser regelmäßigen monatlichen Updates wird eine Gastbetriebssystemversion normalerweise 60 Tage nach ihrer Veröffentlichung deaktiviert. Auf diese Weise sind mindestens zwei Versionen jeder Gastbetriebssystemfamilie zur Verwendung verfügbar.
 
-### Verfahren während der Deaktivierung einer Gastbetriebssystemfamilie 
+### Verfahren während der Deaktivierung einer Gastbetriebssystemfamilie
+Nachdem die Deaktivierung angekündigt wurde, steht den Kunden ein Übergangszeitraum von 12 Monaten zur Verfügung, bevor die ältere Familie offiziell aus dem Dienst entfernt wird. Diese Übergangszeit kann nach dem Ermessen von Microsoft verlängert werden. Updates werden auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md) veröffentlicht.
 
-
-Nachdem die Deaktivierung angekündigt wurde, steht den Kunden ein Übergangszeitraum von 12 Monaten zur Verfügung, bevor die ältere Familie offiziell aus dem Dienst entfernt wird. Diese Übergangszeit kann nach dem Ermessen von Microsoft verlängert werden. Updates werden auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md) veröffentlicht.
-
-6 Monate nach Beginn des Übergangszeitraums beginnt ein abgestufter Deaktivierungsprozess. Während dieses Zeit geschieht Folgendes:
+6 Monate nach Beginn des Übergangszeitraums beginnt ein abgestufter Deaktivierungsprozess. Während dieses Zeit geschieht Folgendes:
 
 1. Microsoft benachrichtigt die Kunden über die Deaktivierung. 
 2. Die neuere Version des Azure SDK unterstützt die deaktivierte Gastbetriebssystemfamilie nicht.
@@ -50,31 +45,22 @@ Nachdem die Deaktivierung angekündigt wurde, steht den Kunden ein Übergangszei
 
 Microsoft führt bis zum letzten Tag des Übergangszeitraums, dem so genannten "Ablaufdatum", weiterhin neue Gastbetriebsversionen einschließlich neuer MSRC-Updates ein. Gleichzeitig wird die Unterstützung für alle noch ausgeführten Clouddienste im Rahmen der Azure-SLA aufgehoben. Nach diesem Datum kann Microsoft nach eigenem Ermessen ein Upgrade für diese Dienste erzwingen oder diese Dienste löschen oder beenden.
 
-
-
-### Verfahren während der Deaktivierung einer Gastbetriebssystemversion 
+### Verfahren während der Deaktivierung einer Gastbetriebssystemversion
 Wenn Kunden ihr Gastbetriebssystem so eingerichtet haben, dass es automatisch aktualisiert wird, müssen sie sich keine Gedanken um Gastbetriebssystemversionen machen. Sie werden immer die neueste Version des Gastbetriebssystems verwenden.
 
 Gastbetriebssystemversionen werden jeden Monat veröffentlicht. Aufgrund der Häufigkeit der regulären Releases hat jede Version eine feste Lebensdauer.
 
-60 Tage nach Beginn der Lebensdauer wird eine Version "*deaktiviert*". „Deaktiviert“ bedeutet, dass die Version aus dem klassischen Azure-Portal entfernt wurde. Sie kann auch nicht mehr über die CSCFG-Konfigurationsdatei festgelegt werden. Vorhandene Bereitstellungen werden weiterhin ausgeführt, neue Bereitstellungen sowie Code- und Konfigurationsupdates für vorhandene Bereitstellungen sind jedoch nicht zulässig.
+60 Tage nach Beginn der Lebensdauer wird eine Version "*deaktiviert*". „Deaktiviert“ bedeutet, dass die Version aus dem klassischen Azure-Portal entfernt wurde. Sie kann auch nicht mehr über die CSCFG-Konfigurationsdatei festgelegt werden. Vorhandene Bereitstellungen werden weiterhin ausgeführt, neue Bereitstellungen sowie Code- und Konfigurationsupdates für vorhandene Bereitstellungen sind jedoch nicht zulässig.
 
 Zu einem späteren Zeitpunkt wird die Gast-BS-Version "*ablaufen*", und für alle Installationen, die noch unter dieser Version ausgeführt werden, wird ein Upgrade erzwungen. Gleichzeitig wird für diese Installationen festgelegt, dass das Gast-BS in Zukunft automatisch aktualisiert wird. Der Ablauf erfolgt in Batches, sodass die Zeitspanne zwischen Deaktivierung und tatsächlichem Ablauf variieren kann.
 
 Diese Zeiträume können nach Ermessen von Microsoft verlängert werden, um den Kunden den Übergang zu erleichtern. Updates werden auf der Seite [Azure-Gastbetriebssystemreleases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md) veröffentlicht.
 
-
-
-### Benachrichtigungen während der Deaktivierung 
-
+### Benachrichtigungen während der Deaktivierung
 * **Deaktivierung der Familie** <br>Microsoft verwendet Blogbeiträge sowie Benachrichtigungen im klassischen Azure-Portal, um die Kunden zu informieren. Bei Kunden, die eine deaktivierte Gastbetriebssystemfamilie weiterhin verwenden, werden zugewiesene Dienstadministratoren auf direktem Weg benachrichtigt (E-Mail, Mitteilung im Portal, Telefonanruf). Alle Änderungen werden auf dieser Seite und im oben auf dieser Seite aufgeführten RSS-Feed veröffentlicht. 
-
-
 * **Deaktivierung der Version** <br>Alle Änderungen, einschließlich des Veröffentlichungs-, Deaktivierungs- und Ablaufdatums, werden auf dieser Seite und im oben auf dieser Seite aufgeführten RSS-Feed veröffentlicht. Dienstadministratoren erhalten E-Mails, wenn sie über Bereitstellungen verfügen, die unter einer deaktivierten Gastbetriebssystemversion oder -familie ausgeführt werden. Diese E-Mails können zu verschiedenen Zeitpunkten gesendet werden. Im Allgemeinen werden sie mindestens einen Monat vor der Deaktivierung gesendet, dies ist jedoch keine offizielle SLA.
 
-
 ## Häufig gestellte Fragen
-
 **Wie kann ich die Auswirkungen einer Migration minimieren?**
 
 Sie sollten die neueste Gastbetriebssystemfamilie verwenden, um Ihre Clouddienste zu konzipieren.
@@ -85,8 +71,8 @@ Sie sollten die neueste Gastbetriebssystemfamilie verwenden, um Ihre Clouddienst
 
 **Was geschieht, wenn meine Webanwendung eine tiefer greifende tiefere Integration in das Betriebssystem erfordert?**
 
-Wenn die Architektur Ihrer Webanwendung eine tiefer gehende Abhängigkeit vom zugrunde liegenden Betriebssystem erfordert, verwenden Sie von der Plattform unterstützte Funktionen wie z. B. [Startaufgaben](cloud-services-startup-tasks.md) oder andere, zukünftig verfügbare Mechanismen zur Erweiterbarkeit. Alternativ dazu können Sie auch [Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – Infrastructure-as-a-Service) verwenden, wo die Verwaltung des zugrunde liegenden Betriebssystems in Ihrem Verantwortungsbereich liegt.
- 
+Wenn die Architektur Ihrer Webanwendung eine tiefer gehende Abhängigkeit vom zugrunde liegenden Betriebssystem erfordert, verwenden Sie von der Plattform unterstützte Funktionen wie z. B. [Startaufgaben](cloud-services-startup-tasks.md) oder andere, zukünftig verfügbare Mechanismen zur Erweiterbarkeit. Alternativ dazu können Sie auch [Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – Infrastructure-as-a-Service) verwenden, wo die Verwaltung des zugrunde liegenden Betriebssystems in Ihrem Verantwortungsbereich liegt.
+
 ## Nächste Schritte
 Überprüfen Sie die neuesten [Gastbetriebssystemreleases](cloud-services-guestos-update-matrix.md).
 

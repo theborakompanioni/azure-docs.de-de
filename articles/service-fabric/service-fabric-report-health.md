@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Hinzufügen von Service Fabric-Integritätsberichten | Microsoft Azure"
-   description="Beschreibt, wie benutzerdefinierte Integritätsberichte an Integritätsentitäten von Azure Service Fabric gesendet werden. Enthält Empfehlungen zum Entwerfen und Implementieren hochwertiger Integritätsberichte."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="oanapl"
-   manager="timlt"
-   editor=""/>
+---
+title: Hinzufügen von Service Fabric-Integritätsberichten | Microsoft Docs
+description: Beschreibt, wie benutzerdefinierte Integritätsberichte an Integritätsentitäten von Azure Service Fabric gesendet werden. Enthält Empfehlungen zum Entwerfen und Implementieren hochwertiger Integritätsberichte.
+services: service-fabric
+documentationcenter: .net
+author: oanapl
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/28/2016"
-   ms.author="oanapl"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/28/2016
+ms.author: oanapl
 
-
+---
 # <a name="add-custom-service-fabric-health-reports"></a>Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten
 Azure Service Fabric bietet ein [Integritätsmodell](service-fabric-health-introduction.md) , das fehlerhafte Cluster- und Anwendungsbedingungen auf bestimmten Entitäten kennzeichnet. Das Integritätsmodell verwendet **Integritäts-Reporter** (Systemkomponenten und Watchdogs). Das Ziel ist die einfache und schnelle Diagnose und Reparatur. Dienstautoren müssen im Vorfeld an die Integrität denken. Jede Bedingung, die zur Beeinträchtigung der Integrität führen kann, sollte gemeldet werden, insbesondere wenn damit die Ursachen von Problemen ermittelt werden können. Diese Integritätsinformationen können beim Debuggen und Untersuchen eine Menge Zeit und Arbeit sparen, sobald der Dienst ordnungsgemäß in der (privaten oder Azure-basierten) Cloud ausgeführt wird.
 
@@ -24,49 +23,48 @@ Die Service Fabric-Berichterstatter überwachen Bedingungen, die von Bedeutung s
 
 Bei der Gestaltung und Implementierung der Integritätsberichterstellung haben Watchdogs und Systemkomponenten folgende Aufgaben:
 
-- Sie definieren, welche Bedingung für sie von Bedeutung ist, wie sie überwacht wird und welche Auswirkungen sie auf die Cluster- oder Anwendungsfunktionalität hat. Auf der Grundlage dieser Informationen entscheiden sie über die Integritätsberichtseigenschaft und den Integritätszustand.
-
-- Sie bestimmen die [Entität](service-fabric-health-introduction.md#health-entities-and-hierarchy) , für die der Bericht gilt.
-
-- Sie bestimmen, wo die Berichterstellung erfolgen soll, entweder innerhalb des Diensts oder über einen internen oder externen Watchdog.
-
-- Sie definieren eine Quelle zum Identifizieren des Berichterstatters.
-
-- Sie wählen eine Strategie für die Berichterstellung (in regelmäßigen Abständen oder bei Übergängen). Empfohlen wird eine Berichterstellung in regelmäßigen Abständen, da sie einen einfacheren Code erfordert und weniger fehleranfällig ist.
-
-- Sie bestimmen, wie lange der Bericht über fehlerhafte Bedingungen im Integritätsspeicher bleibt und wie er gelöscht wird. Auf der Grundlage dieser Informationen entscheiden Sie über die Gültigkeitsdauer des Berichts und über das Verhalten beim Entfernen nach der Ablaufzeit.
+* Sie definieren, welche Bedingung für sie von Bedeutung ist, wie sie überwacht wird und welche Auswirkungen sie auf die Cluster- oder Anwendungsfunktionalität hat. Auf der Grundlage dieser Informationen entscheiden sie über die Integritätsberichtseigenschaft und den Integritätszustand.
+* Sie bestimmen die [Entität](service-fabric-health-introduction.md#health-entities-and-hierarchy) , für die der Bericht gilt.
+* Sie bestimmen, wo die Berichterstellung erfolgen soll, entweder innerhalb des Diensts oder über einen internen oder externen Watchdog.
+* Sie definieren eine Quelle zum Identifizieren des Berichterstatters.
+* Sie wählen eine Strategie für die Berichterstellung (in regelmäßigen Abständen oder bei Übergängen). Empfohlen wird eine Berichterstellung in regelmäßigen Abständen, da sie einen einfacheren Code erfordert und weniger fehleranfällig ist.
+* Sie bestimmen, wie lange der Bericht über fehlerhafte Bedingungen im Integritätsspeicher bleibt und wie er gelöscht wird. Auf der Grundlage dieser Informationen entscheiden Sie über die Gültigkeitsdauer des Berichts und über das Verhalten beim Entfernen nach der Ablaufzeit.
 
 Wie bereits erwähnt, kann die Berichterstellung von folgenden Orten aus erfolgen:
 
-- Vom überwachten Service Fabric-Dienstreplikat.
+* Vom überwachten Service Fabric-Dienstreplikat.
+* Von internen Watchdogs, die als Service Fabric-Dienste bereitgestellt werden (etwa ein zustandsloser Service Fabric-Dienst, der Bedingungen überwacht und Berichte ausgibt). Watchdogs können auf allen Knoten bereitgestellt oder dem überwachten Dienst zugeordnet werden.
+* Von internen Watchdogs, die auf den Service Fabric-Knoten ausgeführt werden, jedoch *nicht* als Service Fabric-Dienste implementiert werden.
+* Von externen Watchdogs, die die Ressource von *außerhalb* des Service Fabric-Clusters überwachen (etwa ein Überwachungsdienst wie Gomez).
 
-- Von internen Watchdogs, die als Service Fabric-Dienste bereitgestellt werden (etwa ein zustandsloser Service Fabric-Dienst, der Bedingungen überwacht und Berichte ausgibt). Watchdogs können auf allen Knoten bereitgestellt oder dem überwachten Dienst zugeordnet werden.
-
-- Von internen Watchdogs, die auf den Service Fabric-Knoten ausgeführt werden, jedoch *nicht* als Service Fabric-Dienste implementiert werden.
-
-- Von externen Watchdogs, die die Ressource von *außerhalb* des Service Fabric-Clusters überwachen (etwa ein Überwachungsdienst wie Gomez).
-
-> [AZURE.NOTE] Standardmäßig enthält das Cluster von den Systemkomponenten gesendete Integritätsberichte. Weitere Informationen finden Sie unter [Verwenden von Systemintegritätsberichten für die Problembehandlung](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Die Benutzerberichte müssen für bereits vom System erstellte [Integritätsentitäten](service-fabric-health-introduction.md#health-entities-and-hierarchy) gesendet werden.
+> [!NOTE]
+> Standardmäßig enthält das Cluster von den Systemkomponenten gesendete Integritätsberichte. Weitere Informationen finden Sie unter [Verwenden von Systemintegritätsberichten für die Problembehandlung](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Die Benutzerberichte müssen für bereits vom System erstellte [Integritätsentitäten](service-fabric-health-introduction.md#health-entities-and-hierarchy) gesendet werden.
+> 
+> 
 
 Sobald das Design für die Integritätsberichterstellung feststeht, können Integritätsberichte problemlos gesendet werden. Mithilfe von [FabricClient](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.aspx) können Sie Berichte zur Integrität erstellen, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist oder der Fabric-Client über Administratorrechte verfügt. Dies kann über die API mit [FabricClient.HealthManager.ReportHealth](https://msdn.microsoft.com/library/system.fabric.fabricclient.healthclient.reporthealth.aspx), über PowerShell oder über REST erfolgen. Zur Verbesserung der Leistung fassen Konfigurationselemente Berichte zusammen.
 
-> [AZURE.NOTE] Integritätsberichte sind synchronisiert und repräsentieren nur die auf der Clientseite durchgeführten Überprüfungen. Die Tatsache, dass der Bericht vom Integritätsclient oder von Objekten vom Typ `Partition` oder `CodePackageActivationContext` akzeptiert wird, bedeutet nicht, dass er im Speicher angewendet wird. Er wird asynchron gesendet und möglicherweise mit anderen Berichten zusammengefasst. Bei der Verarbeitung auf dem Server kann trotzdem noch ein Fehler auftreten – etwa aufgrund einer veralteten Sequenznummer oder weil die Entität gelöscht wurde, auf die der Bericht angewendet werden muss.
+> [!NOTE]
+> Integritätsberichte sind synchronisiert und repräsentieren nur die auf der Clientseite durchgeführten Überprüfungen. Die Tatsache, dass der Bericht vom Integritätsclient oder von Objekten vom Typ `Partition` oder `CodePackageActivationContext` akzeptiert wird, bedeutet nicht, dass er im Speicher angewendet wird. Er wird asynchron gesendet und möglicherweise mit anderen Berichten zusammengefasst. Bei der Verarbeitung auf dem Server kann trotzdem noch ein Fehler auftreten – etwa aufgrund einer veralteten Sequenznummer oder weil die Entität gelöscht wurde, auf die der Bericht angewendet werden muss.
+> 
+> 
 
 ## <a name="health-client"></a>Integritätsclient
 Die Integritätsberichte werden über einen Integritätsclient innerhalb des Fabric-Clients an den Integritätsspeicher gesendet. Der Integritätsclient kann mit folgenden Optionen konfiguriert werden:
 
-- **HealthReportSendInterval**: Die Verzögerung zwischen dem Hinzufügen des Berichts zum Client und dem Senden des Berichts an den Integritätsspeicher. Dadurch können Berichte in einer einzelnen Nachricht zusammengefasst werden, anstatt für jeden Bericht eine eigene Nachricht zu senden. So wird die Leistung verbessert. Standardwert: 30 Sekunden.
+* **HealthReportSendInterval**: Die Verzögerung zwischen dem Hinzufügen des Berichts zum Client und dem Senden des Berichts an den Integritätsspeicher. Dadurch können Berichte in einer einzelnen Nachricht zusammengefasst werden, anstatt für jeden Bericht eine eigene Nachricht zu senden. So wird die Leistung verbessert. Standardwert: 30 Sekunden.
+* **HealthReportRetrySendInterval**: Das Intervall, in dem der Integritätsclient kumulierte Integritätsberichte erneut an den Integritätsspeicher sendet. Standardwert: 30 Sekunden.
+* **HealthOperationTimeout**: Das Zeitlimit für eine Berichtsnachricht, die an den Integritätsspeicher gesendet wurde. Wenn bei einer Nachricht das Zeitlimit überschritten wird, wiederholt der Integritätsclient den Sendevorgang, bis der Integritätsspeicher die Verarbeitung des Berichts bestätigt. Standardwert: 2 Minuten.
 
-- **HealthReportRetrySendInterval**: Das Intervall, in dem der Integritätsclient kumulierte Integritätsberichte erneut an den Integritätsspeicher sendet. Standardwert: 30 Sekunden.
-
-- **HealthOperationTimeout**: Das Zeitlimit für eine Berichtsnachricht, die an den Integritätsspeicher gesendet wurde. Wenn bei einer Nachricht das Zeitlimit überschritten wird, wiederholt der Integritätsclient den Sendevorgang, bis der Integritätsspeicher die Verarbeitung des Berichts bestätigt. Standardwert: 2 Minuten.
-
-> [AZURE.NOTE] Wenn die Berichte zusammengefasst werden, muss der Fabric-Client mindestens für die Dauer von „HealthReportSendInterval“ aktiv bleiben, um sicherzustellen, dass sie gesendet werden. Wenn die Nachricht verloren geht oder der Integritätsspeicher die Berichte aufgrund von vorübergehenden Fehlern nicht anwenden kann, muss der Fabric-Client länger aktiv bleiben, um einen erneuten Versuch zu ermöglichen.
+> [!NOTE]
+> Wenn die Berichte zusammengefasst werden, muss der Fabric-Client mindestens für die Dauer von „HealthReportSendInterval“ aktiv bleiben, um sicherzustellen, dass sie gesendet werden. Wenn die Nachricht verloren geht oder der Integritätsspeicher die Berichte aufgrund von vorübergehenden Fehlern nicht anwenden kann, muss der Fabric-Client länger aktiv bleiben, um einen erneuten Versuch zu ermöglichen.
+> 
+> 
 
 Bei der Pufferung auf dem Client wird auf die Eindeutigkeit der Berichte geachtet. Beispiel: Wenn ein bestimmter schlechter Reporter pro Sekunde 100 Berichte für die gleiche Eigenschaft der gleichen Entität sendet, werden die Berichte jeweils durch die letzte Version ersetzt. In der Clientwarteschlange ist stets höchstens ein solcher Bericht vorhanden. Wenn die Batchverarbeitung konfiguriert ist, wird pro Sendeintervall nur ein Bericht an den Integritätsspeicher gesendet. Dieser Bericht ist der zuletzt hinzugefügte Bericht, der den aktuellen Zustand der Entität angibt.
 Alle Konfigurationsparameter können angegeben werden, wenn `FabricClient` durch Übergabe von [FabricClientSettings](https://msdn.microsoft.com/library/azure/system.fabric.fabricclientsettings.aspx) mit den gewünschten Werten für integritätsbezogene Einträge erstellt wird.
 
-Im Anschluss wird ein Fabric-Client erstellt und angegeben, dass die Berichte unmittelbar nach dem Hinzufügen gesendet werden sollen. Bei Zeitüberschreitungen und Fehlern, bei denen Wiederholungsversuche möglich sind, wird alle 40 Sekunden ein Wiederholungsversuch ausgeführt.
+Im Anschluss wird ein Fabric-Client erstellt und angegeben, dass die Berichte unmittelbar nach dem Hinzufügen gesendet werden sollen. Bei Zeitüberschreitungen und Fehlern, bei denen Wiederholungsversuche möglich sind, wird alle 40 Sekunden ein Wiederholungsversuch ausgeführt.
 
 ```csharp
 var clientSettings = new FabricClientSettings()
@@ -106,27 +104,28 @@ GatewayInformation   : {
                        }
 ```
 
-> [AZURE.NOTE] Um sicherzustellen, dass nicht autorisierte Dienste keine Integritätsberichte für die im Cluster enthaltenen Entitäten ausgeben, kann der Server so konfiguriert werden, dass er Anforderungen nur von sicheren Clients akzeptiert. Das für die Berichterstellung verwendete `FabricClient` -Element muss über aktivierte Sicherheitsfunktionen verfügen, um mit dem Cluster (beispielsweise mit Kerberos- oder Zertifikatauthentifizierung) kommunizieren zu können. Erfahren Sie mehr über [Clustersicherheit](service-fabric-cluster-security.md).
+> [!NOTE]
+> Um sicherzustellen, dass nicht autorisierte Dienste keine Integritätsberichte für die im Cluster enthaltenen Entitäten ausgeben, kann der Server so konfiguriert werden, dass er Anforderungen nur von sicheren Clients akzeptiert. Das für die Berichterstellung verwendete `FabricClient` -Element muss über aktivierte Sicherheitsfunktionen verfügen, um mit dem Cluster (beispielsweise mit Kerberos- oder Zertifikatauthentifizierung) kommunizieren zu können. Erfahren Sie mehr über [Clustersicherheit](service-fabric-cluster-security.md).
+> 
+> 
 
 ## <a name="report-from-within-low-privilege-services"></a>Erstellen von Berichten aus Diensten mit niedriger Berechtigung
 Aus Service Fabric-Diensten, die keinen Administratorzugriff auf den Cluster haben, können Sie Integritätsberichte für Entitäten aus dem aktuellen Kontext durch `Partition` oder `CodePackageActivationContext` erstellen.
 
-- Verwenden Sie für zustandslose Dienste [IStatelessServicePartition.ReportInstanceHealth](https://msdn.microsoft.com/library/system.fabric.istatelessservicepartition.reportinstancehealth.aspx) , um einen Bericht über die aktuelle Dienstinstanz zu erstellen.
+* Verwenden Sie für zustandslose Dienste [IStatelessServicePartition.ReportInstanceHealth](https://msdn.microsoft.com/library/system.fabric.istatelessservicepartition.reportinstancehealth.aspx) , um einen Bericht über die aktuelle Dienstinstanz zu erstellen.
+* Verwenden Sie für zustandsbehaftete Dienste [IStatefulServicePartition.ReportReplicaHealth](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.reportreplicahealth.aspx) , um einen Bericht über das aktuelle Replikat zu erstellen.
+* Verwenden Sie [IServicePartition.ReportPartitionHealth](https://msdn.microsoft.com//library/system.fabric.iservicepartition.reportpartitionhealth.aspx) , um einen Bericht über die aktuelle Partitionsentität zu erstellen.
+* Verwenden Sie [CodePackageActivationContext.ReportApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportapplicationhealth.aspx) , um einen Bericht über die aktuelle Anwendung zu erstellen.
+* Verwenden Sie [CodePackageActivationContext.ReportDeployedApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth.aspx) , um einen Bericht über die aktuelle Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
+* Verwenden Sie [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth.aspx) , um einen Bericht über ein Servicepaket der aktuellen Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
 
-- Verwenden Sie für zustandsbehaftete Dienste [IStatefulServicePartition.ReportReplicaHealth](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.reportreplicahealth.aspx) , um einen Bericht über das aktuelle Replikat zu erstellen.
-
-- Verwenden Sie [IServicePartition.ReportPartitionHealth](https://msdn.microsoft.com//library/system.fabric.iservicepartition.reportpartitionhealth.aspx) , um einen Bericht über die aktuelle Partitionsentität zu erstellen.
-
-- Verwenden Sie [CodePackageActivationContext.ReportApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportapplicationhealth.aspx) , um einen Bericht über die aktuelle Anwendung zu erstellen.
-
-- Verwenden Sie [CodePackageActivationContext.ReportDeployedApplicationHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth.aspx) , um einen Bericht über die aktuelle Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
-
-- Verwenden Sie [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth.aspx) , um einen Bericht über ein Servicepaket der aktuellen Anwendung zu erstellen, die auf dem aktuellen Knoten bereitgestellt wird.
-
-> [AZURE.NOTE] Intern enthalten `Partition` und `CodePackageActivationContext` einen Integritätsclient, der mit den Standardeinstellungen konfiguriert ist. Es gelten die gleichen Hinweise wie für den [Integritätsclient](service-fabric-report-health.md#health-client): Berichte werden in einem Batch verarbeitet und mithilfe eines Timers gesendet. Die Objekte sollten daher aktiv bleiben, um einen Bericht senden zu können.
+> [!NOTE]
+> Intern enthalten `Partition` und `CodePackageActivationContext` einen Integritätsclient, der mit den Standardeinstellungen konfiguriert ist. Es gelten die gleichen Hinweise wie für den [Integritätsclient](service-fabric-report-health.md#health-client): Berichte werden in einem Batch verarbeitet und mithilfe eines Timers gesendet. Die Objekte sollten daher aktiv bleiben, um einen Bericht senden zu können.
+> 
+> 
 
 ## <a name="design-health-reporting"></a>Entwerfen der Integritätsberichterstellung
-Der erste Schritt zum Generieren hochwertiger Berichte ist das Identifizieren der Bedingungen, welche die Dienstintegrität beeinträchtigen können. Jegliche Bedingung, die beim – oder noch besser vor dem – Auftreten von Problemen im Dienst oder Cluster zu deren Erkennung beiträgt, kann Milliarden Euro einsparen. Zu den Vorteilen gehören weniger Ausfallzeiten, weniger nächtliche Untersuchungen und Behebungen von Problemen sowie eine höhere Kundenzufriedenheit.
+Der erste Schritt zum Generieren hochwertiger Berichte ist das Identifizieren der Bedingungen, welche die Dienstintegrität beeinträchtigen können. Jegliche Bedingung, die beim – oder noch besser vor dem – Auftreten von Problemen im Dienst oder Cluster zu deren Erkennung beiträgt, kann Milliarden Euro einsparen. Zu den Vorteilen gehören weniger Ausfallzeiten, weniger nächtliche Untersuchungen und Behebungen von Problemen sowie eine höhere Kundenzufriedenheit.
 
 Nachdem die Bedingungen identifiziert wurden, müssen Watchdog-Autoren die beste Möglichkeit für deren Überwachung ermitteln, um ein ausgeglichenes Verhältnis zwischen Aufwand und Nützlichkeit zu erzielen. Betrachten Sie beispielsweise einen Dienst, der mithilfe verschiedener temporärer Dateien auf einer Freigabe komplexe Berechnungen durchführt. Ein Watchdog kann die Freigabe überwachen, um sicherzustellen, dass genügend Speicherplatz verfügbar ist. Er könnte auf Benachrichtigungen bezüglich Datei- bzw. Verzeichnisänderungen lauschen. Er könnte eine Warnung ausgeben, wenn ein anfänglicher Schwellenwert erreicht wird, bzw. einen Fehler, wenn die Freigabe voll ist. Bei einer Warnung könnte ein Reparatursystem mit dem Bereinigen von älteren Dateien auf der Freigabe beginnen. Bei einem Fehler könnte ein Reparatursystem das Dienstreplikat auf einen anderen Knoten verschieben. Beachten Sie, wie die Bedingungszustände hinsichtlich der Integrität beschrieben werden: Zustand einer Bedingung, die als fehlerfrei oder fehlerhaft (Warnung oder Fehler) angesehen werden kann.
 
@@ -134,25 +133,26 @@ Nachdem die Überwachungsdetails eingerichtet wurden, muss ein Watchdog-Autor er
 
 Die Berichterstellung von innerhalb des überwachten Diensts ist nicht immer möglich. Ein Watchdog innerhalb des Diensts kann möglicherweise die Bedingungen nicht erkennen. Er verfügt möglicherweise nicht über die Logik oder die Daten, um sie zu bestimmen. Der Aufwand zur Überwachung der Bedingungen kann hoch sein. Auch gelten die Bedingungen möglicherweise nicht für einen Dienst, sondern beeinträchtigen stattdessen die Interaktion zwischen Diensten. Als weitere Option können Watchdogs im Cluster als separate Prozesse ausgeführt werden. Die Watchdogs überwachen einfach die Bedingungen und erstellen Berichte, ohne die Hauptdienste in irgendeiner Weise zu beeinträchtigen. Diese Watchdogs können beispielsweise als zustandslose Dienste in dieselbe Anwendung implementiert und auf allen Knoten oder auf denselben Knoten wie der Dienst bereitgestellt werden.
 
-Mitunter ist es jedoch auch nicht möglich, einen Watchdog im Cluster auszuführen. Wenn es sich bei den überwachten Bedingungen um die Verfügbarkeit oder die Funktionalität des Diensts aus der Sicht des Benutzers handelt, empfiehlt es sich, die Watchdogs am selben Ort wie die Benutzerclients auszuführen. Dort können sie die Vorgänge so testen, wie Benutzer sie aufrufen. Sie können z. B. einen Watchdog verwenden, der sich außerhalb des Clusters befindet, Anforderungen an den Dienst ausgibt und anschließend die Latenz und die Richtigkeit des Ergebnisses überprüft. (Beispiel für einen Rechnerdienst: Gibt 2 + 2 in einem angemessenen Zeitraum 4 zurück?)
+Mitunter ist es jedoch auch nicht möglich, einen Watchdog im Cluster auszuführen. Wenn es sich bei den überwachten Bedingungen um die Verfügbarkeit oder die Funktionalität des Diensts aus der Sicht des Benutzers handelt, empfiehlt es sich, die Watchdogs am selben Ort wie die Benutzerclients auszuführen. Dort können sie die Vorgänge so testen, wie Benutzer sie aufrufen. Sie können z. B. einen Watchdog verwenden, der sich außerhalb des Clusters befindet, Anforderungen an den Dienst ausgibt und anschließend die Latenz und die Richtigkeit des Ergebnisses überprüft. (Beispiel für einen Rechnerdienst: Gibt 2 + 2 in einem angemessenen Zeitraum 4 zurück?)
 
 Nachdem Sie die Watchdog-Details festgelegt haben, sollten Sie eine Quell-ID auswählen, die den Watchdog eindeutig identifiziert. Wenn im Cluster mehrere Watchdogs mit dem gleichen Typ enthalten sind, müssen sie entweder Berichte zu unterschiedlichen Entitäten erstellen oder, falls es dieselbe Entität ist, sicherstellen, dass sich die Quell-ID oder die Eigenschaft unterscheiden. Auf diese Weise können ihre Berichte gleichzeitig vorhanden sein. Die Eigenschaft des Integritätsberichts sollte die überwachte Bedingung erfassen. (Im vorangegangenen Beispiel könnte die Eigenschaft **ShareSize** sein.) Wenn mehrere Berichte für die gleiche Bedingung gelten, sollte die Eigenschaft einige dynamische Informationen beinhalten, sodass mehrere Berichte gleichzeitig vorhanden sein können. Beispiel: Wenn mehrere Freigaben überwacht werden müssen, kann der Name der Eigenschaft **ShareSize-Freigabename** lauten.
 
-> [AZURE.NOTE] Der Integritätsspeicher sollte *nicht* zum Speichern von Zustandsinformationen verwendet werden. Hinsichtlich der Integrität sollten nur integritätsbezogene Informationen gemeldet werden, da sie sich auf die Integritätsevaluierung einer Entität auswirken. Der Integritätsspeicher wurde nicht als Allzweckspeicher entwickelt. Er aggregiert mithilfe von Integritätsevaluierungslogik alle Daten im Integritätszustand. Das Senden von Informationen, die sich nicht auf die Integrität beziehen (etwa Statusberichte mit dem Integritätszustand „OK“), wirkt sich nicht auf den aggregierten Integritätszustand aus, kann jedoch die Leistung des Integritätsspeichers beeinträchtigen.
+> [!NOTE]
+> Der Integritätsspeicher sollte *nicht* zum Speichern von Zustandsinformationen verwendet werden. Hinsichtlich der Integrität sollten nur integritätsbezogene Informationen gemeldet werden, da sie sich auf die Integritätsevaluierung einer Entität auswirken. Der Integritätsspeicher wurde nicht als Allzweckspeicher entwickelt. Er aggregiert mithilfe von Integritätsevaluierungslogik alle Daten im Integritätszustand. Das Senden von Informationen, die sich nicht auf die Integrität beziehen (etwa Statusberichte mit dem Integritätszustand „OK“), wirkt sich nicht auf den aggregierten Integritätszustand aus, kann jedoch die Leistung des Integritätsspeichers beeinträchtigen.
+> 
+> 
 
 Als Nächstes legen Sie fest, für welche Entität Berichte erstellt werden sollen. In den meisten Fällen ist dies aufgrund der Bedingung offensichtlich. Sie sollten die Entität mit der bestmöglichen Granularität auswählen. Wenn sich eine Bedingung auf alle Replikate in einer Partition auswirkt, erstellen Sie Berichte nicht über den Dienst, sonder über die Partition. Es gibt jedoch Ausnahmefälle, in denen weitere Überlegungen erforderlich sind. Wenn sich die Bedingung auf eine Entität wie ein Replikat auswirkt, jedoch der Wunsch besteht, sie für mehr als nur die Replikatgültigkeitsdauer zu kennzeichnen, sollte die Berichterstellung auf der Partition erfolgen. Andernfalls werden beim Löschen des Replikats alle damit verbundenen Berichte aus dem Speicher bereinigt. Dies bedeutet, dass Watchdog-Autoren auch die Lebensdauer der Entität und des Berichts berücksichtigen müssen. Es muss klar sein, wann ein Bericht in einem Speicher bereinigt werden soll (beispielsweise wenn ein für eine Entität gemeldeter Fehler nicht mehr zutrifft).
 
-Sehen wir uns ein Beispiel mit den beschriebenen Aspekten an. Stellen Sie sich eine Service Fabric-Anwendung vor, die aus einem zustandsbehafteten, persistenten Masterdienst und zustandslosen sekundären Diensten besteht, die auf allen Knoten bereitgestellt sind (je ein sekundärer Diensttyp für einen Aufgabentyp). Der Master beinhaltet eine Verarbeitungswarteschlange, die von sekundären Diensten auszuführende Befehle enthält. Die sekundären Dienste führen die eingehenden Anforderungen aus und senden Bestätigungssignale zurück. Eine überwachbare Bedingung ist die Länge der Verarbeitungswarteschlange des Masters. Wenn die Länge der Masterwarteschlange einen Schwellenwert erreicht, wird eine Warnung gemeldet. Diese Warnung gibt an, dass die sekundären Dienste die Last nicht bewältigen können. Wenn die Warteschlange die maximale Länge erreicht hat und Befehle abgebrochen werden, wird ein Fehler gemeldet, da der Dienst nicht wiederhergestellt werden kann. Die Berichte können für die Eigenschaft **QueueStatus** erstellt werden. Der Watchdog befindet sich innerhalb des Diensts. Er hat regelmäßig Berichte über das primäre Masterreplikat gesendet. Die Gültigkeitsdauer beträgt 2 Minuten, und der Bericht wird regelmäßig alle 30 Sekunden gesendet. Wenn das primäre Replikat ausfällt, wird der Bericht automatisch aus dem Speicher bereinigt. Wenn das Dienstreplikat aktiv ist, aber blockiert wird oder ein anderes Problem vorliegt, läuft der Bericht im Integritätsspeicher ab. In diesem Fall wird die Entität als fehlerhaft bewertet.
+Sehen wir uns ein Beispiel mit den beschriebenen Aspekten an. Stellen Sie sich eine Service Fabric-Anwendung vor, die aus einem zustandsbehafteten, persistenten Masterdienst und zustandslosen sekundären Diensten besteht, die auf allen Knoten bereitgestellt sind (je ein sekundärer Diensttyp für einen Aufgabentyp). Der Master beinhaltet eine Verarbeitungswarteschlange, die von sekundären Diensten auszuführende Befehle enthält. Die sekundären Dienste führen die eingehenden Anforderungen aus und senden Bestätigungssignale zurück. Eine überwachbare Bedingung ist die Länge der Verarbeitungswarteschlange des Masters. Wenn die Länge der Masterwarteschlange einen Schwellenwert erreicht, wird eine Warnung gemeldet. Diese Warnung gibt an, dass die sekundären Dienste die Last nicht bewältigen können. Wenn die Warteschlange die maximale Länge erreicht hat und Befehle abgebrochen werden, wird ein Fehler gemeldet, da der Dienst nicht wiederhergestellt werden kann. Die Berichte können für die Eigenschaft **QueueStatus** erstellt werden. Der Watchdog befindet sich innerhalb des Diensts. Er hat regelmäßig Berichte über das primäre Masterreplikat gesendet. Die Gültigkeitsdauer beträgt 2 Minuten, und der Bericht wird regelmäßig alle 30 Sekunden gesendet. Wenn das primäre Replikat ausfällt, wird der Bericht automatisch aus dem Speicher bereinigt. Wenn das Dienstreplikat aktiv ist, aber blockiert wird oder ein anderes Problem vorliegt, läuft der Bericht im Integritätsspeicher ab. In diesem Fall wird die Entität als fehlerhaft bewertet.
 
 Eine weitere Bedingung, die überwacht werden kann, ist die Ausführungszeit der Aufgabe. Der Master verteilt Aufgaben basierend auf dem Aufgabentyp an die sekundären Dienste. Je nach Design könnte der Master den Aufgabenstatus von den sekundären Diensten abrufen. Er könnte auch warten, bis die sekundären Dienste Bestätigungssignale zurücksenden, wenn sie fertig sind. In letzterem Fall ist darauf zu achten, dass Situationen erkannt werden, in denen sekundäre Dienste ausfallen oder Nachrichten verloren gehen. Eine Option ist, dass der Master eine Ping-Anforderung an denselben sekundären Dienst sendet, der den Status zurücksendet. Wird kein Status empfangen, wertet der Master das als Fehler und plant die Aufgabe neu. Bei diesem Verhalten wird davon ausgegangen, dass die Aufgaben idempotent sind.
 
 Die überwachte Bedingung kann als Warnung interpretiert werden, wenn die Aufgabe nicht innerhalb eines bestimmten Zeitraums ausgeführt wird (**t1**; beispielsweise 10 Minuten). Wird die Aufgabe nicht rechtzeitig abgeschlossen (**t2**; beispielsweise 20 Minuten) kann die überwachte Bedingung als Fehler interpretiert werden. Die Berichterstellung kann auf verschiedene Arten erfolgen:
 
-- Das primäre Masterreplikat gibt regelmäßig Berichte über sich selbst aus. Sie können eine Eigenschaft für alle ausstehenden Aufgaben in der Warteschlange verwenden. Wenn mindestens eine Aufgabe länger dauert, ist der Berichtsstatus für die Eigenschaft **PendingTasks** eine Warnung bzw. ein Fehler. Wenn keine ausstehenden Aufgaben vorhanden sind oder die Ausführung aller Aufgaben gestartet wurde, lautet der Berichtsstatus „OK“. Die Aufgaben sind persistent. Bei einem Ausfall des primären Diensts kann also der neue primäre Dienst weiterhin ordnungsgemäß Berichte erstellen.
-
-- Ein anderer Watchdog-Prozess (in der Cloud oder extern) überprüft von außerhalb basierend auf dem gewünschten Aufgabenergebnis, ob die Aufgaben abgeschlossen wurden. Wenn die Schwellenwerte nicht beachtet werden, wird ein Bericht über den Masterdienst gesendet. Ein Bericht wird auch für jede Aufgabe gesendet, die die Aufgabenkennung enthält (Beispiel: **PendingTask+Aufgabenkennung**). Berichte sollten nur für Fehlerzustände gesendet werden. Legen Sie die Gültigkeitsdauer auf wenige Minuten fest, und konfigurieren Sie die Berichte so, dass sie nach Ablauf der Gültigkeitsdauer entfernt werden, um die Bereinigung zu gewährleisten.
-
-- Der sekundäre Dienst, der eine Aufgabe ausführt, meldet, wenn die Ausführung länger dauert als erwartet. Er erstellt Berichte für die Dienstinstanz über die Eigenschaft **PendingTasks**. Der Bericht ermittelt zwar die fehlerhafte Dienstinstanz, erfasst aber nicht die Situation, in der die Instanz ausfällt. Die Berichte werden dann bereinigt. Es können Berichte über den sekundären Dienst erstellt werden. Wenn der sekundäre Dienst die Aufgabe abschließt, löscht die sekundäre Instanz den Bericht aus dem Speicher. Der Bericht erfasst nicht die Situation, in der die Bestätigungsnachricht verloren gegangen ist und die Aufgabe aus Mastersicht nicht abgeschlossen wurde.
+* Das primäre Masterreplikat gibt regelmäßig Berichte über sich selbst aus. Sie können eine Eigenschaft für alle ausstehenden Aufgaben in der Warteschlange verwenden. Wenn mindestens eine Aufgabe länger dauert, ist der Berichtsstatus für die Eigenschaft **PendingTasks** eine Warnung bzw. ein Fehler. Wenn keine ausstehenden Aufgaben vorhanden sind oder die Ausführung aller Aufgaben gestartet wurde, lautet der Berichtsstatus „OK“. Die Aufgaben sind persistent. Bei einem Ausfall des primären Diensts kann also der neue primäre Dienst weiterhin ordnungsgemäß Berichte erstellen.
+* Ein anderer Watchdog-Prozess (in der Cloud oder extern) überprüft von außerhalb basierend auf dem gewünschten Aufgabenergebnis, ob die Aufgaben abgeschlossen wurden. Wenn die Schwellenwerte nicht beachtet werden, wird ein Bericht über den Masterdienst gesendet. Ein Bericht wird auch für jede Aufgabe gesendet, die die Aufgabenkennung enthält (Beispiel: **PendingTask+Aufgabenkennung**). Berichte sollten nur für Fehlerzustände gesendet werden. Legen Sie die Gültigkeitsdauer auf wenige Minuten fest, und konfigurieren Sie die Berichte so, dass sie nach Ablauf der Gültigkeitsdauer entfernt werden, um die Bereinigung zu gewährleisten.
+* Der sekundäre Dienst, der eine Aufgabe ausführt, meldet, wenn die Ausführung länger dauert als erwartet. Er erstellt Berichte für die Dienstinstanz über die Eigenschaft **PendingTasks**. Der Bericht ermittelt zwar die fehlerhafte Dienstinstanz, erfasst aber nicht die Situation, in der die Instanz ausfällt. Die Berichte werden dann bereinigt. Es können Berichte über den sekundären Dienst erstellt werden. Wenn der sekundäre Dienst die Aufgabe abschließt, löscht die sekundäre Instanz den Bericht aus dem Speicher. Der Bericht erfasst nicht die Situation, in der die Bestätigungsnachricht verloren gegangen ist und die Aufgabe aus Mastersicht nicht abgeschlossen wurde.
 
 In den oben beschriebenen Fällen werden jedoch Berichte erstellt. Die Erfassung der Berichte erfolgt in der Anwendungsintegrität im Zuge der Integritätsevaluierung.
 
@@ -171,7 +171,7 @@ Sobald die Entitäts- und Berichtdetails geklärt sind, können Integritätsberi
 ### <a name="api"></a>API
 Für die Berichterstellung über die API müssen Benutzer einen spezifischen Integritätsbericht für den Entitätstyp erstellen, für den die Berichterstellung durchgeführt werden soll. Übergeben Sie den Bericht an einen Integritätsclient. Alternativ können Sie eine Integritätsinformation erstellen und sie an korrekte Berichterstellungsmethoden für `Partition` oder `CodePackageActivationContext` übergeben, um Berichte über aktuelle Entitäten zu erstellen.
 
-Das folgende Beispiel zeigt die regelmäßige Berichterstellung durch einen Watchdog innerhalb des Clusters. Der Watchdog überprüft, ob über einen Knoten auf eine externe Ressource zugegriffen werden kann. Die Ressource wird von einem Dienstmanifest innerhalb der Anwendung benötigt. Wenn die Ressource nicht verfügbar ist, können die anderen Dienste innerhalb der Anwendung trotzdem ordnungsgemäß funktionieren. Aus diesem Grund wird der Bericht über die bereitgestellte Dienstpaketentität alle 30 Sekunden gesendet.
+Das folgende Beispiel zeigt die regelmäßige Berichterstellung durch einen Watchdog innerhalb des Clusters. Der Watchdog überprüft, ob über einen Knoten auf eine externe Ressource zugegriffen werden kann. Die Ressource wird von einem Dienstmanifest innerhalb der Anwendung benötigt. Wenn die Ressource nicht verfügbar ist, können die anderen Dienste innerhalb der Anwendung trotzdem ordnungsgemäß funktionieren. Aus diesem Grund wird der Bericht über die bereitgestellte Dienstpaketentität alle 30 Sekunden gesendet.
 
 ```csharp
 private static Uri ApplicationName = new Uri("fabric:/WordCount");
@@ -204,7 +204,7 @@ public static void SendReport(object obj)
 ### <a name="powershell"></a>PowerShell
 Senden Sie Integritätsberichte mit **Send-ServiceFabric*EntityType*HealthReport**.
 
-Das folgende Beispiel zeigt die regelmäßige Berichterstellung für CPU-Werte auf einem Knoten. Die Berichte sollten alle 30 Sekunden gesendet werden, und sie haben eine Gültigkeitsdauer von 2 Minuten. Wenn sie ablaufen, weist der Reporter Probleme auf. Daher wird der Knoten als fehlerhaft bewertet. Wenn der CPU-Wert über einem Schwellenwert liegt, enthält der Bericht als Integritätszustand eine Warnung. Wenn der CPU-Wert länger als die konfigurierte Zeit über dem Schwellenwert bleibt, wird dies als Fehler gemeldet. Andernfalls sendet der Reporter als Integritätszustand „OK“.
+Das folgende Beispiel zeigt die regelmäßige Berichterstellung für CPU-Werte auf einem Knoten. Die Berichte sollten alle 30 Sekunden gesendet werden, und sie haben eine Gültigkeitsdauer von 2 Minuten. Wenn sie ablaufen, weist der Reporter Probleme auf. Daher wird der Knoten als fehlerhaft bewertet. Wenn der CPU-Wert über einem Schwellenwert liegt, enthält der Bericht als Integritätszustand eine Warnung. Wenn der CPU-Wert länger als die konfigurierte Zeit über dem Schwellenwert bleibt, wird dies als Fehler gemeldet. Andernfalls sendet der Reporter als Integritätszustand „OK“.
 
 ```powershell
 PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
@@ -289,7 +289,6 @@ HealthEvents          :
 Senden Sie Integritätsberichte über REST mithilfe von POST-Anforderungen, die an die gewünschte Entität gerichtet sind und die Beschreibung des Integritätsberichts enthalten. Informieren Sie sich über das Senden von REST-basierten [Clusterintegritätsberichten](https://msdn.microsoft.com/library/azure/dn707640.aspx) oder [Dienstintegritätsberichten](https://msdn.microsoft.com/library/azure/dn707640.aspx). Alle Entitäten werden unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Basierend auf den Integritätsdaten können Dienstautoren und Cluster- bzw. Anwendungsadministratoren Möglichkeiten für die Nutzung der Informationen erwägen. Sie können beispielsweise Warnungen auf Grundlage des Integritätszustands einrichten, um schwerwiegende Probleme abzufangen, bevor Ausfälle provoziert werden. Administratoren können auch Reparatursysteme einrichten, um Probleme automatisch zu beheben.
 
 [Einführung in die Service Fabric-Integritätsüberwachung](service-fabric-health-introduction.md)
@@ -303,8 +302,6 @@ Basierend auf den Integritätsdaten können Dienstautoren und Cluster- bzw. Anwe
 [Lokales Überwachen und Diagnostizieren von Diensten](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

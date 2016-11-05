@@ -1,40 +1,36 @@
-<properties
-    pageTitle="Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps"
-    description="Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps"
-    services="app-service\mobile"
-    documentationCenter="javascript"
-    authors="adrianhall"
-    manager="erikre"
-    editor=""/>
+---
+title: Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps
+description: Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps
+services: app-service\mobile
+documentationcenter: javascript
+author: adrianhall
+manager: erikre
+editor: ''
 
-<tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-html"
-    ms.devlang="javascript"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+ms.service: app-service-mobile
+ms.workload: mobile
+ms.tgt_pltfrm: mobile-html
+ms.devlang: javascript
+ms.topic: article
+ms.date: 10/01/2016
+ms.author: adrianha
 
-
+---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Verwenden der Apache Cordova-Clientbibliothek für Azure Mobile Apps
-
-[AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
+[!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 Dieser Artikel beschreibt gängige Szenarien für die Verwendung des neuesten [Apache Cordova-Plug-Ins für Azure Mobile Apps]. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen und ein vorgefertigtes Apache Cordova-Projekt herunterzuladen. In dieser Anleitung konzentrieren wir uns auf das clientseitige Apache Cordova-Plug-In.
 
 ## <a name="supported-platforms"></a>Unterstützte Plattformen
-
 Dieses SDK unterstützt Apache Cordova v6.0.0 und höher auf iOS-, Android- und Windows-Geräten.  Folgende Plattformen werden unterstützt:
 
 * Android API 19 bis 24 (KitKat bis Nougat)
 * iOS-Version 8.0 und höher.
-* Windows Phone 8.0
+* Windows Phone 8.0
 * Windows Phone 8,1
 * Universelle Windows-Plattform
 
-##<a name="<a-name="setup"></a>setup-and-prerequisites"></a><a name="Setup"></a>Einrichtung und Voraussetzungen
-
+## <a name="<a-name="setup"></a>setup-and-prerequisites"></a><a name="Setup"></a>Einrichtung und Voraussetzungen
 Dieses Lernprogramm setzt voraus, dass Sie ein Back-End mit einer Tabelle erstellt haben. In dieser Anleitung wird davon ausgegangen, dass die Tabelle das gleiche Schema wie die Tabellen in diesen Lernprogrammen aufweist. In dieser Anleitung wird davon ausgegangen, dass Sie Ihrem Code das Apache Cordova-Plug-In hinzugefügt haben.  Falls noch nicht geschehen, können Sie das Apache Cordova-Plug-In über die Befehlszeile Ihrem Projekt hinzufügen:
 
 ```
@@ -43,11 +39,9 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 
 Weitere Informationen zum Erstellen [Ihrer ersten Apache Cordova-App]finden Sie in der dazugehörigen Dokumentation.
 
-[AZURE.INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
+[!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-
-##<a name="<a-name="auth"></a>how-to:-authenticate-users"></a><a name="auth"></a>Gewusst wie: Authentifizieren von Benutzern
-
+## <a name="<a-name="auth"></a>how-to:-authenticate-users"></a><a name="auth"></a>Gewusst wie: Authentifizieren von Benutzern
 Azure App Service unterstützt die Authentifizierung und Autorisierung von Anwendungsbenutzern mit einer Vielzahl externer Identitätsanbieter: Facebook, Google, Microsoft-Konto und Twitter. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Erste Schritte mit der Authentifizierung] .
 
 Bei Verwendung der Authentifizierung in einer Apache Cordova-App müssen die folgenden Cordova-Plug-Ins verfügbar sein:
@@ -57,16 +51,15 @@ Bei Verwendung der Authentifizierung in einer Apache Cordova-App müssen die fol
 
 Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein Serverfluss und ein Clientfluss.  Der Serverfluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der Clientfluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten wie z. B. einmalige Anmeldung, da in diesem Fall anbieterspezifische und gerätespezifische SDKs verwendet werden.
 
-[AZURE.INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
+[!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-###<a name="<a-name="configure-external-redirect-urls"></a>how-to:-configure-your-mobile-app-service-for-external-redirect-urls."></a><a name="configure-external-redirect-urls"></a>Vorgehensweise: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
-
+### <a name="<a-name="configure-external-redirect-urls"></a>how-to:-configure-your-mobile-app-service-for-external-redirect-urls."></a><a name="configure-external-redirect-urls"></a>Vorgehensweise: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
 Mehrere Apache Cordova-Anwendungen verwenden eine Loopback-Funktion, um Abläufe in der OAuth-Benutzeroberfläche zu verarbeiten.  Abläufe in der OAuth-Benutzeroberfläche auf localhost führen zu Problemen, da der Authentifizierungsdienst nur weiß, wie Ihr Dienst standardmäßig zu verwenden ist.  Folgende Abläufe in der OAuth-Benutzeroberfläche können problematisch sein:
 
-- Der Ripple-Emulator.
-- Live Reload mit Ionic.
-- Lokale Ausführung des mobilen Back-Ends
-- Ausführen des mobilen Back-Ends in einer anderen Azure App Service-Instanz als derjenigen, die die Authentifizierung bereitstellt.
+* Der Ripple-Emulator.
+* Live Reload mit Ionic.
+* Lokale Ausführung des mobilen Back-Ends
+* Ausführen des mobilen Back-Ends in einer anderen Azure App Service-Instanz als derjenigen, die die Authentifizierung bereitstellt.
 
 Um die Konfiguration Ihrer lokalen Einstellungen hinzuzufügen, gehen Sie wie folgt vor:
 
@@ -77,12 +70,12 @@ Um die Konfiguration Ihrer lokalen Einstellungen hinzuzufügen, gehen Sie wie fo
 5. Erweitern Sie im linken Navigationsbereich die Knoten **Konfiguration** und **Authentifizierungseinstellungen** für Ihre Website.
 6. Klicken Sie auf **Bearbeiten**
 7. Suchen Sie nach dem Element allowedExternalRedirectUrls.  Das Element ist möglicherweise auf Null oder ein Wertearray festgelegt.  Ändern Sie den Wert folgendermaßen:
-
+   
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
-
+   
     Ersetzen Sie die URLs mit den URLs Ihres Diensts.  Beispiele hierfür sind „http://localhost:3000“ (für den Node.js-Beispieldienst) oder „http://localhost:4400“ (für den Ripple-Dienst).  Diese URLs sind jedoch nur Beispiele – Ihre Situation kann auch für die Dienste, die im Beispiel dargestellt sind, ganz anders sein.
 8. Klicken Sie in der oberen rechten Ecke des Bildschirms auf die Schaltfläche **Lesen/Schreiben** .
 9. Klicken Sie auf die grüne Schaltfläche **PUT** .
@@ -100,8 +93,7 @@ Sie müssen auch die Loopback-URLs zu den CORS-Einstellungen für Ihre App Servi
 
 Es dauert ungefähr 10-15 Sekunden, bis die neuen Einstellungen wirksam sind.
 
-##<a name="<a-name="register-for-push"></a>how-to:-register-for-push-notifications"></a><a name="register-for-push"></a>Vorgehensweise: Registrieren für Pushbenachrichtigungen
-
+## <a name="<a-name="register-for-push"></a>how-to:-register-for-push-notifications"></a><a name="register-for-push"></a>Vorgehensweise: Registrieren für Pushbenachrichtigungen
 Installieren Sie das Plug-In [phonegap-plug-in-push] zum Verarbeiten von Pushbenachrichtigungen.  Dieses Plug-In kann problemlos mithilfe des `cordova plugin add` -Befehls über die Befehlszeile oder den Git-Installer für Plug-Ins in Visual Studio hinzugefügt werden.  Der folgende Code in der Apache Cordova-App registriert Ihr Gerät für Pushbenachrichtigungen:
 
 ```

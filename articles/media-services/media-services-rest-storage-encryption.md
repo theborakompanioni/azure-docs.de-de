@@ -1,68 +1,65 @@
-<properties 
-    pageTitle="Verschlüsseln von Inhalten mit der Speicherverschlüsselung und AMS-REST-API" 
-    description="Erfahren Sie, wie Sie Inhalte mit der Speicherverschlüsselung und AMS-REST-APIs verschlüsseln." 
-    services="media-services" 
-    documentationCenter="" 
-    authors="Juliako" 
-    manager="erikre" 
-    editor=""/>
+---
+title: Verschlüsseln von Inhalten mit der Speicherverschlüsselung und AMS-REST-API
+description: Erfahren Sie, wie Sie Inhalte mit der Speicherverschlüsselung und AMS-REST-APIs verschlüsseln.
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/26/2016"
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-
-#<a name="encrypting-your-content-with-storage-encryption-using-ams-rest-api"></a>Verschlüsseln von Inhalten mit der Speicherverschlüsselung und AMS-REST-API
-
+---
+# <a name="encrypting-your-content-with-storage-encryption-using-ams-rest-api"></a>Verschlüsseln von Inhalten mit der Speicherverschlüsselung und AMS-REST-API
 Es wird dringend empfohlen, Inhalte lokal mithilfe der AES-256-Bit-Verschlüsselung zu verschlüsseln und sie dann in Azure Storage hochzuladen, wo sie verschlüsselt im Ruhezustand gespeichert werden.
 
 Dieser Artikel bietet einen Überblick über die AMS-Speicherverschlüsselung und zeigt, wie Sie die verschlüsselten Inhalte hochladen:
 
-- Erstellen Sie einen Inhaltsschlüssel.
-- Erstellen Sie ein Medienobjekt. Legen Sie AssetCreationOption auf StorageEncryption fest, wenn Sie das Medienobjekt erstellen.
-
+* Erstellen Sie einen Inhaltsschlüssel.
+* Erstellen Sie ein Medienobjekt. Legen Sie AssetCreationOption auf StorageEncryption fest, wenn Sie das Medienobjekt erstellen.
+  
      Verschlüsselte Medienobjekte müssen Inhaltsschlüsseln zugeordnet werden.
-- Verknüpfen Sie den Inhaltsschlüssel mit dem Medienobjekt.  
-- Legen Sie die Parameter für die Verschlüsselung in den AssetFile-Entitäten fest.
- 
->[AZURE.NOTE]Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
+* Verknüpfen Sie den Inhaltsschlüssel mit dem Medienobjekt.  
+* Legen Sie die Parameter für die Verschlüsselung in den AssetFile-Entitäten fest.
 
+> [!NOTE]
+> Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
+> 
+> [!NOTE]
+> Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
+> 
+> Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
+> 
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
+> 
+> 
 
->[AZURE.NOTE] Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
->
->Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
-
->Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
-
-##<a name="storage-encryption-overview"></a>Übersicht über die Speicherverschlüsselung 
-
+## <a name="storage-encryption-overview"></a>Übersicht über die Speicherverschlüsselung
 Die AMS-Speicherverschlüsselung wendet die Verschlüsselung im **AES-CTR-Modus** auf die gesamte Datei an.  AES-CTR ist eine Blockchiffre, die Daten beliebiger Länge ohne Auffüllen verschlüsseln kann. AES-CTR verschlüsselt einen Zählerblock mit dem AES-Algorithmus und kombiniert die Ausgabe von AES per XOR-Operation mit den zu verschlüsselnden oder zu entschlüsselnden Daten.  Der verwendete Zählerblock wird erstellt, indem der InitializationVector-Wert in die Bytes 0 bis 7 des Zählerwerts kopiert und die Bytes 8 bis 15 des Zählerwerts auf 0 gesetzt werden. Im 16 Byte langen Zählerblock werden die Bytes 8 bis 15 (also die niedrigstwertigen Bytes) als einfache 64-Bit-Ganzzahl ohne Vorzeichen verwendet, die für jeden nachfolgenden Block verarbeiteter Daten um eins erhöht wird. Die Reihenfolge der Netzwerkbytes wird beibehalten. Beachten Sie Folgendes: Wenn diese Ganzzahl ihren Maximalwert erreicht (0xFFFFFFFFFFFFFFFF), wird durch weitere Erhöhung der Blockzähler auf Null zurückgesetzt (Bytes 8 bis 15), ohne Auswirkung auf die restlichen 64 Bits des Zählers (also Bytes 0 bis 7).   Um die Sicherheit der Verschlüsselung im AES-CTR-Modus zu gewährleisten, muss der InitializationVector-Wert jeder Schlüsselkennung für jeden Inhaltsschlüssel für jede Datei eindeutig sein, und die Dateien müssen weniger als 2^64 Blöcke lang sein.  Damit wird sichergestellt, dass ein Zählerwert nie mit einem vorhandenen Schlüssel wiederverwendet wird. Weitere Informationen zum CTR-Modus finden Sie auf [dieser Wiki-Seite](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (der Wiki-Artikel verwendet den Begriff „Nonce“ anstelle von „InitializationVector“).
 
 Verwenden Sie die **Speicherverschlüsselung** , um Ihre unverschlüsselten Inhalte lokal mithilfe der AES-256-Bit-Verschlüsselung zu verschlüsseln und sie dann in Azure Storage hochzuladen, wo sie verschlüsselt im Ruhezustand gespeichert werden. Medienobjekte, die durch Speicherverschlüsselung geschützt sind, werden automatisch entschlüsselt, vor der Codierung in einem verschlüsselten Dateisystem platziert und optional vor dem Hochladen als neues Ausgabemedienobjekt erneut verschlüsselt. Der primäre Anwendungsfall für die Speicherverschlüsselung ist, wenn Sie Ihre qualitativ hochwertigen Eingabemediendateien mit starker Verschlüsselung beim Speichern im Ruhezustand auf dem Datenträger sichern möchten.
 
 Um ein speicherverschlüsseltes Medienobjekt zu übermitteln, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren und Media Services so mitteilen, wie die Inhalte bereitgestellt werden sollen. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie (AES, Common Encryption oder unverschlüsselt) gestreamt.
 
-##<a name="create-contentkeys-used-for-encryption"></a>Erstellen von Inhaltsschlüsseln zur Verschlüsselung
-
+## <a name="create-contentkeys-used-for-encryption"></a>Erstellen von Inhaltsschlüsseln zur Verschlüsselung
 Verschlüsselte Medienobjekte müssen einem Speicherverschlüsselungsschlüssel zugeordnet werden. Bevor Sie die Medienobjektdateien erstellen, müssen Sie den Inhaltsschlüssel erstellen, der zur Verschlüsselung verwendet werden soll. In diesem Abschnitt wird beschrieben, wie ein Inhaltsschlüssel erstellt wird.
 
 Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüsseln, die Sie den zu verschlüsselnden Medienobjekten zuordnen. 
 
 1. Generieren Sie für die Speicherverschlüsselung einen 32-Byte-AES-Schlüssel nach dem Zufallsprinzip. 
-
+   
     Dies ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen. 
-2.  Rufen Sie die [GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid)-Methode und die [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey)-Methode auf, um das richtige X.509-Zertifikat zur Verschlüsselung Ihres Inhaltsschlüssels abzurufen.
-3.  Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats. 
-
-    Das Media Services .NET SDK verwendet RSA mit OAEP zur Verschlüsselung.  Ein .NET-Beispiel finden Sie in der [EncryptSymmetricKeyData-Funktion](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4.  Erstellen Sie einen Prüfsummenwert, der mithilfe der Schlüsselkennung und des Inhaltsschlüssels berechnet wird. Im folgenden .NET-Beispiel wird die Prüfsumme anhand des GUID-Abschnitts der Schlüsselkennung und des unverschlüsselten Inhaltsschlüssels berechnet.
-    
+2. Rufen Sie die [GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid)-Methode und die [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey)-Methode auf, um das richtige X.509-Zertifikat zur Verschlüsselung Ihres Inhaltsschlüssels abzurufen.
+3. Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats. 
+   
+   Das Media Services .NET SDK verwendet RSA mit OAEP zur Verschlüsselung.  Ein .NET-Beispiel finden Sie in der [EncryptSymmetricKeyData-Funktion](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Erstellen Sie einen Prüfsummenwert, der mithilfe der Schlüsselkennung und des Inhaltsschlüssels berechnet wird. Im folgenden .NET-Beispiel wird die Prüfsumme anhand des GUID-Abschnitts der Schlüsselkennung und des unverschlüsselten Inhaltsschlüssels berechnet.
 
         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
         {
@@ -91,30 +88,25 @@ Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüssel
         }
 
 
-5. Erstellen Sie den Inhaltsschlüssel mit den Werten für **EncryptedContentKey** (in eine Base64-codierte Zeichenfolge konvertiert), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** und **Checksum**, die Sie in den vorherigen Schritten erhalten haben.
+1. Erstellen Sie den Inhaltsschlüssel mit den Werten für **EncryptedContentKey** (in eine Base64-codierte Zeichenfolge konvertiert), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** und **Checksum**, die Sie in den vorherigen Schritten erhalten haben.
 
-    
     Bei der Speicherverschlüsselung sollten folgende Eigenschaften im Anforderungstext enthalten sein.
-     
+
     Eigenschaft im Anforderungstext   | Beschreibung
     ---|---
     ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: „nb:kid:UUID:<NEW GUID>“.
-    ContentKeyType | Dies ist der Inhaltsschlüsseltyp für diesen Inhaltsschlüssel in Form einer Ganzzahl. Wir übergeben den Wert 1 für die Speicherverschlüsselung.
-    EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden "GetProtectionKeyId" und "GetProtectionKey" ausführen. Folgender .NET-Code dient als Beispiel: die **EncryptSymmetricKeyData**-Methode, die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definiert ist.
+    ContentKeyType | Dies ist der Inhaltsschlüsseltyp für diesen Inhaltsschlüssel in Form einer Ganzzahl. Wir übergeben den Wert 1 für die Speicherverschlüsselung.
+    EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden "GetProtectionKeyId" und "GetProtectionKey" ausführen. Folgender .NET-Code dient als Beispiel: die **EncryptSymmetricKeyData**-Methode, die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definiert ist.
     ProtectionKeyId | Dies ist die Schutzschlüssel-ID für das X.509-Speicherverschlüsselungszertifikat, das zur Verschlüsselung des Inhaltsschlüssels verwendet wurde.
     ProtectionKeyType | Dies ist der Verschlüsselungstyp für den Schutzschlüssel, der zur Verschlüsselung des Inhaltsschlüssels verwendet wurde. In unserem Beispiel lautet der Wert "StorageEncryption(1)".
     Checksum |Die per MD5 berechnete Prüfsumme für den Inhaltsschlüssel. Die Berechnung erfolgt durch Verschlüsselung der Inhalts-ID mit dem Inhaltsschlüssel. Der Beispielcode zeigt, wie die Prüfsumme berechnet wird.
-    
 
-###<a name="retrieve-the-protectionkeyid"></a>Abrufen der ProtectionKeyId 
- 
 
+### <a name="retrieve-the-protectionkeyid"></a>Abrufen der ProtectionKeyId
 Im folgenden Beispiel wird veranschaulicht, wie Sie die ProtectionKeyId abrufen. Dabei handelt es sich um einen Zertifikatfingerabdruck für das Zertifikat, das Sie zur Verschlüsselung Ihres Inhaltsschlüssels verwenden. Führen Sie den folgenden Schritt aus, um sicherzustellen, dass das entsprechende Zertifikat bereits auf Ihrem Computer vorhanden ist.
 
-
 Anforderung:
-    
-    
+
     GET https://media.windows.net/api/GetProtectionKeyId?contentKeyType=0 HTTP/1.1
     MaxDataServiceVersion: 3.0;NetFx
     Accept: application/json
@@ -123,10 +115,10 @@ Anforderung:
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
     x-ms-version: 2.11
     Host: media.windows.net
-    
+
 
 Antwort:
-    
+
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Content-Length: 139
@@ -139,15 +131,14 @@ Antwort:
     X-Powered-By: ASP.NET
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Date: Wed, 04 Feb 2015 02:42:52 GMT
-    
+
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-###<a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Abrufen des ProtectionKey für die ProtectionKeyId
-
+### <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Abrufen des ProtectionKey für die ProtectionKeyId
 Das folgende Beispiel zeigt, wie Sie das X.509-Zertifikat mithilfe der im vorherigen Schritt abgerufenen ProtectionKeyId abrufen.
 
 Anforderung:
-        
+
     GET https://media.windows.net/api/GetProtectionKey?ProtectionKeyId='7D9BB04D9D0A4A24800CADBFEF232689E048F69C' HTTP/1.1
     MaxDataServiceVersion: 3.0;NetFx
     Accept: application/json
@@ -157,11 +148,11 @@ Anforderung:
     x-ms-version: 2.11
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
-    
+
 
 
 Antwort:
-    
+
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Content-Length: 1227
@@ -175,18 +166,16 @@ Antwort:
     X-Powered-By: ASP.NET
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Date: Thu, 05 Feb 2015 07:52:30 GMT
-    
+
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-### <a name="create-the-content-key"></a>Erstellen des Inhaltsschlüssels 
-
+### <a name="create-the-content-key"></a>Erstellen des Inhaltsschlüssels
 Nachdem Sie das X.509-Zertifikat abgerufen und dessen öffentlichen Schlüssel zum Verschlüsseln Ihres Inhaltsschlüssels verwendet haben, erstellen Sie eine **ContentKey** -Entität und legen die entsprechenden Eigenschaftswerte fest.
 
 Beim Erstellen des Inhaltsschlüssels muss neben anderen Werten auch der Typ festgelegt werden. Bei der Speicherverschlüsselung lautet der Wert „1“. 
 
 Das folgende Beispiel zeigt, wie Sie einen **ContentKey** mit einem **ContentKeyType** erstellen, für den die Speicherverschlüsselung festgelegt („1“) und **ProtectionKeyType** auf „0“ festgelegt wurde. Dies zeigt an, dass es sich bei der Schutzschlüssel-ID um den X.509-Zertifikatfingerabdruck handelt.  
-
 
 Anforderung
 
@@ -211,7 +200,7 @@ Anforderung
 
 
 Antwort:
-    
+
     HTTP/1.1 201 Created
     Cache-Control: no-cache
     Content-Length: 777
@@ -225,7 +214,7 @@ Antwort:
     X-Powered-By: ASP.NET
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Date: Wed, 04 Feb 2015 02:37:46 GMT
-    
+
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeys/@Element",
     "Id":"nb:kid:UUID:9c8ea9c6-52bd-4232-8a43-8e43d8564a99","Created":"2015-02-04T02:37:46.9684379Z",
     "LastModified":"2015-02-04T02:37:46.9684379Z",
@@ -237,7 +226,6 @@ Antwort:
     "Checksum":"calculated checksum"}
 
 ## <a name="create-an-asset"></a>Erstellen eines Medienobjekts
-
 Im folgenden Beispiel wird veranschaulicht, wie Sie ein Medienobjekt erstellen.
 
 **HTTP-Anforderung**
@@ -251,14 +239,14 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie ein Medienobjekt erstellen.
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-6753-2233-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
     x-ms-version: 2.11
     Host: media.windows.net
-    
+
     {"Name":"BigBuckBunny" "Options":1}
 
 
 **HTTP-Antwort**
 
 Im Erfolgsfall wird Folgendes zurückgegeben:
-    
+
     HTP/1.1 201 Created
     Cache-Control: no-cache
     Content-Length: 452
@@ -284,13 +272,12 @@ Im Erfolgsfall wird Folgendes zurückgegeben:
        "Uri":"https://storagetestaccount001.blob.core.windows.net/asset-9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1",
        "StorageAccountName":"storagetestaccount001"
     }
-    
-##<a name="associate-the-contentkey-with-an-asset"></a>Zuordnen des ContentKey zu einem Medienobjekt
 
+## <a name="associate-the-contentkey-with-an-asset"></a>Zuordnen des ContentKey zu einem Medienobjekt
 Nachdem Sie den ContentKey erstellt haben, ordnen Sie ihn mithilfe des $links-Vorgangs Ihrem Medienobjekt zu, wie im folgenden Beispiel beschrieben:
-    
+
 Anforderung:
-    
+
     POST https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Afbd7ce05-1087-401b-aaae-29f16383c801')/$links/ContentKeys HTTP/1.1
     DataServiceVersion: 1.0;NetFx
     MaxDataServiceVersion: 3.0;NetFx
@@ -301,15 +288,14 @@ Anforderung:
     x-ms-version: 2.11
     Host: media.windows.net
 
-    
+
     {"uri":"https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A01e6ea36-2285-4562-91f1-82c45736047c')"}
 
 Antwort:
 
     HTTP/1.1 204 No Content 
 
-##<a name="create-an-assetfile"></a>Erstellen einer AssetFile
-
+## <a name="create-an-assetfile"></a>Erstellen einer AssetFile
 Die [AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) -Entität stellt eine Video- oder Audiodatei dar, die in einem Blobcontainer gespeichert ist. Eine Medienobjektdatei ist immer mit einem Medienobjekt verknüpft, wobei ein Medienobjekt eine oder mehrere Medienobjektdateien enthalten kann. Der Media Services Encoder-Task kann nicht ausgeführt werden, wenn ein Medienobjektdatei-Objekt keiner digitalen Datei in einem Blobcontainer zugeordnet ist.
 
 Die **AssetFile** -Instanz und die eigentliche Mediendatei sind zwei verschiedene Objekte. Die AssetFile-Instanz enthält Metadaten zur Mediendatei, während die Mediendatei die tatsächlichen Medieninhalte enthält.
@@ -328,7 +314,7 @@ Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, 
     x-ms-version: 2.11
     Host: media.windows.net
     Content-Length: 164
-    
+
     {  
        "IsEncrypted":"true",
        "EncryptionScheme" : "StorageEncryption", 
@@ -357,7 +343,7 @@ Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, 
     X-Powered-By: ASP.NET
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Date: Mon, 19 Jan 2015 00:34:07 GMT
-    
+
     {  
        "odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Files/@Element",
        "Id":"nb:cid:UUID:f13a0137-0a62-9d4c-b3b9-ca944b5142c5",

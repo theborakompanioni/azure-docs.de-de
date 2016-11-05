@@ -1,42 +1,36 @@
-<properties
-	pageTitle="Featureauswahl im Team Data Science-Prozess | Microsoft Azure" 
-	description="Erläutert den Grund zur Featureauswahl und stellt Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vor."
-	services="machine-learning"
-	documentationCenter=""
-	authors="bradsev"
-	manager="jhubbard"
-	editor="cgronlun"/>
+---
+title: Featureauswahl im Team Data Science-Prozess | Microsoft Docs
+description: Erläutert den Grund zur Featureauswahl und stellt Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vor.
+services: machine-learning
+documentationcenter: ''
+author: bradsev
+manager: jhubbard
+editor: cgronlun
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/19/2016"
-	ms.author="zhangya;bradsev" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/19/2016
+ms.author: zhangya;bradsev
 
-
+---
 # Featureauswahl im Team Data Science-Prozess (TDSP)
-
 In diesem Artikel werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für maschinelles Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 In diesem Thema wird der Grund zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
 Entwicklung und Auswahl von Features sind ein Teil des Team Data Science-Prozesses, der unter [Was ist der Team Data Science-Prozess?](data-science-process-overview.md) beschrieben ist. Entwicklung und Auswahl von Features sind Teile des Schritts **Entwickeln von Features** des TDSP.
 
 * **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
-
 * **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
 
 Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder stark korrelierte Features zu entfernen.
 
-
-## Filtern von Features aus Ihren Daten – Featureauswahl 
-
+## Filtern von Features aus Ihren Daten – Featureauswahl
 Die Featureauswahl ist ein Prozess, der häufig für die Entwicklung von Trainingsdatasets für die Vorhersagemodellierung, wie z. B. Klassifizierung oder Regressionsaufgaben, angewendet wird. Das Ziel ist, eine Teilmenge der Features aus dem ursprünglichen Dataset auszuwählen, die dessen Dimensionen verringert, indem sie einen minimalen Satz von Features zur Darstellung der maximalen Abweichung in den Daten verwendet. Diese Teilmenge der Features enthält dann die einzigen Features, die zum Trainieren des Modells enthalten sein sollen. Die Featureauswahl dient zwei wesentlichen Zwecken.
 
 * Zunächst steigert die Featureauswahl häufig die Klassifizierungsgenauigkeit durch Eliminieren irrelevanter, redundanter oder hochgradig korrelierter Features.
@@ -50,8 +44,7 @@ Azure Machine Learning Studio enthält Module zur Featureauswahl. Wie in der fol
 
 ![Beispiel für Featureauswahl](./media/machine-learning-data-science-select-features/feature-Selection.png)
 
-
-Betrachten Sie beispielsweise die Verwendung des Moduls [Filter-Based Feature Selection][filter-based-feature-selection]. Der Einfachheit halber wird weiterhin das oben beschriebene Text Mining-Beispiel verwendet. Es wird vorausgesetzt, dass ein Regressionsmodell erstellt werden soll, nachdem ein Satz von 256 Features über das [Feature Hashing][feature-hashing]-Modul erstellt wurde, dass die Antwortvariable "Col1" ist und eine Buchbewertung mit Bewertungen im Bereich von 1 bis 5 darstellt. Setzen Sie die "Feature scoring method" (Featurebewertungsmethode) auf "Pearson Correlation" (Pearson-Korrelation), die "Target Column" (Zielspalte) auf "Col1" und die "Number of desired features" (Anzahl von gewünschten Features) auf 50. Dann erzeugt das Modul [Filter-Based Feature Selection][filter-based-feature-selection] ein DataSet mit 50 Features mit dem Zieltattribut "Col1". Die folgende Abbildung zeigt den Ablauf dieses Experiments und die oben beschriebenen Eingabeparameter.
+Betrachten Sie beispielsweise die Verwendung des Moduls [Filter-Based Feature Selection][filter-based-feature-selection]. Der Einfachheit halber wird weiterhin das oben beschriebene Text Mining-Beispiel verwendet. Es wird vorausgesetzt, dass ein Regressionsmodell erstellt werden soll, nachdem ein Satz von 256 Features über das [Feature Hashing][feature-hashing]-Modul erstellt wurde, dass die Antwortvariable "Col1" ist und eine Buchbewertung mit Bewertungen im Bereich von 1 bis 5 darstellt. Setzen Sie die "Feature scoring method" (Featurebewertungsmethode) auf "Pearson Correlation" (Pearson-Korrelation), die "Target Column" (Zielspalte) auf "Col1" und die "Number of desired features" (Anzahl von gewünschten Features) auf 50. Dann erzeugt das Modul [Filter-Based Feature Selection][filter-based-feature-selection] ein DataSet mit 50 Features mit dem Zieltattribut "Col1". Die folgende Abbildung zeigt den Ablauf dieses Experiments und die oben beschriebenen Eingabeparameter.
 
 ![Beispiel für Featureauswahl](./media/machine-learning-data-science-select-features/feature-Selection1.png)
 
@@ -74,6 +67,6 @@ Beachten Sie, dass die Entwicklung bzw. Auswahl von Features nicht immer unbedin
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
- 
+
 
 <!---HONumber=AcomDC_0921_2016-->

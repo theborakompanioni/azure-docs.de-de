@@ -1,25 +1,28 @@
-<properties
-   pageTitle="Konfigurieren von mehreren Netzwerkkarten auf einem virtuellen Linux-Computer | Microsoft Azure"
-   description="Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle oder mithilfe von Resource Manager-Vorlagen einen virtuellen Computer mit mehreren angefügten Netzwerkkarten erstellen."
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Konfigurieren von mehreren Netzwerkkarten auf einem virtuellen Linux-Computer | Microsoft Docs
+description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle oder mithilfe von Resource Manager-Vorlagen einen virtuellen Computer mit mehreren angefügten Netzwerkkarten erstellen.
+services: virtual-machines-linux
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="08/02/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 08/02/2016
+ms.author: iainfou
 
+---
 # Erstellen eines virtuellen Computers mit mehreren Netzwerkkarten
 Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. Dieser Artikel bietet Informationen zu Schnellbefehlen zum Erstellen eines virtuellen Computers, an den mehrere Netzwerkkarten angefügt werden. Ausführliche Informationen hierzu sowie zum Erstellen von mehreren Netzwerkkarten in Ihren eigenen Bash-Skripts finden Sie unter [Bereitstellen von Multi-NIC-VMs](../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Verschiedene [VM-Größen](virtual-machines-linux-sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
 
->[AZURE.WARNING] Das Anfügen der Netzwerkkarten muss während der Erstellung des virtuellen Computers erfolgen – Sie können keine Netzwerkkarten an einen vorhandenen virtuellen Computer anfügen. Sie können [einen neuen virtuellen Computer basierend auf dem/den ursprünglichen virtuellen Datenträger(n) erstellen](virtual-machines-linux-copy-vm.md) und beim Bereitstellen des virtuellen Computers mehrere Netzwerkkarten erstellen.
+> [!WARNING]
+> Das Anfügen der Netzwerkkarten muss während der Erstellung des virtuellen Computers erfolgen – Sie können keine Netzwerkkarten an einen vorhandenen virtuellen Computer anfügen. Sie können [einen neuen virtuellen Computer basierend auf dem/den ursprünglichen virtuellen Datenträger(n) erstellen](virtual-machines-linux-copy-vm.md) und beim Bereitstellen des virtuellen Computers mehrere Netzwerkkarten erstellen.
+> 
+> 
 
 ## Schnellbefehle
 Vergewissern Sie sich, dass die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) angemeldet ist und den Resource Manager-Modus (`azure config mode arm`) nutzt.

@@ -1,21 +1,21 @@
-<properties
-   pageTitle="Defragmentierung von Metriken in Azure Service Fabric | Microsoft Azure"
-   description="Eine Übersicht über den Einsatz von Defragmentierung oder Überlastung als Strategie für Metriken in Service Fabric"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Defragmentierung von Metriken in Azure Service Fabric | Microsoft Docs
+description: Eine Übersicht über den Einsatz von Defragmentierung oder Überlastung als Strategie für Metriken in Service Fabric
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Defragmentierung von Metriken und Lasten in Service Fabric
 Der Clusterressourcen-Manager von Service Fabric wird hauptsächlich für den Lastenausgleich in Bezug auf die Verteilung der Last eingesetzt und stellt sicher, dass alle Knoten im Cluster in gleichem Umfang genutzt werden. Dies ist in der Regel das sicherste und intelligenteste Konzept im Hinblick auf das Überstehen von Ausfällen, da es sicherstellt, dass bei einem Ausfall nicht ein hoher Prozentsatz einer Workload verloren geht. Der Clusterressourcen-Manager von Service Fabric unterstützt auch eine andere Strategie, die Defragmentierung genannt wird. Defragmentierung bedeutet im Allgemeinen, dass anstatt zu versuchen, die Nutzung einer Metrik auf den Cluster zu verteilen, wir tatsächlich versuchen sollten, sie zu konsolidieren. Das ist eine Umkehrung unserer normalen Strategie – anstatt den Cluster basierend auf einer möglichst minimalen Standardabweichung der Metriklast für eine bestimmte Metrik zu optimieren, beginnen wir damit, im Hinblick auf eine größere Abweichung zu optimieren. Doch was spricht für eine solche Strategie?
 
@@ -33,10 +33,10 @@ Das folgende Diagramm ist eine visuelle Darstellung von zwei verschiedenen Clust
 Was sind die anderen grundlegenden Kompromisse? Es wird empfohlen, vor dem Aktivieren von Defragmentierungsmetriken Ihre Workloads gründlich zu messen. Es folgt eine Kurzübersicht der zu beachtenden Aspekte:
 
 | Vorteile der Defragmentierung | Nachteile der Defragmentierung |
-|----------------------|----------------------|
-|Ermöglicht eine schnellere Erstellung großer Dienste |	Konzentriert die Last auf weniger Knoten, wodurch sich Konflikte vermehren
-|Ermöglicht eine langsamere Datenverschiebung während der Erstellung | Ausfälle können sich auf mehr Dienste auswirken und mehr Wechsel verursachen
-|Ermöglicht eine umfassende Beschreibung der Anforderungen und Freigabe von Speicherplatz |	Komplexere allgemeine Konfiguration der Ressourcenverwaltung
+| --- | --- |
+| Ermöglicht eine schnellere Erstellung großer Dienste |Konzentriert die Last auf weniger Knoten, wodurch sich Konflikte vermehren |
+| Ermöglicht eine langsamere Datenverschiebung während der Erstellung |Ausfälle können sich auf mehr Dienste auswirken und mehr Wechsel verursachen |
+| Ermöglicht eine umfassende Beschreibung der Anforderungen und Freigabe von Speicherplatz |Komplexere allgemeine Konfiguration der Ressourcenverwaltung |
 
 Sie können defragmentierte und normale Metriken im selben Cluster kombinieren. Der Ressourcen-Manager versucht sein Möglichstes, Ihnen ein Layout zu bieten, dass die Defragmentierungsmetriken umfassend konsolidiert, während versucht wird, den Rest zu verteilen. Die genauen Ergebnisse, die Sie erzielen, richten sich nach der Anzahl der Lastenausgleichsmetriken im Vergleich mit der Anzahl und Gewichtung der Defragmentierungsmetriken, der aktuellen Auslastung usw.
 
@@ -53,8 +53,8 @@ ClusterManifest.xml
 ```
 
 ## Nächste Schritte
-- Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
-- Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
+* Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
+* Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png
 

@@ -7,9 +7,6 @@ Sie können eine Azure Storage-Tabelle erstellen, indem Sie den **Server-Explore
 3. Wählen Sie den Knoten **Tabellen** aus, und wählen Sie im Kontextmenü **Tabelle erstellen** aus.
 4. Geben Sie einen Namen für die Tabelle ein, und wählen Sie **OK** aus.   
 
-
-
-
 [Image1]: ./media/vs-storage-getting-started-tables-include/vs-storage-create-tables-in-Server-Explorer.png
 
 <!---HONumber=Oct15_HO3-->

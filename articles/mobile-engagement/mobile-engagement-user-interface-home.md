@@ -1,24 +1,22 @@
-<properties
-   pageTitle="Azure Mobile Engagement - Benutzeroberfläche – Startseite"
-   description="Erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement Ihre vorhandene Anwendung und vorhandene Projekte verwalten"
-   services="mobile-engagement"
-   documentationCenter=""
-   authors="piyushjo"
-   manager="dwrede"
-   editor=""/>
+---
+title: Azure Mobile Engagement - Benutzeroberfläche – Startseite
+description: Erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement Ihre vorhandene Anwendung und vorhandene Projekte verwalten
+services: mobile-engagement
+documentationcenter: ''
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="mobile-engagement"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile"
-   ms.date="08/19/2016"
-   ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # Verwalten der vorhandenen Anwendung und Projekte
-
-
 In diesem Artikel wird die Startseite im **Mobile Engagement**-Portal beschrieben. Verwenden Sie das **Mobile Engagement**-Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement**-Konto erstellen müssen.
 
 Um zur Startseite zu gelangen, klicken Sie links oben auf der Seite auf **Startseite**. Sie enthält die Liste aller Ihrer Anwendungen, die Teil der ausgewählten Sammlung sind. Auf dieser Seite sehen Sie nur eine kurze Übersicht über Ihre Anwendungen.
@@ -29,49 +27,42 @@ Sie können auch das Vergleichsdiagramm für die ausgewählten Anwendungen anzei
 
 ![Home1][0]
 
-
 ## Meine Anwendungen
-
 Die Kurzübersicht über Ihre Anwendungen ermöglicht Ihnen, die Anwendung auszuwählen, die Sie öffnen möchten, um die detaillierten Menübandoptionen anzuzeigen. Sie können auf den Namen der Anwendung klicken, um zum zuletzt verwendeten Menübandbefehl in Ihrer Anwendung zurückzukehren. Oder klicken Sie auf das Zahnradsymbol, um direkt zur Seite "Einstellungen" Ihrer Anwendung zu gelangen. Sie können die Informationen in den Anwendungstabellen durchsuchen, filtern oder sortieren. Sie können auch die Spaltenüberschriften ziehen und an anderer Stelle ablegen, um die Reihenfolge zu ändern.
 
 Die Übersicht über Ihre Anwendungen umfasst unter anderem Folgendes:
 
-- **Trend bei neuen Benutzern:** Entwicklung neuer Benutzer in den letzten zwei Wochen.
-- **Aktive Benutzer:** Anzahl der aktiven Benutzer in den letzten 30 Tagen.
-- **Trend bei aktiven Benutzern:** Entwicklung aktiver Benutzer in den letzten zwei Wochen.
-- **Sitzungen:** Eine Sitzung ist eine Verwendung der Anwendung durch einen Benutzer, die vom Starten bis zum Beenden der Anwendung durch den Benutzer reicht.
-- **Sitzungstrends:** Entwicklung der Sitzungen in den letzten zwei Wochen.
+* **Trend bei neuen Benutzern:** Entwicklung neuer Benutzer in den letzten zwei Wochen.
+* **Aktive Benutzer:** Anzahl der aktiven Benutzer in den letzten 30 Tagen.
+* **Trend bei aktiven Benutzern:** Entwicklung aktiver Benutzer in den letzten zwei Wochen.
+* **Sitzungen:** Eine Sitzung ist eine Verwendung der Anwendung durch einen Benutzer, die vom Starten bis zum Beenden der Anwendung durch den Benutzer reicht.
+* **Sitzungstrends:** Entwicklung der Sitzungen in den letzten zwei Wochen.
 
 Sobald Sie auf eine Anwendung klicken, können Sie Ihre Apps über die Benutzeroberfläche überwachen und verwalten . Beispiel:
 
-- [Überwachen von Echtzeitdaten zu Ihrer Anwendung](mobile-engagement-user-interface-monitor.md)
-- [Analysieren von Verlaufsdaten zu Ihrer Anwendung](mobile-engagement-user-interface-analytics.md)
-- [Erstellen und Verwalten von Segmenten von Benutzern zur Identifikation von Verwendungsmustern](mobile-engagement-user-interface-segments.md)
-- [Erreichen der Benutzer Ihrer Anwendungen mithilfe von Pushbenachrichtigungen](mobile-engagement-user-interface-reach.md)
+* [Überwachen von Echtzeitdaten zu Ihrer Anwendung](mobile-engagement-user-interface-monitor.md)
+* [Analysieren von Verlaufsdaten zu Ihrer Anwendung](mobile-engagement-user-interface-analytics.md)
+* [Erstellen und Verwalten von Segmenten von Benutzern zur Identifikation von Verwendungsmustern](mobile-engagement-user-interface-segments.md)
+* [Erreichen der Benutzer Ihrer Anwendungen mithilfe von Pushbenachrichtigungen](mobile-engagement-user-interface-reach.md)
 
 ## Meine Projekte
-
 Sie können mithilfe von Projekten Ihre Anwendungen gruppieren und anderen Benutzern Berechtigungen zum Zugriff auf diese erteilen. Sie erteilen anderen Benutzern Berechtigungen durch die Bereitstellung der E-Mail-Adresse. Über die Schaltfläche **Neues Projekt** können Sie ein neues Projekt erstellen, indem Sie lediglich einen Namen und eine Beschreibung eingeben. Nachdem ein Projekt erstellt wurde, können Sie auf den Projektnamen klicken, um den Namen und die Beschreibung Ihres Produkts zu bearbeiten und alle Anwendungen auszuwählen, die in diesem Projekt angezeigt werden sollen.
-
 
 ![Home6][60]
 
 Es gibt die folgenden Rollen:
 
-- **Anzeigender Benutzer:** Ein anzeigender Benutzer ist ein Benutzer, der nur die zu einem Projekt gehörigen Anwendungen anzeigen kann. Ein anzeigender Benutzer kann auf Analyse- und Überwachungsdaten zugreifen und Reach-Ergebnisse einsehen. Ein anzeigender Benutzer kann weder Informationen ändern noch Anwendungen oder Benutzer verwalten. Ein anzeigender Benutzer kann den Reach-Kampagnenstatus weder erstellen noch ändern.
-- **Entwickler:** Ein Entwickler ist ein Benutzer mit allen Rechten eines anzeigenden Benutzers, der zudem Anwendungen verwalten darf. Ein Entwickler kann Anwendungen aktivieren und deaktivieren, Anwendungsinformationen (z. B. Paket und Signatur) ändern und Reach-Kampagnen erstellen. Ein Entwickler kann keine Benutzer verwalten.
-- **Administrator:** Ein Administrator ist ein Benutzer mit allen Rechten eines Entwicklers, der zudem Benutzer verwalten darf. Ein Administrator kann Benutzer zur Teilnahme an einem Projekt einladen sowie Benutzerrollen und Projektinformationen ändern. Berechtigungen auf Anwendungsebene können auch in "Einstellungen" festgelegt werden.
-
+* **Anzeigender Benutzer:** Ein anzeigender Benutzer ist ein Benutzer, der nur die zu einem Projekt gehörigen Anwendungen anzeigen kann. Ein anzeigender Benutzer kann auf Analyse- und Überwachungsdaten zugreifen und Reach-Ergebnisse einsehen. Ein anzeigender Benutzer kann weder Informationen ändern noch Anwendungen oder Benutzer verwalten. Ein anzeigender Benutzer kann den Reach-Kampagnenstatus weder erstellen noch ändern.
+* **Entwickler:** Ein Entwickler ist ein Benutzer mit allen Rechten eines anzeigenden Benutzers, der zudem Anwendungen verwalten darf. Ein Entwickler kann Anwendungen aktivieren und deaktivieren, Anwendungsinformationen (z. B. Paket und Signatur) ändern und Reach-Kampagnen erstellen. Ein Entwickler kann keine Benutzer verwalten.
+* **Administrator:** Ein Administrator ist ein Benutzer mit allen Rechten eines Entwicklers, der zudem Benutzer verwalten darf. Ein Administrator kann Benutzer zur Teilnahme an einem Projekt einladen sowie Benutzerrollen und Projektinformationen ändern. Berechtigungen auf Anwendungsebene können auch in "Einstellungen" festgelegt werden.
 
 Klicken Sie auf ein Projekt, um alle Programme anzuzeigen, die zu diesem Projekt gehören. Die folgende Abbildung zeigt das Vergleichsdiagramm für die ausgewählten Anwendungen.
 
 ![Home2][3]
 
-
 ## Siehe auch
-
-- [Konzepte][Link 6]
-- [Handbuch zur Problembehandlung – Dienst][Link 24]
+* [Konzepte][Link 6]
+* [Handbuch zur Problembehandlung – Dienst][Link 24]
 
 <!--Image references-->
 [0]: ./media/mobile-engagement-user-interface-home/home0.png

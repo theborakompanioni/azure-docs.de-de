@@ -1,52 +1,45 @@
 ## Erhalten einer Benachrichtigung zum Dateiupload
-
 In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die Uploadbenachrichtigungen von IoT Hub empfängt.
 
 1. Erstellen Sie in der aktuellen Visual Studio-Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Windows-Projekt. Nennen Sie das Projekt **ReadFileUploadNotification**.
-
+   
     ![Neues Projekt in Visual Studio][2]
-
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ReadFileUploadNotification**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-
+   
     Daraufhin wird das Fenster "NuGet-Pakete verwalten" angezeigt.
-
-2. Suchen Sie nach `Microsoft.Azure.Devices`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
-
-	Daraufhin wird das [NuGet-Paket mit dem SDK des Azure IoT-Diensts] heruntergeladen und installiert. Dem Projekt **ReadFileUploadNotification** wird ein Verweis hinzugefügt.
-
-3. Fügen Sie zu Beginn der Datei **Program.cs** die folgenden Anweisungen hinzu:
-
+3. Suchen Sie nach `Microsoft.Azure.Devices`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+   
+    Daraufhin wird das [NuGet-Paket mit dem SDK des Azure IoT-Diensts] heruntergeladen und installiert. Dem Projekt **ReadFileUploadNotification** wird ein Verweis hinzugefügt.
+4. Fügen Sie zu Beginn der Datei **Program.cs** die folgenden Anweisungen hinzu:
+   
         using Microsoft.Azure.Devices;
-
-4. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge aus [Erste Schritte mit IoT Hub]\:
-
-		static ServiceClient serviceClient;
+5. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge aus [Erste Schritte mit IoT Hub]\:
+   
+        static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
-        
-5. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
+6. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
    
         private async static Task ReceiveFileUploadNotificationAsync()
         {
             var notificationReceiver = serviceClient.GetFileNotificationReceiver();
-
+   
             Console.WriteLine("\nReceiving file upload notification from service");
             while (true)
             {
                 var fileUploadNotification = await notificationReceiver.ReceiveAsync();
                 if (fileUploadNotification == null) continue;
-
+   
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Received file upload noticiation: {0}", string.Join(", ", fileUploadNotification.BlobName));
                 Console.ResetColor();
-
+   
                 await notificationReceiver.CompleteAsync(fileUploadNotification);
             }
         }
-
+   
     Beachten Sie, dass das Empfangsmuster mit dem Muster zum Empfangen von Cloud-zu-Gerät-Nachrichten von der Geräte-App identisch ist.
-
-6. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
-
+7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+   
         Console.WriteLine("Receive file upload notifications\n");
         serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
         ReceiveFileUploadNotificationAsync().Wait();

@@ -1,36 +1,36 @@
-<properties
-	pageTitle="NodeJS-Entwicklerreferenz zu Azure Functions | Microsoft Azure"
-	description="Erfahren Sie, wie Azure Functions mithilfe von NodeJS entwickelt wird."
-	services="functions"
-	documentationCenter="na"
-	authors="christopheranderson"
-	manager="erikre"
-	editor=""
-	tags=""
-	keywords="Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur"/>
+---
+title: NodeJS-Entwicklerreferenz zu Azure Functions | Microsoft Docs
+description: Erfahren Sie, wie Azure Functions mithilfe von NodeJS entwickelt wird.
+services: functions
+documentationcenter: na
+author: christopheranderson
+manager: erikre
+editor: ''
+tags: ''
+keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 
-<tags
-	ms.service="functions"
-	ms.devlang="nodejs"
-	ms.topic="reference"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="05/13/2016"
-	ms.author="chrande"/>
+ms.service: functions
+ms.devlang: nodejs
+ms.topic: reference
+ms.tgt_pltfrm: multiple
+ms.workload: na
+ms.date: 05/13/2016
+ms.author: chrande
 
+---
 # NodeJS-Entwicklerreferenz zu Azure Functions
-
-> [AZURE.SELECTOR]
-- [C#-Skript](../articles/azure-functions/functions-reference-csharp.md)
-- [F#-Skript](../articles/azure-functions/functions-reference-fsharp.md)
-- [Node.js](../articles/azure-functions/functions-reference-node.md)
+> [!div class="op_single_selector"]
+> * [C#-Skript](functions-reference-csharp.md)
+> * [F#-Skript](functions-reference-fsharp.md)
+> * [Node.js](functions-reference-node.md)
+> 
+> 
 
 Mit der Node-/JavaScript-Benutzeroberfläche für Azure Functions können Sie ganz einfach eine Funktion exportieren, der ein `context`-Objekt für die Kommunikation mit der Laufzeit sowie für das Empfangen oder Senden von Daten über Bindungen übergeben wird.
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md) gelesen haben.
 
 ## Exportieren einer Funktion
-
 Alle JavaScript-Funktionen müssen über `module.exports` ein einzelnes `function`-Element exportieren, damit die Laufzeit die Funktion finden und ausführen kann. Diese Funktion muss immer ein `context`-Objekt enthalten.
 
 ```javascript
@@ -54,7 +54,6 @@ Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie i
 Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt übergeben (wie weiter unten zu sehen).
 
 ## context-Objekt
-
 Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
 
 Das context-Objekt ist immer der erste Parameter in einer Funktion und muss immer angegeben werden, da es Methoden wie `context.done` und `context.log` enthält, die für die ordnungsgemäße Verwendung der Laufzeit benötigt werden. Sie können dem Objekt einen beliebigen Namen geben (also etwa `ctx` oder `c`).
@@ -67,7 +66,6 @@ module.exports = function(context) {
 ```
 
 ## context.bindings
-
 Das `context.bindings`-Objekt erfasst alle Eingabe- und Ausgabedaten. Die Daten werden dem `context.bindings`-Objekt über die `name`-Eigenschaft der Bindung hinzugefügt. Wenn also beispielsweise in *function.json* die folgende Bindungsdefinition vorliegt, können Sie über `context.bindings.myInput` auf den Inhalt der Warteschlange zugreifen.
 
 ```json
@@ -89,7 +87,6 @@ context.bindings.myOutput = {
 ```
 
 ## `context.done([err],[propertyBag])`
-
 Die `context.done`-Funktion gibt gegenüber der Laufzeit an, dass die Ausführung beendet ist. Sie sollte unbedingt aufgerufen werden, wenn Sie mit der Funktion fertig sind. Andernfalls ist der Laufzeit nicht bekannt, dass Ihre Funktion abgeschlossen wurde.
 
 Mit der `context.done`-Funktion können Sie an die Laufzeit einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften zurückgeben, die die Eigenschaften des `context.bindings`-Objekts überschreiben.
@@ -105,7 +102,6 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 ```
 
 ## context.log(message)
-
 Mit der `context.log`-Methode können Sie Protokollanweisungen ausgeben, die für die Protokollierung korreliert werden. Bei Verwendung von `console.log` werden Ihre Nachrichten nur für die Protokollierung auf Prozessebene angezeigt, was nicht besonders nützlich ist.
 
 ```javascript
@@ -129,7 +125,6 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
 ## HTTP-Trigger: context.req und context.res
-
 Da es im Fall von HTTP-Triggern gängige Praxis ist, `req` und `res` für die HTTP-Anforderungs- und Antwortobjekte zu verwenden, haben wir uns entschieden, den Zugriff darauf im context-Objekt zu vereinfachen, anstatt die Verwendung des vollständigen `context.bindings.name`-Musters erforderlich zu machen.
 
 ```javascript
@@ -140,7 +135,6 @@ context.res = { status: 202, body: 'You successfully ordered more coffee!' };
 ```
 
 ## Node-Version und Paketverwaltung
-
 Die Node-Version ist derzeit unveränderlich auf `5.9.1` festgelegt. Wir untersuchen die Option, Unterstützung für weitere Versionen sowie Konfigurationsmöglichkeiten hinzuzufügen.
 
 Sie können Pakete in Ihre Funktion einschließen, indem Sie die Datei *package.json* in den Ordner Ihrer Funktion im Dateisystem der Funktionen-App hochladen. Anweisungen zum Hochladen von Dateien finden Sie im Abschnitt **Aktualisieren von Funktionen-App-Dateien** der [Referenz für Azure Functions-Entwickler](functions-reference.md#fileupdate).
@@ -148,11 +142,8 @@ Sie können Pakete in Ihre Funktion einschließen, indem Sie die Datei *package.
 Sie können auch `npm install` an der SCM-Befehlszeilenschnittstelle (Kudu) der Funktionen-App verwenden:
 
 1. Navigieren Sie zu `https://<function_app_name>.scm.azurewebsites.net`.
-
 2. Klicken Sie auf **Debugkonsole > CMD**.
-
 3. Navigieren Sie zu `D:\home\site\wwwroot<function_name>`.
-
 4. Führen Sie `npm install` aus.
 
 Nach der Installation der benötigten Pakete können Sie Ihre Funktion wie gewohnt (also über `require('packagename')`) importieren.
@@ -169,17 +160,16 @@ module.exports = function(context) {
 ```
 
 ## Umgebungsvariablen
-
 Verwenden Sie `process.env` zum Abrufen einer Umgebungsvariablen oder zum Abrufen des Werts einer App-Einstellung, wie im folgenden Codebeispiel zu sehen:
 
 ```javascript
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
-    
+
     context.log('Node.js timer trigger function ran!', timeStamp);   
     context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
     context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
-    
+
     context.done();
 };
 
@@ -190,11 +180,9 @@ function GetEnvironmentVariable(name)
 ```
 
 ## Unterstützung für TypeScript/CoffeeScript
-
 Noch gibt es keine direkte Unterstützung für die automatische Kompilierung von TypeScript/CoffeeScript über die Laufzeit. All dies müsste also außerhalb der Laufzeit zum Zeitpunkt der Bereitstellung geschehen.
 
 ## Nächste Schritte
-
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)

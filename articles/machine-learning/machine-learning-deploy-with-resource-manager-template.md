@@ -1,22 +1,22 @@
-<properties
-	pageTitle="Bereitstellen des Machine Learning-Arbeitsbereichs mithilfe von Azure Resource Manager-Vorlagen | Microsoft Azure"
-	description="Gewusst wie: Bereitstellen ein Arbeitsbereichs für Azure Machine Learning mit Azure Resource Manager-Vorlagen"
-	services="machine-learning"
-	documentationCenter=""
-	authors="ahgyger"
-	manager="haining"
-	editor="garye"/>
+---
+title: Bereitstellen des Machine Learning-Arbeitsbereichs mithilfe von Azure Resource Manager-Vorlagen | Microsoft Docs
+description: 'Gewusst wie: Bereitstellen ein Arbeitsbereichs für Azure Machine Learning mit Azure Resource Manager-Vorlagen'
+services: machine-learning
+documentationcenter: ''
+author: ahgyger
+manager: haining
+editor: garye
 
-<tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2016"
-	ms.author="ahgyger"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/23/2016
+ms.author: ahgyger
+
+---
 # Bereitstellen des Machine Learning-Arbeitsbereichs mithilfe von Azure Resource Manager
-
 ## Einführung
 Mithilfe einer Azure Resource Manager-Bereitstellungsvorlage verfügen Sie über eine zeitsparende, skalierbare Möglichkeit, um miteinander verbundene Komponente mit einem Mechanismus zum Überprüfen und Wiederholen bereitzustellen. Zum Einrichten eines Azure Machine Learning-Arbeitsbereichs müssen Sie beispielsweise zuerst ein Azure Storage-Konto konfigurieren und anschließend Ihren Arbeitsbereich bereitstellen. Stellen Sie sich vor, Sie müssen diese Schritte manuell für Hunderte von Arbeitsbereichen ausführen. Eine einfachere Alternative besteht in der Verwendung einer Azure Resource Manager-Vorlage, um einen Azure Machine Learning-Arbeitsbereich mit all seinen Abhängigkeiten bereitzustellen. In diesem Artikel finden Sie eine schrittweise Anleitung für diesen Prozess. Einen allgemeinen Überblick über Azure Resource Manager erhalten Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md).
 
@@ -132,11 +132,11 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 ```
 Nach der Bereitstellung des Arbeitsbereichs können Sie viele Azure Machine Learning Studio-Aufgaben mithilfe des [PowerShell-Moduls für Azure Machine Learning](http://aka.ms/amlps) automatisieren.
 
-## Nächste Schritte 
+## Nächste Schritte
 * Erfahren Sie mehr über das [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
 * Werfen Sie auch einen Blick auf das [Azure-Schnellstartvorlagen-Repository](https://github.com/Azure/azure-quickstart-templates).
 * Sehen Sie sich dieses Video zum [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39) an.
- 
+
 <!--Image references-->
 [1]: ../media/machine-learning-deploy-with-resource-manager-template/azuresubscription.png
 [2]: ../media/machine-learning-deploy-with-resource-manager-template/resourcegroupprovisioning.png

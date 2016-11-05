@@ -1,27 +1,25 @@
-<properties
-   pageTitle="Übersicht über das Reliable Services-Kommunikationsmodell | Microsoft Azure"
-   description="Übersicht über das Reliable Services-Kommunikationsmodell, einschließlich Öffnen von Listenern für Dienste, Auflösen von Endpunkten und Kommunikation zwischen Diensten."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="vturecek"
-   manager="timlt"
-   editor="BharatNarasimman"/>
+---
+title: Übersicht über das Reliable Services-Kommunikationsmodell | Microsoft Docs
+description: Übersicht über das Reliable Services-Kommunikationsmodell, einschließlich Öffnen von Listenern für Dienste, Auflösen von Endpunkten und Kommunikation zwischen Diensten.
+services: service-fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: BharatNarasimman
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="07/06/2016"
-   ms.author="vturecek"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: required
+ms.date: 07/06/2016
+ms.author: vturecek
 
+---
 # Gewusst wie: Verwenden der Reliable Services-Kommunikations-APIs
-
 Azure Service Fabric ist als Plattform vollständig unabhängig von der Kommunikation zwischen Diensten. Alle Protokolle und Stapel von UDP bis HTTP sind zulässig. Es liegt in der Entscheidung des Entwicklers, wie Dienste kommunizieren sollen. Das Reliable Services-Anwendungsframework stellt integrierte Kommunikationsstapel und APIs bereit, die Sie zum Erstellen Ihrer benutzerdefinierten Kommunikationskomponenten verwenden können.
 
 ## Einrichten der Dienstkommunikation
-
 Die Reliable Services-API verwendet eine einfache Schnittstelle für die Dienstkommunikation. Um einen Endpunkt für den Dienst zu öffnen, implementieren Sie einfach die folgende Schnittstelle:
 
 ```csharp
@@ -89,7 +87,10 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-> [AZURE.NOTE] Beim Erstellen mehrerer Listener für einen Dienst **muss** jeder Listener einen eindeutigen Namen erhalten.
+> [!NOTE]
+> Beim Erstellen mehrerer Listener für einen Dienst **muss** jeder Listener einen eindeutigen Namen erhalten.
+> 
+> 
 
 Abschließend beschreiben Sie die Endpunkte, die für den Dienst erforderlich sind, im [Dienstmanifest](service-fabric-application-model.md) im Abschnitt „Endpunkte“.
 
@@ -111,10 +112,12 @@ var port = codePackageActivationContext.GetEndpoint("ServiceEndpoint").Port;
 
 ```
 
-> [AZURE.NOTE] Das gesamte Dienstpaket verwendet einheitliche Endpunktressourcen, die von Service Fabric beim Aktivieren des Dienstpakets zugewiesen werden. Mehrere Dienstreplikate, die im gleichen ServiceHost gehostet werden, können den gleichen Port verwenden. Dies bedeutet, dass der Kommunikationslistener die Portfreigabe unterstützen sollte. Zu diesem Zweck wird empfohlen, dass der Kommunikationslistener zum Generieren der Überwachungsadresse die Partitions-ID und die Replikat-/Instanz-ID verwendet.
+> [!NOTE]
+> Das gesamte Dienstpaket verwendet einheitliche Endpunktressourcen, die von Service Fabric beim Aktivieren des Dienstpakets zugewiesen werden. Mehrere Dienstreplikate, die im gleichen ServiceHost gehostet werden, können den gleichen Port verwenden. Dies bedeutet, dass der Kommunikationslistener die Portfreigabe unterstützen sollte. Zu diesem Zweck wird empfohlen, dass der Kommunikationslistener zum Generieren der Überwachungsadresse die Partitions-ID und die Replikat-/Instanz-ID verwendet.
+> 
+> 
 
 ### Registrierung von Dienstadressen
-
 Auf Service Fabric-Clustern wird ein Systemdienst mit dem Namen *Naming Service* ausgeführt. Der Naming Service ist eine Registrierungsstelle für Dienste und ihre Adressen, auf die jede Instanz oder jedes Replikat des Diensts lauscht. Wenn die `OpenAsync`-Methode eines `ICommunicationListener`-Elements abgeschlossen ist, wird ihr Rückgabewert im Naming Service registriert. Bei diesem im Naming Service veröffentlichten Rückgabewert handelt es sich um eine Zeichenfolge, deren Wert beliebig sein kann. Clients sehen diesen Zeichenfolgenwert, wenn sie eine Adresse für den Dienst vom Naming Service anfordern.
 
 ```csharp
@@ -127,11 +130,11 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
                 CultureInfo.InvariantCulture,
                 "http://+:{0}/",
                 port);
-                        
+
     this.publishAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
-            
+
     this.webApp = WebApp.Start(this.listeningAddress, appBuilder => this.startup.Invoke(appBuilder));
-    
+
     // the string returned here will be published in the Naming Service.
     return Task.FromResult(this.publishAddress);
 }
@@ -139,7 +142,10 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
 Über die von Service Fabric bereitgestellten APIs können Clients und andere Dienste dann diese Adresse anhand des Dienstnamens anfordern. Dies ist wichtig, weil die Dienstadresse nicht statisch ist. Dienste werden im Cluster zum Zwecke des Lastenausgleichs von Ressourcen und der Verfügbarkeit hin und her verschoben. Dies ist der Mechanismus, mit dem Clients die Überwachungsadresse für einen Dienst auflösen können.
 
-> [AZURE.NOTE] Eine ausführliche Anleitung mit den Schritten zum Schreiben eines `ICommunicationListener`-Elements finden Sie unter [Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md).
+> [!NOTE]
+> Eine ausführliche Anleitung mit den Schritten zum Schreiben eines `ICommunicationListener`-Elements finden Sie unter [Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md).
+> 
+> 
 
 ## Kommunizieren mit einem Dienst
 Die Reliable Services-API umfasst die folgenden Bibliotheken zum Schreiben von Clients für die Kommunikation mit Diensten.
@@ -160,7 +166,7 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.clo
 ```
 
 Alternativ kann `ServicePartitionResolver` eine Funktion zum Erstellen eines `FabricClient`-Objekts zur internen Verwendung zugewiesen werden.
- 
+
 ```csharp
 public delegate FabricClient CreateFabricClientDelegate();
 ```
@@ -185,7 +191,6 @@ Die Adresse eines Diensts kann unter Verwendung von `ServicePartitionResolver` e
 In der Regel muss der Clientcode nicht direkt mit dem `ServicePartitionResolver`-Element funktionieren. Das Element wird erstellt und an Kommunikationsclientfactorys in der Reliable Services-API übergeben. Die Factorys verwenden den Resolver intern, um ein Clientobjekt zu generieren, das für die Kommunikation mit Diensten genutzt werden kann.
 
 ### Kommunikationsclients und -factorys
-
 Die Kommunikationsfactorybibliothek implementiert ein typisches Wiederholungsmuster zur Fehlerbehandlung, das die Wiederholung von Verbindungsversuchen mit aufgelösten Dienstendpunkten vereinfacht. Die Factorybibliothek stellt den Wiederholungsmechanismus bereit, und Sie geben die Fehlerhandler an.
 
 `ICommunicationClientFactory` definiert die von einer Kommunikationsclientfactory implementierte Basisschnittstelle, die Clients erstellt, die mit einem Service Fabric-Dienst kommunizieren können. Die Implementierung von CommunicationClientFactory hängt vom Kommunikationsstapel ab, den der Service Fabric-Dienst verwendet, über den der Client kommunizieren möchte. Die Reliable Services-API stellt ein `CommunicationClientFactoryBase<TCommunicationClient>`-Element bereit. Dieses Element bietet eine grundlegende Implementierung der `ICommunicationClientFactory`-Schnittstelle und führt Tasks aus, die für alle Kommunikationsstapel gelten. (Zu diesen Tasks gehört die Verwendung von `ServicePartitionResolver` zum Ermitteln des Dienstendpunkts.) Clients implementieren in der Regel die abstrakte Klasse CommunicationClientFactoryBase, um die für den Kommunikationsstapel spezifische Logik zu verarbeiten.
@@ -228,13 +233,13 @@ public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCom
 
 Schließlich ermittelt ein Ausnahmehandler, welche Aktion beim Auftreten einer Ausnahme ausgeführt werden muss. Ausnahmen werden in **wiederholbare** und **nicht wiederholbare** Ausnahmen unterteilt.
 
- - **Nicht wiederholbare** Ausnahmen werden einfach an den Aufrufer zurückgeleitet.
- - **Wiederholbare** Ausnahmen werden weiter in **vorübergehende** und **nicht vorübergehende** Ausnahmen unterteilt.
-  - **Vorübergehende** Ausnahmen sind Ausnahmen, die einfach wiederholt werden können, ohne dass die Dienstendpunktadresse erneut aufgelöst werden muss. Diese Ausnahmen beruhen z.B. auf vorübergehenden Netzwerkproblemen oder Dienstfehlerantworten, sofern diese nicht angeben, dass die Dienstendpunktadresse nicht vorhanden ist.
-  - **Nicht vorübergehende** Ausnahmen sind Ausnahmen, bei denen die Dienstendpunktadresse erneut aufgelöst werden muss. Dazu gehören Ausnahmen, die angeben, dass der Dienstendpunkt nicht erreicht werden konnte, was darauf zurückzuführen ist, dass der Dienst in einen anderen Knoten verschoben wurde.
+* **Nicht wiederholbare** Ausnahmen werden einfach an den Aufrufer zurückgeleitet.
+* **Wiederholbare** Ausnahmen werden weiter in **vorübergehende** und **nicht vorübergehende** Ausnahmen unterteilt.
+  * **Vorübergehende** Ausnahmen sind Ausnahmen, die einfach wiederholt werden können, ohne dass die Dienstendpunktadresse erneut aufgelöst werden muss. Diese Ausnahmen beruhen z.B. auf vorübergehenden Netzwerkproblemen oder Dienstfehlerantworten, sofern diese nicht angeben, dass die Dienstendpunktadresse nicht vorhanden ist.
+  * **Nicht vorübergehende** Ausnahmen sind Ausnahmen, bei denen die Dienstendpunktadresse erneut aufgelöst werden muss. Dazu gehören Ausnahmen, die angeben, dass der Dienstendpunkt nicht erreicht werden konnte, was darauf zurückzuführen ist, dass der Dienst in einen anderen Knoten verschoben wurde.
 
 `TryHandleException` trifft eine Entscheidung im Hinblick auf eine bestimmte Ausnahme. Wenn die Entscheidungen im Hinblick auf eine Ausnahme **unklar** sind, sollte FALSE zurückgegeben werden. Wenn die Entscheidung **klar** ist, sollte das Ergebnis entsprechend festgelegt und TRUE zurückgegeben werden.
- 
+
 ```csharp
 class MyExceptionHandler : IExceptionHandler
 {
@@ -276,12 +281,9 @@ var result = await myServicePartitionClient.InvokeWithRetryAsync(async (client) 
 ```
 
 ## Nächste Schritte
- - Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHUb](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount).
-
- - [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
-
- - [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)
-
- - [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
+* Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHUb](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount).
+* [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
+* [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)
+* [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 <!---HONumber=AcomDC_0713_2016-->

@@ -1,39 +1,37 @@
-<properties
-	pageTitle="Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) mit Azure PowerShell | Microsoft Azure"
-	description="So verwalten Sie RBAC mit Azure PowerShell einschließlich der Auflistung von Rollen, der Zuweisung von Rollen und dem Löschen von Rollenzuweisungen."
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+---
+title: Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) mit Azure PowerShell | Microsoft Docs
+description: So verwalten Sie RBAC mit Azure PowerShell einschließlich der Auflistung von Rollen, der Zuweisung von Rollen und dem Löschen von Rollenzuweisungen.
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="07/22/2016"
-	ms.author="kgremban"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 07/22/2016
+ms.author: kgremban
 
+---
 # Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell
-
-> [AZURE.SELECTOR]
-- [PowerShell](role-based-access-control-manage-access-powershell.md)
-- [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
-- [REST-API](role-based-access-control-manage-access-rest.md)
-
+> [!div class="op_single_selector"]
+> * [PowerShell](role-based-access-control-manage-access-powershell.md)
+> * [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
+> * [REST-API](role-based-access-control-manage-access-rest.md)
+> 
+> 
 
 Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und in der Azure Resource Management-API können Sie den Zugriff auf Ihr Abonnement differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
 
 Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie Folgendes:
 
-- Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
-
-- Azure Resource Manager-Cmdlets Installieren Sie die [Azure Resource Manager-Cmdlets](https://msdn.microsoft.com/library/mt125356.aspx) in PowerShell.
+* Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* Azure Resource Manager-Cmdlets Installieren Sie die [Azure Resource Manager-Cmdlets](https://msdn.microsoft.com/library/mt125356.aspx) in PowerShell.
 
 ## Auflisten der Rollen
-
 ### Auflisten aller verfügbaren Rollen
 Zum Auflisten von verfügbaren RBAC-Rollen für die Zuweisung und Überprüfung der Vorgänge, auf die sie Zugriff gewähren, verwenden Sie `Get-AzureRmRoleDefinition`.
 
@@ -57,7 +55,7 @@ Get-AzureRmRoleDefinition Contributor | FL Actions, NotActions
 ## Sehen, wer Zugriff hat
 Zum Auflisten der RBAC-Zugriffszuweisungen verwenden Sie `Get-AzureRmRoleAssignment`.
 
-###	Auflistung der Rollenzuweisungen für einen bestimmten Bereich
+### Auflistung der Rollenzuweisungen für einen bestimmten Bereich
 Sie können alle Zugriffszuweisungen für ein angegebenes Abonnement, eine angegebene Ressourcengruppe oder Ressource sehen. Um beispielsweise alle aktiven Zuweisungen für eine Ressourcengruppe zu sehen, verwenden Sie `Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>`.
 
 ```
@@ -180,7 +178,6 @@ Set-AzureRmRoleDefinition -Role $role)
 ![RBAC PowerShell – Set-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
 
 ## Löschen einer benutzerdefinierten Rolle
-
 Verwenden Sie zum Löschen einer benutzerdefinierten Rolle den Befehl `Remove-AzureRmRoleDefinition`.
 
 Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator* entfernt.
@@ -209,7 +206,7 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 
 ## Siehe auch
-- [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
-[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+* [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
+  [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 <!---HONumber=AcomDC_0810_2016-->

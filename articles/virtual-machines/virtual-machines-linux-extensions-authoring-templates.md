@@ -1,25 +1,24 @@
-<properties
-   pageTitle="Erstellen von Vorlagen mit Linux-VM-Erweiterungen | Microsoft Azure"
-   description="Hier finden Sie Informationen zum Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Linux-Computer."
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="kundanap"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Erstellen von Vorlagen mit Linux-VM-Erweiterungen | Microsoft Docs
+description: Hier finden Sie Informationen zum Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Linux-Computer.
+services: virtual-machines-linux
+documentationcenter: ''
+author: kundanap
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="03/29/2016"
-   ms.author="kundanap"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 03/29/2016
+ms.author: kundanap
 
+---
 # Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen
-
-[AZURE.INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
+[!INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
 Führen Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl aus:
 
@@ -33,10 +32,12 @@ Dieser Befehl gibt den Herausgebernamen, den Erweiterungsnamen und die Version z
 
 Diese drei Eigenschaften sind im oben dargestellten Vorlagenausschnitt „publisher“, „type“ und „typeHandlerVersion“ zugeordnet.
 
->[AZURE.NOTE]Es empfiehlt sich, die aktuelle Erweiterungsversion zu verwenden, um die neuesten Funktionen zu erhalten.
+> [!NOTE]
+> Es empfiehlt sich, die aktuelle Erweiterungsversion zu verwenden, um die neuesten Funktionen zu erhalten.
+> 
+> 
 
 ## Identifizieren des Schemas für die Erweiterungskonfigurationsparameter
-
 Im nächsten Schritt zur Erstellung einer Erweiterungsvorlage wird das Format für die Bereitstellung von Konfigurationsparametern festgelegt. Jede Erweiterung unterstützt einen eigenen Satz von Parametern.
 
 Beispielkonfigurationen für Linux-Erweiterungen finden Sie unter [Beispiele für Linux-Erweiterungen](virtual-machines-linux-extensions-configuration-samples.md).

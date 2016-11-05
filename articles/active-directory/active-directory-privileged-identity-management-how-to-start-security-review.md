@@ -1,40 +1,41 @@
-<properties
-   pageTitle="Starten einer Zugriffsüberprüfung | Microsoft Azure"
-   description="Erfahren Sie, wie Sie mit der Anwendung Azure AD Privileged Identity Management eine Zugriffsüberprüfung für privilegierte Identitäten erstellen."
-   services="active-directory"
-   documentationCenter=""
-   authors="kgremban"
-   manager="femila"
-   editor=""/>
+---
+title: Starten einer Zugriffsüberprüfung | Microsoft Docs
+description: Erfahren Sie, wie Sie mit der Anwendung Azure AD Privileged Identity Management eine Zugriffsüberprüfung für privilegierte Identitäten erstellen.
+services: active-directory
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: ''
 
-<tags
-   ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="09/02/2016"
-   ms.author="kgremban"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/02/2016
+ms.author: kgremban
 
+---
 # Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management
-
 Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen „veralteten“ Rollenzuweisungen zu verringern, sollten Administratoren für privilegierte Rollen die den Benutzern zugewiesenen Rollen regelmäßig überprüfen. Dieses Dokument beschreibt die Schritte zum Starten einer Zugriffsüberprüfung in Azure AD Privileged Identity Management (PIM).
 
 ## Starten einer Zugriffsüberprüfung
-> [AZURE.NOTE] Wenn Sie die PIM-Anwendung noch nicht zu Ihrem Dashboard im Azure-Portal hinzugefügt haben, finden Sie die notwendigen Schritte unter [Erste Schritte mit Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
+> [!NOTE]
+> Wenn Sie die PIM-Anwendung noch nicht zu Ihrem Dashboard im Azure-Portal hinzugefügt haben, finden Sie die notwendigen Schritte unter [Erste Schritte mit Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
+> 
+> 
 
 Eine Zugriffsüberprüfung kann auf der Hauptseite der PIM-Anwendung auf drei Arten gestartet werden:
 
-- **Zugriffsüberprüfungen** > **Hinzufügen**
-- **Rollen** > Schaltfläche **Überprüfen**
-- Wählen Sie in der Rollenliste die zu überprüfende Rolle aus > Schaltfläche **Überprüfen**
+* **Zugriffsüberprüfungen** > **Hinzufügen**
+* **Rollen** > Schaltfläche **Überprüfen**
+* Wählen Sie in der Rollenliste die zu überprüfende Rolle aus > Schaltfläche **Überprüfen**
 
 Wenn Sie auf die Schaltfläche **Überprüfen** klicken, wird das Blatt **Zugriffsüberprüfung starten** angezeigt. Auf diesem Blatt konfigurieren Sie die Überprüfung mit einem Namen und einem Zeitlimit, wählen eine zu überprüfende Rolle aus und entscheiden, wer die Überprüfung durchführen soll.
 
 ![Zugriffsüberprüfung starten – Screenshot][1]
 
 ### Konfigurieren der Überprüfung
-
 Um eine Zugriffsüberprüfung zu erstellen, müssen Sie ihr einen Namen geben und ein Start- und Enddatum festlegen.
 
 ![Überprüfung konfigurieren – Screenshot][2]
@@ -42,44 +43,38 @@ Um eine Zugriffsüberprüfung zu erstellen, müssen Sie ihr einen Namen geben un
 Wählen Sie eine ausreichende Länge für die Überprüfung aus, damit Benutzer sie abschließen können. Wenn Sie vor dem Enddatum fertig sind, können Sie die Überprüfung frühzeitig beenden.
 
 ### Auswählen einer zu überprüfenden Rolle
-
 Jede Überprüfung konzentriert sich nur auf eine Rolle. Wenn Sie die Zugriffsüberprüfung nicht über das Blatt einer bestimmten Rolle gestartet haben, müssen Sie eine Rolle auswählen.
 
 1. Navigieren Sie zu **Rollenmitgliedschaft überprüfen**.
-
+   
     ![Rollenmitgliedschaft überprüfen – Screenshot][3]
-
 2. Wählen Sie eine Rolle aus der Liste aus.
 
 ### Entscheiden, wer die Überprüfung durchführen soll
-
 Bei der Durchführung einer Überprüfung gibt es drei Möglichkeiten: Sie können die Überprüfungsdurchführung einer anderen Person zuweisen, Sie können die Überprüfung selbst durchführen, oder Sie können festlegen, dass jeder Benutzer seinen Zugriff selbst überprüfen soll.
 
 1. Navigieren Sie zu **Prüfer auswählen**.
-
+   
     ![Prüfer auswählen – Screenshot][4]
-
 2. Wählen Sie eine der Optionen aus:
-    - **Prüfer auswählen**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
-    - **Ich**: Diese Option ist hilfreich, wenn Sie sich vorab mit der Funktionsweise von Zugriffsüberprüfungen auseinandersetzen oder eine Überprüfung für Personen durchführen möchten, die die Überprüfung nicht selbst durchführen können.
-    - **Selbstüberprüfung durch Mitglieder**: Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen.
+   
+   * **Prüfer auswählen**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
+   * **Ich**: Diese Option ist hilfreich, wenn Sie sich vorab mit der Funktionsweise von Zugriffsüberprüfungen auseinandersetzen oder eine Überprüfung für Personen durchführen möchten, die die Überprüfung nicht selbst durchführen können.
+   * **Selbstüberprüfung durch Mitglieder**: Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen.
 
 ### Starten der Überprüfung
-
 Sie haben die Option, von den Benutzern die Angabe eines Grunds anzufordern, wenn sie ihren Zugriff genehmigen. Fügen Sie ggf. eine Beschreibung der Überprüfung hinzu, und wählen Sie **Starten** aus.
 
 Informieren Sie die Benutzer über die anstehende Zugriffsüberprüfung, und zeigen Sie ihnen, [wie eine Zugriffsüberprüfung durchgeführt wird](active-directory-privileged-identity-management-how-to-perform-security-review.md).
 
 ## Verwalten der Zugriffsüberprüfung
-
 Sie können den Fortschritt der Überprüfungen durch die Prüfer im Azure AD PIM-Dashboard im Abschnitt mit den Zugriffsüberprüfungen nachverfolgen. Zugriffsrechte werden im Verzeichnis erst geändert, wenn die [Überprüfung abgeschlossen](active-directory-privileged-identity-management-how-to-complete-review.md) ist.
 
 Bis der Überprüfungszeitraum beendet ist, können Sie die Benutzer daran erinnern, die Überprüfung abzuschließen, oder die Überprüfung vorzeitig im Abschnitt mit den Zugriffsüberprüfungen beenden.
 
-
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Inhaltsverzeichnis zu PIM
-[AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
+[!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->
 

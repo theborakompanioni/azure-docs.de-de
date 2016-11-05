@@ -1,29 +1,27 @@
-<properties
-    pageTitle="Durchsuchen von Daten in Hive-Tabellen mithilfe von Hive-Abfragen | Microsoft Azure"
-    description="Durchsuchen Sie Daten in Hive-Tabellen mithilfe von Hive-Abfragen."
-    services="machine-learning"
-    documentationCenter=""
-    authors="bradsev"
-    manager="jhubbard"
-    editor="cgronlun"  />
+---
+title: Durchsuchen von Daten in Hive-Tabellen mithilfe von Hive-Abfragen | Microsoft Docs
+description: Durchsuchen Sie Daten in Hive-Tabellen mithilfe von Hive-Abfragen.
+services: machine-learning
+documentationcenter: ''
+author: bradsev
+manager: jhubbard
+editor: cgronlun
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/13/2016"
-    ms.author="bradsev" />
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/13/2016
+ms.author: bradsev
 
-
+---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Durchsuchen von Daten in Hive-Tabellen mithilfe von Hive-Abfragen
-
 Dieses Dokument enthält Hive-Beispielskripts, die zum Durchsuchen von Daten in Hive-Tabellen in einem HDInsight Hadoop-Cluster verwendet werden.
 
 Das folgende **Menü** enthält Links zu den Themen, in denen die Verwendung dieser Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird.
 
-[AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
+[!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
@@ -35,21 +33,15 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 * Informationen zum Übermitteln von Hive-Abfragen finden Sie unter [Übermitteln von Hive-Abfragen](machine-learning-data-science-move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Hive-Beispielabfrageskripts für das Durchsuchen von Daten
-
 1. Abrufen der Anzahl der Vorkommen pro Partition  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-
 2. Abrufen der Anzahl der Vorkommen pro Tag  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
-
 3. Abrufen der Ebenen in einer Kategoriespalte   
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-
 4. Abrufen der Anzahl von Ebenen in Kombination zweier kategorischer Spalten  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
-
 5. Abrufen der Verteilung der numerischen Spalten   
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
-
 6. Extrahieren von Datensätzen durch Zusammenführen von zwei Tabellen:
-
+   
         SELECT
             a.<common_columnname1> as <new_name1>,
             a.<common_columnname2> as <new_name2>,
@@ -76,10 +68,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Zusätzliche Abfrageskripts für Szenarios mit Taxi-Verkehrsdaten
-
 Beispiele für Abfragen speziell für Szenarien mit den [NYC Taxi Trip-Daten](http://chriswhong.com/open-data/foil_nyc_taxi/) stehen auch im [GitHub-Repository](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) bereit. Für diese Abfragen ist bereits ein Datenschema angegeben, sodass sie bereit für die Übermittlung zur Ausführung sind.
-
-
 
 <!--HONumber=Oct16_HO2-->
 

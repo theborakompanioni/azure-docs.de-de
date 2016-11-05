@@ -1,25 +1,21 @@
-<properties 
-	pageTitle="Verwenden von Twilio für Sprachanrufe und SMS (Ruby) | Microsoft Azure" 
-	description="Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Ruby geschrieben." 
-	services="" 
-	documentationCenter="ruby" 
-	authors="devinrader" 
-	manager="twilio" 
-	editor=""/>
+---
+title: Verwenden von Twilio für Sprachanrufe und SMS (Ruby) | Microsoft Docs
+description: Erfahren Sie, wie Sie mit dem Twilio API-Dienst in Azure einen Telefonanruf tätigen und eine SMS-Nachricht senden. Die Codebeispiele wurden in Ruby geschrieben.
+services: ''
+documentationcenter: ruby
+author: devinrader
+manager: twilio
+editor: ''
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="ruby" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
-	ms.author="MicrosoftHelp@twilio.com"/>
+ms.service: multiple
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: ruby
+ms.topic: article
+ms.date: 11/25/2014
+ms.author: MicrosoftHelp@twilio.com
 
-
-
-
-
+---
 # Verwenden von Twilio für Telefonie- und SMS-Funktionen in Ruby
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps).
 
@@ -47,7 +43,7 @@ Die TwiML im folgenden Beispiel konvertiert den Text **Hello World** in Sprache.
 Das Stammelement aller TwiML-Dokumente ist `<Response>`. Von hier aus verwenden Sie Twilio-Verben, um das Verhalten Ihrer Anwendung festzulegen.
 
 ### <a id="Verbs"></a>TwiML-Verben
-Twilio-Verben sind XML-Tags, die Twilio **Anweisungen** geben. Das Verb **&lt;Say&gt;** weist Twilio z. B. an, eine Nachricht in einem Anruf akustisch zu übermitteln.
+Twilio-Verben sind XML-Tags, die Twilio **Anweisungen** geben. Das Verb **&lt;Say&gt;** weist Twilio z. B. an, eine Nachricht in einem Anruf akustisch zu übermitteln.
 
 Nachfolgend finden Sie eine Liste mit Twilio-Verben.
 
@@ -70,7 +66,7 @@ Wenn Sie ein Twilio-Konto erstellen möchten, melden Sie sich bei [Try Twilio][t
 Wenn Sie sich an einem Twilio-Konto anmelden, erhalten Sie eine kostenlose Telefonnummer für Ihre Anwendung. Außerdem erhalten Sie eine Konto-SID und ein Authentifizierungstoken. Beide Angaben benötigen Sie zum Tätigen von Twilio-API-Anrufen. Bewahren Sie Ihr Authentifizierungstoken sicher auf, um unbefugten Zugriff auf Ihr Konto zu verhindern. Ihre Konto-SID und das Authentifizierungstoken können Sie auf der [Twilio-Kontoseite][twilio_account] in den Feldern **ACCOUNT SID** bzw. **AUTH TOKEN** einsehen.
 
 ### <a id="VerifyPhoneNumbers"></a>Überprüfen von Telefonnummern
-Zusätzlich zu der Nummer, die Sie von Twilio erhalten, können Sie auch Nummern überprüfen, die Ihnen gehören (z. B. Ihre Mobilfunk- oder Festnetznummer), um sie in Ihren Anwendungen zu verwenden.
+Zusätzlich zu der Nummer, die Sie von Twilio erhalten, können Sie auch Nummern überprüfen, die Ihnen gehören (z. B. Ihre Mobilfunk- oder Festnetznummer), um sie in Ihren Anwendungen zu verwenden.
 
 Informationen zum Überprüfen von Telefonnummern finden Sie unter [Manage Numbers][verify_phone].
 
@@ -79,7 +75,7 @@ Ruby-Anwendungen, die den Twilio-Dienst verwenden und in Azure ausgeführt werde
 
 Richten SIe zuerst einen [neuen virtuellen Linux-Computer auf Azure][azure_vm_setup] ein, der als Host für Ihre neue Ruby-Webanwendung fungiert. Ignorieren Sie die Schritte zur Erstellung einer Rails-App, und erstellen Sie nur den virtuellen Computer. Erstellen Sie auch unbedingt einen Endpunkt mit dem externen Port 80 und dem internen Port 5000.
 
-Im Beispiel unten verwenden wir [Sinatra][sinatra], ein sehr einfaches Web-Framework für Ruby. Sie können die Twilio-Hilfsbibliothek für Ruby aber auch mit jedem anderen Web-Framework verwenden, z. B. Ruby on Rails.
+Im Beispiel unten verwenden wir [Sinatra][sinatra], ein sehr einfaches Web-Framework für Ruby. Sie können die Twilio-Hilfsbibliothek für Ruby aber auch mit jedem anderen Web-Framework verwenden, z. B. Ruby on Rails.
 
 Stellen Sie eine SSH-Verbindung zum neuen virtuellen Computer her, und erstellen Sie ein Verzeichnis für Ihre neue App. Erstellen Sie in diesem Verzeichnis eine Datei namens Gemfile, und kopieren Sie den folgenden Code in diese hinein:
 
@@ -114,23 +110,23 @@ Im Folgenden ist dargestellt, wie Sie einen ausgehenden Anruf tätigen. Zu den w
 Fügen Sie diese Funktion in die Datei `web.md` ein:
 
     # Set your account ID and authentication token.
-	sid = "your_twilio_account_sid";
-	token = "your_twilio_authentication_token";
+    sid = "your_twilio_account_sid";
+    token = "your_twilio_authentication_token";
 
-	# The number of the phone initiating the the call.
+    # The number of the phone initiating the the call.
     # This should either be a Twilio number or a number that you've verified
-	from = "NNNNNNNNNNN";
+    from = "NNNNNNNNNNN";
 
-	# The number of the phone receiving call.
-	to = "NNNNNNNNNNN";
+    # The number of the phone receiving call.
+    to = "NNNNNNNNNNN";
 
-	# Use the Twilio-provided site for the TwiML response.
+    # Use the Twilio-provided site for the TwiML response.
     url = "http://yourdomain.cloudapp.net/voice_url";
-      
+
     get '/make_call' do
-	  # Create the call client.
-	  client = Twilio::REST::Client.new(sid, token);
-      
+      # Create the call client.
+      client = Twilio::REST::Client.new(sid, token);
+
       # Make the call
       client.account.calls.create(to: to, from: from, url: url)
     end
@@ -140,7 +136,7 @@ Fügen Sie diese Funktion in die Datei `web.md` ein:
          <Say>Hello Monkey!</Say>
        </Response>"
     end
-    
+
 Wenn Sie `http://yourdomain.cloudapp.net/make_call` in einem Browser öffnen, wird der Aufruf der Twilio-API ausgelöst, die den Telefonanruf tätigen soll. Die ersten beiden Parameter in `client.account.calls.create` sind nahezu selbsterklärend: die Telefonnummer für den ausgehenden Anruf (`from`) und die Telefonnummer des Anrufempfängers (`to`).
 
 Der dritte Parameter (`url`) ist die URL, die Twilio anfordert, um Anweisungen darüber zu erhalten, was nach Herstellung der Rufverbindung zu tun ist. In diesem Fall wird eine URL (`http://yourdomain.cloudapp.net`) eingerichtet, die ein einfaches TwiML-Dokument zurückgibt und das Verb `<Say>` verwendet, um Text in Sprache umzuwandeln und zur angerufenen Person „Hello Monkey“ zu sagen.

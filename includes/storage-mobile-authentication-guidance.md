@@ -1,21 +1,22 @@
 ## Konfigurieren der Anwendung für den Zugriff auf Azure Storage
-
 Es gibt zwei Möglichkeiten, um Ihre Anwendung für den Zugriff auf die Storage-Dienste zu authentifizieren:
 
-- Gemeinsam verwendeter Schlüssel: Verwenden Sie den gemeinsam verwendeten Schlüssel nur für Testzwecke.
-- Shared Access Signature (SAS): Verwenden Sie SAS für Produktionsanwendungen.
+* Gemeinsam verwendeter Schlüssel: Verwenden Sie den gemeinsam verwendeten Schlüssel nur für Testzwecke.
+* Shared Access Signature (SAS): Verwenden Sie SAS für Produktionsanwendungen.
 
 ### Gemeinsam verwendeter Schlüssel
 Bei der Authentifizierung mit gemeinsam verwendetem Schlüssel nutzt die Anwendung Ihren Kontonamen und Kontoschlüssel, um auf die Storage-Dienste zuzugreifen. Für eine schnelle Demonstration, wie Sie diese Bibliothek verwenden können, wird in diesen ersten Schritten die Authentifizierung mit gemeinsam verwendetem Schlüssel verwendet.
 
 > [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ] Ihr Kontoname und Kontoschlüssel, mit denen Sie vollständigen Lese-/Schreibzugriff auf das zugehörige Storage-Konto erhalten, werden an alle Personen verteilt, die Ihre App herunterladen. Diese Vorgehensweise wird **nicht** empfohlen, da das Risiko besteht, dass Ihr Schlüssel durch nicht vertrauenswürdige Clients beeinträchtigt werden kann.
+> 
+> 
 
 Wenn Sie die Authentifizierung mit gemeinsam verwendetem Schlüssel nutzen, erstellen Sie eine [Verbindungszeichenfolge](../articles/storage/storage-configure-connection-string.md). Die Verbindungszeichenfolge besteht aus:
 
-- dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
-- dem **Kontonamen** – der Name Ihres Storage-Kontos
-- dem **Kontoschlüssel** – navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten.
-- (Optional) **EndpointSuffix** – dieser Wert wird für Speicherdienste in Regionen mit anderen Endpunktsuffixen verwendet, z.B. Azure China oder Azure Governance.
+* dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
+* dem **Kontonamen** – der Name Ihres Storage-Kontos
+* dem **Kontoschlüssel** – navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten.
+* (Optional) **EndpointSuffix** – dieser Wert wird für Speicherdienste in Regionen mit anderen Endpunktsuffixen verwendet, z.B. Azure China oder Azure Governance.
 
 Hier sehen Sie ein Beispiel einer Verbindungszeichenfolge bei Authentifizierung mit gemeinsam verwendetem Schlüssel:
 
@@ -27,14 +28,11 @@ Die empfohlene Methode für eine mobile Anwendung zum Authentifizieren einer Anf
 Das folgende Beispiel zeigt die Verwendung des Microsoft Azure-Speicher-Explorers zum Erstellen einer SAS.
 
 1. Wenn Sie es nicht bereits getan haben, [installieren Sie den Microsoft Azure-Speicher-Explorer](http://storageexplorer.com).
-
 2. Stellen Sie eine Verbindung mit Ihrem Abonnement her.
-
 3. Klicken Sie auf das Speicherkonto und auf die Registerkarte „Aktionen“ unten links. Klicken Sie auf „Shared Access Signature abrufen“, um eine „Verbindungszeichenfolge“ für Ihre SAS zu generieren.
-
 4. Hier ist ein Beispiel für eine SAS-Verbindungszeichenfolge, die Lese- und Schreibberechtigungen auf Dienst-, Container- und Objektebene für den Blobdienst des Speicherkontos gewährt.
-
-  `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
+   
+   `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
 Wie Sie sehen, machen Sie den Kontoschlüssel in Ihrer Anwendung nicht verfügbar, wenn Sie eine SAS verwenden. Weitere Informationen zu SAS und bewährten Methoden bei der Verwendung von SAS erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](../articles/storage/storage-dotnet-shared-access-signature-part-1.md).
 

@@ -1,39 +1,38 @@
-<properties
-   pageTitle="ExpressRoute-Beispiele für die Konfiguration von Kundenroutern | Microsoft Azure"
-   description="Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper."
-   documentationCenter="na"
-   services="expressroute"
-   authors="cherylmc"
-   manager="carmonm"
-   editor="" />
-<tags
-   ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="article" 
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/10/2016"
-   ms.author="cherylmc"/>
+---
+title: ExpressRoute-Beispiele für die Konfiguration von Kundenroutern | Microsoft Docs
+description: Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper.
+documentationcenter: na
+services: expressroute
+author: cherylmc
+manager: carmonm
+editor: ''
 
+ms.service: expressroute
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/10/2016
+ms.author: cherylmc
 
+---
 # <a name="router-configuration-samples-to-setup-and-manage-routing"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings
-
 Diese Seite enthält Schnittstellen- und Routingkonfigurationsbeispiele für Router der Reihen Cisco IOS-XE und Juniper MX. Diese Beispiele dienen nur als Leitfaden und müssen nicht wie angegeben verwendet werden. Sie können mit Ihrem Anbieter an der Ausarbeitung geeigneter Konfigurationen für Ihr Netzwerk zusammenarbeiten. 
 
->[AZURE.IMPORTANT] Die Beispiele auf dieser Seite sind ausschließlich als Leitfaden konzipiert. Sie müssen mit dem Vertriebsteam/Technikteam Ihres Anbieters und Ihrem Netzwerkteam zusammenarbeiten, um für Ihre Anforderungen geeignete Konfigurationen zu bestimmen. Microsoft bietet keine Unterstützung bei Problemen im Zusammenhang mit Konfigurationen, die auf dieser Seite aufgeführt sind. Sie müssen sich bei Problemen an den Gerätehersteller wenden.
+> [!IMPORTANT]
+> Die Beispiele auf dieser Seite sind ausschließlich als Leitfaden konzipiert. Sie müssen mit dem Vertriebsteam/Technikteam Ihres Anbieters und Ihrem Netzwerkteam zusammenarbeiten, um für Ihre Anforderungen geeignete Konfigurationen zu bestimmen. Microsoft bietet keine Unterstützung bei Problemen im Zusammenhang mit Konfigurationen, die auf dieser Seite aufgeführt sind. Sie müssen sich bei Problemen an den Gerätehersteller wenden.
+> 
+> 
 
 Die unten aufgeführten Beispiele zur Routerkonfiguration gelten für alle Peerings. Unter [ExpressRoute-Peerings](expressroute-circuit-peerings.md) und [Routinganforderungen für ExpressRoute](expressroute-routing.md) finden Sie weitere Details.
 
 ## <a name="cisco-ios-xe-based-routers"></a>Cisco IOS-XE-basierte Router
-
 Die Beispiele in diesem Abschnitt beziehen sich auf Router, auf denen die IOS-XE-Betriebssystemfamilie ausgeführt wird.
 
 ### <a name="1.-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurieren von Schnittstellen und Unterschnittstellen
-
 Sie benötigen auf jedem Router, den Sie mit Microsoft verbinden, eine Unterschnittstelle pro Peering. Eine Unterschnittstelle kann anhand einer VLAN-ID oder eines gestapelten Paars von VLAN-IDs und einer IP-Adresse identifiziert werden.
 
 #### <a name="dot1q-interface-definition"></a>Dot1Q-Schnittstellendefinition
-
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit einer einzelnen VLAN-ID bereit. Die VLAN-ID ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
     interface GigabitEthernet<Interface_Number>.<Number>
@@ -41,15 +40,13 @@ Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnitts
      ip address <IPv4_Address><Subnet_Mask>
 
 #### <a name="qinq-interface-definition"></a>QinQ-Schnittstellendefinition
-
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit zwei VLAN-IDs bereit. Falls die äußere VLAN-ID (s-Tag) verwendet wird, bleibt sie über alle Peerings gleich. Die innere VLAN-ID (c-Tag) ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
     interface GigabitEthernet<Interface_Number>.<Number>
      encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
      ip address <IPv4_Address><Subnet_Mask>
-    
-### <a name="2.-setting-up-ebgp-sessions"></a>2. Einrichten von eBGP-Sitzungen
 
+### <a name="2.-setting-up-ebgp-sessions"></a>2. Einrichten von eBGP-Sitzungen
 Sie müssen für jedes Peering eine BGP-Sitzung bei Microsoft einrichten. Mit dem folgenden Beispiel können Sie eine BGP-Sitzung bei Microsoft einrichten. Wenn die IPv4-Adresse, die Sie für Ihre Unterschnittstelle verwendet haben, "a.b.c.d" war, lautet die IP-Adresse des BGP-Nachbarn (Microsoft) "a.b.c.d+1". Das letzte Oktett in der IPv4-Adresse des BGP-Nachbarn ist immer eine gerade Zahl.
 
     router bgp <Customer_ASN>
@@ -62,7 +59,6 @@ Sie müssen für jedes Peering eine BGP-Sitzung bei Microsoft einrichten. Mit de
     !
 
 ### <a name="3.-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Einrichten von Präfixen für die Ankündigung über die BGP-Sitzung
-
 Sie können den Router so konfigurieren, dass Microsoft bestimmte Präfixe angekündigt werden. Dies ist mit dem folgenden Beispiel möglich.
 
     router bgp <Customer_ASN>
@@ -76,7 +72,6 @@ Sie können den Router so konfigurieren, dass Microsoft bestimmte Präfixe angek
     !
 
 ### <a name="4.-route-maps"></a>4. Routenzuordnungen
-
 Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die in Ihrem Netzwerk weitergegeben werden. Diese Aufgabe können Sie mit dem folgenden Beispiel durchführen. Stellen Sie sicher, dass entsprechende Präfixlisten eingerichtet wurden.
 
     router bgp <Customer_ASN>
@@ -94,14 +89,11 @@ Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die
     !
 
 
-## <a name="juniper-mx-series-routers"></a>Router der Juniper MX-Serie 
-
+## <a name="juniper-mx-series-routers"></a>Router der Juniper MX-Serie
 Die Beispiele in diesem Abschnitt gelten für Router der Juniper MX-Serie.
 
 ### <a name="1.-configuring-interfaces-and-sub-interfaces"></a>1. Konfigurieren von Schnittstellen und Unterschnittstellen
-
 #### <a name="dot1q-interface-definition"></a>Dot1Q-Schnittstellendefinition
-
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit einer einzelnen VLAN-ID bereit. Die VLAN-ID ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
     interfaces {
@@ -118,7 +110,6 @@ Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnitts
 
 
 #### <a name="qinq-interface-definition"></a>QinQ-Schnittstellendefinition
-
 Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnittstelle mit zwei VLAN-IDs bereit. Falls die äußere VLAN-ID (s-Tag) verwendet wird, bleibt sie über alle Peerings gleich. Die innere VLAN-ID (c-Tag) ist pro Peering eindeutig. Das letzte Oktett Ihrer IPv4-Adresse ist immer eine ungerade Zahl.
 
     interfaces {
@@ -134,7 +125,6 @@ Dieses Beispiel stellt die Unterschnittstellendefinition für eine Unterschnitts
     }                           
 
 ### <a name="2.-setting-up-ebgp-sessions"></a>2. Einrichten von eBGP-Sitzungen
-
 Sie müssen für jedes Peering eine BGP-Sitzung bei Microsoft einrichten. Mit dem folgenden Beispiel können Sie eine BGP-Sitzung bei Microsoft einrichten. Wenn die IPv4-Adresse, die Sie für Ihre Unterschnittstelle verwendet haben, "a.b.c.d" war, lautet die IP-Adresse des BGP-Nachbarn (Microsoft) "a.b.c.d+1". Das letzte Oktett in der IPv4-Adresse des BGP-Nachbarn ist immer eine gerade Zahl.
 
     routing-options {
@@ -151,7 +141,6 @@ Sie müssen für jedes Peering eine BGP-Sitzung bei Microsoft einrichten. Mit de
     }
 
 ### <a name="3.-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. Einrichten von Präfixen für die Ankündigung über die BGP-Sitzung
-
 Sie können den Router so konfigurieren, dass Microsoft bestimmte Präfixe angekündigt werden. Dies ist mit dem folgenden Beispiel möglich.
 
     policy-options {
@@ -177,7 +166,6 @@ Sie können den Router so konfigurieren, dass Microsoft bestimmte Präfixe angek
 
 
 ### <a name="4.-route-maps"></a>4. Routenzuordnungen
-
 Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die in Ihrem Netzwerk weitergegeben werden. Diese Aufgabe können Sie mit dem folgenden Beispiel durchführen. Stellen Sie sicher, dass entsprechende Präfixlisten eingerichtet wurden.
 
     policy-options {
@@ -208,10 +196,7 @@ Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die
     }
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .
-
-
+Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,29 +1,28 @@
-<properties
-	pageTitle="Erstellen von App-Kennwörtern für Azure Multi-Factor Authentication im Office 365-Portal"
-	description="Auf dieser Seite wird das Erstellen zusätzlicher App-Kennwörter im Office 365-Portal beschrieben."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: Erstellen von App-Kennwörtern für Azure Multi-Factor Authentication im Office 365-Portal
+description: Auf dieser Seite wird das Erstellen zusätzlicher App-Kennwörter im Office 365-Portal beschrieben.
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Erstellen oder Löschen von App-Kennwörtern für Azure Multi-Factor Authentication im Office 365-Portal
-
-Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-Kennwörter über das Office 365-Portal erstellen und löschen.
+Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-Kennwörter über das Office 365-Portal erstellen und löschen.
 
 ## Erstellen von App-Kennwörtern im Office 365-Portal
---------------------------------------------------------------------------------
-
+- - -
 <ol>
+
 <li>Melden Sie sich beim Office&#160;365-Portal an.</li>
 <li>Wählen Sie in der oberen rechten Ecke das Einstellungs-Widget aus.</li>
 <li>Wählen Sie links "Zusätzliche Sicherheitsüberprüfung" aus.</li>
@@ -46,9 +45,9 @@ Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-
 
 
 ## Löschen von App-Kennwörtern im Office 365-Portal
---------------------------------------------------------------------------------
-
+- - -
 <ol>
+
 <li>Melden Sie sich beim Office&#160;365-Portal an.</li>
 <li>Klicken Sie in der oberen rechten Ecke auf das Widget, und wählen Sie die Office 365-Einstellungen.</li>
 <li>Klicken Sie unten auf zusätzliche Sicherheitsüberprüfung, und wählen Sie **Aktualisieren Ihrer Telefonnummern für die Kontosicherheit**.</li>

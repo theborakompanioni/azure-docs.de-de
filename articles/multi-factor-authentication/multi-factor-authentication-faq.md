@@ -1,72 +1,58 @@
-<properties
-	pageTitle="Azure Multi-Factor Authentication – Häufig gestellte Fragen"
-	description="Enthält eine Liste mit häufig gestellten Fragen und Antworten im Zusammenhang mit Azure Multi-Factor Authentication. Multi-Factor Authentication ist eine Methode zum Überprüfen der Identität eines Benutzers, für die Benutzername und Kennwort nicht ausreichen. Sie bietet eine zusätzliche Sicherheitsebene für Benutzeranmeldungen und -transaktionen."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+---
+title: Azure Multi-Factor Authentication – Häufig gestellte Fragen
+description: Enthält eine Liste mit häufig gestellten Fragen und Antworten im Zusammenhang mit Azure Multi-Factor Authentication. Multi-Factor Authentication ist eine Methode zum Überprüfen der Identität eines Benutzers, für die Benutzername und Kennwort nicht ausreichen. Sie bietet eine zusätzliche Sicherheitsebene für Benutzeranmeldungen und -transaktionen.
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/22/2016
+ms.author: kgremban
 
+---
 # Azure Multi-Factor Authentication – Häufig gestellte Fragen
-
-
 Dieses FAQ beantwortet häufige Fragen zur Azure Multi-Factor Authentication und zur Nutzung des Multi-Factor Authentication-Diensts, einschließlich Fragen zu Abrechnungsmodell und Verwendbarkeit.
 
 ## Allgemein
-
 **Wo erhalte ich Hilfe zur Azure Multi-Factor Authentication?**
 
-- [Durchsuchen der Microsoft Support Knowledge Base](https://www.microsoft.com/de-DE/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)
-
+* [Durchsuchen der Microsoft Support Knowledge Base](https://www.microsoft.com/de-DE/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport)
+  
   Durchsuchen Sie die Wissensdatenbank nach Lösungen für häufige technische Probleme.
-
-- [Microsoft Azure Active Directory-Foren](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD)
-
+* [Microsoft Azure Active Directory-Foren](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD)
+  
   In den [Azure Active Directory-Foren](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required) können Sie nach technischen Fragen und Antworten aus der Community suchen oder eine eigene Frage stellen.
-
-- [Zurücksetzen des Kennworts](mailto:phonefactorsupport@microsoft.com)
-
+* [Zurücksetzen des Kennworts](mailto:phonefactorsupport@microsoft.com)
+  
   Wenn Sie ein älterer PhoneFactor-Kunde sind und Fragen haben oder Hilfe beim Zurücksetzen eines Kennworts benötigen, verwenden Sie den Link zur [Kennwortzurücksetzung](mailto:phonefactorsupport@microsoft.com), um eine Supportanfrage zu öffnen.
-
-- [Azure Multi-Factor Authentication-Server (PhoneFactor) – Support](https://support.microsoft.com/oas/default.aspx?prid=14947)
-
+* [Azure Multi-Factor Authentication-Server (PhoneFactor) – Support](https://support.microsoft.com/oas/default.aspx?prid=14947)
+  
   Verwenden Sie diesen Link, wenn Sie mit einem Microsoft-Supportmitarbeiter Kontakt aufnehmen möchten. Ihnen werden einige Fragen gestellt, um Ihnen zu helfen, Ihre Supportoptionen zu bestimmen, wobei E-Mail, Onlineübermittlung oder Telefonsupport infrage kommen.
-
-
 
 **F: Wie werden Benutzerdaten vom Azure Multi-Factor Authentication-Server behandelt?**
 
 Bei Verwendung des Multi-Factor Authentication-Servers werden die Daten eines Benutzers nur auf den lokalen Servern gespeichert. Daten werden nicht dauerhaft in der Cloud gespeichert. Wenn der Benutzer die zweistufige Authentifizierung ausführt, sendet der Multi-Factor Authentication-Server für die Authentifizierung Daten an den Multi-Factor Authentication-Clouddienst. Wenn Authentifizierungsanforderungen an den Clouddienst gesendet werden, werden in der Anforderung und den Protokollen die Daten aus den Feldern der folgenden Liste gesendet, damit sie in den Authentifizierungs- und Verwendungsberichten des Kunden verfügbar sind. Einige der Felder sind optional, und Sie können sie im Multi-Factor Authentication-Server konfigurieren. Zur Kommunikation des Multi-Factor Authentication-Servers mit dem Multi-Factor Authentication-Clouddienst wird Secure Sockets Layer (SSL) oder Transport Layer Security (TLS) über den ausgehenden Port 443 verwendet. Folgende Datenfelder werden in den Protokollen der zweistufigen Authentifizierung berücksichtigt:
 
-- **Eindeutige ID** (entweder Benutzername oder lokale Server-ID der Multi-Factor Authentication)
-- **Vor- und Nachname** (optional)
-- **E-Mail-Adresse** (optional)
-- **Rufnummer** (für eine Anruf- oder SMS-Authentifizierung)
-- **Gerätetoken** (für die Authentifizierung einer mobilen App)
-- **Authentifizierungsmodus**
-- **Authentifizierungsergebnis**
-- **Name des Multi-Factor Authentication-Servers**
-- **IP des Multi-Factor Authentication-Servers**
-- **Client-IP** (falls verfügbar)
-
-
+* **Eindeutige ID** (entweder Benutzername oder lokale Server-ID der Multi-Factor Authentication)
+* **Vor- und Nachname** (optional)
+* **E-Mail-Adresse** (optional)
+* **Rufnummer** (für eine Anruf- oder SMS-Authentifizierung)
+* **Gerätetoken** (für die Authentifizierung einer mobilen App)
+* **Authentifizierungsmodus**
+* **Authentifizierungsergebnis**
+* **Name des Multi-Factor Authentication-Servers**
+* **IP des Multi-Factor Authentication-Servers**
+* **Client-IP** (falls verfügbar)
 
 Zusätzlich zu diesen Feldern werden auch das Authentifizierungsergebnis (Erfolg oder Ablehnung) und der Grund für etwaige Ablehnungen mit den Authentifizierungsdaten gespeichert. Sie stehen in den Authentifizierungs- und Verwendungsberichten zur Verfügung.
 
-
-
-
 ## Abrechnung
-
 **F: Entstehen durch Telefonanrufe oder Textnachrichten für die Benutzerauthentifizierung zusätzliche Kosten für meine Organisation?**
 
 Diese Gebühren werden vollständig durch die Kosten abgedeckt, die pro Benutzer bzw. pro Authentifizierung für den Dienst erhoben werden. Einer Organisation entstehen keine zusätzlichen Kosten für individuelle Telefonanrufe oder Textnachrichten, die über Azure Multi-Factor Authentication an Benutzer gesendet werden. Für die Telefonbesitzer können Roaming-Gebühren oder andere Kosten anfallen, die vom jeweiligen Netzbetreiber für empfangene Telefonanrufe oder Textnachrichten erhoben werden.
@@ -75,15 +61,17 @@ Diese Gebühren werden vollständig durch die Kosten abgedeckt, die pro Benutzer
 
 Azure Multi-Factor Authentication ist als eigenständiger Dienst mit Abrechnungsoptionen „Pro Benutzer“ und „Pro Authentifizierung“ oder im Paket mit Azure Active Directory Premium, Enterprise Mobility Suite oder Enterprise Cloud Suite verfügbar. Der eigenständige Dienst wird basierend auf der Nutzung abgerechnet. Die Abrechnung erfolgt entweder monatlich über die Azure-Zahlungsverpflichtungen einer Organisation oder über eine jährliche Lizenz pro Benutzer, die im Rahmen eines Microsoft Enterprise Agreement, des Microsoft Open License-Programms, des Microsoft Cloud-Lösungsanbieter-Programms (Cloud Solution Provider, CSP) oder auch im Direktbezug erhältlich ist.
 
->[AZURE.IMPORTANT]
-Die Regionen in Australien sind für Kunden mit Geschäftspräsenz in Australien und Neuseeland verfügbar.
+> [!IMPORTANT]
+> Die Regionen in Australien sind für Kunden mit Geschäftspräsenz in Australien und Neuseeland verfügbar.
+> 
+> 
 
-Abrechnungsmodell | Preis
-------------- | ------------- |
-Abrechnung pro Benutzer (Azure-Zahlungsverpflichtung)| 1,40 US-Dollar pro Monat (unbegrenzte Authentifizierungen)
-Abrechnung pro Authentifizierung (Azure-Zahlungsverpflichtung)|1,40 US-Dollar für 10 Authentifizierungen
-Jahreslizenz für einen Benutzer (Direktbezug)|1,40 US-Dollar pro Monat (unbegrenzte Authentifizierungen)
-Jahreslizenz für einen Benutzer (Volumenlizenzprogramm)|Wenden Sie sich an Ihren [Enterprise Agreement-Vertreter](https://www.microsoft.com/de-DE/licensing/licensing-programs/enterprise.aspx).
+| Abrechnungsmodell | Preis |
+| --- | --- |
+| Abrechnung pro Benutzer (Azure-Zahlungsverpflichtung) |1,40 US-Dollar pro Monat (unbegrenzte Authentifizierungen) |
+| Abrechnung pro Authentifizierung (Azure-Zahlungsverpflichtung) |1,40 US-Dollar für 10 Authentifizierungen |
+| Jahreslizenz für einen Benutzer (Direktbezug) |1,40 US-Dollar pro Monat (unbegrenzte Authentifizierungen) |
+| Jahreslizenz für einen Benutzer (Volumenlizenzprogramm) |Wenden Sie sich an Ihren [Enterprise Agreement-Vertreter](https://www.microsoft.com/de-DE/licensing/licensing-programs/enterprise.aspx). |
 
 **F: Werden die Kosten für das Abrechnungsmodell „pro Benutzer“ basierend auf der Anzahl der Benutzer ermittelt, die zur Nutzung von Multi-Factor Authentication konfiguriert sind, oder basierend auf der Anzahl der Benutzer, die Überprüfungen durchführen?**
 
@@ -113,13 +101,10 @@ Ihre Organisation kann jederzeit Lizenzen für Azure Multi-Factor Authentication
 
 Bei der Verwendung des verbrauchsbasierten Abrechnungsmodells durch eine Organisation ist Azure Active Directory nicht erforderlich. Es steht Ihnen frei, einen Multi-Factor Authentication-Anbieter mit einem Verzeichnis zu verknüpfen. Wenn Ihre Organisation nicht mit einem Verzeichnis verknüpft ist, kann sie Azure Multi-Factor Authentication-Server oder das Azure Multi-Factor Authentication-SDK lokal bereitstellen. Azure Active Directory ist für das Lizenzmodell erforderlich, da Lizenzen dem Verzeichnis hinzugefügt werden, wenn Sie sie nach dem Kauf Benutzern im Verzeichnis zuweisen.
 
-
 ## Benutzerfreundlichkeit
-
 **F: Was tut ein Benutzer, wenn er keine Antwort auf seinem Telefon erhält, oder das Telefon dem Benutzer nicht zur Verfügung steht?**
 
 Wenn für den Benutzer zuvor ein alternatives Telefon als Ersatzanschluss konfiguriert wurde, sollte er es erneut versuchen und auf der Anmeldeseite bei entsprechender Aufforderung den Ersatzanschluss auswählen. Wenn für den Benutzer keine andere Methode konfiguriert wurde, sollte er den Administrator der Organisation bitten, die Nummer des primären Mobil- oder Festnetztelefons, die dem Benutzer zugewiesen wurde, zu aktualisieren.
-
 
 **F: Wie geht der Administrator vor, wenn ein Benutzer über ein Konto mit ihm in Kontakt tritt, auf das der Benutzer nicht mehr zugreifen kann?**
 
@@ -131,15 +116,17 @@ Der Administrator kann alle App-Kennwörter des Benutzers löschen, um nicht aut
 
 **F: Was geschieht, wenn der Benutzer sich nicht bei nicht browserbasierten Apps anmelden kann?**
 
-- Ein Benutzer, der zur Verwendung von Multi-Factor Authentication konfiguriert ist, benötigt zum Anmelden bei einigen nicht browserbasierten Apps ein App-Kennwort.
-- Der Benutzer muss die Anmeldeinformationen löschen, die App neu starten und sich mit seinem Benutzernamen und dem App-Kennwort anmelden.
+* Ein Benutzer, der zur Verwendung von Multi-Factor Authentication konfiguriert ist, benötigt zum Anmelden bei einigen nicht browserbasierten Apps ein App-Kennwort.
+* Der Benutzer muss die Anmeldeinformationen löschen, die App neu starten und sich mit seinem Benutzernamen und dem App-Kennwort anmelden.
 
 Weitere Informationen zum Erstellen von App-Kennwörtern und sonstige Hilfe finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?](multi-factor-authentication-end-user-app-passwords.md).
 
-
->[AZURE.NOTE] Moderne Authentifizierung für Office 2013-Clients
->
+> [!NOTE]
+> Moderne Authentifizierung für Office 2013-Clients
+> 
 > Office 2013-Clients (einschließlich Outlook) unterstützen neue Authentifizierungsprotokolle. Sie können Office 2013 zur Unterstützung von Multi-Factor Authentication konfigurieren. Nach der Konfiguration von Office 2013 sind keine App-Kennwörter für Office 2013-Clients erforderlich. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/) (Öffentliche Preview für moderne Authentifizierung in Office 2013).
+> 
+> 
 
 **F: Was kann ein Benutzer tun, wenn er keine Textnachricht erhält oder beim Antworten auf die Textnachricht ein Timeout auftritt?**
 
@@ -163,9 +150,7 @@ Sicherheitsänderungen in Windows Server 2012 R2 haben die Art geändert, in der
 
 Wenn Multi-Factor Authentication-Anrufe über das öffentliche Telefonnetz geleitet werden, laufen sie manchmal über einen Betreiber, der Anrufer-IDs nicht unterstützt. Aus diesem Grund ist die Anrufer-ID nicht garantiert, obwohl das Multi-Factor Authentication-System sie immer sendet.
 
-
 ## Fehler
-
 **F: Wie geht ein Benutzer vor, wenn er die Fehlermeldung „Authentifizierungsanforderung gilt nicht für ein aktiviertes Konto“ erhält, wenn der Benutzer sich mithilfe von Benachrichtigungen über die mobile App authentifiziert?**
 
 Gehen Sie folgendermaßen vor:
@@ -175,9 +160,6 @@ Gehen Sie folgendermaßen vor:
 3. Klicken Sie auf **Zusätzliche Sicherheitsüberprüfung**.
 4. Entfernen Sie das vorhandene Konto aus der mobilen App.
 5. Klicken Sie auf **Konfigurieren**, und folgen Sie den Anweisungen, um die mobile App neu zu konfigurieren.
-
-
-
 
 **F: Wie geht ein Benutzer vor, wenn eine 0x800434D4L-Fehlermeldung angezeigt wird, wenn der Benutzer versucht, sich mithilfe einer nicht browserbasierten Anwendung anzumelden?**
 

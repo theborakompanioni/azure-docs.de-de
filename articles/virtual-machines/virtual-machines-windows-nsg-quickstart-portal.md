@@ -1,23 +1,23 @@
-<properties
-   pageTitle="Öffnen von Ports für einen virtuellen Computer mithilfe des Azure-Portals | Microsoft Azure"
-   description="Erfahren Sie, wie Sie mit dem Resource Manager-Bereitstellungsmodell im Azure-Portal für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen."
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""/>
+---
+title: Öffnen von Ports für einen virtuellen Computer mithilfe des Azure-Portals | Microsoft Docs
+description: Erfahren Sie, wie Sie mit dem Resource Manager-Bereitstellungsmodell im Azure-Portal für Ihren virtuellen Windows-Computer einen Port öffnen oder einen Endpunkt erstellen.
+services: virtual-machines-windows
+documentationcenter: ''
+author: iainfoulds
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="infrastructure-services"
-   ms.date="08/08/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 08/08/2016
+ms.author: iainfou
 
+---
 # Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals
-[AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
+[!INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## Schnellbefehle
 Sie können [diese Schritte auch über Azure PowerShell ausführen](virtual-machines-windows-nsg-quickstart-powershell.md).
@@ -48,7 +48,6 @@ Wählen Sie das virtuelle Netzwerk und dann das gewünschte Subnetz aus:
 
 Sie haben nun eine Netzwerksicherheitsgruppe sowie eine eingehende Regel erstellt, die Datenverkehr über Port 80 ermöglicht, und haben diese einem Subnetz zugeordnet. Alle virtuellen Computer, die Sie mit diesem Subnetz verbinden, sind über Port 80 erreichbar.
 
-
 ## Weitere Informationen zu Netzwerksicherheitsgruppen
 Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Computer einrichten. Netzwerksicherheitsgruppen bieten eine Vielzahl erstklassiger Funktionen sowie eine differenzierte Steuerung des Ressourcenzugriffs. Weitere Informationen über die [Erstellung von Netzwerksicherheitsgruppen und ACL-Regeln erhalten Sie hier](../virtual-network/virtual-networks-create-nsg-arm-ps.md).
 
@@ -59,8 +58,8 @@ Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen
 ## Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
-- [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
-- [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
-- [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
+* [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
+* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
+* [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
 
 <!---HONumber=AcomDC_0907_2016-->

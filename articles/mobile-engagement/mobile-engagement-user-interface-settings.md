@@ -1,110 +1,94 @@
-<properties 
-   pageTitle="Azure Mobile Engagement – Benutzeroberfläche - Einstellungen" 
-   description="Informationen zum Verwalten der globalen Einstellungen Ihrer Anwendung mithilfe von Azure Mobile Engagement" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
-   editor=""/>
+---
+title: Azure Mobile Engagement – Benutzeroberfläche - Einstellungen
+description: Informationen zum Verwalten der globalen Einstellungen Ihrer Anwendung mithilfe von Azure Mobile Engagement
+services: mobile-engagement
+documentationcenter: ''
+author: piyushjo
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="mobile-engagement"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
-   ms.date="08/19/2016"
-   ms.author="piyushjo"/>
+ms.service: mobile-engagement
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: mobile-multiple
+ms.workload: mobile
+ms.date: 08/19/2016
+ms.author: piyushjo
 
+---
 # Verwaltung der globalen Einstellungen Ihrer Anwendung
-
 Die verfügbaren Optionen im Menü **Einstellungen** für eine Anwendung variieren abhängig von der Plattform der Anwendung und den Berechtigungen, die Sie der Anwendung erteilt haben. Dazu zählen: Details, Projekte, Systemeigener Push, Pushgeschwindigkeit, Tag (App-Info) und Kommerzieller Druck. Die Menüoption „Tag“ (App-Info) im Abschnitt „Einstellungen“ kann von der Anwendung (mithilfe des SDK) oder von Ihrem Back-End (mithilfe der Device-API) verwaltet werden.
 
-
->[AZURE.NOTE] Viele Abschnitte der Benutzeroberfläche des **Mobile Engagement**-Portals enthalten die Schaltfläche **HILFE ANZEIGEN**. Drücken Sie diese Schaltfläche, um weitere Kontextinformationen zu einem bestimmten Bereich zu erhalten.
+> [!NOTE]
+> Viele Abschnitte der Benutzeroberfläche des **Mobile Engagement**-Portals enthalten die Schaltfläche **HILFE ANZEIGEN**. Drücken Sie diese Schaltfläche, um weitere Kontextinformationen zu einem bestimmten Bereich zu erhalten.
+> 
+> 
 
 ## Details
-
 Ermöglicht Ihnen, den Namen und die Beschreibung Ihrer Anwendung zu ändern sowie deren Besitzer und Ihre Rollenberechtigungen anzuzeigen.
 
 Analysekonfiguration: Ermöglicht das Anzeigen oder Ändern des Anfangstags der Woche und des Bindungszeitraums in Tagen.
- 
-  ![settings1][46]
- 
-## Projekte
 
+  ![settings1][46]
+
+## Projekte
 Ermöglicht Ihnen die Auswahl aller Projekte, in denen die Anwendung angezeigt werden soll.
 
 Sie können auch ein Projekt suchen und den Namen, die Beschreibung, den Besitzer und Ihre Rollenberechtigungen für Projekte anzeigen, zu denen die Anwendung gehört.
 
 Weitere Informationen finden Sie unter [Dokumentation zur Benutzeroberfläche – Startseite][Link 13].
- 
+
   ![settings3][48]
 
 ## Systemeigener Push
-
 Ermöglicht das Registrieren eines neuen Zertifikats oder Löschen eines vorhandenen Zertifikats für die Verwendung mit systemeigenem Push. "Systemeigener Push" ermöglicht Azure Mobile Engagement Pushübertragungen an Ihre Anwendung zu jeder Zeit, selbst wenn sie nicht ausgeführt wird.
 
 Nach dem Angeben von Anmeldeinformationen oder Zertifikaten für mindestens einen systemeigenen Pushdienst können Sie beim Erstellen von Reach-Kampagnen "Jederzeit" auswählen und auch den Parameter "Notifier" in der PUSH-API verwenden.
 
-
-
 ### Apple Push Notification Service (APNS)
-
 Zum Aktivieren des systemeigenen Pushs mithilfe von Apple Push Notification Service müssen Sie Ihr Zertifikat registrieren. Sie müssen den Typ des Zertifikats entweder als DEV (Entwicklung) oder PROD (Produktion) angeben. Anschließend müssen Sie Ihr Zertifikat und Kennwort hochladen.
 
 Weitere Informationen finden Sie unter [SDK-Dokumentation – iOS – Vorbereiten der Anwendung für Apple-Pushbenachrichtigungen][Link 5]
- 
+
 ![settings4][49]
- 
+
 ### Windows-Pushbenachrichtigungsdienst (Windows Push Notification Service, WPNS)
-
 Um systemeigenen Push mit dem Windows-Pushbenachrichtigungsdienst zu aktivieren, müssen Sie die Anmeldeinformationen Ihrer Anwendung bereitstellen. Sie benötigen die Paketsicherheits-ID (SID) und den geheimen Schlüssel.
- 
-![settings5][50]
- 
-### Google Cloud Messaging (GCM) für Android
 
+![settings5][50]
+
+### Google Cloud Messaging (GCM) für Android
 Um systemeigenen Push über GCM zu aktivieren, müssen Sie den Anweisungen von Google folgen. Dann müssen einen "Server::Simple"-API-Schlüssel einfügen, der ohne IP-Einschränkungen konfiguriert ist. Erfordert Integration mit dem SDK für Android ab Version 1.12.0.
 
 Weitere Informationen finden Sie unter:
 
-- [SDK-Dokumentation – Android – Integration von GCM][Link 5]
-- [Google Developer-Handbuch für GCM](http://developer.android.com/guide/google/gcm/gs.html)
- 
-### Amazon Device Messaging (ADM) für Android
+* [SDK-Dokumentation – Android – Integration von GCM][Link 5]
+* [Google Developer-Handbuch für GCM](http://developer.android.com/guide/google/gcm/gs.html)
 
+### Amazon Device Messaging (ADM) für Android
 Zum Aktivieren von nativem Push mit ADM müssen Sie Amazon-<OAuth-Anmeldeinformationen> angeben. Diese bestehen aus einer Client-ID und einem Clientschlüssel (erfordert die Integration mit dem SDK für Android ab Version 2.1.0).
 
 Weitere Informationen finden Sie unter:
 
-- [SDK-Dokumentation – Android – Integration von ADM][Link 5]
-- [Amazon Developer-ADM-Dokumentation](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
- 
+* [SDK-Dokumentation – Android – Integration von ADM][Link 5]
+* [Amazon Developer-ADM-Dokumentation](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
+
 ![settings6][51]
 
 ## Pushgeschwindigkeit
-
 Zeigt die aktuelle Pushgeschwindigkeit Ihrer Anwendung und ermöglicht Ihnen, die Pushgeschwindigkeit der Anwendung festzulegen.
- 
+
   ![settings7][52]
 
 ## Tag (App-Info)
-
 ![settings11][56]
-  
+
 ## Kommerzieller Druck
-
-
 ![settings12][57]
 
-
 ## Siehe auch
-
-- [Konzepte][Link 6]
-- [Handbuch zur Problembehandlung – Dienst][Link 24]
-
- 
+* [Konzepte][Link 6]
+* [Handbuch zur Problembehandlung – Dienst][Link 24]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -200,6 +184,6 @@ Zeigt die aktuelle Pushgeschwindigkeit Ihrer Anwendung und ermöglicht Ihnen, di
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
- 
+
 
 <!---HONumber=AcomDC_0824_2016-->

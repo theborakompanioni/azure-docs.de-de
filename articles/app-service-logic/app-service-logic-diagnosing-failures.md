@@ -1,31 +1,28 @@
-<properties
-   pageTitle="Diagnostizieren von Fehlern bei Logik-Apps | Microsoft Azure"
-   description="Gängige Ansätze zur Ermittlung von Fehlern bei Logik-Apps"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="jeffhollan"
-   manager="erikre"
-   editor=""/>
+---
+title: Diagnostizieren von Fehlern bei Logik-Apps | Microsoft Docs
+description: Gängige Ansätze zur Ermittlung von Fehlern bei Logik-Apps
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: jeffhollan
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="05/18/2016"
-   ms.author="jehollan"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 05/18/2016
+ms.author: jehollan
 
+---
 # Diagnostizieren von Fehlern bei Logik-Apps
-
 Wenn beim Logik-Apps-Feature von Azure App Service Fehler oder Probleme auftreten, gibt es einige Möglichkeiten, herauszufinden, wodurch die Fehler bzw. Probleme entstehen.
 
 ## Tools des Azure-Portals
-
 Das Azure-Portal enthält viele Tools zum Diagnostizieren der einzelnen Schritte jeder Logik-App.
 
 ### Triggerverlauf
-
 Jede Logik-App verfügt über mindestens einen Trigger. Wenn Sie feststellen, dass Apps keine Ereignisse auslösen, sollten Sie als Erstes im Triggerverlauf nach weiteren Informationen suchen. Sie können vom Hauptblatt der Logik-App auf den Triggerverlauf zugreifen:
 
 ![Ermitteln des Triggerverlaufs][1]
@@ -39,11 +36,9 @@ Es können verschiedene Status angezeigt werden:
 * **Fehler**. Ein Fehler wurde generiert.
 
 #### Manuelles Starten eines Triggers
-
 Wenn die Logik-App sofort nach einem verfügbaren Trigger suchen soll (ohne auf die nächste Wiederholung zu warten), können Sie auf dem Hauptblatt auf **Trigger auswählen** klicken, um den Vorgang zu erzwingen. Wenn Sie beispielsweise mit einem Dropbox-Trigger auf diesen Link klicken, fragt der Workflow Dropbox sofort nach neuen Dateien ab.
 
 ### Ausführungsverlauf
-
 Der ausgelöste Trigger führt zu einer Ausführung. Sie können vom Hauptblatt aus auf eine Vielzahl Informationen zur Ausführung zugreifen, die Ihnen dabei helfen herauszufinden, was während des Workflows passiert.
 
 ![Ermitteln des Ausführungsverlaufs][2]
@@ -58,25 +53,22 @@ Eine Ausführung zeigt einen der folgenden Status an:
 Im Ausführungsverlauf können Sie weitere Details anzeigen.
 
 #### Triggerausgaben
-
 Triggerausgaben zeigen die Daten an, die vom Trigger empfangen wurden. Damit können Sie ermitteln, ob alle Eigenschaften erwartungsgemäß zurückgegeben werden.
 
->[AZURE.NOTE] Es kann hilfreich sein zu wissen, wie das Logik-Apps-Feature [unterschiedliche Inhaltstypen behandelt](app-service-logic-content-type.md), wenn Sie unbekannte Inhalte sehen.
+> [!NOTE]
+> Es kann hilfreich sein zu wissen, wie das Logik-Apps-Feature [unterschiedliche Inhaltstypen behandelt](app-service-logic-content-type.md), wenn Sie unbekannte Inhalte sehen.
+> 
+> 
 
 ![Beispiele für Triggerausgaben][3]
 
 #### Eingaben und Ausgaben von Aktionen
-
 Sie können einen Drilldown in die Eingaben und Ausgaben durchführen, die von einer Aktion empfangen wurden. Dies ist nützlich für das Verständnis der Größe und Form der Ausgaben und zur Anzeige aller Fehlermeldungen, die ggf. generiert wurden.
 
 ![Eingaben und Ausgaben von Aktionen][4]
 
 ## Debuggen der Workflowlaufzeit
-
 Zusätzlich zum Überwachen der Eingaben, Ausgaben und Trigger einer Ausführung kann es hilfreich sein, zur Unterstützung des Debuggens einige Schritte in einem Workflow hinzuzufügen. [RequestBin](http://requestb.in) ist ein leistungsfähiges Tool, das Sie als Schritt in einem Workflow hinzufügen können. Mit RequestBin können Sie einen HTTP-Anforderungsinspektor einrichten, um die Größe, die Form und das Format einer HTTP-Anforderung zu bestimmen. Sie können ein neues RequestBin-Element erstellen und die URL in eine HTTP POST-Aktion für eine Logik-App einfügen – mit dem Textinhalt, den Sie testen möchten (z.B. ein Ausdruck oder andere Schrittausgabe). Nach dem Ausführen der Logik-App können Sie das RequestBin-Element aktualisieren, um anzuzeigen, wie die Anforderung beim Generieren durch das Logik-Apps-Modul gebildet wurde.
-
-
-
 
 <!-- image references -->
 [1]: ./media/app-service-logic-diagnosing-failures/triggerHistory.PNG

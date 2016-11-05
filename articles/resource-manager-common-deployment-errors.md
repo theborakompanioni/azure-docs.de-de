@@ -1,29 +1,27 @@
-<properties
-   pageTitle="Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft Azure"
-   description="Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager."
-   services="azure-resource-manager"
-   documentationCenter=""
-   tags="top-support-issue"
-   authors="tfitzmac"
-   manager="timlt"
-   editor="tysonn"
-   keywords="Bereitstellungsfehler, Azure-Bereitstellung, in Azure bereitstellen."/>
+---
+title: Problembehandlung bei häufigen Azure-Bereitstellungsfehlern | Microsoft Docs
+description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager.
+services: azure-resource-manager
+documentationcenter: ''
+tags: top-support-issue
+author: tfitzmac
+manager: timlt
+editor: tysonn
+keywords: Bereitstellungsfehler, Azure-Bereitstellung, in Azure bereitstellen.
 
-<tags
-   ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/14/2016"
-   ms.author="tomfitz"/>
+ms.service: azure-resource-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/14/2016
+ms.author: tomfitz
 
+---
 # Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
-
 In diesem Thema wird beschrieben, wie Sie einige gängige Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Falls Sie weitere Einzelheiten zum Bereitstellungsproblem benötigen, lesen Sie zunächst [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md). Kehren Sie anschließend zu diesem Artikel zurück, um Unterstützung beim Beheben des Fehlers zu erhalten.
 
 ## Ungültige Vorlage oder Ressource
-
 Beim Bereitstellen einer Vorlage wird unter Umständen Folgendes angezeigt:
 
     Code=InvalidTemplate 
@@ -38,7 +36,6 @@ Wenn Sie nicht die entsprechende Syntax bereitstellen, wird die Vorlage einen We
 Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (etwa [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) oder [Visual Studio Code](resource-manager-vs-code.md)).
 
 ## Falsche Segmentlängen
-
 Ein weiterer Fehler vom Typ „Ungültige Vorlage“ tritt auf, wenn der Ressourcenname nicht im richtigen Format vorliegt.
 
     Code=InvalidTemplate
@@ -76,7 +73,6 @@ Die korrekte Verwendung der Segmente kann insbesondere bei Resource Manager-Type
         "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
 
 ## Bereits vorhandener oder bereits von einer anderen Ressource verwendeter Ressourcenname
-
 Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websites, müssen Sie einen im gesamten Azure-Dienst eindeutigen Namen für die Ressource angeben. Wenn Sie keinen eindeutigen Namen angeben, tritt unter Umständen ein Fehler wie der folgende auf:
 
     Code=StorageAccountAlreadyTaken 
@@ -88,7 +84,6 @@ Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonventi
     "type": "Microsoft.Storage/storageAccounts",
 
 ## Die Ressource kann während der Bereitstellung nicht gefunden werden
-
 Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzeitig Ressourcen erstellt werden. Wenn eine Ressource nach einer anderen Ressource bereitgestellt werden muss, müssen Sie das **dependsOn**-Element in der Vorlage verwenden, um eine Abhängigkeitsbeziehung mit der anderen Ressource herzustellen. Beim Bereitstellen einer Web-App muss z. B. der App Service-Plan vorhanden sein. Wenn Sie nicht angegeben haben, dass die Web-App vom App Service-Plan abhängig ist, erstellt Resource Manager beide Ressourcen zur gleichen Zeit. Wenn Sie versuchen, eine Eigenschaft für die Web-App festzulegen, erhalten Sie eine Fehlermeldung, dass die App Service-Planressource nicht gefunden werden kann, da sie noch nicht vorhanden ist. Sie können diesen Fehler verhindern, indem Sie die Abhängigkeit in der Web-App festlegen.
 
     {
@@ -102,11 +97,9 @@ Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzei
     }
 
 ## Member „copy“ wurde für das Objekt nicht gefunden.
-
 Dieser Fehler tritt auf, wenn Sie das Element **copy** auf einen Teil der Vorlage angewendet haben, der dieses Element nicht unterstützt. Sie können das copy-Element nur auf einen Ressourcentyp anwenden. Sie können „copy“ nicht auf eine Eigenschaft in einem Ressourcentyp anwenden. Beispiel: Sie wenden „copy“ auf einen virtuellen Computer an, können das Element aber nicht auf die Betriebssystem-Datenträger für einen virtuellen Computer anwenden. In einigen Fällen können Sie eine untergeordnete Ressource in eine übergeordnete Ressource umwandeln, um eine Kopierschleife zu erstellen. Weitere Informationen zur Verwendung von „copy“ finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md).
 
 ## SKU nicht verfügbar
-
 Beim Bereitstellen einer Ressource (in der Regel ein virtueller Computer) werden möglicherweise der folgende Fehlercode und die folgende Fehlermeldung angezeigt:
 
     Code: SkuNotAvailable
@@ -114,15 +107,12 @@ Beim Bereitstellen einer Ressource (in der Regel ein virtueller Computer) werden
 
 Sie erhalten diesen Fehler, wenn die ausgewählte Ressourcen-SKU (z.B. die Größe des virtuellen Computers) für den ausgewählten Standort nicht verfügbar ist. Sie haben zwei Optionen, dieses Problem zu beheben:
 
-1.	Melden Sie sich beim Portal an, und beginnen Sie mit dem Hinzufügen einer neuen Ressource über die UI. Beim Festlegen der Werte werden die verfügbaren SKUs für die Ressource angezeigt.
-
-    ![Verfügbare SKUs](./media/resource-manager-common-deployment-errors/view-sku.png)
-
-2.	Wenn Sie keine geeignete SKU in dieser Region oder einer anderen Region finden, die Ihre Geschäftsanforderungen erfüllt, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support).
-
+1. Melden Sie sich beim Portal an, und beginnen Sie mit dem Hinzufügen einer neuen Ressource über die UI. Beim Festlegen der Werte werden die verfügbaren SKUs für die Ressource angezeigt.
+   
+   ![Verfügbare SKUs](./media/resource-manager-common-deployment-errors/view-sku.png)
+2. Wenn Sie keine geeignete SKU in dieser Region oder einer anderen Region finden, die Ihre Geschäftsanforderungen erfüllt, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support).
 
 ## Kein registrierter Anbieter gefunden
-
 Beim Bereitstellen von Ressourcen werden möglicherweise der folgende Fehlercode und die folgende Fehlermeldung angezeigt:
 
     Code: NoRegisteredProviderFound
@@ -137,7 +127,6 @@ Für diesen Fehler gibt es drei Gründe:
 Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie zuvor noch keinen bestimmten Ressourcenanbieter verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren. Mit den folgenden Befehlen können Sie weitere Informationen zu Ressourcenanbietern anzeigen.
 
 ### PowerShell
-
 Verwenden Sie zum Anzeigen des Registrierungsstatus **Get-AzureRmResourceProvider**.
 
     Get-AzureRmResourceProvider -ListAvailable
@@ -155,7 +144,6 @@ Verwenden Sie zum Abrufen der unterstützten API-Versionen für einen bestimmten
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 
 ### Azure-Befehlszeilenschnittstelle
-
 Mit dem Befehl `azure provider list` können Sie ermitteln, ob der Anbieter registriert ist.
 
     azure provider list
@@ -169,7 +157,6 @@ Verwenden Sie zum Anzeigen der unterstützten Standorte und API-Versionen für e
     azure provider show -n Microsoft.Compute --json > compute.json
 
 ## Das Kontingent wurde überschritten
-
 Probleme können auftreten, wenn eine Bereitstellung ein Kontingent überschreitet (etwa für eine Ressourcengruppe, ein Abonnement, ein Konto oder Ähnliches). Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr Kernen als der zulässigen Anzahl bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde. Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](azure-subscription-service-limits.md).
 
 Mit dem Befehl `azure vm list-usage` können Sie über die Azure-Befehlszeilenschnittstelle die Kernkontingente Ihres eigenen Abonnements untersuchen. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
@@ -209,56 +196,53 @@ Ausgabe des Befehls:
 
 In diesen Fällen sollten Sie zum Portal navigieren und ein Supportproblem einreichen, um Ihr Kontingent für die Region, in der Sie diese bereitstellen möchten, zu erhöhen.
 
-> [AZURE.NOTE] Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in allen Regionen, auf die Sie Zugriff haben, bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne in allen Regionen anfordern.
-
+> [!NOTE]
+> Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in allen Regionen, auf die Sie Zugriff haben, bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne in allen Regionen anfordern.
+> 
+> 
 
 ## Fehler bei der Autorisierung
-
 Möglicherweise wird während der Bereitstellung ein Fehler angezeigt, da das Konto oder ein Dienstprinzipal, der versucht die Ressourcen bereitzustellen, keinen Zugriff zum Ausführen dieser Aktionen hat. Mit Azure Active Directory können Sie oder Ihr Administrator sehr genau kontrollieren, welche Identitäten auf welche Ressourcen Zugriff haben. Wenn Ihr Konto der Leserrolle zugewiesen ist, kann es beispielsweise keine neuen Ressourcen erstellen. In diesem Fall wird eine Fehlermeldung angezeigt, die darauf hinweist, dass die Autorisierung fehlgeschlagen ist.
 
-Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure Active Directory-Ressourcen](./active-directory/role-based-access-control-configure.md).
+Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure Active Directory-Ressourcen](active-directory/role-based-access-control-configure.md).
 
 Neben rollenbasierter Zugriffssteuerung können Ihre Bereitstellungsaktionen auch durch Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
 ## Problembehandlung bei virtuellen Computern
-
 | Error | Artikel |
-| -------- | ----------- |
-| Fehler der benutzerdefinierten Skripterweiterung | [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />oder<br />[Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
-| Fehler bei der Bereitstellung des Betriebssystemimage | [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />oder<br />[Behandeln von Resource Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) |
-| Fehler bei der Zuordnung | [Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Windows-Computern in Azure](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />oder<br />[Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Linux-Computern in Azure](./virtual-machines/virtual-machines-linux-allocation-failure.md) |
-| Secure Shell (SSH)-Fehler beim Herstellen einer Verbindung | [Problembehandlung für SSH-Verbindungen (Secure Shell) mit einem Linux-basierten virtuellen Azure-Computer](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
-| Fehler beim Herstellen einer Verbindung mit einer Anwendung, die auf einem virtuellen Computer ausgeführt wird | [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Windows)](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />oder<br />[Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Linux)](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
-| Fehler bei Remotedesktopverbindungen | [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) |
-| Verbindungsfehler, die durch eine erneute Bereitstellung behoben werden | [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) |
-| Clouddienstfehler | [Behandeln von Problemen mit der Clouddienstbereitstellung](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
+| --- | --- |
+| Fehler der benutzerdefinierten Skripterweiterung |[Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />oder<br />[Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
+| Fehler bei der Bereitstellung des Betriebssystemimage |[Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />oder<br />[Behandeln von Resource Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) |
+| Fehler bei der Zuordnung |[Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Windows-Computern in Azure](virtual-machines/virtual-machines-windows-allocation-failure.md)<br />oder<br />[Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Linux-Computern in Azure](virtual-machines/virtual-machines-linux-allocation-failure.md) |
+| Secure Shell (SSH)-Fehler beim Herstellen einer Verbindung |[Problembehandlung für SSH-Verbindungen (Secure Shell) mit einem Linux-basierten virtuellen Azure-Computer](virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
+| Fehler beim Herstellen einer Verbindung mit einer Anwendung, die auf einem virtuellen Computer ausgeführt wird |[Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Windows)](virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />oder<br />[Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Linux)](virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
+| Fehler bei Remotedesktopverbindungen |[Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) |
+| Verbindungsfehler, die durch eine erneute Bereitstellung behoben werden |[Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) |
+| Clouddienstfehler |[Behandeln von Problemen mit der Clouddienstbereitstellung](cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
 
 ## Problembehandlung bei anderen Diensten
-
 Die folgende Tabelle ist keine vollständige Liste der Problembehandlung für Azure. Stattdessen konzentriert sie sich auf Probleme im Zusammenhang mit der Bereitstellung oder Konfiguration von Ressourcen. Wenn Sie Hilfe bei der Problembehandlung von Laufzeitproblemen mit einer Ressource benötigen, lesen Sie die Informationen in der Dokumentation für den jeweiligen Azure-Dienst.
 
 | Dienst | Artikel |
-| -------- | -------- |
-| Automation | [Tipps zur Problembehandlung für häufige Fehler in Azure Automation](./automation/automation-troubleshooting-automation-errors.md) |
-| Azure Stack | [Microsoft Azure Stack troubleshooting (Problembehandlung für Microsoft Azure Stack)](./azure-stack/azure-stack-troubleshooting.md) |
-| Azure Stack | [Web Apps and Azure Stack (Web-Apps und Azure Stack)](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) |
-| Data Factory | [Problembehandlung bei Data Factory](./data-factory/data-factory-troubleshoot.md) |
-| Service Fabric | [Häufig auftretende Probleme und Problembehandlung beim Bereitstellen von Diensten in Azure Service Fabric](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
-| Site Recovery | [Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
-| Speicher | [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
-| StorSimple | [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](./storsimple/storsimple-troubleshoot-deployment.md) |
-| SQL-Datenbank | [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](./sql-database/sql-database-troubleshoot-common-connection-issues.md) |
-| SQL Data Warehouse | [Problembehandlung bei Azure SQL Data Warehouse](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) |
+| --- | --- |
+| Automation |[Tipps zur Problembehandlung für häufige Fehler in Azure Automation](automation/automation-troubleshooting-automation-errors.md) |
+| Azure Stack |[Microsoft Azure Stack troubleshooting (Problembehandlung für Microsoft Azure Stack)](azure-stack/azure-stack-troubleshooting.md) |
+| Azure Stack |[Web Apps and Azure Stack (Web-Apps und Azure Stack)](azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) |
+| Data Factory |[Problembehandlung bei Data Factory](data-factory/data-factory-troubleshoot.md) |
+| Service Fabric |[Häufig auftretende Probleme und Problembehandlung beim Bereitstellen von Diensten in Azure Service Fabric](service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
+| Site Recovery |[Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
+| Speicher |[Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](storage/storage-monitoring-diagnosing-troubleshooting.md) |
+| StorSimple |[Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](storsimple/storsimple-troubleshoot-deployment.md) |
+| SQL-Datenbank |[Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](sql-database/sql-database-troubleshoot-common-connection-issues.md) |
+| SQL Data Warehouse |[Problembehandlung bei Azure SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-troubleshoot.md) |
 
 ## Verstehen, wann eine Bereitstellung bereit ist
-
 Azure Resource Manager meldet eine erfolgreiche Bereitstellung, wenn alle Anbieter erfolgreich von der Bereitstellung zurückgegeben werden. Dies bedeutet jedoch nicht zwangsläufig, dass Ihre Ressourcengruppe aktiv ist und für Benutzer bereitsteht. Zum Beispiel muss eine Bereitstellung Upgrades herunterladen, auf andere Ressourcen ohne Vorlagen warten oder komplexe Skripte oder andere ausführbare Aktivitäten installieren, die Azure nicht kennt, da es sich um keine Aktivität handelt, die ein Anbieter überwacht. In diesen Fällen kann einige Zeit vergehen, bis Ihre Ressourcen tatsächlich nutzungsbereit sind. Daher sollten Sie davon ausgehen, dass der Bereitstellungsstatus einige Zeit bevor Ihre Bereitstellung genutzt werden kann, erfolgreich ist.
 
 Sie können jedoch Azure daran hindern, einen erfolgreichen Bereitstellungsstatus zu melden, indem Sie ein benutzerdefiniertes Skript für Ihre benutzerdefinierte Vorlage erstellen -- beispielsweise mithilfe der [CustomerScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) -- das weiß, wie die gesamte Bereitstellung für eine systemweite Einsatzbereitschaft zu überwachen ist und nur erfolgreich zurückkehrt, wenn Benutzer mit der gesamten Bereitstellung interagieren können. Wenn Sie sicherstellen möchten, dass Ihre Erweiterung die letzte ist, die ausgeführt wird, verwenden Sie die **dependsOn**-Eigenschaft in Ihrer Vorlage.
 
 ## Nächste Schritte
-
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
+* Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
+* Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
 
 <!---HONumber=AcomDC_0720_2016-->

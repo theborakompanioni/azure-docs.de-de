@@ -4,11 +4,11 @@ Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. Sobald 
 
 1. Erstellen einer Netzwerksicherheitsgruppe
 2. Erstellen einer Datenverkehr-Eingangsregel mit diesen Angaben:
-  - Zielportbereich „80“
-  - Quellportbereich „*“ (beliebiger Quellport)
-  - Prioritätswert von weniger als 65.500 (um eine höhere Priorität als mit der standardmäßigen Catch-All-Verweigerungsregel für eingehenden Datenverkehr zu erzielen)
+   * Zielportbereich „80“
+   * Quellportbereich „*“ (beliebiger Quellport)
+   * Prioritätswert von weniger als 65.500 (um eine höhere Priorität als mit der standardmäßigen Catch-All-Verweigerungsregel für eingehenden Datenverkehr zu erzielen)
 3. Zuordnen der Netzwerksicherheitsgruppe zur VM-Netzwerkschnittstelle oder zum Subnetz
-    
+
 Sie können komplexe Netzwerkkonfigurationen zur Sicherung Ihrer Umgebung mithilfe von Netzwerksicherheitsgruppen und Regeln erstellen. In unserem Beispiel werden nur ein oder zwei Regeln verwendet, die HTTP-Datenverkehr oder Remoteverwaltung zulassen. Weitere Informationen finden Sie im folgenden Abschnitt [Weitere Informationen](#more-information-on-network-security-groups) oder unter [Was ist eine Netzwerksicherheitsgruppe?](../articles/virtual-network/virtual-networks-nsg.md)
 
 <!---HONumber=AcomDC_0907_2016-->

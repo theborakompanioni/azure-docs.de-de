@@ -1,30 +1,27 @@
-<properties
-   pageTitle="Herstellen einer Verbindung mit einem geschützten privaten Cluster | Microsoft Azure"
-   description="In diesem Artikel wird beschrieben, wie Sie die Kommunikation in einem eigenständigen oder privaten Cluster und zwischen Clients und dem Cluster schützen."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="dsk-2015"
-   manager="timlt"
-   editor=""/>
+---
+title: Herstellen einer Verbindung mit einem geschützten privaten Cluster | Microsoft Docs
+description: In diesem Artikel wird beschrieben, wie Sie die Kommunikation in einem eigenständigen oder privaten Cluster und zwischen Clients und dem Cluster schützen.
+services: service-fabric
+documentationcenter: .net
+author: dsk-2015
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/08/2016"
-   ms.author="dkshir"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 07/08/2016
+ms.author: dkshir
 
-
+---
 # <a name="secure-a-standalone-cluster-on-windows-using-x.509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
-
 In diesem Artikel wird beschrieben, wie Sie die Kommunikation zwischen den unterschiedlichen Knoten Ihres eigenständigen Windows-Clusters schützen und Clients, die eine Verbindung mit diesem Cluster herstellen, mit X.509-Zertifikaten authentifizieren. So wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster und die bereitgestellten Anwendungen zugreifen und Verwaltungsaufgaben durchführen können.  Die Zertifikatsicherheit sollte auf dem Cluster aktiviert werden, wenn der Cluster erstellt wird.  
 
 Weitere Informationen zur Clustersicherheit wie Knoten-zu-Knoten-Sicherheit, Client-zu-Knoten-Sicherheit und rollenbasierte Zugriffssteuerung finden Sie unter [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md).
 
 ## <a name="which-certificates-will-you-need?"></a>Welche Zertifikate werden benötigt?
-
 Laden Sie als Erstes das [Paket mit dem eigenständigen Cluster](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) auf einen der Knoten im Cluster herunter. Das heruntergeladene Paket enthält die Datei **ClusterConfig.X509.MultiMachine.json** . Öffnen Sie die Datei, und sehen Sie sich den Abschnitt **security** im Abschnitt **properties** an:
 
     "security": {
@@ -63,17 +60,20 @@ Laden Sie als Erstes das [Paket mit dem eigenständigen Cluster](service-fabric-
 
 In diesem Abschnitt werden die Zertifikate beschrieben, die Sie zum Schützen des eigenständigen Windows-Clusters benötigen. Aktivieren Sie die zertifikatbasierte Sicherheit, indem Sie die Werte von **ClusterCredentialType** und **ServerCredentialType** auf *X509* festlegen.
 
->[AZURE.NOTE] Ein [Fingerabdruck](https://en.wikipedia.org/wiki/Public_key_fingerprint) ist die primäre Identität eines Zertifikats. Lesen Sie [Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695.aspx) , um den Fingerabdruck der von Ihnen erstellten Zertifikate zu ermitteln.
+> [!NOTE]
+> Ein [Fingerabdruck](https://en.wikipedia.org/wiki/Public_key_fingerprint) ist die primäre Identität eines Zertifikats. Lesen Sie [Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695.aspx) , um den Fingerabdruck der von Ihnen erstellten Zertifikate zu ermitteln.
+> 
+> 
 
 In der folgenden Tabelle sind die Zertifikate aufgeführt, die Sie für die Einrichtung des Clusters benötigen:
 
-|**CertificateInformation-Einstellung**|**Beschreibung**|
-|-----------------------|--------------------------|
-|ClusterCertificate|Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können zwei verschiedene Zertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt **Thumbprint** und den Fingerabdruck des sekundären Zertifikats in den Variablen unter **ThumbprintSecondary** fest.|
-|ServerCertificate|Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Der Einfachheit halber können Sie für *ClusterCertificate* und *ServerCertificate* dasselbe Zertifikat auswählen. Sie können zwei verschiedene Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt **Thumbprint** und den Fingerabdruck des sekundären Zertifikats in den Variablen unter **ThumbprintSecondary** fest. |
-|ClientCertificateThumbprints|Dies ist eine Gruppe von Zertifikaten, die auf den authentifizierten Clients installiert werden sollen. Auf den Computern, denen Sie Zugriff auf den Cluster gewähren möchten, können Sie verschiedene Clientzertifikate installieren. Legen Sie den Fingerabdruck eines Zertifikats jeweils in der Variablen **CertificateThumbprint** fest. Wenn Sie **IsAdmin** auf *true*festlegen, kann der Client, auf dem dieses Zertifikat installiert ist, Administratorverwaltungsaktivitäten für den Cluster durchführen. Wenn **IsAdmin** auf *false*festgelegt ist, kann der Client mit diesem Zertifikat nur Aktionen durchführen, die für Benutzerzugriffsrechte zulässig sind. (Hierbei handelt es sich in der Regel um schreibgeschützten Zugriff.) Weitere Informationen zu Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)](service-fabric-cluster-security.md/#role-based-access-control-rbac)  |
-|ClientCertificateCommonNames|Legen Sie den allgemeinen Namen des ersten Clientzertifikats für **CertificateCommonName**fest. **CertificateIssuerThumbprint** ist der Fingerabdruck für den Aussteller dieses Zertifikats. Weitere Informationen zu allgemeinen Namen und zum Aussteller finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx) .|
-|HttpApplicationGatewayCertificate|Hierbei handelt es sich um ein optionales Zertifikat, das zum Schutz des HTTP-Anwendungsgateways angegeben werden kann. Stellen Sie bei Verwendung dieses Zertifikats sicher, dass „reverseProxyEndpointPort“ unter „nodeTypes“ festgelegt ist.|
+| **CertificateInformation-Einstellung** | **Beschreibung** |
+| --- | --- |
+| ClusterCertificate |Dieses Zertifikat ist erforderlich, um die Kommunikation zwischen den Knoten in einem Cluster zu schützen. Sie können zwei verschiedene Zertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt **Thumbprint** und den Fingerabdruck des sekundären Zertifikats in den Variablen unter **ThumbprintSecondary** fest. |
+| ServerCertificate |Dieses Zertifikat wird dem Client angezeigt, wenn versucht wird, eine Verbindung mit diesem Cluster herzustellen. Der Einfachheit halber können Sie für *ClusterCertificate* und *ServerCertificate* dasselbe Zertifikat auswählen. Sie können zwei verschiedene Serverzertifikate verwenden: ein primäres Zertifikat und ein sekundäres Zertifikat für Upgrades. Legen Sie den Fingerabdruck des primären Zertifikats im Abschnitt **Thumbprint** und den Fingerabdruck des sekundären Zertifikats in den Variablen unter **ThumbprintSecondary** fest. |
+| ClientCertificateThumbprints |Dies ist eine Gruppe von Zertifikaten, die auf den authentifizierten Clients installiert werden sollen. Auf den Computern, denen Sie Zugriff auf den Cluster gewähren möchten, können Sie verschiedene Clientzertifikate installieren. Legen Sie den Fingerabdruck eines Zertifikats jeweils in der Variablen **CertificateThumbprint** fest. Wenn Sie **IsAdmin** auf *true*festlegen, kann der Client, auf dem dieses Zertifikat installiert ist, Administratorverwaltungsaktivitäten für den Cluster durchführen. Wenn **IsAdmin** auf *false*festgelegt ist, kann der Client mit diesem Zertifikat nur Aktionen durchführen, die für Benutzerzugriffsrechte zulässig sind. (Hierbei handelt es sich in der Regel um schreibgeschützten Zugriff.) Weitere Informationen zu Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac) |
+| ClientCertificateCommonNames |Legen Sie den allgemeinen Namen des ersten Clientzertifikats für **CertificateCommonName**fest. **CertificateIssuerThumbprint** ist der Fingerabdruck für den Aussteller dieses Zertifikats. Weitere Informationen zu allgemeinen Namen und zum Aussteller finden Sie unter [Verwenden von Zertifikaten](https://msdn.microsoft.com/library/ms731899.aspx) . |
+| HttpApplicationGatewayCertificate |Hierbei handelt es sich um ein optionales Zertifikat, das zum Schutz des HTTP-Anwendungsgateways angegeben werden kann. Stellen Sie bei Verwendung dieses Zertifikats sicher, dass „reverseProxyEndpointPort“ unter „nodeTypes“ festgelegt ist. |
 
 Im Anschluss sehen Sie ein Beispiel für eine Clusterkonfiguration mit Cluster-, Server- und Clientzertifikaten:
 
@@ -196,51 +196,49 @@ Wenn Sie über Zertifikate verfügen, können Sie sie auf den Clusterknoten inst
 
 1. Kopieren Sie die PFX-Datei(en) auf den Knoten.
 2. Öffnen Sie ein PowerShell-Fenster als Administrator, und geben Sie die folgenden Befehle ein. Ersetzen Sie *$pswd* durch das Kennwort, das Sie bei der Zertifikaterstellung verwendet haben. Ersetzen Sie *$PfxFilePath* durch den vollständigen Pfad der auf diesen Knoten kopierten PFX-Datei.
-
+   
     ```
     $pswd = "1234"
     $PfcFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-
 3. Als Nächstes muss die Zugriffssteuerung für dieses Zertifikat durch Ausführen des folgenden Skripts so festgelegt werden, dass der unter dem Netzwerkdienstkonto ausgeführte Service Fabric-Prozess sie nutzen kann: Geben Sie den Fingerabdruck des Zertifikats und „NETWORK SERVICE“ für das Dienstkonto an. Mithilfe des Tools „certmgr.exe“ und durch Anzeigen von „Private Schlüssel verwalten“ können Sie sich vergewissern, dass die ACLs für das Zertifikat korrekt sind.
-
+   
     ```
     param
     (
         [Parameter(Position=1, Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [string]$pfxThumbPrint,
-
+   
         [Parameter(Position=2, Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [string]$serviceAccount
         )
-
+   
         $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; };
-
+   
         # Specify the user, the permissions and the permission type
         $permission = "$($serviceAccount)","FullControl","Allow"
         $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission;
-
+   
         # Location of the machine related keys
         $keyPath = $env:ProgramData + "\Microsoft\Crypto\RSA\MachineKeys\";
         $keyName = $cert.PrivateKey.CspKeyContainerInfo.UniqueKeyContainerName;
         $keyFullPath = $keyPath + $keyName;
-
+   
         # Get the current acl of the private key
         $acl = (Get-Item $keyFullPath).GetAccessControl('Access')
-
+   
         # Add the new ace to the acl of the private key
         $acl.SetAccessRule($accessRule);
-
+   
         # Write back the new acl
         Set-Acl -Path $keyFullPath -AclObject $acl -ErrorAction Stop
-
+   
         #Observe the access rights currently assigned to this certificate.
         get-acl $keyFullPath| fl
         ```
-
 4. Repeat the steps above for each server certificate. You can also use these steps to install the client certificates on the machines that you want to allow access to the cluster.
 
 ## Create the secure cluster

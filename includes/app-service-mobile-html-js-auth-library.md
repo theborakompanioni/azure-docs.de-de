@@ -1,5 +1,4 @@
-###<a name="server-auth"></a>Vorgehensweise: Authentifizieren mithilfe eines Anbieters (Serverfluss)
-
+### <a name="server-auth"></a>Vorgehensweise: Authentifizieren mithilfe eines Anbieters (Serverfluss)
 Sie müssen Ihre App bei Ihrem Identitätsanbieter registrieren, um Mobile Services die Verwaltung des Authentifizierungsprozesses in Ihrer App zu ermöglichen. Anschließend müssen Sie in Ihrem Azure App Service die Anwendungs-ID und den geheimen Schlüssel Ihres Anbieters konfigurieren. Weitere Informationen finden Sie im Tutorial [Hinzufügen von Authentifizierung zu Ihrer App].
 
 Nach der Registrierung bei Ihrem Identitätsanbieter können Sie die „.login()“-Methode mit dem Namens Ihres Anbieters aufrufen. Für die Facebook-Anmeldung verwenden Sie z. B. den folgenden Code.
@@ -16,12 +15,10 @@ Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, ändern Sie 
 
 In diesem Fall verwaltet Azure App Service den OAuth 2.0-Authentifizierungsfluss, indem die Anmeldungsseite des ausgewählten Anbieters angezeigt und nach der erfolgreichen Anmeldung beim Identitätsanbieter ein App Service-Authentifizierungstoken generiert wird. Die „login“-Funktion gibt ein JSON-Objekt (user) zurück, das sowohl die Benutzer-ID als auch das App Service-Authentifizierungstoken in den Feldern userId bzw. authenticationToken zur Verfügung stellt. Dieses Token kann zwischen gespeichert und wiederverwendet werden, bis es abläuft.
 
-###<a name="client-auth"></a>Vorgehensweise: Authentifizieren mithilfe eines Anbieters (Clientfluss)
-
+### <a name="client-auth"></a>Vorgehensweise: Authentifizieren mithilfe eines Anbieters (Clientfluss)
 Ihre Anwendung kann den Identitätsanbieter auch unabhängig kontaktieren und das zurückgegebene Token zur Authentifizierung Ihrem App Service vorlegen. Mit diesem Clientfluss können Sie die einmalige Anmeldung für Ihre Benutzer implementieren oder zusätzliche Benutzerdaten vom Identitätsanbieter abrufen.
 
 #### Einfaches Beispiel für die Authentifizierung über soziale Profile
-
 Dieses Beispiel verwendet die Client-SDK von Facebook für die Authentifizierung:
 
 ```
@@ -37,7 +34,6 @@ client.login(
 Dieses Beispiel geht davon aus, dass das vom jeweiligen Anbieter gelieferte Token in der token-Variable gespeichert wird.
 
 #### Beispiel mit Microsoft-Konto
-
 Das folgende Beispiel verwendet das Live SDK, das einmalige Anmeldung für Windows Store-Apps mit Microsoft-Konto unterstützt:
 
 ```
@@ -56,8 +52,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 Dieses Beispiel ruft ein Token von Live Connect ab und übergibt das Token in einem Aufruf der „login“-Funktion an Ihren App Service.
 
-###<a name="auth-getinfo"></a>Vorgehensweise: Abrufen von Informationen zum authentifizierten Benutzer
-
+### <a name="auth-getinfo"></a>Vorgehensweise: Abrufen von Informationen zum authentifizierten Benutzer
 Die Authentifizierungsinformationen für den aktuellen Benutzer können mit einer AJAX-Methode vom `/.auth/me`-Endpunkt abgerufen werden. Stellen Sie sicher, dass der `X-ZUMO-AUTH`-Header auf Ihr Authentifizierungstoken festgelegt ist. Das Authentifizierungstoken wird in `client.currentUser.mobileServiceAuthenticationToken` gespeichert. Geben Sie beispielsweise Folgendes ein, um die API abzurufen:
 
 ```
@@ -73,7 +68,6 @@ fetch(url, { headers: headers })
 ```
 
 Der Abruf ist als npm-Paket oder zum Download im Browser von CDNJS verfügbar. Sie können auch JQuery oder eine andere AJAX-API zum Abrufen der Informationen verwenden. Daten werden als JSON-Objekt empfangen.
-
 
 <!-- URLs. -->
 [Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-cordova-get-started-users.md

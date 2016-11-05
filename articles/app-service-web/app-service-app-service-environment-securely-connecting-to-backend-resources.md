@@ -1,24 +1,23 @@
-<properties 
-	pageTitle="Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus" 
-	description="Erfahren Sie, wie Sie von einer App Service-Umgebung aus eine sichere Verbindung mit Back-End-Ressourcen herstellen." 
-	services="app-service" 
-	documentationCenter="" 
-	authors="ccompy" 
-	manager="wpickett" 
-	editor=""/>
+---
+title: Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus
+description: Erfahren Sie, wie Sie von einer App Service-Umgebung aus eine sichere Verbindung mit Back-End-Ressourcen herstellen.
+services: app-service
+documentationcenter: ''
+author: ccompy
+manager: wpickett
+editor: ''
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/11/2016" 
-	ms.author="stefsch"/>
+ms.service: app-service
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/11/2016
+ms.author: stefsch
 
-# Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus #
-
-## Übersicht ##
+---
+# Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus
+## Übersicht
 Da eine App Service-Umgebung immer **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem [virtuellen Netzwerk][virtualnetwork] des klassischen Bereitstellungsmodells erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen zu anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk erfolgen. Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden.
 
 Beispielsweise kann ein SQL Server auf einem Cluster virtueller Computer ausgeführt werden, wenn Port 1433 gesperrt ist. Der Endpunkt kann durch eine ACL geschützt werden, um nur den Zugriff von anderen Ressourcen im selben virtuellen Netzwerk aus zuzulassen.
@@ -29,9 +28,9 @@ In all diesen Szenarien können Apps, die in einer App Service-Umgebung ausgefü
 
 Eine Einschränkung gilt für ausgehenden Datenverkehr von einer App Service-Umgebung zu Endpunkten in einem virtuellen Netzwerk. App Service-Umgebungen können Endpunkte von virtuellen Computern nicht erreichen, die sich im **gleichen** Subnetz wie die App Service-Umgebung befinden. Dies sollte normalerweise kein Problem darstellen, wenn die App Service-Umgebungen in einem Subnetz bereitgestellt werden, das ausschließlich für die Verwendung durch die App Service-Umgebung reserviert ist.
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## Ausgehende Verbindungen und DNS-Anforderungen ##
+## Ausgehende Verbindungen und DNS-Anforderungen
 Damit eine App Service-Umgebung richtig funktioniert, ist ausgehender Zugriff auf verschiedene Endpunkte erforderlich. Eine vollständige Liste externer Endpunkte, die von einer ASE verwendet werden, befindet sich im Artikel [Netzwerkkonfiguration für ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) im Abschnitt „Erforderliche Netzwerkverbindung“.
 
 App Service-Umgebungen erfordern zudem eine gültige DNS-Infrastruktur, die für das virtuelle Netzwerk konfiguriert ist. Falls die DNS-Konfiguration nach der Erstellung einer App Service-Umgebung geändert wird, können Entwickler erzwingen, dass eine App Service-Umgebung die neue DNS-Konfiguration übernimmt. Wird im Portal über das Symbol „Neu starten“ oben auf dem Verwaltungsblatt der App Service-Umgebung ein paralleler Neustart der Umgebung ausgelöst, übernimmt diese die neue DNS-Konfiguration.
@@ -45,14 +44,10 @@ Eine gängige SQL Server-Konfiguration verfügt über einen Endpunkt, der an Por
 
 Es gibt zwei Ansätze zum Einschränken des Datenverkehrs zu diesem Endpunkt:
 
-
-- [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] \(Netzwerk-ACLs)
-
-- [Netzwerksicherheitsgruppen][NetworkSecurityGroups]
-
+* [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] \(Netzwerk-ACLs)
+* [Netzwerksicherheitsgruppen][NetworkSecurityGroups]
 
 ## Einschränken des Zugriffs mit einer Netzwerk-ACL
-
 Port 1433 kann über eine Netzwerk-Zugriffssteuerungsliste geschützt werden. Im Beispiel unten werden Clientadressen innerhalb des virtuellen Netzwerks auf eine weiße Liste gesetzt und der Zugriff auf alle anderen Clients blockiert.
 
 ![Beispiel zu Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlListExample]
@@ -79,11 +74,10 @@ Demzufolge muss zum Sperren des Zugriffs auf SQL Server einfach nur eine Netzwer
 Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe auf das enthaltende Subnetz angewendet:
 
     Get-AzureNetworkSecurityGroup -Name "testNSGExample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-1'
-    
+
 Das Endergebnis ist ein Satz von Sicherheitsregeln, die den externen Zugriff blockieren, während der VNet-interne Zugriff zugelassen wird:
 
 ![Standard-Netzwerksicherheitsgruppen][DefaultNetworkSecurityRules]
-
 
 ## Erste Schritte
 Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
@@ -94,10 +88,9 @@ Details zum Steuern des eingehenden Datenverkehrs in Ihre App Service-Umgebung f
 
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][AzureAppService].
 
-[AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
+[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
- 
+[!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/

@@ -1,49 +1,42 @@
-<properties
-    pageTitle="Verwenden des Tabellenspeichers mit PHP | Microsoft Azure"
-    description="Erfahren Sie, wie Sie den Tabellenspeicherdienst aus PHP zum Erstellen und Löschen von Tabellen sowie zum Einfügen und Abfragen in der Tabelle verwenden."
-    services="storage"
-    documentationCenter="php"
-    authors="tamram"
-    manager="carmonm"
-    editor="tysonn"/>
+---
+title: Verwenden des Tabellenspeichers mit PHP | Microsoft Docs
+description: Erfahren Sie, wie Sie den Tabellenspeicherdienst aus PHP zum Erstellen und Löschen von Tabellen sowie zum Einfügen und Abfragen in der Tabelle verwenden.
+services: storage
+documentationcenter: php
+author: tamram
+manager: carmonm
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="php"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="tamram"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: php
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: tamram
 
-
-
+---
 # <a name="how-to-use-table-storage-from-php"></a>Verwenden des Tabellenspeichers mit PHP
+[!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Übersicht
-
 In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Tabellenspeicherdienst demonstriert. Die Beispiele wurden in PHP geschrieben und verwenden das [Azure SDK für PHP][download]. Die besprochenen Szenarios umfassen **das Erstellen und Löschen einer Tabelle sowie das Einfügen, Löschen und Abfragen von Entitäten in einer Tabelle**. Weitere Informationen zum Azure-Tabellenspeicherdienst finden Sie im Abschnitt [Nächste Schritte](#next-steps) .
 
-[AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>Erstellen einer PHP-Anwendung
-
 Die einzige Voraussetzung für das Erstellen einer PHP-Anwendung, die auf den Azure-Tabellenspeicherdienst zugreift, ist das Referenzieren von Klassen im Azure SDK für PHP innerhalb des Codes. Sie können die Anwendung mit beliebigen Entwicklungstools erstellen, unter anderem auch mit Notepad.
 
 In diesem Leitfaden verwenden Sie Funktionen des Tabellenspeicherdiensts, die lokal aus einer PHP-Anwendung heraus oder im Code aufgerufen werden, der in einer Azure-Webrolle, -Workerrolle oder -Website ausgeführt wird.
 
 ## <a name="get-the-azure-client-libraries"></a>Abrufen der Azure-Clientbibliotheken
-
-[AZURE.INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
 ## <a name="configure-your-application-to-access-the-table-service"></a>Konfigurieren der Anwendung für den Zugriff auf den Tabellenspeicherdienst
-
 Um die APIs des Azure-Tabellendiensts zu verwenden, müssen Sie folgendermaßen vorgehen:
 
 1. Verweisen Sie mithilfe der [require_once][require_once]-Anweisung auf die Autoloaderdatei.
@@ -51,7 +44,10 @@ Um die APIs des Azure-Tabellendiensts zu verwenden, müssen Sie folgendermaßen 
 
 Das folgende Beispiel zeigt, wie die Autoloaderdatei eingeschlossen und die **ServicesBuilder** -Klasse referenziert wird.
 
-> [AZURE.NOTE] In diesem Beispiel (und in anderen Beispielen in diesem Artikel) wird angenommen, dass Sie die PHP-Clientbibliotheken für Azure über Composer installiert haben. Wenn Sie die Bibliotheken manuell installiert haben, müssen Sie auf die Autoloaderdatei <code>WindowsAzure.php</code> verweisen.
+> [!NOTE]
+> In diesem Beispiel (und in anderen Beispielen in diesem Artikel) wird angenommen, dass Sie die PHP-Clientbibliotheken für Azure über Composer installiert haben. Wenn Sie die Bibliotheken manuell installiert haben, müssen Sie auf die Autoloaderdatei <code>WindowsAzure.php</code> verweisen.
+> 
+> 
 
     require_once 'vendor/autoload.php';
     use WindowsAzure\Common\ServicesBuilder;
@@ -60,7 +56,6 @@ Das folgende Beispiel zeigt, wie die Autoloaderdatei eingeschlossen und die **Se
 In den Beispielen weiter unten wird die `require_once`-Anweisung immer angezeigt. Jedoch wird nur auf die für die Ausführung des Beispiels erforderlichen Klassen verwiesen.
 
 ## <a name="set-up-an-azure-storage-connection"></a>Einrichten einer Azure-Speicherverbindung
-
 Um einen Azure-Tabellenspeicherdienst-Client zu instanziieren, benötigen Sie zunächst eine gültige Verbindungszeichenfolge. Das Format der Tabellenspeicherdienst-Verbindungszeichenfolge lautet folgendermaßen:
 
 Für den Zugriff auf einen Livedienst:
@@ -76,8 +71,8 @@ Um einen Azure-Dienstclient zu erstellen, müssen Sie die **ServicesBuilder** -K
 
 * Die Verbindungszeichenfolge direkt an die Klasse weitergeben oder
 * den **CloudConfigurationManager (CCM)** verwenden, um mehrere externe Quellen für die Verbindungszeichenfolge zu überprüfen:
-    * Standardmäßig bietet sie Unterstützung für eine externe Quelle – Umgebungsvariablen.
-    * Sie können neue Quellen durch Erweitern der **ConnectionStringSource** -Klasse hinzufügen.
+  * Standardmäßig bietet sie Unterstützung für eine externe Quelle – Umgebungsvariablen.
+  * Sie können neue Quellen durch Erweitern der **ConnectionStringSource** -Klasse hinzufügen.
 
 Für die hier erläuterten Beispiele wird die Verbindungszeichenfolge direkt weitergegeben.
 
@@ -89,7 +84,6 @@ Für die hier erläuterten Beispiele wird die Verbindungszeichenfolge direkt wei
 
 
 ## <a name="create-a-table"></a>Erstellen einer Tabelle
-
 Mithilfe eines **TableRestProxy**-Objekts können Sie eine Tabelle mit der **createTable**-Methode erstellen. Wenn Sie eine Tabelle erstellen, können Sie das Timeout für den Tabellenspeicherdienst festlegen. (Weitere Informationen zum Timeout des Tabellenspeicherdiensts finden Sie unter [Setting Timeouts for Table Service Operations][table-service-timeouts] (Festlegen von Timeouts für Tabellenspeicherdienst-Vorgänge).)
 
     require_once 'vendor\autoload.php';
@@ -115,7 +109,6 @@ Mithilfe eines **TableRestProxy**-Objekts können Sie eine Tabelle mit der **cre
 Informationen zu Einschränkungen für Tabellennamen finden Sie unter [Understanding the Table Service Data Model][table-data-model] (Grundlegendes zum Tabellenspeicherdienst-Datenmodell).
 
 ## <a name="add-an-entity-to-a-table"></a>Hinzufügen einer Entität zu einer Tabelle
-
 Um einer Tabelle eine Entität hinzuzufügen, erstellen Sie ein neues **Entity**-Objekt und übergeben es an **TableRestProxy->insertEntity**. Beachten Sie, dass Sie beim Erstellen einer Entität einen `PartitionKey` und einen `RowKey` angeben müssen. Dabei handelt es sich um eindeutige Kennzeichner für eine Entität und um Werte, die viel schneller als andere Entitätseigenschaften abgefragt werden können. Das System verwendet `PartitionKey`, um die Entitäten der Tabelle automatisch über viele Speicherknoten zu verteilen. Entitäten mit dem gleichen `PartitionKey` werden auf dem gleichen Knoten gespeichert. (Vorgänge für mehrere Entitäten, die auf dem gleichen Knoten gespeichert sind, haben eine höhere Leistung als Vorgänge für Entitäten, die auf verschiedenen Knoten gespeichert sind.) Der `RowKey` ist die eindeutige ID einer Entität innerhalb einer Partition.
 
     require_once 'vendor/autoload.php';
@@ -192,7 +185,6 @@ Die **TableRestProxy**-Klasse bietet zwei alternative Methoden zum Einfügen von
 
 
 ## <a name="retrieve-a-single-entity"></a>Abrufen einer einzelnen Entität
-
 Mit der **TableRestProxy->getEntity**-Methode können Sie eine einzelne Entität durch Abfragen der Werte für `PartitionKey` und `RowKey` abrufen. Im Beispiel unten werden der Partitionsschlüssel `tasksSeattle` und der Zeilenschlüssel `1` an die **getEntity**-Methode übergeben.
 
     require_once 'vendor/autoload.php';
@@ -220,7 +212,6 @@ Mit der **TableRestProxy->getEntity**-Methode können Sie eine einzelne Entität
     echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Abrufen aller Entitäten einer Partition
-
 Entitätsabfragen werden mithilfe von Filtern erstellt (weitere Informationen finden Sie unter [Querying Tables and Entities][filters] (Abfragen von Tabellen und Entitäten). Um alle Entitäten in einer Partition abzurufen, verwenden Sie den Filter „PartitionKey eq *Partitionsname*“. Das folgende Beispiel zeigt, wie alle Entitäten in der Partition `tasksSeattle` durch Übergeben eines Filters an die **queryEntities** -Methode abgerufen werden.
 
     require_once 'vendor/autoload.php';
@@ -252,7 +243,6 @@ Entitätsabfragen werden mithilfe von Filtern erstellt (weitere Informationen fi
     }
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Abrufen einer Teilmenge von Entitäten in einer Partition
-
 Das Muster, das im vorherigen Beispiel verwendet wird, kann auch verwendet werden, um eine Teilmenge der Entitäten in einer Partition abzurufen. Die Teilmenge der Entitäten, die Sie abrufen, wird durch den verwendeten Filter bestimmt (weitere Informationen finden Sie unter [Querying Tables and Entities][filters] (Abfragen von Tabellen und Entitäten)). Das folgende Beispiel zeigt, wie ein Filter zum Abrufen aller Entitäten mit einem bestimmten `Location`-Wert und einem `DueDate`-Wert verwendet wird, der vor einem angegebenen Datum liegt.
 
     require_once 'vendor/autoload.php';
@@ -284,7 +274,6 @@ Das Muster, das im vorherigen Beispiel verwendet wird, kann auch verwendet werde
     }
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Abrufen einer Teilmenge von Entitätseigenschaften
-
 Eine Abfrage kann eine Teilmenge der Entitätseigenschaften abrufen. Diese Technik namens *Projektion*reduziert die Bandbreite und kann die Abfrageleistung, besonders für große Entitäten, verbessern. Um eine abzurufende Eigenschaft anzugeben, übergeben Sie den Namen der Eigenschaft an die **Query->addSelectField**-Methode. Sie können diese Methode mehrfach aufrufen, um weitere Eigenschaften hinzuzufügen. Nach dem Ausführen von **TableRestProxy->queryEntities** haben die zurückgegebenen Entitäten nur die ausgewählten Eigenschaften. (Wenn Sie eine Teilmenge der Tabellenentitäten zurückgeben möchten, verwenden Sie einen Filter, wie in den Abfragen oben gezeigt wird.)
 
     require_once 'vendor/autoload.php';
@@ -322,7 +311,6 @@ Eine Abfrage kann eine Teilmenge der Entitätseigenschaften abrufen. Diese Techn
     }
 
 ## <a name="update-an-entity"></a>Aktualisieren einer Entität
-
 Eine vorhandene Entität kann mithilfe der Methoden **Entity->setProperty** und **Entity->addProperty** für die Entität und dem darauf folgenden Aufruf von **TableRestProxy->updateEntity** aktualisiert werden. Das folgende Beispiel ruft eine Entität ab, ändert eine Eigenschaft, entfernt eine andere Eigenschaft und fügt eine neue Eigenschaft hinzu. Beachten Sie, dass Sie eine Eigenschaft durch Festlegen ihres Werts auf **null**entfernen können.
 
     require_once 'vendor/autoload.php';
@@ -358,7 +346,6 @@ Eine vorhandene Entität kann mithilfe der Methoden **Entity->setProperty** und 
     }
 
 ## <a name="delete-an-entity"></a>Löschen einer Entität
-
 Um eine Entität zu löschen, übergeben Sie den Tabellennamen und die Werte für `PartitionKey` und `RowKey` der Entität an die **TableRestProxy->deleteEntity**-Methode.
 
     require_once 'vendor/autoload.php';
@@ -385,7 +372,6 @@ Um eine Entität zu löschen, übergeben Sie den Tabellennamen und die Werte fü
 Beachten Sie Folgendes für Parallelitätsüberprüfungen: Sie können den ETag für eine zu löschende Entität mithilfe der **DeleteEntityOptions->setEtag**-Methode und durch Übergeben des **DeleteEntityOptions**-Objekts an **deleteEntity** als vierten Parameter festlegen.
 
 ## <a name="batch-table-operations"></a>Batch-Tabellenvorgänge
-
 Mithilfe der **TableRestProxy->batch**-Methode können Sie mehrere Vorgänge in einer einzelnen Anforderung ausführen. Das Muster umfasst hier das Hinzufügen von Vorgängen zum **BatchRequest**-Objekt und die darauf folgende Übergabe des **BatchRequest**-Objekts an die **TableRestProxy->batch**-Methode. Um einem **BatchRequest** -Objekt einen Vorgang hinzuzufügen, können Sie eine der folgenden Methoden mehrfach aufrufen:
 
 * **addInsertEntity** (fügt einen insertEntity-Vorgang hinzu)
@@ -441,7 +427,6 @@ Das folgende Beispiel zeigt die Ausführung von **insertEntity**- und **deleteEn
 Weitere Informationen zu Batch-Tabellenvorgängen finden Sie unter [Performing Entity Group Transactions][entity-group-transactions] (Durchführen von Entitätsgruppentransaktionen).
 
 ## <a name="delete-a-table"></a>Löschen einer Tabelle
-
 Um eine Tabelle zu löschen, übergeben Sie den Tabellennamen an die **TableRestProxy->deleteTable**-Methode.
 
     require_once 'vendor/autoload.php';
@@ -466,10 +451,9 @@ Um eine Tabelle zu löschen, übergeben Sie den Tabellennamen an die **TableRest
     }
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Nachdem Sie sich nun mit den Grundlagen des Azure-Tabellenspeicherdiensts vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-- Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/)
+* Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/)
 
 Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/php/).
 

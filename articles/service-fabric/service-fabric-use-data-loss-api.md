@@ -1,49 +1,47 @@
-<properties
-   pageTitle="Verursachen von Datenverlust in Service Fabric-Diensten | Microsoft Azure"
-   description="Beschreibt die Verwendung der API zum Verursachen von Datenverlust."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="LMWF"
-   manager="rsinha"
-   editor=""/>
+---
+title: Verursachen von Datenverlust in Service Fabric-Diensten | Microsoft Docs
+description: Beschreibt die Verwendung der API zum Verursachen von Datenverlust.
+services: service-fabric
+documentationcenter: .net
+author: LMWF
+manager: rsinha
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/19/2016"
-   ms.author="lemai"/>
-   
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/19/2016
+ms.author: lemai
+
+---
 # Verursachen von Datenverlust in Diensten
-
->[AZURE.WARNING] In diesem Dokument wird beschrieben, wie Sie in Ihren Diensten Datenverluste verursachen können, weshalb es mit Umsicht genutzt werden muss.
+> [!WARNING]
+> In diesem Dokument wird beschrieben, wie Sie in Ihren Diensten Datenverluste verursachen können, weshalb es mit Umsicht genutzt werden muss.
+> 
+> 
 
 ## Einführung
 Sie führen einen Datenverlust in einer Partition Ihres Service Fabric-Diensts herbei, indem Sie „StartPartitionDataLossAsync()“ aufrufen. Diese API verwendet den Fault Injection und Analysis Service zum Herbeiführen von Bedingungen für einen Datenverlust.
 
 ## Verwenden des Fault Injection and Analysis Service
-
 Der Fault Injection and Analysis Service unterstützt derzeit die folgenden APIs im nachstehenden Diagramm. Rechts im Diagramm wird das entsprechende PowerShell-Cmdlet gezeigt. In der MSDN-Dokumentation finden Sie weitere Informationen zu den einzelnen APIs.
 
 | C#-API | PowerShell-Cmdlet |
-|-------------------------------------|-----------------------------------------------:|
-|[StartPartitionDataLossAsync][dl] |[Start-ServiceFabricPartitionDataLoss][psdl] |
-|[StartPartitionQuorumLossAsync][ql] |[Start-ServiceFabricPartitionQuorumLoss][psql] |
-|[StartPartitionRestartAsync][rp] |[Start-ServiceFabricPartitionRestart][psrp] |
+| --- | ---:|
+| [StartPartitionDataLossAsync][dl] |[Start-ServiceFabricPartitionDataLoss][psdl] |
+| [StartPartitionQuorumLossAsync][ql] |[Start-ServiceFabricPartitionQuorumLoss][psql] |
+| [StartPartitionRestartAsync][rp] |[Start-ServiceFabricPartitionRestart][psrp] |
 
 ## Konzeptionelle Übersicht über das Ausführen eines Befehls
-
 Der Fault Injection and Analysis Service nutzt ein asynchrones Modell, bei dem Sie den Befehl mit einer API starten, die in diesem Dokument als „Start“-API bezeichnet wird. Anschließend prüft dieser Dienst den Fortschritt dieses Befehls mithilfe einer „GetProgress“-API, bis er einen Endzustand erreicht oder Sie ihn abbrechen. Um einen Befehl zu starten, rufen Sie die „Start“-API der entsprechenden API auf. Diese API liefert eine Rückgabe, wenn der Fault Injection und Analysis Service die Anforderung akzeptiert hat. Sie gibt jedoch nicht an, wie weit der Befehl ausgeführt oder ob er überhaupt gestartet wurde. Um den Status eines Befehls zu überprüfen, rufen Sie die „GetProgress“-API auf, die der zuvor aufgerufenen „Start“-API entspricht. Die „GetProgress“-API gibt ein Objekt zurück, das den aktuellen Status des Befehls in seiner „State“-Eigenschaft angibt. Ein Befehl wird solange ausgeführt, bis:
 
-1.	er erfolgreich abgeschlossen wurde. Wenn Sie in diesem Fall „GetProgress“ dafür aufrufen, ist die „State“-Eigenschaft des Fortschrittsobjekts „Completed“.
-2.	ein schwerwiegender Fehler auftritt. Wenn Sie in diesem Fall „GetProgress“ dafür aufrufen, ist die „State“-Eigenschaft des Fortschrittsobjekts „Faulted“.
-3.	Sie können den Befehl mit der [CancelTestCommandAsync][cancel]-API oder dem PowerShell-Cmdlet [Stop-ServiceFabricTestCommand][cancelps] abbrechen. Wenn Sie in diesem Fall „GetProgress“ dafür aufrufen, ist die „State“-Eigenschaft des Fortschrittsobjekts entweder „Cancelled“ oder „ForceCancelled“, was von einem Argument für diese API abhängt. Weitere Details finden Sie in der Dokumentation zu [CancelTestCommandAsync][cancel].
-
+1. er erfolgreich abgeschlossen wurde. Wenn Sie in diesem Fall „GetProgress“ dafür aufrufen, ist die „State“-Eigenschaft des Fortschrittsobjekts „Completed“.
+2. ein schwerwiegender Fehler auftritt. Wenn Sie in diesem Fall „GetProgress“ dafür aufrufen, ist die „State“-Eigenschaft des Fortschrittsobjekts „Faulted“.
+3. Sie können den Befehl mit der [CancelTestCommandAsync][cancel]-API oder dem PowerShell-Cmdlet [Stop-ServiceFabricTestCommand][cancelps] abbrechen. Wenn Sie in diesem Fall „GetProgress“ dafür aufrufen, ist die „State“-Eigenschaft des Fortschrittsobjekts entweder „Cancelled“ oder „ForceCancelled“, was von einem Argument für diese API abhängt. Weitere Details finden Sie in der Dokumentation zu [CancelTestCommandAsync][cancel].
 
 ## Details der Ausführung eines Befehls
-
 Um einen Befehl zu starten, rufen Sie die Start-API mit den erwarteten Argumenten auf. Alle Start-APIs haben ein „Guid“-Argument mit dem Namen „operationId“. Sie sollten das „operationId“-Argument nachverfolgen, da es zum Verfolgen des Fortschritts dieses Befehls verwendet wird. Es muss an die „GetProgress“-API übergeben werden, damit der Fortschritt des Befehls nachverfolgt werden kann. „operationId“ muss eindeutig sein.
 
 Nach einem erfolgreichen Aufruf der Start-API muss die „GetProgress“-API in einer Schleife aufgerufen werden, bis die zurückgegebene „State“-Eigenschaft des Fortschrittsobjekts „Completed“ lautet. Alle [FabricTransientExceptions][fte] und OperationCanceledExceptions müssen wiederholt werden. Wenn der Befehl einen Endzustand (Completed, Faulted oder Cancelled) erreicht hat, weist die zurückgegebene „Result“-Eigenschaft des Fortschrittsobjekt weitere Informationen auf. Wenn der Status „Completed“ ist, enthält „Result.SelectedPartition.PartitionId“ die ausgewählte Partitions-ID. „Result.Exception“ ist NULL. Wenn der Status „Faulted“ ist, enthält „Result.Exception“ den Grund, warum der Fault Injection and Analysis Service den Befehl mit diesem Status versehen hat. „Result.SelectedPartition.PartitionId“ enthält die ausgewählte Partitions-ID. In einigen Fällen wurde der Befehl ggf. nicht weit genug ausgeführt, um eine Partition auszuwählen. In diesem Fall ist „PartitionId“ gleich 0. Wenn der Status „Cancelled“ ist, ist „Result.Exception“ NULL. Wie im Fall von „Faulted“ enthält „Result.SelectedPartition.PartitionId“ die gewählte Partitions-ID. Doch wenn der Befehl ggf. nicht weit genug ausgeführt wurde, ist diese 0. Sehen Sie sich auch das nachstehende Beispiel an.
@@ -219,7 +217,6 @@ Das folgende Beispiel zeigt, wie mithilfe von „PartitionSelector“ nach dem Z
 ```
 
 ## Verlauf und Abschneiden
-
 Nachdem ein Befehl einen Endzustand erreicht hat, verbleiben seine Metadaten für eine gewisse Zeit im Fault Injection and Analysis Service, ehe sie zum Freigeben von Speicherplatz entfernt werden. Wenn „GetProgress“ mit der „operationId“ eines Befehls aufgerufen wird, nachdem dieser entfernt wurde, wird eine FabricException mit dem Fehlercode „KeyNotFound“ zurückgegeben.
 
 [dl]: https://msdn.microsoft.com/library/azure/mt693569.aspx

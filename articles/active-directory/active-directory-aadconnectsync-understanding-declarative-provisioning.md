@@ -1,23 +1,21 @@
-<properties
-    pageTitle="Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung | Microsoft Azure"
-    description="Erklärt das Konfigurationsmodell für die deklarative Bereitstellung in Azure AD Connect"
-    services="active-directory"
-    documentationCenter=""
-    authors="andkjell"
-    manager="femila"
-    editor=""/>
+---
+title: 'Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung | Microsoft Docs'
+description: Erklärt das Konfigurationsmodell für die deklarative Bereitstellung in Azure AD Connect
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/29/2016"
-    ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/29/2016
+ms.author: billmath
 
-
-
+---
 # <a name="azure-ad-connect-sync:-understanding-declarative-provisioning"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung
 In diesem Thema wird das Konfigurationsmodell in Azure AD Connect beschrieben. Dieses Modell, die „deklarative Bereitstellung“, ermöglicht es Ihnen, Konfigurationsänderungen einfach vorzunehmen. In diesem Thema sind auch viele Punkte für fortgeschrittene Benutzer beschrieben, die für die meisten Benutzerszenarien nicht erforderlich sind.
 
@@ -30,12 +28,12 @@ Die Pipeline enthält mehrere unterschiedliche Module. Jede ist für ein Konzept
 
 ![Synchronisierungspipeline](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/pipeline.png)  
 
-- Quelle: das Quellobjekt
-- [Bereich](#scope): Sucht nach allen Synchronisierungsregeln innerhalb des Bereichs
-- [Verbindung](#join): Bestimmt die Beziehung zwischen Connectorbereich und Metaverse
-- [Transformation](#transform): Berechnet die Transformation der Attribute und den Datenfluss
-- [Rangfolge](#precedence): Löst in Konflikt stehende Attributbeiträge
-- Ziel: das Zielobjekt
+* Quelle: das Quellobjekt
+* [Bereich](#scope): Sucht nach allen Synchronisierungsregeln innerhalb des Bereichs
+* [Verbindung](#join): Bestimmt die Beziehung zwischen Connectorbereich und Metaverse
+* [Transformation](#transform): Berechnet die Transformation der Attribute und den Datenfluss
+* [Rangfolge](#precedence): Löst in Konflikt stehende Attributbeiträge
+* Ziel: das Zielobjekt
 
 ## <a name="scope"></a>Bereich
 Das Bereichsmodul wertet ein Objekt aus und bestimmt die Regeln, die sich innerhalb des Bereichs befinden und verarbeitet werden sollen. Abhängig von den Attributwerten des Objekts werden verschiedene Synchronisierungsregeln für den Bereich ausgewertet. Beispielsweise verfügt ein deaktivierter Benutzer ohne Exchange-Postfach über andere Regeln als ein aktivierter Benutzer mit einem Postfach.  
@@ -48,18 +46,18 @@ Der Bereich wird als Gruppen und Klauseln definiert. Die Klauseln liegen innerha
 
 Das Bereichsmodul unterstützt die folgenden Vorgänge.
 
-Vorgang | Beschreibung
---- | ---
-EQUAL, NOTEQUAL | Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert und der Attributwert gleich sind. Informationen zu mehrwertigen Attributen finden Sie unter ISIN und ISNOTIN.
-LESSTHAN, LESSTHAN_OR_EQUAL | Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert kleiner als der Attributwert ist.
-CONTAINS, NOTCONTAINS | Ein Vergleich von Zeichenfolgen, der auswertet, ob sich der Wert innerhalb des Attributwerts befindet.
-STARTSWITH, NOTSTARTSWITH | Ein Vergleich von Zeichenfolgen, der auswertet, ob sich der Wert am Anfang des Attributwerts befindet.
-ENDSWITH, NOTENDSWITH | Ein Vergleich von Zeichenfolgen, der auswertet, ob sich der Wert am Ende des Attributwerts befindet.
-GREATERTHAN, GREATERTHAN_OR_EQUAL | Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert größer als der Attributwert ist.
-ISNULL, ISNOTNULL | Wertet aus, ob das Attribut im Objekt nicht vorhanden ist. Wenn das Attribut nicht vorhanden und daher Null ist, liegt die Regel innerhalb des Bereichs.
-ISIN, ISNOTIN | Wertet aus, ob der Wert im definierten Attribut vorhanden ist. Dieser Vorgang ist die mehrwertige Entsprechung von EQUAL und NOTEQUAL. Das Attribut sollte ein mehrwertiges Attribut sein. Wenn der Wert in einem der Attributwerte gefunden wird, befindet sich die Regel innerhalb des Bereichs.
-ISBITSET, ISNOTBITSET | Wertet aus, ob ein bestimmtes Bit festgelegt ist. Kann beispielsweise die Bits in „userAccountControl“ auswerten, um zu sehen, ob ein Benutzer aktiviert oder deaktiviert ist.
-ISMEMBEROF, ISNOTMEMBEROF | Der Wert sollte einen DN in Bezug auf eine Gruppe im Connectorbereich enthalten. Wenn das Objekt Mitglied der festgelegten Gruppe ist, liegt die Regel innerhalb des Bereichs.
+| Vorgang | Beschreibung |
+| --- | --- |
+| EQUAL, NOTEQUAL |Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert und der Attributwert gleich sind. Informationen zu mehrwertigen Attributen finden Sie unter ISIN und ISNOTIN. |
+| LESSTHAN, LESSTHAN_OR_EQUAL |Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert kleiner als der Attributwert ist. |
+| CONTAINS, NOTCONTAINS |Ein Vergleich von Zeichenfolgen, der auswertet, ob sich der Wert innerhalb des Attributwerts befindet. |
+| STARTSWITH, NOTSTARTSWITH |Ein Vergleich von Zeichenfolgen, der auswertet, ob sich der Wert am Anfang des Attributwerts befindet. |
+| ENDSWITH, NOTENDSWITH |Ein Vergleich von Zeichenfolgen, der auswertet, ob sich der Wert am Ende des Attributwerts befindet. |
+| GREATERTHAN, GREATERTHAN_OR_EQUAL |Ein Vergleich von Zeichenfolgen, der auswertet, ob der Wert größer als der Attributwert ist. |
+| ISNULL, ISNOTNULL |Wertet aus, ob das Attribut im Objekt nicht vorhanden ist. Wenn das Attribut nicht vorhanden und daher Null ist, liegt die Regel innerhalb des Bereichs. |
+| ISIN, ISNOTIN |Wertet aus, ob der Wert im definierten Attribut vorhanden ist. Dieser Vorgang ist die mehrwertige Entsprechung von EQUAL und NOTEQUAL. Das Attribut sollte ein mehrwertiges Attribut sein. Wenn der Wert in einem der Attributwerte gefunden wird, befindet sich die Regel innerhalb des Bereichs. |
+| ISBITSET, ISNOTBITSET |Wertet aus, ob ein bestimmtes Bit festgelegt ist. Kann beispielsweise die Bits in „userAccountControl“ auswerten, um zu sehen, ob ein Benutzer aktiviert oder deaktiviert ist. |
+| ISMEMBEROF, ISNOTMEMBEROF |Der Wert sollte einen DN in Bezug auf eine Gruppe im Connectorbereich enthalten. Wenn das Objekt Mitglied der festgelegten Gruppe ist, liegt die Regel innerhalb des Bereichs. |
 
 ## <a name="join"></a>Join
 Das Verbindungsmodul in der Synchronisierungspipeline ist dafür zuständig, die Beziehung zwischen dem Objekt in der Quelle und dem Objekt im Ziel zu finden. Bei einer eingehenden Regel ist diese Beziehung ein Objekt in einem Connectorbereich, das eine Beziehung zu einem Objekt in der Metaverse herstellt.  
@@ -147,22 +145,19 @@ In diesem Szenario müssen Sie den Bereich der Synchronisierungsregeln ändern, 
 ![Mehrere Objekte mit demselben Metaverse-Objekt verbunden](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Weitere Informationen zur Ausdruckssprache finden Sie unter [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
-- Unter [Grundlegendes zur Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md)wird die standardmäßige Verwendung der deklarativen Bereitstellung veranschaulicht.
-- Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md)wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
-- Unter [Grundlegendes zu Benutzern und Kontakten](active-directory-aadconnectsync-understanding-users-and-contacts.md)erfahren Sie, wie Benutzer und Kontakte zusammenarbeiten.
+* Weitere Informationen zur Ausdruckssprache finden Sie unter [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
+* Unter [Grundlegendes zur Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md)wird die standardmäßige Verwendung der deklarativen Bereitstellung veranschaulicht.
+* Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md)wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
+* Unter [Grundlegendes zu Benutzern und Kontakten](active-directory-aadconnectsync-understanding-users-and-contacts.md)erfahren Sie, wie Benutzer und Kontakte zusammenarbeiten.
 
 **Übersichtsthemen**
 
-- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
-- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+* [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+* [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
 **Referenzthemen**
 
-- [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
-
-
+* [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
 
 <!--HONumber=Oct16_HO2-->
 

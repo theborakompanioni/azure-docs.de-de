@@ -3,7 +3,6 @@ Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Si
 Nachfolgend wird jeder der in der Vorlage verwendeten Parameter beschrieben.
 
 ### gatewayName
-
 Der Name des Gateways. Die API-App wird für dieses Gateway registriert.
 
     "gatewayName": {
@@ -11,15 +10,13 @@ Der Name des Gateways. Die API-App wird für dieses Gateway registriert.
     }
 
 ### apiAppName
+Der Name der zu erstellenden API-App. Der Name muss zwischen 8 und 50 Zeichen lang sein.
 
-Der Name der zu erstellenden API-App. Der Name muss zwischen 8 und 50 Zeichen lang sein.
-    
     "apiAppName": {
       "type": "string"
     }
 
 ### apiAppSecret
-
 Der geheime Schlüssel für die API-App. Bei diesem Wert muss es sich um eine base64-codierte Zeichenfolge handeln. Es sollte eine beliebige Zeichenfolge mit 64 Zeichen sein, die nur aus ganzen Zahlen und Kleinbuchstaben besteht.
 
     "apiAppSecret": {
@@ -27,7 +24,6 @@ Der geheime Schlüssel für die API-App. Bei diesem Wert muss es sich um eine ba
     }
 
 ### location
-
 Der Speicherort für die neue API-App. Sie können durch Ausführen des PowerShell-Befehls `Get-AzureLocation` oder des Befehls `azure location list` der Azure-Befehlszeilenschnittstelle gültige Speicherorte abrufen.
 
     "location": {

@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Azure-Sicherheitskurse der Microsoft Virtual Academy | Microsoft Azure"
-   description="Dieser Artikel enthält eine Aufstellung ausgewählter Kurse zur Azure-Sicherheit aus der Microsoft Virtual Academy. In der Microsoft Virtual Academy werden kostenlose Onlineschulungen angeboten, damit Entwickler, IT- und Datenspezialisten und Studenten immer auf dem neuesten Stand der Technologie bleiben, ihre Kompetenzen und Kenntnisse vertiefen und sich weiterentwickeln können."
-   services="security"
-   documentationCenter="na"
-   authors="TomShinder"
-   manager="MBaldwin"
-   editor="TomSh"/>
+---
+title: Azure-Sicherheitskurse der Microsoft Virtual Academy | Microsoft Docs
+description: Dieser Artikel enthält eine Aufstellung ausgewählter Kurse zur Azure-Sicherheit aus der Microsoft Virtual Academy. In der Microsoft Virtual Academy werden kostenlose Onlineschulungen angeboten, damit Entwickler, IT- und Datenspezialisten und Studenten immer auf dem neuesten Stand der Technologie bleiben, ihre Kompetenzen und Kenntnisse vertiefen und sich weiterentwickeln können.
+services: security
+documentationcenter: na
+author: TomShinder
+manager: MBaldwin
+editor: TomSh
 
-<tags
-   ms.service="security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/09/2016"
-   ms.author="terrylan"/>
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/09/2016
+ms.author: terrylan
 
+---
 # Azure-Sicherheitskurse der Microsoft Virtual Academy
-
 In der Microsoft Virtual Academy werden kostenlose Onlineschulungen angeboten, damit Entwickler, IT- und Datenspezialisten und Studenten immer auf dem neuesten Stand der Technologie bleiben, ihre Kompetenzen und Kenntnisse vertiefen und sich weiterentwickeln können.
 
 Auf dieser Seite finden Sie eine Aufstellung ausgewählter Kurse zur Azure-Sicherheit. Besuchen Sie die [Microsoft Virtual Academy](https://mva.microsoft.com/), um sich einen Überblick über alle verfügbaren Kurse zu verschaffen.

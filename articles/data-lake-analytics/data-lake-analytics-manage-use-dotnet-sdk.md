@@ -1,25 +1,23 @@
-<properties 
-   pageTitle="Verwalten von Azure Data Lake Analytics mithilfe des Azure .NET SDK | Azure" 
-   description="Erfahren Sie, wie Sie Data Lake Analytics-Aufträge, -Datenquellen, und -Benutzer verwalten. " 
-   services="data-lake-analytics" 
-   documentationCenter="" 
-   authors="mumian" 
-   manager="jhubbard" 
-   editor="cgronlun"/>
- 
-<tags
-   ms.service="data-lake-analytics"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
-   ms.date="09/23/2016"
-   ms.author="jgao"/>
+---
+title: Verwalten von Azure Data Lake Analytics mithilfe des Azure .NET SDK | Microsoft Docs
+description: 'Erfahren Sie, wie Sie Data Lake Analytics-Aufträge, -Datenquellen, und -Benutzer verwalten. '
+services: data-lake-analytics
+documentationcenter: ''
+author: mumian
+manager: jhubbard
+editor: cgronlun
 
+ms.service: data-lake-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 09/23/2016
+ms.author: jgao
 
+---
 # <a name="manage-azure-data-lake-analytics-using-azure-.net-sdk"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure .NET SDK
-
-[AZURE.INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mithilfe des Azure .NET SDK verwalten. Klicken Sie oben auf die Auswahlregisterkarte, um Themen anzuzeigen, in denen die Verwaltung mit anderen Tools stattfindet.
 
@@ -27,15 +25,13 @@ Erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-- **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-
+* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 <!-- ################################ -->
 <!-- ################################ -->
 
 
 ## <a name="connect-to-azure-data-lake-analytics"></a>Herstellen einer Verbindung mit Azure Data Lake Analytics
-
 Sie müssen die folgenden NuGet-Pakete installieren:
 
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -118,11 +114,9 @@ Das folgende Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure her
 
 
 ## <a name="manage-accounts"></a>Konten verwalten
-
 Zur Ausführung von Data Lake Analytics-Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Im Gegensatz zu Azure HDInsight entstehen durch ein Analytics-Konto keine Kosten, solange darin kein Auftrag ausgeführt wird.  Sie bezahlen nur für die Zeit, während der in dem Konto ein Auftrag ausgeführt wird.  Weitere Informationen finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).  
 
-###<a name="create-accounts"></a>Erstellen von Konten
-
+### <a name="create-accounts"></a>Erstellen von Konten
 Sie benötigen eine Azure Resource Management-Gruppe und ein Data Lake Store-Konto, bevor Sie das folgende Beispiel ausführen können.
 
 Der folgende Code zeigt, wie Sie eine Ressourcengruppe erstellen:
@@ -153,19 +147,16 @@ Der folgende Code zeigt, wie Sie ein Data Lake Analytics-Konto erstellen:
     var adlaParameters = new DataLakeAnalyticsAccount(properties: adlaProperties, location: location);
     var adlaAccount = _adlaClient.Account.Create(resourceGroupName, adlaAccountName, adlaParameters);
 
-###<a name="list-accounts"></a>Auflisten von Konten
-
+### <a name="list-accounts"></a>Auflisten von Konten
 Siehe [Herstellen einer Verbindung mit Azure Data Lake Analytics](#connect_to_azure_data_lake_analytics).
 
-###<a name="find-an-account"></a>Suchen eines Kontos
-
+### <a name="find-an-account"></a>Suchen eines Kontos
 Nach dem Abrufen eines Objekts aus einer Liste von Data Lake Analytics-Konten können Sie mit dem folgenden Befehl ein Konto suchen:
 
     Predicate<DataLakeAnalyticsAccount> accountFinder = (DataLakeAnalyticsAccount a) => { return a.Name == adlaAccountName; };
     var myAdlaAccount = adlaAccounts.Find(accountFinder);
 
-###<a name="delete-data-lake-analytics-accounts"></a>Löschen von Data Lake Analytics-Konten
-
+### <a name="delete-data-lake-analytics-accounts"></a>Löschen von Data Lake Analytics-Konten
 Der folgende Codeausschnitt dient zum Löschen eines Data Lake Analytics-Kontos:
 
     _adlaClient.Account.Delete(resourceGroupName, adlaAccountName);
@@ -173,48 +164,41 @@ Der folgende Codeausschnitt dient zum Löschen eines Data Lake Analytics-Kontos:
 <!-- ################################ -->
 <!-- ################################ -->
 ## <a name="manage-account-data-sources"></a>Verwalten von Kontodatenquellen
-
 Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 
-- [Azure Data Lake-Speicher](../data-lake-store/data-lake-store-overview.md)
-- [Azure Storage (in englischer Sprache)](../storage/storage-introduction.md)
+* [Azure Data Lake-Speicher](../data-lake-store/data-lake-store-overview.md)
+* [Azure Storage (in englischer Sprache)](../storage/storage-introduction.md)
 
 Beim Erstellen eines Analytics-Kontos müssen Sie ein Azure Data Lake-Speicherkonto als Standardspeicherkonto festlegen. Das Data Lake-Standardspeicherkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. Nachdem Sie ein Analytics-Konto erstellt haben, können Sie zusätzliche Data Lake-Speicherkonten und/oder Azure-Speicherkonten hinzufügen. 
 
 ### <a name="find-the-default-data-lake-store-account"></a>Ermitteln des Data Lake-Standardspeicherkontos
-
 Unter „Suchen eines Kontos“ in diesem Artikel erfahren Sie, wie Sie ein Data Lake Analytics-Konto finden. Verwenden Sie dann den folgenden Befehl:
 
     string adlaDefaultDataLakeStoreAccountName = myAccount.Properties.DefaultDataLakeStoreAccount;
 
 
 ## <a name="use-azure-resource-manager-groups"></a>Verwenden von Azure-Ressourcen-Manager-Gruppen
-
-Anwendungen bestehen normalerweise aus vielen Komponenten, z. B. Web-App, Datenbank, Datenbankserver, Speicher und Drittanbieterdiensten. Mit Azure Resource Manager können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, die als Azure-Ressourcengruppe bezeichnet wird. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe anzeigen. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md). 
+Anwendungen bestehen normalerweise aus vielen Komponenten, z. B. Web-App, Datenbank, Datenbankserver, Speicher und Drittanbieterdiensten. Mit Azure Resource Manager können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, die als Azure-Ressourcengruppe bezeichnet wird. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe anzeigen. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md). 
 
 Ein Data Lake Analytics-Dienst kann folgende Komponenten enthalten:
 
-- Azure Data Lake Analytics-Konto
-- Erforderliches Azure Data Lake-Speicherkonto
-- Zusätzliche Azure Data Lake-Speicherkonten
-- Zusätzliche Azure-Speicherkonten
+* Azure Data Lake Analytics-Konto
+* Erforderliches Azure Data Lake-Speicherkonto
+* Zusätzliche Azure Data Lake-Speicherkonten
+* Zusätzliche Azure-Speicherkonten
 
 Alle diese Komponenten lassen sich zur einfacheren Verwaltung in einer Ressourcenverwaltungsgruppe erstellen.
 
 ![Azure Data Lake Analytics-Konto und -Speicher](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
 
-Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen sich im gleichen Azure-Rechenzentrum befinden.
+Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen sich im gleichen Azure-Rechenzentrum befinden.
 Die Ressourcenverwaltungsgruppe kann sich jedoch in einem anderen Rechenzentrum befinden.  
 
-##<a name="see-also"></a>Weitere Informationen 
-
-- [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-- [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
-- [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
-- [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
-
-
+## <a name="see-also"></a>Weitere Informationen
+* [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+* [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
+* [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
+* [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 <!--HONumber=Oct16_HO2-->
 

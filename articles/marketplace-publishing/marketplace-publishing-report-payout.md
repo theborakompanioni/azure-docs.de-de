@@ -1,65 +1,58 @@
-<properties
-   pageTitle="Grundlegendes zu Azure Marketplace-Auszahlungsberichten | Microsoft Azure"
-   description="Informationen zum Überprüfen und Erfassen des Azure Marketplace-Auszahlungsberichts."
-   services="marketplace-publishing"
-   documentationCenter="na"
-   authors="v-jeana"
-   manager="lakoch"
-   editor=""/>
+---
+title: Grundlegendes zu Azure Marketplace-Auszahlungsberichten | Microsoft Docs
+description: Informationen zum Überprüfen und Erfassen des Azure Marketplace-Auszahlungsberichts.
+services: marketplace-publishing
+documentationcenter: na
+author: v-jeana
+manager: lakoch
+editor: ''
 
-<tags
-   ms.service="marketplace"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/19/2016"
-   ms.author="v-jeana; hascipio; v-dabosl"/>
+ms.service: marketplace
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/19/2016
+ms.author: v-jeana; hascipio; v-dabosl
 
-# Grundlegendes zu Azure Marketplace-Auszahlungsberichten
-
+---
+# Grundlegendes zu Azure Marketplace-Auszahlungsberichten
 ## Öffnen und Anzeigen von Auszahlungsberichten
-
 Während des Übergangs zum Dev Center können einige Ihrer Auszahlungsberichte ggf. im Dev Center unter https://dev.windows.com/de-DE zu finden sein, während andere ggf. weiter im Veröffentlichungsportal unter https://publish.windowsazure.com zu finden sind.
 
 Auszahlungsberichte stehen jetzt im **Dev Center** für alle Marketplace-Angebote zur Verfügung, denen moderne Auszahlungsmethoden zugeordnet sind. Hierzu gehören zurzeit Folgende:
-- VMs
-- B+C-Angebote
-- Im Rahmen eines EA angebotene Daten- und Entwicklerdienste
+
+* VMs
+* B+C-Angebote
+* Im Rahmen eines EA angebotene Daten- und Entwicklerdienste
 
 Für folgende Angebote stehen die Auszahlungsberichte weiterhin im **Veröffentlichungsportal** bereit:
-- Im Rahmen von Web Direct angebotene Daten- und Entwicklerdienste (hierfür wird weiter das ältere Auszahlungssystem verwendet).
 
-Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich etwaiger Rückerstattungen berechnet.
+* Im Rahmen von Web Direct angebotene Daten- und Entwicklerdienste (hierfür wird weiter das ältere Auszahlungssystem verwendet).
+
+Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich etwaiger Rückerstattungen berechnet.
 
 ### Zugriff auf Auszahlungsberichte im Dev Center
-
 1. Navigieren Sie zum Dev Center unter https://dev.windows.com/de-DE.
 2. Klicken Sie auf **Dashboard**.
-
+   
     ![LandingPageDashboardHighlight][1]
-
 3. Klicken Sie auf **Auszahlungszusammenfassung**.
-
+   
     ![DashboardPayoutSummary][2]
 
-
 ## Anzeigen von Auszahlungsberichten im Dev Center
-
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-- Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben). Dieser Betrag beläuft sich zumeist auf 0 $, (es sei denn, ein Kunde zahlt weit im Voraus).
-- Klicken Sie in den Bereichen „Anstehende Zahlungen“ oder „Letzte Zahlung“ auf den Link **Details anzeigen**, um einen Hinweis zu diesen Auszahlungen anzuzeigen.
-- Klicken Sie auf **Zahlungsaufstellungen**, um die Details unter „Einnahmen“ nach App oder Produkt anzuzeigen.
-- Klicken Sie auf den Link **Anzeigen**, um einzelne Aufstellungen anzuzeigen.
-
+* Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben). Dieser Betrag beläuft sich zumeist auf 0 $, (es sei denn, ein Kunde zahlt weit im Voraus).
+* Klicken Sie in den Bereichen „Anstehende Zahlungen“ oder „Letzte Zahlung“ auf den Link **Details anzeigen**, um einen Hinweis zu diesen Auszahlungen anzuzeigen.
+* Klicken Sie auf **Zahlungsaufstellungen**, um die Details unter „Einnahmen“ nach App oder Produkt anzuzeigen.
+* Klicken Sie auf den Link **Anzeigen**, um einzelne Aufstellungen anzuzeigen.
+  
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
-
-- Verwenden Sie den Filter **Aufschlüsselung der Erlöse** unten in einer Aufstellung, um mehrere Apps/Produkte anzuzeigen, sofern vorhanden.
-
+* Verwenden Sie den Filter **Aufschlüsselung der Erlöse** unten in einer Aufstellung, um mehrere Apps/Produkte anzuzeigen, sofern vorhanden.
+  
     ![PayoutSummaryPaymentStatementsFilterControl][4]
-
-
 
 ## Anzeigen von Auszahlungsberichten im Veröffentlichungsportal
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
@@ -67,22 +60,18 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 1. Navigieren Sie zum Veröffentlichungsportal (https://publish.windowsazure.com).
 2. Klicken Sie im Abschnitt **Herausgeber** auf **Auszahlungsberichte**.
 3. Klicken Sie auf die Dropdownliste, um alle verfügbaren vierteljährlichen Auszahlungsberichte anzuzeigen.
-
+   
     ![accessingpayoutreport][5]
 
-
 ### Lesen von Auszahlungsberichten
-
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-- Wenn Sie nach Posten für ein bestimmtes Quartal suchen möchten, wählen Sie in der Dropdownliste den Auszahlungsbericht für das betreffende Quartal aus. Wenn Sie sich also beispielsweise für Posten zwischen April und Juni 2015 interessieren, wählen Sie in der Dropdownliste den entsprechenden Datumsbereich aus.
-- Wenn Sie nach Details zu Auszahlungen für ein bestimmtes Quartal suchen, wählen Sie den Auszahlungsbericht für das Folgequartal aus. Wenn Sie sich also etwa für die Auszahlungen von April bis Juni 2015 interessieren, finden Sie die entsprechenden Beträge im Auszahlungsbericht für Juli bis September 2015. ![readingpayoutreport][6]
-
-- Der Bereich mit der Finanzübersicht zeigt Salden sowie Soll und Haben nach Kategorie.
-- Posten zeigen einzelne Transaktionen.
+* Wenn Sie nach Posten für ein bestimmtes Quartal suchen möchten, wählen Sie in der Dropdownliste den Auszahlungsbericht für das betreffende Quartal aus. Wenn Sie sich also beispielsweise für Posten zwischen April und Juni 2015 interessieren, wählen Sie in der Dropdownliste den entsprechenden Datumsbereich aus.
+* Wenn Sie nach Details zu Auszahlungen für ein bestimmtes Quartal suchen, wählen Sie den Auszahlungsbericht für das Folgequartal aus. Wenn Sie sich also etwa für die Auszahlungen von April bis Juni 2015 interessieren, finden Sie die entsprechenden Beträge im Auszahlungsbericht für Juli bis September 2015. ![readingpayoutreport][6]
+* Der Bereich mit der Finanzübersicht zeigt Salden sowie Soll und Haben nach Kategorie.
+* Posten zeigen einzelne Transaktionen.
 
 ## Definitionen
-
 **Bereich mit der Finanzübersicht:**
 
 ![financialdefinitions][7]
@@ -92,7 +81,6 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 ![ledgerdefinitions][8]
 
 ## Fragen zur Auszahlung
-
 Wenden Sie sich bei Fragen zu Ihren Auszahlungen an unser Supportteam.
 
 ![payoutquestions][9]
@@ -103,7 +91,6 @@ Wenden Sie sich bei Fragen zu Ihren Auszahlungen an unser Supportteam.
 4. Klicken auf **Anforderung starten**.
 
 ## Nächste Schritte
-
 Erstellen Sie bei anderen Problemen eine Supportanfrage unter <https://portal.azure.com>.
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png

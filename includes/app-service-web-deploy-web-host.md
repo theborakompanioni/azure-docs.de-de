@@ -1,5 +1,4 @@
 ### App Service-Plan
-
 Erstellt den Dienstplan zum Hosten der Web-App. Geben Sie den Namen des Plans über den **hostingPlanName**-Parameter an. Der Speicherort des Plans ist mit demjenigen für die Ressourcengruppe identisch. Der Tarif und die Workergröße werden in den Parametern **sku** und **workerSize** angegeben.
 
     {

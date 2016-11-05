@@ -1,29 +1,25 @@
-<properties
-	pageTitle="Senden von E-Mails mit SendGrid | Microsoft Azure"
-	description="Erfahren Sie, wie Sie mit dem SendGrid-Dienst E-Mails von Ihrer Azure Mobile Services-App senden."
-	services="mobile-services"
-	documentationCenter=""
-	authors="Erikre"
-	manager="sendgrid"
-	editor=""/>
+---
+title: Senden von E-Mails mit SendGrid | Microsoft Docs
+description: Erfahren Sie, wie Sie mit dem SendGrid-Dienst E-Mails von Ihrer Azure Mobile Services-App senden.
+services: mobile-services
+documentationcenter: ''
+author: Erikre
+manager: sendgrid
+editor: ''
 
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: multiple
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: glenga
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="07/21/2016" 
-	ms.author="glenga"/>
-
-
+---
 # Senden von E-Mails in Mobile Services mit SendGrid
-
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 
 &nbsp;
-
 
 Dieses Thema beschreibt die Hinzufügung von E-Mail-Funktionen zu Ihrem mobilen Dienst. In diesem Lernprogramm fügen Sie serverseitige Skripts hinzu, um E-Mails mithilfe von SendGrid zu senden. Wenn dies abgeschlossen ist, sendet Ihr mobiler Dienst immer dann, wenn ein Datensatz eingefügt wird, eine E-Mail.
 
@@ -38,27 +34,22 @@ In diesem Lernprogramm werden die folgenden grundlegenden Schritte zur Aktivieru
 Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie zunächst [Erste Schritte mit Mobile Services] abschließen.
 
 ## <a name="sign-up"></a>Erstellen neuer SendGrid-Konten
-
-[AZURE.INCLUDE [sendgrid-sign-up](../../includes/sendgrid-sign-up.md)]
+[!INCLUDE [sendgrid-sign-up](../../includes/sendgrid-sign-up.md)]
 
 ## <a name="add-script"></a>Registrieren neuer Skripts zum Senden von E-Mails
-
 1. Melden Sie sich beim [klassischen Azure-Portal] an, klicken Sie auf **Mobile Services** und dann auf Ihren mobilen Dienst.
-
 2. Klicken Sie im klassischen Azure-Portal auf die Registerkarte **Daten** und dann auf die Tabelle **TodoItem**.
-
-	![][1]
-
+   
+    ![][1]
 3. Klicken Sie unter **todoitem** auf die Registerkarte **Skript**, und wählen Sie **Einfügen** aus.
-
-	![][2]
-
-	Daraufhin wird die Funktion angezeigt, die aufgerufen wird, wenn etwas in die Tabelle **TodoItem** eingefügt wird.
-
+   
+    ![][2]
+   
+    Daraufhin wird die Funktion angezeigt, die aufgerufen wird, wenn etwas in die Tabelle **TodoItem** eingefügt wird.
 4. Ersetzen Sie die Einfügefunktion durch den folgenden Code:
-
+   
         var SendGrid = require('sendgrid').SendGrid;
-
+   
         function insert(item, user, request) {
             request.execute({
                 success: function() {
@@ -68,10 +59,10 @@ Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Bevor Sie mit
                     sendEmail(item);
                 }
             });
-
+   
             function sendEmail(item) {
                 var sendgrid = new SendGrid('**username**', '**password**');
-
+   
                 sendgrid.send({
                     to: '**email-address**',
                     from: '**from-address**',
@@ -85,41 +76,36 @@ Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Bevor Sie mit
                 });
             }
         }
-
 5. Ersetzen Sie die Platzhalter im Skript oben durch die korrekten Werte:
-
-	- **_username_ und _password_**: die SendGrid-Anmeldeinformationen aus dem Schritt [Erstellen eines SendGrid-Kontos].
-
-	- **_email-address_**: die Adresse, an die die E-Mail gesendet wird. In einer tatsächlichen App können Sie E-Mail-Adressen mithilfe von Tabellen speichern und abrufen. Zum Testen der App können Sie einfach Ihre eigene E-Mail-Adresse verwenden.
-
-	- **_from-address_**: die Adresse, von der aus die E-Mail gesendet wird. Verwenden Sie nach Möglichkeit eine Adresse aus einer registrierten Domäne, die zu Ihrer Organisation gehört.
-
-     > [AZURE.NOTE] Wenn Sie nicht über eine registrierte Domäne verfügen, können Sie stattdessen die Domäne Ihres mobilen Dienstes im Format *notifications@_your-mobile-service_.azure-mobile.net* verwenden. Allerdings werden Nachrichten, die an die Domäne Ihres mobilen Dienstes gesendet werden, ignoriert.
-
+   
+   * ***username* und *password***: die SendGrid-Anmeldeinformationen aus dem Schritt [Erstellen eines SendGrid-Kontos].
+   * ***email-address***: die Adresse, an die die E-Mail gesendet wird. In einer tatsächlichen App können Sie E-Mail-Adressen mithilfe von Tabellen speichern und abrufen. Zum Testen der App können Sie einfach Ihre eigene E-Mail-Adresse verwenden.
+   * ***from-address***: die Adresse, von der aus die E-Mail gesendet wird. Verwenden Sie nach Möglichkeit eine Adresse aus einer registrierten Domäne, die zu Ihrer Organisation gehört.
+     
+     > [!NOTE]
+     > Wenn Sie nicht über eine registrierte Domäne verfügen, können Sie stattdessen die Domäne Ihres mobilen Dienstes im Format *notifications@*your-mobile-service*.azure-mobile.net* verwenden. Allerdings werden Nachrichten, die an die Domäne Ihres mobilen Dienstes gesendet werden, ignoriert.
+     > 
+     > 
 6. Klicken Sie auf die Schaltfläche **Save**. Sie haben nun ein Skript so konfiguriert, dass jedes Mal, wenn ein Datensatz in die Tabelle **TodoItem** eingefügt wird, eine E-Mail gesendet wird.
 
 ## <a name="insert-data"></a>Einfügen von Testdaten zum Empfangen von E-Mails
-
 1. Führen Sie im Client-App-Projekt die Schellstartanwendung aus.
-
-	In diesem Thema wird die Windows Store-Version des Schnellstarts angezeigt.
-
+   
+    In diesem Thema wird die Windows Store-Version des Schnellstarts angezeigt.
 2. Geben Sie in der App einen Text in **Insert a TodoItem** ein, und klicken Sie dann auf **Save**.
-
-	![][3]
-
+   
+    ![][3]
 3. Sie erhalten eine E-Mail, die so aussieht wie in der Benachrichtigung unten.
-
-	![][4]
-
-	Herzlichen Glückwunsch! Sie haben Ihren mobilen Dienst erfolgreich für das Senden von E-Mails mithilfe von SendGrid konfiguriert.
+   
+    ![][4]
+   
+    Herzlichen Glückwunsch! Sie haben Ihren mobilen Dienst erfolgreich für das Senden von E-Mails mithilfe von SendGrid konfiguriert.
 
 ## <a name="nextsteps"> </a>Nächste Schritte
-
 Nun, da Sie wissen, wie leicht die Verwendung des SendGrid-E-Mail-Dienstes mit Mobile Services ist, folgen Sie diesen Links, um mehr über SendGrid zu erfahren:
 
--   SendGrid API-Dokumentation: <https://sendgrid.com/docs>
--   Spezielles SendGrid-Angebot für Azure-Kunden: <https://sendgrid.com/windowsazure.html>
+* SendGrid API-Dokumentation: <https://sendgrid.com/docs>
+* Spezielles SendGrid-Angebot für Azure-Kunden: <https://sendgrid.com/windowsazure.html>
 
 <!-- Anchors. -->
 [Erstellen eines SendGrid-Kontos]: #sign-up

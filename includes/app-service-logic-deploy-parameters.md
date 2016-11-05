@@ -5,7 +5,6 @@ Verwenden Sie beim Definieren von Parametern das Feld **allowedValues**, um anzu
 Nachfolgend wird jeder der in der Vorlage verwendeten Parameter beschrieben.
 
 ### logicAppName
-
 Der Name der zu erstellenden Logik-App.
 
     "logicAppName": {

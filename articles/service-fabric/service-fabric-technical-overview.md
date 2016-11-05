@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Übersicht über Service Fabric-Terminologie | Microsoft Azure"
-   description="Eine Terminologieübersicht über Service Fabric. Erläutert wichtige Terminologiekonzepte und Begriffe, die in der weiteren Dokumentation verwendet werden."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="rwike77"
-   manager="timlt"
-   editor="chackdan;subramar"/>
+---
+title: Übersicht über Service Fabric-Terminologie | Microsoft Docs
+description: Eine Terminologieübersicht über Service Fabric. Erläutert wichtige Terminologiekonzepte und Begriffe, die in der weiteren Dokumentation verwendet werden.
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: chackdan;subramar
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/25/2016"
-   ms.author="ryanwi"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/25/2016
+ms.author: ryanwi
 
+---
 # Übersicht über Service Fabric-Terminologie
-
 Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. In diesem Thema wird die von Service Fabric verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe verstehen.
 
 ## Infrastrukturkonzepte
@@ -40,9 +39,8 @@ Weitere Informationen finden Sie im Artikel [Anwendungsmodell](service-fabric-ap
 
 Es gibt zwei Arten von Diensten:
 
-- **Zustandslos:** Verwenden Sie einen zustandslosen Dienst, wenn der persistente Zustand des Diensts in einem externen Speicherdienst wie Azure Storage, Azure SQL-Datenbank oder Azure DocumentDB gespeichert ist. Wenn der Dienst über keinen persistenten Speicher verfügt, verwenden Sie einen zustandslosen Dienst. Ein Beispiel hierfür ist ein Rechnerdienst, in dem Werte an den Dienst übergeben werden und eine Berechnung unter Verwendung dieser Werte ausgeführt und ein Ergebnis zurückgegeben wird.
-
-- **Zustandsbehaftet:** Verwenden Sie einen zustandsbehafteten Dienst, wenn Service Fabric zur Verwaltung des Dienstzustands Programmiermodelle mit Reliable Collections oder Reliable Actors verwenden soll. Geben Sie (für die Skalierbarkeit) an, über wie viele Partitionen Sie Ihren Zustand verteilen möchten, wenn Sie einen benannten Dienst erstellen. Geben Sie auch (für die Zuverlässigkeit) an, wie viele Male Ihr Zustand über Knoten repliziert werden soll. Jeder benannte Dienst verfügt über ein einzelnes primäres Replikat und mehrere sekundäre Replikate. Sie ändern den Zustand Ihres benannten Diensts, indem Sie in das primäre Replikat schreiben. Service Fabric repliziert dann diesen Zustand an alle sekundären Replikate und hält so Ihren Zustand synchron. Service Fabric erkennt automatisch, wenn ein Fehler bei einem primären Replikat auftritt, und stuft ein vorhandenes sekundäres Replikat zum primären Replikat hoch. Service Fabric erstellt dann ein neues sekundäres Replikat.
+* **Zustandslos:** Verwenden Sie einen zustandslosen Dienst, wenn der persistente Zustand des Diensts in einem externen Speicherdienst wie Azure Storage, Azure SQL-Datenbank oder Azure DocumentDB gespeichert ist. Wenn der Dienst über keinen persistenten Speicher verfügt, verwenden Sie einen zustandslosen Dienst. Ein Beispiel hierfür ist ein Rechnerdienst, in dem Werte an den Dienst übergeben werden und eine Berechnung unter Verwendung dieser Werte ausgeführt und ein Ergebnis zurückgegeben wird.
+* **Zustandsbehaftet:** Verwenden Sie einen zustandsbehafteten Dienst, wenn Service Fabric zur Verwaltung des Dienstzustands Programmiermodelle mit Reliable Collections oder Reliable Actors verwenden soll. Geben Sie (für die Skalierbarkeit) an, über wie viele Partitionen Sie Ihren Zustand verteilen möchten, wenn Sie einen benannten Dienst erstellen. Geben Sie auch (für die Zuverlässigkeit) an, wie viele Male Ihr Zustand über Knoten repliziert werden soll. Jeder benannte Dienst verfügt über ein einzelnes primäres Replikat und mehrere sekundäre Replikate. Sie ändern den Zustand Ihres benannten Diensts, indem Sie in das primäre Replikat schreiben. Service Fabric repliziert dann diesen Zustand an alle sekundären Replikate und hält so Ihren Zustand synchron. Service Fabric erkennt automatisch, wenn ein Fehler bei einem primären Replikat auftritt, und stuft ein vorhandenes sekundäres Replikat zum primären Replikat hoch. Service Fabric erstellt dann ein neues sekundäres Replikat.
 
 **Dienstpaket:** Ein Datenträgerverzeichnis mit der Datei `ServiceManifest.xml` des Diensttyps. Diese Datei verweist auf den Code, die statischen Daten und die Konfigurationspakete für den Diensttyp. Auf die Dateien im Dienstpaketverzeichnis wird in der Datei `ApplicationManifest.xml` des Anwendungstyps verwiesen. Ein Dienstpaket kann beispielsweise auf den Code, die statischen Daten und die Konfigurationspakete verweisen, die zusammen einen Datenbankdienst bilden.
 
@@ -50,9 +48,8 @@ Es gibt zwei Arten von Diensten:
 
 **Codepaket**: Ein Datenträgerverzeichnis mit den ausführbaren Dateien des Diensttyps (in der Regel EXE-/DLL-Dateien). Auf die Dateien im Codepaketverzeichnis wird in der Datei `ServiceManifest.xml` des Diensttyps verwiesen. Wenn ein benannter Dienst erstellt wird, wird das Codepaket auf den bzw. die zur Ausführung des benannten Diensts ausgewählten Knoten kopiert. Dann beginnt die Ausführung des Codes. Es gibt zwei Arten von ausführbaren Dateien für Codepakete:
 
-- **Ausführbare Gastanwendungsdateien:** Ausführbare Dateien, die ohne Änderungen auf dem Hostbetriebssystem (Windows oder Linux) ausgeführt werden. Das bedeutet, dass diese ausführbaren Dateien nicht mit Service Fabric-Laufzeitdateien verknüpft sind oder auf solche Dateien verweisen und daher keine Service Fabric-Programmiermodelle verwenden. Diese ausführbaren Dateien können manche Service Fabric-Funktionen, z.B. den Naming Service für die Endpunktermittlung, nicht verwenden. Ausführbare Gastdateien können keine spezifischen Auslastungsmetriken für jede Dienstinstanz berichten.
-
-- **Ausführbare Dateien des Diensthosts:** Ausführbare Dateien, die Service Fabric-Programmiermodelle nutzen, indem eine Verknüpfung mit Service Fabric-Laufzeitdateien hergestellt wird und so Service Fabric-Features aktiviert werden. Eine Instanz eines benannten Diensts kann beispielsweise Endpunkte im Service FabricNaming-Dienst registrieren und Lastmetriken melden.
+* **Ausführbare Gastanwendungsdateien:** Ausführbare Dateien, die ohne Änderungen auf dem Hostbetriebssystem (Windows oder Linux) ausgeführt werden. Das bedeutet, dass diese ausführbaren Dateien nicht mit Service Fabric-Laufzeitdateien verknüpft sind oder auf solche Dateien verweisen und daher keine Service Fabric-Programmiermodelle verwenden. Diese ausführbaren Dateien können manche Service Fabric-Funktionen, z.B. den Naming Service für die Endpunktermittlung, nicht verwenden. Ausführbare Gastdateien können keine spezifischen Auslastungsmetriken für jede Dienstinstanz berichten.
+* **Ausführbare Dateien des Diensthosts:** Ausführbare Dateien, die Service Fabric-Programmiermodelle nutzen, indem eine Verknüpfung mit Service Fabric-Laufzeitdateien hergestellt wird und so Service Fabric-Features aktiviert werden. Eine Instanz eines benannten Diensts kann beispielsweise Endpunkte im Service FabricNaming-Dienst registrieren und Lastmetriken melden.
 
 **Datenpaket:** Ein Datenträgerverzeichnis mit den statischen, schreibgeschützten Datendateien eines Diensttyps (in der Regel Foto-, Audio- und Videodateien). Auf die Dateien im Datenpaketverzeichnis wird in der Datei `ServiceManifest.xml` des Diensttyps verwiesen. Wenn ein benannter Dienst erstellt wird, wird das Datenpaket auf den bzw. die zur Ausführung des benannten Diensts ausgewählten Knoten kopiert. Die Ausführung des Codes beginnt, und er kann jetzt auf die Datendateien zugreifen.
 
@@ -74,9 +71,9 @@ Weitere Informationen zu Client- und Dienstkommunikations-APIs, die mit Naming S
 Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdienst finden Sie unter [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md).
 
 ## Integrierte Programmiermodelle
-Zum Erstellen von Service Fabric-Diensten stehen .NET Framework-Programmiermodelle zur Verfügung:
+Zum Erstellen von Service Fabric-Diensten stehen .NET Framework-Programmiermodelle zur Verfügung:
 
-**Reliable Services**: Eine API zum Erstellen zustandsloser und zustandsbehafteter Dienste. Zustandsbehaftete Dienste speichern ihren Zustand in Reliable Collections (z. b. in einem Wörter oder einer Warteschlange). Sie können auch verschiedene Kommunikationsstapel verknüpfen, z. B. Web-API und Windows Communication Foundation (WCF).
+**Reliable Services**: Eine API zum Erstellen zustandsloser und zustandsbehafteter Dienste. Zustandsbehaftete Dienste speichern ihren Zustand in Reliable Collections (z. b. in einem Wörter oder einer Warteschlange). Sie können auch verschiedene Kommunikationsstapel verknüpfen, z. B. Web-API und Windows Communication Foundation (WCF).
 
 **Reliable Actors**: Eine API zum Erstellen zustandsloser und zustandsbehafteter Objekte über das Programmiermodell mit virtuellen Actors. Dieses Modell kann bei zahlreichen unabhängigen Berechnungs-/Zustandseinheiten nützlich sein. Da dieses Modell ein rundenbasiertes Threadingmodell verwendet, sollten Sie Code vermeiden, der andere Actors oder Dienste aufruft, weil ein einzelner Actor andere eingehende Anforderungen erst verarbeiten kann, wenn alle ausgehenden Anforderungen abgeschlossen sind.
 
@@ -86,8 +83,8 @@ Weitere Informationen finden Sie im Artikel [Auswählen eines Frameworks für de
 ## Nächste Schritte
 Weitere Informationen zu Service Fabric:
 
-- [Übersicht über Service Fabric](service-fabric-overview.md)
-- [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
-- [Anwendungsszenarien](service-fabric-application-scenarios.md)
+* [Übersicht über Service Fabric](service-fabric-overview.md)
+* [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
+* [Anwendungsszenarien](service-fabric-application-scenarios.md)
 
 <!---HONumber=AcomDC_0831_2016-->

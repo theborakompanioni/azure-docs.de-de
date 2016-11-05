@@ -1,47 +1,49 @@
-<properties
-    pageTitle="Verwenden des Warteschlangenspeichers (C++) | Microsoft Azure"
-    description="Erfahren Sie, wie Sie den Warteschlangenspeicher-Dienst in Azure verwenden. Die Beispiele sind in C++ geschrieben."
-    services="storage"
-    documentationCenter=".net"
-    authors="dineshmurthy"
-    manager="jahogg"
-    editor="tysonn"/>
+---
+title: Verwenden des Warteschlangenspeichers (C++) | Microsoft Docs
+description: Erfahren Sie, wie Sie den Warteschlangenspeicher-Dienst in Azure verwenden. Die Beispiele sind in C++ geschrieben.
+services: storage
+documentationcenter: .net
+author: dineshmurthy
+manager: jahogg
+editor: tysonn
 
-<tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="dineshm"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/18/2016
+ms.author: dineshm
 
+---
+# <a name="how-to-use-queue-storage-from-c++"></a>Verwenden des Warteschlangenspeichers mit C++
+[!INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
 
-# <a name="how-to-use-queue-storage-from-c++"></a>Verwenden des Warteschlangenspeichers mit C++  
-
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
+[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Übersicht
 In diesem Leitfaden wird die Durchführung häufiger Szenarien mit dem Azure-Warteschlangen-Speicherdienst demonstriert. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück. Zu den Szenarien gehören das **Einfügen**, **Einsehen**, **Abrufen** und **Löschen** von Warteschlangennachrichten sowie das **Erstellen und Löschen von Warteschlangen**.
 
->[AZURE.NOTE] Diese Anleitung gilt für die Azure Storage-Clientbibliothek für C++ in der Version 1.0.0 und höher. Die empfohlene Version ist Storage-Clientbibliothek 2.2.0, die über [NuGet](http://www.nuget.org/packages/wastorage) oder [GitHub](http://github.com/Azure/azure-storage-cpp/) verfügbar ist.
+> [!NOTE]
+> Diese Anleitung gilt für die Azure Storage-Clientbibliothek für C++ in der Version 1.0.0 und höher. Die empfohlene Version ist Storage-Clientbibliothek 2.2.0, die über [NuGet](http://www.nuget.org/packages/wastorage) oder [GitHub](http://github.com/Azure/azure-storage-cpp/) verfügbar ist.
+> 
+> 
 
-[AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
-[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+[!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
-## <a name="create-a-c++-application"></a>Erstellen einer C++-Anwendung  
+[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+
+## <a name="create-a-c++-application"></a>Erstellen einer C++-Anwendung
 In diesem Handbuch werden Sie Speicherfunktionen verwenden, die innerhalb einer C++-Anwendung ausgeführt werden können.
 
 Dafür müssen Sie die Azure-Speicherclientbibliothek für C++ installieren und ein Azure-Speicherkonto in Ihrem Azure-Abonnement erstellen.
 
 Zum Installieren der Azure-Speicherclientbibliothek für C++ können Sie die folgenden Methoden verwenden:
 
--   **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).
--   **Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
-
-        Install-Package wastorage
+* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).
+* **Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
+  
+      Install-Package wastorage
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurieren Ihrer Anwendung für den Zugriff auf den Warteschlangenspeicher
 Fügen Sie folgende "include"-Anweisungen am Anfang der C++-Datei dort ein, wo Azure-Speicher-APIs auf Warteschlangen zugreifen sollen:  
@@ -50,7 +52,6 @@ Fügen Sie folgende "include"-Anweisungen am Anfang der C++-Datei dort ein, wo A
     #include "was/queue.h"
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Einrichten einer Azure-Speicherverbindungszeichenfolge
-
 Ein Azure-Speicherclient verwendet eine Speicherverbindungszeichenfolge zum Speichern von Endpunkten und Anmeldeinformationen für den Zugriff auf Datenverwaltungsdienste. Bei der Ausführung in einer Clientanwendung muss die Speicherverbindungszeichenfolge in dem unten gezeigten Format angegeben werden. Dabei müssen der Name Ihres Speicherkontos und der Speicherzugriffsschlüssel für das im [Azure-Portal](https://portal.azure.com) aufgeführte Speicherkonto als Werte für *AccountName* und *AccountKey* eingegeben werden. Weitere Informationen über Speicherkonten und Zugriffsschlüssel finden Sie unter [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md). Dieses Beispiel zeigt, wie Sie ein statisches Feld für die Verbindungszeichenfolge deklarieren:  
 
     // Define the connection-string with your values.
@@ -231,17 +232,13 @@ Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen S
     queue.delete_queue_if_exists();  
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Nachdem Sie sich nun mit den Grundlagen von Warteschlangenspeichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr über Azure-Speicher zu erfahren.
 
--   [Verwenden des Blob-Speichers mit C++](storage-c-plus-plus-how-to-use-blobs.md)
--   [Verwenden des Tabellenspeichers mit C++](storage-c-plus-plus-how-to-use-tables.md)
--   [Auflisten von Azure Storage-Ressourcen in C++](storage-c-plus-plus-enumeration.md)
--   [Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
--   [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
+* [Verwenden des Blob-Speichers mit C++](storage-c-plus-plus-how-to-use-blobs.md)
+* [Verwenden des Tabellenspeichers mit C++](storage-c-plus-plus-how-to-use-tables.md)
+* [Auflisten von Azure Storage-Ressourcen in C++](storage-c-plus-plus-enumeration.md)
+* [Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
+* [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
 
 <!--HONumber=Oct16_HO2-->
 

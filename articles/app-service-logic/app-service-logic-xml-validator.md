@@ -1,24 +1,23 @@
-<properties
-   pageTitle="Verwendung des BizTalk XML Validators in Logik-Apps in Azure App Service | Microsoft Azure"
-   description="Validieren von Schemas mithilfe des BizTalk XML Validators in Ihrer Logik-App"
-   services="logic-apps"
-   documentationCenter=".net,nodejs,java"
-   authors="rajram"
-   manager="erikre"
-   editor=""/>
+---
+title: Verwendung des BizTalk XML Validators in Logik-Apps in Azure App Service | Microsoft Docs
+description: Validieren von Schemas mithilfe des BizTalk XML Validators in Ihrer Logik-App
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: rajram
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="04/20/2016"
-   ms.author="rajram"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 04/20/2016
+ms.author: rajram
 
+---
 # BizTalk XML Validator
-
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 Verwenden Sie den BizTalk XML Validator-Connector in Ihrer App zum Validieren von XML-Daten anhand vordefinierter XML-Schemas. Benutzer können vorhandene Schemas verwenden oder Schemas auf Grundlage einer Flatfile-Instanz, JSON-Instanz oder vorhandenen Connectors generieren.
 
@@ -38,24 +37,21 @@ Benutzer können Schemas von der Festplatte hochladen oder sie aus einer Flatfil
 
 ![BizTalk XML Validator Schemas][3]
 
-
 ### Verwenden des BizTalk Flat File Encoder auf der Entwurfsoberfläche
 Nach der Konfiguration können Benutzer *->* auswählen und aus der Liste der Aktionen eine Aktion wählen:
 
 ![BizTalk XML Validator Liste der Aktionen][4]
 
 #### XML validieren
-
 Die Aktion „XML validieren“ validiert eine vorhandene XML-Eingabe anhand vorkonfigurierter Schemas:
 
 ![BizTalk XML Validator XML validieren][5]
 
-Parameter|Typ|Beschreibung des Parameters
----|---|---
-Eingabe-XML|Zeichenfolge|Zu validierende XML
+| Parameter | Typ | Beschreibung des Parameters |
+| --- | --- | --- |
+| Eingabe-XML |Zeichenfolge |Zu validierende XML |
 
 Die Aktion gibt die Ausgabe als Objekt zurück. Die Ausgabe enthält das Modell, das die Antwort von XML Validator darstellt. Es besteht aus Ergebnis, Namen des Schemas, Stammknoten und Fehlerbeschreibung.
-
 
 <!-- References -->
 [1]: ./media/app-service-logic-xml-validator/XmlValidator.ClickToConfigure.PNG

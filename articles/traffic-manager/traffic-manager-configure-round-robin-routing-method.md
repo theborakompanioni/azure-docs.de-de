@@ -1,28 +1,39 @@
-<properties
-   pageTitle="Konfigurieren der Traffic Manager-Routingmethode ";Roundrobin"; für Datenverkehr | Microsoft Azure"
-   description="In diesem Artikel finden Sie Informationen zum Konfigurieren der Lastenausgleichsmethode ";Roundrobin"; für Ihre Traffic Manager-Endpunkte."
-   services="traffic-manager"
-   documentationCenter=""
-   authors="sdwheeler"
-   manager="carmonm"
-   editor="tysonn" />
-<tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
-   ms.author="sewhee" />
+---
+title: 'Konfigurieren der Traffic Manager-Routingmethode '
+;roundrobin";: ''
+für: ''
+datenverkehr: ''
+'|': ''
+microsoft: ''
+azure": ''
+description: 'In diesem Artikel finden Sie Informationen zum Konfigurieren der Lastenausgleichsmethode '
+ihre: ''
+traffic: ''
+manager-endpunkte.": ''
+services: traffic-manager
+documentationcenter: ''
+author: sdwheeler
+manager: carmonm
+editor: tysonn
 
+ms.service: traffic-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 03/17/2016
+ms.author: sewhee
+
+---
 # Konfigurieren der Routingmethode "Roundrobin"
-
 Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe identischer Endpunkte (die Clouddienste und Websites umfassen) bereitzustellen und Datenverkehr im Roundrobin-Verfahren an die einzelnen Endpunkte zu senden. Die nachstehende Schritte zeigen, wie Traffic Manager konfiguriert wird, um die entsprechende Methode für das Routing von Datenverkehr zu implementieren. Weitere Informationen zu den verschiedenen Routingmethoden für Datenverkehr finden Sie unter [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md).
 
->[AZURE.NOTE] Beachten Sie, dass Azure Websites bereits Roundrobin-Lastenausgleichsfunktionen für Websites in einem Datencenter (auch als "Region" bezeichnet) zur Verfügung stellt. Traffic Manager ermöglicht das Angeben von Routingmethoden für Roundrobin-Datenverkehr für Websites in verschiedenen Datencentern.
+> [!NOTE]
+> Beachten Sie, dass Azure Websites bereits Roundrobin-Lastenausgleichsfunktionen für Websites in einem Datencenter (auch als "Region" bezeichnet) zur Verfügung stellt. Traffic Manager ermöglicht das Angeben von Routingmethoden für Roundrobin-Datenverkehr für Websites in verschiedenen Datencentern.
+> 
+> 
 
 ## Gleichmäßiges Routing von Datenverkehr (Roundrobin) in einer Gruppe von Endpunkten:
-
 1. Klicken Sie im klassischen Azure-Portal im linken Bereich auf das Symbol **Traffic Manager**, um den Bereich „Traffic Manager“ zu öffnen. Wenn Sie noch kein Traffic Manager-Profil erstellt haben, finden Sie unter [Verwalten von Traffic Manager-Profilen](traffic-manager-manage-profiles.md) Anweisungen zum Erstellen eines einfachen Traffic Manager-Profils.
 2. Suchen Sie im klassischen Azure-Portal im Bereich „Traffic Manager“ das Traffic Manager-Profil mit den Einstellungen, die Sie ändern möchten, und klicken Sie dann auf den Pfeil rechts neben dem Profilnamen. Die Einstellungsseite für das Profil wird geöffnet.
 3. Klicken Sie auf der Seite für Ihr Profil oben auf **Endpunkte**, und prüfen Sie, ob die Dienstendpunkte, die Sie einschließen möchten, in Ihrer Konfiguration vorhanden sind. Schritte zum Hinzufügen oder Entfernen von Endpunkten finden Sie unter [Verwalten von Endpunkten in Traffic Manager](traffic-manager-endpoints.md).
@@ -34,8 +45,6 @@ Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe
 9. Sobald das Traffic Manager-Profil eingerichtet und funktionsfähig ist, bearbeiten Sie den DNS-Eintrag auf dem autoritativen DNS-Server, damit Ihre Unternehmensdomäne auf den Namen der Traffic Manager-Domäne verweisen kann. Weitere Informationen hierzu finden Sie unter [Verweisen auf eine Traffic Manager-Domäne mit der Internetdomäne eines Unternehmens](traffic-manager-point-internet-domain.md).
 
 ## Nächste Schritte
-
-
 [Verweisen einer Unternehmens-Internetdomäne auf eine Traffic Manager-Domäne](traffic-manager-point-internet-domain.md)
 
 [Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md)
@@ -49,7 +58,5 @@ Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe
 [Deaktivieren, Aktivieren oder Löschen eines Traffic Manager-Profils](disable-enable-or-delete-a-profile.md)
 
 [Deaktivieren oder Aktivieren eines Traffic Manager-Endpunkts](disable-or-enable-an-endpoint.md)
-
- 
 
 <!---HONumber=AcomDC_0824_2016-->

@@ -1,8 +1,6 @@
 * [Einrichten einer geografisch verteilten App](../articles/app-service-web/app-service-app-service-environment-geo-distributed-scale.md)
 * [Implementieren einer mehrstufigen Sicherheitsarchitektur](../articles/app-service-web/app-service-app-service-environment-layered-security.md)
 * [Konfigurieren einer Web Application Firewall (WAF) mit einer App Service-Umgebung](../articles/app-service-web/app-service-app-service-environment-web-application-firewall.md)
-
-
 * [Erstellen einer ILB-aktivierten App Service-Umgebung mit Resource Manager-Vorlagen](../articles/app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md)
 * [Verwenden der automatischen Skalierung mit einer App Service-Umgebung](../articles/app-service/app-service-environment-auto-scale.md)
 * [Sichern des eingehenden Datenverkehrs](../articles/app-service-web/app-service-app-service-environment-control-inbound-traffic.md)

@@ -1,57 +1,50 @@
-<properties
-    pageTitle="HTTP-Datensammler-API von Log Analytics | Microsoft Azure"
-    description="Mit der HTTP-Datensammler-API von Log Analytics können Sie dem Log Analytics-Repository über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie Sie die API verwenden. Außerdem finden Sie Beispiele zum Veröffentlichen von Daten mit verschiedenen Programmiersprachen."
-    services="log-analytics"
-    documentationCenter=""
-    authors="bwren"
-    manager="jwhit"
-    editor=""/>
+---
+title: HTTP-Datensammler-API von Log Analytics | Microsoft Docs
+description: Mit der HTTP-Datensammler-API von Log Analytics können Sie dem Log Analytics-Repository über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie Sie die API verwenden. Außerdem finden Sie Beispiele zum Veröffentlichen von Daten mit verschiedenen Programmiersprachen.
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/11/2016"
-    ms.author="bwren"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/11/2016
+ms.author: bwren
 
-
-
+---
 # <a name="log-analytics-http-data-collector-api"></a>HTTP-Datensammler-API von Log Analytics
-
 Mit der HTTP-Datensammler-API von Log Analytics können Sie dem Log Analytics-Repository über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten (JavaScript Object Notation) hinzufügen. Auf diese Weise können Sie Daten aus Anwendungen von Drittanbietern oder Skripts senden, beispielsweise aus einem Runbook in Azure Automation.  
 
 ## <a name="create-a-request"></a>Erstellen einer Anforderung
-
 In den folgenden beiden Tabellen werden die Attribute aufgeführt, die bei jeder Anforderung an die HTTP-Datensammler-API von Log Analytics erforderlich sind. Jedes Attribut wird weiter unten in diesem Artikel ausführlicher beschrieben.
 
 ### <a name="request-uri"></a>Anforderungs-URI
-
 | Attribut | Eigenschaft |
-|:--|:--|
-| Methode | POST |
-| URI | https://<WorkspaceID>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| Content-Typ | Anwendung/json |
+|:--- |:--- |
+| Methode |POST |
+| URI |https://<WorkspaceID>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| Content-Typ |Anwendung/json |
 
 ### <a name="request-uri-parameters"></a>URI-Parameter der Anforderung
 | Parameter | Beschreibung |
-|:--|:--|
-| CustomerID  | Der eindeutige Bezeichner für den Microsoft Operations Management Suite-Arbeitsbereich |
-| Ressource    | Der Name der API-Ressource: /api/logs |
-| API-Version | Die Version der bei dieser Anforderung verwendeten API. Die aktuelle Version lautet 2016-04-01. |
+|:--- |:--- |
+| CustomerID |Der eindeutige Bezeichner für den Microsoft Operations Management Suite-Arbeitsbereich |
+| Ressource |Der Name der API-Ressource: /api/logs |
+| API-Version |Die Version der bei dieser Anforderung verwendeten API. Die aktuelle Version lautet 2016-04-01. |
 
 ### <a name="request-headers"></a>Anforderungsheader
 | Header | Beschreibung |
-|:--|:--|
-| Autorisierung | Die Signatur der Autorisierung. Weiter unten in diesem Artikel erhalten Sie Informationen zum Erstellen eines HMAC-SHA256-Headers. |
-| Log-Type | Geben Sie den Datensatztyp der übermittelten Daten an. Zurzeit unterstützt der Protokolltyp nur Buchstaben. Ziffern oder Sonderzeichen werden nicht unterstützt. |
-| x-ms-date | Das Datum, zu dem die Anforderung verarbeitet wurde, im RFC 1123-Format |
-| time-generated-field | Der Name eines Felds in den Daten, das den Zeitstempel des Datenelements enthält. Wenn Sie ein Feld angeben, wird dessen Inhalt für **TimeGenerated** verwendet. Wenn dieses Feld nicht angegeben wurde, ist der Standardwert für **TimeGenerated** die Zeit, zu der die Nachricht erfasst wurde. Der Inhalt des Nachrichtenfelds sollte das ISO 8601-Format (jjjj-mm-ttThh:mm:ssZ) einhalten. |
-
+|:--- |:--- |
+| Autorisierung |Die Signatur der Autorisierung. Weiter unten in diesem Artikel erhalten Sie Informationen zum Erstellen eines HMAC-SHA256-Headers. |
+| Log-Type |Geben Sie den Datensatztyp der übermittelten Daten an. Zurzeit unterstützt der Protokolltyp nur Buchstaben. Ziffern oder Sonderzeichen werden nicht unterstützt. |
+| x-ms-date |Das Datum, zu dem die Anforderung verarbeitet wurde, im RFC 1123-Format |
+| time-generated-field |Der Name eines Felds in den Daten, das den Zeitstempel des Datenelements enthält. Wenn Sie ein Feld angeben, wird dessen Inhalt für **TimeGenerated** verwendet. Wenn dieses Feld nicht angegeben wurde, ist der Standardwert für **TimeGenerated** die Zeit, zu der die Nachricht erfasst wurde. Der Inhalt des Nachrichtenfelds sollte das ISO 8601-Format (jjjj-mm-ttThh:mm:ssZ) einhalten. |
 
 ## <a name="authorization"></a>Autorisierung
-
 Jede Anforderung an die HTTP-Datensammler-API von Log Analytics muss einen „Authorization“-Header enthalten. Um eine Anforderung zu authentifizieren, müssen Sie die Anforderung mit dem primären oder sekundären Schlüssel für den Arbeitsbereich, der die Anforderung gesendet hat, signieren. Übergeben Sie anschließend diese Signatur als Teil der Anforderung.   
 
 Dies ist das Format für den „Authorization“-Header:
@@ -87,7 +80,6 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 Die Beispiele in den nächsten Abschnitten enthalten Beispielcode, den Sie zum Erstellen eines „Authorization“-Headers verwenden können.
 
 ## <a name="request-body"></a>Anforderungstext
-
 Der Text der Nachricht muss das JSON-Format aufweisen. Er muss einen oder mehrere Datensätze mit Paaren aus Eigenschaftenname und -wert in diesem Format enthalten:
 
 ```
@@ -117,7 +109,6 @@ Sie können mehrere Datensätze in einem Anforderungsbatch zusammenfassen. Verwe
 ```
 
 ## <a name="record-type-and-properties"></a>Datensatztyp und Eigenschaften
-
 Sie definieren einen benutzerdefinierten Datensatztyp beim Senden von Daten über die HTTP-Datensammler-API von Log Analytics. Derzeit können Sie keine Daten in vorhandene Datensatztypen schreiben, die von anderen Datentypen und Lösungen erstellt wurden. Log Analytics liest die eingehenden Daten und erstellt dann die Eigenschaften, die den Datentypen der eingegebenen Werte entsprechen.
 
 Jede Anforderung an die Log Analytics-API muss einen **Log-Type**-Header mit dem Namen für den Datensatztyp enthalten. Das Suffix **_CL** wird automatisch an den eingegebenen Namen angefügt, um es von anderen Protokolltypen wie z.B. benutzerdefinierten Protokollen zu unterscheiden. Wenn Sie beispielsweise den Namen **MyNewRecordType** eingeben, erstellt Log Analytics einen Datensatz vom Typ **MyNewRecordType_CL**. Dadurch wird sichergestellt, dass keine Konflikte zwischen benutzerdefinierten Typnamen und den im Lieferumfang von aktuellen oder zukünftiger Microsoft-Lösungen enthaltenen Typen auftreten.
@@ -125,18 +116,17 @@ Jede Anforderung an die Log Analytics-API muss einen **Log-Type**-Header mit dem
 Um den Datentyp einer Eigenschaft festzulegen, fügt Log Analytics ein Suffix an den Eigenschaftennamen an. Wenn eine Eigenschaft einen NULL-Wert enthält, ist die Eigenschaft nicht in diesem Datensatz enthalten. Diese Tabelle enthält den Datentyp der Eigenschaft und das entsprechende Suffix:
 
 | Datentyp der Eigenschaft | Suffix |
-|:--|:--|
-| String    | _s |
-| Boolean   | _b |
-| Doppelt    | _d |
-| Datum/Uhrzeit | _t |
-| GUID      | _g |
-
+|:--- |:--- |
+| String |_s |
+| Boolean |_b |
+| Doppelt |_d |
+| Datum/Uhrzeit |_t |
+| GUID |_g |
 
 Der Datentyp, den Log Analytics für die einzelnen Eigenschaften verwendet, hängt davon ab, ob der Datensatztyp für den neuen Datensatz bereits vorhanden ist.
 
-- Wenn der Datensatztyp noch nicht vorhanden ist, erstellt Log Analytics einen neuen. Log Analytics verwendet den JSON-Typrückschluss, um den Datentyp für die einzelnen Eigenschaften des neuen Datensatzes zu ermitteln.
-- Wenn der Datensatztyp vorhanden ist, erstellt Log Analytics einen neuen Datensatz basierend auf vorhandenen Eigenschaften. Wenn der Datentyp für eine Eigenschaft im neuen Datensatz nicht übereinstimmt und nicht in den vorhandenen Typ konvertiert werden kann oder wenn der Datensatz eine nicht vorhandene Eigenschaft enthält, erstellt Log Analytics eine neue Eigenschaft mit dem relevanten Suffix.
+* Wenn der Datensatztyp noch nicht vorhanden ist, erstellt Log Analytics einen neuen. Log Analytics verwendet den JSON-Typrückschluss, um den Datentyp für die einzelnen Eigenschaften des neuen Datensatzes zu ermitteln.
+* Wenn der Datensatztyp vorhanden ist, erstellt Log Analytics einen neuen Datensatz basierend auf vorhandenen Eigenschaften. Wenn der Datentyp für eine Eigenschaft im neuen Datensatz nicht übereinstimmt und nicht in den vorhandenen Typ konvertiert werden kann oder wenn der Datensatz eine nicht vorhandene Eigenschaft enthält, erstellt Log Analytics eine neue Eigenschaft mit dem relevanten Suffix.
 
 Bei diesem Übermittlungseintrag würde beispielsweise ein Datensatz mit den drei Eigenschaften **number_d**, **boolean_b** und **string_s** erstellt werden:
 
@@ -155,34 +145,30 @@ Wenn Sie dann den folgenden Eintrag übermitteln, bevor der Datensatztyp erstell
 ![Beispieldatensatz 4](media/log-analytics-data-collector-api/record-04.png)
 
 ## <a name="return-codes"></a>Rückgabecodes
-
 Der HTTP-Statuscode 202 bedeutet, dass die Anforderung für die Verarbeitung angenommen wurde, aber die Verarbeitung noch nicht abgeschlossen wurde. Dies gibt an, dass der Vorgang erfolgreich abgeschlossen wurde.
 
 Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst zurückgegeben werden können:
 
 | Code | Status | Fehlercode | Beschreibung |
-|:--|:--|:--|:--|
-| 202 | Zulässig |  | Die Anforderung wurde erfolgreich angenommen. |
-| 400 | Ungültige Anforderung | InactiveCustomer | Der Arbeitsbereich wurde geschlossen. |
-| 400 | Ungültige Anforderung | InvalidApiVersion | Die angegebene API-Version wurde vom Dienst nicht erkannt. |
-| 400 | Ungültige Anforderung | InvalidCustomerId | Die angegebene Arbeitsbereichs-ID ist ungültig. |
-| 400 | Ungültige Anforderung | InvalidDataFormat | Es wurde ein ungültiges JSON-Format übermittelt. Der Antworttext enthält eventuell weitere Informationen zum Beheben des Fehlers. |
-| 400 | Ungültige Anforderung | InvalidLogType | Der angegebene Protokolltyp enthält Sonderzeichen oder Ziffern. |
-| 400 | Ungültige Anforderung | MissingApiVersion | Die API-Version wurde nicht angegeben. |
-| 400 | Ungültige Anforderung | MissingContentType | Der Inhaltstyp wurde nicht angegeben. |
-| 400 | Ungültige Anforderung | MissingLogType | Der erforderliche Protokolltyp für den Wert wurde nicht angegeben. |
-| 400 | Ungültige Anforderung | UnsupportedContentType | Der Inhaltstyp wurde nicht auf **application/json** festgelegt. |
-| 403 | Verboten (403) | InvalidAuthorization | Der Dienst konnte die Anforderung nicht authentifizieren. Vergewissern Sie sich, dass die Arbeitsbereichs-ID und der Verbindungsschlüssel gültig sind. |
-| 500 | Interner Serverfehler | UnspecifiedError | Auf dem Server wurde ein interner Fehler festgestellt.  Versuchen Sie die Anforderung erneut. |
-| 503 | Dienst nicht verfügbar | ServiceUnavailable | Der Dienst kann derzeit keine Anforderungen empfangen. Bitte wiederholen Sie die Anforderung. |
+|:--- |:--- |:--- |:--- |
+| 202 |Zulässig | |Die Anforderung wurde erfolgreich angenommen. |
+| 400 |Ungültige Anforderung |InactiveCustomer |Der Arbeitsbereich wurde geschlossen. |
+| 400 |Ungültige Anforderung |InvalidApiVersion |Die angegebene API-Version wurde vom Dienst nicht erkannt. |
+| 400 |Ungültige Anforderung |InvalidCustomerId |Die angegebene Arbeitsbereichs-ID ist ungültig. |
+| 400 |Ungültige Anforderung |InvalidDataFormat |Es wurde ein ungültiges JSON-Format übermittelt. Der Antworttext enthält eventuell weitere Informationen zum Beheben des Fehlers. |
+| 400 |Ungültige Anforderung |InvalidLogType |Der angegebene Protokolltyp enthält Sonderzeichen oder Ziffern. |
+| 400 |Ungültige Anforderung |MissingApiVersion |Die API-Version wurde nicht angegeben. |
+| 400 |Ungültige Anforderung |MissingContentType |Der Inhaltstyp wurde nicht angegeben. |
+| 400 |Ungültige Anforderung |MissingLogType |Der erforderliche Protokolltyp für den Wert wurde nicht angegeben. |
+| 400 |Ungültige Anforderung |UnsupportedContentType |Der Inhaltstyp wurde nicht auf **application/json** festgelegt. |
+| 403 |Verboten (403) |InvalidAuthorization |Der Dienst konnte die Anforderung nicht authentifizieren. Vergewissern Sie sich, dass die Arbeitsbereichs-ID und der Verbindungsschlüssel gültig sind. |
+| 500 |Interner Serverfehler |UnspecifiedError |Auf dem Server wurde ein interner Fehler festgestellt.  Versuchen Sie die Anforderung erneut. |
+| 503 |Dienst nicht verfügbar |ServiceUnavailable |Der Dienst kann derzeit keine Anforderungen empfangen. Bitte wiederholen Sie die Anforderung. |
 
 ## <a name="query-data"></a>Abfragen von Daten
-
 Zum Abfragen von Daten, die über die HTTP-Datensammler-API von Log Analytics übermittelt wurden, suchen Sie nach Datensätzen mit einem **Typ**, der dem von Ihnen angegebenen **LogType**-Wert entspricht, und dem Suffix **_CL**. Wenn Sie z.B. **MyCustomLog** verwendet haben, werden alle Datensätze mit **Type=MyCustomLog_CL** zurückgegeben.
 
-
 ## <a name="sample-requests"></a>Beispielanforderungen
-
 In den nächsten Abschnitten finden Sie Beispiele für das Senden von Daten an die HTTP-Datensammler-API von Log Analytics in verschiedenen Programmiersprachen.
 
 Führen Sie für alle Beispiele folgende Schritte aus, um die Variablen für den „Authorization“-Header festzulegen:
@@ -194,7 +180,6 @@ Führen Sie für alle Beispiele folgende Schritte aus, um die Variablen für den
 Sie können auch die Variablen für den Protokolltyp und die JSON-Daten ändern.
 
 ### <a name="powershell-sample"></a>PowerShell-Beispiel
-
 ```
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  
@@ -279,7 +264,6 @@ Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.E
 ```
 
 ### <a name="c#-sample"></a>C#-Beispiel
-
 ```
 using System;
 using System.Net;
@@ -347,7 +331,6 @@ namespace OIAPIExample
 ```
 
 ### <a name="python-sample"></a>Python-Beispiel
-
 ```
 import json
 import requests
@@ -431,10 +414,7 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Verwenden des [Ansicht-Designers](log-analytics-view-designer.md) für das Erstellen benutzerdefinierter Ansichten der von Ihnen übermittelten Daten.
-
-
+* Verwenden des [Ansicht-Designers](log-analytics-view-designer.md) für das Erstellen benutzerdefinierter Ansichten der von Ihnen übermittelten Daten.
 
 <!--HONumber=Oct16_HO2-->
 

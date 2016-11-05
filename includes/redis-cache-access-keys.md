@@ -3,13 +3,11 @@ Zum Herstellen der Verbindung mit einer Azure Redis Cache-Instanz benötigen Cac
 ![Redis Cache: Einstellungen](media/redis-cache-access-keys/redis-cache-settings.png)
 
 ### Hostname und Ports
-
 Klicken Sie zum Zugreifen auf den Hostnamen und die Ports auf **Eigenschaften**.
 
 ![Redis Cache: Eigenschaften](media/redis-cache-access-keys/redis-cache-properties.png)
 
 ### Zugriffsschlüssel
-
 Klicken Sie zum Abrufen der Zugriffsschlüssel auf **Zugriffsschlüssel**.
 
 ![Redis Cache: Zugriffsschlüssel](media/redis-cache-access-keys/redis-cache-access-keys.png)

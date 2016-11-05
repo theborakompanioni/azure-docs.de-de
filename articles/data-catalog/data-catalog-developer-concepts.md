@@ -1,42 +1,38 @@
-<properties
-    pageTitle="Data Catalog – Entwicklerkonzepte | Microsoft Azure"
-    description="Eine Einführung in die wichtigsten Konzepte im konzeptionellen Modell von Azure Data Catalog, die durch die Catalog-REST-API verfügbar gemacht werden."
-    services="data-catalog"
-    documentationCenter=""
-    authors="spelluru"
-    manager="jhubbard"
-    editor=""
-    tags=""/>
-<tags
-    ms.service="data-catalog"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="data-catalog"
-    ms.date="10/11/2016"
-    ms.author="spelluru"/>  
+---
+title: Data Catalog – Entwicklerkonzepte | Microsoft Docs
+description: Eine Einführung in die wichtigsten Konzepte im konzeptionellen Modell von Azure Data Catalog, die durch die Catalog-REST-API verfügbar gemacht werden.
+services: data-catalog
+documentationcenter: ''
+author: spelluru
+manager: jhubbard
+editor: ''
+tags: ''
 
+ms.service: data-catalog
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-catalog
+ms.date: 10/11/2016
+ms.author: spelluru
 
+---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
-
 **Azure Data Catalog** von Microsoft ist ein vollständig verwalteter Clouddienst mit Funktionen für die Datenquellenermittlung und das Crowdsourcing von Datenquellenmetadaten. Entwickler können den Dienst über die REST-APIs nutzen. Eine erfolgreiche Integration von **Azure Data Catalog**setzt voraus, dass die Entwickler mit den implementierten Konzepten vertraut sind.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
-
 Das konzeptionelle Modell von **Azure Data Catalog** basiert auf vier zentralen Konzepten: **Katalog**, **Benutzer**, **Assets** und **Anmerkungen**.
 
 ![Konzept][1]
 
-*Abbildung 1: Vereinfachte Darstellung des konzeptionellen Modells von Azure Data Catalog*
+*Abbildung 1: Vereinfachte Darstellung des konzeptionellen Modells von Azure Data Catalog*
 
 ### <a name="catalog"></a>Katalog
-
 Ein **Katalog** ist ein Container auf der obersten Ebene und wird für sämtliche von der Organisation gespeicherte Metadaten verwendet. Pro Azure-Konto ist jeweils ein **Katalog** zulässig. Kataloge sind mit einem Azure-Abonnement verknüpft, pro Konto kann aber immer nur ein einzelner **Katalog** erstellt werden (auch wenn ein Konto über mehrere Abonnements verfügen kann).
 
 Der Katalog enthält **Benutzer** und **Assets**.
 
 ### <a name="users"></a>Benutzer
-
 Benutzer sind Sicherheitsprinzipale, die über Berechtigungen zum Ausführen von Aktionen im Katalog verfügen (Durchsuchen des Katalogs, Hinzufügen, Bearbeiten oder Entfernen von Elementen usw.).
 
 Ein Benutzer kann verschiedene Rollen haben. Informationen zu Rollen finden Sie im Abschnitt „Rollen und Autorisierung“.
@@ -46,7 +42,6 @@ Einzelne Benutzer und Sicherheitsgruppen können hinzugefügt werden.
 Azure Data Catalog verwendet Azure Active Directory für die Identitäts- und Zugriffsverwaltung. Jeder Katalogbenutzer muss einem Active Directory für das Konto angehören.
 
 ### <a name="assets"></a>Assets
-
 Ein **Katalog** enthält Datenassets. **Assets** sind die Einheit der vom Katalog verwalteten Granularität.
 
 Die Granularität eines Assets variiert je nach Datenquelle. Bei SQL Server oder Oracle Database kann ein Asset eine Tabelle oder Sicht sein. Bei SQL Server Analysis Services kann ein Asset eine Kennzahl, eine Dimension oder ein Key Performance Indicator (KPI) sein. Bei SQL Server Reporting Services ist ein Asset ein Bericht.
@@ -56,22 +51,20 @@ Ein **Asset** ist das Element, das Sie einem Katalog hinzufügen oder daraus ent
 Ein **Asset** setzt sich aus dem Namen, dem Speicherort, dem Typ und Anmerkungen zur genaueren Beschreibung zusammen.
 
 ### <a name="annotations"></a>Anmerkungen
-
 Anmerkungen sind Elemente, die Metadaten für Assets darstellen.
 
 Beispiele für Anmerkungen wären etwa Beschreibungen, Tags, Schemas und Dokumentation. Eine vollständige Liste mit Asset- und Anmerkungstypen finden Sie weiter unten im Abschnitt zum Assetobjektmodell.
 
 ## <a name="crowdsourcing-annotations-and-user-perspective-(multiplicity-of-opinion)"></a>Crowdsourcing von Anmerkungen und Benutzerperspektive (Meinungsvielfalt)
-
-Ein zentraler Aspekt von Azure Data Catalog ist die Crowdsourcing-Unterstützung für Metadaten im System. Im Gegensatz zu einem Wiki-Ansatz, bei dem nur eine einzelne Meinung möglich ist und vom letzten Autor bestimmt wird, können beim Azure Data Catalog-Modell gleichzeitig mehrere Meinungen im System vorhanden sein.
+Ein zentraler Aspekt von Azure Data Catalog ist die Crowdsourcing-Unterstützung für Metadaten im System. Im Gegensatz zu einem Wiki-Ansatz, bei dem nur eine einzelne Meinung möglich ist und vom letzten Autor bestimmt wird, können beim Azure Data Catalog-Modell gleichzeitig mehrere Meinungen im System vorhanden sein.
 
 Dieser Ansatz spiegelt die Realität von Unternehmensdaten wider, da er für ein bestimmtes Asset verschiedene Perspektiven von unterschiedlichen Benutzern zulässt:
 
--   Ein Datenbankadministrator kann Informationen zu verfügbaren Vereinbarungen zum Servicelevel oder das verfügbare Verarbeitungszeitfenster für ETL-Massenvorgänge angeben.
--   Ein Data Steward kann Informationen zu den Geschäftsprozessen, bei denen das Asset angewendet wird, oder die Klassifizierungen angeben, die das Unternehmen auf das Asset angewendet hat.
--   Ein Finanzanalyst kann Informationen zur Verwendung der Daten im Rahmen der Berichterstellung am Ende des Zeitraums angeben.
+* Ein Datenbankadministrator kann Informationen zu verfügbaren Vereinbarungen zum Servicelevel oder das verfügbare Verarbeitungszeitfenster für ETL-Massenvorgänge angeben.
+* Ein Data Steward kann Informationen zu den Geschäftsprozessen, bei denen das Asset angewendet wird, oder die Klassifizierungen angeben, die das Unternehmen auf das Asset angewendet hat.
+* Ein Finanzanalyst kann Informationen zur Verwendung der Daten im Rahmen der Berichterstellung am Ende des Zeitraums angeben.
 
-Um dieses Beispiel zu ermöglichen, kann jeder Benutzer (Datenbankadministrator, Data Steward und Analyst) einer einzelnen, im Katalog registrierten Tabelle eine Beschreibung hinzufügen. Alle Beschreibungen werden im System gespeichert und im Azure Data Catalog-Portal angezeigt.
+Um dieses Beispiel zu ermöglichen, kann jeder Benutzer (Datenbankadministrator, Data Steward und Analyst) einer einzelnen, im Katalog registrierten Tabelle eine Beschreibung hinzufügen. Alle Beschreibungen werden im System gespeichert und im Azure Data Catalog-Portal angezeigt.
 
 Dieses Muster wird auf die meisten Elemente im Objektmodell angewendet. Daher handelt es sich bei Objekttypen in der JSON-Nutzlast häufig um Arrays für Eigenschaften, obwohl Sie unter Umständen einen Singleton erwarten würden.
 
@@ -79,20 +72,17 @@ Am Assetstamm findet sich beispielsweise ein Array mit Beschreibungsobjekten. Di
 
 Die UX kann dann entscheiden, wie die Kombination dargestellt wird. Für die Anzeige stehen drei verschiedene Muster zur Verfügung.
 
--   Das einfachste Muster ist „Alles anzeigen“. Bei diesem Muster werden alle Objekte in einer Listenansicht angezeigt. Die UX des Azure Data Catalog-Portals verwendet dieses Muster für die Beschreibung.
--   Ein weiteres Muster ist „Zusammenführen“. Bei diesem Muster werden alle Werte der verschiedenen Benutzer zusammengeführt. Duplikate werden entfernt. Beispiele für dieses Muster in der UX des Azure Data Catalog-Portals sind die Eigenschaften „tags“ und „experts“.
--   Ein drittes Muster ist „Letzter Autor ist ausschlaggebend“. Bei diesem Muster wird nur der zuletzt eingegebene Wert angezeigt. Ein Beispiel für dieses Muster ist „friendlyName“.
+* Das einfachste Muster ist „Alles anzeigen“. Bei diesem Muster werden alle Objekte in einer Listenansicht angezeigt. Die UX des Azure Data Catalog-Portals verwendet dieses Muster für die Beschreibung.
+* Ein weiteres Muster ist „Zusammenführen“. Bei diesem Muster werden alle Werte der verschiedenen Benutzer zusammengeführt. Duplikate werden entfernt. Beispiele für dieses Muster in der UX des Azure Data Catalog-Portals sind die Eigenschaften „tags“ und „experts“.
+* Ein drittes Muster ist „Letzter Autor ist ausschlaggebend“. Bei diesem Muster wird nur der zuletzt eingegebene Wert angezeigt. Ein Beispiel für dieses Muster ist „friendlyName“.
 
 ## <a name="asset-object-model"></a>Assetobjektmodell
-
 Wie bereits im Abschnitt mit den wichtigen Begriffen angedeutet, enthält das Objektmodell von **Azure Data Catalog** Elemente, bei denen es sich um Assets oder Anmerkungen handeln kann. Elemente besitzen optionale oder erforderliche Eigenschaften. Einige Eigenschaften gelten für alle Elemente. Einige Eigenschaften gelten für alle Assets. Einige Eigenschaften gelten nur für bestimmte Assettypen.
 
 ### <a name="system-properties"></a>Systemeigenschaften
-
 <table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Der Zeitpunkt der letzten Änderung des Elements. Dieses Feld wird vom Server generiert, wenn ein Element eingefügt wird, sowie bei jeder Aktualisierung eines Elements. Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>id</td><td>Uri</td><td>Die absolute URL des Elements (schreibgeschützt). Es handelt sich hierbei um den eindeutig adressierbaren URI für das Element.  Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>Typ</td><td>String</td><td>Der Typ des Assets (schreibgeschützt).</td></tr><tr><td>etag</td><td>String</td><td>Eine Zeichenfolge entsprechend der Version des Elements, die beim Ausführen von Vorgängen, mit denen Elemente im Katalog aktualisiert werden, für die Steuerung optimistischer Nebenläufigkeit verwendet werden kann. Mit „*“ kann die Übereinstimmung mit einem beliebigen Wert angegeben werden.</td></tr></table>
 
 ### <a name="common-properties"></a>Allgemeine Eigenschaften
-
 Diese Eigenschaften gelten für alle Stammassettypen und für alle Anmerkungstypen.
 
 <table>
@@ -103,10 +93,10 @@ Diese Eigenschaften gelten für alle Stammassettypen und für alle Anmerkungstyp
 ### <a name="common-root-properties"></a>Allgemeine Stammeigenschaften
 <p>
 Diese Eigenschaften gelten für alle Stammassettypen.
+
 <table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>Name</td><td>String</td><td>Ein Name, der sich aus den Speicherortinformationen der Datenquelle ableitet.</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Beschreibt die Datenquelle eindeutig und ist einer der Bezeichner für das Asset. (Siehe Abschnitt zu dualer Identität.)  Die DSL-Struktur variiert je nach Protokoll und Quelltyp.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Weitere Informationen zum Typ des Assets.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Beschreibt den Benutzer, der dieses Asset zuletzt registriert hat.  Enthält die eindeutige ID für den Benutzer („Upn“) und einen Anzeigenamen („lastName“ und „firstName“).</td></tr><tr><td>containerId</td><td>String</td><td>Die ID des Containerassets für die Datenquelle. Diese Eigenschaft wird für den Containertyp nicht unterstützt.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Allgemeine Nicht-Singleton-Anmerkungseigenschaften
-
 Diese Eigenschaften gelten für alle Nicht-Singleton-Anmerkungstypen (Anmerkungen, von denen pro Asset mehrere vorhanden sein können).
 
 <table>
@@ -115,14 +105,12 @@ Diese Eigenschaften gelten für alle Nicht-Singleton-Anmerkungstypen (Anmerkunge
 </table>
 
 ### <a name="root-asset-types"></a>Stammassettypen
-
 Stammassettypen stellen die verschiedenen Typen von Datenassets dar, die im Katalog registriert werden können. Für jeden Stammtyp gibt es eine Sicht, die die in der Sicht enthaltenen Assets und Anmerkungen beschreibt. Der Sichtname sollte bei der Veröffentlichung eines Assets mithilfe der REST-API im entsprechenden {view_name}-URL-Segment verwendet werden.
 
-<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiele wären etwa SQL-Tabellen, SQL-Sichten, tabellarische Analysis Services-Tabellen, mehrdimensionale Analysis Services-Dimensionen und Oracle-Tabellen.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
-<tr><td>Bericht („reports“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen SQL Server Reporting Services-Bericht dar. </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container („containers“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen Container für andere Objekte dar, z. B. eine SQL-Datenbank, ein Azure-Blobcontainer oder ein Analysis Services-Modell.</td></tr></table>
+<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiele wären etwa SQL-Tabellen, SQL-Sichten, tabellarische Analysis Services-Tabellen, mehrdimensionale Analysis Services-Dimensionen und Oracle-Tabellen.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
+<tr><td>Bericht („reports“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen SQL Server Reporting Services-Bericht dar. </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container („containers“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen Container für andere Objekte dar, z. B. eine SQL-Datenbank, ein Azure-Blobcontainer oder ein Analysis Services-Modell.</td></tr></table>
 
 ### <a name="annotation-types"></a>Anmerkungstypen
-
 Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des Katalogs zugewiesen werden können.
 
 <table>
@@ -178,8 +166,8 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 </table>
 
 ### <a name="common-types"></a>Allgemeine Typen
-
 Allgemeine Typen können als Typen für Eigenschaften verwendet werden, sind aber keine Elemente.
+
 <table>
 <tr><td><b>Allgemeiner Typ</b></td><td><b>Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
@@ -248,18 +236,15 @@ Der Satz der unterstützten Protokolle kann programmgesteuert erweitert werden. 
 </table>
 
 ## <a name="roles-and-authorization"></a>Rollen und Autorisierung
-
 Microsoft Azure Data Catalog bietet Autorisierungsfunktionen für asset- und anmerkungsbezogene CRUD-Vorgänge.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
-
 Azure Data Catalog verwendet zwei Autorisierungsmechanismen:
 
-- Rollenbasierte Autorisierung
-- Berechtigungsbasierte Autorisierung
+* Rollenbasierte Autorisierung
+* Berechtigungsbasierte Autorisierung
 
 ### <a name="roles"></a>Rollen
-
 Drei Rollen stehen zur Verfügung: **Administrator**, **Besitzer** und **Mitwirkender**.  Jede Rolle hat ihren eigenen Umfang und ihre eigenen Rechte. Diese werden in der folgenden Tabelle zusammengefasst:
 
 <table><tr><td><b>Rolle</b></td><td><b>Umfang</b></td><td><b>Rechte</b></td></tr><tr><td>Administrator</td><td>Katalog (alle Assets/Anmerkungen im Katalog)</td><td>Read Delete ViewRoles
@@ -268,12 +253,14 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Besitzer</td><
 
 ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Mitwirkender</td><td>Jedes einzelne Asset und jede einzelne Anmerkung</td><td>Read Update Delete ViewRoles – Hinweis: Wird dem Mitwirkenden die Leseberechtigung für das Objekt entzogen, werden ihm auch die anderen Rechte entzogen.</td></tr></table>
 
-> [AZURE.NOTE] Die Rechte **Read**, **Update**, **Delete** und **ViewRoles** gelten für jedes Element (Asset oder Anmerkung), während die Rechte **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility** und **ViewPermissions** nur für das Stammasset gelten.
->
->**Delete** gilt für ein Element sowie für alle dazugehörigen untergeordneten Elemente. Beim Löschen eines Assets werden also beispielsweise auch sämtliche Anmerkungen für dieses Asset gelöscht.
+> [!NOTE]
+> Die Rechte **Read**, **Update**, **Delete** und **ViewRoles** gelten für jedes Element (Asset oder Anmerkung), während die Rechte **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility** und **ViewPermissions** nur für das Stammasset gelten.
+> 
+> **Delete** gilt für ein Element sowie für alle dazugehörigen untergeordneten Elemente. Beim Löschen eines Assets werden also beispielsweise auch sämtliche Anmerkungen für dieses Asset gelöscht.
+> 
+> 
 
 ### <a name="permissions"></a>Berechtigungen
-
 Eine Berechtigung ist eine Liste mit Zugriffssteuerungseinträgen. Jeder Zugriffssteuerungseintrag weist einem Sicherheitsprinzipal eine Gruppe von Rechten zu. Berechtigungen können nur für ein Asset (Stammelement) angegeben werden und gelten für das Asset und alle dazugehörigen untergeordneten Elemente.
 
 In der Vorschauversion von **Azure Data Catalog** wird in der Berechtigungsliste nur das Recht **Read** unterstützt, um die Einschränkung der Sichtbarkeit eines Assets zu ermöglichen.
@@ -281,23 +268,26 @@ In der Vorschauversion von **Azure Data Catalog** wird in der Berechtigungsliste
 Standardmäßig ist jeder authentifizierte Benutzer zum Lesen **** aller Elemente im Katalog berechtigt, es sei denn, die Sichtbarkeit ist auf die Gruppe von Prinzipalen in den Berechtigungen beschränkt.
 
 ## <a name="rest-api"></a>REST-API
-
 Mit den Sichtelementanforderungen **PUT** und **POST** können Sie Rollen und Berechtigungen steuern. Neben der Elementnutzlast können zwei Systemeigenschaften angegeben werden: **roles** und **permissions**.
 
-> [AZURE.NOTE]
->
+> [!NOTE]
 > **permissions** gilt nur für ein Stammelement.
->
+> 
 > **Besitzer** gilt nur für ein Stammelement.
->
+> 
 > Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss **Mitwirkender** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal &lt;Everyone&gt; festgelegt werden (wie im folgenden Beispiel zu sehen). **Mitwirkender** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines Elements unverändert.**** Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist &lt;Everyone&gt;: Der **Mitwirkende** kann also nur ein Benutzer, der ein Element erstellt hat, oder &lt;Everyone&gt; sein.
+> 
+> 
 
-###<a name="examples"></a>Beispiele
+### <a name="examples"></a>Beispiele
 **Festlegen des Mitwirkenden auf &lt;Everyone&gt; beim Veröffentlichen eines Elements.**
 Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00000000-0000-0000-0000-000000000201“.
   **POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
 
-  > [AZURE.NOTE] Einige HTTP-Clientimplementierungen können Anforderungen als Reaktion auf eine 302-Antwort vom Server neu ausstellen, in der Regel werden die Autorisierungsheader jedoch aus der Anforderung entfernt. Der Autorisierungsheader ist für Anforderungen an Azure Data Catalog erforderlich. Vergewissern Sie sich daher, dass der Autorisierungsheader noch vorhanden ist, wenn eine Anforderung an einen von Azure Data Catalog festgelegten Umleitungsort neu ausgestellt wird. Dies wird im folgenden Beispielcode mithilfe des Objekts „.NET HttpWebRequest“ veranschaulicht.
+> [!NOTE]
+> Einige HTTP-Clientimplementierungen können Anforderungen als Reaktion auf eine 302-Antwort vom Server neu ausstellen, in der Regel werden die Autorisierungsheader jedoch aus der Anforderung entfernt. Der Autorisierungsheader ist für Anforderungen an Azure Data Catalog erforderlich. Vergewissern Sie sich daher, dass der Autorisierungsheader noch vorhanden ist, wenn eine Anforderung an einen von Azure Data Catalog festgelegten Umleitungsort neu ausgestellt wird. Dies wird im folgenden Beispielcode mithilfe des Objekts „.NET HttpWebRequest“ veranschaulicht.
+> 
+> 
 
 **Body**
 
@@ -358,7 +348,10 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
         ]
     }
 
-> [AZURE.NOTE] Bei „PUT“ muss im Text keine Elementnutzlast angegeben werden: „PUT“ kann zur reinen Aktualisierung von Rollen und/oder Berechtigungen verwendet werden.
+> [!NOTE]
+> Bei „PUT“ muss im Text keine Elementnutzlast angegeben werden: „PUT“ kann zur reinen Aktualisierung von Rollen und/oder Berechtigungen verwendet werden.
+> 
+> 
 
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png

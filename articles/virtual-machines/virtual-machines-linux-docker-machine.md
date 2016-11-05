@@ -1,28 +1,25 @@
-<properties
-	pageTitle="Erstellen von Docker-Hosts in Azure mit Docker Machine | Microsoft Azure"
-	description="Beschreibt die Verwendung von Docker Machine zum Erstellen von Docker-Hosts in Azure."
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="squillace"
-	manager="timlt"
-	editor="tysonn"/>
+---
+title: Erstellen von Docker-Hosts in Azure mit Docker Machine | Microsoft Docs
+description: Beschreibt die Verwendung von Docker Machine zum Erstellen von Docker-Hosts in Azure.
+services: virtual-machines-linux
+documentationcenter: ''
+author: squillace
+manager: timlt
+editor: tysonn
 
-<tags
-	ms.service="virtual-machines-linux"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-linux"
-	ms.workload="infrastructure-services"
-	ms.date="07/22/2016"
-	ms.author="rasquill"/>
+ms.service: virtual-machines-linux
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 07/22/2016
+ms.author: rasquill
 
+---
 # Verwenden eines Docker-Computers mit dem Azure-Treiber
-
 [Docker](https://www.docker.com/) ist einer der beliebtesten Virtualisierungsansätze, bei dem Linux-Container anstelle virtueller Computer genutzt werden, um Anwendungsdaten und Computing auf gemeinsam genutzten Ressourcen zu isolieren. In diesem Thema wird beschrieben, wann und wie Sie [Docker Machine](https://docs.docker.com/machine/) (der `docker-machine`-Befehl) zum Erstellen neuer virtueller Linux-Computer in Azure verwenden, die als Docker-Host für Ihre Linux-Container aktiviert werden.
 
-
 ## Erstellen von virtuellen Computern mit Docker Machine
-
 Erstellen Sie Docker-Host-VMs in Azure mit dem `docker-machine create`-Befehl mithilfe des `azure`-Treiberarguments für die Treiberoption (`-d`) und alle anderen Argumente.
 
 Das folgende Beispiel beruht auf den Standardwerten, öffnet aber Port 80 auf dem virtuellen Computer für das Internet zum Testen mit einem nginx-Container, macht `ops` zum angemeldeten Benutzer für SSH und ruft den neuen virtuellen Computer `machine` auf.
@@ -71,7 +68,6 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 ```
 
 ## Konfigurieren Ihrer Docker-Shell
-
 Geben Sie nun `docker-machine env <VM name>` ein, um zu sehen, was Sie tun müssen, um die Shell zu konfigurieren.
 
 ```bash
@@ -92,7 +88,6 @@ export DOCKER_MACHINE_NAME="machine"
 Sie können entweder den empfohlenen Konfigurationsbefehl ausführen oder die Umgebungsvariablen selbst festlegen.
 
 ## Ausführen eines Containers
-
 Jetzt können Sie einen einfachen Webserver ausführen, um zu testen, ob alles ordnungsgemäß funktioniert. Hier verwenden wir ein standardmäßiges nginx-Image, geben an, dass es auf Port 80 lauschen soll, und dass beim Neustart des virtuellen Computers der Container ebenfalls neu starten soll (`--restart=always`).
 
 ```bash
@@ -114,7 +109,6 @@ Status: Downloaded newer image for nginx:latest
 ```
 
 ## Testen des Containers
-
 Untersuchen Sie ausgeführte Container mit `docker ps`:
 
 ```bash
@@ -127,7 +121,6 @@ Und prüfen Sie, ob Sie den ausgeführten Container sehen. Geben Sie `docker-mac
 ![Ausführen des ngnix-Containers](./media/virtual-machines-linux-docker-machine/nginxsuccess.png)
 
 ## Nächste Schritte
-
 Bei Interesse können Sie die [Docker-VM-Erweiterung](virtual-machines-linux-dockerextension.md) für Azure ausprobieren, um den gleichen Vorgang mithilfe der Azure-Befehlszeilenschnittstelle oder Azure Resource Manager-Vorlagen auszuführen.
 
 Weitere Beispiele zum Arbeiten mit Docker finden Sie unter [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker) (Arbeiten mit Docker) aus der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).

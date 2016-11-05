@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="Durchführen eines Upgrades vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server"
-	description="In diesem Dokument werden die ersten Schritte mit dem Azure MFA-Server und das Durchführen eines Upgrades des älteren Phonefactor-Agents beschrieben."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: Durchführen eines Upgrades vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server
+description: In diesem Dokument werden die ersten Schritte mit dem Azure MFA-Server und das Durchführen eines Upgrades des älteren Phonefactor-Agents beschrieben.
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Durchführen eines Upgrades vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server
-
 Für das Upgrade von Version 5.x oder früher des PhoneFactor-Agents auf den Azure Multi-Factor Authentication-Server müssen der PhoneFactor-Agent und alle zugehörigen Komponenten deinstalliert werden, bevor der Multi-Factor Authentication-Server und die zugehörigen Komponenten installiert werden können.
 
 ## So führen Sie ein Upgrade vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server durch
@@ -39,6 +38,7 @@ Für das Upgrade von Version 5.x oder früher des PhoneFactor-Agents auf den Azu
 
 
 <li>Wenn der Webdienst der mobilen App installiert ist:
+
 <ol>
 <li>Navigieren Sie zum Installationsordner, und sichern Sie die Datei "Web.config". Der Standardinstallationspfad lautet „C:\inetpub\wwwroot\PhoneFactorPhoneAppWebService“.</li>
 <li>Deinstallieren Sie den Webdienst der mobilen App über „Programme und Funktionen“ von Windows.</li></ol>
@@ -51,11 +51,12 @@ Für das Upgrade von Version 5.x oder früher des PhoneFactor-Agents auf den Azu
 
 <li>Aktivieren Sie den Multi-Factor Authentication-Server, wenn Sie dazu aufgefordert werden, und stellen Sie sicher, dass er der richtigen Replikationsgruppe zugewiesen ist.
 
-<li>Wenn das Webdienst-SDK zuvor installiert war, installieren Sie das neue Webdienst-SDK über die Benutzeroberfläche des Multi-Factor Authentication-Servers. Beachten Sie, dass der Standardname des virtuellen Verzeichnisses jetzt "MultiFactorAuthWebServiceSdk" statt "PhoneFactorWebServiceSdk" lautet. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie hingegen die Verwendung des neuen Standardnamens während der Installation zulassen, müssen Sie die URL in allen Anwendungen ändern, die auf das Webdienst-SDK verweisen, z. B. im Benutzerportal und im Webdienst der mobilen App, damit sie auf das richtige Verzeichnis verweist.
+<li>Wenn das Webdienst-SDK zuvor installiert war, installieren Sie das neue Webdienst-SDK über die Benutzeroberfläche des Multi-Factor Authentication-Servers. Beachten Sie, dass der Standardname des virtuellen Verzeichnisses jetzt "MultiFactorAuthWebServiceSdk" statt "PhoneFactorWebServiceSdk" lautet. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie hingegen die Verwendung des neuen Standardnamens während der Installation zulassen, müssen Sie die URL in allen Anwendungen ändern, die auf das Webdienst-SDK verweisen, z. B. im Benutzerportal und im Webdienst der mobilen App, damit sie auf das richtige Verzeichnis verweist.
 
 <li>Wenn das Benutzerportal zuvor auf dem PhoneFactor-Agent-Server installiert war, installieren Sie das neue Multi-Factor Authentication-Benutzerportal über die Benutzeroberfläche des Multi-Factor Authentication-Servers. Beachten Sie, dass der Standardname des virtuellen Verzeichnisses jetzt "MultiFactorAuth" statt "PhoneFactor" lautet. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie hingegen die Verwendung des neuen Standardnamens bei der Installation zulassen, klicken Sie im Multi-Factor Authentication-Server auf das Benutzerportal-Symbol, und aktualisieren Sie auf der Registerkarte "Einstellungen" die Benutzerportal-URL.
 
 <li>Wenn das Benutzerportal und/oder der Webdienst der mobilen App zuvor auf einem anderen Server als dem PhoneFactor-Agent installiert wurde:
+
 <ol>
 <li>Navigieren Sie zum Installationspfad (z.B. „C:\Programme\PhoneFactor“), und kopieren Sie die geeigneten Installationsprogramme auf den anderen Server. Für das Benutzerportal und den Webdienst der mobilen App gibt es 32-Bit- und 64-Bit-Installationsprogramme. Ihre Namen lauten „MultiFactorAuthenticationUserPortalSetupXX.msi“ bzw. „MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi“.</li>
 <li>Um das Benutzerportal auf dem Webserver zu installieren, öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie „MultiFactorAuthenticationUserPortalSetupXX.msi“ aus. Beachten Sie, dass der Standardname des virtuellen Verzeichnisses jetzt "MultiFactorAuth" statt "PhoneFactor" lautet. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Wenn Sie hingegen die Verwendung des neuen Standardnamens bei der Installation zulassen, klicken Sie im Multi-Factor Authentication-Server auf das Benutzerportal-Symbol, und aktualisieren Sie auf der Registerkarte "Einstellungen" die Benutzerportal-URL. Vorhandene Benutzer müssen über die neue URL informiert werden.</li>

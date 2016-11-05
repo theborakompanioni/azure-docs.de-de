@@ -1,35 +1,34 @@
-<properties 
-    pageTitle="Verwenden von Service Bus-Warteschlangen mit Python | Microsoft Azure" 
-    description="Erfahren Sie, wie Azure Service Bus-Warteschlangen von Python aus verwendet werden." 
-    services="service-bus" 
-    documentationCenter="python" 
-    authors="sethmanheim" 
-    manager="timlt" 
-    editor=""/>
+---
+title: Verwenden von Service Bus-Warteschlangen mit Python | Microsoft Docs
+description: Erfahren Sie, wie Azure Service Bus-Warteschlangen von Python aus verwendet werden.
+services: service-bus
+documentationcenter: python
+author: sethmanheim
+manager: timlt
+editor: ''
 
-<tags 
-    ms.service="service-bus" 
-    ms.workload="na" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="python" 
-    ms.topic="article" 
-    ms.date="09/21/2016" 
-    ms.author="sethm;lmazuel"/>
+ms.service: service-bus
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: python
+ms.topic: article
+ms.date: 09/21/2016
+ms.author: sethm;lmazuel
 
-
-
+---
 # <a name="how-to-use-service-bus-queues"></a>Verwenden von Service Bus-Warteschlangen
-
-[AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele sind in Python geschrieben und verwenden das [Python Azure Service Bus-Paket][]. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen, Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**.
 
-[AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-> [AZURE.NOTE] Informationen zur Installation von Python bzw. des [Python Azure Service Bus-Pakets][] finden Sie unter [Installieren von Python und SDK](../python-how-to-install.md).
+> [!NOTE]
+> Informationen zur Installation von Python bzw. des [Python Azure Service Bus-Pakets][] finden Sie unter [Installieren von Python und SDK](../python-how-to-install.md).
+> 
+> 
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
-
 Das **ServiceBusService**-Objekt ermöglicht es Ihnen, mit Warteschlangen zu arbeiten. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Service Bus zugreifen möchten, den folgenden Code hinzu:
 
 ```
@@ -51,7 +50,7 @@ Den Namen und Wert des SAS-Schlüssels finden Sie in den Verbindungsinformatione
 bus_service.create_queue('taskqueue')
 ```
 
-**create_queue** unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für die Warteschlange überschreiben können, wie zum Beispiel die Gültigkeitsdauer (Time-to-live, TTL) von Nachrichten oder die maximale Warteschlangengröße. Das folgende Beispiel legt die maximale Warteschlangengröße auf 5 GB bei einem TTL-Wert von 1 Minute fest:
+**create_queue** unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für die Warteschlange überschreiben können, wie zum Beispiel die Gültigkeitsdauer (Time-to-live, TTL) von Nachrichten oder die maximale Warteschlangengröße. Das folgende Beispiel legt die maximale Warteschlangengröße auf 5 GB bei einem TTL-Wert von 1 Minute fest:
 
 ```
 queue_options = Queue()
@@ -62,7 +61,6 @@ bus_service.create_queue('taskqueue', queue_options)
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Senden von Nachrichten an eine Warteschlange
-
 Um eine Nachricht an eine Service Bus-Warteschlange zu senden, ruft Ihre Anwendung die Methode **send\_queue\_message** für das **ServiceBusService**-Objekt auf.
 
 Das folgende Beispiel zeigt, wie eine Testnachricht an die Warteschlange *taskqueue* mithilfe von **send\_queue\_message** gesendet wird:
@@ -72,10 +70,9 @@ msg = Message(b'Test Message')
 bus_service.send_queue_message('taskqueue', msg)
 ```
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][].
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus-Kontingente].
 
 ## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
-
 Nachrichten werden von einer Warteschlange über die Methode **receive\_queue\_message** auf dem **ServiceBusService**-Objekt empfangen:
 
 ```
@@ -97,7 +94,6 @@ msg.delete()
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
-
 Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine Empfängeranwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, so kann sie die Methode **unlock** für das **Message**-Objekt aufrufen. Dies führt dazu, dass Service Bus die Nachricht innerhalb der Warteschlange entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
 Zudem wird einer in der Warteschlange gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel, wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
@@ -105,16 +101,15 @@ Zudem wird einer in der Warteschlange gesperrten Anwendung ein Zeitlimit zugeord
 Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der Methode **delete** abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing** (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Nachdem Sie nun mit den Grundlagen der Service Bus-Warteschlangen vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
--   Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements][].
+* Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements][].
 
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 [Python Azure-Servicebus-Paket]: https://pypi.python.org/pypi/azure-servicebus  
 [Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
 [Service Bus-Kontingente]: service-bus-quotas.md
- 
+
 
 
 

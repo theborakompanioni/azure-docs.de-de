@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Active Directory-Replikationsstatus-Lösung in Log Analytics | Microsoft Azure"
-    description="Mit dem Active Directory-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt."
-    services="log-analytics"
-    documentationCenter=""
-    authors="bandersmsft"
-    manager="jwhit"
-    editor=""/>
+---
+title: Active Directory-Replikationsstatus-Lösung in Log Analytics | Microsoft Docs
+description: Mit dem Active Directory-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt.
+services: log-analytics
+documentationcenter: ''
+author: bandersmsft
+manager: jwhit
+editor: ''
 
-<tags
-    ms.service="log-analytics"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/10/2016"
-    ms.author="banders"/>
+ms.service: log-analytics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/10/2016
+ms.author: banders
 
-
+---
 # <a name="active-directory-replication-status-solution-in-log-analytics"></a>Active Directory-Replikationsstatus-Lösung in Log Analytics
-
 Active Directory ist eine wichtige Komponente der IT-Umgebung eines Unternehmens. Um für hohe Verfügbarkeit und eine hohe Leistung zu sorgen, verfügt jeder Domänencontroller über eine eigene Kopie der Active Directory-Datenbank. Domänencontroller werden miteinander repliziert, um Änderungen im ganzen Unternehmen zu verteilen. Fehler bei diesem Replikationsprozess können zu einer Vielzahl von Problemen im Unternehmen führen.
 
 Mit dem AD-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt.
@@ -26,31 +24,32 @@ Mit dem AD-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung r
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-- Agents müssen auf Domänencontrollern installiert sein, die Mitglieder der auszuwertenden Domäne sind, oder auf Mitgliedsservern, die zum Senden von Daten für die AD-Replikation zu OMS konfiguriert sind. Informationen zur Verbindung von Windows-Computern mit OMS finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit OMS verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md)weiter.
-- Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Prozesses die Active Directory-Replikationsstatus-Lösung Ihrem OMS-Arbeitsbereich hinzu.  Es ist keine weitere Konfiguration erforderlich.
-
+* Agents müssen auf Domänencontrollern installiert sein, die Mitglieder der auszuwertenden Domäne sind, oder auf Mitgliedsservern, die zum Senden von Daten für die AD-Replikation zu OMS konfiguriert sind. Informationen zur Verbindung von Windows-Computern mit OMS finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md). Wenn Ihr Domänencontroller bereits Teil einer vorhandenen System Center Operations Manager-Umgebung ist, die Sie mit OMS verbinden möchten, helfen Ihnen die Informationen unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md)weiter.
+* Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Prozesses die Active Directory-Replikationsstatus-Lösung Ihrem OMS-Arbeitsbereich hinzu.  Es ist keine weitere Konfiguration erforderlich.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Details der AD-Replikationsstatus-Datensammlung
-
 Die folgende Tabelle zeigt die Datensammlungsmethoden und weitere Details dazu, wie Daten für AD-Replikationsstatus gesammelt werden.
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
-|---|---|---|---|---|---|---|
-|Windows|![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png)|![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png)|![Nein](./media/log-analytics-ad-replication-status/oms-bullet-red.png)|![Nein](./media/log-analytics-ad-replication-status/oms-bullet-red.png)|![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png)| alle 5 Tage|
-
+| --- | --- | --- | --- | --- | --- | --- |
+| Windows |![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![Nein](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![Nein](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |alle 5 Tage |
 
 ## <a name="optionally,-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Optional können Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS aktivieren
 Wenn Sie Ihre Domänencontroller nicht direkt mit OMS verbinden möchten, können Sie einen beliebigen anderen Computer mit OMS-Verbindung in Ihrer Domäne verwenden, um Daten für das AD-Replikationsstatus-Lösungspaket zu sammeln und die Daten zu senden.
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS
-1.  Stellen Sie sicher, dass der Computer Mitglied der Domäne ist, die Sie mit der AD-Replikationsstatus-Lösung überwachen möchten.
-2.  [Verbinden Sie den Windows-Computer mit OMS](log-analytics-windows-agents.md), oder [stellen Sie die Verbindung mit OMS über die vorhandene Operations Manager-Umgebung her](log-analytics-om-agents.md), falls die Verbindung noch nicht besteht.
-3.  Legen Sie auf diesem Computer den folgenden Registrierungsschlüssel fest:
-    - Schlüssel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<Verwaltungsgruppenname>\Solutions\ADReplication**
-    - Wert: **IsTarge**
-    - Wertdaten: **true**
-
-    >[AZURE.NOTE]Diese Änderungen werden erst wirksam, wenn Sie den Microsoft Monitoring Agent-Dienst (HealthService.exe) neu starten.
+1. Stellen Sie sicher, dass der Computer Mitglied der Domäne ist, die Sie mit der AD-Replikationsstatus-Lösung überwachen möchten.
+2. [Verbinden Sie den Windows-Computer mit OMS](log-analytics-windows-agents.md), oder [stellen Sie die Verbindung mit OMS über die vorhandene Operations Manager-Umgebung her](log-analytics-om-agents.md), falls die Verbindung noch nicht besteht.
+3. Legen Sie auf diesem Computer den folgenden Registrierungsschlüssel fest:
+   
+   * Schlüssel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<Verwaltungsgruppenname>\Solutions\ADReplication**
+   * Wert: **IsTarge**
+   * Wertdaten: **true**
+   
+   > [!NOTE]
+   > Diese Änderungen werden erst wirksam, wenn Sie den Microsoft Monitoring Agent-Dienst (HealthService.exe) neu starten.
+   > 
+   > 
 
 ## <a name="understanding-replication-errors"></a>Grundlegendes zu Replikationsfehlern
 Wenn die Daten von AD-Replikationsstatus an OMS gesendet werden, wird im OMS-Dashboard eine Kachel angezeigt, die der Kachel in der folgenden Abbildung ähnelt. Darauf wird angegeben, wie viele Replikationsfehler derzeit vorliegen.  
@@ -60,7 +59,6 @@ Wenn die Daten von AD-Replikationsstatus an OMS gesendet werden, wird im OMS-Das
 
 Wenn Sie auf die Kachel klicken, werden weitere Informationen zu den Fehlern angezeigt.
 ![Dashboard „AD-Replikationsstatus“](./media/log-analytics-ad-replication-status/oms-ad-replication-dash.png)
-
 
 ### <a name="destination-server-status-and-source-server-status"></a>Zielserverstatus und Quellserverstatus
 Auf diesen Blättern wird der Status der Zielserver und Quellserver angezeigt, auf denen Replikationsfehler auftreten. Die Zahl hinter jedem Namen eines Domänencontrollers gibt die Anzahl von Replikationsfehlern auf dem jeweiligen Domänencontroller an.
@@ -93,7 +91,10 @@ Dies sind Fehler, die eindeutig länger erhalten bleiben und nicht nur vorüberg
 
 Wie bereits erwähnt, wird auf der Dashboardkachel für die AD-Replikationsstatus-Lösung die Anzahl von *kritischen* Replikationsfehlern in Ihrer Umgebung angezeigt. Dies sind Fehler, deren Wert für die Tombstonelebensdauer über 75 % liegt (einschließlich der Fehler, deren TSL-Wert über 100 % liegt). Setzen Sie sich immer das Ziel, dass diese Anzahl möglichst 0 beträgt.
 
->[AZURE.NOTE] Alle Berechnungen der prozentualen Tombstonelebensdauer basieren auf der tatsächlichen Tombstonelebensdauer für die Active Directory-Gesamtstruktur. Sie können also sicher sein, dass diese Prozentangaben auch dann genau sind, wenn Sie einen benutzerdefinierten Wert für die Tombstonelebensdauer festgelegt haben.
+> [!NOTE]
+> Alle Berechnungen der prozentualen Tombstonelebensdauer basieren auf der tatsächlichen Tombstonelebensdauer für die Active Directory-Gesamtstruktur. Sie können also sicher sein, dass diese Prozentangaben auch dann genau sind, wenn Sie einen benutzerdefinierten Wert für die Tombstonelebensdauer festgelegt haben.
+> 
+> 
 
 ### <a name="ad-replication-status-details"></a>Details des AD-Replikationsstatus
 Wenn Sie in einer der Listen auf ein Element klicken, werden weitere Details zur Verwendung der Protokollsuche angezeigt. Die Ergebnisse werden gefiltert, damit nur die Fehler zu diesem Element angezeigt werden. Wenn Sie beispielsweise auf den ersten Domänencontroller klicken, der unter **Destination Server Status (ADDC02)** (Zielserverstatus (ADDC02)) aufgeführt ist, sehen Sie, dass die Suchergebnisse gefiltert werden. Es werden die Fehler angezeigt, bei denen der Domänencontroller als Zielserver angegeben ist:
@@ -143,12 +144,8 @@ Falls Sie Informationen zum Herstellen der Verbindung für einen Domänencontrol
 
 Falls Sie keinen Domänencontroller direkt mit OMS oder SCOM verbinden möchten, helfen Ihnen die Informationen unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)weiter.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
-
-
+* Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
 
 <!--HONumber=Oct16_HO2-->
 

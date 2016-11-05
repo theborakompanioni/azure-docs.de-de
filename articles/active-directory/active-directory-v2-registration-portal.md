@@ -1,21 +1,21 @@
-<properties
-	pageTitle="Hilfethemen zum App-Registrierungsportal | Microsoft Azure"
-	description="Eine Beschreibung der verschiedenen Funktionen im App-Registrierungsportal von Microsoft."
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+---
+title: Hilfethemen zum App-Registrierungsportal | Microsoft Docs
+description: Eine Beschreibung der verschiedenen Funktionen im App-Registrierungsportal von Microsoft.
+services: active-directory
+documentationcenter: ''
+author: dstrockis
+manager: mbaldwin
+editor: ''
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="dastrock"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/16/2016
+ms.author: dastrock
 
+---
 # Referenz zur App-Registrierung
 Dieses Dokument enthält Kontext und Beschreibungen zu verschiedenen Features im App-Registrierungsportal von Microsoft: [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com).
 
@@ -33,7 +33,7 @@ Jede Anwendung kann immer nur zwei gültige geheime Schlüssel für eine Anwendu
 Zurzeit sind nur zwei Arten von geheimen Schlüsseln für Anwendungen im App-Registrierungsportal zulässig. Wenn Sie **Neues Kennwort generieren** auswählen, wird ein gemeinsamer geheimer Schlüssel im entsprechenden Datenspeicher generiert und gespeichert, den Sie in Ihrer Anwendung verwenden können. Wenn Sie **Neues Schlüsselpaar generieren** wählen, wird ein neues Paar aus öffentlichem und privatem Schlüssel erstellt, das heruntergeladen und für die Clientauthentifizierung bei Azure AD verwendet werden kann.
 
 ## Profil
-Im Profilabschnitt im App-Registrierungsportal können Sie die Anmeldeseite für Ihre Anwendung anpassen. Zurzeit können Sie auf der Anmeldeseite das Anwendungslogo, die URL mit den Vertragsbedingungen und die Datenschutzerklärung ändern. Das Logo muss ein transparentes Bild im Format 48 x 48 oder 50 x 50 Pixel in einer GIF-, PNG- oder JPEG-Datei von höchstens 15 KB sein. Ändern Sie die Werte nach Belieben, und sehen Sie sich das Ergebnis auf der Anmeldeseite an.
+Im Profilabschnitt im App-Registrierungsportal können Sie die Anmeldeseite für Ihre Anwendung anpassen. Zurzeit können Sie auf der Anmeldeseite das Anwendungslogo, die URL mit den Vertragsbedingungen und die Datenschutzerklärung ändern. Das Logo muss ein transparentes Bild im Format 48 x 48 oder 50 x 50 Pixel in einer GIF-, PNG- oder JPEG-Datei von höchstens 15 KB sein. Ändern Sie die Werte nach Belieben, und sehen Sie sich das Ergebnis auf der Anmeldeseite an.
 
 ## Live SDK-Unterstützung
 Wenn Sie „Live SDK-Unterstützung“ aktivieren, werden alle von Ihnen erstellten geheimen Schlüssel für Anwendungen sowohl im Azure AD- als auch im Microsoft-Konto-Datenspeicher bereitgestellt. Dadurch kann Ihre Anwendung direkt in den Microsoft-Kontodienst (login.live.com) integriert werden. Wenn Sie eine App direkt über Microsoft-Konto (und nicht über den Azure AD-v2.0-Endpunkt) erstellen möchten, sollten Sie sicherstellen, dass die Live SDK-Unterstützung aktiviert ist.

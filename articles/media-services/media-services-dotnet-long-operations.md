@@ -1,30 +1,26 @@
-<properties 
-    pageTitle="Abrufen von Vorgängen mit langen Laufzeiten | Microsoft Azure" 
-    description="In diesem Thema wird gezeigt, wie Vorgänge mit langen Laufzeiten abgerufen werden." 
-    services="media-services" 
-    documentationCenter="" 
-    authors="juliako" 
-    manager="erikre" 
-    editor=""/>
+---
+title: Abrufen von Vorgängen mit langen Laufzeiten | Microsoft Docs
+description: In diesem Thema wird gezeigt, wie Vorgänge mit langen Laufzeiten abgerufen werden.
+services: media-services
+documentationcenter: ''
+author: juliako
+manager: erikre
+editor: ''
 
-<tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/26/2016" 
-    ms.author="juliako"/>
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2016
+ms.author: juliako
 
-
-
-#<a name="delivering-live-streaming-with-azure-media-services"></a>Bereitstellen von Livestreaming mit Azure Media Services
-
-##<a name="overview"></a>Übersicht
-
+---
+# <a name="delivering-live-streaming-with-azure-media-services"></a>Bereitstellen von Livestreaming mit Azure Media Services
+## <a name="overview"></a>Übersicht
 Microsoft Azure Media Services bietet APIs, die Anforderungen zum Starten von Vorgängen an Media Services senden (beispielsweise zum Erstellen, Starten, Beenden oder Löschen eines Kanals). Diese Vorgänge haben eine lange Laufzeit.
 
-Das Media Services .NET SDK stellt APIs bereit, die die Anforderung senden und auf den Abschluss des Vorgangs warten (intern fragen die APIs in regelmäßigen Intervallen den Vorgangsfortschritt ab). Wenn Sie beispielsweise "channel.Start()" aufrufen, wird die Methode nach dem Start des Kanals zurückgegeben. Sie können auch die asynchrone Version „await channel.StartAsync()“ verwenden (Informationen zu taskbasierten asynchronen Mustern finden Sie unter [TAP](https://msdn.microsoft.com/library/hh873175(v=vs.110).aspx)). APIs, die eine Vorgangsanforderung senden und den Status abfragen, bis der Vorgang abgeschlossen ist, werden als "Abfragemethoden" bezeichnet. Diese Methoden (insbesondere die asynchrone Version) werden für Rich Client-Anwendungen und/oder für zustandsbehaftete Dienste empfohlen.
+Das Media Services .NET SDK stellt APIs bereit, die die Anforderung senden und auf den Abschluss des Vorgangs warten (intern fragen die APIs in regelmäßigen Intervallen den Vorgangsfortschritt ab). Wenn Sie beispielsweise "channel.Start()" aufrufen, wird die Methode nach dem Start des Kanals zurückgegeben. Sie können auch die asynchrone Version „await channel.StartAsync()“ verwenden (Informationen zu taskbasierten asynchronen Mustern finden Sie unter [TAP](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). APIs, die eine Vorgangsanforderung senden und den Status abfragen, bis der Vorgang abgeschlossen ist, werden als "Abfragemethoden" bezeichnet. Diese Methoden (insbesondere die asynchrone Version) werden für Rich Client-Anwendungen und/oder für zustandsbehaftete Dienste empfohlen.
 
 Es gibt Szenarien, in denen eine Anwendung nicht auf eine HTTP-Anforderung mit langer Laufzeit warten kann und der Vorgangsfortschritt manuell abgerufen werden soll. Ein typisches Beispiel wäre die Interaktion mit einem zustandsloser Webdienst: Wenn der Browser die Erstellung eines Kanals anfordert, startet der Webdienst einen Vorgang mit langer Laufzeit und gibt die Vorgangs-ID an den Browser zurück. Der Browser kann dann beim Webdienst den Abruf des Vorgangsstatus basierend auf der ID anfordern. Das Media Services .NET SDK stellt APIs bereit, die für dieses Szenario von Nutzen sind. Diese APIs werden als "Methoden ohne Abfrage" bezeichnet.
 Methoden ohne Abfrage weisen das folgende Namensmuster auf: Send*Vorgangsname*Operation (z.B. SendCreateOperation). Send*Vorgangsname*Operation-Methoden geben das **IOperation**-Objekt zurück. Das zurückgegebene Objekt enthält Informationen, die zum Nachverfolgen des Vorgangs verwendet werden können. Die Send*Vorgangsname*OperationAsync-Methoden geben **Task<IOperation>** zurück.
@@ -33,15 +29,12 @@ Derzeit unterstützen die folgenden Klassen Methoden ohne Abfrage: **Channel**, 
 
 Verwenden Sie zum Abfragen des Vorgangsstatus die **GetOperation**-Methode in der **OperationBaseCollection**-Klasse. Verwenden Sie die folgenden Intervalle, um den Vorgangsstatus abzufragen: für **Channel**- und **StreamingEndpoint**-Vorgänge 30 Sekunden, für **Program**-Vorgänge 10 Sekunden.
 
-
-##<a name="example"></a>Beispiel
-
+## <a name="example"></a>Beispiel
 Das folgende Beispiel definiert eine Klasse mit dem Namen **ChannelOperations**. Diese Klassendefinition könnte als Startpunkt für die Klassendefinition Ihres Webdiensts verwendet werden. Der Einfachheit halber werden in den folgenden Beispielen die nicht asynchronen Versionen der Methoden verwendet.
 
 Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
 
-###<a name="channeloperations-class-definition"></a>Definition der ChannelOperations-Klasse
-
+### <a name="channeloperations-class-definition"></a>Definition der ChannelOperations-Klasse
     /// <summary> 
     /// The ChannelOperations class only implements 
     /// the Channel’s creation operation. 
@@ -53,18 +46,18 @@ Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
             ConfigurationManager.AppSettings["MediaServicesAccountName"];
         private static readonly string _mediaServicesAccountKey =
             ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-    
+
         // Field for service context.
         private static CloudMediaContext _context = null;
         private static MediaServicesCredentials _cachedCredentials = null;
-    
+
         public ChannelOperations()
         {
                 _cachedCredentials = new MediaServicesCredentials(_mediaServicesAccountName,
                     _mediaServicesAccountKey);
-    
+
                 _context = new CloudMediaContext(_cachedCredentials);    }
-    
+
         /// <summary>  
         /// Initiates the creation of a new channel.  
         /// </summary>  
@@ -83,10 +76,10 @@ Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
                     Preview = CreateChannelPreview(),
                     Output = CreateChannelOutput()
                 });
-    
+
             return operation.Id;
         }
-    
+
         /// <summary> 
         /// Checks if the operation has been completed. 
         /// If the operation succeeded, the created channel Id is returned in the out parameter.
@@ -100,9 +93,9 @@ Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
         {
             IOperation operation = _context.Operations.GetOperation(operationId);
             bool completed = false;
-    
+
             channelId = null;
-    
+
             switch (operation.State)
             {
                 case OperationState.Failed:
@@ -120,8 +113,8 @@ Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
             }
             return completed;
         }
-    
-    
+
+
         private static ChannelInput CreateChannelInput()
         {
             return new ChannelInput
@@ -141,7 +134,7 @@ Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
                 }
             };
         }
-    
+
         private static ChannelPreview CreateChannelPreview()
         {
             return new ChannelPreview
@@ -160,7 +153,7 @@ Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
                 }
             };
         }
-    
+
         private static ChannelOutput CreateChannelOutput()
         {
             return new ChannelOutput
@@ -170,34 +163,29 @@ Das Beispiel zeigt außerdem, wie der Client diese Klasse verwenden kann.
         }
     }
 
-###<a name="the-client-code"></a>Der Clientcode
-
+### <a name="the-client-code"></a>Der Clientcode
     ChannelOperations channelOperations = new ChannelOperations();
     string opId = channelOperations.StartChannelCreation("MyChannel001");
-    
+
     string channelId = null;
     bool isCompleted = false;
-    
+
     while (isCompleted == false)
     {
         System.Threading.Thread.Sleep(TimeSpan.FromSeconds(30));
         isCompleted = channelOperations.IsCompleted(opId, out channelId);
     }
-    
+
     // If we got here, we should have the newly created channel id.
     Console.WriteLine(channelId);
- 
 
 
-##<a name="media-services-learning-paths"></a>Media Services-Lernpfade
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Feedback geben
-
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
+## <a name="provide-feedback"></a>Feedback geben
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 <!--HONumber=Oct16_HO2-->
 

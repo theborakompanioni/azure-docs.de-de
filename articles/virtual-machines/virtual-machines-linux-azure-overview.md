@@ -1,32 +1,30 @@
- <properties
-   pageTitle="Azure und Linux | Microsoft Azure"
-   description="Beschreibt die Azure Compute-, Speicher- und Netzwerkdienste in Bezug auf virtuelle Linux-Computer."
-   services="virtual-machines-linux"
-   documentationCenter="virtual-machines-linux"
-   authors="vlivech"
-   manager="timlt"
-   editor=""/>
+---
+title: Azure und Linux | Microsoft Docs
+description: Beschreibt die Azure Compute-, Speicher- und Netzwerkdienste in Bezug auf virtuelle Linux-Computer.
+services: virtual-machines-linux
+documentationcenter: virtual-machines-linux
+author: vlivech
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="09/14/2016"
-   ms.author="v-livech"/>
+ms.service: virtual-machines-linux
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 09/14/2016
+ms.author: v-livech
 
+---
 # Azure und Linux
-
 Microsoft Azure umfasst eine wachsende Sammlung von integrierten Public Cloud-Diensten, z.B. Analyse, Virtual Machines, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web, und ist somit ideal für das Hosten Ihrer Lösungen geeignet. Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen. Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
 
 Wenn Sie mit den Funktionen der verschiedenen Amazon Web Services (AWS) vertraut sind, sehen Sie sich den [Vergleich der Dienste von Azure und AWS](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) an.
 
-
 ## Regionen
 Microsoft Azure-Ressourcen sind auf mehrere geografische Regionen weltweit verteilt. Eine „Region“ umfasst mehrere Rechenzentren in einem bestimmten geografischen Bereich. Ab 1. Januar 2016 gilt folgender Stand: 8 in Amerika, 2 in Europa, 6 in der Asien-Pazifik-Region, 2 in China (Festland) und 3 in Indien. Falls Sie eine vollständige Liste mit allen Azure-Regionen benötigen, können wir Ihnen eine Liste mit den vorhandenen und neu angekündigten Regionen zur Verfügung stellen.
 
-- [Azure-Regionen](https://azure.microsoft.com/regions/)
+* [Azure-Regionen](https://azure.microsoft.com/regions/)
 
 ## Availability
 Damit Ihre Bereitstellung die Qualifikation für unsere VM-Vereinbarung zum Servicelevel von 99,95% erreicht, müssen Sie mindestens zwei VMs bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. So wird sichergestellt, dass Ihre VMs auf mehrere Fehlerdomänen in unseren Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -46,35 +44,32 @@ Hier sind einige grundlegende Richtlinien zur Auswahl einer VM-Größe aus einer
 * VMs der A-Serie sind unsere kostengünstigen Einsteiger-VMs für kleine Workloads und Entwicklungs- und Testszenarien. Sie sind in allen Regionen verfügbar und ermöglichen die Verbindung mit und Nutzung aller Standardressourcen für virtuelle Computer.
 * Bei den Größen der A-Serie (A8 - A11) handelt es sich um spezielle rechenintensive Konfigurationen, die für Computing-Clusteranwendungen mit hoher Leistung geeignet sind.
 * VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie bieten schnellere Prozessoren, ein höheres Verhältnis von Speicher zu Kern und ein SSD (Solid State Drive) für den temporären Datenträger.
-* Die Dv2-Serie ist die neuste Version unserer D-Serie und verfügt über eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des Intel Xeon® E5-2673 v3-Prozessors mit 2,4 GHz (Haskell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,2 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+* Die Dv2-Serie ist die neuste Version unserer D-Serie und verfügt über eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des Intel Xeon® E5-2673 v3-Prozessors mit 2,4 GHz (Haskell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,2 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 * Virtuelle Computer der G-Serie bieten den meisten Arbeitsspeicher und werden auf Hosts mit Prozessoren der Intel Xeon E5 V3-Familie ausgeführt.
 
 Hinweis: Für VMs der DS-Serie und GS-Serie besteht Zugriff auf Storage Premium, unsere Speicherlösung mit SSD-Unterstützung, hoher Leistung und geringer Latenz für Workloads mit hoher E/A-Intensität. Premium-Speicher ist in bestimmten Regionen verfügbar. Einzelheiten dazu finden Sie hier:
 
-- [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md)
+* [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md)
 
 ## Automation
 Um eine sinnvolle DevOps-Kultur zu erzielen, muss die gesamte Infrastruktur als Code definiert sein. Wenn die Infrastruktur vollständig im Codeformat vorliegt, kann sie problemlos neu erstellt werden (Phoenix-Server). Azure arbeitet mit allen wichtigen Automatisierungstools zusammen, wie z.B. Ansible, Chef, SaltStack und Puppet. Azure stellt auch eigene Tools für die Automatisierung bereit:
 
-- [Azure-Vorlagen](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-
-- [Azure VMAccess](virtual-machines-linux-using-vmaccess-extension.md)
+* [Azure-Vorlagen](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+* [Azure VMAccess](virtual-machines-linux-using-vmaccess-extension.md)
 
 Azure führt Unterstützung für [cloud-init](http://cloud-init.io/) für die meisten Linux-Distributionen ein, die dies unterstützen. Zurzeit werden die Ubuntu-VMs von Canonical mit standardmäßig aktiviertem cloud-init bereitgestellt. RHEL, CentOS und Fedora von Red Hat unterstützen cloud-init, auf den von Red Hat verwalteten Azure-Images ist cloud-init jedoch nicht installiert. Um cloud-init unter einem Betriebssystem der Red Hat-Familie zu verwenden, müssen Sie ein benutzerdefiniertes Image mit installiertem cloud-init erstellen.
 
-- [Verwenden von cloud-init auf virtuellen Linux-Computern in Azure](virtual-machines-linux-using-cloud-init.md)
+* [Verwenden von cloud-init auf virtuellen Linux-Computern in Azure](virtual-machines-linux-using-cloud-init.md)
 
 ## Kontingente
 Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch die die Bereitstellung einer großen Anzahl von virtuellen Computern für Ihr Projekt beeinträchtigt werden kann. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Sie können die Kontingentgrenzen erhöhen lassen, indem Sie ein Supportticket erstellen und eine Erhöhung anfordern. Weitere Informationen zu Kontingentgrenzen finden Sie hier:
 
-- [Einschränkungen für Azure-Abonnementdienste](../azure-subscription-service-limits.md)
-
+* [Einschränkungen für Azure-Abonnementdienste](../azure-subscription-service-limits.md)
 
 ## Partner
-
 Microsoft arbeitet eng mit Partnern zusammen, um sicherzustellen, dass die verfügbaren Images für die Azure-Laufzeit aktualisiert und optimiert sind. Weitere Informationen zu unseren Partnern finden Sie auf den jeweiligen Marketplace-Seiten unten.
 
-- [Linux auf von Azure unterstützten Verteilungen](virtual-machines-linux-endorsed-distros.md)
+* [Linux auf von Azure unterstützten Verteilungen](virtual-machines-linux-endorsed-distros.md)
 
 Red Hat: [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 
@@ -96,7 +91,6 @@ Docker: [Azure Marketplace – Azure Container Service mit Docker Swarm](https:/
 
 Jenkins: [Azure Marketplace – CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
-
 ## Erste Schritte mit Azure
 Um mit der Verwendung von Azure zu beginnen, benötigen Sie ein Azure-Konto, die installierte Azure-Befehlszeilenschnittstelle und ein Paar aus öffentlichen und privaten SSH-Schlüsseln.
 
@@ -115,53 +109,39 @@ Nachdem Sie Ihr Azure-Konto eingerichtet, die Azure-Befehlszeilenschnittstelle i
 ## Erstellen eines virtuellen Computers mit der Befehlszeilenschnittstelle
 Die Erstellung eines virtuellen Linux-Computers mit der CLI ist eine schnelle Möglichkeit, einen virtuellen Computer bereitzustellen, ohne das Terminal zu verlassen, an dem Sie gerade arbeiten. Alle Elemente, die Sie im Webportal festlegen können, stehen auch über ein Flag bzw. eine Option in der Befehlszeile zur Verfügung.
 
-- [Erstellen eines virtuellen Linux-Computers über die Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
+* [Erstellen eines virtuellen Linux-Computers über die Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
 
 ## Erstellen eines virtuellen Computers im Portal
 Die Erstellung eines virtuellen Linux-Computers im Azure-Webportal ist eine einfache Möglichkeit, per Klick auf verschiedene Optionen zu einer Bereitstellung zu gelangen. Anstatt manuell Befehlszeilenflags oder -optionen einzugeben, können Sie die verschiedenen Optionen und Einstellungen in einem benutzerfreundlichen Weblayout anzeigen. Alle über die Befehlszeilenschnittstelle verfügbaren Optionen stehen auch im Portal zur Verfügung.
 
-- [Erstellen eines virtuellen Linux-Computers mithilfe des Portals](virtual-machines-linux-quick-create-portal.md)
+* [Erstellen eines virtuellen Linux-Computers mithilfe des Portals](virtual-machines-linux-quick-create-portal.md)
 
 ## Anmelden ohne Kennwort über SSH
 Der virtuelle Computer wird jetzt in Azure ausgeführt, und Sie können sich anmelden. Die Verwendung von Kennwörtern zur Anmeldung über SSH ist unsicher und zeitaufwendig. SSH-Schlüssel sind die sicherste und gleichzeitig schnellste Möglichkeit zur Anmeldung. Beim Erstellen eines virtuellen Linux-Computers im Portal oder über die Befehlszeilenschnittstelle stehen Ihnen zwei Authentifizierungsoptionen zur Verfügung. Wenn Sie ein Kennwort für SSH auswählen, konfiguriert Azure den virtuellen Computer so, dass Anmeldungen mit Kennwort zulässig sind. Wenn Sie sich für einen öffentlichen SSH-Schlüssel entschieden haben, konfiguriert Azure den virtuellen Computer so, dass Anmeldungen nur mit SSH-Schlüsseln möglich sind. Anmeldungen per Kennwort werden deaktiviert. Um Ihren virtuellen Linux-Computer zu sichern, indem Sie nur Anmeldungen per SSH-Schlüssel zulassen, verwenden Sie beim Erstellen des virtuellen Computers im Portal oder über die Befehlszeilenschnittstelle die Option für öffentliche SSH-Schlüssel.
 
-- [Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD](virtual-machines-linux-mac-disable-ssh-password-usage.md)
+* [Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD](virtual-machines-linux-mac-disable-ssh-password-usage.md)
 
 ## Verwandte Azure-Komponenten
-
 ## Speicher
-
-- [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md)
-
-- [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer über die Azure-Befehlszeilenschnittstelle](virtual-machines-linux-add-disk.md)
-
-- [Anfügen eines Datenträgers an eine Linux-VM im Azure-Portal ](virtual-machines-linux-attach-disk-portal.md)
+* [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md)
+* [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer über die Azure-Befehlszeilenschnittstelle](virtual-machines-linux-add-disk.md)
+* [Anfügen eines Datenträgers an eine Linux-VM im Azure-Portal ](virtual-machines-linux-attach-disk-portal.md)
 
 ## Netzwerk
-
-- [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md)
-
-- [IP-Adressen in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
-
-- [Öffnen von Ports für eine Linux-VM in Azure](virtual-machines-linux-nsg-quickstart.md)
-
-- [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](virtual-machines-linux-portal-create-fqdn.md)
-
+* [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md)
+* [IP-Adressen in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [Öffnen von Ports für eine Linux-VM in Azure](virtual-machines-linux-nsg-quickstart.md)
+* [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](virtual-machines-linux-portal-create-fqdn.md)
 
 ## Container
-
-- [Virtuelle Computer und Container in Azure](virtual-machines-linux-containers.md)
-
-- [Einführung in Azure Container Service](../container-service/container-service-intro.md)
-
-- [Bereitstellen eines Azure Container Service-Clusters](../container-service/container-service-deployment.md)
+* [Virtuelle Computer und Container in Azure](virtual-machines-linux-containers.md)
+* [Einführung in Azure Container Service](../container-service/container-service-intro.md)
+* [Bereitstellen eines Azure Container Service-Clusters](../container-service/container-service-deployment.md)
 
 ## Nächste Schritte
-
 Sie haben nun einen Überblick über die Verwendung von Linux in Azure. Jetzt können Sie richtig loslegen und weitere virtuelle Computer erstellen!
 
-- [Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Portals](virtual-machines-linux-quick-create-portal.md)
-
-- [Erstellen einer Linux-VM in Azure mithilfe der CLI](virtual-machines-linux-quick-create-cli.md)
+* [Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Portals](virtual-machines-linux-quick-create-portal.md)
+* [Erstellen einer Linux-VM in Azure mithilfe der CLI](virtual-machines-linux-quick-create-cli.md)
 
 <!---HONumber=AcomDC_0928_2016-->

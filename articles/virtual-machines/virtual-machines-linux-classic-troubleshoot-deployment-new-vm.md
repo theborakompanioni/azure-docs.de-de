@@ -1,42 +1,39 @@
-<properties
-   pageTitle="Behandeln von Problemen beim Bereitstellen virtueller Linux-Computer (klassisches Bereitstellungsmodell) | Microsoft Azure"
-   description="Behandeln Sie Probleme beim Erstellen eines neuen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell)."
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="JiangChen79"
-   manager="felixwu"
-   editor=""
-   tags="top-support-issue"/>
+---
+title: Behandeln von Problemen beim Bereitstellen virtueller Linux-Computer (klassisches Bereitstellungsmodell) | Microsoft Docs
+description: Behandeln Sie Probleme beim Erstellen eines neuen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell).
+services: virtual-machines-linux
+documentationcenter: ''
+author: JiangChen79
+manager: felixwu
+editor: ''
+tags: top-support-issue
 
-<tags
-  ms.service="virtual-machines-linux"
-  ms.workload="na"
-  ms.tgt_pltfrm="vm-linux"
-  ms.devlang="na"
-  ms.topic="article"
-  ms.date="09/06/2016"
-  ms.author="cjiang"/>
+ms.service: virtual-machines-linux
+ms.workload: na
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 09/06/2016
+ms.author: cjiang
 
-
+---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Behandeln von Problemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell)
+[!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]
 
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]
+[!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+[!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="collect-audit-logs"></a>Sammeln von Überwachungsprotokollen
-
 Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist.
 
 Klicken Sie im Azure-Portal auf **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Windows-Computer* > **Einstellungen** > **Überwachungsprotokolle**.
 
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
+[!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
-[AZURE.INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
+[!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
 **Y** : Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
 
@@ -69,24 +66,25 @@ Je nach den Einschränkungen des Clouddiensts, den Sie zum Erstellen des neuen v
 
 **Lösung 1:**
 
-- Erstellen Sie einen neuen Clouddienst, und ordnen Sie ihn einer Region oder einem regionsbasierten virtuellen Netzwerk zu.
-- Erstellen Sie in dem neuen Clouddienst einen neuen virtuellen Computer.
+* Erstellen Sie einen neuen Clouddienst, und ordnen Sie ihn einer Region oder einem regionsbasierten virtuellen Netzwerk zu.
+* Erstellen Sie in dem neuen Clouddienst einen neuen virtuellen Computer.
   Sollte bei der Erstellung eines neuen Clouddiensts ein Fehler auftreten, wiederholen Sie den Vorgang zu einem späteren Zeitpunkt, oder ändern Sie die Region für den Clouddienst.
 
-> [AZURE.IMPORTANT] Falls Sie erfolglos versucht haben, einen neuen virtuellen Computer in einem vorhandenen Clouddienst zu erstellen, und für Ihren neuen virtuellen Computer einen neuen Clouddienst erstellen mussten, haben Sie die Möglichkeit, alle Ihre virtuellen Computer im gleichen Clouddienst zusammenzufassen. Löschen Sie hierzu die virtuellen Computer im vorhandenen Clouddienst, und erfassen Sie sie auf der Grundlage ihrer Datenträger im neuen Clouddienst neu. Berücksichtigen Sie dabei allerdings, dass der neue Clouddienst einen neuen Namen und eine neue VIP besitzt und diese für alle Abhängigkeiten aktualisiert werden müssen, die derzeit diese Informationen für den vorhandenen Clouddienst verwenden.
+> [!IMPORTANT]
+> Falls Sie erfolglos versucht haben, einen neuen virtuellen Computer in einem vorhandenen Clouddienst zu erstellen, und für Ihren neuen virtuellen Computer einen neuen Clouddienst erstellen mussten, haben Sie die Möglichkeit, alle Ihre virtuellen Computer im gleichen Clouddienst zusammenzufassen. Löschen Sie hierzu die virtuellen Computer im vorhandenen Clouddienst, und erfassen Sie sie auf der Grundlage ihrer Datenträger im neuen Clouddienst neu. Berücksichtigen Sie dabei allerdings, dass der neue Clouddienst einen neuen Namen und eine neue VIP besitzt und diese für alle Abhängigkeiten aktualisiert werden müssen, die derzeit diese Informationen für den vorhandenen Clouddienst verwenden.
+> 
+> 
 
 **Ursache 2:** Der Clouddienst ist einem bestimmten virtuellen Netzwerk zugeordnet, das mit einer Affinitätsgruppe (und dadurch standardmäßig mit einem bestimmten Cluster) verknüpft ist. In dieser Affinitätsgruppe wird versucht, alle neuen Anforderungen von Computeressourcen in dem Cluster auszuführen, in dem auch die vorhandenen Ressourcen gehostet werden. Der Cluster unterstützt aber unter Umständen die angeforderte VM-Größe nicht oder verfügt nicht über genügend Speicherplatz, was einen Zuordnungsfehler zur Folge hat. Dies gilt unabhängig davon, ob die neuen Ressourcen über einen neuen Clouddienst oder einen vorhandenen Clouddienst erstellt werden.
 
 **Lösung 2:**
 
-- Erstellen Sie ein neues regionales virtuelles Netzwerk.
-- Erstellen Sie den neuen virtuellen Computer in dem neuen virtuellen Netzwerk.
-- [Verbinden Sie Ihr vorhandenes virtuelles Netzwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) mit dem neuen virtuellen Netzwerk. Weitere Informationen zu regionalen virtuellen Netzwerken finden Sie [hier](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/). Alternativ dazu können Sie [Ihr auf einer Affinitätsgruppe basierendes virtuelles Netzwerk zu einem regionalen virtuellen Netzwerk migrieren](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)und anschließend den neuen virtuellen Computer erstellen.
+* Erstellen Sie ein neues regionales virtuelles Netzwerk.
+* Erstellen Sie den neuen virtuellen Computer in dem neuen virtuellen Netzwerk.
+* [Verbinden Sie Ihr vorhandenes virtuelles Netzwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/) mit dem neuen virtuellen Netzwerk. Weitere Informationen zu regionalen virtuellen Netzwerken finden Sie [hier](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/). Alternativ dazu können Sie [Ihr auf einer Affinitätsgruppe basierendes virtuelles Netzwerk zu einem regionalen virtuellen Netzwerk migrieren](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)und anschließend den neuen virtuellen Computer erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn beim Starten eines beendeten virtuellen Linux-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Linux-Computers Probleme in Azure auftreten, finden Sie Informationen unter [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md).
-
-
 
 <!--HONumber=Oct16_HO2-->
 

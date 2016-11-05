@@ -1,22 +1,21 @@
-<properties
-   pageTitle="Reliable Actors-Ereignisse | Microsoft Azure"
-   description="Einführung in Ereignisse für Service Fabric Reliable Actors."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="vturecek"
-   manager="timlt"
-   editor=""/>
+---
+title: Reliable Actors-Ereignisse | Microsoft Docs
+description: Einführung in Ereignisse für Service Fabric Reliable Actors.
+services: service-fabric
+documentationcenter: .net
+author: vturecek
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/30/2016"
-   ms.author="amanbha"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/30/2016
+ms.author: amanbha
 
-
+---
 # Actor-Ereignisse
 Actor-Ereignisse bieten eine Möglichkeit zum Senden von Best-Effort-Nachrichten vom Actor an die Clients. Actor-Ereignisse dienen der Actor-Client-Kommunikation und sollten nicht für die Actor-Actor-Kommunikation verwendet werden.
 
@@ -73,9 +72,9 @@ ev.GameScoreUpdated(Id.GetGuidId(), score);
 ```
 
 ## Nächste Schritte
- - [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
- - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
- - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [Beispielcode](https://github.com/Azure/servicefabric-samples)
+* [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
+* [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
+* [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
 <!---HONumber=AcomDC_0907_2016-->

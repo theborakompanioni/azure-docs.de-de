@@ -1,24 +1,23 @@
-<properties
-	pageTitle="Erstellen von Skalierungsgruppen virtueller Computer mit PowerShell-Cmdlets | Microsoft Azure"
-	description="Erste Schritte zum Erstellen und Verwalten von Azure-VM-Skalierungsgruppen mit Azure PowerShell-Cmdlets"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="danielsollondon"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+---
+title: Erstellen von Skalierungsgruppen virtueller Computer mit PowerShell-Cmdlets | Microsoft Docs
+description: Erste Schritte zum Erstellen und Verwalten von Azure-VM-Skalierungsgruppen mit Azure PowerShell-Cmdlets
+services: virtual-machines-windows
+documentationcenter: ''
+author: danielsollondon
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/30/2016"
-	ms.author="danielsollondon"/>
+ms.service: virtual-machines-windows
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/30/2016
+ms.author: danielsollondon
 
+---
 # Erstellen von Skalierungsgruppen virtueller Computer mit PowerShell-Cmdlets
-
 Dies ist ein Beispiel für das Erstellen einer Skalierungsgruppe virtueller Computer (Virtual Machine Scale Set, VMSS), in dem eine VMSS aus 3 Knoten mit zugeordnetem Netzwerk und Speicher erstellt wird.
 
 ## Erste Schritte
@@ -27,9 +26,7 @@ Stellen Sie sicher, dass Sie das neueste Azure PowerShell-Modul installiert habe
 Um auf VMSS bezogene Cmdlets zu suchen, verwenden Sie die Zeichenfolge *VMSS*.
 
 ## Erstellen einer VMSS
-
 ##### Ressourcengruppe erstellen
-
 ```
 $loc = 'westus';
 $rgname = 'mynewrgwu';
@@ -37,7 +34,6 @@ $rgname = 'mynewrgwu';
 ```
 
 ##### Speicherkonto erstellen
-
 Legen Sie Typ/Namen des Speicherkontos fest.
 
 ```
@@ -49,16 +45,13 @@ $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stonam
 ```
 
 #### Erstellen des Netzwerks (VNET/Subnetz)
-
 ##### Subnetzspezifikation
-
 ```
 $subnetName = 'websubnet'
   $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
 ```
 
 ##### VNET-Spezifikation
-
 ```
 $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
 $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
@@ -68,7 +61,6 @@ $subnetId = $vnet.Subnets[0].Id;
 ```
 
 ##### Erstellen von öffentlichen IP-Ressourcen, um externen Zugriff zu ermöglichen
-
 Dies ist an den Load Balancer gebunden.
 
 ```
@@ -77,7 +69,6 @@ $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName
 ```
 
 ##### Erstellen und Konfigurieren des Load Balancers
-
 ```
 $frontendName = 'fe' + $rgname
 $backendAddressPoolName = 'bepool' + $rgname
@@ -141,7 +132,6 @@ $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 ```
 
 ##### Konfigurieren und Erstellen von VMSS
-
 Beachten Sie, dass dieses Infrastrukturbeispiel zeigt, wie die Verteilung und Skalierung des Webdatenverkehrs über die VMSS eingerichtet wird, aber für die hier angegebenen Images der VMs werden keine Webdienste installiert.
 
 ```

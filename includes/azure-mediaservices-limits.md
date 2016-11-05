@@ -1,20 +1,20 @@
-Ressource|Standardlimit|Maximales Limit
----|---|---
-Azure Media Services (AMS)-Konten in einem einzelnen Abonnement||25
-Objekte pro AMS-Konto||1\.000.000<sup>1</sup>
-Verkettete Aufgaben pro Auftrag||30
-Objekte pro Aufgabe||50
-Objekte pro Auftrag||100
-Aufträge pro AMS-Konto ||50\.000<sup>2</sup>
-Eindeutige Locators, die einem Objekt gleichzeitig zugeordnet sind||5<sup>4</sup>
-Livekanäle pro AMS-Konto </p></td>|5</p></td>|N/V<sup>1</sup>
-Programme im angehaltenen Zustand pro Kanal </p></td>|50</p></td>|N/V<sup>1</sup>
-Programme im ausgeführten Zustand pro Kanal </p></td>|3</p></td>|3
-Streamingendpunkte im ausgeführten Zustand pro AMS-Konto</p></td>|2</p></td>|N/V<sup>1</sup>
-Streamingeinheiten pro Streamingendpunkt </p></td>|10 </p></td>|N/V<sup>1</sup>
-Codierungseinheiten pro AMS-Konto </p></td>|25</p></td>|N/V<sup>1</sup>
-Speicherkonten | |1\.000<sup>5</sup>
-Richtlinien || 1\.000.000<sup>6</sup>
+| Ressource | Standardlimit | Maximales Limit |
+| --- | --- | --- |
+| Azure Media Services (AMS)-Konten in einem einzelnen Abonnement | |25 |
+| Objekte pro AMS-Konto | |1\.000.000<sup>1</sup> |
+| Verkettete Aufgaben pro Auftrag | |30 |
+| Objekte pro Aufgabe | |50 |
+| Objekte pro Auftrag | |100 |
+| Aufträge pro AMS-Konto | |50\.000<sup>2</sup> |
+| Eindeutige Locators, die einem Objekt gleichzeitig zugeordnet sind | |5<sup>4</sup> |
+| Livekanäle pro AMS-Konto </p></td> |5</p></td> |N/V<sup>1</sup> |
+| Programme im angehaltenen Zustand pro Kanal </p></td> |50</p></td> |N/V<sup>1</sup> |
+| Programme im ausgeführten Zustand pro Kanal </p></td> |3</p></td> |3 |
+| Streamingendpunkte im ausgeführten Zustand pro AMS-Konto</p></td> |2</p></td> |N/V<sup>1</sup> |
+| Streamingeinheiten pro Streamingendpunkt </p></td> |10 </p></td> |N/V<sup>1</sup> |
+| Codierungseinheiten pro AMS-Konto </p></td> |25</p></td> |N/V<sup>1</sup> |
+| Speicherkonten | |1\.000<sup>5</sup> |
+| Richtlinien | |1\.000.000<sup>6</sup> |
 
 <sup>1</sup> Sie können die Aktualisierung der Grenzwerte für dieses Kontingent anfordern, indem Sie ein Supportticket öffnen. Erstellen Sie keine weiteren AMS-Konten, um die Grenzwerte zu erhöhen, sondern senden Sie stattdessen ein Supportticket.
 

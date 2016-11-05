@@ -1,35 +1,32 @@
-<properties
-    pageTitle="Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub | Microsoft Azure"
-    description="In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure IoT Hub und Java Cloud-zu-Gerät-Nachrichten senden."
-    services="iot-hub"
-    documentationCenter="nodejs"
-    authors="dominicbetts"
-    manager="timlt"
-    editor=""/>
+---
+title: Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub | Microsoft Docs
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure IoT Hub und Java Cloud-zu-Gerät-Nachrichten senden.
+services: iot-hub
+documentationcenter: nodejs
+author: dominicbetts
+manager: timlt
+editor: ''
 
-<tags
-     ms.service="iot-hub"
-     ms.devlang="javascript"
-     ms.topic="article"
-     ms.tgt_pltfrm="na"
-     ms.workload="na"
-     ms.date="09/23/2016"
-     ms.author="dobett"/>
+ms.service: iot-hub
+ms.devlang: javascript
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 09/23/2016
+ms.author: dobett
 
-
+---
 # <a name="tutorial:-how-to-send-cloud-to-device-messages-with-iot-hub-and-node.js"></a>Tutorial: Senden von C2D-Nachrichten mithilfe von IoT Hub und „Node.js“
-
-[AZURE.INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
+[!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>Einführung
-
 Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einem Anwendungs-Back-End ermöglicht. Im Lernprogramm [Erste Schritte mit IoT Hub] erfahren Sie, wie ein IoT Hub erstellt, eine Geräteidentität im Hub bereitgestellt und ein simuliertes Gerät programmiert wird, das Gerät-zu-Cloud-Nachrichten sendet.
 
 Dieses Tutorial baut auf [Erste Schritte mit IoT Hub]auf. Es beschreibt Folgendes:
 
-- Senden von C2D-Nachrichten aus Ihrem Anwendungs-Cloud-Back-End an ein einzelnes Gerät über IoT Hub.
-- Empfangen von C2D-Nachrichten auf einem Gerät.
-- Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Anwendungs-Cloud-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
+* Senden von C2D-Nachrichten aus Ihrem Anwendungs-Cloud-Back-End an ein einzelnes Gerät über IoT Hub.
+* Empfangen von C2D-Nachrichten auf einem Gerät.
+* Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Anwendungs-Cloud-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
 
 Weitere Informationen zu Cloud-zu-Gerät-Nachrichten finden Sie im [Entwicklerhandbuch für IoT Hub][Entwicklerhandbuch für IoT Hub - C2D].
 
@@ -38,22 +35,22 @@ Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolenanwendungen aus:
 * **SimulatedDevice**, eine abgewandelte Version der in [Erste Schritte mit IoT Hub]erstellten App, die eine Verbindung mit IoT Hub herstellt und Cloud-zu-Gerät-Nachrichten empfängt.
 * **SendCloudToDeviceMessage**, die über IoT Hub eine C2D-Nachricht an das simulierte Gerät sendet und dann die zugehörige Übermittlungsbestätigung empfängt.
 
-> [AZURE.NOTE] IoT Hub bietet durch Azure IoT-Geräte-SDKs Unterstützung für zahlreiche Geräteplattformen und Sprachen (u.a. C, Java und JavaScript). Im [Azure IoT Developer Center] finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit dem Code in diesem Tutorial sowie allgemeine Informationen zum Verbinden mit Azure IoT Hub.
+> [!NOTE]
+> IoT Hub bietet durch Azure IoT-Geräte-SDKs Unterstützung für zahlreiche Geräteplattformen und Sprachen (u.a. C, Java und JavaScript). Im [Azure IoT Developer Center] finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit dem Code in diesem Tutorial sowie allgemeine Informationen zum Verbinden mit Azure IoT Hub.
+> 
+> 
 
 Für dieses Lernprogramm benötigen Sie Folgendes:
 
-+ Node.js, Version 0.10.x oder höher.
-
-+ Ein aktives Azure-Konto. (Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Azure – Kostenlose Testversion][lnk-free-trial].)
+* Node.js, Version 0.10.x oder höher.
+* Ein aktives Azure-Konto. (Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Azure – Kostenlose Testversion][lnk-free-trial].)
 
 ## <a name="receive-messages-on-the-simulated-device"></a>Empfangen von Nachrichten auf dem simulierten Gerät
-
 In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Erste Schritte mit IoT Hub] erstellt haben, um C2D-Nachrichten von IoT Hub zu empfangen.
 
 1. Öffnen Sie die Datei „SimulatedDevice.js“ mit einem Text-Editor.
-
 2. Ändern Sie die **connectCallback** -Funktion, sodass sie von IoT Hub gesendete Nachrichten verarbeitet. In diesem Beispiel ruft das Gerät immer die **complete** -Funktion auf, um IoT Hub mitzuteilen, dass sie die Nachricht verarbeitet hat. Die neue Version der **connectCallback** -Funktion sieht folgendermaßen aus:
-
+   
     ```
     var connectCallback = function (err) {
       if (err) {
@@ -75,47 +72,44 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Ers
       }
     };
     ```
-
-    > [AZURE.NOTE] Wenn Sie anstelle von AMQP oder MQTT den HTTP/1-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der AMQP-, MQTT- und HTTP/1-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklerhandbuch für IoT Hub][Entwicklerhandbuch für IoT Hub - C2D].
+   
+   > [!NOTE]
+   > Wenn Sie anstelle von AMQP oder MQTT den HTTP/1-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der AMQP-, MQTT- und HTTP/1-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklerhandbuch für IoT Hub][Entwicklerhandbuch für IoT Hub - C2D].
+   > 
+   > 
 
 ## <a name="send-a-cloud-to-device-message"></a>Senden einer C2D-Nachricht
-
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Sie benötigen die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben. Sie benötigen auch die Verbindungszeichenfolge für den IoT Hub, die Sie im [Azure-Portal]finden.
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **sendcloudtodevicemessage**. Erstellen Sie im Ordner **sendcloudtodevicemessage** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl eingeben. Übernehmen Sie alle Standardeinstellungen:
-
+   
     ```
     npm init
     ```
-
 2. Führen Sie im Ordner **sendcloudtodevicemessage** an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iothub** zu installieren:
-
+   
     ```
     npm install azure-iothub --save
     ```
-
 3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SendCloudToDeviceMessage.js** im Ordner **sendcloudtodevicemessage**.
-
 4. Fügen Sie am Anfang der Datei **SendCloudToDeviceMessage.js** die folgenden `require`-Anweisungen hinzu:
-
+   
     ```
     'use strict';
-    
+   
     var Client = require('azure-iothub').Client;
     var Message = require('azure-iot-common').Message;
     ```
-
 5. Fügen Sie der Datei **SendCloudToDeviceMessage.js** den folgenden Code hinzu. Ersetzen Sie den Platzhalterwert für die Verbindungszeichenfolge durch die Verbindungszeichenfolge für den IoT Hub, den Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben. Ersetzen Sie den Platzhalter für das Zielgerät durch die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben:
-
+   
     ```
     var connectionString = '{iot hub connection string}';
     var targetDevice = '{device id}';
-
+   
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
-
 6. Fügen Sie die folgende Funktion hinzu, um Ergebnisse des Vorgangs an der Konsole auszugeben:
-
+   
     ```
     function printResultFor(op) {
       return function printResult(err, res) {
@@ -124,9 +118,8 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
       };
     }
     ```
-
 7. Fügen Sie die folgende Funktion hinzu, um Übermittlungsfeedbacknachrichten an der Konsole auszugeben:
-
+   
     ```
     function receiveFeedback(err, receiver){
       receiver.on('message', function (msg) {
@@ -135,9 +128,8 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
       });
     }
     ```
-
 8. Fügen Sie den folgenden Code hinzu, um eine Nachricht an Ihr Gerät zu senden und die Feedbacknachricht zu verarbeiten, wenn das Gerät die C2D-Nachricht bestätigt:
-
+   
     ```
     serviceClient.open(function (err) {
       if (err) {
@@ -153,33 +145,32 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
       }
     });
     ```
-
-7. Speichern und schließen Sie die Datei **SendCloudToDeviceMessage.js** .
+9. Speichern und schließen Sie die Datei **SendCloudToDeviceMessage.js** .
 
 ## <a name="run-the-applications"></a>Ausführen der Anwendungen
-
 Sie können nun die Anwendungen ausführen.
 
 1. Führen Sie an einer Befehlszeile im Ordner **simulateddevice** den folgenden Befehl aus, um Telemetriedaten an Ihren IoT Hub zu senden und C2D-Nachrichten zu empfangen:
-
+   
     ```
     node SimulatedDevice.js 
     ```
-
+   
     ![Ausführen der simulierten Geräte-App][img-simulated-device]
-
 2. Führen Sie an einer Befehlszeile im Ordner **sendcloudtodevicemessage** den folgenden Befehl aus, um eine C2D-Nachricht zu senden, und warten Sie auf das Bestätigungsfeedback:
-
+   
     ```
     node SendCloudToDeviceMessage.js 
     ```
-
+   
     ![Ausführen der App zum Senden des C2D-Befehls][img-send-command]
-
-    > [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler]beschrieben.
+   
+   > [!NOTE]
+   > Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler]beschrieben.
+   > 
+   > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden. 
 
 Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite].

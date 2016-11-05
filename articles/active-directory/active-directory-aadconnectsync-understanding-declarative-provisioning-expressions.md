@@ -1,23 +1,21 @@
-<properties
-    pageTitle="Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung | Microsoft Azure"
-    description="Erläutert die Ausdrücke für die deklarative Bereitstellung."
-    services="active-directory"
-    documentationCenter=""
-    authors="andkjell"
-    manager="femila"
-    editor=""/>
+---
+title: 'Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung | Microsoft Docs'
+description: Erläutert die Ausdrücke für die deklarative Bereitstellung.
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/31/2016"
-    ms.author="markusvi;andkjell"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/31/2016
+ms.author: markusvi;andkjell
 
-
-
+---
 # <a name="azure-ad-connect-sync:-understanding-declarative-provisioning-expressions"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung
 Die Azure AD Connect-Synchronisierung basiert auf der deklarativen Bereitstellung, die erstmals in Forefront Identity Manager 2010 eingeführt wurde. Sie ermöglicht Ihnen die Implementierung Ihrer gesamten Geschäftslogik zur Identitätsintegration, ohne kompilierten Code schreiben zu müssen.
 
@@ -28,14 +26,13 @@ Weitere Informationen finden Sie unter [Willkommen bei der VBA-Sprachreferenz f�
 Die Attribute sind stark typisiert. Eine Funktion akzeptiert nur Attribute des richtigen Typs. Zudem muss die Groß-/Kleinschreibung beachtet werden. Sowohl bei Funktions- als auch Attributnamen muss die Groß-/Kleinschreibung korrekt sein. Andernfalls wird ein Fehler ausgegeben.
 
 ## <a name="language-definitions-and-identifiers"></a>Sprachdefinitionen und Bezeichner
-
-- Funktionen verfügen über einen Namen, gefolgt von Argumenten in Klammern: FunctionName(argument 1,argument N).
-- Attribute werden durch eckige Klammern gekennzeichnet: [attributeName].
-- Parameter werden durch Prozentzeichen gekennzeichnet: %ParameterName%.
-- Zeichenfolgenkonstanten werden in Anführungszeichen eingeschlossen, beispielsweise "Contoso". Hierbei müssen gerade Anführungszeichen ("") verwendet werden, typografische Anführungszeichen („”) sind nicht zulässig.
-- Numerische Werte werden ohne Anführungszeichen ausgedrückt und im Dezimalformat vorliegen. Hexadezimalwerten weisen das Präfix "&H" auf. Beispiel: 98052, &HFF.
-- Boolesche Werte werden mit Konstanten ausgedrückt: True, False.
-- Integrierte Konstanten und Literale werden nur mit ihrem Namen ausgedrückt: NULL, CRLF, IgnoreThisFlow.
+* Funktionen verfügen über einen Namen, gefolgt von Argumenten in Klammern: FunctionName(argument 1,argument N).
+* Attribute werden durch eckige Klammern gekennzeichnet: [attributeName].
+* Parameter werden durch Prozentzeichen gekennzeichnet: %ParameterName%.
+* Zeichenfolgenkonstanten werden in Anführungszeichen eingeschlossen, beispielsweise "Contoso". Hierbei müssen gerade Anführungszeichen ("") verwendet werden, typografische Anführungszeichen („”) sind nicht zulässig.
+* Numerische Werte werden ohne Anführungszeichen ausgedrückt und im Dezimalformat vorliegen. Hexadezimalwerten weisen das Präfix "&H" auf. Beispiel: 98052, &HFF.
+* Boolesche Werte werden mit Konstanten ausgedrückt: True, False.
+* Integrierte Konstanten und Literale werden nur mit ihrem Namen ausgedrückt: NULL, CRLF, IgnoreThisFlow.
 
 ### <a name="functions"></a>Functions
 Bei der deklarativen Bereitstellung werden viele Funktionen verwendet, um das Transformieren von Attributwerten zu ermöglichen. Diese Funktionen können geschachtelt werden, sodass das Ergebnis einer Funktion an eine andere Funktion übergeben wird.
@@ -51,12 +48,12 @@ Der Active Directory Connector stellt folgende Parameter für eingehende Synchro
 
 | Parametername | Kommentar |
 | --- | --- |
-| Domain.Netbios | NetBIOS-Format der Domäne, die gerade importiert wird, z.B. „FABRIKAMSALES“ |
-| Domain.FQDN | FQDN-Format der Domäne, die gerade importiert wird, z.B. „sales.fabrikam.com“ |
-| Domain.LDAP | LDAP-Format der Domäne, die gerade importiert wird, z.B. „DC=sales,DC=fabrikam,DC=com“ |
-| Forest.Netbios | NetBIOS-Format des Gesamtstrukturnamens, der gerade importiert wird, z.B. „FABRIKAMCORP“ |
-| Forest.FQDN | FQDN-Format des Gesamtstrukturnamens, der gerade importiert wird, z.B. „fabrikam.com“ |
-| Forest.LDAP | LDAP-Format des Gesamtstrukturnamens, der gerade importiert wird, z.B. „DC=fabrikam,DC=com“ |
+| Domain.Netbios |NetBIOS-Format der Domäne, die gerade importiert wird, z.B. „FABRIKAMSALES“ |
+| Domain.FQDN |FQDN-Format der Domäne, die gerade importiert wird, z.B. „sales.fabrikam.com“ |
+| Domain.LDAP |LDAP-Format der Domäne, die gerade importiert wird, z.B. „DC=sales,DC=fabrikam,DC=com“ |
+| Forest.Netbios |NetBIOS-Format des Gesamtstrukturnamens, der gerade importiert wird, z.B. „FABRIKAMCORP“ |
+| Forest.FQDN |FQDN-Format des Gesamtstrukturnamens, der gerade importiert wird, z.B. „fabrikam.com“ |
+| Forest.LDAP |LDAP-Format des Gesamtstrukturnamens, der gerade importiert wird, z.B. „DC=fabrikam,DC=com“ |
 
 Das System stellt den folgenden Parameter bereit, mit dem der Bezeichner des derzeit ausgeführten Connectors abgerufen wird:   
 `Connector.ID`
@@ -67,11 +64,11 @@ Hier sehen Sie ein Beispiel, in dem die Metaverseattributdomäne mit dem NetBIOS
 ### <a name="operators"></a>Operatoren
 Folgende Operatoren können verwendet werden:
 
-- **Vergleich**: <, <=, <>, =, >, >=
-- **Mathematik**: +, -, \*, -
-- **Zeichenfolge**: & (Verkettung)
-- **Logischer Ausdruck**: && (und), || (oder)
-- **Auswertungsreihenfolge**: ( )
+* **Vergleich**: <, <=, <>, =, >, >=
+* **Mathematik**: +, -, \*, -
+* **Zeichenfolge**: & (Verkettung)
+* **Logischer Ausdruck**: && (und), || (oder)
+* **Auswertungsreihenfolge**: ( )
 
 Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
 
@@ -84,21 +81,18 @@ Beispiel:
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` – Sucht nach der SIP-Adresse und entfernt sie aus den Werten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Weitere Informationen zum Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md)(Grundlegendes zur deklarativen Bereitstellung).
-- Unter [Grundlegendes zur Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md)wird die standardmäßige Verwendung der deklarativen Bereitstellung veranschaulicht.
-- Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md)wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
+* Weitere Informationen zum Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md)(Grundlegendes zur deklarativen Bereitstellung).
+* Unter [Grundlegendes zur Standardkonfiguration](active-directory-aadconnectsync-understanding-default-configuration.md)wird die standardmäßige Verwendung der deklarativen Bereitstellung veranschaulicht.
+* Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md)wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
 
 **Übersichtsthemen**
 
-- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
-- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+* [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+* [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
 **Referenzthemen**
 
-- [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
-
-
+* [Azure AD Connect-Synchronisierung: Funktionsreferenz](active-directory-aadconnectsync-functions-reference.md)
 
 <!--HONumber=Oct16_HO2-->
 

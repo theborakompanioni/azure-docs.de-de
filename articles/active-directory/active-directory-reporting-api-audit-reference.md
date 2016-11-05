@@ -1,67 +1,50 @@
-<properties
-    pageTitle="Referenz zur Azure Active Directory-Überwachungs-API | Microsoft Azure"
-    description="Vorgehensweise zum Einstieg in die Azure Active Directory-Überwachungs-API"
-    services="active-directory"
-    documentationCenter=""
-    authors="dhanyahk"
-    manager="femila"
-    editor=""/>
+---
+title: Referenz zur Azure Active Directory-Überwachungs-API | Microsoft Docs
+description: Vorgehensweise zum Einstieg in die Azure Active Directory-Überwachungs-API
+services: active-directory
+documentationcenter: ''
+author: dhanyahk
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="identity"
-    ms.date="10/24/2016"
-    ms.author="dhanyahk;markvi"/>
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 10/24/2016
+ms.author: dhanyahk;markvi
 
-
+---
 # <a name="azure-active-directory-audit-api-reference"></a>Referenz zur Azure Active Directory-Überwachungs-API
-
 Dieses Thema ist Bestandteil einer Sammlung von Themen zur Azure Active Directory-Berichterstellungs-API.  
 Die Azure AD-Berichterstellung bietet eine API, mit der Sie unter Verwendung von Code oder zugehörigen Tools auf Überwachungsdaten zugreifen können.
 In diesem Thema erhalten Sie Referenzinformationen zur **Überwachungs-API**.
 
 Unter
 
-- [Überwachungsprotokolle](active-directory-reporting-azure-portal.md#audit-logs) erhalten Sie konzeptionelle Informationen.
-- [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md) finden Sie weitere Informationen zur Berichterstellungs-API.
+* [Überwachungsprotokolle](active-directory-reporting-azure-portal.md#audit-logs) erhalten Sie konzeptionelle Informationen.
+* [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md) finden Sie weitere Informationen zur Berichterstellungs-API.
 
 Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
 
-
 ## <a name="who-can-access-the-data?"></a>Wer kann auf die Daten zugreifen?
-
-- Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
-
-- Globale Administratoren
-
-- Jede App mit Autorisierung zum Zugriff auf die API (die App-Autorisierung kann nur basierend auf der Berechtigung eines globalen Administrators eingerichtet werden)
-
-
+* Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
+* Globale Administratoren
+* Jede App mit Autorisierung zum Zugriff auf die API (die App-Autorisierung kann nur basierend auf der Berechtigung eines globalen Administrators eingerichtet werden)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
 Um über die Berichterstellungs-API auf diesen Bericht zugreifen zu können, müssen folgende Bedingungen erfüllt sein:
 
-- Sie verfügen über die [Free Edition von Azure Active Directory oder eine höhere Edition](active-directory-editions.md)
+* Sie verfügen über die [Free Edition von Azure Active Directory oder eine höhere Edition](active-directory-editions.md)
+* Die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](active-directory-reporting-api-prerequisites.md)sind erfüllt. 
 
-- Die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](active-directory-reporting-api-prerequisites.md)sind erfüllt. 
- 
-
-##<a name="accessing-the-api"></a>Zugriff auf die API
-
+## <a name="accessing-the-api"></a>Zugriff auf die API
 Sie können entweder über den [Graph-Tester](https://graphexplorer2.cloudapp.net) oder programmgesteuert, z.B. unter Verwendung von PowerShell, auf diese API zugreifen. Damit PowerShell die in AAD Graph-REST-Aufrufen verwendete OData-Filtersyntax richtig interpretiert, müssen Sie das Graviszeichen als Escapezeichen für das $-Zeichen verwenden. Das Graviszeichen dient als [Escapezeichen in PowerShell](https://technet.microsoft.com/library/hh847755.aspx) und erlaubt PowerShell eine zeichengetreue Interpretation des Zeichens „$“, statt dieses Zeichen als PowerShell-Variablenname (z.B. „$filter“) zu betrachten.
 
 Der Schwerpunkt in diesem Thema liegt auf dem Graph-Tester. Ein PowerShell-Beispiel finden Sie in diesem [PowerShell-Skript](active-directory-reporting-api-audit-samples.md#powershell-script).
 
- 
- 
-
 ## <a name="api-endpoint"></a>API-Endpunkt
-
-
 Sie können auf diese API mithilfe des folgenden URI zugreifen:  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
@@ -78,36 +61,27 @@ Um den nächsten Batch an Datensätzen abzurufen, verwenden Sie den Link „Weit
 
 
 ## <a name="supported-filters"></a>Unterstützte Filter
-
 Sie können die Anzahl von zurückgegeben Datensätzen eingrenzen, indem Sie einen API-Aufruf in Form eines Filters ausführen.  
 Für anmeldebezogene API-Daten werden die folgenden Filter unterstützt:
 
-- **$top=\<Anzahl zurückzugebender Datensätze\>**: Zum Einschränken der Anzahl von Datensätzen, die zurückgegeben werden. Dies ist ein kostenintensiver Vorgang. Sie sollten diesen Filter nicht verwenden, wenn Tausende von Objekten zurückgegeben werden müssen.     
-- **$filter=\<Ihre Filteranweisung\>**: Legt basierend auf den unterstützten Filterfeldern fest, an welcher Art von Datensätzen Sie interessiert sind.
-
-
+* **$top=\<Anzahl zurückzugebender Datensätze\>**: Zum Einschränken der Anzahl von Datensätzen, die zurückgegeben werden. Dies ist ein kostenintensiver Vorgang. Sie sollten diesen Filter nicht verwenden, wenn Tausende von Objekten zurückgegeben werden müssen.     
+* **$filter=\<Ihre Filteranweisung\>**: Legt basierend auf den unterstützten Filterfeldern fest, an welcher Art von Datensätzen Sie interessiert sind.
 
 ## <a name="supported-filter-fields-and-operators"></a>Unterstützte Filterfelder und Operatoren
-
 Um festzulegen, an welcher Art von Datensätzen Sie interessiert sind, können Sie eine Filteranweisung erstellen, die entweder eines der folgenden Filterfelder oder eine Kombination daraus enthält:
 
-- [activityDate](#activitydate): Definiert ein Datum oder einen Datumsbereich.
-- [activityType](#activitytype): Definiert den Typ einer Aktivität.
-- [activity](#activity) : Definiert die Aktivität als Zeichenfolge.  
-- [actor/name](#actorname): Definiert den Actor in Form des Actornamens.
-- [actor/objectid](#actorobjectid) : Definiert den Akteur in Form der ID des Akteurs.   
-- [actor/upn](#actorupn): Definiert den Actor als Benutzerprinzipalname (UPN) des Actors. 
-- [actor/name](#targetname): Definiert das Ziel in Form des Actornamens.
-- [target/objectid](#targetobjectid) : Definiert das Ziel in Form der ID des Ziels.  
-- [target/upn](#targetupn) : Definiert das Ziel als Benutzerprinzipalname (UPN) des Akteurs.   
+* [activityDate](#activitydate): Definiert ein Datum oder einen Datumsbereich.
+* [activityType](#activitytype): Definiert den Typ einer Aktivität.
+* [activity](#activity) : Definiert die Aktivität als Zeichenfolge.  
+* [actor/name](#actorname): Definiert den Actor in Form des Actornamens.
+* [actor/objectid](#actorobjectid) : Definiert den Akteur in Form der ID des Akteurs.   
+* [actor/upn](#actorupn): Definiert den Actor als Benutzerprinzipalname (UPN) des Actors. 
+* [actor/name](#targetname): Definiert das Ziel in Form des Actornamens.
+* [target/objectid](#targetobjectid) : Definiert das Ziel in Form der ID des Ziels.  
+* [target/upn](#targetupn) : Definiert das Ziel als Benutzerprinzipalname (UPN) des Akteurs.   
 
-
-
-
-----------
-
+- - -
 ### <a name="activitydate"></a>activityDate
-
 **Unterstützte Operatoren**: eq, ge, le, gt, lt
 
 **Beispiel**:
@@ -118,10 +92,8 @@ Um festzulegen, an welcher Art von Datensätzen Sie interessiert sind, können S
 
 datetime muss im UTC-Format angegeben werden.
 
-----------
-
+- - -
 ### <a name="activitytype"></a>activityType
-
 **Unterstützte Operatoren**: eq
 
 **Beispiel**:
@@ -132,10 +104,8 @@ datetime muss im UTC-Format angegeben werden.
 
 Erfordert eine Beachtung der Groß-/Kleinschreibung.
 
-----------
-
+- - -
 ### <a name="activity"></a>activity
-
 **Unterstützte Operatoren**: eq, contains, startsWith
 
 **Beispiel**:
@@ -146,10 +116,8 @@ Erfordert eine Beachtung der Groß-/Kleinschreibung.
 
 Erfordert eine Beachtung der Groß-/Kleinschreibung.
 
-----------
-
+- - -
 ### <a name="actor/name"></a>actor/name
-
 **Unterstützte Operatoren**: eq, contains, startsWith
 
 **Beispiel**:
@@ -160,20 +128,16 @@ Erfordert eine Beachtung der Groß-/Kleinschreibung.
 
 Groß-/Kleinschreibung muss nicht beachtet werden.
 
-    
-
-----------
+- - -
 ### <a name="actor/objectid"></a>actor/objectid
-
 **Unterstützte Operatoren**: eq
 
 **Beispiel**:
 
     $filter=actor/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba'    
 
-----------
+- - -
 ### <a name="target/name"></a>actor/name
-
 **Unterstützte Operatoren**: eq, contains, startsWith
 
 **Beispiel**:
@@ -184,10 +148,8 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
 
 Groß-/Kleinschreibung muss nicht beachtet werden.
 
-----------
-
+- - -
 ### <a name="target/upn"></a>target/upn
-
 **Unterstützte Operatoren**: eq, startsWith
 
 **Beispiel**:
@@ -196,23 +158,19 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
 
 **Hinweise**:
 
-- Groß-/Kleinschreibung nicht beachten
-- Sie müssen bei der Abfrage von „Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity“ den vollständigen Namespace hinzufügen.
+* Groß-/Kleinschreibung nicht beachten
+* Sie müssen bei der Abfrage von „Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity“ den vollständigen Namespace hinzufügen.
 
-----------
-
+- - -
 ### <a name="target/objectid"></a>target/objectid
-
 **Unterstützte Operatoren**: eq
 
 **Beispiel**:
 
     $filter=targets/any(t: t/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba')    
 
-----------
-
+- - -
 ### <a name="actor/upn"></a>actor/upn
-
 **Unterstützte Operatoren**: eq, startsWith
 
 **Beispiel**:
@@ -221,20 +179,13 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
 
 **Hinweise**:
 
-- Groß-/Kleinschreibung muss nicht beachtet werden. 
-- Sie müssen bei der Abfrage von Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity den vollständigen Namespace hinzufügen.
+* Groß-/Kleinschreibung muss nicht beachtet werden. 
+* Sie müssen bei der Abfrage von Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity den vollständigen Namespace hinzufügen.
 
-----------
-
-
-
-
+- - -
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Möchten Sie Beispiele für gefilterte Systemaktivitäten anzeigen? Sehen Sie sich die [Beispiele zur Azure Active Directory-Überwachungs-API](active-directory-reporting-api-audit-samples.md)an.
-
-- Sie möchten mehr über die Azure AD-Berichterstellungs-API erfahren? Lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
-
+* Möchten Sie Beispiele für gefilterte Systemaktivitäten anzeigen? Sehen Sie sich die [Beispiele zur Azure Active Directory-Überwachungs-API](active-directory-reporting-api-audit-samples.md)an.
+* Sie möchten mehr über die Azure AD-Berichterstellungs-API erfahren? Lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
 
 <!--HONumber=Oct16_HO2-->
 

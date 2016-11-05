@@ -1,31 +1,27 @@
-<properties
-	pageTitle="In-Memory OLTP verbessert SQL-Transaktionsleistung | Microsoft Azure"
-	description="Verwenden von In-Memory OLTP zum Verbessern der Transaktionsleistung in einer vorhandenen SQL-Datenbank."
-	services="sql-database"
-	documentationCenter=""
-	authors="jodebrui"
-	manager="jhubbard"
-	editor="MightyPen"/>
+---
+title: In-Memory OLTP verbessert SQL-Transaktionsleistung | Microsoft Docs
+description: Verwenden von In-Memory OLTP zum Verbessern der Transaktionsleistung in einer vorhandenen SQL-Datenbank.
+services: sql-database
+documentationcenter: ''
+author: jodebrui
+manager: jhubbard
+editor: MightyPen
 
+ms.service: sql-database
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/18/2016
+ms.author: jodebrui
 
-<tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="jodebrui"/>
-
-
+---
 # Verwenden von In-Memory-OLTP (Vorschau) zur Verbesserung der Anwendungsleistung in SQL-Datenbank
-
 [In-Memory-OLTP](sql-database-in-memory.md) kann zur Verbesserung der Leistung der OLTP-Workload in Azure SQL-Datenbanken des Typs [Premium](sql-database-service-tiers.md) ohne Erhöhung der Leistungsstufe verwendet werden.
 
 Führen Sie diese Schritte durch, um In-Memory-OLTP in Ihrer vorhandenen Datenbank zu übernehmen.
 
 ## Schritt 1: Stellen Sie sicher, dass die Premium-Datenbank In-Memory-OLTP unterstützt
-
 Premium-Datenbanken, die im November 2015 oder später erstellt wurden, unterstützen das In-Memory-Feature. Sie können feststellen, ob Ihre Premium-Datenbank das In-Memory-Feature unterstützt, indem Sie die folgende Transact-SQL-Anweisung ausführen. In-Memory wird unterstützt, wenn das zurückgegebene Ergebnis 1 ist (nicht 0):
 
 ```
@@ -37,46 +33,41 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 Wenn die vorhandene Datenbank in eine neue V12 Premium-Datenbank verschoben werden muss, können Sie die folgenden Verfahren zum Exportieren und Importieren Ihrer Daten einsetzen.
 
 #### Exportschritte
-
 Exportieren Sie Ihre Produktionsdatenbank mithilfe einer der folgenden Funktionen in eine bacpac-Datei:
 
-- Die Funktion [Exportieren](sql-database-export.md) im [Portal](https://portal.azure.com/).
-
-- Die Funktion **Datenebenenanwendung exportieren** in einer [aktuellen Version von „SSMS.exe“](http://msdn.microsoft.com/library/mt238290.aspx) (SQL Server Management Studio).
- 1. Erweitern Sie im **Objekt-Explorer** den Knoten **Datenbanken**.
- 2. Klicken Sie mit der rechten Maustaste auf den Datenbankknoten.
- 3. Klicken Sie auf **Aufgaben** > **Datenebenenanwendung exportieren**.
- 4. Arbeiten Sie im nun angezeigten Assistentenfenster.
-
+* Die Funktion [Exportieren](sql-database-export.md) im [Portal](https://portal.azure.com/).
+* Die Funktion **Datenebenenanwendung exportieren** in einer [aktuellen Version von „SSMS.exe“](http://msdn.microsoft.com/library/mt238290.aspx) (SQL Server Management Studio).
+  
+  1. Erweitern Sie im **Objekt-Explorer** den Knoten **Datenbanken**.
+  2. Klicken Sie mit der rechten Maustaste auf den Datenbankknoten.
+  3. Klicken Sie auf **Aufgaben** > **Datenebenenanwendung exportieren**.
+  4. Arbeiten Sie im nun angezeigten Assistentenfenster.
 
 #### Importschritte
-
 Importieren Sie die „bacpac“-Datei in eine neue Premium-Datenbank.
 
 1. Im [Azure-Portal](https://portal.azure.com/):
- - Navigieren Sie zum Server.
- - Wählen Sie die Option [Datenbank importieren](sql-database-import.md).
- - Wählen Sie einen Premium-Tarif aus.
-
+   
+   * Navigieren Sie zum Server.
+   * Wählen Sie die Option [Datenbank importieren](sql-database-import.md).
+   * Wählen Sie einen Premium-Tarif aus.
 2. Verwenden Sie SSMS, um die bacpac-Datei zu importieren:
- - Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Knoten **Datenbanken**.
- - Klicken Sie auf **Datenebenenanwendung importieren**.
- - Arbeiten Sie im nun angezeigten Assistentenfenster.
-
+   
+   * Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Knoten **Datenbanken**.
+   * Klicken Sie auf **Datenebenenanwendung importieren**.
+   * Arbeiten Sie im nun angezeigten Assistentenfenster.
 
 ## Schritt 2: Identifizieren der nach In-Memory OLTP zu migrierenden Objekte
-
 SSMS umfasst einen Bericht **Übersicht der Transaktionsleistungsanalyse**, den Sie für eine Datenbank mit einer aktiven Workload erstellen können. Der Bericht identifiziert Tabellen und gespeicherte Prozeduren, die für die Migration zu In-Memory OLTP geeignet sind.
 
 So generieren Sie den Bericht in SSMS
-- Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Datenbankknoten.
-- Klicken Sie auf **Berichte** > **Standardberichte** > **Übersicht der Transaktionsleistungsanalyse**.
+
+* Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Datenbankknoten.
+* Klicken Sie auf **Berichte** > **Standardberichte** > **Übersicht der Transaktionsleistungsanalyse**.
 
 Weitere Informationen finden Sie unter [Bestimmen, ob eine Tabelle oder eine gespeicherte Prozedur zu In-Memory OLTP portiert werden soll](http://msdn.microsoft.com/library/dn205133.aspx).
 
-
 ## Schritt 3: Erstellen einer vergleichbaren Testdatenbank
-
 Nehmen Sie an, der Bericht zeigt, dass die Datenbank über eine Tabelle verfügt, für die eine Umwandlung in eine speicheroptimierte Tabelle von Vorteil wäre. Sie sollten diese Angabe zunächst zur Bestätigung testen.
 
 Sie benötigen eine Testkopie der Produktionsdatenbank. Die Testdatenbank muss sich auf der gleichen Seviceebene befinden wie die Produktionsdatenbank.
@@ -84,157 +75,119 @@ Sie benötigen eine Testkopie der Produktionsdatenbank. Die Testdatenbank muss s
 Um das Testen zu erleichtern, optimieren Sie die Testdatenbank wie folgt:
 
 1. Stellen Sie über SSMS eine Verbindung mit der Testdatenbank her.
-
 2. Um zu vermeiden, dass die Option WITH (SNAPSHOT) in Abfragen benötigt wird, legen Sie die Datenbankoption wie in der folgenden T-SQL-Anweisung dargestellt fest:
-```
-ALTER DATABASE CURRENT
-	SET
-		MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
-```
-
+   
+   ```
+   ALTER DATABASE CURRENT
+    SET
+        MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
+   ```
 
 ## Schritt 4: Migrieren von Tabellen
-
 Sie müssen eine speicheroptimierte Kopie der Tabelle, die Sie testen möchten, erstellen und auffüllen. Zum Erstellen können Sie eine der folgenden Möglichkeiten wählen:
 
-- Den praktischen Speicheroptimierungs-Assistenten in SSMS.
-- Manuelles T-SQL.
-
+* Den praktischen Speicheroptimierungs-Assistenten in SSMS.
+* Manuelles T-SQL.
 
 #### Speicheroptimierungs-Assistent in SSMS
-
 So verwenden Sie diese Migrationsoption:
 
 1. Stellen Sie über SSMS eine Verbindung mit der Testdatenbank her.
-
 2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Tabelle, und klicken Sie dann auf **Ratgeber für die Speicheroptimierung**.
- - Der **Ratgeber für die Tabellenspeicheroptimierung**-Assistent wird angezeigt.
-
+   
+   * Der **Ratgeber für die Tabellenspeicheroptimierung**-Assistent wird angezeigt.
 3. Klicken Sie im Assistenten auf **Migrationsüberprüfung** (oder die Schaltfläche **Weiter**), um zu überprüfen, ob die Tabelle nicht unterstützte Features enthält, die in den speicheroptimierten Tabellen nicht unterstützt werden. Weitere Informationen finden Sie unter:
- - Die *Prüfliste für die Speicheroptimierung* im [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx).
- - [Von In-Memory OLTP nicht unterstützte Transact-SQL-Konstrukte](http://msdn.microsoft.com/library/dn246937.aspx).
- - [Migrieren zu In-Memory OLTP](http://msdn.microsoft.com/library/dn247639.aspx).
-
+   
+   * Die *Prüfliste für die Speicheroptimierung* im [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx).
+   * [Von In-Memory OLTP nicht unterstützte Transact-SQL-Konstrukte](http://msdn.microsoft.com/library/dn246937.aspx).
+   * [Migrieren zu In-Memory OLTP](http://msdn.microsoft.com/library/dn247639.aspx).
 4. Wenn die Tabelle nicht unterstützte Features enthält, kann der Ratgeber das aktuelle Schema und die Datenmigration für Sie ausführen.
 
-
 #### Manuelles T-SQL
-
 So verwenden Sie diese Migrationsoption:
 
 1. Verbinden Sie sich mit der Testdatenbank mit SSMS (oder einem ähnlichen Dienstprogramm).
-
 2. Rufen Sie das vollständige T-SQL-Skript für die Tabelle und ihre Indizes ab.
- - Klicken Sie in SSMS mit der rechten Maustaste auf Ihren Tabellenknoten.
- - Klicken Sie auf **Skript für Tabelle als** > **CREATE in** > **Fenster 'Neue Abfrage'**.
-
+   
+   * Klicken Sie in SSMS mit der rechten Maustaste auf Ihren Tabellenknoten.
+   * Klicken Sie auf **Skript für Tabelle als** > **CREATE in** > **Fenster 'Neue Abfrage'**.
 3. Fügen Sie im Skriptfenster WITH (MEMORY\_OPTIMIZED = ON) der CREATE TABLE-Anweisung hinzu.
-
 4. Wenn ein Index als CLUSTERED gekennzeichnet ist, ändern Sie ihn in NONCLUSTERED.
-
 5. Benennen Sie die vorhandene Tabelle mittels SP\_RENAME um.
-
 6. Erstellen Sie die neue speicheroptimierte Kopie der Tabelle, indem Sie das bearbeitete CREATE TABLE-Skript ausführen.
-
 7. Kopieren Sie die Daten mit INSERT...SELECT * INTO in Ihre speicheroptimierte Tabelle:
-	
+
 ```
 INSERT INTO <new_memory_optimized_table>
-		SELECT * FROM <old_disk_based_table>;
+        SELECT * FROM <old_disk_based_table>;
 ```
 
 
 ## Schritt 5 (optional): Migrieren von gespeicherten Prozeduren
-
 Das In-Memory-Feature kann auch eine gespeicherte Prozedur zur Verbesserung der Leistung ändern.
 
-
 ### Aspekte bei systemeigen kompilierten gespeicherten Prozeduren
-
 Für die T-SQL-WITH-Klausel einer systemeigen kompilierten gespeicherten Prozedur sind folgende Optionen erforderlich:
 
-- NATIVE\_COMPILATION
-
-- SCHEMABINDING: Bezieht sich auf Tabellen, deren Spaltendefinitionen nicht in einer Weise geändert werden dürfen, die sich auf die gespeicherte Prozedur auswirkt, sofern Sie die gespeicherte Prozedur nicht löschen.
-
+* NATIVE\_COMPILATION
+* SCHEMABINDING: Bezieht sich auf Tabellen, deren Spaltendefinitionen nicht in einer Weise geändert werden dürfen, die sich auf die gespeicherte Prozedur auswirkt, sofern Sie die gespeicherte Prozedur nicht löschen.
 
 Ein systemeigenes Modul muss einen großen [ATOMIC-Block](http://msdn.microsoft.com/library/dn452281.aspx) zum Verwalten von Transaktionen verwenden. Es gibt keine Rolle für ein explizites BEGIN TRANSACTION oder ROLLBACK TRANSACTION. Wenn Ihr Code einen Verstoß gegen eine Geschäftsregel erkennt, kann er den atomischen Block mit einer [Throw](http://msdn.microsoft.com/library/ee677615.aspx)-Anweisung beenden.
 
-
 ### In der Regel CREATE PROCEDURE für systemeigen kompilierte gespeicherte Prozeduren verwenden
-
 In der Regel entspricht der T-SQL-Code zum Erstellen einer systemeigen kompilierten gespeicherten Prozedur folgender Vorlage:
 
 ```
 CREATE PROCEDURE schemaname.procedurename
-	@param1 type1, …
-	WITH NATIVE_COMPILATION, SCHEMABINDING
-	AS
-		BEGIN ATOMIC WITH
-			(TRANSACTION ISOLATION LEVEL = SNAPSHOT,
-			LANGUAGE = N'your_language__see_sys.languages'
-			)
-		…
-		END;
+    @param1 type1, …
+    WITH NATIVE_COMPILATION, SCHEMABINDING
+    AS
+        BEGIN ATOMIC WITH
+            (TRANSACTION ISOLATION LEVEL = SNAPSHOT,
+            LANGUAGE = N'your_language__see_sys.languages'
+            )
+        …
+        END;
 ```
 
-- Für TRANSACTION\_ISOLATION\_LEVEL ist SNAPSHOT der häufigste Wert für die systemeigen kompilierte gespeicherte Prozedur. Eine Teilmenge der anderen Werte wird jedoch ebenfalls unterstützt:
- - REPEATABLE READ
- - SERIALIZABLE
-
-
-- Der Wert LANGUAGE muss in der Ansicht „sys.languages“ vorhanden sein.
-
+* Für TRANSACTION\_ISOLATION\_LEVEL ist SNAPSHOT der häufigste Wert für die systemeigen kompilierte gespeicherte Prozedur. Eine Teilmenge der anderen Werte wird jedoch ebenfalls unterstützt:
+  
+  * REPEATABLE READ
+  * SERIALIZABLE
+* Der Wert LANGUAGE muss in der Ansicht „sys.languages“ vorhanden sein.
 
 ### Migrieren einer gespeicherten Prozedur
-
 Die Migrationsschritte sind wie folgt:
 
-
 1. Rufen Sie das CREATE PROCEDURE-Skript für die regulär übersetzte gespeicherte Prozedur auf.
-
 2. Schreiben Sie ihren Header entsprechend der vorherigen Vorlage neu.
-
 3. Prüfen Sie, ob der T-SQL-Code der gespeicherten Prozedur Features verwendet, die für systemeigen kompilierte gespeicherte Prozeduren nicht unterstützt werden. Implementieren Sie ggf. Problemumgehungen.
- - Weitere Informationen finden Sie unter [Migrationsprobleme bei systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn296678.aspx).
-
+   
+   * Weitere Informationen finden Sie unter [Migrationsprobleme bei systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn296678.aspx).
 4. Benennen Sie die alte gespeicherte Prozedur mithilfe von SP\_RENAME um. Oder löschen Sie sie einfach (DROP).
-
 5. Führen Sie das bearbeitete CREATE PROCEDURE T-SQL-Skript aus.
 
-
 ## Schritt 6: Ausführen der Workload im Test
-
 Führen Sie eine Workload in der Testdatenbank aus, die der Workload ähnelt, die in der Produktionsdatenbank ausgeführt wird. Dies sollte den Leistungsgewinn zeigen, den Sie mit der Verwendung des In-Memory-Features für Tabellen und gespeicherte Prozeduren erzielen.
 
 Wichtige Attribute der Workload sind:
 
-- Anzahl gleichzeitiger Verbindungen.
-
-- Lese-/Schreib-Verhältnis.
-
+* Anzahl gleichzeitiger Verbindungen.
+* Lese-/Schreib-Verhältnis.
 
 Zum Anpassen und Ausführen der Testworkload empfiehlt Sie praktische Tool „ostress.exe“, das [hier](sql-database-in-memory.md) dargestellt wird.
 
-
 Um die Netzwerklatenz zu minimieren, führen Sie den Test in der gleichen geografischen Azure-Region aus, in der die Datenbank vorhanden ist.
 
-
 ## Schritt 7: Überwachung nach der Implementierung
-
 Sie sollten die Leistungseffekte Ihrer In-Memory-Implementierungen in der Produktion überwachen:
 
-- [Überwachen Sie den In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md).
-
-- [Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten](sql-database-monitoring-with-dmvs.md)
-
+* [Überwachen Sie den In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md).
+* [Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten](sql-database-monitoring-with-dmvs.md)
 
 ## Verwandte Links
-
-- [In-Memory OLTP (In-Memory Optimization)](http://msdn.microsoft.com/library/dn133186.aspx)
-
-- [Einführung zu systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn133184.aspx)
-
-- [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx)
+* [In-Memory OLTP (In-Memory Optimization)](http://msdn.microsoft.com/library/dn133186.aspx)
+* [Einführung zu systemeigen kompilierten gespeicherten Prozeduren](http://msdn.microsoft.com/library/dn133184.aspx)
+* [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx)
 
 <!---HONumber=AcomDC_0720_2016-->

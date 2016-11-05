@@ -1,26 +1,26 @@
-<properties
-   pageTitle="Der Clusterressourcen-Manager von Service Fabric – Platzierungsrichtlinien | Microsoft Azure"
-   description="Übersicht über zusätzlichen Platzierungsrichtlinien und -regeln für Service Fabric-Dienste"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor=""/>
+---
+title: Der Clusterressourcen-Manager von Service Fabric – Platzierungsrichtlinien | Microsoft Docs
+description: Übersicht über zusätzlichen Platzierungsrichtlinien und -regeln für Service Fabric-Dienste
+services: service-fabric
+documentationcenter: .net
+author: masnider
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/19/2016"
-   ms.author="masnider"/>
+ms.service: Service-Fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/19/2016
+ms.author: masnider
 
+---
 # Platzierungsrichtlinien für Service Fabric-Dienste
 Es gibt viele weitere Regeln, die ggf. beachtet werden müssen, wenn sich Ihr Service Fabric-Cluster über größere Entfernungen erstreckt, z.B. über mehrere Rechenzentren oder Azure-Regionen, oder wenn sich Ihre Umgebung über mehrere geopolitische Kontrollbereiche erstreckt (oder eine andere Situation, in der rechtliche oder strategische Grenzen beachtet werden müssen oder die gegebenen Entfernungen tatsächlich Einfluss auf die Leistung/Latenz haben). Die meisten dieser Fälle können mithilfe von Knoteneigenschaften und Platzierungseinschränkungen konfiguriert werden, aber einige sind komplizierter. Zum Vereinfachen der Abläufe bieten wir diese zusätzlichen Befehle. Wie bei anderen Platzierungseinschränkungen können Platzierungsrichtlinien auf Dienstinstanzbasis namensbezogen konfiguriert werden.
 
 ## Angeben ungültiger Domänen
-Die Platzierungsrichtlinie „InvalidDomain“ ermöglicht die Angabe, dass eine bestimmte Fehlerdomäne für diese Workload ungültig ist. Diese Richtlinie stellt sicher, dass ein bestimmter Dienst nie in einer bestimmten Region ausgeführt wird, z. B. aus geopolitischen Gründen oder zur Einhaltung von Unternehmensrichtlinien. Über Richtlinien können mehrere ungültige Domänen angegeben werden.
+Die Platzierungsrichtlinie „InvalidDomain“ ermöglicht die Angabe, dass eine bestimmte Fehlerdomäne für diese Workload ungültig ist. Diese Richtlinie stellt sicher, dass ein bestimmter Dienst nie in einer bestimmten Region ausgeführt wird, z. B. aus geopolitischen Gründen oder zur Einhaltung von Unternehmensrichtlinien. Über Richtlinien können mehrere ungültige Domänen angegeben werden.
 
 ![Ungültige Domäne – Beispiel][Image1]
 
@@ -96,7 +96,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Ist es auch möglich, diese Konfigurationen für Dienste in einem Cluster zu verwenden, der sich nicht über größere Entfernungen erstreckt? Das ist möglich! Diese Konfiguration ist jedoch nicht erforderlich. Insbesondere die Konfigurationen für erforderliche, ungültige und bevorzugte Domänen sollten nur dann verwendet werden, wenn Ihr Cluster sich tatsächlich auf mehrere geografische Regionen erstreckt. Es ist nicht sinnvoll, die Ausführung einer bestimmten Workload in einem einzigen Rack zu erzwingen oder ein bestimmtes Segment Ihres lokalen Clusters einem anderen vorzuziehen, sofern nicht unterschiedliche Hardwaretypen verwendet oder eine Workloadsegmentierung vorgenommen wird. Und in diesen Fällen können die normalen Platzierungseinschränkungen verwendet werden.
 
 ## Nächste Schritte
-- Informationen zu weiteren Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den weiteren verfügbaren Clusterressourcen-Manager-Konfigurationen: [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md)
+* Informationen zu weiteren Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den weiteren verfügbaren Clusterressourcen-Manager-Konfigurationen: [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

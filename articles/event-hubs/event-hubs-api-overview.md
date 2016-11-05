@@ -1,32 +1,30 @@
-<properties 
-    pageTitle="Übersicht über die Azure Event Hubs-APIs | Microsoft Azure"
-    description="Eine Zusammenfassung einiger wichtiger .NET-Client-APIs für Event Hubs."
-    services="event-hubs"
-    documentationCenter="na"
-    authors="sethmanheim"
-    manager="timlt"
-    editor="" />
-<tags 
-    ms.service="event-hubs"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="08/16/2016"
-    ms.author="sethm" />
+---
+title: Übersicht über die Azure Event Hubs-APIs | Microsoft Docs
+description: Eine Zusammenfassung einiger wichtiger .NET-Client-APIs für Event Hubs.
+services: event-hubs
+documentationcenter: na
+author: sethmanheim
+manager: timlt
+editor: ''
 
+ms.service: event-hubs
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 08/16/2016
+ms.author: sethm
+
+---
 # Übersicht über die Event Hubs-API
-
-In diesem Artikel werden einige der wichtigsten .NET-Client-APIs von Event Hubs zusammengefasst. Es gibt zwei Kategorien: Verwaltungs- und Laufzeit-APIs. Laufzeit-APIs umfassen alle Vorgänge, die zum Senden und Empfangen einer Nachricht erforderlich sind. Verwaltungsvorgänge ermöglichen das Verwalten des Entitätszustands von Event Hubs durch das Erstellen, Aktualisieren und Löschen von Entitäten.
+In diesem Artikel werden einige der wichtigsten .NET-Client-APIs von Event Hubs zusammengefasst. Es gibt zwei Kategorien: Verwaltungs- und Laufzeit-APIs. Laufzeit-APIs umfassen alle Vorgänge, die zum Senden und Empfangen einer Nachricht erforderlich sind. Verwaltungsvorgänge ermöglichen das Verwalten des Entitätszustands von Event Hubs durch das Erstellen, Aktualisieren und Löschen von Entitäten.
 
 Überwachungsszenarien umfassen sowohl die Verwaltung als auch Laufzeit. Eine ausführliche Referenzdokumentation zu den .NET-APIs finden Sie unter den Referenzen zu [Service Bus .NET](https://msdn.microsoft.com/library/azure/mt419900.aspx) und zur [EventProcessorHost-API](https://msdn.microsoft.com/library/azure/mt445521.aspx).
 
 ## Verwaltungs-APIs
-
 Um die folgenden Verwaltungsvorgänge auszuführen, benötigen Sie **Verwaltungsberechtigungen** für den Event Hubs-Namespace:
 
 ### Erstellen
-
 ```
 // Create the Event Hub
 EventHubDescription ehd = new EventHubDescription(eventHubName);
@@ -35,7 +33,6 @@ namespaceManager.CreateEventHubAsync(ehd).Wait();
 ```
 
 ### Aktualisieren
-
 ```
 EventHubDescription ehd = await namespaceManager.GetEventHubAsync(eventHubName);
 
@@ -48,22 +45,18 @@ namespaceManager.UpdateEventHubAsync(ehd).Wait();
 ```
 
 ### Löschen
-
 ```
 namespaceManager.DeleteEventHubAsync("Event Hub name").Wait();
 ```
 
 ## Laufzeit-APIs
-
 ### Herausgeber erstellen
-
 ```
 // EventHubClient model (uses implicit factory instance, so all links on same connection)
 EventHubClient eventHubClient = EventHubClient.Create("Event Hub name");
 ```
 
 ### Meldung veröffentlichen
-
 ```
 // Create the device/temperature metric
 MetricEvent info = new MetricEvent() { DeviceId = random.Next(SampleManager.NumDevices), Temperature = random.Next(100) };
@@ -82,7 +75,6 @@ await client.SendAsync(data);
 ```
 
 ### Consumer erstellen
-
 ```
 // Create the Event Hubs client
 EventHubClient eventHubClient = EventHubClient.Create(EventHubName);
@@ -95,26 +87,24 @@ EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shard
 
 // From one day ago
 EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shardId: index, startingDateTimeUtc:DateTime.Now.AddDays(-1));
-                        
+
 // From specific offset, -1 means oldest
 EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shardId: index,startingOffset:-1); 
 ```
 
 ### Meldung verarbeiten
-
 ```
 var message = await consumer.ReceiveAsync();
 
 // Provide a serializer
 var info = message.GetBody<Type>(Serializer)
-                                    
+
 // Get a byte[]
 var info = message.GetBytes(); 
 msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
 ## Ereignisprozessorhost-APIs
-
 Diese APIs bieten Flexibilität für Arbeitsprozesse, die möglicherweise nicht mehr verfügbar sind, indem Shards auf verfügbare Worker aufgeteilt werden.
 
 ```
@@ -158,7 +148,7 @@ public class SimpleEventProcessor : IEventProcessor
         {
             Process messages here
         }
-        
+
         // Checkpoint when appropriate
         await context.CheckpointAsync();
 
@@ -176,17 +166,16 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## Nächste Schritte
-
 Weitere Informationen zu Event Hubs-Szenarien finden Sie unter diesen Links:
 
-- [Was ist Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
-- [Übersicht über Event Hubs](event-hubs-overview.md)
-- [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
-- [Codebeispiele für Event Hubs](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hubs&f[0].Type=SearchText&ac=5)
+* [Was ist Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
+* [Übersicht über Event Hubs](event-hubs-overview.md)
+* [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
+* [Codebeispiele für Event Hubs](http://code.msdn.microsoft.com/site/search?query=event hub&f\[0\].Value=event hubs&f\[0\].Type=SearchText&ac=5)
 
 Die .NET-API-Referenzen sind hier verfügbar:
 
-- [.NET-API-Referenzen zu Service Bus und Event Hubs](https://msdn.microsoft.com/library/azure/mt419900.aspx)
-- [Referenz zur Ereignisprozessorhost-API](https://msdn.microsoft.com/library/azure/mt445521.aspx)
+* [.NET-API-Referenzen zu Service Bus und Event Hubs](https://msdn.microsoft.com/library/azure/mt419900.aspx)
+* [Referenz zur Ereignisprozessorhost-API](https://msdn.microsoft.com/library/azure/mt445521.aspx)
 
 <!---HONumber=AcomDC_0817_2016-->

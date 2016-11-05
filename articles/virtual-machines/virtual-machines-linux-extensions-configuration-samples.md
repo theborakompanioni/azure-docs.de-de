@@ -1,28 +1,28 @@
-<properties
-   pageTitle="Beispielkonfiguration für Linux-VM-Erweiterungen | Microsoft Azure"
-   description="Beispielkonfiguration für das Erstellen von Vorlagen mit Erweiterungen für Linux-VMs"
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="kundanap"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Beispielkonfiguration für Linux-VM-Erweiterungen | Microsoft Docs
+description: Beispielkonfiguration für das Erstellen von Vorlagen mit Erweiterungen für Linux-VMs
+services: virtual-machines-linux
+documentationcenter: ''
+author: kundanap
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="09/13/2016"
-   ms.author="kundanap"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 09/13/2016
+ms.author: kundanap
 
-
+---
 # <a name="linux-vm-extension-configuration-samples"></a>Konfigurationsbeispiele für Linux-VM-Erweiterungen
-
-> [AZURE.SELECTOR]
-- [PowerShell – Vorlage](virtual-machines-windows-extensions-configuration-samples.md)
-- [Befehlszeilenschnittstelle – Vorlage](virtual-machines-linux-extensions-configuration-samples.md)
+> [!div class="op_single_selector"]
+> * [PowerShell – Vorlage](virtual-machines-windows-extensions-configuration-samples.md)
+> * [Befehlszeilenschnittstelle – Vorlage](virtual-machines-linux-extensions-configuration-samples.md)
+> 
+> 
 
 <br>
 
@@ -56,7 +56,6 @@ Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweit
       }
 
 ## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets."></a>Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit VM-Skalierungsgruppen.
-
           {
            "type":"Microsoft.Compute/virtualMachineScaleSets",
           ....
@@ -217,8 +216,6 @@ Ersetzen Sie die Versionsnummer in den oben gezeigten Beispielen durch die aktue
 Dies ist eine vollständige VM-Vorlage zum Erstellen eines virtuellen Linux-Computers mit einer Erweiterung:
 
 [Benutzerdefinierte Skriptserweiterung auf einem virtuellen Linux-Computer](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

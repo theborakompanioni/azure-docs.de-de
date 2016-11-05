@@ -1,24 +1,22 @@
-<properties
-    pageTitle="Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory | Microsoft Azure"
-    description="Dieser Artikel beschreibt, wie der Self-Service-Anwendungszugriff und die delegierte Verwaltung mit Azure Active Directory aktiviert werden."
-    services="active-directory"
-    documentationCenter=""
-    authors="asmalser-msft"
-    manager="femila"
-    editor=""/>
+---
+title: Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory | Microsoft Docs
+description: Dieser Artikel beschreibt, wie der Self-Service-Anwendungszugriff und die delegierte Verwaltung mit Azure Active Directory aktiviert werden.
+services: active-directory
+documentationcenter: ''
+author: asmalser-msft
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="02/09/2016"
-    ms.author="asmalser"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 02/09/2016
+ms.author: asmalser
 
-
-#<a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory
-
+---
+# <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory
 Das Aktivieren von Self-Service-Funktionen für Endbenutzer ist ein häufiges Szenario in IT-Unternehmen. Dort gibt es viele Benutzer und viele Anwendungen, und die am besten informierte Person, die über das Erteilen von Zugriffsrechten entscheidet, ist nicht unbedingt der Verzeichnisadministrator. Oft ist die Person, die am besten darüber entscheiden kann, wer Zugriff auf eine Anwendung erhält, ein Teamleiter oder ein anderer delegierter Administrator. Doch letzten Endes ist es der Benutzer, der die Anwendung benutzt, und nur er weiß genau, was er zum Ausführen seiner Aufgaben benötigt.
 
 Der Self-Service-Anwendungszugriff ist eine Funktion von [Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/) , mit der Verzeichnisadministratoren folgende Möglichkeiten haben:
@@ -34,9 +32,7 @@ Dieser Artikel beschreibt, wie Sie:
 * den Self-Service-Anwendungszugriff für Endbenutzer konfigurieren, einschließlich der Konfiguration eines optionalen Genehmigungsworkflows. 
 * die Zugriffsverwaltung für bestimmte Anwendungen auf die am besten geeigneten Personen in Ihrer Organisation delegieren und ihnen ermöglichen, den Azure AD-Zugriffsbereich zum Genehmigen von Zugriffsanforderungen, dem direkten Zuweisen von Zugriff für ausgewählte Benutzer oder (optional) zum Festlegen von Anmeldeinformationen für den Anwendungszugriff verwenden, wenn die kennwortbasierte einmalige Anwendung konfiguriert ist.
 
-
-##<a name="configuring-self-service-application-access"></a>Konfigurieren des Self-Service-Anwendungszugriffs
-
+## <a name="configuring-self-service-application-access"></a>Konfigurieren des Self-Service-Anwendungszugriffs
 Um den Self-Service-Anwendungszugriff zu aktivieren und zu konfigurieren, welche Anwendungen von den Endbenutzern hinzugefügt oder angefordert werden können, befolgen Sie die nachstehenden Anweisungen.
 
 **1:** Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/)an.
@@ -71,40 +67,33 @@ Wenn keine Genehmigung erforderlich ist, wird die Anwendung sofort zum Azure AD-
 
 **13:** Die E-Mail leitet die genehmigenden Personen zur Anmeldung am Azure AD-Zugriffsbereich und zum Bestätigen der Anforderung weiter. Nachdem die Anforderung genehmigt wurde (und alle speziellen Prozesse, die von Ihnen definiert wurden, von der genehmigenden Person durchgeführt wurden), sieht der Benutzer die Anwendung unter der Registerkarte **Anwendungen** , wo er sich daran anmelden kann.
 
-##<a name="delegated-application-access-management"></a>Delegierte Verwaltung des Anwendungszugriffs
-
+## <a name="delegated-application-access-management"></a>Delegierte Verwaltung des Anwendungszugriffs
 Eine genehmigende Person kann jeder Benutzer in der Organisation sein, die am besten dafür geeignet ist, den Zugriff auf die betreffende Anwendung freizugeben oder zu verweigern. Dieser Benutzer kann für die Kontobereitstellung, Lizenzierung oder einen beliebigen anderen Geschäftsprozess verantwortlich sein, den Ihre Organisation vor Gewähren des Zugriffs auf eine Anwendung erfordert.
- 
+
 Beim Konfigurieren des oben beschriebenen Self-Service-Anwendungszugriffs sehen alle zugewiesenen Anwendungsgenehmiger die zusätzliche Kachel **Anwendungen verwalten** im Azure AD-Zugriffsbereich, die anzeigt, für welche Anwendungen sie der Zugriffsadministrator sind. Durch Klicken auf die Anwendung erscheint ein Bildschirm mit mehreren Optionen.
 
 ![][2]
 
-###<a name="approve-requests"></a>Anforderungen genehmigen
-
+### <a name="approve-requests"></a>Anforderungen genehmigen
 Mit der Kachel **Anforderungen genehmigen** können genehmigende Personen alle zur Anwendung gehörenden ausstehenden Anforderungen sehen und werden zur Registerkarte  „Genehmigungen“ weitergeleitet, auf der die Anforderungen bestätigt oder abgelehnt werden können. Beachten Sie, dass die genehmigende Person außerdem automatisierte E-Mail-Nachrichten mit Anweisungen empfängt, sobald eine Anforderung erstellt wurde.
 
-###<a name="add-users"></a>Benutzer hinzufügen
-
+### <a name="add-users"></a>Benutzer hinzufügen
 Mit der Kachel **Benutzer hinzufügen** können genehmigende Personen ausgewählten Benutzern direkt den Zugriff auf die Anwendung gewähren. Durch Klicken auf die Kachel wird genehmigenden Personen ein Dialogfeld angezeigt, durch das sie in ihrem Verzeichnis Benutzer anzeigen und diese suchen können. Durch Hinzufügen eines Benutzers wird die Anwendung im Azure AD-Zugriffsbereich oder im Office 365 dieses Benutzers angezeigt. Falls in der Anwendung ein manueller Prozess zur Benutzerbereitstellung erforderlich ist, bevor der Benutzer sich anmelden kann, sollte die genehmigende Person vor dem Zuweisen des Zugriffs zunächst diesen Prozess durchführen.  
 
-###<a name="manage-users"></a>Benutzer verwalten
-
+### <a name="manage-users"></a>Benutzer verwalten
 Mit der Kachel **Benutzer verwalten** können genehmigende Personen durch Aktualisieren oder Entfernen direkt steuern, welche Benutzer Zugriff auf die Anwendung haben. 
 
-###<a name="configure-password-sso-credentials-(if-applicable)"></a>Kennwortbasierte SSO-Anmeldeinformationen konfigurieren (falls zutreffend)
-
+### <a name="configure-password-sso-credentials-(if-applicable)"></a>Kennwortbasierte SSO-Anmeldeinformationen konfigurieren (falls zutreffend)
 Die Kachel **Konfigurieren** wird nur angezeigt, wenn die Anwendung vom IT-Administrator zur Verwendung der kennwortbasierten einmaligen Anmeldung konfiguriert wurde und der Administrator der genehmigenden Person die Möglichkeit gewährt hat, die kennwortbasierten SSO-Anmeldeinformationen wie zuvor beschrieben festzulegen. Bei Auswahl dieser Möglichkeit erhält die genehmigende Person mehrere Optionen, wie die Anmeldeinformationen an zugewiesene Benutzer weitergegeben werden:
 
 ![][3]
 
 * **Benutzer melden Sie sich mit ihrem eigenen Kennwort an** – In diesem Modus kennen die zugewiesenen Personen ihren Benutzernamen und das Kennwort für die Anwendung und werden dazu aufgefordert, sie bei der ersten Anmeldung an der Anwendung einzugeben. Dies entspricht dem Kennwort-SSO-Fall, bei dem [die Benutzer ihre Anmeldeinformationen verwalten](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
-
 * **Benutzer werden automatisch mithilfe separater Konten angemeldet, die ich verwalte** – In diesem Modus werden die zugewiesenen Benutzer nicht dazu aufgefordert, ihre anwendungsspezifischen Anmeldeinformationen bei der Anmeldung an der Anwendung einzugeben oder diese zu kennen. Stattdessen legt die genehmigende Person die Anmeldeinformationen für jeden Benutzer nach dem Zuweisen des Zugriffs über die Kachel **Benutzer hinzufügen** fest. Klickt der Benutzer im Zugriffsbereich oder in Office 365 auf die Anwendung, wird er automatisch mit den von der genehmigenden Person festgelegten Anmeldeinformationen angemeldet. Dies entspricht dem Kennwort-SSO-Fall, bei dem die [Administratoren die Anmeldeinformationen verwalten](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
-
 * **Benutzer werden automatisch mithilfe eines einzelnen Kontos angemeldet, das ich verwalte** – Dies ist ein Sonderfall, der dafür geeignet ist, allen zugewiesenen Benutzern den Zugriff mithilfe eines einzelnen freigegebenen Kontos zu erteilen. Am häufigsten tritt dies bei Social Media-Anwendungen auf, bei denen eine Organisation ein einzelnes „Unternehmenskonto“ besitzt und mehrere Benutzer darin Aktualisierungen vornehmen. Dies entspricht auch dem Kennwort-SSO-Fall, bei dem die [Administratoren die Anmeldeinformationen verwalten](active-directory-appssoaccess-whatis.md#password-based-single-sign-on). Nachdem diese Option ausgewählt wurde, wird die genehmigende Person jedoch dazu aufgefordert, den Benutzernamen und das Kennwort für das einzelne freigegebene Konto einzugeben. Nach Fertigstellung werden alle zugewiesenen Benutzer mit diesem Konto angemeldet, wenn sie in ihrem Azure AD-Zugriffsbereich oder in Office 365 auf die Anwendung klicken.
 
-##<a name="additional-resources"></a>Weitere Ressourcen
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
+## <a name="additional-resources"></a>Weitere Ressourcen
+* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-application-access/ssaa_admin.PNG

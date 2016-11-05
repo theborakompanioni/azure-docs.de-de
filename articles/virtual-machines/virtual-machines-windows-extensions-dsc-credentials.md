@@ -1,29 +1,27 @@
-<properties
-   pageTitle="Übergeben von Anmeldeinformationen an Azure mithilfe von DSC | Microsoft Azure"
-   description="Überblick über das sichere Übergeben von Anmeldeinformationen an virtuelle Azure-Computer mithilfe von PowerShell DSC"
-   services="virtual-machines-windows"
-   documentationCenter=""
-   authors="zjalexander"
-   manager="timlt"
-   editor=""
-   tags="azure-service-management,azure-resource-manager"
-   keywords=""/>
+---
+title: Übergeben von Anmeldeinformationen an Azure mithilfe von DSC | Microsoft Docs
+description: Überblick über das sichere Übergeben von Anmeldeinformationen an virtuelle Azure-Computer mithilfe von PowerShell DSC
+services: virtual-machines-windows
+documentationcenter: ''
+author: zjalexander
+manager: timlt
+editor: ''
+tags: azure-service-management,azure-resource-manager
+keywords: ''
 
-<tags
-   ms.service="virtual-machines-windows"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows"
-   ms.workload="na"
-   ms.date="09/15/2016"
-   ms.author="zachal"/>
+ms.service: virtual-machines-windows
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: na
+ms.date: 09/15/2016
+ms.author: zachal
 
-# Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungs-Handler #
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+---
+# Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungs-Handler
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 In diesem Artikel wird die Erweiterung der Konfiguration für den gewünschten Zustand (Desired State Configuration; DSC) für Azure behandelt. Einen Überblick über den DSC-Erweiterungs-Handler finden Sie unter [Introduction to the Azure Desired State Configuration extension handler](virtual-machines-windows-extensions-dsc-overview.md) (Einführung zum Azure DSC-Erweiterungs-Handler).
-
 
 ## Übergeben von Anmeldeinformationen
 Möglicherweise müssen Sie als Teil des Konfigurationsvorganges Benutzerkonten einrichten, auf Dienste zugreifen oder ein Programm im Benutzerkontext installieren. Um diese Aktionen durchführen zu können, müssen Sie Anmeldeinformationen bereitstellen.
@@ -71,10 +69,10 @@ $configurationName = "Main"
 $configurationArguments = @{ Credential = Get-Credential }
 $configurationArchive = "user_configuration.ps1.zip"
 $vm = Get-AzureVM "example-1"
- 
+
 $vm = Set-AzureVMDSCExtension -VM $vm -ConfigurationArchive $configurationArchive 
 -ConfigurationName $configurationName -ConfigurationArgument @configurationArguments
- 
+
 $vm | Update-AzureVM
 ```
 ## Schützen der Anmeldeinformationen
@@ -82,9 +80,7 @@ Auf das Ausführen dieses Codes folgt die Aufforderung, Anmeldeinformationen anz
 
 Dieses Verhalten unterscheidet sich von der [Verwendung von sicheren Konfigurationen ohne den Erweiterungs-Handler](https://msdn.microsoft.com/powershell/dsc/securemof). Die Azure-Umgebung bietet eine Möglichkeit zum sicheren Übertragen von Konfigurationsdaten über Zertifikate. Bei der Verwendung des DSC-Erweiterungs-Handlers besteht keine Notwendigkeit, $CertificatePath oder einen $CertificateID/$Thumbprint-Eintrag in ConfigurationData bereitzustellen.
 
-
-## Nächste Schritte ##
-
+## Nächste Schritte
 Weitere Informationen zum Azure DSC-Erweiterungs-Handler finden Sie unter [Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](virtual-machines-windows-extensions-dsc-overview.md).
 
 Sehen Sie sich die [Azure Resource Manager-Vorlage für die DSC-Erweiterung](virtual-machines-windows-extensions-dsc-template.md) an.

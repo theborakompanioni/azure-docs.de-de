@@ -1,42 +1,42 @@
-<properties
-   pageTitle="Bereitstellen einer Node.js-Anwendung auf virtuellen Linux-Computern in Azure"
-   description="Lernen Sie, wie Sie eine Node.js-Anwendung auf virtuellen Linux-Computern in Azure bereitstellen."
-   services=""
-   documentationCenter="nodejs"
-   authors="stepro"
-   manager="dmitryr"
-   editor=""/>
+---
+title: Bereitstellen einer Node.js-Anwendung auf virtuellen Linux-Computern in Azure
+description: Lernen Sie, wie Sie eine Node.js-Anwendung auf virtuellen Linux-Computern in Azure bereitstellen.
+services: ''
+documentationcenter: nodejs
+author: stepro
+manager: dmitryr
+editor: ''
 
-<tags
-   ms.service="multiple"
-   ms.devlang="nodejs"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="02/02/2016"
-   ms.author="stephpr"/>
+ms.service: multiple
+ms.devlang: nodejs
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 02/02/2016
+ms.author: stephpr
 
+---
 # Bereitstellen einer Node.js-Anwendung auf virtuellen Linux-Computern in Azure
-
 Dieses Tutorial zeigt, wie eine Node.js-Anwendung auf virtuellen Linux-Computern in Azure bereitgestellt und ausgeführt wird. Die Anweisungen in diesem Tutorial gelten für alle Betriebssysteme, unter denen Node.js ausgeführt werden kann.
 
 Sie lernen Folgendes:
 
-- Verzweigen und Klonen eines GitHub-Repositorys, das eine einfache TODO-Anwendung enthält;
-- Erstellen und Konfigurieren von zwei virtuellen Linux-Computern in Azure, um die Anwendung auszuführen;
-- Durchlaufen der Anwendung, indem Updates per Push auf den virtuellen Webfrontend-Computer übertragen werden.
+* Verzweigen und Klonen eines GitHub-Repositorys, das eine einfache TODO-Anwendung enthält;
+* Erstellen und Konfigurieren von zwei virtuellen Linux-Computern in Azure, um die Anwendung auszuführen;
+* Durchlaufen der Anwendung, indem Updates per Push auf den virtuellen Webfrontend-Computer übertragen werden.
 
-> [AZURE.NOTE]
-Um dieses Tutorial abzuschließen, benötigen Sie ein GitHub-Konto, ein Microsoft Azure-Konto und die Möglichkeit, von einem Entwicklungscomputer aus Git zu verwenden.
-
+> [!NOTE]
+> Um dieses Tutorial abzuschließen, benötigen Sie ein GitHub-Konto, ein Microsoft Azure-Konto und die Möglichkeit, von einem Entwicklungscomputer aus Git zu verwenden.
+> 
 > Wenn Sie kein GitHub-Konto besitzen, können Sie sich [hier](https://github.com/join) anmelden.
-
+> 
 > Wenn Sie kein [Microsoft Azure-Konto](https://azure.microsoft.com/) besitzen, können Sie sich [hier](https://azure.microsoft.com/pricing/free-trial/) für eine KOSTENLOSE Testversion registrieren. Dies führt Sie auch durch den Registrierungsprozess für ein [Microsoft-Konto](http://account.microsoft.com), wenn Sie noch keines besitzen. Alternativ können Sie, wenn Sie Visual Studio-Abonnent sind, [Ihre MSDN-Vorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
-
-> Wenn Sie auf dem Entwicklungscomputer nicht über Git verfügen, installieren Sie bei Verwendung eines Macintosh- oder Windows-Computers Git von [hier](http://www.git-scm.com) aus. Wenn Sie Linux verwenden, installieren Sie Git mit der für Sie am besten geeigneten Methode, z. B. `sudo apt-get install git`.
+> 
+> Wenn Sie auf dem Entwicklungscomputer nicht über Git verfügen, installieren Sie bei Verwendung eines Macintosh- oder Windows-Computers Git von [hier](http://www.git-scm.com) aus. Wenn Sie Linux verwenden, installieren Sie Git mit der für Sie am besten geeigneten Methode, z. B. `sudo apt-get install git`.
+> 
+> 
 
 ## Verzweigen und Klonen der TODO-Anwendung
-
 Die in diesem Tutorial verwendete TODO-Anwendung implementiert ein einfaches Webfrontend über eine MongoDB-Instanz, die eine TODO-Liste überwacht. Wechseln Sie nach dem Registrieren bei GitHub nach [hier](https://github.com/stepro/node-todo), um die Anwendung zu finden, und verzweigen Sie sie über den Link in der rechten oberen Ecke. Damit sollte in Ihrem Konto ein Repository mit dem Namen *accountname*/node-todo erstellt werden.
 
 Klonen Sie jetzt auf Ihrem Entwicklungscomputer dieses Repository:
@@ -46,43 +46,38 @@ Klonen Sie jetzt auf Ihrem Entwicklungscomputer dieses Repository:
 Diesen lokalen Klon des Repositorys verwenden wir etwas später zu Änderungen des Quellcodes.
 
 ## Erstellen und Konfigurieren der virtuellen Linux-Computer
-
 Azure bietet hervorragende Unterstützung für Rohberechnungen mit virtuellen Linux-Computern. Dieser Teil des Tutorials zeigt, wie Sie problemlos zwei virtuelle Linux-Computer erstellen und die TODO-Anwendung auf Ihnen bereitstellen können, wobei das Webfrontend auf dem einen und die MongoDB-Instanz auf dem anderen ausgeführt wird.
 
 ### Erstellen virtueller Computer
-
 Die einfachste Möglichkeit, einen neuen virtuellen Computer in Azure zu erstellen, bietet das Azure-Portal. Klicken Sie [hier](https://portal.azure.com), um sich anzumelden, und starten Sie das Azure-Portal in Ihrem Webbrowser. Sobald das Azure-Portal geladen ist, führen Sie folgende Schritte aus:
 
-- Klicken Sie auf den Link „+ Neu“.
-- Wählen Sie die Kategorie „Compute“ und dann „Ubuntu Server 14.04 LTS“;
-- Wählen Sie das Bereitstellungsmodell „Ressourcen-Manager“, und klicken Sie auf „Erstellen“.
-- Tragen Sie die allgemeinen Informationen unter Beachtung folgender Richtlinien ein:
-  - Geben Sie einen Namen an, den Sie später problemlos erkennen können;
-  - Wählen Sie für dieses Tutorial die Kennwortauthentifizierung;
-  - Erstellen Sie eine neue Ressourcengruppe mit einem eindeutigen Namen.
-- Für die Größe des virtuellen Computers ist „A1 Standard“ eine vernünftige Wahl für dieses Tutorial.
-- Stellen Sie für zusätzliche Einstellungen sicher, dass der Datenträgertyp „Standard“ ist, und akzeptieren Sie alle verbleibenden Standardwerte.
-- Starten Sie die Erstellung auf der Zusammenfassungsseite.
+* Klicken Sie auf den Link „+ Neu“.
+* Wählen Sie die Kategorie „Compute“ und dann „Ubuntu Server 14.04 LTS“;
+* Wählen Sie das Bereitstellungsmodell „Ressourcen-Manager“, und klicken Sie auf „Erstellen“.
+* Tragen Sie die allgemeinen Informationen unter Beachtung folgender Richtlinien ein:
+  * Geben Sie einen Namen an, den Sie später problemlos erkennen können;
+  * Wählen Sie für dieses Tutorial die Kennwortauthentifizierung;
+  * Erstellen Sie eine neue Ressourcengruppe mit einem eindeutigen Namen.
+* Für die Größe des virtuellen Computers ist „A1 Standard“ eine vernünftige Wahl für dieses Tutorial.
+* Stellen Sie für zusätzliche Einstellungen sicher, dass der Datenträgertyp „Standard“ ist, und akzeptieren Sie alle verbleibenden Standardwerte.
+* Starten Sie die Erstellung auf der Zusammenfassungsseite.
 
 Führen Sie das oben beschriebene Verfahren zweimal aus, um zwei virtuelle Linux-Computer zu erstellen – einen für das Webfrontend und einen für die MongoDB-Instanz. Das Erstellen der virtuellen Computer dauert ungefähr 5 bis 10 Minuten.
 
 ### Zuweisen eines DNS-Eintrags für virtuelle Computer
-
 Auf virtuelle Computer, die in Azure erstellt werden, kann standardmäßig nur über eine öffentliche IP-Adresse wie 1.2.3.4 zugegriffen werden. Damit die Computer leichter identifizierbar sind, weisen wir ihnen DNS-Einträge zu.
 
 Sobald das Portal angibt, dass die virtuellen Computer erstellt wurden, klicken Sie in der linken Navigationsleiste auf den Link „Virtuelle Computer“, und suchen Sie Ihren Computer. Für jeden Computer:
 
-- Klicken Sie auf der Registerkarte „Zusammenfassung“ auf die „Öffentliche IP-Adresse“;
-- Weisen Sie in der Konfiguration der öffentlichen IP-Adresse einen DNS-Namen zu, und speichern Sie ihn.
+* Klicken Sie auf der Registerkarte „Zusammenfassung“ auf die „Öffentliche IP-Adresse“;
+* Weisen Sie in der Konfiguration der öffentlichen IP-Adresse einen DNS-Namen zu, und speichern Sie ihn.
 
 Das Portal stellt sicher, dass der von Ihnen angegebene Name verfügbar ist. Nach dem Speichern der Konfiguration haben Ihre virtuellen Computer Hostnamen wie etwa `machinename.region.cloudapp.azure.com`.
 
 ### Herstellen der Verbindung mit den virtuellen Computern
-
 Als Ihre virtuellen Computer bereitgestellt wurden, wurden sie dazu vorkonfiguriert, Remoteverbindungen über SSH zuzulassen. Dies ist die Methode, mit der wir die virtuellen Computer konfigurieren. Wenn Sie Windows für die Entwicklung verwenden, müssen Sie einen SSH-Client erhalten, wenn Sie nicht bereits über einen verfügen. Eine gängige Wahl hierzu ist die Software PuTTY, die Sie [hier](http://www.chiark.greenend.org.uk/~sgtatham/putty/) herunterladen können. Bei Macintosh- und Linux-Betriebssystemen ist eine Version von SSH vorinstalliert.
 
 ### Konfigurieren des virtuellen Webfrontend-Computers
-
 Stellen Sie über die SSH-Befehlszeile oder mit Ihrem bevorzugten SSH-Tool eine SSH-Verbindung mit dem Webfrontend-Computer her, den Sie mit PuTTY erstellt haben. Daraufhin sollte eine Begrüßung, gefolgt von einer Befehlszeile, angezeigt werden.
 
 Stellen Sie zunächst sicher, dass Git und Knoten installiert sind:
@@ -90,7 +85,7 @@ Stellen Sie zunächst sicher, dass Git und Knoten installiert sind:
     sudo apt-get install -y git
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
     sudo apt-get install -y nodejs
-    
+
 Da das Webfrontend der Anwendung von einigen nativen Node.js-Module abhängt, müssen wir auch die wesentlichen Buildtools installieren:
 
     sudo apt-get install -y build-essential
@@ -98,7 +93,7 @@ Da das Webfrontend der Anwendung von einigen nativen Node.js-Module abhängt, m�
 Abschließend installieren wir eine Node.js-Anwendung namens *forever*, die dabei hilft, Node.js-Serveranwendungen auszuführen:
 
     sudo npm install -g forever
-    
+
 Dies sind alle Abhängigkeiten, die auf diesem virtuellen Computer erforderlich sind, damit das Webfrontend der Anwendung ausgeführt werden kann, also lassen wir es ausführen. Hierzu erstellen wir zunächst einen reinen Klon des GitHub-Repositorys, das Sie zuvor verzweigt haben, damit Sie Updates schnell und einfach auf dem virtuellen Computer veröffentlichen können (dieses Updateszenario wird später erläutert), und klonen anschließend den reinen Klon, um eine Version des Repositorys bereitzustellen, die tatsächlich ausgeführt werden kann.
 
 Führen Sie ausgehend vom Basisverzeichnis (~) die folgenden Befehle aus (ersetzen Sie dabei *accountname* durch Ihren GitHub-Benutzerkontonamen):
@@ -110,29 +105,28 @@ Geben Sie jetzt das node-todo-Verzeichnis ein, und führen Sie folgende Befehle 
 
     npm install
     forever start server.js
-    
-Das Webfrontend der Anwendung wird nun ausgeführt, allerdings ist ein weiterer Schritt erforderlich, bevor Sie über einen Webbrowser auf die Anwendung zugreifen können. Der von Ihnen erstellte virtuelle Computer ist durch eine Azure-Ressource mit dem Namen *Netzwerksicherheitsgruppe* geschützt, die für Sie erstellt wurde, als Sie den virtuellen Computer bereitgestellt haben. Diese Ressource lässt derzeit nur zu, dass externe Anforderungen auf Port 22 an den virtuellen Computer weitergeleitet werden, sodass SSH-Kommunikation ausschließlich mit dem Computer möglich ist. Um die TODO-Anwendung anzuzeigen, die zur Ausführung auf Port 8080 konfiguriert ist, muss dieser Port also auch geöffnet werden.
+
+Das Webfrontend der Anwendung wird nun ausgeführt, allerdings ist ein weiterer Schritt erforderlich, bevor Sie über einen Webbrowser auf die Anwendung zugreifen können. Der von Ihnen erstellte virtuelle Computer ist durch eine Azure-Ressource mit dem Namen *Netzwerksicherheitsgruppe* geschützt, die für Sie erstellt wurde, als Sie den virtuellen Computer bereitgestellt haben. Diese Ressource lässt derzeit nur zu, dass externe Anforderungen auf Port 22 an den virtuellen Computer weitergeleitet werden, sodass SSH-Kommunikation ausschließlich mit dem Computer möglich ist. Um die TODO-Anwendung anzuzeigen, die zur Ausführung auf Port 8080 konfiguriert ist, muss dieser Port also auch geöffnet werden.
 
 Kehren Sie zum Azure-Portal zurück, und führen Sie die folgenden Schritte aus:
 
-- Klicken Sie auf der linken Navigationsleiste auf „Ressourcengruppen“;
-- Wählen Sie die Ressourcengruppe, die Ihren virtuellen Computer enthält;
-- Wählen Sie in der resultierenden Liste von Ressourcen die Netzwerksicherheitsgruppe (mit einem Schildsymbol);
-- Wählen Sie in den Eigenschaften „Eingangssicherheitsregeln“;
-- Klicken Sie auf der Symbolleiste auf „Hinzufügen“;
-- Geben Sie einen Namen wie „default-allow-todo“ an;
-- Setzen Sie das Protokoll auf „TCP“;
-- Setzen Sie den Zielportbereich auf „8080“;
-- Klicken Sie auf „OK“, und warten Sie, bis die Sicherheitsregel erstellt wird.
+* Klicken Sie auf der linken Navigationsleiste auf „Ressourcengruppen“;
+* Wählen Sie die Ressourcengruppe, die Ihren virtuellen Computer enthält;
+* Wählen Sie in der resultierenden Liste von Ressourcen die Netzwerksicherheitsgruppe (mit einem Schildsymbol);
+* Wählen Sie in den Eigenschaften „Eingangssicherheitsregeln“;
+* Klicken Sie auf der Symbolleiste auf „Hinzufügen“;
+* Geben Sie einen Namen wie „default-allow-todo“ an;
+* Setzen Sie das Protokoll auf „TCP“;
+* Setzen Sie den Zielportbereich auf „8080“;
+* Klicken Sie auf „OK“, und warten Sie, bis die Sicherheitsregel erstellt wird.
 
-Nach dem Erstellen dieser Sicherheitsregel ist die TODO-Anwendung im Internet öffentlich sichtbar, und Sie können sie aufrufen, z. B. über eine URL:
+Nach dem Erstellen dieser Sicherheitsregel ist die TODO-Anwendung im Internet öffentlich sichtbar, und Sie können sie aufrufen, z. B. über eine URL:
 
     http://machinename.region.cloudapp.azure.com:8080
 
 Sie werden bemerken, dass die TODO-Anwendung offensichtlich sehr funktionsfähig ist, obwohl wir die MongoDB-VM noch nicht konfiguriert haben. Der Grund hierfür ist, dass das Quellrepository zur Verwendung einer vorab bereitgestellten MongoDB-Instanz hartcodiert ist. Nachdem wir die MongoDB-VM konfiguriert haben, kehren wir zurück und ändern den Quellcode, um stattdessen unsere private MongoDB-Instanz zu nutzen.
 
 ### Konfigurieren der MongoDB-VM
-
 Stellen Sie über die SSH-Befehlszeile oder mit Ihrem bevorzugten SSH-Tool eine SSH-Verbindung mit dem zweiten Computer her, den Sie mit PuTTY erstellt haben. Installieren Sie MongoDB, nachdem Sie die Begrüßung gelesen haben, und sobald die Befehlszeile angezeigt wird (diese Anweisungen wurden [hier](https://docs.mongodb.org/master/tutorial/install-mongodb-on-ubuntu/) entnommen):
 
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -142,8 +136,10 @@ Stellen Sie über die SSH-Befehlszeile oder mit Ihrem bevorzugten SSH-Tool eine 
 
 Standardmäßig ist MongoDB so konfiguriert, dass nur lokal darauf zugegriffen werden kann. Für dieses Tutorial konfigurieren wir MongoDB so, dass von der Anwendung des virtuellen Computers aus darauf zugegriffen werden kann. Öffnen Sie in einem Sudokontext die Datei „/etc/mongod.conf“, und suchen Sie den Abschnitt `# network interfaces`. Ändern Sie den Konfigurationswert `net.bindIp` in `0.0.0.0`.
 
-> [AZURE.NOTE]
-Diese Konfiguration ist nur für die Zwecke dieses Tutorials bestimmt. Sie ist **KEINE** empfohlene Sicherheitspraxis und sollte nicht in Produktionsumgebungen verwendet werden.
+> [!NOTE]
+> Diese Konfiguration ist nur für die Zwecke dieses Tutorials bestimmt. Sie ist **KEINE** empfohlene Sicherheitspraxis und sollte nicht in Produktionsumgebungen verwendet werden.
+> 
+> 
 
 Stellen Sie nun sicher, dass der MongoDB-Dienst gestartet wurde:
 
@@ -167,7 +163,6 @@ Kehren Sie zum Azure-Portal zurück, und führen Sie die folgenden Schritte aus:
 Bisher haben wir zwei virtuelle Linux-Computer bereitgestellt: einen, auf dem das Webfrontend der Anwendung, und einen, auf dem die MongoDB-Instanz ausgeführt wird. Aber es gibt ein Problem – das Webfrontend benutzt die bereitgestellte MongoDB-Instanz überhaupt noch nicht. Durch Aktualisieren des Webfrontendcodes zur Verwendung einer Umgebungsvariablen statt einer hartcodierten Instanz schaffen wir hier Abhilfe.
 
 ### Ändern der TODO-Anwendung
-
 Öffnen Sie auf dem Entwicklungscomputer, auf dem Sie zuerst das node-todo-Repository geklont haben, die Datei `node-todo/config/database.js` in Ihrem bevorzugten Editor, und ändern Sie den URL-Wert von dem hartcodierten Wert wie `mongodb://...` in `process.env.MONGODB`.
 
 Committen Sie Ihre Änderungen, und führen Sie eine Pushübertragung auf den GitHub-Master aus:
@@ -187,13 +182,13 @@ Git bietet eine Reihe von Hooks, die zu bestimmten Zeiten aufgerufen werden, um 
 Wechseln Sie in einer SSH-Sitzung mit dem virtuellen Webfrontend-Computer in das Verzeichnis `~/node-todo.git/hooks`, und fügen Sie den folgenden Inhalt einer Datei namens `post-update` hinzu (wobei Sie `machinename` und `region` durch die Daten Ihres virtuellen MongoDB-Computers ersetzen):
 
     #!/bin/bash
-    
+
     forever stopall
     unset 'GIT_DIR'
     export MONGODB="mongodb://machinename.region.cloudapp.azure.com:27017/tododb"
     cd ~/node-todo && git fetch origin && git pull origin master && npm install && forever start ~/node-todo/server.js
     exec git update-server-info
-    
+
 Stellen Sie sicher, dass diese Datei ausführbar ist, indem Sie den folgenden Befehl ausführen:
 
     chmod 755 post-update
@@ -205,10 +200,9 @@ Nun verknüpfen wir Ihren Entwicklungscomputer mit dem virtuellen Webfrontend-Co
 
     git remote add azure user@machinename.region.cloudapp.azure.com:node-todo.git
 
-Mehr ist nicht erforderlich, um die Pushübertragung von Änderungen auf den virtuellen Webfrontend-Computer, d. h. deren Veröffentlichung, zu ermöglichen.
+Mehr ist nicht erforderlich, um die Pushübertragung von Änderungen auf den virtuellen Webfrontend-Computer, d. h. deren Veröffentlichung, zu ermöglichen.
 
 ### Veröffentlichen von Updates
-
 Wir veröffentlichen nun die eine Änderung, die bisher vorgenommen wurde, damit die Anwendung unsere eigene MongoDB-Instanz verwendet:
 
     git push azure master
@@ -257,7 +251,7 @@ Wenn Sie nach Abschluss dieses Befehls die Webseite aktualisieren, sehen Sie die
 
 ## Nächste Schritte
 Dieser Artikel zeigte Ihnen, wie eine Node.js-Anwendung auf virtuellen Linux-Computern in Azure bereitgestellt und ausgeführt wird. Weitere Informationen zu virtuellen Linux-Computern in Azure finden Sie unter [Einführung in Linux in Azure](/documentation/articles/virtual-machines-linux-introduction/).
-    
+
 Weitere Informationen zum Entwickeln von Node.js-Anwendungen in Azure finden Sie im [Node.js Developer Center](/develop/nodejs/).
 
 <!---HONumber=AcomDC_0211_2016-->

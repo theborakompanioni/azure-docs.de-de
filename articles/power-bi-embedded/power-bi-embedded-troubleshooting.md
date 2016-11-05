@@ -1,26 +1,27 @@
-<properties
-   pageTitle="Problembehandlung bei der Vorschau von Microsoft Power BI Embedded"
-   description="Problembehandlung bei der Vorschau von Microsoft Power BI Embedded"
-   services="power-bi-embedded"
-   documentationCenter=""
-   authors="guyinacube"
-   manager="erikre"
-   editor=""
-   tags=""/>
-<tags
-   ms.service="power-bi-embedded"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="powerbi"
-   ms.date="10/04/2016"
-   ms.author="asaxton"/>
+---
+title: Problembehandlung bei der Vorschau von Microsoft Power BI Embedded
+description: Problembehandlung bei der Vorschau von Microsoft Power BI Embedded
+services: power-bi-embedded
+documentationcenter: ''
+author: guyinacube
+manager: erikre
+editor: ''
+tags: ''
 
+ms.service: power-bi-embedded
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: powerbi
+ms.date: 10/04/2016
+ms.author: asaxton
 
+---
 # <a name="microsoft-power-bi-embedded-preview-troubleshooting"></a>Problembehandlung bei der Vorschau von Microsoft Power BI Embedded
 Dieser Artikel enthält Möglichkeiten zur Problembehandlung bei **Power BI Embedded**.
 
 <a name="connection-string"/>
+
 ## <a name="setting-sql-server-connection-strings"></a>Festlegen von SQL Server-Verbindungszeichenfolgen
 Beim Festlegen einer SQL Server-Verbindungszeichenfolge müssen Sie ein bestimmtes Format befolgen. Unten sehen Sie ein Beispiel für eine Verbindungszeichenfolge für SQL Server.
 
@@ -30,18 +31,17 @@ Beim Festlegen einer SQL Server-Verbindungszeichenfolge müssen Sie ein bestimmt
 
 Weitere Informationen zu SQL Server-Verbindungszeichenfolgen finden Sie in den folgenden Artikeln:
 
--   [SQL Server-Verbindungszeichenfolgen](https://msdn.microsoft.com/library/jj653752.aspx)
--   [SqlConnection.ConnectionString](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.connectionstring.aspx)
+* [SQL Server-Verbindungszeichenfolgen](https://msdn.microsoft.com/library/jj653752.aspx)
+* [SqlConnection.ConnectionString](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.connectionstring.aspx)
 
 <a name="credentials"/>
+
 ## <a name="setting-credentials"></a>Festlegen von Anmeldeinformationen
 Falls Sie Anmeldeinformationen für eine Entwicklungs- oder eine Stagingumgebung besitzen, d.h. einen Benutzernamen und ein Kennwort, müssen Sie möglicherweise Anmeldeinformationen aktualisieren, die einer Produktionslösung entsprechen.
 
 ## <a name="see-also"></a>Weitere Informationen
-- [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
-- [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
-
-
+* [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
+* [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,33 +1,32 @@
-<properties 
-	pageTitle="Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC-Projekte) | Microsoft Azure" 
-	description="Erfahren Sie etwas über die ersten Schritte mit Azure Active Directory in MVC-Projekten nach dem Herstellen einer Verbindung oder dem Erstellen eines Azure AD mithilfe von verbundenen Visual Studio-Diensten." 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="TomArcher" 
-	manager="douge" 
-	editor=""/>
-  
-<tags 
-	ms.service="active-directory" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/15/2016" 
-	ms.author="tarcher"/>
+---
+title: Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC-Projekte) | Microsoft Docs
+description: Erfahren Sie etwas über die ersten Schritte mit Azure Active Directory in MVC-Projekten nach dem Herstellen einer Verbindung oder dem Erstellen eines Azure AD mithilfe von verbundenen Visual Studio-Diensten.
+services: active-directory
+documentationcenter: ''
+author: TomArcher
+manager: douge
+editor: ''
 
+ms.service: active-directory
+ms.workload: web
+ms.tgt_pltfrm: vs-getting-started
+ms.devlang: na
+ms.topic: article
+ms.date: 08/15/2016
+ms.author: tarcher
+
+---
 # Erste Schritte mit Azure Active Directory und verbundenen Visual Studio-Diensten (MVC-Projekte)
+> [!div class="op_single_selector"]
+> * [Erste Schritte](vs-active-directory-dotnet-getting-started.md)
+> * [Was ist passiert?](vs-active-directory-dotnet-what-happened.md)
+> 
+> 
 
-> [AZURE.SELECTOR]
-> - [Erste Schritte](vs-active-directory-dotnet-getting-started.md)
-> - [Was ist passiert?](vs-active-directory-dotnet-what-happened.md)
- 
-##Erfordern von Authentifizierung für den Zugriff auf Controller 
-
+## Erfordern von Authentifizierung für den Zugriff auf Controller
 Alle Controller in Ihrem Projekt wurden mit dem Attribut **Authorize** versehen. Dieses Attribut erfordert, dass der Benutzer vor dem Zugriff auf diese Controller authentifiziert werden muss. Wenn Sie anonymen Zugriff auf diesen Controller erlauben möchten, entfernen Sie dieses Attribut vom Controller. Wenn Sie die Berechtigungen präziser festlegen möchten, wenden Sie das Attribut auf jede Methode an, die Autorisierung erfordert, anstatt es auf die Controllerklasse anzuwenden.
- 
-##Hinzufügen von SignIn-/SignOut-Steuerelementen 
 
+## Hinzufügen von SignIn-/SignOut-Steuerelementen
 Wenn Sie Ihrer Ansicht SignIn-/SignOut-Steuerelemente hinzufügen möchten, können Sie die Teilansicht **\_LoginPartial.cshtml** zum Hinzufügen der Funktion zu einer Ihrer Ansichten verwenden. Das folgende Beispiel zeigt die Funktion, die der Standardansicht **\_Layout.cshtml** hinzugefügt wurde. (Beachten Sie das letzte Element in div mit der Klasse navbar-collapse):
 
 <pre>

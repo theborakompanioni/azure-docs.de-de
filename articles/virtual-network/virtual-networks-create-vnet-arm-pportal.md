@@ -1,33 +1,33 @@
-<properties
-   pageTitle="Erstellen eines virtuellen Netzwerks mit dem Azure-Portal | Microsoft Azure"
-   description="Erfahren Sie, wie Sie ein virtuelles Netzwerk mit dem Azure-Portal in ARM erstellen | Ressourcen-Manager."
-   services="virtual-network"
-   documentationCenter=""
-   authors="jimdial"
-   manager="carmonm"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Erstellen eines virtuellen Netzwerks mit dem Azure-Portal | Microsoft Docs
+description: Erfahren Sie, wie Sie ein virtuelles Netzwerk mit dem Azure-Portal in ARM erstellen | Ressourcen-Manager.
+services: virtual-network
+documentationcenter: ''
+author: jimdial
+manager: carmonm
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
-   ms.author="jdial"/>
+ms.service: virtual-network
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 03/15/2016
+ms.author: jdial
 
+---
 # Erstellen eines virtuellen Netzwerks im Azure-Portal
+[!INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
-[AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
+[!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
+[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-[AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
+In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wird. Sie haben auch die Möglichkeit, [ein virtuelles Netzwerk im Bereitstellungsmodell für den Ressourcen-Manager durch Verwenden der Azure-Befehlszeilenschnittstelle zu erstellen](virtual-networks-create-vnet-classic-pportal.md).
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wird. Sie haben auch die Möglichkeit, [ein virtuelles Netzwerk im Bereitstellungsmodell für den Ressourcen-Manager durch Verwenden der Azure-Befehlszeilenschnittstelle zu erstellen](virtual-networks-create-vnet-classic-pportal.md).
+[!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
-[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
-
-[AZURE.INCLUDE [virtual-networks-create-vnet-arm-pportal-include](../../includes/virtual-networks-create-vnet-arm-pportal-include.md)]
+[!INCLUDE [virtual-networks-create-vnet-arm-pportal-include](../../includes/virtual-networks-create-vnet-arm-pportal-include.md)]
 
 <!---HONumber=AcomDC_0810_2016-->

@@ -1,34 +1,30 @@
-<properties 
-	pageTitle="Häufig gestellte Fragen: Veröffentlichen und Verwenden von Machine Learning-Apps im Azure Marketplace | Microsoft Azure" 
-	description="Häufig gestellte Fragen" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="bharaths" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: 'Häufig gestellte Fragen: Veröffentlichen und Verwenden von Machine Learning-Apps im Azure Marketplace | Microsoft Docs'
+description: Häufig gestellte Fragen
+services: machine-learning
+documentationcenter: ''
+author: bharaths
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/11/2016" 
-	ms.author="bharaths"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/11/2016
+ms.author: bharaths
 
-#Veröffentlichung und Verwendung von Machine Learning-Apps im Azure Marketplace: Häufig gestellte Fragen
-
-##Fragen zur Nutzung des Marketplace
-
-
+---
+# Veröffentlichung und Verwendung von Machine Learning-Apps im Azure Marketplace: Häufig gestellte Fragen
+## Fragen zur Nutzung des Marketplace
 **1. Warum erhalte ich folgende Fehlermeldung, nachdem ich Daten für den Webdienst eingegeben habe?**
 
 **Die Anforderung führte zu einem Back-End-Timeout oder Back-End-Fehler. Das Team untersucht das Problem. Wir entschuldigen uns für eventuelle Unannehmlichkeiten. (500)**
 
 Ihr/e Eingabeparameter entspricht/entsprechen möglicherweise nicht dem erforderlichen Format für den bestimmten Webdienst. Das richtige Format für Eingabeparameter und die Einschränkungen für diesen Webdienst finden Sie im entsprechenden Dokumentationslink.
 
-
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 **2. Mit welchen Anmeldeinformationen sollte ich auf die Ergebnisse zugreifen, und wie kann ich diese anzeigen, wenn ich den API-Link für den Webdienst, der in "Dieses Dataset durchsuchen" angezeigt wird, kopiere und in einem anderen Browserfenster einfüge?**
 
@@ -44,12 +40,10 @@ Mindestens ein Eingabeparameter Ihres Webdiensts hat möglicherweise die maximal
 
 Dies ist ein bekanntes Problem mit dem Marketplace im klassischen Azure-Portal. Das Team arbeitet an einer Lösung zur Behebung dieses Problems.
 
-
-##Fragen zur Veröffentlichung aus Azure Machine Learning im Marketplace
-
+## Fragen zur Veröffentlichung aus Azure Machine Learning im Marketplace
 **1. Warum werden meine Logo-/Bildertransaktionen für meinen Webdienst nicht aktualisiert?**
 
-Logos und Bilder werden im Veröffentlichungsportal zwischengespeichert, und eine Aktualisierung auf das neue Logo bzw. Bild im Portal kann bis zu 10 Tage dauern.
+Logos und Bilder werden im Veröffentlichungsportal zwischengespeichert, und eine Aktualisierung auf das neue Logo bzw. Bild im Portal kann bis zu 10 Tage dauern.
 
 **2. Warum wird auf der Registerkarte "Details" meines Webdiensts im Marketplace ein Fehler angezeigt?**
 
@@ -69,12 +63,6 @@ Der Batcheingabemodus wird zurzeit nicht von Marketplace-Webdiensten unterstütz
 
 **6. An wen kann ich mich wenden, wenn ich Fragen zur Datenherausgabe oder Probleme bei der Veröffentlichung habe?**
 
-Wenden Sie sich unter <datamarketbd@microsoft.com> an das Azure Marketplace-Team, um weitere Informationen zu erhalten.
-
-
-
-
-
- 
+Wenden Sie sich unter <mailto:datamarketbd@microsoft.com> an das Azure Marketplace-Team, um weitere Informationen zu erhalten.
 
 <!---HONumber=AcomDC_0914_2016-->

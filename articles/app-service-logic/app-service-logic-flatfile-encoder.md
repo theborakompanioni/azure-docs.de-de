@@ -1,29 +1,29 @@
-<properties 
-   pageTitle="Verwenden des BizTalk Flat File Encoders in einer Logik-App| Microsoft Azure" 
-   description="BizTalk Flat File Encoder-API-App oder -Connector" 
-   services="logic-apps" 
-   documentationCenter=".net,nodejs,java" 
-   authors="rajram" 
-   manager="erikre" 
-   editor=""/>
+---
+title: Verwenden des BizTalk Flat File Encoders in einer Logik-App| Microsoft Docs
+description: BizTalk Flat File Encoder-API-App oder -Connector
+services: logic-apps
+documentationcenter: .net,nodejs,java
+author: rajram
+manager: erikre
+editor: ''
 
-<tags
-   ms.service="logic-apps" 	
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="04/20/2016"
-   ms.author="rajram"/>
+ms.service: logic-apps
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: integration
+ms.date: 04/20/2016
+ms.author: rajram
 
+---
 # BizTalk Flat File Encoder
+[!INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
-[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+Verwenden Sie den BizTalk Flat File Encoder-Connector für die Interoperation zwischen Flatfile-Daten (z. B. einer Excel- oder CSV-Datei) und XML-Daten. Sie können damit eine Flatfile-Instanz in XML konvertieren und umgekehrt.
 
-Verwenden Sie den BizTalk Flat File Encoder-Connector für die Interoperation zwischen Flatfile-Daten (z. B. einer Excel- oder CSV-Datei) und XML-Daten. Sie können damit eine Flatfile-Instanz in XML konvertieren und umgekehrt.
-
-##Verwenden des BizTalk Flat File Encoder
+## Verwenden des BizTalk Flat File Encoder
 Um den BizTalk Flat File Encoder zu verwenden, müssen Sie zunächst eine Instanz der BizTalk Flat File Encoder-API-App erstellen. Dies kann entweder Inline beim Erstellen einer Logik-App oder durch Auswählen der BizTalk Flat File-Encoder-API-App aus dem Azure Marketplace erfolgen. Hier werden die Schritte zum Erstellen einer BizTalk Flat File Encoder-API-App aus dem Azure Marketplace beschrieben:
+
 1. Melden Sie sich beim Azure-Portal an (http://portal.azure.com).
 2. Wählen Sie „Neu“ > „Marketplace“ > „Alles“.
 3. Suchen Sie im Suchfeld nach „BizTalk Flat File Encoder“.
@@ -31,45 +31,44 @@ Um den BizTalk Flat File Encoder zu verwenden, müssen Sie zunächst eine Instan
 5. Wählen Sie „Erstellen“, und geben Sie einen Namen und die restlichen erforderlichen Informationen ein.
 6. Wählen Sie „Erstellen“. Sie werden zur Startseite umgeleitet, wo Sie den Status der Erstellung sehen können. Dies kann eine Weile dauern. Sie erhalten eine Benachrichtigung, wenn dies abgeschlossen ist.
 
-###Konfigurieren des BizTalk Flat File Encoder
+### Konfigurieren des BizTalk Flat File Encoder
 Nachdem die API-App erstellt wurde, können Sie sie entweder direkt von der Azure-Portal-Startseite oder der Designeroberfläche aus starten, wenn Sie eine Logik-App erstellen.
 
 Zum Starten von der Azure-Startseite aus können Sie sie suchen, indem Sie den Namen eingeben, den Sie beim Erstellen dem BizTalk Flat File Encoder zugewiesen haben. Gehen Sie wie folgt vor:
+
 1. Geben Sie den Namen Ihres BizTalk Flat File Encoders im Azure-Portal in das Suchfeld ein, und suchen Sie danach.
 2. Wählen Sie dann Ihren BizTalk Flat File Encoder in der Liste aus. Dies öffnet das API-App-Blatt, in dem Sie Ihre BizTalk Flat File-Encoder-API-App konfigurieren können. Um die Konfiguration zu starten, fügen Sie folgendermaßen ein Schema hinzu:
-1. Wählen Sie die Komponente „Schemas“ aus. ![BizTalk Flat File Encoder Schemas Teil][2]
-2. Wählen Sie dann auf dem Blatt „Schemas“ die Option „Neues Element hinzufügen“. ![BizTalk Flat File Encoder Aktionsliste][7]
-3. Wählen Sie eine der drei Optionen, um Ihr Schema bereitzustellen. Die Optionen sind NEUES SCHEMA HOCHLADEN, AUS JSON GENERIEREN und AUS FLATFILE GENERIEREN. ![BizTalk Flat File Encoder Aktionsliste][8]
-4. Befolgen Sie die Schritte, um Ihr Schema basierend auf Ihrer Auswahl im vorherigen Schritt anzugeben. Dann sehen Sie, dass das Schema hochgeladen wurde: ![BizTalk Flat File Encoder Aktionsliste][9]
+3. Wählen Sie die Komponente „Schemas“ aus. ![BizTalk Flat File Encoder Schemas Teil][2]
+4. Wählen Sie dann auf dem Blatt „Schemas“ die Option „Neues Element hinzufügen“. ![BizTalk Flat File Encoder Aktionsliste][7]
+5. Wählen Sie eine der drei Optionen, um Ihr Schema bereitzustellen. Die Optionen sind NEUES SCHEMA HOCHLADEN, AUS JSON GENERIEREN und AUS FLATFILE GENERIEREN. ![BizTalk Flat File Encoder Aktionsliste][8]
+6. Befolgen Sie die Schritte, um Ihr Schema basierend auf Ihrer Auswahl im vorherigen Schritt anzugeben. Dann sehen Sie, dass das Schema hochgeladen wurde: ![BizTalk Flat File Encoder Aktionsliste][9]
 
-###Verwenden des BizTalk Flat File Encoder in der Entwurfsoberfläche
+### Verwenden des BizTalk Flat File Encoder in der Entwurfsoberfläche
 Da Sie nun den BizTalk Flat File-Encoder konfiguriert haben, können Sie ihn in einer Logik-App verwenden. Erstellen Sie zum Einstieg entweder eine neue Logik-App, oder starten Sie eine vorhandene, die Sie früher erstellt haben. Gehen Sie dann folgendermaßen vor:
+
 1. Klicken Sie in der Karte „Logik starten“ auf „Diese Logik manuell ausführen“.
 2. Wählen Sie die bereits erstellte BizTalk Flat File Encoder-API-App im Katalog aus. (Sie finden den von Ihnen erstellten BizTalk Flat File Encoder in der Liste mit den API-Apps rechts auf dem Bildschirm.)
 3. Wählen Sie den schwarzen Pfeil, der nach rechts zeigt. Die zwei verfügbaren Aktionen („Flatfile in XML“ und „XML in Flatfile“) werden angezeigt: ![BizTalk Flat File Encoder Aktionsliste][1] ![BizTalk Flat File Encoder Aktionsliste][4]
 
 Befolgen Sie die folgenden Schritte gemäß der Aktion, die Sie ausgewählt haben.
 
-####Flatfile in XML
-
+#### Flatfile in XML
 ![BizTalk Flat File Encoder Aktionsliste][5]
 
-Parameter|Typ|Beschreibung des Parameters
----|---|---
-Flatfile|string|Inhalt der Eingabeflatfile
-Name des Schemas|string|Name des Schemas, das die Eingabeflatfile darstellt
-Stammname|string|Der Stammknotenname des Flatfileschemas
-
+| Parameter | Typ | Beschreibung des Parameters |
+| --- | --- | --- |
+| Flatfile |string |Inhalt der Eingabeflatfile |
+| Name des Schemas |string |Name des Schemas, das die Eingabeflatfile darstellt |
+| Stammname |string |Der Stammknotenname des Flatfileschemas |
 
 Die Aktion gibt die Ausgabe als Zeichenfolge zurück - Ausgabe-XML. Ausgabe-XML enthält die XML-Darstellung des Inhalts der Eingabeflatfile.
 
-####XML in Flatfile
-
+#### XML in Flatfile
 ![BizTalk Flat File Encoder Aktionsliste][6]
 
-Parameter|Typ|Beschreibung des Parameters
----|---|---
-Eingabe-XML|string|Eingabe-XML-Inhalt
+| Parameter | Typ | Beschreibung des Parameters |
+| --- | --- | --- |
+| Eingabe-XML |string |Eingabe-XML-Inhalt |
 
 Die Aktion gibt die Ausgabe als Zeichenfolge zurück - Flatfile. Ausgabe enthält die Flatfiledarstellung des Eingabe-XML-Inhalts.
 
@@ -84,6 +83,6 @@ Die Aktion gibt die Ausgabe als Zeichenfolge zurück - Flatfile. Ausgabe enthäl
 [8]: ./media/app-service-logic-flatfile-encoder/flatfileencoder.selectschemauploadoption.PNG
 [9]: ./media/app-service-logic-flatfile-encoder/flatfileencoder.shemauploaded.PNG
 
- 
+
 
 <!---HONumber=AcomDC_0803_2016-->

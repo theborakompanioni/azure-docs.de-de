@@ -1,22 +1,23 @@
-<properties
-    pageTitle="Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration | Microsoft Azure"
-    description="Dieser Artikel beschreibt die Standardkonfiguration der Azure AD Connect-Synchronisierung."
-    services="active-directory"
-    documentationCenter=""
-    authors="andkjell"
-    manager="femila"
-    editor=""/>
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-	ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="andkjell"/>
+---
+title: 'Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration | Microsoft Docs'
+description: Dieser Artikel beschreibt die Standardkonfiguration der Azure AD Connect-Synchronisierung.
+services: active-directory
+documentationcenter: ''
+author: andkjell
+manager: femila
+editor: ''
 
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/01/2016
+ms.author: andkjell
+
+---
 # Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
-In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
+In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
 
 Informationen zu den Details des Konfigurationsmodells finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Grundlegendes zur deklarativen Bereitstellung).
 
@@ -28,72 +29,72 @@ Diese Regeln gelten auch für den Objekttyp „iNetOrgPerson“.
 
 Ein Benutzerobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
 
-- Es muss über ein sourceAnchor-Element verfügen.
-- Nach dem Erstellen des Objekts in Azure AD kann das sourceAnchor-Element nicht mehr geändert werden. Sollte der Wert lokal geändert werden, wird das Objekt nicht mehr synchronisiert, bis das sourceAnchor-Element wieder auf den vorherigen Wert zurückgesetzt wurde.
-- Das accountEnabled-Attribut (userAccountControl) muss aufgefüllt sein. Bei einer lokalen Active Directory-Instanz ist dieses Attribut immer vorhanden und aufgefüllt.
+* Es muss über ein sourceAnchor-Element verfügen.
+* Nach dem Erstellen des Objekts in Azure AD kann das sourceAnchor-Element nicht mehr geändert werden. Sollte der Wert lokal geändert werden, wird das Objekt nicht mehr synchronisiert, bis das sourceAnchor-Element wieder auf den vorherigen Wert zurückgesetzt wurde.
+* Das accountEnabled-Attribut (userAccountControl) muss aufgefüllt sein. Bei einer lokalen Active Directory-Instanz ist dieses Attribut immer vorhanden und aufgefüllt.
 
 Die folgenden Benutzerobjekte werden **nicht** mit Azure AD synchronisiert:
 
-- `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass viele vorkonfigurierte Objekte in Active Directory (wie etwa das integrierte Administratorkonto) nicht synchronisiert werden.
-- `IsPresent([sAMAccountName]) = False`. Sorgt dafür, dass Benutzerobjekte ohne sAMAccountName-Attribut nicht synchronisiert werden. Dieser Fall gilt in der Praxis nur für Domänen, für die ein Upgrade von NT4 durchgeführt wurde.
-- `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. Verhindert die Synchronisierung des Dienstkontos, das von der Azure AD Connect-Synchronisierung und von älteren Versionen verwendet wird.
-- Verhindert die Synchronisierung von Exchange-Konten, die nicht für Exchange Online geeignet sind.
-    - `[sAMAccountName] = "SUPPORT_388945a0"`
-    - `Left([mailNickname], 14) = "SystemMailbox{"`
-    - `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`
-    - `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
-- Verhindert die Synchronisierung von Objekten, die nicht für Exchange Online geeignet sind. `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))` Diese Bitmaske (&H21C07000) filtert folgende Objekte heraus:
-    - E-Mail-aktivierter, öffentlicher Ordner
-    - Postfach der Systemaufsicht
-    - Postfachdatenbankpostfach (Systempostfach)
-    - Universelle Sicherheitsgruppe (gilt nicht für Benutzer; nur aus Legacygründen vorhanden)
-    - Nicht universelle Sicherheitsgruppe (gilt nicht für Benutzer; nur aus Legacygründen vorhanden)
-    - Postfachplan
-    - Discoverypostfach
-- `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
+* `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass viele vorkonfigurierte Objekte in Active Directory (wie etwa das integrierte Administratorkonto) nicht synchronisiert werden.
+* `IsPresent([sAMAccountName]) = False`. Sorgt dafür, dass Benutzerobjekte ohne sAMAccountName-Attribut nicht synchronisiert werden. Dieser Fall gilt in der Praxis nur für Domänen, für die ein Upgrade von NT4 durchgeführt wurde.
+* `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. Verhindert die Synchronisierung des Dienstkontos, das von der Azure AD Connect-Synchronisierung und von älteren Versionen verwendet wird.
+* Verhindert die Synchronisierung von Exchange-Konten, die nicht für Exchange Online geeignet sind.
+  * `[sAMAccountName] = "SUPPORT_388945a0"`
+  * `Left([mailNickname], 14) = "SystemMailbox{"`
+  * `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`
+  * `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
+* Verhindert die Synchronisierung von Objekten, die nicht für Exchange Online geeignet sind. `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))` Diese Bitmaske (&H21C07000) filtert folgende Objekte heraus:
+  * E-Mail-aktivierter, öffentlicher Ordner
+  * Postfach der Systemaufsicht
+  * Postfachdatenbankpostfach (Systempostfach)
+  * Universelle Sicherheitsgruppe (gilt nicht für Benutzer; nur aus Legacygründen vorhanden)
+  * Nicht universelle Sicherheitsgruppe (gilt nicht für Benutzer; nur aus Legacygründen vorhanden)
+  * Postfachplan
+  * Discoverypostfach
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
 
 Geltende Attributregeln:
 
-- `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`. Bei verknüpften Postfächern wird das sourceAnchor-Attribut nicht bereitgestellt. Falls ein verknüpftes Postfach gefunden wird, wird davon ausgegangen, dass das eigentliche Konto später hinzugefügt wird.
-- Exchange-bezogene Attribute werden nur synchronisiert, wenn das Attribut **mailNickName** über einen Wert verfügt.
-- Sollten mehrere Gesamtstrukturen vorhanden sein, werden die Attribute in der folgenden Reihenfolge verwendet:
-    1. Anmeldungsbezogene Attribute (z.B. „userPrincipalName“) werden aus der Gesamtstruktur mit einem aktivierten Konto bereitgestellt.
-    2. Attribute aus einer Exchange-GAL (Global Address List, globale Adressliste) werden aus der Gesamtstruktur mit einem Exchange-Postfach bereitgestellt.
-    3. Wird kein Postfach gefunden, können diese Attribute aus einer beliebigen Gesamtstruktur stammen.
-    4. Exchange-bezogene Attribute (in der GAL nicht sichtbare technische Attribute) werden aus der Gesamtstruktur bereitgestellt, für die Folgendes gilt: `mailNickname ISNOTNULL`.
-    5. Sollte eine dieser Regeln von mehreren Gesamtstrukturen erfüllt werden, ist die Erstellungsreihenfolge (Datum/Uhrzeit) der Connectors (Gesamtstrukturen) ausschlaggebend.
+* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`. Bei verknüpften Postfächern wird das sourceAnchor-Attribut nicht bereitgestellt. Falls ein verknüpftes Postfach gefunden wird, wird davon ausgegangen, dass das eigentliche Konto später hinzugefügt wird.
+* Exchange-bezogene Attribute werden nur synchronisiert, wenn das Attribut **mailNickName** über einen Wert verfügt.
+* Sollten mehrere Gesamtstrukturen vorhanden sein, werden die Attribute in der folgenden Reihenfolge verwendet:
+  1. Anmeldungsbezogene Attribute (z.B. „userPrincipalName“) werden aus der Gesamtstruktur mit einem aktivierten Konto bereitgestellt.
+  2. Attribute aus einer Exchange-GAL (Global Address List, globale Adressliste) werden aus der Gesamtstruktur mit einem Exchange-Postfach bereitgestellt.
+  3. Wird kein Postfach gefunden, können diese Attribute aus einer beliebigen Gesamtstruktur stammen.
+  4. Exchange-bezogene Attribute (in der GAL nicht sichtbare technische Attribute) werden aus der Gesamtstruktur bereitgestellt, für die Folgendes gilt: `mailNickname ISNOTNULL`.
+  5. Sollte eine dieser Regeln von mehreren Gesamtstrukturen erfüllt werden, ist die Erstellungsreihenfolge (Datum/Uhrzeit) der Connectors (Gesamtstrukturen) ausschlaggebend.
 
 ### Standardregeln für Kontakte
 Ein Kontaktobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
 
-- Der Kontakt muss E-Mail-aktiviert sein. Die Überprüfung umfasst folgende Regeln:
-    - `IsPresent([proxyAddresses]) = True)`. Das proxyAddresses-Attribut muss aufgefüllt sein.
-    - Eine primäre E-Mail-Adresse befindet sich entweder im proxyAddresses-Attribut oder im mail-Attribut. Ob es sich bei dem Inhalt um eine E-Mail-Adresse handelt, wird anhand des Vorhandenseins eines @-Zeichens ermittelt. Eine der beiden Regeln muss „True“ ergeben:
-        - `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Ist ein Eintrag mit „SMTP:“ vorhanden? Wenn ja, enthält die Zeichenfolge ein @-Zeichen?
-        - `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Ist das mail-Attribut aufgefüllt, und falls ja, enthält die Zeichenfolge ein @-Zeichen?
+* Der Kontakt muss E-Mail-aktiviert sein. Die Überprüfung umfasst folgende Regeln:
+  * `IsPresent([proxyAddresses]) = True)`. Das proxyAddresses-Attribut muss aufgefüllt sein.
+  * Eine primäre E-Mail-Adresse befindet sich entweder im proxyAddresses-Attribut oder im mail-Attribut. Ob es sich bei dem Inhalt um eine E-Mail-Adresse handelt, wird anhand des Vorhandenseins eines @-Zeichens ermittelt. Eine der beiden Regeln muss „True“ ergeben:
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Ist ein Eintrag mit „SMTP:“ vorhanden? Wenn ja, enthält die Zeichenfolge ein @-Zeichen?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Ist das mail-Attribut aufgefüllt, und falls ja, enthält die Zeichenfolge ein @-Zeichen?
 
 Die folgenden Kontaktobjekte werden **nicht** mit Azure AD synchronisiert:
 
-- `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass als kritisch markierte Kontaktobjekte nicht synchronisiert werden. Bei einer Standardkonfiguration sind für gewöhnlich keine solchen Objekte vorhanden.
-- `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`.
-- `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`. Diese Objekte wären nicht für Exchange Online geeignet.
-- `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
+* `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass als kritisch markierte Kontaktobjekte nicht synchronisiert werden. Bei einer Standardkonfiguration sind für gewöhnlich keine solchen Objekte vorhanden.
+* `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`.
+* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`. Diese Objekte wären nicht für Exchange Online geeignet.
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
 
 ### Standardregeln für Gruppen
 Ein Gruppenobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
 
-- Es muss weniger als 50.000 Mitglieder enthalten. Hierbei handelt es sich um die Mitgliederanzahl der lokalen Gruppe.
-    - Sind vor dem Start der ersten Synchronisierung mehr Mitglieder vorhanden, wird die Gruppe nicht synchronisiert.
-    - Sollte die Mitgliederanzahl später 50.000 erreichen, wird die Synchronisierung so lange ausgesetzt, bis die Anzahl der Mitglieder wieder unter 50.000 liegt.
-    - Hinweis: Die Mitgliederanzahl von 50.000 wird auch von Azure AD erzwungen. Gruppen mit einer höheren Mitgliederanzahl können auch dann nicht synchronisiert werden, wenn Sie diese Regel ändern oder entfernen.
-- Falls es sich bei der Gruppe um eine **Verteilergruppe** handelt, muss sie zudem E-Mail-aktiviert sein. Informationen zur Erzwingung dieser Regel finden Sie unter [Standardregeln für Kontakte](#contact-out-of-box-rules).
+* Es muss weniger als 50.000 Mitglieder enthalten. Hierbei handelt es sich um die Mitgliederanzahl der lokalen Gruppe.
+  * Sind vor dem Start der ersten Synchronisierung mehr Mitglieder vorhanden, wird die Gruppe nicht synchronisiert.
+  * Sollte die Mitgliederanzahl später 50.000 erreichen, wird die Synchronisierung so lange ausgesetzt, bis die Anzahl der Mitglieder wieder unter 50.000 liegt.
+  * Hinweis: Die Mitgliederanzahl von 50.000 wird auch von Azure AD erzwungen. Gruppen mit einer höheren Mitgliederanzahl können auch dann nicht synchronisiert werden, wenn Sie diese Regel ändern oder entfernen.
+* Falls es sich bei der Gruppe um eine **Verteilergruppe** handelt, muss sie zudem E-Mail-aktiviert sein. Informationen zur Erzwingung dieser Regel finden Sie unter [Standardregeln für Kontakte](#contact-out-of-box-rules).
 
 Die folgenden Gruppenobjekte werden **nicht** mit Azure AD synchronisiert:
 
-- `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass viele vorkonfigurierte Objekte in Active Directory (wie etwa die integrierte Administratorgruppe) nicht synchronisiert werden.
-- `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`. Von DirSync verwendete Legacygruppe.
-- `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`. Rollengruppe.
-- `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
+* `IsPresent([isCriticalSystemObject])`. Sorgt dafür, dass viele vorkonfigurierte Objekte in Active Directory (wie etwa die integrierte Administratorgruppe) nicht synchronisiert werden.
+* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`. Von DirSync verwendete Legacygruppe.
+* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`. Rollengruppe.
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Verhindert die Synchronisierung von Replikationsopferobjekten.
 
 ### Standardregeln für „ForeignSecurityPrincipal“
 FSPs werden im Metaverse zu einem any-Objekt (*) verknüpft. In der Realität wird diese Verknüpfung aber nur für Benutzer und Sicherheitsgruppen durchgeführt. Mit dieser Konfiguration wird sichergestellt, dass gesamtstrukturübergreifende Mitgliedschaften richtig aufgelöst und korrekt in Azure AD dargestellt werden.
@@ -101,7 +102,7 @@ FSPs werden im Metaverse zu einem any-Objekt (*) verknüpft. In der Realität wi
 ### Standardregeln für Computer
 Ein Computerobjekt muss Folgendes erfüllen, um synchronisiert zu werden:
 
-- `userCertificate ISNOTNULL`. Dieses Attribut wird nur auf Windows 10-Computern aufgefüllt. Alle Computerobjekte mit einem Wert in diesem Attribut werden synchronisiert.
+* `userCertificate ISNOTNULL`. Dieses Attribut wird nur auf Windows 10-Computern aufgefüllt. Alle Computerobjekte mit einem Wert in diesem Attribut werden synchronisiert.
 
 ## Grundlegendes zum Standardregelszenario
 In diesem Beispiel wird eine Bereitstellung mit einer Kontogesamtstruktur (A), einer Ressourcengesamtstruktur (R) und einem Azure AD-Verzeichnis verwendet.
@@ -112,9 +113,9 @@ Bei dieser Konfiguration wird vorausgesetzt, dass die Kontogesamtstruktur ein ak
 
 Unser Ziel bei der Standardkonfiguration ist:
 
-- Auf die Anmeldung bezogene Attribute werden von der Gesamtstruktur aus mit dem aktivierten Konto synchronisiert.
-- Attribute, die in der GAL (Global Address List, globale Adressliste) gefunden werden können, werden von der Gesamtstruktur aus mit dem Postfach synchronisiert. Wenn kein Postfach gefunden werden kann, wird jede beliebige andere Gesamtstruktur verwendet.
-- Wenn ein verknüpftes Postfach gefunden wird, muss das verknüpfte aktivierte Konto für das Objekt gefunden werden, das in Azure AD exportiert wird.
+* Auf die Anmeldung bezogene Attribute werden von der Gesamtstruktur aus mit dem aktivierten Konto synchronisiert.
+* Attribute, die in der GAL (Global Address List, globale Adressliste) gefunden werden können, werden von der Gesamtstruktur aus mit dem Postfach synchronisiert. Wenn kein Postfach gefunden werden kann, wird jede beliebige andere Gesamtstruktur verwendet.
+* Wenn ein verknüpftes Postfach gefunden wird, muss das verknüpfte aktivierte Konto für das Objekt gefunden werden, das in Azure AD exportiert wird.
 
 ### Synchronisierungsregel-Editor
 Die Konfiguration kann mit dem Tool Synchronisierungsregel-Editor (Synchronization Rules Editor, SRE) angezeigt und geändert werden – eine entsprechende Verknüpfung befindet sich im Startmenü.
@@ -180,9 +181,9 @@ Zur Orientierung in Bezug auf diese Konfiguration: In einer Kontoressourcen-Gesa
 
 Eine Transformation kann unterschiedliche Typen aufweisen: „Konstant“, „Direkt“ und „Ausdruck“.
 
-- Bei einem konstanten Fluss wird immer ein hartcodierter Wert übermittelt. Im obigen Fall wird im Metaverseattribut mit dem Namen **accountEnabled** immer der Wert **True** festgelegt.
-- Bei einem direkten Fluss wird der Wert des Attributs der Quelle immer unverändert an das Zielattribut übermittelt.
-- Der dritte Ablauftyp ist "Expression", der fortgeschrittenere Konfigurationen gestattet.
+* Bei einem konstanten Fluss wird immer ein hartcodierter Wert übermittelt. Im obigen Fall wird im Metaverseattribut mit dem Namen **accountEnabled** immer der Wert **True** festgelegt.
+* Bei einem direkten Fluss wird der Wert des Attributs der Quelle immer unverändert an das Zielattribut übermittelt.
+* Der dritte Ablauftyp ist "Expression", der fortgeschrittenere Konfigurationen gestattet.
 
 Die Ausdruckssprache ist VBA (Visual Basic for Applications), sodass Benutzer, die über Microsoft Office- oder VBScript-Kenntnisse verfügen, mit diesem Format vertraut sein sollten. Attribute werden in eckige Klammern eingeschlossen: "[Attributname]". Bei Attributnamen und Funktionsnamen wird die Groß-/Kleinschreibung berücksichtigt, aber der Synchronisierungsregel-Editor wertet die Ausdrücke aus und zeigt eine Warnung an, wenn der Ausdruck nicht zulässig ist. Alle Ausdrücke werden in einer einzelnen Zeile mit verschachtelten Funktionen ausgedrückt. Zur Veranschaulichung der Leistung der Konfigurationssprache folgt hier der Ablauf für "pwdLastSet", jedoch mit zusätzlich eingefügten Kommentaren:
 
@@ -210,25 +211,24 @@ Die Rangfolge für Synchronisierungsregeln wird vom Installations-Assistenten in
 ### Zusammenfügen des Gesamtbilds
 Jetzt wissen wir genug über Synchronisierungsregeln, um die Funktionsweise der Konfiguration mit verschiedenen Synchronisierungsregeln zu verstehen. Wenn Sie einen Benutzer und die Attribute betrachten, die zum Metaverse beigetragen werden, werden die Regeln in der folgenden Reihenfolge angewendet:
 
-Name | Kommentar
-:------------- | :-------------
-Ein von AD – Benutzerverknüpfung | Regel für die Verknüpfung von Connectorbereichobjekten mit Metaverse.
-Ein von AD – Benutzer AccountEnabled | Erforderliche Attribute für eine Anmeldung bei Azure AD und Office 365. Diese Attribute sollen aus dem aktivierten Konto kommen.
-Ein von AD – Benutzer allgemein aus Exchange | In der globalen Adressliste gefundene Attribute. Es wird vorausgesetzt, dass die Qualität der Daten in der Gesamtstruktur am besten ist, in der wir das Postfach des Benutzers gefunden haben.
-Ein von AD – Benutzer allgemein | In der globalen Adressliste gefundene Attribute. Für den Fall, dass ein Postfach nicht gefunden wurde, kann jedes andere verknüpfte Objekt den Attributwert beitragen.
-Ein von AD – Benutzer Exchange | Ist nur vorhanden, wenn Exchange erkannt wurde. Fluss aller Exchange-Attribute der Infrastruktur wird ausgeführt.
-Ein von AD – Benutzer Lync | Ist nur vorhanden, wenn Lync erkannt wurde. Fluss aller Lync-Attribute der Infrastruktur wird ausgeführt.
+| Name | Kommentar |
+|:--- |:--- |
+| Ein von AD – Benutzerverknüpfung |Regel für die Verknüpfung von Connectorbereichobjekten mit Metaverse. |
+| Ein von AD – Benutzer AccountEnabled |Erforderliche Attribute für eine Anmeldung bei Azure AD und Office 365. Diese Attribute sollen aus dem aktivierten Konto kommen. |
+| Ein von AD – Benutzer allgemein aus Exchange |In der globalen Adressliste gefundene Attribute. Es wird vorausgesetzt, dass die Qualität der Daten in der Gesamtstruktur am besten ist, in der wir das Postfach des Benutzers gefunden haben. |
+| Ein von AD – Benutzer allgemein |In der globalen Adressliste gefundene Attribute. Für den Fall, dass ein Postfach nicht gefunden wurde, kann jedes andere verknüpfte Objekt den Attributwert beitragen. |
+| Ein von AD – Benutzer Exchange |Ist nur vorhanden, wenn Exchange erkannt wurde. Fluss aller Exchange-Attribute der Infrastruktur wird ausgeführt. |
+| Ein von AD – Benutzer Lync |Ist nur vorhanden, wenn Lync erkannt wurde. Fluss aller Lync-Attribute der Infrastruktur wird ausgeführt. |
 
 ## Nächste Schritte
-
-- Weitere Informationen zum Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Grundlegendes zur deklarativen Bereitstellung).
-- Weitere Informationen zur Ausdruckssprache finden Sie unter [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
-- Weitere Informationen zur Funktionsweise der Standardkonfiguration finden Sie unter [Grundlegendes zu Benutzern und Kontakten](active-directory-aadconnectsync-understanding-users-and-contacts.md).
-- Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md) wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
+* Weitere Informationen zum Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md) (Grundlegendes zur deklarativen Bereitstellung).
+* Weitere Informationen zur Ausdruckssprache finden Sie unter [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
+* Weitere Informationen zur Funktionsweise der Standardkonfiguration finden Sie unter [Grundlegendes zu Benutzern und Kontakten](active-directory-aadconnectsync-understanding-users-and-contacts.md).
+* Unter [Ändern der Standardkonfiguration](active-directory-aadconnectsync-change-the-configuration.md) wird beschrieben, wie Sie mit der deklarativen Bereitstellung eine praktische Änderung vornehmen.
 
 **Übersichtsthemen**
 
-- [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
-- [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+* [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
+* [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
 <!---HONumber=AcomDC_0907_2016-->

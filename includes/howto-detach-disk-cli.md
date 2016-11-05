@@ -1,22 +1,21 @@
 
-#Trennen eines Datenträgers von einem virtuellen Computer mithilfe der CLI
-
+# Trennen eines Datenträgers von einem virtuellen Computer mithilfe der CLI
 Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Dadurch wird der Datenträger von dem virtuellen Computer entfernt, aber nicht aus dem Speicher. Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an denselben virtuellen Computer oder an einen anderen anfügen.
 
-> [AZURE.NOTE]Ein virtueller Computer in Azure verwendet verschiedene Arten von Datenträgern wie Betriebssystemfestplatten, lokale temporäre Festplatten und optionale Datenträger. Datenträger sind die empfohlene Möglichkeit zum Speichern von Daten für einen virtuellen Computer. Unter [Datenträger und Images verwalten](http://go.microsoft.com/fwlink/p/?LinkId=263439) finden Sie Details in Bezug auf Datenträger. Es ist derzeit nicht möglich, eine Betriebssystemfestplatte zu trennen.
-
+> [!NOTE]
+> Ein virtueller Computer in Azure verwendet verschiedene Arten von Datenträgern wie Betriebssystemfestplatten, lokale temporäre Festplatten und optionale Datenträger. Datenträger sind die empfohlene Möglichkeit zum Speichern von Daten für einen virtuellen Computer. Unter [Datenträger und Images verwalten](http://go.microsoft.com/fwlink/p/?LinkId=263439) finden Sie Details in Bezug auf Datenträger. Es ist derzeit nicht möglich, eine Betriebssystemfestplatte zu trennen.
+> 
+> 
 
 1. Rufen Sie die Liste der Datenträger ab, die an Ihren virtuellen Computer angefügt sind:
-
+   
         vm disk list <vm-name>
-
+   
     Wenn Sie `<vm-name>` weglassen, erhalten Sie eine Liste aller Datenträger in Ihrem Abonnement.
-
-
 2. Trennen eines Datenträgers:
-
+   
         vm disk detach <vm-name> <lun>
-
+   
     `lun` identifiziert den zu trennenden Datenträger und wird in Form einer Nummer angegeben, die Sie in der Datenträgerliste für Ihren virtuellen Computer finden.
 
 Exemplarische Vorgehensweise einschließlich Terminalausgabe:

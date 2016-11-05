@@ -1,30 +1,28 @@
-<properties
-    pageTitle="Compute-Optionen in Azure – Cloud Services | Microsoft Azure"
-    description="Erfahren Sie mehr über die Compute-Hostingoptionen in Azure und deren Funktionsweise: App Service, Cloud Services und Virtual Machines"
-    services="cloud-services"
-    documentationCenter=""
-    authors="Thraka"
-    manager="timlt"/>
+---
+title: Compute-Optionen in Azure – Cloud Services | Microsoft Docs
+description: 'Erfahren Sie mehr über die Compute-Hostingoptionen in Azure und deren Funktionsweise: App Service, Cloud Services und Virtual Machines'
+services: cloud-services
+documentationcenter: ''
+author: Thraka
+manager: timlt
 
-<tags
-    ms.service="multiple"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/11/2016"
-    ms.author="adegeo"/>
+ms.service: multiple
+ms.workload: multiple
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/11/2016
+ms.author: adegeo
 
-
+---
 # <a name="should-i-choose-cloud-services-or-something-else?"></a>Sollte ich mich für Clouddienste oder eine andere Lösung entscheiden?
-
 Ist Azure Cloud Services das Richtige für Sie? Azure bietet verschiedene Hostingmodelle für die Ausführung von Anwendungen. Jedes dieser Modelle bietet unterschiedliche Dienste. Dadurch können Sie genau das Modell auswählen, das sich am besten für Ihr Vorhaben eignet.
 
-[AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
+[!INCLUDE [compute-table](../../includes/compute-options-table.md)]
 
 <a name="tellmecs"></a>
-## <a name="tell-me-about-cloud-services"></a>Informationen zu Cloud Services
 
+## <a name="tell-me-about-cloud-services"></a>Informationen zu Cloud Services
 Cloud Services ist ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt genau wie [App Service](../app-service-web/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Cloud Services wird genau wie App Service auf virtuellen Computern gehostet. Allerdings haben Sie bei Cloud Services mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Clouddienstcomputern installieren und per Remotezugriff auf sie zugreifen.
 
 ![cs_diagramcs_diagram](./media/cloud-services-choose-me/diagram.png)
@@ -37,11 +35,10 @@ Eine beliebige Kombination dieser zwei leicht unterschiedlichen VM Hostingoption
 
 * **Webrolle**  
    Führt Windows Server mit Ihrer Web-App aus, die automatisch auf IIS bereitgestellt wird.
-
 * **Workerrolle**  
   : Führt Windows-Server ohne IIS aus.
 
-Einfache Anwendungen verwenden beispielsweise lediglich eine Webrolle, während komplexere Anwendungen eine Webrolle für die Verarbeitung eingehender Benutzeranforderungen verwenden und die durch diese Anforderungen generierte Arbeit an Workerrollen delegieren. (Diese Kommunikation erfolgt über [Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) oder über [Azure-Warteschlangen](../storage/storage-introduction.md).)
+Einfache Anwendungen verwenden beispielsweise lediglich eine Webrolle, während komplexere Anwendungen eine Webrolle für die Verarbeitung eingehender Benutzeranforderungen verwenden und die durch diese Anforderungen generierte Arbeit an Workerrollen delegieren. (Diese Kommunikation erfolgt über [Service Bus](../service-bus/service-bus-fundamentals-hybrid-solutions.md) oder über [Azure-Warteschlangen](../storage/storage-introduction.md).)
 
 Die obige Abbildung zeigt, dass alle VMs in einer einzigen Anwendung im gleichen Clouddienst laufen. Aus diesem Grund greifen die Benutzer über eine einzige öffentliche IP-Adresse auf die Anwendung zu, und die Anforderungen werden automatisch auf die einzelnen VMs  verteilt. Die virtuellen Computer in einer Cloud Services-Anwendung werden von der Plattform so [skaliert und bereitgestellt](cloud-services-how-to-scale.md) , dass Single Points of Failure vermieden werden.
 
@@ -62,8 +59,6 @@ Das PaaS-Konzept von Cloud Services hat noch weitere Auswirkungen. So müssen et
 [Erstellen einer Clouddienst-App in Node.js](cloud-services-nodejs-develop-deploy-app.md)  
 [Erstellen einer Clouddienst-App in PHP](../cloud-services-php-create-web-role.md)  
 [Erstellen einer Clouddienst-App in Python](cloud-services-python-ptvs.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

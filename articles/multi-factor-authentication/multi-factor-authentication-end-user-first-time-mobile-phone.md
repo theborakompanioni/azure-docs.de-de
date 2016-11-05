@@ -1,27 +1,27 @@
-<properties
-	pageTitle="Verwenden eines Mobiltelefons als Kontaktmethode mit Azure MFA"
-	description="Auf dieser Seite erfahren Benutzer, wie sie ihr Mobiltelefon als primäre Kontaktmethode für Azure MFA verwenden."
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+---
+title: Verwenden eines Mobiltelefons als Kontaktmethode mit Azure MFA
+description: Auf dieser Seite erfahren Benutzer, wie sie ihr Mobiltelefon als primäre Kontaktmethode für Azure MFA verwenden.
+services: multi-factor-authentication
+documentationcenter: ''
+author: kgremban
+manager: femila
+editor: curtland
 
-<tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
+ms.service: multi-factor-authentication
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/04/2016
+ms.author: kgremban
 
+---
 # Verwenden eines Mobiltelefons als Kontaktmethode mit Azure Multi-Factor Authentication
-
 Wenn Sie Ihr Mobiltelefon als primäre Kontaktmethode verwenden möchten, finden Sie weitere Informationen in diesem Artikel. Hier erfahren Sie, wie Sie Multi-Factor Authentication einrichten, um Ihr Mobiltelefon als Kontaktmethode per Anruf oder SMS zu verwenden.
 
 ## So verwenden Sie Ihr Mobiltelefon als Kontaktmethode
 <ol>
+
 <li>Wählen Sie in der Dropdownliste "Telefon für Authentifizierung" aus.</li>
 
 <center>![Setup](./media/multi-factor-authentication-end-user-first-time-mobile-phone/phone.png)</center>

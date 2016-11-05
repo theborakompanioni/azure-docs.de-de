@@ -1,39 +1,36 @@
-<properties
-   pageTitle="Benutzerdefinierte Skripts auf virtuellen Linux-Computern | Microsoft Azure"
-   description="Automatisieren Sie Konfigurationsaufgaben für virtuelle Linux-Computer mithilfe der benutzerdefinierten Skripterweiterung."
-   services="virtual-machines-linux"
-   documentationCenter=""
-   authors="neilpeterson"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Benutzerdefinierte Skripts auf virtuellen Linux-Computern | Microsoft Docs
+description: Automatisieren Sie Konfigurationsaufgaben für virtuelle Linux-Computer mithilfe der benutzerdefinierten Skripterweiterung.
+services: virtual-machines-linux
+documentationcenter: ''
+author: neilpeterson
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="09/22/2016"
-   ms.author="nepeters"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure-services
+ms.date: 09/22/2016
+ms.author: nepeters
 
+---
 # Verwenden der benutzerdefinierten Skripterweiterung von Azure mit virtuellen Linux-Computern
-
 Die benutzerdefinierte Skripterweiterung lädt Skripts auf virtuelle Azure-Computer herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder von einem anderen zugänglichen Speicherort im Internet heruntergeladen oder zur Laufzeit für die Erweiterung bereitgestellt werden. Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mithilfe der Azure-Befehlszeilenschnittstelle, mithilfe von PowerShell, über das Azure-Portal oder unter Verwendung der REST-API für virtuelle Azure-Computer ausgeführt werden.
 
 In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterung über die Azure-Befehlszeilenschnittstelle ausführen. Außerdem erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, und Sie erhalten Informationen zu Problembehandlungsschritten für Linux-Systeme.
 
 ## Konfiguration der Erweiterung
-
 In der Konfiguration der benutzerdefinierten Skripterweiterung werden Aspekte wie der Skriptspeicherort und der auszuführende Befehl angegeben. Die Konfiguration kann in Konfigurationsdateien gespeichert oder in der Befehlszeile oder in einer Azure Resource Manager-Vorlage angegeben werden. Sensible Daten können in einer geschützten Konfiguration gespeichert werden. Diese ist verschlüsselt und wird nur auf dem virtuellen Computer entschlüsselt. Die geschützte Konfiguration ist hilfreich, wenn der Ausführungsbefehl vertrauliche Informationen (beispielsweise ein Kennwort) enthält.
 
 ### Öffentliche Konfiguration
-
 Schema:
 
-- **commandToExecute** (erforderlich; Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt.
-- **fileUris** (optional; Zeichenfolgenarray): Die URLs für die herunterzuladenden Dateien.
-- **timestamp** (optional; ganze Zahl): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.
+* **commandToExecute** (erforderlich; Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt.
+* **fileUris** (optional; Zeichenfolgenarray): Die URLs für die herunterzuladenden Dateien.
+* **timestamp** (optional; ganze Zahl): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.
 
 ```none
 {
@@ -43,13 +40,11 @@ Schema:
 ```
 
 ### Geschützte Konfiguration
-
 Schema:
 
-- **commandToExecute** (optional; Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, falls Ihr Befehl vertrauliche Informationen (beispielsweise Kennwörter) enthält.
-- **storageAccountName** (optional; Zeichenfolge): Der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen Datei-URIs um URLs für Azure-Blobs handeln.
-- **storageAccountKey** (optional; Zeichenfolge): Der Zugriffsschlüssel des Speicherkontos.
-
+* **commandToExecute** (optional; Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, falls Ihr Befehl vertrauliche Informationen (beispielsweise Kennwörter) enthält.
+* **storageAccountName** (optional; Zeichenfolge): Der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen Datei-URIs um URLs für Azure-Blobs handeln.
+* **storageAccountKey** (optional; Zeichenfolge): Der Zugriffsschlüssel des Speicherkontos.
 
 ```json
 {
@@ -60,7 +55,6 @@ Schema:
 ```
 
 ## Azure-Befehlszeilenschnittstelle
-
 Wenn Sie die benutzerdefinierte Skripterweiterung über die Azure-Befehlszeilenschnittstelle ausführen, erstellen Sie eine Konfigurationsdatei oder Dateien mit mindestens dem Datei-URI und dem Skriptausführungsbefehl.
 
 ```none
@@ -74,7 +68,6 @@ azure vm extension set <resource-group> <vm-name> CustomScript Microsoft.Azure.E
 ```
 
 ### Beispiele für die Azure-Befehlszeilenschnittstelle
-
 **Beispiel 1:** Öffentliche Konfiguration mit Skriptdatei.
 
 ```json
@@ -129,11 +122,9 @@ azure vm extension set <resource-group> <vm-name> CustomScript Microsoft.Azure.E
 ```
 
 ## Resource Manager-Vorlage
-
 Die benutzerdefinierte Skripterweiterung von Azure kann beim Bereitstellen virtueller Computer mithilfe einer Resource Manager-Vorlage ausgeführt werden. Zu diesem Zweck muss der Bereitstellungsvorlage ordnungsgemäß formatierter JSON-Code hinzugefügt werden.
 
 ### Resource Manager-Beispiele
-
 **Beispiel 1:** Öffentliche Konfiguration.
 
 ```json
@@ -197,7 +188,6 @@ Die benutzerdefinierte Skripterweiterung von Azure kann beim Bereitstellen virtu
 Ein vollständiges Beispiel finden Sie in der [Music Store-Demo für .NET Core](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db).
 
 ## Problembehandlung
-
 Beim Ausführen der benutzerdefinierten Skripterweiterung wird das Skript erstellt oder wie im folgenden Beispiel in ein Verzeichnis heruntergeladen. Die Ausgabe des Befehls wird ebenfalls in diesem Verzeichnis gespeichert (in den Dateien `stdout` und `stderr`).
 
 ```none
@@ -229,7 +219,6 @@ info:    vm extension get command OK
 ```
 
 ## Nächste Schritte
-
-Informationen zu anderen Skripterweiterungen für virtuelle Computer finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer](./virtual-machines-linux-extensions-features.md).
+Informationen zu anderen Skripterweiterungen für virtuelle Computer finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer](virtual-machines-linux-extensions-features.md).
 
 <!---HONumber=AcomDC_0928_2016-->

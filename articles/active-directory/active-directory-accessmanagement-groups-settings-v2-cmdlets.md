@@ -1,34 +1,33 @@
-<properties
-    pageTitle="Azure Active Directory PowerShell-Vorschau-Cmdlets für die Gruppenverwaltung in Azure AD | Microsoft Azure"
-    description="Auf dieser Seite finden Sie PowerShell-Beispiele für die Verwaltung von Gruppen in Azure Active Directory."
-    keywords="Azure AD, Azure Active Directory, PowerShell, Gruppen, Gruppenverwaltung"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+---
+title: Azure Active Directory PowerShell-Vorschau-Cmdlets für die Gruppenverwaltung in Azure AD | Microsoft Docs
+description: Auf dieser Seite finden Sie PowerShell-Beispiele für die Verwaltung von Gruppen in Azure Active Directory.
+keywords: Azure AD, Azure Active Directory, PowerShell, Gruppen, Gruppenverwaltung
+services: active-directory
+documentationcenter: ''
+author: curtand
+manager: femila
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/29/2016"
-    ms.author="curtand"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/29/2016
+ms.author: curtand
 
-
+---
 # <a name="azure-active-directory-preview-cmdlets-for-group-management"></a>Azure Active Directory-Vorschau-Cmdlets für die Gruppenverwaltung
-
-> [AZURE.SELECTOR]
-- [Azure-Portal](active-directory-groups-create-azure-portal.md)
-- [Klassisches Azure-Portal](active-directory-accessmanagement-manage-groups.md)
-- [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
+> [!div class="op_single_selector"]
+> * [Azure-Portal](active-directory-groups-create-azure-portal.md)
+> * [Klassisches Azure-Portal](active-directory-accessmanagement-manage-groups.md)
+> * [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
+> 
+> 
 
 Im folgenden Dokument finden Sie Beispiele für die Verwendung von PowerShell zur Verwaltung von Gruppen in Azure Active Directory (Azure AD).  Darüber hinaus erhalten Sie Informationen zum Einrichten des Azure AD PowerShell-Vorschaumoduls. Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen](http://go.microsoft.com/fwlink/p/?LinkId=828627).
 
 ## <a name="installing-the-azure-ad-powershell-module"></a>Installieren des Azure AD PowerShell-Moduls
-
 Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Vorschaumodul zu installieren:
 
     PS C:\Windows\system32> install-module azureadpreview
@@ -222,14 +221,10 @@ Zum Entfernen eines Besitzers aus einer Gruppe verwenden Sie „Remove-AzureADGr
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azure Active Directory-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=808260).
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
-
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
-
 
 <!--HONumber=Oct16_HO2-->
 

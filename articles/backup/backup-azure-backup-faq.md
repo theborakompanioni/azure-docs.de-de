@@ -1,58 +1,58 @@
-<properties
-   pageTitle="Häufig gestellte Fragen zu Azure Backup | Microsoft Azure"
-   description="Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Dienst, zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Sicherung und Notfallwiederherstellung."
-   services="backup"
-   documentationCenter=""
-   authors="markgalioto"
-   manager="jwhit"
-   editor=""
-   keywords="Sicherung und Notfallwiederherstellung; Backup-Dienst"/>
+---
+title: Häufig gestellte Fragen zu Azure Backup | Microsoft Docs
+description: Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Dienst, zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Sicherung und Notfallwiederherstellung.
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: jwhit
+editor: ''
+keywords: Sicherung und Notfallwiederherstellung; Backup-Dienst
 
-<tags
-   ms.service="backup"
-   ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="get-started-article"
-	 ms.date="08/29/2016"
-	 ms.author="trinadhk; giridham; arunak; markgal; jimpark;"/>
+ms.service: backup
+ms.workload: storage-backup-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/29/2016
+ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 
+---
 # Azure Backup-Dienst – FAQ
-
-> [AZURE.SELECTOR]
-- [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
-- [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
+> [!div class="op_single_selector"]
+> * [Häufig gestellte Fragen zu Backup für den klassischen Modus](backup-azure-backup-faq.md)
+> * [Häufig gestellte Fragen zu Backup für den Resource Manager-Modus](backup-azure-backup-ibiza-faq.md)
+> 
+> 
 
 Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazugehörigen Antworten) zum Azure Backup-Dienst. In unserer Community erhalten Sie schnell eine Antwort, und wenn eine Frage häufig gestellt wird, fügen wir sie diesem Artikel hinzu. Die Antworten auf Fragen enthalten in der Regel Referenz- bzw. Supportinformationen. Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) stellen.
-
 
 ## Welche Betriebssysteme werden für die Sicherung in Azure mithilfe von Azure Backup unterstützt? <br/>
 Azure Backup unterstützt die folgenden Betriebssysteme für die Sicherung von Dateien/Ordnern und die Anwendungssicherung mithilfe von Azure Backup Server und SCDPM.
 
 | Betriebssystem | Plattform | SKU |
-| :------------- |-------------| :-----|
-| Windows 8 und die neuesten SPs | 64-Bit | Enterprise, Pro |
-| Windows 7 und die neuesten SPs | 64-Bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
-| Windows 8.1 und die neuesten SPs | 64-Bit | Enterprise, Pro |
-| Windows 10 | 64-Bit | Enterprise, Pro, Home |
-|Windows Server 2012 R2 und die neuesten SPs|	64-Bit|	Standard, Datacenter, Foundation|
-|Windows Server 2012 und die neuesten SPs|	64-Bit|	Datacenter, Foundation, Standard|
-|Windows Storage Server 2012 R2 und die neuesten SPs |64-Bit|	Standard, Workgroup|
-|Windows Storage Server 2012 und neuesten SPs |64-Bit |Standard, Workgroup
-|Windows Server 2012 R2 und die neuesten SPs |64-Bit|	Essential|
-|Windows Server 2008 R2 SP1 |64-Bit|	Standard, Enterprise, Datacenter, Foundation|
-|Windows Server 2008 SP2 |64-Bit|	Standard, Enterprise, Datacenter, Foundation|
+|:--- | --- |:--- |
+| Windows 8 und die neuesten SPs |64-Bit |Enterprise, Pro |
+| Windows 7 und die neuesten SPs |64-Bit |Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
+| Windows 8.1 und die neuesten SPs |64-Bit |Enterprise, Pro |
+| Windows 10 |64-Bit |Enterprise, Pro, Home |
+| Windows Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Datacenter, Foundation |
+| Windows Server 2012 und die neuesten SPs |64-Bit |Datacenter, Foundation, Standard |
+| Windows Storage Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Workgroup |
+| Windows Storage Server 2012 und neuesten SPs |64-Bit |Standard, Workgroup |
+| Windows Server 2012 R2 und die neuesten SPs |64-Bit |Essential |
+| Windows Server 2008 R2 SP1 |64-Bit |Standard, Enterprise, Datacenter, Foundation |
+| Windows Server 2008 SP2 |64-Bit |Standard, Enterprise, Datacenter, Foundation |
 
 Für Azure-VM-Sicherung,
 
-- **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md). Ausnahme: CoreOS Linux. Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
-- **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
+* **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md). Ausnahme: CoreOS Linux. Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
+* **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
 
 ## Wo kann ich den neuesten Azure Backup-Agent herunterladen? <br/>
 Sie können den aktuellen Agent zum Sichern von Windows Server, System Center DPM oder des Windows-Clients [hier](http://aka.ms/azurebackup_agent) herunterladen. Verwenden Sie zum Sichern eines virtuellen Computers den VM-Agent (installiert automatisch die richtige Erweiterung). Der VM-Agent ist auf virtuellen Computern, die über den Azure-Katalog erstellt werden, bereits vorhanden.
 
 ## Welche SCDPM-Serverversion wird unterstützt? <br/>
-Wir empfehlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent aus dem aktuellen Updaterollup von SCDPM (UR11; Stand: August 2016) zu installieren.
+Wir empfehlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent aus dem aktuellen Updaterollup von SCDPM (UR11; Stand: August 2016) zu installieren.
 
 ## Beim Konfigurieren des Azure Backup-Agents werde ich aufgefordert, die Tresoranmeldedaten einzugeben. Laufen die Tresoranmeldeinformationen ab?
 Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abläuft, melden Sie sich beim Azure-Portal an, und laden Sie die Dateien mit den Tresoranmeldedaten aus Ihrem Tresor herunter.
@@ -61,7 +61,7 @@ Ja. Die Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei abl
 Ja. Sie können pro Abonnement für Sicherungstresor und Recovery Services-Tresor jeweils 25 Tresore erstellen (Stand: August 2016). Erstellen Sie ein neues Abonnement, wenn Sie weitere Tresore benötigen.
 
 ## Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können? <br/>
-Ja. Sie können bis zu 50 Computer pro Tresor registrieren. Bei virtuellen Azure-IaaS-Computern liegt die Beschränkung bei 200 VMs pro Tresor. Wenn Sie weitere Computer registrieren müssen, erstellen Sie einen neuen Tresor.
+Ja. Sie können bis zu 50 Computer pro Tresor registrieren. Bei virtuellen Azure-IaaS-Computern liegt die Beschränkung bei 200 VMs pro Tresor. Wenn Sie weitere Computer registrieren müssen, erstellen Sie einen neuen Tresor.
 
 ## Wie registriere ich meinen Server bei einem anderen Datencenter?<br/>
 Die Sicherungsdaten werden an das Datencenter des Tresors gesendet, bei dem dieser registriert ist. Die einfachste Methode zum Ändern des Datencenters besteht darin, den Agent zu deinstallieren und neu zu installieren und den Server bei einem neuen Tresor zu registrieren, der zum gewünschten Datencenter gehört.
@@ -72,26 +72,26 @@ Wenn Sie einen Server umbenennen, werden alle derzeit konfigurierten Sicherungen
 ## Von welchen Laufwerkstypen kann ich Dateien und Ordner sichern? <br/>
 Die folgenden Laufwerke/Volumes können nicht gesichert werden:
 
-- Wechselmedien: Das Laufwerk muss als feststehendes Laufwerk gelten, um als Quelle für Backup-Elemente verwendet zu werden.
-- Schreibgeschützte Volumes: Das Volume muss beschreibbar sein, damit der Volumeschattenkopie-Dienst funktioniert.
-- Offlinevolumes: Das Volume muss online sein, damit der VSS funktioniert.
-- Netzwerkfreigabe: Das Volume muss sich lokal auf dem Server befinden, um mit der Onlinesicherung gesichert zu werden.
-- Mit BitLocker geschützte Volumes: Das Volume muss entsperrt werden, bevor die Sicherung durchgeführt werden kann.
-- Dateisystemidentifizierung: Für diese Version des Onlinesicherungsdiensts wird ausschließlich NTFS unterstützt.
+* Wechselmedien: Das Laufwerk muss als feststehendes Laufwerk gelten, um als Quelle für Backup-Elemente verwendet zu werden.
+* Schreibgeschützte Volumes: Das Volume muss beschreibbar sein, damit der Volumeschattenkopie-Dienst funktioniert.
+* Offlinevolumes: Das Volume muss online sein, damit der VSS funktioniert.
+* Netzwerkfreigabe: Das Volume muss sich lokal auf dem Server befinden, um mit der Onlinesicherung gesichert zu werden.
+* Mit BitLocker geschützte Volumes: Das Volume muss entsperrt werden, bevor die Sicherung durchgeführt werden kann.
+* Dateisystemidentifizierung: Für diese Version des Onlinesicherungsdiensts wird ausschließlich NTFS unterstützt.
 
 ## Welche Datei- und Ordnertypen können von meinem Server gesichert werden?<br/>
 Die folgenden Typen werden unterstützt:
 
-- Verschlüsselt
-- Komprimiert
-- Platzsparend
-- Komprimiert und geringe Dichte
-- Feste Links: Nicht unterstützt, werden übersprungen
-- Analysepunkt: Nicht unterstützt, wird übersprungen
-- Verschlüsselt und komprimiert: Nicht unterstützt, wird übersprungen
-- Verschlüsselt und geringe Dichte: Nicht unterstützt, wird übersprungen
-- Komprimierter Stream: Nicht unterstützt, wird übersprungen
-- Stream mit geringer Dichte: Nicht unterstützt, wird übersprungen
+* Verschlüsselt
+* Komprimiert
+* Platzsparend
+* Komprimiert und geringe Dichte
+* Feste Links: Nicht unterstützt, werden übersprungen
+* Analysepunkt: Nicht unterstützt, wird übersprungen
+* Verschlüsselt und komprimiert: Nicht unterstützt, wird übersprungen
+* Verschlüsselt und geringe Dichte: Nicht unterstützt, wird übersprungen
+* Komprimierter Stream: Nicht unterstützt, wird übersprungen
+* Stream mit geringer Dichte: Nicht unterstützt, wird übersprungen
 
 ## Welche Mindestgröße gilt für den Cacheordner? <br/>
 Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern. Der Cacheordner sollte 5% des Speicherplatzes umfassen, der für die Datenspeicherung erforderlich ist.
@@ -102,7 +102,7 @@ Alle für denselben Tresor registrierten Server können die Daten wiederherstell
 ## Kann ich meine Sicherungsdaten oder meinen Sicherungstresor zwischen Abonnements „migrieren“? <br/>
 Nein. Der Tresor wird auf einer Abonnementebene erstellt und kann nach seiner Erstellung keinem anderen Abonnement zugewiesen werden.
 
-## Funktioniert der Azure Backup-Agent auf einem Server, der die Deduplizierung von Windows Server 2012 verwendet? <br/>
+## Funktioniert der Azure Backup-Agent auf einem Server, der die Deduplizierung von Windows Server 2012 verwendet? <br/>
 Ja. Der Agent-Dienst konvertiert die deduplizierten Daten bei der Vorbereitung des Sicherungsvorgangs in normale Daten. Anschließend optimiert er die Daten für die Sicherung, verschlüsselt sie und sendet die verschlüsselten Daten an den Onlinesicherungsdienst.
 
 ## Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche? <br/>
@@ -116,13 +116,13 @@ Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherung
 ## Welche Firewallregeln sollten für Azure Backup konfiguriert werden? <br/>
 Zur Erzielung eines nahtlosen Schutzes der Daten vom Typ „lokal zu Azure“ und „Workload zu Azure“ wird empfohlen, für die Firewall die Kommunikation mit den folgenden URLs zuzulassen:
 
-- www.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+* www.msftncsi.com
+* *.Microsoft.com
+* *.WindowsAzure.com
+* *.microsoftonline.com
+* *.windows.net
 
-##Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, die mithilfe der VM-Erweiterung bereits vom Azure Backup-Dienst gesichert wurde? <br/>
+## Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, die mithilfe der VM-Erweiterung bereits vom Azure Backup-Dienst gesichert wurde? <br/>
 Absolut. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit der VM-Erweiterung. Sie können den Azure Backup-Agent auf einem Windows-Gastbetriebssystem installieren, um Dateien und Ordner auf dem Gastbetriebssystem zu schützen.
 
 ## Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, um Dateien und Ordner in temporärem Speicher zu schützen, der von der Azure-VM bereitgestellt wird? <br/>
@@ -131,10 +131,10 @@ Sie können den Azure Backup-Agent auf dem Windows-Gastbetriebssystem installier
 ## Ich habe zum Schutz meiner Dateien und Ordner den Azure Backup-Agent installiert. Kann ich jetzt SCDPM installieren und zusammen mit dem Azure Backup-Agent verwenden, um lokale Anwendungen/VM-Workloads mit Azure zu schützen? <br/>
 Wenn Sie Azure Backup zusammen mit SCDPM verwenden möchten, empfiehlt es sich, zuerst SCDPM und erst danach den Azure Backup-Agent zu installieren. Dadurch wird die nahtlose Integration von Azure Backup-Agent und SCDPM sichergestellt und der Schutz von Dateien/Ordnern, Anwendungsworkloads und VMs mit Azure direkt über die Verwaltungskonsole von SCDPM ermöglicht. Installieren Sie SCDPM für die oben genannten Zwecke nicht nach dem Azure Backup-Agent. Dies wird weder empfohlen noch unterstützt.
 
-## Wie lang darf der Dateipfad sein, der im Rahmen der Azure Backup-Richtlinie mit dem Azure Backup-Agent angegeben werden kann? <br/>  
+## Wie lang darf der Dateipfad sein, der im Rahmen der Azure Backup-Richtlinie mit dem Azure Backup-Agent angegeben werden kann? <br/>
 Der Azure Backup-Agent basiert auf NTFS. Die [Angabe der Dateipfadlänge ist durch die Windows-API beschränkt](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths). Wenn die Dateipfade von gesicherten Dateien länger als die Vorgabe der Windows-API sind, können Kunden auch den übergeordneten Ordner oder den Datenträger mit den Sicherungsdateien für die Sicherung angeben.
 
-## Welche Zeichen sind im Dateipfad der Azure Backup-Richtlinie mit dem Azure Backup-Agent zulässig? <br>  
+## Welche Zeichen sind im Dateipfad der Azure Backup-Richtlinie mit dem Azure Backup-Agent zulässig? <br>
  Der Azure Backup-Agent basiert auf NTFS. Für die Angabe der Datei können [von NTFS unterstützte Zeichen](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) verwendet werden.
 
 ## Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen? <br/>
@@ -146,23 +146,23 @@ Ja. Der Backup-Dienst verfügt über mehrere ereignisbasierte Warnungen, die mit
 ## Gibt es eine Größenbeschränkung für die einzelnen Datenquellen, die gesichert werden? <br/>
 Obwohl die Datenmenge, die Sie sichern können, auf Tresorebene nicht beschränkt ist, gilt in Azure Backup eine Beschränkung für die maximale Größe der Datenquelle (diese Grenzwerte sind aus praktischen Gründen sehr hoch). Ab August 2015 beträgt die maximale Größe der Datenquelle für die unterstützten Betriebssysteme:
 
-|Nr. |	Betriebssystem |	Maximale Größe der Datenquelle |
-| :-------------: |:-------------| :-----|
-|1| Windows Server 2012 oder höher| 54\.400 GB|
-|2| Windows 8 oder höher| 54\.400 GB|
-|3| Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB|
-|4| Windows 7 | 1\.700 GB|
+| Nr. | Betriebssystem | Maximale Größe der Datenquelle |
+|:---:|:--- |:--- |
+| 1 |Windows Server 2012 oder höher |54\.400 GB |
+| 2 |Windows 8 oder höher |54\.400 GB |
+| 3 |Windows Server 2008, Windows Server 2008 R2 |1\.700 GB |
+| 4 |Windows 7 |1\.700 GB |
 
 In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengrößen bestimmt werden.
 
-|	Datenquelle |	Details |
-| :-------------: |:-------------|
-|Volume |Die Datenmenge, die von einem Volume eines Server- oder Clientcomputers gesichert wird|
-|Virtueller Hyper-V-Computer | Summe der Daten aller virtuellen Festplatten des zu sichernden virtuellen Computers|
-|Microsoft SQL Server-Datenbank | Größe einer einzelnen zu sichernden SQL-Datenbank |
-|Microsoft SharePoint |Summe der Inhalts- und Konfigurationsdatenbanken in einer zu sichernden SharePoint-Farm|
-|Microsoft Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers|
-|BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers|
+| Datenquelle | Details |
+|:---:|:--- |
+| Volume |Die Datenmenge, die von einem Volume eines Server- oder Clientcomputers gesichert wird |
+| Virtueller Hyper-V-Computer |Summe der Daten aller virtuellen Festplatten des zu sichernden virtuellen Computers |
+| Microsoft SQL Server-Datenbank |Größe einer einzelnen zu sichernden SQL-Datenbank |
+| Microsoft SharePoint |Summe der Inhalts- und Konfigurationsdatenbanken in einer zu sichernden SharePoint-Farm |
+| Microsoft Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers |
+| BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers |
 
 ## Gibt es eine Begrenzung dafür, wie häufig ein Sicherungsauftrag pro Tag geplant werden kann?<br/>
 Ja. Sie können Sicherungsaufträge unter Windows Server oder auf einem Windows-Client bis zu dreimal pro Tag ausführen. Für System Center DPM können Sie Sicherungsaufträge bis zu zweimal pro Tag ausführen. Für IaaS-VMs können Sie einen Sicherungsauftrag einmal pro Tag ausführen.
@@ -197,7 +197,7 @@ Nein. Wir haben eine Beschränkung für Wiederherstellungspunkte ausgeschlossen.
  Alle Daten, die vom Azure Backup-Agent, von SCDPM oder Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Sicherungstresor 30 bis 40% kleiner.
 
 ## Gibt es eine Möglichkeit, die vom Backup-Dienst genutzte Bandbreite anzupassen?<br/>
- Ja. Verwenden Sie die Option **Eigenschaften ändern** im Backup-Agent, um die Bandbreite anzupassen. Passen Sie die Bandbreitenmenge und die Zeiten an, zu denen Sie die Bandbreite nutzen. Weitere Informationen finden Sie unter [Netzwerkdrosselung](../backup-configure-vault.md#enable-network-throttling).
+ Ja. Verwenden Sie die Option **Eigenschaften ändern** im Backup-Agent, um die Bandbreite anzupassen. Passen Sie die Bandbreitenmenge und die Zeiten an, zu denen Sie die Bandbreite nutzen. Weitere Informationen finden Sie unter [Netzwerkdrosselung](backup-configure-vault.md#enable-network-throttling).
 
 ## Meine Internetbandbreite ist im Hinblick auf die zu sichernden Daten begrenzt. Gibt es eine Möglichkeit, die Daten an einen bestimmten Speicherort mit einer großen Netzwerk-Pipe zu verschieben und diese Daten dann in Azure zu übertragen? <br/>
 Sie können Daten in Azure mit dem standardmäßigen Prozess für die Onlinesicherung sichern, oder Sie können den Azure-Import/Export-Dienst verwenden, um Daten an den Blobspeicher in Azure zu übertragen. Es gibt keine weiteren Möglichkeiten, um Sicherungsdaten in den Azure-Speicher zu verschieben. Informationen zur Verwendung des Azure-Import/Export-Diensts mit Azure Backup finden Sie im Artikel [Workflow zur Offlinesicherung](backup-azure-backup-import-export.md).
@@ -222,39 +222,38 @@ Der Schlüssel zum Verschlüsseln der Sicherungsdaten ist nur am Standort des Ku
 
 ## Wie kann ich den Cachespeicherort für den Azure Backup-Agent ändern?<br/>
  Gehen Sie nacheinander die folgende Aufzählung durch, um den Cachespeicherort zu ändern.
-- Beenden Sie das Backup-Modul, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
 
+* Beenden Sie das Backup-Modul, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
+  
   ```PS C:\> Net stop obengine```
+* Verschieben Sie die Dateien nicht. Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz. Der ursprüngliche Cachespeicher kann entfernt werden, nachdem bestätigt wurde, dass die Sicherungen mit dem neuen Cachespeicher funktionieren.
+* Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.<br/>
 
-- Verschieben Sie die Dateien nicht. Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz. Der ursprüngliche Cachespeicher kann entfernt werden, nachdem bestätigt wurde, dass die Sicherungen mit dem neuen Cachespeicher funktionieren.
+| Registrierungspfad | Registrierungsschlüssel | Wert |
+| --- | --- | --- |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
+| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
 
-- Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.<br/>
-
-|Registrierungspfad | Registrierungsschlüssel | Wert |
-| ------ | ------- | ------|
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | *Neuer Speicherort des Cacheordners* |
-| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | *Neuer Speicherort des Cacheordners* |
-
-- Starten Sie das Backup-Modul neu, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
-
+* Starten Sie das Backup-Modul neu, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
+  
   ```PS C:\> Net start obengine```
-
+  
   Nachdem die Erstellung der Sicherung am neuen Cachespeicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
 
 ## Wo kann ich den Cacheordner platzieren, damit der Azure Backup-Agent erwartungsgemäß funktioniert?<br/>
 Folgende Speicherorte werden für den Cacheordner nicht empfohlen:
 
-- Netzwerkfreigabe oder Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, die mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt.
-- Offlinevolumes: Der Cacheordner muss für die erwartete Sicherung über den Azure Backup-Agent online sein.
+* Netzwerkfreigabe oder Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, die mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt.
+* Offlinevolumes: Der Cacheordner muss für die erwartete Sicherung über den Azure Backup-Agent online sein.
 
 ## Gibt es Cacheordnerattribute, die nicht unterstützt werden?<br/>
  Die folgenden Attribute oder Kombinationen dieser Attribute werden für den Cacheordner nicht unterstützt:
 
-- Verschlüsselt
-- Dedupliziert
-- Komprimiert
-- Mit geringer Dichte
-- Analysepunkt
+* Verschlüsselt
+* Dedupliziert
+* Komprimiert
+* Mit geringer Dichte
+* Analysepunkt
 
 Damit der Azure Backup-Agent erwartungsgemäß funktioniert, dürfen weder der Cacheordner noch die Metadaten-VHD die oben angegebenen Attribute besitzen.
 

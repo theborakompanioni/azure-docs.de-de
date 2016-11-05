@@ -1,7 +1,7 @@
 
 Weitere Informationen zu Datenträgern finden Sie unter [Informationen zu virtuellen Computerdatenträgern in Azure](http://go.microsoft.com/fwlink/p/?LinkId=403697).
 
-##<a id="cliattachempty"></a>Vorgehensweise: Anfügen eines leeren Datenträgers
+## <a id="cliattachempty"></a>Vorgehensweise: Anfügen eines leeren Datenträgers
 Das Anfügen eines leeren Datenträgers ist die einfachere Methode zum Hinzufügen eines Datenträgers. Führen Sie den folgenden Befehl aus, um einen neuen, leeren Datenträger anzufügen:
 
     vm disk attach-new <vm-name> <size-in-gb> [blob-url]

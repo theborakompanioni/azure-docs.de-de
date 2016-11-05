@@ -1,29 +1,25 @@
-<properties
-    pageTitle="Azure AD-Verbundmetadaten | Microsoft Azure"
-    description="In diesem Artikel wird das Verbundmetadaten-Dokument beschrieben, das von Azure Active Directory für Dienste veröffentlicht wird, die Azure Active Directory-Token akzeptieren."
-    services="active-directory"
-    documentationCenter=".net"
-    authors="priyamohanram"
-    manager="mbaldwin"
-    editor=""/>
+---
+title: Azure AD-Verbundmetadaten | Microsoft Docs
+description: In diesem Artikel wird das Verbundmetadaten-Dokument beschrieben, das von Azure Active Directory für Dienste veröffentlicht wird, die Azure Active Directory-Token akzeptieren.
+services: active-directory
+documentationcenter: .net
+author: priyamohanram
+manager: mbaldwin
+editor: ''
 
-<tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="priyamo"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/03/2016
+ms.author: priyamo
 
-
-
+---
 # <a name="federation-metadata"></a>Verbundmetadaten
-
 Azure Active Directory (Azure AD) veröffentlicht ein Verbundmetadaten-Dokument für Dienste, die für das Akzeptieren des von Azure AD ausgestellten Sicherheitstokens konfiguriert sind. Das Format des Verbundmetadaten-Dokuments wird in der [Webdiensteverbund-Sprache (WS-Verbund), Version 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), beschrieben – einer Erweiterung der [Metadaten für die OASIS Security Assertion Markup Language (SAML), Version 2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>Mandantenspezifische und mandantenunabhängige Metadatenendpunkte
-
 Azure AD veröffentlicht mandantenspezifische und mandantenunabhängige Endpunkte.
 
 Mandantenspezifische Endpunkte sind auf einen bestimmten Mandanten ausgelegt. Die mandantenspezifischen Verbundmetadaten enthalten Informationen über den Mandanten, einschließlich mandantenspezifischer Aussteller- und Endpunktinformationen. Anwendungen, die den Zugriff auf einen einzelnen Mandanten einschränken, verwenden mandantenspezifische Endpunkte.
@@ -31,24 +27,21 @@ Mandantenspezifische Endpunkte sind auf einen bestimmten Mandanten ausgelegt. Di
 Mandantenunabhängige Endpunkte stellen Informationen bereit, die für alle Azure AD-Mandanten gemeinsam verwendet werden. Diese Informationen gelten für die unter *login.microsoftonline.com* gehosteten Mandanten und werden mandantenübergreifend genutzt. Mandantenunabhängige Endpunkte werden für mehrinstanzenfähige Anwendungen empfohlen, da sie nicht einem bestimmten Mandanten zugeordnet sind.
 
 ## <a name="federation-metadata-endpoints"></a>Verbundmetadaten-Endpunkte
-
 In Azure AD werden Verbundmetadaten unter `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`veröffentlicht.
 
 Für** mandantenspezifische Endpunkte** kann `TenantDomainName` einem der folgenden Typen entsprechen:
 
-- Ein registrierter Domänenname eines Azure AD-Mandanten (Beispiel: `contoso.onmicrosoft.com`).
-- Die unveränderliche Mandanten-ID der Domäne (Beispiel: `72f988bf-86f1-41af-91ab-2d7cd011db45`).
+* Ein registrierter Domänenname eines Azure AD-Mandanten (Beispiel: `contoso.onmicrosoft.com`).
+* Die unveränderliche Mandanten-ID der Domäne (Beispiel: `72f988bf-86f1-41af-91ab-2d7cd011db45`).
 
 Für **mandantenunabhängige Endpunkte** wird `common` als `TenantDomainName` verwendet. In diesem Dokument sind nur die Verbundmetadaten-Elemente aufgeführt, die für alle unter „login.microsoftonline.com“ gehosteten Azure AD-Mandanten gelten.
 
 Ein mandantenspezifischer Endpunkt kann etwa wie folgt lauten: `https:// login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Der mandantenunabhängige Endpunkt ist [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Sie können das Verbundmetadaten-Dokument anzeigen, indem Sie diese URL in einen Browser eingeben.
 
 ## <a name="contents-of-federation-metadata"></a>Inhalt der Verbundmetadaten
-
 Der folgende Abschnitt enthält die Informationen, die von Diensten benötigt werden, welche die von Azure AD ausgegebenen Tokens nutzen.
 
 ### <a name="entity-id"></a>Entitäts-ID
-
 Das `EntityDescriptor`-Element enthält ein `EntityID`-Attribut. Der Wert des `EntityID` -Attributs stellt den Aussteller dar (also den Sicherheitstokendienst (STS), der das Token ausgestellt hat). Bei Erhalt eines Tokens ist es wichtig, den Aussteller zu überprüfen.
 
 Die folgenden Metadaten enthalten als Beispiel ein mandantenspezifisches `EntityDescriptor`-Element mit einem `EntityID`-Element.
@@ -71,7 +64,6 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Token-Signaturzertifikate
-
 Wenn ein Dienst ein Token erhält, das von einem Azure AD-Mandanten ausgestellt wird, muss die Signatur des Tokens mit einen Signaturschlüssel überprüft werden, der im Verbundmetadatendokument veröffentlicht wird. Die Verbundmetadaten umfassen den öffentlichen Teil der Zertifikate, die von den Mandanten für die Tokensignatur verwendet werden. Die unformatierten Bytes des Zertifikats werden im `KeyDescriptor` -Element angezeigt. Das Tokensignaturzertifikat ist nur dann für die Signierung gültig, wenn der Wert des `use`-Attributs `signing` lautet.
 
 Ein von Azure AD veröffentlichtes Verbundmetadaten-Dokument kann mehrere Signaturschlüssel aufweisen, z.B. wenn bei Azure AD die Aktualisierung des Signaturzertifikats vorbereitet wird. Wenn ein Verbundmetadatendokument mehrere Zertifikate enthält, sollte ein Dienst, der die Token überprüft, alle Zertifikate im Dokument unterstützen.
@@ -110,7 +102,6 @@ Die folgenden Metadaten enthalten ein Beispiel für ein `IDPSSODescriptor` -Elem
 Es gibt keine Unterschiede im Format von mandantenspezifischen und mandantenunabhängigen Zertifikaten.
 
 ### <a name="ws-federation-endpoint-url"></a>WS-Verbundendpunkt-URL
-
 Die Verbundmetadaten enthalten die URL, die von Azure AD für das einmalige Anmelden und das einmalige Abmelden im WS-Verbundprotokoll verwendet wird. Dieser Endpunkt wird im `PassiveRequestorEndpoint` -Element angezeigt.
 
 Die folgenden Metadaten enthalten ein Beispiel für ein `PassiveRequestorEndpoint` -Element für einen mandantenspezifischen Endpunkt.
@@ -137,7 +128,6 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>SAML-Protokollendpunkt-URL
-
 Die Verbundmetadaten enthalten die URL, die von Azure AD für das einmalige Anmelden und das einmalige Abmelden im SAML 2.0-Verbundprotokoll verwendet wird. Diese Endpunkte werden im `IDPSSODescriptor` -Element angezeigt.
 
 Die URLs für die An- und Abmeldung werden in den Elementen `SingleSignOnService` und `SingleLogoutService` angezeigt.
@@ -152,7 +142,7 @@ Die folgenden Metadaten enthalten ein Beispiel für ein `PassiveResistorEndpoint
   </IDPSSODescriptor>
 ```
 
-Auf ähnliche Weise werden die Endpunkte für die gemeinsamen SAML 2.0-Protokollendpunkte in den mandantenunabhängigen Verbundmetadaten veröffentlicht, wie im folgenden Beispiel gezeigt wird.
+Auf ähnliche Weise werden die Endpunkte für die gemeinsamen SAML 2.0-Protokollendpunkte in den mandantenunabhängigen Verbundmetadaten veröffentlicht, wie im folgenden Beispiel gezeigt wird.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

@@ -1,28 +1,30 @@
-<properties
-	pageTitle="Hinzufügen der Microsoft Translator-API zu PowerApps Enterprise | Microsoft Azure"
-	description="Erstellen oder Konfigurieren einer neuen Microsoft Translator-API in der App Service-Umgebung Ihrer Organisation"
-	services=""
-    suite="powerapps"
-	documentationCenter="" 
-	authors="linhtranms"
-	manager="dwrede"
-	editor=""/>
+---
+title: Hinzufügen der Microsoft Translator-API zu PowerApps Enterprise | Microsoft Docs
+description: Erstellen oder Konfigurieren einer neuen Microsoft Translator-API in der App Service-Umgebung Ihrer Organisation
+services: ''
+suite: powerapps
+documentationcenter: ''
+author: linhtranms
+manager: dwrede
+editor: ''
 
-<tags
-   ms.service="powerapps"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/02/2016"
-   ms.author="litran"/>
+ms.service: powerapps
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/02/2016
+ms.author: litran
 
+---
 # Erstellen einer neuen Microsoft Translator-API in PowerApps Enterprise
-
-> [AZURE.IMPORTANT] Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
+> [!IMPORTANT]
+> Dieses Thema wurde archiviert und wird in Kürze entfernt. Unter [PowerApps](https://powerapps.microsoft.com) können Sie sich die neuen Entwicklungen ansehen.
 > 
-> - Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
-> - Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen). 
+> * Weitere Informationen zu PowerApps und zum Einstieg finden Sie unter [PowerApps](https://powerapps.microsoft.com).  
+> * Weitere Informationen zu den verfügbaren Verbindungen in PowerApps finden Sie unter [Available Connections](https://powerapps.microsoft.com/tutorials/connections-list/) (Verfügbare Verbindungen). 
+> 
+> 
 
 <!--Archived
 Add the Microsoft Translator API to your organization's (tenant) app service environment. 
@@ -30,7 +32,7 @@ Add the Microsoft Translator API to your organization's (tenant) app service env
 ## Create the API in the Azure portal
 
 1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
- 
+
 2. Select **Browse** in the task bar:  
 ![][7]
 
@@ -44,7 +46,7 @@ Add the Microsoft Translator API to your organization's (tenant) app service env
 ![Add API][2]
 
 6. Enter a descriptive **name** for your API.  
-	
+
 7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **Microsoft Translator**:  
 ![select Microsoft Translator api][3]
 
@@ -69,13 +71,13 @@ If you don't have an existing Microsoft Translator app with the ID and secret va
 
 3. In **Register your application**:  
 
-	1. Enter a value for **Client Id**.  
-	2. Enter the **name** of your application.  
-	3. Enter a dummy value for **redirect url**. For example, enter *https://contosoredirecturl*.  
-	4. Enter a **description**.  
-	5. Select **Create**.  
+    1. Enter a value for **Client Id**.  
+    2. Enter the **name** of your application.  
+    3. Enter a dummy value for **redirect url**. For example, enter *https://contosoredirecturl*.  
+    4. Enter a **description**.  
+    5. Select **Create**.  
 
-	![Register your application][6]
+    ![Register your application][6]
 
 A new Microsoft Translator app is created. You can use this app in your Microsoft Translator API configuration in the Azure portal. 
 

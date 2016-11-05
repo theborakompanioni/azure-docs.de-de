@@ -1,35 +1,36 @@
-<properties
-   pageTitle="Application Dependency Monitor (ADM) in Operations Management Suite (OMS) | Microsoft Azure"
-   description="Der Application Dependency Monitor (ADM) ist eine Lösung in der Operations Management Suite (OMS), die automatisch Anwendungskomponenten auf Windows- und Linux-Systemen ermittelt und die Kommunikation zwischen Diensten abbildet.  Dieser Artikel enthält Informationen zum Bereitstellen des ADM in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien."
-   services="operations-management-suite"
-   documentationCenter=""
-   authors="daseidma"
-   manager="jwhit"
-   editor="tysonn" />
-<tags
-   ms.service="operations-management-suite"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="09/28/2016"
-   ms.author="daseidma;bwren" />
+---
+title: Application Dependency Monitor (ADM) in Operations Management Suite (OMS) | Microsoft Docs
+description: Der Application Dependency Monitor (ADM) ist eine Lösung in der Operations Management Suite (OMS), die automatisch Anwendungskomponenten auf Windows- und Linux-Systemen ermittelt und die Kommunikation zwischen Diensten abbildet.  Dieser Artikel enthält Informationen zum Bereitstellen des ADM in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien.
+services: operations-management-suite
+documentationcenter: ''
+author: daseidma
+manager: jwhit
+editor: tysonn
 
+ms.service: operations-management-suite
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 09/28/2016
+ms.author: daseidma;bwren
 
+---
 # <a name="using-application-dependency-monitor-solution-in-operations-management-suite-(oms)"></a>Verwenden der Application Dependency Monitor-Lösung in der Operations Management Suite (OMS)
 ![Symbol „Alert Management“](media/operations-management-suite-application-dependency-monitor/icon.png) Der Application Dependency Monitor (ADM) ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und bietet eine Darstellung der Kommunikation zwischen Diensten. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen.  Der Application Dependency Monitor zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
 
 Dieser Artikel bietet eine detaillierte Beschreibung der Nutzung des Application Dependency Monitors.  Weitere Informationen zum Konfigurieren des ADM und zum Onboarding von Agents finden Sie unter [Konfigurieren der Lösung Application Dependency Monitor in der Operations Management Suite (OMS)](operations-management-suite-application-dependency-monitor-configure.md).
 
->[AZURE.NOTE]Der Application Dependency Monitor ist derzeit in der privaten Vorschau verfügbar.  Unter [https://aka.ms/getadm](https://aka.ms/getadm) können Sie den Zugriff auf die private Vorschau des ADM anfordern.
->
->In der privaten Vorschau haben alle OMS-Konten uneingeschränkten Zugriff auf den ADM.  ADM-Knoten sind kostenlos, die Log Analytics-Daten für die Typen AdmComputer_CL und AdmProcess_CL werden jedoch wie bei jeder anderen Lösung gemessen.
->
->In der öffentlichen Vorschau wird die Lösung nur für Benutzer der kostenlosen und kostenpflichtigen Version von Insight & Analytics im OMS-Tarif zur Verfügung stehen.  Im Free-Tarif werden nur 5 ADM-Knoten verfügbar sein.  Wenn Sie die private Vorschau nutzen und beim Wechsel des ADM zur öffentlichen Vorschau nicht für den OMS-Tarif registriert sind, wird der ADM zum Zeitpunkt des Wechsels deaktiviert. 
-
+> [!NOTE]
+> Der Application Dependency Monitor ist derzeit in der privaten Vorschau verfügbar.  Unter [https://aka.ms/getadm](https://aka.ms/getadm) können Sie den Zugriff auf die private Vorschau des ADM anfordern.
+> 
+> In der privaten Vorschau haben alle OMS-Konten uneingeschränkten Zugriff auf den ADM.  ADM-Knoten sind kostenlos, die Log Analytics-Daten für die Typen AdmComputer_CL und AdmProcess_CL werden jedoch wie bei jeder anderen Lösung gemessen.
+> 
+> In der öffentlichen Vorschau wird die Lösung nur für Benutzer der kostenlosen und kostenpflichtigen Version von Insight & Analytics im OMS-Tarif zur Verfügung stehen.  Im Free-Tarif werden nur 5 ADM-Knoten verfügbar sein.  Wenn Sie die private Vorschau nutzen und beim Wechsel des ADM zur öffentlichen Vorschau nicht für den OMS-Tarif registriert sind, wird der ADM zum Zeitpunkt des Wechsels deaktiviert. 
+> 
+> 
 
 ## <a name="use-cases:-make-your-it-processes-dependency-aware"></a>Anwendungsfälle: Berücksichtigen von Abhängigkeiten in IT-Prozessen
-
 ### <a name="discovery"></a>Ermittlung
 Der ADM erstellt automatisch eine allgemeine Referenzzuordnung der Abhängigkeiten für all Ihre Server, Prozesse und Drittanbieterdienste.  Der ADM ermittelt alle TCP-Abhängigkeiten und bildet diese ab. Dabei werden unerwartete Verbindungen, von Ihnen benötigte Remotesysteme von Drittanbietern und Abhängigkeiten von Elementen in traditionell weniger transparenten Netzwerkbereichen wie z.B. DNS und AD identifiziert.  Der ADM ermittelt fehlerhafte Netzwerkverbindungen, die Ihre verwalteten Systeme versuchen herzustellen, sodass Sie mögliche Fehlkonfigurationen der Server, Dienstausfälle und Netzwerkprobleme erkennen können.
 
@@ -44,7 +45,6 @@ Wenn Sie Azure Site Recovery verwenden und Hilfe beim Definieren der Wiederherst
 
 ### <a name="patch-management"></a>Patchverwaltung
 Der ADM erweitert die Verwendung des OMS-Tools zur Bewertung von Systemupdates, indem er anzeigt, welche anderen Teams und Server von Ihrem Dienst abhängig sind, damit Sie diese benachrichtigen können, bevor Sie Ihre Systeme zum Patchen herunterfahren.  Der ADM erweitert auch die Patchverwaltung in der OMS, indem er zeigt, ob Ihre Dienste verfügbar und ordnungsgemäß verbunden sind, nachdem die Patches aufgespielt und die Dienste neu gestartet wurden. 
-
 
 ## <a name="mapping-overview"></a>Übersicht über die Zuordnung
 ADM-Agents sammeln Informationen über alle über TCP verbundenen Prozesse auf dem Server, auf dem sie installiert sind, sowie Informationen zu den eingehenden und ausgehenden Verbindungen für jeden Prozess.  Aus der Computerliste auf der linken Seite der ADM-Lösung können Computer mit ADM-Agents ausgewählt werden, um deren Abhängigkeiten während eines ausgewählten Zeitraums zu visualisieren.  Die Abhängigkeitszuordnungen gelten für einen bestimmten Computer und zeigen alle Computer an, die direkte TCP-Clients oder -Server dieses Computers sind.
@@ -88,7 +88,6 @@ Der Bereich für die Nachverfolgung von Änderungen auf einem Computer zeigt ein
 Im Folgenden sehen Sie die Detailansicht eines Konfigurationsänderungsereignisses nach Auswahl von **In Log Analytics anzeigen**.
 ![Konfigurationsänderungsereignis](media/operations-management-suite-application-dependency-monitor/configuration-change-event.png)
 
-
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 Die Computer- und Prozessbestandsdaten des ADM stehen zur [Suche](../log-analytics/log-analytics-log-searches.md) in Log Analytics zur Verfügung.  Dies kann in verschiedenen Szenarien von Nutzen sein, wie z.B. Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen. 
 
@@ -96,67 +95,62 @@ Zusätzlich zu den Datensätzen, die beim Starten eines Prozesses oder Computers
 
 Es gibt intern generierte Eigenschaften, mit denen Sie eindeutige Prozessen und Computer identifizieren können:
 
-- PersistentKey_s ist eindeutig durch die Prozesskonfiguration definiert, z.B. Befehlszeile und Benutzer-ID.  Die Eigenschaft ist für einen bestimmten Computer eindeutig, kann jedoch auf Computern wiederholt werden.
-- ProcessId_s und ComputerId_s sind im ADM-Modell global eindeutig.
-
-
+* PersistentKey_s ist eindeutig durch die Prozesskonfiguration definiert, z.B. Befehlszeile und Benutzer-ID.  Die Eigenschaft ist für einen bestimmten Computer eindeutig, kann jedoch auf Computern wiederholt werden.
+* ProcessId_s und ComputerId_s sind im ADM-Modell global eindeutig.
 
 ### <a name="admcomputer_cl-records"></a>AdmComputer_CL-Datensätze
 Datensätze des Typs **AdmComputer_CL** enthalten Bestandsdaten für Server mit ADM-Agents.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt.  
 
 | Eigenschaft | Beschreibung |
-|:--|:--|
-| Typ | *AdmComputer_CL* |
-| SourceSystem | *OpsManager* |
-| ComputerName_s | Name des Windows- oder Linux-Computers |
-| CPUSpeed_d | CPU-Geschwindigkeit in MHz |
-| DnsNames_s | Liste aller DNS-Namen für diesen Computer |
-| IPv4s_s | Liste aller von diesem Computer verwendeten IPv4-Adressen |
-| IPv6s_s | Liste aller von diesem Computer verwendeten IPv6-Adressen  (der ADM identifiziert IPv6-Adressen, ermittelt aber keine IPv6-Abhängigkeiten) |
-| Is64Bit_b | „true“ oder „false“, je nach Betriebssystemtyp |
-| MachineId_s | Eine interne, über einen OMS-Arbeitsbereich hinweg eindeutige GUID  |
-| OperatingSystemFamily_s | Windows oder Linux |
-| OperatingSystemVersion_s | Lange Zeichenfolge mit der Betriebssystemversion |
-| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
-| TotalCPUs_d | Anzahl von CPU-Kernen |
-| TotalPhysicalMemory_d | Arbeitsspeicherkapazität in MB |
-| VirtualMachine_b | „true“ oder „false“, je nachdem, ob das Betriebssystem ein VM-Gastbetriebssystem ist |
-| VirtualMachineID_g | ID des virtuellen Hyper-V-Computers |
-| VirtualMachineName_g | Name des virtuellen Hyper-V-Computers |
-| VirtualMachineType_s | Hyperv, Vmware, Xen, Kvm, Ldom, Lpar, Virtualpc |
+|:--- |:--- |
+| Typ |*AdmComputer_CL* |
+| SourceSystem |*OpsManager* |
+| ComputerName_s |Name des Windows- oder Linux-Computers |
+| CPUSpeed_d |CPU-Geschwindigkeit in MHz |
+| DnsNames_s |Liste aller DNS-Namen für diesen Computer |
+| IPv4s_s |Liste aller von diesem Computer verwendeten IPv4-Adressen |
+| IPv6s_s |Liste aller von diesem Computer verwendeten IPv6-Adressen  (der ADM identifiziert IPv6-Adressen, ermittelt aber keine IPv6-Abhängigkeiten) |
+| Is64Bit_b |„true“ oder „false“, je nach Betriebssystemtyp |
+| MachineId_s |Eine interne, über einen OMS-Arbeitsbereich hinweg eindeutige GUID |
+| OperatingSystemFamily_s |Windows oder Linux |
+| OperatingSystemVersion_s |Lange Zeichenfolge mit der Betriebssystemversion |
+| TimeGenerated |Datum und Uhrzeit der Erstellung des Datensatzes |
+| TotalCPUs_d |Anzahl von CPU-Kernen |
+| TotalPhysicalMemory_d |Arbeitsspeicherkapazität in MB |
+| VirtualMachine_b |„true“ oder „false“, je nachdem, ob das Betriebssystem ein VM-Gastbetriebssystem ist |
+| VirtualMachineID_g |ID des virtuellen Hyper-V-Computers |
+| VirtualMachineName_g |Name des virtuellen Hyper-V-Computers |
+| VirtualMachineType_s |Hyperv, Vmware, Xen, Kvm, Ldom, Lpar, Virtualpc |
 
-
-### <a name="admprocess_cl-type-records"></a>AdmProcess_CL Type records 
+### <a name="admprocess_cl-type-records"></a>AdmProcess_CL Type records
 Datensätze des Typs **AdmProcess_CL** enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit ADM-Agents.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt.
 
 | Eigenschaft | Beschreibung |
-|:--|:--|
-| Typ | *AdmProcess_CL* |
-| SourceSystem | *OpsManager* |
-| CommandLine_s | Vollständige Befehlszeile des Prozesses |
-| CompanyName_s | Firmenname (aus Windows PE oder Linux RPM) |
-| Description_s | Lange Prozessbeschreibung (aus Windows PE oder Linux RPM) |
-| FileVersion_s | Version der ausführbaren Datei (aus Windows PE, nur Windows) |
-| FirstPid_d | Betriebssystemprozess-ID |
-| InternalName_s | Interner Name der ausführbaren Datei (aus Windows PE, nur Windows) |
-| MachineId_s | Interne, über einen OMS-Arbeitsbereich hinweg eindeutige GUID  |
-| Name_s | Der Name der ausführbaren Prozessdatei |
-| Path_s | Dateisystempfad der ausführbaren Prozessdatei |
-| PersistentKey_s | Interne, innerhalb dieses Computers eindeutige GUID |
-| PoolId_d | Interne ID zum Aggregieren von Prozessen basierend auf ähnlichen Befehlszeilen |
-| ProcessId_s | Interne, über einen OMS-Arbeitsbereich hinweg eindeutige GUID  |
-| ProductName_s | Zeichenfolge des Produktnamens (aus Windows PE oder Linux RPM) |
-| ProductVersion_s | Zeichenfolge der Produktversion (aus Windows PE oder Linux RPM) |
-| StartTime_t | Startzeit des Prozesses gemäß Uhr des lokalen Computers |
-| TimeGenerated | Datum und Uhrzeit der Erstellung des Datensatzes |
-| UserDomain_s | Domäne des Prozessbesitzers (nur Windows) |
-| UserName_s | Name des Prozessbesitzers (nur Windows) |
-| WorkingDirectory_s | Arbeitsverzeichnis des Prozesses |
-
+|:--- |:--- |
+| Typ |*AdmProcess_CL* |
+| SourceSystem |*OpsManager* |
+| CommandLine_s |Vollständige Befehlszeile des Prozesses |
+| CompanyName_s |Firmenname (aus Windows PE oder Linux RPM) |
+| Description_s |Lange Prozessbeschreibung (aus Windows PE oder Linux RPM) |
+| FileVersion_s |Version der ausführbaren Datei (aus Windows PE, nur Windows) |
+| FirstPid_d |Betriebssystemprozess-ID |
+| InternalName_s |Interner Name der ausführbaren Datei (aus Windows PE, nur Windows) |
+| MachineId_s |Interne, über einen OMS-Arbeitsbereich hinweg eindeutige GUID |
+| Name_s |Der Name der ausführbaren Prozessdatei |
+| Path_s |Dateisystempfad der ausführbaren Prozessdatei |
+| PersistentKey_s |Interne, innerhalb dieses Computers eindeutige GUID |
+| PoolId_d |Interne ID zum Aggregieren von Prozessen basierend auf ähnlichen Befehlszeilen |
+| ProcessId_s |Interne, über einen OMS-Arbeitsbereich hinweg eindeutige GUID |
+| ProductName_s |Zeichenfolge des Produktnamens (aus Windows PE oder Linux RPM) |
+| ProductVersion_s |Zeichenfolge der Produktversion (aus Windows PE oder Linux RPM) |
+| StartTime_t |Startzeit des Prozesses gemäß Uhr des lokalen Computers |
+| TimeGenerated |Datum und Uhrzeit der Erstellung des Datensatzes |
+| UserDomain_s |Domäne des Prozessbesitzers (nur Windows) |
+| UserName_s |Name des Prozessbesitzers (nur Windows) |
+| WorkingDirectory_s |Arbeitsverzeichnis des Prozesses |
 
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
-
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers."></a>Auflisten der physischen Arbeitsspeicherkapazität aller verwalteten Computer 
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers."></a>Auflisten der physischen Arbeitsspeicherkapazität aller verwalteten Computer
 Type=AdmComputer_CL | select TotalPhysicalMemory_d, ComputerName_s | Dedup ComputerName_s
 
 ![ADM-Abfragebeispiel](media/operations-management-suite-application-dependency-monitor/adm-example-01.png)
@@ -187,22 +181,15 @@ Type=AdmProcess_CL Name_s=curl | Distinct ProductVersion_s
 ![ADM-Abfragebeispiel](media/operations-management-suite-application-dependency-monitor/adm-example-06.png)
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Erstellen einer Computergruppe mit allen Computern, auf denen CentOS ausgeführt wird
-
 ![ADM-Abfragebeispiel](media/operations-management-suite-application-dependency-monitor/adm-example-07.png)
-
-
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
 Wenn Sie den Application Dependency Monitor-Dienst verwenden, sammelt Microsoft automatisch Nutzungs- und Leistungsdaten. Microsoft verwendet diese Daten, um die Qualität, Sicherheit und Integrität des Application Dependency Monitor-Diensts sicherzustellen und zu verbessern. Zu den Daten gehören Informationen zur Konfiguration Ihrer Software, z.B. Betriebssystem und Betriebssystemversion, sowie IP-Adresse, DNS-Name und Name der Arbeitsstation, um exakte und effiziente Funktionen für die Problembehandlung bereitzustellen. Wir erfassen weder Namen noch Adressen noch andere Kontaktinformationen.
 
 Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Datenschutzbestimmungen für Onlinedienste von Microsoft](hhttps://go.microsoft.com/fwlink/?LinkId=512132).
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [Protokollsuchvorgänge](../log-analytics/log-analytics-log-searches.md] in Log Analytics to retrieve data collected by Application Dependency Monitor.).
-
-
+* Erfahren Sie mehr über [Protokollsuchvorgänge](../log-analytics/log-analytics-log-searches.md\] in Log Analytics to retrieve data collected by Application Dependency Monitor..md).
 
 <!--HONumber=Oct16_HO2-->
 

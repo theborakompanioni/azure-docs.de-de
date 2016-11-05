@@ -1,23 +1,22 @@
-<properties
-   pageTitle="Exportieren von Log Analytics-Daten nach Power BI | Microsoft Azure"
-   description="Power BI ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  Log Analytics kann Daten kontinuierlich aus dem OMS-Repository nach Power BI exportieren, sodass Sie die Visualisierungsfunktionen und Analysetools von Power BI nutzen können.  Dieser Artikel beschreibt, wie Sie Abfragen in Log Analytics konfigurieren, die Daten automatisch in regelmäßigen Intervallen nach Power BI exportieren."
-   services="log-analytics"
-   documentationCenter=""
-   authors="bwren"
-   manager="jwhit"
-   editor="tysonn" />
-<tags
-   ms.service="log-analytics"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="10/18/2016"
-   ms.author="bwren" />
+---
+title: Exportieren von Log Analytics-Daten nach Power BI | Microsoft Docs
+description: Power BI ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  Log Analytics kann Daten kontinuierlich aus dem OMS-Repository nach Power BI exportieren, sodass Sie die Visualisierungsfunktionen und Analysetools von Power BI nutzen können.  Dieser Artikel beschreibt, wie Sie Abfragen in Log Analytics konfigurieren, die Daten automatisch in regelmäßigen Intervallen nach Power BI exportieren.
+services: log-analytics
+documentationcenter: ''
+author: bwren
+manager: jwhit
+editor: tysonn
 
+ms.service: log-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 10/18/2016
+ms.author: bwren
 
+---
 # <a name="export-log-analytics-data-to-power-bi"></a>Exportieren von Log Analytics-Daten nach Power BI
-
 [Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  Log Analytics kann Daten automatisch aus dem OMS-Repository nach Power BI exportieren, sodass Sie die Visualisierungsfunktionen und Analysetools von Power BI nutzen können.
 
 Wenn Sie Power BI für Log Analytics konfigurieren, können Sie Protokollabfragen erstellen, die ihre Ergebnisse in die entsprechenden Datasets in Power BI exportieren.  Der Abfrage- und Exportvorgang wird weiterhin automatisch nach einem von Ihnen definieren Zeitplan ausgeführt, damit das Dataset jederzeit mit den neuesten von Log Analytics gesammelten Daten aktualisiert wird.
@@ -25,15 +24,16 @@ Wenn Sie Power BI für Log Analytics konfigurieren, können Sie Protokollabfrage
 ![Von Log Analytics nach Power BI](media/log-analytics-powerbi/overview.png)
 
 ## <a name="power-bi-schedules"></a>Power BI-Zeitpläne
-
 Ein *Power BI-Zeitplan* enthält eine Protokollsuche, die einen Satz von Daten aus dem OMS-Repository in ein entsprechendes Dataset in Power BI exportiert. In einem Zeitplan ist definiert, wie häufig diese Suche ausgeführt wird, damit das Dataset aktuell bleibt.
 
 Die Felder im Dataset entsprechen den Eigenschaften der von der Protokollsuche zurückgegebenen Datensätze.  Wenn eine Suche Datensätze verschiedener Typen zurückgibt, schließt das Dataset alle Eigenschaften aller enthalten Datensatztypen ein.  
 
-> [AZURE.NOTE] Es empfiehlt sich, eine Protokollsuchabfrage zu verwenden, die Rohdaten zurückgibt, anstatt mithilfe von Befehlen wie [Measure](log-analytics-search-reference.md#measure)eine Konsolidierung durchzuführen.  Sie können alle notwendigen Aggregierungen und Berechnungen für die Rohdaten in Power BI durchführen.
+> [!NOTE]
+> Es empfiehlt sich, eine Protokollsuchabfrage zu verwenden, die Rohdaten zurückgibt, anstatt mithilfe von Befehlen wie [Measure](log-analytics-search-reference.md#measure)eine Konsolidierung durchzuführen.  Sie können alle notwendigen Aggregierungen und Berechnungen für die Rohdaten in Power BI durchführen.
+> 
+> 
 
 ## <a name="connecting-oms-workspace-to-power-bi"></a>Verbinden des OMS-Arbeitsbereichs mit Power BI
-
 Bevor Sie Daten aus Log Analytics nach Power BI exportieren können, müssen Sie Ihren OMS-Arbeitsbereich mit Ihrem Power BI-Konto verbinden. Führen Sie dazu die folgenden Schritte aus.  
 
 1. Klicken Sie in der OMS-Konsole auf die Kachel **Einstellungen** .
@@ -42,7 +42,6 @@ Bevor Sie Daten aus Log Analytics nach Power BI exportieren können, müssen Sie
 4. Geben Sie die Anmeldeinformationen für Ihr Power BI-Konto ein.
 
 ## <a name="create-a-power-bi-schedule"></a>Erstellen eines Power BI-Zeitplans
-
 Erstellen Sie einen Power BI-Zeitplan für jedes Dataset. Führen Sie dazu die folgenden Schritte aus.
 
 1. Klicken Sie in der OMS-Konsole auf die Kachel **Protokollsuche** .
@@ -51,14 +50,13 @@ Erstellen Sie einen Power BI-Zeitplan für jedes Dataset. Führen Sie dazu die f
 4. Stellen Sie die Informationen aus der folgenden Tabelle bereit, und klicken Sie auf **Speichern**.
 
 | Eigenschaft | Beschreibung |
-|:--|:--|
-| Name | Der Name, anhand dessen der Zeitplan in der Liste der Power BI-Zeitpläne identifiziert werden kann. |
-| Gespeicherte Suche | Die auszuführende Protokollsuche.  Sie können entweder die aktuelle Abfrage auswählen oder aus dem Dropdownfeld eine vorhandene gespeicherte Suche auswählen. |
-| Zeitplan | Die Häufigkeit der Ausführung der gespeicherten Suche und des Exports in das Power BI-Dataset.  Der Wert muss zwischen 15 Minuten und 24 Stunden liegen. |
-| Datasetname | Der Name des Datasets in Power BI.  Der Name wird erstellt, wenn noch keiner vorhanden ist. Ist bereits ein Name vorhanden, wird dieser aktualisiert. |
+|:--- |:--- |
+| Name |Der Name, anhand dessen der Zeitplan in der Liste der Power BI-Zeitpläne identifiziert werden kann. |
+| Gespeicherte Suche |Die auszuführende Protokollsuche.  Sie können entweder die aktuelle Abfrage auswählen oder aus dem Dropdownfeld eine vorhandene gespeicherte Suche auswählen. |
+| Zeitplan |Die Häufigkeit der Ausführung der gespeicherten Suche und des Exports in das Power BI-Dataset.  Der Wert muss zwischen 15 Minuten und 24 Stunden liegen. |
+| Datasetname |Der Name des Datasets in Power BI.  Der Name wird erstellt, wenn noch keiner vorhanden ist. Ist bereits ein Name vorhanden, wird dieser aktualisiert. |
 
 ## <a name="viewing-and-removing-power-bi-schedules"></a>Anzeigen und Entfernen von Power BI-Zeitplänen
-
 Führen Sie die folgenden Schritte aus, um die Liste der vorhandenen Power BI-Zeitpläne anzuzeigen.
 
 1. Klicken Sie in der OMS-Konsole auf die Kachel **Einstellungen** .
@@ -113,11 +111,8 @@ Speichern Sie den Bericht, indem Sie am oberen Bildschirmrand auf die Schaltflä
 ![Power BI-Berichte](media/log-analytics-powerbi/walkthrough-report.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Erfahren Sie mehr zu [Protokollsuchvorgängen](log-analytics-log-searches.md) zum Erstellen von Abfragen, die nach Power BI exportiert werden können.
-- Erfahren Sie mehr über [Power BI](http://powerbi.microsoft.com), um Visualisierungen anhand von Log Analytics-Exporten zu erstellen.
-
-
+* Erfahren Sie mehr zu [Protokollsuchvorgängen](log-analytics-log-searches.md) zum Erstellen von Abfragen, die nach Power BI exportiert werden können.
+* Erfahren Sie mehr über [Power BI](http://powerbi.microsoft.com), um Visualisierungen anhand von Log Analytics-Exporten zu erstellen.
 
 <!--HONumber=Oct16_HO2-->
 

@@ -1,37 +1,36 @@
-<properties
-	pageTitle="Festlegen und Abrufen von Eigenschaften und Metadaten für Objekte in Azure Storage | Microsoft Azure"
-	description="Speichern Sie benutzerdefinierten Metadaten für Objekte in Azure Storage, legen Sie Systemeigenschaften fest, und rufen Sie diese ab."
-	services="storage"
-	documentationCenter=""
-	authors="tamram"
-	manager="carmonm"
-	editor="tysonn"/>
+---
+title: Festlegen und Abrufen von Eigenschaften und Metadaten für Objekte in Azure Storage | Microsoft Docs
+description: Speichern Sie benutzerdefinierten Metadaten für Objekte in Azure Storage, legen Sie Systemeigenschaften fest, und rufen Sie diese ab.
+services: storage
+documentationcenter: ''
+author: tamram
+manager: carmonm
+editor: tysonn
 
-<tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/07/2016"
-	ms.author="dineshm;tamram"/>
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/07/2016
+ms.author: dineshm;tamram
 
-# Festlegen und Abrufen von Eigenschaften und Metadaten #
-
+---
+# Festlegen und Abrufen von Eigenschaften und Metadaten
 ## Übersicht
-
 Objekte in Azure-Speicher unterstützen zusätzlich zu den Daten, die sie enthalten, Systemeigenschaften und benutzerdefinierte Metadaten:
 
-*   **Systemeigenschaften.** Systemeigenschaften sind in jeder Speicherressource vorhanden. Einige davon können gelesen oder festgelegt werden, während andere schreibgeschützt sind. Darüber hinaus entsprechen einige Systemeigenschaften bestimmten HTTP-Standardheadern. Die Azure-Speicher-Clientbibliothek verwaltet diese für Sie.
-
-*   **Benutzerdefinierte Metadaten.** Benutzerdefinierte Metadaten sind Metadaten, die für eine bestimmte Ressource in Form von Name-Wert-Paaren angegeben werden. Sie können Metadaten verwenden, um zusätzliche Werte für eine Speicherressource zu speichern. Diese Werte dienen nur den von Ihnen festgelegten Zwecken und haben keine Auswirkungen auf das Verhalten der Ressource.
+* **Systemeigenschaften.** Systemeigenschaften sind in jeder Speicherressource vorhanden. Einige davon können gelesen oder festgelegt werden, während andere schreibgeschützt sind. Darüber hinaus entsprechen einige Systemeigenschaften bestimmten HTTP-Standardheadern. Die Azure-Speicher-Clientbibliothek verwaltet diese für Sie.
+* **Benutzerdefinierte Metadaten.** Benutzerdefinierte Metadaten sind Metadaten, die für eine bestimmte Ressource in Form von Name-Wert-Paaren angegeben werden. Sie können Metadaten verwenden, um zusätzliche Werte für eine Speicherressource zu speichern. Diese Werte dienen nur den von Ihnen festgelegten Zwecken und haben keine Auswirkungen auf das Verhalten der Ressource.
 
 Das Abrufen von Eigenschafts- und Metadatenwerten einer Speicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der **FetchAttributes**-Methode abrufen.
 
-> [AZURE.IMPORTANT] Eigenschafts- und Metadatenwerte werden bei einer Speicherressource nicht aufgefüllt, sofern Sie nicht eine der **FetchAttributes**-Methoden aufrufen.
+> [!IMPORTANT]
+> Eigenschafts- und Metadatenwerte werden bei einer Speicherressource nicht aufgefüllt, sofern Sie nicht eine der **FetchAttributes**-Methoden aufrufen.
+> 
+> 
 
 ## Festlegen und Abrufen von Eigenschaften
-
 Zum Abrufen von Eigenschaftswerten rufen Sie die **FetchAttributes**-Methode für das Blob oder den Container auf, um die Eigenschaften aufzufüllen, und lesen anschließend die Werte.
 
 Um Eigenschaften für ein Objekt festzulegen, geben Sie den Eigenschaftswert an und rufen dann die **SetProperties**-Methode auf.
@@ -39,10 +38,10 @@ Um Eigenschaften für ein Objekt festzulegen, geben Sie den Eigenschaftswert an 
 Das folgende Codebeispiel erstellt einen Container und schreibt einige der zugehörigen Eigenschaftswerte in ein Konsolenfenster:
 
     //Parse the connection string for the storage account.
-	const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
-	
-	//Create the service client object for credentialed access to the Blob service.
+
+    //Create the service client object for credentialed access to the Blob service.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
     // Retrieve a reference to a container. 
@@ -59,11 +58,13 @@ Das folgende Codebeispiel erstellt einen Container und schreibt einige der zugeh
     Console.WriteLine();
 
 ## Festlegen und Abrufen von Metadaten
-
 Sie können Metadaten als ein oder mehrere Name-Wert-Paare für ein Blob oder einen Container angeben. Fügen Sie zum Festlegen von Metadaten Name-Wert-Paare zur **Metadaten**-Auflistung der Ressource hinzu, und rufen Sie dann die **SetMetadata**-Methode auf, um die Werte für den Dienst zu speichern.
 
-> [AZURE.NOTE] Der Name der Metadaten muss den Benennungskonventionen für C#-Bezeichner entsprechen.
- 
+> [!NOTE]
+> Der Name der Metadaten muss den Benennungskonventionen für C#-Bezeichner entsprechen.
+> 
+> 
+
 Das folgende Codebeispiel legt die Metadaten für einen Container fest. Mittels der **Hinzufügen**-Methode der Sammlung wird ein Wert festgelegt. Der andere Wert wird mit der impliziten Schlüssel-Wert-Syntax festgelegt. Beide eignen sich hierzu.
 
     public static void AddContainerMetadata(CloudBlobContainer container)
@@ -92,9 +93,8 @@ Zum Abrufen von Metadaten rufen Sie die **FetchAttributes**-Methode für das Blo
         }
     }
 
-## Weitere Informationen  
-
-- [Azure Storage-Clientbibliothek für .NET-Referenz](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
-- [Azure Storage-Clientbibliothek für .NET-Paket](https://www.nuget.org/packages/WindowsAzure.Storage/)
+## Weitere Informationen
+* [Azure Storage-Clientbibliothek für .NET-Referenz](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
+* [Azure Storage-Clientbibliothek für .NET-Paket](https://www.nuget.org/packages/WindowsAzure.Storage/)
 
 <!---HONumber=AcomDC_0928_2016-->

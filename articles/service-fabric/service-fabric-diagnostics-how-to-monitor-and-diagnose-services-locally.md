@@ -1,29 +1,27 @@
-<properties
-   pageTitle="Lokales Überwachen und Diagnostizieren von mit Azure Service Fabric geschriebenen Diensten| Microsoft Azure"
-   description="Erfahren Sie, wie Sie mit Microsoft Azure Service Fabric erstellte Dienste auf einem lokalen Entwicklungscomputer überwachen und diagnostizieren."
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="ms-toddabel"
-   manager="timlt"
-   editor=""/>
+---
+title: Lokales Überwachen und Diagnostizieren von mit Azure Service Fabric geschriebenen Diensten| Microsoft Docs
+description: Erfahren Sie, wie Sie mit Microsoft Azure Service Fabric erstellte Dienste auf einem lokalen Entwicklungscomputer überwachen und diagnostizieren.
+services: service-fabric
+documentationcenter: .net
+author: ms-toddabel
+manager: timlt
+editor: ''
 
-<tags
-   ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="09/06/2016"
-   ms.author="toddabel"/>
+ms.service: service-fabric
+ms.devlang: dotnet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/06/2016
+ms.author: toddabel
 
-
-
+---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer
-
-
-> [AZURE.SELECTOR]
-- [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
-- [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
+> [!div class="op_single_selector"]
+> * [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+> * [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
+> 
+> 
 
 Überwachung, Erkennung, Diagnose und Problembehandlung ermöglichen das Ausführen von Diensten mit minimalen Unterbrechungen für Benutzer. Die Überwachung und Diagnose sind in einer tatsächlichen bereitgestellten Produktionsumgebung zwar wichtig, die Wirksamkeit hängt aber davon ab, ob bei der Entwicklung von Diensten ein ähnliches Modell verwendet wird. Nur so ist sichergestellt, dass die Dienste später tatsächlich funktionieren. Service Fabric erleichtert Dienstentwicklern das Implementieren von Diagnosen, die sowohl in einer lokalen Umgebung auf einem einzelnen Computer als auch in der tatsächlichen Konfiguration in einem Produktionscluster nahtlos verwendet werden können.
 
@@ -35,16 +33,13 @@
 * **Der Service Fabric-Systemcode verwendet ETW auch für die interne Ablaufverfolgung.**  Auf diese Weise können Sie Ihre Anwendungsablaufverfolgung zusammen mit Service Fabric-Systemablaufverfolgungen anzeigen. Außerdem können Sie die Sequenzen und Beziehungen zwischen dem Anwendungscode und den Ereignissen im zugrunde liegenden System besser nachvollziehen.
 * **Die Anzeige von ETW-Ereignissen wird von den Visual Studio-Tools für Service Fabric unterstützt.**
 
-
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Anzeigen von Service Fabric-Ereignissen in Visual Studio
-
 Service Fabric gibt ETW-Ereignisse aus, um die Abläufe in der Plattform für Anwendungsentwickler sichtbar zu machen. Führen Sie jetzt die Schritte unter [Erstellen Ihrer ersten Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)aus, falls Sie dies noch nicht getan haben. Mit diesen Informationen können Sie eine Anwendung so einrichten, dass in der Anzeige von Diagnoseereignissen die Ablaufverfolgungsmeldungen erscheinen.
 
 1. Falls das Diagnoseereignisfenster nicht automatisch angezeigt wird, wechseln Sie in Visual Studio zur Registerkarte **Ansicht**, wählen Sie **Weitere Fenster** und dann **Diagnoseereignisanzeige**.
-
 2. Jedes Ereignis verfügt über Standard-Metadateninformationen, mit deren Hilfe Sie den Knoten, die Anwendung und den Dienst ablesen können, aus denen das Ereignis stammt. Sie können die Liste mit den Ereignissen auch filtern, indem Sie oben im Ereignisfenster das Feld **Ereignisse filtern** verwenden. Beispielsweise können Sie nach **Knotenname** oder **Dienstname** filtern. Wenn Sie sich die Ereignisdetails ansehen, können Sie oben im Ereignisfenster auch die Schaltfläche **Pause** verwenden und den Vorgang später fortsetzen, ohne dass Ereignisse verloren gehen.
-
-  ![Visual Studio-Anzeige von Diagnoseereignissen](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
+   
+   ![Visual Studio-Anzeige von Diagnoseereignissen](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>Hinzufügen eigener benutzerdefinierter Ablaufverfolgungen zum Anwendungscode
 Die Service Fabric-Visual Studio-Projektvorlagen enthalten Beispielcode. Der Code zeigt, wie dem Anwendungscode benutzerdefinierte ETW-Ablaufverfolgungen hinzugefügt werden. Diese werden in der ETW-Anzeige in Visual Studio zusammen mit den Systemablaufverfolgungen von Service Fabric angezeigt. Der Vorteil dieser Methode liegt darin, dass Metadaten automatisch den Ablaufverfolgungen hinzugefügt werden und dass die Visual Studio-Diagnoseereignisanzeige bereits für die Anzeige der Ablaufverfolgungen konfiguriert ist.
@@ -64,10 +59,9 @@ Nachdem Sie die benutzerdefinierte ETW-Ablaufverfolgung dem Dienstcode hinzugef�
 
 ## <a name="next-steps"></a>Nächste Schritte
 Der Ablaufverfolgungscode, den Sie Ihrer Anwendung für die lokale Diagnose hinzugefügt haben, funktioniert auch mit den Tools für die Anzeige dieser Ereignisse, wenn Sie Ihre Anwendung in einem Azure-Cluster ausführen. Sehen Sie sich diese Artikel an, in denen die verschiedenen Optionen für die Tools erläutert werden und beschrieben wird, wie Sie sie einrichten können.
+
 * [Sammeln von Protokollen mit Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md)
-* [Verwenden von ElasticSearch als Service Fabric-Anwendungsüberwachungsspeicher](service-fabric-diagnostic-how-to-use-elasticsearch.md)
-
-
+* [Verwenden von ElasticSearch als Service Fabric-Anwendungsüberwachungsspeicher](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
 <!--HONumber=Oct16_HO2-->
 

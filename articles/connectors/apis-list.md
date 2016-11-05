@@ -1,54 +1,55 @@
-<properties
-	pageTitle="Liste mit von Microsoft verwalteten Connectors für die Verwendung in Microsoft Azure Logic Apps | Microsoft Azure App Service | Microsoft Azure"
-	description="Vollständige Liste der von Microsoft verwalteten Connectors, über die Sie Logik-Apps in Azure App Service erstellen können"
-	services="logic-apps"
-	documentationCenter=""
-	authors="MSFTMAN"
-	manager="erikre"
-	editor=""
-    tags="connectors"/>
+---
+title: Liste mit von Microsoft verwalteten Connectors für die Verwendung in Microsoft Azure Logic Apps | Microsoft Docs
+description: Vollständige Liste der von Microsoft verwalteten Connectors, über die Sie Logik-Apps in Azure App Service erstellen können
+services: logic-apps
+documentationcenter: ''
+author: MSFTMAN
+manager: erikre
+editor: ''
+tags: connectors
 
-<tags
-	ms.service="logic-apps"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/20/2016"
-	ms.author="deonhe"/>
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 09/20/2016
+ms.author: deonhe
 
+---
 # Liste der Connectors
-
 Wählen Sie einen Connector aus, um zu erfahren, wie Sie Workflows schnell erstellen können.
 
 ## Standardconnectors
+| Connectors |  |  |  |
+| --- | --- | --- | --- |
+| [![API-Symbol][API/Web-Appicon]<br/>**API-/Web-App**][API/Web-Appdoc] |[![API-Symbol][Azure-Blobicon]<br/>**Azure-Blob**][Azure-Blobdoc] |[![API-Symbol][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc] |[![API-Symbol][Boxicon]<br/>**Box**][Boxdoc] |
+| [![API-Symbol][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc] |[![API-Symbol][DB2icon]<br/>**DB2**][db2doc] |[![API-Symbol][Delayicon]<br/>**Delay**][Delaydoc] |[![API-Symbol][Dropboxicon]<br/>**Dropbox**][Dropboxdoc] |
+| [![API-Symbol][Facebookicon]<br/>**Facebook**][Facebookdoc] |[![API-Symbol][FTPicon]<br/>**FTP**][FTPdoc] |[![API-Symbol][GitHubicon]<br/>**GitHub**][GitHubdoc] |[![API-Symbol][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc] |
+| ![API-Symbol][Google-Sheetsicon]<br/>**Google Sheets** |![API-Symbol][Google-Tasksicon]<br/>**Google Tasks** |![API-Symbol][Google~Calendaricon]<br/>**Google<br/>Calendar** |[![API-Symbol][HTTPicon]<br/>**HTTP**][HTTPdoc] |
+| [![API-Symbol][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc] |[![API-Symbol][HTTP~Requesticon]<br/>**HTTP-<br/>Anforderung**][HTTP~Requestdoc] |[![API-Symbol][HTTP~Responseicon]<br/>**HTTP-<br/>Antwort**][HTTP~Responsedoc] |[![API-Symbol][Informixicon]<br/>**Informix**][informixdoc] |
+| ![API-Symbol][Instagramicon]<br/>**Instagram** |[![API-Symbol][MailChimpicon]<br/>**MailChimp**][MailChimpdoc] |![API-Symbol][Mandrillicon]<br/>**Mandrill** |[![API-Symbol][Nested~Logic-Appicon]<br/>**Geschachtelte<br/>Logik-App**][Nested~Logic-Appdoc] |
+| [![API-Symbol][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc] |[![API-Symbol][Office-365~Usersicon]<br/>**Office 365<br/>Users**][Office-365~Usersdoc] |[![API-Symbol][Office-365~Videoicon]<br/>**Office 365<br/>Video**][Office-365~Videodoc] |[![API-Symbol][OneDriveicon]<br/>**OneDrive**][OneDrivedoc] |
+| [![API-Symbol][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc] |[![API-Symbol][Outlookicon]<br/>**Outlook**][Outlookdoc] |[![API-Symbol][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc] |[![API-Symbol][Queryicon]<br/>**Abfrage**][Querydoc] |
+| [![API-Symbol][Recurrenceicon]<br/>**Wiederholung**][Recurrencedoc] |[![API-Symbol][RSSicon]<br/>**RSS**][RSSdoc] |[![API-Symbol][Salesforceicon]<br/>**Salesforce**][Salesforcedoc] |[![API-Symbol][SendGridicon]<br/>**SendGrid**][SendGriddoc] |
+| [![API-Symbol][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] |[![API-Symbol][SFTPicon]<br/>**SFTP**][SFTPdoc] |[![API-Symbol][SharePointicon]<br/>**SharePoint**][SharePointdoc] |[![API-Symbol][Slackicon]<br/>**Slack**][Slackdoc] |
+| [![API-Symbol][SMTPicon]<br/>**SMTP**][SMTPdoc] |![API-Symbol][SparkPosticon]<br/>**SparkPost** |[![API-Symbol][SQLicon]<br/>**SQL**][SQLdoc] |[![API-Symbol][Translatoricon]<br/>**Translator**][Translatordoc] |
+| [![API-Symbol][Trelloicon]<br/>**Trello**][Trellodoc] |[![API-Symbol][Twilioicon]<br/>**Twilio**][Twiliodoc] |[![API-Symbol][Twittericon]<br/>**Twitter**][Twitterdoc] |[![API-Symbol][Webhookicon]<br/>**Webhook**][Webhookdoc] |
+| [![API-Symbol][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc] |[![API-Symbol][Yammericon]<br/>**Yammer**][Yammerdoc] |![API-Symbol][YouTubeicon]<br/>**YouTube** | |
 
-|Connectors||||
-|-----------|-----------|-----------|-----------|
-|[![API-Symbol][API/Web-Appicon]<br/>**API-/Web-App**][API/Web-Appdoc]|[![API-Symbol][Azure-Blobicon]<br/>**Azure-Blob**][Azure-Blobdoc]|[![API-Symbol][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc]|[![API-Symbol][Boxicon]<br/>**Box**][Boxdoc]|
-|[![API-Symbol][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc]|[![API-Symbol][DB2icon]<br/>**DB2**][db2doc]|[![API-Symbol][Delayicon]<br/>**Delay**][Delaydoc]|[![API-Symbol][Dropboxicon]<br/>**Dropbox**][Dropboxdoc]|
-|[![API-Symbol][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API-Symbol][FTPicon]<br/>**FTP**][FTPdoc]|[![API-Symbol][GitHubicon]<br/>**GitHub**][GitHubdoc]|[![API-Symbol][Google-Driveicon]<br/>**Google Drive**][Google-Drivedoc]|
-|![API-Symbol][Google-Sheetsicon]<br/>**Google Sheets**|![API-Symbol][Google-Tasksicon]<br/>**Google Tasks**|![API-Symbol][Google~Calendaricon]<br/>**Google<br/>Calendar**|[![API-Symbol][HTTPicon]<br/>**HTTP**][HTTPdoc]|
-|[![API-Symbol][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc]|[![API-Symbol][HTTP~Requesticon]<br/>**HTTP-<br/>Anforderung**][HTTP~Requestdoc]|[![API-Symbol][HTTP~Responseicon]<br/>**HTTP-<br/>Antwort**][HTTP~Responsedoc]|[![API-Symbol][Informixicon]<br/>**Informix**][informixdoc]|
-|![API-Symbol][Instagramicon]<br/>**Instagram**|[![API-Symbol][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API-Symbol][Mandrillicon]<br/>**Mandrill**|[![API-Symbol][Nested~Logic-Appicon]<br/>**Geschachtelte<br/>Logik-App**][Nested~Logic-Appdoc]|
-|[![API-Symbol][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc]|[![API-Symbol][Office-365~Usersicon]<br/>**Office 365<br/>Users**][Office-365~Usersdoc]|[![API-Symbol][Office-365~Videoicon]<br/>**Office 365<br/>Video**][Office-365~Videodoc]|[![API-Symbol][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|
-|[![API-Symbol][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc]|[![API-Symbol][Outlookicon]<br/>**Outlook**][Outlookdoc]|[![API-Symbol][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API-Symbol][Queryicon]<br/>**Abfrage**][Querydoc]|
-|[![API-Symbol][Recurrenceicon]<br/>**Wiederholung**][Recurrencedoc]|[![API-Symbol][RSSicon]<br/>**RSS**][RSSdoc]|[![API-Symbol][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API-Symbol][SendGridicon]<br/>**SendGrid**][SendGriddoc]|
-|[![API-Symbol][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API-Symbol][SFTPicon]<br/>**SFTP**][SFTPdoc]|[![API-Symbol][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API-Symbol][Slackicon]<br/>**Slack**][Slackdoc]|
-|[![API-Symbol][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API-Symbol][SparkPosticon]<br/>**SparkPost**|[![API-Symbol][SQLicon]<br/>**SQL**][SQLdoc]|[![API-Symbol][Translatoricon]<br/>**Translator**][Translatordoc]|
-|[![API-Symbol][Trelloicon]<br/>**Trello**][Trellodoc]|[![API-Symbol][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API-Symbol][Twittericon]<br/>**Twitter**][Twitterdoc]|[![API-Symbol][Webhookicon]<br/>**Webhook**][Webhookdoc]|
-|[![API-Symbol][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API-Symbol][Yammericon]<br/>**Yammer**][Yammerdoc]|![API-Symbol][YouTubeicon]<br/>**YouTube**||
-
-> [AZURE.NOTE] Wenn Sie Azure Logic Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) besuchen. Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> [!NOTE]
+> Wenn Sie Azure Logic Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) besuchen. Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> 
+> 
 
 ## Enterprise Integration Pack-Connectors (EIP)
 Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien, die EAI und EDI umfassen.
- 
-|EIP-Connectors ||||
-|-----------|-----------|-----------|-----------|
-|[![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc]|[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc]|[![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc]|
-|[![API-Symbol][as2icon]<br/>**AS2-</br>Decodierung**][as2decode]|[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung**][as2encode]|[![API-Symbol][x12icon]<br/>**X12-</br>Decodierung**][x12decode]|[![API-Symbol][x12icon]<br/>**X12-</br>Codierung**][x12encode]|
-|[![API-Symbol][x12icon]<br/>**EDIFACT-</br>Decodierung**][EDIFACTdecode]|[![API-Symbol][x12icon]<br/>**EDIFACT-</br>Codierung**][EDIFACTencode]||||
+
+| EIP-Connectors |  |  |  |
+| --- | --- | --- | --- |
+| [![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc] |[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc] |[![API-Symbol][flatfileicon]<br/>**Flatfile-</br>Codierung**][flatfiledoc] |[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc] |
+| [![API-Symbol][as2icon]<br/>**AS2-</br>Decodierung**][as2decode] |[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung**][as2encode] |[![API-Symbol][x12icon]<br/>**X12-</br>Decodierung**][x12decode] |[![API-Symbol][x12icon]<br/>**X12-</br>Codierung**][x12encode] |
+| [![API-Symbol][x12icon]<br/>**EDIFACT-</br>Decodierung**][EDIFACTdecode] |[![API-Symbol][x12icon]<br/>**EDIFACT-</br>Codierung**][EDIFACTencode] | | |
 
 <!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
 ### Connectors können Trigger sein.
@@ -63,10 +64,9 @@ Es gibt zwei Arten von Triggern:
 Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Aktionen sind hilfreich für die Suche nach Daten, die dann bei der Ausführung der App verwendet werden können. Beispielsweise kann es sein, dass Sie bei der Verarbeitung einer Bestellung Daten in einer SQL-Datenbank suchen müssen. Oder Sie müssen möglicherweise Daten in eine Zieltabelle schreiben oder in dieser aktualisieren oder löschen. Sie können dazu die Aktionen verwenden, die von den Connectors bereitgestellt werden. Aktionen sind den in den Swagger-Metadaten definierten Vorgängen zugeordnet.
 
 ## Nächste Schritte
-
-- [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
-- [Erstellen eines benutzerdefinierten Connectors](../app-service-logic/app-service-logic-create-api-app.md)
-- [Überwachen von Logik-Apps](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
+* [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+* [Erstellen eines benutzerdefinierten Connectors](../app-service-logic/app-service-logic-create-api-app.md)
+* [Überwachen von Logik-Apps](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
 
 <!--Connectors Documentation-->
 [azure-blobdoc]: ./connectors-create-api-azureblobstorage.md "Verbindung mit Azure-Blob zum Verwalten der Dateien in Ihrem Blobcontainer."
@@ -75,14 +75,14 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [db2doc]: ./connectors-create-api-db2.md "Verbindung mit IBM DB2 in der Cloud oder lokal, um eine Zeile zu aktualisieren, eine Tabelle abzurufen usw."
 [dropboxdoc]: ./connectors-create-api-dropbox.md "Stellt eine Verbindung mit Dropbox her und kann zum Abrufen, Löschen, Auflisten und weitere Dateiaufgaben verwendet werden."
 [facebookdoc]: ./connectors-create-api-facebook.md "Verbindung mit Facebook zum Veröffentlichen einer Zeitachse, zum Abrufen eines Seitenfeeds und vielem mehr."
-[ftpdoc]: ./connectors-create-api-ftp.md "Stellt eine Verbindung mit einem FTP-/FTPS-Server her und ermöglicht u. a. die Ausführung verschiedener FTP-Tasks, einschließlich Hochladen, Abrufen und Löschen von Dateien."
+[ftpdoc]: ./connectors-create-api-ftp.md "Stellt eine Verbindung mit einem FTP-/FTPS-Server her und ermöglicht u. a. die Ausführung verschiedener FTP-Tasks, einschließlich Hochladen, Abrufen und Löschen von Dateien."
 [google-drivedoc]: ./connectors-create-api-googledrive.md "Verbindung mit GoogleDrive und Interaktion mit Ihren Daten."
 [informixdoc]: ./connectors-create-api-informix.md "Verbindung mit Informix in der Cloud oder lokal, um eine Zeile zu lesen, die Tabellen aufzulisten usw."
 [translatordoc]: ./connectors-create-api-microsofttranslator.md
-[office-365~outlookdoc]: ./connectors-create-api-office365-outlook.md "Der Office 365-Connector kann über Ihr Office 365-Konto E-Mails senden und empfangen sowie Ihren Kalender und Ihre Kontakte verwalten."
+[office-365~outlookdoc]: ./connectors-create-api-office365-outlook.md "Der Office 365-Connector kann über Ihr Office 365-Konto E-Mails senden und empfangen sowie Ihren Kalender und Ihre Kontakte verwalten."
 [office-365~usersdoc]: ./connectors-create-api-office365-users.md
 [office-365~videodoc]: ./connectors-create-api-office365-video.md
-[onedrivedoc]: ./connectors-create-api-onedrive.md "Stellt eine Verbindung mit Ihrem persönlichen Microsoft OneDrive-Ordner her und ermöglicht u. a. das Hochladen, Löschen und Auflisten von Dateien."
+[onedrivedoc]: ./connectors-create-api-onedrive.md "Stellt eine Verbindung mit Ihrem persönlichen Microsoft OneDrive-Ordner her und ermöglicht u. a. das Hochladen, Löschen und Auflisten von Dateien."
 [onedrive-for~businessdoc]: ./connectors-create-api-onedriveforbusiness.md "Stellt eine Verbindung mit dem Microsoft OneDrive-Ordner Ihres Unternehmens her und ermöglicht u.a. das Hochladen, Löschen und Auflisten von Dateien."
 [outlookdoc]: ./connectors-create-api-outlook.md "Stellt eine Verbindung mit Ihrem Outlook-Postfach her und ermöglicht u.a. den Zugriff auf Ihre E-Mails."
 [project-onlinedoc]: ./connectors-create-api-projectonline.md "Stellt eine Verbindung mit Microsoft Project Online her."
@@ -99,7 +99,7 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [sqldoc]: ./connectors-create-api-sqlazure.md "Stellt eine Verbindung mit einer SQL Azure-Datenbank her. Sie können Einträge in einer SQL-Datenbanktabelle erstellen, aktualisieren, abrufen und löschen."
 [trellodoc]: ./connectors-create-api-trello.md "Trello ist eine kostenlose, flexible und visuelle Möglichkeit, um etwas mit jemandem zu organisieren."
 [twiliodoc]: ./connectors-create-api-twilio.md "Stellt eine Verbindung mit Twilio her und kann Nachrichten und verfügbare Nummern abrufen, eingehende Telefonnummern verwalten usw."
-[twitterdoc]: ./connectors-create-api-twitter.md "Stellt eine Verbindung mit Twitter her und dient u. a. zum Abrufen von Zeitachsen und Posten von Tweets."
+[twitterdoc]: ./connectors-create-api-twitter.md "Stellt eine Verbindung mit Twitter her und dient u. a. zum Abrufen von Zeitachsen und Posten von Tweets."
 [wunderlistdoc]: ./connectors-create-api-wunderlist.md "Behalten Sie den Überblick."
 [yammerdoc]: ./connectors-create-api-yammer.md "Stellt eine Verbindung mit Yammer her, um Nachrichten zu posten und neue Nachrichten abzurufen."
 [as2doc]: ../app-service-logic/app-service-logic-enterprise-integration-as2.md "Informationen zu Enterprise Integration – AS2"

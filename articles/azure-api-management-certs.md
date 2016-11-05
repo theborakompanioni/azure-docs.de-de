@@ -1,60 +1,54 @@
-<properties 
-	pageTitle="Hochladen eines Zertifikats für die Azure-Verwaltung-API | Azure Microsoft" 
-	description="Erfahren Sie, wie ein API-Verwaltungszertifikat für das klassische Azure-Portal hochgeladen wird." 
-	services="cloud-services" 
-	documentationCenter=".net" 
-	authors="Thraka" 
-	manager="timlt" 
-	editor=""/>
+---
+title: Hochladen eines Zertifikats für die Azure-Verwaltung-API | Microsoft Docs
+description: Erfahren Sie, wie ein API-Verwaltungszertifikat für das klassische Azure-Portal hochgeladen wird.
+services: cloud-services
+documentationcenter: .net
+author: Thraka
+manager: timlt
+editor: ''
 
-<tags 
-	ms.service="na" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/18/2016"
-	ms.author="adegeo"/>
+ms.service: na
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 04/18/2016
+ms.author: adegeo
 
-
+---
 # Hochladen eines Verwaltungszertifikats für die Azure-Verwaltung-API
+Mit Verwaltungszertifikaten können Sie die Authentifizierung mit der in Azure bereitgestellten Dienstverwaltungs-API durchführen. Diese Zertifikate werden in vielen Programmen und Tools (z. B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. **Dies gilt nur für das klassische Azure-Portal**.
 
-Mit Verwaltungszertifikaten können Sie die Authentifizierung mit der in Azure bereitgestellten Dienstverwaltungs-API durchführen. Diese Zertifikate werden in vielen Programmen und Tools (z. B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. **Dies gilt nur für das klassische Azure-Portal**.
-
->[AZURE.WARNING] Vorsicht ist geboten! Alle Personen, die die Authentifizierung mit diesen Zertifikaten durchführen, können das zugeordnete Abonnement verwalten.
+> [!WARNING]
+> Vorsicht ist geboten! Alle Personen, die die Authentifizierung mit diesen Zertifikaten durchführen, können das zugeordnete Abonnement verwalten.
+> 
+> 
 
 Weitere Informationen zu Azure-Zertifikaten (einschließlich der Erstellung eines selbstsignierten Zertifikats) sind bei Bedarf [verfügbar](cloud-services/cloud-services-certs-create.md#what-are-management-certificates).
 
 Sie können auch [Azure Active Directory](/services/active-directory/) für die Authentifizierung von Clientcode zur Automatisierung verwenden.
 
 ## Hochladen eines Verwaltungszertifikats
-
 Sobald Sie ein Verwaltungszertifikat erstellt haben (CER-Datei nur mit dem öffentlichen Schlüssel), können Sie es in das Portal hochladen. Wenn das Zertifikat im Portal verfügbar ist, kann jeder Benutzer mit einem entsprechenden Zertifikat (privater Schlüssel) über die Verwaltungs-API eine Verbindung herstellen und auf die Ressourcen für das zugehörige Abonnement zugreifen.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com) an.
-
 2. Stellen Sie sicher, dass Sie das Abonnement auswählen, dem Sie ein Zertifikat zuordnen möchten. Wählen Sie rechts oben im Portal den Text **Abonnements** aus.
-
-	![Einstellungen](./media/azure-api-management-certs/subscription.png)
-
+   
+    ![Einstellungen](./media/azure-api-management-certs/subscription.png)
 3. Nachdem Sie das gewünschte Abonnement ausgewählt haben, wählen Sie links im Portal **Einstellungen** aus (möglicherweise müssen Sie nach unten scrollen).
-    
+   
     ![Einstellungen](./media/azure-api-management-certs/settings.png)
-
 4. Wählen Sie die Registerkarte **Verwaltungszertifikate** aus.
-
+   
     ![Einstellungen](./media/azure-api-management-certs/certificates-tab.png)
-    
 5. Wählen Sie die Schaltfläche **Hochladen** aus.
-
+   
     ![Einstellungen](./media/azure-api-management-certs/upload.png)
-    
 6. Füllen Sie das Dialogfeld aus, und wählen Sie das **Häkchen** aus.
-
+   
     ![Einstellungen](./media/azure-api-management-certs/upload-dialog.png)
 
 ## Nächste Schritte
-
 Da Sie jetzt einem Abonnement ein Verwaltungszertifikat zugeordnet haben, können Sie (nachdem Sie das entsprechende Zertifikat lokal installiert haben) programmgesteuert eine Verbindung mit der [Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/mt420159.aspx) herstellen und die verschiedenen Azure-Ressourcen automatisieren, die auch diesem Abonnement zugeordnet sind.
 
 <!---HONumber=AcomDC_0706_2016-->

@@ -5,7 +5,6 @@ Verwenden Sie beim Definieren von Parametern das Feld **allowedValues**, um anzu
 Jeder Parameter wird in der Vorlage beschrieben.
 
 ### siteName
-
 Der Name der Web-App, die Sie erstellen möchten.
 
     "siteName":{
@@ -13,15 +12,13 @@ Der Name der Web-App, die Sie erstellen möchten.
     }
 
 ### hostingPlanName
-
 Der Name des App Service-Plans zum Hosten der Web-App.
-    
+
     "hostingPlanName":{
       "type":"string"
     }
 
 ### sku
-
 Der Tarif für den Hostingplan.
 
     "sku": {
@@ -49,7 +46,6 @@ Der Tarif für den Hostingplan.
 Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind, und weist einen Standardwert (S1) zu, wenn kein Wert angegeben wird.
 
 ### workerSize
-
 Die Instanzgröße des Hostingplans (klein, mittel oder groß).
 
     "workerSize":{
@@ -61,6 +57,6 @@ Die Instanzgröße des Hostingplans (klein, mittel oder groß).
       ],
       "defaultValue":"0"
     }
-    
+
 Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (0, 1 oder 2), und weist einen Standardwert (0) zu, wenn kein Wert angegeben wird. Die Werte entsprechen klein, mittel und groß.
 

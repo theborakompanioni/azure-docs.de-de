@@ -8,29 +8,20 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 
 
 ### Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
-
-
 Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbindungszeichenfolge, die für die Interaktion des Clientprogramms mit Azure SQL-Datenbank benötigt wird:
 
-
 1. Klicken auf **DURCHSUCHEN** > **SQL-Datenbanken**.
-
+   
     ![SQL auswählen][1-select-sql]
-
 2. Geben Sie in das Textfeld "Filter" nahe der oberen linken Ecke des Blattes **SQL-Datenbanken** den Namen der Datenbank ein.
-
+   
     ![Datenbank auswählen][2-select-database]]
-
 3. Klicken Sie auf die Zeile für die Datenbank.
-
 4. Nachdem das Blatt für die Datenbank angezeigt wird, können Sie der visuellen Einfachheit halber auf die Standardsteuerelemente zum Minimieren klicken, um die Blätter auszublenden, die Sie zum Durchsuchen und Filtern verwendet haben.
-
 5. Notieren Sie sich den Namen der **SQL-Datenbank** und den **Servernamen**. Der Benutzername lautet yourusername@yourserver.
-
-	![Verbindungsdetails abrufen][3-get-connection-details]
-
-7.  Fügen Sie die Verbindungsdetails in den Code der Clientanwendung ein. Ersetzen Sie {your\_password\_here} durch Ihr tatsächliches Kennwort.
-
+   
+    ![Verbindungsdetails abrufen][3-get-connection-details]
+6. Fügen Sie die Verbindungsdetails in den Code der Clientanwendung ein. Ersetzen Sie {your\_password\_here} durch Ihr tatsächliches Kennwort.
 
 <!--
 Could not find a good link for PHP

@@ -1,47 +1,47 @@
-<properties
-	pageTitle="Hinzufügen von Pushbenachrichtigungen zur App (iOS) | JavaScript-Back-End"
-	description="Erfahren Sie mehr über die Verwendung von Azure Mobile Services zum Senden von Pushbenachrichtigungen an Ihre iOS-App."
-	services="mobile-services,notification-hubs"
-	documentationCenter="ios"
-	manager="dwrede"
-	editor=""
-	authors="krisragh"/>
+---
+title: Hinzufügen von Pushbenachrichtigungen zur App (iOS) | Microsoft Docs
+description: Erfahren Sie mehr über die Verwendung von Azure Mobile Services zum Senden von Pushbenachrichtigungen an Ihre iOS-App.
+services: mobile-services,notification-hubs
+documentationcenter: ios
+manager: dwrede
+editor: ''
+author: krisragh
 
-<tags
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="krisragh"/>
+ms.service: mobile-services
+ms.workload: mobile
+ms.tgt_pltfrm: ios
+ms.devlang: objective-c
+ms.topic: article
+ms.date: 07/21/2016
+ms.author: krisragh
 
+---
 # Hinzufügen von Pushbenachrichtigungen zur iOS-App und zum JavaScript-Back-End
-
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
+[!INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
 &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+[!INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
 > Informationen für die entsprechende Mobile Apps-Version dieses Themas finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+> 
+> 
 
 In diesem Thema wird das Hinzufügen von Pushbenachrichtigungen zum [Schnellstartprojekt](mobile-services-ios-get-started.md) gezeigt, sodass Ihnen der mobile Dienst eine Pushbenachrichtigung sendet, wenn ein Datensatz eingefügt wird. Sie müssen zunächst [Erste Schritte mit Mobile Services] abschließen.
 
-> [AZURE.NOTE] Die [iOS-Simulator unterstützt keine Pushbenachrichtigungen](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html), daher müssen Sie ein physisches iSO-Gerät verwenden. Sie müssen sich außerdem für eine kostenpflichtiges [Apple-Entwicklerprogramm-Mitgliedschaft](https://developer.apple.com/programs/ios/) anmelden.
+> [!NOTE]
+> Die [iOS-Simulator unterstützt keine Pushbenachrichtigungen](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html), daher müssen Sie ein physisches iSO-Gerät verwenden. Sie müssen sich außerdem für eine kostenpflichtiges [Apple-Entwicklerprogramm-Mitgliedschaft](https://developer.apple.com/programs/ios/) anmelden.
+> 
+> 
 
-[AZURE.INCLUDE [Aktivieren von Apple-Pushbenachrichtigungen](../../includes/enable-apple-push-notifications.md)]
-
+[!INCLUDE [Aktivieren von Apple-Pushbenachrichtigungen](../../includes/enable-apple-push-notifications.md)]
 
 ## <a id="configure"></a>Konfigurieren von Azure zum Senden von Pushbenachrichtigungen
-
-[AZURE.INCLUDE [Konfigurieren von Pushbenachrichtigungen in Azure Mobile Services](../../includes/mobile-services-apns-configure-push.md)]
+[!INCLUDE [Konfigurieren von Pushbenachrichtigungen in Azure Mobile Services](../../includes/mobile-services-apns-configure-push.md)]
 
 ## <a id="update-scripts"></a>Aktualisieren des Back-End-Skripts zum Senden von Pushbenachrichtigungen
-
 * Klicken Sie im [klassischen Azure-Portal] auf die Registerkarte **Daten** und dann auf **TodoItem**. Klicken Sie unter **TodoItem** auf die Registerkarte **Skript**, und wählen Sie **Einfügen** aus. Daraufhin wird die Funktion angezeigt, die aufgerufen wird, wenn etwas in die Tabelle **TodoItem** eingefügt wird.
-
 * Ersetzen Sie die Einfügefunktion durch folgenden Code. Klicken Sie dann auf **Speichern**. Auf diese Weise wird ein neues Einfügeskript registriert, das über das [apns-Objekt] eine Pushbenachrichtigung (den eingefügten Text) zum in der Einfügeanforderung angegebenen Gerät sendet. Dieses Skript verzögert die Übermittlung der Benachrichtigung, um Ihnen Zeit zum Schließen der App für den Empfang einer Pushbenachrichtigung zu geben.
-
 
 ```
         function insert(item, user, request) {
@@ -59,10 +59,9 @@ In diesem Thema wird das Hinzufügen von Pushbenachrichtigungen zum [Schnellstar
         }
 ```
 
-[AZURE.INCLUDE [Hinzufügen von Pushbenachrichtigungen zur App](../../includes/add-push-notifications-to-app.md)]
+[!INCLUDE [Hinzufügen von Pushbenachrichtigungen zur App](../../includes/add-push-notifications-to-app.md)]
 
-[AZURE.INCLUDE [Testen von Pushbenachrichtigungen in einer App](../../includes/test-push-notifications-in-app.md)]
-
+[!INCLUDE [Testen von Pushbenachrichtigungen in einer App](../../includes/test-push-notifications-in-app.md)]
 
 <!-- Anchors. -->
 

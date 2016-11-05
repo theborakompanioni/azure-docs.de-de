@@ -1,36 +1,35 @@
-<properties 
-	pageTitle="Allgemeine Vorgänge in der Machine Learning-Empfehlungen-API | Microsoft Azure" 
-	description="Azure ML Recommendation-Beispielanwendung" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="LuisCabrer" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+---
+title: Allgemeine Vorgänge in der Machine Learning-Empfehlungen-API | Microsoft Docs
+description: Azure ML Recommendation-Beispielanwendung
+services: machine-learning
+documentationcenter: ''
+author: LuisCabrer
+manager: jhubbard
+editor: cgronlun
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2016" 
-	ms.author="luisca"/>
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/08/2016
+ms.author: luisca
 
-
+---
 # Die Azure Machine Learning-Empfehlungen-API anhand einer Beispielanwendung
+> [!NOTE]
+> Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
+> 
+> 
 
->[AZURE.NOTE] Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
-
-##Zweck
-
+## Zweck
 Dieses Dokument zeigt die Verwendung der Azure Machine Learning RECOMMENDATIONS-API anhand einer [Beispielanwendung](https://code.msdn.microsoft.com/Recommendations-144df403).
 
 Diese Anwendung ist nicht dazu vorgesehen, vollständige Funktionen zu enthalten oder alle APIs zu verwenden. Sie soll nur einige allgemeine Anwendungen zeigen, wenn Sie den Azure Machine Learning-Empfehlungsdienst zum ersten Mal verwenden möchten.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-##Einführung zum Machine Learning-Empfehlungsdienst
-
+## Einführung zum Machine Learning-Empfehlungsdienst
 Die Empfehlungen über den Azure Machine Learning-Empfehlungsdienst sind aktiviert, wenn Sie ein Empfehlungsmodell anhand der folgenden Daten erstellen:
 
 * Ein Repository für die zu empfehlenden Elemente, auch als Katalog bezeichnet
@@ -56,18 +55,15 @@ Um dieses Szenario zu aktivieren, gehen Sie im Machine Learning-Empfehlungsdiens
 
 In der Regel rufen Sie „Get recommendation“ über einen bestimmten Zeitraum auf. Während dieses Zeitraums können Sie die Nutzungsdaten an das Machine Learning-Empfehlungssystem umleiten, damit diese Daten dem angegebenen Modellcontainer hinzugefügt werden. Wenn Sie über ausreichend Nutzungsdaten verfügen, können Sie ein neues Empfehlungsmodell erstellen, das die zusätzlichen Nutzungsdaten integriert.
 
-##Voraussetzungen
-
+## Voraussetzungen
 * Visual Studio 2013
 * Zugriff auf das Internet
 * Abonnement der API für Empfehlungen (https://datamarket.azure.com/dataset/amla/recommendations).
 
-##Beispielanwendungslösung für Azure Machine Learning
-
+## Beispielanwendungslösung für Azure Machine Learning
 Die Lösung enthält den Quellcode, eine Beispielnutzung, eine Katalogdatei und Anweisungen zum Herunterladen der für die Kompilierung erforderlichen Nuget-Pakete.
 
-##Die verwendeten APIs
-
+## Die verwendeten APIs
 Die Anwendung verwendet die Machine Learning-Empfehlungsfunktionen über eine Teilmenge der verfügbaren APIs. Die folgenden APIs werden in der Anwendung veranschaulicht:
 
 * Create model: Erstellen Sie einen logischen Container für Daten und Empfehlungsmodelle. Ein Modell wird anhand eines Namens identifiziert. Sie können jeweils nur ein Modell mit demselben Namen erstellen.
@@ -83,13 +79,11 @@ Eine vollständige Beschreibung der APIs finden Sie in der Dokumentation zum Mic
 **Hinweis:** Ein Modell kann im Lauf der Zeit über mehrere Builds verfügen (nicht jedoch gleichzeitig). Jeder Build wird mit demselben oder einem aktualisierten Katalog und zusätzlichen Nutzungsdaten erstellt.
 
 ## Häufige Probleme
-
 * Sie müssen Ihren Benutzernamen und den Microsoft Azure Marketplace-Hauptkontoschlüssel angeben, um die Beispiel-App auszuführen.
 * Die Beispiel-App kann nicht mehrfach hintereinander ausgeführt werden. Der Anwendungsfluss umfasst das Erstellen, das Hochladen, das Aufbauen des Bildschirms sowie das Abrufen von Empfehlungen von einem vordefinierten Modell. Daher schlägt eine fortlaufende Ausführung fehl, wenn Sie zwischen den Aufrufen nicht den Modellnamen ändern.
 * Empfehlungen werden möglicherweise ohne Daten zurückgegeben. Die Beispiel-App verwendet einen sehr kleinen Katalog. Dies gilt auch für die Nutzungsdatei. Daher verfügen einige Elemente des Katalogs nicht über empfohlene Elemente.
 
 ## Haftungsausschluss
 Die Beispiel-App ist nicht für die Ausführung in einer Produktionsumgebung gedacht. Der Katalog umfasst nur sehr wenige Daten, die kein sinnvolles Empfehlungsmodell ergeben. Die Daten werden als Beispiel bereitgestellt.
- 
 
 <!---HONumber=AcomDC_0914_2016-->

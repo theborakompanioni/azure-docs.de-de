@@ -1,22 +1,22 @@
 
-<properties
-	pageTitle="Verwenden von Azure AD Connect Health mit Synchronisierung | Microsoft Azure"
-	description="Auf dieser Seite zu Azure AD Connect Health wird erläutert, wie eine Überwachung mit Azure AD Connect für die Synchronisierung durchgeführt wird."
-	services="active-directory"
-	documentationCenter=""
-	authors="billmath"
-	manager="femila"
-	editor="curtand"/>
+---
+title: Verwenden von Azure AD Connect Health mit Synchronisierung | Microsoft Docs
+description: Auf dieser Seite zu Azure AD Connect Health wird erläutert, wie eine Überwachung mit Azure AD Connect für die Synchronisierung durchgeführt wird.
+services: active-directory
+documentationcenter: ''
+author: billmath
+manager: femila
+editor: curtand
 
-<tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/08/2016"
-	ms.author="billmath"/>
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 08/08/2016
+ms.author: billmath
 
+---
 # Verwenden von Azure AD Connect Health für die Synchronisierung
 Die folgende Dokumentation bezieht sich auf die Überwachung von Azure AD Connect (Sync) mithilfe von Azure AD Connect Health. Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
 
@@ -30,7 +30,7 @@ Durch Auswahl einer Warnung werden zusätzliche Informationen, Lösungsschritte 
 ![Azure AD Connect-Synchronisierungsfehler](./media/active-directory-aadconnect-health-sync/alert.png)
 
 ### Beschränkte Auswertung von Warnungen
-Wenn Azure AD Connect die Standardkonfiguration NICHT verwendet (z. B. wenn die Attributfilterung von der Standardkonfiguration in eine benutzerdefinierte Konfiguration geändert wird), lädt der Azure AD Connect Health-Agent die Fehlerereignisse im Zusammenhang mit Azure AD Connect nicht hoch.
+Wenn Azure AD Connect die Standardkonfiguration NICHT verwendet (z. B. wenn die Attributfilterung von der Standardkonfiguration in eine benutzerdefinierte Konfiguration geändert wird), lädt der Azure AD Connect Health-Agent die Fehlerereignisse im Zusammenhang mit Azure AD Connect nicht hoch.
 
 Dies schränkt die Auswertung der Warnungen vom Dienst ein. Ihnen wird im Azure-Portal unter Ihrem Dienst ein Banner angezeigt, das auf diese Bedingung hinweist.
 
@@ -43,8 +43,8 @@ Sie können dies ändern, indem Sie auf „Einstellungen“ klicken und das Hoch
 ## Einblick in die Synchronisierung
 Mit der neuesten Version von Azure AD Connect Health für die Synchronisierung wurden folgende neue Funktionen eingeführt:
 
-- Latenz von Synchronisierungsvorgängen
-- Trends bei der Objektänderung
+* Latenz von Synchronisierungsvorgängen
+* Trends bei der Objektänderung
 
 ### Synchronisierungslatenz
 Dieses Feature bietet eine grafische Darstellung des Trends bei Synchronisierungsvorgängen (Import, Export usw.) für Connectors. So können Sie zum einen schnell und einfach die Latenz bei Ihren Vorgängen überprüfen (sehr nützlich, wenn viele Änderungen durchgeführt werden). Zum anderen können Sie Anomalien bei der Latenz aufdecken, die möglicherweise untersucht werden müssen.
@@ -59,7 +59,6 @@ Dieses Feature bietet eine grafische Darstellung des Trends bei der Anzahl von a
 ![Synchronisierungslatenz](./media/active-directory-aadconnect-health-sync/syncobjectchanges.png)
 
 ## Verwandte Links
-
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Installieren des Azure AD Connect Health-Agents](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health-Vorgänge](active-directory-aadconnect-health-operations.md)

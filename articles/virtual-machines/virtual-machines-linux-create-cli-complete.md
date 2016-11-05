@@ -1,34 +1,33 @@
 
-<properties
-   pageTitle="Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle | Microsoft Azure"
-   description="Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI von Grund auf neu erstellen."
-   services="virtual-machines-linux"
-   documentationCenter="virtual-machines"
-   authors="iainfoulds"
-   manager="timlt"
-   editor=""
-   tags="azure-resource-manager"/>
+---
+title: Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle | Microsoft Docs
+description: Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI von Grund auf neu erstellen.
+services: virtual-machines-linux
+documentationcenter: virtual-machines
+author: iainfoulds
+manager: timlt
+editor: ''
+tags: azure-resource-manager
 
-<tags
-   ms.service="virtual-machines-linux"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure"
-   ms.date="08/23/2016"
-   ms.author="iainfou"/>
+ms.service: virtual-machines-linux
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 08/23/2016
+ms.author: iainfou
 
+---
 # Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle
-
 In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
 
 Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Wenn Sie wissen, wie das System aufgebaut ist, können Sie es mithilfe von [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) deutlich schneller neu erstellen. Und wenn Sie wissen, wie die einzelnen Komponenten Ihrer Umgebung zusammenwirken, ist die Erstellung von Vorlagen für deren Automatisierung viel einfacher.
 
 Die Umgebung enthält:
 
-- Zwei virtuelle Computer in einer Verfügbarkeitsgruppe
-- Load Balancer mit Lastenausgleichsregel an Port 80
-- Regeln für Netzwerksicherheitsgruppen (NSG) zum Schutz der virtuellen Computer vor unerwünschtem Datenverkehr
+* Zwei virtuelle Computer in einer Verfügbarkeitsgruppe
+* Load Balancer mit Lastenausgleichsregel an Port 80
+* Regeln für Netzwerksicherheitsgruppen (NSG) zum Schutz der virtuellen Computer vor unerwünschtem Datenverkehr
 
 ![Grundlegende Umgebung – Übersicht](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
@@ -74,7 +73,6 @@ azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.
 ```
 
 Überprüfen Sie das virtuelle Netzwerk und Subnetz mit der JSON-Parser:
-
 
 ```bash
 azure network vnet show TestRG TestVNet --json | jq '.'
@@ -240,7 +238,6 @@ azure resource export TestRG
 In den folgenden ausführlichen Schritten wird erklärt, was jeder Befehl macht, wenn Sie Ihre Umgebung erstellen. Diese Konzepte helfen Ihnen beim Erstellen Ihrer eigenen benutzerdefinierten Umgebungen für Entwicklung oder Produktion.
 
 ## Erstellen einer Ressourcengruppe und Auswählen von Standorten für die Bereitstellung
-
 Azure-Ressourcengruppen sind logische Bereitstellungsentitäten, die Konfigurationsdaten und Metadaten enthalten, um die logische Verwaltung von Ressourcenbereitstellungen zu ermöglichen.
 
 ```bash
@@ -264,7 +261,6 @@ info:    group create command OK
 ```
 
 ## Erstellen Sie ein Speicherkonto.
-
 Sie benötigen unter anderem Speicherkonten für Ihre VM-Datenträger und für alle zusätzlichen Datenträger, die Sie hinzufügen möchten. Sie erstellen Speicherkonten normalerweise immer direkt nach der Erstellung von Ressourcengruppen.
 
 Hier verwenden wir den Befehl `azure storage account create` und übergeben den Speicherort des Kontos, die Ressourcengruppe, mit der es gesteuert wird, und den Typ der gewünschten Speicherunterstützung.
@@ -370,7 +366,6 @@ info:    storage container list command OK
 ```
 
 ## Erstellen eines virtuellen Netzwerks und des Subnetzes
-
 Als Nächstes müssen Sie ein virtuelles Netzwerk erstellen, das in Azure ausgeführt wird, und ein Subnetz, in dem Sie Ihre virtuellen Computer installieren können.
 
 ```bash
@@ -499,7 +494,6 @@ Ausgabe:
 ```
 
 ## Erstellen einer öffentlichen IP-Adresse (PIP)
-
 Jetzt erstellen wir die öffentliche IP-Adresse (PIP), die wir Ihrem Load Balancer zuweisen werden. Damit können Sie mithilfe des Befehls `azure network public-ip create` über das Internet eine Verbindung mit Ihren virtuellen Computern herstellen. Da die Standardadresse dynamisch ist, erstellen wir in der Domäne **cloudapp.azure.com** mit der Option `-d testsubdomain` einen benannten DNS-Eintrag.
 
 ```bash
@@ -784,7 +778,6 @@ info:    network lb rule create command OK
 ```
 
 ## Erstellen des Integritätstests für den Load Balancer
-
 Mit einem Integritätstest werden die virtuellen Computer hinter dem Load Balancer regelmäßig überprüft, um sicherzustellen, dass sie wie definiert ausgeführt werden und auf Anforderungen reagieren. Wenn dies nicht der Fall ist, werden sie außer Betrieb gesetzt, sodass Benutzer nicht an sie weitergeleitet werden. Sie können benutzerdefinierte Überprüfungen sowie Intervalle und Timeoutwerte für den Integritätstest definieren. Weitere Informationen zu Integritätstests finden Sie unter [Load Balancer-Integritätstest](../load-balancer/load-balancer-custom-probe-overview.md).
 
 ```bash
@@ -941,7 +934,6 @@ Ausgabe:
 ```
 
 ## Erstellen einer Netzwerkschnittstellenkarte zur Verwendung mit der Linux-VM
-
  NICs sind programmgesteuert verfügbar, da Sie Regeln zu ihrer Verwendung anwenden können. Sie können auch mehrere Regeln anwenden. Mit dem folgenden Befehl `azure network nic create` wird die Netzwerkkarte in den Last-Back-End-IP-Pool eingebunden und der NAT-Regel für das Zulassen von SSH-Datenverkehr zugeordnet. Dazu müssen Sie anstelle von `<GUID>` die Abonnement-ID Ihres Azure-Abonnements angeben:
 
 ```bash
@@ -1034,7 +1026,6 @@ azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name T
 ```
 
 ## Erstellen einer Netzwerksicherheitsgruppe und von Regeln
-
 Als Nächstes erstellen wir eine NSG und die eingehenden Regeln, mit denen der Zugriff auf die Netzwerkschnittstellenkarte gesteuert wird.
 
 ```bash
@@ -1053,10 +1044,12 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-> [AZURE.NOTE] Die eingehende Regel ist ein Filter für eingehende Netzwerkverbindungen. In diesem Beispiel binden wir die NSG an die virtuelle NIC der virtuellen Computer. Dies bedeutet, dass alle Anforderungen an Port 22 über die NIC auf dem virtuellen Computer übergeben werden. Dies ist eine Eingangsregel über eine Netzwerkverbindung und nicht über einen Endpunkt wie in klassischen Bereitstellungen. Zum Öffnen eines Ports müssen Sie die Festlegung von `--source-port-range` auf „*“ (Standardwert) beibehalten, um eingehende Anforderungen von **jedem** anfordernden Port zu akzeptieren. Ports sind in der Regel dynamisch.
+> [!NOTE]
+> Die eingehende Regel ist ein Filter für eingehende Netzwerkverbindungen. In diesem Beispiel binden wir die NSG an die virtuelle NIC der virtuellen Computer. Dies bedeutet, dass alle Anforderungen an Port 22 über die NIC auf dem virtuellen Computer übergeben werden. Dies ist eine Eingangsregel über eine Netzwerkverbindung und nicht über einen Endpunkt wie in klassischen Bereitstellungen. Zum Öffnen eines Ports müssen Sie die Festlegung von `--source-port-range` auf „*“ (Standardwert) beibehalten, um eingehende Anforderungen von **jedem** anfordernden Port zu akzeptieren. Ports sind in der Regel dynamisch.
+> 
+> 
 
 ## Binden an die Netzwerkkarte
-
 Binden der NSG an die Netzwerkkarten:
 
 ```bash
@@ -1078,18 +1071,17 @@ Durch Fehlerdomänen wird eine Gruppe virtueller Computer definiert, die eine St
 
 Upgradedomänen definieren Gruppen virtueller Computer und die zugrunde liegende physische Hardware, die gleichzeitig neu gestartet werden können. Während einer geplanten Wartung werden die Upgradedomänen möglicherweise nicht der Reihe nach neu gestartet. Es wird aber jeweils nur eine Upgradedomäne neu gestartet. Azure verteilt Ihre virtuellen Computer auch hier automatisch auf die Upgradedomänen, wenn sie in einer Verfügbarkeitsgruppe platziert werden.
 
-Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](./virtual-machines-linux-manage-availability.md).
+Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](virtual-machines-linux-manage-availability.md).
 
 ## Erstellen der Linux-VMs
-
 Sie haben die Speicher- und Netzwerkressourcen zur Unterstützung von über das Internet erreichbaren virtuellen Computern erstellt. Wir erstellen jetzt diese virtuellen Computer und schützen sie mit einem SSH-Schlüssel ohne Kennwort. In diesem Fall erstellen wir eine Ubuntu-VM basierend auf dem aktuellen LTS-Stand. Wir ermitteln diese Imageinformationen per `azure vm image list`. Dies wird unter [Suchen nach Azure VM-Images](virtual-machines-linux-cli-ps-findimage.md) beschrieben.
 
 Wir haben ein Image mithilfe des Befehls `azure vm image list westeurope canonical | grep LTS` ausgewählt. In diesem Fall verwenden wir `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. Für das letzte Feld übergeben wir `latest`, sodass in Zukunft immer die letzten Builds abgerufen werden. (Die Zeichenfolge, die wir verwenden, ist `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
 
 Der nächste Schritt ist allen Benutzern vertraut, die mit **ssh-keygen -t rsa -b 2048** bereits ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel unter Linux oder Mac erstellt haben. Wenn sich in Ihrem `~/.ssh`-Verzeichnis keine Zertifikatsschlüsselpaare befinden, können Sie sie erstellen:
 
-- Automatisch mithilfe der Option `azure vm create --generate-ssh-keys`.
-- Manuell mithilfe [der Anweisungen zur Selbsterstellung](virtual-machines-linux-mac-create-ssh-keys.md).
+* Automatisch mithilfe der Option `azure vm create --generate-ssh-keys`.
+* Manuell mithilfe [der Anweisungen zur Selbsterstellung](virtual-machines-linux-mac-create-ssh-keys.md).
 
 Alternativ können Sie mit der --admin-Kennwortmethode Ihre SSH-Verbindungen nach der Erstellung des virtuellen Computers authentifizieren. Diese Methode ist in der Regel weniger sicher.
 
@@ -1269,7 +1261,6 @@ azure group deployment create -f TestRG.json -g NewRGFromTemplate
 Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlagen](../resource-group-template-deploy-cli.md) lesen. Erfahren Sie, wie Sie Umgebungen unter Verwendung der Parameterdatei schrittweise aktualisieren und von einem zentralen Speicherort aus auf Vorlagen zugreifen.
 
 ## Nächste Schritte
-
 Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.
 
 <!---HONumber=AcomDC_0914_2016-->
