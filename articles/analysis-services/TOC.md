@@ -1,18 +1,18 @@
-# Overview
-##[What is Azure Analysis Services?](analysis-services-overview.md)
-# Get started
-##[Create a server](analysis-services-create-server.md)
+# Übersicht
+##[Was ist Azure Analysis Services?](analysis-services-overview.md)
+# Erste Schritte
+##[Erstellen eines Servers](analysis-services-create-server.md)
 
-# How to 
-## [Deploy](analysis-services-deploy.md)
-## Manage
-###[Connect to a server](analysis-services-connect.md)
-###[Manage a server](analysis-services-manage.md)
-## Integrate
-###[On-premise data gateway](analysis-services-gateway.md)
+# Anleitung 
+## [Bereitstellen](analysis-services-deploy.md)
+## Verwalten
+###[Verbinden mit einem Server](analysis-services-connect.md)
+###[Verwalten eines Servers](analysis-services-manage.md)
+## Integrieren
+###[Lokales Datengateway](analysis-services-gateway.md)
 
-# References
-##[Datasource connections](analysis-services-datasource.md)
+# Referenzen
+##[Datenquellenverbindungen](analysis-services-datasource.md)
 
 <!--HONumber=Nov16_HO2-->
 

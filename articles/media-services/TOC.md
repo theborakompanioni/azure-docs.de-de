@@ -1,178 +1,178 @@
-# [Overview](media-services-overview.md)
-## [Concepts ](media-services-concepts.md)
-## [Pricing](https://azure.microsoft.com/pricing/details/media-services/)
-## [Release notes](media-services-release-notes.md)
-# Get started
-## [Create and manage account](media-services-portal-create-account.md)
-## [Set up your dev environment](media-services-set-up-computer.md)
-## Video on demand
+# [Übersicht](media-services-overview.md)
+## [Konzepte](media-services-concepts.md)
+## [Preise](https://azure.microsoft.com/pricing/details/media-services/)
+## [Anmerkungen zu dieser Version](media-services-release-notes.md)
+# Erste Schritte
+## [Erstellen und Verwalten eines Kontos](media-services-portal-create-account.md)
+## [Einrichten Ihrer Entwicklungsumgebung](media-services-set-up-computer.md)
+## Video on Demand
 ### [Portal](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
 ### [Java](media-services-java-how-to-use.md)
 ### [REST](media-services-rest-get-started.md)
-## Live streaming
+## Livestreaming
 ### [Portal](media-services-portal-live-passthrough-get-started.md)
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
-# How To
-## Manage
-### [Manage streaming endpoints in the portal](media-services-portal-manage-streaming-endpoints.md)
-### Manage entities
+# Anleitung
+## Verwalten
+### [Verwalten von Streamingendpunkten im Portal](media-services-portal-manage-streaming-endpoints.md)
+### Verwalten von Entitäten
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
-### [Manage accounts with PowerShell](media-services-manage-with-powershell.md)
-### [Crop videos with Media Encoder Standard](media-services-crop-video.md)
-### [How To: Update Media Services after Rolling Storage Access Keys](media-services-roll-storage-access-keys.md)
-### [Quotas and limitations](media-services-quotas-and-limitations.md)
-### Filters
-#### [Creating Filters with Azure Media Services .NET SDK](media-services-dotnet-dynamic-manifest.md)
-#### [How to encode an asset using Media Encoder Standard](media-services-rest-encode-asset.md)
-### Connect programmatically
+### [Verwalten von Konten mit PowerShell](media-services-manage-with-powershell.md)
+### [Zuschneiden von Videos mit Media Encoder Standard](media-services-crop-video.md)
+### [Vorgehensweise: Aktualisieren von Media Services nach dem Austausch der Speicherzugriffsschlüssel](media-services-roll-storage-access-keys.md)
+### [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md)
+### Filter
+#### [Erstellen von Filtern mit dem Azure Media Services .NET SDK](media-services-dotnet-dynamic-manifest.md)
+#### [Codieren eines Medienobjekts mit Media Encoder Standard](media-services-rest-encode-asset.md)
+### Programmgesteuerter Verbindung
 #### [.NET](media-services-dotnet-connect-programmatically.md)
 #### [REST](media-services-rest-connect-programmatically.md)
 
-## Upload content
-### Upload files into an account
-#### [Portal ](media-services-portal-upload-files.md)
+## Hochladen von Inhalten
+### Hochladen von Dateien in ein Konto
+#### [Portal](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST](media-services-rest-upload-files.md)
-### [Copy existing blobs](media-services-copying-existing-blob.md)
+### [Kopieren vorhandener Blobs](media-services-copying-existing-blob.md)
 
-## Encode
-### [Content](media-services-encode-asset.md)
-#### Encode an asset using Media Encoder Standard
+## Codieren
+### [Inhalt](media-services-encode-asset.md)
+#### Codieren eines Medienobjekts mit Media Encoder Standard
 ##### [Portal](media-services-portal-encode.md)
 ##### [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
-#### [How to generate thumbnails using Media Encoder Standard with .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
-#### [Advanced encoding](media-services-advanced-encoding-with-mes.md)
-##### [Media Encoder Premium Workflow](media-services-encode-with-premium-workflow.md)
-##### [Media Encoder Premium Workflow tutorials](media-services-media-encoder-premium-workflow-tutorials.md)
-##### [Create Advanced Encoding Workflows with Workflow Designer](media-services-workflow-designer.md)
-##### [Premium workflow with multiple input](media-services-media-encoder-premium-workflow-multiplefilesinput.md)
+#### [Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
+#### [Erweiterte Codierung](media-services-advanced-encoding-with-mes.md)
+##### [Media Encoder Premium-Workflow](media-services-encode-with-premium-workflow.md)
+##### [Tutorials für den Media Encoder Premium-Workflow](media-services-media-encoder-premium-workflow-tutorials.md)
+##### [Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer](media-services-workflow-designer.md)
+##### [Premium-Workflow mit mehreren Eingaben](media-services-media-encoder-premium-workflow-multiplefilesinput.md)
 
 #### Schemas 
 #####[Media Encoder Standard](media-services-mes-schema.md)
-#####[Input metadata](media-services-input-metadata-schema.md)
-#####[Output metadata](media-services-output-metadata-schema.md)
+#####[Eingeben von Metadaten](media-services-input-metadata-schema.md)
+#####[Ausgeben von Metadaten](media-services-output-metadata-schema.md)
 
-#### Legacy encoders
-##### [Using the Azure Media Packager](media-services-static-packaging.md)
+#### Ältere Encoder
+##### [Verwenden von Azure Media Packager](media-services-static-packaging.md)
 
-### [Live streams](media-services-manage-channels-overview.md)
-#### [On-premise encoders](media-services-live-streaming-with-onprem-encoders.md)
-#### On-premise encoder tutorials
+### [Livestreams](media-services-manage-channels-overview.md)
+#### [Lokale Encoder](media-services-live-streaming-with-onprem-encoders.md)
+#### Tutorials für lokale Encoder
 ##### [Portal](media-services-portal-live-passthrough-get-started.md)
 ##### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-#### [Live streaming with cloud encoder](media-services-manage-live-encoder-enabled-channels.md)
-#### Cloud encoder tutorials
+#### [Livestreaming mit Cloudencoder](media-services-manage-live-encoder-enabled-channels.md)
+#### Tutorials für Cloudencoder
 ##### [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 ##### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-#### [Configure on-premise encoders for use with cloud encoder](media-services-live-encoders-overview.md)
-#### [Handle long-running operations](media-services-dotnet-long-operations.md)
-#### [Fragmented MP4 live ingest specification](media-services-fmp4-live-ingest-overview.md)
-#### [Dynamic packaging](media-services-dynamic-packaging-overview.md)
+#### [Konfigurieren von lokalen Encodern für die Verwendung mit einem Cloudencoder](media-services-live-encoders-overview.md)
+#### [Behandeln von Vorgängen mit langer Ausführungsdauer](media-services-dotnet-long-operations.md)
+#### [Spezifikation für die Liveerfassung von fragmentiertem MP4](media-services-fmp4-live-ingest-overview.md)
+#### [Dynamische Paketerstellung](media-services-dynamic-packaging-overview.md)
 
-### Media Processing
+### Medienverarbeitung
 #### [.NET](media-services-get-media-processor.md)
 #### [REST](media-services-rest-get-media-processor.md)
 
-### Configure encoders for a single bitrate live stream
-#### [Elemental Live encoder](media-services-configure-elemental-live-encoder.md)
-#### [FMLE encoder ](media-services-configure-fmle-live-encoder.md)
-#### [NewTek TriCaster encoder](media-services-configure-tricaster-live-encoder.md)
-#### [Wirecast encoder](media-services-configure-wirecast-live-encoder.md)
+### Konfigurieren von Encodern für einen Single-Bitrate-Livestream
+#### [Elemental Live-Encoder](media-services-configure-elemental-live-encoder.md)
+#### [FMLE-Encoder](media-services-configure-fmle-live-encoder.md)
+#### [NewTek TriCaster-Encoder](media-services-configure-tricaster-live-encoder.md)
+#### [Wirecast-Encoder](media-services-configure-wirecast-live-encoder.md)
 
-## [Protect](media-services-content-protection-overview.md)
-### [Configure content protection in the portal](media-services-portal-protect-content.md)
-### [Configure AES-128 clear key for your stream](media-services-protect-with-aes128.md)
-### [Encrypting your Content with Storage Encryption using AMS REST API](media-services-rest-storage-encryption.md)
-### [Media Services PlayReady License Template Overview](media-services-playready-license-template-overview.md)
-### [DRM license delivery](media-services-deliver-keys-and-licenses.md)
-### [Using partners to deliver Widevine licenses to Azure Media Services](media-services-licenses-partner-integration.md)
-### [Using PlayReady and/or Widevine dynamic common encryption](media-services-protect-with-drm.md)
-### [Use Azure Media Services to Stream your HLS content Protected with Apple FairPlay ](media-services-protect-hls-with-fairplay.md)
-### [CENC with Multi-DRM and Access Control: A Reference Design and Implementation on Azure and Azure Media Services](media-services-cenc-with-multidrm-access-control.md)
+## [Schützen](media-services-content-protection-overview.md)
+### [Konfigurieren von Content Protection im Portal](media-services-portal-protect-content.md)
+### [Konfigurieren eines unverschlüsselten AES-128-Schlüssels für Ihren Datenstrom](media-services-protect-with-aes128.md)
+### [Verschlüsseln von Inhalten mit der Speicherverschlüsselung und AMS-REST-API](media-services-rest-storage-encryption.md)
+### [Media Services PlayReady-Lizenzvorlage – Übersicht](media-services-playready-license-template-overview.md)
+### [DRM-Lizenzbereitstellung](media-services-deliver-keys-and-licenses.md)
+### [Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern](media-services-licenses-partner-integration.md)
+### [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine.](media-services-protect-with-drm.md)
+### [Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten](media-services-protect-hls-with-fairplay.md)
+### [CENC mit mehreren DRM-Systemen und Access Control: Referenzentwurf und -implementierung in Azure und Azure Media Services](media-services-cenc-with-multidrm-access-control.md)
 
-### Asset delivery
-#### Configure asset delivery policies
+### Medienobjektübermittlung
+#### Konfigurieren von Übermittlungsrichtlinien für Medienobjekte
 ##### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
 ##### [REST](media-services-rest-configure-asset-delivery-policy.md)
-### Create ContentKeys
+### Erstellen von ContentKeys
 #### [.NET](media-services-dotnet-create-contentkey.md)
 #### [REST](media-services-rest-create-contentkey.md)
-### Configure content key authorization policy
+### Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
 #### [Portal](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)
 #### [REST](media-services-rest-configure-content-key-auth-policy.md)
 
-## [Analyze](media-services-analytics-overview.md)
-### [Process with Indexer 2](media-services-process-content-with-indexer2.md)
-### [Process with Indexer](media-services-index-content.md)
-### [Process with Hyperlapse](media-services-hyperlapse-content.md)
-### [Process with Face Detector](media-services-face-and-emotion-detection.md)
-### [Process with Motion Detector](media-services-motion-detection.md)
-### [Process with Face redaction](media-services-face-redaction.md)
-### [Process with video thumbnails](media-services-video-summarization.md)
-### [Process with OCR](media-services-video-optical-character-recognition.md)
+## [Analysieren](media-services-analytics-overview.md)
+### [Verarbeiten mit Indexer 2](media-services-process-content-with-indexer2.md)
+### [Verarbeiten mit Indexer](media-services-index-content.md)
+### [Verarbeiten mit Hyperlapse](media-services-hyperlapse-content.md)
+### [Verarbeiten mit Gesichtserkennung](media-services-face-and-emotion-detection.md)
+### [Verarbeiten mit Bewegungserkennung](media-services-motion-detection.md)
+### [Verarbeiten mit Gesichtsbearbeitung](media-services-face-redaction.md)
+### [Verarbeiten mit Videominiaturansichten](media-services-video-summarization.md)
+### [Verarbeiten mit OCR](media-services-video-optical-character-recognition.md)
 
-## Scale
-### [Media Processing](media-services-scale-media-processing-overview.md)
+## Skalieren
+### [Medienverarbeitung](media-services-scale-media-processing-overview.md)
 #### [Portal](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
 #### [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
-### Streaming Endpoints
+### Streamingendpunkte
 #### [Portal](media-services-portal-scale-streaming-endpoints.md)
 
-## [Deliver content](media-services-deliver-content-overview.md)
-### [Filters and dynamic manifests overview](media-services-dynamic-manifest-overview.md)
-### Create filters
+## [Bereitstellen von Inhalten](media-services-deliver-content-overview.md)
+### [Übersicht über Filter und dynamische Manifeste](media-services-dynamic-manifest-overview.md)
+### Erstellen von Filtern
 #### [.NET](media-services-dotnet-dynamic-manifest.md)
 #### [REST](media-services-rest-dynamic-manifest.md)
-### Publish content
+### Veröffentlichen von Inhalten
 #### [Portal](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)
 #### [REST](media-services-rest-deliver-streaming-content.md)
-### [Deliver by Download](media-services-deliver-asset-download.md)
-### [Failover streaming scenario](media-services-implement-failover.md)
+### [Bereitstellen per Download](media-services-deliver-asset-download.md)
+### [Failoverstreamingszenario](media-services-implement-failover.md)
 
-## Consume
-### [Playback media with existing players](media-services-playback-content-with-existing-players.md)
-### [Playback media with Media Player](media-services-develop-video-players.md)
-### Other playback options
-#### [Smooth streaming Windows Store application](media-services-build-smooth-streaming-apps.md)
-#### [HTML5 Application with DASH.js](media-services-embed-mpeg-dash-in-html5.md)
-#### [Adobe Open Source Media Framework players](media-services-use-osmf-smooth-streaming-client-plugin.md)
-### [Insert ads on the client side](media-services-inserting-ads-on-client-side.md)
+## Nutzen
+### [Wiedergeben von Medien mit vorhandenen Playern](media-services-playback-content-with-existing-players.md)
+### [Wiedergeben von Medien mit Media Player](media-services-develop-video-players.md)
+### Weitere Wiedergabeoptionen
+#### [Windows Store-Anwendung mit Smooth Streaming](media-services-build-smooth-streaming-apps.md)
+#### [HTML5-Anwendung mit DASH.js](media-services-embed-mpeg-dash-in-html5.md)
+#### [Adobe Open Source Media Framework-Player](media-services-use-osmf-smooth-streaming-client-plugin.md)
+### [Einfügen von Anzeigen auf Clientseite](media-services-inserting-ads-on-client-side.md)
 
-## Integrate
-### [CDN Caching Policy in Media Services Extension](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
-### [Licensing Microsoft†" Smooth Streaming Client Porting Kit](media-services-sspk.md)
-### [Manage assets across multiple Storage accounts](meda-services-managing-multiple-storage-accounts.md)
-### [Using Axinom to deliver Widevine licenses to Azure Media Services  ](media-services-axinom-integration.md)
-### [Using castLabs to deliver Widevine licenses to Azure Media Services](media-services-castlabs-integration.md)
-### [Widevine License Template Overview](media-services-widevine-license-template-overview.md)
+## Integrieren
+### [CDN-Cachingrichtlinie in der Media Services-Erweiterung](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
+### [Lizenzieren des Portierungskits für den Microsoft†" Smooth Streaming-Client](media-services-sspk.md)
+### [Speicherkontenübergreifendes Verwalten von Assets](meda-services-managing-multiple-storage-accounts.md)
+### [Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom](media-services-axinom-integration.md)
+### [Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs](media-services-castlabs-integration.md)
+### [Übersicht über die Widevine-Lizenzvorlage](media-services-widevine-license-template-overview.md)
 
-## Monitor
-### Check job progress
+## Überwachen
+### Prüfen des Auftragsstatus
 #### [REST](media-services-rest-check-job-progress.md)
 #### [Portal](media-services-portal-check-job-progress.md)
 #### [.NET](media-services-check-job-progress.md)
-### [Queue storage to monitor job notifications](media-services-dotnet-check-job-progress-with-queues.md)
+### [Queue Storage zum Überwachen von Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-queues.md)
 
-## Troubleshoot
-### [Frequently asked questions](media-services-frequently-asked-questions.md)
-### [Troubleshooting guide for live streaming](media-services-troubleshooting-live-streaming.md)
-###[Error codes](media-services-error-codes.md)
-###[Retry logic](media-services-retry-logic-in-dotnet-sdk.md)
+## Problembehandlung
+### [Häufig gestellte Fragen](media-services-frequently-asked-questions.md)
+### [Anleitung zur Behandlung von Problemen bei Livestreaming](media-services-troubleshooting-live-streaming.md)
+###[Fehlercodes](media-services-error-codes.md)
+###[Wiederholungslogik](media-services-retry-logic-in-dotnet-sdk.md)
 
-# Reference
+# Referenz
 ## [Media Services .NET SDK](media-services-dotnet-how-to-use.md)
-## [Media Services REST API](media-services-rest-how-to-use.md)
-## [Media Encoder Premium Workflow Formats and Codecs](media-services-premium-workflow-encoder-formats.md)
-## [Media Encoder Standard Formats and Codecs](media-services-media-encoder-standard-formats.md)
+## [Media Services-REST-API](media-services-rest-how-to-use.md)
+## [Media Encoder Premium Workflow-Formate und -Codecs](media-services-premium-workflow-encoder-formats.md)
+## [Media Encoder Standard-Formate und -Codecs](media-services-media-encoder-standard-formats.md)
 
-# Related
-## [Azure Media Services Community](media-services-community.md)
+# Verwandte Themen
+## [Azure Media Services-Community](media-services-community.md)
 
 
 

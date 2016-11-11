@@ -1,72 +1,78 @@
-# Overview
-## [What is ExpressRoute?](expressroute-introduction.md)
-## [Locations and partners](expressroute-locations.md)
-## [ExpressRoute FAQ](expressroute-faqs.md)
-## [Pricing](https://azure.microsoft.com/pricing/details/expressroute/)
-## [SLA](https://azure.microsoft.com/support/legal/sla/)
-## [Subscription and Service Limits](../azure-subscription-service-limits.md)
-# Get Started
-## [About circuits and routing domains](expressroute-circuit-peerings.md)
+# Übersicht
+## [Was ist ExpressRoute?](expressroute-introduction.md)
+## [Standorte und Partner](expressroute-locations.md)
+## [Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell](expressroute-move.md)
+## Bewährte Methoden
+### [Bewährte Methoden für Netzwerksicherheit und Clouddienste](../best-practices-network-security.md)
+### [Asymmetrisches Routing](expressroute-asymmetric-routing.md)
+
+
+# Erste Schritte
+## [Verbindungen und Routingdomänen](expressroute-circuit-peerings.md)
 ## [Workflows](expressroute-workflows.md)
-## [Prerequisites](expressroute-prerequisites.md)
-## [Routing requirements](expressroute-routing.md)
-## [Optimize routing](expressroute-optimize-routing.md)
-## [NAT requirements](expressroute-nat.md)
-## [QoS requirements](expressroute-qos.md)
-## [Moving circuits from classic to Resource Manager](expressroute-move.md)
-## [About virtual network gateways for ExpressRoute](expressroute-about-virtual-network-gateways.md)
-# How To
-## Create an modify a circuit
-### [Create and modify a circuit using the Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
-### [Create and modify a circuit using PowerShell](expressroute-howto-circuit-arm.md)
-### [Create and modify a circuit using PowerShell (Classic)](expressroute-howto-circuit-classic.md)
-## Create and modify routing configuration
-### [Create and modify routing configuration using the Azure portal](expressroute-howto-routing-portal-resource-manager.md)
-### [Create and modify routing configuration using PowerShell](expressroute-howto-routing-arm.md)
-### [Create and modify routing configuration using PowerShell (Classic)](expressroute-howto-routing-classic.md)
-## Link a virtual network to an ExpressRoute circuit
-### [Link a virtual network to an ExpressRoute circuit using the Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-### [Link a virtual network to an ExpressRoute circuit using PowerShell](expressroute-howto-linkvnet-arm.md)
-### [Link a virtual network to an ExpressRoute circuit using PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
-## Configure a virtual network gateway for ExpressRoute
-### [Configure a virtual network gateway for ExpressRoute using PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-### [Configure a virtual network gateway for ExpressRoute using PowerShell (Classic)](expressroute-howto-add-gateway-classic.md)
-## [Create Site-to-Site and ExpressRoute coexisting connections](expressroute-howto-coexist-classic.md)
-## [Move a circuit from classic to Resource Manager](expressroute-howto-move-arm.md)
-## Best Practices
-### [Best practices for network security and cloud services](../best-practices-network-security.md)
-### [Asymmetric routing](expressroute-asymmetric-routing.md)
-## Troubleshoot
-### Get ARP Tables
-#### [Getting ARP tables](expressroute-troubleshooting-arp-resource-manager.md)
-#### [Getting ARP tables (Classic)](expressroute-troubleshooting-arp-classic.md)
+## [Voraussetzungen](expressroute-prerequisites.md)
+## [Routinganforderungen](expressroute-routing.md)
+## [Optimieren des Routings](expressroute-optimize-routing.md)
+## [NAT-Anforderungen](expressroute-nat.md)
+## [QoS-Anforderungen](expressroute-qos.md)
+## [Gateways für virtuelle Netzwerke für ExpressRoute](expressroute-about-virtual-network-gateways.md)
+## [ExpressRoute – FAQ](expressroute-faqs.md)
+
+# Anleitung
+## Erstellen und Ändern einer Verbindung
+### [Erstellen und Ändern einer Verbindung mit dem Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
+### [Erstellen und Ändern einer Verbindung mithilfe von PowerShell](expressroute-howto-circuit-arm.md)
+### [Erstellen und Ändern einer Verbindung mithilfe von PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
+## Erstellen und Ändern einer Routingkonfiguration
+### [Erstellen und Ändern einer Routingkonfiguration mit dem Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
+### [Erstellen und Ändern einer Routingkonfiguration mithilfe von PowerShell](expressroute-howto-routing-arm.md)
+### [Erstellen und Ändern einer Routingkonfiguration mithilfe von PowerShell (klassisch)](expressroute-howto-routing-classic.md)
+## Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
+### [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mit dem Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe von PowerShell](expressroute-howto-linkvnet-arm.md)
+### [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe von PowerShell (klassisch)](expressroute-howto-linkvnet-classic.md)
+## Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute
+### [Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell](expressroute-howto-add-gateway-resource-manager.md)
+### [Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit PowerShell (klassisch)](expressroute-howto-add-gateway-classic.md)
+## [Erstellen von parallel bestehenden Site-to-Site- und ExpressRoute-Verbindungen](expressroute-howto-coexist-classic.md)
+## [Migrieren einer Verbindung vom klassischen Modell auf das Resource Manager-Modell](expressroute-howto-move-arm.md)
+
+## Problembehandlung
+### [Abrufen von ARP-Tabellen](expressroute-troubleshooting-arp-resource-manager.md)
+### [Abrufen von ARP-Tabellen (klassisch)](expressroute-troubleshooting-arp-classic.md)
+
+
+# Referenz
+## [APIs – Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
+## [APIs – Dienstverwaltung](https://msdn.microsoft.com/library/azure/dn606310)
+## [PowerShell-Cmdlets – Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
+## [PowerShell-Cmdlets – Dienstverwaltung](https://msdn.microsoft.com/library/azure/dn683813)
+## [Setupbeispiele für die Routerkonfiguration](expressroute-config-samples-routing.md)
+## [Beispiele für die Routerkonfiguration für NAT](expressroute-config-samples-nat.md)
+
+# Verwandte Themen 
+## [Virtual Network](../virtual-network/index.md)
+## [VPN Gateway](../vpn-gateway/index.md)
+## [Virtuelle Computer](../virtual-machines/index.md)
+## [Load Balancer](../load-balancer/index.md)
+## [Traffic Manager](../traffic-manager/index.md)
+
+# Ressourcen
+## [Netzwerkblog](https://azure.microsoft.com/blog/topics/networking/)
+## [Fallstudien](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
+## [Preise](https://azure.microsoft.com/pricing/details/expressroute/)
+## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md)
 ## Videos
-### [Create an ExpressRoute circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
-### [How to set up Private Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
-### [Set up Public Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
-### [Set up Microsoft Peering for your circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
-### [Create a virtual network for ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
-### [Create a virtual network gateway for ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
-### [Cconnect a virtual network gateway to a circuit](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
-### [Evolve your network infrastructure for connectivity](https://go.microsoft.com/fwlink/p/?LinkId=615124)
-### [Hybrid partnerships: Enabling on-premises scenarios](https://go.microsoft.com/fwlink/p/?LinkId=615125)
-# Reference
-## [APIs-Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
-## [APIs-Service Management](https://msdn.microsoft.com/library/azure/dn606310)
-## [PowerShell Cmdlets-Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
-## [PowerShell Cmdlets-Service Management](https://msdn.microsoft.com/library/azure/dn683813)
-## [Router configuration setup samples](expressroute-config-samples-routing.md)
-## [Router configuration samples for NAT](expressroute-config-samples-nat.md)
-# Related 
-## [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)
-## [Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/)
-## [VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-## [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-## [Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-## [Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-# Resources
-## [Networking Blog](https://azure.microsoft.com/blog/topics/networking/)
-## [Case Studies](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
+### [Erstellen einer ExpressRoute-Verbindung](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
+### [Einrichten von privatem Peering für Verbindungen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
+### [Einrichten von öffentlichem Peering für Verbindungen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
+### [Einrichten von Microsoft-Peering für Verbindungen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
+### [Erstellen eines virtuellen Netzwerks für ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
+### [Erstellen eines Gateways für ein virtuelles Netzwerk für ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
+### [Herstellen einer Verbindung mit einem Gateway für ein virtuelles Netzwerk](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
+### [Erweitern der Netzwerkinfrastruktur zur Optimierung der Konnektivität](https://go.microsoft.com/fwlink/p/?LinkId=615124)
+### [Partnerschaften für hybride Umgebungen: Umsetzen lokaler Szenarien](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 
 <!--HONumber=Nov16_HO2-->
 

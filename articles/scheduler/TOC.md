@@ -1,30 +1,30 @@
 
 
-# Overview
-## [What is Scheduler?](scheduler-intro.md)
+# Übersicht
+## [Was ist Azure Scheduler?](scheduler-intro.md)
 
-# Get started
-## [Create and manage jobs](scheduler-get-started-portal.md)
+# Erste Schritte
+## [Erstellen und Verwalten von Einzelvorgängen](scheduler-get-started-portal.md)
 
-# How to
-## Plan and design
-### [Plans and billing](scheduler-plans-billing.md)
-### [Quotas and limits](scheduler-limits-defaults-errors.md)
-### [High-availability and reliability](scheduler-high-availability-reliability.md)
+# Anleitung
+## Planen und Entwerfen
+### [Pläne und Abrechnung](scheduler-plans-billing.md)
+### [Kontingente und Grenzwerte](scheduler-limits-defaults-errors.md)
+### [Hohe Verfügbarkeit und Zuverlässigkeit](scheduler-high-availability-reliability.md)
 
-## Develop
-### [Complex schedules using REST API](scheduler-advanced-complexity.md)
+## Entwickeln
+### [Komplexe Zeitpläne mit REST-API](scheduler-advanced-complexity.md)
 
-## Secure
-### [Outbound authentication](scheduler-outbound-authentication.md)
+## Schützen
+### [Ausgehende Authentifizierung](scheduler-outbound-authentication.md)
 
-# Reference
-## [Concepts and terminology](scheduler-concepts-terms.md)
-## [REST API](https://msdn.microsoft.com/library/azure/mt629143)
-## [PowerShell cmdlets](scheduler-powershell-reference.md)
+# Referenz
+## [Konzepte und Terminologie](scheduler-concepts-terms.md)
+## [REST-API](https://msdn.microsoft.com/library/azure/mt629143)
+## [PowerShell-Cmdlets](scheduler-powershell-reference.md)
 
-# Resources
-## [Scheduler Videos](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+# Ressourcen
+## [Videos zu Scheduler](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 
 

@@ -1,22 +1,22 @@
-# Overview
-## [What is Stretch Database?](sql-server-stretch-database-overview.md)
-## [How does pricing work?](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
-# Get Started
-## [Identify databases and tables](sql-server-stretch-database-identify-databases.md)
-## [Limitations and blocking issues](sql-server-stretch-database-limitations.md)
+# Übersicht
+## [Was ist Stretch-Datenbank?](sql-server-stretch-database-overview.md)
+## [Wie ist das Preismodell aufgebaut?](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
+# Erste Schritte
+## [Identifizieren von Datenbanken und Tabellen](sql-server-stretch-database-identify-databases.md)
+## [Einschränkungen und Hindernisse](sql-server-stretch-database-limitations.md)
 
-# How To
-## Enable
-### [Run the wizard](sql-server-stretch-database-wizard.md)
-### [Enable a database](sql-server-stretch-database-enable-database.md)
-### [Enable a table](sql-server-stretch-database-enable-table.md)
-### [Select rows to migrate](sql-server-stretch-database-predicate-function.md)
-## Manage
-### [Monitor data migration](sql-server-stretch-database-monitor.md)
-### [Pause and resume migration](sql-server-stretch-database-pause.md)
-### [Manage and troubleshoot](sql-server-stretch-database-manage.md)
-### [Backup and restore](sql-server-stretch-database-backup.md)
-### [Disable Stretch Database](sql-server-stretch-database-disable.md)
+# Anleitung
+## Aktivieren
+### [Ausführen des Assistenten](sql-server-stretch-database-wizard.md)
+### [Aktivieren einer Datenbank](sql-server-stretch-database-enable-database.md)
+### [Aktivieren einer Tabelle](sql-server-stretch-database-enable-table.md)
+### [Auswählen von Zeilen für die Migration](sql-server-stretch-database-predicate-function.md)
+## Verwalten
+### [Überwachen der Datenmigration](sql-server-stretch-database-monitor.md)
+### [Anhalten und Fortsetzen der Migration](sql-server-stretch-database-pause.md)
+### [Verwaltung und Problembehandlung](sql-server-stretch-database-manage.md)
+### [Sichern und Wiederherstellen](sql-server-stretch-database-backup.md)
+### [Deaktivieren von Stretch-Datenbank](sql-server-stretch-database-disable.md)
 
 
 <!--HONumber=Nov16_HO2-->
