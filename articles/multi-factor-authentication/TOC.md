@@ -1,49 +1,49 @@
-# Overview
-## [What is Azure Multi-Factor Authentication?](multi-factor-authentication.md)
-## [How it Works](multi-factor-authentication-how-it-works.md)
+# Übersicht
+## [Was ist Azure Multi-Factor Authentication?](multi-factor-authentication.md)
+## [Funktionsweise](multi-factor-authentication-how-it-works.md)
 
-# Get started
-## [Choose where to deploy](multi-factor-authentication-get-started.md)
-## [MFA in the cloud](multi-factor-authentication-get-started-cloud.md)
-## [MFA on-premises](multi-factor-authentication-get-started-server.md)
-## [MFA for O365 users](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
-## [Security best practices](multi-factor-authentication-security-best-practices.md)
+# Erste Schritte
+## [Auswählen des Bereitstellungsorts](multi-factor-authentication-get-started.md)
+## [MFA in der Cloud](multi-factor-authentication-get-started-cloud.md)
+## [Lokale MFA](multi-factor-authentication-get-started-server.md)
+## [MFA für O365-Benutzer](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
+## [Bewährte Methoden für die Sicherheit](multi-factor-authentication-security-best-practices.md)
 
-# How to
-## Deploy and use
-### [Create an Auth Provider](multi-factor-authentication-get-started-auth-provider.md)
-### [Configure settings](multi-factor-authentication-whats-next.md)
-### [Reports in MFA](multi-factor-authentication-manage-reports.md)
-### Azure MFA on-premises
-#### [Install the users portal](multi-factor-authentication-get-started-portal.md)
-#### [Advanced VPN Configurations](multi-factor-authentication-advanced-vpn-configurations.md)
-#### [Mobile App Web Service](multi-factor-authentication-get-started-server-webservice.md)
-#### [Windows Authentication](multi-factor-authentication-get-started-server-windows.md)
-#### [Upgrade from PhoneFactor](multi-factor-authentication-get-started-server-upgrade.md)
+# Anleitung
+## Bereitstellen und Verwenden
+### [Erstellen eines Authentifizierungsanbieters](multi-factor-authentication-get-started-auth-provider.md)
+### [Konfigurieren von Einstellungen](multi-factor-authentication-whats-next.md)
+### [MFA-Berichte](multi-factor-authentication-manage-reports.md)
+### Lokale Azure MFA
+#### [Installieren des Benutzerportals](multi-factor-authentication-get-started-portal.md)
+#### [Erweiterte VPN-Konfigurationen](multi-factor-authentication-advanced-vpn-configurations.md)
+#### [Webdienst der mobilen App](multi-factor-authentication-get-started-server-webservice.md)
+#### [Windows-Authentifizierung](multi-factor-authentication-get-started-server-windows.md)
+#### [Upgraden von PhoneFactor](multi-factor-authentication-get-started-server-upgrade.md)
 
-## Manage users
-### [Assign licenses](multi-factor-authentication-get-started-assign-licenses.md)
-### [Enable or disable MFA](multi-factor-authentication-get-started-user-states.md)
-### [User and device settings](multi-factor-authentication-manage-users-and-devices.md)
+## Verwalten von Benutzern
+### [Zuweisen von Lizenzen](multi-factor-authentication-get-started-assign-licenses.md)
+### [Aktivieren oder Deaktivieren der MFA](multi-factor-authentication-get-started-user-states.md)
+### [Benutzer- und Geräteeinstellungen](multi-factor-authentication-manage-users-and-devices.md)
 
-## Integrate
-### [Federation Services](multi-factor-authentication-get-started-adfs.md)
-#### [Use AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
-#### [Use AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
-#### [Use Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
-### Directories
-#### [LDAP Authentication](multi-factor-authentication-get-started-server-ldap.md)
-#### [RADIUS Authentication](multi-factor-authentication-get-started-server-radius.md)
+## Integrieren
+### [Verbunddienste](multi-factor-authentication-get-started-adfs.md)
+#### [Verwenden von AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
+#### [Verwenden von AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
+#### [Verwenden von Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
+### Verzeichnisse
+#### [LDAP-Authentifizierung](multi-factor-authentication-get-started-server-ldap.md)
+#### [RADIUS-Authentifizierung](multi-factor-authentication-get-started-server-radius.md)
 #### [Active Directory](multi-factor-authentication-get-started-server-dirint.md)
-### [IIS web apps](multi-factor-authentication-get-started-server-iis.md)
-### [Remote Desktop Gateway](multi-factor-authentication-get-started-server-rdg.md)
+### [IIS-Web-Apps](multi-factor-authentication-get-started-server-iis.md)
+### [Remotedesktopgateway](multi-factor-authentication-get-started-server-rdg.md)
 
-## Develop applications
-### [Building into Custom Apps (SDK)](multi-factor-authentication-sdk.md)
+## Entwickeln von Anwendungen
+### [Integrieren in benutzerdefinierte Apps (SDK)](multi-factor-authentication-sdk.md)
 
-## Troubleshoot
-### [FAQ](multi-factor-authentication-faq.md)
-### [Ask a question](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
+## Problembehandlung
+### [Häufig gestellte Fragen](multi-factor-authentication-faq.md)
+### [Stellen einer Frage](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 
 
 <!--HONumber=Nov16_HO2-->

@@ -1,40 +1,40 @@
-# Overview
-## [Azure and IoT](iot-suite-what-is-azure-iot.md)
-## [What is IoT Suite?](iot-suite-overview.md)
-## [What are the preconfigured solutions?](iot-suite-what-are-preconfigured-solutions.md)
-## [IoT Suite learning path](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
+# Übersicht
+## [Azure und IoT](iot-suite-what-is-azure-iot.md)
+## [Was ist IoT Suite?](iot-suite-overview.md)
+## [Was sind die vorkonfigurierten Lösungen?](iot-suite-what-are-preconfigured-solutions.md)
+## [Lernpfad für IoT Suite](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 
-# Get Started
-## [Get started with the preconfigured solutions](iot-suite-getstarted-preconfigured-solutions.md)
-## [Permissions on azureiotsuite.com](iot-suite-permissions.md)
-## [Predictive maintenance solution overview](iot-suite-predictive-overview.md)
-## [Remote monitoring solution walkthrough](iot-suite-remote-monitoring-sample-walkthrough.md)
-## [Predictive maintenance solution walkthrough](iot-suite-predictive-walkthrough.md)
+# Erste Schritte
+## [Erste Schritte mit den vorkonfigurierten Lösungen](iot-suite-getstarted-preconfigured-solutions.md)
+## [Berechtigungen für „azureiotsuite.com“](iot-suite-permissions.md)
+## [Übersicht über die Predictive Maintenance-Lösung](iot-suite-predictive-overview.md)
+## [Exemplarische Vorgehensweise zur Remoteüberwachungslösung](iot-suite-remote-monitoring-sample-walkthrough.md)
+## [Exemplarische Vorgehensweise zur Predictive Maintenance-Lösung](iot-suite-predictive-walkthrough.md)
 
-# How To
-## [Connect your device to the remote monitoring solution (Windows)](iot-suite-connecting-devices.md)
-## [Connect your device to the remote monitoring solution (Linux)](iot-suite-connecting-devices-linux.md)
-## [Connect your device to the remote monitoring solution (mbed)](iot-suite-connecting-devices-mbed.md)
-## [Connect your device to the remote monitoring solution (Node)](iot-suite-connecting-devices-node.md)
-## [Connect a Logic App to the remote monitoring solution](iot-suite-logic-apps-tutorial.md)
-## [Customize a preconfigured solution](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
-## [Use dynamic telemetry with the remote monitoring solution](iot-suite-dynamic-telemetry.md)
-## [Device information in the remote monitoring solution](iot-suite-remote-monitoring-device-info.md)
+# Anleitung
+## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (Windows)](iot-suite-connecting-devices.md)
+## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (Linux)](iot-suite-connecting-devices-linux.md)
+## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (mbed)](iot-suite-connecting-devices-mbed.md)
+## [Verbinden Ihres Geräts mit der Remoteüberwachungslösung (Node)](iot-suite-connecting-devices-node.md)
+## [Verbinden einer Logik-App mit der Remoteüberwachungslösung](iot-suite-logic-apps-tutorial.md)
+## [Anpassen vorkonfigurierter Lösungen](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
+## [Verwenden dynamischer Telemetriedaten mit der Remoteüberwachungslösung](iot-suite-dynamic-telemetry.md)
+## [Geräteinformationen in der Remoteüberwachungslösung](iot-suite-remote-monitoring-device-info.md)
 
-# Reference
-## [Security architecture](iot-security-architecture.md)
-## [Security best practices](iot-security-best-practices.md)
-## [Secure your IoT deployment](iot-suite-security-deployment.md)
-## [Security from the ground up](securing-iot-ground-up.md)
+# Referenz
+## [Sicherheitsarchitektur](iot-security-architecture.md)
+## [Bewährte Methoden für die Sicherheit](iot-security-best-practices.md)
+## [Schützen Ihrer IoT-Bereitstellung](iot-suite-security-deployment.md)
+## [Sicherheit von Anfang an](securing-iot-ground-up.md)
 
-# Related
+# Verwandte Themen
 ## [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
 ## [Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 ## [IoT Hub](https://azure.microsoft.com/services/iot-hub/)
 ## [Machine Learning](https://azure.microsoft.com/services/machine-learning/)
 
-# Resources
-## [FAQ](iot-suite-faq.md)
+# Ressourcen
+## [Häufig gestellte Fragen](iot-suite-faq.md)
 
 
 

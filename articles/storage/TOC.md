@@ -1,12 +1,12 @@
-# Overview
+# Übersicht
 
-## [Introduction](storage-introduction.md)
-## [Storage pricing](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [Einführung](storage-introduction.md)
+## [Storage-Preise](https://azure.microsoft.com/pricing/details/storage/blobs/)
 
-# Get Started
+# Erste Schritte
 
-## [Quick start guide](storage-getting-started-guide.md)
-## [Create a storage account](storage-create-storage-account.md)
+## [Kurzanleitung](storage-getting-started-guide.md)
+## [Erstellen Sie ein Speicherkonto](storage-create-storage-account.md)
 
 ## Blob Storage
 ### [.NET](storage-dotnet-how-to-use-blobs.md)
@@ -35,7 +35,7 @@
 ### [PHP](storage-php-how-to-use-queues.md)
 ### [Ruby](storage-ruby-how-to-use-queue-storage.md)
 
-## Table Storage
+## Tabellenspeicher
 ### [.NET](storage-dotnet-how-to-use-tables.md)
 ### [Java](storage-java-how-to-use-table-storage.md)
 ### [Node.js](storage-nodejs-how-to-use-table-storage.md)
@@ -44,21 +44,21 @@
 ### [PHP](storage-php-how-to-use-table-storage.md)
 ### [Ruby](storage-ruby-how-to-use-table-storage.md)
 
-## [Storage samples](storage-samples.md)
+## [Beispiele für Storage](storage-samples.md)
 
-# How To
+# Anleitung
 
 
-## Storage Accounts
-### [General storage accounts](storage-create-storage-account.md)
-### [Blob storage accounts](storage-blob-storage-tiers.md)
-### [Premium Storage accounts](storage-premium-storage.md)
+## Speicherkonten
+### [Allgemeine Speicherkonten](storage-create-storage-account.md)
+### [Blob-Speicherkonten](storage-blob-storage-tiers.md)
+### [Storage Premium-Konten](storage-premium-storage.md)
 
 
 ## Blob Storage
 
 
-### Tutorials
+### Lernprogramme
 #### [.NET](storage-dotnet-how-to-use-blobs.md)
 #### [Java](storage-java-how-to-use-blob-storage.md)
 #### [Node.js](storage-nodejs-how-to-use-blob-storage.md)
@@ -69,20 +69,20 @@
 #### [iOS](storage-ios-how-to-use-blob-storage.md)
 #### [Xamarin](storage-xamarin-blob-storage.md)
 
-### Concepts
-#### [Service overview](https://msdn.microsoft.com/library/dd179376.aspx)
-#### [Hot and cool tiers](storage-blob-storage-tiers.md)
-#### [Custom domains](storage-custom-domain-name.md)
-#### [Import/Export service for Blob storage](storage-import-export-service.md)
-#### [Anonymous access to blobs](storage-manage-access-to-resources.md)
+### Konzepte
+#### [Übersicht über die Dienste](https://msdn.microsoft.com/library/dd179376.aspx)
+#### [„Heiße“ und „kalte“ Ebenen](storage-blob-storage-tiers.md)
+#### [Benutzerdefinierte Domänen](storage-custom-domain-name.md)
+#### [Import/Export-Dienst für Blobspeicher](storage-import-export-service.md)
+#### [Anonymer Zugriff auf Blobs](storage-manage-access-to-resources.md)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)
+### [Beispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)
 
 
 ## Queue Storage
 
 
-### Tutorials
+### Lernprogramme
 #### [.NET](storage-dotnet-how-to-use-queues.md)
 #### [Java](storage-java-how-to-use-queue-storage.md)
 #### [Node.js](storage-nodejs-how-to-use-queues.md)
@@ -91,15 +91,15 @@
 #### [PHP](storage-php-how-to-use-queues.md)
 #### [Ruby](storage-ruby-how-to-use-queue-storage.md)
 
-### [Concepts](https://msdn.microsoft.com/library/dd179353.aspx)
+### [Konzepte](https://msdn.microsoft.com/library/dd179353.aspx)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=queue)
-
-
-## Table Storage
+### [Beispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=queue)
 
 
-### Tutorials
+## Tabellenspeicher
+
+
+### Lernprogramme
 #### [.NET](storage-dotnet-how-to-use-tables.md)
 #### [Java](storage-java-how-to-use-table-storage.md)
 #### [Node.js](storage-nodejs-how-to-use-table-storage.md)
@@ -108,160 +108,160 @@
 #### [PHP](storage-php-how-to-use-table-storage.md)
 #### [Ruby](storage-ruby-how-to-use-table-storage.md)
 
-### Concepts
-#### [Service overview](https://msdn.microsoft.com/library/dd179463.aspx)
-#### [Table design guide](storage-table-design-guide.md)
+### Konzepte
+#### [Übersicht über die Dienste](https://msdn.microsoft.com/library/dd179463.aspx)
+#### [Tabellenentwurfshandbuch](storage-table-design-guide.md)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
+### [Beispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 
 
 ## File Storage
 
 
-### Tutorials
+### Lernprogramme
 #### [Windows, .NET, PowerShell](storage-dotnet-how-to-use-files.md)
 #### [Linux](storage-how-to-use-files-linux.md)
 #### [Java](storage-java-how-to-use-file-storage.md)
 #### [C++](storage-c-plus-plus-how-to-use-files.md)
 #### [Python](storage-python-how-to-use-file-storage.md)
 
-### Concepts
-#### [Service overview](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
-#### [Troubleshoot Azure Files](storage-troubleshoot-file-connection-problems.md)
+### Konzepte
+#### [Übersicht über die Dienste](https://msdn.microsoft.com/en-us/library/dn166972.aspx)
+#### [Problembehandlung für Azure Files](storage-troubleshoot-file-connection-problems.md)
 
-### [Samples](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
-
-
-## Virtual Machine Disks
-
-### Premium Storage
-#### [High-performance storage for VM workloads](storage-premium-storage.md)
-#### [Migrating to Premium Storage](storage-migration-to-premium-storage.md)
-#### [Design for high performance](storage-premium-storage-performance.md)
-
-### Standard Storage
-#### Troubleshoot disk deletion errors
-##### [In a Resource Manager deployment](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-##### [In a classic deployment](storage-cannot-delete-storage-account-container-vhd.md)
-#### [Back up VM disks with incremental snapshots](storage-incremental-snapshots.md)
+### [Beispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 
 
-## Develop with Storage
+## VM-Datenträger
 
-### [Samples](storage-samples.md)
-### General development
-#### [Configure connection strings](storage-configure-connection-string.md)
-#### [Use the Storage Emulator](storage-use-emulator.md)
-#### [Set and retrieve properties and metadata](storage-properties-metadata.md)
+### Storage Premium
+#### [Hochleistungsspeicher für VM-Workloads](storage-premium-storage.md)
+#### [Migrieren zu Storage Premium](storage-migration-to-premium-storage.md)
+#### [Entwerfen für hohe Leistung](storage-premium-storage-performance.md)
+
+### Standardspeicher
+#### Behandeln von Datenträgerlöschfehlern
+##### [In einer Resource Manager-Bereitstellung](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
+##### [In einer klassischen Bereitstellung](storage-cannot-delete-storage-account-container-vhd.md)
+#### [Sichern von Datenträgern durch inkrementelle Momentaufnahmen](storage-incremental-snapshots.md)
 
 
-## Manage Storage
+## Entwickeln mit Storage
+
+### [Beispiele](storage-samples.md)
+### Allgemeine Entwicklung
+#### [Konfigurieren von Verbindungszeichenfolgen](storage-configure-connection-string.md)
+#### [Verwenden des Speicheremulators](storage-use-emulator.md)
+#### [Festlegen und Abrufen von Eigenschaften und Metadaten](storage-properties-metadata.md)
+
+
+## Verwalten von Storage
 
 ### [Azure PowerShell](storage-powershell-guide-full.md)
-### [Azure CLI](storage-azure-cli.md)
+### [Azure-Befehlszeilenschnittstelle](storage-azure-cli.md)
 ### [Azure Automation](automation-manage-storage.md)
 
 
-## Performance & Availability
+## Leistung und Verfügbarkeit
 
-### [Replication](storage-redundancy.md)
-### [Scalability and performance targets](storage-scalability-targets.md)
-### [Performance and scalability checklist](storage-performance-checklist.md)
-### [Concurrency](storage-concurrency.md)
+### [Replikation](storage-redundancy.md)
+### [Skalierbarkeits- und Leistungsziele](storage-scalability-targets.md)
+### [Checkliste zu Leistung und Skalierbarkeit](storage-performance-checklist.md)
+### [Parallelität](storage-concurrency.md)
 
 
-## Security
+## Sicherheit
 
-### [Storage security guide](storage-security-guide.md)
-### [Encryption for data at rest](storage-service-encryption.md)
-### Client-side encryption
+### [Sicherheitsleitfaden zu Storage](storage-security-guide.md)
+### [Verschlüsselung für ruhende Daten](storage-service-encryption.md)
+### clientseitiger Verschlüsselung
 #### [Azure Key Vault](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
-#### [Tutorial: Encrypt and decrypt blobs using Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md)
+#### [Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md)
 
-### [Shared key authentication](https://msdn.microsoft.com/library/dd179428.aspx)
-### [Shared access signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
-### [Anonymous access to blobs](storage-manage-access-to-resources.md)
-
-
-## Monitor & Troubleshoot
-
-### Metrics & Logging
-#### [Storage Analytics](storage-analytics.md)
-#### [Enable and view metrics](storage-enable-and-view-metrics.md)
-#### [Monitor, diagnose, and troubleshoot](storage-monitoring-diagnosing-troubleshooting.md)
-#### [Troubleshooting tutorial](storage-e2e-troubleshooting.md)
-
-### Troubleshoot disk deletion errors
-#### [In a Resource Manager deployment](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-#### [In a classic deployment](storage-cannot-delete-storage-account-container-vhd.md)
-
-### [Troubleshoot File storage](storage-troubleshoot-file-connection-problems.md)
-### [Disaster recovery guidance](storage-disaster-recovery-guidance.md)
+### [Authentifizierung mit gemeinsam verwendetem Schlüssel](https://msdn.microsoft.com/library/dd179428.aspx)
+### [Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)
+### [Anonymer Zugriff auf Blobs](storage-manage-access-to-resources.md)
 
 
-## Transfer Data
+## Überwachung und Problembehandlung
 
-### [Move data to and from Storage](storage-moving-data.md)
-### [AzCopy command-line utility](storage-use-azcopy.md)
-### [Import/Export service for Blob storage](storage-import-export-service.md)
+### Metriken und Protokollierung
+#### [Speicheranalyse](storage-analytics.md)
+#### [Aktivieren und Anzeigen von Metriken](storage-enable-and-view-metrics.md)
+#### [Überwachen, Diagnostizieren und Durchführen der Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md)
+#### [Tutorial zur Problembehandlung](storage-e2e-troubleshooting.md)
+
+### Behandeln von Datenträgerlöschfehlern
+#### [In einer Resource Manager-Bereitstellung](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
+#### [In einer klassischen Bereitstellung](storage-cannot-delete-storage-account-container-vhd.md)
+
+### [Behandeln von Problemen beim Speichern von Dateien](storage-troubleshoot-file-connection-problems.md)
+### [Leitfaden zur Notfallwiederherstellung](storage-disaster-recovery-guidance.md)
+
+
+## Übertragen von Daten
+
+### [Verschieben von Daten in und aus Storage](storage-moving-data.md)
+### [Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
+### [Import/Export-Dienst für Blobspeicher](storage-import-export-service.md)
 
 
 
-# Reference
+# Referenz
 
-## REST APIs
-### [Blob, Queue, Table, and File](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-### [Resource Provider](https://docs.microsoft.com/rest/api/storage/)
+## REST-APIs
+### [Blob, Warteschlange, Tabelle und Datei](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+### [Ressourcenanbieter](https://docs.microsoft.com/rest/api/storage/)
 ### [Import/Export](https://msdn.microsoft.com/library/azure/dn529096.aspx)
 
-## .NET APIs
-### [Blob, Queue, Table, and File](https://docs.microsoft.com/dotnet/api/)
-### [Resource Provider](https://docs.microsoft.com/dotnet/api/)
-### [Data Movement](https://docs.microsoft.com/dotnet/api/)
+## .NET-APIs
+### [Blob, Warteschlange, Tabelle und Datei](https://docs.microsoft.com/dotnet/api/)
+### [Ressourcenanbieter](https://docs.microsoft.com/dotnet/api/)
+### [Datenverschiebung](https://docs.microsoft.com/dotnet/api/)
 
-## [Node.js API](http://azure.github.io/azure-storage-node/)
-## [Java API](https://docs.microsoft.com/java/api/index)
-## [C++ API](http://azure.github.io/azure-storage-cpp/)
-## [PowerShell Reference](https://docs.microsoft.com/powershell/)
-## [Azure CLI Reference](https://docs.microsoft.com/cli/azure/storage)
-
-
-
-# Related
-
-## Classic Portal
-### [Create storage account](storage-create-storage-account-classic-portal.md)
-### [Enable and view metrics](storage-enable-and-view-metrics-classic-portal.md)
-### [Monitor, diagnose, and troubleshoot](storage-monitoring-diagnosing-troubleshooting-classic-portal.md)
-### [Troubleshooting tutorial](storage-e2e-troubleshooting-classic-portal.md)
+## [Node.js-API](http://azure.github.io/azure-storage-node/)
+## [Java-API](https://docs.microsoft.com/java/api/index)
+## [C++-API](http://azure.github.io/azure-storage-cpp/)
+## [PowerShell-Referenz](https://docs.microsoft.com/powershell/)
+## [Azure-CLI-Referenz](https://docs.microsoft.com/cli/azure/storage)
 
 
 
-# Resources
+# Verwandte Themen
 
-## Azure Storage Explorer
-### [Storage Explorer (Preview)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
-### [Manage blobs with Storage Explorer (Preview)](../vs-azure-tools-storage-explorer-blobs.md)
+## Klassisches Portal
+### [Erstellen eines Speicherkontos](storage-create-storage-account-classic-portal.md)
+### [Aktivieren und Anzeigen von Metriken](storage-enable-and-view-metrics-classic-portal.md)
+### [Überwachen, Diagnostizieren und Durchführen der Problembehandlung](storage-monitoring-diagnosing-troubleshooting-classic-portal.md)
+### [Tutorial zur Problembehandlung](storage-e2e-troubleshooting-classic-portal.md)
 
-## [Azure Storage client tools](storage-explorers.md)
 
-## Community support
+
+# Ressourcen
+
+## Azure-Speicher-Explorer
+### [Speicher-Explorer (Vorschau)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+### [Verwalten von Blobs mit Speicher-Explorer (Vorschau)](../vs-azure-tools-storage-explorer-blobs.md)
+
+## [Azure Storage-Clienttools](storage-explorers.md)
+
+## Communityunterstützung
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
-### [MSDN Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+### [MSDN-Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 
-## Nuget packages
-### [Azure Storage Client Library for .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
-### [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
-### [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+## NuGet-Pakete
+### [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
+### [Azure Storage-Datenverschiebungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
+### [Azure-Konfigurations-Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 
-## Source code
+## Quellcode
 
 ### .NET
-#### [Blob, Queue, Table, and File](https://docs.microsoft.com/dotnet/api/)
-#### [Data Movement](https://docs.microsoft.com/dotnet/api/)
-#### [Resource Provider](https://docs.microsoft.com/dotnet/api/)
+#### [Blob, Warteschlange, Tabelle und Datei](https://docs.microsoft.com/dotnet/api/)
+#### [Datenverschiebung](https://docs.microsoft.com/dotnet/api/)
+#### [Ressourcenanbieter](https://docs.microsoft.com/dotnet/api/)
 
 ### [Node.js](http://azure.github.io/azure-storage-node/)
 ### [Java](https://github.com/Azure/azure-storage-java)
