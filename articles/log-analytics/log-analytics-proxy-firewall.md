@@ -1,19 +1,23 @@
 ---
 title: Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics | Microsoft Docs
-description: Konfigurieren Sie Proxy- und Firewalleinstellungen, wenn die Agents oder OMS-Dienste bestimmte Ports verwenden müssen.
+description: "Konfigurieren Sie Proxy- und Firewalleinstellungen, wenn die Agents oder OMS-Dienste bestimmte Ports verwenden müssen."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: b55ebd80-efd4-4220-971b-c18aea1b1ab2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/23/2016
+ms.date: 11/11/2016
 ms.author: banders;magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 36c8f482a55135623865814bd384ac98ae214fa3
+
 
 ---
 # <a name="configure-proxy-and-firewall-settings-in-log-analytics"></a>Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics
@@ -78,8 +82,8 @@ In der folgenden Tabelle sind die Ports im Zusammenhang mit diesen Aufgaben aufg
 
 > [!NOTE]
 > In einigen der folgenden Ressourcen werden Advisor und Operational Insights erwähnt, es handelt sich um vorherige Versionen von OMS. Die aufgelisteten Ressourcen werden jedoch in Zukunft geändert.
-> 
-> 
+>
+>
 
 Es folgt eine Liste der Ressourcen und Ports für Agents:<br>
 
@@ -137,7 +141,7 @@ Verwenden Sie die folgenden Verfahren, um die Operations Manager-Verwaltungsgrup
  Anmeldeinformationen und Einstellungen von Proxyservern müssen an verwaltete Computer weitergegeben werden, die an OMS Bericht erstatten. Diese Server sollten sich in der *Microsoft System Center Advisor-Überwachungsservergruppe*befinden. Anmeldeinformationen werden in der Registrierung jedes Servers in der Gruppe verschlüsselt.
 
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
-2. Wählen Sie unter **RunAs Configuration** (RunAs-Konfiguration) die Option **Profiles** (Profile) aus.
+2. Wählen Sie unter **RunAs Configuration** (RunAs-Konfiguration) die Option **Profile** aus.
 3. Öffnen Sie das Profil **System Center Advisor Run As Profile Proxy** .  
     ![Abbildung des Profils „System Center Advisor Run As Proxy“ (System Center Advisor: ausführender Proxy)](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
 4. Klicken Sie im Assistenten für das ausführende Profil auf **Hinzufügen** , um ein ausführendes Konto zu verwenden. Sie können ein neues ausführendes Konto erstellen oder ein vorhandenes Konto verwenden. Dieses Konto muss über ausreichende Berechtigungen für die Weiterleitung über den Proxyserver verfügen.  
@@ -171,6 +175,8 @@ Wenn Sie Lösungen zu OMS hinzugefügt haben, können Sie sie in der Operations 
 * [Fügen Sie Log Analytics-Lösungen aus dem Lösungskatalog hinzu](log-analytics-add-solutions.md) , um Funktionen hinzuzufügen und Daten zu sammeln.
 * Machen Sie sich mit [Protokollsuchvorgängen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 
