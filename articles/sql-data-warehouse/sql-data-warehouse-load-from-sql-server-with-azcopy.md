@@ -1,25 +1,29 @@
 ---
 title: Laden von Daten aus SQL Server in Azure SQL Data Warehouse (PolyBase) | Microsoft Docs
-description: Verwendet bcp zum Exportieren von Daten aus SQL Server in Flatfiles, AZCopy zum Importieren von Daten in Azure-Blobspeicher und PolyBase zum Erfassen der Daten in Azure SQL Data Warehouse.
+description: Verwendet BCP zum Exportieren von Daten aus SQL Server in Flatfiles, AZCopy zum Importieren von Daten in Azure-Blobspeicher und PolyBase zum Erfassen der Daten in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 4d42786a-fb28-43c9-9c3b-72d19c0ecc11
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/30/2016
-ms.author: cakarst;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f3a4ad30d1aa0ec273b6b875b0d2d037005ac159
+
 
 ---
-# Laden von Daten aus SQL Server in Azure SQL Data Warehouse (AZCopy)
-Verwenden Sie bcp und AZCopy-Befehlszeilenprogramme zum Laden von Daten aus SQL Server in den Azure-Blobspeicher. Verwenden Sie anschließend PolyBase oder Azure Data Factory, um die Daten in Azure SQL Data Warehouse zu laden.
+# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-azcopy"></a>Laden von Daten aus SQL Server in Azure SQL Data Warehouse (AZCopy)
+Verwenden Sie bcp und AZCopy-Befehlszeilenprogramme zum Laden von Daten aus SQL Server in den Azure-Blobspeicher. Verwenden Sie anschließend PolyBase oder Azure Data Factory, um die Daten in Azure SQL Data Warehouse zu laden. 
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Eine SQL Data Warehouse-Datenbank
@@ -31,10 +35,10 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 > 
 > 
 
-## Importieren von Daten in SQL Data Warehouse
+## <a name="import-data-into-sql-data-warehouse"></a>Importieren von Daten in SQL Data Warehouse
 In diesem Lernprogramm erstellen Sie eine Tabelle in Azure SQL Data Warehouse und importieren Daten in die Tabelle.
 
-### Schritt 1: Erstellen einer Tabelle in Azure SQL Data Warehouse
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>Schritt 1: Erstellen einer Tabelle in Azure SQL Data Warehouse
 Verwenden Sie sqlcmd von einer Befehlszeile aus zum Ausführen der folgenden Abfrage, um eine Tabelle für Ihre Instanz zu erstellen:
 
 ```sql
@@ -54,12 +58,12 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> In der [Übersicht über Tabellen][Übersicht über Tabellen] und unter [CREATE TABLE][CREATE TABLE] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
+> In der [Übersicht über Tabellen][Übersicht über Tabellen] oder unter [CREATE TABLE (Azure SQL Data Warehouse)][CREATE TABLE (Azure SQL Data Warehouse)] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
 > 
 > 
 
-### Schritt 2: Erstellen einer Quelldatendatei
-Öffnen Sie Editor, kopieren Sie die folgenden Datenzeilen in eine neue Textdatei, und speichern Sie diese Datei im lokalen temporären Verzeichnis C:\\Temp\\DimDate2.txt.
+### <a name="step-2-create-a-source-data-file"></a>Schritt 2: Erstellen einer Quelldatendatei
+Öffnen Sie Editor, kopieren Sie die folgenden Datenzeilen in eine neue Textdatei, und speichern Sie diese Datei im lokalen temporären Verzeichnis C:\Temp\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -81,7 +85,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 > 
 > 
 
-### Schritt 3: Herstellen einer Verbindung und Importieren von Daten
+### <a name="step-3-connect-and-import-the-data"></a>Schritt 3: Herstellen einer Verbindung und Importieren von Daten
 Sie können mit bcp eine Verbindung herstellen und die Daten mit dem folgenden Befehl importieren (ersetzen Sie die Werte nach Bedarf):
 
 ```sql
@@ -111,7 +115,7 @@ Daraufhin sollten Sie folgende Ergebnisse erhalten:
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-### Schritt 4: Erstellen von Statistiken für die neu geladenen Daten
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Schritt 4: Erstellen von Statistiken für die neu geladenen Daten
 Azure SQL Data Warehouse bietet noch keine Unterstützung für die automatische Erstellung oder die automatische Aktualisierung von Statistiken. Um die beste Leistung bei Abfragen zu erhalten, ist es wichtig, dass die Statistiken für alle Spalten aller Tabellen nach dem ersten Laden oder nach allen wesentlichen Datenänderungen erstellt werden. Eine ausführliche Erläuterung der Statistik finden Sie im Thema [Statistiken][Statistiken] in der Entwicklungsgruppe der Themen. Es folgt ein kurzes Beispiel, wie Sie Statistiken für die in diesem Beispiel geladene Tabelle erstellen können.
 
 Führen Sie die folgenden CREATE STATISTICS-Anweisungen über eine sqlcmd-Eingabeaufforderung aus:
@@ -124,10 +128,10 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-## Exportieren von Daten aus SQL Data Warehouse
-In diesem Lernprogramm erstellen Sie eine Datendatei aus einer Tabelle in SQL Data Warehouse. Wir werden die oben erstellten Daten in eine neue Datendatei namens "DimDate2\_export.txt" exportieren.
+## <a name="export-data-from-sql-data-warehouse"></a>Exportieren von Daten aus SQL Data Warehouse
+In diesem Lernprogramm erstellen Sie eine Datendatei aus einer Tabelle in SQL Data Warehouse. Wir werden die oben erstellten Daten in eine neue Datendatei namens "DimDate2_export.txt" exportieren.
 
-### Schritt 1: Exportieren der Daten
+### <a name="step-1-export-the-data"></a>Schritt 1: Exportieren der Daten
 Sie können mit dem Dienstprogramm bcp eine Verbindung herstellen und die Daten mit dem folgenden Befehl exportieren (ersetzen Sie die Werte nach Bedarf):
 
 ```sql
@@ -155,8 +159,9 @@ Sie können überprüfen, ob die Daten ordnungsgemäß exportiert wurden, indem 
 > 
 > 
 
-## Nächste Schritte
-Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][Laden von Daten in SQL Data Warehouse]. Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für SQL Data Warehouse][Entwicklungsübersicht für SQL Data Warehouse].
+## <a name="next-steps"></a>Nächste Schritte
+Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Warehouse][Laden von Daten in SQL Data Warehouse].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für SQL Data Warehouse][Entwicklungsübersicht für SQL Data Warehouse].
 
 <!--Image references-->
 
@@ -164,7 +169,7 @@ Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Wa
 
 [Laden von Daten in SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
 [Entwicklungsübersicht für SQL Data Warehouse]: ./sql-data-warehouse-overview-develop.md
-[Übersicht über Tabellen]: ./sql-data-warehouse-tables-overview.md
+[Tabellenübersicht]: ./sql-data-warehouse-tables-overview.md
 [Statistiken]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
@@ -174,4 +179,8 @@ Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Wa
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

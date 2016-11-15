@@ -1,77 +1,81 @@
 ---
 title: Verbinden mit Azure SQL Data Warehouse | Microsoft Docs
-description: 'Gewusst wie: Suchen des Servernamens und der Verbindungszeichenfolge für Azure SQL Data Warehouse'
+description: "Gewusst wie: Suchen des Servernamens und der Verbindungszeichenfolge für Azure SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
-author: sonyam
-manager: barbkess
-editor: ''
-
+author: barbkess
+manager: jhubbard
+editor: 
+ms.assetid: e52872ca-ae74-4e25-9c56-d49c85c8d0f0
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 09/26/2016
-ms.author: sonyama;barbkess
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 106b9e8b5fd3461655527004fa7a65bbab9b3182
+
 
 ---
-# Verbinden mit Azure SQL Data Warehouse
+# <a name="connect-to-azure-sql-data-warehouse"></a>Verbinden mit Azure SQL Data Warehouse
 Dieser Artikel unterstützt Sie beim erstmaligen Herstellen einer Verbindung mit SQL Data Warehouse.
 
-## Suchen des Servernamens
-Um eine Verbindung mit SQL Data Warehouse herstellen zu können, müssen Sie zunächst wissen, wie Sie den Servernamen finden. Der Servername im folgenden Beispiel lautet etwa „sample.database.windows.net“. So ermitteln Sie den vollqualifizierten Servernamen
+## <a name="find-your-server-name"></a>Suchen des Servernamens
+Um eine Verbindung mit SQL Data Warehouse herstellen zu können, müssen Sie zunächst wissen, wie Sie den Servernamen finden.  Der Servername im folgenden Beispiel lautet etwa „sample.database.windows.net“. So ermitteln Sie den vollqualifizierten Servernamen
 
-1. Öffnen Sie das [Azure-Portal][Azure-Portal].
-2. Klicken Sie auf **SQL-Datenbanken**.
+1. Gehen Sie zum [Azure-Portal][Azure-Portal].
+2. Klicken Sie auf **SQL-Datenbanken** 
 3. Klicken Sie auf die Datenbank, mit der Sie eine Verbindung herstellen möchten.
 4. Suchen Sie den vollständigen Servernamen.
    
     ![Vollständiger Servername][1]
 
-## Unterstützte Treiber und Verbindungszeichenfolgen
-Azure SQL Data Warehouse unterstützt [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] und [JDBC][JDBC]. Klicken Sie auf einen der genannten Treiber, um zur neuesten Version und Dokumentation zu gelangen. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber können Sie im Azure-Portal auf **Datenbank-Verbindungszeichenfolgen anzeigen** klicken, wie im vorherigen Beispiel zu sehen. Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
+## <a name="supported-drivers-and-connection-strings"></a>Unterstützte Treiber und Verbindungszeichenfolgen
+Azure SQL Data Warehouse unterstützt [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] und [JDBC][JDBC]. Klicken Sie auf einen der genannten Treiber, um zur neuesten Version und Dokumentation zu gelangen. Zur automatischen Erstellung der Verbindungszeichenfolge für den verwendeten Treiber können Sie im Azure-Portal auf **Datenbank-Verbindungszeichenfolgen anzeigen** klicken, wie im vorherigen Beispiel zu sehen.  Im Anschluss finden Sie auch einige Beispielverbindungszeichenfolgen für die einzelnen Treiber.
 
 > [!NOTE]
 > Es empfiehlt sich, das Verbindungstimeout auf 300 Sekunden festzulegen, damit die Verbindung bei kurzen Ausfällen bestehen bleibt.
 > 
 > 
 
-### Beispielverbindungszeichenfolge für ADO.NET
+### <a name="adonet-connection-string-example"></a>Beispielverbindungszeichenfolge für ADO.NET
 ```C#
 Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 ```
 
-### Beispielverbindungszeichenfolge für ODBC
+### <a name="odbc-connection-string-example"></a>Beispielverbindungszeichenfolge für ODBC
 ```C#
 Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows.net,1433;Database={your_database};Uid={your_user_name};Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
 ```
 
-### Beispielverbindungszeichenfolge für PHP
+### <a name="php-connection-string-example"></a>Beispielverbindungszeichenfolge für PHP
 ```PHP
-Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( "sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}", "{your_user_name}", "{your_password_here}");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( "Error connecting to SQL Server." );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array("UID" => "{your_user_name}", "pwd" => "{your_password_here}", "Database" => "{your_database}", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);\r\n$serverName = "tcp:{your_server}.database.windows.net,1433";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
 ```
 
-### Beispielverbindungszeichenfolge für JDBC
+### <a name="jdbc-connection-string-example"></a>Beispielverbindungszeichenfolge für JDBC
 ```Java
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
-## Verbindungseinstellungen
+## <a name="connection-settings"></a>Verbindungseinstellungen
 Bei der Verbindungs- und Objekterstellung werden von SQL Data Warehouse einige Einstellungen standardisiert. Diese Einstellungen können nicht überschrieben werden:
 
 | Datenbankeinstellung | Wert |
 |:--- |:--- |
-| [ANSI\_NULLS][ANSI\_NULLS] |EIN |
-| [QUOTED\_IDENTIFIERS][QUOTED\_IDENTIFIERS] |EIN |
+| [ANSI_NULLS][ANSI_NULLS] |EIN |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |EIN |
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen mit Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse (Visual Studio)][Abfragen von Azure SQL Data Warehouse (Visual Studio)]. Weitere Informationen zu Authentifizierungsoptionen finden Sie unter [Authentifizierung in Azure SQL Data Warehouse][Authentifizierung in Azure SQL Data Warehouse].
 
 <!--Articles-->
-[Abfragen von Azure SQL Data Warehouse (Visual Studio)]: ./sql-data-warehouse-query-visual-studio.md
+[Abfragen mit Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
 [Authentifizierung in Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
@@ -79,8 +83,8 @@ Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen 
 [ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
 [PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
 [JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-[ANSI\_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
-[QUOTED\_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
+[ANSI_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
+[QUOTED_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
 [DATEFORMAT]: https://msdn.microsoft.com/library/ms189491.aspx
 [DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
 
@@ -90,4 +94,10 @@ Informationen zum Herstellen einer Verbindung und zum Durchführen von Abfragen 
 <!--Image references-->
 [1]: media/sql-data-warehouse-connect-overview/get-server-name.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

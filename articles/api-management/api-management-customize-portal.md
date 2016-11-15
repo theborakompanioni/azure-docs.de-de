@@ -2,27 +2,31 @@
 title: Anpassen des Entwicklerportals in Azure API Management | Microsoft Docs
 description: Erfahren Sie, wie Sie das Entwicklerportal in Azure API Management anpassen.
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/24/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 398b845a6549341d6afba101acec9eefd146d810
+
 
 ---
-# Anpassen des Entwicklerportals in Azure API Management
+# <a name="customize-the-developer-portal-in-azure-api-management"></a>Anpassen des Entwicklerportals in Azure API Management
 Diese Anleitung beschreibt, wie Sie das Erscheinungsbild des Entwicklerportals in Azure API Management an Ihre Marke anpassen können.
 
 ## <a name="change-page-headers"> </a>Ändern des Texts oder Logos in der Kopfzeile
 Einer der Schlüsselaspekte der Portalanpassung ist die Möglichkeit, den Text am oberen Rand aller Seiten durch Ihren Firmennamen oder Ihr Logo zu ersetzen.
 
-Die Inhalte im Entwicklerportal werden über das Herausgeberportal geändert, das im klassischen Azure-Portal aufgerufen werden kann. Um auf das API-Herausgeberportal zuzugreifen, klicken Sie im klassischen Azure-Portal für Ihren API Management-Dienst auf **Verwalten**.
+Die Inhalte im Entwicklerportal werden über das Herausgeberportal geändert, das im Azure-Portal aufgerufen werden kann. Um dorthin zu gelangen, klicken Sie auf der Dienstsymbolleiste Ihrer API Management-Instanz auf **Herausgeberportal**.
 
 ![Herausgeberportal][api-management-management-console]
 
@@ -30,11 +34,11 @@ Das Entwicklerportal basiert auf einem Content Management-System oder CMS. Bei d
 
 ![Kopfzeilen-Widget][api-management-widgets-header]
 
-Sie können den Inhalt der Fußzeile im Feld **Body** bearbeiten. Ändern Sie den Text in "Fabrikam-Entwicklerportal", und klicken Sie dann unten in der Seite auf **Speichern**.
+Sie können den Inhalt der Fußzeile im Feld **Body** bearbeiten. Ändern Sie den Text in "Fabrikam-Entwicklerportal", und klicken Sie dann unten in der Seite auf **Speichern** .
 
 Die neue Kopfzeile wird jetzt auf allen Seiten im Entwicklerportal angezeigt.
 
-> Klicken Sie in der oberen Leiste auf **Entwicklerportal**, um das Entwicklerportal aus dem Herausgeberportal zu öffnen.
+> Klicken Sie in der oberen Leiste auf **Entwicklerportal** , um das Entwicklerportal aus dem Herausgeberportal zu öffnen.
 > 
 > 
 
@@ -59,11 +63,11 @@ Jede Regel steht für eine Stileigenschaft des ausgewählten Elements. Der ausge
 
 ![Farbauswahl][api-management-customization-toolbar-color-picker]
 
-Wenn Sie die Änderungen an den Stilen des ausgewählten Elements abgeschlossen haben, klicken Sie auf **Vorschau der Änderungen anzeigen**, um das Resultat auf dem Bildschirm anzuzeigen. Zu diesem Zeitpunkt sind die Änderungen nur für Administratoren sichtbar. Um die Änderungen für alle Benutzer sichtbar zu machen, klicken Sie im Stil-Editor auf **Veröffentlichen**, und bestätigen Sie die Änderungen.
+Wenn Sie die Änderungen an den Stilen des ausgewählten Elements abgeschlossen haben, klicken Sie auf **Vorschau der Änderungen anzeigen** , um das Resultat auf dem Bildschirm anzuzeigen. Zu diesem Zeitpunkt sind die Änderungen nur für Administratoren sichtbar. Um die Änderungen für alle Benutzer sichtbar zu machen, klicken Sie im Stil-Editor auf **Veröffentlichen** , und bestätigen Sie die Änderungen.
 
 ![Veröffentlichungsmenü][api-management-customization-toolbar-publish-form]
 
-> Wenn Sie die Stilregeln für ein anderes Element auf der Seite ändern möchten, gehen Sie auf die gleiche Weise wie für die Kopfzeile vor. Klicken Sie im Stil-Editor auf **Element auswählen**, wählen Sie das betreffende Element aus, und ändern Sie die Werte der auf dem Bildschirm angezeigten Stilregeln.
+> Wenn Sie die Stilregeln für ein anderes Element auf der Seite ändern möchten, gehen Sie auf die gleiche Weise wie für die Kopfzeile vor. Klicken Sie im Stil-Editor auf **Element auswählen** , wählen Sie das betreffende Element aus, und ändern Sie die Werte der auf dem Bildschirm angezeigten Stilregeln.
 > 
 > 
 
@@ -74,21 +78,21 @@ Klicken Sie im Menü **Entwicklerportal** des Herausgeberportals auf **Inhalte**
 
 ![Inhalt verwalten][api-management-customization-manage-content]
 
-Klicken Sie auf die Willkommensseite, um den Inhalt zu bearbeiten, der auf der Startseite des Entwicklerportals angezeigt wird. Nehmen Sie die gewünschten Änderungen vor, zeigen Sie die Änderungen in einer Vorschau an, und klicken Sie anschließend auf **Jetzt veröffentlichen**, um sie für alle Benutzer sichtbar zu machen.
+Klicken Sie auf die **Willkommensseite**, um den Inhalt zu bearbeiten, der auf der Startseite des Entwicklerportals angezeigt wird. Nehmen Sie die gewünschten Änderungen vor, zeigen Sie die Änderungen in einer Vorschau an, und klicken Sie anschließend auf **Jetzt veröffentlichen**, um sie für alle Benutzer sichtbar zu machen.
 
 > Die Startseite verwendet ein spezielles Layout, mit dem ein Banner am oberen Rand angezeigt werden kann. Dieses Banner kann nicht im Abschnitt **Inhalt** bearbeitet werden. Um dieses Banner zu bearbeiten, klicken Sie im **Entwicklerportal** auf **Widgets**, wählen Sie in der Dropdownliste **Aktuelle Ebene** die Ebene **Startseite** aus, und öffnen Sie dann im Abschnitt **Ausgewählte** das Element **Banner**. Sie können den Inhalt dieses Widgets ebenso wie alle anderen Seiten bearbeiten.
 > 
 > 
 
 ## <a name="next-steps"> </a>Nächste Schritte
-* Erfahren Sie, wie Sie den Inhalt von Enwicklerportalseiten mithilfe von [Entwicklerportalvorlagen](api-management-developer-portal-templates.md) anpassen.
+* Erfahren Sie, wie Sie den Inhalt von Enwicklerportalseiten mithilfe von [Entwicklerportalvorlagen](api-management-developer-portal-templates.md)anpassen.
 
-[Change the text/logo in the page headers]: #change-page-headers
-[Change the styling of the headers]: #change-headers-styling
-[Edit the contents of a page]: #edit-page-contents
-[Next steps]: #next-steps
+[Ändern von Text/Logo in den Kopfzeilen]: #change-page-headers
+[Ändern des Stils der Kopfzeilen]: #change-headers-styling
+[Bearbeiten der Seiteninhalte]: #edit-page-contents
+[Nächste Schritte]: #next-steps
 
-[Azure Classic Portal]: https://manage.windowsazure.com/
+[Klassisches Azure-Portal]: https://manage.windowsazure.com/
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
@@ -101,4 +105,8 @@ Klicken Sie auf die Willkommensseite, um den Inhalt zu bearbeiten, der auf der S
 [bootstrap]: http://getbootstrap.com/
 [LESS-Variablen]: http://getbootstrap.com/css/
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

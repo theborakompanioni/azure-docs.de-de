@@ -1,12 +1,12 @@
 ---
 title: Python-Web- und -Workerrollen mit Visual Studio | Microsoft Docs
-description: Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen.
+description: "Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen."
 services: cloud-services
 documentationcenter: python
 author: thraka
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 5489405d-6fa9-4b11-a161-609103cbdc18
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,20 +14,24 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 08/03/2016
 ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
 Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und -Workerrollen mit [Python-Tools für Visual Studio][Python-Tools für Visual Studio]. Sie erfahren, wie Sie mit Visual Studio einen einfachen Clouddienst, für den Python verwendet wird, erstellen und bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Visual Studio 2013 oder 2015
+* Visual Studio 2013 oder 2015
 * [Python-Tools für Visual Studio][Python-Tools für Visual Studio] (PTVS)
-* [Azure SDK-Tools für VS 2013][] oder [Azure SDK-Tools für VS 2015][]
-* [Python 2.7 32 Bit][] oder [Python 3.5 32 Bit][]
+* [Azure SDK-Tools für VS 2013][Azure SDK-Tools für VS 2013] oder [Azure SDK-Tools für VS 2015][Azure SDK-Tools für VS 2015]
+* [Python 2.7 (32 Bit)][Python 2.7 (32 Bit)] oder [Python 3.5 (32 Bit)][Python 3.5 (32 Bit)]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-## <a name="what-are-python-web-and-worker-roles?"></a>Was sind Python-Web- und Workerrollen?
+## <a name="what-are-python-web-and-worker-roles"></a>Was sind Python-Web- und Workerrollen?
 Azure stellt drei Modelle bereit, die Sie zum Ausführen von Anwendungen verwenden können: [Web-Apps-Feature in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms][Azure Cloud Services][execution model-cloud services]. Alle drei Modelle unterstützen Python. Cloud Services, die auch Web- und Workerrollen umfassen, ermöglichen *Platform as a Service (PaaS)*. In einem Cloud-Dienst bietet eine Webrolle einen speziellen IIS-Webserver (Internet Information Services), um Front-End-Webanwendungen zu hosten, während eine Workerrolle asynchrone, langfristige oder fortwährende Aufgaben ausführen kann, die unabhängig von einer Benutzerinteraktion oder -eingabe sind.
 
 Weitere Informationen finden Sie unter [Was ist ein Clouddienst?].
@@ -56,7 +60,7 @@ Sie können Web- oder Workerrollen jederzeit zu einem vorhandenen Cloud-Dienst h
 
 ![Befehl "Rolle hinzufügen"](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
-Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden.  Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren.  Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
+Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden.  Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren.  Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
 
 ## <a name="install-python-on-the-cloud-service"></a>Installieren von Python im Clouddienst
 > [!WARNING]
@@ -110,7 +114,7 @@ Die Variablen **PYTHON2** und **PYPATH** müssen der Workerstartaufgabe hinzugef
 </Runtime>
 ```
 
-#### <a name="sample-servicedefinition.csdef"></a>Beispieldatei „ServiceDefinition.csdef“
+#### <a name="sample-servicedefinitioncsdef"></a>Beispieldatei „ServiceDefinition.csdef“
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="AzureCloudServicePython" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -161,7 +165,7 @@ Die Variablen **PYTHON2** und **PYPATH** müssen der Workerstartaufgabe hinzugef
 
 Erstellen Sie als Nächstes die Dateien **PrepPython.ps1** und **PipInstaller.ps1** im Ordner **./bin** Ihrer Rolle.
 
-#### <a name="preppython.ps1"></a>PrepPython.ps1
+#### <a name="preppythonps1"></a>PrepPython.ps1
 Mit diesem Skript wird Python installiert. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 installiert. Andernfalls wird Python 3.5 installiert.
 
 ```powershell
@@ -207,7 +211,7 @@ if (-not $is_emulated){
 }
 ```
 
-#### <a name="pipinstaller.ps1"></a>PipInstaller.ps1
+#### <a name="pipinstallerps1"></a>PipInstaller.ps1
 Mit diesem Skript wird PIP aufgerufen, und alle Abhängigkeiten in der Datei **requirements.txt** werden installiert. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet, andernfalls Python 3.5.
 
 ```powershell
@@ -235,7 +239,7 @@ if (-not $is_emulated){
 }
 ```
 
-#### <a name="modify-launchworker.ps1"></a>Ändern von „LaunchWorker.ps1“
+#### <a name="modify-launchworkerps1"></a>Ändern von „LaunchWorker.ps1“
 > [!NOTE]
 > Im Fall eines **Workerrollenprojekts** ist zum Ausführen der Startdatei die Datei **LauncherWorker.ps1** erforderlich. In einem **Webrollenprojekt** wird stattdessen die Startdatei in den Projekteigenschaften festgelegt.
 > 
@@ -280,7 +284,7 @@ else
 }
 ```
 
-#### <a name="ps.cmd"></a>ps.cmd
+#### <a name="pscmd"></a>ps.cmd
 Von den Visual Studio-Vorlagen sollte im Ordner **./bin** die Datei **ps.cmd** erstellt worden sein. Mit diesem Shellskript werden die obigen PowerShell-Wrapperskripts verwendet, und die Anmeldung ist basierend auf dem Namen des aufgerufenen PowerShell-Wrappers möglich. Hier ist der Inhalt der Datei angegeben, falls sie nicht erstellt wurde. 
 
 ```bat
@@ -319,16 +323,16 @@ Der Fortschritt wird im Ausgabefenster angezeigt, anschließend wird das Fenster
 Der Abschluss der Bereitstellung dauert einige Minuten, anschließend werden Ihre Web- und/oder Workerrollen in Azure ausgeführt!
 
 ### <a name="investigate-logs"></a>Untersuchen von Protokollen
-Nachdem der virtuelle Computer des Clouddiensts gestartet und Python installiert wurde, können Sie in den Protokollen nach Fehlermeldungen suchen. Diese Protokolle befinden sich im Ordner **C:\Resources\Directory\{role}\LogFiles**. **PrepPython.err.txt** enthält mindestens einen Fehler, da vom Skript überprüft wird, ob Python installiert ist, und **PipInstaller.err.txt** meldet unter Umständen eine veraltete Version von PIP.
+Nachdem der virtuelle Computer des Clouddiensts gestartet und Python installiert wurde, können Sie in den Protokollen nach Fehlermeldungen suchen. Diese Protokolle befinden sich im Ordner **C:\Resources\Directory\\{role}\LogFiles**. **PrepPython.err.txt** enthält mindestens einen Fehler, da vom Skript überprüft wird, ob Python installiert ist, und **PipInstaller.err.txt** meldet unter Umständen eine veraltete Version von PIP.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Genauere Informationen zur Arbeit mit Web- und Workerrollen in Python-Tools für Visual Studio finden Sie in der PTVS-Dokumentation:
 
-* [Cloud Service-Projekte][Cloud Service-Projekte]
+* [Clouddienstprojekte][Clouddienstprojekte]
 
 Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrollen, etwa zur Verwendung von Azure-Speicher oder Azure Service Bus, finden Sie in folgenden Artikeln:
 
-* [Blob-Dienst][Blob-Dienst]
+* [Blobdienst][Blobdienst]
 * [Tabellenspeicherdienst][Tabellenspeicherdienst]
 * [Warteschlangendienst][Warteschlangendienst]
 * [Service Bus-Warteschlangen][Service Bus-Warteschlangen]
@@ -361,6 +365,6 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -2,11 +2,11 @@
 title: Automatisieren der Entfernung von Ressourcengruppen | Microsoft Docs
 description: PowerShell-Workflow-Version eines Azure Automation-Szenarios mit Runbooks zum Entfernen aller Ressourcengruppen in Ihrem Abonnement.
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: b848e345-fd5d-4b9d-bc57-3fe41d2ddb5c
 ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
+ms.openlocfilehash: 6aa3897d44b146483204d43e026d3d158c3e13b6
+
 
 ---
-# <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation-Szenario – Automatisieren der Entfernung von Ressourcengruppen
+# <a name="azure-automation-scenario-automate-removal-of-resource-groups"></a>Azure Automation-Szenario – Automatisieren der Entfernung von Ressourcengruppen
 Viele Kunden erstellen mehr als eine Ressourcengruppe. Einige werden unter Umständen für die Verwaltung von Produktionsanwendungen verwendet, und andere werden vielleicht als Entwicklungs-, Test- und Stagingumgebungen genutzt. Dabei kann nicht nur die Bereitstellung dieser Ressourcen automatisiert werden, es ist auch möglich, eine Ressourcengruppe mit nur einem Klick außer Betrieb zu setzen. Mit Azure Automation können Sie diese häufig anfallende Verwaltungsaufgabe optimieren. Darüber hinaus ist dieses Szenario auch hilfreich, wenn Sie ein Azure-Abonnement verwenden, für das ein durch ein Mitgliedsangebot wie MSDN oder das Microsoft Partner Network Cloud Essentials-Programm bedingtes Ausgabenlimit gilt.
 
 Dieses Szenario basiert auf einem PowerShell-Runbook und dient dazu, einzelne oder mehrere Ressourcengruppen aus Ihrem Abonnement zu entfernen. In der Standardeinstellung des Runbooks wird vor dem Fortfahren ein Test durchgeführt. So wird sichergestellt, dass Sie die Ressourcengruppe nicht versehentlich löschen, bevor Sie zum Abschließen dieses Verfahrens bereit sind.   
@@ -41,7 +45,7 @@ Für dieses Runbook sind folgende Eingabeparameter definiert:
 Dieses Runbook verwendet zur Authentifizierung das [ausführende Konto von Azure](automation-sec-configure-azure-runas-account.md).    
 
 ### <a name="install-and-publish-the-runbooks"></a>Installieren und Veröffentlichen der Runbooks
-Nach dem Herunterladen des Runbooks können Sie es mithilfe des in [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-Azure-Automation) beschriebenen Verfahrens importieren. Veröffentlichen Sie das Runbook, nachdem Sie es in Ihr Automation-Konto importiert haben.
+Nach dem Herunterladen des Runbooks können Sie es mithilfe des in [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation) beschriebenen Verfahrens importieren. Veröffentlichen Sie das Runbook, nachdem Sie es in Ihr Automation-Konto importiert haben.
 
 ## <a name="using-the-runbook"></a>Verwenden des Runbooks
 Die folgenden Schritte veranschaulichen die Ausführung dieses Runbooks, damit Sie sich mit dessen Funktionsweise vertraut machen können. Sie testen das Runbook in diesem Beispiel lediglich. Die Ressourcengruppe wird also nicht tatsächlich gelöscht.  
@@ -49,11 +53,11 @@ Die folgenden Schritte veranschaulichen die Ausführung dieses Runbooks, damit S
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und klicken Sie auf **Runbooks**.
 2. Wählen Sie das Runbook **Remove-ResourceGroup** aus, und klicken Sie auf **Starten**.
 3. Wenn Sie das Runbook starten, öffnet sich das Blatt **Runbook starten**, und Sie können die Parameter konfigurieren. Geben Sie die Namen von Ressourcengruppen in Ihrem Abonnement ein, die Sie für das Testing verwenden können und die keinen Schaden anrichten, falls sie versehentlich gelöscht werden.<br> ![Remove-ResouceGroup – Parameter](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
-   
+
    > [!NOTE]
    > Stellen Sie sicher, dass **Previewmode** auf **true** festgelegt ist, um das Löschen der ausgewählten Ressourcengruppen zu vermeiden.  **Hinweis:** Die Ressourcengruppe mit dem Automation-Konto, unter dem das Runbook ausgeführt wird, wird von diesem Runbook nicht entfernt.  
-   > 
-   > 
+   >
+   >
 4. Klicken Sie nach dem Konfigurieren aller Parameterwerte auf **OK**, um das Runbook der Ausführungswarteschlange hinzuzufügen.  
 
 Die Details des Runbookauftrags **Remove-ResourceGroup** können Sie im Azure-Portal anzeigen, indem Sie im Runbook die Option **Aufträge** wählen. Die Auftragszusammenfassung zeigt die Eingabeparameter und den Ausgabedatenstrom sowie allgemeine Informationen zum Auftrag und alle aufgetretenen Ausnahmen an.<br> ![Remove-ResourceGroup – Status des Runbookauftrags](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png).
@@ -64,6 +68,8 @@ Die **Auftragszusammenfassung** beinhaltet Meldungen aus den Ausgabe-, Warnungs-
 * Informationen zum Einstieg in die Erstellung eigener Runbooks finden Sie unter [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md).
 * Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

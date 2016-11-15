@@ -5,9 +5,9 @@ services: sql-data-warehouse
 documentationcenter: NA
 author: twounder
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-sql-data-warehouse
-
+ms.assetid: ac7ddaa7-a3a5-4e15-b3cf-c696d2d105df
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
+
 
 ---
 # <a name="load-data-with-azure-data-factory"></a>Laden von Daten mit Azure Data Factory
@@ -37,7 +41,7 @@ In diesem Tutorial wird gezeigt, wie Sie eine Pipeline in Azure Data Factory ers
 > 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Machen Sie sich unter [Einführung in den Azure Data Factory-Dienst][Einführung in den Azure Data Factory-Dienst]mit Azure Data Factory vertraut.
+Machen Sie sich unter [Einführung in den Azure Data Factory-Dienst][Einführung in den Azure Data Factory-Dienst] mit Azure Data Factory vertraut.
 
 ### <a name="create-or-identify-resources"></a>Erstellen oder Identifizieren von Ressourcen
 Bevor Sie mit diesem Tutorial beginnen, müssen Sie über die folgenden Ressourcen verfügen:
@@ -60,7 +64,7 @@ Sobald alle Bestandteile bereitstehen, können Sie Beispieldaten in Ihr Azure St
 ## <a name="step-2-connect-resources-to-azure-data-factory"></a>Schritt 2: Verbinden von Ressourcen mit Azure Data Factory
 Da die Daten jetzt vorhanden ist, können wir die Azure Data Factory-Pipeline zum Verschieben der Daten aus dem Azure-Blobspeicher in SQL Data Warehouse erstellen.
 
-Öffnen Sie zuerst das [Azure-Portal][Azure-Portal] , und wählen Sie im Menü auf der linken Seite Ihre Data Factory aus.
+Öffnen Sie zuerst das [Azure-Portal][Azure-Portal], und wählen Sie im Menü auf der linken Seite Ihre Data Factory aus.
 
 ### <a name="step-21-create-linked-service"></a>Schritt 2.1: Erstellen eines verknüpften Dienstes
 Verknüpfen Sie Ihr Azure-Speicherkonto und SQL Data Warehouse mit Ihrer Data Factory.  
@@ -81,7 +85,7 @@ Verknüpfen Sie Ihr Azure-Speicherkonto und SQL Data Warehouse mit Ihrer Data Fa
     }
     ```
 
-### <a name="step-22-define-the-dataset"></a>Schritt 2.2: Definieren des Datasets
+### <a name="step-22-define-the-dataset"></a>Schritt 2.2: Definieren des Datasets
 Nach dem Erstellen der verknüpften Dienste müssen Sie die Datasets definieren.  Dies bedeutet in diesem Fall, dass die Struktur der Daten definiert wird, die aus dem Speicher in das Data Warehouse verschoben werden.  Informationen zur Erstellung
 
 1. Um diesen Prozess zu starten, wechseln Sie zum Abschnitt „Erstellen und Bereitstellen“ Ihrer Data Factory.
@@ -192,13 +196,13 @@ Klicken Sie im Abschnitt „Erstellen und Bereitstellen“ auf „Weitere Befehl
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter:
 
-* [Lernpfad für Azure Data Factory][Lernpfad für Azure Data Factory]
-* [Azure SQL Data Warehouse-Connector][Azure SQL Data Warehouse-Connector] Dies ist das wichtigste Referenzthema zur Verwendung von Azure Data Factory mit Azure SQL Data Warehouse.
+* [Azure Data Factory-Lernpfad][Azure Data Factory-Lernpfad].
+* [Azure SQL Data Warehouse-Connector][Azure SQL Data Warehouse-Connector]. Dies ist das wichtigste Referenzthema zur Verwendung von Azure Data Factory mit Azure SQL Data Warehouse.
 
 Die Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin werden Azure SQL-Datenbank oder HDInsight behandelt, aber die Informationen gelten auch für Azure SQL Data Warehouse.
 
-* [Tutorial: Erstellen der ersten Data Factory (Übersicht)][Tutorial: Erstellen der ersten Data Factory (Übersicht)] Dies ist das wichtigste Tutorial zur Datenverarbeitung mit Azure Data Factory. In diesem Tutorial erstellen Sie Ihre erste Pipeline, die mithilfe von HDInsight monatlich Webprotokolle transformiert und analysiert. Beachten Sie, dass in diesem Tutorial keine Kopieraktivität erfolgt.
-* [Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank][Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank]. In diesem Tutorial erstellen Sie in Azure Data Factory eine Pipeline, um Daten aus einem Azure Storage-Blob in Azure SQL-Datenbank zu kopieren.
+* [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters][Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters]. Dies ist das wichtigste Tutorial zur Datenverarbeitung mit Azure Data Factory. In diesem Tutorial erstellen Sie Ihre erste Pipeline, die mithilfe von HDInsight monatlich Webprotokolle transformiert und analysiert. Beachten Sie, dass in diesem Tutorial keine Kopieraktivität erfolgt.
+* [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory][Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory]. In diesem Tutorial erstellen Sie in Azure Data Factory eine Pipeline, um Daten aus einem Azure Storage-Blob in Azure SQL-Datenbank zu kopieren.
 
 <!--Image references-->
 
@@ -226,6 +230,6 @@ Die Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin we
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

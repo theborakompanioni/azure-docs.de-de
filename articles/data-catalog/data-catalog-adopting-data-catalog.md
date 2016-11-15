@@ -1,13 +1,13 @@
 ---
-title: Azure Data Catalog-Einführung | Microsoft Docs
-description: Dieser Artikel enthält eine Vorgehensweise und entsprechende Schritte für Organisationen, die den Einsatz von Azure Data Catalog in Betracht ziehen. Unter anderem wird erläutert, wie Sie eine Vision definieren, zentrale Anwendungsfälle in Ihrem Unternehmens ermitteln und ein Pilotprojekt auswählen.
+title: "Azure Data Catalog-Einführung | Microsoft Docs"
+description: "Dieser Artikel enthält eine Vorgehensweise und entsprechende Schritte für Organisationen, die den Einsatz von Azure Data Catalog in Betracht ziehen. Unter anderem wird erläutert, wie Sie eine Vision definieren, zentrale Anwendungsfälle in Ihrem Unternehmens ermitteln und ein Pilotprojekt auswählen."
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/11/2016
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
+
 
 ---
 # <a name="adopting-azure-data-catalog"></a>Azure Data Catalog-Einführung
@@ -102,9 +106,9 @@ Eines der geschäftlichen Probleme, das mit **Azure Data Catalog** gelöst wird,
 * Weitere Informationen zum Ermitteln von Datenquellen finden Sie unter [Suchen nach Datenquellen](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets).
 
 ### <a name="start-small-and-focused"></a>Klein anfangen und konzentriert bleiben
-Bei den meisten Pilotprojekten in Unternehmen sollten Sie den Katalog mit nützlichen Datenquellen füllen, damit die Benutzer den Nutzen von Data Catalog schnell erkennen können. Die IT-Abteilung ist ein guter Ort, um mit der Ermittlung von allgemeinen Datenquellen zu beginnen, die für Ihr Pilotprojektteam interessant sind. Für unterstützte Datenquellen, z.B. SQL Server, empfehlen wir die Verwendung des Registrierungstools für **Azure Data Catalog**-Datenquellen. Mit dem Registrierungstool für Datenquellen können Sie viele unterschiedliche Datenquellen, z. B. SQL Server- und Oracle-Datenbanken, sowie SQL Server Reporting Services-Berichte registrieren. Eine vollständige Liste mit aktuellen Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
+Bei den meisten Pilotprojekten in Unternehmen sollten Sie den Katalog mit nützlichen Datenquellen füllen, damit die Benutzer den Nutzen von Data Catalog schnell erkennen können. Die IT-Abteilung ist ein guter Ort, um mit der Ermittlung von allgemeinen Datenquellen zu beginnen, die für Ihr Pilotprojektteam interessant sind. Für unterstützte Datenquellen, z.B. SQL Server, empfehlen wir die Verwendung des Registrierungstools für **Azure Data Catalog**-Datenquellen. Mit dem Registrierungstool für Datenquellen können Sie viele unterschiedliche Datenquellen, z. B. SQL Server- und Oracle-Datenbanken, sowie SQL Server Reporting Services-Berichte registrieren. Eine vollständige Liste mit aktuellen Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
 
-Nachdem Sie wichtige Datenquellen ermittelt und registriert haben, können Sie auch Beschreibungen von Datenquellen importieren, die an anderen Orten gespeichert sind. Mit der Data Catalog-API können Entwickler Beschreibungen und Anmerkungen von einem anderen Speicherort laden, z. B. die Excel-Arbeitsmappe, die von David erstellt und verwaltet wird.
+Nachdem Sie wichtige Datenquellen ermittelt und registriert haben, können Sie auch Beschreibungen von Datenquellen importieren, die an anderen Orten gespeichert sind. Mit der Data Catalog-API können Entwickler Beschreibungen und Anmerkungen von einem anderen Speicherort laden, z. B. die Excel-Arbeitsmappe, die von David erstellt und verwaltet wird.
 
 Im nächsten Abschnitt wird ein Beispielprojekt von Adventure Works beschrieben.
 
@@ -163,6 +167,9 @@ In diesem Artikel ging es um die ersten Schritte bei der Nutzung von **Azure Dat
 * [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
 * [Crowdsourcing für Metadaten](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

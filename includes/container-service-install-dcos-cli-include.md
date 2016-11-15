@@ -2,13 +2,12 @@
 title: Installieren der DC/OS-CLI | Microsoft Docs
 description: Installieren Sie die DC/OS-CLI.
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
 keywords: Container, Microservices, DC/OS, Azure
-
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: e664ce9426a2852a35dfdade5d41a9ce8b37a3b7
+ms.openlocfilehash: a8ea47f158c0d666340815d2e039995c7483257f
+
 
 ---
 > [!NOTE]
@@ -48,3 +51,8 @@ Jetzt können Sie überprüfen, ob die CLI installiert wurde:
 ```bash
 dcos --help
 ```
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,12 +1,12 @@
 ---
-title: Lernprogramm zur Verwendung von PolyBase in SQL Data Warehouse | Microsoft Docs
+title: Tutorial zur Verwendung von PolyBase in SQL Data Warehouse | Microsoft Docs
 description: Informationen zu PolyBase und Hinweise zur Verwendung in Data Warehouse-Szenarios.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 0a0103b4-ddd6-4d1e-87be-4965d6e99f3f
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 936bfcb7d4e7d2a901304f31a58b31e6cd14498a
+
 
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Laden von Daten mit PolyBase in SQL Data Warehouse
@@ -44,7 +48,7 @@ Für dieses Tutorial ist Folgendes erforderlich:
   
     ![Azure-Speichertools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
-## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Schritt 1: Hinzufügen von Beispieldaten zum Azure-Blobspeicher
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Schritt 1: Hinzufügen von Beispieldaten zum Azure-Blobspeicher
 Um Daten laden zu können, müssen wir einige Beispieldaten in einen Azure-Blobspeicher einfügen. In diesem Schritt füllen wir einen Azure-Blobspeicher mit Beispieldaten. Wir werden diese Beispieldaten später mit PolyBase in die SQL Data Warehouse-Datenbank laden.
 
 ### <a name="a-prepare-a-sample-text-file"></a>A: Vorbereiten einer Beispieltextdatei
@@ -103,7 +107,7 @@ So kopieren Sie Ihre Daten in den Azure-Blobspeicher
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-Weitere Informationen finden Sie unter [Erste Schritte mit dem Befehlszeilenprogramm AzCopy][Erste Schritte mit dem Befehlszeilenprogramm AzCopy].
+Siehe auch [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy][Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy].
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. Untersuchen des Blobspeichercontainers
 So zeigen Sie die Datei an, die Sie in den Blobspeicher hochgeladen haben
@@ -123,11 +127,11 @@ PolyBase verwendet externe Tabellen, um auf Daten in einem Azure-Blobspeicher zu
 
 Für das Beispiel in diesem Schritt werden die folgenden Transact-SQL-Anweisungen verwendet, um eine externe Tabelle zu erstellen.
 
-* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)] : Dient zum Verschlüsseln des geheimen Schlüssels Ihrer datenbankbezogenen Anmeldeinformationen.
-* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)] : Dient zum Angeben der Authentifizierungsinformationen für Ihr Azure-Speicherkonto.
-* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)] : Dient zum Angeben des Speicherorts Ihres Azure-Blobspeichers.
-* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)] : Dient zum Angeben des Formats Ihrer Daten.
-* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)] : Dient zum Angeben der Tabellendefinition und des Speicherorts der Daten.
+* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)]: Dient zum Verschlüsseln des geheimen Schlüssels Ihrer datenbankbezogenen Anmeldeinformationen.
+* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)]: Dient zum Angeben der Authentifizierungsinformationen für Ihr Azure-Speicherkonto.
+* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)]: Dient zum Angeben des Speicherorts Ihres Azure-Blobspeichers.
+* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]: Dient zum Angeben des Formats Ihrer Daten.
+* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)]: Dient zum Angeben der Tabellendefinition und des Speicherorts der Daten.
 
 Führen Sie diese Abfrage für die SQL Data Warehouse-Datenbank aus. Sie erstellt eine externe Tabelle mit dem Namen „DimDate2External“ im dbo-Schema, die auf die Beispieldaten „DimDate2.txt“ im Azure-Blobspeicher verweist.
 
@@ -208,7 +212,7 @@ Im SQL Server-Objekt-Explorer in Visual Studio sehen Sie das externe Dateiformat
 Sobald die externe Tabelle erstellt wurde, können Sie die Daten in eine neue Tabelle laden oder in eine vorhandene Tabelle einfügen.
 
 * Führen Sie die Anweisung [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] aus, um die Daten in eine neue Tabelle zu laden. Die neue Tabelle enthält die in der Abfrage benannten Spalten. Die Datentypen der Spalten entsprechen den Datentypen in der Definition der externen Tabelle.
-* Verwenden Sie die Anweisung [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)] , um die Daten in eine vorhandene Tabelle zu laden.
+* Verwenden Sie die Anweisung [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)], um die Daten in eine vorhandene Tabelle zu laden.
 
 ```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
@@ -274,6 +278,6 @@ Im [PolyBase-Handbuch][PolyBase-Handbuch] finden Sie weitere Informationen, die 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

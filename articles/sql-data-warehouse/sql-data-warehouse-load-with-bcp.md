@@ -5,8 +5,8 @@ services: sql-data-warehouse
 documentationcenter: NA
 author: twounder
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: f9467d11-fcd6-4131-a65a-2022d2c32d24
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5a0519a0fdbfc428530e5b30a3f8e4e8bcdaa50b
+
 
 ---
 # <a name="load-data-with-bcp"></a>Laden von Daten mit BCP
@@ -25,7 +29,7 @@ ms.author: mausher;barbkess
 > 
 > 
 
-**[bcp][bcp]** ist ein Befehlszeilen-Dienstprogramm zum Massenladen, das es Ihnen ermöglicht, Daten zwischen SQL Server, Datendateien und SQL Data Warehouse zu kopieren. Verwenden sie bcp zum Importieren großer Mengen an neuen Zeilen in SQL Data Warehouse-Tabellen oder zum Exportieren von Daten aus SQL Server-Tabellen in Datendateien. bcp erfordert außer bei Verwendung mit der queryout-Option keine Kenntnisse von Transact-SQL.
+**[bcp][bcp]** ist ein Befehlszeilen-Dienstprogramm zum Massenladen, das Ihnen ermöglicht, Daten zwischen SQL Server, Datendateien und SQL Data Warehouse zu kopieren. Verwenden sie bcp zum Importieren großer Mengen an neuen Zeilen in SQL Data Warehouse-Tabellen oder zum Exportieren von Daten aus SQL Server-Tabellen in Datendateien. bcp erfordert außer bei Verwendung mit der queryout-Option keine Kenntnisse von Transact-SQL.
 
 bcp bietet eine schnelle und einfache Möglichkeit, um kleinere DataSets in und aus einer SQL Data Warehouse-Datenbank zu verschieben. Die genaue Empfehlung für die mit bcp zu ladende/extrahierte Datenmenge hängt von der Netzwerkverbindung mit dem Azure-Rechenzentrum ab.  Im Allgemeinen können Dimensionstabellen geladen und mit bcp fertig extrahiert werden. bcp wird jedoch zum Laden oder Extrahieren großer Datenmengen nicht empfohlen.  Polybase ist das Tool, das zum Laden und Extrahieren großer Datenvolumen empfohlen wird, da es die Massively Parallel Processing-Architektur von SQL Data Warehouse besser nutzt.
 
@@ -51,7 +55,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 * Eine Installation des SQLCMD-Befehlszeilenprogramms
 
 > [!NOTE]
-> Sie können die Dienstprogramme bcp und sqlcmd im [Microsoft Download Center][Microsoft Download Center]herunterladen.
+> Sie können die Dienstprogramme bcp und sqlcmd im [Microsoft Download Center][Microsoft Download Center] herunterladen.
 > 
 > 
 
@@ -78,7 +82,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> In der [Übersicht über Tabellen][] und unter [CREATE TABLE][CREATE TABLE] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
+> In der [Übersicht über Tabellen][Übersicht über Tabellen] oder unter [CREATE TABLE (Azure SQL Data Warehouse)][CREATE TABLE (Azure SQL Data Warehouse)] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
 > 
 > 
 
@@ -201,6 +205,6 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 
