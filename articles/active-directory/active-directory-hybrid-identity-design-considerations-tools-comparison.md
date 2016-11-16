@@ -1,12 +1,12 @@
 ---
-title: 'Hybrid-Identität: Vergleich von Tools für die Verzeichnisintegration | Microsoft Docs'
-description: Diese Seite enthält eine umfassende Tabelle mit einem Vergleich der verschiedenen Tools für die Verzeichnisintegration.
+title: "Hybrididentität: Vergleich von Tools für die Verzeichnisintegration | Microsoft Docs"
+description: "Diese Seite enthält eine umfassende Tabelle mit einem Vergleich der verschiedenen Tools für die Verzeichnisintegration."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
 editor: curtand
-
+ms.assetid: 1e62a4bd-4d55-4609-895e-70131dedbf52
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1df15de1c24e80b0692149dfc7cb660f74941886
+
 
 ---
-# Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
-Im Laufe der Jahre sind die Tools für die Verzeichnisintegration umfangreicher geworden und wurden weiterentwickelt. Das vorliegende Dokument bietet eine Übersicht über diese Tools und einen Vergleich der Features, die jedes der Tools bietet.
+# <a name="hybrid-identity-directory-integration-tools-comparison"></a>Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
+Im Laufe der Jahre sind die Tools für die Verzeichnisintegration umfangreicher geworden und wurden weiterentwickelt.  Das vorliegende Dokument bietet eine Übersicht über diese Tools und einen Vergleich der Features, die jedes der Tools bietet.
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
@@ -30,9 +34,11 @@ Im Laufe der Jahre sind die Tools für die Verzeichnisintegration umfangreicher 
 
 Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 
-● = Jetzt verfügbar BV = Bald verfügbar ÖV = Öffentliche Vorschau
+● = Jetzt verfügbar  
+FR = Künftige Version  
+PP = Öffentliche Vorschau  
 
-## Synchronisierung vom lokalen Standort zur Cloud
+## <a name="onpremises-to-cloud-synchronization"></a>Synchronisierung vom lokalen Standort zur Cloud
 | Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste (AAD Sync) | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Herstellen einer Verbindung mit einer einzelnen lokalen AD-Gesamtstruktur |● |● |● |● |● |
@@ -43,10 +49,10 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 | Herstellen einer Verbindung mit lokalen Active Directory- und LDAP-Verzeichnissen |BV | | |● |● |
 | Herstellen einer Verbindung mit benutzerdefinierten Systeme (z. B. SQL, Oracle, MySQL usw.) |BV | | |● |● |
 | Synchronisieren von benutzerdefinierten Attributen (Verzeichniserweiterungen) |● | | | | |
-| Verbinden mit lokaler HR-Instanz (d. h. SAP, Oracle eBusiness,PeopleSoft) |BV | | |● |● |
+| Verbinden mit lokaler HR-Instanz (d. h. SAP, Oracle eBusiness,PeopleSoft) |BV | | |● |● |
 | Unterstützt FIM-Synchronisierungsregeln und -Connectors für die Bereitstellung lokaler Systeme. | | | |● |● |
 
-## Synchronisierung von der Cloud zum lokalen Standort
+## <a name="cloud-to-onpremises-synchronization"></a>Synchronisierung von der Cloud zum lokalen Standort
 | Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Rückschreiben von Geräten |● | |● | | |
@@ -54,7 +60,7 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 | Rückschreiben von Benutzer- und Gruppenobjekten |● | | | | |
 | Rückschreiben von Kennwörtern (Self-Service-Kennwortzurücksetzung und Kennwortänderung) |● |● | | | |
 
-## Unterstützung von Authentifizierungsfunktionen
+## <a name="authentication-feature-support"></a>Unterstützung von Authentifizierungsfunktionen
 | Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Kennwortsynchronisierung für eine einzelne lokale Active Directory-Gesamtstruktur |● |● |● | | |
@@ -62,28 +68,33 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 | Einmaliges Anmelden mit Verbund |● |● |● |● |● |
 | Rückschreiben von Kennwörtern (Self-Service-Kennwortzurücksetzung und Kennwortänderung) |● |● | | | |
 
-## Einrichtung und Installation
+## <a name="setup-and-installation"></a>Einrichtung und Installation
 | Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | Unterstützt die Installation auf einem Domänencontroller |● |● |● | |
-| Unterstützt die Installation mit SQL Express |● |● |● | |
+| Unterstützt die Installation mit SQL Express |● |● |● | |
 | Einfaches Upgrade von DirSync |● | | | |
 | Lokalisierung der Administrator-UX in die Windows Server-Sprachen |● |● |● | |
 | Lokalisierung der Endbenutzer-UX in die Windows Server-Sprachen | | | |● |
-| Unterstützung für Windows Server 2008 und Windows Server 2008 R2 |● für Synchronisierung, nicht für den Verbund |● |● |● |
-| Unterstützung für Windows Server 2012 und Windows Server 2012 R2 |● |● |● |● |
+| Unterstützung für Windows Server 2008 und Windows Server 2008 R2 |● für Synchronisierung, nicht für den Verbund |● |● |● |
+| Unterstützung für Windows Server 2012 und Windows Server 2012 R2 |● |● |● |● |
 
-## Filterung und Konfiguration
+## <a name="filtering-and-configuration"></a>Filterung und Konfiguration
 | Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Filterung nach für Domänen und Organisationseinheiten |● |● |● |● |● |
 | Filterung nach den Attributwerten eines Objekts |● |● |● |● |● |
 | Zulassen eines minimalen Attributsatzes für die Synchronisierung (MinSync) |● |● | | | |
 | Zulassen der Anwendung verschiedener Dienstvorlagen auf Attributflüsse |● |● | | | |
-| Zulassen der Entfernung von Attributen aus dem Attributfluss von AD nach Azure AD |● |● | | | |
+| Zulassen der Entfernung von Attributen aus dem Attributfluss von AD nach Azure AD |● |● | | | |
 | Zulassen einer erweiterten Anpassung des Attributflusses |● |● | |● |● |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

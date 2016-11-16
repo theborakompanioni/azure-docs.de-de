@@ -3,11 +3,11 @@
 Kopieren Sie die nachfolgenden In-App-Messaging-Ressourcen in die Datei "Manifest.xml" zwischen die Tags `<application>` und `</application>`.
 
         <activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
-            <intent-filter>
+              <intent-filter>
                 <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
-            </intent-filter>
+              </intent-filter>
         </activity>
         <activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
             <intent-filter>
@@ -92,6 +92,8 @@ Für reale Apps können Sie ein Symbol verwenden, das entsprechend den [Android-
         <uses-permission android:name="<Your package name>.permission.C2D_MESSAGE" />
         <permission android:name="<Your package name>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

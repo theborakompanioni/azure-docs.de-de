@@ -6,4 +6,7 @@ Hierfür können Sie einen Load Balancer konfigurieren:
 * Lastenausgleich für Datenverkehr zwischen VMs in einem virtuellen Netzwerk (VNet), zwischen virtuellen Computern in Clouddiensten oder zwischen lokalen Computern und VMs in einem standortübergreifenden virtuellen Netzwerk. Wir bezeichnen einwn Load Balancer in diesem Szenario als einen [internen Load Balancer (ILB)](../articles/load-balancer/load-balancer-internal-overview.md).
 * Weiterleiten von externem Datenverkehr an eine bestimmte VM-Instanz.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Nov16_HO2-->
+
+

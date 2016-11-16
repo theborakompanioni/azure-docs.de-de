@@ -1,12 +1,12 @@
 ---
-title: Veröffentlichen von Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung (Vorschau) | Microsoft Docs
-description: Erfahren Sie, wie Sie Apps in Azure RemoteApp für einzelne Benutzer veröffentlichen können, und nicht mehr nur für ganze Gruppen.
+title: "Veröffentlichen von Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung (Vorschau) | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Apps in Azure RemoteApp für einzelne Benutzer veröffentlichen können, und nicht mehr nur für ganze Gruppen."
 services: remoteapp-preview
-documentationcenter: ''
+documentationcenter: 
 author: piotrci
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 1fd0539d-fa65-4ea5-a98e-0be0cf580690
 ms.service: remoteapp
 ms.devlang: na
 ms.topic: hero-article
@@ -14,11 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 08/15/2016
 ms.author: piotrci
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
+
 
 ---
-# Veröffentlichen von Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung (Vorschau)
+# <a name="publish-applications-to-individual-users-in-an-azure-remoteapp-collection-preview"></a>Veröffentlichen von Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung (Vorschau)
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -42,7 +46,7 @@ Dies ist in Azure RemoteApp nun als beschränkte Vorschaufunktion möglich. Im F
    * Die Anwendungen werden durch diese Funktion nicht gesperrt, sie schränkt nur deren Sichtbarkeit im Anwendungsfeed ein.
    * Wenn Sie Benutzer von Anwendungen isolieren müssen, benötigen Sie dafür separate Sammlungen.
 
-## Gewusst wie: Abrufen von Azure RemoteApp PowerShell-Cmdlets
+## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>Gewusst wie: Abrufen von Azure RemoteApp PowerShell-Cmdlets
 Zum Testen der neuen Vorschaufunktion müssen Sie Azure PowerShell-Cmdlets verwenden. Derzeit ist es nicht möglich, das Azure-Verwaltungsportal zum Aktivieren des neuen Anwendungsveröffentlichungsmodus zu aktivieren.
 
 Vergewissern Sie sich zunächst, dass das [Azure PowerShell-Modul](../powershell-install-configure.md) installiert ist.
@@ -53,7 +57,7 @@ Starten Sie danach die PowerShell-Konsole im Administratormodus, und führen Sie
 
 Dieses fordert Sie zur Eingabe Ihres Azure-Benutzernamens sowie Ihres Kennworts auf. Nach der Anmeldung können Sie Azure RemoteApp-Cmdlets für Ihre Azure-Abonnements ausführen.
 
-## Überprüfen, in welchem Modus sich eine Auflistung befindet
+## <a name="how-to-check-which-mode-a-collection-is-in"></a>Überprüfen, in welchem Modus sich eine Auflistung befindet
 Führen Sie das folgende Cmdlet aus:
 
         Get-AzureRemoteAppCollection <collectionName>
@@ -65,38 +69,43 @@ Die AclLevel-Eigenschaft kann die folgenden Werte aufweisen:
 * Sammlung: der ursprüngliche Veröffentlichungsmodus. Veröffentlichte Apps werden allen Benutzern angezeigt.
 * Anwendung: der neue Veröffentlichungsmodus. Benutzer sehen nur die Apps, die direkt für sie veröffentlicht wurden.
 
-## Gewusst wie: Wechseln zum Anwendungsveröffentlichungsmodus
+## <a name="how-to-switch-to-application-publishing-mode"></a>Gewusst wie: Wechseln zum Anwendungsveröffentlichungsmodus
 Führen Sie das folgende Cmdlet aus:
 
         Set-AzureRemoteAppCollection -CollectionName -AclLevel Application
 
 Der Status der Anwendungsveröffentlichung bleibt beibehalten: Zunächst sehen alle Benutzer alle ursprünglich veröffentlichten Apps.
 
-## Gewusst wie: Auflisten von Benutzern, denen eine bestimmte Anwendung angezeigt wird
+## <a name="how-to-list-users-who-can-see-a-specific-application"></a>Gewusst wie: Auflisten von Benutzern, denen eine bestimmte Anwendung angezeigt wird
 Führen Sie das folgende Cmdlet aus:
 
         Get-AzureRemoteAppUser -CollectionName <collectionName> -Alias <appAlias>
 
 Dadurch werden alle Benutzer aufgelistet, die die Anwendung sehen können.
 
-Hinweis: Sie können die Anwendungsaliase (in der oben angezeigten Syntax als „app alias“ bezeichnet) anzeigen, indem Sie „Get-AzureRemoteAppProgram -CollectionName <Name der Sammlung>“ ausführen.
+Hinweis: Sie können die Anwendungsaliase (in der oben angezeigten Syntax als „app alias“ bezeichnet) anzeigen, indem Sie Get-AzureRemoteAppProgram -CollectionName <collectionName> ausführen.
 
-## Gewusst wie: Zuweisen einer Anwendung für einen Benutzer
+## <a name="how-to-assign-an-application-to-a-user"></a>Gewusst wie: Zuweisen einer Anwendung für einen Benutzer
 Führen Sie das folgende Cmdlet aus:
 
         Add-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
 Dem Benutzer wird die Anwendung im Azure RemoteApp-Client nun angezeigt und, er kann eine Verbindung damit herstellen.
 
-## Gewusst wie: Entfernen einer Anwendung von einem Benutzer
+## <a name="how-to-remove-an-application-from-a-user"></a>Gewusst wie: Entfernen einer Anwendung von einem Benutzer
 Führen Sie das folgende Cmdlet aus:
 
         Remove-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
-## Senden von Feedback
+## <a name="providing-feedback"></a>Senden von Feedback
 Wir freuen uns auf Ihr Feedback und Ihre Vorschläge zu dieser Vorschaufunktion. Bitte füllen Sie den [Fragebogen](http://www.instant.ly/s/FDdrb) aus, und teilen Sie uns Ihre Meinung mit.
 
-## Konnten Sie die Vorschaufunktion noch nicht ausprobieren?
+## <a name="havent-had-a-chance-to-try-the-preview-feature"></a>Konnten Sie die Vorschaufunktion noch nicht ausprobieren?
 Falls Sie noch nicht an der Vorschau teilgenommen haben, können Sie über diese [Umfrage](http://www.instant.ly/s/AY83p) Zugriff darauf anfordern.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

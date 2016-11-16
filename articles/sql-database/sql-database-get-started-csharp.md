@@ -1,13 +1,13 @@
 ---
 title: 'Ausprobieren von SQL-Datenbank: Erstellen einer SQL-Datenbank mit C# | Microsoft Docs'
-description: Probieren Sie SQL-Datenbank für das Entwickeln von SQL- und C#-Apps aus, und erstellen Sie eine Azure SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET.
+description: "Probieren Sie SQL-Datenbank für das Entwickeln von SQL- und C#-Apps aus, und erstellen Sie eine Azure SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET."
 keywords: Ausprobieren von SQL, SQL C#
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0ffe433d9899610d5ff83c66b6cdaaecd16e9c57
+
 
 ---
-# <a name="try-sql-database:-use-c#-to-create-a-sql-database-with-the-sql-database-library-for-.net"></a>Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
+# <a name="try-sql-database-use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-database-get-started.md)
 > * [C#](sql-database-get-started-csharp.md)
@@ -27,10 +31,10 @@ ms.author: sstein
 
 Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Microsoft Azure SQL-Verwaltungsbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) verwenden. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen von Pools für elastische Datenbanken finden Sie unter [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-csharp.md).
 
-Die Azure SQL-Datenbank-Verwaltungsbibliothek für .NET bietet eine [Azure Resource Manager](../resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für die SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
+Die Azure SQL-Datenbank-Verwaltungsbibliothek für .NET bietet eine [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für die SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
 
 > [!NOTE]
-> Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../resource-group-overview.md) unterstützt. Daher wird empfohlen, stets die aktuelle **Azure SQL-Datenbank-Verwaltungsbibliothek für .NET zu verwenden ([Dokumentationen](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Die älteren [auf dem klassischen Bereitstellungsmodell basierenden Bibliotheken](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) werden nur zum Zweck der Abwärtskompatibilität unterstützt. Daher wird die Verwendung der neueren Resource Manager-basierten Bibliotheken empfohlen.
+> Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../azure-resource-manager/resource-group-overview.md) unterstützt. Daher wird empfohlen, stets die aktuelle **Azure SQL-Datenbank-Verwaltungsbibliothek für .NET zu verwenden ([Dokumentationen](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Die älteren [auf dem klassischen Bereitstellungsmodell basierenden Bibliotheken](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) werden nur zum Zweck der Abwärtskompatibilität unterstützt. Daher wird die Verwendung der neueren Resource Manager-basierten Bibliotheken empfohlen.
 > 
 > 
 
@@ -61,7 +65,7 @@ Laden Sie zum Erstellen einer SQL-Datenbank mit C# die erforderlichen Verwaltung
 > 
 > 
 
-## <a name="create-a-sql-database-server,-firewall-rule,-and-sql-database---c#-example"></a>Erstellen eines SQL-Datenbankservers, einer Firewallregel und einer SQL-Datenbank – C#-Beispiel
+## <a name="create-a-sql-database-server-firewall-rule-and-sql-database-c-example"></a>Erstellen eines SQL-Datenbankservers, einer Firewallregel und einer SQL-Datenbank – C#-Beispiel
 Im folgenden Beispiel werden diese Komponenten erstellt: Ressourcengruppe, Server, Firewallregel und eine SQL-Datenbank. Informationen zum Abrufen der Variablen `_subscriptionId, _tenantId, _applicationId, and _applicationSecret` finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen](#create-a-service-principal-to-access-resources).
 
 Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisieren Sie `{variables}` mit Ihren App-Werten (ohne `{}`).
@@ -288,6 +292,6 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

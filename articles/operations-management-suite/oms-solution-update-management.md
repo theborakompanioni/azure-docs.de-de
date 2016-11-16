@@ -1,22 +1,26 @@
 ---
-title: Lösung für die Updateverwaltung in OMS | Microsoft Docs
-description: In diesem Artikel soll vermittelt werden, wie Sie diese Lösung zum Verwalten von Updates für Ihre Windows- und Linux-Computer verwenden.
+title: "Lösung für die Updateverwaltung in OMS | Microsoft Docs"
+description: "In diesem Artikel soll vermittelt werden, wie Sie diese Lösung zum Verwalten von Updates für Ihre Windows- und Linux-Computer verwenden."
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2016
+ms.date: 10/14/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+
 
 ---
-# <a name="![update-management-solution-in-oms](./media/oms-solution-update-management/update-management-solution-icon.png)-update-management-solution-in-oms"></a>![Lösung für die Updateverwaltung in OMS](./media/oms-solution-update-management/update-management-solution-icon.png) Lösung für die Updateverwaltung in OMS
+# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![Lösung für die Updateverwaltung in OMS](./media/oms-solution-update-management/update-management-solution-icon.png) Lösung für die Updateverwaltung in OMS
 Mit der Lösung für die Updateverwaltung in OMS können Sie Updates für Ihre Windows- und Linux-Computer verwalten.  Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell bewerten und den Installationsvorgang initiieren, der für die Serverupdates erforderlich ist. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -35,15 +39,13 @@ Führen Sie die folgenden Schritte aus, um die Lösung für die Updateverwaltung
 2. Wählen Sie im OMS-Portal die Option **Einstellungen** und dann **Verbundene Quellen**.  Notieren Sie sich die **Arbeitsbereich-ID** und den **Primären Schlüssel** oder **Sekundären Schlüssel**.
 3. Führen Sie die folgenden Schritte für jeden Linux-Computer aus.
    
-   a.  Installieren Sie die aktuelle Version des OMS-Agents für Linux, indem Sie die folgenden Befehle ausführen.  Ersetzen Sie <Workspace ID> durch die Arbeitsbereich-ID und <Key> durch den primären bzw. sekundären Schlüssel.
+   a.    Installieren Sie die aktuelle Version des OMS-Agents für Linux, indem Sie die folgenden Befehle ausführen.  Ersetzen Sie <Workspace ID> durch die Arbeitsbereich-ID und <Key> durch den primären bzw. sekundären Schlüssel.
    
-       cd ~
-       wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh
-       sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
    
-    b. Führen Sie den folgenden Befehl aus, um den Agent zu entfernen.
+   b. Führen Sie den folgenden Befehl aus, um den Agent zu entfernen.
    
-       sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
 
 ## <a name="management-packs"></a>Management Packs
 Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit Ihrem OMS-Arbeitsbereich verbunden ist, werden beim Hinzufügen dieser Lösung die folgenden Management Packs in Operations Manager installiert. Für diese Management Packs ist keine Konfiguration oder Wartung erforderlich. 
@@ -95,7 +97,7 @@ Klicken Sie auf die Kachel **Updateverwaltung**, um das Dashboard **Update Manag
 ![Dashboard für Updateverwaltung – Paketansicht](./media/oms-solution-update-management/update-management-assessment-package-view.png)<br>  
 
 ## <a name="installing-updates"></a>Installieren von Updates
-Nachdem die Updates für alle Computer der Umgebung bewertet wurden, erreichen Sie die Installation der erforderlichen Updates, indem Sie eine *Updatebereitstellung* erstellen.  Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Windows-Computer.  Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die einbezogen werden sollen.  
+Nachdem die Updates für alle Windows-Computer der Umgebung bewertet wurden, installieren Sie die erforderlichen Updates, indem Sie eine *Updatebereitstellung* erstellen.  Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Windows-Computer.  Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die einbezogen werden sollen.  
 
 Updates werden mit Runbooks in Azure Automation installiert.  Sie können diese Runbooks derzeit nicht anzeigen, und für die Runbooks ist keine Konfiguration erforderlich.  Bei der Erstellung einer Updatebereitstellung wird ein Zeitplan erstellt, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird.  Über dieses Masterrunbook wird ein untergeordnetes Runbook auf jedem Windows-Agent gestartet, mit dem die Installation von erforderlichen Updates durchgeführt wird.  
 
@@ -111,7 +113,7 @@ Die Eigenschaften, die für die Updatebereitstellung angezeigt werden, sind in d
 | Startzeit |Datum und Uhrzeit des Starts der Updatebereitstellung |
 | Dauer |Zulässige Ausführungsdauer der Updatebereitstellung in Minuten.  Wenn innerhalb dieses Zeitraums nicht alle Updates installiert werden, muss für die verbleibenden Updates bis zur nächsten Updatebereitstellung gewartet werden. |
 | Server |Anzahl von Computern, die von der Updatebereitstellung betroffen sind |
-| Status |Aktueller Status der Updatebereitstellung<br><br>Mögliche Werte:<br>- Nicht gestartet<br>- Wird ausgeführt<br>- Abgeschlossen |
+| Status |Aktueller Status der Updatebereitstellung<br><br>Mögliche Werte:<br>-    Nicht gestartet<br>- Wird ausgeführt<br>- Abgeschlossen |
 
 Klicken Sie auf eine Updatebereitstellung, um den Detailbildschirm anzuzeigen, der die Spalten in der folgenden Tabelle enthält.  Diese Spalten werden nicht aufgefüllt, wenn die Updatebereitstellung noch nicht gestartet wurde.<br>
 
@@ -152,9 +154,9 @@ Ein Datensatz vom Typ **Update** wird für jedes Update erstellt, dass auf jedem
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | Typ |*Update* |
-| SourceSystem |Die Quelle, von der die Installation des Updates genehmigt wurde.<br>Mögliche Werte:<br>- Microsoft Update<br>- Windows Update<br>- SCCM<br>- Linux-Server (von Paket-Managern) |
+| SourceSystem |Die Quelle, von der die Installation des Updates genehmigt wurde.<br>Mögliche Werte:<br>- Microsoft Update<br>-    Windows Update<br>-    SCCM<br>- Linux-Server (von Paket-Managern) |
 | Genehmigt |Gibt an, ob die Installation des Updates genehmigt wurde.<br> Für Linux-Server ist dies derzeit optional, da das Patchen nicht über OMS verwaltet wird. |
-| Klassifizierung für Windows |Klassifizierung des Updates<br>Mögliche Werte:<br>- Anwendungen<br>- Kritische Updates<br>- Definitionsupdate<br>- Feature Packs<br>- Sicherheitsupdates<br>- Service Packs<br>- Updaterollups<br>- Updates |
+| Klassifizierung für Windows |Klassifizierung des Updates<br>Mögliche Werte:<br>-    Anwendungen<br>- Kritische Updates<br>- Definitionsupdate<br>- Feature Packs<br>- Sicherheitsupdates<br>- Service Packs<br>- Updaterollups<br>- Updates |
 | Klassifizierung für Linux |Klassifizierung des Updates<br>Mögliche Werte:<br>- Kritische Updates<br>- Sicherheitsupdates<br>- Andere Updates |
 | Computer |Name des Computers |
 | InstallTimeAvailable |Gibt an, ob die Installationsdauer über andere Agents verfügbar ist, für die das gleiche Update installiert wurde. |
@@ -199,7 +201,7 @@ Ein Datensatz vom Typ **UpdateSummary** wird für jeden Windows-Agent-Computer e
 | CriticalUpdatesMissing |Anzahl von wichtigen Updates, die auf dem Computer nicht vorhanden sind |
 | ManagementGroupName |Bei SCOM-Agents: Der Name der Verwaltungsgruppe. Bei anderen Agents lautet diese „AOI-<workspace ID>“. |
 | NETRuntimeVersion |Version der .NET-Laufzeit, die auf dem Computer installiert ist |
-| OldestMissingSecurityUpdateBucket |Bucket zum Kategorisieren des Zeitraums seit der Veröffentlichung des ältesten fehlenden Sicherheitsupdates auf diesem Computer<br>Mögliche Werte:<br>- Älter<br>- Vor 180 Tagen<br>- Vor 150 Tagen<br>- Vor 120 Tagen<br>- Vor 90 Tagen<br>- Vor 60 Tagen<br>- Vor 30 Tagen<br>- Aktuell |
+| OldestMissingSecurityUpdateBucket |Bucket zum Kategorisieren des Zeitraums seit der Veröffentlichung des ältesten fehlenden Sicherheitsupdates auf diesem Computer<br>Mögliche Werte:<br>- Älter<br>-    Vor 180 Tagen<br>- Vor 150 Tagen<br>-    Vor 120 Tagen<br>- Vor 90 Tagen<br>- Vor 60 Tagen<br>-    Vor 30 Tagen<br>-    Aktuell |
 | OldestMissingSecurityUpdateInDays |Anzahl von Tagen seit der Veröffentlichung des ältesten fehlenden Sicherheitsupdates auf diesem Computer |
 | OsVersion |Version des Betriebssystems, das auf dem Computer installiert ist |
 | OtherUpdatesMissing |Anzahl von anderen Updates, die auf dem Computer nicht vorhanden sind |
@@ -237,6 +239,9 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 * [Erstellen Sie eigene Dashboards](../log-analytics/log-analytics-dashboards.md), um die Einhaltung der erforderlichen Updates für Ihre verwalteten Computer anzuzeigen.
 * [Erstellen Sie Warnungen](../log-analytics/log-analytics-alerts.md), wenn kritische Updates für Computer als fehlend erkannt werden oder für einen Computer die automatischen Updates deaktiviert sind.  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

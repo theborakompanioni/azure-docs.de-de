@@ -1,13 +1,13 @@
 ---
-title: Erstellen eines virtuellen Netzwerks über PowerShell in ARM | Microsoft Docs
-description: Erfahren Sie, wie Sie ein virtuelles Netzwerk über PowerShell in ARM erstellen | Ressourcen-Manager.
+title: "Erstellen eines virtuellen Netzwerks über PowerShell in ARM | Microsoft Docs"
+description: "Erfahren Sie, wie Sie ein virtuelles Netzwerk über PowerShell in ARM erstellen | Ressourcen-Manager."
 services: virtual-network
-documentationcenter: ''
+documentationcenter: 
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: a31f4f12-54ee-4339-b968-1a8097ca77d3
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: hero-article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 83172273c951c5d6d4a59324a71cca1ee640ef8f
+
 
 ---
 # <a name="create-a-virtual-network-by-using-powershell"></a>Erstellen eines virtuellen Netzwerks über PowerShell
@@ -30,6 +34,9 @@ In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem 
 
 [!INCLUDE [virtual-networks-create-vnet-arm-ps-include](../../includes/virtual-networks-create-vnet-arm-ps-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,6 +1,10 @@
 > [!IMPORTANT]
-> Sie können hierfür keine Anwendungen verwenden, die im klassischen [Azure-Verwaltungsportal](https://manage.windowsazure.com/) auf der Registerkarte **Anwendungen** registriert sind.
+> Sie können hierfür keine Anwendungen verwenden, die im klassischen **Azure-Verwaltungsportal** auf der Registerkarte [Anwendungen](https://manage.windowsazure.com/) registriert sind.
 > 
 > 
 
-<!----HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,212 +1,224 @@
 ---
-title: Configure a Point-to-Site VPN gateway connection to an Azure Virtual Network using the Azure portal | Microsoft Docs
-description: Securely connect to your Azure Virtual Network by creating a Point-to-Site VPN gateway connection using the Azure portal.
+title: "Konfigurieren einer Point-to-Site-VPN-Gatewayverbindung mit einem Azure Virtual Network über das Azure-Portal | Microsoft Docs"
+description: "Stellen Sie über das Azure-Portal eine sichere P2S-VPN-Gatewayverbindung mit Ihrem Azure Virtual Network her."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 65e14579-86cf-4d29-a6ac-547ccbd743bd
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2016
+ms.date: 10/17/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 87d52de2d6ccb80390f8680371527a23904c5bb0
+
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal"></a>Configure a Point-to-Site connection to a VNet using the Azure portal
+# <a name="configure-a-pointtosite-connection-to-a-vnet-using-the-azure-portal"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNet über das Azure-Portal
 > [!div class="op_single_selector"]
-> * [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Classic - Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-> * [Classic - Classic Portal](vpn-gateway-point-to-site-create.md)
+> * [Resource Manager – Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [Klassisch – Azure-Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 > 
 > 
 
-This article walks you through creating a VNet with a Point-to-Site connection in the classic deployment model using the Azure portal. A Point-to-Site (P2S) configuration lets you create a secure connection from an individual client computer to a virtual network. A P2S connection is useful when you want to connect to your VNet from a remote location, such as from home or a conference. Or, when you only have a few clients that need to connect to a virtual network.
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie über das Azure-Portal im Rahmen des klassischen Bereitstellungsmodells ein VNet mit einer P2S-Verbindung (Point-to-Site) erstellen. Mit einer P2S-Konfiguration (Point-to-Site) können Sie von einem einzelnen Clientcomputer eine sichere Verbindung mit einem virtuellen Netzwerk herstellen. Eine P2S-Verbindung ist nützlich, wenn Sie an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung mit Ihrem VNet herstellen möchten. Diese Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
 
-Point-to-Site connections do not require a VPN device or a public-facing IP address to work. A VPN connection is established by starting the connection from the client computer. For more information about Point-to-Site connections, see the [VPN Gateway FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections) and [About VPN Gateway](vpn-gateway-about-vpngateways.md#point-to-site).
+Damit P2S-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Weitere Informationen zu P2S-Verbindungen finden Sie in den [häufig gestellten Fragen zu VPN Gateway](vpn-gateway-vpn-faq.md#point-to-site-connections) sowie unter [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md#point-to-site).
 
-### <a name="deployment-models-and-methods-for-p2s-connections"></a>Deployment models and methods for P2S connections
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+### <a name="deployment-models-and-methods-for-p2s-connections"></a>Bereitstellungsmodelle und -methoden für P2S-Verbindungen
+[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
-The following table shows the two deployment models and the available deployment tools for each deployment model. When an article is available, we link to it.
+Die folgende Tabelle zeigt die beiden Bereitstellungsmodelle und die verfügbaren Bereitstellungsmethoden für P2S-Konfigurationen. Falls ein Artikel mit Konfigurationsschritten verfügbar ist, steht in der Tabelle ein direkter Link zur Verfügung.
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
-## <a name="basic-workflow"></a>Basic workflow
-![Point-to-Site-diagram](./media/vpn-gateway-howto-point-to-site-rm-ps/p2srm.png "point-to-site")
+## <a name="basic-workflow"></a>Grundlegender Workflow
+![P2S-Diagramm](./media/vpn-gateway-howto-point-to-site-rm-ps/p2srm.png "point-to-site")
 
-The following sections walk you through the steps to create a secure Point-to-Site connection to a virtual network. 
+In den folgenden Abschnitten werden die Schritte zum Erstellen einer sicheren P2S-Verbindung mit einem virtuellen Netzwerk beschrieben. 
 
-1. Create a virtual network and VPN gateway
-2. Generate certificates
-3. Upload the .cer file
-4. Generate the VPN client configuration package
-5. Configure the client computer
-6. Connect to Azure
+1. Erstellen eines virtuelles Netzwerks und eines VPN-Gateways
+2. Generieren von Zertifikaten
+3. Hochladen der CER-Datei
+4. Generieren des VPN-Clientkonfigurationspakets
+5. Konfigurieren des Clientcomputers
+6. Herstellen einer Verbindung mit Azure
 
-### <a name="example-settings"></a>Example settings
-You can use the following example settings:
+### <a name="example-settings"></a>Beispieleinstellungen
+Beispieleinstellungen:
 
 * **Name: VNet1**
-* **Address space: 192.168.0.0/16**
-* **Subnet name: FrontEnd**
-* **Subnet address range: 192.168.1.0/24**
-* **Subscription:** Verify that you have the correct subscription if you have more than one.
-* **Resource Group: TestRG**
-* **Location: East US**
-* **Connection type: Point-to-site**
-* **Client Address Space: 172.16.201.0/24**. VPN clients that connect to the VNet using this Point-to-Site connection receive an IP address from the specified pool.
-* **GatewaySubnet: 192.168.200.0/24**. The Gateway subnet must use the name "GatewaySubnet".
-* **Size:** Select the gateway SKU that you want to use.
-* **Routing Type: Dynamic**
+* **Adressraum: 192.168.0.0/16**
+* **Subnetzname: FrontEnd**
+* **Subnetzadressbereich: 192.168.1.0/24**
+* **Abonnement:** Falls Sie über mehrere Abonnements verfügen, vergewissern Sie sich, dass Sie das richtige Abonnement verwenden.
+* **Ressourcengruppe: TestRG**
+* **Standort: USA, Osten**
+* **Verbindungstyp: Point-to-Site**
+* **Clientadressraum: 172.16.201.0/24**. VPN-Clients, die über diese Point-to-Site-Verbindung eine Verbindung mit dem VNet herstellen, erhalten eine IP-Adresse aus dem angegebenen Pool.
+* **GatewaySubnet: 192.168.200.0/24**. Das Gatewaysubnetz muss den Namen „GatewaySubnet“ haben.
+* **Größe:** Wählen Sie die gewünschte Gateway-SKU aus.
+* **Routingtyp: Dynamisch**
 
-## <a name="<a-name="vnetvpn"></a>section-1---create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>Section 1 - Create a virtual network and a VPN gateway
-### <a name="part-1:-create-a-virtual-network"></a>Part 1: Create a virtual network
-To create a VNet by using the Azure portal, use the following steps. Screenshots are provided as examples. Be sure to replace the values with your own.
+## <a name="a-namevnetvpnasection-1-create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>Abschnitt 1: Erstellen eines virtuellen Netzwerks und eines VPN-Gateways
+### <a name="a-namecreatevnetapart-1-create-a-virtual-network"></a><a name="createvnet"></a>Teil 1: Erstellen eines virtuellen Netzwerks
+Falls Sie noch nicht über ein virtuelles Netzwerk verfügen, erstellen Sie eines. Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Gehen Sie wie folgt vor, um ein VNet über das Azure-Portal zu erstellen: 
 
-1. From a browser, navigate to the [Azure portal](http://portal.azure.com) and, if necessary, sign in with your Azure account.
-2. Click **New**. In the **Search the marketplace** field, type "Virtual Network". Locate **Virtual Network** from the returned list and click to open the **Virtual Network** blade.
+1. Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
+2. Klicken Sie auf **Neu**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtual Network“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtual Network**, um das Blatt **Virtual Network** zu öffnen.
    
-    ![Search for virtual network blade](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvnetportal700.png "Search for virtual network blade")
-3. Near the bottom of the Virtual Network blade, from the **Select a deployment model** list, select **Classic**, and then click **Create**.
+    ![Blatt für die Suche nach „Virtual Network“](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvnetportal700.png "Search for virtual network blade")
+3. Wählen Sie im unteren Bereich des Blatts „Virtual Network“ in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus, und klicken Sie dann auf **Erstellen**.
    
-    ![Select deployment model](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/selectmodel.png "Select deployment model")
-4. On the **Create virtual network** blade, configure the VNet settings. In this blade, you'll add your first address space and a single subnet address range. After you finish creating the VNet, you can go back and add additional subnets and address spaces.
+    ![Bereitstellungsmodell auswählen](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/selectmodel.png "Select deployment model")
+4. Konfigurieren Sie auf dem Blatt **Virtuelles Netzwerk erstellen** die VNet-Einstellungen. In diesem Blatt fügen Sie Ihren ersten Adressraum und einen Adressbereich des Subnetzes hinzu. Nachdem Sie die Erstellung des VNet abgeschlossen haben, können Sie zurückgehen und weitere Subnetze und Adressräume hinzufügen.
    
-    ![Create virtual network blade](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png "Create virtual network blade")
-5. Verify that the **Subscription** is the correct one. You can change subscriptions by using the drop-down.
-6. Click **Resource group** and either select an existing resource group, or create a new one by typing a name for your new resource group. If you are creating a new group, name the resource group according to your planned configuration values. For more information about resource groups, visit [Azure Resource Manager Overview](../resource-group-overview.md#resource-groups).
-7. Next, select the **Location** settings for your VNet. The location will determine where the resources that you deploy to this VNet will reside.
-8. Select **Pin to dashboard** if you want to be able to find your VNet easily on the dashboard, and then click **Create**.
+    ![Blatt "Erstellen eines virtuellen Netzwerks"](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png "Create virtual network blade")
+5. Überprüfen Sie, ob es sich um das richtige **Abonnement** handelt. Das Abonnement kann über die Dropdownliste geändert werden.
+6. Klicken Sie auf **Ressourcengruppe** , und wählen Sie entweder eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, indem Sie einen Namen für die neue Ressourcengruppe eingeben. Geben Sie der Ressourcengruppe beim Erstellen einer neuen Gruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
+7. Wählen Sie als Nächstes für das VNet die Einstellungen für **Standort** aus. Der Standort gibt an, wo sich die in diesem VNet bereitgestellten Ressourcen befinden.
+8. Wählen Sie **An Dashboard anheften** aus, wenn das VNet komfortabel auf dem Dashboard zur Verfügung stehen soll, und klicken Sie dann auf **Erstellen**.
    
-    ![Pin to dashboard](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/pintodashboard150.png "Pin to dashboard")
-9. After clicking Create, you will see a tile on your dashboard that will reflect the progress of your VNet. The tile changes as the VNet is being created.
+    ![An Dashboard anheften](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/pintodashboard150.png "Pin to dashboard")
+9. Nach dem Klicken auf „Erstellen“ wird auf dem Dashboard eine Kachel angezeigt, mit der der Status des VNet angegeben wird. Die Kachel verändert sich, wenn das VNet erstellt wird.
    
-    ![Creating virtual network tile](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png "Creating virtual network tile")
-10. After you create your virtual network, you can add the IP address of a DNS server in order to handle name resolution. Open the settings for your virtual network, click DNS servers, and add the IP address of the DNS server that you want to use. This setting does not create a new DNS server. Be sure to add a DNS server that your resources can communicate with.
+    ![Kachel "Erstellen eines virtuellen Netzwerks"](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png "Creating virtual network tile")
+10. Nach Erstellung des virtuellen Netzwerks können Sie für die Namensauflösung die IP-Adresse eines DNS-Servers hinzufügen. Öffnen Sie die Einstellungen für Ihr virtuelles Netzwerk, klicken Sie auf „DNS-Server“, und fügen Sie die IP-Adresse des gewünschten DNS-Servers hinzu. Mit dieser Einstellung wird kein neuer DNS-Server erstellt. Achten Sie darauf, dass Sie einen DNS-Server hinzufügen, mit dem Ihre Ressourcen kommunizieren können.
 
-Once your virtual network has been created, you will see **Created** listed under **Status** on the networks page in the Azure classic portal.
+Nachdem das virtuelle Netzwerk erstellt wurde, wird im klassischen Azure-Portal auf der Seite mit den Netzwerken unter **Status** der Eintrag **Erstellt** angezeigt.
 
-### <a name="part-2:-create-gateway-subnet-and-a-dynamic-routing-gateway"></a>Part 2: Create gateway subnet and a dynamic routing gateway
-In this step, you will create a gateway subnet and a Dynamic routing gateway. In the Azure portal for the classic deployment model, creating the gateway subnet and the gateway can be done through the same configuration blades.
+### <a name="a-namegatewayapart-2-create-gateway-subnet-and-a-dynamic-routing-gateway"></a><a name="gateway"></a>Teil 2: Erstellen eines Gatewaysubnetzes und eines Gateways mit dynamischem Routing
+In diesem Schritt erstellen Sie ein Gatewaysubnetz und ein Gateways mit dynamischem Routing. Im Azure-Portal für das klassische Bereitstellungsmodell können Gatewaysubnetz und Gateway über die gleichen Konfigurationsblätter erstellt werden.
 
-1. In the portal, navigate to the virtual network for which you want to create a gateway.
-2. On the blade for your virtual network, on the **Overview** blade, in the VPN connections section, click **Gateway**.
+1. Navigieren Sie im Portal zu dem virtuellen Netzwerk, für das Sie ein Gateway erstellen möchten.
+2. Klicken Sie auf dem Blatt für Ihr virtuelles Netzwerk auf dem Blatt **Übersicht** im Abschnitt mit den VPN-Verbindungen auf **Gateway**.
    
-    ![Click here to create a gateway](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png "Click here to create a gateway")
-3. On the **New VPN Connection** blade, select **Point-to-site**.
+    ![Klicken Sie hier, um ein Gateway zu erstellen.](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png "Click here to create a gateway")
+3. Wählen Sie auf dem Blatt **Neue VPN-Verbindung** die Option **Punkt-zu-Standort** aus.
    
-    ![P2S connection type](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png "P2S connection type")
-4. For **Client Address Space**, add the IP address range. This is the range from which the VPN clients will receive an IP address when connecting. Delete the auto-filled range and add your own.
+    ![P2S-Verbindungstyp](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png "P2S connection type")
+4. Fügen Sie unter **Clientadressraum** den IP-Adressbereich hinzu. Hierbei handelt es sich um den Bereich, aus dem die VPN-Clients bei der Verbindungsherstellung eine IP-Adresse erhalten. Ersetzen Sie den automatisch ausgefüllten Bereich durch Ihren eigenen.
    
-    ![Client address space](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png "Client address space")
-5. Select the **Create gateway immediately** checkbox.
+    ![Clientadressraum](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png "Client address space")
+5. Aktivieren Sie das Kontrollkästchen **Gateway sofort erstellen**.
    
-    ![Create gateway immediately](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/creategwimm.png "Create gateway immediately")
-6. Click **Optional gateway configuration** to open the **Gateway configuration** blade.
+    ![Gateway sofort erstellen](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/creategwimm.png "Create gateway immediately")
+6. Klicken Sie auf **Optionale Gatewaykonfiguration**, um das Blatt **Gatewaykonfiguration** zu öffnen.
    
-    ![Click optional gateway configuration](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png "Click optional gateway configuration")
-7. Click **Subnet Configure required settings** to add the **gateway subnet**. While it is possible to create a gateway subnet as small as /29, we recommend that you create a larger subnet that includes more addresses by selecting at least /28 or /27. This will allow for enough addresses to accommodate possible additional configurations that you may want in the future.
+    ![Klicken Sie auf „Optionale Gatewaykonfiguration“.](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png "Click optional gateway configuration")
+7. Klicken Sie auf **Subnetz > Erforderliche Einstellungen konfigurieren**, um das **Gatewaysubnetz** hinzuzufügen. Es ist zwar möglich, ein Gatewaysubnetz von /29 zu erstellen, es wird jedoch empfohlen, ein größeres Subnetz mit mehr Adressen zu erstellen und mindestens /28 oder /27 auszuwählen. Dadurch steht eine ausreichend hohe Anzahl von Adressen für mögliche zusätzliche Konfigurationen zur Verfügung, die Sie zukünftig vielleicht benötigen.
    
    > [!IMPORTANT]
-   > When working with gateway subnets, avoid associating a network security group (NSG) to the gateway subnet. Associating a network security group to this subnet may cause your VPN gateway to stop functioning as expected. For more information about network security groups, see [What is a network security group?](../virtual-network/virtual-networks-nsg.md)
+   > Vermeiden Sie bei der Verwendung von Gatewaysubnetzen die Zuordnung einer Netzwerksicherheitsgruppe (NSG) zum Gatewaysubnetz. Das Zuordnen einer Netzwerksicherheitsgruppe zu diesem Subnetz kann dazu führen, dass das VPN-Gateway nicht mehr wie erwartet funktioniert. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md).
    > 
    > 
    
-    ![Add GatewaySubnet](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png "Add GatewaySubnet")
-8. Select the gateway **Size**. This is the gateway SKU that you will use to create your virtual network gateway. In the portal, the Default SKU is **Basic**. For more information about gateway SKUs, see [About VPN Gateway Settings](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+    ![Hinzufügen von „GatewaySubnet“](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png "Add GatewaySubnet")
+8. Wählen Sie die Gatewaygröße** **aus. Hierbei handelt es sich um die Gateway-SKU, die Sie bei der Erstellung Ihres virtuellen Netzwerkgateways verwenden. Im Portal ist standardmäßig die SKU **Basic** ausgewählt. Weitere Informationen zu Gateway-SKUs finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
    
-    ![gateway size](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
-9. Select the **Routing Type** for your gateway. P2S configurations require a **Dynamic** routing type. Click **OK** when you have finished configuring this blade.
+    ![Gatewaygröße](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
+9. Wählen Sie den **Routingtyp** für Ihr Gateway aus. Für P2S-Konfigurationen wird der Routingtyp **Dynamisch** benötigt. Klicken Sie abschließend auf **OK**.
    
-    ![Configure routing type](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png "Configure routing type")
-10. On the **New VPN Connection** blade, click **OK** at the bottom of the blade to begin creating your virtual network gateway. This can take up to 45 minutes to complete. 
+    ![Konfigurieren des Routingtyps](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png "Configure routing type")
+10. Klicken Sie am unteren Rand des Blatts **Neue VPN-Verbindung** auf **OK**, um mit der Erstellung Ihres virtuellen Netzwerkgateways zu beginnen. Dies kann bis zu 45 Minuten dauern. 
 
-## <a name="<a-name="generatecerts"></a>section-2---generate-certificates"></a><a name="generatecerts"></a>Section 2 - Generate certificates
-Certificates are used by Azure to authenticate VPN clients for Point-to-Site VPNs. You can use the .cer file from either a root certificate generated by an enterprise certificate solution, or a self-signed root certificate. In this section, you will obtain the .cer file for the root certificate and a client certificate generated from the root cert.
+## <a name="a-namegeneratecertsasection-2-generate-certificates"></a><a name="generatecerts"></a>Abschnitt 2: Generieren von Zertifikaten
+Zertifikate werden von Azure zur Authentifizierung von VPN-Clients für Point-to-Site-VPNs verwendet. Die Daten des öffentlichen Zertifikats (nicht der private Schlüssel) werden als x.509-CER-Datei mit Base-64-Codierung exportiert – entweder aus einem mit einer Unternehmenszertifikatlösung generierten Stammzertifikat oder aus einem selbstsignierten Stammzertifikat. Anschließend werden die Daten des öffentlichen Zertifikats aus dem Stammzertifikat in Azure importiert. Darüber hinaus müssen Sie auf der Grundlage des Stammzertifikats für Clients ein Clientzertifikat generieren. Auf jedem Client, der eine P2S-Verbindung mit dem virtuellen Netzwerk herstellen möchte, muss ein Clientzertifikat installiert sein, das auf der Grundlage des Stammzertifikats generiert wurde.
 
-### <a name="<a-name="root"></a>part-1:-obtain-the-.cer-file-for-the-root-certificate"></a><a name="root"></a>Part 1: Obtain the .cer file for the root certificate
-* If you are using an enterprise certificate system, obtain the .cer file for the root certificate that you want to use. 
-* If you are not using an enterprise certificate solution, you need to generate a self-signed root certificate. For Windows 10 steps, you can refer to [Working with self-signed root certificates for Point-to-Site configurations](vpn-gateway-certificates-point-to-site.md). The article walks you through using makecert to generate a self-signed certificate, and then export the .cer file.
+### <a name="a-namecerapart-1-obtain-the-cer-file-for-the-root-certificate"></a><a name="cer"></a>Teil 1: Beschaffen der CER-Datei für ein Stammzertifikat
+Bei einer Unternehmenslösung können Sie Ihre vorhandene Zertifikatkette verwenden. Wenn Sie keine Lösung einer Unternehmenszertifizierungsstelle verwenden, können Sie ein selbstsigniertes Stammzertifikat erstellen. Makecert ist eine Methode zum Erstellen eines selbstsignierten Zertifikats.
 
-### <a name="part-2:-generate-a-client-certificate"></a>Part 2: Generate a client certificate
-You can either generate a unique certificate for each client that will connect, or you can use the same certificate on multiple clients. The advantage to generating unique client certificates is the ability to revoke a single certificate if needed. Otherwise, if everyone is using the same client certificate and you find that you need to revoke the certificate for one client, you will need to generate and install new certificates for all of the clients that use that certificate to authenticate.
+* Wenn Sie ein Unternehmenszertifikatsystem verwenden, müssen Sie die CER-Datei für das Stammzertifikat beschaffen, das Sie verwenden möchten. 
+* Wenn Sie keine Unternehmenszertifikatlösung verwenden, müssen Sie ein selbstsigniertes Stammzertifikat generieren. Schritte für Windows 10 finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für P2S-Konfigurationen](vpn-gateway-certificates-point-to-site.md).
 
-* If you are using an enterprise certificate solution, generate a client certificate with the common name value format 'name@yourdomain.com', rather than the 'domain name\username' format. 
-* If you are using a self-signed certificate, see [Working with self-signed root certificates for Point-to-Site configurations](vpn-gateway-certificates-point-to-site.md) to generate a client certificate.
+1. Um eine CER-Datei auf der Grundlage eines Zertifikats zu generieren, öffnen Sie **certmgr.msc**, und suchen das Stammzertifikat. Klicken Sie mit der rechten Maustaste auf das selbstsignierte Stammzertifikat, klicken Sie auf **Alle Aufgaben** und dann auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent**geöffnet.
+2. Klicken Sie im Assistenten auf **Weiter**, wählen Sie **Nein, privaten Schlüssel nicht exportieren** aus, und klicken Sie dann auf **Weiter**.
+3. Wählen Sie auf der Seite **Dateiformat für den Export** die Option **Base-64-codiert X.509 (.CER)** aus. Klicken Sie auf **Weiter**. 
+4. Wählen Sie unter **Zu exportierende Datei** die Option **Durchsuchen** aus, um zu dem Speicherort zu wechseln, an den das Zertifikat exportiert werden soll. Geben Sie unter **Dateiname**einen Namen für die Zertifikatdatei ein. Klicken Sie auf **Weiter**.
+5. Klicken Sie auf **Fertig stellen** , um das Zertifikat zu exportieren.
 
-### <a name="part-3:-export-the-client-certificate"></a>Part 3: Export the client certificate
-Install a client certificate on each computer that you want to connect to the virtual network. A client certificate is required for authentication. You can automate installing the client certificate, or you can install it manually. The following steps walk you through exporting and installing the client certificate manually.
+### <a name="a-namegenclientcertapart-2-generate-a-client-certificate"></a><a name="genclientcert"></a>Teil 2: Generieren eines Clientzertifikats
+Sie können entweder ein eindeutiges Zertifikat für jeden Client generieren, mit dem eine Verbindung hergestellt wird, oder Sie können dasselbe Zertifikat für mehrere Clients verwenden. Der Vorteil beim Generieren von eindeutigen Clientzertifikaten besteht darin, dass Sie bei Bedarf ein einzelnes Zertifikat widerrufen können. Falls überall das gleiche Clientzertifikat verwendet wird und Sie das Zertifikat für einen Client sperren müssen, müssen Sie sonst neue Zertifikate für alle Clients generieren und installieren, die das Zertifikat für die Authentifizierung verwenden.
 
-1. To export a client certificate, you can use *certmgr.msc*. Right-click the client certificate that you want to export, click **all tasks**, and then click **export**.
-2. Export the client certificate with the private key. This is a *.pfx* file. Make sure to record or remember the password (key) that you set for this certificate.
+* Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Name-Wert-Format 'name@yourdomain.com', (anstatt des Formats „Domänenname\Benutzername“). 
+* Wenn Sie ein selbstsigniertes Zertifikat verwenden, helfen Ihnen die Informationen zum Generieren eines Clientzertifikats unter [Arbeiten mit selbstsignierten Stammzertifikaten für P2S-Konfigurationen](vpn-gateway-certificates-point-to-site.md) weiter.
 
-## <a name="<a-name="upload"></a>section-3---upload-the-.cer-file"></a><a name="upload"></a>Section 3 - Upload the .cer file
-After the gateway has been created, you can upload the .cer file for a trusted root certificate to Azure. You can upload files for up to 20 root certificates. You do not upload the private key for the certificate to Azure. Once the .cer file is uploaded, Azure uses it to authenticate clients that connect to the virtual network.
+### <a name="a-nameexportclientcertapart-3-export-the-client-certificate"></a><a name="exportclientcert"></a>Teil 3: Exportieren des Clientzertifikats
+Installieren Sie auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, ein Clientzertifikat. Ein Clientzertifikat wird für die Authentifizierung benötigt. Sie können die Installation des Clientzertifikats automatisieren oder das Zertifikat manuell installieren. In den folgenden Schritten wird das manuelle Exportieren und Installieren des Clientzertifikats beschrieben.
 
-1. On the **VPN connections** section of the blade for your VNet, click the **clients** graphic to open the **Point-to-site VPN connection** blade.
+1. Sie können *certmgr.msc*zum Exportieren eines Clientzertifikats verwenden. Klicken Sie mit der rechten Maustaste auf das Clientzertifikat, das Sie exportieren möchten, klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**.
+2. Exportieren Sie das Clientzertifikat mit dem privaten Schlüssel. Dies ist eine *PFX* -Datei. Vergessen Sie nicht, sich das Kennwort (Schlüssel) zu notieren oder zu merken, das Sie für dieses Zertifikat festgelegt haben.
+
+## <a name="a-nameuploadasection-3-upload-the-root-certificate-cer-file"></a><a name="upload"></a>Abschnitt 3: Hochladen der CER-Datei des Stammzertifikats
+Nach Erstellung des Gateways können Sie die CER-Datei für ein vertrauenswürdiges Stammzertifikat in Azure hochladen. Sie können Dateien für bis zu 20 Stammzertifikate hochladen. Der private Schlüssel für das Stammzertifikat wird nicht in Azure hochgeladen. Die hochgeladene CER-Datei wird von Azure zur Authentifizierung von Clients verwendet, die eine Verbindung mit dem virtuellen Netzwerk herstellen.
+
+1. Klicken Sie auf dem Blatt für Ihr VNet im Abschnitt **VPN-Verbindungen** auf die** **Clientgrafik, um das Blatt **Punkt-zu-Standort-VPN-Verbindung** zu öffnen.
    
     ![Clients](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png "Clients")
-2. On the **Point-to-site connection** blade, click **Manage certificates** to open the **Certificates** blade.<br>
+2. Klicken Sie auf dem Blatt **Punkt-zu-Standort-Verbindung** auf **Zertifikate verwalten**, um das Blatt **Zertifikate** zu öffnen.<br>
    
-    ![Certificates blade](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png "Certificates blade")<br><br>
-3. On the **Certificates** blade, click **Upload** to open the **Upload certificate** blade.<br>
+    ![Blatt „Zertifikate“](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png "Certificates blade")<br><br>
+3. Klicken Sie auf dem Blatt **Zertifikate** auf **Hochladen**, um das Blatt **Zertifikat hochladen** zu öffnen.<br>
    
-    ![Upload certificates blade](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/uploadcerts.png "Upload certificates blade")<br>
-4. Click the folder graphic to browse for the .cer file. Select the file, then click **OK**. Refresh the page to see the uploaded certificate on the **Certificates** blade.
+    ![Blatt zum Hochladen von Zertifikaten](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/uploadcerts.png "Upload certificates blade")<br>
+4. Klicken Sie auf die Ordnergrafik, um zur CER-Datei zu navigieren. Wählen Sie die Datei aus, und klicken Sie anschließend auf **OK**. Aktualisieren Sie die Seite, damit das hochgeladene Zertifikat auf dem Blatt **Zertifikate** angezeigt wird.
    
-    ![Upload certificate](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png "Upload certificate")<br>
+    ![Hochladen des Zertifikats](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png "Upload certificate")<br>
 
-## <a name="<a-name="vpnclientconfig"></a>section-4---generate-the-vpn-client-configuration-package"></a><a name="vpnclientconfig"></a>Section 4 - Generate the VPN client configuration package
-To connect to the virtual network, you also need to configure a VPN client. The client computer requires both a client certificate and the proper VPN client configuration package in order to connect.
+## <a name="a-namevpnclientconfigasection-4-generate-the-vpn-client-configuration-package"></a><a name="vpnclientconfig"></a>Abschnitt 4: Generieren des VPN-Clientkonfigurationspakets
+Zum Herstellen einer Verbindung mit dem virtuellen Netzwerk müssen Sie auch einen VPN-Client konfigurieren. Der Clientcomputer benötigt sowohl ein Clientzertifikat als auch das richtige VPN-Clientkonfigurationspaket, um eine Verbindung herstellen zu können.
 
-The VPN client package contains configuration information to configure the VPN client software built into Windows. The package does not install additional software. The settings are specific to the virtual network that you want to connect to. For the list of client operating systems that are supported, see the [Point-to-Site connections](vpn-gateway-vpn-faq.md#point-to-site-connections) section of the VPN Gateway FAQ. 
+Das VPN-Clientpaket enthält Konfigurationsinformationen zum Konfigurieren der VPN-Client-Software, die in Windows integriert. Das Paket installiert keine zusätzlichen Software. Die Einstellungen gelten speziell für das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen möchten. Die Liste mit den unterstützten Clientbetriebssystemen finden Sie im Abschnitt [Point-to-Site-Verbindungen](vpn-gateway-vpn-faq.md#point-to-site-connections) der häufig gestellten Fragen zu VPN Gateway. 
 
-### <a name="to-generate-the-vpn-client-configuration-package"></a>To generate the VPN client configuration package
-1. In the Azure portal, in the **Overview** blade for your VNet, in **VPN connections**, click the client graphic to open the **Point-to-site VPN connection** blade.
-2. At the top of the **Point-to-site VPN connection** blade, click the download package that corresponds to the client operating system on which it will be installed:
+### <a name="to-generate-the-vpn-client-configuration-package"></a>So generieren Sie das VPN-Clientkonfigurationspaket
+1. Klicken Sie im Azure-Portal auf dem Übersichtsblatt** **für Ihr VNet im Abschnitt **VPN-Verbindungen** auf die Clientgrafik, um das Blatt **Punkt-zu-Standort-VPN-Verbindung** zu öffnen.
+2. Wählen Sie im oberen Bereich des Blatts **Punkt-zu-Standort-VPN-Verbindung** das Downloadpaket für das Clientbetriebssystem aus, unter dem es installiert wird:
    
-   * For 64-bit clients, select **VPN Client (64-bit)**.
-   * For 32-bit clients, select **VPN Client (32-bit)**.
+   * Wählen Sie für 64-Bit-Clients das Paket **VPN-Client (64 Bit)** aus.
+   * Wählen Sie für 32-Bit-Clients das Paket **VPN-Client (32 Bit)** aus.
      
-     ![Download VPN client configuration package](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png "Download VPN client configuration package")<br>
-3. You will see a message that Azure is generating the VPN client configuration package for the virtual network. After a few minutes, the package is generated and you will see a message on your local computer that the package has been downloaded. Save the configuration package file. You will install this on each client computer that will connect to the virtual network using P2S.
+     ![Herunterladen des VPN-Clientkonfigurationspakets](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png "Download VPN client configuration package")<br>
+3. Daraufhin erscheint eine Meldung mit dem Hinweis, dass Azure das VPN-Clientkonfigurationspaket für das virtuelle Netzwerk generiert. Wenn das Paket nach einigen Minuten generiert wurde, erscheint auf Ihrem lokalen Computer eine Meldung mit dem Hinweis, dass das Paket heruntergeladen wurde. Speichern Sie die Konfigurationspaketdatei. Diese muss auf jedem Clientcomputer installiert werden, der eine P2S-Verbindung mit dem virtuellen Netzwerk herstellt.
 
-## <a name="section-5---configure-the-client-computer"></a>Section 5 - Configure the client computer
-### <a name="part-1:-install-the-client-certificate"></a>Part 1: Install the client certificate
-Each client computer must have a client certificate in order to authenticate. When installing the client certificate, you will need the password that was created when the client certificate was exported.
+## <a name="a-nameclientconfigurationasection-5-configure-the-client-computer"></a><a name="clientconfiguration"></a>Abschnitt 5: Konfigurieren des Clientcomputers
+### <a name="part-1-install-the-client-certificate"></a>Teil 1: Installieren des Clientzertifikats
+Jeder Clientcomputer muss über ein Clientzertifikat verfügen, um sich zu authentifizieren. Beim Installieren des Clientzertifikats benötigen Sie das Kennwort, das beim Exportieren des Clientzertifikats erstellt wurde.
 
-1. Copy the .pfx file to the client computer.
-2. Double-click the .pfx file to install it. 
+1. Kopieren Sie die PFX-Datei auf den Clientcomputer.
+2. Doppelklicken Sie auf die PFX-Datei, um sie zu installieren. Ändern Sie den Speicherort der Installation nicht.
 
-### <a name="part-2:-install-the-vpn-client-configuration-package"></a>Part 2: Install the VPN client configuration package
-You can use the same VPN client configuration package on each client computer, provided that the version matches the architecture for the client.
+### <a name="part-2-install-the-vpn-client-configuration-package"></a>Teil 2: Installieren des VPN-Clientkonfigurationspakets
+Sie können auf jedem Clientcomputer das gleiche VPN-Clientkonfigurationspaket verwenden – vorausgesetzt, es handelt sich dabei um die passende Version für die Architektur des jeweiligen Clients.
 
-1. Copy the configuration file locally to the computer that you want to connect to your virtual network and double-click the .exe file. 
-2. Once the package has installed, you can start the VPN connection. The configuration package is not signed by Microsoft. You may want to sign the package using your organization's signing service, or sign it yourself using [SignTool](http://go.microsoft.com/fwlink/p/?LinkId=699327). It's OK to use the package without signing. However, if the package isn't signed, a warning appears when you install the package.
-3. On the client computer, navigate to **Network Settings** and click **VPN**. You will see the connection listed. It shows the name of the virtual network that it will connect to and will look similar to this: 
+1. Kopieren Sie die Konfigurationsdatei lokal auf den Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, und doppelklicken Sie auf die EXE-Datei. 
+2. Sobald das Paket installiert worden ist, können Sie die VPN-Verbindung starten. Das Konfigurationspaket ist nicht von Microsoft signiert. Sie können das Paket mithilfe des Signaturdiensts Ihres Unternehmens oder mit [SignTool](http://go.microsoft.com/fwlink/p/?LinkId=699327) selbst signieren. Sie können das Paket auch ohne Signatur verwenden. Wenn das Paket nicht signiert ist, wird bei der Installation des Pakets aber eine Warnung angezeigt.
+3. Navigieren Sie auf dem Clientcomputer zu **Netzwerkeinstellungen**, und klicken Sie auf **VPN**. Die Verbindung wird angezeigt. Sie zeigt den Namen des virtuellen Netzwerks an, mit dem eine Verbindung hergestellt wird. Das sieht dann in etwa so aus: 
    
-    ![VPN client](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vpn.png "VNet VPN client")
+    ![VPN-Client](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vpn.png "VNet VPN client")
 
-## <a name="section-6---connect-to-azure"></a>Section 6 - Connect to Azure
-### <a name="connect-to-your-vnet"></a>Connect to your VNet
-1. To connect to your VNet, on the client computer, navigate to VPN connections and locate the VPN connection that you created. It is named the same name as your virtual network. Click **Connect**. A pop-up message may appear that refers to using the certificate. If this happens, click **Continue** to use elevated privileges. 
-2. On the **Connection** status page, click **Connect** to start the connection. If you see a **Select Certificate** screen, verify that the client certificate showing is the one that you want to use to connect. If it is not, use the drop-down arrow to select the correct certificate, and then click **OK**.
+## <a name="a-nameconnectasection-6-connect-to-azure"></a><a name="connect"></a>Abschnitt 6: Herstellen der Verbindung mit Azure
+### <a name="connect-to-your-vnet"></a>Herstellen der Verbindung mit Ihrem VNet
+1. Um eine Verbindung mit Ihrem VNet herzustellen, navigieren Sie auf dem Clientcomputer zu „VPN-Verbindungen“ und suchen nach der VPN-Verbindung, die Sie erstellt haben. Sie hat den gleichen Namen wie das virtuelle Netzwerk. Klicken Sie auf **Verbinden**. Möglicherweise wird eine Popupmeldung angezeigt, die sich auf die Verwendung des Zertifikats bezieht. Klicken Sie in diesem Fall auf **Weiter** , um erhöhte Rechte zu verwenden. 
+2. Klicken Sie auf der Statusseite **Verbindung** auf **Verbinden**, um die Verbindung herzustellen. Wenn der Bildschirm **Zertifikat auswählen** angezeigt wird, vergewissern Sie sich, dass das angezeigte Clientzertifikat dem Zertifikat entspricht, die Sie zum Herstellen der Verbindung verwenden möchten. Wenn dies nicht der Fall ist, verwenden Sie den Dropdownpfeil, um das richtige Zertifikat auszuwählen, und klicken Sie dann auf **OK**.
    
-    ![Connect](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientconnect.png "VPN client connection")
-3. Your connection should now be established.
+    ![Verbinden](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientconnect.png "VPN client connection")
+3. Die Verbindung sollte jetzt eingerichtet werden.
    
-    ![Established connection](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/connected.png "Connection established")
+    ![Verbindung hergestellt](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/connected.png "Connection established")
 
-### <a name="verify-the-vpn-connection"></a>Verify the VPN connection
-1. To verify that your VPN connection is active, open an elevated command prompt, and run *ipconfig/all*.
-2. View the results. Notice that the IP address you received is one of the addresses within the Point-to-Site connectivity address range that you specified when you created your VNet. The results should be something similar to this:
+### <a name="verify-the-vpn-connection"></a>Überprüfen der VPN-Verbindung
+1. Um sicherzustellen, dass die VPN-Verbindung aktiv ist, öffnen Sie eine Eingabeaufforderung mit Administratorrechten, und führen Sie *Ipconfig/all*aus.
+2. Zeigen Sie die Ergebnisse an. Beachten Sie, dass die IP-Adresse, die Sie erhalten, eine Adresse aus dem Adressbereich der P2S-Verbindung ist, den Sie beim Erstellen des virtuellen Netzwerks angegeben haben. Das Ergebnis sollte etwa wie folgt aussehen:
 
-Example:
+Beispiel:
 
     PPP adapter VNet1:
         Connection-specific DNS Suffix .:
@@ -219,9 +231,12 @@ Example:
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
 
-## <a name="next-steps"></a>Next steps
-You can add virtual machines to your virtual network. See [How to create a custom virtual machine](../virtual-machines/virtual-machines-windows-classic-createportal.md).
+## <a name="next-steps"></a>Nächste Schritte
+Sie können dem virtuellen Netzwerk virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten virtuellen Computers](../virtual-machines/virtual-machines-windows-classic-createportal.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

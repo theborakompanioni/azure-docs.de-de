@@ -1,5 +1,5 @@
-### <a name="noconnection"></a>Gewusst wie: Hinzufügen oder Entfernen von Präfixen ohne Gatewayverbindung
-* Verwenden Sie das unten angegebene Beispiel, um einem lokalen Netzwerkgateway, das Sie erstellt haben, aber das noch nicht über eine Gatewayverbindung verfügt, zusätzliche Adresspräfixe **hinzuzufügen**. Legen Sie die Werte auf Ihre eigenen Werte fest.
+### <a name="a-namenoconnectionahow-to-add-or-remove-prefixes-no-gateway-connection"></a><a name="noconnection"></a>Gewusst wie: Hinzufügen oder Entfernen von Präfixen ohne Gatewayverbindung
+* **hinzuzufügen** . Legen Sie die Werte auf Ihre eigenen Werte fest.
   
         $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
         Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
@@ -10,7 +10,7 @@
         Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
         -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
 
-### <a name="withconnection"></a>Gewusst wie: Hinzufügen oder Entfernen von Präfixen mit Gatewayverbindung
+### <a name="a-namewithconnectionahow-to-add-or-remove-prefixes-existing-gateway-connection"></a><a name="withconnection"></a>Gewusst wie: Hinzufügen oder Entfernen von Präfixen mit Gatewayverbindung
 Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn Sie die Gatewayverbindung erstellt haben und die IP-Adresspräfixe Ihres lokalen Netzwerkgateways hinzufügen oder entfernen möchten. Dies führt zu Ausfallzeiten für Ihre VPN-Verbindung. Beim Aktualisieren der Präfixe entfernen Sie zuerst die Verbindung und ändern die Präfixe und erstellen anschließend eine neue Verbindung. Legen Sie die Werte in den bereitgestellten Beispielen auf Ihre eigenen Werte fest.
 
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn Sie 
    
         Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
         -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
-3. Erstellen Sie die Verbindung. In diesem Beispiel konfigurieren wir einen IPsec-Verbindungstyp. Verwenden Sie beim erneuten Erstellen der Verbindung den für Ihre Konfiguration angegebenen Verbindungstyp. Weitere Verbindungstypen finden Sie auf der Seite [PowerShell-Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx).
+3. Erstellen Sie die Verbindung. In diesem Beispiel konfigurieren wir einen IPsec-Verbindungstyp. Verwenden Sie beim erneuten Erstellen der Verbindung den für Ihre Konfiguration angegebenen Verbindungstyp. Weitere Verbindungstypen finden Sie auf der Seite [PowerShell-Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) .
    
      Legen Sie die Variable für das virtuelle Netzwerkgateway (VirtualNetworkGateway) fest.
    
@@ -45,4 +45,7 @@ Führen Sie die folgenden Schritte in der angegebenen Reihenfolge aus, wenn Sie 
         -ConnectionType IPsec `
         -RoutingWeight 10 -SharedKey 'abc123'
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Nov16_HO2-->
+
+

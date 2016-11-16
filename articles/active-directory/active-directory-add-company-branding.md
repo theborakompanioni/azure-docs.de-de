@@ -1,12 +1,12 @@
 ---
-title: Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
-description: Erfahren Sie, wie Sie Unternehmensbranding der Anmelde- und Zugriffsbereichsseite hinzufügen.
+title: "Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite"
+description: "Erfahren Sie, wie Sie Unternehmensbranding der Anmelde- und Zugriffsbereichsseite hinzufügen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f74621b4-4ef0-4899-8c0e-0c20347a8c31
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,30 +14,34 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
+
 
 ---
-# Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
+# <a name="add-company-branding-to-your-signin-and-access-panel-pages"></a>Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
 Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist mit Azure Active Directory möglich, da Sie die Anpassung der Darstellung folgender Websites mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas durchführen können:
 
-* **Anmeldeseite:** Diese Seite wird angezeigt, wenn Sie sich an Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite entweder während einer Startbereichserkennung oder per Eingabe Ihrer Anmeldeinformationen. Mit der Startbereichserkennung können Partnerbenutzer an ihren lokalen Sicherheitstokendienst (z.B. AD FS) weitergeleitet werden.
+* **Anmeldeseite:** Diese Seite wird angezeigt, wenn Sie sich bei Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite entweder während einer Startbereichserkennung oder per Eingabe Ihrer Anmeldeinformationen. Mit der Startbereichserkennung können Partnerbenutzer an ihren lokalen Sicherheitstokendienst (z.B. AD FS) weitergeleitet werden.
 * **Zugriffsbereichsseite:** Der Zugriffsbereich ist ein webbasiertes Portal, mit dem Sie die cloudbasierten Anwendungen anzeigen und starten können, für die Ihr Azure AD-Administrator Ihnen Zugriff gewährt hat. Verwenden Sie zum Zugreifen auf den Zugriffsbereich die folgende URL: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 In diesem Thema wird beschrieben, wie Sie die Anmeldeseite und die Zugriffsbereichsseite anpassen können.
 
 > [!NOTE]
 > * Unternehmensbranding ist ein Feature, das nur verfügbar ist, wenn Sie Ihre Azure Active Directory-Instanz auf die Premium oder Basic Edition aktualisiert haben oder Office 365-Benutzer sind. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-> * Die Azure Active Directory-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+> * Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 > 
 > 
 
-## Anpassen der Anmeldeseite
+## <a name="customizing-the-signin-page"></a>Anpassen der Anmeldeseite
 Normalerweise verwenden Sie die Anmeldeseite, wenn Sie browserbasierten Zugriff auf Ihre Cloud-Apps und -dienste benötigen, die von Ihrer Organisation abonniert wurden.
 
 Wenn Sie Änderungen auf Ihre Anmeldeseite angewendet haben, kann es bis zu einer Stunde dauern, bis die Änderungen angezeigt werden.
 
-Eine Anmeldeseite mit Branding wird nur angezeigt, wenn Sie einen Dienst mit einer mandantenspezifischen URL besuchen, z.B. https://outlook.com/**contoso**.com oder https://mail.**contoso**.com.
+Eine Anmeldeseite mit Branding wird nur angezeigt, wenn Sie einen Dienst mit einer mandantenspezifischen URL besuchen, z. B. https://outlook.com/**contoso**.com oder https://mail.**contoso**.com.
 
-Wenn Sie einen Dienst mit mandantenspezifischen URLs besuchen (z.B. https://mail.office365.com), wird eine Anmeldeseite ohne Branding angezeigt. In diesem Fall wird Ihr Branding angezeigt, nachdem Sie die Benutzer-ID eingegeben oder eine Benutzerkachel ausgewählt haben.
+Wenn Sie einen Dienst mit nicht mandantenspezifischen URLs besuchen (7. B. https://mail.office365.com), wird eine Anmeldeseite ohne Branding angezeigt. In diesem Fall wird Ihr Branding angezeigt, nachdem Sie die Benutzer-ID eingegeben oder eine Benutzerkachel ausgewählt haben.
 
 > [!NOTE]
 > * Ihr Domänenname muss im Abschnitt **Active Directory** > **Verzeichnis** > **Domänen** im klassischen Azure-Portal, in dem Sie das Branding konfiguriert haben, als „Aktiv“ angezeigt werden.
@@ -73,7 +77,7 @@ Hier wird verdeutlicht, wie der Browser nach Erweiterung der Größe nach oben a
 
 ![][7]
 
-## Welche Elemente auf der Seite können angepasst werden?
+## <a name="what-elements-on-the-page-can-i-customize"></a>Welche Elemente auf der Seite können angepasst werden?
 Sie können die folgenden Elemente auf der Anmeldeseite anpassen:
 
 ![][5]
@@ -92,11 +96,11 @@ Sie können die folgenden Elemente auf der Anmeldeseite anpassen:
 
 Dank des Kontrollkästchens **Angemeldet bleiben** auf der Anmeldeseite kann der Benutzer angemeldet bleiben, wenn er den Browser schließt und wieder öffnet. Die Sitzungsdauer wird dadurch nicht beeinflusst. Das Kontrollkästchen kann auf der Azure Active Directory-Anmeldeseite ausgeblendet werden.
 
-Ob das Kontrollkästchen angezeigt wird, hängt von der Einstellung **"Angemeldet bleiben" ausblenden** ab.
+Ob das Kontrollkästchen angezeigt wird, hängt von der Einstellung **„Angemeldet bleiben“ ausblenden** ab.
 
 ![][9]
 
-Legen Sie diese Einstellung zum Ausblenden des Kontrollkästchens auf **Ausgeblendet** fest.
+Legen Sie diese Einstellung zum Ausblenden des Kontrollkästchens auf **Ausgeblendet** fest. 
 
 > [!NOTE]
 > Einige Features von SharePoint Online und Office 2010 setzen voraus, dass dieses Kontrollkästchen von den Benutzern aktiviert werden kann. Wenn Sie das Kontrollkästchen mithilfe dieser Einstellung ausblenden, werden den Benutzern unter Umständen zusätzliche und unerwartete Anmeldeaufforderungen angezeigt.
@@ -108,14 +112,14 @@ Sie können auch alle Elemente auf dieser Seite lokalisieren. Sobald Sie einen �
 * Erstellen Sie eine große "Standard"-Abbildung, die für alle Kulturen funktioniert, und erstellen Sie dann spezifische Versionen für Englisch und Französisch. Wenn Sie Ihre Browser auf eine dieser Sprachen festlegen, wird das jeweilige Bild angezeigt, während das Standardbild für alle anderen Sprachen angezeigt wird.
 * Konfigurieren Sie verschiedene Logos für Ihre Organisation (z. B. japanische oder hebräische Versionen).
 
-## Anpassung der Zugriffsbereichsseite
+## <a name="access-panel-page-customization"></a>Anpassung der Zugriffsbereichsseite
 Die Zugriffsbereichsseite ist im Wesentlichen eine Portalseite für den schnellen Zugriff auf die Cloud-Apps, für die Ihnen vom Administrator der Zugriff gewährt wurde. Auf dieser Seite werden Ihre Apps als Anwendungskacheln aufgeführt, auf die Sie klicken können.
 
 Der folgende Screenshot zeigt ein Beispiel für eine Zugriffsbereichsseite nach der Anpassung:
 
 ![][8]
 
-## Konfigurieren Sie Ihr Verzeichnis mit Unternehmensbranding
+## <a name="configure-your-directory-with-company-branding"></a>Konfigurieren Sie Ihr Verzeichnis mit Unternehmensbranding
 Sie können einen Standardsatz mit anpassbaren Elementen pro Verzeichnis im klassischen Azure-Portal konfigurieren. Nachdem die Standardeinstellungen gespeichert wurden, kann ein Administrator lokalisierte Versionen jedes Elements für verschiedene Sprachen bzw. Gebietsschemas hinzufügen. Alle anpassbaren Elemente sind optional.
 
 Wenn Sie beispielsweise ein standardmäßiges Bannerlogo konfigurieren, aber keine große Abbildung, wird Ihr Logo auf der Anmeldeseite oben rechts angezeigt. Außerdem wird die Standardabbildung der Website angezeigt.
@@ -169,16 +173,17 @@ Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am 
     d. Klicken Sie auf **Next**.
    
     e. Entfernen Sie den Text aus allen Textfeldern.
-7. Klicken Sie auf **Speichern**, um die Elemente zu entfernen.
-8. Klicken Sie ggf. erneut auf **Branding anpassen**, und wiederholen Sie diese Schritte für das gesamte sprachspezifische Branding, das entfernt werden soll. Alle Brandingeinstellungen wurden entfernt, wenn Sie auf **Branding anpassen** klicken und das Formular **Standardmäßiges Branding anpassen** ohne konfigurierte Einstellungen angezeigt wird.
+7. Klicken Sie auf **Speichern** , um die Elemente zu entfernen.
+8. Klicken Sie ggf. erneut auf **Branding anpassen**, und wiederholen Sie diese Schritte für das gesamte sprachspezifische Branding, das entfernt werden soll.
+    Alle Brandingeinstellungen wurden entfernt, wenn Sie auf **Branding anpassen** klicken und das Formular **Standardmäßiges Branding anpassen** ohne konfigurierte Einstellungen angezeigt wird.
 
-## Testen und Beispiele
+## <a name="testing-and-examples"></a>Testen und Beispiele
 Es wird empfohlen, dass Sie mit einem Testmandanten experimentieren, bevor Sie Änderungen in der Produktionsumgebung vornehmen.
 
 **Überprüfen Sie wie folgt, ob Ihr Branding angewendet wurde:**
 
 1. Öffnen Sie eine InPrivate- oder Inkognito-Browsersitzung.
-2. Greifen Sie auf https://outlook.com/contoso.com zu, und ersetzen Sie dabei „contoso.com“ durch die von Ihnen angepasste Domäne.
+2. Greifen Sie auf „https://outlook.com/contoso.com“ zu, und ersetzen Sie dabei „contoso.com“ durch die von Ihnen angepasste Domäne.
 
 Dies funktioniert auch für Domänen, die ein Format wie „contoso.onmicrosoft.com“ haben.
 
@@ -189,20 +194,20 @@ Um Sie bei der Erstellung effektiver Anpassungssätze zu unterstützen, haben wi
 
 Um die sprachspezifischen Einstellungen zu testen, müssen Sie die Standard-Spracheinstellungen in Ihrem Webbrowser in eine Sprache ändern, die Sie in Ihrer Anpassung festgelegt haben. In Internet Explorer wird dies im Menü **Internetoptionen** konfiguriert.
 
-## Anpassbare Elemente
+## <a name="customizable-elements"></a>Anpassbare Elemente
 Einige anpassbare Elemente in Azure AD dienen mehreren Verwendungszwecken. Sie können Firmenlogos einmal pro Verzeichnis konfigurieren, um es dann sowohl auf der Anmeldeseite als auch auf der Zugriffsbereichsseite zu verwenden. Einige anpassbare Elemente gelten nur speziell für die Anmeldeseite. Die folgende Tabelle enthält die Details für die verschiedenen anpassbaren Elemente.
 
 | Name | Beschreibung | Einschränkungen | Empfehlungen |
 | --- | --- | --- | --- |
-| Bannerlogo |Das Bannerlogo wird auf der Anmeldeseite und im Zugriffsbereich angezeigt. |<p>JPG oder PNG-</p><p>60 x 280 Pixel</p><p>10 KB</p> |<p>Verwenden Sie das vollständige Logo Ihrer Organisation (einschließlich Piktogramm und Firmenschriftzug)</p><p>Halten Sie es unter 30 Pixel, um Bildlaufleisten auf mobilen Geräten zu vermeiden</p><p>Halten Sie es kleiner als 4 KB</p><p>Verwenden Sie eine transparente PNG-Datei (gehen Sie nicht davon aus, dass die Anmeldeseite immer einen weißen Hintergrund hat)</p> |
-| Kachellogo |(zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um das generische „Geschäfts- oder Schulkonto“-Piktogramm an unterschiedlichen Stellen zu platzieren. |<p>JPG oder PNG-</p><p>120 x 120 Pixel</p><p>10 KB</p> |<p>Halten Sie es einfach (kein kleiner Text), da dieses Abbild um 50 % verkleinert werden kann |
+| Bannerlogo |Das Bannerlogo wird auf der Anmeldeseite und im Zugriffsbereich angezeigt. |<p>JPG oder PNG</p><p>60 x 280 Pixel</p><p>10 KB</p> |<p>Verwenden Sie das vollständige Logo Ihrer Organisation (einschließlich Piktogramm und Firmenschriftzug)</p><p>Halten Sie es unter 30 Pixel, um Bildlaufleisten auf mobilen Geräten zu vermeiden</p><p>Halten Sie es kleiner als 4 KB</p><p>Verwenden Sie eine transparente PNG-Datei (gehen Sie nicht davon aus, dass die Anmeldeseite immer einen weißen Hintergrund hat)</p> |
+| Kachellogo |(zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um das generische „Geschäfts- oder Schulkonto“-Piktogramm an unterschiedlichen Stellen zu platzieren. |<p>JPG oder PNG</p><p>120 x 120 Pixel</p><p>10 KB</p> |<p>Halten Sie es einfach (kein kleiner Text), da dieses Abbild um 50 % verkleinert werden kann |
 | </p> | | | |
-| Benutzernamenbezeichnung auf der Anmeldeseite |(zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um die generische „Geschäfts- oder Schulkonto“-Zeichenfolge an unterschiedlichen Stellen zu platzieren. Sie können ihn beispielsweise auf „Contoso-Konto“ oder „Contoso-ID“ festlegen. |<p>Unicode-Text, bis zu 50 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> |<p>Halten Sie es kurz und einfach</p><p>Fragen Sie die Benutzer, wie Sie sich in der Regel auf das Geschäfts- oder Schulkonto beziehen, das Sie zur Verfügung stellen.</p> |
+| Benutzernamenbezeichnung auf der Anmeldeseite |(zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um die generische „Geschäfts- oder Schulkonto“-Zeichenfolge an unterschiedlichen Stellen zu platzieren. Sie können ihn beispielsweise auf „Contoso-Konto“ oder „Contoso-ID“ festlegen. |<p>Unicode-Text, bis zu 50 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> |<p>Halten Sie es kurz und einfach.</p><p>Fragen Sie die Benutzer, wie Sie sich in der Regel auf das Geschäfts- oder Schulkonto beziehen, das Sie zur Verfügung stellen.</p> |
 | Text der Anmeldeseite |Dieser „Textbaustein“ wird unter dem Anmeldeseitenformular angezeigt und kann verwendet werden, um zusätzliche Anweisungen zu kommunizieren oder mitzuteilen, wo es Hilfe und Support gibt. |<p>Unicode-Text, bis zu 256 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> |Verwenden Sie maximal 250 Zeichen (ungefähr drei Zeilen Text) |
-| Abbildung auf der Anmeldeseite |Die Abbildung zeigt ein großes Bild, das auf der Anmeldeseite links neben dem Anmeldeseitenformular angezeigt wird. |<p>JPG oder PNG-</p><p>1420 x 1200</p><p>500 KB</p> |<p>1420 x 1200 Pixel</p><p>Wichtig: Halten Sie es so klein wie möglich, idealerweise unter 200 KB. Falls dieses Bild zu groß ist, beeinflusst dies die Leistung der Anmeldeseite, wenn das Bild nicht zwischengespeichert wird</p><p>Dieses Bild wird häufig zugeschnitten, um verschiedene Bildschirm-Seitenverhältnisse zu ermöglichen. Belassen Sie die visuellen Hauptelemente in der oberen linken Ecke (oben rechts für RTL-Sprachen), weil die Größenänderung von der Ecke unten rechts nach oben links erfolgt, wenn das Browserfenster verkleinert wird.</p> |
+| Abbildung auf der Anmeldeseite |Die Abbildung zeigt ein großes Bild, das auf der Anmeldeseite links neben dem Anmeldeseitenformular angezeigt wird. |<p>JPG oder PNG</p><p>1420 x 1200</p><p>500 KB</p> |<p>1420 x 1200 Pixel</p><p>Wichtig: Halten Sie es so klein wie möglich, idealerweise unter 200 KB. Falls dieses Bild zu groß ist, beeinflusst dies die Leistung der Anmeldeseite, wenn das Bild nicht zwischengespeichert wird</p><p>Dieses Bild wird häufig zugeschnitten, um verschiedene Bildschirm-Seitenverhältnisse zu ermöglichen. Belassen Sie die visuellen Hauptelemente in der oberen linken Ecke (oben rechts für RTL-Sprachen), weil die Größenänderung von der Ecke unten rechts nach oben links erfolgt, wenn das Browserfenster verkleinert wird.</p> |
 | Hintergrundfarbe auf der Anmeldeseite |Die Hintergrundfarbe auf der Anmeldeseite wird im Bereich links neben dem Anmeldeseitenformular verwendet. |Muss eine RGB-Farbe im hexadezimalen Format sein (Beispiel: #FFFFFF) |<p>Die Hintergrundfarbe wird bei Verbindungen mit geringer Bandbreite unter Umständen anstelle der großen Abbildung angezeigt</p><p>Wir empfehlen, die Grundfarbe des Bannerlogos auszuwählen</p> |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md)
 * [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
@@ -217,4 +222,8 @@ Einige anpassbare Elemente in Azure AD dienen mehreren Verwendungszwecken. Sie k
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

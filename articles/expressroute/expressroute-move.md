@@ -1,12 +1,12 @@
 ---
 title: Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell | Microsoft Docs
-description: Diese Seite enthält Informationen zur Überbrückung des klassischen Bereitstellungsmodells und des Resource Manager-Bereitstellungsmodells.
+description: "Diese Seite enthält Informationen zur Überbrückung des klassischen Bereitstellungsmodells und des Resource Manager-Bereitstellungsmodells."
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 945923d9858ec0ed31272c23268b263f77b5c7a4
+
 
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
@@ -74,7 +78,7 @@ Der aggregierte Durchsatz wird durch die Durchsatzkapazität des Gateways des vi
 ## <a name="access-to-azure-public-and-microsoft-peering-resources"></a>Zugreifen auf öffentliche Azure- und Microsoft-Peeringressourcen
 Sie können weiterhin unterbrechungsfrei auf Ressourcen zugreifen, die normalerweise per öffentlichem Azure-Peering und Microsoft-Peering verfügbar sind.  
 
-## <a name="what's-supported"></a>Unterstützte Funktionen
+## <a name="whats-supported"></a>Unterstützte Funktionen
 In diesem Abschnitt werden die unterstützten Funktionen für ExpressRoute-Verbindungen beschrieben:
 
 * Über eine einzelne ExpressRoute-Verbindung können Sie auf virtuelle Netzwerke zugreifen, die mit dem klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell bereitgestellt wurden.
@@ -84,7 +88,7 @@ In diesem Abschnitt werden die unterstützten Funktionen für ExpressRoute-Verbi
 * Die ExpressRoute-Verbindung fungiert als Brücke zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell. Der Datenverkehr zwischen virtuellen Computern in virtuellen Netzwerken unter dem klassischen Bereitstellungsmodell und virtuellen Computern in virtuellen Netzwerken unter dem Resource Manager-Bereitstellungsmodell wird über die ExpressRoute abgewickelt, wenn beide virtuellen Netzwerke mit der gleichen ExpressRoute-Verbindung verknüpft sind.
 * Abonnementübergreifende Konnektivität wird sowohl im klassischen Bereitstellungsmodell als auch im Resource Manager-Bereitstellungsmodell unterstützt.
 
-## <a name="what's-not-supported"></a>Nicht unterstützte Funktionen
+## <a name="whats-not-supported"></a>Nicht unterstützte Funktionen
 In diesem Abschnitt werden die nicht unterstützten Funktionen für ExpressRoute-Verbindungen beschrieben:
 
 * Umstellen von Verbindungsverknüpfungen, Gateways und virtuellen Netzwerken vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell.
@@ -102,6 +106,9 @@ Folgen Sie den Anweisungen unter [Verschieben von ExpressRoute-Verbindungen vom 
   * [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

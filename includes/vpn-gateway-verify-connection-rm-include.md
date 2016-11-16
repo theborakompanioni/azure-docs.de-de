@@ -41,6 +41,8 @@ Navigieren Sie im Azure-Portal zur gewünschten Verbindung, um den Verbindungsst
    
     ![Überprüfen der Verbindung](./media/vpn-gateway-verify-connection-rm-include/connectionsucceeded.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

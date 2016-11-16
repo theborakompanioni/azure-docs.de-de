@@ -2,11 +2,11 @@
 title: Erstellen einer Azure Mobile Engagement-App | Microsoft Docs
 description: Informationen zum Erstellen einer neuen Mobile Engagement-App-Sammlung in Azure und Starten der Verwaltung Ihrer Apps im Mobile Engagement-Portal.
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: b8aa1798-28c6-424c-a5b5-8a264d5a0ff0
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ecffc5a867c1c69354a88a8b7ce29ab67ea29cc1
+
 
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Erstellen einer Azure Mobile Engagement-App
@@ -44,6 +48,9 @@ Im Mobile Engagement-Portal können Sie Segmente analysieren, erstellen und verw
 
 [Erste Schritte mit Azure Mobile Engagement](mobile-engagement-windows-store-dotnet-get-started.md) (Sie können oben auf der Seite andere mobile Plattformen auswählen).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

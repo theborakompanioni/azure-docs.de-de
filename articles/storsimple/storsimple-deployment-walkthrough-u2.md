@@ -1,31 +1,35 @@
 ---
-title: Bereitstellen von StorSimple-Geräten (Update 2) | Microsoft Docs
-description: Beschreibt die Schritte und bewährten Methoden für die Bereitstellung des StorSimple Update 2-Geräts und -Diensts.
+title: "Bereitstellen von StorSimple-Geräten (Update 2) | Microsoft Docs"
+description: "Beschreibt die Schritte und bewährten Methoden für die Bereitstellung des StorSimple Update 2-Geräts und -Diensts."
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 7dff0612-617b-4fc8-a3fe-994c24bc7c51
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/11/2016
+ms.date: 10/24/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
+
 
 ---
-# <a name="deploy-your-on-premises-storsimple-device-(update-2)"></a>Bereitstellen lokaler StorSimple-Geräte (Update 2)
+# <a name="deploy-your-onpremises-storsimple-device-update-2"></a>Bereitstellen lokaler StorSimple-Geräte (Update 2)
 > [!div class="op_single_selector"]
-> * [Update 2](storsimple-deployment-walkthrough-u2.md)
-> * [Update 1](storsimple-deployment-walkthrough-u1.md)
+> * [Update 2 oder höher ](storsimple-deployment-walkthrough-u2.md)
+> * [Update 1](storsimple-deployment-walkthrough-u1.md)
 > * [GA-Version](storsimple-deployment-walkthrough.md)
 > 
 > 
 
 ## <a name="overview"></a>Übersicht
-Willkommen bei der exemplarischen Vorgehensweise für die Bereitstellung von Microsoft Azure StorSimple-Geräten. Diese Bereitstellungstutorials beziehen sich auf Update 2 der StorSimple 8000-Serie. Diese Reihe von Tutorials enthält eine Konfigurationsprüfliste, Konfigurationsvoraussetzungen und detaillierte Konfigurationsschritte für Ihre StorSimple-Geräte.
+Willkommen bei der exemplarischen Vorgehensweise für die Bereitstellung von Microsoft Azure StorSimple-Geräten. Diese Bereitstellungstutorials beziehen sich auf Update 2 der StorSimple 8000-Serie. Diese Reihe von Tutorials enthält eine Konfigurationsprüfliste, Konfigurationsvoraussetzungen und detaillierte Konfigurationsschritte für Ihre StorSimple-Geräte.
 
 Bei den Informationen in diesen Tutorials wird davon ausgegangen, dass Sie die Sicherheitsvorkehrungen geprüft und Ihr StorSimple-Gerät ausgepackt, installiert und verkabelt haben. Wenn Sie diese Aufgaben noch ausführen müssen, beginnen Sie mit der Prüfung der [Sicherheitsvorkehrungen](storsimple-safety.md). Befolgen Sie die gerätespezifischen-Anweisungen zum Auspacken, Einbauen und Verkabeln des Geräts.
 
@@ -49,14 +53,14 @@ Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSi
 | [Voraussetzungen für die Bereitstellung](#deployment-prerequisites) |Mit diesen Schritten überprüfen Sie, ob die Umgebung für die Bereitstellung vorbereitet ist. |
 |  | |
 | **SCHRITTWEISE BEREITSTELLUNG** |Diese Schritte sind zur Bereitstellung Ihres StorSimple-Geräts in einer Produktionsumgebung erforderlich. |
-| [Schritt 1: Erstellen eines neuen Diensts](#step-1-create-a-new-service) |Richten Sie Cloudverwaltung und -speicher für Ihr StorSimple-Gerät ein. *Überspringen Sie diesen Schritt, wenn Sie bereits über einen Dienst für andere StorSimple-Geräte verfügen*. |
-| [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) |Verwenden Sie diesen Schlüssel zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Verwaltungsdienst. |
-| [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Verwenden Sie den Verwaltungsdienst, um das Gerät zum Abschluss der Einrichtung mit Ihrem Netzwerk zu verbinden und in Azure zu registrieren. |
-| [Schritt 4: Abschließen der minimalen Geräteinstallation](#step-4-complete-minimum-device-setupd)</br>[Optional: Aktualisieren Sie Ihr StorSimple-Gerät.](#scan-for-and-apply-updates) |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
-| [Schritt 5: Erstellen eines Volumecontainers](#step-5-create-a-volume-container) |Erstellen Sie einen Container zum Bereitstellen von Volumes. Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle enthaltenen Volumes. |
-| [Schritt 6: Erstellen eines Volumes](#step-6-create-a-volume) |Stellen Sie ein oder mehrere Speichervolumes für Ihre Server auf dem StorSimple-Gerät bereit. |
-| [Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes](#step-7-mount-initialize-and-format-a-volume)</br>[Optional: Konfigurieren Sie MPIO.](storsimple-configure-mpio-windows-server.md) |Verbinden Sie Ihre Server mit dem vom Gerät bereitgestellten iSCSI-Speicher. Konfigurieren Sie optional MPIO, um sicherzustellen, dass Ihre Server Link-, Netzwerk- und Schnittstellenfehler tolerieren können. |
-| [Schritt 8: Erstellen einer Sicherung](#step-8-take-a-backup) |Richten Sie Ihre Sicherungsrichtlinie zum Schutz Ihrer Daten ein. |
+| [Schritt 1: Erstellen eines neuen Diensts](#step-1-create-a-new-service) |Richten Sie Cloudverwaltung und -speicher für Ihr StorSimple-Gerät ein. *Überspringen Sie diesen Schritt, wenn Sie bereits über einen Dienst für andere StorSimple-Geräte verfügen*. |
+| [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) |Verwenden Sie diesen Schlüssel zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Verwaltungsdienst. |
+| [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Verwenden Sie den Verwaltungsdienst, um das Gerät zum Abschluss der Einrichtung mit Ihrem Netzwerk zu verbinden und in Azure zu registrieren. |
+| [Schritt 4: Abschließen der minimalen Geräteinstallation](#step-4-complete-minimum-device-setupd)</br>[Optional: Aktualisieren Sie Ihr StorSimple-Gerät.](#scan-for-and-apply-updates) |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
+| [Schritt 5: Erstellen eines Volumecontainers](#step-5-create-a-volume-container) |Erstellen Sie einen Container zum Bereitstellen von Volumes. Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle enthaltenen Volumes. |
+| [Schritt 6: Erstellen eines Volumes](#step-6-create-a-volume) |Stellen Sie ein oder mehrere Speichervolumes für Ihre Server auf dem StorSimple-Gerät bereit. |
+| [Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes](#step-7-mount-initialize-and-format-a-volume)</br>[Optional: Konfigurieren Sie MPIO.](storsimple-configure-mpio-windows-server.md) |Verbinden Sie Ihre Server mit dem vom Gerät bereitgestellten iSCSI-Speicher. Konfigurieren Sie optional MPIO, um sicherzustellen, dass Ihre Server Link-, Netzwerk- und Schnittstellenfehler tolerieren können. |
+| [Schritt 8: Erstellen einer Sicherung](#step-8-take-a-backup) |Richten Sie Ihre Sicherungsrichtlinie zum Schutz Ihrer Daten ein. |
 |  | |
 | **WEITERE VERFAHREN** |Möglicherweise müssen Sie beim Bereitstellen Ihrer Lösung auf diese Prozeduren zurückgreifen. |
 | [Konfigurieren eines neuen Speicherkontos für den Dienst](#configure-a-new-storage-account-for-the-service) | |
@@ -91,10 +95,10 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 * Die Ports in der Datencenter-Firewall werden geöffnet, um iSCSI- und Clouddatenverkehr zu ermöglichen, wie in [Netzwerkanforderungen für das StorSimple-Gerät](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)beschrieben.
 
-## <a name="step-by-step-deployment"></a>SCHRITTWEISE BEREITSTELLUNG
+## <a name="stepbystep-deployment"></a>SCHRITTWEISE BEREITSTELLUNG
 Verwenden Sie die folgenden schrittweisen Anweisungen, um Ihr StorSimple-Gerät im Datencenter bereitzustellen.
 
-## <a name="step-1:-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
+## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
 Ein StorSimple Manager-Dienst kann mehrere StorSimple-Geräte verwalten. Führen Sie die folgenden Schritte aus, um einen neuen StorSimple-Manager-Dienst zu erstellen.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
@@ -107,19 +111,19 @@ Ein StorSimple Manager-Dienst kann mehrere StorSimple-Geräte verwalten. Führen
 > 
 > 
 
-## <a name="step-2:-get-the-service-registration-key"></a>Schritt 2: Abrufen des Dienstregistrierungsschlüssels
+## <a name="step-2-get-the-service-registration-key"></a>Schritt 2: Abrufen des Dienstregistrierungsschlüssels
 Nachdem der StorSimple Manager-Dienst eingerichtet wurde und ausgeführt wird, müssen Sie den Dienstregistrierungsschlüssel abrufen. Dieser Schlüssel wird zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Dienst verwendet.
 
 Führen Sie die folgenden Schritte im Verwaltungsportal aus.
 
 [!INCLUDE [storsimple-get-service-registration-key](../../includes/storsimple-get-service-registration-key.md)]
 
-## <a name="step-3:-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple
 Verwenden Sie Windows PowerShell für StorSimple zum Abschließen der anfänglichen Installation Ihres StorSimple-Geräts wie im folgenden Verfahren erläutert. Sie müssen eine Terminalemulationssoftware verwenden, um diesen Schritt auszuführen. Weitere Informationen finden Sie unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-configure-and-register-device-u1](../../includes/storsimple-configure-and-register-device-u1.md)]
 
-## <a name="step-4:-complete-minimum-device-setup"></a>Schritt 4: Schließen Sie die minimale Gerätekonfiguration ab.
+## <a name="step-4-complete-minimum-device-setup"></a>Schritt 4: Schließen Sie die minimale Gerätekonfiguration ab.
 Sie müssen für die Gerätemindestkonfiguration des StorSimple-Geräts die folgenden Aufgaben ausführen: 
 
 * Einrichten des sekundären DNS-Servers
@@ -130,14 +134,14 @@ Führen Sie die folgenden Schritte im Verwaltungsportal aus, um das mindestens e
 
 [!INCLUDE [storsimple-complete-minimum-device-setup](../../includes/storsimple-complete-minimum-device-setup-u1.md)]
 
-## <a name="step-5:-create-a-volume-container"></a>Schritt 5: Erstellen eines Volumecontainers
+## <a name="step-5-create-a-volume-container"></a>Schritt 5: Erstellen eines Volumecontainers
 Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle darin enthaltenen Volumes. Sie müssen einen Volumecontainer erstellen, bevor Sie mit der Bereitstellung von Volumes auf Ihrem StorSimple-Gerät beginnen können. 
 
 Führen Sie die folgenden Schritte im Verwaltungsportal aus, um einen Volumecontainer zu erstellen.
 
 [!INCLUDE [storsimple-create-volume-container](../../includes/storsimple-create-volume-container.md)]
 
-## <a name="step-6:-create-a-volume"></a>Schritt 6: Erstellen eines Volumes
+## <a name="step-6-create-a-volume"></a>Schritt 6: Erstellen eines Volumes
 Nach dem Erstellen eines Volumecontainers können Sie ein Speichervolume auf dem StorSimple-Gerät für Ihre Server bereitstellen. Führen Sie die folgenden Schritte im Verwaltungsportal aus, um ein Volume zu erstellen:
 
 > [!IMPORTANT]
@@ -147,21 +151,21 @@ Nach dem Erstellen eines Volumecontainers können Sie ein Speichervolume auf dem
 
 [!INCLUDE [storsimple-create-volume](../../includes/storsimple-create-volume-u2.md)]
 
-## <a name="step-7:-mount,-initialize,-and-format-a-volume"></a>Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes
-Die folgenden Schritte werden auf dem Windows Server-Host ausgeführt. 
+## <a name="step-7-mount-initialize-and-format-a-volume"></a>Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes
+Die folgenden Schritte werden auf dem Windows Server-Host ausgeführt. 
 
 > [!IMPORTANT]
 > * Um die hohe Verfügbarkeit Ihrer StorSimple-Lösung sicherzustellen, empfiehlt es sich, vor der Konfiguration von iSCSI auf Ihren Hostservern optional MPIO auf diesen Hosts zu konfigurieren. Die MPIO-Konfiguration auf Hostservern sorgt dafür, dass die Server Fehler bei Links, dem Netzwerk oder einzelnen Schnittstellen tolerieren können.
-> * Installations- und Konfigurationsanweisungen für MPIO und iSCSI auf einem Windows Server-Host finden Sie unter [Konfigurieren von MPIO für Ihr StorSimple-Gerät](storsimple-configure-mpio-windows-server.md). Diese enthalten auch die Schritte zum Bereitstellen, Initialisieren und Formatieren von StorSimple-Volumes.
+> * Installations- und Konfigurationsanweisungen für MPIO und iSCSI auf einem Windows Server-Host finden Sie unter [Konfigurieren von MPIO für Ihr StorSimple-Gerät](storsimple-configure-mpio-windows-server.md). Diese enthalten auch die Schritte zum Bereitstellen, Initialisieren und Formatieren von StorSimple-Volumes.
 > * Installations- und Konfigurationsanweisungen für MPIO und iSCSI auf einem Linux-Host finden Sie unter [Konfigurieren von MPIO für Ihren StorSimple-Linux-Host](storsimple-configure-mpio-on-linux.md)
 > 
 > 
 
-Wenn Sie MPIO nicht konfigurieren, führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Windows Server-Host bereitzustellen, zu initialisieren und zu formatieren.
+Wenn Sie MPIO nicht konfigurieren, führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Windows Server-Host bereitzustellen, zu initialisieren und zu formatieren.
 
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
-## <a name="step-8:-take-a-backup"></a>Schritt 8: Erstellen einer Sicherung
+## <a name="step-8-take-a-backup"></a>Schritt 8: Erstellen einer Sicherung
 Sicherungen stellen Zeitpunktschutz für Volumes zur Verfügung und verbessern die Wiederherstellbarkeit bei gleichzeitiger Minimierung der Wiederherstellungszeiten. Für Ihr StorSimple-Gerät können zwei Arten von Sicherungen angefertigt werden: lokale Momentaufnahmen und Cloudmomentaufnahmen. Jeder dieser Sicherungstypen kann **geplant** sein oder **manuell** erfolgen. 
 
 Führen Sie die folgenden Schritte im Verwaltungsportal aus, um eine geplante Sicherung zu erstellen.
@@ -196,15 +200,15 @@ Die Aktualisierung eines Geräts kann mehrere Stunden dauern. Führen Sie die fo
 3. Es wird ein Updateauftrag erstellt. Überwachen Sie den Status Ihres Updates, indem Sie zu **Aufträge**wechseln.
    
    > [!NOTE]
-   > Wenn der Updateauftrag startet, wird der Status sofort mit 50 Prozent angezeigt. Der Status ändert sich erst in 100 Prozent, wenn der Updateauftrag abgeschlossen ist. Für den Updateprozess gibt es keinen Echtzeitstatus.
+   > Wenn der Updateauftrag startet, wird der Status sofort mit 50 Prozent angezeigt. Der Status ändert sich erst in 100 Prozent, wenn der Updateauftrag abgeschlossen ist. Für den Updateprozess gibt es keinen Echtzeitstatus.
    > 
    > 
-4. Falls die Netzwerkschnittstellen DATA 2 und DATA 3 deaktiviert wurden, aktivieren Sie diese nach der erfolgreichen Aktualisierung des Geräts wieder.
+4. Falls die Netzwerkschnittstellen DATA 2 und DATA 3 deaktiviert wurden, aktivieren Sie diese nach der erfolgreichen Aktualisierung des Geräts wieder.
 
 <!-- In step 2, you may be requested to disable Data 2 and Data 3 prior to installing the updates. You must disable these network interfaces or the updates may fail.-->
 
 ## <a name="get-the-iqn-of-a-windows-server-host"></a>Abrufen des IQN eines Windows Server-Hosts
-Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines Windows-Hosts abzurufen, auf dem Windows Server® 2012 ausgeführt wird.
+Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines Windows-Hosts abzurufen, auf dem Windows Server® 2012 ausgeführt wird.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-get-iqn.md)]
 
@@ -217,6 +221,9 @@ Führen Sie die folgenden Schritte im Verwaltungsportal aus, um nach Bedarf eine
 * Konfigurieren eines [virtuellen Geräts](storsimple-virtual-device-u2.md)
 * Verwenden des [StorSimple-Manager-Diensts](storsimple-manager-service-administration.md) für das Verwalten Ihres StorSimple-Geräts
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

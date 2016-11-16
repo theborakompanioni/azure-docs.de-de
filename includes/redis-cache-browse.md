@@ -12,4 +12,8 @@ Klicken Sie auf **Einstellungen** oder **Alle Einstellungen**, um den Cache anzu
 
 ![Redis Cache: Alle Einstellungen](media/redis-cache-browse/redis-cache-blade.png)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

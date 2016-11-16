@@ -1,12 +1,12 @@
 ---
-title: Voraussetzungen für den Wechsel zu ExpressRoute | Microsoft Docs
-description: Diese Seite enthält eine Liste der Anforderungen, die erfüllt sein müssen, bevor Sie eine Azure ExpressRoute-Verbindung anfordern können.
+title: "Voraussetzungen für den Wechsel zu ExpressRoute | Microsoft Docs"
+description: "Diese Seite enthält eine Liste der Anforderungen, die erfüllt sein müssen, bevor Sie eine Azure ExpressRoute-Verbindung anfordern können."
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: f872d25e-acfd-405d-9d1b-dcb9f323a2ff
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a582941b06fa7f81d7db188f2a9feba837b9bfd8
+
 
 ---
-# <a name="expressroute-prerequisites-&-checklist"></a>Voraussetzungen und Checkliste für ExpressRoute
+# <a name="expressroute-prerequisites-checklist"></a>Voraussetzungen und Checkliste für ExpressRoute
 Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRoute müssen Sie sicherstellen, dass die in den Abschnitten unten genannten Voraussetzungen erfüllt sind.
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -60,6 +64,9 @@ Wenn Sie CRM Online auf ExpressRoute aktivieren möchten, finden Sie in den folg
   * [Konfigurieren des Routings](expressroute-howto-routing-classic.md)
   * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

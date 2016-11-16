@@ -1,47 +1,57 @@
 ---
-title: Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten
+title: Azure MFA und AD FS | Microsoft Docs
 description: Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS beschrieben.
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtland
-
+editor: yossib
+ms.assetid: 44fbba68-6cf9-46c1-a9df-736580b68ae3
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/04/2016
+ms.date: 10/17/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dcf67cfd5f4d44188f119ca40b227b32c684e1f7
+
 
 ---
-# Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten
+# <a name="getting-started-with-azure-multifactor-authentication-and-active-directory-federation-services"></a>Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten
 <center>![Cloud](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
-Wenn Ihre Organisation über einen Verbund Ihres lokalen Active Directory mit Azure Active Directory über AD FS verfügt, sind die beiden folgenden Optionen für die Verwendung von Multi-Factor Authentication verfügbar.
+Wenn Ihre Organisation über einen Verbund Ihres lokalen Active Directory mit Azure Active Directory über AD FS verfügt, gibt es zwei Optionen für die Verwendung von Multi-Factor Authentication.
 
 * Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten
 * Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server
 
-In der folgenden Tabelle sind die Authentifizierungsverfahren beim Sichern von Ressourcen mit Azure Multi-Factor Authentication und AD FS zusammengefasst.
+In der folgenden Tabelle sind die Überprüfungsverfahren beim Sichern von Ressourcen mit Azure Multi-Factor Authentication und AD FS zusammengefasst.
 
-| Authentifizierungsvorgang bei Browser-Apps | Authentifizierungsvorgang bei Nicht-Browser-Apps |
+| Überprüfungsvorgang bei Browser-Apps | Überprüfungsvorgang bei Nicht-Browser-Apps |
 |:--- |:--- |:--- |
-| Sichern von Azure AD-Ressourcen mit Azure Multi-Factor Authentication |<li>Die erste Authentifizierungsstufe wird lokal über AD FS ausgeführt.</li> <li>Die zweite Stufe ist eine telefonbasierte Methode mithilfe der Cloud-Authentifizierung.</li> |
-| Sichern von Azure AD-Ressourcen mit Active Directory-Verbunddiensten |<li>Die erste Stufe der Authentifizierung wird lokal mithilfe von AD FS durchgeführt.</li><li>Die zweite Stufe wird lokal unter Berücksichtigung des Anspruchs ausgeführt.</li> |
+| Sichern von Azure AD-Ressourcen mit Azure Multi-Factor Authentication |<li>Der erste Überprüfungsschritt erfolgt lokal über AD FS.</li> <li>Der zweite Schritt ist eine telefonbasierte Methode mithilfe der Cloudauthentifizierung.</li> |
+| Sichern von Azure AD-Ressourcen mit Active Directory-Verbunddiensten |<li>Der erste Überprüfungsschritt erfolgt lokal über AD FS.</li><li>Der zweite Schritt wird lokal unter Berücksichtigung des Anspruchs ausgeführt.</li> |
 
 Sicherheitshinweise zu App-Kennwörtern für Verbundbenutzer:
 
-* Das App-Kennwort wird über die Cloud-Authentifizierung überprüft, daher werden Verbunde umgangen. Der Verbund wird nur beim Einrichten des App-Kennworts aktiv verwendet.
-* Lokale Einstellungen für die Clientzugriffssteuerung werden vom App-Kennwort nicht berücksichtigt.
+* App-Kennwörter werden über die Cloudauthentifizierung überprüft, daher werden Verbunde umgangen. Der Verbund wird nur beim Einrichten eines App-Kennworts aktiv verwendet.
+* Lokale Einstellungen für die Clientzugriffssteuerung werden von App-Kennwörtern nicht berücksichtigt.
 * Wenn Sie App-Kennwörter verwenden, geht die Möglichkeit zum lokalen Protokollieren der Authentifizierung verloren.
-* Das Deaktivieren oder Löschen von Konten in DirSync kann bis zu drei Stunden dauern, sodass das Deaktivieren bzw. Löschen des App-Kennworts in der Cloud-Identität verzögert wird.
+* Das Deaktivieren oder Löschen von Konten kann für die Verzeichnissynchronisierung bis zu drei Stunden dauern, sodass das Deaktivieren bzw. Löschen von App-Kennwörtern in der Cloudidentität verzögert wird.
 
-Informationen zum Einrichten von Azure Multi-Factor Authentication oder Azure Multi-Factor Authentication-Server mit AD FS finden Sie hier:
+## <a name="next-steps"></a>Nächste Schritte
+Informationen zum Einrichten von Azure Multi-Factor Authentication oder Azure Multi-Factor Authentication-Server mit AD FS finden Sie in den folgenden Artikeln:
 
 * [Sichern von Cloudressourcen mit Azure Multi-Factor Authentication und AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
 * [Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
 * [Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

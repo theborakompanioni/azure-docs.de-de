@@ -5,8 +5,8 @@ services: service-bus
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 964e019a-8abe-42f3-8314-867010cb2608
 ms.service: service-bus
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3127a84f4d4cd9881de56a6d199cfb1780cd8189
+
 
 ---
-# <a name="service-bus-brokered-messaging-.net-tutorial"></a>.NET-Tutorial zu Service Bus-Brokermessaging
+# <a name="service-bus-brokered-messaging-net-tutorial"></a>.NET-Tutorial zu Service Bus-Brokermessaging
 Azure Service Bus bietet zwei umfassende Messaginglösungen. Bei der ersten Lösung wird ein zentralisierter Relaydienst in der Cloud ausgeführt, der verschiedene Transportprotokolle und Webdienststandards unterstützt, z.B. SOAP, WS-* und REST. Der Client benötigt keine direkte Verbindung zum lokalen Dienst und muss auch nicht wissen, wo der Dienst angesiedelt ist, und für den lokalen Dienst sind keine geöffneten eingehenden Ports in der Firewall notwendig.
 
 Bei der zweiten Messaginglösung werden Brokermessagingfunktionen aktiviert. Diese können Sie sich als asynchrone oder entkoppelte Nachrichtenfunktionen vorstellen, die unter Verwendung der Service Bus-Messaginginfrastruktur verschiedene Szenarien wie Veröffentlichung/Abonnements, vorübergehende Entkopplung und Lastenausgleich unterstützen. Entkoppelte Kommunikation hat viele Vorteile, beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
 
-In diesem Lernprogramm sollen Sie einen Überblick erhalten und praktische Erfahrung mit Warteschlangen sammeln, einer der Kernkomponenten des Service Bus-Brokermessagings. Nachdem Sie die Themen dieses Tutorials durchgearbeitet haben, verfügen Sie über eine Anwendung, mit der eine Liste mit Nachrichten gefüllt wird, eine Warteschlange erstellt wird und Nachrichten an die Warteschlange gesendet werden. Im letzten Schritt werden die Nachrichten von der Anwendung aus der Warteschlange empfangen und angezeigt, und anschließend werden die Ressourcen bereinigt, und die Anwendung wird beendet. Ein entsprechendes Tutorial, in dem die Erstellung einer Anwendung beschrieben wird, die Service Bus Relay verwendet, finden Sie unter [Tutorial zu Service Bus-Relaymessaging](../service-bus-relay/service-bus-relay-tutorial.md).
+In diesem Lernprogramm sollen Sie einen Überblick erhalten und praktische Erfahrung mit Warteschlangen sammeln, einer der Kernkomponenten des Service Bus-Brokermessagings. Nachdem Sie die Themen dieses Tutorials durchgearbeitet haben, verfügen Sie über eine Anwendung, mit der eine Liste mit Nachrichten gefüllt wird, eine Warteschlange erstellt wird und Nachrichten an die Warteschlange gesendet werden. Im letzten Schritt werden die Nachrichten von der Anwendung aus der Warteschlange empfangen und angezeigt, und anschließend werden die Ressourcen bereinigt, und die Anwendung wird beendet. Ein entsprechendes Tutorial, in dem die Erstellung einer Anwendung beschrieben wird, die das Service Bus WCF Relay verwendet, finden Sie unter [Tutorial zu Service Bus-Relaymessaging](../service-bus-relay/service-bus-relay-tutorial.md).
 
 ## <a name="introduction-and-prerequisites"></a>Einführung und Voraussetzungen
 Warteschlangen liefern die Nachrichten im First In, First Out (FIFO)-Verfahren an einen oder mehrere Consumer. FIFO bedeutet, dass Nachrichten normalerweise in der zeitlichen Reihenfolge von den Consumern empfangen und verarbeitet werden, in der sie in die Warteschlange eingereiht wurden, und jede Nachricht wird nur von einem Nachrichtenconsumer empfangen und verarbeitet. Ein Hauptvorteil von Warteschlangen ist die *zeitliche Entkopplung* von Anwendungskomponenten. Anders ausgedrückt: Die Producer und Consumer müssen Nachrichten nicht gleichzeitig senden und empfangen, da sie dauerhaft in der Warteschlange gespeichert werden. Ein weiterer Vorteil ist der *Belastungsausgleich*, durch den Producer und Consumer die Möglichkeit haben, Nachrichten mit unterschiedlichen Raten zu senden und zu empfangen.
@@ -29,7 +33,7 @@ Warteschlangen liefern die Nachrichten im First In, First Out (FIFO)-Verfahren a
 Es folgen einige administrative und vorbereitende Schritte, die Sie ausführen sollten, bevor Sie mit dem Lernprogramm beginnen. Der erste Schritt umfasst die Einrichtung des Dienstnamespace und das Abrufen eines SAS-Schlüssels (Shared Access Signature). Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen Service Bus gegenüber der Anwendung authentifiziert wird.
 
 ### <a name="create-a-service-namespace-and-obtain-a-sas-key"></a>Erstellen eines Dienstnamespace und Abrufen eines SAS-Schlüssels
-Der erste Schritt umfasst die Einrichtung des Dienstnamespace und das Abrufen eines SAS-Schlüssels ([Shared Access Signature](../service-bus/service-bus-sas-overview.md)). Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Servicebus gegenüber der Anwendung authentifiziert.
+Der erste Schritt umfasst die Einrichtung des Dienstnamespace und das Abrufen eines SAS-Schlüssels ([Shared Access Signature](service-bus-sas-overview.md)). Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Servicebus gegenüber der Anwendung authentifiziert.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -84,7 +88,7 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
    
     Speichern und schließen Sie die Datei „Data.csv“, und merken Sie sich den Speicherort, an dem Sie sie abgelegt haben.
 7. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Namen Ihres Projekts (hier **QueueSample**), klicken Sie auf **Hinzufügen**, und klicken Sie dann auf **Vorhandenes Element**.
-8. Navigieren Sie zur Datei „Data.csv“, die Sie in Schritt 6 erstellt haben. Klicken Sie auf die Datei und dann auf **Hinzufügen**. Stellen Sie sicher, dass in der Liste mit den Dateitypen **Alle Dateien (*.*)** ausgewählt ist.
+8. Navigieren Sie zur Datei „Data.csv“, die Sie in Schritt 6 erstellt haben. Klicken Sie auf die Datei und dann auf **Hinzufügen**. Stellen Sie sicher, dass in der Liste mit den Dateitypen **Alle Dateien (*.*)** ausgewählt ist.
 
 ### <a name="create-a-method-that-parses-a-list-of-messages"></a>Erstellen einer Methode zum Analysieren einer Liste mit Nachrichten
 1. Deklarieren Sie in der `Program`-Klasse vor der `Main()`-Methode zwei Variablen: Eine vom Typ **DataTable**, die die Liste mit den Nachrichten in „Data.csv“ enthält. Die andere sollte den Typ „List-Objekt“ haben und für [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) stark typisiert sein. Letztere ist die Liste mit den Brokernachrichten, die in den nachfolgenden Schritten des Lernprogramms verwendet werden.
@@ -181,7 +185,7 @@ Im nächsten Schritt erstellen Sie ein Visual Studio-Projekt und schreiben zwei 
     ```
 
 ### <a name="obtain-user-credentials"></a>Abrufen von Benutzeranmeldeinformationen
-1. Erstellen Sie zuerst drei globale Zeichenfolgenvariablen für diese Werte. Deklarieren Sie diese Variablen direkt nach den vorherigen Variablendeklarationen, z. B.:
+1. Erstellen Sie zuerst drei globale Zeichenfolgenvariablen für diese Werte. Deklarieren Sie diese Variablen direkt nach den vorherigen Variablendeklarationen, z. B.:
    
     ```
     namespace Microsoft.ServiceBus.Samples
@@ -611,14 +615,17 @@ Nachdem Sie die obigen Schritte abgeschlossen haben, können Sie die **QueueSamp
 Klicken Sie in Visual Studio im Menü **Erstellen** auf **Projektmappe erstellen**, oder drücken Sie **STRG+UMSCHALT+B**. Überprüfen Sie beim Auftreten von Fehlern, ob Ihr Code fehlerfrei ist. Verwenden Sie hierzu das vollständige Beispiel, das am Ende des vorherigen Schritts angegeben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Lernprogramm wurde gezeigt, wie Sie eine Service Bus-Clientanwendung und den dazugehörigen Dienst mit den Service Bus-Brokermessagingfunktionen erstellen. Ein ähnliches Tutorial, in dem die [Relayfunktionen](service-bus-messaging-overview.md#Relayed-messaging) von Service Bus beschrieben werden, finden Sie unter [Tutorial zu Service Bus-Relaymessaging](../service-bus-relay/service-bus-relay-tutorial.md).
+In diesem Lernprogramm wurde gezeigt, wie Sie eine Service Bus-Clientanwendung und den dazugehörigen Dienst mit den Service Bus-Brokermessagingfunktionen erstellen. Ein ähnliches Tutorial, in dem die [WCF Relay-Funktionen](service-bus-messaging-overview.md#Relayed-messaging) von Service Bus beschrieben werden, finden Sie unter [Tutorial zu Service Bus-Relaymessaging](../service-bus-relay/service-bus-relay-tutorial.md).
 
 Weitere Informationen zu [Service Bus](https://azure.microsoft.com/services/service-bus/)finden Sie in den folgenden Themen.
 
-* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
-* [Service Bus – Grundlagen](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-* [Service Bus-Architektur](../service-bus/service-bus-architecture.md)
+* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+* [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
+* [Service Bus-Architektur](service-bus-architecture.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
 title: 'Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten | Microsoft Docs'
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit einer Kopieraktivität, indem Sie den von der Data Factory unterstützten Kopier-Assistenten verwenden.
+description: "In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit einer Kopieraktivität, indem Sie den von der Data Factory unterstützten Kopier-Assistenten verwenden."
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
@@ -53,21 +57,23 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
       > Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
       > 
       > 
-3. Wählen Sie Ihr Azure- **Abonnement**aus.
-4. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus: 1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
-5. Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
-   
-            Some of the steps in this tutorial assume that you use the name: **ADFTutorialResourceGroup** for the resource group. To learn about resource groups, see [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md).
-   1. Wählen Sie einen **Standort** für die Data Factory aus.
-   2. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
-   3. Klicken Sie auf **Erstellen**.
+   2. Wählen Sie Ihr Azure- **Abonnement**aus.
+   3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus: 
       
-       ![Blatt "Neue Data Factory"](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)          
-6. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
+      1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
+      2. Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
+         
+          Bei einigen Schritten dieses Lernprogramms wird davon ausgegangen, dass Sie die Ressourcengruppe namens **ADFTutorialResourceGroup** verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
+   4. Wählen Sie einen **Standort** für die Data Factory aus.
+   5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
+   6. Klicken Sie auf **Erstellen**.
+      
+       ![Blatt "Neue Data Factory"](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
+3. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
    
    ![Data Factory-Startseite](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
-## <a name="launch-and-use-copy-wizard"></a>Starten und Verwenden des Kopier-Assistenten
+## <a name="launch-copy-wizard"></a>Starten des Kopier-Assistenten
 1. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren**, um den **Kopier-Assistenten** zu starten. 
    
    > [!NOTE]
@@ -154,6 +160,9 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 | [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |
 | [Überwachen und Verwalten von Pipelines mit der Überwachungs-App](data-factory-monitor-manage-app.md) |In diesem Artikel wird das Überwachen, Verwalten und Debuggen von Pipelines mit der App für die Überwachung und Verwaltung beschrieben. |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

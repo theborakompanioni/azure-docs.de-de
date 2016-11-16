@@ -1,12 +1,12 @@
-## Bereitstellen der Lösung
+## <a name="provision-the-solution"></a>Bereitstellen der Lösung
 1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine neue Lösung zu erstellen.
 2. Klicken Sie auf der Kachel **Remoteüberwachung** auf **Auswählen**.
 3. Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Remoteüberwachungslösung ein.
-4. Wählen Sie die **Region** und das **Abonnement**, die Sie zum Bereitstellen der Lösung verwenden möchten.
-5. Klicken Sie auf **Lösung erstellen**, um den Bereitstellungsprozess zu beginnen. Dies dauert normalerweise einige Minuten.
+4. Wählen Sie die gewünschten Angaben für **Region** und **Abonnement**, um die Lösung bereitzustellen.
+5. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Dies dauert normalerweise einige Minuten.
 
-### Warten auf den Abschluss des Bereitstellungsvorgangs
-1. Klicken Sie auf die Kachel für Ihre Lösung mit dem Status **Bereitstellung**.
+### <a name="wait-for-the-provisioning-process-to-complete"></a>Warten auf den Abschluss des Bereitstellungsvorgangs
+1. Klicken Sie auf die Kachel für Ihre Lösung mit dem Status **Bereitstellung** .
 2. Beachten Sie die **Bereitstellungsstatus** während der Bereitstellung von Azure-Diensten im Azure-Abonnement.
 3. Nach Abschluss der Bereitstellung ändert sich der Status in **Bereit**.
 4. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen.
@@ -16,11 +16,13 @@
 > 
 > 
 
-Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot) zu.
+Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot)zu.
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-faq.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!--HONumber=Nov16_HO2-->
+
+

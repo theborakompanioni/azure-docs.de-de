@@ -5,15 +5,19 @@ services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2016
+ms.date: 10/26/2016
 ms.author: ryanwi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 037dc010a6dc60eb49ad4fdad2861e8653e36199
+
 
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Erstellen Ihrer ersten Azure Service Fabric-Anwendung
@@ -96,7 +100,7 @@ Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
 4. Suchen Sie in Ihrem Dienstprojekt die Klasse, die von StatefulService abgeleitet ist (z.B. MyStatefulService), und legen Sie in der ersten Zeile der `RunAsync`-Methode einen Haltepunkt fest.
    
     ![Haltepunkt in der RunAsync-Methode des zustandsbehafteten Diensts][7]
-5. Klicken Sie mit der rechten Maustaste auf die Taskleisten-App Local Cluster Manager, und wählen Sie die Option zum **Verwalten des lokalen Clusters** aus, um den Service Fabric Explorer zu starten.
+5. Klicken Sie mit der rechten Maustaste auf die Taskleisten-App Local Cluster Manager, und wählen Sie die Option **Manage Local Cluster** (Lokalen Cluster verwalten) aus, um den Service Fabric Explorer zu starten.
    
     ![Starten des Service Fabric Explorers über den Manager für den lokalen Cluster][systray-launch-sfx]
    
@@ -107,7 +111,7 @@ Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
     ![Beenden eines Knotens im Service Fabric Explorer][sfx-stop-node]
    
     Sofort sollten Sie den Haltepunkt in Visual Studio sehen, während die Berechnung, die Sie auf einem Knoten durchgeführt haben, nahtlos auf einem anderen fortgeführt wird.
-8. Kehren Sie zur Diagnoseereignisanzeige zurück, und beobachten Sie die Meldungen. Beachten Sie, dass der Zähler weiter erhöht wurde, obwohl die Ereignisse tatsächlich von einem anderen Knoten stammen.
+8. Kehren Sie zur Diagnoseereignisanzeige zurück, und beobachten Sie die Meldungen. Der Zähler wurde weiter erhöht, obwohl die Ereignisse tatsächlich von einem anderen Knoten stammen.
    
     ![Diagnoseereignisanzeige nach einem Failover][diagnostic-events-viewer-detail-post-failover]
 
@@ -122,7 +126,7 @@ Wenn Sie den Clustermodus ändern, wird der Entwicklungscluster zurückgesetzt, 
   Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, den Cluster zu verwalten:
 
 1. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden** .
-2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen** . Beachten Sie, dass diese Option zu einer weiteren langsamen Bereitstellung führt, wenn Sie das nächste Mal in Visual Studio F5 drücken. Löschen Sie den Cluster nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
+2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen** . Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Löschen Sie den Cluster nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich, wie Sie einen [Cluster in Azure](service-fabric-cluster-creation-via-portal.md) oder einen [eigenständigen Cluster in Windows](service-fabric-cluster-creation-for-windows-server.md) erstellen.
@@ -147,6 +151,6 @@ Wenn Sie den Clustermodus ändern, wird der Entwicklungscluster zurückgesetzt, 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

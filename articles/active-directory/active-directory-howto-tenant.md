@@ -1,12 +1,12 @@
 ---
 title: Einrichten eines Azure AD-Mandanten | Microsoft Docs
-description: Informationen zum Einrichten einen Azure Active Directory-Mandanten für das Registrieren und Erstellen von Anwendungen.
+description: "Informationen zum Einrichten einen Azure Active Directory-Mandanten für das Registrieren und Erstellen von Anwendungen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dstrockis
 manager: terrylan
-editor: ''
-
+editor: 
+ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/28/2015
 ms.author: dastrock
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b72271ca68df3b4b11c41f208fd1e3dd75b5e727
+
 
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Einrichten eines Azure Active Directory-Mandanten
-In Azure Active Directory (Azure AD) ist ein [Mandant](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) ein Stellvertreter einer Organisation.  Es handelt sich um eine dedizierte Instanz des Azure AD-Diensts, den eine Organisation erhält und besitzt, nachdem sie sich für einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Office 365 registriert hat.  Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt.  
+In Azure Active Directory (Azure AD) ist ein [Mandant](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) ein Stellvertreter einer Organisation.  Es handelt sich um eine dedizierte Instanz des Azure AD-Diensts, den eine Organisation erhält und besitzt, nachdem sie sich für einen Microsoft-Clouddienst wie Azure, Microsoft Intune oder Office 365 registriert hat.  Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt.  
 
-Ein Mandant enthält die Benutzer in einem Unternehmen und die dazugehörigen Informationen, wie z. B. Kennwörter, Benutzerprofildaten, Berechtigungen usw.  Er enthält außerdem Gruppen, Anwendungen und andere Informationen, die eine Organisation und ihre Sicherheit betreffen.
+Ein Mandant enthält die Benutzer in einem Unternehmen und die dazugehörigen Informationen, wie z. B. Kennwörter, Benutzerprofildaten, Berechtigungen usw.  Er enthält außerdem Gruppen, Anwendungen und andere Informationen, die eine Organisation und ihre Sicherheit betreffen.
 
 Damit sich Azure AD-Benutzer bei Ihrer Anwendung anmelden können, müssen Sie Ihre Anwendung in einem eigenen Mandanten registrieren.  Das Veröffentlichen einer Anwendung in einem Azure AD-Mandanten ist **völlig kostenlos**.  Die meisten Entwickler erstellen für Experimentier-, Entwicklungs-, Staging- und Testzwecke meist mehrere Mandanten und Anwendungen.  Organisationen, die sich für die Nutzung Ihrer Anwendung registrieren, können optional auch Lizenzen erwerben, wenn sie erweiterte Verzeichnisfeatures nutzen möchten.
 
@@ -60,6 +64,9 @@ Wenn Ihnen diese genannten Schritte unverständlich sind, machen Sie sich keine 
 
 Im Rahmen der Registrierung bei Azure müssen Sie Kreditkarteninformationen angeben.  Sie können vertrauensvoll fortfahren, da das Veröffentlichen von Anwendungen in Azure AD oder Erstellen neuer Mandanten nicht berechnet wird.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

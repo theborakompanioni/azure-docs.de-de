@@ -8,4 +8,8 @@ Weitere Informationen zur Verwendung der Zugriffsverwaltung finden Sie in den fo
 * [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../articles/active-directory/role-based-access-control-what-is.md)
 * [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../articles/active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

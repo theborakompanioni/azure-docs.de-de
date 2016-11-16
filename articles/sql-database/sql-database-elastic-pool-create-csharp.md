@@ -1,12 +1,12 @@
 ---
-title: Erstellen eines Pools für elastische Datenbanken mit C# | Microsoft Docs
-description: Verwenden Sie C#-Datenbankentwicklungstechniken, um einen skalierbaren Pool für elastische Datenbanken in Azure SQL-Datenbank zu erstellen, damit Sie Ressourcen für zahlreiche Datenbanken freigeben können.
+title: "Erstellen eines Pools für elastische Datenbanken mit C# | Microsoft Docs"
+description: "Verwenden Sie C#-Datenbankentwicklungstechniken, um einen skalierbaren Pool für elastische Datenbanken in Azure SQL-Datenbank zu erstellen, damit Sie Ressourcen für zahlreiche Datenbanken freigeben können."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 2dedddbb-618d-462b-80dd-e4a57857c737
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 28f792cd5afd194445666aeb1d17d5fbf27a835d
+
 
 ---
-# <a name="create-an-elastic-database-pool-with-c&#x23;"></a>Erstellen eines Pools für elastische Datenbanken mit C&#x23;
+# <a name="create-an-elastic-database-pool-with-cx23"></a>Erstellen eines Pools für elastische Datenbanken mit C&#x23;
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -26,10 +30,10 @@ ms.author: sstein
 
 In diesem Artikel wird gezeigt, wie Sie einen Pool für elastische Datenbanken in Azure SQL-Datenbank mithilfe von C# und der [Azure SQL-Datenbankbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)erstellen. Informationen zum Erstellen einer eigenständigen SQL-Datenbank finden Sie unter [Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET](sql-database-get-started-csharp.md).
 
-Die Azure SQL-Datenbank-Bibliothek für .NET bietet eine [Azure Resource Manager](../resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
+Die Azure SQL-Datenbank-Bibliothek für .NET bietet eine [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
 
 > [!NOTE]
-> Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../resource-group-overview.md) unterstützt. Daher wird empfohlen, stets die aktuelle **Azure SQL-Datenbank-Verwaltungsbibliothek für .NET zu verwenden ([Dokumentationen](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Die älteren [auf dem klassischen Bereitstellungsmodell basierenden Bibliotheken](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) werden nur zum Zweck der Abwärtskompatibilität unterstützt. Daher wird die Verwendung der neueren Resource Manager-basierten Bibliotheken empfohlen.
+> Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../azure-resource-manager/resource-group-overview.md) unterstützt. Daher wird empfohlen, stets die aktuelle **Azure SQL-Datenbank-Verwaltungsbibliothek für .NET zu verwenden ([Dokumentationen](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Die älteren [auf dem klassischen Bereitstellungsmodell basierenden Bibliotheken](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) werden nur zum Zweck der Abwärtskompatibilität unterstützt. Daher wird die Verwendung der neueren Resource Manager-basierten Bibliotheken empfohlen.
 > 
 > 
 
@@ -55,7 +59,7 @@ Laden Sie zum Erstellen einer SQL-Datenbank mit C# die erforderlichen Verwaltung
 > 
 > 
 
-## <a name="create-a-sql-elastic-database-pool---c#-example"></a>Beispiel: Erstellen eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit C
+## <a name="create-a-sql-elastic-database-pool-c-example"></a>Beispiel: Erstellen eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit C#
 Im folgenden Beispiel werden die folgenden Komponenten erstellt: Ressourcengruppe, Server, Firewallregel, elastischer Pool und eine SQL-Datenbank im Pool. Informationen zum Abrufen der `_subscriptionId, _tenantId, _applicationId, and _applicationSecret`-Variablen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen](#create-a-service-principal-to-access-resources).
 
 Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisieren Sie `{variables}` mit Ihren App-Werten (ohne `{}`).
@@ -307,6 +311,9 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 * [SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 * [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

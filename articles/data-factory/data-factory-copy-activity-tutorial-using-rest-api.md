@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der REST-API | Microsoft Docs'
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe der REST-API.
+title: "Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der REST-API | Microsoft Docs"
+description: "In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe der REST-API."
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
+
 
 ---
-# <a name="tutorial:-create-a-pipeline-with-copy-activity-using-rest-api"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der REST-API
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-rest-api"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der REST-API
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
@@ -67,7 +71,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der
 ## <a name="create-json-definitions"></a>Erstellen von JSON-Definitionen
 Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei „curl.exe“ befindet. 
 
-### <a name="datafactory.json"></a>datafactory.json
+### <a name="datafactoryjson"></a>datafactory.json
 > [!IMPORTANT]
 > Der Name muss global eindeutig sein, sodass sich für „ADFCopyTutorialDF“ die Verwendung eines Präfixes oder Suffixes anbietet, um die Eindeutigkeit sicherzustellen. 
 > 
@@ -78,7 +82,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
         "location": "WestUS"
     }  
 
-### <a name="azurestoragelinkedservice.json"></a>azurestoragelinkedservice.json
+### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
 > Ersetzen Sie **accountname** und **accountkey** durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
 > 
@@ -94,7 +98,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
         }
     }
 
-### <a name="azuersqllinkedservice.json"></a>azuresqllinkedservice.json
+### <a name="azuersqllinkedservicejson"></a>azuresqllinkedservice.json
 > [!IMPORTANT]
 > Ersetzen Sie **servername**, **databasename**, **username** und **password** durch den Namen Ihres Azure SQL-Servers, den Namen der SQL-Datenbank, das Benutzerkonto bzw. das Kennwort für das Konto.  
 > 
@@ -112,7 +116,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
     }
 
 
-### <a name="inputdataset.json"></a>inputdataset.json
+### <a name="inputdatasetjson"></a>inputdataset.json
     {
       "name": "AzureBlobInput",
       "properties": {
@@ -152,7 +156,7 @@ Mit der JSON-Definition wird ein Dataset mit dem Namen **AzureBlobInput**definie
 * **linkedServiceName** ist auf **AzureStorageLinkedService** festgelegt. 
 * **folderPath** ist auf den Container **adftutorial** und **fileName** auf **emp.txt** festgelegt.  
 * „format **type**“ ist auf **TextFormat** festgelegt.
-* Die Textdatei enthält die beiden Felder **FirstName** und **LastName**, die durch ein Komma getrennt sind (**columnDelimiter**). 
+* Die Textdatei enthält die beiden Felder **FirstName** und **LastName**, die durch ein Komma getrennt sind (**columnDelimiter**).    
 * Die Verfügbarkeit (**availability**) ist auf **hourly**, („frequency“ auf „hour“ und „interval“ auf „1“) festgelegt. Der Data Factory-Dienst sucht also stündlich im Stammordner des angegebenen Blobcontainers (**adftutorial**) nach Eingabedaten. 
 
 Wenn Sie keinen Dateinamen (**fileName**) für ein Eingabedataset angeben, werden alle Dateien/Blobs aus dem Eingabeordner (**folderPath**) als Eingaben betrachtet. Wenn Sie einen Dateinamen im JSON-Code angeben, wird nur die angegebene Datei bzw. das Blob als Eingabe betrachtet.
@@ -161,7 +165,7 @@ Wenn Sie keinen **fileName** für eine **Ausgabetabelle** angeben, werden die ge
 
 Um **folderPath** und **fileName** dynamisch basierend auf der **SliceStart**-Zeit festzulegen, verwenden Sie die **partitionedBy**-Eigenschaft. Im folgenden Beispiel verwendet folderPath die Angaben für Jahr, Monat und Tag aus „SliceStart“ (Startzeit des zu verarbeitenden Slices) und „fileName“ die Angabe für Stunde aus „SliceStart“. Wenn beispielsweise ein Slice für den Zeitpunkt "2014-10-20T08:00:00" erzeugt wird, wird "folderName" auf "wikidatagateway/wikisampledataout/2014/10/20" und "filName" auf "08.csv" festgelegt. 
 
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+      "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
     "fileName": "{Hour}.csv",
     "partitionedBy": 
     [
@@ -172,7 +176,7 @@ Um **folderPath** und **fileName** dynamisch basierend auf der **SliceStart**-Ze
     ],
 
 
-### <a name="outputdataset.json"></a>outputdataset.json
+### <a name="outputdatasetjson"></a>outputdataset.json
     {
       "name": "AzureSqlOutput",
       "properties": {
@@ -209,7 +213,7 @@ Beachten Sie folgende Punkte:
 * Die emp-Tabelle in der Datenbank enthält drei Spalten: **ID**, **FirstName** und **LastName**. Da es sich bei „ID“ um eine Identitätsspalte handelt, müssen Sie hier lediglich **FirstName** und **LastName** angeben.
 * Die Verfügbarkeit (**availability**) ist auf **hourly**, (**frequency** auf **hour** und **interval** auf **1**) festgelegt.  Der Data Factory-Dienst generiert in der Tabelle **emp** in der Azure SQL-Datenbank stündlich einen Ausgabedatenslice.
 
-### <a name="pipeline.json"></a>pipeline.json
+### <a name="pipelinejson"></a>pipeline.json
     {
       "name": "ADFTutorialPipeline",
       "properties": {
@@ -259,7 +263,7 @@ Beachten Sie folgende Punkte:
 * Die Eingabe für die Aktivität ist auf **AzureBlobInput** und die Ausgabe für die Aktivität ist auf **AzureSqlOutput** festgelegt.
 * Im Abschnitt **transformation** ist **BlobSource** als Quelltyp und **SqlSink** als Senkentyp angegeben.
 
-Ersetzen Sie den Wert der **start**-Eigenschaft durch den aktuellen Tag und den der **end**-Eigenschaft durch den nächsten Tag. Sie können auch nur den Datumsteil angeben und den Uhrzeitteil überspringen. "2015-02-03" entspricht z. B. "2015-02-03T00:00:00Z"
+Ersetzen Sie den Wert der **start**-Eigenschaft durch den aktuellen Tag und den der **end**-Eigenschaft durch den nächsten Tag. Sie können auch nur den Datumsteil angeben und den Uhrzeitteil überspringen. "2015-02-03" entspricht z. B. "2015-02-03T00:00:00Z"
 
 Die Start- und Endzeit von Datums-/Uhrzeitangaben müssen im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601)angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeitangabe **end** ist optional, wird aber in diesem Tutorial verwendet. 
 
@@ -468,7 +472,7 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 
 1. Sie haben eine Azure **Data Factory**erstellt.
 2. Sie haben **verknüpfte Dienste**erstellt:
-   1. Einen verknüpften Azure Storage-Dienst zum Verknüpfen Ihres Azure Storage-Kontos, in dem Eingabedaten enthalten sind.    
+   1. Einen verknüpften Azure Storage-Dienst zum Verknüpfen Ihres Azure Storage-Kontos, in dem Eingabedaten enthalten sind.     
    2. Einen verknüpften Azure SQL-Dienst zum Verknüpfen Ihrer Azure SQL-Datenbank, in der die Ausgabedaten enthalten sind. 
 3. Sie haben **Datasets**erstellt, mit denen Eingabedaten und Ausgabedaten für Pipelines beschrieben werden.
 4. Sie haben eine **Pipeline** mit einer Kopieraktivität und „BlobSource“ als Quelle und „SqlSink“ als Senke erstellt. 
@@ -500,6 +504,6 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

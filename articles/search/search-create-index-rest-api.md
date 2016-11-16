@@ -1,13 +1,13 @@
 ---
-title: Erstellen eines Azure Search-Indexes mit einer REST-API | Microsoft Docs
+title: Erstellen eines Azure Search-Indexes mit der REST-API | Microsoft Docs
 description: Erstellen Sie einen Index im Code mithilfe der Azure Search HTTP-REST-API.
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: ashmaka
-manager: ''
-editor: ''
+manager: jhubbard
+editor: 
 tags: azure-portal
-
+ms.assetid: ac6c5fba-ad59-492d-b715-d25a7a7ae051
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
@@ -15,9 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: ashmaka
+translationtype: Human Translation
+ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
+ms.openlocfilehash: 6d3bbea1a891e1d2f41eedccd9b9a591dfe13855
+
 
 ---
-# Erstellen eines Azure Search-Indexes mit der REST-API
+# <a name="create-an-azure-search-index-using-the-rest-api"></a>Erstellen eines Azure Search-Indexes mit der REST-API
 > [!div class="op_single_selector"]
 > * [Übersicht](search-what-is-an-index.md)
 > * [Portal](search-create-index-portal.md)
@@ -26,16 +30,16 @@ ms.author: ashmaka
 > 
 > 
 
-In diesem Artikel lernen Sie, wie Sie einen Azure Search-[Index](https://msdn.microsoft.com/library/azure/dn798941.aspx) mithilfe der Azure Search REST-API erstellen.
+In diesem Artikel lernen Sie, wie Sie einen Azure Search- [Index](https://msdn.microsoft.com/library/azure/dn798941.aspx) mithilfe der Azure Search REST-API erstellen.
 
 Bevor Sie dieser Anleitung folgen und einen Index erstellen, müssen Sie einen [Azure Search-Dienst erstellen](search-create-service-portal.md).
 
 Zum Erstellen des Azure Search-Indexes mithilfe der REST-API können Sie eine einzelne HTTP POST-Anforderung an den URL-Endpunkt Ihres Azure Search-Diensts ausgeben. Ihre Indexdefinition ist im Anforderungstext als richtig formatierter JSON-Inhalt enthalten.
 
-## I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
+## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, können Sie HTTP-Anforderungen für den URL-Endpunkt Ihres Diensts mithilfe der REST-API ausgeben. Allerdings müssen *alle* API-Anforderungen den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu suchen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 2. Wechseln Sie zum Blatt Ihres Azure Search-Diensts.
 3. Klicken Sie auf das Schlüsselsymbol.
 
@@ -46,13 +50,13 @@ Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 
 Verwenden Sie zum Erstellen eines Indexes entweder den primären oder den sekundären Admin-Schlüssel.
 
-## II. Definieren des Azure Search-Indexes mithilfe richtig formatierter JSON
-Eine einzelne HTTP POST-Anforderung an Ihren Dienst erstellt den Index. Der Hauptteil der HTTP POST-Anforderung enthält ein einzelnes JSON-Objekt, das den Azure Search-Index definiert.
+## <a name="ii-define-your-azure-search-index-using-wellformed-json"></a>II. Definieren des Azure Search-Indexes mithilfe richtig formatierter JSON
+Eine einzelne HTTP POST-Anforderung an Ihren Dienst erstellt den Index. Der Hauptteil der HTTP POST-Anforderung enthält ein  einzelnes JSON-Objekt, das den Azure Search-Index definiert.
 
 1. Die erste Eigenschaft des JSON-Objekts ist der Name des Indexes.
-2. Die zweite Eigenschaft des JSON-Objekts ist ein JSON-Array mit dem Namen `fields`, das ein separates JSON-Objekt für jedes Feld im Index enthält. Diese JSON-Objekte enthalten mehrere Name-Wert-Paare für jedes Feldattribut, einschließlich Name, Typ usw.
+2. Die zweite Eigenschaft des JSON-Objekts ist ein JSON-Array mit dem Namen `fields` , das ein separates JSON-Objekt für jedes Feld im Index enthält. Diese JSON-Objekte enthalten mehrere Name-Wert-Paare für jedes Feldattribut, einschließlich Name, Typ usw.
 
-Berücksichtigen Sie beim Gestalten des Indexes die Benutzerfreundlichkeit und die geschäftlichen Anforderungen, da jedem Feld die [richtigen Attribute](https://msdn.microsoft.com/library/azure/dn798941.aspx) zugewiesen sein müssen. Diese Attribute steuern, welche Suchfunktionen (Filtern, Facettierung, Sortieren der Volltextsuche usw.) für welche Felder gelten. Für jedes nicht festgelegte Attribut ist die entsprechende Suchfunktion standardmäßig aktiviert, sofern Sie sie nicht explizit deaktivieren.
+Berücksichtigen Sie beim Gestalten des Indexes die Benutzerfreundlichkeit und die geschäftlichen Anforderungen, da jedem Feld die [richtigen Attribute](https://msdn.microsoft.com/library/azure/dn798941.aspx)zugewiesen sein müssen. Diese Attribute steuern, welche Suchfunktionen (Filtern, Facettierung, Sortieren der Volltextsuche usw.) für welche Felder gelten. Für jedes nicht festgelegte Attribut ist die entsprechende Suchfunktion standardmäßig aktiviert, sofern Sie sie nicht explizit deaktivieren.
 
 In unserem Beispiel hat der Index den Namen „hotels“. Die Felder wurden wie folgt definiert:
 
@@ -82,7 +86,7 @@ In Ihrem Index des Typs `Edm.String` muss genau ein Feld als „key“ bestimmt 
 
 Diese Indexdefinition verwendet für das Feld `description_fr` eine benutzerdefinierte Sprachanalyse, da sie Text auf Französisch speichern soll. Im [Thema zur Sprachunterstützung auf MSDN](https://msdn.microsoft.com/library/azure/dn879793.aspx) sowie im entsprechenden [Blogbeitrag](https://azure.microsoft.com/blog/language-support-in-azure-search/) finden Sie weitere Informationen zu Sprachanalysen.
 
-## III. Stellen der HTTP-Anforderung
+## <a name="iii-issue-the-http-request"></a>III. Stellen der HTTP-Anforderung
 1. Stellen Sie eine HTTP POST-Anforderung an die Endpunkt-URL des Azure Search-Diensts, indem Sie Ihre Indexdefinition als Anforderungstext verwenden. Verwenden Sie in der URL Ihren Dienstnamen als Hostnamen, und geben Sie die richtige `api-version` als Abfragezeichenfolgeparameter ein (zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2015-02-28` die aktuelle API-Version).
 2. Legen Sie im Anforderungsheader `Content-Type` als `application/json` fest. Sie müssen außerdem den Admin-Schlüssel des Diensts angeben, den Sie in Schritt I im Header `api-key` identifiziert haben.
 
@@ -93,7 +97,7 @@ Zum Übermitteln der folgenden Anforderung müssen Sie Ihren Dienstnamen und API
     api-key: [api-key]
 
 
-Bei einer erfolgreichen Anforderung erscheint der Statuscode 201 (erstellt). Weitere Informationen zum Erstellen eines Indexes über die REST-API finden Sie in der API-Referenz auf [MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP status codes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx) (HTTP-Statuscodes (Azure Search)).
+Bei einer erfolgreichen Anforderung erscheint der Statuscode 201 (erstellt). Weitere Informationen zum Erstellen eines Indexes über die REST-API finden Sie in der API-Referenz auf [MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP status codes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx)(HTTP-Statuscodes (Azure Search)).
 
 Wenn Sie einen Index nicht mehr benötigen und ihn löschen möchten, stellen Sie einfach eine HTTP DELETE-Anforderung. Der Index „hotels“ wird beispielsweise wie folgt gelöscht:
 
@@ -101,7 +105,12 @@ Wenn Sie einen Index nicht mehr benötigen und ihn löschen möchten, stellen Si
     api-key: [api-key]
 
 
-## Weiter
+## <a name="next"></a>Weiter
 Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den Index hochladen](search-what-is-data-import.md) und mit dem Durchsuchen der Daten beginnen.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,27 +1,31 @@
 ---
 title: Exemplarische Vorgehensweise zur vorbeugenden Wartung | Microsoft Docs
-description: Exemplarische Vorgehensweise zur vorkonfigurierten Azure IoT-Lösung für vorbeugende Wartung | Microsoft Azure
-services: ''
+description: "Exemplarische Vorgehensweise zur vorkonfigurierten Azure IoT-Lösung für vorbeugende Wartung | Microsoft Azure"
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: aguilaaj
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 3c48a716-b805-4c99-8177-414cc4bec3de
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2016
+ms.date: 10/31/2016
 ms.author: araguila
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ba48381f2c16a56e2e3f187017fbdbae09544e77
+
 
 ---
-# Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für vorbeugende Wartung
-## Einführung
+# <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für vorbeugende Wartung
+## <a name="introduction"></a>Einführung
 Die vorkonfigurierte IoT Suite-Lösung für vorbeugende Wartung ist eine End-to-End-Lösung für ein Geschäftsszenario, bei dem der Zeitpunkt vorhergesagt wird, zu dem voraussichtlich ein Fehler auftritt. Sie können diese vorkonfigurierte Lösung proaktiv für Aktivitäten nutzen, z.B. zum Optimieren der Wartung. Bei dieser Lösung werden wichtige Azure IoT Suite-Dienste kombiniert, z.B. ein [Azure Machine Learning][lnk_machine_learning]-Arbeitsbereich. Dieser Arbeitsbereich enthält Experimente zum Vorhersagen der Restlebensdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks anhand eines öffentlichen Datasets mit Beispielwerten. Bei der Lösung wird das IoT-Geschäftsszenario vollständig als Ausgangspunkt implementiert, damit Sie eine Lösung planen und implementieren können, die Ihre besonderen Geschäftsanforderungen erfüllt.
 
-## Logische Architektur
+## <a name="logical-architecture"></a>Logische Architektur
 Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten Lösung:
 
 ![][img-architecture]
@@ -34,12 +38,12 @@ Das grüne Element ist ein simuliertes Gerät, das für ein Flugzeugtriebwerk st
 
 Die grauen Elemente stehen für Komponenten, mit denen Funktionen für die *Geräteverwaltung* implementiert werden. Von der aktuellen Version der vorkonfigurierten Lösung für vorbeugende Wartung werden diese Ressourcen nicht bereitgestellt. Weitere Informationen zur Geräteverwaltung finden Sie in der [vorkonfigurierten Lösung für die Remoteüberwachung][lnk-remote-monitoring].
 
-## Simulierte Geräte
-In der vorkonfigurierten Lösung steht ein simuliertes Gerät für ein Flugzeugtriebwerk. Die Lösung wird mit zwei Triebwerken bereitgestellt, die einem Flugzeug zugeordnet sind. Jedes Triebwerk gibt vier Arten von Telemetriedaten aus: Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Hiermit werden die Daten bereitgestellt, die vom Machine Learning-Modell zum Berechnen der Restlebensdauer des Triebwerks benötigt werden. Jedes simulierte Gerät sendet die folgenden Telemetriemeldungen an IoT Hub:
+## <a name="simulated-devices"></a>Simulierte Geräte
+In der vorkonfigurierten Lösung steht ein simuliertes Gerät für ein Flugzeugtriebwerk. Die Lösung wird mit zwei Triebwerken bereitgestellt, die einem Flugzeug zugeordnet sind. Jedes Triebwerk gibt vier Arten von Telemetriedaten aus: Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Hiermit werden die Daten bereitgestellt, die vom Machine Learning-Modell zum Berechnen der Restlebensdauer des Triebwerks benötigt werden. Jedes simulierte Gerät sendet die folgenden Telemetriemeldungen an IoT Hub:
 
-*Zyklusanzahl*: Ein Zyklus ist ein abgeschlossener Flug mit einer variablen Länge zwischen zwei und zehn Stunden, wobei während des Flugs jeweils im Abstand einer halben Stunde Telemetriedaten erfasst werden.
+*Zyklusanzahl*. Ein Zyklus ist ein abgeschlossener Flug mit einer variablen Länge zwischen zwei und zehn Stunden, wobei während des Flugs jeweils im Abstand einer halben Stunde Telemetriedaten erfasst werden.
 
-*Telemetrie*: Es sind vier Sensoren vorhanden, die für die Triebwerkattribute stehen. Die Sensoren tragen die generischen Bezeichnungen Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Diese vier Sensoren repräsentieren Telemetriedaten, die ausreichen, um für das Machine Learning-Modell nützliche Ergebnisse in Bezug auf die Restlebensdauer zu erhalten. Dieses Modell wird aus einem öffentlichen Dataset erstellt, das echte Daten von Triebwerksensoren enthält. Weitere Informationen dazu, wie das Modell aus dem ursprünglichen Dataset erstellt wurde, finden Sie unter [Cortana Intelligence-Katalog: Vorlage für die vorbeugende Wartung][lnk-cortana-analytics].
+*Telemetrie*. Es sind vier Sensoren vorhanden, die für die Triebwerkattribute stehen. Die Sensoren tragen die generischen Bezeichnungen Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Diese vier Sensoren repräsentieren Telemetriedaten, die ausreichen, um für das Machine Learning-Modell nützliche Ergebnisse in Bezug auf die Restlebensdauer zu erhalten. Dieses Modell wird aus einem öffentlichen Dataset erstellt, das echte Daten von Triebwerksensoren enthält. Weitere Informationen dazu, wie das Modell aus dem ursprünglichen Dataset erstellt wurde, finden Sie unter [Cortana Intelligence-Katalog: Vorlage für die vorbeugende Wartung][lnk-cortana-analytics].
 
 Die simulierten Geräte können die folgenden Befehle verarbeiten, die von einem IoT Hub gesendet werden:
 
@@ -50,25 +54,25 @@ Die simulierten Geräte können die folgenden Befehle verarbeiten, die von einem
 
 IoT Hub führt die Bestätigung der Gerätebefehle durch.
 
-## Azure Stream Analytics-Auftrag
-**Auftrag: Telemetrie** verarbeitet den eingehenden Datenstrom mit Gerätetelemetriedaten mit zwei Anweisungen. Mit der ersten Anweisung werden alle Telemetriedaten von den Geräten ausgewählt und an eine Blob Storage-Einheit gesendet, von wo aus sie in der Web-App visualisiert werden. Mit der zweiten Anweisung werden die durchschnittlichen Sensorwerte für ein gleitendes Fenster von zwei Minuten berechnet und über den Event Hub an einen **Ereignisprozessor** gesendet.
+## <a name="azure-stream-analytics-job"></a>Azure Stream Analytics-Auftrag
+**Auftrag: Telemetrie** verarbeitet den eingehenden Datenstrom mit Gerätetelemetriedaten mit zwei Anweisungen. Mit der ersten Anweisung werden alle Telemetriedaten von den Geräten ausgewählt und an eine Blob Storage-Einheit gesendet, von wo aus sie in der Web-App visualisiert werden. Mit der zweiten Anweisung werden die durchschnittlichen Sensorwerte für ein gleitendes Fenster von zwei Minuten berechnet und über den Event Hub an einen **Ereignisprozessor**gesendet.
 
-## Ereignisprozessor
+## <a name="event-processor"></a>Ereignisprozessor
 Der **Ereignisprozessor** verwendet die durchschnittlichen Sensorwerte eines abgeschlossenen Zyklus. Er übergibt diese Werte an eine API, mit der das trainierte Machine Learning-Modell zum Berechnen der Restlebensdauer eines Triebwerks verfügbar gemacht wird.
 
-## Azure Machine Learning
+## <a name="azure-machine-learning"></a>Azure Machine Learning
 Weitere Informationen dazu, wie das Modell aus dem ursprünglichen Dataset erstellt wurde, finden Sie unter [Cortana Intelligence-Katalog: Vorlage für die vorbeugende Wartung][lnk-cortana-analytics].
 
-## Exemplarische Vorgehensweise
+## <a name="lets-start-walking"></a>Exemplarische Vorgehensweise
 In diesem Abschnitt werden die Komponenten der Lösung erläutert, der beabsichtigte Anwendungsfall beschrieben und Beispiele bereitgestellt.
 
-### Dashboard für vorbeugende Wartung
+### <a name="predictive-maintenance-dashboard"></a>Dashboard für vorbeugende Wartung
 Auf dieser Seite in der Webanwendung werden PowerBI-JavaScript-Steuerelemente (siehe [Repository mit visuellen PowerBI-Elementen][lnk-powerbi]) zum Visualisieren verwendet:
 
 * Ausgabedaten von Stream Analytics-Aufträgen in der Blob Storage-Einheit
 * Restlebensdauer und Zyklusanzahl pro Flugzeugtriebwerk
 
-### Beobachten des Verhaltens der Cloudlösung
+### <a name="observing-the-behavior-of-the-cloud-solution"></a>Beobachten des Verhaltens der Cloudlösung
 Navigieren Sie im Azure-Portal zur Ressourcengruppe mit dem von Ihnen gewählten Lösungsnamen, um Ihre bereitgestellten Ressourcen anzuzeigen.
 
 ![][img-resource-group]
@@ -89,13 +93,13 @@ Wenn der Wert für die Restlebensdauer kleiner als 160 ist (zu Demonstrationszwe
 
 ![][img-simulation-warning]
 
-Die vollständige Simulation dauert ca. 35 Minuten, und es werden 148 Zyklen durchgeführt. Der Schwellenwert der Restlebensdauer von 160 wird zum ersten Mal nach ca. fünf Minuten erreicht, und für beide Triebwerke ist der Schwellenwert nach ca. acht Minuten erreicht.
+Die vollständige Simulation dauert ca. 35 Minuten, und es werden 148 Zyklen durchgeführt. Der Schwellenwert der Restlebensdauer von 160 wird zum ersten Mal nach ca. fünf Minuten erreicht, und für beide Triebwerke ist der Schwellenwert nach ca. acht Minuten erreicht.
 
-Die Simulation durchläuft das vollständige Dataset für 148 Zyklen, und die endgültigen Werte für die Restlebensdauer und Zyklen werden festgelegt.
+Die Simulation durchläuft das vollständige Dataset für 148 Zyklen, und die endgültigen Werte für die Restlebensdauer und Zyklen werden festgelegt.
 
 Sie können die Simulation jederzeit stoppen. Wenn Sie auf **Simulation starten** klicken, wird die Simulation aber ab dem Anfang des Datasets wiedergegeben.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die vorkonfigurierte Lösung für die vorbeugende Wartung ausgeführt haben, kann es sein, dass Sie sie ändern möchten. Informationen hierzu finden Sie unter [Anleitung zum Anpassen vorkonfigurierter Lösungen][lnk-customize].
 
 Im TechNet-Blogbeitrag [IoT Suite - Under The Hood - Predictive Maintenance](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx) (IoT Suite – Weitere Informationen – Vorhersagbarer Wartungsbedarf) finden Sie weitere Informationen zur vorkonfigurierten Lösung für den vorhersagbaren Wartungsbedarf.
@@ -121,4 +125,8 @@ Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

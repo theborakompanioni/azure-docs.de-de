@@ -1,13 +1,13 @@
 ---
 title: 'SQL-Datenbank-Leistung und -optionen: Tarife | Microsoft Docs'
-description: Vergleich Sie die verschiedenen Leistungs- und Geschäftskontinuitätsoptionen der SQL-Datenbanktarife, um beim Skalieren Kosten und Funktionalität im Blick zu behalten.
+description: "Vergleich Sie die verschiedenen Leistungs- und Geschäftskontinuitätsoptionen der SQL-Datenbanktarife, um beim Skalieren Kosten und Funktionalität im Blick zu behalten."
 keywords: Datenbankoptionen, Datenbankleistung
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
 editor: CarlRabeler
-
+ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
 ms.service: sql-database
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,15 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 08/10/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9ecbee74bc0559aa632304b0a0428abb36606597
+
 
 ---
-# <a name="sql-database-options-and-performance:-understand-what's-available-in-each-service-tier"></a>SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
+# <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
 [Azure SQL-Datenbank](sql-database-technical-overview.md) bietet drei Dienstebenen mit mehreren Leistungsstufen für unterschiedliche Workloads. Jede Leistungsstufe bietet einen zunehmenden Umfang an Ressourcen, um einen zunehmend höheren Durchsatz zu ermöglichen. Sie können jede Datenbank in ihrer eigenen [Dienstebene](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) mit eigenen Leistungsstufen verwalten. Darüber hinaus besteht die Möglichkeit, mehrere Datenbanken in einem [elastischen Pool](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) mit gemeinsam genutzten Ressourcen zu verwalten. Die für eigenständige Datenbanken verfügbaren Ressourcen werden als Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) und die für elastische Pools verfügbaren Ressourcen als elastische DTUs bzw. eDTUs bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind Datenbanktransaktionseinheiten (DTUs)?](sql-database-what-is-a-dtu.md). 
 
 In beiden Fällen sind die Dienstebenen **Basic**, **Standard** und **Premium** verfügbar. Die Datenbankoptionen dieser Ebenen sind bei eigenständigen Datenbanken und elastischen Pools ähnlich, aber bei elastischen Pools sind noch weitere Aspekte zu beachten. Dieser Artikel enthält ausführliche Informationen zu den Dienstebenen für eigenständige Datenbanken und elastische Pools.
 
 ## <a name="service-tiers-and-database-options"></a>Tarife und Datenbankoptionen
-Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
+Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
 
 | Dienstebene | Zielworkloads |
 | --- | --- |
@@ -70,7 +74,7 @@ Beginnen Sie bei einer Dienstebene für eine eigenständige Datenbank damit, die
 
 Nach der Ermittlung der SQL-Datenbank-Edition können Sie die Leistungsebene für die Datenbank (Anzahl von DTUs) bestimmen. Sie können dies schätzen und dann anhand der tatsächlichen Erfahrungen [dynamisch zentral hoch- oder herunterskalieren](sql-database-scale-up.md) . Sie können auch den [DTU Calculator](http://dtucalculator.azurewebsites.net/) (DTU-Rechner) verwenden, um die geschätzte Anzahl von erforderlichen DTUs zu ermitteln. 
 
-### <a name="choosing-a-service-tier-for-an-elastic-database-pool."></a>Auswählen einer Dienstebene für einen Pool für elastische Datenbanken
+### <a name="choosing-a-service-tier-for-an-elastic-database-pool"></a>Auswählen einer Dienstebene für einen Pool für elastische Datenbanken
 Ermitteln Sie bei der Dienstebene für einen Pool für elastische Datenbanken zunächst die benötigten Datenbankfeatures, um die Dienstebene für den Pool auswählen zu können:
 
 * Datenbankgröße (2 GB für Basic, 250 GB für Standard und 500 GB für Premium)
@@ -90,6 +94,9 @@ Nachdem Sie die Dienstebene für Ihren Pool ermittelt haben, können Sie die Lei
 * [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [Microsoft Virtual Academy video course on elastic database capabilities in Azure SQL Database](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

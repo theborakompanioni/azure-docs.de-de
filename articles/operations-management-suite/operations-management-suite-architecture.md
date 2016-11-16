@@ -1,12 +1,12 @@
 ---
 title: Operations Management Suite-Architektur (OMS) | Microsoft Docs
-description: Microsoft Operations Management Suite (OMS) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer lokalen und cloudbasierten Infrastruktur erleichtert.  Dieser Artikel enthält Informationen zu den verschiedenen Diensten von OMS und Links zu Seiten mit ausführlicheren Informationen.
+description: "Microsoft Operations Management Suite (OMS) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer Infrastruktur lokal und in der Cloud erleichtert.  Dieser Artikel enthält Informationen zu den verschiedenen Diensten von OMS und Links zu Seiten mit ausführlicheren Informationen."
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 40e41686-7e35-4d85-bbe8-edbcb295a534
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 88c0bd67562111baa5aa5882b7c1a4ef52bc6dd2
+
 
 ---
 # <a name="oms-architecture"></a>OMS-Architektur
@@ -80,6 +84,9 @@ Azure Site Recovery verfügt über drei grundlegende Replikationsszenarios.
 * Weitere Informationen zu [Azure Backup](http://azure.microsoft.com/documentation/services/backup)
 * Weitere Informationen zu [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

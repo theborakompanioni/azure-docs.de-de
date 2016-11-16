@@ -1,25 +1,29 @@
 ---
-title: Übersicht über Hybridverbindungen | Microsoft Docs
-description: Erfahren Sie mehr zu Hybridverbindungen, Sicherheit, TCP-Ports und unterstützten Konfigurationen. MABS, WABS.
+title: "Übersicht über Hybridverbindungen | Microsoft Docs"
+description: "Erfahren Sie mehr zu Hybridverbindungen, Sicherheit, TCP-Ports und unterstützten Konfigurationen. MABS, WABS."
 services: biztalk-services
-documentationcenter: ''
+documentationcenter: 
 author: MandiOhlinger
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 216e4927-6863-46e7-aa7c-77fec575c8a6
 ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2016
-ms.author: mandia
+ms.date: 10/18/2016
+ms.author: ccompy
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 397a922bf3bf4c39c89f5f69015de4942bda0af9
+
 
 ---
-# Überblick über Hybridverbindungen
+# <a name="hybrid-connections-overview"></a>Überblick über Hybridverbindungen
 Hier werden Hybridverbindungen vorgestellt und die unterstützten Konfigurationen sowie die erforderlichen TCP-Ports aufgeführt.
 
-## Was ist eine Hybridverbindung
+## <a name="what-is-a-hybrid-connection"></a>Was ist eine Hybridverbindung
 Hybridverbindungen sind eine Funktion von Azure BizTalk Services. Hybridverbindungen bieten eine einfache und praktische Möglichkeit, das Web-Apps-Feature in Azure App Service (früher Websites) und das Mobile Apps-Feature in Azure App Service (früher Mobile Services) mit lokalen Ressourcen hinter der Firewall zu verbinden:
 
 ![Hybridverbindungen][HCImage]
@@ -44,7 +48,7 @@ Hybridverbindungen bieten auch Unternehmensadministratoren Kontrolle und Einsich
 * Anhand von Gruppenrichtlinieneinstellungen können Administratoren Hybridverbindungen im Netzwerk zulassen und auch Ressourcen bestimmen, auf die durch Hybridverbindungen zugegriffen werden kann.
 * Ereignis- und Überwachungsprotokolle im Unternehmensnetzwerk geben Einsicht in die Ressourcen, auf die von Hybridverbindungen zugegriffen wird.
 
-## Beispielszenarien
+## <a name="example-scenarios"></a>Beispielszenarien
 Hybridverbindungen unterstützen die folgenden Framework- und Anwendungskombinationen:
 
 * .NET-Framework-Zugriff auf SQL Server
@@ -61,7 +65,7 @@ Wenn Hybridverbindungen für den Zugriff auf lokale SQL Server verwendet wird, b
 * `ApplicationIntent=ReadOnly` wird derzeit nicht unterstützt.
 * Als End-to-End-Autorisierungsmethode, die von der Azure-Anwendung und dem lokalen SQL Server unterstützt wird, kann SQL-Authentifizierung erforderlich sein.
 
-## Sicherheit und Ports
+## <a name="security-and-ports"></a>Sicherheit und Ports
 Hybridverbindungen verwenden SAS-Autorisierung (Shared Access Signature) zum Sichern der Verbindungen von den Azure-Anwendungen und dem lokalen Hybrid Connection Manager zur Hybridverbindung. Es werden getrennte Verbindungsschlüssel für die Anwendung und den lokalen Hybrid Connection Manager erstellt. Diese Verbindungsschlüssel können unabhängig voneinander ausgetauscht oder widerrufen werden.
 
 Hybridverbindungen stellen eine reibungslose und sichere Verteilung der Schlüssel an die Anwendungen und den lokalen Hybrid Connection Manager bereit.
@@ -70,7 +74,7 @@ Weitere Informationen finden Sie unter [Erstellen und Verwalten von Hybridverbin
 
 *Die Anwendungsautorisierung verläuft getrennt von der Hybridverbindung*. Jede geeignete Autorisierungsmethode kann verwendet werden. Die Autorisierungsmethode hängt davon ab, welche End-to-End-Autorisierungsmethoden in der Azure-Cloud und von den lokalen Komponenten unterstützt werden. Beispiel: Ihre Azure-Anwendung greift auf einen lokalen SQL Server zu. In diesem Szenario kann SQL-Autorisierung die unterstützte End-to-End-Autorisierungsmethode sein.
 
-#### TCP-Ports
+#### <a name="tcp-ports"></a>TCP-Ports
 Hybridverbindungen erfordern nur ausgehende TCP- oder HTTP-Verbindungen von Ihrem privaten Netzwerk. Sie müssen keine Firewallports öffnen oder Ihre Netzwerkkonfiguration ändern, um eingehende Verbindungen in Ihrem Netzwerk zu ermöglichen.
 
 Die folgenden TCP-Ports werden von Hybridverbindungen verwendet:
@@ -78,18 +82,27 @@ Die folgenden TCP-Ports werden von Hybridverbindungen verwendet:
 | Port | Grund |
 | --- | --- |
 | 9350 - 9354 |Diese Ports werden für die Datenübertragung verwendet. Der Service Bus Relay-Manager prüft Port 9350, um festzustellen, ob die TCP-Konnektivität verfügbar ist. Wenn sie verfügbar ist, wird davon ausgegangen, dass Port 9352 ebenfalls verfügbar ist. Der Datenverkehr geht über Port 9352. <br/><br/>Ausgehende Verbindungen auf diese Ports zulassen. |
-| 5671 |Wenn Port 9352 für den Datenverkehr verwendet wird, wird Port 5671 als Steuerungskanal verwendet. <br/><br/>Ausgehende Verbindungen auf diesen Port zulassen. |
-| 80, 443 |Diese Ports werden für einige Datenanfragen in Azure verwendet. Wenn Ports 9352 und 5671 nicht brauchbar sind, *dann* sind die Ports 80 und 443 die Alternative für die Datenübertragung und den Steuerungskanal.<br/><br/>Ausgehende Verbindungen auf diese Ports zulassen. <br/><br/>**Hinweis** Es wird nicht empfohlen, diese als alternative Ports anstelle der anderen TCP-Ports verwenden. HTTP/WebSocket wird als Protokoll anstelle des systemeigenen TCP für Datenkanäle verwendet. Dies könnte zu einer niedrigeren Leistung führen. |
+| 5671 |Wenn Port 9352 für den Datenverkehr verwendet wird, wird Port 5671 als Steuerungskanal verwendet. <br/><br/>Ausgehende Verbindungen auf diesen Port zulassen. |
+| 80, 443 |Diese Ports werden für einige Datenanfragen in Azure verwendet. Wenn die Ports 9352 und 5671 nicht verwendbar sind,* *werden für die Datenübertragung und den Steuerungskanal alternativ die Ports 80 und 443 verwendet.<br/><br/>Ausgehende Verbindungen auf diese Ports zulassen. <br/><br/>**Hinweis** Es wird nicht empfohlen, diese als alternative Ports anstelle der anderen TCP-Ports verwenden. HTTP/WebSocket wird als Protokoll anstelle des systemeigenen TCP für Datenkanäle verwendet. Dies könnte zu einer niedrigeren Leistung führen. |
 
-## Nächste Schritte
-[Erstellen und Verwalten von Hybridverbindungen](integration-hybrid-connection-create-manage.md)<br/> [Verbinden einer Azure-Website mit einer lokalen Ressource](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/> [Verbinden mit einem lokalen SQL Server über Azure-Web-Apps](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/> [Azure Mobile Services und Hybridverbindungen](../mobile-services/mobile-services-dotnet-backend-hybrid-connections-get-started.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
+[Verbinden von Azure-Web-Apps mit einer lokalen Ressource](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
+[Verbinden mit einem lokalen SQL Server von einer Azure-Web-App aus](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/>
 
-## Weitere Informationen
-[REST-API zum Verwalten von BizTalk Services auf Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx) [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)<br/> [Erstellen eines BizTalk Service mit dem Azure-Portal](biztalk-provision-services.md)<br/> [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+## <a name="see-also"></a>Weitere Informationen
+[REST-API für die Verwaltung von BizTalk Services unter Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)
+[BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)<br/>
+[Erstellen eines BizTalk Service im Azure-Portal](biztalk-provision-services.md)<br/>
+[BizTalk Services: Registerkarten „Dashboard“, „Überwachen“ und „Skalieren“](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
 [HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

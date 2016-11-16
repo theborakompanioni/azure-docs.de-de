@@ -1,38 +1,42 @@
 ---
 title: Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit Java | Microsoft Docs
-description: Beschreibt die Verwendung von Azure Media Services für gängige Aufgaben wie Codierung, Verschlüsselung und Streaming von Ressourcen.
+description: "Beschreibt die Verwendung von Azure Media Services für gängige Aufgaben wie Codierung, Verschlüsselung und Streaming von Ressourcen."
 services: media-services
 documentationcenter: java
-author: rmcmurray
-manager: wpickett
-editor: jimbe
-
+author: juliako
+manager: erikre
+editor: 
+ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: java
 ms.topic: get-started-article
-ms.date: 08/17/2016
-ms.author: robmcm
+ms.date: 10/19/2016
+ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 97af28a2f225fa7f5db2086687c38c64e03ebc8f
+
 
 ---
-# Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit Java
+# <a name="get-started-with-delivering-content-on-demand-using-java"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit Java
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## Einrichten eines Azure-Kontos für Media Services
-Sie können Ihr Media Services-Konto im klassischen Azure-Portal einrichten. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen eines Mediendienstekontos](media-services-create-account.md). Nach der Erstellung des Kontos im klassischen Azure-Portal können Sie Ihren Computer für die Media Services-Entwicklung einrichten.
+## <a name="setting-up-an-azure-account-for-media-services"></a>Einrichten eines Azure-Kontos für Media Services
+Sie können Ihr Media Services-Konto im klassischen Azure-Portal einrichten. Weitere Informationen finden Sie unter [Erstellen eines Media Services-Kontos](media-services-portal-create-account.md). Nach der Erstellung des Kontos im klassischen Azure-Portal können Sie Ihren Computer für die Media Services-Entwicklung einrichten.
 
-## Einrichtung für die Media Services-Entwicklung
+## <a name="setting-up-for-media-services-development"></a>Einrichtung für die Media Services-Entwicklung
 Dieser Abschnitt beschreibt allgemeine Voraussetzungen für die Media Services-Entwicklung mithilfe des Media Services SDK für Java.
 
-### Voraussetzungen
-* Ein Mediendienstekonto in einem neuen oder existierenden Azure-Abonnement. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen eines Mediendienstekontos](media-services-create-account.md).
+### <a name="prerequisites"></a>Voraussetzungen
+* Ein Mediendienstekonto in einem neuen oder existierenden Azure-Abonnement. Weitere Informationen finden Sie unter [Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
 * Die Azure-Bibliotheken für Java, die Sie im [Azure Developer Center für Java][Azure Developer Center für Java] installieren können.
 
-## Gewusst wie: Verwenden von Media Services mit Java
+## <a name="how-to-use-media-services-with-java"></a>Gewusst wie: Verwenden von Media Services mit Java
 Im Code weiter unten wird ein Medienobjekt erstellt, eine Mediendatei in das Medienobjekt hochgeladen, eine Aufgabe zur Transformation des Medienobjekts ausgeführt und ein Locator erstellt, um Ihr Video zu streamen.
 
-Zur Verwendung dieses Codes benötigen Sie ein Media Services-Konto. Informationen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Media Services-Kontos](media-services-create-account.md).
+Zur Verwendung dieses Codes benötigen Sie ein Media Services-Konto. Informationen zum Einrichten eines Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
 
 Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen Werte an. Im Code wird außerdem eine lokal gespeicherte Datei verwendet. Hier müssen Sie eine eigene Datei angeben.
 
@@ -63,7 +67,6 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
     import com.microsoft.windowsazure.services.media.models.MediaProcessor;
     import com.microsoft.windowsazure.services.media.models.MediaProcessorInfo;
     import com.microsoft.windowsazure.services.media.models.Task;
-
 
     public class HelloMediaServices
     {
@@ -178,8 +181,8 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
             // Create a task with the specified Media Processor
             String outputAssetName = String.format("%s as %s", assetToEncode.getName(), encodingPreset);
             String taskXml = "<taskBody><inputAsset>JobInputAsset(0)</inputAsset>"
-                    + "<outputAsset assetCreationOptions="0"" // AssetCreationOptions.None
-                    + " assetName="" + outputAssetName + "">JobOutputAsset(0)</outputAsset></taskBody>";
+                    + "<outputAsset assetCreationOptions=\"0\"" // AssetCreationOptions.None
+                    + " assetName=\"" + outputAssetName + "\">JobOutputAsset(0)</outputAsset></taskBody>";
 
             Task.CreateBatchOperation task = Task.create(mediaProcessor.getId(), taskXml)
                     .setConfiguration(encodingPreset).setName("Encoding");
@@ -250,21 +253,23 @@ Geben Sie für die Variablen „clientId“ und „clientSecret“ Ihre eigenen 
     }
 
 
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 Media Services-Javadoc-Dokumentation finden Sie in den [Azure-Bibliotheken für Java-Dokumentation][Azure-Bibliotheken für Java-Dokumentation].
 
 <!-- URLs. -->
 
 [Azure Developer Center für Java]: http://azure.microsoft.com/develop/java/
 [Azure-Bibliotheken für Java-Dokumentation]: http://dl.windowsazure.com/javadoc/
-[Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+[Media Services-Cliententwicklung]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
 
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--HONumber=Nov16_HO2-->
+
+

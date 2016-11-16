@@ -1,12 +1,12 @@
 ---
-title: Sicherheits- und Überwachungslösung von Operations Management Suite – Baseline | Microsoft Docs
-description: In diesem Dokument wird beschrieben, wie Sie die Sicherheits- und Überwachungslösung von OMS verwenden, um eine Baselinebewertung aller überwachten Computer zu Compliance- und Sicherheitszwecken durchzuführen.
+title: "Sicherheits- und Überwachungslösung von Operations Management Suite – Baseline | Microsoft Docs"
+description: "In diesem Dokument wird beschrieben, wie Sie die Sicherheits- und Überwachungslösung von OMS verwenden, um eine Baselinebewertung aller überwachten Computer zu Compliance- und Sicherheitszwecken durchzuführen."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 17837c8b-3e79-47c0-9b83-a51c6ca44ca6
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1c3e2cf86a33f9bbe6b34f4f52b82a078b91661f
+
 
 ---
 # <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Baselinebewertung in der Sicherheits- und Überwachungslösung von Operations Management Suite
 In diesem Dokument erhalten Sie Informationen zur Verwendung der Baselinebewertung der [Sicherheits- und Überwachungslösung von Operations Management Suite (OMS)](operations-management-suite-overview.md), um auf den Zustand Ihrer überwachten Ressourcen zuzugreifen.
 
-## <a name="what-is-baseline-assessment?"></a>Was ist eine Baselinebewertung?
+## <a name="what-is-baseline-assessment"></a>Was ist eine Baselinebewertung?
 Microsoft definiert in Zusammenarbeit mit Branchenunternehmen und Behörden weltweit eine Windows-Konfiguration für Serverbereitstellungen mit hoher Sicherheit. Diese Konfiguration umfasst einen Satz von Registrierungsschlüsseln, Überwachungsrichtlinieneinstellungen und Sicherheitsrichtlinieneinstellungen sowie von Microsoft empfohlene Werte für diese Einstellungen. Dieser Regelsatz wird als Sicherheitsbaseline bezeichnet. Mit der Baselinebewertung der Sicherheits- und Überwachungslösung von OMS können Sie die Compliance für Ihre gesamten Computer nahtlos testen. 
 
 Es gibt drei Arten von Regeln:
@@ -80,6 +84,9 @@ In diesem Dokument wurde die Baselinebewertung der Sicherheits- und Überwachung
 * [Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-responding-alerts.md)
 * [Überwachen von Ressourcen in der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-monitoring-resources.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

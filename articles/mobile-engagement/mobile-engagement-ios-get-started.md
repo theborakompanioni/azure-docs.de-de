@@ -1,12 +1,12 @@
 ---
-title: Erste Schritte mit Azure Mobile Engagement für iOS in Objective C | Microsoft Docs
-description: Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für iOS-Apps.
+title: "Erste Schritte mit Azure Mobile Engagement für iOS in Objective C | Microsoft Docs"
+description: "Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für iOS-Apps."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 117b5742-522b-41de-98c5-f432da2d98f8
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
@@ -14,6 +14,10 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/05/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1dc9885e4cdbad1153ac476e3f0c0068ec391374
+
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Erste Schritte mit Azure Mobile Engagement für iOS-Apps in Objective C
@@ -34,10 +38,10 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen M
 > 
 > 
 
-## <a name="<a-id="setup-azme"></a>setup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>Einrichten von Mobile Engagement für Ihre iOS-App
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>Einrichten von Mobile Engagement für Ihre iOS-App
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="<a-id="connecting-app"></a>connect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
 In diesem Lernprogramm wird eine "einfache Integration" dargestellt. Dabei handelt es sich um den minimalen erforderlichen Satz zur Sammlung von Daten und zum Senden einer Pushbenachrichtigung. Die vollständige Dokumentation zur Integration finden Sie im Artikel [Integrieren von Mobile Engagement unter iOS](mobile-engagement-ios-sdk-overview.md).
 
 Wir erstellen eine einfache App mit Xcode, um die Integration zu veranschaulichen.
@@ -67,13 +71,13 @@ Wir erstellen eine einfache App mit Xcode, um die Integration zu veranschauliche
    
         - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         {
-            [...]   
-            [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
-            [...]
+              [...]   
+              [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
+              [...]
         }
 9. `setTestLogEnabled` ist eine optionale Anweisung, die in SDK-Protokollen das Identifizieren von Problemen ermöglicht. 
 
-## <a name="<a-id="monitor"></a>enable-real-time-monitoring"></a><a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
+## <a name="a-idmonitoraenable-realtime-monitoring"></a><a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
 Um mit dem Senden von Daten zu beginnen und sicherzustellen, dass die Benutzer aktiv sind, müssen Sie mindestens einen Bildschirm (Aktivität) an das Mobile Engagement-Back-End schicken.
 
 1. Öffnen Sie die Datei **ViewController.h**, und importieren Sie **EngagementViewController.h**:
@@ -83,10 +87,10 @@ Um mit dem Senden von Daten zu beginnen und sicherzustellen, dass die Benutzer a
    
     `@interface ViewController : EngagementViewController`
 
-## <a name="<a-id="monitor"></a>connect-app-with-real-time-monitoring"></a><a id="monitor"></a>Verbinden der App mit Überwachung in Echtzeit
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Verbinden der App mit Überwachung in Echtzeit
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="<a-id="integrate-push"></a>enable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
 Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Benachrichtigungen und In-App-Nachrichten im Rahmen von Kampagnen interagieren. Dieses Modul nennt sich REACH im Mobile Engagement-Portal.
 In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 
@@ -136,7 +140,7 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
    
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         {
-            [[EngagementAgent shared] registerDeviceToken:deviceToken];
+             [[EngagementAgent shared] registerDeviceToken:deviceToken];
             NSLog(@"Registered Token: %@", deviceToken);
         }
 3. Fügen Sie die `didFailToRegisterForRemoteNotificationsWithError`-Methode wie folgt hinzu:
@@ -167,6 +171,6 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

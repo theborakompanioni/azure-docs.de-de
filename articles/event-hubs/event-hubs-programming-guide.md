@@ -1,12 +1,12 @@
 ---
-title: Programmierhandbuch für Azure Event Hubs | Microsoft Docs
+title: "Programmierhandbuch für Azure Event Hubs | Microsoft Docs"
 description: Beschreibt die Programmierung mit Azure Event Hubs unter Verwendung des Azure .NET SDK.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 64cbfd3d-4a0e-4455-a90a-7f3d4f080323
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1b7a19868e75811198f54150ced78e51f42d8017
+
 
 ---
 # <a name="event-hubs-programming-guide"></a>Programmierleitfaden für Event Hubs
 In diesem Thema wird die Programmierung mit Azure Event Hubs unter Verwendung des Azure .NET SDK beschrieben. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-overview.md).
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
-Das Senden von Ereignissen an einen Event Hub wird entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung erreicht. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und sind besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Messagingkanal verfügen.
+Das Senden von Ereignissen an einen Event Hub wird entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung erreicht. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und sind besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Messagingkanal verfügen.
 
 Event Hubs werden mit der [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) -Klasse erstellt und verwaltet. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) und [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx). [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) -Klasse stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) -Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) -Objekt werden weitere Eigenschaften hinzugefügt, wenn es Event Hub durchläuft.
 
@@ -95,7 +99,7 @@ Das Senden von Ereignissen in Batches kann den Durchsatz erheblich erhöhen. Die
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-Beachten Sie, dass ein einzelner Batch den Grenzwert von 256 KB für ein Ereignis nicht überschreiten darf. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert.
+Beachten Sie, dass ein einzelner Batch den Grenzwert von 256 KB für ein Ereignis nicht überschreiten darf. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert.
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchrones Senden und Senden mit Skalierung
 Sie können Ereignisse auch asynchron an einen Event Hub senden. Beim asynchronen Senden kann die Rate erhöht werden, mit der ein Client Ereignisse senden kann. Sowohl die [Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx)-Methode als auch die [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx)-Methode ist in asynchronen Versionen verfügbar, die ein [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx)-Objekt zurückgeben. Mit dieser Vorgehensweise kann zwar der Durchsatz erhöht werden, aber sie kann auch dazu führen, dass der Client auch dann weiter Ereignisse sendet, während er durch den Event Hubs-Dienst gedrosselt wird. Dies kann bei einer falschen Implementierung zur Folge haben, dass für den Client Fehler oder verloren gegangene Nachrichten auftreten. Darüber hinaus können Sie die [RetryPolicy](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.cliententity.retrypolicy.aspx)-Eigenschaft auf dem Client verwenden, um Wiederholungsversuche des Clients zu steuern.
@@ -164,10 +168,13 @@ Weitere Informationen zum Sperren von Herausgebern und zum Senden an Event Hubs 
 Weitere Informationen zu Event Hubs-Szenarien finden Sie unter diesen Links:
 
 * [Übersicht über die Event Hubs-API](event-hubs-api-overview.md)
-* [Übersicht über Event Hubs](event-hubs-overview.md)
+* [Übersicht über Event Hubs](event-hubs-overview.md)
 * [Event Hubs-Codebeispiele](http://code.msdn.microsoft.com/site/search?query=event hub&f\[0\].Value=event hub&f\[0\].Type=SearchText&ac=5)
 * [Referenz zur Ereignisprozessorhost-API](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

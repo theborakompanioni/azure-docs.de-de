@@ -1,6 +1,10 @@
-### Benötigen Sie Hilfe?
+### <a name="need-some-help"></a>Benötigen Sie Hilfe?
 Posten Sie Fragen in den Azure-Foren. – [MSDN besuchen](http://go.microsoft.com/fwlink/?LinkId=780719)
 
 Markieren Sie Fragen mit dem Schlüsselwort `azure-functions`. – [Stack Overflow besuchen](http://stackoverflow.com/questions/tagged/azure-functions)
 
-<!---HONumber=AcomDC_0912_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+
