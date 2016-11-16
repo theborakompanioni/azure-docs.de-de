@@ -2,11 +2,11 @@
 title: Erste Schritte mit Log Analytics | Microsoft Docs
 description: Log Analytics ist innerhalb weniger Minuten in der Microsoft Operations Management Suite (OMS) einsatzbereit.
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 508716de-72d3-4c06-9218-1ede631f23a6
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2f8defce183e61825d9df3397ea1082dbdb4b11a
+
 
 ---
 # <a name="get-started-with-log-analytics"></a>Erste Schritte mit Log Analytics
@@ -95,7 +99,7 @@ Um Lösungen zu wählen und die Server zu verbinden, die Sie verwalten möchten,
    
     ![Sammeln von Daten](./media/log-analytics-get-started/oms-onboard-logs.png)    
 
-## <a name="optionally,-connect-servers-directly-to-the-operations-management-suite-by-installing-an-agent"></a>Optional können Sie Server durch Installieren eines Agents direkt an die Operations Management Suite anschließen.
+## <a name="optionally-connect-servers-directly-to-the-operations-management-suite-by-installing-an-agent"></a>Optional können Sie Server durch Installieren eines Agents direkt an die Operations Management Suite anschließen.
 Im folgenden Beispiel wird veranschaulicht, wie Sie einen Windows-Agent installieren.
 
 1. Klicken Sie nacheinander auf die Kachel **Einstellungen**, die Registerkarte **Verbundene Quellen** und eine Registerkarte für den hinzuzufügenden Quellentyp, und laden Sie entweder einen Agent herunter, oder informieren Sie sich über das Aktivieren eines Agents. Klicken Sie beispielsweise auf **Windows-Agent herunterladen (64 Bit)**. Bei Windows-Agents können Sie den Agent nur unter Windows Server 2008 SP1 oder höher oder unter Windows 7 SP1 oder höher installieren.
@@ -119,7 +123,7 @@ Sie können auch den Agent mit System Center Operations Manager 2012 SP1 und hö
 
 Weitere Informationen zum Verbinden von Agents mit der Operations Management Suite finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md).
 
-## <a name="optionally,-connect-servers-using-system-center-operations-manager"></a>Optional können Sie Server mithilfe von System Center Operations Manager verbinden.
+## <a name="optionally-connect-servers-using-system-center-operations-manager"></a>Optional können Sie Server mithilfe von System Center Operations Manager verbinden.
 1. Wählen Sie in der Operations Manager-Konsole **Verwaltung**.
 2. Erweitern Sie den Knoten **Operational Insights**, und wählen Sie dann **Operational Insights-Verbindung**.
    
@@ -133,7 +137,7 @@ Weitere Informationen zum Verbinden von Agents mit der Operations Management Sui
 
 Weitere Informationen zum Verbinden von Operations Manager mit Operations Management Suite erhalten Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md).
 
-## <a name="optionally,-analyze-data-from-cloud-services-in-microsoft-azure"></a>Optional, können Sie Daten von Clouddiensten in Microsoft Azure analysieren.
+## <a name="optionally-analyze-data-from-cloud-services-in-microsoft-azure"></a>Optional, können Sie Daten von Clouddiensten in Microsoft Azure analysieren.
 Mit der Operations Management Suite können Sie schnell Ereignis- und IIS-Protokolle für Cloud-Dienste und virtuelle Computer durchsuchen, indem Sie die Diagnose für Azure Cloud-Dienste aktivieren. Weitere Erkenntnisse zu Ihren virtuellen Azure-Computern erhalten Sie auch durch Installieren von Microsoft Monitoring Agent. Weitere Informationen zum Konfigurieren der Azure-Umgebung für die Verwendung von Operations Management Suite erhalten Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](log-analytics-azure-storage.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -141,6 +145,9 @@ Mit der Operations Management Suite können Sie schnell Ereignis- und IIS-Protok
 * Vertrautmachen mit den [Suchprotokollen](log-analytics-log-searches.md) zur Anzeige von detaillierten Informationen, die von Lösungen gesammelt wurden.
 * Verwenden von [Dashboards](log-analytics-dashboards.md) zum Speichern und Anzeigen von eigenen benutzerdefinierten Suchvorgängen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

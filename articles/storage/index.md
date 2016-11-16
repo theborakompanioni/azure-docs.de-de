@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Storage Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 4d6fd9344eaee31de4ee1e614ae558ce159c9245
+ms.openlocfilehash: 34ead7be5278478047f8c6e56c56dfb977ca1d7c
 
-Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers.  It is highly scalable, elastic, globally accessible, and automatically load-balances your data based on traffic.  Azure Storage provides the following four services to meet application needs:  Blob storage, Table storage, Queue storage, and File storage.
+---
+#<a name="storage-documentation"></a>Speicher-Dokumentation
+
+Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen.  Die Lösung ist überaus skalierbar, elastisch, bietet einen globalen Zugriff und sorgt basierend auf dem Datenverkehr automatisch für einen Lastenausgleich.  Azure Storage umfasst vier Dienste zum Erfüllen von Anwendungsanforderungen: Blob Storage, Table Storage, Queue Storage und File Storage.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Azure Storage</h3>
+                        <h3>Informationen zu Azure Storage</h3>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Storage Video Library</h3>
+                        <h3>Videobibliothek zu Azure Storage</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +57,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Get started with Storage</h3>
+                        <h3>Erste Schritte mit Storage</h3>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@ Azure Storage is the cloud storage solution for modern applications that rely on
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Storage account</h3>
+                        <h3>Erstellen eines Speicherkontos</h3>
                     </div>
                 </div>
             </div>
@@ -82,23 +86,23 @@ Azure Storage is the cloud storage solution for modern applications that rely on
 
 ---
 
-##Reference
+##<a name="reference"></a>Referenz
 
-###PowerShell
+###<a name="powershell"></a>PowerShell
 [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-###Azure CLI 
-[Storage using Azure CLI Reference](/cli/azure/storage)
+###<a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle 
+[Referenz zu Storage mit Verwendung der Azure-Befehlszeilenschnittstelle](/cli/azure/storage)
 
-###Java 
-[Storage in Java Reference](/java/api/)
+###<a name="java"></a>Java 
+[Storage in der Java-Referenz](/java/api/)
 
-###.NET 
-[Storage Managed Reference API](https://msdn.microsoft.com/library/azure/mt347887) 
+###<a name="net"></a>.NET 
+[Verwaltete Referenz zur Storage-API](https://msdn.microsoft.com/library/azure/mt347887) 
 
-###REST 
-[Storage REST API Reference](/rest/api/storageservices) 
-[Storage Resource Provider REST API Reference](/rest/api/storagerp)  
+###<a name="rest"></a>REST 
+[Referenz zur Storage-REST-API](/rest/api/storageservices) 
+[Referenz zur REST-API für Speicherressourcenanbieter](/rest/api/storagerp)  
 
 
 
@@ -108,7 +112,12 @@ Azure Storage is the cloud storage solution for modern applications that rely on
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storage.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Storage Documentation
-        </div>
+Herunterladen der Storage-Dokumentation </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

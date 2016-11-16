@@ -5,8 +5,8 @@ services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: fb2b90c8-02b6-4700-929b-5de9a35d67cc
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 07/01/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+
 
 ---
-# <a name="get-started-with-node.js-web-apps-in-azure-app-service"></a>Erste Schritte mit Node.js-Web-Apps in Azure App Service
+# <a name="get-started-with-nodejs-web-apps-in-azure-app-service"></a>Erste Schritte mit Node.js-Web-Apps in Azure App Service
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js]-Anwendung erstellen und über eine Befehlszeilenumgebung wie „cmd.exe“ oder Bash für [Azure App Service] bereitstellen. Die Anweisungen in diesem Tutorial gelten für alle Betriebssysteme, unter denen Node.js ausgeführt werden kann.
@@ -35,7 +39,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js]-Anwendung erste
 * [Azure-Befehlszeilenschnittstelle]
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren] oder [Ihre Visual Studio-Abonnentenvorteile aktivieren].
 
-## <a name="create-and-deploy-a-simple-node.js-web-app"></a>Erstellen und Bereitstellen einer einfachen Node.js-Web-App
+## <a name="create-and-deploy-a-simple-nodejs-web-app"></a>Erstellen und Bereitstellen einer einfachen Node.js-Web-App
 1. Öffnen Sie das Befehlszeilenterminal Ihrer Wahl, und installieren Sie den [Express Generator für Yeoman].
    
         npm install -g generator-express
@@ -99,10 +103,10 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js]-Anwendung erste
    
     ![Beispiel für das Zugreifen auf die bereitgestellte Anwendung][deployed-express-app]
 
-## <a name="update-your-node.js-web-app"></a>Aktualisieren der Node.js-Web-App
+## <a name="update-your-nodejs-web-app"></a>Aktualisieren der Node.js-Web-App
 Führen Sie zum Durchführen von Updates für die Node.js-Web-App, die in App Service ausgeführt wird, einfach wie bei der ersten Bereitstellung der Web-App `git add`, `git commit` und `git push` aus.
 
-## <a name="how-app-service-deploys-your-node.js-app"></a>Bereitstellen der Node.js-App durch App Service
+## <a name="how-app-service-deploys-your-nodejs-app"></a>Bereitstellen der Node.js-App durch App Service
 Von Azure App Service wird [iisnode] verwendet, um Node.js-Apps auszuführen. Die Azure-Befehlszeilenschnittstelle und das Kudu-Modul (Git-Bereitstellung) arbeiten zusammen, damit Sie eine optimierte Benutzeroberfläche erhalten, wenn Sie Node.js-Apps über die Befehlszeile entwickeln und bereitstellen. 
 
 * `azure site create --git` erkennt das gängige Node.js-Muster von „server.js“ oder „app.js“ und erstellt in Ihrem Stammverzeichnis die Datei „iisnode.yml“. Sie können diese Datei verwenden, um iisnode anzupassen.
@@ -112,7 +116,7 @@ Von Azure App Service wird [iisnode] verwendet, um Node.js-Apps auszuführen. Di
   * Generieren Sie die Datei „Web.config“ für iisnode, in der auf Ihr Startskript in „package.json“ (z.B. „server.js“ oder „app.js“) verwiesen wird.
   * Passen Sie die Datei „Web.config“ an, um die App auf das Debuggen mit Node-Inspector vorzubereiten.
 
-## <a name="use-a-node.js-framework"></a>Verwenden eines Node.js-Frameworks
+## <a name="use-a-nodejs-framework"></a>Verwenden eines Node.js-Frameworks
 Wenn Sie bei der App-Entwicklung ein gängiges Node.js-Framework wie [Sails.js][SAILSJS] oder [MEAN.js][MEANJS] verwenden, können Sie sie für App Service bereitstellen. Die gängigen Node.js-Frameworks verfügen über bestimmte Eigenheiten, und ihre Paketabhängigkeiten werden ständig aktualisiert. In App Service stehen jedoch die Protokolle „stdout“ und „stderr“ zur Verfügung, damit Sie genau nachvollziehen können, was mit Ihrer App passiert, und entsprechende Änderungen vornehmen können. Weitere Informationen finden Sie unter [Abrufen von stdout- und stderr-Protokollen von iisnode](#iisnodelog).
 
 In den folgendes Tutorials wird gezeigt, wie Sie mit einem bestimmten Framework in App Service arbeiten:
@@ -123,7 +127,7 @@ In den folgendes Tutorials wird gezeigt, wie Sie mit einem bestimmten Framework 
 
 <a name="version"></a>
 
-## <a name="use-a-specific-node.js-engine"></a>Verwenden eines bestimmten Node.js-Moduls
+## <a name="use-a-specific-nodejs-engine"></a>Verwenden eines bestimmten Node.js-Moduls
 In einem typischen Workflow weisen Sie App Service an, ein bestimmtes Node.js-Modul zu verwenden, wie das sonst auch in „package.json“ der Fall ist.
 Beispiel:
 
@@ -182,7 +186,7 @@ Führen Sie zum Lesen von iisnode-Protokollen die folgenden Schritte aus.
    
     ![Untersuchen einer Protokolldatei von iisnode][iislog-kudu-console-read]
 
-## <a name="debug-your-app-with-node-inspector"></a>Debuggen der App mit Node-Inspector
+## <a name="debug-your-app-with-nodeinspector"></a>Debuggen der App mit Node-Inspector
 Wenn Sie Node-Inspector zum Debuggen Ihrer Node.js-Apps verwenden, können Sie die Anwendung für Ihre live geschaltete App Service-App verwenden. Node-Inspector ist in der iisnode-Installation für App Service vorinstalliert. Falls Sie die Bereitstellung über Git durchführen, enthält die automatisch generierte Datei „Web.config“ aus Kudu bereits die gesamte Konfiguration, die Sie zum Aktivieren von Node-Inspector benötigen.
 
 Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
@@ -243,6 +247,6 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,7 +1,7 @@
-Falls Sie dies nicht bereits getan haben, können Sie ein [Azure-Abonnement als kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) und die [Befehlszeilenschnittstelle](../articles/xplat-cli-install.md) erhalten, die [mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Sobald Sie dies getan haben, können Sie die folgenden Befehle ausführen, um eine Schnellerfassung für eine Skalierungsgruppe durchzuführen:
+Falls noch nicht erfolgt, können Sie eine [kostenlose Testversion eines Azure-Abonnements](https://azure.microsoft.com/pricing/free-trial/) und die [Azure-CLI](../articles/xplat-cli-install.md) erhalten, [die mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Sobald Sie dies getan haben, können Sie die folgenden Befehle ausführen, um eine Schnellerfassung für eine Skalierungsgruppe durchzuführen:
 
 ```bash
-# make sure we are in Resource Manager mode (https://azure.microsoft.com/documentation/articles/resource-manager-deployment-model/)
+# make sure we are in Resource Manager mode (https://azure.microsoft.com/en-us/documentation/articles/resource-manager-deployment-model/)
 azure config mode arm
 
 # quick-create a scale set
@@ -56,4 +56,6 @@ FQDN=${split_line[3]}
 ssh -p 50000 negat@$FQDN
 ```
 
-<!---HONumber=AcomDC_0413_2016-->
+<!--HONumber=Nov16_HO2-->
+
+

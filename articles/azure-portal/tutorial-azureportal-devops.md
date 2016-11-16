@@ -2,11 +2,11 @@
 title: 'Tutorial: DevOps mit dem Azure-Portal | Microsoft Docs'
 description: Es wird beschrieben, welche DevOps-Workflows im Azure-Portal enthalten sind.
 services: azure-portal
-documentationcenter: ''
+documentationcenter: 
 author: mlearned
 manager: douge
 editor: mlearned
-
+ms.assetid: 4f1c5bc1-c732-4d35-b5df-0fd68e547d38
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b3ef77cc1b3b13a1603f1ca7c6d4a000b69453e0
+
 
 ---
-# Tutorial: DevOps mit dem Azure-Portal
+# <a name="tutorial-devops-with-the-azure-portal"></a>Tutorial: DevOps mit dem Azure-Portal
 Die Azure-Plattform enthält viele flexible DevOps-Workflows. In diesem Tutorial erfahren Sie, wie Sie die Funktionen des Azure-Portals nutzen, um ausgeführte Anwendungen zu entwickeln, zu testen, bereitzustellen, die Problembehandlung durchzuführen, zu überwachen und zu verwalten. In diesem Tutorial geht es vor allem um Folgendes:
 
 1. Erstellen einer Web-App und Aktivieren von Continuous Deployment
@@ -24,21 +28,21 @@ Die Azure-Plattform enthält viele flexible DevOps-Workflows. In diesem Tutorial
 3. Überwachen und Durchführen der Problembehandlung für eine App
 4. Allgemeine Aufgaben der Anwendungsverwaltung
 
-## Erstellen einer Web-App und Aktivieren von Continuous Deployment
+## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Erstellen einer Web-App und Aktivieren von Continuous Deployment
 Erstellen Sie eine Web-App mit [Azure App Service](https://azure.microsoft.com/services/app-service/), die Sie für dieses Tutorial verwenden können. Zuerst ermöglichen Sie den Continuous Deployment-Vorgang aus Ihrem Quellcode-Repository in die aktive Azure-Umgebung.
 
 1. Anmelden am Azure-Portal
-2. Wählen Sie **App Services** &gt; **Symbol hinzufügen**, und geben Sie einen Namen ein. Wählen Sie Ihr Abonnement aus, und erstellen Sie eine neue Ressourcengruppe, die als Container für den Dienst dienen kann.
+2. Wählen Sie **App Services** &gt; **Symbol hinzufügen** aus, und geben Sie einen Namen ein. Wählen Sie dann Ihr Abonnement aus, und erstellen Sie eine neue Ressourcengruppe, die als Container für den Dienst dienen soll.
    
-   Mit Ressourcengruppen können Sie verschiedene Aspekte der Lösung, z.B. Abrechnung, Bereitstellungen und Überwachung, mit [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-overview/) als einzelne Gruppe verwalten.
+   Mit Ressourcengruppen können Sie verschiedene Aspekte der Lösung, z.B. Abrechnung, Bereitstellungen und Überwachung, mit [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) als einzelne Gruppe verwalten.
    
    ![Bild1][image1]
 3. Der App-Dienst wird nach kurzer Zeit erstellt. Sehen Sie sich die verschiedenen Menüoptionen für den Dienst im Portal an.
    
-   ![Bild2][image2]
+   ![Bild2][image2]    
 4. Klicken Sie auf die URL. Beachten Sie die vielen unterschiedlichen Optionen für Tools und Repositorys. Sie können auch die gewünschten Sprachen und Frameworks verwenden, z.B. .NET, Java und Ruby.
    
-   ![Bild3][image3]
+   ![Bild3][image3]    
 5. Mit dem Azure-Portal ist Continuous Deployment ein einfacher Prozess, der nur einige einfache Schritte umfasst. Wählen Sie im Azure-Portal über das Symbol für den gerade erstellten App-Dienst die Option „Einstellungen“.
    
    ![Bild4][image4]
@@ -67,7 +71,7 @@ Erstellen Sie eine Web-App mit [Azure App Service](https://azure.microsoft.com/s
 12. Nachdem Sie die Änderungen für das Repository übernommen haben, sehen Sie im Benachrichtigungsbereich des Portals, dass eine neue Bereitstellung initiiert wird. Klicken Sie auf „Synchronisieren“, wenn nach der Übernahme für das Repository nicht schnell Änderungen zu erkennen sind.
     
     ![Bild12][image12]
-13. Wenn Sie an diesem Punkt versuchen, die Seite für den App-Dienst zu laden, erhalten Sie ggf. den Fehler 403. Bei diesem Beispiel liegt dies daran, dass kein typisches Standarddokument für die Seite eingerichtet wurde, z.B. eine Datei wie „index.htm“ oder „default.html“. Sie können den Fehler mit den Tools im Azure-Portal schnell beheben. Wählen Sie im Azure-Portal die Option „Einstellungen“ &gt; „Anwendungseinstellungen“.
+13. Wenn Sie an diesem Punkt versuchen, die Seite für den App-Dienst zu laden, erhalten Sie ggf. den Fehler 403. Bei diesem Beispiel liegt dies daran, dass kein typisches Standarddokument für die Seite eingerichtet wurde, z.B. eine Datei wie „index.htm“ oder „default.html“. Sie können den Fehler mit den Tools im Azure-Portal schnell beheben.  Wählen Sie im Azure-Portal „Einstellungen“ &gt; „Anwendungseinstellungen“ aus.
     
      ![Bild13][image13]
 14. Das Blatt mit den Anwendungseinstellungen wird geöffnet. Geben Sie den Namen der Seite „SamplePage.html“ ein, und klicken Sie auf „Speichern“. Nehmen Sie sich kurz Zeit, um sich die anderen Einstellungen anzusehen.
@@ -79,7 +83,7 @@ Erstellen Sie eine Web-App mit [Azure App Service](https://azure.microsoft.com/s
     
     Die Aktivierung von Continuous Deployment im Azure-Portal ist ein einfacher Vorgang. Sie können auch komplexere Releasepipelines erstellen und viele andere Verfahren mit vorhandenen Systemen für Quellcodeverwaltung und Continuous Integration für die Bereitstellung unter Azure verwenden, z.B. die Nutzung von automatisierten Build- und Releaseverwaltungssystemen.
 
-## Entwickeln und Testen einer App
+## <a name="develop-and-test-an-app"></a>Entwickeln und Testen einer App
 Nehmen Sie als Nächstes einige Änderungen an der Codebasis vor, und stellen Sie diese Änderungen in kurzer Zeit bereit. Außerdem richten Sie Leistungstests für die Web-App ein.
 
 1. Wählen Sie im Azure-Portal im Navigationsbereich die Option „App Services“, und suchen Sie nach Ihrem App-Dienst.
@@ -120,7 +124,7 @@ Nehmen Sie als Nächstes einige Änderungen an der Codebasis vor, und stellen Si
 12. Wechseln Sie zurück zum Blatt „Tools“, und klicken Sie unter der Kategorie „Entwickeln“ auf „Leistungstest“.
     
     ![Bild28][image28]
-13. Sie müssen ein Team Services-Konto festlegen. Weitere Details finden Sie in diesem [Artikel](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services) mit Informationen zum Erstellen eines Team Services-Kontos.
+13. Sie müssen ein Team Services-Konto festlegen. Weitere Details finden Sie in diesem [Artikel](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
 14. Klicken Sie auf „Neu“, um einen Leistungstest zu erstellen.
     
     ![Bild29][image29]
@@ -145,7 +149,7 @@ Nehmen Sie als Nächstes einige Änderungen an der Codebasis vor, und stellen Si
     
     ![Bild36][image36]
 
-## Überwachen und Durchführen der Problembehandlung für eine App
+## <a name="monitoring-and-troubleshooting-an-app"></a>Überwachen und Durchführen der Problembehandlung für eine App
 Azure verfügt über viele Funktionen für die Überwachung und Problembehandlung laufender Anwendungen.
 
 1. Wählen Sie im Azure-Portal für unsere Web-App die Option „Tools“.
@@ -208,7 +212,7 @@ Azure verfügt über viele Funktionen für die Überwachung und Problembehandlun
     
     Mit dem Azure-Portal können leistungsstarke und vertraute Tools bereitgestellt werden, die Ihnen das Überwachen und das Durchführen der Problembehandlung für unsere laufenden Anwendungen erleichtern. Außerdem können Sie schnell Maßnahmen ergreifen, indem Sie Aufgaben wie das Recyceln von Prozessen, Aktivieren und Deaktivieren verschiedener Datenerfassungen und sogar das Integrieren in den professionellen Microsoft Support durchführen können.
 
-## Allgemeine Anwendungsverwaltung
+## <a name="general-application-management"></a>Allgemeine Anwendungsverwaltung
 Beim Verwalten von Anwendungen müssen Sie häufig viele verschiedene Aktivitäten durchführen, z.B. das Konfigurieren von Sicherungsstrategien, Implementieren und Verwalten von Identitätsanbietern und Konfigurieren der rollenbasierten Zugriffssteuerung. Wie bei anderen DevOps-Oberflächen auch, werden diese Aufgaben mit der Azure-Plattform direkt in das Portal integriert.
 
 1. Sie müssen Sicherungen konfigurieren, um sicherzustellen, dass die Web-App vor Datenverlust geschützt ist. Navigieren Sie zum Bereich „Einstellungen“ für die Web-App.
@@ -254,81 +258,85 @@ Beim Verwalten von Anwendungen müssen Sie häufig viele verschiedene Aktivität
     
      ![Bild69][image69]
 
-## Zusammenfassung
+## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial wurde ein Teil der Leistungsstärke der Azure-Plattform veranschaulicht, indem für eine Web-App schnell Continuous Deployment aktiviert wurde, verschiedene Entwicklungs- und Testaktivitäten durchgeführt wurden, eine Live-App überwacht und die Problembehandlung dafür durchgeführt wurde und zuletzt die Verwaltung von wichtigen Strategien beschrieben wurde, z.B. Notfallwiederherstellung, Identität und rollenbasierte Zugriffssteuerung. Die Azure-Plattform ermöglicht eine integrierte Oberfläche für diese DevOps-Workflows, und Sie können effizient arbeiten, da Sie den jeweiligen Kontext nicht verlassen müssen.
 
-## Nächste Schritte
-* Azure Resource Manager ist für die Aktivierung von DevOps auf der Azure-Plattform wichtig. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md).
-* Weitere Informationen zur Azure App Service-Bereitstellung finden Sie unter [Bereitstellen der App in Azure App Service](../app-service-web/web-sites-deploy.md).
+## <a name="next-steps"></a>Nächste Schritte
+* Azure Resource Manager ist für die Aktivierung von DevOps auf der Azure-Plattform wichtig.  Weitere Informationen finden Sie unter [Azure Resource Manager – Übersicht](../azure-resource-manager/resource-group-overview.md).
+* Weitere Informationen zur Azure App Service-Bereitstellung finden Sie unter [Bereitstellen der App in Azure App Service](../app-service-web/web-sites-deploy.md)
 
-[image1]: ./media/tutorial-azureportal-devops/image1.png
-[image2]: ./media/tutorial-azureportal-devops/image2.png
-[image3]: ./media/tutorial-azureportal-devops/image3.png
-[image4]: ./media/tutorial-azureportal-devops/image4.png
-[image5]: ./media/tutorial-azureportal-devops/image5.png
-[image6]: ./media/tutorial-azureportal-devops/image6.png
-[image7]: ./media/tutorial-azureportal-devops/image7.png
-[image8]: ./media/tutorial-azureportal-devops/image8.png
-[image9]: ./media/tutorial-azureportal-devops/image9.png
-[image10]: ./media/tutorial-azureportal-devops/image10.png
-[image11]: ./media/tutorial-azureportal-devops/image11.png
-[image12]: ./media/tutorial-azureportal-devops/image12.png
-[image13]: ./media/tutorial-azureportal-devops/image13.png
-[image14]: ./media/tutorial-azureportal-devops/image14.png
-[image15]: ./media/tutorial-azureportal-devops/image15.png
-[image16]: ./media/tutorial-azureportal-devops/image16.png
-[image17]: ./media/tutorial-azureportal-devops/image17.png
-[image18]: ./media/tutorial-azureportal-devops/image18.png
-[image19]: ./media/tutorial-azureportal-devops/image19.png
-[image20]: ./media/tutorial-azureportal-devops/image20.png
-[image21]: ./media/tutorial-azureportal-devops/image21.png
-[image22]: ./media/tutorial-azureportal-devops/image22.png
-[image23]: ./media/tutorial-azureportal-devops/image23.png
-[image24]: ./media/tutorial-azureportal-devops/image24.png
-[image25]: ./media/tutorial-azureportal-devops/image25.png
-[image26]: ./media/tutorial-azureportal-devops/image26.png
-[image27]: ./media/tutorial-azureportal-devops/image27.png
-[image28]: ./media/tutorial-azureportal-devops/image28.png
-[image29]: ./media/tutorial-azureportal-devops/image29.png
-[image30]: ./media/tutorial-azureportal-devops/image30.png
-[image31]: ./media/tutorial-azureportal-devops/image31.png
-[image32]: ./media/tutorial-azureportal-devops/image32.png
-[image33]: ./media/tutorial-azureportal-devops/image33.png
-[image34]: ./media/tutorial-azureportal-devops/image34.png
-[image35]: ./media/tutorial-azureportal-devops/image35.png
-[image36]: ./media/tutorial-azureportal-devops/image36.png
-[image37]: ./media/tutorial-azureportal-devops/image37.png
-[image38]: ./media/tutorial-azureportal-devops/image38.png
-[image39]: ./media/tutorial-azureportal-devops/image39.png
-[image40]: ./media/tutorial-azureportal-devops/image40.png
-[image41]: ./media/tutorial-azureportal-devops/image41.png
-[image42]: ./media/tutorial-azureportal-devops/image42.png
-[image43]: ./media/tutorial-azureportal-devops/image43.png
-[image44]: ./media/tutorial-azureportal-devops/image44.png
-[image45]: ./media/tutorial-azureportal-devops/image45.png
-[image46]: ./media/tutorial-azureportal-devops/image46.png
-[image47]: ./media/tutorial-azureportal-devops/image47.png
-[image48]: ./media/tutorial-azureportal-devops/image48.png
-[image49]: ./media/tutorial-azureportal-devops/image49.png
-[image50]: ./media/tutorial-azureportal-devops/image50.png
-[image51]: ./media/tutorial-azureportal-devops/image51.png
-[image52]: ./media/tutorial-azureportal-devops/image52.png
-[image53]: ./media/tutorial-azureportal-devops/image53.png
-[image54]: ./media/tutorial-azureportal-devops/image54.png
-[image55]: ./media/tutorial-azureportal-devops/image55.png
-[image56]: ./media/tutorial-azureportal-devops/image56.png
-[image57]: ./media/tutorial-azureportal-devops/image57.png
-[image58]: ./media/tutorial-azureportal-devops/image58.png
-[image59]: ./media/tutorial-azureportal-devops/image59.png
-[image60]: ./media/tutorial-azureportal-devops/image60.png
-[image61]: ./media/tutorial-azureportal-devops/image61.png
-[image62]: ./media/tutorial-azureportal-devops/image62.png
-[image63]: ./media/tutorial-azureportal-devops/image63.png
-[image64]: ./media/tutorial-azureportal-devops/image64.png
-[image65]: ./media/tutorial-azureportal-devops/image65.png
-[image66]: ./media/tutorial-azureportal-devops/image66.png
-[image67]: ./media/tutorial-azureportal-devops/image67.png
-[image68]: ./media/tutorial-azureportal-devops/image68.png
-[image69]: ./media/tutorial-azureportal-devops/image69.png
+[Bild1]: ./media/tutorial-azureportal-devops/image1.png
+[Abbildung 2]: ./media/tutorial-azureportal-devops/image2.png
+[Abbildung 3]: ./media/tutorial-azureportal-devops/image3.png
+[Abbildung 4]: ./media/tutorial-azureportal-devops/image4.png
+[Abbildung 5]: ./media/tutorial-azureportal-devops/image5.png
+[Abbildung 6]: ./media/tutorial-azureportal-devops/image6.png
+[Bild7]: ./media/tutorial-azureportal-devops/image7.png
+[Bild8]: ./media/tutorial-azureportal-devops/image8.png
+[Bild9]: ./media/tutorial-azureportal-devops/image9.png
+[Bild10]: ./media/tutorial-azureportal-devops/image10.png
+[Bild11]: ./media/tutorial-azureportal-devops/image11.png
+[Bild12]: ./media/tutorial-azureportal-devops/image12.png
+[Bild13]: ./media/tutorial-azureportal-devops/image13.png
+[Bild14]: ./media/tutorial-azureportal-devops/image14.png
+[Bild15]: ./media/tutorial-azureportal-devops/image15.png
+[Bild16]: ./media/tutorial-azureportal-devops/image16.png
+[Bild17]: ./media/tutorial-azureportal-devops/image17.png
+[Bild18]: ./media/tutorial-azureportal-devops/image18.png
+[Bild19]: ./media/tutorial-azureportal-devops/image19.png
+[Bild20]: ./media/tutorial-azureportal-devops/image20.png
+[Bild21]: ./media/tutorial-azureportal-devops/image21.png
+[Bild22]: ./media/tutorial-azureportal-devops/image22.png
+[Bild23]: ./media/tutorial-azureportal-devops/image23.png
+[Bild24]: ./media/tutorial-azureportal-devops/image24.png
+[Bild25]: ./media/tutorial-azureportal-devops/image25.png
+[Bild26]: ./media/tutorial-azureportal-devops/image26.png
+[Bild27]: ./media/tutorial-azureportal-devops/image27.png
+[Bild28]: ./media/tutorial-azureportal-devops/image28.png
+[Bild29]: ./media/tutorial-azureportal-devops/image29.png
+[Bild30]: ./media/tutorial-azureportal-devops/image30.png
+[Bild31]: ./media/tutorial-azureportal-devops/image31.png
+[Bild32]: ./media/tutorial-azureportal-devops/image32.png
+[Bild33]: ./media/tutorial-azureportal-devops/image33.png
+[Bild34]: ./media/tutorial-azureportal-devops/image34.png
+[Bild35]: ./media/tutorial-azureportal-devops/image35.png
+[Bild36]: ./media/tutorial-azureportal-devops/image36.png
+[Bild37]: ./media/tutorial-azureportal-devops/image37.png
+[Bild38]: ./media/tutorial-azureportal-devops/image38.png
+[Bild39]: ./media/tutorial-azureportal-devops/image39.png
+[Bild40]: ./media/tutorial-azureportal-devops/image40.png
+[Bild41]: ./media/tutorial-azureportal-devops/image41.png
+[Bild42]: ./media/tutorial-azureportal-devops/image42.png
+[Bild43]: ./media/tutorial-azureportal-devops/image43.png
+[Bild44]: ./media/tutorial-azureportal-devops/image44.png
+[Bild45]: ./media/tutorial-azureportal-devops/image45.png
+[Bild46]: ./media/tutorial-azureportal-devops/image46.png
+[Bild47]: ./media/tutorial-azureportal-devops/image47.png
+[Bild48]: ./media/tutorial-azureportal-devops/image48.png
+[Bild49]: ./media/tutorial-azureportal-devops/image49.png
+[Bild50]: ./media/tutorial-azureportal-devops/image50.png
+[Bild51]: ./media/tutorial-azureportal-devops/image51.png
+[Bild52]: ./media/tutorial-azureportal-devops/image52.png
+[Bild53]: ./media/tutorial-azureportal-devops/image53.png
+[Bild54]: ./media/tutorial-azureportal-devops/image54.png
+[Bild55]: ./media/tutorial-azureportal-devops/image55.png
+[Bild56]: ./media/tutorial-azureportal-devops/image56.png
+[Bild57]: ./media/tutorial-azureportal-devops/image57.png
+[Bild58]: ./media/tutorial-azureportal-devops/image58.png
+[Bild59]: ./media/tutorial-azureportal-devops/image59.png
+[Bild60]: ./media/tutorial-azureportal-devops/image60.png
+[Bild61]: ./media/tutorial-azureportal-devops/image61.png
+[Bild62]: ./media/tutorial-azureportal-devops/image62.png
+[Bild63]: ./media/tutorial-azureportal-devops/image63.png
+[Bild64]: ./media/tutorial-azureportal-devops/image64.png
+[Bild65]: ./media/tutorial-azureportal-devops/image65.png
+[Bild66]: ./media/tutorial-azureportal-devops/image66.png
+[Bild67]: ./media/tutorial-azureportal-devops/image67.png
+[Bild68]: ./media/tutorial-azureportal-devops/image68.png
+[Bild69]: ./media/tutorial-azureportal-devops/image69.png
 
-<!---HONumber=AcomDC_0615_2016--->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

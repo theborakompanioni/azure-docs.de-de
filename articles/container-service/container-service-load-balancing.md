@@ -1,14 +1,14 @@
 ---
-title: Durchführen des Lastenausgleichs für Container in einem Azure Container Service-Cluster | Microsoft Docs
-description: Es wird beschrieben, wie Sie den Lastenausgleich für Container in einem Azure Container Service-Cluster durchführen.
+title: "Durchführen des Lastenausgleichs für Container in einem Azure Container Service-Cluster | Microsoft Docs"
+description: "Es wird beschrieben, wie Sie den Lastenausgleich für Container in einem Azure Container Service-Cluster durchführen."
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
 keywords: Container, Microservices, DC/OS, Azure
-
+ms.assetid: f0ab5645-2636-42de-b23b-4c3a7e3aa8bb
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,6 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2016
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: cf255856302ad5bdb1f6022d231833610acbcac5
+
 
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-cluster"></a>Durchführen des Lastenausgleichs für Container in einem Azure Container Service-Cluster
@@ -35,14 +39,14 @@ Marathon Load Balancer konfiguriert sich basierend auf den von Ihnen bereitgeste
 
 Zum Installieren von Marathon Load Balancer können Sie entweder die DC/OS-Webbenutzeroberfläche oder die Befehlszeile verwenden.
 
-### <a name="install-marathon-lb-using-dc/os-web-ui"></a>Installieren von Marathon-LB über die DC/OS-Webbenutzeroberfläche
+### <a name="install-marathonlb-using-dcos-web-ui"></a>Installieren von Marathon-LB über die DC/OS-Webbenutzeroberfläche
 1. Klicken Sie auf „Universe“.
 2. Suchen Sie nach „Marathon-LB“.
 3. Klicken Sie auf „Install“ (Installieren).
 
 ![„marathon-lb“ über die DC/OS-Webschnittstelle installieren](./media/dcos/marathon-lb-install.png)
 
-### <a name="install-marathon-lb-using-the-dc/os-cli"></a>Installieren von Marathon-LB mit der DC/OS-Befehlszeilenschnittstelle
+### <a name="install-marathonlb-using-the-dcos-cli"></a>Installieren von Marathon-LB mit der DC/OS-Befehlszeilenschnittstelle
 Nachdem Sie die DC/OS-Befehlszeilenschnittstelle installiert und sichergestellt haben, dass Sie eine Verbindung mit Ihrem Cluster herstellen können, können Sie auf Ihrem Clientcomputer den folgenden Befehl ausführen:
 
 ```bash
@@ -97,13 +101,13 @@ Da wir jetzt über das „marathon-lb“-Paket verfügen, können wir einen Anwe
 
 Beachten Sie, dass Marathon die Bereitstellung standardmäßig im privaten Cluster durchführt. Dies bedeutet, dass die obige Bereitstellung nur über den Lastenausgleich zugänglich ist. Dies ist in der Regel das erwünschte Verhalten.
 
-### <a name="deploy-using-the-dc/os-web-ui"></a>Bereitstellen mit der DC/OS-Webbenutzeroberfläche
+### <a name="deploy-using-the-dcos-web-ui"></a>Bereitstellen mit der DC/OS-Webbenutzeroberfläche
 1. Besuchen Sie die Marathon-Seite unter „http://localhost/marathon“ (nach dem Einrichten des [SSH-Tunnels](container-service-connect.md), und klicken Sie auf `Create Appliction`.
 2. Klicken Sie im Dialogfeld `New Application` oben rechts auf `JSON Mode`.
 3. Fügen Sie den obigen JSON-Code in den Editor ein.
 4. Klicken Sie auf `Create Appliction`.
 
-### <a name="deploy-using-the-dc/os-cli"></a>Bereitstellen mit der DC/OS-Befehlszeilenschnittstelle
+### <a name="deploy-using-the-dcos-cli"></a>Bereitstellen mit der DC/OS-Befehlszeilenschnittstelle
 Um die Anwendung mit der DC/OS-Befehlszeilenschnittstelle bereitzustellen, kopieren Sie einfach den obigen JSON-Code in eine Datei mit dem Namen `hello-web.json` und führen Folgendes aus:
 
 ```bash
@@ -129,6 +133,9 @@ Azure lb:8080 -> marathon-lb:1002 -> mycontainer2:33432
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu [marathon-lb](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/)finden Sie in der DC/OS-Dokumentation.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

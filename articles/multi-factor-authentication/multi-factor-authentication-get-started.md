@@ -1,53 +1,58 @@
 ---
-title: Azure Multi-Factor Authentication – Erste Schritte
-description: Entscheiden Sie sich für die am besten geeignete Multi-Factor Authentication-Sicherheitslösung, indem Sie sich fragen, was Sie sichern möchten und wo sich Ihre Benutzer befinden. Wählen Sie dann zwischen Cloud, MFA-Server und AD FS aus.
+title: Vergleich von Azure MFA-Cloud und -Server | Microsoft Docs
+description: "Entscheiden Sie sich für die am besten geeignete Multi-Factor Authentication-Sicherheitslösung, indem Sie sich fragen, was Sie sichern möchten und wo sich Ihre Benutzer befinden.  Wählen Sie dann zwischen Cloud, MFA-Server und AD FS aus."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtland
-
+editor: yossib
+ms.assetid: ec2270ea-13d7-4ebc-8a00-fa75ce6c746d
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
+ms.date: 10/14/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 72347099d980f2ca73f39f984787197e1f87e45a
+
 
 ---
-# Auswählen der richtigen mehrstufigen Sicherheitslösung
-Da es mehrere Arten von Azure Multi-Factor Authentication gibt, müssen Sie einige Fragen klären, um herauszufinden, welche Version für Sie die richtige ist. Fragen:
+# <a name="choose-the-azure-multifactor-authentication-solution-for-you"></a>Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung
+Da es mehrere Arten von Azure Multi-Factor Authentication (MFA) gibt, müssen Sie einige Fragen klären, um herauszufinden, welche Version für Sie die richtige ist.  Diese Fragen sollten Sie beantworten:
 
-* <a href="#1">Was möchte ich sichern?</a>
-* [Wo befinden sich die Benutzer?](#wo-befinden-sich-die-benutzer)
+* [Was möchte ich sichern?](#what-am-i-trying-to-secure)
+* [Wo befinden sich die Benutzer?](#where-are-the-users-located)
+* [Welche Features benötige ich?](#what-featured-do-i-need)
 
 In den folgenden Abschnitten erhalten Sie Informationen, die Ihnen helfen, die Antworten auf diese Fragen zu geben.
 
-<h2 id="1">Was möchte ich sichern?</h2>
-
-Um die richtige Multi-Factor Authentication-Lösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten. Handelt es sich um eine Anwendung in Azure? Oder ist Sie es z. B. ein RAS-System? Die Antwort auf die Frage, wo die mehrstufige Authentifizierung aktiviert werden muss, richtet sich danach, was Sie sichern möchten.
+## <a name="what-am-i-trying-to-secure"></a>Was möchte ich sichern?
+Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten.  Handelt es sich um eine Anwendung in Azure?  Oder ist es ein RAS-System?  Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.  
 
 | Was möchte ich sichern? | Multi-Factor Authentication in der Cloud | Multi-Factor Authentication-Server |
 | --- |:---:|:---:|
-| Erstanbieter-Microsoft-Apps |* |* |
-| SaaS-Apps im Anwendungskatalog |* |* |
-| Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |* |* |
-| Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen | |* |
-| Remotezugriff, z. B. VPN, RDG | |* |
+| Microsoft-Apps |● |● |
+| SaaS-Apps im Appkatalog |● |● |
+| Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |● |● |
+| Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen | |● |
+| Remotezugriff, z. B. VPN, RDG | |● |
 
-## Wo befinden sich die Benutzer?
-Außerdem hängt die Entscheidung für die richtige Lösung – Multi-Factor Authentication in der Cloud oder lokal über den MFA-Server – davon ab, wo sich die Benutzer befinden.
+## <a name="where-are-the-users-located"></a>Wo befinden sich die Benutzer?
+Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud oder lokal über den MFA-Server – davon ab, wo sich die Benutzer befinden.
 
-| Benutzerstandort | Lösung |
-| --- |:--- |
-| Azure Active Directory |Multi-Factor Authentication in der Cloud |
-| Azure AD und lokales AD über einen Verbund mit AD FS |Die verfügbaren Optionen sind MFA in der Cloud und MFA-Server. |
-| Azure AD und lokales AD mit DirSync, Azure AD Sync, Azure AD Connect ohne Kennwortsynchronisierung |Die verfügbaren Optionen sind MFA in der Cloud und MFA-Server. |
-| Azure AD und lokales AD mit DirSync, Azure AD Sync, Azure AD Connect mit Kennwortsynchronisierung |Multi-Factor Authentication in der Cloud |
-| Lokales Active Directory |Multi-Factor Authentication-Server |
+| Benutzerstandort | Multi-Factor Authentication in der Cloud | Multi-Factor Authentication-Server |
+| --- |:---:|:---:|
+| Azure Active Directory |● | |
+| Azure AD und lokales AD über einen Verbund mit AD FS |● |● |
+| Azure AD und lokales AD mit DirSync, Azure AD Sync, Azure AD Connect ohne Kennwortsynchronisierung |● |● |
+| Azure AD und lokales AD mit DirSync, Azure AD Sync, Azure AD Connect mit Kennwortsynchronisierung |● | |
+| Lokales Active Directory | |● |
 
-In der folgenden Tabelle finden Sie einen Vergleich der Funktionen von Multi-Factor Authentication in der Cloud und dem Multi-Factor Authentication-Server.
+## <a name="what-features-do-i-need"></a>Welche Features benötige ich?
+In der folgenden Tabelle finden Sie einen Vergleich der Features von Multi-Factor Authentication in der Cloud und mit einem Multi-Factor Authentication-Server.
 
 | Multi-Factor Authentication in der Cloud | Multi-Factor Authentication-Server |
 | --- |:---:|:---:|
@@ -72,6 +77,16 @@ In der folgenden Tabelle finden Sie einen Vergleich der Funktionen von Multi-Fac
 
 Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder den MFA-Server lokal verwenden möchten. Jetzt können Sie mit dem Einrichten und Verwenden von Azure Multi-Factor Authentication beginnen. **Wählen Sie das Symbol aus, das Ihrem Szenario entspricht.**
 
-<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
+<center>
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</center>
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

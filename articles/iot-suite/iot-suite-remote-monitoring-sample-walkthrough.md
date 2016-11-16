@@ -1,13 +1,13 @@
 ---
-title: Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung | Microsoft Docs
-description: Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur.
-services: ''
+title: "Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung | Microsoft Docs"
+description: "Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
+services: 
 suite: iot-suite
-documentationcenter: ''
+documentationcenter: 
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: get-started-article
@@ -15,35 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6338750446b33269614c404ecaad8f8192bf1ab2
+
 
 ---
-# Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung
-## Einführung
+# <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung
+## <a name="introduction"></a>Einführung
 Die [vorkonfigurierte Lösung][lnk-preconfigured-solutions] für die IoT Suite-Remoteüberwachung ist eine Implementierung einer End-to-End-Überwachungslösung für mehrere Computer, die an Remotestandorten ausgeführt werden. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Ausgangspunkt für Ihre Implementierung verwenden. Sie können die Lösung [anpassen][lnk-customize], um Ihre eigenen speziellen Geschäftsanforderungen zu erfüllen.
 
 In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüberwachung beschrieben, um die Funktionsweise zu verdeutlichen. Dieses Wissen ist für folgende Zwecke hilfreich:
 
 * Behandeln von Problemen in der Lösung
-* Planen der Lösungsanpassung zur Erfüllung besonderer Anforderungen
+* Planen der Lösungsanpassung zur Erfüllung besonderer Anforderungen 
 * Entwerfen einer eigenen IoT-Lösung mit Verwendung von Azure-Diensten
 
-## Logische Architektur
+## <a name="logical-architecture"></a>Logische Architektur
 Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten Lösung:
 
 ![Logische Architektur](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
-## Simulierte Geräte
-In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Wenn Sie die vorkonfigurierte Lösung bereitstellen, werden automatisch auch vier simulierte Geräte bereitgestellt, die in einem [Azure WebJob][lnk-webjobs] ausgeführt werden. Die simulierten Geräte erleichtern Ihnen das Untersuchen des Verhaltens einer Lösung, ohne dass Sie physische Geräte bereitstellen müssen. Informationen zum Bereitstellen eines echten physischen Geräts finden Sie im Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm].
+## <a name="simulated-devices"></a>Simulierte Geräte
+In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Wenn Sie die vorkonfigurierte Lösung bereitstellen, werden automatisch auch vier simulierte Geräte bereitgestellt, die in einem [Azure WebJob][lnk-webjobs] ausgeführt werden. Die simulierten Geräte erleichtern Ihnen das Untersuchen des Verhaltens einer Lösung, ohne dass Sie physische Geräte bereitstellen müssen. Informationen zum Bereitstellen eines echten physischen Geräts finden Sie im Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm].
 
 Jedes simulierte Gerät kann die folgenden Nachrichtentypen an den IoT Hub senden:
 
 | Nachricht | Beschreibung |
 | --- | --- |
 | Starten |Wenn das Gerät gestartet wird, sendet es eine Nachricht vom Typ **Geräteinformationen** (device-info) mit Daten über sich selbst an das Back-End. Hierzu gehören die Geräte-ID, Gerätemetadaten, eine Liste mit Befehlen, die das Gerät unterstützt, und die aktuelle Konfiguration des Geräts. |
-| Anwesenheit |Ein Gerät sendet regelmäßig eine **Anwesenheitsnachricht**, um zu melden, ob das Gerät das Vorhandensein („Anwesenheit“) eines Sensors erkennen kann. |
-| Telemetrie |Ein Gerät sendet in regelmäßigen Abständen eine **Telemetrienachricht**, mit der simulierte Werte für die Temperatur und Luftfeuchtigkeit gemeldet werden, die über die simulierten Sensoren des Geräts erfasst werden. |
+| Anwesenheit |Ein Gerät sendet regelmäßig eine **Anwesenheitsnachricht** , um zu melden, ob das Gerät das Vorhandensein („Anwesenheit“) eines Sensors erkennen kann. |
+| Telemetrie |Ein Gerät sendet in regelmäßigen Abständen eine **Telemetrienachricht** , mit der simulierte Werte für die Temperatur und Luftfeuchtigkeit gemeldet werden, die über die simulierten Sensoren des Geräts erfasst werden. |
 
-Die simulierten Geräte senden die folgenden Geräteeigenschaften als Nachricht vom Typ **Geräteinformationen**:
+Die simulierten Geräte senden die folgenden Geräteeigenschaften als Nachricht vom Typ **Geräteinformationen** :
 
 | Eigenschaft | Zweck |
 | --- | --- |
@@ -61,7 +65,7 @@ Die simulierten Geräte senden die folgenden Geräteeigenschaften als Nachricht 
 | Breitengrad |Breitengrad des Standorts des Geräts |
 | Längengrad |Längengrad des Standorts des Geräts |
 
-Der Simulator füllt diese Eigenschaften in simulierten Geräten mit Beispielwerten. Jedes Mal, wenn der Simulator ein simuliertes Gerät initialisiert, sendet das Gerät vordefinierte Metadaten an IoT Hub. Beachten Sie, wie hierbei alle Aktualisierungen von Metadaten, die im Geräteportal vorgenommen werden, überschrieben werden.
+Der Simulator füllt diese Eigenschaften in simulierten Geräten mit Beispielwerten.  Jedes Mal, wenn der Simulator ein simuliertes Gerät initialisiert, sendet das Gerät vordefinierte Metadaten an IoT Hub. Beachten Sie, wie hierbei alle Aktualisierungen von Metadaten, die im Geräteportal vorgenommen werden, überschrieben werden.
 
 Außerdem können die simulierten Geräte auch die folgenden Befehle verarbeiten, die vom Lösungsdashboard über den IoT Hub gesendet werden:
 
@@ -76,13 +80,13 @@ Außerdem können die simulierten Geräte auch die folgenden Befehle verarbeiten
 
 Die Bestätigung des Gerätebefehls für das Back-End der Lösung wird über den IoT Hub bereitgestellt.
 
-## IoT Hub
+## <a name="iot-hub"></a>IoT Hub
 Der [IoT Hub][lnk-iothub] erfasst Daten, die von den Geräten in die Cloud gesendet werden, und stellt sie für die Azure Stream Analytics-Aufträge (ASA) zur Verfügung. Der IoT Hub sendet im Namen des Geräteportals auch Befehle an Ihre Geräte. Für jeden ASA-Datenstromauftrag wird eine separate IoT Hub-Consumergruppe verwendet, um den Nachrichtendatenstrom von Ihren Geräten zu lesen.
 
-## Azure Stream Analytics
-In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] \(ASA) Gerätenachrichten, die über den IoT Hub eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
+## <a name="azure-stream-analytics"></a>Azure Stream Analytics
+In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] (ASA) Gerätenachrichten, die über den IoT Hub eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
 
-**Auftrag 1: Geräteinformationen** filtert Meldungen mit Geräteinformationen aus dem eingehenden Meldungsdatenstrom und sendet diese an einen Event Hub-Endpunkt. Ein Gerät sendet Meldungen mit Geräteinformationen beim Start und als Antwort auf den Befehl **SendDeviceInfo**. Bei diesem Auftrag wird die folgende Abfragedefinition verwendet, um Nachrichten vom Typ **Geräteinformationen** zu identifizieren:
+**Auftrag 1: Geräteinformationen** filtert Meldungen mit Geräteinformationen aus dem eingehenden Meldungsdatenstrom und sendet diese an einen Event Hub-Endpunkt. Ein Gerät sendet Meldungen mit Geräteinformationen beim Start und als Antwort auf den Befehl **SendDeviceInfo** . Bei diesem Auftrag wird die folgende Abfragedefinition verwendet, um Nachrichten vom Typ **Geräteinformationen** zu identifizieren:
 
 ```
 SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'DeviceInfo'
@@ -176,26 +180,26 @@ GROUP BY
     SlidingWindow (mi, 5)
 ```
 
-## Event Hubs
+## <a name="event-hubs"></a>Event Hubs
 Die Daten der ASA-Aufträge vom Typ **Geräteinformationen** und **Regeln** werden an Event Hubs ausgegeben, um die zuverlässige Weiterleitung zum **Ereignisprozessor** sicherzustellen, der im WebJob ausgeführt wird.
 
-## Azure-Speicher
+## <a name="azure-storage"></a>Azure-Speicher
 Die Lösung nutzt Azure-Blobspeicher, um alle Rohdaten und zusammengefassten Telemetriedaten von den Geräten dauerhaft in der Lösung zu speichern. Über das Dashboard werden die Telemetriedaten aus dem Blobspeicher gelesen, um die Diagramme aufzufüllen. Zum Anzeigen von Warnungen liest das Dashboard die Daten aus dem Blobspeicher aus, in dem aufgezeichnet wird, wenn die Telemetriewerte die konfigurierten Schwellenwerte überschreiten. In der Lösung wird Blobspeicher auch eingesetzt, um die Schwellenwerte aufzuzeichnen, die Sie im Dashboard festlegen.
 
-## WebJobs
+## <a name="webjobs"></a>WebJobs
 Zusätzlich zum Hosten der Gerätesimulatoren hosten die WebJobs in der Lösung auch den **Ereignisprozessor** in einem Azure WebJob, mit dem die Geräteinformationsnachrichten und Befehlsantworten verarbeitet werden. Er verwendet Folgendes:
 
 * Meldungen mit Geräteinformationen, die die Registrierung des Geräts (gespeichert in der DocumentDB-Datenbank) mit den aktuellen Geräteinformationen aktualisieren.
 * Meldungen mit Antworten auf Befehle, um den Befehlsverlauf des Geräts zu aktualisieren (gespeichert in der DocumentDB-Datenbank).
 
-## DocumentDB
+## <a name="documentdb"></a>DocumentDB
 Die Lösung verwendet eine DocumentDB-Datenbank zum Speichern von Informationen zu den Geräten, die mit der Lösung verbunden sind. Dies sind beispielsweise Gerätemetadaten und der Verlauf der Befehle, die vom Dashboard an die Geräte gesendet werden.
 
-## Web-Apps
-### Dashboard für die Remoteüberwachung
-Diese Seite in der Webanwendung verwendet PowerBI-JavaScript-Steuerelemente (siehe [PowerBI-visuals repo](https://www.github.com/Microsoft/PowerBI-visuals) (Repository mit PowerBI-Visualisierungen)), um die Telemetriedaten der Geräte zu visualisieren. Die Lösung nutzt den ASA-Telemetrieauftrag, um die Telemetriedaten in den Blobspeicher zu schreiben.
+## <a name="web-apps"></a>Web-Apps
+### <a name="remote-monitoring-dashboard"></a>Dashboard für die Remoteüberwachung
+Diese Seite in der Webanwendung verwendet PowerBI-JavaScript-Steuerelemente (siehe [PowerBI-visuals repo](https://www.github.com/Microsoft/PowerBI-visuals)(Repository mit PowerBI-Visualisierungen)), um die Telemetriedaten der Geräte zu visualisieren. Die Lösung nutzt den ASA-Telemetrieauftrag, um die Telemetriedaten in den Blobspeicher zu schreiben.
 
-### Geräteverwaltungsportal
+### <a name="device-administration-portal"></a>Geräteverwaltungsportal
 Diese Web-App ermöglicht Folgendes:
 
 * Bereitstellen eines neuen Geräts. Diese Aktion legt die eindeutige Geräte-ID fest und generiert den Authentifizierungsschlüssel. Sie schreibt Informationen zum Gerät sowohl in die IoT Hub-Identitätsregistrierung als auch in die DocumentDB-Datenbank der Lösung.
@@ -204,7 +208,7 @@ Diese Web-App ermöglicht Folgendes:
 * Anzeigen des Befehlsverlaufs für ein Gerät.
 * Aktivieren und Deaktivieren von Geräten.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 In den folgenden TechNet-Blogbeiträgen finden Sie weitere Informationen zur vorkonfigurierten Lösung für die Remoteüberwachung:
 
 * [IoT Suite - Under The Hood - Remote Monitoring (IoT Suite – Weitere Informationen – Remoteüberwachung)](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
@@ -212,7 +216,7 @@ In den folgenden TechNet-Blogbeiträgen finden Sie weitere Informationen zur vor
 
 Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu die folgenden Artikel:
 
-* [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Windows)][lnk-connect-rm]
+* [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm]
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
@@ -223,4 +227,8 @@ Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu di
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,11 +1,11 @@
-## Bereitstellen der ARM-Vorlage per Klick
+## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>Bereitstellen der ARM-Vorlage per Klick
 Sie können vordefinierte ARM-Vorlagen, die in ein von Microsoft verwaltetes und für die Community freigegebenes GitHub-Repository hochgeladen wurden, wiederverwenden. Diese Vorlagen können direkt aus GitHub heraus bereitgestellt oder heruntergeladen und an Ihre Bedürfnisse angepasst werden. Zum Bereitstellen einer Vorlage, die ein VNet mit zwei Subnetzen erstellt, führen Sie die unten aufgeführten Schritte aus.
 
 1. Navigieren Sie in einem Browser zu [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
-2. Führen Sie in der Liste der Vorlagen einen Bildlauf nach unten aus, und klicken Sie auf **101-vnet-two-subnets**. Überprüfen Sie die Datei **Readme.MD**, wie unten dargestellt.
+2. Führen Sie in der Liste der Vorlagen einen Bildlauf nach unten aus, und klicken Sie auf **101-vnet-two-subnets**. Überprüfen Sie die Datei **Readme.MD** , wie unten dargestellt.
    
     ![READEME.md-Datei in GitHub](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
-3. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**. Falls erforderlich, geben Sie Ihre Anmeldeinformationen für Azure ein.
+3. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**. Falls erforderlich, geben Sie Ihre Anmeldeinformationen für Azure ein. 
 4. Geben Sie auf dem Blatt **Parameter** die Werte ein, die Sie zum Erstellen Ihres neuen VNet verwenden möchten, und klicken Sie dann auf **OK**. Die folgende Abbildung zeigt die Werte für das vorliegende Szenario.
    
     ![ARM-Vorlagenparameter](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
@@ -22,4 +22,8 @@ Sie können vordefinierte ARM-Vorlagen, die in ein von Microsoft verwaltetes und
     
      ![Erstellen von VNet im Vorschauportal](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

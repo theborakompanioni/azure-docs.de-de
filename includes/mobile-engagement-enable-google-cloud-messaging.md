@@ -12,6 +12,8 @@
 5. Klicken Sie oben auf die Registerkarte **Cloud Messaging**. 
 6. Notieren Sie sich den **Serverschlüssel** und die **Absender-ID**, die Sie später in der *Android-Manifestdatei* verwenden möchten.  
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

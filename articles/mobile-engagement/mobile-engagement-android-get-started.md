@@ -1,12 +1,12 @@
 ---
-title: Erste Schritte mit Azure Mobile Engagement für Android-Apps
-description: Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für Android-Apps.
+title: "Erste Schritte mit Azure Mobile Engagement für Android-Apps"
+description: "Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für Android-Apps."
 services: mobile-engagement
 documentationcenter: android
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 3c286c6d-cfef-4e3e-9b2c-715429fe82db
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,6 +14,10 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a4b9ab47969c95aa9940e044b426cf2811e23f61
+
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>Erste Schritte mit Azure Mobile Engagement für Android-Apps
@@ -106,11 +110,11 @@ Android Studio erstellt jetzt die Demo-App, in die wir Mobile Engagement integri
 2. Fügen Sie diesen Code zum Deklarieren des Agent-Diensts zwischen den Tags `<application>` und `</application>` ein:
    
         <service
-            android:name="com.microsoft.azure.engagement.service.EngagementService"
-            android:exported="false"
-            android:label="<Your application name>"
-            android:process=":Engagement"/>
-3. Ersetzen Sie im eingefügten Code `"<Your application name>"` in der Beschriftung, die im Menü **Einstellungen** angezeigt wird. Hier sehen Sie die Dienste, die auf dem Gerät ausgeführt werden. Sie können z. B. das Wort "Dienst" in der Beschriftung hinzufügen.
+             android:name="com.microsoft.azure.engagement.service.EngagementService"
+             android:exported="false"
+             android:label="<Your application name>"
+             android:process=":Engagement"/>
+3. Ersetzen Sie im eingefügten Code `"<Your application name>"` in der Beschriftung, die im Menü **Einstellungen** angezeigt wird. Hier sehen Sie die Dienste, die auf dem Gerät ausgeführt werden. Sie können z. B. das Wort "Dienst" in der Beschriftung hinzufügen.
 
 ### <a name="send-a-screen-to-mobile-engagement"></a>Senden eines Bildschirms an Mobile Engagement
 Um mit dem Senden von Daten zu beginnen und sicherzustellen, dass die Benutzer aktiv sind, müssen Sie mindestens einen Bildschirm (Aktivität) an das Mobile Engagement-Back-End senden.
@@ -130,10 +134,10 @@ Kommentieren Sie die folgende Zeile für dieses einfache Beispielszenario aus:
 
 Wenn Sie das `ActionBar` -Element in Ihrer App beibehalten möchten, helfen Ihnen die Informationen unter [Berichtserstellungsoptionen mit Engagement unter Android](mobile-engagement-android-advanced-reporting.md#modifying-your-codeactivitycode-classes)weiter.
 
-## <a name="connect-app-with-real-time-monitoring"></a>Verbinden der App mit Überwachung in Echtzeit
+## <a name="connect-app-with-realtime-monitoring"></a>Verbinden der App mit Überwachung in Echtzeit
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="enable-push-notifications-and-in-app-messaging"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
+## <a name="enable-push-notifications-and-inapp-messaging"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
 Während einer Kampagne können Sie mit Mobile Engagement mit Ihren Benutzern interagieren und diese erreichen (REACH), indem Sie Pushbenachrichtigungen und In-App-Messaging verwenden. Dieses Modul nennt sich REACH im Mobile Engagement-Portal.
 Im folgenden Abschnitt richten Sie Ihre App für den Empfang ein.
 
@@ -169,6 +173,6 @@ Wechseln Sie zum [Android-SDK](mobile-engagement-android-sdk-overview.md) , um a
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

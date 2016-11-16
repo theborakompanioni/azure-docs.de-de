@@ -14,18 +14,22 @@
 
 ## Entwickeln
 ### [Komplexe Zeitpläne mit REST-API](scheduler-advanced-complexity.md)
+### [Konzepte und Terminologie](scheduler-concepts-terms.md)
 
 ## Schützen
 ### [Ausgehende Authentifizierung](scheduler-outbound-authentication.md)
 
 # Referenz
-## [Konzepte und Terminologie](scheduler-concepts-terms.md)
-## [REST-API](https://msdn.microsoft.com/library/azure/mt629143)
-## [PowerShell-Cmdlets](scheduler-powershell-reference.md)
+## [Azure Scheduler: PowerShell-Cmdlets](https://msdn.microsoft.com/en-us/library/mt490138(v=azure.200).aspx)
+## [.NET](/dotnet/api)
+## [REST](/rest/api/scheduler/)
 
 # Ressourcen
-## [Videos zu Scheduler](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+## [Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=scheduler)
+## [Preise](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
 
 
 <!--HONumber=Nov16_HO2-->

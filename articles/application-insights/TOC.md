@@ -36,7 +36,7 @@
 ### [Leistungsüberwachung in Webanwendungen](app-insights-web-monitor-performance.md)
 ### [Verwendungsanalyse mit Application Insights](app-insights-overview-usage.md)
 ### [Trennen von Application Insights-Ressourcen](app-insights-separate-resources.md)
-### [Gewusst wie – in Application Insights](app-insights-how-do-i.md)
+### [Wie führe ich in Application Insights ... aus?](app-insights-how-do-i.md)
 
 ## Konfigurieren
 
@@ -128,27 +128,31 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # Referenz
-
+## [Java](http://dl.windowsazure.com/applicationinsights/javadoc/)
+## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [JavaScript-API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [Analyse](app-insights-analytics-reference.md)
 ## [Stichproben](app-insights-sampling.md)
 ## [IP-Adressen](app-insights-ip-addresses.md)
 ## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ## [Exportdatenmodell](app-insights-export-data-model.md)
-## [REST-API](https://dev.applicationinsights.io/)
-## [JavaScript-API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [Java SDK-API](http://dl.windowsazure.com/applicationinsights/javadoc/)
 ## [Migrieren von Azure-Endpunktüberwachung zu Verfügbarkeitstests](app-insights-migrate-azure-endpoint-tests.md)
 ## [Entwickleranalysen: Sprachen, Plattformen und Integrationsmöglichkeiten](app-insights-platforms.md)
 ### [Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
-
 #### [Exemplarische Vorgehensweise: Aktivieren von Telemetriedaten für Microsoft Dynamics CRM Online](app-insights-sample-mscrm.md)
 #### [Exemplarische Vorgehensweise: Exportieren in SQL mit Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md)
 #### [Codebeispiel: Analysieren exportierter Daten](app-insights-code-sample-export-telemetry-sql-database.md)
 ## [Anmerkungen zu dieser Version des Application Insights SDK für Windows Phone und Store](app-insights-release-notes-windows.md)
 ## [Anmerkungen zur Version von Developer Analytics Tools](app-insights-release-notes-vsix.md)
 ## [Anmerkungen zu dieser Version des Application Insights SDKs](app-insights-release-notes.md)
+## [REST-API](https://dev.applicationinsights.io/)
 
 # Ressourcen
+## [Preise](https://azure.microsoft.com/pricing/details/application-insights/)  
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=application-insights) 
+## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
 ## [Unterstützung](app-insights-get-dev-support.md)
 
 

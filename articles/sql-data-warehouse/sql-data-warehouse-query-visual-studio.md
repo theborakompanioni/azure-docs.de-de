@@ -3,62 +3,67 @@ title: Abfragen von Azure SQL Data Warehouse (Visual Studio) | Microsoft Docs
 description: Es wird beschrieben, wie Sie SQL Data Warehouse mit Visual Studio abfragen.
 services: sql-data-warehouse
 documentationcenter: NA
-author: sonyam
-manager: barbkess
-editor: ''
-
+author: barbkess
+manager: jhubbard
+editor: 
+ms.assetid: daace889-95e5-4826-b2fc-047eac9d6d95
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/16/2016
-ms.author: sonyama;barbkess
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5e97fefdf3cc13f2fd3e060da901e90ef5ef9a29
+
 
 ---
-# Abfragen von Azure SQL Data Warehouse (Visual Studio)
+# <a name="query-azure-sql-data-warehouse-visual-studio"></a>Abfragen von Azure SQL Data Warehouse (Visual Studio)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-Mit Visual Studio können Sie Azure SQL Data Warehouse innerhalb weniger Minuten abfragen. Bei dieser Methode wird die SSDT-Erweiterung (SQL Server Data Tools) in Visual Studio verwendet.
+Mit Visual Studio können Sie Azure SQL Data Warehouse innerhalb weniger Minuten abfragen. Bei dieser Methode wird die SSDT-Erweiterung (SQL Server Data Tools) in Visual Studio verwendet. 
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine vorhandene SQL Data Warehouse-Instanz. Informationen zur Erstellung finden Sie unter [Erstellen eines SQL Data Warehouse][Erstellen eines SQL Data Warehouse].
 * SSDT für Visual Studio. Wenn Sie über Visual Studio verfügen, ist diese Komponente darin wahrscheinlich bereits enthalten. Installationshinweise und -optionen finden Sie unter [Installieren von Visual Studio und SSDT][Installieren von Visual Studio und SSDT].
 * Den vollqualifizierten SQL-Servernamen. Informationen zur Ermittlung finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][Herstellen einer Verbindung mit SQL Data Warehouse].
 
-## 1\. Herstellen einer Verbindung mit SQL Data Warehouse
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Herstellen einer Verbindung mit SQL Data Warehouse
 1. Öffnen Sie Visual Studio 2013 oder 2015.
-2. Öffnen Sie den SQL Server-Objekt-Explorer. Wählen Sie zu diesem Zweck **Ansicht** > **SQL Server-Objekt-Explorer** aus.
+2. Öffnen Sie den SQL Server-Objekt-Explorer. Wählen Sie zu diesem Zweck **Ansicht** > **SQL Server-Objekt-Explorer** aus.
    
-    ![SQL Server-Objekt-Explorer][1]
-3. Klicken Sie auf das Symbol **SQL Server hinzufügen**.
+    ![SQL Server-Objekt-Explorer][1]
+3. Klicken Sie auf das Symbol **SQL Server hinzufügen** .
    
-    ![SQL Server-Instanz hinzufügen][2]
+    ![SQL Server hinzufügen][2]
 4. Füllen Sie die Felder im Fenster zum Herstellen einer Verbindung mit dem Server aus.
    
     ![Verbindung mit dem Server herstellen][3]
    
    * **Servername**. Geben Sie den zuvor ermittelten **Servernamen** ein.
-   * **Authentifizierung**. Wählen Sie **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
+   * **Authentifizierung**. Wählen Sie SQL **Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
    * **Benutzername** und **Kennwort**. Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
    * Klicken Sie auf **Verbinden**.
-5. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie „AdventureWorksDW“, um die Tabellen in Ihrer Beispieldatenbank anzuzeigen.
+5. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie „AdventureWorksDW“, um die Tabellen in Ihrer Beispieldatenbank anzuzeigen.
    
     ![AdventureWorksDW erkunden][4]
 
-## 2\. Ausführen einer Beispielabfrage
+## <a name="2-run-a-sample-query"></a>2. Ausführen einer Beispielabfrage
 Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, schreiben wir eine Abfrage.
 
-1. Klicken Sie mit der rechten Maustaste im SQL Server-Objekt-Explorer auf Ihre Datenbank.
-2. Wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.
+1. Klicken Sie mit der rechten Maustaste im SQL Server-Objekt-Explorer auf Ihre Datenbank.
+2. Wählen Sie **Neue Abfrage**aus. Ein neues Abfragefenster wird geöffnet.
    
     ![Neue Abfrage][5]
 3. Kopieren Sie die folgende TSQL-Abfrage in das Abfragefenster:
@@ -69,12 +74,12 @@ Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, schreiben w
 4. Führen Sie die Abfrage aus. Zu diesem Zweck klicken Sie auf den grünen Pfeil oder verwenden die folgende Tastenkombination: `CTRL`+`SHIFT`+`E`.
    
     ![Abfrage ausführen][6]
-5. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel weist die Tabelle „FactInternetSales“ 60398 Zeilen auf.
+5. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel weist die Tabelle „FactInternetSales“ 60398 Zeilen auf.
    
     ![Abfrageergebnisse][7]
 
-## Nächste Schritte
-Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren][die Daten mit Power BI zu visualisieren].
+## <a name="next-steps"></a>Nächste Schritte
+Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren][die Daten mit Power BI zu visualisieren].
 
 Informationen zum Konfigurieren der Umgebung für die Azure Active Directory-Authentifizierung finden Sie unter [Authentifizieren für SQL Data Warehouse][Authentifizieren für SQL Data Warehouse].
 
@@ -83,10 +88,10 @@ Informationen zum Konfigurieren der Umgebung für die Azure Active Directory-Aut
 [Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 [Installieren von Visual Studio und SSDT]: sql-data-warehouse-install-visual-studio.md
 [Authentifizieren für SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[die Daten mit Power BI zu visualisieren]: sql-data-warehouse-get-started-visualize-with-power-bi.md
+[die Daten mit Power BI zu visualisieren]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
 
 <!--Other-->
-[Azure portal]: https://portal.azure.com
+[Azure-Portal]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -98,4 +103,8 @@ Informationen zum Konfigurieren der Umgebung für die Azure Active Directory-Aut
 [6]: media/sql-data-warehouse-query-visual-studio/run-query.png
 [7]: media/sql-data-warehouse-query-visual-studio/query-results.png
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

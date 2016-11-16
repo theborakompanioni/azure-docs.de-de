@@ -1,13 +1,13 @@
 ---
-title: Erstellen eines Load Balancers mit Internetzugriff in Resource Manager über das Azure-Portal | Microsoft Docs
-description: Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff in Resource Manager über das Azure-Portal erstellen.
+title: "Erstellen eines Lastenausgleichs mit Internetzugriff in Resource Manager über das Azure-Portal | Microsoft Docs"
+description: "Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff in Resource Manager über das Azure-Portal erstellen."
 services: load-balancer
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: annahar
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d9e27ce132a837ec26a92de0c38b3e1c23b706c1
+
 
 ---
-# <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Erstellen eines Load Balancers mit Internetzugriff im Azure-Portal
+# <a name="creating-an-internetfacing-load-balancer-using-the-azure-portal"></a>Erstellen eines Load Balancers mit Internetzugriff im Azure-Portal
 [!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
@@ -30,7 +34,7 @@ Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Hier erfa
 
 Hier finden Sie eine ausführliche Beschreibung der einzelnen Aufgaben, die zum Erstellen eines Load Balancers durchgeführt werden müssen.
 
-## <a name="what-is-required-to-create-an-internet-facing-load-balancer?"></a>Was ist erforderlich, um einen Load Balancer mit Internetzugriff zu erstellen?
+## <a name="what-is-required-to-create-an-internetfacing-load-balancer"></a>Was ist erforderlich, um einen Load Balancer mit Internetzugriff zu erstellen?
 Zum Bereitstellen eines Load Balancers müssen Sie die folgenden Objekte erstellen und konfigurieren.
 
 * Front-End-IP-Konfiguration: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
@@ -56,14 +60,14 @@ Unter [Unterstützung von Azure Resource Manager für den Load Balancer](load-ba
 
 ![Aktualisieren der Ressourcengruppe eines Load Balancers](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
-## <a name="create-a-back-end-address-pool"></a>Erstellen eines Back-End-Adresspools
+## <a name="create-a-backend-address-pool"></a>Erstellen eines Back-End-Adresspools
 1. Nach erfolgreicher Bereitstellung Ihres Load Balancers wählen Sie diesen unter Ihren Ressourcen aus. Wählen Sie unter Einstellungen die Option „Back-End-Pools“. Geben Sie einen Namen für Ihren Back-End-Pool ein. Klicken Sie dann auf die oben auf dem Blatt angezeigte Schaltfläche **Hinzufügen** .
 2. Klicken Sie auf dem Blatt **Back-End-Pool hinzufügen** auf **Virtuellen Computer hinzufügen**.  Wählen Sie unter **Verfügbarkeitsgruppe** die Option **Verfügbarkeitsgruppe auswählen** und dann **myAvailSet** aus. Wählen Sie dann auf dem Blatt im Bereich mit den virtuellen Computern die Option **Wählen Sie die virtuellen Computer aus** aus, und klicken Sie auf **web1** und **web2**, die beiden für den Load Balancer erstellen virtuellen Computer. Stellen Sie sicher, dass beide auf der linken Seite mit blauen Häkchen versehen sind, wie im unten stehenden Bild dargestellt. Klicken Sie dann auf diesem Blatt auf **Auswählen** und anschließend auf dem Blatt **Virtuelle Computer auswählen** auf „OK“. Klicken Sie dann auf dem Blatt **Back-End-Pool hinzufügen** auf **OK**.
    
     ![Hinzufügen zum Back-End-Adresspool ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
 3. Stellen Sie sicher, dass Ihre Dropdownliste für Benachrichtigungen in Bezug auf die Speicherung des Back-End-Pools des Load Balancers sowie in Bezug auf die Aktualisierung der Netzwerkschnittstellen für die virtuellen Computer **web1** und **web2** aktualisiert wurde.
 
-## <a name="create-a-probe,-lb-rule,-and-nat-rules"></a>Erstellen von Tests, LB-Regeln und NAT-Regeln
+## <a name="create-a-probe-lb-rule-and-nat-rules"></a>Erstellen von Tests, LB-Regeln und NAT-Regeln
 1. Erstellen Sie einen Integritätstest.
    
     Wählen Sie in den Einstellungen Ihres Load Balancers den Punkt „Tests“. Klicken Sie dann oben auf dem Blatt auf **Hinzufügen** .
@@ -74,7 +78,7 @@ Unter [Unterstützung von Azure Resource Manager für den Load Balancer](load-ba
     Um weitere Informationen zu den einzelnen Konfigurationen und dazu zu erhalten, wie diese verändert werden können, um Ihre Anforderungen zu erfüllen, bewegen Sie den Mauszeiger über das Symbol „i“.
    
     ![Hinzufügen eines Tests](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
-2. Erstellen Sie eine Load Balancer-Regel.
+2. Erstellen Sie eine Load Balancer-Regel.
    
     Klicken Sie in den Einstellungen Ihres Load Balancers auf die Regeln für den Load Balancer. Klicken Sie auf dem neuen Blatt auf **Hinzufügen**. Geben Sie einen Namen für die Regel ein. Hier ist es „HTTP“. Wählen Sie den Front-End- und den Back-End-Port aus. Hier wurde für beide Port 80 ausgewählt. Wählen Sie **LB-backend** als Back-End-Pool und den zuvor erstellten **HealthProbe** als Test aus. Andere Konfigurationen können gemäß Ihren Anforderungen eingerichtet werden. Um die Lastenausgleichsregel zu speichern, klicken Sie auf „OK“.
    
@@ -97,6 +101,9 @@ Zum Löschen eines Load Balancers wählen Sie den Load Balancer aus, den Sie ent
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

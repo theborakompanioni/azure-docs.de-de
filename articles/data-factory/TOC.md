@@ -91,8 +91,12 @@
 ### [Problembehandlung bei Data Factory](data-factory-troubleshoot.md)
 ### [Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways](data-factory-troubleshoot-gateway-issues.md)
 ### [Bereitstellen mit Azure Resource Manager-Vorlagen](data-factory-how-to-use-resource-manager-templates.md)
-# Referenz 
+
+# Referenz
 ## [Azure Data Factory-Entwicklerreferenz](data-factory-sdks.md)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [.NET](https://docs.microsoft.com/dotnet/api)
+## [REST](https://docs.microsoft.com/rest/api/datafactory/)
 
 # Ressourcen:
 ## [Fallstudien](data-factory-customer-case-studies.md)
@@ -103,13 +107,6 @@
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory)
 ## [Anfordern eines Features](https://feedback.azure.com/forums/270578-azure-data-factory)
 ## [Versionshinweise für Datenverwaltungsgateway](data-factory-gateway-release-notes.md)
-
-
-
-
-
-
-
 
 
 <!--HONumber=Nov16_HO2-->

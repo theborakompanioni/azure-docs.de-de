@@ -1,22 +1,26 @@
 ---
-title: API Management-Schlüsselkonzepte
-description: Erfahren Sie mehr über APIs, Produkte, Rollen, Gruppen und andere API Management-Schlüsselkonzepte.
+title: "API Management-Schlüsselkonzepte"
+description: "Erfahren Sie mehr über APIs, Produkte, Rollen, Gruppen und andere API Management-Schlüsselkonzepte."
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: e71da405-835a-48f3-956f-45c1a85698d7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dcff834c9d4aff82e8319e6c23a74c2e49902a8c
+
 
 ---
-# Was ist API Management?
+# <a name="what-is-api-management"></a>Was ist API Management?
 API Management unterstützt Organisationen beim Veröffentlichen von APIs für externe, Partner- und interne Entwickler, um das volle Potenzial von Daten und Diensten nutzen zu können. Unternehmen sind weltweit dabei, ihren Betrieb als digitale Plattform zu erweitern, neue Kanäle zu erschließen, neue Kunden zu finden und die Bindung zu existierenden Kunden zu vertiefen. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, Geschäftserkenntnissen, Analyse, Sicherheit und Schutz.
 
 Im folgenden Video erhalten Sie eine Übersicht über Azure API Management und erfahren, wie Sie API Management ohne größeren Aufwand zum Hinzufügen vieler Features zu Ihrer API verwenden, z.B. Zugriffssteuerung, Ratenbegrenzung, Überwachung, Ereignisprotokollierung und Zwischenspeicherung von Antworten.
@@ -30,7 +34,7 @@ Administratoren erstellen APIs, um API Management zu nutzen. Jede API besteht au
 Dieses Thema behandelt einige Schlüsselkonzepte von API Management.
 
 > [!NOTE]
-> Weitere Informationen finden Sie im Whitepaper [Cloud-based API Management: Harnessing the Power of APIs](http://j.mp/ms-apim-whitepaper) (PDF, in englischer Sprache). In diesem Whitepaper zu API Management von CITO Research werden folgende Themen behandelt:
+> Weitere Informationen finden Sie im Whitepaper [Cloud-based API Management: Harnessing the Power of APIs](http://j.mp/ms-apim-whitepaper) (PDF, in englischer Sprache). In diesem Whitepaper zu API Management von CITO Research werden folgende Themen behandelt: 
 > 
 > * Allgemeine API-Anforderungen und -Herausforderungen
 > * Entkoppeln von APIs und Präsentieren von Fassaden
@@ -48,10 +52,10 @@ APIs sind die Grundlage einer API Management-Dienstinstanz. Jede API stellt Entw
 
 Weitere Informationen finden Sie unter [Erstellen von APIs][Erstellen von APIs] und [Hinzufügen von Operationen zu einer API][Hinzufügen von Operationen zu einer API].
 
-## <a name="products"> </a>Produkte
+## <a name="products"> </a> Produkte
 APIs werden in Form von Produkten an Entwickler bereitgestellt. Produkte in API Management enthalten eine oder mehrere APIs und werden mit einem Titel, einer Beschreibung und Nutzungsbedingungen konfiguriert. Produkte können **Offen** oder **Geschützt** sein. Geschützte Produkte müssen abonniert werden, bevor Sie verwendet werden können, während offene Produkte ohne Abonnement genutzt werden können. Wenn ein Produkt bereit für die Nutzung durch Entwickler ist, kann es veröffentlicht werden. Nach der Veröffentlichung kann das Produkt (bei geschützten Produkten nach dem Abonnieren) durch die Entwickler angezeigt werden. Die Genehmigung von Abonnements wird auf der Produktebene konfiguriert. Abonnements können entweder eine Genehmigung eines Administrators erfordern oder automatisch genehmigt werden.
 
-Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind.
+Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. 
 
 Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Produkts][Erstellen und Veröffentlichen eines Produkts] und im folgenden Video.
 
@@ -59,16 +63,16 @@ Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Pro
 > 
 > 
 
-## <a name="groups"> </a>Gruppen
+## <a name="groups"> </a> Gruppen
 Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. API Management umfasst die folgenden unveränderlichen Systemgruppen.
 
 * **Administratoren** – Azure-Abonnementadministratoren sind Mitglieder dieser Gruppe. Administratoren verwalten API Management-Dienstinstanzen und erstellen die APIs, Operationen und Produkte, die von den Entwicklern verwendet werden.
-* **Entwickler** – Zu dieser Gruppe gehören authentifizierte Benutzer des Entwicklerportals Entwickler sind die Kunden, die Anwendungen unter Verwendung Ihrer APIs erstellen. Entwickler erhalten Zugriff zum Entwicklerportal und erstellen Anwendungen, die die Operationen einer API aufrufen.
+* **Entwickler** – Zu dieser Gruppe gehören authentifizierte Benutzer des Entwicklerportals. Entwickler sind die Kunden, die Anwendungen unter Verwendung Ihrer APIs erstellen. Entwickler erhalten Zugriff zum Entwicklerportal und erstellen Anwendungen, die die Operationen einer API aufrufen.
 * **Gäste** – Nicht authentifizierte Benutzer wie z. B. potenzielle Kunden, die das Entwicklerportal einer API Management-Instanz besuchen, fallen in diese Gruppe. Sie können diesen Benutzern schreibgeschützten Zugriff gewähren, z. B. um die APIs anzuzeigen, jedoch nicht aufrufen zu können.
 
 Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte Gruppen erstellen oder [externe Gruppen in zugeordneten Azure Active Directory-Mandanten verwenden](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group). Benutzerdefinierte und externe Gruppen können gemeinsam mit Systemgruppen verwendet werden, um API-Produkte für Entwickler sichtbar zu machen und ihnen den Zugriff auf die API-Produkte zu ermöglichen. Beispielsweise können Sie eine benutzerdefinierte Gruppe für Entwickler eines spezifischen Partnerunternehmens erstellen und diesen Entwicklern Zugriff auf die APIs über ein Produkt erteilen, das nur die relevanten APIs enthält. Ein Benutzer kann Mitglied von mehreren Gruppen sein.
 
-Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][Erstellen und Verwenden von Gruppen].
+Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen in Azure API Management][Erstellen und Verwenden von Gruppen in Azure API Management].
 
 ## <a name="developers"> </a> Entwickler
 Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportal][Entwicklerportal] anmelden. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
@@ -97,18 +101,18 @@ Im Entwicklerportal können Entwickler auf Ihre APIs zugreifen, Operationen anze
 
 Sie können das Erscheinungsbild Ihres Entwicklerportals konfigurieren, indem Sie eigene Inhalte hinzufügen, Stilregeln anpassen und Ihr Markenbild einfügen.
 
-## API Management und API-Ökonomie
+## <a name="api-management-and-the-api-economy"></a>API Management und API-Ökonomie
 Weitere Informationen zu API Management erhalten Sie, indem Sie sich die folgende Präsentation von der Konferenz Microsoft Ignite 2015 ansehen.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3708/player]
 > 
 > 
 
-[APIs and operations]: #apis
-[Products]: #products
-[Groups]: #groups
-[Developers]: #developers
-[Policies]: #policies
+[APIs und Operationen]: #apis
+[Produkte]: #products
+[Gruppen]: #groups
+[Entwickler]: #developers
+[Richtlinien]: #policies
 [Entwicklerportal]: #developer-portal
 
 [Erstellen von APIs]: api-management-howto-create-apis.md
@@ -120,10 +124,14 @@ Weitere Informationen zu API Management erhalten Sie, indem Sie sich die folgend
 [Erstellen und Einladen von Entwicklern]: api-management-howto-create-or-invite-developers.md
 [Gruppenrichtlinienreferenz]: api-management-policy-reference.md
 [Richtlinien für API Management]: api-management-howto-policies.md
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Erstellen einer API-Verwaltungsinstanz]: api-management-get-started.md#create-service-instance
 
 
 
 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

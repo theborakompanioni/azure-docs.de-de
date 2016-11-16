@@ -1,13 +1,13 @@
 ---
-title: Erstellen eines Azure Search-Index mit dem .NET SDK | Microsoft Docs
+title: Erstellen eines Azure Search-Indexes mit dem .NET SDK | Microsoft Docs
 description: Erstellen Sie einen Index im Code mithilfe des Azure Search .NET SDK.
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: brjohnstmsft
-manager: ''
-editor: ''
+manager: jhubbard
+editor: 
 tags: azure-portal
-
+ms.assetid: 3a851647-fc7b-4fb6-8506-6aaa519e77cd
 ms.service: search
 ms.devlang: dotnet
 ms.workload: search
@@ -15,9 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: brjohnst
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 87757a16f1fa31be97f6f8a0e39c6adbf2513828
+
 
 ---
-# Erstellen eines Azure Search-Index mit dem .NET SDK
+# <a name="create-an-azure-search-index-using-the-net-sdk"></a>Erstellen eines Azure Search-Index mit dem .NET SDK
 > [!div class="op_single_selector"]
 > * [Übersicht](search-what-is-an-index.md)
 > * [Portal](search-create-index-portal.md)
@@ -32,10 +36,10 @@ Bevor Sie dieser Anleitung folgen und einen Index erstellen, müssen Sie einen [
 
 Beachten Sie, dass der gesamte Beispielcode in diesem Artikel in C# geschrieben wurde. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto).
 
-## I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
+## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, sind Sie fast bereit, Anforderungen für Ihren Dienstendpunkt mithilfe des .NET SDK auszugeben. Zunächst müssen Sie aber einen der Admin-API-Schlüssel abrufen, die für den bereitgestellten Suchdienst generiert wurden. Das .NET SDK sendet diesen API-Schlüssel für jede Anforderung an Ihren Dienst. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu suchen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 2. Wechseln Sie zum Blatt Ihres Azure Search-Diensts.
 3. Klicken Sie auf das Schlüsselsymbol.
 
@@ -48,8 +52,8 @@ Verwenden Sie zum Erstellen eines Indexes entweder den primären oder den sekund
 
 <a name="CreateSearchServiceClient"></a>
 
-## II. Erstellen einer Instanz der SearchServiceClient-Klasse
-Damit Sie das Azure Search .NET SDK verwenden können, müssen Sie eine Instanz der `SearchServiceClient`-Klasse erstellen. Diese Klasse verfügt über mehrere Konstruktoren. Für den gewünschten Konstruktor werden der Name Ihres Suchdiensts und ein `SearchCredentials`-Objekt als Parameter verwendet. `SearchCredentials` umschließt Ihren API-Schlüssel.
+## <a name="ii-create-an-instance-of-the-searchserviceclient-class"></a>II. Erstellen einer Instanz der SearchServiceClient-Klasse
+Damit Sie das Azure Search .NET SDK verwenden können, müssen Sie eine Instanz der `SearchServiceClient` -Klasse erstellen. Diese Klasse verfügt über mehrere Konstruktoren. Für den gewünschten Konstruktor werden der Name Ihres Suchdiensts und ein `SearchCredentials` -Objekt als Parameter verwendet. `SearchCredentials` umfasst Ihren API-Schlüssel.
 
 Mit dem folgenden Code wird ein neues `SearchServiceClient`-Element mit den Werten für den Namen des Suchdiensts und den API-Schlüssel erstellt, die in der Konfigurationsdatei der Anwendung (`app.config` oder `web.config`) gespeichert sind:
 
@@ -69,11 +73,11 @@ SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, n
 
 <a name="DefineIndex"></a>
 
-## III. Definieren des Azure Search-Index mit der `Index`-Klasse
-Der Index kann mit einem einzigen Aufruf der `Indexes.Create`-Methode erstellt werden. Für diese Methode wird als Parameter ein `Index`-Objekt verwendet, das Ihren Azure Search-Index definiert. Sie müssen ein `Index`-Objekt erstellen und wie folgt initialisieren:
+## <a name="iii-define-your-azure-search-index-using-the-index-class"></a>III. Definieren des Azure Search-Index mit der `Index` -Klasse
+Der Index kann mit einem einzigen Aufruf der `Indexes.Create` -Methode erstellt werden. Für diese Methode wird als Parameter ein `Index` -Objekt verwendet, das Ihren Azure Search-Index definiert. Sie müssen ein `Index` -Objekt erstellen und wie folgt initialisieren:
 
 1. Legen Sie die `Name`-Eigenschaft des `Index`-Objekts auf den Namen des Index fest.
-2. Legen Sie die `Fields`-Eigenschaft des `Index`-Objekts auf ein Array von `Field`-Objekten fest. Jedes der `Field`-Objekte definiert das Verhalten eines Felds im Index. Sie können den Namen des Felds zusammen mit dem Datentyp (oder dem Analyzer bei Zeichenfolgenfeldern) für den Konstruktor angeben. Sie können auch andere Eigenschaften festlegen, z. B. `IsSearchable`, `IsFilterable` usw.
+2. Legen Sie die `Fields`-Eigenschaft des `Index`-Objekts auf ein Array von `Field`-Objekten fest. Jedes der `Field`-Objekte definiert das Verhalten eines Felds im Index. Sie können den Namen des Felds zusammen mit dem Datentyp (oder dem Analyzer bei Zeichenfolgenfeldern) für den Konstruktor angeben. Sie können auch andere Eigenschaften festlegen, z. B. `IsSearchable`, `IsFilterable` usw.
 
 Berücksichtigen Sie beim Gestalten des Index die Benutzerfreundlichkeit und die geschäftlichen Anforderungen, da jedem `Field` die [richtigen Eigenschaften](https://msdn.microsoft.com/library/azure/dn798941.aspx) zugewiesen sein müssen. Über diese Eigenschaften wird gesteuert, welche Suchfunktionen (Filtern, Facettierung, Sortieren der Volltextsuche usw.) für welche Felder gelten. Für jede Eigenschaft, die Sie nicht explizit festlegen, wird mit der `Field`-Klasse automatisch die entsprechende Suchfunktion deaktiviert, bis Sie sie ausdrücklich aktivieren.
 
@@ -105,21 +109,21 @@ Wir haben die Eigenschaftswerte für jedes `Field` ausgehend davon ausgewählt, 
 
 In Ihrem Index des Typs `DataType.String` muss genau ein Feld als *key*-Feld bestimmt sein, indem `IsKey` auf `true` festgelegt wird (siehe `hotelId` im Beispiel oben).
 
-Diese Indexdefinition verwendet für das Feld `description_fr` eine benutzerdefinierte Sprachanalyse, da sie französischen Text speichern soll. Im [Thema zur Sprachunterstützung auf MSDN](https://msdn.microsoft.com/library/azure/dn879793.aspx) sowie im entsprechenden [Blogbeitrag](https://azure.microsoft.com/blog/language-support-in-azure-search/) finden Sie weitere Informationen zu Sprachanalysen.
+Diese Indexdefinition verwendet für das Feld `description_fr` eine benutzerdefinierte Sprachanalyse, da sie Text auf Französisch speichern soll. Im [Thema zur Sprachunterstützung auf MSDN](https://msdn.microsoft.com/library/azure/dn879793.aspx) sowie im entsprechenden [Blogbeitrag](https://azure.microsoft.com/blog/language-support-in-azure-search/) finden Sie weitere Informationen zu Sprachanalysen.
 
 > [!NOTE]
 > Beachten Sie, dass durch Übergeben von `AnalyzerName.FrLucene` an den Konstruktor das `Field` automatisch den Typ `DataType.String` aufweist und `IsSearchable` auf `true` festgelegt ist.
 > 
 > 
 
-## IV. Erstellen des Index
+## <a name="iv-create-the-index"></a>IV. Erstellen des Index
 Nachdem Sie nun über ein initialisiertes `Index`-Objekt verfügen, können Sie den Index einfach durch Aufrufen von `Indexes.Create` für das `SearchServiceClient`-Objekt aufrufen:
 
 ```csharp
 serviceClient.Indexes.Create(definition);
 ```
 
-Bei einer erfolgreich durchgeführten Anforderung wird die Methode normal zurückgegeben. Wenn ein Problem mit der Anforderung auftritt, z. B. ein ungültiger Parameter vorhanden ist, gibt die Methode `CloudException` zurück.
+Bei einer erfolgreich durchgeführten Anforderung wird die Methode normal zurückgegeben. Wenn ein Problem mit der Anforderung auftritt, z. B. ein ungültiger Parameter vorhanden ist, gibt die Methode `CloudException` zurück.
 
 Wenn Sie einen Index nicht mehr benötigen und ihn löschen möchten, rufen Sie einfach die `Indexes.Delete`-Methode für `SearchServiceClient` auf. Der Index „hotels“ wird beispielsweise wie folgt gelöscht:
 
@@ -132,7 +136,12 @@ serviceClient.Indexes.Delete("hotels");
 > 
 > 
 
-## Weiter
+## <a name="next"></a>Weiter
 Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den Index hochladen](search-what-is-data-import.md) und mit dem Durchsuchen der Daten beginnen.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

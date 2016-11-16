@@ -1,12 +1,12 @@
 ---
 title: Erste Schritte mit dem IoT Hub Gateway SDK | Microsoft Docs
-description: Diese exemplarische Vorgehensweise für das Azure IoT Hub Gateway SDK veranschaulicht anhand von Linux die grundlegenden Konzepte, mit denen Sie in Verbindung mit dem Azure IoT Hub Gateway SDK vertraut sein sollten.
+description: "Diese exemplarische Vorgehensweise für das Azure IoT Gateway SDK veranschaulicht anhand von Linux die grundlegenden Konzepte, mit denen Sie in Verbindung mit dem Azure IoT Gateway SDK vertraut sein sollten."
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: chipalost
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: cf537bdd-2352-4bb1-96cd-a283fcd3d6cf
 ms.service: iot-hub
 ms.devlang: cpp
 ms.topic: get-started-article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2016
 ms.author: andbuc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 23176a9251a90a985a5d2fbce23ceeb9d0925234
+
 
 ---
-# IoT-Gateway SDK (Beta) – erste Schritte mit Linux
+# <a name="azure-iot-gateway-sdk-beta-get-started-using-linux"></a>Azure IoT Gateway SDK (Beta) – erste Schritte mit Linux
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
-## Erstellen des Beispiels
+## <a name="how-to-build-the-sample"></a>Erstellen des Beispiels
 Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupdevbox], um mit dem SDK unter Linux arbeiten zu können.
 
 1. Öffnen Sie eine Shell.
@@ -31,12 +35,12 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
 > 
 > 
 
-## Ausführen des Beispiels
+## <a name="how-to-run-the-sample"></a>Ausführen des Beispiels
 1. Das **build.sh**-Skript generiert die Ausgabe im **build**-Ordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys. Hierzu gehören die beiden in diesem Beispiel verwendeten Module.
    
-    Das Buildskript platziert **liblogger\_hl.so** im Ordner **build/modules/logger/** und **libhello\_world\_hl.so** im Ordner **build/modules/hello\_world/**. Verwenden Sie diese Pfade für den Wert **module path**, wie in der JSON-Einstellungsdatei unten gezeigt.
-2. Die Datei **hello\_world\_lin.json** im Ordner **samples/hello\_world/src** ist eine JSON-Beispieleinstellungsdatei für Linux, die Sie zur Ausführung des Beispiels verwenden können. Bei den unten gezeigten beispielhaften JSON-Einstellungen wird angenommen, dass Sie das Beispiel aus dem Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys ausführen.
-3. Legen Sie im Modul **logger\_hl** im Abschnitt **args** den Wert **filename** auf den Namen und Pfad der Datei fest, in der die Protokolldaten gespeichert werden.
+    Das Buildskript platziert **liblogger_hl.so** im Ordner **build/modules/logger/** und **libhello_world_hl.so** im Ordner **build/modules/hello_world/**. Verwenden Sie diese Pfade für den Wert **module path** , wie in der JSON-Einstellungsdatei unten gezeigt.
+2. Die Datei **hello_world_lin.json** im Ordner **samples/hello_world/src** ist eine JSON-Beispieleinstellungsdatei für Linux, die Sie zur Ausführung des Beispiels verwenden können. Bei den unten gezeigten beispielhaften JSON-Einstellungen wird angenommen, dass Sie das Beispiel aus dem Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk** -Repositorys ausführen.
+3. Legen Sie im Modul **logger_hl** im Abschnitt **args** den Wert **filename** auf den Namen und Pfad der Datei fest, in der die Protokolldaten gespeichert werden.
    
     Dies ist ein Beispiel für eine JSON-Einstellungsdatei für Linux, die in die Datei **log.txt** in dem Ordner schreibt, in dem Sie das Beispiel ausführen.
    
@@ -46,7 +50,9 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
       [ 
         {
           "module name" : "logger_hl",
-          "module path" : "./build/modules/logger/liblogger_hl.so",
+          "loading args": {
+            "module path" : "./build/modules/logger/liblogger_hl.so"
+          },
           "args" : 
           {
             "filename":"./log.txt"
@@ -54,7 +60,9 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
         },
         {
           "module name" : "hello_world",
-          "module path" : "./build/modules/hello_world/libhello_world_hl.so",
+          "loading args": {
+            "module path" : "./build/modules/hello_world/libhello_world_hl.so"
+          },
           "args" : null
         }
       ],
@@ -67,7 +75,7 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
       ]
     }
     ```
-4. Navigieren Sie in der Shell zum Ordner **azure-iot-gateway-sdk**.
+4. Navigieren Sie in der Shell zum Ordner **azure-iot-gateway-sdk** .
 5. Führen Sie den folgenden Befehl aus:
    
    ```
@@ -79,4 +87,8 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

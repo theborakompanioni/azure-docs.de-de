@@ -1,4 +1,4 @@
-### Basic-Dienstebene
+### <a name="basic-service-tier"></a>Basic-Dienstebene
 |  |  |
 | --- | --- |
 | Max. DTU-Anzahl |5 |
@@ -10,7 +10,7 @@
 | Point-in-Time-Wiederherstellung |Beliebiger Punkt der letzten sieben Tage |
 | Notfallwiederherstellung |Aktive Georeplikation |
 
-### Standard-Dienstebene
+### <a name="standard-service-tier"></a>Standard-Dienstebene
 |  |  |
 | --- |:---:|
 | **S0** &nbsp;&nbsp;&nbsp;&nbsp; **S1** &nbsp;&nbsp;&nbsp;&nbsp; **S2** &nbsp;&nbsp;&nbsp; **S3** | |
@@ -23,7 +23,7 @@
 | Point-in-Time-Wiederherstellung |Beliebiger Punkt der letzten 35 Tage |
 | Notfallwiederherstellung |Aktive Georeplikation |
 
-### Premium-Dienstebene
+### <a name="premium-service-tier"></a>Premium-Dienstebene
 |  |  |
 | --- |:---:|
 | **P1** &nbsp;&nbsp;&nbsp;&nbsp; **P2** &nbsp;&nbsp;&nbsp;&nbsp; **P4** &nbsp;&nbsp;&nbsp; **P6/P3** &nbsp;&nbsp; **P11** &nbsp;&nbsp; **P15** | |
@@ -32,8 +32,12 @@
 | Max. In-Memory-OLTP-Speicher (GB) |&nbsp;&nbsp;&nbsp;&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32 |
 | Max. gleichzeitige Worker |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
 | Maximale Anzahl gleichzeitiger Anmeldungen |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
-| Max. gleichzeitige Sitzungen |2400 &nbsp;4800 &nbsp; 9600 &nbsp;19.200 &nbsp;32.000 &nbsp;32.000 |
+| Max. gleichzeitige Sitzungen |2400 &nbsp;4800 &nbsp; 9600 &nbsp;19200 &nbsp;32000 &nbsp;32000 |
 | Point-in-Time-Wiederherstellung |Beliebiger Punkt der letzten 35 Tage |
 | Notfallwiederherstellung |Aktive Georeplikation |
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

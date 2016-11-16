@@ -1,12 +1,12 @@
 ---
-title: Secure your key vault | Microsoft Docs
-description: Manage access permissions for key vault for managing vaults and keys and secrets. Authentication and authorization model for key vault and how to secure your key vault
+title: "Schützen einer Key Vault-Instanz | Microsoft-Dokumentation"
+description: "Verwalten Sie Zugriffsberechtigungen für Key Vault zur Verwaltung von Tresoren, Schlüsseln und Geheimnissen. Authentifizierungs- und Autorisierungsmodell für Key Vault und Schützen einer Key Vault-Instanz"
 services: key-vault
-documentationcenter: ''
+documentationcenter: 
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
-
+ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,151 +14,155 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/07/2016
 ms.author: ambapat
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5d58210a155666642cec8c180249c4e43b69fb9c
+
 
 ---
-# <a name="secure-your-key-vault"></a>Secure your key vault
-Azure Key Vault is a cloud service that safeguards encryption keys and secrets (such as certificates, connection strings, passwords) for your cloud applications. Since this data is sensitive and business critical, you want to secure access to your key vaults so that only authorized applications and users can access key vault. This article provides an overview of key vault access model, explains authentication and authorization, and describes how to secure access to key vault for your cloud applications with an example.
+# <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
+Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre Cloudanwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, empfiehlt es sich, den Zugriff auf Key Vault-Instanzen so zu konfigurieren, dass nur autorisierte Anwendungen und Benutzer auf Key Vault zugreifen können. Dieser Artikel enthält eine Übersicht über das Key Vault-Zugriffsmodell sowie Informationen zur Authentifizierung und Autorisierung. Außerdem erfahren Sie anhand eines Beispiels, wie Sie den Zugriff auf Key Vault für Ihre Cloudanwendungen schützen.
 
-## <a name="overview"></a>Overview
-Access to a key vault is controlled through two separate interfaces: management plane and data plane. For both planes proper authentication and authorization is required before a caller (a user or an application) can get access to key vault. Authentication establishes the identity of the caller, while authorization determines what operations the caller is allowed to perform.
+## <a name="overview"></a>Übersicht
+Der Zugriff auf eine Key Vault-Instanz wird über zwei separate Schnittstellen gesteuert: die Verwaltungsebene und die Datenebene. Auf beiden Ebenen kann ein Aufrufer (ein Benutzer oder eine Anwendung) erst nach ordnungsgemäßer Authentifizierung und Autorisierung auf Key Vault zugreifen. Bei der Authentifizierung wird die Identität des Aufrufers ermittelt. Bei der Autorisierung wird dagegen bestimmt, welche Vorgänge der Aufrufer ausführen darf.
 
-For authentication both management plane and data plane use Azure Active Directory. For authorization, management plane uses role-based access control (RBAC) while data plane uses key vault access policy.
+Für die Authentifizierung wird sowohl auf der Verwaltungs- als auch auf der Datenebene Azure Active Directory verwendet. Für die Autorisierung wird auf der Verwaltungsebene die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, während auf der Datenebene Key Vault-Zugriffsrichtlinien zum Einsatz kommen.
 
-Here is a brief overview of the topics covered:
+Im Anschluss finden Sie eine kurze Übersicht über die behandelten Themen:
 
-[Authentication using Azure Active Directory](#authentication-using-azure-active-direcrory) - This section explains how a caller authenticates with Azure Active Directory to access a key vault via management plane and data plane. 
+[Authentifizierung über Azure Active Directory](#authentication-using-azure-active-direcrory): In diesem Abschnitt erfahren Sie, wie sich ein Aufrufer mit Azure Active Directory authentifiziert, um über die Verwaltungs- oder Datenebene auf eine Key Vault-Instanz zuzugreifen. 
 
-[Management plane and data plane](#management-plane-and-data-plane) - Management plane and data plane are two access planes used for accessing your key vault. Each access plane supports specific operations. This section describes the access endpoints, operations supported, and access control method used by each plane. 
+[Verwaltungsebene und Datenebene](#management-plane-and-data-plane): Hierbei handelt es sich um zwei Zugriffsebenen für den Zugriff auf Ihre Key Vault-Instanz. Jede Zugriffsebene unterstützt bestimmte Vorgänge. In diesem Abschnitt werden die Zugriffsendpunkte, die unterstützten Vorgänge und die Zugriffssteuerungsmethoden der jeweiligen Ebene beschrieben. 
 
-[Management plane access control](#management-plane-access-control) - In this section we'll look at allowing access to management plane operations using role-based access control.
+[Zugriffssteuerung auf der Verwaltungsebene](#management-plane-access-control): Dieser Abschnitt beschäftigt sich mit der Gewährung des Zugriffs auf Verwaltungsebenenvorgänge mithilfe der rollenbasierten Zugriffssteuerung.
 
-[Data plane access control](#data-plane-access-control) - This section describes how to use key vault access policy to control data plane access.
+[Zugriffssteuerung auf der Datenebene](#data-plane-access-control): In diesem Abschnitt erfahren Sie, wie Sie mithilfe von Key Vault-Zugriffsrichtlinien den Zugriff auf die Datenebene steuern.
 
-[Example](#example) - This example describes how to setup access control for your key vault to allow three different teams (security team, developers/operators, and auditors) to perform specific tasks to develop, manage and monitor an application in Azure.
+[Beispiel](#example): Dieses Beispiel veranschaulicht, wie Sie die Zugriffssteuerung für Ihre Key Vault-Instanz einrichten, um drei Teams (Sicherheitsteam, Entwickler/Betreiber und Prüfer) die Ausführung bestimmter Aufgaben für die Entwicklung, Verwaltung und Überwachung einer Anwendung in Azure zu ermöglichen.
 
-## <a name="authentication-using-azure-active-directory"></a>Authentication using Azure Active Directory
-When you create a key vault in an Azure subscription, it is automatically associated with the subscription's Azure Active Directory tenant. All callers (users and applications) must be registered in this tenant to access this key vault. An application or a user must authenticate with Azure Active Directory to access key vault. This applies to both management plane and data plane access. In both cases, an application can access key vault in two ways:
+## <a name="authentication-using-azure-active-directory"></a>Authentifizierung über Azure Active Directory
+Wenn Sie unter einem Azure-Abonnement eine Key Vault-Instanz erstellen, wird sie automatisch mit dem Azure Active Directory-Mandanten des Abonnements verknüpft. Alle Aufrufer (Benutzer und Anwendungen) müssen bei diesem Mandanten registriert sein, um auf die Key Vault-Instanz zugreifen zu können. Eine Anwendung oder ein Benutzer muss sich vor dem Zugriff auf die Key Vault-Instanz über Azure Active Directory authentifizieren. Das gilt sowohl auf der Verwaltungs- als auch auf der Datenebene. In beiden Fällen kann eine Anwendung auf zwei Arten auf Key Vault zugreifen:
 
-* **user+app access** - usually this is for applications that access key vault on behalf of a signed-in user. Azure PowerShell, Azure Portal are examples of this type of access. There are two ways to grant access to users: one way is to grant access to users so they can access key vault from any application and the other way is to grant a user access to key vault only when they use a specific application (referred to as compound identity). 
-* **app-only access** - for applications that run daemon services, background jobs etc. The application's identity is granted access to the key vault.
+* **Benutzer- und App-Zugriff**: Diese Methode wird üblicherweise für Anwendungen verwendet, die im Auftrag eines angemeldeten Benutzers auf Key Vault zugreifen. Beispiele hierfür wären etwa Azure PowerShell und das Azure-Portal. Benutzern kann auf zwei Arten Zugriff gewährt werden: Bei der ersten Option wird Benutzern Zugriff gewährt, damit sie von einer beliebigen Anwendung aus auf Key Vault zugreifen können. Bei der zweiten Option wird einem Benutzer nur bei Verwendung einer bestimmten Anwendung Zugriff auf Key Vault gewährt. (Letzteres wird auch als Verbundidentität bezeichnet.) 
+* **Nur App-Zugriff**: Diese Methode ist für Anwendungen vorgesehen, die Daemon-Dienste, Hintergrundaufträge und Ähnliches ausführen. Die Identität der Anwendung erhält Zugriff auf die Key Vault-Instanz.
 
-In both types of applications, the application authenticates with Azure Active Directory using any of the [supported authentication methods](../active-directory/active-directory-authentication-scenarios.md) and acquires a token. Authentication method used depends on the application type. Then the application uses this token and sends REST API request to key vault. In case of management plane access the requests are routed through Azure Resource Manager endpoint. When accessing data plane, the applications talks directly to a key vault endpoint. See more details on the [whole authentication flow](../active-directory/active-directory-protocols-oauth-code.md). 
+Bei beiden Anwendungstypen authentifiziert sich die Anwendung über Azure Active Directory mit einer der [unterstützten Authentifizierungsmethoden](../active-directory/active-directory-authentication-scenarios.md) und bezieht ein Token. Welche Authentifizierungsmethode verwendet wird, hängt von der Art der Anwendung ab. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an Key Vault. Im Falle eines Zugriffs auf die Verwaltungsebene werden die Anforderungen über einen Azure Resource Manager-Endpunkt weitergeleitet. Beim Zugriff auf die Datenebene kommunizieren die Anwendungen hingegen direkt mit einem Key Vault-Endpunkt. Ausführlichere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../active-directory/active-directory-protocols-oauth-code.md). 
 
-The resource name for which the application requests a token is different depending on whether the application is accessing management plane or data plane. Hence the resource name is either management plane or data plane endpoint described in the table in a later section, depending on the Azure environment.
+Der Ressourcenname, für den die Anwendung ein Token anfordert, hängt davon ab, ob die Anwendung auf die Verwaltungs- oder auf die Datenebene zugreift. Folglich ist der Ressourcenname je nach Azure-Umgebung entweder ein Verwaltungsebenen- oder ein Datenebenen-Endpunkt, wie in der Tabelle in einem späteren Abschnitt beschrieben.
 
-Having one single mechanism for authentication to both management and data plane has its own benefits:
+Die Verwendung eines einzelnen Authentifizierungsmechanismus für die Verwaltungs- und die Datenebene hat einige Vorteile:
 
-* Organizations can centrally control access to all key vaults in their organization
-* If a user leaves, they instantly lose access to all key vaults in the organization
-* Organizations can customize authentication via the options in Azure Active Directory (for example, enabling multi-factor authentication for added security)
+* Organisationen können den Zugriff auf alle ihre Key Vault-Instanzen steuern.
+* Wenn ein Benutzer aus der Organisation ausscheidet, verliert er umgehend den Zugriff auf sämtliche Key Vault-Instanzen in der Organisation.
+* Organisationen können die Authentifizierung über die Optionen in Azure Active Directory anpassen und so beispielsweise die mehrstufige Authentifizierung aktivieren, um die Sicherheit zu verbessern.
 
-## <a name="management-plane-and-data-plane"></a>Management plane and data plane
-Azure Key Vault is an Azure service available via Azure Resource Manager deployment model. When you create a key vault, you get a virtual container inside which you can create other objects like keys, secrets, and certificates. Then you access your key vault using management plane and data plane to perform specific operations. Management plane interface is used to manage your key vault itself, such as creating, deleting, updating key vault attributes and setting access policies for data plane. Data plane interface is used to add, delete, modify, and use the keys, secrets, and certificates stored in your key vault.
+## <a name="management-plane-and-data-plane"></a>Verwaltungsebene und Datenebene
+Azure Key Vault ist ein Azure-Dienst und im Rahmen des Azure Resource Manager-Bereitstellungsmodells verfügbar. Wenn Sie eine Key Vault-Instanz erstellen, erhalten Sie einen virtuellen Container, in dem Sie andere Objekte wie Schlüssel, Geheimnisse und Zertifikate erstellen können. Anschließend greifen Sie über die Verwaltungs- oder über die Datenebene auf Ihre Key Vault-Instanz zu, um bestimmte Vorgänge auszuführen. Die Schnittstelle der Verwaltungsebene dient zum Verwalten der eigentlichen Key Vault-Instanz (also etwa zum Erstellen, Löschen und Aktualisieren von Key Vault-Attributen sowie zum Festlegen von Zugriffsrichtlinien für die Datenebene). Die Schnittstelle der Datenebene dient zum Hinzufügen, Löschen, Ändern und Verwenden der in Ihrer Key Vault-Instanz gespeicherten Schlüssel, Geheimnisse und Zertifikate.
 
-The management plane and data plane interfaces are accessed through different endpoints (see table). The second column in the table describes the DNS names for these endpoints in different Azure environments. The third column describes the operations you can perform from each access plane. Each access plane also has its own access control mechanism: for management plane access control is set using Azure Resource Manager Role-Based Access Control (RBAC), while for data plane access control is set using key vault access policy.
+Der Zugriff auf die Schnittstellen der Verwaltungs- und der Datenebene erfolgt über unterschiedliche Endpunkte (wie in der Tabelle zu sehen). Die zweite Spalte in der Tabelle gibt Aufschluss über die DNS-Namen für diese Endpunkte in verschiedenen Azure-Umgebungen. In der dritten Spalte werden die Vorgänge beschrieben, die Sie über die jeweilige Zugriffsebene ausführen können. Jede Zugriffsebene besitzt zudem einen eigenen Zugriffssteuerungsmechanismus: Für die Verwaltungsebene wird die Zugriffssteuerung über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure Resource Manager festgelegt, für die Zugriffssteuerung der Datenebene werden hingegen Key Vault-Zugriffsrichtlinien verwendet.
 
-| Access plane | Access endpoints | Operations | Access control mechanism |
+| Zugriffsebene | Zugriffsendpunkte | Vorgänge | Zugriffssteuerungsmechanismus |
 | --- | --- | --- | --- |
-| Management plane |**Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |Create/Read/Update/Delete key vault <br> Set access policies for key vault<br>Set tags for key vault |Azure Resource Manager Role-Based Access Control (RBAC) |
-| Data plane |**Global:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |For Keys: Decrypt, Encrypt, UnwrapKey, WrapKey, Verify, Sign, Get, List, Update, Create, Import, Delete, Backup, Restore<br><br> For secrets: Get, List, Set, Delete |Key vault access policy |
+| Verwaltungsebene |**Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br>  management.microsoftazure.de:443 |Erstellen/Lesen/Aktualisieren/Löschen von Key Vault <br> Festlegen von Zugriffsrichtlinien für Key Vault<br>Festlegen von Tags für Key Vault |Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) im Rahmen von Azure Resource Manager |
+| Datenebene |**Global:**<br> &lt;Tresorname&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;Tresorname&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;Tresorname&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> &lt;Tresorname&gt;.vault.microsoftazure.de:443 |Für Schlüssel: decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore<br><br> Für Geheimnisse: get, list, set, delete |Key Vault-Zugriffsrichtlinie |
 
-The management plane and data plane access controls work independently. For example, if you want to grant an application access to use keys in a key vault, you only need to grant data plane access permissions using key vault access policies and no management plane access is needed for this application. And conversely, if you want a user to be able to read vault properties and tags, but not have any access to keys, secrets, or certificates, you can grant this user, 'read' access using RBAC and no access to data plane is required.
+Die Zugriffsteuerungen für die Verwaltungs- und die Datenebene sind voneinander unabhängig. Wenn Sie also beispielsweise einer Anwendung die Verwendung von Schlüsseln in einer Key Vault-Instanz ermöglichen möchten, müssen Sie ihr lediglich mithilfe von Key Vault-Zugriffsrichtlinien Zugriffsberechtigungen für die Datenebene gewähren, da die Anwendung keinen Zugriff auf die Verwaltungsebene benötigt. Umgekehrt gilt: Wenn ein Benutzer Lesezugriff auf Tresoreigenschaften und Tags, aber keinen Zugriff auf Schlüssel, Geheimnisse oder Zertifikate haben soll, können Sie ihm mithilfe von RBAC Lesezugriff gewähren, da in diesem Fall kein Zugriff auf die Datenebene erforderlich ist.
 
-## <a name="management-plane-access-control"></a>Management plane access control
-The management plane consists of operations that affect the key vault itself. For example, you can create or delete a key vault. You can get a list of vaults in a subscription. You can retrieve key vault properties (such as SKU, tags) and set key vault access policies that control the users and applications that can access keys and secrets in the key vault. Management plane access control uses RBAC. See the complete list of key vault operations that can be performed via management plane in the table in preceding section. 
+## <a name="management-plane-access-control"></a>Zugriffssteuerung auf der Verwaltungsebene
+Auf der Verwaltungsebene werden Vorgänge ausgeführt, die sich auf die eigentliche Key Vault-Instanz auswirken. Hier können Sie beispielsweise eine Key Vault-Instanz erstellen oder löschen. Sie können eine Liste aller Tresore in einem Abonnement abrufen. Sie können Key Vault-Eigenschaften (etwa SKU und Tags) abrufen und Key Vault-Zugriffsrichtlinien festlegen, um zu steuern, welche Benutzer und Anwendungen auf die Schlüssel und Geheimnisse in Key Vault zugreifen können. Die Zugriffssteuerung auf der Verwaltungsebene basiert auf RBAC. Eine umfassende Liste mit den Key Vault-Vorgängen, die über die Verwaltungsebene ausgeführt werden können, finden Sie in der Tabelle im vorherigen Abschnitt. 
 
-### <a name="role-based-access-control-(rbac)"></a>Role-based Access Control (RBAC)
-Each Azure subscription has an Azure Active Directory. Users, groups, and applications from this directory can be granted access to manage resources in the Azure subscription that use the Azure Resource Manager deployment model. This type of access control is referred to as Role-Based Access Control (RBAC). To manage this access, you can use the [Azure portal](https://portal.azure.com/), the [Azure CLI tools](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md), or the [Azure Resource Manager REST APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+### <a name="rolebased-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im Azure-Abonnement gewährt werden, für die das Azure Resource Manager-Bereitstellungsmodell verwendet wird. Diese Art von Zugriffssteuerung wird als rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bezeichnet. Zur Verwaltung dieses Zugriffs können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md) oder die [Azure Resource Manager-REST-APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx) verwenden.
 
-With the Azure Resource Manager model, you create your key vault in a resource group and control access to the management plane of this key vault by using Azure Active Directory. For example, you can grant users or a group ability to manage key vaults in a specific resource group.
+Bei Verwendung des Azure Resource Manager-Modells erstellen Sie Ihre Key Vault-Instanz in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene dieser Key Vault-Instanz mithilfe von Azure Active Directory. So können Sie beispielsweise Benutzern oder einer Gruppe die Verwaltung von Key Vault-Instanzen in einer bestimmten Ressourcengruppe ermöglichen.
 
-You can grant access to users, groups and applications at a specific scope by assigning appropriate RBAC roles. For example, to grant access to a user to manage key vaults you would assign a predefined role 'key vault Contributor' to this user at a specific scope. The scope in this case would be either a subscription, a resource group, or just a specific key vault. A role assigned at subscription level applies to all resource groups and resources within that subscription. A role assigned at resource group level applies to all resources in that resource group. A role assigned for a specific resource only applies to that resource. There are several predefined roles (see [RBAC: Built-in roles](../active-directory/role-based-access-built-in-roles.md)), and if the predefined roles do not fit your needs you can also define your own roles.
-
-> [!IMPORTANT]
-> Note that if a user has Contributor permissions (RBAC) to a key vault management plane, she can grant herself access to data plane, by setting key vault access policy, which controls access to data plane. Therefore, it is recommended to tightly control who has 'Contributor' access to your key vaults to ensure only authorized persons can access and manage your key vaults, keys, secrets, and certificates.
-> 
-> 
-
-## <a name="data-plane-access-control"></a>Data plane access control
-The key vault data plane consists of operations that affect the objects in a key vault, such as keys, secrets, and certificates.  This includes key operations such as create, import, update, list, backup, and restore keys, cryptographic operations such as sign, verify, encrypt, decrypt, wrap, and unwrap, and set tags and other attributes for keys. Similarly, for secrets it includes, get, set, list, delete.
-
-Data plane access is granted by setting access policies for a key vault. A user, group, or an application must have Contributor permissions (RBAC) for management plane for a key vault to be able to set access policies for that key vault. A user, group, or application can be granted access to perform specific operations for keys or secrets in a key vault. key vault support up to 16 access policy entries for a key vault. Create an Azure Active Directory security group and add users to that group to grant data plane access to several users to a key vault.
-
-### <a name="key-vault-access-policies"></a>key vault Access Policies
-key vault access policies grant permissions to keys, secrets and certificates separately. For example, you can give a user access to only keys, but no permissions for secrets. However, permissions to access keys or secrets or certificates are at the vault level. In other words, key vault access policy does not support object level permissions. You can use [Azure portal](https://portal.azure.com/), the [Azure CLI tools](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md), or the [key vault Management REST APIs](https://msdn.microsoft.com/library/azure/mt620024.aspx) to set access policies for a key vault.
+Durch Zuweisen geeigneter RBAC-Rollen können Sie Benutzern, Gruppen und Anwendungen in einem bestimmten Bereich Zugriff gewähren. Wenn Sie also etwa einem Benutzer Zugriff für die Verwaltung von Key Vault-Instanzen gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle „Key Vault-Mitwirkender“ zu. Der Bereich wäre in diesem Fall entweder ein Abonnement, eine Ressourcengruppe oder einfach eine bestimmte Key Vault-Instanz. Eine auf Abonnementebene zugewiesene Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements. Eine auf Ressourcengruppenebene zugewiesene Rolle gilt für alle Ressourcen in der Ressourcengruppe. Eine für eine bestimmte Ressource zugewiesene Rolle gilt nur für diese Ressource. Es stehen mehrere vordefinierte Rollen zur Verfügung (siehe [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md)). Sollte hier keine passende Rolle für Sie dabei sein, können Sie auch eigene Rollen erstellen.
 
 > [!IMPORTANT]
-> Note that key vault access policies apply at the vault level. For example, when a user is granted permission to create and delete keys, she can perform those operations on all keys in that key vault.
+> Hinweis: Falls ein Benutzer für eine Key Vault-Verwaltungsebene über Mitwirkungsberechtigungen (RBAC) verfügt, kann er sich durch Festlegen einer Key Vault-Zugriffsrichtlinie (steuert den Zugriff auf den Datenebene) selbst Zugriff auf die Datenebene gewähren. Es empfiehlt sich daher, sehr genau darauf zu achten, wer als Mitwirkender Zugriff auf Ihre Key Vault-Instanzen hat, um sicherzustellen, dass nur autorisierte Benutzer auf Ihre Key Vault-Instanzen, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
 > 
 > 
 
-## <a name="example"></a>Example
-Let's say you are developing an application that uses a certificate for SSL, Azure storage for storing data, and uses an RSA 2048-bit key for sign operations. Let's say this application is running in a VM (or a VM Scale Set). You can use a key vault to store all the application secrets, and use key vault to store the bootstrap certificate that is used by the application to authenticate with Azure Active Directory.
+## <a name="data-plane-access-control"></a>Zugriffssteuerung auf der Datenebene
+Auf der Key Vault-Datenebene werden Vorgänge ausgeführt, die sich auf die Objekte in einer Key Vault-Instanz auswirken (also etwa auf Schlüssel, Geheimnisse und Zertifikate).  Hierzu zählen Schlüsselvorgänge wie das Erstellen, Importieren, Aktualisieren, Auflisten, Sichern und Wiederstellen von Schlüsseln sowie kryptografische Vorgänge wie das Signieren, Überprüfen, Verschlüsseln, Entschlüsseln, Verpacken, Entpacken und Festlegen von Tags und anderen Attributen für Schlüssel. Beispiele für geheimnisspezifische Vorgänge wären etwa Abrufen, Festlegen, Auflisten und Löschen.
 
-So, here's a summary of all the keys and secrets to be stored in a key vault.
+Der Datenebenenzugriff wird durch Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz gewährt. Ein Benutzer, eine Gruppe oder eine Anwendung muss über Mitwirkungsberechtigungen (RBAC) für die Verwaltungsebene einer Key Vault-Instanz verfügen, um Zugriffsrichtlinien für diese Instanz festlegen zu können. Einem Benutzer, einer Gruppe oder einer Anwendung kann Zugriff zum Ausführen bestimmter Vorgänge für Schlüssel oder Geheimnisse in einer Key Vault-Instanz gewährt werden. Pro Key Vault-Instanz werden bis zu 16 Zugriffsrichtlinien unterstützt. Erstellen Sie eine Azure Active Directory-Sicherheitsgruppe, und fügen Sie ihr Benutzer hinzu, um mehreren Benutzern Datenebenenzugriff auf eine Key Vault-Instanz zu gewähren.
 
-* **SSL Cert** - used for SSL
-* **Storage Key** - used to get access to Storage account
-* **RSA 2048-bit key** - used for sign operations
-* **Bootstrap certificate** - used to authenticate to Azure Active Directory, to get access to key vault to fetch the storage key and use the RSA key for signing.
+### <a name="key-vault-access-policies"></a>Key Vault-Zugriffsrichtlinien
+Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Dadurch haben Sie beispielsweise die Möglichkeit, einem Benutzer nur Zugriff auf Schlüssel, aber keine Berechtigungen für Geheimnisse zu gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse oder Zertifikate gelten jedoch auf Tresorebene. Mit anderen Worten: Key Vault-Zugriffsrichtlinien unterstützen keine Berechtigungen auf Objektebene. Zum Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md) oder die [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.
 
-Now let's meet the people who are managing, deploying and auditing this application. We'll use three roles in this example.
+> [!IMPORTANT]
+> Beachten Sie, dass Key Vault-Zugriffsrichtlinien auf Tresorebene gelten. Wenn einem Benutzer also beispielsweise die Berechtigung zum Erstellen und Löschen von Schlüsseln gewährt wird, kann er diese Vorgänge für alle Schlüssel in dieser Key Vault-Instanz ausführen.
+> 
+> 
 
-* **Security team** - These are typically IT staff from the 'office of the CSO (Chief Security Officer)' or equivalent, responsible for the proper safekeeping of secrets such as SSL certificates, RSA keys used for signing, connection strings for databases, storage account keys.
-* **Developers/operators** - These are the folks who develop this application and then deploy it in Azure. Typically, they are not part of the security team, and hence they should not have access to any sensitive data, such as SSL certificates, RSA keys, but the application they deploy should have access to those.
-* **Auditors** - This is usually a different set of people, isolated from the developers and general IT staff. Their responsibility is to review proper use and maintenance of certificates, keys, etc. and ensure compliance with data security standards. 
+## <a name="example"></a>Beispiel
+Angenommen, Sie entwickeln eine Anwendung, die ein Zertifikat für SSL, Azure Storage zum Speichern von Daten und einen RSA-Schlüssel mit 2048 Bit für Signierungsvorgänge verwendet. Nehmen wir außerdem an, diese Anwendung wird auf einem virtuellen Computer (oder in einer VM-Skalierungsgruppe) ausgeführt. In diesem Fall können Sie alle Anwendungsgeheimnisse sowie das Bootstrap-Zertifikat, mit dem sich die Anwendung über Azure Active Directory authentifiziert, in einer Key Vault-Instanz speichern.
 
-There is one more role that is outside the scope of this application, but relevant here to be mentioned, and that would be the subscription (or resource group) administrator. Subscription administrator sets up initial access permissions for the security team. Here we assume that the subscription administrator has granted access to the security team to a resource group in which all the resources needed for this application reside.
+Im Anschluss finden Sie eine Zusammenfassung aller Schlüssel und Geheimnisse, die in einer Key Vault-Instanz gespeichert werden sollen:
 
-Now let's see what actions each role performs in the context of this application.
+* **SSL-Zertifikat**: Wird für SSL verwendet.
+* **Speicherschlüssel**: Wird verwendet, um Zugriff auf das Speicherkonto erhalten.
+* **RSA-Schlüssel (2048 Bit)**: Wird für Signierungsvorgänge verwendet.
+* **Bootstrap-Zertifikat**: Wird für die Authentifizierung bei Azure Active Directory verwendet, um Zugriff auf die Key Vault-Instanz zu erhalten, damit der Speicherschlüssel abgerufen und der RSA-Schlüssel zum Signieren verwendet werden kann.
 
-* **Security team**
-  * Create key vaults
-  * Turns on key vault logging
-  * Add keys/secrets
-  * Create backup of keys for disaster recovery
-  * Set key vault access policy to grant permissions to users and applications to perform specific operations
-  * Periodically roll keys/secrets
-* **Developers/operators**
-  * Get references to bootstrap and SSL certs (thumbprints), storage key (secret URI) and signing key (Key URI) from security team
-  * Develop and deploy application that accesses keys and secrets programmatically
-* **Auditors**
-  * Review usage logs to confirm proper key/secret use and compliance with data security standards
+Kommen wir nun zu den Benutzern, die diese Anwendung verwalten, bereitstellen und überprüfen. In diesem Beispiel werden drei Rollen verwendet:
 
-Now let's see what access permissions to key vault are needed by each role (and the application) to perform their assigned tasks. 
+* **Sicherheitsteam:** Hierbei handelt es sich üblicherweise um IT-Mitarbeiter aus der Abteilung des Sicherheitsverantwortlichen für die gesamte Organisation (Chief Security Officer, CSO) oder um Mitarbeiter mit vergleichbaren Aufgaben, die für die sichere Verwahrung von Geheimnissen wie SSL-Zertifikaten, RSA-Schlüsseln für Signaturen, Verbindungszeichenfolgen für Datenbanken, Speicherkontoschlüsseln und Ähnlichem zuständig sind.
+* **Entwickler/Betreiber:** Hierbei handelt es sich um die Mitarbeiter, die die Anwendung entwickeln und anschließend in Azure bereitstellen. Sie sind in der Regel nicht Teil des Sicherheitsteams und sollten daher keinen Zugriff auf vertrauliche Daten wie SSL-Zertifikate und RSA-Schlüssel haben – im Gegensatz zu der Anwendung, die sie entwickeln.
+* **Prüfer:** Hierbei handelt es sich in der Regel um eine weitere Personengruppe, die sich nicht mit den Entwicklern oder den IT-Mitarbeitern im Allgemeinen überschneidet. Diese Gruppe prüft die ordnungsgemäße Verwendung und Verwaltung von Zertifikaten, Schlüsseln und Ähnlichem und achtet auf die Einhaltung der Datensicherheitsstandards. 
 
-| User Role | Management plane permissions | Data plane permissions |
+Darüber hinaus gibt es auch noch die Rolle des Abonnement- oder Ressourcengruppenadministrators. Dieser ist für unser Beispiel zwar nicht relevant, soll aber dennoch nicht unerwähnt bleiben. Der Abonnementadministrator richtet die anfänglichen Zugriffsberechtigungen für das Sicherheitsteam ein. In unserem Beispiel gehen wir davon aus, dass der Abonnementadministrator dem Sicherheitsteam Zugriff auf eine Ressourcengruppe gewährt hat, die alle für diese Anwendung benötigten Ressourcen enthält.
+
+Als Nächstes sehen wir uns an, welche Aktionen die einzelnen Rollen im Kontext dieser Anwendung ausführen können.
+
+* **Sicherheitsteam**
+  * Erstellt Key Vault-Instanzen
+  * Aktiviert die Key Vault-Protokollierung
+  * Fügt Schlüssel/Geheimnisse hinzu
+  * Erstellt Schlüsselsicherungen für die Notfallwiederherstellung
+  * Legt Key Vault-Zugriffsrichtlinien fest, um Benutzern und Anwendungen Zugriff zu gewähren, damit sie bestimmte Vorgänge ausführen können
+  * Ändert regelmäßig Schlüssel/Geheimnisse
+* **Entwickler/Betreiber**
+  * Rufen Verweise auf Bootstrap- und SSL-Zertifikate (Fingerabdrücke), Speicherschlüssel (geheimer URI) und den Signaturschlüssel (Schlüssel-URI) vom Sicherheitsteam ab
+  * Entwickeln eine Anwendung, die programmgesteuert auf Schlüssel und Geheimnisse zugreift, und stellen diese Anwendung bereit
+* **Prüfer**
+  * Überprüfen anhand von Verwendungsprotokollen die ordnungsgemäße Verwendung von Schlüsseln/Geheimnissen sowie die Einhaltung von Datensicherheitsstandards
+
+Als Nächstes sehen wir uns an, welche Key Vault-Zugriffsberechtigungen die einzelnen Rollen (und die Anwendung) für ihre jeweiligen Aufgaben benötigen. 
+
+| Benutzerrolle | Berechtigungen auf Verwaltungsebene | Berechtigungen auf Datenebene |
 | --- | --- | --- |
-| Security Team |key vault Contributor |Keys: backup, create, delete, get, import, list, restore <br> Secrets: all |
-| Developers/Operator |key vault deploy permission so that the VMs they deploy can fetch secrets from the key vault |None |
-| Auditors |None |Keys: list<br>Secrets: list |
-| Application |None |Keys: sign<br>Secrets: get |
+| Sicherheitsteam |Key Vault-Mitwirkender |Schlüssel: Sichern, Erstellen, Löschen, Abrufen, Importieren, Auflisten, Wiederherstellen <br> Geheimnisse: alle |
+| Entwickler/Betreiber |Key Vault-Bereitstellungsberechtigung, damit die bereitgestellten virtuellen Computer Geheimnisse aus der Key Vault-Instanz abrufen können |Keine |
+| Prüfer |Keine |Schlüssel: Auflisten<br>Geheimnisse: Auflisten |
+| Anwendung |Keine |Schlüssel: Signieren<br>Geheimnisse: Abrufen |
 
 > [!NOTE]
-> Auditors need list permission for keys and secrets so they can inspect attributes for keys and secrets that are not emitted in the logs, such as tags, activation and expiration dates.
+> Prüfer müssen über die Berechtigung zum Auflisten von Schlüsseln und Geheimnissen verfügen, damit sie Attribute für Schlüssel und Geheimnisse inspizieren können, die nicht in den Protokollen ausgegeben werden. Hierzu zählen etwa Tags sowie Aktivierungs- und Ablauftermine.
 > 
 > 
 
-Besides permission to key vault, all three roles also need access to other resources. For example, to be able to deploy VMs (or Web Apps etc.) Developers/Operators also need 'Contributor' access to those resource types. Auditors need read access to the storage account where the key vault logs are stored.
+Neben der Berechtigung für Key Vault benötigen alle drei Rollen auch Zugriff auf andere Ressourcen. Beispielsweise müssen sie zum Bereitstellen von virtuellen Computern (oder Web-Apps und Ähnlichem) berechtigt sein. Entwickler/Betreiber benötigen zudem Mitwirkungszugriff auf diese Ressourcentypen. Prüfer benötigen Lesezugriff auf das Speicherkonto mit den gespeicherten Key Vault-Protokollen.
 
-Since the focus of this article is securing access to your key vault, we only illustrate the relevant portions pertaining to this topic and skip details regarding deploying certificates, accessing keys and secrets programmatically etc. Those details are already covered elsewhere. Deploying certificates stored in key vault to VMs is covered in a [blog post](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/), and there is [sample code](https://www.microsoft.com/download/details.aspx?id=45343) available that illustrates how to use bootstrap certificate to authenticate to Azure AD to get access to key vault.
+Da sich dieser Artikel in erster Linie mit dem Schutz des Zugriffs auf Ihre Key Vault-Instanz beschäftigt, gehen wir hier nur auf die Aspekte ein, die für dieses Thema relevant sind, und sparen etwa die Bereitstellung von Zertifikaten sowie den programmgesteuerten Zugriff auf Schlüssel und Geheimnisse aus. Diese Details werden an anderer Stelle behandelt. Informationen zum Bereitstellen von in Key Vault gespeicherten Zertifikaten für virtuelle Computer finden Sie in [diesem Blogbeitrag](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/). Beispielcode zur Authentifizierung bei Azure AD mithilfe eines Bootstrap-Zertifikats, um Zugriff auf Key Vault zu erlangen, finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=45343).
 
-Most of the access permissions can be granted using Azure portal, but to grant granular permissions you may need to use Azure PowerShell (or Azure CLI) to achieve the desired result. 
+Die meisten der Zugriffsberechtigungen können über das Azure-Portal gewährt werden. Wenn Sie allerdings präzisere Berechtigungen benötigen, müssen Sie unter Umständen Azure PowerShell (oder die Azure-Befehlszeilenschnittstelle) verwenden, um das gewünschte Ergebnis zu erzielen. 
 
-The following PowerShell snippets assume:
+Den im Anschluss bereitgestellten PowerShell-Codeausschnitten liegen folgende Annahmen zugrunde:
 
-* The Azure Active Directory administrator has created security groups that represent the three roles, namely Contoso Security Team, Contoso App Devops, Contoso App Auditors. The administrator has also added users to the groups they belong.
-* **ContosoAppRG** is the resource group where all the resources reside. **contosologstorage** is where the logs are stored. 
-* Key vault **ContosoKeyVault** and storage account used for key vault logs **contosologstorage** must be in the same Azure location
+* Der Azure Active Directory-Administrator hat für die drei Rollen folgende Sicherheitsgruppen erstellt: „Contoso Security Team“, „Contoso App Devops“ und „Contoso App Auditors“. Der Administrator hat den Gruppen entsprechende Benutzer hinzugefügt.
+* Die Ressourcen befinden sich alle in der Ressourcengruppe **ContosoAppRG**. Die Protokolle werden in **contosologstorage** gespeichert. 
+* Die Key Vault-Instanz **ContosoKeyVault** und das für die Key Vault-Protokolle verwendete Speicherkonto **contosologstorage** müssen sich am gleichen Azure-Standort befinden.
 
-First the subscription administrator assigns 'key vault Contributor' and 'User Access Administrator' roles to the security team. This allows the security team to manage access to other resources and manage key vaults in the resource group ContosoAppRG.
+Der Abonnementadministrator weist dem Sicherheitsteam zunächst die Rollen „key vault Contributor“ (Key Vault-Mitwirkender) und „User Access Administrator“ (Benutzerzugriffsadministrator) zu. Dadurch kann das Sicherheitsteam den Zugriff auf andere Ressourcen sowie Key Vault-Instanzen in der Ressourcengruppe „ContosoAppRG“ verwalten.
 
 ```
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
-The following script illustrates how the security team can create a key vault, setup logging, and set access permissions for other roles and the application. 
+Das folgende Skript veranschaulicht, wie das Sicherheitsteam eine Key Vault-Instanz erstellen, die Protokollierung einrichten und Zugriffsberechtigungen für andere Rollen und die Anwendung festlegen kann. 
 
 ```
 # Create key vault and enable logging
@@ -188,64 +192,67 @@ New-AzureRmRoleAssignment -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso A
 Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureRmADGroup -SearchString 'Contoso App Auditors')[0].Id -PermissionToKeys list -PermissionToSecrets list
 ```
 
-The custom role defined, is only assignable to the subscription where the ContosoAppRG resource group is created. If the same custom roles will be used for other projects in other subscriptions, it's scope could have more subscriptions added.
+Die benutzerdefinierte Rolle kann nur dem Abonnement zugewiesen werden, unter dem die Ressourcengruppe „ContosoAppRG“ erstellt wird. Falls die gleichen benutzerdefinierten Rollen für andere Projekte unter anderen Abonnements verwendet werden, kann der Bereich um weitere Abonnements erweitert werden.
 
-The custom role assignment for the developers/operators for the "deploy/action" permission is scoped to the resource group. This way only the VMs created in the resource group 'ContosoAppRG' will get the secrets (SSL cert and bootstrap cert). Any VMs that a member of dev/ops team creates in other resource group will not be able to get these secrets even if they knew the secret URIs.
+Die Zuweisung der benutzerdefinierten Rolle für die Entwickler/Betreiber im Zusammenhang mit der Bereitstellungs-/Aktionsberechtigung ist auf die Ressourcengruppe beschränkt. Dadurch können die Geheimnisse (SSL-Zertifikat und Bootstrap-Zertifikat) nur von virtuellen Computern abgerufen werden, die in der Ressourcengruppe „ContosoAppRG“ erstellt wurden. Virtuelle Computer, die vom Entwickler-/Betreiberteam in einer anderen Ressourcengruppe erstellt werden, können diese Geheimnisse nicht abrufen. Dies gilt auch, wenn ihnen die geheimen URIs bekannt sind.
 
-This example depicts a simple scenario. Real life scenarios may be more complex and you may need to adjust permissions to your key vault based on your needs. For example, in our example, we assume that security team will provide the key and secret references (URIs and thumbprints) that developers/operators team need to reference in their applications. Hence, they don't need to grant developers/operators any data plane access. Also, note that this example focuses on securing your key vault. Similar consideration should be given to secure [your VMs](https://azure.microsoft.com/services/virtual-machines/security/), [storage accounts](../storage/storage-security-guide.md) and other Azure resources too.
+Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis können die Szenarien komplexer ausfallen und eine entsprechende Anpassung der Berechtigungen für Ihre Key Vault-Instanz erfordern. In unserem Beispiel gehen wir etwa davon aus, dass das Sicherheitsteam die Verweise auf Schlüssel und Geheimnisse (URIs und Fingerabdrücke) bereitstellt, die das Entwickler-/Betreiberteam in seinen Anwendungen benötigt. Daher müssen sie den Entwicklern/Betreibern keinerlei Zugriff auf die Datenebene gewähren. Beachten Sie außerdem, dass es in diesem Beispiel in erster Linie um den Schutz Ihrer Key Vault-Instanz geht. Ähnliche Überlegungen sollten auch für den Schutz Ihrer [virtuellen Computer](https://azure.microsoft.com/services/virtual-machines/security/), [Speicherkonten](../storage/storage-security-guide.md) und anderen Azure-Ressourcen angestellt werden.
 
 > [!NOTE]
-> Note: This example shows how key vault access will be locked down in production. The developers should have their own subscription or resourcegroup where they have full permissions to manage their vaults, VMs and storage account where they develop the application.
+> Hinweis: Dieses Beispiel zeigt, wie der Key Vault-Zugriff in der Produktion gesperrt wird. Die Entwickler müssen über ein eigenes Abonnement oder über eine eigene Ressourcengruppe mit uneingeschränkten Berechtigungen verfügen, um ihre Tresore, ihre virtuellen Computer und ihr Speicherkonto für die Anwendungsentwicklung verwalten zu können.
 > 
 > 
 
-## <a name="resources"></a>Resources
-* [Azure Active Directory Role-based Access Control](../active-directory/role-based-access-control-configure.md)
+## <a name="resources"></a>Ressourcen
+* [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md)
   
-  This article explains the Azure Active Directory Role-based Access Control and how it works.
-* [RBAC: Built in Roles](../active-directory/role-based-access-built-in-roles.md)
+  Dieser Artikel beschreibt die rollenbasierte Steuerung des Zugriffs auf Azure Active Directory, und wie sie funktioniert.
+* [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md)
   
-  This article details all the built-in roles available in RBAC.
-* [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md)
+  In diesem Artikel werden alle integrierten, in RBAC verfügbaren Rollen ausführlich beschrieben.
+* [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md)
   
-  This article explains the Resource Manager deployment and classic deployment models, and explains the benefits of using the Resource Manager and resource groups
-* [Manage Role-Based Access Control with Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
+  Dieser Artikel erläutert die Resource Manager-Bereitstellung sowie klassische Bereitstellungsmodelle und erläutert die Vorteile der Verwendung der Resource Manager- und Ressourcengruppen.
+* [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
   
-  This article explains how to manage role-based access control with Azure PowerShell
-* [Managing Role-Based Access Control with the REST API](../active-directory/role-based-access-control-manage-access-rest.md)
+  In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung mit Azure PowerShell verwalten.
+* [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](../active-directory/role-based-access-control-manage-access-rest.md)
   
-  This article shows how to use the REST API to manage RBAC.
-* [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
+  Dieser Artikel beschreibt die Verwendung der REST-API zum Verwalten von RBAC.
+* [Role-Based Access Control for Microsoft Azure from Ignite (Rollenbasierte Zugriffssteuerung für Microsoft Azure über Ignite)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
-  This is a link to a video on Channel 9 from the 2015 MS Ignite conference. In this session, they talk about access management and reporting capabilities in Azure, and explore best practices around securing access to Azure subscriptions using Azure Active Directory.
-* [Authorize access to web applications using OAuth 2.0 and Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
+  Dies ist ein Link zu einem Video auf Channel 9 von der MS Ignite-Konferenz 2015. Thema dieser Sitzung sind die Zugriffsverwaltungs- und Berichtsfunktionen in Azure und die Untersuchung bewährter Verfahren für das Sichern des Zugriffs auf Azure-Abonnements mit Azure Active Directory.
+* [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
   
-  This article describes complete OAuth 2.0 flow for authenticating with Azure Active Directory.
-* [key vault Management REST APIs](https://msdn.microsoft.com/library/azure/mt620024.aspx)
+  Dieser Artikel beschreibt den vollständige OAuth 2.0-Ablauf für die Authentifizierung über Azure Active Directory.
+* [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx)
   
-  This document is the reference for the REST APIs to manage your key vault programmatically, including setting key vault access policy.
-* [key vault REST APIs](https://msdn.microsoft.com/library/azure/dn903609.aspx)
+  Dieses Dokument ist die Referenz für die REST-APIs zur programmgesteuerten Key Vault-Verwaltung (einschließlich Festlegung von Key Vault-Zugriffsrichtlinien).
+* [Key Vault-REST-APIs](https://msdn.microsoft.com/library/azure/dn903609.aspx)
   
-  Link to key vault REST API reference documentation.
-* [Key access control](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
+  Link zur Referenzdokumentation für Key Vault-REST-APIs.
+* [Schlüsselzugriffssteuerung](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
   
-  Link to Key access control reference documentation.
-* [Secret access control](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
+  Link zur Referenzdokumentation für die Schlüsselzugriffssteuerung.
+* [Geheimniszugriffssteuerung](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
-  Link to Key access control reference documentation.
-* [Set](https://msdn.microsoft.com/library/mt603625.aspx) and [Remove](https://msdn.microsoft.com/library/mt619427.aspx) key vault access policy using PowerShell
+  Link zur Referenzdokumentation für die Geheimniszugriffssteuerung.
+* [Festlegen](https://msdn.microsoft.com/library/mt603625.aspx) und [Entfernen](https://msdn.microsoft.com/library/mt619427.aspx) von Key Vault-Zugriffsrichtlinien mithilfe von PowerShell
   
-  Links to reference documentation for PowerShell cmdlets to manage key vault access policy.
+  Links zur Referenzdokumentation für PowerShell-Cmdlets zum Verwalten von Key Vault-Zugriffsrichtlinien.
 
-## <a name="next-steps"></a>Next Steps
-For a getting started tutorial for an administrator, see [Get Started with Azure key vault](key-vault-get-started.md).
+## <a name="next-steps"></a>Nächste Schritte
+Ein Tutorial mit ersten Schritten für Administratoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
 
-For more information about usage logging for key vault, see [Azure key vault Logging](key-vault-logging.md).
+Weitere Informationen zur Nutzungsprotokollierung für Key Vault finden Sie unter [Azure-Schlüsseltresor-Protokollierung](key-vault-logging.md).
 
-For more information about using keys and secrets with Azure key vault, see [About Keys and Secrets](https://msdn.microsoft.com/library/azure/dn903623.aspx).
+Weitere Informationen zur Verwendung von Schlüsseln und Geheimnissen mit Azure Key Vault finden Sie unter [About keys, secrets, and certificates](https://msdn.microsoft.com/library/azure/dn903623.aspx) (Informationen zu Schlüsseln, Geheimnissen und Zertifikaten).
 
-If you have questions about key vault, visit the [Azure key vault Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
+Sollten Sie Fragen zu Key Vault haben, besuchen Sie die [Azure Key Vault-Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

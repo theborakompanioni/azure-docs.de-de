@@ -1,12 +1,12 @@
 ---
-title: Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] | Microsoft Docs
-description: Mit den Lösungen für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Log Analytics proaktiv überwacht.
+title: "Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] | Microsoft Docs"
+description: "Mit den Lösungen für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Log Analytics proaktiv überwacht."
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/07/2016
 ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b0fec06e4a167e615381fca17def46923d9f0f1b
+
 
 ---
-# <a name="start/stop-vms-during-off-hours-[preview]-solution-in-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] in Automation
+# <a name="startstop-vms-during-offhours-preview-solution-in-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] in Automation
 Mit der Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] können Sie Ihre Azure Resource Manager-VMs nach einem benutzerdefinierten Zeitplan starten und beenden. Außerdem können Sie die erfolgreiche Ausführung der Automation-Aufträge, mit denen die virtuellen Computer gestartet und beendet werden, mit OMS Log Analytics verfolgen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -121,7 +125,7 @@ Nach dem Auswählen der Lösung wird das Blatt für die Lösung **Start-Stop-VM[
 
 Hier können Sie auch Ihren OMS-Arbeitsbereich öffnen und eine weitere Analyse der Auftragsdatensätze durchführen.  Klicken Sie einfach auf **Alle Einstellungen**, und wählen Sie auf dem Blatt **Einstellungen** die Option **Schnellstart** und auf dem Blatt **Schnellstart** dann die Option **OMS-Portal**.   Eine neue Registerkarte bzw. eine neue Browsersitzung wird geöffnet, und Ihr OMS-Arbeitsbereich, der Ihrem Automation-Konto und -Abonnement zugeordnet ist, wird angezeigt.  
 
-### <a name="configuring-e-mail-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
+### <a name="configuring-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 Um das Senden von E-Mail-Benachrichtigungen nach dem Starten und Beenden von VM-Runbooks zu aktivieren, müssen Sie die **O365Credential**-Anmeldeinformationen ändern und mindestens die folgenden Variablen verwenden:
 
 * SendMailO365-IsSendEmail-MS-Mgmt
@@ -202,6 +206,9 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 * Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md)
 * Weitere Informationen zu OMS Log Analytics und Datenerfassungsquellen finden Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

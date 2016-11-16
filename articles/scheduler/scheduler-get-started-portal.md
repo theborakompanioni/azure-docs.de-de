@@ -5,8 +5,8 @@ services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: ''
-
+editor: 
+ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,55 +14,59 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 85e0f59bdaae76f6feb03e66a7bbf96c29b45dec
+
 
 ---
-# Erste Schritte mit Azure Scheduler im Azure-Portal
+# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Erste Schritte mit Azure Scheduler im Azure-Portal
 Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tutorial erfahren Sie, wie ein Auftrag erstellt wird. Außerdem erhalten Sie Informationen zu den Überwachungs- und Verwaltungsfunktionen von Scheduler.
 
-## Erstellen eines Auftrags
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **+ Neu** > geben Sie im Suchfeld *Scheduler* ein > wählen Sie in den Ergebnissen **Scheduler** > klicken Sie auf **Erstellen**.
+## <a name="create-a-job"></a>Erstellen eines Auftrags
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.  
+2. Klicken Sie auf **+Neu** > geben Sie im Suchfeld *Scheduler* ein > wählen Sie in den Ergebnissen **Scheduler** > klicken Sie auf **Erstellen**.
    
     ![][marketplace-create]
-3. In diesem Beispiel erstellen wir einen einfachen Auftrag mit einer GET-Anforderung für „http://www.microsoft.com/“. Geben Sie auf dem Bildschirm **Scheduler-Auftrag** die folgenden Informationen ein:
+3. In diesem Beispiel erstellen wir einen einfachen Auftrag mit einer GET-Anforderung für http://www.microsoft.com/. Geben Sie auf dem Bildschirm **Scheduler-Auftrag** die folgenden Informationen ein:
    
-   1. **Name:** `getmicrosoft`
-   2. **Abonnement:** Ihr Azure-Abonnement
+   1. **Name:** `getmicrosoft`  
+   2. **Abonnement:** Ihr Azure-Abonnement   
    3. **Auftragssammlung:** Wählen Sie eine vorhandene Auftragssammlung aus, oder klicken Sie auf **Neu erstellen**, und geben Sie einen Namen ein.
-4. Definieren Sie dann unter **Aktionseinstellungen** die folgenden Werte:
+4. Definieren Sie dann unter **Aktionseinstellungen**die folgenden Werte:
    
-   1. **Aktionstyp:** ` HTTP`
-   2. **Methode:** `GET`
-   3. **URL:** ` http://www.microsoft.com`
+   1. **Aktionstyp:** ` HTTP`  
+   2. **Methode:** `GET`  
+   3. **URL:** ` http://www.microsoft.com`  
       
       ![][action-settings]
 5. Jetzt definieren wir einen Zeitplan. Der Auftrag kann natürlich auch als einmaliger Auftrag definiert werden, in diesem Beispiel verwenden wir aber einen Wiederholungszeitplan.
    
    1. **Wiederholung**: `Recurring`
    2. **Start**: Heutiges Datum
-   3. **Wiederholen alle:** `12 Hours`
-   4. **Endet am**: Zwei Tage nach dem heutigen Datum
+   3. **Wiederholen alle**: `12 Hours`
+   4. **Endet am**: Zwei Tage nach dem heutigen Datum  
       
       ![][recurrence-schedule]
-6. Klicken Sie auf **Erstellen**.
+6. Klicken Sie auf **Erstellen**
 
-## Verwalten und Überwachen Aufträgen
+## <a name="manage-and-monitor-jobs"></a>Verwalten und Überwachen Aufträgen
 Sobald ein Auftrag erstellt wurde, wird er im Azure-Hauptdashboard angezeigt. Wenn Sie auf den Auftrag klicken, wird ein neues Fenster mit folgenden Registerkarten angezeigt:
 
-1. Eigenschaften
-2. Aktionseinstellungen
-3. Zeitplan
+1. Eigenschaften  
+2. Aktionseinstellungen  
+3. Zeitplan  
 4. Verlauf
 5. Benutzer
    
    ![][job-overview]
 
-### Eigenschaften
+### <a name="properties"></a>Eigenschaften
 Diese schreibgeschützte Eigenschaften beschreiben die Metadaten für den Scheduler-Auftrag.
 
    ![][job-properties]
 
-### Aktionseinstellungen
+### <a name="action-settings"></a>Aktionseinstellungen
 Wenn Sie auf dem Bildschirm **Aufträge** auf einen Auftrag klicken, können Sie diesen konfigurieren. Hier können Sie erweiterte Einstellungen konfigurieren, wenn Sie diese nicht bereits im Schnellerstellungs-Assistenten konfiguriert haben.
 
 Sie können die Wiederholungsrichtlinie und die Fehleraktion für alle Aktionstypen ändern.
@@ -71,39 +75,39 @@ Bei HTTP- und HTTPS Auftragsaktionstypen können Sie für die Methode ein belieb
 
 Bei Speicherwarteschlangen-Aktionstypen können Sie das Speicherkonto, den Warteschlangennamen, das SAS-Token und den Text ändern.
 
-Für Service Bus-Aktionstypen können Sie den Namespace, den Thema-/Warteschlangenpfad, die Authentifizierungseinstellungen, den Transporttyp, die Nachrichteneigenschaften und den Nachrichtentext ändern.
+Für Service Bus-Aktionstypen können Sie den Namespace, den Thema-/Warteschlangenpfad, die Authentifizierungseinstellungen, den  Transporttyp, die Nachrichteneigenschaften und den Nachrichtentext ändern.
 
    ![][job-action-settings]
 
-### Schedule
+### <a name="schedule"></a>Zeitplan
 Damit können Sie den Zeitplan neu konfigurieren, wenn Sie den im Schnellerstellungs-Assistenten erstellten Zeitplan ändern möchten.
 
-Dies ist eine Möglichkeit zum Erstellen [komplexer Zeitpläne und erweiterter Serien in Ihrem Auftrag](scheduler-advanced-complexity.md).
+Dies ist eine Möglichkeit zum Erstellen [komplexer Zeitpläne und erweiterter Serien in Ihrem Auftrag](scheduler-advanced-complexity.md)
 
 Sie können die Startzeit (Datum und Uhrzeit), den Wiederholungszeitplan und die Endzeit (Datum und Uhrzeit) ändern (sofern es sich um einen wiederkehrenden Auftrag handelt).
 
    ![][job-schedule]
 
-### Verlauf
+### <a name="history"></a>Verlauf
 Die Registerkarte **Verlauf** zeigt ausgewählte Metriken für jede Auftragsausführung im System für den ausgewählten Auftrag an. Diese Metriken liefern Echtzeitwerte zum Status von Scheduler:
 
-1. Status
-2. Details
+1. Status  
+2. Details  
 3. Wiederholungsversuche
 4. Vorkommen: 1., 2., 3. usw.
-5. Startzeit der Ausführung
+5. Startzeit der Ausführung  
 6. Endzeit der Ausführung
    
    ![][job-history]
 
-Klicken Sie auf eine Ausführung, um die **Verlaufsdetails** anzuzeigen, einschließlich der vollständigen Antwort für jede Ausführung. In diesem Dialogfeld können Sie auch die Antwort in die Zwischenablage kopieren.
+Klicken Sie auf eine Ausführung, um die **Verlaufsdetails**anzuzeigen, einschließlich der vollständigen Antwort für jede Ausführung. In diesem Dialogfeld können Sie auch die Antwort in die Zwischenablage kopieren.
 
    ![][job-history-details]
 
-### Benutzer
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).
+### <a name="users"></a>Benutzer
+Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
  [Scheduler-Konzepte, -Terminologie und -Entitätshierarchie](scheduler-concepts-terms.md)
@@ -149,4 +153,8 @@ Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugr
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

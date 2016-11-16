@@ -1,12 +1,13 @@
 # Übersicht
 ## [Was ist Log Analytics?](log-analytics-overview.md)
 ## [Datensicherheit](log-analytics-security.md)
-## [Häufig gestellte Fragen zu Log Analytics](log-analytics-faq.md)
+
 # Erste Schritte
 ## [Registrieren bei Log Analytics](log-analytics-get-started.md)
 ## [Verwalten des Zugriffs](log-analytics-manage-access.md)
 ## [Proxy und Firewall](log-analytics-proxy-firewall.md)
 ## [Nutzungsdaten](log-analytics-usage.md)
+## [Häufig gestellte Fragen zu Log Analytics](log-analytics-faq.md)
 
 # Anleitung
 ## Integrieren
@@ -48,7 +49,6 @@
 #### [SQL-Bewertung](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
 #### [System Update-Bewertung](log-analytics-system-update.md)
-#### [Upgraden von Analysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 #### [VMware](log-analytics-vmware.md)
 #### [Wire Data](log-analytics-wire-data.md)
 ## Analysieren
@@ -60,9 +60,9 @@
 ### [PowerShell-Cmdlets](log-analytics-powershell-workspace-configuration.md)
 ### [Protokollsuch-API](log-analytics-log-search-api.md)
 ### [Warnungs-API](log-analytics-api-alerts.md)
-# Referenz
-# Verwandte Themen
+
 # Ressourcen
+## [Upgradeanalysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 
 
 

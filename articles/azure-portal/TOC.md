@@ -1,38 +1,39 @@
-# Übersicht 
-## [Azure-Portal – Übersicht](azure-portal-overview.md)
-## [Übersicht über Azure Resource Manager](resource-group-overview.md)
+# [Übersicht](../azure-portal-overview.md)
+## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 
 # Erste Schritte
-## [Bereitstellen mithilfe von Resource Manager-Vorlagen](resource-group-template-deploy.md)
+## [Bereitstellen mithilfe von Resource Manager-Vorlagen](../resource-group-template-deploy.md)
 
 # Anleitung
 ## Bereitstellen
-### [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-group-deploy-debug.md)
-### [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md)
-### [Vorlagenfunktionen in Azure Resource Manager](resource-group-template-functions.md)
-### [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](arm-template-deployment.md)
-### [Erweiterte Vorlagenvorgänge](resource-group-advanced-template.md)
+### [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md)
+
 ## Verwalten
 ### [Verwenden des Vorschauportals zum Verwalten von Ressourcen](resource-group-portal.md)
-### [Verwalten und Überwachen des Zugriffs auf Ressourcen](resource-group-rbac.md)
-### [Rollenbasierte Zugriffssteuerung im Vorschauportal](role-based-access-control-configure.md)
-### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
-### [Gewusst wie: Skalieren von Ressourcen](insights-how-to-scale.md)
-### [Erstellen eines neuen Azure-Dienstprinzipals mit dem Azure-Portal](resource-group-create-service-principal-portal.md)
+### [Verwalten des Zugriffs mit RBAC](../active-directory/role-based-access-control-configure.md)
+### [Verwenden von Tags zum Organisieren von Ressourcen](../resource-group-using-tags.md)
+### [Skalieren von Ressourcen](../monitoring-and-diagnostics/insights-how-to-scale.md)
+### [Erstellen eines neuen Azure-Dienstprinzipals](../resource-group-create-service-principal-portal.md)
 ## Überwachen
-### [Überwachen von Dienstmetriken](insights-how-to-customize-monitoring.md)
-### [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md)
-### [Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites](app-insights-monitor-web-app-availability.md)
-### [Überwachen der Anwendungsleistung](app-insights-azure-web-apps.md)
-### [Anzeigen von Ereignis- und Überwachungsprotokollen](insights-debugging-with-events.md)
-### [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md)
-### [Bewährte Methoden für die automatische Skalierung](insights-autoscale-best-practices.md)
-### [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md)
-### [Webhooks für Benachrichtigungen zur automatischen Skalierung](insights-autoscale-to-webhook-email.md)
-### [Webhooks für Warnungen zu Überwachungsprotokollen](insights-auditlog-to-webhook-email.md)
-### [Webhooks für Warnungen zu Metriken](insights-webhooks-alerts.md)
-### [Azure Insights – PowerShell-Schnellstartbeispiele](insights-powershell-samples.md)
-### [CLI-Beispiele für den Schnellstart mit Azure Insights](insights-cli-samples.md)
+### [Überwachen von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)
+### [Aktivieren von Überwachung und Diagnose](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)
+### [Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites](../application-insights/app-insights-monitor-web-app-availability.md)
+### [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md)
+### [Anzeigen von Ereignis- und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md)
+### [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+
+# Referenz
+## [Vorlagenfunktionen in Azure Resource Manager](../resource-group-template-functions.md)
+## [Bewährte Methoden für die automatische Skalierung](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+## [Allgemeine Metriken für die automatische Skalierung](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
+## [Webhooks für Benachrichtigungen zur automatischen Skalierung](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
+## [Webhooks für Warnungen zu Überwachungsprotokollen](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+## [Webhooks für Warnungen zu Metriken](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+## [Azure Insights – PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md)
+## [CLI-Beispiele für den Schnellstart mit Azure Insights](../monitoring-and-diagnostics/insights-cli-samples.md)
+
+
+
 
 
 <!--HONumber=Nov16_HO2-->

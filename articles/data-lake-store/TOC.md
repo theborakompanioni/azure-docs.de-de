@@ -35,7 +35,7 @@
 ### [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 ### [Dienst-zu-Dienst-Authentifizierung](data-lake-store-authenticate-using-active-directory.md)
 ### [Authentifizierung von Endbenutzern](data-lake-store-end-user-authenticate-using-active-directory.md)
- 
+
 ## Integration in Azure-Dienste
 ### [Verwenden mit Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [Erstellen eines HDInsight-Clusters mit Data Lake Store über das Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
@@ -51,14 +51,11 @@
 ### [Zugreifen auf Diagnoseprotokolle](data-lake-store-diagnostic-logs.md)
 
 # Referenz
-## [.NET SDK](https://msdn.microsoft.com/library/azure/mt581387.aspx)
-## [Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-## [PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt607120.aspx)
-## [REST-API](https://msdn.microsoft.com/library/azure/mt693424.aspx)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
+## [.NET](https://docs.microsoft.com/dotnet/api)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
-
-# Verwandte Themen
-## [Cortana Intelligence Suite](https://www.microsoft.com/en-us/cloud-platform/what-is-cortana-intelligence-suite)
+## [REST](https://docs.microsoft.com/en-us/rest/api/datalakestore/)
 
 # Ressourcen
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)

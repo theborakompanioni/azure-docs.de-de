@@ -1,13 +1,13 @@
 ---
 title: 'Erste Schritte: Azure AD-Kennwortverwaltung | Microsoft Docs'
-description: Ermöglichen Sie es Benutzern, ihre eigenen Kennwörter zurückzusetzen, ermitteln Sie Voraussetzungen für die Kennwortzurücksetzung, und aktivieren Sie das Zurückschreiben von Kennwörtern zum Verwalten lokaler Kennwörter in Active Directory.
+description: "Ermöglichen Sie es Benutzern, ihre eigenen Kennwörter zurückzusetzen, ermitteln Sie Voraussetzungen für die Kennwortzurücksetzung, und aktivieren Sie das Zurückschreiben von Kennwörtern zum Verwalten lokaler Kennwörter in Active Directory."
 services: active-directory
-keywords: Active Directory-Kennwortverwaltung, Kennwortverwaltung, Azure AD-Kennwort zurücksetzen
-documentationcenter: ''
+keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Azure AD-Kennwort zurücksetzen"
+documentationcenter: 
 author: asteen
 manager: femila
 editor: curtand
-
+ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 77ca34a56a827e8a69ab9a2b60d14cc7c7a71bfc
+
 
 ---
 # <a name="getting-started-with-password-management"></a>Erste Schritte mit der Kennwortverwaltung
@@ -27,24 +31,24 @@ Es sind lediglich einige einfache Schritte erforderlich, um Ihren Benutzern das 
 
 * [**Aktivieren von Benutzern für das Zurücksetzen ihrer Cloudkennwörter für Azure Active Directory**](#enable-users-to-reset-their-azure-ad-passwords)
   * [Voraussetzungen für die Self-Service-Kennwortzurücksetzung](#prerequisites)
-  * [Schritt 1: Konfigurieren der Richtlinie für die Kennwortzurücksetzung](#step-1-configure-password-reset-policy)
-  * [Schritt 2: Hinzufügen von Kontaktdaten für Ihren Testbenutzer](#step-2-add-contact-data-for-your-test-user)
-  * [Schritt 3: Zurücksetzen Ihres Kennworts als Benutzer](#step-3-reset-your-azure-ad-password-as-a-user)
+  * [Schritt 1: Konfigurieren der Richtlinie für die Kennwortzurücksetzung](#step-1-configure-password-reset-policy)
+  * [Schritt 2: Hinzufügen von Kontaktdaten für Ihren Testbenutzer](#step-2-add-contact-data-for-your-test-user)
+  * [Schritt 3: Zurücksetzen Ihres Kennworts als Benutzer](#step-3-reset-your-azure-ad-password-as-a-user)
 * [**Aktivieren von Benutzern für das Zurücksetzen oder Ändern ihrer lokalen Active Directory-Kennwörter**](#enable-users-to-reset-or-change-their-ad-passwords)
   * [Voraussetzungen für das Zurückschreiben von Kennwörtern](#writeback-prerequisites)
-  * [Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect](#step-1-download-the-latest-version-of-azure-ad-connect)
+  * [Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect](#step-1-download-the-latest-version-of-azure-ad-connect)
   * [Schritt 2: Aktivieren der Kennwortrückschreibung in Azure AD Connect über die Benutzeroberfläche oder PowerShell mit anschließender Überprüfung](#step-2-enable-password-writeback-in-azure-ad-connect)
-  * [Schritt 3: Konfigurieren der Firewall](#step-3-configure-your-firewall)
-  * [Schritt 4: Einrichten der geeigneten Berechtigungen](#step-4-set-up-the-appropriate-active-directory-permissions)
-  * [Schritt 5: Zurücksetzen Ihres AD-Kennworts als Benutzer mit anschließender Überprüfung](#step-5-reset-your-ad-password-as-a-user)
+  * [Schritt 3: Konfigurieren der Firewall](#step-3-configure-your-firewall)
+  * [Schritt 4: Einrichten der geeigneten Berechtigungen](#step-4-set-up-the-appropriate-active-directory-permissions)
+  * [Schritt 5: Zurücksetzen Ihres AD-Kennworts als Benutzer mit anschließender Überprüfung](#step-5-reset-your-ad-password-as-a-user)
 
 ## <a name="enable-users-to-reset-their-azure-ad-passwords"></a>Aktivieren von Benutzern für das  Zurücksetzen ihrer Azure AD-Kennwörter
 In diesem Abschnitt werden Sie durch den Vorgang zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihr AAD-Cloudverzeichnis, das Registrieren von Benutzern für die Self-Service-Kennwortzurücksetzung und das Testen einer Self-Service-Kennwortzurücksetzung als ein Benutzer geleitet.
 
 * [Voraussetzungen für die Self-Service-Kennwortzurücksetzung](#prerequisites)
-* [Schritt 1: Konfigurieren der Richtlinie für die Kennwortzurücksetzung](#step-1-configure-password-reset-policy)
-* [Schritt 2: Hinzufügen von Kontaktdaten für Ihren Testbenutzer](#step-2-add-contact-data-for-your-test-user)
-* [Schritt 3: Zurücksetzen Ihres Kennworts als Benutzer](#step-3-reset-your-azure-ad-password-as-a-user)
+* [Schritt 1: Konfigurieren der Richtlinie für die Kennwortzurücksetzung](#step-1-configure-password-reset-policy)
+* [Schritt 2: Hinzufügen von Kontaktdaten für Ihren Testbenutzer](#step-2-add-contact-data-for-your-test-user)
+* [Schritt 3: Zurücksetzen Ihres Kennworts als Benutzer](#step-3-reset-your-azure-ad-password-as-a-user)
 
 ### <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie die Self-Service-Kennwortzurücksetzung aktivieren und verwenden können, müssen Sie die folgenden Voraussetzungen erfüllen:
@@ -55,13 +59,13 @@ Bevor Sie die Self-Service-Kennwortzurücksetzung aktivieren und verwenden könn
 * Führen Sie ein Upgrade auf Azure AD Premium oder Basic durch, oder verwenden Sie eine kostenpflichtige O365-Lizenz. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](https://azure.microsoft.com/pricing/details/active-directory/).
   
   > [!NOTE]
-  > Um die Self-Service-Kennwortzurücksetzung für Cloudbenutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium, Azure AD Basic oder eine kostenpflichtige O365-Lizenz durchführen.  Um die Self-Service-Kennwortzurücksetzung für Ihre lokalen Benutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium durchführen. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](https://azure.microsoft.com/pricing/details/active-directory/). Hier finden Sie u. a. ausführliche Informationen dazu, wie Sie sich für Azure AD Premium oder Basic registrieren, wie Sie Ihren Lizenzplan und den Azure AD-Zugriff aktivieren, und wie Sie Administratoren und Benutzerkonten Zugriff gewähren.
+  > Um die Self-Service-Kennwortzurücksetzung für Cloudbenutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium, Azure AD Basic oder eine kostenpflichtige O365-Lizenz durchführen.  Um die Self-Service-Kennwortzurücksetzung für Ihre lokalen Benutzer zu aktivieren, müssen Sie ein Upgrade auf Azure AD Premium durchführen. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](https://azure.microsoft.com/pricing/details/active-directory/). Hier finden Sie u. a. ausführliche Informationen dazu, wie Sie sich für Azure AD Premium oder Basic registrieren, wie Sie Ihren Lizenzplan und den Azure AD-Zugriff aktivieren, und wie Sie Administratoren und Benutzerkonten Zugriff gewähren.
   > 
   > 
 * Erstellen Sie mindestens ein Administratorkonto und ein Benutzerkonto in Ihrem AAD-Verzeichnis.
 * Weisen Sie dem erstellten Administrator- und Benutzerkonto eine AAD Premium-, Basic- oder kostenpflichtige O365-Lizenz zu.
 
-### <a name="step-1:-configure-password-reset-policy"></a>Schritt 1: Konfigurieren der Richtlinie für die Kennwortzurücksetzung
+### <a name="step-1-configure-password-reset-policy"></a>Schritt 1: Konfigurieren der Richtlinie für die Kennwortzurücksetzung
 Führen Sie die folgenden Schritte aus, um die Richtlinie für das Zurücksetzen von Benutzerkennwörtern zu konfigurieren:
 
 1. Öffnen Sie einen Browser Ihrer Wahl, und wechseln Sie zum [klassischen Azure-Portal](https://manage.windowsazure.com).
@@ -94,7 +98,7 @@ Führen Sie die folgenden Schritte aus, um die Richtlinie für das Zurücksetzen
    
    ![][006]
 
-### <a name="step-2:-add-contact-data-for-your-test-user"></a>Schritt 2: Hinzufügen von Kontaktdaten für Ihren Testbenutzer
+### <a name="step-2-add-contact-data-for-your-test-user"></a>Schritt 2: Hinzufügen von Kontaktdaten für Ihren Testbenutzer
 Sie haben mehrere Möglichkeiten, für Organisationsbenutzer Daten einzugeben, die für das Zurücksetzen von Kennwörtern verwendet werden.
 
 * Bearbeiten Sie Benutzer im [klassischen Azure-Portal](https://manage.windowsazure.com) oder im [Office 365-Verwaltungsportal](https://portal.microsoftonline.com).
@@ -119,10 +123,10 @@ Weitere Informationen dazu, welche Daten beim Zurücksetzen von Kennwörtern ver
    
    ![][010]
 
-### <a name="step-3:-reset-your-azure-ad-password-as-a-user"></a>Schritt 3: Zurücksetzen Ihres AD-Kennworts als Benutzer mit anschließender Überprüfung
+### <a name="step-3-reset-your-azure-ad-password-as-a-user"></a>Schritt 3: Zurücksetzen Ihres AD-Kennworts als Benutzer mit anschließender Überprüfung
 Nachdem Sie eine Richtlinie für die Kennwortzurücksetzung konfiguriert und Kontaktdaten für Ihren Benutzer angegeben haben, kann dieser Benutzer eine Self-Service-Kennwortzurücksetzung durchführen.
 
-#### <a name="to-perform-a-self-service-password-reset"></a>So führen Sie eine Self-Service-Kennwortzurücksetzung durch
+#### <a name="to-perform-a-selfservice-password-reset"></a>So führen Sie eine Self-Service-Kennwortzurücksetzung durch
 1. Wenn Sie zu einer Website wie [**portal.microsoftonline.com**](http://portal.microsoftonline.com) wechseln, wird ein Anmeldebildschirm wie in der folgenden Abbildung angezeigt.  Klicken Sie auf den Link **Können Sie nicht auf Ihr Konto zugreifen?** , um die Benutzeroberfläche für die Kennwortzurücksetzung zu testen.
    
    ![][011]
@@ -158,11 +162,11 @@ Nachdem Sie eine Richtlinie für die Kennwortzurücksetzung konfiguriert und Kon
 In diesem Abschnitt werden Sie durch den Vorgang zum Konfigurieren der Kennwortzurücksetzung für das Zurückschreiben von Kennwörtern in ein lokales Active Directory-Verzeichnis geleitet.
 
 * [Voraussetzungen für das Zurückschreiben von Kennwörtern](#writeback-prerequisites)
-* [Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect](#step-1-download-the-latest-version-of-azure-ad-connect)
+* [Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect](#step-1-download-the-latest-version-of-azure-ad-connect)
 * [Schritt 2: Aktivieren der Kennwortrückschreibung in Azure AD Connect über die Benutzeroberfläche oder PowerShell mit anschließender Überprüfung](#step-2-enable-password-writeback-in-azure-ad-connect)
-* [Schritt 3: Konfigurieren der Firewall](#step-3-configure-your-firewall)
-* [Schritt 4: Einrichten der geeigneten Berechtigungen](#step-4-set-up-the-appropriate-active-directory-permissions)
-* [Schritt 5: Zurücksetzen Ihres AD-Kennworts als Benutzer mit anschließender Überprüfung](#step-5-reset-your-ad-password-as-a-user)
+* [Schritt 3: Konfigurieren der Firewall](#step-3-configure-your-firewall)
+* [Schritt 4: Einrichten der geeigneten Berechtigungen](#step-4-set-up-the-appropriate-active-directory-permissions)
+* [Schritt 5: Zurücksetzen Ihres AD-Kennworts als Benutzer mit anschließender Überprüfung](#step-5-reset-your-ad-password-as-a-user)
 
 ### <a name="writeback-prerequisites"></a>Voraussetzungen für das Zurückschreiben von Kennwörtern
 Bevor Sie das Zurückschreiben von Kennwörtern aktivieren und verwenden können, müssen Sie die folgenden Voraussetzungen erfüllen:
@@ -178,7 +182,7 @@ Bevor Sie das Zurückschreiben von Kennwörtern aktivieren und verwenden können
 * Sie verfügen über eine lokale AD-Bereitstellung mit einer oder mehreren Gesamtstrukturen, in der Windows Server 2008, Windows Server 2008 R2, Windows Server 2012 oder Windows Server 2012 R2 mit den aktuellen Service Packs ausgeführt wird.
   
   > [!NOTE]
-  > Wenn Sie eine ältere Version von Windows Server 2008 oder 2008 R2 ausführen, können Sie diese Funktion verwenden, müssen aber [KB 2386717 herunterladen und installieren](https://support.microsoft.com/kb/2386717) , bevor Sie Ihre lokale AD-Kennwortrichtlinie in der Cloud erzwingen können.
+  > Wenn Sie eine ältere Version von Windows Server 2008 oder 2008 R2 ausführen, können Sie diese Funktion verwenden, müssen aber [KB 2386717 herunterladen und installieren](https://support.microsoft.com/kb/2386717) , bevor Sie Ihre lokale AD-Kennwortrichtlinie in der Cloud erzwingen können.
   > 
   > 
 * Sie haben Azure AD Connect installiert und Ihre AD-Umgebung für eine Synchronisierung mit der Cloud vorbereitet.  Weitere Informationen finden Sie unter [Verwenden Ihrer lokalen Identitätsinfrastruktur in der Cloud](active-directory-aadconnect.md).
@@ -194,7 +198,7 @@ Bevor Sie das Zurückschreiben von Kennwörtern aktivieren und verwenden können
   > 
   > 
 
-### <a name="step-1:-download-the-latest-version-of-azure-ad-connect"></a>Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect
+### <a name="step-1-download-the-latest-version-of-azure-ad-connect"></a>Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect
 Das Zurückschreiben von Kennwörtern steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0419.0911** oder höher zur Verfügung.  Das Zurückschreiben von Kennwörtern mit automatischer Entsperrung von Konten steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0485.0222** oder höher zur Verfügung. Wenn Sie eine ältere Version verwenden, führen Sie ein Upgrade auf diese oder eine höhere Version durch, bevor Sie fortfahren. [Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen](active-directory-aadconnect.md#install-azure-ad-connect).
 
 #### <a name="to-check-the-version-of-azure-ad-sync"></a>So überprüfen Sie die Version von Azure AD Sync
@@ -213,7 +217,7 @@ Wenn die angezeigte Versionsnummer größer oder gleich **1.0.0419.0911** ist od
 > 
 > 
 
-### <a name="step-2:-enable-password-writeback-in-azure-ad-connect"></a>Schritt 2: Aktivieren der Kennwortrückschreibung in Azure AD Connect
+### <a name="step-2-enable-password-writeback-in-azure-ad-connect"></a>Schritt 2: Aktivieren der Kennwortrückschreibung in Azure AD Connect
 Nun, da Sie das Azure AD Connect-Tool heruntergeladen haben, können Sie das Zurückschreiben von Kennwörtern aktivieren.  Hierzu stehen zwei Möglichkeiten zur Verfügung.  Sie können das Zurückschreiben von Kennwörtern entweder im Bildschirm für die optionalen Features im Setup-Assistenten für Azure AD Connect aktivieren, oder Sie verwenden zur Aktivierung Windows PowerShell.
 
 #### <a name="to-enable-password-writeback-in-the-configuration-wizard"></a>So aktivieren Sie das Zurückschreiben von Kennwörtern im Konfigurations-Assistenten
@@ -251,15 +255,15 @@ Sie können die erfolgreiche Installation des Diensts auch überprüfen, indem S
 
   ![][023]
 
-### <a name="step-3:-configure-your-firewall"></a>Schritt 3: Konfigurieren der Firewall
+### <a name="step-3-configure-your-firewall"></a>Schritt 3: Konfigurieren der Firewall
 Nachdem Sie das Zurückschreiben von Kennwörtern in Azure AD Connect aktiviert haben, müssen Sie sicherstellen, dass der Dienst eine Verbindung mit der Cloud herstellen kann.
 
 1. Wenn Sie nach dem Abschluss der Installation in Ihrer Umgebung unbekannte ausgehende Verbindungen blockieren, müssen Sie außerdem Änderungen an den folgenden Regeln Ihrer Firewall vornehmen. Stellen Sie sicher, dass Sie Ihren AAD Connect-Computer nach dem Durchführen dieser Änderungen neu starten:
-   * Lassen Sie ausgehende Verbindungen über TCP-Port 443 zu.
+   * Lassen Sie ausgehende Verbindungen über TCP-Port 443 zu.
    * Lassen Sie ausgehende Verbindungen zu „https://ssprsbprodncu-sb.accesscontrol.windows.net/“ zu.
-   * Wenn Sie einen Proxy verwenden oder allgemeine Verbindungsprobleme vorliegen, lassen Sie ausgehende Verbindungen über TCP-Port 9350-9354 und 5671 zu.
+   * Wenn Sie einen Proxy verwenden oder allgemeine Verbindungsprobleme vorliegen, lassen Sie ausgehende Verbindungen über TCP-Port 9350-9354 und 5671 zu.
 
-### <a name="step-4:-set-up-the-appropriate-active-directory-permissions"></a>Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen
+### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen
 Bei der anfänglichen Konfiguration mit dem Konfigurations-Assistenten wird ein Konto X eingerichtet. Für jede Gesamtstruktur, die Benutzer enthält, deren Kennwörter zurückgesetzt werden, müssen X die Berechtigungen **Kennwort zurücksetzen**, **Kennwort ändern**, **Schreibzugriff** für `lockoutTime` und **Schreibzugriff** für `pwdLastSet` sowie die erweiterten Rechte für das Stammobjekt jeder Domäne in dieser Gesamtstruktur erteilt werden. Die Rechte müssen hierbei so festgelegt werden, dass sie an alle Benutzerobjekte vererbt werden.  
 
 Wenn Sie nicht sicher sind, auf welches Konto sich die oben genannten Angaben beziehen, öffnen Sie die Azure Active Directory Connect-Konfigurationsoberfläche, und klicken Sie auf die Option **Lösung prüfen** .  Das Konto, dem Sie die Berechtigung hinzufügen müssen, ist im Screenshot unten rot unterstrichen.
@@ -295,7 +299,7 @@ Wenn Sie nicht sicher sind, auf welches Konto sich die oben genannten Angaben be
    ![][028]
 10. Klicken Sie anschließend in allen geöffneten Dialogfeldern auf **Anwenden/OK** .
 
-### <a name="step-5:-reset-your-ad-password-as-a-user"></a>Schritt 5: Zurücksetzen Ihres AD-Kennworts als Benutzer
+### <a name="step-5-reset-your-ad-password-as-a-user"></a>Schritt 5: Zurücksetzen Ihres AD-Kennworts als Benutzer
 Jetzt, da das Zurückschreiben von Kennwörtern aktiviert ist, können Sie die ordnungsgemäße Funktion testen, indem Sie das Kennwort eines Benutzers zurücksetzen, dessen Konto mit Ihrem Cloudmandanten synchronisiert wurde.
 
 #### <a name="to-verify-password-writeback-is-working-properly"></a>So prüfen Sie, ob das Zurückschreiben von Kennwörtern ordnungsgemäß funktioniert
@@ -315,7 +319,7 @@ Jetzt, da das Zurückschreiben von Kennwörtern aktiviert ist, können Sie die o
 <br/>
 
 ## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
 * **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
@@ -361,6 +365,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -6,7 +6,7 @@
 ### [Was ist die Lösung?](storsimple-ova-overview.md)
 
 ## Erste Schritte
-### Planen
+### Plan
 #### [Überprüfen der Anforderungen](storsimple-ova-system-requirements.md)
 #### [Grundlegendes zu den Beschränkungen](storsimple-ova-limits.md)
 #### [Bewährte Methoden](storsimple-ova-best-practices.md)
@@ -57,7 +57,7 @@
 #### [Auspacken, Einsetzen und Verkabeln – 8600](storsimple-8600-hardware-installation.md)
 #### [Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
-### Bereitstellen 
+### Bereitstellen
 #### [StorSimple Manager-Dienst](storsimple-manage-service.md)
 #### [Physisches Gerät in Azure – aktuell](storsimple-deployment-walkthrough-u2.md)
 ##### [Physisches Gerät in Azure – Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -68,7 +68,7 @@
 #### [StorSimple-Adapter für SharePoint](storsimple-adapter-for-sharepoint.md)
 
 ## Anleitung
-### Verwalten 
+### Verwalten
 #### [Verwenden des StorSimple Manager-Diensts](storsimple-manager-service-administration.md)
 ##### [Wiederherstellen einer Sicherung](storsimple-restore-from-backup-set-u2.md)
 ###### [Wiederherstellen einer Sicherung](storsimple-restore-from-backup-set.md)
@@ -160,18 +160,20 @@
 ### [Allgemein verfügbare Version](storsimple-july-2014-release-notes.md)
 
 ## Referenz
-### [Azure PowerShell – Cmdlet-Referenz](https://msdn.microsoft.com/en-us/library/azure/dn920427)
-### [Windows PowerShell für StorSimple – Cmdlet-Referenz](https://technet.microsoft.com/library/dn688168.aspx)
+### [PowerShell](/powershell/servicemanagement/)
 
-# [StorSimple 5000–7000-Serie](http://onlinehelp.storsimple.com)
+# Verwandte Themen
+## [StorSimple 5000–7000-Serie](http://onlinehelp.storsimple.com)
 
 # Ressourcen
-## [Azure-Blog](https://azure.microsoft.com/blog/)
-## [Foren](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
 ## [Marketingblog](http://blogs.technet.com/b/cis/)
-## [Marketing](https://www.microsoft.com/en-us/server-cloud/products/storsimple/explore.aspx)
+## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [Supportblog](http://blogs.msdn.com/b/storsimple/)
 ## [Drittanbieterhinweise](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=storsimple)
+## [Preise](https://azure.microsoft.com/pricing/details/storsimple/)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
 <!--HONumber=Nov16_HO2-->

@@ -8,7 +8,7 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 4. Wählen Sie auf dem Blatt **Service Bus-Namespace** die Option **Warteschlangen** aus, und klicken Sie anschließend auf **Warteschlange hinzufügen**.
    
     ![„Warteschlangen“ wählen][createqueue2]
-5. Geben Sie den Warteschlangennamen ein, und lassen Sie die anderen Werte unverändert.
+5. Geben Sie den Warteschlangennamen **** ein, und lassen Sie die anderen Werte unverändert.
    
     ![„Neu“ wählen][createqueue3]
 6. Klicken Sie im unteren Bereich des Blatts auf **Erstellen**.
@@ -17,7 +17,10 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
 [createqueue3]: ./media/service-bus-create-queue-portal/create-queue3.png
 
-[namespace-how-to]: ../articles/service-bus/service-bus-create-namespace-portal.md
+[namespace-how-to]: ../articles/service-bus-messaging/service-bus-create-namespace-portal.md
 [azure-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Nov16_HO2-->
+
+

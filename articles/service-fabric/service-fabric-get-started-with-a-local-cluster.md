@@ -5,8 +5,8 @@ services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 60a1f6a5-5478-46c0-80a8-18fe62da17a8
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/09/2016
 ms.author: ryanwi;mikhegn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 515daddf2c118f26721a557b0caf5d5415cb22c5
+
 
 ---
-# Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
+# <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
 Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgebung, die Sie verwenden können, um schnell mit der Bereitstellung und Verwaltung von Anwendungen in einem lokalen Cluster zu beginnen. In diesem Artikel verwenden Sie Windows PowerShell, um einen lokalen Cluster zu erstellen, eine vorhandene Anwendung bereitzustellen und die Anwendung auf eine neue Version zu aktualisieren.
 
 > [!NOTE]
@@ -24,7 +28,7 @@ Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgeb
 > 
 > 
 
-## Erstellen eines lokalen Clusters
+## <a name="create-a-local-cluster"></a>Erstellen eines lokalen Clusters
 Ein Service Fabric-Cluster ist ein Satz von Hardwareressourcen, auf dem Sie Anwendungen bereitstellen können. Normalerweise umfasst ein Cluster zwischen fünf und mehreren Tausend Computern. Das Service Fabric-SDK enthält aber eine Clusterkonfiguration, die auf einem einzelnen Computer ausgeführt werden kann.
 
 Sie müssen dabei bedenken, dass der lokale Service Fabric-Cluster kein Emulator oder Simulator ist. Er führt den gleichen Plattformcode wie Cluster mit mehreren Computern aus. Der einzige Unterschied ist, dass die Plattformprozesse, die normalerweise auf fünf Computer verteilt sind, auf einem Computer ausgeführt werden.
@@ -49,24 +53,24 @@ Das SDK bietet zwei Möglichkeiten zum Einrichten eines lokalen Clusters: ein Wi
    
     Sie können nun damit beginnen, eine Anwendung in Ihrem Cluster bereitzustellen.
 
-## Bereitstellen von Anwendungen
+## <a name="deploy-an-application"></a>Bereitstellen von Anwendungen
 Das Service Fabric-SDK umfasst eine Vielzahl von Frameworks und Entwicklertools zum Erstellen von Anwendungen. Wenn Sie lernen möchten, wie Sie Anwendungen in Visual Studio erstellen können, lesen Sie [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md).
 
 In diesem Tutorial verwenden wir eine vorhandene Beispielanwendung (mit dem Namen WordCount), damit wir uns auf die Verwaltung der Plattform konzentrieren können, einschließlich Bereitstellung, Überwachung und Upgrade.
 
 1. Starten Sie als Administrator ein neues PowerShell-Fenster.
-2. Importieren Sie das Service Fabric-SDK für das PowerShell-Modul.
+2. Importieren Sie das Service Fabric-SDK für das PowerShell-Modul.
    
     ```powershell
     Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
     ```
-3. Erstellen Sie ein Verzeichnis zum Speichern der Anwendung, die Sie herunterladen und bereitstellen möchten, z.B. „C:\\ServiceFabric“.
+3. Erstellen Sie ein Verzeichnis zum Speichern der Anwendung, die Sie herunterladen und bereitstellen möchten, z.B. „C:\ServiceFabric“.
    
     ```powershell
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
-4. [Laden Sie die WordCount-Anwendung](http://aka.ms/servicefabric-wordcountapp) an den Speicherort herunter, den Sie erstellt haben. Hinweis: Der Microsoft Edge-Browser speichert die Datei mit der Erweiterung *.zip*. Ändern Sie die Dateierweiterung in *.sfpkg*.
+4. [Laden Sie die WordCount-Anwendung](http://aka.ms/servicefabric-wordcountapp) an den Speicherort herunter, den Sie erstellt haben.  Hinweis: Der Microsoft Edge-Browser speichert die Datei mit der Erweiterung *.zip* .  Ändern Sie die Dateierweiterung in *.sfpkg*.
 5. Stellen Sie eine Verbindung mit dem lokalen Cluster her:
    
     ```powershell
@@ -85,11 +89,11 @@ In diesem Tutorial verwenden wir eine vorhandene Beispielanwendung (mit dem Name
    
     ![Benutzeroberfläche der bereitgestellten Anwendung][deployed-app-ui]
    
-    Die WordCount-Anwendung ist sehr einfach. Sie enthält clientseitigen JavaScript-Code zum Generieren von zufälligen „Wörtern“ mit fünf Zeichen, die dann per ASP.NET-Web-API an die Anwendung weitergeleitet werden. Bei einem zustandsbehafteten Dienst wird die Anzahl von Wörtern nachverfolgt. Sie werden basierend auf dem ersten Buchstaben des Worts partitioniert. Den Quellcode für die WordCount-App finden Sie unter [Getting Started Samples](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/) (Beispiele für erste Schritte).
+    Die WordCount-Anwendung ist sehr einfach. Sie enthält clientseitigen JavaScript-Code zum Generieren von zufälligen „Wörtern“ mit fünf Zeichen, die dann per ASP.NET-Web-API an die Anwendung weitergeleitet werden. Bei einem zustandsbehafteten Dienst wird die Anzahl von Wörtern nachverfolgt. Sie werden basierend auf dem ersten Buchstaben des Worts partitioniert. Den Quellcode für die WordCount-App finden Sie unter [Getting Started Samples](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/)(Beispiele für erste Schritte).
    
     Die Anwendung, die wir bereitgestellt haben, enthält vier Partitionen. Wörter, die mit A bis G beginnen, werden in der ersten Partition gespeichert, Wörter mit H bis N in der zweiten Partition usw.
 
-## Anzeigen von Anwendungsdetails und des Anwendungsstatus
+## <a name="view-application-details-and-status"></a>Anzeigen von Anwendungsdetails und des Anwendungsstatus
 Nach dem Bereitstellen der Anwendung sehen wir uns nun die App-Details in PowerShell an.
 
 1. Fragen Sie alle bereitgestellten Anwendungen im Cluster ab:
@@ -129,7 +133,7 @@ Nach dem Bereitstellen der Anwendung sehen wir uns nun die App-Details in PowerS
    > 
    > 
 
-## Upgraden einer Anwendung
+## <a name="upgrade-an-application"></a>Upgraden einer Anwendung
 Service Fabric ermöglicht Upgrades ohne Ausfallzeit, indem die Integrität der Anwendung überwacht wird, während sie im Cluster bereitgestellt wird. Führen Sie nun ein einfaches Upgrade der WordCount-Anwendung durch.
 
 Die neue Version der Anwendung zählt nur die Wörter, die mit einem Vokal beginnen. Während das Upgrade bereitgestellt wird, sehen wir zwei Änderungen im Verhalten der Anwendung. Erstens sollte sich die Rate verlangsamen, mit der die Anzahl zunimmt, da weniger Wörter gezählt werden. Da die erste Partition zwei Vokale enthält („A“ und „E“) und alle anderen Partitionen nur einen enthalten, sollte zweitens die Anzahl dieser Partition letztlich größer als die der anderen sein.
@@ -162,8 +166,8 @@ Die neue Version der Anwendung zählt nur die Wörter, die mit einem Vokal begin
    
     ![Anzeigen der neuen Version der Anwendung im Browser][deployed-app-ui-v2]
 
-## Bereinigen
-Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster real ist. Anwendungen werden im Hintergrund so lange weiter ausgeführt, bis Sie sie entfernen. Je nach Art Ihrer Apps kann eine ausgeführte App erhebliche Ressourcen auf dem Computer beanspruchen. Sie haben mehrere Optionen zum Verwalten der Anwendungen und des Clusters:
+## <a name="cleaning-up"></a>Bereinigen
+Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster real ist. Anwendungen werden im Hintergrund so lange weiter ausgeführt, bis Sie sie entfernen.  Je nach Art Ihrer Apps kann eine ausgeführte App erhebliche Ressourcen auf dem Computer beanspruchen. Sie haben mehrere Optionen zum Verwalten der Anwendungen und des Clusters:
 
 1. Führen Sie Folgendes aus, um eine einzelne Anwendung und alle dazugehörigen Daten zu entfernen:
    
@@ -182,11 +186,13 @@ Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluste
     ```
    
     Oder wählen Sie im Service Fabric Explorer für die Anwendung die Option **Unprovision Type** (Bereitstellung des Typs aufheben).
-3. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
-4. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Entfernen Sie den lokalen Cluster nur, wenn Sie nicht beabsichtigen, ihn einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
+3. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden** .
+4. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen** . Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Entfernen Sie den lokalen Cluster nur, wenn Sie nicht beabsichtigen, ihn einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
 
-## Clustermodi „1 Knoten“ und „5 Knoten“
-Beim Verwenden des lokalen Clusters zum Entwickeln von Anwendungen kommt es häufig zu schnellen Abläufen, die sich auch wiederholen können: Schreiben von Code, Debuggen, Ändern von Code, Debuggen usw. Zur Optimierung dieses Prozesses kann der lokale Cluster in zwei Modi ausgeführt werden: „1 Knoten“ oder „5 Knoten“. Beide Clustermodi haben bestimmte Vorteile. Im Clustermodus mit fünf Knoten können Sie mit einem echten Cluster arbeiten. Sie können Failoverszenarien testen und mit mehr Instanzen und Replikaten Ihres Diensts arbeiten. Der Clustermodus mit einem Knoten wurde für die schnelle Bereitstellung und Registrierung von Diensten optimiert, damit Sie mit der Service Fabric-Laufzeit in kurzer Zeit Code überprüfen können.
+## <a name="1-node-and-5-node-cluster-mode"></a>Clustermodi „1 Knoten“ und „5 Knoten“
+Beim Verwenden des lokalen Clusters zum Entwickeln von Anwendungen kommt es häufig zu schnellen Abläufen, die sich auch wiederholen können: Schreiben von Code, Debuggen, Ändern von Code, Debuggen usw. Zur Optimierung dieses Prozesses kann der lokale Cluster in zwei Modi ausgeführt werden: „1 Knoten“ oder „5 Knoten“. Beide Clustermodi haben bestimmte Vorteile.
+Im Clustermodus mit fünf Knoten können Sie mit einem echten Cluster arbeiten. Sie können Failoverszenarien testen und mit mehr Instanzen und Replikaten Ihres Diensts arbeiten.
+Der Clustermodus mit einem Knoten wurde für die schnelle Bereitstellung und Registrierung von Diensten optimiert, damit Sie mit der Service Fabric-Laufzeit in kurzer Zeit Code überprüfen können.
 
 Weder beim Clustermodus mit einem Knoten noch mit fünf Knoten handelt es sich um einen Emulator oder Simulator. Er führt den gleichen Plattformcode wie Cluster mit mehreren Computern aus.
 
@@ -217,7 +223,7 @@ Bei Verwendung des Service Fabric-Managers für lokale Cluster:
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Nachdem Sie nun einige vordefinierte Anwendungen bereitgestellt und aktualisiert haben, können Sie [selbst eine Anwendung in Visual Studio erstellen](service-fabric-create-your-first-application-in-visual-studio.md).
 * Alle Aktionen, die für den lokalen Cluster in diesem Artikel ausgeführt werden, können auch in einem [Azure-Cluster](service-fabric-cluster-creation-via-portal.md) ausgeführt werden.
 * Das Upgrade, das wir in diesem Artikel durchgeführt haben, ist einfach. In der [Dokumentation zu Upgrades](service-fabric-application-upgrade.md) erfahren Sie mehr über die Leistungsfähigkeit und Flexibilität von Service Fabric-Upgrades.
@@ -242,4 +248,8 @@ Bei Verwendung des Service Fabric-Managers für lokale Cluster:
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
 [switch-cluster-mode]: ./media/service-fabric-get-started-with-a-local-cluster/switch-cluster-mode.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

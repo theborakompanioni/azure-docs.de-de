@@ -1,27 +1,32 @@
 ---
-title: Visualisieren von SQL Data Warehouse-Daten mit Power BI | Microsoft Docs
+title: Visualisieren von SQL Data Warehouse-Daten mit Power BI | Microsoft Azure
 description: Visualisieren von SQL Data Warehouse-Daten mit Power BI
 services: sql-data-warehouse
 documentationcenter: NA
-author: lodipalm
-manager: barbkess
-editor: ''
-
+author: barbkess
+manager: jhubbard
+editor: 
+ms.assetid: d7fb89d1-da1d-4788-a111-68d0e3fda799
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/16/2016
-ms.author: lodipalm;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f498f4546e8c23f2141d8d30160a360fa0fc2514
+
 
 ---
-# Visualisieren von Daten mit Power BI
+# <a name="visualize-data-with-power-bi"></a>Visualisieren von Daten mit Power BI
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
@@ -31,16 +36,16 @@ In diesem Lernprogramm erfahren Sie, wie Sie Power BI zum Herstellen einer Verbi
 > 
 > 
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Eine SQL Data Warehouse-Instanz, für die die AdventureWorksDW-Datenbank vorab geladen wurde. Informationen zur Bereitstellung finden Sie unter [Erstellen eines SQL Data Warehouse][Erstellen eines SQL Data Warehouse]. Wählen Sie die Option zum Laden der Beispieldaten. Wenn Sie bereits über ein Data Warehouse verfügen, aber noch keine Beispieldaten besitzen, können Sie [Beispieldaten manuell laden][Beispieldaten manuell laden].
 
-## 1\. Verbinden mit der Datenbank
+## <a name="1-connect-to-your-database"></a>1. Verbinden mit der Datenbank
 Gehen Sie wie folgt vor, um Power BI zu öffnen und eine Verbindung mit der AdventureWorksDW-Datenbank herzustellen:
 
 1. Melden Sie sich beim [Azure-Portal][Azure-Portal] an.
-2. Klicken Sie auf **SQL-Datenbanken**, und wählen Sie Ihre AdventureWorks SQL Data Warehouse-Datenbank aus.
+2. Klicken Sie auf **SQL-Datenbanken** , und wählen Sie Ihre AdventureWorks SQL Data Warehouse-Datenbank aus.
    
     ![Datenbank suchen][1]
 3. Klicken Sie auf die Schaltfläche „Open in Power BI“.
@@ -56,7 +61,7 @@ Gehen Sie wie folgt vor, um Power BI zu öffnen und eine Verbindung mit der Adve
    
     ![Power BI – Öffnen von „AdventureWorksDW“][5]
 
-## 2\. Erstellen eines Berichts
+## <a name="2-create-a-report"></a>2. Erstellen eines Berichts
 Sie können Power BI jetzt zum Analysieren Ihrer AdventureWorksDW-Beispieldaten verwenden. Zum Durchführen der Analyse verfügt AdventureWorksDW über die Ansicht „AggregateSales“. Diese Ansicht enthält einige wichtige Metriken zum Analysieren des Umsatzes des Unternehmens.
 
 1. Klicken Sie zum Erstellen einer Karte mit den Umsatzbeträgen nach Postleitzahl im rechten Bereich mit den Feldern auf die Ansicht „AggregateSales“, um sie zu erweitern. Klicken Sie dann auf die Spalten „PostalCode“ und „SalesAmount“, um sie auszuwählen.
@@ -83,7 +88,7 @@ Sie können Power BI jetzt zum Analysieren Ihrer AdventureWorksDW-Beispieldaten 
 
 Sie können Ihren Fortschritt jederzeit speichern, indem Sie auf **Datei** und auf **Speichern** klicken.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich schon etwas mit den Beispieldaten vertraut gemacht haben, können Sie sich nun mit der [Entwicklung][Entwicklung], dem [Laden][Laden] oder der [Migration][Migration] befassen. Oder sehen Sie sich die [Power BI-Website][Power BI-Website] an.
 
 <!--Image references-->
@@ -101,15 +106,19 @@ Nachdem Sie sich schon etwas mit den Beispieldaten vertraut gemacht haben, könn
 [12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[Migration]: sql-data-warehouse-overview-migrate.md
-[Entwicklung]: sql-data-warehouse-overview-develop.md
+[Migrieren]: sql-data-warehouse-overview-migrate.md
+[Entwickeln]: sql-data-warehouse-overview-develop.md
 [Laden]: sql-data-warehouse-overview-load.md
-[Beispieldaten manuell laden]: sql-data-warehouse-load-sample-databases.md
-[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[Beispieldaten auch manuell laden]: sql-data-warehouse-load-sample-databases.md
+[Herstellen einer Verbindung mit SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
 [Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
 [Azure-Portal]: https://portal.azure.com/
 [Power BI-Website]: http://www.powerbi.com/
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

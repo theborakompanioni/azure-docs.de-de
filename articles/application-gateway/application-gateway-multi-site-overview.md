@@ -1,12 +1,12 @@
 ---
 title: Hosten mehrerer Websites mit Application Gateway| Microsoft Docs
-description: Diese Seite bietet eine Übersicht über die Application Gateway-Unterstützung für mehrere Websites.
+description: "Diese Seite bietet eine Übersicht über die Application Gateway-Unterstützung für mehrere Websites."
 documentationcenter: na
 services: application-gateway
 author: amsriva
 manager: rossort
 editor: amsriva
-
+ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2016
 ms.author: amsriva
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 85fc1315f32811873c577fe75d88eb08a2bbac26
+
 
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
@@ -25,7 +29,7 @@ Anforderungen für „http://contoso.com“ werden an „ContosoServerPool“ un
 
 Dementsprechend können zwei Unterdomänen derselben übergeordneten Domäne in der gleichen Anwendungsgatewaybereitstellung gehostet werden. Beispiele: „http://blog.contoso.com“ und „http://app.contoso.com“, gehostet in einer einzigen Anwendungsgatewaybereitstellung
 
-## <a name="host-headers-and-server-name-indication-(sni)"></a>Hostheader und Servernamensanzeige
+## <a name="host-headers-and-server-name-indication-sni"></a>Hostheader und Servernamensanzeige
 Es gibt drei allgemeine Mechanismen, um das Hosten mehrerer Websites in der gleichen Infrastruktur zu ermöglichen.
 
 1. Hosten von mehreren Webanwendungen, jeweils mit einer eindeutigen IP-Adresse.
@@ -117,6 +121,9 @@ Für die Routingregel ist keine Änderung erforderlich. Verwenden Sie weiterhin 
 ## <a name="next-steps"></a>Nächste Schritte
 Fahren Sie nun mit dem Artikel [Erstellen eines Anwendungsgateways zum Hosten mehrerer Webanwendungen](application-gateway-create-multisite-azureresourcemanager-powershell.md) fort, um ein Anwendungsgateway zu erstellen, das mehr als eine Webanwendung hosten kann.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

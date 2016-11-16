@@ -43,27 +43,27 @@
 
 
 # Referenz
-## [APIs – Resource Manager](https://msdn.microsoft.com/library/azure/mt586720)
-## [APIs – Dienstverwaltung](https://msdn.microsoft.com/library/azure/dn606310)
-## [PowerShell-Cmdlets – Resource Manager](https://msdn.microsoft.com/library/azure/mt163510(v=azure.300))
-## [PowerShell-Cmdlets – Dienstverwaltung](https://msdn.microsoft.com/library/azure/dn683813)
+
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
 ## [Setupbeispiele für die Routerkonfiguration](expressroute-config-samples-routing.md)
 ## [Beispiele für die Routerkonfiguration für NAT](expressroute-config-samples-nat.md)
+## [REST](https://msdn.microsoft.com/library/azure/mt586720)
+## [REST (klassisch)](https://msdn.microsoft.com/library/azure/dn606310)
 
-# Verwandte Themen 
-## [Virtual Network](../virtual-network/index.md)
-## [VPN Gateway](../vpn-gateway/index.md)
-## [Virtuelle Computer](../virtual-machines/index.md)
-## [Load Balancer](../load-balancer/index.md)
-## [Traffic Manager](../traffic-manager/index.md)
+# Verwandte Themen
+## [Virtual Network](/azure/virtual-network/)
+## [VPN Gateway](/azure/vpn-gateway/)
+## [Virtuelle Computer](/azure/virtual-machines/)
+## [Load Balancer](/azure/load-balancer/)
+## [Traffic Manager](/azure/traffic-manager/)
 
 # Ressourcen
+## [Preise](https://azure.microsoft.com/pricing/details/expressroute/)
 ## [Netzwerkblog](https://azure.microsoft.com/blog/topics/networking/)
 ## [Fallstudien](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
-## [Preise](https://azure.microsoft.com/pricing/details/expressroute/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md)
-## Videos
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=expressroute) 
 ### [Erstellen einer ExpressRoute-Verbindung](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Einrichten von privatem Peering für Verbindungen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [Einrichten von öffentlichem Peering für Verbindungen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
@@ -73,6 +73,7 @@
 ### [Herstellen einer Verbindung mit einem Gateway für ein virtuelles Netzwerk](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [Erweitern der Netzwerkinfrastruktur zur Optimierung der Konnektivität](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [Partnerschaften für hybride Umgebungen: Umsetzen lokaler Szenarien](https://go.microsoft.com/fwlink/p/?LinkId=615125)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=expressroute) 
 
 <!--HONumber=Nov16_HO2-->
 

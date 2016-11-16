@@ -29,10 +29,12 @@
 # Referenz
 ## [Tastenkombinationen für Azure Data Catalog](data-catalog-keyboard-shortcuts.md)
 ## [Terminologie](data-catalog-terminology.md)
-## [Anmerkungen zu dieser Version](data-catalog-release-notes.md)
+## [Versionshinweise](data-catalog-release-notes.md)
+## [REST](https://docs.microsoft.com/rest/api/datacatalog/)
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/data-catalog/)
+
 
 <!--HONumber=Nov16_HO2-->
 

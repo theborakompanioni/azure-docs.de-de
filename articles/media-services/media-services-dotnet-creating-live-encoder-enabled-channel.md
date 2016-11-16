@@ -1,22 +1,26 @@
 ---
-title: Verwenden von .NET SDK, um Kanäle zu erstellen, von denen eine Livecodierung von Single-Bitrate- zu Multi-Bitrate-Datenströmen vorgenommen wird | Microsoft Docs
-description: In diesem Lernprogramm werden Sie durch die Schritte zum Erstellen eines Kanals mithilfe von .NET SDK geführt, von dem ein Single-Bitrate-Livedatenstrom empfangen und in einen Multi-Bitrate-Datenstrom codiert wird.
+title: "Verwenden von .NET SDK, um Kanäle zu erstellen, von denen eine Livecodierung von Single-Bitrate- zu Multi-Bitrate-Datenströmen vorgenommen wird | Microsoft Docs"
+description: "In diesem Lernprogramm werden Sie durch die Schritte zum Erstellen eines Kanals mithilfe von .NET SDK geführt, von dem ein Single-Bitrate-Livedatenstrom empfangen und in einen Multi-Bitrate-Datenstrom codiert wird."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/15/2016
+ms.date: 10/12/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 98498da5a8aaf10e37c355f05d6f6d83fd4df584
+
 
 ---
-# Verwenden von .NET SDK, um Kanäle zu erstellen, von denen eine Livecodierung von Single-Bitrate- zu Multi-Bitrate-Datenströmen vorgenommen wird
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multibitrate-streams-with-net"></a>Verwenden von .NET SDK, um Kanäle zu erstellen, von denen eine Livecodierung von Single-Bitrate- zu Multi-Bitrate-Datenströmen vorgenommen wird
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -27,12 +31,12 @@ ms.author: juliako;anilmur
 > 
 > 
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 In diesem Lernprogramm werden Sie durch die Schritte zum Erstellen eines **Kanals** geführt, von dem ein Single-Bitrate-Livedatenstrom empfangen und in einen Multi-Bitrate-Datenstrom codiert wird.
 
 Weitere grundlegende Informationen zu Kanälen, die für Livecodierung aktiviert sind, finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
-## Allgemeines Livestreamingszenario
+## <a name="common-live-streaming-scenario"></a>Allgemeines Livestreamingszenario
 Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von gebräuchlichen Livestreaminganwendungen.
 
 > [!NOTE]
@@ -41,30 +45,34 @@ Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von gebräuchliche
 > 
 
 1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein Single-Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP, Smooth Streaming oder RTP (MPEG-TS). Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](http://go.microsoft.com/fwlink/?LinkId=532824).
-   
-    Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
-2. Erstellen Sie einen Kanal, und starten Sie ihn.
-3. Rufen Sie die Erfassungs-URL des Kanals ab.
-   
-    Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-4. Rufen Sie die Vorschau-URL des Kanals ab.
-   
-    Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
-5. Erstellen Sie ein Medienobjekt.
-6. Wenn das Medienobjekt während der Wiedergabe dynamisch verschlüsselt werden soll, führen Sie folgende Schritte aus:
-7. Erstellen Sie einen Inhaltsschlüssel.
-8. Konfigurieren Sie eine Autorisierungsrichtlinie für Inhaltsschlüssel.
-9. Konfigurieren Sie Übermittlungsrichtlinien für Medienobjekte (wird zur dynamischen Paketerstellung und zur dynamischen Verschlüsselung verwendet).
-10. Erstellen Sie ein Programm, und legen Sie fest, dass das erstellte Medienobjekt verwendet werden soll.
-11. Veröffentlichen Sie das dem Programm zugeordnete Medienobjekt, indem Sie einen OnDemand-Locator erstellen.
-    
-     Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
-12. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
-13. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
-14. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-15. Löschen Sie das Programm (und optional das Medienobjekt).
 
-## Sie lernen Folgendes
+Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
+
+1. Erstellen Sie einen Kanal, und starten Sie ihn.
+2. Rufen Sie die Erfassungs-URL des Kanals ab.
+
+Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
+
+1. Rufen Sie die Vorschau-URL des Kanals ab.
+
+Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
+
+1. Erstellen Sie ein Medienobjekt.
+2. Wenn das Medienobjekt während der Wiedergabe dynamisch verschlüsselt werden soll, führen Sie folgende Schritte aus:
+3. Erstellen Sie einen Inhaltsschlüssel.
+4. Konfigurieren Sie eine Autorisierungsrichtlinie für Inhaltsschlüssel.
+5. Konfigurieren Sie Übermittlungsrichtlinien für Medienobjekte (wird zur dynamischen Paketerstellung und zur dynamischen Verschlüsselung verwendet).
+6. Erstellen Sie ein Programm, und legen Sie fest, dass das erstellte Medienobjekt verwendet werden soll.
+7. Veröffentlichen Sie das dem Programm zugeordnete Medienobjekt, indem Sie einen OnDemand-Locator erstellen.
+
+Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
+
+1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
+2. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
+3. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
+4. Löschen Sie das Programm (und optional das Medienobjekt).
+
+## <a name="what-youll-learn"></a>Sie lernen Folgendes
 In diesem Thema wird erläutert, wie mithilfe von Media Services .NET SDK verschiedene Vorgänge bei Kanälen und Programmen ausgeführt werden. Da viele Vorgänge langfristiger Art sind, werden .NET APIs verwendet, von denen langfristige Vorgänge verwaltet werden.
 
 In diesem Thema erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
@@ -78,33 +86,34 @@ In diesem Thema erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
 7. Blenden Sie Slates ein und aus. Starten und Beenden Sie Werbespots. Verwenden Sie langfristige APIs.
 8. Bereinigen Sie den Kanal und alle zugehörigen Ressourcen.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
 * Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen.
-  
-    Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Selbst, nachdem Sie dieses Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen, z. B. das Web-Apps-Feature in Azure App Service.
-* Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Konto erstellen](media-services-create-account.md).
+
+Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Selbst, nachdem Sie dieses Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen, z. B. das Web-Apps-Feature in Azure App Service.
+
+* Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Kontos](media-services-portal-create-account.md).
 * Visual Studio 2010 SP1 (Professional, Premium, Ultimate oder Express) oder höhere Versionen.
-* Sie müssen das Media Services .NET SDK, Version 3.2.0.0 oder höher, verwenden.
+* Sie müssen das Media Services .NET SDK, Version 3.2.0.0 oder höher, verwenden.
 * Sie benötigen eine Webcam und einen Encoder, von dem ein Single-Bitrate-Livedatenstrom gesendet wird.
 
-## Überlegungen
+## <a name="considerations"></a>Überlegungen
 * Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an „AMSLiveD at Microsoft.com“, wenn Sie einen Kanal für längere Zeit laufen lassen müssen.
 * Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
 
-## Beispiel herunterladen
-Laden Sie [hier](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/) ein Beispiel herunter und führen Sie es aus.
+## <a name="download-sample"></a>Beispiel herunterladen
+Laden Sie [hier](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/)ein Beispiel herunter und führen Sie es aus.
 
-## Vorbereiten der Entwicklung mit Media Services SDK für .NET
+## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>Vorbereiten der Entwicklung mit Media Services SDK für .NET
 1. Erstellen Sie mithilfe von Visual Studio eine Konsolenanwendung.
 2. Fügen Sie Ihrer Konsolenanwendung mithilfe des Media Services NuGet-Pakets das Media Services SDK für .NET hinzu.
 
-## Verbinden mit Mediendiensten
+## <a name="connect-to-media-services"></a>Verbinden mit Mediendiensten
 Als bewährte Methode sollten Sie eine app.config-Datei zum Speichern von Namen und Kontoschlüssel von Media Services verwenden.
 
 > [!NOTE]
-> Sie finden Werte für Namen und Schlüssel im klassischen Azure-Portal: Wählen Sie Ihr Media Services-Konto aus, und klicken Sie unten im Portalfenster auf das Symbol SCHLÜSSEL VERWALTEN. Klicken Sie auf die Symbole neben den Textfeldern, um den jeweiligen Wert in die Systemzwischenablage zu kopieren.
+> Um die Werte für den Namen und den Schlüssel zu suchen, öffnen Sie das Azure-Portal und wählen Ihr Konto aus. Das Fenster „Einstellungen“ wird auf der rechten Seite angezeigt. Wählen Sie im Fenster „Einstellungen“ die Option „Schlüssel“ aus. Klicken Sie auf die Symbole neben den Textfeldern, um den jeweiligen Wert in die Systemzwischenablage zu kopieren.
 > 
 > 
 
@@ -119,7 +128,7 @@ Fügen Sie der app.config-Datei den Bereich „appSettings“ hinzu, und geben S
     </configuration>
 
 
-## Codebeispiel
+## <a name="code-example"></a>Codebeispiel
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -507,15 +516,20 @@ Fügen Sie der app.config-Datei den Bereich „appSettings“ hinzu, und geben S
     }    
 
 
-## Nächster Schritt
+## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-### Suchen Sie etwas anderes?
+### <a name="looking-for-something-else"></a>Suchen Sie etwas anderes?
 Wenn dieses Thema nicht die erwarteten Informationen enthält, Informationen fehlen oder auf andere Weise Ihre Erwartungen nicht erfüllt wurden, senden Sie uns bitte über den Disqus-Thread unten Ihr Feedback.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

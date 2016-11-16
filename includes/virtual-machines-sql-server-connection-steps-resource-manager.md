@@ -1,4 +1,4 @@
-### Konfigurieren einer DNS-Bezeichnung für die öffentliche IP-Adresse
+### <a name="configure-a-dns-label-for-the-public-ip-address"></a>Konfigurieren einer DNS-Bezeichnung für die öffentliche IP-Adresse
 Um über das Internet eine Verbindung mit dem SQL Server-Datenbankmodul herzustellen, konfigurieren Sie zunächst eine DNS-Bezeichnung für Ihre öffentliche IP-Adresse.
 
 > [!NOTE]
@@ -8,16 +8,16 @@ Um über das Internet eine Verbindung mit dem SQL Server-Datenbankmodul herzuste
 
 Wählen Sie zum Erstellen einer DNS-Bezeichnung als Erstes im Portal die Option **Virtuelle Computer** aus. Wählen Sie die SQL Server-VM aus, um deren Eigenschaften anzuzeigen.
 
-1. Wählen Sie im Blatt für den virtuellen Computer Ihre **Öffentliche IP-Adresse** aus.
+1. Wählen Sie im Blatt für den virtuellen Computer Ihre **Öffentliche IP-Adresse**
    
     ![Öffentliche IP-Adresse](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
 2. Erweitern Sie in den Eigenschaften für die öffentliche IP-Adresse die Option **Konfiguration**.
 3. Geben Sie eine DNS-Bezeichnung ein. Hierbei handelt es sich um einen A-Eintrag, mit dem eine Verbindung mit Ihrer SQL Server-VM nach dem Namen anstatt direkt nach der IP-Adresse hergestellt werden kann.
-4. Klicken Sie auf die Schaltfläche **Save**.
+4. Klicken Sie auf die Schaltfläche **Save** .
    
     ![DNS-Bezeichnung](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
-### Verbinden mit dem Datenbankmodul von einem anderen Computer aus
+### <a name="connect-to-the-database-engine-from-another-computer"></a>Verbinden mit dem Datenbankmodul von einem anderen Computer aus
 1. Öffnen Sie SQL Server Management Studio (SSMS) auf einem mit dem Internet verbundenen Computer.
 2. Bearbeiten Sie im Dialogfeld **Mit Server verbinden** oder **Verbindung mit Datenbankmodul herstellen** den Wert **Servername**. Geben Sie den vollständigen DNS-Namen des virtuellen Computers ein (in der vorherigen Aufgabe bestimmt).
 3. Wählen Sie im Feld **Authentifizierung** den Eintrag **SQL Server-Authentifizierung**.
@@ -27,4 +27,8 @@ Wählen Sie zum Erstellen einer DNS-Bezeichnung als Erstes im Portal die Option 
    
     ![SSMS-Verbindung](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

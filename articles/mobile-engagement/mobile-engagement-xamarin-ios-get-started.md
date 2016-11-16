@@ -1,12 +1,12 @@
 ---
-title: Erste Schritte mit Azure Mobile Engagement für Xamarin.iOS
-description: Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für Xamarin.iOS-Apps.
+title: "Erste Schritte mit Azure Mobile Engagement für Xamarin.iOS"
+description: "Erfahren Sie mehr über die Verwendung von Azure Mobile Engagement mit Analysefunktionen und Pushbenachrichtigungen für Xamarin.iOS-Apps."
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0448209e-fff6-47bd-985c-2cf074bac12f
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 300403fb483818e5eb1851968ef7f36ff0507fb8
+
 
 ---
-# <a name="get-started-with-azure-mobile-engagement-for-xamarin.ios-apps"></a>Erste Schritte mit Azure Mobile Engagement für Xamarin.iOS-Apps
+# <a name="get-started-with-azure-mobile-engagement-for-xamarinios-apps"></a>Erste Schritte mit Azure Mobile Engagement für Xamarin.iOS-Apps
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die Nutzung Ihrer App nachvollziehen und Pushbenachrichtigungen an segmentierte Benutzer in einer Xamarin.iOS-Anwendung senden.
@@ -32,15 +36,15 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 > 
 > 
 
-## <a name="<a-id="setup-azme"></a>setup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>Einrichten von Mobile Engagement für Ihre iOS-App
+## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>Einrichten von Mobile Engagement für Ihre iOS-App
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="<a-id="connecting-app"></a>connect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
+## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
 In diesem Lernprogramm wird eine „einfache Integration“ dargestellt. Dabei handelt es sich um den minimalen erforderlichen Satz zur Sammlung von Daten und zum Senden einer Pushbenachrichtigung.
 
 Wir erstellen eine einfache App mit Xamarin, um die Integration zu veranschaulichen:
 
-### <a name="create-a-new-xamarin.ios-project"></a>Erstellen eines neuen Xamarin.iOS-Projekts
+### <a name="create-a-new-xamarinios-project"></a>Erstellen eines neuen Xamarin.iOS-Projekts
 1. Starten Sie Xamarin Studio. Navigieren Sie zu **Datei** -> **Neu** -> **Lösung**. 
    
     ![][1]
@@ -79,7 +83,7 @@ Xamarin Studio erstellt die Demo-App, in die wir Mobile Engagement integrieren.
                     };
         EngagementAgent.Init (config);
 
-## <a name="<a-id="monitor"></a>enabling-real-time-monitoring"></a><a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
+## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
 Um mit dem Senden von Daten zu beginnen und sicherzustellen, dass die Benutzer aktiv sind, müssen Sie mindestens einen Bildschirm an das Mobile Engagement-Back-End schicken.
 
 1. Öffnen Sie **ViewController.cs** , und fügen Sie die folgende using-Anweisung hinzu:
@@ -87,10 +91,10 @@ Um mit dem Senden von Daten zu beginnen und sicherzustellen, dass die Benutzer a
         using Microsoft.Azure.Engagement.Xamarin;
 2. Ändern Sie die Klasse, von der `ViewController` erbt, von `UIViewController` in `EngagementViewController`. 
 
-## <a name="<a-id="monitor"></a>connect-app-with-real-time-monitoring"></a><a id="monitor"></a>Verbinden der App mit Überwachung in Echtzeit
+## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Verbinden der App mit Überwachung in Echtzeit
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="<a-id="integrate-push"></a>enable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
+## <a name="a-idintegratepushaenable-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Aktivieren von Pushbenachrichtigungen und In-App-Messaging
 Mit Mobile Engagement können Sie mit Ihren Benutzern und mit REACH mit Push-Benachrichtigungen und In-App-Nachrichten im Rahmen von Kampagnen interagieren. Dieses Modul nennt sich REACH im Mobile Engagement-Portal.
 In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 
@@ -140,7 +144,7 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
     ![][7]
 5. Stellen Sie in derselben Datei **Info.plist** sicher, dass die Optionen **Hintergrundmodi aktivieren** und **Remotebenachrichtigungen** aktiviert sind. 
    
-    ![][8]
+     ![][8]
 6. Führen Sie die App auf dem Gerät aus, das Sie diesem Veröffentlichungsprofil zugeordnet haben. 
 
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
@@ -157,6 +161,6 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

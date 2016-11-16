@@ -1,11 +1,11 @@
-## Definieren einer Sicherungsrichtlinie
-Mit einer Sicherungsrichtlinie wird eine Matrix dafür definiert, wann Datenmomentaufnahmen erstellt werden und wie lange diese Momentaufnahmen aufbewahrt werden. Wenn Sie eine Richtlinie zum Sichern eines virtuellen Computers definieren, können Sie einen Sicherungsauftrag *einmal pro Tag* auslösen. Wenn Sie eine neue Richtlinie erstellen, wird sie auf den Tresor angewendet. Die Oberfläche für die Sicherungsrichtlinie sieht wie folgt aus:
+## <a name="defining-a-backup-policy"></a>Definieren einer Sicherungsrichtlinie
+Mit einer Sicherungsrichtlinie wird eine Matrix dafür definiert, wann Datenmomentaufnahmen erstellt werden und wie lange diese Momentaufnahmen aufbewahrt werden. Wenn Sie eine Richtlinie zum Sichern eines virtuellen Computers definieren, können Sie einen Sicherungsauftrag *einmal pro Tag*auslösen. Wenn Sie eine neue Richtlinie erstellen, wird sie auf den Tresor angewendet. Die Oberfläche für die Sicherungsrichtlinie sieht wie folgt aus:
 
 ![Sicherungsrichtlinie](./media/backup-create-policy-for-vms/backup-policy.png)
 
 So erstellen Sie eine Richtlinie
 
-1. Geben Sie einen Namen für die **Richtlinie** ein.
+1. Geben Sie einen Namen für die **Richtlinie**ein.
 2. Sie können in täglichen oder wöchentlichen Abständen Momentaufnahmen Ihrer Daten erstellen. Wählen Sie im Dropdownmenü **Sicherungshäufigkeit** aus, ob Momentaufnahmen der Daten täglich oder wöchentlich erstellt werden sollen.
    
    * Wenn Sie als Intervall „Täglich“ auswählen, können Sie das hervorgehobene Steuerelement verwenden, um die Tageszeit für die Momentaufnahme auszuwählen. Deaktivieren Sie zum Ändern der Stundenangabe die vorhandene Stunde, und wählen Sie dann die neue Stunde aus.
@@ -26,4 +26,8 @@ So erstellen Sie eine Richtlinie
    
     Die neue Richtlinie wird sofort auf den Tresor angewendet.
 
-<!---HONumber=AcomDC_0608_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,13 +1,14 @@
-## Load Balancer-Unterschiede
+## <a name="load-balancer-differences"></a>Load Balancer-Unterschiede
+
 Es gibt verschiedene Optionen zur Verteilung des Netzwerkdatenverkehrs mit Microsoft Azure. Diese Optionen funktionieren unterschiedlich, bieten jeweils verschiedene Featuregruppen und unterstützen verschiedene Szenarien. Sie können unabhängig voneinander oder kombiniert verwendet werden.
 
 * **Azure Load Balancer** arbeitet in der Transportschicht (Schicht 4 des OSI-Netzwerkreferenzmodells). Er bietet eine Verteilung des Datenverkehrs auf Netzwerkebene über Instanzen einer Anwendung, die in demselben Azure-Rechenzentrum ausgeführt wird.
 * **Application Gateway** funktioniert in der Anwendungsschicht (Schicht 7 des OSI-Netzwerkreferenzmodells). Er fungiert als Reverseproxydienst, beendet die Clientverbindung und leitet Anforderungen an Back-End-Endpunkte weiter.
-* **Traffic Manager** funktioniert auf DNS-Ebene. Er verwendet DNS-Antworten, um Endbenutzer-Datenverkehr an global verteilte Endpunkte zu leiten. Clients stellen dann eine direkte Verbindung mit diesen Endpunkten her.
+* **Traffic Manager** funktioniert auf DNS-Ebene.  Er verwendet DNS-Antworten, um Endbenutzer-Datenverkehr an global verteilte Endpunkte zu leiten. Clients stellen dann eine direkte Verbindung mit diesen Endpunkten her.
 
 In der folgenden Tabelle werden die von den einzelnen Diensten angebotenen Features zusammengefasst:
 
-| Dienst | Azure-Lastenausgleich | Application Gateway | Traffic Manager |
+| Dienst | Azure Load Balancer | Application Gateway | Traffic Manager |
 | --- | --- | --- | --- |
 | Technologie |Transportschicht (Schicht 4) |Anwendungsschicht (Schicht 7) |DNS-Ebene |
 | Unterstützte Anwendungsprotokolle |Beliebig |HTTP und HTTPS |Alle (Ein HTTP-Endpunkt ist für die Endpunktüberwachung erforderlich.) |
@@ -17,7 +18,7 @@ In der folgenden Tabelle werden die von den einzelnen Diensten angebotenen Featu
 
 Azure Load Balancer und Application Gateway leiten Netzwerkdatenverkehr an Endpunkte weiter, werden jedoch im Hinblick auf den verarbeiteten Datenverkehr in verschiedenen Verwendungsszenarios eingesetzt. In der folgenden Tabelle wird der Unterschied zwischen den beiden Lastenausgleichsmodulen verdeutlicht:
 
-| Typ | Azure-Lastenausgleich | Application Gateway |
+| Typ | Azure Load Balancer | Application Gateway |
 | --- | --- | --- |
 | Protokolle |UDP/TCP |HTTP/HTTPS |
 | IP-Reservierung |Unterstützt |Nicht unterstützt |
@@ -26,4 +27,7 @@ Azure Load Balancer und Application Gateway leiten Netzwerkdatenverkehr an Endpu
 | Integritätstests |Standard: Testintervall von 15 Sekunden. Aus der Rotation entfernt: 2 aufeinanderfolgende Fehler. Unterstützt benutzerdefinierte Tests. |Testleerlaufintervall von 30 Sekunden. Entfernt nach fünf aufeinanderfolgenden Live-Datenverkehrsfehlern oder einem einzelnen Testfehler im Leerlaufmodus. Unterstützt benutzerdefinierte Tests. |
 | SSL-Abladung |Nicht unterstützt |Unterstützt |
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Nov16_HO2-->
+
+

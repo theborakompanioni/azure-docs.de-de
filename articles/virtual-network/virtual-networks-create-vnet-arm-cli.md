@@ -1,13 +1,13 @@
 ---
-title: Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle | Microsoft Docs
-description: Erfahren Sie, wie Sie ein virtuelles Netzwerk über die Azure-Befehlszeilenschnittstelle in ARM erstellen | Ressourcen-Manager.
+title: "Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle | Microsoft Docs"
+description: "Erfahren Sie, wie Sie ein virtuelles Netzwerk über die Azure-Befehlszeilenschnittstelle in ARM erstellen | Ressourcen-Manager."
 services: virtual-network
-documentationcenter: ''
+documentationcenter: 
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 75966bcc-0056-4667-8482-6f08ca38e77a
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: hero-article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 066697c61006dedc2b139941eab146607b50933f
+
 
 ---
-# Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
+# <a name="create-a-virtual-network-by-using-the-azure-cli"></a>Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle
 [!INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
@@ -30,4 +34,9 @@ In diesem Dokument wird beschrieben, wie ein virtuelles Netzwerk (VNet) mit dem 
 
 [!INCLUDE [virtual-networks-create-vnet-arm-cli-include](../../includes/virtual-networks-create-vnet-arm-cli-include.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

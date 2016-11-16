@@ -1,51 +1,56 @@
 ---
-title: Erste Schritte mit Azure Notification Hubs für Kindle-Apps | Microsoft Docs
+title: "Erste Schritte mit Azure Notification Hubs für Kindle-Apps | Microsoft Docs"
 description: In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an eine Kindle-Anwendung senden.
 services: notification-hubs
-documentationcenter: ''
-author: wesmc7777
+documentationcenter: 
+author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 346fc8e5-294b-4e4f-9f27-7a82d9626e93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-kindle
 ms.devlang: Java
 ms.topic: hero-article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
+
 
 ---
-# Erste Schritte mit Notification Hubs für Kindle-Apps
-[!INCLUDE [Notification-Hubs-Auswahl-Erste-Schritte](../../includes/notification-hubs-selector-get-started.md)]
+# <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Erste Schritte mit Notification Hubs für Kindle-Apps
+[!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## Übersicht
-In diesem Lernprogramm wird gezeigt, wie Sie mit Azure Benachrichtigungshubs Pushbenachrichtigungen an eine Kindle-Anwendung senden können. Sie erstellen eine leere Kindle-App, die Pushbenachrichtigungen mithilfe von Amazon Device Messaging (ADM) empfängt.
+## <a name="overview"></a>Übersicht
+In diesem Lernprogramm wird gezeigt, wie Sie mit Azure Benachrichtigungshubs Pushbenachrichtigungen an eine Kindle-Anwendung senden können.
+Sie erstellen eine leere Kindle-App, die Pushbenachrichtigungen mithilfe von Amazon Device Messaging (ADM) empfängt.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Laden Sie das Android-SDK (wir gehen davon aus, dass Sie Eclipse verwenden) von der <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android-Website</a> herunter.
 * Führen Sie die Schritte unter <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">Setting Up Your Development Environment</a> zum Einrichten der Entwicklungsumgebung für Kindle aus.
 
-## Hinzufügen einer neuen App zum Entwicklerportal
+## <a name="add-a-new-app-to-the-developer-portal"></a>Hinzufügen einer neuen App zum Entwicklerportal
 1. Erstellen Sie zuerst eine App im [Amazon-Entwicklerportal].
    
     ![][0]
 2. Kopieren Sie den **Anwendungsschlüssel**.
    
     ![][1]
-3. Klicken Sie im Portal auf den Namen der App und dann auf die Registerkarte **Device Messaging**.
+3. Klicken Sie im Portal auf den Namen der App und dann auf die Registerkarte **Device Messaging** .
    
     ![][2]
-4. Klicken Sie auf **Create a New Security Profile**, und erstellen Sie ein neues Sicherheitsprofil (z. B. **TestAdm Sicherheitsprofil**). Klicken Sie anschließend auf **Save**.
+4. Klicken Sie auf **Create a New Security Profile**, und erstellen Sie ein neues Sicherheitsprofil (z.B. **TestAdm Sicherheitsprofil**). Klicken Sie anschließend auf **Save**.
    
     ![][3]
-5. Klicken Sie auf **Security Profiles**, um das gerade erstellte Sicherheitsprofil anzuzeigen. Kopieren Sie die Werte für **Client ID** und **Client Secret** zur späteren Verwendung.
+5. Klicken Sie auf **Security Profiles** , um das gerade erstellte Sicherheitsprofil anzuzeigen. Kopieren Sie die Werte für **Client ID** und **Client Secret** zur späteren Verwendung.
    
     ![][4]
 
-## Erstellen eines API-Schlüssels
+## <a name="create-an-api-key"></a>Erstellen eines API-Schlüssels
 1. Öffnen Sie eine Eingabeaufforderung mit Administratorberechtigungen.
 2. Navigieren Sie zum Android SDK-Ordner.
 3. Geben Sie den folgenden Befehl ein:
@@ -54,13 +59,13 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
    
     ![][5]
 4. Geben Sie als **keystore**-Kennwort **android** ein.
-5. Kopieren Sie den **MD5**-Fingerabdruck.
-6. Klicken Sie im Entwicklerportal auf der Registerkarte **Messaging** auf **Android/Kindle**, und geben Sie den Paketnamen für Ihre App (z. B. **com.sample.notificationhubtest**) und den Wert für **MD5**, und klicken Sie dann auf **Generate API Key**.
+5. Kopieren Sie den **MD5** -Fingerabdruck.
+6. Klicken Sie im Entwicklerportal auf der Registerkarte **Messaging** auf **Android/Kindle**, und geben Sie den Paketnamen für Ihre App (z.B. **com.sample.notificationhubtest**) und den Wert für **MD5**, und klicken Sie dann auf **Generate API Key**.
 
-## Hinzufügen von Anmeldeinformationen zum Hub
+## <a name="add-credentials-to-the-hub"></a>Hinzufügen von Anmeldeinformationen zum Hub
 Geben Sie im Portal den geheimen Clientschlüssel und die Client-ID in die Registerkarte **Configure** des Benachrichtigungshubs ein.
 
-## Einrichten der Anwendung
+## <a name="set-up-your-application"></a>Einrichten der Anwendung
 > [!NOTE]
 > Verwenden Sie beim Erstellen einer Anwendung mindestens API-Level 17.
 > 
@@ -120,11 +125,11 @@ Bearbeiten Sie Ihr App-Manifest zur Unterstützung von ADM:
             </intent-filter>
         </receiver>
 
-## Erstellen des ADM-Meldungshandlers
+## <a name="create-your-adm-message-handler"></a>Erstellen des ADM-Meldungshandlers
 1. Erstellen Sie eine neue Klasse als Erbe von `com.amazon.device.messaging.ADMMessageHandlerBase`, und nennen Sie sie `MyADMMessageHandler`, wie in der folgenden Abbildung gezeigt:
    
     ![][6]
-2. Fügen Sie die folgenden `import`-Anweisungen ein:
+2. Fügen Sie die folgenden `import` -Anweisungen ein:
    
         import android.app.NotificationManager;
         import android.app.PendingIntent;
@@ -220,11 +225,11 @@ Bearbeiten Sie Ihr App-Manifest zur Unterstützung von ADM:
                }.execute(null, null, null);
         }
 
-## Hinzufügen Ihres API-Schlüssels zur App
-1. Erstellen Sie in Eclipse eine neue Datei namens **api\_key.txt** im Verzeichnisobjekt des Projekts.
+## <a name="add-your-api-key-to-your-app"></a>Hinzufügen Ihres API-Schlüssels zur App
+1. Erstellen Sie in Eclipse eine neue Datei namens **api_key.txt** im Verzeichnisobjekt des Projekts.
 2. Öffnen Sie die Datei, und kopieren Sie den API-Schlüssel, den Sie im Amazon-Entwicklerportal generiert haben.
 
-## Ausführen der App
+## <a name="run-the-app"></a>Ausführen der App
 1. Starten Sie den Emulator.
 2. Streifen Sie im Emulator nach unten, und klicken Sie auf **Einstellungen** und anschließend auf **Mein Konto**, und registrieren Sie sich mit einem gültigen Amazon-Konto.
 3. Führen Sie die App in Eclipse aus.
@@ -236,14 +241,14 @@ Bearbeiten Sie Ihr App-Manifest zur Unterstützung von ADM:
 
         adb shell  date -s "yyyymmdd.hhmmss"
 
-## Senden einer Nachricht
+## <a name="send-a-message"></a>Senden einer Nachricht
 So senden Sie eine Nachricht mithilfe von .NET:
 
         static void Main(string[] args)
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("[conn string]", "[hub name]");
 
-            hub.SendAdmNativeNotificationAsync("{"data":{"msg" : "Hello from .NET!"}}").Wait();
+            hub.SendAdmNativeNotificationAsync("{\"data\":{\"msg\" : \"Hello from .NET!\"}}").Wait();
         }
 
 ![][7]
@@ -261,4 +266,8 @@ So senden Sie eine Nachricht mithilfe von .NET:
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO2-->
+
+

@@ -1,34 +1,38 @@
 ---
-title: Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff in einem klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
+title: Erste Schritte zum Erstellen eines Lastenausgleichs mit Internetzugriff im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
 description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Load Balancer mit Internetzugriff in einem klassischen Bereitstellungsmodell erstellen.
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e8a346c1b2d430eceb4aa1b8bc94fbbe89394556
+
 
 ---
-# Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
-[!INCLUDE [Load-Balancer-Get-Started-Internet-Classic-Selectors-include.MD](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
+# <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-the-azure-cli"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
+[!INCLUDE [load-balancer-get-started-internet-classic-selectors-include.md](../../includes/load-balancer-get-started-internet-classic-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Dieser Artikel gilt für das klassische Bereitstellungsmodell. Sie können auch [erfahren, wie Sie mit dem Azure-Ressourcen-Manager einen Load Balancer mit Internetzugriff erstellen](load-balancer-get-started-internet-arm-ps.md).
+Dieser Artikel gilt für das klassische Bereitstellungsmodell. Informationen zum Erstellen eines Load Balancers mit Internetzugriff unter Verwendung des Azure-Ressourcen-Managers finden Sie [hier](load-balancer-get-started-internet-arm-ps.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## Schritte zum Erstellen eines Load Balancers mit Internetzugriff mithilfe der Befehlszeilenschnittstelle
+## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>Schritte zum Erstellen eines Load Balancers mit Internetzugriff mithilfe der Befehlszeilenschnittstelle
 In diesem Handbuch erfahren Sie, wie Sie auf der Grundlage des oben beschriebenen Szenarios einen Internet-Load Balancer erstellen.
 
 1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
@@ -40,25 +44,29 @@ In diesem Handbuch erfahren Sie, wie Sie auf der Grundlage des oben beschriebene
    
         info:    New mode is asm
 
-## Erstellen eines Endpunkts und einer Load Balancer-Gruppe
-Das Szenario setzt voraus, dass die virtuellen Computer „web1“ und „web2“ erstellt wurden. In diesem Leitfaden wird eine Load Balancer-Gruppe erstellt, die Port 80 als öffentlichen Port und Port 80 als lokalen Port verwendet. An Port 80 wird zudem ein Testport konfiguriert und als Load Balancer-Gruppe „lbset“ bezeichnet.
+## <a name="create-endpoint-and-load-balancer-set"></a>Erstellen eines Endpunkts und einer Load Balancer-Gruppe
+Das Szenario setzt voraus, dass die virtuellen Computer „web1“ und „web2“ erstellt wurden.
+In diesem Leitfaden wird eine Load Balancer-Gruppe erstellt, die Port 80 als öffentlichen Port und Port 80 als lokalen Port verwendet. An Port 80 wird zudem ein Testport konfiguriert und als Load Balancer-Gruppe „lbset“ bezeichnet.
 
-### Schritt 1
-Erstellen des ersten Endpunkts und einer Load Balancer-Gruppe für den virtuellen Computer „web1“ mithilfe von `azure network vm endpoint create`.
+### <a name="step-1"></a>Schritt 1
+Erstellen des ersten Endpunkts und einer Load Balancer-Gruppe für den virtuellen Computer „web1“ mithilfe von `azure network vm endpoint create` .
 
     azure vm endpoint create web1 80 -k 80 -o tcp -t 80 -b lbset
 
 Verwendete Parameter:
 
-**-k** - Port des lokalen virtuellen Computers<br> **-o** - Protokoll<BR> **-t** -Testport<BR> **-b** - Load Balancer-Name<BR>
+**-k**: Port des lokalen virtuellen Computers<br>
+**-o**: Protokoll<BR>
+**-t**: Testport<BR>
+**-b**: Name des Load Balancers<BR>
 
-## Schritt 2
+## <a name="step-2"></a>Schritt 2
 Hinzufügen eines zweiten virtuellen Computers namens „web2“ zur Load Balancer-Gruppe
 
     azure vm endpoint create web2 80 -k 80 -o tcp -t 80 -b lbset
 
-## Schritt 3
-Überprüfen der Load Balancer-Konfiguration mithilfe von `azure vm show`.
+## <a name="step-3"></a>Schritt 3
+Überprüfen der Load Balancer-Konfiguration mithilfe von `azure vm show` .
 
     azure vm show web1
 
@@ -106,13 +114,13 @@ Ausgabe:
     data:    Network Endpoints 2 port 58081
     info:    vm show command OK
 
-## Erstellen eines Remotedesktopendpunkts für einen virtuellen Computer
-Sie können mithilfe von `azure vm endpoint create` einen Remotedesktop-Endpunkt erstellen, um für einen bestimmten virtuellen Computer Netzwerkdatenverkehr von einem öffentlichen Port an einen lokalen Port weiterzuleiten.
+## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Erstellen eines Remotedesktopendpunkts für einen virtuellen Computer
+Sie können mithilfe von `azure vm endpoint create`einen Remotedesktop-Endpunkt erstellen, um für einen bestimmten virtuellen Computer Netzwerkdatenverkehr von einem öffentlichen Port an einen lokalen Port weiterzuleiten.
 
     azure vm endpoint create web1 54580 -k 3389
 
 
-## Entfernen eines virtuellen Computers aus einem Load Balancer
+## <a name="remove-virtual-machine-from-load-balancer"></a>Entfernen eines virtuellen Computers aus einem Load Balancer
 Sie müssen den der Load Balancer-Gruppe zugeordneten Endpunkt vom virtuellen Computer löschen. Sobald der Endpunkt entfernt wurde, gehört der virtuelle Computer nicht mehr zur Load Balancer-Gruppe.
 
  Anhand des oben genannten Beispiels können Sie mithilfe des Befehls `azure vm endpoint delete` den für den virtuellen Computer „web1“ erstellten Endpunkt aus dem Load Balancer „lbset“ entfernen.
@@ -125,11 +133,16 @@ Sie müssen den der Load Balancer-Gruppe zugeordneten Endpunkt vom virtuellen Co
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Erste Schritte zum Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-ps.md)
 
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

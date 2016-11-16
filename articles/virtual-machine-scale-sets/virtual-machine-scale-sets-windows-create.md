@@ -2,19 +2,23 @@
 title: Erstellen einer VM-Skalierungsgruppe mit PowerShell | Microsoft Docs
 description: Erstellen einer VM-Skalierungsgruppe mit PowerShell
 services: virtual-machine-scale-sets
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 7bb03323-8bcc-4ee4-9a3e-144ca6d644e2
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 10/18/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
+
 
 ---
 # <a name="create-a-windows-virtual-machine-scale-set-using-azure-powershell"></a>Erstellen einer Windows-VM-Skalierungsgruppe mithilfe von Azure PowerShell
@@ -22,41 +26,18 @@ Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung einer Azure-
 
 Die Ausführung der Schritte im Artikel dauert ungefähr 30 Minuten.
 
-## <a name="step-1:-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
+## <a name="step-1-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
 Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
 
-## <a name="step-2:-create-resources"></a>Schritt 2: Erstellen von Ressourcen
+## <a name="step-2-create-resources"></a>Schritt 2: Erstellen von Ressourcen
 Erstellen Sie die Ressourcen, die für die neue Skalierungsgruppe benötigt wird.
 
 ### <a name="resource-group"></a>Ressourcengruppe
 Eine VM-Skalierungsgruppe muss in einer Ressourcengruppe enthalten sein.
 
-1. Rufen Sie eine Liste der verfügbaren Standorte und der Dienste ab, die unterstützt werden:
+1. Rufen Sie eine Liste mit den verfügbaren Standorten ab, an denen Ressourcen erstellt werden können:
    
-        Get-AzureLocation | Sort Name | Select Name, AvailableServices
-   
-    Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
-   
-        Name                AvailableServices
-        ----                -----------------
-        Australia East      {Compute, Storage, PersistentVMRole, HighMemory}
-        Australia Southeast {Compute, Storage, PersistentVMRole, HighMemory}
-        Brazil South        {Compute, Storage, PersistentVMRole, HighMemory}
-        Central India       {Compute, Storage, PersistentVMRole, HighMemory}
-        Central US          {Compute, Storage, PersistentVMRole, HighMemory}
-        East Asia           {Compute, Storage, PersistentVMRole, HighMemory}
-        East US             {Compute, Storage, PersistentVMRole, HighMemory}
-        East US 2           {Compute, Storage, PersistentVMRole, HighMemory}
-        Japan East          {Compute, Storage, PersistentVMRole, HighMemory}
-        Japan West          {Compute, Storage, PersistentVMRole, HighMemory}
-        North Central US    {Compute, Storage, PersistentVMRole, HighMemory}
-        North Europe        {Compute, Storage, PersistentVMRole, HighMemory}
-        South Central US    {Compute, Storage, PersistentVMRole, HighMemory}
-        South India         {Compute, Storage, PersistentVMRole, HighMemory}
-        Southeast Asia      {Compute, Storage, PersistentVMRole, HighMemory}
-        West Europe         {Compute, Storage, PersistentVMRole, HighMemory}
-        West India          {Compute, Storage, PersistentVMRole, HighMemory}
-        West US             {Compute, Storage, PersistentVMRole, HighMemory}
+        Get-AzureLocation | Sort Name | Select Name
 2. Wählen Sie einen Standort aus, der für Sie am besten geeignet ist, ersetzen Sie den Wert von **$locName** durch diesen Standortnamen, und erstellen Sie dann die Variable:
    
         $locName = "location name from the list, such as Central US"
@@ -132,36 +113,6 @@ Für die virtuellen Computer in der Skalierungsgruppe ist ein virtuelles Netzwer
 4. Erstellen Sie das virtuelle Netzwerk:
    
         $vnet = New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
-### <a name="public-ip-address"></a>Öffentliche IP-Adresse
-Bevor eine Netzwerkschnittstelle erstellt werden kann, müssen Sie eine öffentliche IP-Adresse erstellen.
-
-1. Ersetzen Sie den Wert von **$domName** durch die Domänennamenbezeichnung, die Sie mit der öffentlichen IP-Adresse verwenden möchten, und erstellen Sie dann die Variable:  
-   
-        $domName = "domain name label"
-   
-    Die Bezeichnung darf nur Buchstaben, Zahlen und Bindestriche enthalten. Das letzte Zeichen muss ein Buchstabe oder eine Zahl sein:
-2. Testen Sie, ob der Name eindeutig ist:
-   
-        Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $locName
-   
-    Lautet die Antwort **True**, ist der vorgeschlagene Name eindeutig.
-3. Ersetzen Sie den Wert von **$pipName** durch den Namen, den Sie für die öffentliche IP-Adresse verwenden möchten, und erstellen Sie dann die Variable. 
-   
-        $pipName = "public ip address name"
-4. Erstellen Sie die öffentliche IP-Adresse:
-   
-        $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic -DomainNameLabel $domName
-
-### <a name="network-interface"></a>Netzwerkschnittstelle
-Sie verfügen jetzt über die öffentliche IP-Adresse und können die Netzwerkschnittstelle erstellen.
-
-1. Ersetzen Sie den Wert von **$nicName** durch den Namen, den Sie für die Netzwerkschnittstelle verwenden möchten, und erstellen Sie dann die Variable: 
-   
-        $nicName = "network interface name"
-2. Erstellen Sie die Netzwerkschnittstelle:
-   
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
 ### <a name="configuration-of-the-scale-set"></a>Konfiguration der Skalierungsgruppe
 Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration benötigen, also können Sie sie erstellen.  
@@ -253,7 +204,7 @@ Jetzt können Sie die Skalierungsgruppe erstellen.
         Location              : centralus
         Tags                  :
 
-## <a name="step-3:-explore-resources"></a>Schritt 3: Untersuchen von Ressourcen
+## <a name="step-3-explore-resources"></a>Schritt 3: Untersuchen von Ressourcen
 Untersuchen Sie die erstellte VM-Skalierungsgruppe mithilfe der folgenden Ressourcen:
 
 * Azure-Portal: Eine begrenzte Menge an Informationen steht im Portal zur Verfügung.
@@ -271,6 +222,9 @@ Untersuchen Sie die erstellte VM-Skalierungsgruppe mithilfe der folgenden Ressou
 * Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatische Skalierung und Skalierungsgruppen für virtuelle Computer](virtual-machine-scale-sets-autoscale-overview.md).
 * Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: REST-Lernprogramm zu Service Bus-Brokermessaging | Microsoft Docs
+title: REST-Tutorial zu Service Bus-Brokermessaging | Microsoft Docs
 description: REST-Lernprogramm zu Brokermessaging
 services: service-bus
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 9b7a8147-a1b1-42fc-b30e-f52e79a902b5
 ms.service: service-bus
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 45b72037e2de01b9201edf3e4ebee7e80d996383
+
 
 ---
-# <a name="service-bus-brokered-messaging-rest-tutorial"></a>REST-Lernprogramm zu Service Bus-Brokermessaging
+# <a name="service-bus-brokered-messaging-rest-tutorial"></a>REST-Lernprogramm zu Service Bus-Brokermessaging 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 In diesem Tutorial wird gezeigt, wie Sie eine einfache REST-basierte Azure Service Bus-Warteschlange und ein Thema bzw. ein Abonnement erstellen.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
-Im ersten Schritt wird der Dienstnamespace erstellt und ein SAS-Schlüssel ([Shared Access Signature](../service-bus/service-bus-sas-overview.md)) abgerufen. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Servicebus gegenüber der Anwendung authentifiziert.
+Im ersten Schritt wird der Dienstnamespace erstellt und ein SAS-Schlüssel ([Shared Access Signature](service-bus-sas-overview.md)) abgerufen. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Servicebus gegenüber der Anwendung authentifiziert.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -31,7 +35,7 @@ Mit Service Bus-Warteschlangen können Sie Nachrichten in einer First-In-First-O
 
 Der Code in diesem Lernprogramm erfüllt die folgenden Aufgaben:
 
-* Verwenden des Namespaces und [Shared Access Signature](../service-bus/service-bus-sas-overview.md)-Schlüssels (SAS) zum Erlangen des Zugriffs auf Ihre Service Bus-Namespaceressourcen
+* Verwenden des Namespaces und [Shared Access Signature](service-bus-sas-overview.md)-Schlüssels (SAS) zum Erlangen des Zugriffs auf Ihre Service Bus-Namespaceressourcen
 * Erstellen einer Warteschlange, Senden einer Nachricht an die Warteschlange und Lesen der Nachricht aus der Warteschlange
 * Erstellen eines Themas und eines Abonnements für das Thema und Senden und Lesen der Nachricht aus dem Abonnement
 * Abrufen aller Warteschlangen-, Themen- und Abonnementinformationen, z.B. Abonnementregeln, aus Service Bus
@@ -139,7 +143,7 @@ Nach dem Abrufen des Namespace und der Anmeldeinformationen im ersten Schritt er
 ## <a name="create-management-credentials"></a>Erstellen von Verwaltungsanmeldeinformationen
 Der nächste Schritt ist das Schreiben einer Methode, mit der der Namespace und der SAS-Schlüssel aus dem vorherigen Schritt verarbeitet werden und ein SAS-Token zurückgegeben wird. In diesem Beispiel wird ein SAS-Token erstellt, das eine Stunde lang gültig ist.
 
-### <a name="create-a-getsastoken()-method"></a>Erstellen einer GetSASToken()-Methode
+### <a name="create-a-getsastoken-method"></a>Erstellen einer GetSASToken()-Methode
 Fügen Sie den folgenden Code nach der `Main()`-Methode in der `Program`-Klasse ein:
 
 ```
@@ -593,10 +597,13 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
-* [Azure Service Bus – Grundlagen](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+* [Azure Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 * [REST-Tutorial zu Service Bus Relay](../service-bus-relay/service-bus-relay-rest-tutorial.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 

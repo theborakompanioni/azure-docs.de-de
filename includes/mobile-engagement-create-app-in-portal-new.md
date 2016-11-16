@@ -10,7 +10,7 @@
    * **Name**: Dies ist der Name Ihrer *Anwendungssammlung* 
    * **Plattformen**: Wählen Sie auf dem daraufhin geöffneten Blatt „Plattformen“ die Zielplattformen für Ihre App aus. Beispiel: Wenn Sie eine App für iOS und Android erstellen möchten, wählen Sie beide Plattformen aus. Unter dieser App-Sammlung werden dann zwei Apps erstellt. 
      
-     ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
+      ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
    * **Abonnement**: Wählen Sie das Azure-Abonnement aus. 
    * **Ressourcengruppe**: Wählen Sie die Azure-Ressourcengruppe aus, in der diese Azure-Ressource (Mobile Engagement-App-Sammlung) enthalten sein soll. Sie können auch angeben, dass Sie eine neue Ressourcengruppe erstellen möchten.  
    * **Standort**: Dies ist die Region, in der die Daten zu dieser App-Sammlung und App gespeichert werden.
@@ -30,6 +30,8 @@
    
     ![](./media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO2-->
 
 

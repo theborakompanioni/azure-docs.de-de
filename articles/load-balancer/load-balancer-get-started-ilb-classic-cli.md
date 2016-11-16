@@ -1,23 +1,27 @@
 ---
-title: Erstellen eines internen Load Balancers im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
+title: Erstellen eines internen Lastenausgleichs im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
 description: Erfahren Sie, wie Sie einen internen Load Balancer im klassischen Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
 services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: becbbbde-a118-4269-9444-d3153f00bf34
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: sewhee
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4364d3bcdffd278bef35b224a8e22062814ca490
+
 
 ---
-# Erste Schritte zum Erstellen eines internen Load Balancers (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Erste Schritte zum Erstellen eines internen Load Balancers (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
 [!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
@@ -28,14 +32,14 @@ Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
-## Erstellen einer internen Load Balancer-Gruppe für virtuelle Computer
+## <a name="to-create-an-internal-load-balancer-set-for-virtual-machines"></a>Erstellen einer internen Load Balancer-Gruppe für virtuelle Computer
 Zum Erstellen einer internen Load Balancer-Gruppe und der Server, die den Datenverkehr an diese Gruppe senden, müssen Sie Folgendes ausführen:
 
 1. Erstellen Sie eine ILB-Instanz, die als Endpunkt für den eingehenden Datenverkehr dient, für den Lastenausgleich zwischen den Servern einer Lastenausgleichsgruppe durchgeführt wird.
 2. Fügen Sie Endpunkte für die virtuellen Computer hinzu, die den eingehenden Datenverkehr empfangen.
 3. Konfigurieren Sie die Server, die den Datenverkehr für den Lastenausgleich senden, so, dass der Datenverkehr an die virtuelle IP-Adresse (VIP) der ILB-Instanz gesendet wird.
 
-## Schritte zum Erstellen eines internen Load Balancers mit der Befehlszeilenschnittstelle
+## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Schritte zum Erstellen eines internen Load Balancers mit der Befehlszeilenschnittstelle
 Anhand der folgenden Anleitung erstellen Sie auf der Grundlage des oben beschriebenen Szenarios einen internen Load Balancer.
 
 1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
@@ -47,25 +51,28 @@ Anhand der folgenden Anleitung erstellen Sie auf der Grundlage des oben beschrie
    
         info:    New mode is asm
 
-## Erstellen eines Endpunkts und einer Load Balancer-Gruppe
+## <a name="create-endpoint-and-load-balancer-set"></a>Erstellen eines Endpunkts und einer Load Balancer-Gruppe
 Das Szenario setzt die virtuellen Computer „DB1“ und „DB2“ in einem Clouddienst namens „mytestcloud“ voraus. Beide virtuelle Computer verwenden ein virtuelles Netzwerk namens „my testvnet“ mit dem Subnetz „subnet-1“.
 
-Dieses Handbuch erstellt eine interne Load Balancer-Gruppe, die Port 1433 als privaten Port und Port 1433 als lokalen Port verwendet.
+Dieses Handbuch erstellt eine interne Load Balancer-Gruppe, die Port 1433 als privaten Port und Port 1433 als lokalen Port verwendet.
 
 Dies ist ein häufiges Szenario, bei dem sich die virtuellen SQL-Computer im Back-End befinden und über einen internen Load Balancer sichergestellt wird, dass die Datenbankserver nicht direkt über eine öffentliche IP-Adresse offen gelegt werden.
 
-### Schritt 1
+### <a name="step-1"></a>Schritt 1
 Erstellen Sie einen internen Load Balancer mit `azure network service internal-load-balancer add`.
 
      azure service internal-load-balancer add -r mytestcloud -n ilbset -t subnet-1 -a 192.168.2.7
 
 Verwendete Parameter:
 
-**-r:** Clouddienstname<BR> **-n:** interner Load Balancer-Name<BR> **-t:** Subnetzname (dasselbe Subnetz wie für die dem Load Balancer hinzugefügten virtuellen Computer)<BR> **-a:** (optional) statische private IP-Adresse<BR>
+**-r**: Name des Clouddiensts<BR>
+**-n**: Name des internen Lastenausgleichs<BR>
+**-t**: Subnetzname (das gleiche Subnetz wie für die virtuellen Computer, Sie dem internen Load Balancers hinzufügen)<BR>
+**-a**: (optional) Hinzufügen einer statischen privaten IP-Adresse<BR>
 
-Weitere Informationen finden Sie unter `azure service internal-load-balancer --help`.
+Weitere Informationen finden Sie unter `azure service internal-load-balancer --help` .
 
-Sie können die Eigenschaften des internen Load Balancers mithilfe des Befehls `azure service internal-load-balancer list` *Clouddienstname* überprüfen.
+Sie können die Eigenschaften des internen Load Balancers mithilfe des Befehls `azure service internal-load-balancer list` *Clouddienstname*überprüfen.
 
 Dies ist ein Beispiel für die Ausgabe:
 
@@ -78,17 +85,22 @@ Dies ist ein Beispiel für die Ausgabe:
     info:    service internal-load-balancer list command OK
 
 
-## Schritt 2
+## <a name="step-2"></a>Schritt 2
 Sie konfigurieren die interne Load Balancer-Gruppe, wenn Sie den ersten Endpunkt hinzufügen. Sie ordnen den Endpunkt, den virtuellen Computer und den Testport der internen Load Balancer-Gruppe in diesem Schritt zu.
 
     azure vm endpoint create db1 1433 -k 1433 tcp -t 1433 -r tcp -e 300 -f 600 -i ilbset
 
 Verwendete Parameter:
 
-**-k:** Port des lokalen virtuellen Computers<BR> **-t:** Testport<BR> **-r:** Testprotokoll <BR> **-e:** Testintervall in Sekunden <BR> **-f:** Timeoutintervall in Sekunden <BR> **-i:** Name des internen Load Balancers <BR>
+**-k**: Port des lokalen virtuellen Computers<BR>
+**-t**: Testport<BR>
+**-r**: Testprotokoll<BR>
+**-e**: Überprüfungsintervall in Sekunden<BR>
+**-f**: Timeoutintervall in Sekunden <BR>
+**-n**: Name des internen Load Balancers <BR>
 
-## Schritt 3
-Überprüfen Sie die Load Balancer-Konfiguration mithilfe von `azure vm show` *Name des virtuellen Computers*.
+## <a name="step-3"></a>Schritt 3
+Überprüfen Sie die Load Balancer-Konfiguration mithilfe von `azure vm show` *Name des virtuellen Computers*
 
     azure vm show DB1
 
@@ -142,25 +154,30 @@ Ausgabe:
     info:    vm show command OK
 
 
-## Erstellen eines Remotedesktopendpunkts für einen virtuellen Computer
-Sie können mithilfe von `azure vm endpoint create` einen Remotedesktop-Endpunkt erstellen, um für einen bestimmten virtuellen Computer Netzwerkdatenverkehr von einem öffentlichen Port an einen lokalen Port weiterzuleiten.
+## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Erstellen eines Remotedesktopendpunkts für einen virtuellen Computer
+Sie können mithilfe von `azure vm endpoint create`einen Remotedesktop-Endpunkt erstellen, um für einen bestimmten virtuellen Computer Netzwerkdatenverkehr von einem öffentlichen Port an einen lokalen Port weiterzuleiten.
 
     azure vm endpoint create web1 54580 -k 3389
 
 
-## Entfernen eines virtuellen Computers aus einem Load Balancer
+## <a name="remove-virtual-machine-from-load-balancer"></a>Entfernen eines virtuellen Computers aus einem Load Balancer
 Sie können einen virtuellen Computer aus einer internen Load Balancer-Gruppe entfernen, indem Sie den zugehörigen Endpunkt löschen. Sobald der Endpunkt entfernt wurde, gehört der virtuelle Computer nicht mehr zu der Load Balancer-Gruppe.
 
- Anhand des oben genannten Beispiels können Sie mithilfe des Befehls `azure vm endpoint delete` den für den virtuellen Computer „DB1“ erstellten Endpunkt aus dem internen Load Balancer „ilbset“ entfernen.
+ Anhand des oben genannten Beispiels können Sie mithilfe des Befehls `azure vm endpoint delete`den für den virtuellen Computer „DB1“ erstellten Endpunkt aus dem internen Load Balancer „ilbset“ entfernen.
 
     azure vm endpoint delete DB1 tcp-1433-1433
 
 
-Weitere Informationen finden Sie unter `azure vm endpoint --help`.
+Weitere Informationen finden Sie unter `azure vm endpoint --help` .
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren eines Load Balancer-Verteilungsmodus mithilfe der Quell-IP-Affinität](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

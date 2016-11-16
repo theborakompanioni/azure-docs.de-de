@@ -1,39 +1,81 @@
 ---
 title: Erste Schritte mit Azure Data Lake Analytics mithilfe des .NET SDK | Microsoft Docs
-description: 'Enthält Informationen zur Verwendung des .NET SDK zum Erstellen von Data Lake-Speicherkonten und Data Lake Analytics-Aufträgen sowie zum Übermitteln von Aufträgen, die in U-SQL geschrieben sind. '
+description: "Enthält Informationen zur Verwendung des .NET SDK zum Erstellen von Data Lake-Speicherkonten und Data Lake Analytics-Aufträgen sowie zum Übermitteln von Aufträgen, die in U-SQL geschrieben sind. "
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 1dfcbc3d-235d-4074-bc2a-e96def8298b6
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/23/2016
+ms.date: 10/26/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 60deb681b1090444f5c178fb0c9b0458ea83f73d
+
 
 ---
-# Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe des .NET SDK
+# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-net-sdk"></a>Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe des .NET SDK
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Es wird beschrieben, wie Sie das Azure .NET SDK zum Übermitteln von Aufträgen, die in [U-SQL](data-lake-analytics-u-sql-get-started.md) geschrieben wurden, an Data Lake Analytics verwenden. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 In diesem Tutorial entwickeln Sie eine C#-Konsolenanwendung zum Übermitteln eines U-SQL-Auftrags, bei dem eine durch Tabulatorzeichen getrennte Datei (TSV) eingelesen und in eine kommagetrennte Datei (CSV) umgewandelt wird. Um das gleiche Tutorial unter Verwendung anderer unterstützter Tools zu durchlaufen, können Sie auf die Registerkarten am Anfang dieses Artikels klicken.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-* **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++**.
-* **Microsoft Azure SDK für .NET-Version 2.5 oder höher**. Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx) durch.
-* **Ein Azure Data Lake Analytics-Konto**. Weitere Informationen finden Sie unter [Manage Data Lake Analytics using Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) (Verwalten von Data Lake Analytics mit dem Azure .NET SDK).
+* **Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++**.
+* **Microsoft Azure SDK für .NET-Version 2.5 oder höher**.  Führen Sie die Installation mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx)durch.
+* **Ein Azure Data Lake Analytics-Konto**. Weitere Informationen finden Sie unter [Manage Data Lake Analytics using Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)(Verwalten von Data Lake Analytics mit dem Azure .NET SDK).
 
-## Erstellen einer Konsolenanwendung
-In diesem Tutorial verarbeiten Sie einige Suchprotokolle. Das Suchprotokoll kann entweder in einem Data Lake-Speicher oder einem Azure-BLOB-Speicher gespeichert werden.
+## <a name="create-console-application"></a>Erstellen einer Konsolenanwendung
+In diesem Tutorial verarbeiten Sie einige Suchprotokolle.  Das Suchprotokoll kann entweder in einem Data Lake-Speicher oder einem Azure-BLOB-Speicher gespeichert werden. 
 
 Ein Beispiel für ein Suchprotokoll finden Sie in einem öffentlichen Azure-Blobcontainer. In der Anwendung laden Sie die Datei auf die Arbeitsstation herunter und laden sie dann in das Data Lake Store-Standardkonto Ihres Data Lake Analytics-Kontos.
+
+**So entwickeln Sie ein U-SQL-Skript**
+
+Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348) (in englischer Sprache).
+
+Erstellen Sie die Datei **SampleUSQLScript.txt** mit dem folgenden U-SQL-Skript, und speichern Sie die Datei unter **C:\temp\**.  Der Pfad ist in der .NET-Anwendung hartcodiert, die Sie mit den nächsten Schritten erstellen.  
+
+    @searchlog =
+        EXTRACT UserId          int,
+                Start           DateTime,
+                Region          string,
+                Query           string,
+                Duration        int?,
+                Urls            string,
+                ClickedUrls     string
+        FROM "/Samples/Data/SearchLog.tsv"
+        USING Extractors.Tsv();
+
+    OUTPUT @searchlog   
+        TO "/Output/SearchLog-from-Data-Lake.csv"
+    USING Outputters.Csv();
+
+Mit diesem U-SQL-Skript wird die Quelldatei mithilfe von **Extractors.Tsv()** gelesen, und anschließend wird eine CSV-Datei mithilfe von **Outputters.Csv()** erstellt. 
+
+Im C#-Programm müssen Sie die Datei **/Samples/Data/SearchLog.tsv** und den Ordner **/Output/** vorbereiten.    
+
+Es ist einfacher, für Dateien, die unter Data Lake-Standardkonten gespeichert sind, relative Pfade zu verwenden. Sie können aber auch absolute Pfade verwenden.  Beispiel: 
+
+    adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+
+Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkonten zuzugreifen.  Die Syntax für Dateien, die unter dem verknüpften Azure-Speicherkonto gespeichert werden, lautet wie folgt:
+
+    wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
+
+> [!NOTE]
+> Derzeit besteht ein bekanntes Problem mit dem Azure Data Lake-Dienst.  Wenn die Beispiel-App unterbrochen wird oder ein Fehler auftritt, müssen Sie das Data Lake-Speicherkonto und das Data Lake Analytics-Konto, die vom Skript erstellt werden, möglicherweise manuell löschen.  Wenn Sie mit dem Azure-Portal noch nicht vertraut sind, erhalten Sie erste wichtige Informationen im Artikel [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md) .       
+> 
+> 
 
 **So erstellen Sie eine Anwendung**
 
@@ -46,40 +88,7 @@ Ein Beispiel für ein Suchprotokoll finden Sie in einem öffentlichen Azure-Blob
         Install-Package Microsoft.Azure.Management.DataLake.StoreUploader -Pre
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package WindowsAzure.Storage
-4. Fügen Sie dem Projekt eine neue Datei mit dem Namen **SampleUSQLScript.txt** hinzu, und fügen Sie als Inhalt das folgende U-SQL-Skript ein. Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348) (in englischer Sprache).
-   
-        @searchlog =
-            EXTRACT UserId          int,
-                    Start           DateTime,
-                    Region          string,
-                    Query           string,
-                    Duration        int?,
-                    Urls            string,
-                    ClickedUrls     string
-            FROM "/Samples/Data/SearchLog.tsv"
-            USING Extractors.Tsv();
-   
-        OUTPUT @searchlog   
-            TO "/Output/SearchLog-from-Data-Lake.csv"
-        USING Outputters.Csv();
-   
-    Mit diesem U-SQL-Skript wird die Quelldatei mithilfe von **Extractors.Tsv()** gelesen, und anschließend wird eine CSV-Datei mithilfe von **Outputters.Csv()** erstellt.
-   
-    Im C#-Programm müssen Sie die Datei **/Samples/Data/SearchLog.tsv** und den Ordner **/Output/** vorbereiten.
-   
-    Es ist einfacher, für Dateien, die unter Data Lake-Standardkonten gespeichert sind, relative Pfade zu verwenden. Sie können aber auch absolute Pfade verwenden. Beispiel:
-   
-        adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-   
-    Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkonten zuzugreifen. Die Syntax für Dateien, die unter dem verknüpften Azure-Speicherkonto gespeichert werden, lautet wie folgt:
-   
-        wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-   
-   > [!NOTE]
-   > Derzeit besteht ein bekanntes Problem mit dem Azure Data Lake-Dienst. Wenn die Beispiel-App unterbrochen wird oder ein Fehler auftritt, müssen Sie das Data Lake-Speicherkonto und das Data Lake Analytics-Konto, die vom Skript erstellt werden, möglicherweise manuell löschen. Wenn Sie mit dem Portal noch nicht vertraut sind, erhalten Sie erste wichtige Informationen im Artikel [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
-   > 
-   > 
-5. Fügen Sie in „Program.cs“ den folgenden Code ein:
+4. Fügen Sie in „Program.cs“ den folgenden Code ein:
    
         using System;
         using System.IO;
@@ -110,7 +119,7 @@ Ein Beispiel für ein Suchprotokoll finden Sie in einem öffentlichen Azure-Blob
    
             private static void Main(string[] args)
             {
-                string localFolderPath = @"c:\temp";
+                string localFolderPath = @"c:\temp\";
    
                 // Connect to Azure
                 var creds = AuthenticateAzure(DOMAINNAME, CLIENTID);
@@ -232,12 +241,12 @@ Ein Beispiel für ein Suchprotokoll finden Sie in einem öffentlichen Azure-Blob
           }
         }
 
-1. Drücken Sie **F5**, um die Anwendung auszuführen. Die Ausgabe sieht in etwa wie folgt aus:
+1. Drücken Sie **F5** , um die Anwendung auszuführen. Die Ausgabe sieht in etwa wie folgt aus:
    
     ![Azure Data Lake Analytics-Auftrag – U-SQL .NET SDK-Ausgabe](./media/data-lake-analytics-get-started-net-sdk/data-lake-analytics-dotnet-job-output.png)
-2. Überprüfen Sie die Ausgabedatei. Der Standardpfad und der Dateiname lauten „c:\\Temp\\SearchLog-from-Data-Lake.csv“.
+2. Überprüfen Sie die Ausgabedatei.  Der Standardpfad und der Dateiname lauten „c:\Temp\SearchLog-from-Data-Lake.csv“.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 * Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Informationen zu den ersten Schritten der Entwicklung von U-SQL-Anwendungen finden Sie unter [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
@@ -245,4 +254,9 @@ Ein Beispiel für ein Suchprotokoll finden Sie in einem öffentlichen Azure-Blob
 * Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 * Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO2-->
+
+

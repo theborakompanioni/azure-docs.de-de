@@ -2,12 +2,12 @@
 title: Interagieren mit Berichten mithilfe der JavaScript-API | Microsoft Docs
 description: Power BI Embedded, Interagieren mit Berichten mithilfe der JavaScript-API
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: hero-article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 83d997577d3a5854eafd9906bd38d3e703c09f5e
+
 
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>Interagieren mit Power BI-Berichten mithilfe der JavaScript-API
@@ -30,7 +34,7 @@ Der IFrame erleichtert den Einbettungsprozess erheblich, ohne die JavaScript-API
 
 Die Power BI-JavaScript-API ermöglicht Ihnen das Schreiben von Code, der die IFrame-Grenze sicher passieren kann. Dadurch kann die Anwendung programmgesteuert eine Aktion in einem Bericht ausführen und auf Ereignisse von Aktionen lauschen, die Benutzer innerhalb des Berichts durchführen.
 
-## <a name="what-can-you-do-with-the-power-bi-javascript-api?"></a>Welche Möglichkeiten bietet Ihnen die Power BI-JavaScript-API?
+## <a name="what-can-you-do-with-the-power-bi-javascript-api"></a>Welche Möglichkeiten bietet Ihnen die Power BI-JavaScript-API?
 Mit der JavaScript-API können Sie Berichte verwalten, zu Seiten in einem Bericht navigieren, einen Bericht filtern und Einbettungsereignisse behandeln. Das folgende Diagramm zeigt die Struktur der API.
 
 ![Power BI-JavaScript-API – Diagramm](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-3.png)
@@ -132,6 +136,9 @@ Weitere Informationen zur Power BI-JavaScript-API finden Sie unter folgenden Lin
   * [Ember](https://github.com/Microsoft/powerbi-ember)
 * [Livedemo](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO2-->
 
 
