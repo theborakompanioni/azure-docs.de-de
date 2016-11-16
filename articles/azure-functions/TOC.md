@@ -1,5 +1,5 @@
-# [Übersicht](functions-overview.md)
-
+# Übersicht
+## [Was ist Azure Functions?](functions-overview.md)
 # Erste Schritte
 ## [Erstellen Ihrer ersten Funktion](functions-create-first-azure-function.md)
 ## [Erstellen einer Webhook-Funktion](functions-create-a-web-hook-or-api-function.md)
@@ -38,10 +38,14 @@
 ## Bereitstellen
 ### [Kontinuierliche Bereitstellung für Azure Functions](functions-continuous-deployment.md)
 
+# Referenz
+## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
 
 # Ressourcen
-## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
+## [Preise](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
+## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
 <!--HONumber=Nov16_HO2-->

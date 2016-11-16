@@ -1,6 +1,6 @@
 # Übersicht
 ## [Was ist Stream Analytics?](stream-analytics-introduction.md)
-## [Lernpfad für Stream Analytics](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [Storm und Stream Analytics im Vergleich](stream-analytics-comparison-storm.md)
 
 # Erste Schritte
 ## [Verarbeiten von IoT-Streamingdaten](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
@@ -8,12 +8,12 @@
 
 # Anleitung
 
-## Streaminglösungen
-### [Erstellen einer IoT-Lösung](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
-### [Analyse sozialer Medien](stream-analytics-twitter-sentiment-analysis-trends.md)
-### [Analysieren von Sensordaten mit Power BI]https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
+## Erstellen von Streaminglösungen
+### [Internet der Dinge (IoT)](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
+### [Soziale Medien](stream-analytics-twitter-sentiment-analysis-trends.md)
+### [Sensordaten mit Power BI](https://gallery.cortanaanalytics.com/Tutorial/Sensor-Data-Analytics-with-ASA-and-Power-BI-2?fromlegacydomain=1)
 ### [Echtzeitbewertung mit Machine Learning](stream-analytics-machine-learning-integration-tutorial.md)
-### [Referenzarchitektur: Ereignisverarbeitung in Echtzeit](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [Ereignisverarbeitung in Echtzeit](stream-analytics-real-time-event-processing-reference-architecture.md)
 
 ## Entwickeln
 ### [Gängige Abfragemuster](stream-analytics-stream-analytics-query-patterns.md)
@@ -40,17 +40,21 @@
 ### [PowerShell mit einem Klick](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Referenz
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [.NET](/dotnet/api/)
 ## [Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST-API](https://msdn.microsoft.com/library/azure/dn835031)
-## [PowerShell](https://msdn.microsoft.com/library/azure/mt270341)
-## [.NET SDK](https://msdn.microsoft.com/library/azure/mt416896)
-## [Storm und Stream Analytics im Vergleich](stream-analytics-comparison-storm.md)
-## [Anmerkungen zu dieser Version](stream-analytics-release-notes.md)
+## [REST](/rest/api/streamanalytics/)
+## [Versionshinweise](stream-analytics-release-notes.md)
+
 # Ressourcen
-## [MSDN-Blog](http://blogs.msdn.com/b/streamanalytics/)
-## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)
+## [Preise](https://azure.microsoft.com/pricing/details/stream-analytics/)
+## [Blog](http://blogs.msdn.com/b/streamanalytics/)
+## [Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Feedbackforum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=stream-analytics)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 
 
 <!--HONumber=Nov16_HO2-->

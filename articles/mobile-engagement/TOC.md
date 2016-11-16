@@ -1,7 +1,6 @@
 # [Übersicht](mobile-engagement-overview.md)
 ## [Vergleich mit verwandten Diensten](mobile-engagement-comparison.md)
 ## [Featureübersicht](mobile-engagement-key-features.md)
-## [Preise](https://azure.microsoft.com/pricing/details/mobile-engagement/)
 
 # Erste Schritte
 ## [Android](mobile-engagement-android-get-started.md)
@@ -117,28 +116,27 @@
 ### [Dienstgrenzwerte/Drosselungen](../azure-subscription-service-limits.md#mobile-engagement-limits)
 
 # Referenz
-## [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
-## [REST-API-Referenz](https://msdn.microsoft.com/en-us/library/azure/mt683754)
-## [REST-API – Swagger-Spezifikation](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)
+## [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Engagement)
 ## SDK-Inhalt
 ### [Android SDK](mobile-engagement-android-sdk-content.md)
 ### [iOS SDK](mobile-engagement-ios-sdk-content.md)
 ### [Windows Universal Apps SDK](mobile-engagement-windows-store-sdk-content.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
-
-# Verwandte Themen
-
-# Ressourcen
-## [Beispiel-Demo-Apps](mobile-engagement-demo-apps.md)
-## [.NET-API-Beispiel](mobile-engagement-dotnet-sdk-service-api.md)
-## [Videos und Updates](https://azure.microsoft.com/documentation/services/mobile-engagement/)
-## [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
 ## Versionshinweise
 ### [Android SDK](mobile-engagement-android-release-notes.md)
 ### [iOS SDK](mobile-engagement-ios-release-notes.md)
 ### [Web SDK](mobile-engagement-web-release-notes.md)
 ### [Windows Universal Apps SDK](mobile-engagement-windows-store-release-notes.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-release-notes.md)
+
+
+# Ressourcen
+## [Preise](https://azure.microsoft.com/pricing/details/mobile-engagement/)
+## [Beispiel-Demo-Apps](mobile-engagement-demo-apps.md)
+## [.NET-API-Beispiel](mobile-engagement-dotnet-sdk-service-api.md)
+## [Videos und Updates](https://azure.microsoft.com/documentation/services/mobile-engagement/)
+## [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+
 
 
 

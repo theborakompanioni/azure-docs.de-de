@@ -64,6 +64,12 @@
 ### [Behandeln von Problemen mit einer Hybridsammlung](remoteapp-hybridtrouble.md)
 ### [Behandeln von Problemen mit einer Cloudsammlung](remoteapp-cloudtrouble.md)
 
+# Ressourcen
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=remoteapp)
+## [Preise](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)
+
 
 <!--HONumber=Nov16_HO2-->
 

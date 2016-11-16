@@ -26,11 +26,12 @@
 ### [Problembehandlung bei der automatischen Skalierung](virtual-machine-scale-sets-troubleshoot.md)
 
 # Referenz
+## [PowerShell](/powershell/azureps-cmdlets-docs/)
 ## [Azure-Befehlszeilenschnittstelle](../virtual-machines/azure-cli-arm-commands.md)
-## [Skalierungsgruppen-REST-API](/rest/api/compute/virtualmachinescalesets)
-## [Skalierungsgruppen-VM-REST-API](/rest/api/compute/virtualmachinescalesetvms)
-## [Azure PowerShell](/powershell/resourcemanager/)
-## [Azure-Vorlagen](https://azure.microsoft.com/documentation/templates/?term=vmss)
+## [REST](/rest/api/compute/)
+
+# Ressourcen
+## [Preise](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 
 
 <!--HONumber=Nov16_HO2-->
