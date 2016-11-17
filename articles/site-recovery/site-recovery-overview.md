@@ -79,6 +79,6 @@ Site Recovery ermöglicht die anwendungsorientierte Replikation, damit Workloads
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 
