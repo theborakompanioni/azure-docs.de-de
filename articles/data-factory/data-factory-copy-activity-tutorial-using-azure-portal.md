@@ -407,6 +407,6 @@ In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

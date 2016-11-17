@@ -80,4 +80,4 @@ So wird sichergestellt, dass zwischen den beiden virtuellen Netzwerken immer ein
 ## Nächste Schritte
 Die Schritte zum Konfigurieren von standortübergreifenden Verbindungen und VNet-zu-VNet-Verbindungen vom Typ „Aktiv/Aktiv“ finden Sie unter [Configure active-active S2S VPN connections with Azure VPN Gateways using Azure Resource Manager and PowerShell](http://go.microsoft.com/fwlink/?LinkId=828726) (Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen mit Azure-VPN-Gateways und Azure Resource Manager und PowerShell).
 
-<!---HONumber=AcomDC_0928_2016-->
+<!----HONumber=AcomDC_0928_2016-->

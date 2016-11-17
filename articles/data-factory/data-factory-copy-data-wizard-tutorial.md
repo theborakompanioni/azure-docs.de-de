@@ -163,6 +163,6 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

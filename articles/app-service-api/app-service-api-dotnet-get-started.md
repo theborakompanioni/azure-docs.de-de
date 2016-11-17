@@ -442,6 +442,6 @@ Die Projektvorlage **Azure-API-App** entspricht folgenden Schritten: Auswählen 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

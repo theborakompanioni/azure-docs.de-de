@@ -366,6 +366,6 @@ In diesem Tutorial haben Sie wichtige Funktionen von Azure Data Catalog kennen g
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

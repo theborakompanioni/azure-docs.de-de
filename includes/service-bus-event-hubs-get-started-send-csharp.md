@@ -60,6 +60,6 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

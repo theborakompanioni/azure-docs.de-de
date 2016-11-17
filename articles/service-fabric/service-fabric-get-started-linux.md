@@ -168,6 +168,6 @@ Das .NET Core SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

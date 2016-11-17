@@ -302,6 +302,6 @@ Eine Übersicht über SQL Server auf virtuellen Azure-Computern als Video finden
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 
