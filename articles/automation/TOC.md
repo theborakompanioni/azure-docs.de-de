@@ -67,23 +67,24 @@
 ### [Runbook-Auftrag wurde angehalten](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
 
 # Referenz
-## [Anmerkungen zu dieser Version](https://azure.microsoft.com/updates/?product=automation)
-## [PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/dn690262)
-## [Resource Manager-REST-API](https://msdn.microsoft.com/library/azure/mt662285.aspx)
-## [Klassische Bereitstellung (REST)](https://msdn.microsoft.com/library/azure/mt163781)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [Klassische PowerShell](/powershell/servicemanagement)
+## [.NET](/dotnet/api)
+## [REST](https://msdn.microsoft.com/library/azure/mt662285.aspx)
+## [REST (klassisch)](https://msdn.microsoft.com/library/azure/mt163781)
+## [Versionshinweise](https://azure.microsoft.com/updates/?product=automation)
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
-## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=automation) 
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=automation) 
-## [Azure Automation-Training](https://www.microsoftvirtualacademy.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=automation)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=automation)
+## [Azure Automation-Training](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Einführungsvideo für Automation](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

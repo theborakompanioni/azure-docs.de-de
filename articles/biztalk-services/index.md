@@ -1,11 +1,13 @@
 ---
 layout: LandingPage
+translationtype: Human Translation
+ms.sourcegitcommit: 329bf8f57270c901d54f27a2159287e08e4c355a
+ms.openlocfilehash: dfde406339068f9261fccb87039d18a0dfdedeff
+
 ---
-# Biztalk Services Documentation
+# <a name="biztalk-services-documentation"></a>BizTalk Services-Dokumentation
 
-BizTalk Services provides out-of-the box, cloud to on-premises and line-of-business application integration for SAP, Oracle EBS, SQL Server, and PeopleSoft. It lets you connect with any HTTP, FTP, SFTP, or REST data source. You can route messages by using various Azure artifacts such as Service Bus queues, Topics, SQL Database, and Blob storage.
-
-Thousands of customers trust BizTalk Services for solutions such as payment processing, supply chain management, business-to-business interactions, real-time decision making, and reporting. 
+BizTalk Services ermöglichen die Integration der Cloud, lokaler Apps und von Branchenanwendungen für SAP, Oracle EBS, SQL Server und PeopleSoft. Damit lassen sich Verbindungen mit beliebigen HTTP-, FTP-, SFTP- oder REST-Datenquellen herstellen. Sie können Nachrichten mithilfe verschiedener Azure-Artefakte wie Service Bus-Warteschlangen, Themen, SQL-Datenbanken und Blobspeichern weiterleiten.   
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -19,7 +21,7 @@ Thousands of customers trust BizTalk Services for solutions such as payment proc
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about BizTalk Services</h3>
+                        <h3>Informationen zu BizTalk Services</h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +39,7 @@ Thousands of customers trust BizTalk Services for solutions such as payment proc
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Biztalk Services Video Library</h3>
+                        <h3>Videobibliothek zu BizTalk Services</h3>
                     </div>
                 </div>
             </div>
@@ -51,11 +53,11 @@ Thousands of customers trust BizTalk Services for solutions such as payment proc
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create BizTalk Services using the Azure Portal</h3>
+                        <h3>Erste Schritte mit BizTalk Services im Azure-Portal</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,11 @@ Thousands of customers trust BizTalk Services for solutions such as payment proc
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/biztalk-services.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Biztalk Services Documentation
-        </div>
+Herunterladen der BizTalk Services-Dokumentation </div>
     </a>
 </div>
+
+
+<!--HONumber=Nov16_HO3-->
+
+

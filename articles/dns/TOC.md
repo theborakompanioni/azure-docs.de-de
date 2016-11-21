@@ -13,12 +13,13 @@
 ### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](dns-getstarted-create-recordset-cli.md)
 
 ## [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md)
+## [Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App](dns-web-sites-custom-domain.md)
 
 # Anleitung
 
 ## Verwalten von DNS-Zonen
 ### [PowerShell](dns-operations-dnszones.md)
-### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](dns-operations-dnszones.md)
+### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](dns-operations-dnszones-cli.md)
 
 ## [Verwalten von DNS-Einträgen](dns-operations-recordsets-portal.md)
 ### [PowerShell](dns-operations-recordsets.md)
@@ -29,12 +30,12 @@
 ### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
 
 ## [Importieren und Exportieren einer DNS-Zonendatei](dns-import-export.md)
-## [Verwenden von Azure DNS mit anderen Azure-Diensten](dns-for-azure-services.md)
+## [Integrieren in andere Azure-Dienste](dns-for-azure-services.md)
 ## [Schützen von DNS-Zonen und -Einträgen](dns-protect-zones-recordsets.md)
 ## [Automatisieren von DNS-Vorgängen mit dem .NET SDK](dns-sdk.md)
 
 # Referenz
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST-APIs](/rest/api/dns/)
 
 # Verwandte Themen
@@ -46,11 +47,12 @@
 ## [Web-Apps](/azure/app-service-web/)
 
 # Ressourcen
-## [Netzwerkblog](http://azure.microsoft.com/blog/topics/networking)
-## [Netzwerkforum](https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=dns)
 ## [Preise](https://azure.microsoft.com/pricing/details/dns/)
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Netzwerkblog](http://azure.microsoft.com/blog/topics/networking)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

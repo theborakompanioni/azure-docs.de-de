@@ -38,9 +38,6 @@
 ## Bereitstellen
 ### [Kontinuierliche Bereitstellung für Azure Functions](functions-continuous-deployment.md)
 
-# Referenz
-## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
-
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
@@ -48,6 +45,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

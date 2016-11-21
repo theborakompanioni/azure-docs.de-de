@@ -1,27 +1,27 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
-ms.openlocfilehash: a70f352a076f0d018856c1bdf5c326515405d154
+ms.sourcegitcommit: 1cea7999fcb9ba3d4f0febdac5acb298ec5a489a
+ms.openlocfilehash: 76a07ecf333fec4d7e406a6c6b4dc796058e664b
 
 ---
-# <a name="log-analytics-documentation"></a>Dokumentation zu Log Analytics
+# <a name="analysis-services-documentation"></a>Dokumentation zu Analysis Services
 
-Log Analytics ist ein Dienst in der Operations Management Suite (OMS), mit dem Sie Daten sammeln und analysieren können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert werden. Der Dienst bietet Echtzeiteinblicke mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards, sodass Sie Millionen von Datensätzen über all Ihre Workloads und Server hinweg unabhängig vom physischen Standort analysieren können.
+Azure Analysis Services bietet Unternehmen – basierend auf dem bewährten Analysemodul in Microsoft SQL Server Analysis Services – Datenmodellierungsfunktionen in der Cloud.
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/log-analytics/log-analytics-overview">
+        <a href="/azure/analysis-services/analysis-services-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/log-analytics.svg" alt="" />
+                            <img src="media/index/analysis-services.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Weitere Informationen zu Log Analytics</h3>
+                        <h3>Informationen zu Analysis Services</h3>
                     </div>
                 </div>
             </div>
@@ -29,17 +29,17 @@ Log Analytics ist ein Dienst in der Operations Management Suite (OMS), mit dem S
         </a>
     </li>
     <li>
-        <a href="/azure/log-analytics/log-analytics-get-started">
+        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Log Analytics</h3>
+                        <h3>Azure-Videobibliothek</h3>
                     </div>
                 </div>
             </div>
@@ -47,38 +47,51 @@ Log Analytics ist ein Dienst in der Operations Management Suite (OMS), mit dem S
         </a>
     </li>
     <li>
-        <a href="/azure/log-analytics/log-analytics-proxy-firewall">
+        <a href="/azure/analysis-services/analysis-services-create-server">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte beim Konfigurieren von Proxy- und Firewalleinstellungen in Log Analytics</h3>
+                        <h3>Erstellen eines Analysis Services-Servers</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
+    </li>    
 </ul>
 
 ---
-
-## <a name="automation"></a>Automation
+## <a name="reference"></a>Referenz
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
+        <a href="/powershell/resourcemanager">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>PowerShell</h3>
-                        <p>Azure PowerShell-Referenz</p>
+                        <p>PowerShell mit Azure Resource Manager-Cmdlets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/analysisservices">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>REST mit Azure Analysis Services-REST-API – Referenz</p>
                     </div>
                 </div>
             </div>
@@ -87,11 +100,13 @@ Log Analytics ist ein Dienst in der Operations Management Suite (OMS), mit dem S
     </li>
 </ul>
 
+---
+
 <div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/log-analytics.pdf">
+    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/analysis-services.pdf">
         <div class="img"></div>
         <div class="text">
-Herunterladen der Dokumentation zu Log Analytics </div>
+Analysis Services-Dokumentation – Download </div>
     </a>
 </div>
 

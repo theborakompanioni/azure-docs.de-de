@@ -4,6 +4,7 @@
 ## [Grundlegendes zu Resource Manager-Bereitstellungen und klassischen Bereitstellungen](../resource-manager-deployment-model.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [Präskriptive Abonnementgovernance](../resource-manager-subscription-governance.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [Governancebeispiele für Unternehmen](../resource-manager-subscription-examples.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+
 # Erste Schritte
 ## [Exportieren der Vorlage](../resource-manager-export-template.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [Exemplarische Vorgehensweise zu Vorlagen](../resource-manager-template-walkthrough.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -51,23 +52,22 @@
 ### [Anzeigen von Bereitstellungsvorgängen mit PowerShell](../resource-manager-troubleshoot-deployments-powershell.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle](../resource-manager-troubleshoot-deployments-cli.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Anzeigen von Bereitstellungsvorgängen mit der REST-API](../resource-manager-troubleshoot-deployments-rest.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+
 # Referenz
-## [PowerShell-Cmdlets](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure)
 ## [Java](/java/api)
-## [.NET API](/dotnet/api)
+## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Vorlagenschemas](https://github.com/Azure/azure-resource-manager-schemas)
-## [PowerShell-Cmdlets für Resource Manager](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [REST-API für Resource Manager](/rest/api/resources/)
-## [.NET-Clientbibliothek für Resource Manager](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Drosselungsanforderungen](../resource-manager-request-limits.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## [REST](/rest/api/resources/)
 
 # Ressourcen
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=azure-resource-manager) 
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

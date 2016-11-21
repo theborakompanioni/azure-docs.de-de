@@ -38,7 +38,6 @@
 #### [Benachrichtigungsverwaltung](log-analytics-solution-alert-management.md)
 #### [Kapazitätsverwaltung](log-analytics-capacity.md)
 #### [Änderungsnachverfolgung](log-analytics-change-tracking.md)
-#### [Konfigurationsbewertung](log-analytics-configuration-assessment.md)
 #### [Container](log-analytics-containers.md)
 #### [Schlüsseltresor](log-analytics-azure-key-vault.md)
 #### [Bewertung von Schadsoftware](log-analytics-malware.md)
@@ -48,7 +47,6 @@
 #### [Service Fabric](log-analytics-service-fabric.md)
 #### [SQL-Bewertung](log-analytics-sql-assessment.md)
 #### [Surface Hub](log-analytics-surface-hubs.md)
-#### [System Update-Bewertung](log-analytics-system-update.md)
 #### [VMware](log-analytics-vmware.md)
 #### [Wire Data](log-analytics-wire-data.md)
 ## Analysieren
@@ -63,11 +61,10 @@
 
 # Ressourcen
 ## [Upgradeanalysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [Preise](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

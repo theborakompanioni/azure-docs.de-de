@@ -46,7 +46,7 @@
 ###[Horizontales Herunter-/Hochskalieren mithilfe des Redis-Clusters](cache-how-to-premium-clustering.md)
 
 #Referenz
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
 ## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/)
 ## [Java](https://docs.microsoft.com/java/api/)
 ## [.NET](https://docs.microsoft.com/dotnet/api/)
@@ -60,6 +60,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

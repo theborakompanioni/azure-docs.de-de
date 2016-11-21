@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 8125aca5030c869476499a07b17c8e21fcb76ef6
-ms.openlocfilehash: e5640566e8781441713ca5491abee1d9334b3970
+ms.sourcegitcommit: 80f16aef21f41d7040342e5a3907e330efa5f90b
+ms.openlocfilehash: 46bbb80b76ff88d6c413f3329d19db663c2e3ea6
 
 ---
 #<a name="linux-virtual-machine-documentation"></a>Dokumentation zu virtuellen Linux-Computern
@@ -11,7 +11,43 @@ Verwenden Sie Azure Virtual Machines, um virtuelle Linux-Computer in der Compute
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview">
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/cli.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/portal.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erstellen eines virtuellen Computers über das Portal</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/virtual-machines/virtual-machines-linux-azure-overview?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -46,18 +82,21 @@ Verwenden Sie Azure Virtual Machines, um virtuelle Linux-Computer in der Compute
         </div>
         </a>
     </li>
+</ul>
+
+---
+
+##<a name="reference"></a>Referenz
+
+<ul class="panelContent cardsW">
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-portal">
+        <a href="/cli/azure/install-az-cli2">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Erstellen eines virtuellen Computers über das Portal</h3>
+                        <h3>Azure-Befehlszeilenschnittstelle</h3>
+                        <p>Installieren der Azure-Befehlszeilenschnittstelle</p>
                     </div>
                 </div>
             </div>
@@ -65,17 +104,13 @@ Verwenden Sie Azure Virtual Machines, um virtuelle Linux-Computer in der Compute
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys">
+        <a href="/dotnet/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure</h3>
+                        <h3>.NET</h3>
+                        <p>Verwaltete Referenz zur .NET-API</p>
                     </div>
                 </div>
             </div>
@@ -83,17 +118,13 @@ Verwenden Sie Azure Virtual Machines, um virtuelle Linux-Computer in der Compute
         </a>
     </li>
     <li>
-        <a href="/azure/xplat-cli-install">
+        <a href="/java/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/cli.svg" alt="" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Installieren der Azure-Befehlszeilenschnittstelle</h3>
+                        <h3>Java-SDK</h3>
+                        <p>Java-API-Referenz</p>
                     </div>
                 </div>
             </div>
@@ -101,17 +132,41 @@ Verwenden Sie Azure Virtual Machines, um virtuelle Linux-Computer in der Compute
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-linux-quick-create-cli">
+        <a href="/rest/api/compute">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/cli.svg" alt="" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Erstellen einer Linux-VM in Azure mithilfe der CLI</h3>
+                        <h3>REST (Compute)</h3>
+                        <p>Referenz zur Compute-REST-API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://msdn.microsoft.com/library/mt163658">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST (Netzwerk)</h3>
+                        <p>Referenz zur Netzwerk-REST-API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/storage">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST (Storage)</h3>
+                        <p>Storage – REST-API-Referenz</p>
                     </div>
                 </div>
             </div>
@@ -119,28 +174,7 @@ Verwenden Sie Azure Virtual Machines, um virtuelle Linux-Computer in der Compute
         </a>
     </li>
 </ul>
-
----
-
-##<a name="reference"></a>Referenz
-
-###<a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-[Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
-
-###<a name="net"></a>.NET
-[Verwaltete Referenz zur API](/dotnet/api/)
-
-###<a name="java-sdk"></a>Java-SDK
-[Java](/java/api/)
-
-###<a name="rest-compute"></a>REST (Compute)
-[Referenz zur Compute-REST-API](/rest/api/compute)
-
-###<a name="rest-network"></a>REST (Netzwerk)
-[Referenz zur Netzwerk-REST-API](https://msdn.microsoft.com/library/mt163658.aspx)
-
-###<a name="rest-storage"></a>REST (Storage)
-[Referenz zur Storage-REST-API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+    
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/linux.pdf">
@@ -152,6 +186,6 @@ Herunterladen der Dokumentation zu virtuellen Linux-Computern </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

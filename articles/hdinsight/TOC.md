@@ -6,6 +6,7 @@
 ## [HBase](hdinsight-hbase-overview.md)
 ## [Apache Storm](hdinsight-storm-overview.md)
 ## [In die Domäne eingebundenes HDInsight (Vorschau)](hdinsight-domain-joined-introduction.md)
+## [Kafka-Vorschau](hdinsight-apache-kafka-introduction.md)
 
 # Erste Schritte
 ## [Einstieg in Hadoop](hdinsight-hadoop-linux-tutorial-get-started.md)
@@ -14,6 +15,7 @@
 ## [Einstieg in Spark](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [Einstieg in HBase und NoSQL](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Einstieg in Storm](hdinsight-apache-storm-tutorial-get-started-linux.md)
+## [Einstieg in Kafka (Vorschau)](hdinsight-apache-kafka-get-started.md )
 ## [Hadoop-Sandbox](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake-Tools mit Hortonworks Sandbox](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md)
@@ -94,6 +96,10 @@
 ### [Konfigurieren](hdinsight-domain-joined-configure.md)
 ### [Verwalten](hdinsight-domain-joined-manage.md)
 ### [Konfigurieren von Hive-Richtlinien](hdinsight-domain-joined-run-hive.md)
+## Verwenden von Kafka (Vorschau)
+### [Replizieren von Kafka-Daten](hdinsight-apache-kafka-mirroring.md)
+### [Verwenden mit Spark](hdinsight-apache-spark-with-kafka.md)
+### [Verwenden mit Storm](hdinsight-apache-storm-with-kafka.md)
 ## Entwickeln
 ### [Entwickeln von Java MapReduce-Programmen](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Entwickeln von Scalding-MapReduce-Aufträgen](hdinsight-hadoop-mapreduce-scalding.md)
@@ -217,6 +223,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

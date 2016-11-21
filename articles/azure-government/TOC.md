@@ -1,11 +1,11 @@
 # Übersicht
-## [Was ist Azure Government?](../azure-government-overview.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [Was ist Azure Government?](../azure-government-overview.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ## [ITAR](documentation-government-overview-itar.md)
 ## [Justiz und öffentliche Sicherheit](documentation-government-overview-jps.md)
 ## [US-Verteidigungsministerium](documentation-government-overview-dod.md)
 
 # Erste Schritte
-## [Entwicklerhandbuch](../azure-government-developer-guide.md?toc=%@Fazure%2fazure-government%2ftoc.json)
+## [Entwicklerhandbuch](../azure-government-developer-guide.md?toc=%2fazure%2fazure-government%2ftoc.json)
 
 # Anleitung
 ## Plan
@@ -28,10 +28,12 @@
 ### [Überwachung und Verwaltung](documentation-government-services-monitoringandmanagement.md)
 
 # Ressourcen
-## [Testversion](https://azuregov.microsoft.com/trial/azuregovtrial)
 ## [Preise](https://azure.microsoft.com/pricing/)
+## [Testversion](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

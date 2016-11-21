@@ -1,6 +1,6 @@
 # Übersicht
 ## [Was ist SQL Database?](sql-database-technical-overview.md)
-## [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md)
+
 ## Features
 ### [Dienstebenen](sql-database-service-tiers.md)
 ### [Datenbanktransaktionseinheiten (DTUs)](sql-database-what-is-a-dtu.md)
@@ -75,6 +75,7 @@
 ## [Erstellen und Verwalten von Zugriff und Berechtigungen](sql-database-get-started-security.md)
 ## [In-Memory-Optimierung](sql-database-in-memory.md)
 ## [Datensynchronisierung](sql-database-get-started-sql-data-sync.md)
+## [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md)
 
 # Anleitung
 
@@ -264,12 +265,12 @@
 ### [Verschieben von Datenbanken](sql-database-troubleshoot-moving-data.md)
 
 # Referenz
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [PowerShell – klassisch](/powershell/servicemanagement/)
 ## [Java](/java/api/)
 ## [.NET](/dotnet/api/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084(v=azure.300\).aspx)
+## [Azure SQL-Datenbank-Cmdlets](/powershell/resourcemanager/AzureRM.Sql/v1.0.12/AzureRM.Sql)
 ## [SQL Server-Cmdlets](https://msdn.microsoft.com/library/mt740629.aspx)
 ## [REST](/rest/api/sql/)
 
@@ -287,6 +288,9 @@
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/sql-database/)
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-azure)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=sql-database)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?service=sql-database)
 ## [SQL Server-Tools](https://msdn.microsoft.com/library/mt238365.aspx)
 ## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
@@ -294,10 +298,10 @@
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
-## [Forum](https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted)
-## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=sql-database)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

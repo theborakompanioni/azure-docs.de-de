@@ -1,62 +1,64 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 5f0cd9a3f3d4b578312e1b9f9f8b9c5ee7d6aa27
+ms.sourcegitcommit: 42be91bb4ddf87671ed9c3c5b2e5e640b0c5b059
+ms.openlocfilehash: fe9ee140084f0ab659e9db519098bbeb03305470
 
 ---
-#<a name="cdn-documentation"></a>CDN-Dokumentation
 
-Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung für die Bereitstellung von Inhalten mit hoher Bandbreite, die in Azure oder an einem beliebigen anderen Ort gehostet werden.  Mit dem CDN können Sie öffentlich verfügbare Objekte zwischenspeichern, die aus dem Azure-Blobspeicher, einer Webanwendung, einem virtuellen Computer, einem Anwendungsordner oder einem anderen HTTP-/HTTPS-Speicherort geladen werden.  Das CDN wird normalerweise zum Übermitteln statischer Inhalte wie Bilder, Stylesheets, Dokumente, Dateien, clientseitige Skripts und HTML-Seiten verwendet.
+# <a name="azure-container-registry-documentation"></a>Dokumentation zur Azure-Containerregistrierung
+
+Bei der Azure-Containerregistrierung (Vorschau) handelt es sich um eine private Registrierung zum Hosten von Containerimages. Mithilfe der Azure-Containerregistrierung können Sie Images im Docker-Format für alle Arten von Containerbereitstellungen speichern. Die Azure-Containerregistrierung lässt sich nahtlos in Orchestratoren integrieren, die in Azure Container Service gehostet werden. Hierzu zählen beispielsweise Docker Swarm, DC/OS und Kubernetes. 
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/best-practices-CDN">
+        <a href="/azure/container-registry/container-registry-intro">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/cdn.svg" alt="" />
+                            <img src="./media/index/container-registry.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Informationen zu Azure CDN</h3>
+                        <h3>Informationen zur Azure-Containerregistrierung</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=cdn">
+    <li>
+        <a href="/azure/container-registry/container-registry-get-started-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="./media/index/portal.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Videobibliothek zu Azure Batch</h3>
+                        <h3>Erste Schritte beim Erstellen einer Registrierung mit dem Portal</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li><li>
-        <a href="/azure/cdn/cdn-create-new-endpoint">
+    </li>
+    <li>
+        <a href="/azure/container-registry/container-registry-get-started-azure-cli">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="./media/index/cli.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Azure CDN</h3>
+                        <h3>Erste Schritte beim Erstellen einer Registrierung mit der Befehlszeilenschnittstelle</h3>
                     </div>
                 </div>
             </div>
@@ -64,35 +66,32 @@ Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung fü
         </a>
     </li>
 </ul>
-
----
 
 ## <a name="reference"></a>Referenz
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
+        <a href="/cli/azure/acr">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell</p>
+                        <h3>Befehlszeilenschnittstelle (CLI)</h3>
+                        <p>Referenz zur Befehlszeilenschnittstelle</p>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-
     <li>
-        <a href="/rest/api/CDN">
+        <a href="/rest/api/containerregistry">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>CDN – REST-API-Referenz</p>
+                        <p>REST-API-Referenz</p>
                     </div>
                 </div>
             </div>
@@ -100,15 +99,6 @@ Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung fü
         </a>
     </li>
 </ul>
-
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cdn.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Azure CDN-Dokumentation </div>
-    </a>
-</div>
 
 
 

@@ -1,6 +1,5 @@
 # Übersicht
-## [Was ist Azure AD Domain Services?](https://azure.microsoft.com/services/active-directory-ds/)
-## [So funktioniert's](active-directory-ds-overview.md)
+## [Was ist Azure AD Domain Services?](active-directory-ds-overview.md)
 ## [Ist es für Sie geeignet?](active-directory-ds-comparison.md)
 ## [Funktionen](active-directory-ds-features.md)
 ## [Szenarios](active-directory-ds-scenarios.md)
@@ -36,9 +35,11 @@
 
 # Ressourcen 
 ## [Preise](https://azure.microsoft.com/pricing/details/active-directory-ds/)
-## [So erreichen Sie uns](active-directory-ds-contact-us.md)
 ## [Azure-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory-ds)
+## [So erreichen Sie uns](active-directory-ds-contact-us.md)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 
