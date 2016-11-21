@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d737a8b14000e157d4f70c9e23cc9d40697d2b50
-ms.openlocfilehash: 0d9510cc32e4d3e0ed4b61f47cb4749180c1b830
+ms.sourcegitcommit: 80f16aef21f41d7040342e5a3907e330efa5f90b
+ms.openlocfilehash: 2219ef9836edfb5356b2591293d9615dd87988b9
 
 ---
 #<a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
@@ -11,7 +11,7 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-windows-overview">
+        <a href="/azure/virtual-machines/virtual-machines-windows-overview?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -47,17 +47,17 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-windows-hero-tutorial">
+        <a href="/azure/virtual-machines/virtual-machines-windows-hero-tutorial?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/portal.svg" alt="" />
+                            <img src="../media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal</h3>
+                        <h3>Erste Schritte mit Windows-VMs bei Verwendung des Azure-Portals</h3>
                     </div>
                 </div>
             </div>
@@ -65,17 +65,17 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-machines/virtual-machines-windows-ps-create">
+        <a href="/azure/virtual-machines/virtual-machines-windows-ps-create?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/powershell.svg" alt="" />
+                            <img src="../media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erstellen eines virtuellen Computers mit PowerShell</h3>
+                        <h3>Erste Schritte mit Windows-VMs bei Verwendung der PowerShell</h3>
                     </div>
                 </div>
             </div>
@@ -83,17 +83,17 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
         </a>
     </li>
     <li>
-        <a href="/azure/resource-manager-template-walkthrough">
+        <a href="/azure/resource-manager-template-walkthrough?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="../media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erstellen einer VM mithilfe einer Resource Manager-Vorlage</h3>
+                        <h3>Erste Schritte mit Windows-VMs bei Verwendung einer Resource Manager-Vorlage</h3>
                     </div>
                 </div>
             </div>
@@ -106,29 +106,92 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
 
 ##<a name="reference"></a>Referenz
 
-###<a name="powershell"></a>PowerShell
-[Azure PowerShell](/powershell/)
-
-###<a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-[Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
-
-###<a name="net"></a>.NET
-[Verwaltete Referenz zur API](/dotnet/api/)
-
-###<a name="java-sdk"></a>Java-SDK
-[Java-Referenz](/java/api/)
-
-###<a name="rest-compute"></a>Rest (Compute)
-[Referenz zur Compute-REST-API](/rest/api/compute)
-
-###<a name="rest-network"></a>REST (Netzwerk)
-[Referenz zur REST-API für Netzwerke](https://msdn.microsoft.com/library/mt163658.aspx)
-
-###<a name="rest-storage"></a>REST (Storage)
-[Referenz zur Storage-REST-API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-
-###<a name="rest-vm-scale-sets"></a>REST (VM-Skalierungsgruppen)
-[VM-Skalierungsgruppen – REST-API-Referenz](https://msdn.microsoft.com/library/azure/mt705635.aspx)
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/cli/azure/install-az-cli2">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure-Befehlszeilenschnittstelle</h3>
+                        <p>Installieren der Azure-Befehlszeilenschnittstelle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Verwaltete Referenz zur .NET-API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/java/api">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Java-SDK</h3>
+                        <p>Java-API-Referenz</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/compute">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST (Compute)</h3>
+                        <p>Referenz zur Compute-REST-API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="https://msdn.microsoft.com/library/mt163658">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST (Netzwerk)</h3>
+                        <p>Referenz zur Netzwerk-REST-API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/storage">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST (Storage)</h3>
+                        <p>Storage – REST-API-Referenz</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/windows.pdf">
@@ -140,6 +203,6 @@ Herunterladen der Dokumentation zu virtuellen Windows-Computern </div>
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

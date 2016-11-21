@@ -1,9 +1,13 @@
 ---
 layout: LandingPage
----
-#Virtual Machine Scale Sets Documentation
+translationtype: Human Translation
+ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
+ms.openlocfilehash: 71d5dc02cea9375d9c07ddd6d4a56d446390d5f1
 
-Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy and manage a set of identical VMs.  With all VMs configured the same, VM scale sets are designed to support true autoscale - no pre-provisioning of VMs is required. This makes it easier to build large-scale services targeting big compute, big data, and containerized workloads.
+---
+#<a name="virtual-machine-scale-sets-documentation"></a>Dokumentation zu VM-Skalierungsgruppen
+
+VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können.  Da alle virtuellen Computer in einer VM-Skalierungsgruppe gleich konfiguriert sind, ermöglichen VM-Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -17,7 +21,25 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Learn about Virtual Machine Scale Sets</h3>
+                        <h3>Informationen zu VM-Skalierungsgruppen</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+       <li>
+        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=virtual-machines">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Videobibliothek zu virtuellen Computern</h3>
                     </div>
                 </div>
             </div>
@@ -31,11 +53,11 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Windows scale set</h3>
+                        <h3>Erste Schritte mit VM-Skalierungsgruppen unter Windows</h3>
                     </div>
                 </div>
             </div>
@@ -49,11 +71,33 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Create a Linux scale set</h3>
+                        <h3>Erste Schritte mit VM-Skalierungsgruppen unter Linux</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+
+</ul>
+
+---
+
+## <a name="reference"></a>Referenz
+
+<ul class="panelContent cardsW">
+    <li>
+        <a href="/powershell/azureps-cmdlets-docs">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>PowerShell</h3>
+                        <p>VM-Skalierungsgruppen unter Verwendung von PowerShell</p>
                     </div>
                 </div>
             </div>
@@ -61,17 +105,27 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=virtual-machines">
+        <a href="/cli/azure/vmss">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Virtual Machines Video Library</h3>
+                        <h3>Azure-Befehlszeilenschnittstelle</h3>
+                        <p>VM-Skalierungsgruppen unter Verwendung der Azure-Befehlszeilenschnittstelle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/compute">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>VM-Skalierungsgruppen – REST-API-Referenz</p>
                     </div>
                 </div>
             </div>
@@ -80,24 +134,17 @@ Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy a
     </li>
 </ul>
 
----
-
-##Reference
-
-###PowerShell
-[Virtual Machine Scale Sets PowerShell](/powershell/azureps-cmdlets-docs)
-
-###Azure CLI
-[Virtual Machine Scale Sets CLI Reference](/cli/azure/vmss)
-
-###REST
-[Virtual Machine Scale Sets REST API Reference](/rest/api/compute)
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machine-scale-sets.pdf">
         <div class="img"></div>
         <div class="text">
-            Download Virtual Machine Scale Sets Documentation
-        </div>
+Herunterladen der Dokumentation zu VM-Skalierungsgruppen </div>
     </a>
 </div>
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
