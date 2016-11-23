@@ -102,6 +102,6 @@ Bei der Azure-Containerregistrierung (Vorschau) handelt es sich um eine private 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

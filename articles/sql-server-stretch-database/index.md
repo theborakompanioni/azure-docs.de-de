@@ -96,6 +96,6 @@ Herunterladen der Dokumentation zu SQL Server Stretch-Datenbank </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
