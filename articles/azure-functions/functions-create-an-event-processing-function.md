@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2381b04e32a6d65075dadf04f717f4946ba4d464
+ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
+ms.openlocfilehash: c7e4d5c0b2602ba8c12184900eba05fee48c4450
 
 
 ---
@@ -29,7 +29,7 @@ In diesem Thema wird gezeigt, wie Sie eine neue Funktion in C# erstellen, die ba
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [können Sie ein kostenloses Konto erstellen](https://azure.microsoft.com/free/).
 
-## <a name="create-a-timertriggered-function-from-the-template"></a>Erstellen einer per Timer ausgelösten Funktion aus der Vorlage
+## <a name="create-a-timer-triggered-function-from-the-template"></a>Erstellen einer per Timer ausgelösten Funktion aus der Vorlage
 Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [können Sie ein kostenloses Konto erstellen](https://azure.microsoft.com/free/). 
 
 1. Wechseln Sie zum [Azure Functions-Portal](https://functions.azure.com/signin) , und melden Sie sich mit Ihrem Azure-Konto an.

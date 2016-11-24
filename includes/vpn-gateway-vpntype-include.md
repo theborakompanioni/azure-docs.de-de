@@ -5,4 +5,8 @@
   * Für S2S-Verbindungen können Sie nur PolicyBased-VPNs verwenden, und auch dies nur bei bestimmten Konfigurationen. Die meisten VPN-Gatewaykonfigurationen erfordern ein RouteBased-VPN.
 * **RouteBased**: RouteBased-VPNs wurden im klassischen Bereitstellungsmodell bisher als Gateways mit dynamischem Routing bezeichnet. Bei RouteBased-VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungstabelle oder -Routingtabelle an die entsprechenden Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie (bzw. der Datenverkehrsselektor) für RouteBased-VPNs wird im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert. Der Wert für einen RouteBased-VPN-Typ lautet *RouteBased*.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

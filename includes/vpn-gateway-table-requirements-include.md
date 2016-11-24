@@ -9,4 +9,8 @@ In der folgenden Tabelle sind die Anforderungen für PolicyBased- und RouteBased
 | **Maximale Anzahl von P2S-Verbindungen** |Nicht unterstützt |128 |128 |128 |
 | **Aktive Routingunterstützung (BGP)** |Nicht unterstützt |Nicht unterstützt |Unterstützt |Unterstützt |
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

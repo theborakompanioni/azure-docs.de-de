@@ -1,5 +1,5 @@
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im Navigationsbereich auf **Neu**, dann auf **Daten und Speicher** und anschließend auf **DocumentDB (NoSQL)**.
+2. Klicken Sie im Navigationsbereich auf **Neu**, dann auf **Datenbanken** und anschließend auf **NoSQL (DocumentDB)**.
    
    ![Screenshot des Azure-Portals mit Hervorhebung von „Weitere Dienste“ und „DocumentDB (NoSQL)“](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)  
 3. Legen Sie auf dem Blatt **Neues Konto** die gewünschte Konfiguration für das DocumentDB-Konto fest.
@@ -16,11 +16,11 @@
    ![Datenbanken schnell erstellen – Screenshot des Benachrichtigungs-Hubs, in dem die Erstellung des DocumentDB-Kontos angezeigt wird](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-4.png)  
    
    ![Screenshot des Benachrichtigungs-Hubs, in dem die erfolgreiche Erstellung des DocumentDB-Kontos und die Bereitstellung in einer Ressourcengruppe bestätigt werden – Benachrichtigung für Onlinedatenbankersteller](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
-5. Nachdem das DocumentDB-Konto erstellt wurde, steht es mit den Standardeinstellungen zur Verfügung. Die Standardkonsistenz des DocumentDB-Kontos ist auf **Sitzung**festgelegt.  Sie können die Standardkonsistenz anpassen, indem Sie im Ressourcenmenü auf **Standardkonsistenz** klicken. Weitere Informationen zu den Konsistenzebenen von DocumentDB finden Sie unter [Konsistenzebenen in DocumentDB](../articles/documentdb/documentdb-consistency-levels.md).
-   
-   ![Screenshot des Blatts „Ressourcengruppe“ – Anwendungsentwicklung beginnen](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-6.png)  
-   
-   ![Screenshot des Blatts „Konsistenzebene“ – Sitzungskonsistenz](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-7.png)  
+5. Nachdem das DocumentDB-Konto erstellt wurde, steht es mit den Standardeinstellungen zur Verfügung. Klicken Sie zum Überprüfen der Standardeinstellungen im Navigationsbereich auf das Symbol **NoSQL (DocumentDB)**, klicken Sie auf Ihr neues Konto, und klicken Sie anschließend im Ressourcenmenü auf **Standardkonsistenz**.
+
+   ![Screenshot, der zeigt, wie Sie Ihr Azure DocumentDB-Datenbankkonto im Azure-Portal öffnen](./media/documentdb-create-dbaccount/azure-documentdb-database-open-account-portal.png)  
+
+   Die Standardkonsistenz des DocumentDB-Kontos ist auf **Sitzung**festgelegt.  Sie können die Standardkonsistenz anpassen, indem Sie im Ressourcenmenü auf **Standardkonsistenz** klicken. Weitere Informationen zu den Konsistenzebenen von DocumentDB finden Sie unter [Konsistenzebenen in DocumentDB](../articles/documentdb/documentdb-consistency-levels.md).
 
 [Erstellen eines DocumentDB-Kontos]: #Howto
 [Nächste Schritte]: #NextSteps

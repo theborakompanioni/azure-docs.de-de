@@ -4,7 +4,7 @@
 > 
 > 
 
-Diese exemplarische Vorgehensweise für [Simulated Device Cloud Upload Sample](Beispiel für Clouduploads von simulierten Geräten.md) zeigt, wie Sie das [Microsoft Azure IoT Gateway SDK][lnk-sdk] verwenden, um D2C-Telemetriedaten (Device to Cloud) von simulierten Geräten an IoT Hub zu senden.
+Diese exemplarische Vorgehensweise für das [Beispiel für Clouduploads von simulierten Geräten] zeigt, wie Sie das [Azure IoT-Gateway-SDK][lnk-sdk] verwenden, um Gerät-zu-Cloud-Telemetriedaten von simulierten Geräten an IoT Hub zu senden.
 
 Diese Anleitung umfasst:
 
@@ -27,7 +27,7 @@ Das folgende Diagramm zeigt die Hauptkomponenten des Beispiels, einschließlich 
 ![][1]
 
 > [!NOTE]
-> Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Broker, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt, wie im unten stehenden Diagramm gezeigt. Weitere Informationen finden Sie unter [Erste Schritte mit dem Gateway SDK][lnk-gw-getstarted].
+> Die Module übergeben untereinander Nachrichten nicht direkt. Die Module veröffentlichen Nachrichten in einem internen Broker, der die Nachrichten mithilfe eines Abonnementmechanismus an die anderen Module übermittelt, wie im unten stehenden Diagramm gezeigt. Weitere Informationen finden Sie unter [Erste Schritte mit dem IoT-Gateway-SDK][lnk-gw-getstarted].
 > 
 > 
 
@@ -46,7 +46,7 @@ Dieses Modul ist der Ausgangspunkt für das Übermitteln von Daten von Geräten 
 > 
 > 
 
-### <a name="mac-ltgt-iot-hub-id-module"></a>Modul zur Zuordnung zwischen MAC-Adressen und IoT Hub-IDs&lt;-&gt;
+### <a name="mac-lt-gt-iot-hub-id-module"></a>Modul zur Zuordnung zwischen MAC-Adressen und IoT Hub-IDs&lt;-&gt;
 Dieses Modul sucht nach Nachrichten mit einer Eigenschaft, die die vom Protokollerfassungsmodul hinzugefügte MAC-Adresse des simulierten Geräts enthält. Wenn das Modul eine solche Eigenschaft findet, fügt es der Nachricht eine weitere Eigenschaft mit einem IoT Hub-Geräteschlüssel hinzu und stellt die Nachricht dann dem nächsten Modul in der Kette zur Verfügung. So verknüpft das Beispiel IoT Hub-Geräteeigenschaften mit simulierten Geräten. Der Entwickler richtet die Zuordnung zwischen MAC-Adressen und IoT Hub-Identitäten manuell im Rahmen der Modulkonfiguration ein. 
 
 > [!NOTE]
@@ -55,7 +55,7 @@ Dieses Modul sucht nach Nachrichten mit einer Eigenschaft, die die vom Protokoll
 > 
 
 ### <a name="iot-hub-communication-module"></a>IoT Hub-Kommunikationsmodul
-Dieses Modul akzeptiert Nachrichten mit einer vom vorherigen Modul zugewiesenen IoT Hub-Geräteidentität und sendet den Nachrichteninhalt über HTTPS an IoT Hub. HTTPS ist eines der drei Protokolle, die von IoT Hub gelesen werden können.
+Dieses Modul akzeptiert Nachrichten mit einer vom vorherigen Modul zugewiesenen IoT Hub-Geräteidentität und sendet den Nachrichteninhalt über HTTP an IoT Hub. HTTP ist eines der drei Protokolle, die von IoT Hub gelesen werden können.
 
 Anstatt für jedes simulierte Gerät eine Verbindung mit IoT Hub zu öffnen, öffnet dieses Modul eine einzelne HTTP-Verbindung zwischen Gateway und IoT Hub und stellt über diese Verbindung im Multiplexverfahren Verbindungen von allen simulierten Geräten her. So kann ein einzelnes Gateway wesentlich mehr (simulierte oder nicht simulierte) Geräte miteinander verbinden, als es durch Öffnen einer eindeutigen Verbindung für jedes Gerät möglich wäre.
 
@@ -66,10 +66,10 @@ Anstatt für jedes simulierte Gerät eine Verbindung mit IoT Hub zu öffnen, öf
 [2]: media/iot-hub-gateway-sdk-simulated-selector/image2.png
 
 <!-- Links -->
-[Simulated Device Cloud Upload sample]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/sample_simulated_device_cloud_upload.md (Beispiel für Clouduploads von simulierten Geräten)
+[Beispiel für Clouduploads von simulierten Geräten]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/sample_simulated_device_cloud_upload.md
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

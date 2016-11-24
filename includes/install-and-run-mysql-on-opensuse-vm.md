@@ -36,17 +36,17 @@
         mysql -u root -p
    
     Geben Sie das MySQL-Stammkennwort ein, das Sie im vorherigen Schritt geändert haben. Daraufhin wird eine Eingabeaufforderung angezeigt, über die Sie SQL-Anweisungen starten können, um mit der Datenbank zu interagieren.
-7. Führen Sie zum Erstellen eines neuen MySQL-Benutzers bei der **mysql>**-Eingabeaufforderung den folgenden Befehl aus:
+7. Führen Sie zum Erstellen eines neuen MySQL-Benutzers an der **mysql>**-Eingabeaufforderung den folgenden Befehl aus:
    
         CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
     Beachten Sie, dass das Semikolon (;) am Ende der Zeilen entscheidend für den Abschluss der Befehle ist.
-8. Geben Sie die folgenden Befehle aus, um eine Datenbank zu erstellen und um dafür die `mysqluser`-Benutzerberechtigungen zu gewähren:
+8. Geben Sie die folgenden Befehle aus, um eine Datenbank zu erstellen und um dafür die `mysqluser` -Benutzerberechtigungen zu gewähren:
    
         CREATE DATABASE testdatabase;
         GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
-    Beachten Sie, dass die Benutzernamen und Kennwörter der Datenbank nur von Skripten verwendet werden, die eine Verbindung zur Datenbank herstellen. Benutzernamen für Datenbankkonten sind nicht notwendigerweise tatsächliche Benutzerkonten im System.
+    Beachten Sie, dass die Benutzernamen und Kennwörter der Datenbank nur von Skripten verwendet werden, die eine Verbindung zur Datenbank herstellen.  Benutzernamen für Datenbankkonten sind nicht notwendigerweise tatsächliche Benutzerkonten im System.
 9. Um sich von einem anderen Computer aus anzumelden, geben Sie Folgendes ein:
    
         GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
@@ -56,10 +56,10 @@
     
         quit
 
-## Hinzufügen eines Endpunkts
-1. Nachdem MySQL installiert wurde, müssen Sie für den Remotezugriff auf MySQL einen Endpunkt konfigurieren. Melden Sie sich beim [klassischen Azure-Portal][AzurePortal] an. Klicken Sie auf **Virtual Machines**, klicken Sie auf den Namen des neuen virtuellen Computers und danach auf **Endpunkte**.
-2. Klicken Sie unten auf der Seite auf **Hinzufügen**.
-3. Fügen Sie einen Endpunkt mit dem Namen "MySQL" hinzu, und wählen Sie als Protokoll **TCP** aus. Setzen Sie die beiden Ports **Öffentlich** und **Privat** auf "3306".
+## <a name="add-an-endpoint"></a>Hinzufügen eines Endpunkts
+1. Nachdem MySQL installiert wurde, müssen Sie für den Remotezugriff auf MySQL einen Endpunkt konfigurieren. Melden Sie sich beim [klassischen Azure-Portal][Azure-Portal] an. Klicken Sie auf **Virtual Machines**, auf den Namen des neuen virtuellen Computers und danach auf **Endpunkte**.
+2. Klicken Sie unten auf der Seite auf **Hinzufügen** .
+3. Fügen Sie einen Endpunkt mit dem Namen „MySQL“ hinzu, und wählen Sie als Protokoll **TCP** aus. Setzen Sie die beiden Ports **Öffentlich** und **Privat** auf „3306“.
 4. Um von Ihrem Computer aus eine Remoteverbindung mit dem virtuellen Computer herzustellen, geben Sie Folgendes ein:
    
         mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
@@ -69,8 +69,11 @@
         mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
 [MySQLDocs]: http://dev.mysql.com/doc/
-[AzurePortal]: http://manage.windowsazure.com
+[Azure-Portal]: http://manage.windowsazure.com
 
-[Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
+[Bild9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
 
-<!---HONumber=AcomDC_0128_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

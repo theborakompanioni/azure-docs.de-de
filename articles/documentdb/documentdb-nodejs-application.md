@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d0297a529c9f921465ec365f10964f7d11160612
+ms.sourcegitcommit: 82da4d7324db83d71b21741f51ebe4e364c5a8f7
+ms.openlocfilehash: bde5635ddb43271920e6258c5df46d6ae6b41985
 
 
 ---
@@ -57,13 +57,17 @@ Sie haben keine Zeit, um das Lernprogramm abzuschließen, und möchten nur die v
 
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes vorhanden ist:
 
-* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
+
+   OR
+
+   Lokale Installation des [Azure DocumentDB-Emulators](documentdb-nosql-local-emulator.md).
 * [Node.js][Node.js] Version v0.10.29 oder höher.
 * [Express Generator](http://www.expressjs.com/starter/generator.html) (Installation über `npm install express-generator -g`)
 * [Git][Git].
 
 ## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>Schritt 1: Erstellen eines DocumentDB-Datenbankkontos
-Erstellen Sie zunächst ein DocumentDB-Konto. Wenn Sie bereits über ein Konto verfügen, können Sie mit [Schritt 2: Erstellen einer neuen Node.js-Anwendung](#_Toc395783178)fortfahren.
+Erstellen Sie zunächst ein DocumentDB-Konto. Falls Sie bereits ein Konto besitzen oder den DocumentDB-Emulator für dieses Tutorial verwenden, können Sie mit [Schritt 2: Erstellen einer neuen Node.js-Anwendung](#_Toc395783178) fortfahren.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -83,7 +87,7 @@ Nun erfahren Sie, wie Sie ein einfaches "Hello World"-Node.js-Projekt mithilfe d
 4. Führen Sie die neue Anwendung aus.
    
         npm start
-5. Sie können die neue Anwendung anzeigen, indem Sie in Ihrem Browser zu [http://localhost:3000](http://localhost:3000)navigieren.
+5. Sie können die neue Anwendung anzeigen, indem Sie in Ihrem Browser zu [http://localhost:3000](http://localhost:3000) navigieren.
    
     ![Kennenlernen von Node.js - Screenshot der "Hello World"-Anwendung in einem Browserfenster](./media/documentdb-nodejs-application/image12.png)
 
@@ -542,6 +546,6 @@ Weitere Informationen finden Sie im [Node.js Developer Center](https://azure.mic
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

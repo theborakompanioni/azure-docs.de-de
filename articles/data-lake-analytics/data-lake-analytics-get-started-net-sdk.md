@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure Data Lake Analytics mithilfe des .NET SDK | Microsoft Docs
-description: "Enthält Informationen zur Verwendung des .NET SDK zum Erstellen von Data Lake-Speicherkonten und Data Lake Analytics-Aufträgen sowie zum Übermitteln von Aufträgen, die in U-SQL geschrieben sind. "
+description: "Enthält Informationen zur Verwendung des .NET SDK zum Erstellen von Data Lake Analytics-Konten und Data Lake Analytics-Aufträgen sowie zum Übermitteln von Aufträgen, die in U-SQL geschrieben sind. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 10/26/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60deb681b1090444f5c178fb0c9b0458ea83f73d
+ms.sourcegitcommit: 8e092e30c9c4186e4687efeacf9ea1f6b4bf431c
+ms.openlocfilehash: f617d997bc34d39f7635a87c4e5c88b1ebdc0ff8
 
 
 ---
@@ -196,7 +196,6 @@ Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkon
                     Console.WriteLine(nextAction);
             }
 
-
             // List all Data Lake Analytics accounts within the subscription
             public static List<DataLakeAnalyticsAccount> ListADLAAccounts()
             {
@@ -217,6 +216,7 @@ Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkon
 
                 return accounts;
             }
+
             public static Guid SubmitJobByPath(string scriptPath, string jobName)
             {
                 var script = File.ReadAllText(scriptPath);
@@ -241,10 +241,10 @@ Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkon
           }
         }
 
-1. Drücken Sie **F5** , um die Anwendung auszuführen. Die Ausgabe sieht in etwa wie folgt aus:
+5. Drücken Sie **F5** , um die Anwendung auszuführen. Die Ausgabe sieht in etwa wie folgt aus:
    
     ![Azure Data Lake Analytics-Auftrag – U-SQL .NET SDK-Ausgabe](./media/data-lake-analytics-get-started-net-sdk/data-lake-analytics-dotnet-job-output.png)
-2. Überprüfen Sie die Ausgabedatei.  Der Standardpfad und der Dateiname lauten „c:\Temp\SearchLog-from-Data-Lake.csv“.
+6. Überprüfen Sie die Ausgabedatei.  Der Standardpfad und der Dateiname lauten „c:\Temp\SearchLog-from-Data-Lake.csv“.
 
 ## <a name="see-also"></a>Weitere Informationen
 * Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
@@ -257,6 +257,6 @@ Sie müssen absolute Pfade verwenden, um auf Dateien in verknüpften Speicherkon
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

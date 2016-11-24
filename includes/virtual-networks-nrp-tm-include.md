@@ -1,5 +1,5 @@
-## Traffic Manager-Profil
-Der Traffic Manager und seine untergeordnete Endpunkt-Ressource ermöglichen das DNS-Routing zu Endpunkten in und außerhalb von Azure. Eine solche Datenverkehrsverteilung wird durch Routingrichtlinien bestimmt. Der Traffic Manager lässt auch eine Überwachung der Endpunkt-Integrität zu, sowie eine angemessene Umleitung des Datenverkehrs basierend auf der Integrität eines Endpunktes.
+## <a name="traffic-manager-profile"></a>Traffic Manager-Profil
+Der Traffic Manager und seine untergeordnete Endpunkt-Ressource ermöglichen das DNS-Routing zu Endpunkten in und außerhalb von Azure. Eine solche Datenverkehrsverteilung wird durch Routingrichtlinien bestimmt. Der Traffic Manager lässt auch eine Überwachung der Endpunkt-Integrität zu, sowie eine angemessene Umleitung des Datenverkehrs basierend auf der Integrität eines Endpunktes. 
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
@@ -10,8 +10,8 @@ Der Traffic Manager und seine untergeordnete Endpunkt-Ressource ermöglichen das
 | **Path** |Überwachungspfad |
 | **Endpunkte** |Container für Endpunkt-Ressourcen |
 
-### Endpunkt
-Ein Endpunkt ist eine dem Traffic Manager-Profil untergeordnete Ressource. Er stellt einen Dienst- oder Webendpunkt dar, an den der Benutzerdatenverkehr anhand der in der Traffic Manager-Ressource konfigurierten Richtlinie verteilt wird.
+### <a name="endpoint"></a>Endpunkt
+Ein Endpunkt ist eine dem Traffic Manager-Profil untergeordnete Ressource. Er stellt einen Dienst- oder Webendpunkt dar, an den der Benutzerdatenverkehr anhand der in der Traffic Manager-Ressource konfigurierten Richtlinie verteilt wird. 
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
@@ -20,7 +20,7 @@ Ein Endpunkt ist eine dem Traffic Manager-Profil untergeordnete Ressource. Er st
 | **Weight** |Endpunkt-Gewichtung, die für die Datenverkehrsverwaltung verwendet wird. |
 | **Priority** |Priorität des Endpunktes, die zum Definieren einer Failover-Aktion verwendet wird |
 
-Beispiel von Traffic Manager im JSON-Format:
+Beispiel von Traffic Manager im JSON-Format: 
 
         {
             "apiVersion": "[variables('tmApiVersion')]",
@@ -77,7 +77,11 @@ Beispiel von Traffic Manager im JSON-Format:
         }
 
 
-## Weitere Ressourcen
-Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx).
+## <a name="additional-resources"></a>Weitere Ressourcen
+Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx) .
 
-<!---HONumber=AcomDC_1223_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

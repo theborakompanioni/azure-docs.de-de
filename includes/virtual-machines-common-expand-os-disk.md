@@ -1,4 +1,4 @@
-## Übersicht
+## <a name="overview"></a>Übersicht
 Beim Erstellen eines neuen virtuellen Computers (VM) in einer Ressourcengruppe durch Bereitstellen eines Images von [Azure Marketplace](https://azure.microsoft.com/marketplace/) hat das Standard-Betriebssystemlaufwerk eine Größe von 127 GB. Obwohl es möglich ist, der VM Datenträger hinzuzufügen (die Anzahl hängt von der SKU ab, die Sie ausgewählt haben), und darüber hinaus empfohlen wird, Anwendungen und CPU-intensive Workloads auf diesen zusätzlichen Datenträgern zu installieren, müssen Kunden oft das Betriebssystemlaufwerk erweitern, um bestimmte Szenarien wie z. B. die folgenden zu unterstützen:
 
 1. Unterstützung von Legacyanwendungen, die Komponenten auf dem Betriebssystemlaufwerk installieren.
@@ -9,8 +9,8 @@ Beim Erstellen eines neuen virtuellen Computers (VM) in einer Ressourcengruppe d
 > 
 > 
 
-## Ändern der Größe des Betriebssystemlaufwerks
-In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks mit den Ressourcen-Manager-Modulen von [Azure Powershell](../articles/powershell-install-configure.md) geändert wird. Öffnen Sie Powershell ISE oder Powershell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
+## <a name="resize-the-os-drive"></a>Ändern der Größe des Betriebssystemlaufwerks
+In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks mit den Ressourcen-Manager-Modulen von [Azure Powershell](../articles/powershell-install-configure.md)geändert wird. Öffnen Sie Powershell ISE oder Powershell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement wie folgt aus:
    
@@ -53,7 +53,7 @@ In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks 
 
 Das ist alles! Stellen Sie jetzt eine RDP-Verbindung mit der VM her, öffnen Sie die Computerverwaltung (oder die Datenträgerverwaltung), und erweitern Sie das Laufwerk mit dem neu zugewiesenen Speicherplatz.
 
-## Zusammenfassung
+## <a name="summary"></a>Zusammenfassung
 In diesem Artikel haben wir Azure Resource Manager-Module von Powershell verwendet, um das Betriebssystemlaufwerk eines virtuellen IaaS-Computers zu erweitern. Hier sehen Sie noch einmal das gesamte Skript:
 
 ```Powershell
@@ -68,18 +68,22 @@ Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## Nächste Schritte
-Obwohl wir uns in diesem Artikel hauptsächlich auf die Erweiterung des Betriebssystem-Datenträgers der VM konzentriert haben, kann das entwickelte Skript durch Änderung einer einzigen Codezeile auch zum Erweitern der Datenträger verwendet werden, die der VM angefügt sind. Um z. B. den ersten Datenträger zu erweitern, der der VM angehängt ist, ersetzen Sie das ```OSDisk```-Objekt von ```StorageProfile``` mit dem ```DataDisks```-Array, und verwenden Sie einen numerischen Index, um – wie unten dargestellt – einen Verweis auf den ersten angefügten Datenträger zu erhalten:
+## <a name="next-steps"></a>Nächste Schritte
+Obwohl wir uns in diesem Artikel hauptsächlich auf die Erweiterung des Betriebssystem-Datenträgers der VM konzentriert haben, kann das entwickelte Skript durch Änderung einer einzigen Codezeile auch zum Erweitern der Datenträger verwendet werden, die der VM angefügt sind. Um beispielsweise den ersten Datenträger zu erweitern, der an den virtuellen Computer angefügt ist, ersetzen Sie das ```OSDisk```-Objekt von ```StorageProfile``` mit dem ```DataDisks```-Array, und verwenden Sie einen numerischen Index, um – wie unten dargestellt – einen Verweis auf den ersten angefügten Datenträger zu erhalten:
 
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
-Entsprechend können Sie andere Datenträger referenzieren, die der VM angefügt sind, indem Sie entweder – wie oben gezeigt – einen Index, oder – wie unten dargestellt – die ```Name```-Eigenschaft des Datenträgers verwenden:
+Entsprechend können Sie andere Datenträger referenzieren, die der VM angefügt sind, indem Sie entweder – wie oben gezeigt – einen Index, oder – wie unten dargestellt – die ```Name``` -Eigenschaft des Datenträgers verwenden:
 
 ```Powershell
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-Wenn Sie herausfinden möchten, wie Datenträger einer Azure Resource Manager-VM angefügt werden, lesen Sie diesen [Artikel](../articles/virtual-machines/virtual-machines-windows-attach-disk-portal.md).
+Wenn Sie herausfinden möchten, wie Datenträger einem virtuellen Azure Resource Manager-Computer angefügt werden, lesen Sie [diesen Artikel](../articles/virtual-machines/virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

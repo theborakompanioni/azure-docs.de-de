@@ -4,20 +4,20 @@
 In Azure stehen mehrere Standardgrößen zur Auswahl zur Verfügung. Beachten Sie für einige dieser Größen die folgenden Punkte:
 
 * VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie bieten schnellere Prozessoren, ein höheres Verhältnis von Speicher zu Kern und ein SSD (Solid State Drive) für den temporären Datenträger. Einzelheiten finden Sie in der Ankündigung im Azure-Blog unter [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)(Neue VM-Größen der D-Serie, in englischer Sprache).
-* Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
-* Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie.  Die F-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Berechnungseinheit ACU (Azure Compute Unit) pro Kern das beste Preis-Leistungs-Verhältnis im Azure-Portfolio. 
+* Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+* Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie.  Die F-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Berechnungseinheit ACU (Azure Compute Unit) pro Kern das beste Preis-Leistungs-Verhältnis im Azure-Portfolio. 
   
     Bei der F-Serie wird außerdem ein neuer Standard bei der Benennung von VM-Größen in Azure eingeführt. Bei dieser Serie und bei künftig freigegebenen VM-Größen entspricht der hinter dem Buchstaben für den Familiennamen angegebene Zahlenwert der Anzahl von CPU-Kernen. Weitere Eigenschaften und Fähigkeiten, wie z.B. die Optimierung für Storage Premium, werden nach dem Zahlenwert für die Anzahl von CPU-Kernen durch Buchstaben angegeben. Dieses Namensformat wird für zukünftig freigegebene VM-Größen verwendet. Die Namen von bestehenden und freigegebenen VM-Größen werden jedoch nicht rückwirkend geändert.
 * Virtuelle Computer der G-Serie bieten den meisten Arbeitsspeicher und werden auf Hosts mit Prozessoren der Intel Xeon E5 V3-Familie ausgeführt.
 * Virtuelle Computer der DS-, DSv2-, Fs- und der GS-Serie können Storage Premium nutzen, wobei Hochleistungsspeicher mit geringer Latenz für E/A-intensive Workloads geboten wird. Diese virtuellen Computer nutzen Solid State Drives (SSDs) zum Hosten der Datenträger eines virtuellen Computers und stellen zudem einen lokalen SSD-Datenträgercache bereit. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
-* Die VMs der A-Reihe können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden. Die Größe ist basierend auf der Hardware gedrosselt, um eine konsistente Prozessorleistung für die ausgeführte Instanz zu ermöglichen – unabhängig von der Hardware, die für die Bereitstellung gewählt wird. Fragen Sie die virtuelle Hardware über die virtuelle Maschine ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird.
-* Die Größe „A0“ ist auf der physischen Hardware „überzeichnet“. Nur für diese spezielle Größe kann es dazu kommen, dass sich andere Kundenbereitstellungen negativ auf die Leistung Ihrer aktiven Workload auswirken. Die relative Leistung ist unten als erwartete Baseline beschrieben und unterliegt einer ungefähren Variabilität von 15 Prozent.
+*   Die virtuellen Computer der A- und der Av2-Serie können für viele verschiedene Hardwaretypen und Prozessoren bereitgestellt werden. Die Größe ist basierend auf der Hardware gedrosselt, um eine konsistente Prozessorleistung für die ausgeführte Instanz zu ermöglichen – unabhängig von der Hardware, die für die Bereitstellung gewählt wird. Fragen Sie die virtuelle Hardware über die virtuelle Maschine ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird.
+* Die Größe „A0“ ist auf der physischen Hardware „überzeichnet“. Nur für diese spezielle Größe kann es dazu kommen, dass sich andere Kundenbereitstellungen negativ auf die Leistung Ihrer aktiven Workload auswirken. Die relative Leistung ist unten als erwartete Baseline beschrieben und unterliegt einer ungefähren Variabilität von 15 Prozent.
 
 Die Größe des virtuellen Computers wirkt sich auf den Preis aus. Die Größe beeinflusst auch die Verarbeitung, den Arbeitsspeicher und die Speicherkapazität des virtuellen Computers. Speicherkosten werden separat basierend auf bereits verwendete Seiten im Speicherkonto berechnet. Weitere Informationen finden Sie unter [Virtuelle Computer – Preisdetails](https://azure.microsoft.com/pricing/details/virtual-machines/) und [Preisdetails zu Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 
 
 Die folgenden Überlegungen können Ihnen bei der Entscheidung über die Größe behilflich sein:
 
-* Die Größen A8 bis A11 und die Größen der H-Reihe werden auch als *rechenintensive Instanzen* bezeichnet. Die Hardware, auf der diese Größen ausgeführt werden, wurde für rechenintensive Anwendungen mit hoher Netzwerkauslastung konzipiert und optimiert. Hierzu zählen beispielsweise HPC-Clusteranwendungen (High Performance Computing), Modellierung und Simulationen. Die Reihen A8 bis A11 nutzen Intel Xeon E5-2670 @mit 2,6 GHZ und die H-Reihe Intel Xeon E5-2667 v3@ mit 3,2 GHz. Ausführliche Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md). 
+* Die Größen A8 bis A11 und die Größen der H-Reihe werden auch als *rechenintensive Instanzen* bezeichnet. Die Hardware, auf der diese Größen ausgeführt werden, wurde für rechenintensive Anwendungen mit hoher Netzwerkauslastung konzipiert und optimiert. Hierzu zählen beispielsweise HPC-Clusteranwendungen (High Performance Computing), Modellierung und Simulationen. Die Reihen A8 bis A11 nutzen Intel Xeon E5-2670 @mit 2,6 GHZ und die H-Reihe Intel Xeon E5-2667 v3@ mit 3,2 GHz. Ausführliche Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 * Die Serien Dv2, D, G sowie deren DS/GS-Entsprechungen eignen sich ideal für Clientanwendungen, die schnellere CPUs oder bessere lokale Datenträgerleistung erfordern oder einen höheren Speicherbedarf haben.  Sie bieten eine leistungsfähige Kombination für viele Anwendungen für den Unternehmenseinsatz.
 * Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Arbeitslasten, die schnellere CPUs erfordern, aber nicht so viel Arbeitsspeicher oder lokalen SSD pro CPU-Kern benötigen.  Bei Arbeitslasten wie Analysen, Gamingservern, Webservern und Batchverarbeitung kommen die Vorteile und der Nutzen der F-Serie besonders gut zum Tragen.
 * Einige der physischen Hosts in Azure-Rechenzentren unterstützen möglicherweise keine der größeren VM-Größen, z.B. A5 bis A11. Daher wird möglicherweise die Fehlermeldung **Fehler beim Konfigurieren des virtuellen Computers<machine name>** oder **Fehler beim Erstellen des virtuellen Computers<machine name>** beim Ändern der Größe eines vorhandenen virtuellen Computers, beim Erstellen eines neuen virtuellen Computers in einem virtuellen Netzwerk, das vor dem 16. April 2013 erstellt wurde, oder beim Hinzufügen eines neuen virtuellen Computers zu einem vorhandenen Clouddienst angezeigt. Problemumgehungen für die einzelnen Bereitstellungsszenarios finden Sie im Supportforum unter [Error: “Failed to configure virtual machine”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) (Fehler beim Konfigurieren des virtuellen Computers).  
@@ -38,6 +38,8 @@ Wir haben das Konzept der Azure-Berechnungseinheit ACU (Azure Compute Unit) erst
 | [Standard_A0](#a-series) |50 |
 | [Standard_A1-4](#a-series) |100 |
 | [Standard_A5-7](#a-series) |100 |
+| [Standard_A1-8v2](#av2-series) |100 |
+| [Standard_A2m-8mv2](#av2-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [D1-14](#d-series) |160 |
 | [D1-15v2](#dv2-series) |210 - 250* |
@@ -64,7 +66,7 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A0 |1 |0,768 |20 |1 |1 x 500 |1/niedrig |
 | Standard_A1 |1 |1,75 |70 |2 |2 x 500 |1/moderat |
-| Standard_A2 |2 |3,5 GB |135 |4 |4 x 500 |1/moderat |
+| Standard_A2 |2 |3,5 |135 |4 |4 x 500 |1/moderat |
 | Standard_A3 |4 |7 |285 |8 |8 x 500 |2/hoch |
 | Standard_A4 |8 |14 |605 |16 |16 x 500 |4/hoch |
 | Standard_A5 |2 |14 |135 |4 |4 x 500 |1/moderat |
@@ -74,7 +76,7 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 <br>
 
 ## <a name="a-series---compute-intensive-instances"></a>A-Serie: Rechenintensive Instanzen
-Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md).
+Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales HDD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -86,6 +88,19 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 * RDMA-fähig
 
 <br>
+
+## <a name="av2-series"></a>Av2-Serie
+
+| Größe        | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|-------------|-----------|--------------|-----------------------|----------------|--------------------|-----------------------|
+| Standard_A1_v2 | 1         | 2            | 10                   | 2              | 2 x 500              | 1/moderat              |
+| Standard_A2_v2 | 2         | 4            | 20                   | 4              | 4 x 500              | 2/moderat              |
+| Standard_A4_v2 | 4         | 8            | 40                   | 8              | 8 x 500              | 4/hoch                  |
+| Standard_A8_v2 | 8         | 16           | 80                   | 16             | 16 x 500             | 8/hoch                  |
+| Standard_A2m_v2 | 2        | 16           | 20                   | 4              | 4 x 500              | 2/moderat              |
+| Standard_A4m_v2 | 4        | 32           | 40                   | 8              | 8 x 500              | 4/hoch                  |
+| Standard_A8m_v2 | 8        | 64           | 80                   | 16             | 16 x 500             | 8/hoch                  |
+
 
 ## <a name="d-series"></a>D-Serie
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
@@ -113,11 +128,13 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 | Standard_D12_v2 |4 |28 |200 |8 |8 x 500 |4/hoch |
 | Standard_D13_v2 |8 |56 |400 |16 |16 x 500 |8/hoch |
 | Standard_D14_v2 |16 |112 |800 |32 |32 x 500 |8/äußerst hoch |
-| Standard_D15_v2 |20 |140 |1.000 |40 |40 x 500 |8/äußerst hoch |
+| Standard_D15_v2 |20 |140 |1.000 |40 |40 x 500 |8/äußerst hoch* |
+
+*In einigen Regionen stehen für die Größe „Standard_D15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md).
 
 <br>
 
-## <a name="ds-series*"></a>DS-Serie*
+## <a name="ds-series"></a>DS-Serie*
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/32 |1/moderat |
@@ -135,7 +152,7 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 <br>
 
-## <a name="dsv2-series*"></a>DSv2-Serie*
+## <a name="dsv2-series"></a>DSv2-Serie*
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/48 |1 moderat |
@@ -147,11 +164,13 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 | Standard_DS12_v2 |4 |28 |56 |8 |16.000/128 (144) |12.800/192 |4 hoch |
 | Standard_DS13_v2 |8 |56 |112 |16 |32.000/256 (288) |25.600/384 |8 hoch |
 | Standard_DS14_v2 |16 |112 |224 |32 |64.000/512 (576) |51.200/768 |8 äußerst hoch |
-| Standard_DS15_v2 |20 |140 GB |280 |40 |80.000/640 (720) |64.000/960 |8 äußerst hoch |
+| Standard_DS15_v2 |20 |140 |280 |40 |80.000/640 (720) |64.000/960 |8 äußerst hoch** |
 
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 * Der mit einer VM der DSv2-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
+
+**In einigen Regionen stehen für die Größe „Standard_DS15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md).
 
 <br>
 
@@ -166,7 +185,7 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 <br>
 
-## <a name="fs-series*"></a>Fs-Serie*
+## <a name="fs-series"></a>Fs-Serie*
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |2 |4.000/32 (12) |3.200/48 |1/moderat |
@@ -192,14 +211,14 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 <br>
 
-## <a name="gs-series*"></a>GS-Serie*
+## <a name="gs-series"></a>GS-Serie*
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_GS1 |2 |28 |56 |4 |10.000/100 (264) |5.000 / 125 |1/hoch |
-| Standard_GS2 |4 |56 |528 |8 |20.000/200 (528) |10.000/250 |2/hoch |
-| Standard_GS3 |8 |112 |1.056 |16 |40.000/400 (1.056) |20.000/500 |4/sehr hoch |
-| Standard_GS4 |16 |224 |2.112 |32 |80.000/800 (2.112) |40.000/1.000 |8/äußerst hoch |
-| Standard_GS5 |32 |448 |4.224 |64 |160.000/1.600 (4.224) |80.000/2.000 |8/äußerst hoch |
+| Standard_GS2 |4 |56 |112 |8 |20.000/200 (528) |10.000/250 |2/hoch |
+| Standard_GS3 |8 |112 |224 |16 |40.000/400 (1.056) |20.000/500 |4/sehr hoch |
+| Standard_GS4 |16 |224 |448 |32 |80.000/800 (2.112) |40.000/1.000 |8/äußerst hoch |
+| Standard_GS5 |32 |448 |896 |64 |160.000/1.600 (4.224) |80.000/2.000 |8/äußerst hoch |
 
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
@@ -214,18 +233,18 @@ Neben beträchtlicher CPU-Leistung bietet die H-Serie verschiedene Optionen für
 
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8 |8 |56 |1000 |16 |16 x 500 |8/hoch |
-| Standard_H16 |16 |112 |2000 |32 |32 x 500 |8/sehr hoch |
-| Standard_H8m |8 |112 |1000 |16 |16 x 500 |8/hoch |
-| Standard_H16m |16 |224 |2000 |32 |32 x 500 |8/sehr hoch |
-| Standard_H16r* |16 |112 |2000 |32 |32 x 500 |8/sehr hoch |
-| Standard_H16mr* |16 |224 |2000 |32 |32 x 500 |8/sehr hoch |
+| Standard_H8 |8 |56 |1000 |16 |16 x 500 |2/hoch |
+| Standard_H16 |16 |112 |2000 |32 |32 x 500 |4/sehr hoch |
+| Standard_H8m |8 |112 |1000 |16 |16 x 500 |2/hoch |
+| Standard_H16m |16 |224 |2000 |32 |32 x 500 |4/sehr hoch |
+| Standard_H16r* |16 |112 |2000 |32 |32 x 500 |4/sehr hoch |
+| Standard_H16mr* |16 |224 |2000 |32 |32 x 500 |4/sehr hoch |
 
 * RDMA-fähig
 
 <br>
 
-## <a name="n-series-(preview)"></a>N-Serie (Vorschau)
+## <a name="n-series-preview"></a>N-Serie (Vorschau)
 Die NC- und NV-Größen werden auch als GPU-fähige Instanzen bezeichnet. Dabei handelt es sich um spezielle virtuelle Computer, die für verschiedene Szenarien und Anwendungsfälle optimierte GPU-Karten von NVIDIA enthalten. Die NV-Größen sind optimiert und konzipiert für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX. Die NC-Größen sind eher für rechen- und netzwerkintensive Anwendungen und Algorithmen optimiert, beispielsweise CUDA- und OpenCL-basierte Anwendungen und Simulationen. 
 
 ### <a name="nv-instances"></a>NV-Instanzen
@@ -248,7 +267,7 @@ Die NC-Instanzen werden durch Tesla K80 von NVIDIA unterstützt. Benutzer könne
 
 <br>
 
-## <a name="notes:-standard-a0---a4-using-cli-and-powershell"></a>Hinweise: Standard_A0 – A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell
+## <a name="notes-standard-a0---a4-using-cli-and-powershell"></a>Hinweise: Standard_A0 – A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell
 Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen in der Befehlszeilenschnittstelle und in PowerShell:
 
 * Standard_A0 ist „Sehr klein“ 
@@ -259,8 +278,10 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
-* Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) für Workloads wie etwa High-Performance Computing (HPC).
+* Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) für Workloads wie etwa High-Performance Computing (HPC).
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

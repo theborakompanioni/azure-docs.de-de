@@ -1,5 +1,5 @@
 
-| Transaktionstyp | Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region |
+| Transaktionstyp | Max. Transaktionen innerhalb von 10 Sekunden pro Tresor und Region |
 | --- | --- |
 | HSM – SCHLÜSSEL ERSTELLEN |5 |
 | HSM – andere Transaktionen |1000 |
@@ -7,4 +7,8 @@
 | Softkey – andere Transaktionen |1500 |
 | Alle geheimen, tresorbezogenen Transaktionen |2000 |
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

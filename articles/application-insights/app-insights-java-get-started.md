@@ -1,9 +1,9 @@
 ---
 title: Java-Web-App-Analyse mit Application Insights | Microsoft Docs
-description: "Überwachen der Leistung und Nutzung Ihrer Java-Website mit Application Insights  "
+description: "Überwachung der Anwendungsleistung für Java-Web-Apps mithilfe von Application Insights. "
 services: application-insights
 documentationcenter: java
-author: alancameronwills
+author: harelbr
 manager: douge
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc0167ef78eb3ca84e959599473af5935e5da0d0
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: 2c3c0c79e62631a42249ea6dc3865e59f26cad53
 
 
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
-*Application Insights befindet sich in der Vorschau.*
+
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) ist ein erweiterbarer Analysedienst für Webentwickler, der Ihnen dabei hilft, die Leistung und die Verwendung der Liveanwendung zu verstehen. Verwenden Sie den Dienst, um [Leistungsprobleme und Ausnahmen zu erkennen und zu diagnostizieren](app-insights-detect-triage-diagnose.md), und [schreiben Sie Code][api], um zu verfolgen, welche Aktionen Benutzer mit Ihrer App ausführen.
 
@@ -182,7 +182,7 @@ Um möglichst genaue Ergebnisse zu erhalten, muss der Filter vor allen anderen F
     </filter-mapping>
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Vorgehensweise bei Verwendung von Spring Web MVC 3.1 oder einer höheren Version
-Bearbeiten Sie diese Elemente so, dass das Application Insights-Paket einbezogen wird:
+Bearbeiten Sie diese Elemente in „*-servlet.xml“ so, dass das Application Insights-Paket einbezogen wird:
 
     <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
 
@@ -244,11 +244,15 @@ Jetzt veröffentlichen Sie Ihre App auf dem Server, erlauben deren Benutzung und
   
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
+
+* Wenn ausgehender Datenverkehr über eine Firewall geleitet werden muss, legen Sie Systemeigenschaften wie `http.proxyHost` und `http.proxyPort` fest. 
+
 * Installieren Sie auf Windows-Servern:
   
   * [Microsoft Visual C++ Redistributable](http://www.microsoft.com/download/details.aspx?id=40784)
     
     (Diese Komponente aktiviert Leistungsindikatoren.)
+
 
 ## <a name="exceptions-and-request-failures"></a>Ausnahmen und Anforderungsfehler
 Nicht behandelte Ausnahmen werden automatisch gesammelt:
@@ -367,6 +371,6 @@ Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, fall
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,40 +1,61 @@
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI)](../articles/xplat-cli-connect.md) ausführen.
-2. Stellen Sie folgendermaßen sicher, dass der klassische Bereitstellungsmodus aktiviert ist:
+1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI)](../articles/xplat-cli-connect.md)ausführen.
+
+2. Stellen Sie wie folgt sicher, dass der klassische Bereitstellungsmodus aktiviert ist:
+
+    ```azurecli
+    azure config mode asm
+    ```
+
+3. Wählen Sie aus den verfügbaren Images wie folgt das Linux-Image aus, das Sie laden möchten:
+
+   ```azurecli   
+    azure vm image list | grep "Linux"
+    ```
    
-        azure config mode asm
-3. Wählen Sie aus den verfügbaren Images das Linux-Image aus, das Sie laden möchten:
+    In einem Windows-Eingabeaufforderungsfenster verwenden Sie **find** anstelle von „grep“.
    
-        azure vm image list | grep "Linux"
+4. Verwenden Sie `azure vm create`, um eine VM mit dem Linux-Image aus der obigen Liste zu erstellen. Hierdurch werden ein Clouddienst und ein neues Speicherkonto erstellt. Sie können auch mithilfe der Option `-c` eine Verbindung zwischen dieser VM und einem vorhandenen Clouddienst herstellen. Erstellen Sie einen SSH-Endpunkt zum Anmelden beim virtuellen Linux-Computer mit der Option `-e`. Im folgenden Beispiel wird eine VM mit dem Namen `myVM` erstellt, indem das `Ubuntu-14_04_4-LTS`-Image am Standort `West US` verwendet und der Benutzername `ops` hinzugefügt wird:
    
-   In einem Windows-Eingabeaufforderungsfenster verwenden Sie **find** anstelle von „grep“.
-4. Erstellen Sie mithilfe von `azure vm create` einen neuen virtuellen Computer mit dem Linux-Image aus der vorherigen Liste. Dadurch werden ein neuer Clouddienst und ein neues Speicherkonto erstellt. Sie können auch mithilfe der Option `-c` eine Verbindung zwischen diesem virtuellen Computer und einem vorhandenen Clouddienst herstellen. Zudem wird ein SSH-Endpunkt zum Anmelden beim virtuellen Linux-Computer mit der Option `-e` erstellt.
-   
-        ~$ azure vm create "MyTestVM" b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-de-DE-30GB -g adminUser -p P@ssw0rd! -z "Small" -e -l "West US"
-        info:    Executing command vm create
-        + Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-de-DE-30GB
-        + Looking up cloud service
-        info:    cloud service MyTestVM not found.
-        + Creating cloud service
-        + Retrieving storage accounts
-        + Creating VM
-        info:    vm create command OK
+    ```azurecli
+    azure vm create myVM \
+        b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB \
+        -g ops -p P@ssw0rd! -z "Small" -e -l "West US"
+    ```
+
+    Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+    ```azurecli
+    info:    Executing command vm create
+    + Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB
+    + Looking up cloud service
+    info:    cloud service myVM not found.
+    + Creating cloud service
+    + Retrieving storage accounts
+    + Creating VM
+    info:    vm create command OK
+    ```
    
    > [!NOTE]
-   > Geben Sie für einen virtuellen Linux-Computer die `-e`-Option in `vm create` an. SSH kann nach der Erstellung des virtuellen Computers nicht mehr aktiviert werden. Weitere Informationen zu SSH finden Sie unter [Verwenden von SSH mit Linux in Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md).
-   > 
-   > 
-   
-    Aus der Liste der Images im vorherigen Schritt haben wir das Image *b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-de-DE-30GB* ausgewählt. *MyTestVM* ist der Name unseres neuen virtuellen Computers und *adminUser* der Benutzername für SSH auf dem virtuellen Computer. Sie können diese Variablen nach Bedarf ersetzen. Weitere Informationen zu diesem Befehl finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](../articles/virtual-machines-command-line-tools.md).
-5. Der neu erstellte virtuelle Linux-Computer wird in der angegebenen Liste angezeigt:
-   
-        azure vm list
-6. Sie können die Attribute des virtuellen Computers mithilfe des folgenden Befehls überprüfen:
-   
-        azure vm show MyTestVM
-7. Der neu erstellte virtuelle Computer kann nun mit dem Befehl `azure vm start` gestartet werden.
+   > Geben Sie für einen virtuellen Linux-Computer die `-e`-Option in `vm create` an. SSH kann nach der Erstellung des virtuellen Computers nicht mehr aktiviert werden. Weitere Informationen zu SSH finden Sie unter [Verwenden von SSH mit Linux in Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## Nächste Schritte
+5. Sie können die Attribute der VM mithilfe des Befehls `azure vm show` überprüfen. Im folgenden Beispiel werden Informationen zur VM mit dem Namen `myVM` aufgeführt:
+
+    ```azurecli   
+    azure vm show myVM
+    ```
+
+6. Starten Sie Ihre VM wie folgt mit dem Befehl `azure vm start`:
+
+    ```azurecli
+    azure vm start myVM
+    ```
+
+## <a name="next-steps"></a>Nächste Schritte
 Ausführliche Informationen zu diesen Azure-CLI-Befehlen für virtuelle Computer finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)](../articles/virtual-machines-command-line-tools.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

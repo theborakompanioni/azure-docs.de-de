@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 09/27/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f5fa586bd8902af2129a7157f0549c337ae00d00
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: 3152b9dd234b57b2f53192bd44d0b6d7ce7329a1
 
 
 ---
@@ -43,15 +43,14 @@ Wenn Sie beispielsweise einen Anstieg der Workload Ihrer Datenbank erwarten, kö
 Anhand der Leistungsmetriken können Sie auch ermitteln, ob Sie möglicherweise eine Herabstufung auf eine niedrigere Leistungsstufe vornehmen können. Angenommen, Sie verwenden eine Datenbank der Dienstebene "Standard S2", und alle Leistungsmetriken zeigen, dass die Datenbank zu jedem Zeitpunkt durchschnittlich nicht mehr als 10 % nutzt. Hier ist es wahrscheinlich, dass sich die Datenbank auch mit der Dienstebene "Standard S1" verwenden lässt. Bevor Sie sich für einen Wechsel zu einer niedrigeren Leistungsstufe entscheiden, müssen Sie aber auch Workloads berücksichtigen, die Spitzen oder Schwankungen aufweisen können.
 
 ## <a name="monitor-databases-using-dmvs"></a>Überwachen von Datenbanken mithilfe von DMVs
-Dieselben Metriken, die im Portal bereitgestellt werden, sind auch über Systemsichten verfügbar: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der logischen **master**-Datenbank Ihres Servers und [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) in der Benutzerdatenbank. Verwenden Sie **sys.resource_stats**, wenn Sie weniger differenzierte Daten über einen längeren Zeitraum überwachen möchten. Verwenden Sie **sys.dm_db_resource_stats**, wenn Sie differenzierte Daten in einem kürzeren Zeitraum überwachen möchten. Weitere Informationen finden Sie unter [Leitfaden zur Leistung für Azure SQL-Datenbanken](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats).
+Dieselben Metriken, die im Portal bereitgestellt werden, sind auch über Systemsichten verfügbar: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der logischen **master**-Datenbank Ihres Servers und [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) in der Benutzerdatenbank. Verwenden Sie **sys.resource_stats**, wenn Sie weniger differenzierte Daten über einen längeren Zeitraum überwachen möchten. Verwenden Sie **sys.dm_db_resource_stats**, wenn Sie differenzierte Daten in einem kürzeren Zeitraum überwachen möchten. Weitere Informationen finden Sie unter [Leitfaden zur Leistung für Azure SQL-Datenbanken](sql-database-performance-guidance.md#monitor-resource-use).
 
 > [!NOTE]
 > **sys.dm_db_resource_stats** gibt bei Verwendung der eingestellten Web- und Business Edition-Datenbanken ein leeres Resultset zurück.
-> 
-> 
+>
+>
 
 In Pools für elastische Datenbanken können Sie Einzeldatenbanken im Pool mit den in diesem Abschnitt beschriebenen Methoden überwachen. Sie können den Pool jedoch auch als Ganzes überwachen. Informationen dazu finden Sie unter [Erstellen und Verwalten eines elastischen Azure SQL-Datenbankpools](sql-database-elastic-pool-manage-portal.md).
-
 
 
 

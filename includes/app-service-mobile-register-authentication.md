@@ -11,6 +11,9 @@ Zuerst müssen Sie Ihre App auf der Website eines Identitätsanbieters registrie
 2. Wiederholen Sie die oben stehenden Schritte für jeden Anbieter, den Sie in Ihrer App unterstützen möchten.
 
 <!-- URLs. -->
-[Azure portal]: https://portal.azure.com/
+[Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=Nov15_HO4-->
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aac35e524759d5f4356e9a9e386f658e9003d2ca
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: 926f77b6674a0dba92e160435e4cce7bb0de160d
 
 
 ---
@@ -82,6 +82,8 @@ Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben
     `<InstrumentationKey>` *Der kopierte Instrumentationsschlüssel * `</InstrumentationKey>`
 * Stellen Sie sicher, dass die Eigenschaften von „ApplicationInsights.config“ im Projektmappen-Explorer auf **Buildvorgang = Inhalt, In Ausgabeverzeichnis kopieren = Kopieren**festgelegt sind.
 
+Es ist nützlich, den Instrumentierungsschlüssel im Code festzulegen, wenn Sie [den Schlüssel für verschiedene Buildkonfigurationen wechseln möchten](app-insights-separate-resources.md). Wenn Sie den Schlüssel im Code festlegen, müssen Sie ihn nicht in der Datei `.config` festlegen.
+
 ## <a name="a-nameruna-run-your-project"></a><a name="run"></a> Ausführen des Projekts
 Starten Sie Ihre Anwendung mit **F5** , und testen Sie sie: Öffnen Sie verschiedene Seiten, um einige Telemetriedaten zu generieren.
 
@@ -132,6 +134,6 @@ Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](app-i
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über Azure Virtual Network (VNet)"
-description: Weitere Informationen zu virtuellen Netzwerken (VNets) in Azure
+title: Virtuelle Azure-Netzwerke | Microsoft Docs
+description: Weitere Informationen zu virtuellen Netzwerken in Azure
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e08966567a8545c1b37ec856f836b976b5a9ab2a
+ms.sourcegitcommit: 6e96471c4f61e1ebe15c23f87ac646001d8e30ee
+ms.openlocfilehash: 47f149fe38dfd238dc2a38fd02ea50fc9c65e469
 
 
 ---
-# <a name="virtual-network-overview"></a>Virtuelle Netzwerke im Überblick
+# <a name="virtual-networks"></a>Virtuelle Netzwerke
 Ein virtuelles Azure-Netzwerk (VNet) ist eine Darstellung Ihres eigenen Netzwerks in der Cloud.  Es ist eine logische Isolierung von der Azure-Cloud für Ihr Abonnement. Sie können die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen in diesem Netzwerk vollständig steuern. Außerdem können Sie Ihr VNet in Subnetze segmentieren und virtuelle Azure IaaS-Maschinen (VMs) und/oder [Cloud-Dienste (PaaS-Instanzen)](../cloud-services/cloud-services-choose-me.md)starten. Zudem können Sie das virtuelle Netzwerk mit einer der [Konnektivitätsoptionen](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site) in Azure mit Ihrem lokalen Netzwerk verbinden. Im Wesentlichen können Sie Ihr Netzwerk mit vollständiger Kontrolle über IP-Adressblöcke auf Azure ausdehnen und von der Azure-Skalierung auf Unternehmensebene profitieren.
 
 Die unten stehende Abbildung zeigt ein vereinfachtes lokales Netzwerk und ermöglicht ein besseres Verständnis von VNets.
@@ -38,9 +38,8 @@ Die Azure-Infrastruktur übernimmt die Rolle des Routers und lässt ohne jeglich
 > [!NOTE]
 > In Azure stehen zwei Bereitstellungsmodi zur Auswahl: klassisch (auch bekannt als Dienstverwaltung) und Azure-Ressourcen-Manager (ARM). Klassische VNets können einer Affinitätsgruppe hinzugefügt oder als regionales VNet erstellt werden. Wenn Sie ein VNet in einer Affinitätsgruppe haben, wird die [Migration zu einem regionalen VNet](virtual-networks-migrate-to-regional-vnet.md)empfohlen.
 > 
-> 
 
-## <a name="virtual-network-benefits"></a>Vorteile von virtuellen Netzwerken
+## <a name="benefits"></a>Vorteile
 * **Isolation**. VNets sind vollständig voneinander isoliert. Daher können Sie separate Netzwerke für Entwicklung, Tests und Produktion erstellen, die die gleichen CIDR-Adressblöcke verwenden.
 * **Zugriff auf das öffentliche Internet**. Alle IaaS-VMs und PaaS-Rolleninstanzen in einem VNet können standardmäßig auf das öffentliche Internet zugreifen. Der Zugriff kann mithilfe von Netzwerksicherheitsgruppen gesteuert werden.
 * **Zugriff auf VMs im VNet**. PaaS-Rolleninstanzen und IaaS-VMs können im selben virtuellen Netzwerk gestartet werden und über private IP-Adressen eine Verbindung miteinander herstellen (auch, wenn sie sich in unterschiedlichen Subnetzen befinden), ohne dass dafür ein Gateway konfiguriert oder öffentliche IP-Adressen verwendet werden müssen.
@@ -50,8 +49,7 @@ Die Azure-Infrastruktur übernimmt die Rolle des Routers und lässt ohne jeglich
   
   > [!NOTE]
   > Vor der Bereitstellung von IaaS-VMs oder PaaS-Rolleninstanzen in Ihrer Azure-Umgebung müssen Sie ein VNet erstellen. ARM-basierte VMs erfordern ein VNet, und wenn Sie kein vorhandenes VNet angeben, erstellt Azure ein Standard-VNet, bei dem möglicherweise ein CIDR-Adressblockkonflikt mit Ihrem lokalen Netzwerk vorliegt. Wenn dies der Fall ist, ist es nicht möglich, das VNet mit Ihrem lokalen Netzwerk zu verbinden.
-  > 
-  > 
+  >
 
 ## <a name="subnets"></a>Subnetze
 Ein Subnetz ist ein Bereich von IP-Adressen im VNet. Sie können ein VNet aus Organisations- und Sicherheitsgründen in mehrere Subnetze unterteilen. VMs und PaaS-Rolleninstanzen, die in (denselben oder unterschiedlichen) Subnetzen in einem VNet bereitgestellt werden, können ohne zusätzliche Konfiguration miteinander kommunizieren. Sie können auch Routentabellen und NSGs zu einem Subnetz konfigurieren.
@@ -69,7 +67,7 @@ Virtuelle Maschinen und Clouddienste in einem virtuellen Netzwerk können über 
 
 Weitere Informationen zum Lastenausgleich in Azure finden Sie unter [Übersicht über Load Balancer](../load-balancer/load-balancer-overview.md).
 
-## <a name="network-security-group-nsg"></a>Netzwerksicherheitsgruppen (NSG)
+## <a name="network-security-groups-nsg"></a>Netzwerksicherheitsgruppen
 Sie können Netzwerksicherheitsgruppen zum Steuern des ein- und ausgehenden Zugriffs auf NICs, VMs und Subnetze erstellen. Eine Netzwerksicherheitsgruppe enthält eine oder mehrere Regeln, die basierend auf IP-Quelladresse, Quellport, IP-Zieladresse und Zielport bestimmen, ob Datenverkehr zugelassen oder verweigert wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](virtual-networks-nsg.md).
 
 ## <a name="virtual-appliances"></a>Virtuelle Geräte
@@ -94,6 +92,6 @@ Für die Verwendung virtueller Netzwerke in Azure fallen keine Zusatzkosten an. 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

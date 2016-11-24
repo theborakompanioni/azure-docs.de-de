@@ -1,24 +1,28 @@
 | Primär | Sekundär |
 |:---:|:---:|
-| USA (Mitte/Norden) |USA (Mitte/Süden) |
-| USA (Mitte/Süden) |USA (Mitte/Norden) |
+| USA (Mitte/Norden) |USA, Süden-Mitte |
+| USA, Süden-Mitte |USA (Mitte/Norden) |
 | USA (Ost) |USA (West) |
 | USA (West) |USA (Ost) |
-| USA (Ost 2) |USA (Mitte) |
-| USA (Mitte) |USA (Ost 2) |
-| Nordeuropa |Westeuropa |
-| Westeuropa |Nordeuropa |
+| USA (Ost 2) |USA (Mitte) |
+| USA (Mitte) |USA (Ost 2) |
+| Nordeuropa |Europa, Westen |
+| Europa, Westen |Nordeuropa |
 | Südostasien |Ostasien |
 | Ostasien |Südostasien |
 | Ostchina |Nordchina |
 | Nordchina |Ostchina |
 | Japan Ost |Japan (Westen) |
 | Japan (Westen) |Japan Ost |
-| Brasilien Süd |USA (Mitte/Süden) |
-| Australien (Ost) |Australien (Südost) |
-| Australien (Südost) |Australien (Ost) |
+| Brasilien Süd |USA, Süden-Mitte |
+| Australien (Osten) |Australien, Südosten |
+| Australien, Südosten |Australien (Ost) |
 | Kanada, Osten |Kanada, Mitte |
 | Kanada, Mitte |Kanada, Osten |
 | USA, Westen 2 |USA, Westen-Mitte |
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

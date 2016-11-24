@@ -1,13 +1,13 @@
-## Aufrufen einer gespeicherten Prozedur für die SQL-Senke
-Beim Kopieren von Daten in SQL Server oder eine Azure SQL-/SQL Server-Datenbank konnte eine vom Benutzer angegebene gespeicherte Prozedur konfiguriert und mit zusätzlichen Parametern aufgerufen werden.
+## <a name="invoking-stored-procedure-for-sql-sink"></a>Aufrufen einer gespeicherten Prozedur für die SQL-Senke
+Beim Kopieren von Daten in SQL Server oder eine Azure SQL-/SQL Server-Datenbank konnte eine vom Benutzer angegebene gespeicherte Prozedur konfiguriert und mit zusätzlichen Parametern aufgerufen werden. 
 
-Eine gespeicherte Prozedur kann genutzt werden, wenn integrierte Kopiermechanismen den Zweck nicht erfüllen. Sie werden in der Regel genutzt, wenn eine zusätzliche Verarbeitung (Zusammenführen von Spalten, Suchen nach zusätzlichen Werten, Einfügen in mehrere Tabellen usw.) vor dem endgültigen Einfügen von Quelldaten in die Zieltabelle durchgeführt werden muss.
+Eine gespeicherte Prozedur kann genutzt werden, wenn integrierte Kopiermechanismen den Zweck nicht erfüllen. Sie werden in der Regel genutzt, wenn eine zusätzliche Verarbeitung (Zusammenführen von Spalten, Suchen nach zusätzlichen Werten, Einfügen in mehrere Tabellen usw.) vor dem endgültigen Einfügen von Quelldaten in die Zieltabelle durchgeführt werden muss. 
 
-Sie können eine beliebige gespeicherte Prozedur aufrufen. Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Einfügevorgang für eine Tabelle in der Datenbank auszuführen.
+Sie können eine beliebige gespeicherte Prozedur aufrufen. Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Einfügevorgang für eine Tabelle in der Datenbank auszuführen. 
 
 **Ausgabedataset**
 
-In diesem Beispiel ist "type" auf "SqlServerTable" festgelegt. Legen Sie "type" auf "AzureSqlTable" fest, um eine Azure SQL-Datenbank zu verwenden.
+In diesem Beispiel ist "type" auf "SqlServerTable" festgelegt. Legen Sie "type" auf "AzureSqlTable" fest, um eine Azure SQL-Datenbank zu verwenden. 
 
     {
       "name": "SqlOutput",
@@ -59,4 +59,8 @@ Definieren Sie in der Datenbank den Tabellentyp mit demselben Namen wie "SqlWrit
 
 Das Feature der gespeicherten Prozedur nutzt [Tabellenwertparameter](https://msdn.microsoft.com/library/bb675163.aspx).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,6 +1,6 @@
 ---
-title: Abfragen von Azure SQL Data Warehouse (sqlcmd) | Microsoft Docs
-description: Es wird beschrieben, wie Sie Azure SQL Data Warehouse mit dem Befehlszeilenprogramm sqlcmd abfragen.
+title: Verbinden mit Azure SQL Data Warehouse mithilfe von sqlcmd | Microsoft-Dokumentation
+description: Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
@@ -15,12 +15,12 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1f2cf8003e46a1df30810a2594bc1d380bc13bcf
+ms.sourcegitcommit: 77474214c6fafe7f591030d30f6a46c66fbc5c09
+ms.openlocfilehash: 1cd3bd8cab4e74da820f844d2ba96243cc6ccdcd
 
 
 ---
-# <a name="query-azure-sql-data-warehouse-sqlcmd"></a>Abfragen von Azure SQL Data Warehouse (sqlcmd)
+# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Verbinden mit SQL Data Warehouse per sqlcmd
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 1f2cf8003e46a1df30810a2594bc1d380bc13bcf
 > 
 > 
 
-In dieser exemplarischen Vorgehensweise wird das Befehlszeilenprogramm [sqlcmd][sqlcmd] verwendet, um ein Azure SQL Data Warehouse abzufragen.  
+Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.  
 
 ## <a name="1-connect"></a>1. Verbinden
 Öffnen Sie zur Nutzung von [sqlcmd][sqlcmd] zuerst die Befehlseingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
@@ -100,6 +100,6 @@ Ausführliche Informationen zu den in sqlcmd verfügbaren Optionen finden Sie in
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

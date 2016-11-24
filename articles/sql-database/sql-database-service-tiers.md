@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/10/2016
+ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9ecbee74bc0559aa632304b0a0428abb36606597
+ms.sourcegitcommit: c7d253dfca8f399527d193f14af12c166157d39d
+ms.openlocfilehash: eaadd5c8d30a522fc05d214620600331d7485485
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen
-[Azure SQL-Datenbank](sql-database-technical-overview.md) bietet drei Dienstebenen mit mehreren Leistungsstufen für unterschiedliche Workloads. Jede Leistungsstufe bietet einen zunehmenden Umfang an Ressourcen, um einen zunehmend höheren Durchsatz zu ermöglichen. Sie können jede Datenbank in ihrer eigenen [Dienstebene](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) mit eigenen Leistungsstufen verwalten. Darüber hinaus besteht die Möglichkeit, mehrere Datenbanken in einem [elastischen Pool](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) mit gemeinsam genutzten Ressourcen zu verwalten. Die für eigenständige Datenbanken verfügbaren Ressourcen werden als Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) und die für elastische Pools verfügbaren Ressourcen als elastische DTUs bzw. eDTUs bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind Datenbanktransaktionseinheiten (DTUs)?](sql-database-what-is-a-dtu.md). 
+[Azure SQL-Datenbank](sql-database-technical-overview.md) bietet drei Dienstebenen mit mehreren Leistungsstufen für unterschiedliche Workloads. Höhere Leistungsstufen bieten einen zunehmenden Umfang an Ressourcen, um einen zunehmend höheren Durchsatz zu ermöglichen. Sie können die Tarife und Leistungsstufen dynamisch ändern. Ausführlichere Informationen finden Sie unter [Ändern der Dienstebenen und -Leistungsstufen von Datenbanken](sql-database-scale-up.md) .
+
+Sie können jede Datenbank in ihrer eigenen [Dienstebene](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) mit eigenen Leistungsstufen verwalten. Darüber hinaus besteht die Möglichkeit, mehrere Datenbanken in einem [elastischen Pool](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) mit gemeinsam genutzten Ressourcen zu verwalten. Die für eigenständige Datenbanken verfügbaren Ressourcen werden als Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) und die für elastische Pools verfügbaren Ressourcen als elastische DTUs bzw. eDTUs bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind Datenbanktransaktionseinheiten (DTUs)?](sql-database-what-is-a-dtu.md). 
 
 In beiden Fällen sind die Dienstebenen **Basic**, **Standard** und **Premium** verfügbar. Die Datenbankoptionen dieser Ebenen sind bei eigenständigen Datenbanken und elastischen Pools ähnlich, aber bei elastischen Pools sind noch weitere Aspekte zu beachten. Dieser Artikel enthält ausführliche Informationen zu den Dienstebenen für eigenständige Datenbanken und elastische Pools.
 

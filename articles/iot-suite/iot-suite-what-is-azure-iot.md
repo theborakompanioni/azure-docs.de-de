@@ -13,20 +13,26 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87b9b0685ab3401a617e1089312a65d2b5a90099
+ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
+ms.openlocfilehash: bd2b41944e3a37fde1cecd3d0ff299f949cd4eb4
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT Suite
-Microsoft Azure IoT Suite ist eine Lösung für Unternehmen, mit der Sie schnell mithilfe eines Satzes von erweiterbaren, vorkonfigurierten Lösungen starten können, die für gängige IoT-Szenarios ausgelegt sind, z.B. [Remoteüberwachung][lnk-preconfigured-solutions] und [vorhersagbarer Wartungsbedarf][lnk-predictive-maintenance]. Diese Lösungen sind Implementierungen der in diesem Artikel beschriebenen IoT-Lösungsarchitektur.
+Microsoft Azure IoT Suite ist eine Lösung für Unternehmen und ermöglicht dank verschiedener erweiterbarer, vorkonfigurierter Lösungen einen schnellen Einstieg. Diese Lösungen sind für gängige IoT-Szenarien wie [Remoteüberwachung][lnk-preconfigured-solutions] und [Predictive Maintenance][lnk-predictive-maintenance] konzipiert. Diese Lösungen sind Implementierungen der in diesem Artikel beschriebenen IoT-Lösungsarchitektur.
 
-Die vorkonfigurierten Lösungen sind vollständige, funktionsfähige und umfassende Lösungen, die für die ersten Schritte simulierte Geräte, vorkonfigurierte Azure-Dienste wie [Azure IoT Hub][Azure IoT Hub], [Azure Event Hubs][Azure Event Hubs], [Azure Stream Analytics][Azure Stream Analytics], [Azure Machine Learning][Azure Machine Learning], [Azure Storage][Azure Storage] und lösungsspezifische Verwaltungskonsolen enthalten. Die vorkonfigurierten Lösungen enthalten bewährten, einsatzbereiten Code, den Sie anpassen und erweitern können, um Ihre eigenen spezifischen IoT-Szenarios zu implementieren.
+Die vorkonfigurierten Lösungen sind vollständige, funktionsfähige End-to-End-Lösungen, die Folgendes umfassen:
+
+- Simulierte Geräte, die Ihnen den Einstieg erleichtern
+- Vorkonfigurierte Azure-Dienste wie [Azure IoT Hub][Azure IoT Hub], [Azure Event Hubs][Azure Event Hubs], [Azure Stream Analytics-Auftrag-Auftrag][Azure Stream Analytics-Auftrag-Auftrag], [Azure Machine Learning][Azure Machine Learning] und [Azure-Speicher][Azure-Speicher]
+- Lösungsspezifische Verwaltungskonsolen
+
+Die vorkonfigurierten Lösungen enthalten bewährten, einsatzbereiten Code, den Sie anpassen und erweitern können, um Ihre eigenen spezifischen IoT-Szenarios zu implementieren.
 
 Möglicherweise ist auch der [Azure IoT Hub][Azure IoT Hub]-Dienst für Sie interessant, der von vielen der vorkonfigurierten Lösungen verwendet wird. [Azure IoT Hub][Azure IoT Hub] ermöglicht die sichere und zuverlässige bidirektionale Kommunikation zwischen Geräten und der Cloud, die in der vorkonfigurierten Lösungsarchitektur verwendet werden.
 
@@ -49,6 +55,6 @@ Sehen Sie sich die folgenden Ressourcen an, um mehr über IoT-Suite und die vork
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,5 +1,6 @@
-## Application Gateway
-Application Gateway bietet eine von Azure verwaltete HTTP-Lastenausgleichslösung, die auf Lastenausgleich der HTTP-Ebene 7 basiert. Anwendungslastenausgleich ermöglicht die Verwendung von Weiterleitungsregeln für Netzwerkverkehr auf Basis von HTTP. <BR>
+## <a name="application-gateway"></a>Application Gateway
+Application Gateway bietet eine von Azure verwaltete HTTP-Lastenausgleichslösung, die auf Lastenausgleich der HTTP-Ebene 7 basiert. Anwendungslastenausgleich ermöglicht die Verwendung von Weiterleitungsregeln für Netzwerkverkehr auf Basis von HTTP. 
+<BR>
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
@@ -215,7 +216,11 @@ Beispiel für eine Json-Vorlage für Anwendung Gateway:
     }
 
 
-### Zusätzliche Ressourcen
-Weitere Informationen finden Sie unter [ Application Gateway REST-API](https://msdn.microsoft.com/library/azure/mt299388.aspx).
+### <a name="additional-resources"></a>Zusätzliche Ressourcen
+Weitere Informationen finden Sie unter [ Application Gateway REST-API](https://msdn.microsoft.com/library/azure/mt299388.aspx) .
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

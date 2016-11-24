@@ -81,7 +81,7 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
     ![Endpunkte][Image9]
 
 > [!NOTE]
-> Port 27017 wird in MongoDB als Standardport verwendet. Sie können diesen Standartport ändern, indem Sie beim Starten des mongod.exe-Servers den Parameter `--port` angeben. Achten Sie darauf, dass Sie in der Firewall die gleiche Portnummer und den „Mongo“-Endpunkt gemäß den Anweisungen oben angeben.
+> Port 27017 wird in MongoDB als Standardport verwendet. Sie können diesen Standartport ändern, indem Sie beim Starten des mongod.exe-Servers den Parameter `--port` angeben. Achten Sie darauf, dass Sie in der Firewall die gleiche Portnummer und den „Mongo“-Endpunkt gemäß den Anweisungen oben angeben.
 > 
 > 
 
@@ -101,6 +101,6 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 [Bild9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

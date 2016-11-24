@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2cf6e81d6a74c4a5beff91a3df90780a83bf1327
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: 6a652890260c21deb64826fb73920ba5d17f61da
 
 
 ---
@@ -26,8 +26,8 @@ ms.openlocfilehash: 2cf6e81d6a74c4a5beff91a3df90780a83bf1327
 > * [Azure-Portal](sql-data-warehouse-get-started-provision.md)
 > * [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 > * [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-> 
-> 
+>
+>
 
 In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen einer SQL Data Warehouse-Instanz, die eine AdventureWorksDW-Beispieldatenbank enthält.
 
@@ -39,33 +39,33 @@ Zunächst benötigen Sie Folgendes:
 
 > [!NOTE]
 > Wenn Sie eine SQL Data Warehouse-Instanz erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Unter [SQL Data Warehouse – Preise][SQL Data Warehouse – Preise] finden Sie weitere Informationen.
-> 
-> 
+>
+>
 
 ## <a name="create-a-sql-data-warehouse"></a>Erstellen eines SQL Data Warehouse
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **+Neu** > **Daten und Speicher** > **SQL Data Warehouse**.
-   
+
     ![Erstellen](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
 3. Geben Sie die erforderlichen Informationen auf dem Blatt **SQL Data Warehouse** ein, und klicken Sie auf „Erstellen“.
-   
+
     ![Erstellen einer Datenbank](./media/sql-data-warehouse-get-started-provision/create-database.png)
-   
+
    * **Server**: Es wird empfohlen, zuerst den Server auszuwählen.  
    * **Datenbankname**: Der Name, mit dem auf das SQL Data Warehouse verwiesen wird.  Dieser Name muss für den Server eindeutig sein.
-   * **Leistung:** Es wird empfohlen, mit 400 [DWUs][DWU] zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren.  Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen][SQL Data Warehouse – Preise]. 
+   * **Leistung:** Es wird empfohlen, mit 400 [DWUs][DWU] zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren.  Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen][SQL Data Warehouse – Preise].
    * **Abonnement**: Wählen Sie das [Abonnement] aus, für das diese SQL Data Warehouse-Instanz in Rechnung gestellt wird.
    * **Ressourcengruppe**: [Ressourcengruppes][Ressourcengruppe] sind Container, die zum Verwalten einer Azure-Ressourcensammlung entwickelt wurden. Weitere Informationen zu [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md).
    * **Auswählen der Quelle:** Klicken Sie auf **Quelle auswählen** > **Beispiel**. Azure füllt die Option **Beispiel auswählen** automatisch mit AdventureWorksDW auf.
 
 > [!NOTE]
 > Die Standardsortierung für eine SQL Data Warehouse-Instanz ist „SQL_Latin1_General_CP1_CI_AS“. Sollten Sie eine andere Sortierung benötigen, können Sie die Datenbank mithilfe von [T-SQL][T-SQL] mit einer anderen Sortierung erstellen.
-> 
-> 
+>
+>
 
 1. Klicken Sie auf **Erstellen** , um Ihre SQL Data Warehouse-Instanz zu erstellen.
-2. Warten Sie einige Minuten. Wenn Ihre Data Warehouse-Instanz bereit ist, wird wieder das [Azure-Portal](https://portal.azure.com)angezeigt. Sie finden Ihr SQL Data Warehouse in Ihrem Dashboard unter den SQL-Datenbanken oder in der Ressourcengruppe, mit der Sie es erstellt haben. 
-   
+2. Warten Sie einige Minuten. Wenn Ihre Data Warehouse-Instanz bereit ist, wird wieder das [Azure-Portal](https://portal.azure.com)angezeigt. Sie finden Ihr SQL Data Warehouse in Ihrem Dashboard unter den SQL-Datenbanken oder in der Ressourcengruppe, mit der Sie es erstellt haben.
+
     ![Portalansicht](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
 [!INCLUDE [SQL Database create server](../../includes/sql-database-create-new-server-firewall-portal.md)]
@@ -82,12 +82,12 @@ Firewall-Regeln können auch mithilfe von Transact-SQL konfiguriert werden. Weit
 Außerdem sollten Sie sich mit den [bewährten Methoden][bewährten Methoden] vertraut machen.
 
 <!--Article references-->
-[Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
+[Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
 [Erstellen einer neuen SQL-Datenbank und Ausführen gängiger Datenbankeinrichtungsaufgaben mithilfe von PowerShell-Cmdlets]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [resource groups]: ../resource-group-template-deploy-portal.md
 [bewährten Methoden]: sql-data-warehouse-best-practices.md
 [DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
-[subscription]: ../azure-glossary-cloud-terminology.md#subscription
+[Abonnement]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
 [T-SQL]: ./sql-data-warehouse-get-started-create-database-tsql.md
 
@@ -102,7 +102,6 @@ Außerdem sollten Sie sich mit den [bewährten Methoden][bewährten Methoden] ve
 
 
 
-
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

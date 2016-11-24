@@ -16,23 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: sewhee
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 616fa3b45f8b6f7f799eeacfb1f609a1031d24f5
-
+ms.sourcegitcommit: 7d8eb43fea032eb5aa72f448a7c1022be62a7b81
+ms.openlocfilehash: 5a0a701638950e750a9aac104845ef1a7248760a
 
 ---
+
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>Erstellen eines internen Lastenausgleichs über das Azure-Portal
-[!INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
+
+> [!div class="op_single_selector"]
+> * [Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
+> * [Vorlage](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
-
-[Klassisches Bereitstellungsmodell](load-balancer-get-started-ilb-classic-ps.md).
+> [!NOTE]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](load-balancer-get-started-ilb-classic-ps.md) empfohlen wird.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 ## <a name="get-started-creating-an-internal-load-balancer-using-azure-portal"></a>Erste Schritte zum Erstellen eines internen Lastenausgleich mit dem Azure-Portal
+
 Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen internen Lastenausgleich zu erstellen:
 
 1. Öffnen Sie einen Browser, navigieren Sie zum [Azure-Portal](http://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
@@ -40,32 +45,33 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen internen
 3. Geben Sie auf dem Blatt **Lastenausgleich erstellen** einen **Namen** für den Lastenausgleich ein.
 4. Klicken Sie unter **Schema** auf **Intern**.
 5. Klicken Sie auf **Virtuelles Netzwerk**, und wählen Sie dann das virtuelle Netzwerk aus, in dem Sie den Lastenausgleich erstellen möchten.
-   
+
    > [!NOTE]
    > Wenn das virtuelle Netzwerk, das Sie verwenden möchten, nicht angezeigt wird, überprüfen Sie den **Speicherort** , den Sie für den Lastenausgleich verwenden, und ändern Sie ihn entsprechend.
-   > 
-   > 
+
 6. Klicken Sie auf **Subnetz**, und wählen Sie dann das Subnetz aus, in dem Sie den Lastenausgleich erstellen möchten.
 7. Klicken Sie unter **IP-Adresszuweisung** auf **Dynamisch** oder **Statisch**, je nachdem, ob die IP-Adresse für den Lastenausgleich fest (statisch) sein soll.
-   
+
    > [!NOTE]
    > Wenn Sie eine statische IP-Adresse verwenden möchten, müssen Sie eine Adresse für den Lastenausgleich angeben.
-   > 
-   > 
+
 8. Geben Sie unter **Ressourcengruppe** den Namen einer neuen Ressourcengruppe für den Lastenausgleich ein, oder klicken Sie auf **Vorhandene auswählen**, und wählen Sie eine vorhandene Ressourcengruppe aus.
 9. Klicken Sie auf **Erstellen**.
 
 ## <a name="configure-load-balancing-rules"></a>Konfigurieren von Lastenausgleichsregeln
+
 Navigieren Sie nach der Erstellung des Lastenausgleichs zur Lastenausgleichsressource, um sie zu konfigurieren.
 Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor Sie eine Lastenausgleichsregel konfigurieren.
 
-### <a name="step-1-configure-a-backend-pool"></a>Schritt 1: Konfigurieren eines Back-End-Pools
+### <a name="step-1-configure-a-back-end-pool"></a>Schritt 1: Konfigurieren eines Back-End-Pools
+
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Back-End-Pools**.
 3. Klicken Sie auf dem Blatt **Back-End-Adresspools** auf **Hinzufügen**.
 4. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** einen **Namen** für den Back-End-Pool ein, und klicken Sie dann auf **OK**.
 
 ### <a name="step-2-configure-a-probe"></a>Schritt 2: Konfigurieren eines Tests
+
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Tests**.
 3. Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
@@ -78,6 +84,7 @@ Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor
 10. Klicken Sie zum Erstellen des Tests auf **OK** .
 
 ### <a name="step-3-configure-load-balancing-rules"></a>Schritt 3: Konfigurieren von Lastenausgleichsregeln
+
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule**, und klicken Sie dann auf den Lastenausgleich, den Sie soeben erstellt haben.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Lastenausgleichsregeln**.
 3. Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
@@ -92,6 +99,7 @@ Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor
 12. Klicken Sie auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)

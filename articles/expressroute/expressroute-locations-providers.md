@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/02/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 86b7d396307761acb8baee5761f08a3e1120cddc
+ms.sourcegitcommit: 53a301bd501f223aa8489ba6592c8428c1fcd530
+ms.openlocfilehash: 877a70c162f23ced4606ee8a5c51db5e4eeaa89a
 
 
 ---
@@ -28,7 +28,10 @@ ExpressRoute wird in allen Azure-Regionen und an allen Standorten unterstützt. 
 
 ![Standortkarte][0]
 
-Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen Region eine Verbindung hergestellt haben, haben Sie Zugriff auf die Azure-Dienste in allen Regionen dieser geopolitischen Region. Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
+Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen Region eine Verbindung hergestellt haben, haben Sie Zugriff auf die Azure-Dienste in allen Regionen dieser geopolitischen Region. 
+
+### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region
+Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
 
 | **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
 | --- | --- | --- |
@@ -40,6 +43,7 @@ Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen
 | **Australien** |Südostaustralien, Ostaustralien |Melbourne, Sydney |
 | **Indien** |Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Mumbai |
 
+### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Regionen und geopolitische Grenzen für nationale Clouds
 In der folgenden Tabelle finden Sie Informationen zu Regionen und geopolitischen Grenzen für nationale Clouds.
 
 | **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
@@ -50,10 +54,10 @@ In der folgenden Tabelle finden Sie Informationen zu Regionen und geopolitischen
 
 Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standard-SKU nicht unterstützt. Sie müssen das ExpressRoute Premium-Add-On aktivieren, um Unterstützung für globale Konnektivität zu erhalten. Verbindungen mit nationalen Cloudumgebungen werden nicht unterstützt. Wenden Sie sich an Ihren Konnektivitätsanbieter, wenn Sie derartige Verbindungen implementieren möchten.
 
-## <a name="connectivity-provider-locations"></a>Standorte von Konnektivitätsanbietern
+## <a name="a-namelocationsaconnectivity-provider-locations"></a><a name="locations"></a>Standorte von Konnektivitätsanbietern
 > [!div class="op_single_selector"]
-> [Standorte nach Anbieter](expressroute-locations.md#connectivity-provider-locations)
-> [Standorte nach Anbieter](expressroute-locations-providers.md#connectivity-provider-locations)
+> * [Standorte nach Anbieter](expressroute-locations.md#locations)
+> * [Anbieter nach Standort](expressroute-locations-providers.md#locations)
 > 
 > 
 
@@ -89,7 +93,8 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
  **+** steht für "In Kürze"
 
 ### <a name="national-cloud-environments"></a>Nationale Cloudumgebungen
-#### <a name="us-government-cloud"></a>US-Government Cloud
+
+### <a name="us-government-cloud"></a>US-Government Cloud
 | **Standort** | **Service Providers** |
 | --- | --- |
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
@@ -97,7 +102,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **New York** |Equinix, Level 3 Communications+, Verizon |
 | **Washington DC** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 
-#### <a name="china"></a>China
+### <a name="china"></a>China
 | **Standort** | **Service Providers** |
 | --- | --- |
 | **Peking** |China Telecom |
@@ -105,7 +110,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 
 Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressroute/)
 
-#### <a name="germany"></a>Deutschland
+### <a name="germany"></a>Deutschland
 | **Standort** | **Service Providers** |
 | --- | --- |
 | **Berlin** |Colt+, e-shelter |
@@ -153,6 +158,6 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,22 +1,22 @@
 ---
 title: Erste Schritte mit Relay-Hybridverbindungen | Microsoft Docs
 description: "Gewusst wie: Schreiben einer Node-Konsolenanwendung für Hybridverbindungen"
-services: service-bus
+services: service-bus-relay
 documentationcenter: node
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 10/28/2016
-ms.author: jotaub
+ms.author: jotaub,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f59faed2edb75e32ea62fa7f1d7013da5f387d8
+ms.sourcegitcommit: e26b6005116c7aacdf42afea6ea39e100a9d8080
+ms.openlocfilehash: 218082e4cedba2c11871d47bcfb7b92688d97f04
 
 
 ---
@@ -75,6 +75,6 @@ Glückwunsch! Sie haben eine Anwendung für End-to-End-Hybridverbindungen erstel
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

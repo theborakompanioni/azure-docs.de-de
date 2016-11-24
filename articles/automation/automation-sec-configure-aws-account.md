@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2016
+ms.date: 11/11/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 00b217a4cddac0a893564db27ffb4f460973c246
-ms.openlocfilehash: eee65672b3a9615afe2850b0cbc6daa275fc04ec
+ms.sourcegitcommit: 843f0862f9e4d8dc1d40e110710e48ad66716168
+ms.openlocfilehash: fe590e7fc551c175d2f41f5b98e1558a756df806
 
 
 ---
@@ -32,7 +32,7 @@ Zum Authentifizieren mit AWS müssen Sie einen Satz mit AWS-Anmeldeinformationen
 ## <a name="configure-automation-account"></a>Konfigurieren des Automation-Kontos
 Damit Azure Automation mit AWS kommunizieren kann, müssen Sie zuerst Ihre AWS-Anmeldeinformationen abrufen und als Ressourcen in Azure Automation speichern.  Führen Sie die folgenden Schritte aus, die im AWS-Dokument [Managing Access Keys for your AWS Account](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) (Verwalten von Zugriffsschlüsseln für Ihr AWS-Konto) enthalten sind, um einen Zugriffsschlüssel zu erstellen und die **Zugriffsschlüssel-ID** und den **geheimen Zugriffsschlüssel** zu kopieren (optional können Sie auch die Schlüsseldatei herunterladen und an einem sicheren Ort speichern).
 
-Nachdem Sie Ihre AWS-Sicherheitsschlüssel erstellt und kopiert haben, müssen Sie ein Anmeldeinformationsobjekt mit einem Azure Automation-Konto erstellen, um sie sicher zu speichern und in den Runbooks darauf verweisen zu können.  Führen Sie die Schritte im Abschnitt **Erstellen eines neuen Anmeldeinformationsobjekts** im Artikel [Anmeldeinformationsobjekte in Azure Automation](automation-credentials.md#creating-a-new-credential-asset) aus, und geben Sie die folgenden Informationen ein:
+Nachdem Sie Ihre AWS-Sicherheitsschlüssel erstellt und kopiert haben, müssen Sie ein Anmeldeinformationsobjekt mit einem Azure Automation-Konto erstellen, um sie sicher zu speichern und in den Runbooks darauf verweisen zu können.  Führen Sie die Schritte im Abschnitt **Erstellen eines neuen Anmeldeinformationsobjekts** im Artikel [Anmeldeinformationsobjekte in Azure Automation](automation-credentials.md) aus, und geben Sie die folgenden Informationen ein:
 
 1. Geben Sie im Feld **Name** den Wert **AWScred** oder einen anderen geeigneten Wert gemäß Ihren Benennungsvorgaben ein.  
 2. Geben Sie im Feld **Benutzername** Ihre **Zugriffs-ID** und im Feld **Kennwort** bzw. **Kennwort bestätigen** den **geheimen Zugriffsschlüssel** ein.   
@@ -42,6 +42,7 @@ Nachdem Sie Ihre AWS-Sicherheitsschlüssel erstellt und kopiert haben, müssen S
 
 
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,12 +15,12 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 7450400920517bed56f608fd74c62238f2fb9eab
+ms.sourcegitcommit: bfc8a774ebaaae7dbf1018614681134a5b10a769
+ms.openlocfilehash: 7938e0c2f0363bcce51375ddab9c68e8e8068186
 
 
 ---
-# <a name="tutorial-develop-usql-scripts-using-data-lake-tools-for-visual-studio"></a>Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
+# <a name="tutorial-develop-u-sql-scripts-using-data-lake-tools-for-visual-studio"></a>Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und zum Schreiben und Testen von U-SQL-Skripts verwenden.
@@ -72,7 +72,7 @@ Falls Sie Ihre eigenen Daten verwenden möchten, können Sie die hier angegebene
 4. Navigieren Sie zu dem Ordner, in den Sie die Dateien hochladen möchten.
 5. Klicken Sie mit der rechten Maustaste auf einen leeren Bereich, und klicken Sie dann auf **Hochladen**.
 
-## <a name="develop-usql-scripts"></a>Entwickeln eines U-SQL-Skripts
+## <a name="develop-u-sql-scripts"></a>Entwickeln eines U-SQL-Skripts
 Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weitere Informationen zu U-SQL finden Sie unter [Erste Schritte mit der Sprache U-SQL](data-lake-analytics-u-sql-get-started.md) und in der [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348) (in englischer Sprache).
 
 **So erstellen und übermitteln Sie einen Data Lake Analytics-Auftrag**
@@ -195,7 +195,7 @@ Mithilfe der Auftragswiedergabe können Sie den Status der Auftragsausführung v
 ### <a name="heat-map"></a>Wärmebild
 In den Data Lake-Tools für Visual Studio werden auswählbare Farbüberlagerungen für die Auftragsanzeige bereitgestellt, um Status, Ein-/Ausgang von Daten, Ausführungszeit, E/A-Durchsatz für jede Phase anzeigen zu können. So können Benutzer potenzielle Probleme und die Verteilung von Auftragseigenschaften direkt und intuitiv ermitteln. Sie können eine anzuzeigende Datenquelle in der Dropdownliste auswählen.  
 
-## <a name="run-usql-locally"></a>Lokales Ausführen von U-SQL
+## <a name="run-u-sql-locally"></a>Lokales Ausführen von U-SQL
 Mithilfe der U-SQL-Oberfläche zum lokalen Ausführen in Visual Studio können Sie Folgendes:
 
 * U-SQL-Skripts zusammen mit C#-Assemblys lokal ausführen
@@ -225,7 +225,7 @@ Das folgende Video veranschaulicht das Feature zum lokalen Ausführen von U-SQL:
 
     Bei Skripts, die im Data Lake-Dienst ausgeführt werden, wird das Standardspeicherkonto als Stammordner verwendet und dementsprechend durchsucht.
 
-### <a name="test-usql-scripts-locally"></a>Lokales Testen von U-SQL-Skripts
+### <a name="test-u-sql-scripts-locally"></a>Lokales Testen von U-SQL-Skripts
 Anleitungen zur Entwicklung von U-SQL-Skripts finden Sie unter [Entwickeln eines U-SQL-Skripts](#develop-and-test-u-sql-scripts). Wählen Sie zum lokalen Erstellen und Ausführen von U-SQL-Skripts in der Cluster-Dropdownliste **(Lokal)** aus, und klicken Sie dann auf **Senden**. Stellen Sie sicher, dass Sie auf die richtigen Daten verweisen – verweisen Sie entweder auf den absoluten Pfad, oder legen Sie die Daten im Ordner „DataRoot“ ab.
 
 ![Lokales Senden von Visual Studio-U-SQL-Projekten](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
@@ -255,7 +255,10 @@ Das folgende Verfahren funktioniert nur in Visual Studio 2015. In älteren Versi
 1. Erstellen Sie ein C#-Assemblyprojekt, und erstellen Sie es, um die Ausgabe-DLL zu generieren.
 2. Registrieren Sie die DLL mithilfe einer U-SQL-Anweisung:
 
-     CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+    ```
+    CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+    ```
+    
 3. Legen Sie Haltepunkte im C#-Code fest.
 4. Drücken Sie **F5** , um das Skript mit Verweis auf die C#-DLL lokal zu debuggen.  
 
@@ -274,7 +277,7 @@ Weitere Themen zur Entwicklung:
 * [Erste Schritte mit Azure Data Lake Analytics-U-SQL-Sprache](data-lake-analytics-u-sql-get-started.md)
 * [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-## <a name="appxa-powershell-sample-for-preparing-the-tutorial"></a>Anhang A: PowerShell-Beispiel zur Vorbereitung des Tutorials
+## <a name="appx-a-powershell-sample-for-preparing-the-tutorial"></a>Anhang A: PowerShell-Beispiel zur Vorbereitung des Tutorials
 Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto und die Quelldaten für Sie vorbereitet, sodass Sie zu [Entwickeln von U-SQL-Skripts](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts)springen können.
 
     #region - used for creating Azure service names
@@ -347,6 +350,6 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 

@@ -15,12 +15,12 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) unter http://portal.azure.com/ an.
+1. Melden Sie sich unter „http://portal.azure.com/“ beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im linken Banner auf **ALLE DURCHSUCHEN**. Das Blatt **Durchsuchen** wird angezeigt.
 3. Scrollen Sie und klicken Sie auf **SQL-Server**. Das Blatt **SQL-Server** wird angezeigt.
    
     ![Suchen Sie Ihren Azure SQL-Datenbankserver im Portal][b21-FindServerInPortal]
-4. Der Einfachheit halber klicken Sie auf das Minimieren-Steuerelement im früheren Blatt **Durchsuchen**.
+4. Der Einfachheit halber klicken Sie auf das Minimieren-Steuerelement im früheren Blatt **Durchsuchen** .
 5. Geben Sie im Filtertextfeld zunächst den Namen des Servers ein. Die Zeile wird angezeigt.
 6. Klicken Sie auf die Zeile für den Server. Ein Blatt für den Server wird angezeigt.
 7. Klicken Sie auf dem Serverblatt auf **Einstellungen**. Das Blatt **Einstellungen** wird angezeigt.
@@ -52,4 +52,7 @@ includes/sql-database-include-ip-address-22-v12portal.md
 ? includes/sql-database-include-ip-address-*.md
 -->
 
-<!---HONumber=AcomDC_0330_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

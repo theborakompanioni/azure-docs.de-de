@@ -21,12 +21,15 @@ Für mehr Kontrolle über die Bereitstellung können Sie das Standardskript für
     \.deployment
     \deploy.cmd
 
-Sie können die [Azure-Befehlszeilenschnittstelle][Azure-Befehlszeilenschnittstelle] verwenden, um die Dateien zu erstellen. Verwenden Sie diesen Befehl vom Projektordner aus:
+Sie können die [Azure-Befehlszeilenschnittstelle][Azure-Befehlszeilenschnittstelle] verwenden, um die Dateien zu erstellen.  Verwenden Sie diesen Befehl vom Projektordner aus:
 
     azure site deploymentscript --python
 
-Wenn diese Dateien nicht vorhanden sind, wird von Azure ein temporäres Bereitstellungsskript erstellt und ausgeführt. Es ist identisch mit dem, das Sie mit dem oben aufgeführten Befehl erstellen.
+Wenn diese Dateien nicht vorhanden sind, wird von Azure ein temporäres Bereitstellungsskript erstellt und ausgeführt.  Es ist identisch mit dem, das Sie mit dem oben aufgeführten Befehl erstellen.
 
 [Azure-Befehlszeilenschnittstelle]: http://azure.microsoft.com/downloads/
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

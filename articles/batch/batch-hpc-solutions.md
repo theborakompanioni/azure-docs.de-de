@@ -15,8 +15,8 @@ ms.workload: big-compute
 ms.date: 07/27/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6a91c56d774ea81e175fa170e09b39548c6ae4d2
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 87f8b1651ea429663c621a64d7f668a175fa675f
 
 
 ---
@@ -87,10 +87,10 @@ Im Anschluss finden Sie weitere Informationen zu den Compute-, Daten- und Netzwe
 > 
 
 ### <a name="compute-services"></a>Compute Services
-Azure Compute Services sind das Kernstück einer Big Compute-Lösung, und die verschiedenen Dienste bieten Vorteile für verschiedene Szenarien. Diese Dienste bieten grundsätzlich verschiedene Modi für die Ausführung von Anwendungen auf VM-basierten Compute-Instanzen, die Azure auf der Grundlage der Windows Server Hyper-V-Technologie bereitstellt. Diese Instanzen können standardmäßige und angepasste Linux- und Windows-Betriebssysteme und -Tools ausführen. Azure bietet eine Auswahl [verschiedener Instanzgrößen](../virtual-machines/virtual-machines-windows-sizes.md) mit unterschiedlichen Konfigurationen für Prozessorkerne, Arbeitsspeicher, Festplattenkapazität und andere Merkmale. Bei Bedarf können Sie die Instanzen auf Tausende von Prozessorkernen hoch- und anschließend wieder herunterskalieren, wenn Sie nicht mehr so viele Ressourcen benötigen.
+Azure Compute Services sind das Kernstück einer Big Compute-Lösung, und die verschiedenen Dienste bieten Vorteile für verschiedene Szenarien. Diese Dienste bieten grundsätzlich verschiedene Modi für die Ausführung von Anwendungen auf VM-basierten Compute-Instanzen, die Azure auf der Grundlage der Windows Server Hyper-V-Technologie bereitstellt. Diese Instanzen können standardmäßige und angepasste Linux- und Windows-Betriebssysteme und -Tools ausführen. Azure bietet eine Auswahl [verschiedener Instanzgrößen](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) mit unterschiedlichen Konfigurationen für Prozessorkerne, Arbeitsspeicher, Festplattenkapazität und andere Merkmale. Bei Bedarf können Sie die Instanzen auf Tausende von Prozessorkernen hoch- und anschließend wieder herunterskalieren, wenn Sie nicht mehr so viele Ressourcen benötigen.
 
 > [!NOTE]
-> Nutzen Sie die rechenintensiven Azure-Instanzen, um die Leistung und Skalierbarkeit von HPC-Workloads zu verbessern. Hierzu zählen auch parallele MPI-Anwendungen, die ein Anwendungsnetzwerk mit geringer Latenz und hohem Durchsatz erfordern. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md).  
+> Nutzen Sie die rechenintensiven Azure-Instanzen, um die Leistung und Skalierbarkeit von HPC-Workloads zu verbessern. Hierzu zählen auch parallele MPI-Anwendungen, die ein Anwendungsnetzwerk mit geringer Latenz und hohem Durchsatz erfordern. Weitere Informationen finden Sie unter [Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
 > 
 > 
 

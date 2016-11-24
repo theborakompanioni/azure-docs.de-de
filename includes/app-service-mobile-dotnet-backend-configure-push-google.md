@@ -1,12 +1,12 @@
-Nutzen Sie das Ihrem Back-End-Projekttyp entsprechende Verfahren: entweder [.NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs).
+Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp&mdash; – entweder [.NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs).
 
-### <a name="dotnet"></a>.NET-Back-End-Projekt
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, und klicken Sie auf **NuGet-Pakete verwalten**, und suchen Sie nach `Microsoft.Azure.NotificationHubs`. Klicken Sie anschließend auf **Installieren**. Dadurch wird die Notification Hubs-Clientbibliothek installiert.
+### <a name="a-namedotnetanet-backend-project"></a><a name="dotnet"></a>.NET-Back-End-Projekt
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, klicken Sie auf **NuGet-Pakete verwalten**, und suchen Sie nach `Microsoft.Azure.NotificationHubs`. Klicken Sie anschließend auf **Installieren**. Dadurch wird die Notification Hubs-Clientbibliothek installiert.
 2. Öffnen Sie im Ordner „Controller“ die Datei „TodoItemController.cs“, und fügen Sie die folgenden `using`-Anweisungen hinzu:
    
         using Microsoft.Azure.Mobile.Server.Config;
         using Microsoft.Azure.NotificationHubs;
-3. Ersetzen Sie die `PostTodoItem`-Methode durch den folgenden Code:
+3. Ersetzen Sie die `PostTodoItem` -Methode durch den folgenden Code:  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
@@ -27,7 +27,7 @@ Nutzen Sie das Ihrem Back-End-Projekttyp entsprechende Verfahren: entweder [.NET
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
             // Android payload
-            var androidNotificationPayload = "{ "data" : {"message":"" + item.Text + ""}}";
+            var androidNotificationPayload = "{ \"data\" : {\"message\":\"" + item.Text + "\"}}";
 
             try
             {
@@ -48,8 +48,8 @@ Nutzen Sie das Ihrem Back-End-Projekttyp entsprechende Verfahren: entweder [.NET
 
 1. Veröffentlichen Sie das Serverprojekt erneut.
 
-### <a name="nodejs"></a>Node.js-Back-End-Projekt
-1. Falls nicht bereits geschehen, [laden Sie das Schnellstartprojekt herunter](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) oder verwenden Sie den [Online-Editor im Azure-Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
+### <a name="a-namenodejsanodejs-backend-project"></a><a name="nodejs"></a>Node.js-Back-End-Projekt
+1. Falls nicht bereits geschehen, [laden Sie das Schnellstartprojekt herunter](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), oder verwenden Sie den [Online-Editor im Azure-Portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
 2. Ersetzen Sie den bestehenden Code in der Datei „todoitem.js“ durch den folgenden Code:
    
         var azureMobileApps = require('azure-mobile-apps'),
@@ -95,7 +95,11 @@ Nutzen Sie das Ihrem Back-End-Projekttyp entsprechende Verfahren: entweder [.NET
    
         module.exports = table;  
    
-    Damit wird eine GCM-Benachrichtigung gesendet, die „item.text“ enthält, wenn ein neues Todo-Element eingefügt wird.
-3. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.
+    Damit wird eine GCM-Benachrichtigung gesendet, die „item.text“ enthält, wenn ein neues Todo-Element eingefügt wird. 
+3. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut. 
 
-<!---HONumber=AcomDC_1223_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

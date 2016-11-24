@@ -1,6 +1,6 @@
 ---
-title: Was ist eine Netzwerksicherheitsgruppe (NSG)?
-description: Erfahren Sie mehr zur verteilten Firewall in Azure mit Netzwerksicherheitsgruppen (NSGs) und zur Verwendung von NSGs zum Isolieren und Steuern von Datenverkehr in Ihren virtuellen Netzwerken (VNets).
+title: Netzwerksicherheitsgruppen | Microsoft Docs
+description: Es wird beschrieben, wie Sie den Flow des Datenverkehrs in Ihren virtuellen Netzwerken isolieren und steuern, indem Sie die verteilte Firewall in Azure und Netzwerksicherheitsgruppen verwenden.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 92ba745915c4b496ac6b0ff3b3e25f6611f5707c
+ms.sourcegitcommit: c3b96b583260bc8975082b952929d524e4040730
+ms.openlocfilehash: ba8bfc32b6662f629fc2203f605f8d9f51b3b559
 
 
 ---
-# <a name="what-is-a-network-security-group-nsg"></a>Was ist eine Netzwerksicherheitsgruppe (NSG)?
-Eine Netzwerksicherheitsgruppe (NSG) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerkwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einer einzelnen virtuellen Maschine weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
+# <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
+
+Eine Netzwerksicherheitsgruppe (NSG) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einer einzelnen virtuellen Maschine weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
+
+> [!NOTE]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung beider Modelle, Microsoft empfiehlt jedoch für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 ## <a name="nsg-resource"></a>NSG-Ressource
 NSGs haben die folgenden Eigenschaften:
@@ -36,10 +40,9 @@ NSGs haben die folgenden Eigenschaften:
 > [!NOTE]
 > Endpunktbasierte ACLs und Netzwerksicherheitsgruppen können nicht für die gleiche VM-Instanz verwendet werden. Wenn Sie eine NSG verwenden möchten und bereits eine Endpunkt-ACL eingerichtet ist, entfernen Sie zuerst die Endpunkt-ACL. Informationen zur Vorgehensweise finden Sie unter [Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell](virtual-networks-acl-powershell.md).
 > 
-> 
 
 ### <a name="nsg-rules"></a>NSG-Regeln
-NSG-Regeln haben die folgenden Eigenschaften:
+NSG-Regeln enthalten die folgenden Eigenschaften:
 
 | Eigenschaft | Beschreibung | Einschränkungen | Überlegungen |
 | --- | --- | --- | --- |
@@ -90,37 +93,27 @@ Wie in den folgenden Standardregeln zu sehen, wird Datenverkehr aus einem bzw. i
 ## <a name="associating-nsgs"></a>Zuordnen von NSGs
 Je nach verwendetem Bereitstellungsmodell können Sie eine NSG einem virtuellen Computer, Netzwerkkarten (NICs) und Subnetzen zuordnen.
 
-[!INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
-
 * **Zuordnen einer NSG zu einem virtuellen Computer (nur klassische Bereitstellungen).**  Wenn Sie eine NSG einem virtuellen Computer zuordnen, werden die Netzwerkzugriffsregeln in der NSG auf jeglichen Datenverkehr angewendet, der für den virtuellen Computer bestimmt ist oder diesen verlässt. 
 * **Zuordnen einer NSG zu einer Netzwerkkarte (nur Ressourcen-Manager-Bereitstellungen).**  Wenn Sie eine NSG zu einer Netzwerkkarte zuordnen, werden die Netzwerkzugriffsregeln in der NSG nur auf diese Netzwerkkarte angewendet. Für einen virtuellen Computer mit mehreren Netzwerkkarten bedeutet dies, dass sich eine NSG, die auf eine einzelne Netzwerkkarte angewendet wird, nicht auf die anderen Netzwerkkarten auswirkt. 
 * **Zuordnen einer NSG zu einem Subnetz (alle Bereitstellungen)**. Wenn Sie eine NSG einem Subnetz zuordnen, werden die Netzwerk-Zugriffsregeln in der NSG auf alle IaaS- und PaaS-Ressourcen im Subnetz angewendet. 
 
-Sie können verschiedene NSGs einem virtuellen Computer (oder einer Netzwerkkarte, abhängig vom Bereitstellungsmodell) und dem Subnetz zuordnen, an das eine Netzwerkkarte oder ein virtueller Computer gebunden ist. In diesem Fall werden alle Netzwerkzugriffsregeln gemäß Ihrer Priorität in der NSG auf den Datenverkehr angewendet, und zwar in der folgenden Reihenfolge:
+Sie können verschiedene NSGs einem virtuellen Computer (oder einer Netzwerkkarte, abhängig vom Bereitstellungsmodell) und dem Subnetz zuordnen, an das eine Netzwerkkarte oder ein virtueller Computer gebunden ist. In diesem Fall werden alle Netzwerkzugriffsregeln in der Reihenfolge Ihrer Priorität in der NSG auf den Datenverkehr angewendet:
 
-* **Eingehender Datenverkehr**
-  
-  1. Auf das Subnetz angewendete NSG 
-     
-     Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
-  2. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch) 
-     
-     Wenn die NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket auf dem virtuellen Computer/der Netzwerkkarte abgelegt, auch wenn die Subnetz-NSG über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
-* **Ausgehender Datenverkehr**
-  
-  1. Auf die Netzwerkkarte angewendete NSG (Ressourcen-Manager) oder auf den virtuellen Computer angewendete NSG (klassisch) 
-     
-     Wenn eine NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt.
-  2. Auf das Subnetz angewendete NSG
-     
-     Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket hier abgelegt, auch wenn die NSG für den virtuelle Computer/die Netzwerkkarte über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
-     
-      ![NSG-ACLs](./media/virtual-network-nsg-overview/figure2.png)
+- **Eingehender Datenverkehr**
+
+  1. **Auf das Subnetz angewendete NSG**: Wenn eine Subnetz-NSG über eine Abgleichsregel zum Ablehnen von Datenverkehr verfügt, wird das Paket verworfen.
+
+  2. **Auf die Netzwerkkarte angewendete NSG** (Resource Manager) oder auf den virtuellen Computer angewendete NSG (klassisch): Wenn die NSG für den virtuellen Computer/die Netzwerkkarte über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket auch dann auf dem virtuellen Computer/der Netzwerkkarte abgelegt, wenn die Subnetz-NSG über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
+
+- **Ausgehender Datenverkehr**
+
+  1. **Auf die Netzwerkkarte angewendete NSG** (Resource Manager) oder auf den virtuellen Computer angewendete NSG (klassisch): Wenn die NSG für den virtuellen Computer/die Netzwerkkarte über eine Abgleichsregel zum Ablehnen von Datenverkehr verfügt wird das Paket verworfen.
+
+  2. **Auf das Subnetz angewendete NSG**: Wenn eine Subnetz-NSG über eine Abgleichsregel zum Verweigern von Datenverkehr verfügt, wird das Paket auch dann hier abgelegt, wenn die NSG für den virtuellen Computer/die Netzwerkkarte über eine Abgleichsregel zum Zulassen von Datenverkehr verfügt.
 
 > [!NOTE]
 > Sie können einem Subnetz, einem virtuellen Computer oder einer Netzwerkkarte zwar nur eine einzelne NSG zuordnen, Sie können eine solche NSG aber beliebig vielen Ressourcen zuordnen.
-> 
-> 
+>
 
 ## <a name="implementation"></a>Implementierung
 Sie können NSGs mit den verschiedenen unten aufgeführten Tools im klassischen oder im Ressourcen-Manager-Bereitstellungsmodell implementieren.
@@ -133,12 +126,14 @@ Sie können NSGs mit den verschiedenen unten aufgeführten Tools im klassischen 
 | Azure-Befehlszeilenschnittstelle |[![Ja][grün]](virtual-networks-create-nsg-classic-cli.md) |[![Ja][grün]](virtual-networks-create-nsg-arm-cli.md) |
 | ARM-Vorlage |![Nein](./media/virtual-network-nsg-overview/red.png) |[![Ja][grün]](virtual-networks-create-nsg-arm-template.md) |
 
-| **Schlüssel** | ![Ja](./media/virtual-network-nsg-overview/green.png)  Unterstützt. | ![Nein](./media/virtual-network-nsg-overview/red.png)  Nicht unterstützt. |
-| --- | --- | --- |
-|  | | |
+**Schlüssel**
+
+![Ja](./media/virtual-network-nsg-overview/green.png)  Unterstützt.
+
+![Nein](./media/virtual-network-nsg-overview/red.png)  Nicht unterstützt.
 
 ## <a name="planning"></a>Planung
-Bevor Sie NSGs implementieren, müssen Sie folgende Fragen beantworten:    
+Bevor Sie NSGs implementieren, müssen Sie folgende Fragen beantworten:
 
 1. Für welche Arten von Ressourcen möchten Sie eingehenden oder ausgehenden Datenverkehr filtern (für Netzwerkkarten in demselben virtuellen Computer, für virtuelle Computer oder andere Ressourcen wie Clouddienste oder Anwendungsdienstumgebungen, die mit demselben Subnetz verbunden sind, oder für Datenverkehr zwischen Ressourcen, die mit verschiedenen Subnetzen verbunden sind)?
 2. Sind die Ressourcen, für die Sie eingehenden oder ausgehenden Datenverkehr filtern möchten, mit Subnetzen in vorhandenen VNETs verbunden, oder werden sie mit neuen VNETs oder Subnetzen verbunden?
@@ -276,6 +271,6 @@ Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

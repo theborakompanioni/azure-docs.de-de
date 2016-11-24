@@ -1,30 +1,31 @@
 <!--author=alkohli last changed: 03/17/16-->
 
-#### So laden Sie Hotfixes herunter
+#### <a name="to-download-hotfixes"></a>So laden Sie Hotfixes herunter
 Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft Update-Katalog herunterzuladen.
 
 1. Starten Sie Internet Explorer, und navigieren Sie zu [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
-2. Falls Sie den Microsoft Update-Katalog zum ersten Mal auf diesem Computer verwenden, klicken Sie auf **Installieren**, wenn Sie zum Installieren des Add-Ons für den Microsoft Update-Katalog aufgefordert werden. ![Katalog installieren](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
+2. Falls Sie den Microsoft Update-Katalog zum ersten Mal auf diesem Computer verwenden, klicken Sie auf **Installieren** , wenn Sie zum Installieren des Add-Ons für den Microsoft Update-Katalog aufgefordert werden.
+    ![Katalog installieren](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 3. Geben Sie im Suchfeld des Microsoft Update-Katalogs die KB-Nummer des Hotfixes ein, den Sie herunterladen möchten (beispielsweise **3121901**), und klicken Sie anschließend auf **Suchen**.
    
-    Die Hotfix-Auflistung wird angezeigt, z.B. das **kumulative Softwarepaket-Update 2.0 für die StorSimple 8000-Serie**.
+    Die Hotfixauflistung wird angezeigt, z.B. das **kumulative Softwarepaket-Update 2.0 für die StorSimple 8000-Serie**.
    
     ![Katalog durchsuchen](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 4. Klicken Sie auf **Hinzufügen**. Das Update wird dem Warenkorb hinzugefügt.
 5. Suchen Sie nach weiteren Hotfixes aus der obigen Tabelle (**3121900**, **3080728**, **3090322** und **3121899**), und fügen Sie sie jeweils dem Warenkorb hinzu.
 6. Klicken Sie auf **Warenkorb anzeigen**.
-7. Klicken Sie auf **Download**. Geben Sie einen lokalen Speicherort an, oder klicken Sie auf **Durchsuchen**, und navigieren Sie zum gewünschten lokalen Speicherort für den Download. Die Updates werden heruntergeladen und am angegebenen Speicherort in einem nach dem Update benannten Unterordner gespeichert. Der Ordner kann auch in eine Netzwerkfreigabe kopiert werden, auf die vom Gerät aus zugegriffen werden kann.
+7. Klicken Sie auf **Download**. Geben Sie einen lokalen Speicherort an, oder klicken Sie auf **Durchsuchen** , und navigieren Sie zum gewünschten lokalen Speicherort für den Download. Die Updates werden heruntergeladen und am angegebenen Speicherort in einem nach dem Update benannten Unterordner gespeichert. Der Ordner kann auch in eine Netzwerkfreigabe kopiert werden, auf die vom Gerät aus zugegriffen werden kann.
 
 > [!NOTE]
 > Der Zugriff auf die Hotfixes muss über beide Controller möglich sein, um die Erkennung von Fehlermeldungen des Peercontrollers zu ermöglichen.
 > 
 > 
 
-#### So installieren und überprüfen Sie Hotfixes für den normalen Modus
-Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Modus die folgenden Schritte aus. Falls Sie sie bereits über das Azure-Portal installiert haben, fahren Sie mit [Installieren und Überprüfen von Wartungsmodus-Hotfixes](#to-install-and-verify-maintenance-mode-hotfixes) fort.
+#### <a name="to-install-and-verify-regular-mode-hotfixes"></a>So installieren und überprüfen Sie Hotfixes für den normalen Modus
+Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Modus die folgenden Schritte aus. Falls Sie sie bereits über das Azure-Portal installiert haben, fahren Sie mit [Installieren und Überprüfen von Wartungsmodus-Hotfixes](#to-install-and-verify-maintenance-mode-hotfixes)fort.
 
 1. Greifen Sie zum Installieren der Hotfixes über die serielle Konsole Ihres StorSimple-Geräts auf die Windows PowerShell-Benutzeroberfläche zu. Ausführliche Anweisungen dazu finden Sie unter [Verwenden von PuTTy zum Herstellen einer Verbindung mit der seriellen Konsole](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). Drücken Sie bei der Eingabeaufforderung die **Eingabetaste**.
-2. Wählen Sie **Option 1**, um sich mit Vollzugriff beim Gerät anzumelden.
+2. Wählen Sie **Option 1** , um sich mit Vollzugriff beim Gerät anzumelden.
 3. Geben Sie an der Eingabeaufforderung Folgendes ein, um den Hotfix zu installieren:
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -35,50 +36,47 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
    
     Nachfolgend sehen Sie eine Beispielausgabe.
    
-        ````
-        Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
-        \hcsmdssoftwareupdate.exe -Credential contoso\John
-   
-        Confirm
-   
-        This operation starts the hotfix installation and could reboot one or
-        both of the controllers. If the device is serving I/Os, these will not
-        be disrupted. Are you sure you want to continue?
-        [Y] Yes [N] No [?] Help (default is "Y"): Y
-   
-        ````
+    ```
+    Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
+    \hcsmdssoftwareupdate.exe -Credential contoso\John
+
+    Confirm
+
+    This operation starts the hotfix installation and could reboot one or
+    both of the controllers. If the device is serving I/Os, these will not
+    be disrupted. Are you sure you want to continue?
+    [Y] Yes [N] No [?] Help (default is "Y"): Y
+    ```
 4. Geben Sie **Y** ein, um die Hotfixinstallation zu bestätigen.
-5. Überwachen Sie das Update mithilfe des `Get-HcsUpdateStatus`-Cmdlets.
+5. Überwachen Sie das Update mithilfe des `Get-HcsUpdateStatus` -Cmdlets.
    
     Die folgende Beispielausgabe zeigt den Status des Updates. Der Parameter `RunInprogress` ist `True`, wenn das Update ausgeführt wird.
    
-        ````
-        Controller0>Get-HcsUpdateStatus
-        RunInprogress       : True
-        LastHotfixTimestamp : 12/21/2015 10:36:13 PM
-        LastUpdateTimestamp : 12/21/2015 10:35:25 PM
-        Controller0Events   :
-        Controller1Events   :
-        ````
+    ```
+    Controller0>Get-HcsUpdateStatus
+    RunInprogress       : True
+    LastHotfixTimestamp : 12/21/2015 10:36:13 PM
+    LastUpdateTimestamp : 12/21/2015 10:35:25 PM
+    Controller0Events   :
+    Controller1Events   :
+    ```
    
      Die folgende Beispielausgabe zeigt an, dass das Update abgeschlossen ist. Der Parameter `RunInProgress` ist `False`, wenn das Update abgeschlossen ist.
    
-        ````
-        Controller1>Get-HcsUpdateStatus
-   
-        RunInprogress       : False
-        LastHotfixTimestamp : 12/21/2015 10:59:13 PM
-        LastUpdateTimestamp : 12/21/2015 10:35:25 PM
-        Controller0Events   :
-        Controller1Events   :
-   
-        ````
+    ```
+    Controller1>Get-HcsUpdateStatus
+
+    RunInprogress       : False
+    LastHotfixTimestamp : 12/21/2015 10:59:13 PM
+    LastUpdateTimestamp : 12/21/2015 10:35:25 PM
+    Controller0Events   :
+    Controller1Events   :
+    ```
    
    > [!NOTE]
    > In manchen Fällen gibt das Cmdlet `False` zurück, wenn das Update noch ausgeführt wird. Um sicherzustellen, dass das Update abgeschlossen ist, warten Sie einige Minuten, führen Sie diesen Befehl erneut aus, und überprüfen Sie, ob `RunInProgress` gleich `False` ist. Wenn dies der Fall ist, wurde das Hotfix abgeschlossen.
-   > 
-   > 
-6. Wiederholen Sie nach Abschluss des Softwareupdates die Schritte 3 bis 5, um den SaaS-Agent und den MDS-Agent zu installieren und zu überwachen. Stellen Sie vor dem Ausführen von `all-cismdsagentupdatebundle_f98e62f4d56c79e2a6644d027af7a2393a93827a.exe` sicher, dass `all-hcsmdssoftwareupdate_0b438ddf0d5b686aada2378b754fac8c7f2160e9.exe` installiert ist.
+
+6. Wiederholen Sie nach Abschluss des Softwareupdates die Schritte 3 bis 5, um den SaaS-Agent und den MDS-Agent zu installieren und zu überwachen. Stellen Sie vor dem Ausführen von `all-cismdsagentupdatebundle_f98e62f4d56c79e2a6644d027af7a2393a93827a.exe` sicher, dass `all-hcsmdssoftwareupdate_0b438ddf0d5b686aada2378b754fac8c7f2160e9.exe` installiert ist.
 7. Überprüfen Sie die Systemsoftwareversionen. Geben Sie Folgendes ein:
    
     `Get-HcsSystem`
@@ -96,10 +94,10 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
    * Storport-Update – KB3080728
    * Spaceport-Update – KB3090322
 
-#### So installieren und überprüfen Sie Wartungsmodus-Hotfixes
-Verwenden Sie KB3121899, um die Datenträger-Firmwareupdates zu installieren. Es handelt sich dabei um beeinträchtigende Updates, die ca. 30 Minuten dauern. Sie können diese während eines geplanten Wartungsfensters durch Herstellen einer Verbindung mit der seriellen Konsole des Geräts installieren.
+#### <a name="to-install-and-verify-maintenance-mode-hotfixes"></a>So installieren und überprüfen Sie Wartungsmodus-Hotfixes
+Verwenden Sie KB3121899, um die Datenträger-Firmwareupdates zu installieren. Es handelt sich dabei um beeinträchtigende Updates, die ca. 30 Minuten dauern. Sie können diese während eines geplanten Wartungsfensters durch Herstellen einer Verbindung mit der seriellen Konsole des Geräts installieren.
 
-Beachten Sie, dass Sie diese Updates nicht installieren müssen, wenn Ihre Datenträger-Firmware bereits auf dem neuesten Stand ist. Führen Sie das `Get-HcsUpdateAvailability`-Cmdlet über die serielle Gerätekonsole aus, um zu überprüfen, ob Updates verfügbar sind und ob die Updates beeinträchtigend (Wartungsmodus) oder nicht beeinträchtigend (normaler Modus) sind.
+Beachten Sie, dass Sie diese Updates nicht installieren müssen, wenn Ihre Datenträger-Firmware bereits auf dem neuesten Stand ist. Führen Sie das Cmdlet `Get-HcsUpdateAvailability` über die serielle Gerätekonsole aus, um zu überprüfen, ob Updates verfügbar sind, und ob die Updates beeinträchtigend (Wartungsmodus) oder nicht beeinträchtigend (normaler Modus) sind.
 
 Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu installieren.
 
@@ -144,8 +142,8 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
         This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
-3. Überwachen Sie den Installationsstatus mit dem Befehl `Get-HcsUpdateStatus`. Das Update ist abgeschlossen, wenn `RunInProgress` in `False` geändert wird.
-4. Nachdem die Installation abgeschlossen ist, wird der Controller, auf dem der Hotfix für den Wartungsmodus installiert wurde, neu gestartet. Verwenden Sie für die Anmeldung Option 1 mit Vollzugriff, und überprüfen Sie die Firmwareversion des Datenträgers. Geben Sie Folgendes ein:
+3. Überwachen Sie den Installationsstatus mit dem Befehl `Get-HcsUpdateStatus` . Das Update ist abgeschlossen, wenn `RunInProgress` in `False` geändert wird.
+4. Nachdem die Installation abgeschlossen ist, wird der Controller, auf dem der Hotfix für den Wartungsmodus installiert wurde, neu gestartet. Verwenden Sie für die Anmeldung Option 1 mit Vollzugriff, und überprüfen Sie die Firmwareversion des Datenträgers. Geben Sie Folgendes ein:
    
    `Get-HcsFirmwareVersion`
    
@@ -212,4 +210,8 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
    `Exit-HcsMaintenanceMode`
 5. Beim Beenden des Wartungsmodus werden die Controller neu gestartet. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und das Gerät den Wartungsmodus verlassen hat, kehren Sie zum klassischen Azure-Portal zurück. Beachten Sie, dass es bis zu 24 Stunden dauern kann, bis die Installation der Wartungsmodus-Updates im Portal angezeigt wird.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

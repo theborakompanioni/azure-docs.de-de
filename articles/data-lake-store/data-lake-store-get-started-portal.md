@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 11/15/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 658671199cf3454428cc7102566093f7c2b42ae8
+ms.sourcegitcommit: 408a5fb25ef7b285a76e8f5b65890dc625574437
+ms.openlocfilehash: fba738575ee9a60cc930adfb68b7c34323bbe747
 
 
 ---
@@ -58,8 +58,8 @@ Sehen Sie sich die folgenden Videos mit ersten Schritten mit dem Data Lake-Speic
    * **Ort**: Wählen Sie den Ort aus, an dem Sie das Data Lake-Speicherkonto erstellen möchten.
    * **Verschlüsselungseinstellungen**. Sie können auswählen, ob Ihr Data Lake Store-Konto verschlüsselt werden soll. Bei Auswahl der Verschlüsselung können Sie auch angeben, wie Sie den Masterverschlüsselungsschlüssel verwalten, den Sie zum Verschlüsseln der Daten in Ihrem Konto verwenden möchten.
      
-     * (Standard) Wählen Sie in der Dropdownliste die Option **Verschlüsselung nicht aktivieren**, wenn Sie die Verschlüsselung nicht verwenden möchten.
-     * (Optional) Wählen Sie **Von Azure Data Lake verwaltete Schlüssel verwenden**, wenn Sie möchten, dass Ihre Verschlüsselungsschlüssel von Azure Data Lake Store verwaltet werden sollen.
+     * (Optional) Wählen Sie in der Dropdownliste die Option **Verschlüsselung nicht aktivieren**, wenn Sie die Verschlüsselung nicht verwenden möchten.
+     * (Standard) Wählen Sie **Von Azure Data Lake verwaltete Schlüssel verwenden**, wenn Sie möchten, dass Ihre Verschlüsselungsschlüssel von Azure Data Lake Store verwaltet werden sollen.
        
          ![Data Lake Store-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store encryption")
      * (Optional) Wählen Sie **Schlüssel aus Azure Key Vault auswählen**, wenn Sie Ihre eigenen Schlüssel verwenden möchten, die in Azure Key Vault enthalten sind. Mit dieser Option können Sie auch ein Key Vault-Konto und Schlüssel erstellen, falls Sie dies noch nicht durchgeführt haben.
@@ -136,6 +136,6 @@ Um ein Azure Data Lake-Speicherkonto zu löschen, klicken Sie auf dem Blatt „D
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

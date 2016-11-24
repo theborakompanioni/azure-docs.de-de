@@ -1,14 +1,14 @@
-## Öffentliche IP-Adresse
-Eine öffentliche IP-Adresse stellt entweder eine reservierte oder dynamische Internet-IP-Adresse bereit. Obwohl Sie eine öffentliche IP-Adresse als eigenständiges Objekt erstellen können, müssen Sie die Adresse einem anderen Objekt zuweisen, um sie verwenden zu können. Sie können eine öffentliche IP-Adresse einem Lastenausgleich, einem Anwendungsgateway oder einer NIC zuweisen, um den Internetzugriff für diese Ressourcen bereitzustellen.
+## <a name="public-ip-address"></a>Öffentliche IP-Adresse
+Eine öffentliche IP-Adresse stellt entweder eine reservierte oder dynamische Internet-IP-Adresse bereit. Obwohl Sie eine öffentliche IP-Adresse als eigenständiges Objekt erstellen können, müssen Sie die Adresse einem anderen Objekt zuweisen, um sie verwenden zu können. Sie können eine öffentliche IP-Adresse einem Lastenausgleich, einem Anwendungsgateway oder einer NIC zuweisen, um den Internetzugriff für diese Ressourcen bereitzustellen.  
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
 | **publicIPAllocationMethod** |Definiert, ob die IP-Adresse *statisch* oder *dynamisch* ist. |static, dynamic |
 | **idleTimeoutInMinutes** |Definiert den Leerlauftimeout mit einem Standardwert von 4 Minuten. Wenn keine weiteren Pakete für eine bestimmte Sitzung innerhalb dieses Zeitraums empfangen werden, wird die Sitzung beendet. |Ein beliebiger Wert zwischen 4 und 30 |
-| **ipAddress** |Die dem Objekt zugewiesene IP-Adresse. Dies ist eine schreibgeschützte Eigenschaft. |104\.42.233.77 |
+| **ipAddress** |Die dem Objekt zugewiesene IP-Adresse. Dies ist eine schreibgeschützte Eigenschaft. |104.42.233.77 |
 
-### DNS-Einstellungen
-Öffentliche IP-Adressen verfügen über ein untergeordnetes Objekt mit dem Namen **dnsSettings**, das die folgenden Eigenschaften enthält:
+### <a name="dns-settings"></a>DNS-Einstellungen
+Öffentliche IP-Adressen verfügen über ein untergeordnetes Objekt mit dem Namen **dnsSettings** , das die folgenden Eigenschaften enthält:
 
 | Eigenschaft | Beschreibung | Beispielwerte |
 | --- | --- | --- |
@@ -34,9 +34,13 @@ Beispiel für eine öffentliche IP-Adresse im JSON-Format:
        }
     } 
 
-### Zusätzliche Ressourcen
+### <a name="additional-resources"></a>Zusätzliche Ressourcen
 * Weitere Informationen zu [öffentlichen IP-Adressen](../articles/virtual-network/virtual-networks-reserved-public-ip.md).
 * Weitere Informationen zu [öffentlichen IP-Adressen auf Instanzebene](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
 * Lesen Sie die [REST-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/mt163638.aspx) für Informationen zu öffentlichen IP-Adressen.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

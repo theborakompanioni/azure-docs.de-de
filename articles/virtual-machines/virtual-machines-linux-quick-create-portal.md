@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/28/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1446cd8892e14988ff428eaa03233f8e9aefb8a
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 3ad64861bc4c3b0a938c75990fc516ef634943ef
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://por
 Folgende Anforderungen müssen erfüllt sein:
 
 * [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
-* [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md)
+* [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="sign-in"></a>Anmelden
 Melden Sie sich mit Ihrer Azure-Kontoidentität beim Azure-Portal an, und klicken Sie links oben auf **+ Neu** :
@@ -80,7 +80,7 @@ Behalten Sie unter **Einstellungen** die Standardwerte für Speicher und Netzwer
 ## <a name="ssh-to-the-vm"></a>SSH-Verbindung mit der VM
 Stellen Sie mithilfe Ihres öffentlichen SSH-Schlüssels eine SSH-Verbindung mit der öffentlichen IP-Adresse her.  Auf einer Mac- oder Linux-Arbeitsstation können Sie vom Terminal eine direkte SSH-Verbindung herstellen. Auf einer Windows-Arbeitsstation müssen Sie PuTTY, MobaXTerm oder Cygwin zum Herstellen einer Verbindung mit Linux über SSH verwenden.  Wenn Sie Ihre Windows-Arbeitsstation noch nicht zum Herstellen von SSH-Verbindungen mit Linux vorbereitet haben, finden Sie hier ein Dokument mit entsprechenden Erläuterungen:
 
-[Verwenden von SSH-Schlüsseln mit Windows in Azure](virtual-machines-linux-ssh-from-windows.md)
+[Verwenden von SSH-Schlüsseln mit Windows in Azure](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ```
 ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
@@ -89,9 +89,9 @@ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke erstellt. Lesen Sie zum Erstellen eines virtuellen Linux-Computers, der an Ihre Infrastruktur angepasst ist, einen der folgenden Artikel:
 
-* [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md)
-* [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-* [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md)
+* [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 

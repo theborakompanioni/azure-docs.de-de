@@ -15,13 +15,12 @@ ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: a2e289de2719be64a9468cb9b24ff4101b2e93db
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 12606d312ba95d9ef73e988fa4677a8314f9a579
 
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Konfigurieren von BizTalk Services im Azure-Portal
-Erstellen Sie Azure BizTalk Services im Azure-Portal.
 
 > [!TIP]
 > Für die Anmeldung beim Azure-Portal benötigen Sie ein Azure-Konto und ein Azure-Abonnement. Wenn Sie noch kein Konto haben, können Sie in wenigen Minuten ein kostenloses Testkonto erstellen. Siehe [Kostenlose Azure-Testversion](http://go.microsoft.com/fwlink/p/?LinkID=239738).
@@ -116,7 +115,7 @@ Nach Abschluss des Vorgangs ist der Azure BizTalk Service erstellt und für die 
 
 Abhängig vom Status des BizTalk Service können einige Vorgänge nicht abgeschlossen werden. Eine Liste dieser Vorgänge finden Sie unter [BizTalk Services: Dienststatusübersicht](biztalk-service-state-chart.md).
 
-## <a name="postprovisioning-steps"></a>Nach der Bereitstellung auszuführende Schritte
+## <a name="post-provisioning-steps"></a>Nach der Bereitstellung auszuführende Schritte
 * [Installieren des Zertifikats auf einem lokalen Computer](#InstallCert)
 * [Hinzufügen eines produktionsreifen Zertifikats](#AddCert)
 * [Abrufen des Access Control-Namespace](#ACS)
@@ -131,7 +130,7 @@ Im Rahmen der BizTalk Service-Bereitstellung wird ein selbstsigniertes Zertifika
    ![SSL-Zertifikat ändern][QuickGlance]
 5. Doppelklicken Sie auf das Zertifikat, und durchlaufen Sie den Assistenten zum Installieren des Zertifikats. Stellen Sie sicher, dass das Zertifikat im Speicher für **vertrauenswürdige Stammzertifizierungsstellen** installiert wird.
 
-#### <a name="a-nameaddcertaadd-a-productionready-certificate"></a><a name="AddCert"></a>Hinzufügen eines produktionsreifen Zertifikats
+#### <a name="a-nameaddcertaadd-a-production-ready-certificate"></a><a name="AddCert"></a>Hinzufügen eines produktionsreifen Zertifikats
 Das selbstsignierte Zertifikat, das bei der Erstellung von BizTalk Services automatisch erstellt wird, ist nur für den Einsatz in Entwicklungsumgebungen gedacht. Für Produktionsszenarien muss es durch ein produktionsreifes Zertifikat ersetzt werden.
 
 1. Klicken Sie auf der Registerkarte **Dashboard** auf **SSL-Zertifikat aktualisieren**.
@@ -275,6 +274,6 @@ Nachdem Sie jetzt einen BizTalk Service erstellt haben, machen Sie sich noch mit
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

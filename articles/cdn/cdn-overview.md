@@ -3,8 +3,8 @@ title: "Übersicht über Azure CDN | Microsoft Docs"
 description: "Erfahren Sie, was das Azure Content Delivery Network (CDN, Netzwerk für die Inhaltsübermittlung) ist und wie es für die Übermittlung breitbandiger Inhalte eingesetzt wird, indem Blobs und statische Inhalte zwischengespeichert werden."
 services: cdn
 documentationcenter: 
-author: camsoper
-manager: erikre
+author: lichard
+manager: akucer
 editor: 
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
 ms.service: cdn
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/30/2016
-ms.author: casoper
+ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 838a9ca3b77d5cd152ad2b8a54387149eafb6202
+ms.sourcegitcommit: 9a96e297711a949ac6bc464ad9154b4ad924666d
+ms.openlocfilehash: d6f56ed485eedd1e8250448c2c0794a066b11dc4
 
 
 ---
@@ -57,7 +57,7 @@ Es gibt drei Azure CDN-Produkte: **Azure CDN Standard von Akamai**, **Azure CDN 
 | Dualer IPv4-/IPv6-Stapel |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Unterstützung benutzerdefinierter Domänennamen](cdn-map-content-to-custom-domain.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Geofilterung](cdn-restrict-access-by-country.md) | |**&#x2713;** |**&#x2713;** |
+| [Geofilterung](cdn-restrict-access-by-country.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Schnelles Löschen](cdn-purge-endpoint.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Vorabladen von Assets](cdn-preload-endpoint.md) | |**&#x2713;** |**&#x2713;** |
 | [Wichtige Analysen](cdn-analyze-usage-patterns.md) | |**&#x2713;** |**&#x2713;** |
@@ -69,6 +69,8 @@ Es gibt drei Azure CDN-Produkte: **Azure CDN Standard von Akamai**, **Azure CDN 
 | Cache-/Headereinstellungen (mit [Regelmodul](cdn-rules-engine.md)) | | |**&#x2713;** |
 | URL-Umleitung/-Umschreibung (mit [Regelmodul](cdn-rules-engine.md)) | | |**&#x2713;** |
 | Regeln für mobile Geräte (mit [Regelmodul](cdn-rules-engine.md)) | | |**&#x2713;** |
+| [Tokenauthentifizierung](cdn-token-auth.md)|  |  |**&#x2713;**| 
+
 
 > [!TIP]
 > Gibt es eine Funktion, die Sie sich für Azure CDN wünschen?  [Geben Sie uns Feedback!](https://feedback.azure.com/forums/169397-cdn) 
@@ -89,6 +91,6 @@ Preisinformationen finden Sie unter [Content Delivery Network (CDN) – Preise](
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

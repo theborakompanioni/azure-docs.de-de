@@ -1,5 +1,5 @@
 1. Öffnen Sie im **App**-Projekt die Datei `AndroidManifest.xml`. Ersetzen Sie im Code in den nächsten beiden Schritten *`**my_app_package**`* durch den Namen des App-Pakets für Ihr Projekt, der dem Wert des `package`-Attributs des `manifest`-Tags entspricht.
-2. Fügen Sie die folgenden neuen Berechtigungen nach dem vorhandenen `uses-permission`-Element ein:
+2. Fügen Sie die folgenden neuen Berechtigungen nach dem vorhandenen `uses-permission` -Element ein:
    
         <permission android:name="**my_app_package**.permission.C2D_MESSAGE"
             android:protectionLevel="signature" />
@@ -25,16 +25,16 @@
 6. Ändern Sie die Definition von *MobileServiceClient* von **private** in **public static**, sodass sie jetzt wie folgt aussieht:
    
         public static MobileServiceClient mClient;
-7. Als Nächstes müssen wir eine neue Klasse zum Behandeln von Benachrichtigungen hinzufügen. Öffnen Sie im Projektexplorer den **src** => **main** => **java**-Knoten, und klicken Sie mit der rechten Maustaste auf den Paketnamenknoten: Klicken Sie auf **Neu** und dann auf **Java-Klasse**.
+7. Als Nächstes müssen wir eine neue Klasse zum Behandeln von Benachrichtigungen hinzufügen. Öffnen Sie im Projektexplorer den Knoten **src** => **main** => **java**, und klicken Sie mit der rechten Maustaste auf den Paketnamenknoten: Klicken Sie auf **Neu** und dann auf **Java-Klasse**.
 8. Geben Sie in **Name** die Zeichenfolge `MyHandler` ein, und klicken Sie dann auf **OK**.
 
-    ![](./media/mobile-services-android-get-started-push/android-studio-create-class.png)
+    ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)
 
 
 1. Ersetzen Sie in der Datei "MyHandler" die Klassendeklaration durch
    
         public class MyHandler extends NotificationsHandler {
-2. Fügen Sie die folgenden import-Anweisungen für die `MyHandler`-Klasse hinzu:
+2. Fügen Sie die folgenden import-Anweisungen für die `MyHandler` -Klasse hinzu:
    
        import com.microsoft.windowsazure.notifications.NotificationsHandler;
        import android.app.NotificationManager;
@@ -44,10 +44,10 @@
        import android.os.AsyncTask;
        import android.os.Bundle;
        import android.support.v4.app.NotificationCompat;
-3. Als Nächstes fügen Sie der `MyHandler`-Klasse dieses Element hinzu:
+3. Als Nächstes fügen Sie der `MyHandler` -Klasse dieses Element hinzu:
    
        public static final int NOTIFICATION_ID = 1;
-4. Fügen Sie den folgende Code in die `MyHandler`-Klasse ein, um die **onRegistered**-Methode zu überschreiben, mit der das Gerät im Benachrichtigungs-Hub des mobilen Dienstes registriert wird.
+4. Fügen Sie den folgende Code in die `MyHandler` -Klasse ein, um die **onRegistered** -Methode zu überschreiben, mit der das Gerät im Benachrichtigungs-Hub des mobilen Dienstes registriert wird.
    
        @Override
        public void onRegistered(Context context,  final String gcmRegistrationId) {
@@ -67,7 +67,7 @@
                }
            }.execute();
        }
-5. Fügen Sie in der `MyHandler`-Klasse den folgenden Code zum Überschreiben der **onReceive**-Methode hinzu, wodurch die Benachrichtigung nach ihrem Empfang angezeigt wird.
+5. Fügen Sie in der `MyHandler` -Klasse den folgenden Code zum Überschreiben der **onReceive** -Methode hinzu, wodurch die Benachrichtigung nach ihrem Empfang angezeigt wird.
    
        @Override
        public void onReceive(Context context, Bundle bundle) {
@@ -90,10 +90,13 @@
                        context.getSystemService(Context.NOTIFICATION_SERVICE);
                notificationManager.notify(NOTIFICATION_ID, notification);
        }
-6. Aktualisieren Sie in der Datei „TodoActivity.java“ die **onCreate**-Methode der *ToDoActivity*-Klasse, um die Benachrichtigungsbehandlungsklasse zu registrieren. Stellen Sie sicher, dass dieser Code nach der Instanziierung von *MobileServiceClient* hinzufügt wird.
+6. Aktualisieren Sie in der Datei „TodoActivity.java“ die **onCreate** -Methode der *ToDoActivity* -Klasse, um die Benachrichtigungsbehandlungsklasse zu registrieren. Stellen Sie sicher, dass dieser Code nach der Instanziierung von *MobileServiceClient* hinzufügt wird.
 
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
     Ihre App kann Pushbenachrichtigungen nun unterstützen.
 
-<!---HONumber=AcomDC_0309_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

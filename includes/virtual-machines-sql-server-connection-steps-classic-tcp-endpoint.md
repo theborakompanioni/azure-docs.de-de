@@ -1,4 +1,4 @@
-### Erstellen eines TCP-Endpunkts für den virtuellen Computer
+### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>Erstellen eines TCP-Endpunkts für den virtuellen Computer
 Für den Zugriff auf SQL Server über das Internet benötigt der virtuelle Computer einen Endpunkt, um nach eingehender TCP-Kommunikation zu lauschen. Dieser Azure-Konfigurationsschritt leitet den eingehenden Datenverkehr des TCP-Ports zu einem TCP-Port, auf den der virtuelle Computer zugreifen kann.
 
 > [!NOTE]
@@ -6,7 +6,7 @@ Für den Zugriff auf SQL Server über das Internet benötigt der virtuelle Compu
 > 
 > 
 
-1. Wählen Sie im Azure-Portal **Virtuelle Computer (klassisch)** aus.
+1. Wählen Sie im Azure-Portal **Virtuelle Computer (klassisch)**aus.
 2. Wählen Sie dann Ihren virtuellen Computer mit SQL Server aus.
 3. Wählen Sie **Endpunkte** aus, und klicken Sie dann oben auf dem Blatt „Endpunkte“ auf die Schaltfläche **Hinzufügen**.
    
@@ -14,7 +14,11 @@ Für den Zugriff auf SQL Server über das Internet benötigt der virtuelle Compu
 4. Geben Sie auf dem Blatt **Endpunkt hinzufügen** einen **Namen** wie „SQLEndpoint“ ein.
 5. Wählen Sie **TCP** als **Protokoll** aus.
 6. Geben Sie für **Öffentlicher Port** eine Portnummer wie **57500** an.
-7. Geben Sie für **Privater Port** den SQL Server-Lauschport an. Standardmäßig ist es **1433**.
-8. Klicken Sie auf **OK**, um den Endpunkt zu erstellen.
+7. Geben Sie für **Privater Port** den SQL Server-Lauschport an. Standardmäßig ist dies **1433**.
+8. Klicken Sie auf **OK** , um den Endpunkt zu erstellen.
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

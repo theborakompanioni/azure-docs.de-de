@@ -12,20 +12,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 06/10/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: e7d3c82e235d691c4ab329be3b168dcccc19774f
-ms.openlocfilehash: a3fc284a436173f1a1debc205a83d55cc1869b32
+ms.sourcegitcommit: 79a3ba8f0daee5c20f7a05e20e473cfbea384acc
+ms.openlocfilehash: cf9176b65297f98bd23ffdce0142da8c0706e987
 
 
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
+
 > [!div class="op_single_selector"]
-> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
 > * [.NET](cloud-services-dotnet-get-started.md)
->
->
+> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
+> * [Python](cloud-services-python-ptvs.md)
 
 ## <a name="overview"></a>Übersicht
 Dieses Tutorial behandelt die Erstellung einer .NET-Anwendung mit mehreren Ebenen und einem ASP.NET MVC-Front-End sowie die Bereitstellung dieser Anwendung in einem [Azure-Clouddienst](cloud-services-choose-me.md). Die Anwendung verwendet eine [Azure SQL-Datenbank](http://msdn.microsoft.com/library/azure/ee336279), den [Azure-Blobdienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) und den [Azure-Warteschlangendienst](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Sie können das [Visual Studio-Projekt](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) aus dem MSDN-Codekatalog herunterladen.
@@ -415,7 +415,7 @@ In den folgenden Abschnitten wird der Code für die Arbeit mit Azure-Umgebung, B
 * [Erste Schritte mit EF 6 und MVC 5](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
 * [Einführung in die asynchrone Programmierung in .NET 4.5](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
 
-### <a name="contosoadscommon-adcs"></a>ContosoAdsCommon - Ad.cs
+### <a name="contosoadscommon---adcs"></a>ContosoAdsCommon - Ad.cs
 Die Datei Ad.cs definiert eine Enumeration für Werbekategorien und eine POCO-Entitätsklasse für Werbeinformationen.
 
 ```csharp
@@ -459,7 +459,7 @@ public class Ad
 }
 ```
 
-### <a name="contosoadscommon-contosoadscontextcs"></a>ContosoAdsCommon - ContosoAdsContext.cs
+### <a name="contosoadscommon---contosoadscontextcs"></a>ContosoAdsCommon - ContosoAdsContext.cs
 Die Klasse ContosoAdsContext gibt an, dass die Ad-Klasse in einer DbSet-Sammlung verwendet wird, die von Entity Framework in einer SQL-Datenbank gespeichert wird.
 
 ```csharp
@@ -478,7 +478,7 @@ public class ContosoAdsContext : DbContext
 
 Die Klasse besitzt zwei Konstruktoren. Der erste Konstruktor wird vom Webprojekt verwendet und gibt den Namen einer Verbindungszeichenfolge an, die in der Datei Web.config gespeichert ist. Mit dem zweiten Konstruktor können Sie die eigentliche Verbindungszeichenfolge übergeben. Diese wird vom Workerrollen-Projekt benötigt, da dieses keine eigene Web.config-Datei hat. Sie haben weiter oben gesehen, wo diese Verbindungszeichenfolge gespeichert wird, und weiter unten werden Sie sehen, wie der Code die Verbindungszeichenfolge beim Instanziieren der DbContext-Klasse abruft.
 
-### <a name="contosoadsweb-globalasaxcs"></a>ContosoAdsWeb - Global.asax.cs
+### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb - Global.asax.cs
 Der aus der `Application_Start`-Methode aufgerufene Code erstellt einen *images*-Blobcontainer und eine *images*-Warteschlange, falls diese noch nicht vorhanden sind. Damit wird sichergestellt, dass Blobcontainer und Warteschlange immer automatisch erstellt werden, wenn Sie ein neues Speicherkonto verwenden oder den Speicheremulator auf einem neuen Computer verwenden.
 
 Der Code verwendet die Speicher-Verbindungszeichenfolge aus der *.cscfg* -Datei für den Zugriff auf das Speicherkonto.
@@ -511,10 +511,10 @@ var imagesQueue = queueClient.GetQueueReference("images");
 imagesQueue.CreateIfNotExists();
 ```
 
-### <a name="contosoadsweb-layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
+### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
 Die Datei *_Layout.cshtml* legt den App-Namen in der Kopf- und Fußzeile fest und erstellt den Menüeintrag „Ads“.
 
-### <a name="contosoadsweb-viewshomeindexcshtml"></a>ContosoAdsWeb - Views\Home\Index.cshtml
+### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb - Views\Home\Index.cshtml
 Die Datei *Views\Home\Index.cshtml* zeigt Links zu den Kategorien auf der Startseite an. Die Links übergeben den ganzzahligen Wert aus der `Category` -Enumeration in einer querystring-Variable an die Ads-Indexseite.
 
 ```razor
@@ -524,7 +524,7 @@ Die Datei *Views\Home\Index.cshtml* zeigt Links zu den Kategorien auf der Starts
 <li>@Html.ActionLink("All", "Index", "Ad", null, null)</li>
 ```
 
-### <a name="contosoadsweb-adcontrollercs"></a>ContosoAdsWeb - AdController.cs
+### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 In der Datei *AdController.cs* ruft der Konstruktor die `InitializeStorage`-Methode auf, um Objekte der Azure-Speicherclient-Bibliothek zu erstellen, die eine API für die Arbeit mit Blobs und Warteschlangen bereitstellen.
 
 Anschließend ruft der Code einen Verweis auf den *images*-Blobcontainer ab, wie weiter oben in *Global.asax.cs* gezeigt. Gleichzeitig wird eine angemessene Standard- [Wiederholungs-Richtlinie](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) für eine Webanwendung gesetzt. Mit der Standardrichtlinie (exponentiell ansteigende Wartezeiten) kann es passieren, dass die Webanwendung im Fall eines vorübergehenden Fehlers über eine Minute lang stehen bleibt. Die hier gezeigte Richtlinie wartet 3 Sekunden nach jedem Versuch für bis zu 3 Versuche.
@@ -621,7 +621,7 @@ private static async Task DeleteAdBlobAsync(Uri blobUri)
 }
 ```
 
-### <a name="contosoadsweb-viewsadindexcshtml-and-detailscshtml"></a>ContosoAdsWeb - Views\Ad\Index.cshtml und Details.cshtml
+### <a name="contosoadsweb---viewsadindexcshtml-and-detailscshtml"></a>ContosoAdsWeb - Views\Ad\Index.cshtml und Details.cshtml
 Die Datei *Index.cshtml* zeigt Miniaturansichten zusammen mit den restlichen Werbedaten an.
 
 ```razor
@@ -634,7 +634,7 @@ Die Datei *Details.cshtml* zeigt das Bild in voller Größe an.
 <img src="@Html.Raw(Model.ImageURL)" />
 ```
 
-### <a name="contosoadsweb-viewsadcreatecshtml-and-editcshtml"></a>ContosoAdsWeb - Views\Ad\Create.cshtml und Edit.cshtml
+### <a name="contosoadsweb---viewsadcreatecshtml-and-editcshtml"></a>ContosoAdsWeb - Views\Ad\Create.cshtml und Edit.cshtml
 Die Dateien *Create.cshtml* und *Edit.cshtml* geben die Formularcodierung an, mit der der Controller das `HttpPostedFileBase`-Objekt abruft.
 
 ```razor
@@ -647,7 +647,7 @@ Ein `<input>` -Element weist den Browser an, ein Dateiauswahl-Dialogfeld zu öff
 <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 ```
 
-### <a name="contosoadsworker-workerrolecs-onstart-method"></a>ContosoAdsWorker - WorkerRole.cs - OnStart-Methode
+### <a name="contosoadsworker---workerrolecs---onstart-method"></a>ContosoAdsWorker - WorkerRole.cs - OnStart-Methode
 Die Azure Workerrollen-Umgebung ruft die `OnStart`-Methode in der `WorkerRole`-Klasse auf, wenn die Workerrolle gestartet wird, und ruft die `Run`-Methode auf, wenn die `OnStart`-Methode abgeschlossen wird.
 
 Die `OnStart` -Methode ruft die Datenbank-Verbindungszeichenfolge aus der *CSCFG* -Datei ab und übergibt sie an die DbContext-Klasse des Entity Framework. Der SQLClient-Anbieter wird standardmäßig verwendet, daher muss kein Anbieter angegeben werden.
@@ -659,7 +659,7 @@ db = new ContosoAdsContext(dbConnString);
 
 Anschließend ruft die Methode einen Verweis auf das Speicherkonto ab und erstellt Blobcontainer und Warteschlange, falls diese noch nicht existieren. Dieser Code ähnelt dem Code, den Sie bereits in der `Application_Start` -Methode der Webrolle gesehen haben.
 
-### <a name="contosoadsworker-workerrolecs-run-method"></a>ContosoAdsWorker - WorkerRole.cs - Run-Methode
+### <a name="contosoadsworker---workerrolecs---run-method"></a>ContosoAdsWorker - WorkerRole.cs - Run-Methode
 Die `Run`-Methode wird aufgerufen, wenn die Initialisierung der `OnStart`-Methode abgeschlossen ist. Die Methode führt eine Endlosschleife aus, die nach neuen Nachrichten in der Warteschlange sucht und diese beim Eintreffen verarbeitet.
 
 ```csharp
@@ -777,6 +777,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: data-catalog
 ms.date: 10/11/2016
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6299c6eaab1e62281e23d2dd43c14fbb9769a316
+ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
+ms.openlocfilehash: 4c6a07c4b3597e357c520bcafde501bc0850e685
 
 
 ---
@@ -102,8 +102,8 @@ Ihr erstes Pilotprojekt sollte über einige Personen verfügen, die Daten produz
 
 Eines der geschäftlichen Probleme, das mit **Azure Data Catalog** gelöst wird, ist die Zusammenführung von **Datenproduzenten** und **Datennutzern**. Hierfür wird ein zentrales Repository mit Informationen zu den Datenquellen des Unternehmens verwendet. Mit Data Catalog registriert David Adventure Works- und SQL Server-Datenquellen. Per Crowdsourcing können alle Benutzer, die diese Datenquelle finden, ihre Meinung zu den Daten hinterlassen und die Daten nutzen. Nancy ermittelt die Datenquellen beispielsweise, indem sie den Katalog durchsucht, und gibt ihr spezielles Wissen zu den Daten weiter.  Andere Personen im Unternehmen können somit von diesem Wissen profitieren, indem sie einfach den Datenkatalog durchsuchen.
 
-* Weitere Informationen zum Registrieren von Datenquellen finden Sie unter [Registrieren von Datenquellen](data-catalog-get-started.md#exercise-2-registering-data-sources).
-* Weitere Informationen zum Ermitteln von Datenquellen finden Sie unter [Suchen nach Datenquellen](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets).
+* Weitere Informationen zum Registrieren von Datenquellen finden Sie unter [Registrieren von Datenquellen](data-catalog-get-started.md).
+* Weitere Informationen zum Ermitteln von Datenquellen finden Sie unter [Suchen nach Datenquellen](data-catalog-get-started.md).
 
 ### <a name="start-small-and-focused"></a>Klein anfangen und konzentriert bleiben
 Bei den meisten Pilotprojekten in Unternehmen sollten Sie den Katalog mit nützlichen Datenquellen füllen, damit die Benutzer den Nutzen von Data Catalog schnell erkennen können. Die IT-Abteilung ist ein guter Ort, um mit der Ermittlung von allgemeinen Datenquellen zu beginnen, die für Ihr Pilotprojektteam interessant sind. Für unterstützte Datenquellen, z.B. SQL Server, empfehlen wir die Verwendung des Registrierungstools für **Azure Data Catalog**-Datenquellen. Mit dem Registrierungstool für Datenquellen können Sie viele unterschiedliche Datenquellen, z. B. SQL Server- und Oracle-Datenbanken, sowie SQL Server Reporting Services-Berichte registrieren. Eine vollständige Liste mit aktuellen Datenquellen finden Sie unter [Von Azure Data Catalog unterstützte Datenquellen](data-catalog-dsr.md).
@@ -123,8 +123,8 @@ Im Rahmen des Pilotprojekts setzt das Team von Nancy auch Datenquellen ein, die 
 
 > [!NOTE]
 > Wir haben ein Beispieltool erstellt, bei dem die **Azure Data Catalog** -API zum Migrieren einer Excel-Arbeitsmappe zu Data Catalog verwendet wird. Weitere Informationen zur Data Catalog-API und zum Beispieltool erhalten Sie, indem Sie das [Ad-hoc-Arbeitsmappen-Codebeispiel herunterladen](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/) und die Dokumentation zur [Azure Data Catalog-REST-API](https://msdn.microsoft.com/library/azure/mt267593.aspx) lesen.
-> 
-> 
+>
+>
 
 Nachdem das Pilotprojekt erstellt wurde, können Sie Ihren Plan für die Einführung von Data Catalog ausführen.
 
@@ -142,9 +142,9 @@ Tipps zu den ersten Schritten:
 Bevor Ihr Pilotprojektteam mit der Nutzung von Data Catalog beginnt, sollten Sie im Rahmen eines Kick-Off-Meetings die mit dem Pilotprojekt verbundenen Erwartungen besprechen und eine anfängliche Schulung abhalten.
 
 ### <a name="set-expectations"></a>Festlegen von Erwartungen
-Das Festlegen von Erwartungen und Zielen hilft Benutzern im Unternehmen dabei, sich auf bestimmte Ergebnisse zu konzentrieren. Erteilen Sie regelmäßige „Hausaufgaben“ (je nach Umfang und Dauer des Projekts täglich oder wöchentlich), um das Projekt auf Kurs zu halten. Eine der nützlichsten Funktionen von Data Catalog ist das Crowdsourcing von Datenressourcen, damit Benutzer im Unternehmen vom Wissen über Unternehmensdaten profitieren können. Eine gute Hausaufgabe besteht darin, jedes Mitglied des Pilotprojektteams mindestens eine selbst genutzte Datenquelle registrieren oder mit Anmerkungen versehen zu lassen. Weitere Informationen finden Sie unter [Registrieren einer Datenquelle](data-catalog-get-started.md#exercise-2-registering-data-sources) und [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources).
+Das Festlegen von Erwartungen und Zielen hilft Benutzern im Unternehmen dabei, sich auf bestimmte Ergebnisse zu konzentrieren. Erteilen Sie regelmäßige „Hausaufgaben“ (je nach Umfang und Dauer des Projekts täglich oder wöchentlich), um das Projekt auf Kurs zu halten. Eine der nützlichsten Funktionen von Data Catalog ist das Crowdsourcing von Datenressourcen, damit Benutzer im Unternehmen vom Wissen über Unternehmensdaten profitieren können. Eine gute Hausaufgabe besteht darin, jedes Mitglied des Pilotprojektteams mindestens eine selbst genutzte Datenquelle registrieren oder mit Anmerkungen versehen zu lassen. Weitere Informationen finden Sie unter [Registrieren einer Datenquelle](data-catalog-get-started.md) und [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md).
 
-Halten Sie regelmäßig Teambesprechungen ab, um die Anmerkungen zu überprüfen. Gute Anmerkungen für Datenquellen stellen den Kern einer erfolgreichen Einführung von Data Catalog dar, da sie aussagekräftige Einblicke in Datenquellen an einem zentralen Ort liefern. Ohne gute Anmerkungen bleibt das Wissen zu Datenquellen im gesamten Unternehmen verstreut. Weitere Informationen finden Sie unter [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources).
+Halten Sie regelmäßig Teambesprechungen ab, um die Anmerkungen zu überprüfen. Gute Anmerkungen für Datenquellen stellen den Kern einer erfolgreichen Einführung von Data Catalog dar, da sie aussagekräftige Einblicke in Datenquellen an einem zentralen Ort liefern. Ohne gute Anmerkungen bleibt das Wissen zu Datenquellen im gesamten Unternehmen verstreut. Weitere Informationen finden Sie unter [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md).
 
 Der ultimative Test für das Projekt besteht schließlich natürlich darin, ob die Benutzer die benötigten Datenquellen ermitteln und verstehen können. Pilotprojektbenutzer sollten den Katalog regelmäßig testen, um sicherzustellen, dass die für die tägliche Arbeit verwendeten Datenquellen relevant sind. Wenn eine erforderliche Datenquelle fehlt oder nicht richtig mit Anmerkungen versehen ist, sollte dies als Erinnerung angesehen werden, weitere Datenquellen zu registrieren oder zusätzliche Anmerkungen bereitzustellen. Mit diesem Ansatz wird nicht nur der Nutzen des Pilotprojekts erhöht, sondern es werden auch effektive Vorgehensweisen geschaffen, die nach Abschluss des Pilotprojekts genutzt werden können.
 
@@ -162,11 +162,10 @@ In diesem Artikel ging es um die ersten Schritte bei der Nutzung von **Azure Dat
 * [Azure Data Catalog-Produktseite](https://azure.microsoft.com/services/data-catalog/)
 * [Azure Data Catalog-Dokumentation](https://azure.microsoft.com/documentation/services/data-catalog/)
 * [Häufige Szenarios mit Azure Data Catalog](data-catalog-common-scenarios.md)
-* [Registrieren von Datenquellen](data-catalog-get-started.md#exercise-2-registering-data-sources)
-* [Suchen nach Datenquellen](data-catalog-get-started.md#exercise-3-discovering-registered-data-assets)
-* [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
-* [Crowdsourcing für Metadaten](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
-
+* [Registrieren von Datenquellen](data-catalog-get-started.md)
+* [Suchen nach Datenquellen](data-catalog-get-started.md)
+* [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-get-started.md)
+* [Crowdsourcing für Metadaten](data-catalog-get-started.md)
 
 
 

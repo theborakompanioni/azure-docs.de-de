@@ -17,7 +17,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klass
 | Private VIP-Adressen (ILB) pro Bereitstellung |1 |1 |
 | Endpunkt-Zugriffssteuerungslisten (ACLs) |50 |50 |
 
-#### <a name="<a-name="azure-resource-manager-virtual-networking-limits"></a>networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
+#### <a name="a-nameazure-resource-manager-virtual-networking-limitsanetworking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden.
 
 | Ressource | Standardlimit | Maximales Limit |
@@ -37,11 +37,12 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Regeln für Lastenausgleichsmodule pro Lastenausgleichsmodul |150 |150 |
 | Öffentliche Front-End-IP pro Lastenausgleichsmodul |5 |Support kontaktieren |
 | Private Front-End-IP pro Lastenausgleichsmodul |30 |Support kontaktieren |
-| Anwendungsgateways |50 |50 |
 | VNets Peerings pro Virtual Network-Instanz |10 |50 |
 
 Wenden Sie sich an den Support, falls Sie Limits gegenüber den Standardwerten erhöhen müssen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

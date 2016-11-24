@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/07/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b0fec06e4a167e615381fca17def46923d9f0f1b
+ms.sourcegitcommit: 0ab72bd4ad531d1162726c6f5548fa253a4f5265
+ms.openlocfilehash: acc0c0c8db966d7a185d69501442ba431f3d5e1f
 
 
 ---
-# <a name="startstop-vms-during-offhours-preview-solution-in-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] in Automation
+# <a name="startstop-vms-during-off-hours-preview-solution-in-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] in Automation
 Mit der Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] können Sie Ihre Azure Resource Manager-VMs nach einem benutzerdefinierten Zeitplan starten und beenden. Außerdem können Sie die erfolgreiche Ausführung der Automation-Aufträge, mit denen die virtuellen Computer gestartet und beendet werden, mit OMS Log Analytics verfolgen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -125,7 +125,7 @@ Nach dem Auswählen der Lösung wird das Blatt für die Lösung **Start-Stop-VM[
 
 Hier können Sie auch Ihren OMS-Arbeitsbereich öffnen und eine weitere Analyse der Auftragsdatensätze durchführen.  Klicken Sie einfach auf **Alle Einstellungen**, und wählen Sie auf dem Blatt **Einstellungen** die Option **Schnellstart** und auf dem Blatt **Schnellstart** dann die Option **OMS-Portal**.   Eine neue Registerkarte bzw. eine neue Browsersitzung wird geöffnet, und Ihr OMS-Arbeitsbereich, der Ihrem Automation-Konto und -Abonnement zugeordnet ist, wird angezeigt.  
 
-### <a name="configuring-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
+### <a name="configuring-e-mail-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 Um das Senden von E-Mail-Benachrichtigungen nach dem Starten und Beenden von VM-Runbooks zu aktivieren, müssen Sie die **O365Credential**-Anmeldeinformationen ändern und mindestens die folgenden Variablen verwenden:
 
 * SendMailO365-IsSendEmail-MS-Mgmt
@@ -143,7 +143,7 @@ Führen Sie die folgenden Schritte aus, um die oben beschriebenen Variablen zu k
 
 1. Klicken Sie im Automation-Konto oben im Fenster auf **Alle Einstellungen**. 
 2. Wählen Sie auf dem Blatt **Einstellungen** im Abschnitt **Automation-Ressourcen** die Option **Objekte**. 
-3. Wählen Sie auf dem Blatt **Objekte** die Kachel **Variablen** und dann auf dem Blatt **Variablen** die oben angegebene Variable. Ändern Sie anschließend deren Wert, indem Sie sich nach der Beschreibung oben im Abschnitt [Variablen](##variables) richten.  
+3. Wählen Sie auf dem Blatt **Objekte** die Kachel **Variablen** und dann auf dem Blatt **Variablen** die oben angegebene Variable. Ändern Sie anschließend deren Wert, indem Sie sich nach der Beschreibung oben im Abschnitt [Variablen](#variables) richten.  
 4. Klicken Sie auf **Speichern**, um die Änderungen der Variablen zu speichern.   
 
 ### <a name="modifying-the-startup-and-shutdown-schedule"></a>Ändern des Zeitplans für das Starten und Herunterfahren

@@ -1,21 +1,21 @@
-## Empfangen von Nachrichten mit Apache Storm
-[**Apache Storm**](https://storm.incubator.apache.org) ist ein verteiltes Echtzeit-Berechnungssystem, das die zuverlässige Verarbeitung von unbegrenzten Datenströmen vereinfacht. In diesem Abschnitt wird gezeigt, wie Sie den Ereignis-Hub-Spout in Storm zum Empfangen von Ereignissen vom Ereignis-Hubs verwenden. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
+## <a name="receive-messages-with-apache-storm"></a>Empfangen von Nachrichten mit Apache Storm
+[**Apache Storm**](https://storm.incubator.apache.org) ist ein verteiltes System für Echtzeitberechnungen, das die zuverlässige Verarbeitung unbegrenzter Datenströme vereinfacht. In diesem Abschnitt wird gezeigt, wie Sie den Ereignis-Hub-Spout in Storm zum Empfangen von Ereignissen vom Ereignis-Hubs verwenden. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
 
 Weitere Informationen zu Empfangsmustern von Event Hubs finden Sie unter [Event Hubs – Übersicht][Event Hubs – Übersicht].
 
-In diesem Lernprogramm wird eine [HDInsight Storm][HDInsight Storm]-Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
+In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
 
 1. Gehen Sie wie unter [HDInsight Storm – Erste Schritte](../articles/hdinsight/hdinsight-storm-overview.md) beschrieben vor, um einen neuen HDInsight-Cluster zu erstellen und über Remotedesktop eine Verbindung mit diesem herzustellen.
 2. Kopieren Sie die Datei `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` in Ihre lokale Entwicklungsumgebung. Sie enthält events-storm-spout.
 3. Führen Sie den folgenden Befehl aus, um das Paket im lokalen Maven-Speicher zu installieren. Auf diese Weise können Sie das Paket später als Verweis im Storm-Projekt hinzufügen.
    
         mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
-4. Erstellen Sie in Eclipse ein neues Maven-Projekt (klicken Sie auf **File**, dann auf **New** und **Project**).
+4. Erstellen Sie in Eclipse ein neues Maven-Projekt. Klicken Sie hierzu auf **File** (Datei) > **New** (Neu) > **Project** (Projekt).
    
     ![][12]
-5. Wählen Sie **Use default Workspace location** aus, und klicken Sie dann auf **Next**.
-6. Wählen Sie den Archetyp **maven-archetype-quickstart** aus, und klicken Sie auf dann auf **Next**.
-7. Fügen Sie **GroupId** und **ArtifactId** ein, und klicken Sie auf **Finish**.
+5. Wählen Sie **Use default Workspace location** (Workspace-Standardort verwenden) aus, und klicken Sie anschließend auf **Next** (Weiter).
+6. Wählen Sie den Archetyp **maven-archetype-quickstart** aus, und klicken Sie auf anschließend auf **Next**.
+7. Fügen Sie eine Gruppen-ID (**GroupId**) und eine Artefakt-ID (**ArtifactId**) ein, und klicken Sie auf **Finish** (Fertig stellen).
 8. Fügen Sie in der Datei **pom.xml** die folgenden Abhängigkeiten in den Knoten `<dependency>` ein.
    
         <dependency>
@@ -45,7 +45,7 @@ In diesem Lernprogramm wird eine [HDInsight Storm][HDInsight Storm]-Installation
             </exclusions>
             <scope>provided</scope>
         </dependency>
-9. Erstellen Sie im Ordner **src** eine Datei namens **Config.properties**, und kopieren Sie den folgenden Inhalt, wobei Sie die folgenden Werte ersetzen:
+9. Erstellen Sie im Ordner **src** eine Datei namens **Config.properties**, kopieren Sie den folgenden Inhalt, und ersetzen Sie die folgenden Werte:
    
         eventhubspout.username = ReceiveRule
    
@@ -65,7 +65,7 @@ In diesem Lernprogramm wird eine [HDInsight Storm][HDInsight Storm]-Installation
         eventhub.receiver.credits = 10
    
     Der Wert für **eventhub.receiver.credits** bestimmt, wie viele Ereignisse als Stapel verarbeitet werden, bevor sie für die Storm-Pipeline freigegeben werden. Der Einfachheit halber wird in diesem Beispiel der Wert auf 10 gesetzt. In einer Produktionsumgebung sollten normalerweise höhere Werte festgelegt werden, beispielsweise 1024.
-10. Erstellen Sie mit dem folgenden Code eine neue Klasse namens **LoggerBolt**:
+10. Erstellen Sie mit dem folgenden Code eine neue Klasse namens **LoggerBolt** :
     
         import java.util.Map;
         import org.slf4j.Logger;
@@ -103,7 +103,7 @@ In diesem Lernprogramm wird eine [HDInsight Storm][HDInsight Storm]-Installation
         }
     
     Diese Storm-Klasse protokolliert den Inhalt der empfangenen Ereignisse. Sie kann problemlos erweitert werden, um Tupel in einem Speicherdienst speichern. Im [Lernprogramm zur HDInsight-Sensoranalyse] wird derselbe Ansatz zum Speichern von Daten in HBase verwendet.
-11. Erstellen Sie mit dem folgenden Code eine neue Klasse mit dem Namen **LogTopology**:
+11. Erstellen Sie mit dem folgenden Code eine neue Klasse mit dem Namen **LogTopology** :
     
         import java.io.FileReader;
         import java.util.Properties;
@@ -216,4 +216,6 @@ In diesem Lernprogramm wird eine [HDInsight Storm][HDInsight Storm]-Installation
 
 [12]: ./media/service-bus-event-hubs-get-started-receive-storm/create-storm1.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!--HONumber=Nov16_HO3-->
+
+

@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: af5563f875c532c0b902685219818b1cd0945a66
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: 3b756b11ce762cbbc56650ea9d49715d899bfbdb
 
 
 ---
@@ -44,14 +44,18 @@ In dieser exemplarischen Vorgehensweise wird veranschaulicht, wie Sie mit dem vo
 ## <a name="a-nametoc395637760aprerequisites-for-this-database-tutorial"></a><a name="_Toc395637760"></a>Voraussetzungen für dieses Datenbanktutorial
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes vorhanden ist:
 
-* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* Ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/) 
+
+    ODER
+
+    Lokale Installation des [Azure DocumentDB-Emulators](documentdb-nosql-local-emulator.md).
 * [Visual Studio 2015](http://www.visualstudio.com/) oder Visual Studio 2013 Update 4 oder höher. Wenn Sie Visual Studio 2013 verwenden, müssen Sie das [Microsoft.Net.Compilers-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Net.Compilers/) installieren, um die Unterstützung für C# 6.0 hinzuzufügen. 
 * Azure SDK für .NET Version 2.5.1 oder höher, verfügbar über [Microsoft-Webplattform-Installer][Microsoft-Webplattform-Installer].
 
 Alle Screenshots in diesem Artikel wurden unter Verwendung von Visual Studio 2013 mit Update 4 und Azure SDK für .NET Version 2.5.1 aufgenommen. Wenn Ihr System mit anderen Versionen konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise ab. Wenn Sie jedoch die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung funktionieren.
 
 ## <a name="a-nametoc395637761astep-1-create-a-documentdb-database-account"></a><a name="_Toc395637761"></a>Schritt 1: Erstellen eines DocumentDB-Datenbankkontos
-Erstellen Sie zunächst ein DocumentDB-Konto. Wenn Sie bereits über ein Konto verfügen, können Sie diesen Schritt überspringen und mit [Erstellen einer neuen ASP.NET MVC-Anwendung](#_Toc395637762)fortfahren.
+Erstellen Sie zunächst ein DocumentDB-Konto. Falls Sie bereits ein Konto besitzen oder den DocumentDB-Emulator für dieses Tutorial verwenden, können Sie mit [Erstellen einer neuen ASP.NET MVC-Anwendung](#_Toc395637762) fortfahren.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -78,6 +82,9 @@ Nun, da Sie über ein Konto verfügen, erstellen wir unser neues ASP.NET-Projekt
 5. Wählen Sie im Vorlagenbereich **MVC**aus.
 6. Wenn Sie Ihre Anwendung in Azure hosten möchten, aktivieren Sie das Kontrollkästchen **In der Cloud hosten** . Wir haben das Hosten in der Cloud und das Ausführen der auf einer Azure-Website gehosteten Anwendung ausgewählt. Wenn diese Option ausgewählt wird, wird eine Azure-Website vorab bereitgestellt, was die spätere Bereitstellung der endgültigen funktionierenden Anwendung wesentlich erleichtert. Wenn das Projekt nicht in der Cloud gehostet oder Azure nicht im Vorfeld konfiguriert werden soll, deaktivieren Sie das Kontrollkästchen **In der Cloud hosten**.
 7. Klicken Sie auf **OK** , und lassen Sie Visual Studio die leere ASP.NET MVC-Gerüstvorlage erstellen. 
+
+    Wenn Sie die Fehlermeldung „Fehler beim Verarbeiten der Anforderung“ erhalten, helfen Ihnen die Informationen im Abschnitt [Problembehandlung](#troubleshooting) weiter.
+
 8. Wenn Sie das Hosten in der Cloud ausgewählt haben, wird mindestens ein zusätzlicher Bildschirm angezeigt, in dem Sie dazu aufgefordert werden, sich bei Ihrem Azure-Konto anzumelden und einige Werte für Ihre neue Website anzugeben. Geben Sie alle zusätzlichen Werte an, und fahren Sie fort. 
    
       In diesem Beispiel wurde kein "Datenbankserver" ausgewählt, da kein Azure SQL-Datenbankserver verwendet wird. Ein neues Azure DocumentDB-Konto wird zu einem späteren Zeitpunkt im Azure-Portal erstellt.
@@ -536,6 +543,25 @@ Nachdem die vollständige Anwendung korrekt mit DocumentDB zusammenarbeitet, ste
 
 Dann schließt Visual Studio die Veröffentlichung Ihrer Webanwendung in wenigen Sekunden ab und startet einen Browser, in dem das Ergebnis Ihrer Arbeit in Azure ausgeführt wird!
 
+## <a name="a-nametroubleshootingatroubleshooting"></a><a name="Troubleshooting"></a>Problembehandlung
+
+Gehen Sie wie folgt vor, wenn Sie beim Versuch, die Web-App bereitzustellen, die Meldung „Fehler beim Verarbeiten der Anforderung“ erhalten: 
+
+1. Brechen Sie die Fehlermeldung ab, und wählen Sie erneut **Microsoft Azure-Web-Apps**. 
+2. Melden Sie sich an, und wählen Sie **Neu**, um eine neue Web-App zu erstellen. 
+3. Gehen Sie unter **Erstellen einer Web-App in Microsoft Azure** wie folgt vor: 
+    
+    - Web-App-Name: „todo-net-app“
+    - App Service-Plan: Neu erstellen, Name „todo-net-app“
+    - Ressourcengruppe: Neu erstellen, Name „todo-net-app“
+    - Region: Wählen Sie die Region aus, die für Ihre App-Benutzer am nächsten liegt.
+    - Datenbankserver: Klicken Sie auf „Keine Datenbank“ und dann auf **Erstellen**. 
+
+4. Klicken Sie unter „todo-net-app* auf **Verbindung überprüfen**. Wählen Sie nach der Überprüfung der Verbindung die Option **Veröffentlichen**. 
+    
+    Die App wird in Ihrem Browser angezeigt.
+
+
 ## <a name="a-nametoc395637775anext-steps"></a><a name="_Toc395637775"></a>Nächste Schritte
 Glückwunsch! Sie haben soeben Ihre erste ASP.NET MVC-Webanwendung unter Verwendung von Azure DocumentDB erstellt und in Azure Websites veröffentlicht. Der Quellcode für die vollständige Anwendung, einschließlich der Detail- und Löschfunktionen, die in diesem Lernprogramm nicht enthalten waren, kann von [GitHub][GitHub] heruntergeladen oder geklont werden. Wenn Sie diese Funktionen also zu Ihrer App hinzufügen möchten, laden Sie den Code herunter, und fügen Sie ihn dieser App hinzu.
 
@@ -550,6 +576,6 @@ Wenn Sie Ihrer Anwendung zusätzliche Funktionen hinzufügen möchten, können S
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

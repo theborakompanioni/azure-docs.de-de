@@ -13,5 +13,9 @@ Ein *benutzerdefinierter* virtueller Computer ist einfach ein virtueller Compute
 > 
 > 
 
-## So erstellen Sie den virtuellen Computer
-<!---HONumber=AcomDC_0330_2016-->
+## <a name="to-create-the-virtual-machine"></a>So erstellen Sie den virtuellen Computer
+
+
+<!--HONumber=Nov16_HO3-->
+
+

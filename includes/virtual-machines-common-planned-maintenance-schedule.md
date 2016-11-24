@@ -1,23 +1,23 @@
 
 
-## Mehrfach- und Einzelinstanz-VMs
+## <a name="multi-and-single-instance-vms"></a>Mehrfach- und Einzelinstanz-VMs
 Für viele Kunden, die Azure nutzen, ist es entscheidend, dass sie planen können, wann ihre VMs einer geplanten Wartung unterzogen werden, da dies mit ca. 15 Minuten Ausfallzeit verbunden ist. Sie können Verfügbarkeitsgruppen nutzen, um zu steuern, wann bereitgestellte VMs geplanter Wartung unterzogen werden.
 
-Es gibt zwei mögliche Konfigurationen für VMs, die in Azure ausgeführt werden. VMs werden entweder als Mehr- oder Einzelinstanz ausgeführt. Wenn VMs sich in Verfügbarkeitsgruppen befinden, werden sie als Mehrfachinstanz konfiguriert. Beachten Sie, dass sogar einzelne VMs in einer Verfügbarkeitsgruppe bereitgestellt werden können und als Mehrfachinstanz behandelt werden. Wenn VMs sich NICHT in einer Verfügbarkeitsgruppe befinden, werden sie als Einzelinstanz konfiguriert. Ausführliche Informationen über Verfügbarkeitsgruppen finden Sie unter [Manage the Availability of your Windows Virtual Machines](../articles/virtual-machines/virtual-machines-windows-manage-availability.md) (Verwalten der Verfügbarkeit Ihrer virtuellen Windows-Computer) oder [Manage the Availability of your Linux Virtual Machines](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) (Verwalten der Verfügbarkeit Ihrer virtuellen Linux-Computer).
+Es gibt zwei mögliche Konfigurationen für VMs, die in Azure ausgeführt werden. VMs werden entweder als Mehr- oder Einzelinstanz ausgeführt. Wenn VMs sich in Verfügbarkeitsgruppen befinden, werden sie als Mehrfachinstanz konfiguriert. Beachten Sie, dass sogar einzelne VMs in einer Verfügbarkeitsgruppe bereitgestellt werden können und als Mehrfachinstanz behandelt werden. Wenn VMs sich NICHT in einer Verfügbarkeitsgruppe befinden, werden sie als Einzelinstanz konfiguriert.  Ausführliche Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit Ihrer virtuellen Windows-Computer](../articles/virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Verwalten der Verfügbarkeit Ihrer virtuellen Linux-Computer](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Geplante Wartungsupdates für Einzelinstanz- und Mehrfachinstanz-VMs treten separat auf. Durch Neukonfiguration Ihrer VMs als Einzelinstanz (wenn sie Mehrfachinstanzen sind) oder Mehrfachinstanz (wenn sie Einzelinstanzen sind) können Sie steuern, wann Ihre VMs der geplanten Wartung unterzogen werden. Ausführliche Informationen zur geplanten Wartung für Azure-VMs finden Sie unter [Planned maintenance for Azure Linux virtual machines](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md) (Geplante Wartung für virtuelle Azure-Linux-Computer) oder [Planned maintenance for Azure virtual machines](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md) (Geplante Wartung für virtuelle Azure-Computer).
+Geplante Wartungsupdates für Einzelinstanz- und Mehrfachinstanz-VMs treten separat auf. Durch Neukonfiguration Ihrer VMs als Einzelinstanz (wenn sie Mehrfachinstanzen sind) oder Mehrfachinstanz (wenn sie Einzelinstanzen sind) können Sie steuern, wann Ihre VMs der geplanten Wartung unterzogen werden. Ausführliche Informationen zur geplanten Wartung für Azure-VMs finden Sie unter [Geplante Wartung für virtuelle Azure-Computer mit Linux](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Geplante Wartung für virtuelle Azure-Computer mit Windows](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## Für die Mehrfachinstanzkonfiguration
+## <a name="for-multi-instance-configuration"></a>Für die Mehrfachinstanzkonfiguration
 Sie können den Zeitraum auswählen, zu dem die geplante Wartung Ihre VMs beeinflusst, die in einer Verfügbarkeitsgruppenkonfiguration bereitgestellt werden, indem Sie diese VMs aus Verfügbarkeitsgruppen entfernen.
 
 1. Sieben Kalendertage vor der geplanten Wartung Ihrer VMs in einer Mehrfachinstanzkonfiguration erhalten Sie eine E-Mail. Die Abonnement-IDs und Namen der betroffenen Mehrfachinstanz-VMs werden im Text der E-Mail erwähnt.
-2. Während dieser 7 Tage können Sie den Zeitraum auswählen, zu dem Ihre Instanzen aktualisiert werden, indem Sie Ihre Mehrfachinstanz-VMs in dieser Region aus ihrer Verfügbarkeitsgruppe entfernen. Diese Änderung in der Konfiguration führt zu einem Neustart, da der virtuelle Computer von einem physischen Host, dem Ziel der Wartung, auf einen anderen physischen Host verschoben wird, der kein Wartungsziel ist.
-3. Sie können die VM im klassischen Portal aus ihrer Verfügbarkeitsgruppe entfernen.
+2. Während dieser 7 Tage können Sie den Zeitraum auswählen, zu dem Ihre Instanzen aktualisiert werden, indem Sie Ihre Mehrfachinstanz-VMs in dieser Region aus ihrer Verfügbarkeitsgruppe entfernen. Diese Änderung in der Konfiguration führt zu einem Neustart, da der virtuelle Computer von einem physischen Host, dem Ziel der Wartung, auf einen anderen physischen Host verschoben wird, der kein Wartungsziel ist. 
+3. Sie können die VM im klassischen Portal aus ihrer Verfügbarkeitsgruppe entfernen. 
    
-   1. Klicken Sie im klassischen Portal auf den virtuellen Computer, und wählen Sie dann „Konfigurieren“ aus.
+   1. Klicken Sie im klassischen Portal auf den virtuellen Computer, und wählen Sie dann „Konfigurieren“ aus. 
    2. Unter „Einstellungen“ können Sie sehen, in welcher Verfügbarkeitsgruppe sich der virtuelle Computer befindet.
       
-      ![Verfügbarkeitsgruppenauswahl](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+      ![Verfügbarkeitsgruppenauswahl ](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
    3. Wählen Sie im Dropdownmenü der Verfügbarkeitsgruppe die Option „Aus Verfügbarkeitsgruppe entfernen“ aus.
       
       ![Entfernen aus Gruppe](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
@@ -31,12 +31,12 @@ Dies kann auch mit Azure PowerShell erreicht werden:
 Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
 ```
 
-## Für die Einzelinstanzkonfiguration
+## <a name="for-single-instance-configuration"></a>Für die Einzelinstanzkonfiguration
 Sie können den Zeitraum auswählen, zu dem die geplante Wartung Ihre VMs in einer Einzelinstanzkonfiguration beeinflusst, indem Sie diese VMs Verfügbarkeitsgruppen hinzufügen.
 
 Schrittweise Anleitung
 
-1. Sieben Kalendertage vor der geplanten Wartung Ihrer VMs in einer Einzelinstanzkonfiguration erhalten Sie eine E-Mail. Die Abonnement-IDs und Namen der betroffenen Einzelinstanz-VMs werden im Text der E-Mail erwähnt.
+1. Sieben Kalendertage vor der geplanten Wartung Ihrer VMs in einer Einzelinstanzkonfiguration erhalten Sie eine E-Mail. Die Abonnement-IDs und Namen der betroffenen Einzelinstanz-VMs werden im Text der E-Mail erwähnt. 
 2. Während dieser 7 Tage können Sie den Zeitraum auswählen, in dem Ihre Instanz neu startet, indem Sie Ihre Einzelinstanz-VMs in eine Verfügbarkeitsgruppe verschieben, die sich in der gleichen Region befindet. Diese Änderung in der Konfiguration führt zu einem Neustart, da der virtuelle Computer von einem physischen Host, dem Ziel der Wartung, auf einen anderen physischen Host verschoben wird, der kein Wartungsziel ist.
 3. Führen Sie hier die Anweisungen zum Hinzufügen vorhandener VMs zu Verfügbarkeitsgruppen mit dem klassischen Portal und Azure PowerShell aus (siehe Azure PowerShell-Beispiel im Hinweis unten).
 4. Sobald diese VMs als Mehrfachinstanzen neu konfiguriert sind, werden sie von der geplanten Wartung für Einzelinstanz-VMs ausgeschlossen.
@@ -51,7 +51,10 @@ Dies kann auch mit Azure PowerShell erreicht werden:
 
 
 <!--Link references-->
-[Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
-[Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
+[Verwaltungsverfügbarkeit virtueller Computer]: virtual-machines-windows-tutorial.md
+[Unterschied zwischen geplanter und ungeplanter Wartung]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

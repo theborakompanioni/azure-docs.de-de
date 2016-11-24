@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/18/2016
 ms.author: minet
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: af7b1c3d302282920ce9b347a7686903d1c6fe03
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: bf8acbd37f717c0e055facde781966665ca67d2d
 
 
 ---
@@ -210,8 +210,8 @@ Wenn ein Client auf den Dateispeicher zugreift, richtet sich die verwendete SMB-
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>Einbinden der Dateifreigabe über einen virtuellen Azure-Computer unter Windows
 Um zu veranschaulichen, wie eine Azure-Dateifreigabe eingebunden wird, erstellen wir nun einen virtuellen Azure-Computer unter Windows und greifen zum Einbinden der Freigabe remote darauf zu.
 
-1. Erstellen Sie zunächst einen neuen virtuellen Azure-Computer, indem Sie die Anweisungen unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)befolgen.
-2. Stellen Sie als Nächstes eine Remoteverbindung mit dem virtuellen Computer her, indem Sie die Anweisungen unter [Anmelden bei einem virtuellen Windows-Computer über das Azure-Portal](../virtual-machines/virtual-machines-windows-connect-logon.md)befolgen.
+1. Erstellen Sie zunächst einen neuen virtuellen Azure-Computer, indem Sie die Anweisungen unter [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)befolgen.
+2. Stellen Sie als Nächstes eine Remoteverbindung mit dem virtuellen Computer her, indem Sie die Anweisungen unter [Anmelden bei einem virtuellen Windows-Computer über das Azure-Portal](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)befolgen.
 3. Öffnen Sie ein PowerShell-Fenster auf dem virtuellen Computer.
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>Fortbestehen der Anmeldeinformationen Ihres Speicherkontos für den virtuellen Computer
@@ -242,7 +242,7 @@ Sie können nun mit der Dateispeicher-Freigabe vom virtuellen Computer aus arbei
 
 Sie können die Dateifreigabe auch über eine Rolle bereitstellen, die in einem Azure-Clouddienst ausgeführt wird, indem remote auf die Rolle zugegriffen wird.
 
-### <a name="mount-the-file-share-from-an-onpremises-client-running-windows"></a>Einbinden der Dateifreigabe über einen lokalen Client mit Windows
+### <a name="mount-the-file-share-from-an-on-premises-client-running-windows"></a>Einbinden der Dateifreigabe über einen lokalen Client mit Windows
 Um die Dateifreigabe über einen lokalen Client bereitzustellen, müssen Sie zuerst die folgenden Schritte ausführen:
 
 * Installieren Sie eine Version von Windows, die SMB 3.0 unterstützt. Windows nutzt die SMB 3.0-Verschlüsselung zum sicheren Übertragen von Daten zwischen Ihrem lokalen Client und der Azure-Dateifreigabe in der Cloud.

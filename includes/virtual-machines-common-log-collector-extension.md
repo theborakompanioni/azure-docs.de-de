@@ -2,11 +2,11 @@
 Für die Diagnose von Problemen mit einem Microsoft Azure-Clouddienst müssen die Protokolldateien des Diensts auf virtuellen Computern gesammelt werden, während die Probleme auftreten. Sie können die AzureLogCollector-Erweiterung bedarfsgesteuert verwenden, um eine einmalige Sammlung von Protokollen von einer oder mehreren Clouddienst-VMs (von Web- und Workerrollen aus) durchzuführen und die gesammelten Dateien an ein Azure-Speicherkonto zu übertragen – alles ohne Remoteanmeldung bei den virtuellen Computern.
 
 > [!NOTE]
-> Beschreibungen für den Großteil der protokollierten Informationen finden Sie unter http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
+> Beschreibungen für den Großteil der protokollierten Informationen finden Sie unter „http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp“.
 > 
 > 
 
-Abhängig von den Typen der zu sammelnden Dateien gibt es zwei Modi für die Sammlung.
+Es gibt zwei Modi für die Sammlung, die von den Typen der zu sammelnden Dateien abhängig sind.
 
 * Nur Protokolle von Azure-Gast-Agents (GA). Dieser Sammlungsmodus umfasst alle Protokolle im Zusammenhang mit Azure-Gast-Agents und anderen Azure-Komponenten.
 * Alle Protokolle (vollständig). Dieser Sammlungsmodus sammelt alle Dateien im GA-Modus und zusätzlich:
@@ -24,20 +24,20 @@ In beiden Sammlungsmodi können zusätzliche Ordner für die Datensammlung angeg
 * **Suchmuster**: Das Muster der Namen der zu sammelnden Dateien. Der Standardwert ist „*“.
 * **Rekursiv**: Angabe, ob die Dateien im Ordner rekursiv gesammelt werden.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 * Sie benötigen ein Speicherkonto für die Erweiterung, um generierte ZIP-Dateien zu speichern.
 * Sie müssen sicherstellen, dass Sie Azure PowerShell-Cmdlets, Version 0.8.0 oder höher, verwenden. Weitere Informationen finden Sie unter [Azure-Downloads](https://azure.microsoft.com/downloads/).
 
-## Hinzufügen der Erweiterung
+## <a name="add-the-extension"></a>Hinzufügen der Erweiterung
 Sie können [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx)-Cmdlets oder [REST-APIs für die Dienstverwaltung](https://msdn.microsoft.com/library/ee460799.aspx) verwenden, um die AzureLogCollector-Erweiterung hinzuzufügen.
 
-Für Cloud Services kann das vorhandene Azure PowerShell-Cmdlet **Set AzureServiceExtension** verwendet werden, um die Erweiterung für Clouddienst-Rolleninstanzen zu aktivieren. Jedes Mal, wenn diese Erweiterung durch dieses Cmdlet aktiviert wird, wird für die ausgewählten Rolleninstanzen der ausgewählten Rollen die Protokollsammlung ausgelöst.
+Für Cloud Services kann das vorhandene Azure PowerShell-Cmdlet **Set AzureServiceExtension**verwendet werden, um die Erweiterung für Clouddienst-Rolleninstanzen zu aktivieren. Jedes Mal, wenn diese Erweiterung durch dieses Cmdlet aktiviert wird, wird für die ausgewählten Rolleninstanzen der ausgewählten Rollen die Protokollsammlung ausgelöst.
 
-Für virtuelle Computer kann das vorhandene Azure PowerShell-Cmdlet **Set-AzureVMExtension** verwendet werden, um die Erweiterung auf virtuellen Computern zu aktivieren. Jedes Mal, wenn diese Erweiterung durch die Cmdlets aktiviert wird, wird für jede Instanz die Protokollsammlung ausgelöst.
+Für virtuelle Computer kann das vorhandene Azure PowerShell-Cmdlet **Set-AzureVMExtension**verwendet werden, um die Erweiterung auf virtuellen Computern zu aktivieren. Jedes Mal, wenn diese Erweiterung durch die Cmdlets aktiviert wird, wird für jede Instanz die Protokollsammlung ausgelöst.
 
 Intern verwendet diese Erweiterung die JSON-basierten Argumente „PublicConfiguration“ und „PrivateConfiguration“. Im Folgenden finden Sie das Layout eines JSON-Beispiels für die öffentliche und die private Konfiguration.
 
-### PublicConfiguration
+### <a name="publicconfiguration"></a>PublicConfiguration
     {
         "Instances":  "*",
         "Mode":  "Full",
@@ -59,19 +59,19 @@ Intern verwendet diese Erweiterung die JSON-basierten Argumente „PublicConfigu
         ]
     }
 
-### PrivateConfiguration
+### <a name="privateconfiguration"></a>PrivateConfiguration
     {
 
     }
 
 > [!NOTE]
-> Für diese Erweiterung ist **PrivateConfiguration** nicht erforderlich. Sie können einfach eine leere Struktur für das Argument **–PrivateConfiguration** angeben.
+> Für diese Erweiterung ist **PrivateConfiguration**nicht erforderlich. Sie können einfach eine leere Struktur für das Argument **–PrivateConfiguration** angeben.
 > 
 > 
 
 Befolgen Sie einen der beiden folgenden Schritte, um den AzureLogCollector einer oder mehreren Instanzen eines Clouddiensts oder virtuellen Computers der ausgewählten Rollen hinzuzufügen. Dadurch wird die Ausführung der Sammlungen auf den einzelnen virtuellen Computern ausgelöst, und die gesammelten Dateien werden an das angegebene Azure-Konto gesendet.
 
-## Hinzufügen als Diensterweiterung
+## <a name="adding-as-a-service-extension"></a>Hinzufügen als Diensterweiterung
 1. Führen Sie die Anweisungen zum Verbinden von Azure PowerShell mit Ihrem Abonnement aus.
 2. Geben Sie den Dienstnamen, den Slot, die Rollen und die Rolleninstanzen an, für den bzw. die Sie die AzureLogCollector-Erweiterung hinzufügen und aktivieren möchten.
    
@@ -110,7 +110,7 @@ Befolgen Sie einen der beiden folgenden Schritte, um den AzureLogCollector einer
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-5. Rufen Sie „SetAzureServiceLogCollector.ps1“ (am Ende dieses Artikels enthalten) wie folgt auf, um die AzureLogCollector-Erweiterung für einen Clouddienst zu aktivieren. Nachdem die Ausführung abgeschlossen wurde, finden Sie die hochgeladene Datei unter `https://YouareStorageAccountName.blob.core.windows.net/vmlogs`.
+5. Rufen Sie „SetAzureServiceLogCollector.ps1“ (am Ende dieses Artikels enthalten) wie folgt auf, um die AzureLogCollector-Erweiterung für einen Clouddienst zu aktivieren. Nachdem die Ausführung abgeschlossen wurde, finden Sie die hochgeladene Datei unter `https://YouareStorageAccountName.blob.core.windows.net/vmlogs`
    
         .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
 
@@ -145,7 +145,7 @@ Im Folgenden sehen Sie die Definition der Parameter, die an das Skript übergebe
     )
 
 * *ServiceName*: Der Name des Clouddiensts.
-* *Roles*: Eine Liste der Rollen, z. B. „WebRole1“ oder „WorkerRole1“.
+* *Roles*: Eine Liste der Rollen, z.B. „WebRole1“ oder „WorkerRole1“.
 * *Instances*: Eine Liste der Namen von Rolleninstanzen, durch Komma getrennt. Verwenden Sie das Platzhalterzeichen („*“) für alle Rolleninstanzen.
 * *Slot*: Slotname. „Production“ oder „Staging“.
 * *Mode*: Sammlungsmodus. „Full“ oder „GA“.
@@ -153,9 +153,14 @@ Im Folgenden sehen Sie die Definition der Parameter, die an das Skript übergebe
 * *StorageAccountKey*: Name des Azure-Speicherkontenschlüssels.
 * *AdditionalDataLocationList*: Eine Liste mit der folgenden Struktur:
   
-      { String Name, String Location, String SearchPattern, Bool Recursive }
+      {
+      String Name,
+      String Location,
+      String SearchPattern,
+      Bool   Recursive
+      }
 
-## Hinzufügen als VM-Erweiterung
+## <a name="adding-as-a-vm-extension"></a>Hinzufügen als VM-Erweiterung
 Führen Sie die Anweisungen zum Verbinden von Azure PowerShell mit Ihrem Abonnement aus.
 
 1. Geben Sie den Namen des Diensts, die VM und den Sammlungsmodus an.
@@ -185,7 +190,7 @@ Führen Sie die Anweisungen zum Verbinden von Azure PowerShell mit Ihrem Abonnem
    
         $StorageAccountName = 'YourStorageAccountName'
         $StorageAccountKey  = ‘YouStorageAccountKey'
-3. Rufen Sie „SetAzureVMLogCollector.ps1“ (am Ende dieses Artikels enthalten) wie folgt auf, um die AzureLogCollector-Erweiterung für einen Clouddienst zu aktivieren. Nachdem die Ausführung abgeschlossen wurde, finden Sie die hochgeladene Datei unter https://YouareStorageAccountName.blob.core.windows.net/vmlogs.
+3. Rufen Sie „SetAzureVMLogCollector.ps1“ (am Ende dieses Artikels enthalten) wie folgt auf, um die AzureLogCollector-Erweiterung für einen Clouddienst zu aktivieren. Nachdem die Ausführung abgeschlossen wurde, finden Sie die hochgeladene Datei unter „https://YouareStorageAccountName.blob.core.windows.net/vmlogs“.
 
 Im Folgenden sehen Sie die Definition der Parameter, die an das Skript übergeben werden. (Eine Kopie ist ebenfalls unten enthalten.)
 
@@ -227,7 +232,7 @@ Im Folgenden sehen Sie die Definition der Parameter, die an das Skript übergebe
       }
 ```
 
-## PowerShell-Skriptdateien der Erweiterung
+## <a name="extention-powershell-script-files"></a>PowerShell-Skriptdateien der Erweiterung
 SetAzureServiceLogCollector.ps1
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -475,7 +480,11 @@ SetAzureVMLogCollector.ps1
       Write-Output "VM name is not specified, the extension cannot be enabled"
     }
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt Ihre Protokolle an einem sehr einfachen Speicherort untersuchen oder kopieren.
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

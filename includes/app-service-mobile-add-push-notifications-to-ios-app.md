@@ -1,5 +1,5 @@
 
-**Objective-C**:
+**Objective-C:**
 
 1. Importieren Sie das iOS-SDK und **QSTodoService.h** in **QSAppDelegate.m**:
    
@@ -10,7 +10,7 @@
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. Fügen Sie in **QSAppDelegate.m** die folgenden Handlermethoden hinzu. Ihre App kann Pushbenachrichtigungen nun unterstützen.
+3. Fügen Sie in **QSAppDelegate.m**die folgenden Handlermethoden hinzu. Ihre App kann Pushbenachrichtigungen nun unterstützen. 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -77,7 +77,7 @@
    
         }
 
-**Swift**:
+**Swift:**
 
 1. Fügen Sie die Datei **ClientManager.swift** mit folgendem Inhalt hinzu: Ersetzen Sie *%AppUrl%* durch die URL des Azure-Back-Ends für mobile Apps.
    
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. Fügen Sie in **AppDelegate.swift** die folgenden Handlermethoden hinzu. Ihre App kann Pushbenachrichtigungen nun unterstützen.
+4. Fügen Sie in **AppDelegate.swift**die folgenden Handlermethoden hinzu. Ihre App kann Pushbenachrichtigungen nun unterstützen.
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -139,4 +139,8 @@
    
         }
 
-<!---HONumber=AcomDC_0204_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

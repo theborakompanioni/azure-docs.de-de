@@ -1,4 +1,4 @@
-## Spaltenzuordnung mit Translator-Regeln
+## <a name="column-mapping-with-translator-rules"></a>Spaltenzuordnung mit Translator-Regeln
 Die Spaltenzuordnung kann verwendet werden, um anzugeben, wie die in "structure" der Quelltabelle angegebenen Spalten den in "structure" der Senkentabelle angegebenen Spalten zugeordnet werden. Die **columnMapping**-Eigenschaft ist im Abschnitt **typeProperties** der Kopieraktivität verfügbar.
 
 Spaltenzuordnungen unterstützen die folgenden Szenarien:
@@ -12,13 +12,13 @@ Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
 * Doppelte Zuordnung.
 * Das Ergebnis der SQL-Abfrage enthält keinen Spaltennamen, der in der Zuordnung angegeben ist.
 
-## Beispiele für Spaltenzuordnungen
+## <a name="column-mapping-samples"></a>Beispiele für Spaltenzuordnungen
 > [!NOTE]
-> Die folgenden Beispiele beziehen sich auf Azure SQL und Azure Blob, sie gelten aber auch für beliebige Datenspeicher, die rechteckige Datasets unterstützen. Sie müssen die Definitionen von Datasets und verknüpften Diensten in den folgenden Beispielen anpassen, damit sie auf Daten in der relevanten Datenquelle verweisen.
+> Die folgenden Beispiele beziehen sich auf Azure SQL und Azure Blob, sie gelten aber auch für beliebige Datenspeicher, die rechteckige Datasets unterstützen. Sie müssen die Definitionen von Datasets und verknüpften Diensten in den folgenden Beispielen anpassen, damit sie auf Daten in der relevanten Datenquelle verweisen. 
 > 
 > 
 
-### Beispiel 1 – Spaltenzuordnung von Azure SQL zu Azure-Blob
+### <a name="sample-1-column-mapping-from-azure-sql-to-azure-blob"></a>Beispiel 1 – Spaltenzuordnung von Azure SQL zu Azure-Blob
 In diesem Beispiel verfügt die Eingabetabelle über eine Struktur und diese verweist auf eine SQL-Tabelle in einer Azure SQL-Datenbank.
 
     {
@@ -114,8 +114,8 @@ Die JSON für die Aktivität ist unten dargestellt. Die Spalten der Quelle werde
 
 ![Ablauf der Spaltenzuordnung](./media/data-factory-data-stores-with-rectangular-tables/column-mapping-flow.png)
 
-### Beispiel 2 – Spaltenzuordnung mit SQL-Abfrage von Azure SQL zu Azure-Blob
-In diesem Beispiel wird eine SQL-Abfrage zum Extrahieren von Daten aus SQL Azure verwendet, statt einfach den Tabellennamen und die Spaltennamen im Abschnitt "structure" anzugeben.
+### <a name="sample-2-column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Beispiel 2 – Spaltenzuordnung mit SQL-Abfrage von Azure SQL zu Azure-Blob
+In diesem Beispiel wird eine SQL-Abfrage zum Extrahieren von Daten aus SQL Azure verwendet, statt einfach den Tabellennamen und die Spaltennamen im Abschnitt "structure" anzugeben. 
 
     {
         "name": "CopyActivity",
@@ -146,10 +146,14 @@ In diesem Beispiel wird eine SQL-Abfrage zum Extrahieren von Daten aus SQL Azure
             }
     }
 
-In diesem Fall werden die Abfrageergebnisse zuerst den in "structure" der Quelle angegebenen Spalten zugeordnet. Anschließend werden die Spalten aus "structure" der Quelle mit Regeln, die in "columnMappings" angegeben sind, Spalten in "structure" der Senke zugeordnet. Wenn die Abfrage fünf Spalten zurückgibt, sind dies zwei zusätzliche Spalten, im Vergleich zu den in "structure" der Quelle angegebenen.
+In diesem Fall werden die Abfrageergebnisse zuerst den in "structure" der Quelle angegebenen Spalten zugeordnet. Anschließend werden die Spalten aus "structure" der Quelle mit Regeln, die in "columnMappings" angegeben sind, Spalten in "structure" der Senke zugeordnet.  Wenn die Abfrage fünf Spalten zurückgibt, sind dies zwei zusätzliche Spalten, im Vergleich zu den in "structure" der Quelle angegebenen.
 
 **Ablauf der Spaltenzuordnung**
 
 ![Ablauf der Spaltenzuordnung-2](./media/data-factory-data-stores-with-rectangular-tables/column-mapping-flow-2.png)
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

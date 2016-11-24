@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a78e83d84df9bdd4fedd9c90aa02dc26e9d94c9
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
 
 
 ---
@@ -114,7 +114,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
     $myVm = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_DS1_v2"
     ```
    
-    Eine Liste mit den verfügbaren Größen für einen virtuellen Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md) .
+    Eine Liste mit den verfügbaren Größen für einen virtuellen Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
 3. Konfigurieren Sie Betriebssystemeinstellungen für den virtuellen Computer. Mit diesem Befehl werden der Computername, der Betriebssystemtyp und die Kontoanmeldeinformationen für die VM festgelegt.
    
     ```powershell
@@ -128,7 +128,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
         -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
     ```
    
-    Weitere Informationen zum Auswählen von Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell oder der Befehlszeilenschnittstelle](virtual-machines-windows-cli-ps-findimage.md).
+    Weitere Informationen zum Auswählen von Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Windows-Computer in Azure mithilfe von PowerShell oder der Befehlszeilenschnittstelle](virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 5. Fügen Sie die erstellte Netzwerkschnittstelle der Konfiguration hinzu.
    
     ```powershell
@@ -153,8 +153,8 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
-* Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
-* Nutzen Sie die Vorteile der vorlagenbasierten Erstellung virtueller Computer, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md)
+* Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Nutzen Sie die Vorteile der vorlagenbasierten Erstellung virtueller Computer, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 
 

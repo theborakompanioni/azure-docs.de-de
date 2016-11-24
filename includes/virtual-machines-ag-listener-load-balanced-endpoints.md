@@ -3,14 +3,17 @@ Sie müssen einen Endpunkt mit Lastenausgleich für jeden virtuellen Computer mi
 1. Navigieren Sie im Azure-Portal zu jedem virtuellen Computer, der ein Replikat hostet, und zeigen Sie die Details an.
 2. Klicken Sie auf die Registerkarte **Endpunkte** für jeden virtuellen Computer.
 3. Stellen Sie sicher, dass die Werte für **Name** und **Öffentlicher Port** des gewünschten Listenerendpunkts nicht bereits verwendet werden. Im folgenden Beispiel ist der Name "MyEndpoint" und der Port "1433".
-4. Laden Sie auf dem lokalen Client [das aktuelle PowerShell-Modul](https://azure.microsoft.com/downloads/) herunter, und installieren Sie es.
+4. Laden Sie auf dem lokalen Client [das aktuelle PowerShell-Modul](https://azure.microsoft.com/downloads/)herunter, und installieren Sie es.
 5. Starten Sie **Azure PowerShell**. Eine neue PowerShell-Sitzung wird geöffnet, und die Azure-Verwaltungsmodule werden geladen.
-6. Führen Sie **Get-AzurePublishSettingsFile** aus. Dieses Cmdlet leitet Sie zu einem Browser weiter, damit Sie eine Datei mit Veröffentlichungseinstellungen in ein lokales Verzeichnis herunterladen können. Möglicherweise werden Sie aufgefordert, die Anmeldeinformationen für Ihr Azure-Abonnement einzugeben.
+6. Führen Sie **Get-AzurePublishSettingsFile**aus. Dieses Cmdlet leitet Sie zu einem Browser weiter, damit Sie eine Datei mit Veröffentlichungseinstellungen in ein lokales Verzeichnis herunterladen können. Möglicherweise werden Sie aufgefordert, die Anmeldeinformationen für Ihr Azure-Abonnement einzugeben.
 7. Führen Sie den Befehl **Import-AzurePublishSettingsFile** mit dem Pfad der Datei mit Veröffentlichungseinstellungen aus, die Sie heruntergeladen haben:
    
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
    
     Nachdem die Datei mit Veröffentlichungseinstellungen importiert wurde, können Sie Ihr Azure-Abonnement in der PowerShell-Sitzung verwalten.
-   
-   <!----HONumber=AcomDC_0128_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
 

@@ -1,4 +1,4 @@
-### Beispiel für eine Typkonvertierung
+### <a name="type-conversion-sample"></a>Beispiel für eine Typkonvertierung
 Im folgenden Beispiel wird das Kopieren von Daten aus einem Blob in Azure SQL mit Typkonvertierungen gezeigt.
 
 Es wird vorausgesetzt, dass das Blobdataset im CSV-Format vorliegt und drei Spalten enthält. Eine davon ist eine datetime-Spalte mit einem benutzerdefinierten datetime-Format mit abgekürzten französischen Namen für die Wochentage.
@@ -42,7 +42,7 @@ Sie definieren das Blob-Quelldataset wie folgt zusammen mit Typdefinitionen für
         }
     }
 
-Unter Berücksichtigung der obigen Tabelle mit der Zuordnung des SQL-Typs zum .NET-Typ würden Sie die Azure SQL-Tabelle mit dem folgenden Schema definieren.
+Unter Berücksichtigung der obigen Tabelle mit der Zuordnung des SQL-Typs zum .NET-Typ würden Sie die Azure SQL-Tabelle mit dem folgenden Schema definieren.
 
 | Spaltenname | SQL-Typ |
 | --- | --- |
@@ -50,7 +50,7 @@ Unter Berücksichtigung der obigen Tabelle mit der Zuordnung des SQL-Typs zum .N
 | Name |Text |
 | lastlogindate |datetime |
 
-Als Nächstes definieren Sie das Azure SQL-Dataset wie folgt. Hinweis: Sie müssen keinen Abschnitt "structure" mit den Typinformationen angeben, da die Typinformationen bereits im zugrunde liegenden Datenspeicher angegeben sind.
+Als Nächstes definieren Sie das Azure SQL-Dataset wie folgt. Hinweis: Sie müssen keinen Abschnitt "structure" mit den Typinformationen angeben, da die Typinformationen bereits im zugrunde liegenden Datenspeicher angegeben sind.
 
     {
         "name": "AzureSQLOutput",
@@ -67,6 +67,10 @@ Als Nächstes definieren Sie das Azure SQL-Dataset wie folgt. Hinweis: Sie müss
         }
     }
 
-In diesem Fall führt Data Factory die Typkonvertierungen automatisch einschließlich des Datetime-Felds mit dem benutzerdefinierten datetime-Format aus. Dabei wird die Kultur "fr-fr" beim Verschieben von Daten aus dem Blob in Azure SQL verwendet.
+In diesem Fall führt Data Factory die Typkonvertierungen automatisch einschließlich des Datetime-Felds mit dem benutzerdefinierten datetime-Format aus. Dabei wird die Kultur "fr-fr" beim Verschieben von Daten aus dem Blob in Azure SQL verwendet.
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

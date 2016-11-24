@@ -3,7 +3,7 @@
 2. Wechseln Sie zur Seite **Geräte** . Klicken Sie auf der Seite **Geräte** unten auf **Virtuelles Gerät erstellen**.
 3. Geben Sie im Dialogfeld **Virtuelles Gerät erstellen**folgende Details an:
    
-     ![StorSimple – virtuelles Gerät erstellen](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
+    ![StorSimple – virtuelles Gerät erstellen](./media/storsimple-create-virtual-device-u2/CreatePremiumsva1.png)
    
    1. **Name** – ein eindeutiger Name für Ihr virtuelles Gerät.
    2. **Modell** – wählen Sie das Modell des virtuellen Geräts aus. Dieses Feld wird nur angezeigt, wenn Update 2 oder höher ausgeführt wird. Ein 8010-Gerätemodell bietet 30 TB Standardspeicher, und ein 8020-Modell bietet 64 TB Storage Premium-Speicher. Geben Sie 8010 an,
@@ -28,6 +28,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

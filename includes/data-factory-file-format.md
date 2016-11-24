@@ -1,10 +1,18 @@
 ## <a name="specifying-formats"></a>Angeben von Formaten
+Azure Data Factory unterstützt die folgenden Formattypen: 
+
+* [Textformat](#specifying-textformat)
+* [JSON-Format](#specifying-jsonformat)
+* [Avro-Format](#specifying-avroformat)
+* [ORC-Format](#specifying-orcformat)
+* [Parquet-Format](#specifying-parquetformat)
+
 ### <a name="specifying-textformat"></a>Angeben von "TextFormat"
 Wenn das Format auf **TextFormat** festgelegt ist, können Sie die folgenden **optionalen** Eigenschaften im Abschnitt **Format** angeben:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| columnDelimiter |Das Zeichen, das in einer Datei zum Trennen von Spalten verwendet wird. |Es ist nur ein Zeichen zulässig. Der Standardwert ist das Komma (,). |Nein |
+| columnDelimiter |Das Zeichen, das in einer Datei zum Trennen von Spalten verwendet wird. |Es ist nur ein Zeichen zulässig. Der Standardwert ist das Komma (,). <br/><br/>Wenn Sie ein Unicode-Zeichen verwenden möchten, finden Sie unter [Unicode-Zeichen](https://en.wikipedia.org/wiki/List_of_Unicode_characters) den zugehörigen Code. Sie können z.B. ein selten verwendetes, nicht druckbares Zeichen verwenden, das wahrscheinlich nicht in den Daten enthalten sind: Geben Sie „\u0001“ ein, was den Beginn einer Überschrift darstellt. |Nein |
 | rowDelimiter |Das Zeichen, das in einer Datei zum Trennen von Zeilen verwendet wird. |Es ist nur ein Zeichen zulässig. Der Standardwert ist einer der Folgenden: ["\r\n", "\r", "\n"] beim Lesen und "\r\n" beim Schreiben. |Nein |
 | escapeChar |Das Sonderzeichen, das als Escapezeichen für das Spaltentrennzeichen im Inhalt der Eingabedatei dient. <br/><br/>Sie können für eine Tabelle nicht gleichzeitig escapeChar und quoteChar verwenden. |Es ist nur ein Zeichen zulässig. Kein Standardwert. <br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, das Kommazeichen jedoch im Text (Beispiel: „Hello, world“) verwenden möchten, können Sie das Dollarzeichen ($) als Escapezeichen definieren und die Zeichenfolge „Hello$, world“ in der Quelle verwenden. |Nein |
 | quoteChar |Das Zeichen, das verwendet wird, um einen Zeichenfolgenwert zu zitieren. Die Spalten- und Zeilentrennzeichen innerhalb der Anführungszeichen werden als Teil des Zeichenfolgenwerts behandelt. Diese Eigenschaft gilt für Eingabe- und Ausgabedatasets.<br/><br/>Sie können für eine Tabelle nicht gleichzeitig escapeChar und quoteChar verwenden. |Es ist nur ein Zeichen zulässig. Kein Standardwert. <br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, das Kommazeichen jedoch im Text (Beispiel: <Hello, world>) verwenden möchten, können Sie das doppelte gerade Anführungszeichen (") als Escapezeichen definieren und die Zeichenfolge "Hello, world" in der Quelle verwenden. |Nein |
@@ -55,7 +63,13 @@ Wenn das Format auf "AvroFormat" festgelegt ist, müssen Sie im Abschnitt "Forma
 
 Um das Avro-Format in einer Hive-Tabelle zu verwenden, sehen Sie sich zuvor das [Apache Hive-Tutorial](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)an.
 
+Beachten Sie folgende Punkte:  
+
+* [Komplexe Datentypen](http://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten)
+
 ### <a name="specifying-jsonformat"></a>Angeben von „JsonFormat“
+Informationen zum Importieren/Exportieren von JSON-Dateien in der vorliegenden Form in/aus DocumentDB finden Sie im Abschnitt [Importieren/Exportieren von JSON-Dokumenten](../articles/data-factory/data-factory-azure-documentdb-connector.md#importexport-json-documents) im DocumentDB-Connector mit Details.
+
 Wenn das Format auf **JsonFormat** festgelegt ist, können Sie die folgenden **optionalen** Eigenschaften im Abschnitt **Format** angeben.
 
 | Eigenschaft | Beschreibung | Erforderlich |
@@ -114,7 +128,7 @@ Jede Datei enthält ein einzelnes Objekt oder mehrere durch Zeilen getrennte/ver
     }
 
 
-#### <a name="arrayofobjects-file-pattern."></a>Dateimuster arrayOfObjects
+#### <a name="arrayofobjects-file-pattern"></a>Dateimuster arrayOfObjects
 Jede Datei enthält ein Array von Objekten. 
 
     [
@@ -264,6 +278,8 @@ Beachten Sie folgende Punkte:
 * Komplexe Datentypen werden nicht unterstützt (MAP, LIST).
 * Für die Parquet-Datei stehen die folgenden mit der Komprimierung zusammenhängenden Optionen zur Verfügung: NONE, SNAPPY, GZIP und LZO. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine Parquet-Datei wählt Data Factory hingegen SNAPPY (Standardeinstellung für das Parquet-Format). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens. 
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 
