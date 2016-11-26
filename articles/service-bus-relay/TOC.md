@@ -1,26 +1,29 @@
 # Übersicht
-## [Was ist Relay?](service-bus-relay-overview.md)
-## [Häufig gestellte Fragen](../service-bus-messaging/service-bus-faq.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [Was ist Relay?](relay-what-is-it.md)
+## [Häufig gestellte Fragen](relay-faq.md)
 
 # Erste Schritte
-## [Verwenden von Relay](service-bus-dotnet-how-to-use-relay.md)
+## [Erstellen eines Namespaces](relay-create-namespace-portal.md)
+## [Erste Schritte mit Hybridverbindungen](relay-hybrid-connections-dotnet-get-started.md)
+## [Erste Schritte mit WCF-Relay](service-bus-dotnet-how-to-use-relay.md)
 ## [Shared Access Signatures](../service-bus-messaging/service-bus-sas-overview.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [Erstellen von Hybrid-Apps mithilfe des Service Bus Relays](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
-## [.NET-Tutorial zu Relay](service-bus-relay-tutorial.md)
-## [REST-Tutorial zu Relay](service-bus-relay-rest-tutorial.md)
+## [Tutorial zu WCF-Relay/hybrid](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
+## [Tutorial zu WCF-Relay/.NET](service-bus-relay-tutorial.md)
+## [Tutorial zu WCF-Relay/REST](service-bus-relay-rest-tutorial.md)
 
 # Anleitung
 ## [Authentifizieren und Autorisieren](../service-bus-messaging/service-bus-authentication-and-authorization.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
 ## [Planen für Aus- und Notfälle](../service-bus-messaging/service-bus-outages-disasters.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
+## [Hybridverbindungsprotokoll](relay-hybrid-connections-protocol.md)
+## [Gängige Ausnahmen](relay-exceptions.md)
 
 # Referenz
 ## [Beispiele](service-bus-relay-samples.md)
-## [Exceptions](../service-bus-messaging/service-bus-messaging-exceptions.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [Quotas](../service-bus-messaging/service-bus-quotas.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [.NET](/dotnet/api/)
-## [REST](/rest/api/servicebus/)
+## [.NET API für Hybridverbindungen](/dotnet/api/microsoft.servicebus)
+## [.NET API für WCF-Relay](/dotnet/api/microsoft.servicebus)
 
-# Ressourcen
+
+# angeben
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [MSDN-Foren](https://social.msdn.microsoft.com/forums/home?forum=servbus)
@@ -30,6 +33,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,17 +1,17 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: f9c998b6d6431fe08a1b6e6332f992be1446f0c7
+ms.sourcegitcommit: 1420ed40368d21bbf391142782834e781155a72a
+ms.openlocfilehash: 6a413c765bf034dda1917c6a3853bcd2d060b49c
 
 ---
 #<a name="data-catalog-documentation"></a>Data Catalog-Dokumentation
 
-Data Catalog ist eine Plattform für verteilte Systeme, mit der sich problemlos skalierbare und zuverlässige Microservices packen, bereitstellen und verwalten lassen. Mit dieser Lösung können Sie die größten Herausforderungen beim Entwickeln und Verwalten von Cloudanwendungen meistern.  Data Catalog ist die Middlewareplattform der nächsten Generation für das Erstellen und Verwalten leistungsstarker cloudbasierter Tier-1-Anwendungen.
+Azure Data Catalog ist ein vollständig verwalteter Clouddienst, mit dem Benutzer die benötigten Datenquellen ermitteln und die Ergebnisse besser verstehen können. Unternehmen können mit ihren vorhandenen Investitionen so einen höheren Wert erzielen. Data Catalog enthält Funktionen, mit denen alle Benutzer – von Analysten über Datenwissenschaftler bis hin zu Entwicklern – Datenquellen ermitteln, verstehen und nutzen können. Data Catalog umfasst ein Crowdsourcing-Modell für Metadaten und Anmerkungen und ermöglicht es allen Benutzern, ihr Wissen zum Aufbau einer Community und Datenkultur beizusteuern.
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-getting-started/">
+        <a href="/azure/data-catalog/data-catalog-get-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -21,7 +21,7 @@ Data Catalog ist eine Plattform für verteilte Systeme, mit der sich problemlos 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Beispiele zu den ersten Schritten mit Data Catalog</h3>
+                        <h3>Erste Schritte mit Azure Data Catalog</h3>
                     </div>
                 </div>
             </div>
@@ -29,25 +29,7 @@ Data Catalog ist eine Plattform für verteilte Systeme, mit der sich problemlos 
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-management-party-cluster/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/article.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Data Catalog-Partycluster</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/samples/service-fabric-dotnet-core-getting-started/">
+        <a href="/azure/data-catalog/data-catalog-what-is-data-catalog">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -57,7 +39,7 @@ Data Catalog ist eine Plattform für verteilte Systeme, mit der sich problemlos 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Data Catalog mit .NET Core</h3>
+                        <h3>Informationen zu Azure Data Catalog</h3>
                     </div>
                 </div>
             </div>
@@ -72,28 +54,13 @@ Data Catalog ist eine Plattform für verteilte Systeme, mit der sich problemlos 
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/rest/api/">
+        <a href="/rest/api/datacatalog">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
                         <p>Data Catalog – REST-API-Referenz</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt416943">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Verwaltete Referenz zu Data Catalog</p>
                     </div>
                 </div>
             </div>
@@ -112,6 +79,6 @@ Herunterladen der Data Catalog-Dokumentation </div>
 </div>
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

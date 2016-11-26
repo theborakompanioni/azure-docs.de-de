@@ -144,7 +144,7 @@ Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige un
                 <div class="card">
                     <div class="cardText">
                         <h3>Java</h3>
-                        <p>Referenz zum Java SDK</p>
+                        <p>Java SDK-Referenz</p>
                     </div>
                 </div>
             </div>

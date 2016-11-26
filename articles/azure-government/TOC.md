@@ -15,10 +15,10 @@
 ### [Images](../azure-government-image-gallery.md?toc=%2fazure%2fazure-government%2ftoc.json)
 ### [Marketplace](documentation-government-manage-marketplace.md)
 ### [Marketplace für Partner](documentation-government-manage-marketplace-partners.md)
+### [Ressourcen-Manager](documentation-government-manage-azure-resource-manager.md)
 ### [Abonnement](documentation-government-manage-subscriptions.md)
 
 # Referenz
-## [Ressourcen-Manager](documentation-government-manage-azure-resource-manager.md)
 ## [Dienste](documentation-government-services.md)
 ### [Compute](documentation-government-compute.md)
 ### [Speicher](documentation-government-services-storage.md)
@@ -32,8 +32,6 @@
 ## [Testversion](https://azuregov.microsoft.com/trial/azuregovtrial)
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

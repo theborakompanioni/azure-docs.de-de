@@ -5,12 +5,11 @@
 ## Szenarios
 ### [Gängige Anwendungsfälle](documentdb-use-cases.md)
 ### [Soziale Netzwerke mit DocumentDB](documentdb-social-media-apps.md)
-### [Mehrinstanzenfähigkeit](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)
-
 
 # Erste Schritte
 ## Schreiben der ersten App
 ### [.NET-Konsolenanwendung](documentdb-get-started.md)
+### [.NET Core-Konsolenanwendung](documentdb-dotnetcore-get-started.md)
 ### [Ausführen einer Konsolen-App](documentdb-nodejs-get-started.md)
 ### [C++-Konsolen-App](documentdb-cpp-get-started.md)
 ## Erstellen einer Web-App
@@ -18,7 +17,8 @@
 ### [Node.js-Web-App](documentdb-nodejs-application.md)
 ### [Java-Web-App](documentdb-java-application.md)
 ### [Python Flask-Web-App](documentdb-python-application.md)
-## [Häufig gestellte Fragen](documentdb-faq.md)
+## [Lokal entwickeln](documentdb-nosql-local-emulator.md)
+## [HÄUFIG GESTELLTE FRAGEN](documentdb-faq.md)
 
 # Anleitung
 
@@ -85,6 +85,7 @@
 # Referenz
 ## [Java SDK](documentdb-sdk-java.md)
 ## [.NET SDK](documentdb-sdk-dotnet.md)
+## [.NET Core SDK](documentdb-sdk-dotnet-core.md)
 ## [Beispiele für .NET](documentdb-dotnet-samples.md)
 ## [Node.js SDK](documentdb-sdk-node.md)
 ## [Beispiele für Node.js](documentdb-nodejs-samples.md)
@@ -109,6 +110,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

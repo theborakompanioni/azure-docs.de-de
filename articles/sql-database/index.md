@@ -142,7 +142,7 @@ Azure SQL-Datenbank ist ein auf dem Microsoft SQL Server-Modul basierender relat
                 <div class="card">
                     <div class="cardText">
                         <h3>Java</h3>
-                        <p>Referenz zum Java SDK</p>
+                        <p>Java SDK-Referenz</p>
                     </div>
                 </div>
             </div>

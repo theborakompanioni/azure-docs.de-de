@@ -5,6 +5,7 @@
 
 # Erste Schritte
 ## [Erstellen und Verwalten von Einzelvorgängen](scheduler-get-started-portal.md)
+## [Konzepte und Terminologie](scheduler-concepts-terms.md)
 
 # Anleitung
 ## Planen und Entwerfen
@@ -14,7 +15,7 @@
 
 ## Entwickeln
 ### [Komplexe Zeitpläne mit REST-API](scheduler-advanced-complexity.md)
-### [Konzepte und Terminologie](scheduler-concepts-terms.md)
+
 
 ## Schützen
 ### [Ausgehende Authentifizierung](scheduler-outbound-authentication.md)
@@ -25,13 +26,16 @@
 ## [REST](/rest/api/scheduler/)
 
 # Ressourcen
-## [Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
-## [Dienstupdates](https://azure.microsoft.com/updates/?product=scheduler)
 ## [Preise](https://azure.microsoft.com/pricing/details/scheduler/)
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=scheduler)
 
 
-<!--HONumber=Nov16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

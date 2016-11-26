@@ -18,6 +18,7 @@
 #### [Azure Storage (in englischer Sprache)](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Konfigurations-Manager](log-analytics-sccm.md)
+#### [OMS-Gateway](log-analytics-oms-gateway.md)
 ### Datenquellen
 #### [Übersicht über Datenquellen](log-analytics-data-sources.md)
 #### [Windows-Ereignisse](log-analytics-data-sources-windows-events.md)
@@ -49,6 +50,7 @@
 #### [Surface Hub](log-analytics-surface-hubs.md)
 #### [VMware](log-analytics-vmware.md)
 #### [Wire Data](log-analytics-wire-data.md)
+#### [SCOM-Bewertung](log-analytics-scom-assessment.md)
 ## Analysieren
 ### [Dashboards](log-analytics-dashboards.md)
 ### [Ansicht-Designer](log-analytics-view-designer.md)

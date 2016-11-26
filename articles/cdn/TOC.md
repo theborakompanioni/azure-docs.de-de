@@ -24,6 +24,8 @@
 #### [Premium-Tarif](cdn-query-string-premium.md)
 ### [Löschen von zwischengespeicherten Assets](cdn-purge-endpoint.md)
 ### [Vorabladen von zwischengespeicherten Assets](cdn-preload-endpoint.md)
+### [Tokenauthentifizierung](cdn-token-auth.md)
+### [Überwachen von Ressourcen](cdn-resource-health.md)
 ### [Überschreiben des Verhaltens mit Regeln](cdn-rules-engine.md)
 ### [Erhalten von Warnungen in Echtzeit](cdn-real-time-alerts.md)
 
@@ -55,6 +57,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

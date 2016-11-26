@@ -6,7 +6,7 @@
 ## [Multi-Site](application-gateway-multi-site-overview.md)
 ## [End-to-End-SSL](application-gateway-backend-ssl.md)
 ## [WebSocket](application-gateway-websocket.md)
-## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md#application-gateway-limits.md)
+## [Diensteinschränkungen](../azure-subscription-service-limits.md#application-gateway-limits?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 # Erste Schritte
 ## Erstellen eines Anwendungsgateways
 ### Öffentlich
@@ -19,21 +19,21 @@
 #### [PowerShell](application-gateway-ilb-arm.md)
 #### [PowerShell (klassisch)](application-gateway-ilb.md)
 # Anleitung
-## Erstellen mit der Web Application Firewall
+## Konfigurieren der Web Application Firewall
 ### [Portal](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
-## Konfigurieren für SSL
+## Konfigurieren der SSL-Auslagerung
 ### [Portal](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (klassisch)](application-gateway-ssl.md)
 ### [Richtlinie und End-to-End](application-gateway-end-to-end-ssl-powershell.md)
-## Erstellen von Routing auf URL-Pfadbasis
+## Konfigurieren von Routing auf URL-Pfadbasis
 ### [Portal](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
-## Konfigurieren des Hostens für mehrere Websites
+## Konfigurieren des Hostens mehrerer Websites
 ### [Portal](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-## Erstellen von Integritätstests
+## Konfigurieren von Integritätstests
 ### [Portal](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (klassisch)](application-gateway-create-probe-classic-ps.md)
@@ -61,6 +61,6 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

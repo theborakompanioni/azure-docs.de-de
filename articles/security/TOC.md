@@ -9,6 +9,7 @@
 ### [Bewährte Methoden für Datensicherheit und Verschlüsselung](azure-security-data-encryption-best-practices.md)
 ### [Sicherheitsleitfaden zu Storage](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [Computesicherheit](security-virtual-machines-overview.md)
+### [Bewährte Methoden für IaaS-Arbeitslasten ](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [Datenträgerverschlüsselung](azure-security-disk-encryption.md)
 ### [Verschlüsseln virtueller Azure-Computer](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -51,6 +52,6 @@
 ## [Sicherheitskurse der Virtual Academy](security-microsoft-virtual-academy.md)
 ## [Sicherheitsvideos auf Channel 9](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

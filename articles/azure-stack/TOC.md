@@ -68,20 +68,17 @@
 ## [Verwalten von Updates](azure-stack-updates.md)
 ## [Entwickeln für Azure Stack](azure-stack-developer.md)
 ## Bereitstellen eines SQL- oder MySQL-Ressourcenanbieters
-### [Verwenden von MySQL-Datenbanken als PaaS in Azure Stack](azure-stack-mysql-rp-deploy-short.md)
-### [Bereitstellen des SQL Server-Ressourcenanbieteradapters in Azure Stack](azure-stack-sql-rp-deploy-long.md)
-### [Verwenden von SQL-Datenbanken in Azure Stack](azure-stack-sql-rp-deploy-short.md)
+### [Verwenden von MySQL-Datenbanken als PaaS in Azure Stack](azure-stack-mysql-resource-provider-deploy.md)
+### [Bereitstellen des SQL Server-Ressourcenanbieteradapters in Azure Stack](azure-stack-sql-resource-provider-deploy.md)
 
-## Planen und Bereitstellen von Web-Apps
-### [Azure Stack-Web-Apps – Übersicht](azure-stack-webapps-overview.md)
-### [Vor den ersten Schritten mit Azure Stack-Web-Apps](azure-stack-webapps-before-you-get-started.md)
-### [Bereitstellen des MySQL-Ressourcenanbieters in Azure Stack für die Verwendung mit Web-Apps](azure-stack-mysql-rp-deploy-long.md)
+## Planen und Bereitstellen von App Service
+### [Azure Stack-Web-Apps – Übersicht](azure-stack-app-service-overview.md)
+### [Vor den ersten Schritten mit Azure Stack-Web-Apps](azure-stack-app-service-before-you-get-started.md)
 ### [Web-Apps: Hinzufügen von weiteren Web-Worker-Rollen](azure-stack-webapps-add-worker-roles.md)
-### [Hinzufügen eines Web-Apps-Ressourcenanbieters zu Azure Stack](azure-stack-webapps-deploy.md)
+### [Hinzufügen eines Web-Apps-Ressourcenanbieters zu Azure Stack](azure-stack-app-service-deploy.md)
 
 # Problembehandlung
 ## [Problembehandlung für Azure Stack](azure-stack-troubleshooting.md)
-## [Erneutes Ausführen einer Bereitstellung aus einem fehlerhaften Schritt](azure-stack-rerun-deploy.md)
 ## [Web-Apps-Ressourcenanbieter](azure-stack-webapps-troubleshoot-known-issues.md)
 
 # Ressourcen
@@ -90,6 +87,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

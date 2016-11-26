@@ -9,7 +9,7 @@
 
 # Anleitung
 
-## [Erstellen eines Dienstprinzipals](../resource-group-create-service-principal-portal.md)
+## [Erstellen eines Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json)
 ## [Authentifizieren mit einer Registrierung](container-registry-authentication.md)
 
 # Referenz
@@ -27,6 +27,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

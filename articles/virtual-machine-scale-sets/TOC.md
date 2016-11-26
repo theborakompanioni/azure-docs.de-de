@@ -20,7 +20,7 @@
 ### [Automatische Skalierung und Skalierungsgruppen](virtual-machine-scale-sets-autoscale-overview.md)
 ### [Vertikale Skalierung in einer Skalierungsgruppe](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [Upgrades für Skalierungsgruppen](virtual-machine-scale-sets-upgrade-scale-set.md)
-### [Erweiterte automatische Skalierung](virtual-machine-scale-sets-advanced-autoscale.md)
+### [Erweiterte automatische Skalierung](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Verwenden von DSC und Skalierungsgruppen](virtual-machine-scale-sets-dsc.md)
 
 ## Problembehandlung
@@ -38,6 +38,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

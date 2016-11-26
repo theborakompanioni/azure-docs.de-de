@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: d299d9b2d08086fa7a5946d8270437f652edd746
-ms.openlocfilehash: d5a866740ed977f091d750767825ab30eda71c64
+ms.sourcegitcommit: 965b96507d66f3880bdf3b38362d1eb026afdb51
+ms.openlocfilehash: e72557a87088ba66a669d37ba0033da951e7fdb8
 
 ---
 #<a name="storage-documentation"></a>Speicher-Dokumentation
 
-Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen.  Die Lösung ist überaus skalierbar, elastisch, bietet einen globalen Zugriff und sorgt basierend auf dem Datenverkehr automatisch für einen Lastenausgleich.  Azure Storage umfasst vier Dienste zum Erfüllen von Anwendungsanforderungen: Blob Storage, Table Storage, Queue Storage und File Storage.
+Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen.  Die Lösung ist überaus skalierbar, elastisch, bietet einen globalen Zugriff und sorgt basierend auf dem Datenverkehr automatisch für einen Lastenausgleich.  Azure Storage umfasst fünf Dienste zum Erfüllen von Anwendungsanforderungen: Blobspeicher, Tabellenspeicher, Warteschlangenspeicher, Datenträgerspeicher und Dateispeicher.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -182,6 +182,6 @@ Herunterladen der Storage-Dokumentation </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

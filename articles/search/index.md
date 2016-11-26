@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
-ms.openlocfilehash: 35919aa28a5c03aa04d0b6018dac5366f19d9794
+ms.sourcegitcommit: 3273e748265fa23efadd010bb5f0bc9ce43223b6
+ms.openlocfilehash: dae331e93ab1682741a34758172d7c8cdb38aec5
 
 ---
 # <a name="azure-search-documentation"></a>Azure Search-Dokumentation
 
-Azure Search ist eine cloudbasierte SaaS-Lösung, deren Server- und Infrastrukturtechnologien von Microsoft verwaltet werden. Dadurch erhalten Sie einen sofort einsatzbereiten Dienst, den Sie mit Ihren Daten füllen und anschließend verwenden können, um Ihrer Webanwendung oder mobilen Anwendung eine Suchfunktion hinzuzufügen. Mit Azure Search können Sie Ihre Anwendungen unter Verwendung einer einfachen REST-API oder eines .NET-SDK problemlos mit einer zuverlässigen Suchfunktion ausstatten, ohne sich mit der Suchinfrastruktur auseinanderzusetzen oder sich umfassende Kenntnisse zu Suchvorgängen aneignen zu müssen.
+Azure Search ist ein verwalteter Cloudsuchdienst, mit dem Sie in benutzerdefinierten Apps eine leistungsstarke Suchfunktionen erstellen und anschließend den Dienst, Index und die Abfrageaktivität in Portalansichten überwachen können. Zu den wichtigsten Merkmalen zählen skalierbare Volltextsuche in mehreren Sprachen, standortbezogene Suche, Filter und Facettennavigation, Vervollständigung von Abfragen, Treffermarkierung und benutzerdefinierte Analysen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -47,7 +47,7 @@ Azure Search ist eine cloudbasierte SaaS-Lösung, deren Server- und Infrastruktu
         </a>
     </li>
     <li>
-        <a href="/azure/search/search-create-service">
+        <a href="/azure/search/search-create-service-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -82,6 +82,42 @@ Azure Search ist eine cloudbasierte SaaS-Lösung, deren Server- und Infrastruktu
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/search/search-query-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Abfragen eines Azure Search-Indexes</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/search/search-howto-dotnet-sdk">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/tutorial.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Verwenden von Azure Search in .NET</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
 </ul>
 
 
@@ -91,13 +127,41 @@ Azure Search ist eine cloudbasierte SaaS-Lösung, deren Server- und Infrastruktu
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/dotnet/api/">
+        <a href="/dotnet/api/microsoft.azure.search">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>.NET</h3>
-                        <p>Verwaltete Referenz zur .NET-API</p>
+                        <p>Dienst-.NET API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/dotnet/api/microsoft.azure.management.search">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>.NET</h3>
+                        <p>Verwaltungs-.NET API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/rest/api/searchservice/">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p>Dienst-REST-API</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +175,7 @@ Azure Search ist eine cloudbasierte SaaS-Lösung, deren Server- und Infrastruktu
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Search – REST-API-Referenz</p>
+                        <p>Verwaltungs-REST-API</p>
                     </div>
                 </div>
             </div>
@@ -130,6 +194,6 @@ Herunterladen der Azure Search-Dokumentation </div>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 
