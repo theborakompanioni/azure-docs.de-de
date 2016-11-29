@@ -17,7 +17,7 @@ Zum Verwenden von [EventProcessorHost][EventProcessorHost] benötigen Sie ein [A
 6. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Receiver**.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp1.png)
-7. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten...**.
+7. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten**.
 8. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Stellen Sie sicher, dass der Projektname (**Receiver**) im Feld **Version(en)** angegeben ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-eph-csharp1.png)
@@ -115,12 +115,12 @@ Zum Verwenden von [EventProcessorHost][EventProcessorHost] benötigen Sie ein [A
 
 <!-- Links -->
 [Event Hubs – Übersicht]: ../articles/event-hubs/event-hubs-overview.md
-[Programmierleitfaden für Event Hubs]: ../articles/event-hubs/event-hubs-programming-guide.md
-[Skalieren der Ereignisverarbeitung]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure-Speicherkonto]: ../articles/storage/storage-create-storage-account.md
+[Event Hubs-Programmierhandbuch]: ../articles/event-hubs/event-hubs-programming-guide.md
+[Horizontal hochskalierte Ereignisverarbeitung]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Azure Storage-Konto]: ../articles/storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 
