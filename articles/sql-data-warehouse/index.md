@@ -47,7 +47,7 @@ In Azure SQL Data Warehouse ist die relationale SQL Server-Datenbank mit Azure-C
         </a>
     </li>
      <li>
-        <a href="/azure/SQL-Data-WArehouse/sql-data-warehouse-get-started-provision/">
+        <a href="/azure/sql-data-WArehouse/sql-data-warehouse-get-started-provision">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

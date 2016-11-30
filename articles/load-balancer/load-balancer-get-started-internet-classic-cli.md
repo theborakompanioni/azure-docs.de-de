@@ -3,8 +3,8 @@ title: Erste Schritte zum Erstellen eines Lastenausgleichs mit Internetzugriff i
 description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Load Balancer mit Internetzugriff in einem klassischen Bereitstellungsmodell erstellen.
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 tags: azure-service-management
 ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
 ms.service: load-balancer
@@ -13,7 +13,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
 ms.openlocfilehash: 337399d1f832830665be92a97a8458b7a959845b
@@ -53,9 +53,9 @@ In diesem Handbuch erfahren Sie, wie Sie auf der Grundlage des oben beschriebene
 ## <a name="create-endpoint-and-load-balancer-set"></a>Erstellen eines Endpunkts und einer Load Balancer-Gruppe
 
 Das Szenario setzt voraus, dass die virtuellen Computer „web1“ und „web2“ erstellt wurden.
-In diesem Leitfaden wird eine Load Balancer-Gruppe erstellt, die Port 80 als öffentlichen Port und Port 80 als lokalen Port verwendet. An Port 80 wird zudem ein Testport konfiguriert und als Load Balancer-Gruppe „lbset“ bezeichnet.
+In diesem Leitfaden wird eine Load Balancer-Gruppe erstellt, die Port 80 als öffentlichen Port und Port 80 als lokalen Port verwendet. An Port 80 wird zudem ein Testport konfiguriert und als Load Balancer-Gruppe „lbset“ bezeichnet.
 
-### <a name="step-1"></a>Schritt 1
+### <a name="step-1"></a>Schritt 1
 
 Erstellen des ersten Endpunkts und einer Load Balancer-Gruppe für den virtuellen Computer „web1“ mithilfe von `azure network vm endpoint create` .
 
@@ -63,7 +63,7 @@ Erstellen des ersten Endpunkts und einer Load Balancer-Gruppe für den virtuelle
 azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-2"></a>Schritt 2
+## <a name="step-2"></a>Schritt 2
 
 Hinzufügen eines zweiten virtuellen Computers namens „web2“ zur Load Balancer-Gruppe
 
@@ -71,7 +71,7 @@ Hinzufügen eines zweiten virtuellen Computers namens „web2“ zur Load Balanc
 azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-3"></a>Schritt 3
+## <a name="step-3"></a>Schritt 3
 
 Überprüfen der Load Balancer-Konfiguration mithilfe von `azure vm show` .
 

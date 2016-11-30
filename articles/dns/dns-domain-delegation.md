@@ -3,8 +3,8 @@ title: "Delegieren einer Domäne an Azure DNS | Microsoft Docs"
 description: "Grundlegendes zum Ändern der Domänendelegierung und zum Verwenden von DNS-Namenserver zum Hosten von Domänen."
 services: dns
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: georgewallace
+manager: timlt
 ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
 ms.devlang: na
@@ -12,7 +12,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/30/2016
-ms.author: sewhee
+ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
 ms.openlocfilehash: 665e0684328538b61bb3eb05180d8d7d0e65ec49
@@ -70,7 +70,7 @@ Nachdem Sie Ihre DNS-Zone in Azure DNS erstellt haben, müssen Sie NS-Einträge 
 > [!NOTE]
 > Sie müssen keine Domäne besitzen, um eine DNS-Zone mit diesem Domänennamen in Azure DNS zu erstellen. Sie müssen jedoch Besitzer der Domäne sein, um die Delegierung an Azure DNS bei der Registrierungsstelle einzurichten.
 
-Nehmen wir beispielsweise an, Sie erwerben die Domäne „contoso.com“ und erstellen eine Zone mit dem Namen „contoso.com“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Option, die Namenserveradressen (d. h. die NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert diese NS-Einträge in der übergeordneten Domäne (in diesem Fall „.com“). Clients auf der ganzen Welt werden beim Auflösen von DNS-Einträgen nach „contoso.com“ dann an Ihre Domäne in der Azure DNS-Zone geleitet.
+Nehmen wir beispielsweise an, Sie erwerben die Domäne „contoso.com“ und erstellen eine Zone mit dem Namen „contoso.com“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Option, die Namenserveradressen (d. h. die NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle speichert diese NS-Einträge in der übergeordneten Domäne (in diesem Fall „.com“). Clients auf der ganzen Welt werden beim Auflösen von DNS-Einträgen nach „contoso.com“ dann an Ihre Domäne in der Azure DNS-Zone geleitet.
 
 ### <a name="finding-the-name-server-names"></a>Ermitteln der Namen der Namenserver
 Bevor Sie Ihre DNS-Zone an Azure DNS delegieren können, müssen Sie den Namenserver für Ihre Zone ermitteln. Azure DNS weist bei jeder Zonenerstellung Namenserver aus einem Pool zu.
@@ -120,7 +120,7 @@ Jede Registrierungsstelle hat seine eigenen DNS-Verwaltungstools, um die Namense
 
 Wenn Sie eine Domäne an Azure DNS delegieren, müssen Sie die von Azure DNS bereitgestellten Namen der Namenserver verwenden.  Sie sollten immer alle vier Namensservernamen verwenden, und zwar unabhängig vom Namen Ihrer Domäne.  Für die Domänendelegierung ist es nicht erforderlich, dass der Namensservername dieselbe Domäne der obersten Ebene wie Ihre Domäne verwendet.
 
-Sie sollten nicht mit Verbindungsdatensätzen auf die IP-Adressen der Azure DNS-Namenserver verweisen, da sich diese IP-Adressen später ändern können. Delegierungen, für die Namen der Namenserver in Ihrer eigenen Zone verwendet werden (manchmal als „Vanity-Namenserver“ bezeichnet), werden derzeit in Azure DNS nicht unterstützt.
+Sie sollten nicht mit Verbindungsdatensätzen auf die IP-Adressen der Azure DNS-Namenserver verweisen, da sich diese IP-Adressen später ändern können. Delegierungen, für die Namen der Namenserver in Ihrer eigenen Zone verwendet werden (manchmal als „Vanity-Namenserver“ bezeichnet), werden derzeit in Azure DNS nicht unterstützt.
 
 ### <a name="to-verify-name-resolution-is-working"></a>So überprüfen Sie, ob die Namensauflösung funktioniert
 
