@@ -4,7 +4,7 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 1. Erstellen Sie in Visual Studio mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Desktopanwendungsprojekt. Geben Sie dem Projekt den Namen **Sender**.
    
     ![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp1.png)
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten...**. 
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten**. 
 3. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Stellen Sie sicher, dass der Projektname (**Absender**) im Feld **Version(en)** angegeben ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. 
    
     ![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp2.png)
@@ -60,6 +60,6 @@ In diesem Abschnitt schreiben wir eine Windows-Konsolenanwendung, die Ereignisse
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO2-->
 
 
