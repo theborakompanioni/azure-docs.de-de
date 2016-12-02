@@ -21,9 +21,9 @@
 ## [Beispiele](service-bus-relay-samples.md)
 ## [.NET API für Hybridverbindungen](/dotnet/api/microsoft.servicebus)
 ## [.NET API für WCF-Relay](/dotnet/api/microsoft.servicebus)
+## [Porteinstellungen](service-bus-relay-port-settings.md)
 
-
-# angeben
+# Ressourcen
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [MSDN-Foren](https://social.msdn.microsoft.com/forums/home?forum=servbus)
@@ -33,6 +33,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO5-->
 
 

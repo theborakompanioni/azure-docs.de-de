@@ -111,7 +111,7 @@
 ### Lernen
 #### [Übersicht](sql-database-business-continuity.md)
 #### [Datenbanksicherungen](sql-database-automated-backups.md)
-#### [Langfristige Aufbewahrung](sql-database-long-term-retention.md) 
+#### [Langfristige Aufbewahrung](sql-database-long-term-retention.md)
 #### [Datenbankwiederherstellung mithilfe von Sicherungen](sql-database-recovery-using-backups.md)
 #### [Authentifizierungsanforderungen für die Notfallwiederherstellung](sql-database-geo-replication-security-config.md)
 #### [Entwurfsszenarien für Geschäftskontinuität](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
@@ -160,7 +160,7 @@
 #### [Verbinden mit Visual Studio](sql-database-connect-query.md)
 #### [Erstellen einer Clientanwendung](https://www.microsoft.com/sql-server/developer-get-started)
 #### [Arbeiten mit Fehlermeldungen](sql-database-develop-error-messages.md)
-### Kundenimplementierungen von Software as a Service
+### Kundenimplementierungen von Software-as-a-Service
 #### [Daxko/CSI Software](sql-database-implementation-daxko.md)
 #### [GEP](sql-database-implementation-gep.md)
 #### [SnelStart](sql-database-implementation-snelstart.md)
@@ -358,8 +358,6 @@
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
-
-
 
 
 <!--HONumber=Nov16_HO4-->
