@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/17/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3381396ce198fbcaf13d63510ef12b225735a49
+ms.sourcegitcommit: 2a5905c5dcb36777e7b88d6ac44877fdec72e7a5
+ms.openlocfilehash: 3f078e5b5a76e1a6bc840890d2cd90f60a163384
 
 
 ---
@@ -66,7 +66,7 @@ Hier sind die Schritte angegeben, die Sie im Rahmen dieses Tutorials ausführen:
     ![Projektmappen-Explorer](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
-Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure Data Factory. Informationen zu allen Quellen und Senken, die von der Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md##supported-data-stores-and-formats) . Eine Liste mit Computediensten, die von Data Factory unterstützt werden, finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) . In diesem Tutorial werden keine Computedienste verwendet. 
+Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure Data Factory. Informationen zu allen Quellen und Senken, die von der Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Eine Liste mit Computediensten, die von Data Factory unterstützt werden, finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) . In diesem Tutorial werden keine Computedienste verwendet. 
 
 In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedService1** und **AzureSqlLinkedService1**. Der verknüpfte Dienst „AzureStorageLinkedService1“ verknüpft ein Azure-Speicherkonto, und der Dienst „AzureSqlLinkedService“ verknüpft eine Azure SQL-Datenbank mit der Data Factory **ADFTutorialDataFactory**. 
 

@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 11/10/2016
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: e29891dc03f8a864ecacc893fd1cc0d3cc1436cb
-ms.openlocfilehash: 3fe4d985c62b8476bd3b3f923fa17e7f364f9352
+ms.sourcegitcommit: 85b291e3916d1274fefc71bc0c1f12cac2920bb4
+ms.openlocfilehash: 77b4f6e5ee18cb3772487820bc72d7794f82162f
 
 
 ---
@@ -45,6 +45,36 @@ Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie 
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
+Basierend auf der Anzahl von zu schützenden VMs können Sie von unterschiedlichen Ausgangspunkten aus beginnen. Wenn Sie mehrere virtuelle Computer in einem einzelnen Vorgang sichern möchten, können Sie zum Recovery Services-Tresor navigieren und die Sicherung über das Tresordashboard starten. Falls Sie eine einzelne VM sichern möchten, können Sie die Sicherung direkt über das Blatt für die VM-Verwaltung durchführen.
+
+## <a name="configure-backup-from-vm-management-blade"></a>Konfigurieren der Sicherung über das Blatt „VM-Verwaltung“
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Klicken Sie im Menü „Hub“ auf **Weitere Dienste**, und geben Sie in der Liste mit den Ressourcen **Virtuelle Computer** ein.  Die Liste mit den virtuellen Computern wird angezeigt. Wählen Sie in der Liste mit den virtuellen Computern einen virtuellen Computer aus, den Sie sichern möchten. Das Blatt für die VM-Verwaltung wird geöffnet. 
+ ![Blatt „VM-Verwaltung“](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
+ 
+3. Klicken Sie auf dem Blatt „VM-Verwaltung“ links unter „Einstellungen“ auf die Option „Sicherung“.
+![Option „Sicherung“ auf dem Blatt „VM-Verwaltung“](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
+
+4. Das Blatt „Sicherung aktivieren“ wird geöffnet. Auf diesem Blatt werden zwei Eingaben erwartet: Recovery Services-Tresor: Eine Azure Backup-Ressource, die zum Speichern von Sicherungen der VMs verwendet wird. Sicherungsrichtlinie: Mit der Sicherungsrichtlinie werden der Zeitplan für die Sicherungen und die Aufbewahrungsdauer für Sicherungskopien angegeben. Dieses Blatt verfügt über Standardeinstellungen. Sie können die Standardeinstellungen je nach Ihren Sicherungsanforderungen anpassen. 
+![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+
+5. Für den Recovery Services-Tresor können Sie einen vorhandenen Tresor auswählen oder einen neuen erstellen. Bei einer Neuerstellung wird der Tresor in derselben Ressourcengruppe und an demselben Standort wie für den virtuellen Computer erstellt. Gehen Sie wie folgt vor, wenn Sie einen Recovery Services-Tresor mit anderen Werten erstellen möchten: [Erstellen Sie einen Recovery Services-Tresor](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm), bevor Sie in Schritt 3 auf die Option „Sicherung“ klicken, und treffen Sie auf diesem Blatt die entsprechende Auswahl. 
+
+6. Wählen Sie auf dem Blatt „Sicherungsrichtlinie“ die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten, und klicken Sie auf **OK**.
+    ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+
+    In den Details werden die Informationen zur Standardrichtlinie aufgeführt. Wählen Sie im Dropdownmenü die Option **Neu erstellen** , wenn Sie eine Richtlinie erstellen möchten. Im Dropdownmenü steht auch eine Option zur Verfügung, mit der die Zeit der Momentaufnahmenerstellung festgelegt werden kann. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Nachdem Sie auf **OK** geklickt haben, wird die Sicherungsrichtlinie dem virtuellen Computer zugeordnet.
+    
+7. Klicken Sie auf „Sicherung aktivieren“, um die Sicherung auf dem virtuellen Computer zu konfigurieren. Hierdurch wird eine Bereitstellung ausgelöst. 
+![Schaltfläche „Sicherung aktivieren“](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+
+8. Sie können den Status der Konfiguration mithilfe von Benachrichtigungen nachverfolgen. 
+![Benachrichtigung zu „Sicherung aktivieren“](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
+
+9. Nachdem die Bereitstellung für „Sicherung konfigurieren“ abgeschlossen ist, gelangen Sie beim Klicken auf die Option „Sicherung“ auf dem Blatt „VM-Verwaltung“ zum Blatt „Sicherungselement“ für die gesicherte VM.
+![VM-Ansicht „Sicherungselement“](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+
+## <a name="configure-backup-from-recovery-services-vault-view"></a>Konfigurieren der Sicherung über die Ansicht „Recovery Services-Tresor“
 Dies sind die allgemeinen Schritte, die auszuführen sind:  
 
 1. Erstellen Sie einen Recovery Services-Tresor für eine VM.
@@ -187,16 +217,16 @@ So führen Sie **Jetzt sichern**aus
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Installieren des VM-Agents auf dem virtuellen Computer
-Diese Informationen werden bereitgestellt, falls es erforderlich ist. Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aber über den Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. Auf virtuellen Computern, die aus lokalen Rechenzentren migriert werden, ist der VM-Agent nicht installiert. In diesem Fall muss der VM-Agent installiert werden. Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, müssen Sie sicherstellen, dass der Azure VM-Agent auf dem virtuellen Computer korrekt installiert ist (s. Tabelle unten). Wenn Sie einen benutzerdefinierten virtuellen Computer erstellen, [müssen Sie das Kontrollkästchen **VM-Agent installieren** aktivieren](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md), bevor Sie den virtuellen Computer bereitstellen.
+Diese Informationen werden bereitgestellt, falls es erforderlich ist. Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aber über den Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. Auf virtuellen Computern, die aus lokalen Rechenzentren migriert werden, ist der VM-Agent nicht installiert. In diesem Fall muss der VM-Agent installiert werden. Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, müssen Sie sicherstellen, dass der Azure VM-Agent auf dem virtuellen Computer korrekt installiert ist (s. Tabelle unten). Wenn Sie einen benutzerdefinierten virtuellen Computer erstellen, [müssen Sie das Kontrollkästchen **VM-Agent installieren** aktivieren](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json), bevor Sie den virtuellen Computer bereitstellen.
 
-Erfahren Sie mehr über den [VM-Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) und seine [Installation](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md) (in englischer Sprache).
+Erfahren Sie mehr über den [VM-Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) und seine [Installation](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (in englischer Sprache).
 
 Die folgende Tabelle enthält weitere Informationen zum VM-Agent für virtuelle Windows- und Linux-Computer.
 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
 | Installieren des VM-Agent |<li>Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , um anzugeben, dass der Agent installiert wurde. |<li> Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li> [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) , um anzugeben, dass der Agent installiert wurde. |
-| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation |<li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\WindowsAzure\Packages*. <li>Dieser Ordner enthält die Datei "WaAppAgent.exe".<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |N/V |
 
 ### <a name="backup-extension"></a>Backup-Erweiterung

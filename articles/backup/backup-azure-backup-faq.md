@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: e29891dc03f8a864ecacc893fd1cc0d3cc1436cb
-ms.openlocfilehash: f85b3210fc1bdab65da29c3355ed3e1eb35da2ab
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: adee77b102d9c9326dad864f6f2f906f7b8acd0b
 
 
 ---
-# <a name="azure-backup-service-faq"></a>Azure Backup-Dienst – FAQ
+# <a name="azure-backup-service--faq"></a>Azure Backup-Dienst – FAQ
 Dieser Artikel enthält eine Liste mit häufig gestellten Fragen (und den dazugehörigen Antworten) zum Azure Backup-Dienst. In unserer Community erhalten Sie schnell eine Antwort, und wenn eine Frage häufig gestellt wird, fügen wir sie diesem Artikel hinzu. Die Antworten auf Fragen enthalten in der Regel Referenz- bzw. Supportinformationen. Sie können im Disqus-Abschnitt dieses Artikels oder eines verwandten Artikels Fragen zu Azure Backup stellen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
 
 ## <a name="what-is-the-list-of-supported-operating-systems-from-which-i-can-back-up-to-azure-using-azure-backup-br"></a>Welche Betriebssysteme werden für die Sicherung in Azure mithilfe von Azure Backup unterstützt? <br/>
@@ -43,7 +43,7 @@ Azure Backup unterstützt die folgenden Betriebssysteme für die Sicherung von D
 
 Für Azure-VM-Sicherung,
 
-* **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md). Ausnahme: CoreOS Linux.  Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
+* **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ausnahme: CoreOS Linux.  Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
 * **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
 
 ## <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Wo kann ich den neuesten Azure Backup-Agent herunterladen? <br/>
@@ -127,7 +127,7 @@ Absolut. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit 
 ## <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Kann ich den Azure Backup-Agent auf einer Azure-VM installieren, um Dateien und Ordner in temporärem Speicher zu schützen, der von der Azure-VM bereitgestellt wird? <br/>
 Sie können den Azure Backup-Agent auf dem Windows-Gastbetriebssystem installieren und Dateien und Ordner im temporären Speicher sichern. Beachten Sie aber, dass die Sicherungen nicht erfolgreich durchgeführt werden, nachdem die temporären Speicherdaten entfernt wurden. Wenn die temporären Speicherdaten gelöscht wurden, ist außerdem nur die Wiederherstellung in einem nicht volatilen Speicher möglich.
 
-## <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-scdpm-to-work-with-azure-backup-agent-to-protect-onpremises-applicationvm-workloads-to-azure-br"></a>Ich habe zum Schutz meiner Dateien und Ordner den Azure Backup-Agent installiert. Kann ich jetzt SCDPM installieren und zusammen mit dem Azure Backup-Agent verwenden, um lokale Anwendungen/VM-Workloads mit Azure zu schützen? <br/>
+## <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-scdpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>Ich habe zum Schutz meiner Dateien und Ordner den Azure Backup-Agent installiert. Kann ich jetzt SCDPM installieren und zusammen mit dem Azure Backup-Agent verwenden, um lokale Anwendungen/VM-Workloads mit Azure zu schützen? <br/>
 Wenn Sie Azure Backup zusammen mit SCDPM verwenden möchten, empfiehlt es sich, zuerst SCDPM und erst danach den Azure Backup-Agent zu installieren. Dadurch wird die nahtlose Integration von Azure Backup-Agent und SCDPM sichergestellt und der Schutz von Dateien/Ordnern, Anwendungsworkloads und VMs mit Azure direkt über die Verwaltungskonsole von SCDPM ermöglicht. Installieren Sie SCDPM für die oben genannten Zwecke nicht nach dem Azure Backup-Agent. Dies wird weder empfohlen noch unterstützt.
 
 ## <a name="what-is-the-length-of-file-path-that-can-be-specified-as-part-of-azure-backup-policy-using-azure-backup-agent-br"></a>Wie lang darf der Dateipfad sein, der im Rahmen der Azure Backup-Richtlinie mit dem Azure Backup-Agent angegeben werden kann? <br/>
@@ -240,13 +240,13 @@ Der Schlüssel zum Verschlüsseln der Sicherungsdaten ist nur am Standort des Ku
 
   Nachdem die Erstellung der Sicherung am neuen Cachespeicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
 
-## <a name="where-can-i-put-the-cachefolder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Wo kann ich den Cacheordner platzieren, damit der Azure Backup-Agent erwartungsgemäß funktioniert?<br/>
+## <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Wo kann ich den Cacheordner platzieren, damit der Azure Backup-Agent erwartungsgemäß funktioniert?<br/>
 Folgende Speicherorte werden für den Cacheordner nicht empfohlen:
 
 * Netzwerkfreigabe oder Wechselmedium: Bei dem Cacheordner muss es sich um einen lokalen Ordner des Servers handeln, die mittels Onlinesicherung gesichert werden soll. Netzwerkspeicherorte oder Wechselmedien wie USB-Laufwerke werden nicht unterstützt.
 * Offlinevolumes: Der Cacheordner muss für die erwartete Sicherung über den Azure Backup-Agent online sein.
 
-## <a name="are-there-any-attributes-of-the-cachefolder-that-are-not-supportedbr"></a>Gibt es Cacheordnerattribute, die nicht unterstützt werden?<br/>
+## <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Gibt es Cacheordnerattribute, die nicht unterstützt werden?<br/>
  Die folgenden Attribute oder Kombinationen dieser Attribute werden für den Cacheordner nicht unterstützt:
 
 * Verschlüsselt

@@ -1,6 +1,10 @@
-|  | **Klassische Bereitstellung** | **Resource Manager-Bereitstellung** |
-| --- | --- | --- |
-| **Klassisches Portal** |Nicht unterstützt |Nicht unterstützt |
-| **Azure-Portal** |Nicht unterstützt |Nicht unterstützt |
-| **PowerShell** |[Artikel](../articles/vpn-gateway/vpn-gateway-about-forced-tunneling.md) |[Artikel](../articles/vpn-gateway/vpn-gateway-forced-tunneling-rm.md) |
+| **Bereitstellungsmodell/Methode** | **Azure-Portal** | **Klassisches Portal** | **PowerShell** |
+| --- | --- | --- | --- |
+| **Klassisch** |Nicht unterstützt |Nicht unterstützt |[Artikel](../articles/vpn-gateway/vpn-gateway-about-forced-tunneling.md) |
+| **Ressourcen-Manager** |Nicht unterstützt |Nicht unterstützt |[Artikel](../articles/vpn-gateway/vpn-gateway-forced-tunneling-rm.md) |
+
+
+
+<!--HONumber=Nov16_HO3-->
+
 

@@ -1,3 +1,7 @@
-Falls Sie nicht bereits ein Traffic Manager-Profil besitzen, erstellen Sie eines mithilfe der Angaben unter [Erstellen eines Traffic Manager-Profils mithilfe der Schnellerfassung](../articles/traffic-manager/traffic-manager-manage-profiles.md). Schreiben Sie sich den Domänennamen **.trafficmanager.net** auf, der Ihrem Traffic Manager-Profil zugewiesen ist, da dieser für spätere Schritte in diesem Dokument benötigt wird.
+Falls Sie nicht bereits ein Traffic Manager-Profil besitzen, erstellen Sie eines mithilfe der Angaben unter [Erstellen eines Traffic Manager-Profils mithilfe der Schnellerfassung](../articles/traffic-manager/traffic-manager-manage-profiles.md) . Schreiben Sie sich den Domänennamen **.trafficmanager.net** auf, der Ihrem Traffic Manager-Profil zugewiesen ist, da dieser für spätere Schritte in diesem Dokument benötigt wird.
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

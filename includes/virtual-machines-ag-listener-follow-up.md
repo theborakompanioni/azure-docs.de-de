@@ -1,3 +1,7 @@
-Nachdem der Verfügbarkeitsgruppenlistener erstellt wurde, kann es erforderlich sein, die Clusterparameter **RegisterAllProvidersIP** und **HostRecordTTL** für die Listenerressource anzupassen. Diese Parameter können die Dauer für eine erneute Verbindung nach einem Failover reduzieren, was Verbindungstimeouts verhindern kann. Weitere Informationen zu diesen Parametern sowie Beispielcode finden Sie unter [Erstellen oder Konfigurieren eines Verfügbarkeitsgruppenlisteners](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover).
+Nachdem der Verfügbarkeitsgruppenlistener erstellt wurde, kann es erforderlich sein, die Clusterparameter **RegisterAllProvidersIP** und **HostRecordTTL** für die Listenerressource anzupassen.  Diese Parameter können die Dauer für eine erneute Verbindung nach einem Failover reduzieren, was Verbindungstimeouts verhindern kann. Weitere Informationen zu diesen Parametern sowie Beispielcode finden Sie unter [Erstellen oder Konfigurieren eines Verfügbarkeitsgruppenlisteners](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover).
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

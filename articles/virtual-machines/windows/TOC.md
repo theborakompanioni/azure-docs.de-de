@@ -176,13 +176,15 @@
 ### [Erneutes Bereitstellen eines virtuellen Computers](../virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 # Referenz
+## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
-## [Java](/java/api/)
+## [Java](/java/api)
+## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Erstellen von Resource Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Communityvorlagen](https://azure.microsoft.com/documentation/templates/)
-## [Compute REST](/rest/api/compute/)
-## [Network REST](/rest/api/)
-## [Storage REST](/rest/api/storageservices/)
+## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)
+## [Compute REST](/rest/api/compute)
+## [Network REST](/rest/api)
+## [Storage REST](/rest/api/storageservices)
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/#Windows)
@@ -191,6 +193,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

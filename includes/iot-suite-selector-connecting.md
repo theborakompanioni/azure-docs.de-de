@@ -6,7 +6,7 @@
 > 
 > 
 
-## Übersicht über das Szenario
+## <a name="scenario-overview"></a>Übersicht über das Szenario
 In diesem Szenario erstellen Sie ein Gerät, das die folgenden Telemetriedaten an die [vorkonfigurierte Lösung][lnk-what-are-preconfig-solutions] für die Remoteüberwachung sendet:
 
 * Externe Temperatur
@@ -15,35 +15,35 @@ In diesem Szenario erstellen Sie ein Gerät, das die folgenden Telemetriedaten a
 
 Zur Vereinfachung erzeugt der Code auf dem Gerät Beispielwerte. Sie sollten das Beispiel jedoch erweitern, indem Sie echte Sensoren an Ihr Gerät anschließen und tatsächliche Telemetriedaten senden.
 
-Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
+Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Azure – Kostenlose Testversion][lnk-free-trial].
 
-## Vorbereitung
+## <a name="before-you-start"></a>Vorbereitung
 Bevor Sie Code für Ihr Gerät schreiben, müssen Sie Ihre vorkonfigurierte Lösung für die Remoteüberwachung und anschließend ein neues benutzerdefiniertes Gerät in dieser Lösung bereitstellen.
 
-### Bereitstellen der vorkonfigurierten Lösung für die Remoteüberwachung
+### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Bereitstellen der vorkonfigurierten Lösung für die Remoteüberwachung
 Das von Ihnen in diesem Tutorial erstellte Gerät sendet Daten an eine Instanz der vorkonfigurierten Lösung für die [Remoteüberwachung][lnk-remote-monitoring]. Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben, führen Sie die folgenden Schritte aus:
 
 1. Klicken Sie auf der Seite <https://www.azureiotsuite.com/> auf **+**, um eine neue Lösung zu erstellen.
 2. Klicken Sie im Bereich **Remoteüberwachung** auf **Auswählen**, um die neue Lösung zu erstellen.
-3. Geben Sie auf der Seite **Remoteüberwachungslösung erstellen** den gewünschten **Lösungsnamen** ein, wählen Sie die **Region** aus, in der die Bereitstellung erfolgen soll, und wählen Sie dann das zu verwendende Azure-Abonnement aus. Klicken Sie dann auf **Lösung erstellen**.
+3. Geben Sie auf der Seite **Create Remote monitoring solution** (Remoteüberwachungslösung erstellen) einen **Lösungsnamen** Ihrer Wahl ein, wählen Sie die gewünschte **Region** für die Bereitstellung aus, und wählen Sie dann das gewünschte Azure-Abonnement aus. Klicken Sie dann auf **Lösung erstellen**.
 4. Warten Sie, bis der Bereitstellungsvorgang abgeschlossen ist.
 
 > [!WARNING]
-> Die vorkonfigurierten Lösungen verwenden abrechenbare Azure-Dienste. Achten Sie darauf, die vorkonfigurierte Lösung aus dem Abonnement zu entfernen, wenn Sie fertig sind, um unnötige Gebühren zu vermeiden. Auf der Seite <https://www.azureiotsuite.com/> können Sie eine vorkonfigurierte Lösung vollständig aus dem Abonnement entfernen.
+> Die vorkonfigurierten Lösungen verwenden abrechenbare Azure-Dienste. Achten Sie darauf, die vorkonfigurierte Lösung aus dem Abonnement zu entfernen, wenn Sie fertig sind, um unnötige Gebühren zu vermeiden. Sie können eine vorkonfigurierte Lösung vollständig aus Ihrem Abonnement entfernen, indem Sie auf die Seite <https://www.azureiotsuite.com/> zugreifen.
 > 
 > 
 
-Wenn der Bereitstellungsprozess für die Remoteüberwachungslösung abgeschlossen ist, klicken Sie auf **Starten**, um das Lösungsdashboard im Browser zu öffnen.
+Wenn der Bereitstellungsprozess für die Remoteüberwachungslösung abgeschlossen ist, klicken Sie auf **Starten** , um das Lösungsdashboard im Browser zu öffnen.
 
 ![][img-dashboard]
 
-### Bereitstellen des Geräts in der Remoteüberwachungslösung
+### <a name="provision-your-device-in-the-remote-monitoring-solution"></a>Bereitstellen des Geräts in der Remoteüberwachungslösung
 > [!NOTE]
 > Wenn Sie bereits ein Gerät in der Lösung bereits bereitgestellt haben, können Sie diesen Schritt überspringen. Für das Erstellen der Clientanwendung müssen Sie die Anmeldeinformationen des Geräts kennen.
 > 
 > 
 
-Damit ein Gerät eine Verbindung mit der vorkonfigurierten Lösung herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie können die Anmeldeinformationen für das Gerät aus dem Lösungsdashboard abrufen. Sie fügen die Anmeldeinformationen für das Gerät später in diesem Tutorial zu Ihrer Clientanwendung hinzu.
+Damit ein Gerät eine Verbindung mit der vorkonfigurierten Lösung herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie können die Anmeldeinformationen für das Gerät aus dem Lösungsdashboard abrufen. Sie fügen die Anmeldeinformationen für das Gerät später in diesem Tutorial zu Ihrer Clientanwendung hinzu. 
 
 Um Ihrer Remoteüberwachungslösung ein neues Gerät hinzuzufügen, führen Sie folgende Schritte im Lösungsdashboard durch:
 
@@ -53,7 +53,7 @@ Um Ihrer Remoteüberwachungslösung ein neues Gerät hinzuzufügen, führen Sie 
 2. Klicken Sie im Bereich **Benutzerdefiniertes Gerät** auf **Neues Element hinzufügen**.
    
    ![][2]
-3. Wählen Sie **Ich möchte meine eigene Geräte-ID definieren** aus, geben Sie eine Geräte-ID wie z.B. **mydevice** ein, und klicken Sie auf **ID prüfen**, um zu prüfen, ob der Name schon verwendet wird. Klicken Sie dann auf **Erstellen**, um das Gerät bereitzustellen.
+3. Wählen Sie **Ich möchte meine eigene Geräte-ID definieren** aus, geben Sie eine Geräte-ID wie **mydevice** ein, und klicken Sie auf **ID prüfen**, um zu prüfen, ob der Name schon verwendet wird. Klicken Sie dann auf **Erstellen**, um das Gerät bereitzustellen.
    
    ![][3]
 4. Notieren Sie die Anmeldeinformationen des Geräts (Geräte-ID, IoT Hub-Hostname und Geräteschlüssel). Ihre Clientanwendung benötigt diese Informationen zum Herstellen einer Verbindung mit der Remoteüberwachungslösung. Klicken Sie anschließend auf **Fertig**.
@@ -74,4 +74,6 @@ Um Ihrer Remoteüberwachungslösung ein neues Gerät hinzuzufügen, führen Sie 
 [lnk-remote-monitoring]: ../articles/iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!--HONumber=Nov16_HO3-->
+
+

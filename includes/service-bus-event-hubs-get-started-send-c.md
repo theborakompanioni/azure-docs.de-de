@@ -1,16 +1,16 @@
-## Senden von Nachrichten an Ereignis-Hubs
-In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu senden. Wir verwenden die Proton AMQP-Bibliothek aus dem [Apache Qpid-Projekt](http://qpid.apache.org/). Dies entspricht der Verwendung von Service Bus-Warteschlangen und -Themen mit AMQP aus C, wie [hier](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504) beschrieben. Weitere Informationen finden Sie in der [Qpid Proton-Dokumentation](http://qpid.apache.org/proton/index.html).
+## <a name="send-messages-to-event-hubs"></a>Senden von Nachrichten an Ereignis-Hubs
+In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu senden. Wir verwenden die Proton AMQP-Bibliothek aus dem [Apache Qpid-Projekt](http://qpid.apache.org/). Dies entspricht der Verwendung von Service Bus-Warteschlangen und -Themen mit AMQP aus C, wie [hier](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)beschrieben. Weitere Informationen finden Sie in der [Qpid Proton-Dokumentation](http://qpid.apache.org/proton/index.html).
 
-1. Klicken Sie auf der Seite [Qpid AMQP Messenger](http://qpid.apache.org/components/messenger/index.html) (in englischer Sprache) auf den Link **Installing Qpid Proton**, und befolgen Sie die Anweisungen für Ihre Umgebung. Wir setzen eine Linux-Umgebung voraus, z. B. eine [Azure-Linux-VM](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md) mit Ubuntu 14.04.
+1. Klicken Sie auf der Seite [Qpid AMQP Messenger](http://qpid.apache.org/components/messenger/index.html) auf den Link **Installing Qpid Proton** (Installieren von Qpid Proton), und befolgen Sie die Anweisungen für Ihre Umgebung. Wir setzen eine Linux-Umgebung voraus, z.B. eine [Azure-Linux-VM](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mit Ubuntu 14.04.
 2. Um die Proton-Bibliothek zu kompilieren, installieren Sie die folgenden Pakete:
    
     ```
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Laden Sie die [Qpid Proton-Bibliothek](http://qpid.apache.org/proton/index.html) herunter, und extrahieren Sie sie, z. B.:
+3. Laden Sie die [Qpid Proton-Bibliothek](http://qpid.apache.org/proton/index.html) herunter, und extrahieren Sie sie, z.B.:
    
     ```
-    wget http://apache.fastbull.org/qpid/proton/0.7/qpid-proton-0.7.tar.gz
+    wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
 4. Erstellen Sie einen Build-Verzeichnis, kompilieren und installieren Sie:
@@ -22,9 +22,9 @@ In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu 
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Datei namens **sender.c** mit folgendem Inhalt. Vergessen Sie nicht, den Wert für den Namen des Event Hubs und den Namespacenamen (letzterer lautet i. d. R. `{event hub name}-ns`) zu ersetzen. Sie müssen auch eine URL-codierte Version des Schlüssels für die zuvor erstellte **SendRule** eingeben. Die URL-Codierung können Sie [hier](http://www.w3schools.com/tags/ref_urlencode.asp) vornehmen.
+5. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Datei namens **sender.c** mit folgendem Inhalt. Vergessen Sie nicht, den Wert für den Namen des Event Hubs und den Namespacenamen (letzterer lautet i. d. R. `{event hub name}-ns`) zu ersetzen. Sie müssen auch eine URL-codierte Version des Schlüssels für das zuvor erstellte **SendRule**-Element eingeben. Die URL-Codierung können Sie [hier](http://www.w3schools.com/tags/ref_urlencode.asp) vornehmen.
    
-    ```
+    ```c
     #include "proton/message.h"
     #include "proton/messenger.h"
    
@@ -103,7 +103,7 @@ In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu 
         return 0;
     }
     ```
-6. Kompilieren Sie die Datei, wobei **gcc** vorausgesetzt wird:
+6. Kompilieren Sie die Datei, wobei **gcc**vorausgesetzt wird:
    
     ```
     gcc sender.c -o sender -lqpid-proton
@@ -114,4 +114,8 @@ In diesem Abschnitt schreiben wir eine C-App, um Ereignisse an den Event Hub zu 
 > 
 > 
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

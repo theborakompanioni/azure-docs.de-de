@@ -34,6 +34,6 @@ Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Em
 
 [Azure-Portal]: https://portal.azure.com/
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

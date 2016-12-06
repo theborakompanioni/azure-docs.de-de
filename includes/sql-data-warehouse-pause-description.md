@@ -19,4 +19,8 @@ Wenn Sie eine Datenbank anhalten, geschieht Folgendes:
 * Die Speicherung von Daten ist nicht betroffen, und Ihre Daten bleiben intakt. 
 * SQL Data Warehouse bricht alle Vorgänge ab, die gerade ausgeführt werden oder in der Warteschlange stehen.
 
-<!---HONumber=AcomDC_0427_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

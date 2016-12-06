@@ -16,13 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: sewhee
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 86220eabc2625bf8bf1e4d6fac9c0ae41adc962c
+ms.sourcegitcommit: 7d8eb43fea032eb5aa72f448a7c1022be62a7b81
+ms.openlocfilehash: 1591fba6475ba52b6e187ba7ccb14fd2fdfc63c8
 
 ---
 # <a name="creating-an-internal-load-balancer-using-the-azure-cli"></a>Erstellen eines internen Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle
 
-[!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [Vorlage](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -59,7 +63,7 @@ Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Manage
 
         info:    New mode is arm
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-frontend-ip-pool"></a>Erstellen eines virtuellen Netzwerks und einer öffentlichen IP-Adresse für den Front-End-IP-Adresspool
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Erstellen eines virtuellen Netzwerks und einer öffentlichen IP-Adresse für den Front-End-IP-Adresspool
 
 1. Erstellen Sie ein virtuelles Netzwerk (VNET) mit dem Namen *NRPVnet* in der Region „USA, Osten“ mithilfe einer Ressourcengruppe mit dem Namen *NRPRG*.
 
@@ -91,7 +95,7 @@ Der folgende Befehl erstellt einen Load Balancer namens *NRPlb* in der Ressource
     azure network lb create NRPRG NRPlb eastus
     ```
 
-## <a name="create-a-frontend-ip-pool-and-a-backend-address-pool"></a>Erstellen eines Front-End-IP-Pools und eines Back-End-Adresspools
+## <a name="create-a-front-end-ip-pool-and-a-backend-address-pool"></a>Erstellen eines Front-End-IP-Pools und eines Back-End-Adresspools
 Im folgenden Beispiel wird der Front-End-IP-Adresspool erstellt, der den eingehenden Netzwerkdatenverkehr für den Load Balancer empfängt. Außerdem wird der Back-End-IP-Pool erstellt, an den der Front-End-Adresspool den einem Lastenausgleich unterzogenen Netzwerkdatenverkehr sendet.
 
 1. Erstellen Sie einen Front-End-IP-Adresspool, der die im vorherigen Schritt erstellte öffentliche IP-Adresse dem Load Balancer zuordnet.

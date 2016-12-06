@@ -28,10 +28,9 @@
 
 ### [Übersicht](sql-data-warehouse-connect-overview.md)
 ### [Verbindungszeichenfolgen](sql-data-warehouse-connection-strings.md)
-### Abfrage
-#### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-#### [SSMS](sql-data-warehouse-query-ssms.md)
-#### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [SSMS](sql-data-warehouse-query-ssms.md)
+### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [Installieren von Visual Studio](sql-data-warehouse-install-visual-studio.md)
 
 ## Entwickeln
@@ -82,8 +81,7 @@
 ### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [BCP aus SQL Server](sql-data-warehouse-load-from-sql-server-with-bcp.md)
-### [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-### [Data Factory aus Blob Storage](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
+### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
 ### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
 ### [PolyBase-Leitfaden](sql-data-warehouse-load-polybase-guide.md)
 ### [PolyBase aus Blob Storage](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
@@ -111,6 +109,7 @@
 ## Leistung
 
 ### [Übersicht](sql-data-warehouse-overview-manage-user-queries.md)
+### [Columnstore-Komprimierung](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [Abfragen](sql-data-warehouse-manage-monitor.md)
 ### [Workload](sql-data-warehouse-develop-concurrency.md)
 ### [Problembehandlung](sql-data-warehouse-troubleshoot.md)
@@ -146,6 +145,6 @@
 ### [Datenverwaltung](sql-data-warehouse-partner-data-management.md)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

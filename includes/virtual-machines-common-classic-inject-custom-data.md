@@ -12,8 +12,8 @@ In diesem Thema wird Folgendes beschrieben:
 > 
 > 
 
-## Einfügen benutzerdefinierter Daten in einem virtuellen Azure-Computer
-Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli) unterstützt. Hier erstellen wir eine `custom-data.txt`-Datei, die unsere Daten enthält, und fügen sie während der Bereitstellung in die VM ein. Sie können für den Befehl `azure vm create` jede der Optionen verwenden. Der folgende Ansatz ist sehr allgemein gehalten:
+## <a name="injecting-custom-data-into-your-azure-virtual-machine"></a>Einfügen benutzerdefinierter Daten in einem virtuellen Azure-Computer
+Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli) unterstützt. Hier erstellen wir eine `custom-data.txt`-Datei, die unsere Daten enthält, und fügen sie während der Bereitstellung in den virtuellen Computer ein. Sie können für den Befehl `azure vm create` jede der Optionen verwenden. Der folgende Ansatz ist sehr allgemein gehalten:
 
 ```
     azure vm create <vmname> <vmimage> <username> <password> \  
@@ -22,8 +22,8 @@ Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https:
 ```
 
 
-## Verwenden von benutzerdefinierten Daten im virtuellen Computer
-* Wenn es sich bei Ihrer Azure-VM um eine VM auf Windows-Basis handelt, wird die benutzerdefinierte Datendatei unter `%SYSTEMDRIVE%\AzureData\CustomData.bin` gespeichert. Auch wenn sie für die Übertragung vom lokalen Computer zur neuen VM base64-codiert war, wird sie automatisch decodiert und kann sofort geöffnet oder verwendet werden.
+## <a name="using-custom-data-in-the-virtual-machine"></a>Verwenden von benutzerdefinierten Daten im virtuellen Computer
+* Wenn es sich bei Ihrer Azure-VM um eine VM auf Windows-Basis handelt, wird die benutzerdefinierte Datendatei unter `%SYSTEMDRIVE%\AzureData\CustomData.bin`gespeichert. Auch wenn sie für die Übertragung vom lokalen Computer zur neuen VM base64-codiert war, wird sie automatisch decodiert und kann sofort geöffnet oder verwendet werden.
   
   > [!NOTE]
   > Wenn die Datei vorhanden ist, wird sie überschrieben. Die Sicherheit im Verzeichnis ist auf **System:Full Control** und **Administrators:Full Control** festgelegt.
@@ -35,21 +35,25 @@ Dieses Feature wird derzeit nur in der [Azure-Befehlszeilenschnittstelle](https:
   * `/var/lib/waagent/CustomData`
   * `/var/lib/cloud/instance/user-data.txt` 
 
-## Cloud-Init in Azure
+## <a name="cloud-init-on-azure"></a>Cloud-Init in Azure
 Wenn Ihre Azure-VM von einem Ubuntu- oder CoreOS-Image erstellt wurde, können Sie mit CustomData eine Cloud-Config-Datei an Cloud-Init senden. Wenn Ihre benutzerdefinierte Datendatei ein Skript ist, kann dieses einfach von Cloud-Init ausgeführt werden.
 
-### Ubuntu-Cloud-Images
-In den meisten Azure Linux-Images bearbeiten Sie "/ /etc/waagent.conf", um den temporären Ressourcendatenträger und die Auslagerungsdatei zu konfigurieren. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md).
+### <a name="ubuntu-cloud-images"></a>Ubuntu-Cloud-Images
+In den meisten Azure Linux-Images bearbeiten Sie "/ /etc/waagent.conf", um den temporären Ressourcendatenträger und die Auslagerungsdatei zu konfigurieren. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Bei Ubuntu-Cloud-Images muss zum Konfigurieren des Ressourcendatenträgers (auch als "kurzlebiger" Datenträger bezeichnet) und der Swap-Partition jedoch Cloud-Init verwendet werden. Weitere Details finden Sie auf der folgenden Seite im Ubuntu-Wiki: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## Nächste Schritte: Verwenden von Cloud-Init
-Weitere Informationen finden Sie unter [cloud-init documentation for Ubuntu](https://help.ubuntu.com/community/CloudInit) (cloud-init-Dokumentation für Ubuntu) (in englischer Sprache).
+## <a name="next-steps-using-cloud-init"></a>Nächste Schritte: Verwenden von Cloud-Init
+Weitere Informationen finden Sie unter [cloud-init documentation for Ubuntu](https://help.ubuntu.com/community/CloudInit)(cloud-init-Dokumentation für Ubuntu) (in englischer Sprache).
 
 <!--Link references-->
 [REST-API-Referenz zur Dienstverwaltung mit "Add Role"](http://msdn.microsoft.com/library/azure/jj157186.aspx)
 
 [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)
 
-<!---HONumber=AcomDC_0427_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

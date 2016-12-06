@@ -4,41 +4,41 @@
 > 
 > 
 
-## <a name="introduction"></a>Introduction
-Device twins are JSON documents that store device state information (meta-data, configurations, and conditions). IoT Hub persists a device twin for each device that you connect to IoT Hub.
+## <a name="introduction"></a>Einführung
+Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. IoT Hub speichert einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden.
 
-Use device twins to:
+Verwenden Sie Gerätezwillinge für Folgendes:
 
-* Store device meta-data from your back end.
-* Report current state information such as available capabilities and conditions (for example, the connectivity method used) from your device app.
-* Synchronize the state of long-running workflows (such as firmware and configuration updates) between device app and back end.
-* Query your device meta-data, configuration, or state.
+* Speichern von Gerätemetadaten von Ihrem Back-End
+* Melden von aktuellen Zustandsinformationen, z.B. verfügbare Funktionen und Bedingungen (wie die verwendete Verbindungsmethode), von Ihrer Geräte-App
+* Synchronisieren des Zustands von Workflows mit langer Ausführungsdauer (z.B. Firmware- und Konfigurationsupdates) zwischen Geräte-App und Back-End
+* Abfragen von Metadaten, Konfiguration oder Status des Geräts
 
 > [!NOTE]
-> Device twins are designed for synchronization and for querying device configurations and conditions. Use [device-to-cloud messages][lnk-d2c] for sequences of timestamped events (such as telemetry streams of time-based sensor data) and [cloud-to-device methods][lnk-methods] for interactive control of devices, such as turning on a fan from a user-controlled app.
+> Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Verwenden Sie [D2C-Nachrichten][lnk-d2c] für Sequenzen mit Ereignissen mit Zeitstempel (z.B. Telemetriedatenströme mit zeitbasierten Sensordaten) und [direkte Methoden][lnk-methods] für die interaktive Steuerung von Geräten, z.B. Einschalten eines Ventilators über eine benutzergesteuerte App.
 > 
 > 
 
-Device twins are stored in an IoT hub and contain:
+Gerätezwillinge werden in einem IoT Hub gespeichert und enthalten Folgendes:
 
-* *tags*, device meta-data accessible only by the back end;
-* *desired properties*, JSON objects modifiable by the back end and observable by the device app; and
-* *reported properties*, JSON objects modifiable by the device app and readable by the back end. Tags and properties cannot contain arrays, but objects can be nested.
+* *Tags*: Gerätemetadaten, auf die nur vom Back-End zugegriffen werden kann.
+* *Gewünschte Eigenschaften*: JSON-Objekte, die vom Back-End geändert und von der Geräte-App überwacht werden können.
+* *Gemeldete Eigenschaften*: JSON-Objekte, die von der Geräte-App geändert und vom Back-End gelesen werden können. Tags und Eigenschaften können keine Arrays enthalten, aber Objekte können geschachtelt werden.
 
 ![][img-twin]
 
-Additionally, the app back end can query device twins based on all the above data.
-Refer to [Understand device twins][lnk-twins] for more information about device twins and to the [IoT Hub query language][lnk-query] reference for querying.
+Außerdem können mit dem App-Back-End Gerätezwillinge basierend auf allen obigen Daten abgefragt werden.
+Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins], und eine Referenz zu Abfragen finden Sie unter [IoT Hub-Abfragesprache][lnk-query].
 
 > [!NOTE]
-> At this time, device twins are accessible only from devices that connect to IoT Hub using the MQTT protocol. Please refer to the [MQTT support][lnk-devguide-mqtt] article for instructions on how to convert existing device app to use MQTT.
+> Zurzeit ist der Zugriff auf Gerätezwillinge nur von Geräten aus möglich, die über das MQTT-Protokoll Verbindungen mit IoT Hub herstellen. Anweisungen zum Konvertieren vorhandener Geräte-Apps für die Verwendung von MQTT finden Sie im Artikel [MQTT-Unterstützung][lnk-devguide-mqtt].
 > 
 > 
 
-This tutorial shows you how to:
+Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-* Create a back-end app that adds *tags* to a device twin, and a simulated device that reports its connectivity channel as a *reported property* on the device twin.
-* Query devices from your back end app using filters on the tags and properties previously created.
+* Erstellen Sie eine Back-End-App, mit der einem Gerätezwilling *Tags* hinzufügt werden, sowie ein simuliertes Gerät, von dem der Konnektivitätskanal als *gemeldete Eigenschaft* auf dem Gerätezwilling gemeldet wird.
+* Fragen Sie Geräte von Ihrer Back-End-App ab, indem Sie Filter für die zuvor erstellten Tags und Eigenschaften verwenden.
 
 <!-- images -->
 [img-twin]: media/iot-hub-selector-twin-get-started/twin.png
@@ -50,6 +50,6 @@ This tutorial shows you how to:
 [lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

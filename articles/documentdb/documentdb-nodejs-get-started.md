@@ -13,19 +13,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: hero-article
-ms.date: 08/11/2016
+ms.date: 11/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 06707b45944ee6b0810fbd45abbf69dccc1e00e1
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: 9d4d49e1a05487a06e071c54008a333dc88c4a50
 
 
 ---
 # <a name="nosql-nodejs-tutorial-documentdb-nodejs-console-application"></a>NoSQL Node.js-Tutorial: DocumentDB Node.js-Konsolenanwendung
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
+> * [.NET Core](documentdb-dotnetcore-get-started.md)
 > * [Node.js](documentdb-nodejs-get-started.md)
-> 
+> * [C++](documentdb-cpp-get-started.md)
 > 
 
 Willkommen beim Node.js-Tutorial für das Azure DocumentDB Node.js SDK! Im Rahmen dieses Tutorials erstellen Sie eine Konsolenanwendung, mit der DocumentDB-Ressourcen, einschließlich einer Node-Datenbank, erstellt und abgefragt werden können.
@@ -52,10 +53,11 @@ Lassen Sie uns anfangen.
 Stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 * Ein aktives Azure-Konto. Wenn Sie kein Konto haben, können Sie sich für eine [kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
+    * Als Alternative können Sie den [Azure DocumentDB-Emulator](documentdb-nosql-local-emulator.md) für dieses Tutorial verwenden.
 * [Node.js](https://nodejs.org/) Version v0.10.29 oder höher.
 
 ## <a name="step-1-create-a-documentdb-account"></a>Schritt 1: Erstellen eines DocumentDB-Kontos
-In diesem Schritt erstellen Sie ein DocumentDB-Konto. Wenn Sie bereits über ein Konto verfügen, das Sie verwenden möchten, können Sie diesen Schritt überspringen und mit [Einrichten der Node.js-Anwendung](#SetupNode)fortfahren.
+In diesem Schritt erstellen Sie ein DocumentDB-Konto. Wenn Sie bereits über ein Konto verfügen, das Sie verwenden möchten, können Sie diesen Schritt überspringen und mit [Einrichten der Node.js-Anwendung](#SetupNode)fortfahren. Wenn Sie den DocumentDB-Emulator verwenden, führen Sie die Schritte unter [Azure DocumentDB-Emulator](documentdb-nosql-local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten der Node.js-Anwendung](#SetupNode) fort.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -622,6 +624,6 @@ Aktualisieren Sie dann in der Datei ```config.js``` die Werte für „config.end
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

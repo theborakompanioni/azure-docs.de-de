@@ -1,6 +1,6 @@
 <!--author=jgerend last changed: 03/16/16-->
 
-## Vorbereitung auf Updates
+## <a name="preparing-for-updates"></a>Vorbereitung auf Updates
 Sie müssen die folgenden Schritte ausführen, bevor Sie das Update überprüfen und anwenden können:
 
 1. Erstellen Sie eine Cloudmomentaufnahme der Gerätedaten.
@@ -30,4 +30,8 @@ Sie müssen die folgenden Schritte ausführen, bevor Sie das Update überprüfen
 
 Nachdem Sie diese manuellen Vorabprüfungen erfolgreich abgeschlossen haben, können Sie mit dem Überprüfen und Installieren der Updates beginnen.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,7 +1,7 @@
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regionen und Verfügbarkeit für virtuelle Computer in Azure
 Es ist wichtig zu verstehen, wie und wo Ihre virtuellen Computer (VMs) in Azure betrieben werden. Dies gilt auch für die Optionen zum Verbessern der Leistung, Verfügbarkeit und Redundanz. Azure wird in mehreren Rechenzentren weltweit betrieben. Dieser Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Dieser Artikel enthält eine Übersicht über die Verfügbarkeits- und Redundanzfunktionen von Azure.
 
-## <a name="what-are-azure-regions?"></a>Was sind Azure-Regionen?
+## <a name="what-are-azure-regions"></a>Was sind Azure-Regionen?
 Mit Azure können Sie Ressourcen wie virtuelle Computer in definierten geografischen Regionen wie „USA, Westen“, „Europa, Norden“ oder „Asien, Südosten“ erstellen. Es gibt derzeit weltweit 30 Azure-Regionen. Sie können die [Liste der Regionen und Standorte](https://azure.microsoft.com/regions/)überprüfen. Innerhalb jeder Region sind mehrere Datencenter vorhanden, um Redundanz und Verfügbarkeit bereitzustellen. Dieser Ansatz gibt Ihnen beim Erstellen von Anwendungen die Flexibilität, VMs möglichst nah an Ihren Benutzern zu erstellen, um rechtliche oder steuerliche Anforderungen zu erfüllen und Compliance zu wahren.
 
 ## <a name="special-azure-regions"></a>Spezielle Azure-Regionen
@@ -70,16 +70,16 @@ Informationen zu den Preisen für die verschiedenen Speichertypen und Verfügbar
 ## <a name="azure-images"></a>Azure-Images
 In Azure werden virtuelle Computer aus einem Image erstellt. Die Images stammen normalerweise vom [Azure Marketplace](https://azure.microsoft.com/marketplace/), wo Partner vorkonfigurierte vollständige Betriebssystem- oder Anwendungsimages anbieten können.
 
-Wenn Sie einen virtuellen Computer aus einem Image im Azure Marketplace erstellen, arbeiten Sie tatsächlich mit Vorlagen. Azure Resource Manager-Vorlagen sind deklarative JSON-Dateien (JavaScript Object Notation), die zum Erstellen von komplexen Anwendungsumgebungen mit virtuellen Computern, Speicher, virtuellen Netzwerken usw. verwendet werden können. Erfahren Sie mehr über die Verwendung von [Azure Resource Manager-Vorlagen](../articles/resource-group-overview.md) und das [Erstellen Ihrer eigenen Vorlagen](../articles/resource-group-authoring-templates.md).
+Wenn Sie einen virtuellen Computer aus einem Image im Azure Marketplace erstellen, arbeiten Sie tatsächlich mit Vorlagen. Azure Resource Manager-Vorlagen sind deklarative JSON-Dateien (JavaScript Object Notation), die zum Erstellen von komplexen Anwendungsumgebungen mit virtuellen Computern, Speicher, virtuellen Netzwerken usw. verwendet werden können. Erfahren Sie mehr über die Verwendung von [Azure Resource Manager-Vorlagen](../articles/azure-resource-manager/resource-group-overview.md) und das [Erstellen Ihrer eigenen Vorlagen](../articles/resource-group-authoring-templates.md).
 
-Sie können auch eigene benutzerdefinierte Images erstellen und mit der [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md) oder [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md) hochladen, um schnell benutzerdefinierte virtuelle Computer für Ihre speziellen Anforderungen zu erstellen.
+Sie können auch eigene benutzerdefinierte Images erstellen und mit der [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hochladen, um schnell benutzerdefinierte virtuelle Computer für Ihre speziellen Anforderungen zu erstellen.
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
 Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern, die es Azure ermöglicht zu verstehen, wie Ihre Anwendung erstellt ist, um Redundanz und Verfügbarkeit zu bieten. Es wird empfohlen, dass zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe erstellt werden, um eine Anwendung mit hoher Verfügbarkeit bereitzustellen und um die [Azure-SLA von 99,95%](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Die Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor Hardwareausfällen schützen und die sichere Anwendung von Updates ermöglichen: Fehlerdomänen (FDs) und Updatedomänen (UDs).
 
 ![Schematische Darstellung der Konfiguration mit Updatedomäne und Fehlerdomäne](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
 
-Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) oder [virtuellen Windows-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md).
+Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [virtuellen Windows-Computern](../articles/virtual-machines/virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="fault-domains"></a>Fehlerdomänen
 Eine Fehlerdomäne ist eine logische Gruppe von zugrunde liegender Hardware mit einer gemeinsamen Stromquelle und einem Netzwerkswitch, ähnlich einem Rack in einem lokalen Rechenzentrum. Wenn Sie VMs in einer Verfügbarkeitsgruppe erstellen, werden Ihre VMs von der Azure-Plattform automatisch auf diese Fehlerdomänen verteilt. Bei diesem Ansatz werden die Auswirkungen von potenziellen Hardwareausfällen, Netzwerkausfällen oder Stromausfällen beschränkt.
@@ -90,6 +90,8 @@ Eine Updatedomäne ist eine logische Gruppe von zugrunde liegender Hardware, die
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können diese Verfügbarkeits- und Redundanzfunktionen jetzt nutzen, um Ihre Azure-Umgebung zu erstellen. Weitere Informationen zu bewährten Methoden finden Sie unter [Checkliste für die Verfügbarkeit](../articles/best-practices-availability-checklist.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

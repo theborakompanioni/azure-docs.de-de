@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3c045d652c04a8a03525753d9c18c3017c04f08
+ms.sourcegitcommit: 7b55f6730c6a2bf8637f312c452fe552f82dbaeb
+ms.openlocfilehash: 69b333b0c43d2e3e4d62168650123322a79579ba
 
 
 ---
@@ -84,7 +84,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> Ersetzen Sie **accountname** und **accountkey** durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+> Ersetzen Sie **accountname** und **accountkey** durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md#manage-your-storage-access-keys).
 > 
 > 
 
@@ -272,7 +272,7 @@ Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**st
 In diesem Beispiel ergeben sich 24 Datenslices, da jede Stunde ein Datenslice erstellt wird.
 
 > [!NOTE]
-> Einzelheiten zu JSON-Eigenschaften, die im Beispiel oben verwendet wurden, finden Sie unter [Anatomie einer Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) .
+> Einzelheiten zu JSON-Eigenschaften, die im Beispiel oben verwendet wurden, finden Sie unter [Anatomie einer Pipeline](data-factory-create-pipelines.md) .
 > 
 > 
 

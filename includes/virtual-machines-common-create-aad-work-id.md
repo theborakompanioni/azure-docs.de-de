@@ -2,13 +2,13 @@
 <br>
 
 > [!NOTE]
-> Wenn Sie einen Benutzernamen und ein Kennwort von einem Administrator erhalten haben, besteht eine hohe Wahrscheinlichkeit, dass Sie bereits eine Arbeits- oder Schul-ID (auch als *Organisations-ID* bezeichnet) besitzen. In diesem Fall können Sie sofort Ihr Azure-Konto verwenden, um auf entsprechende Azure-Ressourcen zuzugreifen. Wenn Sie feststellen, dass Sie diese Ressourcen nicht verwenden können, können Sie bei Bedarf zu diesem Artikel zurückkehren. Weitere Informationen finden Sie unter [Konten, die für die Anmeldung verwendet werden können](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts) und insbesondere [Die Beziehung zwischen einem Azure-Abonnement und Azure AD](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir).
+> Wenn Sie einen Benutzernamen und ein Kennwort von einem Administrator erhalten haben, besteht eine hohe Wahrscheinlichkeit, dass Sie bereits eine Arbeits- oder Schul-ID (auch als *Organisations-ID*bezeichnet) besitzen. In diesem Fall können Sie sofort Ihr Azure-Konto verwenden, um auf entsprechende Azure-Ressourcen zuzugreifen. Wenn Sie feststellen, dass Sie diese Ressourcen nicht verwenden können, können Sie bei Bedarf zu diesem Artikel zurückkehren. Weitere Informationen finden Sie unter [Konten, die für die Anmeldung verwendet werden können](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts) sowie unter [Beziehung zwischen einem Azure-Abonnement und Azure AD](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir).
 > 
 > 
 
 Die Schritte sind einfach. Sie müssen Ihre angemeldete Identität im klassischen Azure-Portal suchen, Ihre Azure Active Directory-Standarddomäne ermitteln und als Azure-Co-Administrator einen neuen Benutzer hinzufügen.
 
-## Suchen des Standardverzeichnisses im klassischen Azure-Portal
+## <a name="locate-your-default-directory-in-the-azure-classic-portal"></a>Suchen des Standardverzeichnisses im klassischen Azure-Portal
 Melden Sie sich als Erstes mit Ihrer persönlichen Microsoft-Kontoidentität beim [klassischen Azure-Portal](https://manage.windowsazure.com) an. Nachdem Sie angemeldet sind, scrollen Sie im blauen Bereich auf der linken Seite nach unten, und klicken Sie auf **ACTIVE DIRECTORY**.
 
 ![Azure Active Directory](./media/virtual-machines-common-create-aad-work-id/azureactivedirectorywidget.png)
@@ -17,7 +17,7 @@ Zunächst suchen Sie einige Informationen über Ihre Identität in Azure. Im Hau
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultaadlisting.png)
 
-Nun werden Sie einige weitere Informationen darüber herausfinden. Klicken Sie auf die Standardverzeichniszeile, um zu den Eigenschaften des Standardverzeichnisses zu gelangen.
+Nun werden Sie einige weitere Informationen darüber herausfinden. Klicken Sie auf die Standardverzeichniszeile, um zu den Eigenschaften des Standardverzeichnisses zu gelangen.  
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectorypage.png)
 
@@ -27,22 +27,22 @@ Um den Standarddomänennamen anzuzeigen, klicken Sie auf **Domänen**.
 
 Hier können Sie sehen, dass Azure Active Directory beim Erstellen des Azure-Kontos eine persönliche Standarddomäne als Hash Ihrer persönlichen ID erstellt hat, die als Unterdomäne von onmicrosoft.com verwendet wird. Das ist die Domäne, der Sie nun einen neuen Benutzer hinzufügen.
 
-## Erstellen neuer Benutzer in der Standarddomäne
-Klicken Sie auf **BENUTZER**, und suchen Sie dann nach Ihrem einzigen persönlichen Konto. Daraufhin sollte in der Spalte **QUELLE** angezeigt werden, dass es sich um ein **Microsoft-Konto** handelt. Sie möchten einen Benutzer in Ihrer .onmicrosoft.com-Azure Active Directory-Standarddomäne erstellen.
+## <a name="creating-a-new-user-in-the-default-domain"></a>Erstellen neuer Benutzer in der Standarddomäne
+Klicken Sie auf **BENUTZER** , und suchen Sie dann nach Ihrem einzigen persönlichen Konto. Daraufhin sollte in der Spalte **QUELLE** angezeigt werden, dass es sich um ein **Microsoft-Konto** handelt. Sie möchten einen Benutzer in Ihrer .onmicrosoft.com-Azure Active Directory-Standarddomäne erstellen.
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectoryuserslisting.png)
 
-In den nächsten Schritten folgen Sie [diesen Anweisungen](https://technet.microsoft.com/library/hh967632.aspx#BKMK_1), jedoch anhand eines konkreten Beispiels.
+In den nächsten Schritten folgen Sie [diesen Anweisungen](https://technet.microsoft.com/library/hh967632.aspx#BKMK_1) , jedoch anhand eines konkreten Beispiels.
 
 Klicken Sie unten auf der Seite auf **+BENUTZER HINZUFÜGEN**. Geben Sie im daraufhin angezeigten Dialogfeld den neuen Benutzernamen ein, und legen Sie für **Art des Benutzers** die Option **Neuer Benutzer in Ihrem Unternehmen** fest. In diesem Beispiel lautet der neue Benutzername `ahmet`. Stellen Sie sicher, dass Sie die weiter oben ermittelte Standarddomäne als Domäne für die E-Mail-Adresse von Ahmet auswählen. Klicken Sie anschließend auf den Pfeil zum Aufrufen der nächsten Seite.
 
 ![](./media/virtual-machines-common-create-aad-work-id/addingauserwithdirectorydropdown.png)
 
-Geben Sie hier weitere Details für Ahmet ein, stellen Sie dabei jedoch sicher, den entsprechenden Wert für **ROLLE** auszuwählen. Es kann einfach **Global Admin** ausgewählt werden, damit alles in jedem Fall funktioniert, aber wenn Sie eine Rolle mit geringeren Berechtigungen verwenden können, ist das eine gute Idee. In diesem Beispiel wird die Rolle **Benutzer** verwendet. (Weitere Informationen finden Sie unter [Administratorberechtigungen nach Rolle](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1).) Aktivieren Sie die mehrstufige Authentifizierung nicht, es sei denn, Sie möchten sie für jeden Anmeldevorgang verwenden. Klicken Sie anschließend auf den Pfeil zum Aufrufen der nächsten Seite.
+Geben Sie hier weitere Details für Ahmet ein, und wählen Sie dabei den entsprechenden Wert für **ROLLE** aus. Sie können natürlich einfach **Globaler Administrator** auswählen, damit alles funktioniert, es empfiehlt sich jedoch, nach Möglichkeit eine Rolle mit weniger Berechtigungen zu verwenden. In diesem Beispiel wird die Rolle **Benutzer** verwendet. (Weitere Informationen finden Sie unter [Administratorberechtigungen nach Rolle](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1).) Aktivieren Sie die mehrstufige Authentifizierung nicht, es sei denn, Sie möchten sie für jeden Anmeldevorgang verwenden. Klicken Sie anschließend auf den Pfeil zum Aufrufen der nächsten Seite.
 
 ![](./media/virtual-machines-common-create-aad-work-id/userprofileuseradmin.png)
 
-Klicken Sie auf die Schaltfläche **Erstellen**, um ein temporäres Kennwort für Ahmet zu generieren und anzuzeigen.
+Klicken Sie auf die Schaltfläche **Erstellen** , um ein temporäres Kennwort für Ahmet zu generieren und anzuzeigen.
 
 ![](./media/virtual-machines-common-create-aad-work-id/gettemporarypasswordforuser.png)
 
@@ -54,16 +54,16 @@ Nun wird der neue Benutzer angezeigt, in diesem Fall **Ahmet der Entwickler**, d
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectoryusersaftercreate.png)
 
-Bei Verwendung von **KENNWORT IN E-MAIL SENDEN** wird die folgende Art der E-Mail-Adresse gesendet.
+Bei Verwendung von **KENNWORT IN E-MAIL SENDEN**wird die folgende Art der E-Mail-Adresse gesendet.
 
 ![](./media/virtual-machines-common-create-aad-work-id/emailreceivedfromnewusercreation.png)
 
-## Hinzufügen von Azure-Co-Administrator-Rechten für Abonnements
+## <a name="adding-azure-co-administrator-rights-for-subscriptions"></a>Hinzufügen von Azure-Co-Administrator-Rechten für Abonnements
 Nun müssen Sie den neuen Benutzer als Co-Administrator Ihres Abonnements hinzufügen, damit der neue Benutzer sich am Verwaltungsportal anmelden kann. Klicken Sie hierzu im unteren linken Bereich auf **Einstellungen**.
 
 ![](./media/virtual-machines-common-create-aad-work-id/thesettingswidget.png)
 
-Klicken Sie oben im Haupteinstellungsbereich auf **ADMINISTRATOREN** – es sollte nur Ihre persönliche Microsoft-Konto-Identität angezeigt werden. Klicken Sie unten auf der Seite auf **+HINZUFÜGEN**, um einen Co-Administrator anzugeben. Geben Sie hier die E-Mail-Adresse des neuen Benutzers ein, den Sie erstellt haben, einschließlich der Standarddomäne. Wie im folgenden Screenshot dargestellt, wird ein grünes Häkchen neben dem Benutzer im Standardverzeichnis angezeigt. Denken Sie daran, alle Abonnements auszuwählen, die dieser Benutzer verwalten können soll.
+Klicken Sie oben im Haupteinstellungsbereich auf **ADMINISTRATOREN** – es sollte nur Ihre persönliche Microsoft-Konto-Identität angezeigt werden. Klicken Sie unten auf der Seite auf **+HINZUFÜGEN** , um einen Co-Administrator anzugeben. Geben Sie hier die E-Mail-Adresse des neuen Benutzers ein, den Sie erstellt haben, einschließlich der Standarddomäne. Wie im folgenden Screenshot dargestellt, wird ein grünes Häkchen neben dem Benutzer im Standardverzeichnis angezeigt. Denken Sie daran, alle Abonnements auszuwählen, die dieser Benutzer verwalten können soll.
 
 ![](./media/virtual-machines-common-create-aad-work-id/addingnewuserascoadmin.png)
 
@@ -71,7 +71,7 @@ Wenn Sie fertig sind, sollten nun zwei Benutzer angezeigt werden, einschließlic
 
 ![](./media/virtual-machines-common-create-aad-work-id/newuseraddedascoadministrator.png)
 
-## Anmelden und Ändern des Kennworts des neuen Benutzers
+## <a name="logging-in-and-changing-the-new-users-password"></a>Anmelden und Ändern des Kennworts des neuen Benutzers
 Melden Sie sich als der neue Benutzer an, den Sie erstellt haben.
 
 ![](./media/virtual-machines-common-create-aad-work-id/signinginwithnewuser.png)
@@ -84,8 +84,8 @@ Der Erfolg wird folgendermaßen angezeigt.
 
 ![](./media/virtual-machines-common-create-aad-work-id/successtourdialog.png)
 
-## Nächste Schritte
-Beispielsweise können Sie nun mit Ihrer neuen Azure Active Directory-Identität [Azure-Ressourcengruppenvorlagen](../articles/xplat-cli-azure-resource-manager.md) verwenden.
+## <a name="next-steps"></a>Nächste Schritte
+Beispielsweise können Sie nun mit Ihrer neuen Azure Active Directory-Identität [Azure-Ressourcengruppenvorlagen](../articles/xplat-cli-azure-resource-manager.md)verwenden.
 
     azure login
     info:    Executing command login
@@ -116,4 +116,7 @@ Beispielsweise können Sie nun mit Ihrer neuen Azure Active Directory-Identität
     data:
     info:    group create command OK
 
-<!---HONumber=AcomDC_0330_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

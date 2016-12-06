@@ -16,4 +16,8 @@ Ein Beispiel wäre die Verbindung mit dem Listener über einen der virtuellen Co
 
 Führen Sie beim Testen des Listeners ein Failover der Verfügbarkeitsgruppe durch, um sicherzustellen, dass Clients über Failover eine Verbindung mit dem Listener herstellen können.
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

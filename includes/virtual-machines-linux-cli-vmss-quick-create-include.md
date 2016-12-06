@@ -1,16 +1,15 @@
-Falls noch nicht erfolgt, können Sie eine [kostenlose Testversion eines Azure-Abonnements](https://azure.microsoft.com/pricing/free-trial/) und die [Azure-CLI](../articles/xplat-cli-install.md) erhalten, [die mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Sobald Sie dies getan haben, können Sie die folgenden Befehle ausführen, um eine Schnellerfassung für eine Skalierungsgruppe durchzuführen:
+Falls noch nicht erfolgt, können Sie eine [kostenlose Testversion eines Azure-Abonnements](https://azure.microsoft.com/pricing/free-trial/) und die [Azure-CLI](../articles/xplat-cli-install.md) erhalten, [die mit Ihrem Azure-Konto verbunden ist](../articles/xplat-cli-connect.md). Vergewissern Sie sich wie folgt, dass sich die Azure-Befehlszeilenschnittstelle im Resource Manager-Modus befindet.
 
-```bash
-# make sure we are in Resource Manager mode (https://azure.microsoft.com/en-us/documentation/articles/resource-manager-deployment-model/)
+```azurecli
 azure config mode arm
+```
 
-# quick-create a scale set
-#
-# generic syntax:
-# azure vmss quick-create -n SCALE-SET-NAME -g RESOURCE-GROUP-NAME -l LOCATION -u USERNAME -p PASSWORD -C INSTANCE-COUNT -Q IMAGE-URN
-#
-# example:
-azure vmss quick-create -n negatvmss -g negatvmssrg -l westus -u negat -p P4ssw0rd -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
+Erstellen Sie jetzt die Skalierungsgruppe mithilfe des Befehls `azure vmss quick-create`. Das folgende Beispiel erstellt eine Skalierungsgruppe mit dem Namen `myVMSS` mit fünf VM-Instanzen in der Ressourcengruppe mit dem Namen `myResourceGroup`:
+
+```azurecli
+azure vmss quick-create -n myVMSS -g myResourceGroup -l westus \
+    -u ops -p P@ssw0rd! \
+    -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
 ```
 
 Falls Sie den Standort oder den URN (Uniform Resource Name) des Images anpassen möchten, sehen Sie sich bitte die Befehle `azure location list` und `azure vm image {list-publishers|list-offers|list-skus|list|show}` an.
@@ -30,7 +29,8 @@ line=$(azure network lb list -g negatvmssrg | grep negatvmssrg)
 split_line=( $line )
 lb_name=${split_line[1]}
 
-# now that we have the name of the load balancer, we can show the details to find which Public IP (PIP) is associated to it
+# now that we have the name of the load balancer, we can show the details to find which Public IP (PIP) is 
+# associated to it
 #
 # generic syntax:
 # azure network lb show -g RESOURCE-GROUP-NAME -n LOAD-BALANCER-NAME

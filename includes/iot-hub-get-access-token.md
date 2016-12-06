@@ -1,7 +1,7 @@
-## Ein Ressourcen-Manager-Token abrufen
-Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des Azure-Ressourcen-Managers für die Ressourcen ausführen. Im hier gezeigten Beispiel wird die Kennwortauthentifizierung verwendet, andere Ansätze finden Sie unter [Authentifizieren von Anforderungen des Azure-Ressourcen-Managers][lnk-authenticate-arm].
+## <a name="obtain-an-azure-resource-manager-token"></a>Abrufen eines Azure Resource Manager-Tokens
+Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des Azure-Ressourcen-Managers für die Ressourcen ausführen. Im hier gezeigten Beispiel wird die Kennwortauthentifizierung verwendet, andere Ansätze finden Sie unter [Authentifizieren von Azure Resource Manager-Anforderungen ][lnk-authenticate-arm].
 
-1. Fügen Sie der **Main**-Methode in „Program.cs“ folgenden Code hinzu, um mithilfe der Anwendungs-ID und des Kennworts ein Token von Azure AD abzurufen.
+1. Fügen Sie der **Main** -Methode in „Program.cs“ folgenden Code hinzu, um mithilfe der Anwendungs-ID und des Kennworts ein Token von Azure AD abzurufen.
    
     ```
     var authContext = new AuthenticationContext(string.Format  
@@ -37,4 +37,6 @@ Azure Active Directory muss alle Aufgaben authentifizieren, die Sie mithilfe des
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!--HONumber=Nov16_HO3-->
+
+

@@ -7,4 +7,8 @@
 
 <sup>1</sup>Jeder Clouddienst mit Web-/Workerrollen kann zwei Bereitstellungen haben: je eine für Produktions- und Stagingumgebung. Beachten Sie außerdem, dass sich dieses Limit auf die Anzahl der individuellen Rollen (Konfiguration) und nicht auf die Anzahl der Instanzen pro Rolle (Skalierung) bezieht.
 
-<!---HONumber=AcomDC_0420_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -45,7 +45,7 @@
 ## [Entwickeln mit dem Language Understanding Intelligent Service](https://www.luis.ai/Help/)
 
 # Referenz
-## [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
+## [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
 ## [REST](https://docs.microsoft.com/rest/api/cognitiveservices/)
 
 # Ressourcen 
@@ -54,6 +54,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=cognitive-services)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

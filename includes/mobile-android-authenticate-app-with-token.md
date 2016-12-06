@@ -1,5 +1,5 @@
 
-Im vorhergehenden Beispiel wurde eine Standardanmeldung gezeigt, bei der der Client bei jedem Starten der App sowohl den Identitätsanbieter als auch den Azure-Back-End-Dienst kontaktieren muss. Diese Methode ist jedoch ineffizient und zudem können Probleme auftreten, wenn viele Kunden die App gleichzeitig starten möchten. Ein besserer Ansatz ist es daher, das vom Azure-Service zurückgegebene Authentifizierungstoken zwischenzuspeichern und vor einer anbieterbasierten Anmeldung zu verwenden.
+Im vorhergehenden Beispiel wurde eine Standardanmeldung gezeigt, bei der der Client bei jedem Starten der App sowohl den Identitätsanbieter als auch den Azure-Back-End-Dienst kontaktieren muss. Diese Methode ist jedoch ineffizient und zudem können Probleme auftreten, wenn viele Kunden die App gleichzeitig starten möchten. Ein besserer Ansatz ist es daher, das vom Azure-Service zurückgegebene Authentifizierungstoken zwischenzuspeichern und vor einer anbieterbasierten Anmeldung zu verwenden. 
 
 > [!NOTE]
 > Das vom Azure-Back-End-Dienst zurückgegebene Authentifizierungstoken können Sie unabhängig davon, ob Sie die clientverwaltete oder die dienstverwaltete Authentifizierung verwenden, zwischenspeichern. In diesem Lernprogramm wird die dienstverwaltete Authentifizierung verwendet.
@@ -11,12 +11,12 @@ Im vorhergehenden Beispiel wurde eine Standardanmeldung gezeigt, bei der der Cli
         import android.content.Context;
         import android.content.SharedPreferences;
         import android.content.SharedPreferences.Editor;
-2. Fügen Sie die folgenden Elemente der `ToDoActivity`-Klasse hinzu.
+2. Fügen Sie die folgenden Elemente der `ToDoActivity` -Klasse hinzu.
    
         public static final String SHAREDPREFFILE = "temp";    
         public static final String USERIDPREF = "uid";    
         public static final String TOKENPREF = "tkn";    
-3. Fügen Sie der Datei "ToDoActivity.java" die folgende Definition für die `cacheUserToken`-Methode hinzu.
+3. Fügen Sie der Datei "ToDoActivity.java" die folgende Definition für die `cacheUserToken` -Methode hinzu.
    
         private void cacheUserToken(MobileServiceUser user)
         {
@@ -27,13 +27,13 @@ Im vorhergehenden Beispiel wurde eine Standardanmeldung gezeigt, bei der der Cli
             editor.commit();
         }    
    
-    Diese Methode speichert die Benutzer-ID und das Token in einer Einstellungsdatei, die als privat gekennzeichnet wird. Dadurch sollte der Zugriff auf den Cache gesichert sein, sodass andere Apps auf dem Gerät nicht auf das Token zugreifen können, da die Einstellungen für die App in Sandboxes abgeschirmt sind. Trotzdem ist es möglich, dass jemand, der Zugriff auf das Gerät erlangt hat, auf andere Weise auf den Tokencache zugreift.
+    Diese Methode speichert die Benutzer-ID und das Token in einer Einstellungsdatei, die als privat gekennzeichnet wird. Dadurch sollte der Zugriff auf den Cache gesichert sein, sodass andere Apps auf dem Gerät nicht auf das Token zugreifen können, da die Einstellungen für die App in Sandboxes abgeschirmt sind. Trotzdem ist es möglich, dass jemand, der Zugriff auf das Gerät erlangt hat, auf andere Weise auf den Tokencache zugreift. 
    
    > [!NOTE]
    > Sollte es sich um äußerst sensible Daten handeln und anderen Benutzern der Zugriff auf das Gerät möglich sein, können Sie das Token durch Verschlüsselung zusätzlich schützen. Eine absolut sichere Lösung kann jedoch im Rahmen dieses Lernprogramms nicht gegeben werden und hängt zudem von Ihren Sicherheitsanforderungen ab.
    > 
    > 
-4. Fügen Sie der Datei "ToDoActivity.java" die folgende Definition für die `loadUserTokenCache`-Methode hinzu.
+4. Fügen Sie der Datei "ToDoActivity.java" die folgende Definition für die `loadUserTokenCache` -Methode hinzu.
    
         private boolean loadUserTokenCache(MobileServiceClient client)
         {
@@ -82,4 +82,9 @@ Im vorhergehenden Beispiel wurde eine Standardanmeldung gezeigt, bei der der Cli
             }
         }
 6. Erstellen Sie die App und testen Sie die Authentifizierung mit einem gültigen Konto. Führen Sie sie mindestens zweimal aus. Während der ersten Ausführung sollten Sie eine Aufforderung zur Anmeldung und Erstellung des Tokencache erhalten. Danach wird bei jeder Anmeldung versucht, zur Authentifizierung den Tokencache zu laden, und es sollte keine Anmeldung mehr erforderlich sein.
+
+
+
+<!--HONumber=Nov16_HO3-->
+
 

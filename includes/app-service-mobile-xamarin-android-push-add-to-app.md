@@ -1,6 +1,5 @@
-
 1. Erstellen Sie eine neue Klasse im Projekt `ToDoBroadcastReceiver`.
-2. Fügen Sie der **ToDoBroadcastReceiver**-Klasse die folgenden using-Anweisungen hinzu:
+2. Fügen Sie der **ToDoBroadcastReceiver** -Klasse die folgenden using-Anweisungen hinzu:
    
         using Gcm.Client;
         using Microsoft.WindowsAzure.MobileServices;
@@ -15,7 +14,7 @@
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-4. Ersetzen Sie die vorhandene **ToDoBroadcastReceiver**-Klassendefinition durch folgende:
+4. Ersetzen Sie die vorhandene **ToDoBroadcastReceiver** -Klassendefinition durch folgende:
    
         [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, 
@@ -30,8 +29,8 @@
             public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
         }
    
-    Ersetzen Sie im obigen Code *`<PROJECT_NUMBER>`* durch die von Google beim Bereitstellen Ihrer App im Google-Entwicklerportal zugewiesene Projektnummer.
-5. Fügen Sie in der der Projektdatei "ToDoBroadcastReceiver.cs" den folgenden Code zur Definition der **PushHandlerService**-Klasse hinzu:
+    Ersetzen Sie im obigen Code *`<PROJECT_NUMBER>`* durch die von Google beim Bereitstellen Ihrer App im Google-Entwicklerportal zugewiesene Projektnummer. 
+5. Fügen Sie in der der Projektdatei "ToDoBroadcastReceiver.cs" den folgenden Code zur Definition der **PushHandlerService** -Klasse hinzu:
    
         // The ServiceAttribute must be applied to the class.
         [Service] 
@@ -45,10 +44,10 @@
     Beachten Sie, dass die Klasse von **GcmServiceBase** abgeleitet ist, und dass diese über das Attribut **Service** verfügen muss.
    
    > [!NOTE]
-   > Die **GcmServiceBase**-Klasse implementiert die Methoden **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** und **OnError()**. Sie müssen diese Methoden in der **PushHandlerService**-Klasse überschreiben.
+   > Die **GcmServiceBase**-Klasse implementiert die Methoden **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** und **OnError()**. Sie müssen diese Methoden in der **PushHandlerService** -Klasse überschreiben.
    > 
    > 
-6. Fügen Sie folgenden Code der **PushHandlerService**-Klasse hinzu, mit dem der **OnRegistered**-Ereignishandler überschrieben wird.
+6. Fügen Sie folgenden Code der **PushHandlerService**-Klasse hinzu, mit dem der **OnRegistered**-Ereignishandler überschrieben wird. 
    
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -59,7 +58,7 @@
             var push = client.GetPush();
    
             // Define a message body for GCM.
-            const string templateBodyGCM = "{"data":{"message":"$(messageParam)"}}";
+            const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
    
             // Define the template registration as JSON.
             JObject templates = new JObject();
@@ -123,7 +122,7 @@
    
            }
        }
-8. Überschreiben Sie die **OnUnRegistered()**-Methode und die **OnError()**-Methoden mit folgendem Code.
+8. Überschreiben Sie die **OnUnRegistered()**-Methode und die **OnError()**-Methode mit folgendem Code:
    
        protected override void OnUnRegistered(Context context, string registrationId)
        {
@@ -136,4 +135,8 @@
                string.Format("Error occurred in the notification: {0}.", errorId));
        }
 
-<!---HONumber=AcomDC_1203_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

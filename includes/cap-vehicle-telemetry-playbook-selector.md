@@ -1,8 +1,12 @@
 > [!div class="op_single_selector"]
-> * [Architectural Overview](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry.md)
-> * [Deep Dive into the Solution](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
-> * [PowerBI Dashboard Setup](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
+> * [Übersicht über die Architektur](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry.md)
+> * [Ausführliche Betrachtung der Lösung](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
+> * [Einrichtung des PowerBI-Dashboards](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 > 
 > 
 
-<!---HONumber=AcomDC_1203_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

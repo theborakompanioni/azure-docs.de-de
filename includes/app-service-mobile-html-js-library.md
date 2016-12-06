@@ -1,11 +1,11 @@
-## <a name="create-client"></a>Erstellen einer Clientverbindung
-Stellen Sie eine Clientverbindung her, indem Sie ein `WindowsAzure.MobileServiceClient`-Objekt erstellen. Ersetzen Sie `appUrl` durch die URL zu Ihrer mobilen App.
+## <a name="a-namecreate-clientacreate-a-client-connection"></a><a name="create-client"></a>Erstellen einer Clientverbindung
+Stellen Sie eine Clientverbindung her, indem Sie ein `WindowsAzure.MobileServiceClient` -Objekt erstellen.  Ersetzen Sie `appUrl` durch die URL zu Ihrer mobilen App.
 
 ```
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="table-reference"></a>Arbeiten mit Tabellen
+## <a name="a-nametable-referenceawork-with-tables"></a><a name="table-reference"></a>Arbeiten mit Tabellen
 Zum Zugreifen auf oder Aktualisieren von Daten erstellen Sie einen Verweis auf die Back-End-Tabelle. Ersetzen Sie `tableName` durch den Namen Ihrer Tabelle.
 
 ```
@@ -22,8 +22,9 @@ Sobald Sie einen Tabellenverweis haben, können Sie mit der Tabelle:
 * [Daten ändern](#modifying)
 * [Daten löschen](#deleting)
 
-### <a name="querying"></a>Vorgehensweise: Abfragen von Tabellenverweisen
-Sobald Sie über einen Tabellenverweis verfügen, können Sie diesen zum Abfragen von Daten auf dem Server verwenden. Abfragen erfolgen in einer „LINQ-ähnlichen“ Sprache. Um alle Daten aus der Tabelle zurückzugeben, verwenden Sie Folgendes:
+### <a name="a-namequeryingahow-to-query-a-table-reference"></a><a name="querying"></a>Vorgehensweise: Abfragen von Tabellenverweisen
+Sobald Sie über einen Tabellenverweis verfügen, können Sie diesen zum Abfragen von Daten auf dem Server verwenden.  Abfragen erfolgen in einer „LINQ-ähnlichen“ Sprache.
+Um alle Daten aus der Tabelle zurückzugeben, verwenden Sie Folgendes:
 
 ```
 /**
@@ -51,11 +52,11 @@ table
     .then(success, failure);
 ```
 
-Die „success“-Funktion mit den Ergebnissen wird aufgerufen. Verwenden Sie `for (var i in results)` nicht in der „success“-Funktion, da dies zum Durchlaufen von Informationen in den Ergebnissen führt, wenn andere Abfragefunktionen verwendet werden (wie z. B. `.includeTotalCount()`).
+Die „success“-Funktion mit den Ergebnissen wird aufgerufen.   Verwenden Sie `for (var i in results)` nicht in der „success“-Funktion, da dies zum Durchlaufen von Informationen in den Ergebnissen führt, wenn andere Abfragefunktionen verwendet werden (wie z.B. `.includeTotalCount()`).
 
 Weitere Informationen zur Abfragesyntax finden Sie in der [Dokumentation „Query-Objekt“].
 
-#### <a name="table-filter"></a>Filtern von Daten auf dem Server
+#### <a name="a-nametable-filterafiltering-data-on-the-server"></a><a name="table-filter"></a>Filtern von Daten auf dem Server
 Sie können für den Tabellenverweis eine `where` Klausel verwenden:
 
 ```
@@ -65,7 +66,7 @@ table
     .then(success, failure);
 ```
 
-Sie können auch eine Funktion nutzen, die das Objekt filtert. In diesem Fall wird die Variable `this` dem aktuell gefilterten Objekt zugewiesen. Folgendes ist funktionell gleichwertig mit dem vorherigen Beispiel:
+Sie können auch eine Funktion nutzen, die das Objekt filtert.  In diesem Fall wird die Variable `this` dem aktuell gefilterten Objekt zugewiesen.  Folgendes ist funktionell gleichwertig mit dem vorherigen Beispiel:
 
 ```
 function filterByUserId(currentUserId) {
@@ -78,8 +79,8 @@ table
     .then(success, failure);
 ```
 
-#### <a name="table-paging"></a>Aufteilung von Daten auf Seiten
-Verwenden Sie die Methoden „take()“ und „skip()“. Angenommen, die Tabelle soll in Datensätze mit 100 Zeilen aufgeteilt werden:
+#### <a name="a-nametable-pagingapaging-through-data"></a><a name="table-paging"></a>Aufteilung von Daten auf Seiten
+Verwenden Sie die Methoden „take()“ und „skip()“.  Angenommen, die Tabelle soll in Datensätze mit 100 Zeilen aufgeteilt werden:
 
 ```
 var totalCount = 0, pages = 0;
@@ -102,11 +103,11 @@ function loadPage(pageNum) {
 }
 ```
 
-Die Methode `.includeTotalCount()` wird verwendet, um ein totalCount-Feld dem „results“-Objekt hinzuzufügen. Das „totalCount“-Feld wird mit der Gesamtanzahl von Datensätzen aufgefüllt, die zurückgegeben wird, wenn keine Seitenverwaltung verwendet wird.
+Die Methode `.includeTotalCount()` wird verwendet, um ein totalCount-Feld dem „results“-Objekt hinzuzufügen.  Das „totalCount“-Feld wird mit der Gesamtanzahl von Datensätzen aufgefüllt, die zurückgegeben wird, wenn keine Seitenverwaltung verwendet wird.
 
-Sie können dann die „pages“-Variable und einige Schaltflächen auf der Benutzeroberfläche verwenden, um eine Seitenliste bereitzustellen. Verwenden Sie „loadPage()“ zum Laden der neuen Datensätze für jede Seite. Implementieren Sie eine Zwischenspeicherung, um den Zugriff auf Datensätze zu beschleunigen, die bereits geladen wurden.
+Sie können dann die „pages“-Variable und einige Schaltflächen auf der Benutzeroberfläche verwenden, um eine Seitenliste bereitzustellen. Verwenden Sie „loadPage()“ zum Laden der neuen Datensätze für jede Seite.  Implementieren Sie eine Zwischenspeicherung, um den Zugriff auf Datensätze zu beschleunigen, die bereits geladen wurden.
 
-#### <a name="sorting-data"></a>Vorgehensweise: Zurückgeben sortierter Daten
+#### <a name="a-namesorting-dataahow-to-return-data-sorted"></a><a name="sorting-data"></a>Vorgehensweise: Zurückgeben sortierter Daten
 Verwenden Sie die Abfragemethoden „.orderBy()“ oder „.orderByDescending()“:
 
 ```
@@ -118,7 +119,7 @@ table
 
 Weitere Informationen zum „Query“-Objekt finden Sie in der [Dokumentation „Query-Objekt“].
 
-### <a name="inserting"></a>Gewusst wie: Einfügen von Daten
+### <a name="a-nameinsertingahow-to-insert-data"></a><a name="inserting"></a>Gewusst wie: Einfügen von Daten
 Erstellen Sie ein „JavaScript“-Objekt mit dem entsprechenden Datum, und rufen Sie „table.insert()“ asynchron auf:
 
 ```
@@ -134,12 +135,13 @@ table
     }, failure);
 ```
 
-Bei erfolgreichem Einfügen wird das eingefügte Element mit den zusätzlichen Feldern zurückgegeben, die für Synchronisierungsvorgänge erforderlich sind. Sie müssen Ihren Cache mit diesen Informationen für spätere Updates aktualisieren.
+Bei erfolgreichem Einfügen wird das eingefügte Element mit den zusätzlichen Feldern zurückgegeben, die für Synchronisierungsvorgänge erforderlich sind.  Sie müssen Ihren Cache mit diesen Informationen für spätere Updates aktualisieren.
 
-Beachten Sie, dass das Node.js-Server SDK für Azure Mobile Apps für Entwicklungszwecke ein dynamisches Schema unterstützt. Bei einem dynamischen Schema wird das Schema der Tabelle dynamisch aktualisiert, was das Hinzufügen von Spalten zur Tabelle ermöglicht, indem diese in einem Einfüge- oder Aktualisierungsvorgang angegeben werden. Es wird empfohlen, das dynamische Schema zu deaktivieren, bevor die Anwendung in die Produktion verlagert wird.
+Beachten Sie, dass das Node.js-Server SDK für Azure Mobile Apps für Entwicklungszwecke ein dynamisches Schema unterstützt.
+Bei einem dynamischen Schema wird das Schema der Tabelle dynamisch aktualisiert, was das Hinzufügen von Spalten zur Tabelle ermöglicht, indem diese in einem Einfüge- oder Aktualisierungsvorgang angegeben werden.  Es wird empfohlen, das dynamische Schema zu deaktivieren, bevor die Anwendung in die Produktion verlagert wird.
 
-### <a name="modifying"></a>Gewusst wie: Ändern von Daten
-Ähnlich wie bei der „.insert()“-Methode müssen Sie zuerst ein „Update“-Objekt erstellen und dann „.update()“ aufrufen. Das „Update“-Objekt muss die ID des Datensatzes enthalten, der aktualisiert werden soll. Diese wird beim Lesen des Datensatzes oder Aufrufen von „.insert()“ abgerufen.
+### <a name="a-namemodifyingahow-to-modify-data"></a><a name="modifying"></a>Gewusst wie: Ändern von Daten
+Ähnlich wie bei der „.insert()“-Methode müssen Sie zuerst ein „Update“-Objekt erstellen und dann „.update()“ aufrufen.  Das „Update“-Objekt muss die ID des Datensatzes enthalten, der aktualisiert werden soll. Diese wird beim Lesen des Datensatzes oder Aufrufen von „.insert()“ abgerufen.
 
 ```
 var updateItem = {
@@ -154,8 +156,8 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>Gewusst wie: Löschen von Daten
-Rufen Sie die „.del()“-Methode auf, um einen Datensatz zu löschen. Übergeben Sie die ID in einen Objektverweis:
+### <a name="a-namedeletingahow-to-delete-data"></a><a name="deleting"></a>Gewusst wie: Löschen von Daten
+Rufen Sie die „.del()“-Methode auf, um einen Datensatz zu löschen.  Übergeben Sie die ID in einen Objektverweis:
 
 ```
 table
@@ -165,4 +167,7 @@ table
     }, failure);
 ```
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

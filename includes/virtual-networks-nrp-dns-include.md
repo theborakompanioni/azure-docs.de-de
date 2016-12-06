@@ -1,11 +1,11 @@
-## Azure DNS
-Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt.
+## <a name="azure-dns"></a>Azure DNS
+Azure DNS ist ein Hostingdienst für DNS-Domänen, der die  Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt.
 
 | Eigenschaft | Beschreibung | Beispielwert |
 | --- | --- | --- |
 | **DNSzones** |Domänenzoneninformationen zum Hosten von DNS-Einträgen einer bestimmten Domäne |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com“ |
 
-### DNS-Ressourceneintragssätze
+### <a name="dns-record-sets"></a>DNS-Ressourceneintragssätze
 DNS-Zonen haben ein als Datensatzgruppe bezeichnetes untergeordnetes Objekt. Datensatzgruppen sind eine nach Typ geordnete Sammlung von Hostdatensätzen für eine DNS-Zone. Datensatztypen sind A, AAAA, CNAME, MX, NS, SOA, SRV und TXT.
 
 | Eigenschaft | Beschreibung | Beispielwert |
@@ -20,7 +20,7 @@ DNS-Zonen haben ein als Datensatzgruppe bezeichnetes untergeordnetes Objekt. Dat
 
 <sup>1</sup> lässt nur einen Wert pro Datensatz zu.
 
-<sup>2</sup> lässt nur einen Autoritätsursprung-Datensatztyp (SOA, Start of Authority) pro DNS-Zone zu.
+<sup>2</sup> lässt nur einen Autoritätsursprung-Datensatztyp (SOA, Start of Authority) pro DNS-Zone zu. 
 
 DNS-Zonenbeispiel im Json-Format:
 
@@ -77,9 +77,13 @@ DNS-Zonenbeispiel im Json-Format:
           ]
     }
 
-## Weitere Ressourcen
-Lesen Sie die [REST-API-Dokumentation für DNS-Zonen](https://msdn.microsoft.com/library/azure/mt130626.aspx), um weitere Informationen zu erhalten.
+## <a name="additional-resources"></a>Weitere Ressourcen
+Lesen Sie die [REST-API-Dokumentation für DNS-Zonen ](https://msdn.microsoft.com/library/azure/mt130626.aspx) , um weitere Informationen zu erhalten.
 
-Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für DNS-Ressourceneintragssätze](https://msdn.microsoft.com/library/azure/mt130627.aspx).
+Weitere Informationen erhalten Sie in der [REST-API-Dokumentation für DNS-Ressourceneintragssätze](https://msdn.microsoft.com/library/azure/mt130627.aspx) .
 
-<!---HONumber=AcomDC_0128_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

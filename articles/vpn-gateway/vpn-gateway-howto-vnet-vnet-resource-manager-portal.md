@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7dbfcbc27d7a071027055bc52d96e423c37abd2d
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 39e582d8435366ac900d242b96a5898e56d1eaeb
 
 
 ---
-# <a name="configure-a-vnettovnet-connection-using-the-azure-portal"></a>Konfigurieren einer VNet-zu-VNet-Verbindung über das Azure-Portal
+# <a name="configure-a-vnet-to-vnet-connection-using-the-azure-portal"></a>Konfigurieren einer VNet-zu-VNet-Verbindung über das Azure-Portal
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
@@ -35,7 +35,7 @@ Wenn Sie virtuelle Netzwerke mithilfe des Azure-Portals verbinden möchten, müs
 
 ![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
 
-### <a name="deployment-models-and-methods-for-vnettovnet-connections"></a>Bereitstellungsmodelle und -methoden für VNet-zu-VNet-Verbindungen
+### <a name="deployment-models-and-methods-for-vnet-to-vnet-connections"></a>Bereitstellungsmodelle und -methoden für VNet-zu-VNet-Verbindungen
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
 Die folgende Tabelle enthält die derzeit verfügbaren Bereitstellungsmodelle und -methoden für VNet-zu-VNet-Konfigurationen. Falls ein Artikel mit Konfigurationsschritten verfügbar ist, steht in der Tabelle ein direkter Link zur Verfügung.
@@ -45,7 +45,7 @@ Die folgende Tabelle enthält die derzeit verfügbaren Bereitstellungsmodelle un
 #### <a name="vnet-peering"></a>VNet-Peering
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
-## <a name="about-vnettovnet-connections"></a>Über VNet-zu-VNet-Verbindungen
+## <a name="about-vnet-to-vnet-connections"></a>Über VNet-zu-VNet-Verbindungen
 Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein Azure VPN Gateway, um einen sicheren Tunnel mit IPSec/IKE bereitzustellen. Die VNets, die Sie verbinden, können sich in verschiedenen Regionen oder unter verschiedenen Abonnements befinden.
 
 Sie können sogar VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren:
@@ -187,13 +187,13 @@ Wenn Sie auf eine der Verbindungen doppelklicken, erhalten Sie weitere Informati
 
 ![Zusammenfassung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
 
-## <a name="a-namefaqavnettovnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
+## <a name="a-namefaqavnet-to-vnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Informationen zu VNet-zu-VNet-Verbindungen zu erhalten.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md) .
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
 
 
 

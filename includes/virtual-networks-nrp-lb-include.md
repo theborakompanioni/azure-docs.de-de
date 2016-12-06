@@ -1,5 +1,5 @@
-## Lastenausgleichsmodul
-Ein Lastenausgleichsmodul wird verwendet, wenn Sie Ihre Anwendungen skalieren möchten. Zu den typischen Bereitstellungsszenarios zählen Anwendungen, die auf mehreren VM-Instanzen ausgeführt werden. Den VM-Instanzen ist ein Lastenausgleichsmodul vorgelagert, das hilft den Netzwerkdatenverkehr an die verschiedenen Instanzen zu verteilen.
+## <a name="load-balancer"></a>Lastenausgleichsmodul
+Ein Lastenausgleichsmodul wird verwendet, wenn Sie Ihre Anwendungen skalieren möchten. Zu den typischen Bereitstellungsszenarios zählen Anwendungen, die auf mehreren VM-Instanzen ausgeführt werden. Den VM-Instanzen ist ein Lastenausgleichsmodul vorgelagert, das hilft den Netzwerkdatenverkehr an die verschiedenen Instanzen zu verteilen. 
 
 ![NICs auf einem einzelnen virtuellen Computer](./media/resource-groups-networking/figure8.png)
 
@@ -186,7 +186,11 @@ Beispiel für eine Vorlage für einen Load Balancer im Json-Format:
       ]
     }
 
-### Zusätzliche Ressourcen
-Weitere Informationen finden Sie unter [Lastenausgleich für REST-API](https://msdn.microsoft.com/library/azure/mt163651.aspx).
+### <a name="additional-resources"></a>Zusätzliche Ressourcen
+Weitere Informationen finden Sie unter [Lastenausgleich für REST-API](https://msdn.microsoft.com/library/azure/mt163651.aspx) .
 
-<!---HONumber=AcomDC_1223_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,5 +1,5 @@
 ---
-title: Python-Web- und -Workerrollen mit Visual Studio | Microsoft Docs
+title: Erste Schritte mit Python und Azure Cloud Services | Microsoft-Dokumentation
 description: "Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen."
 services: cloud-services
 documentationcenter: python
@@ -12,15 +12,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/03/2016
+ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d951e05a9a0ae59adb64d53726e9898d95424d80
+ms.sourcegitcommit: 712c62ed3d5ff21847e2431df3530e7d39c6aae2
+ms.openlocfilehash: 53f7c17d8404bb02ab8bb2be9018ba2b179f1b08
 
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
+
+> [!div class="op_single_selector"]
+> * [.NET](cloud-services-dotnet-get-started.md)
+> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
+> * [Python](cloud-services-python-ptvs.md)
+
 Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und -Workerrollen mit [Python-Tools für Visual Studio][Python-Tools für Visual Studio]. Sie erfahren, wie Sie mit Visual Studio einen einfachen Clouddienst, für den Python verwendet wird, erstellen und bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -212,7 +218,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Mit diesem Skript wird PIP aufgerufen, und alle Abhängigkeiten in der Datei **requirements.txt** werden installiert. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet, andernfalls Python 3.5.
+Mit diesem Skript wird PIP aufgerufen, und alle Abhängigkeiten in der Datei **requirements.txt** werden installiert. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet. Andernfalls wird Python 3.5 verwendet.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -247,7 +253,7 @@ if (-not $is_emulated){
 
 **bin\LaunchWorker.ps1** wurde ursprünglich erstellt, um eine Reihe von Vorbereitungsschritten auszuführen, aber dies funktioniert nicht wie gewünscht. Ersetzen Sie den Inhalt dieser Datei durch das folgende Skript.
 
-Mit dem Skript wird die Datei **worker.py** aus Ihrem Python-Projekt aufgerufen. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet, andernfalls Python 3.5.
+Mit dem Skript wird die Datei **worker.py** aus Ihrem Python-Projekt aufgerufen. Wenn die Umgebungsvariable **PYTHON2** auf **on** festgelegt ist, wird Python 2.7 verwendet. Andernfalls wird Python 3.5 verwendet.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -346,7 +352,7 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blob-Dienst]: ../storage/storage-python-how-to-use-blob-storage.md
+[Blobdienst]: ../storage/storage-python-how-to-use-blob-storage.md
 [Warteschlangendienst]: ../storage/storage-python-how-to-use-queue-storage.md
 [Tabellenspeicherdienst]: ../storage/storage-python-how-to-use-table-storage.md
 [Service Bus-Warteschlangen]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
@@ -357,14 +363,14 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 
 [Python-Tools für Visual Studio]: http://aka.ms/ptvs
 [Python Tools für Visual Studio – Dokumentation]: http://aka.ms/ptvsdocs
-[Cloud Service-Projekte]: http://go.microsoft.com/fwlink/?LinkId=624028
-[Azure SDK-Tools für Visual Studio 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK-Tools für Visual Studio 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
+[Clouddienstprojekte]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Azure SDK-Tools für VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
+[Azure SDK-Tools für VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 (32 Bit)]: https://www.python.org/downloads/
 [Python 3.5 (32 Bit)]: https://www.python.org/downloads/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

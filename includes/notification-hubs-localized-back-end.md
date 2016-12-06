@@ -15,8 +15,8 @@ Dieser Abschnitt zeigt, wie Benachrichtigungen mit einer Konsolen-App gesendet w
 
 Der enthaltene Code wird an Windows Store- und iOS-Geräte übertragen, da das Back-End an ein beliebiges unterstütztes Gerät übertragen kann.
 
-### Senden von Benachrichtigungen mit einer C#-Konsolenanwendung
-Ändern Sie die `SendTemplateNotificationAsync`-Methode in der zuvor erstellten Konsolen-App mit dem folgenden Code. Wie Ihnen möglicherweise auffällt, ist es in diesem Fall nicht erforderlich, mehrere Benachrichtigungen für verschiedene Gebietsschemas und Plattformen zu senden.
+### <a name="to-send-notifications-using-a-c-console-app"></a>Senden von Benachrichtigungen mit einer C#-Konsolenanwendung
+Ändern Sie die `SendTemplateNotificationAsync` -Methode in der zuvor erstellten Konsolen-App mit dem folgenden Code. Wie Ihnen möglicherweise auffällt, ist es in diesem Fall nicht erforderlich, mehrere Benachrichtigungen für verschiedene Gebietsschemas und Plattformen zu senden.
 
         private static async void SendTemplateNotificationAsync()
         {
@@ -54,7 +54,7 @@ Der enthaltene Code wird an Windows Store- und iOS-Geräte übertragen, da das B
 
 Beachten Sie, dass dieser einfache Aufruf die lokalisierten Nachrichten unabhängig von der Plattform an **alle** Ihre Geräte sendet, da Ihr Notification Hub die korrekte systemeigene Nutzlast erstellt und an alle Geräte sendet, die ein bestimmtes Tag abonniert haben.
 
-### Senden der Benachrichtigung mit Mobile Services
+### <a name="sending-the-notification-with-mobile-services"></a>Senden der Benachrichtigung mit Mobile Services
 Im Mobile Service-Scheduler können Sie das folgende Skript verwenden:
 
     var azure = require('azure');
@@ -71,4 +71,8 @@ Im Mobile Service-Scheduler können Sie das folgende Skript verwenden:
     });
 
 
-<!---HONumber=AcomDC_1217_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -3,9 +3,8 @@ title: Erstellen eines Lastenausgleichs mit Internetzugriff in Resource Manager 
 description: Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff im Resource Manager mithilfe einer Vorlage erstellen.
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: 
+author: kumudd
+manager: timlt
 tags: azure-resource-manager
 ms.assetid: b24f4729-4559-4458-8527-71009d242647
 ms.service: load-balancer
@@ -14,16 +13,20 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 540706ec32e3a0fbdfc29edd7e3e7b1784ecc720
+ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
+ms.openlocfilehash: 9200174563523f40e425d4f6570e97f732d84129
 
 ---
 
 # <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>Erstellen eines Load Balancers mit Internetzugriff mithilfe einer Vorlage
 
-[!INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
+> * [Vorlage](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -45,9 +48,9 @@ Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorl
 2. Führen Sie das Cmdlet **New-AzureRmResourceGroupDeployment** aus, um eine Ressourcengruppe mit der Vorlage zu erstellen.
 
     ```powershell
-        New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
-            -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
-            -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
+    New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
+        -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
+        -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```
 
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle
@@ -58,7 +61,7 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 2. Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
 
     ```azurecli
-        azure config mode arm
+    azure config mode arm
     ```
 
     Hier ist die erwartete Ausgabe des obigen Befehls:
@@ -69,7 +72,7 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 4. Führen Sie das Cmdlet **azure group deployment create** aus, um den neuen Load Balancer mithilfe der heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
 
     ```azurecli
-        azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'
+    azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -82,6 +85,6 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

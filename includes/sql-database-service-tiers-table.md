@@ -1,43 +1,36 @@
 ### <a name="basic-service-tier"></a>Basic-Dienstebene
-|  |  |
-| --- | --- |
-| Max. DTU-Anzahl |5 |
-| Max. Datenbankgröße (GB) |2 |
-| Max. In-Memory-OLTP-Speicher (GB) |– |
+| **Dienstebene** | **Basic** |
+| --- | :---: |
+| Max. DTU-Anzahl | 5 |
+| Max. Datenbankgröße |2 GB|
+| Max. In-Memory-OLTP-Speicher |– |
 | Max. gleichzeitige Worker |30 |
 | Maximale Anzahl gleichzeitiger Anmeldungen |30 |
 | Max. gleichzeitige Sitzungen |300 |
-| Point-in-Time-Wiederherstellung |Beliebiger Punkt der letzten sieben Tage |
-| Notfallwiederherstellung |Aktive Georeplikation |
+|||
 
 ### <a name="standard-service-tier"></a>Standard-Dienstebene
-|  |  |
-| --- |:---:|
-| **S0** &nbsp;&nbsp;&nbsp;&nbsp; **S1** &nbsp;&nbsp;&nbsp;&nbsp; **S2** &nbsp;&nbsp;&nbsp; **S3** | |
-| Max. DTU-Anzahl |&nbsp;&nbsp;10 &nbsp;&nbsp;&nbsp;&nbsp; 20 &nbsp;&nbsp;&nbsp;&nbsp; 50 &nbsp;&nbsp; 100 |
-| Max. Datenbankgröße (GB) |250 |
-| Max. In-Memory-OLTP-Speicher (GB) |– |
-| Max. gleichzeitige Worker |60 &nbsp;&nbsp;&nbsp; 90 &nbsp;&nbsp;&nbsp; 120 &nbsp;&nbsp;&nbsp; 200 |
-| Maximale Anzahl gleichzeitiger Anmeldungen |60 &nbsp;&nbsp;&nbsp; 90 &nbsp;&nbsp;&nbsp; 120 &nbsp;&nbsp;&nbsp; 200 |
-| Max. gleichzeitige Sitzungen |600 &nbsp; 900 &nbsp; 1200 &nbsp; 2400 |
-| Point-in-Time-Wiederherstellung |Beliebiger Punkt der letzten 35 Tage |
-| Notfallwiederherstellung |Aktive Georeplikation |
+| **Dienstebene** | **S0** | **S1** | **S2** | **S3** |
+| --- |---:| ---:|---:|---:|---:|
+| Max. DTU-Anzahl | 10 | 20 | 50 | 100 |
+| Max. Datenbankgröße | 250 GB| 250 GB | 250 GB | 250 GB |
+| Max. In-Memory-OLTP-Speicher | – | N/V | N/V | N/V |
+| Max. gleichzeitige Worker | 60 | 90 | 120 | 200 |
+| Maximale Anzahl gleichzeitiger Anmeldungen | 60 | 90 | 120 | 200 |
+| Max. gleichzeitige Sitzungen |600 | 900 | 1200 | 2400 |
+||||||
 
-### <a name="premium-service-tier"></a>Premium-Dienstebene
-|  |  |
-| --- |:---:|
-| **P1** &nbsp;&nbsp;&nbsp;&nbsp; **P2** &nbsp;&nbsp;&nbsp;&nbsp; **P4** &nbsp;&nbsp;&nbsp; **P6/P3** &nbsp;&nbsp; **P11** &nbsp;&nbsp; **P15** | |
-| Max. DTU-Anzahl |125 &nbsp;&nbsp; 250 &nbsp;&nbsp; 500 &nbsp;&nbsp; 1000 &nbsp;&nbsp;&nbsp; 1750 &nbsp;&nbsp; 4000 |
-| Max. Datenbankgröße (GB) |500 &nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 500 &nbsp;&nbsp;&nbsp; 1000 &nbsp;&nbsp; 1000 |
-| Max. In-Memory-OLTP-Speicher (GB) |&nbsp;&nbsp;&nbsp;&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32 |
-| Max. gleichzeitige Worker |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
-| Maximale Anzahl gleichzeitiger Anmeldungen |&nbsp; 200 &nbsp;&nbsp; 400 &nbsp;&nbsp;&nbsp; 800 &nbsp;&nbsp; 1600 &nbsp; 2400 &nbsp;&nbsp; 6400 |
-| Max. gleichzeitige Sitzungen |2400 &nbsp;4800 &nbsp; 9600 &nbsp;19200 &nbsp;32000 &nbsp;32000 |
-| Point-in-Time-Wiederherstellung |Beliebiger Punkt der letzten 35 Tage |
-| Notfallwiederherstellung |Aktive Georeplikation |
+### <a name="premium-service-tier"></a>Premium-Dienstebene 
+| **Dienstebene** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** | 
+| --- |---:|---:|---:|---:|---:|---:|
+| Max. DTU-Anzahl | 125 | 250 | 500 | 1000 | 1750 | 4000 |
+| Max. Datenbankgröße | 500 GB | 500 GB | 500 GB | 500 GB | 1 TB | 1 TB |
+| Max. In-Memory-OLTP-Speicher | 1 GB | 2 GB | 4 GB | 8 GB | 14 GB | 32 GB |
+| Max. gleichzeitige Worker | 200 | 400 | 800 | 1600 | 2400 | 6400 |
+| Maximale Anzahl gleichzeitiger Anmeldungen | 200 | 400| 800| 1600| 2400| 6400 |
+| Max. gleichzeitige Sitzungen | 30000| 30000| 30000| 30000| 30000| 30000 |
+|||||||
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

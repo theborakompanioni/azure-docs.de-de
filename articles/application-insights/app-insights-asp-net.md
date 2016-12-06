@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 10/13/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6e5898d94a43b6859ce354f154bdb25948f7686
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: a97e20b208d92e03bd4458605aaa48ef7c389e32
 
 
 ---
 # <a name="set-up-application-insights-for-aspnet"></a>Einrichten von Application Insights für ASP.NET
-[Visual Studio Application Insights](app-insights-overview.md) überwacht Ihre Live-Anwendung. So können Sie [Leistungsprobleme und -ausnahmen erkennen und diagnostizieren](app-insights-detect-triage-diagnose.md) und zudem [ermitteln, wie Ihre App verwendet wird](app-insights-overview-usage.md).  Dies funktioniert für Apps, die auf den eigenen lokalen IIS-Servern oder Cloud-VMs gehostet werden, sowie für Azure-Web-Apps.
+[Azure Application Insights](app-insights-overview.md) überwacht Ihre Live-Anwendung. So können Sie [Leistungsprobleme und -ausnahmen erkennen und diagnostizieren](app-insights-detect-triage-diagnose.md) und zudem [ermitteln, wie Ihre App verwendet wird](app-insights-overview-usage.md).  Dies funktioniert für Apps, die auf den eigenen lokalen IIS-Servern oder Cloud-VMs gehostet werden, sowie für Azure-Web-Apps.
 
 ## <a name="before-you-start"></a>Vorbereitung
 Erforderlich:
@@ -113,7 +113,7 @@ Für ein Upgrade auf eine [neue Version des SDK](https://github.com/Microsoft/Ap
 Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben, speichern Sie vor dem Upgrade eine Kopie davon. Sie können anschließend die Änderungen in die neue Version übernehmen.
 
 ## <a name="add-more-telemetry"></a>Hinzufügen von weiteren Telemetrieelementen
-### <a name="web-pages-and-singlepage-apps"></a>Webseiten und Einzelseiten-Apps
+### <a name="web-pages-and-single-page-apps"></a>Webseiten und Einzelseiten-Apps
 1. [Fügen Sie Ihren Webseiten den JavaScript-Codeausschnitt hinzu](app-insights-javascript.md), um die Blätter „Browser“ und „Nutzung“ mit Daten zu Seitenansichten, Ladedauern, Browserausnahmen, AJAX-Aufrufleistung und Benutzer- und Sitzungszahlen zu füllen.
 2. [Codieren Sie die benutzerdefinierten Ereignisse](app-insights-api-custom-events-metrics.md), um für Benutzeraktionen die Anzahl zu ermitteln, die Dauer zu messen oder Messungen durchzuführen.
 
@@ -175,6 +175,6 @@ Bei Verwendung von Visual Studio Team Services können Sie Ihren Diagrammen eine
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

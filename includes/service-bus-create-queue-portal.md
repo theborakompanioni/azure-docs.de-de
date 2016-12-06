@@ -21,6 +21,6 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 [azure-portal]: https://portal.azure.com
 
 
-<!--HONumber=Nov16_HO2-->
+<!---HONumber=Nov16_HO2-->
 
 

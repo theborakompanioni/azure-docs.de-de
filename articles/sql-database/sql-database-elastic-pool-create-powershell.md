@@ -15,8 +15,8 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: daf8bd6421ae563e542b0874a6e7748a3ca52738
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: 14c34627623f3b0371a8ad3c3f8eb46af9ed4847
 
 
 ---
@@ -25,28 +25,28 @@ ms.openlocfilehash: daf8bd6421ae563e542b0874a6e7748a3ca52738
 > * [Azure-Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
 > * [C#](sql-database-elastic-pool-create-csharp.md)
-> 
-> 
+>
+>
 
-Hier erfahren Sie, wie Sie einen [Pool für elastische Datenbanken](sql-database-elastic-pool.md) mit PowerShell-Cmdlets erstellen. 
+Hier erfahren Sie, wie Sie einen [Pool für elastische Datenbanken](sql-database-elastic-pool.md) mit PowerShell-Cmdlets erstellen.
 
 Häufige Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
 
 > [!NOTE]
 > Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“ und „Indien, Westen“. Dort befinden sie sich derzeit in der Vorschauphase.  Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt. Elastische Pools unterstützen zurzeit keine Datenbanken mit [In-Memory-OLTP oder In-Memory-Analysen](sql-database-in-memory.md).
-> 
-> 
+>
+>
 
 Sie müssen Azure PowerShell 1.0 oder höher installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 ## <a name="create-a-new-pool"></a>Erstellen eines neuen Pools
-Das Cmdlet [New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) erstellt einen neuen Pool. Die Werte für die eDTUs pro Pool und die Mindest- und Höchstwerte für DTUs werden durch den Wert der Dienstebene (Basic, Standard oder Premium) beschränkt. Siehe hierzu [eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases).
+Das Cmdlet [New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378\(v=azure.300\).aspx) erstellt einen neuen Pool. Die Werte für die eDTUs pro Pool und die Mindest- und Höchstwerte für DTUs werden durch den Wert der Dienstebene (Basic, Standard oder Premium) beschränkt. Siehe hierzu [eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
     New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
 
 ## <a name="create-a-new-elastic-database-in-a-pool"></a>Erstellen einer neuen elastischen Datenbank in einem Pool
-Verwenden Sie das Cmdlet [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx), und legen Sie den **ElasticPoolName**-Parameter auf den Zielpool fest. Informationen dazu, wie Sie eine bestehende Datenbank in einen Pool verschieben, finden Sie unter [Verwalten und Skalieren eines Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-manage-powershell.md#Move-a-database-into-an-elastic-pool).
+Verwenden Sie das Cmdlet [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx), und legen Sie den **ElasticPoolName**-Parameter auf den Zielpool fest. Informationen dazu, wie Sie eine bestehende Datenbank in einen Pool verschieben, finden Sie unter [Verwalten und Skalieren eines Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-manage-powershell.md#move-a-database-into-an-elastic-pool).
 
     New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
@@ -80,7 +80,6 @@ Dieses Skript erstellt eine neue Azure-Ressourcengruppe und einen neuen Server. 
 * [Verwalten Ihres Pools](sql-database-elastic-pool-manage-powershell.md)
 * [Erstellen elastischer Aufträge](sql-database-elastic-jobs-overview.md) : Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
 * [Skalieren mit der Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md): Verwenden Sie elastische Datenbanktools für die horizontale Skalierung.
-
 
 
 

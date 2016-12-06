@@ -15,7 +15,7 @@ Dateispeicher werden hauptsächlich für folgende Zwecke verwendet:
 ## <a name="file-storage-concepts"></a>Dateispeicherkonzepte
 Der Dateispeicher umfasst die folgenden Komponenten:
 
-![files-concepts][files-concepts]
+![files-concepts](./media/storage-file-concepts-include/files-concepts.png)
 
 * **Speicherkonto:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Weitere Informationen zur Kapazität der Speicherkonten finden Sie unter [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Skalierbarkeits- und Leistungsziele für Microsoft Azure-Speicher, in englischer Sprache).
 * **Freigabe:** Eine Datenspeicherfreigabe ist eine SMB-Dateifreigabe in Azure. 
@@ -31,8 +31,7 @@ Der Dateispeicher umfasst die folgenden Komponenten:
 
 Informationen zur Benennung von Freigaben, Verzeichnissen und Dateien finden Sie unter [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](http://msdn.microsoft.com/library/azure/dn167011.aspx).
 
-[files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

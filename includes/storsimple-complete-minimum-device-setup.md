@@ -25,7 +25,7 @@
 
     ![Netzwerkschnittstellen für die minimale Konfiguration von StorSimple-Geräten](./media/storsimple-complete-minimum-device-setup/HCS_MinDeviceSetupNetworkInterfaces2-include.png)
 
-1. Klicken Sie auf das Häkchensymbol ![StorSimple, Häkchensymbol](an./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-includean.png)an.
+1. Klicken Sie auf das Häkchensymbol ![StorSimple, Häkchensymbol](./media/storsimple-complete-minimum-device-setup/HCS_CheckIcon-include.png)an.
    Sie gelangen zurück auf die Seite **Schnellstart** des Geräts.
    
    > [!NOTE]

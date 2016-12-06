@@ -1,4 +1,4 @@
-Beim Hinzufügen von Datenträgern zu einer Linux-VM können Fehler auftreten, wenn kein Datenträger in LUN 0 vorhanden ist. Wenn Sie einen Datenträger manuell mit dem Befehl `azure vm disk attach-new` hinzufügen und eine LUN (`--lun`) angeben, statt die entsprechende LUN von Azure Platform bestimmen zu lassen, müssen Sie sicherstellen, dass in LUN 0 ein Datenträger bereits vorhanden ist/vorhanden sein wird.
+Beim Hinzufügen von Datenträgern zu einer Linux-VM können Fehler auftreten, wenn kein Datenträger in LUN 0 vorhanden ist. Wenn Sie einen Datenträger manuell mit dem Befehl `azure vm disk attach-new` hinzufügen und eine LUN (`--lun`) angeben, statt die entsprechende LUN von Azure Platform bestimmen zu lassen, müssen Sie sicherstellen, dass in LUN 0 bereits ein Datenträger vorhanden ist/vorhanden sein wird. 
 
 Das folgende Beispiel zeigt einen Codeausschnitt der Ausgabe von `lsscsi`:
 
@@ -19,4 +19,8 @@ Dieses Datenträgerverhalten ist kein Azure-Problem, sondern auf diese entsprich
 * Überprüfen Sie die Ausgabe von `lsscsi` nach dem Hinzufügen eines Datenträgers, um sicherzustellen, dass in LUN 0 ein Datenträger vorhanden ist.
 * Wenn der Datenträger nicht richtig in Ihrem virtuellen Computer angezeigt wird, überprüfen Sie, ob ein Datenträger in LUN 0 vorhanden ist.
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

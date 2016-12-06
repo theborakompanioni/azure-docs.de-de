@@ -2,11 +2,11 @@
 title: Vorbereiten der Site Recovery-Bereitstellung | Microsoft Docs
 description: Dieser Artikel beschreibt, wie Sie die Bereitstellung der Replikation mit Azure Site Recovery vorbereiten.
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
 editor: tysonn
-
+ms.assetid: e24eea6c-50a7-4cd5-aab4-2c5c4d72ee2d
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
+ms.openlocfilehash: 8a4d265694e5eef438b0560a42ea5a95c04f9b02
+
 
 ---
 # <a name="prepare-for-azure-site-recovery-deployment"></a>Vorbereiten der Azure Site Recovery-Bereitstellung
@@ -22,7 +26,7 @@ Lesen Sie diesen Artikel, um eine allgemeine Übersicht über die Bereitstellung
 Nach der Lektüre dieses Artikels können Sie Kommentare oder Fragen am Ende des Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
 
 ## <a name="overview"></a>Übersicht
-Organisationen benötigen eine Strategie für die Geschäftskontinuität und Notfallwiederherstellung (BCDR), mit der bestimmt wird, wie Apps, Workloads und Daten bei geplanten und ungeplanten Ausfällen verfügbar bleiben und die normalen Arbeitsbedingungen so schnell wie möglich wiederhergestellt werden können. Bei Ihrer BCDR-Strategie sollten Sie darauf achten, dass Unternehmensdaten geschützt sind und wiederhergestellt werden können. Stellen Sie außerdem sicher, dass Workloads auch nach dem Eintreten eines Notfalls ständig verfügbar sind. 
+Organisationen benötigen eine Strategie für die Geschäftskontinuität und Notfallwiederherstellung (BCDR), mit der bestimmt wird, wie Apps, Workloads und Daten bei geplanten und ungeplanten Ausfällen verfügbar bleiben und die normalen Arbeitsbedingungen so schnell wie möglich wiederhergestellt werden können. Bei Ihrer BCDR-Strategie sollten Sie darauf achten, dass Unternehmensdaten geschützt sind und wiederhergestellt werden können. Stellen Sie außerdem sicher, dass Workloads auch nach dem Eintreten eines Notfalls ständig verfügbar sind.
 
 Site Recovery ist ein Azure-Dienst, der einen Beitrag zu Ihrer BCDR-Strategie leistet, indem die Replikation von lokalen physischen Servern und virtuellen Maschinen in die Cloud (Azure) oder in ein sekundäres Rechenzentrum orchestriert wird. Wenn es an Ihrem primären Standort zu Ausfällen kommt, wird ein Failover zum sekundären Standort durchgeführt, um die Verfügbarkeit von Apps und Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, führen Sie das Failback zum primären Standort durch. Weitere Informationen finden Sie unter [Was ist Site Recovery?](site-recovery-overview.md)
 
@@ -57,7 +61,7 @@ Wenn Sie ein Bereitstellungsmodell wählen, beachten Sie bitte Folgendes:
 | **Azure-Speicher** |Replizierte Daten werden im Azure-Speicher gespeichert, und virtuelle Azure-Computer werden erstellt, wenn ein Failover durchgeführt wird. Zur Replikation in Azure benötigen Sie ein [Azure-Speicherkonto](../storage/storage-introduction.md).<br/><br/>Wenn Sie Site Recovery im klassischen Portal bereitstellen, benötigen Sie mindestens ein [standardmäßiges GRS-Speicherkonto](../storage/storage-redundancy.md#geo-redundant-storage).<br/><br/> Bei der Bereitstellung im Azure-Portal können Sie GRS- oder LRS-Speicher verwenden.<br/><br/>  Wenn Sie VMware-VMs oder physische Server im Azure-Portal replizieren, wird Storage Premium unterstützt. Beachten Sie, dass Sie bei Verwendung eines Storage Premium-Kontos auch ein Standardspeicherkonto zum Speichern von Replikationsprotokollen benötigen, in denen laufende Änderungen lokaler Daten erfasst werden. [Storage Premium](../storage/storage-premium-storage.md) wird normalerweise für virtuelle Computer verwendet, die eine konsistent hohe E/A-Leistung und geringe Latenz zum Hosten von E/A-intensiven Workloads erfordern.<br/><br/>  Wenn Sie ein Premium-Konto zum Speichern replizierter Daten verwenden möchten, benötigen Sie außerdem ein Standardspeicherkonto zum Speichern von Replikationsprotokollen, in denen laufende Änderungen lokaler Daten erfasst werden. |
 | **Azure-Netzwerk** |Zum Replizieren in Azure benötigen Sie ein Azure-Netzwerk, mit dem die Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden.<br/><br/>  Wenn Sie im klassischen Portal bereitstellen, verwenden Sie ein klassisches Netzwerk. Wenn Sie im Azure-Portal bereitstellen, können Sie ein klassisches oder Resource Manager-Netzwerk verwenden.<br/><br/>  Das Netzwerk muss sich in der gleichen Region wie der Tresor befinden. |
 | **Netzwerkzuordnung (VMM zu Azure)** |Wenn Sie von VMM in Azure replizieren, stellt die [Netzwerkzuordnung](site-recovery-network-mapping.md) sicher, dass Azure-VMs nach einem Failover mit den richtigen Netzwerken verbunden werden.<br/><br/>  Zum Einrichten der Netzwerkzuordnung müssen Sie die VM-Netzwerke im VMM-Portal konfigurieren. |
-| **Lokal** |**VMware-VMs**: Sie benötigen einen lokalen Computer, auf dem Site Recovery-Komponenten ausgeführt werden, VMware vSphere-Hosts/vCenter-Server sowie VMs, die Sie replizieren möchten. [Weitere Informationen](site-recovery-vmware-to-azure.md#configuration-server-prerequisites)<br/><br/> **Physische Server**: Wenn Sie physische Server replizieren, benötigen Sie einen lokalen Computer, auf dem Site Recovery-Komponenten ausgeführt werden, und physische Server, die Sie replizieren möchten. [Weitere Informationen](site-recovery-vmware-to-azure.md#configuration-server-prerequisites) Wenn Sie nach einem Failover zu Azure ein [Failback](site-recovery-failback-azure-to-vmware.md) ausführen möchten, benötigen Sie eine VMware-Infrastruktur.<br/><br/> **Hyper-V-VMs**: Wenn Sie Hyper-V-VMs in VMM-Clouds replizieren möchten, benötigen Sie einen VMM-Server sowie Hyper-V-Hosts, auf denen sich VMs befinden, die Sie schützen möchten. [Weitere Informationen](site-recovery-vmm-to-azure.md#on-premises-prerequisites)<br/><br/> Wenn Sie Hyper-V-VMs ohne VMM replizieren möchten, benötigen Sie Hyper-V-Hosts, auf denen sich VMs befinden. [Weitere Informationen](site-recovery-hyper-v-site-to-azure.md#on-premises-prerequisites) |
+| **Lokal** |**VMware-VMs**: Sie benötigen einen lokalen Computer, auf dem Site Recovery-Komponenten ausgeführt werden, VMware vSphere-Hosts/vCenter-Server sowie VMs, die Sie replizieren möchten. [Weitere Informationen](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites)<br/><br/> **Physische Server**: Wenn Sie physische Server replizieren, benötigen Sie einen lokalen Computer, auf dem Site Recovery-Komponenten ausgeführt werden, und physische Server, die Sie replizieren möchten. [Weitere Informationen](site-recovery-vmware-to-azure.md#configuration-server-or-additional-process-server-prerequisites) Wenn Sie nach einem Failover zu Azure ein [Failback](site-recovery-failback-azure-to-vmware.md) ausführen möchten, benötigen Sie eine VMware-Infrastruktur.<br/><br/> **Hyper-V-VMs**: Wenn Sie Hyper-V-VMs in VMM-Clouds replizieren möchten, benötigen Sie einen VMM-Server sowie Hyper-V-Hosts, auf denen sich VMs befinden, die Sie schützen möchten. [Weitere Informationen](site-recovery-vmm-to-azure.md#on-premises-prerequisites)<br/><br/> Wenn Sie Hyper-V-VMs ohne VMM replizieren möchten, benötigen Sie Hyper-V-Hosts, auf denen sich VMs befinden. [Weitere Informationen](site-recovery-hyper-v-site-to-azure.md#on-premises-prerequisites) |
 | **Geschützte Computer** |Geschützte Computer, die in Azure repliziert werden sollen, müssen die unten beschriebenen [Voraussetzungen für Azure](#azure-virtual-machine-requirements) einhalten. |
 
 ### <a name="replicate-to-a-secondary-site"></a>Replikation an einem sekundären Standort
@@ -143,6 +147,8 @@ Nachdem Sie die allgemeinen Bereitstellungsanforderungen kennengelernt und mitei
 * [Replizieren von Hyper-V-VMs an einem sekundären Standort mit SAN](site-recovery-vmm-san.md)
 * [Replizieren von Hyper-V-VMs mit einem einzelnen VMM-Server](site-recovery-single-vmm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -432,7 +432,7 @@ Die neuen Abrechnungspläne sind in den drei Produktionsregionen verfügbar, in 
 
 Ja. Die Preise der Pläne variieren je nach Region. Wenn Sie einen Webdienst in einer anderen Region bereitstellen, müssen Sie dafür einen regionsspezifischen Plan zuweisen.
 
-### <a name="new-web-services-overages"></a>Neue Webdienste – Überschreitungen
+### <a name="new-web-services---overages"></a>Neue Webdienste – Überschreitungen
 **Wie kann ich überprüfen, ob die Nutzung meines Webdiensts überschritten wurde?**
 
 Sie können die Nutzung Ihrer Pläne im Azure Machine Learning-Webdienste-Portal auf der Seite „Pläne“ anzeigen. Melden Sie sich am Portal an, und klicken Sie auf die Menüoption „Pläne“.
@@ -530,7 +530,7 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst, und die tatsä
 ### <a name="guest-access"></a>Gastzugriff
 **Was umfasst der Gastzugriff für Azure Machine Learning Studio?**
 
-Über den Gastzugriff können Sie Azure Machine Learning Studio in begrenztem Umfang testen und die Umgebung kostenlos und ohne Authentifizierung nutzen, um Experimente zu erstellen und auszuführen. Gastsitzungen sind nicht persistent (können nicht gespeichert werden) und auf acht Stunden begrenzt. Außerdem werden R und Python nicht unterstützt, es können keine Staging-APIs verwendet werden, und sowohl die Größe von Datasets als auch die Speicherkapazität sind beschränkt. Im Gegensatz dazu haben Benutzer, die sich mit einem Microsoft-Konto anmelden, vollen Zugriff auf den oben beschriebenen Funktionsumfang von Machine Learning Studio im Free-Tarif, der einen persistenten Arbeitsbereich und umfangreichere Optionen bietet. Wenn Sie Machine Learning kostenlos nutzen möchten, klicken Sie unter **https://studio.azureml.net** einfach auf [Getting started](https://studio.azureml.net)und wählen entweder den Gastzugriff oder die Anmeldung über ein Microsoft-Konto.
+Über den Gastzugriff können Sie Azure Machine Learning Studio in begrenztem Umfang testen und die Umgebung kostenlos und ohne Authentifizierung nutzen, um Experimente zu erstellen und auszuführen. Gastsitzungen sind nicht persistent (können nicht gespeichert werden) und auf acht Stunden begrenzt. Außerdem werden R und Python nicht unterstützt, es können keine Staging-APIs verwendet werden, und sowohl die Größe von Datasets als auch die Speicherkapazität sind beschränkt. Im Gegensatz dazu haben Benutzer, die sich mit einem Microsoft-Konto anmelden, vollen Zugriff auf den oben beschriebenen Funktionsumfang von Machine Learning Studio im Free-Tarif, der einen persistenten Arbeitsbereich und umfangreichere Optionen bietet. Wenn Sie Machine Learning kostenlos nutzen möchten, klicken Sie unter [https://studio.azureml.net](https://studio.azureml.net) einfach auf **Getting started** und wählen entweder den Gastzugriff oder die Anmeldung über ein Microsoft-Konto.
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

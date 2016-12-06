@@ -15,18 +15,18 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 20aefd2c94bca03653f11a91c5ade173cb6da9bf
+ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
+ms.openlocfilehash: 4a2d271be7fbd0d27163ead8f8eb2c05a43f7fbc
 
 
 ---
-# <a name="securing-cloud-resources-with-azure-multifactor-authentication-and-ad-fs"></a>Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
+# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
 Wenn Ihre Organisation über einen Verbund mit Azure Active Directory verfügt, können Sie Multi-Factor Authentication oder Active Directory Federation Services zum Sichern von Ressourcen verwenden, auf die über Azure AD zugegriffen wird. Führen Sie die folgenden Verfahren aus, um Azure Active Directory-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten zu sichern.
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>Schützen von Azure AD-Ressourcen mit AD FS
 Zum Schützen Ihrer Cloudressource müssen Sie zuerst ein Konto für Benutzer aktivieren und dann eine Anspruchsregel einrichten. Die Schritte werden im folgenden Verfahren veranschaulicht:
 
-1. Führen Sie die unter [Aktivieren von Multi-Factor Authentication](multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users) beschriebenen Schritte für Benutzer aus, um ein Konto zu aktivieren.
+1. Führen Sie die unter [Aktivieren von Multi-Factor Authentication](multi-factor-authentication-get-started-cloud.md#turn-on-two-step-verification-for-users) beschriebenen Schritte für Benutzer aus, um ein Konto zu aktivieren.
 2. Öffnen Sie die AD FS-Verwaltungskonsole.
    ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
 3. Navigieren Sie zu **Vertrauensstellungen der vertrauenden Seite**, und klicken Sie mit der rechten Maustaste auf die Vertrauensstellung der vertrauenden Seite. Wählen Sie **Anspruchsregeln bearbeiten…** aus.
@@ -34,13 +34,13 @@ Zum Schützen Ihrer Cloudressource müssen Sie zuerst ein Konto für Benutzer ak
 5. Wählen Sie in der Dropdownliste die Option **Ansprüche per benutzerdefinierter Regel senden** aus, und klicken Sie auf **Weiter**.
 6. Geben Sie einen Namen für die Anspruchsregel ein.
 7. Fügen Sie unter „Benutzerdefinierte Regel“ den folgenden Text hinzu:
-   
+
     ```
     => issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
     ```
-   
+
     Entsprechender Anspruch:
-   
+
     ```
     <saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
     <saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
@@ -74,7 +74,7 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Wir erstellen zwei A
 10. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln in der Dropdownliste die Option **Ansprüche mit benutzerdefinierter Regel senden**, und klicken Sie auf **Weiter**.
 11. Geben Sie im Feld unter „Anspruchsregelname:“ den Text *Benutzeranmeldung aufrechterhalten* ein.
 12. Geben Sie in das Feld für benutzerdefinierte Regeln Folgendes ein:
-    
+
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
@@ -83,7 +83,7 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Wir erstellen zwei A
 15. Klicken Sie auf **OK**.
 16. Schließen Sie die AD FS-Verwaltung.
 
-### <a name="configure-azure-multifactor-authentication-trusted-ips-with-federated-users"></a>Konfigurieren vertrauenswürdiger IPs der Azure Multi-Factor Authentication mit Partnerbenutzern
+### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Konfigurieren vertrauenswürdiger IPs der Azure Multi-Factor Authentication mit Partnerbenutzern
 Da die Ansprüche jetzt vorhanden sind, können wir vertrauenswürdige IPs konfigurieren.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
@@ -97,7 +97,6 @@ Da die Ansprüche jetzt vorhanden sind, können wir vertrauenswürdige IPs konfi
 8. Sobald die Updates angewendet wurden, klicken Sie auf **Schließen**.
 
 Fertig! An diesem Punkt sollten Office 365-Partnerbenutzer nur MFA verwenden müssen, wenn ein Anspruch von außerhalb des Unternehmensintranets stammt.
-
 
 
 

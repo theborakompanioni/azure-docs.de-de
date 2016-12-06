@@ -98,9 +98,9 @@
 ### [Häufig gestellte Fragen zu Cloud Services](cloud-services-faq.md)
 
 # Referenz
-## [.NET](https://msdn.microsoft.com/library)
 ## [CSDEF (XML-Schema)](https://msdn.microsoft.com/library/azure/ee758711)
 ## [CSCFG (XML-Schema)](https://msdn.microsoft.com/library/azure/ee758710)
+## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 ## [Patches für Gastbetriebssysteme](cloud-services-guestos-msrc-releases.md)
 ## Deaktivierung von Gastbetriebssystemen
 ### [Deaktivierungsrichtlinie](cloud-services-guestos-retirement-policy.md)
@@ -116,6 +116,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

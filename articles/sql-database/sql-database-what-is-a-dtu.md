@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 09/06/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91942517a481a252d631af15e532389256b64108
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: e062d55e990faeb0776f643b297788afd87ac1e3
 
 
 ---
@@ -32,7 +32,7 @@ Eine DTU ist eine Maßeinheit für die Ressourcen, die für eine eigenständige 
 Sie können jederzeit [Dienstebenen ändern](sql-database-scale-up.md) und die Ausfallzeiten für Ihre Anwendung dabei gering halten (im Durchschnitt meist unter vier Sekunden). Für viele Unternehmen und Apps genügt es, wenn Datenbanken erstellt werden können und sich die Leistung von Einzeldatenbanken nach oben oder unten anpassen lässt, insbesondere, wenn die Nutzungsmuster relativ vorhersagbar sind. Bei unvorhersagbaren Nutzungsmustern kann es jedoch schwer sein, die Kosten und Ihr Geschäftsmodell zu verwalten. Für dieses Szenario verwenden Sie einen elastischen Pool mit einer bestimmten Anzahl von eDTUs.
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>Was sind elastische Datenbanktransaktionseinheiten (eDTUs)?
-Eine eDTU ist eine Maßeinheit für den Satz mit den Ressourcen (DTUs), die in einer Gruppe mit Datenbanken auf einem Azure SQL-Server gemeinsam genutzt werden können. Dies wird als [elastischer Pool](sql-database-elastic-pool.png) bezeichnet. Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar. Weitere Informationen finden Sie im Abschnitt [Dienstebenen und Leistung für elastische Pools in eDTUs](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus).
+Eine eDTU ist eine Maßeinheit für den Satz mit den Ressourcen (DTUs), die in einer Gruppe mit Datenbanken auf einem Azure SQL-Server gemeinsam genutzt werden können. Dies wird als [elastischer Pool](sql-database-elastic-pool.md) bezeichnet. Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar. Weitere Informationen finden Sie im Abschnitt [Dienstebenen und Leistung für elastische Pools in eDTUs](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus).
 
 ![Einführung in die SQL-Datenbank: eDTUs nach Tarif und Stufe](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
@@ -54,7 +54,6 @@ Leistungsstufen werden kalibriert und gesteuert, um die erforderlichen Ressource
 * Informationen zu den Grenzwerten für andere Ressourcen als CPU, Arbeitsspeicher, Daten-E/A und Transaktionsprotokoll-E/A finden Sie unter [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-resource-limits.md) .
 * Informationen zum Verbrauch (DTUs) finden Sie unter [Query Performance Insight für Azure SQL-Datenbank](sql-database-query-performance.md) .
 * Informationen zur Methodik hinter der OLTP-Benchmark-Workload, die zum Ermitteln der DTU-Mischung verwendet wird, finden Sie unter [Übersicht über das Durchführen von Vergleichstests für Azure SQL-Datenbank](sql-database-benchmark-overview.md) .
-
 
 
 

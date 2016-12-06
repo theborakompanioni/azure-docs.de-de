@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 58d8043e09cb04ef2cdf4f5c005d549a6cb6f73c
+ms.sourcegitcommit: a3e619d6e130212064093150d22d971a562a6601
+ms.openlocfilehash: 758680cf8ff8a9e2f0a6c241613a2ba254462f4a
 
 
 ---
@@ -30,10 +30,10 @@ Azure Mobile Engagement ist eine als Software-as-a-Service (SaaS) bereitgestellt
 
 Mit Azure Mobile Engagement können App-Herausgeber und Marketingspezialisten App-Benutzer besser verstehen und mit ihnen interagieren.
 
-## <a name="realtime-actionable-analytics-to-maximize-return-on-investment"></a>Aussagefähige Echtzeitanalysen zur Maximierung des ROI
+## <a name="real-time-actionable-analytics-to-maximize-return-on-investment"></a>Aussagefähige Echtzeitanalysen zur Maximierung des ROI
 Sie können Engagementszenarien entsprechend dem Benutzerverhalten und den demografischen Daten auslösen, indem Sie die Erfassung von `big data` mit Nachrichtenverarbeitung in Echtzeit kombinieren. Mobile Engagement kann praktisch alle Fragen beantworten, die für Ihre spezifischen Geschäftsanforderungen relevant sind. Sie können beispielsweise benutzerdefinierte Dashboards zum Messen von Leistungskennzahlen (Key Performance Indicators, KPIs) erstellen, Nutzungsengpässe im Benutzerpfad schnell feststellen und beheben, Benutzerzurückhaltung und -bindung nachverfolgen und somit feststellen, welche Kampagnen den höchsten ROI einbringen. Die 360°-Benutzerpfadansicht von Mobile Engagement ermöglicht Ihnen, die Benutzererfahrung auf einfache Weise kontinuierlich zu verbessern und zu optimieren – und somit eine höhere Kundenbindung und verbesserte Verwendung der App zu erzielen.
 
-## <a name="valueadded-push-and-communications-platform"></a>Push- und Kommunikationsplattform mit erhöhtem Nutzen
+## <a name="value-added-push-and-communications-platform"></a>Push- und Kommunikationsplattform mit erhöhtem Nutzen
 Mobile Engagement bietet In-App-Messaging-Funktionen und arbeitet nahtlos mit nativen Pushbenachrichtigungs-Gateways wie GCM von Google, APNS von Apple und MPNS von Microsoft zusammen. Darüber hinaus werden Sie in die Lage versetzt, gezielte Kampagnen zu erstellen, indem Sie das Benutzerverhalten analysieren, um individuelle Kundensegmente zu identifizieren.
 
 Hiervon profitieren App-Entwickler, indem sie ihre Kunden auf höchst effektive Weise und sehr unaufdringlich erreichen.
@@ -47,7 +47,7 @@ Microsoft bekennt sich seit langer Zeit zum Datenschutz, einem wichtigen Teil un
 ### <a name="next-steps"></a>Nächste Schritte:
 [Bewährte Methoden und Prozess zur Erstellung Ihres Mobile Engagement](mobile-engagement-getting-started-best-practices.md)
 
-[Erste Schritte](/documentation/services/mobile-engagement/)
+[Erste Schritte](/index.md)
 
 [Herunterladen von Demo-Apps mit Quellcode](https://aka.ms/azmedemoapps)
 

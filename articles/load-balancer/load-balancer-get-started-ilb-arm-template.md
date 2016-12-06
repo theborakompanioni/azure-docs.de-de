@@ -5,7 +5,6 @@ services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: 
 tags: azure-resource-manager
 ms.assetid: 64150862-6ced-42de-85dc-89d323257d7c
 ms.service: load-balancer
@@ -16,55 +15,69 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: sewhee
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 482c9cd46902d9e3f4e1e0f001182fdb43ce9367
-
+ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
+ms.openlocfilehash: 345811de33db5bb34f5e2ae67e203fc78ebe62eb
 
 ---
-# <a name="create-an-internal-load-balancer-using-a-template"></a>Erstellen eines internen Lastenausgleichs mithilfe einer Vorlage
-[!INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
 
-<BR>
+# <a name="create-an-internal-load-balancer-using-a-template"></a>Erstellen eines internen Lastenausgleichs mithilfe einer Vorlage
+
+> [!div class="op_single_selector"]
+> * [Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
+> * [Vorlage](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
+
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
-
-[Klassisches Bereitstellungsmodell](load-balancer-get-started-ilb-classic-ps.md).
+> [!NOTE]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](load-balancer-get-started-ilb-classic-ps.md) empfohlen wird.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>Bereitstellen der Vorlage per Klick
+
 In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parameterdatei verwendet, die die Standardwerte zum Generieren des oben beschriebenen Szenarios enthält. Öffnen Sie zum Bereitstellen dieser Vorlage per Klick [diesen Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer), klicken Sie auf **In Azure bereitstellen**, ersetzen Sie ggf. die Standardwerte der Parameter, und führen Sie die Schritte im Portal aus.
 
 ## <a name="deploy-the-template-by-using-powershell"></a>Bereitstellen der Vorlage mithilfe von PowerShell
+
 Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen Vorlage die unten beschriebenen Schritte aus.
 
 1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 2. Laden Sie die Parameterdatei auf Ihren lokalen Datenträger herunter.
 3. Bearbeiten Sie die Datei, und speichern Sie sie.
 4. Führen Sie das Cmdlet **New-AzureRmResourceGroupDeployment** aus, um eine Ressourcengruppe mit der Vorlage zu erstellen.
-   
-        New-AzureRmResourceGroupDeployment -Name TestRG -Location westus `
-            -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json' `
-            -TemplateParameterFile 'C:\temp\azuredeploy.parameters.json'
+
+    ```azurecli
+    New-AzureRmResourceGroupDeployment -Name TestRG -Location westus `
+        -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json' `
+        -TemplateParameterFile 'C:\temp\azuredeploy.parameters.json'
+    ```
 
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle
+
 Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnittstelle die unten beschriebenen Schritte aus.
 
 1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
-   
-        azure config mode arm
-   
+
+    ```azurecli
+    azure config mode arm
+    ```
+
     Hier ist die erwartete Ausgabe des obigen Befehls:
-   
+
         info:    New mode is arm
+
 3. Öffnen Sie die Parameterdatei, und speichern Sie den Inhalt dieser Datei in einer Datei auf Ihrem Computer. In diesem Beispiel haben wir die Parameterdatei in *parameters.json*gespeichert.
 4. Führen Sie den Befehl **azure group deployment create** aus, um den neuen internen Load Balancer mithilfe der heruntergeladenen und geänderten Vorlage und Parameterdateien bereitzustellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
-   
-        azure group create --name TestRG --location westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json --parameters-file parameters.json
+
+    ```azurecli
+    azure group create --name TestRG --location westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json --parameters-file parameters.json
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Konfigurieren eines Load Balancer-Verteilungsmodus mithilfe der Quell-IP-Affinität](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
@@ -72,6 +85,6 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

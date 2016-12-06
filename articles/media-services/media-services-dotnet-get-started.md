@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/17/2016
+ms.date: 11/07/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80606d9fd08a4d5b5845af8ed43fdcef050e47e9
+ms.sourcegitcommit: 0d9d87d0dc26d2fcaa3886a9f8c0849b71b26847
+ms.openlocfilehash: 61ea806ec3ad620d454e2de0910fa2b49de66493
 
 
 ---
@@ -114,10 +114,17 @@ Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern
    > 
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
+
 1. Erstellen Sie eine neue C#-Konsolenanwendung in Visual Studio 2013, Visual Studio 2012 oder Visual Studio 2010 SP1. Geben Sie **Name**, **Speicherort** und **Projektmappenname** ein, und klicken Sie auf **OK**.
 2. Verwenden Sie das NuGet-Paket [windowsazure.mediaservices.extensions](https://www.nuget.org/packages/windowsazure.mediaservices.extensions), um die **Azure Media Services .NET SDK-Erweiterungen**zu installieren.  Media Services SDK-Erweiterungen für .NET ist ein Satz von Erweiterungsmethoden und Hilfsfunktionen, die Ihren Code vereinfachen und eine einfachere Entwicklung mit Media Services ermöglichen. Durch Installieren dieses Pakets werden auch das **Media Services .NET SDK** installiert und alle anderen erforderlichen Abhängigkeiten hinzugefügt.
+
+    Gehen Sie wie folgt vor, um mit NuGet Verweise hinzuzufügen: Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen, und wählen Sie **NuGet-Pakete verwalten**. Suchen Sie dann nach **windowsazure.mediaservices.extensions**, und klicken Sie auf **Installieren**.
+
 3. Fügen Sie einen Verweis auf die Assembly "System.Configuration" hinzu. Diese Assembly enthält die **System.Configuration.ConfigurationManager**-Klasse, die zum Zugriff auf die Konfigurationsdateien (z.B. „App.config“) verwendet wird.
-4. Öffnen Sie die Datei "App.config" (fügen Sie die Datei dem Projekt hinzu, wenn sie nicht standardmäßig hinzugefügt wurde), und fügen Sie einen *appSettings* -Abschnitt in der Datei hinzu. Legen Sie die Werte für Ihren Azure Media Services-Kontonamen und Schlüssel fest, wie im folgenden Beispiel gezeigt. Um den Kontonamen und wichtige Informationen zu erhalten, wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr AMS-Konto aus. Wählen Sie dann **Einstellungen** > **Schlüssel** aus. Im Fenster „Schlüssel verwalten“ werden der Kontoname sowie der Primär- und Sekundärschlüssel angezeigt.
+
+    Gehen Sie wie folgt vor, um einen Verweis hinzuzufügen: Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen, wählen Sie **Hinzufügen** > **Verweis...**, und geben Sie im Suchfeld den Begriff „Konfiguration“ ein. 
+
+4. Öffnen Sie die Datei "App.config" (fügen Sie die Datei dem Projekt hinzu, wenn sie nicht standardmäßig hinzugefügt wurde), und fügen Sie einen *appSettings* -Abschnitt in der Datei hinzu. Legen Sie die Werte für Ihren Azure Media Services-Kontonamen und Schlüssel fest, wie im folgenden Beispiel gezeigt. Um den Kontonamen und wichtige Informationen zu erhalten, wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr AMS-Konto aus. Wählen Sie dann **Einstellungen** > **Schlüssel** aus. Im Fenster „Schlüssel verwalten“ werden der Kontoname sowie der Primär- und Sekundärschlüssel angezeigt. Kopieren Sie die Werte für den Kontonamen und den Primärschlüssel.
    
         <configuration>
         ...
@@ -141,11 +148,16 @@ Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern
 6. Erstellen Sie einen neuen Ordner unter dem Verzeichnis Projekte, und kopieren Sie eine MP4 oder WMV-Datei, die Sie codieren und streamen oder progressiv herunterladen möchten. In diesem Beispiel wird der Pfad "C:\VideoFiles" verwendet.
 
 ## <a name="connect-to-the-media-services-account"></a>Herstellen einer Verbindung mit dem Media Services-Konto
+
 Wenn Sie Media Services mit .NET verwenden, müssen Sie die **CloudMediaContext**-Klasse für die meisten Media Services-Programmieraufgaben verwenden, z.B. für das Herstellen einer Verbindung mit dem Media Services-Konto, das Erstellen, Aktualisieren, Zugreifen auf und Löschen der folgenden Objekte: Medienobjekte, Objektdateien, Aufträge, Zugriffsrichtlinien, Locators usw.
 
 Überschreiben Sie die Standardklasse des Programms durch den folgenden Code. Im Code wird veranschaulicht, wie die Werte aus der Datei "App.config" gelesen werden und das **CloudMediaContext** -Objekt erstellt wird, um eine Verbindung zu Media Services herzustellen. Weitere Informationen zum Herstellen einer Verbindung mit Media Services finden Sie unter [Herstellen einer Verbindung zu Media Services mit dem Media Services SDK für .NET](http://msdn.microsoft.com/library/azure/jj129571.aspx).
 
+
 Die **Main** -Funktion ruft Methoden auf, die weiter unten in diesem Abschnitt definiert werden.
+
+> [!NOTE]
+> Sie erhalten so lange Kompilierungsfehler, bis Sie Definitionen für alle Funktionen hinzufügen.
 
     class Program
     {
@@ -193,8 +205,10 @@ Die **Main** -Funktion ruft Methoden auf, die weiter unten in diesem Abschnitt d
                 Console.ReadLine();
             }
         }
+    }
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Erstellen eines neuen Medienobjekts und Hochladen einer Videodatei
+
 In Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch oder erfassen sie auf diese Weise. Die **Asset**-Entität kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten.  Nachdem die Dateien hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert. Die Dateien im Medienobjekt heißen **Medienobjektdateien**.
 
 Die unten definierte **UploadFile**-Methode ruft **CreateFromFile** auf (in den .NET SDK-Erweiterungen definiert). **CreateFromFile** erstellt ein neues Medienobjekt, in das die angegebene Quelldatei hochgeladen wird.
@@ -281,7 +295,8 @@ Fügen Sie die folgende Methode zur Program-Klasse hinzu.
     }
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download
-Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst durch Erstellen eines Locators "veröffentlichen". Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature (SAS)-Locator zum Herunterladen von Mediendateien.
+
+Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst durch Erstellen eines Locators "veröffentlichen". Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locatortypen: OnDemandOrigin-Locators zum Streamen von Medien (z.B. MPEG DASH, HLS oder Smooth Streaming) und SAS-Locators (Shared Access Signature) zum Herunterladen von Mediendateien. (Weitere Informationen zu SAS-Locators finden Sie in [diesem Blog](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/).)
 
 Nachdem Sie die Locator erstellt haben, können Sie die URLs erstellen, mit denen Sie die Dateien streamen oder herunterladen möchten.
 

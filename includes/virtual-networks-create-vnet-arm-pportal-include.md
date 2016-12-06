@@ -28,6 +28,6 @@ Gehen Sie folgendermaßen vor, um mit dem Azure-Vorschauportal ein VNet basieren
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!----HONumber=Nov16_HO2-->
 
 

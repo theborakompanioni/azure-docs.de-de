@@ -96,4 +96,4 @@ Wenn Sie diese Schritte befolgen und alle wichtigen Kacheln an ein Dashboard anh
 ## Nächste Schritte
 * Lesen Sie die [Übersicht über Azure Monitor](monitoring-overview.md).
 
-<!---HONumber=AcomDC_0928_2016-->
+<!----HONumber=AcomDC_0928_2016-->

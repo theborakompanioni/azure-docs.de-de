@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 45c0646f6eb1067f49bc185f1592cd1c94fc9470
+ms.sourcegitcommit: 5da660fc36ac0ebef26ed815da6dbba6668643d3
+ms.openlocfilehash: 57e8ee6f067a61c1262a8902dd56393e4803c3c6
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> [Azure-Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
-> [PowerShell – klassisch](expressroute-howto-routing-classic.md)
+> * [Azure-Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
+> * [PowerShell – klassisch](expressroute-howto-routing-classic.md)
 > 
 > 
 
@@ -249,7 +249,9 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
      
        Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-    >[AZURE.IMPORTANT] Stellen Sie sicher, dass Sie Ihre AS-Nummer als Peering-ASN angeben, nicht als Kunden-ASN.
+    > [!IMPORTANT]
+    > Stellen Sie sicher, dass Sie Ihre AS-Nummer als Peering-ASN angeben, nicht als Kunden-ASN.
+
 
 ### <a name="to-view-azure-public-peering-details"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an
 Sie können die Konfigurationsdetails mit dem folgenden Cmdlet abrufen.
@@ -387,6 +389,6 @@ Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Cmdlet a
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

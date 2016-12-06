@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 11/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 72347099d980f2ca73f39f984787197e1f87e45a
+ms.sourcegitcommit: b160a4f4ad4d1e383b460a3d17078908da1f4ef1
+ms.openlocfilehash: bcf8a709b9c457f517386b4a4baf9fdf5864cc65
 
 
 ---
-# <a name="choose-the-azure-multifactor-authentication-solution-for-you"></a>Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung
+# <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung
 Da es mehrere Arten von Azure Multi-Factor Authentication (MFA) gibt, müssen Sie einige Fragen klären, um herauszufinden, welche Version für Sie die richtige ist.  Diese Fragen sollten Sie beantworten:
 
 * [Was möchte ich sichern?](#what-am-i-trying-to-secure)
@@ -32,7 +32,7 @@ In den folgenden Abschnitten erhalten Sie Informationen, die Ihnen helfen, die A
 ## <a name="what-am-i-trying-to-secure"></a>Was möchte ich sichern?
 Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zunächst die Frage beantworten, was Sie über die zweite Methode zur Authentifizierung sichern möchten.  Handelt es sich um eine Anwendung in Azure?  Oder ist es ein RAS-System?  Die Antwort auf die Frage, wo Multi-Factor Authentication aktiviert werden muss, richtet sich danach, was Sie sichern möchten.  
 
-| Was möchte ich sichern? | Multi-Factor Authentication in der Cloud | Multi-Factor Authentication-Server |
+| Was möchte ich sichern? | MFA in der Cloud | MFA-Server |
 | --- |:---:|:---:|
 | Microsoft-Apps |● |● |
 | SaaS-Apps im Appkatalog |● |● |
@@ -43,7 +43,7 @@ Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zun�
 ## <a name="where-are-the-users-located"></a>Wo befinden sich die Benutzer?
 Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud oder lokal über den MFA-Server – davon ab, wo sich die Benutzer befinden.
 
-| Benutzerstandort | Multi-Factor Authentication in der Cloud | Multi-Factor Authentication-Server |
+| Benutzerstandort | MFA in der Cloud | MFA-Server |
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | Azure AD und lokales AD über einen Verbund mit AD FS |● |● |
@@ -54,26 +54,26 @@ Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud ode
 ## <a name="what-features-do-i-need"></a>Welche Features benötige ich?
 In der folgenden Tabelle finden Sie einen Vergleich der Features von Multi-Factor Authentication in der Cloud und mit einem Multi-Factor Authentication-Server.
 
-| Multi-Factor Authentication in der Cloud | Multi-Factor Authentication-Server |
+| Funktion | MFA in der Cloud | MFA-Server |
 | --- |:---:|:---:|
-| Benachrichtigung in der mobilen App als zweite Stufe |● |
-| Bestätigungscode in der mobilen App als zweite Stufe |● |
-| Telefonanruf als zweite Stufe |● |
-| Unidirektionale SMS als zweite Stufe |● |
-| Bidirektionale SMS als zweite Stufe | |
-| Hardwaretoken als zweite Stufe | |
-| App-Kennwörter für Clients, die MFA nicht unterstützen |● |
-| Administrative Kontrolle über Authentifizierungsmethoden |● |
-| PIN-Modus | |
-| Betrugswarnung |● |
-| MFA-Berichte |● |
-| Einmalumgehung | |
-| Benutzerdefinierte Begrüßungen für Telefonanrufe |● |
-| Benutzerdefinierte Anrufer-ID für Telefonanrufe |● |
-| Vertrauenswürdige IP-Adressen |● |
-| Speichern der MFA für vertrauenswürdige Geräte |● |
-| Bedingter Zugriff |● |
-| Cache | |
+| Benachrichtigung in der mobilen App als zweite Stufe | ● | ● |
+| Bestätigungscode in der mobilen App als zweite Stufe | ● | ● |
+| Telefonanruf als zweite Stufe | ● | ● |
+| Unidirektionale SMS als zweite Stufe | ● | ● |
+| Bidirektionale SMS als zweite Stufe | | ● |
+| Hardwaretoken als zweite Stufe | | ● |
+| App-Kennwörter für Clients, die MFA nicht unterstützen | ● | |
+| Administrative Kontrolle über Authentifizierungsmethoden | | ● |
+| PIN-Modus | | ● |
+| Betrugswarnung |● | ● |
+| MFA-Berichte |● | ● |
+| Einmalumgehung | ● | ● |
+| Benutzerdefinierte Begrüßungen für Telefonanrufe | ● | ● |
+| Benutzerdefinierte Anrufer-ID für Telefonanrufe | ● | ● |
+| Vertrauenswürdige IP-Adressen | ● | ● |
+| Speichern der MFA für vertrauenswürdige Geräte | ● | |
+| Bedingter Zugriff | ● | ● |
+| Cache | ● | ● |
 
 Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder den MFA-Server lokal verwenden möchten. Jetzt können Sie mit dem Einrichten und Verwenden von Azure Multi-Factor Authentication beginnen. **Wählen Sie das Symbol aus, das Ihrem Szenario entspricht.**
 
@@ -87,6 +87,6 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

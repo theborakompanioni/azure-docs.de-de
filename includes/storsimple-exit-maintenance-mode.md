@@ -1,6 +1,6 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### So beenden Sie den Wartungsmodus
+#### <a name="to-exit-maintenance-mode"></a>So beenden Sie den Wartungsmodus
 1. Geben Sie an der Eingabeaufforderung Folgendes ein:
    
      `Exit-HcsMaintenanceMode`
@@ -8,4 +8,8 @@
    
     Beide Controller werden neu gestartet. Wenn der Neustart abgeschlossen ist, wird eine andere Meldung mit dem Hinweis angezeigt, dass das Gerät in den Normalmodus versetzt wird.
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

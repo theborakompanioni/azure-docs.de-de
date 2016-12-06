@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 10/30/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 64d085bff08d9a824204851d32504fac3e79024c
+ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
+ms.openlocfilehash: 98bf94960c39565243995a1c4dd45787478b8f40
 
 
 ---
@@ -30,7 +30,7 @@ Site Recovery leistet einen Beitrag zu Ihrer BCDR-Strategie, indem die Orchestri
 Wenn es am Hauptstandort zu Ausfällen kommt, wird ein Failover zum sekundären Standort durchgeführt, um die Erreichbarkeit und Verfügbarkeit von Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, führen Sie das Failback zum primären Standort durch.
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Site Recovery im Azure-Portal
-Azure verfügt über zwei verschiedene [Bereitstellungsmodelle](../resource-manager-deployment-model.md) für das Erstellen und Verwenden von Ressourcen. Dies sind das Azure Resource Manager-Modell und das klassische Dienstverwaltungsmodell. Außerdem verfügt Azure über zwei Portale. Dies sind das [klassische Azure-Portal](https://manage.windowsazure.com/) und das [Azure-Portal](https://portal.azure.com).
+Azure verfügt über zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md) für das Erstellen und Verwenden von Ressourcen. Dies sind das Azure Resource Manager-Modell und das klassische Dienstverwaltungsmodell. Außerdem verfügt Azure über zwei Portale. Dies sind das [klassische Azure-Portal](https://manage.windowsazure.com/) und das [Azure-Portal](https://portal.azure.com).
 
 * Site Recovery kann sowohl im klassischen Portal als auch im Azure-Portal bereitgestellt werden.
 * Im klassischen Azure-Portal können Sie Site Recovery mit dem klassischen Dienstverwaltungsmodell unterstützen.
@@ -79,6 +79,6 @@ Site Recovery ermöglicht die anwendungsorientierte Replikation, damit Workloads
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

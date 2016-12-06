@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3d13d4a0dd1d6e0b7361a57e167b06f0b717bfb4
+ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
+ms.openlocfilehash: 7107c64a25b3f60d7789cec57181eec9ce844f6b
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: 3d13d4a0dd1d6e0b7361a57e167b06f0b717bfb4
 > * [Azure-Portal](sql-data-warehouse-get-started-provision.md)
 > * [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 > * [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-> 
-> 
+>
+>
 
 In diesem Artikel erfahren Sie, wie Sie eine SQL Data Warehouse-Instanz mithilfe von PowerShell erstellen.
 
@@ -40,23 +40,23 @@ Zunächst benötigen Sie Folgendes:
 
 > [!NOTE]
 > Wenn Sie eine SQL Data Warehouse-Instanz erstellen, wird unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Unter [SQL Data Warehouse – Preise][SQL Data Warehouse – Preise] finden Sie weitere Informationen zu den Preisen.
-> 
-> 
+>
+>
 
 ## <a name="create-a-sql-data-warehouse"></a>Erstellen eines SQL Data Warehouse
 1. Öffnen Sie Windows PowerShell.
 2. Führen Sie dieses Cmdlet aus, um sich am Azure-Ressourcen-Manager anzumelden.
-   
+
     ```Powershell
     Login-AzureRmAccount
     ```
 3. Wählen Sie das Abonnement aus, das Sie für Ihre aktuelle Sitzung verwenden möchten.
-   
+
     ```Powershell
     Get-AzureRmSubscription    -SubscriptionName "MySubscription" | Select-AzureRmSubscription
     ```
 4. Erstellen Sie eine Datenbank. In diesem Beispiel wird eine Datenbank namens „mynewsqldw“ mit der Dienstzielebene „DW400“ auf dem Server „sqldwserver1“ erstellt, der sich in der Ressourcengruppe „mywesteuroperesgp1“ befindet.
-   
+
    ```Powershell
    New-AzureRmSqlDatabase -RequestedServiceObjectiveName "DW400" -DatabaseName "mynewsqldw" -ServerName "sqldwserver1" -ResourceGroupName "mywesteuroperesgp1" -Edition "DataWarehouse" -CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 10995116277760
    ```
@@ -88,13 +88,13 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [Migrieren]: ./sql-data-warehouse-overview-migrate.md
 [Entwickeln]: ./sql-data-warehouse-overview-develop.md
 [Laden]: ./sql-data-warehouse-load-with-bcp.md
-[Laden von Beispieldaten]: ./sql-data-warehouse-load-sample-databases.md
+[Beispieldaten laden]: ./sql-data-warehouse-load-sample-databases.md
 [PowerShell-Cmdlets und REST-APIs]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [Firewallregeln]: ../sql-database-configure-firewall-settings.md
 
 [Installieren und Konfigurieren von Azure PowerShell]: ../powershell-install-configure.md
 [Erstellen eines SQL Data Warehouse (Azure-Portal)]: ./sql-data-warehouse-get-started-provision.md
-[Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
+[Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
 [Erstellen eines logischen Servers mit Azure SQL-Datenbank mithilfe von PowerShell]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [Erstellen einer neuen Ressourcengruppe]: ../resource-group-template-deploy-portal.md#create-resource-group
 

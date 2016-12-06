@@ -1,6 +1,6 @@
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Max. Anzahl vertrauenswürdiger IP-Adressen/-Adressbereiche</a> pro Abonnement<sup>1</sup> |0 |12 |
+| Maximale Anzahl von vertrauenswürdigen IP-Adressen/-bereichen</a> pro Abonnement<sup>1</sup> |0 |12 |
 | Geräte speichern – Anzahl der Tage |14 |60 |
 | Max. Anzahl der App-Kennwörter |0 |Keine Begrenzung |
 | **X** Authentifizierungsversuche während des MFA-Aufrufs erlauben |1 |99 |
@@ -12,4 +12,8 @@
 
 <sup>1</sup>Dies soll in Zukunft erhöht werden.
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

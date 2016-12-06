@@ -1,10 +1,10 @@
 # Übersicht
 ## [Was ist Azure Backup?](backup-introduction-to-azure-backup.md)
 # Erste Schritte
-## [Häufig gestellte Fragen](backup-azure-backup-faq.md)
 ## [Sichern von Dateien und Ordnern](backup-try-azure-backup-in-10-mins.md)
 ## [Sichern von virtuellen Azure-Computern](backup-azure-vms-first-look.md)
 ## [Schützen von Azure-VMs](backup-azure-vms-first-look-arm.md)
+## [Häufig gestellte Fragen](backup-azure-backup-faq.md)
 # Anleitung
 ## Automatisieren der Sicherung mithilfe von PowerShell
 ### [Azure-VMs im Azure-Portal](backup-azure-vms-automation.md)
@@ -52,7 +52,13 @@
 ### [Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Langsame Sicherung von Dateien und Ordnern in Azure Backup](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
+# Ressourcen
+## [Preise](https://azure.microsoft.com/pricing/details/backup/)
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=backup) 
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=backup)
 
-<!--HONumber=Nov16_HO2-->
+
+<!--HONumber=Nov16_HO4-->
 
 

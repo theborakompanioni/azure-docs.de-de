@@ -1,12 +1,12 @@
 <!--author=SharS last changed: 9/15/15-->
 
-#### So erstellen Sie eine benutzerdefinierte Sicherungsrichtlinie
+#### <a name="to-create-a-custom-backup-policy"></a>So erstellen Sie eine benutzerdefinierte Sicherungsrichtlinie
 1. Klicken Sie auf der Seite **Geräte** auf **Sicherungsrichtlinien** und anschließend auf **Hinzufügen**.
 2. Führen Sie im Dialogfeld **Sicherungsrichtlinie hinzufügen** unter **Sicherungsrichtlinie definieren** die folgenden Schritte aus:
    
    1. Geben Sie einen Namen für die Sicherungsrichtlinie an.
    2. Wählen Sie die Volumes aus, die dieser Richtlinie hinzugefügt werden sollen. Sie können auch mehrere Volumes hinzufügen, indem Sie sie aus der Dropdownliste auswählen.
-   3. Klicken Sie auf das Häkchensymbol ![Häkchensymbol](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
+   3. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
       
       Sie werden benachrichtigt, wenn die Richtlinie erfolgreich erstellt wurde. Die Seite mit den Sicherungsrichtlinien wird ebenfalls aktualisiert und zeigt die neu erstellte Richtlinie an.
 3. Klicken Sie auf den Richtliniennamen (erste Spalte), um einen Drilldown für die Details der gerade erstellten Richtlinie auszuführen.
@@ -19,9 +19,14 @@
    4. Wählen Sie die Aufbewahrungsdauer aus. Die Aufbewahrungsdauer hängt von der Sicherungshäufigkeit ab.
    5. Wählen Sie die Startzeit und das Datum für die Richtlinie aus.
    6. Aktivieren Sie das Kontrollkästchen, um die Richtlinie zu aktivieren.
-6. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png), um den Vorgang abzuschließen.
-7. Die Richtliniendetails werden erneut angezeigt. Klicken Sie auf **Speichern**, um die an der Richtlinie vorgenommenen Änderungen zu speichern. Sie werden benachrichtigt, wenn die Richtlinie gespeichert wurde.
-8. Navigieren Sie zurück zur Seite **Sicherungsrichtlinien**. Die tabellarische Auflistung der Sicherungsrichtlinien wird aktualisiert, um die geänderte Richtlinie anzuzeigen.
+6. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) , um den Vorgang abzuschließen.
+7. Die Richtliniendetails werden erneut angezeigt. Klicken Sie auf **Speichern** , um die an der Richtlinie vorgenommenen Änderungen zu speichern. Sie werden benachrichtigt, wenn die Richtlinie gespeichert wurde.
+8. Navigieren Sie zurück zur Seite **Sicherungsrichtlinien** . Die tabellarische Auflistung der Sicherungsrichtlinien wird aktualisiert, um die geänderte Richtlinie anzuzeigen.
    
     ![Benutzerdefinierte Sicherungsrichtlinie](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
+
+
+
+<!--HONumber=Nov16_HO3-->
+
 

@@ -13,22 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
+ms.date: 11/14/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 689445bc656b5cdebc7689f7fec6e2ea2683576e
+ms.sourcegitcommit: b80fb49929ce53f33b9a4064ba6ad14d0108d690
+ms.openlocfilehash: c879231fac37ae3c69bac4d201b01469ca18240c
 
 
 ---
 # <a name="create-ssh-keys-on-linux-and-mac-for-linux-vms-in-azure"></a>Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure
-Mit einem SSH-Schlüsselpaar können Sie virtuelle Computer (VMs) in Azure erstellen, für die zur Authentifizierung standardmäßig SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind.  Kennwörter können erraten werden und machen Ihre VMs anfällig für entsprechende Brute-Force-Angriffe. VMs, die mit Azure-Vorlagen oder der `azure-cli` erstellt werden, können Ihren öffentlichen SSH-Schlüssel im Rahmen der Bereitstellung enthalten, sodass eine Konfiguration nach der Bereitstellung entfällt.  Wenn Sie von Windows aus eine Verbindung mit einer Linux-VM herstellen, helfen Ihnen die Informationen in [diesem Dokument](virtual-machines-linux-ssh-from-windows.md)
+Mit einem SSH-Schlüsselpaar können Sie virtuelle Computer (VMs) in Azure erstellen, für die zur Authentifizierung standardmäßig SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind.  Kennwörter können erraten werden und machen Ihre VMs anfällig für entsprechende Brute-Force-Angriffe. VMs, die mit Azure-Vorlagen oder der `azure-cli` erstellt werden, können Ihren öffentlichen SSH-Schlüssel im Rahmen der Bereitstellung enthalten, sodass eine Konfiguration nach der Bereitstellung entfällt.  Wenn Sie unter Windows eine Verbindung mit einem virtuellen Linux-Computer herstellen, helfen Ihnen die Informationen in [Erstellen von SSH-Schlüsseln unter Windows](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:
-
-* Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/))
-* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), angemeldet mit `azure login`
-* Die Azure-Befehlszeilenschnittstelle *muss im* Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden.
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Ersetzen Sie die Beispiele in den folgenden Befehlen durch Ihre eigenen Werte.
@@ -92,7 +87,7 @@ In diesem Artikel werden Dateien mit Schlüsseln im *ssh-rsa* -Format erstellt, 
 ## <a name="create-the-ssh-keys"></a>Erstellen der SSH-Schlüssel
 Für Azure sind öffentliche und private Schlüssel mit mindestens 2048 Bit im Format „ssh-rsa“ erforderlich. Verwenden Sie zum Erstellen der Schlüssel `ssh-keygen`. Hierbei wird eine Reihe von Fragen gestellt, und anschließend werden ein privater Schlüssel und ein passender öffentlicher Schlüssel geschrieben. Bei der Erstellung einer Azure-VM wird der öffentliche Schlüssel in `~/.ssh/authorized_keys` kopiert.  SSH-Schlüssel in `~/.ssh/authorized_keys` werden verwendet, um vom Client zu fordern, für eine SSH-Anmeldeverbindung den entsprechenden privaten Schlüssel bereitzustellen.
 
-## <a name="using-sshkeygen"></a>Verwenden von ssh-keygen
+## <a name="using-ssh-keygen"></a>Verwenden von ssh-keygen
 Mit diesem Befehl wird ein kennwortgeschütztes (verschlüsseltes) SSH-Schlüsselpaar per RSA mit 2.048 Bit erstellt und kommentiert, um die einfache Identifizierung zu ermöglichen.  
 
 Beginnen Sie mit einem Wechsel des Verzeichnisses, damit alle SSH-Schlüssel in diesem Verzeichnis erstellt werden.
@@ -126,7 +121,7 @@ Gehen Sie wie folgt vor, um einen Schlüssel im PEM-Format aus einem vorhandenen
 ssh-keygen -f ~/.ssh/id_rsa.pub -e > ~/.ssh/id_ssh2.pem
 ```
 
-## <a name="example-of-sshkeygen"></a>Beispiel für ssh-keygen
+## <a name="example-of-ssh-keygen"></a>Beispiel für ssh-keygen
 ```bash
 ssh-keygen -t rsa -b 2048 -C "myusername@myserver"
 Generating public/private rsa key pair.
@@ -170,7 +165,7 @@ Kennwort für den Schlüssel:
 
 `ssh-keygen` bezieht sich auf ein Kennwort als „Passphrase“.  Es wird *dringend* empfohlen, Ihren Schlüsselpaaren ein Kennwort hinzuzufügen. Wenn das Schlüsselpaar nicht mit einem Kennwort geschützt ist, kann es von Personen, die über die Datei mit dem privaten Schlüssel verfügen, zum Anmelden an allen Servern mit dem entsprechenden öffentlichen Schlüssel verwendet werden. Das Hinzufügen eines Kennworts sorgt für mehr Schutz. Wenn sich eine Person Zugang zu Ihrer Datei mit dem privaten Schlüssel verschafft, haben Sie so mehr Zeit, die Schlüssel für die Authentifizierung zu ändern.
 
-## <a name="using-sshagent-to-store-your-private-key-password"></a>Verwenden von „ssh-agent“ zum Speichern des Kennworts für den privaten Schlüssel
+## <a name="using-ssh-agent-to-store-your-private-key-password"></a>Verwenden von „ssh-agent“ zum Speichern des Kennworts für den privaten Schlüssel
 Sie können `ssh-agent` zum Zwischenspeichern des Kennworts für die private Schlüsseldatei verwenden, damit Sie das Kennwort nicht bei jeder SSH-Anmeldung eingeben müssen. Bei Verwendung eines Macintosh-Computers werden die Kennwörter für private Schlüssel sicher im „Schlüsselbund“ von OSX gespeichert, wenn Sie `ssh-agent`aufrufen.
 
 Überprüfen Sie zunächst, ob `ssh-agent` ausgeführt wird.
@@ -247,13 +242,12 @@ Wenn `ssh fedora22` ausgeführt wird, ermittelt und lädt SSH zuerst die Einstel
 ## <a name="next-steps"></a>Nächste Schritte
 Der nächste Schritt besteht darin, Azure-Linux-VMs mit dem neuen öffentlichen SSH-Schlüssel zu erstellen.  Virtuelle Azure-Computer, die mit einem öffentlichen SSH-Schlüssel als Anmeldung erstellt werden, sind besser gesichert als VMs, die mit der Standardanmeldemethode und Kennwörtern erstellt werden.  Mit SSH-Schlüsseln erstellte Azure-VMs werden standardmäßig mit deaktivierten Kennwörtern konfiguriert, um Brute-Force-Angriffe zum Erraten von Kennwörtern auszuschließen.
 
-* [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-* [Erstellen einer geschützten Linux-VM mit dem Azure-Portal](virtual-machines-linux-quick-create-portal.md)
-* [Erstellen einer geschützten Linux-VM mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md)
+* [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Erstellen einer geschützten Linux-VM mit dem Azure-Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Erstellen einer geschützten Linux-VM mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

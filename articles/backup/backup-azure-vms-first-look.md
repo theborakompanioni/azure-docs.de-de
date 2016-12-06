@@ -47,7 +47,7 @@ Im Folgenden finden Sie die fünf wesentlichen Schritte, die zum Sichern eines v
 >
 >
 
-## <a name="step-1-create-a-backup-vault-for-a-vm"></a>Schritt 1 – Erstellen eines Sicherungstresors für einen virtuellen Computer
+## <a name="step-1---create-a-backup-vault-for-a-vm"></a>Schritt 1 – Erstellen eines Sicherungstresors für einen virtuellen Computer
 Bei einem Sicherungstresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Sicherungstresor enthält auch die Sicherungsrichtlinien, die auf die zu sichernden virtuellen Computer angewendet werden.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com/)an.
@@ -86,7 +86,7 @@ Bei einem Sicherungstresor handelt es sich um eine Entität, in der alle Sicheru
 
 Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
-## <a name="step-2-discover-and-register-azure-virtual-machines"></a>Schritt 2 – Ermitteln und Registrieren virtueller Azure-Computer
+## <a name="step-2---discover-and-register-azure-virtual-machines"></a>Schritt 2 – Ermitteln und Registrieren virtueller Azure-Computer
 Führen Sie vor dem Registrieren der VM mit einem Tresor den Ermittlungsvorgang durch, um neue VMs zu identifizieren. Dadurch wird eine Liste mit im Abonnement enthaltenen virtuellen Computern sowie mit zusätzlichen Informationen wie Clouddienstname und Region ausgegeben.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com/)
@@ -133,12 +133,12 @@ Führen Sie vor dem Registrieren der VM mit einem Tresor den Ermittlungsvorgang 
 
     ![Registrierungsstatus 2](./media/backup-azure-vms/register-status02.png)
 
-## <a name="step-3-install-the-vm-agent-on-the-virtual-machine"></a>Schritt 3 – Installieren Sie den VM-Agent auf dem virtuellen Computer.
+## <a name="step-3---install-the-vm-agent-on-the-virtual-machine"></a>Schritt 3 – Installieren Sie den VM-Agent auf dem virtuellen Computer.
 Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aus dem Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. In diesem Fall können Sie mit dem Artikel zum [Schützen Ihrer virtuellen Computer](backup-azure-vms-first-look.md#step-4---create-the-backup-policy)fortfahren.
 
 Falls Sie Ihren virtueller Computer aus einem lokalen Rechenzentrum migriert haben, wurde der VM-Agent wahrscheinlich noch nicht für den virtuellen Computer installiert. Sie müssen den VM-Agent auf dem virtuellen Computer installieren, bevor Sie mit dem Schützen des virtuellen Computers fortfahren. Ausführliche Schritte zum Installieren des VM-Agents finden Sie im [Abschnitt zum VM-Agent im Artikel, in dem das Sichern virtueller Computer behandelt wird](backup-azure-vms-prepare.md#vm-agent).
 
-## <a name="step-4-create-the-backup-policy"></a>Schritt 4 – Erstellen der Sicherungsrichtlinie
+## <a name="step-4---create-the-backup-policy"></a>Schritt 4 – Erstellen der Sicherungsrichtlinie
 Bevor Sie den ersten Sicherungsauftrag ausführen, legen Sie einen Zeitplan für Sicherungsmomentaufnahmen fest. Die Sicherungsrichtlinie besteht aus dem Zeitplan für Sicherungsmomentaufnahmen sowie der Dauer, für die diese Aufnahmen gespeichert werden. Als Rotationsschema für die Beibehaltungsdauer wird das Generationenprinzip angewandt.
 
 1. Navigieren Sie zum Sicherungstresor, der sich im klassischen Azure-Portal unter **Recovery Services** befindet, und klicken Sie auf **Registrierte Elemente**.
@@ -175,7 +175,7 @@ Bevor Sie den ersten Sicherungsauftrag ausführen, legen Sie einen Zeitplan für
 
     Nachdem Sie diese Richtlinie nun eingerichtet haben, können Sie mit dem nächsten Schritt fortfahren und die erste Sicherung durchführen.
 
-## <a name="step-5-initial-backup"></a>Schritt 5 – Erste Sicherung
+## <a name="step-5---initial-backup"></a>Schritt 5 – Erste Sicherung
 Wenn ein virtueller Computer mit einer Richtlinie geschützt wird, können Sie diese Beziehung auf der Registerkarte **Geschützte Elemente** anzeigen. Bis zur Durchführung der ersten Sicherung wird der **Schutzstatus** als **Geschützt (erste Sicherung ausstehend)** angezeigt. Standardmäßig ist die erste geplante Sicherung die *Anfangssicherung*.
 
 ![Sicherung ausstehend](./media/backup-azure-vms-first-look/protection-pending-border.png)

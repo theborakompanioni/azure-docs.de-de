@@ -1,5 +1,6 @@
 # [Übersicht](cdn-overview.md)
 ## [Was ist Azure CDN?](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
+
 # Erste Schritte
 ## [Aktivieren von Azure CDN](cdn-create-new-endpoint.md)
 
@@ -23,6 +24,8 @@
 #### [Premium-Tarif](cdn-query-string-premium.md)
 ### [Löschen von zwischengespeicherten Assets](cdn-purge-endpoint.md)
 ### [Vorabladen von zwischengespeicherten Assets](cdn-preload-endpoint.md)
+### [Tokenauthentifizierung](cdn-token-auth.md)
+### [Überwachen von Ressourcen](cdn-resource-health.md)
 ### [Überschreiben des Verhaltens mit Regeln](cdn-rules-engine.md)
 ### [Erhalten von Warnungen in Echtzeit](cdn-real-time-alerts.md)
 
@@ -41,19 +44,19 @@
 ### [Dateikomprimierung](cdn-troubleshoot-compression.md)
 
 # Referenz
-## [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [.NET](/dotnet/api/)
 ## [Azure CDN-POP-Standorte](cdn-pop-locations.md)
-## [REST](https://msdn.microsoft.com/library/mt634456.aspx)
+## [REST](/rest/api/cdn/)
 
 # Ressourcen
-## [Preise](https://azure.microsoft.com/pricing/details/cdn/)
-## [MSDN-Forum](https://social.msdn.microsoft.com/forums/home?forum=azurecdn)
-## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=cdn)
+## [Preise](https://azure.microsoft.com/pricing/details/cdn/)
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

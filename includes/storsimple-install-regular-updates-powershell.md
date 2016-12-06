@@ -1,7 +1,7 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### So installieren Sie regelmäßige Updates über Windows PowerShell für StorSimple
-1. Öffnen Sie die serielle Konsole des Geräts, und wählen Sie Option 1, **Anmeldung mit Vollzugriff**, aus. Geben Sie das Kennwort ein. Das Standardkennwort lautet *Password1*. 
+#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>So installieren Sie regelmäßige Updates über Windows PowerShell für StorSimple
+1. Öffnen Sie die serielle Konsole des Geräts, und wählen Sie Option 1, **Anmeldung mit Vollzugriff**, aus. Geben Sie das Kennwort ein. Das Standardkennwort lautet *Password1*. 
 2. Geben Sie an der Eingabeaufforderung Folgendes ein:
    
      `Get-HcsUpdateAvailability`
@@ -19,4 +19,8 @@
 > 
 > 
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

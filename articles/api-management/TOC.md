@@ -13,7 +13,7 @@
 ### [Importieren einer API-Definition](api-management-howto-import-api.md)
 ## Schützen Ihres Back-Ends
 ### [Schützen des Web-API-Back-Ends mit AAD](api-management-howto-protect-backend-with-aad.md)
-### [Herstellen einer VPN- oder ExpressRoute-Verbindung](api-management-howto-setup-vpn.md)
+### [Verbinden mit einem virtuellen Netzwerk](api-management-using-with-vnet.md)
 ### [Gegenseitige Zertifikatauthentifizierung](api-management-howto-mutual-certificates.md)
 ## Konfigurieren von Richtlinien
 ### [Benutzerdefiniertes Caching](api-management-sample-cache-by-key.md)
@@ -40,13 +40,17 @@
 ### [Verwalten mithilfe von Automatisierung](automation-manage-api-management.md)
 ### [Konfigurieren mithilfe von Git](api-management-configuration-repository-git.md)
 #Referenz
-## [PowerShell-Cmdlet zur Ressourcenverwaltung]/powershell/resourcemanager()
-## [Referenz zu PowerShell-Cmdlets für die klassische Bereitstellung](https://msdn.microsoft.com/en-us/library/azure/mt613507)
-## [REST-API](/rest/api/apimanagement/)
-## [Richtlinien](https://msdn.microsoft.com/en-us/library/azure/dn894081)
-## [Vorlagen](https://msdn.microsoft.com/en-us/library/azure/mt697540)
+## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [Klassische PowerShell](https://msdn.microsoft.com/library/azure/mt613507)
+## [REST](/rest/api/apimanagement/)
+## [Richtlinien](https://msdn.microsoft.com/library/azure/dn894081)
+## [Vorlagen](https://msdn.microsoft.com/library/azure/mt697540)
 #Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/api-management/)
+## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
+## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
+## [Dienstupdates](https://azure.microsoft.com/updates/?product=api-management)
 ## [Whitepaper: API Management (cloudbasiert)](http://j.mp/ms-apim-whitepaper)
 ## [Leitfaden zum API-Design](../best-practices-api-design.md?toc=%2fazure%2fapi-management%2ftoc.json)
 ## [API-Implementierungsleitfaden](../best-practices-api-implementation.md?toc=%2fazure%2fapi-management%2ftoc.json)
@@ -59,6 +63,6 @@
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

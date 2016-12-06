@@ -5,3 +5,8 @@ In der folgenden Tabelle sind die möglichen Upload- und Erfassungskombinationen
 | Windows (gen.) |N<sup>1</sup> |J |N<sup>3</sup> |J |
 | Windows (spez.) |J |N<sup>2</sup> |J |N<sup>4</sup> |
 
+
+
+<!--HONumber=Nov16_HO3-->
+
+

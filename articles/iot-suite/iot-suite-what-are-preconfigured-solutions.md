@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 597043b17993ebddc9cf730ddce849e1d6ff3bc9
+ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
+ms.openlocfilehash: 25be292144e31c6f34ff1e015362aee31e242619
 
 
 ---
@@ -89,7 +89,7 @@ Bei dieser vorkonfigurierten Lösung bilden die ASA-Aufträge einen Teil des **I
 ## <a name="event-processor"></a>Ereignisprozessor
 Bei dieser vorkonfigurierten Lösung bildet der Ereignisprozessor einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
-Die ASA-Aufträge **DeviceInfo** und **Regeln** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventPocessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. Die **EventProcessorHost**-Instanz verwendet die **DeviceInfo**-Daten zum Aktualisieren der Gerätedaten in der DocumentDB-Datenbank und die **Regeldaten** zum Aufrufen der Logik-App sowie zum Aktualisieren der Warnungsanzeige im Lösungsportal.
+Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventPocessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. Die **EventProcessorHost**-Instanz verwendet die **DeviceInfo**-Daten zum Aktualisieren der Gerätedaten in der DocumentDB-Datenbank und die **Regeldaten** zum Aufrufen der Logik-App sowie zum Aktualisieren der Warnungsanzeige im Lösungsportal.
 
 ## <a name="device-identity-registry-and-documentdb"></a>Geräteidentitätsregistrierung und DocumentDB
 Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
@@ -130,6 +130,6 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,7 +1,7 @@
-## Einrichten von PowerShell für Ressourcen-Manager-Vorlagen
+## <a name="setting-up-powershell-for-resource-manager-templates"></a>Einrichten von PowerShell für Ressourcen-Manager-Vorlagen
 Bevor Sie Azure PowerShell mit dem Ressourcen-Manager verwenden können, benötigen Sie die richtigen Power Shell- und Azure PowerShell-Versionen.
 
-### Überprüfen der PowerShell-Versionen
+### <a name="verify-powershell-versions"></a>Überprüfen der PowerShell-Versionen
 Überprüfen Sie, ob Sie über die PowerShell-Version 3.0 oder 4.0 verfügen. Um die Version von Windows PowerShell zu finden, geben Sie diesen Befehl in eine Windows PowerShell-Eingabeaufforderung ein.
 
     $PSVersionTable
@@ -21,7 +21,7 @@ Sie erhalten den folgenden Informationstyp:
 
 Überprüfen Sie, dass der Wert der **PSVersion** 3.0 oder 4.0 ist. Falls nicht, finden Sie weitere Informationen unter [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
 
-### Festlegen Ihres Azure-Kontos und -Abonnements
+### <a name="set-your-azure-account-and-subscription"></a>Festlegen Ihres Azure-Kontos und -Abonnements
 Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
 Öffnen Sie eine Azure PowerShell-Eingabeaufforderung und melden Sie sich mit diesem Befehl bei Azure an.
@@ -45,11 +45,15 @@ Sie erhalten den folgenden Informationstyp:
     CurrentStorageAccountName :
     TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Sie können das aktuelle Azure-Abonnement durch Ausführen dieser Befehle in der Azure PowerShell-Eingabeaufforderung festlegen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der < and > Zeichen, durch die korrekten Namen.
+Sie können das aktuelle Azure-Abonnement durch Ausführen dieser Befehle in der Azure PowerShell-Eingabeaufforderung festlegen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen „<“ und „>“, durch die korrekten Namen.
 
     $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
     Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
-Weitere Informationen zu Azure-Abonnements und -Konten finden Sie unter [Verbindung mit Ihrem Abonnement](../articles/powershell-install-configure.md#Connect).
+Weitere Informationen zu Azure-Abonnements und -Konten finden Sie unter [Verbindung mit Ihrem Abonnement](../articles/powershell-install-configure.md#step-3-connect).
 
-<!---HONumber=AcomDC_0128_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

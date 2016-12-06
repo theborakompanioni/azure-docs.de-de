@@ -15,8 +15,8 @@ ms.workload: big-compute
 ms.date: 09/27/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c0a778c8dc8786f0c084686b3f8722ff15eed78c
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: a72a726b9c5ac2b3698d79aff00591c444c26594
 
 
 ---
@@ -106,7 +106,7 @@ Das folgende Diagramm veranschaulicht die primären Vorgänge, die von den Clien
 [**Schritt 4.**](#step-4-create-batch-job) Erstellen eines Batch-**Auftrags**<br/>
 [**Schritt 5.**](#step-5-add-tasks-to-job) Fügen Sie dem Auftrag **Aufgaben** hinzu.<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**5a.** Die Aufgaben werden für die Ausführung auf Knoten geplant.<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;**5b.** Jede Aufgabe lädt ihre Eingabedaten aus Azure Storage herunter und beginnt dann mit der Ausführung.<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;**5b.** Jede Aufgabe lädt ihre Eingabedaten aus Azure Storage und beginnt dann mit der Ausführung.<br/>
 [**Schritt 6.**](#step-6-monitor-tasks) Überwachen der Aufgaben<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**6a.** Nach Abschluss der Aufgaben werden die zugehörigen Ausgabedaten in Azure Storage hochgeladen.<br/>
 [**Schritt 7.**](#step-7-download-task-output)  Herunterladen der Aufgabenausgabe aus Storage
@@ -362,7 +362,7 @@ Wenn Sie einen Pool erstellen, definieren Sie mit [PoolAddParameter][py_pooladdp
 * **ID** des Pools (*id* – erforderlich)<p/>Wie die meisten Entitäten in Batch muss auch der neue Pool über eine eindeutige ID in Ihrem Batch-Konto verfügen. Im Code wird anhand der ID auf diesen Pool verwiesen, und er wird auf diese Weise im [Azure-Portal][azure_portal] identifiziert.
 * **Anzahl von Computeknoten** (*target_dedicated* – erforderlich)<p/>Diese Eigenschaft gibt an, wie viele virtuelle Computer im Pool bereitgestellt werden sollen. Beachten Sie, dass alle Batch-Konten über ein **Standardkontingent** verfügen, das die Anzahl von **Kernen** (und somit auch von Computeknoten) in einem Batch-Konto begrenzt. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) (wie etwa der Anzahl von Kernen in Ihrem Batch-Konto) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn Sie sich z.B. die Frage stellen, weshalb Ihr Pool nur eine bestimmte Anzahl von Knoten erreicht, liegt dies möglicherweise am Kernkontingent.
 * **Betriebssystem** für Knoten (*virtual_machine_configuration* **oder** *cloud_service_configuration* – erforderlich)<p/>In *python_tutorial_client.py* erstellen wir einen Pool mit Linux-Knoten mithilfe eines [VirtualMachineConfiguration][py_vm_config]-Elements. Die `select_latest_verified_vm_image_with_node_agent_sku`-Funktion in `common.helpers` vereinfacht die Verwendung von Images aus dem [Azure Virtual Machines Marketplace][vm_marketplace]. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie weitere Informationen zur Verwendung von Marketplace-Images.
-* **Größe der Computeknoten** (*vm_size* – erforderlich)<p/>Da wir für [VirtualMachineConfiguration][py_vm_config] Linux-Knoten angeben, legen wir eine Größe für virtuelle Computer (in diesem Beispiel `STANDARD_A1`) fest, wie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md) beschrieben. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie ebenfalls wieder weitere Informationen.
+* **Größe der Computeknoten** (*vm_size* – erforderlich)<p/>Da wir für [VirtualMachineConfiguration][py_vm_config] Linux-Knoten angeben, legen wir eine Größe für virtuelle Computer (in diesem Beispiel `STANDARD_A1`) fest, wie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) beschrieben. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie ebenfalls wieder weitere Informationen.
 * **Startaufgabe** (*start_task* – nicht erforderlich)<p/>Zusammen mit den oben genannten Eigenschaften des physischen Knotens können Sie auch eine Aufgabe vom Typ [StartTask][py_starttask] für den Pool festlegen. (Dies ist jedoch nicht unbedingt erforderlich.) Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. Mit der Startaufgabe lassen sich Computeknoten besonders gut auf die Ausführung von Aufgaben vorbereiten. Ein Beispiel wäre etwa das Installieren der Anwendungen, die von Ihren Aufgaben ausgeführt werden.<p/>In dieser Beispielanwendung kopiert die Startaufgabe die (mit der **resource_files**-Eigenschaft der Startaufgabe angegebenen) Dateien, die aus Storage heruntergeladen werden, aus dem *Arbeitsverzeichnis* der Startaufgabe in das *freigegebene* Verzeichnis, auf das alle auf dem Knoten ausgeführten Aufgaben zugreifen können. Im Wesentlichen wird dadurch `python_tutorial_task.py` in das freigegebene Verzeichnis jedes Knotens kopiert, wenn der Knoten dem Pool beitritt. So können alle Aufgaben, die auf dem Knoten ausgeführt werden, darauf zugreifen.
 
 Wie Sie vielleicht sehen, wird die Hilfsfunktion `wrap_commands_in_shell` aufgerufen. Diese Funktion erstellt mit einer Sammlung separater Befehle eine einzelne Befehlszeile, die für die Befehlszeileneigenschaft einer Aufgabe geeignet ist.

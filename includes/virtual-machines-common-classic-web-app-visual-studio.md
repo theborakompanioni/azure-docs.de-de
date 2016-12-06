@@ -4,11 +4,11 @@ Wenn Sie ein Webanwendungsprojekt für Azure erstellen, können Sie einen virtue
 
 Befolgen Sie die folgenden Schritte, um beim Erstellen einer Webanwendung einen virtuellen Computer zu erstellen:
 
-1. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt** > **Web**. Wählen Sie dann **ASP.NET-Webanwendung** aus (unter dem Knoten **Visual C#** oder **Visual Basic**).
-2. Wählen Sie im Dialogfeld **Neues ASP.NET-Projekt** den gewünschten Typ der Webanwendung aus. Stellen Sie dann im Azure-Bereich des Dialogfelds (in der unteren rechten Ecke) sicher, dass das Kontrollkästchen **In der Cloud hosten** aktiviert ist (dieses Kontrollkästchen ist bei einigen Installationen mit **Remoteressourcen erstellen** bezeichnet).
+1. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt** > **Web**, und wählen Sie anschließend **ASP.NET-Webanwendung** (unter dem Knoten **Visual C#** oder **Visual Basic**) aus.
+2. Wählen Sie im Dialogfeld **Neues ASP.NET-Projekt** die gewünschte Art von Webanwendung aus. Vergewissern Sie im Azure-Bereich des Dialogfelds (rechts unten), dass das Kontrollkästchen **In der Cloud hosten** aktiviert ist. (Dieses Kontrollkästchen ist bei einigen Installationen auch mit **Remoteressourcen erstellen** beschriftet.)
    
     ![][0]
-3. Wählen Sie für dieses Beispiel in der Dropdownliste unter Microsoft Azure die Option **Virtueller Computer (V1)** aus, und klicken Sie dann auf die Schaltfläche **OK**.
+3. Wählen Sie für dieses Beispiel in der Dropdownliste unter Microsoft Azure die Option **Virtueller Computer (V1)** aus, und klicken Sie anschließend auf die Schaltfläche **OK**.
 4. Melden Sie sich bei Azure an, wenn Sie dazu aufgefordert werden. Das Dialogfeld **Virtuellen Computer erstellen** wird angezeigt.
    
     ![][2]
@@ -24,17 +24,17 @@ Befolgen Sie die folgenden Schritte, um beim Erstellen einer Webanwendung einen 
 12. Bei der Bereitstellung des virtuellen Computers werden veröffentlichte Skripts im Knoten **PublishScripts** Ihrer Projektmappe erstellt. Das veröffentlichte Skript wird ausgeführt und stellt einen virtuellen Computer in Azure bereit. Das Fenster **Ausgabe** zeigt den Status an. Das Skript führt die folgenden Aktionen zum Einrichten des virtuellen Computers aus:
     
     * Erstellt den virtuellen Computer, wenn er nicht vorhanden ist.
-    * Erstellt ein Speicherkonto mit einem Namen, der mit `devtest` beginnt, jedoch nur, wenn kein derartiges Speicherkonto in der angegebenen Region vorhanden ist.
+    * Erstellt ein Speicherkonto mit einem Namen, der mit `devtest`beginnt, jedoch nur, wenn kein derartiges Speicherkonto in der angegebenen Region vorhanden ist.
     * Erstellt einen Clouddienst als Container für den virtuellen Computer und erstellt eine Webrolle für die Webanwendung.
     * Konfiguriert Web Deploy auf dem virtuellen Computer.
     * Konfiguriert IIS und ASP.NET auf dem virtuellen Computer.
     
     ![][4]
-13. (Optional:) Stellen Sie eine Verbindung mit dem neuen virtuellen Computer her. Erweitern Sie in **Server-Explorer** den Knoten **Virtuelle Computer**, wählen Sie dann den Knoten für den erstellten virtuellen Computer aus, und wählen Sie anschließend im Kontextmenü **Mit Remotedesktop verbinden** aus. Alternativ können Sie in **Cloud Explorer** im Kontextmenü die Option **Open in Portal** auswählen und dort eine Verbindung mit dem virtuellen Computer herstellen.
+13. (Optional:) Stellen Sie eine Verbindung mit dem neuen virtuellen Computer her. Erweitern Sie im **Server-Explorer** den Knoten **Virtual Machines**. Wählen Sie anschließend den Knoten für den erstellten virtuellen Computer und dann im Kontextmenü die Option **Mit Remotedesktop verbinden** aus. Alternativ können Sie im **Cloud Explorer** im Kontextmenü die Option **Im Portal öffnen** auswählen und dort eine Verbindung mit dem virtuellen Computer herstellen.
     
     ![][5]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie die erstellten veröffentlichten Skripts anpassen möchten, lesen Sie die detaillierteren Informationen unter [Verwenden von Windows PowerShell-Skripts zum Veröffentlichen in Entwicklungs- und Testumgebungen](http://msdn.microsoft.com/library/dn642480.aspx).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG
@@ -44,4 +44,7 @@ Wenn Sie die erstellten veröffentlichten Skripts anpassen möchten, lesen Sie d
 [4]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-common-classic-web-app-visual-studio/VS_Create_VM_Connect.png
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

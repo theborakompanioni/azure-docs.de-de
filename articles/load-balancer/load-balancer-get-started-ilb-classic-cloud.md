@@ -5,7 +5,6 @@ services: load-balancer
 documentationcenter: na
 author: sdwheeler
 manager: carmonm
-editor: 
 tags: azure-service-management
 ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d
 ms.service: load-balancer
@@ -16,18 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2016
 ms.author: sewhee
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 85e22954c19d7d51579029c7426f0ee79b780504
+ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
+ms.openlocfilehash: 35004090c1d40ec030117224816438b5edaee842
 
 ---
 
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>Erste Schritte zum Erstellen eines internen Lastenausgleichs (klassisch) für Clouddienste
 
-[!INCLUDE [load-balancer-get-started-ilb-classic-selectors-include.md](../../includes/load-balancer-get-started-ilb-classic-selectors-include.md)]
+> [!div class="op_single_selector"]
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
+> * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-classic-cli.md)
+> * [Clouddienste](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](load-balancer-get-started-ilb-arm-ps.md).
+> [!IMPORTANT]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](load-balancer-get-started-ilb-arm-ps.md).
 
 ## <a name="configure-internal-load-balancer-for-cloud-services"></a>Konfigurieren des internen Lastenausgleichs für Clouddienste
 
@@ -43,25 +44,25 @@ Die Konfiguration des internen Lastenausgleichs muss während der Erstellung der
 Öffnen Sie die Dienstkonfigurationsdatei (CSCFG) für Ihre Cloudbereitstellung in Visual Studio, und fügen Sie den folgenden Abschnitt hinzu, um den internen Lastausgleich unter dem letzten "`</Role>`"-Element für die Netzwerkkonfiguration zu erstellen.
 
 ```xml
-    <NetworkConfiguration>
-      <LoadBalancers>
-        <LoadBalancer name="name of the load balancer">
-          <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
-        </LoadBalancer>
-      </LoadBalancers>
-    </NetworkConfiguration>
+<NetworkConfiguration>
+    <LoadBalancers>
+    <LoadBalancer name="name of the load balancer">
+        <FrontendIPConfiguration type="private" subnet="subnet-name" staticVirtualNetworkIPAddress="static-IP-address"/>
+    </LoadBalancer>
+    </LoadBalancers>
+</NetworkConfiguration>
 ```
 
 Wir fügen nun die Werte für die Netzwerkkonfigurationsdatei hinzu, um den Vorgang zu veranschaulichen. Im Beispiel wird davon ausgegangen, dass Sie ein Subnetz mit dem Namen „test_vnet“ und einem 10.0.0.0/24-Subnetz erstellt haben, das „test_subnet“ heißt und die statische IP 10.0.0.4 aufweist. Der Load Balancer hat den Namen testLB.
 
 ```xml
-    <NetworkConfiguration>
-      <LoadBalancers>
-        <LoadBalancer name="testLB">
-          <FrontendIPConfiguration type="private" subnet="test_subnet" staticVirtualNetworkIPAddress="10.0.0.4"/>
-        </LoadBalancer>
-      </LoadBalancers>
-    </NetworkConfiguration>
+<NetworkConfiguration>
+    <LoadBalancers>
+    <LoadBalancer name="testLB">
+        <FrontendIPConfiguration type="private" subnet="test_subnet" staticVirtualNetworkIPAddress="10.0.0.4"/>
+    </LoadBalancer>
+    </LoadBalancers>
+</NetworkConfiguration>
 ```
 
 Weitere Informationen zum Lastenausgleichsschema finden Sie unter [Hinzufügen eines Lastenausgleichs](https://msdn.microsoft.com/library/azure/dn722411.aspx).
@@ -71,21 +72,21 @@ Weitere Informationen zum Lastenausgleichsschema finden Sie unter [Hinzufügen e
 Ändern Sie die Dienstdefinitionsdatei (CSDEF), um Endpunkte zum internen Lastenausgleich hinzuzufügen. Zum Zeitpunkt der Erstellung einer Rolleninstanz fügt die Dienstdefinitionsdatei die Rolleninstanzen zum internen Lastenausgleich hinzu.
 
 ```xml
-    <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
-      <Endpoints>
-        <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" loadBalancer="load-balancer-name" />
-      </Endpoints>
-    </WorkerRole>
+<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
+    <Endpoints>
+    <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" loadBalancer="load-balancer-name" />
+    </Endpoints>
+</WorkerRole>
 ```
 
 Als Nächstes fügen wir der Dienstdefinitionsdatei die Werte hinzu, indem wir die Werte aus dem obigen Beispiel verwenden.
 
 ```xml
-    <WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
-      <Endpoints>
-        <InputEndpoint name="endpoint1" protocol="http" localPort="80" port="80" loadBalancer="testLB" />
-      </Endpoints>
-    </WorkerRole>
+<WorkerRole name="WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
+    <Endpoints>
+    <InputEndpoint name="endpoint1" protocol="http" localPort="80" port="80" loadBalancer="testLB" />
+    </Endpoints>
+</WorkerRole>
 ```
 
 Der Lastenausgleich für den Netzwerkdatenverkehr erfolgt für eingehende Anforderungen mit dem Lastenausgleichsmodul "testLB" über Port 80. Die Workerrolleninstanzen werden ebenfalls über Port 80 gesendet.
@@ -99,6 +100,6 @@ Der Lastenausgleich für den Netzwerkdatenverkehr erfolgt für eingehende Anford
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

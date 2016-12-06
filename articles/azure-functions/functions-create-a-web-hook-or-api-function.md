@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 08/30/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9484a637a1876f2cae644e43986bd5ef3201da1e
+ms.sourcegitcommit: 71ee49cd316563490677ad4efbe78e05dca93162
+ms.openlocfilehash: 293121f3eb626a3296d39be11d7b0294378a017b
 
 
 ---
@@ -33,7 +33,7 @@ Das folgende Video zeigt die Ausführung der grundlegenden Schritte in diesem Tu
 >
 >
 
-## <a name="create-a-webhooktriggered-function-from-the-template"></a>Erstellen einer durch einen Webhook ausgelösten Funktion aus der Vorlage
+## <a name="create-a-webhook-triggered-function-from-the-template"></a>Erstellen einer durch einen Webhook ausgelösten Funktion aus der Vorlage
 Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [können Sie ein kostenloses Konto erstellen](https://azure.microsoft.com/free/). 
 
 1. Wechseln Sie zum [Azure Functions-Portal](https://functions.azure.com/signin) , und melden Sie sich mit Ihrem Azure-Konto an.

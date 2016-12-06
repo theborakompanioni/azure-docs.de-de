@@ -8,7 +8,7 @@
 # Anleitung
 ## Planen und Entwerfen
 ### [Auswahl zwischen Flow, Logic Apps, Functions und WebJobs](functions-compare-logic-apps-ms-flow-webjobs.md)
-### [Wählen Sie zwischen Verbrauch und App Service-Plan](functions-scale.md)
+### [Wählen zwischen Hostingplänen](functions-scale.md)
 
 ## Entwickeln
 ### [Entwickeln von Funktionen-Apps](functions-reference.md)
@@ -21,7 +21,7 @@
 #### [Mobile Apps-Bindungen](functions-bindings-mobile-apps.md)
 #### [Notification Hub-Ausgabebindung](functions-bindings-notification-hubs.md)
 #### [Service Bus-Trigger und -Bindungen für Warteschlangen und Themen](functions-bindings-service-bus.md)
-#### Speicher
+#### Speicherbindungen
 ##### [Blobbindungen](functions-bindings-storage-blob.md)
 ##### [Warteschlangenbindungen](functions-bindings-storage-queue.md)
 ##### [Tabellenbindungen](functions-bindings-storage-table.md)
@@ -30,6 +30,7 @@
 ### [Erstellen einer Funktion im Azure-Portal](functions-create-first-azure-function-azure-portal.md)
 ### [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)
 ### [Lokales Entwickeln und Debuggen](functions-run-local.md)
+### [Bewährte Methoden für Azure Functions](functions-best-practices.md)
 ### [Verwenden von Azure Functions zum Ausführen eines geplanten Bereinigungstasks](functions-scenario-database-table-cleanup.md)
 
 ## Verwalten
@@ -38,16 +39,16 @@
 ## Bereitstellen
 ### [Kontinuierliche Bereitstellung für Azure Functions](functions-continuous-deployment.md)
 
-# Referenz
-## [.NET API](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## Überwachen
+### [Überwachen von Azure Functions](functions-monitoring.md)
 
-# Ressourcen
+# angeben
 ## [Preise](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

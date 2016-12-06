@@ -4,9 +4,13 @@ In diesem Schritt erstellen Sie eine Firewallregel, um den Testport für den End
 2. Klicken Sie mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie dann auf **Neue Regel**.
 3. Wählen Sie auf der Seite **Regeltyp** die Option **Port** aus, und klicken Sie dann auf **Weiter**.
 4. Wählen Sie auf der Seite **Protokoll und Ports** die Option **TCP** aus, und geben Sie **59999** in das Feld **Bestimmte lokale Ports** ein. Klicken Sie auf **Weiter**.
-5. Lassen Sie auf der Seite **Aktion** die Option **Verbindung zulassen** ausgewählt, und klicken Sie auf **Weiter**.
-6. Übernehmen Sie auf der Seite **Profil** die Standardeinstellungen, und klicken Sie auf **Weiter**.
-7. Geben Sie auf der Seite **Name** einen Regelnamen, z. B.**AlwaysOn-Listenertestport**, in das Textfeld **Name** ein, und klicken Sie auf **Fertig stellen**.
-8. Wiederholen Sie die oben genannten Schritte für den Port des Verfügbarkeitsgruppenlisteners (wie weiter oben im $EndpointPort-Parameter des Skripts angegeben), und geben Sie einen geeigneten Regelnamen an, z. B.**AlwaysOn-Listenerport**.
+5. Lassen Sie auf der Seite **Aktion** die Option **Verbindung zulassen** aktiviert, und klicken Sie auf **Weiter**.
+6. Akzeptieren Sie auf der Seite **Profil** die Standardeinstellungen, und klicken Sie auf **Weiter**.
+7. Geben Sie auf der Seite **Name** einen Regelnamen, z.B.**AlwaysOn-Listenertestport**, in das Textfeld **Name** ein, und klicken Sie auf **Fertig stellen**.
+8. Wiederholen Sie die oben genannten Schritte für den Port des Verfügbarkeitsgruppenlisteners (wie weiter oben im $EndpointPort-Parameter des Skripts angegeben), und geben Sie einen geeigneten Regelnamen an, z.B. **AlwaysOn-Listenerport**.
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

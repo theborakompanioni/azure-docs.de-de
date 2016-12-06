@@ -10,7 +10,7 @@
    
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
-2. Fügen Sie der **ToDoActivity**-Klasse die folgende Methode hinzu:
+2. Fügen Sie der **ToDoActivity** -Klasse die folgende Methode hinzu: 
    
         private void authenticate() {
             // Login using the Google provider.
@@ -34,14 +34,14 @@
 
     Diese neue Methode erledigt den Authentifizierungsprozess. Der Benutzer wird mithilfe einer Google-Anmeldung authentifiziert. Ein Dialogfeld mit der ID des authentifizierten Benutzers wird eingeblendet. Ohne erfolgreiche Authentifizierung können Sie nicht fortfahren.
 
-    > [AZURE.NOTE]Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, ändern Sie den an die **login**-Methode übergebenen Wert in einen der folgenden Werte: _MicrosoftAccount_, _Facebook_, _Twitter_ oder _windowsazureactivedirectory_.
+    > [AZURE.NOTE] Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, ändern Sie den an die **login**-Methode übergebenen Wert in einen der folgenden Werte: _MicrosoftAccount_, _Facebook_, _Twitter_ oder _windowsazureactivedirectory_.
 
 1. Fügen Sie in der **onCreate**-Methode die folgende Codezeile im Anschluss an den Code hinzu, der das `MobileServiceClient`-Objekt instanziiert.
    
         authenticate();
    
     Dieser Aufruf startet den Authentifizierungsprozess.
-2. Verschieben Sie den verbleibenden Code nach `authenticate();` in der **onCreate**-Methode in eine neue **createTable**-Methode, die etwa so aussieht:
+2. Verschieben Sie den verbleibenden Code nach `authenticate();` in der **OnCreate**-Methode in eine neue **CreateTable**-Methode mit dem folgenden Code:
    
         private void createTable() {
    
@@ -58,8 +58,12 @@
             // Load the items from Azure.
             refreshItemsFromTable();
         }
-3. Klicken Sie im Menü **Ausführen** auf **App ausführen**, um die App zu starten, und melden Sie sich mit dem Identitätsanbieter Ihrer Wahl an.
+3. Klicken Sie im Menü **Ausführen** auf **App ausführen**, um die App zu starten, und melden Sie sich mit dem Identitätsanbieter Ihrer Wahl an. 
    
-       Wenn Sie erfolgreich angemeldet sind, sollte die App ohne Fehler ausgeführt werden, und Sie sollten in der Lage sein, den Back-End-Dienst abzufragen und Daten zu aktualisieren.
+       When you are successfully logged-in, the app should run without errors, and you should be able to query the backend service and make updates to data.
 
-<!---HONumber=AcomDC_1210_2015-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

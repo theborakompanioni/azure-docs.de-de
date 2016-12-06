@@ -7,10 +7,10 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 -->
 
 
-### Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Abrufen der Verbindungszeichenfolge aus dem Azure-Portal
 Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbindungszeichenfolge, die für die Interaktion des Clientprogramms mit Azure SQL-Datenbank benötigt wird:
 
-1. Klicken auf **DURCHSUCHEN** > **SQL-Datenbanken**.
+1. Klicken Sie auf **DURCHSUCHEN** > **SQL-Datenbanken**.
    
     ![SQL auswählen][1-select-sql]
 2. Geben Sie in das Textfeld "Filter" nahe der oberen linken Ecke des Blattes **SQL-Datenbanken** den Namen der Datenbank ein.
@@ -22,7 +22,7 @@ Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbind
 6. Wenn Sie die JDBC-Verbindungsbibliothek verwenden möchten, kopieren Sie die Zeichenfolge mit der Bezeichnung **JDBC**.
    
     ![JDBC-Verbindungszeichenfolge für die Datenbank kopieren][3-get-connection-string]
-7. Fügen Sie die Informationen der Verbindungszeichenfolge in den Code der Clientanwendung ein. Ersetzen Sie {your\_password\_here} durch Ihr tatsächliches Kennwort.
+7. Fügen Sie die Informationen der Verbindungszeichenfolge in den Code der Clientanwendung ein.  Ersetzen Sie {your_password_here} durch Ihr tatsächliches Kennwort.
 
 Weitere Informationen finden Sie unter:<br/>[Verbindungszeichenfolgen und Konfigurationsdateien](https://msdn.microsoft.com/library/ms378428.aspx).
 
@@ -44,4 +44,7 @@ includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
 
-<!---HONumber=AcomDC_0406_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

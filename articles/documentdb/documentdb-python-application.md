@@ -13,11 +13,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/25/2016
+ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b55d61071dac6d173f37bdde7f9b60e53ae2485f
+ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
+ms.openlocfilehash: a652dcd2427d579db42e963ad54ac3078cba6857
 
 
 ---
@@ -46,7 +46,11 @@ Im Verlauf dieses Lernprogramms erstellen Sie eine einfache Wahlanwendung, über
 ## <a name="database-tutorial-prerequisites"></a>Voraussetzungen für das Datenbanklernprogramm
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes installiert ist:
 
-* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/).
+ 
+    OR 
+
+    Lokale Installation des [Azure DocumentDB-Emulators](documentdb-nosql-local-emulator.md).
 * [Visual Studio 2013](http://www.visualstudio.com/) oder höher oder [Visual Studio Express]() (die kostenlose Version). Die Anweisungen in diesem Tutorial wurden speziell für Visual Studio 2015 erstellt. 
 * Python Tools für Visual Studio aus [GitHub](http://microsoft.github.io/PTVS/). In diesem Tutorial werden Python Tools für VS 2015 verwendet. 
 * Azure Python SDK für Visual Studio, Version 2.4 oder höher, ist auf [azure.com](https://azure.microsoft.com/downloads/)erhältlich. Hier wurde das Microsoft Azure SDK für Python 2.7 verwendet.
@@ -62,12 +66,12 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgende
 * Microsoft Visual C++ Compiler für Python 2.7 aus dem [Microsoft Download Center][3].
 
 ## <a name="step-1-create-a-documentdb-database-account"></a>Schritt 1: Erstellen eines DocumentDB-Datenbankkontos
-Erstellen Sie zunächst ein DocumentDB-Konto. Wenn Sie bereits über ein Konto verfügen, können Sie mit [Schritt 2: Erstellen einer neuen Python Flask-Webanwendung](#step-2:-create-a-new-python-flask-web-application)fortfahren.
+Erstellen Sie zunächst ein DocumentDB-Konto. Falls Sie bereits ein Konto besitzen oder den DocumentDB-Emulator für dieses Tutorial verwenden, können Sie mit [Schritt 2: Erstellen einer neuen Python Flask-Webanwendung](#step-2:-create-a-new-python-flask-web-application) fortfahren.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 <br/>
- Im Folgenden wird erläutert, wie Sie eine Python Flask-Webanwendung von Grund auf neu erstellen.
+Im Folgenden wird erläutert, wie Sie eine Python Flask-Webanwendung von Grund auf neu erstellen.
 
 ## <a name="step-2-create-a-new-python-flask-web-application"></a>Schritt 2: Erstellen einer neuen Python Flask-Webanwendung
 1. Zeigen Sie in Visual Studio im Menü **Datei** auf **Neu**, und klicken Sie dann auf **Projekt**.
@@ -409,6 +413,6 @@ Weitere Python Flask-Tutorials finden Sie unter [The Flask Mega-Tutorial, Part I
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

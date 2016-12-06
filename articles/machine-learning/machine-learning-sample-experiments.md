@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
-ms.author: cgronlun;chhavib;olgali
+ms.date: 11/11/2016
+ms.author: cgronlun;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: df9009646627226acc8209486f990688efe95622
+ms.sourcegitcommit: 35579eda8b92a481525ad987e99e7d9c9ed6b942
+ms.openlocfilehash: 7c712cb20d9e008c74436fc602326afa00250c63
 
 
 ---
 # <a name="copy-sample-experiments-to-create-new-machine-learning-experiments"></a>Kopieren von Beispielexperimenten zum Erstellen neuer Machine Learning-Experimente
-Es wird beschrieben, wie Sie mit Beispielexperimenten aus dem [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/) beginnen, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Sie können die Beispiele verwenden, um eine eigene Machine Learning-Lösung zu erstellen.
+Es wird beschrieben, wie Sie mit Beispielexperimenten aus dem [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/) beginnen, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Sie können die Beispiele verwenden, um eine eigene Machine Learning-Lösung zu erstellen.
 
 Der Katalog enthält Beispielexperimente des Microsoft Azure Machine Learning-Teams und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
 
@@ -30,7 +30,7 @@ Die Nutzung des Katalogs wird in dem dreiminütigen Video [Kopieren der Arbeit a
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="find-an-experiment-to-copy-in-cortana-intelligence-gallery"></a>Suchen nach einem zu kopierenden Experiment im Cortana Intelligence-Katalog
-Navigieren Sie zum [Katalog](http://gallery.cortanaintelligence.com/) und klicken Sie oben auf der Seite auf **Experiments** (Experimente), um anzuzeigen, welche Experimente verfügbar sind.
+Navigieren Sie zum [Katalog](https://gallery.cortanaintelligence.com/) und klicken Sie oben auf der Seite auf **Experiments** (Experimente), um anzuzeigen, welche Experimente verfügbar sind.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>Suchen nach den neuesten oder beliebtesten Experimenten
 Auf dieser Seite können Sie Experimente der Kategorie **Recently added** anzeigen oder nach unten zu **What‘s popular** oder den neuesten **Popular Microsoft experiments** scrollen.
@@ -43,16 +43,16 @@ So durchsuchen Sie alle Experimente:
 3. Es gibt verschiedene Möglichkeiten zur Ermittlung von Experimenten, die Ihre Anforderungen erfüllen:
    * **Wählen Sie auf der linken Seite Filter aus.** Wenn Sie beispielsweise Experimente durchsuchen möchten, die einen Algorithmus zur PCA-basierten Erkennung von Anomalien verwenden, wählen Sie unter **Categories** die Option **Experiment** und unter **Algorithms Used** die Option **PCA-Based Anomaly Detection** aus. (Wenn Ihnen dieser Algorithmus nicht angezeigt wird, klicken Sie unten in der Liste auf **Show all**.)<br></br>
      ![](./media/machine-learning-sample-experiments/refine-the-view.png)
-   * **Verwenden Sie das Suchfeld.**  Wenn Sie etwa nach Experimenten von Microsoft zur Ziffernerkennung suchen möchten, bei denen ein zweiklassiger Support Vector Machine-Algorithmus verwendet wird, geben Sie im Suchfeld „digit recognition“ (Ziffernerkennung) ein. Wählen Sie anschließend die Filter **Experiment**, **Microsoft content only** und **Two-Class Support Vector Machine** aus: ![](./media/machine-learning-sample-experiments/search-for-experiments.png) 
+   * **Verwenden Sie das Suchfeld.**  Wenn Sie etwa nach Experimenten von Microsoft zur Ziffernerkennung suchen möchten, bei denen ein zweiklassiger Support Vector Machine-Algorithmus verwendet wird, geben Sie im Suchfeld „digit recognition“ (Ziffernerkennung) ein. Wählen Sie anschließend die Filter **Experiment**, **Microsoft content only** und **Two-Class Support Vector Machine** aus: ![](./media/machine-learning-sample-experiments/search-for-experiments.png)
 4. Klicken Sie auf ein Experiment, um mehr darüber zu erfahren.
 5. Zum Ausführen und/oder Ändern des Experiments klicken Sie auf der Seite des Experiments auf **Open in Studio** (In Studio öffnen).
-   
+
    > [!NOTE]
    > Wenn Sie ein Experiment in Machine Learning Studio öffnen möchten, müssen Sie sich mit den Anmeldeinformationen für Ihr Microsoft-Konto anmelden. Wenn Sie noch keinen Machine Learning-Arbeitsbereich besitzen, wird ein Arbeitsbereich in der kostenlosen Testversion erstellt. [Informieren Sie sich über den Funktionsumfang der kostenlosen Testversion von Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/)
-   > 
-   > 
-   
-    ![](./media/machine-learning-sample-experiments/example-experiment.png) 
+   >
+   >
+
+    ![](./media/machine-learning-sample-experiments/example-experiment.png)
 
 ## <a name="use-a-template-in-machine-learning-studio"></a>Verwenden einer Vorlage in Machine Learning Studio
 Sie können in Machine Learning Studio auch ein neues Experiment erstellen, indem Sie ein Beispiel aus dem Katalog als Vorlage verwenden.
@@ -67,11 +67,9 @@ In Ihrem Arbeitsbereich wird ein neues Experiment erstellt, bei dem das Beispiel
 * [Verwenden von R im Experiment](machine-learning-r-quickstart.md)
 * [Überprüfen der R-Beispielexperimente](machine-learning-r-csharp-web-service-examples.md)
 * [Erstellen einer Webdienst-API](machine-learning-publish-a-machine-learning-web-service.md)
-* [Durchsuchen einsatzbereiter Anwendungen](https://datamarket.azure.com/browse?query=machine+learning)
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -13,7 +13,7 @@
 
 # Erste Schritte
 ## [Erstellen eines virtuellen Netzwerks](virtual-networks-create-vnet-arm-pportal.md)
-## [Bereitstellen einer VM in einem virtuellen Netzwerk](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+## [Bereitstellen einer VM in einem virtuellen Netzwerk](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 # Anleitung
 ## Planen und Entwerfen
@@ -143,6 +143,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 
