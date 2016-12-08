@@ -144,7 +144,7 @@ In jeder Kategorie der Azure IoT-Architektur versuchen wir, den unterschiedliche
 | Gerät |S |Zuweisen der Identität zum Gerät und Authentifizieren des Geräts |Ersetzen des Geräts oder eines Teils der Geräts durch ein anderes Gerät. Woher wissen wir, dass wir mit dem richtigen Gerät kommunizieren? |Authentifizieren des Geräts per Transport Layer Security (TLS) oder IPSec. Die Infrastruktur sollte die Verwendung eines vorinstallierten Schlüssels (Pre-Shared Key, PSK) auf den Geräten unterstützen, bei denen keine vollständige asymmetrische Verschlüsselung möglich ist. Nutzung von Azure AD, [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) |
 | TRID |Anwenden von manipulationssicheren Mechanismen auf das Gerät, z.B. indem es erschwert oder unmöglich gemacht wird, Schlüssel und andere Verschlüsselungsdaten vom Gerät zu entwenden |Das Risiko besteht darin, dass das Gerät manipuliert wird (physischer Eingriff). Woher wissen wir, dass das Gerät nicht manipuliert wurde? |Die effektivste Lösung ist ein Trusted Platform Module (TPM) mit der Möglichkeit, Schlüssel in einem speziellen On-Chip-Verfahren zu speichern. Hierbei können die Schlüssel nicht gelesen, sondern nur für kryptografische Vorgänge verwendet werden, für die der Schlüssel erforderlich ist. Der Schlüssel wird aber niemals offengelegt. Speicherverschlüsselung für das Gerät. Schlüsselverwaltung für das Gerät. Signieren des Codes. | |
 | E |Verwenden der Zugriffssteuerung für das Gerät, Autorisierungsschema |Wenn es für das Gerät zulässig ist, dass einzelne Aktionen basierend auf den Befehlen einer externen Quelle oder sogar über kompromittierte Sensoren durchgeführt werden, sind bei einem Angriff Vorgänge möglich, die sonst nicht zugänglich sind. |Verwenden Sie ein Autorisierungsschema für das Gerät. | |
-| Bereichsgateway |S |Authentifizieren des Bereichsgateways gegenüber dem Cloudgateway (zertifikatbasiert, PSK, anspruchsbasiert,..) |Wenn das Bereichsgateway per Spoofing übernommen wird, kann sich der Angreifer als jedes Gerät ausgeben. |TLS RSA/PSK, IPSe, [RFC 4279](https://tools.ietf.org/html/rfc4279). Alle üblichen Schlüsselspeicherungs- und Nachweisaspekte von Geräten. Am besten ist TPM geeignet. 6LowPAN-Erweiterung für IPSec zur Unterstützung von Wireless Sensor Networks (WSN). |
+| Bereichsgateway |S |Authentifizieren des Bereichsgateways gegenüber dem Cloudgateway (zertifikatbasiert, PSK, anspruchsbasiert,..) |Wenn das Bereichsgateway per Spoofing übernommen wird, kann sich der Angreifer als jedes Gerät ausgeben. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Alle üblichen Schlüsselspeicherungs- und Nachweisaspekte von Geräten. Am besten ist TPM geeignet. 6LowPAN-Erweiterung für IPSec zur Unterstützung von Wireless Sensor Networks (WSN). |
 | TRID |Schützen des Bereichsgateways vor Manipulationen (TPM?) |Spoofing-Angriffe, bei denen für das Cloudgateway der Eindruck erweckt wird, dass es mit dem Bereichsgateway kommuniziert, können zur Offenlegung und Manipulation von Daten führen. |Speicherverschlüsselung, TPMs, Authentifizierung. | |
 | E |Zugriffssteuerungsmechanismus für Bereichsgateway | | | |
 
@@ -229,6 +229,6 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

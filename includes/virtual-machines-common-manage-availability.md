@@ -9,6 +9,7 @@ Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, so
 * [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]
 * [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]
 * [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]
+* [Verwenden mehrerer Speicherkonten für jede Verfügbarkeitsgruppe]
 
 ## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz
 Um Redundanz für Ihre Anwendung zu gewährleisten, empfehlen wir die Gruppierung von zwei oder mehr virtuellen Computern in einer Verfügbarkeitsgruppe. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die von der Azure-SLA zugesicherte Verfügbarkeit von 99,95 % eingehalten wird. Weitere Informationen finden Sie unter [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
@@ -38,14 +39,22 @@ Kombinieren Sie den Azure-Lastenausgleich ( [Azure Load Balancer](../articles/lo
 
 Wenn der Lastenausgleich nicht für die gleichmäßige Verteilung des Datenverkehrs auf mehrere virtuelle Computer konfiguriert ist, wirkt sich ein geplantes Wartungsereignis schließlich auf den einzigen virtuellen Computer, der den Datenverkehr aufrechterhält, aus und führt zu einem Ausfall der Anwendungsebene. Werden dagegen mehrere virtuelle Computer derselben Ebene demselben Lastenausgleich und derselben Verfügbarkeitsgruppe zugeordnet, wird der Datenverkehr kontinuierlich von mindestens einer Instanz aufrechterhalten.
 
+## <a name="use-multiple-storage-accounts-for-each-availability-set"></a>Verwenden mehrerer Speicherkonten für jede Verfügbarkeitsgruppe
+Sie sollten die bewährten Methoden in Hinblick auf die Speicherkonten befolgen, die von virtuellen Festplatten (Virtual Hard Disks, VHDs) innerhalb des virtuellen Computers verwendet werden. Jeder virtuelle Datenträger ist ein Seitenblob in einem Azure-Speicherkonto. Es ist wichtig, sicherzustellen, dass in den Speicherkonten Redundanz und Isolation vorhanden sind, um hohe Verfügbarkeit für die virtuellen Computer innerhalb der Verfügbarkeitsgruppe zu garantieren.
+
+1. **Alle Datenträger (Betriebssystem und Daten) müssen einem virtuellen Computer im selben Speicherkonto zugeordnet sein**
+2. **Die [Grenzwerte](../articles/storage/storage-scalability-targets.md) des Speicherkontos müssen beachtet werden**, wenn einem Speicherkonto weitere VHDs hinzugefügt werden.
+3. **Verwenden mehrerer Speicherkonten für jede Verfügbarkeitsgruppe** Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe. Mehrere virtuelle Computer in derselben Verfügbarkeitsgruppe dürfen NICHT dasselbe Speicherkonto verwenden. Virtuelle Computer, die über verschiedene Verfügbarkeitsgruppen verteilt sind, können Speicherkonten teilen, solange die oben genannten bewährten Methoden befolgt werden.
+
 <!-- Link references -->
 [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
 [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]: #configure-each-application-tier-into-separate-availability-sets
 [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]: #combine-a-load-balancer-with-availability-sets
 [Vermeiden virtueller Computer, die eine Einzelinstanz darstellen, in Verfügbarkeitsgruppen]: #avoid-single-instance-virtual-machines-in-availability-sets
+[Verwenden mehrerer Speicherkonten für jede Verfügbarkeitsgruppe]: #use-multiple-storage-accounts-for-each-availability-set
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

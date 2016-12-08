@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 09/29/2016
+ms.date: 11/18/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 050b8b4400d8d52304bffdf138ef29c8b01c21aa
+ms.sourcegitcommit: be9c8cf0123a635919453575716959aaff7a8193
+ms.openlocfilehash: 48f4dd70a075214abeb98e983c57e91af501161c
 
 
 ---
@@ -27,8 +27,8 @@ Sie werden viele der in diesem Artikel beschriebenen Ressourcen und Features nut
 
 > [!TIP]
 > Eine allgemeiner gehaltene Einführung in den Batch-Dienst finden Sie unter [Grundlagen von Azure Batch](batch-technical-overview.md).
-> 
-> 
+>
+>
 
 ## <a name="batch-service-workflow"></a>Workflow des Batch-Diensts
 Der folgende allgemeine Workflow ist typisch für fast alle Anwendungen und Dienste, die den Batch-Dienst für die Verarbeitung von parallelen Workloads verwenden:
@@ -44,8 +44,8 @@ In den folgenden Abschnitten werden diese und andere Ressourcen von Batch bespro
 
 > [!NOTE]
 > Zur Verwendung des Batch-Diensts wird ein [Batch-Konto](batch-account-create-portal.md) benötigt. Darüber hinaus wird bei fast allen Lösungen ein [Azure Storage-Konto][azure_storage] zum Speichern und Abrufen von Dateien verwendet. Von Batch wird derzeit ausschließlich der Speicherkontotyp **Allgemein** unterstützt, wie in [Informationen zu Azure Storage-Konten](../storage/storage-create-storage-account.md) unter Schritt 5 von [Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account) beschrieben.
-> 
-> 
+>
+>
 
 ## <a name="batch-service-resources"></a>Ressourcen für den Batch-Dienst
 Einige der folgenden Ressourcen – Konten, Computeknoten, Pools, Aufträge, Tasks – sind für alle Lösungen erforderlich, die den Batch-Dienst nutzen. Andere Features (wie etwa Auftragszeitpläne und Anwendungspakete) sind zwar hilfreich, aber optional.
@@ -54,10 +54,10 @@ Einige der folgenden Ressourcen – Konten, Computeknoten, Pools, Aufträge, Tas
 * [Computeknoten](#compute-node)
 * [Pool](#pool)
 * [Job](#job)
-  
+
   * [Auftragszeitpläne](#scheduled-jobs)
 * [Aufgabe](#task)
-  
+
   * [Startaufgabe](#start-task)
   * [Auftrags-Manager-Aufgabe](#job-manager-task)
   * [Tasks zur Auftragsvorbereitung und -freigabe](#job-preparation-and-release-tasks)
@@ -89,60 +89,60 @@ Jedem Knoten, der einem Pool hinzugefügt wird, werden ein eindeutiger Name und 
 Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben:
 
 * **Betriebssystem** und **Version** von Computeknoten
-  
+
     Bei der Wahl eines Betriebssystems für die Knoten im Pool haben Sie zwei Optionen: **Konfiguration des virtuellen Computers** und **Clouddienstkonfiguration**.
-  
+
     Bei **Konfiguration des virtuellen Computers** werden sowohl Linux- als auch Windows-Images für Computeknoten über den [Marketplace für virtuelle Computer][vm_marketplace] bereitgestellt.
     Beim Erstellen eines Pools, der Knoten mit der Konfiguration des virtuellen Computers enthält, müssen Sie nicht nur die Knotengröße angeben, sondern auch die **VM-Imagereferenz** und die **Knoten-Agent-SKU** von Batch, die auf den Knoten installiert werden soll. Weitere Informationen zum Angeben dieser Pooleigenschaften finden Sie unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md).
-  
+
     **Clouddienstkonfiguration** stellt *nur*. Verfügbare Betriebssysteme für Pools vom Typ „Clouddienstkonfiguration“ sind unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md)aufgeführt. Beim Erstellen eines Pools, der Cloud Services-Knoten enthält, müssen Sie nur die Knotengröße und die *Betriebssystemfamilie*angeben. Beim Erstellen von Pools mit Windows-Computeknoten wird üblicherweise Cloud Services verwendet.
-  
+
   * Die *Betriebssystemfamilie* bestimmt auch, welche Versionen von .NET mit dem Betriebssystem installiert werden.
   * Genau wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betriebssystemversion* angeben. (Weitere Informationen zu Workerrollen finden Sie im Abschnitt [Informationen zu Cloud Services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services) in der [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).)
   * Und genau wie bei Workerrollen empfiehlt sich auch bei der *Betriebssystemversion* die Angabe von `*`, damit die Knoten automatisch per Upgrade aktualisiert werden und für neue Versionen kein Zusatzaufwand entsteht. Mit der Wahl einer bestimmten Betriebssystemversion wird in erster Linie die Anwendungskompatibilität sichergestellt. Hierzu wird die Überprüfung der Abwärtskompatibilität vor der Versionsaktualisierung ermöglicht. Nach der Überprüfung kann die *Betriebssystemversion* für den Pool aktualisiert und das neue Betriebssystemimage installiert werden. Dabei werden alle ausgeführten Tasks unterbrochen und wieder der Warteschlange hinzugefügt.
 * **Größe der Knoten**
-  
+
     **Clouddienstkonfiguration** sind unter [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md). Batch unterstützt alle Clouddienstgrößen mit Ausnahme von `ExtraSmall`.
-  
+
     Die Größen der Computeknoten vom Typ **Konfiguration des virtuellen Computers** sind unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md) (Linux) bzw. [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md) (Windows) aufgelistet. Batch unterstützt alle Größen von Azure-VMs mit Ausnahme von `STANDARD_A0` und Größen mit Storage Premium (Serien `STANDARD_GS`, `STANDARD_DS` und `STANDARD_DSV2`).
-  
+
     Berücksichtigen Sie beim Auswählen einer Computeknotengröße die Merkmale und Anforderungen der Anwendungen, die auf den Knoten ausgeführt werden sollen. Die Beantwortung der Fragen, ob es sich beispielsweise um eine Multithreadanwendung handelt und wie viel Arbeitsspeicher sie beansprucht, kann Ihnen dabei behilflich sein, die am besten geeignete und kostengünstigste Knotengröße zu bestimmen. Die Knotengröße wird normalerweise unter der Annahme ausgewählt, dass jederzeit immer nur ein Task auf einem Knoten ausgeführt wird. Es ist aber auch möglich, mehrere Tasks (und somit mehrere Anwendungsinstanzen) während der Auftragsausführung auf Computeknoten [parallel zu nutzen](batch-parallel-node-tasks.md). In diesem Fall wird häufig eine höhere Knotengröße gewählt, um den höheren Bedarf an parallelen Taskausführungen decken zu können. Weitere Informationen finden Sie unter [Richtlinie zur Taskplanung](#task-scheduling-policy).
-  
+
     Alle Knoten in einem Pool haben dieselbe Größe. Wenn Sie Anwendungen mit unterschiedlichen Systemanforderungen bzw. Auslastungsgraden ausführen möchten, empfehlen wir Ihnen die Verwendung von separaten Pools.
 * **Vorgegebene Anzahl von Knoten**
-  
+
     Dies ist die Anzahl von Computeknoten, die Sie im Pool bereitstellen möchten. Dies wird als *Ziel* bezeichnet, da Ihr Pool – in einigen Fällen – unter Umständen nicht die gewünschte Anzahl von Knoten erreicht. Dieser Fall kann eintreten, wenn der Pool das [Kernkontingent](batch-quota-limit.md#batch-account-quotas) für Ihr Batch-Konto erreicht oder Sie eine Formel für die automatische Skalierung auf den Pool angewendet haben, die die maximale Knotenanzahl beschränkt. (Weitere Informationen finden Sie im Abschnitt „Skalierungsrichtlinie“.)
 * **Skalierungsrichtlinie**
-  
+
     Zusätzlich zum Angeben einer statischen Anzahl von Knoten können Sie auch eine [Formel für die automatische Skalierung](#scaling-compute-resources) erstellen und auf einen Pool anwenden. Der Batch-Dienst wertet die Formel regelmäßig aus und passt die Anzahl von Knoten innerhalb des Pools auf der Grundlage verschiedener Parameter an, die Sie für Pools, Aufträge und Tasks angeben können.
 * **Richtlinie zur Taskplanung**
-  
+
     Die Konfiguration der [maximalen Tasks pro Knoten](batch-parallel-node-tasks.md) bestimmt die maximale Anzahl von Tasks, die parallel auf den einzelnen Computeknoten im Pool ausgeführt werden können.
-  
+
     In der Standardkonfiguration wird auf einem Knoten immer nur ein einziger Task ausgeführt. Es sind aber auch Szenarien denkbar, in denen die gleichzeitige Ausführung mehrerer Tasks auf einem Knoten von Vorteil ist. Das [Beispielszenario](batch-parallel-node-tasks.md#example-scenario) im Artikel zu [parallelen Knotenaufgaben](batch-parallel-node-tasks.md) veranschaulicht, wie Sie von mehreren Tasks pro Knoten profitieren können.
-  
+
     Sie können auch einen *Fülltyp* angeben. Dieser legt fest, ob Batch die Tasks gleichmäßig auf alle Knoten eines Pools verteilt oder jeden Knoten mit der maximalen Anzahl von Tasks auffüllt, bevor Tasks einem weiteren Knoten zugewiesen werden.
 * **Kommunikationsstatus** von Computeknoten
-  
+
     In den meisten Szenarien werden Tasks unabhängig voneinander ausgeführt und müssen nicht miteinander kommunizieren. Es gibt aber einige Anwendungen, bei denen Tasks kommunizieren müssen, z.B. [MPI-Szenarien](batch-mpi.md).
-  
+
     Sie können einen Pool so konfigurieren, dass eine Kommunikation zwischen den darin enthaltenen Knoten möglich ist. Dies wird als **Kommunikation zwischen Knoten** bezeichnet. Wenn die Kommunikation zwischen Knoten aktiviert ist, können Knoten in Pools vom Typ „Clouddienstkonfiguration“ miteinander über Ports kommunizieren, die über 1100 liegen. In Pools vom Typ „Konfiguration des virtuellen Computers“ bestehen keine Portbeschränkungen für Datenverkehr.
-  
+
     Beachten Sie, dass sich die Aktivierung der Kommunikation zwischen Knoten auch auf die Anordnung der Knoten in Clustern auswirkt. Aufgrund von Bereitstellungsbeschränkungen wird unter Umständen die maximale Anzahl von Knoten in einem Pool begrenzt. Wenn für Ihre Anwendung keine Kommunikation zwischen Knoten erforderlich ist, kann der Batch-Dienst potenziell eine große Anzahl von Knoten in vielen verschiedenen Clustern und Datencentern für den Pool reservieren, um mehr Leistung für die parallele Verarbeitung bereitzustellen.
 * **Starttask** für Computeknoten
-  
+
     Der optionale *Starttask* wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart oder Reimaging eines Knotens. Der Starttask eignet sich besonders gut zum Vorbereiten von Computeknoten für die Ausführung von Tasks, z.B. das Installieren der Anwendungen, die von den Tasks auf den Computeknoten ausgeführt werden.
 * **Anwendungspakete**
-  
+
     Sie können [Anwendungspakete](#application-packages) für die Bereitstellung auf den Computeknoten im Pool festlegen. Anwendungspakete bieten eine vereinfachte Bereitstellung und Versionsverwaltung der Anwendungen, die von Ihren Tasks ausgeführt werden. Die Anwendungspakete, die Sie für einen Pool angeben, werden auf jedem Knoten installiert, der dem Pool hinzugefügt wird, sowie wenn der Knoten neu gestartet oder ein Reimaging durchgeführt wird. Anwendungspakete werden auf Linux-Computeknoten derzeit nicht unterstützt.
 * **Network Configuration**
-  
-    Sie können die ID eines [virtuellen Azure-Netzwerks (VNet)](../virtual-network/virtual-networks-overview.md) , in dem die Computeknoten des Pools erstellt werden sollen, festlegen. Anforderungen zum Festlegen eines VNet für Ihren Pool finden Sie unter [Add a pool to an account][vnet] (Hinzufügen eines Pools zu einem Konto) in der REST-API-Referenz für Batch.
+
+    Sie können die ID eines [virtuellen Azure-Netzwerks (VNet)](../virtual-network/virtual-networks-overview.md) , in dem die Computeknoten des Pools erstellt werden sollen, festlegen. Weitere Informationen finden Sie im Abschnitt [Konfiguration von Poolnetzwerken](#pool-network-configuration).
 
 > [!IMPORTANT]
 > Alle Batch-Konten verfügen über ein **Standardkontingent**, das die Anzahl von **Kernen** (und somit auch von Computeknoten) in einem Batch-Konto begrenzt. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) (wie etwa der Anzahl von Kernen in Ihrem Batch-Konto) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn Sie sich z.B. die Frage stellen, weshalb Ihr Pool nur eine bestimmte Anzahl von Knoten erreicht, liegt dies möglicherweise am Kernkontingent.
-> 
-> 
+>
+>
 
 ## <a name="job"></a>Auftrag
 Ein Auftrag ist eine Sammlung von Aufgaben. Er verwaltet, wie die Berechnung der Tasks auf Computeknoten in einem Pool durchgeführt wird.
@@ -150,13 +150,13 @@ Ein Auftrag ist eine Sammlung von Aufgaben. Er verwaltet, wie die Berechnung der
 * Der Auftrag gibt den **Pool** an, in dem der Task ausgeführt werden soll. Sie können einen neuen Pool für jeden Auftrag erstellen oder einen Pool für viele Aufträge verwenden. Sie können einen Pool für jeden Auftrag erstellen, der einem Auftragszeitplan zugeordnet ist, oder für alle dem Auftragszeitplan zugeordneten Aufträge gemeinsam.
 * Sie können eine optionale **Auftragspriorität**angeben. Wenn ein Auftrag übermittelt wird, der eine höhere Priorität besitzt als bereits in Bearbeitung befindliche Aufträge, werden die Tasks des Auftrags mit der höheren Priorität vor den Tasks der Aufträge mit niedrigerer Priorität in die Warteschlange eingefügt. Tasks in Aufträgen mit niedrigerer Priorität, die bereits ausgeführt werden, werden nicht zeitlich nach hinten verschoben.
 * Mithilfe von **Einschränkungen** für Aufträge können Sie bestimmte Grenzwerte für Ihre Aufträge angeben:
-  
+
     Sie können eine **Gesamtbetrachtungszeit** festlegen. Wenn ein Auftrag länger ausgeführt wird, werden der Auftrag und alle seine Tasks beendet.
-  
+
     Batch kann fehlgeschlagene Tasks erkennen und dann erneut versuchen, sie auszuführen. Sie können die **maximale Anzahl von Taskwiederholungen** als Einschränkung angeben. Hierzu gehört auch, ob ein Task *immer* oder *niemals* wiederholt werden soll. Bei der Wiederholung eines Tasks wird dieser nochmals der Warteschlange hinzugefügt und erneut ausgeführt.
 * Ihre Clientanwendung kann einem Auftrag Tasks hinzufügen. Alternativ können Sie einen [Auftrags-Manager-Task](#job-manager-task) angeben. Ein Auftrags-Manager-Task enthält die Informationen, die zum Erstellen der erforderlichen Tasks für einen Auftrag benötigt werden, wobei der Auftrags-Manager-Task auf einem der Computeknoten innerhalb des Pools ausgeführt wird. Der Auftrags-Manager-Task wird von Batch speziell behandelt: Er wird sofort nach der Auftragserstellung der Warteschlange hinzugefügt und erneut gestartet, falls er nicht erfolgreich ausgeführt werden konnte. Ein Auftrags-Manager-Task ist für durch einen [Auftragszeitplan](#scheduled-jobs) erstellte Aufträge *obligatorisch*, da sich Tasks nur so vor der Auftragsinstanziierung definieren lassen.
 * Standardmäßig bleiben Aufträge im aktiven Zustand, wenn alle Tasks innerhalb des Auftrags abgeschlossen sind. Sie können dieses Verhalten ändern, sodass der Auftrag automatisch beendet wird, wenn alle Aufgaben im Auftrag abgeschlossen sind. Legen Sie die Eigenschaft **onAllTasksComplete** des Auftrags ([OnAllTasksComplete][net_onalltaskscomplete] in Batch.NET) auf *terminatejob* fest, damit der Auftrag automatisch beendet wird, wenn sich alle Tasks im abgeschlossenen Zustand befinden.
-  
+
     Beachten Sie, dass ein Auftrag *ohne* Tasks vom Batch-Dienst als Auftrag angesehen wird, bei dem alle Tasks abgeschlossen sind. Diese Option wird daher mit einer [Auftrags-Manager-Aufgabe](#job-manager-task)am häufigsten verwendet. Wenn Sie die automatische Autragsbeendigung ohne einen Auftrags-Manager verwenden möchten, müssen Sie zunächst die Eigenschaft **onAllTasksComplete** des Auftrags auf *noaction* festlegen und erst nachdem Sie Tasks zum Auftrag hinzugefügt haben, auf *terminatejob*.
 
 ### <a name="job-priority"></a>Auftragspriorität
@@ -175,13 +175,13 @@ Ein Task ist eine Berechnungseinheit, die einem Auftrag zugeordnet ist. Er wird 
 Beim Erstellen eines Tasks können Sie Folgendes angeben:
 
 * Die **Befehlszeile** des Tasks. Dies ist die Befehlszeile, mit der die Anwendung oder das Skript auf dem Computeknoten ausgeführt wird.
-  
+
     Beachten Sie, dass die Befehlszeile nicht wirklich unter einer Shell ausgeführt wird. Aus diesem Grund kann sie nicht einfach Shell-Features wie die Erweiterung von[ Umgebungsvariablen](#environment-settings-for-tasks) nutzen. (Dies gilt auch für `PATH`.) Um solche Features nutzen zu können, müssen Sie die Shell über die Befehlszeile aufrufen – beispielsweise durch Starten von `cmd.exe` (Windows-Knoten) oder von `/bin/sh` (Linux):
-  
+
     `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
-  
+
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
-  
+
     Wenn Ihre Tasks eine Anwendung oder ein Skript ausführen müssen, die bzw. das sich nicht unter dem `PATH` oder in den Referenzumgebungsvariablen des Knotens befindet, können Sie die Shell explizit in der Taskbefehlszeile aufrufen.
 * **Ressourcendateien** , die die zu verarbeitenden Daten enthalten. Diese Dateien werden automatisch aus dem Blobspeicher in einem Azure-Speicherkonto vom Typ **Allgemein** auf den Knoten kopiert, bevor die Befehlszeile des Tasks ausgeführt wird. Weitere Informationen finden Sie in den Abschnitten [Starttask](#start-task) und [Dateien und Verzeichnisse](#files-and-directories).
 * Die von Ihrer Anwendung benötigten **Umgebungsvariablen** . Weitere Informationen finden Sie im Abschnitt [Umgebungseinstellungen für Tasks](#environment-settings-for-tasks) .
@@ -207,8 +207,8 @@ Sie kann aber auch Referenzdaten für alle Tasks enthalten, die auf dem Computek
 
 > [!IMPORTANT]
 > Von Batch wird derzeit *ausschließlich* der Speicherkontotyp **Allgemein** unterstützt, wie in [Informationen zu Azure Storage-Konten](../storage/storage-create-storage-account.md) unter Schritt 5 von [Speicherkonto erstellen](../storage/storage-create-storage-account.md#create-a-storage-account) beschrieben. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) müssen Ressourcendateien angegeben werden, die sich *ausschließlich* in Speicherkonten vom Typ **Allgemein** befinden.
-> 
-> 
+>
+>
 
 In der Regel empfiehlt es sich, dass der Batch-Dienst auf den Abschluss des Starttasks wartet und erst dann davon ausgeht, dass der Knoten nun für die Taskzuweisung bereit ist. Dieses Verhalten ist jedoch konfigurierbar.
 
@@ -238,7 +238,7 @@ Sowohl für Tasks zur Auftragsvorbereitung als auch für Tasks zur Auftragsfreig
 
 Weitere Informationen zu Auftragsvorbereitungs- und -freigabetasks finden Sie unter [Ausführen von Auftragsvorbereitungs- und Auftragsabschlusstasks auf Azure Batch-Computeknoten](batch-job-prep-release.md).
 
-### <a name="multiinstance-task"></a>Task mit mehreren Instanzen
+### <a name="multi-instance-task"></a>Task mit mehreren Instanzen
 Ein [Task mit mehreren Instanzen](batch-mpi.md) ist ein Task, der für die gleichzeitige Ausführung auf mehreren Computeknoten konfiguriert ist. Tasks mit mehreren Instanzen ermöglichen Computeszenarien mit hohem Leistungsbedarf, in denen eine einzelne Workload von einer gemeinsam zugeordneten Gruppe von Computeknoten verarbeitet werden muss – etwa bei MPI (Message Passing Interface).
 
 Ausführliche Informationen zum Ausführen von MPI-Aufträgen in Batch mithilfe der Batch .NET-Bibliothek finden Sie unter [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](batch-mpi.md).
@@ -275,15 +275,15 @@ Das Stammverzeichnis enthält die folgenden Verzeichnisstruktur:
 * **shared**: Dieses Verzeichnis bietet Lese-/Schreibzugriff auf *alle* Tasks, die auf einem Knoten ausgeführt werden. Mit jedem Task, der auf dem Knoten ausgeführt wird, können Dateien in diesem Verzeichnis erstellt, gelesen, aktualisiert und gelöscht werden. Tasks können auf dieses Verzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_SHARED_DIR` verweisen.
 * **startup**: Dieses Verzeichnis wird von einem Starttask als Arbeitsverzeichnis verwendet. Alle Dateien, die vom Starttask auf den Knoten heruntergeladen werden, werden hier gespeichert. Der Starttask kann Dateien unter diesem Verzeichnis erstellen, lesen, aktualisieren und löschen. Tasks können auf dieses Verzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_STARTUP_DIR` verweisen.
 * **Tasks**: Für jeden Task, der auf dem Knoten ausgeführt wird, wird ein Verzeichnis erstellt. Der Zugriff erfolgt durch einen Verweis auf die Umgebungsvariable `AZ_BATCH_TASK_DIR` .
-  
+
     Innerhalb jedes Taskverzeichnisses erstellt der Batch-Dienst ein Arbeitsverzeichnis (`wd`), dessen eindeutiger Pfad durch die `AZ_BATCH_TASK_WORKING_DIR`-Umgebungsvariable angegeben wird. Dieses Verzeichnis bietet Lese-/Schreibzugriff auf den Task. Die Aufgabe kann Dateien unter diesem Verzeichnis erstellen, lesen, aktualisieren und löschen. Dieses Verzeichnis wird auf der Grundlage der für den Vorgang angegebenen Einschränkung *RetentionTime* beibehalten.
-  
+
     `stdout.txt` und `stderr.txt`: Diese Dateien werden während der Ausführung des Tasks in den Taskordner geschrieben.
 
 > [!IMPORTANT]
 > Wenn ein Knoten aus einem Pool entfernt wird, werden *alle* auf dem Knoten gespeicherten Dateien entfernt.
-> 
-> 
+>
+>
 
 ## <a name="application-packages"></a>Anwendungspakete
 Das Feature [Anwendungspakete](batch-application-packages.md) ermöglicht eine einfache Verwaltung und Bereitstellung von Anwendungen für die in Ihren Pools benötigten Computeknoten. Sie können mehrere Versionen der von Ihren Tasks ausgeführten Anwendungen hochladen und verwalten (einschließlich Binärdaten und Unterstützungsdateien). Anschließend können Sie dann eine oder mehrere dieser Anwendungen für die Computeknoten in Ihrem Pool bereitstellen.
@@ -296,8 +296,8 @@ Weitere Informationen zum Anwendungspaketfeature finden Sie unter [Anwendungsber
 
 > [!NOTE]
 > Wenn Sie die Pool-Anwendungspakete zu einem *vorhandenen* Pool hinzufügen, müssen sie dessen Computeknoten für die Anwendungspakete, die auf den Knoten bereitgestellt werden, neu starten.
-> 
-> 
+>
+>
 
 ## <a name="pool-and-compute-node-lifetime"></a>Gültigkeitsdauer für Pools und Computeknoten
 Beim Entwerfen Ihrer Azure Batch-Lösung müssen Sie entscheiden, wie und wann Pools erstellt werden und wie lange Computeknoten innerhalb dieser Pools verfügbar bleiben sollen.
@@ -307,6 +307,28 @@ An einem Ende des Spektrums können Sie einen Pool für jeden Auftrag erstellen,
 Falls dagegen der sofortige Start von Aufträgen höchste Priorität hat, können Sie bereits vorab einen Pool erstellen und die zugehörigen Knoten vor der Auftragsübermittlung verfügbar machen. Dieses Szenario ermöglicht zwar den sofortigen Start von Tasks, führt aber unter Umständen auch dazu, dass sich Knoten im Leerlauf befinden, während sie auf die Zuteilung warten.
 
 Zur Bewältigung einer variablen, kontinuierlichen Auslastung wird in der Regel ein kombinierter Ansatz verwendet. Sie können über einen Pool verfügen, an den mehrere Aufträge übermittelt werden, und die Anzahl von Knoten mittels Skalierung flexibel an die jeweilige Auslastung anpassen. (Weitere Informationen finden Sie im nächsten Abschnitt unter [Skalieren von Computeressourcen](#scaling-compute-resources).) Dies kann reaktiv auf der Grundlage der aktuellen Auslastung oder proaktiv erfolgen, sofern die Auslastung vorausgesagt werden kann.
+
+## <a name="pool-network-configuration"></a>Konfiguration von Poolnetzwerken
+
+Wenn Sie einen Pool von Computeknoten in Azure Batch erstellen, können Sie die ID eines [virtuellen Azure-Netzwerks (VNet)](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/), in dem die Computeknoten des Pools erstellt werden sollen, festlegen.
+
+* Nur Pools der **Konfiguration von Clouddiensten** können einem VNet zugewiesen werden.
+
+* Das VNet muss Folgendes vorweisen:
+
+   * Es muss sich in derselben Azure-**Region** wie das Azure Batch-Konto befinden.
+   * Es muss sich im selben **Abonnement** wie das Azure Batch-Konto befinden.
+   * Es muss ein **klassisches** VNet sein. VNets, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden, werden nicht unterstützt.
+
+* Das VNet sollte über genügend freie **IP-Adressen** verfügen, um die `targetDedicated`-Eigenschaft des Pools zu ermöglichen. Wenn das Subnetz nicht über genügend freie IP-Adressen verfügt, belegt der Batch-Dienst teilweise die Computeknoten im Pool und gibt einen Anpassungsfehler zurück.
+* Das Dienstprinzipal *MicrosoftAzureBatch* muss über die rollenbasierte Access Control-Rolle [Mitwirkender von klassischen virtuellen Computern](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor) für den angegebenen VNet verfügen. Im Azure-Portal:
+
+  * Wählen Sie **VNet** aus, klicken Sie dann auf **Zugriffssteuerung (IAM)** > **Rollen** > **Mitwirkender von klassischen virtuellen Computern** > **Hinzufügen**
+  * Geben Sie „MicrosoftAzureBatch“ in das **Suchfeld** ein.
+  * Überprüfen Sie das Kontrollkästchen **MicrosoftAzureBatch**.
+  * Wählen sie die Schaltfläche **Auswählen** aus.
+
+* Wenn die Kommunikation mit den Computeknoten durch **Netzwerksicherheitsgruppen (NSG)** verweigert wird, die dem VNet zugeordnet sind, dann legt der Batch-Dienst den Status der Computeknoten auf **nicht verwendbar** fest. Das Subnetz muss die Kommunikation zwischen dem Azure Batch-Dienst zulassen, um das Planen von Aufgaben auf den Computeknoten zulassen zu können.
 
 ## <a name="scaling-compute-resources"></a>Skalieren von Computeressourcen
 Mit der [automatischen Skalierung](batch-automatic-scaling.md)kann der Batch-Dienst die Anzahl von Computeknoten in einem Pool dynamisch an die aktuelle Workload und die Ressourcenverwendung Ihres Computeszenarios anpassen. So können Sie die Gesamtkosten für die Ausführung Ihrer Anwendung senken, indem Sie nur die erforderlichen Ressourcen verwenden und nicht benötigte Ressourcen freigeben.
@@ -327,8 +349,8 @@ Weitere Informationen zur automatischen Skalierung einer Anwendung finden Sie un
 
 > [!TIP]
 > Legen Sie die vorgegebene Anzahl von Knoten am Ende eines Auftrags auf Null fest, und lassen Sie das Abschließen ausgeführter Tasks zu, um die Auslastung von Computeressourcen zu maximieren.
-> 
-> 
+>
+>
 
 ## <a name="security-with-certificates"></a>Sicherheit mit Zertifikaten
 Zertifikate müssen in der Regel beim Ver- und Entschlüsseln vertraulicher Informationen für Tasks verwendet werden. Ein Beispiel wäre etwa der Schlüssel für ein [Azure Storage-Konto][azure_storage]. Hierzu können Sie Zertifikate auf Knoten installieren. Verschlüsselte geheime Schlüssel werden über Befehlszeilenparameter an Tasks übergeben oder in einer der Taskressourcen eingebettet. Zum Entschlüsseln können dann installierte Zertifikate verwendet werden.
@@ -344,27 +366,27 @@ Es kann vorkommen, dass Sie in Ihrer Batch-Lösung sowohl Task- als auch Anwendu
 Bei Taskfehlern wird zwischen folgenden Kategorien unterschieden:
 
 * **Planungsfehler**
-  
+
     Wenn die Übertragung von Dateien, die für einen Task angegeben sind, aus irgendeinem Grund nicht erfolgreich durchgeführt werden kann, wird für den Task ein „Planungsfehler“ festgelegt.
-  
+
     Planungsfehler können auftreten, wenn die Ressourcendateien des Tasks verschoben wurden, das Speicherkonto nicht mehr zur Verfügung steht oder ein anderes Problem aufgetreten ist, das ein erfolgreiches Kopieren von Dateien auf den Knoten verhindert hat.
 * **Anwendungsfehler**
-  
+
     Ein Fehler kann auch beim in der Befehlszeile des Tasks angegebenen Prozess auftreten. Der Prozess gilt als nicht erfolgreich, wenn der Exitcode, der vom durch den Task ausgeführten Prozess zurückgegeben wird, ungleich Null ist (siehe *Exitcodes für Tasks* im nächsten Abschnitt).
-  
+
     Batch kann so konfiguriert werden, dass der Task im Falle eines Anwendungsfehlers automatisch mit einer bestimmten Häufigkeit wiederholt wird.
 * **Einschränkungsfehler**
-  
+
     Mit der Einschränkung *maxWallClockTime*können Sie die maximale Ausführungsdauer für einen Auftrag oder Task angeben. Dies kann nützlich für das Beenden stillstehender Tasks sein.
-  
+
     Wenn die maximal zulässige Zeitspanne überschritten wurde, wird der Task als *abgeschlossen* gekennzeichnet. Als Exitcode wird jedoch `0xC000013A` zurückgegeben, und das Feld *schedulingError* wird als `{ category:"ServerError", code="TaskEnded"}` markiert.
 
 ### <a name="debugging-application-failures"></a>Debuggen von Anwendungsfehlern
 * `stderr` und `stdout`
-  
+
     Während der Ausführung generiert eine Anwendung unter Umständen eine Diagnoseausgabe für die Problembehandlung. Wie bereits unter [Dateien und Verzeichnisse](#files-and-directories) erwähnt, schreibt der Batch-Dienst eine Standardausgabe und eine Standardfehlerausgabe in die Dateien `stdout.txt` und `stderr.txt` im Taskverzeichnis auf dem Computeknoten. Diese Dateien können Sie über das Azure-Portal oder über ein Batch SDK herunterladen. So können Sie diese und andere Dateien beispielsweise mithilfe von [ComputeNode.GetNodeFile][net_getfile_node] und [CloudTask.GetNodeFile][net_getfile_task] in der .NET-Bibliothek von Batch zu Problembehandlungszwecken abrufen.
 * **Exitcodes für Tasks**
-  
+
     Wie bereits erwähnt, wird ein Task vom Batch-Dienst als nicht erfolgreich gekennzeichnet, wenn der vom Task ausgeführte Prozess einen Exitcode ungleich Null zurückgibt. Wenn ein Task einen Prozess ausführt, füllt Batch die Exitcode-Eigenschaft des Tasks mit dem *Rückgabecode des Prozesses*auf. Wichtig: Der Exitcode eines Tasks wird **nicht** vom Batch-Dienst bestimmt, sondern vom Prozess selbst oder von dem Betriebssystem, unter dem der Prozess ausgeführt wird.
 
 ### <a name="accounting-for-task-failures-or-interruptions"></a>Erläuterung zu Taskfehlern oder Unterbrechungen
@@ -377,34 +399,34 @@ Sie können weitere Debug- und Problembehandlungsmaßnahmen durchführen, indem 
 
 > [!IMPORTANT]
 > Um über RDP oder SSH eine Verbindung mit einem Knoten herzustellen, müssen Sie zuerst einen Benutzer auf dem Knoten erstellen. Zu diesem Zweck können Sie das Azure-Portal verwenden, über die Batch REST-API [einem Knoten ein Benutzerkonto hinzufügen][rest_create_user], die [ComputeNode.CreateComputeNodeUser][net_create_user]-Methode in Batch .NET aufrufen oder die [add_user][py_add_user]-Methode im Batch Python-Modul aufrufen.
-> 
-> 
+>
+>
 
 ### <a name="troubleshooting-bad-compute-nodes"></a>Problembehandlung bei fehlerhaften Computeknoten
 Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung oder der Dienst die Metadaten der fehlgeschlagenen Tasks prüfen, um einen fehlerhaften Knoten zu finden. Jeder Knoten in einem Pool erhält eine eindeutige ID, und der Knoten, auf dem ein Task ausgeführt wird, ist in den Metadaten des Tasks angegeben. Nachdem Sie einen „Problemknoten“ identifiziert haben, können Sie dafür verschiedene Aktionen durchführen:
 
 * **Starten Sie den Knoten neu** ([REST][rest_reboot] | [.NET][net_reboot]).
-  
+
     Durch einen Neustart des Knotens können latente Probleme wie etwa hängende oder abgestürzte Prozesse behoben werden. Wenn Ihr Pool ein Starttask oder der Auftrag ein Auftragsvorbereitungstask nutzt, werden diese Tasks beim Neustart des Knotens ausgeführt.
 * **Führen Sie ein Reimaging des Knotens durch** ([REST][rest_reimage] | [.NET][net_reimage]).
-  
+
     Dadurch wird das Betriebssystem auf dem Knoten neu installiert. Wie beim Neustart eines Knotens werden Start- und Auftragsvorbereitungstasks nach dem Reimaging des Knotens erneut ausgeführt.
 * **Entfernen Sie den Knoten aus dem Pool** ([REST][rest_remove] | [.NET][net_remove]).
-  
+
     Manchmal ist es erforderlich, den Knoten aus dem Pool vollständig zu entfernen.
 * **Deaktivieren Sie die Aufgabenplanung auf dem Knoten** ([REST][rest_offline] | [.NET][net_offline]).
-  
+
     Dadurch geht der Knoten „offline“, damit ihm keine weiteren Tasks mehr zugewiesen werden. Er wird aber weiterhin ausgeführt und verbleibt im Pool. So können Sie die Fehlerursache näher untersuchen, ohne dass die Daten der nicht erfolgreichen Tasks verloren gehen und durch den Knoten weitere Fehler auftreten. So können Sie beispielsweise die Taskplanung auf dem Knoten deaktivieren und sich [per Remotezugriff anmelden](#connecting-to-compute-nodes), um die Ereignisprotokolle des Knotens zu prüfen oder andere Schritte zur Problembehandlung auszuführen. Nach Abschluss der Prüfung können Sie den Knoten wieder online schalten, indem Sie die Taskplanung ([REST][rest_online] | [.NET][net_online]) aktivieren, oder eine andere der oben genannten Aktionen durchführen.
 
 > [!IMPORTANT]
 > Bei jeder der in diesem Abschnitt beschriebenen Aktionen (Neustart, Reimaging und Deaktivieren der Taskplanung) können Sie festlegen, wie mit auf dem Knoten ausgeführten Tasks verfahren werden soll, wenn Sie die Aktion durchführen. Wenn Sie also etwa auf einem Knoten mit der Batch .NET-Clientbibliothek die Taskplanung deaktivieren, können Sie durch das Festlegen des Enumerationswerts [DisableComputeNodeSchedulingOption][net_offline_option] angeben, ob ausgeführte Tasks **beendet**, für die Planung auf anderen Knoten **wieder in eine Warteschlange eingefügt** oder vor dem Ausführen der Aktion abgeschlossen werden sollen (**TaskCompletion**).
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie sich [Erste Schritte mit der Azure-Batch-Bibliothek für .NET](batch-dotnet-get-started.md)mit einer Schritt-für-Schritt-Anleitung für eine Batch-Beispielanwendung durch. Es gibt auch eine [Python-Version](batch-python-tutorial.md) des Tutorials, in der eine Workload auf Linux-Computeknoten ausgeführt wird.
 * Laden Sie das [Batch-Explorer][github_batchexplorer]-Beispielprojekt herunter, und erstellen Sie es, um es während der Entwicklung Ihrer Batch-Lösungen zu verwenden. Mit dem Batch-Explorer können Sie die folgenden Aktionen und viele mehr ausführen:
-  
+
   * Überwachen und Bearbeiten von Pools, Aufträgen und Tasks in Ihrem Batch-Konto
   * Herunterladen von `stdout.txt`, `stderr.txt` und anderen Dateien von Knoten
   * Erstellen von Benutzern auf Knoten und Herunterladen von RDP-Dateien für die Remoteanmeldung
@@ -467,6 +489,6 @@ Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung o
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

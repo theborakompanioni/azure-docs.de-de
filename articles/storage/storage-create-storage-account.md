@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/26/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d5b24b28f82c53b880e025dc43169aaad49e8434
+ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
+ms.openlocfilehash: fd5ca2dfb12b7527f49d32d9642a91df9e590b14
 
 
 ---
@@ -68,7 +68,7 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
    > Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Im Azure-Portal wird angezeigt, ob der von Ihnen ausgewählte Speicherkontoname bereits verwendet wird.
    > 
    > 
-4. Geben Sie das Bereitstellungsmodell an, das verwendet werden soll: **Resource Manager** oder **Klassisch**. **Ressourcen-Manager** ist das empfohlene Bereitstellungsmodell. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
+4. Geben Sie das Bereitstellungsmodell an, das verwendet werden soll: **Resource Manager** oder **Klassisch**. **Ressourcen-Manager** ist das empfohlene Bereitstellungsmodell. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
    
    > [!NOTE]
    > BLOB-Speicherkonten können nur mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurden.
@@ -162,6 +162,6 @@ Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Azure-Comput
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,13 +1,13 @@
 ---
 title: .NET-Anwendungen mit mehreren Ebenen | Microsoft Docs
 description: "Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren Ebenen in Azure zu erstellen, die Service Bus-Warteschlangen für die Kommunikation zwischen Ebenen verwendet."
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60ed71eac1a233a08414edb8c89b196401895cd8
+ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
+ms.openlocfilehash: c90454109c2fcfe69d512b84d411e4fd4e810f65
 
 
 ---
-# <a name="net-multitier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
+# <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
 ## <a name="introduction"></a>Einführung
 Mit Visual Studio und dem kostenlosen Azure SDK für .NET können Sie schnell und einfach für Microsoft Azure entwickeln. In diesem Tutorial werden Sie durch die Schritte zum Erstellen einer Anwendung geführt, von der mehrere in der lokalen Umgebung ausgeführte Azure-Ressourcen verwendet werden. In den Schritten wird davon ausgegangen, dass Sie noch keine Erfahrung mit Azure haben.
 
@@ -39,7 +39,7 @@ Der folgende Screenshot zeigt die fertige Anwendung.
 
 ![][0]
 
-## <a name="scenario-overview-interrole-communication"></a>Szenario-Übersicht: Kommunikation zwischen Rollen
+## <a name="scenario-overview-inter-role-communication"></a>Szenario-Übersicht: Kommunikation zwischen Rollen
 Um eine Bestellung zur Verarbeitung zu übermitteln, muss die Front-End-GUI in ihrer Funktion als Webrolle mit der Logikkomponente in der mittleren Ebene interagieren, die eine Workerrolle erfüllt. Dieses Beispiel verwendet die verwaltete Servicebus-Messaging-Funktion für die Kommunikation zwischen Ebenen.
 
 Durch die verwaltete Messaging-Funktion zwischen Web- und mittlerer Ebene werden die Komponenten voneinander entkoppelt. Im Gegensatz zur direkten Kommunikation (z. B. per TCP oder HTTP) verbindet sich die Webebene nicht direkt mit der mittleren Ebene, sondern schiebt Arbeitseinheiten in Form von Nachrichten in Service Bus, wo diese zuverlässig aufbewahrt werden, bis die mittlere Ebene diese konsumieren und verarbeiten kann.
@@ -410,6 +410,6 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

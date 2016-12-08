@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/22/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73510d618f414ebedd7cd1df979397e0b00570b8
+ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
+ms.openlocfilehash: 5852808ad0f5cf02908df7ff969ab2106d9f5abd
 
 
 ---
@@ -192,7 +192,7 @@ Wenn Sie auf die Datenbank klicken, um die Empfehlung umzusetzen, erscheint das 
 Um die Überwachung zu aktivieren, wählen Sie für **Überwachung** die Option **EIN** aus.
 
 ### <a name="monitor-applications"></a>Überwachen von Anwendungen
-Wenn Ihre Azure-Workload Anwendungen umfasst, die sich auf [(über Azure Resource Manager erstellten) virtuellen Computern](../resource-manager-deployment-model.md) mit verfügbar gemachten Webports (TCP-Ports 80 und 443) befinden, kann Security Center diese Ports überwachen, um potenzielle Sicherheitsprobleme zu erkennen und Problembehandlungsschritte zu empfehlen. Wenn Sie auf die Kachel **Anwendungen** klicken, wird das Blatt **Anwendungen** mit einer Reihe von Empfehlungen im Abschnitt **Vorbeugungsschritte** geöffnet. Außerdem werden die Anwendungen nach Host/virtueller IP aufgeschlüsselt, wie im folgenden Screenshot zu sehen.
+Wenn Ihre Azure-Workload Anwendungen umfasst, die sich auf [(über Azure Resource Manager erstellten) virtuellen Computern](../azure-resource-manager/resource-manager-deployment-model.md) mit verfügbar gemachten Webports (TCP-Ports 80 und 443) befinden, kann Security Center diese Ports überwachen, um potenzielle Sicherheitsprobleme zu erkennen und Problembehandlungsschritte zu empfehlen. Wenn Sie auf die Kachel **Anwendungen** klicken, wird das Blatt **Anwendungen** mit einer Reihe von Empfehlungen im Abschnitt **Vorbeugungsschritte** geöffnet. Außerdem werden die Anwendungen nach Host/virtueller IP aufgeschlüsselt, wie im folgenden Screenshot zu sehen.
 
 ![Sicherheitsintegrität für Anwendungen](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
@@ -216,6 +216,6 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 87f62d99ae8671fb3732806d8cd8bd7d9aa101e1
+ms.sourcegitcommit: edeee13457c1098eb1b44efaa97e9a84d29e88e7
+ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
 
 
 ---
@@ -134,7 +134,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
     ```powershell
     $myVM = Add-AzureRmVMNetworkInterface -VM $myVM -Id $myNIC.Id
     ```
-6. Definieren Sie den Namen und den Speicherort der VM-Festplatte. Die Datei der virtuellen Festplatte wird in einem Container gespeichert. Mit diesem Befehl wird der Datenträger in einem Container mit dem Namen **vhds/WindowsVMosDisk.vhd** unter dem von Ihnen erstellten Speicherkonto erstellt.
+6. Definieren Sie den Namen und den Speicherort der VM-Festplatte. Die Datei der virtuellen Festplatte wird in einem Container gespeichert. Mit diesem Befehl wird der Datenträger in einem Container mit dem Namen **vhds/myOsDisk1.vhd** unter dem von Ihnen erstellten Speicherkonto erstellt.
    
     ```powershell
     $blobPath = "vhds/myOsDisk1.vhd"
@@ -143,7 +143,7 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 7. Fügen Sie die Informationen zum Betriebssystemdatenträger der VM-Konfiguration hinzu. Ersetzen Sie den Wert von **$diskName** durch den Namen des Betriebssystem-Datenträgers. Erstellen Sie die Variable, und fügen Sie der Konfiguration die Festplatteninformationen hinzu.
    
     ```powershell
-    $vm = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
+    $myVM = Set-AzureRmVMOSDisk -VM $myVM -Name "myOsDisk1" -VhdUri $osDiskUri -CreateOption fromImage
     ```
 8. Erstellen Sie als Letztes den virtuellen Computer.
    
@@ -159,6 +159,6 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

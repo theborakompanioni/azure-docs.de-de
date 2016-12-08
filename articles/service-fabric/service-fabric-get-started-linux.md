@@ -15,19 +15,18 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 567a998102558626df73878865b317b830ba1faa
+ms.sourcegitcommit: 7e33e00a676f4aa7143cede3380adb58ba1d11e4
+ms.openlocfilehash: c27b92d4a1a1bd96ad0bdc46363b8066abc72edd
 
 
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
-> -[ Windows](service-fabric-get-started.md)
-> 
+> * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
 > 
-> 
+>  
 
  Zur Bereitstellung und Ausführung von [Azure Service Fabric-Anwendungen](service-fabric-application-model.md) auf Ihrem Linux-Entwicklungscomputer müssen Sie die Laufzeit und das allgemeine SDK installieren. Darüber hinaus können Sie auch optionale SDKs für Java und .NET Core installieren.
 
@@ -71,7 +70,7 @@ Nach der Aktualisierung Ihrer Datenquellen können Sie das SDK installieren.
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
-## <a name="set-up-the-azure-crossplatform-cli"></a>Einrichten der plattformübergreifenden Azure-Befehlszeilenschnittstelle
+## <a name="set-up-the-azure-cross-platform-cli"></a>Einrichten der plattformübergreifenden Azure-Befehlszeilenschnittstelle
 Die [plattformübergreifende Azure-Befehlszeilenschnittstelle][azure-xplat-cli-github] enthält Befehle für die Interaktion mit Service Fabric-Entitäten (wie etwa Cluster und Anwendungen). Sie basiert auf Node.js. [Vergewissern Sie sich daher, dass Sie Node installiert haben][install-node], bevor Sie mit den weiteren Schritten fortfahren.
 
 1. Klonen Sie das GitHub-Repository auf Ihren Entwicklungscomputer.
@@ -168,6 +167,6 @@ Das .NET Core SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

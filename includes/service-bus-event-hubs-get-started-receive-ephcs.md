@@ -28,14 +28,14 @@ Zum Verwenden von [EventProcessorHost][EventProcessorHost] benötigen Sie ein [A
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp2.png)
 10. Fügen Sie die folgenden Anweisungen am Anfang der Datei "SimpleEventProcessor.cs" hinzu:
     
-     ```
+     ```csharp
      using Microsoft.ServiceBus.Messaging;
      using System.Diagnostics;
      ```
     
      Ersetzen Sie anschließend den Text der Klasse durch folgenden Code:
     
-     ```
+     ```csharp
      class SimpleEventProcessor : IEventProcessor
      {
          Stopwatch checkpointStopWatch;
@@ -80,13 +80,13 @@ Zum Verwenden von [EventProcessorHost][EventProcessorHost] benötigen Sie ein [A
      Diese Klasse wird von **EventProcessorHost** zur Verarbeitung der vom Event Hub empfangenen Ereignisse aufgerufen. Beachten Sie, dass die `SimpleEventProcessor` -Klasse eine Stoppuhr verwendet, um in regelmäßigen Abständen die "checkpoint"-Methode für den **EventProcessorHost** -Kontext aufzurufen. Dadurch wird sichergestellt, dass der Empfänger bei einem Neustart maximal nur die Daten verlieren kann, die in den letzten fünf Minuten verarbeitet wurden.
 11. Fügen Sie in der **Program**-Klasse die folgende `using`-Anweisungen am Anfang der Datei hinzu:
     
-     ```
+     ```csharp
      using Microsoft.ServiceBus.Messaging;
      ```
     
      Überschreiben Sie dann die `Main`-Methode in der `Program`-Klasse mit dem folgenden Code. Ersetzen Sie dabei den Event Hub-Namen und die zuvor gespeicherte Verbindungszeichenfolge auf Namespace-Ebene sowie das Speicherkonto und den Speicherschlüssel, die Sie in den vorherigen Abschnitten kopiert haben. 
     
-     ```
+     ```csharp
      static void Main(string[] args)
      {
        string eventHubConnectionString = "{Event Hub connection string}";
@@ -121,6 +121,6 @@ Zum Verwenden von [EventProcessorHost][EventProcessorHost] benötigen Sie ein [A
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Azure-Portal]: https://portal.azure.com
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

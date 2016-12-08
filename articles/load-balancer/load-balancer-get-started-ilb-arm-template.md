@@ -3,8 +3,8 @@ title: Erstellen eines internen Lastenausgleichs im Resource Manager mithilfe ei
 description: Hier erfahren Sie, wie Sie im Ressourcen-Manager mithilfe einer Vorlage einen internen Lastenausgleich erstellen.
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 tags: azure-resource-manager
 ms.assetid: 64150862-6ced-42de-85dc-89d323257d7c
 ms.service: load-balancer
@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 345811de33db5bb34f5e2ae67e203fc78ebe62eb
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: 64d728540f3682bfeaf87364b80b972108071735
 
 ---
 
@@ -31,7 +31,7 @@ ms.openlocfilehash: 345811de33db5bb34f5e2ae67e203fc78ebe62eb
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](load-balancer-get-started-ilb-classic-ps.md) empfohlen wird.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](load-balancer-get-started-ilb-classic-ps.md) empfohlen wird.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -85,6 +85,6 @@ Führen Sie zum Bereitstellen der Vorlage mithilfe der Azure-Befehlszeilenschnit
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

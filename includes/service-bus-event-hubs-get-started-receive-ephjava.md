@@ -17,7 +17,7 @@ Zum Verwenden von EventProcessorHost benötigen Sie ein [Azure Storage-Konto][Az
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Erstellen eines Java-Projekts mit EventProcessorHost
 Die Java-Clientbibliothek für Event Hubs steht für die Verwendung in Maven-Projekten im [zentralen Maven-Repository][Maven-Paket] zur Verfügung. Sie können darauf verweisen, indem Sie in der Maven-Projektdatei die folgende Abhängigkeitsdeklaration verwenden:    
 
-``` XML
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
@@ -34,7 +34,7 @@ Für unterschiedliche Arten von Buildumgebungen können Sie explizit die zuletzt
 
 1. Erstellen Sie für das folgende Beispiel zuerst ein neues Maven-Projekt für eine Konsolen-/Shellanwendung in Ihrer bevorzugten Java-Entwicklungsumgebung. Die Klasse hat den Namen ```ErrorNotificationHandler```.     
    
-    ``` Java
+    ```Java
     import java.util.function.Consumer;
     import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
    
@@ -167,7 +167,7 @@ Für unterschiedliche Arten von Buildumgebungen können Sie explizit die zuletzt
     ```
 4. Ersetzen Sie die folgenden Felder durch die Werte, die Sie beim Erstellen des Event Hub und des Speicherkontos verwendet haben.
    
-    ``` Java
+    ```Java
     final String namespaceName = "----ServiceBusNamespaceName-----";
     final String eventHubName = "----EventHubName-----";
    
@@ -185,7 +185,7 @@ Für unterschiedliche Arten von Buildumgebungen können Sie explizit die zuletzt
 
 <!-- Links -->
 [Übersicht über Event Hubs]: ../articles/event-hubs/event-hubs-overview.md
-[Azure-Speicherkonto]: ../articles/storage/storage-create-storage-account.md
+[Azure Storage-Konto]: ../articles/storage/storage-create-storage-account.md
 [klassischen Azure-Portal]: http://manage.windowsazure.com
 [Maven-Paket]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
 
@@ -195,6 +195,6 @@ Für unterschiedliche Arten von Buildumgebungen können Sie explizit die zuletzt
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

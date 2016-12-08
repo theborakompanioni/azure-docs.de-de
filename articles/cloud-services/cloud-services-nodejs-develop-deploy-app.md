@@ -15,17 +15,12 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 79a3ba8f0daee5c20f7a05e20e473cfbea384acc
-ms.openlocfilehash: c941628ece0daffba7cb9bfd79fa0ffdda4ecfba
+ms.sourcegitcommit: 9ad2f55c7db53459c17299ba5015783781c7cd63
+ms.openlocfilehash: 5a6b743d69e1716ae3f48ddf0dfcb0f042133f5c
 
 
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
-
-> [!div class="op_single_selector"]
-> * [.NET](cloud-services-dotnet-get-started.md)
-> * [Node.js](cloud-services-nodejs-develop-deploy-app.md)
-> * [Python](cloud-services-python-ptvs.md)
 
 Dieses Lernprogramm veranschaulicht, wie Sie eine einfache Node.js-Anwendung erstellen können, die in einem Azure-Clouddienst ausgeführt wird. Clouddienste sind die Bausteine skalierbarer Cloudanwendungen in Azure. Sie ermöglichen die Trennung und unabhängige Verwaltung und Skalierung von Front-End- und Back-End-Komponenten von Anwendungen.  Clouddienste bieten stabile und dedizierte virtuelle Computer, um jede Rolle zuverlässig zu hosten.
 

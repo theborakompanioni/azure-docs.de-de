@@ -13,25 +13,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/14/2016
+ms.date: 11/23/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b53d8c78817e94ec30bd7cb3becf0c7d4accbd23
+ms.sourcegitcommit: 71aef298af187cd4c370edf9fedc42e75ec10c41
+ms.openlocfilehash: 57fbf532c64621ef7d171fc5092708737cd36c33
 
 
 ---
 # <a name="install-hdinsight-applications"></a>Installieren von HDInsight-Anwendungen
 Eine HDInsight-Anwendung kann von Benutzern in einem Linux-basierten HDInsight-Cluster installiert werden. Diese Anwendungen können von Microsoft oder von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) bezogen oder aber selbst entwickelt werden. In diesem Artikel erfahren Sie, wie Sie eine veröffentlichte Anwendung installieren. Informationen zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md). 
 
-Derzeit ist eine veröffentlichte Anwendung verfügbar:
+Derzeit gibt es drei veröffentlichte Anwendungen:
 
 * **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) bietet Analysten eine Möglichkeit, Big-Data-Ergebnisse interaktiv zu ermitteln, zu analysieren und zu visualisieren. Binden Sie zusätzliche Datenquellen auf einfache Weise ein, um neue Beziehungen zu ermitteln und die benötigten Antworten schnell zu erhalten.
+* **Streamsets Data Collector für HDInsight** stellt eine voll ausgestattete integrierte Entwicklungsumgebung (IDE) bereit, mit der Sie n:n-Erfassungspipelines entwerfen, testen, bereitstellen und verwalten können. Diese Pipelines mischen Strom- und Batchdaten und enthalten eine Reihe von datenstrominternen Transformationen – ohne benutzerdefinierten Code schreiben zu müssen. 
+* **Cask CDAP 3.5 für HDInsight** stellt die erste einheitliche Integrationsplattform für Big Data bereit, die die Produktionszeit für Datenanwendungen und Data Lakes um 80 % reduziert. Diese Anwendung unterstützt nur Standard HBase 3.4-Cluster.
 
-> [!NOTE]
-> Datameer wird derzeit nur in Azure HDInsight-Clustern der Version 3.2 unterstützt.
-> 
-> 
 
 Für die Anleitungen in diesem Artikel wird das Azure-Portal verwendet. Sie können die Azure Resource Manager-Vorlage auch aus dem Portal exportieren oder eine Kopie der Resource Manager-Vorlage von Anbietern erhalten und Azure PowerShell und die Azure CLI zum Bereitstellen der Vorlage verwenden.  Weitere Informationen finden Sie unter [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
@@ -46,7 +44,7 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .  Sollte diese Option nicht angezeigt werden, klicken Sie auf **Durchsuchen** und anschließend auf **HDInsight-Cluster**.
 3. Klicken Sie auf einen HDInsight-Cluster.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster).
-4. Klicken Sie auf dem Blatt **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Auf dem Blatt **Installierte Apps** werden alle installierten Anwendungen aufgeführt. 
+4. Klicken Sie in der Kategorie **Konfigurationen** auf **Anwendungen**. Sofern vorhanden, wird eine Liste der installierten Anwendungen angezeigt.
    
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Klicken Sie im Menü des Blatts auf **Hinzufügen** . 
@@ -120,6 +118,6 @@ Weitere Informationen finden Sie unter [Behandeln von Installationsproblemen](hd
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

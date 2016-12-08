@@ -3,8 +3,8 @@ title: Erste Schritte zum Erstellen eines internen Lastenausgleichs in Resource 
 description: Erfahren Sie, wie Sie in Resource Manager mit dem Azure-Portal einen internen Lastenausgleich erstellen.
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 1ac14fb9-8d14-4892-bfe6-8bc74c48ae2c
@@ -14,10 +14,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
-ms.author: sewhee
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 7d8eb43fea032eb5aa72f448a7c1022be62a7b81
-ms.openlocfilehash: 5a0a701638950e750a9aac104845ef1a7248760a
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: 6961255e4b1a269b3ac9bafb5f1b3ced7a2a8943
 
 ---
 
@@ -32,7 +32,7 @@ ms.openlocfilehash: 5a0a701638950e750a9aac104845ef1a7248760a
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](load-balancer-get-started-ilb-classic-ps.md) empfohlen wird.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](load-balancer-get-started-ilb-classic-ps.md) empfohlen wird.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -107,6 +107,6 @@ Sie müssen zuerst einen Back-End-Adresspool und einen Test konfigurieren, bevor
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

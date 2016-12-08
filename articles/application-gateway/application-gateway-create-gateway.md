@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/10/2016
+ms.date: 11/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
-ms.openlocfilehash: a6e14765fb1820ac24c18f7cc2634b41cbade21e
+ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
+ms.openlocfilehash: 2a06e9c7bb6b9f2aacc1544ba4b85a90bb57f01c
 
 
 ---
 # <a name="create-start-or-delete-an-application-gateway"></a>Erstellen, Starten oder Löschen eines Anwendungsgateways
+
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
@@ -35,13 +36,14 @@ Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwe
 In diesem Artikel werden Sie durch die Schritte zum Erstellen, Konfigurieren, Starten und Löschen eines Anwendungsgateways geführt.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
+
 1. Installieren Sie mit dem Webplattform-Installer die aktuelle Version der Azure PowerShell-Cmdlets. Sie können die neueste Version aus dem Abschnitt **Windows PowerShell** der [Downloadseite](https://azure.microsoft.com/downloads/)herunterladen und installieren.
 2. Wenn Sie über ein vorhandenes Gateway verfügen, können Sie entweder ein vorhandenes leeres Subnetz auswählen oder im vorhandenen virtuellen Netzwerk ein neues Netzwerk erstellen, das ausschließlich vom Anwendungsgateway verwendet wird. Sie können das Anwendungsgateway nicht in einem anderen virtuellen Netzwerk als dem Netzwerk mit den Ressourcen bereitstellen, die Sie hinter dem Anwendungsgateway bereitstellen möchten, außer bei der Verwendung von VNet-Peering. Weitere Informationen finden Sie unter [Vnet Peering](../virtual-network/virtual-network-peering-overview.md).
 3. Stellen Sie sicher, dass Sie über ein funktionierendes virtuelles Netzwerk mit einem gültigen Subnetz verfügen. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Application Gateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
 4. Die Server, die Sie für die Verwendung des Anwendungsgateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Was ist zum Erstellen eines Application Gateways erforderlich?
-Wenn Sie den Befehl **New-AzureApplicationGateway** zum Erstellen des Anwendungsgateways verwenden, wird zu diesem Zeitpunkt keine Konfiguration festgelegt, und die neu erstellten Ressourcen werden entweder per XML oder mithilfe eines Konfigurationsobjekts konfiguriert.
+Wenn Sie zum Erstellen des Anwendungsgateways den Befehl `New-AzureApplicationGateway` verwenden, wird zu diesem Zeitpunkt keine Konfiguration festgelegt, und die neu erstellten Ressourcen werden entweder per XML oder mithilfe eines Konfigurationsobjekts konfiguriert.
 
 Die Werte sind:
 
@@ -52,6 +54,7 @@ Die Werte sind:
 * **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht.
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
+
 So erstellen Sie ein Application Gateway
 
 1. Erstellen Sie eine neue Application Gateway-Ressource.
@@ -65,8 +68,9 @@ So erstellen Sie ein Application Gateway
 
 ![Beispielszenario][scenario]
 
-### <a name="create-an-application-gateway-resource"></a>Erstellen einer Anwendungsgatewayressource
-Verwenden Sie zum Erstellen des Gateways das **New-AzureApplicationGateway** -Cmdlet, und ersetzen Sie die Werte durch Ihre eigenen Werte. Die Abrechnung für das Gateway beginnt jetzt noch nicht. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
+### <a name="create-an-application-gateway-resource"></a>Erstellen einer Application Gateway-Ressource
+
+Erstellen Sie das Gateway mithilfe des Cmdlets `New-AzureApplicationGateway`. Ersetzen Sie dabei die Werte durch eigene Werte. Die Abrechnung für das Gateway beginnt jetzt noch nicht. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
 
 Das folgende Beispiel erstellt ein Anwendungsgateway mithilfe eines virtuellen Netzwerks mit dem Namen „testvnet1“ und eines Subnetzes mit dem Namen „subnet-1“.
 
@@ -76,7 +80,7 @@ New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subn
 
 *Description*, *InstanceCount* und *GatewaySize* sind optionale Parameter.
 
-Sie können das **Get-AzureApplicationGateway** -Cmdlet verwenden, um zu überprüfen, ob das Gateway erstellt wurde.
+Mithilfe des Cmdlets `Get-AzureApplicationGateway` können Sie überprüfen, ob das Gateway erstellt wurde.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -102,12 +106,15 @@ DnsName       :
 *VirtualIPs* und *DnsName* werden leer angezeigt, da das Gateway noch nicht gestartet wurde. Diese Werte werden erstellt, sobald das Gateway ausgeführt wird.
 
 ## <a name="configure-the-application-gateway"></a>Konfigurieren des Anwendungsgateways
+
 Sie können das Anwendungsgateway per XML oder mit einem Konfigurationsobjekt konfigurieren.
 
 ## <a name="configure-the-application-gateway-by-using-xml"></a>Konfigurieren des Anwendungsgateways per XML
+
 Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Anwendungsgateways zu konfigurieren und auf die Anwendungsgatewayressource zu übertragen.  
 
 ### <a name="step-1"></a>Schritt 1
+
 Kopieren Sie den folgenden Text in Editor.
 
 ```xml
@@ -210,21 +217,24 @@ Das folgende Beispiel zeigt, wie Sie das Anwendungsgateway mithilfe einer Konfig
 ```
 
 ### <a name="step-2"></a>Schritt 2
-Legen Sie anschließend das Anwendungsgateway fest. Verwenden Sie das **Set-AzureApplicationGatewayConfig** -Cmdlet mit einer XML-Konfigurationsdatei.
+
+Legen Sie anschließend das Anwendungsgateway fest. Verwenden Sie das Cmdlet `Set-AzureApplicationGatewayConfig` mit einer XML-Konfigurationsdatei.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
 ## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Konfigurieren des Anwendungsgateways mit einem Konfigurationsobjekt
-Das folgende Beispiel zeigt, wie Sie das Anwendungsgateway mithilfe von Konfigurationsobjekten konfigurieren. Alle Konfigurationselemente müssen einzeln konfiguriert und anschließend einem Konfigurationsobjekt für das Anwendungsgateway hinzugefügt werden. Verwenden Sie nach dem Erstellen des Konfigurationsobjekts den Befehl **Set-AzureApplicationGateway** , um die Konfiguration der zuvor erstellten Anwendungsgatewayressource zuzuordnen.
+
+Das folgende Beispiel zeigt, wie Sie das Anwendungsgateway mithilfe von Konfigurationsobjekten konfigurieren. Alle Konfigurationselemente müssen einzeln konfiguriert und anschließend einem Konfigurationsobjekt für das Anwendungsgateway hinzugefügt werden. Nach dem Erstellen des Konfigurationsobjekts verwenden Sie den Befehl `Set-AzureApplicationGateway`, um die Konfiguration auf die zuvor erstellte Anwendungsgatewayressource zu übertragen.
 
 > [!NOTE]
-> Bevor Sie dem Konfigurationsobjekt einen Wert zuweisen, müssen Sie deklarieren, welcher Objekttyp in PowerShell zum Speichern verwendet wird. Die erste Zeile zum Erstellen der einzelnen Elemente definiert, welches Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(Objektname) verwendet wird.
+> Bevor Sie dem Konfigurationsobjekt einen Wert zuweisen, müssen Sie deklarieren, welcher Objekttyp in PowerShell zum Speichern verwendet wird. Die erste Zeile zum Erstellen der einzelnen Elemente definiert, welches **Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(Objektname)** verwendet wird.
 > 
 > 
 
 ### <a name="step-1"></a>Schritt 1
+
 Erstellen Sie die einzelnen Konfigurationselemente.
 
 Erstellen Sie die Front-End-IP wie im folgenden Beispiel gezeigt.
@@ -295,6 +305,7 @@ $rule.BackendAddressPool = "pool1"
 ```
 
 ### <a name="step-2"></a>Schritt 2
+
 Weisen Sie die einzelnen Konfigurationselemente einem Konfigurationsobjekt für das Anwendungsgateway ($appgwconfig) zu.
 
 Fügen Sie die Front-End-IP der Konfiguration hinzu.
@@ -340,17 +351,18 @@ $appgwconfig.HttpLoadBalancingRules.Add($rule)
 ```
 
 ### <a name="step-3"></a>Schritt 3
-Ordnen Sie das Konfigurationsobjekt mithilfe von **Set-AzureApplicationGatewayConfig**der Anwendungsgatewayressource zu.
+Übertragen Sie mit `Set-AzureApplicationGatewayConfig` das Konfigurationsobjekt auf die Anwendungsgatewayressource.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 ```
 
 ## <a name="start-the-gateway"></a>Starten des Gateways
-Verwenden Sie nach dem Konfigurieren des Gateways das **Start-AzureApplicationGateway** -Cmdlet, um das Gateway zu starten. Die Abrechnung für ein Anwendungsgateway beginnt, nachdem das Gateway erfolgreich gestartet wurde.
+
+Sobald das Gateway konfiguriert wurde, verwenden Sie das `Start-AzureApplicationGateway` -Cmdlet, um das Gateway zu starten. Die Abrechnung für ein Anwendungsgateway beginnt, nachdem das Gateway erfolgreich gestartet wurde.
 
 > [!NOTE]
-> Es kann 15 bis 20 Minuten dauern, bis die Ausführung des **Start-AzureApplicationGateway** -Cmdlets abgeschlossen ist.
+> Die Ausführung des Cmdlets `Start-AzureApplicationGateway` kann 15 bis 20 Minuten dauern.
 > 
 > 
 
@@ -359,7 +371,8 @@ Start-AzureApplicationGateway AppGwTest
 ```
 
 ## <a name="verify-the-gateway-status"></a>Überprüfen des Gatewaystatus
-Verwenden Sie das **Get-AzureApplicationGateway** -Cmdlet, um den Status des Gateways zu überprüfen. Wenn **Start-AzureApplicationGateway** im vorherigen Schritt erfolgreich ausgeführt wurde, sollte der *Zustand* nun „Wird ausgeführt“ lauten, und *Vip* und *DnsName* sollten gültige Einträge besitzen.
+
+Verwenden Sie das Cmdlet `Get-AzureApplicationGateway` zum Überprüfen des Gatewaystatus. Wenn `Start-AzureApplicationGateway` im vorherigen Schritt erfolgreich ausgeführt wurde, sollte für *State* nun „Running“ angezeigt werden, und *Vip* und *DnsName* sollten gültige Einträge besitzen.
 
 Dieses Beispiel zeigt ein Anwendungsgateway, das ausgeführt wird und Datenverkehr verarbeiten kann, der für `http://<generated-dns-name>.cloudapp.net`vorgesehen ist.
 
@@ -382,13 +395,14 @@ DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
 ## <a name="delete-an-application-gateway"></a>Löschen eines Anwendungsgateways
+
 So löschen Sie ein Anwendungsgateway
 
-1. Verwenden Sie das **Stop-AzureApplicationGateway** -Cmdlet, um das Gateway zu beenden.
-2. Verwenden Sie das **Remove-AzureApplicationGateway** -Cmdlet, um das Gateway zu entfernen.
-3. Stellen Sie sicher, dass das Gateway entfernt wurde, indem Sie das **Get-AzureApplicationGateway** -Cmdlet verwenden.
+1. Verwenden Sie das Cmdlet `Stop-AzureApplicationGateway` zum Beenden des Gateways.
+2. Verwenden Sie das Cmdlet `Remove-AzureApplicationGateway` zum Entfernen des Gateways.
+3. Überprüfen Sie mit dem Cmdlet `Get-AzureApplicationGateway`, ob das Gateway entfernt wurde.
 
-Das folgende Beispiel zeigt das **Stop-AzureApplicationGateway** -Cmdlet in der ersten Zeile, gefolgt von der Ausgabe.
+Das folgende Beispiel zeigt das Cmdlet `Stop-AzureApplicationGateway` in der ersten Zeile, gefolgt von der Ausgabe.
 
 ```powershell
 Stop-AzureApplicationGateway AppGwTest
@@ -402,7 +416,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-Verwenden Sie nach erfolgreicher Beendigung des Anwendungsgateways das **Remove-AzureApplicationGateway** -Cmdlet, um den Dienst zu entfernen.
+Sobald das Anwendungsgateway beendet wurde, verwenden Sie das Cmdlet `Remove-AzureApplicationGateway`, um den Dienst zu entfernen.
 
 ```powershell
 Remove-AzureApplicationGateway AppGwTest
@@ -416,7 +430,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
-Verwenden Sie ggf. das **Get-AzureApplicationGateway**-Cmdlet, um sich zu vergewissern, dass der Dienst entfernt wurde. Dieser Schritt ist nicht erforderlich.
+Mithilfe des Cmdlets `Get-AzureApplicationGateway` können Sie sicherstellen, dass der Dienst entfernt wurde. Dieser Schritt ist nicht erforderlich.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -430,6 +444,7 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
 
 Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md)zu lesen.
@@ -443,6 +458,6 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

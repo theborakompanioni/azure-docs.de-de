@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/07/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d58210a155666642cec8c180249c4e43b69fb9c
+ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
+ms.openlocfilehash: 5557dbef45d8599010a909635eebf399a5bcd2c8
 
 
 ---
@@ -71,7 +71,7 @@ Die Zugriffsteuerungen für die Verwaltungs- und die Datenebene sind voneinander
 ## <a name="management-plane-access-control"></a>Zugriffssteuerung auf der Verwaltungsebene
 Auf der Verwaltungsebene werden Vorgänge ausgeführt, die sich auf die eigentliche Key Vault-Instanz auswirken. Hier können Sie beispielsweise eine Key Vault-Instanz erstellen oder löschen. Sie können eine Liste aller Tresore in einem Abonnement abrufen. Sie können Key Vault-Eigenschaften (etwa SKU und Tags) abrufen und Key Vault-Zugriffsrichtlinien festlegen, um zu steuern, welche Benutzer und Anwendungen auf die Schlüssel und Geheimnisse in Key Vault zugreifen können. Die Zugriffssteuerung auf der Verwaltungsebene basiert auf RBAC. Eine umfassende Liste mit den Key Vault-Vorgängen, die über die Verwaltungsebene ausgeführt werden können, finden Sie in der Tabelle im vorherigen Abschnitt. 
 
-### <a name="rolebased-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im Azure-Abonnement gewährt werden, für die das Azure Resource Manager-Bereitstellungsmodell verwendet wird. Diese Art von Zugriffssteuerung wird als rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bezeichnet. Zur Verwaltung dieses Zugriffs können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md) oder die [Azure Resource Manager-REST-APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx) verwenden.
 
 Bei Verwendung des Azure Resource Manager-Modells erstellen Sie Ihre Key Vault-Instanz in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene dieser Key Vault-Instanz mithilfe von Azure Active Directory. So können Sie beispielsweise Benutzern oder einer Gruppe die Verwaltung von Key Vault-Instanzen in einer bestimmten Ressourcengruppe ermöglichen.
@@ -210,7 +210,7 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis kö
 * [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md)
   
   In diesem Artikel werden alle integrierten, in RBAC verfügbaren Rollen ausführlich beschrieben.
-* [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md)
+* [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md)
   
   Dieser Artikel erläutert die Resource Manager-Bereitstellung sowie klassische Bereitstellungsmodelle und erläutert die Vorteile der Verwendung der Resource Manager- und Ressourcengruppen.
 * [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
@@ -253,6 +253,6 @@ Sollten Sie Fragen zu Key Vault haben, besuchen Sie die [Azure Key Vault-Foren](
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

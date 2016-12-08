@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/15/2016
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: 9eddde0df61ac7dde9b24f973e7eec786cd48f24
-ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
+ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
+ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
 
 
 ---
@@ -43,7 +43,7 @@ Im Folgenden finden Sie die fünf wesentlichen Schritte, die zum Sichern eines v
 ![Allgemeiner Überblick über den Sicherungsvorgang für virtuelle Computer](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
 > [!NOTE]
-> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Dieses Tutorial ist für die Verwendung mit VMs bestimmt, die im klassischen Azure-Portal erstellt werden können. Der Azure Backup-Dienst unterstützt VMs, die auf Resource Manager basieren. Weitere Informationen zum Sichern von virtuellen Computern in einem Recovery Services-Tresor finden Sie unter [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md).
+> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md). Dieses Tutorial ist für die Verwendung mit VMs bestimmt, die im klassischen Azure-Portal erstellt werden können. Der Azure Backup-Dienst unterstützt VMs, die auf Resource Manager basieren. Weitere Informationen zum Sichern von virtuellen Computern in einem Recovery Services-Tresor finden Sie unter [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md).
 >
 >
 
@@ -211,6 +211,6 @@ Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möch
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

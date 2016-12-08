@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/02/2016
+ms.date: 11/22/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 53a301bd501f223aa8489ba6592c8428c1fcd530
-ms.openlocfilehash: 89ed8b2b51641f2b9754f78dba34cf126c9cb88c
+ms.sourcegitcommit: 5081c38bae56cf6f2ed260eabb895453d7603cfd
+ms.openlocfilehash: b982274cc7dcf1ffbe1dd4c3d7f833f97704d931
 
 
 ---
@@ -64,11 +64,11 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 ### <a name="production-azure"></a>Azure-Produktionsumgebungen
 | **Service Provider** | **Microsoft Azure** | **Office 365 und CRM Online** | **Standorte** |
 | --- | --- | --- | --- |
-| **AARNet** |Unterstützt |Unterstützt |Melbourne, Sydney |
+| **[AARNet](https://www.aarnet.edu.au/network-and-services/cloud-services-applications/azure-expressroute/)** |Unterstützt |Unterstützt |Melbourne, Sydney |
 | **[Aryaka Networks](http://www.aryaka.com/)** |Unterstützt |Unterstützt |Amsterdam, Dallas, Silicon Valley, Singapur, Tokio, Washington, D.C. |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, London, Silicon Valley, Singapore, Sydney, Washington DC |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Unterstützt |Unterstützt |Amsterdam, Hongkong, London, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
-| **CenturyLink** |In Kürze verfügbar |In Kürze verfügbar |Silicon Valley |
+| **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |In Kürze verfügbar |In Kürze verfügbar |Silicon Valley |
 | **China Telecom Global** |Unterstützt |Nicht unterstützt |Hongkong |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Unterstützt |In Kürze verfügbar |Dallas, Montreal+, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Unterstützt |Unterstützt |Amsterdam, Dublin, London, Tokio |
@@ -83,7 +83,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, London, Paris |
 | **Jisc** |Unterstützt |Unterstützt |London |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Silicon Valley, Washington DC |
-| **Megaport** |Unterstützt |Unterstützt |Dallas, Hongkong, Las Vegas, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Washington DC |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt |Unterstützt |Dallas, Hongkong, Las Vegas, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Toronto, Washington DC |
 | **MTN** |Unterstützt |Unterstützt |London |
 | **Daten der nächsten Generation** |In Kürze verfügbar |In Kürze verfügbar |Newport(Wales)+ |
 | **NEXTDC** |Unterstützt |Unterstützt |Melbourne, Sydney |
@@ -95,11 +95,11 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **SoftBank** |Unterstützt |Unterstützt |Osaka, Tokio |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Unterstützt |Unterstützt |Amsterdam, Chennai, Hongkong, London, Mumbai, Silicon Valley, Singapur, Washington DC |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** |Unterstützt |Unterstützt |Amsterdam, Dublin, London |
-| **Telefonica** |Unterstützt |Unterstützt |Sao Paulo |
+| **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Unterstützt |Unterstützt |Sao Paulo |
 | **Telenor** |Unterstützt |Unterstützt |Amsterdam, London |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Unterstützt |Unterstützt |Melbourne, Sydney |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |Unterstützt |Unterstützt |Amsterdam, Hongkong, London, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
-| **Vodafone** |Unterstützt |Nicht unterstützt |London |
+| **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Unterstützt |Nicht unterstützt |London |
 | **[Zayo Group](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Unterstützt |Unterstützt |Chicago, Los Angeles, New York, Silicon Valley, Toronto, Washington DC |
 
  **+** steht für "In Kürze"
@@ -133,13 +133,13 @@ Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.window
 Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten ist, können Sie dennoch eine Verbindung erstellen.
 
 * Fragen Sie Ihren Konnektivitätsanbieter, ob eine Verbindung mit einem der Exchange-Standorte aus der vorherigen Tabelle bereitgestellt werden kann. Sie können auch die folgenden Links überprüfen, um weitere Informationen über die von den Exchange-Anbietern angebotenen Dienste zu erhalten. Viele Konnektivitätsanbieter sind bereits mit Ethernet-Exchanges verbunden.
-  
-  * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
-  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
-  * [Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)
-  * [NextDC](http://www.nextdc.com/)
-  * [CoreSite](http://www.coresite.com/)
   * [Cologix](http://www.cologix.com/)
+  * [CoreSite](http://www.coresite.com/)
+  * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
+  * [Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)
+  * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
+  * [NextDC](http://www.nextdc.com/)
+  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
 * Bitten Sie Ihren Konnektivitätsanbieter, Ihr Netzwerk auf den Peeringstandort Ihrer Wahl zu erweitern.
   * Stellen Sie sicher, dass Ihr Konnektivitätsanbieter Ihre Konnektivität mit hoher Verfügbarkeit erweitert, sodass es keine einzelnen Fehlerquellen mehr gibt.
 * Bestellen Sie eine ExpressRoute-Verbindung mit der Exchange als Konnektivitätsanbieter für die Verbindung mit Microsoft.
@@ -173,6 +173,6 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

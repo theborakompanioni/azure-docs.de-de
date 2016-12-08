@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b4b2449f00e298385579c4d7b229ceea18dcc598
+ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
+ms.openlocfilehash: 236563a8814640391130ba53886c5cebfea67a8f
 
 
 ---
@@ -29,8 +29,9 @@ ms.openlocfilehash: b4b2449f00e298385579c4d7b229ceea18dcc598
 > * [REST-API](data-lake-store-get-started-rest-api.md)
 > * [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
+>
 
 Hier erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) ein Azure Data Lake-Speicherkonto erstellen und grundlegende Vorgänge ausführen (also etwa Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen und Ähnliches). Weitere Informationen zu Data Lake Store finden Sie unter [Übersicht über Data Lake Store](data-lake-store-overview.md).
 
@@ -176,6 +177,6 @@ Geben Sie nach entsprechender Aufforderung **Y** ein, um das Konto zu löschen.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

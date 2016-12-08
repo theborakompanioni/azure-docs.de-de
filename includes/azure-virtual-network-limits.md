@@ -29,7 +29,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Netzwerkschnittstellen |300 |10000 |
 | Netzwerksicherheitsgruppen |100 |400 |
 | NSG-Regeln pro NSG |200 |500 |
-| Benutzerdefinierte Routentabellen |100 |400 |
+| Benutzerdefinierte Routentabellen |100 |200 |
 | Benutzerdefinierte Routen pro Routentabelle |100 |400 |
 | Öffentliche IP-Adressen (dynamisch) |60 |Support kontaktieren |
 | Öffentliche IP-Adressen (statisch) |20 |Support kontaktieren |
@@ -43,6 +43,6 @@ Wenden Sie sich an den Support, falls Sie Limits gegenüber den Standardwerten e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

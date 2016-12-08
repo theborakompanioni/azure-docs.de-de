@@ -13,7 +13,7 @@ Das folgende Diagramm zeigt die Architektur einer typischen IoT-Lösung. Es enth
 ![Architektur einer IoT-Lösung][img-solution-architecture]
 
 > [!NOTE]
-> Ausführliche Informationen zur IoT-Architektur finden Sie unter [Microsoft Azure IoT-Referenzarchitektur][lnk-refarch].
+> Ausführliche Informationen zur IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture (Architektur der Microsoft Azure IoT-Referenz)][lnk-refarch].
 > 
 > 
 
@@ -30,7 +30,7 @@ Eines der größten Probleme im Zusammenhang mit IoT-Projekten ist die sichere u
 * Sie müssen unter Umständen proprietäre, benutzerdefinierte oder branchenspezifische Anwendungsprotokolle verwenden.
 * Sie können mit vielen gängigen Hardware- und Softwareplattformen erstellt werden.
 
-Zusätzlich zu den obigen Anforderungen muss jede IoT-Lösung auch Skalierbarkeit, Sicherheit und Zuverlässigkeit bieten. Die sich ergebenden Verbindungsanforderungen sind schwierig und zeitaufwändig zu implementieren, wenn herkömmliche Technologie verwendet wird, z. B. Webcontainer und Nachrichtenbroker. Azure IoT Hub und die IoT-Geräte-SDKs vereinfachen die Implementierung von Lösungen, die diese Anforderungen erfüllen.
+Zusätzlich zu den obigen Anforderungen muss jede IoT-Lösung auch Skalierbarkeit, Sicherheit und Zuverlässigkeit bieten. Die sich ergebenden Verbindungsanforderungen sind schwierig und zeitaufwändig zu implementieren, wenn herkömmliche Technologie verwendet wird, z. B. Webcontainer und Nachrichtenbroker. Azure IoT Hub und die Azure IoT-Geräte-SDKs vereinfachen die Implementierung von Lösungen, die diese Anforderungen erfüllen.
 
 Ein Gerät kann direkt mit dem Endpunkt eines Cloud-Gateways kommunizieren. Sollte das Gerät mit keinem der vom Cloud-Gateway unterstützten Kommunikationsprotokolle kompatibel sein, kann die Verbindung auch über ein Zwischengateway hergestellt werden. So kann beispielsweise das [Azure IoT-Protokollgateway][lnk-protocol-gateway] das Protokoll übersetzen, falls Geräte keines der von IoT Hub unterstützten Protokolle verwenden können.
 
@@ -60,6 +60,6 @@ Die Präsentations- und Geschäftskonnektivitätsebene ermöglicht Endbenutzern 
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/18/2016
+ms.date: 11/17/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: e9ca94d16e30b615d51f7fbe8dcd7f1b5ae00e7a
-ms.openlocfilehash: 68f326cd4f0fee51e84a76de3c75535d43b918ef
+ms.sourcegitcommit: fe4b9c356e5f7d56cb7e1fa62344095353d0b699
+ms.openlocfilehash: d2d1a5aae3e1965e7010b11218b6b1aa27ec524d
 
 ---
 
@@ -30,8 +30,6 @@ Der Azure-BLOB-Speicher ist ein Dienst, bei dem unstrukturierte Daten in der Clo
 
 ### <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
 In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendete Szenarien mit Azure Blob Storage schreiben. Die beschriebenen Szenarien umfassen das Hochladen, Auflisten, Herunterladen und Löschen von Blobs.
-
-**Geschätzter Zeitaufwand:** 45 Minuten
 
 **Voraussetzungen:**
 
@@ -52,13 +50,12 @@ Weitere Beispiele für die Verwendung von Blobspeicher finden Sie unter [Getting
 [!INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
 ### <a name="add-namespace-declarations"></a>Hinzufügen von Namespace-Deklarationen
-Fügen Sie am Anfang der Datei `program.cs` die folgenden `using`-Anweisungen ein:
+Fügen Sie die folgenden **using**-Anweisungen am Anfang der Datei `program.cs` ein:
 
 ```csharp
-
-    using Microsoft.Azure; // Namespace for CloudConfigurationManager
-    using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
-    using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
+using Microsoft.Azure; // Namespace for CloudConfigurationManager
+using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 ```
 
 ### <a name="parse-the-connection-string"></a>Analysieren der Verbindungszeichenfolge
@@ -68,8 +65,7 @@ Fügen Sie am Anfang der Datei `program.cs` die folgenden `using`-Anweisungen ei
 Die Klasse **CloudBlobClient** ermöglicht das Abrufen von im Blobspeicher gespeicherten Containern und Blobs. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
 ```csharp
-
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 Jetzt können Sie Code schreiben, der Daten aus dem Blobspeicher liest und Daten in den Blobspeicher schreibt.
 
@@ -79,27 +75,25 @@ Jetzt können Sie Code schreiben, der Daten aus dem Blobspeicher liest und Daten
 Dieses Beispiel zeigt, wie Sie einen Container erstellen, falls er nicht bereits vorhanden ist.
 
 ```csharp
+// Retrieve storage account from connection string.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Create the blob client.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+// Retrieve a reference to a container.
+CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve a reference to a container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
-
-    // Create the container if it doesn't already exist.
-    container.CreateIfNotExists();
+// Create the container if it doesn't already exist.
+container.CreateIfNotExists();
 ```
 
 Standardmäßig ist der neue Container privat. Das bedeutet, Sie müssen Ihren Speicherzugriffsschlüssel angeben, um Blobs aus diesem Container herunterzuladen. Wenn die Dateien im Container für alle verfügbar sein sollen, können Sie den Container mithilfe des folgenden Codes öffentlich machen:
 
 ```csharp
-
-    container.SetPermissions(
-        new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+container.SetPermissions(
+    new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 ```
 
 Jede Person im Internet kann Blobs in einem öffentlichen Container anzeigen, Sie können sie jedoch nur bearbeiten oder löschen, wenn Sie über den entsprechenden Kontozugriffsschlüssel oder eine SAS (Shared Access Signature) verfügen.
@@ -112,70 +106,69 @@ Rufen Sie einen Containerverweis ab und verwenden Sie diesen zum Abrufen eines B
 Im folgenden Beispiel wird gezeigt, wie ein Blob in einen bereits erstellten Container hochgeladen wird.
 
 ```csharp
+// Retrieve storage account from connection string.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Create the blob client.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+// Retrieve reference to a previously created container.
+CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
+// Retrieve reference to a blob named "myblob".
+CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-    // Retrieve reference to a blob named "myblob".
-    CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
-
-    // Create or overwrite the "myblob" blob with contents from a local file.
-    using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
-    {
-        blockBlob.UploadFromStream(fileStream);
-    }
+// Create or overwrite the "myblob" blob with contents from a local file.
+using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
+{
+    blockBlob.UploadFromStream(fileStream);
+}
 ```
 
 ## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
-Um die Blobs in einem Container aufzuführen, müssen Sie zuerst einen Containerverweis abrufen. Danach können Sie mit der **ListBlobs** -Methode des Containers die Blobs und/oder darin befindlichen Verzeichnisse abrufen. Damit Sie auf die zahlreichen Eigenschaften und Methoden für ein zurückgegebenes **IListBlobItem**-Objekt zugreifen können, müssen Sie es in ein **CloudBlockBlob**-, **CloudPageBlob**- oder **CloudBlobDirectory**-Objekt umwandeln.  Wenn der Typ unbekannt ist, können Sie eine Typenüberprüfung durchführen, um zu bestimmen, in welchen Typ die Umwandlung erfolgen soll.  Der folgende Code zeigt, wie Sie die URI der einzelnen Elemente im `photos` -Container abrufen und ausgeben:
+Um die Blobs in einem Container aufzuführen, müssen Sie zuerst einen Containerverweis abrufen. Danach können Sie mit der **ListBlobs** -Methode des Containers die Blobs und/oder darin befindlichen Verzeichnisse abrufen. Damit Sie auf die zahlreichen Eigenschaften und Methoden für ein zurückgegebenes **IListBlobItem**-Objekt zugreifen können, müssen Sie es in ein **CloudBlockBlob**-, **CloudPageBlob**- oder **CloudBlobDirectory**-Objekt umwandeln.  Wenn der Typ unbekannt ist, können Sie eine Typenüberprüfung durchführen, um zu bestimmen, in welchen Typ die Umwandlung erfolgen soll.  Im folgenden Code wird gezeigt, wie der URI der einzelnen Elemente im Container _photos_ abgerufen und ausgegeben wird:
 
 ```csharp
+// Retrieve storage account from connection string.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Create the blob client.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+// Retrieve reference to a previously created container.
+CloudBlobContainer container = blobClient.GetContainerReference("photos");
 
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("photos");
-
-    // Loop over items within the container and output the length and URI.
-    foreach (IListBlobItem item in container.ListBlobs(null, false))
+// Loop over items within the container and output the length and URI.
+foreach (IListBlobItem item in container.ListBlobs(null, false))
+{
+    if (item.GetType() == typeof(CloudBlockBlob))
     {
-        if (item.GetType() == typeof(CloudBlockBlob))
-        {
-            CloudBlockBlob blob = (CloudBlockBlob)item;
+        CloudBlockBlob blob = (CloudBlockBlob)item;
 
-            Console.WriteLine("Block blob of length {0}: {1}", blob.Properties.Length, blob.Uri);
+        Console.WriteLine("Block blob of length {0}: {1}", blob.Properties.Length, blob.Uri);
 
-        }
-        else if (item.GetType() == typeof(CloudPageBlob))
-        {
-            CloudPageBlob pageBlob = (CloudPageBlob)item;
-
-            Console.WriteLine("Page blob of length {0}: {1}", pageBlob.Properties.Length, pageBlob.Uri);
-
-        }
-        else if (item.GetType() == typeof(CloudBlobDirectory))
-        {
-            CloudBlobDirectory directory = (CloudBlobDirectory)item;
-
-            Console.WriteLine("Directory: {0}", directory.Uri);
-        }
     }
+    else if (item.GetType() == typeof(CloudPageBlob))
+    {
+        CloudPageBlob pageBlob = (CloudPageBlob)item;
+
+        Console.WriteLine("Page blob of length {0}: {1}", pageBlob.Properties.Length, pageBlob.Uri);
+
+    }
+    else if (item.GetType() == typeof(CloudBlobDirectory))
+    {
+        CloudBlobDirectory directory = (CloudBlobDirectory)item;
+
+        Console.WriteLine("Directory: {0}", directory.Uri);
+    }
+}
 ```
+
 Wie oben gezeigt, können Sie bei der Benennung von Blobs Pfadinformationen im Namen verwenden. Dadurch entsteht eine virtuelle Verzeichnisstruktur, die Sie wie ein herkömmliches Dateisystem organisieren und durchlaufen können. Beachten Sie, dass nur die Verzeichnisstruktur virtuell ist – die einzigen Ressourcen, die im Blob-Speicher verfügbar sind, sind Container und Blobs. Die Storage-Clientbibliothek bietet jedoch ein **CloudBlobDirectory** -Objekt, das auf ein virtuelles Verzeichnis verweist und das Arbeiten mit Blobs vereinfacht, die auf diese Weise organisiert sind.
 
-Betrachten Sie z. B. den folgenden Satz von Blockblobs in einem Container mit dem Namen `photos`:
+Beachten Sie beispielsweise den folgenden Satz von Blockblobs in einem Container mit dem Namen _photos_:
 
     photo1.jpg
     2010/architecture/description.txt
@@ -186,23 +179,22 @@ Betrachten Sie z. B. den folgenden Satz von Blockblobs in einem Container mit de
     2011/architecture/description.txt
     2011/photo7.jpg
 
-Wenn Sie **ListBlobs** für den Container "photos" aufrufen (wie im obigen Beispiel), wird eine hierarchische Auflistung zurückgegeben. Sie enthält **CloudBlobDirectory**- und **CloudBlockBlob**-Objekte, die jeweils die Verzeichnisse und Blobs im Container darstellen. Die Ausgabe sieht folgendermaßen aus:
+Wenn Sie **ListBlobs** für den Container _photos_ aufrufen (wie im obigen Beispiel), wird eine hierarchische Auflistung zurückgegeben. Sie enthält **CloudBlobDirectory**- und **CloudBlockBlob**-Objekte, die jeweils die Verzeichnisse und Blobs im Container darstellen. Die Ausgabe sieht folgendermaßen aus:
 
     Directory: https://<accountname>.blob.core.windows.net/photos/2010/
     Directory: https://<accountname>.blob.core.windows.net/photos/2011/
     Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
-
 Optional können Sie für den **UseFlatBlobListing**-Parameter der **ListBlobs**-Methode den Wert **true** festlegen. In diesem Fall wird jedes Blob im Container als **CloudBlockBlob** -Objekt zurückgegeben. Der Aufruf von **ListBlobs** für die Rückgabe einer flachen Auflistung würde folgendermaßen aussehen:
 
 ```csharp
-
-    // Loop over items within the container and output the length and URI.
-    foreach (IListBlobItem item in container.ListBlobs(null, true))
-    {
-       ...
-    }
+// Loop over items within the container and output the length and URI.
+foreach (IListBlobItem item in container.ListBlobs(null, true))
+{
+    ...
+}
 ```
+
 Die Ergebnisse würden wie folgt aussehen:
 
     Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
@@ -219,152 +211,155 @@ Die Ergebnisse würden wie folgt aussehen:
 Um Blobs herunterzuladen, rufen Sie zuerst einen Blobverweis ab, und rufen Sie dann die **DownloadToStream** -Methode auf. Im folgenden Beispiel wird die **DownloadToStream** -Methode verwendet, um den Blobinhalt auf ein Datenstromobjekt zu übertragen, das danach in einer lokalen Datei gespeichert werden kann.
 
 ```csharp
+// Retrieve storage account from connection string.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Create the blob client.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+// Retrieve reference to a previously created container.
+CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
+// Retrieve reference to a blob named "photo1.jpg".
+CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-    // Retrieve reference to a blob named "photo1.jpg".
-    CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
-
-    // Save blob contents to a file.
-    using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
-    {
-        blockBlob.DownloadToStream(fileStream);
-    }
+// Save blob contents to a file.
+using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
+{
+    blockBlob.DownloadToStream(fileStream);
+}
 ```
+
 Sie können auch die **DownloadToStream** -Methode verwenden, um den Inhalt eines Blobs als Textzeichenfolge herunterzuladen.
+
 ```csharp
+// Retrieve storage account from connection string.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Create the blob client.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+// Retrieve reference to a previously created container.
+CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
+// Retrieve reference to a blob named "myblob.txt"
+CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
-    // Retrieve reference to a blob named "myblob.txt"
-    CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
-
-    string text;
-    using (var memoryStream = new MemoryStream())
-    {
-        blockBlob2.DownloadToStream(memoryStream);
-        text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
-    }
+string text;
+using (var memoryStream = new MemoryStream())
+{
+    blockBlob2.DownloadToStream(memoryStream);
+    text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
+}
 ```
+
 ## <a name="delete-blobs"></a>Löschen von Blobs
 Um ein Blob zu löschen, rufen Sie zuerst einen Blobverweis ab, und rufen Sie dann die **Delete** -Methode dafür auf.
+
 ```csharp
+// Retrieve storage account from connection string.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+// Create the blob client.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+// Retrieve reference to a previously created container.
+CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
+// Retrieve reference to a blob named "myblob.txt".
+CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
-    // Retrieve reference to a blob named "myblob.txt".
-    CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
-
-    // Delete the blob.
-    blockBlob.Delete();
+// Delete the blob.
+blockBlob.Delete();
 ```
 
 ## <a name="list-blobs-in-pages-asynchronously"></a>Asynchrones Auflisten von Blobs auf Seiten
 Wenn Sie eine große Anzahl von Blobs auflisten oder die Anzahl der Ergebnisse steuern möchten, die in einem Auflistungsvorgang zurückgegeben werden, können Sie Blobs auf Ergebnisseiten auflisten. In diesem Beispiel wird gezeigt, wie Sie Ergebnisse auf Seiten asynchron zurückgeben, sodass die Ausführung nicht durch einen großen Ergebnissatz blockiert wird.
 
-Dieses Beispiel verwendet eine einfache Blob-Auflistung, Sie können aber auch eine hierarchische Auflistung verwenden, indem Sie den `useFlatBlobListing`-Parameter der **ListBlobsSegmentedAsync**-Methode auf `false` festlegen.
+In diesem Beispiel wird eine einfache BLOB-Auflistung gezeigt, aber Sie können auch eine hierarchische Auflistung verwenden, indem Sie den _useFlatBlobListing_-Parameter der **ListBlobsSegmentedAsync**-Methode auf _FALSE_ festlegen.
 
-Da die Beispielmethode eine asynchrone Methode aufruft, muss sie mit dem Schlüsselwort `async` eingeleitet werden und ein **Task** -Objekt zurückgeben. Das Schlüsselwort "await" für die Methode **ListBlobsSegmentedAsync** hält die Ausführung der Beispielmethode an, bis die Auflistung abgeschlossen ist.
+Da die Beispielmethode eine asynchrone Methode aufruft, muss sie mit dem Schlüsselwort _async_ eingeleitet werden und ein **Task**-Objekt zurückgeben. Das Schlüsselwort "await" für die Methode **ListBlobsSegmentedAsync** hält die Ausführung der Beispielmethode an, bis die Auflistung abgeschlossen ist.
+
 ```csharp
+async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
+{
+    //List blobs to the console window, with paging.
+    Console.WriteLine("List blobs in pages:");
 
-    async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
+    int i = 0;
+    BlobContinuationToken continuationToken = null;
+    BlobResultSegment resultSegment = null;
+
+    //Call ListBlobsSegmentedAsync and enumerate the result segment returned, while the continuation token is non-null.
+    //When the continuation token is null, the last page has been returned and execution can exit the loop.
+    do
     {
-        //List blobs to the console window, with paging.
-        Console.WriteLine("List blobs in pages:");
-
-        int i = 0;
-        BlobContinuationToken continuationToken = null;
-        BlobResultSegment resultSegment = null;
-
-        //Call ListBlobsSegmentedAsync and enumerate the result segment returned, while the continuation token is non-null.
-        //When the continuation token is null, the last page has been returned and execution can exit the loop.
-        do
+        //This overload allows control of the page size. You can return all remaining results by passing null for the maxResults parameter,
+        //or by calling a different overload.
+        resultSegment = await container.ListBlobsSegmentedAsync("", true, BlobListingDetails.All, 10, continuationToken, null, null);
+        if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
+        foreach (var blobItem in resultSegment.Results)
         {
-            //This overload allows control of the page size. You can return all remaining results by passing null for the maxResults parameter,
-            //or by calling a different overload.
-            resultSegment = await container.ListBlobsSegmentedAsync("", true, BlobListingDetails.All, 10, continuationToken, null, null);
-            if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
-            foreach (var blobItem in resultSegment.Results)
-            {
-                Console.WriteLine("\t{0}", blobItem.StorageUri.PrimaryUri);
-            }
-            Console.WriteLine();
-
-            //Get the continuation token.
-            continuationToken = resultSegment.ContinuationToken;
+            Console.WriteLine("\t{0}", blobItem.StorageUri.PrimaryUri);
         }
-        while (continuationToken != null);
+        Console.WriteLine();
+
+        //Get the continuation token.
+        continuationToken = resultSegment.ContinuationToken;
     }
+    while (continuationToken != null);
+}
 ```
+
 ## <a name="writing-to-an-append-blob"></a>Beschreiben eines Anfügeblobs
 Ein Anfügeblob ist eine neue Art von Blob, die mit Version 5.x der Azure-Speicher-Clientbibliothek für .NET eingeführt wird. Anfügeblobs sind für Anfügevorgäng wie die Protokollierung optimiert. Ein Anfügeblob besteht wie ein Blockblob aus Blöcken. Allerdings ist es bei einem Anfügeblob so, dass ein neuer Block immer ans Ende des Blobs angefügt wird. Das Aktualisieren oder Löschen eines vorhandenen Blocks ist in einem Anfügeblob nicht möglich. Anders als bei Blockblobs sind die Block-IDs sind für Anfügeblobs nicht verfügbar.
 
 In einem Anfügeblob kann jeder Block unterschiedlich groß sein, bis maximal 4 MB. Insgesamt können bis zu 50.000 Blöcke enthalten sein. Die maximale Größe eines Anfügeblobs ist deshalb etwas mehr als 195 GB (4 MB X 50.000 Blöcke).
 
 Das folgende Beispiel erstellt ein neues Anfügeblob und fügt einige Daten hinzu, um eine einfache Protokollierung zu simulieren.
+
 ```csharp
+//Parse the connection string for the storage account.
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    //Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+//Create service client for credentialed access to the Blob service.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    //Create service client for credentialed access to the Blob service.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+//Get a reference to a container.
+CloudBlobContainer container = blobClient.GetContainerReference("my-append-blobs");
 
-    //Get a reference to a container.
-    CloudBlobContainer container = blobClient.GetContainerReference("my-append-blobs");
+//Create the container if it does not already exist.
+container.CreateIfNotExists();
 
-    //Create the container if it does not already exist.
-    container.CreateIfNotExists();
+//Get a reference to an append blob.
+CloudAppendBlob appendBlob = container.GetAppendBlobReference("append-blob.log");
 
-    //Get a reference to an append blob.
-    CloudAppendBlob appendBlob = container.GetAppendBlobReference("append-blob.log");
+//Create the append blob. Note that if the blob already exists, the CreateOrReplace() method will overwrite it.
+//You can check whether the blob exists to avoid overwriting it by using CloudAppendBlob.Exists().
+appendBlob.CreateOrReplace();
 
-    //Create the append blob. Note that if the blob already exists, the CreateOrReplace() method will overwrite it.
-    //You can check whether the blob exists to avoid overwriting it by using CloudAppendBlob.Exists().
-    appendBlob.CreateOrReplace();
+int numBlocks = 10;
 
-    int numBlocks = 10;
+//Generate an array of random bytes.
+Random rnd = new Random();
+byte[] bytes = new byte[numBlocks];
+rnd.NextBytes(bytes);
 
-    //Generate an array of random bytes.
-    Random rnd = new Random();
-    byte[] bytes = new byte[numBlocks];
-    rnd.NextBytes(bytes);
+//Simulate a logging operation by writing text data and byte data to the end of the append blob.
+for (int i = 0; i < numBlocks; i++)
+{
+    appendBlob.AppendText(String.Format("Timestamp: {0:u} \tLog Entry: {1}{2}",
+        DateTime.UtcNow, bytes[i], Environment.NewLine));
+}
 
-    //Simulate a logging operation by writing text data and byte data to the end of the append blob.
-    for (int i = 0; i < numBlocks; i++)
-    {
-        appendBlob.AppendText(String.Format("Timestamp: {0:u} \tLog Entry: {1}{2}",
-            DateTime.UtcNow, bytes[i], Environment.NewLine));
-    }
-
-    //Read the append blob to the console window.
-    Console.WriteLine(appendBlob.DownloadText());
+//Read the append blob to the console window.
+Console.WriteLine(appendBlob.DownloadText());
 ```
+
 Weitere Informationen zu den Unterschieden zwischen den drei Arten von Blobs finden Sie unter [Grundlegendes zu Blockblobs, Seitenblobs und Anfügeblobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) .
 
 ## <a name="managing-security-for-blobs"></a>Verwalten der Sicherheit für Blobs
@@ -415,6 +410,6 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

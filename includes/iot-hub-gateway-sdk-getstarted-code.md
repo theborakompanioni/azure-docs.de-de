@@ -53,14 +53,46 @@ int main(int argc, char** argv)
         Gateway_LL_Destroy(gateway);
     }
     return 0;
-}
+} 
 ```
 
-Die JSON-Einstellungsdatei enthält eine Liste der zu ladenden Module. Jedes Modul muss Folgendes angeben:
+Die Datei mit den JSON-Einstellungen enthält eine Liste von zu ladenden Modulen und Verknüpfungen zwischen den Modulen.
+Jedes Modul muss Folgendes angeben:
 
-* **module_name:** ein eindeutiger Name für das Modul.
-* **module_path:** der Pfad zu der Bibliothek, die das Modul enthält. Bei Linux ist dies eine SO-Datei, bei Windows eine DLL-Datei.
+* **Name:** ein eindeutiger Name für das Modul
+* **Ladeprogramm:** ein Ladeprogramm, das das gewünschte Modul laden kann  Ladeprogramme sind ein Erweiterungspunkt zum Laden von verschiedenen Modultypen. Wir stellen Ladeprogramme für die Verwendung mit Modulen bereit, die in nativem C, Node.js, Java und .Net geschrieben wurden. Das Hello World-Beispiel verwendet nur das „native“ Ladeprogramm, da alle Module in diesem Beispiel dynamische Bibliotheken sind, die in C geschrieben wurden. Weitere Informationen zur Verwendung von Modulen, die in anderen Sprachen geschrieben wurden, finden Sie in den [Node](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/)-, [Java](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample)- oder [.Net](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample)-Beispielen.
+    * **Name**: Der Name des Ladeprogramms, der für das Laden des Moduls verwendet wurde  
+    * **Einstiegspunkt:** Der Pfad zu der Bibliothek, die das Modul enthält Bei Linux ist dies eine SO-Datei, bei Windows eine DLL-Datei. Beachten Sie, dass es sich um einen für das verwendete Ladeprogramm spezifischen Einstiegspunkt handelt. Der Einstiegspunkt des Node.js-Ladeprogramms ist z.B. eine JS-Datei, der Einstiegspunkt des Java-Ladeprogramms ist ein Klassenpfad und ein Klassenname und der Einstiegspunkt des .Net-Ladeprogramms ist ein Assemblyname und Klassenname.
+
 * **args**: alle Konfigurationsinformationen, die das Modul benötigt.
+
+Der folgende Code zeigt die JSON-Datei, der verwendet wurde, um alle Module für das Hello World-Beispiel unter Linux zu deklarieren. Ob ein Modul ein Argument erfordert, hängt vom Modulentwurf ab. In diesem Beispiel akzeptiert das Protokollierungsmodul ein Argument, das den Pfad zur Ausgabedatei darstellt, und das Hello World-Beispiel akzeptiert keine Argumente.
+
+```
+"modules" :
+[
+    {
+        "name" : "logger",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/logger/liblogger.so"
+        }
+        },
+        "args" : {"filename":"log.txt"}
+    },
+    {
+        "name" : "hello_world",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "./modules/hello_world/libhello_world.so"
+        }
+        },
+        "args" : null
+    }
+]
+```
 
 Die JSON-Datei enthält auch die Links zwischen den Modulen, die an den Broker übergeben werden. Ein Link besitzt zwei Eigenschaften:
 
@@ -69,35 +101,16 @@ Die JSON-Datei enthält auch die Links zwischen den Modulen, die an den Broker �
 
 Jeder Link definiert eine Nachrichtenroute und eine Richtung. Nachrichten aus dem Modul `source` werden an das Modul `sink` übermittelt. `source` kann auf „\*“ festgelegt werden, um anzugeben, dass `sink` Nachrichten von jedem beliebigen Modul empfängt.
 
-Das folgende Beispiel zeigt die JSON-Einstellungsdatei, die zum Konfigurieren des Hello World-Beispiels unter Linux verwendet wird. Jede vom Modul `hello_world` erzeugte Nachricht wird vom Modul `logger` verarbeitet. Ob ein Modul ein Argument erfordert, hängt vom Entwurf des Moduls ab. In diesem Beispiel akzeptiert das Protokollierungsmodul ein Argument, das den Pfad zur Ausgabedatei darstellt, und das Hello World-Beispiel akzeptiert keine Argumente:
+Der folgende Code zeigt den JSON, der verwendet wurde, um die Verknüpfungen zwischen den Modulen zu konfigurieren, die im Hello World-Beispiel unter Linux verwendet wurden. Jede vom Modul `hello_world` erzeugte Nachricht wird vom Modul `logger` verarbeitet.
 
 ```
-{
-    "modules" :
-    [ 
-        {
-            "module name" : "logger",
-            "loading args": {
-              "module path" : "./modules/logger/liblogger_hl.so"
-            },
-            "args" : {"filename":"log.txt"}
-        },
-        {
-            "module name" : "hello_world",
-            "loading args": {
-              "module path" : "./modules/hello_world/libhello_world_hl.so"
-            },
-            "args" : null
-        }
-    ],
-    "links" :
-    [
-        {
-            "source" : "hello_world",
-            "sink" : "logger"
-        }
-    ]
-}
+"links": 
+[
+    {
+        "source": "hello_world",
+        "sink": "logger"
+    }
+]
 ```
 
 ### <a name="hello-world-module-message-publishing"></a>Veröffentlichen von Nachrichten durch das Hello World-Modul
@@ -216,6 +229,6 @@ Weitere Informationen zur Verwendung des IoT-Gateway-SDK finden Sie unter folgen
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

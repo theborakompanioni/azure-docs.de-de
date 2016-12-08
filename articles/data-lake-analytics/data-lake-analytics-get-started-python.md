@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: e94b11ab62afbea9381772a2bdb668fdc514d609
-ms.openlocfilehash: 2da23d881a23cc0fc23b63a7b9e06d9af9a755eb
+ms.sourcegitcommit: 5618650671badfc54860c3ad8af5d1e727d3d8c9
+ms.openlocfilehash: 40ccfc59cccd86a7634ec89656571b3cd23566b4
 
 
 ---
@@ -41,11 +41,12 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 Zum Verwenden von Data Lake Store mit Python müssen Sie drei Module installieren.
 
-Das Modul „azure“ umfasst die Vorgänge zur Azure Data Lake Store-Kontoverwaltung sowie andere Azure-Module für Active Directory usw. Das Modul „azure-datalake-store“ umfasst die Vorgänge für das Azure Data Lake Store-Dateisystem. Das Modul „azure-datalake-analytics“ umfasst die Vorgänge für Azure Data Lake Analytics. Verwenden Sie die folgenden Befehle, um die Module zu installieren:
+Das Modul „azure-mgmt-datalake-store“ beinhaltet Kontoverwaltungsvorgänge für Azure Data Lake Store. Das Modul „azure-mgmt-resource“ enthält andere Azure-Module, z.B. für Active Directory. Das Modul „azure-datalake-store“ umfasst die Vorgänge für das Azure Data Lake Store-Dateisystem. Das Modul „azure-datalake-analytics“ umfasst die Vorgänge für Azure Data Lake Analytics. Verwenden Sie die folgenden Befehle, um die Module zu installieren:
 
-    pip install azure
+    pip install azure-mgmt-resource
+    pip install azure-mgmt-datalake-store
+    pip install azure-mgmt-datalake-analytics
     pip install azure-datalake-store
-    pip install azure-datalake-analytics
 
 ## <a name="create-a-python-application"></a>Erstellen einer Python-Anwendung
 
@@ -91,7 +92,7 @@ Verwenden Sie eine der folgenden Methoden für die Authentifizierung:
 
 ### <a name="end-user-authentication-for-account-management"></a>Endbenutzerauthentifizierung für die Kontoverwaltung
 
-Verwenden Sie diese Methode für die Authentifizierung gegenüber Azure AD für Kontoverwaltungsvorgänge (Erstellen/Löschen des Data Lake Store-Kontos usw.). Sie müssen den Benutzernamen und das Kennwort für einen Azure AD-Benutzer angeben. Das Benutzerkonto kann nicht für Multi-Factor Authentication konfiguriert werden, und das Konto darf kein Microsoft-Konto bzw. keine Live-ID sein, z.B. @outlook.com, und @live.com.
+Verwenden Sie diese Methode für die Authentifizierung gegenüber Azure AD für Kontoverwaltungsvorgänge (Erstellen/Löschen des Data Lake Store-Kontos usw.). Sie müssen den Benutzernamen und das Kennwort für einen Azure AD-Benutzer angeben. Das Benutzerkonto darf nicht für die mehrstufige Authentifizierung konfiguriert werden, und das Konto darf kein Microsoft-Konto bzw. keine Live-ID sein, z.B. @outlook.com, und @live.com.
 
     user = input('Enter the user to authenticate with that has permission to subscription: ')
     password = getpass.getpass()
@@ -208,6 +209,6 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

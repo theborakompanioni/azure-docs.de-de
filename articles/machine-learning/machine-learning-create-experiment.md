@@ -13,223 +13,358 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/14/2016
+ms.date: 11/21/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 210e19cbc581ce5fc17898abe184b96c48370e7f
+ms.sourcegitcommit: 60e47e8fd0933ecd25b3bca6085edcd5785dc580
+ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
 
 
 ---
-# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning-Tutorial: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
-In diesem Machine Learning-Tutorial werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir erstellen ein Modell für die lineare Regression, mit dem der Preis eines Autos anhand von verschiedenen Variablen wie Hersteller und technische Angaben prognostiziert wird. Für dieses Vorgehen verwenden wir Azure Machine Learning Studio, um ein einfaches Predictive Analytics-Experiment zu entwickeln und schrittweise zu verfeinern.
 
-*Predictive Analytics* ist eine Art von Data Science, bei der aktuelle Daten genutzt werden, um zukünftige Ergebnisse vorherzusagen. Ein sehr einfaches Beispiel für Predictive Analytics ist im vierten Video der Reihe „Data Science für Einsteiger“ enthalten: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) (Dauer: 7:42).
+# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning-Tutorial: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
+
+Wenn Sie **Azure Machine Learning Studio** noch nie zuvor verwendet haben, hilft Ihnen dieses Tutorial.
+
+In diesem Tutorial wird erläutert, wie Sie Studio zum ersten Mal zum Erstellen eines Experiments mit maschinellem Lernen verwenden. Dieses Experiment testet ein analytisches Modell, das den Preis eines Autos anhand von verschiedenen Variablen wie Marke und technische Angaben prognostiziert.
+
+> [!NOTE]
+> Dieses Tutorial zeigt Ihnen die Grundlagen darüber, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen. Die Themen „maschinelles Lernen“ oder die Frage, wie die über 100 integrierten Algorithmen und die in Studio enthaltenen Module zur Datenbearbeitung verwendet werden, werden hier nicht erörtert.
+>
+>Wenn dies Ihre erste Berührung mit maschinellem Lernen ist, stellt die Videoreihe [Data Science für Einsteiger](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) möglicherweise einen guten Start dar. Diese Videoreihe bietet eine gute Einführung in das maschinelle Lernen und verwendet alltägliche Sprache und Konzepte.
+>
+>Wenn Sie sich bereits mit maschinellem Lernen auskennen, aber weitere allgemeine Informationen zu Machine Learning Studio und den darin enthaltenen Algorithmen für maschinelles Lernen wünschen, finden Sie nachstehend einige guten Ressourcen:
+>
+- [Was ist Machine Learning Studio?](machine-learning-what-is-ml-studio.md) - Hierbei handelt es sich um eine allgemeine Übersicht über Studio.
+- [Grundlagen des maschinellen Lernens mit Algorithmusbeispielen](machine-learning-basics-infographic-with-algorithm-examples.md) – Diese Infografik ist hilfreich, wenn Sie mehr über die verschiedenen Algorithmustypen für maschinelles Lernen in Machine Learning Studio erfahren möchten.
+- [Machine Learning Guide (Machine Learning-Handbuch)](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1) – Diese Anleitung enthält ähnliche Informationen wie die oben genannte Infografik, jedoch in einem interaktiven Format.
+- [Machine Learning-Cheat Sheet für Algorithmen](machine-learning-algorithm-cheat-sheet.md) und [Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md) – Dieses herunterladbare Poster und der zugehörige Artikel besprechen Studio-Algorithmen im Detail.
+- [Machine Learning Studio: Algorithm and Module Help (Machine Learning Studio: Hilfe zu Algorithmen und Modulen)](https://msdn.microsoft.com/library/azure/dn905974.aspx) - Dies ist die vollständige Referenz zu allen Studio-Modulen, einschließlich der Machine Learning-Algorithmen.
+
+<!-- -->
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="how-does-machine-learning-studio-help"></a>Welchen Beitrag leistet Machine Learning Studio?
-Mit Machine Learning Studio ist es einfach, ein Experiment einzurichten, indem Sie Drag&Drop-Module verwenden, die basierend auf der Vorhersagemodellierung vorprogrammiert sind. Um das Experiment auszuführen und eine Antwort vorherzusagen, führen Sie mit Machine Learning Studio folgende Schritte aus: *Erstellen eines Modells*, *Trainieren des Modells* und *Bewerten und Testen des Modells*.
 
-Öffnen Sie Machine Learning Studio: [https://studio.azureml.net](https://studio.azureml.net). Wenn Sie sich bereits an Machine Learning Studio angemeldet haben, können Sie auf **Hier anmelden**klicken. Klicken Sie andernfalls auf **Registrieren** , und wählen Sie die Free-Option oder eine kostenpflichtige Option.
+Mit Machine Learning Studio ist es einfach, ein Experiment einzurichten, indem Sie Drag&Drop-Module verwenden, die basierend auf der Vorhersagemodellierung vorprogrammiert sind.
 
-Allgemeine Informationen zu Machine Learning Studio finden Sie unter [Was ist Machine Learning Studio?](machine-learning-what-is-ml-studio.md)
+Mithilfe eines interaktiven, visuellen Arbeitsbereiches platzieren Sie ***Datasets*** und ***Analysemodule*** per Drag & Drop in einem interaktiven Bereich. Anschließend verbinden Sie sie zu einem ***Experiment***, das Sie in Machine Learning Studio ausführen.
+Sie ***erstellen ein Modell***, ***trainieren*** und ***bewerten und testen es***.
+
+Sie können Ihren Modellentwurf durchlaufen und dabei das Experiment bearbeiten und es ausführen, bis sie die Ergebnisse erhalten, die Sie suchen. Wenn Ihr Modell bereit ist, können Sie es als ***Webdienst*** veröffentlichen, damit andere Benutzer ihm neue Daten zusenden können und im Gegenzug Vorhersagen erhalten.
+
+## <a name="open-machine-learning-studio"></a>Öffnen von Machine Learning Studio
+
+Wechseln Sie zu [https://studio.azureml.net](https://studio.azureml.net), um Ihre ersten Schritte mit Studio zu tätigen. Wenn Sie sich zuvor schon einmal bei Machine Learning Studio angemeldet haben, klicken Sie einfach auf **Sign In** (Anmelden). Klicken Sie andernfalls auf **Sign up here** (Registrieren Sie sich hier), und wählen Sie zwischen der kostenlosen oder der kostenpflichtige Option aus.
+
+![Melden Sie sich bei Azure Machine Learning Studio an.][sign-in-to-studio]
+<br/>
+***Melden Sie sich bei Azure Machine Learning Studio an.***
 
 ## <a name="five-steps-to-create-an-experiment"></a>Fünf Schritte zum Erstellen von Hypothesen
-In diesem Lernprogramm für maschinelles Lernen führen Sie fünf grundlegende Schritte zur Experimenterstellung in Machine Learning Studio aus, um Ihr Modell zu erstellen, zu trainieren und zu bewerten:
 
-* Modellerstellung
-  * [Schritt 1: Bereitstellen von Daten]
-  * [Schritt 2: Vorverarbeiten von Daten]
-  * [Schritt 3: Definieren von Funktionen]
-* Modelltraining
-  * [Schritt 4: Auswählen und Anwenden eines Lernalgorithmus]
-* das Modell zu bewerten und zu testen
-  * [Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]
+In diesem Tutorial für maschinelles Lernen wird anhand von fünf grundlegenden Schritten die Experimenterstellung in Machine Learning Studio dargelegt, um Ihr Modell zu erstellen, zu trainieren und zu bewerten:
+
+- **Erstellen des Modells**
+    - [Schritt 1: Bereitstellen von Daten]
+    - [Schritt 2: Vorbereiten der Daten]
+    - [Schritt 3: Definieren von Funktionen]
+- **Trainieren des Modells**
+    - [Schritt 4: Auswählen und Anwenden eines Lernalgorithmus]
+- **Bewerten und Testen des Modells**
+    - [Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]
 
 [Schritt 1: Bereitstellen von Daten]: #step-1-get-data
-[Schritt 2: Vorverarbeiten von Daten]: #step-2-preprocess-data
+[Schritt 2: Vorbereiten der Daten]: #step-2-prepare-the-data
 [Schritt 3: Definieren von Funktionen]: #step-3-define-features
 [Schritt 4: Auswählen und Anwenden eines Lernalgorithmus]: #step-4-choose-and-apply-a-learning-algorithm
 [Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]: #step-5-predict-new-automobile-prices
 
+> [!TIP] 
+> Eine Arbeitskopie des folgenden Experiments finden Sie in der [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com). Wechseln Sie zu **[Your first data science experiment - Automobile price prediction (Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen)](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**, und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
+
 
 ## <a name="step-1-get-data"></a>Schritt 1: Bereitstellen von Daten
-Machine Learning Studio enthält bereits zahlreiche Beispiel-DataSets, unter denen Sie wählen können, und Sie können Daten aus vielen Quellen importieren. Für dieses Beispiel verwenden wir den mitgelieferten Beispieldatensatz **Automobile price data (Raw)**.
-Dieses DataSet enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technischen Angaben und Preis.
 
-1. Starten Sie ein neues Experiment, indem Sie am unteren Rand des Fensters von Machine Learning Studio auf **+NEU** klicken und anschließend **EXPERIMENT** und dann **Blank Experiment** (Leeres Experiment) auswählen. Wählen Sie den Standardnamen am oberen Rand des Bereichs aus, und geben Sie einen aussagekräftigeren Namen ein (beispielsweise **Automobile price prediction**).
-2. Links vom Experimentbereich finden Sie eine Palette mit Datensätzen und Modulen. Geben Sie im oberen Bereich dieser Palette **automobile** in das Suchfeld ein, um das Dataset mit dem Namen **Automobile price data (Raw)** zu finden.
-   
-    ![Palettensuche][screen1a]
-3. Ziehen Sie den Datensatz in den Experimentbereich.
-   
-    ![Datensatz][screen1]
+Die Grundvoraussetzung für maschinelles Lernen sind Daten.
+Machine Learning Studio enthält bereits einige Beispieldatasets, unter denen Sie verwenden können. Alternativ können Sie Daten aus vielen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
+Dieses Dataset enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technischen Angaben und Preis.
+
+Hier wird erklärt, wie Sie das Dataset in Ihr Experiment importieren.
+
+1. Erstellen Sie ein neues Experiment, indem Sie am unteren Rand des Machine Learning Studio-Fensters auf **+NEW** (+NEU) klicken. Wählen Sie anschließend **EXPERIMENT** und **Blank Experiment** (Leeres Experiment) aus.
+
+2. Dieses Experiment erhält einen Standardnamen, der oben im Zeichenbereich angezeigt wird. Wählen Sie den Text aus, und benennen Sie das Experiment mit einem aussagekräftigen Namen um, z.B. **Automobile price prediction** (Vorhersage für Automobilpreise).
+
+2. Links vom Experimentbereich finden Sie eine Palette mit Datensätzen und Modulen. Geben Sie im oberen Bereich dieser Palette **automobile** in das Suchfeld ein, um das Dataset mit dem Namen **Automobile price data (Raw)** zu finden. Ziehen Sie das Dataset in den Experimentbereich.
+
+    ![Suchen Sie das Automobildataset, und ziehen Sie es in den Experimentbereich.][type-automobile]
+    <br/>
+    ***Suchen Sie das Automobildataset, und ziehen Sie es in den Experimentbereich.***
 
 Sie können auf den Ausgabeport im unteren Bereich des Automobil-Datasets klicken und dann **Visualisieren**auswählen, um die enthaltenen Daten anzuzeigen.
 
-![Modulausgangsport][screen1c]
+![Klicken Sie auf den Ausgabeport, und wählen Sie „Visualize“ (Visualisieren) aus.][select-visualize]
+<br/>
+***Klicken Sie auf den Ausgabeport, und wählen Sie „Visualize“ (Visualisieren) aus.***
 
-Die Variablen im Datensatz werden als Spalten angezeigt, und jede Instanz eines Automobils füllt eine Zeile. Die Spalte ganz rechts (Spalte 26 mit dem Titel "price") ist die Zielvariable, die wir vorhersagen möchten.
+> [!TIP]
+> Datasets und Module verfügen über Ein- und Ausgabe-Anschlüsse, die in Form kleiner Kreise dargestellt werden: Eingabe-Anschlüsse oben und Ausgabe-Anschlüsse unten.
+Sie müssen diese Anschlüsse miteinander verbinden, um in Ihrem Experiment einen Datenfluss zu erstellen.
+Sie können zu einem beliebigen Zeitpunkt auf den Ausgabe-Anschluss eines Datasets oder eines Moduls klicken, um die Daten an diesem Punkt im Datenfluss anzuzeigen.
 
-![Datensatzvisualisierung][screen1b]
+In diesem Beispieldataset wird jede Instanz eines Autos als Zeile angezeigt, während die den einzelnen Automobilen zugeordneten Variablen als Spalten angezeigt werden. Anhand der Variablen für ein bestimmtes Automobil werden wir versuchen, den Preis in der äußersten rechten Spalte vorherzusagen (Spalte 26 namens „Price“ (Preis)).
+
+![Zeigen Sie die Automobildaten im Fenster für die Datenvisualisierung an.][visualize-auto-data]
+<br/>
+***Zeigen Sie die Automobildaten im Fenster für die Datenvisualisierung an.***
 
 Schließen Sie das Visualisierungsfenster, indem Sie auf das "**X**" in der oberen rechten Ecke klicken.
 
-## <a name="step-2-preprocess-data"></a>Schritt 2: Vorverarbeiten von Daten
-DataSets müssen vor der Analyse normalerweise vorverarbeitet werden. Möglicherweise sind Ihnen bereits die fehlenden Werte in den Spalten verschiedener Zeilen aufgefallen. Damit das Modell die Daten richtig analysieren kann, müssen diese fehlenden Werte bereinigt werden. In unserem Fall entfernen wir alle Zeilen, in denen Werte fehlen. Außerdem enthält die Spalte **normalisierte Verluste** viele fehlende Werte, daher schließen wir diese Spalte komplett aus dem Modell aus.
+## <a name="step-2-prepare-the-data"></a>Schritt 2: Vorbereiten der Daten
+
+DataSets müssen vor der Analyse normalerweise vorverarbeitet werden. Möglicherweise sind Ihnen z.B. bereits die fehlenden Werte in den Spalten verschiedener Zeilen aufgefallen. Damit das Modell die Daten richtig analysieren kann, müssen diese fehlenden Werte bereinigt werden. In unserem Fall entfernen wir alle Zeilen, in denen Werte fehlen. Außerdem enthält die Spalte **normalisierte Verluste** viele fehlende Werte, daher schließen wir diese Spalte komplett aus dem Modell aus.
 
 > [!TIP]
 > Die Bereinigung fehlender Werte aus den Eingabedaten ist eine Voraussetzung für die Verwendung der meisten Module.
-> 
-> 
 
-Wir entfernen zunächst die Spalte **normalized-losses** und anschließend alle Zeilen, in denen Daten fehlen.
+Zunächst fügen wir ein Modul hinzu, das die Spalte **normalized-losses** (normalisierte Verluste) vollständig entfernt. Anschließend fügen wir ein weiteres Modul ein, das alle Zeilen mit fehlenden Daten entfernt.
 
-1. Geben Sie im oberen Bereich der Modulpalette **select columns** in das Suchfeld ein, um das Modul [Select Columns in Dataset][select-columns] zu suchen, ziehen Sie es in den Experimentbereich, und verbinden Sie es dann mit dem Ausgabeport des Datasets **Automobile price data (Raw)**. Mit diesem Modul können wir auswählen, welche Daten wir in unserem Modell ein- bzw. ausschließen möchten.
-2. Wählen Sie das Modul [Select Columns in Dataset][select-columns] aus, und klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**.
-   
-   * Klicken Sie auf der linken Seite auf **With rules**
-   * Klicken Sie unter **Begin With** (Beginnen mit) auf **All columns** (Alle Spalten). Damit wird [Select Columns in Dataset][select-columns] angewiesen, alle Spalten zu durchlaufen (mit Ausnahme derer, die wir gleich noch ausschließen).
-   * Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und klicken Sie auf das Textfeld. Eine Liste von Spalten wird angezeigt. Wählen Sie **normalized-losses** aus. Daraufhin wird die Spalte dem Textfeld hinzugefügt.
-   * Klicken Sie auf die Schaltfläche mit einem Häkchen ("OK"), um die Spaltenauswahl zu schließen.
-     
-     ![Spalten auswählen][screen3]
-     
-     Im Eigenschaftenbereich für **Select Columns in Dataset** sehen Sie, dass mit Ausnahme von **normalized-losses** alle Spalten des Datasets durchlaufen werden.
-     
-     ![Eigenschaften für „Select Columns in Dataset“][screen4]
-     
-     > [!TIP]
-     > Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „normalized-losses ausschließen“ ein.
-     > 
-     > 
-3. Ziehen Sie das Modul [Clean Missing Data][clean-missing-data] in den Experimentbereich, und verbinden Sie es mit dem Modul [Select Columns in Dataset][select-columns]. Wählen Sie im Bereich **Eigenschaften** unter **Bereinigungsmodus** die Option **Gesamte Zeile entfernen** aus, um die Daten zu bereinigen, indem Sie alle Zeilen entfernen, in denen Werte fehlen. Doppelklicken Sie auf das Modul, und geben Sie den Kommentar "Remove missing value rows" ein.
-   
-    ![Bereinigen fehlender Dateneigenschaften][screen4a]
+1. Geben Sie im oberen Bereich der Modulpalette **select columns** (Spalten auswählen) in das Suchfeld ein, um das Modul [Select Columns in Dataset][select-columns] (Spalten im Dataset auswählen) zu suchen, und ziehen Sie es in den Experimentbereich. Mit diesem Modul können wir auswählen, welche Daten wir in unserem Modell ein- bzw. ausschließen möchten.
+
+2. Verbinden Sie den Ausgabe-Anschluss des Datasets **Automobile price data (Raw)** mit dem Eingabe-Anschluss des Moduls [Select Columns in Dataset][select-columns].
+
+    ![Ziehen Sie das Modul „Select Columns in Dataset“ in den Experimentbereich, und verbinden Sie es.][type-select-columns]
+    <br/>
+    ***Ziehen Sie das Modul „Select Columns in Dataset“ in den Experimentbereich, und verbinden Sie es.***
+
+3. Klicken Sie auf das Modul [Select Columns in Dataset][select-columns], und klicken Sie im Bereich **Eigenschaften** auf **Launch column selector** (Spaltenauswahl starten).
+
+    - Klicken Sie auf der linken Seite auf **With rules**
+    - Klicken Sie unter **Begin With** (Beginnen mit) auf **All columns** (Alle Spalten). Damit wird [Select Columns in Dataset][select-columns] angewiesen, alle Spalten zu übergeben (mit Ausnahme derer, die wir gleich noch ausschließen).
+    - Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und klicken Sie auf das Textfeld. Eine Liste von Spalten wird angezeigt. Wählen Sie **normalized-losses** aus. Daraufhin wird die Spalte dem Textfeld hinzugefügt.
+    - Klicken Sie auf die Schaltfläche mit einem Häkchen („OK“), um die Spaltenauswahl zu schließen (unten rechts).
+
+    ![Starten Sie die Spaltenauswahl, und schließen Sie die Spalte „normalized-losses“ aus.][launch-column-selector]
+    <br/>
+    ***Starten Sie die Spaltenauswahl, und schließen Sie die Spalte „normalized-losses“ aus.***
+
+    Der Eigenschaftenbereich für **Select Columns in Dataset** zeigt nun an, dass mit Ausnahme von **normalized-losses** alle Spalten des Datasets übergeben werden.
+
+    ![Der Eigenschaftenbereich zeigt an, dass die Spalte „normalized-losses“ ausgeschlossen wurde.][showing-excluded-column]
+    <br/>
+    ***Der Eigenschaftenbereich zeigt an, dass die Spalte „normalized-losses“ ausgeschlossen wurde.***
+
+    > [!TIP]
+    > Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „Exclude normalized losses“ („normalized-losses“ ausschließen) ein.
+
+    ![Doppelklicken Sie auf ein Modul, um einen Kommentar hinzuzufügen.][add-comment]
+    <br/>
+    ***Doppelklicken Sie auf ein Modul, um einen Kommentar hinzuzufügen.***
+
+3. Ziehen Sie das Modul [Clean Missing Data][clean-missing-data] in den Experimentbereich, und verbinden Sie es mit dem Modul [Select Columns in Dataset][select-columns]. Klicken Sie im **Eigenschaftenbereich** unter **Cleaning mode** (Reinigungsmodus) auf die Option **Remove entire row** (Gesamte Zeile entfernen). Dies weist [Clean Missing Data][clean-missing-data] (Fehlende Daten bereinigen) an, Daten durch das Entfernen von Zeilen mit fehlenden Werten zu bereinigen. Doppelklicken Sie auf das Modul, und geben Sie den Kommentar "Remove missing value rows" ein.
+
+    ![Legen Sie den Reinigungsmodus für das Modul „Clean Missing Data“ auf „Remove entire row“ fest.][set-remove-entire-row]
+    <br/>
+    ***Legen Sie den Reinigungsmodus für das Modul „Clean Missing Data“ auf „Remove entire row“ fest.***
+
 4. Führen Sie das Experiment aus, indem Sie unterhalb des Experimentbereichs auf **AUSFÜHREN** klicken.
 
-Nach Abschluss des Experiments sind alle Module mit einem grünen Häkchen markiert, um anzuzeigen, dass diese erfolgreich abgeschlossen wurden. Beachten Sie auch den Status **Finished running** in der oberen rechten Ecke.
+    Nach Abschluss des Experiments sind alle Module mit einem grünen Häkchen markiert, um anzuzeigen, dass diese erfolgreich abgeschlossen wurden. Beachten Sie auch den Status **Finished running** in der oberen rechten Ecke.
 
-![Erste Experimentausführung][screen5]
+![Nach der Ausführung sollte das Experiment in etwa so aussehen.][early-experiment-run]
+<br/>
+***Nach der Ausführung sollte das Experiment in etwa so aussehen.***
 
-Bislang haben wir im Experiment nur Daten bereinigt. Wenn Sie das bereinigte Dataset anzeigen möchten, klicken Sie auf den linken Ausgabeports des Moduls [Clean Missing Data][clean-missing-data] („Cleaned dataset“), und wählen Sie **Visualisieren** aus. Beachten Sie, dass die Spalte **normalized-losses** nicht mehr aufgeführt wird und keine fehlenden Werte auftreten.
+> [!TIP]
+> Warum haben wir das Experiment nun ausgeführt? Durch Ausführen des Experiments übergeben die Spaltendefinitionen für unsere Daten aus dem Dataset die Module [Select Columns in Dataset][select-columns] und [Clean Missing Data][clean-missing-data]. Dies bedeutet, dass alle Module, die wir mit [Clean Missing Data][clean-missing-data] verbinden, über dieselben Informationen verfügen.
+
+Bislang haben wir im Experiment nur Daten bereinigt. Wenn Sie das bereinigte Dataset anzeigen möchten, klicken Sie auf den linken Ausgabe-Anschluss des Moduls [Clean Missing Data][clean-missing-data], und wählen Sie **Visualize** aus. Beachten Sie, dass die Spalte **normalized-losses** nicht mehr aufgeführt wird und keine fehlenden Werte auftreten.
 
 Nach der Bereinigung der Daten können wir nun angeben, welche Funktionen wir im Vorhersagemodell verwenden möchten.
 
 ## <a name="step-3-define-features"></a>Schritt 3: Definieren von Funktionen
+
 Bei Machine Learning versteht man unter *Funktionen* einzeln messbare Eigenschaften des untersuchten Gesamtobjekts. In unserem DataSet stellt jede Zeile ein Automobil dar, und jede Spalte ist eine Funktion dieses Automobils.
 
-Einen guten Satz von Funktionen für die Erstellung eines Vorhersagemodells finden Sie durch Ausprobieren und Kenntnisse des zu lösenden Problems. Manche Funktionen eignen sich besser für die Vorhersage des Ziels als andere. Außerdem haben manche Funktionen eine starke Korrelation mit anderen Funktionen, z. B. "city-mpg" und "highway-mpg". Diese liefern kaum neue Informationen für das Modell und können entfernt werden.
+Einen guten Satz von Funktionen für die Erstellung eines Vorhersagemodells finden Sie durch Ausprobieren und Kenntnisse des zu lösenden Problems. Manche Funktionen eignen sich besser für die Vorhersage des Ziels als andere. Darüber hinaus weisen einige Funktionen über eine starke Korrelation mit anderen Funktionen auf und können entfernt werden. So stehen „city-mpg“ und „highway-mpg“ z.B. in enger Beziehung. Wir können also eines behalten und das andere ohne bedeutende Auswirkungen auf die Vorhersage entfernen.
 
 Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Datensatz verwendet. Sie können später jederzeit andere Funktionen auswählen, das Experiment erneut ausführen und versuchen, bessere Ergebnisse zu erhalten. Hier probieren wir vorerst die folgenden Funktionen aus:
 
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
 
 
-1. Ziehen Sie ein weiteres Modul vom Typ [Select Columns in Dataset][select-columns] in den Experimentbereich, und verbinden Sie es mit dem linken Ausgabeport des Moduls [Clean Missing Data][clean-missing-data]. Doppelklicken Sie auf das Modul, und geben Sie "Select features for prediction" ein.
+1. Ziehen Sie ein weiteres [Select Columns in Dataset][select-columns]-Modul in den Experimentbereich. Verbinden Sie den linken Ausgabe-Anschluss des Moduls [Clean Missing Data][clean-missing-data] mit dem Eingabe-Anschluss des Moduls [Select Columns in Dataset][select-columns].
+
+    ![Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Moduls „Clean Missing Data“.][connect-clean-to-select]
+    <br/>
+    ***Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Moduls „Clean Missing Data“.***
+
+2. Doppelklicken Sie auf das Modul, und geben Sie "Select features for prediction" ein.
+
 2. Klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**.
+
 3. Klicken Sie auf **With rules**(Mit Regeln).
-4. Klicken Sie unter **Begin With** (Beginnen mit) auf **No columns** (Keine Spalten), und wählen Sie dann **Include** (Einschließen) und **column names** (Spaltennamen) in der Filterzeile aus. Geben Sie unsere Liste der Spaltennamen ein. Damit weisen Sie das Modul an, nur die angegebenen Spalten zu durchlaufen.
-   
-   > [!TIP]
-   > Durch Ausführen des Experiments haben wir sichergestellt, dass die Spaltendefinitionen für unsere Daten aus dem Dataset das Modul [Clean Missing Data][clean-missing-data] durchlaufen. Dies bedeutet, dass andere Module, mit denen Sie eine Verbindung herstellen, auch über Informationen aus dem Dataset verfügen.
-   > 
-   > 
+
+4. Klicken Sie unter **Begin With** (Beginnen mit) auf **No columns** (Alle Spalten). Wählen Sie in der Filterzeile **Include** (Einbeziehen) und **column names** (Spaltennamen) aus, und wählen Sie im Textfeld unsere Liste mit Spaltennamen aus. Dies weist das Modul an, keine Spalten (Funktionen) außer den angegebenen zu übergeben.
+
 5. Klicken Sie auf das Häkchen ("OK").
 
-![Spalten auswählen][screen6]
+    ![Wählen Sie die Spalten (Funktionen) aus, die in die Vorhersage einbezogen werden sollen.][select-columns-to-include]
+    <br/>
+    ***Wählen Sie die Spalten (Funktionen) aus, die in die Vorhersage einbezogen werden sollen.***
 
-Dieser Vorgang erzeugt das DataSet, das wir in den nächsten Schritten im Lernalgorithmus verwenden werden. Sie können den Vorgang später jederzeit mit einer anderen Auswahl an Funktionen wiederholen.
+Hierdurch wird ein gefiltertes Dataset mit nur den Funktionen erstellt, die wir dem lernenden Algorithmus übergeben möchten, den wir im nächsten Schritt verwenden werden. Sie können den Vorgang später jederzeit mit einer anderen Auswahl an Funktionen wiederholen.
 
 ## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>Schritt 4: Auswählen und Anwenden eines Lernalgorithmus
-Nachdem die Daten vorbereitet sind, können Sie das Vorhersagemodell anhand von Training und Tests erarbeiten. Wir werden das Modell zunächst mit unseren Daten trainieren und dann testen, wie genau seine Preisvorhersagen zutreffen. Vorerst kümmern wir uns noch nicht darum, warum wir ein Modell trainieren und anschließend testen müssen.
 
-*Klassifizierung* und *Regression* sind zwei Techniken für beaufsichtigtes maschinelles Lernen. Mit der Klassifizierung wird eine Antwort aus einem definierten Satz mit Kategorien vorhergesagt, z.B. eine Farbe (Rot, Blau oder Grün). Die Regression wird verwendet, um eine Zahl vorherzusagen.
+Nachdem die Daten vorbereitet sind, können Sie das Vorhersagemodell anhand von Training und Tests erarbeiten. Wir werden das Modell zunächst mit unseren Daten trainieren und dann testen, wie genau seine Preisvorhersagen zutreffen.
+<!-- For now, don't worry about *why* we need to train and then test a model.-->
 
-Da wir einen Preis vorhersagen möchten (also eine Zahl), verwenden wir ein Regressionsmodell. Für dieses Beispiel trainieren wir ein einfaches *lineares Regressionsmodell* und testen es anschließend im nächsten Schritt.
+*Klassifizierung* und *Regression* sind zwei Algorithmen für beaufsichtigtes maschinelles Lernen. Mit der Klassifizierung wird eine Antwort aus einem definierten Satz mit Kategorien vorhergesagt, z.B. eine Farbe (Rot, Blau oder Grün). Die Regression wird verwendet, um eine Zahl vorherzusagen.
 
-1. Wir verwenden die uns vorliegenden Daten sowohl zum Trainieren als auch zum Testen, indem wir sie in separate Trainings- und Testsätze aufteilen. Ziehen Sie das Modul [Split Data][split] in den Experimentbereich, und verbinden Sie es mit der Ausgabe des letzten Moduls vom Typ [Select Columns in Dataset][select-columns]. Setzen Sie **Anteil der Zeilen im ersten Ausgabedatensatz** auf 0,75. Mit dieser Einstellung verwenden wir 75 Prozent der Daten zum Trainieren des Modells und halten 25 Prozent für Tests zurück.
-   
-   > [!TIP]
-   > Sie können den Parameter **Zufälliger Ausgangswert** ändern, um unterschiedliche zufällige Proben für Training und Tests zu erstellen. Dieser Parameter steuert den Ausgangswert des Pseudo-Zufallszahlengenerators.
-   > 
-   > 
-2. Führen Sie das Experiment aus. Dadurch können die Module [Select Columns in Dataset][select-columns] and [Split Data][split] die Spaltendefinitionen an die Module übergeben, die wir als Nächstes hinzufügen.  
-3. Um den Lernalgorithmus auszuwählen, erweitern Sie die Kategorie **Machine Learning** in der Modulpalette links vom Experimentbereich, und erweitern Sie anschließend **Modell initialisieren**. Daraufhin werden verschiedene Kategorien von Modulen angezeigt, die zur Initialisierung eines Algorithmus für maschinelles Lernen verwendet werden können.
-   
-    Wählen Sie für dieses Experiment unter der Kategorie **Regression** das Modul [Linear Regression][linear-regression] aus (oder geben Sie „linear regression“ im Suchfeld der Palette ein), und ziehen Sie das Modul in den Experimentbereich.
-4. Suchen Sie das Modul [Train Model][train-model], und ziehen Sie es ebenfalls in den Experimentbereich. Verbinden Sie den linken Eingangsport mit der Ausgabe des Moduls [Linear Regression][linear-regression]. Verbinden Sie den rechten Eingangsport mit der Trainingsdatenausgabe (linker Port) des Moduls [Split Data][split].
-5. Wählen Sie das Modul [Train Model][train-model] aus, klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**, und wählen Sie dann die Spalte **price** aus. Dies ist der Wert, den unser Modell vorhersagen wird.
-   
-    ![Spaltenauswahl "price"][screen7]
+Da wir einen Preis vorhersagen möchten (also eine Zahl), verwenden wir einen Regressionsalgorithmus. In diesem Beispiel verwenden wir ein einfaches *lineares Regressionsmodell*.
+
+> [!TIP]
+> Wenn Sie mehr zu den verschiedenen Algorithmustypen für maschinelles Lernen und dazu erfahren möchten, wann Sie sie verwenden sollten, können Sie sich das erste Video in der Reihe „Data Science für Einsteiger“ ansehen: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md). Sie können sich auch die Infografik [Grundlagen des maschinellen Lernens mit Algorithmusbeispielen](machine-learning-basics-infographic-with-algorithm-examples.md) oder das [Machine Learning-Cheat Sheet für Algorithmen](machine-learning-algorithm-cheat-sheet.md) ansehen.
+
+Wir trainieren das Modell, indem wir einen Datensatz mit dem Preis einspeisen. Das Modell überprüft die Daten und sucht nach Korrelationen zwischen den Funktionen eines Automobils und seinem Preis. Anschließend testen wir das Modell: Wir geben einen Satz von Funktionen für bekannte Automobile ein, und testen, wie zutreffend das Modell den bekannten Preis vorhersagt.
+
+Wir verwenden unsere Daten sowohl für das Trainieren als auch das Testen des Modells, indem die Daten in separate Trainings- und Testdatasets aufgeteilt werden.
+
+1. Wählen Sie das Modul [Split Data][split] (Daten aufteilen) aus, ziehen Sie es in den Experimentbereich, und verbinden Sie es mit dem letzten [Select Columns in Dataset][select-columns]-Modul.
+
+2. Klicken Sie auf das Modul [Split Data][split], um es auszuwählen. Suchen Sie unter **Fraction of rows in the first output dataset** (Bruchteil der Zeilen im ersten Ausgabedataset) (im **Eigenschaftenbereich** rechts neben dem Zeichenbereich), und legen Sie die Einstellung auf 0,75 fest. Damit verwenden wir 75 Prozent der Daten zum Trainieren des Modells und halten 25 Prozent für Tests zurück (Sie können später versuchen, verschiedene Prozentsätze zu verwenden).
+
+    ![Legen Sie den Aufteilungsanteil des Moduls „Split Data“ auf 0,75 fest.][set-split-data-percentage]
+    <br/>
+    ***Legen Sie den Aufteilungsanteil des Moduls „Split Data“ auf 0,75 fest.***
+
+    > [!TIP]
+    > Sie können den Parameter **Zufälliger Ausgangswert** ändern, um unterschiedliche zufällige Proben für Training und Tests zu erstellen. Dieser Parameter steuert den Ausgangswert des Pseudo-Zufallszahlengenerators.
+
+2. Führen Sie das Experiment aus. Wenn das Experiment ausgeführt wird, können die Module [Select Columns in Dataset][select-columns] und [Split Data][split] die Spaltendefinitionen an die Module übergeben, die wir als Nächstes hinzufügen.  
+
+3. Um den Lernalgorithmus auszuwählen, erweitern Sie die Kategorie **Machine Learning** in der Modulpalette links vom Experimentbereich, und erweitern Sie anschließend **Modell initialisieren**. Daraufhin werden verschiedene Kategorien von Modulen angezeigt, die zur Initialisierung eines Algorithmus für maschinelles Lernen verwendet werden können. Wählen Sie für dieses Experiment in der Kategorie **Regression** das Modul [Linear Regression][linear-regression] aus, und ziehen Sie es in den Experimentbereich.
+(Sie können das Modul auch suchen, indem Sie „linear regression“ in das Suchfeld der Palette eingeben.)
+
+4. Suchen Sie das Modul [Train Model][train-model], und ziehen Sie es ebenfalls in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Linear Regression][linear-regression] mit der linken Eingabe des Moduls [Train Model][train-model], und verbinden Sie die Ausgabe der Trainingsdaten (linker Anschluss) des Moduls [Split Data][split] mit der rechten Eingabe des Moduls [Train Model][train-model].
+
+    ![Verbinden Sie das Modul „Train Model“mit den Modulen „Linear Regression“ und „Split Data“.][connect-train-model]
+    <br/>
+    ***Verbinden Sie das Modul „Train Model“mit den Modulen „Linear Regression“ und „Split Data“.***
+
+5. Klicken Sie auf das Modul [Train Model][train-model], klicken Sie im Bereich **Eigenschaften** auf **Launch column selector**, und wählen Sie dann die Spalte **Price** aus. Dies ist der Wert, den unser Modell vorhersagen wird.
+
+    Wählen Sie die Spalte **Price** in der Spaltenauswahl aus, indem Sie sie aus der Liste **Available columns** (Verfügbare Spalten) in die Liste **Selected columns** (Ausgewählte Spalten) verschieben.
+
+    ![Wählen Sie die Spalte „Price“ des Moduls „Train Model“ aus.][select-price-column]
+    <br/>
+    ***Wählen Sie die Spalte „Price“ des Moduls „Train Model“ aus.***
+
 6. Führen Sie das Experiment aus.
 
-Als Ergebnis erhalten Sie ein trainiertes Regressionsmodul, mit dem Sie neue Proben bewerten können, um Vorhersagen zu machen.
+Als Ergebnis erhalten Sie ein trainiertes Regressionsmodell, mit dem Sie neue Automobildaten bewerten können, um Preisvorhersagen zu treffen.
 
-![Anwenden des Algorithmus zum maschinellen Lernen][screen8]
+![Nach der Ausführung sollte das Experiment in etwa so aussehen.][second-experiment-run]
+<br/>
+***Nach der Ausführung sollte das Experiment in etwa so aussehen.***
 
 ## <a name="step-5-predict-new-automobile-prices"></a>Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge
+
 Wir haben das Modell nun unter Verwendung von 75 Prozent unserer Daten trainiert und können die restlichen 25 Prozent der Daten dafür aufwenden, zu bewerten, wie gut unser Modell funktioniert.
 
-1. Suchen Sie das Modul [Score Model][score-model], ziehen Sie es in den Experimentbereich, und verbinden Sie den linken Eingangsport mit der Ausgabe des Moduls [Train Model][train-model]. Verbinden Sie den rechten Eingangsport mit der Testdatenausgabe (rechter Port) des Moduls [Split Data][split].  
-   
-    ![Modul Modell bewerten][screen8a]
-2. Um das Experiment auszuführen und die Ausgabe des Moduls [Score Model][score-model] anzuzeigen, doppelklicken Sie auf den Ausgabeport, und wählen Sie dann **Visualisieren** aus. Die Ausgabe zeigt die vorhergesagten Preiswerte zusammen mit den bekannten Werten aus den Testdaten an.  
-3. Um schließlich die Qualität der Ergebnisse zu überprüfen, ziehen Sie das Modul [Evaluate Model][evaluate-model] in den Experimentbereich, und verbinden Sie den linken Eingangsport mit der Ausgabe des Modells [Score Model][score-model]. (Es gibt zwei Eingangsports, da das Modul [Evaluate Model][evaluate-model] verwendet werden kann, um zwei Modelle zu vergleichen.)
+1. Suchen Sie das Modul [Score Model][score-model] (Modell bewerten), und ziehen Sie es in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Train Model][train-model] mit dem linken Eingabe-Anschluss des Moduls [Score Model][score-model]. Verbinden Sie die Testdatenausgabe (rechter Anschluss) des Moduls [Split Data][split] mit der rechten Eingabe des Moduls [Score Model][score-model].
+
+    ![Verbinden Sie das Modul „Score Model“mit den Modulen „Train Model“ und „Split Data“.][connect-score-model]
+    <br/>
+    ***Verbinden Sie das Modul „Score Model“mit den Modulen „Train Model“ und „Split Data“.***
+
+2. Führen Sie das Experiment aus, und zeigen Sie die Ausgabe des Moduls [Score Model][score-model] an (klicken Sie auf den Ausgabe-Anschluss von [Score Model][score-model], und wählen Sie **Visualize** aus). Die Ausgabe zeigt die vorhergesagten Preiswerte zusammen mit den bekannten Werten aus den Testdaten an.  
+
+    ![Ausgabe des Moduls „Score Model“][score-model-output]
+    <br/>
+    ***Ausgabe des Moduls „Score Model“***
+
+3. Schließlich testen wir die Qualität der Ergebnisse. Wählen Sie das Modul [Evaluate Model][evaluate-model] (Modell auswerten) aus, und zeihen Sie es in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Score Model][score-model] mit der linken Eingabe des Moduls [Evaluate Model][evaluate-model].
+
+    > [!TIP]
+    > Es gibt zwei Eingabe-Anschlüsse im Modul [Evaluate Model][evaluate-model], da für den parallelen Vergleich von zwei Modellen verwendet kann. Später können Sie dem Experiment einen weiteren Algorithmus hinzufügen und mithilfe von [Evaluate Model][evaluate-model] herausfinden, welcher bessere Ergebnisse erzielt.
+
 4. Führen Sie das Experiment aus.
 
-Um die Ausgabe des Moduls [Evaluate Model][evaluate-model] anzuzeigen, klicken Sie auf den Ausgabeport, und wählen Sie dann **Visualisieren** aus. Die folgenden Statistiken werden für unser Modell angezeigt:
+Um die Ausgabe des Moduls [Evaluate Model][evaluate-model] anzuzeigen, klicken Sie auf den Ausgabeport, und wählen Sie dann **Visualisieren** aus.
 
-* **Mean Absolute Error** (MAE) – der Mittelwert der absoluten Fehler (ein *Fehler* ist die Differenz zwischen vorhergesagtem und tatsächlichem Wert).
-* **Root Mean Squared Error** (RMSE) – die Quadratwurzel des Durchschnitts des Quadrats der Vorhersagefehler für das Test-DataSet.
-* **Relative Absolute Error**– der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-* **Relative Squared Error**– der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-* **Coefficient of Determination** – dieser auch als **R-Quadrat** bekannte Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
+![Auswertungsergebnisse für das Experiment][evaluation-results]
+<br/>
+***Auswertungsergebnisse für das Experiment***
+
+Die folgenden Statistiken werden für unser Modell angezeigt:
+
+- **Mean Absolute Error** (MAE) – der Mittelwert der absoluten Fehler (ein *Fehler* ist die Differenz zwischen vorhergesagtem und tatsächlichem Wert).
+- **Root Mean Squared Error** (RMSE) – die Quadratwurzel des Durchschnitts des Quadrats der Vorhersagefehler für das Test-DataSet.
+- **Relative Absolute Error**– der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Relative Squared Error**– der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Coefficient of Determination** – dieser auch als **R-Quadrat** bekannte Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
 
 Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an, dass die Vorhersagen genauer mit den tatsächlichen Werten übereinstimmen. Für den **Bestimmungskoeffizienten**gilt: Je näher der Bestimmungskoeffizient am Wert eins (1,0) liegt, desto besser die Vorhersage.
 
-![Auswertung der Ergebnisse][screen9]
+## <a name="final-experiment"></a>Endgültiges Experiment
 
-Das fertige Experiment sollte folgendermaßen aussehen:
+Das endgültige Experiment sollte in etwa wie folgt aussehen:
 
-![Lernprogramm für maschinelles Lernen: Führen Sie ein lineares Regressionsexperiment mit Vorhersagemodell-Techniken aus.][screen10]
+![Das endgültige Experiment][complete-linear-regression-experiment]
+<br/>
+***Das endgültige Experiment***
 
 ## <a name="next-steps"></a>Nächste Schritte
-Da Sie jetzt ein erstes Lernprogramm zum maschinellen Lernen abgeschlossen und das Experiment eingerichtet haben, können Sie es wiederholen, um das Modell zu verbessern. Sie können z. B. die Funktionen ändern, die Sie in Ihrer Vorhersage verwenden. Alternativ können Sie die Eigenschaften des Algorithmus [Linear Regression][linear-regression] ändern oder einen anderen Algorithmus ausprobieren. Sie können Ihrem Ereignis sogar gleichzeitig mehrere Algorithmen zum maschinellen Lernen hinzufügen und jeweils zwei vergleichen, indem Sie das Modul [Evaluate Model][evaluate-model] verwenden.
 
-> [!TIP]
-> Mit der Schaltfläche **SPEICHERN ALS** unterhalb des Experimentbereichs können Sie Kopien der Iterationen Ihres Experiments speichern. Sie können alle Iterationen Ihres Experiments anzeigen, indem Sie unterhalb des Experimentbereichs auf **AUSFÜHRUNGSVERLAUF ANZEIGEN** klicken. Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning Studio][runhistory].
-> 
-> 
+Da Sie nun das erste Tutorial zu maschinellem Lernen abgeschlossen und das Experiment eingerichtet haben, können Sie fortfahren, um das Modell zu verbessern und es als Prognosewebdienst bereitzustellen.
+
+- **Versuchen Sie, das Modell anhand von Iterationen zu verbessern:** Sie können z.B. die Funktionen ändern, die Sie für Ihre Vorhersage verwenden. Alternativ können Sie die Eigenschaften des Algorithmus [Linear Regression][linear-regression] ändern oder einen anderen Algorithmus ausprobieren. Sie können Ihrem Ereignis sogar mehrere Algorithmen für maschinelles Lernen gleichzeitig hinzufügen und jeweils zwei mithilfe des Moduls [Evaluate Model][evaluate-model] vergleichen.
+Ein Beispiel für den Vergleich mehrerer Modelle in einem einzigen Experiment finden Sie unter [Compare Regressors (Vergleichen von Regressoren)](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) in der [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com).
+
+    > [!TIP]
+    > Mit der Schaltfläche **SAVE AS** (SPEICHERN ALS) unterhalb des Experimentbereichs können Sie Kopien der Iterationen Ihres Experiments speichern. Sie können alle Iterationen Ihres Experiments anzeigen, indem Sie unterhalb des Experimentbereichs auf **AUSFÜHRUNGSVERLAUF ANZEIGEN** klicken. Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning-Studio][runhistory].
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
-Wenn Sie mit Ihrem Modell zufrieden sind, können Sie es als Webdienst bereitstellen, der Automobilpreise anhand neuer Daten vorhersagt. Weitere Informationen finden Sie unter [Veröffentlichen des Azure Machine Learning-Webdiensts][publish].
+- **Bereitstellen des Modells als Prognosewebdienst:** Wenn Sie mit Ihrem Modell zufrieden sind, können Sie es als Webdienst bereitstellen, der Automobilpreise anhand neuer Daten vorhersagt. Weitere Informationen finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][publish].
 
 [publish]: machine-learning-publish-a-machine-learning-web-service.md
 
-Eine umfassendere und ausführlichere exemplarische Vorgehensweise für Vorhersagemodell-Techniken zum Erstellen, Trainieren, Bewerten und Bereitstellen eines Modells finden Sie unter [Entwickeln einer Vorhersagelösung mit Azure Machine Learning][walkthrough].
+Sie möchten mehr erfahren? Eine umfassendere und ausführlichere exemplarische Vorgehensweise für das Erstellen, Trainieren, Bewerten und Bereitstellen eines Modells finden Sie unter [Entwickeln einer Lösung zur Vorhersageanalyse in Azure Machine Learning][walkthrough].
 
 [walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- Images -->
-[screen1]:./media/machine-learning-create-experiment/screen1.png
-[screen1a]:./media/machine-learning-create-experiment/screen1a.png
-[screen1b]:./media/machine-learning-create-experiment/screen1b.png
-[screen1c]: ./media/machine-learning-create-experiment/screen1c.png
-[screen2]:./media/machine-learning-create-experiment/screen2.png
-[screen3]:./media/machine-learning-create-experiment/screen3.png
-[screen4]:./media/machine-learning-create-experiment/screen4.png
-[screen4a]:./media/machine-learning-create-experiment/screen4a.png
-[screen5]:./media/machine-learning-create-experiment/screen5.png
-[screen6]:./media/machine-learning-create-experiment/screen6.png
-[screen7]:./media/machine-learning-create-experiment/screen7.png
-[screen8]:./media/machine-learning-create-experiment/screen8.png
-[screen8a]:./media/machine-learning-create-experiment/screen8a.png
-[screen9]:./media/machine-learning-create-experiment/screen9.png
-[screen10]:./media/machine-learning-create-experiment/complete-linear-regression-experiment.png
+[sign-in-to-studio]: ./media/machine-learning-create-experiment/sign-in-to-studio.png
+[visualize-auto-data]:./media/machine-learning-create-experiment/visualize-auto-data.png
+[select-visualize]: ./media/machine-learning-create-experiment/select-visualize.png
+[showing-excluded-column]:./media/machine-learning-create-experiment/showing-excluded-column.png
+[set-remove-entire-row]:./media/machine-learning-create-experiment/set-remove-entire-row.png
+[early-experiment-run]:./media/machine-learning-create-experiment/early-experiment-run.png
+[select-columns-to-include]:./media/machine-learning-create-experiment/select-columns-to-include.png
+[second-experiment-run]:./media/machine-learning-create-experiment/second-experiment-run.png
+[connect-score-model]:./media/machine-learning-create-experiment/connect-score-model.png
+[evaluation-results]:./media/machine-learning-create-experiment/evaluation-results.png
+[complete-linear-regression-experiment]:./media/machine-learning-create-experiment/complete-linear-regression-experiment.png
 
+<!-- temporarily switching GIFs to PNGs to remove animation --> 
+[type-automobile]:./media/machine-learning-create-experiment/type-automobile.png
+[type-select-columns]:./media/machine-learning-create-experiment/type-select-columns.png
+[launch-column-selector]:./media/machine-learning-create-experiment/launch-column-selector.png
+[add-comment]:./media/machine-learning-create-experiment/add-comment.png
+[connect-clean-to-select]:./media/machine-learning-create-experiment/connect-clean-to-select.png
+
+[set-split-data-percentage]:./media/machine-learning-create-experiment/set-split-data-percentage.png
+
+<!-- temporarily switching GIFs to PNGs to remove animation --> 
+[connect-train-model]:./media/machine-learning-create-experiment/connect-train-model.png
+[select-price-column]:./media/machine-learning-create-experiment/select-price-column.png
+
+[score-model-output]:./media/machine-learning-create-experiment/score-model-output.png
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
@@ -242,6 +377,6 @@ Eine umfassendere und ausführlichere exemplarische Vorgehensweise für Vorhersa
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

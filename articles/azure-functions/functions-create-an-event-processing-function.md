@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: c7e4d5c0b2602ba8c12184900eba05fee48c4450
+ms.sourcegitcommit: ae5837b4fce52aad4c8b39434c27c450aafc1310
+ms.openlocfilehash: 466f2e03407a1633c40e96a366f782bf877c0c26
 
 
 ---
@@ -72,13 +72,13 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
    Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
-   Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden  
+  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans.  
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

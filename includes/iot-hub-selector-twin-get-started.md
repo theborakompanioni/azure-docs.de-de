@@ -15,7 +15,7 @@ Verwenden Sie Gerätezwillinge für Folgendes:
 * Abfragen von Metadaten, Konfiguration oder Status des Geräts
 
 > [!NOTE]
-> Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Verwenden Sie [D2C-Nachrichten][lnk-d2c] für Sequenzen mit Ereignissen mit Zeitstempel (z.B. Telemetriedatenströme mit zeitbasierten Sensordaten) und [direkte Methoden][lnk-methods] für die interaktive Steuerung von Geräten, z.B. Einschalten eines Ventilators über eine benutzergesteuerte App.
+> Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Weitere Informationen dazu, wann Sie Gerätezwillinge verwenden sollten, finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins].
 > 
 > 
 
@@ -37,7 +37,7 @@ Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Ge
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-* Erstellen Sie eine Back-End-App, mit der einem Gerätezwilling *Tags* hinzufügt werden, sowie ein simuliertes Gerät, von dem der Konnektivitätskanal als *gemeldete Eigenschaft* auf dem Gerätezwilling gemeldet wird.
+* Erstellen Sie eine Back-End-App, mit der einem Gerätezwilling *Tags* hinzufügt werden, sowie eine simulierte Geräte-App, die ihren Konnektivitätskanal als *gemeldete Eigenschaft* auf dem Gerätezwilling meldet.
 * Fragen Sie Geräte von Ihrer Back-End-App ab, indem Sie Filter für die zuvor erstellten Tags und Eigenschaften verwenden.
 
 <!-- images -->
@@ -50,6 +50,6 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 [lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Erste Schritte mit Azure IoT Hub für Node.js | Microsoft Docs"
-description: "Tutorial für den Einstieg in Azure IoT Hub mit Node.js. Verwenden Sie Azure IoT Hub und Node.js mit den Microsoft Azure IoT SDKs, um eine IoT-Lösung zu implementieren."
+description: "Tutorial für den Einstieg in Azure IoT Hub mit Node.js. Verwenden Sie Azure IoT Hub und Node.js mit den Azure IoT SDKs, um eine IoT-Lösung zu implementieren."
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/12/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ddd9c1ed88e30eaaa200dc6b83d34746da14aa8
+ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
+ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
 
 
 ---
@@ -25,26 +25,26 @@ ms.openlocfilehash: 7ddd9c1ed88e30eaaa200dc6b83d34746da14aa8
 
 Am Ende dieses Tutorials verfügen Sie über drei Node.js-Konsolenanwendungen:
 
-* **CreateDeviceIdentity.js**: Hiermit werden eine Geräteidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden mit Ihrem simulierten Gerät erstellt.
-* **ReadDeviceToCloudMessages.js**: Hiermit wird die Telemetrie angezeigt, die Ihr simuliertes Gerät sendet.
+* **CreateDeviceIdentity.js**: Hiermit werden eine Geräteidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden mit Ihrer simulierten Geräte-App erstellt.
+* **ReadDeviceToCloudMessages.js**: Hiermit wird die Telemetrie angezeigt, die Ihre simulierte Geräte-App sendet.
 * **SimulatedDevice.js**: Hiermit wird mithilfe der zuvor erstellten Geräteidentität eine Verbindung mit Ihrem IoT Hub hergestellt und jede Sekunde unter Verwendung des AMQP-Protokolls eine Telemetrienachricht gesendet.
 
 > [!NOTE]
-> Im Artikel [IoT Hub-SDKs][lnk-hub-sdks] finden Sie Informationen zu den verschiedenen SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können.
+> Im Artikel [IoT Hub SDKs][lnk-hub-sdks] finden Sie Informationen über die verschiedenen Azure IoT SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können.
 > 
 > 
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 * Node.js, Version 0.10.x oder höher.
-* Ein aktives Azure-Konto. (Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein [kostenloses Testkonto][lnk-free-trial] erstellen.)
+* Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 Sie haben nun Ihren IoT Hub erstellt. Sie verfügen über den IoT Hub-Hostnamen und die IoT Hub-Verbindungszeichenfolge, die Sie für die weiteren Schritte in diesem Tutorial benötigen.
 
 ## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteidentität in der Identitätsregistrierung Ihres IoT Hubs erstellt. Ein Gerät kann nur eine Verbindung mit dem IoT Hub herstellen, wenn in der Geräteidentitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt **Geräteidentitätsregistrierung** des [Entwicklungsleitfadens für IoT Hub][lnk-devguide-identity]. Beim Ausführen dieser Konsolenanwendung werden eine eindeutige Geräte-ID und ein Schlüssel erstellt, mit denen sich das Gerät beim Senden von D2C-Nachrichten (Device-to-Cloud, Gerät-an-Cloud) beim IoT Hub identifizieren kann.
+In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteidentität in der Identitätsregistrierung Ihres IoT Hubs erstellt. Ein Gerät kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt **Identitätsregistrierung** des [Entwicklungsleitfadens für IoT Hub][lnk-devguide-identity]. Beim Ausführen dieser Konsolenanwendung werden eine eindeutige Geräte-ID und ein Schlüssel erstellt, mit denen sich das Gerät beim Senden von D2C-Nachrichten (Device-to-Cloud, Gerät-an-Cloud) beim IoT Hub identifizieren kann.
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **createdeviceidentity**. Erstellen Sie im Ordner **createdeviceidentity** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
    
@@ -71,7 +71,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteide
    
     var registry = iothub.Registry.fromConnectionString(connectionString);
     ```
-6. Fügen Sie den unten angegebenen Code hinzu, um in der Geräteidentitätsregistrierung im IoT Hub eine Gerätedefinition zu erstellen. Mit diesem Code wird ein Gerät erstellt, wenn die Geräte-ID in der Registrierung nicht vorhanden ist. Andernfalls wird der Schlüssel des vorhandenen Geräts zurückgegeben:
+6. Fügen Sie den unten angegebenen Code hinzu, um in der Identitätsregistrierung in Ihrem IoT-Hub eine Gerätedefinition zu erstellen. Mit diesem Code wird ein Gerät erstellt, wenn die Geräte-ID in der Registrierung nicht vorhanden ist. Andernfalls wird der Schlüssel des vorhandenen Geräts zurückgegeben:
    
     ```
     var device = new iothub.Device(null);
@@ -88,7 +88,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteide
     function printDeviceInfo(err, deviceInfo, res) {
       if (deviceInfo) {
         console.log('Device id: ' + deviceInfo.deviceId);
-        console.log('Device key: ' + deviceInfo.authentication.SymmetricKey.primaryKey);
+        console.log('Device key: ' + deviceInfo.authentication.symmetricKey.primaryKey);
       }
     }
     ```
@@ -101,12 +101,12 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteide
 9. Notieren Sie sich die **Geräte-ID** und den **Geräteschlüssel**. Sie benötigen diese Werte später beim Erstellen einer Anwendung, für die eine Verbindung mit IoT Hub als Gerät hergestellt wird.
 
 > [!NOTE]
-> Die Identitätsregistrierung im IoT Hub speichert nur Geräteidentitäten, um einen sicheren Zugriff auf den Hub zu ermöglichen. Sie speichert Geräte-IDs und Schlüssel, die als Sicherheitsanmeldeinformationen verwendet werden, sowie ein Aktiviert/Deaktiviert-Kennzeichen, mit dem Sie den Zugriff für ein einzelnes Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity].
+> Die Identitätsregistrierung in IoT Hub speichert nur Geräteidentitäten, um einen sicheren Zugriff auf den IoT-Hub zu ermöglichen. Sie speichert Geräte-IDs und Schlüssel, die als Sicherheitsanmeldeinformationen verwendet werden, sowie ein Aktiviert/Deaktiviert-Kennzeichen, mit dem Sie den Zugriff für ein einzelnes Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity].
 > 
 > 
 
-## <a name="receive-devicetocloud-messages"></a>Empfangen von Gerät-an-Cloud-Nachrichten
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten (Device-to-Cloud) aus dem IoT Hub liest. Ein IoT Hub macht einen [Event Hubs][lnk-event-hubs-overview]-kompatiblen Endpunkt verfügbar, der Ihnen das Lesen von D2C-Nachrichten ermöglicht. Zur Vereinfachung wird in diesem Tutorial ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial] wird gezeigt, wie Sie D2C-Nachrichten bedarfsorientiert verarbeiten. Das Tutorial [Erste Schritte mit Event Hubs][lnk-eventhubs-tutorial] enthält weitere Informationen zum Verarbeiten der Nachrichten von Event Hubs und gilt für Endpunkte, die mit IoT Hub-Event Hubs kompatibel sind.
+## <a name="receive-device-to-cloud-messages"></a>Empfangen von Gerät-an-Cloud-Nachrichten
+In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten (Device-to-Cloud) aus dem IoT Hub liest. Ein IoT-Hub macht einen mit [Event Hubs][lnk-event-hubs-overview] kompatiblen Endpunkt verfügbar, der Ihnen das Lesen von D2C-Nachrichten ermöglicht. Zur Vereinfachung wird in diesem Tutorial ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial] wird gezeigt, wie Sie D2C-Nachrichten mit Skalierung verarbeiten. Das Tutorial [Erste Schritte mit Event Hubs][lnk-eventhubs-tutorial] enthält weitere Informationen zum Verarbeiten der Nachrichten von Event Hubs und gilt für Endpunkte, die mit IoT Hub-Event Hubs kompatibel sind.
 
 > [!NOTE]
 > Der mit Event Hub kompatible Endpunkt zum Lesen von D2C-Nachrichten verwendet immer das AMQP-Protokoll.
@@ -239,8 +239,8 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die ein Gerät
 > 
 > 
 
-## <a name="run-the-applications"></a>Ausführen der Anwendungen
-Sie können nun die Anwendungen ausführen.
+## <a name="run-the-apps"></a>Ausführen der Apps
+Sie können die Apps nun ausführen.
 
 1. Führen Sie an der Eingabeaufforderung im Ordner **readdevicetocloudmessages** den folgenden Befehl aus, um mit der Überwachung des IoT Hub zu beginnen:
    
@@ -256,20 +256,20 @@ Sie können nun die Anwendungen ausführen.
     ```
    
     ![Node.js-basierte IoT Hub-Geräteclientanwendung zum Senden von Gerät-zu-Cloud-Nachrichten][8]
-3. Über die Kachel **Nutzung** im [Azure-Portal][lnk-portal] wird die Anzahl der an den Hub gesendeten Nachrichten angezeigt:
+3. Über die Kachel **Nutzung** im [Azure-Portal][lnk-portal] wird die Anzahl der an den IoT-Hub gesendeten Nachrichten angezeigt:
    
     ![Azure-Portal-Kachel „Nutzung“ mit der Anzahl von Nachrichten, die an IoT Hub gesendet wurden][43]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT Hub konfiguriert und anschließend in der Identitätsregistrierung des Hubs eine Geräteidentität erstellt. Sie haben diese Geräteidentität verwendet, um die SimulatedDevice-App für das Senden von D2C-Nachrichten zu aktivieren. Sie haben außerdem eine App erstellt, mit der die vom Hub empfangenen Nachrichten angezeigt werden. 
+In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT-Hub konfiguriert und anschließend in der Identitätsregistrierung des IoT-Hubs eine Geräteidentität erstellt. Sie haben diese Geräteidentität verwendet, um die SimulatedDevice-App für das Senden von D2C-Nachrichten an den IoT-Hub zu aktivieren. Sie haben außerdem eine App erstellt, mit der die vom IoT-Hub empfangenen Nachrichten angezeigt werden. 
 
 Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
 
-* [Verbinden des Geräts][lnk-connect-device]
+* [Verbinden Ihres Geräts][lnk-connect-device]
 * [Erste Schritte mit der Geräteverwaltung][lnk-device-management]
-* [Erste Schritte mit dem IoT Gateway-SDK][lnk-gateway-SDK]
+* [Erste Schritte mit dem IoT-Gateway SDK][lnk-gateway-SDK]
 
-Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und eine Verarbeitung von D2C-Nachrichten mit guter Skalierbarkeit erzielen, finden Sie im Tutorial [Verarbeiten von Gerät-zu-Cloud-Nachrichten][lnk-process-d2c-tutorial].
+Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten mit Skalierbarkeit verarbeiten, finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial].
 
 <!-- Images. -->
 [7]: ./media/iot-hub-node-node-getstarted/runapp1.png
@@ -290,12 +290,12 @@ Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und eine Verarbeitung von
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 
