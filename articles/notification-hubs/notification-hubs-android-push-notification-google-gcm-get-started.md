@@ -59,7 +59,7 @@ Das Abschließen dieses Tutorial ist eine Voraussetzung für alle anderen Notifi
 
 Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie besitzen die Verbindungszeichenfolge, um die App für den Empfang und das Senden von Pushbenachrichtigungen zu registrieren.
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Verbinden Ihrer App mit dem Notification Hub
+## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Verbinden Ihrer App mit dem Notification Hub
 ### <a name="create-a-new-android-project"></a>Erstellen eines neuen Android-Projekts
 1. Starten Sie in Android Studio ein neues Android Studio-Projekt.
    
@@ -667,7 +667,7 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie in unserem [Not
 [Notification Hubs-Leitfaden]: http://msdn.microsoft.com/library/jj927170.aspx
 [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Zugriffsrichtlinien]: https://portal.azure.com
+[Azure-Portal]: https://portal.azure.com
 
 
 
