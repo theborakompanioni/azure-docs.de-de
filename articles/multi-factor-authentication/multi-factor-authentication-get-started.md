@@ -38,7 +38,7 @@ Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zun�
 | SaaS-Apps im Appkatalog |● |● |
 | Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |● |● |
 | Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen | |● |
-| Remotezugriff, z. B. VPN, RDG | |● |
+| Remotezugriff, z. B. VPN, RDG | |● |
 
 ## <a name="where-are-the-users-located"></a>Wo befinden sich die Benutzer?
 Außerdem hängt die Entscheidung für die richtige Lösung – in der Cloud oder lokal über den MFA-Server – davon ab, wo sich die Benutzer befinden.
