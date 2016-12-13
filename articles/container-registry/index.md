@@ -84,7 +84,7 @@ Bei der Azure-Containerregistrierung (Vorschau) handelt es sich um eine private 
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

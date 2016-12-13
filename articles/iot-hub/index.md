@@ -119,7 +119,7 @@ Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige un
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -136,7 +136,7 @@ Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige un
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

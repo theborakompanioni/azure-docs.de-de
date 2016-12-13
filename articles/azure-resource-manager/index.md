@@ -29,7 +29,7 @@ Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponent
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=azure-resource-manager">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -120,7 +120,7 @@ Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponent
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -135,7 +135,7 @@ Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponent
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

@@ -195,7 +195,7 @@ Bei Azure DocumentDB handelt es sich um einen vollständig verwalteten NoSQL-Dat
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

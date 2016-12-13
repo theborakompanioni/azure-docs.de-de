@@ -5,7 +5,7 @@ ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
 ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
 
 ---
-#<a name="cloud-services-documentation"></a>Dokumentation zu Cloud Services
+# <a name="cloud-services-documentation"></a>Dokumentation zu Cloud Services
 
 Cloud Services ist ein Beispiel für eine PaaS-Implementierung (Platform-as-a-Service). Sie unterstützt skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Cloud Services vereint die Vorteile der Virtualisierung mit der Kontrolle über den virtuellen Computer, um diesen konfigurieren und patchen sowie Software dafür installieren zu können.  
 
@@ -89,8 +89,7 @@ Cloud Services ist ein Beispiel für eine PaaS-Implementierung (Platform-as-a-Se
 <h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
-    <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -103,7 +102,7 @@ Cloud Services ist ein Beispiel für eine PaaS-Implementierung (Platform-as-a-Se
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

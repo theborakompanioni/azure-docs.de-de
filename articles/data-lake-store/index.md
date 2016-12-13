@@ -173,7 +173,7 @@ Azure Data Lake Store ist ein riesiges Repository für Big Data-Analyseworkloads
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -189,7 +189,7 @@ Azure Data Lake Store ist ein riesiges Repository für Big Data-Analyseworkloads
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
