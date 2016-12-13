@@ -16,6 +16,7 @@
 #### [Node.js](functions-reference-node.md)
 #### [F#](functions-reference-fsharp.md)
 ### [Verwenden von Triggern und Bindungen](functions-triggers-bindings.md)
+#### [DocumentDB-Bindungen](functions-bindings-documentdb.md)
 #### [Event Hub-Bindungen](functions-bindings-event-hubs.md)
 #### [HTTP- und Webhook-Bindungen](functions-bindings-http-webhook.md)
 #### [Mobile Apps-Bindungen](functions-bindings-mobile-apps.md)
@@ -49,6 +50,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

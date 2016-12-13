@@ -1,14 +1,11 @@
 # Übersicht
 ## [Was ist Azure Automation?](automation-intro.md)
 ## [Sicherheit in Azure Automation](automation-security-overview.md)
-
 # Erste Schritte
 ## [Erstellen eines Runbooks](automation-first-runbook-graphical.md)
 ## [Erstellen eines PowerShell-Runbooks](automation-first-runbook-textual-powershell.md)
 ## [Erstellen eines PowerShell-Workflow-Runbooks](automation-first-runbook-textual.md)
 ## [Verwalten der rollenbasierten Zugriffssteuerung in Azure](automation-role-based-access-control.md)
-
-
 # Anleitung
 ## Erstellen von Runbooks
 ### [Runbooktypen](automation-runbook-types.md)
@@ -55,26 +52,22 @@
 ### [Starten und Beenden von VMs mit JSON-Tags](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [Entfernen von Ressourcengruppen](automation-scenario-remove-resourcegroup.md)
 ### [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
-
+### [Integration der Quellcodeverwaltung mit GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md)
 ## [Überwachen](automation-manage-send-joblogs-log-analytics.md)
-
 ## Migrieren
 ### [Migration von Orchestrator](automation-orchestrator-migration.md)
 ### [Verschieben des Automation-Kontos](automation-migrate-account-subscription.md)
-
 ## Problembehandlung
 ### [Problembehandlung für häufige Fehler](automation-troubleshooting-automation-errors.md)
 ### [Runbook-Auftrag wurde angehalten](automation-troubleshooting-hrw-runbook-terminates-suspended.md)
-
 # Referenz
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Klassische PowerShell](/powershell/servicemanagement)
-## [.NET](/dotnet/api)
+## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
+## [PowerShell (klassisch)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](https://msdn.microsoft.com/library/azure/mt662285.aspx)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/azure/mt163781)
-## [Versionshinweise](https://azure.microsoft.com/updates/?product=automation)
-
 # Ressourcen
+## [Versionshinweise](https://azure.microsoft.com/updates/?product=automation)
 ## [Preise](https://azure.microsoft.com/pricing/details/automation/)  
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)
@@ -85,6 +78,6 @@
 ## [Einführungsvideo für Automation](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

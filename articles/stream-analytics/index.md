@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 5cf17ad514127f97319130c4f3f78cdfa1eed052
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: c75352e633f069597e7bc62650205f3c389b6909
 
 ---
 #<a name="stream-analytics-documentation"></a>Stream Analytics-Dokumentation
@@ -174,7 +174,7 @@ Azure Stream Analytics ist ein vollständig verwaltetes Echtzeit-Ereignisverarbe
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Stream Analytics – REST-API-Referenz</p>
+                        <p>Stream Analytics-REST-API</p>
                     </div>
                 </div>
             </div>
@@ -193,6 +193,6 @@ Herunterladen der Stream Analytics-Dokumentation </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

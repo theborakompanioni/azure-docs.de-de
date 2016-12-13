@@ -52,6 +52,10 @@
 ### [Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Langsame Sicherung von Dateien und Ordnern in Azure Backup](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
+# Referenz
+## [PowerShell](/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup)
+## [.NET](/dotnet/api/microsoft.azure.management.backupservices)
+
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/backup/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
@@ -59,6 +63,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=backup)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

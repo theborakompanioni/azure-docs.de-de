@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 5f0cd9a3f3d4b578312e1b9f9f8b9c5ee7d6aa27
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 3042d17ac3ebfc22cc6e35430d0829a6bc22e0e2
 
 ---
 #<a name="cdn-documentation"></a>CDN-Dokumentation
@@ -92,7 +92,7 @@ Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung fü
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>CDN – REST-API-Referenz</p>
+                        <p>REST-API</p>
                     </div>
                 </div>
             </div>
@@ -112,6 +112,6 @@ Herunterladen der Azure CDN-Dokumentation </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

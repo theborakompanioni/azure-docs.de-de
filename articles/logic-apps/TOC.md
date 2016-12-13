@@ -72,13 +72,11 @@
 ### [Preise](../app-service-logic/app-service-logic-pricing.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 
 # Referenz
+## [PowerShell](/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp)
 ## Schemaverlauf
 ### [ALLGEMEINE VERFÜGBARKEIT](../app-service-logic/app-service-logic-schema-2016-04-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-### [Preview](../app-service-logic/app-service-logic-schema-2015-08-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-
-## [PowerShell-Cmdlets](/powershell/resourcemanager/)
-## [.NET](https://msdn.microsoft.com/library/azure/mt416943)
-## [REST-API](/rest/api/logic/)
+### [Vorschau](../app-service-logic/app-service-logic-schema-2015-08-01.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## [REST](/rest/api/logic/)
 
 ## Schema 2014 (vor der allgemeinen Verfügbarkeit)
 ### [Azure Resource Connector](../app-service-logic/app-service-logic-connector-azure-resource.md?toc=%2fazure%2flogic-apps%2ftoc.json)
@@ -91,6 +89,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=logic-apps)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

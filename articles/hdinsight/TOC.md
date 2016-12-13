@@ -181,12 +181,12 @@
 #### [Leistung von Hive-Abfragen](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # Referenz
-## [PowerShell-Cmdlets](/powershell/resourcemanager/azurerm.hdinsight/v2.2.0/azurerm.hdinsight)
-## [.NET SDK für Hadoop](https://msdn.microsoft.com/library/mt271028.aspx)
-## [.NET-SDK für HBase](https://www.nuget.org/packages/Microsoft.HBase.Client/)
-## [.NET-Bibliothek für Avro](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
-## [REST-API-Referenz](/rest/api/hdinsight/)
-## [Spark-REST-API für Remoteaufträge](/rest/api/hdinsightspark/)
+## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
+## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
+## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+## [REST](/rest/api/hdinsight/)
+## [REST (Spark)](/rest/api/hdinsightspark/)
 
 # Verwandte Themen
 ## Windows-Cluster
@@ -224,6 +224,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

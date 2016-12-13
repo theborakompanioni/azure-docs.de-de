@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: b266164f44b36fbfbe3b8a662653a978877643fc
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: f59bb52f11334d93bbc6cf655b7f790a58a3ebfd
 
 ---
 #<a name="cognitive-services-documentation"></a>Dokumentation zu Cognitive Services
@@ -108,7 +108,7 @@ Bei Cognitive Services (Vorschau) handelt es sich um eine Reihe von APIs, die ve
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Cognitive Services – REST-API-Referenz</p>
+                        <p>Cognitive Services – REST-API</p>
                     </div>
                 </div>
             </div>
@@ -127,6 +127,6 @@ Herunterladen der Dokumentation zu Cognitive Services </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

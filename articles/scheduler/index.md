@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 4d856b71ced1f1b9c6c1469bee4f23b84865c7d1
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 7ab6ecc4f1193245e9778d8a92bb2a5591edfff5
 
 ---
 # <a name="scheduler-documentation"></a>Dokumentation zu Scheduler
@@ -106,7 +106,7 @@ Mit Azure Scheduler können Sie Aktionen, die in der Cloud ausgeführt werden so
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Zeitplanungsmodul-REST-API – Referenz</p>
+                        <p>Scheduler-REST-API</p>
                     </div>
                 </div>
             </div>
@@ -124,6 +124,6 @@ Herunterladen der Dokumentation zu Scheduler </div>
 </div>
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

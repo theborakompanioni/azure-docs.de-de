@@ -5,7 +5,7 @@ services: backup
 documentationcenter: 
 author: markgalioto
 manager: cfreeman
-editor: tysonn
+editor: 
 keywords: "Sichern und Wiederherstellen; Wiederherstellungsdienste; Sicherungslösungen"
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2016
+ms.date: 12/6/2016
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: cf3930f209e84ee9b14b56566ca19d31382946aa
-ms.openlocfilehash: cefb405b4f30ca5fe20f6acfaee5ebba2690990b
+ms.sourcegitcommit: b9737c3da308aecf25d5f18088f96c319edeafd5
+ms.openlocfilehash: 76ec51a75240710b24c0e91042d6229e60eeada9
 
 
 ---
@@ -52,8 +52,8 @@ Falls Sie unsicher sind, welche Azure Backup-Komponente für Ihre Anforderungen 
 | Komponente | Vorteile | Einschränkungen | Was wird geschützt? | Wo werden Sicherungen gespeichert? |
 | --- | --- | --- | --- | --- |
 | Azure Backup-Agent (MARS) |<li>Sicherung von Dateien und Ordnern auf physischen oder virtuellen Windows-Computern (virtuelle Computer können sich am lokalen Standort oder in Azure befinden)<li>Kein separater Sicherungsserver erforderlich |<li>Drei Sicherungen pro Tag <li>Nicht anwendungsorientiert, nur Wiederherstellung auf Datei-, Ordner- und Volumeebene <li>  Keine Unterstützung für Linux |<li>Dateien <li>Ordner |Azure Backup-Tresor |
-| System Center DPM |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung (bei Hosting unter Hyper-V) <li>Schutz von virtuellen VMware-Computern mit DPM 2012 R2 |Die Sicherung von Oracle-Workloads wird nicht unterstützt. |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger<li>  Band (nur lokal) |
-| Azure Backup Server |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung (bei Hosting unter Hyper-V)<li>Keine System Center-Lizenz erforderlich |<li>Fehlende heterogene Unterstützung (VMware-VM-Sicherung, Oracle-Workloadsicherung)<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger |
+| System Center DPM |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung für Hyper-V- und VMware-VMs <li>Schutz von virtuellen VMware-Computern mit DPM 2012 R2 |Oracle-Workloads können nicht gesichert werden.|<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger<li>  Band (nur lokal) |
+| Azure Backup Server |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung (bei Hosting unter Hyper-V)<li>Schutz von virtuellen VMware-Computern mit DPM 2012 R2<li>Keine System Center-Lizenz erforderlich |<li>Oracle-Workloads können nicht gesichert werden.<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger |
 | Azure IaaS-VM-Sicherung |<li>Native Sicherungen für Windows/Linux<li>Keine bestimmte Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur |<li>Tägliche Sicherung von virtuellen Computern <li>Wiederherstellung von virtuellen Computern nur auf Datenträgerebene<li>Keine lokale Sicherung möglich |<li>VMs <li>Alle Datenträger (mit PowerShell) |<p>Azure Backup-Tresor</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Was sind die Bereitstellungsszenarien für jede Komponente?
@@ -95,7 +95,7 @@ In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über 
 Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
 
 ### <a name="back-up-premium-storage-vms"></a>Sichern virtueller Storage Premium-Computer
-Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort im Storage Premium-Konto. Der Stagingspeicherort namens „AzureBackup-“ entspricht der Gesamtdatengröße der Premium-Datenträger, die an den virtuellen Computer angefügt sind.
+Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort im Storage Premium-Konto. Der Stagingspeicherort namens „AzureBackup-“ entspricht der Gesamtdatengröße der Premium-Datenträger, die an den virtuellen Computer angefügt sind. Überprüfen Sie, ob unter dem Speicherkonto ausreichend freier Speicherplatz für einen temporären Stagingspeicherort vorhanden ist. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets).
 
 > [!NOTE]
 > Ändern oder bearbeiten Sie den Stagingspeicherort nicht.
@@ -175,13 +175,16 @@ Wenn Sie Ihre Daten auf einer System Center DPM- oder Azure Backup Server-Einhei
 Der Azure Backup-Agent verfügt über die Netzwerkdrosselung, mit der Sie steuern können, wie die Netzwerkbandbreite während der Datenübertragung verwendet wird. Die Drosselung kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den anderen Internetdatenverkehr haben soll. Die Drosselung der Datenübertragung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
 
 ### <a name="backup-and-retention"></a>Sicherung und Aufbewahrung
+
+Für Azure Backup gilt eine Obergrenze von 9.999 Wiederherstellungspunkten, die auch als Sicherungskopien oder Momentaufnahmen bezeichnet werden, pro Backup-Tresor. In der folgenden Tabelle ist die maximale Sicherungshäufigkeit (im Tresor) für jede Komponente angegeben. Ihre Konfiguration der Sicherungsrichtlinie bestimmt, wie schnell die Wiederherstellungspunkte verbraucht werden. Wenn Sie beispielsweise jeden Tag einen Wiederherstellungspunkt erstellen, können Sie Wiederherstellungspunkte 27 Jahre lang nutzen, bevor der Vorrat erschöpft ist. Wenn Sie einen monatlichen Wiederherstellungspunkt verwenden, reicht der Vorrat für 833 Jahre. Der Backup-Dienst legt keine Ablaufzeitgrenze für einen Wiederherstellungspunkt fest.
+
 |  | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Sicherungshäufigkeit<br/> (im Backup-Tresor) |Drei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Eine Sicherung pro Tag |
 | Sicherungshäufigkeit<br/> (auf Datenträger) |Nicht zutreffend |<li>Alle 15 Minuten für SQL Server <li>Stündlich für andere Workloads |<li>Alle 15 Minuten für SQL Server <li>Stündlich für andere Workloads</p> |Nicht zutreffend |
 | Aufbewahrungsoptionen |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |
-| Aufbewahrungszeitraum |Bis zu 99 Jahre |Bis zu 99 Jahre |Bis zu 99 Jahre |Bis zu 99 Jahre |
-| Wiederherstellungspunkte in Azure Backup-Tresor |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
+| Maximale Wiederherstellungspunkte pro Server |9999|9999|9999|9999|
+| Maximale Aufbewahrungsdauer |Abhängig von der Sicherungshäufigkeit |Abhängig von der Sicherungshäufigkeit |Abhängig von der Sicherungshäufigkeit |Abhängig von der Sicherungshäufigkeit |
 | Wiederherstellungspunkte auf lokalem Datenträger |Nicht zutreffend |<li>64 für Dateiserver,<li>448 für Anwendungsserver |<li>64 für Dateiserver,<li>448 für Anwendungsserver |Nicht zutreffend |
 | Wiederherstellungspunkte auf Band |Nicht zutreffend |Unbegrenzt |Nicht zutreffend |Nicht zutreffend |
 
@@ -215,12 +218,12 @@ Weitere Informationen zum Schützen anderer Workloads finden Sie in diesen Artik
 * [Sichern von Anwendungsworkloads](backup-azure-microsoft-azure-backup.md)
 * [Sichern von Azure IaaS-VMs](backup-azure-vms-prepare.md)
 
-[grün]: ./media/backup-introduction-to-azure-backup/green.png
-[gelb]: ./media/backup-introduction-to-azure-backup/yellow.png
-[rot]: ./media/backup-introduction-to-azure-backup/red.png
+[green]: ./media/backup-introduction-to-azure-backup/green.png
+[yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
+[red]: ./media/backup-introduction-to-azure-backup/red.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
