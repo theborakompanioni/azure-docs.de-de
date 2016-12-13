@@ -120,7 +120,7 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -135,7 +135,7 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">

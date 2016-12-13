@@ -5,7 +5,8 @@ ms.sourcegitcommit: a6c333ae45868d5c29ce2f2587f1417fa9fafc0b
 ms.openlocfilehash: 27fd664b69ca4467daa2b0abc6e53c9cece221ae
 
 ---
-#<a name="storage-documentation"></a>Speicher-Dokumentation
+
+# <a name="storage-documentation"></a>Speicher-Dokumentation
 
 Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen.  Die Lösung ist überaus skalierbar, elastisch, bietet einen globalen Zugriff und sorgt basierend auf dem Datenverkehr automatisch für einen Lastenausgleich.  Azure Storage umfasst fünf Dienste zum Erfüllen von Anwendungsanforderungen: Blobspeicher, Tabellenspeicher, Warteschlangenspeicher, Datenträgerspeicher und Dateispeicher.
 
@@ -102,7 +103,7 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -123,7 +124,7 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
