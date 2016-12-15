@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 12/01/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 0c946ce6a96f2e3644b9890dad5d60a35ad4bcb7
-ms.openlocfilehash: 10184c52d532eb56e66212fafdea3d059b0c43e3
+ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
+ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
 
 
 ---
@@ -45,25 +45,21 @@ Im Laufe der Zeit wird Security Center die Anzahl der Partner innerhalb der vorh
 
 ## <a name="how-to-deploy-a-partner-solution"></a>Wie wird eine Partnerlösung bereitgestellt?
 
-Sie können einfach auf Lösungen von Partnern, die bereits in Security Center bereitgestellt wurden, von der Kachel „Partnerlösung“ im Hautpdashboard „Security Center“ aus zugreifen.
+Basierend auf der Konfiguration der Azure-Umgebung und der von Ihnen festgelegten Sicherheitsrichtlinie empfiehlt Security Center unter Umständen die Bereitstellung einer Partnerlösung. Die Empfehlung führt Sie durch den Prozess zur Auswahl und Installation einer Partnerlösung. Die allgemeine Bereitstellungserfahrung kann zu diesem Zeitpunkt abhängig vom Lösungs- und Partnertyp variieren. Unter den folgenden Links finden Sie weitere Informationen:
+
+- [Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)
+- [Firewall der nächsten Generation hinzufügen](security-center-add-next-generation-firewall.md)
+- [Endpoint Protection installieren](security-center-install-endpoint-protection.md)
+- [Sicherheitsrisikobewertung nicht installiert](security-center-vulnerability-assessment-recommendations.md)
+
+## <a name="how-to-manage-partner-solutions"></a>Wie werden Partnerlösungen verwaltet?
+
+Nach der Bereitstellung einer Partnerlösung können Sie Informationen zur Integrität der Lösung anzeigen und über die Kachel für die Partnerlösung auf dem Security Center-Hauptdashboard allgemeine Verwaltungsaufgaben ausführen. Weitere Informationen zum Verwalten von Partnerlösungen in Security Center finden Sie unter [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md).
 
 ![Partnerintegration](./media/security-center-partner-integration/security-center-partner-integration-fig1.png)
 
-Führen Sie die folgenden Schritte aus, um eine neue Partnerlösung auf Grundlage einer Security Center-Empfehlung bereitzustellen:
 
-> [!NOTE]
-> Im folgenden Beispiel wird davon ausgegangen, dass Sie über eine Workload verfügen, die Sie mit einer Web Application Firewall schützen möchten.
-
-1. Klicken Sie im Security Center-Dashboard auf die Kachel **Empfehlungen**.
-2. Klicken Sie auf dem Blatt **Empfehlungen** auf **Web Application Firewall hinzufügen**.
-3. Klicken Sie auf den Anwendungsnamen unter dem Blatt **Web Application Firewall hinzufügen**.
-4. Klicken Sie auf dem Blatt **Web Application Firewall hinzufügen** auf **Neue erstellen**.
-5. Das Blatt **Create a new Web Application Firewall** (Erstellen einer neuen Web Application Firewall) zeigt eine Liste aller aktuellen Partner an, die Web Application Firewall-Funktionen anbieten.
-6. Wählen Sie die entsprechende Partnerlösung aus, und befolgen Sie die notwendigen Schritte (die sich abhängig vom Partner möglicherweise unterscheiden).
-
-Die allgemeine Bereitstellungserfahrung kann zu diesem Zeitpunkt je nach Partner variieren. Weitere Informationen zum Verwalten von Partnerlösungen in Security Center finden Sie unter [Überwachen von Partnerlösungen](security-center-partner-solutions.md) im Azure Security Center.
-
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie eine Partnerlösung in Azure Security Center integrieren. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
@@ -76,6 +72,6 @@ In diesem Dokument haben Sie erfahren, wie Sie eine Partnerlösung in Azure Secu
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

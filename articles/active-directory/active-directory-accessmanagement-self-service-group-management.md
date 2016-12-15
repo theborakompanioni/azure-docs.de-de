@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 255670335151443445e5ea4a87614b904915e76f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fda0b3c6c3f262c0f4b2f3ad5f37c4ce44cc0e3
 
 
 ---
-# <a name="setting-up-azure-active-directory-for-selfservice-group-management"></a>Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung
+# <a name="setting-up-azure-active-directory-for-self-service-group-management"></a>Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung
 Bei der Self-Service-Gruppenverwaltung können Benutzer Sicherheitsgruppen oder Office 365-Gruppen in Azure Active Directory (Azure AD) erstellen und verwalten. Benutzer können auch Mitgliedschaften in Sicherheitsgruppen oder Office 365-Gruppen anfordern. Der Besitzer der Gruppe kann dann die Mitgliedschaft genehmigen oder verweigern. Auf diese Weise kann die tagtägliche Steuerung der Gruppenmitgliedschaft an Personen delegiert werden, die den Geschäftskontext für die betreffende Mitgliedschaft verstehen. Self-Service-Funktionen zur Gruppenverwaltung sind nur für Sicherheitsgruppen und Office 365-Gruppen, aber nicht für E-Mail-aktivierte Sicherheitsgruppen oder Verteilerlisten verfügbar.
 
 Die Self-Service-Gruppenverwaltung unterstützt derzeit zwei grundlegende Szenarien: delegierte Gruppenverwaltung und Self-Service-Gruppenverwaltung.
@@ -30,7 +30,7 @@ Die Self-Service-Gruppenverwaltung unterstützt derzeit zwei grundlegende Szenar
 * **Self-Service-Gruppenverwaltung**
    Ein Beispiel für dieses Szenario sind zwei Benutzer, die beide über unabhängig voneinander eingerichtete SharePoint Online-Websites verfügen. Sie möchten dem anderen Team jeweils Zugriff auf ihre Websites gewähren. Hierzu können sie eine Gruppe in Azure AD erstellen, und in SharePoint Online wählt jeder der beiden Benutzer diese Gruppe dann aus, um Zugriff auf seine Websites bereitzustellen. Wenn ein weiterer Benutzer Zugriff benötigt, fordert er diesen einfach über den Zugriffsbereich an und erhält nach Genehmigung automatisch Zugriff auf beide SharePoint Online-Websites. Später entscheidet einer der Hauptbenutzer, dass alle Personen, die auf die Website zugreifen, auch Zugriff auf eine bestimmte SaaS-Anwendung erhalten sollen. Der Administrator der SaaS-Anwendung kann der SharePoint Online-Website Zugriffsrechte für die Anwendung hinzufügen. Anschließend können alle Personen, deren Zugriff genehmigt wird, auf die beiden SharePoint Online-Websites und diese SaaS-Anwendung zugreifen.
 
-## <a name="making-a-group-available-for-end-user-selfservice"></a>Einrichten einer Gruppe für Self-Service durch Endbenutzer
+## <a name="making-a-group-available-for-end-user-self-service"></a>Einrichten einer Gruppe für Self-Service durch Endbenutzer
 1. Öffnen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com)Ihr Azure AD-Verzeichnis.
 2. Legen Sie auf der Registerkarte **Konfigurieren** die Option **Delegierte Gruppenverwaltung** auf „Aktiviert“ fest.
 3. Legen Sie **Benutzer können Sicherheitsgruppen erstellen** oder **Benutzer können Office-Gruppen erstellen** auf „Aktiviert“ fest.
@@ -53,6 +53,6 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

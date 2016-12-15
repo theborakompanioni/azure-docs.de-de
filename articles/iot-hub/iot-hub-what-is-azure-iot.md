@@ -1,6 +1,6 @@
 ---
 title: "Azure-Lösungen für das Internet der Dinge | Microsoft Docs"
-description: "Eine Übersicht über IoT in Azure einschließlich einer beispielhaften Lösungsarchitektur und Informationen zur Beziehung zu Azure IoT Hub, Geräte-SDKs und vorkonfigurierten Lösungen."
+description: "Übersicht über eine Beispielarchitektur einer IoT-Lösung sowie über die Beziehung zum Azure IoT Hub-Dienst, zu Azure IoT-Geräte-SDKs, Azure IoT-Dienst-SDKs und anderen Azure-Diensten"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 10/05/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 00b2e90901d763d218d1118f1d7ef2bf617a2d2f
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 36e4afb54485c12b39349124e241a2d74617702c
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Azure IoT Hub ist ein Azure-Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Ihrem Anwendungs-Back-End und Millionen von Geräten ermöglicht. Dies ermöglicht dem Anwendungs-Back-End Folgendes:
+Azure IoT Hub ist ein Azure-Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Ihrem Lösungs-Back-End und Millionen von Geräten ermöglicht. Dies ermöglicht dem Lösungs-Back-End Folgendes:
 
 * Empfangen umfangreicher Telemetriedaten von Ihren Geräten
 * Weiterleiten von Gerätedaten an einen Datenstrom-Ereignisprozessor
 * Empfangen von Dateiuploads von Geräten
-* Senden von Cloud-zu-Gerät-Befehlen an bestimmte Geräte
+* Senden von C2D-Befehlen an bestimmte Geräte
 
 Sie können IoT Hub zum Implementieren Ihrer eigenen Back-End-Lösung verwenden. Darüber hinaus umfasst IoT Hub eine Identitätsregistrierung, die zum Bereitstellen von Geräten, ihren sicherheitsbezogenen Anmeldeinformationen und ihren Rechten zum Herstellen einer Verbindung mit dem IoT-Hub dient. Weitere Informationen zu IoT Hub finden Sie unter [Was ist Azure IoT Hub?][lnk-iot-hub].
 
 Informationen dazu, wie Azure IoT Hub die standardbasierte Geräteverwaltung ermöglicht, sodass Sie Ihre Geräte remote verwalten, konfigurieren und aktualisieren können, finden Sie unter [Übersicht über die Geräteverwaltung mit IoT Hub][lnk-device-management].
 
-Mit den Azure IoT-Geräte SDKs können Sie Clientanwendungen auf einer Vielzahl von Gerätehardwareplattformen und Betriebssystemen implementieren. Die Geräte SDKs enthalten Bibliotheken, die das Senden von Telemetriedaten an einen IoT Hub und das Empfangen von C2D-Befehlen ermöglichen. Bei Verwendung der Geräte SDKs stehen für die Kommunikation mit IoT Hub mehrere Netzwerkprotokolle zur Auswahl. Erfahren Sie mehr in den [Informationen zu Geräte SDKs (in englischer Sprache)][lnk-device-sdks].
+Mit den Azure IoT-Geräte SDKs können Sie Clientanwendungen auf einer Vielzahl von Gerätehardwareplattformen und Betriebssystemen implementieren. Die Geräte-SDKs enthalten Bibliotheken, die das Senden von Telemetriedaten an einen IoT-Hub und das Empfangen von C2D-Nachrichten ermöglichen. Bei Verwendung der Geräte SDKs stehen für die Kommunikation mit IoT Hub mehrere Netzwerkprotokolle zur Auswahl. Erfahren Sie mehr in den [Informationen zu Geräte SDKs (in englischer Sprache)][lnk-device-sdks].
 
 Hilfe zu den ersten Schritten beim Schreiben von Code und dem Ausführen von Beispielen finden Sie im Tutorial [Erste Schritte mit IoT Hub][lnk-getstarted].
 
@@ -49,6 +49,6 @@ Möglicherweise interessieren Sie sich auch für [Azure IoT Suite][lnk-iot-suite
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

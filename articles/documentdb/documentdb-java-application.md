@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 11/16/2016
 ms.author: denlee
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: 4852d2b59faf01961fc8e39680bb05694dcde8d6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d8abb90b19fd3b79324209a2418c414e3b6bb301
 
 
 ---
@@ -47,9 +47,9 @@ In diesem Java-Anwendungslernprogramm erfahren Sie, wie Sie eine webbasierte Auf
 ## <a name="a-idprerequisitesaprerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>Voraussetzungen für dieses Java-Webanwendungstutorial
 Bevor Sie mit diesem Lernprogramm zur Anwendungsentwicklung beginnen, benötigen Sie Folgendes:
 
-* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
+* Ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
 
-    OR
+    ODER
 
     Lokale Installation des [Azure DocumentDB-Emulators](documentdb-nosql-local-emulator.md).
 * [Java Development Kit (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
@@ -763,6 +763,6 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

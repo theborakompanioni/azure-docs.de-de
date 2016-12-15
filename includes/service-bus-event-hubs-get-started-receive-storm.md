@@ -1,7 +1,7 @@
 ## <a name="receive-messages-with-apache-storm"></a>Empfangen von Nachrichten mit Apache Storm
-[**Apache Storm**](https://storm.incubator.apache.org) ist ein verteiltes System für Echtzeitberechnungen, das die zuverlässige Verarbeitung unbegrenzter Datenströme vereinfacht. In diesem Abschnitt wird gezeigt, wie Sie den Ereignis-Hub-Spout in Storm zum Empfangen von Ereignissen vom Ereignis-Hubs verwenden. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
+[Apache Storm](https://storm.incubator.apache.org) ist ein verteiltes System für Echtzeitberechnungen, das die zuverlässige Verarbeitung unbegrenzter Datenströme vereinfacht. In diesem Abschnitt wird gezeigt, wie Sie den Ereignis-Hub-Spout in Storm zum Empfangen von Ereignissen vom Ereignis-Hubs verwenden. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
 
-Weitere Informationen zu Empfangsmustern von Event Hubs finden Sie unter [Event Hubs – Übersicht][Event Hubs – Übersicht].
+Weitere Informationen zu Empfangsmustern von Event Hubs finden Sie unter [Event Hubs – Übersicht][Event Hubs overview].
 
 In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
 
@@ -212,7 +212,7 @@ In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation ver
     Diese Klasse erstellt einen neuen Ereignis-Hubs-Spout, und verwendet die Eigenschaften in der Konfigurationsdatei zum Instanziieren. Beachten Sie unbedingt, dass in diesem Beispiel eine der Anzahl der Partitionen auf dem Ereignis-Hub entsprechende die Anzahl von Spout-Aufgaben erstellt wird, um die maximale für diesen Ereignis-Hub zulässige Parallelität zulässig zu verwenden.
 
 <!-- Links -->
-[Event Hubs – Übersicht]: ../articles/event-hubs/event-hubs-overview.md
+[Event Hubs overview]: ../articles/event-hubs/event-hubs-overview.md
 [HDInsight Storm]: ../articles/hdinsight/hdinsight-storm-overview.md
 [Lernprogramm zur HDInsight-Sensoranalyse]: ../articles/hdinsight/hdinsight-storm-sensor-data-analysis.md
 
@@ -220,6 +220,6 @@ In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation ver
 
 [12]: ./media/service-bus-event-hubs-get-started-receive-storm/create-storm1.png
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

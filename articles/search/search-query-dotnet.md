@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f85c3a0d3bb9fb61802ba3ce070ead2e650a29cc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d638e79517053fa758d9695c297ef09f4d9a806d
 
 
 ---
@@ -34,7 +34,7 @@ Dieser Artikel beschreibt, wie Sie einen Index mithilfe des [Azure Search .NET S
 
 Beachten Sie, dass der gesamte Beispielcode in diesem Artikel in C# geschrieben wurde. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto).
 
-## <a name="i-identify-your-azure-search-services-query-apikey"></a>I. Identifizieren des Abfrage-API-Schlüssel Ihres Azure Search-Diensts
+## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. Identifizieren des Abfrage-API-Schlüssel Ihres Azure Search-Diensts
 Nach der Erstellung eines Azure Search-Index sind Sie nun fast bereit, Abfragen mit dem .NET SDK auszugeben. Zunächst müssen Sie aber einen der Abfrage-API-Schlüssel abrufen, die für den bereitgestellten Suchdienst generiert wurden. Das .NET SDK sendet diesen API-Schlüssel für jede Anforderung an Ihren Dienst. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
@@ -170,6 +170,6 @@ Der obige Beispielcode verwendet die Konsole zum Ausgeben von Suchergebnissen. S
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

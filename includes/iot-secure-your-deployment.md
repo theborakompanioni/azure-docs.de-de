@@ -1,4 +1,4 @@
-# <a name="securing-your-iot-deployment"></a>Schützen Ihrer IoT-Bereitstellung
+# <a name="secure-your-iot-deployment"></a>Schützen Ihrer IoT-Bereitstellung
 Dieser Artikel bietet weitere Details zum Schützen Ihrer auf Azure IoT basierenden IoT-Infrastruktur (Internet of Things, Internet der Dinge). Geboten werden Links zu Details auf Implementierungsebene für die Konfiguration und Bereitstellung der einzelnen Komponenten. Darüber hinaus finden Sie Vergleiche, um aus verschiedenen konkurrierenden Methoden die gewünschte zu wählen.
 
 Der Schutz der Azure IoT-Bereitstellung kann in die folgenden drei Bereiche unterteilt werden:
@@ -72,7 +72,7 @@ Azure IoT Hub ermöglicht für jeden Sicherheitsschlüssel die Definition von [R
 * **RegistryRead**. Diese Berechtigung gewährt Lesezugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung][lnk-identity-registry].
 * **RegistryReadWrite**. Diese Berechtigung gewährt Lese- und Schreibzugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung][lnk-identity-registry].
 * **ServiceConnect**. Diese Berechtigung gewährt Zugriff auf die clouddienstseitigen Endpunkte für Kommunikation und Überwachung. Beispielsweise wird Back-End-Clouddiensten die Berechtigung erteilt, D2C-Nachrichten zu empfangen, C2D-Nachrichten zu senden und die zugehörigen Übermittlungsbestätigungen zu empfangen.
-* **DeviceConnect**. Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte für die Kommunikation. Beispielsweise wird die Berechtigung zum Senden von D2C-Nachrichten und das Empfangen von C2D-Nachrichten erteilt. Diese Berechtigung wird von Geräten verwendet.
+* **DeviceConnect**. Diese Berechtigung gewährt Zugriff auf die geräteseitigen Endpunkte. Beispielsweise wird die Berechtigung zum Senden von D2C-Nachrichten und das Empfangen von C2D-Nachrichten erteilt. Diese Berechtigung wird von Geräten verwendet.
 
 Es gibt zwei Methoden zum Abrufen von **DeviceConnect** -Berechtigungen mit IoT Hub mit [Sicherheitstoken][lnk-sas-tokens]: Identitätsschlüssel für das Gerät oder Shared Access-Schlüssel. Darüber hinaus ist zu beachten, dass alle Funktionen, auf die auf Geräten zugegriffen werden kann, für Endpunkte mit dem Präfix `/devices/{deviceId}`absichtlich verfügbar gemacht werden.
 
@@ -84,7 +84,7 @@ Von Azure IoT Hub erfasste Daten können von einer Vielzahl von Diensten wie Azu
 
 * [Azure DocumentDB][lnk-docdb]: skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. DocumentDB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
 * [Azure Stream Analytics][lnk-asa]: Datenstromverarbeitung in Echtzeit in der Cloud, mit der eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht wird, mit der Sie in Echtzeit basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
-* [Azure App Services][lnk-appservices]: Cloudplattform für leistungsstarke mobile Apps und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, NodeJS, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
+* [Azure App Services][lnk-appservices]: Cloudplattform für leistungsstarke mobile Apps und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
 * [Logic Apps][lnk-logicapps]: Das Logic Apps-Feature von Azure App Service dient als Hilfe bei der Integration Ihrer IoT-Lösung in Ihre vorhandenen branchenspezifischen Systeme und bei der Automatisierung von Workflowprozessen. Mit Logik-Apps können Entwickler Workflows entwerfen, die über einen Auslöser gestartet werden und dann eine Reihe von Schritten ausführen – Regeln und Aktionen, für die leistungsfähige Connectors zur Integration in Ihre Geschäftsprozesse eingesetzt werden. Logik-Apps ermöglichen standardmäßig Verbindungen mit einem umfassenden Ökosystem von SaaS-, cloudbasierten und lokalen Anwendungen.
 * [Azure Blob Storage][lnk-blob]: zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.
 
@@ -94,7 +94,7 @@ Dieser Artikel bietet eine Übersicht über die Details auf Implementierungseben
 [img-overview]: media/iot-secure-your-deployment/overview.png
 
 [lnk-security-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure
-[lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-client
+[lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-identity-registry]: ../articles/iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-protocols]: ../articles/iot-hub/iot-hub-devguide-security.md
 [lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-authentication
@@ -109,6 +109,6 @@ Dieser Artikel bietet eine Übersicht über die Details auf Implementierungseben
 [lnk-blob]: https://azure.microsoft.com/services/storage/
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

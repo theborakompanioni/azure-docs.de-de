@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 11/21/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 60e47e8fd0933ecd25b3bca6085edcd5785dc580
-ms.openlocfilehash: 69561ef82ce6d63bd8a90c871b5bc0cfe03e86ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
 
 
 ---
@@ -133,16 +133,16 @@ Zunächst fügen wir ein Modul hinzu, das die Spalte **normalized-losses** (norm
 
 1. Geben Sie im oberen Bereich der Modulpalette **select columns** (Spalten auswählen) in das Suchfeld ein, um das Modul [Select Columns in Dataset][select-columns] (Spalten im Dataset auswählen) zu suchen, und ziehen Sie es in den Experimentbereich. Mit diesem Modul können wir auswählen, welche Daten wir in unserem Modell ein- bzw. ausschließen möchten.
 
-2. Verbinden Sie den Ausgabe-Anschluss des Datasets **Automobile price data (Raw)** mit dem Eingabe-Anschluss des Moduls [Select Columns in Dataset][select-columns].
+2. Verbinden Sie den Ausgabeport des Datasets **Automobile price data (Raw)** mit dem Eingabeport des Moduls [Select Columns in Dataset][select-columns].
 
     ![Ziehen Sie das Modul „Select Columns in Dataset“ in den Experimentbereich, und verbinden Sie es.][type-select-columns]
     <br/>
     ***Ziehen Sie das Modul „Select Columns in Dataset“ in den Experimentbereich, und verbinden Sie es.***
 
-3. Klicken Sie auf das Modul [Select Columns in Dataset][select-columns], und klicken Sie im Bereich **Eigenschaften** auf **Launch column selector** (Spaltenauswahl starten).
+3. Klicken Sie auf das Modul [Select Columns in Dataset][select-columns] aus, und klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**.
 
     - Klicken Sie auf der linken Seite auf **With rules**
-    - Klicken Sie unter **Begin With** (Beginnen mit) auf **All columns** (Alle Spalten). Damit wird [Select Columns in Dataset][select-columns] angewiesen, alle Spalten zu übergeben (mit Ausnahme derer, die wir gleich noch ausschließen).
+    - Klicken Sie unter **Begin With** (Beginnen mit) auf **All columns** (Alle Spalten). Damit wird [Select Columns in Dataset][select-columns] angewiesen, alle Spalten zu durchlaufen (mit Ausnahme derer, die wir jetzt ausschließen werden).
     - Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und klicken Sie auf das Textfeld. Eine Liste von Spalten wird angezeigt. Wählen Sie **normalized-losses** aus. Daraufhin wird die Spalte dem Textfeld hinzugefügt.
     - Klicken Sie auf die Schaltfläche mit einem Häkchen („OK“), um die Spaltenauswahl zu schließen (unten rechts).
 
@@ -157,7 +157,7 @@ Zunächst fügen wir ein Modul hinzu, das die Spalte **normalized-losses** (norm
     ***Der Eigenschaftenbereich zeigt an, dass die Spalte „normalized-losses“ ausgeschlossen wurde.***
 
     > [!TIP]
-    > Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „Exclude normalized losses“ („normalized-losses“ ausschließen) ein.
+    > Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „normalized-losses ausschließen“ ein.
 
     ![Doppelklicken Sie auf ein Modul, um einen Kommentar hinzuzufügen.][add-comment]
     <br/>
@@ -180,7 +180,7 @@ Zunächst fügen wir ein Modul hinzu, das die Spalte **normalized-losses** (norm
 > [!TIP]
 > Warum haben wir das Experiment nun ausgeführt? Durch Ausführen des Experiments übergeben die Spaltendefinitionen für unsere Daten aus dem Dataset die Module [Select Columns in Dataset][select-columns] und [Clean Missing Data][clean-missing-data]. Dies bedeutet, dass alle Module, die wir mit [Clean Missing Data][clean-missing-data] verbinden, über dieselben Informationen verfügen.
 
-Bislang haben wir im Experiment nur Daten bereinigt. Wenn Sie das bereinigte Dataset anzeigen möchten, klicken Sie auf den linken Ausgabe-Anschluss des Moduls [Clean Missing Data][clean-missing-data], und wählen Sie **Visualize** aus. Beachten Sie, dass die Spalte **normalized-losses** nicht mehr aufgeführt wird und keine fehlenden Werte auftreten.
+Bislang haben wir im Experiment nur Daten bereinigt. Wenn Sie das bereinigte Dataset anzeigen möchten, klicken Sie auf den linken Ausgabeport des Moduls [Clean Missing Data][clean-missing-data], und wählen Sie **Visualize** (Visualisieren). Beachten Sie, dass die Spalte **normalized-losses** nicht mehr aufgeführt wird und keine fehlenden Werte auftreten.
 
 Nach der Bereinigung der Daten können wir nun angeben, welche Funktionen wir im Vorhersagemodell verwenden möchten.
 
@@ -195,7 +195,7 @@ Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Da
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
 
 
-1. Ziehen Sie ein weiteres [Select Columns in Dataset][select-columns]-Modul in den Experimentbereich. Verbinden Sie den linken Ausgabe-Anschluss des Moduls [Clean Missing Data][clean-missing-data] mit dem Eingabe-Anschluss des Moduls [Select Columns in Dataset][select-columns].
+1. Ziehen Sie ein weiteres Modul [Select Columns in Dataset][select-columns] in den Experimentbereich. Verbinden Sie den linken Ausgabeport des Moduls [Clean Missing Data][clean-missing-data] mit dem Eingabeport des Moduls [Select Columns in Dataset][select-columns].
 
     ![Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Moduls „Clean Missing Data“.][connect-clean-to-select]
     <br/>
@@ -233,7 +233,7 @@ Wir trainieren das Modell, indem wir einen Datensatz mit dem Preis einspeisen. D
 
 Wir verwenden unsere Daten sowohl für das Trainieren als auch das Testen des Modells, indem die Daten in separate Trainings- und Testdatasets aufgeteilt werden.
 
-1. Wählen Sie das Modul [Split Data][split] (Daten aufteilen) aus, ziehen Sie es in den Experimentbereich, und verbinden Sie es mit dem letzten [Select Columns in Dataset][select-columns]-Modul.
+1. Ziehen Sie das Modul [Split Data][split] in den Experimentbereich, und verbinden Sie es mit dem letzten Modul [Select Columns in Dataset][select-columns].
 
 2. Klicken Sie auf das Modul [Split Data][split], um es auszuwählen. Suchen Sie unter **Fraction of rows in the first output dataset** (Bruchteil der Zeilen im ersten Ausgabedataset) (im **Eigenschaftenbereich** rechts neben dem Zeichenbereich), und legen Sie die Einstellung auf 0,75 fest. Damit verwenden wir 75 Prozent der Daten zum Trainieren des Modells und halten 25 Prozent für Tests zurück (Sie können später versuchen, verschiedene Prozentsätze zu verwenden).
 
@@ -249,13 +249,13 @@ Wir verwenden unsere Daten sowohl für das Trainieren als auch das Testen des Mo
 3. Um den Lernalgorithmus auszuwählen, erweitern Sie die Kategorie **Machine Learning** in der Modulpalette links vom Experimentbereich, und erweitern Sie anschließend **Modell initialisieren**. Daraufhin werden verschiedene Kategorien von Modulen angezeigt, die zur Initialisierung eines Algorithmus für maschinelles Lernen verwendet werden können. Wählen Sie für dieses Experiment in der Kategorie **Regression** das Modul [Linear Regression][linear-regression] aus, und ziehen Sie es in den Experimentbereich.
 (Sie können das Modul auch suchen, indem Sie „linear regression“ in das Suchfeld der Palette eingeben.)
 
-4. Suchen Sie das Modul [Train Model][train-model], und ziehen Sie es ebenfalls in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Linear Regression][linear-regression] mit der linken Eingabe des Moduls [Train Model][train-model], und verbinden Sie die Ausgabe der Trainingsdaten (linker Anschluss) des Moduls [Split Data][split] mit der rechten Eingabe des Moduls [Train Model][train-model].
+4. Suchen Sie nach dem Modul [Train Model][train-model], und ziehen Sie es ebenfalls in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Linear Regression][linear-regression] mit der linken Eingabe des Moduls [Train Model][train-model], und verbinden Sie die Ausgabe der Trainingsdaten (linker Port) des Moduls [Split Data][split] mit der rechten Eingabe des Moduls [Train Model][train-model].
 
     ![Verbinden Sie das Modul „Train Model“mit den Modulen „Linear Regression“ und „Split Data“.][connect-train-model]
     <br/>
     ***Verbinden Sie das Modul „Train Model“mit den Modulen „Linear Regression“ und „Split Data“.***
 
-5. Klicken Sie auf das Modul [Train Model][train-model], klicken Sie im Bereich **Eigenschaften** auf **Launch column selector**, und wählen Sie dann die Spalte **Price** aus. Dies ist der Wert, den unser Modell vorhersagen wird.
+5. Klicken Sie auf das Modul [Train Model][train-model], klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**, und wählen Sie dann die Spalte **price** aus. Dies ist der Wert, den unser Modell vorhersagen wird.
 
     Wählen Sie die Spalte **Price** in der Spaltenauswahl aus, indem Sie sie aus der Liste **Available columns** (Verfügbare Spalten) in die Liste **Selected columns** (Ausgewählte Spalten) verschieben.
 
@@ -275,26 +275,26 @@ Als Ergebnis erhalten Sie ein trainiertes Regressionsmodell, mit dem Sie neue Au
 
 Wir haben das Modell nun unter Verwendung von 75 Prozent unserer Daten trainiert und können die restlichen 25 Prozent der Daten dafür aufwenden, zu bewerten, wie gut unser Modell funktioniert.
 
-1. Suchen Sie das Modul [Score Model][score-model] (Modell bewerten), und ziehen Sie es in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Train Model][train-model] mit dem linken Eingabe-Anschluss des Moduls [Score Model][score-model]. Verbinden Sie die Testdatenausgabe (rechter Anschluss) des Moduls [Split Data][split] mit der rechten Eingabe des Moduls [Score Model][score-model].
+1. Suchen Sie nach dem Modul [Score Model][score-model] (Modell bewerten), und ziehen Sie es in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Train Model][train-model] mit dem linken Eingabeport des Moduls [Score Model][score-model]. Verbinden Sie den Testdatenausgang (rechter Port) des Moduls [Split Data][split] mit dem rechten Eingabeport des Moduls [Score Model][score-model].
 
     ![Verbinden Sie das Modul „Score Model“mit den Modulen „Train Model“ und „Split Data“.][connect-score-model]
     <br/>
     ***Verbinden Sie das Modul „Score Model“mit den Modulen „Train Model“ und „Split Data“.***
 
-2. Führen Sie das Experiment aus, und zeigen Sie die Ausgabe des Moduls [Score Model][score-model] an (klicken Sie auf den Ausgabe-Anschluss von [Score Model][score-model], und wählen Sie **Visualize** aus). Die Ausgabe zeigt die vorhergesagten Preiswerte zusammen mit den bekannten Werten aus den Testdaten an.  
+2. Führen Sie das Experiment aus, und zeigen Sie die Ausgabe des Moduls [Score Model][score-model] an. (Klicken Sie auf den Ausgabeport des Moduls [Score Model][score-model], und wählen Sie **Visualize** (Visualisieren).) Die Ausgabe zeigt die vorhergesagten Preiswerte zusammen mit den bekannten Werten aus den Testdaten an.  
 
     ![Ausgabe des Moduls „Score Model“][score-model-output]
     <br/>
     ***Ausgabe des Moduls „Score Model“***
 
-3. Schließlich testen wir die Qualität der Ergebnisse. Wählen Sie das Modul [Evaluate Model][evaluate-model] (Modell auswerten) aus, und zeihen Sie es in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Score Model][score-model] mit der linken Eingabe des Moduls [Evaluate Model][evaluate-model].
+3. Schließlich testen wir die Qualität der Ergebnisse. Wählen Sie das Modul [Evaluate Model][evaluate-model] (Modell auswerten) aus, und ziehen Sie es in den Experimentbereich. Verbinden Sie die Ausgabe des Moduls [Score Model][score-model] mit der linken Eingabe des Moduls [Evaluate Model][evaluate-model].
 
     > [!TIP]
-    > Es gibt zwei Eingabe-Anschlüsse im Modul [Evaluate Model][evaluate-model], da für den parallelen Vergleich von zwei Modellen verwendet kann. Später können Sie dem Experiment einen weiteren Algorithmus hinzufügen und mithilfe von [Evaluate Model][evaluate-model] herausfinden, welcher bessere Ergebnisse erzielt.
+    > Es gibt zwei Eingabeports im Modul [Evaluate Model][evaluate-model], da es für den parallelen Vergleich von zwei Modellen verwendet kann. Später können Sie dem Experiment einen weiteren Algorithmus hinzufügen und mithilfe von [Evaluate Model][evaluate-model] herausfinden, welcher bessere Ergebnisse erzielt.
 
 4. Führen Sie das Experiment aus.
 
-Um die Ausgabe des Moduls [Evaluate Model][evaluate-model] anzuzeigen, klicken Sie auf den Ausgabeport, und wählen Sie dann **Visualisieren** aus.
+Um die Ausgabe des Moduls [Evaluate Model][evaluate-model] anzuzeigen, klicken Sie auf den Ausgabeport und wählen dann **Visualize** (Visualisieren).
 
 ![Auswertungsergebnisse für das Experiment][evaluation-results]
 <br/>
@@ -322,7 +322,7 @@ Das endgültige Experiment sollte in etwa wie folgt aussehen:
 
 Da Sie nun das erste Tutorial zu maschinellem Lernen abgeschlossen und das Experiment eingerichtet haben, können Sie fortfahren, um das Modell zu verbessern und es als Prognosewebdienst bereitzustellen.
 
-- **Versuchen Sie, das Modell anhand von Iterationen zu verbessern:** Sie können z.B. die Funktionen ändern, die Sie für Ihre Vorhersage verwenden. Alternativ können Sie die Eigenschaften des Algorithmus [Linear Regression][linear-regression] ändern oder einen anderen Algorithmus ausprobieren. Sie können Ihrem Ereignis sogar mehrere Algorithmen für maschinelles Lernen gleichzeitig hinzufügen und jeweils zwei mithilfe des Moduls [Evaluate Model][evaluate-model] vergleichen.
+- **Versuchen Sie, das Modell anhand von Iterationen zu verbessern:** Sie können z.B. die Funktionen ändern, die Sie für Ihre Vorhersage verwenden. Oder Sie können die Eigenschaften des [Linearen Regressionsalgorithmus][linear-regression] ändern oder einen völlig anderen Algorithmus ausprobieren. Sie können Ihrem Ereignis sogar gleichzeitig mehrere Algorithmen für Machine Learning hinzufügen und jeweils zwei davon vergleichen, indem Sie das Modul [Evaluate Model][evaluate-model] verwenden.
 Ein Beispiel für den Vergleich mehrerer Modelle in einem einzigen Experiment finden Sie unter [Compare Regressors (Vergleichen von Regressoren)](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) in der [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com).
 
     > [!TIP]
@@ -330,7 +330,7 @@ Ein Beispiel für den Vergleich mehrerer Modelle in einem einzigen Experiment fi
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
-- **Bereitstellen des Modells als Prognosewebdienst:** Wenn Sie mit Ihrem Modell zufrieden sind, können Sie es als Webdienst bereitstellen, der Automobilpreise anhand neuer Daten vorhersagt. Weitere Informationen finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][publish].
+- **Bereitstellen des Modells als Prognosewebdienst:** Wenn Sie mit Ihrem Modell zufrieden sind, können Sie es als Webdienst bereitstellen, der Automobilpreise anhand neuer Daten vorhersagt. Ausführlichere Informationen finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][publish].
 
 [publish]: machine-learning-publish-a-machine-learning-web-service.md
 
@@ -377,6 +377,6 @@ Sie möchten mehr erfahren? Eine umfassendere und ausführlichere exemplarische 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

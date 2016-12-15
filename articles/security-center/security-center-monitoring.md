@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/22/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
-ms.openlocfilehash: 5852808ad0f5cf02908df7ff969ab2106d9f5abd
+ms.sourcegitcommit: aac0354a8fbfb73bab3e7b5da7d9aefa69c9eb16
+ms.openlocfilehash: 5251ab851dd2934050747cd3ad7b2c4f0b9e98bb
 
 
 ---
@@ -192,7 +192,7 @@ Wenn Sie auf die Datenbank klicken, um die Empfehlung umzusetzen, erscheint das 
 Um die Überwachung zu aktivieren, wählen Sie für **Überwachung** die Option **EIN** aus.
 
 ### <a name="monitor-applications"></a>Überwachen von Anwendungen
-Wenn Ihre Azure-Workload Anwendungen umfasst, die sich auf [(über Azure Resource Manager erstellten) virtuellen Computern](../azure-resource-manager/resource-manager-deployment-model.md) mit verfügbar gemachten Webports (TCP-Ports 80 und 443) befinden, kann Security Center diese Ports überwachen, um potenzielle Sicherheitsprobleme zu erkennen und Problembehandlungsschritte zu empfehlen. Wenn Sie auf die Kachel **Anwendungen** klicken, wird das Blatt **Anwendungen** mit einer Reihe von Empfehlungen im Abschnitt **Vorbeugungsschritte** geöffnet. Außerdem werden die Anwendungen nach Host/virtueller IP aufgeschlüsselt, wie im folgenden Screenshot zu sehen.
+Wenn Ihre Azure-Workload Anwendungen umfasst, die sich auf [(über Azure Resource Manager erstellten) virtuellen Computern](../azure-resource-manager/resource-manager-deployment-model.md) mit verfügbar gemachten Webports (TCP-Ports 80 und 443) befinden, kann Security Center diese Ports überwachen, um potenzielle Sicherheitsprobleme zu erkennen und Problembehandlungsschritte zu empfehlen. Wenn Sie auf die Kachel **Anwendungen** klicken, wird das Blatt **Anwendungen** mit einer Reihe von Empfehlungen im Abschnitt **Application recommendations** (Anwendungsempfehlungen) geöffnet. Außerdem werden die Anwendungen nach Host/virtueller IP aufgeschlüsselt, wie im folgenden Screenshot zu sehen.
 
 ![Sicherheitsintegrität für Anwendungen](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
@@ -216,6 +216,6 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/18/2016
 ms.author: minet
 translationtype: Human Translation
-ms.sourcegitcommit: bc97472a07ac4c27c60fbe2cb803f2360a3362c4
-ms.openlocfilehash: af8f20beb8899ff1df733d1a4c544c75c6889ea6
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: b4f13f1b5469ea3d3b2ab69e6435d3e7beb6ace8
 
 
 ---
@@ -118,7 +118,7 @@ Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche, ü
 Alternativ können Sie Azure PowerShell zum Erstellen und Verwalten von Dateifreigaben verwenden.
 
 ### <a name="install-the-powershell-cmdlets-for-azure-storage"></a>Installieren der PowerShell-Cmdlets für den Azure-Speicher
-Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese anschließend, um die Verwendung von PowerShell vorzubereiten. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese anschließend, um die Verwendung von PowerShell vorzubereiten. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 > [!NOTE]
 > Sie sollten daher das neueste Azure PowerShell-Modul herunterladen und installieren bzw. ein Upgrade durchführen.
@@ -669,6 +669,6 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 * [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

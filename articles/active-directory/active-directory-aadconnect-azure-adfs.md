@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/03/2016
 ms.author: anandy;billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8ed71ccd07385eb74f7afecf04590c2c00372c34
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 02d271e43c369e2aa6d716fc24a78cc9f4045c7c
 
 
 ---
@@ -291,7 +291,7 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 > 
 > 
 
-### <a name="10-test-the-ad-fs-signin"></a>10.    Testen der AD FS-Anmeldung
+### <a name="10-test-the-ad-fs-sign-in"></a>10.    Testen der AD FS-Anmeldung
 Die einfachste Möglichkeit zum Testen von AD FS ist die Verwendung der Seite „IdpInitiatedSignon.aspx“. Hierfür ist es erforderlich, in den AD FS-Eigenschaften „IdpInitiatedSignOn“ zu aktivieren. Führen Sie die unten angegebenen Schritte aus, um Ihr AD FS-Setup zu überprüfen.
 
 1. Führen Sie das unten angegebene Cmdlet auf dem AD FS-Server aus, und verwenden Sie PowerShell, um es auf „Aktiviert“ festzulegen.
@@ -357,6 +357,6 @@ Sie können ein vorhandenes virtuelles Netzwerk verwenden oder beim Bereitstelle
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

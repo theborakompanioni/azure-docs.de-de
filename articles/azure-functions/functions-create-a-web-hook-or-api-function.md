@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/30/2016
+ms.date: 11/29/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 47a89987b65b442c7b489984a4fc139eb1b82758
-ms.openlocfilehash: 8efde94c5771212b4549f10882a4e55739231d61
+ms.sourcegitcommit: 44e397c7521ba8f0ba11893c364f51177561bee4
+ms.openlocfilehash: a74fc30480068788f33df092594119253df9487b
 
 
 ---
@@ -34,7 +34,7 @@ Das folgende Video zeigt die Ausführung der grundlegenden Schritte in diesem Tu
 >
 
 ## <a name="create-a-webhook-triggered-function-from-the-template"></a>Erstellen einer durch einen Webhook ausgelösten Funktion aus der Vorlage
-Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [können Sie ein kostenloses Konto erstellen](https://azure.microsoft.com/free/). 
+Eine Funktionen-App hostet die Ausführung Ihrer Funktionen in Azure. Falls Sie noch kein Azure-Konto besitzen, sehen Sie sich die Seite zum Ausprobieren von Funktionen ([Try Functions](https://functions.azure.com/try)) an, oder [erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free/). 
 
 1. Wechseln Sie zum [Azure Functions-Portal](https://functions.azure.com/signin) , und melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -50,9 +50,12 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie e
 
 1. Kopieren Sie die Werte **Funktionen-URL** und **Geheimer GitHub-Schlüssel**. Diese Werte benötigen Sie, um den Webhook in GitHub zu erstellen. 
 
-2. Scrollen Sie nach unten zu **Ausführen**, beachten Sie den vordefinierten JSON-Text eines Problemberichts im Anforderungstext, und klicken Sie auf **Ausführen**. 
+2. Klicken Sie auf **Testen**, beachten Sie den vordefinierten JSON-Text eines Problemberichts im **Anforderungstext**, und klicken Sie auf **Ausführen**. 
+
+    ![Testen der Webhook-Funktion im Portal](./media/functions-create-a-web-hook-or-api-function/functions-test-webhook-in-portal.png)
    
-    Sie können rechts in der Registerkarte **Entwickeln** immer eine neue vorlagenbasierte Funktion testen, indem Sie erwartete JSON-Textdaten eingeben und auf die Schaltfläche **Ausführen** klicken. In diesem Fall hat die Vorlage einen vordefinierten Text für einen Problembericht. 
+    > [!NOTE]
+    > Sie können rechts in der Registerkarte **Entwickeln** immer eine neue vorlagenbasierte Funktion testen, indem Sie erwartete JSON-Textdaten eingeben und auf die Schaltfläche **Ausführen** klicken. In diesem Fall hat die Vorlage einen vordefinierten Text für einen Problembericht. 
 
 Als Nächstes erstellen Sie den aktuellen Webhook im GitHub-Repository.
 
@@ -91,6 +94,6 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

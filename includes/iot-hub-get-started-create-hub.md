@@ -19,7 +19,7 @@ Erstellen Sie einen IoT-Hub, mit dem Ihre simulierte Geräte-App verbunden werde
 5. Wenn der IoT Hub erfolgreich erstellt wurde, klicken Sie im Azure-Portal auf die neue Kachel für Ihren IoT Hub, um das Blatt für den neuen IoT Hub zu öffnen. Notieren Sie sich den **Hostnamen**, und klicken Sie anschließend auf **Richtlinien für gemeinsamen Zugriff**.
    
     ![Blatt für neuen IoT Hub][4]
-6. Klicken Sie auf dem Blatt **Richtlinien für gemeinsamen Zugriff** auf die Richtlinie **iothubowner**, kopieren Sie die auf dem Blatt **iothubowner** angegebene Verbindungszeichenfolge, und notieren Sie sie. Weitere Informationen finden Sie unter [Zugriffssteuerung][lnk-access-control] im „Entwicklungsleitfaden für Azure IoT Hub“.
+6. Klicken Sie auf dem Blatt **Richtlinien für gemeinsamen Zugriff** auf die Richtlinie **iothubowner**, kopieren Sie die auf dem Blatt **iothubowner** angegebene IoT Hub-Verbindungszeichenfolge, und notieren Sie sie. Weitere Informationen finden Sie unter [Zugriffssteuerung][lnk-access-control] im „Entwicklungsleitfaden für Azure IoT Hub“.
    
     ![Blatt „Freigegebene Zugriffsrichtlinien“][5]
 
@@ -37,6 +37,6 @@ Erstellen Sie einen IoT-Hub, mit dem Ihre simulierte Geräte-App verbunden werde
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

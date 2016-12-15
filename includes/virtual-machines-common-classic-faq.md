@@ -123,7 +123,7 @@ Sie können auch über das klassische Azure-Portal oder Azure PowerShell die Neu
 Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurierte virtuelle Computer in der gleichen Verfügbarkeitsgruppe. Dadurch wird sichergestellt, dass während geplanter oder ungeplanter Wartungen mindestens ein virtueller Computer verfügbar ist. Azure garantiert für diese Konfiguration bestimmte Verfügbarkeitsstufen für virtuelle Computer. Weitere Details finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../articles/virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-[Über virtuelle Azure-Computer](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Über virtuelle Azure-Computer](../articles/virtual-machines/virtual-machines-linux-about.md)
 
 [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -131,6 +131,6 @@ Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurier
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

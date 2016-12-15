@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7834aefeb9eb007ffa9daf708250c9f06ec05e67
-ms.openlocfilehash: 60cda42f7c11be8f3f014e1f59173f9243ba611b
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 0f0b2df109d8326e5d15d4955ab4547c90df545b
 
 
 ---
@@ -74,7 +74,7 @@ In den Schritten in diesem Artikel werden Variablen verwendet, die am Anfang jed
 ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 ### <a name="before-you-begin"></a>Voraussetzungen
-Bevor Sie beginnen, müssen Sie die PowerShell-Cmdlets für Azure Resource Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+Bevor Sie beginnen, müssen Sie die PowerShell-Cmdlets für Azure Resource Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 ### <a name="a-namestep1astep-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>Schritt 1: Planen der IP-Adressbereiche
 In den folgenden Schritten erstellen wir zwei virtuelle Netzwerke sowie die jeweiligen Gatewaysubnetze und Konfigurationen. Anschließend erstellen wir eine VPN-Verbindung zwischen den beiden VNets. Es ist wichtig, die IP-Adressbereiche für Ihre Netzwerkkonfiguration zu planen. Denken Sie daran, dass Sie sicherstellen müssen, dass keiner der VNet-Bereiche oder der Bereiche des lokalen Netzwerks Überschneidungen aufweist.
@@ -434,6 +434,6 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: a4882b6fcd75ecaa826cdda3e25ee690b85a0670
-ms.openlocfilehash: 34450e25941e0be97b72c1ba30ee348d73f4bc67
+ms.sourcegitcommit: 319978579ae6ad868030d2ec99bce6e6aaa22299
+ms.openlocfilehash: 24a8b9c4e78971199236553802a71134bd12829c
 
 
 ---
@@ -51,13 +51,19 @@ scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 
 Wenn Sie mit Windows arbeiten, müssen Sie „Bash on Ubuntu on Windows“ oder das PuTTY „pscp“-Tool verwenden.
 
-Nachdem Sie `kubectl` konfiguriert haben, können Sie dieses in der Konsole testen:
+Nachdem Sie `kubectl` konfiguriert haben, können Sie dies durch Auflisten der Knoten im Cluster testen:
 
 ```console
 kubectl get nodes
 ```
 
-Die Knoten in Ihrem Cluster sollten Ihnen angezeigt werden.
+Abschließend können Sie das Kubernetes-Dashboard anzeigen. Führen Sie zuerst Folgendes aus:
+
+```console
+kubectl proxy
+```
+
+Die Kubernetes UI ist jetzt unter „http://localhost:8001/ui“ verfügbar.
 
 Weitere Anweisungen finden Sie in der [Schnellstartanleitung von Kubernetes (in englischer Sprache)](http://kubernetes.io/docs/user-guide/quick-start/).
 
@@ -166,6 +172,6 @@ Bereitstellen und Verwalten von Containern mit DC/OS oder Swarm:
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

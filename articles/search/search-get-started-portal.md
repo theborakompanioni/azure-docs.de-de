@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/03/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dddbcbcd82900d7537c2d60631cc1753554d9486
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 02623fc3d663a674e2184380915d651dff5760bc
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Artikel erhalten Sie eine Einführung in Microsoft Azure Search ohne C
 Im Tutorial wird die Verwendung einer [Azure DocumentDB-Beispieldatenbank](#apdx-sampledata) vorausgesetzt, die Sie mithilfe unserer Daten und der Anleitung leicht erstellen können. Sie können diese Schritte aber auch für Ihre vorhandenen Daten in DocumentDB oder einer SQL-Datenbank anpassen.
 
 > [!NOTE]
-> Für dieses Tutorial zu den ersten Schritten sind ein [Azure-Abonnement](/pricing/free-trial/?WT.mc_id=A261C142F) und ein [Azure Search-Dienst](search-create-service-portal.md) erforderlich. 
+> Für dieses Tutorial zu den ersten Schritten sind ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) und ein [Azure Search-Dienst](search-create-service-portal.md) erforderlich. 
 > 
 > 
 
@@ -181,6 +181,6 @@ Sie sollten eine JSON-Ausgabe zurückerhalten, die mit der Dokumentnummer 386 b
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

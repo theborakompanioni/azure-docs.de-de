@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c57047f9a7eefcc0c4dbf08e705c3193e89f9a7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cafcd1d21e12a3e8dfd020d1e59ee99d8c4d370
 
 
 ---
-# <a name="ldap-authentication-and-azure-multifactor-authentication-server"></a>LDAP-Authentifizierung und Azure Multi-Factor Authentication-Server
+# <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-Authentifizierung und Azure Multi-Factor Authentication-Server
 Standardmäßig ist der Azure Multi-Factor Authentication-Server zum Importieren oder Synchronisieren von Benutzern aus Active Directory konfiguriert. Er kann jedoch auch zum Binden an andere LDAP-Verzeichnisse konfiguriert sein, z. B. an ein ADAM-Verzeichnis oder einen bestimmten Active Directory-Domänencontroller. Wenn die Verbindung mit einem Verzeichnis über LDAP konfiguriert ist, kann der Azure Multi-Factor Authentication-Server als LDAP-Proxy zur Ausführung von Authentifizierungen konfiguriert werden. Das ermöglicht auch die Verwendung einer LDAP-Bindung als RADIUS-Ziel für die Vorauthentifizierung von Benutzern bei der Verwendung der IIS-Authentifizierung oder für die primäre Authentifizierung im Azure Multi-Factor Authentication-Benutzerportal.
 
 Wenn Sie Multi-Factor Authentication als LDAP-Proxy verwenden, wird der Azure Multi-Factor Authentication-Server zwischen dem LDAP-Client (z. B. VPN-Appliance, Anwendung) und dem LDAP-Verzeichnisserver eingefügt, um Multi-Factor Authentication hinzuzufügen. Damit Azure Multi-Factor Authentication funktioniert, muss der Azure Multi-Factor Authentication-Server für die Kommunikation sowohl mit den Clientservern als auch dem LDAP-Verzeichnis konfiguriert werden. In dieser Konfiguration akzeptiert der Azure Multi-Factor Authentication-Server LDAP-Anforderungen von Clientservern und -anwendungen und leitet sie zur Überprüfung der primären Anmeldeinformationen an den Ziel-LDAP-Verzeichnisserver weiter. Wenn die Antwort des LDAP-Verzeichnisses bestätigt, dass die primären Anmeldeinformationen gültig sind, führt Multi-Factor Authentication die zweistufige Authentifizierung aus und sendet eine Antwort zurück an den LDAP-Client. Die gesamte Authentifizierung ist nur erfolgreich, wenn sowohl die Authentifizierung beim LDAP-Server als auch die mehrstufige Authentifizierung erfolgreich verlaufen sind.
@@ -61,6 +61,6 @@ Verwenden Sie die folgenden Richtlinien, um den LDAP-Client zu konfigurieren:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

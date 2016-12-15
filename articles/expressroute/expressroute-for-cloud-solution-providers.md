@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f2c2253132d2c0ca8eefd975af2ac23f196afd0
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 26c9420c9b8ba1aff6b016c01b8ed51853c91506
 
 
 ---
@@ -38,7 +38,7 @@ Microsoft stellt Cloudlösungsanbietern APIs zur Verfügung, die sich programmat
 ## <a name="microsoft-azure-resource-management"></a>Verwaltung von Microsoft Azure-Ressourcen
 Je nach dem Vertrag, den Sie mit Ihrem Kunden geschlossen haben, wird bestimmt, wie das Abonnement verwaltet wird. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: das „Durchleitungsmodell“ oder das „Direktverbindungsmodell“. Diese Modelle werden im Anschluss ausführlich beschrieben.  
 
-### <a name="connectthrough-model"></a>Durchleitungsmodell
+### <a name="connect-through-model"></a>Durchleitungsmodell
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 Beim Durchleitungsmodell stellt der CSP eine direkte Verbindung zwischen Ihrem Datencenter und dem Azure-Abonnement Ihres Kunden her. Die direkte Verbindung wird unter Verwendung von ExpressRoute hergestellt und verbindet Ihr Netzwerk mit Azure. Anschließend stellt Ihr Kunde eine Verbindung mit Ihrem Netzwerk her. In diesem Szenario muss der Kunde durch das CSP-Netzwerk geschleust werden, um auf die Azure-Dienste zugreifen zu können. 
@@ -49,7 +49,7 @@ Für durch den CSP verwaltete Azure-Dienste wird vorausgesetzt, dass der CSP üb
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
-### <a name="connectto-model"></a>Direktverbindungsmodell
+### <a name="connect-to-model"></a>Direktverbindungsmodell
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 Beim Direktverbindungsmodell stellt der Dienstanbieter mithilfe von ExpressRoute über das Kundennetzwerk eine direkte Verbindung zwischen dem Datencenter seines Kunden und dem vom CSP bereitgestellten Azure-Abonnement her.
@@ -82,10 +82,10 @@ ExpressRoute unterstützt die Verknüpfung mehrerer virtueller Netzwerke zu eine
 ## <a name="configuring-expressroute"></a>Konfigurieren von ExpressRoute
 ExpressRoute kann so konfiguriert werden, dass über eine einzelne ExpressRoute-Verbindung drei Arten von Datenverkehr ([Routingdomänen](#ExpressRoute-routing-domains)) abgewickelt werden können. Dieser Datenverkehr wird in Microsoft-Peering, öffentliches Azure-Peering und privates Peering unterteilt. Sie können entweder einzelne oder alle Arten von Datenverkehr über eine einzelne ExpressRoute-Verbindung senden oder mehrere ExpressRoute-Verbindungen verwenden. Diese Entscheidung ist abhängig vom Umfang der ExpressRoute-Verbindung und der vom Kunden benötigten Isolation. Bei bestimmten Kunden dürfen öffentlicher und privater Datenverkehr aus Sicherheitsgründen nicht über die gleiche Verbindung abgewickelt werden.
 
-### <a name="connectthrough-model"></a>Durchleitungsmodell
+### <a name="connect-through-model"></a>Durchleitungsmodell
 Bei einer Durchleitungskonfiguration sind Sie für das gesamte Netzwerkfundament zuständig, das erforderlich ist, um die Datencenterressourcen Ihrer Kunden mit den in Azure gehosteten Abonnements zu verbinden. Jeder Kunde, der Azure-Funktionen verwenden möchte, benötigt eine eigene, von Ihnen verwaltete ExpressRoute-Verbindung. Sie verwenden die gleichen Methoden, mit denen auch der Kunde die ExpressRoute-Verbindung bereitstellen würde. Sie führen die Schritte aus, die im Artikel [ExpressRoute-Workflows](expressroute-workflows.md) für die Verbindungsbereitstellung und Verbindungszustände erläutert werden. Anschließend konfigurieren Sie die Routen des Border Gateway-Protokolls (BGP), um den Datenverkehrsfluss zwischen dem lokalen Netzwerk und dem virtuellen Azure-Netzwerk zu steuern.
 
-### <a name="connectto-model"></a>Direktverbindungsmodell
+### <a name="connect-to-model"></a>Direktverbindungsmodell
 Bei einer Direktverbindungskonfiguration verfügt Ihr Kunde bereits über eine Verbindung mit Azure oder initiiert eine Verbindung mit dem Internetdienstanbieter, der ExpressRoute direkt über das Datencenter Ihres Kunden mit Azure (anstatt mit Ihrem Datencenter) verknüpft. Zur Einleitung des Bereitstellungsprozesses führt Ihr Kunde die gleichen Schritte durch wie beim oben beschriebenen Durchleitungsmodell. Nach Einrichtung der Verbindung muss Ihr Kunde die lokalen Router konfigurieren, um sowohl auf Ihr Netzwerk als auch auf virtuelle Azure-Netzwerke zugreifen zu können.
 
 Sie können den Kunden beim Einrichten der Verbindung und beim Konfigurieren der Routen unterstützen, um den Ressourcen in Ihren Datencentern die Kommunikation mit den Kundenressourcen in Ihrem Datencenter (oder mit den in Azure gehosteten Ressourcen) zu ermöglichen.
@@ -116,7 +116,7 @@ Die Standardroutingtabelle enthält die folgenden Routen:
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
-### <a name="userdefined-routing-udr"></a>Benutzerdefiniertes Routing
+### <a name="user-defined-routing-udr"></a>Benutzerdefiniertes Routing
 Benutzerdefinierte Routen ermöglichen die Steuerung des ausgehenden Datenverkehrs aus dem zugewiesenen Subnetz an andere Subnetze im virtuellen Netzwerk oder über eines der anderen vordefinierten Gateways (ExpressRoute, Internet oder VPN). Die Standardroutingtabelle des Systems kann durch eine benutzerdefinierte Routingtabelle ersetzt werden, um die Standardrouten durch benutzerdefinierte Routen zu ersetzen. Mithilfe von benutzerdefinierten Routen können Kunden spezifische Routen zu Geräten (etwa Firewall- oder Angriffserkennungsgeräte) erstellen oder den Zugriff auf bestimmte Subnetze aus dem Subnetz blockieren, das die benutzerdefinierte Route hostet. Eine Übersicht über benutzerdefinierte Routen finden Sie [hier](../virtual-network/virtual-networks-udr-overview.md). 
 
 ## <a name="security"></a>Sicherheit
@@ -141,6 +141,6 @@ Weitere Informationen finden Sie unter den folgenden Links:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

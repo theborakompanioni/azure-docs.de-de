@@ -22,11 +22,11 @@
 
    Die Standardkonsistenz des DocumentDB-Kontos ist auf **Sitzung**festgelegt.  Sie können die Standardkonsistenz anpassen, indem Sie im Ressourcenmenü auf **Standardkonsistenz** klicken. Weitere Informationen zu den Konsistenzebenen von DocumentDB finden Sie unter [Konsistenzebenen in DocumentDB](../articles/documentdb/documentdb-consistency-levels.md).
 
-[Erstellen eines DocumentDB-Kontos]: #Howto
-[Nächste Schritte]: #NextSteps
+[How to: Create a DocumentDB account]: #Howto
+[Next steps]: #NextSteps
 [documentdb-manage]:../articles/documentdb/documentdb-manage.md
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

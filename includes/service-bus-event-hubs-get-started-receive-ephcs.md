@@ -1,9 +1,9 @@
 ## <a name="receive-messages-with-eventprocessorhost"></a>Empfangen von Nachrichten mit EventProcessorHost
-[EventProcessorHost][EventProcessorHost] ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch Verwalten von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit [EventProcessorHost][EventProcessorHost] können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn diese auf verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie [EventProcessorHost][EventProcessorHost] für einen einzelnen Empfänger verwendet wird. Im Beispiel [Horizontal hochskalierte Ereignisverarbeitung][Horizontal hochskalierte Ereignisverarbeitung] wird veranschaulicht, wie [EventProcessorHost][EventProcessorHost] mit mehreren Empfängern verwendet wird.
+[EventProcessorHost][EventProcessorHost] ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch Verwalten von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit [EventProcessorHost][EventProcessorHost] können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn diese auf verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie [EventProcessorHost][EventProcessorHost] für einen einzelnen Empfänger verwendet wird. Im Beispiel [Skalieren der Ereignisverarbeitung][Scaled out event processing] wird veranschaulicht, wie [EventProcessorHost][EventProcessorHost] mit mehreren Empfängern verwendet wird.
 
-Zum Verwenden von [EventProcessorHost][EventProcessorHost] benötigen Sie ein [Azure Storage-Konto][Azure Storage-Konto]:
+Um [EventProcessorHost][EventProcessorHost] verwenden zu können, benötigen Sie ein [Azure-Speicherkonto][Azure Storage account]:
 
-1. Melden Sie sich beim [Azure-Portal][Azure-Portal] an, und klicken Sie oben links auf dem Bildschirm auf **Neu**.
+1. Melden Sie sich beim [Azure-Portal][Azure portal] an, und klicken Sie oben links auf dem Bildschirm auf **Neu**.
 2. Klicken Sie auf **Daten und Speicher** und anschließend auf **Speicherkonto**.
    
     ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png)
@@ -109,18 +109,18 @@ Zum Verwenden von [EventProcessorHost][EventProcessorHost] benötigen Sie ein [A
      ```
 
 > [!NOTE]
-> Dieses Tutorial verwendet eine einzelne Instanz von [EventProcessorHost][EventProcessorHost]. Um den Durchsatz zu erhöhen, sollten Sie mehrere Instanzen von [EventProcessorHost][EventProcessorHost] ausführen, wie im Beispiel [Horizontal hochskalierte Ereignisverarbeitung][Horizontal hochskalierte Ereignisverarbeitung] beschrieben. In diesen Fällen koordinieren sich die verschiedenen Instanzen automatisch untereinander, um die Last der eingegangenen Ereignisse ausgeglichen zu verteilen. Wenn mehrere Empfänger für jeden Prozess *alle* Ereignisse verarbeiten sollen, müssen Sie das **ConsumerGroup** -Konzept verwenden. Wenn Ereignisse von anderen Computern empfangen werden, kann es hilfreich sein, die [EventProcessorHost][EventProcessorHost]-Instanzen nach den Computern (oder Rollen) zu benennen, auf denen sie bereitgestellt worden sind. Weitere Informationen zu diesen Themen finden Sie unter [Event Hubs – Übersicht][Event Hubs – Übersicht] und im [Event Hubs-Programmierhandbuch][Event Hubs-Programmierhandbuch].
+> Dieses Tutorial verwendet eine einzelne Instanz von [EventProcessorHost][EventProcessorHost]. Um den Durchsatz zu erhöhen, sollten Sie mehrere Instanzen von [EventProcessorHost][EventProcessorHost] ausführen, wie im Beispiel zum [horizontalen Hochskalieren der Ereignisverarbeitung][Scaled out event processing] beschrieben. In diesen Fällen koordinieren sich die verschiedenen Instanzen automatisch untereinander, um die Last der eingegangenen Ereignisse ausgeglichen zu verteilen. Wenn mehrere Empfänger für jeden Prozess *alle* Ereignisse verarbeiten sollen, müssen Sie das **ConsumerGroup** -Konzept verwenden. Wenn Ereignisse von anderen Computern empfangen werden, kann es hilfreich sein, die [EventProcessorHost][EventProcessorHost]-Instanzen nach den Computern (oder Rollen) zu benennen, auf denen sie bereitgestellt werden. Weitere Informationen zu diesen Themen finden Sie unter [Event Hubs – Übersicht][Event Hubs Overview] und im [Event Hubs-Programmierhandbuch][Event Hubs Programming Guide].
 > 
 > 
 
 <!-- Links -->
-[Event Hubs – Übersicht]: ../articles/event-hubs/event-hubs-overview.md
-[Event Hubs-Programmierhandbuch]: ../articles/event-hubs/event-hubs-programming-guide.md
-[Horizontal hochskalierte Ereignisverarbeitung]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure Storage-Konto]: ../articles/storage/storage-create-storage-account.md
-[EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Azure-Portal]: https://portal.azure.com
+[Event Hubs Overview]: ../articles/event-hubs/event-hubs-overview.md
+[Event Hubs Programming Guide]: ../articles/event-hubs/event-hubs-programming-guide.md
+[Scaled out event processing]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Azure Storage account]: ../articles/storage/storage-create-storage-account.md
+[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Azure portal]: https://portal.azure.com
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

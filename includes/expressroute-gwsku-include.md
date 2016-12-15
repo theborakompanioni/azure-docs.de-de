@@ -6,11 +6,8 @@ Virtuelle ExpressRoute-Netzwerkgateways können folgende SKUs verwenden:
 * HighPerformance
 * UltraPerformance
 
-> [!IMPORTANT]
-> Das ExpressRoute-UltraPerformance-Gateway ist derzeit in den Regionen „USA, Westen-Mitte“ und „USA, Mitte“ verfügbar und kann mit ExpressRoute-Verbindungen in Chicago und Dallas verknüpft werden. Weitere Azure-Regionen und ExpressRoute-Standorte werden in den kommenden Wochen zur Verfügung gestellt. 
-> 
-> 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO1-->
 
 

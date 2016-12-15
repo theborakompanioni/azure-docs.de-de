@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 6fa8b353c47091c9b71173e98021117245cc6694
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
 
 
 ---
@@ -27,7 +27,7 @@ Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung einer Azure-
 Die Ausführung der Schritte im Artikel dauert ungefähr 30 Minuten.
 
 ## <a name="step-1-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
-Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
+Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
 
 ## <a name="step-2-create-resources"></a>Schritt 2: Erstellen von Ressourcen
 Erstellen Sie die Ressourcen, die für die neue Skalierungsgruppe benötigt wird.
@@ -225,6 +225,6 @@ Untersuchen Sie die erstellte VM-Skalierungsgruppe mithilfe der folgenden Ressou
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 09/21/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: c9440e26a563ed9315225b34709b009d01e065d7
-ms.openlocfilehash: 57c52a8c28e5a87a63fded3db7d0a2a785e47a53
+ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
+ms.openlocfilehash: a1244ee080d333338b1f0d9e49d1776822f535ed
 
 
 ---
@@ -31,7 +31,7 @@ In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulato
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Eine Arbeitsstation mit Azure PowerShell**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* **Eine Arbeitsstation mit Azure PowerShell**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ## <a name="create-data-lake-analytics-account"></a>Erstellen eines Data Lake Analytics-Kontos
 Zum Ausführen von Aufträgen ist ein Data Lake Analytics-Konto erforderlich. Zum Erstellen eines Data Lake Analytics-Kontos müssen Sie Folgendes angeben:
@@ -209,6 +209,6 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

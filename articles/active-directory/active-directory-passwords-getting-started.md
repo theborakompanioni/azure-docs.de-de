@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 77ca34a56a827e8a69ab9a2b60d14cc7c7a71bfc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 93e02bc36c0502623316d6b896dd802ac8bdc284
 
 
 ---
@@ -126,7 +126,7 @@ Weitere Informationen dazu, welche Daten beim Zurücksetzen von Kennwörtern ver
 ### <a name="step-3-reset-your-azure-ad-password-as-a-user"></a>Schritt 3: Zurücksetzen Ihres AD-Kennworts als Benutzer mit anschließender Überprüfung
 Nachdem Sie eine Richtlinie für die Kennwortzurücksetzung konfiguriert und Kontaktdaten für Ihren Benutzer angegeben haben, kann dieser Benutzer eine Self-Service-Kennwortzurücksetzung durchführen.
 
-#### <a name="to-perform-a-selfservice-password-reset"></a>So führen Sie eine Self-Service-Kennwortzurücksetzung durch
+#### <a name="to-perform-a-self-service-password-reset"></a>So führen Sie eine Self-Service-Kennwortzurücksetzung durch
 1. Wenn Sie zu einer Website wie [**portal.microsoftonline.com**](http://portal.microsoftonline.com) wechseln, wird ein Anmeldebildschirm wie in der folgenden Abbildung angezeigt.  Klicken Sie auf den Link **Können Sie nicht auf Ihr Konto zugreifen?** , um die Benutzeroberfläche für die Kennwortzurücksetzung zu testen.
    
    ![][011]
@@ -365,6 +365,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

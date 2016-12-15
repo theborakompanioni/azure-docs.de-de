@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1952e103c574f83c2c6285e32c59144816749348
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 84b6df0b45548d3797528c3723f02bd1a124454f
 
 
 ---
-# <a name="windows-authentication-and-azure-multifactor-authentication-server"></a>Windows-Authentifizierung und Azure Multi-Factor Authentication-Server
+# <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows-Authentifizierung und Azure Multi-Factor Authentication-Server
 Mit dem Abschnitt für die Windows-Authentifizierung kann der Administrator die Windows-Authentifizierung für eine oder mehrere Anwendungen aktivieren und konfigurieren.  Folgendes ist eine Liste der Dinge, die vor dem Einrichten der Windows-Authentifizierung beachtet werden sollten.
 
 * Ein Neustart ist erforderlich, bevor Azure Multi-Factor Authentication für Terminaldienste wirksam wird.
@@ -49,6 +49,6 @@ Mit dem Abschnitt für die Windows-Authentifizierung kann der Administrator die 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

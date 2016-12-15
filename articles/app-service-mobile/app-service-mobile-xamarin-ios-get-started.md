@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cf8f9a06c4d720dade11ea67fc1befe07a56cf85
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5dc9822072417b41856a7d4015c54b8573e56587
 
 
 ---
@@ -77,12 +77,12 @@ Befolgen Sie die folgenden Schritte zum Konfigurieren des Serverprojekts für di
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen der Offlinesynchronisierung zu Ihrer App](app-service-mobile-xamarin-ios-get-started-offline-data.md)
 * [Hinzufügen der Authentifizierung zu Ihrer App ](app-service-mobile-xamarin-ios-get-started-users.md)
-* [Hinzufügen von Pushbenachrichtigungen zur Xamarin.Android-App](app-service-mobile-xamarin-ios-get-started-push.md)
+* [Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin.Android-App](app-service-mobile-xamarin-ios-get-started-push.md)
 * [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Anchors. -->
-[Erste Schritte mit Mobile App-Back-Ends]:#getting-started
-[Erstellen eines neuen mobilen App-Back-Ends]:#create-new-service
+[Getting started with mobile app backends]:#getting-started
+[Create a new mobile app backend]:#create-new-service
 [Next Steps]:#next-steps
 
 <!-- Images. -->
@@ -96,6 +96,6 @@ Befolgen Sie die folgenden Schritte zum Konfigurieren des Serverprojekts für di
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

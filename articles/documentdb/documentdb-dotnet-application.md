@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: bf07b8a10dd7e5ee9259c6fab9da886578504fe7
-ms.openlocfilehash: 3b756b11ce762cbbc56650ea9d49715d899bfbdb
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a896240331d901ae839c2489c6266daac2780899
 
 
 ---
@@ -50,7 +50,7 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgende
 
     Lokale Installation des [Azure DocumentDB-Emulators](documentdb-nosql-local-emulator.md).
 * [Visual Studio 2015](http://www.visualstudio.com/) oder Visual Studio 2013 Update 4 oder höher. Wenn Sie Visual Studio 2013 verwenden, müssen Sie das [Microsoft.Net.Compilers-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Net.Compilers/) installieren, um die Unterstützung für C# 6.0 hinzuzufügen. 
-* Azure SDK für .NET Version 2.5.1 oder höher, verfügbar über [Microsoft-Webplattform-Installer][Microsoft-Webplattform-Installer].
+* Azure SDK für .NET Version 2.5.1 oder höher, verfügbar über [Microsoft-Webplattform-Installer][Microsoft Web Platform Installer].
 
 Alle Screenshots in diesem Artikel wurden unter Verwendung von Visual Studio 2013 mit Update 4 und Azure SDK für .NET Version 2.5.1 aufgenommen. Wenn Ihr System mit anderen Versionen konfiguriert ist, weichen Ihre Bildschirme und Optionen möglicherweise ab. Wenn Sie jedoch die oben aufgeführten Voraussetzungen erfüllen, sollte diese Lösung funktionieren.
 
@@ -430,9 +430,9 @@ Jetzt fügen wir DocumentDBRepository und ItemController etwas Code hinzu, um de
    
     Dieser Code ruft das DocumentDBRepository-Element auf und verwendet die CreateItemAsync-Methode, um das neue Todo-Element in der Datenbank beizubehalten. 
    
-    **Sicherheitshinweis**: Das **ValidateAntiForgeryToken**-Attribut wird hier verwendet, um den Schutz dieser Anwendung vor websiteübergreifenden Anforderungsfälschungen zu unterstützen. Das Hinzufügen dieses Attributs reicht jedoch nicht aus, Ihre Ansichten müssen auch mit diesem Antifälschungstoken zusammenarbeiten. Weitere Informationen zum Thema und Beispiele für eine korrekte Implementierung finden Sie unter [Verhindern der websiteübergreifenden Anforderungsfälschung][Verhindern der websiteübergreifenden Anforderungsfälschung]. Der auf [GitHub][GitHub] bereitgestellte Quellcode enthält die vollständige Implementierung.
+    **Sicherheitshinweis**: Das **ValidateAntiForgeryToken**-Attribut wird hier verwendet, um den Schutz dieser Anwendung vor websiteübergreifenden Anforderungsfälschungen zu unterstützen. Das Hinzufügen dieses Attributs reicht jedoch nicht aus, Ihre Ansichten müssen auch mit diesem Antifälschungstoken zusammenarbeiten. Weitere Informationen zum Thema und Beispiele für eine ordnungsgemäße Implementierung finden Sie unter [Verhindern der websiteübergreifenden Anforderungsfälschung][Preventing Cross-Site Request Forgery]. Der auf [GitHub][GitHub] bereitgestellte Quellcode enthält die vollständige Implementierung.
    
-    **Sicherheitshinweis**: Wir verwenden außerdem das Attribut **Bind** im Methodenparameter, um Schutz vor Overposting-Angriffen bereitzustellen. Weitere Informationen hierzu finden Sie unter [Grundlegende CRUD-Vorgänge in ASP.NET MVC][Grundlegende CRUD-Vorgänge in ASP.NET MVC].
+    **Sicherheitshinweis**: Wir verwenden außerdem das Attribut **Bind** im Methodenparameter, um Schutz vor Overposting-Angriffen bereitzustellen. Weitere Informationen finden Sie unter [Grundlegende CRUD-Vorgänge in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
 
 Damit ist der für das Hinzufügen neuer Elemente zur Datenbank erforderliche Code komplett.
 
@@ -569,13 +569,13 @@ Wenn Sie Ihrer Anwendung zusätzliche Funktionen hinzufügen möchten, können S
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft-Webplattform-Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Verhindern der websiteübergreifenden Anforderungsfälschung]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Grundlegende CRUD-Vorgänge in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/21/2016
 ms.author: cgronlun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cefda0778fed4ab8d502955dd8eae4bdac70a48e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 66200ad8688928c368146a177130f6e2fad4849b
 
 
 ---
@@ -148,7 +148,7 @@ Diese JVM-basierten Sprachen werden in HDInsight-Clustern unterstützt:
 * Jython (Python für Java)
 * Scala
 
-### <a name="hadoopspecific-languages"></a>Hadoop-spezifische Sprachen
+### <a name="hadoop-specific-languages"></a>Hadoop-spezifische Sprachen
 HDInsight-Cluster bieten Unterstützung für die folgenden Sprachen, die für das Hadoop-Ökosystem spezifisch sind:
 
 * Pig Latin für Pig-Aufträge
@@ -167,12 +167,12 @@ Hadoop in HDInsight ist Teil des Azure Cloud-Ökosystems und bietet eine Vielzah
 * Unterstützung für virtuelle Netzwerke. HDInsight-Cluster können mit virtuellen Azure-Netzwerken verwendet werden, um Cloud-Ressourcen zu isolieren oder um Hybrid-Lösungen zu unterstützen, die Cloud-Ressourcen mit Ressourcen in Ihrem Rechenzentrum verbinden.
 * Niedrige Einstiegskosten. Probieren Sie die [kostenlose Testversion](https://azure.microsoft.com/free/) aus, oder entdecken Sie die [HDInsight-Preisdetails](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Weitere Informationen zu den Vorteilen von Hadoop in HDInsight finden Sie auf der [Azure-Features-Seite für HDInsight][marketing-page].
+Weitere Informationen zu den Vorteilen von Hadoop in HDInsight finden Sie auf der Seite mit [Azure-Features für HDInsight][marketing-page].
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard und HDInsight Premium
 HDInsight bietet Cloudlösungen für Big Data in zwei Kategorien an: Standard und Premium. HDInsight Standard stellt einen Unternehmenscluster bereit, in dem Organisationen ihre Big Data-Workloads ausführen können. HDInsight Premium baut darauf auf und bietet erweiterte Analyse- und Sicherheitsfunktionen für einen HDInsight-Cluster. Weitere Informationen finden Sie unter [Azure HDInsight Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
-## <a name="a-idresourcesaresources-for-learning-more-about-bigdata-analysis-hadoop-and-hdinsight"></a><a id="resources"></a>Ressourcen zum Veranschaulichen von Big Data-Analysen, Hadoop und HDInsight
+## <a name="a-idresourcesaresources-for-learning-more-about-big-data-analysis-hadoop-and-hdinsight"></a><a id="resources"></a>Ressourcen zum Veranschaulichen von Big Data-Analysen, Hadoop und HDInsight
 Lesen Sie im Anschluss an diese Einführung in Hadoop in der Cloud und die Big Data-Analyse nachstehende Ressourcen.
 
 ### <a name="hadoop-documentation-for-hdinsight"></a>Hadoop-Dokumentation für HDInsight
@@ -204,6 +204,6 @@ Diese BI-Tools sind hilfreich für Ihre Big Data-Analyse:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

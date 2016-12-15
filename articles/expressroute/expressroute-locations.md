@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
+ms.date: 12/05/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 5081c38bae56cf6f2ed260eabb895453d7603cfd
-ms.openlocfilehash: b982274cc7dcf1ffbe1dd4c3d7f833f97704d931
+ms.sourcegitcommit: e4aa6b13e3f1060d97cfea70761ad2f1c109b0c0
+ms.openlocfilehash: 5a197d1444c75d9f6f8d7540ca3117d894d5836f
 
 
 ---
@@ -85,12 +85,12 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Silicon Valley, Washington DC |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt |Unterstützt |Dallas, Hongkong, Las Vegas, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Toronto, Washington DC |
 | **MTN** |Unterstützt |Unterstützt |London |
-| **Daten der nächsten Generation** |In Kürze verfügbar |In Kürze verfügbar |Newport(Wales)+ |
+| **Daten der nächsten Generation** |Unterstützt |In Kürze verfügbar |Newport(Wales) |
 | **NEXTDC** |Unterstützt |Unterstützt |Melbourne, Sydney |
 | **NTT Communications** |Unterstützt |Unterstützt |London, Los Angeles, Osaka, Singapur, Tokio, Washington, D.C. |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |Unterstützt |Unterstützt |Amsterdam, Hongkong, London, Silicon Valley, Singapur, Sydney, Washington DC |
 | **PCCW Global Limited** |Unterstützt |Unterstützt |Hongkong |
-| **SIFY** |Unterstützt |Unterstützt |Chennai |
+| **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Unterstützt |Unterstützt |Chennai |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Unterstützt |Unterstützt |Singapur |
 | **SoftBank** |Unterstützt |Unterstützt |Osaka, Tokio |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Unterstützt |Unterstützt |Amsterdam, Chennai, Hongkong, London, Mumbai, Silicon Valley, Singapur, Washington DC |
@@ -173,6 +173,6 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

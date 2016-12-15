@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ee868c5ba1a8429a733633edbc7efaa74e512135
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3b14925f41138904aa10a172f83dffa3c6662700
 
 
 ---
-# <a name="remote-desktop-gateway-and-azure-multifactor-authentication-server-using-radius"></a>Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
+# <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
 In vielen Fällen verwendet das Remotedesktop-Gateway den lokalen Netzwerkrichtlinenserver (NPS) zum Authentifizieren von Benutzern. Dieses Dokument beschreibt, wie RADIUS-Anforderungen aus dem Remotedesktop-Gateway (über den lokalen NPS) an den Multi-Factor Authentication-Server weitergeleitet werden.
 
 Der Multi-Factor Authentication-Server sollte auf einem separaten Server installiert werden, wodurch dann die RADIUS-Anforderung per Proxy zurück an den NPS auf dem Remotedesktop-Gatewayserver zurückgegeben wird. Nachdem der NPS den Benutzernamen und das Kennwort überprüft hat, wird eine Antwort an den Multi-Factor Authentication-Server zurückgegeben, der die zweite Stufe der Authentifizierung durchführt, bevor ein Ergebnis an das Gateway zurückgegeben wird.
@@ -36,7 +36,7 @@ Das RD-Gateway verwendet den NPS, um die RADIUS-Anforderung an Azure Multi-Facto
 3. Erweitern Sie den Abschnitt "Richtlinien" im linken Navigationsbereich, und klicken Sie auf "Verbindungsanforderungsrichtlinien". Es sollte eine Verbindungsanforderungsrichtlinie namens "TS GATEWAY AUTHORIZATION POLICY" geben, die beim Konfigurieren des RD-Gateways erstellt wurde. Diese Richtlinie leitet RADIUS-Anforderungen an den Multi-Factor Authentication-Server weiter.
 4. Kopieren Sie diese Richtlinie, um eine neue zu erstellen. Fügen Sie in der neuen Richtlinie eine Bedingung hinzu, in der der Anzeigename des Clients mit dem oben in Schritt 2 festgelegten Anzeigenamen für den Azure Multi-Factor Authentication-Server RADIUS-Client übereinstimmt. Ändern Sie den Authentifizierungsanbieter auf dem lokalen Computer. Mit dieser Richtlinie können Sie sicherstellen, dass beim Empfang einer RADIUS-Anforderung vom Azure Multi-Factor Authentication-Server die Authentifizierung lokal erfolgt, anstatt eine RADIUS-Anforderung an den Azure Multi-Factor Authentication-Server zurückzusenden, was zu einer Schleifenbedingung führen würde. Um die Schleifenbedingung zu verhindern, muss diese neue Richtlinie ÜBER die Originalrichtlinie treten, die an den Multi-Factor Authentication-Server weiterleitet.
 
-## <a name="configure-azure-multifactor-authentication"></a>Konfigurieren von Azure Multi-Factor Authentication
+## <a name="configure-azure-multi-factor-authentication"></a>Konfigurieren von Azure Multi-Factor Authentication
 - - -
 Der Azure Multi-Factor Authentication-Server wird als RADIUS-Proxy zwischen dem RD-Gateway und NPS konfiguriert.  Er sollte auf einem Domänen-verbundenen Server installiert werden, der vom Remotedesktop-Gatewayserver getrennt ist. Verwenden Sie das folgende Verfahren, um den Azure Multi-Factor Authentication-Server zu konfigurieren.
 
@@ -50,6 +50,6 @@ Der Azure Multi-Factor Authentication-Server wird als RADIUS-Proxy zwischen dem 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: 79c9f2d8c683be493160fffe40992006b039f60f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f86a70a5207f19063e9992325c8f8d696ca7823e
 
 
 ---
 # <a name="tutorial-get-started-with-the-preconfigured-solutions"></a>Tutorial: Erste Schritte mit den vorkonfigurierten Lösungen
 ## <a name="introduction"></a>Einführung
-[Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] der Azure IoT Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte Lösung für die *Remoteüberwachung* stellt eine Verbindung mit Ihren Geräten her und überwacht die Geräte. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und Verbessern der Geschäftsergebnisse verwenden, indem Sie Prozesse so einrichten, dass sie automatisch auf diesen Datenstrom reagieren.
+[Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] von Azure IoT Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte Lösung für die *Remoteüberwachung* stellt eine Verbindung mit Ihren Geräten her und überwacht die Geräte. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und Verbessern der Geschäftsergebnisse verwenden, indem Sie Prozesse so einrichten, dass sie automatisch auf diesen Datenstrom reagieren.
 
 Dieses Tutorial zeigt, wie Sie eine vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der Lösung für die Remoteüberwachung kennen. Sie können auf einen Großteil dieser Features über das Lösungsdashboard zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
 
@@ -32,7 +32,7 @@ Dieses Tutorial zeigt, wie Sie eine vorkonfigurierte Lösung für die Remoteübe
 Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
 > [!NOTE]
-> Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Details finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
+> Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
 > 
 > 
 
@@ -180,7 +180,7 @@ Sie können auch den Quellcode für die vorkonfigurierte Lösung anzeigen. Den Q
 Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [azureiotsuite.com][lnk-azureiotsuite] aus Ihrem Azure-Abonnement löschen. Über diese Website können Sie problemlos alle Ressourcen löschen, die bei der Erstellung der vorkonfigurierten Lösung bereitgestellt wurden.
 
 > [!NOTE]
-> Um sicherzustellen, dass Sie alle zur vorkonfigurierten Lösung gehörenden Daten löschen, sollten Sie sie über die Website [azureiotsuite.com][lnk-azureiotsuite] löschen und nicht die Ressourcengruppe im Portal löschen.
+> Um sicherzustellen, dass Sie alle zur vorkonfigurierten Lösung gehörenden Daten löschen, sollten Sie sie über die Website [azureiotsuite.com][lnk-azureiotsuite] löschen und nicht nur einfach die Ressourcengruppe im Portal löschen.
 > 
 > 
 
@@ -188,7 +188,7 @@ Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [
 Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und können nun mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu die folgenden Artikel:
 
 * [Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung][lnk-rm-walkthrough]
-* [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm]
+* [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Windows)][lnk-connect-rm]
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 
 [img-launch-solution]: media/iot-suite-getstarted-preconfigured-solutions/launch.png
@@ -229,6 +229,6 @@ Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und könn
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/04/2016
 ms.author: navale;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: 68bec71fd23367a05b405edf9196b28d04fca1e6
+ms.sourcegitcommit: 40687046c832ca39e460f1d7f55f7c188b6242b3
+ms.openlocfilehash: 0479a970e2c3b8abaa9305de37a79e2b4128932e
 
 
 ---
@@ -146,7 +146,7 @@ Sie sind nun stolzer Besitzer eines Speicherkontos.
 Als Nächstes müssen die Ressourcen hinzugefügt werden, die zum Bereitstellen der zu Beginn dieses Tutorials beschriebenen Architektur benötigt werden. Diese Ressourcen werden in der gleichen Vorlage hinzugefügt, die Sie vorhin bearbeitet haben.
 
 ## <a name="availability-set"></a>Verfügbarkeitsgruppe
-Fügen Sie nach der Definition für das Speicherkonto einen verfügbaren Satz für die virtuellen Computer hinzu. In diesem Fall sind keine zusätzlichen Eigenschaften erforderlich, sodass die Definition relativ einfach ist. Den vollständigen Abschnitt zu „properties“ finden Sie unter [REST-API zum Erstellen einer Verfügbarkeitsgruppe](https://msdn.microsoft.com/library/azure/mt163607.aspx). Dies ist hilfreich, falls Sie die Werte für die Updatedomänenanzahl und Fehlerdomänenanzahl definieren möchten.
+Fügen Sie nach der Definition für das Speicherkonto eine Verfügbarkeitsgruppe für die virtuellen Computer hinzu. In diesem Fall sind keine zusätzlichen Eigenschaften erforderlich, sodass die Definition relativ einfach ist. Den vollständigen Abschnitt zu „properties“ finden Sie unter [REST-API zum Erstellen einer Verfügbarkeitsgruppe](https://msdn.microsoft.com/library/azure/mt163607.aspx). Dies ist hilfreich, falls Sie die Werte für die Updatedomänenanzahl und Fehlerdomänenanzahl definieren möchten.
 
 ```json
 {
@@ -592,6 +592,6 @@ Sie können die Vorlage mithilfe der Befehle, die Sie auch zum Bereitstellen des
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

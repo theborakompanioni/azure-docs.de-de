@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/12/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 14a4d55409e9fd6b840f4c856110ae150499bb6f
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 6e29f5b26a06a83bd7f996169f2e53815e24a8e5
 
 
 ---
@@ -35,7 +35,7 @@ In diesem Artikel verwenden Sie eine Azure Resource Manager-Vorlage, um Ihre ers
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
-* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
+* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer.
 * Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md) . 
 
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
@@ -45,7 +45,7 @@ In diesem Artikel verwenden Sie eine Azure Resource Manager-Vorlage, um Ihre ers
 | Bedarfsgesteuerter verknüpfter HDInsight-Dienst |Verknüpft einen bedarfsgesteuerten HDInsight-Cluster mit der Data Factory. Der Cluster wird automatisch für Sie erstellt, damit Sie Daten verarbeiten können, und nach Abschluss der Verarbeitung automatisch gelöscht. |
 | Azure-Blob-Eingabedataset |Verweist auf den mit Azure Storage verknüpften Dienst. Der verknüpfte Dienst verweist auf ein Azure Storage-Konto, und das Azure-Blobdataset gibt den Container, Ordner und Dateinamen in dem Speicher an, der die Eingabedaten enthält. |
 | Azure-Blob-Ausgabedataset |Verweist auf den mit Azure Storage verknüpften Dienst. Der verknüpfte Dienst verweist auf ein Azure Storage-Konto, und das Azure-Blobdataset gibt den Container, Ordner und Dateinamen in dem Speicher an, der die Ausgabedaten enthält. |
-| Datenpipeline |Die Pipeline verfügt über eine Aktivität vom Typ HDInsightHive zum Nutzen des Eingabedatasets und Erzeugen des Ausgabedatasets. |
+| Datenpipeline |Die Pipeline verfügt über eine Aktivität vom Typ „HDInsightHive“ zum Nutzen des Eingabedatasets und Erzeugen des Ausgabedatasets. |
 
 Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline kann eine oder mehrere Aktivitäten aufweisen. Es gibt zwei Arten von Aktivitäten: [Datenverschiebungen](data-factory-data-movement-activities.md) und [Datentransformationen](data-factory-data-transformation-activities.md). In diesem Tutorial erstellen Sie eine Pipeline mit einer einzelnen Kopieraktivität.
 
@@ -379,7 +379,7 @@ In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an.
 
 Die Verbindungszeichenfolge (**connectionString**) enthält die Parameter „storageAccountName“ und „storageAccountKey“. Die Werte für diese Parameter werden mithilfe einer Konfigurationsdatei übergeben. In der Definition werden außerdem die in der Vorlage definierten Variablen „azureStorageLinkedService“ und „dataFactoryName“ verwendet. 
 
-#### <a name="hdinsight-ondemand-linked-service"></a>Bedarfsgesteuerter verknüpfter HDInsight-Dienst
+#### <a name="hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter HDInsight-Dienst
 Der Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) enthält Details zu JSON-Eigenschaften, die zum Definieren eines bedarfsgesteuerten verknüpften HDInsight-Diensts verwendet werden.  
 
       {
@@ -591,6 +591,6 @@ Mit dieser Vorlage wird eine Data Factory mit dem Namen GatewayUsingArmDF und de
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

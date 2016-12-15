@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/14/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5fa7882653d6a41376cffb0eaca78c8d05044dc2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b3dadee1ea8d1ff4a0164a90eb617f9d276b6670
 
 
 ---
-# <a name="getting-started-with-an-azure-multifactor-auth-provider"></a>Erste Schritte mit Azure Multi-Factor Authentication-Anbietern
+# <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Erste Schritte mit Azure Multi-Factor Authentication-Anbietern
 Die Überprüfung in zwei Schritten ist standardmäßig für globale Administratoren, die mit Azure Active Directory arbeiten, und für Office 365-Benutzer verfügbar. Falls Sie die [erweiterten Funktionen](multi-factor-authentication-whats-next.md) nutzen möchten, müssen Sie die Vollversion von Azure Multi-Factor Authentication (MFA) erwerben.
 
 > [!NOTE]
@@ -35,7 +35,7 @@ Ein Azure Multi-Factor Authentication-Anbieter ist erforderlich, um das SDK heru
 > 
 > 
 
-## <a name="to-create-a-multifactor-auth-provider"></a>So erstellen Sie einen Anbieter für mehrstufige Authentifizierung
+## <a name="to-create-a-multi-factor-auth-provider"></a>So erstellen Sie einen Anbieter für mehrstufige Authentifizierung
 Führen Sie die folgenden Schritte aus, um einen Azure Multi-Factor Authentication-Anbieter zu erstellen.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator an.
@@ -64,6 +64,6 @@ Führen Sie die folgenden Schritte aus, um einen Azure Multi-Factor Authenticati
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

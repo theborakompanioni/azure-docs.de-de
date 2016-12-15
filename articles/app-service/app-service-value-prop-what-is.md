@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/26/2016
-ms.author: omark
+ms.date: 12/02/2016
+ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 042da7ac46fd20bd0e9af33f449f8ea4a6a42089
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f361e9c815ae20874fc2e40e39d2c20a415d58f2
 
 
 ---
@@ -36,33 +36,53 @@ Das folgende vierminütige Video enthält eine kurze Erklärung dazu, wie sich A
 Hier sind einige wichtige Features und Funktionen von App Service aufgeführt:
 
 * **Mehrere Sprachen und Frameworks** : App Service verfügt über erstklassige Unterstützung für ASP.NET, Node.js, Java, PHP und Python. Außerdem können Sie [Windows PowerShell und andere Skripts oder ausführbare Dateien](../app-service-web/web-sites-create-web-jobs.md) auf App Service-VMs ausführen.
-* **DevOps-Optimierung** : Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket die [fortlaufende Integration und Bereitstellung](../app-service-web/app-service-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md)herauf. Führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md)aus. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](../powershell-install-configure.md) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](../xplat-cli-install.md).
+* **DevOps-Optimierung** : Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket die [fortlaufende Integration und Bereitstellung](../app-service-web/app-service-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md)herauf. Führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md)aus. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](../xplat-cli-install.md).
 * **Globale Skalierung mit hoher Verfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](../app-service-web/web-sites-scale.md) oder [horizontal](../monitoring-and-diagnostics/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert eine hohe Verfügbarkeit.
 * **Verbindungen mit SaaS-Plattformen und lokalen Daten** – Wählen Sie aus über 50 [Connectors](../connectors/apis-list.md) für Unternehmenssysteme (z.B. SAP, Siebel und Oracle), SaaS-Dienste (z.B. Salesforce und Office 365) sowie Internetdienste (z.B. Facebook und Twitter). Greifen Sie über [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und [Azure Virtual Networks](../app-service-web/web-sites-integrate-with-vnet.md) auf lokale Daten zu.
 * **Sicherheit und Compliance** – App Service ist [ISO-, SOC- und PCI-konform](https://www.microsoft.com/TrustCenter/).
-* **Anwendungsvorlagen** – Wählen Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/) aus zahlreichen Anwendungsvorlagen, die die Verwendung eines Assistenten zum Installieren gängiger Open Source-Software wie WordPress, Joomla und Drupal ermöglichen.
-* **Visual Studio-Integration** – Dedizierte Tools in Visual Studio optimieren das Erstellen, Bereitstellen, Debuggen und Verwalten von API-Apps.
+* **Anwendungsvorlagen** – Wählen Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/) aus zahlreichen Vorlagen, die die Verwendung eines Assistenten zum Installieren gängiger Open Source-Software wie WordPress, Joomla und Drupal ermöglichen.
+* **Visual Studio-Integration** – Dedizierte Tools in Visual Studio optimieren das Erstellen, Bereitstellen und Debuggen.
 
 ## <a name="app-types-in-app-service"></a>App-Typen in App Service
-App Service verfügt über mehrere *App-Typen*, die jeweils zum Hosten einer bestimmten Art von Workload bestimmt sind:
+App Service verfügt über mehrere *App-Typen*, die jeweils zum Hosten einer bestimmten Workload bestimmt sind:
 
 * [**Web-Apps**](../app-service-web/app-service-web-overview.md): Hosten von Websites und Webanwendungen
 * [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md): Hosten von Back-Ends für mobile Apps
 * [**API-Apps**](../app-service-api/app-service-api-apps-why-best-platform.md): Hosten von RESTful-APIs
 * [**Logik-Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md): Automatisierung von Geschäftsprozessen und Integration von Systemen und Daten in Clouds, ohne Code zu schreiben
 
-Der Begriff *App* bezieht sich hier auf die Hostingressourcen, die dediziert für die Ausführung einer Workload bestimmt sind. Wenn wir „Web-App“ als Beispiel nehmen, verstehen Sie darunter wahrscheinlich sowohl die Computeressourcen als auch die Anwendungscodeelemente, die zusammen für einen Browser die Funktionalität bereitstellen. In App Service handelt es sich bei einer *Web-App* aber um die Computeressourcen, die von Azure zum Hosten Ihres Anwendungscodes bereitgestellt werden. Wenn Ihre Anwendung aus einem Web-Front-End und einem RESTful-API-Back-End besteht, können Sie sowohl die Bereitstellung für eine Web-App durchführen als auch den Front-End-Code für eine Web-App und den Back-End-Code für eine API-App bereitstellen. Die Anwendung kann aus mehreren App Service-Apps unterschiedlicher Art bestehen.
+Der Begriff *App* bezieht sich hier auf die Hostingressourcen, die dediziert für die Ausführung einer Workload bestimmt sind. Wenn wir „Web-App“ als Beispiel nehmen, verstehen Sie darunter wahrscheinlich sowohl die Computeressourcen als auch die Anwendungscodeelemente, die zusammen für einen Browser die Funktionalität bereitstellen. In App Service handelt es sich bei einer *Web-App* aber um die Computeressourcen, die von Azure zum Hosten Ihres Anwendungscodes bereitgestellt werden. 
+
+Die Anwendung kann aus mehreren App Service-Apps unterschiedlicher Art bestehen. Wenn Ihre Anwendung also beispielsweise aus einem Web-Front-End und einem RESTful-API-Back-End besteht, haben Sie folgende Möglichkeiten:
+
+- Sie können beides (Front-End und API) für eine einzelne Web-App bereitstellen.  
+- Sie können Ihren Front-End-Code für eine Web-App und Ihren Back-End-Code für eine API-App bereitstellen. 
+
+
 
 ## <a name="app-service-plans"></a>App Service-Pläne
-[App Service-Pläne](azure-web-sites-web-hosting-plans-in-depth-overview.md) werden die Arten von Computeressourcen angegeben, auf denen die App ausgeführt wird. Wenn Sie ein geringes Aufkommen an Datenverkehr erwarten, können Sie freigegebene virtuelle Computer (VMs) verwenden (Tarife **Free** und **Shared**). Bei höherem Aufkommen können Sie zwischen verschiedenen Größen von dedizierten VMs wählen (Tarife **Basic**, **Standard** und **Premium**). Mehrere App Service-Apps können einen Plan gemeinsam nutzen und werden zusammen mit dem Plan in den Tarifen hoch- und herunterskaliert.
+[App Service-Pläne](azure-web-sites-web-hosting-plans-in-depth-overview.md) stellen die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden.
+
+In App Service-Plänen wird Folgendes definiert:
+
+- **Region** („USA, Westen“, „USA, Osten“ usw.)
+- **Skalierung** (Instanzenanzahl)
+- **Instanzgröße** (klein, mittel, groß)
+- **SKU** (Free, Shared, Basic, Standard, Premium)
+
+Alle einem **App Service-Plan** zugewiesenen Anwendungen teilen sich die durch den Plan definierten Ressourcen. Dies spart Kosten, wenn Sie mehrere Apps hosten.
+
+Ihr **App Service-Plan** kann von den SKUs **Free** und **Shared** auf die SKUs **Basic**, **Standard** und **Premium** skaliert werden, um Zugriff auf weitere Ressourcen und Features zu erhalten. Wenn Ihr App Service-Plan mindestens auf **Basic** festgelegt ist, können Sie auch die **Größe** und die Skalierung der virtuellen Computer steuern.
+
+**SKU** und **Skalierung** des App Service-Plans haben Einfluss auf die Kosten (nicht auf die Anzahl gehosteter Apps). 
 
 Wenn Sie eine bessere Skalierbarkeit und Netzwerkisolation benötigen, können Sie die Apps in einer [App Service-Umgebung](../app-service-web/app-service-app-service-environment-intro.md)ausführen.
 
 ## <a name="pricing"></a>Preise
 Weitere Informationen zu den Kosten von App Service finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 
-## <a name="testdrive-app-service"></a>Testen von App Service
-[Hier können Sie eine Beispiel-Web-App, mobile App oder Logik-App erstellen](http://go.microsoft.com/fwlink/?LinkId=523751) und eine Stunde lang ausprobieren – keine Kreditkarte erforderlich, keine Verpflichtungen, kein Ärger.
+## <a name="test-drive-app-service"></a>Testen von App Service
+[Hier können Sie problemlos eine Beispiel-Web-App, mobile App oder Logik-App erstellen](http://go.microsoft.com/fwlink/?LinkId=523751) und eine Stunde lang ausprobieren – ohne Kreditkarte oder Verpflichtungen.
 
 Oder eröffnen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), und probieren Sie eines unserer Tutorials für die ersten Schritte aus:
 
@@ -74,6 +94,6 @@ Oder eröffnen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/pri
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Übersicht über Azure IoT Hub | Microsoft Docs"
-description: "Übersicht über den Azure IoT Hub-Dienst: Informationen zum IoT-Hub, Gerätekonnektivität, Kommunikationsmuster für das Internet der Dinge und dienstgestütztes Kommunikationsmuster."
+description: "Übersicht über den Azure IoT Hub-Dienst: Informationen zu IoT Hub, Gerätekonnektivität, Kommunikationsmuster für das Internet der Dinge, Gateways und dienstgestütztes Kommunikationsmuster"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/23/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: b00aab7ea1eac8d34b9b535db2056c7b0ec41354
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 42774f83dc4c53dc8f090acb922b5aae6e8b4bed
 
 
 ---
@@ -77,7 +77,7 @@ Eine Lösung kann sowohl Protokoll- als auch Bereichsgateways enthalten.
 Azure IoT Hub implementiert das Muster für die [dienstgestützte Kommunikation][lnk-service-assisted-pattern], um die Interaktionen zwischen Ihren Geräten und dem Back-End der Lösung zu vermitteln. Das Ziel der dienstgestützten Kommunikation ist die Einrichtung von vertrauenswürdigen, bidirektionalen Kommunikationspfaden zwischen Steuersystemen, z. B. IoT Hub, und speziellen Geräten, die im nicht vertrauenswürdigen physischen Raum bereitgestellt werden. Für das Muster gelten die folgenden Grundsätze:
 
 * Sicherheit hat Vorrang vor allen anderen Funktionen.
-* Geräte akzeptieren keine unerwünschten Netzwerkinformationen. Ein Gerät stellt alle Verbindungen und Routen nur in ausgehender Richtung her. Damit ein Gerät einen Befehl vom Back-End erhalten kann, muss das Gerät regelmäßig eine Verbindung initiieren, um eine Prüfung auf ausstehende Befehle durchzuführen, die verarbeitet werden müssen.
+* Geräte akzeptieren keine unerwünschten Netzwerkinformationen. Ein Gerät stellt alle Verbindungen und Routen nur in ausgehender Richtung her. Damit ein Gerät einen Befehl vom Lösungs-Back-End erhalten kann, muss das Gerät regelmäßig eine Verbindung initiieren, um eine Prüfung auf ausstehende Befehle durchzuführen, die verarbeitet werden müssen.
 * Geräte sollten nur Verbindungen mit bekannten Peerdiensten wie IoT Hub herstellen bzw. Routen dafür einrichten.
 * Der Kommunikationspfad zwischen Gerät und Dienst oder Gerät und Gateway wird auf Anwendungsprotokollebene geschützt.
 * Die Autorisierung und Authentifizierung auf Systemebene basiert auf gerätebezogenen Identitäten. So wird dafür gesorgt, dass Anmeldeinformationen und Berechtigungen nahezu sofort widerrufbar sind.
@@ -91,7 +91,7 @@ IoT Hub wird über den öffentlichen Peeringpfad von ExpressRoute unterstützt.
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen dazu, wie Azure IoT Hub die standardbasierte Geräteverwaltung ermöglicht, sodass Sie Ihre Geräte remote verwalten, konfigurieren und aktualisieren können, finden Sie unter [Übersicht über die Geräteverwaltung mit IoT Hub][lnk-device-management].
 
-Mit den Azure IoT-Geräte SDKs können Sie Clientanwendungen auf einer Vielzahl von Gerätehardwareplattformen und Betriebssystemen implementieren. Die Geräte SDKs enthalten Bibliotheken, die das Senden von Telemetriedaten an einen IoT Hub und das Empfangen von C2D-Befehlen ermöglichen. Wenn Sie die Geräte SDKs verwenden, können Sie für die Kommunikation mit IoT Hub aus verschiedenen Netzwerkprotokollen auswählen. Erfahren Sie mehr in den [Informationen zu Geräte SDKs (in englischer Sprache)][lnk-device-sdks].
+Mit den Azure IoT-Geräte SDKs können Sie Clientanwendungen auf einer Vielzahl von Gerätehardwareplattformen und Betriebssystemen implementieren. Die Geräte-SDKs enthalten Bibliotheken, die das Senden von Telemetriedaten an einen IoT-Hub und das Empfangen von C2D-Nachrichten ermöglichen. Wenn Sie die Geräte SDKs verwenden, können Sie für die Kommunikation mit IoT Hub aus verschiedenen Netzwerkprotokollen auswählen. Erfahren Sie mehr in den [Informationen zu Geräte SDKs (in englischer Sprache)][lnk-device-sdks].
 
 Hilfe zu den ersten Schritten beim Schreiben von Code und dem Ausführen von Beispielen finden Sie im Tutorial [Erste Schritte mit IoT Hub][lnk-get-started].
 
@@ -121,6 +121,6 @@ Hilfe zu den ersten Schritten beim Schreiben von Code und dem Ausführen von Bei
 [lnk-security-ground-up]: iot-hub-security-ground-up.md
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

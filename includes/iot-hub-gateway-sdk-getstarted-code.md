@@ -35,7 +35,7 @@ In diesem Abschnitt werden einige wichtige Teile des Codes im Hello World-Beispi
 ### <a name="gateway-creation"></a>Gatewayerstellung
 Der Entwickler muss den *Gatewayprozess*schreiben. Dieses Programm erstellt die interne Infrastruktur (den Broker), lädt die Module und richtet alles ordnungsgemäß ein. Das SDK stellt die Funktion **Gateway_Create_From_JSON** bereit, mit der Sie einen Bootstrap eines Gateways aus einer JSON-Datei durchführen können. Um die **Gateway_Create_From_JSON**-Funktion zu verwenden, müssen Sie sie an den Pfad zu einer JSON-Datei übergeben, die die zu ladenden Module angibt. 
 
-Sie finden die Code für den Gatewayprozess im „Hello World“-Beispiel in der Datei [main.c][lnk-main-c]. Zur besseren Lesbarkeit zeigt der unten stehende Codeausschnitt eine verkürzte Version des Codes für den Gatewayprozess. Dieses Programm erstellt ein Gateway und wartet dann darauf, dass der Benutzer die **EINGABETASTE** drückt, bevor es das Gateway entfernt. 
+Sie finden den Code für den Gatewayprozess im Hello World-Beispiel in der [main.c][lnk-main-c]-Datei. Zur besseren Lesbarkeit zeigt der unten stehende Codeausschnitt eine verkürzte Version des Codes für den Gatewayprozess. Dieses Programm erstellt ein Gateway und wartet dann darauf, dass der Benutzer die **EINGABETASTE** drückt, bevor es das Gateway entfernt. 
 
 ```
 int main(int argc, char** argv)
@@ -60,9 +60,9 @@ Die Datei mit den JSON-Einstellungen enthält eine Liste von zu ladenden Modulen
 Jedes Modul muss Folgendes angeben:
 
 * **Name:** ein eindeutiger Name für das Modul
-* **Ladeprogramm:** ein Ladeprogramm, das das gewünschte Modul laden kann  Ladeprogramme sind ein Erweiterungspunkt zum Laden von verschiedenen Modultypen. Wir stellen Ladeprogramme für die Verwendung mit Modulen bereit, die in nativem C, Node.js, Java und .Net geschrieben wurden. Das Hello World-Beispiel verwendet nur das „native“ Ladeprogramm, da alle Module in diesem Beispiel dynamische Bibliotheken sind, die in C geschrieben wurden. Weitere Informationen zur Verwendung von Modulen, die in anderen Sprachen geschrieben wurden, finden Sie in den [Node](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/)-, [Java](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample)- oder [.Net](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample)-Beispielen.
+* **Ladeprogramm:** ein Ladeprogramm, das das gewünschte Modul laden kann  Ladeprogramme sind ein Erweiterungspunkt zum Laden von verschiedenen Modultypen. Wir stellen Ladeprogramme für die Verwendung mit Modulen bereit, die in nativem C, Node.js, Java und .Net geschrieben wurden. Das Hello World-Beispiel verwendet nur das „native“ Ladeprogramm, da alle Module in diesem Beispiel dynamische Bibliotheken sind, die in C geschrieben wurden. Weitere Informationen zur Verwendung von Modulen, die in anderen Sprachen geschrieben wurden, finden Sie in den [Node.js](https://github.com/Azure/azure-iot-gateway-sdk/blob/develop/samples/nodejs_simple_sample/)-, [Java](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/java_sample)- oder [.NET](https://github.com/Azure/azure-iot-gateway-sdk/tree/develop/samples/dotnet_binding_sample)-Beispielen.
     * **Name**: Der Name des Ladeprogramms, der für das Laden des Moduls verwendet wurde  
-    * **Einstiegspunkt:** Der Pfad zu der Bibliothek, die das Modul enthält Bei Linux ist dies eine SO-Datei, bei Windows eine DLL-Datei. Beachten Sie, dass es sich um einen für das verwendete Ladeprogramm spezifischen Einstiegspunkt handelt. Der Einstiegspunkt des Node.js-Ladeprogramms ist z.B. eine JS-Datei, der Einstiegspunkt des Java-Ladeprogramms ist ein Klassenpfad und ein Klassenname und der Einstiegspunkt des .Net-Ladeprogramms ist ein Assemblyname und Klassenname.
+    * **Einstiegspunkt:** Der Pfad zu der Bibliothek, die das Modul enthält Bei Linux ist dies eine SO-Datei, bei Windows eine DLL-Datei. Beachten Sie, dass es sich um einen für das verwendete Ladeprogramm spezifischen Einstiegspunkt handelt. Der Einstiegspunkt des Node.js-Ladeprogramms ist z.B. eine JS-Datei, der Einstiegspunkt des Java-Ladeprogramms ist ein Klassenpfad und ein Klassenname und der Einstiegspunkt des .NET-Ladeprogramms ist ein Assemblyname und Klassenname.
 
 * **args**: alle Konfigurationsinformationen, die das Modul benötigt.
 
@@ -114,7 +114,7 @@ Der folgende Code zeigt den JSON, der verwendet wurde, um die Verknüpfungen zwi
 ```
 
 ### <a name="hello-world-module-message-publishing"></a>Veröffentlichen von Nachrichten durch das Hello World-Modul
-Den Code, der vom „Hello World“-Modul zum Veröffentlichen von Nachrichten verwendet wird, finden Sie in der Datei [hello_world.c][lnk-helloworld-c]. Der Codeausschnitt unten zeigt eine verbesserte Version, aus dem zur besseren Lesbarkeit Fehlerbehandlungscode und zusätzliche Kommentare entfernt wurden.
+Den Code, der vom Hello World-Modul zum Veröffentlichen von Nachrichten verwendet wird, finden Sie in der Datei [hello_world.c][lnk-helloworld-c]. Der Codeausschnitt unten zeigt eine verbesserte Version, aus dem zur besseren Lesbarkeit Fehlerbehandlungscode und zusätzliche Kommentare entfernt wurden.
 
 ```
 int helloWorldThread(void *param)
@@ -219,8 +219,8 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung des IoT-Gateway-SDK finden Sie unter folgenden Links:
 
-* [IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux][lnk-gateway-simulated].
-* [Azure IoT-Gateway-SDK][lnk-gateway-sdk] auf GitHub.
+* [IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux][lnk-gateway-simulated]
+* [Azure IoT Gateway SDK][lnk-gateway-sdk] auf GitHub
 
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/hello_world/src/main.c
@@ -229,6 +229,6 @@ Weitere Informationen zur Verwendung des IoT-Gateway-SDK finden Sie unter folgen
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

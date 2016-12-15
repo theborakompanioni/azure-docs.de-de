@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 16ebe82b866565f676fb33bfa915465c08a5ea89
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 3855b32c8ff13f73cf91ea8973ed40a34a062224
 
 ---
 
@@ -39,12 +39,12 @@ ms.openlocfilehash: 16ebe82b866565f676fb33bfa915465c08a5ea89
 
 Führen Sie zum Einrichten eines Load Balancers mithilfe von PowerShell die folgenden Schritte aus:
 
-1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 2. Nach dem Erstellen eines virtuellen Computers können Sie PowerShell-Cmdlets verwenden, um einem virtuellen Computer in demselben Clouddienst einen Load Balancer hinzuzufügen.
 
-Im folgenden Beispiel fügen Sie eine Load Balancer-Gruppe namens „webfarm“ zum Clouddienst „mytestcloud“ (oder „myctestcloud.cloudapp.net“) hinzu. Dabei werden die Endpunkte für den Load Balancer den virtuellen Computern „web1“ und „web2“ hinzugefügt. Der Load Balancer empfängt Netzwerkdatenverkehr an Port 80 und führt für die durch den lokalen Endpunkt (in diesem Fall Port 80) festgelegten virtuellen Computer per TCP einen Lastenausgleich durch.
+Im folgenden Beispiel fügen Sie eine Load Balancer-Gruppe namens „webfarm“ zum Clouddienst „mytestcloud“ (oder „myctestcloud.cloudapp.net“) hinzu. Dabei werden die Endpunkte für den Load Balancer den virtuellen Computern „web1“ und „web2“ hinzugefügt. Der Load Balancer empfängt Netzwerkdatenverkehr an Port 80 und führt für die durch den lokalen Endpunkt (in diesem Fall Port 80) festgelegten virtuellen Computer per TCP einen Lastenausgleich durch.
 
-### <a name="step-1"></a>Schritt 1
+### <a name="step-1"></a>Schritt 1
 
 Erstellen eines Endpunkts mit Lastenausgleich für den ersten virtuellen Computer „web1“
 
@@ -52,7 +52,7 @@ Erstellen eines Endpunkts mit Lastenausgleich für den ersten virtuellen Compute
 Get-AzureVM -ServiceName "mytestcloud" -Name "web1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 80 -LBSetName "WebFarm" -ProbePort 80 -ProbeProtocol "http" -ProbePath '/' | Update-AzureVM
 ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="step-2"></a>Schritt 2
 
 Erstellen eines weiteren Endpunkts für den zweiten virtuellen Computer „web2“ unter Verwendung desselben Namens für die Gruppe mit Lastenausgleich
 
@@ -76,6 +76,6 @@ Wenn es für Ihre Anwendung erforderlich ist, dass Verbindungen mit Servern hint
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

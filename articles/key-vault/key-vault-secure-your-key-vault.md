@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/07/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
-ms.openlocfilehash: 5557dbef45d8599010a909635eebf399a5bcd2c8
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: fd93a6634175df47cd3ef871b01d08e9f5fea27b
 
 
 ---
@@ -72,7 +72,7 @@ Die Zugriffsteuerungen für die Verwaltungs- und die Datenebene sind voneinander
 Auf der Verwaltungsebene werden Vorgänge ausgeführt, die sich auf die eigentliche Key Vault-Instanz auswirken. Hier können Sie beispielsweise eine Key Vault-Instanz erstellen oder löschen. Sie können eine Liste aller Tresore in einem Abonnement abrufen. Sie können Key Vault-Eigenschaften (etwa SKU und Tags) abrufen und Key Vault-Zugriffsrichtlinien festlegen, um zu steuern, welche Benutzer und Anwendungen auf die Schlüssel und Geheimnisse in Key Vault zugreifen können. Die Zugriffssteuerung auf der Verwaltungsebene basiert auf RBAC. Eine umfassende Liste mit den Key Vault-Vorgängen, die über die Verwaltungsebene ausgeführt werden können, finden Sie in der Tabelle im vorherigen Abschnitt. 
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im Azure-Abonnement gewährt werden, für die das Azure Resource Manager-Bereitstellungsmodell verwendet wird. Diese Art von Zugriffssteuerung wird als rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bezeichnet. Zur Verwaltung dieses Zugriffs können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md) oder die [Azure Resource Manager-REST-APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx) verwenden.
+Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im Azure-Abonnement gewährt werden, für die das Azure Resource Manager-Bereitstellungsmodell verwendet wird. Diese Art von Zugriffssteuerung wird als rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) bezeichnet. Zur Verwaltung dieses Zugriffs können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [Azure Resource Manager-REST-APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx) verwenden.
 
 Bei Verwendung des Azure Resource Manager-Modells erstellen Sie Ihre Key Vault-Instanz in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene dieser Key Vault-Instanz mithilfe von Azure Active Directory. So können Sie beispielsweise Benutzern oder einer Gruppe die Verwaltung von Key Vault-Instanzen in einer bestimmten Ressourcengruppe ermöglichen.
 
@@ -89,7 +89,7 @@ Auf der Key Vault-Datenebene werden Vorgänge ausgeführt, die sich auf die Obje
 Der Datenebenenzugriff wird durch Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz gewährt. Ein Benutzer, eine Gruppe oder eine Anwendung muss über Mitwirkungsberechtigungen (RBAC) für die Verwaltungsebene einer Key Vault-Instanz verfügen, um Zugriffsrichtlinien für diese Instanz festlegen zu können. Einem Benutzer, einer Gruppe oder einer Anwendung kann Zugriff zum Ausführen bestimmter Vorgänge für Schlüssel oder Geheimnisse in einer Key Vault-Instanz gewährt werden. Pro Key Vault-Instanz werden bis zu 16 Zugriffsrichtlinien unterstützt. Erstellen Sie eine Azure Active Directory-Sicherheitsgruppe, und fügen Sie ihr Benutzer hinzu, um mehreren Benutzern Datenebenenzugriff auf eine Key Vault-Instanz zu gewähren.
 
 ### <a name="key-vault-access-policies"></a>Key Vault-Zugriffsrichtlinien
-Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Dadurch haben Sie beispielsweise die Möglichkeit, einem Benutzer nur Zugriff auf Schlüssel, aber keine Berechtigungen für Geheimnisse zu gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse oder Zertifikate gelten jedoch auf Tresorebene. Mit anderen Worten: Key Vault-Zugriffsrichtlinien unterstützen keine Berechtigungen auf Objektebene. Zum Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md) oder die [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.
+Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Dadurch haben Sie beispielsweise die Möglichkeit, einem Benutzer nur Zugriff auf Schlüssel, aber keine Berechtigungen für Geheimnisse zu gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse oder Zertifikate gelten jedoch auf Tresorebene. Mit anderen Worten: Key Vault-Zugriffsrichtlinien unterstützen keine Berechtigungen auf Objektebene. Zum Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.
 
 > [!IMPORTANT]
 > Beachten Sie, dass Key Vault-Zugriffsrichtlinien auf Tresorebene gelten. Wenn einem Benutzer also beispielsweise die Berechtigung zum Erstellen und Löschen von Schlüsseln gewährt wird, kann er diese Vorgänge für alle Schlüssel in dieser Key Vault-Instanz ausführen.
@@ -253,6 +253,6 @@ Sollten Sie Fragen zu Key Vault haben, besuchen Sie die [Azure Key Vault-Foren](
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

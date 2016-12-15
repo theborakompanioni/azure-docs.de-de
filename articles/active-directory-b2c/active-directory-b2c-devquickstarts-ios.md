@@ -3,7 +3,7 @@ title: 'Azure Active Directory B2C: Aufrufen einer Web-API aus einer iOS-Anwendu
 description: "In diesem Artikel wird gezeigt, wie Sie eine iOS-App für Aufgabenlisten erstellen, die eine Node.js-Web-API mithilfe von OAuth 2.0-Bearertoken und einer Drittanbieterbibliothek aufruft."
 services: active-directory-b2c
 documentationcenter: ios
-author: brandwe
+author: xerners
 manager: mbaldwin
 editor: 
 ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 07/26/2016
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
-ms.openlocfilehash: bdf08cad54f4c59bb09988fae0db3699dc5b2bff
+ms.sourcegitcommit: 0175f4e83aace12d8e4607f2ad924893093c6734
+ms.openlocfilehash: cc5e199816668a5a0f936019ab8096e93a7a2f5a
 
 
 ---
@@ -631,6 +631,6 @@ Sie können nun mit den B2C-Themen für fortgeschrittenere Benutzer fortfahren. 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 45e8331e0953dd646f132478741394a5b4907a9e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d72cf46c4a93d805ac9586696a6b41d81af733fd
 
 
 ---
@@ -56,7 +56,7 @@ Im nächsten Tutorial der Reihe wird das SPA-Front-End für die Cloud bereitgest
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * ASP.NET-Web-API: In der Anleitung des Tutorials wird davon ausgegangen, dass Sie über Grundkenntnisse in Bezug auf die Verwendung der ASP.NET- [Web-API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) in Visual Studio verfügen.
-* Azure-Konto: Sie können ein [kostenloses Azure-Konto eröffnen](/pricing/free-trial/?WT.mc_id=A261C142F) oder die [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+* Azure-Konto: Sie können ein [kostenloses Azure-Konto eröffnen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oder die [Visual Studio-Abonnementvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
   
     Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](http://go.microsoft.com/fwlink/?LinkId=523751). Dort können Sie direkt eine kurzzeitige Start-App in App Service erstellen – **ohne Kreditkarte**und weitere Verpflichtungen.
 * Visual Studio 2015 mit [Azure SDK für .NET](https://azure.microsoft.com/downloads/archive-net-downloads/) : Über das SDK wird Visual Studio 2015 automatisch installiert, falls die Anwendung noch nicht installiert ist.
@@ -442,6 +442,6 @@ Die Projektvorlage **Azure-API-App** entspricht folgenden Schritten: Auswählen 
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

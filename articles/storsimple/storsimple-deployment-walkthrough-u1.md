@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 68f3736069a153e6de9a7ba5f11708a4eb648dbf
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8a3f389250920dcdb49a5f88812d2e3b88bfd6c6
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device-update-1"></a>Bereitstellen lokaler StorSimple-Geräte (Update 1)
+# <a name="deploy-your-on-premises-storsimple-device-update-1"></a>Bereitstellen lokaler StorSimple-Geräte (Update 1)
 > [!div class="op_single_selector"]
 > * [Update 2](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -131,7 +131,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 * Die Ports in der Datencenter-Firewall werden geöffnet, um iSCSI- und Clouddatenverkehr zu ermöglichen, wie in [Netzwerkanforderungen für das StorSimple-Gerät](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)beschrieben.
 
-## <a name="stepbystep-deployment"></a>SCHRITTWEISE BEREITSTELLUNG
+## <a name="step-by-step-deployment"></a>SCHRITTWEISE BEREITSTELLUNG
 Verwenden Sie die folgenden schrittweisen Anweisungen, um Ihr StorSimple-Gerät im Datencenter bereitzustellen.
 
 ## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
@@ -270,6 +270,6 @@ Installations- und Konfigurationsanweisungen für MPIO auf einem StorSimple-Ger�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 883b3a27b4b06785068d04a143bae6c33fbed99b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0374fea21dbecabc0008cf6cd9096cd8c2d3f206
 
 
 ---
@@ -75,10 +75,10 @@ Beachten Sie folgende Punkte, bevor Sie den Webdienst der mobilen App installier
 
 <li>Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der der Webdienst der mobilen App installiert wurde (z. B. "https://www.publicwebsite.com/PA"). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.</li>
 
-### <a name="configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>Konfigurieren der Einstellungen für die mobile App im Azure Multi-Factor Authentication-Server
+### <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurieren der Einstellungen für die mobile App im Azure Multi-Factor Authentication-Server
 Nachdem Sie den Webdienst der mobilen App installiert haben, müssen Sie den Azure Multi-Factor Authentication-Server für die Verwendung mit dem Portal konfigurieren.
 
-#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multifactor-authentication-server"></a>So konfigurieren Sie die Einstellungen für die mobile App im Azure Multi-Factor Authentication-Server
+#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>So konfigurieren Sie die Einstellungen für die mobile App im Azure Multi-Factor Authentication-Server
 1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server auf das Symbol "Benutzerportal". Wenn Benutzer ihre Authentifizierungsmethoden selbst steuern dürfen, aktivieren Sie auf der Registerkarte "Einstellungen" unter "Methodenauswahl durch Benutzer zulassen" die Option "Mobile App". Wenn diese Funktion nicht aktiviert ist, müssen Endbenutzer sich an den Helpdesk wenden, um die Aktivierung für die mobile App abzuschließen.
 2. Aktivieren Sie das Kontrollkästchen "Aktivierung der mobilen Anwendung durch Benutzer zulassen".
 3. Aktivieren Sie das Kontrollkästchen "Benutzerregistrierung zulassen".
@@ -89,6 +89,6 @@ Nachdem Sie den Webdienst der mobilen App installiert haben, müssen Sie den Azu
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

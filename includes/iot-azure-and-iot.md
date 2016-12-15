@@ -18,7 +18,7 @@ Das folgende Diagramm zeigt die Architektur einer typischen IoT-Lösung. Es enth
 > 
 
 ### <a name="device-connectivity"></a>Gerätekonnektivität
-In dieser IoT-Lösungsarchitektur senden Geräte Telemetriedaten wie z.B. Sensormesswerte von einem Pumpwerk an einen Cloudendpunkt, wo sie gespeichert und verarbeitet werden. In einem Szenario mit vorausschauender Wartung verwendet das Back-End möglicherweise den Sensordatenstrom, um zu ermitteln, wann eine bestimmte Pumpe gewartet werden muss. Geräte können auch Cloud-zu-Gerät-Befehle (Cloud-to-Device, C2D) empfangen und darauf reagieren, indem Nachrichten von einem Cloudendpunkt gelesen werden. Im Szenario mit der vorhersagbaren Wartung kann das Lösungs-Back-End beispielsweise Befehle an andere Pumpen im Pumpwerk senden, sodass kurz vor der fälligen Wartung mit der Umleitung des Wassers begonnen wird. So kann der Wartungstechniker gleich nach seiner Ankunft mit der Arbeit beginnen.
+In dieser IoT-Lösungsarchitektur senden Geräte Telemetriedaten wie z.B. Sensormesswerte von einem Pumpwerk an einen Cloudendpunkt, wo sie gespeichert und verarbeitet werden. In einem Szenario mit vorbeugender Wartung verwendet das Lösungs-Back-End möglicherweise den Sensordatenstrom, um zu ermitteln, wann eine bestimmte Pumpe gewartet werden muss. Geräte können auch Cloud-zu-Gerät-Nachrichten (Cloud-to-Device, C2D) empfangen und darauf reagieren, indem Nachrichten von einem Cloudendpunkt gelesen werden. Im Szenario mit vorbeugender Wartung kann das Lösungs-Back-End beispielsweise Nachrichten an andere Pumpen im Pumpwerk senden, sodass kurz vor der fälligen Wartung mit der Umleitung des Wassers begonnen wird. So kann der Wartungstechniker gleich nach seiner Ankunft mit der Arbeit beginnen.
 
 Eines der größten Probleme im Zusammenhang mit IoT-Projekten ist die sichere und zuverlässige Verbindung von Geräten mit dem Lösungs-Back-End. IoT-Geräte weisen andere Merkmale als andere Clients wie Browser und mobile Apps auf. IoT-Geräte:
 
@@ -42,9 +42,9 @@ In der Cloud findet ein Großteil der Datenverarbeitung im Back-End der IoT-Lös
 * Das Back-End bietet Registrierungsfunktionen, mit denen Sie Geräte bereitstellen und steuern können, welche Geräte eine Verbindung mit Ihrer Infrastruktur herstellen dürfen.
 * Mit dem Back-End können Sie den Status Ihrer Geräte nachverfolgen und deren Aktivitäten überwachen.
 
-Im Szenario mit der vorhersagbaren Wartung speichert das Lösungs-Back-End historische Telemetriedaten. Auf der Grundlage dieser Daten kann das Back-End Muster erkennen, die darauf hindeuten, dass bei einer bestimmten Pumpe eine Wartung fällig ist.
+Im Szenario mit der vorhersagbaren Wartung speichert das Lösungs-Back-End historische Telemetriedaten. Auf der Grundlage dieser Daten kann das Lösungs-Back-End Muster erkennen, die darauf hindeuten, dass bei einer bestimmten Pumpe eine Wartung fällig ist.
 
-IoT-Lösungen können automatische Feedback-Schleifen enthalten. Beispielsweise kann ein Analysemodul im Back-End anhand der Telemetriedaten ermitteln, dass die Temperatur eines bestimmten Geräts über der normalen Betriebstemperatur liegt. Daraufhin kann die Lösung dann einen Befehl an das Gerät senden und Korrekturmaßnahmen einleiten.
+IoT-Lösungen können automatische Feedback-Schleifen enthalten. Beispielsweise kann ein Analysemodul im Lösungs-Back-End anhand der Telemetriedaten ermitteln, dass die Temperatur eines bestimmten Geräts über der normalen Betriebstemperatur liegt. Daraufhin kann die Lösung dann einen Befehl an das Gerät senden und Korrekturmaßnahmen einleiten.
 
 ### <a name="presentation-and-business-connectivity"></a>Präsentations- und Geschäftskonnektivität
 Die Präsentations- und Geschäftskonnektivitätsebene ermöglicht Endbenutzern die Interaktion mit der IoT-Lösung und den Geräten. Damit können die Benutzer die auf den Geräten erfassten Daten anzeigen und analysieren. Diese Sichten können in Form von Dashboards oder BI-Berichten vorkommen, die jeweils historische Daten oder Daten in Echtzeit anzeigen. Ein Bediener kann z.B. den Status eines bestimmten Pumpwerks überprüfen und alle Warnungen anzeigen, die vom System ausgelöst wurden. Diese Ebene ermöglicht auch die Integration des IoT-Lösungs-Back-Ends in vorhandene Line-of-Business-Anwendungen, um es in Geschäftsprozesse oder Workflows im Unternehmen einzubinden. Beispielsweise kann die Lösung „vorausschauende Wartung“ sich mit einem Terminplanungssystem integrieren, das einen Techniker in ein Pumpwerk bestellt, sobald die Lösung anzeigt, dass eine Pumpe Wartungsbedarf hat.
@@ -60,6 +60,6 @@ Die Präsentations- und Geschäftskonnektivitätsebene ermöglicht Endbenutzern 
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

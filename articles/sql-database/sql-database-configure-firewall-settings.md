@@ -8,19 +8,20 @@ manager: jhubbard
 editor: 
 ms.assetid: c3b206b5-af6e-41af-8306-db12ecfc1b5d
 ms.service: sql-database
+ms.custom: auth and access
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: hero-article
 ms.date: 11/28/2016
 ms.author: rickbyh;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ad72adf626fb5f59f239f57ff0158db101017a1b
-ms.openlocfilehash: 7925663bd4233e368f54b38c94888ac1b0f5dcab
+ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
+ms.openlocfilehash: 1479595fb7de2e0a37520c7d323624142e624af1
 
 
 ---
-# <a name="configure-an-azure-sql-database-server-level-firewall-rule-using-the-azure-portal"></a>Konfigurieren einer Firewallregel auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals
+# <a name="create-and-manage-azure-sql-database-server-level-firewall-rules-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals
 > [!div class="op_single_selector"]
 > * [Übersicht](sql-database-firewall-configure.md)
 > * [Azure-Portal](sql-database-configure-firewall-settings.md)
@@ -28,18 +29,14 @@ ms.openlocfilehash: 7925663bd4233e368f54b38c94888ac1b0f5dcab
 > * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 > * [REST-API](sql-database-configure-firewall-settings-rest.md)
 > 
-> 
 
-Der Azure SQL Server verwendet Firewallregeln, um Verbindungen mit Ihren Servern und Datenbanken zu erlauben. Sie können auf Ihrem logischen Server des Azure SQL-Servers auf Serverebene und Datenbankebene Firewalleinstellungen für die Masterdatenbank oder eine Benutzerdatenbank definieren, um den selektiven Zugriff auf die Datenbank zu ermöglichen. In diesem Thema werden Firewallregeln auf Serverebene behandelt.
+Mithilfe von Firewallregeln auf Serverebene können Administratoren über eine bestimmte IP-Adresse oder über einen IP-Adressbereich auf einen SQL-Datenbank-Server zugreifen. Firewallregeln auf Serverebene können auch für Benutzer verwendet werden, falls Sie über viele Datenbanken mit identischen Zugriffsanforderungen verfügen und die Datenbanken nicht einzeln konfigurieren möchten. Microsoft empfiehlt, nach Möglichkeit Firewallregeln auf Datenbankebene zu verwenden, um die Sicherheit und die Portabilität der Datenbank zu verbessern. Eine Übersicht über SQL-Datenbank-Firewalls finden Sie unter [Konfigurieren von Firewallregeln für Azure SQL-Datenbank – Übersicht](sql-database-firewall-configure.md).
 
-> [!IMPORTANT]
-> Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen, müssen Azure-Verbindungen aktiviert sein. Informationen zur Funktionsweise der Firewallregeln finden Sie unter [So wird's gemacht: Konfigurieren einer Azure SQL Server-Firewall \- Übersicht](sql-database-firewall-configure.md). Wenn Sie Verbindungen innerhalb der Grenzen der Azure-Cloud herstellen möchten, müssen Sie möglicherweise einige zusätzliche TCP-Ports öffnen. Weitere Informationen finden Sie im Abschnitt **SQL-Datenbank V12: "Außerhalb" im Vergleich zu "Innerhalb"** im Artikel [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md)
-> 
-> 
+> [!Note]
+> Informationen zu portablen Datenbanken im Kontext der Geschäftskontinuität finden Sie unter [Authentifizierungsanforderungen für die Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
+>
 
-**Empfehlung:** Verwenden Sie Firewallregeln auf Serverebene für Administratoren, und wenn Sie über viele Datenbanken mit identischen Zugriffsanforderungen verfügen und die Datenbanken nicht einzeln konfigurieren möchten. Microsoft empfiehlt, nach Möglichkeit Firewallregeln auf Datenbankebene zu verwenden, um die Sicherheit und die Portabilität der Datenbank zu verbessern.
-
-[!INCLUDE [Create SQL Database database](../../includes/sql-database-create-new-server-firewall-portal.md)]
+[!INCLUDE [Create SQL Database firewall rule](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Verwalten vorhandener Firewallregeln auf Serverebene über das Azure-Portal
 Wiederholen Sie die Schritte zum Verwalten der Firewallregeln auf Serverebene.
@@ -52,16 +49,11 @@ Wiederholen Sie die Schritte zum Verwalten der Firewallregeln auf Serverebene.
 Klicken Sie zum Speichern der Änderungen auf **Speichern** .
 
 ## <a name="next-steps"></a>Nächste Schritte
-Einen Artikel mit einer Anleitung zur Verwendung von Transact-SQL zum Erstellen von Firewallregeln auf Serverebene und Datenbankebene finden Sie unter [Konfigurieren von Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank mit T-SQL](sql-database-configure-firewall-settings-tsql.md). 
 
-Artikel mit Anleitungen zum Erstellen von Firewallregeln auf Serverebene mit anderen Methoden finden Sie unter: 
-
-* [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe von PowerShell](sql-database-configure-firewall-settings-powershell.md)
-* [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe der REST-API](sql-database-configure-firewall-settings-rest.md)
-
-Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md).   
-
-Um zu erfahren, wie zusätzliche Benutzer erstellt werden, die eine Verbindung mit Datenbanken herstellen können, gehen Sie unter [SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff](https://msdn.microsoft.com/library/azure/ee336235.aspx).
+- Ein Tutorial mit ersten Schritten finden Sie unter [SQL-Datenbank-Tutorial: Erstellen eines Servers, einer Firewallregel auf Serverebene, einer Beispieldatenbank und einer Firewallregel auf Datenbankebene und Herstellen der Verbindung mit SQL Server Management Studio](sql-database-get-started.md).
+- Ein Tutorial mit ersten Sicherheitsschritten finden Sie unter [SQL-Datenbank-Tutorial: Erste Schritte für die Sicherheit](sql-database-get-started-security.md).
+- Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+- Um zu erfahren, wie zusätzliche Benutzer erstellt werden, die eine Verbindung mit Datenbanken herstellen können, gehen Sie unter [SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff](https://msdn.microsoft.com/library/azure/ee336235.aspx).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Sichern der Datenbank](sql-database-security.md)   
@@ -72,6 +64,6 @@ Um zu erfahren, wie zusätzliche Benutzer erstellt werden, die eine Verbindung m
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

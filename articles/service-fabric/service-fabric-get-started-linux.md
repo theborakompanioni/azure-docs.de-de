@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 7e33e00a676f4aa7143cede3380adb58ba1d11e4
-ms.openlocfilehash: c27b92d4a1a1bd96ad0bdc46363b8066abc72edd
+ms.sourcegitcommit: ff2e3c27f9fc02ebe30380798be00211113208e3
+ms.openlocfilehash: 4f3c0cee8fe686c5355ce460064a7188d35f3e44
 
 
 ---
@@ -69,6 +69,7 @@ Nach der Aktualisierung Ihrer Datenquellen können Sie das SDK installieren.
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
+
 
 ## <a name="set-up-the-azure-cross-platform-cli"></a>Einrichten der plattformübergreifenden Azure-Befehlszeilenschnittstelle
 Die [plattformübergreifende Azure-Befehlszeilenschnittstelle][azure-xplat-cli-github] enthält Befehle für die Interaktion mit Service Fabric-Entitäten (wie etwa Cluster und Anwendungen). Sie basiert auf Node.js. [Vergewissern Sie sich daher, dass Sie Node installiert haben][install-node], bevor Sie mit den weiteren Schritten fortfahren.
@@ -149,10 +150,20 @@ Das .NET Core SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
     ```
+## <a name="updating-the-sdk-and-runtime"></a>Aktualisieren des SDK und der Laufzeit
+
+Führen Sie zum Aktualisieren auf die aktuelle SDK- und Laufzeitversion die folgenden Schritte aus (entfernen Sie aus der Liste die SDKs, die Sie nicht aktualisieren oder installieren möchten.):
+
+    ```bash
+    sudo apt-get update
+    sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
+    ```
+
+Navigieren Sie zum Aktualisieren der CLI zum Verzeichnis, in dem Sie die CLI geklont haben, und führen Sie zum Aktualisieren `git pull` aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Create your first Java application on Linux](service-fabric-create-your-first-linux-application-with-java.md)
-* [Prepare your development environment on OSX (Vorbereiten Ihrer Entwicklungsumgebung unter OSX)](service-fabric-get-started-mac.md)
+* [Prepare your development environment on OSX](service-fabric-get-started-mac.md)
 
 <!-- Links -->
 
@@ -167,6 +178,6 @@ Das .NET Core SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

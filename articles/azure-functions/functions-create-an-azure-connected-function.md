@@ -14,175 +14,189 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/25/2016
+ms.date: 12/06/2016
 ms.author: rachelap@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: a0a46708645be91f89b0a6ae9059468bc84aeb11
-ms.openlocfilehash: c6905452951910d3c62bc5152741a8ead26196ef
+ms.sourcegitcommit: f46a67f2591ef98eeda03f5c3bc556d5b8bcc096
+ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
 
 
 ---
-# <a name="create-an-azure-function-which-binds-to-an-azure-service"></a>Erstellen einer Azure Functions-Funktion zum Erstellen einer Bindung an einen Azure-Dienst
-[!INCLUDE [Getting Started Note](../../includes/functions-getting-started.md)]
+# <a name="create-an-azure-function-connected-to-an-azure-service"></a>Erstellen einer Azure Functions-Funktion, die mit einem Azure-Dienst verbunden ist
 
-In diesem kurzen Video erfahren Sie, wie Sie eine Azure Functions-Funktion erstellen, die eine Azure-Warteschlange auf Nachrichten überwacht und die Nachrichten in ein Azure-Blob kopiert.
+In diesem Thema wird veranschaulicht, wie Sie eine Azure Functions-Funktion erstellen, die über eine Azure Storage-Warteschlange auf Nachrichten lauscht und die Nachrichten in die Zeilen einer Azure Storage-Tabelle kopiert. Eine per Timer ausgelöste Funktion wird verwendet, um Nachrichten in die Warteschlange zu laden. Mit einer zweiten Funktion werden Daten aus der Warteschlange ausgelesen und Nachrichten in die Tabelle geschrieben. Sowohl die Warteschlange als auch die Tabelle werden für Sie basierend auf den Bindungsdefinitionen von Azure Functions erstellt. 
+
+Interessant ist hierbei, dass eine Funktion in JavaScript und die andere in C#-Skript geschrieben wurde. Dies zeigt, dass eine Funktionen-App über Funktionen in unterschiedlichen Sprachen verfügen kann.
 
 ## <a name="watch-the-video"></a>Video ansehen
 >[!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player]
 >
 >
 
-## <a name="create-an-input-queue-trigger-function"></a>Erstellen einer Trigger-Funktion für die Eingabewarteschlange
-Mit dieser Funktion soll alle zehn Sekunden eine Nachricht in eine Warteschlange geschrieben werden. Hierzu müssen Sie die Funktion und die Nachrichtenwarteschlangen erstellen und den neu erstellten Warteschlangen den Code zum Schreiben von Nachrichten hinzufügen.
+## <a name="create-a-function-that-writes-to-the-queue"></a>Erstellen einer Funktion, die in die Warteschlange schreibt
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure-Funktionen-App.
-2. Klicken Sie auf **Neue Funktion** > **TimerTrigger – Node**. Nennen Sie die Funktion **FunctionsBindingsDemo1**.
-3. Geben Sie für den Zeitplan den Wert „0/10 * * * * *“ ein. Dieser Wert wird als CRON-Ausdruck angegeben. Dadurch wird der Timer alle 10 Sekunden ausgeführt.
-4. Klicken Sie auf die Schaltfläche **Erstellen**, um die Funktion zu erstellen.
-   
-    ![Hinzufügen einer Funktion zum Auslösen des Timers](./media/functions-create-an-azure-connected-function/new-trigger-timer-function.png)
-5. Vergewissern Sie sich anhand der Aktivität im Protokoll, dass die Funktion funktioniert. Zum Anzeigen des Protokollbereichs müssen Sie ggf. in der rechten oberen Ecke auf **Protokolle** klicken.
-   
-   ![Überprüfen der Funktionsfähigkeit der Funktion anhand des Protokolls](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-view-log.png)
+Bevor Sie eine Verbindung mit einer Speicherwarteschlange herstellen können, müssen Sie eine Funktion erstellen, die eine Nachrichtenwarteschlange lädt. Für die JavaScript-Funktion wird ein Trigger mit Timer verwendet, bei dem alle zehn Sekunden eine Nachricht in die Warteschlange geschrieben wird. Falls Sie noch kein Azure-Konto besitzen, können Sie sich die Seite zum Ausprobieren von Funktionen ([Try Azure Functions](https://functions.azure.com/try)) ansehen oder [ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
 
-### <a name="add-a-message-queue"></a>Hinzufügen einer Nachrichtenwarteschlange
-1. Navigieren Sie zur Registerkarte **Integrieren**.
-2. Wählen Sie **Neue Ausgabe** > **Azure Storage-Warteschlange** > **Auswählen** aus.
-3. Geben Sie im Textfeld **Nachrichtenparametername** die Zeichenfolge **myQueueItem** ein.
-4. Wählen Sie ein Speicherkonto aus, oder klicken Sie auf **Neu**, um ein Speicherkonto zu erstellen, falls noch keins vorhanden ist.
-5. Geben Sie im Textfeld **Warteschlangenname** die Zeichenfolge **functions-bindings** ein.
-6. Klicken Sie auf **Speichern**.  
-   
-   ![Hinzufügen einer Funktion zum Auslösen des Timers](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab.png)
+1. Navigieren Sie im Azure-Portal zu Ihrer Funktionen-App.
 
-### <a name="write-to-the-message-queue"></a>Schreiben in die Nachrichtenwarteschlange
-1. Kehren Sie zur Registerkarte **Entwickeln** zurück, und fügen Sie der Funktion nach dem bereits vorhandenen Code den folgenden Code hinzu:
+2. Klicken Sie auf **Neue Funktion** > **TimerTrigger-JavaScript**. 
+
+3. Geben Sie der Funktion den Namen **FunctionsBindingsDemo1**, und geben Sie den CRON-Ausdruckswert `0/10 * * * * *` unter **Zeitplan** ein. Klicken Sie anschließend auf **Erstellen**.
+   
+    ![Hinzufügen einer Funktion mit Auslösung per Timer](./media/functions-create-an-azure-connected-function/new-trigger-timer-function.png)
+
+    Sie haben jetzt eine Funktion erstellt, die per Timer ausgelöst und alle zehn Sekunden ausgeführt wird.
+
+5. Klicken Sie auf der Registerkarte **Entwickeln** auf **Protokolle**, und zeigen Sie die Aktivität im Protokoll an. Sie sehen, dass alle zehn Sekunden ein Protokolleintrag geschrieben wird.
+   
+    ![Anzeigen des Protokolls zur Überprüfung der Funktion](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-view-log.png)
+
+## <a name="add-a-message-queue-output-binding"></a>Hinzufügen einer Ausgabebindung für die Nachrichtenwarteschlange
+
+1. Wählen Sie auf der Registerkarte **Integrieren** die Option **Neue Ausgabe** > **Azure Queue Storage** > **Auswählen**.
+
+    ![Hinzufügen einer Funktion mit Auslösung per Timer](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab.png)
+
+2. Geben Sie `myQueueItem` unter **Nachrichtenparametername** und `functions-bindings` unter **Warteschlangenname** ein, und wählen Sie eine vorhandene **Speicherkontoverbindung** aus, oder klicken Sie auf **Neu**, um eine Speicherkontoverbindung zu erstellen. Klicken Sie anschließend auf **Speichern**.  
+
+    ![Erstellen der Ausgabebindung mit der Speicherwarteschlange](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab2.png)
+
+1. Fügen Sie über die Registerkarte **Entwickeln** den folgenden Code an die Funktion an:
    
     ```javascript
    
     function myQueueItem() 
-      {
+    {
         return {
-        msg: "some message goes here",
-        time: "time goes here"
-      }
+            msg: "some message goes here",
+            time: "time goes here"
+        }
     }
    
     ```
-2. Ändern Sie den vorhandenen Funktionscode so, dass der in Schritt 1 hinzugefügte Code aufgerufen wird. Fügen Sie bei Zeile 9 der Funktion (nach der Anweisung *if*) den folgenden Code ein.
+2. Suchen Sie nach der *if*-Anweisung, die sich ungefähr in Zeile 9 der Funktion befindet, und fügen Sie nach der Anweisung den folgenden Code ein.
    
     ```javascript
    
     var toBeQed = myQueueItem();
     toBeQed.time = timeStamp;
-    context.bindings.myQueue = toBeQed;
+    context.bindings.myQueueItem = toBeQed;
    
-    ```
+    ```  
    
-    Dieser Code erstellt ein **myQueueItem**-Element und legt dessen **time**-Eigenschaft auf den aktuellen Zeitstempel fest. Anschließend wird das neue Warteschlangenelement der myQueue-Bindung des Kontexts hinzugefügt.
+    Dieser Code erstellt ein **myQueueItem**-Element und legt dessen **time**-Eigenschaft auf den aktuellen Zeitstempel fest. Anschließend wird das neue Warteschlangenelement der **myQueueItem**-Bindung des Kontexts hinzugefügt.
+
 3. Klicken Sie auf **Speichern und ausführen**.
-4. Sehen Sie sich die Warteschlange in Visual Studio an, um zu prüfen, ob der Code funktioniert.
-   
-   * Navigieren Sie in Visual Studio zu **Ansicht** > **Cloud-****Explorer**.
-   * Suchen Sie das Speicherkonto und die Warteschlange **functions-bindings**, die Sie beim Erstellen der myQueue-Warteschlange verwendet haben. Es sollten mehrere Zeilen mit Protokolldaten angezeigt werden. Unter Umständen müssen Sie sich über Visual Studio bei Azure anmelden.  
 
-## <a name="create-an-output-queue-trigger-function"></a>Erstellen einer Trigger-Funktion für die Ausgabewarteschlange
-1. Klicken Sie auf **Neue Funktion** > **QueueTrigger – C#**. Nennen Sie die Funktion **FunctionsBindingsDemo2**. Beachten Sie, dass Sie innerhalb der gleichen Funktionen-App mehrere Sprachen (in diesem Fall: Node und C#) kombinieren können.
-2. Geben Sie im Feld **Warteschlangenname** die Zeichenfolge **functions-bindings** ein.
-3. Wählen Sie das gewünschte Speicherkonto aus, oder erstellen Sie ein neues.
-4. Klicken Sie auf **Erstellen**.
-5. Überprüfen Sie sowohl das Protokoll der Funktion als auch Visual Studio auf Updates, und vergewissern Sie sich, dass die neue Funktion funktioniert. Im Protokoll der Funktion sehen Sie, dass die Funktion ausgeführt wird und dass Elemente aus der Warteschlange entfernt werden. Da die Funktion als Eingabe-Trigger an die Ausgabewarteschlange **functions-bindings** gebunden ist, sollten die Elemente nach der Aktualisierung der Warteschlange **functions-bindings** in Visual Studio nicht mehr angezeigt werden. Sie wurden aus der Warteschlange entfernt.   
-   
-   ![Hinzufügen einer Timer-Funktion für die Ausgabewarteschlange](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png)   
+## <a name="view-storage-updates-by-using-storage-explorer"></a>Anzeigen von Speicherupdates mit dem Speicher-Explorer
+Sie können die Funktionsweise der Funktion überprüfen, indem Sie in der von Ihnen erstellten Warteschlange Nachrichten anzeigen.  Sie können eine Verbindung mit der Speicherwarteschlange herstellen, indem Sie den Cloud-Explorer in Visual Studio verwenden. Im Portal ist es aber einfach, mit dem Microsoft Azure-Speicher-Explorer eine Verbindung mit Ihrem Speicherkonto herzustellen.
 
-### <a name="modify-the-queue-item-type-from-json-to-object"></a>Ändern des Warteschlangenelementtyps von „JSON“ in „Objekt“
-1. Ersetzen Sie den Code in **FunctionsBindingsDemo2** durch folgenden Code:    
+1. Klicken Sie auf der Registerkarte **Integrieren** auf Ihre Warteschlangen-Ausgabebindung und dann auf **Dokumentation**. Blenden Sie anschließend die Verbindungszeichenfolge für Ihr Speicherkonto ein, und kopieren Sie den Wert. Sie verwenden diesen Wert, um eine Verbindung mit Ihrem Speicherkonto herzustellen.
+
+    ![Herunterladen des Azure-Speicher-Explorers](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-integrate-tab3.png)
+
+
+2. Laden Sie den [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com) herunter, und installieren Sie ihn, falls Sie dies noch nicht getan haben. 
+ 
+3. Klicken Sie im Speicher-Explorer auf das Symbol „Verbindung mit Azure-Speicher herstellen“, fügen Sie die Verbindungszeichenfolge in das Feld ein, und schließen Sie den Assistenten ab.
+
+    ![Speicher-Explorer – Hinzufügen einer Verbindung](./media/functions-create-an-azure-connected-function/functionsbindingsdemo1-storage-explorer.png)
+
+4. Erweitern Sie unter **Local and attached** (Lokal und angefügt) die Option **Speicherkonten** > Ihr Speicherkonto > **Warteschlangen** > **functions-bindings**, und vergewissern Sie sich, dass Nachrichten in die Warteschlange geschrieben werden.
+
+    ![Anzeigen von Nachrichten in der Warteschlange](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer.png)
+
+    Wenn die Warteschlange nicht vorhanden oder leer ist, liegt wahrscheinlich ein Problem mit der Funktionsbindung oder dem Code vor.
+
+## <a name="create-a-function-that-reads-from-the-queue"></a>Erstellen einer Funktion zum Auslesen aus der Warteschlange
+
+Nachdem der Warteschlange jetzt Nachrichten hinzugefügt werden, können Sie eine weitere Funktion erstellen, mit der Daten aus der Warteschlange ausgelesen und die Nachrichten dauerhaft in eine Azure Storage-Tabelle geschrieben werden.
+
+1. Klicken Sie auf **Neue Funktion** > **QueueTrigger-CSharp**. 
+ 
+2. Geben Sie der Funktion den Namen `FunctionsBindingsDemo2`, geben Sie **functions-bindings** im Feld **Warteschlangenname** ein, und wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein Speicherkonto. Klicken Sie anschließend auf **Erstellen**.
+
+    ![Hinzufügen einer Timer-Funktion für die Ausgabewarteschlange](./media/functions-create-an-azure-connected-function/function-demo2-new-function.png) 
+
+3. (Optional) Sie können die Funktionsweise der neuen Funktion überprüfen, indem Sie die neue Warteschlange wie zuvor im Speicher-Explorer anzeigen. Sie können auch den Cloud-Explorer in Visual Studio verwenden.  
+
+4. (Optional) Aktualisieren Sie die Warteschlange **functions-bindings**. Sie sehen, dass Elemente aus der Warteschlange entfernt wurden. Das Entfernen wird durchgeführt, weil die Funktion an die Warteschlange **functions-bindings** als Eingabetrigger gebunden ist und die Funktion Daten aus der Warteschlange ausliest. 
+ 
+## <a name="add-a-table-output-binding"></a>Hinzufügen einer Tabellenausgabebindung
+
+1. Klicken Sie in FunctionsBindingsDemo2 auf **Integrieren** > **Neue Ausgabe** > **Azure Table Storage** > **Auswählen**.
+
+    ![Hinzufügen einer Bindung an eine Azure Storage-Tabelle](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png) 
+
+2. Geben Sie `TableItem` als **Tabellenname** und `functionbindings` als **Tabellenparametername** ein, und wählen Sie eine **Speicherkontoverbindung** aus, oder erstellen Sie eine neue Verbindung. Klicken Sie anschließend auf **Speichern**.
+
+    ![Konfigurieren der Speichertabellenbindung](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab2.png)
+   
+3. Ersetzen Sie auf der Registerkarte **Entwickeln** den vorhandenen Funktionscode durch Folgendes:
    
     ```cs
-   
+    
     using System;
-   
-    public static void Run(QItem myQueueItem, ICollector<TableItem> myTable, TraceWriter log)
-    {
-      TableItem myItem = new TableItem
-      {
-        PartitionKey = "key",
-        RowKey = Guid.NewGuid().ToString(),
-        Time = DateTime.Now.ToString("hh.mm.ss.ffffff"),
-        Msg = myQueueItem.Msg,
-        OriginalTime = myQueueItem.Time    
-      };
-      log.Verbose($"C# Queue trigger function processed: {myQueueItem.Msg} | {myQueueItem.Time}");
-    }
-   
-    public class TableItem
-    {
-      public string PartitionKey {get; set;}
-      public string RowKey {get; set;}
-      public string Time {get; set;}
-      public string Msg {get; set;}
-      public string OriginalTime {get; set;}
-    }
-   
-    public class QItem
-    {
-      public string Msg { get; set;}
-      public string Time { get; set;}
-    }
-   
-    ```
-   
-    Dieser Code fügt zwei Klassen (**TableItem** und **QItem**) hinzu, die zum Lesen und Schreiben in Warteschlangen verwendet werden. Darüber hinaus wurde die **Run**-Funktion geändert: Sie akzeptiert nun anstelle von **string** und **TraceWriter** die Parameter **QItem** und **TraceWriter**. 
-2. Klicken Sie auf die Schaltfläche **Save** .
-3. Vergewissern Sie sich anhand des Protokolls, dass der Code funktioniert. Das Objekt wird von Azure Functions automatisch serialisiert und deserialisiert. Dies vereinfacht den objektorientierten Zugriff auf die Warteschlange, um Daten zu bewegen. 
-
-## <a name="store-messages-in-an-azure-table"></a>Speichern von Nachrichten in einer Azure-Tabelle
-Nachdem die Warteschlangen nun zusammenarbeiten, muss noch eine Azure-Tabelle zur dauerhaften Speicherung der Warteschlangendaten hinzugefügt werden.
-
-1. Navigieren Sie zur Registerkarte **Integrieren**.
-2. Erstellen Sie eine Azure Storage-Tabelle für die Ausgabe, und nennen Sie sie **myTable**.
-3. Beantworten Sie die Frage nach der Tabelle, in die die Daten geschrieben werden sollen, mit **functionsbindings**.
-4. Ändern Sie die Einstellung **PartitionKey** von **{project-id}** in **{partition}**.
-5. Wählen Sie ein Speicherkonto aus, oder erstellen Sie ein neues.
-6. Klicken Sie auf **Speichern**.
-7. Navigieren Sie zur Registerkarte **Entwickeln**.
-8. Erstellen Sie eine **TableItem**-Klasse zur Darstellung einer Azure-Tabelle, und ändern Sie die Run-Funktion so, dass sie das neu erstellte TableItem-Objekt akzeptiert. Hierzu müssen die Eigenschaften **PartitionKey** und **RowKey** verwendet werden.
-   
-    ```cs
-   
+    
     public static void Run(QItem myQueueItem, ICollector<TableItem> myTable, TraceWriter log)
     {    
-      TableItem myItem = new TableItem
-      {
-        PartitionKey = "key",
-        RowKey = Guid.NewGuid().ToString(),
-        Time = DateTime.Now.ToString("hh.mm.ss.ffffff"),
-        Msg = myQueueItem.Msg,
-        OriginalTime = myQueueItem.Time    
-      };
-   
-      log.Verbose($"C# Queue trigger function processed: {myQueueItem.RowKey} | {myQueueItem.Msg} | {myQueueItem.Time}");
+        TableItem myItem = new TableItem
+        {
+            PartitionKey = "key",
+            RowKey = Guid.NewGuid().ToString(),
+            Time = DateTime.Now.ToString("hh.mm.ss.ffffff"),
+            Msg = myQueueItem.Msg,
+            OriginalTime = myQueueItem.Time    
+        };
+        
+        // Add the item to the table binding collection.
+        myTable.Add(myItem);
+    
+        log.Verbose($"C# Queue trigger function processed: {myItem.RowKey} | {myItem.Msg} | {myItem.Time}");
     }
-   
+    
     public class TableItem
     {
-      public string PartitionKey {get; set;}
-      public string RowKey {get; set;}
-      public string Time {get; set;}
-      public string Msg {get; set;}
-      public string OriginalTime {get; set;}
+        public string PartitionKey {get; set;}
+        public string RowKey {get; set;}
+        public string Time {get; set;}
+        public string Msg {get; set;}
+        public string OriginalTime {get; set;}
+    }
+    
+    public class QItem
+    {
+        public string Msg { get; set;}
+        public string Time { get; set;}
     }
     ```
-9. Klicken Sie auf **Speichern**.
-10. Vergewissern Sie sich anhand der Protokolle der Funktion sowie in Visual Studio, dass der Code funktioniert. Navigieren Sie für die Überprüfung in Visual Studio mithilfe von **Cloud-Explorer** zur Azure-Tabelle **functionbindings**, und vergewissern Sie sich, dass sie Zeilen enthält.
+    Die **TableItem**-Klasse stellt eine Zeile in der Speichertabelle dar, und Sie können das Element der `myTable`-Sammlung mit **TableItem**-Objekten hinzufügen. Sie müssen die Eigenschaften **PartitionKey** und **RowKey** festlegen, um Elemente in die Tabelle einfügen zu können.
 
-[!INCLUDE [Getting Started Note](../../includes/functions-bindings-next-steps.md)]
+4. Klicken Sie auf **Speichern**.  Abschließend können Sie die Funktionsweise der Funktion überprüfen, indem Sie die Tabelle im Speicher-Explorer oder im Cloud-Explorer von Visual Studio anzeigen.
 
-[!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
+5. (Optional) Erweitern Sie unter Ihrem Speicherkonto im Speicher-Explorer die Option **Tabellen** > **functionsbindings**, und vergewissern Sie sich, dass der Tabelle Zeilen hinzugefügt werden. Dies ist auch im Cloud-Explorer von Visual Studio möglich.
+
+    ![Anzeigen von Zeilen in der Tabelle](./media/functions-create-an-azure-connected-function/functionsbindings-azure-storage-explorer2.png)
+
+    Wenn die Tabelle nicht vorhanden oder leer ist, liegt wahrscheinlich ein Problem mit der Funktionsbindung oder dem Code vor. 
+ 
+[!INCLUDE [More binding information](../../includes/functions-bindings-next-steps.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
+
+* [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
+   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
+* [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
+   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
+* [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
+  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
+
+[!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

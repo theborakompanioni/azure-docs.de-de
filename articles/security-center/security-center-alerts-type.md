@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/20/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4ddc691f4f3d53dbff2e55b7a97446427b93a8a4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
 
 
 ---
@@ -171,7 +171,7 @@ Diese Warnung enthält Informationen, mit denen Sie die für den Angriff verwend
 
 [AZURE.NOTE] Aus Datenschutzgründen wurden die realen IP-Adressen aus diesem Screenshot entfernt.
 
-### <a name="possible-outgoing-denialofservice-attack-detected"></a>Möglichen Denial-of-Service-Angriff in ausgehender Richtung erkannt
+### <a name="possible-outgoing-denial-of-service-attack-detected"></a>Möglichen Denial-of-Service-Angriff in ausgehender Richtung erkannt
 Anomaler Netzwerkdatenverkehr, der von einem virtuellen Computer stammt, kann dazu führen, dass Security Center eine Warnung vor einem potenziellen Denial-of-Service-Angriff auslöst.
 
 Hier ist ein Beispiel für diese Art von Warnung angegeben:
@@ -214,6 +214,6 @@ In diesem Dokument wurden die unterschiedlichen Arten von Sicherheitswarnungen i
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

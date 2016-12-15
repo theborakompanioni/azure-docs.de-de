@@ -1,6 +1,6 @@
 ---
-title: "Erste Schritte mit Azure IoT Hub für Node.js | Microsoft Docs"
-description: "Tutorial für den Einstieg in Azure IoT Hub mit Node.js. Verwenden Sie Azure IoT Hub und Node.js mit den Azure IoT SDKs, um eine IoT-Lösung zu implementieren."
+title: Erste Schritte mit Azure IoT Hub (Node) | Microsoft-Dokumentation
+description: "Hier erfahren Sie, wie Sie mithilfe der Azure IoT-SDKs für Node.js D2C-Nachrichten von einem Gerät an einen Azure IoT-Hub senden. Sie erstellen eine App für ein simuliertes Gerät zum Senden von Nachrichten, eine Dienst-App zum Registrieren Ihres Geräts in der Identitätsregistrierung und eine Dienst-App zum Lesen der D2C-Nachrichten aus dem IoT-Hub."
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 09/12/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 91794776d0faf9dd5b7385e00ca907f13b493908
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 6a4275b7fb7501fec4e98f87b09e20b2114b556b
 
 
 ---
-# <a name="get-started-with-azure-iot-hub-for-nodejs"></a>Erste Schritte mit Azure IoT Hub für Node.js
+# <a name="get-started-with-azure-iot-hub-node"></a>Erste Schritte mit Azure IoT Hub (Node)
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-Am Ende dieses Tutorials verfügen Sie über drei Node.js-Konsolenanwendungen:
+Am Ende dieses Tutorials verfügen Sie über drei Node.js-Konsolen-Apps:
 
 * **CreateDeviceIdentity.js**: Hiermit werden eine Geräteidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden mit Ihrer simulierten Geräte-App erstellt.
 * **ReadDeviceToCloudMessages.js**: Hiermit wird die Telemetrie angezeigt, die Ihre simulierte Geräte-App sendet.
@@ -44,9 +44,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 Sie haben nun Ihren IoT Hub erstellt. Sie verfügen über den IoT Hub-Hostnamen und die IoT Hub-Verbindungszeichenfolge, die Sie für die weiteren Schritte in diesem Tutorial benötigen.
 
 ## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteidentität in der Identitätsregistrierung Ihres IoT Hubs erstellt. Ein Gerät kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt **Identitätsregistrierung** des [Entwicklungsleitfadens für IoT Hub][lnk-devguide-identity]. Beim Ausführen dieser Konsolenanwendung werden eine eindeutige Geräte-ID und ein Schlüssel erstellt, mit denen sich das Gerät beim Senden von D2C-Nachrichten (Device-to-Cloud, Gerät-an-Cloud) beim IoT Hub identifizieren kann.
+In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteidentität in der Identitätsregistrierung Ihres IoT Hubs erstellt. Ein Gerät kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt **Identitätsregistrierung** des [Entwicklungsleitfadens für IoT Hub][lnk-devguide-identity]. Beim Ausführen dieser Konsolen-App werden eine eindeutige Geräte-ID und ein Schlüssel erstellt, mit denen sich das Gerät beim Senden von D2C-Nachrichten (Device-to-Cloud, Gerät-an-Cloud) beim IoT Hub identifizieren kann.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **createdeviceidentity**. Erstellen Sie im Ordner **createdeviceidentity** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **createdeviceidentity**. Erstellen Sie im Ordner **createdeviceidentity** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -64,14 +64,14 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteide
    
     var iothub = require('azure-iothub');
     ```
-5. Fügen Sie der Datei **CreateDeviceIdentity.js** den folgenden Code hinzu, und ersetzen Sie den Platzhalterwert durch die Verbindungszeichenfolge für den IoT Hub, den Sie im vorherigen Abschnitt erstellt haben: 
+5. Fügen Sie der Datei **CreateDeviceIdentity.js** den folgenden Code hinzu, und ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben: 
    
     ```
     var connectionString = '{iothub connection string}';
    
     var registry = iothub.Registry.fromConnectionString(connectionString);
     ```
-6. Fügen Sie den unten angegebenen Code hinzu, um in der Identitätsregistrierung in Ihrem IoT-Hub eine Gerätedefinition zu erstellen. Mit diesem Code wird ein Gerät erstellt, wenn die Geräte-ID in der Registrierung nicht vorhanden ist. Andernfalls wird der Schlüssel des vorhandenen Geräts zurückgegeben:
+6. Fügen Sie den unten angegebenen Code hinzu, um in der Identitätsregistrierung in Ihrem IoT-Hub eine Gerätedefinition zu erstellen. Mit diesem Code wird ein Gerät erstellt, wenn die Geräte-ID in der Identitätsregistrierung nicht vorhanden ist. Andernfalls wird der Schlüssel des vorhandenen Geräts zurückgegeben:
    
     ```
     var device = new iothub.Device(null);
@@ -87,7 +87,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteide
    
     function printDeviceInfo(err, deviceInfo, res) {
       if (deviceInfo) {
-        console.log('Device id: ' + deviceInfo.deviceId);
+        console.log('Device ID: ' + deviceInfo.deviceId);
         console.log('Device key: ' + deviceInfo.authentication.symmetricKey.primaryKey);
       }
     }
@@ -113,7 +113,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten
 > 
 > 
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **readdevicetocloudmessages**. Erstellen Sie im Ordner **readdevicetocloudmessages** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **readdevicetocloudmessages**. Erstellen Sie im Ordner **readdevicetocloudmessages** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -131,7 +131,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten
    
     var EventHubClient = require('azure-event-hubs').Client;
     ```
-5. Fügen Sie die folgende Variablendeklaration hinzu, und ersetzen Sie den Platzhalterwert durch die Verbindungszeichenfolge für Ihren IoT Hub:
+5. Fügen Sie die folgende Variablendeklaration hinzu, und ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für Ihren Hub:
    
     ```
     var connectionString = '{iothub connection string}';
@@ -171,7 +171,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die ein Gerät simuliert, mit dem D2C-Nachrichten (Device-to-Cloud) an einen IoT Hub gesendet werden.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulateddevice**. Erstellen Sie im Ordner **simulateddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulateddevice**. Erstellen Sie im Ordner **simulateddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -190,7 +190,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die ein Gerät
     var clientFromConnectionString = require('azure-iot-device-amqp').clientFromConnectionString;
     var Message = require('azure-iot-device').Message;
     ```
-5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen eines Geräteclients. Ersetzen Sie **{youriothostname}** durch den Namen des IoT Hubs, den Sie im Abschnitt *Erstellen eines IoT Hubs* erstellt haben. Ersetzen Sie **{yourdevicekey}** durch den Geräteschlüsselwert, den Sie im Abschnitt *Erstellen einer Geräteidentität* generiert haben:
+5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz. Ersetzen Sie **{youriothostname}** durch den Namen des IoT Hubs, den Sie im Abschnitt *Erstellen eines IoT Hubs* erstellt haben. Ersetzen Sie **{yourdevicekey}** durch den Geräteschlüsselwert, den Sie im Abschnitt *Erstellen einer Geräteidentität* generiert haben:
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
@@ -242,20 +242,20 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die ein Gerät
 ## <a name="run-the-apps"></a>Ausführen der Apps
 Sie können die Apps nun ausführen.
 
-1. Führen Sie an der Eingabeaufforderung im Ordner **readdevicetocloudmessages** den folgenden Befehl aus, um mit der Überwachung des IoT Hub zu beginnen:
+1. Führen Sie an der Eingabeaufforderung im Ordner **readdevicetocloudmessages** den folgenden Befehl aus, um die Überwachung Ihres IoT-Hubs zu starten:
    
     ```
     node ReadDeviceToCloudMessages.js 
     ```
    
-    ![Node.js-basierte IoT Hub-Dienstclientanwendung zum Überwachen von Gerät-zu-Cloud-Nachrichten][7]
-2. Führen Sie an einer Befehlszeile im Ordner **simulateddevice** den folgenden Befehl aus, um mit dem Senden von Telemetriedaten an den IoT Hub zu beginnen:
+    ![Node.js-basierte IoT Hub-Dienst-App zum Überwachen von D2C-Nachrichten][7]
+2. Führen Sie an einer Eingabeaufforderung im Ordner **simulateddevice** den folgenden Befehl aus, um mit dem Senden von Telemetriedaten an Ihren IoT-Hub zu beginnen:
    
     ```
     node SimulatedDevice.js
     ```
    
-    ![Node.js-basierte IoT Hub-Geräteclientanwendung zum Senden von Gerät-zu-Cloud-Nachrichten][8]
+    ![Node.js-basierte IoT Hub-Geräte-App zum Senden von D2C-Nachrichten][8]
 3. Über die Kachel **Nutzung** im [Azure-Portal][lnk-portal] wird die Anzahl der an den IoT-Hub gesendeten Nachrichten angezeigt:
    
     ![Azure-Portal-Kachel „Nutzung“ mit der Anzahl von Nachrichten, die an IoT Hub gesendet wurden][43]
@@ -296,6 +296,6 @@ Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7b55f6730c6a2bf8637f312c452fe552f82dbaeb
-ms.openlocfilehash: 69b333b0c43d2e3e4d62168650123322a79579ba
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 6bb9415180f7235b7521d5a4dc9d8a6f0e060756
 
 
 ---
@@ -48,7 +48,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der
   2. Beschaffen Sie die **Client-ID** und den **geheimen Schlüssel**. 
   3. Beschaffen Sie die **Mandanten-ID**. 
   4. Weisen Sie die Anwendung **ADFCopyTutorialApp** der Rolle **Mitwirkender von Data Factory** zu.  
-* Installieren Sie [Azure PowerShell](../powershell-install-configure.md).  
+* Installieren Sie [Azure PowerShell](/powershell/azureps-cmdlets-docs).  
 * Starten Sie **PowerShell** , und führen Sie den folgenden Befehl aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
   
   1. Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
@@ -402,7 +402,7 @@ Führen Sie die folgenden Schritte zur Vorbereitung des Azure-Blobspeichers und 
 
         CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID); 
 
-    Wenn Sie SQL Server 2014 auf Ihrem Computer installiert haben: Befolgen Sie die Anweisungen unter [Schritt 2: Herstellen einer Verbindung mit der SQL-Datenbank im Artikel „Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio“][sql-management-studio], um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen.
+    Wenn Sie SQL Server 2014 auf Ihrem Computer installiert haben: Befolgen Sie die Anweisungen unter [Schritt 2: Herstellen einer Verbindung mit SQL-Datenbank im Artikel „Verwalten einer Azure SQL-Datenbank mit SQL Server Management Studio“][sql-management-studio], um eine Verbindung mit Ihrem Azure SQL-Server herzustellen und das SQL-Skript auszuführen.
 
     Wenn Ihr Client nicht auf den Azure SQL-Server zugreifen darf, müssen Sie die Firewall für Ihren Azure SQL-Server so konfigurieren, dass der Zugriff über Ihren Computer (bzw. dessen IP-Adresse) ermöglicht wird. Schritte zum Konfigurieren der Firewall für Ihren Azure SQL-Server finden Sie in [diesem Artikel](../sql-database/sql-database-configure-firewall-settings.md).
 
@@ -495,7 +495,7 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [azure-portal]: http://portal.azure.com
-[download-azure-powershell]: ../powershell-install-configure.md
+[download-azure-powershell]: /powershell/azureps-cmdlets-docs
 [data-factory-introduction]: data-factory-introduction.md
 
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
@@ -504,6 +504,6 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

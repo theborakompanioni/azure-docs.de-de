@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1e7529de2968b2745b42001cc16b54d70b2a5b86
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
 
 
 ---
@@ -137,7 +137,7 @@ Stellen Sie vor dem Fortfahren Folgendes sicher:
 
 1. Sie haben [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) heruntergeladen und installiert, wenn Sie Windows 7 ausführen.   
     Wenn Sie Windows Server 2012 R2, Windows Server 2012, Windows 2008 R2, Windows 8.1 oder Windows 7 SP1 verwenden, ist [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) zur Installation verfügbar.
-2. Azure PowerShell 1.0. Informationen zu dieser Version und ihrer Installation finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+2. Azure PowerShell 1.0. Informationen zu dieser Version und ihrer Installation finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 3. Sie haben ein Automation-Konto erstellt.  Dieses Konto wird in den beiden unten stehenden Skripts als Wert für die Parameter „-AutomationAccountName“ und „-ApplicationDisplayName“ verwendet.
 
 Wählen Sie zum Ermitteln der Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* (erforderliche Parameter für die Skripts) im Azure-Portal auf dem Blatt **Automation-Konto** Ihr Automation-Konto und anschließend die Option **Alle Einstellungen** aus.  Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften** aus.  Die Werte werden auf dem Blatt **Eigenschaften** angezeigt.<br> ![Automation-Konto – Eigenschaften](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
@@ -394,6 +394,6 @@ Sie können den unten stehenden aktualisierten Beispielcode aus dem Beispielrunb
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

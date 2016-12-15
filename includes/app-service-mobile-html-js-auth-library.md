@@ -1,8 +1,8 @@
 ### <a name="a-nameserver-authahow-to-authenticate-with-a-provider-server-flow"></a><a name="server-auth"></a>Vorgehensweise: Authentifizieren mithilfe eines Anbieters (Serverfluss)
 Sie müssen Ihre Mobile Apps bei Ihrem Identitätsanbieter registrieren, um Mobile Services die Verwaltung des Authentifizierungsprozesses in Ihrer App zu ermöglichen. Anschließend müssen Sie in Ihrem Azure App Service die Anwendungs-ID und den geheimen Schlüssel Ihres Anbieters konfigurieren.
-Weitere Informationen finden Sie im Lernprogramm [Authentifizierung zu Ihrer App hinzufügen](../articles/app-service-mobile/app-service-mobile-ios-get-started-users.md).
+Weitere Informationen finden Sie im Lernprogramm [Authentifizierung zu Ihrer App hinzufügen](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
 
-Nach der Registrierung bei Ihrem Identitätsanbieter können Sie die „.login()“-Methode mit dem Namens Ihres Anbieters aufrufen. Für die Facebook-Anmeldung verwenden Sie z. B. den folgenden Code.
+Rufen Sie nach der Registrierung bei Ihrem Identitätsanbieter die `.login()`-Methode mit dem Namen Ihres Anbieters auf. Verwenden Sie also beispielsweise für die Facebook-Anmeldung den folgenden Code:
 
 ```
 client.login("facebook").done(function (results) {
@@ -11,7 +11,13 @@ client.login("facebook").done(function (results) {
      alert("Error: " + err);
 });
 ```
-In diesem Fall verwaltet Azure App Service den OAuth 2.0-Authentifizierungsfluss, indem die Anmeldungsseite des ausgewählten Anbieters angezeigt und nach der erfolgreichen Anmeldung beim Identitätsanbieter ein App Service-Authentifizierungstoken generiert wird. Die „login“-Funktion gibt ein JSON-Objekt (user) zurück, das sowohl die Benutzer-ID als auch das App Service-Authentifizierungstoken in den Feldern userId bzw. authenticationToken zur Verfügung stellt. Dieses Token kann zwischen gespeichert und wiederverwendet werden, bis es abläuft.
+
+Gültige Anbieterwerte sind „aad“, „facebook“, „google“, „microsoftaccount“ und „twitter“.
+
+> [!NOTE]
+> Die Authentifizierung über Google ist zurzeit nicht per Serverfluss möglich.  Für die Authentifizierung über Google muss eine [Clientflussmethode](#client-auth) verwendet werden.
+
+In diesem Fall verwaltet Azure App Service den OAuth 2.0-Authentifizierungsfluss.  Dabei wird die Anmeldeseite des ausgewählten Anbieters angezeigt und nach erfolgreicher Anmeldung beim Identitätsanbieter ein App Service-Authentifizierungstoken generiert. Die Anmeldefunktion gibt nach Abschluss ein JSON-Objekt zurück, das sowohl die Benutzer-ID als auch das App Service-Authentifizierungstoken in den Feldern „userId“ bzw. „authenticationToken“ verfügbar macht. Dieses Token kann zwischengespeichert und wiederverwendet werden, bis es abläuft.
 
 ###<a name="a-nameclient-authahow-to-authenticate-with-a-provider-client-flow"></a><a name="client-auth"></a>Vorgehensweise: Authentifizieren mithilfe eines Anbieters (Clientfluss)
 
@@ -57,7 +63,7 @@ Dieses Beispiel ruft ein Token von Live Connect ab und übergibt das Token in ei
 
 ###<a name="a-nameauth-getinfoahow-to-obtain-information-about-the-authenticated-user"></a><a name="auth-getinfo"></a>Vorgehensweise: Abrufen von Informationen zum authentifizierten Benutzer
 
-Die Authentifizierungsinformationen für den aktuellen Benutzer können mit einer AJAX-Methode vom `/.auth/me` -Endpunkt abgerufen werden.  Stellen Sie sicher, dass der `X-ZUMO-AUTH` -Header auf Ihr Authentifizierungstoken festgelegt ist.  Das Authentifizierungstoken wird in `client.currentUser.mobileServiceAuthenticationToken`gespeichert.  Geben Sie beispielsweise Folgendes ein, um die API abzurufen:
+Die Authentifizierungsinformationen können mithilfe eines HTTP-Aufrufs mit einer beliebigen AJAX-Bibliothek vom `/.auth/me`-Endpunkt abgerufen werden.  Stellen Sie sicher, dass der `X-ZUMO-AUTH` -Header auf Ihr Authentifizierungstoken festgelegt ist.  Das Authentifizierungstoken wird in `client.currentUser.mobileServiceAuthenticationToken`gespeichert.  Geben Sie beispielsweise Folgendes ein, um die API abzurufen:
 
 ```
 var url = client.applicationUrl + '/.auth/me';
@@ -71,10 +77,9 @@ fetch(url, { headers: headers })
     });
 ```
 
-Der Abruf ist als npm-Paket oder zum Download im Browser von CDNJS verfügbar. Sie können auch JQuery oder eine andere AJAX-API zum Abrufen der Informationen verwenden.  Daten werden als JSON-Objekt empfangen.
+Der Abruf ist als [npm-Paket](https://www.npmjs.com/package/whatwg-fetch) oder als Browserdownload über [CDNJS](https://cdnjs.com/libraries/fetch) verfügbar. Sie können auch JQuery oder eine andere AJAX-API zum Abrufen der Informationen verwenden.  Daten werden als JSON-Objekt empfangen.
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

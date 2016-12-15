@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/14/2016
+ms.date: 11/30/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 63a4eaf9fbb76480e0617b36d15aebae03ec3da4
+ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
+ms.openlocfilehash: 5e32b6fc0c87195fc82eedb00ffc7082b73007a0
 
 
 ---
-# <a name="hadoop-tutorial-get-started-using-linuxbased-hadoop-in-hdinsight"></a>Hadoop-Tutorial: Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight
+# <a name="hadoop-tutorial-get-started-using-linux-based-hadoop-in-hdinsight"></a>Hadoop-Tutorial: Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight
 > [!div class="op_single_selector"]
 > * [Linux-basiert](hdinsight-hadoop-linux-tutorial-get-started.md)
 > * [Windows-basiert](hdinsight-hadoop-tutorial-get-started-windows.md)
 > 
 > 
 
-Erfahren Sie, wie Sie Linux-basierte [Hadoop](http://hadoop.apache.org/) -Cluster in HDInsight erstellen und Hive-Aufträge in HDInsight ausführen. [Apache Hive](https://hive.apache.org/) ist die beliebteste Komponente im Hadoop-Ökosystem. Derzeit verfügt HDInsight über vier verschiedene Clustertypen: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md) und [Storm](hdinsight-storm-overview.md).  Jeder Clustertyp unterstützt eine andere Gruppe von Komponenten. Alle vier Clustertypen unterstützen Hive. Eine Liste mit den unterstützten Komponenten in HDInsight finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen](hdinsight-component-versioning.md)  
+Erfahren Sie, wie Sie Linux-basierte [Hadoop](http://hadoop.apache.org/) -Cluster in HDInsight erstellen und Hive-Aufträge in HDInsight ausführen. [Apache Hive](https://hive.apache.org/) ist die beliebteste Komponente im Hadoop-Ökosystem. HDInsight bietet derzeit sechs verschiedene Clustertypen: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md), [Storm](hdinsight-storm-overview.md), [Interactive Hive (Vorschau)](hdinsight-hadoop-use-interactive-hive.md) und [R Server](hdinsight-hadoop-r-server-overview.md).  Jeder Clustertyp unterstützt eine andere Gruppe von Komponenten. Alle sechs Clustertypen unterstützen Hive. Eine Liste mit den unterstützten Komponenten in HDInsight finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen](hdinsight-component-versioning.md)  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -41,36 +41,48 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-cluster"></a>Cluster erstellen
-Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsight mithilfe einer [Azure Resource Manager-Vorlage](../resource-group-template-deploy.md). Resource Manager-Vorlagen sind vollständig anpassbar, sodass es sehr einfach ist, Azure-Ressourcen wie HDInsight zu erstellen. Für dieses Tutorial ist keine Erfahrung mit Resource Manager-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Tutorial verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Die in diesem Tutorial verwendete Resource Manager-Vorlage befindet sich in einem öffentlichen Blobcontainer ( [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)). 
 
-1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Resource Manager-Vorlage im Azure-Portal zu öffnen. 
+Die meisten Hadoop-Aufträge sind Batchaufträge. Sie erstellen einen Cluster, führen einige Aufträge aus und löschen dann den Cluster. In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsight mithilfe einer [Azure Resource Manager-Vorlage](../resource-group-template-deploy.md). Resource Manager-Vorlagen sind vollständig anpassbar, sodass es sehr einfach ist, Azure-Ressourcen wie HDInsight zu erstellen. Für dieses Tutorial ist keine Erfahrung mit Resource Manager-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Tutorial verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Wählen Sie mithilfe der Auswahloptionen am Seitenanfang die gewünschten Clustererstellungsoptionen aus.
+
+Die in diesem Tutorial verwendete Resource Manager-Vorlage befindet sich in einem öffentlichen Blobcontainer ( [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)). 
+
+1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden, und öffnen Sie die Resource Manager-Vorlage im Azure-Portal. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Geben Sie auf dem Blatt **Parameter** Folgendes ein:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
+2. Geben Sie folgende Werte ein bzw. wählen diese aus:
    
     ![HDInsight Linux, Erste Schritte mit der Resource Manager-Vorlage im Portal](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png).
    
-   * **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
-   * **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
-   * **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**.  Sie können auch einen anderen Namen festlegen. 
+    * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
+    * **Ressourcengruppe**: Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.  Bei einer Ressourcengruppe handelt es sich um einen Container mit Azure-Komponenten.  In diesem Fall enthält die Ressourcengruppe den HDInsight-Cluster und das abhängige Azure Storage-Konto. 
+    * **Standort**: Wählen Sie einen Azure-Standort aus, an dem Sie Ihren Cluster erstellen möchten.  Je näher der Standort, desto besser die Leistung. 
+    * **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
+    * **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
+    * **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**.  Sie können auch einen anderen Namen festlegen. 
      
-     Andere Parameter sind zum Durcharbeiten dieses Tutorials optional. Ändern Sie sie nicht. 
-     
+    Einige Eigenschaften wurden in der Vorlage hartcodiert.  Diese Werte können über die Vorlage konfiguriert werden.
+
+    * **Standort**: Für den Standort des Clusters und das abhängige Speicherkonto wird jeweils der gleiche Standort verwendet wie für die Ressourcengruppe.
+    * **Clusterversion**: 3.4
+    * **Betriebssystemtyp**: Linux
+    * **Clustertyp**: Hadoop
+    * **Anzahl von Workerknoten**: 2
+
      Jeder Cluster verfügt über eine Abhängigkeit von einem Azure Blob Storage-Konto. Es wird in der Regel als Standardspeicherkonto bezeichnet. Der HDInsight-Cluster und das dazugehörige Speicherkonto müssen sich in derselben Azure-Region befinden. Beim Löschen von Clustern wird das Speicherkonto nicht gelöscht. In der Vorlage wird der standardmäßige Speicherkontoname als Clustername mit dem Zusatz „store“ definiert. 
-3. Klicken Sie auf **OK** , um die Parameter zu speichern.
-4. Geben Sie im Blatt **Benutzerdefinierte Bereitstellung** den Text **Neuer Ressourcengruppenname** ein, um eine neue Ressourcengruppe zu erstellen.  Die Ressourcengruppe ist ein Container, in dem der Cluster, das abhängige Speicherkonto und andere Elemente gruppiert werden. Der Speicherort der Ressourcengruppe kann vom Clusterspeicherort abweichen.
-5. Klicken Sie auf **Rechtliche Bedingungen** und dann auf **Erstellen**.
-6. Vergewissern Sie sich, dass das Kontrollkästchen **An Dashboard anheften** aktiviert ist, und klicken Sie auf **Erstellen**. Es wird eine neue Kachel mit dem Titel **Deploying Template deployment (Vorlagenbereitstellung bereitstellen)** angezeigt. Das Erstellen eines Clusters dauert ca. 20 Minuten. 
-7. Nachdem der Cluster erstellt wurde, wird die Beschriftung der Kachel in den von Ihnen angegebenen Ressourcengruppennamen geändert. Im Portal werden außerdem automatisch zwei Blätter mit dem Cluster und den Clustereinstellungen geöffnet. 
+
+3. Aktivieren Sie die Optionen **Ich stimme den oben genannten Geschäftsbedingungen zu** und **An Dashboard anheften**, und klicken Sie anschließend auf **Kaufen**. Im Portal-Dashboard erscheint eine neue Kachel namens **Deploying Template deployment** (Vorlagenbereitstellung bereitstellen). Das Erstellen eines Clusters dauert ca. 20 Minuten. Nachdem der Cluster erstellt wurde, wird die Beschriftung der Kachel in den von Ihnen angegebenen Ressourcengruppennamen geändert. Die Ressourcengruppe wird automatisch auf einem neuen Blatt geöffnet. Cluster und Standardspeicher werden aufgelistet.
    
-   ![HDInsight Linux, Erste Schritte mit Clustereinstellungen](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png).
-   
-   Es werden zwei Ressourcen aufgeführt: der Cluster und das Standardspeicherkonto.
+    ![HDInsight Linux, Erste Schritte mit der Ressourcengruppe](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png).
+
+4. Klicken Sie auf den Clusternamen, um den Cluster auf einem neuen Blatt zu öffnen.
+
+   ![HDInsight Linux, Erste Schritte mit Clustereinstellungen](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png)
+
 
 ## <a name="run-hive-queries"></a>Ausführen von Hive-Abfragen
 [Apache Hive](hdinsight-use-hive.md) ist die am häufigsten in HDInsight verwendete Komponente. Es gibt viele Verfahren zum Ausführen von Hive-Aufträgen in HDInsight. In diesem Tutorial verwenden Sie die Ambari Hive-Ansicht aus dem Portal, um einige Hive-Aufträge auszuführen. Andere Methoden zum Übermitteln von Hive-Aufträgen finden Sie unter [Verwenden von Hive in HDInsight](hdinsight-use-hive.md).
 
-1. Navigieren Sie zu **https://&lt;ClusterName>.azurehdinsight.net**, wobei &lt;ClusterName> der Cluster ist, den Sie im letzten Abschnitt zum Öffnen von Ambari erstellt haben.
+1. Klicken Sie im vorherigen Screenshot auf **Cluster-Dashboard** und dann auf **HDInsight-Cluster-Dashboard**.  Sie können auch zu **https://&lt;Clustername>.azurehdinsight.net** navigieren, wobei „&lt;Clustername>“ der Cluster ist, den Sie im letzten Abschnitt zum Öffnen von Ambari erstellt haben.
 2. Geben Sie den Hadoop-Benutzernamen und das Kennwort wie im letzten Abschnitt festgelegt ein. Der Standard-Benutzername lautet **admin**.
 3. Öffnen Sie die **Hive-Ansicht** wie im folgenden Screenshot dargestellt:
    
@@ -119,15 +131,15 @@ In diesem Tutorial haben Sie gelernt, wie Sie mithilfe einer Resource Manager-Vo
 
 Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden Artikeln:
 
-* Weitere Informationen zum Verwenden von Hive mit HDInsight, z. B. zum Ausführen von Hive-Abfragen in Visual Studio, finden Sie im Artikel zum [Verwenden von Hive mit HDInsight][Verwenden von Hive mit HDInsight].
-* Informationen zu Pig, einer Sprache zum Transformieren von Daten, finden Sie im Artikel zum [Verwenden von Pig mit HDInsight][Verwenden von Pig mit HDInsight].
-* Informationen zu MapReduce, einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten, finden Sie im Artikel zu [Verwenden von MapReduce mit HDInsight][Verwenden von MapReduce mit HDInsight].
+* Weitere Informationen zum Verwenden von Hive mit HDInsight (etwa zum Ausführen von Hive-Abfragen in Visual Studio) finden Sie im Artikel zum [Verwenden von Hive mit HDInsight][hdinsight-use-hive].
+* Informationen zu Pig (einer Sprache zum Transformieren von Daten) finden Sie im Artikel zum [Verwenden von Pig mit HDInsight][hdinsight-use-pig].
+* Informationen zu MapReduce (einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten) finden Sie im Artikel zum [Verwenden von MapReduce mit HDInsight][hdinsight-use-mapreduce].
 * Informationen zur Verwendung der HDInsight-Tools für Visual Studio zum Analysieren von Daten in HDInsight finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
 Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten in HDInsight gespeichert werden oder wie HDInsight auf Daten zugreift, finden Sie weitere Informationen in folgenden Artikeln:
 
 * Informationen zur Verwendung von Azure-Blob-Speicher durch HDInsight finden Sie unter [Verwenden von Azure-Blob-Speicher mit HDInsight](hdinsight-hadoop-use-blob-storage.md).
-* Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten zu HDInsight][Hochladen von Daten zu HDInsight].
+* Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten zu HDInsight][hdinsight-upload-data].
 
 Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden Sie in folgenden Artikeln:
 
@@ -149,8 +161,8 @@ Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
 [powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[powershell-install-configure]: powershell-install-configure.md
-[powershell-open]: powershell-install-configure.md#Install
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
+[powershell-open]: /powershell/azureps-cmdlets-docs#Install
 
 [img-hdi-dashboard]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.png
 [img-hdi-dashboard-query-select]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.png
@@ -163,6 +175,6 @@ Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

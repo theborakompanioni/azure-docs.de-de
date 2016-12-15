@@ -4,7 +4,7 @@
 > 
 > 
 
-Dieser Artikel beschreibt eine ausführliche exemplarische Vorgehensweise für den [Hello World-Beispielcode][lnk-helloworld-sample] zur Veranschaulichung der grundlegenden Komponenten der [Azure IoT-Gateway-SDK][lnk-gateway-sdk]-Architektur. In dem Beispiel wird das IoT Hub Gateway SDK verwendet, um ein einfaches Gateway zu erstellen, das alle fünf Sekunden eine Hello World-Nachricht in einer Datei protokolliert.
+Dieser Artikel beschreibt eine ausführliche exemplarische Vorgehensweise für den [Hello World-Beispielcode][lnk-helloworld-sample] zur Veranschaulichung der grundlegenden Komponenten der [Azure IoT Gateway SDK][lnk-gateway-sdk]-Architektur. In dem Beispiel wird das Azure IoT Gateway SDK verwendet, um ein einfaches Gateway zu erstellen, das alle fünf Sekunden eine Hello World-Nachricht in einer Datei protokolliert.
 
 Diese Anleitung umfasst:
 
@@ -59,7 +59,7 @@ Das Modul „logger“ verarbeitet nur Nachrichten des Brokers. Es veröffentlic
 
 ![Funktionsweise der Weiterleitung von Nachrichten zwischen Modulen im Azure IoT Gateway SDK durch den Broker][5]
 
-Die Abbildung zeigt die Architektur des „Hello World“-Beispiels sowie die relativen Pfade zu den Quelldateien, die verschiedene Teile des Beispiels im [Repository][lnk-gateway-sdk] implementieren. Untersuchen Sie den Code selbst, oder verwenden Sie die unten stehenden Codeausschnitte als Leitfaden.
+Die Abbildung zeigt die Architektur des Hello World-Beispiels sowie die relativen Pfade zu den Quelldateien, die verschiedene Teile des Beispiels im [Repository][lnk-gateway-sdk] implementieren. Untersuchen Sie den Code selbst, oder verwenden Sie die unten stehenden Codeausschnitte als Leitfaden.
 
 <!-- Images -->
 [1]: media/iot-hub-gateway-sdk-getstarted-selector/modules.png
@@ -72,6 +72,6 @@ Die Abbildung zeigt die Architektur des „Hello World“-Beispiels sowie die re
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

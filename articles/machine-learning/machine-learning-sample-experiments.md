@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 11/11/2016
 ms.author: cgronlun;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: 35579eda8b92a481525ad987e99e7d9c9ed6b942
-ms.openlocfilehash: 7c712cb20d9e008c74436fc602326afa00250c63
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9c710e6f959afd8a4f4b965931ed4868d94c6d25
 
 
 ---
@@ -42,8 +42,8 @@ So durchsuchen Sie alle Experimente:
 2. Wählen Sie unter **Refine by** die Option **Experiment** aus, um alle im Katalog enthaltenen Experimente anzuzeigen.
 3. Es gibt verschiedene Möglichkeiten zur Ermittlung von Experimenten, die Ihre Anforderungen erfüllen:
    * **Wählen Sie auf der linken Seite Filter aus.** Wenn Sie beispielsweise Experimente durchsuchen möchten, die einen Algorithmus zur PCA-basierten Erkennung von Anomalien verwenden, wählen Sie unter **Categories** die Option **Experiment** und unter **Algorithms Used** die Option **PCA-Based Anomaly Detection** aus. (Wenn Ihnen dieser Algorithmus nicht angezeigt wird, klicken Sie unten in der Liste auf **Show all**.)<br></br>
-     ![](./media/machine-learning-sample-experiments/refine-the-view.png)
-   * **Verwenden Sie das Suchfeld.**  Wenn Sie etwa nach Experimenten von Microsoft zur Ziffernerkennung suchen möchten, bei denen ein zweiklassiger Support Vector Machine-Algorithmus verwendet wird, geben Sie im Suchfeld „digit recognition“ (Ziffernerkennung) ein. Wählen Sie anschließend die Filter **Experiment**, **Microsoft content only** und **Two-Class Support Vector Machine** aus: ![](./media/machine-learning-sample-experiments/search-for-experiments.png)
+     ![Filter auswählen](./media/machine-learning-sample-experiments/refine-the-view.png)
+   * **Verwenden Sie das Suchfeld.**  Wenn Sie etwa nach Experimenten von Microsoft zur Ziffernerkennung suchen möchten, bei denen ein zweiklassiger Support Vector Machine-Algorithmus verwendet wird, geben Sie im Suchfeld „digit recognition“ (Ziffernerkennung) ein. Wählen Sie anschließend die Filter **Experiment**, **Microsoft content only** (Nur Microsoft-Inhalte) und **Two-Class Support Vector Machine** (Zweiklassige Support Vector Machine) aus: ![Suchfeld verwenden](./media/machine-learning-sample-experiments/search-for-experiments.png)
 4. Klicken Sie auf ein Experiment, um mehr darüber zu erfahren.
 5. Zum Ausführen und/oder Ändern des Experiments klicken Sie auf der Seite des Experiments auf **Open in Studio** (In Studio öffnen).
 
@@ -52,7 +52,7 @@ So durchsuchen Sie alle Experimente:
    >
    >
 
-    ![](./media/machine-learning-sample-experiments/example-experiment.png)
+    ![Beispielexperiment](./media/machine-learning-sample-experiments/example-experiment.png)
 
 ## <a name="use-a-template-in-machine-learning-studio"></a>Verwenden einer Vorlage in Machine Learning Studio
 Sie können in Machine Learning Studio auch ein neues Experiment erstellen, indem Sie ein Beispiel aus dem Katalog als Vorlage verwenden.
@@ -70,6 +70,6 @@ In Ihrem Arbeitsbereich wird ein neues Experiment erstellt, bei dem das Beispiel
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

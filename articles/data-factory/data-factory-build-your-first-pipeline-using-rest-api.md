@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: e194caf503b767cb89f6d066ab4561f72b510ef5
-ms.openlocfilehash: 47bffbf85b100a808d79e464e6f381d0d8abd153
+ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
+ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
 
 
 ---
@@ -40,13 +40,13 @@ In diesem Artikel verwenden Sie die Data Factory-REST-API zum Erstellen Ihrer er
   1. Erstellen Sie eine Webanwendung mit dem Namen **ADFGetStartedApp** in Azure Active Directory.
   2. Beschaffen Sie die **Client-ID** und den **geheimen Schlüssel**.
   3. Beschaffen Sie die **Mandanten-ID**.
-  4. Weisen Sie die Anwendung **ADFGetStartedApp** der Rolle **Data Factory-Mitwirkender** zu.  
-* Installieren Sie [Azure PowerShell](../powershell-install-configure.md).  
+  4. Weisen Sie die Anwendung **ADFGetStartedApp** der Rolle **Data Factory-Mitwirkender** zu.
+* Installieren Sie [Azure PowerShell](/powershell/azureps-cmdlets-docs).
 * Starten Sie **PowerShell** , und führen Sie den folgenden Befehl aus. Lassen Sie Azure PowerShell bis zum Ende dieses Tutorials geöffnet. Wenn Sie PowerShell schließen und erneut öffnen, müssen Sie die Befehle erneut ausführen.
-  1. Führen Sie **Login-AzureRmAccount** aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben.  
+  1. Führen Sie **Login-AzureRmAccount** aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben.
   2. Führen Sie **Get-AzureRmSubscription** aus, um alle Abonnements für dieses Konto anzuzeigen.
   3. Führen Sie **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext** aus, um das Abonnement zu wählen, mit dem Sie arbeiten möchten. Ersetzen Sie **NameOfAzureSubscription** durch den Namen Ihres Azure-Abonnements:
-* Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** , indem Sie in der PowerShell den folgenden Befehl ausführen:  
+* Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** , indem Sie in der PowerShell den folgenden Befehl ausführen:
 
        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
 
@@ -61,10 +61,10 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
 >
 >
 
-    {  
-        "name": "FirstDataFactoryREST",  
+    {
+        "name": "FirstDataFactoryREST",
         "location": "WestUS"
-    }  
+    }
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
@@ -238,7 +238,7 @@ Im JSON-Code der Aktivität geben Sie an, dass das Hive-Skript auf der Computein
 Führen Sie in Azure PowerShell die folgenden Befehle aus, nachdem Sie die Werte durch Ihre eigenen Werte ersetzt haben:
 
 > [!IMPORTANT]
-> Informationen zur Beschaffung von Client-ID, geheimem Clientschlüssel, Mandanten-ID und Abonnement-ID finden Sie im Abschnitt [Voraussetzungen](#prerequisites) .   
+> Informationen zur Beschaffung von Client-ID, geheimem Clientschlüssel, Mandanten-ID und Abonnement-ID finden Sie im Abschnitt [Voraussetzungen](#prerequisites) .
 >
 >
 
@@ -272,13 +272,13 @@ In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **FirstDat
 2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
 
         $results = Invoke-Command -scriptblock $cmd;
-3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung der Data Factory erfolgreich war, wird der JSON-Code für die Data Factory unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.  
+3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung der Data Factory erfolgreich war, wird der JSON-Code für die Data Factory unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
 
         Write-Host $results
 
 Beachten Sie folgende Punkte:
 
-* Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „FirstDataFactoryREST“ ist nicht verfügbar**angezeigt wird:  
+* Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „FirstDataFactoryREST“ ist nicht verfügbar**angezeigt wird:
   1. Ändern Sie den Namen in der Datei **datafactory.json** (beispielsweise in „&lt;IhrName&gt;FirstDataFactoryREST“). Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
   2. Ersetzen Sie im ersten Befehl an der Stelle, an der der Variablen **$cmd** ein Wert zugewiesen wird, „FirstDataFactoryREST“ durch den neuen Namen, und führen Sie den Befehl aus.
   3. Führen Sie die nächsten beiden Befehle zum Aufrufen der REST-API aus, um die Data Factory zu erstellen und die Ergebnisse des Vorgangs auszugeben.
@@ -314,7 +314,7 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit Ihrer Data Factory
         Write-Host $results
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Erstellen des mit Azure-HDInsight verknüpften Diensts
-In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit Ihrer Data Factory. Der HDInsight-Cluster wird automatisch zur Laufzeit erstellt und gelöscht, nachdem die Verarbeitung abgeschlossen und die angegebene Leerlaufzeit verstrichen ist. Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie Ihren eigenen HDInsight-Cluster verwenden. Weitere Informationen finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) .  
+In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit Ihrer Data Factory. Der HDInsight-Cluster wird automatisch zur Laufzeit erstellt und gelöscht, nachdem die Verarbeitung abgeschlossen und die angegebene Leerlaufzeit verstrichen ist. Anstelle eines bedarfsgesteuerten HDInsight-Clusters könnten Sie Ihren eigenen HDInsight-Cluster verwenden. Weitere Informationen finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) .
 
 1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu.
 
@@ -322,12 +322,12 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
 2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
 
         $results = Invoke-Command -scriptblock $cmd;
-3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des verknüpften Diensts erfolgreich war, wird der JSON-Code für den verknüpften Dienst unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.  
+3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des verknüpften Diensts erfolgreich war, wird der JSON-Code für den verknüpften Dienst unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
 
         Write-Host $results
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
-In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für die Hive-Verarbeitung darzustellen. Diese Datasets verweisen auf den **StorageLinkedService** , den Sie zuvor in diesem Tutorial erstellt haben. Der verknüpfte Dienst weist auf ein Azure Storage-Konto, und Datasets geben Container, Ordner und Dateiname in dem Speicher an, der Eingabe- und Ausgabedaten enthält.   
+In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für die Hive-Verarbeitung darzustellen. Diese Datasets verweisen auf den **StorageLinkedService** , den Sie zuvor in diesem Tutorial erstellt haben. Der verknüpfte Dienst weist auf ein Azure Storage-Konto, und Datasets geben Container, Ordner und Dateiname in dem Speicher an, der Eingabe- und Ausgabedaten enthält.
 
 ### <a name="create-input-dataset"></a>Erstellen eines Eingabedatasets
 In diesem Schritt erstellen Sie das Eingabedataset, das die im Azure-Blobspeicher gespeicherten Eingabedaten darstellt.
@@ -341,20 +341,22 @@ In diesem Schritt erstellen Sie das Eingabedataset, das die im Azure-Blobspeiche
 3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
 
         Write-Host $results
-   ### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
-   In diesem Schritt erstellen Sie das Ausgabedataset, das die im Azure-Blobspeicher gespeicherten Ausgabedaten darstellt.
-4. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu.
+
+### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
+In diesem Schritt erstellen Sie das Ausgabedataset, das die im Azure-Blobspeicher gespeicherten Ausgabedaten darstellt.
+
+1. Weisen Sie den Befehl einer Variablen mit dem Namen **cmd**zu.
 
         $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
-5. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
+2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
 
         $results = Invoke-Command -scriptblock $cmd;
-6. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
+3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
 
         Write-Host $results
 
 ## <a name="create-pipeline"></a>Erstellen der Pipeline
-In diesem Schritt erstellen Sie Ihre erste Pipeline mit einer **HDInsightHive** -Aktivität. Der Eingabeslice ist monatlich verfügbar („frequency“: „Month“, „interval“: „1“), der Ausgabeslice wird monatlich erstellt, und die scheduler-Eigenschaft für die Aktivität ist ebenfalls auf ein monatliches Intervall festgelegt. Die Einstellungen für das Ausgabedataset und den Aktivitätsplaner müssen übereinstimmen. Derzeit steuert das Ausgabedataset den Zeitplan, sodass Sie auch dann ein Ausgabedataset erstellen müssen, wenn die Aktivität keine Ausgabe erzeugt. Wenn die Aktivität keine Eingabe akzeptiert, können Sie das Erstellen des Eingabedatasets überspringen.  
+In diesem Schritt erstellen Sie Ihre erste Pipeline mit einer **HDInsightHive** -Aktivität. Der Eingabeslice ist monatlich verfügbar („frequency“: „Month“, „interval“: „1“), der Ausgabeslice wird monatlich erstellt, und die scheduler-Eigenschaft für die Aktivität ist ebenfalls auf ein monatliches Intervall festgelegt. Die Einstellungen für das Ausgabedataset und den Aktivitätsplaner müssen übereinstimmen. Derzeit steuert das Ausgabedataset den Zeitplan, sodass Sie auch dann ein Ausgabedataset erstellen müssen, wenn die Aktivität keine Ausgabe erzeugt. Wenn die Aktivität keine Eingabe akzeptiert, können Sie das Erstellen des Eingabedatasets überspringen.
 
 Vergewissern Sie sich, dass Sie die Datei **input.log** im Ordner **adfgetstarted/inputdata** im Azure-Blobspeicher sehen, und führen Sie den folgenden Befehl aus, um die Pipeline bereitzustellen. Da die Zeiten für **start** und **end** in der Vergangenheit festgelegt sind und **isPaused** auf „false“ festgelegt ist, wird die Pipeline (Aktivität in der Pipeline) sofort nach der Bereitstellung ausgeführt.
 
@@ -364,7 +366,7 @@ Vergewissern Sie sich, dass Sie die Datei **input.log** im Ordner **adfgetstarte
 2. Führen Sie den Befehl mithilfe von **Invoke-Command**aus.
 
         $results = Invoke-Command -scriptblock $cmd;
-3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.  
+3. Zeigen Sie die Ergebnisse an. Wenn die Erstellung des Datasets erfolgreich war, wird der JSON-Code für das Dataset unter **Ergebnisse** angezeigt. Andernfalls sehen Sie eine Fehlermeldung.
 
         Write-Host $results
 4. Glückwunsch, Sie haben mit Azure PowerShell Ihre erste Pipeline erfolgreich erstellt!
@@ -386,7 +388,7 @@ In diesem Schritt verwenden Sie die Data Factory-REST-API zum Überwachen von Sl
 
 
 > [!IMPORTANT]
-> Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten). Daher ist damit zu rechnen, dass die Pipeline **etwa 30 Minuten** zum Verarbeiten des Slice benötigt.  
+> Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters dauert in der Regel einige Zeit (etwa 20 Minuten). Daher ist damit zu rechnen, dass die Pipeline **etwa 30 Minuten** zum Verarbeiten des Slice benötigt.
 >
 >
 
@@ -399,10 +401,10 @@ Führen Sie „Invoke-Command“ und den darauffolgenden Befehl aus, bis für de
 >
 >
 
-Sie können das Azure-Portal auch zum Überwachen von Slices und Durchführen der Problembehandlung verwenden. Informationen hierzu finden Sie unter [Überwachen von Pipelines mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline) .  
+Sie können das Azure-Portal auch zum Überwachen von Slices und Durchführen der Problembehandlung verwenden. Informationen hierzu finden Sie unter [Überwachen von Pipelines mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline) .
 
 ## <a name="summary"></a>Zusammenfassung
-In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten erstellt, indem Sie ein Hive-Skript in einem HDInsight Hadoop-Cluster ausgeführt haben. Sie haben den Data Factory-Editor im Azure-Portal verwendet, um die folgenden Schritte auszuführen:  
+In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten erstellt, indem Sie ein Hive-Skript in einem HDInsight Hadoop-Cluster ausgeführt haben. Sie haben den Data Factory-Editor im Azure-Portal verwendet, um die folgenden Schritte auszuführen:
 
 1. Sie haben eine Azure **Data Factory**erstellt.
 2. Sie haben zwei **verknüpfte Dienste**erstellt:
@@ -427,6 +429,6 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

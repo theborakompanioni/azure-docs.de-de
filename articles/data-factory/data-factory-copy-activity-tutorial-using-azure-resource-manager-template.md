@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 535eb3c22dad35da3c1dbc10be5a7c11c6bb8d00
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 42a1e634ef2c832fd0213fdae12f74db7eb264f5
 
 
 ---
@@ -37,7 +37,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-V
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Lesen Sie sich die [Tutorialübersicht und die Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
-* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer. In diesem Tutorial stellen Sie Data Factory-Entitäten mithilfe von PowerShell bereit. 
+* Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) zum Installieren der neuesten Version von Azure PowerShell auf Ihrem Computer. In diesem Tutorial stellen Sie Data Factory-Entitäten mithilfe von PowerShell bereit. 
 * Optional: Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
 
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
@@ -543,11 +543,11 @@ Beispiel:
 
 Der erste Befehl verwendet eine Parameterdatei für die Entwicklungsumgebung, der zweite eine Parameterdatei für die Testumgebung und der dritte eine Parameterdatei für die Produktion.  
 
-Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Angenommen, Sie müssen zahlreiche Data Factorys mit einer Pipeline oder mehreren Pipelines erstellen, die die gleiche Logik implementieren, die einzelnen Data Factorys verwenden jedoch jeweils ein anderes Azure Storage- und Azure SQL-Datenbank-Konto. In diesem Szenario können Sie zur Erstellung der Data Factorys die gleiche Vorlage in der gleichen Umgebung (Entwicklungs-, Test- oder Produktionsumgebung) mit unterschiedlichen Parameterdateien Data Factorys verwenden.   
+Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Angenommen, Sie müssen zahlreiche Data Factorys mit einer Pipeline oder mehreren Pipelines erstellen, die die gleiche Logik implementieren, aber die einzelnen Data Factorys verwenden jeweils ein anderes Azure Storage- und Azure SQL-Datenbank-Konto. In diesem Szenario können Sie zur Erstellung der Data Factorys die gleiche Vorlage in der gleichen Umgebung (Entwicklungs-, Test- oder Produktionsumgebung) mit unterschiedlichen Parameterdateien Data Factorys verwenden.   
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

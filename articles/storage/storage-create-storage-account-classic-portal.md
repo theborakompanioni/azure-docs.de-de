@@ -4,7 +4,7 @@ description: "Erstellen Sie ein neues Speicherkonto, verwalten Sie die Zugriffss
 services: storage
 documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 5e4f4360-3f81-4d63-a0b1-e7771b67af11
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2016
+ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 90e9fcf933173b5609eff70fa1ce4bfa027fee3d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 879e199f0c712a46b89a686d6a3dd8dd877821e4
 
 
 ---
@@ -99,7 +99,7 @@ Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhän
 
 Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Details finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md) .
 
-### <a name="service-colocation-with-an-affinity-group"></a>Dienst am selben Standort wie Affinitätsgruppe
+### <a name="service-co-location-with-an-affinity-group"></a>Dienst am selben Standort wie Affinitätsgruppe
 Eine *Affinitätsgruppe* ist eine geografische Gruppierung Ihrer Azure-Dienste und VMs mit Ihrem Azure-Konto. Eine Affinitätsgruppe kann die Dienstleistung verbessern, indem Computerarbeitslasten im gleichen Rechenzentrum oder in der Nähe der Zielbenutzer platziert werden. Außerdem fallen keine Gebühren für den Datenausgang an, wenn ein Dienst, der zur gleichen Affinitätsgruppe gehört, auf Daten im Speicherkonto zugreift.
 
 > [!NOTE]
@@ -175,6 +175,6 @@ Um ein nicht mehr verwendetes Speicherkonto zu entfernen, verwenden Sie **Lösch
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: big-compute
 ms.date: 11/22/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 58189daa7dd80e9ecb074a935e3e53fe75637643
-ms.openlocfilehash: 8bac99e393dd0ccca9eaa6097dc87872e306dc5c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ecf07295a2e56e1aae8fc8fce77ca219db1f371e
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 8bac99e393dd0ccca9eaa6097dc87872e306dc5c
 >
 >
 
-Informieren Sie sich in diesem Artikel, in dem eine C#-Beispielanwendung Schritt für Schritt beschrieben wird, über die Grundlagen von [Azure Batch][azure_batch] und die [Batch-Bibliothek für .NET][net_api]. Wir sehen uns an, wie diese Beispielanwendung den Batch-Dienst nutzt, um eine parallele Workload in der Cloud zu verarbeiten, und wie sie mit [Azure Storage](../storage/storage-introduction.md) in Bezug auf die Dateibereitstellung und -wiederherstellung interagiert. Sie lernen häufig verwendete Batch-Anwendungsworkflows kennen und erhalten ein besseres Verständnis in Bezug auf die Hauptkomponenten von Batch, wie etwa Aufträge, Aufgaben, Pools und Computeknoten.
+Informieren Sie sich in diesem Artikel anhand einer ausführlich beschriebenen C#-Beispielanwendung über die Grundlagen von [Azure Batch][azure_batch] und die [Batch-Bibliothek für .NET][net_api]. Wir sehen uns an, wie diese Beispielanwendung den Batch-Dienst nutzt, um eine parallele Workload in der Cloud zu verarbeiten, und wie sie mit [Azure Storage](../storage/storage-introduction.md) in Bezug auf die Dateibereitstellung und -wiederherstellung interagiert. Sie lernen häufig verwendete Batch-Anwendungsworkflows kennen und erhalten ein besseres Verständnis in Bezug auf die Hauptkomponenten von Batch, wie etwa Aufträge, Aufgaben, Pools und Computeknoten.
 
 ![Batch-Lösungsworkflow (einfach)][11]<br/>
 
@@ -35,7 +35,7 @@ Informieren Sie sich in diesem Artikel, in dem eine C#-Beispielanwendung Schritt
 In diesem Artikel wird davon ausgegangen, dass Sie über C#- und Visual Studio-Grundkenntnisse verfügen. Außerdem wird vorausgesetzt, dass Sie die Anforderungen an die Kontoerstellung erfüllen können, die unten für Azure und die Batch- und Storage-Dienste angegeben sind.
 
 ### <a name="accounts"></a>Konten
-* **Azure-Konto**: Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
+* **Azure-Konto**: Falls Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
 * **Batch-Konto**: Wenn Sie über ein Azure-Abonnement verfügen, können Sie ein [Azure Batch-Konto erstellen](batch-account-create-portal.md).
 * **Storage-Konto**: Weitere Informationen finden Sie unter Informationen zu [Azure Storage-Konten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
 
@@ -48,7 +48,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über C#- und Visual Studio-G
 Zur Erstellung des Beispielprojekts benötigen Sie **Visual Studio 2015** . Kostenlose Versionen und Testversionen von Visual Studio finden Sie in der [Übersicht der Visual Studio 2015-Produkte][visual_studio].
 
 ### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* 
-Das Beispiel [DotNetTutorial][github_dotnettutorial] ist eines der vielen Batchcodebeispiele im Repository [azure-batch-samples][github_samples] auf GitHub. Sie können alle Beispiele herunterladen, indem Sie auf der Seite des Repositorys auf **Clone or download > Download ZIP** (Klonen oder herunterladen > ZIP herunterladen) oder auf den Direktdownload-Link [azure-batch-samples-master.zip][github_samples_zip] klicken. Nachdem Sie den Inhalt der ZIP-Datei extrahiert haben, befindet sich die Projektmappe im folgenden Ordner:
+Das Beispiel [DotNetTutorial][github_dotnettutorial] ist eines der vielen Batch-Codebeispiele im Repository [azure-batch-samples][github_samples] auf GitHub. Sie können alle Beispiele herunterladen, indem Sie auf der Startseite des Repositorys auf **Clone or download > Download ZIP** („Klonen oder herunterladen“ > „ZIP-Datei herunterladen“) oder auf den Link zum direkten Herunterladen ([azure-batch-samples-master.zip][github_samples_zip]) klicken. Nachdem Sie den Inhalt der ZIP-Datei extrahiert haben, befindet sich die Projektmappe im folgenden Ordner:
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
@@ -112,7 +112,7 @@ Die Kontoanmeldeinformationen für Batch und Storage finden Sie im [Azure-Portal
 Nachdem Sie das Projekt mit Ihren Anmeldeinformationen aktualisiert haben, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe und klicken anschließend auf **Projektmappe erstellen**. Bestätigen Sie die Wiederherstellung von NuGet-Paketen, wenn Sie hierzu aufgefordert werden.
 
 > [!TIP]
-> Falls die NuGet-Pakete nicht automatisch wiederhergestellt werden oder ein Wiederherstellungsfehler auftritt, sollten Sie sich vergewissern, dass der [NuGet-Paket-Manager][nuget_packagemgr] installiert ist. Aktivieren Sie anschließend das Herunterladen fehlender Pakete. Informationen zum Aktivieren des Paketdownloads finden Sie unter [Enabling Package Restore During Build][nuget_restore] (Aktivieren der Paketwiederherstellung während des Buildvorgangs).
+> Falls die NuGet-Pakete nicht automatisch wiederhergestellt werden oder ein Wiederherstellungsfehler auftritt, vergewissern Sie sich, dass der [NuGet-Paket-Manager][nuget_packagemgr] installiert ist. Aktivieren Sie anschließend das Herunterladen fehlender Pakete. Informationen zum Aktivieren des Paketdownloads finden Sie unter [Enabling Package Restore During Build][nuget_restore] (Aktivieren der Paketwiederherstellung während des Buildvorgangs).
 >
 >
 
@@ -130,7 +130,7 @@ Batch enthält integrierte Unterstützung für die Interaktion mit Azure Storage
 * **input:**Die zu verarbeitenden Datendateien werden von den Aufgaben aus dem Container *input* heruntergeladen.
 * **output:**Nach Abschluss der Verarbeitung der Eingabedateien werden die Ergebnisse in den Container *output* hochgeladen.
 
-Für die Interaktion mit einem Speicherkonto und die Containererstellung verwenden wir die [Azure Storage-Clientbibliothek für .NET][net_api_storage]. Wir erstellen einen Verweis auf das Konto mit [CloudStorageAccount][net_cloudstorageaccount], und erstellen auf dieser Grundlage ein [CloudBlobClient-Element][net_cloudblobclient]:
+Für die Interaktion mit einem Speicherkonto und die Containererstellung verwenden wir die [Azure Storage-Clientbibliothek für .NET][net_api_storage]. Wir erstellen einen Verweis auf das Konto mit [CloudStorageAccount][net_cloudstorageaccount] und erstellen auf dieser Grundlage ein [CloudBlobClient][net_cloudblobclient]-Element:
 
 ```csharp
 // Construct the Storage account connection string
@@ -266,7 +266,7 @@ private static async Task<ResourceFile> UploadFileToContainerAsync(
 ```
 
 ### <a name="resourcefiles"></a>ResourceFiles
-Ein [ResourceFile][net_resourcefile]-Objekt stellt für Aufgaben in Batch die URL zu einer Datei in Azure Storage bereit, die vor dem Ausführen der Aufgabe auf einen Computeknoten heruntergeladen wird. Mit der [ResourceFile.BlobSource][net_resourcefile_blobsource]-Eigenschaft wird die vollständige URL der Datei so angegeben, wie sie in Azure Storage vorhanden ist. Die URL kann auch eine Shared Access Signature (SAS) enthalten, die sicheren Zugriff auf die Datei gewährt. Die meisten Aufgabentypen in Batch .NET enthalten eine *ResourceFiles*-Eigenschaft. Hierzu zählen:
+Ein [ResourceFile][net_resourcefile]-Objekt stellt für Aufgaben in Batch die URL zu einer Datei in Azure Storage bereit, die vor dem Ausführen der Aufgabe auf einen Computeknoten heruntergeladen wird. Mit der [ResourceFile.BlobSource][net_resourcefile_blobsource]-Eigenschaft wird die vollständige URL der Datei so angegeben, wie sie in Azure Storage vorliegt. Die URL kann auch eine Shared Access Signature (SAS) enthalten, die sicheren Zugriff auf die Datei gewährt. Die meisten Aufgabentypen in Batch .NET enthalten eine *ResourceFiles*-Eigenschaft. Hierzu zählen:
 
 * [CloudTask][net_task]
 * [StartTask][net_pool_starttask]
@@ -292,7 +292,7 @@ Bei Shared Access Signatures handelt es sich um Zeichenfolgen, die – bei Einbi
 
 Ein Batch- **Pool** ist eine Sammlung von Computeknoten (virtuellen Computern), auf denen Batch die Aufgaben eines Auftrags ausführt.
 
-Nach dem Hochladen der Anwendung und der Datendateien in das Speicherkonto beginnt *DotNetTutorial* unter Verwendung der Batch .NET-Bibliothek die Interaktion mit dem Batch-Dienst. Hierfür wird zuerst ein [BatchClient][net_batchclient] erstellt:
+Nach dem Hochladen der Anwendung und der Datendateien in das Speicherkonto beginnt *DotNetTutorial* unter Verwendung der Batch .NET-Bibliothek die Interaktion mit dem Batch-Dienst. Hierfür wird zuerst ein [BatchClient][net_batchclient]-Element erstellt:
 
 ```csharp
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(
@@ -305,7 +305,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
     ...
 ```
 
-Als Nächstes wird im Batch-Konto durch Aufrufen von `CreatePoolAsync`ein Pool mit Computeknoten erstellt. `CreatePoolAsync` verwendet die Methode [BatchClient.PoolOperations.CreatePool][net_pool_create], um einen Pool im Batch-Service zu erstellen.
+Als Nächstes wird im Batch-Konto durch Aufrufen von `CreatePoolAsync`ein Pool mit Computeknoten erstellt. `CreatePoolAsync` verwendet die Methode [BatchClient.PoolOperations.CreatePool][net_pool_create], um einen Pool im Batch-Dienst zu erstellen.
 
 ```csharp
 private static async Task CreatePoolAsync(
@@ -357,7 +357,7 @@ Beim Erstellen eines Pools mit [CreatePool][net_pool_create] müssen mehrere Par
 
 Zusammen mit diesen Eigenschaften des physischen Knotens können Sie auch eine [StartTask][net_pool_starttask]-Aufgabe für den Pool angeben. Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. Besonders nützlich ist die StartTask zum Installieren von Anwendungen auf Computeknoten vor der Ausführung von Aufgaben. Wenn Daten für Ihre Aufgaben mit Python-Skripts verarbeitet werden, können Sie eine StartTask verwenden, um Python auf den Computeknoten zu installieren.
 
-In dieser Beispielanwendung kopiert die StartTask-Aufgabe die Dateien, die aus Storage heruntergeladen (und mit der Eigenschaft [StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles] angegeben) werden, aus dem StartTask-Arbeitsverzeichnis in das freigegebene Verzeichnis. Auf dieses Verzeichnis können *alle* auf dem Knoten ausgeführten Aufgaben zugreifen. Im Wesentlichen werden hiermit `TaskApplication.exe` und die dazugehörigen Abhängigkeiten in das freigegebene Verzeichnis jedes Knotens kopiert, wenn der Knoten dem Pool beitritt. So können alle Aufgaben, die auf dem Knoten ausgeführt werden, darauf zugreifen.
+In dieser Beispielanwendung kopiert die StartTask-Aufgabe die aus Storage heruntergeladenen (mit der [StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles]-Eigenschaft angegebenen) Dateien aus dem StartTask-Arbeitsverzeichnis in das freigegebene Verzeichnis. Auf dieses Verzeichnis können *alle* auf dem Knoten ausgeführten Aufgaben zugreifen. Im Wesentlichen werden hiermit `TaskApplication.exe` und die dazugehörigen Abhängigkeiten in das freigegebene Verzeichnis jedes Knotens kopiert, wenn der Knoten dem Pool beitritt. So können alle Aufgaben, die auf dem Knoten ausgeführt werden, darauf zugreifen.
 
 > [!TIP]
 > Das Feature **Anwendungspakete** von Azure Batch ist eine andere Möglichkeit, um Ihre Anwendung auf die Computeknoten in einem Pool zu verteilen. Ausführliche Informationen finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md) .
@@ -404,7 +404,7 @@ Nachdem ein Auftrag erstellt wurde, werden Aufgaben zum Durchführen der Arbeits
 
 Batch- **Aufgaben** sind die einzelnen Arbeitseinheiten, die auf den Computeknoten ausgeführt werden. Eine Aufgabe verfügt über eine Befehlszeile und führt die Skripts oder ausführbaren Dateien aus, die Sie in der Befehlszeile festlegen.
 
-Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][net_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und einem [ResourceFiles-Objekt][net_task_resourcefiles] (wie bei der StartTask-Aufgabe des Pools) konfiguriert, die vor dem automatischen Ausführen der Befehlszeile von der Aufgabe auf den Knoten heruntergeladen wird. Im Beispielprojekt *DotNetTutorial* verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
+Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][net_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und einem [ResourceFiles][net_task_resourcefiles]-Objekt (wie bei der StartTask-Aufgabe des Pools) konfiguriert, die vor dem automatischen Ausführen der Befehlszeile von der Aufgabe auf den Knoten heruntergeladen wird. Im Beispielprojekt *DotNetTutorial* verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
 
 ```csharp
 private static async Task<List<CloudTask>> AddTasksAsync(
@@ -497,9 +497,9 @@ Wenn einem Auftrag Aufgaben hinzugefügt werden, werden sie automatisch in die W
 
 Es gibt viele Ansätze für die Überwachung der Aufgabenausführung. DotNetTutorial enthält ein einfaches Beispiel, bei dem nur der Abschluss und das Fehlschlagen oder der Erfolg von Aufgaben gemeldet wird. Die `MonitorTasks`-Methode in der Datei `Program.cs` von DotNetTutorial enthält drei Batch .NET-Konzepte, auf die wir hier näher eingehen möchten. Sie sind unten in der Reihenfolge ihrer Darstellung aufgeführt:
 
-1. **ODATADetailLevel**: [ODATADetailLevel][net_odatadetaillevel] muss bei Auflistungsvorgängen (etwa beim Abrufen einer Liste mit Aufgaben eines Auftrags) angegeben werden, um die Leistung der Batch-Anwendung sicherzustellen. Machen Sie sich mit den Informationen unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) vertraut, wenn Sie in Ihren Batch-Anwendungen eine Statusüberwachung verwenden möchten.
-2. **TaskStateMonitor**: [TaskStateMonitor][net_taskstatemonitor] stellt Hilfsprogramme zum Überwachen des Aufgabenstatus für Batch .NET-Anwendungen bereit. Bei `MonitorTasks` wartet *DotNetTutorial*, bis alle Aufgaben innerhalb eines bestimmten Zeitraums den Status [TaskState.Completed][net_taskstate] erreicht haben. Anschließend wird der Auftrag beendet.
-3. **TerminateJobAsync**: Wenn ein Auftrag mit [JobOperations.TerminateJobAsync][net_joboperations_terminatejob] (oder durch das Blockieren von „JobOperations.TerminateJob“) beendet wird, wird der Auftrag als abgeschlossen gekennzeichnet. Dies ist wichtig, wenn für Ihre Batch-Lösung eine [JobReleaseTask][net_jobreltask]-Aufgabe verwendet wird. Dieser besondere Aufgabentyp wird unter [Vorbereitung und Abschluss von Aufträgen](batch-job-prep-release.md)beschrieben.
+1. **ODATADetailLevel:** [ODATADetailLevel][net_odatadetaillevel] muss bei Auflistungsvorgängen (etwa beim Abrufen einer Liste mit Aufgaben eines Auftrags) angegeben werden, um die Leistung der Batch-Anwendung zu optimieren. Machen Sie sich mit den Informationen unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) vertraut, wenn Sie in Ihren Batch-Anwendungen eine Statusüberwachung verwenden möchten.
+2. **TaskStateMonitor:** [TaskStateMonitor][net_taskstatemonitor] stellt Hilfsprogramme zum Überwachen des Aufgabenstatus für Batch .NET-Anwendungen bereit. Bei `MonitorTasks` wartet *DotNetTutorial*, bis alle Aufgaben innerhalb eines bestimmten Zeitraums den Status [TaskState.Completed][net_taskstate] erreicht haben. Anschließend wird der Auftrag beendet.
+3. **TerminateJobAsync:** Wenn ein Auftrag mit [JobOperations.TerminateJobAsync][net_joboperations_terminatejob] (oder durch das Blockieren von JobOperations.TerminateJob) beendet wird, wird der Auftrag als abgeschlossen gekennzeichnet. Dies ist erforderlich, wenn für Ihre Batch-Lösung eine [JobReleaseTask][net_jobreltask]-Aufgabe verwendet wird. Dieser besondere Aufgabentyp wird unter [Vorbereitung und Abschluss von Aufträgen](batch-job-prep-release.md)beschrieben.
 
 Hier ist die `MonitorTasks`-Methode aus der Datei `Program.cs` von *DotNetTutorial* angegeben:
 
@@ -640,7 +640,7 @@ await DeleteContainerAsync(blobClient, inputContainerName);
 await DeleteContainerAsync(blobClient, outputContainerName);
 ```
 
-Die Methode selbst ruft nur einen Verweis auf den Container ab und ruft anschließend [CloudBlobContainer.DeleteIfExistsAsync][net_container_delete] auf:
+Die Methode selbst ruft nur einen Verweis auf den Container ab und anschließend [CloudBlobContainer.DeleteIfExistsAsync][net_container_delete] auf:
 
 ```csharp
 private static async Task DeleteContainerAsync(
@@ -690,7 +690,7 @@ if (response != "n" && response != "no")
 >
 
 ## <a name="run-the-dotnettutorial-sample"></a>Ausführen des Beispiels *DotNetTutorial*
-Beim Ausführen der Beispielanwendung ähnelt die Konsolenausgabe folgender Ausgabe: Bei der Ausführung kommt es bei `Awaiting task completion, timeout in 00:30:00...` zu einer Pause, während die Computeknoten des Pools gestartet werden. Verwenden Sie das [Azure-Portal][azure_portal], um den Pool, die Computeknoten, den Auftrag und die Aufgaben während und nach der Ausführung zu überwachen. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Azure Storage-Explorer][storage_explorers], um die von der Anwendung erstellten Speicherressourcen (Container und Blobs) anzuzeigen.
+Beim Ausführen der Beispielanwendung ähnelt die Konsolenausgabe folgender Ausgabe: Bei der Ausführung kommt es bei `Awaiting task completion, timeout in 00:30:00...` zu einer Pause, während die Computeknoten des Pools gestartet werden. Verwenden Sie das [Azure-Portal][azure_portal], um den Pool, die Computeknoten, den Auftrag und die Aufgaben während und nach der Ausführung zu überwachen. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Azure-Speicher-Explorer][storage_explorers], um die von der Anwendung erstellten Speicherressourcen (Container und Blobs) anzuzeigen.
 
 Die normale Ausführungsdauer beträgt **ca. fünf Minuten** , wenn die Anwendung in der Standardkonfiguration ausgeführt wird.
 
@@ -726,13 +726,13 @@ Sample complete, hit ENTER to exit...
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nehmen Sie Änderungen an *DotNetTutorial* und *TaskApplication* vor, um mit unterschiedlichen Computeszenarien zu experimentieren. Versuchen Sie beispielsweise, *TaskApplication* eine Ausführungsverzögerung (etwa mit [Thread.Sleep][net_thread_sleep]) hinzuzufügen, um Aufgaben mit langer Ausführungsdauer zu simulieren und im Portal zu überwachen. Versuchen Sie, weitere Aufgaben hinzuzufügen oder die Anzahl von Computeknoten anzupassen. Fügen Sie Logik hinzu, um das Vorhandensein eines Pools zu prüfen und die Verwendung dieses Pools zu ermöglichen. Das Ziel hierbei ist die Verringerung der Ausführungsdauer. (*Hinweis*: Sehen Sie sich die Datei `ArticleHelpers.cs` im Projekt [Microsoft.Azure.Batch.Samples.Common][github_samples_common] unter [azure-batch-samples][github_samples] an.)
+Nehmen Sie Änderungen an *DotNetTutorial* und *TaskApplication* vor, um mit unterschiedlichen Computeszenarien zu experimentieren. Versuchen Sie beispielsweise, *TaskApplication* eine Ausführungsverzögerung (etwa mit [Thread.Sleep][net_thread_sleep]) hinzuzufügen, um Aufgaben mit langer Ausführungsdauer zu simulieren und im Portal zu überwachen. Versuchen Sie, weitere Aufgaben hinzuzufügen oder die Anzahl von Computeknoten anzupassen. Fügen Sie Logik hinzu, um zu prüfen, ob ein Pool vorhanden ist, und die Verwendung dieses Pools zu ermöglichen, um die Ausführungsdauer zu verringern. (*Hinweis:* Sehen Sie sich die Datei `ArticleHelpers.cs` im Projekt [Microsoft.Azure.Batch.Samples.Common][github_samples_common] unter [azure-batch-samples][github_samples] an.)
 
 Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertraut gemacht haben, können wir uns mit den zusätzlichen Features des Batch-Diensts beschäftigen.
 
 * Falls Sie noch keine Erfahrung mit dem Dienst haben, helfen Ihnen die Informationen im Artikel [Übersicht über Azure Batch-Features](batch-api-basics.md) weiter.
 * Beginnen Sie mit den anderen Artikeln zur Batch-Entwicklung unter **Entwicklung im Detail** im [Lernpfad für Batch][batch_learning_path].
-* Sehen Sie sich im Beispiel [TopNWords][github_topnwords] eine andere Implementierung für die Verarbeitung der Workload „Erste N Wörter“ mit Batch an.
+* Sehen Sie sich eine andere Implementierung einer Verarbeitung der Workload „Oberste N Wörter“ mit Batch im Beispiel [TopNWords][github_topnwords] an.
 
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
@@ -791,10 +791,10 @@ Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertra
 [8]: ./media/batch-dotnet-get-started/batch_workflow_sm.png "Batch-Lösungsworkflow (vollständiges Diagramm)"
 [9]: ./media/batch-dotnet-get-started/credentials_batch_sm.png "Batch-Anmeldeinformationen im Portal"
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "Storage-Anmeldeinformationen im Portal"
-[11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch-Lösungsworkflow (einfaches Diagramm)"
+[11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch-Lösungsworkflow (reduziertes Diagramm)"
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
