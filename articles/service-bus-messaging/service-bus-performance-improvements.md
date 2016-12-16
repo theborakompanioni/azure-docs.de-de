@@ -1,35 +1,43 @@
 ---
-title: Bewährte Methoden zur Verbesserung der Leistung mit Service Bus | Microsoft Docs
+title: "Bewährte Methoden zur Verbesserung der Leistung mit Service Bus | Microsoft Docs"
 description: Beschreibt, wie Azure Service Bus verwendet wird, um die Leistung zu optimieren, wenn Brokernachrichten ausgetauscht werden.
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/08/2016
+ms.date: 10/25/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5402481a0adc27474f7ddd9b5be1d71dc2c91d44
+
 
 ---
-# <a name="best-practices-for-performance-improvements-using-service-bus-brokered-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging
-In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Service Bus die Leistung beim Austausch von Brokernachrichten optimieren. Der erste Teil befasst sich mit den verschiedenen Mechanismen zur Leistungssteigerung. Der zweite Teil bietet eine Anleitung zur Verwendung von Service Bus auf eine Weise, die die beste Leistung in einem bestimmten Szenario ermöglichen kann.
+# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
+In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Service Bus Messaging die Leistung beim Austausch von Brokernachrichten optimieren. Der erste Teil befasst sich mit den verschiedenen Mechanismen zur Leistungssteigerung. Der zweite Teil bietet eine Anleitung zur Verwendung von Service Bus auf eine Weise, die die beste Leistung in einem bestimmten Szenario ermöglichen kann.
 
 Im Rahmen dieses Themas bezieht sich der Begriff „Client“ auf eine Entität, die auf Service Bus zugreift. Ein Client kann die Rolle eines Absenders oder eines Empfängers annehmen. Der Begriff „Absender“ wird für einen Service Bus-Warteschlangenclient oder für einen Service Bus-Themenclient verwendet, der Nachrichten an eine Service Bus-Warteschlange oder an ein Service Bus-Thema sendet. Der Begriff „Empfänger“ bezieht sich auf einen Service Bus-Warteschlangenclient oder einen auf einen Service Bus-Abonnementclient, der Nachrichten von einer Service Bus-Warteschlange oder einem Service Bus-Abonnement empfängt.
 
 In diesen Abschnitten werden einige Konzepte erläutert, die Service Bus verwendet, um die Performance zu steigern.
 
 ## <a name="protocols"></a>Protokolle
-Service Bus ermöglicht Clients das Senden und Empfangen von Nachrichten über zwei Protokolle: Service Bus-Clientprotokoll und HTTP (REST). Das Service Bus-Clientprotokoll ist effizienter, da es die Verbindung mit dem Service Bus-Dienst beibehält, solange die Messagingfactory vorhanden ist. Außerdem implementiert es die Batchverarbeitung und Vorabrufe. Das Service Bus-Clientprotokoll ist für .NET-Anwendungen über die .NET-APIs verfügbar.
+Service Bus ermöglicht Clients das Senden und Empfangen von Nachrichten über drei Protokolle.
 
-Sofern nicht anders angegeben, wird für alle Inhalte in diesem Thema das Service Bus-Clientprotokoll verwendet.
+1. Advanced Message Queuing Protocol (AMQP)
+2. Service Bus Messaging Protocol (SBMP)
+3. HTTP
+
+AMQP und SBMP sind effizienter, da sie die Verbindung mit Service Bus aufrecht erhalten, solange die Messaging-Factory vorhanden ist. Außerdem implementiert es die Batchverarbeitung und Vorabrufe. Sofern nicht anders angegeben, wird für alle Inhalte in diesem Thema AMQP oder SBMP verwendet.
 
 ## <a name="reusing-factories-and-clients"></a>Wiederverwenden von Factorys und Clients
-Service Bus-Clientobjekte wie [QueueClient][QueueClient] oder [MessageSender][MessageSender] werden durch ein [MessagingFactory][MessagingFactory]-Objekt erstellt, das die interne Verwaltung von Verbindungen ermöglicht. Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- und Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. Das Herstellen einer Verbindung ist ein aufwändiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können das [QueueClient][QueueClient]-Objekt auf sichere Weise zum Senden von Nachrichten von gleichzeitigen asynchronen Vorgängen und mehreren Threads verwenden. 
+Service Bus-Clientobjekte wie [QueueClient][QueueClient] oder [MessageSender][MessageSender] werden durch ein [MessagingFactory][MessagingFactory]-Objekt erstellt, das auch die interne Verwaltung von Verbindungen ermöglicht. Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- und Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. Das Herstellen einer Verbindung ist ein aufwändiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können das [QueueClient][QueueClient]-Objekt gefahrlos zum Senden von Nachrichten von gleichzeitigen asynchronen Vorgängen und mehreren Threads verwenden. 
 
 ## <a name="concurrent-operations"></a>Parallele Vorgänge
 Das Ausführen eines Vorgangs (Senden, Empfangen, Löschen usw.) nimmt einige Zeit in Anspruch. Dieser Zeitraum umfasst die Verarbeitung des Vorgangs durch den Service Bus-Dienst sowie die Latenz der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen. Hierzu können Sie wie folgt vorgehen:
@@ -97,7 +105,7 @@ Die Batchverarbeitung wirkt sich nicht auf die Anzahl der abrechenbaren Messagin
 ## <a name="batching-store-access"></a>Batchverarbeitung des Speicherzugriffs
 Um den Durchsatz von Warteschlangen/Themen/Abonnements zu erhöhen, verarbeitet Service Bus beim Schreiben in den internen Speicher mehrere Nachrichten als Batch. Ist diese Funktion für eine Warteschlange oder ein Thema aktiviert, erfolgt das Schreiben von Nachrichten in den Speicher als Batch. Ist diese Funktion für eine Warteschlange oder ein Abonnement aktiviert, erfolgt das Löschen von Nachrichten aus dem Speicher als Batch. Wenn für eine Entität Speicherzugriff als Batch aktiviert ist, verzögert Service Bus einen Schreibvorgang in den Speicher für diese Entität für bis zu 20 ms. Weitere Speichervorgänge, die während dieses Intervalls auftreten, werden dem Batch hinzugefügt. Speicherzugriff als Batch wirkt sich nur auf Vorgänge zum **Senden** und **Abschließen** aus, Empfangsvorgänge sind nicht betroffen. Speicherzugriff als Batch ist eine Eigenschaft einer Entität. Die Batchverarbeitung erfolgt für alle Entitäten, die Speicherzugriff als Batch ermöglichen.
 
-Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert. Um den Speicherzugriff als Batch zu deaktivieren, legen Sie vor dem Erstellen der Entität die Eigenschaft [EnableBatchedOperations][EnableBatchedOperations] auf **FALSE** fest. Beispiel:
+Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert. Um den Speicherzugriff als Batch zu deaktivieren, legen Sie vor dem Erstellen der Entität die Eigenschaft [EnableBatchedOperations][EnableBatchedOperations] auf **false** fest. Beispiel:
 
 ```
 QueueDescription qd = new QueueDescription();
@@ -108,7 +116,7 @@ Queue q = namespaceManager.CreateQueue(qd);
 Der Speicherzugriff als Batch wirkt sich nicht auf die Anzahl abrechenbarer Messagingvorgänge aus und ist eine Eigenschaft von Warteschlangen, Themen oder Abonnements. Er ist unabhängig vom Empfangsmodus und dem Protokoll, das zwischen einem Client und dem Service Bus-Dienst verwendet wird.
 
 ## <a name="prefetching"></a>Vorabrufe
-Vorabrufe ermöglichen es dem Warteschlangen- oder Abonnementclient, weitere Nachrichten aus dem Dienst zu laden, wenn er einen Empfangsvorgang ausführt. Der Client speichert diese Nachrichten in einem lokalen Cache. Die Größe des Cache wird durch die Eigenschaften [QueueClient.PrefetchCount][QueueClient.PrefetchCount] oder [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] bestimmt. Jeder Client, der Vorabrufe ermöglicht, verwaltet seinen eigenen Cache. Ein Cache wird nicht für andere Clients freigegeben. Wenn der Client einen Empfangsvorgang initiiert und sein Cache leer ist, überträgt der Dienst ein Nachrichtenbatch. Die Größe des Batches entspricht der Größe des Caches oder 256 KB (dem jeweils kleinerem Wert). Wenn der Client einen Empfangsvorgang initiiert und der Cache eine Nachricht enthält, wird die Nachricht aus dem Cache abgerufen.
+Vorabrufe ermöglichen es dem Warteschlangen- oder Abonnementclient, weitere Nachrichten aus dem Dienst zu laden, wenn er einen Empfangsvorgang ausführt. Der Client speichert diese Nachrichten in einem lokalen Cache. Die Cachegröße wird durch die Eigenschaften [QueueClient.PrefetchCount][QueueClient.PrefetchCount] oder [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] bestimmt. Jeder Client, der Vorabrufe ermöglicht, verwaltet seinen eigenen Cache. Ein Cache wird nicht für andere Clients freigegeben. Wenn der Client einen Empfangsvorgang initiiert und sein Cache leer ist, überträgt der Dienst ein Nachrichtenbatch. Die Größe des Batches entspricht der Größe des Caches oder 256 KB (dem jeweils kleinerem Wert). Wenn der Client einen Empfangsvorgang initiiert und der Cache eine Nachricht enthält, wird die Nachricht aus dem Cache abgerufen.
 
 Wenn eine Nachricht vorab abgerufen wird, sperrt der Dienst die vorab abgerufene Nachricht. Auf diese Weise kann die vorab abgerufene Nachricht nicht von einem anderen Empfänger empfangen werden. Wenn der Empfänger die Nachricht nicht abschließen kann, bevor die Sperre abläuft, wird die Nachricht für andere Empfänger verfügbar gemacht. Die vorab abgerufene Kopie der Nachricht verbleibt im Cache. Der Empfänger, der die abgelaufene Kopie aus dem Cache verarbeitet, empfängt eine Ausnahme, wenn er versucht, diese Nachricht abzuschließen. Standardmäßig läuft die Nachrichtensperrre nach 60 Sekunden ab. Dieser Wert kann auf 5 Minuten erhöht werden. Um die Nutzung abgelaufener Nachrichten zu verhindern, sollten die Cachegröße immer kleiner als die Anzahl der Nachrichten sein, die von einem Client innerhalb des Sperrintervalls genutzt werden können.
 
@@ -129,10 +137,10 @@ td.EnableExpress = true;
 namespaceManager.CreateTopic(td);
 ```
 
-Wenn eine Nachricht, die wichtige Informationen enthält, die nicht verloren gehen darf, an eine Express-Entität gesendet wird, kann der Absender in Service Bus erzwingen, dass die Nachricht sofort in den stabilen Speicher übertragen wird, indem die Eigenschaft [ForcePersistence][ForcePersistence] auf **TRUE** festgelegt wird.
+Wenn eine Nachricht mit wichtigen Informationen, die nicht verloren gehen darf, an eine Express-Entität gesendet wird, kann der Absender in Service Bus erzwingen, dass die Nachricht sofort in den stabilen Speicher übertragen wird, indem die Eigenschaft [ForcePersistence][ForcePersistence] auf **true** festgelegt wird.
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>Verwenden partitionierter Warteschlangen oder Themen
-Intern verwendet Service Bus den gleichen Knoten und den gleichen Messagingspeicher, um sämtliche Nachrichten für eine Messagingentität (Warteschlange oder Thema) zu verarbeiten und zu speichern. Partitionierte Warteschlangen oder Themen sind hingegen auf mehrere Knoten und Messagingspeicher verteilt. Sie bieten einen höheren Durchsatz als reguläre Warteschlangen und Themen und zeichnen sich zudem durch eine höhere Verfügbarkeit aus. Um eine partitionierte Entität zu erstellen, legen Sie die Eigenschaft [EnablePartitioning][EnablePartitioning] auf **TRUE** fest, wie im folgenden Beispiel gezeigt. Weitere Informationen zu partitionierten Entitäten finden Sie unter [Partitionierte Warteschlangen und Themen][].
+Intern verwendet Service Bus den gleichen Knoten und den gleichen Messagingspeicher, um sämtliche Nachrichten für eine Messagingentität (Warteschlange oder Thema) zu verarbeiten und zu speichern. Partitionierte Warteschlangen oder Themen sind hingegen auf mehrere Knoten und Messagingspeicher verteilt. Sie bieten einen höheren Durchsatz als reguläre Warteschlangen und Themen und zeichnen sich zudem durch eine höhere Verfügbarkeit aus. Um eine partitionierte Entität zu erstellen, legen Sie die Eigenschaft [EnablePartitioning][EnablePartitioning] auf **true** fest, wie im folgenden Beispiel gezeigt. Weitere Informationen zu partitionierten Entitäten finden Sie unter [Partitionierte Messagingentitäten][Partitionierte Messagingentitäten].
 
 ```
 // Create partitioned queue.
@@ -144,7 +152,14 @@ namespaceManager.CreateQueue(qd);
 ## <a name="use-of-multiple-queues"></a>Verwenden mehrerer Warteschlangen
 Falls keine partitionierten Warteschlangen oder Themen verwendet werden können oder die erwartete Last nicht von einer partitionierten Warteschlange oder von einem partitionierten Thema bewältigt werden kann, müssen mehrere Messagingentitäten verwendet werden. Wenn Sie mehrere Entitäten verwenden, erstellen Sie einen dedizierten Client für jede Entität, statt den gleichen Client für alle Entitäten zu nutzen.
 
-## <a name="scenarios"></a>Szenarien
+## <a name="development-testing-features"></a>Entwicklungs- und Testfunktionen
+Service Bus verfügt über eine Funktion, die speziell für die Entwicklung verwendet wird und **nie in Produktionskonfigurationen eingesetzt werden sollte**.
+
+[TopicDescription.EnableFilteringMessagesBeforePublishing](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing.aspx)
+
+* Wenn dem Thema neue Regeln oder Filter hinzugefügt werden, kann mit „EnableFilteringMessagesBeforePublishing“ sichergestellt werden, dass der neue Filterausdruck wie erwartet funktioniert.
+
+## <a name="scenarios"></a>Szenarios
 In den folgenden Abschnitten werden normale Messagingszenarien und die bevorzugten Service Bus-Einstellungen beschrieben. Durchsatzraten werden als klein (weniger als 1 Nachricht/Sekunde), mittel (1 Nachricht/Sekunde oder mehr, aber weniger als 100 Nachrichten/Sekunde) und hoch (100 Nachrichten/Sekunde oder mehr) klassifiziert. Die Anzahl der Clients wird als klein (5 oder weniger), mittel (mehr als 5, aber weniger als oder gleich 20) und groß (mehr als 20) klassifiziert.
 
 ### <a name="high-throughput-queue"></a>Warteschlange mit hohem Durchsatz
@@ -182,7 +197,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 * Verwenden Sie eine partitionierte Warteschlange für verbesserte Leistung und Verfügbarkeit.
 * Wenn sich jeder Absender in einem anderen Prozess befindet, verwenden Sie nur eine Factory pro Prozess.
 * Verwenden Sie asynchrone Vorgänge, um die clientseitige Batchverarbeitung zu nutzen.
-* Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
+* Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
 * Lassen Sie den Speicherzugriff als Batch aktiviert. Dies erhöht die Gesamtrate, mit der Nachrichten in die Warteschlange oder in das Thema geschrieben werden können.
 * Legen Sie den Wert für Vorabrufe auf das 20-fache der maximalen Verarbeitungsraten aller Empfänger einer Factory fest. Dies verringert die Anzahl der Service Bus-Clientprotokollübertragungen.
 
@@ -208,7 +223,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 * Verwenden Sie zur Erhöhung der Gesamtsenderate für das Thema mehrere Messagingfactorys, um Absender zu erstellen. Verwenden Sie für jeden Absender asynchrone Vorgänge oder mehrere Threads.
 * Verwenden Sie zur Erhöhung der Gesamtempfangsrate aus einem Abonnement mehrere Messagingfactorys, um Empfänger zu erstellen. Verwenden Sie für jeden Empfänger asynchrone Vorgänge oder mehrere Threads.
 * Verwenden Sie asynchrone Vorgänge, um die clientseitige Batchverarbeitung zu nutzen.
-* Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
+* Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
 * Lassen Sie den Speicherzugriff als Batch aktiviert. Dies erhöht die Gesamtrate, mit der Nachrichten in das Thema geschrieben werden können.
 * Legen Sie den Wert für Vorabrufe auf das 20-fache der maximalen Verarbeitungsraten aller Empfänger einer Factory fest. Dies verringert die Anzahl der Service Bus-Clientprotokollübertragungen.
 
@@ -221,12 +236,12 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 
 * Verwenden Sie ein partitioniertes Thema, um die Leistung und die Verfügbarkeit zu verbessern.
 * Verwenden Sie asynchrone Vorgänge, um die clientseitige Batchverarbeitung zu nutzen.
-* Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
+* Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
 * Lassen Sie den Speicherzugriff als Batch aktiviert. Dies erhöht die Gesamtrate, mit der Nachrichten in das Thema geschrieben werden können.
 * Legen Sie den Wert für den Vorabruf auf das 20-fache der erwarteten Empfangsrate in Sekunden fest. Dies verringert die Anzahl der Service Bus-Clientprotokollübertragungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Optimieren der Service Bus-Leistung finden Sie unter [Partitionierte Warteschlangen und Themen][].
+Weitere Informationen zum Optimieren der Service Bus-Leistung finden Sie unter [Partitionierte Messagingentitäten][Partitionierte Messagingentitäten].
 
 [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
 [MessageSender]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx
@@ -243,6 +258,6 @@ Weitere Informationen zum Optimieren der Service Bus-Leistung finden Sie unter [
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

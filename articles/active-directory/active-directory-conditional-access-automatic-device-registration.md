@@ -1,12 +1,12 @@
 ---
-title: Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte | Microsoft Docs
-description: IT-Administratoren können Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren.
+title: "Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte | Microsoft Docs"
+description: "IT-Administratoren können Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2d717f906bd4aad35cb46852baf84c4e088b953e
+
 
 ---
-# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domainjoined-devices"></a>Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte
+# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domain-joined-devices"></a>Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte
 Als IT-Administrator können Sie Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren. Dies ist hilfreich, wenn Sie gerätebasierte Richtlinien für den bedingten Zugriff auf Office 365-Anwendungen oder Anwendungen, die lokal von AD FS verwaltet werden, konfiguriert haben. Weitere Informationen über die Geräteregistrierungsszenarien finden Sie in der [Übersicht zur Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md).
 
 > HINWEIS: Aktuelle Anweisungen zum Einrichten der automatischen Geräteregistrierung finden Sie unter [Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
@@ -78,12 +82,12 @@ Konfigurieren Sie die automatische Geräteregistrierung für Ihre in eine Domän
 
 * [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 * [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md)
-* [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
+* [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
-Geräteregistrierung bei Azure AD bietet die breiteste Palette von Gerätefunktionen. Mit Azure AD-Geräteregistrierung können Sie persönliche mobile Geräte (BYOD) und in Domänen eingebundene firmeneigene Geräte registrieren. Die Geräte können mit beiden gehosteten Diensten, wie z. B. Office 365 und Diensten, die lokal mit AD FS verwaltet werden, verwendet werden.
+Geräteregistrierung bei Azure AD bietet die breiteste Palette von Gerätefunktionen. Mit Azure AD-Geräteregistrierung können Sie persönliche mobile Geräte (BYOD) und in Domänen eingebundene firmeneigene Geräte registrieren. Die Geräte können mit beiden gehosteten Diensten, wie z. B. Office 365 und Diensten, die lokal mit AD FS verwaltet werden, verwendet werden.
 
-Unternehmen, die sowohl mobile als auch herkömmliche Geräte oder Office 365, Azure AD oder andere Microsoft-Dienste verwenden, sollten Geräte bei Azure AD mithilfe des Azure AD-Geräteregistrierungsdienstes registrieren. Wenn Ihr Unternehmen keine mobilen Geräte und keine Microsoft-Dienste wie z. B. Office 365, Azure AD oder Microsoft Intune verwendet und stattdessen nur lokale Anwendungen hostet, dann können Sie Geräte mittels AD FS bei Active Directory registrieren.
+Unternehmen, die sowohl mobile als auch herkömmliche Geräte oder Office 365, Azure AD oder andere Microsoft-Dienste verwenden, sollten Geräte bei Azure AD mithilfe des Azure AD-Geräteregistrierungsdienstes registrieren. Wenn Ihr Unternehmen keine mobilen Geräte und keine Microsoft-Dienste wie z. B. Office 365, Azure AD oder Microsoft Intune verwendet und stattdessen nur lokale Anwendungen hostet, dann können Sie Geräte mittels AD FS bei Active Directory registrieren.
 
 [Hier](https://technet.microsoft.com/library/dn486831.aspx)erfahren Sie mehr über das Bereitstellen der Geräteregistrierung mit AD FS.
 
@@ -91,8 +95,11 @@ Unternehmen, die sowohl mobile als auch herkömmliche Geräte oder Office 365, A
 * [Azure Active Directory-Geräteregistrierung – Übersicht](active-directory-conditional-access-device-registration-overview.md)
 * [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md)
 * [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
-* [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
+* [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

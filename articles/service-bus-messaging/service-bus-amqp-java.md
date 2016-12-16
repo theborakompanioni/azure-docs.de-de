@@ -1,27 +1,31 @@
 ---
 title: Service Bus und Java mit AMQP 1.0 | Microsoft Docs
 description: Verwenden von Service Bus aus Java mit AMQP
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 1848f58d-1b40-43e0-89c4-ab14ba34c032
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: eb41df70551bc327473caea4fab95cd269bc0175
+
 
 ---
-# <a name="use-service-bus-from-java-with-amqp-1.0"></a>Verwenden von Service Bus aus Java mit AMQP 1.0
+# <a name="use-service-bus-from-java-with-amqp-10"></a>Verwenden von Service Bus aus Java mit AMQP 1.0
 [!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
-Der Java Message Service (JMS) ist eine Standard-API für das Arbeiten mit nachrichtenbasierter Middleware auf der Java-Plattform. Microsoft Azure Service Bus wurde mit der auf AMQP 1.0 basierenden JMS-Clientbibliothek getestet, die im Rahmen des Apache Qpid-Projekts entwickelt wurde. Diese Bibliothek unterstützt die vollständige JMS 1.1-API und kann mit jedem mit AMQP 1.0 kompatiblen Messagingdienst verwendet werden. Dieses Szenario wird auch in [Service Bus für Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) (lokaler Service Bus) unterstützt. Weitere Informationen finden Sie unter [AMQP in Service Bus für Windows Server][AMQP in Service Bus für Windows Server].
+Der Java Message Service (JMS) ist eine Standard-API für das Arbeiten mit nachrichtenbasierter Middleware auf der Java-Plattform. Microsoft Azure Service Bus wurde mit der auf AMQP 1.0 basierenden JMS-Clientbibliothek getestet, die im Rahmen des Apache Qpid-Projekts entwickelt wurde. Diese Bibliothek unterstützt die vollständige JMS 1.1-API und kann mit jedem mit AMQP 1.0 kompatiblen Messagingdienst verwendet werden. Dieses Szenario wird auch in [Service Bus für Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) (lokaler Service Bus) unterstützt. Weitere Informationen finden Sie unter [AMQP in Service Bus für Windows Server][AMQP in Service Bus für Windows Server].
 
-## <a name="download-the-apache-qpid-amqp-1.0-jms-client-library"></a>Herunterladen der Apache Qpid AMQP 1.0 JMS-Clientbibliothek
+## <a name="download-the-apache-qpid-amqp-10-jms-client-library"></a>Herunterladen der Apache Qpid AMQP 1.0 JMS-Clientbibliothek
 Informationen zum Herunterladen der neuesten Version der Apache Qpid JMS AMQP 1.0-Clientbibliothek finden Sie unter [http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html).
 
 Folgende vier JAR-Dateien müssen aus dem Apache Qpid JMS AMQP 1.0-Verteilungsarchiv zu dem Java-KLASSENPFAD hinzugefügt werden, wenn JMS-Anwendungen mit Service Bus erstellt und ausgeführt werden:
@@ -31,8 +35,8 @@ Folgende vier JAR-Dateien müssen aus dem Apache Qpid JMS AMQP 1.0-Verteilungsar
 * qpid-amqp-1-0-client-jms-[version].jar
 * qpid-amqp-1-0-common-[version].jar
 
-## <a name="work-with-service-bus-queues,-topics,-and-subscriptions-from-jms"></a>Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus JMS
-### <a name="java-naming-and-directory-interface-(jndi)"></a>JNDI (Java Naming and Directory Interface; Java Benennungs- und Verzeichnisschnittstelle)
+## <a name="work-with-service-bus-queues-topics-and-subscriptions-from-jms"></a>Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus JMS
+### <a name="java-naming-and-directory-interface-jndi"></a>JNDI (Java Naming and Directory Interface; Java Benennungs- und Verzeichnisschnittstelle)
 JMS verwendet die Java Naming and Directory Interface (JNDI), um eine Trennung zwischen logischen und physischen Namen umzusetzen. Zwei Typen von JMS-Objekten werden mit JNDI aufgelöst: **ConnectionFactory** und **Destination**. JNDI verwendet ein Anbietermodell, das Sie mit verschiedenen Verzeichnisdiensten verbinden können, um Namensauflösungsfunktionen zu implementieren. Die Apache Qpid JMS AMQP 1.0-Bibliothek enthält einen einfachen dateibasierten JNDI-Anbieter, der mithilfe einer Textdatei konfiguriert wird.
 
 Der JNDI-Anbieter der Qpid-Eigenschaftendatei wird mithilfe einer Eigenschaftendatei im folgenden Format konfiguriert:
@@ -174,11 +178,11 @@ Die JMS-Spezifikation definiert, wie der Ausnahmevertrag der API-Methoden und An
   1. Wenn das Problem vorliegt, weil Service Bus die bestimmte gesendete Nachricht zurückweist, wird eine **MessageRejectedException**-Ausnahme ausgelöst. Dieser Fehler ist entweder vorübergehend oder beruht auf einem Problem mit der Nachricht. Die empfohlene Vorgehensweise ist, den Vorgang mit einer Backofflogik zu wiederholen. Wenn das Problem weiterhin besteht, sollte die Nachricht mit einem lokal protokollierten Fehler verworfen werden. In dieser Situation besteht keine Notwendigkeit zum erneuten Erstellen der Objekte **JMS Connection**, **Session** oder **MessageProducer**. 
   2. Wenn das Problem dadurch verursacht wird, dass Service Bus den AMQP-Link schließt, wird eine **InvalidDestinationException**-Ausnahme ausgelöst. Der Grund kann ein vorübergehendes Problem oder das Löschen der Nachrichtenentität sein. In beiden Fällen müssen die Objekte **JMS Connection**, **Session** und **MessageProducer** neu erstellt werden. Wenn die Fehlerbedingung vorübergehend war, wird dieser Vorgang schließlich erfolgreich sein. Wenn die Entität gelöscht wurde, ist der Fehler permanent.
 
-## <a name="messaging-between-.net-and-jms"></a>Übertragen von Nachrichten zwischen .NET und JMS
+## <a name="messaging-between-net-and-jms"></a>Übertragen von Nachrichten zwischen .NET und JMS
 ### <a name="message-bodies"></a>Nachrichtentext
-JMS definiert fünf verschiedene Nachrichtentypen: **BytesMessage**, **MapMessage**, **ObjectMessage**, **StreamMessage** und **TextMessage**. Die .NET-API von Service Bus hat mit [BrokeredMessage][BrokeredMessage] nur einen Nachrichtentyp.
+JMS definiert fünf verschiedene Nachrichtentypen: **BytesMessage**, **MapMessage**, **ObjectMessage**, **StreamMessage** und **TextMessage**. Die Service Bus .NET-API hat nur einen Nachrichtentyp: [BrokeredMessage][BrokeredMessage].
 
-#### <a name="jms-to-service-bus-.net-api"></a>JMS zur .NET-API von Service Bus
+#### <a name="jms-to-service-bus-net-api"></a>JMS zur .NET-API von Service Bus
 Die folgenden Abschnitte zeigen, wie Nachrichten der einzelnen JMS-Nachrichtentypen in .NET genutzt werden. Ein Beispiel für **ObjectMessage** wurde noch nicht hinzugefügt, da der Text eines **ObjectMessage**-Elements ein serialisierbares Objekt in der Programmiersprache Java enthält, das eine .NET-Anwendung nicht interpretieren kann.
 
 ##### <a name="bytesmessage"></a>BytesMessage
@@ -233,7 +237,7 @@ Der folgende Code zeigt, wie der Text eines **TextMessage**-Objekts mithilfe der
 Console.WriteLine("Text: " + message.GetBody<String>());
 ```
 
-#### <a name="service-bus-.net-apis-to-jms"></a>.NET-API von Service Bus zu JMS
+#### <a name="service-bus-net-apis-to-jms"></a>.NET-API von Service Bus zu JMS
 Die folgenden Abschnitte zeigen, wie eine .NET-Anwendung eine Nachricht erstellen kann, die in JMS in den einzelnen JMS-Nachrichtentypen empfangen wird. Ein Beispiel für **ObjectMessage** wurde noch nicht hinzugefügt, da der Text eines **ObjectMessage**-Elements ein serialisierbares Objekt in der Programmiersprache Java enthält, das eine .NET-Anwendung nicht interpretieren kann.
 
 ##### <a name="bytesmessage"></a>BytesMessage
@@ -264,7 +268,7 @@ message = new BrokeredMessage("this is a text string");
 ```
 
 ### <a name="application-properties"></a>Anwendungseigenschaften
-#### <a name="jms-to-service-bus-.net-apis"></a>JMS zu .NET-APIs von Service Bus
+#### <a name="jms-to-service-bus-net-apis"></a>JMS zu .NET-APIs von Service Bus
 JMS-Nachrichten unterstützen Anwendungseigenschaften der folgenden Typen: **boolean**, **byte**, **short**, **int**, **long**, **float**, **double** und **String**. Der folgende Java-Code veranschaulicht, wie Sie Eigenschaften für eine Nachricht festlegen, indem Sie diese Eigenschaftstypen verwenden.
 
 ```
@@ -276,7 +280,7 @@ message.setIntProperty("TestInt", 100);
 message.setStringProperty("TestString", "Service Bus");
 ```
 
-In den .NET-APIs von Service Bus sind die Nachrichtenanwendungseigenschaften in der **Properties**-Auflistung von [BrokeredMessage][BrokeredMessage] enthalten. Der folgende Code veranschaulicht, wie die Anwendungseigenschaften einer Nachricht gelesen werden, die von einem JMS-Client empfangen wird.
+In der Service Bus .NET-API sind die Nachrichtenanwendungseigenschaften in der **Properties**-Sammlung von [BrokeredMessage][BrokeredMessage] enthalten. Der folgende Code veranschaulicht, wie die Anwendungseigenschaften einer Nachricht gelesen werden, die von einem JMS-Client empfangen wird.
 
 ```
 if (message.Properties.Keys.Count > 0)
@@ -301,7 +305,7 @@ Die folgende Tabelle zeigt, wie die JMS-Eigenschaftstypen den .NET-Eigenschaftst
 | Boolean |bool |
 | String |string |
 
-Der [BrokeredMessage][BrokeredMessage]-Typ unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][BrokeredMessage]-Objekt festlegen, indem Sie diese Eigenschaftstypen verwenden:
+Der [BrokeredMessage][BrokeredMessage]-Typ unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][BrokeredMessage]-Objekt festlegen, indem Sie diese Eigenschaftstypen verwenden.
 
 ```
 message.Properties["TestByte"] = (byte)128;
@@ -364,7 +368,7 @@ Die folgende Tabelle zeigt, wie die .NET-Eigenschaftstypen den JMS-Eigenschaftst
 ### <a name="standard-headers"></a>Standardheader
 Die folgenden Tabellen zeigen, wie die JMS-Standardheader und [BrokeredMessage][BrokeredMessage]-Standardeigenschaften mithilfe von AMQP 1.0 zugeordnet werden.
 
-#### <a name="jms-to-service-bus-.net-apis"></a>JMS zu .NET-APIs von Service Bus
+#### <a name="jms-to-service-bus-net-apis"></a>JMS zu .NET-APIs von Service Bus
 | JMS | Service Bus .NET | Hinweise |
 | --- | --- | --- |
 | JMSCorrelationID |Message.CorrelationID |- |
@@ -378,7 +382,7 @@ Die folgenden Tabellen zeigen, wie die JMS-Standardheader und [BrokeredMessage][
 | JMSTimestamp |Message.EnqueuedTimeUtc |Konvertierung |
 | JMSType |Message.Properties[“jms-type”] |- |
 
-#### <a name="service-bus-.net-apis-to-jms"></a>.NET-API von Service Bus zu JMS
+#### <a name="service-bus-net-apis-to-jms"></a>.NET-API von Service Bus zu JMS
 | Service Bus .NET | JMS | Hinweise |
 | --- | --- | --- |
 | ContentType |- |Derzeit nicht verfügbar |
@@ -391,8 +395,7 @@ Die folgenden Tabellen zeigen, wie die JMS-Standardheader und [BrokeredMessage][
 | ScheduledEnqueueTimeUtc |– |Derzeit nicht verfügbar |
 | SessionId |– |Derzeit nicht verfügbar |
 | TimeToLive |JMSExpiration |Konvertierung |
-| To | | |
-| JMSDestination |- | |
+| To |JMSDestination |- |
 
 ## <a name="unsupported-features-and-restrictions"></a>Nicht unterstützte Funktionen und Einschränkungen
 Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden Einschränkungen:
@@ -418,6 +421,6 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

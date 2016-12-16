@@ -1,23 +1,27 @@
 ---
 title: Senden von sicheren Pushbenachrichtigungen mit Azure Notification Hubs
-description: Erfahren Sie mehr über das Senden sicherer Pushbenachrichtigungen an eine Android-App von Azure. Die Codebeispiele wurden in Java und C# geschrieben.
+description: "Erfahren Sie mehr über das Senden sicherer Pushbenachrichtigungen an eine Android-App von Azure. Die Codebeispiele wurden in Java und C# geschrieben."
 documentationcenter: android
 keywords: push notification,push notifications,push messages,android push notifications
-author: wesmc7777
+author: ysxu
 manager: erikre
-editor: ''
+editor: 
 services: notification-hubs
-
+ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ce4bc214d4428393d8130831d628c324ad3485e8
+
 
 ---
-# Senden von sicheren Pushbenachrichtigungen mit Azure Notification Hubs
+# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Senden von sicheren Pushbenachrichtigungen mit Azure Notification Hubs
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 > * [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
@@ -25,9 +29,9 @@ ms.author: wesmc
 > 
 > 
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 > [!IMPORTANT]
-> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
+> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 > 
 > 
 
@@ -46,25 +50,26 @@ Der generelle Ablauf sieht folgendermaßen aus:
 
 Beachten Sie, dass im obigen Ablauf (und in diesem Lernprogramm) angenommen wird, dass das Gerät ein Authentifizierungstoken im lokalen Speicher speichert, nachdem sich der Benutzer angemeldet hat. Dies gewährleistet einen vollständig nahtlosen Ablauf, da das Gerät mit diesem Token die sichere Nutzlast der Benachrichtigung abrufen kann. Wenn Ihre Anwendung keine Authentifizierungstoken auf dem Gerät speichert oder diese Token ablaufen können, sollte die Geräte-App nach Erhalt der Pushbenachrichtigung eine generische Benachrichtigung anzeigen, in der der Benutzer zum Starten der App aufgefordert wird. Anschließend authentifiziert die App den Benutzer und zeigt die Nutzlast der Benachrichtigung an.
 
-Dieses Tutorial zeigt, wie Sie sichere Pushbenachrichtigungen senden. Es baut auf dem Tutorial [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) auf. Daher sollten Sie die Schritte in diesem Tutorial zuerst durchführen, falls noch nicht erfolgt.
+Dieses Tutorial zeigt, wie Sie sichere Pushbenachrichtigungen senden. Es baut auf dem Tutorial [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) auf; daher sollten Sie die Schritte in diesem Tutorial zuerst durchführen, falls Sie dies noch nicht getan haben.
 
 > [!NOTE]
-> In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) beschrieben erstellt und konfiguriert haben.
+> In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)beschrieben erstellt und konfiguriert haben.
 > 
 > 
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## Ändern des Android-Projekts
-Nachdem Sie Ihr App-Back-End so geändert haben, dass lediglich die *ID* einer Pushbenachrichtigung gesendet wird, müssen Sie Ihre Android-App so ändern, dass sie diese Benachrichtigung verarbeitet und einen Rückruf an das Back-End sendet, um die anzuzeigende sichere Nachricht abzurufen. Um dieses Ziel zu erreichen, müssen Sie sicherstellen, dass Ihre Android-App weiß, wie sie sich bei Ihrem Back-End authentifiziert, wenn sie die Pushbenachrichtigungen erhält.
+## <a name="modify-the-android-project"></a>Ändern des Android-Projekts
+Nachdem Sie Ihr App-Back-End so geändert haben, dass lediglich die *ID* einer Pushbenachrichtigung gesendet wird, müssen Sie Ihre Android-App so ändern, dass sie diese Benachrichtigung verarbeitet und einen Rückruf an das Back-End sendet, um die anzuzeigende sichere Nachricht abzurufen.
+Um dieses Ziel zu erreichen, müssen Sie sicherstellen, dass Ihre Android-App weiß, wie sie sich bei Ihrem Back-End authentifiziert, wenn sie die Pushbenachrichtigungen erhält.
 
-Wir ändern nun den Ablauf der *Anmeldung*, um den Wert des Authentifizierungsheaders in den freigegebenen Einstellungen Ihrer App zu speichern. Sie können entsprechende Mechanismen verwenden, um beliebige Authentifizierungstoken (z. B. OAuth-Token) zu speichern, die die App verwenden muss, ohne dass Benutzeranmeldeinformationen eingegeben werden müssen.
+Wir ändern nun den Ablauf der *Anmeldung*, um den Wert des Authentifizierungsheaders in den freigegebenen Einstellungen Ihrer App zu speichern. Sie können entsprechende Mechanismen verwenden, um beliebige Authentifizierungstoken (z. B. OAuth-Token) zu speichern, die die App verwenden muss, ohne dass Benutzeranmeldeinformationen eingegeben werden müssen.
 
-1. Fügen Sie in Ihrem Android-App-Projekt die folgenden Konstanten am Anfang der **MainActivity**-Klasse hinzu:
+1. Fügen Sie in Ihrem Android-App-Projekt die folgenden Konstanten am Anfang der **MainActivity** -Klasse hinzu:
    
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
-2. Aktualisieren Sie in der **MainActivity**-Klasse die `getAuthorizationHeader()`-Methode durch folgenden Code:
+2. Aktualisieren Sie in der **MainActivity-**Klasse die `getAuthorizationHeader()`-Methode durch folgenden Code:
    
         private String getAuthorizationHeader() throws UnsupportedEncodingException {
             EditText username = (EditText) findViewById(R.id.usernameText);
@@ -77,7 +82,7 @@ Wir ändern nun den Ablauf der *Anmeldung*, um den Wert des Authentifizierungshe
    
             return basicAuthHeader;
         }
-3. Fügen Sie die folgenden `import`-Anweisungen am Anfang der **MainActivity**-Datei hinzu:
+3. Fügen Sie die folgenden `import` -Anweisungen am Anfang der **MainActivity** -Datei hinzu:
    
         import android.content.SharedPreferences;
 
@@ -123,7 +128,7 @@ Diese Methode ruft Ihr Back-End auf, um den Benachrichtigungsinhalt unter Verwen
 
 Beachten Sie, dass eine fehlende Authentifizierungsheader-Eigenschaft oder eine Ablehnung durch das Back-End nach Möglichkeit behandelt werden sollte. Wie diese Fälle im Einzelnen zu behandeln sind, hängt größtenteils von der Umgebung des Zielbenutzers ab. Eine Möglichkeit besteht darin, eine Benachrichtigung mit einer generischen Eingabeaufforderung anzuzeigen, damit sich der Benutzer zum Abrufen der eigentlichen Benachrichtigung authentifiziert.
 
-## Ausführen der Anwendung
+## <a name="run-the-application"></a>Ausführen der Anwendung
 Gehen Sie zum Ausführen der Anwendung folgendermaßen vor:
 
 1. Stellen Sie sicher, dass **AppBackend** in Azure bereitgestellt ist. Falls Sie Visual Studio verwenden, führen Sie die Web-API-Anwendung **AppBackend** aus. Daraufhin wird eine ASP.NET-Webseite angezeigt.
@@ -131,4 +136,9 @@ Gehen Sie zum Ausführen der Anwendung folgendermaßen vor:
 3. Geben Sie in der Android-App-UI einen Benutzernamen und das Kennwort ein. Dies kann eine beliebige Zeichenfolge sein, beide müssen jedoch denselben Wert haben.
 4. Klicken Sie in der Android-App-UI auf **Log in**. Klicken Sie anschließend auf **Send push**.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

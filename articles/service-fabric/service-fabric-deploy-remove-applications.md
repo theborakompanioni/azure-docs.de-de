@@ -5,18 +5,22 @@ services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/25/2016
+ms.date: 11/14/2016
 ms.author: ryanwi
+translationtype: Human Translation
+ms.sourcegitcommit: 4dea75987df0cf05126564d2c7e20d59b842dc1c
+ms.openlocfilehash: a9aa385d8c18600c50797a76e5a67754c695fdf8
+
 
 ---
-# Bereitstellen und Entfernen von Anwendungen mit PowerShell
+# <a name="deploy-and-remove-applications-using-powershell"></a>Bereitstellen und Entfernen von Anwendungen mit PowerShell
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -25,7 +29,7 @@ ms.author: ryanwi
 
 <br/>
 
-Sobald der [Anwendungstyp gepackt][10] wurde, ist die Anwendung für die Bereitstellung in einem Azure Service Fabric-Cluster bereit. Die Bereitstellung umfasst die folgenden drei Schritte:
+Sobald der [Anwendungstyp gepackt wurde][10], ist die Anwendung für die Bereitstellung in einem Azure Service Fabric-Cluster bereit. Die Bereitstellung umfasst die folgenden drei Schritte:
 
 1. Hochladen des Anwendungspakets
 2. Registrierung des Anwendungstyps
@@ -36,16 +40,16 @@ Sobald der [Anwendungstyp gepackt][10] wurde, ist die Anwendung für die Bereits
 > 
 > 
 
-## Hochladen des Anwendungspakets
-Beim Hochladen des Anwendungspakets wird das Paket an einem Speicherort gespeichert, an dem interne Service Fabric-Komponenten auf das Paket zugreifen können. Zum Hochladen können Sie PowerShell verwenden. Bevor Sie die in diesem Artikel aufgeführten Befehle ausführen, stellen Sie immer zuerst eine Verbindung zum Service Fabric-Cluster mit [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) her.
+## <a name="upload-the-application-package"></a>Hochladen des Anwendungspakets
+Beim Hochladen des Anwendungspakets wird das Paket an einem Speicherort gespeichert, an dem interne Service Fabric-Komponenten auf das Paket zugreifen können. Zum Hochladen können Sie PowerShell verwenden. Bevor Sie die in diesem Artikel aufgeführten PowerShell-Befehle ausführen, stellen Sie immer zuerst über [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/servicefabric/vlatest/connect-servicefabriccluster) eine Verbindung mit dem Service Fabric-Cluster her.
 
-Angenommen, Sie haben einen Ordner namens *MyApplicationType*, der die erforderlichen Anwendungs- und Dienstmanifeste sowie Code-/Konfigurations-/Datenpakete enthält. Mit dem Befehl [Copy-ServiceFabricApplicationPackage](https://msdn.microsoft.com/library/mt125905.aspx) wird das Paket an den Clusterimagespeicher hochgeladen. Das Cmdlet **Get-ImageStoreConnectionStringFromClusterManifest** ist Teil des Service Fabric-SDK-PowerShell-Moduls und wird verwendet, um die Imagespeicher-Verbindungszeichenfolge abzurufen. Um das SDK-Modul zu importieren, führen Sie Folgendes aus:
+Angenommen, Sie haben einen Ordner namens *MyApplicationType* , der die erforderlichen Anwendungs- und Dienstmanifeste sowie Code-/Konfigurations-/Datenpakete enthält. Mit dem Befehl [Copy-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) wird das Paket in den Clusterimagespeicher hochgeladen. Das Cmdlet **Get-ImageStoreConnectionStringFromClusterManifest** ist Teil des Service Fabric-SDK-PowerShell-Moduls und wird verwendet, um die Imagespeicher-Verbindungszeichenfolge abzurufen.  Um das SDK-Modul zu importieren, führen Sie Folgendes aus:
 
 ```
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 ```
 
-Sie können ein Anwendungspaket aus *C:\\users\\ryanwi\\Documents\\Visual Studio 2015\\Projects\\MyApplication\\myapplication\\pkg\\debug* in *c:\\temp\\MyApplicationType* kopieren (benennen Sie das Verzeichnis „debug“ in „MyApplicationType“ um). Im folgenden Beispiel wird das Paket hochgeladen:
+Sie können ein Anwendungspaket aus *C:\users\ryanwi\Documents\Visual Studio 2015\Projects\MyApplication\myapplication\pkg\debug* in *c:\temp\MyApplicationType* kopieren (benennen Sie das Verzeichnis „debug“ in „MyApplicationType“ um). Im folgenden Beispiel wird das Paket hochgeladen:
 
 ~~~
 PS C:\temp> dir
@@ -78,7 +82,7 @@ C:\TEMP\MyApplicationType
     │   │  System.Fabric.dll
     │   │  System.Fabric.Strings.dll
     │   │
-    │   └───de-DE
+    │   └───en-us
     |         Microsoft.ServiceFabric.Internal.Strings.resources.dll
     |         System.Fabric.Strings.resources.dll
     |
@@ -94,8 +98,8 @@ Copy application package succeeded
 PS D:\temp>
 ~~~
 
-## Registrieren des Anwendungspakets
-Beim Registrieren des Anwendungspakets werden der Anwendungstyp und die Version im verfügbaren Anwendungsmanifest deklariert. Das System liest das im vorherigen Schritt hochgeladene Paket, überprüft es (entspricht der lokalen Ausführung von [Test-ServiceFabricApplicationPackage](https://msdn.microsoft.com/library/mt125950.aspx)), verarbeitet den Inhalt des Pakets und kopiert das verarbeitete Paket in einen internen Systemspeicherort.
+## <a name="register-the-application-package"></a>Registrieren des Anwendungspakets
+Beim Registrieren des Anwendungspakets werden der Anwendungstyp und die Version im verfügbaren Anwendungsmanifest deklariert. Das System liest das im vorherigen Schritt hochgeladene Paket, überprüft es (entspricht der lokalen Ausführung von [Test-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage)), verarbeitet den Inhalt des Pakets und kopiert das verarbeitete Paket in einen internen Systemspeicherort.
 
 ~~~
 PS D:\temp> Register-ServiceFabricApplicationType MyApplicationType
@@ -110,12 +114,12 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-Der Befehl [Register-ServiceFabricApplicationType](https://msdn.microsoft.com/library/mt125958.aspx) wird erst zurückgegeben, wenn das Paket vom System erfolgreich kopiert wurde. Die Dauer des Kopiervorgangs hängt vom Inhalt des Anwendungspakets ab. Ggf. können Sie den Parameter **-TimeoutSec** verwenden, wenn ein längeres Zeitlimit erforderlich ist. (Das Standardzeitlimit beträgt 60 Sekunden.)
+Der Befehl [Register-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) wird erst zurückgegeben, wenn das Anwendungspaket vom System erfolgreich kopiert wurde. Die Dauer des Kopiervorgangs hängt vom Inhalt des Anwendungspakets ab. Bei Bedarf können Sie den Parameter **-TimeoutSec** verwenden, wenn ein längeres Timeout erforderlich ist. (Das Standardzeitlimit beträgt 60 Sekunden.)
 
-Der Befehl [Get-ServiceFabricApplicationType](https://msdn.microsoft.com/library/mt125871.aspx) listet alle erfolgreich registrierten Anwendungstypversionen auf.
+Der Befehl [Get-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplicationtype) listet alle erfolgreich registrierten Anwendungstypversionen auf.
 
-## Erstellen der Anwendung
-Sie können eine Anwendung mit einer beliebigen Version des Anwendungstyps instanziieren, die mit dem Befehl [New-ServiceFabricApplication](https://msdn.microsoft.com/library/mt125913.aspx) erfolgreich registriert wurde. Der Name jeder Anwendung muss mit dem *fabric:*-Schema beginnen und für jede Anwendungsinstanz eindeutig sein. Wenn im Anwendungsmanifest des Zielanwendungstyps Standarddienste festgelegt wurden, werden sie in diesem Schritt erstellt.
+## <a name="create-the-application"></a>Erstellen der Anwendung
+Sie können eine Anwendung mit einer beliebigen Version des Anwendungstyps instanziieren, die mit dem Befehl [New-ServiceFabricApplication](https://docs.microsoft.com/powershell/servicefabric/vlatest/new-servicefabricapplication) erfolgreich registriert wurde. Der Name jeder Anwendung muss mit dem *fabric:* -Schema beginnen und für jede Anwendungsinstanz eindeutig sein. Wenn im Anwendungsmanifest des Zielanwendungstyps Standarddienste festgelegt wurden, werden sie in diesem Schritt erstellt.
 
 ~~~
 PS D:\temp> New-ServiceFabricApplication fabric:/MyApp MyApplicationType AppManifestVersion1
@@ -147,14 +151,14 @@ HealthState            : Ok
 PS D:\temp>
 ~~~
 
-Der Befehl [Get-ServiceFabricApplication](https://msdn.microsoft.com/library/mt163515.aspx) listet alle erfolgreich erstellten Anwendungsinstanzen zusammen mit ihrem Gesamtzustand auf.
+Der Befehl [Get-ServiceFabricApplication](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplication) listet alle erfolgreich erstellten Anwendungsinstanzen zusammen mit ihrem Gesamtzustand auf.
 
-Der Befehl [Get-ServiceFabricService](https://msdn.microsoft.com/library/mt125889.aspx) listet alle Dienstinstanzen auf, die innerhalb einer bestimmten Anwendungsinstanz erfolgreich erstellt wurden. Die Standarddienste (sofern vorhanden) werden hier aufgelistet.
+Der Befehl [Get-ServiceFabricService](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricservice) listet alle Dienstinstanzen auf, die innerhalb einer bestimmten Anwendungsinstanz erfolgreich erstellt wurden. Die Standarddienste (sofern vorhanden) werden hier aufgelistet.
 
 Für jede Version des registrierten Anwendungstyps können mehrere Anwendungsinstanzen erstellt werden. Jede Anwendungsinstanz wird isoliert mit einem eigenen Arbeitsverzeichnis und Prozess ausgeführt.
 
-## Entfernen einer Anwendung
-Wird eine Anwendungsinstanz nicht mehr benötigt, kann diese mit dem Befehl [Remove-ServiceFabricApplication](https://msdn.microsoft.com/library/mt125914.aspx) dauerhaft entfernt werden. Mit diesem Befehl werden auch alle Dienste automatisch entfernt, die mit der Anwendung verknüpft sind, d.h., der Dienstzustand wird vollständig und dauerhaft entfernt. Dieser Vorgang kann nicht rückgängig gemacht werden, und der Anwendungsstatus kann nicht wiederhergestellt werden.
+## <a name="remove-an-application"></a>Entfernen einer Anwendung
+Wird eine Anwendungsinstanz nicht mehr benötigt, kann diese mit dem Befehl [Remove-ServiceFabricApplication](https://docs.microsoft.com/powershell/servicefabric/vlatest/remove-servicefabricapplication) dauerhaft entfernt werden. Mit diesem Befehl werden auch alle Dienste automatisch entfernt, die mit der Anwendung verknüpft sind, d.h., der Dienstzustand wird vollständig und dauerhaft entfernt. Dieser Vorgang kann nicht rückgängig gemacht werden, und der Anwendungsstatus kann nicht wiederhergestellt werden.
 
 ~~~
 PS D:\temp> Remove-ServiceFabricApplication fabric:/MyApp
@@ -168,7 +172,7 @@ PS D:\temp> Get-ServiceFabricApplication
 PS D:\temp>
 ~~~
 
-Wird eine bestimmte Version eines Anwendungstyps nicht mehr benötigt, heben Sie die Registrierung der Version mit dem Befehl [Unregister-ServiceFabricApplicationType](https://msdn.microsoft.com/library/mt125885.aspx) auf. Durch das Aufheben der Registrierung nicht verwendeter Typen wird Speicherplatz freigegeben, der von dem Inhalt des Anwendungspakets dieses Typs im Image Store verwendet wird. Die Registrierung eines Anwendungstyps kann nur aufgehoben werden, wenn keine Anwendungen für den Typ instanziiert sind und keine ausstehenden Anwendungsupgrades vorliegen, die auf den Typ verweisen.
+Wird eine bestimmte Version eines Anwendungstyps nicht mehr benötigt, heben Sie die Registrierung der Version mit dem Befehl [Unregister-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/unregister-servicefabricapplicationtype) auf. Durch das Aufheben der Registrierung nicht verwendeter Typen wird Speicherplatz freigegeben, der von dem Inhalt des Anwendungspakets dieses Typs im Image Store verwendet wird. Die Registrierung eines Anwendungstyps kann nur aufgehoben werden, wenn keine Anwendungen für den Typ instanziiert sind und keine ausstehenden Anwendungsupgrades vorliegen, die auf den Typ verweisen.
 
 ~~~
 PS D:\temp> Get-ServiceFabricApplicationType
@@ -201,9 +205,9 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-## Problembehandlung
-### Copy-ServiceFabricApplicationPackage fordert einen ImageStoreConnectionString an
-Die Service Fabric-SDK-Umgebung sollte bereits mit den richtigen Standardeinstellungen eingerichtet sein. Wichtig ist, dass der ImageStoreConnectionString für alle Befehle mit dem vom Service Fabric-Cluster verwendeten Wert übereinstimmt. Der Wert ist im Clustermanifest enthalten, das mit dem Befehl [Get-ServiceFabricClusterManifest](https://msdn.microsoft.com/library/mt126024.aspx) abgerufen wird:
+## <a name="troubleshooting"></a>Problembehandlung
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage fordert einen ImageStoreConnectionString an
+Die Service Fabric-SDK-Umgebung sollte bereits mit den richtigen Standardeinstellungen eingerichtet sein. Wichtig ist, dass der ImageStoreConnectionString für alle Befehle mit dem vom Service Fabric-Cluster verwendeten Wert übereinstimmt. Der Wert ist im Clustermanifest enthalten, das mit dem Befehl [Get-ServiceFabricClusterManifest](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest) abgerufen wird:
 
 ~~~
 PS D:\temp> Copy-ServiceFabricApplicationPackage .\MyApplicationType
@@ -229,7 +233,7 @@ Copy application package succeeded
 PS D:\temp>
 ~~~
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
 [Einführung in Service Fabric-Integrität](service-fabric-health-introduction.md)
@@ -242,4 +246,8 @@ PS D:\temp>
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+
