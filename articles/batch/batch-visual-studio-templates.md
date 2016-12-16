@@ -1,12 +1,12 @@
 ---
-title: Visual Studio-Vorlagen für Azure Batch | Microsoft Docs
-description: Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können.
+title: "Visual Studio-Vorlagen für Azure Batch | Microsoft Docs"
+description: "Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Implementieren und Ausführen von rechenintensiven Workloads in Azure Batch unterstützen können."
 services: batch
 documentationcenter: .net
 author: fayora
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/07/2016
 ms.author: marsma
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3907de9630fec99b1d28c750bfbfdf6f646bf194
+
 
 ---
-# Visual Studio-Projektvorlagen für Azure Batch
+# <a name="visual-studio-project-templates-for-azure-batch"></a>Visual Studio-Projektvorlagen für Azure Batch
 Die Visual Studio-Vorlagen vom Typ **Auftrags-Manager** und **Aufgabenprozessor** für Batch enthalten Code zum Implementieren und Ausführen Ihrer rechenintensiven Workloads in Batch mit dem geringstmöglichen Aufwand. In diesem Dokument werden diese Vorlagen beschrieben, und es enthält eine Anleitung zur Verwendung.
 
 > [!IMPORTANT]
@@ -24,7 +28,7 @@ Die Visual Studio-Vorlagen vom Typ **Auftrags-Manager** und **Aufgabenprozessor*
 > 
 > 
 
-## Allgemeine Übersicht
+## <a name="high-level-overview"></a>Allgemeine Übersicht
 Sie können die Auftrags-Manager- und Aufgabenprozessorvorlagen verwenden, um zwei nützliche Komponenten zu erstellen:
 
 * Eine Auftrags-Manager-Aufgabe, mit der eine Auftragsteilung implementiert wird. Hiermit kann ein Auftrag in mehrere Aufgaben unterteilt werden, die unabhängig voneinander parallel ausgeführt werden können.
@@ -45,7 +49,7 @@ Wie im Diagramm unten zu sehen, durchläuft ein Computeauftrag, für den diese V
 
 ![Diagramm zur Interaktion von Clientcode und Batch-Dienst][diagram01]
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
 
 * Einen Computer, auf dem Visual Studio 2015 oder höher bereits installiert ist.
@@ -55,18 +59,18 @@ Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
     
     * Azure Batch-Auftrags-Manager mit Auftragsteilung
     * Azure Batch-Aufgabenprozessor
-  * Laden Sie die Vorlagen aus dem Onlinekatalog für Visual Studio herunter: [Microsoft Azure Batch Project Templates][vs_gallery_templates] \(Microsoft Azure Batch-Projektvorlagen).
+  * Laden Sie die Vorlagen aus dem Onlinekatalog für Visual Studio herunter: [Microsoft Azure Batch Project Templates][vs_gallery_templates] (Microsoft Azure Batch-Projektvorlagen).
 * Wenn Sie die Nutzung der Funktion [Anwendungspakete](batch-application-packages.md) planen, um den Auftrags-Manager und Aufgabenprozessor für die Batch-Computeknoten bereitzustellen, müssen Sie ein Speicherkonto mit Ihrem Batch-Konto verknüpfen.
 
-## Vorbereitung
+## <a name="preparation"></a>Vorbereitung
 Wir empfehlen Ihnen die Erstellung einer Projektmappe, die Ihren Auftrags-Manager und Ihren Aufgabenprozessor enthalten kann. Dies kann Ihnen die gemeinsame Nutzung von Code zwischen Ihren Auftrags-Manager- und Aufgabenprozessor-Programmen erleichtern. Führen Sie die folgenden Schritte aus, um diese Projektmappe zu erstellen:
 
 1. Öffnen Sie Visual Studio 2015, und wählen Sie **Datei** > **Neu** > **Projekt** aus.
-2. Erweitern Sie unter **Vorlagen** die Option **Andere Projekttypen**, klicken Sie auf **Visual Studio-Projektmappen**, und wählen Sie dann **Leere Projektmappe**.
+2. Erweitern Sie unter **Vorlagen** die Option **Andere Projekttypen**, klicken Sie auf **Visual Studio-Projektmappen**, und wählen Sie dann **Leere Projektmappe** aus.
 3. Geben Sie einen Namen ein, der die Anwendung und den Zweck der Projektmappe beschreibt (z.B. „LitwareBatchTaskPrograms“).
 4. Klicken Sie zum Erstellen der neuen Projektmappe auf **OK**.
 
-## Auftrags-Manager-Vorlage
+## <a name="job-manager-template"></a>Auftrags-Manager-Vorlage
 Die Auftrags-Manager-Vorlage dient Ihnen als Hilfe beim Implementieren einer Auftrags-Manager-Aufgabe, mit der die folgenden Aktionen durchgeführt werden können:
 
 * Aufteilen eines Auftrags in mehrere Aufgaben
@@ -77,17 +81,17 @@ Die Auftrags-Manager-Vorlage dient Ihnen als Hilfe beim Implementieren einer Auf
 > 
 > 
 
-### Erstellen eines Auftrags-Managers mit der Vorlage
+### <a name="create-a-job-manager-using-the-template"></a>Erstellen eines Auftrags-Managers mit der Vorlage
 Führen Sie diese Schritte aus, um einen Auftrags-Manager der zuvor erstellten Projektmappe hinzuzufügen:
 
 1. Öffnen Sie die vorhandene Projektmappe in Visual Studio 2015.
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie auf **Hinzufügen** > **Neues Projekt**.
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie dann **Hinzufügen** > **Neues Projekt** aus.
 3. Klicken Sie unter **Visual C#** auf **Cloud** und dann auf **Azure Batch Job Manager with Job Splitter** (Azure Batch-Auftrags-Manager mit Auftragsteilung).
 4. Geben Sie einen Namen ein, der die Anwendung beschreibt und dieses Projekt als Auftrags-Manager identifiziert (z.B. „LitwareJobManager“).
 5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 6. Erstellen Sie abschließend das Projekt. So erzwingen Sie, dass von Visual Studio alle referenzierten NuGet-Pakete geladen werden, und stellen die Gültigkeit des Projekts sicher, bevor Sie mit der Durchführung von Änderungen beginnen.
 
-### Auftrags-Manager-Vorlagendateien und ihr Zweck
+### <a name="job-manager-template-files-and-their-purpose"></a>Auftrags-Manager-Vorlagendateien und ihr Zweck
 Wenn Sie ein Projekt mit der Auftrags-Manager-Vorlage erstellen, werden drei Gruppen von Codedateien generiert:
 
 * Die Hauptprogrammdatei (Program.cs). Sie enthält den Programmeinstiegspunkt und eine Ausnahmebehandlung auf oberster Ebene. Normalerweise sollte es nicht erforderlich sein, hieran Änderungen vorzunehmen.
@@ -120,7 +124,7 @@ Im restlichen Teil dieses Abschnitts werden die unterschiedlichen Dateien und ih
 * `Packages.config`: Standardabhängigkeitsdatei des NuGet-Pakets.
 * `Program.cs`: Enthält den Programmeinstiegspunkt und eine Ausnahmebehandlung auf oberster Ebene.
 
-### Implementieren der Auftragsteilung
+### <a name="implementing-the-job-splitter"></a>Implementieren der Auftragsteilung
 Wenn Sie das Auftrags-Manager-Vorlagenprojekt öffnen, ist die Datei „JobSplitter.cs“ für das Projekt standardmäßig geöffnet. Sie können die Teilungslogik für die Aufgaben in Ihrer Workload implementieren, indem Sie wie hier gezeigt die Split()-Methode verwenden:
 
 ```csharp
@@ -179,7 +183,7 @@ In beiden Fällen können alle Aufgaben, die bereits von der Auftragsteilung zur
 
 Wenn für den Auftrags-Manager ein Fehler auftritt, kann je nach den Wiederholungseinstellungen des Clients vom Batch-Dienst ein Wiederholungsversuch durchgeführt werden. Im Allgemeinen ist dies sicher, da beim Hinzufügen von Aufgaben zum Auftrag durch das Framework alle bereits vorhandenen Aufgaben ignoriert werden. Falls die Berechnung von Aufgaben aber teuer ist, kann es sein, dass keine weiteren Kosten für die Neuberechnung der Aufgaben entstehen sollen, die dem Auftrag bereits hinzugefügt wurden. Umgekehrt gilt: Wenn für die erneute Ausführung nicht garantiert werden kann, dass die gleichen Aufgaben-IDs generiert werden, tritt das Verhalten „Duplikate ignorieren“ nicht ein. In diesen Fällen sollten Sie die Auftragsteilung so entwerfen, dass die bereits erledigte Arbeit erkannt und nicht wiederholt wird, indem vor Beginn der Aufgaben ein CloudJob.ListTasks-Vorgang durchgeführt wird.
 
-### Exitcodes und Ausnahmen in der Auftrags-Manager-Vorlage
+### <a name="exit-codes-and-exceptions-in-the-job-manager-template"></a>Exitcodes und Ausnahmen in der Auftrags-Manager-Vorlage
 Exitcodes und Ausnahmen bilden einen Mechanismus, mit dem das Ergebnis der Ausführung eines Programms ermittelt wird. Sie können auch zum Identifizieren von Problemen bei der Ausführung des Programms dienen. Mit der Auftrags-Manager-Vorlage werden die Exitcodes und Ausnahmen implementiert, die in diesem Abschnitt beschrieben werden.
 
 Eine Auftrags-Manager-Aufgabe, die mit der Auftrags-Manager-Vorlage implementiert wird, kann drei mögliche Exitcodes zurückgeben:
@@ -194,12 +198,12 @@ Wenn für eine Auftrags-Manager-Aufgabe ein Fehler auftritt, kann es sein, dass 
 
 Alle Informationen, die von Ausnahmen zurückgegeben werden, werden in die Dateien „stdout.txt“ und „stderr.txt“ geschrieben. Weitere Informationen finden Sie unter [Fehlerbehandlung](batch-api-basics.md#error-handling).
 
-### Clientaspekte
-In diesem Abschnitt werden einige Anforderungen an die Clientimplementierung beschrieben, die erfüllt sein müssen, wenn ein Auftrags-Manager basierend auf dieser Vorlage aufgerufen wird. Ausführliche Informationen zur Übergabe von Parametern und Umgebungseinstellungen finden Sie unter [Übergeben von Parametern und Umgebungsvariablen aus dem Clientcode](#pass-environment-settings).
+### <a name="client-considerations"></a>Clientaspekte
+In diesem Abschnitt werden einige Anforderungen an die Clientimplementierung beschrieben, die erfüllt sein müssen, wenn ein Auftrags-Manager basierend auf dieser Vorlage aufgerufen wird. Ausführliche Informationen zur Übergabe von Parametern und Umgebungseinstellungen finden Sie unter [Übergeben von Parametern und Umgebungsvariablen aus dem Clientcode](#pass-environment-settings) .
 
 **Erforderliche Anmeldeinformationen**
 
-Damit dem Azure Batch-Auftrag Aufgaben hinzugefügt werden können, benötigen Sie Ihre Azure Batch-Konto-URL und den dazugehörigen Schlüssel. Diese Angaben müssen Sie in den Umgebungsvariablen YOUR\_BATCH\_URL und YOUR\_BATCH\_KEY übergeben. Sie können diese Variablen in den Umgebungseinstellungen für Auftrags-Manager-Aufgaben festlegen. Beispielsweise in einem C#-Client:
+Damit dem Azure Batch-Auftrag Aufgaben hinzugefügt werden können, benötigen Sie Ihre Azure Batch-Konto-URL und den dazugehörigen Schlüssel. Diese Angaben müssen Sie in den Umgebungsvariablen YOUR_BATCH_URL und YOUR_BATCH_KEY übergeben. Sie können diese Variablen in den Umgebungseinstellungen für Auftrags-Manager-Aufgaben festlegen. Beispielsweise in einem C#-Client:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -221,9 +225,9 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 **Einstellungen für Auftrags-Manager-Aufgaben**
 
-Der Client sollte das Auftrags-Manager-Flag *killJobOnCompletion* auf **false** festlegen.
+Der Client sollte das Auftrags-Manager-Flag *killJobOnCompletion* auf **false**festlegen.
 
-In der Regel ist es kein Problem, dass der Client *runExclusive* auf **false** festlegt.
+In der Regel ist es kein Problem, dass der Client *runExclusive* auf **false**festlegt.
 
 Der Client sollte die Sammlung *resourceFiles* oder *applicationPackageReferences* verwenden, damit die ausführbare Datei des Auftrags-Managers (und die erforderlichen DLLs) auf dem Computeknoten bereitgestellt wird.
 
@@ -233,9 +237,9 @@ Standardmäßig wird für den Auftrags-Manager bei einem Fehler kein erneuter Ve
 
 Wenn die Auftragsteilung Aufgaben mit Abhängigkeiten ausgibt, muss der Client das usesTaskDependencies-Element des Auftrags auf „true“ festlegen.
 
-Beim Auftragsteilungsmodell ist es für Clients ungewöhnlich, dass Aufträgen zusätzlich zu den von der Auftragsteilung erstellten Elementen weitere Aufgaben hinzugefügt werden sollen. Normalerweise sollte der Client daher das *onAllTasksComplete*-Element des Auftrags auf **terminatejob** festlegen.
+Beim Auftragsteilungsmodell ist es für Clients ungewöhnlich, dass Aufträgen zusätzlich zu den von der Auftragsteilung erstellten Elementen weitere Aufgaben hinzugefügt werden sollen. Normalerweise sollte der Client daher das *onAllTasksComplete* -Element des Auftrags auf **terminatejob**festlegen.
 
-## Aufgabenprozessorvorlage
+## <a name="task-processor-template"></a>Aufgabenprozessorvorlage
 Eine Aufgabenprozessorvorlage unterstützt Sie beim Implementieren eines Aufgabenprozessors, mit dem die folgenden Aktionen durchgeführt werden können:
 
 * Einrichten der Informationen, die von den einzelnen Batch-Aufgaben für die Ausführung benötigt werden
@@ -246,7 +250,7 @@ Zum Ausführen von Aufgaben in Batch ist zwar kein Aufgabenprozessor erforderlic
 
 Die vom Aufgabenprozessor durchgeführten Aktionen können einfach oder komplex sein und in geringer oder hoher Anzahl vorliegen. Dies richtet sich jeweils nach Ihrer Workload. Indem Sie außerdem alle Aufgabenaktionen in einem Aufgabenprozessor implementieren, können Sie basierend auf Änderungen an Anwendungen oder Workloadanforderungen problemlos Aktionen aktualisieren oder hinzufügen. In einigen Fällen ist ein Aufgabenprozessor aber unter Umständen nicht die optimale Lösung für Ihre Implementierung, da dies mit einer unnötigen Komplexität verbunden sein kann. Ein Beispiel hierfür ist die Ausführung von Aufträgen, die schnell über eine einfache Befehlszeile gestartet werden können.
 
-### Erstellen eines Aufgabenprozessors mit der Vorlage
+### <a name="create-a-task-processor-using-the-template"></a>Erstellen eines Aufgabenprozessors mit der Vorlage
 Führen Sie diese Schritte aus, um einen Aufgabenprozessor der zuvor erstellten Projektmappe hinzuzufügen:
 
 1. Öffnen Sie die vorhandene Projektmappe in Visual Studio 2015.
@@ -256,7 +260,7 @@ Führen Sie diese Schritte aus, um einen Aufgabenprozessor der zuvor erstellten 
 5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 6. Erstellen Sie abschließend das Projekt. So erzwingen Sie, dass von Visual Studio alle referenzierten NuGet-Pakete geladen werden, und stellen die Gültigkeit des Projekts sicher, bevor Sie mit der Durchführung von Änderungen beginnen.
 
-### Aufgabenprozessor-Vorlagendateien und ihr Zweck
+### <a name="task-processor-template-files-and-their-purpose"></a>Aufgabenprozessor-Vorlagendateien und ihr Zweck
 Wenn Sie ein Projekt mit der Aufgabenprozessorvorlage erstellen, werden drei Gruppen von Codedateien generiert:
 
 * Die Hauptprogrammdatei (Program.cs). Sie enthält den Programmeinstiegspunkt und eine Ausnahmebehandlung auf oberster Ebene. Normalerweise sollte es nicht erforderlich sein, hieran Änderungen vorzunehmen.
@@ -294,7 +298,7 @@ Im restlichen Teil dieses Abschnitts werden die unterschiedlichen Dateien und ih
 * `Packages.config`: Standardabhängigkeitsdatei des NuGet-Pakets.
 * `Program.cs`: Enthält den Programmeinstiegspunkt und eine Ausnahmebehandlung auf oberster Ebene.
 
-## Implementieren des Aufgabenprozessors
+## <a name="implementing-the-task-processor"></a>Implementieren des Aufgabenprozessors
 Wenn Sie das Aufgabenprozessor-Vorlagenprojekt öffnen, ist die Datei „TaskProcessor.cs“ standardmäßig geöffnet. Sie können die Ausführungslogik für die Aufgaben in Ihrer Workload implementieren, indem Sie wie hier gezeigt die Run()-Methode verwenden:
 
 ```csharp
@@ -351,13 +355,13 @@ Mit der Run()-Implementierung besteht Zugriff auf Folgendes:
 
 * Die Aufgabenparameter über das Feld `_parameters`.
 * Die Auftrags- und Aufgaben-IDs über die Felder `_jobId` und `_taskId`.
-* Die Aufgabenkonfiguration über das Feld `_configuration`.
+* Die Aufgabenkonfiguration über das Feld `_configuration` .
 
 **Aufgabenfehler**
 
 Bei einem Fehler können Sie die Run()-Methode beenden, indem Sie eine Ausnahme auslösen. Der Ausnahmehandler der obersten Ebene hat dann aber die Kontrolle über den Exitcode der Aufgabe inne. Wenn Sie den Exitcode steuern müssen, um unterschiedliche Arten von Fehlern unterscheiden zu können (z.B. zu Diagnosezwecken oder weil einige Fehlermodi den Auftrag beenden und andere dieses Verhalten nicht zeigen sollen), sollten Sie die Run()-Methode durch das Zurückgeben eines Exitcodes beenden, der nicht null ist. Dies wird der Exitcode der Aufgabe.
 
-### Exitcodes und Ausnahmen in der Aufgabenprozessorvorlage
+### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Exitcodes und Ausnahmen in der Aufgabenprozessorvorlage
 Exitcodes und Ausnahmen bilden einen Mechanismus, mit dem das Ergebnis der Ausführung eines Programms ermittelt wird. Sie können auch zum Identifizieren von Problemen bei der Ausführung des Programms dienen. Mit der Aufgabenprozessorvorlage werden die Exitcodes und Ausnahmen implementiert, die in diesem Abschnitt beschrieben werden.
 
 Eine Aufgabenprozessoraufgabe, die mit der Aufgabenprozessorvorlage implementiert wird, kann drei mögliche Exitcodes zurückgeben:
@@ -375,7 +379,7 @@ Eine Aufgabenprozessoraufgabe, die mit der Aufgabenprozessorvorlage implementier
 
 Alle Informationen, die von Ausnahmen zurückgegeben werden, werden in die Dateien „stdout.txt“ und „stderr.txt“ geschrieben. Weitere Informationen finden Sie in der Batch-Dokumentation unter „Fehlerbehandlung“.
 
-### Clientaspekte
+### <a name="client-considerations"></a>Clientaspekte
 **Speicheranmeldeinformationen**
 
 Wenn Ihr Aufgabenprozessor Azure-Blobspeicher zum dauerhaften Speichern von Ausgaben verwendet (z.B. Nutzung der Hilfsbibliothek mit Dateikonventionen), benötigt er *entweder* Zugriff auf die Cloudspeicherkonto-Anmeldeinformationen *oder* eine Blobcontainer-URL mit einer Shared Access Signature (SAS). Die Vorlage umfasst die Unterstützung zum Bereitstellen von Anmeldeinformationen über allgemeine Umgebungsvariablen. Der Client kann die Speicheranmeldeinformationen wie folgt übergeben:
@@ -395,8 +399,8 @@ Wenn Sie die Verwendung einer Container-URL mit SAS vorziehen, können Sie diese
 
 Es wird empfohlen, dass der Client oder die Auftrags-Manager-Aufgabe alle für die Aufgaben erforderlichen Container erstellt, bevor die Aufgaben dem Auftrag hinzugefügt werden. Dies ist obligatorisch, wenn Sie eine Container-URL mit SAS verwenden, da eine URL dieser Art keine Berechtigung zum Erstellen des Containers enthält. Dies ist auch zu empfehlen, wenn Sie Anmeldeinformationen für das Speicherkonto übergeben, da dann nicht jede Aufgabe „CloudBlobContainer.CreateIfNotExistsAsync“ für den Container aufrufen muss.
 
-## Übergeben von Parametern und Umgebungsvariablen
-### Übergeben von Umgebungseinstellungen
+## <a name="pass-parameters-and-environment-variables"></a>Übergeben von Parametern und Umgebungsvariablen
+### <a name="pass-environment-settings"></a>Übergeben von Umgebungseinstellungen
 Ein Client kann Informationen in Form von Umgebungseinstellungen an die Auftrags-Manager-Aufgabe übergeben. Diese Informationen können dann von der Auftrags-Manager-Aufgabe beim Generieren der Aufgabenprozessor-Aufgaben verwendet werden, die im Rahmen des Computeauftrags ausgeführt werden. Beispiele für die Informationen, die Sie als Umgebungseinstellungen übergeben können, sind:
 
 * Speicherkontoname und Kontoschlüssel
@@ -405,17 +409,17 @@ Ein Client kann Informationen in Form von Umgebungseinstellungen an die Auftrags
 
 Der Batch-Dienst verfügt über einen einfachen Mechanismus zum Übergeben von Umgebungseinstellungen an eine Auftrags-Manager-Aufgabe, indem die `EnvironmentSettings`-Eigenschaft in [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] verwendet wird.
 
-Um beispielsweise die `BatchClient`-Instanz für ein Batch-Konto abzurufen, können Sie die URL und die Anmeldeinformationen eines gemeinsam verwendeten Schlüssels für das Batch-Konto als Umgebungsvariablen übergeben. Außerdem können Sie den Speicherkontonamen und den Speicherkontoschlüssel als Umgebungsvariablen übergeben, um auf das Speicherkonto zuzugreifen, das mit dem Batch-Konto verknüpft ist.
+Um beispielsweise die `BatchClient` -Instanz für ein Batch-Konto abzurufen, können Sie die URL und die Anmeldeinformationen eines gemeinsam verwendeten Schlüssels für das Batch-Konto als Umgebungsvariablen übergeben. Außerdem können Sie den Speicherkontonamen und den Speicherkontoschlüssel als Umgebungsvariablen übergeben, um auf das Speicherkonto zuzugreifen, das mit dem Batch-Konto verknüpft ist.
 
-### Übergeben von Parametern an die Auftrags-Manager-Vorlage
+### <a name="pass-parameters-to-the-job-manager-template"></a>Übergeben von Parametern an die Auftrags-Manager-Vorlage
 In vielen Fällen ist es sinnvoll, Parameter pro Auftrag an die Auftrags-Manager-Aufgabe zu übergeben, um entweder den Prozess der Auftragsteilung zu steuern oder die Aufgaben für den Auftrag zu konfigurieren. Hierzu können Sie eine JSON-Datei mit dem Namen „parameters.json“ als Ressourcendatei für die Auftrags-Manager-Aufgabe hochladen. Die Parameter können dann im Feld `JobSplitter._parameters` der Auftrags-Manager-Vorlage zur Verfügung gestellt werden.
 
 > [!NOTE]
-> Der Handler für integrierte Parameter unterstützt nur Wörterbücher vom Typ „Zeichenfolge-zu-Zeichenfolge“. Wenn Sie komplexe JSON-Werte als Parameterwerte übergeben möchten, muss die Übergabe in Form von Zeichenfolgen durchgeführt werden, und Sie müssen sie in der Auftragsteilung analysieren oder die `Configuration.GetJobParameters`-Methode des Frameworks ändern.
+> Der Handler für integrierte Parameter unterstützt nur Wörterbücher vom Typ „Zeichenfolge-zu-Zeichenfolge“. Wenn Sie komplexe JSON-Werte als Parameterwerte übergeben möchten, muss die Übergabe in Form von Zeichenfolgen durchgeführt werden, und Sie müssen sie in der Auftragsteilung analysieren oder die `Configuration.GetJobParameters` -Methode des Frameworks ändern.
 > 
 > 
 
-### Übergeben von Parametern an die Aufgabenprozessorvorlage
+### <a name="pass-parameters-to-the-task-processor-template"></a>Übergeben von Parametern an die Aufgabenprozessorvorlage
 Sie können Parameter auch an einzelne Aufgaben übergeben, die mit der Aufgabenprozessorvorlage implementiert werden. Wie bei der Auftrags-Manager-Vorlage auch, sucht die Aufgabenprozessorvorlage nach einer Ressourcendatei mit dem Namen
 
 „parameters.json“. Wenn diese Datei gefunden wird, wird sie als Parameterwörterbuch geladen. Es gibt zwei Optionen für die Übergabe von Parametern an die Aufgabenprozessor-Aufgaben:
@@ -424,18 +428,18 @@ Sie können Parameter auch an einzelne Aufgaben übergeben, die mit der Aufgaben
 * Generieren und Hochladen eines aufgabenspezifischen parameters.json-Dokuments im Rahmen der Auftragsteilungsausführung und Verweisen auf dieses Blob in der Ressourcendateisammlung der Aufgabe. Dies ist erforderlich, wenn Aufgaben über unterschiedliche Parameter verfügen. Ein Beispiel hierfür ist ein 3D-Renderingszenario, bei dem der Frameindex als Parameter an die Aufgabe übergeben wird.
 
 > [!NOTE]
-> Der Handler für integrierte Parameter unterstützt nur Wörterbücher vom Typ „Zeichenfolge-zu-Zeichenfolge“. Wenn Sie komplexe JSON-Werte als Parameterwerte übergeben möchten, muss die Übergabe in Form von Zeichenfolgen durchgeführt werden, und Sie müssen sie im Aufgabenprozessor analysieren oder die `Configuration.GetTaskParameters`-Methode des Frameworks ändern.
+> Der Handler für integrierte Parameter unterstützt nur Wörterbücher vom Typ „Zeichenfolge-zu-Zeichenfolge“. Wenn Sie komplexe JSON-Werte als Parameterwerte übergeben möchten, muss die Übergabe in Form von Zeichenfolgen durchgeführt werden, und Sie müssen sie im Aufgabenprozessor analysieren oder die `Configuration.GetTaskParameters` -Methode des Frameworks ändern.
 > 
 > 
 
-## Nächste Schritte
-### Persistente Aufträge und Aufgabenausgabe in Azure Storage
-Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch File Conventions][nuget_package] \(Azure Batch-Dateikonventionen). Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. Der Artikel [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
+## <a name="next-steps"></a>Nächste Schritte
+### <a name="persist-job-and-task-output-to-azure-storage"></a>Persistente Aufträge und Aufgabenausgabe in Azure Storage
+Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch-Dateikonventionen][nuget_package]. Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
 
-### Batch-Forum
+### <a name="batch-forum"></a>Batch-Forum
 Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Informationen zu Batch zu erhalten und Fragen zu diesem Dienst zu stellen. Nutzen Sie das Forum, um hilfreiche Beiträge zu lesen, und posten Sie selber Fragen, die während der Erstellung Ihrer Batch-Lösungen auftreten.
 
-[forum]: https://social.msdn.microsoft.com/forums/azure/de-DE/home?forum=azurebatch
+[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
@@ -448,4 +452,8 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

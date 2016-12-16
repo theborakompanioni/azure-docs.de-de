@@ -1,26 +1,30 @@
 ---
 title: Verwenden von Service Bus-Warteschlangen mit Java | Microsoft Docs
-description: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure. Die Codebeispiele wurden in Java geschrieben.
-services: service-bus
+description: "Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure. Die Codebeispiele wurden in Java geschrieben."
+services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
 manager: timlt
-
-ms.service: service-bus
+ms.assetid: f701439c-553e-402c-94a7-64400f997d59
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 29cab1dff7ffc0f42ee8c605e3817b855967eb53
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Verwenden von Service Bus-Warteschlangen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele wurden in Java geschrieben und verwenden das [Azure-SDK für Java][]. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen**, **Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**.
+In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele wurden in Java geschrieben und verwenden das [Azure SDK für Java][Azure SDK für Java]. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen**, **Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**.
 
-## <a name="what-are-service-bus-queues?"></a>Was sind Service Bus-Warteschlangen?
+## <a name="what-are-service-bus-queues"></a>Was sind Service Bus-Warteschlangen?
 Service Bus-Warteschlangen unterstützen ein Kommunikationsmodell namens **Brokermessaging** . Bei der Verwendung von Warteschlangen kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über eine Warteschlange aus, die als Zwischenstufe (Broker) fungiert. Ein Nachrichtenproducer (Absender) übergibt eine Nachricht an die Warteschlange und setzt seine Funktion fort.
 Ein Nachrichtenconsumer (Empfänger) ruft die Nachricht asynchron aus der Warteschlange ab und verarbeitet sie. Der Producer muss nicht auf eine Antwort vom Consumer warten, um seine Funktion fortzusetzen und weitere Nachrichten zu schicken. Warteschlangen liefern die Nachrichten im **First In, First Out (FIFO)** -Verfahren an einen oder mehrere Consumer. Die Nachrichten werden also normalerweise in der gleichen Reihenfolge von den Consumern empfangen und verarbeitet, wie sie in die Warteschlange übergeben wurden, und jede Nachricht wird nur von einem Consumer verarbeitet.
 
@@ -42,7 +46,7 @@ So erstellen Sie einen Namespace
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-Stellen Sie sicher, dass Sie das [Azure SDK für Java][Azure SDK für Java] vor dem Erstellen dieses Beispiels installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
+Stellen Sie vor dem Erstellen dieses Beispiels sicher, dass Sie das [Azure SDK für Java][Azure SDK für Java] installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure-Toolkit für Eclipse][Azure-Toolkit für Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
 
 ![](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
@@ -84,7 +88,7 @@ catch (ServiceException e)
 }
 ```
 
-Mit den Methoden in **QueueInfo** können Sie Eigenschaften der Warteschlange einstellen (z.B. den Standardwert für die Gültigkeitsdauer, der auf an die Warteschlange gesendete Nachrichten angewendet wird). Das folgende Beispiel zeigt, wie eine Warteschlange mit der Bezeichnung `TestQueue` mit einer maximalen Größe von 5 GB erstellt wird:
+Mit den Methoden in **QueueInfo** können Sie Eigenschaften der Warteschlange einstellen (z.B. den Standardwert für die Gültigkeitsdauer, der auf an die Warteschlange gesendete Nachrichten angewendet wird). Das folgende Beispiel zeigt, wie eine Warteschlange mit der Bezeichnung `TestQueue` mit einer maximalen Größe von 5 GB erstellt wird:
 
 ````
 long maxSizeInMegabytes = 5120;
@@ -112,7 +116,7 @@ catch (ServiceException e)
 }
 ```
 
-Die Nachrichten, die an die Service Bus-Warteschlangen gesendet werden (und von diesen empfangen werden), sind Instanzen der [BrokeredMessage][BrokeredMessage]-Klasse. [BrokeredMessage][BrokeredMessage]-Objekte verfügen über einen Satz von Standardeigenschaften (z.B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) und [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Haupttext der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt in den Konstruktor von [BrokeredMessage][BrokeredMessage] übergeben wird. Anschließend wird der passende Serialisierer für die Serialisierung des Objekts verwendet. Alternativ können Sie ein **java.IO.InputStream**-Objekt bereitstellen.
+Die Nachrichten, die an die Service Bus-Warteschlangen gesendet und von diesen empfangen werden, sind Instanzen der Klasse [BrokeredMessage][BrokeredMessage]. [BrokeredMessage][BrokeredMessage]-Objekte verfügen über einen Satz von Standardeigenschaften (z.B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) und [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), ein Wörterbuch, in dem benutzerdefinierte anwendungsspezifische Eigenschaften enthalten sind, sowie einen Bestand beliebiger Anwendungsdaten. Eine Anwendung kann den Haupttext der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt in den Konstruktor von [BrokeredMessage][BrokeredMessage] übergeben wird. Anschließend wird der passende Serialisierer für die Serialisierung des Objekts verwendet. Alternativ können Sie ein **java.IO.InputStream**-Objekt bereitstellen.
 
 Das folgende Beispiel veranschaulicht, wie fünf Testnachrichten an den **MessageSender** `TestQueue` gesendet werden, der im vorherigen Codeausschnitt abgerufen wurde:
 
@@ -128,7 +132,7 @@ for (int i=0; i<5; i++)
 }
 ```
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 Der einfachste Weg zum Empfangen von Nachrichten aus Warteschlangen sind **ServiceBusContract**-Objekte. Empfangene Nachrichten können in zwei unterschiedlichen Modi funktionieren: **ReceiveAndDelete** und **PeekLock**.
@@ -148,7 +152,7 @@ try
 
     while(true)  {
          ReceiveQueueMessageResult resultQM =
-                service.receiveQueueMessage("TestQueue", opts);
+                 service.receiveQueueMessage("TestQueue", opts);
         BrokeredMessage message = resultQM.getValue();
         if (message != null && message.getMessageId() != null)
         {
@@ -194,7 +198,7 @@ catch (Exception e) {
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
-Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine empfangene Anwendung eine Nachricht aus einem beliebigen Grund nicht verarbeiten kann, kann sie die **unlockMessage**-Methode für die empfangene Nachricht aufrufen (anstelle der **deleteMessage**-Methode). Dies führt dazu, dass Service Bus die Nachricht innerhalb der Warteschlange entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
+Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine empfangene Anwendung eine Nachricht aus einem beliebigen Grund nicht verarbeiten kann, kann sie die Methode **unlockMessage** für die empfangene Nachricht aufrufen (anstelle der Methode **deleteMessage**). Dies führt dazu, dass Service Bus die Nachricht innerhalb der Warteschlange entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
 Zudem wird einer in der Warteschlange gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel, wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
 
@@ -213,6 +217,6 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

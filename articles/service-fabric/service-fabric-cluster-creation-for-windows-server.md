@@ -1,12 +1,12 @@
 ---
-title: Erstellen und Verwalten eines eigenständigen Azure Service Fabric-Clusters | Microsoft Docs
+title: "Erstellen und Verwalten eines eigenständigen Azure Service Fabric-Clusters | Microsoft Docs"
 description: Erstellen und verwalten Sie einen Azure Service Fabric-Cluster auf einem beliebigen Computer (physisch oder virtuell) mit Windows Server, lokal oder in einer Cloud.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2016
 ms.author: dkshir;chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 913726bb57f727bd62cdee0aee16bc886b38884f
+
 
 ---
 # <a name="create-and-manage-a-cluster-running-on-windows-server"></a>Erstellen und Verwalten eines Windows Server-Clusters
@@ -61,12 +65,12 @@ Im Downloadpaket finden Sie die folgenden Dateien:
 ## <a name="plan-and-prepare-your-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 Führen Sie die folgenden Schritte aus, bevor Sie den Cluster erstellen.
 
-### <a name="step-1:-plan-your-cluster-infrastructure"></a>Schritt 1: Planen der Clusterinfrastruktur
+### <a name="step-1-plan-your-cluster-infrastructure"></a>Schritt 1: Planen der Clusterinfrastruktur
 Da Sie im Begriff sind, auf Ihren Computern einen Service Fabric-Cluster zu erstellen, können Sie entscheiden, welche Arten von Fehlern der Cluster überstehen soll. Benötigen Sie beispielsweise separate Stromversorgungsleitungen oder Internetverbindungen zur Versorgung dieser Computer? Berücksichtigen Sie darüber hinaus auch die physische Sicherheit der Computer. Wo befinden sich die Computer, und wer benötigt Zugang zu ihnen? Nachdem Sie diese Entscheidungen getroffen haben, können Sie die Computer logisch den verschiedenen Fehlerdomänen zuordnen (siehe Schritt 4). Die Infrastrukturplanung für Produktionscluster ist komplizierter als für Testcluster.
 
 <a id="preparemachines"></a>
 
-### <a name="step-2:-prepare-the-machines-to-meet-the-prerequisites"></a>Schritt 2: Vorbereiten der Computer, um die Voraussetzungen zu erfüllen
+### <a name="step-2-prepare-the-machines-to-meet-the-prerequisites"></a>Schritt 2: Vorbereiten der Computer, um die Voraussetzungen zu erfüllen
 Voraussetzungen für jeden Computer, den Sie dem Cluster hinzufügen möchten:
 
 * Mindestens 16 GB RAM empfohlen
@@ -80,11 +84,11 @@ Voraussetzungen für jeden Computer, den Sie dem Cluster hinzufügen möchten:
 
 Der Clusteradministrator, der den Cluster bereitstellt und konfiguriert, muss auf jedem Computer [Administratorrechte](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) besitzen. Service Fabric kann nicht auf einem Domänencontroller installiert werden.
 
-### <a name="step-3:-determine-the-initial-cluster-size"></a>Schritt 3: Bestimmen der anfänglichen Clustergröße
+### <a name="step-3-determine-the-initial-cluster-size"></a>Schritt 3: Bestimmen der anfänglichen Clustergröße
 Für jeden Knoten in einem eigenständigen Service Fabric-Cluster wird die Service Fabric-Laufzeit bereitgestellt und ist Mitglied des Clusters. In einer gängigen Produktionsbereitstellung ist ein Knoten pro Betriebssysteminstanz (physisch oder virtuell) vorhanden. Die Clustergröße wird durch Ihre Geschäftsanforderungen bestimmt. Sie benötigen jedoch eine minimale Clustergröße von drei Knoten (auf physischen oder virtuellen Computern).
 Für Entwicklungszwecke können Sie über mehrere Knoten auf einem bestimmten Computer verfügen. In einer Produktionsumgebung unterstützt Service Fabric nur einen Knoten pro physischen oder virtuellen Computer.
 
-### <a name="step-4:-determine-the-number-of-fault-domains-and-upgrade-domains"></a>Schritt 4: Bestimmen der Anzahl von Fehlerdomänen und Upgradedomänen
+### <a name="step-4-determine-the-number-of-fault-domains-and-upgrade-domains"></a>Schritt 4: Bestimmen der Anzahl von Fehlerdomänen und Upgradedomänen
 Eine *Fehlerdomäne* (fault domain; FD) ist eine physische Fehlereinheit, die in direktem Zusammenhang mit der physischen Infrastruktur von Rechenzentren steht. Eine Fehlerdomäne besteht aus Hardwarekomponenten (Computer, Switches, Netzwerken usw.), die sich eine einzelne Fehlerquelle teilen. Obwohl es keine 1:1-Zuordnung zwischen Fehlerdomänen und Racks gibt, kann praktisch jedes Rack als Fehlerdomäne betrachtet werden. Bei der Berücksichtigung der Knoten in Ihrem Cluster sollten Sie die Knoten unbedingt auf mindestens drei Fehlerdomänen verteilen.
 
 Beim Angeben von FDs in „ClusterConfig.json“ können Sie jeweils den Namen der FD wählen. Service Fabric unterstützt hierarchische FDs, damit sie Ihre Infrastrukturtopologie reflektieren können.  Beispielsweise sind die folgenden Fehlerdomänen zulässig:
@@ -106,7 +110,7 @@ Beim Angeben von UDs in „ClusterConfig.json“ können Sie jeweils den Namen d
 
 Ausführlichere Informationen zu Upgrade- und Fehlerdomänen finden Sie im Artikel [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
 
-### <a name="step-5:-download-the-service-fabric-standalone-package-for-windows-server"></a>Schritt 5: Herunterladen des eigenständigen Service Fabric-Pakets für Windows Server
+### <a name="step-5-download-the-service-fabric-standalone-package-for-windows-server"></a>Schritt 5: Herunterladen des eigenständigen Service Fabric-Pakets für Windows Server
 [Laden Sie das eigenständige Service Fabric-Paket für Windows Server herunter](http://go.microsoft.com/fwlink/?LinkId=730690) , und entpacken Sie es entweder auf einem Bereitstellungscomputer, der nicht Teil des Clusters ist, oder auf einem der Computer, die Teil des Clusters sein werden. Sie können den entzippten Ordner `Microsoft.Azure.ServiceFabric.WindowsServer` umbenennen.
 
 <a id="createcluster"></a>
@@ -114,16 +118,18 @@ Ausführlichere Informationen zu Upgrade- und Fehlerdomänen finden Sie im Artik
 ## <a name="create-your-cluster"></a>Erstellen Ihres Clusters
 Nachdem Sie die Planungs- und Vorbereitungsabschnitte durchlaufen haben, können Sie Ihren Cluster erstellen.
 
-### <a name="step-1:-modify-cluster-configuration"></a>Schritt 1: Ändern der Clusterkonfiguration
+### <a name="step-1-modify-cluster-configuration"></a>Schritt 1: Ändern der Clusterkonfiguration
 Der Cluster wird in der Datei „ClusterConfig.json“ beschrieben. Ausführliche Informationen zu den Abschnitten in dieser Datei finden Sie im Artikel [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md).
 Öffnen Sie eine der „ClusterConfig.json“-Dateien aus dem Paket, das Sie heruntergeladen haben, und ändern Sie die folgenden Einstellungen:
 
+<!--Loc Comment: Please, check that line 129 the clause has been modified to "that you use as placement constraints" instead of using "you are used as placement constraints"-->
+
 | **Konfigurationseinstellung** | **Beschreibung** |
 | --- | --- |
-| **NodeTypes** |Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale: <br> **Name**: Dies ist der Knotentypname. <br>**Endpoint ports**: Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Elementen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem (virtuellen) Computer verwendet wird. <br> **Placement properties**: Eigenschaften für diesen Knotentyp, die Sie später als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften wären etwa die Angabe, ob der Knoten über eine Festplatte oder Grafikkarte verfügt, die Anzahl von Spindeln des Festplattenlaufwerks, die Anzahl von Kernen und andere physische Eigenschaften. <br> **Capacities**: Knotenkapazitäten definieren Name und Menge einer Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z.B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2048 MB an verfügbarem Arbeitsspeicher aufweist. Diese Kapazitäten werden zur Laufzeit verwendet, um sicherzustellen, dass Dienste, die bestimmte Ressourcenmengen beanspruchen, auf Knoten mit den verfügbaren Ressourcen in der benötigten Menge platziert werden.<br>**IsPrimary**: Wenn Sie mehr als ein NodeType-Element definiert haben, sollten Sie sicherstellen, dass nur ein Element mit dem Wert *TRUE* als primäres Element festgelegt ist. Auf diesem Element werden die Systemdienste ausgeführt. Alle anderen Knotentypen sollten auf den Wert *FALSE* festgelegt werden. |
+| **NodeTypes** |Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale: <br> **Name**: Dies ist der Knotentypname. <br>**Endpunktports**: Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Elementen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem (virtuellen) Computer verwendet wird. <br> **Platzierungseigenschaften**: Eigenschaften für diesen Knotentyp, die Sie später als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften wären etwa die Angabe, ob der Knoten über eine Festplatte oder Grafikkarte verfügt, die Anzahl von Spindeln des Festplattenlaufwerks, die Anzahl von Kernen und andere physische Eigenschaften. <br> **Kapazitäten**: Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Diese Kapazitäten werden zur Laufzeit verwendet, um sicherzustellen, dass Dienste, die bestimmte Ressourcenmengen beanspruchen, auf Knoten mit den verfügbaren Ressourcen in der benötigten Menge platziert werden.<br>**IsPrimary**: Wenn Sie mehr als ein NodeType-Element definiert haben, sollten Sie sicherstellen, dass nur ein Element mit dem Wert *TRUE* als primäres Element festgelegt ist. Auf diesem Element werden die Systemdienste ausgeführt. Alle anderen Knotentypen sollten auf den Wert *FALSE* festgelegt werden. |
 | **Nodes** |Dies sind die Details für jeden Knoten, der Teil des Clusters ist (Knotentyp, Knotenname, IP-Adresse, Fehlerdomäne und Upgradedomäne des Knotens). Die Computer, aus denen Sie den Cluster erstellen möchten, müssen mit ihren IP-Adressen hier aufgeführt werden. <br>  Wenn Sie die gleiche IP-Adresse für alle Knoten verwenden, wird ein Cluster mit einem Computer erstellt, den Sie für Tests verwenden können. Cluster mit einem Computer dürfen nicht zur Bereitstellung von Produktionsworkloads verwendet werden. |
 
-### <a name="step-2:-run-the-testconfiguration-script"></a>Schritt 2: Ausführen des TestConfiguration-Skripts
+### <a name="step-2-run-the-testconfiguration-script"></a>Schritt 2: Ausführen des TestConfiguration-Skripts
 Das TestConfiguration-Skript testet Ihre Infrastruktur auf der Grundlage von „cluster.json“, um unter anderem zu überprüfen, ob die erforderlichen Berechtigungen zugewiesen sind, die Computer miteinander verbunden sind, und andere Attribute definiert sind, damit die Bereitstellung erfolgreich durchgeführt werden kann. Es ist im Grunde ein einfacher Best Practices Analyzer. Das Tool wird nach und nach mit zusätzlichen Überprüfungen erweitert, um es robuster zu machen.
 
 Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugriffsrechte auf alle Computer hat, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein.
@@ -150,7 +156,7 @@ Passed                     : True
 
 ```
 
-### <a name="step-3:-run-the-create-cluster-script"></a>Schritt 3: Ausführen des Clustererstellungsskripts
+### <a name="step-3-run-the-create-cluster-script"></a>Schritt 3: Ausführen des Clustererstellungsskripts
 Sobald Sie die Clusterkonfiguration im JSON-Dokument geändert und alle Knoteninformationen hinzugefügt haben, führen Sie das PowerShell-Skript *CreateServiceFabricCluster.ps1* zur Erstellung des Clusters im Paketordner aus, und übergeben Sie den Pfad zur JSON-Konfigurationsdatei. Wenn dies abgeschlossen ist, akzeptieren Sie den Endbenutzer-Lizenzvertrag.
 
 Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugriffsrechte auf alle Computer hat, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein.
@@ -171,7 +177,7 @@ Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugri
 > 
 > 
 
-### <a name="step-4:-connect-to-the-cluster"></a>Schritt 4: Herstellen einer Verbindung mit dem Cluster
+### <a name="step-4-connect-to-the-cluster"></a>Schritt 4: Herstellen einer Verbindung mit dem Cluster
 Weitere Informationen zum Herstellen einer Verbindung mit einem sicheren Cluster finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster ohne AAD](service-fabric-connect-to-secure-cluster.md).
 
 Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem unsicheren Cluster herzustellen:
@@ -183,7 +189,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 
 ```
-### <a name="step-5:-bring-up-service-fabric-explorer"></a>Schritt 5: Aufrufen von Service Fabric Explorer
+### <a name="step-5-bring-up-service-fabric-explorer"></a>Schritt 5: Aufrufen von Service Fabric Explorer
 Jetzt können Sie über Service Fabric Explorer eine Verbindung mit dem Cluster herstellen, und zwar entweder direkt von einem der Computer mit „http://localhost:19080/Explorer/index.html“ oder per Remotezugriff mit „http://<*IPAddressofaMachine*>:19080/Explorer/index.html“.
 
 ## <a name="add-and-remove-nodes"></a>Hinzufügen und Entfernen von Knoten
@@ -252,6 +258,6 @@ Keine
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

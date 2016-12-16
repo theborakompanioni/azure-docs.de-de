@@ -1,12 +1,12 @@
 ---
-title: Zuverlässige WCF-Dienste Kommunikationsstapel von Reliable Services | Microsoft Docs
-description: Der integrierte WCF-Kommunikationsstapel in Service Fabric bietet Clientdienst-WCF-Kommunikation für Reliable Services.
+title: "WCF-Kommunikationsstapel für Reliable Services | Microsoft Docs"
+description: "Der integrierte WCF-Kommunikationsstapel in Service Fabric bietet Clientdienst-WCF-Kommunikation für Reliable Services."
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
 manager: timlt
 editor: vturecek
-
+ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/26/2016
 ms.author: bharatn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a3b0362f0c3b42e4a61348abe306c3beaa6f0c86
+
 
 ---
-# WCF-basierter Kommunikationsstapel für Reliable Services
-Das Reliable Services-Framework ermöglicht Dienstautoren, den Kommunikationsstapel für ihren Dienst zu wählen. Sie können den Kommunikationsstapel ihrer Wahl über den von der [CreateServiceReplicaListeners- oder CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md)-Methode zurückgegebenen **ICommunicationListener** implementieren. Das Framework bietet eine Implementierung des auf WCF (Windows Communication Foundation) basierenden Kommunikationsstapels für Dienstautoren, die eine WCF-basierte Kommunikation verwenden möchten.
+# <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-basierter Kommunikationsstapel für Reliable Services
+Das Reliable Services-Framework ermöglicht Dienstautoren, den Kommunikationsstapel für ihren Dienst zu wählen. Sie können den Kommunikationsstapel ihrer Wahl über den von der **CreateServiceReplicaListeners- oder CreateServiceInstanceListeners** -Methode zurückgegebenen [ICommunicationListener](service-fabric-reliable-services-communication.md) implementieren. Das Framework bietet eine Implementierung des auf WCF (Windows Communication Foundation) basierenden Kommunikationsstapels für Dienstautoren, die eine WCF-basierte Kommunikation verwenden möchten.
 
-## WCF-Kommunikationslistener
-Die WCF-spezifische Implementierung von **ICommunicationListener** erfolgt über die **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener**-Klasse.
+## <a name="wcf-communication-listener"></a>WCF-Kommunikationslistener
+Die WCF-spezifische Implementierung von **ICommunicationListener** wird von der **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener**-Klasse bereitgestellt.
 
-Angenommen, wir haben einen Dienstvertrag vom Typ `ICalculator`.
+Angenommen, wir haben einen Dienstvertrag vom Typ `ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -59,8 +63,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## Schreiben von Clients für den WCF-Kommunikationsstapel
-Für das Schreiben von Clients, die über WCF mit Diensten kommunizieren, bietet das Framework **WcfClientCommunicationFactory**. Dies ist die spezielle WCF-Implementierung von [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
+## <a name="writing-clients-for-the-wcf-communication-stack"></a>Schreiben von Clients für den WCF-Kommunikationsstapel
+Für das Schreiben von Clients, die über WCF mit Diensten kommunizieren, bietet das Framework **WcfClientCommunicationFactory**. Dies ist die WCF-spezifische Implementierung von [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
 
 ```csharp
 
@@ -72,7 +76,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-Der WCF-Kommunikationskanal ist vom **WcfCommunicationClient** aus zugänglich, der mit **WcfCommunicationClientFactory** erstellt wurde.
+Auf den WCF-Kommunikationskanal kann vom **WcfCommunicationClient** aus zugegriffen werden, der von **WcfCommunicationClientFactory** erstellt wurde.
 
 ```csharp
 
@@ -118,9 +122,14 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Remoteprozeduraufruf mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 * [Absichern der Kommunikation für Reliable Services](service-fabric-reliable-services-secure-communication.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

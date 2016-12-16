@@ -1,12 +1,12 @@
 ---
-title: Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API | Microsoft Docs
-description: Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API
+title: "Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API | Microsoft Docs"
+description: "Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4c60c0fd364400c881f1b8b96598725f6bd11d26
+
 
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API
@@ -28,7 +32,7 @@ Siehe:
 
 Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
 
-## <a name="who-can-access-the-api-data?"></a>Wer kann auf die API-Daten zugreifen?
+## <a name="who-can-access-the-api-data"></a>Wer kann auf die API-Daten zugreifen?
 * Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
 * Globale Administratoren
 * Jede App mit Autorisierung zum Zugriff auf die API (die App-Autorisierung kann nur basierend auf der Berechtigung eines globalen Administrators eingerichtet werden)
@@ -94,7 +98,7 @@ Um den Bereich der zurückgegebenen Daten einzuschränken, können Sie Kombinati
 
 Verwendung eines bestimmten Datums
 
-    $filter=signinDateTime+eq+2016-04-25T23:59:00Z  
+    $filter=signinDateTime+eq+2016-04-25T23:59:00Z    
 
 
 
@@ -177,6 +181,9 @@ Es gibt zwei Optionen für den loginStatus: 0 = erfolgreich, 1 = fehlerhaft.
 * Möchten Sie Beispiele für gefilterte Anmeldeaktivitäten anzeigen? Dann sehen Sie sich die [Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-samples.md)an.
 * Sie möchten mehr über die Azure AD-Berichterstellungs-API erfahren? Lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

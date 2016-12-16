@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen einer Verzögerung in Logik-Apps | Microsoft Docs
-description: Übersicht über die Aktionen „Verzögern“ und „Verzögern bis“ sowie über deren Verwendung in einer Azure-Logik-App.
-services: ''
-documentationcenter: ''
+title: "Hinzufügen einer Verzögerung in Logik-Apps | Microsoft Docs"
+description: "Übersicht über die Aktionen „Verzögern“ und „Verzögern bis“ sowie über deren Verwendung in einer Azure-Logik-App."
+services: 
+documentationcenter: 
 author: jeffhollan
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 915f48bf-3bd8-4656-be73-91a941d0afcd
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e4281c70dc0edd45ff485c64a499291b23ad51b7
+
 
 ---
-# Erste Schritte mit den Aktionen „Verzögern“ und „Verzögern bis“
+# <a name="get-started-with-the-delay-and-delay-until-actions"></a>Erste Schritte mit den Aktionen „Verzögern“ und „Verzögern bis“
 Die Aktionen „Verzögern“ und „Verzögern bis“ eignen sich zur Durchführung von Workflowszenarien.
 
 Dazu zählen z. B.:
@@ -27,25 +31,26 @@ Dazu zählen z. B.:
 
 Wenn Sie die Verzögerungsaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-## Verwenden der Verzögerungsaktionen
+## <a name="use-the-delay-actions"></a>Verwenden der Verzögerungsaktionen
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
 
 Im Anschluss sehen Sie eine Beispielsequenz für die Verwendung eines Verzögerungsschritts in einer Logik-App:
 
-1. Klicken Sie nach dem Hinzufügen eines Triggers auf **Neuer Schritt**, um eine Aktion hinzuzufügen.
-2. Suchen Sie nach **verzögern**, um die Verzögerungsaktionen anzuzeigen. In diesem Beispiel wählen wir **Verzögern** aus.
+1. Klicken Sie nach dem Hinzufügen eines Triggers auf **Neuer Schritt** , um eine Aktion hinzuzufügen.
+2. Suchen Sie nach **verzögern** , um die Verzögerungsaktionen anzuzeigen. In diesem Beispiel wählen wir **Verzögern**aus.
    
     ![Verzögern von Aktionen](./media/connectors-native-delay/using-action-1.png)
 3. Geben Sie die gewünschten Aktionseigenschaften an, um die Verzögerung zu konfigurieren.
    
     ![Verzögerungskonfiguration](./media/connectors-native-delay/using-action-2.png)
-4. Klicken Sie auf **Speichern**, um die Logik-App zu veröffentlichen und zu aktivieren.
+4. Klicken Sie auf **Speichern** , um die Logik-App zu veröffentlichen und zu aktivieren.
 
-## Aktionsdetails
+## <a name="action-details"></a>Aktionsdetails
 Der Wiederholungstrigger verfügt über folgende konfigurierbare Eigenschaften:
 
-### Aktion „Verzögern“
-Diese Aktion verzögert die Ausführung für ein bestimmtes Zeitintervall. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+### <a name="delay-action"></a>Aktion „Verzögern“
+Diese Aktion verzögert die Ausführung für ein bestimmtes Zeitintervall.
+Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 | Anzeigename | Eigenschaftenname | Beschreibung |
 | --- | --- | --- |
@@ -54,8 +59,9 @@ Diese Aktion verzögert die Ausführung für ein bestimmtes Zeitintervall. Ein *
 
 <br>
 
-### Aktion „Verzögern bis“
-Diese Aktion verzögert die Ausführung bis zum angegebenen Zeitpunkt (Datum/Uhrzeit). Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+### <a name="delay-until-action"></a>Aktion „Verzögern bis“
+Diese Aktion verzögert die Ausführung bis zum angegebenen Zeitpunkt (Datum/Uhrzeit).
+Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 | Anzeigename | Eigenschaftenname | Beschreibung |
 | --- | --- | --- |
@@ -65,7 +71,12 @@ Diese Aktion verzögert die Ausführung bis zum angegebenen Zeitpunkt (Datum/Uhr
 
 <br>
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

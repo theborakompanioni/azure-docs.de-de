@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Evidence.com | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Evidence.com konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2016
 ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5d5183b136a0ceca939f754f67130d1179f6f4f7
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-evidence.com"></a>Tutorial: Azure Active Directory-Integration mit Evidence.com
+# <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Tutorial: Azure Active Directory-Integration mit Evidence.com
 In diesem Tutorial wird erläutert, wie einmaliges Anmelden für Azure Active Directory (AAD) und Evidence.com eingerichtet wird. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Microsoft Azure-Abonnement
@@ -24,7 +28,7 @@ In diesem Tutorial wird erläutert, wie einmaliges Anmelden für Azure Active Di
 
 Nach Abschluss dieses Tutorials können sich die AAD-Benutzer, denen Sie Evidence.com-Zugriff zugewiesen haben, mit dem AAD-Zugriffsbereich per einmaligem Anmelden an der Anwendung anmelden.
 
-## <a name="add-evidence.com-to-your-directory"></a>Hinzufügen von Evidence.com zu Ihrem Verzeichnis
+## <a name="add-evidencecom-to-your-directory"></a>Hinzufügen von Evidence.com zu Ihrem Verzeichnis
 In diesem Abschnitt wird beschrieben, wie Sie Evidence.com als integrierte Anwendung in Azure Active Directory hinzufügen.
 
 **So aktivieren Sie die Anwendungsintegration für Evidence**
@@ -49,12 +53,12 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 6. Klicken Sie auf **Agentur – einmaliges Anmelden**
 7. Wählen Sie die Option **SAML-basiertes einmaliges Anmelden**
 8. Kopieren Sie die Werte für **Aussteller-URL**, **Einmaliges Anmelden** und **Einmaliges Abmelden**, die im klassischen Azure-Portal angezeigt werden, in die entsprechenden Felder von Evidence.com.
-9. Öffnen Sie das Zertifikat, das Sie in Schritt 4 heruntergeladen haben, mit einem Text-Editor wie „Notepad.exe“, kopieren Sie den Inhalt, und fügen Sie ihn in das Feld **Sicherheitszertifikat** ein. 
+9. Öffnen Sie das Zertifikat, das Sie in Schritt 4 heruntergeladen haben, mit einem Text-Editor wie „Notepad.exe“, kopieren Sie den Inhalt, und fügen Sie ihn in das Feld **Sicherheitszertifikat** ein. 
 10. Speichern Sie die Konfiguration in Evidence.com.
 11. Aktivieren Sie im klassischen Azure-Portal die Option **Bestätigen Sie, dass Sie die einmalige Anmeldung wie oben beschrieben konfiguriert haben**. Bei Aktivierung kann das aktuelle Zertifikat für diese Anwendung arbeiten.
 12. Klicken Sie auf der Seite „Bestätigung zur einmaligen Anmeldung“ auf **Fertig stellen**.  
 
-## <a name="creating-an-evidence.com-test-user"></a>Erstellen eines Evidence.com-Testbenutzers
+## <a name="creating-an-evidencecom-test-user"></a>Erstellen eines Evidence.com-Testbenutzers
 Damit sich Azure AD-Benutzer anmelden können, müssen sie für den Zugriff innerhalb der Evidence.com-Anwendung bereitgestellt werden. In diesem Abschnitt wird beschrieben, wie in Evidence.com Azure AD-Benutzerkonten erstellt werden.
 
 **So stellen Sie in Evidence.com ein Benutzerkonto bereit**
@@ -65,7 +69,7 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie für den Zugriff inne
 4. Klicken Sie auf die Schaltfläche **Hinzufügen** .
 5. Die **E-Mail-Adresse** des hinzugefügten Benutzers muss mit dem Benutzernamen des Benutzers in Azure AD übereinstimmen, dem Sie Zugriff gewähren möchten. Wenn der Benutzername und die E-Mail-Adresse in Ihrem Unternehmen nicht identisch sind, können Sie im klassischen Azure-Portal den Abschnitt **Evidence.com > Attribute > Einmaliges Anmelden** verwenden, um das an Evidence.com gesendete nameidenitifier-Element zu ändern und als E-Mail-Adresse zu verwenden.
 
-## <a name="assigning-users-to-evidence.com"></a>Zuweisen von Benutzern zu Evidence.com
+## <a name="assigning-users-to-evidencecom"></a>Zuweisen von Benutzern zu Evidence.com
 Damit bereitgestellten AAD-Benutzern Evidence.com im Zugriffsbereich angezeigt wird, muss ihnen im klassischen Azure-Portal der Zugriff zugewiesen werden.
 
 **So weisen Sie Evidence.com Benutzer zu**
@@ -75,6 +79,9 @@ Damit bereitgestellten AAD-Benutzern Evidence.com im Zugriffsbereich angezeigt w
 3. Wählen Sie in der Liste **Benutzer** die zu gruppierenden Benutzer aus, denen Sie Evidence.com zuweisen möchten.
 4. Klicken Sie in der Fußzeile auf die Schaltfläche **Zuweisen** .
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
 title: Sichern einer Datenbank in SQL Data Warehouse | Microsoft Docs
-description: Tipps für das Sichern einer Datenbank in Azure SQL Data Warehouse für die Entwicklung von Lösungen.
+description: "Tipps für das Sichern einer Datenbank in Azure SQL Data Warehouse für die Entwicklung von Lösungen."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ronortloff
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 8fa2f5ca-4cf5-4418-99a2-4dc745799850
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 03466b412405d45553d80ebf4e283038b7894727
+
 
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Sichern einer Datenbank in SQL Data Warehouse
@@ -30,7 +34,7 @@ Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehous
 ## <a name="connection-security"></a>Verbindungssicherheit
 Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewall-Regeln und Verbindungsverschlüsselung einschränken und sichern.
 
-Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt.  Weitere Informationen finden Sie unter [Azure SQL-Datenbankfirewall][], [sp_set_firewall_rule][sp_set_firewall_rule] und [sp_set_database_firewall_rule][sp_set_database_firewall_rule].
+Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt.  Weitere Informationen finden Sie unter [Firewall für die Azure SQL-Datenbank][Firewall für die Azure SQL-Datenbank], [sp_set_firewall_rule][sp_set_firewall_rule] und [sp_set_database_firewall_rule][sp_set_database_firewall_rule].
 
 Verbindungen mit Ihrem SQL Data Warehouse sind standardmäßig verschlüsselt.  Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
 
@@ -70,19 +74,19 @@ Das Server-Admin-Konto, mit dem Sie eine Verbindung herstellen, ist Mitglied von
 
 Es gibt Möglichkeiten, Benutzerberechtigungen für die Azure SQL-Datenbank noch weiter einzuschränken:
 
-* Mithilfe von granularen [Berechtigungen][Berechtigungen] können Sie steuern, welche Aufgaben in einzelnen Spalten, Tabellen, Ansichten, Prozeduren und anderen Objekten in der Datenbank ausgeführt werden dürfen. Verwenden Sie präzise Berechtigungen, um die größtmögliche Kontrolle zu haben und die geringstmöglichen Berechtigungen zu erteilen. Das präzise Berechtigungssystem ist etwas kompliziert, und seine effektive Nutzung erfordert etwas Übung.
-* [Datenbankrollen][Datenbankrollen] können, mit Ausnahme von „db_datareader“ und „db_datawriter“, dazu verwendet werden, Anwendungsbenutzerkonten mit mehr Berechtigungen oder Verwaltungskonten mit weniger Berechtigungen zu erstellen. Die integrierten festen Datenbankrollen bieten eine einfache Möglichkeit zum Erteilen von Berechtigungen, können jedoch auch dazu führen, dass mehr Berechtigungen als nötig erteilt werden.
+* Mithilfe von granularen [Berechtigungen][Berechtigungen] können Sie steuern, welche Aufgaben in einzelnen Spalten, Tabellen, Sichten, Prozeduren und anderen Objekten in der Datenbank ausgeführt werden dürfen. Verwenden Sie präzise Berechtigungen, um die größtmögliche Kontrolle zu haben und die geringstmöglichen Berechtigungen zu erteilen. Das präzise Berechtigungssystem ist etwas kompliziert, und seine effektive Nutzung erfordert etwas Übung.
+* [Datenbankrollen][Datenbankrollen] können – mit Ausnahme von „db_datareader“ und „db_datawriter“ – dazu verwendet werden, Anwendungsbenutzerkonten mit mehr Berechtigungen oder Verwaltungskonten mit weniger Berechtigungen zu erstellen. Die integrierten festen Datenbankrollen bieten eine einfache Möglichkeit zum Erteilen von Berechtigungen, können jedoch auch dazu führen, dass mehr Berechtigungen als nötig erteilt werden.
 * [Gespeicherten Prozeduren][Gespeicherten Prozeduren] können verwendet werden, um die Aktionen zu begrenzen, die in der Datenbank ausgeführt werden können.
 
 Die Verwaltung von Datenbanken und logischen Servern über das klassische Azure-Portal oder mit der Azure-Ressourcen-Manager-API wird durch die Rollenzuweisungen Ihres Portal-Benutzerkontos gesteuert. Weitere Informationen zu diesem Thema finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal][Rollenbasierte Zugriffssteuerung im Azure-Portal].
 
 ## <a name="encryption"></a>Verschlüsselung
-Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt.  Wenn Sie Ihre Datenbank verschlüsseln, werden zugehörige Sicherungen und Transaktionsprotokolle verschlüsselt, ohne dass Änderungen an Ihren Anwendungen erforderlich sind. TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Der von SQL Data Warehouse verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)][Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)].
+Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt.  Wenn Sie Ihre Datenbank verschlüsseln, werden zugehörige Sicherungen und Transaktionsprotokolle verschlüsselt, ohne dass Änderungen an Ihren Anwendungen erforderlich sind. TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Der von SQL Data Warehouse verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)][Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)].
 
 Sie können Ihre Datenbank über das [Azure-Portal][Verschlüsselung im Portal] oder mit [T-SQL][Verschlüsselung mit TSQL] verschlüsseln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehouse anhand von verschiedenen Protokollen finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][Herstellen einer Verbindung mit SQL Data Warehouse].
+Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehouse über verschiedene Protokolle finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][Herstellen einer Verbindung mit SQL Data Warehouse].
 
 <!--Image references-->
 
@@ -108,6 +112,6 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

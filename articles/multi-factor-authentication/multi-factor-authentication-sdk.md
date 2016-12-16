@@ -1,99 +1,105 @@
 ---
-title: Integrieren Sie Ihre lokalen Identitäten in Azure Active Directory.
-description: Nachfolgend finden Sie einen Überblick über Azure AD Connect sowie eine Beschreibung des Einsatzes dieser Technologie.
+title: "MFA SDK für benutzerdefinierte Apps | Microsoft Docs"
+description: "Dieser Artikel erläutert, wie Sie das Azure MFA SDK herunterladen und verwenden, um die Überprüfung in zwei Schritten für Ihre benutzerdefinierten Apps zu aktivieren."
 services: multi-factor-authentication
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtand
-
+editor: yossib
+ms.assetid: 1c152f67-be02-42a5-a0c7-246fb6b34377
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 10/31/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 27907f312b97434fe7ab5359acdac942fb563862
+
 
 ---
-# Erstellen von Multi-Factor Authentication in benutzerdefinierten Apps (SDK)
+# <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Erstellen von Multi-Factor Authentication in benutzerdefinierten Apps (SDK)
 > [!IMPORTANT]
-> Falls Sie das SDK herunterladen möchten, müssen Sie auch dann einen Azure MFA-Anbieter erstellen, wenn Sie über Azure MFA-, AAD Premium- oder EMS-Lizenzen verfügen. Falls Sie zu diesem Zweck einen Azure MFA-Anbieter erstellen und bereits im Besitz von Lizenzen sind, müssen Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer** erstellen und mit dem Verzeichnis verknüpfen, in dem die Azure MFA-, Azure AD Premium- oder EMS-Lizenzen enthalten sind. So wird sichergestellt, dass nur Kosten anfallen, wenn die Anzahl eindeutiger Benutzer, die das SDK verwenden, die Anzahl Ihrer Lizenzen übersteigt.
+> Um das SDK herunterzuladen, müssen Sie einen Azure Multi-Factor Authentication-Anbieter erstellen, auch wenn Sie über Azure MFA-, AAD Premium- oder EMS-Lizenzen verfügen. Wenn Sie zu diesem Zweck einen Azure Multi-Factor Authentication-Anbieter erstellen und bereits über Lizenzen verfügen, erstellen Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer**. Verknüpfen Sie den Anbieter anschließend mit dem Verzeichnis, in dem die Lizenzen für Azure MFA, Azure AD Premium oder EMS enthalten sind. Diese Konfiguration stellt sicher, dass nur Kosten berechnet werden, wenn die Anzahl eindeutiger Benutzer, die das SDK verwenden, die Anzahl Ihrer Lizenzen übersteigt.
 > 
 > 
 
-Mit dem Software Development Kit (SDK) von Azure Multi-Factor Authentication können Sie die Überprüfung per Telefonanruf und SMS-Nachricht direkt in den Anmelde- oder Transaktionsprozessen von Anwendungen in Ihrem Azure AD-Mandanten erstellen.
+Mit dem Software Development Kit (SDK) für Azure Multi-Factor Authentication können Sie die Überprüfung in zwei Schritten direkt in den Anmelde- oder Transaktionsprozessen von Anwendungen in Ihrem Azure AD-Mandanten erstellen.
 
-Das Multi-Factor Authentication-SDK ist für C#, Visual Basic (.NET), Java, Perl, PHP und Ruby verfügbar. Das SDK bietet einen einfachen Wrapper für die mehrstufige Authentifizierung. Es enthält alles, was Sie zum Schreiben des Codes benötigen, einschließlich kommentierter Quellcodedateien, Beispieldateien und einer detaillierten Infodatei. Jedes SDK enthält auch ein Zertifikat und den privaten Schlüssel zum Verschlüsseln von Transaktionen, der für Ihren Multi-Factor Authentication-Anbieter eindeutig ist. Solange Sie einen Anbieter haben, können Sie das SDK in so vielen Sprachen und Formaten herunterladen, wie Sie benötigen.
+Das Multi-Factor Authentication SDK ist für C#, Visual Basic (.NET), Java, Perl, PHP und Ruby verfügbar. Das SDK bietet einen einfachen Wrapper für die Überprüfung in zwei Schritten. Es enthält alles, was Sie zum Schreiben des Codes benötigen, einschließlich kommentierter Quellcodedateien, Beispieldateien und einer detaillierten Infodatei. Jedes SDK enthält auch ein Zertifikat und einen privaten Schlüssel zum Verschlüsseln von Transaktionen, das/der für Ihren Multi-Factor Authentication-Anbieter eindeutig ist. Solange Sie einen Anbieter haben, können Sie das SDK in so vielen Sprachen und Formaten herunterladen, wie Sie benötigen.
 
-Die Struktur der APIs im Multi-Factor Authentication-SDK ist recht einfach. Sie führen einen einzelnen Funktionsaufruf an eine API mit den mehrstufigen Optionsparametern durch, z. B. den Überprüfungsmodus, und den Benutzerdaten, z. B. der Telefonnummer für den Anruf oder die PIN-Nummer zur Überprüfung. Die APIs übersetzen den Funktionsaufruf in Webdiensteanforderungen an den cloudbasierten Azure Multi-Factor Authentication-Dienst. Alle Aufrufe müssen einen Verweis auf das private Zertifikat enthalten, das in jedem SDK enthalten ist.
+Die Struktur der APIs im Multi-Factor Authentication SDK ist einfach. Sie führen einen einzelnen Funktionsaufruf an eine API aus und übergeben die Parameter für die Multi-Factor-Option (z.B. den Überprüfungsmodus) und die Benutzerdaten (z.B. die Telefonnummer, die angerufen werden soll, oder die PIN-Nummer, die überprüft werden soll). Die APIs übersetzen den Funktionsaufruf in Webdiensteanforderungen an den cloudbasierten Azure Multi-Factor Authentication-Dienst. Alle Aufrufe müssen einen Verweis auf das private Zertifikat enthalten, das in jedem SDK enthalten ist.
 
-Da die APIs keinen Zugriff auf in Azure Active Directory registrierte Benutzer haben, müssen Sie Benutzerinformationen wie Telefonnummern und PIN-Codes in einer Datei oder Datenbank bereitstellen. Darüber hinaus bieten die APIs keine Registrierungs- oder Benutzerverwaltungsfunktionen, weshalb Sie diese Prozesse in Ihre Anwendung integrieren müssen.
+Da die APIs keinen Zugriff auf in Azure Active Directory registrierte Benutzer haben, müssen Sie Benutzerinformationen in einer Datei oder Datenbank bereitstellen. Darüber hinaus bieten die APIs keine Registrierungs- oder Benutzerverwaltungsfunktionen, weshalb Sie diese Prozesse in Ihre Anwendung integrieren müssen.
 
-## Herunterladen des Azure Multi-Factor Authentication-SDK
-Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter](multi-factor-authentication-get-started-auth-provider.md). Dies erfordert ein vollständiges Azure-Abonnement, auch wenn Sie über Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen verfügen. Zum Herunterladen des SDK müssen Sie zum MFA-Verwaltungsportal navigieren, indem Sie den MFA-Anbieter direkt verwalten oder auf der Seite mit den MFA-Diensteinstellungen auf den Link **Portal aufrufen** klicken.
+## <a name="download-the-azure-multi-factor-authentication-sdk"></a>Herunterladen des Azure Multi-Factor Authentication-SDK
+Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter](multi-factor-authentication-get-started-auth-provider.md).  Dies erfordert ein vollständiges Azure-Abonnement, auch wenn Sie über Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen verfügen.  Um das SDK herunterzuladen, navigieren Sie zum Verwaltungsportal für die Multi-Factor Authentication. Zum Portal gelangen Sie entweder direkt über den MFA-Anbieter oder indem Sie auf der Seite mit den MFA-Diensteinstellungen auf den Link **Portal aufrufen** klicken.
 
-### So laden Sie das Azure Multi-Factor Authentication-SDK aus dem Azure-Portal herunter
-1. Melden Sie sich beim Azure-Portal als Administrator an.
-2. Wählen Sie im linken Bereich "Active Directory" aus.
-3. Klicken Sie auf der Seite "Active Directory" oben auf **Anbieter für mehrstufige Authentifizierung**.
-4. Klicken Sie unten auf **Verwalten**.
-5. Dadurch wird eine neue Seite geöffnet. Klicken Sie auf der linken Seite unten auf "SDK".
-   <center>![Download](./media/multi-factor-authentication-sdk/download.png)</center>
-6. Wählen Sie die gewünschte Sprache und klicken Sie auf einen der zugehörigen Downloadlinks.
+### <a name="to-download-the-azure-multi-factor-authentication-sdk-from-the-azure-classic-portal"></a>So laden Sie das Azure Multi-Factor Authentication SDK aus dem klassischen Azure-Portal herunter
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator an.
+2. Wählen Sie im linken Bereich **Active Directory**aus.
+3. Klicken Sie auf der Seite „Active Directory“ oben auf **Anbieter für mehrstufige Authentifizierung**.
+4. Wählen Sie unten **Verwalten** aus. Eine neue Seite wird geöffnet.
+5. Klicken Sie links unten auf **SDK**.
+   <center>![Herunterladen](./media/multi-factor-authentication-sdk/download.png)</center>
+6. Wählen Sie die gewünschte Sprache, und klicken Sie auf einen der zugehörigen Downloadlinks.
 7. Speichern Sie den Download.
 
-### So laden Sie das Azure Multi-Factor Authentication-SDK über die Diensteinstellungen herunter
-1. Melden Sie sich beim Azure-Portal als Administrator an.
-2. Wählen Sie im linken Bereich "Active Directory" aus.
+### <a name="to-download-the-azure-multi-factor-authentication-sdk-via-the-service-settings"></a>So laden Sie das Azure Multi-Factor Authentication-SDK über die Diensteinstellungen herunter
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator an.
+2. Wählen Sie im linken Bereich **Active Directory**aus.
 3. Doppelklicken Sie auf Ihre Instanz von Azure AD.
-4. Klicken Sie oben auf **Konfigurieren**.
-5. Wählen Sie unter Multi-Factor Authentication die Option **Diensteinstellungen verwalten** aus ![Herunterladen](./media/multi-factor-authentication-sdk/download2.png)
-6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**. ![Herunterladen](./media/multi-factor-authentication-sdk/download3a.png)
-7. Dadurch wird eine neue Seite geöffnet. Klicken Sie auf der linken Seite unten auf "SDK".
-8. Wählen Sie die gewünschte Sprache und klicken Sie auf einen der zugehörigen Downloadlinks.
+4. Klicken Sie oben auf **Konfigurieren**
+5. Wählen Sie unter „Multi-Factor Authentication“ die Option **Diensteinstellungen verwalten**
+   ![Herunterladen](./media/multi-factor-authentication-sdk/download2.png).
+6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**. Eine neue Seite wird geöffnet.
+   ![Download](./media/multi-factor-authentication-sdk/download3a.png)
+7. Klicken Sie links unten auf **SDK**.
+8. Wählen Sie die gewünschte Sprache, und klicken Sie auf einen der zugehörigen Downloadlinks.
 9. Speichern Sie den Download.
 
-## Inhalt des Azure Multi-Factor Authentication-SDK
+## <a name="contents-of-the-azure-multi-factor-authentication-sdk"></a>Inhalt des Azure Multi-Factor Authentication-SDK
 Das SDK enthält die folgenden Elemente:
 
 * **README**. Erläutert, wie die Multi-Factor Authentication-APIs in einer neuen oder vorhandenen Anwendung verwendet werden.
 * **Quelldatei(en)** für Multi-Factor Authentication.
 * **Clientzertifikat** für die Kommunikation mit dem Multi-Factor Authentication-Dienst.
 * **Privater Schlüssel** für das Zertifikat.
-* **Aurufergebnisse.** Eine Liste mit Aurufergebniscodes. Um diese Datei zu öffnen, verwenden Sie eine Anwendung mit Textformatierung wie WordPad. Verwenden Sie die Aufrufergebniscodes, um die Implementierung der Multi-Factor Authentication in Ihrer Anwendung zu testen und Probleme zu behandeln. Dies sind keine Authentifizierungsstatuscodes.
-* **Beispiele.** Beispielcode für eine grundlegende, funktionsfähige Implementierung von Multi-Factor Authentication.
+* **Aurufergebnisse.**  Eine Liste mit Aurufergebniscodes. Um diese Datei zu öffnen, verwenden Sie eine Anwendung mit Textformatierung wie WordPad. Verwenden Sie die Aufrufergebniscodes, um die Implementierung der Multi-Factor Authentication in Ihrer Anwendung zu testen und Probleme zu behandeln. Dies sind keine Authentifizierungsstatuscodes.
+* **Beispiele.**  Beispielcode für eine grundlegende, funktionsfähige Implementierung von Multi-Factor Authentication.
 
 > [!WARNING]
 > Das Client-Zertifikat ist ein eindeutiges, privates Zertifikat, das speziell für Sie generiert wurde. Geben Sie diese Datei nicht frei und verlieren Sie sie nicht. Sie ist der Schlüssel zum Gewährleisten der Sicherheit der Kommunikation mit dem Multi-Factor Authentication-Dienst.
 > 
 > 
 
-## Codebeispiel: Telefonüberprüfung im Standardmodus
+## <a name="code-sample-standard-mode-phone-verification"></a>Codebeispiel: Telefonüberprüfung im Standardmodus
 Dieses Codebeispiel veranschaulicht, wie in Ihrer Anwendung mithilfe der APIs im Azure Multi-Factor Authentication-SDK ein Sprachanruf im Standardmodus zur Überprüfung hinzugefügt werden kann. Der Standardmodus besteht aus einem Telefonanruf, auf den der Benutzer durch Drücken der #-Taste reagiert.
 
-Dieses Beispiel verwendet das C# .NET 2.0 Multi-Factor Authentication-SDK in einer einfachen ASP.NET-Anwendung mit C#-serverseitiger Logik, aber der Prozess ist für einfache Implementierungen in anderen Sprachen sehr ähnlich. Da das SDK Quelldateien und keine ausführbaren Dateien enthält, können Sie die Dateien direkt in der Anwendung erstellen, darauf verweisen oder sie dort einbinden.
+Dieses Beispiel verwendet das C# .NET 2.0 Multi-Factor Authentication SDK in einer einfachen ASP.NET-Anwendung mit serverseitiger C#-Logik, aber der Prozess ist in anderen Sprachen sehr ähnlich. Da das SDK Quelldateien und keine ausführbaren Dateien enthält, können Sie die Dateien direkt in der Anwendung erstellen, darauf verweisen oder sie dort einbinden.
 
 > [!NOTE]
-> Wenn Multi-Factor Authentication implementiert wird, verwenden Sie die zusätzlichen Faktoren als sekundäre oder tertiäre Überprüfung, um Ihre primäre Authentifizierungsmethode zu ergänzen. Diese Methoden sind nicht dazu da, als primäre Authentifizierungsmethoden verwendet zu werden.
+> Wenn die Multi-Factor Authentication implementiert wird, verwenden Sie die zusätzlichen Methoden (Telefonanruf oder SMS) als sekundäre oder tertiäre Überprüfungsmöglichkeiten, um Ihre primäre Authentifizierungsmethode (Benutzername und Kennwort) zu ergänzen. Diese Methoden sind nicht als primäre Authentifizierungsmethoden konzipiert.
 > 
 > 
 
-### Übersicht über das Codebeispiel
-Dieser Beispielcode für eine sehr einfache Webdemoanwendung verwendet einen Telefonanruf mit einer #-Tastenantwort, um die Authentifizierung des Benutzers durchzuführen. Dieser Telefonanruffaktor wird in Multi-Factor Authentication Standardmodus genannt.
+### <a name="code-sample-overview"></a>Übersicht über das Codebeispiel
+Dieser Beispielcode für eine einfache Webdemoanwendung verwendet einen Telefonanruf mit einer #-Tastenantwort, um die Authentifizierung des Benutzers zu überprüfen. Dieser Telefonanruffaktor wird in Multi-Factor Authentication Standardmodus genannt.
 
 Der clientseitige Code enthält keine Elemente, die für Multi-Factor Authentication spezifisch sind. Da die zusätzlichen Authentifizierungsfaktoren nicht von der primären Authentifizierung abhängen, können Sie sie ohne Änderung der vorhandenen Anmeldeschnittstelle hinzufügen. Mit den APIs im Multi-Factor SDK können Sie die Benutzererfahrung anpassen. Möglicherweise müssen Sie dafür gar nichts ändern.
 
 Der serverseitige Code fügt den Standard-Authentifizierungsmodus in Schritt 2 hinzu. Er erstellt ein PfAuthParams-Objekt mit den Parametern, die für die Überprüfung im Standardmodus erforderlich sind: Benutzername, Telefonnummer, Modus und Pfad zum Clientzertifikat (CertFilePath), der bei jedem Aufruf erforderlich ist. Eine Demonstration aller Parameter in PfAuthParams finden Sie in der Beispieldatei im SDK.
 
-Als Nächstes übergibt der Code das PfAuthParams-Objekt an die pf\_authenticate()-Funktion. Der Rückgabewert gibt den Erfolg oder Misserfolg der Authentifizierung an. Die Ausgangsparameter "callStatus" und "errorID" enthalten zusätzliche Informationen zu den Anrufergebnissen. Die Anrufergebniscodes sind in der Anrufergebnisdatei im SDK dokumentiert.
+Als Nächstes übergibt der Code das PfAuthParams-Objekt an die pf_authenticate()-Funktion. Der Rückgabewert gibt den Erfolg oder Misserfolg der Authentifizierung an. Die Ausgangsparameter "callStatus" und "errorID" enthalten zusätzliche Informationen zu den Anrufergebnissen. Die Anrufergebniscodes sind in der Anrufergebnisdatei im SDK dokumentiert.
 
-Diese minimale Implementierung kann in einige wenige Zeilen geschrieben werden. Der Produktionscode enthält jedoch normalerweise eine komplexere Fehlerbehandlung, zusätzlichen Datenbankcode und ein optimiertes Bedienungserlebnis.
+Diese minimale Implementierung lässt sich in einigen wenigen Zeilen schreiben. Der Produktionscode enthält jedoch normalerweise eine komplexere Fehlerbehandlung, zusätzlichen Datenbankcode und ein optimiertes Bedienungserlebnis.
 
-### Webclientcode
+### <a name="web-client-code"></a>Webclientcode
 Es folgt Webclientcode für eine Demoseite.
 
-    <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+    <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="\_Default" %>
 
     <!DOCTYPE html>
 
@@ -124,8 +130,8 @@ Es folgt Webclientcode für eine Demoseite.
     </html>
 
 
-### Serverseitiger Code
-Im folgenden serverseitigen Code wird Multi-Factor Authentication in Schritt 2 konfiguriert und ausgeführt. Der Standardmodus (MODE\_STANDARD) besteht aus einem Telefonanruf, auf den der Benutzer durch Drücken der #-Taste reagiert.
+### <a name="server-side-code"></a>Serverseitiger Code
+Im folgenden serverseitigen Code wird Multi-Factor Authentication in Schritt 2 konfiguriert und ausgeführt. Der Standardmodus (MODE_STANDARD) besteht aus einem Telefonanruf, auf den der Benutzer durch Drücken der #-Taste reagiert.
 
     using System;
     using System.Collections.Generic;
@@ -134,7 +140,7 @@ Im folgenden serverseitigen Code wird Multi-Factor Authentication in Schritt 2 k
     using System.Web.UI;
     using System.Web.UI.WebControls;
 
-    public partial class _Default : System.Web.UI.Page
+    public partial class \_Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -183,4 +189,8 @@ Im folgenden serverseitigen Code wird Multi-Factor Authentication in Schritt 2 k
         }
     }
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

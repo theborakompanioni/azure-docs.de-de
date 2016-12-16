@@ -1,12 +1,12 @@
 ---
 title: Integration des Azure Mobile Engagement iOS SDK | Microsoft Docs
-description: Neueste Updates und Verfahren für das iOS-SDK für Azure Mobile Engagement
+description: "Neueste Updates und Verfahren für das iOS-SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 947ea44b-00c1-450f-9a3b-74437954dc56
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
@@ -14,9 +14,13 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 09/14/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7c4e962527d0b4cd66f6ca4974851c5e5d523de7
+
 
 ---
-# Integrieren von Mobile Engagement unter iOS
+# <a name="how-to-integrate-engagement-on-ios"></a>Integrieren von Mobile Engagement unter iOS
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -30,14 +34,14 @@ In diesem Verfahren wird die einfachste Art der Aktivierung der Analyse- und Üb
 Das Engagement SDK erfordert mindestens iOS6 und Xcode 8: Das Bereitstellungsziel Ihre Anwendung muss mindestens iOS 6 sein.
 
 > [!NOTE]
-> Wenn Sie auf XCode 7 tatsächlich nicht verzichten können, bietet sich das [iOS Engagement SDK 3.2.4](https://aka.ms/r6oouh) an. Im Reichweitenmodul dieser Vorgängerversion tritt bei Ausführung auf iOS 10-Geräten ein bekannter Fehler auf. Weitere Details finden Sie unter [Integration des Reichweitenmodul](mobile-engagement-ios-integrate-engagement-reach.md). Wenn Sie das SDK mit der Version 3.2.4 nutzen, können Sie das Importieren von `UserNotifications.framework` im nächsten Schritt überspringen.
+> Wenn Sie auf XCode 7 tatsächlich nicht verzichten können, bietet sich das [iOS Engagement SDK 3.2.4](https://aka.ms/r6oouh)an. Im Reichweitenmodul dieser Vorgängerversion tritt bei Ausführung auf iOS 10-Geräten ein bekannter Fehler auf. Weitere Details finden Sie unter [Integration des Reichweitenmoduls](mobile-engagement-ios-integrate-engagement-reach.md). Wenn Sie das SDK mit der Version 3.2.4 nutzen, können Sie das Importieren von `UserNotifications.framework` im nächsten Schritt überspringen.
 > 
 > 
 
-Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktivieren, die zur Berechnung aller Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen notwendig sind. Der Bericht von Protokollen, die zur Berechnung anderer Statistiken wie Ereignisse, Fehler und Aufträge erforderlich ist, muss manuell mithilfe der Engagement-API erfolgen (siehe [So verwenden Sie die erweiterte Mobile Engagement API für Tags in Ihrer iOS-App](mobile-engagement-ios-use-engagement-api.md)), da diese Statistiken von der Anwendung abhängig sind.
+Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktivieren, die zur Berechnung aller Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen notwendig sind. Der Bericht von Protokollen, die zur Berechnung anderer Statistiken wie Ereignisse, Fehler und Aufträge erforderlich sind, muss manuell mithilfe der Engagement-API erfolgen (siehe [Verwenden der Engagement-API auf iOS](mobile-engagement-ios-use-engagement-api.md)), da diese Statistiken von der Anwendung abhängig sind.
 
-## Einbetten des Engagement-SDKs in Ihr iOS-Projekt
-* Laden Sie das iOS-SDK [hier](http://aka.ms/qk2rnj) herunter.
+## <a name="embed-the-engagement-sdk-into-your-ios-project"></a>Einbetten des Engagement-SDKs in Ihr iOS-Projekt
+* Laden Sie das iOS-SDK [hier](http://aka.ms/qk2rnj)herunter.
 * Fügen Sie das Engagement-SDK zum iOS-Projekt hinzu. Klicken Sie in Xcode mit der rechten Maustaste auf das Projekt, und wählen Sie **„Add files to ...“** und anschließend den Ordner `EngagementSDK` aus.
 * Engagement erfordert, dass zusätzliche Frameworks funktionieren: Öffnen Sie im Projektexplorer Ihren Projektbereich, und wählen Sie das richtige Ziel aus. Öffnen Sie dann die Registerkarte **„Build phases“**. Fügen Sie anschließend im Menü **„Link Binary With Libraries“** die folgenden Frameworks hinzu:
   
@@ -54,7 +58,7 @@ Die folgenden Schritte sind ausreichend, um den Bericht von Protokollen zu aktiv
 > 
 > 
 
-## Initialisieren des Engagement-SDK
+## <a name="initialize-the-engagement-sdk"></a>Initialisieren des Engagement-SDK
 Sie müssen Ihre Anwendungsstellvertretung ändern:
 
 * Importieren Sie am Anfang der Implementierungsdatei den Engagement-Agent.
@@ -70,9 +74,9 @@ Sie müssen Ihre Anwendungsstellvertretung ändern:
         [...]
       }
 
-## Grundlegende Berichterstellung
-### Empfohlene Methode: Überladen der `UIViewController`-Klassen
-Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken erforderlich sind, müssen Sie einfach dafür sorgen, dass all Ihre `UIViewController`-Unterklassen von den entsprechenden `EngagementViewController`-Klassen abgeleitet werden (gleiche Regel für `UITableViewController` -\\> `EngagementTableViewController`).
+## <a name="basic-reporting"></a>Grundlegende Berichterstellung
+### <a name="recommended-method-overload-your-uiviewcontroller-classes"></a>Empfohlene Methode: Überladen der `UIViewController` -Klassen
+Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken erforderlich sind, müssen Sie einfach dafür sorgen, dass all Ihre `UIViewController`-Unterklassen von den entsprechenden `EngagementViewController`-Klassen abgeleitet werden (gleiche Regel für `UITableViewController` -\> `EngagementTableViewController`).
 
 **Ohne Engagement:**
 
@@ -99,7 +103,7 @@ Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berech
     @property (nonatomic, retain) IBOutlet UITextField* myTextField1;
     @property (nonatomic, retain) IBOutlet UITextField* myTextField2;
 
-### Alternative Methode: Rufen Sie `startActivity()` manuell auf
+### <a name="alternate-method-call-startactivity-manually"></a>Alternative Methode: Rufen Sie `startActivity()` manuell auf
 Wenn Sie die `UIViewController`-Klassen nicht überladen können oder möchten, können Sie die Aktivitäten stattdessen durch direktes Aufrufen der Methoden von `EngagementAgent` starten.
 
 > [!IMPORTANT]
@@ -107,15 +111,15 @@ Wenn Sie die `UIViewController`-Klassen nicht überladen können oder möchten, 
 > 
 > 
 
-## Speicherortberichte
+## <a name="location-reporting"></a>Speicherortberichte
 Die Apple-Nutzungsbedingungen gestatten es nicht, dass Anwendungen die Standortnachverfolgung nur für statistische Zwecke verwenden. Daher wird empfohlen, die Standortberichte nur zu aktivieren, wenn Ihre Anwendung die Standortnachverfolgung auch aus einem anderen Grund verwendet.
 
 Ab iOS 8 müssen Sie eine Beschreibung für die Verwendung der Standortdienste durch Ihre App bereitstellen, indem Sie für den Schlüssel [NSLocationWhenInUseUsageDescription] oder [NSLocationAlwaysUsageDescription] in der Datei „Info.plist“ Ihrer App eine Zeichenfolge festlegen. Wenn Sie mit Engagement im Hintergrund einen Standortbericht erstellen möchten, fügen Sie den Schlüssel „NSLocationAlwaysUsageDescription“ hinzu. In allen anderen Fällen fügen Sie den Schlüssel „NSLocationWhenInUseUsageDescription“ hinzu.
 
-### Verzögerte Bereichsspeicherortberichte
+### <a name="lazy-area-location-reporting"></a>Verzögerte Bereichsspeicherortberichte
 Die verzögerte Berichterstellung für Bereichsspeicherorte ermöglicht es Ihnen, das Land, die Region und den Ort zu melden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Der Gerätebereich wird höchstens einmal pro Sitzung gemeldet. Das GPS wird niemals verwendet, daher hat diese Art von Standortbericht sehr geringe (oder fast keine) Auswirkungen auf den Akku.
 
-Die gemeldeten Bereiche werden dazu verwendet, um geografische Statistiken zu Benutzern, Sitzungen, Ereignissen und Fehlern zu berechnen. Sie können auch als Kriterium für Reach-Kampagnen verwendet werden. Der für ein Gerät zuletzt gemeldete bekannte Bereich kann mithilfe der [Geräte-API] abgerufen werden.
+Die gemeldeten Bereiche werden dazu verwendet, um geografische Statistiken zu Benutzern, Sitzungen, Ereignissen und Fehlern zu berechnen. Sie können auch als Kriterium für Reach-Kampagnen verwendet werden. Der für ein Gerät zuletzt gemeldete bekannte Bereich kann mithilfe der [Geräte-API]abgerufen werden.
 
 Fügen Sie die folgende Zeile hinter der Initialisierung des Engagement-Agent hinzu, um verzögerte Standortberichte zu aktivieren:
 
@@ -126,22 +130,22 @@ Fügen Sie die folgende Zeile hinter der Initialisierung des Engagement-Agent hi
       [...]
     }
 
-### Echtzeit-Berichterstellung für Speicherorte
-Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN), und die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung).
+### <a name="real-time-location-reporting"></a>Echtzeit-Berichterstellung für Speicherorte
+Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN), und die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung).
 
-Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist es, die Verwendung des Echtzeit-Geofencing <Reach-Audience-geofencing >Kriteriums in Reach-Kampagnen zu ermöglichen.
+Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist es, die Verwendung des Echtzeit-Geofencing \<Reach-Audience-geofencing\>-Kriteriums in Reach-Kampagnen zu ermöglichen.
 
 Fügen Sie die folgende Zeile hinter der Initialisierung des Engagement-Agent hinzu, um die Echtzeit-Berichterstellung für Speicherorte zu aktivieren:
 
     [[EngagementAgent shared] setRealtimeLocationReport:YES];
 
-#### GPS-basierte Berichterstellung
+#### <a name="gps-based-reporting"></a>GPS-basierte Berichterstellung
 Die Echtzeit-Berichterstellung für Speicherorte verwendet standardmäßig nur netzwerkbasierte Speicherorte. Fügen Sie Folgendes hinzu, um die Verwendung von GPS-basierten Speicherorten (die viel genauer sind) zu aktivieren:
 
     [[EngagementAgent shared] setFineRealtimeLocationReport:YES];
 
-#### Berichterstellung im Hintergrund
-Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung). Fügen Sie Folgendes hinzu, um die Berichterstellung auch im Hintergrund zu aktivieren:
+#### <a name="background-reporting"></a>Berichterstellung im Hintergrund
+Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung). Fügen Sie Folgendes hinzu, um die Berichterstellung auch im Hintergrund zu aktivieren:
 
     [[EngagementAgent shared] setBackgroundRealtimeLocationReport:YES withLaunchOptions:launchOptions];
 
@@ -152,32 +156,32 @@ Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, 
 
 Durch die Implementierung dieser Funktion wird [startMonitoringSignificantLocationChanges] aufgerufen, wenn die Anwendung in den Hintergrund wechselt. Beachten Sie, dass Ihre Anwendung im Hintergrund automatisch neu gestartet wird, wenn ein neues Standortereignis eintrifft.
 
-## Erweiterte Berichterstellung
-Wenn Sie anwendungsspezifische Ereignisse, Fehler und Aufträge optional melden möchten, müssen Sie die Engagement-API über die Methoden der `EngagementAgent`-Klasse verwenden. Ein Objekt dieser Klasse kann durch Aufrufen der statischen `[EngagementAgent shared]`-Methode abgerufen werden.
+## <a name="advanced-reporting"></a>Erweiterte Berichterstellung
+Wenn Sie anwendungsspezifische Ereignisse, Fehler und Aufträge optional melden möchten, müssen Sie die Engagement-API über die Methoden der `EngagementAgent` -Klasse verwenden. Ein Objekt dieser Klasse kann durch Aufrufen der statischen `[EngagementAgent shared]` -Methode abgerufen werden.
 
 Die Engagement-API ermöglicht es, alle erweiterten Funktionen von Engagement zu verwenden. Ausführliche Informationen finden Sie unter „Verwenden der Engagement-API unter iOS (sowie in der technischen Dokumentation der `EngagementAgent`-Klasse).
 
-## Deaktivieren der IDFA-Erfassung
+## <a name="disable-idfa-collection"></a>Deaktivieren der IDFA-Erfassung
 Engagement verwendet [IDFA] standardmäßig zum eindeutigen Identifizieren von Benutzern. Wenn Sie nicht an anderer Stelle in der App Werbung verwenden, werden Sie möglicherweise vom App Store-Überprüfungsprozess abgelehnt. Die IDFA-Erfassung kann durch Hinzufügen eines Präprozessormakros `ENGAGEMENT_DISABLE_IDFA` zur PCH-Datei deaktiviert werden (oder in den `Build Settings` Ihrer Anwendung). Dadurch wird sichergestellt, dass im Anwendungsbuild keine Verweise auf `ASIdentifierManager`, `advertisingIdentifier` oder `isAdvertisingTrackingEnabled` enthalten sind.
 
-Integration in der Datei **prefix.pch**:
+Integration in der Datei **prefix.pch** :
 
     #define ENGAGEMENT_DISABLE_IDFA
     ...
 
-Sie können überprüfen, ob die IDFA-Erfassung in Ihrer Anwendung ordnungsgemäß deaktiviert ist, indem Sie die Engagement-Testprotokolle prüfen. Weitere Informationen finden Sie in der Dokumentation <ios-sdk-engagement-test-idfa> zum Integrationstest.
+Sie können überprüfen, ob die IDFA-Erfassung in Ihrer Anwendung ordnungsgemäß deaktiviert ist, indem Sie die Engagement-Testprotokolle prüfen. Weitere Informationen finden Sie in der Dokumentation zum Integrationstest \<ios-sdk-engagement-test-idfa\>.
 
-## Deaktivieren der Protokollberichterstellung
-### Verwenden eines Methodenaufrufs
+## <a name="disable-log-reporting"></a>Deaktivieren der Protokollberichterstellung
+### <a name="using-a-method-call"></a>Verwenden eines Methodenaufrufs
 Sie können Folgendes aufrufen, wenn von Engagement keine Protokolle mehr gesendet werden sollen:
 
     [[EngagementAgent shared] setEnabled:NO];
 
 Dieser Aufruf ist persistent: er verwendet `NSUserDefaults` zum Speichern der Informationen.
 
-Sie können die Protokollberichterstellung erneut aktivieren, indem Sie dieselbe Funktion mit `YES` aufrufen.
+Sie können die Protokollberichterstellung erneut aktivieren, indem Sie dieselbe Funktion mit `YES`aufrufen.
 
-### Integration im Einstellungsbündel
+### <a name="integration-in-your-settings-bundle"></a>Integration im Einstellungsbündel
 Anstatt diese Funktion aufzurufen, können Sie diese Einstellung auch direkt in der vorhandenen Datei `Settings.bundle` integrieren. Die Zeichenfolge `engagement_agent_enabled` muss als Einstellungsbezeichner verwendet und einem Umschalter (`PSToggleSwitchSpecifier`) zugeordnet werden.
 
 Das folgende Beispiel von `Settings.bundle` veranschaulicht die Implementierung:
@@ -202,9 +206,13 @@ Das folgende Beispiel von `Settings.bundle` veranschaulicht die Implementierung:
 
 <!-- URLs. -->
 [Geräte-API]: http://go.microsoft.com/?linkid=9876094
-[NSLocationWhenInUseUsageDescription]: https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW26
-[NSLocationAlwaysUsageDescription]: https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
-[startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
-[IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
+[NSLocationWhenInUseUsageDescription]:https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW26
+[NSLocationAlwaysUsageDescription]:https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW18
+[startMonitoringSignificantLocationChanges]:http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
+[IDFA]:https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,22 +1,26 @@
 ---
 title: 'Azure Active Directory B2C: Support | Microsoft Docs'
-description: Senden von Supportanfragen für Azure Active Directory B2C
+description: "Senden von Supportanfragen für Azure Active Directory B2C"
 services: active-directory-b2c
-documentationcenter: ''
+documentationcenter: 
 author: swkrish
 manager: msmbaldwin
 editor: bryanla
-
+ms.assetid: 51922008-6fbd-487c-b2c7-a5db57d154b4
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9ee8b98d1643c83b38a33f7256a49b777ca135f0
+
 
 ---
-# Azure Active Directory B2C: Senden von Supportanfragen
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Senden von Supportanfragen
 Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Directory (Azure AD) B2C im Azure-Portal zu senden:
 
 1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
@@ -34,17 +38,17 @@ Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Dir
    * Wählen Sie für **Problemtyp** den Eintrag **Technisch** aus.
    * Wählen Sie das entsprechende **Abonnement**.
    * **Dienst** ist **Active Directory**.
-   * Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/de-DE/support/plans/) für einen Supportplan registrieren.
+   * Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/en-us/support/plans/)für einen Supportplan registrieren.
      
      ![Support: Grundlagen](./media/active-directory-b2c-support/support-basics.png)
 6. Verwenden Sie diese Informationen auf dem Blatt **Problem**, und klicken Sie auf **Weiter**.
    
-   * Wählen Sie den entsprechenden **Schweregrad**.
+   * Wählen Sie den entsprechenden **Schweregrad** .
    * Der **Problemtyp** lautet **B2C**.
    * Wählen Sie die entsprechende **Kategorie**.
    * Beschreiben Sie Ihr Problem im Feld **Details**. Geben Sie Details wie den Namen des B2C-Mandanten, eine Beschreibung des Problems, Fehlermeldungen, Korrelations-IDs (falls verfügbar) usw. an.
    * Geben Sie im Feld **Zeitrahmen** durch Datum und Uhrzeit (einschließlich Zeitzone) an, wann das Problem aufgetreten ist.
-   * Laden Sie unter **Dateiupload** alle Screenshots und Dateien hoch, die Ihrer Meinung nach bei der Behebung des Problems hilfreich sein könnten.
+   * Laden Sie unter **Dateiupload**alle Screenshots und Dateien hoch, die Ihrer Meinung nach bei der Behebung des Problems hilfreich sein könnten.
      
      ![Support: Problem](./media/active-directory-b2c-support/support-problem.png)
 7. Fügen Sie auf dem Blatt **Kontaktinformationen** Ihre Kontaktinformationen hinzu. Klicken Sie auf **Erstellen**.
@@ -52,14 +56,19 @@ Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Dir
     ![Support: Kontakt](./media/active-directory-b2c-support/support-contact.png)
 8. Nachdem Ihre Supportanfrage übermittelt wurde, können Sie sie überwachen, indem Sie im Startmenü auf **Hilfe und Support** und dann auf **Supportanfragen verwalten** klicken.
 
-## Bekanntes Problem: Senden von Supportanfragen im Kontext eines B2C-Mandanten
-Wenn Sie den oben beschriebenen Schritt 2 nicht durchführen und versuchen, eine Supportanfrage im Kontext Ihres B2C-Mandanten zu erstellen, wird der folgende Fehler angezeigt.
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Bekanntes Problem: Senden von Supportanfragen im Kontext eines B2C-Mandanten
+Wenn Sie den oben beschriebenen Schritt 2 nicht durchführen und versuchen, eine Supportanfrage im Kontext Ihres B2C-Mandanten zu erstellen, wird der folgende Fehler angezeigt.
 
 > [!IMPORTANT]
-> Versuchen Sie nicht, sich in Ihrem B2C-Mandanten für ein neues Azure-Abonnement zu registrieren.
+> Versuchen Sie nicht, sich in Ihrem B2C-Mandanten für ein neues Azure-Abonnement zu registrieren.  
 > 
 > 
 
 ![Support – Kein Abonnement](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
