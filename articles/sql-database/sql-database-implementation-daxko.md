@@ -1,22 +1,27 @@
 ---
-title: 'Azure SQL-Datenbank – Azure-Fallstudie: Daxko/CSI | Microsoft Docs'
+title: "Azure SQL-Datenbank – Azure-Fallstudie: Daxko/CSI | Microsoft Docs"
 description: Erfahren Sie, wie Daxko/CSI SQL-Datenbank verwendet, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern.
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 00c8a713-f20c-4d6b-b8b7-0c1b9ba5f05b
 ms.service: sql-database
+ms.custom: app development case study; app development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 357b402955187a08a35faacdcb178af75698433d
+
 
 ---
-# <a name="daxko/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI verwendet Azure, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern
+# <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI verwendet Azure, um den Entwicklungszyklus zu beschleunigen und sowohl Kundendienste als auch Leistung zu verbessern
 ![Daxko/CSI-Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
 Daxko/CSI Software stand vor einer großen Herausforderung: Der Kundenstamm an Fitness- und Erholungszentren wuchs dank des Erfolgs der umfassenden Unternehmenssoftwarelösung sehr schnell, aber die IT-Infrastrukturanforderungen für diesen wachsenden Kundenstamm stellten die IT-Mitarbeiter des Unternehmens auf eine harte Probe. Das Unternehmen hatte mit einem immer höheren Betriebsaufwand zu kämpfen, insbesondere für die Verwaltung der wachsenden Datenbanken. Schlimmer noch: Dieser Betriebsaufwand beanspruchte auch Entwicklungsressourcen, die eigentlich für neue Initiativen benötigt wurden, beispielsweise für neue Mobilitätsfunktionen für die Software des Unternehmens.
@@ -86,10 +91,13 @@ Azure SQL-Datenbank ist nicht nur ein Segen für SpectrumNG-Kunden, die sich üb
 * Weitere Informationen zu Datenbanktools und elastischer Skalierung finden Sie unter [Tools für elastische Datenbanken und elastische Skalierung](sql-database-elastic-scale-get-started.md).
 * Weitere Informationen zum Migrieren einer SQL Server-Datenbank finden Sie unter [Azure SQL-Migrations-Assistent](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md).
 * Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-* Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute). 
+* Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).    
 * Weitere Informationen zu Azure Service Bus finden Sie unter [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
 * Weitere Informationen zur automatischen Skalierung finden Sie unter [Skalieren von Clouddiensten](../cloud-services/cloud-services-how-to-scale.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
