@@ -2,11 +2,11 @@
 title: 'Azure AD Connect: Funktionen in der Vorschau | Microsoft Docs'
 description: In diesem Thema werden Funktionen detaillierter beschrieben, die sich in Azure AD Connect in der Preview befinden.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: andkjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: c75cd8cf-3eff-4619-bbca-66276757cc07
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5351a2c6a662ea9b25be1fb2a8644b98e80ddadf
+
 
 ---
 # <a name="more-details-about-features-in-preview"></a>Weitere Informationen zu den Funktionen in der Vorschau
@@ -24,7 +28,7 @@ Mit der Option zum Gruppenrückschreiben, die unter den optionalen Features aufg
 
 Weitere Informationen zu Office 365-Gruppen und zu deren Verwendung finden Sie [hier](http://aka.ms/O365g).
 
-Diese Gruppe wird als Verteilergruppe im lokalen AD DS dargestellt. Auf dem lokalen Exchange-Server muss das kumulative Update 8 für Exchange Server 2013 (vom März 2015) oder Exchange 2016 installiert sein, damit dieser neue Gruppentyp erkannt wird.
+Diese Gruppe wird als Verteilergruppe im lokalen AD DS dargestellt. Auf dem lokalen Exchange-Server muss das kumulative Update 8 für Exchange Server 2013 (vom März 2015) oder Exchange 2016 installiert sein, damit dieser neue Gruppentyp erkannt wird.
 
 **Hinweise während der Vorschau**
 
@@ -45,10 +49,13 @@ Diese Gruppe wird als Verteilergruppe im lokalen AD DS dargestellt. Auf dem loka
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Fahren Sie mit Ihrer [benutzerdefinierten Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md)fort.
+Fahren Sie mit Ihrer [benutzerdefinierten Installation von Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md)fort.
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

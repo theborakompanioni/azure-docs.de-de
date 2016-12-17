@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Anaplan | Microsoft Docs'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Anaplan konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 4a9c2914-6c8c-4a88-93e3-3753afb40e6b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 57a2c9e4a48239dfb0f2a3bcf98adade4f5f7dc9
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-anaplan"></a>Tutorial: Azure Active Directory-Integration mit Anaplan
+# <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>Tutorial: Azure Active Directory-Integration mit Anaplan
 In diesem Tutorial erfahren Sie, wie Sie Anaplan in Azure Active Directory (Azure AD) integrieren.
 
 Diese Integration bietet folgende Vorteile:
@@ -25,7 +29,7 @@ Diese Integration bietet folgende Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Anaplan anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Anaplan konfigurieren zu können, benötigen Sie Folgendes:
@@ -236,6 +240,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Anaplan“ klicken, sollten Sie au
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,24 +1,28 @@
 ---
-title: Azure Notification Hubs – Umfassende Pushbenachrichtigungen
-description: Erfahren Sie mehr über das Senden umfassender Pushbenachrichtigungen an eine iOS-App von Azure. Die Codebeispiele wurden in Objekctive-C und C# geschrieben.
+title: "Azure Notification Hubs – Umfassende Pushbenachrichtigungen"
+description: "Erfahren Sie mehr über das Senden umfassender Pushbenachrichtigungen an eine iOS-App von Azure. Die Codebeispiele wurden in Objekctive-C und C# geschrieben."
 documentationcenter: ios
 services: notification-hubs
-author: wesmc7777
+author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
+
 
 ---
-# Azure Notification Hubs – Umfassende Pushbenachrichtigungen
-## Übersicht
-Um Benutzer augenblicklich mit umfassenden Inhalten zu versorgen, kann eine Anwendung Pushbenachrichtigungen senden. Diese Benachrichtigungen fördern Benutzerinteraktionen und bieten Inhalte wie URLs, Audio, Bilder/Coupons und mehr. Dieses Lernprogramm baut auf dem Thema [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) auf und veranschaulicht das Senden von Pushbenachrichtigungen mit Nutzlasten (z. B. ein Bild).
+# <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs – Umfassende Pushbenachrichtigungen
+## <a name="overview"></a>Übersicht
+Um Benutzer augenblicklich mit umfassenden Inhalten zu versorgen, kann eine Anwendung Pushbenachrichtigungen senden. Diese Benachrichtigungen fördern Benutzerinteraktionen und bieten Inhalte wie URLs, Audioinhalte, Bilder/Coupons und mehr. Dieses Tutorial baut auf dem Thema [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) auf und veranschaulicht das Senden von Pushbenachrichtigungen mit Nutzlasten (z.B. ein Bild).
 
 Dieses Lernprogramm ist zu iOS 7 und 8 kompatibel.
 
@@ -33,17 +37,17 @@ Allgemeines:
    * Fordert beim Back-End die umfassende Nutzlast mit der empfangenen ID an
    * Sendet Benutzerbenachrichtigungen auf dem Gerät, wenn der Datenabruf abgeschlossen ist, und zeigt sofort die Nutzlast an, wenn der Benutzer tippt, um mehr zu erfahren
 
-## WebAPI-Projekt
-1. Öffnen Sie in Visual Studio das Projekt **AppBackend**, das Sie im Lernprogramm [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) erstellt haben.
-2. Rufen Sie ein Bild ab, mit dem Sie Benutzer informieren möchten, und platzieren Sie es in einem **img**-Ordner in Ihrem Projektverzeichnis.
+## <a name="webapi-project"></a>WebAPI-Projekt
+1. Öffnen Sie in Visual Studio das Projekt **AppBackend** , das Sie im Lernprogramm [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) erstellt haben.
+2. Rufen Sie ein Bild ab, mit dem Sie Benutzer informieren möchten, und platzieren Sie es in einem **img** -Ordner in Ihrem Projektverzeichnis.
 3. Klicken Sie im Projektmappen-Explorer auf **Alle Dateien anzeigen**, klicken Sie mit der rechten Maustaste auf den Ordner, und wählen Sie **Zu Projekt hinzufügen** aus.
 4. Wählen Sie das Bild aus, und ändern Sie dessen "Buildvorgang" im Fenster "Eigenschaften" in **Eingebettete Ressource**.
    
     ![][IOS2]
-5. Fügen Sie in **Notifications.cs** die folgende using-Anweisung hinzu:
+5. Fügen Sie in **Notifications.cs**die folgende using-Anweisung hinzu:
    
         using System.Reflection;
-6. Aktualisieren Sie die gesamte **Notifications**-Klasse durch den folgenden Code. Ersetzen Sie die Platzhalter durch Ihre Benachrichtigungshub-Anmeldedaten und den Namen der Bilddatei.
+6. Aktualisieren Sie die gesamte **Notifications** -Klasse durch den folgenden Code. Ersetzen Sie die Platzhalter durch Ihre Benachrichtigungshub-Anmeldedaten und den Namen der Bilddatei.
    
         public class Notification {
             public int Id { get; set; }
@@ -114,36 +118,36 @@ Allgemeines:
             var usernameTag = "username:" + HttpContext.Current.User.Identity.Name;
    
             // Silent notification with content available
-            var aboutUser = "{"aps": {"content-available": 1, "sound":""}, "richId": "" + richNotificationInTheBackend.Id.ToString() + "",  "richMessage": "" + richNotificationInTheBackend.Message + "", "richType": "" + richNotificationInTheBackend.RichType + ""}";
+            var aboutUser = "{\"aps\": {\"content-available\": 1, \"sound\":\"\"}, \"richId\": \"" + richNotificationInTheBackend.Id.ToString() + "\",  \"richMessage\": \"" + richNotificationInTheBackend.Message + "\", \"richType\": \"" + richNotificationInTheBackend.RichType + "\"}";
    
             // Send notification to apns
             await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(aboutUser, usernameTag);
    
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-8. Nun werden wir diese App erneut auf einer Azure-Website bereitstellen, damit von allen Geräten darauf zugegriffen werden kann. Klicken Sie mit der rechten Maustaste auf das Projekt **AppBackend**, und wählen Sie **Veröffentlichen** aus.
-9. Wählen Sie die Azure-Website als Ihr Veröffentlichungsziel aus. Melden Sie sich mit Ihrem Azure-Konto an, und wählen Sie eine vorhandene oder neue Website, und notieren Sie sich die **Ziel-URL**-Eigenschaft auf der Registerkarte **Verbindung**. Diese URL wird später in diesem Lernprogramm als *Back-End-Endpunkt* bezeichnet. Klicken Sie auf **Veröffentlichen**.
+8. Nun werden wir diese App erneut auf einer Azure-Website bereitstellen, damit von allen Geräten darauf zugegriffen werden kann. Klicken Sie mit der rechten Maustaste auf das Projekt **AppBackend**, und wählen Sie **Veröffentlichen**.
+9. Wählen Sie die Azure-Website als Ihr Veröffentlichungsziel aus. Melden Sie sich mit Ihrem Azure-Konto an, wählen Sie eine vorhandene oder neue Website, und notieren Sie sich die **Ziel-URL**-Eigenschaft auf der Registerkarte **Verbindung**. Diese URL wird später in diesem Lernprogramm als *Back-End-Endpunkt* bezeichnet. Klicken Sie auf **Veröffentlichen**.
 
-## Ändern des iOS-Projekts
+## <a name="modify-the-ios-project"></a>Ändern des iOS-Projekts
 Nachdem Sie das Back-End nun so geändert haben, dass nur die *ID* einer Benachrichtigung gesendet wird, ändern Sie die iOS-App so, dass sie mit dieser ID umgehen und die umfassende Nachricht von Ihrem Back-End abrufen kann.
 
 1. Öffnen Sie das iOS-Projekt, und aktivieren Sie Remotebenachrichtigungen, indem Sie zu dem Haupt-App-Ziel im Abschnitt **Targets** navigieren.
-2. Klicken Sie auf **Capabilities** (Funktionen), aktivieren Sie **Background Modes** (Hintergrundmodi), und aktivieren Sie das Kontrollkästchen **Remote notifications** (Remotebenachrichtigungen).
+2. Klicken Sie auf **Capabilities**, aktivieren Sie **Background Modes**, und aktivieren Sie das Kontrollkästchen **Remote notifications**.
    
     ![][IOS3]
 3. Navigieren Sie zu **Main.storyboard**, und vergewissern Sie sich, dass Sie einen View Controller (Ansichtscontroller, in diesem Lernprogramm als "Home View Controller" bezeichnet) aus dem Lernprogramm [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) haben.
 4. Fügen Sie Ihrem Storyboard einen **Navigation Controller** hinzu, und ziehen Sie bei gedrückter STRG-TASTE zum Home View Controller, um ihn zur **Stammansicht** der Navigation zu machen. Achten Sie darauf, dass die Option **Is Initial View Controller** in "Attributes inspector" nur für den Navigation Controller ausgewählt ist.
-5. Fügen Sie dem Storyboard einen **View Controller** hinzu, und fügen Sie eine **Image View** (Bildansicht) hinzu. Dies ist die Seite, die Benutzern angezeigt wird, nachdem sie auf die Benachrichtigung geklickt haben, um weitere Informationen zu erhalten. Ihr Storyboard sollte nun folgendermaßen aussehen:
+5. Fügen Sie dem Storyboard einen **View Controller** hinzu, und fügen Sie eine **Image View** hinzu. Dies ist die Seite, die Benutzern angezeigt wird, nachdem sie auf die Benachrichtigung geklickt haben, um weitere Informationen zu erhalten. Ihr Storyboard sollte nun folgendermaßen aussehen:
    
     ![][IOS4]
-6. Klicken Sie im Storyboard auf den **Home View Controller**, und stellen Sie sicher, dass für den Controller die Klasse **homeViewController** als dessen benutzerdefinierte Klasse (**Custom Class**) sowie **Storyboard ID** unter dem "Identity Inspector" angegeben ist.
-7. Gehen Sie für Image View Controller als **imageViewController** gleichermaßen vor.
-8. Erstellen Sie dann eine neue View Controller-Klasse mit dem Namen **imageViewController**, um die soeben erstellte Benutzeroberfläche zu verarbeiten.
-9. Fügen Sie in **imageViewController.h** Folgendes zu den Schnittstellendeklarationen des Controllers hinzu. Halten Sie STRG gedrückt, und ziehen Sie von der Storyboard-Bildansicht zu diesen Eigenschaften, um beide zu verbinden:
+6. Klicken Sie im Storyboard auf den **Home View Controller**, und stellen Sie sicher, dass für den Controller die Klasse **homeViewController** als dessen **Custom Class** sowie **Storyboard ID** unter dem „Identity Inspector“ angegeben ist.
+7. Gehen Sie für Image View Controller als **imageViewController**gleichermaßen vor.
+8. Erstellen Sie dann eine neue View Controller-Klasse mit dem Namen **imageViewController** , um die soeben erstellte Benutzeroberfläche zu verarbeiten.
+9. Fügen Sie in **imageViewController.h**Folgendes zu den Schnittstellendeklarationen des Controllers hinzu. Halten Sie STRG gedrückt, und ziehen Sie von der Storyboard-Bildansicht zu diesen Eigenschaften, um beide zu verbinden:
    
         @property (weak, nonatomic) IBOutlet UIImageView *myImage;
         @property (strong) UIImage* imagePayload;
-10. Fügen Sie **in imageViewController.m** Folgendes am Ende von **viewDidload** hinzu:
+10. Fügen Sie in **imageViewController.m** Folgendes am Ende von **viewDidload** hinzu:
     
         // Display the UI Image in UI Image View
         [self.myImage setImage:self.imagePayload];
@@ -207,7 +211,7 @@ Nachdem Sie das Back-End nun so geändert haben, dass nur die *ID* einer Benachr
 
         return YES;
 
-1. Ersetzen Sie in der folgenden Implementierung durch **application:didRegisterForRemoteNotificationsWithDeviceToken**, um die Änderungen der Storyboard-Benutzeroberfläche zu berücksichtigen:
+1. Ersetzen Sie in der folgenden Implementierung durch **application:didRegisterForRemoteNotificationsWithDeviceToken** , um die Änderungen der Storyboard-Benutzeroberfläche zu berücksichtigen:
    
        // Access navigation controller which is at the root of window
        UINavigationController *nc = (UINavigationController *)self.window.rootViewController;
@@ -341,7 +345,7 @@ Nachdem Sie das Back-End nun so geändert haben, dass nur die *ID* einer Benachr
            completionHandler();
        }
 
-## Ausführen der Anwendung
+## <a name="run-the-application"></a>Ausführen der Anwendung
 1. Unter XCode führen Sie die App auf einem physischen iOS-Gerät aus (im Simulator funktionieren Pushbenachrichtigungen nicht).
 2. Geben Sie in der Benutzeroberfläche der iOS-App einen Benutzernamen und ein Kennwort mit dem gleichen Wert für die Authentifizierung ein, und klicken Sie auf **Log In**.
 3. Klicken Sie auf **Send push**. Daraufhin sollte eine interne App-Warnung angezeigt werden. Wenn Sie auf **More** klicken, gelangen Sie zu dem Bild, das Sie Ihrem App-Back-End hinzufügen möchten.
@@ -352,4 +356,8 @@ Nachdem Sie das Back-End nun so geändert haben, dass nur die *ID* einer Benachr
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

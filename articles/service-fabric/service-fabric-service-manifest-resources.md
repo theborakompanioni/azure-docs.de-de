@@ -1,12 +1,12 @@
 ---
 title: Angeben von Service Fabric-Dienstendpunkten | Microsoft Docs
-description: 'Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstmanifest, einschließlich der Einrichtung von HTTPS-Endpunkten'
+description: "Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstmanifest, einschließlich der Einrichtung von HTTPS-Endpunkten"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/14/2016
 ms.author: subramar
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 193bbedca440302ead00eaac0df62fb7fe767515
+
 
 ---
-# Angeben von Ressourcen in einem Dienstmanifest
-## Übersicht
-Mit dem Dienstmanifest können vom Dienst verwendete Ressourcen deklariert oder geändert werden, ohne dass der kompilierte Code geändert werden muss. Azure Service Fabric unterstützt die Konfiguration von Endpunktressourcen für den Dienst. Der Zugriff auf die im Dienstmanifest angegebenen Ressourcen kann über das SecurityGroup-Element im Anwendungsmanifest gesteuert werden. Die Deklaration von Ressourcen ermöglicht es, dass diese Ressourcen zur Bereitstellungszeit geändert werden, sodass der Dienst keinen neuen Konfigurationsmechanismus einführen muss. Die Schemadefinition für die Datei „ServiceManifest.xml“ wird über das Service Fabric SDK und die Service Fabric-Tools unter *C:\\Programm\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* installiert.
+# <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
+## <a name="overview"></a>Übersicht
+Mit dem Dienstmanifest können vom Dienst verwendete Ressourcen deklariert oder geändert werden, ohne dass der kompilierte Code geändert werden muss. Azure Service Fabric unterstützt die Konfiguration von Endpunktressourcen für den Dienst. Der Zugriff auf die im Dienstmanifest angegebenen Ressourcen kann über das SecurityGroup-Element im Anwendungsmanifest gesteuert werden. Die Deklaration von Ressourcen ermöglicht es, dass diese Ressourcen zur Bereitstellungszeit geändert werden, sodass der Dienst keinen neuen Konfigurationsmechanismus einführen muss. Die Schemadefinition für die Datei „ServiceManifest.xml“ wird mit dem Service Fabric SDK und den Service Fabric-Tools unter *C:\Programm\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* installiert.
 
-## Endpunkte
+## <a name="endpoints"></a>Endpunkte
 Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sollte ein Port nicht explizit angegeben sein. Sehen Sie sich beispielsweise den Endpunkt *ServiceEndpoint1* an, der im Codeausschnitt aus dem Manifest im Anschluss an diesen Absatz angegeben ist. Außerdem können Dienste auch einen bestimmten Port einer Ressource anfordern. Dienstreplikate, die auf unterschiedlichen Clusterknoten ausgeführt werden, können unterschiedlichen Portnummern zugewiesen werden, während für Replikate eines Diensts auf demselben Knoten derselbe Port verwendet wird. Die Dienstreplikate können dann diese Ports nach Bedarf für die Replikation und das Überwachen auf Clientanforderungen nutzen.
 
 ```xml
@@ -33,10 +37,10 @@ Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabr
 </Resources>
 ```
 
-Weitere Informationen zum Verweisen auf Endpunkte aus der Datei mit den Konfigurationspaketeinstellungen („settings.xml“) finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md).
+Weitere Informationen zum Verweisen auf Endpunkte aus der Datei mit den Konfigurationspaketeinstellungen („settings.xml“) finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md) .
 
-## Beispiel: Angeben eines HTTP-Endpunkts für Ihren Dienst
-Mit dem folgenden Dienstmanifest werden eine TCP-Endpunktressource und zwei HTTP-Endpunktressourcen im &lt;Resources&gt;-Element definiert.
+## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Beispiel: Angeben eines HTTP-Endpunkts für Ihren Dienst
+Das folgende Dienstmanifest definiert eine TCP-Endpunktressource und zwei HTTP-Endpunktressourcen im &lt;Resources&gt;-Element.
 
 HTTP-Endpunkte werden von Service Fabric automatisch mit einer Zugriffssteuerungsliste (ACL) versehen.
 
@@ -84,15 +88,15 @@ HTTP-Endpunkte werden von Service Fabric automatisch mit einer Zugriffssteuerung
 </ServiceManifest>
 ```
 
-## Beispiel: Angeben eines HTTPS-Endpunkts für Ihren Dienst
-Das HTTPS-Protokoll ermöglicht die Serverauthentifizierung und wird auch zum Verschlüsseln der Kommunikation zwischen Client und Server verwendet. Geben Sie dieses Protokoll im Abschnitt *Ressourcen -> Endpunkte -> Endpunkt* des Dienstmanifests an (wie weiter oben für den Endpunkt *ServiceEndpoint3* gezeigt), um HTTPS für Ihren Service Fabric-Dienst zu aktivieren.
+## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Beispiel: Angeben eines HTTPS-Endpunkts für Ihren Dienst
+Das HTTPS-Protokoll ermöglicht die Serverauthentifizierung und wird auch zum Verschlüsseln der Kommunikation zwischen Client und Server verwendet. Um HTTPS für Ihren Service Fabric-Dienst zu aktivieren, geben Sie dieses Protokoll im Abschnitt *Ressourcen -> Endpunkte -> Endpunkt* des Dienstmanifests an, wie weiter oben für den Endpunkt *ServiceEndpoint3* gezeigt.
 
 > [!NOTE]
 > Das Protokoll eines Diensts kann nicht während der Anwendungsaktualisierung geändert werden, da diese Änderung eine Unterbrechung verursacht.
 > 
 > 
 
-Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS festlegen müssen. Der Fingerabdruck Ihres Zertifikats muss bereitgestellt werden. Bei EndpointRef handelt es sich um einen Verweis auf die Endpunktressource im Dienstmanifest, für das Sie das HTTPS-Protokoll festgelegt haben. Sie können mehrere Endpunktzertifikate hinzufügen.
+Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS festlegen müssen. Der Fingerabdruck Ihres Zertifikats muss bereitgestellt werden. Bei EndpointRef handelt es sich um einen Verweis auf die Endpunktressource im Dienstmanifest, für das Sie das HTTPS-Protokoll festgelegt haben. Sie können mehrere Endpunktzertifikate hinzufügen.  
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -134,4 +138,8 @@ Hier sehen Sie ein Beispiel für ein Anwendungsmanifest, das Sie für HTTPS fest
 </ApplicationManifest>
 ```
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+
