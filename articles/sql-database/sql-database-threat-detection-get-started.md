@@ -2,11 +2,11 @@
 title: Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank
 description: Erste Schritte mit der Bedrohungserkennung der SQL-Datenbank im Azure-Portal
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: ronitr
 manager: jhubbard
 editor: v-romcal
-
+ms.assetid: b50d232a-4225-46ed-91e7-75288f55ee84
 ms.service: sql-database
 ms.devlang: NA
 ms.topic: article
@@ -14,41 +14,48 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 07/10/2016
 ms.author: ronmat; ronitr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 95cfe24cee2ed852662da418cf7c1256007e420e
+
 
 ---
-# Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank
-## Übersicht
-Die Bedrohungserkennung erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Die Bedrohungserkennung befindet sich in der Vorschauphase und wird für die Version V12 der Azure SQL-Datenbank unterstützt.
+# <a name="get-started-with-sql-database-threat-detection"></a>Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank
+## <a name="overview"></a>Übersicht
+Die Bedrohungserkennung erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten.  Die Bedrohungserkennung befindet sich in der Vorschauphase und wird für die Version V12 der Azure SQL-Datenbank unterstützt.
 
-Die Bedrohungserkennung bietet eine neue Sicherheitsebene und ermöglicht es den Kunden, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitshinweise zu anormalen Aktivitäten bereitgestellt. Die Benutzer können die verdächtigen Ereignisse mithilfe der [Azure SQL-Datenbanküberwachung](sql-database-auditing-get-started.md) untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch zurückzuführen sind oder die Verletzung der Datensicherheit oder den Missbrauch von Daten zum Ziel haben. Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für die Datenbank, ohne das Fachwissen eines Sicherheitsexperten besitzen oder komplexe Sicherheitsüberwachungssysteme verwalten zu müssen.
+Die Bedrohungserkennung bietet eine neue Sicherheitsebene und ermöglicht es den Kunden, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitshinweise zu anormalen Aktivitäten bereitgestellt.  Die Benutzer können die verdächtigen Ereignisse mithilfe der [Azure SQL-Datenbanküberwachung](sql-database-auditing-get-started.md) untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch zurückzuführen sind oder die Verletzung der Datensicherheit oder den Missbrauch von Daten zum Ziel haben.
+Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für die Datenbank, ohne das Fachwissen eines Sicherheitsexperten besitzen oder komplexe Sicherheitsüberwachungssysteme verwalten zu müssen.
 
 So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankaktivitäten, die auf eine potenzielle Einschleusung von SQL-Befehlen hindeuten. Die Einschleusung von SQL-Befehlen ist ein verbreitetes Sicherheitsproblem für Webanwendungen im Internet und wird für Angriffe auf datengesteuerte Anwendungen verwendet. Die Angreifer nutzen Sicherheitslücken der Anwendung, um böswillige SQL-Anweisungen in Eingabefelder der Anwendung einzuschleusen und so an die in der Datenbank enthaltenen Daten zu gelangen oder diese zu verändern.
 
-## Einrichten der Bedrohungserkennung für Ihre Datenbank
-1. Rufen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) auf.
-2. Navigieren Sie zum Konfigurationsblatt der SQL-Datenbank, die Sie überwachen möchten. Wählen Sie auf dem Blatt **Einstellungen** die Option für Überwachung und Bedrohungserkennung.
+## <a name="set-up-threat-detection-for-your-database"></a>Einrichten der Bedrohungserkennung für Ihre Datenbank
+1. Rufen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com)auf.
+2. Navigieren Sie zum Konfigurationsblatt der SQL-Datenbank, die Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**.
    
     ![Navigationsbereich][1]
-3. Aktivieren Sie auf dem Konfigurationsblatt für die Überwachung und Bedrohungserkennung die Überwachung. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
+3. **Aktivieren Sie** auf dem Konfigurationsblatt für die **Überwachung und Bedrohungserkennung** die Überwachung. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
    
     ![Navigationsbereich][2]
-4. Aktivieren Sie die Bedrohungserkennung.
+4. Aktivieren Sie **** die Bedrohungserkennung.
 5. Konfigurieren Sie die Liste der E-Mail-Empfänger, die bei Erkennung anormaler Datenbankaktivitäten einen Sicherheitshinweis erhalten sollen.
-6. Klicken Sie auf dem Konfigurationsblatt für die Überwachung und Bedrohungserkennung auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Überwachung und Bedrohungserkennung zu speichern.
+6. Klicken Sie auf dem Konfigurationsblatt für die **Überwachung und Bedrohungserkennung** auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Überwachung und Bedrohungserkennung zu speichern.
    
     ![Navigationsbereich][3]
 
-## Untersuchen anormaler Datenbankaktivitäten bei Erkennung eines verdächtigen Ereignisses
-1. Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachrichtigung. <br/> Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (wie etwa Art der anomalen Aktivitäten, Datenbankname, Servername und Zeit des Ereignisses). Darüber hinaus enthält sie Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank.<br/>
+## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Untersuchen anormaler Datenbankaktivitäten bei Erkennung eines verdächtigen Ereignisses
+1. Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachrichtigung. <br/>
+    Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (wie etwa Art der anomalen Aktivitäten, Datenbankname, Servername und Zeit des Ereignisses). Darüber hinaus enthält sie Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank.<br/>
    
     ![Navigationsbereich][4]
-2. Klicken Sie in der E-Mail auf den Link für das Azure SQL-Überwachungsprotokoll, um das Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
+2. Klicken Sie in der E-Mail auf den Link für das Azure SQL-Überwachungsprotokoll, **** um das Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
    
     ![Navigationsbereich][5]
 3. Klicken Sie auf die Überwachungsdatensätze, um weitere Details zu den verdächtigen Datenbankaktivitäten (wie etwa SQL-Anweisung, Fehlerursache und Client-IP) anzuzeigen.
    
     ![Navigationsbereich][6]
-4. Klicken Sie auf dem Blatt mit den Überwachungsdatensätzen auf **In Excel öffnen**, um eine vorkonfigurierte Excel-Vorlage zu öffnen, das Überwachungsprotokoll zu importieren und eine ausführlichere Analyse für die Zeit des verdächtigen Ereignisses durchzuführen.<br/> **Hinweis:** Ab Excel 2010 werden Power Query und die Einstellung **Schnelles Kombinieren** benötigt.
+4. Klicken Sie auf dem Blatt mit den Überwachungsdatensätzen auf **In Excel öffnen**, um eine vorkonfigurierte Excel-Vorlage zu öffnen, das Überwachungsprotokoll zu importieren und eine ausführlichere Analyse für die Zeit des verdächtigen Ereignisses durchzuführen.<br/>
+   **Hinweis:** Ab Excel 2010 werden Power Query und die Einstellung **Schnelles Kombinieren** benötigt.
    
     ![Navigationsbereich][7]
 5. So konfigurieren Sie die Einstellung **Schnelles Kombinieren**: Klicken Sie auf der Registerkarte **POWER QUERY** des Menübands auf **Optionen**, um das gleichnamige Dialogfeld anzuzeigen. Navigieren Sie zum Datenschutzabschnitt, und wählen Sie die zweite Option zum Ignorieren der Sicherheitsstufen und zur potenziellen Verbesserung der Leistung:
@@ -57,7 +64,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 6. Wenn Sie SQL-Überwachungsprotokolle laden möchten, vergewissern Sie sich, dass die Parameter auf der Einstellungsregisterkarte ordnungsgemäß festgelegt sind. Klicken Sie dann im Menüband auf „Daten“ und anschließend auf die Schaltfläche „Alle aktualisieren“.
    
     ![Navigationsbereich][9]
-7. Die Ergebnisse werden auf dem Blatt mit den SQL-Überwachungsprotokollen angezeigt. Dadurch können Sie die erkannten anomalen Aktivitäten eingehender untersuchen und die Auswirkungen des Sicherheitsereignisses in Ihrer Anwendung begrenzen.
+7. Die Ergebnisse werden auf dem Blatt mit den **SQL-Überwachungsprotokollen** angezeigt. Dadurch können Sie die erkannten anomalen Aktivitäten eingehender untersuchen und die Auswirkungen des Sicherheitsereignisses in Ihrer Anwendung begrenzen.
 
 <!--Image references-->
 [1]: ./media/sql-database-threat-detection-get-started/1_td_click_on_settings.png
@@ -70,4 +77,8 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 [8]: ./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png
 [9]: ./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+
