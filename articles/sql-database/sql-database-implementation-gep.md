@@ -1,19 +1,24 @@
 ---
-title: 'Azure SQL-Datenbank – Azure-Fallstudie: GEP | Microsoft Docs'
-description: Erfahren Sie, wie GEP mithilfe von SQL-Datenbank mehr globale Kunden erreicht und größere Effizienz erzielt.
+title: "Azure SQL-Datenbank – Azure-Fallstudie: GEP | Microsoft Docs"
+description: "Erfahren Sie, wie GEP mithilfe von SQL-Datenbank mehr globale Kunden erreicht und größere Effizienz erzielt."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
 ms.service: sql-database
+ms.custom: app development case study; app development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: da2e3e4f9a33860141d94352fd2e657b14b0d03d
+
 
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>Azure bietet GEP globale Reichweite und mehr Effizienz
@@ -99,6 +104,9 @@ Seit GEP von lokalen Rechenzentren zu Azure migriert ist und die Lösung SMART b
 * Sathyan Narasingh, Engineering Manager, GEP
 * Deepa Velukutty, Database Architect, GEP
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

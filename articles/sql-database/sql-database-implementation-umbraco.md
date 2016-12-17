@@ -1,19 +1,24 @@
 ---
-title: 'Azure SQL-Datenbank – Azure-Fallstudie: Umbraco | Microsoft Docs'
-description: Erfahren Sie, wie Umbraco SQL-Datenbank verwendet, um Dienste für Tausende von Mandanten in der Cloud schnell bereitzustellen und zu skalieren.
+title: "Azure SQL-Datenbank – Azure-Fallstudie: Umbraco | Microsoft Docs"
+description: "Erfahren Sie, wie Umbraco SQL-Datenbank verwendet, um Dienste für Tausende von Mandanten in der Cloud schnell bereitzustellen und zu skalieren."
 services: sql-database
-documentationcenter: ''
-author: carlrabeler
+documentationcenter: 
+author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 5243d31e-3241-4cb0-9470-ad488ff28572
 ms.service: sql-database
+ms.custom: app development case study; app development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/22/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0800f04034410c3734ef0a97afd9d41cf850381b
+
 
 ---
 # <a name="umbraco-uses-azure-sql-database-to-quickly-provision-and-scale-services-for-thousands-of-tenants-in-the-cloud"></a>Umbraco verwendet Azure SQL-Datenbank, um Dienste für Tausende von Mandanten in der Cloud schnell bereitzustellen und zu skalieren
@@ -113,18 +118,21 @@ Morten ist auch mit den Skalierungsfunktionen von Azure höchst zufrieden. „El
 
 Mikkel Madsen fasst zusammen: „Wir haben uns den leistungsstarken Azure-Algorithmus zunutze gemacht, der ein häufiges SaaS-Szenario (Onboarding eines Kunden in Echtzeit und ganz an den Bedarf des Kunden angepasst) mit unserem Anwendungsmuster verknüpft (Vorabbereitstellung von Datenbanken, sowohl für Entwicklungs- als auch für Liveumgebungen). All dies baut auf der zugrunde liegende Technologie auf (Azure Service Bus-Warteschlangen zusammen mit Azure SQL-Datenbank).“
 
-## <a name="with-azure,-uaas-is-exceeding-customer-expectations"></a>Dank Azure übertrifft UaaS die Erwartungen der Kunden
+## <a name="with-azure-uaas-is-exceeding-customer-expectations"></a>Dank Azure übertrifft UaaS die Erwartungen der Kunden
 Seitdem Umbraco sich für Azure als Cloudpartner entschieden hat, konnte das Unternehmen seinen UaaS-Kunden eine optimierte Leistung für ihre Content-Management-Systeme bieten – und zwar ohne die hohen Investitionen in IT-Ressourcen, die bei einer selbst gehosteten Lösung notwendig gewesen wären. Morten formuliert es so: „Wir schätzen die bequeme Entwicklung und die Skalierbarkeit, die Azure uns bietet. Und unsere Kunden sind ganz begeistert von der Funktionsvielfalt und Zuverlässigkeit. Insgesamt war es ein großer Gewinn für uns!“
 
 ## <a name="more-information"></a>Weitere Informationen
 * Weitere Informationen zu elastischen Azure-Datenbankpools finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 * Weitere Informationen zu Azure Service Bus finden Sie unter [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
-* Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute). 
+* Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).    
 * Weitere Informationen zu virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke](https://azure.microsoft.com/documentation/services/virtual-network/).    
-* Weiter Informationen zur Sicherung und Wiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).  
-* Weitere Informationen zur Überwachung von Pools finden Sie unter [Überwachen von Pools](sql-database-elastic-pool-manage-portal.md). 
+* Weiter Informationen zur Sicherung und Wiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).    
+* Weitere Informationen zur Überwachung von Pools finden Sie unter [Überwachen von Pools](sql-database-elastic-pool-manage-portal.md).    
 * Weitere Informationen zu Umbraco-as-a-Service finden Sie unter [Umbraco](https://umbraco.com/cloud).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
