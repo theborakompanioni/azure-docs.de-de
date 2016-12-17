@@ -1,13 +1,13 @@
 ---
-title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für NSGs | Microsoft Docs
-description: Erfahren Sie, wie Sie Leistungsindikatoren-, Ereignis- und Überwachungsprotokolle für NSGs aktivieren.
+title: "Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für NSGs | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Leistungsindikatoren-, Ereignis- und Überwachungsprotokolle für NSGs aktivieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: 2e699078-043f-48bd-8aa8-b011a32d98ca
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,32 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/14/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 30542a5166dffda4a99fe2fccd9e1c5d6127cabd
+
 
 ---
-# Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
+# <a name="log-analytics-for-network-security-groups-nsgs"></a>Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
 Sie können in Azure verschiedene Protokolltypen verwenden, um NSGs zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle können Sie über das Portal zugreifen, und alle Protokolle können aus einem Azure-Blobspeicher extrahiert und in anderen Tools wie [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md),Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
-* **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../azure-portal/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Vorschauportal angezeigt werden.
+* **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Vorschauportal angezeigt werden.
 * **Ereignisprotokolle:** Mithilfe dieses Protokolls können Sie anzeigen, welche NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
 * **Leistungsindikatorenprotokolle:** Verwenden Sie dieses Protokoll, um anzuzeigen, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 
 > [!WARNING]
-> Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
+> Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md) .
 > 
 > 
 
-## Aktivieren der Protokollierung
+## <a name="enable-logging"></a>Aktivieren der Protokollierung
 Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Ereignis- und Leistungsindikatorenprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch keine Netzwerksicherheitsgruppe haben, [erstellen Sie eine NSG](virtual-networks-create-nsg-arm-ps.md), bevor Sie fortfahren.
-2. Klicken Sie im Vorschauportal auf **Durchsuchen** > **Netzwerksicherheitsgruppen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Wenn Sie noch keine Netzwerksicherheitsgruppe haben, [erstellen Sie eine NSG](virtual-networks-create-nsg-arm-ps.md) , bevor Sie fortfahren.
+2. Klicken Sie im Vorschauportal auf **Durchsuchen** >> **Netzwerksicherheitsgruppen**.
    
-   ![Vorschauportal – Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable1.png)
+   ![Vorschauportal – Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable1.png)
 3. Wählen Sie eine vorhandene Netzwerksicherheitsgruppe aus.
    
-    ![Vorschauportal – Einstellungen für Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable2.png)
-4. Klicken Sie im Blatt **Einstellungen** auf **Diagnose** und dann im Blatt **Diagnose** neben **Status** auf **Ein**.
-5. Klicken Sie im Blatt **Einstellungen** auf **Speicherkonto**, und wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
+    ![Vorschauportal – Einstellungen für Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable2.png)
+4. Klicken Sie auf dem Blatt **Einstellungen** auf **Diagnose** und dann im Bereich **Diagnose** neben **Status** auf **Ein**.
+5. Klicken Sie auf dem Blatt **Einstellungen** auf **Speicherkonto**, und wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.  
 
 > [AZURE.INFORMATION] Für Überwachungsprotokolle ist kein separates Speicherkonto erforderlich. Bei der Nutzung von Speicher zur Ereignis- und Regelprotokollierung fallen Gebühren an.
 > 
@@ -48,12 +52,12 @@ Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-
 
 1. Wählen Sie in der Dropdownliste direkt unter **Speicherkonto** aus, ob Sie Ereignisse, Leistungsindikatoren oder beides protokollieren möchten, und klicken Sie dann auf **Speichern**.
    
-    ![Vorschauportal – Diagnoseprotokolle](./media/virtual-network-nsg-manage-log/portal-enable3.png)
+    ![Vorschauportal – Diagnoseprotokolle](./media/virtual-network-nsg-manage-log/portal-enable3.png)
 
-## Überwachungsprotokoll
-Dieses Protokoll (früher als "Betriebsprotokoll" bekannt) wird standardmäßig von Azure generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../azure-portal/insights-debugging-with-events.md).
+## <a name="audit-log"></a>Überwachungsprotokoll
+Dieses Protokoll (früher als "Betriebsprotokoll" bekannt) wird standardmäßig von Azure generiert.  Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md) .
 
-## Leistungsindikatorenprotokoll
+## <a name="counter-log"></a>Leistungsindikatorenprotokoll
 Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die jeweiligen NSGs aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Wie unten dargestellt, wird jede Regel, die auf Ressourcen angewendet wurden, im JSON-Format protokolliert.
 
     {
@@ -73,7 +77,7 @@ Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die j
             }
     }
 
-## Ereignisprotokoll
+## <a name="event-log"></a>Ereignisprotokoll
 Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die jeweiligen NSGs aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
 
     {
@@ -99,13 +103,13 @@ Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die j
         }
     }
 
-## Anzeigen und Analysieren des Überwachungsprotokolls
+## <a name="view-and-analyze-the-audit-log"></a>Anzeigen und Analysieren des Überwachungsprotokolls
 Mit einer der folgenden Methoden können Sie die Überwachungsprotokolldaten anzeigen und analysieren:
 
-* **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab. Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md).
-* **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
+* **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab.  Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md) .
+* **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing) -Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
 
-## Anzeigen und Analysieren der Leistungsindikatoren- und Ereignisprotokolle
+## <a name="view-and-analyze-the-counter-and-event-log"></a>Anzeigen und Analysieren der Leistungsindikatoren- und Ereignisprotokolle
 Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) kann die Leistungsindikator- und Ereignisprotokolldateien aus Ihrem Blobspeicherkonto erfassen und enthält Visualisierungen und leistungsfähige Suchfunktionen, um Ihre Protokolle zu analysieren.
 
 Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für Leistungsindikator- und Ereignisprotokolle abrufen. Sobald Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, PowerBI oder einem anderen Datenvisualisierungstool anzeigen.
@@ -115,9 +119,14 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Visualisieren von Leistungsindikator- und Ereignisprotokollen mit [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
-* Blogbeitrag [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx).
-* Blogbeitrag [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+* [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) .
+* [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) .
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
