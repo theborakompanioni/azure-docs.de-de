@@ -1,13 +1,13 @@
 ---
-title: Problembehandlung bei Routen – PowerShell | Microsoft Docs
+title: "Problembehandlung bei Routen – PowerShell | Microsoft Docs"
 description: Informationen zur Problembehandlung bei Routen im Azure Resource Manager-Bereitstellungsmodell mit Azure PowerShell.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: bf7dc5e7-9399-460e-8e0d-8992dbed98a6
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
+
 
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Problembehandlung bei Routen mit Azure PowerShell
@@ -132,6 +136,9 @@ Beim Überprüfen der zurückgegebenen Liste der Routen sind einige Punkte zu be
   * Versuchen Sie es nach einigen Sekunden erneut, wenn es sich um einen neu erstellten Peeringlink handelt. Das Weitergeben von Routen an alle Netzwerkschnittstellen in einem Subnetz dauert gelegentlich etwas länger.
   * Die Regeln von Netzwerksicherheitsgruppen (NSGs) können den Datenverkehrsfluss beeinträchtigen. Weitere Informationen finden Sie im Artikel [Problembehandlung bei Netzwerksicherheitsgruppen](virtual-network-nsg-troubleshoot-powershell.md) .
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

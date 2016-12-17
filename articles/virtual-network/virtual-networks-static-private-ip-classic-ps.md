@@ -1,5 +1,5 @@
 ---
-title: Einrichten einer statischen privaten IP-Adresse im klassichen Modus mithilfe von PowerShell | Microsoft Docs
+title: Einrichten einer statischen privaten IP-Adresse im klassischen Modus mithilfe von PowerShell | Microsoft Docs
 description: Grundlegendes zu statischen privaten IP-Adressen (DIPs) und zur Verwaltung dieser IP-Adressen im klassischen Modus mithilfe von PowerShell
 services: virtual-network
 documentationcenter: na
@@ -7,7 +7,7 @@ author: jimdial
 manager: carmonm
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2a3fe657f9d4ed967701cfc91948b3a7ef799dbc
+
 
 ---
-# Einrichten einer statischen privaten IP-Adresse (klassisch) in PowerShell
+# <a name="how-to-set-a-static-private-ip-address-classic-in-powershell"></a>Einrichten einer statischen privaten IP-Adresse (klassisch) in PowerShell
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -28,10 +32,10 @@ Dieser Artikel gilt für das klassische Bereitstellungsmodell. Sie können [eine
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Die folgenden PowerShell-Beispielbefehle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-classic-netcfg-ps.md) beschrieben.
+Die folgenden PowerShell-Beispielbefehle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-classic-netcfg-ps.md)beschrieben.
 
-## Überprüfen der Verfügbarkeit einer bestimmten IP-Adresse
-Wenn Sie beispielsweise überprüfen möchten, ob die IP-Adresse *192.168.1.101* in einem VNet namens *TestVNet* verfügbar ist, führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich den Wert für *IsAvailable* an:
+## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Überprüfen der Verfügbarkeit einer bestimmten IP-Adresse
+Wenn Sie beispielsweise überprüfen möchten, ob die IP-Adresse *192.168.1.101* in einem VNet namens *TestVnet* verfügbar ist, führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich den Wert für *IsAvailable* an:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -43,7 +47,7 @@ Erwartete Ausgabe:
     OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
     OperationStatus      : Succeeded
 
-## Angeben einer statischen privaten IP-Adresse beim Erstellen eines virtuellen Computers
+## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Angeben einer statischen privaten IP-Adresse beim Erstellen eines virtuellen Computers
 Das folgende PowerShell-Skript erstellt einen neuen Clouddienst namens *TestService*, ruft dann ein Image aus Azure ab, erstellt auf dessen Grundlage in dem neuen Clouddienst einen virtuellen Computer namens *DNS01*, platziert den virtuellen Computer in einem Subnetz namens *FrontEnd* und legt *192.168.1.7* als statische private IP-Adresse für den virtuellen Computer fest:
 
     New-AzureService -ServiceName TestService -Location "Central US"
@@ -62,8 +66,8 @@ Erwartete Ausgabe:
     New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
-## Abrufen der Informationen zur statischen privaten IP-Adresse für einen virtuellen Computer
-Führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich die Werte für *IpAddress* an, um Informationen zur statischen privaten IP-Adresse des virtuellen Computers zu erhalten, der mit dem obigen Skript erstellt wurde:
+## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Abrufen der Informationen zur statischen privaten IP-Adresse für einen virtuellen Computer
+Führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich die Werte für *IpAddress*an, um Informationen zur statischen privaten IP-Adresse des virtuellen Computers zu erhalten, der mit dem obigen Skript erstellt wurde:
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -96,7 +100,7 @@ Erwartete Ausgabe:
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## Entfernen einer statischen privaten IP-Adresse von einem virtuellen Computer
+## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Entfernen einer statischen privaten IP-Adresse von einem virtuellen Computer
 Führen Sie den folgenden PowerShell-Befehl aus, um die statische private IP-Adresse zu entfernen, die dem virtuellen Computer im obigen Skript hinzugefügt wurde:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
@@ -109,7 +113,7 @@ Erwartete Ausgabe:
     -------------------- -----------                          ---------------
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
-## Hinzufügen einer statischen privaten IP-Adresse zu einem vorhandenen virtuellen Computer
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Hinzufügen einer statischen privaten IP-Adresse zu einem vorhandenen virtuellen Computer
 Führen Sie folgenden Befehl aus, um dem virtuellen Computer, der mit dem obigen Skript erstellt wurde, eine statische private IP-Adresse hinzuzufügen:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
@@ -122,9 +126,14 @@ Erwartete Ausgabe:
     -------------------- -----------                          ---------------
     Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
 
-## Nächste Schritte
-* Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](virtual-networks-reserved-public-ip.md).
-* Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md).
+## <a name="next-steps"></a>Nächste Schritte
+* Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](virtual-networks-reserved-public-ip.md) .
+* Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md) .
 * Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
