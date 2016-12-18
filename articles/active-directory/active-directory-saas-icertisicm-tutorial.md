@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Icertis Contract Management Platform | Microsoft Docs'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Icertis Contract Management Platform konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 6627e6dd-f559-4cd4-a509-f6d9a4961b49
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a2d2fba76850d6dfcff7545d6646f45c12e05c3f
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-icertis-contract-management-platform"></a>Tutorial: Azure Active Directory-Integration mit Icertis Contract Management Platform
+# <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>Tutorial: Azure Active Directory-Integration mit Icertis Contract Management Platform
 In diesem Tutorial erfahren Sie, wie Sie Icertis Contract Management Platform in Azure Active Directory (Azure AD) integrieren.
 
 Diese Integration bietet folgende Vorteile:
@@ -25,7 +29,7 @@ Diese Integration bietet folgende Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Icertis Contract Management Platform anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Icertis Contract Management Platform konfigurieren zu können, benötigen Sie Folgendes:
@@ -121,10 +125,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     b. Klicken Sie auf **Weiter**.
 2. Wenden Sie sich an das Supportteam von Icertis Contract Management Platform, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit: 
    
-   * Die **heruntergeladene Metadatendatei** 
-   * Die **Entitäts-ID** 
-   * Die **SAML-SSO-URL** 
-   * Die **Dienst-URL für einmaliges Abmelden**
+    - Die **heruntergeladene Metadatendatei** 
+   
+    - Die **Entitäts-ID** 
+   
+    - Die **SAML-SSO-URL** 
+   
+    - Die **Dienst-URL für einmaliges Abmelden**
 3. Wählen Sie im klassischen Portal die Bestätigung für die Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -235,6 +242,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Icertis Contract Management Platfo
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

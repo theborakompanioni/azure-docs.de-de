@@ -1,12 +1,12 @@
 ---
-title: Stellen Sie DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure-Ressourcen-Managers bereit | Microsoft Docs
+title: Bereitstellen von DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource-Managers| Microsoft Docs
 description: Erfahren Sie, wie Sie ein DocumentDB-Konto, eine Azure App-Service-Web-App und eine Beispielwebanwendung mithilfe einer Vorlage des Azure-Ressourcen-Managers bereitstellen.
 services: documentdb, app-service\web
 author: h0n
 manager: jhubbard
 editor: monicar
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 087d8786-1155-42c7-924b-0eaba5a8b3e0
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2016
 ms.author: hawong
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
+
 
 ---
 # <a name="deploy-documentdb-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure-Ressourcen-Managers
@@ -38,7 +42,7 @@ Vor dem Ausführen der Anweisungen zu diesem Lernprogramm, müssen Sie sicherste
 
 * Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform.  Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/), [Spezielle Angebote](https://azure.microsoft.com/pricing/member-offers/) oder [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="<a-id="createdb"></a>step-1:-download-the-template-files"></a><a id="CreateDB"></a>Schritt 1: Herunterladen der Vorlagendateien
+## <a name="a-idcreatedbastep-1-download-the-template-files"></a><a id="CreateDB"></a>Schritt 1: Herunterladen der Vorlagendateien
 Als Erstes laden wir die Vorlagendateien herunter, die in diesem Tutorial verwendet werden.
 
 1. Laden Sie die Vorlage für das [Beispiel zum Erstellen eines DocumentDB-Kontos, zum Erstellen von Web-Apps und zum Bereitstellen einer Demoanwendung](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) in einen lokalen Ordner (beispielsweise „C:\DocumentDBTemplates“) herunter. Diese Vorlage stellt ein DocumentDB-Konto, eine App Service-Web-App und eine Webanwendung bereit.  Außerdem wird die Webanwendung automatisch so konfiguriert, dass sie eine Verbindung mit dem DocumentDB-Konto herstellt.
@@ -46,7 +50,7 @@ Als Erstes laden wir die Vorlagendateien herunter, die in diesem Tutorial verwen
 
 <a id="Build"></a>
 
-## <a name="step-2:-deploy-the-documentdb-account,-app-service-web-app-and-demo-application-sample"></a>Schritt 2: Bereitstellen des Beispiels mit DocumentDB-Konto, App Service-Web-App und Demoanwendung
+## <a name="step-2-deploy-the-documentdb-account-app-service-web-app-and-demo-application-sample"></a>Schritt 2: Bereitstellen des Beispiels mit DocumentDB-Konto, App Service-Web-App und Demoanwendung
 Jetzt stellen wir unsere erste Vorlage bereit.
 
 > [!TIP]
@@ -86,7 +90,7 @@ Jetzt stellen wir unsere erste Vorlage bereit.
 
 <a id="Build"></a> 
 
-## <a name="step-3:-deploy-the-document-account-and-web-app-sample"></a>Schritt 3: Bereitstellen des Dokument-Kontos und Web-App-Beispiels
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>Schritt 3: Bereitstellen des Dokument-Kontos und Web-App-Beispiels
 Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr anschaulich, wie Sie DocumentDB-Verbindungsinformationen, z.B. Kontoendpunkt und Hauptschlüssel, mit Anwendungseinstellungen oder als benutzerdefinierte Verbindungszeichenfolge in eine Web-App einfügen können. Sie möchten vielleicht eine eigene Webanwendung mit einem DocumentDB-Konto bereitstellen, und die Verbindungsinformationen sollen während der Bereitstellung automatisch aufgefüllt werden.
 
 > [!TIP]
@@ -129,7 +133,7 @@ Glückwunsch! Sie haben DocumentDB, eine App Service-Web-App und eine Beispielwe
 * Weitere Informationen zu Azure App Service Web-Apps erhalten Sie, indem Sie [hier](http://go.microsoft.com/fwlink/?LinkId=325362)klicken.
 * Weitere Informationen zu Vorlagen des Azure-Ressourcen-Managers erhalten Sie, indem Sie [hier](https://msdn.microsoft.com/library/azure/dn790549.aspx)klicken.
 
-## <a name="what's-changed"></a>Änderungen
+## <a name="whats-changed"></a>Änderungen
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
 * Hinweise zu den Veränderungen des neuen Portals gegenüber dem alten finden Sie unter [Referenz zur Navigation im klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715)
 
@@ -138,6 +142,9 @@ Glückwunsch! Sie haben DocumentDB, eine App Service-Web-App und eine Beispielwe
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

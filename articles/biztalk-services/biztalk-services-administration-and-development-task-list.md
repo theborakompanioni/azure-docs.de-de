@@ -1,12 +1,12 @@
 ---
-title: Aufgabenliste für Verwaltung und Entwicklung in BizTalk Services | Microsoft Docs
-description: Unterstützung bei Planung und Aufträgen für die Entwicklung in Azure BizTalk Services.
+title: "Aufgabenliste für Verwaltung und Entwicklung in BizTalk Services | Microsoft Docs"
+description: "Unterstützung bei Planung und Aufträgen für die Entwicklung in Azure BizTalk Services."
 services: biztalk-services
-documentationcenter: ''
+documentationcenter: 
 author: msftman
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0ab70b5b-1a88-4ba5-b329-ec51b785010e
 ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1013419f9283c3e81a6a6e8ed56a34d6ee5937ea
+
 
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Aufgabenliste für Verwaltung und Entwicklung in BizTalk Services
@@ -50,6 +54,9 @@ Bei der Arbeit mit Microsoft Azure BizTalk Services sind verschiedene lokale und
 [Verwenden des BizTalk Adapter Service](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
 [BizTalk Services-Dokumentation](http://go.microsoft.com/fwlink/p/?LinkID=303664)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

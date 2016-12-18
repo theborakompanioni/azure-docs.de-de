@@ -1,24 +1,28 @@
 ---
 title: Festlegen von Kennwortablaufrichtlinien in Azure Active Directory | Microsoft Docs
-description: Erfahren Sie, wie Sie Ablaufrichtlinien überprüfen und für einzelne oder mehrere Azure Active Directory-Kennwörter ablaufen ändern, wie sie ablaufen.
+description: "Erfahren Sie, wie Sie Ablaufrichtlinien überprüfen und für einzelne oder mehrere Azure Active Directory-Kennwörter ablaufen ändern, wie sie ablaufen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 6887250c-15d4-4b59-a161-f0380c0f0acb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 11/01/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ad4bbbb226746e809d6c101e7bebc91f878d69bf
+
 
 ---
-# Festlegen von Kennwortablaufrichtlinien in Azure Active Directory
+# <a name="set-password-expiration-policies-in-azure-active-directory"></a>Festlegen von Kennwortablaufrichtlinien in Azure Active Directory
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)weiter.
 > 
 > 
 
@@ -31,33 +35,38 @@ Als globaler Administrator für einen Microsoft-Clouddienst können Sie mit dem 
 
 Damit Sie Windows PowerShell-Cmdlets verwenden können, müssen Sie sie zunächst installieren.
 
-## Was möchten Sie tun?
+## <a name="what-do-you-want-to-do"></a>Was möchten Sie tun?
 * [Überprüfen der Ablaufrichtlinie für ein Kennwort](#how-to-check-expiration-policy-for-a-password)
 * [Festlegen, dass ein Kennwort abläuft](#set-a-password-to-expire)
 * [Festlegen, dass ein Kennwort nicht abläuft](#set-a-password-to-never-expire)
 
-## Überprüfen der Ablaufrichtlinie für ein Kennwort
+## <a name="how-to-check-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 2. Führen Sie einen der folgenden Schritte aus:
    
-   * Um festzustellen, ob für das Kennwort eines bestimmten Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN, z. B. aprilr@contoso.onmicrosoft.com) oder der Benutzer-ID des zu überprüfenden Benutzers aus: `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+   * Um festzustellen, ob für das Kennwort eines bestimmten Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) (z.B. aprilr@contoso.onmicrosoft.com)) oder der Benutzer-ID des zu überprüfenden Benutzers aus: `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
    * Um die Einstellung "Kennwort läuft nie ab" für alle Benutzer anzuzeigen, führen Sie das folgende Cmdlet aus: `Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
-## Festlegen, dass ein Kennwort abläuft
+## <a name="set-a-password-to-expire"></a>Festlegen, dass ein Kennwort abläuft
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 2. Führen Sie einen der folgenden Schritte aus:
    
    * Um für das Kennwort eines Benutzers festzulegen, dass es abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
    * Um für die Kennwörter aller Benutzer in der Organisation festzulegen, dass sie ablaufen, verwenden Sie das folgende Cmdlet: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
 
-## Festlegen, dass ein Kennwort nicht abläuft
+## <a name="set-a-password-to-never-expire"></a>Festlegen, dass ein Kennwort nicht abläuft
 1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 2. Führen Sie einen der folgenden Schritte aus:
    
    * Um für das Kennwort eines Benutzers festzulegen, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
    * Um für die Kennwörter aller Benutzer in einer Organisation festzulegen, dass sie nie ablaufen, führen Sie das folgende Cmdlet aus: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
-## Nächste Schritte
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+## <a name="next-steps"></a>Nächste Schritte
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

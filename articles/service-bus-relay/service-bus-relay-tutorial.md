@@ -1,23 +1,27 @@
 ---
-title: Tutorial zu Service Bus Relay | Microsoft Docs
-description: Erstellen Sie eine Service Bus-Clientanwendung und einen Service Bus-Dienst mithilfe von Service Bus Relay.
-services: service-bus
+title: Tutorial zu Service Bus WCF-Relay | Microsoft Docs
+description: Erstellen Sie eine Service Bus-Clientanwendung und einen Service Bus-Dienst mithilfe von Service Bus WCF-Relay.
+services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
 editor: tysonn
-
-ms.service: service-bus
+ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
+ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
+ms.openlocfilehash: 0977dc3fc1ebe4bbdb298ff8d72c7294052e7392
+
 
 ---
-# <a name="service-bus-relay-tutorial"></a>Tutorial zu Service Bus Relay
-Dieses Tutorial beschreibt das Erstellen einer einfachen Service Bus-Clientanwendung und eines Service Bus-Clientdiensts mithilfe der Service Bus-Relayfunktionen.  Ein entsprechendes Tutorial, in dem die [Brokermessagingfunktionen](../service-bus-messaging/service-bus-messaging-overview.md#Brokered-messaging) von Service Bus beschrieben werden, finden Sie im [.NET-Tutorial zu Service Bus-Brokermessaging](../service-bus-messaging/service-bus-brokered-tutorial-dotnet.md).
+# <a name="service-bus-wcf-relay-tutorial"></a>Tutorial zu Service Bus WCF-Relay
+Dieses Tutorial beschreibt das Erstellen einer einfachen Service Bus-Clientanwendung und eines Service Bus-Clientdiensts mithilfe der Service Bus-Relayfunktionen.  Ein entsprechendes Tutorial, in dem die [Brokermessagingfunktionen](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) von Service Bus beschrieben werden, finden Sie im [.NET-Tutorial zu Service Bus-Brokermessaging](../service-bus-messaging/service-bus-brokered-tutorial-dotnet.md).
 
 Dieses Tutorial vermittelt Ihnen Grundkenntnisse zu den Schritten, die zum Erstellen einer Service Bus-Client- und -Dienstanwendung erforderlich sind. Ein Dienst ist wie sein Gegenstück in WCF ein Konstrukt, das mindestens einen Endpunkt bereitstellt. Dabei stellt jeder Endpunkt mindestens einen Dienstvorgang zur Verfügung. Der Endpunkt eines Diensts gibt eine Adresse an, unter der der Dienst gefunden werden kann, eine Bindung, die die Information enthält, dass ein Client mit dem Dienst kommunizieren muss, und einen Vertrag, der die Funktionen definiert, die der Dienst für seine Clients bereitstellt. Der Hauptunterschied zwischen einem WCF- und einem Service Bus-Dienst besteht darin, dass der Endpunkt in der Cloud und nicht lokal auf Ihrem Computer bereitgestellt wird.
 
@@ -38,51 +42,51 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
 ### <a name="to-create-a-service-bus-contract-with-an-interface"></a>So erstellen Sie einen Service Bus-Vertrag mit einer Schnittstelle
 1. Öffnen Sie Visual Studio als Administrator, indem Sie im **Startmenü** mit der rechten Maustaste auf das Programm klicken und dann **Als Administrator ausführen** auswählen.
 2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** aus, und klicken Sie auf **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**). Klicken Sie auf die Vorlage **Konsolenanwendung**, und geben Sie ihr den Namen **EchoService**. Klicken Sie auf **OK** , um das Projekt zu erstellen.
-   
+
     ![][2]
 3. Installieren Sie das NuGet-Paket für Service Bus. Dieses Paket fügt automatisch Verweise auf die Service Bus-Bibliotheken sowie **System.ServiceModel** (WCF) hinzu. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) ist der Namespace, der den programmgesteuerten Zugriff auf die grundlegenden Funktionen von WCF ermöglicht. Service Bus verwendet viele Objekte und Attribute von WCF, um Dienstverträge zu definieren.
-   
+
     Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **NuGet-Pakete für Projektmappe verwalten...**. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Vergewissern Sie sich, dass im Feld **Version(en)** der Projektname ausgewählt ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
-   
+
     ![][3]
 4. Doppelklicken Sie im Projektmappen-Explorer auf die Datei „Program.cs“, um sie im Editor zu öffnen (sofern sie nicht bereits geöffnet ist).
 5. Fügen Sie am Anfang der Datei die folgenden using-Anweisungen ein:
-   
+
     ```
     using System.ServiceModel;
     using Microsoft.ServiceBus;
     ```
 6. Ändern Sie den Namespacenamen vom Standardnamen **EchoService** zu **Microsoft.ServiceBus.Samples**.
-   
+
    > [!IMPORTANT]
    > In diesem Tutorial wird der C#-Namespace **Microsoft.ServiceBus.Samples** verwendet. Hierbei handelt es sich um den Namespace des durch den Vertrag verwalteten Typs, der im Schritt [Konfigurieren des WCF-Clients](#configure-the-wcf-client) in der Konfigurationsdatei verwendet wird. Sie können beim Erstellen dieses Beispiels jeden gewünschten Namespace angeben, das Tutorial funktioniert jedoch nur, wenn Sie anschließend die Namespaces des Vertrags und des Diensts in der Anwendungskonfigurationsdatei entsprechend ändern. Der in der Datei "App.config" angegebene Namespace muss mit dem in Ihren C#-Dateien angegebenen Namespace identisch sein.
-   > 
-   > 
+   >
+   >
 7. Definieren Sie direkt nach der `Microsoft.ServiceBus.Samples`-Namespacedeklaration (jedoch innerhalb des Namespace) eine neue Schnittstelle namens `IEchoContract`, und wenden Sie das Attribut `ServiceContractAttribute` mit dem Namespacewert **http://samples.microsoft.com/ServiceModel/Relay/** auf die Schnittstelle an. Der Namespacewert unterscheidet sich von dem Namespace, den Sie im gesamten Codebereich verwenden. Der Namespacewert wird stattdessen als eindeutiger Bezeichner für diesen Vertrag verwendet. Das explizite Angeben des Namespace verhindert, dass der Standardwert für den Namespace dem Vertragsnamen hinzugefügt wird.
-   
+
     ```
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
     {
     }
     ```
-   
+
    > [!NOTE]
    > In der Regel enthält der Dienstvertragsnamespace ein Benennungsschema, das Versionsinformationen umfasst. Durch das Einbeziehen von Versionsinformationen im Dienstvertragsnamespace können Dienste größere Änderungen isolieren, indem ein neuer Dienstvertrag mit einem neuen Namespace definiert und an einem neuen Endpunkt bereitgestellt wird.  Auf diese Weise können Clients weiterhin den alten Dienstvertrag verwenden, ohne dass sie aktualisiert werden müssen. Versionsinformationen können aus einer Datumsangabe oder einer Buildnummer bestehen. Weitere Informationen finden Sie unter [Dienstversionsverwaltung](http://go.microsoft.com/fwlink/?LinkID=180498). In diesem Tutorial enthält das Benennungsschema des Dienstvertragsnamespace keine Versionsinformationen.
-   > 
-   > 
+   >
+   >
 8. Deklarieren Sie innerhalb der `IEchoContract`-Benutzeroberfläche eine Methode für den einzelnen Vorgang, den der `IEchoContract`-Vertrag in der Schnittstelle bereitstellt, und wenden Sie das `OperationContractAttribute`-Attribut auf die Methode an, die Sie als Teil des öffentlichen Service Bus-Vertrags bereitstellen möchten.
-   
+
     ```
     [OperationContract]
     string Echo(string text);
     ```
 9. Deklarieren Sie direkt im Anschluss an die `IEchoContract`-Schnittstellendefinition einen Kanal mit Vererbung von `IEchoContract` und Vererbung an die `IClientChannel`-Schnittstelle, wie im folgenden Beispiel gezeigt:
-   
+
     ```
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
-   
+
     Ein Kanal ist das WCF-Objekt, über das der Host und der Client einander Informationen übergeben. Später schreiben Sie Code für den Kanal, um ein Echo der Informationen zwischen den beiden Anwendungen zu erzeugen.
 10. Klicken Sie im Menü **Erstellen** auf **Projektmappe erstellen**, oder drücken Sie **STRG+UMSCHALT+B**, um Ihre bisherigen Arbeitsschritte zu überprüfen.
 
@@ -118,25 +122,25 @@ Nachdem nun die Schnittstelle erstellt ist, können Sie die Schnittstelle implem
 ## <a name="implement-the-wcf-contract-to-use-service-bus"></a>Implementieren des WCF-Vertrags für die Verwendung von Service Bus
 Zum Erstellen eines Service Bus Relays müssen Sie zuerst den Vertrag erstellen. Dieser wird mithilfe einer Schnittstelle definiert. Weitere Informationen zum Erstellen der Schnittstelle finden Sie im vorherigen Schritt. Der nächste Schritt ist das Implementieren der Schnittstelle. Dies umfasst das Erstellen einer Klasse namens `EchoService`, welche die benutzerdefinierte `IEchoContract`-Schnittstelle implementiert. Nachdem Sie die Schnittstelle implementiert haben, konfigurieren Sie die Schnittstelle mithilfe einer "App.config"-Konfigurationsdatei. Die Konfigurationsdatei enthält die erforderlichen Informationen für die Anwendung, wie z. B. den Namen des Diensts, den Namen des Vertrags und den Typ des Protokolls, das für die Kommunikation mit Service Bus verwendet wird. Der für diese Aufgaben verwendete Code wird im Beispiel nach dem Verfahren bereitgestellt. Eine allgemeinere Darstellung der Implementierung eines Dienstvertrags finden Sie in der WCF-Dokumentation unter [Implementieren von Dienstverträgen](https://msdn.microsoft.com/library/ms733764.aspx).
 
-1. Erstellen Sie eine neue Klasse namens `EchoService` direkt unterhalb der Definition der `IEchoContract`-Schnittstelle. Die `EchoService`-Klasse implementiert die `IEchoContract`-Schnittstelle. 
-   
+1. Erstellen Sie eine neue Klasse namens `EchoService` direkt unterhalb der Definition der `IEchoContract`-Schnittstelle. Die `EchoService`-Klasse implementiert die `IEchoContract`-Schnittstelle.
+
     ```
     class EchoService : IEchoContract
     {
     }
     ```
-   
+
     Ähnlich wie bei anderen Schnittstellenimplementierungen können Sie die Definition in einer anderen Datei implementieren. In diesem Tutorial befindet sich die Implementierung allerdings in derselben Datei wie die Schnittstellendefinition und die `Main`-Methode.
 2. Wenden Sie das [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx)-Attribut auf die `IEchoContract`-Schnittstelle an. Das Attribut gibt den Dienstnamen und den Namespace an. Die `EchoService`-Klasse sieht dann wie folgt aus:
-   
+
     ```
     [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     class EchoService : IEchoContract
     {
     }
     ```
-3. Implementieren Sie die `Echo`-Methode, die in der `IEchoContract`-Schnittstelle in der `EchoService`-Klasse definiert ist. 
-   
+3. Implementieren Sie die `Echo`-Methode, die in der `IEchoContract`-Schnittstelle in der `EchoService`-Klasse definiert ist.
+
     ```
     public string Echo(string text)
     {
@@ -149,31 +153,31 @@ Zum Erstellen eines Service Bus Relays müssen Sie zuerst den Vertrag erstellen.
 ### <a name="to-define-the-configuration-for-the-service-host"></a>So definieren Sie die Konfiguration für den Diensthost
 1. Die Konfigurationsdatei ist einer WCF-Konfigurationsdatei sehr ähnlich. Sie enthält den Dienstnamen, den Endpunkt (den Speicherort, den Service Bus für Clients und Hosts zur Kommunikation bereitstellt) und die Bindung (den Typ des Protokolls, das für die Kommunikation verwendet wird). Der Hauptunterschied besteht darin, dass dieser konfigurierte Dienstendpunkt auf eine [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx)-Bindung verweist, die nicht Bestandteil von .NET Framework ist. [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) ist eine der Bindungen, die durch Service Bus definiert werden.
 2. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei „App.config“, um sie im Visual Studio-Editor zu öffnen.
-3. Ersetzen Sie im `<appSettings>`-Element die Platzhalter durch den Namen Ihres Dienstnamespace und den SAS-Schlüssel, den Sie in einem vorherigen Schritt kopiert haben. 
+3. Ersetzen Sie im `<appSettings>`-Element die Platzhalter durch den Namen Ihres Dienstnamespace und den SAS-Schlüssel, den Sie in einem vorherigen Schritt kopiert haben.
 4. Fügen Sie innerhalb der `<system.serviceModel>`-Tags ein `<services>`-Element hinzu. Sie können mehrere Service Bus-Anwendungen in einer einzigen Konfigurationsdatei definieren. In diesem Tutorial wird jedoch nur eine Anwendung definiert.
-   
+
     ```
     <?xmlversion="1.0"encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
-   
+
         </services>
       </system.serviceModel>
     </configuration>
     ```
 5. Fügen Sie im `<services>`-Element ein `<service>`-Element hinzu, um den Namen des Diensts zu definieren.
-   
+
     ```
     <service name="Microsoft.ServiceBus.Samples.EchoService">
     </service>
     ```
 6. Definieren Sie im `<service>`-Element den Speicherort des Endpunktvertrags sowie den Bindungstyp für den Endpunkt.
-   
+
     ```
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
-   
+
     Der Endpunkt definiert, wo der Client nach der Hostanwendung sucht. Dieser Schritt wird später in diesem Tutorial verwendet, um einen URI zu erstellen, der den Host über Service Bus uneingeschränkt verfügbar macht. Die Bindung deklariert, dass TCP als Protokoll für die Kommunikation mit Service Bus verwendet wird.
 7. Klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die Richtigkeit Ihrer bisherigen Arbeitsschritte zu überprüfen.
 
@@ -219,17 +223,17 @@ Dieser Schritt beschreibt die Ausführung eines Service Bus-Basisdiensts.
 
 ### <a name="to-create-the-service-bus-credentials"></a>So erstellen Sie die Service Bus-Anmeldeinformationen
 1. Erstellen Sie in `Main()` zwei Variablen zum Speichern des Namespace und des SAS-Schlüssels, die aus dem Konsolenfenster gelesen werden.
-   
+
     ```
     Console.Write("Your Service Namespace: ");
     string serviceNamespace = Console.ReadLine();
     Console.Write("Your SAS key: ");
     string sasKey = Console.ReadLine();
     ```
-   
+
     Der SAS-Schlüssel wird später für den Zugriff auf Ihr Service Bus-Projekt verwendet. Der Namespace wird als Parameter an `CreateServiceUri` übergeben, um einen Dienst-URI zu erstellen.
 2. Deklarieren Sie mithilfe eines [TransportClientEndpointBehavior](https://msdn.microsoft.com/library/microsoft.servicebus.transportclientendpointbehavior.aspx)-Objekts, dass ein SAS-Schlüssel als Anmeldeinformationstyp verwendet wird. Fügen Sie den folgenden Code direkt unter dem Code hinzu, den Sie im letzten Schritt hinzugefügt haben.
-   
+
     ```
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
@@ -237,45 +241,45 @@ Dieser Schritt beschreibt die Ausführung eines Service Bus-Basisdiensts.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>So erstellen Sie eine Basisadresse für den Dienst
 1. Erstellen Sie nach dem Code, den Sie im letzten Schritt hinzugefügt haben, eine `Uri`-Instanz für die Basisadresse des Diensts. Dieser URI gibt das Service Bus-Schema, den Namespace und den Pfad der Dienstschnittstelle an.
-   
+
     ```
     Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
     ```
-   
+
     "sb" ist eine Abkürzung für das Service Bus-Schema und zeigt an, dass TCP als Protokoll verwendet wird. Dies wurde zuvor bereits in der Konfigurationsdatei durch Angeben von [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) als Bindung festgelegt.
-   
+
     Für dieses Tutorial lautet der URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
 ### <a name="to-create-and-configure-the-service-host"></a>So erstellen und konfigurieren Sie den Diensthost
 1. Legen Sie den Verbindungsmodus auf `AutoDetect` fest.
-   
+
     ```
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
-   
+
     Der Verbindungsmodus beschreibt das Protokoll, das der Dienst für die Kommunikation mit Service Bus verwendet: HTTP oder TCP. Mithilfe der Standardeinstellung `AutoDetect` versucht der Dienst, eine Verbindung mit Service Bus über TCP herzustellen, wenn verfügbar. Wenn TCP nicht verfügbar ist, wird HTTP verwendet. Beachten Sie, dass sich diese Vorgehensweise von dem Protokoll unterscheidet, das der Dienst für die Clientkommunikation angibt. Dieses Protokoll wird durch die verwendete Bindung festgelegt. Ein Dienst kann z.B. die Bindung [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) verwenden, die angibt, dass ihr Endpunkt (für Service Bus bereitgestellt) über HTTP mit Clients kommuniziert. Der gleiche Dienst kann **ConnectivityMode.AutoDetect** angeben, sodass der Dienst über TCP mit Service Bus kommuniziert.
 2. Erstellen Sie den Diensthost unter Verwendung des URIs, den Sie zuvor in diesem Abschnitt erstellt haben.
-   
+
     ```
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
-   
+
     Der Diensthost ist das WCF-Objekt, das den Dienst instanziiert. Hier wird der Diensttyp übergeben, den Sie erstellen möchten (ein `EchoService`-Typ), sowie die Adresse, unter der der Dienst bereitgestellt werden soll.
 3. Fügen Sie am Anfang der Datei „Program.cs“ Verweise auf [System.ServiceModel.Description](https://msdn.microsoft.com/library/system.servicemodel.description.aspx) und [Microsoft.ServiceBus.Description](https://msdn.microsoft.com/library/microsoft.servicebus.description.aspx) hinzu.
-   
+
     ```
     using System.ServiceModel.Description;
     using Microsoft.ServiceBus.Description;
     ```
 4. Konfigurieren Sie in `Main()` den Endpunkt so, dass öffentlicher Zugriff ermöglicht wird.
-   
+
     ```
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
-   
+
     Durch diesen Schritt wird Service Bus darüber informiert, dass Ihre Anwendung durch Untersuchen des Service Bus-ATOM-Feeds für Ihr Projekt öffentlich angezeigt werden kann. Wenn Sie **DiscoveryType** auf **private** festlegen, ist ein Client trotzdem in der Lage, auf den Dienst zuzugreifen. Der Dienst wird jedoch nicht angezeigt, wenn der Client den Service Bus-Namespace durchsucht. Der Client muss stattdessen bereits vorher den Endpunktpfad kennen.
 5. Wenden Sie die Dienstanmeldeinformationen auf die in der Datei "App.config" definierten Dienstendpunkte an:
-   
+
     ```
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
     {
@@ -283,24 +287,24 @@ Dieser Schritt beschreibt die Ausführung eines Service Bus-Basisdiensts.
         endpoint.Behaviors.Add(sasCredential);
     }
     ```
-   
+
     Wie bereits im vorherigen Schritt erwähnt wurde, können Sie in der Konfigurationsdatei mehrere Dienste und Endpunkte deklarieren. Wenn dies der Fall ist, durchläuft der Code die Konfigurationsdatei und sucht nach jedem Endpunkt, auf den die Anmeldeinformationen angewendet werden sollen. Für dieses Tutorial weist die Konfigurationsdatei jedoch nur einen Endpunkt auf.
 
 ### <a name="to-open-the-service-host"></a>So öffnen Sie den Diensthost
 1. Öffnen Sie den Dienst.
-   
+
     ```
     host.Open();
     ```
 2. Informieren Sie den Benutzer, dass der Dienst ausgeführt wird, und erläutern Sie, wie der Dienst heruntergefahren wird.
-   
+
     ```
     Console.WriteLine("Service address: " + address);
     Console.WriteLine("Press [Enter] to exit");
     Console.ReadLine();
     ```
 3. Schließen Sie danach den Diensthost.
-   
+
     ```
     host.Close();
     ```
@@ -387,7 +391,7 @@ namespace Microsoft.ServiceBus.Samples
 Der nächste Schritt besteht darin, eine Service Bus-Basisclientanwendung zu erstellen und den Dienstvertrag zu definieren, der in späteren Schritten implementiert wird. Beachten Sie, dass viele dieser Schritte den Schritten ähneln, die zum Erstellen eines Diensts verwendet werden: Definieren eines Vertrags, Bearbeiten einer App.config-Datei, Verwenden von Anmeldeinformationen zum Herstellen einer Verbindung mit Service Bus usw. Der für diese Aufgaben verwendete Code wird im Beispiel nach dem Verfahren bereitgestellt.
 
 1. Erstellen Sie ein neues Projekt in der aktuellen Visual Studio-Projektmappe für den Client, indem Sie folgendermaßen vorgehen:
-   
+
    1. Klicken Sie im Projektmappen-Explorer in der gleichen Projektmappe, die den Dienst enthält, mit der rechten Maustaste auf die aktuelle Projektmappe (nicht auf das Projekt), und klicken Sie auf **Hinzufügen**. Klicken Sie dann auf **Neues Projekt**.
    2. Klicken Sie im Dialogfeld **Neues Projekt hinzufügen** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**), wählen Sie die Vorlage **Konsolenanwendung** aus, und nennen Sie sie **EchoClient**.
    3. Klicken Sie auf **OK**.
@@ -395,15 +399,15 @@ Der nächste Schritt besteht darin, eine Service Bus-Basisclientanwendung zu ers
 2. Doppelklicken Sie im Projektmappen-Explorer im Projekt **EchoClient** auf die Datei „Program.cs“, um sie im Editor zu öffnen (sofern sie nicht bereits geöffnet ist).
 3. Ändern Sie den Namespacenamen vom Standardnamen `EchoClient` in `Microsoft.ServiceBus.Samples`.
 4. Installieren Sie das [NuGet-Paket für Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus). Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **EchoClient**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
-   
+
     ![][3]
-5. Fügen Sie der „Program.cs“-Datei eine `using`-Anweisung für den Namespace [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) hinzu. 
-   
+5. Fügen Sie der „Program.cs“-Datei eine `using`-Anweisung für den Namespace [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) hinzu.
+
     ```
     using System.ServiceModel;
     ```
 6. Fügen Sie dem Namespace die Dienstvertragsdefinition hinzu, wie im folgenden Beispiel gezeigt. Beachten Sie, dass diese Definition mit der im Projekt **Service** verwendeten Definition identisch ist. Sie sollten diesen Code am Anfang des Namespace `Microsoft.ServiceBus.Samples` hinzufügen.
-   
+
     ```
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     public interface IEchoContract
@@ -411,7 +415,7 @@ Der nächste Schritt besteht darin, eine Service Bus-Basisclientanwendung zu ers
         [OperationContract]
         string Echo(string text);
     }
-   
+
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 7. Drücken Sie **STRG+UMSCHALT+B**, um den Client zu erstellen.
@@ -452,7 +456,7 @@ In diesem Schritt erstellen Sie eine App.config-Datei für eine Clientbasisanwen
 1. Doppelklicken Sie im Projektmappen-Explorer im Projekt **EchoClient** auf **App.config**, um die Datei im Visual Studio-Editor zu öffnen.
 2. Ersetzen Sie im `<appSettings>`-Element die Platzhalter durch den Namen Ihres Dienstnamespace und den SAS-Schlüssel, den Sie in einem vorherigen Schritt kopiert haben.
 3. Fügen Sie im Element "system.serviceModel" ein Element `<client>` hinzu.
-   
+
     ```
     <?xmlversion="1.0"encoding="utf-8"?>
     <configuration>
@@ -462,16 +466,16 @@ In diesem Schritt erstellen Sie eine App.config-Datei für eine Clientbasisanwen
       </system.serviceModel>
     </configuration>
     ```
-   
+
     In diesem Schritt wird deklariert, dass Sie eine Clientanwendung im WCF-Stil definieren.
 4. Definieren Sie im Element `client` den Namen, den Vertrag und den Bindungstyp für den Endpunkt.
-   
+
     ```
     <endpoint name="RelayEndpoint"
                     contract="Microsoft.ServiceBus.Samples.IEchoContract"
                     binding="netTcpRelayBinding"/>
     ```
-   
+
     In diesem Schritt werden der Name des Endpunkts, der im Dienst definierte Vertrag und die Verwendung von TCP durch die Clientanwendung für die Kommunikation mit Service Bus definiert. Der Endpunktname wird im nächsten Schritt verwendet, um diese Endpunktkonfiguration mit dem Dienst-URI zu verknüpfen.
 5. Klicken Sie auf **Datei** und anschließend auf **Alles speichern**.
 
@@ -512,12 +516,12 @@ Einer der Hauptunterschiede besteht jedoch darin, dass die Clientanwendung einen
 
 ### <a name="to-implement-a-client-application"></a>So implementieren Sie eine Clientanwendung
 1. Legen Sie den Verbindungsmodus auf **AutoDetect** fest. Fügen Sie der Anwendung **EchoClient** in der Methode `Main()` den folgenden Code hinzu.
-   
+
     ```
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 2. Definieren Sie Variablen zum Speichern der Werte für den Dienstnamespace und den SAS-Schlüssel, die aus der Konsole gelesen werden.
-   
+
     ```
     Console.Write("Your Service Namespace: ");
     string serviceNamespace = Console.ReadLine();
@@ -525,36 +529,36 @@ Einer der Hauptunterschiede besteht jedoch darin, dass die Clientanwendung einen
     string sasKey = Console.ReadLine();
     ```
 3. Erstellen Sie den URI, der den Speicherort des Hosts in Ihrem Service Bus-Projekt definiert.
-   
+
     ```
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
     ```
 4. Erstellen Sie das Objekt für die Anmeldeinformationen für Ihren Dienstnamespace-Endpunkt.
-   
+
     ```
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 5. Erstellen Sie die Kanalfactory, welche die in der App.config-Datei beschriebene Konfiguration lädt.
-   
+
     ```
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));
     ```
-   
+
     Bei einer Kanalfactory ist handelt es sich um ein WCF-Objekt, das einen Kanal erstellt, über den der Dienst und die Clientanwendungen kommunizieren.
 6. Wenden Sie die Service Bus-Anmeldeinformationen an.
-   
+
     ```
     channelFactory.Endpoint.Behaviors.Add(sasCredential);
     ```
 7. Erstellen und öffnen Sie den Kanal zum Dienst.
-   
+
     ```
     IEchoChannel channel = channelFactory.CreateChannel();
     channel.Open();
     ```
 8. Schreiben Sie die grundlegende Benutzeroberfläche und die Funktionen für das Echo.
-   
+
     ```
     Console.WriteLine("Enter text to echo (or [Enter] to exit):");
     string input = Console.ReadLine();
@@ -571,10 +575,10 @@ Einer der Hauptunterschiede besteht jedoch darin, dass die Clientanwendung einen
         input = Console.ReadLine();
     }
     ```
-   
+
     Beachten Sie, dass der Code die Instanz des Kanalobjekts als Proxy für den Dienst verwendet.
 9. Schließen Sie den Kanal und die Factory.
-   
+
     ```
     channel.Close();
     channelFactory.Close();
@@ -583,38 +587,38 @@ Einer der Hauptunterschiede besteht jedoch darin, dass die Clientanwendung einen
 ## <a name="to-run-the-applications"></a>So führen Sie die Anwendungen aus
 1. Drücken Sie **STRG+UMSCHALT+B**, um die Lösung zu erstellen. Dadurch werden das Clientprojekt und das Dienstprojekt erstellt, die Sie in den vorherigen Schritten erstellt haben.
 2. Vergewissern Sie sich vor dem Ausführen der Clientanwendung, dass die Dienstanwendung ausgeführt wird. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **EchoService**, und klicken Sie anschließend auf **Eigenschaften**.
-3. Klicken Sie im Dialogfeld mit den Projektmappeneigenschaften auf **Startprojekt** und dann auf die Schaltfläche **Mehrere Startprojekte**. Vergewissern Sie sich, dass **EchoService** als erster Eintrag in der Liste angezeigt wird. 
+3. Klicken Sie im Dialogfeld mit den Projektmappeneigenschaften auf **Startprojekt** und dann auf die Schaltfläche **Mehrere Startprojekte**. Vergewissern Sie sich, dass **EchoService** als erster Eintrag in der Liste angezeigt wird.
 4. Legen Sie das Feld **Aktion** sowohl für das Projekt **EchoService** als auch für das Projekt **EchoClient** auf **Starten** fest.
-   
+
     ![][5]
 5. Klicken Sie auf **Projektabhängigkeiten**. Wählen Sie im Feld **Projekte** die Option **EchoClient** aus. Vergewissern Sie sich im Feld **Abhängigkeiten**, dass **EchoService** aktiviert ist.
-   
+
     ![][6]
 6. Klicken Sie auf **OK**, um das Dialogfeld mit den **Eigenschaften** zu schließen.
 7. Drücken Sie **F5**, um beide Projekte auszuführen.
 8. Beide Konsolenfenster werden geöffnet, und Sie werden jeweils zur Angabe des Namespacenamens aufgefordert. Der Dienst muss zuerst ausgeführt werden. Geben Sie daher im Konsolenfenster **EchoService** den Namespace ein, und drücken Sie dann die **EINGABETASTE**.
 9. Als Nächstes werden Sie aufgefordert, Ihren SAS-Schlüssel einzugeben. Geben Sie den SAS-Schlüssel ein, und drücken Sie die EINGABETASTE.
-   
+
     Im Folgenden wird eine Beispielausgabe des Konsolenfensters gezeigt. Beachten Sie, dass die hier bereitgestellten Werte nur Beispiele sind.
-   
+
     `Your Service Namespace: myNamespace`
     `Your SAS Key: <SAS key value>`
-   
+
     Die Dienstanwendung gibt die Adresse, an der sie lauscht, wie im folgenden Beispiel gezeigt im Konsolenfenster aus:
-   
+
     `Service address: sb://mynamespace.servicebus.windows.net/EchoService/`
     `Press [Enter] to exit`
 10. Geben Sie im Konsolenfenster **EchoClient** die gleichen Informationen wie für die Dienstanwendung ein. Geben Sie anhand der vorherigen Schritte die gleichen Dienstnamespace- und SAS-Schlüsselwerte für die Clientanwendung ein.
 11. Nachdem Sie diese Werte eingegeben haben, öffnet der Client einen Kanal zum Dienst und fordert Sie auf, Text einzugeben, wie im folgenden Beispiel für die Konsolenausgabe gezeigt.
-    
-    `Enter text to echo (or [Enter] to exit):` 
-    
+
+    `Enter text to echo (or [Enter] to exit):`
+
     Geben Sie Text ein, der an die Dienstanwendung gesendet werden soll, und drücken Sie die EINGABETASTE. Dieser Text wird über den Echo-Dienstvorgang an den Dienst gesendet und im Dienstkonsolenfenster ähnlich wie in der folgenden Beispielausgabe angezeigt.
-    
+
     `Echoing: My sample text`
-    
+
     Die Clientanwendung empfängt den Rückgabewert des `Echo`-Vorgangs (den ursprünglichen Text) und gibt diesen in ihrem Konsolenfenster aus. Im Folgenden wird eine Beispielausgabe des Clientkonsolenfensters gezeigt.
-    
+
     `Server echoed: My sample text`
 12. Sie können auf diese Weise weitere Textnachrichten vom Client an den Dienst senden. Wenn Sie fertig sind, drücken Sie die EINGABETASTE in den Client- und Dienstkonsolenfenstern, um beide Anwendungen zu beenden.
 
@@ -687,13 +691,13 @@ namespace Microsoft.ServiceBus.Samples
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Dieses Tutorial zeigte das Erstellen einer Service Bus-Clientanwendung und eines Service Bus-Clientdiensts mithilfe der Service Bus-Relayfunktionen.  Ein ähnliches Tutorial, in dem die [Messagingfunktionen](../service-bus-messaging/service-bus-messaging-overview.md#Brokered-messaging) von Service Bus beschrieben werden, finden Sie im [.NET-Tutorial zu Service Bus-Brokermessaging](../service-bus-messaging/service-bus-brokered-tutorial-dotnet.md).
+Dieses Tutorial zeigte das Erstellen einer Service Bus-Clientanwendung und eines Service Bus-Clientdiensts mithilfe der Service Bus-Relayfunktionen.  Ein ähnliches Tutorial, in dem die [Messagingfunktionen](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) von Service Bus beschrieben werden, finden Sie im [.NET-Tutorial zu Service Bus-Brokermessaging](../service-bus-messaging/service-bus-brokered-tutorial-dotnet.md).
 
 Weitere Informationen zu Service Bus finden Sie in den folgenden Themen:
 
-* [Übersicht über Service Bus-Messaging](../service-bus-messaging/service-bus-messaging-overview.md)
-* [Service Bus – Grundlagen](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
-* [Service Bus-Architektur](../service-bus/service-bus-architecture.md)
+* [Übersicht über Service Bus-Messaging](../service-bus-messaging/service-bus-messaging-overview.md)
+* [Service Bus – Grundlagen](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
+* [Service Bus-Architektur](../service-bus-messaging/service-bus-architecture.md)
 
 [klassischen Azure-Portal]: http://manage.windowsazure.com
 
@@ -706,6 +710,6 @@ Weitere Informationen zu Service Bus finden Sie in den folgenden Themen:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen des DB2-Connectors zu Ihren Logik-Apps | Microsoft Docs
-description: Übersicht über den DB2-Connector mit REST-API-Parametern
-services: ''
-documentationcenter: ''
+title: "Hinzufügen des DB2-Connectors zu Ihren Logik-Apps | Microsoft Docs"
+description: "Übersicht über den DB2-Connector mit REST-API-Parametern"
+services: 
+documentationcenter: 
 author: gplarsen
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 1c6b010c-beee-496d-943a-a99e168c99aa
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d9b00d1db69951ce183f05c8237db02cd046931b
+
 
 ---
 # <a name="get-started-with-the-db2-connector"></a>Erste Schritte mit dem DB2-Connector
@@ -55,7 +59,7 @@ Innerhalb der Logik-App können Sie eine Aktion zum Auflisten von Tabellen in ei
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie den **Namen**, z. B. `Db2getTables`**Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
+2. Geben Sie **Name**, z. B. `Db2getTables`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
 
 ### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
 1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
@@ -125,7 +129,7 @@ Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer DB2-Tabelle 
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie den **Namen**, z. B. `Db2getRows`**Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
+2. Geben Sie **Name**, z. B. `Db2getRows`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
 
 ### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
 1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
@@ -162,7 +166,7 @@ Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer DB2-Tabel
 
 ### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie den **Namen**, z. B. `Db2insertRow`**Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
+2. Geben Sie **Name**, z. B. `Db2insertRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
 
 ### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
 1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
@@ -170,7 +174,7 @@ Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer DB2-Tabel
 3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
 4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
 5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen** den Text **db2** ein, und klicken Sie dann auf **DB2 - Insert row (Preview)** (DB2 – Zeile einfügen [Vorschau]).
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
+6. Wählen Sie in der Aktion **DB2 - Insert row (Preview)** (DB2 – Zeile einfügen [Vorschau]) die Option **Verbindung ändern** aus. 
 7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine Verbindung aus. Wählen Sie z. B. **hisdemo2**.
    
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
@@ -225,7 +229,7 @@ Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer DB2-Tabelle d
 3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
 4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
 5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen** den Text **db2** ein, und klicken Sie dann auf **DB2 - Update row (Preview)** (DB2 – Zeile aktualisieren [Vorschau]).
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
+6. Wählen Sie in der Aktion **DB2 - Update row (Preview)** (DB2 – Zeile aktualisieren [Vorschau]) die Option **Verbindung ändern** aus. 
 7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
    
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
@@ -252,7 +256,7 @@ Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer DB2-Tabell
 3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
 4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
 5. Wählen Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen** den Text **db2** aus, und klicken Sie dann auf **DB2 - Delete row (Preview)** (DB2 – Zeile löschen [Vorschau]).
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
+6. Wählen Sie in der Aktion **DB2 - Delete row (Preview)** (DB2 – Zeile löschen [Vorschau]) die Option **Verbindung ändern** aus. 
 7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
    
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
@@ -407,6 +411,9 @@ Dieser Connector unterstützt die folgenden IBM DB2-Plattformen und -Versionen s
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -2,36 +2,43 @@
 title: Verschieben von Daten in/aus DocumentDB | Microsoft Docs
 description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure DocumentDB verschoben werden.
 services: data-factory, documentdb
-documentationcenter: ''
+documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
-
+ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/02/2016
 ms.author: jingwang
+translationtype: Human Translation
+ms.sourcegitcommit: a86d5fb7c0215293e281a52d0f805053bb7b7c11
+ms.openlocfilehash: 935de6643bbfdc8674836a33ce0dfe77df0e2d1e
+
 
 ---
 # <a name="move-data-to-and-from-documentdb-using-azure-data-factory"></a>Verschieben von Daten in und aus DocumentDB mithilfe von Azure Data Factory
 Dieser Artikel beschreibt die Verwendung der Kopieraktivität in einer Azure Data Factory, um Daten aus einem anderen Datenspeicher in Azure DocumentDB und aus DocumentDB in einen anderen Datenspeicher zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
-In den folgenden Beispielen wird veranschaulicht, wie Sie Daten in und aus Azure DocumentDB und Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.  
+In den folgenden Beispielen wird veranschaulicht, wie Sie Daten in und aus Azure DocumentDB und Azure Blob Storage kopieren. Allerdings können Daten **direkt** aus einer der Quellen in eine der unterstützten Senken kopiert werden. Weitere Informationen finden Sie im Abschnitt „Unterstützte Datenspeicher und Formate“ unter [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md).  
 
 > [!NOTE]
 > Das Kopieren von Daten aus lokalen/Azure IaaS-Datenspeichern in Azure DocumentDB und umgekehrt wird ab Version 2.1 des Datenverwaltungsgateways unterstützt.
-> 
-> 
+>
+>
 
-## <a name="sample:-copy-data-from-documentdb-to-azure-blob"></a>Beispiel: Kopieren von Daten aus DocumentDB in ein Azure-Blob
+## <a name="supported-versions"></a>Unterstützte Versionen
+Dieser DocumentDB-Connector unterstützt das Kopieren von Daten aus/in einzelne DocumentDB-Partitionssammlungen und partitionierte DocumentDB-Sammlungen. [DocDB für MongoDB](../documentdb/documentdb-protocol-mongodb.md) wird nicht unterstützt.
+
+## <a name="sample-copy-data-from-documentdb-to-azure-blob"></a>Beispiel: Kopieren von Daten aus DocumentDB in ein Azure-Blob
 Das nachstehende Beispiel zeigt Folgendes:
 
 1. Einen verknüpften Dienst des Typs [DocumentDb](#azure-documentdb-linked-service-properties)
-2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 
-3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 
+2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md)
+3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties)
 4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
 5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [DocumentDbCollectionSource](#azure-documentdb-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
@@ -108,7 +115,7 @@ Daten werden stündlich in ein neues Blob kopiert, wobei der Pfad des Blobs jewe
       }
     }
 
-JSON-Beispieldokument in der Sammlung "Person" in einer DocumentDB-Datenbank: 
+JSON-Beispieldokument in der Sammlung "Person" in einer DocumentDB-Datenbank:
 
     {
       "PersonId": 2,
@@ -119,9 +126,13 @@ JSON-Beispieldokument in der Sammlung "Person" in einer DocumentDB-Datenbank:
       }
     }
 
-DocumentDB unterstützt das Abfragen von Dokumenten mittels einer SQL-ähnlichen Syntax über hierarchische JSON-Dokumente. 
+DocumentDB unterstützt das Abfragen von Dokumenten mittels einer SQL-ähnlichen Syntax über hierarchische JSON-Dokumente.
 
-Beispiel: "SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person"
+Beispiel: 
+
+```sql
+SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
+```
 
 Die folgende Pipeline kopiert Daten aus der Sammlung "Person" in der DocumentDB-Datenbank in ein Azure-Blob. Als Teil der Kopieraktivität wurden Eingabe- und Ausgabedataset angegeben.  
 
@@ -165,13 +176,13 @@ Die folgende Pipeline kopiert Daten aus der Sammlung "Person" in der DocumentDB-
       }
     }
 
-## <a name="sample:-copy-data-from-azure-blob-to-azure-documentdb"></a>Beispiel: Kopieren von Daten aus einem Azure-Blob in Azure DocumentDB
+## <a name="sample-copy-data-from-azure-blob-to-azure-documentdb"></a>Beispiel: Kopieren von Daten aus einem Azure-Blob in Azure DocumentDB
 Das nachstehende Beispiel zeigt Folgendes:
 
 1. Einen verknüpften Dienst des Typs [DocumentDb](#azure-documentdb-linked-service-properties)
-2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
+2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md)
 3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 
+4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties)
 5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) und [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties) verwendet
 
 Im Beispiel werden Daten aus dem Azure-Blob in Azure DocumentDB kopiert. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
@@ -279,7 +290,7 @@ Im Beispiel werden Daten in eine Sammlung namens "Person" kopiert.
       }
     }
 
-Die folgende Pipeline kopiert Daten aus dem Azure-Blob in die Sammlung "Person" in der DocumentDB-Datenbank. Als Teil der Kopieraktivität wurden Eingabe- und Ausgabedataset angegeben. 
+Die folgende Pipeline kopiert Daten aus dem Azure-Blob in die Sammlung "Person" in der DocumentDB-Datenbank. Als Teil der Kopieraktivität wurden Eingabe- und Ausgabedataset angegeben.
 
     {
       "name": "BlobToDocDbPipeline",
@@ -323,7 +334,7 @@ Die folgende Pipeline kopiert Daten aus dem Azure-Blob in die Sammlung "Person" 
       }
     }
 
-Wenn die Beispielblobeingabe folgendermaßen lautet: 
+Wenn die Beispielblobeingabe folgendermaßen lautet:
 
     1,John,,Doe
 
@@ -342,7 +353,7 @@ Dann sieht die Ausgabe-JSON in "DocumentDB" so aus:
 "DocumentDB" ist ein NoSQL-Speicher für JSON-Dokumente, in denen geschachtelte Strukturen zulässig sind. Azure Data Factory ermöglicht es dem Benutzer, über einen **nestingSeparator** eine Hierarchie anzugeben. In diesem Beispiel ist dies „.“. Mit dem Trennzeichen generiert die Kopieraktivität das Objekt "Name" mit den drei untergeordneten Elementen "First", "Middle" und "Last" gemäß "Name.First", "Name.Middle" und "Name.Last" in der Tabellendefinition.
 
 ## <a name="azure-documentdb-linked-service-properties"></a>Eigenschaften des mit Azure DocumentDB verknüpften Diensts
-Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure DocumentDB verknüpften Dienst spezifisch sind. 
+Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure DocumentDB verknüpften Dienst spezifisch sind.
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
 | --- | --- | --- |
@@ -377,7 +388,7 @@ Beispiel:
     }
 
 ### <a name="schema-by-data-factory"></a>Schema per Data Factory
-Bei schemafreien Datenspeichern, z. B. DocumentDB, leitet der Data Factory-Dienst das Schema auf eine der folgenden Weisen ab:  
+Bei schemafreien Datenspeichern, z. B. DocumentDB, leitet der Data Factory-Dienst das Schema auf eine der folgenden Weisen ab:  
 
 1. Wenn Sie die Struktur der Daten mithilfe der **structure** -Eigenschaft in der Datasetdefinition angeben, berücksichtigt der Data Factory-Dienst diese Struktur als das Schema. Wenn in diesem Fall eine Zeile keinen Wert für eine Spalte enthält, wird ein NULL-Wert für sie angegeben.
 2. Wenn Sie die Struktur der Daten nicht mithilfe der **structure** -Eigenschaft in der Datasetdefinition angeben, leitet der Data Factory-Dienst das Schema unter Verwendung der ersten Zeile in den Daten ab. Wenn in diesem Fall die erste Zeile nicht das vollständige Schema enthält, fehlen im Ergebnis des Kopiervorgangs einige Spalten.
@@ -402,35 +413,46 @@ Wenn „source“ bei der Kopieraktivität den Typ **DocumentDbCollectionSource*
 
 | **Eigenschaft** | **Beschreibung** | **Zulässige Werte** | **Erforderlich** |
 | --- | --- | --- | --- |
-| nestingSeparator |Ein Sonderzeichen im Quellspaltennamen, um anzuzeigen, dass das geschachtelte Dokument erforderlich ist. <br/><br/>Zum Beispiel oben: `Name.First` in der Ausgabetabelle erzeugt im DocumentDB-Dokument die folgende JSON-Struktur:<br/><br/>"Name": {<br/>  "First": "John"<br/>}, |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird.<br/><br/>Standardwert ist `.` (Punkt). |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. <br/><br/>Standardwert ist `.` (Punkt). |
-| writeBatchSize |Gibt die Anzahl von parallelen Anforderungen an den DocumentDB-Dienst zum Erstellen von Dokumenten an.<br/><br/>Sie können die Leistung beim Kopieren von Daten in bzw. aus DocumentDB mit dieser Eigenschaft optimieren. Sie können eine bessere Leistung erwarten, wenn Sie "writeBatchSize" heraufsetzen, da mehr parallele Anforderungen an DocumentDB gesendet werden. Sie sollten aber eine Drosselung vermeiden, die zur Ausgabe einer Fehlermeldung führen kann: „Anforderungsrate ist hoch“.<br/><br/>Die Drosselung hängt von einer Reihe von Faktoren ab, einschließlich Größe der Dokumente, Anzahl von Begriffen in Dokumenten, Indizierung der Richtlinie der Zielsammlung usw. Für Kopiervorgänge können Sie eine bessere Sammlung (z. B. S3) verwenden, um den optimalen verfügbaren Durchsatz zu erhalten (2.500 Anforderungseinheiten/Sekunde). |Integer |Nein (Standard = 10000) |
+| nestingSeparator |Ein Sonderzeichen im Quellspaltennamen, um anzuzeigen, dass das geschachtelte Dokument erforderlich ist. <br/><br/>Zum Beispiel oben: `Name.First` in der Ausgabetabelle erzeugt im DocumentDB-Dokument die folgende JSON-Struktur:<br/><br/>"Name": {<br/>    "First": "John"<br/>}, |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird.<br/><br/>Standardwert ist `.` (Punkt). |Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. <br/><br/>Standardwert ist `.` (Punkt). |
+| writeBatchSize |Gibt die Anzahl von parallelen Anforderungen an den DocumentDB-Dienst zum Erstellen von Dokumenten an.<br/><br/>Sie können die Leistung beim Kopieren von Daten in bzw. aus DocumentDB mit dieser Eigenschaft optimieren. Sie können eine bessere Leistung erwarten, wenn Sie "writeBatchSize" heraufsetzen, da mehr parallele Anforderungen an DocumentDB gesendet werden. Sie sollten aber eine Drosselung vermeiden, die zur Ausgabe einer Fehlermeldung führen kann: „Anforderungsrate ist hoch“.<br/><br/>Die Drosselung hängt von einer Reihe von Faktoren ab, einschließlich Größe der Dokumente, Anzahl von Begriffen in Dokumenten, Indizierung der Richtlinie der Zielsammlung usw. Für Kopiervorgänge können Sie eine bessere Sammlung (z. B. S3) verwenden, um den optimalen verfügbaren Durchsatz zu erhalten (2.500 Anforderungseinheiten/Sekunde). |Integer |Nein (Standard = 5) |
 | writeBatchTimeout |Die Wartezeit für den Abschluss des Vorgangs. |Zeitraum<br/><br/>  Beispiel: 00:30:00 (30 Minuten) |Nein |
 
+## <a name="importexport-json-documents"></a>Importieren oder Exportieren von JSON-Dokumenten
+Mit diesem DocumentDB-Connector können Sie problemlos
+
+* JSON-Dokumente aus verschiedenen Quellen in DocumentDB importieren, z.B. aus Azure Blob Storage, Azure Data Lake, aus einem lokalen Dateisystem oder anderen dateibasierten Speichern, die von Azure Data Factory unterstützt werden.
+* JSON-Dokumente aus DocumentDB-Sammlungen in verschiedene dateibasierte Speicher exportieren.
+* Daten zwischen zwei DocumentDB-Sammlungen unverändert migrieren.
+
+Um solche schemaunabhängen Kopien zu erstellen, geben Sie auf keinen Fall den Abschnitt „Structure“ im Eingabedataset oder die Eigenschaft „nestingSeparator“ für DocumentDB-Quellen/Senken in der Kopieraktivität an. Informationen zu JSON-Formatkonfigurationen finden Sie im Abschnitt „Angeben des Formats“ des entsprechenden Themas zu dateibasierten Connectors.
+
 ## <a name="appendix"></a>Anhang
-1. **Frage:** 
+1. **Frage:**
     Unterstützt die Kopieraktivität das Aktualisieren von vorhandenen Datensätzen?
-   
-    **Antwort:** 
+
+    **Antwort:**
     Nein.
-2. **Frage:** 
+2. **Frage:**
     Wie wird bei einer Wiederholung eines Kopiervorgangs nach DocumentDB mit bereits kopierten Datensätzen umgegangen?
-   
-    **Antwort:** 
+
+    **Antwort:**
     Wenn Datensätze über ein ID-Feld verfügen und beim Kopiervorgang versucht wird, einen Datensatz mit der gleichen ID einzufügen, löst der Kopiervorgang einen Fehler aus.  
 3. **Frage:**
-    Unterstützt Data Factory die [bereichs- oder hashbasierte Datenpartitionierung](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)? 
-   
+    Unterstützt Data Factory die [bereichs- oder hashbasierte Datenpartitionierung](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)?
+
     **Antwort:**
-    Nein. 
+    Nein.
 4. **Frage:**
     Können mehrere DocumentDB-Auflistungen für eine Tabelle angegeben werden?
-   
+
     **Antwort:**
     Nein. Zurzeit kann nur eine Auflistung angegeben werden.
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

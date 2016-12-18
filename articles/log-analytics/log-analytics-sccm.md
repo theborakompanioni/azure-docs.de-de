@@ -2,18 +2,22 @@
 title: Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics | Microsoft Docs
 description: Dieser Artikel beschreibt die Schritte zum Verbinden von Configuration Manager mit Log Analytics und den Beginn der Analyse von Daten.
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 11/09/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: 240db424645778c0fcd0f8abd17411e58bd95ab9
+
 
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics
@@ -36,25 +40,25 @@ Das folgende Verfahren gibt dem Azure-Verwaltungsportal Zugriffsberechtigungen f
 
 > [!NOTE]
 > Sie müssen dem Configuration Manager Berechtigungen für OMS geben. Andernfalls erhalten Sie eine Fehlermeldung, wenn Sie den Konfigurations-Assistenten in Configuration Manager verwenden.
-> 
-> 
+>
+>
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und klicken Sie auf **Durchsuchen** > **Log Analytics (OMS)**, um das Blatt „Log Analytics (OMS)“ zu öffnen.  
 2. Auf dem Blatt **Log Analytics (OMS)** klicken Sie auf **Hinzufügen** zum Öffnen des Blatts **OMS-Arbeitsbereich**.  
    ![OMS-Blatt](./media/log-analytics-sccm/sccm-azure01.png)
 3. Auf dem Blatt **OMS-Arbeitsbereich** geben Sie die folgenden Informationen an, und klicken Sie anschließend auf **OK**.
-   
+
    * **OMS-Arbeitsbereich**
    * **Abonnement**
    * **Ressourcengruppe**
    * **Standort**
    * **Preisstufe**  
      ![OMS-Blatt](./media/log-analytics-sccm/sccm-azure02.png)  
-     
+
      > [!NOTE]
      > Das obige Beispiel erstellt eine neue Ressourcengruppe. Die Ressourcengruppe wird in diesem Beispiel nur dazu verwendet, dem Configuration Manager Berechtigungen für den OMS-Arbeitsbereich zu geben.
-     > 
-     > 
+     >
+     >
 4. Klicken Sie auf **Durchsuchen** > **Ressourcengruppen** zum Öffnen des Blatts **Ressourcengruppen**.
 5. Klicken SiIm Blatt **Ressourcengruppen** auf die Ressourcengruppe, die Sie oben erstellt haben, um das Blatt „Einstellungen“ &lt;Ressourcengruppenname&gt; zu öffnen.  
    ![Blatt „Einstellungen“ Ressourcengruppe](./media/log-analytics-sccm/sccm-azure03.png)
@@ -71,7 +75,7 @@ Zum Hinzufügen einer OMS-Verbindung muss die Configuration Manager-Umgebung ein
 
 1. Wählen Sie im Arbeitsbereich **Verwaltung** des Configuration Manager **OMS-Connector**. Daraufhin wird der **Assistent zum Hinzufügen einer OMS-Verbindung** geöffnet. Wählen Sie **Weiter**.
 2. Auf dem Bildschirm **Allgemein** vergewissern Sie sich, dass Sie die folgenden Aktionen durchgeführt haben und dass Sie für jedes Element Detailinformationen haben, und wählen Sie anschließend **Weiter** aus.
-   
+
    1. Im Azure-Verwaltungsportal haben Sie Configuration Manager als Webanwendung und/oder Web API-App registriert und Sie haben die [Client-ID von der Registrierung](../active-directory/active-directory-integrating-applications.md).
    2. Im Azure-Verwaltungsportal haben Sie einen geheimen App-Schlüssel für die registrierte Anwendung in Azure Active Directory erstellt.  
    3. Im Azure-Verwaltungsportal haben Sie der registrierten Web-App eine Zugriffsberechtigung für OMS bereitgestellt.  
@@ -86,8 +90,8 @@ Zum Hinzufügen einer OMS-Verbindung muss die Configuration Manager-Umgebung ein
 
 > [!NOTE]
 > Sie müssen OMS mit der obersten Ebene in der Hierarchie verbinden. Wenn Sie OMS mit einem eigenständigen primären Standort verbinden und dann eine zentralen Verwaltung der Umgebung hinzufügen, müssen Sie die OMS-Verbindung innerhalb der neuen Hierarchie löschen und neu erstellen.
-> 
-> 
+>
+>
 
 Nachdem Sie Configuration Manager mit OMS verknüpft haben, können Sie Sammlungen hinzufügen oder entfernen und die Eigenschaften der OMS-Verbindung anzeigen.
 
@@ -126,6 +130,8 @@ Wenn Sie auf eine klicken, wird die Suche geöffnet, wobei entweder alle importi
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuche](log-analytics-log-searches.md) für ausführliche Informationen zu den Configuration Manager-Daten.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

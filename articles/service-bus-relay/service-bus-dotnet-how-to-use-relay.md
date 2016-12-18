@@ -1,30 +1,34 @@
 ---
-title: Verwenden von Service Bus Relay mit .NET | Microsoft Docs
-description: Erfahren Sie mehr über die Verwendung des Azure Service Bus Relay-Diensts zum Herstellen einer Verbindung zwischen zwei Anwendungen, die an unterschiedlichen Standorten gehostet sind.
-services: service-bus
+title: Verwenden des Service Bus WCF Relay-Diensts mit .NET | Microsoft Docs
+description: "Erfahren Sie mehr über die Verwendung des Azure Service Bus Relay-Diensts zum Herstellen einer Verbindung zwischen zwei Anwendungen, die an unterschiedlichen Standorten gehostet sind."
+services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 5493281a-c2e5-49f2-87ee-9d3ffb782c75
+ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9f7f9dc2eb6332c8f179fc35c9f746cbe5a7985e
+
 
 ---
-# <a name="how-to-use-the-azure-service-bus-relay-service"></a>Verwenden des Azure Service Bus Relay-Diensts
+# <a name="how-to-use-the-service-bus-wcf-relay-with-net"></a>Verwenden des Service Bus WCF Relay-Diensts mit .NET
 In diesem Artikel wird die Verwendung des Service Bus Relay-Diensts beschrieben. Die Beispiele sind in C# geschrieben und nutzen die Windows Communication Foundation (WCF)-API mit den Erweiterungen, die in der Service Bus-Assembly enthalten sind. Weitere Informationen zu Service Bus Relay finden Sie in der Übersicht [Service Bus-Relaymessaging](service-bus-relay-overview.md).
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="what-is-the-service-bus-relay?"></a>Was ist Service Bus Relay?
+## <a name="what-is-the-service-bus-relay"></a>Was ist Service Bus Relay?
 Der [Service Bus *Relay*-Dienst](service-bus-relay-overview.md) ermöglicht Ihnen die Erstellung von Hybridanwendungen, die sowohl in einem Azure-Datencenter als auch in Ihrer eigenen lokalen Unternehmensumgebung ausgeführt werden. Der Service Bus Relay-Dienst erleichtert dies, indem er Ihnen die Möglichkeit bietet, WCF-Dienste (Windows Communication Foundation), die sich in einem Unternehmensnetzwerk befinden, sicher in der öffentlichen Cloud bereitzustellen, ohne dass eine Firewallverbindung eröffnet werden muss oder intrusive Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
 
-![Relaykonzepte](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
+![WCF Relay-Konzepte](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
 Der Service Bus Relay-Dienst bietet Ihnen die Möglichkeit, WCF-Dienste in Ihrer bestehenden Unternehmensumgebung zu hosten. Sie können die Überwachung auf eingehende Sitzungen und Anforderungen für diese WCF-Dienste dann an den Service Bus-Dienst unter Azure delegieren. Auf diese Weise erhalten Sie die Möglichkeit, diese Dienste für Anwendungscode unter Azure, für mobile Mitarbeiter oder für Extranetpartnerumgebungen bereitzustellen. Mit Service Bus können Sie auf sichere Weise steuern, welche Personen auf welcher Optimierungsstufe Zugriff auf diese Dienste erhalten. Der Dienst stellt ein leistungsstarkes und sicheres Verfahren zur Verfügung, um Anwendungsfunktionen und Daten aus bestehenden Unternehmenslösungen bereitzustellen und in der Cloud davon zu profitieren.
 
@@ -117,7 +121,7 @@ sh.Close();
 
 In dem Beispiel erstellen Sie zwei Endpunkte für dieselbe Vertragsimplementierung. Einer ist lokal und einer wird über Service Bus projiziert. Die zentralen Unterschiede sind die Bindungen. [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) für den lokalen Endpunkt und [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) für den Service Bus-Endpunkt und die Adressen. Der lokale Endpunkt verfügt über eine lokale Netzwerkadresse mit einem bestimmten Port. Der Service Bus-Endpunkt hat eine Endpunktadresse, die sich aus der Zeichenfolge `sb`, Ihrem Namespacenamen und dem Pfad „solver“ zusammensetzt. Dies führt zum URI `sb://[serviceNamespace].servicebus.windows.net/solver`, mit dem der Dienstendpunkt als Service Bus-TCP-Endpunkt mit vollqualifiziertem externem DNS-Namen identifiziert wird. Wenn Sie Code, der die Platzhalter ersetzt, in die `Main`-Funktion der Anwendung **Service** einfügen, erhalten Sie einen funktionierenden Dienst. Wenn Ihr Dienst exklusiv für Service Bus lauschen soll, entfernen Sie die lokale Endpunktdeklaration.
 
-### <a name="configure-a-service-host-in-the-app.config-file"></a>Konfigurieren eines Diensthosts in der Datei „App.config“
+### <a name="configure-a-service-host-in-the-appconfig-file"></a>Konfigurieren eines Diensthosts in der Datei „App.config“
 Sie können den Host auch mithilfe der Datei "App.config" konfigurieren. Der Diensthostingcode wird in diesem Fall im nächsten Beispiel angezeigt.
 
 ```
@@ -182,7 +186,7 @@ using (var ch = cf.CreateChannel())
 
 Sie können jetzt den Client und den Dienst erstellen und ausführen (führen Sie zuerst den Dienst aus). Der Client ruft den Dienst auf und gibt **9** aus. Der Client und der Server können auf verschiedenen Computern ausgeführt werden (selbst über Netzwerke hinweg). Die Kommunikation funktioniert weiterhin. Der Clientcode kann ebenfalls in der Cloud oder lokal ausgeführt werden.
 
-#### <a name="configure-a-client-in-the-app.config-file"></a>Konfigurieren eines Clients in der Datei „App.config“
+#### <a name="configure-a-client-in-the-appconfig-file"></a>Konfigurieren eines Clients in der Datei „App.config“
 Der folgende Code zeigt, wie Sie den Client auch mithilfe der Datei "App.config" konfigurieren können.
 
 ```
@@ -219,7 +223,7 @@ Die Endpunktdefinitionen werden in die Datei "App.config" verschoben. Das folgen
 Nachdem Sie nun mit den Grundlagen des Service Bus Relay-Diensts vertraut sind, können Sie auf die Informationen unter den folgenden Links zugreifen und sich weiter informieren.
 
 * [Übersicht über Service Bus-Relaymessaging](service-bus-relay-overview.md)
-* [Übersicht über die Architektur von Azure Service Bus](../service-bus/service-bus-fundamentals-hybrid-solutions.md)
+* [Übersicht über die Architektur von Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * Laden Sie Service Bus-Beispiele unter [Azure-Beispiele][Azure-Beispiele] herunter, oder sehen Sie sich die [Übersicht über Service Bus-Beispiele][Übersicht über Service Bus-Beispiele] an.
 
 [SAS-Authentifizierung bei Service Bus]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md
@@ -227,6 +231,7 @@ Nachdem Sie nun mit den Grundlagen des Service Bus Relay-Diensts vertraut sind, 
 [Übersicht über Service Bus-Beispiele]: ../service-bus-messaging/service-bus-samples.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

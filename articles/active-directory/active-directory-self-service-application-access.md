@@ -2,11 +2,11 @@
 title: Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory | Microsoft Docs
 description: Dieser Artikel beschreibt, wie der Self-Service-Anwendungszugriff und die delegierte Verwaltung mit Azure Active Directory aktiviert werden.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 448a7fe8-a162-475e-9ba2-2e3ab59302bc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2016
 ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c14be0292b08419ebaf4270d7e451e930d43810b
+
 
 ---
 # <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Self-Service-Anwendungszugriff und delegierte Verwaltung mit Azure Active Directory
@@ -83,7 +87,7 @@ Mit der Kachel **Benutzer hinzufügen** können genehmigende Personen ausgewähl
 ### <a name="manage-users"></a>Benutzer verwalten
 Mit der Kachel **Benutzer verwalten** können genehmigende Personen durch Aktualisieren oder Entfernen direkt steuern, welche Benutzer Zugriff auf die Anwendung haben. 
 
-### <a name="configure-password-sso-credentials-(if-applicable)"></a>Kennwortbasierte SSO-Anmeldeinformationen konfigurieren (falls zutreffend)
+### <a name="configure-password-sso-credentials-if-applicable"></a>Kennwortbasierte SSO-Anmeldeinformationen konfigurieren (falls zutreffend)
 Die Kachel **Konfigurieren** wird nur angezeigt, wenn die Anwendung vom IT-Administrator zur Verwendung der kennwortbasierten einmaligen Anmeldung konfiguriert wurde und der Administrator der genehmigenden Person die Möglichkeit gewährt hat, die kennwortbasierten SSO-Anmeldeinformationen wie zuvor beschrieben festzulegen. Bei Auswahl dieser Möglichkeit erhält die genehmigende Person mehrere Optionen, wie die Anmeldeinformationen an zugewiesene Benutzer weitergegeben werden:
 
 ![][3]
@@ -102,6 +106,6 @@ Die Kachel **Konfigurieren** wird nur angezeigt, wenn die Anwendung vom IT-Admin
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

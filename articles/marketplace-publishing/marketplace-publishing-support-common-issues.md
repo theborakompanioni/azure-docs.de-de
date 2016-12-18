@@ -1,12 +1,12 @@
 ---
-title: Beheben von häufig auftretenden Supportproblemen für Herausgeber | Microsoft Docs
-description: Erfahren Sie, wie häufig auftretende Supportprobleme für Publisher behoben werden und wie Sie Unterstützung erhalten.
+title: "Beheben von häufig auftretenden Supportproblemen für Herausgeber | Microsoft Docs"
+description: "Erfahren Sie, wie häufig auftretende Supportprobleme für Publisher behoben werden und wie Sie Unterstützung erhalten."
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
 manager: lakoch
-editor: ''
-
+editor: 
+ms.assetid: f8465448-8328-41f3-8288-48c1c4098134
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2016
 ms.author: v-jeana; hascipio; v-dabosl
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3849aa88b5314d36a98d3caf5f3307e656e1a931
+
 
 ---
-# Beheben von häufig auftretenden Problemen mit dem Azure Marketplace für Herausgeber
+# <a name="how-to-troubleshoot-common-azure-marketplace-publisher-issues"></a>Beheben von häufig auftretenden Problemen mit dem Azure Marketplace für Herausgeber
 In diesem Artikel wird im Folgenden erläutert, wie Sie einige häufige Marketplace-Szenarios beheben oder Unterstützung für diese erhalten:
 
-## Gutschriften und Rückerstattungen
-In einigen Fällen müssen Sie eine Gutschrift oder eine Erstattung im Auftrag eines Kunden anfordern. Der Microsoft-Support kann dabei helfen, dass Gutschrift- und Rückerstattungsanforderungen Ihrer Kunden berücksichtigt werden und Sie zeitnah eine Antwort erhalten.
+## <a name="credits-and-refunds"></a>Gutschriften und Rückerstattungen
+In einigen Fällen müssen Sie eine Gutschrift oder eine Erstattung im Auftrag eines Kunden anfordern.  Der Microsoft-Support kann dabei helfen, dass Gutschrift- und Rückerstattungsanforderungen Ihrer Kunden berücksichtigt werden und Sie zeitnah eine Antwort erhalten.
 
 Im Folgenden erfahren Sie, wie Sie eine Gutschrift oder Rückerstattung im Auftrag eines Kunden anfordern.
 
@@ -29,14 +33,14 @@ Im Folgenden erfahren Sie, wie Sie eine Gutschrift oder Rückerstattung im Auftr
 > 
 > 
 
-  ![1\_RequestRefund][1]
+  ![1_RequestRefund][1]
 
-1. Navigieren zu den Supportseiten hier: [https://support.microsoft.com/de-DE/getsupport?tenant=ClassicCommercial&locale=de-DE&supportregion=de-DE&pesid=15635&sd=&oaspworkflow=start\_1.0.0.0&wf=0&ccsid=635562546535117884](https://support.microsoft.com/de-DE/getsupport?tenant=ClassicCommercial&locale=de-DE&supportregion=de-DE&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884).
+1. Navigieren Sie hier zu den Supportseiten: [https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884](https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884).
 2. Wählen Sie in der Dropdownliste **Problemtyp** den Eintrag **Kundenverwaltung** aus.
 3. Wählen Sie im Feld **Kategorie** die Option **Genehmigen oder Anfordern einer Rückerstattung für Kunden** aus.
 4. Klicken Sie auf **Anfrage starten**.
    
-   ![2\_RequestRefund][2]
+   ![2_RequestRefund][2]
 
 1. Angeben von Kontaktinformationen
 2. Geben Sie in das Feld **Was ist das Problem?** die folgenden Informationen ein:
@@ -48,9 +52,9 @@ Im Folgenden erfahren Sie, wie Sie eine Gutschrift oder Rückerstattung im Auftr
    * Das Datum der Rechnung für diesen Zeitraum
    * Den Grund für die Gutschrift
 
-Sie erhalten innerhalb von 24 Stunden eine Bestätigungs-E-Mail, dass wir Ihre Informationen erhalten haben. Nachdem eine Entscheidung bezüglich Ihrer Anfrage getroffen wurde, werden Sie über das Ergebnis informiert.
+Sie erhalten innerhalb von 24 Stunden eine Bestätigungs-E-Mail, dass wir Ihre Informationen erhalten haben. Nachdem eine Entscheidung bezüglich Ihrer Anfrage getroffen wurde, werden Sie über das Ergebnis informiert.
 
-## Überprüfung des Kundenabonnements
+## <a name="customer-subscription-validation"></a>Überprüfung des Kundenabonnements
 In einigen Fällen müssen Sie möglicherweise die Abonnementdetails für einen Ihrer Kunden überprüfen. Sie können sich dabei zur Hilfestellung an den Microsoft-Support wenden. Der Microsoft-Support hilft dabei, zu bestätigen, dass eine Abonnement-ID und eine Rechnungsadresse zu einem bekannten Kunden gehören.
 
   ![subscriptionvalidation][3]
@@ -61,17 +65,17 @@ In einigen Fällen müssen Sie möglicherweise die Abonnementdetails für einen 
 * Sie müssen eine Kundenabonnement-ID und eine Rechnungsadresse angeben.
 * Microsoft kontaktiert Sie, um zu bestätigen, dass die Rechnungsadresse und die Abonnement-ID bekannt sind.
 
-## Wie aktualisiere ich mein Herausgeberprofil?
+## <a name="how-do-i-update-my-publisher-profile"></a>Wie aktualisiere ich mein Herausgeberprofil?
 Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Microsoft Developer Center erfolgen:
 
 **1. Melden Sie sich beim Windows Dev Center an**.
 
 * Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
-* Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure).
+* Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 
 ![inprivate][4]
 
-**2. Melden Sie sich mit dem Geschäfts-, Schul- oder Unikonto Ihres Unternehmens an** (z.B. AzureStore@yourcompany.com).
+**2. Melden Sie sich mit dem Geschäfts-, Schul- oder Unikonto Ihres Unternehmens an** (z.B. AzureStore@yourcompany.com).).
 
 ![signin][5]
 
@@ -88,16 +92,16 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 
 ![acctdetails][7]
 
-## Wie füge ich meinem Herausgeberkonto einen Administrator hinzu oder lösche ihn?
+## <a name="how-do-i-add-or-delete-an-administrator-from-my-publishing-account"></a>Wie füge ich meinem Herausgeberkonto einen Administrator hinzu oder lösche ihn?
 ![manageadmins][8]
 
 1. Navigieren Sie zum Veröffentlichungsportal.
-2. Wählen Sie **Herausgeber** aus.
-3. Wählen Sie **Administratoren** aus.
+2. Wählen Sie **Herausgeber**aus.
+3. Wählen Sie **Administratoren**aus.
 4. Fügen Sie die E-Mail-Adresse des Co-Administrators hinzu, den Sie hinzufügen oder entfernen möchten.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
-## Nächste Schritte: Andere Supportanfragen
+## <a name="next-steps-other-support-queries"></a>Nächste Schritte: Andere Supportanfragen
 Übermitteln Sie für die folgenden Probleme eine Anfrage unter [https://portal.azure.com](https://portal.azure.com):
 
 * Wie melde ich einen Fehler in der Rechnung?
@@ -118,4 +122,8 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,13 +1,13 @@
 ---
-title: Dienstverwaltung für Azure Search im Azure-Portal
+title: "Dienstverwaltung für Azure Search im Azure-Portal"
 description: Es wird beschrieben, wie Sie Azure Search, einen gehosteten Cloudsuchdienst in Microsoft Azure, mit dem Azure-Portal verwalten.
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: HeidiSteen
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-portal
-
+ms.assetid: c87d1fdd-b3b8-4702-a753-6d7e29dbe0a2
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
@@ -15,6 +15,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 71cfd2ea327cad22cdb1085558658934804c15f1
+
 
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Search im Azure-Portal
@@ -35,9 +39,11 @@ Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erst
 
 *Content Management* (oder Indexverwaltung) bezieht sich auf Vorgänge wie z.B. das Analysieren von Suchdatenverkehr, mit dem Ziel, Informationen zum Abfragevolumen und verwendeten Suchbegriffen zu erhalten und zu ermitteln, wie erfolgreich die Suchergebnisse Kunden zu bestimmten Dokumenten in Ihrem Index leiten. Eine weiter gehende Beschreibung des Content Management würde den Rahmen dieses Artikels sprengen. Informationen dazu, wie Sie Einblicke in die internen Abläufe auf Indexebene erhalten, finden Sie unter [„Datenverkehrsanalyse durchsuchen“ für Azure Search](search-traffic-analytics.md).
 
-*Abfrageleistung* wird in diesem Artikel ebenfalls nicht eingegangen. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+*Abfrageleistung* wird in diesem Artikel ebenfalls nicht eingegangen. Weitere Informationen finden Sie unter [Überwachen der Nutzung und Abfragemetriken](search-monitor-usage.md) und [Leistung und Optimierung](search-performance-optimization.md).
 
-Azure Search stellt keine integrierten Lösungen für die Notfallwiederherstellung oder die Sicherung und Wiederherstellung bereit. Für Kunden, die Objekte und Daten per Pushvorgang an ihren Dienst übermitteln, stellt der Quellcode für die Erstellung und Auffüllung eines Index praktisch die Wiederherstellungsoption dar, wenn ein Index versehentlich gelöscht wird. In Bezug auf die Notfallwiederherstellung können sich Kunden für die Redundanz über einen zusätzlichen Dienst in einem anderen regionalen Rechenzentrum entscheiden. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+Bei einem Ausfalls wird ein Failover von Azure Search in andere Cluster und Rechenzentren ausgeführt, aber es gibt keine integrierte Lösungen für manuelle Sicherungs- und Wiederherstellungsvorgänge, wenn der Index oder der Dienst vorsätzlich oder unbeabsichtigt gelöscht wird. Für Kunden, die Objekte und Daten per Pushvorgang an ihren Dienst übermitteln, stellt der Quellcode für die Erstellung und Auffüllung eines Index praktisch die Wiederherstellungsoption dar, wenn ein Index versehentlich gelöscht wird. 
+
+Azure Search bietet keine dienstübergreifende Georeplikation von Indizes. Wenn die Lösung global genutzt wird, könnten Sie Redundanz über einen zusätzlichen Dienst in einem anderen regionalen Rechenzentrum hinzufügen, damit alle Anwendungskomponenten an einem Ort gehostet werden. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -156,7 +162,7 @@ Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [A
 
 <a id="advanced-deployment"></a>
 
-## <a name="best-practices-on-scale-and-deployment-(video)"></a>Bewährte Methoden zur Skalierung und Bereitstellung (Video)
+## <a name="best-practices-on-scale-and-deployment-video"></a>Bewährte Methoden zur Skalierung und Bereitstellung (Video)
 In diesem 30-minütigen Video werden die bewährten Methoden für erweiterte Bereitstellungsszenarien vorgestellt, z.B. geografisch verteilte Workloads. Unter [Leistung und Optimierung von Azure Search](search-performance-optimization.md) finden Sie auch Hilfeseiten zu denselben Punkten.
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
@@ -184,6 +190,6 @@ Falls noch nicht geschehen, können Sie sich auch den [Artikel zur Leistung und 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

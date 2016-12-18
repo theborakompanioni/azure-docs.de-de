@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit @Task| Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und @Task konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: aab8bd2f-f9dd-42da-a18e-d707865687d7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/01/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d729d0859a3cdd0e676507c4fa772b7b8d3ed181
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-@task"></a>Tutorial: Azure Active Directory-Integration mit @Task
+# <a name="tutorial-azure-active-directory-integration-with-task"></a>Tutorial: Azure Active Directory-Integration mit @Task
 Dieses Tutorial soll Ihnen zeigen, wie Sie @Task in Azure Active Directory (Azure AD) integrieren können.  
 Die Integration von @Task in Azure AD bietet die folgenden Vorteile: 
 
@@ -24,7 +28,7 @@ Die Integration von @Task in Azure AD bietet die folgenden Vorteile:
 * Sie können Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei @Task anzumelden (Sigle Sign-On, SSO; einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Konfigurieren der Azure AD-Integration mit @Task, benötigen Sie Folgendes:
@@ -49,7 +53,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus drei großen Bausteinen
 1. Hinzufügen von @Task über den Katalog 
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-@task-from-the-gallery"></a>Hinzufügen von @Task über den Katalog
+## <a name="adding-task-from-the-gallery"></a>Hinzufügen von @Task über den Katalog
 Zum Konfigurieren der Integration von @Task in Azure AD müssen Sie @Task aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um @Task aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -77,7 +81,7 @@ Zum Konfigurieren der Integration von @Task in Azure AD müssen Sie @Task aus de
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Azure AD in @Task konfiguriert und getestet wird.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in @Task als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in @Task muss eine Linkbeziehung eingerichtet werden.   
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in @Task als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in @Task muss eine Linkbeziehung eingerichtet werden.   
 Diese Linkbeziehung wird hergestellt, indem Sie den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** in @Task. zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei @Task, müssen Sie die folgenden Bausteine ausführen:
@@ -108,7 +112,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
      b. Klicken Sie auf **Weiter**.
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für @Task** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer. Klicken Sie anschließend auf **Weiter**.
    
-    ![Was ist Azure AD Connect?][9] 
+    ![Was ist Azure AD Connect?][9] 
 5. Melden Sie sich bei Ihrer @Task-Unternehmenswebsite als Administrator an.
 6. Wechseln Sie zu **Einmaliges Anmelden – Konfiguration**.
 7. Führen Sie im Dialogfeld **Einmaliges Anmelden** die folgenden Schritte aus:
@@ -128,10 +132,10 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     f. Klicken Sie auf **Speichern**.
 8. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
    
-    ![Was ist Azure AD Connect?][10]
+    ![Was ist Azure AD Connect?][10]
 9. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
-    ![Was ist Azure AD Connect?][11]
+    ![Was ist Azure AD Connect?][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.  
@@ -182,7 +186,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
    
     b. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-@task-test-user"></a>Erstellen eines @Task-Testbenutzers
+### <a name="creating-an-task-test-user"></a>Erstellen eines @Task-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in @Task.
 
 **Zum Erstellen eines Benutzers mit dem Namen Britta Simon in @Task, zu erstellen, führen Sie die folgenden Schritte aus:**
@@ -268,6 +272,6 @@ Wenn Sie im Zugriffsbereich auf die @Task-Kachel klicken, sollten Sie automatisc
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

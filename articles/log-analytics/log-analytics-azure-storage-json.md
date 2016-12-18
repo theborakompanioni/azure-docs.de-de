@@ -2,11 +2,11 @@
 title: Analysieren von Azure-Diagnoseprotokollen mit Log Analytics | Microsoft Docs
 description: Log Analytics kann Protokolle von Azure-Diensten lesen, die Azure-Diagnoseprotokolle im JSON-Format in Blob Storage schreiben.
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: adf2f366-ea98-4250-ae66-6d2cfce5b4f9
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 08274c03dd1ebb7533efde4c01744ed5293fb4dd
+
 
 ---
 # <a name="analyze-azure-diagnostic-logs-using-log-analytics"></a>Analysieren von Azure-Diagnoseprotokollen mit Log Analytics
-Log Analytics kann Protokolle von den folgenden Azure-Diensten sammeln, die [Azure-Diagnoseprotokolle](../azure-portal/monitoring-overview-of-diagnostic-logs.md) im JSON-Format in Blob Storage schreiben:
+Log Analytics kann Protokolle von den folgenden Azure-Diensten sammeln, die [Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) im JSON-Format in Blob Storage schreiben:
 
 * Automation (Vorschau)
 * Key Vault (Vorschau)
@@ -63,7 +67,7 @@ foreach ($resource in $resources) {
 ```
 
 
-Für einige Ressourcen kann die genannte Konfiguration auch im Azure-Portal durchgeführt werden. Die dazu erforderlichen Schritte werden unter [Übersicht über Azure-Diagnoseprotokolle](../azure-portal/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs) beschrieben.
+Für einige Ressourcen kann die genannte Konfiguration auch im Azure-Portal durchgeführt werden. Die dazu erforderlichen Schritte werden unter [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs) beschrieben.
 
 ## <a name="configure-log-analytics-to-collect-azure-diagnostic-logs"></a>Konfigurieren von Log Analytics zum Sammeln von Azure-Diagnoseprotokollen
 Wir haben ein PowerShell-Skriptmodul bereitgestellt, das zwei Cmdlets zur Unterstützung beim Konfigurieren von Log Analytics exportiert:
@@ -80,7 +84,7 @@ Wir haben ein PowerShell-Skriptmodul bereitgestellt, das zwei Cmdlets zur Unters
 4. Das PowerShell-Modul AzureDiagnosticsAndLogAnalytics
    * Laden Sie das Modul [AzureDiagnosticsAndLogAnalytics](https://www.powershellgallery.com/packages/AzureDiagnosticsAndLogAnalytics/) aus dem PowerShell-Katalog herunter.
 
-### <a name="option-1:-run-the-interactive-configuration-scripts"></a>Option 1: Ausführen des interaktiven Konfigurationsskripts
+### <a name="option-1-run-the-interactive-configuration-scripts"></a>Option 1: Ausführen des interaktiven Konfigurationsskripts
 Öffnen Sie PowerShell, und führen Sie sie aus:
 
 ```
@@ -106,7 +110,7 @@ Sie werden aufgefordert, für jede der folgenden Optionen eine Auswahl zu treffe
 
 Nach der Ausführung dieses Skripts sollten Sie etwa 30 Minuten, nachdem neue Diagnosedaten in den Speicher geschrieben wurden, in Log Analytics Einträge sehen. Wenn nach dieser Zeit keine Datensätze verfügbar sind, nutzen Sie den folgenden Abschnitt zur Problembehandlung.
 
-### <a name="option-2:-build-a-list-of-resources-and-pass-them-to-the-configuration-cmdlet"></a>Option 2: Erstellen einer Liste von Ressourcen und deren Übergabe an das Konfigurations-Cmdlet
+### <a name="option-2-build-a-list-of-resources-and-pass-them-to-the-configuration-cmdlet"></a>Option 2: Erstellen einer Liste von Ressourcen und deren Übergabe an das Konfigurations-Cmdlet
 Sie können eine Liste der Ressourcen erstellen, für die Azure-Diagnose aktiviert ist, und dann die Ressourcen an das Konfigurations-Cmdlet übergeben.
 
 Zusätzliche Informationen zu diesem Cmdlet erhalten Sie, indem Sie `Get-Help Add-AzureDiagnosticsToLogAnalytics` ausführen.
@@ -233,6 +237,9 @@ Um den Storage Insight-Namen zu finden, verwenden Sie das `Get-AzureRmOperationa
 * [Aktivieren Sie Lösungen](log-analytics-add-solutions.md) , um Einblick in die Daten bereitzustellen.
 * [Erstellen Sie Suchabfragen](log-analytics-log-searches.md) , um die Daten zu analysieren.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
 title: 'Azure AD Connect-Synchronisierung: Funktionsreferenz | Microsoft Docs'
-description: Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung.
+description: "Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: andkjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: andkjell;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8fbffc0de5964a89fe2e0f9059c2f48b29fba2b9
+
 
 ---
-# <a name="azure-ad-connect-sync:-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
+# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
 Die Syntax der Funktionen wird im folgenden Format ausgedrückt:   
 `<output type> FunctionName(<input type> <position name>, ..)`
@@ -996,14 +1000,14 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 **Hinweise:**  
  Die Argumentliste der Switch-Funktion setzt sich aus Ausdrucks- und Wertpaaren zusammen. Die Ausdrücke werden von links nach rechts ausgewertet, und der Wert, der mit dem ersten als True ausgewerteten Ausdruck verknüpft ist, wird zurückgegeben. Wenn die Teile nicht richtig paarweise angegeben werden, tritt ein Laufzeitfehler auf.
 
-Wenn z. B. "expr1" True ist, gibt "Switch" "value1" zurück. Wenn "expr-1" False, aber "expr-2" True ist, gibt "Switch" "value-2" zurück usw.
+Wenn z. B. "expr1" True ist, gibt "Switch" "value1" zurück. Wenn "expr-1" False, aber "expr-2" True ist, gibt "Switch" "value-2" zurück usw.
 
 Switch gibt nichts zurück, wenn:
 
 * Keiner der Ausdrücke TRUE ist.
 * Der erste als TRUE ausgewertete Ausdruck über einen zugehörigen Wert verfügt, der Null ist.
 
-„Switch“ wertet alle Ausdrücke aus, auch wenn die Funktion nur einen von ihnen zurückgibt. Aus diesem Grund sollten Sie auf unerwünschte Nebeneffekte achten. Wenn z. B. die Berechnung eines beliebigen Ausdrucks zu einer Division durch 0 führt, tritt ein Fehler auf.
+„Switch“ wertet alle Ausdrücke aus, auch wenn die Funktion nur einen von ihnen zurückgibt. Aus diesem Grund sollten Sie auf unerwünschte Nebeneffekte achten. Wenn z. B. die Berechnung eines beliebigen Ausdrucks zu einer Division durch 0 führt, tritt ein Fehler auf.
 
 „value“ kann auch die Error-Funktion sein. In diesem Fall würde dann eine benutzerdefinierte Zeichenfolge zurückgegeben.
 
@@ -1070,6 +1074,9 @@ Falls „string“ weniger Wörter enthält als für „WordNumber“ angegeben,
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
