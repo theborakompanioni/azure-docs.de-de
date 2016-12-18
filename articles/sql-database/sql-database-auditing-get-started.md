@@ -1,12 +1,12 @@
 ---
-title: Erste Schritte bei der Überwachung von SQL-Datenbank | Microsoft Docs
-description: Erste Schritte bei der Überwachung von SQL-Datenbank
+title: "Erste Schritte bei der Überwachung von SQL-Datenbank | Microsoft Docs"
+description: "Erste Schritte bei der Überwachung von SQL-Datenbank"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: ronitr
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: CarlRabeler; ronitr; giladm
+translationtype: Human Translation
+ms.sourcegitcommit: 80680647559fe8b42cfa09985b9da3713b9c9305
+ms.openlocfilehash: cf0152b0cbcc85befa1b753b92f1593af958dd89
+
 
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
@@ -27,7 +31,7 @@ Die Überwachung ermöglicht und unterstützt die Einhaltung von Standards, gara
 * [Einrichten der Überwachung für Ihre Datenbank]
 * [Analysieren von Überwachungsprotokollen und -berichten]
 
-## <a name="<a-id="subheading-1"></a>azure-sql-database-auditing-overview"></a><a id="subheading-1"></a>Übersicht über die Überwachung von Azure SQL-Datenbank
+## <a name="a-idsubheading-1aazure-sql-database-auditing-overview"></a><a id="subheading-1"></a>Übersicht über die Überwachung von Azure SQL-Datenbank
 Die Überwachung von SQL-Datenbank bietet folgende Möglichkeiten:
 
 * **Beibehalten** eines Überwachungspfads von ausgewählten Ereignissen. Sie können Kategorien für zu protokollierende Datenbankaktionen und -ereignisse konfigurieren.
@@ -45,10 +49,10 @@ Sie können die Überwachung für verschiedene Arten von Ereigniskategorien konf
 
 Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als Standardserverrichtlinie definiert werden. Eine Standardrichtlinie für die Serverüberwachung wird auf alle vorhandenen und neu erstellten Datenbanken auf einem Server angewendet.
 
-## <a name="<a-id="subheading-2"></a>set-up-auditing-for-your-database"></a><a id="subheading-2"></a>Einrichten der Überwachung für Ihre Datenbank
+## <a name="a-idsubheading-2aset-up-auditing-for-your-database"></a><a id="subheading-2"></a>Einrichten der Überwachung für Ihre Datenbank
 In den folgenden Abschnitten wird die Konfiguration der Überwachung mit dem Azure-Portal beschrieben.
 
-### <a name="<a-id="subheading-2-1">i.-blob-auditing</a>"></a><a id="subheading-2-1">i. Blobüberwachung</a>
+### <a name="a-idsubheading-2-1blob-auditinga"></a><a id="subheading-2-1">Blobüberwachung</a>
 1. Öffnen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
 2. Navigieren Sie zum Blatt mit den Einstellungen der SQL-Datenbank-/SQL Server-Instanz, die Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**.
    
@@ -71,7 +75,7 @@ In den folgenden Abschnitten wird die Konfiguration der Überwachung mit dem Azu
 6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie dies über PowerShell oder die REST-API tun. Weitere Informationen finden Sie im Abschnitt [Automatisierung (PowerShell / REST-API)](#subheading-7).
 7. Klicken Sie auf **Speichern**.
 
-### <a name="<a-id="subheading-2-2">ii.-table-auditing</a>"></a><a id="subheading-2-2">ii. Tabellenüberwachung</a>
+### <a name="a-idsubheading-2-2table-auditinga"></a><a id="subheading-2-2">Tabellenüberwachung</a>
 > [!NOTE]
 > Überprüfen Sie vor der Einrichtung der **Tabellenüberwachung**, ob Sie einen [„kompatiblen Client“](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) verwenden. Falls Sie strikte Firewalleinstellungen haben, beachten Sie außerdem, dass der [IP-Endpunkt Ihrer Datenbank geändert wird](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md), wenn Sie die Tabellenüberwachung aktivieren.
 > 
@@ -96,14 +100,14 @@ In den folgenden Abschnitten wird die Konfiguration der Überwachung mit dem Azu
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature **Bedrohungserkennung** (Vorschau) aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
 8. Klicken Sie auf **Speichern**.
 
-## <a name="<a-id="subheading-3"></a>analyze-audit-logs-and-reports"></a><a id="subheading-3"></a>Analysieren von Überwachungsprotokollen und -berichten
+## <a name="a-idsubheading-3aanalyze-audit-logs-and-reports"></a><a id="subheading-3"></a>Analysieren von Überwachungsprotokollen und -berichten
 Überwachungsprotokolle werden in dem Azure-Speicherkonto aggregiert, das Sie während der Einrichtung ausgewählt haben.
 
 Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure-Speicher-Explorer](http://storageexplorer.com/) untersuchen.
 
 Einzelheiten zur Analyse für die Überwachungsprotokolle der Typen **Tabelle** und **Blob** finden Sie unten.
 
-### <a name="<a-id="subheading-3-1">i.-blob-auditing</a>"></a><a id="subheading-3-1">i. Blobüberwachung</a>
+### <a name="a-idsubheading-3-1blob-auditinga"></a><a id="subheading-3-1">Blobüberwachung</a>
 Protokolle der Blobüberwachung werden als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert.
 
 Weitere Informationen zur Hierarchie der Speicherordner für Blobüberwachungsprotokolle, zur Benennungskonvention für Blobs sowie zum Protokollformat finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599) (DOC-Datei zum Herunterladen).
@@ -127,7 +131,7 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen:
      * Leser für erweiterte Ereignisse **C#-Bibliothek** ([hier finden Sie weitere Informationen](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/))
      * Abfragen von Dateien mit erweiterten Ereignissen mithilfe von **PowerShell** ([hier finden Sie weitere Informationen](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/))
 
-### <a name="<a-id="subheading-3-2">ii.-table-auditing</a>"></a><a id="subheading-3-2">ii. Tabellenüberwachung</a>
+### <a name="a-idsubheading-3-2table-auditinga"></a><a id="subheading-3-2">Tabellenüberwachung</a>
 Protokolle der Tabellenüberwachung werden als Sammlung von Azure-Speichertabellen mit dem Präfix **SQLDBAuditLogs** gespeichert.
 
 Weitere Informationen zum Format der Protokolle für die Tabellenüberwachung finden Sie unter [Formatreferenz für Tabellenüberwachungsprotokolle (DOC-Datei zum Herunterladen)](http://go.microsoft.com/fwlink/?LinkId=506733).
@@ -148,10 +152,10 @@ Es gibt verschiedene Methoden zum Anzeigen von Tabellenüberwachungsprotokollen:
    
     ![Navigationsbereich][9]
 
-## <a name="<a-id="subheading-5"></a>practices-for-usage-in-production"></a><a id="subheading-5"></a>Methoden zur Verwendung in der Produktion
+## <a name="a-idsubheading-5apractices-for-usage-in-production"></a><a id="subheading-5"></a>Methoden zur Verwendung in der Produktion
 <!--The description in this section refers to screen captures above.-->
 
-### <a name="<a-id="subheading-6">auditing-geo-replicated-databases</a>"></a><a id="subheading-6">Überwachung von georeplizierten Datenbanken</a>
+### <a name="a-idsubheading-6auditing-geo-replicated-databasesa"></a><a id="subheading-6">Überwachung von georeplizierten Datenbanken</a>
 Wenn Sie georeplizierte Datenbanken verwenden, können Sie die Überwachung je nach Überwachungstyp für die primäre Datenbank, die sekundäre Datenbank oder für beide einrichten.
 
 **Tabellenüberwachung**: Sie können für jede der beiden Datenbanken (primär und sekundär) eine separate Richtlinie auf Datenbank- oder Serverebene konfigurieren, wie im Abschnitt [Einrichten der Überwachung für Ihre Datenbank](#subheading-2-2) beschrieben.
@@ -167,7 +171,7 @@ Wenn Sie georeplizierte Datenbanken verwenden, können Sie die Überwachung je n
 
 <br>
 
-### <a name="<a-id="subheading-6">storage-key-regeneration</a>"></a><a id="subheading-6">Erneute Speicherschlüsselgenerierung</a>
+### <a name="a-idsubheading-6storage-key-regenerationa"></a><a id="subheading-6">Erneute Speicherschlüsselgenerierung</a>
 In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich regelmäßig aktualisieren. Wenn Sie die Schlüssel aktualisieren, müssen Sie die Überwachungsrichtlinie neu speichern. Dieser Prozess verläuft wie folgt:
 
 1. Ändern Sie auf dem Blatt mit den Speicherdetails den **Speicherzugriffsschlüssel** von *Primär* zu *Sekundär*, und klicken Sie dann unten auf **OK**. Klicken Sie anschließend oben auf dem Blatt für die Überwachungskonfiguration auf **SPEICHERN**.
@@ -179,7 +183,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 3. Wechseln Sie zurück zum Blatt für die Überwachungskonfiguration, ändern Sie den **Speicherzugriffsschlüssel** von *Sekundär* zu *Primär*, und klicken Sie dann unten auf **OK**. Klicken Sie anschließend oben auf dem Blatt für die Überwachungskonfiguration auf **SPEICHERN**.
 4. Wechseln Sie zurück zum Blatt für die Speicherkonfiguration, und **generieren Sie erneut** den *sekundären Zugriffsschlüssel* (als Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
 
-## <a name="<a-id="subheading-7"></a>automation-(powershell-/-rest-api)"></a><a id="subheading-7"></a>Automatisierung (PowerShell / REST-API)
+## <a name="a-idsubheading-7aautomation-powershell-rest-api"></a><a id="subheading-7"></a>Automatisierung (PowerShell / REST-API)
 Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Automatisierungstools konfigurieren:
 
 1. **PowerShell-Cmdlets**
@@ -237,6 +241,6 @@ Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Autom
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

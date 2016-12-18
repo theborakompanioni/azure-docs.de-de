@@ -2,11 +2,11 @@
 title: Bereitstellen eines neuen Webdiensts
 description: Der Workflows zur Bereitstellung eines ARM-basierten Webdiensts
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: raymondl
-editor: ''
-
+editor: 
+ms.assetid: a358b04f-0d08-4d50-820e-eeac971854cf
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7941bdbf2b6a00b14ad589bd90c7169cebd296c6
+
 
 ---
 # <a name="deploy-a-new-web-service"></a>Bereitstellen eines neuen Webdiensts
-Microsoft Azure Machine Learning bietet nun Webdienste, die auf [Azure Resource Manager](../resource-group-overview.md) basieren, neue Abrechnungsplanoptionen zulassen und in mehreren Regionen bereitgestellt werden können.
+Microsoft Azure Machine Learning bietet nun Webdienste, die auf [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) basieren, neue Abrechnungsplanoptionen zulassen und in mehreren Regionen bereitgestellt werden können.
 
 Es folgt der allgemeine Workflow zum Bereitstellen eines Webdiensts mit Microsoft Azure Machine Learning Web Services:
 
@@ -99,6 +103,6 @@ Weitere Informationen zur Verwendung von Webdiensten finden Sie in folgenden The
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

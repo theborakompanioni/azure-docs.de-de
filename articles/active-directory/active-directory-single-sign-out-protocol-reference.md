@@ -1,12 +1,12 @@
 ---
-title: Azure-SAML-Protokoll für einmaliges Abmelden | Microsoft Docs
-description: In diesem Artikel wird das SAML-Protokoll für einmaliges Abmelden in Azure Active Directory beschrieben.
+title: "Azure-SAML-Protokoll für einmaliges Abmelden | Microsoft Docs"
+description: "In diesem Artikel wird das SAML-Protokoll für einmaliges Abmelden in Azure Active Directory beschrieben."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d05ab5c4bd813b5f371be27605a9096b0b9c9656
+
 
 ---
 # <a name="single-sign-out-saml-protocol"></a>SAML-Protokoll für einmaliges Abmelden
@@ -72,6 +76,9 @@ Verwenden Sie zum Auswerten des Werts für das `Issuer` -Element den Wert für *
 ### <a name="status"></a>Status
 Azure AD verwendet das `StatusCode`-Element im `Status`-Element, um anzugeben, ob die Abmeldung erfolgreich war. Wenn beim Abmelden ein Fehler auftritt, kann das `StatusCode` -Element auch benutzerdefinierte Fehlermeldungen enthalten.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

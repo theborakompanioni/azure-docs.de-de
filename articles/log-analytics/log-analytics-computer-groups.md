@@ -1,19 +1,23 @@
 ---
 title: Computergruppen in Log Analytics-Protokollsuchen | Microsoft Docs
-description: Mit Computergruppen in Log Analytics können Sie Protokollsuchvorgänge auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, sowie wie sie diese in einer Suche verwenden.
+description: "Mit Computergruppen in Log Analytics können Sie Protokollsuchvorgänge auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, sowie wie sie diese in einer Suche verwenden."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6c0affd0f5ea600f979cfcc87e2435658c8dab14
+
 
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
@@ -103,6 +107,9 @@ Im OMS-Repositorys wird für jede Mitgliedschaft in einer Computergruppe, die au
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

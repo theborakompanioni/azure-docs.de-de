@@ -2,28 +2,32 @@
 title: Bereitstellen einer Web-App mit Redis Cache
 description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App mit Redis Cache bereitzustellen.
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erickson-doug
-editor: ''
-
+editor: 
+ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4c8982461142223f0b339fa542b0bfb6b4ce68a8
+
 
 ---
-# Erstellen einer Web-App und einer Redis Cache-Instanz mithilfe einer Vorlage
+# <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>Erstellen einer Web-App und einer Redis Cache-Instanz mithilfe einer Vorlage
 In diesem Thema erfahren Sie, wie Sie eine Azure-Ressourcen-Manager-Vorlage erstellen, die eine Azure Web-App mit einer Redis Cache-Instanz bereitstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
 
 Die vollständige Vorlage finden Sie unter [Web-App mit Redis Cache-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
-## Was Sie bereitstellen
+## <a name="what-you-will-deploy"></a>Was Sie bereitstellen
 In dieser Vorlage stellen Sie Folgendes bereit:
 
 * Azure-Web-App
@@ -33,13 +37,13 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 
 [![Bereitstellen in Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
-## Anzugebende Parameter
+## <a name="parameters-to-specify"></a>Anzugebende Parameter
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
-## Variablen für Namen
-Diese Vorlage verwendet Variablen für die Erstellung von Namen für die Ressourcen. Sie nutzt die [uniqueString](../resource-group-template-functions.md#uniquestring)-Funktion, um einen Wert basierend auf der Ressourcengruppen-ID zu erstellen.
+## <a name="variables-for-names"></a>Variablen für Namen
+Diese Vorlage verwendet Variablen für die Erstellung von Namen für die Ressourcen. Sie nutzt die [uniqueString](../resource-group-template-functions.md#uniquestring) -Funktion, um einen Wert basierend auf der Ressourcengruppen-ID zu erstellen.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -48,13 +52,13 @@ Diese Vorlage verwendet Variablen für die Erstellung von Namen für die Ressour
     },
 
 
-## Bereitzustellende Ressourcen
+## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### Redis-Cache
-Erstellt den Azure Redis Cache, der mit der Web-App verwendet werden soll. Der Name des Cache wird in der **cacheName**-Variablen angegeben.
+### <a name="redis-cache"></a>Redis-Cache
+Erstellt den Azure Redis Cache, der mit der Web-App verwendet werden soll. Der Name des Cache wird in der **cacheName** -Variablen angegeben.
 
-Die Vorlage erstellt den Cache am gleichen Speicherort wie die Ressourcengruppe.
+Die Vorlage erstellt den Cache am gleichen Speicherort wie die Ressourcengruppe. 
 
     {
       "name": "[variables('cacheName')]",
@@ -75,8 +79,8 @@ Die Vorlage erstellt den Cache am gleichen Speicherort wie die Ressourcengruppe.
     }
 
 
-### Web-App
-Erstellt die Web-App mit dem Namen, der in der **webSiteName**-Variablen angegeben ist.
+### <a name="web-app"></a>Web-App
+Erstellt die Web-App mit dem Namen, der in der **webSiteName** -Variablen angegeben ist.
 
 Beachten Sie, dass die Web-App mit App-Einstellungseigenschaften konfiguriert ist, die es der App ermöglichen, den Redis Cache zu verwenden. Diese App-Einstellungen werden dynamisch anhand der Werte erstellt, die während der Bereitstellung angegeben wurden.
 
@@ -113,13 +117,19 @@ Beachten Sie, dass die Web-App mit App-Einstellungseigenschaften konfiguriert is
       ]
     }
 
-## Befehle zum Ausführen der Bereitstellung
+## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### PowerShell
+### <a name="powershell"></a>PowerShell
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
-### Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,19 +1,23 @@
 ---
 title: Verwalten von Verwaltungseinheiten in Azure Active Directory
-description: Verwenden von Verwaltungseinheiten zum präziseren Delegieren von Berechtigungen in Azure Active Directory
+description: "Verwenden von Verwaltungseinheiten zum präziseren Delegieren von Berechtigungen in Azure Active Directory"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 8464cd6b-1d1a-470d-a4fb-ee29b8eab4c4
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2016
+ms.date: 11/09/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
+ms.openlocfilehash: f54b28df432788cb42027133de09c3579fa41a18
+
 
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Verwaltung von Verwaltungseinheiten in Azure AD - Öffentliche Vorschau
@@ -23,8 +27,8 @@ Dies ist hilfreich in Organisationen mit unabhängigen Bereichen, z. B. eine gro
 
 > [!IMPORTANT]
 > Sie können Verwaltungseinheiten nur erstellen und verwenden, wenn Sie Azure Active Directory Premium aktivieren. Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Premium](active-directory-get-started-premium.md).
-> 
-> 
+>
+>
 
 Aus Sicht des zentralen Administrators ist eine Verwaltungseinheit ein Verzeichnisobjekt, das erstellt und mit Ressourcen aufgefüllt werden kann. **In dieser Version können diese Ressourcen nur Benutzer sein.**  Sobald erstellt und aufgefüllt, kann die Verwaltungseinheit zum Einschränken der erteilten Berechtigung nur für Ressourcen in der Verwaltungseinheit verwendet werden.
 
@@ -36,6 +40,8 @@ Weitere Informationen zu Softwareanforderungen und der Installation des Azure AD
 ## <a name="next-steps"></a>Nächste Schritte
 [Azure Active Directory-Editionen](active-directory-editions.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

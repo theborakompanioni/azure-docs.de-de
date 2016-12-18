@@ -1,12 +1,12 @@
 ---
-title: Upgradeverfahren für das Azure Mobile Engagement iOS SDK | Microsoft Docs
-description: Neueste Updates und Verfahren für das iOS-SDK für Azure Mobile Engagement
+title: "Upgradeverfahren für das Azure Mobile Engagement iOS SDK | Microsoft Docs"
+description: "Neueste Updates und Verfahren für das iOS-SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 72a9e493-3f14-4e52-b6e2-0490fd04b184
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
@@ -14,6 +14,10 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 09/14/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ea5025cf031afb2a6d13356059d090c2d63f1665
+
 
 ---
 # <a name="upgrade-procedures"></a>Upgrade-Verfahren
@@ -21,7 +25,7 @@ Wenn Sie bereits eine ältere Version von Engagement in Ihre Anwendung integrier
 
 Für jede neue SDK-Version müssen Sie zunächst die Ordner "EngagementSDK" und "EngagementReach" ersetzen (entfernen und in Xcode neu importieren).
 
-## <a name="from-3.0.0-to-4.0.0"></a>Von 3.0.0 zu 4.0.0
+## <a name="from-300-to-400"></a>Von 3.0.0 zu 4.0.0
 ### <a name="xcode-8"></a>XCode 8
 Ab Version 4.0.0 des SDK ist XCode 8 zwingend erforderlich.
 
@@ -148,7 +152,7 @@ Oder durch Erben von der `AEUserNotificationHandler`-Klasse
 > 
 > 
 
-## <a name="from-2.0.0-to-3.0.0"></a>Von 2.0.0 zu 3.0.0
+## <a name="from-200-to-300"></a>Von 2.0.0 zu 3.0.0
 Unterstützung für iOS 4.X eingestellt. Ab dieser Version muss das Bereitstellungsziel Ihrer Anwendung mindestens über iOS 6 verfügen.
 
 Wenn Sie Reach in Ihrer Anwendung verwenden, müssen Sie den `remote-notification`-Wert zum `UIBackgroundModes`-Array in Ihrer Datei "Info.plist" hinzufügen, um Remotebenachrichtigungen zu erhalten.
@@ -161,9 +165,9 @@ Die Methode `application:didReceiveRemoteNotification:` muss in Ihrem Anwendungs
     -(void)didFailToRetrieveLaunchMessage;
     -(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-## <a name="from-1.16.0-to-2.0.0"></a>Version 1.16.0 bis 2.0.0
+## <a name="from-1160-to-200"></a>Version 1.16.0 bis 2.0.0
 Im Folgenden wird beschrieben, wie Sie die Migration einer SDK-Integration vom Capptain-Dienst, der von Capptain-SAS angeboten wird, in eine durch Azure Mobile Engagement unterstützte App durchführen.
-Wenn Sie von einer früheren Version migrieren, sehen Sie auf der Capptain-Website nach, wie eine Migration auf Version 1.16 durchgeführt wird. Führen Sie anschließend das folgende Verfahren aus.
+Wenn Sie von einer früheren Version migrieren, sehen Sie auf der Capptain-Website nach, wie eine Migration auf Version 1.16 durchgeführt wird. Führen Sie anschließend das folgende Verfahren aus.
 
 > [!IMPORTANT]
 > Capptain und Mobile Engagement sind nicht dieselben Dienste, und die unten beschriebene Vorgehensweise hebt nur hervor, wie die Migration der Clientapp durchzuführen ist. Bei der Migration des SDK in die App werden Ihre Daten NICHT von den Capptain-Servern zu den Mobile Engagement-Servern migriert
@@ -200,6 +204,9 @@ Beispiele:
 * Die Klasse `CapptainUtils` wird umbenannt in `EngagementUtils`.
 * Die Klasse `CapptainViewController` wird umbenannt in `EngagementViewController`.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 
