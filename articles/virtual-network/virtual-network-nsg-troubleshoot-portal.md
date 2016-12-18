@@ -1,13 +1,13 @@
 ---
-title: Problembehandlung bei Netzwerksicherheitsgruppen – Portal | Microsoft Docs
-description: Informationen zur Problembehandlung bei Netzwerksicherheitsgruppen im Azure Resource Manager-Bereitstellungsmodell über das Azure-Portal.
+title: "Problembehandlung bei Netzwerksicherheitsgruppen – Portal | Microsoft Docs"
+description: "Informationen zur Problembehandlung bei Netzwerksicherheitsgruppen im Azure Resource Manager-Bereitstellungsmodell über das Azure-Portal."
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3216868d867f4c840a610c45855d22575ded609c
+
 
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal
@@ -105,7 +109,7 @@ Wenn der Datenverkehr auf dem virtuellen Computer für eine bestimmte NIC beeint
    > 
 4. Regeln für NSGs, die einer NIC und einem Subnetz zugeordnet sind, können direkt bearbeitet werden. Die entsprechenden Informationen finden Sie in Schritt 8 des Abschnitts **Anzeigen der effektiven Sicherheitsregeln für einen virtuellen Computer** in diesem Artikel.
 
-## <a name="view-effective-security-rules-for-a-network-security-group-(nsg)"></a>Anzeigen der effektiven Sicherheitsregeln für eine Netzwerksicherheitsgruppe (NSG)
+## <a name="view-effective-security-rules-for-a-network-security-group-nsg"></a>Anzeigen der effektiven Sicherheitsregeln für eine Netzwerksicherheitsgruppe (NSG)
 Wenn Sie NSG-Regeln ändern, können Sie die Auswirkung der für einen bestimmten virtuellen Computer hinzugefügten Regeln überprüfen. Sie können eine vollständige Liste der effektiven Sicherheitsregeln für alle NICs anzeigen, auf die eine bestimmte NSG angewendet wird, ohne auf dem Blatt der entsprechenden NSG den Kontext wechseln zu müssen. Führen Sie zur Problembehandlung der effektiven Regeln in einer NSG die folgenden Schritte aus:
 
 1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
@@ -124,7 +128,7 @@ Wenn Sie NSG-Regeln ändern, können Sie die Auswirkung der für einen bestimmte
      > 
      > 
    * **Netzwerkschnittstelle:** Ein virtueller Computer kann über mehrere Netzwerkschnittstellen verfügen. Sie können eine an den ausgewählten virtuellen Computer angefügte Netzwerkschnittstelle auswählen.
-   * **Associated NSGs** (Zugeordnete NSGs): Eine NIC kann zu jeder Zeit bis zu zwei effektive NSGs aufweisen, wobei eine auf die NIC und die andere auf das Subnetz angewendet wird. Obwohl „VM1-nsg“ als Bereich ausgewählt ist, werden in der Ausgabe beide NSGs angezeigt, wenn die NIC eine effektive Subnetz-NSG aufweist.
+   * **Zugeordnete NSGs:** Eine NIC kann zu jeder Zeit bis zu zwei effektive NSGs aufweisen, wobei eine auf die NIC und die andere auf das Subnetz angewendet wird. Obwohl „VM1-nsg“ als Bereich ausgewählt ist, werden in der Ausgabe beide NSGs angezeigt, wenn die NIC eine effektive Subnetz-NSG aufweist.
 4. Regeln für NSGs, die einer NIC oder einem Subnetz zugeordnet sind, können direkt bearbeitet werden. Die entsprechenden Informationen finden Sie in Schritt 8 des Abschnitts **Anzeigen der effektiven Sicherheitsregeln für einen virtuellen Computer** in diesem Artikel.
 
 Weitere Informationen zu den angezeigten zusätzlichen Angaben finden Sie in Schritt 6 des Abschnitts **Anzeigen der effektiven Sicherheitsregeln für einen virtuellen Computer** in diesem Artikel.
@@ -145,6 +149,9 @@ Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Pu
 * Effektive Sicherheitsregeln werden nur angezeigt, wenn der NIC oder dem Subnetz des virtuellen Computers eine NSG zugeordnet ist. 
 * Wenn der NIC oder dem Subnetz keine NSGs zugeordnet sind und dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen ist, sind alle Ports für den eingehenden und ausgehenden Zugriff geöffnet. Wenn der virtuelle Computer über eine öffentliche IP-Adresse verfügt, empfiehlt es sich dringend, NSGs auf die NIC oder das Subnetz anzuwenden.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

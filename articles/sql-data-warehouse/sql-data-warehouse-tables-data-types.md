@@ -1,22 +1,26 @@
 ---
-title: Datentypen für Tabellen in SQL Data Warehouse | Microsoft Docs
-description: Es werden die ersten Schritte für die Verwendung von Datentypen für Azure SQL Data Warehouse-Tabellen beschrieben.
+title: "Datentypen für Tabellen in SQL Data Warehouse | Microsoft Docs"
+description: "Es werden die ersten Schritte für die Verwendung von Datentypen für Azure SQL Data Warehouse-Tabellen beschrieben."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: d4a1f0a3-ba9f-44b9-95f6-16a4f30746d6
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/29/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 616bb450217573ebd45060234313af418f525f89
+
 
 ---
-# Datentypen für Tabellen in SQL Data Warehouse
+# <a name="data-types-for-tables-in-sql-data-warehouse"></a>Datentypen für Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
 > * [Übersicht][Übersicht]
 > * [Datentypen][Datentypen]
@@ -28,7 +32,7 @@ ms.author: jrj;barbkess;sonyama
 > 
 > 
 
-SQL Data Warehouse unterstützt die gängigsten Datentypen. Unten ist eine Liste mit den Datentypen angegeben, die von SQL Data Warehouse unterstützt werden. Weitere Informationen zur Unterstützung von Datentypen finden Sie unter [CREATE TABLE][CREATE TABLE].
+SQL Data Warehouse unterstützt die gängigsten Datentypen.  Unten ist eine Liste mit den Datentypen angegeben, die von SQL Data Warehouse unterstützt werden.  Weitere Informationen zur Unterstützung von Datentypen finden Sie unter [CREATE TABLE][CREATE TABLE].
 
 | **Unterstützte Datentypen** |  |  |
 | --- | --- | --- |
@@ -41,29 +45,29 @@ SQL Data Warehouse unterstützt die gängigsten Datentypen. Unten ist eine Liste
 | [datetime2][datetime2] |[real][real] |[varbinary][varbinary] |
 | [datetimeoffset][datetimeoffset] |[smalldatetime][smalldatetime] |[varchar][varchar] |
 
-## Bewährte Methoden für Datentypen
- Beim Definieren Ihrer Spaltentypen verbessert sich die Abfrageleistung, wenn Sie den kleinsten Datentyp verwenden, der für Ihre Daten unterstützt wird. Dies ist besonders für CHAR- und VARCHAR-Spalten wichtig. Wenn der längste Wert in einer Spalte 25 Zeichen lang ist, sollten Sie die Spalte VARCHAR(25) definieren. Vermeiden Sie es, für alle Zeichenspalten eine hohe Standardlänge zu definieren. Definieren Sie darüber hinaus Spalten als VARCHAR, sofern dies ausreicht, anstatt [NVARCHAR][NVARCHAR] zu verwenden. Verwenden Sie anstelle von NVARCHAR(MAX) oder VARCHAR(MAX) nach Möglichkeit NVARCHAR(4000) oder VARCHAR(8000).
+## <a name="data-type-best-practices"></a>Bewährte Methoden für Datentypen
+ Beim Definieren Ihrer Spaltentypen verbessert sich die Abfrageleistung, wenn Sie den kleinsten Datentyp verwenden, der für Ihre Daten unterstützt wird. Dies ist besonders für CHAR- und VARCHAR-Spalten wichtig. Wenn der längste Wert in einer Spalte 25 Zeichen lang ist, sollten Sie die Spalte VARCHAR(25) definieren. Vermeiden Sie es, für alle Zeichenspalten eine hohe Standardlänge zu definieren. Definieren Sie darüber hinaus Spalten als VARCHAR, sofern dies ausreicht, anstatt [NVARCHAR][NVARCHAR] zu verwenden.  Verwenden Sie anstelle von NVARCHAR(MAX) oder VARCHAR(MAX) nach Möglichkeit NVARCHAR(4000) oder VARCHAR(8000).
 
-## PolyBase-Beschränkung
-Falls Sie PolyBase zum Laden Ihrer Tabellen verwenden, definieren Sie Ihre Tabellen so, dass die maximal mögliche Zeilengröße, einschließlich der vollständigen Länge der Spalten mit variabler Länge, 32.767 Byte nicht überschreitet. Sie können zwar eine Zeile mit Daten variabler Länge definieren, bei der diese Breite überschritten wird und Zeilen mit BCP geladen werden können, aber Sie können PolyBase nicht zum Laden dieser Daten verwenden. Die PolyBase-Unterstützung für große Zeilen wird bald verfügbar sein.
+## <a name="polybase-limitation"></a>PolyBase-Beschränkung
+Falls Sie PolyBase zum Laden Ihrer Tabellen verwenden, definieren Sie Ihre Tabellen so, dass die maximal mögliche Zeilengröße, einschließlich der vollständigen Länge der Spalten mit variabler Länge, 32.767 Byte nicht überschreitet.  Sie können zwar eine Zeile mit Daten variabler Länge definieren, bei der diese Breite überschritten wird und Zeilen mit BCP geladen werden können, aber Sie können PolyBase nicht zum Laden dieser Daten verwenden.  Die PolyBase-Unterstützung für große Zeilen wird bald verfügbar sein.
 
-## Nicht unterstützte Datentypen
-Wenn Sie die Datenbank von einer anderen SQL-Plattform wie Azure SQL-Datenbank migrieren, begegnen Ihnen während der Migration unter Umständen einige Datentypen, die in SQL Data Warehouse nicht unterstützt werden. Unten sind nicht unterstützte Datentypen und einige Alternativen angegeben, die Sie anstelle von nicht unterstützten Datentypen verwenden können.
+## <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
+Wenn Sie die Datenbank von einer anderen SQL-Plattform wie Azure SQL-Datenbank migrieren, begegnen Ihnen während der Migration unter Umständen einige Datentypen, die in SQL Data Warehouse nicht unterstützt werden.  Unten sind nicht unterstützte Datentypen und einige Alternativen angegeben, die Sie anstelle von nicht unterstützten Datentypen verwenden können.
 
 | Datentyp | Problemumgehung |
 | --- | --- |
 | [geometry][geometry] |[varbinary][varbinary] |
 | [geography][geography] |[varbinary][varbinary] |
 | [hierarchyid][hierarchyid] |[nvarchar][nvarchar](4000) |
-| [Image][ntext,text,image] |[varbinary][varbinary] |
-| [Text][ntext,text,image] |[varchar][varchar] |
+| [image][ntext,text,image] |[varbinary][varbinary] |
+| [text][ntext,text,image] |[varchar][varchar] |
 | [ntext][ntext,text,image] |[nvarchar][nvarchar] |
-| [sql\_variant][sql\_variant] |Spalte in mehrere Spalten mit starker Typisierung unterteilen. |
+| [sql_variant][sql_variant] |Spalte in mehrere Spalten mit starker Typisierung unterteilen. |
 | [Tabelle][Tabelle] |In temporäre Tabellen konvertieren. |
-| [timestamp][timestamp] |Code anpassen, sodass [datetime2][datetime2] und die `CURRENT_TIMESTAMP`-Funktion verwendet werden. Nur Konstanten werden als Standardwerte unterstützt. Daher kann „current\_timestamp“ nicht als Standardeinschränkung definiert werden. Wenn Sie Zeilenversionswerte aus einer Spalte mit timestamp-Typ migrieren müssen, sollten Sie [BINARY][BINARY](8) oder [VARBINARY][BINARY](8) für NOT NULL- oder NULL-Zeilenversionswerte verwenden. |
+| [timestamp][timestamp] |Code anpassen, sodass [datetime2][datetime2] und die `CURRENT_TIMESTAMP`-Funktion verwendet werden.  Nur Konstanten werden als Standardwerte unterstützt. Daher kann „current_timestamp“ nicht als Standardeinschränkung definiert werden. Wenn Sie Zeilenversionswerte aus einer Spalte mit timestamp-Typ migrieren müssen, sollten Sie [BINARY][BINARY](8) oder [VARBINARY][BINARY](8) für NOT NULL- oder NULL-Zeilenversionswerte verwenden. |
 | [xml][xml] |[varchar][varchar] |
 | [Benutzerdefinierte Typen][Benutzerdefinierte Typen] |Zurück in native Typen konvertieren, falls möglich |
-| Standardwerte |Standardwerte unterstützen nur Literale und Konstanten. Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt. |
+| Standardwerte |Standardwerte unterstützen nur Literale und Konstanten.  Nicht deterministische Ausdrücke oder Funktionen, z. B. `GETDATE()` oder `CURRENT_TIMESTAMP`, werden nicht unterstützt. |
 
 Der unten angegebene SQL-Code kann in Ihrer aktuellen SQL-Datenbank ausgeführt werden, um Spalten zu identifizieren, die von Azure SQL Data Warehouse nicht unterstützt werden:
 
@@ -76,29 +80,25 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
  AND  y.[is_user_defined] = 1;
 ```
 
-## Nächste Schritte
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Übersicht], [Verteilen einer Tabelle][Verteilen], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistiken] und [Temporäre Tabellen][Temporär].  Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
 
 <!--Image references-->
 
 <!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
 [Übersicht]: ./sql-data-warehouse-tables-overview.md
 [Datentypen]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Verteilen]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Statistiken]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
 [Temporär]: ./sql-data-warehouse-tables-temporary.md
 [Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-[create table]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [bigint]: https://msdn.microsoft.com/library/ms187745.aspx
 [binary]: https://msdn.microsoft.com/library/ms188362.aspx
 [bit]: https://msdn.microsoft.com/library/ms177603.aspx
@@ -121,7 +121,7 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [smalldatetime]: https://msdn.microsoft.com/library/ms182418.aspx
 [smallint]: https://msdn.microsoft.com/library/ms187745.aspx
 [smallmoney]: https://msdn.microsoft.com/library/ms179882.aspx
-[sql\_variant]: https://msdn.microsoft.com/library/ms173829.aspx
+[sql_variant]: https://msdn.microsoft.com/library/ms173829.aspx
 [sysname]: https://msdn.microsoft.com/library/ms186939.aspx
 [Tabelle]: https://msdn.microsoft.com/library/ms175010.aspx
 [time]: https://msdn.microsoft.com/library/bb677243.aspx
@@ -133,4 +133,8 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [xml]: https://msdn.microsoft.com/library/ms187339.aspx
 [Benutzerdefinierte Typen]: https://msdn.microsoft.com/library/ms131694.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+
