@@ -457,7 +457,7 @@ Nachdem der angenehme Teil erledigt ist, muss nur noch schnell eine Benutzerober
             }
         }
 3. Wir benötigen eine Webbenutzeroberfläche, um den Benutzer anzuzeigen. Dazu wird die zuvor erstellte Datei "index.jsp" erneut geschrieben:
-   
+    ```html
         <html>
         <head>
           <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -544,6 +544,7 @@ Nachdem der angenehme Teil erledigt ist, muss nur noch schnell eine Benutzerober
           <script src="assets/todo.js"></script>
         </body>
         </html>
+    ```
 4. Und schließlich wird ein clientseitiges JavaScript erstellt, um die Webbenutzeroberfläche mit dem Servlet zu verbinden:
    
         var todoApp = {

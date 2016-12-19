@@ -12,7 +12,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 12/13/2016
 ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -123,7 +123,7 @@ Diese Vorgänge lassen sich schwer messen. Im Grunde müssen Sie Ihren Clientcod
 #### <a name="problem"></a>Problem
 Ich habe erwartet, dass sich bestimmte Daten in meiner Azure Redis Cache-Instanz befinden, aber sie sind scheinbar nicht dort.
 
-##### <a name="resolution"></a>Lösung
+#### <a name="resolution"></a>Lösung
 Mögliche Ursachen und Lösungen finden Sie unter [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) (Was ist mit meinen Daten in Redis passiert?)
 
 ## <a name="server-side-troubleshooting"></a>Behandeln von serverseitigen Problemen
@@ -152,7 +152,7 @@ Sie können mehrere Änderungen vornehmen, um die Speicherauslastung in einem ge
 4. [Skalieren](cache-how-to-scale.md) Sie auf einen größeren Cache.
 5. Wenn Sie einen [Premium-Cache mit aktiviertem Redis-Cluster](cache-how-to-premium-clustering.md) verwenden, können Sie die [Anzahl von Shards erhöhen](cache-how-to-premium-clustering.md#change-the-cluster-size-on-a-running-premium-cache).
 
-### <a name="high-cpu-usage-server-load"></a>Hohe CPU-Auslastung/hohe Serverauslastung
+### <a name="high-cpu-usage--server-load"></a>Hohe CPU-Auslastung/hohe Serverauslastung
 #### <a name="problem"></a>Problem
 Eine hohe CPU-Auslastung kann bedeuten, dass die Clientseite eine Antwort von Redis u.U. nicht mehr rechtzeitig verarbeiten kann, obwohl Redis die Antwort sehr schnell gesendet hat.
 
@@ -194,20 +194,21 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 ### <a name="steps-to-investigate"></a>Untersuchungsschritte
 1. Wenn Sie den StackExchange.Redis-Client verwenden, sollten Sie als bewährte Methode zum Herstellen der Verbindung das folgende Muster verwenden.
 
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    ```c#
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+    
+    });
+    
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
-
-        });
-
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+    ````
 
     Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Cache mithilfe von StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 
