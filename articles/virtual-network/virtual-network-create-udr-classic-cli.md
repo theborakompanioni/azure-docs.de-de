@@ -1,13 +1,13 @@
 ---
-title: Steuern des Routings und Verwenden virtueller Geräte mithilfe der Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell | Microsoft Docs
+title: "Steuern des Routings und Verwenden virtueller Geräte mithilfe der Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell | Microsoft Docs"
 description: Erfahren Sie, wie Sie das Routing in VNets mithilfe der Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell steuern.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 80b452bd96e3a328899ed455b71cf68da8bfde54
+ms.openlocfilehash: b7508d1ee01c1a5b7773360cabde075553b55ac1
+
 
 ---
-# Steuern des Routings und Verwenden virtueller Geräte (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
-[!INCLUDE [virtual-network-create-udr-classic-selectors-include.md](../../includes/virtual-network-create-udr-classic-selectors-include.md)]
+# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Steuern des Routings und Verwenden virtueller Geräte (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle
+
+> [!div class="op_single_selector"]
+- [PowerShell](virtual-network-create-udr-arm-ps.md)
+- [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
+- [Vorlage](virtual-network-create-udr-arm-template.md)
+- [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
+- [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
@@ -28,23 +38,28 @@ Dieser Artikel gilt für das klassische Bereitstellungsmodell. Sie können auch 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Die folgenden Beispielbefehle für die Azure-Befehlszeilenschnittstelle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem obigen Szenario basiert. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst die unter [Erstellen eines VNets (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle](virtual-networks-create-vnet-classic-cli.md) beschriebene Umgebung.
+Die folgenden Beispielbefehle für die Azure-Befehlszeilenschnittstelle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem obigen Szenario basiert. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst die unter [Erstellen eines VNets (klassisch) mithilfe der Azure-Befehlszeilenschnittstelle](virtual-networks-create-vnet-classic-cli.md)beschriebene Umgebung.
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## Erstellen der benutzerdefinierten Route für das Front-End-Subnetz
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Erstellen der benutzerdefinierten Route für das Front-End-Subnetz
 Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz erforderlichen Route anhand des oben beschriebenen Szenarios die folgenden Schritte aus.
 
-1. Führen Sie **`azure config mode`** aus, um in den klassischen Modus zu wechseln.
-   
-        azure config mode asm
-   
+1. Führen Sie den folgenden Befehl aus, um in den klassischen Modus zu wechseln:
+
+    ```azurecli
+    azure config mode asm
+    ```
+
     Ausgabe:
-   
+
         info:    New mode is asm
-2. Führen Sie den Befehl **`azure network route-table create`** aus, um eine Routingtabelle für das Front-End-Subnetz zu erstellen.
-   
-        azure network route-table create -n UDR-FrontEnd -l uswest
+
+2. Führen Sie den folgenden Befehl aus, um eine Routingtabelle für das Front-End-Subnetz zu erstellen:
+
+    ```azurecli
+    azure network route-table create -n UDR-FrontEnd -l uswest
+    ```
    
     Ausgabe:
    
@@ -59,10 +74,12 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz 
    
    * **-l (oder --location)**. Azure-Region, in der die neue NSG erstellt wird. In diesem Szenario *westus*.
    * **-n (oder --name)**. Name der neuen NSG. In diesem Szenario *NSG-FrontEnd*.
-3. Führen Sie den Befehl **`azure network route-table route set`** aus, um in der oben erstellten Routingtabelle eine Route zu erstellen, die sämtlichen an das Back-End-Subnetz (192.168.2.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet.
-   
-        azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
-   
+3. Führen Sie den folgenden Befehl aus, um in der Routingtabelle eine Route zu erstellen, die sämtlichen an das Back-End-Subnetz (192.168.2.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet:
+
+    ```azurecli
+    azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
+    ```
+
     Ausgabe:
    
         info:    Executing command network route-table route set
@@ -76,9 +93,11 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz 
    * **-a (oder --address-prefix)**. Das Adresspräfix für das Zielsubnetz der Pakete. In diesem Szenario *192.168.2.0/24*.
    * **-t (oder --next-hop-type)**. Der Typ des Zielobjekts für den Datenverkehr. Mögliche Werte sind *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet* oder *None*.
    * **-p (oder --next-hop-ip-address**). Die IP-Adresse für den nächsten Hop. In diesem Szenario *192.168.0.4*.
-4. Führen Sie den Befehl **`azure network vnet subnet route-table add`** aus, um die oben erstellte Routingtabelle dem Subnetz **FrontEnd** zuzuordnen.
-   
-        azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
+4. Führen Sie den Befehl aus, um die oben erstellte Routingtabelle dem Subnetz **FrontEnd** zuzuordnen:
+
+    ```azurecli
+    azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
+    ```
    
     Ausgabe:
    
@@ -98,17 +117,30 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz 
    * **-t (oder --vnet-name)**. Name des VNets mit dem Subnetz. In diesem Szenario *TestVNet*.
    * **-n (oder --subnet-name**). Der Name des Subnetzes, dem die Routingtabelle hinzugefügt wird. In diesem Szenario *FrontEnd*.
 
-## Erstellen der benutzerdefinierten Route für das Back-End-Subnetz
-Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz erforderlichen Route anhand des oben beschriebenen Szenarios die folgenden Schritte aus.
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Erstellen der benutzerdefinierten Route für das Back-End-Subnetz
+Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz erforderlichen Route anhand des beschriebenen Szenarios die folgenden Schritte aus:
 
-1. Führen Sie den Befehl **`azure network route-table create`** aus, um eine Routingtabelle für das Back-End-Subnetz zu erstellen.
-   
-        azure network route-table create -n UDR-BackEnd -l uswest
-2. Führen Sie den Befehl **`azure network route-table route set`** aus, um in der oben erstellten Routingtabelle eine Route zu erstellen, die sämtlichen an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet.
-   
-        azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
-3. Führen Sie den Befehl **`azure network vnet subnet route-table add`** aus, um die oben erstellte Routingtabelle dem Subnetz **BackEnd** zuzuordnen.
-   
-        azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd
+1. Führen Sie den folgenden Befehl aus, um eine Routingtabelle für das Back-End-Subnetz zu erstellen:
 
-<!---HONumber=AcomDC_0810_2016-->
+    ```azurecli
+    azure network route-table create -n UDR-BackEnd -l uswest
+    ```
+
+2. Führen Sie den Befehl aus, um in der Routingtabelle eine Route zu erstellen, die sämtlichen an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet:
+
+    ```azurecli
+    azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
+    ```
+
+3. Führen Sie den folgenden Befehl aus, um die oben erstellte Routingtabelle dem Subnetz **BackEnd** zuzuordnen:
+
+    ```azurecli
+    azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd
+    ```
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

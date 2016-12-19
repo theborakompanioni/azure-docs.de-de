@@ -1,13 +1,13 @@
 ---
-title: Bereitstellen von Multi-NIC-VMs mithilfe der Azure-CLI in Ressourcen-Manager | Microsoft Docs
-description: Erfahren Sie, wie Sie Multi-NIC-VMs mithilfe der Azure-CLI in Ressourcen-Manager bereitstellen
+title: Erstellen eines virtuellen Computers (VM) mit mehreren Netzwerkschnittstellenkarten mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
+description: "Erfahren Sie, wie Sie einen virtuellen Computern mit mehreren Netzwerkschnittstellenkarten (NICs) über Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle erstellen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 8e906a4b-8583-4a97-9416-ee34cfa09a98
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,175 +15,211 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 5f6f14a3bf779de0c4ef6d1f31c283b72d3a18f7
+ms.openlocfilehash: 903669b90e07cb1dddc5fd8b78828b2022394be0
+
 
 ---
-# Bereitstellen von Multi-NIC-VMs mithilfe der Azure-CLI
+# <a name="create-a-vm-with-multiple-nics-using-the-azure-cli"></a>Erstellen eines virtuellen Computers (VM) mit mehreren Netzwerkschnittstellenkarten über die Azure-Befehlszeilenschnittstelle
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
 
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
-
-[classic deployment model](virtual-network-deploy-multinic-classic-cli.md).
+> [!NOTE]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](virtual-network-deploy-multinic-classic-cli.md) empfohlen wird.
+>
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Derzeit können virtuelle Computer mit einer einzelnen NIC und virtuelle Computer mit mehreren NICs nicht in derselben Ressourcengruppe enthalten sein. Aus diesem Grund müssen Sie die Back-End-Server in einer anderen Ressourcengruppe als alle anderen Komponenten implementieren. In den folgenden Schritten verwendet die Ressourcengruppe *IaaSStory* als Hauptressourcengruppe und *IaaSStory-BackEnd* für die Back-End-Server.
+In den folgenden Schritten verwenden Sie eine Ressourcengruppe mit dem Namen *IaaSStory* für die Webserver und eine Ressourcengruppe mit dem Namen *IaaSStory-BackEnd* für die DB-Server.
 
-## Voraussetzungen
-Bevor Sie die Back-End-Server bereitstellen können, müssen Sie die Hauptressourcengruppe mit den erforderlichen Ressourcen für dieses Szenario bereitstellen. Führen Sie zum Bereitstellen dieser Ressourcen die folgenden Schritte aus:
+## <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie die DB-Server erstellen können, müssen Sie die Ressourcengruppe *IaaSStory* mit den erforderlichen Ressourcen für dieses Szenario erstellen. Führen Sie die folgenden Schritte aus, um diese Ressourcen zu erstellen:
 
-1. Wechseln Sie zu [azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC) (in englischer Sprache).
-2. Klicken Sie auf dieser Vorlagenseite rechts neben **Parent Resource group** auf **Deploy to Azure**.
+1. Wechseln Sie zu [azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/11-MultiNIC)(in englischer Sprache).
+2. Klicken Sie auf der Vorlagenseite rechts neben **Parent Resource group** (übergeordnete Ressourcengruppe) auf **Deploy to Azure** (In Azure bereitstellen).
 3. Ändern Sie bei Bedarf die Parameterwerte, und führen Sie die folgenden Schritte im Azure-Vorschauportal aus, um die Ressourcengruppe bereitzustellen.
 
 > [!IMPORTANT]
-> Achten Sie darauf, eindeutige Speicherkontonamen zu verwenden. In Azure können keine doppelten Speicherkontonamen verwendet werden.
-> 
+> Achten Sie darauf, eindeutige Speicherkontonamen zu verwenden. In Azure dürfen keine doppelten Speicherkontennamen verwendet werden.
 > 
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## Bereitstellen der Back-End-VMs
-Die Back-End-VMs sind auf die Erstellung der im Folgenden aufgelisteten Ressourcen angewiesen.
+## <a name="create-the-back-end-vms"></a>Erstellen der Back-End-VMs
+Die Back-End-VMs sind auf die Erstellung der folgenden Ressourcen angewiesen:
 
-* **Speicherkonto für Datenträger**. Für eine bessere Leistung verwenden die Datenträger auf den Datenbankservern Solid State Drive (SSD)-Technik. Dafür ist ein Storage Premium-Konto erforderlich. Achten Sie darauf, dass der Azure-Speicherort für die Bereitstellung Storage Premium unterstützt.
+* **Speicherkonto für Datenträger.** Für eine bessere Leistung verwenden die Datenträger auf den Datenbankservern Solid State Drive (SSD)-Technik. Dafür ist ein Storage Premium-Konto erforderlich. Achten Sie darauf, dass der Azure-Speicherort für die Bereitstellung Storage Premium unterstützt.
 * **NICs**. Jeder virtuelle Computer hat zwei Netzwerkkarten, eine für den Datenbankzugriff und eine für die Verwaltung.
 * **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
-### Schritt 1: Starten des Skripts
-Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh) herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
+### <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
+Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh)herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
 
-1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites) bereitgestellten Ressourcengruppe.
-   
-        existingRGName="IaaSStory"
-        location="westus"
-        vnetName="WTestVNet"
-        backendSubnetName="BackEnd"
-        remoteAccessNSGName="NSG-RemoteAccess"
+1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites)bereitgestellten Ressourcengruppe.
+
+    ```azurecli
+    existingRGName="IaaSStory"
+    location="westus"
+    vnetName="WTestVNet"
+    backendSubnetName="BackEnd"
+    remoteAccessNSGName="NSG-RemoteAccess"
+    ```
 2. Ändern Sie die Werte der nachstehenden Variablen basierend auf den Werten, die Sie für die Back-End-Bereitstellung verwenden möchten.
-   
-        backendRGName="IaaSStory-Backend"
-        prmStorageAccountName="wtestvnetstorageprm"
-        avSetName="ASDB"
-        vmSize="Standard_DS3"
-        diskSize=127
-        publisher="Canonical"
-        offer="UbuntuServer"
-        sku="14.04.2-LTS"
-        version="latest"
-        vmNamePrefix="DB"
-        osDiskName="osdiskdb"
-        dataDiskName="datadisk"
-        nicNamePrefix="NICDB"
-        ipAddressPrefix="192.168.2."
-        username='adminuser'
-        password='adminP@ssw0rd'
-        numberOfVMs=2
-3. Rufen Sie die ID für das `BackEnd`-Subnetz ab, in dem die virtuellen Computer erstellt werden sollen. Dieser Schritt ist erforderlich, da sich die mit diesem Subnetz verknüpften Netzwerkschnittstellenkarten in einer anderen Ressourcengruppe befinden.
-   
-        subnetId="$(azure network vnet subnet show --resource-group $existingRGName \
-                        --vnet-name $vnetName \
-                        --name $backendSubnetName|grep Id)"
-        subnetId=${subnetId#*/}
-   
+
+    ```azurecli
+    backendRGName="IaaSStory-Backend"
+    prmStorageAccountName="wtestvnetstorageprm"
+    avSetName="ASDB"
+    vmSize="Standard_DS3"
+    diskSize=127
+    publisher="Canonical"
+    offer="UbuntuServer"
+    sku="14.04.2-LTS"
+    version="latest"
+    vmNamePrefix="DB"
+    osDiskName="osdiskdb"
+    dataDiskName="datadisk"
+    nicNamePrefix="NICDB"
+    ipAddressPrefix="192.168.2."
+    username='adminuser'
+    password='adminP@ssw0rd'
+    numberOfVMs=2
+    ```
+
+3. Rufen Sie die ID für das `BackEnd` -Subnetz ab, in dem die virtuellen Computer erstellt werden sollen. Dieser Schritt ist erforderlich, da sich die mit diesem Subnetz verknüpften Netzwerkschnittstellenkarten in einer anderen Ressourcengruppe befinden.
+
+    ```azurecli
+    subnetId="$(azure network vnet subnet show --resource-group $existingRGName \
+            --vnet-name $vnetName \
+            --name $backendSubnetName|grep Id)"
+    subnetId=${subnetId#*/}
+    ```
+
    > [!TIP]
-   > Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) (Artikel in englischer Sprache) und [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html) (Artikel in englischer Sprache), insbesondere Substringentfernung.
-   > 
-   > 
-4. Rufen Sie die ID für die `NSG-RemoteAccess`-NSG ab. Dieser Schritt ist erforderlich, da sich die mit dieser NSG verknüpften Netzwerkschnittstellenkarten in einer anderen Ressourcengruppe befinden.
-   
-        nsgId="$(azure network nsg show --resource-group $existingRGName \
-                        --name $remoteAccessNSGName|grep Id)"
+   > Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) und die [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html), insbesondere Substringentfernung.
+   >
+
+4. Rufen Sie die ID für die `NSG-RemoteAccess` -NSG ab. Dieser Schritt ist erforderlich, da sich die mit dieser NSG verknüpften Netzwerkschnittstellenkarten in einer anderen Ressourcengruppe befinden.
+
+    ```azurecli
+    nsgId="$(azure network nsg show --resource-group $existingRGName \
+        --name $remoteAccessNSGName|grep Id)"
         nsgId=${nsgId#*/}
+    ```
 
-### Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre virtuellen Computer
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre virtuellen Computer
+
 1. Erstellen Sie eine neue Ressourcengruppe für alle Back-End-Ressourcen. Beachten Sie die Verwendung der `$backendRGName`-Variable für den Ressourcengruppennamen und `$location` für die Azure-Region.
-   
-        azure group create $backendRGName $location
+
+    ```azurecli
+    azure group create $backendRGName $location
+    ```
+
 2. Erstellen Sie ein Storage Premium-Konto für das Betriebssystem und die Datenträger, die von den virtuellen Computern verwendet werden sollen.
-   
-        azure storage account create $prmStorageAccountName \
-            --resource-group $backendRGName \
-            --location $location \
-            --type PLRS
+
+    ```azurecli
+    azure storage account create $prmStorageAccountName \
+        --resource-group $backendRGName \
+        --location $location \
+        --type PLRS
+    ```
+
 3. Erstellen Sie eine Verfügbarkeitsgruppe für die VM.
-   
-        azure availset create --resource-group $backendRGName \
-            --location $location \
-            --name $avSetName
 
-### Schritt 3: Erstellen der Netzwerkschnittstellenkarten und Back-End-VMs
-1. Erstellen Sie mithilfe einer Schleife mehrere VMs anhand der `numberOfVMs`-Variablen.
-   
-        for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
-        do
+    ```azurecli
+    azure availset create --resource-group $backendRGName \
+        --location $location \
+        --name $avSetName
+    ```
+
+### <a name="step-3---create-the-nics-and-back-end-vms"></a>Schritt 3: Erstellen der Netzwerkschnittstellenkarten und Back-End-VMs
+
+1. Erstellen Sie mithilfe einer Schleife mehrere virtuelle Computer auf Grundlage der `numberOfVMs` -Variablen.
+
+    ```azurecli
+    for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
+    do
+    ```
+
 2. Erstellen Sie für jeden virtuellen Computer eine Netzwerkschnittstellenkarte für den Datenbankzugriff.
-   
-            nic1Name=$nicNamePrefix$suffixNumber-DA
-            x=$((suffixNumber+3))
-            ipAddress1=$ipAddressPrefix$x
-            azure network nic create --name $nic1Name \
-                --resource-group $backendRGName \
-                --location $location \
-                --private-ip-address $ipAddress1 \
-                --subnet-id $subnetId
-3. Erstellen Sie für jeden virtuellen Computer eine Netzwerkschnittstellenkarte für den Remotezugriff. Achten Sie auf den `--network-security-group`-Parameter, über den die NIC der NSG zugeordnet wird.
-   
-            nic2Name=$nicNamePrefix$suffixNumber-RA
-            x=$((suffixNumber+53))
-            ipAddress2=$ipAddressPrefix$x
-            azure network nic create --name $nic2Name \
-                --resource-group $backendRGName \
-                --location $location \
-                --private-ip-address $ipAddress2 \
-                --subnet-id $subnetId $vnetName \
-                --network-security-group-id $nsgId
-4. Erstellen Sie den virtuellen Computer.
-   
-            azure vm create --resource-group $backendRGName \
-                --name $vmNamePrefix$suffixNumber \
-                --location $location \
-                --vm-size $vmSize \
-                --subnet-id $subnetId \
-                --availset-name $avSetName \
-                --nic-names $nic1Name,$nic2Name \
-                --os-type linux \
-                --image-urn $publisher:$offer:$sku:$version \
-                --storage-account-name $prmStorageAccountName \
-                --storage-account-container-name vhds \
-                --os-disk-vhd $osDiskName$suffixNumber.vhd \
-                --admin-username $username \
-                --admin-password $password
-5. Erstellen Sie für jeden virtuellen Computer zwei Datenträger, und beenden Sie die Schleife mit dem `done`-Befehl.
-   
-            azure vm disk attach-new --resource-group $backendRGName \
-                --vm-name $vmNamePrefix$suffixNumber \        
-                --storage-account-name $prmStorageAccountName \
-                --storage-account-container-name vhds \
-                --vhd-name $dataDiskName$suffixNumber-1.vhd \
-                --size-in-gb $diskSize \
-                --lun 0
-   
-            azure vm disk attach-new --resource-group $backendRGName \
-                --vm-name $vmNamePrefix$suffixNumber \        
-                --storage-account-name $prmStorageAccountName \
-                --storage-account-container-name vhds \
-                --vhd-name $dataDiskName$suffixNumber-2.vhd \
-                --size-in-gb $diskSize \
-                --lun 1
-        done
 
-### Schritt 4: Ausführen des Skripts
+    ```azurecli
+    nic1Name=$nicNamePrefix$suffixNumber-DA
+    x=$((suffixNumber+3))
+    ipAddress1=$ipAddressPrefix$x
+    azure network nic create --name $nic1Name \
+        --resource-group $backendRGName \
+        --location $location \
+        --private-ip-address $ipAddress1 \
+        --subnet-id $subnetId
+    ```
+
+3. Erstellen Sie für jeden virtuellen Computer eine Netzwerkschnittstellenkarte für den Remotezugriff. Achten Sie auf den `--network-security-group` -Parameter, über den die NIC der NSG zugeordnet wird.
+
+    ```azurecli
+    nic2Name=$nicNamePrefix$suffixNumber-RA
+    x=$((suffixNumber+53))
+    ipAddress2=$ipAddressPrefix$x
+    azure network nic create --name $nic2Name \
+        --resource-group $backendRGName \
+        --location $location \
+        --private-ip-address $ipAddress2 \
+        --subnet-id $subnetId $vnetName \
+        --network-security-group-id $nsgId
+    ```
+
+4. Erstellen Sie den virtuellen Computer.
+
+    ```azurecli
+    azure vm create --resource-group $backendRGName \
+        --name $vmNamePrefix$suffixNumber \
+        --location $location \
+        --vm-size $vmSize \
+        --subnet-id $subnetId \
+        --availset-name $avSetName \
+        --nic-names $nic1Name,$nic2Name \
+        --os-type linux \
+        --image-urn $publisher:$offer:$sku:$version \
+        --storage-account-name $prmStorageAccountName \
+        --storage-account-container-name vhds \
+        --os-disk-vhd $osDiskName$suffixNumber.vhd \
+        --admin-username $username \
+        --admin-password $password
+    ```
+
+5. Erstellen Sie für jeden virtuellen Computer zwei Datenträger, und beenden Sie die Schleife mit dem `done` -Befehl.
+
+    ```azurecli
+    azure vm disk attach-new --resource-group $backendRGName \
+        --vm-name $vmNamePrefix$suffixNumber \
+        --storage-account-name $prmStorageAccountName \
+        --storage-account-container-name vhds \
+        --vhd-name $dataDiskName$suffixNumber-1.vhd \
+        --size-in-gb $diskSize \
+        --lun 0
+
+    azure vm disk attach-new --resource-group $backendRGName \
+        --vm-name $vmNamePrefix$suffixNumber \        
+        --storage-account-name $prmStorageAccountName \
+        --storage-account-container-name vhds \
+        --vhd-name $dataDiskName$suffixNumber-2.vhd \
+        --size-in-gb $diskSize \
+        --lun 1
+        done
+    ```
+
+### <a name="step-4---run-the-script"></a>Schritt 4: Ausführen des Skripts
 Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, um die Back-End-VMs mit mehreren Netzwerkkarten zu erstellen.
 
-1. Speichern Sie Ihr Skript, und führen Sie es im **Bash**-Terminal aus. Anfänglich wird die folgende Ausgabe angezeigt.
+1. Speichern Sie Ihr Skript, und führen Sie es im **Bash** -Terminal aus. Anfänglich wird die folgende Ausgabe angezeigt.
    
         info:    Executing command group create
         info:    Getting resource group IaaSStory-Backend
         info:    Creating resource group IaaSStory-Backend
         info:    Created resource group IaaSStory-Backend
-        data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend
+        data:    Id:                  /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend
         data:    Name:                IaaSStory-Backend
         data:    Location:            westus
         data:    Provisioning State:  Succeeded
@@ -201,7 +237,7 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
         info:    Looking up the network interface "NICDB1-DA"
         info:    Creating network interface "NICDB1-DA"
         info:    Looking up the network interface "NICDB1-DA"
-        data:    Id                              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-DA
+        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-DA
         data:    Name                            : NICDB1-DA
         data:    Type                            : Microsoft.Network/networkInterfaces
         data:    Location                        : westus
@@ -212,26 +248,26 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
         data:      Provisioning state            : Succeeded
         data:      Private IP address            : 192.168.2.4
         data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
+        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
         data:
         info:    network nic create command OK
         info:    Executing command network nic create
         info:    Looking up the network interface "NICDB1-RA"
         info:    Creating network interface "NICDB1-RA"
         info:    Looking up the network interface "NICDB1-RA"
-        data:    Id                              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-RA
+        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB1-RA
         data:    Name                            : NICDB1-RA
         data:    Type                            : Microsoft.Network/networkInterfaces
         data:    Location                        : westus
         data:    Provisioning state              : Succeeded
         data:    Enable IP forwarding            : false
-        data:    Network security group          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/networkSecurityGroups/NSG-RemoteAccess
+        data:    Network security group          : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/networkSecurityGroups/NSG-RemoteAccess
         data:    IP configurations:
         data:      Name                          : NIC-config
         data:      Provisioning state            : Succeeded
         data:      Private IP address            : 192.168.2.54
         data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
+        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
         data:
         info:    network nic create command OK
         info:    Executing command vm create
@@ -263,7 +299,7 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
         info:    Looking up the network interface "NICDB2-DA"
         info:    Creating network interface "NICDB2-DA"
         info:    Looking up the network interface "NICDB2-DA"
-        data:    Id                              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-DA
+        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-DA
         data:    Name                            : NICDB2-DA
         data:    Type                            : Microsoft.Network/networkInterfaces
         data:    Location                        : westus
@@ -274,26 +310,26 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
         data:      Provisioning state            : Succeeded
         data:      Private IP address            : 192.168.2.5
         data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
+        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
         data:
         info:    network nic create command OK
         info:    Executing command network nic create
         info:    Looking up the network interface "NICDB2-RA"
         info:    Creating network interface "NICDB2-RA"
         info:    Looking up the network interface "NICDB2-RA"
-        data:    Id                              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-RA
+        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory-Backend/providers/Microsoft.Network/networkInterfaces/NICDB2-RA
         data:    Name                            : NICDB2-RA
         data:    Type                            : Microsoft.Network/networkInterfaces
         data:    Location                        : westus
         data:    Provisioning state              : Succeeded
         data:    Enable IP forwarding            : false
-        data:    Network security group          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/networkSecurityGroups/NSG-RemoteAccess
+        data:    Network security group          : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/networkSecurityGroups/NSG-RemoteAccess
         data:    IP configurations:
         data:      Name                          : NIC-config
         data:      Provisioning state            : Succeeded
         data:      Private IP address            : 192.168.2.55
         data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
+        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/BackEnd
         data:
         info:    network nic create command OK
         info:    Executing command vm create
@@ -320,4 +356,9 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
         info:    Updating VM "DB2"
         info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

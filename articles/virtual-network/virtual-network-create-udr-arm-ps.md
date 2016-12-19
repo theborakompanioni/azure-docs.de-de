@@ -1,13 +1,13 @@
 ---
-title: Steuern des Routings und Verwenden virtueller Geräte im Resource Manager mithilfe von PowerShell | Microsoft Docs
-description: Erfahren Sie, wie Sie im Resource Manager mithilfe von PowerShell das Routing steuern und virtuelle Geräte verwenden.
+title: "Steuern des Routings und von virtuellen Geräten mithilfe von PowerShell | Microsoft Docs"
+description: "Erfahren Sie, wie Sie das Routing und virtuelle Geräte mit PowerShell steuern."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 9582fdaa-249c-4c98-9618-8c30d496940f
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,14 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: bd5f3b3cd46ce347896ed9ef229e438b2a3c830f
+ms.openlocfilehash: 97964c29b40e1f383c7697ad61afc47a8362b5ba
+
 
 ---
-# Erstellen von benutzerdefinierten Routen (UDR) im Resource Manager mit PowerShell
-[!INCLUDE [virtual-network-create-udr-arm-selectors-include.md](../../includes/virtual-network-create-udr-arm-selectors-include.md)]
+# <a name="create-user-defined-routes-udr-using-powershell"></a>Erstellen von benutzerdefinierten Routen (UDR) mit einer Vorlage
+
+> [!div class="op_single_selector"]
+- [PowerShell](virtual-network-create-udr-arm-ps.md)
+- [Azure-Befehlszeilenschnittstelle](virtual-network-create-udr-arm-cli.md)
+- [Vorlage](virtual-network-create-udr-arm-template.md)
+- [PowerShell (klassisch)](virtual-network-create-udr-classic-ps.md)
+- [CLI (klassisch)](virtual-network-create-udr-classic-cli.md)
+
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
+> [!IMPORTANT]
+> Bevor Sie mit Azure-Ressourcen arbeiten, sollten Sie wissen, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: die Bereitstellung mit dem Azure Resource Manager und die klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../resource-manager-deployment-model.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Zum Anzeigen der Dokumentation für verschiedene Tools klicken Sie auf die Registerkarten oben in diesem Artikel.
+>
 
 Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie haben auch die Möglichkeit, [benutzerdefinierte Routen im klassischen Bereitstellungsmodell zu erstellen](virtual-network-create-udr-classic-ps.md).
 
@@ -32,44 +45,54 @@ Die folgenden Beispielbefehle für PowerShell setzen voraus, dass bereits eine e
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## Erstellen der benutzerdefinierten Route für das Front-End-Subnetz
-Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz erforderlichen Route anhand des oben beschriebenen Szenarios die folgenden Schritte aus.
-
-[!INCLUDE [powershell-preview-include.md](../../includes/powershell-preview-include.md)]
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Erstellen der benutzerdefinierten Route für das Front-End-Subnetz
+Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz erforderlichen Route anhand des oben beschriebenen Szenarios die folgenden Schritte aus:
 
 1. Erstellen Sie eine Route, um den gesamten an das Back-End-Subnetz (192.168.2.0/24) gerichteten Datenverkehr an das virtuelle Gerät **FW1** (192.168.0.4) umzuleiten.
-   
-        $route = New-AzureRmRouteConfig -Name RouteToBackEnd `
-            -AddressPrefix 192.168.2.0/24 -NextHopType VirtualAppliance `
-            -NextHopIpAddress 192.168.0.4
-2. Erstellen Sie in der Region **USA, Westen** eine Routingtabelle mit dem Namen **UDR-FrontEnd**, die die oben erstellte Route enthält.
-   
-        $routeTable = New-AzureRmRouteTable -ResourceGroupName TestRG -Location westus `
-            -Name UDR-FrontEnd -Route $route
+
+    ```powershell
+    $route = New-AzureRmRouteConfig -Name RouteToBackEnd `
+    -AddressPrefix 192.168.2.0/24 -NextHopType VirtualAppliance `
+    -NextHopIpAddress 192.168.0.4
+    ```
+
+2. Erstellen Sie in der Region **USA, Westen** eine Routingtabelle namens **UDR-FrontEnd**, die die Route enthält.
+
+    ```powershell
+    $routeTable = New-AzureRmRouteTable -ResourceGroupName TestRG -Location westus `
+    -Name UDR-FrontEnd -Route $route
+    ```
+
 3. Erstellen Sie eine Variable, die das VNet mit dem Subnetz enthält. In diesem Szenario hat das VNET den Namen **TestVNet**.
-   
-        $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
+
+    ```powershell
+    $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
+    ```
+
 4. Ordnen Sie die oben erstellte Routingtabelle dem Subnetz **FrontEnd** zu.
-   
-        Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
-            -AddressPrefix 192.168.1.0/24 -RouteTable $routeTable
 
-> [!WARNING]
-> Die Ausgabe des obigen Befehls zeigt den Inhalt des Konfigurationsobjekts des virtuellen Netzwerks an, das nur auf dem Computer vorhanden ist, auf dem PowerShell ausgeführt wird. Zum Speichern der Änderungen in Azure müssen Sie das Cmdlet **Set-AzureVirtualNetwork** ausführen.
-> 
-> 
+    ```powershell
+    Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
+    -AddressPrefix 192.168.1.0/24 -RouteTable $routeTable
+    ```
 
-1. Speichern Sie die neue Subnetzkonfiguration in Azure.
-   
-        Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-   
+    > [!WARNING]
+    > Die Ausgabe des obigen Befehls zeigt den Inhalt des Konfigurationsobjekts des virtuellen Netzwerks an, das nur auf dem Computer vorhanden ist, auf dem PowerShell ausgeführt wird. Zum Speichern der Änderungen in Azure müssen Sie das Cmdlet **Set-AzureVirtualNetwork** ausführen.
+    > 
+
+5. Speichern Sie die neue Subnetzkonfiguration in Azure.
+
+    ```powershell
+    Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+    ```
+
     Erwartete Ausgabe:
    
         Name              : TestVNet
         ResourceGroupName : TestRG
         Location          : westus
-        Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-        Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        Id                : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+        Etag              : W/"[Id]"
         ProvisioningState : Succeeded
         Tags              : 
                             Name         Value
@@ -89,55 +112,67 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Front-End-Subnetz 
                                 ...,
                               {
                                 "Name": "FrontEnd",
-                                "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-                                "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
+                                "Etag": "W/\"[Id]\"",
+                                "Id": "/subscriptions/[Id]/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
                                 "AddressPrefix": "192.168.1.0/24",
                                 "IpConfigurations": [
                                   {
-                                    "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB2/ipConfigurations/ipconfig1"
+                                    "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB2/ipConfigurations/ipconfig1"
                                   },
                                   {
-                                    "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB1/ipConfigurations/ipconfig1"
+                                    "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB1/ipConfigurations/ipconfig1"
                                   }
                                 ],
                                 "NetworkSecurityGroup": {
-                                  "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
+                                  "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
                                 },
                                 "RouteTable": {
-                                  "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-FrontEnd"
+                                  "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-FrontEnd"
                                 },
                                 "ProvisioningState": "Succeeded"
                               },
                                 ...
                             ]    
 
-## Erstellen der benutzerdefinierten Route für das Back-End-Subnetz
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Erstellen der benutzerdefinierten Route für das Back-End-Subnetz
+
 Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz erforderlichen Route anhand des oben beschriebenen Szenarios die folgenden Schritte aus.
 
 1. Erstellen Sie eine Route, um den gesamten an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an das virtuelle Gerät **FW1** (192.168.0.4) umzuleiten.
-   
-        $route = New-AzureRmRouteConfig -Name RouteToFrontEnd `
-            -AddressPrefix 192.168.1.0/24 -NextHopType VirtualAppliance `
-            -NextHopIpAddress 192.168.0.4
+
+    ```powershell
+    $route = New-AzureRmRouteConfig -Name RouteToFrontEnd `
+    -AddressPrefix 192.168.1.0/24 -NextHopType VirtualAppliance `
+    -NextHopIpAddress 192.168.0.4
+    ```
+
 2. Erstellen Sie in der Region **USA, Westen** eine Routingtabelle mit dem Namen **UDR-BackEnd**, die die oben erstellte Route enthält.
-   
-        $routeTable = New-AzureRmRouteTable -ResourceGroupName TestRG -Location westus `
-            -Name UDR-BackEnd -Route $route
+
+    ```
+    $routeTable = New-AzureRmRouteTable -ResourceGroupName TestRG -Location westus `
+    -Name UDR-BackEnd -Route $route
+    ```
+
 3. Ordnen Sie die oben erstellte Routingtabelle dem Subnetz **BackEnd** zu.
-   
-        Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd `
-            -AddressPrefix 192.168.2.0/24 -RouteTable $routeTable
+
+    ```powershell
+    Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd `
+    -AddressPrefix 192.168.2.0/24 -RouteTable $routeTable
+    ```
+
 4. Speichern Sie die neue Subnetzkonfiguration in Azure.
-   
-        Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-   
+
+    ```powershell
+    Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+    ```
+
     Erwartete Ausgabe:
    
         Name              : TestVNet
         ResourceGroupName : TestRG
         Location          : westus
-        Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-        Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        Id                : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+        Etag              : W/"[Id]"
         ProvisioningState : Succeeded
         Tags              : 
                             Name         Value
@@ -157,45 +192,50 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz e
                               ...,
                               {
                                 "Name": "BackEnd",
-                                "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-                                "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
+                                "Etag": "W/\"[Id]\"",
+                                "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
                                 "AddressPrefix": "192.168.2.0/24",
                                 "IpConfigurations": [
                                   {
-                                    "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICSQL2/ipConfigurations/ipconfig1"
+                                    "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICSQL2/ipConfigurations/ipconfig1"
                                   },
                                   {
-                                    "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICSQL1/ipConfigurations/ipconfig1"
+                                    "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICSQL1/ipConfigurations/ipconfig1"
                                   }
                                 ],
                                 "NetworkSecurityGroup": {
-                                  "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BacEnd"
+                                  "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BacEnd"
                                 },
                                 "RouteTable": {
-                                  "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd"
+                                  "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd"
                                 },
                                 "ProvisioningState": "Succeeded"
                               }
                             ]
 
-## Aktivieren der IP-Weiterleitung auf "FW1"
-Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1** verwendeten Netzwerkkarte die folgenden Schritte aus.
+## <a name="enable-ip-forwarding-on-fw1"></a>Aktivieren der IP-Weiterleitung auf "FW1"
+Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1**verwendeten Netzwerkkarte die folgenden Schritte aus.
 
 1. Erstellen Sie eine Variable mit den Einstellungen für die von "FW1" verwendete Netzwerkkarte. In diesem Szenario hat die Netzwerkkarte die Bezeichnung **NICFW1**.
-   
-        $nicfw1 = Get-AzureRmNetworkInterface -ResourceGroupName TestRG -Name NICFW1
+
+    ```powershell
+    $nicfw1 = Get-AzureRmNetworkInterface -ResourceGroupName TestRG -Name NICFW1
+    ```
+
 2. Aktivieren Sie IP-Weiterleitung, und speichern Sie die Netzwerkkarteneinstellungen.
-   
-        $nicfw1.EnableIPForwarding = 1
-        Set-AzureRmNetworkInterface -NetworkInterface $nicfw1
+
+    ```powershell
+    $nicfw1.EnableIPForwarding = 1
+    Set-AzureRmNetworkInterface -NetworkInterface $nicfw1
+    ```
    
     Erwartete Ausgabe:
    
         Name                 : NICFW1
         ResourceGroupName    : TestRG
         Location             : westus
-        Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICFW1
-        Etag                 : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        Id                   : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICFW1
+        Etag                 : W/"[Id]"
         ProvisioningState    : Succeeded
         Tags                 : 
                                Name         Value                  
@@ -203,20 +243,20 @@ Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1** verwendeten N
                                displayName  NetworkInterfaces - DMZ
    
         VirtualMachine       : {
-                                 "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/FW1"
+                                 "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/FW1"
                                }
         IpConfigurations     : [
                                  {
                                    "Name": "ipconfig1",
-                                   "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-                                   "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICFW1/ipConfigurations/ipconfig1",
+                                   "Etag": "W/\"[Id]\"",
+                                   "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICFW1/ipConfigurations/ipconfig1",
                                    "PrivateIpAddress": "192.168.0.4",
                                    "PrivateIpAllocationMethod": "Static",
                                    "Subnet": {
-                                     "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/DMZ"
+                                     "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/DMZ"
                                    },
                                    "PublicIpAddress": {
-                                     "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/PIPFW1"
+                                     "Id": "/subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/PIPFW1"
                                    },
                                    "LoadBalancerBackendAddressPools": [],
                                    "LoadBalancerInboundNatRules": [],
@@ -233,4 +273,9 @@ Führen Sie zum Aktivieren der IP-Weiterleitung in der von **FW1** verwendeten N
         NetworkSecurityGroup : null
         Primary              : True
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

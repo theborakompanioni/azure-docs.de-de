@@ -1,23 +1,28 @@
 ---
 title: Erweiterte Ereignisse in Azure SQL-Datenbank | Microsoft Docs
-description: Beschreibt erweiterte Ereignisse (XEvents) in Azure SQL-Datenbank und wie sich Ereignissitzungen im Vergleich zu Microsoft SQL Server geringfügig unterscheiden.
+description: "Beschreibt erweiterte Ereignisse (XEvents) in Azure SQL-Datenbank und wie sich Ereignissitzungen im Vergleich zu Microsoft SQL Server geringfügig unterscheiden."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: MightyPen
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 3b28cf15-f820-4b3c-8310-908d6d5b9d0c
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: genemi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9a72e2b5299828fbc2b3fdf543cd5c81574a14d3
+
 
 ---
-# Erweiterte Ereignisse in Azure SQL-Datenbank
+# <a name="extended-events-in-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 In diesem Thema wird erläutert, wie sich die Implementierung erweiterter Ereignisse in Azure SQL-Datenbank im Vergleich zu erweiterten Ereignissen in Microsoft SQL Server geringfügig unterscheidet.
@@ -40,7 +45,7 @@ Weitere Informationen zu erweiterten Ereignissen für Azure SQL-Datenbank und Mi
 * [Schnellstart: Erweiterte Ereignisse in Microsoft SQL Server](http://msdn.microsoft.com/library/mt733217.aspx)
 * [Erweiterte Ereignisse](http://msdn.microsoft.com/library/bb630282.aspx)
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Dieses Thema setzt voraus, dass Sie mit Folgendem grundlegend vertraut sind:
 
 * [Azure SQL-Datenbankdienst](https://azure.microsoft.com/services/sql-database/).
@@ -55,65 +60,65 @@ Vorherige Kenntnisse in Bezug auf die folgenden Elemente ist hilfreich bei der A
   
   * [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
 
-## Codebeispiele
+## <a name="code-samples"></a>Codebeispiele
 In verwandten Themen werden zwei Codebeispiele geboten:
 
 * [Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank](sql-database-xevent-code-ring-buffer.md)
   
   * Kurzes einfaches Transact-SQL-Skript.
-  * Wir betonen im Codebeispielthema, dass Sie die Ressourcen des Ringpufferziels durch Ausführen der Anweisung „alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`“ freigeben müssen, wenn Sie damit fertig sind. Später können Sie eine weitere Ringpufferinstanz durch `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...` hinzufügen.
+  * Wir betonen im Codebeispielthema, dass Sie die Ressourcen des Ringpufferziels durch Ausführen der Anweisung „alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` “ freigeben müssen, wenn Sie damit fertig sind. Später können Sie eine weitere Ringpufferinstanz durch `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`hinzufügen.
 * [Code des Ziels "Ereignisdatei" für erweiterte Ereignisse in SQL-Datenbank](sql-database-xevent-code-event-file.md)
   
-  * Phase 1 ist PowerShell zum Erstellen eines Azure-Speichercontainers.
-  * Phase 2 ist Transact-SQL-Code, der den Azure Storage-Container verwendet.
+  * Phase 1 ist PowerShell zum Erstellen eines Azure-Speichercontainers.
+  * Phase 2 ist Transact-SQL-Code, der den Azure Storage-Container verwendet.
 
-## Transact-SQL-Unterschiede
-* Beim Ausführen des [CREATE EVENT SESSION](http://msdn.microsoft.com/library/bb677289.aspx)-Befehls für SQL Server verwenden Sie die **ON SERVER**-Klausel. Doch bei SQL-Datenbank verwenden Sie stattdessen die **ON DATABASE**-Klausel.
-* Die **ON DATABASE** -Klausel gilt auch für die Transact-SQL-Befehle [ALTER EVENT SESSION](http://msdn.microsoft.com/library/bb630368.aspx) und [DROP EVENT SESSION](http://msdn.microsoft.com/library/bb630257.aspx).
-* Eine bewährte Methode ist das Einschließen der Ereignissitzungsoption von **STARTUP\_STATE = ON** in Ihre Anweisungen **CREATE EVENT SESSION** oder **ALTER EVENT SESSION**.
+## <a name="transact-sql-differences"></a>Transact-SQL-Unterschiede
+* Beim Ausführen des [CREATE EVENT SESSION](http://msdn.microsoft.com/library/bb677289.aspx) -Befehls für SQL Server verwenden Sie die **ON SERVER** -Klausel. Doch bei SQL-Datenbank verwenden Sie stattdessen die **ON DATABASE** -Klausel.
+* Die **ON DATABASE**-Klausel gilt auch für die Transact-SQL-Befehle [ALTER EVENT SESSION](http://msdn.microsoft.com/library/bb630368.aspx) und [DROP EVENT SESSION](http://msdn.microsoft.com/library/bb630257.aspx).
+* Eine bewährte Methode ist das Einschließen der Ereignissitzungsoption von **STARTUP_STATE = ON** in Ihre Anweisungen **CREATE EVENT SESSION** oder **ALTER EVENT SESSION**.
   
   * Der Wert **= ON** unterstützt einen automatischen Neustart nach einer Neukonfiguration der logischen Datenbank aufgrund eines Failovers.
 
-## Neue Katalogsichten
-Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](http://msdn.microsoft.com/library/ms174365.aspx) unterstützt. Katalogsichten informieren Sie über *Metadaten oder Definitionen* von vom Benutzer erstellten Ereignissitzungen in der aktuellen Datenbank. Die Sichten geben keine Informationen zu Instanzen aktiver Ereignissitzungen zurück.
+## <a name="new-catalog-views"></a>Neue Katalogsichten
+Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](http://msdn.microsoft.com/library/ms174365.aspx)unterstützt. Katalogsichten informieren Sie über *Metadaten oder Definitionen* von vom Benutzer erstellten Ereignissitzungen in der aktuellen Datenbank. Die Sichten geben keine Informationen zu Instanzen aktiver Ereignissitzungen zurück.
 
 | Name der<br/>Katalogsicht | Beschreibung |
 |:--- |:--- |
-| **sys.database\_event\_session\_actions** |Gibt eine Zeile für jede Aktion in jedem Ereignis einer Ereignissitzung zurück. |
-| **sys.database\_event\_session\_events** |Gibt eine Zeile für jedes Ereignis in einer Ereignissitzung zurück. |
-| **sys.database\_event\_session\_fields** |Gibt eine Zeile für jede anpassbare Spalte zurück, die für Ereignisse und Ziele explizit festgelegt wurde. |
-| **sys.database\_event\_session\_targets** |Gibt eine Zeile für jedes Ereignisziel einer Ereignissitzung zurück. |
-| **sys.database\_event\_sessions** |Gibt eine Zeile für jede Ereignissitzung in der SQL-Datenbank zurück. |
+| **sys.database_event_session_actions** |Gibt eine Zeile für jede Aktion in jedem Ereignis einer Ereignissitzung zurück. |
+| **sys.database_event_session_events** |Gibt eine Zeile für jedes Ereignis in einer Ereignissitzung zurück. |
+| **sys.database_event_session_fields** |Gibt eine Zeile für jede anpassbare Spalte zurück, die für Ereignisse und Ziele explizit festgelegt wurde. |
+| **sys.database_event_session_targets** |Gibt eine Zeile für jedes Ereignisziel einer Ereignissitzung zurück. |
+| **sys.database_event_sessions** |Gibt eine Zeile für jede Ereignissitzung in der SQL-Datenbank zurück. |
 
-In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster entspricht **sys.server\_event\_%**.
+In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster entspricht **sys.server_event_%**.
 
-## Neue dynamische Verwaltungssichten [(DMVs)](http://msdn.microsoft.com/library/ms188754.aspx)
-Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](http://msdn.microsoft.com/library/bb677293.aspx), die erweiterte Ereignisse unterstützen. DMVs informieren Sie über *aktive* Ereignissitzungen.
+## <a name="new-dynamic-management-views-dmvshttpmsdnmicrosoftcomlibraryms188754aspx"></a>Neue dynamische Verwaltungssichten [(DMVs)](http://msdn.microsoft.com/library/ms188754.aspx)
+Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](http://msdn.microsoft.com/library/bb677293.aspx) , die erweiterte Ereignisse unterstützen. DMVs informieren Sie über *aktive* Ereignissitzungen.
 
 | DMV-Name | Beschreibung |
 |:--- |:--- |
-| **sys.dm\_xe\_database\_session\_event\_actions** |Gibt Informationen zu Ereignissitzungsaktionen zurück. |
-| **sys.dm\_xe\_database\_session\_events** |Gibt Informationen zu Sitzungsereignissen zurück. |
-| **sys.dm\_xe\_database\_session\_object\_columns** |Zeigt die Konfigurationswerte für Objekte, die an eine Sitzung gebunden sind. |
-| **sys.dm\_xe\_database\_session\_targets** |Gibt Informationen zu Sitzungszielen zurück. |
-| **sys.dm\_xe\_database\_sessions** |Gibt eine Zeile für jede Ereignissitzung zurück, die auf die aktuelle Datenbank begrenzt ist. |
+| **sys.dm_xe_database_session_event_actions** |Gibt Informationen zu Ereignissitzungsaktionen zurück. |
+| **sys.dm_xe_database_session_events** |Gibt Informationen zu Sitzungsereignissen zurück. |
+| **sys.dm_xe_database_session_object_columns** |Zeigt die Konfigurationswerte für Objekte, die an eine Sitzung gebunden sind. |
+| **sys.dm_xe_database_session_targets** |Gibt Informationen zu Sitzungszielen zurück. |
+| **sys.dm_xe_database_sessions** |Gibt eine Zeile für jede Ereignissitzung zurück, die auf die aktuelle Datenbank begrenzt ist. |
 
-In Microsoft SQL Server werden ähnliche Katalogsichten ohne den Teil *\_database* des Namens benannt, wie z. B.:
+In Microsoft SQL Server werden ähnliche Katalogsichten ohne den Teil *\_database* des Namens benannt, wie z.B.:
 
-* **sys.dm\_xe\_sessions** anstelle des Namens<br/>**sys.dm\_xe\_database\_sessions**.
+* **sys.dm_xe_sessions**, anstelle von Namen<br/>**sys.dm_xe_database_sessions**.
 
-### DMVs, die Azure SQL-Datenbank und Microsoft SQL Server gemeinsam haben
+### <a name="dmvs-common-to-both"></a>DMVs, die Azure SQL-Datenbank und Microsoft SQL Server gemeinsam haben
 Für erweiterte Ereignisse gibt es zusätzliche DMVs, die Azure SQL-Datenbank und Microsoft SQL Server gemeinsam haben:
 
-* **sys.dm\_xe\_map\_values**
-* **sys.dm\_xe\_object\_columns**
-* **sys.dm\_xe\_objects**
-* **sys.dm\_xe\_packages**
+* **sys.dm_xe_map_values**
+* **sys.dm_xe_object_columns**
+* **sys.dm_xe_objects**
+* **sys.dm_xe_packages**
 
  <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
-## Suchen der verfügbaren erweiterten Ereignisse, Aktionen und Ziele
-Sie können mithilfe einer einfachen SQL **SELECT**-Anweisung eine Liste der verfügbaren Ereignisse, Aktionen und Ziele abrufen.
+## <a name="find-the-available-extended-events-actions-and-targets"></a>Suchen der verfügbaren erweiterten Ereignisse, Aktionen und Ziele
+Sie können mithilfe einer einfachen SQL **SELECT** -Anweisung eine Liste der verfügbaren Ereignisse, Aktionen und Ziele abrufen.
 
 ```
 SELECT
@@ -141,45 +146,45 @@ SELECT
 
 &nbsp;
 
-## Ziele für SQL-Datenbank-Ereignissitzungen
+## <a name="targets-for-your-sql-database-event-sessions"></a>Ziele für SQL-Datenbank-Ereignissitzungen
 Es folgen Ziele, die Ergebnisse aus Ihren Ereignissitzungen für SQL-Datenbank erfassen können:
 
-* [Ringpuffer](http://msdn.microsoft.com/library/ff878182.aspx): Enthält für kurze Zeit Ereignisdaten im Arbeitsspeicher.
-* [Ereigniszähler](http://msdn.microsoft.com/library/ff878025.aspx): Zählt alle Ereignisse, die während einer Sitzung mit erweiterter Ereignissen auftreten.
-* [Ereignisdatei](http://msdn.microsoft.com/library/ff878115.aspx): Schreibt vollständige Puffer in einen Azure Storage-Container.
+* [Ringpuffer](http://msdn.microsoft.com/library/ff878182.aspx) : Enthält für kurze Zeit Ereignisdaten im Arbeitsspeicher.
+* [Ereigniszähler](http://msdn.microsoft.com/library/ff878025.aspx) : Zählt alle Ereignisse, die während einer Sitzung mit erweiterter Ereignissen auftreten.
+* [Ereignisdatei](http://msdn.microsoft.com/library/ff878115.aspx) : Schreibt vollständige Puffer in einen Azure Storage-Container.
 
-Die [ETW](http://msdn.microsoft.com/library/ms751538.aspx)-API (Event Tracing for Windows) ist für erweiterte Ereignisse in SQL-Datenbank nicht verfügbar.
+Die [ETW](http://msdn.microsoft.com/library/ms751538.aspx) -API (Event Tracing for Windows) ist für erweiterte Ereignisse in SQL-Datenbank nicht verfügbar.
 
-## Einschränkungen
+## <a name="restrictions"></a>Einschränkungen
 Es gibt einige sicherheitsbezogene Unterschiede, die für die Cloudumgebung von SQL-Datenbank angemessen sind:
 
 * Erweiterte Ereignisse beruhen auf dem Modell der Isolation einzelner Mandanten. Eine Ereignissitzung in einer Datenbank kann nicht auf Daten oder Ereignisse in einer anderen Datenbank zugreifen.
 * Sie können keine **CREATE EVENT SESSION**-Anweisung im Kontext der **master**-Datenbank angeben.
 
-## Berechtigungsmodell
-Sie benötigen die Berechtigung **Control** für die Datenbank, um eine **CREATE EVENT SESSION**-Anweisung angeben zu können. Der Datenbankbesitzer (dbo) hat die Berechtigung **Control**.
+## <a name="permission-model"></a>Berechtigungsmodell
+Sie benötigen die Berechtigung **Control** für die Datenbank, um eine **CREATE EVENT SESSION**-Anweisung angeben zu können. Der Datenbankbesitzer (dbo) hat die Berechtigung **Control** .
 
-### Speichercontainerautorisierungen
+### <a name="storage-container-authorizations"></a>Speichercontainerautorisierungen
 Das SAS-Token, das Sie für Ihren Azure Storage-Container generieren, muss **rwl** für die Berechtigungen angeben. Der Wert **rwl** bietet die folgenden Berechtigungen:
 
 * Lesen
 * Schreiben
 * Auflisten
 
-## Überlegungen zur Leistung
+## <a name="performance-considerations"></a>Überlegungen zur Leistung
 Es gibt Szenarien, in denen durch die intensive Nutzung erweiterter Ereignisse mehr aktiver Arbeitsspeicher kumuliert wird, als für das System vorteilhaft ist. Deshalb sorgt das Azure SQL-Datenbanksystem für eine dynamische Festlegung und Anpassung von Grenzwerten für die Menge an aktivem Arbeitsspeicher, die von einer Ereignissitzung kumuliert werden kann. Viele Faktoren fließen in die dynamische Berechnung ein.
 
-Wenn Sie eine Fehlermeldung erhalten, die besagt, dass ein Arbeitsspeichermaximum erzwungen wurde, können Sie z. B. die folgenden Maßnahmen ergreifen:
+Wenn Sie eine Fehlermeldung erhalten, die besagt, dass ein Arbeitsspeichermaximum erzwungen wurde, können Sie z. B. die folgenden Maßnahmen ergreifen:
 
 * Führen Sie weniger gleichzeitige Ereignissitzungen durch.
 * Verringern Sie über die Anweisungen **CREATE** und **ALTER** für Ereignissitzungen die Arbeitsspeichermenge, die Sie für die **MAX\_MEMORY**-Klausel angeben.
 
-### Netzwerklatenz
+### <a name="network-latency"></a>Netzwerklatenz
 Beim Ziel **Ereignisdatei** können Netzwerklatenz oder -fehler auftreten, während Daten in Azure Storage-Blobs dauerhaft gespeichert werden. Andere Ereignisse in der SQL-Datenbank können möglicherweise verzögert werden, während auf den Abschluss der Netzwerkkommunikation gewartet wird. Diese Verzögerung kann Ihren Workload verlangsamen.
 
-* Um dieses Leistungsrisiko zu vermeiden, legen Sie die Option **EVENT\_RETENTION\_MODE** in Ihren Ereignissitzungsdefinitionen nicht auf **NO\_EVENT\_LOSS** fest.
+* Um dieses Leistungsrisiko zu vermeiden, legen Sie die Option **EVENT_RETENTION_MODE** in Ihren Ereignissitzungsdefinitionen nicht auf **NO_EVENT_LOSS** fest.
 
-## Verwandte Links
+## <a name="related-links"></a>Verwandte Links
 * [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md)
 * [Azure Storage-Cmdlets](http://msdn.microsoft.com/library/dn806401.aspx)
 * [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md) – Bietet umfassende Informationen zu PowerShell und zum Azure Storage-Dienst.
@@ -197,4 +202,8 @@ Weitere Themen mit Codebeispielen für erweiterte Ereignisse finden Sie unter de
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+
