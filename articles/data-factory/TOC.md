@@ -81,13 +81,14 @@
 ### [Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways](data-factory-troubleshoot-gateway-issues.md)
 
 # Referenz
-## [Versionshinweise für Datenverwaltungsgateway](data-factory-gateway-release-notes.md)
+## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
+## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [Azure Data Factory-Entwicklerreferenz](data-factory-sdks.md)
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [.NET](/dotnet/api/)
 ## [REST](/rest/api/datafactory/)
 
 # Ressourcen
+## [Versionshinweise für Datenverwaltungsgateway](data-factory-gateway-release-notes.md)
+## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/data-factory)
 ## [Fallstudien](data-factory-customer-case-studies.md)
 ### [Produktempfehlungen](data-factory-product-reco-usecase.md)
 ### [Erstellen von Kundenprofilen](data-factory-customer-profiling-usecase.md)
@@ -100,6 +101,6 @@
 ## [Anfordern eines Features](https://feedback.azure.com/forums/270578-azure-data-factory)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

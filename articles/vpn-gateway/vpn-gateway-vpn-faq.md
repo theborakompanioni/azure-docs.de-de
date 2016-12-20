@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2016
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: d653865993d75cf926151a14cc4f059e4eaba035
-ms.openlocfilehash: f0e7c08a0783452665028ea3479c14b02a27258f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e7d0fa43001268fc4747bbf40d3dc209aa037a67
 
 
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 ## <a name="connecting-to-virtual-networks"></a>Herstellen einer Verbindung mit virtuellen Netzwerken
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>Kann ich Verbindungen zwischen virtuellen Netzwerken in verschiedenen Azure-Regionen herstellen?
-Ja. Es gelten keine regionsbedingten Einschränkungen. Verbindungen können sowohl zwischen virtuellen Netzwerken in der gleichen Region als auch zwischen virtuellen Netzwerken in unterschiedlichen Azure-Regionen hergestellt werden.
+Ja. Es gelten keine regionsbedingten Einschränkungen. Verbindungen können sowohl zwischen virtuellen Netzwerken in der gleichen Region als auch zwischen virtuellen Netzwerken in unterschiedlichen Azure-Regionen hergestellt werden. 
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>Kann ich Verbindungen zwischen virtuellen Netzwerken in unterschiedlichen Abonnements herstellen?
 Ja.
@@ -216,6 +216,6 @@ Weitere Informationen zu virtuellen Netzwerken finden Sie in den [FAQs zu virtue
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

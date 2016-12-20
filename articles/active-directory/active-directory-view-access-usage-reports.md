@@ -1,12 +1,12 @@
 ---
 title: Anzeigen Ihrer Zugriffs- und Nutzungsberichte | Microsoft Docs
-description: Erläutert das Anzeigen von Zugriffs- und Nutzungsberichten, um sich einen Einblick in die Integrität und Sicherheit des Verzeichnisses Ihrer Organisation zu verschaffen.
+description: "Erläutert das Anzeigen von Zugriffs- und Nutzungsberichten, um sich einen Einblick in die Integrität und Sicherheit des Verzeichnisses Ihrer Organisation zu verschaffen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: a074bc4e-cf3f-4ad1-8cc6-4199d2e09ce4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2016
 ms.author: dhanyahk
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8b3835d354512645cd47ffa4541d6155c80e77ee
+
 
 ---
-# Anzeigen von Zugriffs- und Nutzungsberichten
-*Diese Dokumentation ist Teil des [Handbuchs für Azure Active Directory Reporting](active-directory-reporting-guide.md).*
+# <a name="view-your-access-and-usage-reports"></a>Anzeigen von Zugriffs- und Nutzungsberichten
+*Diese Dokumentation ist Teil des Handbuchs für [Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
 Sie können die Zugriffs- und Nutzungsberichte von Azure Active Directory verwenden, um sich einen Einblick in die Integrität und Sicherheit des Verzeichnisses Ihrer Organisation zu verschaffen. Mithilfe dieser Informationen kann ein Verzeichnisadministrator mögliche Sicherheitsrisiken besser bestimmen, um angemessen zu planen, wie diese Risiken eingedämmt werden können.
 
@@ -30,12 +34,12 @@ Im Azure-Verwaltungsportal werden Berichte auf folgende Weise kategorisiert:
 * Aktivitätsprotokolle – Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, letzten 7 Tagen oder letzten 30 Tagen sowie von Änderungen an Gruppenaktivitäten sowie Kennwortzurücksetzungs- und Registrierungsaktivitäten.
 
 > [!NOTE]
-> * Einige erweiterte Anomalie- und Ressourcennutzungsberichte sind nur verfügbar, wenn Sie [Azure Active Directory Premium](active-directory-get-started-premium.md) aktivieren. Erweiterte Berichte unterstützen Sie bei der Optimierung der Zugriffssicherheit, Reaktion auf potenzielle Bedrohungen und dem Zugriff auf Analysen zur Geräte- und Anwendungsnutzung.
+> * Einige erweiterte Anomalie- und Ressourcennutzungsberichte sind nur verfügbar, wenn Sie [Azure Active Directory Premium](active-directory-get-started-premium.md)aktivieren. Erweiterte Berichte unterstützen Sie bei der Optimierung der Zugriffssicherheit, Reaktion auf potenzielle Bedrohungen und dem Zugriff auf Analysen zur Geräte- und Anwendungsnutzung.
 > * Die Azure Active Directory-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 > 
 > 
 
-## Berichte
+## <a name="reports"></a>Berichte
 | Bericht | Beschreibung |
 | --- | --- |
 | **Berichte zu anomalen Aktivitäten** | |
@@ -63,42 +67,42 @@ Im Azure-Verwaltungsportal werden Berichte auf folgende Weise kategorisiert:
 | Nutzung von RMS-Geräten |Listet Geräte auf, die für den Zugriff auf RMS-geschützte Dateien verwendet werden. |
 | Nutzung RMS-fähiger Anwendungen |Bietet die Nutzung von RMS-fähigen Anwendungen. |
 
-## Berichte in den verschiedenen Editionen
+## <a name="report-editions"></a>Berichte in den verschiedenen Editionen
 | Bericht | Free | Basic | Premium |
 | --- | --- | --- | --- |
 | **Berichte zu anomalen Aktivitäten** | | | |
-| Anmeldungen aus unbekannten Quellen |✓ |✓ |✓ |
-| Anmeldungen nach mehreren Fehlern |✓ |✓ |✓ |
-| Anmeldungen aus mehreren geografischen Regionen |✓ |✓ |✓ |
+| Anmeldungen aus unbekannten Quellen |✓ |✓  |✓ |
+| Anmeldungen nach mehreren Fehlern |✓ |✓  |✓ |
+| Anmeldungen aus mehreren geografischen Regionen |✓ |✓  |✓ |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten | | |✓ |
 | Anmeldungen von möglicherweise infizierten Geräten | | |✓ |
 | Irreguläre Anmeldeaktivitäten | | |✓ |
 | Benutzer mit anomalen Anmeldeaktivitäten | | |✓ |
 | Benutzer mit kompromittierten Anmeldeinformationen | | |✓ |
 | **Aktivitätsprotokolle** | | | |
-| Überwachungsbericht |✓ |✓ |✓ |
+| Überwachungsbericht |✓ |✓  |✓ |
 | Kennwortzurücksetzungsaktivität | | |✓ |
 | Aktivität "Registrierung für Zurücksetzen des Kennworts" | | |✓ |
 | Self-Service-Gruppenaktivität | | |✓ |
 | **Integrierte Anwendungen** | | | |
 | Anwendungsnutzung | | |✓ |
-| Kontobereitstellungsaktivität |✓ |✓ |✓ |
+| Kontobereitstellungsaktivität |✓ |✓  |✓ |
 | Status des Kennwortrollovers | | |✓ |
-| Kontobereitstellungsfehler |✓ |✓ |✓ |
+| Kontobereitstellungsfehler |✓ |✓  |✓ |
 | **Rechteverwaltung** | | | |
 | RMS-Nutzung | | |Nur RMS |
 | Aktivste RMS-Benutzer | | |Nur RMS |
 | Nutzung von RMS-Geräten | | |Nur RMS |
 | Nutzung RMS-fähiger Anwendungen | | |Nur RMS |
 
-## Berichte zu anomalen Aktivitäten
+## <a name="anomalous-activity-reports"></a>Berichte zu anomalen Aktivitäten
 <p>Die Berichte zu anomalen Aktivitäten markieren verdächtige Anmeldeaktivitäten in Office365, im Azure-Verwaltungsportal, im Azure AD-Zugriffsbereich, in SharePoint Online, in Dynamics CRM Online und in anderen Microsoft-Onlinediensten.</p>
 
-<p>All diese Berichte, mit Ausnahme des Berichts "Anmeldungen nach mehreren Fehlern", markieren außerdem verdächtige <i>Verbundanmeldungen</i> bei den oben genannten Diensten, unabhängig vom Verbundanbieter. </p>
+<p>All diese Berichte, mit Ausnahme des Berichts „Anmeldungen nach mehreren Fehlern“, markieren außerdem verdächtige <i>Verbundanmeldungen</i> bei den oben genannten Diensten, unabhängig vom Verbundanbieter. </p>
 
-<p>Folgende Berichte sind verfügbar:</p><ul>
+<p>Folgende Berichte sind verfügbar: </p><ul>
 
-<li>[Anmeldungen von unbekannten Quellen](active-directory-reporting-sign-ins-from-unknown-sources.md).</li>
+<li>[Anmeldungen aus unbekannten Quellen](active-directory-reporting-sign-ins-from-unknown-sources.md).</li>
 
 <li>[Anmeldungen nach mehreren Fehlern](active-directory-reporting-sign-ins-after-multiple-failures.md).</li>
 
@@ -110,81 +114,81 @@ Im Azure-Verwaltungsportal werden Berichte auf folgende Weise kategorisiert:
 
 <li>[Anmeldungen von möglicherweise infizierten Geräten](active-directory-reporting-sign-ins-from-possibly-infected-devices.md).</li>
 
-<li>[Benutzern mit anomalen Anmeldeaktivitäten](active-directory-reporting-users-with-anomalous-sign-in-activity.md).</li>
+<li>[Benutzer mit anomalen Anmeldeaktivitäten](active-directory-reporting-users-with-anomalous-sign-in-activity.md).</li>
 
-<li>Benutzer mit kompromittierten Anmeldeinformationen</li>.</ul>
+<li>Benutzer mit kompromittierten Anmeldeinformationen</li></ul>
 
-## Aktivitätsprotokolle
-### Überwachungsbericht
+## <a name="activity-logs"></a>Aktivitätsprotokolle
+### <a name="audit-report"></a>Überwachungsbericht
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
-| Zeigt eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, letzten 7 Tagen oder letzten 30 Tagen. <br /> Weitere Informationen finden Sie unter [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md). |Verzeichnis > Registerkarte "Berichte" |
+| Zeigt eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, letzten 7 Tagen oder letzten 30 Tagen. <br /> Weitere Informationen finden Sie unter [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md) |Verzeichnis > Registerkarte "Berichte" |
 
 ![Überwachungsbericht](./media/active-directory-view-access-usage-reports/auditReport.PNG)
 
-### Kennwortzurücksetzungsaktivität
+### <a name="password-reset-activity"></a>Kennwortzurücksetzungsaktivität
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | Zeigt alle Versuche der Kennwortzurücksetzung, die in Ihrer Organisation erfolgt sind. |Verzeichnis > Registerkarte "Berichte" |
 
 ![Kennwortzurücksetzungsaktivität](./media/active-directory-view-access-usage-reports/passwordResetActivity.PNG)
 
-### Aktivität "Registrierung für Zurücksetzen des Kennworts"
+### <a name="password-reset-registration-activity"></a>Aktivität "Registrierung für Zurücksetzen des Kennworts"
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | Zeigt alle Registrierungen für die Kennwortzurücksetzung, die in Ihrer Organisation erfolgt sind. |Verzeichnis > Registerkarte "Berichte" |
 
 ![Aktivität "Registrierung für Zurücksetzen des Kennworts"](./media/active-directory-view-access-usage-reports/passwordResetRegistrationActivity.PNG)
 
-### Self-Service-Gruppenaktivität
+### <a name="self-service-groups-activity"></a>Self-Service-Gruppenaktivität
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | Zeigt alle Aktivitäten der per Self-Service verwalteten Gruppen in Ihrem Verzeichnis. |Verzeichnis > Benutzer > <i>Benutzer</i> > Registerkarte "Geräte" |
 
 ![Self-Service-Gruppenaktivität](./media/active-directory-view-access-usage-reports/selfServiceGroupsActivity.PNG)
 
-## Integrierte Anwendungsberichte
-### Anwendungsnutzung: Zusammenfassung
+## <a name="integrated-applications-reports"></a>Integrierte Anwendungsberichte
+### <a name="application-usage-summary"></a>Anwendungsnutzung: Zusammenfassung
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | In diesem Bericht können Sie die Nutzung aller SaaS-Anwendungen in Ihrem Verzeichnis ablesen. Dieser Bericht basiert darauf, wie oft Benutzer im Zugriffsbereich auf die Anwendung geklickt haben. |Verzeichnis > Registerkarte "Berichte" |
 
-Dieser Bericht enthält Informationen zu Anmeldungen bei *allen* Programmen, auf die Ihr Verzeichnis Zugriff hat, einschließlich vorab integrierter Microsoft-Anwendungen.
+Dieser Bericht enthält Informationen zu Anmeldungen bei *allen* Anwendungen, auf die Ihr Verzeichnis Zugriff hat, einschließlich vorab integrierter Microsoft-Anwendungen.
 
-Zu den bereits integrierten Microsoft-Anwendungen zählen Office 365, Sharepoint, das Azure-Verwaltungsportal und andere.
+Zu den bereits integrierten Microsoft-Anwendungen zählen Office 365, Sharepoint, das Azure-Verwaltungsportal und andere.
 
 ![Zusammenfassung Anwendungsnutzung](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
 
-### Anwendungsnutzung: detailliert
+### <a name="application-usage-detailed"></a>Anwendungsnutzung: detailliert
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | In diesem Bericht können Sie die Nutzung einer bestimmten SaaS-Anwendung in Ihrem Verzeichnis ablesen. Dieser Bericht basiert darauf, wie oft Benutzer im Zugriffsbereich auf die Anwendung geklickt haben. |Verzeichnis > Registerkarte "Berichte" |
 
-### Anwendungsdashboard
+### <a name="application-dashboard"></a>Anwendungsdashboard
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | Dieser Bericht zeigt kumulativ die Anmeldungen an der Anwendung durch Benutzer in Ihrer Organisation über einen ausgewählten Zeitraum. Das Diagramm auf der Dashboardseite hilft Ihnen beim Ausmachen von Trends der gesamten Nutzung der Anwendung. |Verzeichnis > Anwendung > Registerkarte "Dashboard" |
 
-## Fehlerberichte
-### Kontobereitstellungsfehler
+## <a name="error-reports"></a>Fehlerberichte
+### <a name="account-provisioning-errors"></a>Kontobereitstellungsfehler
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | Dieser Bericht dient zum Überwachen von Fehlern, die während der Synchronisierung von Konten aus SaaS-Anwendungen mit Azure Active Directory auftreten. |Verzeichnis > Registerkarte "Berichte" |
 
 ![Kontobereitstellungsfehler](./media/active-directory-view-access-usage-reports/accountProvisioningErrors.PNG)
 
-## Benutzerspezifische Berichte
-### Geräte
+## <a name="user-specific-reports"></a>Benutzerspezifische Berichte
+### <a name="devices"></a>Geräte
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | In diesem Bericht finden Sie die IP-Adresse und den geografischen Standort der Geräte, die ein bestimmter Benutzer für Zugriff auf Azure Active Directory verwendet hat. |Verzeichnis > Benutzer > <i>Benutzer</i> > Registerkarte "Geräte" |
 
-### Aktivität
+### <a name="activity"></a>Aktivität
 | Beschreibung | Speicherort des Berichts |
 |:--- |:--- |
 | Zeigt die Anmeldeaktivität eines Benutzers. Der Bericht enthält Informationen wie die Anwendung, bei der die Anmeldung erfolgt ist, das verwendete Gerät, die IP-Adresse und den Standort. Wir erfassen nicht den Verlauf von Benutzern, die sich mit einem Microsoft-Konto anmelden. |Verzeichnis > Benutzer > <i>Benutzer</i> > Registerkarte "Aktivität" |
 
-#### Im Bericht "Benutzeraktivität" enthaltene Anmeldeereignisse
+#### <a name="sign-in-events-included-in-the-user-activity-report"></a>Im Bericht "Benutzeraktivität" enthaltene Anmeldeereignisse
 Nur bestimmte Arten von Anmeldeereignissen werden im Bericht "Benutzeraktivität" angezeigt.
 
 | Ereignistypen | Enthalten? |
@@ -194,24 +198,24 @@ Nur bestimmte Arten von Anmeldeereignissen werden im Bericht "Benutzeraktivität
 | Anmeldungen beim [Microsoft Azure-Portal](https://portal.azure.com/) |Ja |
 | Anmeldungen beim [Office 365-Portal](http://portal.office.com/) |Ja |
 | Anmeldungen bei einer systemeigenen Anwendung wie Outlook (siehe nachfolgende Ausnahme) |Ja |
-| Anmeldungen bei einer Verbund-/bereitgestellten App über den Zugriffsbereich wie z. B. Salesforce |Ja |
-| Anmeldungen bei einer kennwortbasierten App über den Zugriffsbereich wie z. B. Twitter |Ja |
+| Anmeldungen bei einer Verbund-/bereitgestellten App über den Zugriffsbereich wie z. B. Salesforce |Ja |
+| Anmeldungen bei einer kennwortbasierten App über den Zugriffsbereich wie z. B. Twitter |Ja |
 | Anmeldungen bei einer benutzerdefinierten Geschäfts-App, die dem Verzeichnis hinzugefügt wurde |Nein (in Kürze verfügbar) |
 | Anmeldungen bei einer Azure AD-Anwendungsproxy-App, die dem Verzeichnis hinzugefügt wurde |Nein (in Kürze verfügbar) |
 
-> Hinweis: Um diese Bericht übersichtlich zu halten, werden Anmeldungen durch den [Microsoft Online Services-Anmelde-Assistenten](http://community.office365.com/de-DE/w/sso/534.aspx) nicht gezeigt.
+> Hinweis: Um diese Bericht übersichtlich zu halten, werden Anmeldungen durch den [Microsoft Online Services-Anmeldeassistenten](http://community.office365.com/en-us/w/sso/534.aspx) nicht gezeigt.
 > 
 > 
 
-## Zu beachtende Aspekte bei einer vermuteten Sicherheitsverletzung
+## <a name="things-to-consider-if-you-suspect-security-breach"></a>Zu beachtende Aspekte bei einer vermuteten Sicherheitsverletzung
 Wenn Sie vermuten, dass ein Benutzerkonto ggf. gefährdet ist, oder von einer verdächtigen Benutzeraktivität ausgehen, die zu einer Sicherheitsverletzung Ihrer Verzeichnisdaten in der Cloud führen könnte, sollten Sie eine oder mehrere der folgenden Aktionen erwägen:
 
 * Den Benutzer kontaktieren, um die Aktivität zu überprüfen
 * Das Kennwort des Benutzers zurücksetzen
-* Die [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started.md) zum Erhöhen der Sicherheit aktivieren
+* [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started.md) zum Erhöhen der Sicherheit aktivieren
 
-## Anzeigen oder Herunterladen eines Berichts
-1. Klicken Sie im klassischen Azure-Portal auf **Active Directory**, klicken Sie auf den Namen des Verzeichnisses Ihrer Organisation und anschließend auf **Berichte**.
+## <a name="view-or-download-a-report"></a>Anzeigen oder Herunterladen eines Berichts
+1. Klicken Sie im klassischen Azure-Portal auf **Active Directory**, anschließend auf den Namen des Verzeichnisses Ihrer Organisation und dann auf **Berichte**.
 2. Klicken Sie auf der Seite "Berichte" auf den Bericht, den Sie anzeigen und/oder herunterladen möchten.
    
    > [!NOTE]
@@ -225,18 +229,23 @@ Wenn Sie vermuten, dass ein Benutzerkonto ggf. gefährdet ist, oder von einer ve
    * Letzte 30 Tage
 4. Klicken Sie auf das Häkchensymbol, um den Bericht auszuführen.
    * Im klassischen Azure-Portal werden bis zu 1000 Ereignisse angezeigt.
-5. Falls zutreffend, klicken Sie auf **Herunterladen**, um den Bericht in einer komprimierten Datei im CSV-Format herunterzuladen, um ihn offline anzeigen oder zu archivieren.
+5. Falls zutreffend, klicken Sie auf **Herunterladen** , um den Bericht in einer komprimierten Datei im CSV-Format herunterzuladen, um ihn offline anzeigen oder zu archivieren.
    * In der heruntergeladenen Datei werden bis zu 75.000 Ereignisse aufgenommen.
    * Informationen zu weiteren Daten finden Sie im Artikel zur [Azure AD Reporting-API](active-directory-reporting-api-getting-started.md).
 
-## Ignorieren von Ereignissen
+## <a name="ignore-an-event"></a>Ignorieren von Ereignissen
 Wenn Sie Anomalieberichte prüfen, stellen Sie möglicherweise fest, dass Sie verschiedene Ereignisse ignorieren können, die in verwandten Berichten enthalten sind. Wenn Sie ein Ereignis ignorieren möchten, markieren Sie einfach das Ereignis im Bericht und klicken dann auf **Ignorieren**. Die Schaltfläche **Ignorieren** dient zum dauerhaften Entfernen des markierten Ereignisses aus dem Bericht und kann nur von lizenzierten globalen Administratoren verwendet werden.
 
-## Automatische E-Mail-Benachrichtigungen
-Weitere Informationen zu den Benachrichtigungen für Berichte in Azure AD finden Sie unter [Benachrichtigungen zu Azure Active Directory-Berichten](active-directory-reporting-notifications.md).
+## <a name="automatic-email-notifications"></a>Automatische E-Mail-Benachrichtigungen
+Weitere Informationen zu den Benachrichtigungen für Berichte in Azure AD finden Sie unter [Benachrichtigungen zu Azure Active Directory-Berichten](active-directory-reporting-notifications.md).
 
-## Nächste Schritte
+## <a name="whats-next"></a>Nächste Schritte
 * [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md)
 * [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

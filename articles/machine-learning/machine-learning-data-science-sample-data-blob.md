@@ -1,12 +1,12 @@
 ---
 title: Datenstichproben in Azure Blob Storage | Microsoft Docs
-description: Erstellen von Datenstichproben im Azure-Blobspeicher
+description: Datenstichproben im Azure-Blob-Speicher
 services: machine-learning,storage
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: e8d9ad2c-86c5-43d6-80b8-d355b5c0dccf
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,21 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: fashah;garye;bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 66eddd40d3aa5156762acd1b1783a527e9ab463d
+
 
 ---
-# <a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
+# <a name="a-nameheadingasample-data-in-azure-blob-storage"></a><a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
 Dieses Dokument behandelt das Erstellen von Stichproben aus Daten im Azure Blob-Speicher durch programmgesteuertes Herunterladen, um dann mit Prozeduren in Python-Code Stichproben zu erstellen.
 
-**Warum eine Datenstichprobe entnehmen?** Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Cortana-Analyseprozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Modelle für das maschinelle Lernen zu erstellen.
+**Warum eine Datenstichprobe entnehmen?**
+ Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Cortana-Analyseprozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Modelle für das maschinelle Lernen zu erstellen.
 
-Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden.
+Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden. 
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## Download und Downsampling von Daten
-1. Laden Sie die Daten aus dem Azure-Blobspeicher mithilfe des Blobdiensts aus dem folgenden Python-Beispielcode herunter:
+## <a name="download-and-down-sample-data"></a>Download und Downsampling von Daten 
+1. Laden Sie die Daten aus dem Azure-Blobspeicher mithilfe des Blobdiensts aus dem folgenden Python-Beispielcode herunter: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -61,7 +66,7 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
 
 Sie können nun mit dem DataFrame von oben mit der 1-%-Stichprobe weitere Datensuchvorgänge durchführen und Funktionen verarbeiten.
 
-## <a name="heading"></a>Hochladen von Daten und Einlesen in Azure Machine Learning
+## <a name="a-nameheadingaupload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>Hochladen von Daten und Einlesen in Azure Machine Learning
 Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführen und diese direkt in Azure ML verwenden:
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:
@@ -92,4 +97,9 @@ Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführ
 
 ![Reader-Blob](./media/machine-learning-data-science-sample-data-blob/reader_blob.png)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

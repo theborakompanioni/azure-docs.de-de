@@ -1,11 +1,11 @@
 ---
-title: Überwachen der Integrität und Nutzung Ihrer Anwendung mit Application Insights
-description: Erste Schritte mit Application Insights. Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihres lokalen oder Microsoft Azure-Anwendungen.
+title: "Überwachen der Integrität und Nutzung Ihrer Anwendung mit Application Insights"
+description: "Erste Schritte mit Application Insights. Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihres lokalen oder Microsoft Azure-Anwendungen."
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 40650472-e860-4c1b-a589-9956245df307
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2015
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
+ms.openlocfilehash: 7dd1289453fe146b446322570fcb1c0df74b4db2
+
 
 ---
-# Leistung in Webanwendungen überwachen
-*Application Insights befindet sich in der Vorschau.*
+# <a name="monitor-performance-in-web-applications"></a>Leistung in Webanwendungen überwachen
+
 
 Stellen sie sicher, dass Ihre Anwendung optimal funktioniert, und stellen Sie Fehler umgehend fest. [Application Insights][start] informiert Sie über alle Leistungsprobleme und Ausnahmefälle. So können Sie die Ursachen schnell ermitteln und diagnostizieren.
 
-Application Insights kann Java- und ASP.NET-Webanwendungen und -Dienste sowie WCF-Dienste überwachen. Das Hosting kann lokal, auf virtuellen Computern oder als Microsoft Azure-Websites erfolgen.
+Application Insights kann Java- und ASP.NET-Webanwendungen und -Dienste sowie WCF-Dienste überwachen. Das Hosting kann lokal, auf virtuellen Computern oder als Microsoft Azure-Websites erfolgen. 
 
 Auf Clientseite kann Application Insights Telemetriedaten von Webseiten und eine Vielzahl von Geräten sammeln, einschließlich iOS-, Android- und Windows Store-Apps.
 
-## <a name="setup"></a>Einrichten der Leistungsüberwachung
-Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. h., wenn es nicht über ApplicationInsights.config verfügt), gehen Sie nach einer der folgenden Methoden vor, um zu beginnen:
+## <a name="a-namesetupaset-up-performance-monitoring"></a><a name="setup"></a>Einrichten der Leistungsüberwachung
+Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. h., wenn es nicht über ApplicationInsights.config verfügt), gehen Sie nach einer der folgenden Methoden vor, um zu beginnen:
 
 * [ASP.NET-Web-Apps](app-insights-asp-net.md)
   * [Ausnahmeüberwachung hinzufügen](app-insights-asp-net-exceptions.md)
@@ -33,8 +37,8 @@ Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. h
 * [J2EE-Web-Apps](app-insights-java-get-started.md)
   * [Abhängigkeitsüberwachung hinzufügen](app-insights-java-agent.md)
 
-## <a name="view"></a>Untersuchen von Leistungsmetriken
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der Application Insights-Ressource, die Sie für Ihre Anwendung eingerichtet haben. Das Blatt "Übersicht" zeigt grundlegende Leistungsdaten:
+## <a name="a-nameviewaexploring-performance-metrics"></a><a name="view"></a>Untersuchen von Leistungsmetriken
+Navigieren Sie im [Azure-Portal](https://portal.azure.com)zu der Application Insights-Ressource, die Sie für Ihre Anwendung eingerichtet haben. Das Blatt "Übersicht" zeigt grundlegende Leistungsdaten:
 
 Klicken Sie auf ein beliebiges Diagramm, um weitere Details und Ergebnisse über einen längeren Zeitraum anzuzeigen. Klicken Sie beispielsweise auf die Kachel "Requests", und wählen Sie dann einen Zeitraum aus.
 
@@ -49,17 +53,17 @@ Klicken Sie auf ein Diagramm, um die anzuzeigenden Metriken auszuwählen, oder f
 > 
 > 
 
-## <a name="metrics"></a>Was bedeutet was? Leistungskacheln und Berichte
+## <a name="a-namemetricsawhat-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>Was bedeutet was? Leistungskacheln und Berichte
 Ihnen steht eine Vielzahl von Leistungsmetriken zur Verfügung. Lassen Sie uns mit denen beginnen, die standardmäßig im Anwendungsblatt angezeigt werden.
 
-### Requests
+### <a name="requests"></a>Requests
 Die in einem angegebenen Zeitraum empfangenen HTTP-Anforderungen. Vergleichen Sie den Wert mit den Ergebnissen anderer Berichte, um das Verhalten Ihrer Anwendung mit wechselnder Last zu beurteilen.
 
 HTTP-Anforderungen umfassen alle GET- oder POST-Anforderungen für Seiten, Daten und Bilder.
 
 Klicken Sie auf das Tile, um Zählwerte für bestimmte URLs zu erhalten.
 
-### Average response time
+### <a name="average-response-time"></a>Average response time
 Misst die Zeit zwischen dem Eingang einer Webanforderung bei Ihrer Anwendung und der zurückgegebenen Antwort.
 
 Die Punkte zeigen einen variablen Durchschnittswert. Falls viele Anforderungen eingehen, gibt es ggf. vom Durchschnitt deutlich nach oben oder unten abweichende Spitzen im Graphen.
@@ -70,79 +74,28 @@ Klicken Sie auf die Kachel, um Zeiten für bestimmte URLs zu erhalten.
 
 ![](./media/app-insights-web-monitor-performance/appinsights-42reqs.png)
 
-### Slowest requests
+### <a name="slowest-requests"></a>Slowest requests
 ![](./media/app-insights-web-monitor-performance/appinsights-44slowest.png)
 
 Zeigt, welche Anforderungen möglicherweise eine Leistungsfeinabstimmung erfordern.
 
-### Failed requests
+### <a name="failed-requests"></a>Failed requests
 ![](./media/app-insights-web-monitor-performance/appinsights-46failed.png)
 
 Zählwert von Anforderungen, die nicht abgefangene Ausnahmefehler verursacht haben.
 
-Klicken Sie auf das Tile, um Details zu bestimmten Fehlern anzuzeigen, und wählen Sie einzelne Anforderungen aus, um die jeweiligen Details anzuzeigen.
+Klicken Sie auf das Tile, um Details zu bestimmten Fehlern anzuzeigen, und wählen Sie einzelne Anforderungen aus, um die jeweiligen Details anzuzeigen. 
 
 Nur eine repräsentative Menge an Fehler wird zur individuellen Überprüfung zurückgehalten.
 
-### Other metrics
+### <a name="other-metrics"></a>Other metrics
 Um andere verfügbare Metriken aufzurufen, klicken Sie auf einen Graphen und wählen dann alle Metriken ab. Daraufhin werden alle verfügbaren Metriken angezeigt. Klicken Sie auf (i), um die jeweilige Definition der Metrik anzuzeigen.
 
 ![Alle Metriken abwählen, um alle verfügbaren anzuzeigen](./media/app-insights-web-monitor-performance/appinsights-62allchoices.png)
 
 Wenn Sie eine Metrik auswählen, werden alle anderen deaktiviert, die nicht im selben Diagramm angezeigt werden können.
 
-## Systemleistungsindikatoren
-Windows bietet eine Vielzahl von Leistungsindikatoren, und Sie können auch eigene definieren.
-
-(Für in Azure gehostete Anwendungen [senden Sie Azure-Diagnosedaten an Application Insights](app-insights-azure-diagnostics.md).)
-
-Um einen Satz allgemeiner [Leistungsindikatoren](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) anzuzeigen, öffnen Sie das Blatt **Server**. Sie können auch Indikatoren auswählen, indem Sie ein Diagramm bearbeiten und im Abschnitt für die Leistungsindikatoren eine Metrik auswählen:
-
-![](./media/app-insights-web-monitor-performance/sys-perf.png)
-
-Der vollständige Satz der auf Ihrem System verfügbaren Metriken kann auf Windows-Systemen mithilfe des PowerShell-Befehls [`Get-Counter -ListSet *`](https://technet.microsoft.com/library/hh849685.aspx) ermittelt werden.
-
-Wenn sich die gewünschten Indikatoren nicht in der Metrikenliste befinden, können Sie sie dem SDK-Satz hinzufügen. Öffnen Sie die Datei "ApplicationInsights.config", und bearbeiten Sie die Sammlerdirektive für Leistungsdaten:
-
-    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
-      <Counters>
-        <Add PerformanceCounter="\Objects\Processes"/>
-        <Add PerformanceCounter="\Sales(electronics)# Items Sold" ReportAs="Item sales"/>
-      </Counters>
-    </Add>
-
-Sie können sowohl Standardindikatoren als auch Indikatoren erfassen, die Sie selbst implementiert haben. `\Objects\Processes` ist auf allen Windows-Systemen verfügbar; `\Sales...` ist ein Beispiel für einen benutzerdefinierten Indikator, der auf einem Webserver implementiert werden kann.
-
-Das Format lautet `\Category(instance)\Counter"` bzw. für Kategorien, die keine Instanzen besitzen, einfach `\Category\Counter`.
-
-`ReportAs` ist für Leistungsindikatornamen erforderlich, die andere Zeichen als die folgenden enthalten: Buchstaben, runde Klammern, Schrägstriche, Bindestriche, Unterstriche, Leerzeichen und Punkte.
-
-Wenn Sie eine Instanz angeben, wird sie als CounterInstanceName-Dimension der gemeldeten Metrik erfasst.
-
-### Erfassen von Leistungsindikatoren im Code
-Um Systemleistungsindikatoren zu erfassen und diese mithilfe von Push an Application Insights zu übertragen, können Sie den folgenden Codeausschnitt verwenden:
-
-    var perfCollectorModule = new PerformanceCollectorModule();
-    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
-      @"\.NET CLR Memory([replace-with-application-process-name])# GC Handles", "GC Handles")));
-    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
-
-Alternativ können Sie dieselben Schritte mit von Ihnen erstellten benutzerdefinierten Metriken ausführen:
-
-    var perfCollectorModule = new PerformanceCollectorModule();
-    perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
-      @"\Sales(electronics)# Items Sold", "Items sold"));
-    perfCollectorModule.Initialize(TelemetryConfiguration.Active);
-
-Die folgenden Schritte sind optional.
-
-### Ausnahmeraten
-*Worin besteht der Unterschied zwischen der Ausnahmerate und der Ausnahmenmetrik?*
-
-* *Ausnahmerate* ist ein Systemleistungsindikator. Die CLR zählt alle behandelten und nicht behandelten Ausnahmen, die ausgelöst werden, und dividiert das Ergebnis innerhalb eines Samplingintervalls durch die Länge dieses Intervalls. Das Application Insights SDK sammelt dieses Ergebnis und sendet es an das Portal.
-* *Ausnahmen* ist die Anzahl der TrackException-Meldungen, die das Portal innerhalb des Samplingintervalls des Diagramms empfangen hat. Sie enthält nur die behandelten Ausnahmen, wo Sie TrackException-Aufrufe in Ihren Code geschrieben haben, und enthält nicht alle [nicht behandelten Ausnahmen](app-insights-asp-net-exceptions.md). 
-
-## Festlegen von Benachrichtigungen
+## <a name="set-alerts"></a>Festlegen von Benachrichtigungen
 Fügen Sie eine Benachrichtigung hinzu, wenn Sie per E-Mail über ungewöhnliche Werte einer beliebigen Metrik informiert werden möchten. Sie können auswählen, ob die E-Mail an die Kontoadministratoren oder an bestimmte E-Mail-Adressen gesendet wird.
 
 ![](./media/app-insights-web-monitor-performance/appinsights-413setMetricAlert.png)
@@ -151,26 +104,26 @@ Legen Sie die Ressource vor den anderen Eigenschaften fest. Wählen Sie nicht di
 
 Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sind.
 
-*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.* – Handelt es sich um ein Gruppenkonto, für das Sie nur über schreibgeschützten Zugriff verfügen? Wenden Sie sich an den Kontoadministrator.
+*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.*  – Handelt es sich um ein Gruppenkonto, für das Sie nur über schreibgeschützten Zugriff verfügen? Wenden Sie sich an den Kontoadministrator.
 
-## <a name="diagnosis"></a>Diagnostizieren von Problemen
+## <a name="a-namediagnosisadiagnosing-issues"></a><a name="diagnosis"></a>Diagnostizieren von Problemen
 Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Leistungsproblemen:
 
 * Richten Sie [Webtests][availability] ein, um benachrichtigt zu werden, falls Ihre Website nicht erreichbar ist oder fehlerhaft bzw. langsam reagiert. 
 * Vergleichen Sie den Request-Zählwert mit anderen Metriken, um festzustellen, ob Fehler oder langsame Reaktionen mit der Last zusammenhängen.
 * [Fügen Sie Ihrem Code Trace-Anweisungen hinzu bzw. suchen Sie diese][diagnostic], um Probleme besser einzukreisen.
 
-## <a name="next"></a>Nächste Schritte
-[Webtests][availability] – Lassen Sie in regelmäßigen Abständen aus aller Welt Webanforderungen zu Ihrer Anwendung senden.
+## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
+[Webtests][availability] – Lassen Sie in regelmäßigen Abständen aus aller Welt Webanforderungen an Ihre Anwendung senden.
 
 [Diagnostische Spuren protokollieren und suchen][diagnostic] – Fügen Sie Trace-Aufrufe ein, und durchsuchen Sie die Ergebnisse, um Probleme zu lokalisieren.
 
 [Nutzungsnachverfolgung][usage] – Erfahren Sie, wie Ihre Anwendung genutzt wird.
 
-[Problembehandlung][qna] – sowie Fragen und Antworten
+[Problembehandlung][qna] und Fragen und Antworten
 
-## Video
-[!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
+## <a name="video"></a>Video
+> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
 
 
 <!--Link references-->
@@ -185,4 +138,8 @@ Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Lei
 
 
 
-<!---HONumber=AcomDC_0330_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

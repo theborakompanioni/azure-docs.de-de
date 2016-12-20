@@ -1,13 +1,13 @@
 ---
-title: Code für XEvent-Ereignisdatei für SQL-Datenbank | Microsoft Docs
-description: Stellt ein PowerShell- und ein Transact-SQL-Skript für ein zweiphasiges Codebeispiel zur Veranschaulichung des Ereignisdateiziels in einem erweiterten Ereignis in Azure SQL-Datenbank bereit. Azure Storage ist ein erforderlicher Bestandteil in diesem Szenario.
+title: "Code für XEvent-Ereignisdatei für SQL-Datenbank | Microsoft Docs"
+description: "Stellt ein PowerShell- und ein Transact-SQL-Skript für ein zweiphasiges Codebeispiel zur Veranschaulichung des Ereignisdateiziels in einem erweiterten Ereignis in Azure SQL-Datenbank bereit. Azure Storage ist ein erforderlicher Bestandteil in diesem Szenario."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: MightyPen
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: bbb10ecc-739f-4159-b844-12b4be161231
 ms.service: sql-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2016
 ms.author: genemi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1569bdf8ad8a073808b83b08fa3fdae8f843805f
+
 
 ---
-# Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank
+# <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 Sie suchen ein vollständiges Codebeispiel als stabile Option zum Erfassen und Melden von Informationen für erweiterte Ereignisse.
@@ -32,31 +36,32 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
   * Zuweisen des Azure-Speichercontainers zu einem Ereignisdateiziel.
   * Erstellen und Starten der Ereignissitzung usw.
 
-## Voraussetzungen
-* Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+## <a name="prerequisites"></a>Voraussetzungen
+* Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Jede Datenbank, in der eine Tabelle erstellt werden kann.
   
   * Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](sql-database-get-started.md).
-* SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion. Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
+* SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion. 
+  Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
   
   * Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx).
   * [Über diesen direkten Link zum Herunterladen.](http://go.microsoft.com/fwlink/?linkid=616025)
 * Die [Azure PowerShell-Module](http://go.microsoft.com/?linkid=9811175) müssen installiert sein.
   
-  * Die Module umfassen verschiedene Befehle, z. B. **New-AzureStorageAccount**.
+  * Die Module umfassen verschiedene Befehle, z.B. **New-AzureStorageAccount**.
 
-## Phase 1: PowerShell-Code für den Azure-Speichercontainer
-Dieser PowerShell-Code wird in Phase 1 des zweiphasigen Codebeispiels erstellt.
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell-Code für den Azure-Speichercontainer
+Dieser PowerShell-Code wird in Phase 1 des zweiphasigen Codebeispiels erstellt.
 
 Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und kann darum erneut ausgeführt werden.
 
-1. Fügen Sie das PowerShell-Skript in einem einfachen Texteditor (z. B. Editor) ein, und speichern Sie es als Datei mit der Erweiterung **.ps1**.
+1. Fügen Sie das PowerShell-Skript in einem einfachen Texteditor (z.B. Editor) ein, und speichern Sie es als Datei mit der Erweiterung **.ps1**.
 2. Starten Sie PowerShell ISE als Administrator.
 3. Geben Sie an der Eingabeaufforderung <br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>ein, und drücken Sie dann die EINGABETASTE.
-4. Öffnen Sie in PowerShell ISE Ihre Datei mit der Erweiterung **.ps1**. Führen Sie das Skript aus.
+4. Öffnen Sie in PowerShell ISE Ihre Datei mit der Erweiterung **.ps1** . Führen Sie das Skript aus.
 5. Mit dem Skript wird zunächst ein Fenster geöffnet, in dem Sie sich bei Azure anmelden.
    
-   * Wenn Sie das Skript ohne Unterbrechung der Sitzung erneut ausführen, können Sie den **Add-AzureAccount**-Befehl auf einfache Weise auskommentieren.
+   * Wenn Sie das Skript ohne Unterbrechung der Sitzung erneut ausführen, können Sie den **Add-AzureAccount** -Befehl auf einfache Weise auskommentieren.
 
 ![PowerShell ISE mit installiertem Azure-Modul, bereit für die Ausführung des Skripts.][30_powershell_ise]
 
@@ -235,11 +240,11 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 
 &nbsp;
 
-Beachten Sie die benannten Werte, die beim Beenden des PowerShell-Skripts ausgegeben werden. Diese Werte müssen Sie im Transact-SQL-Skript bearbeiten, das als Phase 2 folgt.
+Beachten Sie die benannten Werte, die beim Beenden des PowerShell-Skripts ausgegeben werden. Diese Werte müssen Sie im Transact-SQL-Skript bearbeiten, das als Phase 2 folgt.
 
-## Phase 2: Transact-SQL-Code zum Verwenden des Azure-Speichercontainers
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL-Code zum Verwenden des Azure-Speichercontainers
 * In Phase 1 dieses Codebeispiels haben Sie ein PowerShell-Skript zum Erstellen eines Azure-Speichercontainers ausgeführt.
-* In Phase 2 muss das folgende Transact-SQL-Skript nun diesen Container verwenden.
+* In Phase 2 muss das folgende Transact-SQL-Skript nun diesen Container verwenden.
 
 Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und kann darum erneut ausgeführt werden.
 
@@ -469,10 +474,10 @@ GO
 
 &nbsp;
 
-## Ausgabe
-Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event\_data\_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **<event>**-Element mit einer UPDATE-Anweisung angezeigt.
+## <a name="output"></a>Ausgabe
+Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **<event>** -Element mit einer UPDATE-Anweisung angezeigt.
 
-Hier sehen Sie ein **<event>**-Element, das beim Testen generiert wurde:
+Hier sehen Sie ein **<event>** -Element, das beim Testen generiert wurde:
 
 &nbsp;
 
@@ -519,7 +524,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Im vorherigen Transact-SQL-Skript wurde die folgende Systemfunktion verwendet, um die Ereignisdatei zu lesen:
 
-* [sys.fn\_xe\_file\_target\_read\_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+* [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
 
 Eine Erläuterung der erweiterten Optionen zum Anzeigen von Daten aus erweiterten Ereignissen finden Sie unter:
 
@@ -527,16 +532,16 @@ Eine Erläuterung der erweiterten Optionen zum Anzeigen von Daten aus erweiterte
 
 &nbsp;
 
-## Konvertieren des Codebeispiels für die Ausführung in SQL Server
+## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Konvertieren des Codebeispiels für die Ausführung in SQL Server
 Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsoft SQL Server ausführen.
 
-* Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei, ersetzen, z. B. durch **C:\\myeventdata.xel**. Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
+* Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei ersetzen, z.B. durch **C:\myeventdata.xel**. Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
 * Sie benötigen keine Transact-SQL-Anweisungen für **CREATE MASTER KEY** und **CREATE CREDENTIAL**.
-* In der **ADD TARGET**-Klausel der **CREATE EVENT SESSION**-Anweisung ersetzen Sie den für **filename=** zugewiesenen HTTP-Wert durch eine vollständige Pfadzeichenfolge wie z. B. **C:\\myfile.xel**.
+* In der **ADD TARGET**-Klausel der **CREATE EVENT SESSION**-Anweisung ersetzen Sie den für **filename=** zugewiesenen HTTP-Wert durch eine vollständige Pfadzeichenfolge wie z.B. **C:\myfile.xel**.
   
   * Es wird kein Azure-Speicherkonto benötigt.
 
-## Weitere Informationen
+## <a name="more-information"></a>Weitere Informationen
 Weitere Informationen zu Konten und Containern im Azure Storage-Dienst finden Sie in den folgenden Artikeln:
 
 * [Verwenden des Blob-Speichers mit .NET](../storage/storage-dotnet-how-to-use-blobs.md)
@@ -551,4 +556,9 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

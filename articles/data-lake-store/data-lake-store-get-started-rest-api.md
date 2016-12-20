@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
+ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
+ms.openlocfilehash: 57af74321c453733daadc1b295dd3df95d0fd052
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 6001c89804f7443e21e6e2eeecf3f1d3b682be9a
 > * [REST-API](data-lake-store-get-started-rest-api.md)
 > * [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 In diesem Artikel erfahren Sie, wie Sie mit WebHDFS-REST-APIs und Data Lake Speicher-REST-APIs sowohl Kontenverwaltung als auch Dateisystemvorgänge in Azure Data Lake-Speicher ausführen. Azure Data Lake-Speicher stellt eigene REST-APIs für Kontenverwaltungsvorgänge bereit. Data Lake-Speicher ist jedoch mit HDFS und Hadoop-Ökosystem kompatibel und unterstützt die Verwendung von WebHDFS-REST-APIs für Dateisystemvorgänge.
@@ -47,7 +48,7 @@ In diesem Artikel erfahren Sie, wie Sie mit WebHDFS-REST-APIs und Data Lake Spei
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Wie authentifiziere ich mich mithilfe von Azure Active Directory?
 Zur Authentifizierung mit Azure Active Directory können Sie zwischen zwei Ansätzen wählen.
 
-### <a name="enduser-authentication-interactive"></a>Endbenutzerauthentifizierung (interaktiv)
+### <a name="end-user-authentication-interactive"></a>Endbenutzerauthentifizierung (interaktiv)
 In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert. Alle Vorgänge werden im Zusammenhang mit dem Benutzer durchgeführt. Führen Sie für die interaktive Authentifizierung die folgenden Schritte aus.
 
 1. Leiten Sie den Benutzer über die Anwendung an die folgende URL um:
@@ -88,7 +89,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
 
 Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
-### <a name="servicetoservice-authentication-noninteractive"></a>Dienst-zu-Dienst-Authentifizierung (nicht interaktiv)
+### <a name="service-to-service-authentication-non-interactive"></a>Dienst-zu-Dienst-Authentifizierung (nicht interaktiv)
 In diesem Szenario stellt die Anwendung eigene Anmeldeinformationen zum Durchführen der Vorgänge bereit. Hierzu müssen Sie eine POST-Anforderung wie unten abgebildet ausgeben. 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -263,6 +264,6 @@ Folgendes sollte angezeigt werden:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

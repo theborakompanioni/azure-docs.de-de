@@ -1,6 +1,6 @@
 ## <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 1. Melden Sie sich beim [Azure-Portal][Azure-Portal] an, und klicken Sie oben links auf dem Bildschirm auf **Neu**.
-2. Klicken Sie auf **Daten + Analysen** und anschließend auf **Event Hubs**.
+2. Klicken Sie auf **Internet der Dinge**, und klicken Sie dann auf **Event Hubs**.
    
     ![](./media/event-hubs-create-event-hub/create-event-hub9.png)
 3. Geben Sie auf dem Blatt **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
@@ -34,6 +34,6 @@ Ihr Event Hub wird jetzt erstellt, und Sie verfügen über die zum Senden und Em
 
 [Azure-Portal]: https://portal.azure.com/
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

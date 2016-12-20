@@ -1,23 +1,28 @@
 ---
-title: Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten | Microsoft Docs
-description: Erfahren Sie, wie Sie allgemeine Leistungsprobleme mithilfe der dynamischen Verwaltungssichten zum Überwachen von Microsoft Azure SQL-Datenbank ermitteln und diagnostizieren.
+title: "Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten | Microsoft Docs"
+description: "Erfahren Sie, wie Sie allgemeine Leistungsprobleme mithilfe der dynamischen Verwaltungssichten zum Überwachen von Microsoft Azure SQL-Datenbank ermitteln und diagnostizieren."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: d08f505f-3c62-47d4-bab7-35c9a834b79b
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ae0054ac9d87562f6babbfaeaf440d653d60963a
+
 
 ---
-# Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten
+# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten
 Die Microsoft Azure SQL-Datenbank unterstützt eine Teilmenge dynamischer Verwaltungssichten für die Diagnose von Leistungsproblemen, die auf blockierte Abfragen oder Abfragen mit langen Laufzeiten, fehlerhafte Abfragepläne usw. zurückzuführen sind. Dieses Thema enthält Informationen zum Erkennen häufiger Leistungsprobleme mithilfe von dynamischen Verwaltungssichten.
 
 Die SQL-Datenbank unterstützt teilweise drei Kategorien von dynamischen Verwaltungssichten:
@@ -28,14 +33,15 @@ Die SQL-Datenbank unterstützt teilweise drei Kategorien von dynamischen Verwalt
 
 Ausführliche Informationen zu dynamischen Verwaltungssichten finden Sie unter [Dynamische Verwaltungssichten und -funktionen (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) in der SQL Server-Onlinedokumentation.
 
-## Berechtigungen
-Die Abfrage einer dynamischen Verwaltungsansicht erfordert in der SQL-Datenbank die Berechtigung **VIEW DATABASE STATE**. Die Berechtigung **VIEW DATABASE STATE** gibt Informationen zu allen Objekten innerhalb der aktuellen Datenbank zurück. Zum Erteilen der Berechtigung **VIEW DATABASE STATE** für einen bestimmten Benutzer führen Sie die folgende Abfrage aus:
+## <a name="permissions"></a>Berechtigungen
+Die Abfrage einer dynamischen Verwaltungsansicht erfordert in der SQL-Datenbank die Berechtigung **VIEW DATABASE STATE** . Die Berechtigung **VIEW DATABASE STATE** gibt Informationen zu allen Objekten innerhalb der aktuellen Datenbank zurück.
+Zum Erteilen der Berechtigung **VIEW DATABASE STATE** für einen bestimmten Benutzer führen Sie die folgende Abfrage aus:
 
 ```GRANT VIEW DATABASE STATE TO database_user; ```
 
 Bei einer lokalen Instanz von SQL Server geben dynamische Verwaltungssichten Informationen zum Serverstatus zurück. In SQL-Datenbank geben sie lediglich Informationen zur aktuellen logischen Datenbank zurück.
 
-## Berechnen der Datenbankgröße
+## <a name="calculating-database-size"></a>Berechnen der Datenbankgröße
 Die folgende Abfrage gibt die Größe Ihrer Datenbank (in Megabyte) zurück:
 
 ```
@@ -56,8 +62,9 @@ GROUP BY sys.objects.name;
 GO
 ```
 
-## Überwachen von Verbindungen
-Sie können die Sicht [sys.dm\_exec\_connections](https://msdn.microsoft.com/library/ms181509.aspx) zum Abrufen von Informationen über die Verbindungen, die mit einem bestimmten Azure SQL-Datenbank-Server hergestellt wurden, sowie der Details zu den einzelnen Verbindungen verwenden. Darüber hinaus ist die Sicht [sys.dm\_exec\_sessions](https://msdn.microsoft.com/library/ms176013.aspx) für das Abrufen von Informationen zu allen aktiven Benutzerverbindungen und internen Aufgaben nützlich. Verwenden Sie die folgende Abfrage zum Abrufen der Informationen zur aktuellen Verbindung:
+## <a name="monitoring-connections"></a>Überwachen von Verbindungen
+Sie können die Sicht [sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) zum Abrufen von Informationen über die Verbindungen, die mit einem bestimmten Azure SQL-Datenbank-Server hergestellt wurden, sowie der Details zu den einzelnen Verbindungen verwenden. Darüber hinaus ist die Sicht [sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) für das Abrufen von Informationen zu allen aktiven Benutzerverbindungen und internen Aufgaben nützlich.
+Verwenden Sie die folgende Abfrage zum Abrufen der Informationen zur aktuellen Verbindung:
 
 ```
 SELECT
@@ -73,14 +80,14 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> Wenn Sie **sys.dm\_exec\_requests** und **sys.dm\_exec\_sessions views** ausführen und die Berechtigung **VIEW DATABASE STATE** für die Datenbank besitzen, werden Ihnen alle zurzeit ausgeführten Sitzungen in der Datenbank angezeigt. Andernfalls wird Ihnen nur die aktuelle Sitzung angezeigt.
+> Wenn Sie **sys.dm_exec_requests** und **sys.dm_exec_sessions views** ausführen und die Berechtigung **VIEW DATABASE STATE** für die Datenbank besitzen, werden Ihnen alle zurzeit ausgeführten Sitzungen in der Datenbank angezeigt. Andernfalls wird Ihnen nur die aktuelle Sitzung angezeigt.
 > 
 > 
 
-## Überwachen der Abfrageleistung
-Langsame Abfragen oder Abfragen mit langen Ausführungszeiten können beträchtliche Systemressourcen beanspruchen. In diesem Abschnitt wird veranschaulicht, wie mit dynamischen Verwaltungssichten häufig auftretende Leistungsprobleme bei Abfragen ermittelt werden können. Eine frühere, aber immer noch nützliche Referenz zur Problembehandlung ist der Microsoft TechNet-Artikel [Behandlung von Leistungsproblemen in SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx).
+## <a name="monitoring-query-performance"></a>Überwachen der Abfrageleistung
+Langsame Abfragen oder Abfragen mit langen Ausführungszeiten können beträchtliche Systemressourcen beanspruchen. In diesem Abschnitt wird veranschaulicht, wie mit dynamischen Verwaltungssichten häufig auftretende Leistungsprobleme bei Abfragen ermittelt werden können. Eine frühere, aber immer noch nützliche Referenz zur Problembehandlung ist der Microsoft TechNet-Artikel [Behandlung von Leistungsproblemen in SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) .
 
-### Suchen der ersten N Abfragen
+### <a name="finding-top-n-queries"></a>Suchen der ersten N Abfragen
 Das folgende Beispiel gibt Informationen über die „Top-Fünf“-Abfragen gemessen an durchschnittlicher CPU-Zeit zurück. In diesem Beispiel werden die Abfragen entsprechend ihrem Abfragenhash zusammengefasst, sodass logisch äquivalente Abfragen nach ihrem kumulativen Ressourcenverbrauch gruppiert werden.
 
 ```
@@ -100,11 +107,11 @@ GROUP BY query_stats.query_hash
 ORDER BY 2 DESC;
 ```
 
-### Überwachen blockierter Abfragen
-Langsame Abfragen oder Abfragen mit langer Laufzeit können zu einer übermäßigen Ressourcennutzung beitragen und auf blockierte Abfragen zurückzuführen sein. Ursache für das Blockieren kann ein mangelhafter Anwendungsentwurf, fehlerhafte Abfragepläne oder ein Mangel an nützlichen Indizes usw. sein. Verwenden Sie die sys.dm\_tran\_locks-Sichten, um Informationen über die aktuellen Sperraktivitäten in der Azure SQL-Datenbank abzurufen. Beispielcode finden Sie unter [sys.dm\_tran\_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) in der SQL Server-Onlinedokumentation.
+### <a name="monitoring-blocked-queries"></a>Überwachen blockierter Abfragen
+Langsame Abfragen oder Abfragen mit langer Laufzeit können zu einer übermäßigen Ressourcennutzung beitragen und auf blockierte Abfragen zurückzuführen sein. Ursache für das Blockieren kann ein mangelhafter Anwendungsentwurf, fehlerhafte Abfragepläne oder ein Mangel an nützlichen Indizes usw. sein. Verwenden Sie die sys.dm_tran_locks-Sichten, um Informationen über die aktuellen Sperraktivitäten in der Azure SQL-Datenbank abzurufen. Beispielcode finden Sie unter [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) in der SQL Server-Onlinedokumentation.
 
-### Überwachen von Abfrageplänen
-Auch ein ineffizienter Abfrageplan kann die CPU-Auslastung erhöhen. Im folgenden Beispiel wird die Sicht [sys.dm\_exec\_query\_stats](https://msdn.microsoft.com/library/ms189741.aspx) verwendet, um festzustellen, welche Abfrage die CPU kumulativ am meisten auslastet.
+### <a name="monitoring-query-plans"></a>Überwachen von Abfrageplänen
+Auch ein ineffizienter Abfrageplan kann die CPU-Auslastung erhöhen. Im folgenden Beispiel wird die Sicht [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) verwendet, um festzustellen, welche Abfrage die CPU kumulativ am meisten auslastet.
 
 ```
 SELECT
@@ -126,7 +133,12 @@ FROM
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 [Einführung in SQL-Datenbank](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

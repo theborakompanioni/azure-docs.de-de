@@ -8,15 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 2dedddbb-618d-462b-80dd-e4a57857c737
 ms.service: sql-database
+ms.custom: sharded databases pool
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: hero-article
 ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 28f792cd5afd194445666aeb1d17d5fbf27a835d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0e670c1bbc6266d24e089ce460529661dbb99b8d
 
 
 ---
@@ -59,7 +60,7 @@ Laden Sie zum Erstellen einer SQL-Datenbank mit C# die erforderlichen Verwaltung
 > 
 > 
 
-## <a name="create-a-sql-elastic-database-pool-c-example"></a>Beispiel: Erstellen eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit C#
+## <a name="create-a-sql-elastic-database-pool---c-example"></a>Beispiel: Erstellen eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit C#
 Im folgenden Beispiel werden die folgenden Komponenten erstellt: Ressourcengruppe, Server, Firewallregel, elastischer Pool und eine SQL-Datenbank im Pool. Informationen zum Abrufen der `_subscriptionId, _tenantId, _applicationId, and _applicationSecret`-Variablen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen](#create-a-service-principal-to-access-resources).
 
 Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisieren Sie `{variables}` mit Ihren App-Werten (ohne `{}`).
@@ -314,6 +315,6 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

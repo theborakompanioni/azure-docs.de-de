@@ -1,12 +1,12 @@
 ---
-title: Taskabhängigkeiten in Azure Batch | Microsoft Docs
-description: Erstellen Sie Tasks, die vom erfolgreichen Abschluss anderer Tasks abhängig sind, um Vorgänge vom MapReduce-Typ und ähnliche Big Data-Workloads in Azure Batch zu verarbeiten.
+title: "Taskabhängigkeiten in Azure Batch | Microsoft Docs"
+description: "Erstellen Sie Tasks, die vom erfolgreichen Abschluss anderer Tasks abhängig sind, um Vorgänge vom MapReduce-Typ und ähnliche Big Data-Workloads in Azure Batch zu verarbeiten."
 services: batch
 documentationcenter: .net
 author: mmacy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/28/2016
 ms.author: marsma
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c16850788a4c22c964037f28bf955e570551142d
+
 
 ---
 # <a name="task-dependencies-in-azure-batch"></a>Taskabhängigkeiten in Azure Batch
@@ -31,7 +35,7 @@ Sie können Tasks erstellen, die in einer 1:1- oder 1:n-Beziehung von anderen Ta
 In diesem Artikel wird beschrieben, wie Sie Taskabhängigkeiten mit der [Batch .NET]-Bibliothek [net_msdn] konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Taskabhängigkeit in Ihren Aufträgen aktivieren](#enable-task-dependencies), danach erläutern wir, wie Sie [einen Task mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios) .
 
 ## <a name="enable-task-dependencies"></a>Aktivieren von Taskabhängigkeiten
-Um Taskabhängigkeiten in der Batch-Anwendung verwenden zu können, müssen Sie dem Batch-Dienst zuerst mitteilen, dass für den Auftrag Taskabhängigkeiten verwendet werden. Führen Sie die Aktivierung in Batch .NET für Ihren [CloudJob][net_cloudjob] durch, indem Sie die dazugehörige Eigenschaft [UsesTaskDependencies][net_usestaskdependencies] auf `true` festlegen:
+Um Taskabhängigkeiten in der Batch-Anwendung verwenden zu können, müssen Sie dem Batch-Dienst zuerst mitteilen, dass für den Auftrag Taskabhängigkeiten verwendet werden. Führen Sie die Aktivierung in Batch .NET für Ihren [CloudJob] [net_cloudjob] durch, indem Sie die dazugehörige Eigenschaft [UsesTaskDependencies][net_usestaskdependencies] auf `true` festlegen:
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -76,7 +80,7 @@ Es gibt drei grundlegende Szenarien für Abhängigkeiten von Tasks, die Sie in A
 > 
 > 
 
-### <a name="onetoone"></a>1:1
+### <a name="one-to-one"></a>1:1
 Um einen Task mit einer Abhängigkeit von der erfolgreichen Ausführung eines anderen Tasks zu erstellen, stellen Sie eine einzelne Task-ID für die statische [TaskDependencies][net_usestaskdependencies].[OnId][net_onid]-Methode bereit, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] auffüllen.
 
 ```csharp
@@ -90,7 +94,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 },
 ```
 
-### <a name="onetomany"></a>1:n
+### <a name="one-to-many"></a>1:n
 Um einen Task mit einer Abhängigkeit von der erfolgreichen Ausführung mehrerer anderer Tasks zu erstellen, stellen Sie eine Sammlung von Task-IDs für die statische [TaskDependencies][net_usestaskdependencies].[OnIds][net_onids]-Methode bereit, wenn Sie die [DependsOn][net_dependson]-Eigenschaft von [CloudTask][net_cloudtask] auffüllen.
 
 ```csharp
@@ -133,7 +137,7 @@ new CloudTask("4", "cmd.exe /c echo 4")
 ```
 
 ## <a name="code-sample"></a>Codebeispiel
-Das Beispielprojekt [TaskDependencies][github_taskdependencies] ist eines der [Azure Batch-Codebeispiele][github_samples] auf GitHub. Mit dieser Visual Studio 2015-Projektmappe wird veranschaulicht, wie Sie die Taskabhängigkeit für einen Auftrag aktivieren, Tasks erstellen, die von anderen Tasks abhängen, und diese Tasks in einem Pool aus Computeknoten ausführen.
+Das Beispielprojekt [TaskDependencies][github_taskdependencies] ist eines der [Azure Batch-Codebeispiele] [github_samples] auf GitHub. Mit dieser Visual Studio 2015-Projektmappe wird veranschaulicht, wie Sie die Taskabhängigkeit für einen Auftrag aktivieren, Tasks erstellen, die von anderen Tasks abhängen, und diese Tasks in einem Pool aus Computeknoten ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 ### <a name="application-deployment"></a>Anwendungsbereitstellung
@@ -165,6 +169,6 @@ Der Beitrag [Installing applications and staging data on Batch compute nodes][fo
 
 
 
-<!----HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

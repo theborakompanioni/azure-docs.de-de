@@ -3,7 +3,7 @@ title: "Häufig gestellte Fragen zu Azure RemoteApp | Microsoft Docs"
 description: "Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
-author: lizap
+author: msmbaldwin
 manager: swadhwa
 editor: 
 ms.assetid: bad66603-91f9-437f-8a70-236405d2a27f
@@ -12,11 +12,11 @@ ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f3a2927164a01dd4b76e264cd1b7152f170f79cb
+ms.sourcegitcommit: fcc53e4073a6957fae263cfb5d38023ed9710d21
+ms.openlocfilehash: 31df73e3fc4142ba8c3634ac9d2b6fea4cc1b2d9
 
 
 ---
@@ -45,7 +45,7 @@ Falls Sie die benötigten Informationen nicht finden oder eine Frage haben, die 
 * **Wie hoch sind die Kosten für RemoteApp?** Beachten Sie die [Preisdetails für Azure RemoteApp ](https://azure.microsoft.com/pricing/details/remoteapp/).
 * **Sind bestimmte Sammlungstypen teurer als andere?**  Ja, dies kann abhängig von Ihren Anforderungen an Sammlungen der Fall sein. Für eine Hybridsammlung ist eine Verbindung von Azure RemoteApp zu Ihrem lokalen Netzwerk erforderlich. Wenn Sie ein vorhandenes VNET/ExpressRoute verwenden, fallen keine zusätzlichen Kosten an. Wenn Sie jedoch ein neues Azure-VNET und ein Gateway oder ExpressRoute verwenden, fallen für [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) oder [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/) Kosten an. Diese Kosten (siehe Links) werden zusätzlich zu Ihren monatlichen Kosten für Azure RemoteApp berechnet.
 
-## <a name="collections-whats-supported-which-should-you-use-and-others"></a>Sammlungen: Was wird unterstützt, welche sollten Sie verwenden usw.
+## <a name="collections---whats-supported-which-should-you-use-and-others"></a>Sammlungen: Was wird unterstützt, welche sollten Sie verwenden usw.
 * **Werden benutzerdefinierte Line-of-Business-Anwendungen (LOB) unterstützt?**  Ja. Zum Verwenden einer benutzerdefinierten Anwendung in Azure RemoteApp müssen Sie ein [benutzerdefiniertes Vorlagenimage](remoteapp-create-custom-image.md)erstellen und anschließend in die RemoteApp-Sammlung hochladen.
 * **Kann ich meine benutzerdefinierte LOB-Anwendung in Azure RemoteApp ausführen?**  Dies lässt sich am besten im Rahmen eines Tests ermitteln. Informieren Sie sich im [RD-Kompatibilitätscenter](http://www.rdcompatibility.com/compatibility/default.aspx).
 * **Welche Bereitstellungsmethode (Cloud oder Hybrid) eignet sich am besten für mein Unternehmen?**  Hybridsammlungen sind die umfassendste Lösung, wenn Sie eine vollständige Integration mit einmaligem Anmelden und einer sicheren lokalen Netzwerkverbindung anstreben. Cloudsammlungen sind eine flexible und einfache Möglichkeit, Ihre Bereitstellung mithilfe mehrerer Authentifizierungsmethoden zu isolieren. Erfahren Sie mehr über die [Bereitstellungsoptionen](remoteapp-whatis.md).
@@ -69,7 +69,7 @@ Falls Sie die benötigten Informationen nicht finden oder eine Frage haben, die 
 
 * **Warum kann ich meinem Azure Active Directory-Konto keinen Zugriff erteilen?**  Die Azure Active Directory-Benutzer müssen dem Verzeichnis angehören, das Ihrem Abonnement zugeordnet ist. Sie können Ihr Abonnement im Portal auf der Registerkarte "Einstellungen" anzeigen und bearbeiten. Weitere Informationen finden Sie unter [Ändern des von RemoteApp verwendeten Azure Active Directory-Verzeichnisses](remoteapp-changetenant.md) .
 
-## <a name="clients-what-device-can-i-use-to-access-azure-remoteapp"></a>Clients: Mit welchen Geräten kann ich auf Azure RemoteApp zugreifen?
+## <a name="clients---what-device-can-i-use-to-access-azure-remoteapp"></a>Clients: Mit welchen Geräten kann ich auf Azure RemoteApp zugreifen?
 Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md)finden Sie Informationen zu Clients sowie Schritte zum Installieren der verschiedenen Clients.
 
 * **Welche Geräte und Betriebssysteme werden von den Clientanwendungen unterstützt?**
@@ -86,7 +86,7 @@ Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md)finden
   * Android-Smartphone
   * Windows Phone
     
-    [herunter](https://www.remoteapp.windowsazure.com/Clientherunter/AllClients.aspx) .
+    [herunter](https://www.remoteapp.windowsazure.com/ClientDownload/AllClients.aspx) .
 * **Unterstützt Azure RemoteApp auch Thin Clients?**  Ja, die folgenden Windows Embedded-Thin Clients werden unterstützt:
   
   * Windows Embedded Standard 7
@@ -126,6 +126,6 @@ Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten u
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

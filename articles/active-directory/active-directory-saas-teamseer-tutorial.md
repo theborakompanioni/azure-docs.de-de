@@ -1,11 +1,11 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit TeamSeer | Microsoft Docs'
-description: Hier erfahren Sie, wie Sie TeamSeer mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen.
+description: "Hier erfahren Sie, wie Sie TeamSeer mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: 6ec4806f-fe0f-4ed7-8cfa-32d1c840433f
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,10 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/11/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d978744bfecddc43c0bf5e803f1fa6bc281ee79b
+
 
 ---
-# Tutorial: Azure Active Directory-Integration mit TeamSeer
-In diesem Tutorial wird die Integration von Azure und TeamSeer erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+# <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Tutorial: Azure Active Directory-Integration mit TeamSeer
+In diesem Tutorial wird die Integration von Azure und TeamSeer erläutert.  
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
 * Ein TeamSeer-Mandant
@@ -30,55 +35,57 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-teamseer-tutorial/IC789618.png "Szenario")
+![Szenario](./media/active-directory-saas-teamseer-tutorial/IC789618.png "Scenario")
 
-## Aktivieren der Anwendungsintegration für TeamSeer
+## <a name="enabling-the-application-integration-for-teamseer"></a>Aktivieren der Anwendungsintegration für TeamSeer
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für TeamSeer aktivieren.
 
-### So aktivieren Sie die Anwendungsintegration für TeamSeer:
+### <a name="to-enable-the-application-integration-for-teamseer-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für TeamSeer:
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-teamseer-tutorial/IC700993.png "Active Directory")
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-   ![Anwendungen](./media/active-directory-saas-teamseer-tutorial/IC700994.png "Anwendungen")
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+   ![Anwendungen](./media/active-directory-saas-teamseer-tutorial/IC700994.png "Applications")
+4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-   ![Anwendung hinzufügen](./media/active-directory-saas-teamseer-tutorial/IC749321.png "Anwendung hinzufügen")
+   ![Anwendung hinzufügen](./media/active-directory-saas-teamseer-tutorial/IC749321.png "Add application")
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-teamseer-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
+   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-teamseer-tutorial/IC749322.png "Add an application from gallerry")
 6. Geben Sie im **Suchfeld** **TeamSeer** ein.
    
-   ![Anwendungskatalog](./media/active-directory-saas-teamseer-tutorial/IC789619.png "Anwendungskatalog")
+   ![Anwendungskatalog](./media/active-directory-saas-teamseer-tutorial/IC789619.png "Application Gallery")
 7. Wählen Sie im Ergebnisbereich **TeamSeer** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
    ![TeamSeer](./media/active-directory-saas-teamseer-tutorial/IC789620.png "TeamSeer")
 
-## Konfigurieren der einmaligen Anmeldung
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei TeamSeer zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (Konvertieren eines binären Zertifikats in eine Textdatei; in englischer Sprache) weitere Informationen.
+## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei TeamSeer zu authentifizieren.  
+Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen.  
+Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)(Konvertieren eines binären Zertifikats in eine Textdatei; in englischer Sprache) weitere Informationen.
 
-### So konfigurieren Sie einmaliges Anmelden
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **TeamSeer** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789621.png "Einmaliges Anmelden konfigurieren")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789621.png "Configure Single Sign-On")
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei TeamSeer anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789628.png "Einmaliges Anmelden konfigurieren")
-3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **TeamSeer-Anmelde-URL** die URL im Format "*http://www.teamseer.com/companyid*" ein, und klicken Sie dann auf **Weiter**.
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789628.png "Configure Single Sign-On")
+3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **TeamSeer-Anmelde-URL** die URL im Format „*http://www.teamseer.com/companyid*“ ein, und klicken Sie dann auf **Weiter**.
    
-   ![App-URL konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789629.png "App-URL konfigurieren")
+   ![App-URL konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789629.png "Configure App URL")
 4. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für TeamSeer** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789630.png "Einmaliges Anmelden konfigurieren")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789630.png "Configure Single Sign-On")
 5. Melden Sie sich in einem anderen Webbrowserfenster auf der TeamSeer-Unternehmenswebsite als Administrator an.
 6. Wechseln Sie zu **Personalverwaltung**.
    
-   ![Personalverwaltung](./media/active-directory-saas-teamseer-tutorial/IC789634.png "Personalverwaltung")
+   ![Personalverwaltung](./media/active-directory-saas-teamseer-tutorial/IC789634.png "HR Admin")
 7. Klicken Sie auf **Setup**.
    
-   ![Einrichtung](./media/active-directory-saas-teamseer-tutorial/IC789635.png "Einrichtung")
+   ![Setup](./media/active-directory-saas-teamseer-tutorial/IC789635.png "Setup")
 8. Klicken Sie auf **SAM-Anbieterdetails einrichten**.
    
    ![SAML Settings](./media/active-directory-saas-teamseer-tutorial/IC789636.png "SAML Settings")
@@ -87,10 +94,10 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    ![SAML Settings](./media/active-directory-saas-teamseer-tutorial/IC789637.png "SAML Settings")
    
    1. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für TeamSeer** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **URL** ein.
-   2. Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.
+   2. Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.  
       
       > [!TIP]
-      > Weitere Informationen finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o).
+      > Weitere Informationen finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
       > 
       > 
    3. Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Öffentliches IdP-Zertifikat** ein.
@@ -98,30 +105,31 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     
     ![SAML Settings](./media/active-directory-saas-teamseer-tutorial/IC789638.png "SAML Settings")
     
-    1. Geben Sie unter **Test-e-Mail-Adressen** die E-Mail-Adresse des Testbenutzers ein.
+    1. Geben Sie unter **Test-e-Mail-Adressen**die E-Mail-Adresse des Testbenutzers ein.
     2. Geben Sie in das Textfeld **Aussteller** die Aussteller-URL des Dienstanbieters ein.
     3. Klicken Sie auf **Speichern**.
-11. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+11. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789639.png "Einmaliges Anmelden konfigurieren")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-teamseer-tutorial/IC789639.png "Configure Single Sign-On")
 
-## Konfigurieren der Benutzerbereitstellung
-Damit sich Azure AD-Benutzer bei TeamSeer anmelden können, müssen sie in TeamSeer bereitgestellt werden. Im Fall von TeamSeer ist die Bereitstellung eine manuelle Aufgabe.
+## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+Damit sich Azure AD-Benutzer bei TeamSeer anmelden können, müssen sie in TeamSeer bereitgestellt werden.  
+Im Fall von TeamSeer ist die Bereitstellung eine manuelle Aufgabe.
 
-### Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
-1. Melden Sie sich bei Ihrer **TeamSeer**-Unternehmenswebsite als Administrator an.
+### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
+1. Melden Sie sich bei Ihrer **TeamSeer** -Unternehmenswebsite als Administrator an.
 2. Führen Sie die folgenden Schritte aus:
    
-   ![Personalverwaltung](./media/active-directory-saas-teamseer-tutorial/IC789640.png "Personalverwaltung")
+   ![Personalverwaltung](./media/active-directory-saas-teamseer-tutorial/IC789640.png "HR Admin")
    
-   1. Wechseln Sie zu **Personalverwaltung > Benutzer**.
+   1. Wechseln Sie zu **Personalverwaltung \> Benutzer**.
    2. Klicken Sie auf **Assistent Neuen Benutzer ausführen**.
 3. Führen Sie im Abschnitt mit den **Benutzerdaten** die folgenden Schritte aus:
    
-   ![Benutzerdetails](./media/active-directory-saas-teamseer-tutorial/IC789641.png "Benutzerdetails")
+   ![Benutzerdaten](./media/active-directory-saas-teamseer-tutorial/IC789641.png "User Details")
    
    1. Geben Sie **Vorname**, **Nachname**, **Benutzername (E-Mail-Adresse)** eines gültigen AAD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
-   2. Klicken Sie auf **Next**.
+   2. Klicken Sie auf **Weiter**.
 4. Befolgen Sie den Anweisungen am Bildschirm zum Hinzufügen eines neuen Benutzers. Klicken Sie dann auf **Fertig stellen**.
 
 > [!NOTE]
@@ -129,18 +137,23 @@ Damit sich Azure AD-Benutzer bei TeamSeer anmelden können, müssen sie in TeamS
 > 
 > 
 
-## Zuweisen von Benutzern
+## <a name="assigning-users"></a>Zuweisen von Benutzern
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### So weisen Sie TeamSeer Benutzer zu:
+### <a name="to-assign-users-to-teamseer-perform-the-following-steps"></a>So weisen Sie TeamSeer Benutzer zu:
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **TeamSeer** auf **Benutzer zuweisen**.
    
-   ![Benutzer zuweisen](./media/active-directory-saas-teamseer-tutorial/IC789642.png "Benutzer zuweisen")
+   ![Benutzer zuweisen](./media/active-directory-saas-teamseer-tutorial/IC789642.png "Assign Users")
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-   ![Ja](./media/active-directory-saas-teamseer-tutorial/IC767830.png "Ja")
+   ![Ja](./media/active-directory-saas-teamseer-tutorial/IC767830.png "Yes")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

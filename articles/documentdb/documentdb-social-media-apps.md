@@ -1,13 +1,13 @@
 ---
 title: 'DocumentDB-Entwurfsmuster: Social Media Apps | Microsoft Docs'
-description: Erfahren Sie mehr über ein Entwurfsmuster für soziale Netzwerke durch die Nutzung des flexiblen Speichers von DocumentDB und anderen Azure-Diensten.
+description: "Erfahren Sie mehr über ein Entwurfsmuster für soziale Netzwerke durch die Nutzung des flexiblen Speichers von DocumentDB und anderen Azure-Diensten."
 keywords: Social Media Apps
 services: documentdb
 author: ealsur
 manager: jhubbard
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: mimig
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6c9e285834707b668086ceab7fdde582f0cd87cc
+
 
 ---
 # <a name="going-social-with-documentdb"></a>Soziale Netzwerke mit DocumentDB
@@ -131,7 +135,7 @@ Um dieses Problem zu lösen, können wir einen kombinierten Ansatz wählen. Die 
 
 Und das Diagramm der Follower kann in Azure Storage-Tabellen mit einer [Erweiterung](https://github.com/richorama/AzureStorageExtensions#azuregraphstore) gespeichert werden, die ein einfaches Speichern und Abrufen gemäß dem Muster „A folgt B“ zulässt. Auf diese Weise können wir den Prozess des Abrufens der exakten Liste mit den Followern (wenn wir sie brauchen) an Azure Storage-Tabellen delegieren, doch für ein schnelles Nachschlagen von Werten verwenden wir weiter DocumentDB.
 
-## <a name="the-“ladder”-pattern-and-data-duplication"></a>Das „Leiter-Muster“ und Datenduplizierung
+## <a name="the-ladder-pattern-and-data-duplication"></a>Das „Leiter-Muster“ und Datenduplizierung
 Wie Sie vielleicht bemerkt haben, kommt ein Benutzer in dem JSON-Dokument, das auf einen Beitrag verweist, mehrfach vor. Natürlich haben Sie mit der Annahme recht, dass die Informationen, die einen Benutzer darstellen, aufgrund der Denormalisierung an mehr als einem Ort vorhanden sein können.
 
 Um schnellere Abfragen zu ermöglichen, verursachen wir also Datenduplizierung. Das Problem dieses Seiteneffekts besteht darin, dass eine Änderung der Benutzerdaten das Auffinden aller Aktivitäten, die dieser Benutzer je ausgeführt hat, und ihre Aktualisierung notwendig macht. Das klingt nicht besonders praktisch, nicht wahr?
@@ -227,6 +231,9 @@ Weitere Informationen zur Datenmodellierung finden Sie im Artikel [Modellieren v
 
 Oder erfahren Sie mehr über DocumentDB anhand des [DocumentDB-Lernpfads](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

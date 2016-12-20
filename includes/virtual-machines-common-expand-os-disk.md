@@ -10,7 +10,7 @@ Beim Erstellen eines neuen virtuellen Computers (VM) in einer Ressourcengruppe d
 > 
 
 ## <a name="resize-the-os-drive"></a>Ändern der Größe des Betriebssystemlaufwerks
-In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks mit den Ressourcen-Manager-Modulen von [Azure Powershell](../articles/powershell-install-configure.md)geändert wird. Öffnen Sie Powershell ISE oder Powershell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
+In diesem Artikel wird beschrieben, wie die Größe des Betriebssystemlaufwerks mit den Ressourcen-Manager-Modulen von [Azure Powershell](/powershell/azureps-cmdlets-docs)geändert wird. Öffnen Sie Powershell ISE oder Powershell-Fenster im Administratormodus, und führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich im Ressourcenverwaltungsmodus bei Ihrem Microsoft Azure-Konto an, und wählen Sie Ihr Abonnement wie folgt aus:
    
@@ -84,6 +84,6 @@ Wenn Sie herausfinden möchten, wie Datenträger einem virtuellen Azure Resource
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

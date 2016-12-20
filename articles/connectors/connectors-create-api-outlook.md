@@ -1,13 +1,13 @@
 ---
 title: Outlook.com | Microsoft Docs
-description: Erstellen Sie Logik-Apps mit Azure App Service. Über den Outlook.com-Connector können Sie Ihre E-Mail und Ihre Kalender und Kontakte verwalten. Sie können verschiedene Aktionen ausführen, z.B. E-Mails senden, Besprechungen planen, Kontakte hinzufügen usw.
+description: "Erstellen Sie Logik-Apps mit Azure App Service. Über den Outlook.com-Connector können Sie Ihre E-Mail und Ihre Kalender und Kontakte verwalten. Sie können verschiedene Aktionen ausführen, z.B. E-Mails senden, Besprechungen planen, Kontakte hinzufügen usw."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
@@ -15,50 +15,54 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 13d0a71762d3cba05c3dccb647d0890862307327
+ms.openlocfilehash: 9593804ba5baa4ffe4cf49e21b5698c5fd3d157e
+
 
 ---
-# Erste Schritte mit dem Outlook.com-Connector
+# <a name="get-started-with-the-outlookcom-connector"></a>Erste Schritte mit dem Outlook.com-Connector
 Über den Outlook.com-Connector können Sie Ihre E-Mail und Ihre Kalender und Kontakte verwalten. Sie können verschiedene Aktionen ausführen, z.B. E-Mails senden, Besprechungen planen, Kontakte hinzufügen usw.
 
 > [!NOTE]
-> Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
-> 
-> 
+> Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“.
+>
+>
 
 Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-## Trigger und Aktionen
+## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Der Outlook.com-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
  Der Outlook.com-Connector verfügt über die folgenden Aktionen und/oder Trigger:
 
-### Aktionen für Outlook.com
+### <a name="outlookcom-actions"></a>Aktionen für Outlook.com
 Sie können diese Aktionen ausführen:
 
 | Aktion | Beschreibung |
 | --- | --- |
-| [GetEmails](connectors-create-api-outlook.md#GetEmails) |Ruft E-Mails aus einem Ordner ab. |
-| [SendEmail](connectors-create-api-outlook.md#SendEmail) |Sendet eine E-Mail. |
-| [DeleteEmail](connectors-create-api-outlook.md#DeleteEmail) |Löscht eine E-Mail nach ID. |
-| [MarkAsRead](connectors-create-api-outlook.md#MarkAsRead) |Markiert eine E-Mail als gelesen. |
-| [ReplyTo](connectors-create-api-outlook.md#ReplyTo) |Antwortet auf eine E-Mail. |
-| [GetAttachment](connectors-create-api-outlook.md#GetAttachment) |Ruft die Anlage zu einer E-Mail anhand der ID ab. |
-| [SendMailWithOptions](connectors-create-api-outlook.md#SendMailWithOptions) |Sendet eine E-Mail mit mehreren Optionen und wartet, bis der Empfänger mit einer der Optionen antwortet. |
-| [SendApprovalMail](connectors-create-api-outlook.md#SendApprovalMail) |Sendet eine Genehmigungs-E-Mail und wartet auf eine Antwort des Empfängers. |
-| [CalendarGetTables](connectors-create-api-outlook.md#CalendarGetTables) |Ruft Kalender ab |
-| [CalendarGetItems](connectors-create-api-outlook.md#CalendarGetItems) |Ruft Elemente aus einem Kalender ab |
-| [CalendarPostItem](connectors-create-api-outlook.md#CalendarPostItem) |Erstellt ein neues Ereignis |
-| [CalendarGetItem](connectors-create-api-outlook.md#CalendarGetItem) |Ruft ein bestimmtes Element aus einem Kalender ab |
-| [CalendarDeleteItem](connectors-create-api-outlook.md#CalendarDeleteItem) |Löscht ein Kalenderelement |
-| [CalendarPatchItem](connectors-create-api-outlook.md#CalendarPatchItem) |Aktualisiert ein Kalenderelement teilweise |
-| [ContactGetTables](connectors-create-api-outlook.md#ContactGetTables) |Ruft Ordner des Typs „Kontakte“ ab |
-| [ContactGetItems](connectors-create-api-outlook.md#ContactGetItems) |Ruft Kontakte aus dem Ordner „Kontakte“ ab |
-| [ContactPostItem](connectors-create-api-outlook.md#ContactPostItem) |Erstellt einen neuen Kontakt |
-| [ContactGetItem](connectors-create-api-outlook.md#ContactGetItem) |Ruft einen bestimmten Kontakt aus einem Ordner „Kontakte“ ab |
-| [ContactDeleteItem](connectors-create-api-outlook.md#ContactDeleteItem) |Löscht einen Kontakt |
-| [ContactPatchItem](connectors-create-api-outlook.md#ContactPatchItem) |Aktualisiert einen Kontakt teilweise |
+| [GetEmails](connectors-create-api-outlook.md#getemails) |Ruft E-Mails aus einem Ordner ab. |
+| [SendEmail](connectors-create-api-outlook.md#sendemail) |Sendet eine E-Mail. |
+| [DeleteEmail](connectors-create-api-outlook.md#deleteemail) |Löscht eine E-Mail nach ID. |
+| [MarkAsRead](connectors-create-api-outlook.md#markasread) |Markiert eine E-Mail als gelesen. |
+| [ReplyTo](connectors-create-api-outlook.md#replyto) |Antwortet auf eine E-Mail. |
+| [GetAttachment](connectors-create-api-outlook.md#getattachment) |Ruft die Anlage zu einer E-Mail anhand der ID ab. |
+| [SendMailWithOptions](connectors-create-api-outlook.md#sendmailwithoptions) |Sendet eine E-Mail mit mehreren Optionen und wartet, bis der Empfänger mit einer der Optionen antwortet. |
+| [SendApprovalMail](connectors-create-api-outlook.md#sendapprovalmail) |Sendet eine Genehmigungs-E-Mail und wartet auf eine Antwort des Empfängers. |
+| [CalendarGetTables](connectors-create-api-outlook.md#calendargettables) |Ruft Kalender ab |
+| [CalendarGetItems](connectors-create-api-outlook.md#calendargetitems) |Ruft Elemente aus einem Kalender ab |
+| [CalendarPostItem](connectors-create-api-outlook.md#calendarpostitem) |Erstellt ein neues Ereignis |
+| [CalendarGetItem](connectors-create-api-outlook.md#calendargetitem) |Ruft ein bestimmtes Element aus einem Kalender ab |
+| [CalendarDeleteItem](connectors-create-api-outlook.md#calendardeleteitem) |Löscht ein Kalenderelement |
+| [CalendarPatchItem](connectors-create-api-outlook.md#calendarpatchitem) |Aktualisiert ein Kalenderelement teilweise |
+| [ContactGetTables](connectors-create-api-outlook.md#contactgettables) |Ruft Ordner des Typs „Kontakte“ ab |
+| [ContactGetItems](connectors-create-api-outlook.md#contactgetitems) |Ruft Kontakte aus dem Ordner „Kontakte“ ab |
+| [ContactPostItem](connectors-create-api-outlook.md#contactpostitem) |Erstellt einen neuen Kontakt |
+| [ContactGetItem](connectors-create-api-outlook.md#contactgetitem) |Ruft einen bestimmten Kontakt aus einem Ordner „Kontakte“ ab |
+| [ContactDeleteItem](connectors-create-api-outlook.md#contactdeleteitem) |Löscht einen Kontakt |
+| [ContactPatchItem](connectors-create-api-outlook.md#contactpatchitem) |Aktualisiert einen Kontakt teilweise |
 
-### Trigger für Outlook.com
+### <a name="outlookcom-triggers"></a>Trigger für Outlook.com
 Sie können auf diese Ereignisse lauschen:
 
 | Trigger | Beschreibung |
@@ -68,47 +72,47 @@ Sie können auf diese Ereignisse lauschen:
 | Bei neuen Elementen |Wird ausgelöst, wenn ein neues Kalenderelement erstellt wird |
 | Bei aktualisierten Elementen |Wird ausgelöst, wenn ein Kalenderelement geändert wird |
 
-## Herstellen einer Verbindung mit Outlook.com
+## <a name="create-a-connection-to-outlookcom"></a>Herstellen einer Verbindung mit Outlook.com
 Um Logik-Apps mit Outlook.com zu erstellen, müssen Sie zuerst eine **Verbindung** herstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 | Eigenschaft | Erforderlich | Beschreibung |
 | --- | --- | --- |
-| Token |Ja |Angeben der Anmeldeinformationen für Outlook.com |
+| Tokenverschlüsselung |Ja |Angeben der Anmeldeinformationen für Outlook.com |
 
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
-> [!INCLUDE [Schritte zum Herstellen einer Verbindung mit Outlook.com](../../includes/connectors-create-api-outlook.md)]
-> 
+> [!INCLUDE [Steps to create a connection to Outlook.com](../../includes/connectors-create-api-outlook.md)]
+>
 > [!TIP]
-> Sie können diese Verbindung in anderen Logik-Apps verwenden.
-> 
-> 
+> Sie können diese Verbindung in anderen Logik-Apps verwenden.  
+>
+>
 
-## Referenz für Outlook.com
+## <a name="reference-for-outlookcom"></a>Referenz für Outlook.com
 Gilt für Version 1.0.
 
-## OnUpcomingEvents
+## <a name="onupcomingevents"></a>OnUpcomingEvents
 Bei baldigem Start eines anstehenden Ereignisses: Löst einen Workflow aus, wenn ein anstehendes Kalenderereignis beginnt.
 
 ```GET: /Events/OnUpcomingEvents```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |query |(Keine) |Eindeutiger Bezeichner des Kalenders |
+| Tabelle |string |Ja |query |(Keine) |Eindeutiger Bezeichner des Kalenders |
 | lookAheadTimeInMinutes |integer |no |query |15 |Zeit (in Minuten) für Suche nach anstehenden Ereignissen. |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 202 |Vorgang erfolgreich |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## GetEmails
+## <a name="getemails"></a>GetEmails
 E-Mails abrufen: Ruft E-Mails aus einem Ordner ab.
 
 ```GET: /Mail```
@@ -123,17 +127,17 @@ E-Mails abrufen: Ruft E-Mails aus einem Ordner ab.
 | skip |integer |no |query |0 |Anzahl der zu überspringenden E-Mails (Standardeinstellung: 0) |
 | skipToken |string |no |query |(Keine) |Token überspringen, um neue Seite abzurufen |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## SendEmail
+## <a name="sendemail"></a>SendEmail
 E-Mail senden: Sendet eine E-Mail.
 
 ```POST: /Mail```
@@ -142,17 +146,17 @@ E-Mail senden: Sendet eine E-Mail.
 | --- | --- | --- | --- | --- | --- |
 | emailMessage | |Ja |body |(Keine) |E-Mail |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## DeleteEmail
+## <a name="deleteemail"></a>DeleteEmail
 E-Mail löschen: Löscht eine E-Mail nach ID.
 
 ```DELETE: /Mail/{messageId}```
@@ -161,17 +165,17 @@ E-Mail löschen: Löscht eine E-Mail nach ID.
 | --- | --- | --- | --- | --- | --- |
 | messageId |string |Ja |path |(Keine) |ID der zu löschenden E-Mail |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## MarkAsRead
+## <a name="markasread"></a>MarkAsRead
 Als gelesen markieren: Markiert eine E-Mail als gelesen.
 
 ```POST: /Mail/MarkAsRead/{messageId}```
@@ -180,17 +184,17 @@ Als gelesen markieren: Markiert eine E-Mail als gelesen.
 | --- | --- | --- | --- | --- | --- |
 | messageId |string |Ja |path |(Keine) |ID der E-Mail, die als gelesen markiert werden soll |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ReplyTo
+## <a name="replyto"></a>ReplyTo
 E-Mail beantworten: Antwortet auf eine E-Mail.
 
 ```POST: /Mail/ReplyTo/{messageId}```
@@ -201,17 +205,17 @@ E-Mail beantworten: Antwortet auf eine E-Mail.
 | comment |string |Ja |query |(Keine) |Antwortkommentar |
 | replyAll |Boolescher Wert |no |query |false |Allen Empfängern antworten |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## GetAttachment
+## <a name="getattachment"></a>GetAttachment
 Anlage abrufen: Ruft die Anlage zu einer E-Mail anhand der ID ab.
 
 ```GET: /Mail/{messageId}/Attachments/{attachmentId}```
@@ -221,17 +225,17 @@ Anlage abrufen: Ruft die Anlage zu einer E-Mail anhand der ID ab.
 | messageId |string |Ja |path |(Keine) |ID der E-Mail |
 | attachmentId |string |Ja |path |(Keine) |ID der herunterzuladenden Anlage |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## OnNewEmail
+## <a name="onnewemail"></a>OnNewEmail
 Bei neuer E-Mail: Löst einen Workflow aus, wenn eine neue E-Mail eingeht.
 
 ```GET: /Mail/OnNewEmail```
@@ -239,25 +243,25 @@ Bei neuer E-Mail: Löst einen Workflow aus, wenn eine neue E-Mail eingeht.
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
 | folderPath |string |no |query |Posteingang |Abzurufender E-Mail-Ordner (Standard: Posteingang) |
-| to |string |no |query |(Keine) |E-Mail-Adressen der Empfänger |
+| auf fest |string |no |query |(Keine) |E-Mail-Adressen der Empfänger |
 | from |string |no |query |(Keine) |Absenderadresse |
 | importance |string |no |query |Normal |Wichtigkeit der E-Mail (High, Normal, Low) (Standard: Normal) |
 | fetchOnlyWithAttachment |Boolescher Wert |no |query |false |Nur E-Mail-Nachrichten mit einer Anlage abrufen |
 | includeAttachments |Boolescher Wert |no |query |false |Anlagen einbeziehen |
 | subjectFilter |string |no |query |(Keine) |Zeichenfolge, die in der Betreffzeile gesucht werden soll. |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 202 |Zulässig |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## SendMailWithOptions
+## <a name="sendmailwithoptions"></a>SendMailWithOptions
 E-Mail mit Optionen senden: Sendet eine E-Mail mit mehreren Optionen und wartet, bis der Empfänger mit einer der Optionen antwortet.
 
 ```POST: /mailwithoptions/$subscriptions```
@@ -266,18 +270,18 @@ E-Mail mit Optionen senden: Sendet eine E-Mail mit mehreren Optionen und wartet,
 | --- | --- | --- | --- | --- | --- |
 | optionsEmailSubscription | |Ja |body |(Keine) |Abonnementanforderung für E-Mail-Optionen |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 201 |Abonnement erstellt |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## SendApprovalMail
+## <a name="sendapprovalmail"></a>SendApprovalMail
 Genehmigungs-E-Mail senden: Sendet eine Genehmigungs-E-Mail und wartet auf eine Antwort des Empfängers.
 
 ```POST: /approvalmail/$subscriptions```
@@ -286,264 +290,260 @@ Genehmigungs-E-Mail senden: Sendet eine Genehmigungs-E-Mail und wartet auf eine 
 | --- | --- | --- | --- | --- | --- |
 | approvalEmailSubscription | |Ja |body |(Keine) |Abonnementanforderung für Genehmigungs-E-Mail. |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 201 |Abonnement erstellt |
 | 400 |BadRequest |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 500 |Interner Serverfehler |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarGetTables
+## <a name="calendargettables"></a>CalendarGetTables
 Kalender abrufen: Ruft Kalender ab.
 
 ```GET: /datasets/calendars/tables```
 
 Es gibt keine Parameter für diesen Aufruf
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarGetItems
+## <a name="calendargetitems"></a>CalendarGetItems
 Ereignisse abrufen: Ruft Elemente aus einem Kalender ab.
 
 ```GET: /datasets/calendars/tables/{table}/items```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner des abzurufenden Kalenders |
-| $filter |string |no |query |(Keine) |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
-| $orderby |string |no |query |(Keine) |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
-| $skip |integer |no |query |(Keine) |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |integer |no |query |(Keine) |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner des abzurufenden Kalenders |
+| $filter |string |no |query |Keine |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
+| $orderby |string |no |query |Keine |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
+| $skip |integer |no |query |Keine |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
+| $top |integer |no |query |Keine |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarPostItem
+## <a name="calendarpostitem"></a>CalendarPostItem
 Ereignis erstellen: Erstellt ein neues Ereignis
 
 ```POST: /datasets/calendars/tables/{table}/items```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
 | item | |Ja |body |(Keine) |Zu erstellendes Kalenderelement |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarGetItem
+## <a name="calendargetitem"></a>CalendarGetItem
 Ereignis abrufen: Ruft ein bestimmtes Element aus einem Kalender ab.
 
 ```GET: /datasets/calendars/tables/{table}/items/{id}```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
 | id |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines abzurufenden Kalenderelements |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarDeleteItem
+## <a name="calendardeleteitem"></a>CalendarDeleteItem
 Ereignis löschen: Löscht ein Kalenderelement.
 
 ```DELETE: /datasets/calendars/tables/{table}/items/{id}```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
 | id |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines zu löschenden Kalenderelements |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarPatchItem
+## <a name="calendarpatchitem"></a>CalendarPatchItem
 Ereignis aktualisieren: Aktualisiert ein Kalenderelement teilweise.
 
 ```PATCH: /datasets/calendars/tables/{table}/items/{id}```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
 | id |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines zu aktualisierenden Kalenderelements |
 | item | |Ja |body |(Keine) |Zu aktualisierendes Kalenderelement |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarGetOnNewItems
+## <a name="calendargetonnewitems"></a>CalendarGetOnNewItems
 Bei neuen Elementen: Wird ausgelöst, wenn ein neues Kalenderelement erstellt wird.
 
 ```GET: /datasets/calendars/tables/{table}/onnewitems```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
-| $filter |string |no |query |(Keine) |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
-| $orderby |string |no |query |(Keine) |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
-| $skip |integer |no |query |(Keine) |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |integer |no |query |(Keine) |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
+| $filter |string |no |query |Keine |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
+| $orderby |string |no |query |Keine |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
+| $skip |integer |no |query |Keine |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
+| $top |integer |no |query |Keine |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CalendarGetOnUpdatedItems
+## <a name="calendargetonupdateditems"></a>CalendarGetOnUpdatedItems
 Bei aktualisierten Elementen: Wird ausgelöst, wenn ein Kalenderelement geändert wird.
 
 ```GET: /datasets/calendars/tables/{table}/onupdateditems```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
-| $filter |string |no |query |(Keine) |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
-| $orderby |string |no |query |(Keine) |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
-| $skip |integer |no |query |(Keine) |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |integer |no |query |(Keine) |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Kalenders |
+| $filter |string |no |query |Keine |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
+| $orderby |string |no |query |Keine |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
+| $skip |integer |no |query |Keine |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
+| $top |integer |no |query |Keine |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ContactGetTables
+## <a name="contactgettables"></a>ContactGetTables
 Ordner „Kontakte“ abrufen: Ruft Ordner des Typs „Kontakte“ ab.
 
 ```GET: /datasets/contacts/tables```
 
 Es gibt keine Parameter für diesen Aufruf
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ContactGetItems
+## <a name="contactgetitems"></a>ContactGetItems
 Kontakte abrufen: Ruft Kontakte aus einem Ordner des Typs „Kontakte“ ab.
 
 ```GET: /datasets/contacts/tables/{table}/items```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner des abzurufenden Ordners „Kontakte“ |
-| $filter |string |no |query |(Keine) |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
-| $orderby |string |no |query |(Keine) |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
-| $skip |integer |no |query |(Keine) |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |integer |no |query |(Keine) |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner des abzurufenden Ordners „Kontakte“ |
+| $filter |string |no |query |Keine |Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge |
+| $orderby |string |no |query |Keine |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
+| $skip |integer |no |query |Keine |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
+| $top |integer |no |query |Keine |Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256) |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ContactPostItem
+## <a name="contactpostitem"></a>ContactPostItem
 Kontakt erstellen: Erstellt einen neuen Kontakt.
 
 ```POST: /datasets/contacts/tables/{table}/items```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
 | item | |Ja |body |(Keine) |Zu erstellender Kontakt |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ContactGetItem
+## <a name="contactgetitem"></a>ContactGetItem
 Kontakt abrufen: Ruft einen bestimmten Kontakt aus einem Ordner „Kontakte“ ab.
 
 ```GET: /datasets/contacts/tables/{table}/items/{id}```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
 | id |string |Ja |path |(Keine) |Eindeutiger Bezeichner des abzurufenden Kontakts |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ContactDeleteItem
+## <a name="contactdeleteitem"></a>ContactDeleteItem
 Kontakt löschen: Löscht einen Kontakt.
 
 ```DELETE: /datasets/contacts/tables/{table}/items/{id}```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
 | id |string |Ja |path |(Keine) |Eindeutiger Bezeichner des zu löschenden Kontakts |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ContactPatchItem
+## <a name="contactpatchitem"></a>ContactPatchItem
 Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 
 ```PATCH: /datasets/contacts/tables/{table}/items/{id}```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| table |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
+| Tabelle |string |Ja |path |(Keine) |Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“ |
 | id |string |Ja |path |(Keine) |Eindeutiger Bezeichner des zu aktualisierenden Kontakts |
 | item | |Ja |body |(Keine) |Zu aktualisierendes Kontaktelement |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## Objektdefinitionen
-### TriggerBatchResponse[IDictionary[String,Object]]
+## <a name="object-definitions"></a>Objektdefinitionen
+### <a name="triggerbatchresponseidictionarystringobject"></a>TriggerBatchResponse[IDictionary[String,Object]]
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | value |array |Nein |
 
-### Objekt
+### <a name="object"></a>Objekt
+### <a name="sendmessage"></a>SendMessage
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-|  | | |
-
-### SendMessage
-| Eigenschaftenname | Datentyp | Erforderlich |
-| --- | --- | --- |
-| Attachments |array |Nein |
+| Anlagen |array |Nein |
 | From |string |Nein |
 | Cc |string |Nein |
 | Bcc |string |Nein |
@@ -553,17 +553,17 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 | IsHtml |Boolescher Wert |Nein |
 | To |string |Ja |
 
-### SendAttachment
+### <a name="sendattachment"></a>SendAttachment
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | @odata.type |string |Nein |
 | Name |string |Ja |
 | ContentBytes |string |Ja |
 
-### ReceiveMessage
+### <a name="receivemessage"></a>ReceiveMessage
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| ID |string |Nein |
+| id |string |Nein |
 | IsRead |Boolescher Wert |Nein |
 | HasAttachment |Boolescher Wert |Nein |
 | DateTimeReceived |string |Nein |
@@ -577,53 +577,53 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 | IsHtml |Boolescher Wert |Nein |
 | To |string |Ja |
 
-### ReceiveAttachment
+### <a name="receiveattachment"></a>ReceiveAttachment
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| ID |string |Ja |
+| id |string |Ja |
 | ContentType |string |Ja |
 | @odata.type |string |Nein |
 | Name |string |Ja |
 | ContentBytes |string |Ja |
 
-### DigestMessage
+### <a name="digestmessage"></a>DigestMessage
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| Subject (Antragsteller) |string |Ja |
+| Betreff |string |Ja |
 | Body |string |Nein |
 | Priorität |string |Nein |
 | Digest |array |Ja |
 | Attachments |array |Nein |
 | To |string |Ja |
 
-### TriggerBatchResponse[ReceiveMessage]
+### <a name="triggerbatchresponsereceivemessage"></a>TriggerBatchResponse[ReceiveMessage]
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | value |array |Nein |
 
-### DataSetsMetadata
+### <a name="datasetsmetadata"></a>DataSetsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | tabular |nicht definiert |Nein |
 | Blob |nicht definiert |Nein |
 
-### TabularDataSetsMetadata
+### <a name="tabulardatasetsmetadata"></a>TabularDataSetsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| source |string |Nein |
+| Quelle |string |Nein |
 | displayName |string |Nein |
 | urlEncoding |string |Nein |
 | tableDisplayName |string |Nein |
 | tablePluralName |string |Nein |
 
-### BlobDataSetsMetadata
+### <a name="blobdatasetsmetadata"></a>BlobDataSetsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| source |string |Nein |
+| Quelle |string |Nein |
 | displayName |string |Nein |
 | urlEncoding |string |Nein |
 
-### TableMetadata
+### <a name="tablemetadata"></a>TableMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | Name |string |Nein |
@@ -632,44 +632,44 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 | x-ms-capabilities |nicht definiert |Nein |
 | schema |nicht definiert |Nein |
 
-### TableCapabilitiesMetadata
+### <a name="tablecapabilitiesmetadata"></a>TableCapabilitiesMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | sortRestrictions |nicht definiert |Nein |
 | filterRestrictions |nicht definiert |Nein |
 | filterFunctions |array |Nein |
 
-### TableSortRestrictionsMetadata
+### <a name="tablesortrestrictionsmetadata"></a>TableSortRestrictionsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | sortable |Boolescher Wert |Nein |
 | unsortableProperties |array |Nein |
 | ascendingOnlyProperties |array |Nein |
 
-### TableFilterRestrictionsMetadata
+### <a name="tablefilterrestrictionsmetadata"></a>TableFilterRestrictionsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | filterable |Boolescher Wert |Nein |
 | nonFilterableProperties |array |Nein |
 | requiredProperties |array |Nein |
 
-### OptionsEmailSubscription
+### <a name="optionsemailsubscription"></a>OptionsEmailSubscription
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | NotificationUrl |string |Nein |
 | Nachricht |nicht definiert |Nein |
 
-### MessageWithOptions
+### <a name="messagewithoptions"></a>MessageWithOptions
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| Subject (Antragsteller) |string |Ja |
+| Betreff |string |Ja |
 | Options |string |Ja |
 | Body |string |Nein |
 | Priorität |string |Nein |
 | Attachments |array |Nein |
 | To |string |Ja |
 
-### SubscriptionResponse
+### <a name="subscriptionresponse"></a>SubscriptionResponse
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | id |string |Nein |
@@ -677,75 +677,79 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 | notificationType |string |Nein |
 | notificationUrl |string |Nein |
 
-### ApprovalEmailSubscription
+### <a name="approvalemailsubscription"></a>ApprovalEmailSubscription
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | NotificationUrl |string |Nein |
 | Nachricht |nicht definiert |Nein |
 
-### ApprovalMessage
+### <a name="approvalmessage"></a>ApprovalMessage
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| Subject (Antragsteller) |string |Ja |
+| Betreff |string |Ja |
 | Options |string |Ja |
 | Body |string |Nein |
 | Priorität |string |Nein |
 | Attachments |array |Nein |
 | To |string |Ja |
 
-### ApprovalEmailResponse
+### <a name="approvalemailresponse"></a>ApprovalEmailResponse
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | SelectedOption |string |Nein |
 
-### TablesList
+### <a name="tableslist"></a>TablesList
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | value |array |Nein |
 
-### Tabelle
+### <a name="table"></a>Tabelle
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | Name |string |Nein |
 | DisplayName |string |Nein |
 
-### Item
+### <a name="item"></a>Item
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | ItemInternalId |string |Nein |
 
-### CalendarItemsList
+### <a name="calendaritemslist"></a>CalendarItemsList
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | value |array |Nein |
 
-### CalendarItem
+### <a name="calendaritem"></a>CalendarItem
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | ItemInternalId |string |Nein |
 
-### ContactItemsList
+### <a name="contactitemslist"></a>ContactItemsList
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | value |array |Nein |
 
-### ContactItem
+### <a name="contactitem"></a>ContactItem
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | ItemInternalId |string |Nein |
 
-### DataSetsList
+### <a name="datasetslist"></a>DataSetsList
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | value |array |Nein |
 
-### DataSet
+### <a name="dataset"></a>DataSet
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | Name |string |Nein |
 | DisplayName |string |Nein |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

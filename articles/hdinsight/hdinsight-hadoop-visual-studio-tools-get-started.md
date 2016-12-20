@@ -17,13 +17,13 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bd214c166190248662634d488d8e7b1427b5738
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
 
 
 ---
 # <a name="get-started-using-azure-data-lake-hdinsight-tools-for-visual-studio-to-run-a-hive-query"></a>Erste Schritte bei der Verwendung von Azure Data Lake (HDInsight)-Tools für Visual Studio zum Ausführen einer Hive-Abfrage
-Erfahren Sie, wie Sie Data Lake (HDInsight)- Tools für Visual Studio verwenden, um eine Verbindung mit HDInsight-Clustern herzustellen und Hive-Abfragen zu übermitteln. Weitere Informationen zur Verwendung von HDInsight finden Sie in der [Einführung in HDInsight][hdinsight.introduction] und unter [Erste Schritte mit HDInsight][hdinsight.get.started]. Weitere Informationen zum Herstellen einer Verbindung mit einem Storm-Cluster finden Sie unter [Entwickeln von C#-Topologien für Apache Storm in HDInsight mithilfe von Visual Studio][hdinsight.storm.visual.studio.tools].
+Erfahren Sie, wie Sie Data Lake (HDInsight)- Tools für Visual Studio verwenden, um eine Verbindung mit HDInsight-Clustern herzustellen und Hive-Abfragen zu übermitteln. Weitere Informationen zur Verwendung von HDInsight finden Sie unter [Einführung in HDInsight][hdinsight.introduction] und [Erste Schritte mit HDInsight][hdinsight.get.started]. Weitere Informationen zum Herstellen einer Verbindung mit einem Storm-Cluster finden Sie unter [Entwickeln von C#-Topologien für Apache Storm in HDInsight mit Visual Studio][hdinsight.storm.visual.studio.tools].
 
 Data Lake-Tools für Visual Studio können für den Zugriff auf Data Lake Analytics und HDInsight verwendet werden.  Weitere Informationen über Data Lake-Tools finden Sie im [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
 
@@ -72,7 +72,7 @@ Mithilfe der Data Lake-Tools für Visual Studio können Sie eine Verbindung mit 
    > 
    > 
 4. Geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein, und klicken Sie auf **Anmelden**. Dies ist nur erforderlich, wenn Sie in Visual Studio auf dieser Arbeitsstation bislang noch nie eine Verbindung mit dem Azure-Abonnement hergestellt haben.
-5. Im Server-Explorer wird eine Liste vorhandener HDInsight-Cluster angezeigt. Wenn Sie noch keine Cluster haben, können Sie über das Azure-Portal, Azure PowerShell oder das HDInsight SDK Cluster erstellen. Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern][hdinsight-create-clusters].
+5. Im Server-Explorer wird eine Liste vorhandener HDInsight-Cluster angezeigt. Wenn Sie noch keine Cluster haben, können Sie über das Azure-Portal, Azure PowerShell oder das HDInsight SDK Cluster erstellen. Weitere Informationen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight][hdinsight-create-clusters].
    
    ![Data Lake-Tools für Visual Studio – Clusterliste in Server-Explorer][5]
 6. Erweitern Sie einen HDInsight-Cluster. **Hive-Datenbanken**, das Standardspeicherkonto, verknüpfte Speicherkonten und das **Hadoop-Dienstprotokoll** werden daraufhin angezeigt. Sie können die einzelnen Elemente weiter erweitern.
@@ -97,7 +97,7 @@ Nach dem Öffnen eines Containers können Sie mithilfe der folgenden Schaltfläc
 ![Data Lake-Tools für Visual Studio – Blob-Vorgänge in Server-Explorer](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
 
 ## <a name="run-a-hive-query"></a>Ausführen einer Hive-Abfrage
-[Apache Hive][apache.hive] ist eine Data Warehouse-Infrastruktur, die auf Hadoop aufbaut und Funktionen für Datenzusammenfassung, -abfragen und -analysen bietet. Die Data Lake-Tools für Visual Studio unterstützen das Ausführen von Hive-Abfragen in Visual Studio. Weitere Informationen zu Hive finden Sie unter [Verwenden von Hive in HDInsight][hdinsight.hive].
+[Apache Hive][apache.hive] ist eine Data Warehouse-Infrastruktur, die auf Hadoop aufbaut und Funktionen für Datenzusammenfassung, -abfragen und -analysen bietet. Die Data Lake-Tools für Visual Studio unterstützen das Ausführen von Hive-Abfragen in Visual Studio. Weitere Informationen zu Hive finden Sie unter [Verwenden von Hive mit HDInsight][hdinsight.hive].
 
 Es ist zeitaufwändig, das Hive-Skript mit einem HDInsight-Cluster zu testen. Es kann mehrere Minuten oder länger dauern. Data Lake-Tools für Visual Studio können Hive-Skripts ohne Verbindung mit einem aktiven Cluster lokal überprüfen.
 
@@ -173,7 +173,7 @@ Es gibt zwei Möglichkeiten zum Erstellen und Ausführen von Hive-Abfragen:
 ### <a name="view-hive-jobs"></a>Anzeigen von Hive-Aufträgen
 Sie können Auftragsabfragen, die Auftragsausgabe, Auftragsprotokolle und YARN-Protokolle für Hive-Aufträge anzeigen. Weitere Informationen finden Sie im vorherigen Screenshot.
 
-Die neueste Version der Tools ermöglicht es Ihnen, zu sehen, was sich innerhalb der Hive-Aufträge befindet, indem Sie die YARN-Protokolle sammeln und anzeigen. Ein YARN-Protokoll kann Ihnen bei der Untersuchung von Leistungsproblemen helfen. Weitere Informationen zur Vorgehensweise von HDInsight beim Sammeln von YARN-Protokollen finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle unter Windows-basiertem HDInsight][hdinsight.access.application.logs].
+Die neueste Version der Tools ermöglicht es Ihnen, zu sehen, was sich innerhalb der Hive-Aufträge befindet, indem Sie die YARN-Protokolle sammeln und anzeigen. Ein YARN-Protokoll kann Ihnen bei der Untersuchung von Leistungsproblemen helfen. Weitere Informationen zur Vorgehensweise von HDInsight beim Erfassen von YARN-Protokollen finden Sie unter [Programmgesteuerter Zugriff auf HDInsight-Anwendungsprotokolle][hdinsight.access.application.logs].
 
 **So zeigen Sie Hive-Aufträge an**
 
@@ -240,17 +240,17 @@ Data Lake-Tools für Visual Studio unterstützen das Erstellen und Senden von Pi
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Data Lake (HDInsight)-Toolpakets eine Verbindung mit HDInsight-Clustern herstellen und Hive-Abfragen ausführen. Weitere Informationen finden Sie unter:
 
-* [Verwenden von Hive mit Hadoop in HDInsight][hdinsight.hive]
+* [Verwenden von Hadoop Hive in HDInsight][hdinsight.hive]
 * [Erste Schritte mit Hadoop in HDInsight][hdinsight.get.started]
 * [Übermitteln von Hadoop-Aufträgen in HDInsight][hdinsight.submit.jobs]
 * [Analysieren von Twitter-Daten mit Hadoop in HDInsight][hdinsight.analyze.twitter.data]
 
 <!--Anchors-->
 [Installation]: #installation
-[Stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her.]: #connect-to-your-azure-subscription
-[Navigieren durch die verknüpften Ressourcen]: #navigate-the-linked-resources
-[Ausführen von Hive-Abfragen]: #run-hive-queries
-[Nächste Schritte]: #next-steps
+[Connect to your Azure subscription]: #connect-to-your-azure-subscription
+[Navigate the linked resources]: #navigate-the-linked-resources
+[Run Hive queries]: #run-hive-queries
+[Next steps]: #next-steps
 
 <!--Image references-->
 [1]: ./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.wpi.png
@@ -281,6 +281,6 @@ In diesem Artikel haben Sie erfahren, wie Sie in Visual Studio mithilfe des Data
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

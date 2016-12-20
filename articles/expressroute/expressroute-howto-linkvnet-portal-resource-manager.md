@@ -1,13 +1,13 @@
 ---
-title: Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung über das Resource Manager-Bereitstellungsmodell und das Azure-Portal | Microsoft Docs
-description: In diesem Dokument erhalten Sie einen Überblick über das Verknüpfen von virtuellen Netzwerken (VNets) mit ExpressRoute-Verbindungen.
+title: "Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung über das Resource Manager-Bereitstellungsmodell und das Azure-Portal | Microsoft Docs"
+description: "In diesem Dokument erhalten Sie einen Überblick über das Verknüpfen von virtuellen Netzwerken (VNets) mit ExpressRoute-Verbindungen."
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6a3604b95179d1a88f832ed45d9a6b85931187b1
+
 
 ---
 # <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
@@ -70,6 +74,9 @@ Zu diesem Zeitpunkt können Sie virtuelle Netzwerke in verschiedenen Abonnements
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

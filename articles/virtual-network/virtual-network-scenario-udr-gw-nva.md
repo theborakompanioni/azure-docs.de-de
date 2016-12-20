@@ -1,12 +1,12 @@
 ---
 title: Hybridverbindung mit einer Anwendung mit zwei Ebenen | Microsoft Docs
-description: Erfahren Sie, wie Sie virtuelle Geräte und benutzerdefinierte Routen bereitstellen, um eine Anwendungsumgebung mit mehreren Ebenen in Azure zu erstellen.
+description: "Erfahren Sie, wie Sie virtuelle Geräte und benutzerdefinierte Routen bereitstellen, um eine Anwendungsumgebung mit mehreren Ebenen in Azure zu erstellen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 1f509bec-bdd1-470d-8aa4-3cf2bb7f6134
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: fb8d59469eadad51dcf269ec8ff2829b2f8ef922
+
 
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
@@ -65,7 +69,7 @@ Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
   * **AZF2**. Interne Firewall für die Steuerung des Datenverkehrs zwischen **azsn2** und **azsn3**. Auch hier handelt es sich um ein virtuelles Gerät mit drei Netzwerkkarten.
   * **AZF3**. Verwaltungsfirewall, auf die Administratoren über das lokale Rechenzentrum zugreifen können und die mit einem Verwaltungssubnetz verbunden ist, über das alle Firewallgeräte verwaltet werden. Vorlagen für virtuelle Geräte mit zwei Netzwerkkarten finden Sie im Marketplace, oder Sie können sie direkt vom Geräteanbieter anfordern.
 
-## <a name="user-defined-routing-(udr)"></a>Benutzerdefiniertes Routing
+## <a name="user-defined-routing-udr"></a>Benutzerdefiniertes Routing
 Jedes Subnetz in Azure kann mit einer benutzerdefinierten Routingtabelle verknüpft werden, in der definiert wird, wie der im jeweiligen Subnetz initiierte Datenverkehr weitergeleitet wird. Wenn keine benutzerdefinierten Routen definiert sind, werden Standardrouten verwendet, um die Weiterleitung des Datenverkehrs zwischen den Subnetzen zu ermöglichen. Weiterführende Informationen zu benutzerdefinierten Routen finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](virtual-networks-udr-overview.md#ip-forwarding).
 
 Um sicherzustellen, dass die Kommunikation basierend auf der letzten oben angeführten Anforderung über das richtige Firewallgerät erfolgt, müssen Sie in **azurevnet**die folgende Routingtabelle mit benutzerdefinierten Routen erstellen.
@@ -102,7 +106,7 @@ Sie müssen zudem Routingtabellen für die Subnetze in **onpremvnet** erstellen,
 | 192.168.1.0/24 |192.168.2.4 |Ermöglicht den Datenverkehr zu **onpremsn1** über **OPFW** |
 
 ## <a name="ip-forwarding"></a>IP-Weiterleitung
-Benutzerdefinierte Routen und die IP-Weiterleitung sind Features, die Sie kombiniert nutzen können, um über virtuelle Geräte den Datenverkehrsfluss in einem Azure-VNET zu steuern.  Ein virtuelles Gerät ist letztlich nur ein virtueller Computer, der eine Anwendung zur Verarbeitung des Netzwerkverkehrs ausführt, z. B. eine Firewall oder ein NAT-Gerät.
+Benutzerdefinierte Routen und die IP-Weiterleitung sind Features, die Sie kombiniert nutzen können, um über virtuelle Geräte den Datenverkehrsfluss in einem Azure-VNET zu steuern.  Ein virtuelles Gerät ist letztlich nur ein virtueller Computer, der eine Anwendung zur Verarbeitung des Netzwerkverkehrs ausführt, z. B. eine Firewall oder ein NAT-Gerät.
 
 Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der nicht an ihn selbst adressiert ist. Damit ein virtueller Computer an andere Ziele gerichteten Datenverkehr empfangen kann, müssen Sie für den virtuellen Computer die IP-Weiterleitung aktivieren. Hierbei handelt es sich um eine Azure-Einstellung, keine Einstellung im Gastbetriebssystem. Auf dem virtuellen Gerät muss dennoch eine Anwendung zum Verarbeiten und zur entsprechenden Weiterleitung des eingehenden Datenverkehrs ausgeführt werden.
 
@@ -143,7 +147,7 @@ AZF2 stellt ein virtuelles Azure-Gerät dar, für das folgende Regeln definiert 
 * **Route:** Der gesamte Datenverkehr an 10.0.0.0/16 (**onpremvnet**) muss über **port1** an die IP-Adresse des Azure-Gateways (z.B. 10.0.0.1) geleitet werden.
 * **Richtlinie:** Zulassen des gesamten bidirektionalen Datenverkehrs zwischen **port1** und **port2**.
 
-## <a name="network-security-groups-(nsgs)"></a>Netzwerksicherheitsgruppen
+## <a name="network-security-groups-nsgs"></a>Netzwerksicherheitsgruppen
 In diesem Szenario werden keine Netzwerksicherheitsgruppen verwendet. Sie können jedoch Netzwerksicherheitsgruppen auf jedes Subnetz anwenden, um den ein- und ausgehenden Datenverkehr zu beschränken. So können Sie beispielsweise die folgende NSG-Regel auf das externe FW-Subnetz anwenden.
 
 **Eingehend**
@@ -164,6 +168,9 @@ Führen Sie zum Bereitstellen dieses Szenarios die oben beschriebenen Schritte a
 4. Geben Sie den Tunnel zwischen **onpremvnet** und **azurevnet** an.
 5. Nachdem Sie alle Ressourcen angegeben haben, melden Sie sich bei **onpremvm2** an, und pingen Sie 10.0.3.101 an, um die Verbindung zwischen **onpremsn2** und **azsn3** zu testen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

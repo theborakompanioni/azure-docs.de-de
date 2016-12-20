@@ -1,12 +1,12 @@
 ---
-title: ExpressRoute-Beispiele für die Konfiguration von Kundenroutern | Microsoft Docs
-description: Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper.
+title: "ExpressRoute-Beispiele für die Konfiguration von Kundenroutern | Microsoft Docs"
+description: "Diese Seite enthält Konfigurationsbeispiele für Router von Cisco und Juniper."
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: d6ea716f-d5ee-4a61-92b0-640d6e7d6974
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: b77a20274e22827aaa8aa4d354b62d086a19b206
+ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
+
 
 ---
-# <a name="router-configuration-samples-to-setup-and-manage-nat"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten von NAT (Network Address Translation, Netzwerkadressübersetzung)
+# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten von NAT
 Diese Seite enthält NAT-Konfigurationsbeispiele für Router der Serien Cisco ASA und Juniper SRX. Diese Beispiele dienen nur als Leitfaden und müssen nicht wie angegeben verwendet werden. Sie können mit Ihrem Anbieter an der Ausarbeitung geeigneter Konfigurationen für Ihr Netzwerk zusammenarbeiten. 
 
 > [!IMPORTANT]
@@ -24,9 +28,10 @@ Diese Seite enthält NAT-Konfigurationsbeispiele für Router der Serien Cisco AS
 > 
 > 
 
-Die nachstehenden Beispiele für die Routerkonfiguration gelten für Azure Public- und Microsoft-Peerings. Sie dürfen NAT nicht für privates Azure-Peering konfigurieren. Unter [ExpressRoute-Peerings](expressroute-circuit-peerings.md) und [NAT-Anforderungen für ExpressRoute](expressroute-nat.md) finden Sie weitere Details.
+* Die nachstehenden Beispiele für die Routerkonfiguration gelten für Azure Public- und Microsoft-Peerings. Sie dürfen NAT nicht für privates Azure-Peering konfigurieren. Unter [ExpressRoute-Peerings](expressroute-circuit-peerings.md) und [NAT-Anforderungen für ExpressRoute](expressroute-nat.md) finden Sie weitere Details.
 
-**Hinweis:** Sie müssen separate NAT-IP-Adresspools für Konnektivität mit dem Internet und ExpressRoute verwenden. Das Verwenden des gleichen NAT-IP-Adresspools für Internet und ExpressRoute führt zu einem asymmetrischen Routing und Verlust der Konnektivität.
+* Sie MÜSSEN separate NAT-IP-Adresspools für Konnektivität mit dem Internet und ExpressRoute verwenden. Das Verwenden des gleichen NAT-IP-Adresspools für Internet und ExpressRoute führt zu einem asymmetrischen Routing und Verlust der Konnektivität.
+
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA-Firewalls
 ### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>PAT-Konfiguration für den Datenverkehr von Kundennetzwerk zu Microsoft
@@ -50,11 +55,14 @@ Die nachstehenden Beispiele für die Routerkonfiguration gelten für Azure Publi
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
 ### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>PAT-Konfiguration für den Datenverkehr von Microsoft zum Kundennetzwerk
-#### <a name="interfaces-and-direction:"></a>Schnittstellen und Richtung:
+
+**Schnittstellen und Richtung:**
+
     Source Interface (where the traffic enters the ASA): inside
     Destination Interface (where the traffic exits the ASA): outside
 
-#### <a name="configuration:"></a>Konfiguration:
+**Konfiguration:**
+
 NAT-Pool:
 
     object network outbound-PAT
@@ -79,7 +87,7 @@ NAT-Befehle:
 
 
 ## <a name="juniper-srx-series-routers"></a>Router der Juniper SRX-Serie
-### <a name="1.-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Erstellen redundanter Ethernet-Schnittstellen für den Cluster
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Erstellen redundanter Ethernet-Schnittstellen für den Cluster
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -111,15 +119,15 @@ NAT-Befehle:
     }
 
 
-### <a name="2.-create-two-security-zones"></a>2. Erstellen von zwei Sicherheitszonen
+### <a name="2-create-two-security-zones"></a>2. Erstellen von zwei Sicherheitszonen
 * Richten Sie eine Trust Zone für das interne Netzwerk und eine Untrust Zone für Edgerouter zum externen Netzwerk ein.
 * Weisen Sie den Zonen entsprechende Schnittstellen zu.
 * Lassen Sie Dienste an den Schnittstellen zu.
 
-    security {      zones {          security-zone Trust {              host-inbound-traffic {                  system-services {                      ping;                  }                  protocols {                      bgp;                  }              }              interfaces {                  reth0.100;              }          }          security-zone Untrust {              host-inbound-traffic {                  system-services {                      ping;                  }                  protocols {                      bgp;                  }              }              interfaces {                  reth1.100;              }          }      }  }
+    security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
 
 
-### <a name="3.-create-security-policies-between-zones"></a>3. Erstellen von Sicherheitsrichtlinien zwischen Zeitzonen
+### <a name="3-create-security-policies-between-zones"></a>3. Erstellen von Sicherheitsrichtlinien zwischen Zeitzonen
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -150,7 +158,7 @@ NAT-Befehle:
     }
 
 
-### <a name="4.-configure-nat-policies"></a>4. Konfigurieren von NAT-Richtlinien
+### <a name="4-configure-nat-policies"></a>4. Konfigurieren von NAT-Richtlinien
 * Erstellen Sie zwei NAT-Pools. Einer dient für an Microsoft ausgehenden NAT-Datenverkehr, der andere für NAT-Datenverkehr von Microsoft zum Kunden.
 * Erstellen Sie Regeln für die NAT des jeweiligen Datenverkehrs.
   
@@ -209,10 +217,10 @@ NAT-Befehle:
            }
        }
 
-### <a name="5.-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Konfigurieren von BGP zum Ankündigen selektiver Namespacepräfixe in jede Richtung
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Konfigurieren von BGP zum Ankündigen selektiver Namespacepräfixe in jede Richtung
 Beispielen finden Sie auf der Seite [Beispiele für Routingkonfiguration ](expressroute-config-samples-routing.md) .
 
-### <a name="6.-create-policies"></a>6. Erstellen von Richtlinien
+### <a name="6-create-policies"></a>6. Erstellen von Richtlinien
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -308,8 +316,11 @@ Beispielen finden Sie auf der Seite [Beispiele für Routingkonfiguration ](expre
     }
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .
+Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

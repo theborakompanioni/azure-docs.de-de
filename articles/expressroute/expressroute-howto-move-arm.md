@@ -5,9 +5,9 @@ documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1c3bd8e01e02fb66bf5e04c307863bbe54176128
+
 
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell
@@ -28,7 +32,7 @@ ms.author: ganesr
 ## <a name="move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Verschieben der ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell
 Sie müssen eine ExpressRoute-Verbindung in das Resource Manager-Modell verschieben, sodass Sie es sowohl im klassischen als auch im Resource Manager-Bereitstellungsmodell verwenden können. Hierzu können Sie die folgenden PowerShell-Befehle ausführen.
 
-### <a name="step-1:-gather-circuit-details-from-the-classic-deployment-model"></a>Schritt 1: Abrufen von Verbindungsdetails aus dem klassischen Bereitstellungsmodell
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Schritt 1: Abrufen von Verbindungsdetails aus dem klassischen Bereitstellungsmodell
 Sie müssen zunächst Informationen zu Ihrer ExpressRoute-Verbindung abrufen.
 
 Melden Sie sich bei der klassischen Azure-Umgebung an, und rufen Sie den Dienstschlüssel ab. Sie können den folgenden PowerShell-Codeausschnitt zum Abrufen der Informationen verwenden:
@@ -48,7 +52,7 @@ Melden Sie sich bei der klassischen Azure-Umgebung an, und rufen Sie den Diensts
 
 Kopieren Sie den **Dienstschlüssel** der Verbindung, die Sie in das Resource Manager-Bereitstellungsmodell verschieben möchten.
 
-### <a name="step-2:-sign-in-to-the-resource-manager-environment,-and-create-a-new-resource-group"></a>Schritt 2: Anmelden bei der Resource Manager-Umgebung und Erstellen einer neuen Ressourcengruppe
+### <a name="step-2-sign-in-to-the-resource-manager-environment-and-create-a-new-resource-group"></a>Schritt 2: Anmelden bei der Resource Manager-Umgebung und Erstellen einer neuen Ressourcengruppe
 Verwenden Sie den folgenden Codeausschnitt, um eine neue Ressourcengruppe zu erstellen:
 
     # Sign in to your Azure Resource Manager environment
@@ -62,7 +66,7 @@ Verwenden Sie den folgenden Codeausschnitt, um eine neue Ressourcengruppe zu ers
 
 Sie können auch eine vorhandene Ressourcengruppe verwenden, sofern verfügbar.
 
-### <a name="step-3:-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Schritt 3: Verschieben der ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Schritt 3: Verschieben der ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell
 Sie können Ihre ExpressRoute-Verbindung jetzt vom klassischen Bereitstellungsmodell in das Resource Manager-Bereitstellungsmodell verschieben. Bevor Sie fortfahren, lesen Sie die Informationen im Artikel [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md) .
 
 Verwenden Sie dazu den folgenden Codeausschnitt:
@@ -119,6 +123,9 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 * [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](expressroute-howto-routing-arm.md)
 * [Verknüpfen Ihres virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

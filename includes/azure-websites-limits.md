@@ -8,7 +8,7 @@
  |Dediziert<sup>3</sup> |Dediziert<sup>3</sup> |Dediziert<sup>3</sup></p> |
 | [Horizontal skalieren](../articles/app-service-web/web-sites-scale.md) (max. Instanzen) |1 freigegebene |1 freigegebene |3 dedizierte<sup>3</sup> |10 dedizierte<sup>3</sup> |20 dedizierte (50 in ASE)<sup>3,4</sup> |
 | Speicher<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |500 GB<sup>4,5</sup></p> |
-| CPU-Zeit (kurz)<sup>6</sup> |3 Minuten |3 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu bezahlen |Unbegrenzt, normal zu bezahlen |
+| CPU-Zeit (5 min)<sup>6</sup> |3 Minuten |3 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu bezahlen |Unbegrenzt, normal zu bezahlen |
 | CPU-Zeit (Tag)<sup>6</sup> |60 Minuten |240 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu bezahlen |Unbegrenzt, normal zu bezahlen |
 | Arbeitsspeicher (1 Stunde) |1024 MB pro App Service-Plan |1024 MB pro App |N/V |N/V |N/V |
 | Bandbreite |165 MB |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für Dateiübertragungen gelten |Unbegrenzt, Preise für Dateiübertragungen gelten |Unbegrenzt, Preise für Dateiübertragungen gelten |
@@ -42,6 +42,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

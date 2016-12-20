@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: 25be292144e31c6f34ff1e015362aee31e242619
+ms.sourcegitcommit: 7c289437beca78dacc7d3136680c54dde01f3798
+ms.openlocfilehash: fb4b12543ac4910ea9c4789f4ebe5ef0ca5997ae
 
 
 ---
@@ -41,7 +41,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 | Lösung | Datenerfassung | Geräteidentität | Befehl und Steuerung | Regeln und Aktionen | Predictive Analytics |
 | --- | --- | --- | --- | --- | --- |
 | [Remoteüberwachung][lnk-getstarted-preconfigured] |Ja |Ja |Ja |Ja |- |
-| [Vorhersagbarer Wartungsbedarf][lnk-predictive-maintenance] |Ja |Ja |Ja |Ja |Ja |
+| [Vorbeugende Wartung][lnk-predictive-maintenance] |Ja |Ja |Ja |Ja |Ja |
 
 * *Datenerfassung:*Skalierbarer Dateneingang in der Cloud
 * *Geräteidentität:*Verwaltung eindeutiger Identitäten von jedem verbundenen Gerät
@@ -89,7 +89,7 @@ Bei dieser vorkonfigurierten Lösung bilden die ASA-Aufträge einen Teil des **I
 ## <a name="event-processor"></a>Ereignisprozessor
 Bei dieser vorkonfigurierten Lösung bildet der Ereignisprozessor einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
-Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventPocessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. Die **EventProcessorHost**-Instanz verwendet die **DeviceInfo**-Daten zum Aktualisieren der Gerätedaten in der DocumentDB-Datenbank und die **Regeldaten** zum Aufrufen der Logik-App sowie zum Aktualisieren der Warnungsanzeige im Lösungsportal.
+Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventProcessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. Die **EventProcessorHost**-Instanz verwendet die **DeviceInfo**-Daten zum Aktualisieren der Gerätedaten in der DocumentDB-Datenbank und die **Regeldaten** zum Aufrufen der Logik-App sowie zum Aktualisieren der Warnungsanzeige im Lösungsportal.
 
 ## <a name="device-identity-registry-and-documentdb"></a>Geräteidentitätsregistrierung und DocumentDB
 Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
@@ -112,7 +112,7 @@ Das Lösungsportal ist eine webbasierte Benutzeroberfläche, die in der Cloud al
 Bei dieser vorkonfigurierten Lösung bildet das Lösungsportal einen Teil des **IoT-Lösungs-Back-Ends** und einen Teil der **Verarbeitungsverbindung und Business Connectivity** in der typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den IoT-Lösungsarchitekturen finden Sie unter [Microsoft Azure IoT services: Reference Architecture (Microsoft Azure IoT-Dienste: Referenzarchitektur)][lnk-refarch] .
+Weitere Informationen zu den IoT-Lösungsarchitekturen finden Sie unter [Microsoft Azure IoT services: Reference Architecture][lnk-refarch] (Microsoft Azure IoT-Dienste: Referenzarchitektur).
 
 Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und können beginnen, indem Sie die vorkonfigurierte Lösung für die *Remoteüberwachung* bereitstellen: [Erste Schritte mit den vorkonfigurierten Lösungen][lnk-getstarted-preconfigured].
 
@@ -130,6 +130,6 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

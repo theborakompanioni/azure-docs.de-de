@@ -5,71 +5,143 @@ services: functions
 documentationcenter: na
 author: christopheranderson
 manager: erikre
-editor: ''
-tags: ''
+editor: 
+tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
-
+ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/22/2016
+ms.date: 10/31/2016
 ms.author: chrande; glenga
+translationtype: Human Translation
+ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
+ms.openlocfilehash: f5ea64ffc044faceec08e9a2b756a414e446a1b1
+
 
 ---
-# Service Bus-Trigger und -Bindungen für Warteschlangen und Themen in Azure Functions
+# <a name="azure-functions-service-bus-bindings"></a>Service Bus-Bindungen von Azure Functions
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Service Bus-Triggern und -Bindungen in Azure Functions.
+Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Service Bus-Bindungen in Azure Functions. Azure Functions unterstützt Trigger und Ausgabebindungen für Notification Hubs-Warteschlangen und -Themen.
 
-[!INCLUDE [Einführung](../../includes/functions-bindings-intro.md)]
+[!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a id="sbtrigger"></a> Service Bus-Trigger für Warteschlangen oder Themen
-#### function.json
-Die Datei *function.json* gibt die folgenden Eigenschaften an.
+<a name="trigger"></a>
 
-* `name`: Variablenname, der im Funktionscode für die Warteschlange oder das Thema bzw. die Warteschlangen- oder Themennachricht verwendet wird.
-* `queueName`: Name der abzufragenden Warteschlange (nur für Warteschlangentrigger).
-* `topicName`: Name des abzufragenden Themas (nur für Thementrigger).
-* `subscriptionName`: Name des Abonnements (nur für Thementrigger).
-* `connection`: Name einer App-Einstellung, die eine Service Bus-Verbindungszeichenfolge enthält. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein. Wenn die Verbindungszeichenfolge keine Verwaltungsrechte hat, legen Sie die `accessRights`-Eigenschaft fest. Wenn Sie `connection` leer lassen, verwendet der Trigger bzw. die Bindung die standardmäßige Service Bus-Verbindungszeichenfolge für die Funktionen-App, wie in der App-Einstellung AzureWebJobsServiceBus angegeben.
-* `accessRights`: gibt die Zugriffsrechte an, die für die Verbindungszeichenfolge zur Verfügung stehen. Der Standardwert ist `manage`. Legen Sie diese Einstellung auf `listen` fest, wenn Sie eine Verbindungszeichenfolge nutzen, die keine Verwaltungsberechtigungen bietet. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
-* `type`: muss auf *serviceBusTrigger* festgelegt werden.
-* `direction`: Muss auf *in* festgelegt werden.
+## <a name="service-bus-trigger"></a>Service Bus-Trigger
+Verwenden Sie den Service Bus-Trigger, um auf Nachrichten von einer Service Bus-Warteschlange oder einem Thema zu reagieren. 
 
-*function.json*-Beispiel für einen Service Bus-Warteschlangentrigger:
+Die Trigger von Notification Hubs-Warteschlange und -Thema zu einer Funktion verwenden die folgenden JSON-Objekte im `bindings`-Array von „function.json“:
+
+* Trigger für *Warteschlange*:
+
+    ```json
+    {
+        "name" : "<Name of input parameter in function signature>",
+        "queueName" : "<Name of the queue>",
+        "connection" : "<Name of app setting that has your queue's connection string - see below>",
+        "accessRights" : "<Access rights for the connection string - see below>"
+        "type" : "serviceBusTrigger",
+        "direction" : "in"
+    }
+    ```
+
+* Trigger für *Thema*:
+
+    ```json
+    {
+        "name" : "<Name of input parameter in function signature>",
+        "topicName" : "<Name of the topic>",
+        "subscriptionName" : "<Name of the subscription>",
+        "connection" : "<Name of app setting that has your topic's connection string - see below>",
+        "accessRights" : "<Access rights for the connection string - see below>"
+        "type" : "serviceBusTrigger",
+        "direction" : "in"
+    }
+    ```
+
+Beachten Sie Folgendes:
+
+* [Erstellen Sie eine App-Einstellung in Ihrer Funktions-App]() für `connection`, die die Verbindungszeichenfolge zu Ihrem Service Hub-Namespace enthält, und geben Sie den Namen der App-Einstellung in Ihrem Trigger in der `connection`-Eigenschaft an. Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus.
+  Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein.
+  Wenn Sie `connection` leer lassen, setzt der Trigger voraus, dass eine standardmäßige Service Bus-Verbindungszeichenfolge in einer App-Einstellung mit dem Namen `AzureWebJobsServiceBus` angegeben ist.
+* Verfügbare Werte für `accessRights` sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht die Berechtigung **Manage** hat, legen Sie `accessRights` auf `listen` fest. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
+
+## <a name="trigger-behavior"></a>Triggerverhalten
+* **Single-Threading**: Die Functions-Laufzeit verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `serviceBus.maxConcurrrentCalls` in *host.json* auf „1“ fest. 
+  Informationen zu *host.json* finden Sie unter [Ordnerstruktur](functions-reference.md#folder-structure) und [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+* **Behandlung von nicht verarbeitbaren Nachrichten**: Service Bus kümmert sich selbst um die Handhabung nicht verarbeitbarer Nachrichten, die in Azure Functions-Konfigurationen und -Code nicht gesteuert oder konfiguriert werden kann. 
+* **PeekLock-Verhalten**: Die Functions-Runtime empfängt eine Nachricht im [`PeekLock`-Modus](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) und ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Tritt bei der Ausführung ein Fehler auf, wird `Abandon` aufgerufen. 
+  Wenn die Funktion länger als im `PeekLock`-Timeout angegeben ausgeführt wird, wird die Sperre automatisch erneuert.
+
+<a name="triggerusage"></a>
+
+## <a name="trigger-usage"></a>Triggerverwendung
+Dieser Abschnitt veranschaulicht die Verwendung Ihres Service Hub-Triggers in Ihrem Funktionscode. 
+
+In C# und F# kann die Service Bus-Triggernachricht in alle folgenden Eingabetypen deserialisiert werden:
+
+* `string` – nützlich für Zeichenfolgennachrichten
+* `byte[]` – nützlich für binäre Daten
+* Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für JSON-serialisierte Daten.
+  Wenn Sie einen benutzerdefinierten Eingabetyp deklarieren (z.B. `FooType`), versucht Azure Functions, die JSON-Daten in den angegebenen Typ zu deserialisieren.
+* `BrokeredMessage` – gibt Ihnen die deserialisierte Nachricht mit der [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx)-Methode zurück.
+
+In Node.js wird die Service Bus-Triggernachricht entweder als Zeichenfolge oder, im Fall der JSON-Nachricht, als JavaScript-Objekt an die Funktion übergeben.
+
+<a name="triggersample"></a>
+
+## <a name="trigger-sample"></a>Triggerbeispiel
+Sie haben beispielsweise die folgende „function.json“:
 
 ```json
 {
-  "bindings": [
+"bindings": [
     {
-      "queueName": "testqueue",
-      "connection": "MyServiceBusConnection",
-      "name": "myQueueItem",
-      "type": "serviceBusTrigger",
-      "direction": "in"
+    "queueName": "testqueue",
+    "connection": "MyServiceBusConnection",
+    "name": "myQueueItem",
+    "type": "serviceBusTrigger",
+    "direction": "in"
     }
-  ],
-  "disabled": false
+],
+"disabled": false
 }
 ```
 
-#### C#-Codebeispiel, das eine Service Bus-Warteschlangennachricht verarbeitet
-```csharp
+Beachten Sie das sprachspezifische Beispiel für die Verarbeitung einer Service Bus-Warteschlangennachricht.
+
+* [C#](#triggercsharp)
+* [F#](#triggerfsharp)
+* [Node.js](#triggernodejs)
+
+<a name="triggercsharp"></a>
+
+### <a name="trigger-sample-in-c"></a>Triggerbeispiel in C# #
+
+```cs
 public static void Run(string myQueueItem, TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 }
 ```
 
-#### F#-Codebeispiel, das eine Service Bus-Warteschlangennachricht verarbeitet
+<a name="triggerfsharp"></a>
+
+### <a name="trigger-sample-in-f"></a>Triggerbeispiel in F# #
+
 ```fsharp
 let Run(myQueueItem: string, log: TraceWriter) =
     log.Info(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
-#### Node.js-Codebeispiel, das eine Service Bus-Warteschlangennachricht verarbeitet
+<a name="triggernodejs"></a>
+
+### <a name="trigger-sample-in-nodejs"></a>Triggerbeispiel in Node.js
+
 ```javascript
 module.exports = function(context, myQueueItem) {
     context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
@@ -77,72 +149,97 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-#### Unterstützte Typen
-Die Service Bus-Warteschlangennachricht kann in alle folgenden Typen deserialisiert werden:
+<a name="output"></a>
 
-* Objekt (aus JSON)
-* string
-* Bytearray
-* `BrokeredMessage` (C#)
+## <a name="service-bus-output-binding"></a>Service Bus-Ausgabebindung
+Die Ausgaben von Notification Hubs-Warteschlange und -Thema für eine Funktion verwenden die folgenden JSON-Objekte im `bindings`-Array von „function.json“:
 
-#### <a id="sbpeeklock"></a> PeekLock-Verhalten
-Die Functions-Runtime empfängt eine Nachricht im `PeekLock`-Modus und ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Tritt bei der Ausführung ein Fehler auf, wird `Abandon` aufgerufen. Wenn die Funktion länger als im `PeekLock`-Timeout angegeben ausgeführt wird, wird die Sperre automatisch erneuert.
+* Ausgabe der *Warteschlange*:
 
-#### <a id="sbpoison"></a> Behandlung von nicht verarbeitbaren Nachrichten
-Service Bus kümmert sich selbst um die Handhabung nicht verarbeitbarer Nachrichten, die in Azure Functions-Konfigurationen und -Code nicht gesteuert oder konfiguriert werden kann.
-
-#### <a id="sbsinglethread"></a> Single-Threading
-Die Functions-Laufzeit verarbeitet standardmäßig mehrere Warteschlangennachrichten gleichzeitig. Um die Runtime anzuweisen, immer nur eine Warteschlangen- oder Themennachricht gleichzeitig zu verarbeiten, legen Sie `serviceBus.maxConcurrrentCalls` in der Datei *host.json* auf „1“ fest. Informationen zur Datei *host.json* finden Sie in der [Ordnerstruktur](functions-reference.md#folder-structure) im Artikel zur Referenz für Entwickler und unter [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) im Wiki des WebJobs.Script-Repositorys.
-
-## <a id="sboutput"></a> Service Bus-Ausgabebindung für Warteschlangen oder Themen
-#### function.json
-Die Datei *function.json* gibt die folgenden Eigenschaften an.
-
-* `name`: Variablenname, der im Funktionscode für die Warteschlange oder Warteschlangennachricht verwendet wird.
-* `queueName`: Name der abzufragenden Warteschlange (nur für Warteschlangentrigger).
-* `topicName`: Name des abzufragenden Themas (nur für Thementrigger).
-* `subscriptionName`: Name des Abonnements (nur für Thementrigger).
-* `connection`: ebenso wie für den Service Bus-Trigger.
-* `accessRights`: gibt die Zugriffsrechte an, die für die Verbindungszeichenfolge zur Verfügung stehen. Der Standardwert ist `manage`. Legen Sie diese Einstellung auf `send` fest, wenn Sie eine Verbindungszeichenfolge nutzen, die keine Verwaltungsberechtigungen bietet. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern, z. B. das Erstellen von Warteschlangen.
-* `type`: muss auf *serviceBus* festgelegt werden.
-* `direction`: Muss auf *out* festgelegt werden.
-
-*function.json*-Beispiel für die Verwendung eines Zeitgebertriggers zum Schreiben von Service Bus-Warteschlangennachrichten:
-
-```JSON
-{
-  "bindings": [
+    ```json
     {
-      "schedule": "0/15 * * * * *",
-      "name": "myTimer",
-      "runsOnStartup": true,
-      "type": "timerTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "outputSbQueue",
-      "type": "serviceBus",
-      "queueName": "testqueue",
-      "connection": "MyServiceBusConnection",
-      "direction": "out"
+        "name" : "<Name of output parameter in function signature>",
+        "queueName" : "<Name of the queue>",
+        "connection" : "<Name of app setting that has your queue's connection string - see below>",
+        "accessRights" : "<Access rights for the connection string - see below>"
+        "type" : "serviceBus",
+        "direction" : "out"
     }
-  ],
-  "disabled": false
+    ```
+* Ausgabe des *Themas*:
+
+    ```json
+    {
+        "name" : "<Name of output parameter in function signature>",
+        "topicName" : "<Name of the topic>",
+        "subscriptionName" : "<Name of the subscription>",
+        "connection" : "<Name of app setting that has your topic's connection string - see below>",
+        "accessRights" : "<Access rights for the connection string - see below>"
+        "type" : "serviceBus",
+        "direction" : "out"
+    }
+    ```
+
+Beachten Sie Folgendes:
+
+* [Erstellen Sie eine App-Einstellung in Ihrer Funktions-App]() für `connection`, die die Verbindungszeichenfolge zu Ihrem Service Hub-Namespace enthält, und geben Sie den Namen der App-Einstellung in Ihrer Ausgabebindung in der `connection`-Eigenschaft an. Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials) aus.
+  Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein.
+  Wenn Sie `connection` leer lassen, setzt die Ausgabebindung voraus, dass eine standardmäßige Service Bus-Verbindungszeichenfolge in einer App-Einstellung mit dem Namen `AzureWebJobsServiceBus` angegeben ist.
+* Verfügbare Werte für `accessRights` sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht die Berechtigung **Manage** hat, legen Sie `accessRights` auf `listen` fest. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
+
+<a name="outputusage"></a>
+
+## <a name="output-usage"></a>Ausgabeverwendung
+In C# und F# kann Azure Functions eine Service Bus-Warteschlangennachricht mit einem der folgenden Typen erstellen:
+
+* Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – Parameterdefinition sieht wie `out T paramName` aus (C#).
+  Functions deserialisiert das Objekt in eine JSON-Nachricht. Wenn der Ausgabewert NULL ist, wenn die Funktion beendet wird, erstellt Functions die Nachricht mit einem NULL-Objekt.
+* `string` – Parameterdefinition sieht wie `out string paraName` aus (C#). Wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird, erstellt Functions eine Nachricht.
+* `byte[]` – Parameterdefinition sieht wie `out byte[] paraName` aus (C#). Wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird, erstellt Functions eine Nachricht.
+* `BrokeredMessage` – Parameterdefinition sieht wie `out byte[] paraName` aus (C#). Wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird, erstellt Functions eine Nachricht.
+
+Für das Erstellen mehrerer Nachrichten in einer C#-Funktion können Sie `ICollector<T>` oder `IAsyncCollector<T>` verwenden. Beim Aufrufen der `Add` -Methode wird eine Nachricht erstellt.
+
+In Node.js können Sie `context.binding.<paramName>` eine Zeichenfolge, ein Bytearray oder ein Javascript-Objekt (deserialisiert in JSON) zuweisen.
+
+<a name="outputsample"></a>
+
+## <a name="output-sample"></a>Ausgabebeispiel
+Nehmen wir an, dass Sie über die folgende „function.json“ verfügen, die eine Service Bus-Warteschlangenausgabe definiert:
+
+```json
+{
+    "bindings": [
+        {
+            "schedule": "0/15 * * * * *",
+            "name": "myTimer",
+            "runsOnStartup": true,
+            "type": "timerTrigger",
+            "direction": "in"
+        },
+        {
+            "name": "outputSbQueue",
+            "type": "serviceBus",
+            "queueName": "testqueue",
+            "connection": "MyServiceBusConnection",
+            "direction": "out"
+        }
+    ],
+    "disabled": false
 }
-``` 
+```
 
-#### Unterstützte Typen
-Azure Functions kann eine Service Bus-Warteschlangennachricht mit einem der folgenden Typen erstellen.
+Beachten Sie das sprachspezifische Beispiel für das Senden einer Nachricht an die Service Bus-Warteschlange.
 
-* Objekt (erstellt immer eine JSON-Nachricht; erstellt die Nachricht mit einem NULL-Objekt, wenn der Wert bei Funktionsbeendigung NULL ist)
-* Zeichenfolge (eine Nachricht wird erstellt, wenn der Wert bei Funktionsbeendigung nicht NULL ist)
-* Bytearray (funktioniert wie Zeichenfolge)
-* `BrokeredMessage` (C#, funktioniert wie Zeichenfolge)
+* [C#](#outcsharp)
+* [F#](#outfsharp)
+* [Node.js](#outnodejs)
 
-Für das Erstellen mehrerer Nachrichten in einer C#-Funktion können Sie `ICollector<T>` oder `IAsyncCollector<T>` verwenden. Beim Aufrufen der `Add`-Methode wird eine Nachricht erstellt.
+<a name="outcsharp"></a>
 
-#### C#-Codebeispiele, die Service Bus-Warteschlangennachrichten erstellen
-```csharp
+### <a name="output-sample-in-c"></a>Ausgabebeispiel in C# #
+
+```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
 {
     string message = $"Service Bus queue message created at: {DateTime.Now}";
@@ -151,7 +248,9 @@ public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQu
 }
 ```
 
-```csharp
+Alternative zum Erstellen mehrerer Nachrichten:
+
+```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
 {
     string message = $"Service Bus queue message created at: {DateTime.Now}";
@@ -161,7 +260,10 @@ public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> ou
 }
 ```
 
-#### F#-Codebeispiel, das eine Service Bus-Warteschlangennachricht erstellt
+<a name="outfsharp"></a>
+
+### <a name="output-sample-in-f"></a>Ausgabebeispiel in F# #
+
 ```fsharp
 let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
     let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
@@ -169,15 +271,12 @@ let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
     outputSbQueue = message
 ```
 
-#### Node.js-Codebeispiel, das eine Service Bus-Warteschlangennachricht erstellt
+<a name="outnodejs"></a>
+
+### <a name="output-sample-in-nodejs"></a>Ausgabebeispiel in Node.js
+
 ```javascript
 module.exports = function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
-
-    if(myTimer.isPastDue)
-    {
-        context.log('Node.js is running late!');
-    }
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
     context.bindings.outputSbQueueMsg = message;
@@ -185,7 +284,25 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## Nächste Schritte
-[!INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
+Alternative zum Erstellen mehrerer Nachrichten:
 
-<!---HONumber=AcomDC_0921_2016-->
+```javascript
+module.exports = function (context, myTimer) {
+    var message = 'Service Bus queue message created at ' + timeStamp;
+    context.log(message);   
+    context.bindings.outputSbQueueMsg = [];
+    context.bindings.outputSbQueueMsg.push("1 " + message);
+    context.bindings.outputSbQueueMsg.push("2 " + message);
+    context.done();
+};
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

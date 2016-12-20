@@ -1,26 +1,30 @@
 ---
-title: Automatische Weiterleitung von Service Bus-Messagingentitäten | Microsoft Docs
+title: "Automatische Weiterleitung von Service Bus-Messagingentitäten | Microsoft Docs"
 description: So verketten Sie eine Warteschlange oder ein Abonnement mit einer anderen Warteschlange oder einem anderen Thema.
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a20450442a8471534e4cd3faab9167d1db65d9b3
+
 
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
 Mit der Funktion *Automatische Weiterleitung* können Sie eine Warteschlange oder ein Abonnement mit einer weiteren Warteschlange oder einem Thema aus dem selben Namespace verketten. Wenn die automatische Weiterleitung aktiviert ist, entfernt Service Bus die Nachrichten automatisch, die in der ersten Warteschlange oder dem Abonnement (Quelle) platziert wurden, und fügt sie in die zweite Warteschlange oder das Thema (Ziel) ein. Beachten Sie, dass es weiterhin möglich ist, eine Nachricht direkt an die Zielentität zu senden. Es ist außerdem nicht möglich, eine Unterwarteschlange, z.B. eine Warteschlange für unzustellbare Nachrichten, mit einer anderen Warteschlange oder einem Thema zu verketten.
 
 ## <a name="using-auto-forwarding"></a>Verwenden der automatischen Weiterleitung
-Sie können die automatische Weiterleitung durch Festlegen der Eigenschaften [QueueDescription.ForwardTo][QueueDescription.ForwardTo] oder [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] der Objekte [QueueDescription][QueueDescription] oder [SubscriptionDescription][SubscriptionDescription] für die Quelle aktivieren, wie im folgenden Beispiel veranschaulicht:
+Sie können die automatische Weiterleitung durch Festlegen der Eigenschaften [QueueDescription.ForwardTo][QueueDescription.ForwardTo] oder [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] in den Objekten [QueueDescription][QueueDescription] oder [SubscriptionDescription][SubscriptionDescription] für die Quelle aktivieren, wie im folgenden Beispiel veranschaulicht.
 
 ```
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -30,7 +34,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 Die Zielentität muss vorhanden sein, wenn die Quellentität erstellt wird. Wenn die Zielentität nicht vorhanden ist, gibt Service Bus eine Ausnahme zurück, wenn die Quellentität erstellt werden soll.
 
-Sie können die automatische Weiterleitung zum Skalieren eines einzelnen Themas verwenden. Service Bus beschränkt die [Anzahl von Abonnements für ein bestimmtes Thema](../service-bus/service-bus-quotas.md) auf 2.000. Sie können weitere Abonnements durch Erstellen von Themen der zweiten Ebene aufnehmen. Hinweis: Selbst wenn Sie nicht durch die Service Bus-Beschränkung für die Anzahl der Abonnements gebunden sind, kann das Hinzufügen einer zweiten Ebene von Themen den Gesamtdurchsatz Ihres Themas verbessern.
+Sie können die automatische Weiterleitung zum Skalieren eines einzelnen Themas verwenden. Service Bus beschränkt die [Anzahl von Abonnements für ein bestimmtes Thema](service-bus-quotas.md) auf 2.000. Sie können weitere Abonnements durch Erstellen von Themen der zweiten Ebene aufnehmen. Hinweis: Selbst wenn Sie nicht durch die Service Bus-Beschränkung für die Anzahl der Abonnements gebunden sind, kann das Hinzufügen einer zweiten Ebene von Themen den Gesamtdurchsatz Ihres Themas verbessern.
 
 ![Szenario mit automatischer Weiterleitung][0]
 
@@ -56,7 +60,7 @@ Detaillierte Informationen über die automatische Weiterleitung finden Sie in de
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-Weitere Informationen zu Service Bus-Leistungssteigerungen finden Sie unter [Partitionierte Nachrichtenentitäten][].
+Weitere Informationen zu Service Bus-Leistungssteigerungen finden Sie unter [Partitionierte Messagingentitäten][Partitionierte Messagingentitäten].
 
 [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
 [SubscriptionDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.forwardto.aspx
@@ -67,6 +71,7 @@ Weitere Informationen zu Service Bus-Leistungssteigerungen finden Sie unter [Par
 [Partitionierte Messagingentitäten]: service-bus-partitioning.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

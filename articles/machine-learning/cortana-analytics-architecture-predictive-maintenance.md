@@ -1,12 +1,12 @@
 ---
 title: Architektur der vorbeugenden Wartung | Microsoft Docs
-description: Architekturdiagramm der Microsoft Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen.
+description: "Architekturdiagramm der Microsoft Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen."
 services: cortana-analytics
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 759746a5-388a-42cf-bccf-435bf9b53251
 ms.service: cortana-analytics
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,15 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7626b27c23373d1e11e8595d7fd7748a8e598dda
+
 
 ---
-# Architektur der Cortana Intelligence-Lösungsvorlage zum Vorhersagen des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
+# <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Architektur der Cortana Intelligence-Lösungsvorlage zum Vorhersagen des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
 Das nachstehende Diagramm bietet eine Architekturübersicht über die [Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
 
-Eine Version des Diagramms in voller Größe können Sie hier herunterladen: [Architecture diagram: Solution Template for predictive maintenance](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png) (in englischer Sprache).
+Eine Version des Diagramms in voller Größe können Sie hier herunterladen: [Architecture diagram: Solution Template for predictive maintenance](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)(in englischer Sprache).
 
 ![Diagramm der Microsoft Cortana Intelligence-Lösungsvorlagenarchitektur zur Vorhersage des Wartungsbedarfs][image]
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

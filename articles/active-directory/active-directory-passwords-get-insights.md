@@ -1,12 +1,12 @@
 ---
 title: 'Operative Einblicke: Kennwortverwaltung in Azure AD | Microsoft Docs'
-description: Dieser Artikel beschreibt, wie Sie Berichte verwenden, um einen Einblick in die Vorgänge zur Kennwortverwaltung in Ihrem Unternehmen zu erhalten.
+description: "Dieser Artikel beschreibt, wie Sie Berichte verwenden, um einen Einblick in die Vorgänge zur Kennwortverwaltung in Ihrem Unternehmen zu erhalten."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asteen
 manager: femila
 editor: curtand
-
+ms.assetid: 1472b51d-53f4-4b0f-b1be-57f6fa88fa65
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: asteen
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 10aa33512fd1eaf6761f6de181e8619b390f564b
+
 
 ---
-# Operative Einblicke durch Berichte zur Kennwortverwaltung
+# <a name="how-to-get-operational-insights-with-password-management-reports"></a>Operative Einblicke durch Berichte zur Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 > 
 > 
 
@@ -29,8 +33,8 @@ In diesem Abschnitt wird beschrieben, wie Sie Berichte zur Kennwortverwaltung in
 * [**Anzeigen der Aktivität zur Registrierung für die Kennwortzurücksetzung in Ihrer Organisation**](#view-password-reset-registration-activity)
 * [**Anzeigen der Aktivität zur Kennwortzurücksetzung in Ihrer Organisation**](#view-password-reset-activity)
 
-## Übersicht über Berichte zur Kennwortverwaltung
-Sobald Sie die Kennwortzurücksetzung bereitgestellt haben, besteht einer der nächsten Schritte üblicherweise darin, herauszufinden, wie diese in Ihrer Organisation verwendet wird. Beispielsweise möchten Sie einen Einblick gewinnen, wie Benutzer sich für die Kennwortzurücksetzung registrieren oder wie viele Kennwortzurücksetzungen in den letzten paar Tagen stattgefunden haben. Im Folgenden sind einige der häufigsten Fragen aufgeführt, die Sie anhand der Berichte zur Kennwortverwaltung beantworten können, die derzeit im [Azure-Verwaltungsportal](https://manage.windowsazure.com) zur Verfügung stehen:
+## <a name="overview-of-password-management-reports"></a>Übersicht über Berichte zur Kennwortverwaltung
+Sobald Sie die Kennwortzurücksetzung bereitgestellt haben, besteht einer der nächsten Schritte üblicherweise darin, herauszufinden, wie diese in Ihrer Organisation verwendet wird.  Beispielsweise möchten Sie einen Einblick gewinnen, wie Benutzer sich für die Kennwortzurücksetzung registrieren oder wie viele Kennwortzurücksetzungen in den letzten paar Tagen stattgefunden haben.  Im Folgenden sind einige der häufigsten Fragen aufgeführt, die Sie anhand der Berichte zur Kennwortverwaltung beantworten können, die derzeit im [Azure-Verwaltungsportal](https://manage.windowsazure.com) zur Verfügung stehen:
 
 * Wie viele Personen haben sich für die Kennwortzurücksetzung registriert?
 * Wer hat sich für das Zurücksetzen von Kennwörtern registriert?
@@ -41,19 +45,19 @@ Sobald Sie die Kennwortzurücksetzung bereitgestellt haben, besteht einer der n�
 * Welche Administratoren setzen häufig ihre eigenen Kennwörter zurück?
 * Gibt es verdächtige Aktivitäten beim Zurücksetzen des Kennworts?
 
-## Anzeigen von Berichten für die Kennwortverwaltung
+## <a name="how-to-view-password-management-reports"></a>Anzeigen von Berichten für die Kennwortverwaltung
 Zum Finden der Berichte für die Kennwortverwaltung führen Sie die folgenden Schritte aus:
 
 1. Klicken Sie im **Azure-Verwaltungsportal** auf die [Active Directory-Erweiterung](https://manage.windowsazure.com).
 2. Wählen Sie Ihr Verzeichnis aus der Liste aus, die im Portal angezeigt wird.
-3. Klicken Sie auf die Registerkarte **Berichte**.
+3. Klicken Sie auf die Registerkarte **Berichte** .
 4. Sehen Sie im Abschnitt **Aktivitätsprotokolle** nach.
-5. Wählen Sie entweder den Bericht **Aktivität "Zurücksetzen des Kennworts"** oder den Bericht **Aktivität "Registrierung für Zurücksetzen des Kennworts"** aus.
+5. Wählen Sie entweder den Bericht **Aktivität „Zurücksetzen des Kennworts“** oder den Bericht **Aktivität „Registrierung für Zurücksetzen des Kennworts“** aus.
    
    ![][001]
 
-## Zugreifen auf Berichte zur Kennwortverwaltung über eine API
-Ab August 2015 unterstützen die Berichte und Ereignisse von Azure AD das Abrufen aller Informationen, die in den Berichten „Kennwortzurücksetzung“ und „Registrierung für Zurücksetzen des Kennworts“ enthalten sind.
+## <a name="how-to-access-password-management-reports-from-an-api"></a>Zugreifen auf Berichte zur Kennwortverwaltung über eine API
+Ab August 2015 unterstützen die Berichte und Ereignisse von Azure AD das Abrufen aller Informationen, die in den Berichten „Kennwortzurücksetzung“ und „Registrierung für Zurücksetzen des Kennworts“ enthalten sind.
 
 Zum Zugreifen auf diese Daten müssen Sie eine kleine App oder ein Skript schreiben, um sie von unseren Servern abzurufen. [Hier erfahren Sie, wie Sie die ersten Schritte mit der Azure AD Reporting-API ausführen](active-directory-reporting-api-getting-started.md).
 
@@ -62,8 +66,8 @@ Nachdem Sie über ein funktionierendes Skript verfügen, sollten Sie sich als N�
 * [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): Listet die Spalten auf, die für Ereignisse zum Zurücksetzen des Kennworts verfügbar sind.
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): Listet die Spalten auf, die für Ereignisse zum Registrieren der Kennwortzurücksetzung verfügbar sind.
 
-## Anzeigen der Aktivität "Registrierung für Zurücksetzen des Kennworts"
-Der Bericht "Aktivität "Registrierung für Zurücksetzen des Kennworts"" zeigt alle Registrierungen für die Kennwortzurücksetzung, die in Ihrer Organisation erfolgt sind. Eine Registrierung für die Kennwortzurücksetzung wird in diesem Bericht für jeden Benutzer angezeigt, der erfolgreich Authentifizierungsinformationen beim Registrierungsportal für die Kennwortzurücksetzung registriert hat ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)).
+## <a name="view-password-reset-registration-activity"></a>Anzeigen der Aktivität "Registrierung für Zurücksetzen des Kennworts"
+Der Bericht "Aktivität "Registrierung für Zurücksetzen des Kennworts"" zeigt alle Registrierungen für die Kennwortzurücksetzung, die in Ihrer Organisation erfolgt sind.  Eine Registrierung für die Kennwortzurücksetzung wird in diesem Bericht für jeden Benutzer angezeigt, der erfolgreich Authentifizierungsinformationen beim Registrierungsportal für die Kennwortzurücksetzung registriert hat ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)).
 
 * **Max. Zeitraum**: 1 Monat
 * **Maximale Anzahl von Zeilen**: unbegrenzt
@@ -71,7 +75,7 @@ Der Bericht "Aktivität "Registrierung für Zurücksetzen des Kennworts"" zeigt 
   
     ![][002]
 
-### Beschreibung der Berichtsspalten
+### <a name="description-of-report-columns"></a>Beschreibung der Berichtsspalten
 In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
 
 * **Benutzer** – Der Benutzer, der versucht hat, sich für die Kennwortzurücksetzung zu registrieren.
@@ -79,14 +83,14 @@ In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
 * **Datum und Uhrzeit** – Datum und Uhrzeit des Versuchs.
 * **Registrierte Daten** – Die Authentifizierungsdaten, die vom Benutzer während der Registrierung für die Kennwortzurücksetzung bereitgestellt wurden.
 
-### Beschreibung der Berichtswerte
+### <a name="description-of-report-values"></a>Beschreibung der Berichtswerte
 Die folgende Tabelle beschreibt die verschiedenen Werte, die für die einzelnen Spalten zulässig sind:
 
 | Column | Zulässige Werte und ihre Bedeutung |
 | --- | --- |
-| Registrierte Daten |**Alternative E-Mail-Adresse** – Benutzer hat für die Authentifizierung eine alternative E-Mail-Adresse oder eine E-Mail-Adresse zur Authentifizierung verwendet.<p><p>**Bürotelefon** – Benutzer hat seine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon** – Benutzer hat die Nummer seines Mobiltelefons oder seines Authentifizierungstelefons zum Authentifizieren verwendet.<p>**Sicherheitsfragen** – Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der oben genannten Daten (z.B. alternative E-Mail-Adresse und Mobiltelefon)** – tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
+| Registrierte Daten |**Alternative E-Mail-Adresse** – Benutzer hat für die Authentifizierung eine alternative E-Mail-Adresse oder eine E-Mail-Adresse zur Authentifizierung verwendet.<p><p>**Bürotelefon** – Benutzer hat seine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon** – Benutzer hat sein Mobiltelefon oder sein Authentifizierungstelefon zum Authentifizieren verwendet.<p>**Sicherheitsfragen** – Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der oben genannten Daten (z.B. alternative E-Mail-Adresse und Mobiltelefon)** – tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
 
-## Anzeigen der Aktivität "Zurücksetzen des Kennworts"
+## <a name="view-password-reset-activity"></a>Anzeigen der Aktivität "Zurücksetzen des Kennworts"
 Dieser Bericht zeigt alle Versuche der Kennwortzurücksetzung an, die in Ihrer Organisation erfolgt sind.
 
 * **Max. Zeitraum**: 1 Monat
@@ -95,7 +99,7 @@ Dieser Bericht zeigt alle Versuche der Kennwortzurücksetzung an, die in Ihrer O
   
     ![][003]
 
-### Beschreibung der Berichtsspalten
+### <a name="description-of-report-columns"></a>Beschreibung der Berichtsspalten
 In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
 
 1. **Benutzer** – Der Benutzer, der versucht hat, ein Kennwort zurückzusetzen (basierend auf dem Feld "Benutzer-ID", das bereitgestellt wird, wenn der Benutzer ein Kennwort zurückzusetzen versucht).
@@ -103,18 +107,18 @@ In der folgende Liste werden alle Berichtsspalten im Detail beschrieben:
 3. **Datum und Uhrzeit** – Datum und Uhrzeit des Versuchs.
 4. **Verwendete Methode(n)** – Die Authentifizierungsmethoden, die der Benutzer für diesen Zurücksetzungsvorgang verwendet hat.
 5. **Ergebnis** – Das Endergebnis des Vorgangs zum Zurücksetzen des Kennworts.
-6. **Details** – Die Einzelheiten dazu, warum die Kennwortzurücksetzung zu dem entsprechenden Wert geführt hat. Enthält auch alle Maßnahmen, die Sie ergreifen können, um einen unerwarteten Fehler zu beheben.
+6. **Details** – Die Einzelheiten dazu, warum die Kennwortzurücksetzung zu dem entsprechenden Wert geführt hat.  Enthält auch alle Maßnahmen, die Sie ergreifen können, um einen unerwarteten Fehler zu beheben.
 
-### Beschreibung der Berichtswerte
+### <a name="description-of-report-values"></a>Beschreibung der Berichtswerte
 Die folgende Tabelle beschreibt die verschiedenen Werte, die für die einzelnen Spalten zulässig sind:
 
 | Column | Zulässige Werte und ihre Bedeutung |
 | --- | --- |
-| Verwendete Methoden |**Alternative E-Mail-Adresse** – Benutzer hat für die Authentifizierung eine alternative E-Mail-Adresse oder eine E-Mail-Adresse zur Authentifizierung verwendet.<p>**Bürotelefon** – Benutzer hat seine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon** – Benutzer hat die Nummer seines Mobiltelefons oder seines Authentifizierungstelefons zum Authentifizieren verwendet.<p>**Sicherheitsfragen** – Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der oben genannten Daten (z.B. alternative E-Mail-Adresse und Mobiltelefon)** – tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
-| Ergebnis |**Vorzeitig beendet** – der Benutzer hat die Kennwortzurücksetzung gestartet, den Vorgang jedoch mittendrin beendet und nicht abgeschlossen.<p>**Blockiert** – das Konto des Benutzers wurde an der Kennwortzurücksetzung gehindert, weil die Seite zur Kennwortzurücksetzung oder eine einzelne Überprüfungsmethode zur Kennwortzurücksetzung in einem Zeitraum von 24 Stunden zu häufig verwendet wurde.<p>**Abgebrochen** – der Benutzer hat die Kennwortzurücksetzung gestartet, aber dann auf die Schaltfläche „Abbrechen“ geklickt, um die Sitzung mittendrin abzubrechen.<p>**Administrator kontaktiert** – beim Benutzer ist während der Sitzung ein Problem aufgetreten, das er nicht lösen konnte. Daher hat der Benutzer auf den Link „Wenden Sie sich an Ihren Administrator“ geklickt, statt die Kennwortzurücksetzung abzuschließen.<p>**Fehler** – der Benutzer konnte ein Kennwort nicht zurücksetzen, wahrscheinlich weil der Benutzer nicht für die Verwendung dieses Features konfiguriert wurde (z.B. keine Lizenz, fehlende Informationen für die Authentifizierung, Kennwort lokal verwaltet ohne Aktivierung der Rückschreibungsfunktion).<p>**Erfolgreich** – die Kennwortzurücksetzung war erfolgreich. |
+| Verwendete Methoden |**Alternative E-Mail-Adresse** – Benutzer hat für die Authentifizierung eine alternative E-Mail-Adresse oder eine E-Mail-Adresse zur Authentifizierung verwendet.<p>**Bürotelefon** – Benutzer hat seine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon** – Benutzer hat sein Mobiltelefon oder sein Authentifizierungstelefon zum Authentifizieren verwendet.<p>**Sicherheitsfragen** – Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der oben genannten Daten (z.B. alternative E-Mail-Adresse und Mobiltelefon)** – tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
+| Ergebnis |**Vorzeitig beendet** – Der Benutzer hat die Kennwortzurücksetzung gestartet, den Vorgang jedoch mittendrin beendet und nicht abgeschlossen.<p>**Blockiert** – Das Konto des Benutzers wurde an der Kennwortzurücksetzung gehindert, weil die Seite zur Kennwortzurücksetzung oder eine einzige Überprüfungsmethode zur Kennwortzurücksetzung in einem Zeitraum von 24 Stunden zu häufig verwendet wurde.<p>**Abgebrochen** – Der Benutzer hat die Kennwortzurücksetzung gestartet, aber dann auf die Schaltfläche „Abbrechen“ geklickt, um die Sitzung mittendrin abzubrechen. <p>**Administrator kontaktiert** – Beim Benutzer ist während der Sitzung ein Problem aufgetreten, das er nicht auflösen konnte. Daher hat der Benutzer auf den Link Wenden Sie sich an Ihren Administrator geklickt, statt die Kennwortzurücksetzung abzuschließen.<p>**Fehler** – Der Benutzer konnte ein Kennwort nicht zurücksetzen, wahrscheinlich weil der Benutzer nicht für die Verwendung dieses Features konfiguriert wurde (z.B. keine Lizenz, fehlende Informationen für die Authentifizierung, Kennwort lokal verwaltet ohne Aktivierung der Rückschreibungsfunktion).<p>**Erfolgreich** – Die Kennwortzurücksetzung war erfolgreich. |
 | Details |Beachten Sie die folgende Tabelle. |
 
-### Zulässige Werte für die Spalte "Details"
+### <a name="allowed-values-for-details-column"></a>Zulässige Werte für die Spalte "Details"
 Nachfolgend finden Sie die Liste der Ergebnistypen, die Sie im Bericht zur Aktivität "Zurücksetzen des Kennworts" erwarten können:
 
 | Details | Ergebnistyp |
@@ -155,10 +159,10 @@ Nachfolgend finden Sie die Liste der Ergebnistypen, die Sie im Bericht zur Aktiv
 | Die Kennwortzurücksetzung wurde für diesen Mandanten vollständig deaktiviert. [Hier](http://aka.ms/ssprtroubleshoot) finden Sie Informationen zur Lösung des Problems. |Fehler |
 | Benutzer hat das Kennwort erfolgreich zurückgesetzt. |Succeeded |
 
-## Links zu Informationen zur Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+## <a name="links-to-password-reset-documentation"></a>Links zu Informationen zur Kennwortzurücksetzung
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
@@ -171,4 +175,8 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

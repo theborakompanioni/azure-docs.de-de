@@ -1,12 +1,12 @@
 ---
-title: Erweiterte Berichtserstellungsoptionen für das Android-SDK für Azure Mobile Engagement
-description: Hier wird beschrieben, wie Sie mit der erweiterten Berichterstellung Analysedaten für das Android-SDK für Azure Mobile Engagement erfassen.
+title: "Erweiterte Berichtserstellungsoptionen für das Android-SDK für Azure Mobile Engagement"
+description: "Hier wird beschrieben, wie Sie mit der erweiterten Berichterstellung Analysedaten für das Android-SDK für Azure Mobile Engagement erfassen."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7da7abd5-19d6-4892-94d8-818e5424b2cd
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,9 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2a1445afa2c2fca1a31ad9c012b9c8a917ebf65c
+
 
 ---
-# Erweiterte Berichterstellung mit Engagement unter Android
+# <a name="advanced-reporting-with-engagement-on-android"></a>Erweiterte Berichterstellung mit Engagement unter Android
 > [!div class="op_single_selector"]
 > * [Universal Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -25,14 +29,14 @@ ms.author: piyushjo;ricksal
 > 
 > 
 
-Dieses Thema beschreibt zusätzliche Berichterstellungsszenarien in Ihrer Android-Anwendung. Sie können diese Optionen auf die App anwenden, die im [Erste Schritte](mobile-engagement-android-get-started.md)-Tutorial erstellt wird.
+Dieses Thema beschreibt zusätzliche Berichterstellungsszenarien in Ihrer Android-Anwendung. Sie können diese Optionen auf die App anwenden, die im [Erste Schritte](mobile-engagement-android-get-started.md) -Tutorial erstellt wird.
 
-## Voraussetzungen
-[!INCLUDE [Voraussetzungen](../../includes/mobile-engagement-android-prereqs.md)]
+## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
 
 Das Tutorial, das Sie abgeschlossen haben, war absichtlich direkt und einfach gehalten, aber Sie können aus einer Reihe von erweiterten Optionen auswählen.
 
-## Ändern Ihrer `Activity`-Klassen
+## <a name="modifying-your-activity-classes"></a>Ändern Ihrer `Activity` -Klassen
 Im Tutorial [Erste Schritte](mobile-engagement-android-get-started.md) mussten Sie lediglich dafür sorgen, dass die `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen erben. Wenn z.B. Ihre Legacyaktivität `ListActivity` erweiterte, war die Erweiterung von `EngagementListActivity` erforderlich.
 
 > [!IMPORTANT]
@@ -40,9 +44,9 @@ Im Tutorial [Erste Schritte](mobile-engagement-android-get-started.md) mussten S
 > 
 > 
 
-Sie finden diese Klassen im Ordner `src`, und Sie können sie in Ihr Projekt kopieren. Die Klassen befinden sich auch in **JavaDoc**.
+Sie finden diese Klassen im Ordner `src` , und Sie können sie in Ihr Projekt kopieren. Die Klassen befinden sich auch in **JavaDoc**.
 
-## Alternative Methode: `startActivity()` und `endActivity()` manuell aufrufen.
+## <a name="alternate-method-call-startactivity-and-endactivity-manually"></a>Alternative Methode: `startActivity()` und `endActivity()` manuell aufrufen.
 Wenn Sie die `Activity`-Klassen nicht überladen können oder möchten, können Sie die Aktivitäten stattdessen durch direktes Aufrufen der Methoden von `EngagementAgent` starten und beenden.
 
 > [!IMPORTANT]
@@ -72,8 +76,8 @@ Beispiel:
 
 Dieses Beispiel ähnelt der `EngagementActivity`-Klasse und ihren Varianten, deren Quellcode im Ordner `src` bereitgestellt wird.
 
-## Verwenden von "Application.onCreate()"
-Sämtlicher in `Application.onCreate()` und in anderen Anwendungsrückruffunktionen hinzugefügter Code wird für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben, z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess oder doppelte Übertragungsempfänger oder -dienste.
+## <a name="using-applicationoncreate"></a>Verwenden von "Application.onCreate()"
+Sämtlicher in `Application.onCreate()` und in anderen Anwendungsrückruffunktionen hinzugefügter Code wird für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben, z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess oder doppelte Übertragungsempfänger oder -dienste.
 
 Wenn Sie `Application.onCreate()` außer Kraft setzen, sollten Sie den folgenden Codeausschnitt am Anfang der `Application.onCreate()`-Funktion hinzufügen:
 
@@ -89,12 +93,12 @@ Sie können die gleichen Schritte für `Application.onTerminate()`, `Application
 
 Sie können auch `EngagementApplication` anstelle von `Application` erweitern: Die Rückruffunktion `Application.onCreate()` übernimmt die Prozessprüfung und ruft `Application.onApplicationProcessCreate()` nur auf, wenn es sich bei dem aktuellen Prozess nicht um den Prozess handelt, der den Engagement-Dienst hostet. Dieselben Regeln gelten für die anderen Rückruffunktionen.
 
-## Tags in der Datei "AndroidManifest.xml"
+## <a name="tags-in-the-androidmanifestxml-file"></a>Tags in der Datei "AndroidManifest.xml"
 Das `android:label`-Attribut ermöglicht Ihnen, im Diensttag der Datei AndroidManifest.xml den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Sie sollten dieses Attribut auf `"<Your application name>Service"` festlegen (z.B. `"AcmeFunGameService"`).
 
 Durch die Angabe des Attributs `android:process` wird sichergestellt, dass der Engagement-Dienst im eigenen Prozess ausgeführt wird (durch Ausführen von Engagement im gleichen Prozess wie die Anwendung wird der Thread „main/UI“ potenziell weniger reaktionsfähig).
 
-## Erstellen mit ProGuard
+## <a name="building-with-proguard"></a>Erstellen mit ProGuard
 Wenn Sie das Anwendungspaket mithilfe von ProGuard erstellen, müssen Sie einige Klassen behalten. Sie können den folgenden Codeausschnitt der Konfiguration verwenden:
 
     -keep public class * extends android.os.IInterface
@@ -102,4 +106,8 @@ Wenn Sie das Anwendungspaket mithilfe von ProGuard erstellen, müssen Sie einige
     <methods>;
      }
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

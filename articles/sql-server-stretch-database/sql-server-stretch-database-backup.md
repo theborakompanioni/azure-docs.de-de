@@ -1,52 +1,56 @@
 ---
-title: Sichern von Stretch-fähigen Datenbanken | Microsoft Docs
-description: Erfahren Sie mehr über das Sichern von Stretch-fähigen Datenbanken.
+title: "Sichern von Stretch-fähigen Datenbanken | Microsoft Docs"
+description: "Erfahren Sie mehr über das Sichern von Stretch\\-fähigen Datenbanken."
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: douglaslMS
-manager: ''
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: a196f858-ef8f-47b5-b9db-bb7db98d48bd
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2016
+ms.date: 10/14/2016
 ms.author: douglasl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 68aeee33dbbba67e2a24300db62bf6bcdc627ea5
+
 
 ---
-# Sichern von Stretch-fähigen Datenbanken
-Mit Sicherungskopien von Datenbanken können Sie Ihre Daten nach vielen Arten von Ausfällen, Fehlern und Notfällen wiederherstellen.
+# <a name="backup-stretch-enabled-databases"></a>Sichern von Stretch-fähigen Datenbanken
+Mit Sicherungskopien von Datenbanken können Sie Ihre Daten nach vielen Arten von Ausfällen, Fehlern und Notfällen wiederherstellen.  
 
-* Sie müssen die Stretch-fähigen SQL Server-Datenbanken sichern.  
-* Microsoft Azure sichert automatisch die Remotedaten, die von der Stretch-Datenbank von SQL Server zu Azure migriert werden.
+* Daher müssen Sie die Stretch\-fähigen SQL Server-Datenbanken sichern.  
+* Microsoft Azure sichert automatisch die Remotedaten, die von der Stretch-Datenbank von SQL Server zu Azure migriert werden.  
 
 > [!NOTE]
 > Die Datensicherung ist nur ein Teil einer vollständigen Lösung für hohe Verfügbarkeit und Geschäftskontinuität. Weitere Informationen zu hoher Verfügbarkeit finden Sie unter [Lösungen für hohe Verfügbarkeit](https://msdn.microsoft.com/library/ms190202.aspx).
 > 
 > 
 
-## Sichern von SQL Server-Daten
-Zum Sichern und Wiederherstellen von Stretch-fähigen SQL Server-Datenbanken können Sie weiterhin die bereits verwendeten SQL Server-Sicherungsmethoden nutzen. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx).
+## <a name="back-up-your-sql-server-data"></a>Sichern von SQL Server-Daten
+Zum Sichern und Wiederherstellen von Stretch\-fähigen SQL Server-Datenbanken können Sie weiterhin die bereits verwendeten SQL Server-Sicherungsmethoden nutzen. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx).
 
-Sicherungen einer Stretch-fähigen SQL Server-Datenbank enthalten nur die lokalen Daten sowie Daten, die zum Zeitpunkt der Sicherung für die Migration relevant sind. (Bei relevanten Daten handelt es sich um Daten, die noch nicht migriert wurden, für die jedoch basierend auf den Migrationseinstellungen in den Tabellen eine Migration nach Azure geplant ist.) Dies wird als **flache** Sicherung bezeichnet, in der nicht die Daten enthalten sind, die bereits zu Azure migriert wurden.
+Sicherungen einer Stretch-fähigen SQL Server-Datenbank enthalten nur die lokalen Daten sowie Daten, die zum Zeitpunkt der Sicherung für die Migration relevant sind. \(Bei relevanten Daten handelt es sich um Daten, die noch nicht migriert wurden, für die jedoch basierend auf den Migrationseinstellungen in den Tabellen eine Migration nach Azure geplant ist.\) Dies wird als **flaches** Backup bezeichnet und enthält nicht die Daten, die bereits zu Azure migriert wurden.  
 
-## Sichern der Azure-Remotedaten
-Microsoft Azure sichert automatisch die Remotedaten, die von der Stretch-Datenbank von SQL Server zu Azure migriert werden.
+## <a name="back-up-your-remote-azure-data"></a>Sichern der Azure-Remotedaten
+Microsoft Azure sichert automatisch die Remotedaten, die von der Stretch-Datenbank von SQL Server zu Azure migriert werden.  
 
-### Mit automatischer Datensicherung reduziert Azure das Datenverlustrisiko
-Der Azure-Dienst SQL Server Stretch-Datenbank schützt Ihre Remotedatenbanken mindestens alle 8 Stunden durch automatische Speichermomentaufnahmen. Jede Momentaufnahme wird 7 Tage lang beibehalten, um Ihnen eine Reihe von möglichen Wiederherstellungspunkten zu bieten.
+### <a name="azure-reduces-the-risk-of-data-loss-with-automatic-backup"></a>Mit automatischer Datensicherung reduziert Azure das Datenverlustrisiko
+Der Azure-Dienst SQL Server Stretch-Datenbank schützt Ihre Remotedatenbanken mindestens alle 8 Stunden durch automatische Speichermomentaufnahmen. Jede Momentaufnahme wird 7 Tage lang beibehalten, um Ihnen eine Reihe von möglichen Wiederherstellungspunkten zu bieten.  
 
-### Mit Georedundanz reduziert Azure das Datenverlustrisiko
-Azure-Datenbanksicherungen werden in georedundantem Azure Storage (RA-GRS) gespeichert und sind daher standardmäßig georedundant. Georedundanter Speicher repliziert Ihre Daten in eine sekundäre Region, die Hunderte von Kilometern von der primären Region entfernt ist. In primären und sekundären Regionen werden Ihre Daten jeweils dreimal in separaten Fehler- und Upgradedomänen repliziert. Dadurch wird sichergestellt, dass Ihre Daten selbst bei vollständigen regionalen Ausfällen oder bei Notfällen, in denen eine Azure-Region nicht zur Verfügung steht, erhalten bleiben.
+### <a name="azure-reduces-the-risk-of-data-loss-with-geo-redundancy"></a>Mit Georedundanz reduziert Azure das Datenverlustrisiko
+Azure-Datenbanksicherungen werden in georedundantem Azure Storage (RA\-GRS) gespeichert und sind daher standardmäßig georedundant. Georedundanter Speicher repliziert Ihre Daten in eine sekundäre Region, die Hunderte von Kilometern von der primären Region entfernt ist. In primären und sekundären Regionen werden Ihre Daten jeweils dreimal in separaten Fehler- und Upgradedomänen repliziert. Dadurch wird sichergestellt, dass Ihre Daten selbst bei vollständigen regionalen Ausfällen oder bei Notfällen, in denen eine Azure-Region nicht zur Verfügung steht, erhalten bleiben.
 
-### <a name="stretchRPO"></a>Die Stretch-Datenbank reduziert das Verlustrisiko für Ihre Azure-Daten, indem migrierte Zeilen vorübergehend beibehalten werden
+### <a name="a-namestretchrpoastretch-database-reduces-the-risk-of-data-loss-for-your-azure-data-by-retaining-migrated-rows-temporarily"></a><a name="stretchRPO"></a>Die Stretch-Datenbank reduziert das Verlustrisiko für Ihre Azure-Daten, indem migrierte Zeilen vorübergehend beibehalten werden
 Nachdem die Stretch-Datenbank relevante Zeilen aus SQL Server nach Azure migriert hat, behält sie diese Zeilen mindestens 8 Stunden lang in der Stagingtabelle bei. Wenn Sie eine Sicherungskopie Ihrer Azure-Datenbank wiederherstellen, verwendet die Stretch-Datenbank die in der Stagingtabelle gespeicherten Zeilen, um die SQL Server- und die Azure-Datenbanken abzustimmen.
 
-Nach der Wiederherstellung einer Sicherung Ihrer Azure-Daten müssen Sie die gespeicherte Prozedur [sys.sp\_rda\_reauthorize\_db](https://msdn.microsoft.com/library/mt131016.aspx) ausführen, um die Verbindung zwischen der Stretch-fähigen SQL Server-Datenbank und der Azure-Remotedatenbank wiederherzustellen. Wenn Sie **sys.sp\_rda\_reauthorize\_db** ausführen, stimmt die Stretch-Datenbank automatisch die SQL Server- und die Azure-Datenbanken ab.
+Nach der Wiederherstellung einer Sicherung Ihrer Azure\-Daten müssen Sie die gespeicherte Prozedur [sys.sp_rda_reauthorize_db](https://msdn.microsoft.com/library/mt131016.aspx) ausführen, um die Verbindung zwischen der Stretch-fähigen SQL Server-Datenbank und der Azure-Remotedatenbank wiederherzustellen. Wenn Sie **sys.sp_rda_reauthorize_db** ausführen, stimmt die Stretch-Datenbank automatisch die SQL Server- und die Azure-Datenbanken ab.
 
-Um die Anzahl von Stunden zu erhöhen, für die migrierte Daten von der Stretch-Datenbank vorübergehend in der Stagingtabelle beibehalten werden, führen Sie die gespeicherte Prozedur [sys.sp\_rda\_set\_rpo\_duration](https://msdn.microsoft.com/library/mt707766.aspx) aus, und geben Sie eine Stundenanzahl von über 8 an. Um zu entscheiden, wie viele Daten beibehalten werden sollen, müssen Sie folgende Faktoren berücksichtigen:
+Um die Anzahl von Stunden zu erhöhen, für die migrierte Daten von der Stretch-Datenbank vorübergehend in der Stagingtabelle beibehalten werden, führen Sie die gespeicherte Prozedur [sys.sp_rda_set_rpo_duration](https://msdn.microsoft.com/library/mt707766.aspx) aus, und geben Sie eine Stundenanzahl von über 8 an. Um zu entscheiden, wie viele Daten beibehalten werden sollen, müssen Sie folgende Faktoren berücksichtigen:
 
 * Die Häufigkeit der automatischen Azure-Sicherungen (mindestens alle 8 Stunden).
 * Die erforderliche Zeit, um ein Problem nach seinem Auftreten zu erkennen und zu entscheiden, ob eine Sicherungskopie wiederhergestellt werden soll.
@@ -57,13 +61,18 @@ Um die Anzahl von Stunden zu erhöhen, für die migrierte Daten von der Stretch-
 > 
 > 
 
-Um die Anzahl von Stunden zu überprüfen, für die die Daten von der Stretch-Datenbank vorübergehend in der Stagingtabelle beibehalten werden, führen Sie die gespeicherte Prozedur [sys.sp\_rda\_get\_rpo\_duration](https://msdn.microsoft.com/library/mt707767.aspx) aus.  
+Um die Anzahl von Stunden zu überprüfen, für die Daten von der Stretch-Datenbank vorübergehend in der Stagingtabelle beibehalten werden, führen Sie die gespeicherte Prozedur [sys.sp_rda_get_rpo_duration](https://msdn.microsoft.com/library/mt707767.aspx) aus.
 
-## Weitere Informationen
-[Verwalten von Stretch Database und Behandeln von Problemen ](sql-server-stretch-database-manage.md)
+## <a name="see-also"></a>Weitere Informationen
+[Verwalten von Stretch-Datenbank und Behandeln von Problemen](sql-server-stretch-database-manage.md)
 
-[Sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx)
+[sys.sp_rda_reauthorize_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx)
 
 [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

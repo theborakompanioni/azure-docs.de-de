@@ -1,13 +1,13 @@
 ---
 title: OneDrive for Business | Microsoft Docs
-description: Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit OneDrive for Business her und verwalten Sie dort Ihre Dateien. Sie mit den Dateien verschiedene Aktionen ausführen, z.B. Hochladen, Aktualisieren, Abrufen und Löschen.
+description: "Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit OneDrive for Business her und verwalten Sie dort Ihre Dateien. Sie mit den Dateien verschiedene Aktionen ausführen, z.B. Hochladen, Aktualisieren, Abrufen und Löschen."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: cf9484e9-7a20-4de0-93c8-0fa132221f2b
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
@@ -15,24 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5d8ce7baafbc722af58e9f3dae49777170de0ba6
+
 
 ---
-# Erste Schritte mit dem OneDrive for Business-Connector
+# <a name="get-started-with-the-onedrive-for-business-connector"></a>Erste Schritte mit dem OneDrive for Business-Connector
 Stellen Sie eine Verbindung mit OneDrive for Business her und verwalten Sie dort Ihre Dateien. Sie mit den Dateien verschiedene Aktionen ausführen, z.B. Hochladen, Aktualisieren, Abrufen und Löschen.
 
 > [!NOTE]
-> Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+> Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“.
 > 
 > 
 
 Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-## Trigger und Aktionen
+## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Der OneDrive for Business-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
  Der OneDrive for Business-Connector verfügt über die folgenden Aktionen und/oder Trigger:
 
-### Aktionen für OneDrive for Business
+### <a name="onedrive-for-business-actions"></a>Aktionen für OneDrive for Business
 Sie können diese Aktionen ausführen:
 
 | Aktion | Beschreibung |
@@ -49,7 +53,7 @@ Sie können diese Aktionen ausführen:
 | [ListRootFolder](connectors-create-api-onedriveforbusiness.md#listrootfolder) |Listet die Dateien des Stammordners auf OneDrive for Business auf. |
 | [ExtractFolderV2](connectors-create-api-onedriveforbusiness.md#extractfolderv2) |Extrahiert einen Ordner zu OneDrive for Business. |
 
-### Trigger für OneDrive for Business
+### <a name="onedrive-for-business-triggers"></a>Trigger für OneDrive for Business
 Sie können auf diese Ereignisse lauschen:
 
 | Trigger | Beschreibung |
@@ -57,26 +61,26 @@ Sie können auf diese Ereignisse lauschen:
 | Wenn eine Datei erstellt wird |Löst einen Workflow aus, wenn in einem OneDrive for Business-Ordner eine neue Datei erstellt wird. |
 | Wenn eine Datei geändert wird |Löst einen Workflow aus, wenn in einem OneDrive for Business-Ordner eine Datei geändert wird. |
 
-## Herstellen einer Verbindung mit OneDrive for Business
+## <a name="create-a-connection-to-onedrive-for-business"></a>Herstellen einer Verbindung mit OneDrive for Business
 Um Logik-Apps mit OneDrive for Business zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
 
 | Eigenschaft | Erforderlich | Beschreibung |
 | --- | --- | --- |
-| Token |Ja |Angeben der Anmeldeinformationen für OneDrive for Business |
+| Tokenverschlüsselung |Ja |Angeben der Anmeldeinformationen für OneDrive for Business |
 
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
-> [!INCLUDE [Schritte zum Herstellen einer Verbindung mit OneDrive for Business](../../includes/connectors-create-api-onedriveforbusiness.md)]
+> [!INCLUDE [Steps to create a connection to OneDrive for Business](../../includes/connectors-create-api-onedriveforbusiness.md)]
 > 
 > [!TIP]
 > Sie können diese Verbindung in anderen Logik-Apps verwenden.
 > 
 > 
 
-## Referenz für OneDrive for Business
+## <a name="reference-for-onedrive-for-business"></a>Referenz für OneDrive for Business
 Gilt für Version 1.0.
 
-## GetFileMetadata
+## <a name="getfilemetadata"></a>GetFileMetadata
 Dateimetadaten anhand der ID abrufen: Ruft Metadaten einer Datei in OneDrive for Business anhand der ID ab.
 
 ```GET: /datasets/default/files/{id}```
@@ -85,13 +89,13 @@ Dateimetadaten anhand der ID abrufen: Ruft Metadaten einer Datei in OneDrive for
 | --- | --- | --- | --- | --- | --- |
 | id |string |Ja |path |(Keine) |Angeben der Datei |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## UpdateFile
+## <a name="updatefile"></a>UpdateFile
 Datei aktualisieren: Aktualisiert eine Datei auf OneDrive for Business.
 
 ```PUT: /datasets/default/files/{id}```
@@ -101,13 +105,13 @@ Datei aktualisieren: Aktualisiert eine Datei auf OneDrive for Business.
 | id |string |Ja |path |(Keine) |Angeben der zu aktualisierenden Datei |
 | body | |Ja |body |(Keine) |Inhalt der Datei, die in OneDrive for Business aktualisiert werden soll |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## DeleteFile
+## <a name="deletefile"></a>DeleteFile
 Datei löschen: Löscht eine Datei aus OneDrive for Business.
 
 ```DELETE: /datasets/default/files/{id}```
@@ -116,13 +120,13 @@ Datei löschen: Löscht eine Datei aus OneDrive for Business.
 | --- | --- | --- | --- | --- | --- |
 | id |string |Ja |path |(Keine) |Angeben der zu löschenden Datei |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## GetFileMetadataByPath
+## <a name="getfilemetadatabypath"></a>GetFileMetadataByPath
 Dateimetadaten anhand des Pfads abrufen: Ruft Metadaten einer Datei in OneDrive for Business anhand des Pfads ab.
 
 ```GET: /datasets/default/GetFileByPath```
@@ -131,13 +135,13 @@ Dateimetadaten anhand des Pfads abrufen: Ruft Metadaten einer Datei in OneDrive 
 | --- | --- | --- | --- | --- | --- |
 | path |string |Ja |query |(Keine) |Eindeutiger Pfad zur Datei in OneDrive for Business |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## GetFileContentByPath
+## <a name="getfilecontentbypath"></a>GetFileContentByPath
 Dateiinhalt anhand des Pfads abrufen: Ruft den Inhalt einer Datei in OneDrive for Business anhand des Pfads ab.
 
 ```GET: /datasets/default/GetFileContentByPath```
@@ -146,13 +150,13 @@ Dateiinhalt anhand des Pfads abrufen: Ruft den Inhalt einer Datei in OneDrive fo
 | --- | --- | --- | --- | --- | --- |
 | path |string |Ja |query |(Keine) |Eindeutiger Pfad zur Datei in OneDrive for Business |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## GetFileContent
+## <a name="getfilecontent"></a>GetFileContent
 Dateiinhalt anhand der ID abrufen: Ruft den Inhalt einer Datei in OneDrive for Business anhand der ID ab.
 
 ```GET: /datasets/default/files/{id}/content```
@@ -161,13 +165,13 @@ Dateiinhalt anhand der ID abrufen: Ruft den Inhalt einer Datei in OneDrive for B
 | --- | --- | --- | --- | --- | --- |
 | id |string |Ja |path |(Keine) |Angeben der Datei |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CreateFile
+## <a name="createfile"></a>CreateFile
 Datei erstellen: Lädt eine Datei auf OneDrive for Business hoch.
 
 ```POST: /datasets/default/files```
@@ -178,30 +182,30 @@ Datei erstellen: Lädt eine Datei auf OneDrive for Business hoch.
 | Name |string |Ja |query |(Keine) |Name der Datei, die in OneDrive for Business erstellt werden soll |
 | body | |Ja |body |(Keine) |Inhalt der Datei, die in OneDrive for Business hochgeladen werden soll |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## CopyFile
+## <a name="copyfile"></a>CopyFile
 Datei kopieren: Kopiert eine Datei auf OneDrive for Business.
 
 ```POST: /datasets/default/copyFile```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| source |string |Ja |query |(Keine) |URL zur Quelldatei |
-| destination |string |Ja |query |(Keine) |Zieldateipfad in OneDrive for Business, einschließlich Zieldateiname |
+| Quelle |string |Ja |query |(Keine) |URL zur Quelldatei |
+| Ziel |string |Ja |query |(Keine) |Zieldateipfad in OneDrive for Business, einschließlich Zieldateiname |
 | overwrite |Boolescher Wert |no |query |false |Überschreibt die Zieldatei, falls auf „True“ festgelegt |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## OnNewFile
+## <a name="onnewfile"></a>OnNewFile
 Wenn eine Datei erstellt wird: Löst einen Workflow aus, wenn in einem OneDrive for Business-Ordner eine neue Datei erstellt wird.
 
 ```GET: /datasets/default/triggers/onnewfile```
@@ -210,13 +214,13 @@ Wenn eine Datei erstellt wird: Löst einen Workflow aus, wenn in einem OneDrive 
 | --- | --- | --- | --- | --- | --- |
 | folderId |string |Ja |query |(Keine) |Angeben eines Ordners |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## OnUpdatedFile
+## <a name="onupdatedfile"></a>OnUpdatedFile
 Wenn eine Datei geändert wird: Löst einen Workflow aus, wenn in einem OneDrive for Business-Ordner eine Datei geändert wird.
 
 ```GET: /datasets/default/triggers/onupdatedfile```
@@ -225,13 +229,13 @@ Wenn eine Datei geändert wird: Löst einen Workflow aus, wenn in einem OneDrive
 | --- | --- | --- | --- | --- | --- |
 | folderId |string |Ja |query |(Keine) |Angeben eines Ordners |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ListFolder
+## <a name="listfolder"></a>ListFolder
 Dateien in einem Ordner auflisten: Listet die Dateien eines Ordners auf OneDrive for Business auf.
 
 ```GET: /datasets/default/folders/{id}```
@@ -240,69 +244,69 @@ Dateien in einem Ordner auflisten: Listet die Dateien eines Ordners auf OneDrive
 | --- | --- | --- | --- | --- | --- |
 | id |string |Ja |path |(Keine) |Angeben des Ordners |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ListRootFolder
+## <a name="listrootfolder"></a>ListRootFolder
 Stammordner auflisten: Listet die Dateien des Stammordners auf OneDrive for Business auf.
 
 ```GET: /datasets/default/folders```
 
 Es gibt keine Parameter für diesen Aufruf
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## ExtractFolderV2
+## <a name="extractfolderv2"></a>ExtractFolderV2
 Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 
 ```POST: /datasets/default/extractFolderV2```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| source |string |Ja |query |(Keine) |Pfad zur Archivdatei |
-| destination |string |Ja |query |(Keine) |Pfad in OneDrive for Business, in den der Archivinhalt extrahiert wird |
+| Quelle |string |Ja |query |(Keine) |Pfad zur Archivdatei |
+| Ziel |string |Ja |query |(Keine) |Pfad in OneDrive for Business, in den der Archivinhalt extrahiert wird |
 | overwrite |Boolescher Wert |no |query |false |Überschreibt die Zieldateien, falls auf „True“ festgelegt |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## Objektdefinitionen
-### DataSetsMetadata
+## <a name="object-definitions"></a>Objektdefinitionen
+### <a name="datasetsmetadata"></a>DataSetsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | tabular |nicht definiert |Nein |
 | Blob |nicht definiert |Nein |
 
-### TabularDataSetsMetadata
+### <a name="tabulardatasetsmetadata"></a>TabularDataSetsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| source |string |Nein |
+| Quelle |string |Nein |
 | displayName |string |Nein |
 | urlEncoding |string |Nein |
 | tableDisplayName |string |Nein |
 | tablePluralName |string |Nein |
 
-### BlobDataSetsMetadata
+### <a name="blobdatasetsmetadata"></a>BlobDataSetsMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| source |string |Nein |
+| Quelle |string |Nein |
 | displayName |string |Nein |
 | urlEncoding |string |Nein |
 
-### BlobMetadata
+### <a name="blobmetadata"></a>BlobMetadata
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| ID |string |Nein |
+| id |string |Nein |
 | Name |string |Nein |
 | DisplayName |string |Nein |
 | Pfad |string |Nein |
@@ -313,12 +317,13 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 | ETag |string |Nein |
 | FileLocator |string |Nein |
 
-### Objekt
-| Eigenschaftenname | Datentyp | Erforderlich |
-| --- | --- | --- |
-|  | | |
-
-## Nächste Schritte
+### <a name="object"></a>Objekt
+## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

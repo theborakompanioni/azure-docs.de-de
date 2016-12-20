@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 08/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b6b6b19d82bfcf77dc72bae8926b8f696bfd9c0c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cdbf4b164af4a8077b8f9a166d6c4ad752b25ff4
 
 
 ---
-# <a name="deploying-the-user-portal-for-the-azure-multifactor-authentication-server"></a>Bereitstellen des Benutzerportals für den Azure Multi-Factor Authentication-Server
+# <a name="deploying-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>Bereitstellen des Benutzerportals für den Azure Multi-Factor Authentication-Server
 Im Benutzerportal kann der Administrator das Azure Multi-Factor Authentication-Benutzerportal installieren und konfigurieren. Das Benutzerportal ist eine IIS-Website, die es Benutzern ermöglicht, sich für Azure Multi-Factor Authentication zu registrieren und ihre Konten zu verwalten. Die Benutzer können ihre Telefonnummer oder PIN ändern oder bei der nächsten Anmeldung Azure Multi-Factor Authentication umgehen.
 
 Die Benutzer melden sich mit ihrem normalen Benutzernamen und Kennwort beim Benutzerportal an und rufen entweder Azure Multi-Factor Authentication auf oder beantworten Sicherheitsfragen, um die Authentifizierung abzuschließen. Wenn die Benutzerregistrierung zulässig ist, konfiguriert der Benutzer seine Telefonnummer und PIN, wenn er sich zum ersten Mal beim Benutzerportal anmeldet.
@@ -29,13 +29,13 @@ Es können Benutzerportaladministratoren eingerichtet werden, und ihnen kann die
 
 <center>![Einrichtung](./media/multi-factor-authentication-get-started-portal/install.png)</center>
 
-## <a name="deploying-the-user-portal-on-the-same-server-as-the-azure-multifactor-authentication-server"></a>Bereitstellen des Benutzerportals auf demselben Server wie der Azure Multi-Factor Authentication-Server
+## <a name="deploying-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>Bereitstellen des Benutzerportals auf demselben Server wie der Azure Multi-Factor Authentication-Server
 Die folgenden Voraussetzungen müssen erfüllt sein, um das Benutzerportal auf demselben Server wie der Azure Multi-Factor Authentication-Server zu installieren:
 
 * IIS, einschließlich ASP.NET und IIS 6-Metabasiskompatibilität (für IIS 7 oder höher), muss installiert sein.
 * Der angemeldete Benutzer muss über Administratorrechte für den Computer und ggf. die Domäne verfügen.  Der Grund dafür ist, dass das Konto Berechtigungen zum Erstellen von Active Directory-Sicherheitsgruppen benötigt.
 
-### <a name="to-deploy-the-user-portal-for-the-azure-multifactor-authentication-server"></a>So stellen Sie das Benutzerportal für den Azure Multi-Factor Authentication-Server bereit
+### <a name="to-deploy-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>So stellen Sie das Benutzerportal für den Azure Multi-Factor Authentication-Server bereit
 1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol für das Benutzerportal und dann auf die Schaltfläche „Benutzerportal installieren“.
 2. Klicken Sie auf Weiter.
 3. Klicken Sie auf Weiter.
@@ -47,7 +47,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Benutzerportal auf d
 
 <center>![Einrichtung](./media/multi-factor-authentication-get-started-portal/portal.png)</center>
 
-## <a name="deploying-the-azure-multifactor-authentication-server-user-portal-on-a-separate-server"></a>Bereitstellen des Azure Multi-Factor Authentication-Server-Benutzerportals auf einem anderen Server
+## <a name="deploying-the-azure-multi-factor-authentication-server-user-portal-on-a-separate-server"></a>Bereitstellen des Azure Multi-Factor Authentication-Server-Benutzerportals auf einem anderen Server
 Um die Azure Multi-Factor Authentication-App zu verwenden, müssen folgende Voraussetzungen erfüllt sein, damit die App erfolgreich mit dem Benutzerportal kommunizieren kann:
 
 Informationen zu den Hardware- und Softwareanforderungen finden Sie unter "Hardware- und Softwareanforderungen":
@@ -89,7 +89,7 @@ Beachten Sie folgende Punkte, bevor Sie das Benutzerportal auf einem anderen Ser
 7. Wenn die Website, unter der das Benutzerportal installiert wurde (z. B. die Standardwebsite), noch nicht mit einem öffentlich signierten Zertifikat gebunden wurde, installieren Sie das Zertifikat auf dem Server, falls es nicht bereits installiert wurde. Öffnen Sie dann den IIS-Manager, und binden Sie das Zertifikat an die Website.
 8. Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der das Benutzerportal installiert wurde (z. B. "https://www.publicwebsite.com/MultiFactorAuth"). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.
 
-## <a name="configure-the-user-portal-settings-in-the-azure-multifactor-authentication-server"></a>Konfigurieren der Benutzerportal-Einstellungen im Azure Multi-Factor Authentication-Server
+## <a name="configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurieren der Benutzerportal-Einstellungen im Azure Multi-Factor Authentication-Server
 Nachdem das Portal installiert wurde, müssen Sie den Azure Multi-Factor Authentication-Server für die Verwendung des Portals konfigurieren.
 
 Der Azure Multi-Factor Authentication-Server stellt mehrere Optionen für das Benutzerportal bereit.  Die folgende Tabelle enthält eine Liste dieser Optionen sowie eine Erläuterung zu deren Verwendung.
@@ -113,7 +113,7 @@ Die meisten dieser Einstellungen sind für den Benutzer sichtbar, sobald sie akt
 
 ![Benutzerportal – Einstellungen](./media/multi-factor-authentication-get-started-portal/portalsettings.png)
 
-### <a name="to-configure-the-user-portal-settings-in-the-azure-multifactor-authentication-server"></a>So konfigurieren Sie die Benutzerportal-Einstellungen im Azure Multi-Factor Authentication-Server
+### <a name="to-configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>So konfigurieren Sie die Benutzerportal-Einstellungen im Azure Multi-Factor Authentication-Server
 1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server auf das Symbol "Benutzerportal". Geben Sie auf der Registerkarte "Einstellungen" im Textfeld "Benutzerportal-URL" die URL des Benutzerportals ein. Sofern die E-Mail-Funktion aktiviert wurde, wird diese URL in E-Mails eingefügt, die an Benutzer gesendet werden, wenn sie in den Azure Multi-Factor Authentication-Server importiert werden.
 2. Wählen Sie die Einstellungen aus, die Sie im Benutzerportal verwenden möchten. Wenn beispielsweise Benutzer ihre Authentifizierungsmethoden steuern dürfen, stellen Sie sicher, dass "Methodenauswahl durch Benutzer zulassen" zusammen mit den zur Auswahl stehenden Methoden aktiviert ist.
 3. Klicken Sie auf den Link "Hilfe" in der rechten oberen Ecke, um Erläuterungen zu den angezeigten Einstellungen zu erhalten.
@@ -142,7 +142,7 @@ Auf dieser Registerkarte können Sie einzelne IP-Adressen oder IP-Adressbereiche
 
 ![Vertrauenswürdige IPs des Benutzerportals](./media/multi-factor-authentication-get-started-portal/trusted.png)
 
-## <a name="selfservice-user-enrollment"></a>Self-Service-Benutzerregistrierung
+## <a name="self-service-user-enrollment"></a>Self-Service-Benutzerregistrierung
 Wenn Sie möchten, dass Ihre Benutzer sich anmelden und registrieren, müssen Sie die Optionen „Benutzeranmeldung zulassen“ und „Benutzerregistrierung zulassen“ auswählen. Denken Sie daran, dass die ausgewählten Einstellungen die Benutzeranmeldung beeinflussen.
 
 Wenn sich ein Benutzer z. B. beim Benutzerportal meldet und auf die Schaltfläche „Anmelden“ klickt, wird er auf die Seite zur Benutzereinrichtung von Azure Multi-Factor Authentication geleitet.  Je nachdem, wie Sie Azure Multi-Factor Authentication konfiguriert haben, kann der Benutzer seine Authentifizierungsmethode auswählen.  
@@ -177,6 +177,6 @@ Die Selbstregistrierung des Benutzers ist jetzt abgeschlossen, und der Benutzer 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

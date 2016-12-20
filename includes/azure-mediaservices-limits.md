@@ -12,11 +12,11 @@
 | Programme im ausgeführten Zustand pro Kanal  </p></td> |3</p></td> |3 |
 | Streamingendpunkte im ausgeführten Zustand pro AMS-Konto</p></td> |2</p></td> |–<sup>1</sup> |
 | Streamingeinheiten pro Streamingendpunkt  </p></td> |10 </p></td> |–<sup>1</sup> |
-| Codierungseinheiten pro AMS-Konto  </p></td> |25</p></td> |–<sup>1</sup> |
+| Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto </p></td> |25 (S1, S2)<br/>10 (S3)</p></td> |–<sup>1</sup> |
 | Speicherkonten | |1.000<sup>5</sup> |
 | Richtlinien | |1,000,000<sup>6</sup> |
-
-<sup>1</sup> Sie können die Aktualisierung der Grenzwerte für dieses Kontingent anfordern, indem Sie ein Supportticket öffnen. Erstellen Sie keine weiteren AMS-Konten, um die Grenzwerte zu erhöhen, sondern senden Sie stattdessen ein Supportticket.
+ 
+<sup>1</sup> Sie können die Aktualisierung der Grenzwerte für dieses Kontingent anfordern, indem Sie ein Supportticket öffnen. Erstellen Sie keine weiteren AMS-Konten, um die Grenzwerte zu erhöhen, sondern senden Sie stattdessen ein Supportticket. Beachten Sie außerdem, dass S3 RUs nicht in „Indien, West“ und „Brasilien, Süden“ verfügbar sind.
 
 <sup>2</sup> Diese Zahl umfasst fertig gestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. Sie können die alten Aufträge mithilfe von **IJob.Delete** oder der HTTP **DELETE**-Anforderung löschen.
 
@@ -26,10 +26,13 @@
 
 <sup>5</sup> Die Speicherkonten müssen aus demselben Azure-Abonnement stammen.
 
-<sup>6</sup> Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden.
+<sup>6</sup> Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). 
+
+>[!NOTE]
+>Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

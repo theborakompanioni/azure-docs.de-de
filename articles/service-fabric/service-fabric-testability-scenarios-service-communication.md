@@ -1,12 +1,12 @@
 ---
-title: 'Testability: Dienstkommunikation | Microsoft Docs'
+title: "Prüfbarkeit: Dienstkommunikation | Microsoft Docs"
 description: Die Kommunikation von Dienst zu Dienst ist ein wichtiger Integrationspunkt einer Service Fabric-Anwendung. In diesem Artikel werden Entwurfsaspekte und Testverfahren beschrieben.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,22 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2016
 ms.author: vturecek
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6356b4e69892b90ff74aa9db0157930dc00f4a08
+
 
 ---
-# Service Fabric-Testability-Szenarien: Dienstkommunikation
+# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric-Testability-Szenarien: Dienstkommunikation
 Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.
 
 Die Kommunikation von Dienst zu Dienst ist ein entscheidender Integrationspunkt einer Anwendung, da von jedem Dienst eine Remote-API für andere Dienste verfügbar gemacht wird. Die Verwendung einer Gruppe von API-Grenzen mit E/A erfordert häufig besondere Sorgfalt und einen relativ hohen Test- und Überprüfungsaufwand.
 
 Es gibt viele Punkte, die beachtet werden müssen, wenn diese Dienstgrenzen in einem verteilten System miteinander verknüpft sind:
 
-* *Transportprotokoll*: Nutzen Sie HTTP, um für eine bessere Interoperabilität zu sorgen, oder ein benutzerdefiniertes binäres Protokoll, um einen maximalen Durchsatz zu erzielen?
-* *Fehlerbehandlung*: Wie werden dauerhafte und vorübergehende Fehler behandelt? Was geschieht, wenn ein Dienst auf einen anderen Knoten verschoben wird?
-* *Timeouts und Wartezeit*: Wie behandeln die einzelnen Dienstschichten in Anwendungen mit mehreren Ebenen die Wartezeit über den Stapel und zum Benutzer?
+* *Transportprotokoll*. Nutzen Sie HTTP, um für eine bessere Interoperabilität zu sorgen, oder ein benutzerdefiniertes binäres Protokoll, um einen maximalen Durchsatz zu erzielen?
+* *Fehlerbehandlung*. Wie werden dauerhafte und vorübergehende Fehler behandelt? Was geschieht, wenn ein Dienst auf einen anderen Knoten verschoben wird?
+* *Timeouts und Latenz*. Wie behandeln die einzelnen Dienstschichten in Anwendungen mit mehreren Ebenen die Wartezeit über den Stapel und zum Benutzer?
 
 Das Testen der Interaktion zwischen Ihren Diensten ist wichtig, um die Resilienz Ihrer Anwendung sicherzustellen. Dabei spielt es keine Rolle, ob Sie eine der integrierten Komponenten für die Dienstkommunikation von Service Fabric verwenden oder eine eigene Komponente erstellen.
 
-## Vorbereiten von Dienste auf das Verschieben
+## <a name="prepare-for-services-to-move"></a>Vorbereiten von Dienste auf das Verschieben
 Dienstinstanzen können im Laufe der Zeit verschoben werden. Dies gilt insbesondere, wenn sie mit Auslastungsmetriken für einen maßgeschneiderten optimalen Lastenausgleich für Ressourcen konfiguriert werden. Service Fabric verschiebt Ihre Dienstinstanzen zur Maximierung der Verfügbarkeit sogar während Upgrades, Failovers, horizontalem Hochskalieren und verschiedenen anderen Situationen, die während der Lebensdauer eines verteilten Systems eintreten.
 
 Wenn Dienste im Cluster verschoben werden, gibt es zwei Szenarien, auf deren Behandlung Ihre Clients und Dienste bei der Kommunikation mit einem Dienst vorbereitet sein sollten:
@@ -39,11 +43,11 @@ Wenn Dienste im Cluster verschoben werden, gibt es zwei Szenarien, auf deren Beh
 
 Die ordnungsgemäße Behandlung dieser Szenarien ist wichtig dafür, dass das System reibungslos ausgeführt werden kann. Bedenken Sie dazu Folgendes:
 
-* Jeder Dienst, mit dem eine Verbindung hergestellt werden kann, verfügt über eine *Adresse*, die er überwacht (z. B. HTTP oder WebSockets). Wenn eine Dienstinstanz oder Partition verschoben wird, ändert sich der dazugehörige Adressendpunkt. (Er wechselt zu einem anderen Knoten mit einer anderen IP-Adresse.) Wenn Sie die integrierten Kommunikationskomponenten verwenden, werden darüber die Dienstadressen neu für Sie aufgelöst.
+* Jeder Dienst, mit dem eine Verbindung hergestellt werden kann, verfügt über eine *Adresse*, an der er lauscht (z.B. HTTP oder WebSockets). Wenn eine Dienstinstanz oder Partition verschoben wird, ändert sich der dazugehörige Adressendpunkt. (Er wechselt zu einem anderen Knoten mit einer anderen IP-Adresse.) Wenn Sie die integrierten Kommunikationskomponenten verwenden, werden darüber die Dienstadressen neu für Sie aufgelöst.
 * Unter Umständen kann es zu einem vorübergehenden Anstieg der Dienstwartezeit kommen, während die Dienstinstanz ihren Listener neu startet. Dies hängt davon ab, wie schnell der Dienst den Listener öffnet, nachdem die Instanz verschoben wurde.
 * Alle vorhandenen Verbindungen müssen geschlossen und wieder geöffnet werden, nachdem der Dienst einen neuen Knoten öffnet. Beim ordnungsgemäßen Herunterfahren oder Neustart eines Knotens wird Zeit dafür veranschlagt, die für das ordnungsgemäße Herunterfahren vorhandener Verbindungen anfällt.
 
-### Testen: Verschieben von Dienstinstanzen
+### <a name="test-it-move-service-instances"></a>Testen: Verschieben von Dienstinstanzen
 Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Testen dieser Situationen auf unterschiedliche Weise erstellen.
 
 1. Verschieben Sie das primäre Replikat eines zustandsbehafteten Diensts.
@@ -67,12 +71,12 @@ Mit den Testability-Tools von Service Fabric können Sie ein Testszenario zum Te
    
     ```
 
-## Aufrechterhalten der Dienstverfügbarkeit
+## <a name="maintain-service-availability"></a>Aufrechterhalten der Dienstverfügbarkeit
 Service Fabric ist eine Plattform, mit der für Ihre Dienste eine hohe Verfügbarkeit erzielt werden soll. In Extremfällen können zugrunde liegende Infrastrukturprobleme trotzdem noch zum Ausfall der Verfügbarkeit führen. Es ist wichtig, auch für diese Szenarien Tests durchzuführen.
 
-Für zustandsbehaftete Dienste wird ein quorumbasiertes System zum Replizieren des Zustands mit dem Ziel einer hohen Verfügbarkeit verwendet. Dies bedeutet, dass ein Quorum von Replikaten verfügbar sein muss, um Schreibvorgänge ausführen zu können. In seltenen Fällen, z. B. bei einem umfangreicheren Hardwarefehler, ist unter Umständen kein Quorum von Replikaten verfügbar. Sie können dann keine Schreibvorgänge ausführen, während Lesevorgänge weiterhin möglich sind.
+Für zustandsbehaftete Dienste wird ein quorumbasiertes System zum Replizieren des Zustands mit dem Ziel einer hohen Verfügbarkeit verwendet. Dies bedeutet, dass ein Quorum von Replikaten verfügbar sein muss, um Schreibvorgänge ausführen zu können. In seltenen Fällen, z. B. bei einem umfangreicheren Hardwarefehler, ist unter Umständen kein Quorum von Replikaten verfügbar. Sie können dann keine Schreibvorgänge ausführen, während Lesevorgänge weiterhin möglich sind.
 
-### Testen: Nichtverfügbarkeit von Schreibvorgängen
+### <a name="test-it-write-operation-unavailability"></a>Testen: Nichtverfügbarkeit von Schreibvorgängen
 Mithilfe der Testability-Tools in Service Fabric können Sie als Test einen Fehler einfügen, der Quorumverlust ausgelöst. Ein solches Szenario ist zwar selten, aber es ist trotzdem ist es wichtig, dass Clients und Dienste, die von einem zustandsbehafteten Dienst abhängig sind, auf die Behandlung von Situationen vorbereitet sind, in denen keine Schreibanforderungen an den Dienst möglich sind. Außerdem ist es wichtig, dass der zustandsbehaftete Dienst selbst über diese Möglichkeit informiert ist und mit Aufrufern ordnungsgemäß kommunizieren kann.
 
 Mithilfe des PowerShell-Cmdlets **Invoke-ServiceFabricPartitionQuorumLoss** kann Quorumverlust ausgelöst werden:
@@ -83,11 +87,16 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-In diesem Beispiel wird `QuorumLossMode` auf `QuorumReplicas` festgelegt, um anzugeben, dass ein Quorumverlust ausgelöst werden soll, ohne alle Replikate herunterzufahren. Auf diese Weise sind Lesevorgänge weiterhin möglich. Um ein Szenario zu testen, in dem eine gesamte Partition nicht verfügbar ist, können Sie diesen Schalter auf `AllReplicas` festlegen.
+In diesem Beispiel wird `QuorumLossMode` auf `QuorumReplicas` festgelegt, um anzugeben, dass ein Quorumverlust ausgelöst werden soll, ohne alle Replikate herunterzufahren. Auf diese Weise sind Lesevorgänge weiterhin möglich. Um ein Szenario zu testen, in dem eine gesamte Partition nicht verfügbar ist, können Sie diesen Schalter auf `AllReplicas`festlegen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Weitere Informationen zu Testability-Aktionen](service-fabric-testability-actions.md)
 
 [Weitere Informationen zu Testability-Szenarien](service-fabric-testability-scenarios.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

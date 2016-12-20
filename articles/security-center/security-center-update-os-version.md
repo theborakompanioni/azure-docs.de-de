@@ -5,30 +5,35 @@ services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: ''
-
+editor: 
+ms.assetid: aa372492-ecdb-4368-8fdd-d8ed31e216ee
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/29/2016
+ms.date: 11/01/2016
 ms.author: terrylan
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ce0d178914907750e5da59f223a4b1e04b9bb6fb
+
 
 ---
-# Aktualisieren der Betriebssystemversion in Azure Security Center
-Für virtuelle Computer in Clouddiensten empfiehlt Azure Security Center die Aktualisierung des Betriebssystems, falls eine neuere Version zur Verfügung steht. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden.
+# <a name="update-os-version-in-azure-security-center"></a>Aktualisieren der Betriebssystemversion in Azure Security Center
+Für virtuelle Computer in Clouddiensten empfiehlt Azure Security Center die Aktualisierung des Betriebssystems, falls eine neuere Version zur Verfügung steht.  Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden.
 
 > [!NOTE]
-> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+> Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
 > 
 > 
 
-## Implementieren der Empfehlung
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Betriebssystemversion aktualisieren**. ![Betriebssystemversion aktualisieren][1]
-2. Daraufhin wird das Blatt **Betriebssystemversion aktualisieren** geöffnet. Führen Sie die Schritte auf diesem Blatt aus, um die Betriebssystemversion zu aktualisieren.
+## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
+1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Betriebssystemversion aktualisieren** aus.
+   ![Betriebssystemversion aktualisieren][1]
+2. Daraufhin wird das Blatt **Betriebssystemversion aktualisieren**geöffnet. Führen Sie die Schritte auf diesem Blatt aus, um die Betriebssystemversion zu aktualisieren.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Betriebssystemversion aktualisieren“ implementieren. Weitere Informationen zu Clouddiensten und zum Aktualisieren der Betriebssystemversion für einen Clouddienst finden Sie in folgenden Themen:
 
 * [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md)
@@ -48,4 +53,8 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 <!--Image references-->
 [1]: ./media/security-center-update-os-version/update-os-version.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

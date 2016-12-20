@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: compute
-ms.date: 08/15/2016
+ms.date: 11/23/2016
 ms.author: piotrci
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 07cadd332edc4c55d87ca76aabeaba824d1e2673
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6dcadbfb99d4d111ab9ddde9d74db65b5542a8f5
 
 
 ---
@@ -36,8 +36,8 @@ Dies ist in Azure RemoteApp nun als beschränkte Vorschaufunktion möglich. Im F
 
 1. Für eine Sammlung können zwei Modi festgelegt werden:
    
-   * der ursprüngliche Sammlungsmodus, in dem alle Benutzer in einer Sammlung alle veröffentlichten Anwendungen sehen können. Dies ist der Standardmodus.
-   * der neue Anwendungsmodus, in dem Benutzern nur ihnen explizit zugewiesene Anwendungen angezeigt werden.
+   * Der ursprüngliche Sammlungsmodus, in dem alle Benutzer in einer Sammlung alle veröffentlichten Anwendungen sehen können. Dies ist der Standardmodus.
+   * Der neue Anwendungsmodus, in dem Benutzern nur ihnen explizit zugewiesene Anwendungen angezeigt werden.
 2. Der Anwendungsmodus kann momentan nur mithilfe der Azure RemoteApp-PowerShell-Cmdlets aktiviert werden.
    
    * Im Anwendungsmodus kann die Benutzerzuweisung in der Sammlung nicht über das Azure-Portal verwaltet werden. Die Verwaltung der Benutzerzuweisung erfolgt über PowerShell-Cmdlets.
@@ -49,7 +49,7 @@ Dies ist in Azure RemoteApp nun als beschränkte Vorschaufunktion möglich. Im F
 ## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>Gewusst wie: Abrufen von Azure RemoteApp PowerShell-Cmdlets
 Zum Testen der neuen Vorschaufunktion müssen Sie Azure PowerShell-Cmdlets verwenden. Derzeit ist es nicht möglich, das Azure-Verwaltungsportal zum Aktivieren des neuen Anwendungsveröffentlichungsmodus zu aktivieren.
 
-Vergewissern Sie sich zunächst, dass das [Azure PowerShell-Modul](../powershell-install-configure.md) installiert ist.
+Vergewissern Sie sich zunächst, dass das [Azure PowerShell-Modul](/powershell/azureps-cmdlets-docs) installiert ist.
 
 Starten Sie danach die PowerShell-Konsole im Administratormodus, und führen Sie das folgende Cmdlet aus:
 
@@ -106,6 +106,6 @@ Falls Sie noch nicht an der Vorschau teilgenommen haben, können Sie über diese
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

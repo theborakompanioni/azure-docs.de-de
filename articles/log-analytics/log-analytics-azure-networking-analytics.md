@@ -1,12 +1,12 @@
 ---
-title: Azure Networking Analytics-Lösung in Log Analytics | Microsoft Docs
-description: Mit der Azure Networking Analytics-Lösung in Log Analytics können Sie Protokolle für Azure-Netzwerksicherheitsgruppen und Azure Application Gateway-Protokolle überprüfen.
+title: "Azure Networking Analytics-Lösung in Log Analytics | Microsoft Docs"
+description: "Mit der Azure Networking Analytics-Lösung in Log Analytics können Sie Protokolle für Azure-Netzwerksicherheitsgruppen und Azure Application Gateway-Protokolle überprüfen."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: richrundmsft
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: 66a3b8a1-6c55-4533-9538-cad60c18f28b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: richrund
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eed3bd763edb94d7bea28b4039c03afa7359fee1
+
 
 ---
-# <a name="azure-networking-analytics-(preview)-solution-in-log-analytics"></a>Azure Networking Analytics-Lösung (Vorschau) in Log Analytics
+# <a name="azure-networking-analytics-preview-solution-in-log-analytics"></a>Azure Networking Analytics-Lösung (Vorschau) in Log Analytics
 > [!NOTE]
 > Dies ist eine [Vorschaulösung](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features).
 > 
@@ -96,6 +100,9 @@ Nachdem Sie auf die Kachel **Übersicht** geklickt haben, können Sie Zusammenfa
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md), um ausführliche Azure Networking Analytics-Daten anzuzeigen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

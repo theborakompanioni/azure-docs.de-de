@@ -2,15 +2,17 @@
 ## [Was sind Skalierungsgruppen für virtuelle Computer?](virtual-machine-scale-sets-overview.md)
 
 # Erste Schritte
-## [Erstellen einer Windows-Skalierungsgruppe](virtual-machine-scale-sets-windows-create.md)
-## [Erstellen einer Linux-Skalierungsgruppe](virtual-machine-scale-sets-linux-create-cli.md)
+## [Erstellen einer Skalierungsgruppe im Portal](virtual-machine-scale-sets-portal-create.md)
 
 # Anleitung
 ## Planen und Entwerfen
 ### [Überlegungen zum Entwurf](virtual-machine-scale-sets-design-overview.md)
+
 ## Bereitstellen
 ### [Skalierungsgruppe unter Verwendung des Portals](virtual-machine-scale-sets-portal-create.md)
 ### [Skalierungsgruppe unter Verwendung von Visual Studio](virtual-machine-scale-sets-vs-create.md)
+### [Skalierungsgruppe unter Verwendung von PowerShell](virtual-machine-scale-sets-windows-create.md)
+### [Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
 ### [Linux-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-linux-autoscale.md)
 ### [Windows-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-windows-autoscale.md)
 ### [Anwendungen in Skalierungsgruppen](virtual-machine-scale-sets-deploy-app.md)
@@ -38,6 +40,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,19 +1,23 @@
 ---
 title: HTTP-Datensammler-API von Log Analytics | Microsoft Docs
-description: Mit der HTTP-Datensammler-API von Log Analytics können Sie dem Log Analytics-Repository über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie Sie die API verwenden. Außerdem finden Sie Beispiele zum Veröffentlichen von Daten mit verschiedenen Programmiersprachen.
+description: "Mit der HTTP-Datensammler-API von Log Analytics können Sie dem Log Analytics-Repository über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie Sie die API verwenden. Außerdem finden Sie Beispiele zum Veröffentlichen von Daten mit verschiedenen Programmiersprachen."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 10/26/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f574a3cd837e4fc9cf292d672432a7960cae177b
+
 
 ---
 # <a name="log-analytics-http-data-collector-api"></a>HTTP-Datensammler-API von Log Analytics
@@ -26,7 +30,7 @@ In den folgenden beiden Tabellen werden die Attribute aufgeführt, die bei jeder
 | Attribut | Eigenschaft |
 |:--- |:--- |
 | Methode |POST |
-| URI |https://<WorkspaceID>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Content-Typ |Anwendung/json |
 
 ### <a name="request-uri-parameters"></a>URI-Parameter der Anforderung
@@ -59,10 +63,10 @@ Verwenden Sie dieses Format zum Codieren der **SharedKey**-Signaturzeichenfolge:
 
 ```
 StringToSign = VERB + "\n" +
-               Content-Length + "\n" +
+                  Content-Length + "\n" +
                Content-Type + "\n" +
-               x-ms-date + "\n" +
-               "/api/logs";
+                  x-ms-date + "\n" +
+                  "/api/logs";
 ```
 
 Dies ist ein Beispiel für eine Signaturzeichenfolge:
@@ -143,6 +147,13 @@ Wenn Sie dann aber diese weitere Übermittlung durchführen, erstellt Log Analyt
 Wenn Sie dann den folgenden Eintrag übermitteln, bevor der Datensatztyp erstellt wurde, würde Log Analytics einen Datensatz mit den drei Eigenschaften **number_s**, **boolean_s** und **string_s** erstellen. In diesem Eintrag sind alle Anfangswerte als Zeichenfolge formatiert:
 
 ![Beispieldatensatz 4](media/log-analytics-data-collector-api/record-04.png)
+
+## <a name="data-limits"></a>Datengrenzwerte
+Für die Daten, die an die Datensammlungs-API von Log Analytics gesendet werden, gelten einige Einschränkungen.
+
+* Maximal 30 MB pro Sendung an die Datensammlungs-API von Log Analytics. Diese Größenbeschränkung gilt für eine einzelne Sendung. Wenn eine einzelne Sendung mehr als 30 MB Daten enthält, teilen Sie die Daten auf, und senden Sie kleinere Datenblöcke gleichzeitig. 
+* Maximal 32 KB für Feldwerte. Wenn ein Feldwert größer ist als 32 KB, werden die Daten abgeschnitten. 
+* Die empfohlene maximale Anzahl von Feldern eines bestimmten Typs beträgt 50. Dies ist aus Sicht der Benutzerfreundlichkeit und Suchleistung ein praktikabler Wert.  
 
 ## <a name="return-codes"></a>Rückgabecodes
 Der HTTP-Statuscode 202 bedeutet, dass die Anforderung für die Verarbeitung angenommen wurde, aber die Verarbeitung noch nicht abgeschlossen wurde. Dies gibt an, dass der Vorgang erfolgreich abgeschlossen wurde.
@@ -263,7 +274,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
-### <a name="c#-sample"></a>C#-Beispiel
+### <a name="c-sample"></a>C#-Beispiel
 ```
 using System;
 using System.Net;
@@ -383,7 +394,7 @@ def build_signature(customer_id, shared_key, date, content_length, method, conte
     string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
     bytes_to_hash = bytes(string_to_hash).encode('utf-8')  
     decoded_key = base64.b64decode(shared_key)
-    encoded_hash = base64.b64encode(hmac.new(decoded_key, string_to_hash, digestmod=hashlib.sha256).digest())
+    encoded_hash = base64.b64encode(hmac.new(decoded_key, bytes_to_hash, digestmod=hashlib.sha256).digest())
     authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
     return authorization
 
@@ -416,6 +427,9 @@ post_data(customer_id, shared_key, body, log_type)
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden des [Ansicht-Designers](log-analytics-view-designer.md) für das Erstellen benutzerdefinierter Ansichten der von Ihnen übermittelten Daten.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

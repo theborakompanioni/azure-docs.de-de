@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2016
+ms.date: 12/06/2016
 ms.author: osamazia
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7d7516dd2fa2ddc23d381ade52c53115a8af7231
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 111975ba10aaafb97673f4e8b813ba3523b76ffb
 
 
 ---
@@ -101,7 +101,7 @@ Wir unterstützen bis zu 4.000 Präfixe, die uns per privatem Azure-Peering ang
 
 Die BGP-Sitzung wird verworfen, wenn die Anzahl der Präfixe den Grenzwert überschreitet. Wir akzeptieren Standardrouten nur über den Link für privates Peering. Der Anbieter muss die Standardroute und private IP-Adressen (RFC 1918) aus den Pfaden für das öffentliche Azure-Peering und das Microsoft-Peering herausfiltern. 
 
-## <a name="transit-routing-and-crossregion-routing"></a>Transitrouting und regionsübergreifendes Routing
+## <a name="transit-routing-and-cross-region-routing"></a>Transitrouting und regionsübergreifendes Routing
 ExpressRoute kann nicht als Transitrouter konfiguriert werden. Transitrouting-Dienste erhalten Sie bei Ihrem Konnektivitätsanbieter.
 
 ## <a name="advertising-default-routes"></a>Ankündigen von Standardrouten
@@ -130,37 +130,39 @@ Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwe
 
 Microsoft kennzeichnet Präfixe, die über das öffentliche Peering und Microsoft-Peering angekündigt werden, mit den passenden BGP-Communitywerten, um die Region anzugeben, in der die Präfixe gehostet werden. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und [optimales Routing für Kunden](expressroute-optimize-routing.md)zu bieten.
 
-| **Geopolitische Region** | **Microsoft Azure-Region** | **BGP-Communitywert** |
-| --- | --- | --- |
-| **Nordamerika** | | |
-| USA (Ost) |12076:51004 | |
-| USA (Ost) 2 |12076:51005 | |
-| USA (West) |12076:51006 | |
-| USA, Westen 2 |12076:51026 | |
-| USA, Westen-Mitte |12076:51027 | |
-| USA (Mitte/Norden) |12076:51007 | |
-| USA Süd Mitte |12076:51008 | |
-| USA (Mitte) |12076:51009 | |
-| Kanada, Mitte |12076:51020 | |
-| Kanada, Osten |12076:51021 | |
-| **Südamerika** | | |
-| Brasilien Süd |12076:51014 | |
-| **Europa** | | |
-| Nordeuropa |12076:51003 | |
-| Westeuropa |12076:51002 | |
-| **Asien-Pazifik** | | |
-| Ostasien |12076:51010 | |
-| Südostasien |12076:51011 | |
-| **Japan** | | |
-| Japan Ost |12076:51012 | |
-| Japan (Westen) |12076:51013 | |
-| **Australien** | | |
-| Australien (Osten) |12076:51015 | |
-| Australien (Südosten) |12076:51016 | |
-| **Indien** | | |
-| Indien, Süden |12076:51019 | |
-| Indien, Westen |12076:51018 | |
-| Indien, Mitte |12076:51017 | |
+| **Microsoft Azure-Region** | **BGP-Communitywert** |
+| --- | --- |
+| **Nordamerika** | |
+| USA (Ost) |12076:51004 |
+| USA (Ost) 2 |12076:51005 |
+| USA (West) |12076:51006 |
+| USA, Westen 2 |12076:51026 |
+| USA, Westen-Mitte |12076:51027 |
+| USA (Mitte/Norden) |12076:51007 |
+| USA Süd Mitte |12076:51008 |
+| USA (Mitte) |12076:51009 |
+| Kanada, Mitte |12076:51020 |
+| Kanada, Osten |12076:51021 |
+| **Südamerika** | |
+| Brasilien Süd |12076:51014 |
+| **Europa** | |
+| Nordeuropa |12076:51003 |
+| Westeuropa |12076:51002 |
+| UK, Süden | 12076:51024 |
+| UK, Westen | 12076:51025 |
+| **Asien-Pazifik** | |
+| Ostasien |12076:51010 |
+| Südostasien |12076:51011 |
+| **Japan** | |
+| Japan Ost |12076:51012 |
+| Japan (Westen) |12076:51013 |
+| **Australien** | |
+| Australien (Osten) |12076:51015 |
+| Australien (Südosten) |12076:51016 |
+| **Indien** | |
+| Indien, Süden |12076:51019 |
+| Indien, Westen |12076:51018 |
+| Indien, Mitte |12076:51017 |
 
 Alle Routen, die von Microsoft angekündigt werden, werden mit dem entsprechenden Communitywert gekennzeichnet. 
 
@@ -173,16 +175,32 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 
 | **Service** | **BGP-Communitywert** |
 | --- | --- |
-| **Exchange** |12076:5010 |
-| **SharePoint** |12076:5020 |
-| **Skype for Business** |12076:5030 |
-| **CRM Online** |12076:5040 |
-| **Andere Office 365-Dienste** |12076:5100 |
+| Exchange Online |12076:5010 |
+| SharePoint Online |12076:5020 |
+| Skype for Business Online |12076:5030 |
+| CRM Online |12076:5040 |
+| Andere Office 365 Online-Dienste |12076:5100 |
 
 > [!NOTE]
 > Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen für die gegenüber Microsoft angekündigten Routen festgelegt werden.
 > 
 > 
+
+| **Azure-Region für nationale Clouds**| **BGP-Communitywert** |
+| --- | --- |
+| **US Government** |  |
+| US Government, Iowa | 12076:51109 |
+| US Government, Virginia | 12076:51105 |
+
+
+| **Dienst in nationalen Clouds** | **BGP-Communitywert** |
+| --- | --- |
+| **US Government** |  |
+| Exchange Online |12076:5110 |
+| SharePoint Online |12076:5120 |
+| Skype for Business Online |12076:5130 |
+| CRM Online |12076:5140 |
+| Andere Office 365 Online-Dienste |12076:5200 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren Sie Ihre ExpressRoute-Verbindung.
@@ -194,6 +212,6 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

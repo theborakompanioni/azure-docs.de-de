@@ -1,13 +1,13 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 9b0f7ee1d0eae8a7f0a67c4636de739f6c301d47
-ms.openlocfilehash: 9b853e70f34a4bc1462dfab71c41b2ea802b9dbf
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: f59615ce37aa83a99a058775d4e1705e016baf07
 
 ---
 # <a name="iot-suite-documentation"></a>IoT Suite-Dokumentation
 
-Schneller Einstieg mit Microsoft Azure IoT Suite. Nutzen Sie vorkonfigurierte Lösungen, und beschleunigen Sie die Entwicklung Ihrer IoT-Lösung (Internet der Dinge). Mithilfe der Geräte-SDKs für verschiedene Plattformen (u.a. Linux, Windows und Echtzeitbetriebssysteme) können Sie neue Geräte hinzufügen und vorhandene Geräte verbinden. Skalieren Sie Ihre Lösung problemlos von einigen wenigen Sensoren auf Millionen von gleichzeitig verbundenen Geräten, und verlassen Sie sich auf die weltweite Verfügbarkeit von Azure – völlig unabhängig von der Größenordnung Ihres Projekts.
+Schneller Einstieg mit Microsoft Azure IoT Suite. Nutzen Sie vorkonfigurierte Lösungen, und beschleunigen Sie die Entwicklung Ihrer IoT-Lösung (Internet der Dinge). Mithilfe der Geräte-SDKs für verschiedene Plattformen (u.a. Linux, Windows und Echtzeitbetriebssysteme) können Sie neue Geräte hinzufügen und vorhandene Geräte verbinden. Skalieren Sie Ihre Lösung problemlos von einigen wenigen Sensoren auf Millionen von gleichzeitig verbundenen Geräten, und vertrauen Sie unabhängig von der Größenordnung Ihres Projekts auf die weltweite Verfügbarkeit von Azure.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +29,7 @@ Schneller Einstieg mit Microsoft Azure IoT Suite. Nutzen Sie vorkonfigurierte L�
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=internet-of-things">
+        <a href="https://azure.microsoft.com/resources/videos/index/?services=internet-of-things">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -68,6 +68,27 @@ Schneller Einstieg mit Microsoft Azure IoT Suite. Nutzen Sie vorkonfigurierte L�
 
 ---
 
+<h2>Referenz</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Ressourcen</h3>
+                        <p><a href="/azure/iot-suite/iot-security-architecture">Sicherheitsarchitektur</a></p>
+                        <p><a href="/azure/iot-suite/iot-security-best-practices">Bewährte Methoden für die Sicherheit</a></p>
+                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">Schützen Ihrer IoT-Bereitstellung</a></p>
+                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Sicherheit von Anfang an</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+---
+
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/iot-suite.pdf">
         <div class="img"></div>
@@ -78,6 +99,6 @@ Dokumentation zu IoT Suite – Download </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

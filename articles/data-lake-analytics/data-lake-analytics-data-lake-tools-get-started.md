@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: bfc8a774ebaaae7dbf1018614681134a5b10a769
-ms.openlocfilehash: 7938e0c2f0363bcce51375ddab9c68e8e8068186
+ms.sourcegitcommit: 28222825d680ed7930dd1f2da46df28728c7c103
+ms.openlocfilehash: 48ff29e7abae511eb75aec8c1569ffdf5a57bc77
 
 
 ---
@@ -270,6 +270,8 @@ Informationen zu den ersten Schritten mit Data Lake Analytics unter Verwendung u
 * [Erste Schritte mit Data Lake Analytics mithilfe des .NET SDK](data-lake-analytics-get-started-net-sdk.md)
 * [Debuggen von U-SQL-Aufträgen](data-lake-analytics-debug-u-sql-jobs.md)
 
+Informationen über Data Lake-Tools für Visual Studio-Code finden Sie unter [Use the Azure Data Lake Tools for Visual Studio Code (Verwenden der Azure Data Lake-Tools für Visual Studio-Code)](data-lake-analytics-data-lake-tools-for-vscode.md).
+
 Weitere Themen zur Entwicklung:
 
 * [Analysieren von Weblogs mit Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
@@ -350,6 +352,6 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

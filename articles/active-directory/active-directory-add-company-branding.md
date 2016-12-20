@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/30/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d173847a9d96e5524eae5283fb63857f02e39f10
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
 
 
 ---
-# <a name="add-company-branding-to-your-signin-and-access-panel-pages"></a>Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
+# <a name="add-company-branding-to-your-sign-in-and-access-panel-pages"></a>Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
 Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist mit Azure Active Directory möglich, da Sie die Anpassung der Darstellung folgender Websites mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas durchführen können:
 
 * **Anmeldeseite:** Diese Seite wird angezeigt, wenn Sie sich bei Office 365 oder anderen webbasierten Anwendungen anmelden, die Azure AD als Identitätsanbieter verwenden. Sie interagieren mit dieser Seite entweder während einer Startbereichserkennung oder per Eingabe Ihrer Anmeldeinformationen. Mit der Startbereichserkennung können Partnerbenutzer an ihren lokalen Sicherheitstokendienst (z.B. AD FS) weitergeleitet werden.
@@ -34,7 +34,7 @@ In diesem Thema wird beschrieben, wie Sie die Anmeldeseite und die Zugriffsberei
 > 
 > 
 
-## <a name="customizing-the-signin-page"></a>Anpassen der Anmeldeseite
+## <a name="customizing-the-sign-in-page"></a>Anpassen der Anmeldeseite
 Normalerweise verwenden Sie die Anmeldeseite, wenn Sie browserbasierten Zugriff auf Ihre Cloud-Apps und -dienste benötigen, die von Ihrer Organisation abonniert wurden.
 
 Wenn Sie Änderungen auf Ihre Anmeldeseite angewendet haben, kann es bis zu einer Stunde dauern, bis die Änderungen angezeigt werden.
@@ -224,6 +224,6 @@ Einige anpassbare Elemente in Azure AD dienen mehreren Verwendungszwecken. Sie k
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

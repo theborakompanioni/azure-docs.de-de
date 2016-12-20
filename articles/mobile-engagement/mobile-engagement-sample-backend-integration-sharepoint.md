@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement – Back-End-Integration
+title: "Azure Mobile Engagement – Back-End-Integration"
 description: Verbinden Sie Azure Mobile Engagement mit einem SharePoint-Back-End, um in SharePoint Kampagnen zu erstellen.
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 06297b43-579f-46e6-8a58-961a68f9aa09
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -14,28 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4774f33c821410fb8fbed8d64b94fede36cb0a90
+
 
 ---
-# Azure Mobile Engagement – API-Integration
-In einem automatisierten Marketingsystem erfolgen das Erstellen und Aktivieren der Marketingkampagnen ebenfalls automatisch. Zu diesem Zweck ermöglicht Azure Mobile Engagement auch das Erstellen solcher automatisierten Marketingkampagnen mithilfe von APIs.
+# <a name="azure-mobile-engagement---api-integration"></a>Azure Mobile Engagement – API-Integration
+In einem automatisierten Marketingsystem erfolgen das Erstellen und Aktivieren der Marketingkampagnen ebenfalls automatisch. Zu diesem Zweck ermöglicht Azure Mobile Engagement auch das Erstellen solcher automatisierten Marketingkampagnen mithilfe von APIs. 
 
-Kunden verwenden in der Regel die Mobile Engagement-Front-End-Schnittstelle, um im Rahmen ihrer Marketingkampagnen Ankündigungen/Umfragen u. ä. zu erstellen. Sobald jedoch die Marketingkampagnen ausgereift sind, müssen die in den Back-End-Systemen (z. B. ein CRM-System oder ein CMS-System wie SharePoint) blockierten Daten genutzt werden. So kann eine vollständig automatische Pipeline erstellt werden, die anhand der Daten aus den Back-End-Systemen dynamisch Kampagnen in Mobile Engagement erzeugt.
+Kunden verwenden in der Regel die Mobile Engagement-Front-End-Schnittstelle, um im Rahmen ihrer Marketingkampagnen Ankündigungen/Umfragen u. ä. zu erstellen. Sobald jedoch die Marketingkampagnen ausgereift sind, müssen die in den Back-End-Systemen (z. B. ein CRM-System oder ein CMS-System wie SharePoint) blockierten Daten genutzt werden. So kann eine vollständig automatische Pipeline erstellt werden, die anhand der Daten aus den Back-End-Systemen dynamisch Kampagnen in Mobile Engagement erzeugt. 
 
 ![][5]
 
-Dieses Lernprogramm behandelt ein Szenario, in dem ein geschäftlicher SharePoint-Benutzer eine SharePoint-Liste mit Marketingdaten füllt. Durch einen automatisierten Prozess werden Elemente aus der Liste ausgewählt und mithilfe der verfügbaren REST-APIS mit dem Mobile Engagement-System verbunden, um aus den SharePoint-Daten eine Marketingkampagne zu erstellen.
+Dieses Lernprogramm behandelt ein Szenario, in dem ein geschäftlicher SharePoint-Benutzer eine SharePoint-Liste mit Marketingdaten füllt. Durch einen automatisierten Prozess werden Elemente aus der Liste ausgewählt und mithilfe der verfügbaren REST-APIS mit dem Mobile Engagement-System verbunden, um aus den SharePoint-Daten eine Marketingkampagne zu erstellen. 
 
 > [!IMPORTANT]
-> Dieses Beispiel veranschaulicht das allgemeine Verfahren zum Aufrufen jeder Mobile Engagement-REST-API, da es die beiden Hauptaspekte des Aufrufs der APIs zeigt – Authentifizierung und Übergeben von Parametern.
+> Dieses Beispiel veranschaulicht das allgemeine Verfahren zum Aufrufen jeder Mobile Engagement-REST-API, da es die beiden Hauptaspekte des Aufrufs der APIs zeigt – Authentifizierung und Übergeben von Parametern. 
 > 
 > 
 
-## SharePoint-Integration
+## <a name="sharepoint-integration"></a>SharePoint-Integration
 1. Die SharePoint-Beispielliste sieht wie folgt aus. Zum Erstellen der Ankündigung werden **Title**, **Category**, **NotificationTitle**, **Message** und **URL** verwendet. Die Spalte **IsProcessed** wird von dem Automatisierungsprozess im Beispiel in Form eines Konsolenprogramms verwendet. Sie können das Konsolenprogramm als Azure WebJob ausführen, um es nach Zeitplan auszuführen. Alternativ können Sie direkt mithilfe des SharePoint-Workflows ein Programm erstellen, mit dem die Ankündigung erstellt und aktiviert wird, wenn ein Element in die SharePoint-Liste eingefügt wird. In diesem Beispiel verwenden wir das Konsolenprogramm. Dieses durchläuft die Elemente in der SharePoint-Liste, erstellt in Azure Mobile Engagement die Ankündigung für jedes Element und markiert schließlich bei erfolgreicher Erstellung der Ankündigung das **IsProcessed**-Flag als true.
    
     ![][1]
 2. Für die Authentifizierung mit der SharePoint-Liste verwenden wir den Code aus dem Beispiel *Remoteauthentifizierung in SharePoint Online mit dem Clientobjektmodell*. Dieses finden Sie [hier](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c).
-3. Nach der Authentifizierung werden die Listenelemente in einer Schleife durchlaufen, um neu erstellte Elemente zu ermitteln (für diese ist **IsProcessed** = false).
+3. Nach der Authentifizierung werden die Listenelemente in einer Schleife durchlaufen, um neu erstellte Elemente zu ermitteln (für diese ist **IsProcessed** = false). 
    
          static async void CreateCampaignFromSharepoint()
         {
@@ -85,9 +89,9 @@ Dieses Lernprogramm behandelt ein Szenario, in dem ein geschäftlicher SharePoin
             }
         }
 
-## Mobile Engagement-Integration
-1. Sobald ein Element gefunden wird, das verarbeitet werden muss, werden die zum Erstellen einer Ankündigung erforderlichen Informationen aus dem Listenelement extrahiert. `CreateAzMECampaign` wird aufgerufen, um die Ankündigung zu erstellen, und anschließend wird `ActivateAzMECampaign` aufgerufen, um sie zu aktivieren. Diese sind im Wesentlichen REST-API-Aufrufe des Mobile Engagement Back-Ends.
-2. Die Mobile Engagement-REST-APIs erfordern einen **HTTP-Header für die Autorisierung des Basisauthentifizierungsschemas **. Dieser besteht aus der `ApplicationId` und dem `ApiKey`, die Sie im Azure-Portal erhalten. Stellen Sie sicher, dass Sie den Schlüssel aus dem Bereich **API-Schlüssel** und *nicht* aus dem Bereich **SDK-Schlüssel** verwenden.
+## <a name="mobile-engagement-integration"></a>Mobile Engagement-Integration
+1. Sobald ein Element gefunden wird, das verarbeitet werden muss, werden die zum Erstellen einer Ankündigung erforderlichen Informationen aus dem Listenelement extrahiert. `CreateAzMECampaign` wird aufgerufen, um die Ankündigung zu erstellen, und anschließend wird `ActivateAzMECampaign` aufgerufen, um sie zu aktivieren. Diese sind im Wesentlichen REST-API-Aufrufe des Mobile Engagement Back-Ends. 
+2. Die Mobile Engagement-REST-APIs erfordern einen **HTTP-Header für die Autorisierung des Basisauthentifizierungsschemas**. Dieser besteht aus der `ApplicationId` und dem `ApiKey`, die Sie im Azure-Portal erhalten. Stellen Sie sicher, dass Sie den Schlüssel aus dem Bereich **API-Schlüssel** und *nicht* aus dem Bereich **SDK-Schlüssel** verwenden. 
    
    ![][2]
    
@@ -103,7 +107,7 @@ Dieses Lernprogramm behandelt ein Szenario, in dem ein geschäftlicher SharePoin
            string returnValue = System.Convert.ToBase64String(toEncodeAsBytes);
            return returnValue;
        }  
-3. Informationen zum Erstellen der Kampagne vom Typ Ankündigung finden Sie in der [Dokumentation](https://msdn.microsoft.com/library/azure/mt683750.aspx). Sie müssen als `kind` der Kampagne *Ankündigung* angeben sowie die [Nutzlast](https://msdn.microsoft.com/library/azure/mt683751.aspx) angeben und diese als FormUrlEncodedContent übergeben.
+3. Informationen zum Erstellen der Kampagne vom Typ Ankündigung finden Sie in der [Dokumentation](https://msdn.microsoft.com/library/azure/mt683750.aspx). Sie müssen als `kind` der Kampagne *Ankündigung* angeben sowie die [Nutzlast](https://msdn.microsoft.com/library/azure/mt683751.aspx) angeben und diese als FormUrlEncodedContent übergeben. 
    
         static async Task<int> CreateAzMECampaign(string campaignName, string notificationTitle, 
             string notificationMessage, string notificationCategory, string actionURL)
@@ -151,7 +155,7 @@ Dieses Lernprogramm behandelt ein Szenario, in dem ein geschäftlicher SharePoin
 4. Nachdem Sie die Ankündigung erstellt haben, wird im Mobile Engagement-Portal Folgendes angezeigt (beachten Sie, dass "Status" = "Entwurf" und "Aktiviert" = "N/V" lautet):
    
     ![][3]
-5. `CreateAzMECampaign` erstellt eine Ankündigungskampagne und gibt ihre ID an den Aufrufer zurück. `ActivateAzMECampaign` benötigt zum Aktivieren der Kampagne diese ID als Parameter.
+5. `CreateAzMECampaign` erstellt eine Ankündigungskampagne und gibt ihre ID an den Aufrufer zurück. `ActivateAzMECampaign` benötigt zum Aktivieren der Kampagne diese ID als Parameter. 
    
         static async Task<bool> ActivateAzMECampaign(int campaignId)
         {
@@ -185,10 +189,10 @@ Dieses Lernprogramm behandelt ein Szenario, in dem ein geschäftlicher SharePoin
 6. Nachdem Sie die Ankündigung aktiviert haben, wird im Mobile Engagement-Portal Folgendes angezeigt:
    
     ![][4]
-7. Sobald die Kampagne aktiviert ist, werden auf allen Geräten, die das Kriterium für die Kampagne erfüllen, Benachrichtigungen angezeigt.
-8. Sie werden außerdem feststellen, dass das mit IsProcessed = false markierte Listenelement nach dem Erstellen der Ankündigungskampagne auf true festgelegt wurde.
+7. Sobald die Kampagne aktiviert ist, werden auf allen Geräten, die das Kriterium für die Kampagne erfüllen, Benachrichtigungen angezeigt. 
+8. Sie werden außerdem feststellen, dass das mit IsProcessed = false markierte Listenelement nach dem Erstellen der Ankündigungskampagne auf true festgelegt wurde.  
 
-In diesem Beispiel wurde eine einfache Ankündigungskampagne erstellt, und es wurden im Wesentlichen die erforderlichen Eigenschaften angegeben. Mithilfe der Informationen [hier](https://msdn.microsoft.com/library/azure/mt683751.aspx) können Sie dieses Beispiel im Portal nach Bedarf anpassen.
+In diesem Beispiel wurde eine einfache Ankündigungskampagne erstellt, und es wurden im Wesentlichen die erforderlichen Eigenschaften angegeben. Mithilfe der Informationen [hier](https://msdn.microsoft.com/library/azure/mt683751.aspx)können Sie dieses Beispiel im Portal nach Bedarf anpassen. 
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-sample-backend-integration-sharepoint/sharepointlist.png
@@ -200,4 +204,8 @@ In diesem Beispiel wurde eine einfache Ankündigungskampagne erstellt, und es wu
 
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,27 +1,27 @@
 ---
 title: Services Bus-Architektur | Microsoft Docs
 description: In diesem Artikel wird die Architektur zur Nachrichten- und Relayverarbeitung von Azure Service Bus beschrieben.
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: baf94c2d-0e58-4d5d-a588-767f996ccf7f
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c69783341eaed67ac29ab63d2127a4038bc0f6d
+ms.sourcegitcommit: 0b1f6f7ec47e47f39407cdbfd5efef2a18944ecc
+ms.openlocfilehash: 6a2e59f9366e411d322b8560f03b115638619966
 
 
 ---
 # <a name="service-bus-architecture"></a>Service Bus-Architektur
-In diesem Artikel wird die Architektur zur Nachrichten- und Relayverarbeitung von Azure Service Bus beschrieben.
+Dieser Artikel beschreibt die Nachrichtenverarbeitungsarchitektur von Azure Service Bus.
 
 ## <a name="service-bus-scale-units"></a>Service Bus-Skalierungseinheiten
 Service Bus ist nach *Skalierungseinheiten*strukturiert. Eine Skalierungseinheit ist eine Bereitstellungseinheit und umfasst alle Komponenten, die zum Ausführen des Diensts erforderlich sind. Jede Region stellt mindestens eine Service Bus-Skalierungseinheit bereit.
@@ -49,7 +49,7 @@ Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Ga
 ![Verarbeiten eingehender WCF Relay-Anforderungen](./media/service-bus-architecture/IC690645.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nach dieser Übersicht über die Architektur von Service Bus können Sie sich nun mit folgenden Themen beschäftigen:
+Nachdem Sie sich einen Überblick über die Service Bus-Architektur verschafft haben, finden Sie unter den folgenden Links weitere Informationen:
 
 * [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 * [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
@@ -58,6 +58,6 @@ Nach dieser Übersicht über die Architektur von Service Bus können Sie sich nu
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

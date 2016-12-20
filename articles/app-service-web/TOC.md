@@ -247,9 +247,9 @@
 ### [Behandeln von Leistungsproblemen bei Web-Apps](app-service-web-troubleshoot-performance-degradation.md)
 
 # Referenz
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/)
-## [Java](/java/api/)
+## [Azure CLI 2.0 (Vorschau)](/cli/azure/appservice)
 ## [.NET](/dotnet/api)
+## [Java](/java/api/)
 ## [REST](/rest/api/appservice)
 
 # Verwandte Themen
@@ -266,6 +266,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

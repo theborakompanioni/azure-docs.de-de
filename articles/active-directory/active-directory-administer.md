@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 20f38ef90d9f3793c0bb0814e6fd5d67aa550209
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 001ffc0f9c7465552392a9848ef1487a4c0eafce
 
 
 ---
@@ -66,7 +66,7 @@ Wenn Sie noch nicht über ein Abonnement für einen Microsoft-Clouddienst verfü
 * [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
 * [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
 
-### <a name="manage-an-azureprovisioned-default-directory"></a>Ein Standardverzeichnis mit Azure-Bereitstellung verwalten
+### <a name="manage-an-azure-provisioned-default-directory"></a>Ein Standardverzeichnis mit Azure-Bereitstellung verwalten
 Heute wird ein Verzeichnis automatisch erstellt, wenn Sie sich für Azure registrieren und Ihr Abonnement diesem Verzeichnis zugeordnet ist. Wenn Sie sich ursprünglich vor Oktober 2013 für Azure registriert haben, wurde ein Verzeichnis jedoch nicht automatisch erstellt. In diesem Fall hat Azure Ihr Konto möglicherweise "abgeglichen", indem ein Standardverzeichnis bereitgestellt wurde. Ihr Abonnement wurde dann diesem Standardverzeichnis zugeordnet.
 
 Ein Abgleich der Verzeichnisse wurde im Oktober 2013 als Teil der generellen Verbesserung des Sicherheitsmodells für Azure durchgeführt. Dieser hilft, allen Azure-Kunden Identitätsfunktionen für die Organisation anzubieten und sicherzustellen, dass auf alle Azure-Ressourcen im Kontext eines Benutzers im Verzeichnis zugegriffen wird. Sie können Azure nicht ohne ein Verzeichnis verwenden. Um dies zu erreichen, musste für jeden Benutzer, der vor dem 7. Juli 2013 registriert wurde und über kein Verzeichnis verfügte, eines erstellt werden. Wenn Sie bereits ein Verzeichnis erstellt haben, wurde Ihr Abonnement diesem Verzeichnis zugeordnet.
@@ -150,6 +150,6 @@ Die folgenden Bedingungen werden überprüft:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

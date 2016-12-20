@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 11/23/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: bf4e77ab2678d3cb74373fd3b3cfd2a5f69d7292
+ms.sourcegitcommit: 2c7b46521c5da3290af244652b5ac20d4c309d5d
+ms.openlocfilehash: 5ec4b260ce82ec78b614ae442d3f14063ce590b5
 
 
 ---
@@ -142,10 +142,18 @@ Wenn Sie möchten, können Sie eine Textdatei erstellen und die Datei in Ihr eig
 ## <a name="use-hive-to-query-hbase"></a>Verwenden von Hive zum Abfragen von HBase
 Sie können Daten in HBase-Tabellen mit Hive abfragen. In diesem Abschnitt erstellen Sie eine Ihrer HBase-Tabelle zugeordnete Hive-Tabelle, mit der Sie die Daten Ihrer HBase-Tabelle abfragen.
 
+> [!NOTE]
+> Wenn sich Hive und HBase auf verschiedenen Clustern im gleichen VNet befinden, müssen Sie das Zookeeper-Quorum übergeben, während Sie die Hive-Shell aufrufen:
+>
+>       hive --hiveconf hbase.zookeeper.quorum=zk0-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk1-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk2-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net --hiveconf zookeeper.znode.parent=/hbase-unsecure  
+>
+>
+
 1. Öffnen Sie **PuTTY**, und stellen Sie eine Verbindung mit dem Cluster her.  Anweisungen finden Sie weiter oben.
 2. Öffnen Sie die Hive-Shell.
    
        hive
+       
 3. Führen Sie das folgende HiveQL-Skript aus, um eine der HBase-Tabelle zugeordnete Hive-Tabelle zu erstellen. Stellen Sie vor Ausführung dieser Anweisung sicher, dass Sie die zuvor in diesem Lernprogramm erwähnte Beispieltabelle über die HBase-Shell erstellt haben.
    
         CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -221,53 +229,21 @@ Weitere Informationen zu HBase-REST finden Sie im [Referenzleitfaden zu Apache H
 ## <a name="check-cluster-status"></a>Überprüfen des Clusterstatus
 HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über die Cluster überwacht werden können. In dieser Web-Benutzeroberfläche können Sie Statistiken und Informationen zu Regionen anfordern.
 
-SSH kann auch zum Tunneln lokaler Anforderungen, z. B. Webanforderungen, zum HDInsight-Cluster verwendet werden. Die Anforderung wird dann zur angeforderten Ressource weitergeleitet, als ob sie vom Stammknoten des HDInsight-Clusters stammen würde. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel).
+**So greifen Sie auf die HBase Master-Benutzeroberfläche zu**
 
-**So richten Sie eine SSH-Tunnelsitzung ein**
+1. Öffnen Sie die Ambari-Webbenutzeroberfläche unter https://&lt;Clustername>.azurehdinsight.net.
+2. Klicken Sie im linken Menü auf **HBase**.
+3. Klicken Sie am oberen Rand der Seite auf **Quicklinks**, zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche**.  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
 
-1. Öffnen Sie **PuTTY**.  
-2. Wenn Sie während des Erstellungsprozesses beim Erstellen des Benutzerkontos einen SSH-Schlüssel bereitgestellt haben, müssen Sie den folgenden Schritt ausführen, um den privaten Schlüssel auszuwählen, der zum Authentifizieren beim Cluster verwendet wird:
-   
-    Erweitern Sie in **Kategorie** erst **Verbindung**, dann **SSH**, und wählen Sie anschließend **Authentifizierung** aus. Klicken Sie abschließend auf **Browse** , und wählen Sie die PPK-Datei aus, die Ihren privaten Schlüssel enthält.
-3. Klicken Sie unter **Category** auf **Session**.
-4. Geben Sie für die grundlegenden Optionen im PuTTY-Sitzungsbildschirm die folgenden Werte ein:
-   
-   * **Hostname**: Die SSH-Adresse des HDInsight-Servers im Feld "Hostname" (oder "IP-Adresse"). Die SSH-Adresse ist Ihr Clustername, gefolgt von **-ssh.azurehdinsight.net**. Beispiel: *mycluster-ssh.azurehdinsight.net*.
-   * **Port**: 22. Der SSH-Port auf dem primären Hauptknoten ist 22.  
-5. Erweitern Sie auf der linken Seite des Dialogfelds im Abschnitt **Category** erst **Connection** und dann **SSH**, und klicken Sie anschließend auf **Tunnels**.
-6. Geben Sie die folgenden Informationen in das Formular "Options controlling SSH port forwarding" ein:
-   
-   * **Source port** : Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: 9876.
-   * **Dynamic** : Ermöglicht das dynamische SOCKS-Proxyrouting.
-7. Klicken Sie auf **Hinzufügen** , um die Einstellungen hinzuzufügen.
-8. Klicken Sie auf **Öffnen** unten im Dialogfeld, um eine SSH-Verbindung zu öffnen.
-9. Melden Sie sich mit einem SSH-Konto beim Server an, wenn Sie dazu aufgefordert werden. Dadurch wird eine SSH-Sitzung eingerichtet und der Tunnel aktiviert.
+  ![Benutzeroberfläche HDInsight HBase HMaster](./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-**So finden Sie den FQDN der Zookeeper mit Ambari**
+  Die HBase Master-Benutzeroberfläche enthält folgende Abschnitte:
 
-1. Navigieren Sie zu "https://<ClusterName>.azurehdinsight.net/".
-2. Geben Sie zwei Mal die Anmeldeinformationen für das Cluster-Benutzerkonto ein.
-3. Klicken Sie im linken Menü auf **Zookeeper**.
-4. Klicken Sie auf einen der drei Links mit der Bezeichnung **ZooKeeper-Server** in der Zusammenfassungsliste.
-5. Kopieren Sie den Wert unter **Hostname**. Beispiel: zk0-CLUSTERNAME.xxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net.
-
-**So konfigurieren Sie ein Clientprogramm (Firefox) und überprüfen den Clusterstatus**
-
-1. Öffnen Sie Firefox.
-2. Klicken Sie auf die Schaltfläche **Menü öffnen** .
-3. Klicken Sie auf **Options**.
-4. Klicken Sie nacheinander auf **Erweitert**, **Netzwerk** und **Einstellungen**.
-5. Wählen Sie **Manuelle Proxy-Konfiguration**aus.
-6. Geben Sie die folgenden Werte ein:
-   
-   * **SOCKS-Host**: localhost
-   * **Port**: Verwenden Sie den Port, den Sie für das Putty-SSH-Tunneling konfiguriert haben.  Beispiel: 9876.
-   * **SOCKS v5**: (ausgewählt)
-   * **Externer DNS-Server**: (ausgewählt)
-7. Klicken Sie zum Speichern der Änderungen auf **OK** .
-8. Navigieren Sie zu „http://&lt;FQDN von ZooKeeper>:60010/master-status“.
-
-In einem HighAvailability-Cluster gibt es einen Link zum aktuellen aktiven HBase-Masterknoten, unter dem die Web-Benutzeroberfläche gehostet wird.
+  - Regionsserver
+  - Backup Master
+  - tables
+  - Tasks
+  - Softwareattribute
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
@@ -310,6 +286,6 @@ Weitere Informationen finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure AD Android – Erste Schritte | Microsoft Docs
-description: In diesem Thema erfahren Sie, wie eine Android-Anwendung erstellt wird, die sich für die Anmeldung in Azure AD integriert und über OAuth durch Azure AD geschützte APIs aufruft.
+title: "Azure AD Android – Erste Schritte | Microsoft Docs"
+description: "In diesem Thema erfahren Sie, wie eine Android-Anwendung erstellt wird, die sich für die Anmeldung in Azure AD integriert und über OAuth durch Azure AD geschützte APIs aufruft."
 services: active-directory
 documentationcenter: android
-author: brandwe
+author: xerners
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: mobile-android
@@ -14,6 +14,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 276207411fcfd6906cb99da3d291decf7e2566d1
+
 
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>Integrieren von Azure AD in eine Android-App
@@ -21,11 +25,11 @@ ms.author: brandwe
 
 [!INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Bei der Entwicklung einer Desktopanwendung ist es für Sie mit Azure AD einfach und problemlos möglich, Ihre Benutzer über deren Active Directory-Konten zu authentifizieren.  Außerdem kann Ihre Anwendung damit auf sichere Weise alle Web-APIs nutzen, die per Azure AD geschützt sind, z. B. die Office 365-APIs oder die Azure-API.
+Bei der Entwicklung einer Desktopanwendung ist es für Sie mit Azure AD einfach und problemlos möglich, Ihre Benutzer über deren Active Directory-Konten zu authentifizieren.  Außerdem kann Ihre Anwendung damit auf sichere Weise alle Web-APIs nutzen, die per Azure AD geschützt sind, z. B. die Office 365-APIs oder die Azure-API.
 
 Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unter Azure AD die Active Directory-Authentifizierungsbibliothek (ADAL) verfügbar.  Die einzige Aufgabe von ADAL besteht darin, Ihrer Anwendung das Abrufen von Zugriffstoken zu erleichtern.  Um Ihnen zu zeigen, wie einfach es geht, erstellen wir hier eine Android-Anwendung mit einer Aufgabenliste, mit der folgende Aktionen ausgeführt werden können:
 
-* Abrufen von Zugriffstoken zum Aufrufen einer Aufgabenlisten-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx)
+* Abrufen von Zugriffstoken zum Aufrufen einer Aufgabenlisten-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 * Abrufen der Aufgabenliste eines Benutzers
 * Abmelden von Benutzern
 
@@ -36,14 +40,14 @@ Zum Starten benötigen Sie einen Azure AD-Mandanten, in dem Sie Benutzer erstell
 > 
 > 
 
-## <a name="step-1:-download-and-run-the-node.js-rest-api-todo-sample-server"></a>Schritt 1: Herunterladen und Ausführen des „Node.js REST API TODO Sample Server“
+## <a name="step-1-download-and-run-the-nodejs-rest-api-todo-sample-server"></a>Schritt 1: Herunterladen und Ausführen des „Node.js REST API TODO Sample Server“
 Dieses Beispiel ist speziell für die Arbeit mit dem vorhandenen Beispiel zum Erstellen einer Aufgabenlisten-REST-API für Microsoft Azure Active Directory für einen einzelnen Mandanten gedacht. Dies ist eine Voraussetzung für den Schnellstart.
 
 Informationen zur Einrichtung finden Sie unter den vorhandenen Beispielen:
 
 * [Microsoft Azure Active Directory-Beispiel – REST-API-Dienst für „Node.js“](active-directory-devquickstarts-webapi-nodejs.md)
 
-## <a name="step-2:-register-your-web-api-with-your-microsoft-azure-ad-tenant"></a>Schritt 2: Registrieren Ihrer Web-API beim Microsoft Azure AD-Mandanten
+## <a name="step-2-register-your-web-api-with-your-microsoft-azure-ad-tenant"></a>Schritt 2: Registrieren Ihrer Web-API beim Microsoft Azure AD-Mandanten
 **Wie gehe ich vor?**
 
 *Microsoft Active Directory unterstützt das Hinzufügen von zwei Arten von Anwendungen. Web-APIs, die Dienste für Benutzer bereitstellen, und Anwendungen (im Web oder auf einem Gerät), die auf diese Web-APIs zugreifen. In diesem Schritt registrieren Sie die Web-API, die Sie lokal zum Testen dieses Beispiels ausführen. Normalerweise handelt es sich bei dieser Web-API um einen REST-Dienst, mit dem die Funktionen bereitgestellt werden, auf die Ihre Anwendung zugreifen soll. Microsoft Azure Active Directory kann jeden beliebigen Endpunkt schützen!*
@@ -58,13 +62,13 @@ Schritte zum Registrieren einer Web-API bei Microsoft Azure AD
 4. Klicken Sie auf die Registerkarte Anwendungen.
 5. Klicken Sie in der Taskleiste auf Hinzufügen.
 6. Klicken Sie auf „Eine von meinem Unternehmen entwickelte Anwendung hinzufügen“.
-7. Geben Sie einen Anzeigenamen für die Anwendung ein, z. B. „TodoListService“, wählen Sie „Webanwendung und/oder Web-API“ aus, und klicken Sie auf „Weiter“.
+7. Geben Sie einen Anzeigenamen für die Anwendung ein, z. B. „TodoListService“, wählen Sie „Webanwendung und/oder Web-API“ aus, und klicken Sie auf „Weiter“.
 8. Geben Sie als Anmelde-URL die Basis-URL für das Beispiel ein. Standardmäßig ist dies `https://localhost:8080`.
 9. Geben Sie als App-ID-URI `https://<your_tenant_name>/TodoListService` ein, und ersetzen Sie dabei `<your_tenant_name>` durch den Namen Ihres Azure AD-Mandanten.  Klicken Sie auf „OK“, um die Registrierung abzuschließen.
 10. Klicken Sie im Azure-Portal auf die Registerkarte Konfigurieren Ihrer Anwendung.
 11. **Suchen Sie die Client-ID, und kopieren Sie diese.**Sie benötigen diesen Wert später zum Konfigurieren Ihrer Anwendung.
 
-## <a name="step-3:-register-the-sample-android-native-client-application"></a>Schritt 3: Registrieren der systemeigenen Android-Beispiel-Clientanwendung
+## <a name="step-3-register-the-sample-android-native-client-application"></a>Schritt 3: Registrieren der systemeigenen Android-Beispiel-Clientanwendung
 Zunächst müssen Sie Ihre Webanwendung registrieren. Danach müssen Sie Azure Active Directory über Ihre Anwendung informieren. Nur so kann die Anwendung mit der eben registrierten Web-API kommunizieren.
 
 **Wie gehe ich vor?**  
@@ -83,7 +87,7 @@ Zunächst müssen Sie Ihre Webanwendung registrieren. Danach müssen Sie Azure A
 4. Klicken Sie auf die Registerkarte Anwendungen.
 5. Klicken Sie in der Taskleiste auf Hinzufügen.
 6. Klicken Sie auf „Eine von meinem Unternehmen entwickelte Anwendung hinzufügen“.
-7. Geben Sie einen Anzeigenamen für die Anwendung ein, z. B. „TodoListClient-Android“, wählen Sie „Systemeigene Clientanwendung“ aus, und klicken Sie auf „Weiter“.
+7. Geben Sie einen Anzeigenamen für die Anwendung ein, z. B. „TodoListClient-Android“, wählen Sie „Systemeigene Clientanwendung“ aus, und klicken Sie auf „Weiter“.
 8. Geben Sie als Umleitungs-URI `http://TodoListClient` ein.  Klicken Sie auf „Fertig stellen“.
 9. Klicken Sie auf die Registerkarte „Konfigurieren“ der Anwendung.
 10. Suchen Sie nach der Client-ID, und kopieren Sie diese. Sie benötigen diesen Wert später zum Konfigurieren Ihrer Anwendung.
@@ -95,7 +99,7 @@ Für die Erstellung mit Maven können Sie die Datei „pom.xml“ auf der oberst
   
   `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`  
 * Führen Sie die Schritte im Abschnitt mit den [Voraussetzungen zum Einrichten von Maven für Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android)
-* Richten Sie den Emulator mit SDK 19 ein.
+* Richten Sie den Emulator mit SDK 19 ein.
 * Wechseln Sie zu dem Stammordner, in dem Sie das Repository geklont haben.
 * Führen Sie den folgenden Befehl aus: mvn clean install.
 * Wechseln Sie in das Verzeichnis mit dem Schnellstartbeispiel: cd samples\hello.
@@ -105,22 +109,22 @@ Für die Erstellung mit Maven können Sie die Datei „pom.xml“ auf der oberst
 
 Zusätzlich zum AAR-Paket werden auch JAR-Pakete übermittelt.
 
-### <a name="step-4:-download-the-android-adal-and-add-it-to-your-eclipse-workspace"></a>Schritt 4: Herunterladen der Android-ADAL und Hinzufügen zum Eclipse-Arbeitsbereich
+### <a name="step-4-download-the-android-adal-and-add-it-to-your-eclipse-workspace"></a>Schritt 4: Herunterladen der Android-ADAL und Hinzufügen zum Eclipse-Arbeitsbereich
 Wir haben die Verwendung für Sie vereinfacht. Sie haben mehrere Möglichkeiten zur Verwendung dieser Bibliothek in Ihrem Android-Projekt:
 
 * Sie können den Quellcode nutzen, um diese Bibliothek in Eclipse zu importieren und mit Ihrer Anwendung zu verknüpfen.
 * Bei Verwendung von Android Studio können Sie das Paketformat *AAR* nutzen und auf die Binärdateien verweisen.
 
-#### <a name="option-1:-source-zip"></a>Option 1: ZIP-Datei mit Quellcode
+#### <a name="option-1-source-zip"></a>Option 1: ZIP-Datei mit Quellcode
 Klicken Sie zum Herunterladen einer Kopie des Quellcodes rechts auf der Seite auf „Download ZIP“, oder klicken Sie [hier](https://github.com/AzureAD/azure-activedirectory-library-for-android/archive/v1.0.9.tar.gz).
 
-#### <a name="option-2:-source-via-git"></a>Option 2: Quellcode per Git
+#### <a name="option-2-source-via-git"></a>Option 2: Quellcode per Git
 Geben Sie einfach Folgendes ein, um den Quellcode des SDK über Git abzurufen:
 
     git clone git@github.com:AzureAD/azure-activedirectory-library-for-android.git
     cd ./azure-activedirectory-library-for-android/src
 
-#### <a name="option-3:-binaries-via-gradle"></a>Option 3: Binärdateien per Gradle
+#### <a name="option-3-binaries-via-gradle"></a>Option 3: Binärdateien per Gradle
 Sie können die Binärdateien aus dem zentralen Repository von Maven abrufen. Das AAR-Paket kann wie folgt in Ihr Projekt unter Android Studio eingefügt werden:
 
 ```gradle
@@ -141,7 +145,7 @@ dependencies {
 }
 ```
 
-#### <a name="option-4:-aar-via-maven"></a>Option 4: AAR über Maven
+#### <a name="option-4-aar-via-maven"></a>Option 4: AAR über Maven
 Wenn Sie in Eclipse das m2e-Plug-In verwenden, können Sie die Abhängigkeit in Ihrer Datei „pom.xml“ angeben:
 
 ```xml
@@ -154,11 +158,11 @@ Wenn Sie in Eclipse das m2e-Plug-In verwenden, können Sie die Abhängigkeit in 
 ```
 
 
-#### <a name="option-5:-jar-package-inside-libs-folder"></a>Option 5: JAR-Paket im Ordner „libs“
+#### <a name="option-5-jar-package-inside-libs-folder"></a>Option 5: JAR-Paket im Ordner „libs“
 Sie können die JAR-Datei aus dem Repository von Maven abrufen und im Ordner *libs* Ihres Projekts ablegen. Außerdem müssen Sie die erforderlichen Ressourcen in Ihr Projekt kopieren, da sie in den JAR-Paketen nicht enthalten sind.
 
-### <a name="step-5:-add-references-to-android-adal-to-your-project"></a>Schritt 5: Hinzufügen von Verweisen auf die ADAL für Android zu Ihrem Projekt
-1. Fügen Sie einen Verweis auf Ihr Projekt hinzu, und geben Sie ihn als Android-Bibliothek an. Falls Sie unsicher sind, wie Sie dabei vorgehen sollen, [finden Sie hier weitere Informationen](http://developer.android.com/tools/projects/projects-eclipse.html).
+### <a name="step-5-add-references-to-android-adal-to-your-project"></a>Schritt 5: Hinzufügen von Verweisen auf die ADAL für Android zu Ihrem Projekt
+1. Fügen Sie einen Verweis auf Ihr Projekt hinzu, und geben Sie ihn als Android-Bibliothek an. Falls Sie unsicher sind, wie Sie dabei vorgehen sollen, [finden Sie hier weitere Informationen](http://developer.android.com/tools/projects/projects-eclipse.html)
 2. Fügen Sie die Projektabhängigkeit für das Debuggen in Ihre Projekteinstellungen ein.
 3. Aktualisieren Sie die Datei „AndroidManifest.xml“ Ihres Projekts, damit sie Folgendes enthält:
    
@@ -285,8 +289,8 @@ Bibliotheksprojektressourcen können von Ihren Anwendungsressourcen überschrieb
 ### <a name="broker"></a>Broker
 Die Brokerkomponente wird über die Unternehmensportal-App von Microsoft Intune bereitgestellt. Das Konto wird im Account Manager erstellt. Der Kontotyp lautet „com.microsoft.workaccount“. Es ist nur ein einzelnes SSO-Konto zulässig. Für diesen Benutzer wird ein SSO-Cookie erstellt, nachdem die Geräteabfrage (Challenge) für eine der Apps abgeschlossen wurde.
 
-### <a name="authority-url-and-adfs"></a>Autoritäts-URL und AD FS
-AD FS wird nicht als STS für die Produktion erkannt. Daher müssen Sie die Instanzenermittlung deaktivieren und für den AuthenticationContext-Konstruktor „false“ übergeben.
+### <a name="authority-url-and-adfs"></a>Autoritäts-URL und AD FS
+AD FS wird nicht als STS für die Produktion erkannt. Daher müssen Sie die Instanzenermittlung deaktivieren und für den AuthenticationContext-Konstruktor „false“ übergeben.
 
 Für die Autoritäts-URL sind die STS-Instanz und der Mandantenname erforderlich: https://login.windows.net/yourtenant.onmicrosoft.com.
 
@@ -324,7 +328,7 @@ Unten sind die wichtigsten Informationsquellen zum Diagnostizieren von Problemen
 Beachten Sie auch, dass die Korrelations-IDs zentraler Bestandteil der Diagnose in der Bibliothek sind. Sie können für Ihre Korrelations-IDs festlegen, dass sie bei Bedarf angefordert werden können, wenn Sie eine ADAL-Anforderung mit anderen Vorgängen in Ihrem Code korrelieren möchten. Wenn Sie keine Korrelations-ID festlegen, wird von der ADAL eine zufällige ID erzeugt. Diese Korrelations-ID wird dann auf alle Protokollmeldungen und Netzwerkaufrufe angewendet. Die selbst erzeugte ID ändert sich mit jeder Anforderung.
 
 #### <a name="exceptions"></a>Ausnahmen
-Dies ist natürlich die erste Diagnosemaßnahme. Wir versuchen, hilfreiche Fehlermeldungen für Sie bereitzustellen. Sie können uns ein Problem melden, falls Sie eine Fehlermeldung finden, die nicht hilfreich ist. Geben Sie dabei auch die Geräteinformationen an, z. B. Modell und SDK#.
+Dies ist natürlich die erste Diagnosemaßnahme. Wir versuchen, hilfreiche Fehlermeldungen für Sie bereitzustellen. Sie können uns ein Problem melden, falls Sie eine Fehlermeldung finden, die nicht hilfreich ist. Geben Sie dabei auch die Geräteinformationen an, z. B. Modell und SDK#.
 
 #### <a name="logs"></a>Logs
 Sie können die Bibliothek so konfigurieren, dass Protokollmeldungen generiert werden, die Sie zum Diagnostizieren von Problemen verwenden können. Sie können die Protokollierung konfigurieren, indem Sie den folgenden Aufruf verwenden. Hiermit können Sie einen Rückruf konfigurieren, der von der ADAL zum Weitergeben der Protokollmeldungen genutzt wird, wenn diese erzeugt werden.
@@ -339,7 +343,7 @@ Sie können die Bibliothek so konfigurieren, dass Protokollmeldungen generiert w
      }
  }
  ```
-Meldungen können wie unten dargestellt in eine benutzerdefinierte Protokolldatei geschrieben werden. Leider gibt es keine standardmäßige Möglichkeit, Protokolle von einem Gerät abzurufen. Es sind einige Dienste verfügbar, die Ihnen hierbei behilflich sein können. Sie können auch eigene Wege erfinden, z. B. das Senden einer Datei an einen Server.
+Meldungen können wie unten dargestellt in eine benutzerdefinierte Protokolldatei geschrieben werden. Leider gibt es keine standardmäßige Möglichkeit, Protokolle von einem Gerät abzurufen. Es sind einige Dienste verfügbar, die Ihnen hierbei behilflich sein können. Sie können auch eigene Wege erfinden, z. B. das Senden einer Datei an einen Server.
 
 ```Java
 private syncronized void writeToLogFile(Context ctx, String msg) {
@@ -376,7 +380,7 @@ Sie können ein Protokoll als Datei wie unten dargestellt aus Logcat abrufen:
 #### <a name="network-traces"></a>Netzwerkablaufverfolgung
 Sie können verschiedene Tools verwenden, um den per ADAL generierten HTTP-Datenverkehr zu erfassen.  Dies ist besonders hilfreich, wenn Sie mit dem OAuth-Protokoll vertraut sind oder wenn Sie für Microsoft oder andere Supportkanäle Diagnoseinformationen bereitstellen müssen.
 
-Fiddler ist das einfachste Tool für die Nachverfolgung von HTTP.  Verwenden Sie die folgenden Links, um die Einrichtung der richtigen Aufzeichnung von ADAL-Netzwerkdatenverkehr durchzuführen.  Damit das Tool nützlich ist, muss Fiddler – oder andere Tools, z. B. Charles – für die Aufzeichnung von unverschlüsseltem SSL-Datenverkehr konfiguriert werden.  HINWEIS: Ablaufverfolgungen, die mit diesem Verfahren generiert werden, können äußerst sensible Berechtigungsinformationen enthalten, z. B. Zugriffstoken, Benutzernamen und Kennwörter.  Wenn Sie Produktionskonten verwenden, sollten Sie diese Ablaufverfolgungen nicht für Dritte freigeben.  Wenn Sie für eine Person eine Ablaufverfolgung bereitstellen müssen, um Support zu erhalten, ist das Nachstellen des Problems mit einem temporären Konto mit Benutzernamen und Kennwörtern ratsam, für die das Freigeben kein Problem darstellt.
+Fiddler ist das einfachste Tool für die Nachverfolgung von HTTP.  Verwenden Sie die folgenden Links, um die Einrichtung der richtigen Aufzeichnung von ADAL-Netzwerkdatenverkehr durchzuführen.  Damit das Tool nützlich ist, muss Fiddler – oder andere Tools, z. B. Charles – für die Aufzeichnung von unverschlüsseltem SSL-Datenverkehr konfiguriert werden.  HINWEIS: Ablaufverfolgungen, die mit diesem Verfahren generiert werden, können äußerst sensible Berechtigungsinformationen enthalten, z. B. Zugriffstoken, Benutzernamen und Kennwörter.  Wenn Sie Produktionskonten verwenden, sollten Sie diese Ablaufverfolgungen nicht für Dritte freigeben.  Wenn Sie für eine Person eine Ablaufverfolgung bereitstellen müssen, um Support zu erhalten, ist das Nachstellen des Problems mit einem temporären Konto mit Benutzernamen und Kennwörtern ratsam, für die das Freigeben kein Problem darstellt.
 
 * [Einrichten von Fiddler für Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
 * [Konfigurieren von Fiddler-Regeln für ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler)
@@ -385,7 +389,7 @@ Fiddler ist das einfachste Tool für die Nachverfolgung von HTTP.  Verwenden Sie
 Die acquireToken-Methode ohne Aktivität unterstützt die Dialogfeldaufforderung.
 
 ### <a name="encryption"></a>Verschlüsselung
-Mit ADAL werden die Token verschlüsselt und standardmäßig unter SharedPreferences gespeichert. Sehen Sie sich die StorageHelper-Klasse an, um einen Einblick in die Details zu erhalten. Für Android wurde AndroidKeyStore für 4.3 (API18) zum sicheren Speichern privater Schlüssel eingeführt. ADAL nutzt dieses Verfahren für API18 und höher. Falls Sie ADAL für frühere SDK-Versionen verwenden möchten, müssen Sie unter „AuthenticationSettings.INSTANCE.setSecretKey“ einen geheimen Schlüssel angeben.
+Mit ADAL werden die Token verschlüsselt und standardmäßig unter SharedPreferences gespeichert. Sehen Sie sich die StorageHelper-Klasse an, um einen Einblick in die Details zu erhalten. Für Android wurde AndroidKeyStore für 4.3 (API18) zum sicheren Speichern privater Schlüssel eingeführt. ADAL nutzt dieses Verfahren für API18 und höher. Falls Sie ADAL für frühere SDK-Versionen verwenden möchten, müssen Sie unter „AuthenticationSettings.INSTANCE.setSecretKey“ einen geheimen Schlüssel angeben.
 
 ### <a name="oauth2-bearer-challenge"></a>OAuth2-Beareranforderung
 Die AuthenticationParameters-Klasse enthält Funktionen zum Abrufen des authorization_uri-Werts aus der OAuth2-Beareranforderung.
@@ -419,13 +423,16 @@ Diese sollten von Ihrer Anwendung überschrieben werden, falls lokalisierte Zeic
 =======
 
 ### <a name="ntlm-dialog"></a>NTLM-Dialogfeld
-ADAL Version 1.1.0 unterstützt das NTLM-Dialogfeld, das über das onReceivedHttpAuthRequest-Ereignis des WebViewClient-Elements verarbeitet wird. Dialogfeldlayout und Zeichenfolgen können angepasst werden.
+ADAL Version 1.1.0 unterstützt das NTLM-Dialogfeld, das über das onReceivedHttpAuthRequest-Ereignis des WebViewClient-Elements verarbeitet wird. Dialogfeldlayout und Zeichenfolgen können angepasst werden.
 
 ### <a name="cross-app-sso"></a>App-übergreifendes SSO
 Informationen zum Aktivieren von App-übergreifendem SSO unter Android mit ADAL finden Sie [hier](active-directory-sso-android.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!--HONumber=Oct16_HO4-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

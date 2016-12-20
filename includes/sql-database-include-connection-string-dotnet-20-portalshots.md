@@ -15,7 +15,7 @@ Nutzen Sie das [Azure-Portal](https://portal.azure.com/) zum Abrufen der Verbind
     ![SQL auswählen][1-select-sql]
 2. Geben Sie in das Textfeld "Filter" nahe der oberen linken Ecke des Blattes **SQL-Datenbanken** den Namen der Datenbank ein.
    
-    ![Datenbank auswählen][2-select-database]]
+    ![Datenbank auswählen][2-select-database]
 3. Klicken Sie auf die Zeile für die Datenbank.
 4. Nachdem das Blatt für die Datenbank angezeigt wird, können Sie der visuellen Einfachheit halber auf die Standardsteuerelemente zum Minimieren klicken, um die Blätter auszublenden, die Sie zum Durchsuchen und Filtern verwendet haben.
 5. Klicken Sie auf dem Blatt für die Datenbank auf **Datenbankverbindungszeichenfolgen anzeigen**.
@@ -45,6 +45,6 @@ includes/sql-database-include-connection-string-40-config.md
 -->
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

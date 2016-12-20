@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 35b0d0e7dd73852900384c34b8b842754434cc93
-ms.openlocfilehash: 4fbdb64918a642dbe899ab8b606fbf58e1fb94d3
+ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
+ms.openlocfilehash: 40ae0d242968db83c4d4d04452fbfd93559af31e
 
 
 ---
@@ -33,7 +33,7 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 | **Azure-VM** |Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher) |Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher) |
 | **Versionskompatibilität** |Versionen unter Vorgängerversionen von Update 2 oder höher |Versionen unter Update 2 oder höher |
 | **Regionale Verfügbarkeit** |Alle Azure-Regionen |Azure-Regionen, die Storage Premium unterstützen<br></br>Eine Liste dieser Regionen finden Sie unter [Unterstützte Regionen für 8020](#supported-regions-for-8020) |
-| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) |
+| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk) |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Cloudentwicklungs- und Testszenarien, niedrige Latenz und Workloads mit höherer Leistung  <br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
 <sup>1</sup> *Ehemals 1100*.
@@ -41,7 +41,7 @@ Das virtuelle StorSimple-Gerät steht in zwei Modellen zur Verfügung, dem Stand
 <sup>2</sup> *Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
 
 #### <a name="supported-regions-for-8020"></a>Unterstützte Regionen für 8020
-Die derzeit für 8020 unterstützten Storage Premium-Regionen sind unten in Tabellenform aufgeführt. Diese Liste wird laufend aktualisiert, wenn Storage Premium in weiteren Regionen verfügbar wird. 
+Die derzeit für 8020 unterstützten Storage Premium-Regionen sind unten in Tabellenform aufgeführt. Diese Liste wird laufend aktualisiert, wenn Storage Premium in weiteren Regionen verfügbar wird.
 
 | S. Nr. | Derzeit in folgenden Regionen unterstützt |
 | --- | --- |
@@ -68,7 +68,7 @@ In diesem Artikel werden die einzelnen Schritte beim Bereitstellen eines virtuel
 * Herstellen einer Verbindung mit dem virtuellen Gerät
 * Arbeiten mit dem virtuellen Gerät
 
-Dieses Tutorial gilt für alle virtuellen StorSimple-Geräte mit Update 2 und höher. 
+Dieses Tutorial gilt für alle virtuellen StorSimple-Geräte mit Update 2 und höher.
 
 ## <a name="how-the-virtual-device-differs-from-the-physical-device"></a>Unterschiede zwischen virtuellem und physischem Gerät
 Das virtuelle StorSimple-Gerät ist eine reine Softwareversion von StorSimple, die auf einem einzelnen Knoten eines virtuellen Microsoft Azure-Computers ausgeführt wird. Das virtuelle Gerät unterstützt Notfallwiederherstellungsszenarien, in denen das physische Gerät nicht verfügbar ist. Zudem kann es zum Abruf einzelner Elemente aus Sicherungen, bei der lokalen Notfallwiederherstellung und für Entwicklungs- und Testszenarien in der Cloud verwendet werden.
@@ -91,9 +91,9 @@ Bevor Sie das virtuelle Gerät bereitstellen, müssen Sie in Ihrer Umgebung die 
 
 * [Konfigurieren Sie ein virtuelles Netzwerk in Azure](../virtual-network/virtual-networks-create-vnet-classic-portal.md)für das virtuelle Gerät. Wenn Sie Storage Premium verwenden, müssen Sie ein virtuelles Netzwerk in einer Azure-Region erstellen, die Storage Premium unterstützt. Weitere Informationen zu [Regionen, die derzeit für 8020 unterstützt werden](#supported-regions-for-8020).
 * Es empfiehlt sich, die von Azure bereitgestellten DNS-Standardserver zu verwenden, anstatt einen eigenen DNS-Servernamen anzugeben. Wenn Ihr DNS-Servername ungültig ist oder der DNS-Server IP-Adressen nicht ordnungsgemäß auflösen kann, ist die Erstellung des virtuellen Geräts nicht möglich.
-* Punkt-zu-Standort und Standort-zu-Standort sind optional, aber nicht erforderlich. Sie können diese Optionen gegebenenfalls für erweiterte Szenarios konfigurieren. 
+* Punkt-zu-Standort und Standort-zu-Standort sind optional, aber nicht erforderlich. Sie können diese Optionen gegebenenfalls für erweiterte Szenarios konfigurieren.
 * Sie können [virtuelle Azure-Computer](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Hostserver) im virtuellen Netzwerk erstellen, die die vom virtuellen Gerät verfügbar gemachten Volumes verwenden können. Diese Server müssen die folgenden Anforderungen erfüllen:                             
-  
+
   * Es muss sich um virtuelle Windows- oder Linux-Computer mit iSCSI-Initiatorsoftware handeln.
   * Sie müssen im gleichen virtuellen Netzwerk wie das virtuelle Gerät ausgeführt werden.
   * Sie müssen über die interne IP-Adresse des virtuellen Geräts eine Verbindung zum iSCSI-Ziel des virtuellen Geräts herstellen können.
@@ -103,7 +103,7 @@ Bevor Sie das virtuelle Gerät bereitstellen, müssen Sie in Ihrer Umgebung die 
 Nehmen Sie vor dem Erstellen eines virtuellen Geräts die folgenden Updates für den Azure StorSimple-Dienst vor:
 
 * Fügen Sie den virtuellen Computern, die als Hostserver für Ihr virtuelles Gerät fungieren sollen, [Zugriffssteuerungsdatensätze](storsimple-manage-acrs.md) hinzu.
-* Verwenden Sie ein [Speicherkonto](storsimple-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das virtuelle Gerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Storage Standard- oder Premium-Konto mit dem virtuellen Gerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos]((../storage/storage-create-storage-account.md) oder eines [Storage Premium-Kontos](../storage/storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)
+* Verwenden Sie ein [Speicherkonto](storsimple-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das virtuelle Gerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Storage Standard- oder Premium-Konto mit dem virtuellen Gerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos]((../storage/storage-create-storage-account.md) oder eines [Storage Premium-Kontos](../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)
 * Verwenden Sie zum Erstellen des virtuellen Geräts ein anderes Speicherkonto als das, das für die Daten verwendet wird. Die Verwendung ein und desselben Speicherkontos kann zu Leistungseinbußen führen.
 
 Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
@@ -112,9 +112,9 @@ Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
 * Eine Kopie des Schlüssels für die Dienstdatenverschlüsselung des physischen Geräts.
 
 ## <a name="create-and-configure-the-virtual-device"></a>Erstellen und Konfigurieren des virtuellen Geräts
-Stellen Sie vor Durchführung dieser Schritte sicher, dass die [Voraussetzungen für das virtuelle Gerät](#prerequisites-for-the-virtual-device)erfüllt sind. 
+Stellen Sie vor Durchführung dieser Schritte sicher, dass die [Voraussetzungen für das virtuelle Gerät](#prerequisites-for-the-virtual-device)erfüllt sind.
 
-Nachdem Sie ein virtuelles Netzwerk erstellt, einen StorSimple Manager-Dienst konfiguriert und das physische StorSimple-Gerät beim Dienst registriert haben, können Sie mithilfe der folgenden Schritte ein virtuelles StorSimple-Gerät erstellen und konfigurieren. 
+Nachdem Sie ein virtuelles Netzwerk erstellt, einen StorSimple Manager-Dienst konfiguriert und das physische StorSimple-Gerät beim Dienst registriert haben, können Sie mithilfe der folgenden Schritte ein virtuelles StorSimple-Gerät erstellen und konfigurieren.
 
 ### <a name="step-1-create-a-virtual-device"></a>Schritt 1: Erstellen eines virtuellen Geräts
 Führen Sie die folgenden Schritte aus, um das virtuelle StorSimple-Gerät zu erstellen.
@@ -144,8 +144,8 @@ Der StorSimple-Momentaufnahme-Manager befindet sich auf dem Windows-Host und erm
 
 > [!NOTE]
 > Für das virtuelle Gerät handelt es sich beim Windows-Host um einen virtuellen Azure-Computer.
-> 
-> 
+>
+>
 
 Beim Konfigurieren eines Geräts im StorSimple-Momentaufnahme-Manager werden Sie aufgefordert, zur Authentifizierung des Speichergeräts die IP-Adresse und das Kennwort des StorSimple-Geräts anzugeben. Ausführliche Schritte finden Sie unter [Konfigurieren des StorSimple Snapshot Manager-Kennworts](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password).
 
@@ -167,13 +167,13 @@ Wenn Sie die Windows PowerShell-Remoteverwaltung auf der Konfigurationsseite des
 
 > [!WARNING]
 > **Aus Sicherheitsgründen wird dringend empfohlen, für Endpunktverbindungen HTTPS zu verwenden und die Endpunkte nach Abschluss der PowerShell-Remotesitzung zu löschen.**
-> 
-> 
+>
+>
 
 Beim Einrichten von Remoting für Ihr virtuelles Gerät sollten Sie die Schritte unter [Remoteverbindungen mit dem StorSimple-Gerät](storsimple-remote-connect.md) durchführen.
 
 ## <a name="connect-directly-to-the-virtual-device"></a>Herstellen einer direkten Verbindung mit dem virtuellen Gerät
-Sie können auch eine direkte Verbindung mit dem virtuellen Gerät herstellen. Wenn Sie von einem anderen Computer außerhalb des virtuellen Netzwerks oder außerhalb der Microsoft Azure-Umgebung eine Direktverbindung mit dem virtuellen Gerät herstellen möchten, müssen Sie wie im Folgenden beschrieben zusätzliche Endpunkte erstellen. 
+Sie können auch eine direkte Verbindung mit dem virtuellen Gerät herstellen. Wenn Sie von einem anderen Computer außerhalb des virtuellen Netzwerks oder außerhalb der Microsoft Azure-Umgebung eine Direktverbindung mit dem virtuellen Gerät herstellen möchten, müssen Sie wie im Folgenden beschrieben zusätzliche Endpunkte erstellen.
 
 Führen Sie die folgenden Schritte durch, um auf dem virtuellen Gerät einen öffentlichen Endpunkt zu erstellen:
 
@@ -227,8 +227,8 @@ Die Notfallwiederherstellung ist eines der wichtigsten Szenarios, für die das v
 > [!NOTE]
 > * Wenn Sie ein virtuelles Gerät als sekundäres Gerät für die Notfallwiederherstellung einsetzen, bedenken Sie, dass 8010 über 30 TB Standardspeicher und 8020 über 64 TB Premium-Speicher verfügt. Das virtuelle Gerät mit der höheren Kapazität, 8020, ist möglicherweise für ein DR-Szenario besser geeignet.
 > * Ein Failover oder das Klonen eines Geräts mit Update 2 auf ein Gerät mit Software vor Update 1 ist nicht möglich. Sie können jedoch ein Failover für ein Gerät mit Update 2 auf ein Gerät mit Update 1 (1.1 oder 1.2) durchführen.
-> 
-> 
+>
+>
 
 Eine Schrittanleitung finden Sie unter [Failover auf ein virtuelles Gerät](storsimple-device-failover-disaster-recovery.md#fail-over-to-a-storsimple-virtual-device).
 
@@ -245,21 +245,20 @@ Wenn Sie das virtuelle Gerät herunterfahren oder löschen, wird es auf der Seit
 Wenn beim Erstellen eines virtuellen Geräts keine Verbindung mit dem Internet besteht, kann der Erstellungsschritt nicht erfolgreich ausgeführt werden. Führen Sie im klassischen Azure-Portal die folgenden Problembehandlungsschritte aus, falls der Fehler auf die Internetverbindung zurückzuführen ist:
 
 1. Erstellen Sie in Azure einen virtuellen Windows Server 2012-Computer. Dieser virtuelle Computer muss das gleiche Speicherkonto, virtuelle Netzwerk und Subnetz verwenden wie ihr virtuelles Gerät. Wenn Sie in Azure bereits über einen Windows Server-Host mit dem gleichen Speicherkonto, virtuellen Netzwerk und Subnetz verfügen, können Sie zum Behandeln von Internetverbindungsproblemen auch diesen Host verwenden.
-2. Melden Sie sich remote bei dem virtuellen Computer an, den Sie im vorherigen Schritt erstellt haben. 
+2. Melden Sie sich remote bei dem virtuellen Computer an, den Sie im vorherigen Schritt erstellt haben.
 3. Öffnen Sie auf dem virtuellen Computer ein Befehlsfenster. (Drücken Sie WINDOWS-TASTE+R, und geben Sie `cmd` ein.)
 4. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus:
-   
+
     `nslookup windows.net`
-5. Sollte bei `nslookup` ein Fehler auftreten, kann das virtuelle Gerät aufgrund eines Internetverbindungsfehlers nicht beim StorSimple Manager-Dienst registriert werden. 
+5. Sollte bei `nslookup` ein Fehler auftreten, kann das virtuelle Gerät aufgrund eines Internetverbindungsfehlers nicht beim StorSimple Manager-Dienst registriert werden.
 6. Passen Sie Ihr virtuelles Netzwerk entsprechend an, um sicherzustellen, dass das virtuelle Gerät auf Azure-Websites wie „windows.net“ zugreifen kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie beim [Verwalten Ihres virtuellen Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md)vorgehen.
-* Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md). 
+* Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md).
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

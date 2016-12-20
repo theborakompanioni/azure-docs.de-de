@@ -1,13 +1,13 @@
 ---
 title: Registrieren von Datenquellen | Microsoft Docs
-description: Anleitungsartikel mit Informationen zum Registrieren von Datenquellen bei Azure Data Catalog, einschließlich der während der Registrierung extrahierten Metadatenfelder.
+description: "Anleitungsartikel mit Informationen zum Registrieren von Datenquellen bei Azure Data Catalog, einschließlich der während der Registrierung extrahierten Metadatenfelder."
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/04/2016
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 25c2b279487f099a0e688621e63faaa4ed265e6e
+
 
 ---
 # <a name="how-to-register-data-sources"></a>Registrieren von Datenquellen
@@ -46,10 +50,10 @@ Zusätzlich zu den aus der Datenquelle extrahierten beschreibenden Metadaten kö
 ## <a name="including-previews"></a>Einschließen einer Vorschau
 In der Standardeinstellung werden nur Metadaten aus Datenquellen extrahiert und in den **Azure Data Catalog**-Dienst kopiert. Doch eine Datenquelle lässt sich häufig anhand eines Beispiels der darin enthaltenen Daten veranschaulichen.
 
-Mit dem **Azure Data Catalog** -Tool zum Registrieren von Datenquellen können Benutzer eine Vorschau der Daten in Form einer Momentaufnahme jeder registrierten Tabelle oder Sicht hinzufügen. Wenn sich der Benutzer während der Registrierung für das Einschließen von Vorschauen entscheidet, fügt das Registrierungstool bis zu 20 Datensätze aus jeder Tabelle oder Sicht hinzu. Diese Momentaufnahme wird dann zusammen mit den strukturellen und beschreibenden Metadaten in den Katalog kopiert.
+Mit dem **Azure Data Catalog** -Tool zum Registrieren von Datenquellen können Benutzer eine Vorschau der Daten in Form einer Momentaufnahme jeder registrierten Tabelle oder Sicht hinzufügen. Wenn sich der Benutzer während der Registrierung für das Einschließen von Vorschauen entscheidet, fügt das Registrierungstool bis zu 20 Datensätze aus jeder Tabelle oder Sicht hinzu. Diese Momentaufnahme wird dann zusammen mit den strukturellen und beschreibenden Metadaten in den Katalog kopiert.
 
 > [!NOTE]
-> Für eine breite Tabellen mit einer großen Anzahl von Spalten werden möglicherweise weniger als 20 Datensätze in deren Vorschau eingefügt.
+> Für eine breite Tabellen mit einer großen Anzahl von Spalten werden möglicherweise weniger als 20 Datensätze in deren Vorschau eingefügt.
 > 
 > 
 
@@ -71,7 +75,7 @@ Diese statistischen Daten werden dann zusammen mit den strukturellen und beschre
 > 
 
 ## <a name="updating-registrations"></a>Aktualisieren von Registrierungen
-Durch das Registrieren einer Datenquelle kann diese in **Azure Data Catalog** anhand der Metadaten und der optionalen Vorschau ermittelt werden, die während der Registrierung extrahiert wurden. Wenn die Datenquelle im Katalog aktualisiert werden muss (z. B. wenn das Schema eines Objekts geändert wurde, ursprünglich ausgeschlossene Tabellen eingeschlossen werden sollen oder ein Benutzer die in der Vorschau enthaltenen Daten aktualisieren möchte), kann das Registrierungstool für Datenquellen erneut ausgeführt werden.
+Durch das Registrieren einer Datenquelle kann diese in **Azure Data Catalog** anhand der Metadaten und der optionalen Vorschau ermittelt werden, die während der Registrierung extrahiert wurden. Wenn die Datenquelle im Katalog aktualisiert werden muss (z. B. wenn das Schema eines Objekts geändert wurde, ursprünglich ausgeschlossene Tabellen eingeschlossen werden sollen oder ein Benutzer die in der Vorschau enthaltenen Daten aktualisieren möchte), kann das Registrierungstool für Datenquellen erneut ausgeführt werden.
 
 Beim erneuten Registrieren einer bereits registrierten Datenquelle werden neue Objekte erstellt, während vorhandene Objekte aktualisiert werden. Alle von Benutzern über das **Azure Data Catalog** -Portal bereitgestellten Metadaten bleiben erhalten.
 
@@ -81,6 +85,9 @@ Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden struk
 ## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) .
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

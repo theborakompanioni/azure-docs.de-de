@@ -1,13 +1,13 @@
 ---
-title: Programmgesteuertes Überwachen von Stream Analytics-Aufträgen | Microsoft Docs
-description: Erfahren Sie, wie Sie Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, programmgesteuert überwachen können.
-keywords: .NET-Überwachung, Auftragsüberwachung, Überwachungs-App
+title: "Programmgesteuertes Überwachen von Stream Analytics-Aufträgen | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, programmgesteuert überwachen können."
+keywords: ".NET-Überwachung, Auftragsüberwachung, Überwachungs-App"
 services: stream-analytics
-documentationcenter: ''
+documentationcenter: 
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 2ec02cc9-4ca5-4a25-ae60-c44be9ad4835
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,23 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 09/26/2016
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 183cc2025bd909ea4450564bc3598c2694b1c0db
+
 
 ---
-# Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
- Dieser Artikel erläutert, wie die Überwachung für einen Stream Analytics-Auftrag aktiviert wird. Für Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, ist in der Standardeinstellung keine Überwachung aktiviert. Sie können diese manuell im Azure-Portal aktivieren, indem Sie zur Überwachungsseite des Auftrags wechseln und auf die Schaltfläche "Aktivieren" klicken. Sie können diesen Prozess auch automatisieren, indem Sie die Schritte in diesem Artikel befolgen. Die Überwachungsdaten werden im Azure-Portal auf der Registerkarte "Überwachung" für den Stream Analytics-Auftrag angezeigt.
+# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
+ Dieser Artikel erläutert, wie die Überwachung für einen Stream Analytics-Auftrag aktiviert wird. Für Stream Analytics-Aufträge, die mit REST-APIs, Azure SDK oder PowerShell erstellt wurden, ist in der Standardeinstellung keine Überwachung aktiviert.  Sie können diese manuell im Azure-Portal aktivieren, indem Sie zur Überwachungsseite des Auftrags wechseln und auf die Schaltfläche "Aktivieren" klicken. Sie können diesen Prozess auch automatisieren, indem Sie die Schritte in diesem Artikel befolgen. Die Überwachungsdaten werden im Azure-Portal auf der Registerkarte "Überwachung" für den Stream Analytics-Auftrag angezeigt.
 
 ![Registerkarte „Aufträge überwachen“](./media/stream-analytics-monitor-jobs/stream-analytics-monitor-jobs-tab.png)
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-* Visual Studio 2012 oder 2013.
-* Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/) herunter, und installieren Sie es.
+* Visual Studio 2012 oder 2013.
+* Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/)herunter, und installieren Sie es.
 * Ein vorhandener Stream Analytics-Auftrag, für den die Überwachung aktiviert werden muss.
 
-## Einrichten eines Projekts
+## <a name="setup-a-project"></a>Einrichten eines Projekts
 1. Erstellen Sie eine Visual Studio C# .NET-Konsolenanwendung.
-2. Führen Sie in der Paket-Manager-Konsole die folgenden Befehle zum Installieren der NuGet-Pakete aus. Das erste ist das Azure Stream Analytics Management .NET SDK. Das zweite ist das Azure Insights SDK, mit dem die Überwachung aktiviert wird. Das letzte ist der Azure Active Directory-Client, der für die Authentifizierung verwendet wird.
+2. Führen Sie in der Paket-Manager-Konsole die folgenden Befehle zum Installieren der NuGet-Pakete aus. Das erste ist das Azure Stream Analytics Management .NET SDK. Das zweite ist das Azure Monitor SDK, mit dem die Überwachung aktiviert wird. Das letzte ist der Azure Active Directory-Client, der für die Authentifizierung verwendet wird.
    
    ```
    Install-Package Microsoft.Azure.Management.StreamAnalytics
@@ -55,7 +59,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   Ersetzen Sie die Werte für *SubscriptionId* und *ActiveDirectoryTenantId* durch Ihre Abonnement- und Mandanten-ID für Azure. Sie können diese Werte durch Ausführen des folgenden PowerShell-Cmdlets abrufen:
+   Ersetzen Sie die Werte für *SubscriptionId* und *ActiveDirectoryTenantId* durch die IDs Ihres Azure-Abonnements und -Mandanten. Sie können diese Werte durch Ausführen des folgenden PowerShell-Cmdlets abrufen:
    
    ```
    Get-AzureAccount
@@ -112,7 +116,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
              throw new InvalidOperationException("Failed to acquire token");
      }
 
-## Erstellen von Verwaltungsclients
+## <a name="create-management-clients"></a>Erstellen von Verwaltungsclients
 Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclients eingerichtet.
 
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -133,7 +137,7 @@ Mit dem folgenden Code werden die erforderlichen Variablen und Verwaltungsclient
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
 
-## Aktivieren der Überwachung für einen vorhandenen Stream Analytics-Auftrag
+## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Aktivieren der Überwachung für einen vorhandenen Stream Analytics-Auftrag
 Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream Analytics-Auftrag aktiviert. Der erste Teil des Codes führt eine GET-Anforderung an den Stream Analytics-Dienst aus, um Daten zum jeweiligen Stream Analytics-Auftrag abzurufen. Hierbei wird die (mit der GET-Anforderung abgerufene) "Id"-Eigenschaft als Parameter für die Put-Methode in der zweiten Hälfte des Codes verwendet, die eine PUT-Anforderung an den Insights-Dienst sendet, um die Überwachung des Stream Analytics-Auftrags zu aktivieren.
 
 > [!WARNING]
@@ -166,14 +170,19 @@ Mit dem folgenden Code wird die Überwachung für einen **vorhandenen** Stream A
 
 
 
-## Support
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureStreamAnalytics).
+## <a name="get-support"></a>Support
+Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-get-started.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

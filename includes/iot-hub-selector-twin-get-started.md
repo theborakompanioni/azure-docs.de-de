@@ -9,25 +9,25 @@ Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metad
 
 Verwenden Sie Gerätezwillinge für Folgendes:
 
-* Speichern von Gerätemetadaten von Ihrem Back-End
+* Speichern von Gerätemetadaten von Ihrem Lösungs-Back-End
 * Melden von aktuellen Zustandsinformationen, z.B. verfügbare Funktionen und Bedingungen (wie die verwendete Verbindungsmethode), von Ihrer Geräte-App
-* Synchronisieren des Zustands von Workflows mit langer Ausführungsdauer (z.B. Firmware- und Konfigurationsupdates) zwischen Geräte-App und Back-End
+* Synchronisieren des Zustands von Workflows mit langer Ausführungsdauer (z.B. Firmware- und Konfigurationsupdates) zwischen einer Geräte-App und einer Back-End-App
 * Abfragen von Metadaten, Konfiguration oder Status des Geräts
 
 > [!NOTE]
-> Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Verwenden Sie [D2C-Nachrichten][lnk-d2c] für Sequenzen mit Ereignissen mit Zeitstempel (z.B. Telemetriedatenströme mit zeitbasierten Sensordaten) und [direkte Methoden][lnk-methods] für die interaktive Steuerung von Geräten, z.B. Einschalten eines Ventilators über eine benutzergesteuerte App.
+> Gerätezwillinge sind für die Synchronisierung und zum Abfragen von Gerätekonfigurationen und -bedingungen ausgelegt. Weitere Informationen dazu, wann Sie Gerätezwillinge verwenden sollten, finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins].
 > 
 > 
 
 Gerätezwillinge werden in einem IoT Hub gespeichert und enthalten Folgendes:
 
-* *Tags*: Gerätemetadaten, auf die nur vom Back-End zugegriffen werden kann.
-* *Gewünschte Eigenschaften*: JSON-Objekte, die vom Back-End geändert und von der Geräte-App überwacht werden können.
-* *Gemeldete Eigenschaften*: JSON-Objekte, die von der Geräte-App geändert und vom Back-End gelesen werden können. Tags und Eigenschaften können keine Arrays enthalten, aber Objekte können geschachtelt werden.
+* *Tags:* Gerätemetadaten, auf die nur vom Lösungs-Back-End zugegriffen werden kann
+* *Gewünschte Eigenschaften:* JSON-Objekte, die vom Lösungs-Back-End geändert und von der Geräte-App überwacht werden können
+* *Gemeldete Eigenschaften:* JSON-Objekte, die von der Geräte-App geändert und vom Lösungs-Back-End gelesen werden können. Tags und Eigenschaften können keine Arrays enthalten, aber Objekte können geschachtelt werden.
 
 ![][img-twin]
 
-Außerdem können mit dem App-Back-End Gerätezwillinge basierend auf allen obigen Daten abgefragt werden.
+Außerdem können mit dem Lösungs-Back-End Gerätezwillinge basierend auf allen obigen Daten abgefragt werden.
 Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Gerätezwillingen][lnk-twins], und eine Referenz zu Abfragen finden Sie unter [IoT Hub-Abfragesprache][lnk-query].
 
 > [!NOTE]
@@ -37,7 +37,7 @@ Weitere Informationen zu Gerätezwillingen finden Sie unter [Grundlegendes zu Ge
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-* Erstellen Sie eine Back-End-App, mit der einem Gerätezwilling *Tags* hinzufügt werden, sowie ein simuliertes Gerät, von dem der Konnektivitätskanal als *gemeldete Eigenschaft* auf dem Gerätezwilling gemeldet wird.
+* Erstellen Sie eine Back-End-App, mit der einem Gerätezwilling *Tags* hinzufügt werden, sowie eine simulierte Geräte-App, die ihren Konnektivitätskanal als *gemeldete Eigenschaft* auf dem Gerätezwilling meldet.
 * Fragen Sie Geräte von Ihrer Back-End-App ab, indem Sie Filter für die zuvor erstellten Tags und Eigenschaften verwenden.
 
 <!-- images -->
@@ -50,6 +50,6 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 [lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

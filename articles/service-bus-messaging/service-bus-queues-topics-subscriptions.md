@@ -1,22 +1,26 @@
 ---
 title: Service Bus-Warteschlangen, -Themen und -Abonnements | Microsoft Docs
-description: Überblick über Service Bus-Nachrichtenentitäten
-services: service-bus
+description: "Überblick über Service Bus-Nachrichtenentitäten"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a306ced4-74e9-47c6-990a-d9c47efa31d5
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/14/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: edee84938bddf28ac4dbf4152ccf9d7ab6afe6c3
+
 
 ---
-# <a name="service-bus-queues,-topics,-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
+# <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 Microsoft Azure Service Bus unterstützt einen Satz cloudbasierter, nachrichtenorientierter Middlewaretechnologien, darunter zuverlässiges Message Queuing und dauerhaftes Veröffentlichungs-/Abonnementmessaging. Diese Brokermessagingfunktionen kann man sich als asynchrone, entkoppelte Messagingfeatures vorstellen, die unter Verwendung des Service Bus-Messagingfabric verschiedene Szenarien wie Veröffentlichung/Abonnements, vorübergehende Entkopplung und Lastenausgleich unterstützen. Entkoppelte Kommunikation hat viele Vorteile, beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
 
 Den Kern der Brokermessagingfunktionen in Service Bus bilden die folgenden Messagingentitäten: Warteschlangen, Themen/Abonnements und Regeln/Aktionen.
@@ -156,12 +160,15 @@ Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentatio
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Beispiele für die Verwendung von Service Bus-Brokermessagingentitäten finden Sie in den folgenden erweiterten Themen.
 
-* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 * [.NET-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-dotnet.md)
 * [REST-Tutorial zu Service Bus-Brokermessaging](service-bus-brokered-tutorial-rest.md)
 * [Themenfilter – Beispiel](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
 * [Brokermessaging: Beispiel für erweiterte Filter](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

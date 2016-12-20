@@ -1,12 +1,12 @@
 ---
 title: Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen | Microsoft Docs
-description: Verwalten der Einstellungen für Gruppen mithilfe von Azure Active Directory-Cmdlets.
+description: "Verwalten der Einstellungen für Gruppen mithilfe von Azure Active Directory-Cmdlets."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 9f2090e6-3af4-4f07-bbb2-1d18dae89b73
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 6a8bd076830d9b639007ee0130320869d2a63746
+
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
@@ -98,7 +102,7 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen entfernt, die fü
 ## <a name="cmdlet-syntax-reference"></a>Referenz der Cmdletsyntax
 Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azure Active Directory-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=808260).
 
-## <a name="settingstemplate-object-reference-(group.unified-settingstemplate-object)"></a>SettingsTemplate-Objektreferenz (SettingsTemplate-Objekt „Group.Unified“)
+## <a name="settingstemplate-object-reference-groupunified-settingstemplate-object"></a>SettingsTemplate-Objektreferenz (SettingsTemplate-Objekt „Group.Unified“)
 * "name": "EnableGroupCreation", "type": "System.Boolean", "defaultValue": "true", "description": "A boolean flag indicating if the Unified Group creation feature is on."
 * "name": "GroupCreationAllowedGroupId", "type": "System.Guid", "defaultValue": "", "description": "GUID of the security group that is whitelisted to create Unified Groups."
 * "name": "ClassificationList", "type": "System.String", "defaultValue": "", "description": "A comma-delimited list of valid classification values that can be applied to Unified Groups."
@@ -119,6 +123,9 @@ Zusätzliche Anleitungen des Microsoft-Programmmanagers Rob de Jong stehen unter
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

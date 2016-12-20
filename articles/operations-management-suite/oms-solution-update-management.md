@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 12/06/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+ms.sourcegitcommit: 705bbd78970c6e3c20ef7214704194f722da09a6
+ms.openlocfilehash: 0f00d5a3b8116864d9e66c18d535f319b31b9f9c
 
 
 ---
-# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![Lösung für die Updateverwaltung in OMS](./media/oms-solution-update-management/update-management-solution-icon.png) Lösung für die Updateverwaltung in OMS
+# <a name="update-management-solution-in-oms"></a>Lösung für die Updateverwaltung in OMS
 Mit der Lösung für die Updateverwaltung in OMS können Sie Updates für Ihre Windows- und Linux-Computer verwalten.  Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell bewerten und den Installationsvorgang initiieren, der für die Serverupdates erforderlich ist. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -33,7 +33,10 @@ Mit der Lösung für die Updateverwaltung in OMS können Sie Updates für Ihre W
 * Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.  Der OMS-Agent für Linux kann von [GitHub](https://github.com/microsoft/oms-agent-for-linux) heruntergeladen werden. 
 
 ## <a name="configuration"></a>Konfiguration
-Führen Sie die folgenden Schritte aus, um die Lösung für die Updateverwaltung dem OMS-Arbeitsbereich und Linux-Agents hinzuzufügen.  Windows-Agents werden automatisch ohne weitere Konfiguration hinzugefügt.
+Führen Sie die folgenden Schritte aus, um die Lösung für die Updateverwaltung dem OMS-Arbeitsbereich und Linux-Agents hinzuzufügen. Windows-Agents werden automatisch ohne weitere Konfiguration hinzugefügt.
+
+> [!NOTE]
+> Wenn Sie derzeit diese Lösung aktivieren, werden alle mit dem OMS-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um Runbooks zu unterstützen, die Teil dieser Lösung sind.  Der Computer ist jedoch für keine Hybrid Worker-Gruppen registriert, die Sie in Ihrem Automation-Konto erstellt haben, und Sie können ihn nicht zu einer Hybrid Worker-Gruppe hinzufügen, um eigene Runbooks auszuführen.  Wenn ein Windows-Computer bereits als Hybrid Runbook Worker festgelegt und mit dem OMS-Arbeitsbereich verbunden ist, müssen Sie ihn aus dem OMS-Arbeitsbereich entfernen, bevor Sie die Lösung hinzufügen, um sicherzustellen, dass Ihre Runbooks wie erwartet funktionieren.  
 
 1. Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../log-analytics/log-analytics-add-solutions.md) beschriebenen Verfahrens Ihrem OMS-Arbeitsbereich die Lösung für die Updateverwaltung hinzu.  
 2. Wählen Sie im OMS-Portal die Option **Einstellungen** und dann **Verbundene Quellen**.  Notieren Sie sich die **Arbeitsbereich-ID** und den **Primären Schlüssel** oder **Sekundären Schlüssel**.
@@ -41,11 +44,13 @@ Führen Sie die folgenden Schritte aus, um die Lösung für die Updateverwaltung
    
    a.    Installieren Sie die aktuelle Version des OMS-Agents für Linux, indem Sie die folgenden Befehle ausführen.  Ersetzen Sie <Workspace ID> durch die Arbeitsbereich-ID und <Key> durch den primären bzw. sekundären Schlüssel.
    
-     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
-   
+        cd ~
+        wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh  
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+
    b. Führen Sie den folgenden Befehl aus, um den Agent zu entfernen.
    
-     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
 
 ## <a name="management-packs"></a>Management Packs
 Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit Ihrem OMS-Arbeitsbereich verbunden ist, werden beim Hinzufügen dieser Lösung die folgenden Management Packs in Operations Manager installiert. Für diese Management Packs ist keine Konfiguration oder Wartung erforderlich. 
@@ -242,6 +247,6 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Windows Phone Silverlight SDK – Übersicht
-description: Übersicht über das Windows Phone Silverlight SDK für Azure Mobile Engagement
+title: "Windows Phone Silverlight SDK – Übersicht"
+description: "Übersicht über das Windows Phone Silverlight SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 0e3d2420-0509-4952-8891-392e3dad9aaf
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
@@ -14,39 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 105335b3c4c6e805f9398fbc002d5c4051acd147
+
 
 ---
-# Übersicht über das Windows Phone Silverlight SDK für Azure Mobile Engagement
-Beginnen Sie hier, um Details zur Integration von Azure Mobile Engagement in einer Windows Phone Silverlight-App abzurufen. Wenn Sie es gleich ausprobieren möchten, sollten Sie unbedingt das [15-Minuten-Lernprogramm](mobile-engagement-windows-phone-get-started.md) bearbeiten.
+# <a name="windows-phone-silverlight-sdk-overview-for-azure-mobile-engagement"></a>Übersicht über das Windows Phone Silverlight SDK für Azure Mobile Engagement
+Beginnen Sie hier, um Details zur Integration von Azure Mobile Engagement in einer Windows Phone Silverlight-App abzurufen. Wenn Sie es gleich ausprobieren möchten, sollten Sie unbedingt das [15-Minuten-Lernprogramm](mobile-engagement-windows-phone-get-started.md)bearbeiten.
 
-Klicken Sie, um den [SDK-Inhalt](mobile-engagement-windows-phone-sdk-content.md) anzuzeigen
+Klicken Sie, um den [SDK-Inhalt](mobile-engagement-windows-phone-sdk-content.md)
 
-## Integrationsverfahren
+## <a name="integration-procedures"></a>Integrationsverfahren
 1. Hier starten: [Integrieren von Mobile Engagement in eine Windows Phone Silverlight-App](mobile-engagement-windows-phone-integrate-engagement.md)
 2. Für Benachrichtigungen: [Integration von Reach (Benachrichtigungen) in einer Windows Phone Silverlight-App](mobile-engagement-windows-phone-integrate-engagement-reach.md)
 3. Tag-Plan-Implementierung: [Verwenden der erweiterten Mobile Engagement-Tagging-API in einer Windows Phone Silverlight-App](mobile-engagement-windows-phone-use-engagement-api.md)
 
-## Versionshinweise
-### 3\.3.0 (19.04.2016)
-Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement* **v3.4.0**
+## <a name="release-notes"></a>Versionshinweise
+### <a name="330-04192016"></a>3.3.0 (19.04.2016)
+Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement***v3.4.0**
 
 * „TestLogLevel“-API zum Aktivieren/Deaktivieren/Filtern von Konsolenprotokollen, die vom SDK ausgegeben wurden, wurde hinzugefügt.
 
 Eine frühere Version finden Sie unter [Vollständige Versionshinweise](mobile-engagement-windows-phone-release-notes.md)
 
-## Upgrade-Verfahren
+## <a name="upgrade-procedures"></a>Upgrade-Verfahren
 Wenn Sie bereits eine ältere Version unseres SDK in Ihrer Anwendung integriert haben, müssen Sie die folgenden Punkte beim Aktualisieren des SDK beachten.
 
-Möglicherweise müssen Sie mehrere Verfahren befolgen, wenn Sie mehrere Versionen des SDK übersprungen haben. Die vollständigen [Upgrade-Verfahren](mobile-engagement-windows-phone-upgrade-procedure.md) lesen. Wenn Sie beispielsweise von 0.10.1 zu 0.11.0 migrieren, müssen Sie zunächst den Vorgang "von 0.9.0 zu 0.10.1" ausführen und anschließend den Vorgang "0.10.1 zu 0.11.0".
+Möglicherweise müssen Sie mehrere Verfahren befolgen, wenn Sie mehrere Versionen des SDK übersprungen haben. Die vollständigen [Upgrade-Verfahren](mobile-engagement-windows-phone-upgrade-procedure.md)lesen. Wenn Sie beispielsweise von 0.10.1 zu 0.11.0 migrieren, müssen Sie zunächst den Vorgang "von 0.9.0 zu 0.10.1" ausführen und anschließend den Vorgang "0.10.1 zu 0.11.0".
 
-### Von 2.0.0 zu 3.3.0
-#### Testprotokolle
+### <a name="from-200-to-330"></a>Von 2.0.0 zu 3.3.0
+#### <a name="test-logs"></a>Testprotokolle
 Vom SDK produzierte Konsolenprotokolle können jetzt aktiviert/deaktiviert/gefiltert werden. Um diese anzupassen, aktualisieren Sie die Eigenschaft `EngagementAgent.Instance.TestLogEnabled` auf einen der aus der `EngagementTestLogLevel`-Enumeration verfügbaren Werte, beispielsweise:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-### Upgrade von älteren Versionen
+### <a name="upgrade-from-older-versions"></a>Upgrade von älteren Versionen
 Siehe [Upgrade-Verfahren](mobile-engagement-windows-phone-upgrade-procedure.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

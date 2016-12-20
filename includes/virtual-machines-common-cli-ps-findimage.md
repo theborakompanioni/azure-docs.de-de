@@ -127,7 +127,7 @@ Jetzt können Sie genau das Datenträgerabbild auswählen, das Sie verwenden mö
 
 ## <a name="powershell"></a>PowerShell
 > [!NOTE]
-> Installieren und konfigurieren Sie die [neueste Version von Azure PowerShell](../articles/powershell-install-configure.md). Wenn Sie Azure PowerShell-Module vor Version 1.0 nutzen, verwenden Sie die folgenden Befehle, zunächst müssen Sie jedoch `Switch-AzureMode AzureResourceManager`ausführen. 
+> Installieren und konfigurieren Sie die [neueste Version von Azure PowerShell](/powershell/azureps-cmdlets-docs). Wenn Sie Azure PowerShell-Module vor Version 1.0 nutzen, verwenden Sie die folgenden Befehle, zunächst müssen Sie jedoch `Switch-AzureMode AzureResourceManager`ausführen. 
 > 
 > 
 
@@ -229,6 +229,6 @@ Wenn Sie den gewählten SKU-Namen aus dieser Liste kopieren, besitzen Sie alle I
 [yah]: http://search.yahoo.com/  
 [msn]: http://search.msn.com/
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

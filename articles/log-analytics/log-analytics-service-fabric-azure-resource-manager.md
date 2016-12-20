@@ -1,12 +1,12 @@
 ---
-title: Optimieren der Umgebung mit der Service Fabric-Lösung in Log Analytics | Microsoft Docs
-description: Mit der Service Fabric-Lösung können Sie die Risiken und Integrität Ihrer Service Fabric-Anwendungen, -Microservices, -Knoten und -Cluster bewerten.
+title: "Optimieren der Umgebung mit der Service Fabric-Lösung in Log Analytics | Microsoft Docs"
+description: "Mit der Service Fabric-Lösung können Sie die Risiken und Integrität Ihrer Service Fabric-Anwendungen, -Microservices, -Knoten und -Cluster bewerten."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: niniikhena
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: 9c91aacb-c48e-466c-b792-261f25940c0c
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2fe6c2b23c816a5ec5bb00199725cdf0b29b31f0
+
 
 ---
 # <a name="service-fabric-solution-in-log-analytics"></a>Service Fabric-Lösung in Log Analytics
@@ -33,7 +37,7 @@ Um mit der Verwendung der Lösung zu beginnen, müssen Sie das Service Fabric-Cl
 2. Wenn Sie Leistungsindikatoren von den Hosts erfassen müssen, um im Service Fabric-Cluster andere OMS-Lösungen, z. B. Sicherheit, zu verwenden, führen Sie die Schritte in ***Bereitstellen eines Service Fabric-Clusters, der mit einem OMS-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist*** aus.
 3. Wenn Sie den Service Fabric-Cluster bereits bereitgestellt haben und ihn mit Log Analytics verbinden möchten, führen Sie die Schritte in ***Hinzufügen eines vorhandenen Speicherkontos zu Log Analytics*** aus.
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace."></a>Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung
+## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung
 Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
 
 1. Ein bereits mit einem Log Analytics-Arbeitsbereich verbundener Azure Service Fabric-Cluster wird bereitgestellt. Sie können während des Bereitstellens der Vorlage einen neuen Arbeitsbereich erstellen oder den Namen eines bereits vorhandenen Log Analytics-Arbeitsbereichs eingeben.
@@ -50,7 +54,7 @@ Akzeptieren Sie die Vertragsbedingungen, und klicken Sie auf „Erstellen“, um
 
 ![Service Fabric](./media/log-analytics-service-fabric/4.png)
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-an-oms-workspace-with-vm-extension-installed."></a>Bereitstellen eines Service Fabric-Clusters, der mit einem OMS-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist
+## <a name="deploy-a-service-fabric-cluster-connected-to-an-oms-workspace-with-vm-extension-installed"></a>Bereitstellen eines Service Fabric-Clusters, der mit einem OMS-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist
 Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
 
 1. Ein bereits mit einem Log Analytics-Arbeitsbereich verbundener Azure Service Fabric-Cluster wird bereitgestellt. Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.
@@ -124,7 +128,7 @@ Nachdem die Bereitstellungen abgeschlossen wurden und die Service Fabric-Lösung
 | --- | --- |
 | Relevante Probleme |Eine Anzeige von Problemen, z. B. „RunAsyncFailures“, „RunAsyncCancellations“ und Knotenausfälle. |
 | Betriebsereignisse |Relevante Betriebsereignisse, z. B. Anwendungsupgrades und Bereitstellungen. |
-| Reliable Service-Ereignisse |Relevante Reliable Servics-Ereignisse, z. B. „RunAsyncInvocations“. |
+| Reliable Service-Ereignisse |Relevante Reliable Service-Ereignisse, z. B. „RunAsyncInvocations“. |
 | Actor-Ereignisse |Relevante Actor-Ereignisse, die von den Microservices generiert wurden, z. B. Actor-Aktivierungen und -Deaktivierungen, durch eine Actor-Methode ausgelöste Ausnahmen usw. |
 | Anwendungsereignisse |Alle benutzerdefinierten ETW-Ereignisse, die von den Anwendungen generiert wurden. |
 
@@ -146,6 +150,9 @@ Die folgende Tabelle enthält die Datensammlungsmethoden und andere Details dazu
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md), um ausführliche Service Fabric-Ereignisdaten anzuzeigen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

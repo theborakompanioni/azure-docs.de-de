@@ -1,7 +1,7 @@
 Mobile App Service-Apps verwenden [Notification Hubs] für das Senden von Pushbenachrichtigungen. Deshalb müssen Sie einen Notification Hub für Ihre mobile App konfigurieren.
 
-1. Navigieren Sie im [Azure-Portal] zu **Durchsuchen** > **App Services**, und klicken Sie dann auf Ihr Back-End. Klicken Sie unter **Einstellungen** auf **App Service Push** (App Service-Push).
-2. Klicken Sie auf **Konfigurieren**, um einen Notification Hub zu konfigurieren. Sie können einen Hub erstellen oder einen vorhandenen Hub verwenden.
+1. Navigieren Sie im [Azure-Portal] zu **App Services**, und klicken Sie dann auf Ihr Back-End. Klicken Sie unter **Einstellungen** auf **Push**.
+2. Klicken Sie auf **Verbinden**, um der App eine Notification Hub-Ressource hinzuzufügen. Sie können einen Hub erstellen oder einen vorhandenen Hub verwenden.
    
     ![](./media/app-service-mobile-create-notification-hub/configure-hub-flow.png)
 

@@ -5,8 +5,8 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-
+editor: 
+ms.assetid: dc01ccfb-27b0-4887-8f0b-2792f770ffff
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 649984be9aee5253dcd1f3ed3be31795212aa3ae
+
 
 ---
-# Beispiel 3: Erstellen einer DMZ zum Schutz von Netzwerken mit Firewall, UDR und NSG
+# <a name="example-3-build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Beispiel 3: Erstellen einer DMZ zum Schutz von Netzwerken mit Firewall, UDR und NSG
 [Zurück zur Seite mit bewährten Methoden zu Sicherheitsgrenzen][HOME]
 
-In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern, benutzerdefiniertem Routing, IP-Weiterleitung und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können.
+In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern, benutzerdefiniertem Routing, IP-Weiterleitung und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können. 
 
 ![Bidirektionale DMZ mit virtuellem Netzwerkgerät, Netzwerksicherheitsgruppe und benutzerdefiniertem Routing][1]
 
-## Einrichten der Umgebung
+## <a name="environment-setup"></a>Einrichten der Umgebung
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
 * Drei Clouddienste: "SecSvc001", "FrontEnd001" und "BackEnd001"
@@ -50,7 +54,7 @@ Nachdem das Skript erfolgreich ausgeführt wurde, können folgende Schritte ausg
 
 Nachdem das Skript erfolgreich ausgeführt wurde, müssen die Firewallregeln eingerichtet werden. Dieses Thema wird im Abschnitt "Firewallregeln" beschrieben.
 
-## Benutzerdefiniertes Routing
+## <a name="user-defined-routing-udr"></a>Benutzerdefiniertes Routing
 Standardmäßig sind folgende Systemrouten definiert:
 
         Effective routes : 
@@ -63,13 +67,13 @@ Standardmäßig sind folgende Systemrouten definiert:
          {172.16.0.0/12}   Null                                 Active   Default    
          {192.168.0.0/16}  Null                                 Active   Default
 
-"VNETLocal" ist immer das definierte Adresspräfix (bzw. die definierten Adresspräfixe) des VNets für dieses spezifische Netzwerk (d. h. diese Angabe ändert sich je nach VNet und je nachdem, wie jedes VNet definiert ist). Die anderen Systemrouten sind statisch und standardmäßig wie oben angegeben.
+"VNETLocal" ist immer das definierte Adresspräfix (bzw. die definierten Adresspräfixe) des VNets für dieses spezifische Netzwerk (d. h. diese Angabe ändert sich je nach VNet und je nachdem, wie jedes VNet definiert ist). Die anderen Systemrouten sind statisch und standardmäßig wie oben angegeben.
 
 Zur Priorität: Routen werden anhand der LPM-Methode (Longest Prefix Match, Übereinstimmung mit dem längsten Präfix) verarbeitet. Es wird also die spezifischste Route in der Tabelle für eine bestimmte Zieladresse verwendet.
 
 Daher würde Datenverkehr (zum Beispiel zum Server DNS01 mit der Adresse 10.0.2.4), der in das lokale Netzwerk (10.0.0.0/16) geleitet werden soll, aufgrund der Route 10.0.0.0/16 über das VNet an sein Ziel weitergeleitet. Anders gesagt: Für 10.0.2.4 ist 10.0.0.0/16 die am genauesten spezifizierte Route. Zwar könnten auch die Routen 10.0.0.0/8 und 0.0.0.0/0 gelten, da sie aber weniger spezifisch sind, wirken sie sich auf diesen Datenverkehr nicht aus. Daher wäre der nächste Hop für 10.0.2.4 das lokale VNet, und der Datenverkehr würde einfach an das Ziel weitergeleitet.
 
-Wenn der Datenverkehr zum Beispiel an 10.1.1.1 geleitet werden soll, würde die Route 10.0.0.0/16 nicht gelten. 10.0.0.0/8 wäre die spezifischste Adresse, und da der nächste Hop "Null" lautet, würde der Datenverkehr verworfen ("black hole").
+Wenn der Datenverkehr zum Beispiel an 10.1.1.1 geleitet werden soll, würde die Route 10.0.0.0/16 nicht gelten. 10.0.0.0/8 wäre die spezifischste Adresse, und da der nächste Hop "Null" lautet, würde der Datenverkehr verworfen ("black hole"). 
 
 Wenn das Ziel für keins der Null- oder der VNETLocal-Präfixe gilt, würde es der am wenigsten spezifischen Route zu 0.0.0.0/0 folgen. Damit wäre das Internet der nächste Hop, und der Datenverkehr würde über die Azure-Internetgrenze hinaus geleitet.
 
@@ -84,7 +88,7 @@ Wenn die Routingtabelle zwei identische Präfixe aufweist, gilt folgende Präfer
 > 
 > 
 
-#### Erstellen der lokalen Routen
+#### <a name="creating-the-local-routes"></a>Erstellen der lokalen Routen
 In diesem Beispiel werden zwei Routingtabellen benötigt, jeweils eine für das Front-End- und das Back-End-Subnetz. Jede Tabelle enthält statische Routen, die sich für das jeweilige Subnetz eignen. In diesem Beispiel weist jede Tabelle drei Routen auf:
 
 1. Datenverkehr im lokalen Subnetz ohne definierten nächsten Hop, sodass der Datenverkehr im lokalen Subnetz die Firewall umgehen kann.
@@ -116,7 +120,7 @@ In diesem Beispiel werden die folgenden Befehle verwendet, um die Routingtabelle
          Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
          -NextHopType VirtualAppliance `
          -NextHopIpAddress $VMIP[0]
-3. Der oben stehende Routeneintrag überschreibt die Standardroute "0.0.0.0/0". Da aber die Standardroute "10.0.0.0/16" noch vorhanden ist, kann der Datenverkehr im VNet ohne Umweg über das virtuelle Netzwerkgerät direkt an das Ziel weitergeleitet werden. Um dieses Verhalten zu korrigieren, muss folgende Regel hinzugefügt werden.
+3. Der oben stehende Routeneintrag überschreibt die Standardroute "0.0.0.0/0". Da aber die Standardroute "10.0.0.0/16" noch vorhanden ist, kann der Datenverkehr im VNet ohne Umweg über das virtuelle Netzwerkgerät direkt an das Ziel weitergeleitet werden.  Um dieses Verhalten zu korrigieren, muss folgende Regel hinzugefügt werden.
    
         Get-AzureRouteTable $BERouteTableName | `
             Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
@@ -134,10 +138,10 @@ In diesem Beispiel werden die folgenden Befehle verwendet, um die Routingtabelle
         -SubnetName $BESubnet `
         -RouteTableName $BERouteTableName
 
-## IP-Weiterleitung
+## <a name="ip-forwarding"></a>SSL-Weiterleitung
 Die IP-Weiterleitung ist eine begleitende Funktion für das benutzerdefinierte Routing (User Defined Routing, UDR). Es handelt sich um eine Einstellung in einem virtuellen Gerät, das diesem ermöglicht, nicht speziell an dieses Gerät adressierten Datenverkehr zu empfangen und diesen an das endgültige Ziel weiterzuleiten.
 
-Ein Beispiel: Wenn Datenverkehr aus AppVM01 eine Anforderung an den Server DNS01 sendet, leitet UDR diese Anforderung an die Firewall weiter. Wenn die IP-Weiterleitung aktiviert ist, wird Datenverkehr für das Ziel DNS01 (10.0.2.4) vom Gerät (10.0.0.4) akzeptiert und dann an das endgültige Ziel (10.0.2.4) weitergeleitet. Ist die IP-Weiterleitung in der Firewall nicht aktiviert, wird der Datenverkehr vom Gerät nicht akzeptiert, selbst wenn in der Routingtabelle die Firewall als nächster Hop angegeben ist.
+Ein Beispiel: Wenn Datenverkehr aus AppVM01 eine Anforderung an den Server DNS01 sendet, leitet UDR diese Anforderung an die Firewall weiter. Wenn die IP-Weiterleitung aktiviert ist, wird Datenverkehr für das Ziel DNS01 (10.0.2.4) vom Gerät (10.0.0.4) akzeptiert und dann an das endgültige Ziel (10.0.2.4) weitergeleitet. Ist die IP-Weiterleitung in der Firewall nicht aktiviert, wird der Datenverkehr vom Gerät nicht akzeptiert, selbst wenn in der Routingtabelle die Firewall als nächster Hop angegeben ist. 
 
 > [!IMPORTANT]
 > Es wichtig, die IP-Weiterleitung zusammen mit dem benutzerdefinierten Routing zu aktivieren.
@@ -146,20 +150,20 @@ Ein Beispiel: Wenn Datenverkehr aus AppVM01 eine Anforderung an den Server DNS01
 
 Die Einrichtung der IP-Weiterleitung erfolgt über einen einzigen Befehl und kann während der Erstellung des virtuellen Computers ausgeführt werden. In diesem Beispiel befindet sich der Codeausschnitt am Ende des Skripts und ist mit den UDR-Befehlen gruppiert:
 
-1. Rufen Sie die VM-Instanz auf, die Ihr virtuelles Gerät darstellt – in diesem Fall die Firewall –, und aktivieren Sie die IP-Weiterleitung (Hinweis: Jedes rote Element, das mit einem Dollarzeichen beginnt, wie etwa $VMName[0], ist eine benutzerdefinierte Variable aus dem Skript im Referenzabschnitt dieses Dokuments. Die in eckigen Klammern eingeschlossene Null, [0], repräsentiert den ersten virtuellen Computer im VM-Array. Damit das Beispielskript ohne Änderung funktioniert, muss es sich beim ersten virtuellen Computer, VM 0, um die Firewall handeln):
+1. Rufen Sie die VM-Instanz auf, die Ihr virtuelles Gerät darstellt – in diesem Fall die Firewall –, und aktivieren Sie die IP-Weiterleitung (Hinweis: Jedes rote Element, das mit einem Dollarzeichen beginnt, wie etwa $VMName[0], ist eine benutzerdefinierte Variable aus dem Skript im Referenzabschnitt dieses Dokuments. Die in eckigen Klammern eingeschlossene Null, [0], repräsentiert den ersten virtuellen Computer im VM-Array. Damit das Beispielskript ohne Änderung funktioniert, muss es sich beim ersten virtuellen Computer, VM 0, um die Firewall handeln):
    
      Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
    
         Set-AzureIPForwarding -Enable
 
-## Netzwerksicherheitsgruppen
+## <a name="network-security-groups-nsg"></a>Netzwerksicherheitsgruppen
 In diesem Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit einer einzigen Regel geladen. Diese Gruppe wird dann nur an die Front-End- und Back-End-Subnetze (nicht an SecNet) gebunden. Die folgende Regel wird deklarativ erstellt:
 
 1. Jeglicher Datenverkehr (alle Ports) aus dem Internet an das gesamte VNet (alle Subnetze) wird abgelehnt.
 
 Obwohl Netzwerksicherheitsgruppen in diesem Beispiel verwendet werden, dienen sie hauptsächlich als zweite Stufe zum Schutz gegen manuelle Fehlkonfigurationen. Es soll der gesamte eingehende Datenverkehr aus dem Internet an das Front-End- oder das Back-End-Subnetz blockiert werden. Der Datenverkehr soll nur durch das SecNet-Subnetz an die Firewall weitergeleitet werden (und danach ggf. an die Front-End- und Back-End-Subnetze). Darüber hinaus soll – wenn die UDR-Regeln eingerichtet sind – jeglicher Datenverkehr, der an die Front-End- oder Back-End-Subnetze weitergeleitet wurde, nach außen an die Firewall geleitet werden (dank UDR). Die Firewall erkennt diesen Datenverkehr als asymmetrisch und verwirft den ausgehenden Datenverkehr. Es gibt daher drei Sicherheitsebenen, die das Front-End- und das Back-End-Subnetz schützen: 1. keine offenen Endpunkte in den Clouddiensten FrontEnd001 und BackEnd001. 2. Netzwerksicherheitsgruppen lehnen Datenverkehr aus dem Internet ab. 3. Die Firewall verwirft asymmetrischen Datenverkehr.
 
-Ein interessanter Aspekt in Bezug auf die Netzwerksicherheitsgruppe in diesem Beispiel ist, dass sie nur eine Regel enthält (siehe unten), mit der Internetdatenverkehr im gesamten virtuellen Netzwerk abgelehnt wird, einschließlich des Sicherheitssubnetzes.
+Ein interessanter Aspekt in Bezug auf die Netzwerksicherheitsgruppe in diesem Beispiel ist, dass sie nur eine Regel enthält (siehe unten), mit der Internetdatenverkehr im gesamten virtuellen Netzwerk abgelehnt wird, einschließlich des Sicherheitssubnetzes. 
 
     Get-AzureNetworkSecurityGroup -Name $NSGName | `
         Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
@@ -178,7 +182,7 @@ Da jedoch die Netzwerksicherheitsgruppe nur an die Front-End- und Back-End-Subne
     Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
         -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
-## Firewallregeln
+## <a name="firewall-rules"></a>Firewallregeln
 In der Firewall müssen Weiterleitungsregeln erstellt werden. Da die Firewall sämtlichen eingehenden und ausgehenden Datenverkehr sowie den Datenverkehr innerhalb des VNets blockiert oder weiterleitet, müssen zahlreiche Firewallregeln festgelegt werden. Darüber hinaus wird jeglicher eingehender Datenverkehr über die öffentliche IP-Adresse des Sicherheitsdiensts geleitet (über unterschiedliche Ports) und muss von der Firewall verarbeitet werden. Eine bewährte Methode besteht darin, die logischen Datenflüsse in Diagrammen abzubilden, bevor Subnetze und Firewallregeln eingerichtet werden, um spätere Überarbeitungen zu vermeiden. Die folgende Abbildung zeigt eine logische Ansicht der Firewallregeln für dieses Beispiel:
 
 ![Logische Ansicht der Firewallregeln][2]
@@ -188,20 +192,20 @@ In der Firewall müssen Weiterleitungsregeln erstellt werden. Da die Firewall s�
 > 
 > 
 
-### Beschreibung der logischen Regel
-Im oben gezeigten logischen Diagramm wird das Sicherheitssubnetz nicht angezeigt, da die Firewall die einzige Ressource in diesem Subnetz ist. Dieses Diagramm zeigt die Firewallregeln und die Art und Weise, wie diese Datenverkehrsflüsse logisch zulassen oder ablehnen. Das Diagramm zeigt nicht den tatsächlichen Weiterleitungspfad. Die für den RDP-Datenverkehr ausgewählten externen Ports liegen in einem höheren Bereich (8014-8026) und wurden zur Anpassung an die letzten beiden Oktette der lokalen IP-Adresse ausgewählt, um die Lesbarkeit zu vereinfachen (die lokale Serveradresse 10.0.1.4 ist beispielsweise Port 8014 zugeordnet). Es können jedoch auch Ports mit einer höheren Nummer ausgewählt werden, wenn sie keine Konflikte verursachen.
+### <a name="logical-rule-description"></a>Beschreibung der logischen Regel
+Im oben gezeigten logischen Diagramm wird das Sicherheitssubnetz nicht angezeigt, da die Firewall die einzige Ressource in diesem Subnetz ist. Dieses Diagramm zeigt die Firewallregeln und die Art und Weise, wie diese Datenverkehrsflüsse logisch zulassen oder ablehnen. Das Diagramm zeigt nicht den tatsächlichen Weiterleitungspfad. Die für den RDP-Datenverkehr ausgewählten externen Ports liegen in einem höheren Bereich (8014-8026) und wurden zur Anpassung an die letzten beiden Oktette der lokalen IP-Adresse ausgewählt, um die Lesbarkeit zu vereinfachen (die lokale Serveradresse 10.0.1.4 ist beispielsweise Port 8014 zugeordnet). Es können jedoch auch Ports mit einer höheren Nummer ausgewählt werden, wenn sie keine Konflikte verursachen.
 
-In diesem Beispiel werden 7 Arten von Regeln benötigt, die wie folgt beschrieben werden:
+In diesem Beispiel werden 7 Arten von Regeln benötigt, die wie folgt beschrieben werden:
 
 * Externe Regeln (für eingehenden Datenverkehr):
   1. Firewallverwaltungsregel: Diese Regel zur Anwendungsumleitung ermöglicht die Weiterleitung von Datenverkehr an die Verwaltungsports des virtuellen Netzwerkgeräts.
   2. RDP-Regeln (für jeden Windows-Server): Diese vier Regeln (eine für jeden Server) ermöglichen die Verwaltung der einzelnen Server über RDP. Diese können je nach Funktionsumfang des verwendeten virtuellen Netzwerkgeräts in eine Regel gebündelt werden.
-  3. Regeln für den Anwendungsdatenverkehr: Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z. B. vom Webserver zur Datenebene). Die Konfiguration dieser Regeln richtet sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
-     * Mit der ersten Regel gelangt der tatsächliche Anwendungsdatenverkehr zum Anwendungsserver. Während die anderen Regeln für Sicherheit, Verwaltung usw. sorgen, ermöglichen Anwendungsregeln es Benutzern oder Diensten, auf die Anwendung(en) zuzugreifen. In diesem Beispiel befindet sich ein einziger Webserver an Port 80. Daher leitet eine einzige Firewallanwendungsregel den eingehenden Datenverkehr an die externe IP-Adresse, also die interne IP-Adresse der Webserver um. Die umgeleitete Datenverkehrssitzung wird per Netzwerkadressübersetzung (Network Address Translation, NAT) an den internen Server weitergeleitet.
+  3. Regeln für den Anwendungsdatenverkehr: Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z. B. vom Webserver zur Datenebene). Die Konfiguration dieser Regeln richtet sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
+     * Mit der ersten Regel gelangt der tatsächliche Anwendungsdatenverkehr zum Anwendungsserver. Während die anderen Regeln für Sicherheit, Verwaltung usw. sorgen, ermöglichen Anwendungsregeln es Benutzern oder Diensten, auf die Anwendung(en) zuzugreifen. In diesem Beispiel befindet sich ein einziger Webserver an Port 80. Daher leitet eine einzige Firewallanwendungsregel den eingehenden Datenverkehr an die externe IP-Adresse, also die interne IP-Adresse der Webserver um. Die umgeleitete Datenverkehrssitzung wird per Netzwerkadressübersetzung (Network Address Translation, NAT) an den internen Server weitergeleitet.
      * Bei der zweiten Regel für Anwendungsdatenverkehr handelt es sich um die Back-End-Regel, dank derer der Webserver über jeden Port mit dem Server AppVM01 (nicht jedoch mit dem Server AppVM02) kommunizieren kann.
 * Interne Regeln (für VNet-internen Datenverkehr)
   1. Regel für ausgehenden Datenverkehr zum Internet: Mit dieser Regel kann Datenverkehr aus allen Netzwerken in die ausgewählten Netzwerke übergeben werden. Diese Regel ist üblicherweise standardmäßig in der Firewall vorhanden, jedoch deaktiviert. Diese Regel sollte für dieses Beispiel aktiviert werden.
-  2. DNS-Regel: Mit dieser Regel kann nur DNS-Datenverkehr (Port 53) an den DNS-Server übergeben werden. Für diese Umgebung wird der größte Teil des Datenverkehrs aus dem Front-End an das Back-End blockiert. Diese Regel lässt DNS-Datenverkehr aus allen lokalen Subnetzen explizit zu.
+  2. DNS-Regel: Mit dieser Regel kann nur DNS-Datenverkehr (Port 53) an den DNS-Server übergeben werden. Für diese Umgebung wird der größte Teil des Datenverkehrs aus dem Front-End an das Back-End blockiert. Diese Regel lässt DNS-Datenverkehr aus allen lokalen Subnetzen explizit zu.
   3. Subnetz-zu-Subnetz-Regel: Mit dieser Regel kann jeder Server im Back-End-Subnetz eine Verbindung mit jedem Server im Front-End-Subnetz herstellen (nicht jedoch umgekehrt).
 * Ausfallsicherheitsregel (für Datenverkehr, für den keine der obigen Regeln gilt):
   1. Regel zum Ablehnen jeglichen Datenverkehrs: Dies sollte (hinsichtlich der Priorität) die letzte Regel sein. Sollte ein Datenverkehrsfluss keiner der vorherigen Regeln entsprechen, wird er durch diese Regel verworfen. Dies ist eine Standardregel, die üblicherweise aktiviert ist. Im Allgemeinen sind keine Änderungen erforderlich.
@@ -218,11 +222,11 @@ In diesem Beispiel werden 7 Arten von Regeln benötigt, die wie folgt beschriebe
 > 
 > 
 
-### Voraussetzungen für Regeln
+### <a name="rule-prerequisites"></a>Voraussetzungen für Regeln
 Eine Voraussetzung für den virtuellen Computer, auf dem die Firewall ausgeführt wird, sind öffentliche Endpunkte. Damit die Firewall Datenverkehr verarbeiten kann, müssen die entsprechenden Endpunkte offen sein. Es gibt drei Arten von Datenverkehr in diesem Beispiel: 1. Verwaltungsdatenverkehr zur Steuerung der Firewall und Firewallregeln. 2. RDP-Datenverkehr zur Steuerung der Windows-Server. 3. Anwendungsdatenverkehr. Diese werden in den drei Kategorien für den Datenverkehr in der oberen Hälfte der logischen Ansicht für die oben erläuterten Firewallregeln angezeigt.
 
 > [!IMPORTANT]
-> An dieser Stelle muss daran erinnert werden, dass **sämtlicher** Datenverkehr durch die Firewall geleitet wird. Um also eine Remotedesktopverbindung mit dem IIS01-Server herzustellen – selbst wenn dieser sich im Front-End-Clouddienst und im Front-End-Subnetz befindet –, ist für den Zugriff auf diesen Server eine RDP-Verbindung mit der Firewall über Port 8014 erforderlich. Anschließend muss der Firewall ermöglicht werden, die RDP-Anforderung intern an den RDP-Port auf IIS01 weiterzuleiten. Die Schaltfläche "Verbinden" im Azure-Portal funktioniert hier nicht, da es keinen direkten RDP-Pfad zu IIS01 gibt (zumindest nicht für das Portal). Dies bedeutet, dass alle Verbindungen aus dem Internet an den Sicherheitsdienst und einen Port, z. B. secscv001.cloudapp.net:xxxx, weitergeleitet werden (Informationen zur Zuordnung zwischen externem Port und interner IP-Adresse und internem Port finden Sie in obigem Diagramm).
+> An dieser Stelle muss daran erinnert werden, dass **sämtlicher** Datenverkehr durch die Firewall geleitet wird. Um also eine Remotedesktopverbindung mit dem IIS01-Server herzustellen – selbst wenn dieser sich im Front-End-Clouddienst und im Front-End-Subnetz befindet –, ist für den Zugriff auf diesen Server eine RDP-Verbindung mit der Firewall über Port 8014 erforderlich. Anschließend muss der Firewall ermöglicht werden, die RDP-Anforderung intern an den RDP-Port auf IIS01 weiterzuleiten. Die Schaltfläche "Verbinden" im Azure-Portal funktioniert hier nicht, da es keinen direkten RDP-Pfad zu IIS01 gibt (zumindest nicht für das Portal). Dies bedeutet, dass alle Verbindungen aus dem Internet an den Sicherheitsdienst und einen Port, z. B. secscv001.cloudapp.net:xxxx, weitergeleitet werden (Informationen zur Zuordnung zwischen externem Port und interner IP-Adresse und internem Port finden Sie in obigem Diagramm).
 > 
 > 
 
@@ -234,9 +238,9 @@ Ein Endpunkt kann entweder zum Zeitpunkt der VM-Erstellung oder danach geöffnet
 
 Aufgrund der Verwendung von Variablen ist es hier nicht klar ersichtlich, aber Endpunkte werden **nur** im Sicherheitsclouddienst geöffnet. Dadurch soll sichergestellt werden, dass sämtlicher eingehender Datenverkehr über die Firewall verarbeitet (geroutet, per Netzwerkadressübersetzung weitergeleitet oder verworfen) wird.
 
-Zur Verwaltung der Firewall und Erstellung der erforderlichen Konfigurationen muss ein Verwaltungsclient auf einem PC installiert werden. Informationen zur Verwaltung des Geräts finden Sie in der Dokumentation zu Ihrer Firewall (bzw. einem anderen virtuellen Netzwerkgerät). Im Rest dieses Abschnitts und im nächsten Abschnitt, "Erstellen von Firewallregeln", wird die Konfiguration der Firewall über den Verwaltungsclient des Anbieters beschrieben (d. h. nicht über das Azure-Portal oder PowerShell).
+Zur Verwaltung der Firewall und Erstellung der erforderlichen Konfigurationen muss ein Verwaltungsclient auf einem PC installiert werden. Informationen zur Verwaltung des Geräts finden Sie in der Dokumentation zu Ihrer Firewall (bzw. einem anderen virtuellen Netzwerkgerät). Im Rest dieses Abschnitts und im nächsten Abschnitt, "Erstellen von Firewallregeln", wird die Konfiguration der Firewall über den Verwaltungsclient des Anbieters beschrieben (d. h. nicht über das Azure-Portal oder PowerShell).
 
-Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie unter [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin).
+Anweisungen zum Herunterladen des Clients und Herstellen einer Verbindung mit der in diesem Beispiel verwendeten Barracuda-Firewall finden Sie unter [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
 Nach der Anmeldung bei der Firewall, jedoch noch vor dem Erstellen von Firewallregeln sollten Sie zwei erforderliche Objektklassen einrichten, die die Erstellung der Regeln vereinfachen können: "Network" und "Service".
 
@@ -252,39 +256,39 @@ Für das Objekt für den DNS-Server:
 
 Dieser Verweis auf eine einzelne IP-Adresse wird in einer DNS-Regel weiter unten in diesem Dokument verwendet.
 
-Die zweite Art erforderlicher Objekte sind Service-Objekte. Diese repräsentieren die RDP-Verbindungsports für jeden Server. Da das vorhandene RDP-Dienstobjekt an den RDP-Standardport 3389 gebunden ist, können neue Dienstobjekte erstellt werden, um Datenverkehr aus den externen Ports (8014-8026) zuzulassen. Die neuen Ports können auch zum vorhandenen RDP-Dienst hinzugefügt werden, zu Demonstrationszwecken wird jedoch eine eigene Regel für jeden Server erstellt. So erstellen Sie eine neue RDP-Regel für einen Server: Navigieren Sie auf dem Dashboard des Barracuda NG Admin-Clients zur Registerkarte "Configuration", und klicken Sie im Abschnitt "Operational Configuration" auf "Ruleset". Klicken Sie im Menü "Firewall Objects" auf "Services", führen Sie einen Bildlauf durch die Liste der Dienste durch, und wählen Sie den Dienst "RDP" aus. Klicken Sie mit der rechten Maustaste, und wählen Sie "Copy" aus. Klicken Sie erneut mit der rechten Maustaste, und wählen Sie "Paste" aus. Nun verfügen Sie über ein Dienstobjekt namens "RDP-Copy1", das bearbeitet werden kann. Klicken Sie mit der rechten Maustaste auf "RDP-Copy1", und wählen Sie "Edit". Das Fenster "Edit Services Object" wird geöffnet, wie hier gezeigt:
+Die zweite Art erforderlicher Objekte sind Service-Objekte. Diese repräsentieren die RDP-Verbindungsports für jeden Server. Da das vorhandene RDP-Dienstobjekt an den RDP-Standardport 3389 gebunden ist, können neue Dienstobjekte erstellt werden, um Datenverkehr aus den externen Ports (8014-8026) zuzulassen. Die neuen Ports können auch zum vorhandenen RDP-Dienst hinzugefügt werden, zu Demonstrationszwecken wird jedoch eine eigene Regel für jeden Server erstellt. So erstellen Sie eine neue RDP-Regel für einen Server: Navigieren Sie auf dem Dashboard des Barracuda NG Admin-Clients zur Registerkarte "Configuration", und klicken Sie im Abschnitt "Operational Configuration" auf "Ruleset". Klicken Sie im Menü "Firewall Objects" auf "Services", führen Sie einen Bildlauf durch die Liste der Dienste durch, und wählen Sie den Dienst "RDP" aus. Klicken Sie mit der rechten Maustaste, und wählen Sie "Copy" aus. Klicken Sie erneut mit der rechten Maustaste, und wählen Sie "Paste" aus. Nun verfügen Sie über ein Dienstobjekt namens "RDP-Copy1", das bearbeitet werden kann. Klicken Sie mit der rechten Maustaste auf "RDP-Copy1", und wählen Sie "Edit". Das Fenster "Edit Services Object" wird geöffnet, wie hier gezeigt:
 
 ![Kopie der RDP-Standardregel][5]
 
-Die Werte können bearbeitet werden, um den RDP-Dienst für einen bestimmten Server zu repräsentieren. Für AppVM01 muss die obige RDP-Standardregel bearbeitet werden. Geben Sie einen neuen Dienstnamen, eine Beschreibung und einen externen RDP-Port ein, wie in Abbildung 8 dargestellt (Hinweis: die Ports wurden vom RDP-Standardport 3389 in den externen Port geändert, der für diesen spezifischen Server verwendet wird. Für AppVM01 lautet der externe Port 8025). Hier sehen Sie den geänderten Dienst:
+Die Werte können bearbeitet werden, um den RDP-Dienst für einen bestimmten Server zu repräsentieren. Für AppVM01 muss die obige RDP-Standardregel bearbeitet werden. Geben Sie einen neuen Dienstnamen, eine Beschreibung und einen externen RDP-Port ein, wie in Abbildung 8 dargestellt (Hinweis: die Ports wurden vom RDP-Standardport 3389 in den externen Port geändert, der für diesen spezifischen Server verwendet wird. Für AppVM01 lautet der externe Port 8025). Hier sehen Sie den geänderten Dienst:
 
 ![AppVM01-Regel][6]
 
 Wiederholen Sie den Prozess, um die RDP-Dienste für die anderen Server zu erstellen: AppVM02, DNS01 und IIS01. Durch diese Dienste wird die Erstellung von Regeln im nächsten Abschnitt einfacher und klarer.
 
 > [!NOTE]
-> Aus zwei Gründen wird kein RDP-Dienst für die Firewall benötigt: 1. die Firewall-VM ist ein Linux-basiertes Image, zur VM-Verwaltung würde also SSH anstatt RDP auf Port 22 verwendet. 2. Port 22 sowie zwei weitere Verwaltungsports sind in der ersten oben beschriebenen Verwaltungsregel zulässig, um Verbindungen zum Zweck der Verwaltung zu ermöglichen.
+> Aus zwei Gründen wird kein RDP-Dienst für die Firewall benötigt: 1. die Firewall-VM ist ein Linux-basiertes Image, zur VM-Verwaltung würde also SSH anstatt RDP auf Port 22 verwendet. 2. Port 22 sowie zwei weitere Verwaltungsports sind in der ersten oben beschriebenen Verwaltungsregel zulässig, um Verbindungen zum Zweck der Verwaltung zu ermöglichen.
 > 
 > 
 
-### Erstellen von Firewallregeln
+### <a name="firewall-rules-creation"></a>Erstellen von Firewallregeln
 In diesem Beispiel werden drei Arten von Firewallregeln verwendet, die jeweils unterschiedliche Symbole aufweisen:
 
-Die Regel zur Anwendungsumleitung: ![Symbol der Regel zur Anwendungsumleitung][7]
+Die Regel zur Anwendungsumleitung:  ![Symbol der Regel zur Anwendungsumleitung][7]
 
-Die Ziel-NAT-Regel: ![Symbol der Ziel-NAT-Regel][8]
+Die Ziel-NAT-Regel:  ![Symbol der Ziel-NAT-Regel][8]
 
-Die Übergaberegel: ![Symbol der Übergaberegel][9]
+Die Übergaberegel:  ![Symbol der Übergaberegel][9]
 
 Weitere Informationen zu diesen Regeln finden Sie auf der Barracuda-Website.
 
 Um die folgenden Regeln zu erstellen (oder vorhandene Standardregeln zu überprüfen), öffnen Sie das Dashboard des Barracuda NG Admin-Clients, wechseln Sie zur Registerkarte "Configuration", und klicken Sie im Abschnitt "Operational Configuration" auf "Ruleset". In einem Raster namens "Main Rules" werden die vorhandenen aktivierten und deaktivierten Regeln dieser Firewall angezeigt. In der oberen rechten Ecke dieses Rasters befindet sich ein kleines grünes Pluszeichen. Klicken Sie auf dieses Zeichen, um eine neue Regel zu erstellen (Hinweis: Möglicherweise ist die Firewall "gesperrt", sodass keine Änderungen vorgenommen werden können. Wenn eine Schaltfläche mit der Bezeichnung "Lock" angezeigt wird und Sie keine Regeln erstellen oder bearbeiten können, klicken Sie auf diese Schaltfläche, um den Regelsatz zu entsperren und die Bearbeitung zu ermöglichen). Wenn Sie eine vorhandene Regel bearbeiten möchten, wählen Sie diese Regel aus, klicken mit der rechten Maustaste und wählen "Edit Rule".
 
-Nachdem Regeln erstellt und/oder bearbeitet wurden, müssen sie an die Firewall übertragen und anschließend aktiviert werden. Der Übertragungs- und Aktivierungsprozess wird unter den detaillierten Regelbeschreibungen erläutert.
+Nachdem Regeln erstellt und/oder bearbeitet wurden, müssen sie an die Firewall übertragen und anschließend aktiviert werden.  Der Übertragungs- und Aktivierungsprozess wird unter den detaillierten Regelbeschreibungen erläutert.
 
 Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, werden im Folgenden beschrieben:
 
-* **Firewallverwaltungsregel**: Diese Regel zur Anwendungsumleitung ermöglicht die Weiterleitung von Datenverkehr an die Verwaltungsports des virtuellen Netzwerkgeräts, bei dem es sich in diesem Fall um eine Barracuda NextGen-Firewall handelt. Die Verwaltungsports lauten 801, 807 und optional 22. Die externen und internen Ports sind die gleichen (d. h. es findet keine Portübersetzung statt). Bei dieser Regel, SETUP-MGMT-ACCESS, handelt es sich um eine Standardregel, die standardmäßig aktiviert ist (in Barracuda NextGen Firewall, Version 6.1).
+* **Firewallverwaltungsregel**: Diese Regel zur Anwendungsumleitung ermöglicht die Weiterleitung von Datenverkehr an die Verwaltungsports des virtuellen Netzwerkgeräts, bei dem es sich in diesem Fall um eine Barracuda NextGen-Firewall handelt. Die Verwaltungsports lauten 801, 807 und optional 22. Die externen und internen Ports sind die gleichen (d. h. es findet keine Portübersetzung statt). Bei dieser Regel, SETUP-MGMT-ACCESS, handelt es sich um eine Standardregel, die standardmäßig aktiviert ist (in Barracuda NextGen Firewall, Version 6.1).
   
     ![Firewallverwaltungsregel][10]
 
@@ -293,38 +297,39 @@ Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, we
 > 
 > 
 
-* **RDP-Regeln**: Diese Ziel-NAT-Regeln ermöglichen die Verwaltung der einzelnen Server über RDP. Zum Erstellen dieser Regel sind vier wichtige Felder erforderlich:
+* **RDP-Regeln**: Diese Ziel-NAT-Regeln ermöglichen die Verwaltung der einzelnen Server über RDP.
+  Zum Erstellen dieser Regel sind vier wichtige Felder erforderlich:
   
   1. Source: Um eine Verwaltung per RDP von einem beliebigen Standort aus zu ermöglichen, wird im Feld "Source" der Verweis "Any" verwendet.
   2. Service: Verwenden Sie das geeignete, zuvor erstellte Dienstobjekt, in diesem Fall "AppVM01 RDP", die externen Ports leiten an die lokale IP-Adresse des Servers sowie an Port 3386 (den RDP-Standardport) weiter. Diese spezifische Regel dient zum Zugriff auf AppVM01 über RDP.
-  3. Destination: Dies sollte der *lokale Port der Firewall* sein, "DCHP 1 Local IP" oder "eth0" bei Verwendung von statischen IP-Adressen. Die Ordnungszahl (eth0, eth1 usw.) kann abweichen, wenn Ihr Netzwerkgerät über mehrere lokale Schnittstellen verfügt. Hierbei handelt es sich um den Port, über den die Firewall Datenverkehr sendet (kann der gleiche sein wie der empfangende Port). Das eigentliche Weiterleitungsziel befindet sich im Feld "Target List".
-  4. Redirection: Dieser Abschnitt informiert das virtuelle Gerät über das endgültige Ziel des umgeleiteten Datenverkehrs. Die einfachste Umleitung besteht darin, IP-Adresse und Port (optional) in das Feld "Target List" einzutragen. Wenn kein Port angegeben ist, wird der Zielport der eingehenden Anforderung verwendet (d. h. es findet keine Übersetzung statt). Ist ein Port angegeben, wird dieser zusammen mit der IP-Adresse per Netzwerkadressübersetzung weitergeleitet.
+  3. Destination: Dies sollte der *lokale Port der Firewall* sein, „DCHP 1 Local IP“ oder „eth0“ bei Verwendung von statischen IP-Adressen. Die Ordnungszahl (eth0, eth1 usw.) kann abweichen, wenn Ihr Netzwerkgerät über mehrere lokale Schnittstellen verfügt. Hierbei handelt es sich um den Port, über den die Firewall Datenverkehr sendet (kann der gleiche sein wie der empfangende Port). Das eigentliche Weiterleitungsziel befindet sich im Feld "Target List".
+  4. Redirection: Dieser Abschnitt informiert das virtuelle Gerät über das endgültige Ziel des umgeleiteten Datenverkehrs. Die einfachste Umleitung besteht darin, IP-Adresse und Port (optional) in das Feld "Target List" einzutragen. Wenn kein Port angegeben ist, wird der Zielport der eingehenden Anforderung verwendet (d. h. es findet keine Übersetzung statt). Ist ein Port angegeben, wird dieser zusammen mit der IP-Adresse per Netzwerkadressübersetzung weitergeleitet.
      
      ![RDP-Firewallregel][11]
      
-     Es müssen insgesamt vier RDP-Regeln erstellt werden:
+     Es müssen insgesamt vier RDP-Regeln erstellt werden: 
      
      | Regelname | Server | Dienst | Zielliste |
      | --- | --- | --- | --- |
-     | RDP-to-IIS01 |IIS01 |IIS01 RDP |10\.0.1.4:3389 |
-     | RDP-to-DNS01 |DNS01 |DNS01 RDP |10\.0.2.4:3389 |
-     | RDP-to-AppVM01 |AppVM01 |AppVM01 RDP |10\.0.2.5:3389 |
-     | RDP-to-AppVM02 |AppVM02 |AppVm02 RDP |10\.0.2.6:3389 |
+     | RDP-to-IIS01 |IIS01 |IIS01 RDP |10.0.1.4:3389 |
+     | RDP-to-DNS01 |DNS01 |DNS01 RDP |10.0.2.4:3389 |
+     | RDP-to-AppVM01 |AppVM01 |AppVM01 RDP |10.0.2.5:3389 |
+     | RDP-to-AppVM02 |AppVM02 |AppVm02 RDP |10.0.2.6:3389 |
 
 > [!TIP]
 > Indem Sie den Bereich in den Feldern "Source" und "Service" verkleinern, verringern Sie die Angriffsfläche. Es sollte der kleinste Bereich verwendet werden, der eine ordnungsgemäße Funktionsweise sicherstellt.
 > 
 > 
 
-* **Regeln für den Anwendungsdatenverkehr**: Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z. B. vom Webserver zur Datenebene). Diese Regeln richten sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
+* **Regeln für den Anwendungsdatenverkehr**: Es gibt zwei Regeln für den Anwendungsdatenverkehr, eine für den Datenverkehr im Front-End, eine für den Datenverkehr im Back-End (z.B. vom Webserver zur Datenebene). Diese Regeln richten sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
   
     Zunächst wird die Front-End-Regel für Webdatenverkehr beschrieben:
   
     ![Firewallwebregel][12]
   
-    Mit dieser Ziel-NAT-Regel gelangt der tatsächliche Anwendungsdatenverkehr zum Anwendungsserver. Während die anderen Regeln für Sicherheit, Verwaltung usw. sorgen, ermöglichen Anwendungsregeln es Benutzern oder Diensten, auf die Anwendung(en) zuzugreifen. In diesem Beispiel befindet sich ein einziger Webserver an Port 80. Daher leitet die einzige Firewallanwendungsregel den eingehenden Datenverkehr an die externe IP-Adresse, also die interne IP-Adresse der Webserver um.
+    Mit dieser Ziel-NAT-Regel gelangt der tatsächliche Anwendungsdatenverkehr zum Anwendungsserver. Während die anderen Regeln für Sicherheit, Verwaltung usw. sorgen, ermöglichen Anwendungsregeln es Benutzern oder Diensten, auf die Anwendung(en) zuzugreifen. In diesem Beispiel befindet sich ein einziger Webserver an Port 80. Daher leitet die einzige Firewallanwendungsregel den eingehenden Datenverkehr an die externe IP-Adresse, also die interne IP-Adresse der Webserver um.
   
-    **Hinweis**: Im Feld "Target List" wurde kein Port zugewiesen, daher wird der eingehende Port 80 (oder 443 für den ausgewählten Dienst) für die Umleitung des Webservers verwendet. Wenn der Webserver an einem anderen Port lauscht, z. B. an Port 8080, kann das Feld "Target List" auf den Wert 10.0.1.4:8080 aktualisiert werden, um eine Umleitung auch an diesem Port zu ermöglichen.
+    **Hinweis**: Im Feld „Target List“ (Zielliste) wurde kein Port zugewiesen, daher wird der eingehende Port 80 (oder 443 für den ausgewählten Dienst) für die Umleitung des Webservers verwendet. Wenn der Webserver an einem anderen Port lauscht, z. B. an Port 8080, kann das Feld "Target List" auf den Wert 10.0.1.4:8080 aktualisiert werden, um eine Umleitung auch an diesem Port zu ermöglichen.
   
     Bei der nächsten Regel für Anwendungsdatenverkehr handelt es sich um die Back-End-Regel, dank derer der Webserver über jeden Dienst mit dem Server AppVM01 (nicht jedoch mit dem Server AppVM02) kommunizieren kann:
   
@@ -332,7 +337,7 @@ Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, we
   
     Mit dieser Übergaberegel kann jeder IIS-Server im Front-End-Subnetz den Server AppVM01 (IP-Adresse 10.0.2.5) an jedem Port erreichen und dabei jedes Protokoll verwenden, um auf Daten zuzugreifen, die von der Webanwendung benötigt werden.
   
-    In diesem Screenshot wird "<explicit-dest>" im Feld "Destination" verwendet, um 10.0.2.5 als Ziel anzugeben. Die Festlegung kann, wie hier gezeigt, explizit oder über ein benanntes Netzwerkobjekt erfolgen (wie in den erforderlichen Objekten für den DNS-Server konfiguriert). Der Administrator der Firewall entscheidet darüber, welche Methode verwendet wird. Um 10.0.2.5 als explizites Ziel hinzuzufügen, doppelklicken Sie auf die erste leere Zeile unter <explicit-dest>, und geben Sie im angezeigten Fenster die Adresse ein.
+    In diesem Screenshot wird „\<explicit-dest\>“ im Feld „Destination“ verwendet, um 10.0.2.5 als Ziel anzugeben. Die Festlegung kann, wie hier gezeigt, explizit oder über ein benanntes Netzwerkobjekt erfolgen (wie in den erforderlichen Objekten für den DNS-Server konfiguriert). Der Administrator der Firewall entscheidet darüber, welche Methode verwendet wird. Um 10.0.2.5 als explizites Ziel hinzuzufügen, doppelklicken Sie auf die erste leere Zeile unter \<explicit-dest\>, und geben Sie im angezeigten Fenster die Adresse ein.
   
     Mit dieser Übergaberegel wird keine Netzwerkadressübersetzung benötigt, da es sich hier um internen Datenverkehr handelt. Die Verbindungsmethode kann also auf "No SNAT" festgelegt werden.
   
@@ -363,7 +368,7 @@ Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, we
     ![VNet-interne Firewallregel][16]
   
     **Hinweis**: Das Kontrollkästchen für bidirektionalen Datenverkehr ist deaktiviert (dies gilt für die meisten Regeln). Dies ist für diese Regel von großer Bedeutung, da die Regel damit unidirektional ist, eine Verbindung also nur vom Back-End-Subnetz zum Front-End-Netzwerk initiiert werden kann, nicht jedoch umgekehrt. Wäre dieses Kontrollkästchen aktiviert, würde die Regel bidirektionalen Datenverkehr zulassen, was in unserem logischen Diagramm nicht vorgesehen ist.
-* **Regel zum Ablehnen jeglichen Datenverkehrs**: Dies sollte (hinsichtlich der Priorität) die letzte Regel sein. Sollte ein Datenverkehrsfluss keiner der vorherigen Regeln entsprechen, wird er durch diese Regel verworfen. Dies ist eine Standardregel, die üblicherweise aktiviert ist. Im Allgemeinen sind keine Änderungen erforderlich.
+* **Regel zum Ablehnen jeglichen Datenverkehrs**: Dies sollte (hinsichtlich der Priorität) die letzte Regel sein. Sollte ein Datenverkehrsfluss keiner der vorherigen Regeln entsprechen, wird er durch diese Regel verworfen. Dies ist eine Standardregel, die üblicherweise aktiviert ist. Im Allgemeinen sind keine Änderungen erforderlich. 
   
     ![Firewallregel "Alle ablehnen"][17]
 
@@ -372,7 +377,7 @@ Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, we
 > 
 > 
 
-## Regelaktivierung
+## <a name="rule-activation"></a>Regelaktivierung
 Nachdem der Regelsatz gemäß den Angaben des logischen Diagramms geändert wurde, muss er auf die Firewall hochgeladen und dann aktiviert werden.
 
 ![Aktivierung der Firewallregeln][18]
@@ -381,9 +386,9 @@ In der oberen rechten Ecke des Verwaltungsclients befinden sich verschiedene Sch
 
 Mit der Aktivierung des Firewallregelsatzes ist die Erstellung dieser Beispielumgebung abgeschlossen.
 
-## Datenverkehrsszenarien
+## <a name="traffic-scenarios"></a>Datenverkehrsszenarien
 > [!IMPORTANT]
-> An dieser Stelle muss daran erinnert werden, dass **sämtlicher** Datenverkehr durch die Firewall geleitet wird. Um also eine Remotedesktopverbindung mit dem IIS01-Server herzustellen – selbst wenn dieser sich im Front-End-Clouddienst und im Front-End-Subnetz befindet –, ist für den Zugriff auf diesen Server eine RDP-Verbindung mit der Firewall über Port 8014 erforderlich. Anschließend muss der Firewall ermöglicht werden, die RDP-Anforderung intern an den RDP-Port auf IIS01 weiterzuleiten. Die Schaltfläche "Verbinden" im Azure-Portal funktioniert hier nicht, da es keinen direkten RDP-Pfad zu IIS01 gibt (zumindest nicht für das Portal). Dies bedeutet, dass alle Verbindungen aus dem Internet an den Sicherheitsdienst und einen Port, z. B. secscv001.cloudapp.net:xxxx, weitergeleitet werden.
+> An dieser Stelle muss daran erinnert werden, dass **sämtlicher** Datenverkehr durch die Firewall geleitet wird. Um also eine Remotedesktopverbindung mit dem IIS01-Server herzustellen – selbst wenn dieser sich im Front-End-Clouddienst und im Front-End-Subnetz befindet –, ist für den Zugriff auf diesen Server eine RDP-Verbindung mit der Firewall über Port 8014 erforderlich. Anschließend muss der Firewall ermöglicht werden, die RDP-Anforderung intern an den RDP-Port auf IIS01 weiterzuleiten. Die Schaltfläche "Verbinden" im Azure-Portal funktioniert hier nicht, da es keinen direkten RDP-Pfad zu IIS01 gibt (zumindest nicht für das Portal). Dies bedeutet, dass alle Verbindungen aus dem Internet an den Sicherheitsdienst und einen Port, z. B. secscv001.cloudapp.net:xxxx, weitergeleitet werden.
 > 
 > 
 
@@ -401,40 +406,40 @@ Für diese Szenarien sollten folgende Firewallregeln eingerichtet sein:
 10. Subnetzinterner Datenverkehr (nur vom Back-End zum Front-End)
 11. Alle ablehnen
 
-Der tatsächliche Regelsatz einer Firewall umfasst höchstwahrscheinlich noch viele weitere Regeln, die auch andere Prioritäten aufweisen als die hier aufgeführten. Diese Liste und die Nummerierung sollen nur die Relevanz zwischen diesen elf Regeln und die relative Priorität untereinander verdeutlichen. Anders gesagt: in der tatsächlichen Firewall kann es sich bei "RDP an IIS01" um Regel Nr. 5 handeln, solange diese Regel sich jedoch unterhalb der Regel "Firewallverwaltung" und oberhalb von "RDP an DNS01" befindet, entspricht die Konfiguration der Intention dieser Liste. Diese Liste trägt in den unten stehenden Szenarien auch zur Kürze bei, z. B. "WL-Regel 9 (DNS)". (WL steht für Weiterleitung.) Ebenfalls aus Gründen der Kürze werden die vier RDP-Regeln kollektiv als "die RDP-Regeln" bezeichnet, wenn es in einem Datenverkehrsszenario nicht um RDP geht.
+Der tatsächliche Regelsatz einer Firewall umfasst höchstwahrscheinlich noch viele weitere Regeln, die auch andere Prioritäten aufweisen als die hier aufgeführten. Diese Liste und die Nummerierung sollen nur die Relevanz zwischen diesen elf Regeln und die relative Priorität untereinander verdeutlichen. Anders gesagt: in der tatsächlichen Firewall kann es sich bei "RDP an IIS01" um Regel Nr. 5 handeln, solange diese Regel sich jedoch unterhalb der Regel "Firewallverwaltung" und oberhalb von "RDP an DNS01" befindet, entspricht die Konfiguration der Intention dieser Liste. Diese Liste trägt in den unten stehenden Szenarien auch zur Kürze bei, z. B. "WL-Regel 9 (DNS)". (WL steht für Weiterleitung.) Ebenfalls aus Gründen der Kürze werden die vier RDP-Regeln kollektiv als "die RDP-Regeln" bezeichnet, wenn es in einem Datenverkehrsszenario nicht um RDP geht.
 
 Denken Sie auch daran, dass Netzwerksicherheitsgruppen für den eingehenden Internetdatenverkehr in den Front-End- und Back-End-Subnetzen eingerichtet wurden.
 
-#### (Zulässig) Internet an Webserver
+#### <a name="allowed-internet-to-web-server"></a>(Zulässig) Internet an Webserver
 1. Internetbenutzer fordert HTTP-Seite von SecSvc001.CloudApp.Net (Clouddienst mit Schnittstelle zum Internet) an.
-2. Clouddienst übergibt Datenverkehr über offenen Endpunkt an Port 80 an Firewallschnittstelle an 10.0.0.4:80.
+2. Clouddienst übergibt Datenverkehr über offenen Endpunkt an Port 80 an Firewallschnittstelle an 10.0.0.4:80.
 3. Dem Sicherheitssubnetz ist keine NSG zugewiesen, daher lassen die systemeigenen NSG-Regeln den Datenverkehr an die Firewall zu.
 4. Datenverkehr trifft an interner IP-Adresse der Firewall ein (10.0.1.4).
 5. Firewall beginnt mit Regelverarbeitung:
-   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
+   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
    2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
-   3. WL-Regel 6 (Anwendung-Web) trifft zu, Datenverkehr wird zugelassen, Firewall leitet per NAT an 10.0.1.4 (IIS01) weiter.
+   3. WL-Regel 6 (Anwendung-Web) trifft zu, Datenverkehr wird zugelassen, Firewall leitet per NAT an 10.0.1.4 (IIS01) weiter.
 6. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu (der Datenverkehr wurde von der Firewall per NAT weitergeleitet, daher gilt als Quelladresse jetzt die Firewall, die sich im Sicherheitssubnetz befindet und von der NSG des Front-End-Subnetzes als "lokaler" Datenverkehrs angesehen und daher zugelassen wird), weiter zur nächsten Regel.
+   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu (der Datenverkehr wurde von der Firewall per NAT weitergeleitet, daher gilt als Quelladresse jetzt die Firewall, die sich im Sicherheitssubnetz befindet und von der NSG des Front-End-Subnetzes als "lokaler" Datenverkehrs angesehen und daher zugelassen wird), weiter zur nächsten Regel.
    2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 7. IIS01 lauscht auf Webdatenverkehr, empfängt diese Anforderung und beginnt mit der Verarbeitung der Anforderung.
 8. IIS01 versucht, eine FTP-Sitzung mit AppVM01 im Back-End-Subnetz zu initiieren.
 9. Aufgrund der UDR-Route im Front-End-Subnetz ist die Firewall der nächste Hop.
 10. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 11. Firewall beginnt mit Regelverarbeitung:
-    1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
+    1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
     2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
-    3. WL-Regel 6 (Anwendung-Web) trifft nicht zu, weiter zur nächsten Regel.
-    4. WL-Regel 7 (Anwendung-Back-End) trifft zu, Datenverkehr wird zugelassen, Firewall leitet Datenverkehr an 10.0.2.5 (AppVM01).
+    3. WL-Regel 6 (Anwendung-Web) trifft nicht zu, weiter zur nächsten Regel.
+    4. WL-Regel 7 (Anwendung-Back-End) trifft zu, Datenverkehr wird zugelassen, Firewall leitet Datenverkehr an 10.0.2.5 (AppVM01).
 12. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
+    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
     2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 13. AppVM01 empfängt die Anforderung, initiiert die Sitzung und antwortet.
 14. Aufgrund der UDR-Route im Back-End-Subnetz ist die Firewall der nächste Hop.
 15. Da es keine ausgehenden NSG-Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
 16. Da es sich hier um zurückkommenden Datenverkehr in einer vorhandenen Sitzung handelt, übergibt die Firewall die Antwort an den Webserver (IIS01).
 17. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
+    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
     2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 18. Der IIS-Server empfängt die Antwort, schließt die Transaktion mit AppVM01 ab, und schließt dann die Erstellung der HTTP-Antwort ab. Diese HTTP-Antwort wird an den Anforderer gesendet.
 19. Da es keine ausgehenden NSG-Regeln im Front-End-Subnetz gibt, wird die Antwort zugelassen.
@@ -442,17 +447,17 @@ Denken Sie auch daran, dass Netzwerksicherheitsgruppen für den eingehenden Inte
 21. Die Firewall leitet die Antwort anschließend an den Internetbenutzer weiter.
 22. Da im Front-End-Subnetz keine ausgehenden NSG-Regeln oder UDR-Hops vorhanden sind, wird die Antwort zugelassen, und der Internetbenutzer empfängt die angeforderte Webseite.
 
-#### (Zulässig) Internet-RDP an Back-End
+#### <a name="allowed-internet-rdp-to-backend"></a>(Zulässig) Internet-RDP an Back-End
 1. Serveradministrator im Internet fordert RDP-Sitzung mit AppVM01 über SecSvc001.CloudApp.Net:8025 an. 8025 ist die vom Benutzer zugewiesene Portnummer für die Firewallregel "RDP an AppVM01".
-2. Der Clouddienst übergibt den Datenverkehr über den offenen Endpunkt an Port 8025 an die Firewallschnittstelle an 10.0.0.4:8025.
+2. Der Clouddienst übergibt den Datenverkehr über den offenen Endpunkt an Port 8025 an die Firewallschnittstelle an 10.0.0.4:8025.
 3. Dem Sicherheitssubnetz ist keine NSG zugewiesen, daher lassen die systemeigenen NSG-Regeln den Datenverkehr an die Firewall zu.
 4. Firewall beginnt mit Regelverarbeitung:
-   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
-   2. WL-Regel 2 (RDP-IIS) trifft nicht zu, weiter zur nächsten Regel.
-   3. WL-Regel 3 (RDP-DNS01) trifft nicht zu, weiter zur nächsten Regel.
+   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
+   2. WL-Regel 2 (RDP-IIS) trifft nicht zu, weiter zur nächsten Regel.
+   3. WL-Regel 3 (RDP-DNS01) trifft nicht zu, weiter zur nächsten Regel.
    4. WL-Regel 4 (RDP-AppVM01) trifft zu, Datenverkehr wird zugelassen, Firewall leitet per NAT an 10.0.2.5:3386 (RDP-Port auf AppVM01) weiter.
 5. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu (der Datenverkehr wurde von der Firewall per NAT weitergeleitet, daher gilt als Quelladresse jetzt die Firewall, die sich im Sicherheitssubnetz befindet und von der NSG des Back-End-Subnetzes als "lokaler" Datenverkehrs angesehen und daher zugelassen wird), weiter zur nächsten Regel.
+   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu (der Datenverkehr wurde von der Firewall per NAT weitergeleitet, daher gilt als Quelladresse jetzt die Firewall, die sich im Sicherheitssubnetz befindet und von der NSG des Back-End-Subnetzes als "lokaler" Datenverkehrs angesehen und daher zugelassen wird), weiter zur nächsten Regel.
    2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 6. AppVM01 lauscht auf RDP-Datenverkehr und antwortet.
 7. Da keine ausgehenden NSG-Regeln vorhanden sind, werden Standardregeln angewendet, und der zurückkommende Datenverkehr wird zugelassen.
@@ -461,33 +466,33 @@ Denken Sie auch daran, dass Netzwerksicherheitsgruppen für den eingehenden Inte
 10. Die RDP-Sitzung wird aktiviert.
 11. AppVM01 fordert zur Eingabe von Benutzername und Kennwort auf.
 
-#### (Zugelassen) Webserver-DNS-Lookup auf DNS-Server
+#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Zugelassen) Webserver-DNS-Lookup auf DNS-Server
 1. Der Webserver IIS01 benötigt einen Datenfeed von „www.data.gov“, muss jedoch die Adresse auflösen.
 2. Die Netzwerkkonfiguration für das VNet listet DNS01 (10.0.2.4 im Back-End-Subnetz) als primären DNS-Server, IIS01 sendet die DNS-Anforderung an DNS01.
 3. UDR routet ausgehenden Datenverkehr an die Firewall, die den nächsten Hop darstellt.
 4. An das Front-End-Subnetz sind keine ausgehenden NSG-Regeln gebunden, Datenverkehr wird zugelassen.
 5. Firewall beginnt mit Regelverarbeitung:
-   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
+   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
    2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
    3. WL-Regeln 6 und 7 (Anwendungsregeln) treffen nicht zu, weiter zur nächsten Regel.
-   4. WL-Regel 8 (ins Internet) trifft nicht zu, weiter zur nächsten Regel.
-   5. WL-Regel 9 (DNS) trifft zu, Datenverkehr wird zugelassen, Firewall leitet Datenverkehr an 10.0.2.4 (DNS01).
+   4. WL-Regel 8 (ins Internet) trifft nicht zu, weiter zur nächsten Regel.
+   5. WL-Regel 9 (DNS) trifft zu, Datenverkehr wird zugelassen, Firewall leitet Datenverkehr an 10.0.2.4 (DNS01).
 6. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
+   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
    2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 7. DNS-Server empfängt Anforderung.
 8. Die Adresse ist nicht im DNS-Server zwischengespeichert, daher fragt der DNS-Server die Adresse bei einem DNS-Stammserver im Internet ab.
 9. UDR routet ausgehenden Datenverkehr an die Firewall, die den nächsten Hop darstellt.
 10. Keine ausgehenden NSG-Regeln im Back-End-Subnetz, Datenverkehr wird zugelassen.
 11. Firewall beginnt mit Regelverarbeitung:
-    1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
+    1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
     2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
     3. WL-Regeln 6 und 7 (Anwendungsregeln) treffen nicht zu, weiter zur nächsten Regel.
-    4. WL-Regel 8 (ins Internet) trifft zu, Datenverkehr wird zugelassen, Sitzung wird per SNAT an den DNS-Stammserver im Internet weitergeleitet.
+    4. WL-Regel 8 (ins Internet) trifft zu, Datenverkehr wird zugelassen, Sitzung wird per SNAT an den DNS-Stammserver im Internet weitergeleitet.
 12. Der DNS-Server im Internet antwortet. Da diese Sitzung von der Firewall aus initiiert wurde, wird die Antwort von der Firewall akzeptiert.
 13. Da es sich hier um eine vorhandene Sitzung handelt, leitet die Firewall die Antwort an den Ausgangsserver DNS01 weiter.
 14. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
+    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
     2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 15. Der DNS-Server empfängt die Antwort, speichert sie zwischen und gibt dann die Antwort auf die ursprüngliche Anforderung zurück an IIS01.
 16. Aufgrund der UDR-Route im Back-End-Subnetz ist die Firewall der nächste Hop.
@@ -498,70 +503,71 @@ Denken Sie auch daran, dass Netzwerksicherheitsgruppen für den eingehenden Inte
     2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
 20. IIS01 empfängt die Antwort von DNS01.
 
-#### (Zulässig) Back-End-Server an Front-End-Server
+#### <a name="allowed-backend-server-to-frontend-server"></a>(Zulässig) Back-End-Server an Front-End-Server
 1. Ein über RDP bei AppVM02 angemeldeter Administrator fordert eine Datei über den Windows-Datei-Explorer direkt vom IIS01-Server an.
 2. Aufgrund der UDR-Route im Back-End-Subnetz ist die Firewall der nächste Hop.
 3. Da es keine ausgehenden NSG-Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
 4. Firewall beginnt mit Regelverarbeitung:
-   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
+   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
    2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
    3. WL-Regeln 6 und 7 (Anwendungsregeln) treffen nicht zu, weiter zur nächsten Regel.
-   4. WL-Regel 8 (ins Internet) trifft nicht zu, weiter zur nächsten Regel.
-   5. WL-Regel 9 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   6. WL-Regel 10 (subnetzintern) trifft zu, Datenverkehr wird zugelassen, Firewall übergibt Datenverkehr an 10.0.1.4 (IIS01).
+   4. WL-Regel 8 (ins Internet) trifft nicht zu, weiter zur nächsten Regel.
+   5. WL-Regel 9 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   6. WL-Regel 10 (subnetzintern) trifft zu, Datenverkehr wird zugelassen, Firewall übergibt Datenverkehr an 10.0.1.4 (IIS01).
 5. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
+   1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
    2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 6. Vorausgesetzt, Authentifizierung und Autorisierung sind ordnungsgemäß erfolgt, akzeptiert IIS01 die Anforderung und antwortet.
 7. Aufgrund der UDR-Route im Front-End-Subnetz ist die Firewall der nächste Hop.
 8. Da es keine ausgehenden NSG-Regeln im Front-End-Subnetz gibt, wird die Antwort zugelassen.
 9. Da es sich hier um eine vorhandene Sitzung in der Firewall handelt, wird die Antwort zugelassen, und die Firewall gibt die Antwort an AppVM02 zurück.
 10. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
+    1. NSG-Regel 1 (Internet blockieren) trifft nicht zu, weiter zur nächsten Regel.
     2. NSG-Standardregeln lassen Datenverkehr zwischen Subnetzen zu, Datenverkehr wird zugelassen, NSG-Regelverarbeitung wird beendet.
 11. AppVM02 empfängt die Antwort.
 
-#### (Abgelehnt) Internet direkt an Webserver
+#### <a name="denied-internet-direct-to-web-server"></a>(Abgelehnt) Internet direkt an Webserver
 1. Internetbenutzer versucht, über den FrontEnd001.CloudApp.Net-Dienst auf Webserver IIS01 zuzugreifen.
 2. Da keine Endpunkte für HTTP-Datenverkehr geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
 3. Wären aus irgendeinem Grund Endpunkte offen, würde die NSG-Regel (Internet blockieren) im Front-End-Subnetz diesen Datenverkehr blockieren.
 4. Und schließlich würde die UDR-Route im Front-End-Subnetz jeglichen ausgehenden Datenverkehr von IIS01 an die Firewall (als nächsten Hop) senden. Die Firewall würde dies als asymmetrischen Datenverkehr betrachten und die ausgehende Antwort verwerfen. Daher existieren mindestens drei verschiedene Sicherheitsstufen zwischen dem Internet und IIS01 über den zugehörigen Clouddienst, um einen nicht autorisierten bzw. unangemessenen Zugriff zu verhindern.
 
-#### (Abgelehnt) Internet an Back-End-Server
+#### <a name="denied-internet-to-backend-server"></a>(Abgelehnt) Internet an Back-End-Server
 1. Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf eine Datei auf AppVM01 zuzugreifen.
 2. Da keine Endpunkte für Dateifreigaben geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
 3. Wären aus irgendeinem Grund Endpunkte offen, würde die NSG-Regel (Internet blockieren) diesen Datenverkehr blockieren.
 4. Und schließlich würde die UDR-Route jeglichen ausgehenden Datenverkehr von AppVM01 an die Firewall (als nächsten Hop) senden. Die Firewall würde dies als asymmetrischen Datenverkehr betrachten und die ausgehende Antwort verwerfen. Daher existieren mindestens drei verschiedene Sicherheitsstufen zwischen Internet und AppVM01 über den zugehörigen Clouddienst, um einen nicht autorisierten bzw. unangemessenen Zugriff zu verhindern.
 
-#### (Abgelehnt) Front-End-Server an Back-End-Server
+#### <a name="denied-frontend-server-to-backend-server"></a>(Abgelehnt) Front-End-Server an Back-End-Server
 1. Angenommen, die Sicherheit von IIS01 wäre beeinträchtigt und auf dem Server würde Schadsoftware ausgeführt, die versucht, die Back-End-Subnetzserver zu scannen.
 2. Die UDR-Route im Front-End-Subnetz würde jeglichen ausgehenden Datenverkehr von IIS01 an die Firewall als nächsten Hop senden. Dies kann durch den virtuellen Computer, dessen Sicherheit beeinträchtigt ist, nicht geändert werden.
-3. Die Firewall würde den Datenverkehr verarbeiten. Wenn die Anforderung an AppVM01 oder an den DNS-Server für ein DNS-Lookup gesendet würde, könnte dieser Datenverkehr (aufgrund der WL-Regeln 7 und 9) möglicherweise von der Firewall zugelassen werden. Jeglicher weiterer Datenverkehr würde durch WL-Regel 11 (alle ablehnen) blockiert.
+3. Die Firewall würde den Datenverkehr verarbeiten. Wenn die Anforderung an AppVM01 oder an den DNS-Server für ein DNS-Lookup gesendet würde, könnte dieser Datenverkehr (aufgrund der WL-Regeln 7 und 9) möglicherweise von der Firewall zugelassen werden. Jeglicher weiterer Datenverkehr würde durch WL-Regel 11 (alle ablehnen) blockiert.
 4. Wenn in der Firewall eine erweiterte Bedrohungserkennung aktiviert wäre (dieses Thema wird im vorliegenden Dokument nicht behandelt, Informationen zu den erweiterten Funktionen zur Abwehr von Bedrohungen erhalten Sie in der Anbieterdokumentation für Ihr Netzwerkgerät), würde selbst Datenverkehr abgelehnt, der von den in diesem Thema beschriebenen grundlegenden Weiterleitungsregeln weitergeleitet würde. Voraussetzung hierfür wäre, dass der Datenverkehr bekannte Signaturen oder Muster enthält, die eine erweiterte Bedrohungsregel auslösen.
 
-#### (Abgelehnt) Internet-DNS-Lookup im DNS-Server
-1. Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf DNS01 einen internen DNS-Eintrag nachzuschlagen.
+#### <a name="denied-internet-dns-lookup-on-dns-server"></a>(Abgelehnt) Internet-DNS-Lookup im DNS-Server
+1. Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf DNS01 einen internen DNS-Eintrag nachzuschlagen. 
 2. Da keine Endpunkte für DNS-Datenverkehr geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
 3. Wären aus irgendeinem Grund Endpunkte offen, würde die NSG-Regel (Internet blockieren) im Front-End-Subnetz diesen Datenverkehr blockieren.
 4. Und schließlich würde die UDR-Route im Back-End-Subnetz jeglichen ausgehenden Datenverkehr von DNS01 an die Firewall (als nächsten Hop) senden. Die Firewall würde dies als asymmetrischen Datenverkehr betrachten und die ausgehende Antwort verwerfen. Daher existieren mindestens drei verschiedene Sicherheitsstufen zwischen Internet und DNS01 über den zugehörigen Clouddienst, um einen nicht autorisierten bzw. unangemessenen Zugriff zu verhindern.
 
-#### (Abgelehnt) Zugriff auf SQL aus dem Internet über Firewall
+#### <a name="denied-internet-to-sql-access-through-firewall"></a>(Abgelehnt) Zugriff auf SQL aus dem Internet über Firewall
 1. Internetbenutzer fordert SQL-Daten von SecSvc001.CloudApp.Net (Clouddienst mit Schnittstelle zum Internet) an.
 2. Da keine Endpunkte für SQL geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher die Firewall nicht erreichen.
 3. Wären aus irgendeinem Grund SQL-Endpunkte offen, würde die Firewall mit der Regelverarbeitung beginnen:
-   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
+   1. WL-Regel 1 (WL-Verwaltung) trifft nicht zu, weiter zur nächsten Regel.
    2. WL-Regeln 2-5 (RDP-Regeln) treffen nicht zu, weiter zur nächsten Regel.
    3. WL-Regeln 6 & 7 (Anwendungsregeln) treffen nicht zu, weiter zur nächsten Regel.
-   4. WL-Regel 8 (ins Internet) trifft nicht zu, weiter zur nächsten Regel.
-   5. WL-Regel 9 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   6. WL-Regel 10 (subnetzintern) trifft nicht zu, weiter zur nächsten Regel.
-   7. WL-Regel 11 (alle ablehnen) trifft zu, Datenverkehr wird blockiert, Regelverarbeitung wird beendet.
+   4. WL-Regel 8 (ins Internet) trifft nicht zu, weiter zur nächsten Regel.
+   5. WL-Regel 9 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   6. WL-Regel 10 (subnetzintern) trifft nicht zu, weiter zur nächsten Regel.
+   7. WL-Regel 11 (alle ablehnen) trifft zu, Datenverkehr wird blockiert, Regelverarbeitung wird beendet.
 
-## Referenzen
-### Hauptskript und Netzwerkkonfiguration
-Speichern Sie das vollständige Skript in einer PowerShell-Skriptdatei. Speichern Sie die Netzwerkkonfiguration in einer Datei namens „NetworkConf2.xml“. Bearbeiten Sie die benutzerdefinierten Variablen nach Bedarf. Führen Sie das Skript aus, und befolgen Sie dann oben stehende Anweisungen zur Einrichtung der Firewallregel.
+## <a name="references"></a>Referenzen
+### <a name="main-script-and-network-config"></a>Hauptskript und Netzwerkkonfiguration
+Speichern Sie das vollständige Skript in einer PowerShell-Skriptdatei. Speichern Sie die Netzwerkkonfiguration in einer Datei namens „NetworkConf2.xml“.
+Bearbeiten Sie die benutzerdefinierten Variablen nach Bedarf. Führen Sie das Skript aus, und befolgen Sie dann oben stehende Anweisungen zur Einrichtung der Firewallregel.
 
-#### Vollständiges Skript
+#### <a name="full-script"></a>Vollständiges Skript
 Dieses Skript führt basierend auf den benutzerdefinierten Variablen Folgendes aus:
 
 1. Herstellen einer Verbindung mit einem Azure-Abonnement
@@ -915,7 +921,7 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
       Write-Host
 
 
-#### Netzwerkkonfigurationsdatei
+#### <a name="network-config-file"></a>Netzwerkkonfigurationsdatei
 Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie den Link zu dieser Datei in die $NetworkConfigFile-Variable im obigen Skript ein.
 
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -951,11 +957,11 @@ Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
 
-#### Beispielanwendungsskripts
-Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
+#### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
+Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie dazu eine Anwendung unter folgendem Link: [Beispielanwendungsskript][SampleApp].
 
 <!--Image References-->
-[1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, Netzwerksicherheitsgruppe und benutzerdefiniertem Routing"
+[1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, NSG und benutzerdefiniertem Routing"
 [2]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3firewalllogical.png "Logische Ansicht der Firewallregeln"
 [3]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectfrontend.png "Erstellen eines Front-End-Netzwerkobjekts"
 [4]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectdns.png "Erstellen eines DNS-Serverobjekts"
@@ -963,7 +969,7 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "AppVM01-Regel"
 [7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "Symbol der Regel zur Anwendungsumleitung"
 [8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "Symbol der Ziel-NAT-Regel"
-[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Symbol der Übergaberegel"
+[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Symbol übergeben"
 [10]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulefirewall.png "Firewallverwaltungsregel"
 [11]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulerdp.png "RDP-Firewallregel"
 [12]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleweb.png "Firewallwebregel"
@@ -971,11 +977,15 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [14]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleoutbound.png "Ausgehende Firewallregel"
 [15]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledns.png "DNS-Firewallregel"
 [16]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleintravnet.png "VNet-interne Firewallregel"
-[17]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledeny.png "Firewallregel "Alle ablehnen""
+[17]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledeny.png "Firewallablehnungsregel"
 [18]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/firewallruleactivate.png "Aktivierung der Firewallregeln"
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

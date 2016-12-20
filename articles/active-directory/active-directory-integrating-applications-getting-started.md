@@ -1,12 +1,12 @@
 ---
 title: Erste Schritte zur Integration von Anwendungen in Azure Active Directory | Microsoft Docs
-description: In diesem Artikel sind die ersten Schritte für die Integration von lokalen Anwendungen und Cloudanwendungen in Azure Active Directory (AD)  aufgeführt.
+description: "In diesem Artikel sind die ersten Schritte für die Integration von lokalen Anwendungen und Cloudanwendungen in Azure Active Directory (AD)  aufgeführt."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: ihenkel
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: db6d210d-c970-49e9-bd20-36d984bcd1c3
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/09/2016
 ms.author: inhenk
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e35ac9ae791f7fa917cccbba5d06319f28b7033c
+
 
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Erste Schritte zur Integration von Anwendungen in Azure Active Directory
 ## <a name="overview"></a>Übersicht
 Dieses Thema bietet Ihnen eine Roadmap für die Integration von Anwendungen in Azure Active Directory (AD). Jeder der folgenden Abschnitte enthält eine kurze Zusammenfassung eines ausführlicheren Themas, damit Sie feststellen können, welche Teile dieses Erste-Schritte-Leitfadens für Sie relevant sind.  Folgen Sie den Links, um eingehendere Informationen zu den einzelnen Themen zu erhalten.
 
-## <a name="before-you-begin,-take-inventory"></a>Voraussetzungen – Bestandsaufnahme
+## <a name="before-you-begin-take-inventory"></a>Voraussetzungen – Bestandsaufnahme
 Vor der Integration von Anwendungen in Azure AD sollten Sie unbedingt den aktuellen Stand ermitteln und festlegen, was Sie erreichen möchten.  Die folgenden Fragen helfen Ihnen bei Ihren Überlegungen zu Ihrem Azure AD-Projekt zur Anwendungsintegration.
 
 ### <a name="application-inventory"></a>Anwendungsbestand
@@ -74,7 +78,7 @@ In den folgenden Artikeln werden die verschiedenen Methoden zur Integration von 
 ## <a name="managing-access-to-applications"></a>Verwalten des Zugriffs auf Anwendungen
 In den folgenden Artikeln werden Möglichkeiten zur Verwaltung des Zugriffs auf Anwendungen beschrieben, nachdem sie mithilfe von Azure AD-Connectors und Azure AD in Azure AD integriert wurden.
 
-* [Verwalten des Zugriffs auf Apps mit Azure AD](active-directory-managing-access-to-apps.md)
+* [Verwalten des Zugriffs auf Apps mit Azure AD](active-directory-managing-access-to-apps.md)
 * [Automatisieren mit Azure AD-Connectors](active-directory-saas-app-provisioning.md)
 * [Zuweisen von Benutzern zu einer Anwendung](active-directory-applications-guiding-developers-assigning-users.md)
 * [Zuweisen von Gruppen zu einer Anwendung](active-directory-applications-guiding-developers-assigning-groups.md)
@@ -88,6 +92,9 @@ Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufüg
 ## <a name="see-also"></a>Weitere Informationen
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

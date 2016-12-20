@@ -1,36 +1,50 @@
 ---
-title: Aufrufen eines MapReduce-Programms über Azure Data Factory
+title: "Aufrufen eines MapReduce-Programms über Azure Data Factory"
 description: Erfahren Sie, wie Sie Daten verarbeiten, indem Sie MapReduce-Programme mithilfe einer Azure Data Factory auf einen Azure HDInsight-Cluster anwenden.
 services: data-factory
-documentationcenter: ''
-author: spelluru
+documentationcenter: 
+author: sharonlo101
 manager: jhubbard
 editor: monicar
-
+ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
-ms.author: spelluru
+ms.author: shlo
+translationtype: Human Translation
+ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
+ms.openlocfilehash: 6c290b3925b2e3a6fdc7fbc639d0db3017233328
+
 
 ---
-# Aufrufen von MapReduce-Programmen über Data Factory
-Die HDInsight-MapReduce-Aktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) führt MapReduce-Streamingprogramme in [eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-basierten HDInsight-Clustern aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
+# <a name="invoke-mapreduce-programs-from-data-factory"></a>Aufrufen von MapReduce-Programmen über Data Factory
+> [!div class="op_single_selector"]
+> * [Hive](data-factory-hive-activity.md)  
+> * [Pig](data-factory-pig-activity.md)  
+> * [MapReduce](data-factory-map-reduce.md)  
+> * [Hadoop-Datenströme](data-factory-hadoop-streaming-activity.md)
+> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+> * [Gespeicherte Prozedur](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+> * [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
 
-## Einführung
+Die HDInsight MapReduce-Aktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) wendet MapReduce-Programme auf [Ihren eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder einen [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows-/Linux-basierten HDInsight-Cluster an. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
+
+## <a name="introduction"></a>Einführung
 Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Artikel wird die Verwendung der HDInsight-Aktivität „MapReduce“ beschrieben.
 
-Weitere Informationen zum Ausführen von Pig-/Hive-Skripts auf einem Windows-/Linux-basierten HDInsight-Cluster über eine Pipeline mithilfe von Pig-/Hive-HDInsight-Aktivitäten finden Sie unter [Pig](data-factory-pig-activity.md) und [Hive](data-factory-hive-activity.md).
+Weitere Informationen zum Ausführen von Pig-/Hive-Skripts auf einem Windows-/Linux-basierten HDInsight-Cluster über eine Pipeline mithilfe von Pig-/Hive-HDInsight-Aktivitäten finden Sie unter [Pig](data-factory-pig-activity.md) und [Hive](data-factory-hive-activity.md). 
 
-## JSON für die HDInsight-Aktivität „MapReduce“
-Gehen Sie für die JSON-Definition der HDInsight-Aktivität so vor:
+## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON für die HDInsight-Aktivität „MapReduce“
+Gehen Sie für die JSON-Definition der HDInsight-Aktivität so vor: 
 
 1. Legen Sie den **Typ** der **Aktivität** auf **HDInsight** fest.
 2. Geben Sie für die Eigenschaft **className** den Namen der Klasse an.
-3. Geben Sie den Pfad zur JAR-Datei an, einschließlich des Dateinamens für die Eigenschaft **jarFilePath**.
-4. Geben Sie den verknüpften Dienst an, der auf den Azure-Blobspeicher verweist, der die JAR-Datei für die Eigenschaft **jarLinkedService** enthält.
+3. Geben Sie den Pfad zur JAR-Datei an, einschließlich des Dateinamens für die Eigenschaft **jarFilePath** .
+4. Geben Sie den verknüpften Dienst an, der auf den Azure-Blobspeicher verweist, der die JAR-Datei für die Eigenschaft **jarLinkedService** enthält.   
 5. Geben Sie im Abschnitt **arguments** Argumente für das MapReduce-Programm an. Zur Laufzeit werden ein paar zusätzliche Argumente aus dem MapReduce-Framework angezeigt (z.B.: mapreduce.job.tags). Um Ihre Argumente mit den MapReduce-Argumenten zu unterscheiden, sollten Sie erwägen, sowohl Option als auch Wert als Argumente zu verwenden, wie im folgenden Beispiel gezeigt („-s“, „--input“, „--output“ usw. sind Optionen, denen ihre Werte unmittelbar folgen).
    
         {
@@ -91,16 +105,16 @@ Gehen Sie für die JSON-Definition der HDInsight-Aktivität so vor:
 
 Mit der HDInsight-Aktivität „MapReduce“ können Sie beliebige MapReduce-JAR-Dateien auf einem HDInsight-Cluster ausführen. In der folgenden JSON-Beispieldefinition einer Pipeline wird die HDInsight-Aktivität für die Ausführung einer Mahout-JAR-Datei konfiguriert.
 
-## Beispiel auf GitHub
-Unter [Data Factory-Beispiele auf GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample) können Sie ein Beispiel für die Verwendung der HDInsight-Aktivität „MapReduce“ herunterladen.
+## <a name="sample-on-github"></a>Beispiel auf GitHub
+Unter [Data Factory-Beispiele auf GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample)können Sie ein Beispiel für die Verwendung der HDInsight-Aktivität „MapReduce“ herunterladen.  
 
-## Ausführen des Wortzählungsprogramms
-Die Pipeline in diesem Beispiel führt das Zuordnungs-/Reduzierungsprogramm für die Wortzählung auf Ihrem Azure HDInsight-Cluster aus.
+## <a name="running-the-word-count-program"></a>Ausführen des Wortzählungsprogramms
+Die Pipeline in diesem Beispiel führt das Zuordnungs-/Reduzierungsprogramm für die Wortzählung auf Ihrem Azure HDInsight-Cluster aus.   
 
-### Verknüpfte Dienste
-Erstellen Sie zunächst einen verknüpften Dienst, um die vom Azure HDInsight-Cluster verwendete Azure Storage-Instanz mit der Azure Data Factory zu verknüpfen. Denken Sie beim Kopieren und Einfügen des folgenden Codes daran, **account name** (Kontoname) und **account key** (Kontoschlüssel) durch den Namen und Schlüssel Ihrer Azure Storage-Instanz zu ersetzen.
+### <a name="linked-services"></a>Verknüpfte Dienste
+Erstellen Sie zunächst einen verknüpften Dienst, um die vom Azure HDInsight-Cluster verwendete Azure Storage-Instanz mit der Azure Data Factory zu verknüpfen. Denken Sie beim Kopieren und Einfügen des folgenden Codes daran, **account name** **account key** durch den Namen und Schlüssel Ihrer Azure Storage-Instanz zu ersetzen. 
 
-#### Mit Azure Storage verknüpfter Dienst
+#### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
     {
         "name": "StorageLinkedService",
         "properties": {
@@ -111,8 +125,8 @@ Erstellen Sie zunächst einen verknüpften Dienst, um die vom Azure HDInsight-Cl
         }
     }
 
-#### Mit Azure HDInsight verknüpfter Dienst
-Erstellen Sie anschließend einen verknüpften Dienst, um Ihren Azure HDInsight-Cluster mit der Azure Data Factory zu verknüpfen. Ersetzen Sie beim Kopieren und Einfügen des folgenden Codes den HDInsight-Clusternamen (**HDInsight cluster name**) durch den Namen des HDInsight-Clusters, und ändern Sie die Werte für Benutzername und Kennwort.
+#### <a name="azure-hdinsight-linked-service"></a>Mit Azure HDInsight verknüpfter Dienst
+Erstellen Sie anschließend einen verknüpften Dienst, um Ihren Azure HDInsight-Cluster mit der Azure Data Factory zu verknüpfen. Ersetzen Sie beim Kopieren und Einfügen des folgenden Codes den HDInsight-Clusternamen ( **HDInsight cluster name** ) durch den Namen des HDInsight-Clusters, und ändern Sie die Werte für Benutzername und Kennwort.   
 
     {
         "name": "HDInsightLinkedService",
@@ -127,9 +141,9 @@ Erstellen Sie anschließend einen verknüpften Dienst, um Ihren Azure HDInsight-
         }
     }
 
-### Datasets
-#### Ausgabedataset
-Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Geben Sie für die HDInsight-Aktivität „MapReduce“ ein Ausgabedataset an. Dieses Dataset ist nur ein für die Pipeline erforderliches Dummydataset.
+### <a name="datasets"></a>Datasets
+#### <a name="output-dataset"></a>Ausgabedataset
+Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Geben Sie für die HDInsight-Aktivität „MapReduce“ ein Ausgabedataset an. Dieses Dataset ist nur ein für die Pipeline erforderliches Dummydataset.  
 
     {
         "name": "MROutput",
@@ -151,13 +165,13 @@ Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Geben Sie für die HD
         }
     }
 
-### Pipeline
-Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ „HDInsightMapReduce“. Einige wichtige Eigenschaften in JSON:
+### <a name="pipeline"></a>Pipeline
+Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ „HDInsightMapReduce“. Einige wichtige Eigenschaften in JSON: 
 
 | Eigenschaft | Hinweise |
 |:--- |:--- |
-| type |Der Typ muss auf **HDInsightMapReduce** festgelegt werden. |
-| className |Der Name der Klasse lautet **wordcount**. |
+| type |Der Typ muss auf **HDInsightMapReduce**festgelegt werden. |
+| className |Der Name der Klasse lautet **wordcount** |
 | jarFilePath |Der Pfad zu der JAR-Datei mit der angegebenen Klasse. Denken Sie beim Kopieren und Einfügen des folgenden Codes daran, den Namen des Clusters zu ändern. |
 | jarLinkedService |Der mit Azure Storage verknüpfte Dienst mit der JAR-Datei. Dieser verknüpfte Dienst verweist auf den Speicher, der dem HDInsight-Cluster zugeordnet ist. |
 | arguments |Das Wortzählungsprogramm akzeptiert zwei Argumente: eine Eingabe und eine Ausgabe. Die Eingabedatei ist die Datei „davinci.txt“. |
@@ -203,24 +217,29 @@ Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ „
         }
     }
 
-## Aufrufen von Spark-Programmen
-Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Weitere Informationen finden Sie unter [Invoke Spark programs from Azure Data Factory](data-factory-spark.md) (Aufrufen von Spark-Programmen aus Azure Data Factory).
+## <a name="run-spark-programs"></a>Aufrufen von Spark-Programmen
+Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDInsight Spark-Cluster auszuführen. Weitere Informationen finden Sie unter [Aufrufen von Spark-Programmen aus Data Factory](data-factory-spark.md) .  
 
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-[adfgetstartedmonitoring]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines
+[adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[Azure Portal]: http://portal.azure.com
+[Entwicklerreferenz]: http://go.microsoft.com/fwlink/?LinkId=516908
+[Azure-Portal]: http://portal.azure.com
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [Hive-Aktivität](data-factory-hive-activity.md)
 * [Pig-Aktivität](data-factory-pig-activity.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 * [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
 * [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

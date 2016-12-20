@@ -1,4 +1,5 @@
 ---
+redirect_url: /azure/sql-data-warehouse/sql-data-warehouse-load-with-data-factory
 title: Laden von Daten mit Azure Data Factory | Microsoft Docs
 description: Informationen zum Laden von Daten mit Azure Data Factory
 services: sql-data-warehouse
@@ -16,8 +17,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 960225117a1c9b0802004455353fb9015a80b07b
+ms.sourcegitcommit: 3d41671920d40335e3e0931599a434f9d5f58bba
+ms.openlocfilehash: 0fcbd492f1f26efb67dec90a5ba25ba27172065c
 
 
 ---
@@ -218,18 +219,18 @@ Die Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin we
 [Laden von Beispieldaten in SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
 [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
-[Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-[Tutorial: Erstellen der ersten Data Factory (Übersicht)]: ../data-factory/data-factory-build-your-first-pipeline.md
+[Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+[Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters]: ../data-factory/data-factory-build-your-first-pipeline.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Lernpfad für Azure Data Factory]: https://azure.microsoft.com/documentation/learning-paths/data-factory
+[Azure Data Factory-Lernpfad]: https://azure.microsoft.com/documentation/learning-paths/data-factory
 [Azure-Portal]: https://portal.azure.com
 [Laden Sie Beispieldaten herunter]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

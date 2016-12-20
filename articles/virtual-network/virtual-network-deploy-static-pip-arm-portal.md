@@ -1,13 +1,13 @@
 ---
-title: Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mit dem Azure-Portal im Ressourcen-Manager | Microsoft Docs
-description: Erfahren Sie, wie Sie VMs mit einer statischen öffentlichen IP-Adresse über das Azure-Portal im Ressourcen-Manager bereitstellen.
+title: "Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals | Microsoft Docs"
+description: "Erfahren Sie, wie Sie einen virtuellen Computer mit einer statischen öffentlichen IP-Adresse über Azure Resource Manager mithilfe des Azure-Portals erstellen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: e9546bcc-f300-428f-b94a-056c5bd29035
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,25 +15,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 80b452bd96e3a328899ed455b71cf68da8bfde54
+ms.openlocfilehash: c2d0230550249c5f8ca406b61225822b7e19db2e
+
 
 ---
-# Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals
-[!INCLUDE [virtual-network-deploy-static-pip-arm-selectors-include.md](../../includes/virtual-network-deploy-static-pip-arm-selectors-include.md)]
+# <a name="create-a-vm-with-a-static-public-ip-using-the-azure-portal"></a>Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals
+
+> [!div class="op_single_selector"]
+- [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
+- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+- [Azure-Befehlszeilenschnittstelle](virtual-network-deploy-static-pip-arm-cli.md)
+- [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
+- [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
-
-klassisches Bereitstellungsmodell.
+> [!NOTE]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des klassischen Bereitstellungsmodells empfohlen wird.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
-## Erstellen einer VM mit einer statischen öffentlichen IP-Adresse
-Führen Sie die unten angegebenen Schritte aus, um eine VM mit einer statischen öffentlichen IP-Adresse im Azure-Portal zu erstellen.
+## <a name="create-a-vm-with-a-static-public-ip"></a>Erstellen einer VM mit einer statischen öffentlichen IP-Adresse
 
-1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
+Führen Sie die folgenden Schritte aus, um eine VM mit einer statischen öffentlichen IP-Adresse im Azure-Portal zu erstellen:
+
+1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
 2. Klicken Sie oben links im Portal auf **Neu**>>**Compute**>**Windows Server 2012 R2 Datacenter**.
-3. Wählen Sie in der Liste **Bereitstellungsmodell auswählen** die Option **Ressourcen-Manager**, und klicken Sie auf **Erstellen**.
+3. Wählen Sie in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager**, und klicken Sie auf **Erstellen**.
 4. Geben Sie auf dem Blatt **Grundlagen** die VM-Informationen wie unten gezeigt ein, und klicken Sie dann auf **OK**.
    
     ![Azure-Portal – Grundlagen](./media/virtual-network-deploy-static-pip-arm-portal/figure1.png)
@@ -54,4 +64,9 @@ Führen Sie die unten angegebenen Schritte aus, um eine VM mit einer statischen 
     
     ![Azure-Portal – Öffentliche IP-Adresse erstellen](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

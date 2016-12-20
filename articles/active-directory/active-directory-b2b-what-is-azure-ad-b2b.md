@@ -1,13 +1,13 @@
 ---
 title: 'Vorschau der Azure Active Directory B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud | Microsoft Docs'
-description: Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen.
+description: "Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: viv-liu
 manager: femila
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 1464387b-ee8b-4c7c-94b3-2c5567224c27
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -15,21 +15,25 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 40c98146f1bbf1b1d53cd27044ce383c33098870
+
 
 ---
-# Vorschau der Azure AD B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud
-Da sich Unternehmen mehr auf ihr Kerngeschäft konzentrieren, wächst auch die Notwendigkeit der Zusammenarbeit mit anderen Unternehmen. Zur Gewährleistung einer effektiven Zusammenarbeit müssen Unternehmen Ressourcen auf einfache und sichere Weise gemeinsam mit ihren Partnern nutzen können (z. B. den Zugriff auf Unternehmensanwendungen). Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Partnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und Unternehmensdaten über ihre selbstverwalteten Identitäten und unterstützt so Ihre unternehmensübergreifenden Beziehungen. Die Azure AD B2B-Zusammenarbeit ist:
+# <a name="azure-ad-b2b-collaboration-preview-simple-secure-cloud-partner-integration"></a>Vorschau der Azure AD B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud
+Da sich Unternehmen mehr auf ihr Kerngeschäft konzentrieren, wächst auch die Notwendigkeit der Zusammenarbeit mit anderen Unternehmen. Zur Gewährleistung einer effektiven Zusammenarbeit müssen Unternehmen Ressourcen auf einfache und sichere Weise gemeinsam mit ihren Partnern nutzen können (z. B. den Zugriff auf Unternehmensanwendungen). Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Partnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und Unternehmensdaten über ihre selbstverwalteten Identitäten und unterstützt so Ihre unternehmensübergreifenden Beziehungen. Die Azure AD B2B-Zusammenarbeit ist:
 
 * **Einfach**: Jeder Partnerbenutzer verwendet ein vorhandenes Azure AD-Konto oder ein Konto, das sich mühelos während der Annahme der Einladung erstellen lässt. Sie können diesem Benutzer den direkten Zugriff auf die ausgewählte Unternehmens-App oder eine Reihe von Anwendungen über den App-Zugriffsbereich ermöglichen.
 * **Sicher**: Ihr Administrator steuert den gesamten Zugriff auf Ihre Unternehmens-Apps über Ihr Azure AD-Verzeichnis. Wenn die Zusammenarbeit beendet ist, können Partnerbenutzer aus Azure AD entfernt werden, und ihr Zugriff auf Ihre Apps wird sofort aufgehoben. Darüber hinaus wird der Zugriff automatisch aufgehoben, wenn ein Partnerbenutzer die Partnerorganisation verlässt.
-* **Nahtlos**: Die Partnerunternehmen, die Zugriff auf Ihre Unternehmens-Apps benötigen, **müssen nicht über Azure AD verfügen**. Die Azure AD-B2B-Zusammenarbeit bietet eine einfache Anmeldeumgebung, über die Partner unmittelbaren Zugriff auf Ihre Apps erhalten.
+* **Nahtlos:** Die Partnerunternehmen, die Zugriff auf Ihre Unternehmens-Apps benötigen, **müssen nicht über Azure AD verfügen**. Die Azure AD-B2B-Zusammenarbeit bietet eine einfache Anmeldeumgebung, über die Partner unmittelbaren Zugriff auf Ihre Apps erhalten.
 
 Ausführliche Informationen zur Azure AD B2B-Zusammenarbeit finden Sie [im Blogbeitrag zur Ankündigung der öffentlichen Vorschau](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) und in [diesem umfassenden Video](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-B2B-collaboration-demo).
 
-Unter [Vergleich von Funktionen zum Verwalten externer Identitäten mithilfe von Azure AD](active-directory-b2b-compare-external-identities.md) werden die Anwendungsfälle für die Azure AD B2B-Zusammenarbeit, Azure AD B2C und die mehrinstanzenfähige Azure AD-App verglichen.
+Unter [Vergleich von Funktionen zum Verwalten externer Identitäten mithilfe von Azure AD](active-directory-b2b-compare-external-identities.md)werden die Anwendungsfälle für die Azure AD B2B-Zusammenarbeit, Azure AD B2C und die mehrinstanzenfähige Azure AD-App verglichen.
 
-## Verwandte Artikel
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+## <a name="related-articles"></a>Verwandte Artikel
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 * [So funktioniert's](active-directory-b2b-how-it-works.md)
 * [Ausführliche exemplarische Vorgehensweise](active-directory-b2b-detailed-walkthrough.md)
@@ -39,4 +43,9 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

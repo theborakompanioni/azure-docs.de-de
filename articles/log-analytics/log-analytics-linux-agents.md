@@ -1,12 +1,12 @@
 ---
 title: Verbinden von Linux-Computern mit Log Analytics | Microsoft Docs
-description: Mit Log Analytics können Sie von Linux-Computern generierte Daten sammeln und auf sie reagieren.
+description: "Mit Log Analytics können Sie von Linux-Computern generierte Daten sammeln und auf sie reagieren."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: ab5b76d8-9ab5-406e-8768-76fb0632d830
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 218ffec4601c5b0b4ee9872b5bbd03489cb3ddcf
+
 
 ---
 # <a name="connect-linux-computers-to-log-analytics"></a>Verbinden von Linux-Computern mit Log Analytics
@@ -66,7 +70,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, w
 
 | Quelle | Direct Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Zabbix |![Ja](./media/log-analytics-linux-agents/oms-bullet-green.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |1 Minute |
+| Zabbix |![Ja](./media/log-analytics-linux-agents/oms-bullet-green.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |1 Minute |
 | Nagios |![Ja](./media/log-analytics-linux-agents/oms-bullet-green.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |Bei der Ankunft |
 | syslog |![Ja](./media/log-analytics-linux-agents/oms-bullet-green.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |Von Azure-Speicher: 10 Minuten; von Agent: bei Ankunft |
 | Leistungsindikatoren von Linux |![Ja](./media/log-analytics-linux-agents/oms-bullet-green.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |![Nein](./media/log-analytics-linux-agents/oms-bullet-red.png) |Gemäß dem Zeitplan, mindestens 10 Sekunden |
@@ -674,7 +678,7 @@ Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in ein
 ```
 
 
-### <a name="linux-data-doesn't-appear-in-the-oms-portal"></a>Linux-Daten werden nicht im OMS-Portal angezeigt
+### <a name="linux-data-doesnt-appear-in-the-oms-portal"></a>Linux-Daten werden nicht im OMS-Portal angezeigt
 #### <a name="probable-causes"></a>Mögliche Ursachen
 * Fehler beim Onboarding zum OMS-Dienst
 * Verbindung zum OMS-Dienst ist blockiert
@@ -779,6 +783,9 @@ Zum Sammeln von syslog-Nachrichten sind entweder rsyslog oder syslog-ng erforder
 * Vertrautmachen mit den [Suchprotokollen](log-analytics-log-searches.md) zur Anzeige von detaillierten Informationen, die von Lösungen gesammelt wurden.
 * Verwenden von [Dashboards](log-analytics-dashboards.md) zum Speichern und Anzeigen von eigenen benutzerdefinierten Suchvorgängen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

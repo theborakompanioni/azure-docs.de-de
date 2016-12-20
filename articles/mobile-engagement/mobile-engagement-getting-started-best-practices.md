@@ -15,12 +15,12 @@ ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7be266a6f8b3e18f2f6a27908ad75b5c19d3d862
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
 
 
 ---
-# <a name="azure-mobile-engagement-getting-started-guide-with-best-practices"></a>Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices
+# <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices
 ## <a name="overview"></a>Übersicht
 **Der Bildschirm mobiler Geräte ist sehr unübersichtlich:** Im Jahr 2013 wurde in einer Studie festgestellt, dass auf mobilen Geräten durchschnittlich 27 Anwendungen installiert waren. Benutzer verbringen in der Regel 30 Stunden pro Monat mit ihre Apps. Ein Großteil dieser Zeit wurde für soziale Netzwerke und Spiele aufgewendet (ca. 20 Stunden). Im Jahr 2014 konnten Benutzer auf dem Android-Markt zwischen ca. 1,5 Millionen Anwendungen wählen. Im Apple Store waren ca. 1,2 Millionen Apps enthalten. Die Verwendung der mobilen Apps nimmt weiterhin zu, und die Entwickler konkurrieren auf diesem wachsender Markt. 
 
@@ -105,7 +105,7 @@ Erstellen Sie ein KPI-Dashboard mit den folgenden Informationen
 3. Wo befinden sich diese Daten für meine Anwendung (Bildschirm, Einstellungen, System...)?
 4. Kann ich eine Einbindungssequenz für diesen KPI wiedergeben?
 
-Beispiele und eine Anleitung finden Sie im Arbeitsblatt **KPI Builder** unter [Media Playbook Template][Media Playbook link].
+Beispiele und eine Anleitung finden Sie im Arbeitsblatt **KPI Builder** (KPI-Generator) in [Media Playbook Template][Media Playbook link] (Medien-Playbook-Vorlage).
 
 ## <a name="step-2-your-engagement-program"></a>Schritt 2: Ihr Einbindungsprogramm
 Ein hervorragendes Einbindungsprogramm sollte als eine wichtige Komponente Ihrer App angesehen werden. Dies sollte unbedingt ein großartiges Willkommensprogramm beinhalten, das für einen Benutzer während der ersten Tage der App-Verwendung ausgeführt wird. Dies hat eine sehr positive Wirkung auf die Einbindung und die Nutzungsdauer Ihrer App. Studien belegen, dass die Mehrheit der Benutzer die Verwendung einer App in den ersten Tagen nach der Installation beendet. Sie sollten sich bemühen, die Kundenerwartungen zu erfüllen oder zu übertreffen, um früh das Kundeninteresse zu stärken, während der Benutzer noch auf Ihre App konzentriert ist. Stellen Sie sicher, dass Sie den Hauptnutzen und die Vorteile der App für Ihre Kunden darstellen. 
@@ -209,13 +209,13 @@ Azure Mobile Engagement bietet zwei Möglichkeiten, um zu verhindern, dass Ihre 
 #### <a name="playbook-exercise-2-create-your-engagement-program"></a>Übung 2: Erstellen des Einbindungsprogramms
 Wenden Sie ein wenig Zeit auf, Ihre Ziele zusammenzufassen und Kampagnen zu definieren, die mit bestimmten Sequenzen wiedergeben werden. Stellen Sie sicher, dass Sie den 3W-Ansatz auf Benachrichtigungen in Ihren Kampagnen anwenden. 
 
-Beispiele und eine Anleitung finden Sie im Arbeitsblatt **Engagement Program** unter [Media Playbook Template][Media Playbook link].
+Beispiele und eine Anleitung finden Sie im Arbeitsblatt **Engagement Program** (Einbindungsprogramm) in [Media Playbook Template][Media Playbook link] (Medien-Playbook-Vorlage).
 
 ## <a name="step-3-app-integration"></a>Schritt 3: App-Integration
 #### <a name="create-a-tag-plan"></a>Erstellen eines Markierungsplans
 Um Azure Mobile Engagement in Ihre App zu integrieren, müssen Sie einen Markierungsplan erstellen. Der Markierungsplan ist ein Eckpfeiler des Projekts. Er definiert die Beziehung zwischen Marketingspezifikationen, dem Workflow der Anwendung und echten Markierungsdaten, die in der App gesammelt werden, um KPIs zu messen. Er gibt an, welche Analysen im Portal angezeigt werden können. Außerdem hilft er dabei, die Benutzersegmente zu definieren und zum Einbinden der Endbenutzer abgestimmte Pushbenachrichtigungen zu senden. Wenn Ihr Markierungsplan definiert ist, können Sie mit dem Azure Mobile Engagement-SDK ganz einfach den Code hinzufügen, um ihn in Ihre App zu integrieren.
 
-Mit einem Markierungsplan sollte nicht alles in einer Anwendung markiert werden. Er sollte nur Markierungsdaten umfassen, die Bestandteil Ihrer Strategie für die mobile Einbindung sind. Diese sind wahrscheinlich von den Anwendungen abhängig. Die [Media Playbook Template][Media Playbook link], die von Azure Mobile Engagement bereitgestellt wird, unterstützt Sie beim Erstellen eines Markierungsplans mit einer bestimmten Methode. Verwenden Sie das Arbeitsblatt **Tag Plan** als Leitfaden für die Erstellung Ihres Markierungsplans.
+Mit einem Markierungsplan sollte nicht alles in einer Anwendung markiert werden. Er sollte nur Markierungsdaten umfassen, die Bestandteil Ihrer Strategie für die mobile Einbindung sind. Diese sind wahrscheinlich von den Anwendungen abhängig. [Media Playbook Template][Media Playbook link] (Medien-Playbook-Vorlage), die von Azure Mobile Engagement bereitgestellt wird, unterstützt Sie beim Erstellen eines Markierungsplans mit einer bestimmten Methode. Verwenden Sie das Arbeitsblatt **Tag Plan** als Leitfaden für die Erstellung Ihres Markierungsplans.
 
 Wenn Sie einen Markierungsabschnitt im Arbeitsblatt definieren, seien Sie äußerst spezifisch. Dies ist sehr wichtig, um ein Durcheinander zu vermeiden. Geben Sie jedes erwartete Szenario an, in dem die einzelnen Markierungen gesendet werden. Nehmen Sie den Namen der Aktivität auf, in die die einzelnen Markierungen eingebettet sind. Dies sollte alles im Abschnitt **Informative** des Arbeitsblatts enthalten sein. Das Arbeitsblatt mit dem Markierungsplan sollte die Hauptreferenz für die Testüberprüfung sein. 
 
@@ -322,10 +322,10 @@ Nachdem Sie einige Erfahrungen gesammelt haben, könnten Sie Ihren Einbindungspr
 
 
 <!--Link references-->
-[Link zu Media Playbook]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
+[Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

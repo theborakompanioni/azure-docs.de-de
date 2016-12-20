@@ -22,10 +22,8 @@
 ### [Zugriffssteuerung](biztalk-issuer-name-issuer-key.md)
 ## [Problembehandlung](biztalk-troubleshoot-using-ops-logs.md)
 
-# Referenz
-## [Versionshinweise](biztalk-release-notes.md)
-
 # Ressourcen
+## [Versionshinweise](biztalk-release-notes.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=biztalk-services)
 ## [Preise](https://azure.microsoft.com/pricing/details/biztalk-services/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
@@ -33,6 +31,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

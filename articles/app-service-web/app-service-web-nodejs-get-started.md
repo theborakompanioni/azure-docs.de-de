@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5c61d7a04d7d3e7f82ca8636dcd5d222e1a37a96
+ms.sourcegitcommit: 2050bda9c1a4390232d32370863e8d6a62ed5c2b
+ms.openlocfilehash: 66f1a0987960c9251922f1d22ed647d10bb0d10e
 
 
 ---
@@ -91,6 +91,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js]-Anwendung erste
 8. Speichern Sie Ihre Änderungen, und verwenden Sie dann Git, um Ihre App in Azure bereitzustellen:
    
         git add .
+        git add -f config
         git commit -m "{your commit message}"
         git push azure master
    
@@ -186,7 +187,7 @@ Führen Sie zum Lesen von iisnode-Protokollen die folgenden Schritte aus.
    
     ![Untersuchen einer Protokolldatei von iisnode][iislog-kudu-console-read]
 
-## <a name="debug-your-app-with-nodeinspector"></a>Debuggen der App mit Node-Inspector
+## <a name="debug-your-app-with-node-inspector"></a>Debuggen der App mit Node-Inspector
 Wenn Sie Node-Inspector zum Debuggen Ihrer Node.js-Apps verwenden, können Sie die Anwendung für Ihre live geschaltete App Service-App verwenden. Node-Inspector ist in der iisnode-Installation für App Service vorinstalliert. Falls Sie die Bereitstellung über Git durchführen, enthält die automatisch generierte Datei „Web.config“ aus Kudu bereits die gesamte Konfiguration, die Sie zum Aktivieren von Node-Inspector benötigen.
 
 Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
@@ -235,7 +236,7 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 [Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
 [für eine kostenlose Testversion registrieren]: http://go.microsoft.com/fwlink/?LinkId=623901
-[Web-App]: ./app-service-web-overview.md
+[web app]: ./app-service-web-overview.md
 [Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
@@ -247,6 +248,6 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

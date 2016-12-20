@@ -1,10 +1,10 @@
-## Erstellen eines VNet mithilfe einer Netzwerkkonfigurationsdatei von PowerShell
+## <a name="how-to-create-a-vnet-using-a-network-config-file-from-powershell"></a>Erstellen eines VNet mithilfe einer Netzwerkkonfigurationsdatei von PowerShell
 Azure verwendet eine XML-Datei, um alle für ein Abonnement verfügbaren VNets zu definieren. Sie können diese Datei herunterladen und bearbeiten, um vorhandene VNets zu ändern oder zu löschen und neue zu erstellen. In diesem Dokument erfahren Sie, wie Sie die Datei, die auch als Netzwerkkonfigurationsdatei oder netcgf-Datei bezeichnet wird, herunterladen und bearbeiten können, um ein neues VNet zu erstellen. Unter [Konfigurationsschema für virtuelle Azure-Netzwerke](https://msdn.microsoft.com/library/azure/jj157100.aspx) finden Sie weitere Informationen zur Netzwerkkonfigurationsdatei.
 
 Führen Sie zum Erstellen eines VNet unter Verwendung einer netcfg-Datei mithilfe von PowerShell die folgenden Schritte aus.
 
-1. Wenn Sie Azure PowerShell noch nie verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md), und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
-2. Verwenden Sie in der Azure-PowerShell-Konsole das Cmdlet **Get-AzureVnetConfig**, um die Netzwerkkonfigurationsdatei herunterzuladen, indem Sie den folgenden Befehl ausführen. 
+1. Wenn Sie Azure PowerShell noch nie verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+2. Verwenden Sie in der Azure-PowerShell-Konsole das Cmdlet **Get-AzureVnetConfig** , um die Netzwerkkonfigurationsdatei herunterzuladen, indem Sie den folgenden Befehl ausführen. 
    
         Get-AzureVNetConfig -ExportToFile c:\NetworkConfig.xml
    
@@ -13,8 +13,8 @@ Führen Sie zum Erstellen eines VNet unter Verwendung einer netcfg-Datei mithilf
         XMLConfiguration                                                                                                     
         ----------------                                                                                                     
         <?xml version="1.0" encoding="utf-8"?>...  
-3. Öffnen Sie die in Schritt 2 oben gespeicherte Datei mit einem beliebigen XML- oder Text-Editor, und suchen Sie nach dem **<VirtualNetworkSites>**-Element. Wenn Sie bereits Netzwerke erstellt haben, wird für jedes Netzwerk ein eigenes **<VirtualNetworkSite>**-Element angezeigt.
-4. Um das in diesem Szenario beschriebene virtuelle Netzwerk zu erstellen, fügen Sie den folgenden XML-Code direkt unter dem **<VirtualNetworkSites>**-Element hinzu:
+3. Öffnen Sie die in Schritt 2 oben gespeicherte Datei mit einem beliebigen XML- oder Text-Editor, und suchen Sie nach dem **<VirtualNetworkSites>** -Element. Wenn Sie bereits Netzwerke erstellt haben, wird für jedes Netzwerk ein eigenes **<VirtualNetworkSite>** -Element angezeigt.
+4. Um das in diesem Szenario beschriebene virtuelle Netzwerk zu erstellen, fügen Sie den folgenden XML-Code direkt unter dem **<VirtualNetworkSites>** -Element hinzu:
    
         <VirtualNetworkSite name="TestVNet" Location="Central US">
           <AddressSpace>
@@ -39,7 +39,7 @@ Führen Sie zum Erstellen eines VNet unter Verwendung einer netcfg-Datei mithilf
        OperationDescription OperationId                          OperationStatus
        -------------------- -----------                          ---------------
        Set-AzureVNetConfig  49579cb9-3f49-07c3-ada2-7abd0e28c4e4 Succeeded 
-7. Verwenden Sie in der Azure PowerShell-Konsole das Cmdlet **Get-AzureVnetSite**, um zu überprüfen, ob das neue Netzwerk hinzugefügt wurde, indem Sie den folgenden Befehl ausführen.
+7. Verwenden Sie in der Azure PowerShell-Konsole das Cmdlet **Get-AzureVnetSite** , um zu überprüfen, ob das neue Netzwerk hinzugefügt wurde, indem Sie den folgenden Befehl ausführen. 
    
        Get-AzureVNetSite -VNetName TestVNet
    
@@ -61,4 +61,8 @@ Führen Sie zum Erstellen eines VNet unter Verwendung einer netcfg-Datei mithilf
        OperationId          : 3f35d533-1f38-09c0-b286-3d07cd0904d8
        OperationStatus      : Succeeded
 
-<!---HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Dec16_HO1-->
+
+

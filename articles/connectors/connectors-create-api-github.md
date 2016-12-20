@@ -1,13 +1,13 @@
 ---
 title: GitHub | Microsoft Docs
-description: Erstellen Sie Logik-Apps mit Azure App Service. GitHub ist ein webbasierter Hostingdienst für Git-Repositorys. Er bietet alle Funktionen von Git zur Kontrolle von verteilten Überarbeitungen und zur Quellcodeverwaltung sowie eigene Features.
+description: "Erstellen Sie Logik-Apps mit Azure App Service. GitHub ist ein webbasierter Hostingdienst für Git-Repositorys. Er bietet alle Funktionen von Git zur Kontrolle von verteilten Überarbeitungen und zur Quellcodeverwaltung sowie eigene Features."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 8f873e6c-f4c0-4c2e-a5bd-2e953efe5e2b
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
@@ -15,31 +15,35 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e6468b7e9cde47ca4caf9be14d0ad780a431e6f2
+
 
 ---
-# Erste Schritte mit dem GitHub-Connector
+# <a name="get-started-with-the-github-connector"></a>Erste Schritte mit dem GitHub-Connector
 GitHub ist ein webbasierter Hostingdienst für Git-Repositorys. Er bietet alle Funktionen von Git zur Kontrolle von verteilten Überarbeitungen und zur Quellcodeverwaltung sowie eigene Features.
 
 > [!NOTE]
-> Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+> Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“. 
 > 
 > 
 
 Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-## Trigger und Aktionen
-Der GitHub-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
+## <a name="triggers-and-actions"></a>Trigger und Aktionen
+Der GitHub-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format. 
 
  Der GitHub-Connector verfügt über die folgenden Aktionen und/oder Trigger:
 
-### GitHub-Aktionen
+### <a name="github-actions"></a>GitHub-Aktionen
 Sie können diese Aktionen ausführen:
 
 | Aktion | Beschreibung |
 | --- | --- |
 | [CreateIssue](connectors-create-api-github.md#createissue) |Erstellt eine Problemmeldung |
 
-### GitHub-Trigger
+### <a name="github-triggers"></a>GitHub-Trigger
 Sie können auf diese Ereignisse lauschen:
 
 | Trigger | Beschreibung |
@@ -48,29 +52,29 @@ Sie können auf diese Ereignisse lauschen:
 | Wenn eine Problemmeldung geschlossen wird |Eine Problemmeldung wird geschlossen. |
 | Wenn eine Problemmeldung zugewiesen wird |Eine Problemmeldung wird zugewiesen. |
 
-## Herstellen einer Verbindung mit GitHub
-Um Logik-Apps mit GitHub zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+## <a name="create-a-connection-to-github"></a>Herstellen einer Verbindung mit GitHub
+Um Logik-Apps mit GitHub zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben: 
 
 | Eigenschaft | Erforderlich | Beschreibung |
 | --- | --- | --- |
-| Token |Ja |Angeben der Anmeldeinformationen für GitHub |
+| Tokenverschlüsselung |Ja |Angeben der Anmeldeinformationen für GitHub |
 
-Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
+Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden. 
 
-> [!INCLUDE [Schritte zum Herstellen einer Verbindung mit GitHub](../../includes/connectors-create-api-github.md)]
+> [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 > [!TIP]
 > Sie können diese Verbindung in anderen Logik-Apps verwenden.
 > 
 > 
 
-## Referenz für GitHub
+## <a name="reference-for-github"></a>Referenz für GitHub
 Gilt für Version: 1.0.
 
-## CreateIssue
-Problemmeldung erstellen: Erstellt eine Problemmeldung.
+## <a name="createissue"></a>CreateIssue
+Problemmeldung erstellen: Erstellt eine Problemmeldung. 
 
-```POST: /repos/{repositoryOwner}/{repositoryName}/issues```
+```POST: /repos/{repositoryOwner}/{repositoryName}/issues``` 
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
@@ -78,80 +82,80 @@ Problemmeldung erstellen: Erstellt eine Problemmeldung.
 | repositoryName |string |Ja |path |(Keine) |Name des Repositorys |
 | issueBasicDetails | |Ja |body |(Keine) |Details zum Problem |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 400 |Ungültige Anforderung |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 404 |Nicht gefunden |
 | 500 |Interner Serverfehler. Unbekannter Fehler aufgetreten |
-| default |Fehler beim Vorgang. |
+| die Standardeinstellung |Fehler beim Vorgang. |
 
-## IssueOpened
-Wenn eine Problemmeldung geöffnet wird: Eine Problemmeldung wird geöffnet.
+## <a name="issueopened"></a>IssueOpened
+Wenn eine Problemmeldung geöffnet wird: Eine Problemmeldung wird geöffnet. 
 
-```GET: /trigger/issueOpened```
+```GET: /trigger/issueOpened``` 
 
 Es gibt keine Parameter für diesen Aufruf
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 400 |Ungültige Anforderung |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 404 |Nicht gefunden |
 | 500 |Interner Serverfehler. Unbekannter Fehler aufgetreten |
-| default |Fehler beim Vorgang. |
+| die Standardeinstellung |Fehler beim Vorgang. |
 
-## IssueClosed
-Wenn eine Problemmeldung geschlossen wird: Eine Problemmeldung wird geschlossen.
+## <a name="issueclosed"></a>IssueClosed
+Wenn eine Problemmeldung geschlossen wird: Eine Problemmeldung wird geschlossen. 
 
-```GET: /trigger/issueClosed```
+```GET: /trigger/issueClosed``` 
 
 Es gibt keine Parameter für diesen Aufruf
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 400 |Ungültige Anforderung |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 404 |Nicht gefunden |
 | 500 |Interner Serverfehler. Unbekannter Fehler aufgetreten |
-| default |Fehler beim Vorgang. |
+| die Standardeinstellung |Fehler beim Vorgang. |
 
-## IssueAssigned
-Wenn eine Problemmeldung zugewiesen wird: Eine Problemmeldung wird zugewiesen.
+## <a name="issueassigned"></a>IssueAssigned
+Wenn eine Problemmeldung zugewiesen wird: Eine Problemmeldung wird zugewiesen. 
 
-```GET: /trigger/issueAssigned```
+```GET: /trigger/issueAssigned``` 
 
 Es gibt keine Parameter für diesen Aufruf
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 400 |Ungültige Anforderung |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 404 |Nicht gefunden |
 | 500 |Interner Serverfehler. Unbekannter Fehler aufgetreten |
-| default |Fehler beim Vorgang. |
+| die Standardeinstellung |Fehler beim Vorgang. |
 
-## Objektdefinitionen
-### IssueBasicDetailsModel
+## <a name="object-definitions"></a>Objektdefinitionen
+### <a name="issuebasicdetailsmodel"></a>IssueBasicDetailsModel
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | title |string |Ja |
 | body |string |Ja |
 | assignee |string |Ja |
 
-### IssueDetailsModel
+### <a name="issuedetailsmodel"></a>IssueDetailsModel
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | title |string |Ja |
@@ -159,10 +163,15 @@ Es gibt keine Parameter für diesen Aufruf
 | assignee |string |Ja |
 | number |string |Nein |
 | state |string |Nein |
-| created\_at |string |Nein |
-| repository\_url |string |Nein |
+| created_at |string |Nein |
+| repository_url |string |Nein |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1cd92121b150461698674b8acd4369d09c9b9920
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 683ad119250704bdebfb9b54bd3a4ee24bf3d418
 
 
 ---
-# <a name="upgrading-the-phonefactor-agent-to-azure-multifactor-authentication-server"></a>Durchführen eines Upgrades vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server
+# <a name="upgrading-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Durchführen eines Upgrades vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server
 Für das Upgrade von Version 5.x oder früher des PhoneFactor-Agents auf den Azure Multi-Factor Authentication-Server müssen der PhoneFactor-Agent und alle zugehörigen Komponenten deinstalliert werden, bevor der Multi-Factor Authentication-Server und die zugehörigen Komponenten installiert werden können.
 
-## <a name="to-upgrade-the-phonefactor-agent-to-azure-multifactor-authentication-server"></a>So führen Sie ein Upgrade vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server durch
+## <a name="to-upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>So führen Sie ein Upgrade vom PhoneFactor-Agent auf den Azure Multi-Factor Authentication-Server durch
 <ol>
 <li>Sichern Sie zunächst die PhoneFactor-Datendatei. Der Standardinstallationspfad lautet "C:\Programme\PhoneFactor\Data\Phonefactor.pfdata".
 
@@ -70,6 +70,6 @@ Für das Upgrade von Version 5.x oder früher des PhoneFactor-Agents auf den Azu
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

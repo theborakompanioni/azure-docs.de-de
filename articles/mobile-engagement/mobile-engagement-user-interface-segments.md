@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement – Benutzeroberfläche - Segmente
+title: "Azure Mobile Engagement – Benutzeroberfläche - Segmente"
 description: Erfahren Sie, wie Sie Segmente von Benutzern mithilfe von Azure Mobile Engagement erstellen und verwalten
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 6a4f2205-4a3c-406e-a04f-5e6f2a36653f
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,10 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
+ms.openlocfilehash: 84d1e7d704b6142005217625cfe505f382b4d938
+
 
 ---
-# Erstellen und Verwalten von Segmenten von Benutzern zur Identifikation von Verwendungsmustern
-In diesem Artikel wird die Registerkarte **SEGMENTE** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement**-Portal, um Ihre mobilen Apps zu überwachen und zu verwalten.
+# <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>Erstellen und Verwalten von Segmenten von Benutzern zur Identifikation von Verwendungsmustern
+In diesem Artikel wird die Registerkarte **SEGMENTE** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten.
 
 Der Abschnitt "Segmente" der Benutzeroberfläche ermöglicht Ihnen das Segmentieren Ihrer Benutzer basierend auf den verschiedenen Verhalten und Analysen, die Sie von der Anwendung und auch über die Segments-API erhalten können. Segmente werden erstmals 24 Stunden nach ihrer Erstellung berechnet und dann alle 24 Stunden basierend auf den neuesten Analyseinformationen neu berechnet. Sobald ein Segment berechnet ist, zeigt es jeden Tag ein Diagramm vom Typ "Tag-zu-Tag-Verlauf" an.
 
@@ -26,40 +30,42 @@ Der Abschnitt "Segmente" der Benutzeroberfläche ermöglicht Ihnen das Segmentie
 > 
 > 
 
-## Erstellen von Segmenten
-Sie können im Abschnitt "Analyse" ein Segment basierend auf bis zu 10 Kriterien für einen bestimmten Zeitraum von bis zu 60 Tagen in der Vergangenheit erstellen. Beispielsweise können Sie ein Segment basierend auf Personen erstellen, die innerhalb der letzten 10 Tage in Ihrer App bestimmte Seiten besucht oder nach bestimmten Inhalten gesucht haben. Diese Informationen sind im Abschnitt "Analyse" verfügbar. Sie können sie nutzen, um ein Segment zu erstellen und anschließend eine Pushbenachrichtigung an diese Teilmenge von Benutzern einrichten, um sie zum Zurückkehren zur App zu bewegen.
+## <a name="create-segments"></a>Erstellen von Segmenten
+Sie können im Abschnitt "Analyse" ein Segment basierend auf bis zu 10 Kriterien für einen bestimmten Zeitraum von bis zu 60 Tagen in der Vergangenheit erstellen. Beispielsweise können Sie ein Segment basierend auf Personen erstellen, die innerhalb der letzten 10 Tage in Ihrer App bestimmte Seiten besucht oder nach bestimmten Inhalten gesucht haben. Diese Informationen sind im Abschnitt "Analyse" verfügbar. Sie können sie nutzen, um ein Segment zu erstellen und anschließend eine Pushbenachrichtigung an diese Teilmenge von Benutzern einrichten, um sie zum Zurückkehren zur App zu bewegen. 
 
-> Hinweis: Sobald ein Segment berechnet wurde, kann es nicht bearbeitet werden. Es kann nur geklont (kopiert) oder entfernt (gelöscht) werden. Ein Segment kann innerhalb der gleichen Anwendung (mit der gleichen App-ID) und auch in andere Anwendungen (mit einer anderen App-ID) kopiert werden.
-> 
-> 
+> [!NOTE]
+> Sobald ein Segment berechnet wurde, kann es nicht bearbeitet werden. Es kann nur geklont (kopiert) oder entfernt (gelöscht) werden. Ein Segment kann innerhalb der gleichen Anwendung (mit der gleichen App-ID) und auch in andere Anwendungen (mit einer anderen App-ID) kopiert werden. 
 
- ![segments1][35]
+ ![segments1][35] 
 
-## Beispielsegmente
+## <a name="examples-segments"></a>Beispielsegmente
  ![segments2][36]
 
-Mithilfe von Segmenten können Sie die Endbenutzer Ihrer Anwendung segmentieren. Das Segmentieren von Benutzern ist eine wichtige Marketingstrategie. Azure Mobile Engagement ermöglicht Ihnen das Abrufen von Verlaufsdaten und Erstellen benutzerdefinierter Segmente. Mit diesem leistungsfähigen Tool können Sie sich mit der Erfahrung Ihrer Kunden in Ihrer Anwendung vertraut machen. Sie können problemlos die Segmente analysieren und Ihre Segmente als Pushziele nutzen. Ein gängiger Anwendungsfall ist das Senden einer Pushbenachrichtigung zum Anregen Ihrer Endbenutzer, Ihre Anwendung im Store zu bewerten. Anstatt eine Benachrichtigung an alle Ihre Endbenutzer zu senden, können Sie ein Segment erstellen, das nur Benutzer angibt, die Ihre Anwendung im letzten Monat jeden Tag verwendet haben und eine ausgezeichnete Benutzererfahrung hatten. Wenn Sie weniger, überaus zielgerichtete Pushbenachrichtigungen senden, ist der Nutzen größer.
+Mithilfe von Segmenten können Sie die Endbenutzer Ihrer Anwendung segmentieren.
+Das Segmentieren von Benutzern ist eine wichtige Marketingstrategie. Azure Mobile Engagement ermöglicht Ihnen das Abrufen von Verlaufsdaten und Erstellen benutzerdefinierter Segmente. Mit diesem leistungsfähigen Tool können Sie sich mit der Erfahrung Ihrer Kunden in Ihrer Anwendung vertraut machen. Sie können problemlos die Segmente analysieren und Ihre Segmente als Pushziele nutzen.
+Ein gängiger Anwendungsfall ist das Senden einer Pushbenachrichtigung zum Anregen Ihrer Endbenutzer, Ihre Anwendung im Store zu bewerten. Anstatt eine Benachrichtigung an alle Ihre Endbenutzer zu senden, können Sie ein Segment erstellen, das nur Benutzer angibt, die Ihre Anwendung im letzten Monat jeden Tag verwendet haben und eine ausgezeichnete Benutzererfahrung hatten. Wenn Sie weniger, überaus zielgerichtete Pushbenachrichtigungen senden, ist der Nutzen größer.
 
  ![segments3][37]
 
-### Beispiele, die Sie basierend auf den wichtigsten Azure Mobile Engagement-Elementen erstellen können:
-* Ereignis: Erstellen Sie ein Segment, das sich an einem bestimmten Ereignis in der Anwendung orientiert, das mehr als zweimal pro Woche aufgetreten ist.
+### <a name="segments-you-can-create-based-on-the-major-azure-mobile-engagement-elements"></a>Beispiele, die Sie basierend auf den wichtigsten Azure Mobile Engagement-Elementen erstellen können:
+* Ereignis: Erstellen Sie ein Segment, das sich an einem bestimmten Ereignis in der Anwendung orientiert, das mehr als zweimal pro Woche aufgetreten ist. 
 * Sitzung: Erstellen Sie ein Segment mit Benutzern, die die Anwendung letzte Woche mehr als fünf Mal verwendet haben.
-* Aktivität: Erstellen Sie ein Segment von Benutzern, die eine Seite oder einen Inhalt letzten Monat mehr oder weniger als 10 Mal verwendet haben.
+* Aktivität: Erstellen Sie ein Segment von Benutzern, die eine Seite oder einen Inhalt letzten Monat mehr oder weniger als 10 Mal verwendet haben.
 * Auftrag: Erstellen Sie ein Segment von Benutzern, die einen Auftrag mehr als zweimal täglich ausgeführt haben.
-* Absturz: Erstellen Sie ein Segment aller Benutzer, bei denen letzte Woche ein Absturz mehr als 10 Mal aufgetreten ist. (Sie könnten an dieses Segment eine Pushbenachrichtigung mit einer Entschuldigung oder sogar einem Gutschein senden!)
+* Absturz: Erstellen Sie ein Segment aller Benutzer, bei denen letzte Woche ein Absturz mehr als 10 Mal aufgetreten ist. (Sie könnten an dieses Segment eine Pushbenachrichtigung mit einer Entschuldigung oder sogar einem Gutschein senden!)
 * Fehler: Erstellen Sie ein Segment aller Benutzer, bei denen in den letzten 3 Tagen ein Fehler mehr als 100 Mal aufgetreten ist.
-* App-Info: Erstellen Sie ein Segment, das sich an einer benutzerdefinierten App-Info ausrichtet, die während der letzten 25 Tage aufgetreten ist.
+* App-Info: Erstellen Sie ein Segment, das sich an einer benutzerdefinierten App-Info ausrichtet, die während der letzten 25 Tage aufgetreten ist.
   
   ![segments4][38]
 
-Um Segmente optimal zu nutzen, muss eine angepasste Integration des SDK in Ihre Anwendung mit einem Taggingplan mit "App-Info"-Tags erfolgt sein. Wechseln Sie dann zur Startseite der Benutzeroberfläche, wählen Sie die gewünschte Anwendung aus, und klicken Sie auf den Abschnitt "Segmente".
+Um Segmente optimal zu nutzen, muss eine angepasste Integration des SDK in Ihre Anwendung mit einem Taggingplan mit "App-Info"-Tags erfolgt sein.
+Wechseln Sie dann zur Startseite der Benutzeroberfläche, wählen Sie die gewünschte Anwendung aus, und klicken Sie auf den Abschnitt "Segmente".
 
 1. Wählen Sie den Abschnitt "Segmente" aus.
 2. Klicken Sie auf die Schaltfläche "Neues Segment", um ein neues Segment zu erstellen.
 
-## Ein Beispiel aus der Praxis: Erstellen Sie ein einfaches Segment basierend auf Informationen in "Sitzung"
-Erstellen Sie ein Segment aller Endbenutzer, die Ihre App in der letzten Woche mindestens 50 Mal verwendet haben. Suchen Sie anschließend nur die Endbenutzer, die mindestens 30 Sekunden in Ihrer App pro Sitzung verbracht haben. Dadurch werden alle Endbenutzer angezeigt, die bislang eine positive Erfahrung mit der App gemacht haben. Dann könnte das erstellte Segment verwendet werden, um eine Pushbenachrichtigung an diese Endanwender mit der Bitte zu senden, Ihre App im Store zu bewerten.
+## <a name="real-life-example-create-a-simple-segment-based-on-session-information"></a>Ein Beispiel aus der Praxis: Erstellen Sie ein einfaches Segment basierend auf Informationen in "Sitzung"
+Erstellen Sie ein Segment aller Endbenutzer, die Ihre App in der letzten Woche mindestens 50 Mal verwendet haben. Suchen Sie anschließend nur die Endbenutzer, die mindestens 30 Sekunden in Ihrer App pro Sitzung verbracht haben. Dadurch werden alle Endbenutzer angezeigt, die bislang eine positive Erfahrung mit der App gemacht haben. Dann könnte das erstellte Segment verwendet werden, um eine Pushbenachrichtigung an diese Endanwender mit der Bitte zu senden, Ihre App im Store zu bewerten.
 
  ![segments5][39]
 
@@ -78,8 +84,9 @@ Wählen Sie "Sitzung" aus.
    ![segments8][42]
 3. Wählen Sie den Operator aus, der in der Liste relevant ist: =; ≥, ≤.
 4. Geben Sie die gewünschte Anzahl ein.
-5. Wählen Sie das gewünschte Vorkommen aus.
-6. Klicken Sie auf "Weiter". Dieses Beispiel ist so eingerichtet, dass Benutzer in der letzten Woche gefunden werden sollen, die über 50 Sitzungen hatten.
+5. Wählen Sie das gewünschte Vorkommen aus. 
+6. Klicken Sie auf "Weiter".
+   Dieses Beispiel ist so eingerichtet, dass Benutzer in der letzten Woche gefunden werden sollen, die über 50 Sitzungen hatten.
    
    ![segments9][43]
 
@@ -87,7 +94,8 @@ Für die Segmentierung "Sitzung" können Sie die Dauer pro Sitzung als Kriterium
 
 1. Wählen Sie den Operator in der Liste aus.
 2. Geben Sie die Dauer pro Sitzung an.
-3. Klicken Sie auf Weiter. Bei diesem Beispiel werden aus allen Sitzungen, die gemäß des Abschnitts "Vorkommen" segmentiert wurden, nur die Benutzer ausgewählt, deren Sitzung jeweils länger als 30 Sekunden gedauert haben.
+3. Klicken Sie auf "Weiter".
+   Bei diesem Beispiel werden aus allen Sitzungen, die gemäß des Abschnitts "Vorkommen" segmentiert wurden, nur die Benutzer ausgewählt, deren Sitzung jeweils länger als 30 Sekunden gedauert haben.
    
    ![segments10][44]
 
@@ -95,9 +103,11 @@ Benennen Sie Ihr Kriterium, um es aus dem Trichter "Abgeschlossen" abrufen zu k�
 
  ![segments11][45]
 
-Wenn Sie Ihr Kriterium eingerichtet haben, wird es im Trichter "Segment" angezeigt. Da ein Segment auf Analysedaten basiert, werden Segmente einmal pro Tag berechnet. Bei diesem Beispiel stimmen 47,7 % der Endbenutzer mit dem Kriterium überein. Dies sollten die Benutzer mit einer guten Erfahrung sein, die Ihnen wahrscheinlich eine höhere Bewertung geben, wenn Sie Ihnen eine Pushbenachrichtigung mit einer Bitte zur Bewertung Ihrer App im Store senden.
+Wenn Sie Ihr Kriterium eingerichtet haben, wird es im Trichter "Segment" angezeigt.
+Da ein Segment auf Analysedaten basiert, werden Segmente einmal pro Tag berechnet.
+Bei diesem Beispiel stimmen 47,7 % der Endbenutzer mit dem Kriterium überein. Dies sollten die Benutzer mit einer guten Erfahrung sein, die Ihnen wahrscheinlich eine höhere Bewertung geben, wenn Sie Ihnen eine Pushbenachrichtigung mit einer Bitte zur Bewertung Ihrer App im Store senden.
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 * [Konzepte][Link 6]
 * [Handbuch zur Problembehandlung – Dienst][Link 24]
 
@@ -197,4 +207,8 @@ Wenn Sie Ihr Kriterium eingerichtet haben, wird es im Trichter "Segment" angezei
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

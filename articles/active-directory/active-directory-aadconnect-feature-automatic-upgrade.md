@@ -2,11 +2,11 @@
 title: 'Azure AD Connect: Automatisches Upgrade | Microsoft Docs'
 description: Dieses Thema beschreibt das integrierte automatische Upgradefeature in der Azure AD Connect-Synchronisierung.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: AndKjell
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/24/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bcf0d318f747d359229d1dc8161a952ad3e8ff47
+
 
 ---
-# <a name="azure-ad-connect:-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
+# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
 Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
 
 ## <a name="overview"></a>Übersicht
@@ -89,13 +93,16 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeNotSupportedMetaverseSizeExceeeded |Es sind mehr als 100.000 Objekte im Metaverse enthalten. |
 | UpgradeNotSupportedMultiForestSetup |Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt. |
 | UpgradeNotSupportedNonLocalDbInstall |Sie verwenden keine SQL Server Express LocalDB-Datenbank. |
-| UpgradeNotSupportedNonMsolAccount |Das [AD-Connector-Konto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das Standardkonto vom Typ „MSOL_“. |
+| UpgradeNotSupportedNonMsolAccount |Das [AD-Connector-Konto](connect/active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das Standardkonto vom Typ „MSOL_“. |
 | UpgradeNotSupportedStagingModeEnabled |Der Server ist auf den [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode)festgelegt. |
 | UpgradeNotSupportedUserWritebackEnabled |Sie haben das Feature [Benutzerrückschreiben](active-directory-aadconnect-feature-preview.md#user-writeback) aktiviert. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

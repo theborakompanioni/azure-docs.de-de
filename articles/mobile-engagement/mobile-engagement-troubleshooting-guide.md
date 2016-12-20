@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement – Anweisungen zur Problembehandlung
-description: Handbuch zur Problembehandlung für Azure Mobile Engagement
+title: "Azure Mobile Engagement – Anweisungen zur Problembehandlung"
+description: "Handbuch zur Problembehandlung für Azure Mobile Engagement"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 31134a29-a513-4e5e-b626-f6cf6fe04769
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,74 +14,79 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1947600f6167dff6ec4fa104b0f98200bcf2a2e1
+
 
 ---
-# Azure Mobile Engagement – Handbuch zur Problembehandlung
-## Einführung
-Mithilfe dieses Handbuchs zur Problembehandlung können Sie die Ursachen einiger häufig auftretender Probleme ermitteln und die Problembehandlung selbst durchführen.
+# <a name="azure-mobile-engagement---troubleshooting-guide"></a>Azure Mobile Engagement – Handbuch zur Problembehandlung
+## <a name="introduction"></a>Einführung
+Mithilfe dieses Handbuchs zur Problembehandlung können Sie die Ursachen einiger häufig auftretender Probleme ermitteln und die Problembehandlung selbst durchführen. 
 
-## Allgemein
+## <a name="general"></a>Allgemein
 Im Allgemeinen sollten Sie immer Folgendes sicherstellen:
 
-1. Stellen Sie sicher, dass Sie alle in den [Erste-Schritte-Lernprogrammen](mobile-engagement-windows-store-dotnet-get-started.md) beschriebenen Schritte ausgeführt haben, die für die Integration erforderlich sind.
-2. Sie verwenden die neueste Version der Plattform-SDKs.
-3. Führen Sie Tests auf einem Originalgerät und einem Emulator durch, da bestimmte Probleme nur beim Emulator auftreten.
-4. Es treten keine der Beschränkungen/Drosselungen für Mobile Engagement auf, die [hier](../azure-subscription-service-limits.md) dokumentiert sind.
-5. Wenn Sie keine Verbindung mit dem Engagement Mobile Service Back-End herstellen können oder festzustellen, dass Daten nicht kontinuierlich geladen werden, vergewissern Sie sich [hier](https://azure.microsoft.com/status/), dass keine aktiven Servicevorfälle vorliegen.
+1. Stellen Sie sicher, dass Sie alle in den [Erste-Schritte-Lernprogrammen](mobile-engagement-windows-store-dotnet-get-started.md)
+2. Sie verwenden die neueste Version der Plattform-SDKs. 
+3. Führen Sie Tests auf einem Originalgerät und einem Emulator durch, da bestimmte Probleme nur beim Emulator auftreten. 
+4. Es treten keine der Beschränkungen/Drosselungen für Mobile Engagement auf, die [hier](../azure-subscription-service-limits.md)
+5. Wenn Sie keine Verbindung mit dem Engagement Mobile Service Back-End herstellen können oder festzustellen, dass Daten nicht kontinuierlich geladen werden, vergewissern Sie sich [hier](https://azure.microsoft.com/status/)
 
-## Probleme beim „Überwachen“
-### Mein Gerät wird auf der Registerkarte „Überwachen“ nicht angezeigt
-Auf der Registerkarte „Überwachen“ werden die Geräte in Echtzeit angezeigt, die mit der Mobile Engagement-Plattform verbunden sind. Beim Debuggen auf einem Emulator und einem Gerät sollte hier mindestens eine Sitzung angezeigt werden. Wenn die Anwendung verteilt wurde, werden im Indikator „Aktive Sitzungen“ die Geräte in Echtzeit angezeigt, die mit der Plattform verbunden sind.
+## <a name="monitor-issues"></a>Probleme beim „Überwachen“
+### <a name="i-am-not-seeing-my-device-showing-up-on-the-monitor-tab"></a>Mein Gerät wird auf der Registerkarte „Überwachen“ nicht angezeigt
+Auf der Registerkarte „Überwachen“ werden die Geräte in Echtzeit angezeigt, die mit der Mobile Engagement-Plattform verbunden sind. Beim Debuggen auf einem Emulator und einem Gerät sollte hier mindestens eine Sitzung angezeigt werden. Wenn die Anwendung verteilt wurde, werden im Indikator „Aktive Sitzungen“ die Geräte in Echtzeit angezeigt, die mit der Plattform verbunden sind. 
 
 Wenn Ihr Gerät nicht auf der Registerkarte „Überwachen“ angezeigt wird, ist die Ursache wahrscheinlich ein Problem bei der SDK-Integration. Einige allgemeine Schritte zur Problembehandlung:
 
-1. Stellen Sie sicher, dass Sie die richtige Verbindungszeichenfolge aus dem Abschnitt für die SDK-Schlüssel und nicht die API-Schlüssel in der mobilen App verwenden. Unter Verwendung der Verbindungszeichenfolge wird die Verbindung der mobilen App mit der Instanz der Mobile Engagement-App hergestellt, in der Ihr Gerät auf der Registerkarte „Überwachen“ angezeigt wird.
+1. Stellen Sie sicher, dass Sie die richtige Verbindungszeichenfolge aus dem Abschnitt für die SDK-Schlüssel und nicht die API-Schlüssel in der mobilen App verwenden. Unter Verwendung der Verbindungszeichenfolge wird die Verbindung der mobilen App mit der Instanz der Mobile Engagement-App hergestellt, in der Ihr Gerät auf der Registerkarte „Überwachen“ angezeigt wird. 
 2. Windows-Plattform: Wenn die `OnNavigatedTo`-Methode von Ihrer Seite überschrieben wird, vergewissern Sie sich, dass `base.OnNavigatedTo(e)` aufgerufen wird.
-3. Wenn Mobile Engagement in eine vorhandene mobile App integriert wird, können Sie sich auch vergewissern, dass Sie keine Schritte ausgelassen haben, indem Sie die [hier](mobile-engagement-windows-store-integrate-engagement.md) aufgeführten erweiterten Integrationsschritte durchgehen.
-4. Stellen Sie sicher, dass Sie mindestens einen Bildschirm oder eine Aktivität senden, indem Sie je nach verwendeter Plattform entsprechend der Beschreibung in den [Erste-Schritte-Lernprogrammen](mobile-engagement-windows-store-dotnet-get-started.md) die Seite mit EngagementActivity überschreiben.
+3. Wenn Mobile Engagement in eine vorhandene mobile App integriert wird, können Sie sich auch vergewissern, dass Sie keine Schritte ausgelassen haben, indem Sie die [hier](mobile-engagement-windows-store-integrate-engagement.md)
+4. Stellen Sie sicher, dass Sie mindestens einen Bildschirm oder eine Aktivität senden, indem Sie je nach verwendeter Plattform entsprechend der Beschreibung in den [Erste-Schritte-Lernprogrammen](mobile-engagement-windows-store-dotnet-get-started.md)die Seite mit EngagementActivity überschreiben.
 
-### Auf der Registerkarte „Überwachen“ wird eine Sitzung angezeigt, obwohl die Verbindung getrennt wurde oder die App bzw. der Emulator geschlossen wurde.
-Wenn nur Sie derzeit eine Verbindung mit der Plattform hergestellt haben und zum Öffnen der App einen Emulator verwenden, ist die Ursache wahrscheinlich ein Emulatorfehler. Im Allgemeinen müssen Sie sicherstellen, dass Sie zur Startseite auf dem Emulator für die App-Sitzung zurückkehren, damit die Verbindung erfolgreich getrennt wird. Außerdem müssen Sie auf der Windows-Plattform beim Debuggen mit Visual Studio möglicherweise sicherstellen, dass Sie in Visual Studio die Menüleiste **Ereignisse des Lebenszyklus** aufrufen und auf **Anhalten ** klicken, damit die Sitzung wirklich geschlossen wird. Weitere Einzelheiten finden Sie im [Windows-Lernprogramm](mobile-engagement-windows-store-dotnet-get-started.md).
+### <a name="i-am-seeing-the-monitor-tab-showing-a-session-even-when-i-have-disconnected-or-closed-my-app-emulator"></a>Auf der Registerkarte „Überwachen“ wird eine Sitzung angezeigt, obwohl die Verbindung getrennt wurde oder die App bzw. der Emulator geschlossen wurde.
+Wenn nur Sie derzeit eine Verbindung mit der Plattform hergestellt haben und zum Öffnen der App einen Emulator verwenden, ist die Ursache wahrscheinlich ein Emulatorfehler. Im Allgemeinen müssen Sie sicherstellen, dass Sie zur Startseite auf dem Emulator für die App-Sitzung zurückkehren, damit die Verbindung erfolgreich getrennt wird. Außerdem müssen Sie auf der Windows-Plattform beim Debuggen mit Visual Studio möglicherweise sicherstellen, dass Sie in Visual Studio die Menüleiste **Ereignisse des Lebenszyklus** aufrufen und auf **Anhalten** klicken, damit die Sitzung wirklich geschlossen wird. Weitere Einzelheiten finden Sie im [Windows-Lernprogramm](mobile-engagement-windows-store-dotnet-get-started.md) . 
 
-## Probleme bei „Analyse“
-### Auf der Registerkarte „Analyse“ werden keine oder veraltete Daten angezeigt
-Analysedaten werden in regelmäßigen Abständen neu berechnet. Diese Aktualisierung kann bis zu 24 Stunden dauern. Es handelt sich nicht um Echtzeitdaten, und die Aktualisierung erfolgt innerhalb eines Zeitraums von 24 Stunden. Stellen Sie jedoch sicher, dass Sie mindestens einen Bildschirm oder eine Aktivität an das Plattform-Back-End senden, indem Sie mindestens eine Seite mit `EngagementActivity` oder durch einen expliziten Aufruf von `SendActivity` überschreiben.
+## <a name="analytics-issues"></a>Probleme bei „Analyse“
+### <a name="i-am-not-seeing-any-data-refreshed-data-on-analytics-tab"></a>Auf der Registerkarte „Analyse“ werden keine oder veraltete Daten angezeigt
+Analysedaten werden in regelmäßigen Abständen neu berechnet. Diese Aktualisierung kann bis zu 24 Stunden dauern. Es handelt sich nicht um Echtzeitdaten, und die Aktualisierung erfolgt innerhalb eines Zeitraums von 24 Stunden.
+Stellen Sie jedoch sicher, dass Sie mindestens einen Bildschirm oder eine Aktivität an das Plattform-Back-End senden, indem Sie mindestens eine Seite mit `EngagementActivity` oder durch einen expliziten Aufruf von `SendActivity` überschreiben. 
 
-### Auf der Registerkarte „Analyse“ werden für ein Gerät falsch erfasste Datums-/Uhrzeitangaben angezeigt
-Der Zeitraum für die Analyse beruht auf dem Datum auf dem Gerät des Benutzers. Daher müssen Sie sich vergewissern, dass das Datum korrekt eingestellt ist.
+### <a name="i-am-seeing-incorrectly-captured-datetime-for-a-device-on-the-analytics-tab"></a>Auf der Registerkarte „Analyse“ werden für ein Gerät falsch erfasste Datums-/Uhrzeitangaben angezeigt
+Der Zeitraum für die Analyse beruht auf dem Datum auf dem Gerät des Benutzers. Daher müssen Sie sich vergewissern, dass das Datum korrekt eingestellt ist. 
 
-## Probleme bei „Segment“
-### Ich habe ein Segment erstellt, das nun abgeblendet ist oder für das keine Daten angezeigt werden
-Die Segmenterstellung erfolgt derzeit nicht in Echtzeit. Sie wird gleichzeitig mit der Zusammenstellung der Analysedaten berechnet und kann daher bis zu 24 Stunden dauern. Überprüfen Sie die Segmentierung später erneut. In der Zwischenzeit sollten Sie jedoch auch sicherstellen, dass Ihre mobilen Apps wirklich die Daten senden, auf denen die Segmentierung beruht. Wenn beispielsweise das Ereignis „foo“ von keinem der mobilen Geräte gesendet wird, stehen keine Segmentdaten für ein Segment zur Verfügung, das mit dem Kriterium „EventName = foo“ erstellt wurde. Außerdem sollten Sie die SDK-Integration überprüfen, um sicherzustellen, dass Ihre mobile App die richtigen Daten sendet.
+## <a name="segment-issues"></a>Probleme bei „Segment“
+### <a name="i-created-a-segment-and-it-is-showing-up-as-greyed-out-or-not-showing-any-data"></a>Ich habe ein Segment erstellt, das nun abgeblendet ist oder für das keine Daten angezeigt werden
+Die Segmenterstellung erfolgt derzeit nicht in Echtzeit. Sie wird gleichzeitig mit der Zusammenstellung der Analysedaten berechnet und kann daher bis zu 24 Stunden dauern. Überprüfen Sie die Segmentierung später erneut. In der Zwischenzeit sollten Sie jedoch auch sicherstellen, dass Ihre mobilen Apps wirklich die Daten senden, auf denen die Segmentierung beruht. Beispiel: Wenn das Ereignis „foo“ von keinem der mobilen Geräte gesendet wird, stehen keine Segmentdaten für ein Segment zur Verfügung, das mit dem Kriterium „EventName = foo“ erstellt wurde. Außerdem sollten Sie die SDK-Integration überprüfen, um sicherzustellen, dass Ihre mobile App die richtigen Daten sendet. 
 
-## Probleme bei „Reach“ oder Pushbenachrichtigungen
-### Pushmeldungen werden nicht übermittelt
-1. Versuchen Sie zunächst, Benachrichtigungen an ein Testgerät zu senden, um sicherzustellen, dass alle Komponenten – die mobile App, das SDK und der Dienst – korrekt verbunden sind und Pushbenachrichtigungen übermitteln können.
-2. Senden Sie zunächst immer die einfachste Out-of-App-Benachrichtigung über eine Kampagne, die nicht geplant und für die kein Benutzergruppenkriterium festgelegt wurde. Damit soll wiederum überprüft werden, ob die Benachrichtigungsverbindungen ordnungsgemäß funktionieren.
-3. Wenn bei der Übermittlung von In-App-Benachrichtigungen Probleme auftreten, empfiehlt es sich, als ersten Schritt zu versuchen, zunächst eine Out-of-App-Benachrichtigung zu senden.
-4. Vergewissern Sie sich, dass der „systemeigene Push“ für Ihre mobile App korrekt konfiguriert ist. Je nach Plattform werden dabei entweder Schlüssel (Android, Windows) oder Zertifikate (iOS) verwendet. Weitere Informationen finden Sie unter [Benutzeroberfläche – Einstellungen](mobile-engagement-user-interface-settings.md).
-5. Außerdem ist es möglich, dass Out-of-App-Benachrichtigungen vom Benutzer über das mobile Betriebssystem blockiert wurden. Vergewissern Sie sich also, dass dies nicht der Fall ist.
-6. Vergewissern Sie sich außerdem, dass Sie im Bereich **Kampagne** einer Reach-Kampagne nicht die Option *Zielgruppe ignorieren, Push wird über die API an Benutzer gesendet* festgelegt haben, da dies dazu führt, dass Pushbenachrichtigungen nur über APIs gesendet werden können.
+## <a name="reach-or-push-notifications-issues"></a>Probleme bei „Reach“ oder Pushbenachrichtigungen
+### <a name="my-push-messages-are-not-being-delivered"></a>Pushmeldungen werden nicht übermittelt
+1. Versuchen Sie zunächst, Benachrichtigungen an ein Testgerät zu senden, um sicherzustellen, dass alle Komponenten – die mobile App, das SDK und der Dienst – korrekt verbunden sind und Pushbenachrichtigungen übermitteln können. 
+2. Senden Sie zunächst immer die einfachste Out-of-App-Benachrichtigung über eine Kampagne, die nicht geplant und für die kein Benutzergruppenkriterium festgelegt wurde. Damit soll wiederum überprüft werden, ob die Benachrichtigungsverbindungen ordnungsgemäß funktionieren. 
+3. Wenn bei der Übermittlung von In-App-Benachrichtigungen Probleme auftreten, empfiehlt es sich, als ersten Schritt zu versuchen, zunächst eine Out-of-App-Benachrichtigung zu senden. 
+4. Vergewissern Sie sich, dass der „systemeigene Push“ für Ihre mobile App korrekt konfiguriert ist. Je nach Plattform werden dabei entweder Schlüssel (Android, Windows) oder Zertifikate (iOS) verwendet. Weitere Einzelheiten finden Sie im [Benutzeroberfläche – Einstellungen](mobile-engagement-user-interface-settings.md)
+5. Außerdem ist es möglich, dass Out-of-App-Benachrichtigungen vom Benutzer über das mobile Betriebssystem blockiert wurden. Vergewissern Sie sich also, dass dies nicht der Fall ist. 
+6. Vergewissern Sie sich außerdem, dass Sie im Bereich *Kampagne* einer Reach-Kampagne nicht die Option **Zielgruppe ignorieren, Push wird über die API an Benutzer gesendet** festgelegt haben, da dies dazu führt, dass Pushbenachrichtigungen nur über APIs gesendet werden können. 
 7. Sie müssen Ihre Pushkampagne sowohl mit einem Gerät, das über WLAN verbunden ist, als auch mit einem Gerät testen, das über ein Mobilfunknetz verbunden ist, um die Netzwerkverbindung als mögliche Problemquelle auszuschließen.
-8. Stellen Sie sicher, dass Systemdatum und -uhrzeit für den Geräteemulator korrekt eingestellt sind, da ein nicht synchronisiertes Gerät ebenfalls die Übermittlung von Benachrichtigungen durch den Pushbenachrichtigungsdienst beeinträchtigt.
+8. Stellen Sie sicher, dass Systemdatum und -uhrzeit für den Geräteemulator korrekt eingestellt sind, da ein nicht synchronisiertes Gerät ebenfalls die Übermittlung von Benachrichtigungen durch den Pushbenachrichtigungsdienst beeinträchtigt. 
 
 Im Folgenden finden Sie weitere plattformspezifische Anweisungen zur Problembehandlung:
 
-1. **iOS**
+1. **iOS** 
    
-   * Stellen Sie sicher, dass die Zertifikate für iOS-Pushbenachrichtigungen gültig und nicht abgelaufen sind.
-   * Vergewissern Sie sich, dass Sie ein *Produktionszertifikat* in Ihrer Mobile Engagement-App korrekt konfiguriert haben.
-   * Stellen Sie sicher, dass Sie den Test auf eine *realen, physischen Gerät* durchführen. Der iOS-Simulator kann keine Pushnachrichten verarbeiten.
-   * Stellen Sie sicher, dass die Bündel-ID in der mobilen App ordnungsgemäß konfiguriert ist. Anweisungen finden Sie [hier](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6).
+   * Stellen Sie sicher, dass die Zertifikate für iOS-Pushbenachrichtigungen gültig und nicht abgelaufen sind. 
+   * Vergewissern Sie sich, dass Sie ein *Produktionszertifikat* in Ihrer Mobile Engagement-App korrekt konfiguriert haben. 
+   * Stellen Sie sicher, dass Sie den Test auf eine *realen physischen Gerät* durchführen. Der iOS-Simulator kann keine Pushnachrichten verarbeiten.
+   * Stellen Sie sicher, dass die Bündel-ID in der mobilen App ordnungsgemäß konfiguriert ist. Anweisungen finden Sie [hier](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
    * Verwenden Sie beim Testen die „Ad Hoc“-Verteilung in Ihrem mobile Bereitstellungsprofil. Sie werden nicht benachrichtigt, wenn Ihre App mithilfe von „Debug“ kompiliert wird.
 2. **Android**
    
-   * Vergewissern Sie sich, dass Sie in der Datei „AndroidManifest.xml“ Ihrer mobilen App die korrekte Projektnummer gefolgt vom Zeichen „\\n“ angegeben haben.
+   * Vergewissern Sie sich, dass Sie in der Datei „AndroidManifest.xml“ Ihrer mobilen App die korrekte Projektnummer gefolgt vom Zeichen „\n“ angegeben haben. 
      
            <meta-data android:name="engagement:gcm:sender" android:value="************\n" />
-   * Stellen Sie sicher, dass in der Android-Manifestdatei keine Berechtigungen fehlen oder falsch konfiguriert sind.
-   * Stellen Sie sicher, dass die Projektnummer, die Sie der Client-App hinzufügen, aus dem Konto stammt, in dem Sie auch den GCM-Serverschlüssel erhalten haben. Jede Abweichung zwischen den beiden verhindert, dass Ihre Pushes gesendet werden.
-   * Wenn Sie Systembenachrichtigungen empfangen, aber keine In-App-Benachrichtigungen, überprüfen Sie den Abschnitt [Angeben eines Symbol für Benachrichtigungen](mobile-engagement-android-get-started.md), da in der Android-Manifestdatei wahrscheinlich nicht das richtige Symbol angegeben ist.
+   * Stellen Sie sicher, dass in der Android-Manifestdatei keine Berechtigungen fehlen oder falsch konfiguriert sind. 
+   * Stellen Sie sicher, dass die Projektnummer, die Sie der Client-App hinzufügen, aus dem Konto stammt, in dem Sie auch den GCM-Serverschlüssel erhalten haben. Jede Abweichung zwischen den beiden verhindert, dass Ihre Pushes gesendet werden. 
+   * Wenn Sie Systembenachrichtigungen empfangen, aber keine In-App-Benachrichtigungen, überprüfen Sie den Abschnitt [Angeben eines Symbol für Benachrichtigungen](mobile-engagement-android-get-started.md) , da in der Android-Manifestdatei wahrscheinlich nicht das richtige Symbol angegeben ist. 
    * Wenn Sie eine BigPicture-Benachrichtigung senden und über externe Bildserver verfügen, müssen diese "GET" und "HEAD" für HTTP unterstützen.
 3. **Windows**
    
@@ -90,24 +95,29 @@ Im Folgenden finden Sie weitere plattformspezifische Anweisungen zur Problembeha
      
            <Grid x:Name="EngagementGrid"></Grid>
 
-### Ich habe eine Pushbenachrichtigung/Ankündigung/Kampagne erstellt. Nachdem die Benachrichtigung an mich gesendet wurde, wird immer noch „Aktiv“ angezeigt. Was bedeutet das?
-Die **Kampagne**, die Sie in Mobile Engagement erstellt haben, trägt diesen Namen, da es sich um eine auf Dauer ausgeführte Pushbenachrichtigung handelt. Das heißt, wenn neue Geräte eine Verbindung mit der Mobile Engagement-Plattform herstellen, wird die Benachrichtigung, die Sie hier konfigurieren, automatisch an diese gesendet, sofern das in der Kampagne festgelegte Kriterium erfüllt ist. Es handelt sich nicht um eine Konfiguration für eine einmalige Benachrichtigung. Sie müssen manuell auf die Schaltfläche **Fertig stellen** klicken, um die Kampagne zu beenden, damit keine weiteren Benachrichtigungen gesendet werden.
+### <a name="i-created-a-push-notificationannouncement-campaign-and-even-after-it-sent-me-the-notification-it-is-showing-as-active-what-does-it-mean"></a>Ich habe eine Pushbenachrichtigung/Ankündigung/Kampagne erstellt. Nachdem die Benachrichtigung an mich gesendet wurde, wird immer noch „Aktiv“ angezeigt. Was bedeutet das?
+Die **Kampagne**, die Sie in Mobile Engagement erstellt haben, trägt diesen Namen, weil es sich um eine langfristig ausgeführte Pushbenachrichtigung handelt. Das heißt, wenn neue Geräte eine Verbindung mit der Mobile Engagement-Plattform herstellen, wird die Benachrichtigung, die Sie hier konfigurieren, automatisch an diese gesendet, sofern das in der Kampagne festgelegte Kriterium erfüllt ist. Es handelt sich nicht um eine Konfiguration für eine einmalige Benachrichtigung. Sie müssen manuell auf die Schaltfläche **Fertig stellen** klicken, um die Kampagne zu beenden, damit keine weiteren Benachrichtigungen gesendet werden. 
 
-### Ich habe eine Pushkampagne erstellt und erhalte Benachrichtigungen. Bei jedem Öffnen der App erhalte ich jedoch die gleiche Benachrichtigung, obwohl ich bereits auf sie reagiert habe.
-Dieser Fall tritt wahrscheinlich beim Testen auf, wenn Sie Emulatoren oder ein Testframework wie TestFlight verwenden. Bei jeder Ausführung einer App-Instanz wird eine neue DeviceID abgerufen und an das Back-End gesendet. Dies führt dazu, dass sie von der Mobile Engagement-Plattform als neues Gerät behandelt und die Benachrichtigung gesendet wird.
+### <a name="i-created-a-push-campaign-and-i-am-receiving-notifications-successfully-however-whenever-i-open-up-the-app-i-get-the-same-notification-even-when-i-had-actioned-it-before"></a>Ich habe eine Pushkampagne erstellt und erhalte Benachrichtigungen. Bei jedem Öffnen der App erhalte ich jedoch die gleiche Benachrichtigung, obwohl ich bereits auf sie reagiert habe.
+Dieser Fall tritt wahrscheinlich beim Testen auf, wenn Sie Emulatoren oder ein Testframework wie TestFlight verwenden. Bei jeder Ausführung einer App-Instanz wird eine neue DeviceID abgerufen und an das Back-End gesendet. Dies führt dazu, dass sie von der Mobile Engagement-Plattform als neues Gerät behandelt und die Benachrichtigung gesendet wird. 
 
-## Support anfordern
+## <a name="getting-support"></a>Support anfordern
 Wenn Sie das Problem nicht selbst beheben können, haben Sie folgende Möglichkeiten
 
-1. Suchen Sie in den vorhandenen Threads im StackOverflow-Forum und [MSDN-Forum](https://social.msdn.microsoft.com/Forums/windows/de-DE/home?forum=azuremobileengagement) nach dem Problem. Stellen Sie dort ggf. eine Frage.
-2. Wenn Sie der Meinung sind, dass ein Feature fehlt, stellen Sie im [UserVoice-Forum](https://feedback.azure.com/forums/285737-mobile-engagement/) eine Anfrage, oder stimmen Sie für eine Anfrage ab.
-3. Wenn Sie zu Microsoft-Support berechtigt sind, stellen Sie eine Supportanfrage mit folgenden Angaben:
+1. Suchen Sie in den vorhandenen Threads im StackOverflow-Forum und [MSDN](https://social.msdn.microsoft.com/Forums/windows/en-US/home?forum=azuremobileengagement)-Forum nach dem Problem, und stellen Sie dort ggf. eine Frage. 
+2. Wenn Sie der Meinung sind, dass ein Feature fehlt, stellen Sie im [UserVoice-Forum](https://feedback.azure.com/forums/285737-mobile-engagement/)
+3. Wenn Sie zu Microsoft-Support berechtigt sind, stellen Sie eine Supportanfrage mit folgenden Angaben: 
    * Azure-Abonnement-ID
    * Plattform (iOS, Android usw.)
    * App-ID
    * Kampagnen-ID (für Probleme bei Pushbenachrichtigungen)
    * Geräte-ID
-   * Mobile Engagement SDK-Version (z. B. „Android SDK v2.1.0“)
+   * Mobile Engagement SDK-Version (z. B. „Android SDK v2.1.0“)
    * Fehlerdetails mit der genauen Fehlermeldung und dem Fehlerszenario
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,12 +1,12 @@
 ---
-title: Leitfaden für das Erstellen eines Datendiensts für den Marketplace | Microsoft Docs
-description: Detaillierte Anweisungen zum Erstellen, Zertifizieren und Bereitstellen eines Datendiensts für den Erwerb im Azure Marketplace.
+title: "Leitfaden für das Erstellen eines Datendiensts für den Marketplace | Microsoft Docs"
+description: "Detaillierte Anweisungen zum Erstellen, Zertifizieren und Bereitstellen eines Datendiensts für den Erwerb im Azure Marketplace."
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
-manager: ''
-editor: ''
-
+manager: hascipio
+editor: 
+ms.assetid: 148f8638-ee80-4100-8d63-5afa4167ca1b
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f479602647d67e7048371df76b128e33b27c1014
+
 
 ---
-# Beispiele für das Zuordnen eines vorhandenen Webdiensts zu OData über CSDLs
+# <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>Beispiele für das Zuordnen eines vorhandenen Webdiensts zu OData über CSDLs
 > [!IMPORTANT]
 > **Derzeit integrieren wir keine neuen Herausgeber von Datendiensten mehr. Für neue Datendienste wird keine Auflistung genehmigt.** Wenn Sie eine SaaS-Geschäftsanwendung haben, die Sie auf AppSource veröffentlichen möchten, finden Sie [hier](https://appsource.microsoft.com/partners) weitere Informationen. Wenn Sie eine IaaS-Anwendung oder einen Dienst für Entwickler auf Azure Marketplace veröffentlichen möchten, finden Sie [hier](https://azure.microsoft.com/marketplace/programs/certified/) weitere Informationen.
 > 
 > 
 
-## Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "POST" zurückgegeben
-Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurückgeben seiner serverdefinierten URL (Speicherort) oder zum Aktualisieren eines Teils der Unterordnung in der serverdefinierten URL. Dabei ist die Unterordnung ein Datenstrom, d. h. unstrukturiert, wie beispielsweise eine Textdatei. Beachten Sie, dass POST ohne Speicherort nicht idempotent ist.
+## <a name="example-functionimport-for-raw-data-returned-using-post"></a>Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "POST" zurückgegeben
+Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurückgeben seiner serverdefinierten URL (Speicherort) oder zum Aktualisieren eines Teils der Unterordnung in der serverdefinierten URL.  Dabei ist die Unterordnung ein Datenstrom, d.h. unstrukturiert, wie beispielsweise eine Textdatei.  Beachten Sie, dass POST ohne Speicherort nicht idempotent ist.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -40,7 +44,7 @@ Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurü
         </d:Namespaces>
         </FunctionImport>
 
-## Beispiel: FunctionImport verwendet "DELETE"
+## <a name="example-functionimport-using-delete"></a>Beispiel: FunctionImport verwendet "DELETE"
 Verwenden Sie DELETE, um einen angegebenen URI zu entfernen.
 
         <EntitySet Name="DeleteUsageFileEntitySet" EntityType="MyOffer.DeleteUsageFileEntity" />
@@ -61,8 +65,8 @@ Verwenden Sie DELETE, um einen angegebenen URI zu entfernen.
         <Property Name="boolean" Type="String" Nullable="true" d:Map="./boolean" />
         </EntityType>
 
-## Beispiel: FunctionImport verwendet "POST"
-Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurückgeben seiner serverdefinierten URL (Speicherort) oder zum Aktualisieren eines Teils der Unterordnung in der serverdefinierten URL. Dabei ist die Unterordnung eine Struktur. Beachten Sie, dass POST ohne Speicherort nicht idempotent ist.
+## <a name="example-functionimport-using-post"></a>Beispiel: FunctionImport verwendet "POST"
+Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurückgeben seiner serverdefinierten URL (Speicherort) oder zum Aktualisieren eines Teils der Unterordnung in der serverdefinierten URL.  Dabei ist die Unterordnung eine Struktur. Beachten Sie, dass POST ohne Speicherort nicht idempotent ist.
 
         <EntitySet Name="CreateANewModelEntitySet2" EntityType=" MyOffer.CreateANewModelEntity2" />
         <FunctionImport Name="CreateModel" EntitySet="CreateANewModelEntitySet2" ReturnType="Collection(MyOffer.CreateANewModelEntity2)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -79,8 +83,8 @@ Verwenden Sie POST-Rohdaten zum Erstellen einer neuen Unterordnung und zum Zurü
         </d:Namespaces>
         </FunctionImport>
 
-## Beispiel: FunctionImport verwendet "PUT"
-Verwenden Sie PUT zum Erstellen einer neuen Unterordnung oder zum Aktualisieren der gesamten Unterordnung einer serverdefinierten URL. wenn die Unterordnung eine Struktur ist, ist PUT idempotent, weshalb mehrere Vorkommnisse zum selben Zustand führen, d. h. X = 5. PUT sollte mit dem gesamten Inhalt der angegebenen Ressource verwendet werden.
+## <a name="example-functionimport-using-put"></a>Beispiel: FunctionImport verwendet "PUT"
+Verwenden Sie PUT zum Erstellen einer neuen Unterordnung oder zum Aktualisieren der gesamten Unterordnung einer serverdefinierten URL.  Wenn die Unterordnung eine Struktur ist, ist PUT idempotent, weshalb mehrere Vorkommnisse zum selben Zustand führen, d.h. x=5.  PUT sollte mit dem gesamten Inhalt der angegebenen Ressource verwendet werden.
 
         <EntitySet Name="UpdateAnExistingModelEntitySet" EntityType="MyOffer.UpdateAnExistingModelEntity" />
         <FunctionImport Name="UpdateModel" EntitySet="UpdateAnExistingModelEntitySet" ReturnType="Collection(MyOffer.UpdateAnExistingModelEntity)" d:EncodeParameterValues="true" d:AllowedHttpMethods="PUT" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -101,8 +105,8 @@ Verwenden Sie PUT zum Erstellen einer neuen Unterordnung oder zum Aktualisieren 
         </EntityType>
 
 
-## Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "PUT" zurückgegeben
-Verwenden Sie PUT-Rohdaten zum Erstellen einer neuen Unterordnung oder zum Aktualisieren der gesamten Unterordnung einer serverdefinierten URL. Dabei ist die Unterordnung ein Datenstrom, d. h. unstrukturiert, wie beispielsweise eine Textdatei. PUT ist idempotent, weshalb mehrere Vorkommnisse zum selben Zustand führen, d. h. X = 5. PUT sollte mit dem gesamten Inhalt der angegebenen Ressource verwendet werden.
+## <a name="example-functionimport-for-raw-data-returned-using-put"></a>Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "PUT" zurückgegeben
+Verwenden Sie PUT-Rohdaten zum Erstellen einer neuen Unterordnung oder zum Aktualisieren der gesamten Unterordnung einer serverdefinierten URL.  Dabei ist die Unterordnung ein Datenstrom, d.h. unstrukturiert, wie beispielsweise eine Textdatei.  PUT ist idempotent, weshalb mehrere Vorkommnisse zum selben Zustand führen, d.h. x=5.  PUT sollte mit dem gesamten Inhalt der angegebenen Ressource verwendet werden.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -120,7 +124,7 @@ Verwenden Sie PUT-Rohdaten zum Erstellen einer neuen Unterordnung oder zum Aktua
         </FunctionImport>
 
 
-## Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "GET" zurückgegeben
+## <a name="example-functionimport-for-raw-data-returned-using-get"></a>Beispiel: FunctionImport für "rohe" Daten wurde mithilfe von "GET" zurückgegeben
 Verwenden Sie GET-Rohdaten, um eine Unterordnung zurückzugeben, die unstrukturiert ist, d. h. Text.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
@@ -139,8 +143,8 @@ Verwenden Sie GET-Rohdaten, um eine Unterordnung zurückzugeben, die unstrukturi
         </d:Namespaces>
         </FunctionImport>
 
-## Beispiel: FunctionImport für 'Paging' durch zurückgegebene Daten".
-Verwenden Sie mit GET „Implementieren von RESTful-Paging“ für die Daten. Das Standardpaging ist auf 100 Zeilen pro Seite an Daten festgelegt.
+## <a name="example-functionimport-for-paging-through-returned-data"></a>Beispiel: FunctionImport für 'Paging' durch zurückgegebene Daten".
+Verwenden Sie mit GET „Implementieren von RESTful-Paging“ für die Daten.  Das Standardpaging ist auf 100 Zeilen pro Seite an Daten festgelegt.
 
         <EntitySet Name=”CropEntitySet" EntityType="MyOffer.CropEntity" />
         <FunctionImport    Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
@@ -154,9 +158,14 @@ Verwenden Sie mit GET „Implementieren von RESTful-Paging“ für die Daten. Da
         </d:Namespaces>
         </FunctionImport>
 
-## Weitere Informationen
-* Wenn Sie sich über den gesamten OData-Zuordnungsprozess und seinen Zweck informieren möchten, lesen Sie den Artikel [OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping.md), um Definitionen, Strukturen und Anweisungen kennenzulernen.
+## <a name="see-also"></a>Weitere Informationen
+* Wenn Sie sich über den gesamten OData-Zuordnungsprozess und seinen Zweck informieren möchten, lesen Sie den Artikel [OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping.md) , um Definitionen, Strukturen und Anweisungen kennen zu lernen.
 * Wenn Sie mehr über bestimmte Knoten und ihre Parameter erfahren möchten, lesen Sie den Artikel [OData-Zuordnungsknoten für Datendienste](marketplace-publishing-data-service-creation-odata-mapping-nodes.md). Dort finden Sie Definitionen und Erläuterungen, Beispiele und Kontext für Anwendungsfälle.
 * Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

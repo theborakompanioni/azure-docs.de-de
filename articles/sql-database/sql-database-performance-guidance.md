@@ -1,19 +1,24 @@
 ---
-title: Azure SQL-Datenbank und Leistung für Einzeldatenbanken | Microsoft Docs
-description: Mit den Informationen in diesem Artikel können Sie ermitteln, welche Dienstebene für Ihre Anwendung am besten geeignet ist. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung empfohlen, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
+title: "Azure SQL-Datenbank und Leistung für Einzeldatenbanken | Microsoft Docs"
+description: "Mit den Informationen in diesem Artikel können Sie ermitteln, welche Dienstebene für Ihre Anwendung am besten geeignet ist. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung empfohlen, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: dd8d95fa-24b2-4233-b3f1-8e8952a7a22b
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/13/2016
+ms.date: 12/06/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b4bd777b454a68ee06bbc4dffaff91213d58f28c
+
 
 ---
 # <a name="azure-sql-database-and-performance-for-single-databases"></a>Azure SQL-Datenbank und Leistung für Einzeldatenbanken
@@ -32,7 +37,7 @@ Dies sind die drei Azure SQL-Datenbank-Dienstebenen (Tarife), aus denen Sie wäh
 
 Sie legen die Leistungsebene auf jeder Dienstebene so fest, dass Sie flexibel nur für die jeweils benötige Kapazität bezahlen. Sie können die [Kapazität anpassen](sql-database-scale-up.md) (nach oben oder unten), wenn sich die Workload ändert. Wenn Ihre Datenbankworkload beispielsweise während der heißen Einkaufsphase vor dem Schulbeginn hoch ist, können Sie die Leistungsebene für die Datenbank für einen bestimmten Zeitraum erhöhen (z.B. Juli bis September). Sie können sie dann wieder reduzieren, wenn diese Zeit der höheren Auslastung endet. Sie können die zu zahlenden Kosten reduzieren, indem Sie die Cloudumgebung an die Saisongebundenheit Ihres Unternehmens anpassen. Dieses Modell eignet sich auch gut für die Veröffentlichungszyklen von Softwareprodukten. Ein Testteam kann die Kapazität zuordnen und Testläufe durchführen und die Kapazität dann wieder freigeben, wenn das Testing beendet ist. Bei einem Kapazitätsanforderungsmodell bezahlen Sie für die Kapazität, wenn Sie sie benötigen, und haben keine Kosten für dedizierte Ressourcen, die Sie ggf. nur sehr selten nutzen.
 
-## <a name="why-service-tiers?"></a>Warum werden Dienstebenen verwendet?
+## <a name="why-service-tiers"></a>Warum werden Dienstebenen verwendet?
 Jede Datenbankworkload kann sich zwar unterscheiden, aber der Zweck von Dienstebenen besteht darin, für verschiedene Leistungsebenen eine Vorhersagbarkeit der Leistung zu ermöglichen. Kunden mit höheren Anforderungen an Datenbankressourcen können in einer dedizierteren Computingumgebung arbeiten.
 
 ### <a name="common-service-tier-use-cases"></a>Häufige Anwendungsfälle für Dienstebenen
@@ -116,7 +121,7 @@ Zwei Sichten unterstützen Sie bei der Überwachung der Ressourcennutzung für e
 * [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 * [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sys.dm_db_resource_stats"></a>sys.dm_db_resource_stats
+### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
 Sie können die Sicht [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) in jeder SQL-Datenbank verwenden. Die Sicht **sys.dm_db_resource_stats** enthält Daten zur Ressourcennutzung in der letzten Zeit relativ zur Dienstebene. Durchschnittliche Prozentsätze für CPU, Dateneingang/-ausgang, Protokollschreibvorgänge und Arbeitsspeicher werden alle 15 Sekunden aufgezeichnet und eine Stunde lang aufbewahrt.
 
 Da diese Ansicht eine detailliertere Darstellung der Ressourcennutzung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm_db_resource_stats** verwenden. Mit dieser Abfrage wird beispielsweise die durchschnittliche und maximale Ressourcennutzung für die aktuelle Datenbank in der letzten Stunde angezeigt:
@@ -134,7 +139,7 @@ Da diese Ansicht eine detailliertere Darstellung der Ressourcennutzung ist, soll
 
 Beispiele für andere Abfragen finden Sie unter [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sys.resource_stats"></a>sys.resource_stats
+### <a name="sysresourcestats"></a>sys.resource_stats
 Die Sicht [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank enthält zusätzliche Informationen, die zur Überwachung der Leistung Ihrer SQL-Datenbank innerhalb der jeweiligen Dienst- und Leistungsebene hilfreich sind. Die Daten werden alle fünf Minuten gesammelt und ca. 35 Tage lang aufbewahrt. Diese Sicht ist für eine längere Verlaufsanalyse der Ressourcennutzung Ihrer SQL-Datenbank hilfreich.
 
 Der folgende Graph zeigt die CPU-Ressourcennutzung für eine Premium-Datenbank mit der Leistungsebene P2 für jede Stunde einer Woche. Dieser Graph beginnt mit einem Montag und zeigt fünf Arbeitstage und dann das Wochenende, an dem die Anwendung deutlich weniger gefragt ist.
@@ -210,7 +215,7 @@ Das nächste Beispiel enthält unterschiedliche Möglichkeiten zum Einsatz der *
    
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent’
+        ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
         ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data I/O fit percent'
         FROM sys.resource_stats
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
@@ -437,6 +442,9 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 * Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [Was ist ein Azure-Pool für elastische Datenbanken?](sql-database-elastic-pool.md)
 * Informationen zur Leistung und zu Pools für elastische Datenbanken finden Sie unter [Wann ein elastischer Datenbankpool in Frage kommt](sql-database-elastic-pool-guidance.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

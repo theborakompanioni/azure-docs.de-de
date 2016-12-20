@@ -1,12 +1,12 @@
 ---
 title: Schritte zum Konfigurieren einer ExpressRoute-Verbindung | Microsoft Docs
-description: Diese Seite enthält die Workflows zum Konfigurieren von ExpressRoute-Verbindungen und -Peerings.
+description: "Diese Seite enthält die Workflows zum Konfigurieren von ExpressRoute-Verbindungen und -Peerings."
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 570a98aafca6babc5a7089880d4120c2a8f4a0d8
+ms.openlocfilehash: 5a275620639a801d7e60ef9ada1af29062dfe440
+
 
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
@@ -26,11 +30,11 @@ Die folgende Abbildung und die dazugehörigen Schritte veranschaulichen die Aufg
 1. Verwenden Sie PowerShell, um eine ExpressRoute-Verbindung zu konfigurieren. Ausführlichere Anweisungen finden Sie im Artikel [Erstellen von ExpressRoute-Verbindungen](expressroute-howto-circuit-classic.md) .
 2. Fordern Sie Konnektivität vom Service Provider an. Dieser Prozess variiert. Wenden Sie sich an Ihren Konnektivitätsanbieter, um weitere Details zum Anfordern der Konnektivität zu erhalten.
 3. Stellen Sie sicher, dass die Verbindung erfolgreich eingerichtet wurde, indem Sie den Bereitstellungszustand der ExpressRoute-Verbindung mithilfe von PowerShell überprüfen. 
-4. Konfigurieren Sie Routingdomänen. Wenn Ihr Konnektivitätsanbieter Layer 3 für Sie verwaltet, konfiguriert er das Routing für Ihre Verbindung. Wenn Ihr Konnektivitätsanbieter nur Layer 2-Dienste anbietet, müssen Sie das Routing gemäß den Richtlinien auf den Seiten [Routinganforderungen](expressroute-routing.md) und [Routingkonfiguration](expressroute-howto-routing-classic.md) konfigurieren.
+4. Konfigurieren Sie Routingdomänen. Wenn Ihr Konnektivitätsanbieter Layer 3 für Sie verwaltet, konfiguriert er das Routing für Ihre Verbindung. Wenn Ihr Konnektivitätsanbieter nur Layer 2-Dienste anbietet, müssen Sie das Routing gemäß den Richtlinien auf den Seiten [Routinganforderungen](expressroute-routing.md) und [Routingkonfiguration](expressroute-howto-routing-classic.md) konfigurieren.
    
    * Privates Azure-Peering aktivieren – Sie müssen dieses Peering aktivieren, um eine Verbindung mit virtuellen Computern/Clouddiensten herzustellen, die in virtuellen Netzwerken bereitgestellt werden.
    * Öffentliches Azure-Peering aktivieren – sie müssen das öffentliche Azure-Peering aktivieren, wenn Sie eine Verbindung mit Azure-Diensten herstellen möchten, die unter öffentlichen IP-Adressen gehostet werden. Dies ist eine Voraussetzung, damit auf Azure-Ressourcen zugegriffen werden kann, wenn Sie das Standardrouting für privates Azure-Peering aktiviert haben.
-   * Microsoft-Peering aktivieren – Sie müssen das Microsoft-Peering aktivieren, um auf Office 365 und CRM-Onlinedienste zugreifen zu können. 
+   * Microsoft-Peering aktivieren – Sie müssen das Microsoft-Peering aktivieren, um auf Office 365 und CRM-Onlinedienste zugreifen zu können. 
      
      > [!IMPORTANT]
      > Verwenden Sie für die Verbindung mit Microsoft unbedingt einen anderen Proxy/Edge als für das Internet. Wenn Sie denselben Edge für ExpressRoute und das Internet verwenden, führt das zu asymmetrischem Routing und Konnektivitätsausfällen für Ihr Netzwerk.
@@ -53,29 +57,33 @@ Der Bereitstellungszustand des Konnektivitätsanbieters gibt den Zustand aufseit
 ### <a name="possible-states-of-an-expressroute-circuit"></a>Mögliche Zustände einer ExpressRoute-Verbindung
 In diesem Abschnitt sind die möglichen Zustände für eine ExpressRoute-Verbindung aufgeführt.
 
-#### <a name="at-creation-time"></a>Zum Zeitpunkt der Erstellung:
+**Zum Zeitpunkt der Erstellung**:
+
 Die ExpressRoute-Verbindung weist den folgenden Zustand auf, wenn Sie das PowerShell-Cmdlet zum Erstellen der ExpressRoute-Verbindung ausführen.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-#### <a name="when-connectivity-provider-is-in-the-process-of-provisioning-the-circuit"></a>Der Konnektivitätsanbieter stellt die Verbindung gerade bereit:
+**Der Konnektivitätsanbieter stellt die Verbindung gerade bereit**:
+
 Die ExpressRoute-Verbindung weist den folgenden Zustand auf, wenn Sie den Dienstschlüssel an den Konnektivitätsanbieter übergeben und der Anbieter den Bereitstellungsprozess gestartet hat.
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
 
-#### <a name="when-connectivity-provider-has-completed-the-provisioning-process"></a>Der Konnektivitätsanbieter hat die Bereitstellung abgeschlossen:
+**Der Konnektivitätsanbieter hat die Bereitstellung abgeschlossen**:
+
 Die ExpressRoute-Verbindung weist den folgenden Zustand auf, sobald der Konnektivitätsanbieter die Bereitstellung abgeschlossen hat.
 
     ServiceProviderProvisioningState : Provisioned
     Status                           : Enabled
 
-Die Verbindung kann nur im Zustand „Provisioned“ und „Enabled“ verwendet werden. Wenn Sie einen Layer 2-Anbieter nutzen, können Sie das Routing für Ihre Verbindung nur konfigurieren, wenn sie sich in diesem Zustand befindet.
+Die Verbindung kann nur im Zustand „Provisioned“ und „Enabled“ verwendet werden. Wenn Sie einen Layer 2-Anbieter nutzen, können Sie das Routing für Ihre Verbindung nur konfigurieren, wenn sie sich in diesem Zustand befindet.
 
-#### <a name="when-connectivity-provider-is-deprovisioning-the-circuit"></a>Der Konnektivitätsanbieter hebt die Verbindungsbereitstellung auf:
+**Der Konnektivitätsanbieter hebt die Verbindungsbereitstellung auf**:
+
 Wenn Sie den Dienstanbieter aufgefordert haben, die Bereitstellung der ExpressRoute-Verbindung aufzuheben, weist die Verbindung den folgenden Zustand auf, wenn der Dienstanbieter den Prozess der Bereitstellungsaufhebung abgeschlossen hat.
 
     ServiceProviderProvisioningState : NotProvisioned
@@ -108,6 +116,9 @@ Wenn der Zustand der angekündigten öffentlichen Präfixe *validation needed* l
   * [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

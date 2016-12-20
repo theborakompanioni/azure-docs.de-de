@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit eDigitalResearch | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und eDigitalResearch konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: c6b66ea0-16ba-45b4-b550-e81c56262b1f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ce449d6a64b4ef9022939f0487a30157f7014673
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-edigitalresearch"></a>Tutorial: Azure Active Directory-Integration mit eDigitalResearch
+# <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Tutorial: Azure Active Directory-Integration mit eDigitalResearch
 In diesem Tutorial erfahren Sie, wie Sie eDigitalResearch in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von eDigitalResearch in Azure AD bietet die folgenden Vorteile:
@@ -25,7 +29,7 @@ Die Integration von eDigitalResearch in Azure AD bietet die folgenden Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei eDigitalResearch anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit eDigitalResearch konfigurieren zu können, benötigen Sie Folgendes:
@@ -125,9 +129,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Microsoft Azure AD
     b. Klicken Sie auf **Next**.
 5. Wenden Sie sich an das Supportteam von eDigitalResearch, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit: 
    
-   * Die **heruntergeladene Zertifikatdatei**
-   * Die **Entitäts-ID**
-   * Die **Dienst-URL für einmaliges Abmelden**
+      - Die **heruntergeladene Zertifikatdatei**
+   
+      - Die **Entitäts-ID**
+   
+      - Die **Dienst-URL für einmaliges Abmelden**
 6. Wählen Sie im klassischen Portal die Bestätigung für die Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -240,6 +246,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „eDigitalResearch“ klicken, sollt
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

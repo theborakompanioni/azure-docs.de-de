@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/20/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 73fafeff227061feae1fbc0a1c50e5056116e3ea
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 00c4336bd5cef4ddc0b92127d0945d39291b9c7f
 
 
 ---
@@ -40,7 +40,7 @@ Im Rahmen dieses Tutorials stellen Sie eine WordPress-Blog-Website aus dem Azure
 Die in diesem Tutorial bereitgestellte WordPress-Website verwendet MySQL als Datenbank. Wenn Sie stattdessen die SQL-Datenbank verwenden möchten, navigieren Sie zu [Project Nami](ebenfalls über den Azure Marketplace erhältlich).
 
 > [!NOTE]
-> Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial auszuführen. Wenn Sie kein Konto haben, können Sie [Ihre Visual Studio-Abonnentenleistungen aktivieren][aktivieren] oder sich für eine [kostenlose Testversion registrieren][kostenlose Testversion].
+> Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial auszuführen. Wenn Sie kein Konto haben, können Sie Ihre [Visual Studio-Abonnentenvorteile aktivieren][activate] oder [sich für eine kostenlose Testversion registrieren][free trial].
 > 
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen]. Dort können Sie ohne Angabe von Kreditkartendaten oder anderen Verpflichtungen umgehend eine kurzzeitige Start-Web-App in App Service erstellen.
 > 
@@ -72,12 +72,12 @@ Die in diesem Tutorial bereitgestellte WordPress-Website verwendet MySQL als Dat
     ![Konfigurieren des Abonnements für die Web-App][ConfigSubscription]
 4. Wählen Sie eine **Ressourcengruppe** aus, oder erstellen Sie eine neue.
    
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht][Ressourcengruppen].
+    Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht][ResourceGroups].
    
     ![Konfigurieren der Ressourcengruppe für die Web-App][ConfigResourceGroup]
 5. Wählen Sie einen **App Service-Plan/-Standort** aus, oder erstellen Sie einen neuen Plan und Standort.
    
-    Weitere Informationen zu App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht][Azure App Service-Pläne].
+    Weitere Informationen zu App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht][AzureAppServicePlans].
    
     ![Konfigurieren des Serviceplans für die Web-App][ConfigServicePlan]
 6. Klicken Sie auf **Datenbank**, und geben Sie auf dem Blatt **Neue MySQL-Datenbank** die erforderlichen Werte für die Konfiguration Ihrer MySQL-Datenbank ein.
@@ -104,7 +104,7 @@ Die in diesem Tutorial bereitgestellte WordPress-Website verwendet MySQL als Dat
 ## <a name="launch-and-manage-your-wordpress-web-app"></a>Starten und Verwalten Ihrer WordPress-Web-App
 1. Wenn die Erstellung der Web-App abgeschlossen ist, navigieren Sie im Azure-Portal zu der Ressourcengruppe, in der Sie die Anwendung erstellt haben. Dort werden die Web-App und die Datenbank angezeigt.
    
-    Bei der zusätzlichen Ressource mit dem Glühbirnensymbol handelt es sich um den Dienst [Application Insights][Application Insights], der Überwachungsdienste für Ihre Web-App bereitstellt.
+    Bei der zusätzlichen Ressource mit dem Glühbirnensymbol handelt es sich um den Dienst [Application Insights][ApplicationInsights], der Überwachungsdienste für Ihre Web-App bereitstellt.
 2. Klicken Sie auf dem Blatt **Ressourcengruppe** auf die Zeile der Web-App.
    
     ![Auswählen Ihrer WordPress-Web-App][WordPressSelect]
@@ -136,9 +136,9 @@ Weitere Informationen zum Entwickeln von WordPress-Web-Apps in Azure finden Sie 
 [Node.js]: https://azure.microsoft.com/develop/nodejs/
 [Java]: https://azure.microsoft.com/develop/java/
 [Python]: https://azure.microsoft.com/develop/python/
-[Aktivieren]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[kostenlose Testversion]: https://azure.microsoft.com/pricing/free-trial/
-[App Service testen]: http://go.microsoft.com/fwlink/?LinkId=523751
+[activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
+[free trial]: https://azure.microsoft.com/pricing/free-trial/
+[Azure App Service-App erstellen]: http://go.microsoft.com/fwlink/?LinkId=523751
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
@@ -168,6 +168,6 @@ Weitere Informationen zum Entwickeln von WordPress-Web-Apps in Azure finden Sie 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

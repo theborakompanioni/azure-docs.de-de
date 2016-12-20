@@ -18,7 +18,8 @@
 ### [Java-Web-App](documentdb-java-application.md)
 ### [Python Flask-Web-App](documentdb-python-application.md)
 ## [Lokal entwickeln](documentdb-nosql-local-emulator.md)
-## [HÄUFIG GESTELLTE FRAGEN](documentdb-faq.md)
+### [Exportieren von Emulatorzertifikaten](documentdb-nosql-local-emulator-export-ssl-certificates.md)
+## [Häufig gestellte Fragen](documentdb-faq.md)
 
 # Anleitung
 
@@ -41,13 +42,17 @@
 ### [Ressourcenkontingente](documentdb-limits.md)
 ### [Erhöhen von Kontingenten](documentdb-increase-limits.md)
 ### [Anforderungseinheiten](documentdb-request-units.md)
-### [Azure-CLI und Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
+### Azure-Befehlszeilenschnittstelle
+#### [Erstellen eines Kontos](documentdb-automation-resource-manager-cli.md)
+#### [Hinzufügen oder Entfernen von Regionen](documentdb-automation-region-management.md)
+### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [Firewallunterstützung](documentdb-firewall-support.md)
 ### [Leistungssteigerung Ihres Kontos](documentdb-supercharge-your-account.md)
 
 ## Entwickeln
 ### [SQL query](documentdb-sql-query.md)
 ### [Gespeicherte Prozeduren, Trigger und UDFs](documentdb-programming.md)
+### [Nachverfolgen von Änderungen mittels Änderungsfeed](documentdb-change-feed.md)
 ### [Leistungstests](documentdb-performance-testing.md)
 ### [Leistungstipps](documentdb-performance-tips.md)
 ### DocumentDB für MongoDB-Entwickler
@@ -83,18 +88,20 @@
 
 
 # Referenz
-## [Java SDK](documentdb-sdk-java.md)
-## [.NET SDK](documentdb-sdk-dotnet.md)
-## [.NET Core SDK](documentdb-sdk-dotnet-core.md)
-## [Beispiele für .NET](documentdb-dotnet-samples.md)
-## [Node.js SDK](documentdb-sdk-node.md)
-## [Beispiele für Node.js](documentdb-nodejs-samples.md)
-## [Python SDK](documentdb-sdk-python.md)
-## [Python-Beispiele für Batch](documentdb-python-samples.md)
-## [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-## [Spickzettel zur SQL-Grammatik](documentdb-sql-query-cheat-sheet.md)
+## [Java](documentdb-sdk-java.md)
+## [.NET](documentdb-sdk-dotnet.md)
+## [.NET Core](documentdb-sdk-dotnet-core.md)
+## [Node.js](documentdb-sdk-node.md)
+## [Python](documentdb-sdk-python.md)
 ## [REST](/rest/api/documentdb/)
 ## [REST-Ressourcenanbieter](/rest/api/documentdbresourceprovider/)
+
+# Verwandte Themen
+## [Beispiele für .NET](documentdb-dotnet-samples.md)
+## [Beispiele für Node.js](documentdb-nodejs-samples.md)
+## [Python-Beispiele](documentdb-python-samples.md)
+## [SQL-Syntax](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+## [Spickzettel zur SQL-Grammatik](documentdb-sql-query-cheat-sheet.md)
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/documentdb/)
@@ -110,6 +117,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,12 +1,12 @@
 ---
 title: Nutzen eines Machine Learning-Webdiensts | Microsoft Docs
-description: Sobald ein Machine Learning-Dienst bereitgestellt wurde, kann der zur Verfügung gestellte RESTFul-Webdienst als Anforderung-/Antwort-Dienst oder als Stapelausführungsdienst genutzt werden.
+description: "Sobald ein Machine Learning-Dienst bereitgestellt wurde, kann der zur Verfügung gestellte RESTFul-Webdienst als Anforderung-/Antwort-Dienst oder als Stapelausführungsdienst genutzt werden."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 369b7c8775388f641727cb889b406ac60be13d16
+
 
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service-that-has-been-deployed-from-a-machine-learning-experiment"></a>Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde
@@ -41,7 +45,7 @@ For more information on how to manage Azure Machine Learning Web service endpoin
 
 Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Webdiensts finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][Veröffentlichen]. Eine detaillierte Anleitung zum Erstellen und Bereitstellen eines Machine Learning-Experiments finden Sie unter [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning][Exemplarische Vorgehensweise].
 
-## <a name="requestresponse-service-rrs"></a>Anforderung-/Antwort-Dienst (Request-Response Service RRS)
+## <a name="request-response-service-rrs"></a>Anforderung-/Antwort-Dienst (Request-Response Service RRS)
 Ein Anforderung-/Antwort-Dienst (Request-Response Service, RRS) ist ein überaus skalierbarer Webdienst mit niedriger Latenz, mit dem eine Schnittstelle für die aus einem Azure Machine Learning Studio-Experiment erstellten und bereitgestellten zustandslosen Modelle bereitgestellt werden kann. Dadurch werden Szenarien ermöglicht, bei denen die verarbeitende Anwendung eine Antwort in Echtzeit erwartet.
 
 RRS akzeptiert eine einzelne oder mehrere Zeilen von Eingabeparametern und kann eine einzelne oder mehrere Zeilen als Ausgabe generieren. Die Ausgabereihen können jeweils mehrere Spalten enthalten.
@@ -51,7 +55,7 @@ Ein Beispiel für RRS ist das Überprüfen der Authentizität einer Anwendung. H
 ## <a name="batch-execution-service-bes"></a>Stapelausführungsdienst (Batch Execution Service BES)
 Ein Stapelausführungsdienst (Batch Execution Service, BES) ist ein Dienst zur asynchronen Bewertung eines umfangreichen Stapels von Datensätzen. Die Eingabe für den BES enthält einen Stapel von Datensätzen aus verschiedenen Quellen, z.B. Blobs, Tabellen in Azure, SQL Azure, HDInsight (beispielsweise Ergebnisse einer Hive-Abfrage) oder HTTP-Quellen. Die Ausgabe des BES enthält die Ergebnisse der Wertung. Die Ergebnisse werden in eine Datei im Azure-Blob-Speicher geschrieben, und Daten aus dem Speicherendpunkt werden in der Antwort zurückgegeben.
 
-Ein BES ist nützlich, wenn Antworten nicht sofort benötigt werden, z. B. für regelmäßig geplante Bewertungen für einzelne Benutzer oder Geräte im Internet der Dinge (IOT).
+Ein BES ist nützlich, wenn Antworten nicht sofort benötigt werden, z. B. für regelmäßig geplante Bewertungen für einzelne Benutzer oder Geräte im Internet der Dinge (IOT).
 
 ## <a name="examples"></a>Beispiele
 Zum Erläutern der Funktionsweise von RRS und BES greifen wir auf ein Beispiel eines Azure-Webdiensts zurück. Dieser Dienst wird in einem IOT-Szenario (Internet der Dinge) verwendet werden. Der Einfachheit halber sendet unser Gerät nur einen Wert, `cog_speed`, und erhält eine einzelne Antwort zurück.
@@ -244,11 +248,11 @@ Der folgende Beispielcode veranschaulicht die Erstellung einer REST-API-Anforder
 
     /**
      * Download full code from github - [https://github.com/nk773/AzureML_RRSApp](https://github.com/nk773/AzureML_RRSApp)
-     */
+      */
         /**
-          * Call REST API for retrieving prediction from Azure ML 
-          * @return response from the REST API
-          */    
+           * Call REST API for retrieving prediction from Azure ML 
+           * @return response from the REST API
+           */    
         public static String rrsHttpPost() {
 
             HttpPost post;
@@ -311,7 +315,7 @@ Beim Erstellen eines Batchauftrags für Ihren Azure Machine Learning-Dienst kön
   * Datasetausgaben können als **.csv, .tsv, .arff** gespeichert werden.
   * Ausgaben trainierter Modelle müssen als **.ilearner** gespeichert werden.
     
-    Sie geben die Überschreibungen des Ausgabespeicherorts als Sammlung von Ausgabenamen- oder Blobverweispaaren an. Der *Output*-Name ist der benutzerdefinierte Name eines bestimmten Ausgabeknotens. Der *Blobverweis* ist ein Verweis auf einen Azure-Blobspeicherort, an den die Ausgabe umgeleitet wird. Der *Output*-Name wird auf API-Hilfeseite des Diensts angezeigt.
+    Sie geben die Überschreibungen des Ausgabespeicherorts als Sammlung von Ausgabenamen- oder Blobverweispaaren an. Der *Ausgabename* ist der benutzerdefinierte Name eines bestimmten Ausgabeknotens. Der *Blobverweis* ist ein Verweis auf einen Azure-Blobspeicherort, an den die Ausgabe umgeleitet wird. Der *Ausgabename* wird auf API-Hilfeseite des Diensts angezeigt.
 
 Alle Auftragserstellungsparameter sind je nach Art Ihres Diensts optional. Dienste ohne definierten Eingabeknoten erfordern z.B. nicht, dass ein *Input*-Parameter an sie übergeben wird. Die Überschreibungsfunktion für den Ausgabespeicherort ist ebenso optional, da Ausgaben andernfalls im Standardspeicherkonto gespeichert werden, das für Ihren Azure Machine Learning-Arbeitsbereich eingerichtet wurde. Es folgt ein Beispiel einer Anforderungsnutzlast für einen Dienst, bei dem nur die Eingabe-Informationen bereitgestellt werden:
 
@@ -415,7 +419,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Batchauftrag für 
         class Program
         {
             static void Main(string[] args)
-            {               
+            {                
                 InvokeBatchExecutionService().Wait();
             }
 
@@ -530,7 +534,7 @@ Die REST-API des Batchausführungsdiensst akzeptiert den JSON-Code, der aus eine
         "Inputs": { "input1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
             AccountName=myAcctName; AccountKey=Q8kkieg==", 
             "RelativeLocation": "myContainer/sampleinput.csv" } }, 
-        "Outputs": { "output1": { "ConnectionString":   "DefaultEndpointsProtocol=https;
+        "Outputs": { "output1": { "ConnectionString":     "DefaultEndpointsProtocol=https;
             AccountName=myAcctName; AccountKey=kjC12xQ8kkieg==", 
             "RelativeLocation": "myContainer/sampleoutput.csv" } } 
     } 
@@ -541,7 +545,7 @@ Die REST-API des Batchausführungsdiensst akzeptiert den JSON-Code, der aus eine
          * Call REST API to create a job to Azure ML 
          * for batch predictions
          * @return response from the REST API
-         */ 
+         */    
         public static String besCreateJob() {
 
             HttpPost post;
@@ -590,7 +594,7 @@ Die REST-API des Batchausführungsdiensst akzeptiert den JSON-Code, der aus eine
          * 
          * @param job job to be started 
          * @return response from the REST API
-         */ 
+         */    
         public static String besStartJob(String job){
             HttpPost post;
             HttpClient client;
@@ -630,7 +634,7 @@ Die REST-API des Batchausführungsdiensst akzeptiert den JSON-Code, der aus eine
          * 
          * @param job job to be started 
          * @return response from the REST API
-         */ 
+         */    
         public static String besCancelJob(String job) {
             HttpDelete post;
             HttpClient client;
@@ -733,6 +737,7 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 [ML Studio]: https://studio.azureml.net
 
 
-<!---HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

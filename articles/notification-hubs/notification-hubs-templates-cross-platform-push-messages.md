@@ -1,23 +1,27 @@
 ---
 title: Vorlagen
-description: In diesem Thema werden Vorlagen für Azure Notification Hubs erläutert.
+description: "In diesem Thema werden Vorlagen für Azure Notification Hubs erläutert."
 services: notification-hubs
 documentationcenter: .net
-author: wesmc7777
+author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 06/29/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d47f493d0ec80318805303c8192477d7002533eb
+
 
 ---
-# Vorlagen
-## Übersicht
+# <a name="templates"></a>Vorlagen
+## <a name="overview"></a>Übersicht
 Mithilfe von Vorlagen kann eine Clientanwendung das genaue Format der Benachrichtigungen angeben, die sie empfangen möchte. Die Verwendung von Vorlagen bietet einer App viele verschiedene Vorteile, einschließlich der folgenden:
 
 * Ein plattformunabhängiges Back-End
@@ -27,7 +31,7 @@ Mithilfe von Vorlagen kann eine Clientanwendung das genaue Format der Benachrich
 
 Dieser Abschnitt enthält zwei ausführliche Beispiele. Sie zeigen, wie Vorlagen verwendet werden, um plattformunabhängige Benachrichtigungen plattformübergreifend an alle Geräte zu senden und um Übertragungsbenachrichtigungen für jedes Gerät zu personalisieren.
 
-## Plattformübergreifende Verwendung von Vorlagen
+## <a name="using-templates-cross-platform"></a>Plattformübergreifende Verwendung von Vorlagen
 Das Standardverfahren zum Senden von Pushbenachrichtigungen besteht darin, für jede Benachrichtigung, die gesendet werden soll, eine bestimmte Nutzlast an Plattformbenachrichtigungsdienste (WNS, APNS) zu senden. Beim Senden einer Benachrichtigung an APNS entspricht die Nutzlast z. B. einem Json-Objekt im folgenden Format:
 
     {"aps": {"alert" : "Hello!" }}
@@ -36,8 +40,8 @@ Zum Senden einer ähnlichen Popupnachricht für eine Windows Store-Anwendung sie
 
     <toast>
       <visual>
-        <binding template="ToastText01">
-          <text id="1">Hello!</text>
+        <binding template=\"ToastText01\">
+          <text id=\"1\">Hello!</text>
         </binding>
       </visual>
     </toast>
@@ -60,8 +64,8 @@ Die entsprechende Vorlage für die Windows Store-Client-App entspricht:
 
     <toast>
         <visual>
-            <binding template="ToastText01">
-                <text id="1">$(message)</text>
+            <binding template=\"ToastText01\">
+                <text id=\"1\">$(message)</text>
             </binding>
         </visual>
     </toast>
@@ -72,7 +76,7 @@ Bei Verwendung des Installationsmodells arbeiten, enthält der "templates"-Schl�
 
 Der Notification Hub sendet eine Benachrichtigung für jede Vorlage, ohne zu berücksichtigen, ob sie zur selben Client-App gehören. Dieses Verhalten kann verwendet werden, um plattformunabhängige Benachrichtigungen in weitere Benachrichtigungen zu übersetzen. Beispielsweise kann dieselbe plattformunabhängige Nachricht an den Notification Hub nahtlos in eine Popupbenachrichtigung und eine Kachelaktualisierung übersetzt werden, ohne dass das Back-End daran beteiligt ist. Beachten Sie, dass einige Plattformen (beispielsweise iOS) ggf. mehrere Benachrichtigungen an dasselbe Gerät reduzieren, wenn diese innerhalb eines kurzen Zeitraums gesendet werden.
 
-## Verwenden von Vorlagen zur Personalisierung
+## <a name="using-templates-for-personalization"></a>Verwenden von Vorlagen zur Personalisierung
 Ein weiterer Vorteil von Vorlagen besteht darin, dass Benachrichtigungen mithilfe von Notification Hubs pro Registrierung personalisiert werden können. Beispiel: Eine Wetter-App zeigt eine Kachel mit den Wetterbedingungen an einem bestimmten Ort an. Ein Benutzer kann zwischen Grad Celsius und Fahrenheit und einer eintägigen oder fünftägigen Vorhersage wählen. Mithilfe von Vorlagen kann sich jede Client-App-Installation für das erforderliche Format (1 Tag Celsius, 1 Tag Fahrenheit, 5 Tage Celsius, 5 Tage Fahrenheit) registrieren und das Back-End eine einzelne Nachricht senden lassen, die alle erforderlichen Informationen zum Füllen dieser Vorlagen enthält (z. B. eine fünftägige Vorhersage mit Gradangaben in Celsius und Fahrenheit).
 
 Die Vorlage für die eintägige Vorhersage mit Temperaturangaben in Celsius sieht wie folgt aus:
@@ -102,10 +106,10 @@ Durch die Verwendung dieses Musters sendet das Back-End nur eine einzelne Nachri
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
-## Registrieren von Vorlagen
+## <a name="how-to-register-templates"></a>Registrieren von Vorlagen
 Informationen zur Vorlagenregistrierung mit dem Installationsmodell (bevorzugt) oder dem Registrierungsmodell finden Sie unter [Registrierungsverwaltung](notification-hubs-push-notification-registration-management.md).
 
-## Sprache für Vorlagenausdrücke
+## <a name="template-expression-language"></a>Sprache für Vorlagenausdrücke
 Vorlagen sind auf das XML- oder JSON-Dokumentformat beschränkt. Außerdem können Sie Ausdrücke nur an bestimmten Stellen einfügen, z. B. in Node-Attributen oder -Werten für XML und Zeichenfolgen-Eigenschaftswerten für JSON.
 
 In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
@@ -114,9 +118,9 @@ In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
 | --- | --- |
 | $(prop) |Verweist auf eine Ereigniseigenschaft mit dem angegebenen Namen. Bei Eigenschaftennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden. Dieser Ausdruck wird in den Textwert der Eigenschaft oder in eine leere Zeichenfolge aufgelöst, wenn die Eigenschaft nicht vorhanden ist. |
 | $(prop, n) |Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
-| .(prop, n) |Wie oben, allerdings werden dem Text beim Abschneiden drei Punkte als Suffix hinzugefügt. Die Gesamtgröße der abgeschnittenen Zeichenfolge und des Suffixes überschreitet n Zeichen nicht. Bei .(title, 20) mit der Eingabeeigenschaft "This is the title line" erhalten Sie **This is the title...**. |
+| .(prop, n) |Wie oben, allerdings werden dem Text beim Abschneiden drei Punkte als Suffix hinzugefügt. Die Gesamtgröße der abgeschnittenen Zeichenfolge und des Suffixes überschreitet n Zeichen nicht. Bei .(title, 20) mit der Eingabeeigenschaft "This is the title line" erhalten Sie **This is the title...** |
 | %(prop) |Ähnlich wie $(name) mit der Ausnahme, dass die Ausgabe URI-codiert ist. |
-| #(prop) |Wird in JSON-Vorlagen verwendet (z. B. für iOS- und Android-Vorlagen).<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z. B. Apple-Vorlagen). In diesem Fall ist die JSON-Ausgabe eine Zahl, wenn diese Funktion nicht von „{','}“ umschlossen ist (z.B. 'myJsonProperty' : '#(name)') und im JavaScript-Format in eine Zahl ausgewertet wird, z.B.: regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?.<br><br>'badge : '#(name)' wird beispielsweise zu 'badge' : 40 (und nicht zu '40'). |
+| #(prop) |Wird in JSON-Vorlagen (z.B. für iOS- und Android-Vorlagen) verwendet.<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z.B. Apple-Vorlagen). Wenn in diesem Fall die Funktion nicht von „{','}“ umschlossen ist (z.B. 'myJsonProperty' : '#(name)'), und zu einer Zahl im Javascript-Format ausgewertet wird (z.B. regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?), ist die Ausgabe-JSON eine Zahl.<br><br>Beispiel: 'badge : '#(name)' wird zu 'badge' : 40 (nicht '40'). |
 | 'text' oder "text" |Ein Literal. Literale enthalten beliebigen Text, der in einfache oder doppelte Anführungszeichen eingeschlossen ist. |
 | expr1 + expr2 |Der Verkettungsoperator, der zwei Ausdrücke zu einer Zeichenfolge verbindet. |
 
@@ -145,4 +149,9 @@ Wie oben erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschwe
       </visual>
     </tile>
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

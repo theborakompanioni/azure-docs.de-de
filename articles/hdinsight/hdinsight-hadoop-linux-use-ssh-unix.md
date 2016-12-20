@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 09/13/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 3c3944118ca986009711aee032b45c302b63e63b
-ms.openlocfilehash: 93bf35edd2173c147f48512d92bc8e4734cd1dbd
+ms.sourcegitcommit: 72ca562c53f813599f19069cfac7ef3ac1957968
+ms.openlocfilehash: f64cca8823a74c1c0f52e5d9112836661dc51d8e
 
 
 ---
@@ -26,14 +26,14 @@ ms.openlocfilehash: 93bf35edd2173c147f48512d92bc8e4734cd1dbd
 > [!div class="op_single_selector"]
 > * [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 > * [Linux, Unix, OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-> 
-> 
+>
+>
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) ermöglicht die Anmeldung bei einem Linux-basierten HDInsight-Cluster und die Ausführung von Befehlen über eine Befehlszeilenschnittstelle. Dieses Dokument enthält grundlegende Informationen zu SSH sowie spezifische Informationen zur Verwendung von SSH mit HDInsight.
 
 ## <a name="what-is-ssh"></a>Was ist SSH?
 
-SSH ist ein kryptografisches Netzwerkprotokoll für die sichere Kommunikation mit einem Remoteserver über ein unsicheres Netzwerk. SSH ermöglicht eine sichere befehlszeilenbasierte Anmeldung bei einem Remoteserver. In diesem Fall: die Hauptknoten oder der Edgeknoten eines HDInsight-Clusters. 
+SSH ist ein kryptografisches Netzwerkprotokoll für die sichere Kommunikation mit einem Remoteserver über ein unsicheres Netzwerk. SSH ermöglicht eine sichere befehlszeilenbasierte Anmeldung bei einem Remoteserver. In diesem Fall: die Hauptknoten oder der Edgeknoten eines HDInsight-Clusters.
 
 Mit SSH können Sie Netzwerkdatenverkehr von Ihrem Client auch über einen Tunnel an den HDInsight-Cluster übermitteln. Bei Verwendung eines Tunnels stehen Ihnen im HDInsight-Cluster Dienste zur Verfügung, auf die nicht direkt über das Internet zugegriffen werden kann. Weitere Informationen zum Verwenden von SSH-Tunneln mit HDInsight finden Sie unter [Verwenden von SSH-Tunneling mit HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
@@ -76,7 +76,7 @@ Am einfachsten erstellen Sie ein Paar aus öffentlichem und privatem Schlüssel 
 > Informieren Sie sich bei Verwendung eines SSH-Clients mit grafischer Benutzeroberfläche (beispielsweise MobaXterm oder PuTTY) in der Dokumentation Ihres Clients über die Vorgehensweise zum Generieren von Schlüsseln.
 
     ssh-keygen -t rsa -b 2048
-   
+
 Folgende Informationen werden abgefragt:
 
 * Speicherort der Datei: Dies ist standardmäßig `~/.ssh/id_rsa`.
@@ -91,7 +91,7 @@ Folgende Informationen werden abgefragt:
 Nach Ausführung des Befehls verfügen Sie über zwei neue Dateien:
 
 * __id\_rsa__: Diese Datei enthält den privaten Schlüssel.
-    
+
     > [!WARNING]
     > Beschränken Sie den Zugriff auf diese Datei, um unberechtigte Zugriffe auf Dienste zu verhindern, die mit dem öffentlichen Schlüssel geschützt werden.
 
@@ -171,29 +171,30 @@ Wenn Sie Ihr Benutzerkonto mithilfe eines SSH-Schlüssels authentifizieren, muss
 1. Öffnen Sie `~/.ssh/config`in einem Text-Editor. Sollte die Datei nicht vorhanden sein, können Sie sie durch Eingabe von `touch ~/.ssh/config` an einer Befehlszeile erstellen.
 
 2. Fügen Sie der Datei folgenden Code hinzu. Ersetzen Sie *CLUSTERNAME* durch den Namen Ihres HDInsight-Clusters.
-   
+
         Host CLUSTERNAME-ssh.azurehdinsight.net
           ForwardAgent yes
-   
+
     Dadurch wird die SSH-Agent-Weiterleitung für Ihren HDInsight-Cluster konfiguriert.
 
 3. Testen Sie die SSH-Agent-Weiterleitung über die Eingabe des folgenden Befehls in das Terminal:
-   
+
         echo "$SSH_AUTH_SOCK"
-   
+
     Die Ausgabe dieses Befehls sieht in etwa wie folgt aus:
-   
+
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
-   
+
     Sollte nichts zurückgegeben werden, wird `ssh-agent` nicht ausgeführt. Sehen Sie sich unter [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) (Verwenden von „ssh-agent“ mit SSH) die Informationen zu den Agent-Startskripts an, oder informieren Sie sich in der Dokumentation Ihres SSH-Clients über spezifische Installations- und Konfigurationsschritte für `ssh-agent`.
 
 4. Nachdem Sie sichergestellt haben, dass **ssh-Agent** ausgeführt wird, verwenden Sie folgenden Befehl, um Ihren privaten SSH-Schlüssel dem Agent hinzuzufügen:
-   
+
         ssh-add ~/.ssh/id_rsa
-   
+
     Wenn Ihr privater Schlüssel in einer anderen Datei gespeichert ist, ersetzen Sie `~/.ssh/id_rsa` durch den Pfad zur Datei.
 
-###<a name="a-iddomainjoineda-domain-joined-hdinsight"></a><a id="domainjoined"></a> In die Domäne eingebundenes HDInsight
+<a id="domainjoined"></a>
+### <a name="domain-joined-hdinsight"></a>In die Domäne eingebundenes HDInsight
 
 Bei [in die Domäne eingebundenem HDInsight](hdinsight-domain-joined-introduction.md) wird Kerberos mit Hadoop in HDInsight integriert. Da der SSH-Benutzer kein Active Directory-Domänenbenutzer ist, können Hadoop-Befehle für dieses Benutzerkonto erst nach erfolgter Active Directory-Authentifizierung ausgeführt werden. Gehen Sie wie folgt vor, um Ihre SSH-Sitzung mit Active Directory zu authentifizieren:
 
@@ -232,6 +233,6 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

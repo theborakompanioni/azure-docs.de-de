@@ -1,12 +1,12 @@
 ---
-title: Azure-SAML-Protokoll für einmaliges Anmelden | Microsoft Docs
-description: In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden in Azure Active Directory beschrieben.
+title: "Azure-SAML-Protokoll für einmaliges Anmelden | Microsoft Docs"
+description: "In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden in Azure Active Directory beschrieben."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 548191cfe851a37893f068e8de482ed6e28e476b
+
 
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
@@ -246,7 +250,7 @@ Enthält Ansprüche bezüglich des Antragstellers oder des Benutzers. Der folgen
       </Attribute>
       ...
 </AttributeStatement>
-```     
+```        
 
 * **Name-Anspruch**: Der Wert des `Name`-Attributs (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) ist der Benutzerprinzipalname des authentifizierten Benutzers (etwa `testuser@managedtenant.com`).
 * **ObjectIdentifier-Anspruch**: Der Wert des `ObjectIdentifier`-Attributs (`http://schemas.microsoft.com/identity/claims/objectidentifier`) ist das `ObjectId`-Element des Verzeichnisobjekts, das den authentifizierten Benutzer in Azure AD darstellt. `ObjectId` ist ein unveränderlicher, global eindeutiger und sicher wiederverwendbarer Bezeichner des authentifizierten Benutzers.
@@ -267,6 +271,6 @@ Dieses Element bestätigt, dass das Assertion-Subjekt mit einer bestimmten Metho
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

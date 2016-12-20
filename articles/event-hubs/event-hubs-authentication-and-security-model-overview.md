@@ -1,12 +1,12 @@
 ---
-title: Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell | Microsoft Docs
-description: Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell.
+title: "Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell | Microsoft Docs"
+description: "Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell."
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 93841e30-0c5c-4719-9dc1-57a4814342e7
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2016
 ms.author: sethm;clemensv
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9447b863b62fc71d2619591f78be0494711dc6a3
+
 
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)
@@ -24,7 +28,7 @@ Das Sicherheitsmodell von Event Hubs erfüllt die folgenden Voraussetzungen:
 * Ein nicht autorisiertes Gerät kann vom Senden von Daten an einen Event Hub blockiert werden.
 
 ## <a name="device-authentication"></a>Geräte-Authentifizierung
-Das Event Hubs-Sicherheitsmodell basiert auf einer Kombination aus [Shared Access Signature (SAS)](../service-bus/service-bus-shared-access-signature-authentication.md)-Token und *Ereignisherausgebern*. Ein Ereignisherausgeber definiert einen virtuellen Endpunkt für einen Event Hub. Der Herausgeber kann nur zum Senden von Nachrichten an einen Event Hub verwendet werden. Es ist nicht möglich, von einem Herausgeber Nachrichten zu empfangen.
+Das Event Hubs-Sicherheitsmodell basiert auf einer Kombination aus [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)-Token und *Ereignisherausgebern*. Ein Ereignisherausgeber definiert einen virtuellen Endpunkt für einen Event Hub. Der Herausgeber kann nur zum Senden von Nachrichten an einen Event Hub verwendet werden. Es ist nicht möglich, von einem Herausgeber Nachrichten zu empfangen.
 
 In der Regel setzt ein Event Hub einen Herausgeber pro Gerät ein. Alle Nachrichten, die an einen der Herausgeber eines Event Hubs gesendet werden, werden in die Warteschlange innerhalb dieses Event Hubs eingereiht. Herausgeber ermöglichen die präzise Access Control und Zugriffsdrosselung.
 
@@ -39,7 +43,7 @@ Wenn Sie einen Event Hubs-Namespace erstellen, generiert Azure Event Hubs einen 
 
 Das folgende Beispiel erstellt einen reinen Sende-Schlüssel beim Erstellen des Event Hubs:
 
-```
+```csharp
 // Create namespace manager.
 string serviceNamespace = "YOUR_NAMESPACE";
 string namespaceManageKeyName = "RootManageSharedAccessKey";
@@ -60,7 +64,7 @@ nm.CreateEventHub(ed);
 ### <a name="generate-tokens"></a>Generieren von Token
 Sie können Token mit dem SAS-Schlüssel generieren. Sie müssen nur ein Token pro Gerät erzeugen. Token können dann mit dem folgenden Verfahren erstellt werden. Alle Token werden mit dem Schlüssel **EventHubSendKey** generiert. Jedes Token erhält einen eindeutigen URI.
 
-```
+```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
@@ -68,13 +72,13 @@ Beim Aufrufen dieser Methode sollte der URI als `//<NAMESPACE>.servicebus.window
 
 Diese Methode generiert ein Token mit der folgenden Struktur:
 
-```
+```csharp
 SharedAccessSignature sr={URI}&sig={HMAC_SHA256_SIGNATURE}&se={EXPIRATION_TIME}&skn={KEY_NAME}
 ```
 
 Die Tokengültigkeitsdauer wird als Zeit in Sekunden ab dem 1. Januar 1970 angegeben. Es folgt ein Beispiel für ein Token:
 
-```
+```csharp
 SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFmBHG77A%3d&se=1403130337&skn=RootManageSharedAccessKey
 ```
 
@@ -98,17 +102,17 @@ In Ermangelung einer SAS-Authentifizierung für einzelne Consumergruppen können
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 
-* [Übersicht über Event Hubs]
+* [Übersicht über Event Hubs]
 * Eine [Messaginglösung mit Warteschlange] unter Verwendung von Service Bus-Warteschlangen.
 * Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs].
 
-[Übersicht über Event Hubs]: event-hubs-overview.md
+[Übersicht über Event Hubs]: event-hubs-overview.md
 [Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Messaginglösung mit Warteschlange]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

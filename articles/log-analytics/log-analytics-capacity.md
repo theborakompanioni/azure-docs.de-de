@@ -1,32 +1,36 @@
 ---
-title: Kapazitätsverwaltungslösung in Log Analytics | Microsoft Docs
-description: Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen dabei, die Kapazität der Hyper-V-Server, die vom System Center Virtual Machine Manager verwaltet werden, besser zu verstehen.
+title: "Kapazitätsverwaltungslösung in Log Analytics | Microsoft Docs"
+description: "Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen dabei, die Kapazität der Hyper-V-Server, die vom System Center Virtual Machine Manager verwaltet werden, besser zu verstehen."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 11/15/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 57e7fbdaa393e078b62a6d6a0b181b67d532523d
+ms.openlocfilehash: c34cda0da164c711c8effc78d2af38ad8df581aa
+
 
 ---
 # <a name="capacity-management-solution-in-log-analytics"></a>Kapazitätsverwaltungslösung in Log Analytics
-Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen dabei, die Kapazität der Hyper-V-Server, die von System Center Virtual Machine Manager verwaltet werden, besser zu verstehen. Diese Lösung erfordert System Center Operations Manager und System Center Virtual Machine Manager. Die Kapazitätsplanung ist nicht verfügbar, wenn Sie nur direkt verbundene Agents verwenden. Sie installieren die Lösung, um den Operations Manager-Agent zu aktualisieren. Die Lösung liest die Leistungsindikatoren auf dem überwachten Server und sendet Nutzungsdaten zur Verarbeitung an den OMS-Dienst in der Cloud. Auf die Nutzungsdaten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mit der Zeit entstehen Verwendungsmuster, und die Kapazität wird anhand des aktuellen Verbrauchs prognostiziert.
+Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen, die Kapazität Ihrer Hyper-V-Server zu verstehen. Diese Lösung erfordert System Center Operations Manager und System Center Virtual Machine Manager. Wenn Sie direkt verbundene Agents verwenden, funktioniert die Kapazitätsplanungslösung nicht. Die Lösung liest die Leistungsindikatoren auf dem überwachten Server und sendet Nutzungsdaten zur Verarbeitung an den OMS-Dienst in der Cloud. Auf die Nutzungsdaten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mit der Zeit entstehen Verwendungsmuster, und die Kapazität wird anhand des aktuellen Verbrauchs prognostiziert.
 
-Beispielsweise kann anhand einer Prognose ermittelt werden, wann zusätzliche Prozessorkerne oder zusätzlicher Arbeitsspeicher für einen einzelnen Server benötigt wird. In diesem Beispiel kann die Prognose darauf hinweisen, dass der Server in 30 Tagen zusätzlichen Arbeitsspeicher benötigen wird. Damit können Sie ein Speicherupgrade für das nächste Wartungsfenster des Servers planen, das zum Beispiel einmal alle zwei Wochen ansteht.
+Beispielsweise kann anhand einer Prognose ermittelt werden, wann zusätzliche Prozessorkerne oder zusätzlicher Arbeitsspeicher für einen einzelnen Server benötigt wird. In diesem Beispiel kann die Prognose darauf hinweisen, dass der Server in 30 Tagen zusätzlichen Arbeitsspeicher benötigen. Diese Prognose kann Ihnen helfen, ein Speicherupgrade für das nächste Wartungsfenster des Servers planen.
 
 > [!NOTE]
 > Die Kapazitätsverwaltungslösung kann keinen Arbeitsbereichen hinzugefügt werden. Kunden, die die Kapazitätsverwaltungslösung installiert haben, können die Lösung weiterhin verwenden.  
 > 
 > 
 
-Die Kapazitätsplanungslösung wird zurzeit aktualisiert, um die folgenden Kundenanforderungen zu erfüllen:
+Ein Nachfolgelösung der Kapazitäts- und Leistungslösung ist in der Phase „Private Vorschau“. Diese Nachfolgelösung dient zum Beheben der folgenden von Kunden gemeldeten Problemen mit der ursprünglichen Kapazitätsverwaltungslösung:
 
 * Möglichkeit der Verwendung von Virtual Machine Manager und Operations Manager
 * Möglichkeit zum Anpassen/Filtern auf der Grundlage von Gruppen
@@ -38,15 +42,18 @@ Vorteile der neuen Kapazitätslösung:
 
 * Unterstützung granularer Datensammlung mit verbesserter Zuverlässigkeit und Genauigkeit
 * Unterstützung für Hyper-V ohne VMM
-* Visualisierung von Metriken in Power BI
 * Einblicke in die Nutzung auf VM-Ebene
+
+Die neue Lösung erfordert derzeit Hyper-V Server 2012 oder höher. Die Lösung bietet Einblicke in Ihre Hyper-V-Umgebung und Transparenz bei der Gesamtnutzung (CPU, Arbeitsspeicher und Festplatte) der Hosts und VMs, die auf diesen Hyper-V-Servern ausgeführt werden. Für CPU, Arbeitsspeicher und Datenträger auf allen Hosts und VMs werden Metriken gesammelt.
+
+Die übrige Dokumentation auf dieser Seite bezieht sich auf die alte Kapazitätsverwaltungslösung. Diese Dokumentation wird aktualisiert, sobald die neue Lösung in der Version „Öffentliche Vorschau“ verfügbar ist.
 
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 * Operations Manager ist für die Kapazitätsverwaltungslösung erforderlich.
 * Virtual Machine Manager ist für die Kapazitätsverwaltungslösung erforderlich.
-* Operations Manager-Verbindung mit Virtual Machine Manager (VMM) ist erforderlich. Zusätzliche Informationen zum Verbinden der Systeme finden Sie unter [Verbinden von VMM mit Operations Manager](http://technet.microsoft.com/library/hh882396.aspx).
+* Operations Manager-Verbindung mit Virtual Machine Manager (VMM) ist erforderlich. Weitere Informationen zum Verbinden der Systeme finden Sie unter [Verbinden von VMM mit Operations Manager](http://technet.microsoft.com/library/hh882396.aspx).
 * Operations Manager muss mit Log Analytics verbunden sein.
 * Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Verfahrens Ihrem OMS-Arbeitsbereich die Kapazitätsverwaltungslösung hinzu.  Es ist keine weitere Konfiguration erforderlich.
 
@@ -55,7 +62,7 @@ Die Kapazitätsverwaltung sammelt Leistungsdaten, Metadaten und Statusdaten mit 
 
 Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, wie Daten für die Kapazitätsverwaltung erfasst werden.
 
-| Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
+| Plattform | Direkt-Agent | Operations Manager-Agent | Azure Storage | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![Nein](./media/log-analytics-capacity/oms-bullet-red.png) |![Ja](./media/log-analytics-capacity/oms-bullet-green.png) |![Nein](./media/log-analytics-capacity/oms-bullet-red.png) |![Ja](./media/log-analytics-capacity/oms-bullet-green.png) |![Ja](./media/log-analytics-capacity/oms-bullet-green.png) |Stündlich |
 
@@ -68,7 +75,7 @@ Die folgende Tabelle zeigt Beispiele für Datentypen, die von der Kapazitätsver
 | Zustand |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="capacity-management-page"></a>Kapazitätsverwaltungsseite
- Nach der Installation der Kapazitätsverwaltungslösung können Sie die Kapazität der überwachten Server in OMS über die Kachel **Kapazitätsplanung** auf der Seite **Übersicht** anzeigen.
+Nach der Installation der Kapazitätsverwaltungslösung können Sie die Kapazität der überwachten Server in OMS über die Kachel **Kapazitätsplanung** auf der Seite **Übersicht** anzeigen.
 
 ![Abbildung der Kachel "Capacity Planning"](./media/log-analytics-capacity/oms-capacity01.png)
 
@@ -120,10 +127,10 @@ Mithilfe des Projektionstools können Sie historische Trends für die Ressourcen
 
 **Effizienz**
 
-* *Idle VM*: Verwendung von weniger als 10 % der CPU-Leistung und 10 % des Arbeitsspeichers im angegebenen Zeitraum.
-* *Overutilized VM*: Verwendung von mehr als 90 % der CPU-Leistung und 90 % des Arbeitsspeichers im angegebenen Zeitraum.
-* *Idle Host*: Verwendung von weniger als 10 % der CPU-Leistung und 10 % des Arbeitsspeichers im angegebenen Zeitraum.
-* *Overutilized Host*: Verwendung von mehr als 90 % der CPU-Leistung und 90 % des Arbeitsspeichers im angegebenen Zeitraum.
+* *Idle VM*: Verwendung von weniger als 10 % der CPU-Leistung und 10 % des Arbeitsspeichers im angegebenen Zeitraum.
+* *Overutilized VM*: Verwendung von mehr als 90 % der CPU-Leistung und 90 % des Arbeitsspeichers im angegebenen Zeitraum.
+* *Idle Host*: Verwendung von weniger als 10 % der CPU-Leistung und 10 % des Arbeitsspeichers im angegebenen Zeitraum.
+* *Overutilized Host*: Verwendung von mehr als 90 % der CPU-Leistung und 90 % des Arbeitsspeichers im angegebenen Zeitraum.
 
 ### <a name="to-work-with-items-on-the-compute-page"></a>Arbeiten mit Elementen auf der Seite "Compute"
 1. Im Dashboard **Compute** können Sie im Bereich **Nutzung** die Kapazitätsinformationen zu den verwendeten CPU-Kernen und zum verwendeten Arbeitsspeicher anzeigen.
@@ -152,11 +159,11 @@ Die folgenden Bereiche werden auf der Seite **Storage** angezeigt:
 
 **Datenträgerleistung**
 
-Mithilfe von OMS können Sie den Verlauf des Nutzungstrends Ihres Speicherplatzes anzeigen. Die Projektionsfunktion verwendet einen Algorithmus, um die künftige Verwendung vorherzusagen. Insbesondere bei der Speicherplatzverwendung ermöglicht Ihnen die Projektionsfunktion die Vorhersage, wann Sie eventuell keinen Speicherplatz mehr zur Verfügung haben werden. Dies hilft Ihnen bei der Planung von ausreichendem Speicher, sodass Sie wissen, wann Sie zusätzlichen Speicher erwerben müssen.
+Mithilfe von OMS können Sie den Verlauf des Nutzungstrends Ihres Speicherplatzes anzeigen. Die Projektionsfunktion verwendet einen Algorithmus, um die künftige Verwendung vorherzusagen. Insbesondere bei der Speicherplatzverwendung ermöglicht Ihnen die Projektionsfunktion die Vorhersage, wann Sie eventuell keinen Speicherplatz mehr zur Verfügung haben werden. Diese Projektion hilft Ihnen bei der Planung von ausreichendem Speicher, sodass Sie wissen, wann Sie zusätzlichen Speicher erwerben müssen.
 
 **Projektionstool**
 
-Mithilfe des Projektionstools können Sie historische Trends für die Speicherplatzauslastung anzeigen. Die Projektionsfunktion ermöglicht Ihnen außerdem die Vorhersage, wann nicht mehr genügend Speicherplatz vorhanden sein wird. Dies hilft Ihnen bei der Planung von ausreichender Kapazität, sodass Sie wissen, wann Sie zusätzliche Speicherkapazität erwerben müssen.
+Mithilfe des Projektionstools können Sie historische Trends für die Speicherplatzauslastung anzeigen. Die Projektionsfunktion ermöglicht Ihnen außerdem die Vorhersage, wann nicht mehr genügend Speicherplatz vorhanden sein wird. Diese Projektion hilft Ihnen bei der Planung von ausreichender Kapazität, sodass Sie wissen, wann Sie zusätzliche Speicherkapazität erwerben müssen.
 
 ### <a name="to-work-with-items-on-the-direct-attached-storage-page"></a>Arbeiten mit Elementen auf der Seite "Direct Attached Storage"
 1. Im Dashboard **Direct Attached Storage** können Sie im Bereich **Nutzung** Informationen zur Datenträgerauslastung anzeigen.
@@ -167,6 +174,9 @@ Mithilfe des Projektionstools können Sie historische Trends für die Speicherpl
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md) , um ausführliche Daten zur Kapazitätsverwaltung anzuzeigen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

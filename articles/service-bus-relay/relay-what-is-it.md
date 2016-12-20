@@ -1,22 +1,22 @@
 ---
 title: Was ist Azure Relay? | Microsoft Docs
 description: "Übersicht über Azure Relay"
-services: service-bus
+services: service-bus-relay
 documentationcenter: .net
 author: banisadr
 manager: timlt
 editor: 
 ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 10/28/2016
-ms.author: babanisa
+ms.date: 11/16/2016
+ms.author: babanisa,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: dc81f26a64b376eb34894268ea0b17152647ed79
-ms.openlocfilehash: c4c01d1a7a82fe9d696223a5abc05f559ead0f6a
+ms.sourcegitcommit: 8ba8baa1b6500b3300e0bfc1c6b9f00f214f0179
+ms.openlocfilehash: 4329e0f99828f5a0651e6b03be0813d9e68debaa
 
 
 ---
@@ -31,8 +31,8 @@ Die Schlüsselfunktionselemente, die von Relay bereitgestellt werden, sind die b
 
 Azure Relay verfügt über zwei Funktionen:
 
-1. [Hybridverbindungen](#hybrid-connections): Verwenden die offenen Standard-WebSockets, die plattformübergreifende Szenarien zulassen.
-2. [WCF-Relays](#wcf-relays): Verwenden Windows Communication Foundation, um Remoteprozeduraufrufe zuzulassen.
+1. [Hybridverbindungen](#hybrid-connections): Verwenden die offenen Standardwebsockets, die plattformübergreifende Szenarios zulassen.
+2. [WCF-Relays](#wcf-relays): Verwenden Windows Communication Foundation, um Remoteprozeduraufrufe zuzulassen. WCF-Relay ist das ältere Relayangebot, das viele Kunden bereits mit ihren WCF-Programmiermodellen verwenden.
 
 Hybridverbindungen und WCF-Relays aktivieren beide die sichere Verbindung mit Assets, die innerhalb eines Unternehmensnetzwerks vorhanden sind. Welcher Ansatz verwendet wird, richtet sich nach den jeweiligen Anforderungen. Dies ist in der folgenden Tabelle beschrieben:
 
@@ -40,7 +40,7 @@ Hybridverbindungen und WCF-Relays aktivieren beide die sichere Verbindung mit As
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |x |
-| **.NET Framework** |x |x |
+| **.NET Framework** |x |
 | **JavaScript/NodeJS*** | |x |
 | **Java*** | |x |
 | **Standardbasierte offene Protokolle** | |x |
@@ -49,15 +49,13 @@ Hybridverbindungen und WCF-Relays aktivieren beide die sichere Verbindung mit As
 * bei allgemeiner Verfügbarkeit
 
 ## <a name="hybrid-connections"></a>Hybridverbindungen
-Die Hybridverbindungsfunktion von Azure Relay ist eine sichere Weiterentwicklung der vorhandenen Relay-Features mit offenem Protokoll, die auf jeder beliebigen Plattform und in jeder beliebigen Sprache mit einer grundlegenden WebSocket-Funktion implementiert werden kann. Dies schließt explizit die WebSocket-API in gängigen Webbrowsern ein. Hybridverbindungen basieren auf HTTP und WebSockets.
+Die [Hybridverbindungsfunktion von Azure Relay](relay-hybrid-connections-protocol.md) ist eine sichere Weiterentwicklung der vorhandenen Relay-Features mit offenem Protokoll, die auf jeder beliebigen Plattform und in jeder beliebigen Sprache mit einer grundlegenden WebSocket-Funktion implementiert werden kann. Dies schließt explizit die WebSocket-API in gängigen Webbrowsern ein. Hybridverbindungen basieren auf HTTP und WebSockets.
 
 ## <a name="wcf-relays"></a>WCF-Relays
 Das WCF-Relay funktioniert für das gesamte .NET Framework (NETFX) sowie für WCF. Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-Bindungen vom Typ „Relay“. Im Prinzip werden die Relaybindungen neuen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die mit Service Bus in der Cloud integriert werden.
 
 ## <a name="service-history"></a>Dienstverlauf
 Hybridverbindungen ersetzen die ehemalige gleichnamige Funktion „BizTalk Services“, die auf dem Azure Service Bus-WCF-Relay erstellt wurde. Die neue Funktion „Hybridverbindungen“ komplementiert das vorhandene WCF-Relay und diese beiden Dienstfunktionen werden parallel im Relaydienst für die nächste Zeit vorhanden sein. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
-
-WCF-Relay ist das ältere Relayangebot, das viele Kunden bereits mit ihren WCF-Programmiermodellen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte:
 * [Relay – Häufig gestellte Fragen](relay-faq.md)
@@ -68,6 +66,6 @@ WCF-Relay ist das ältere Relayangebot, das viele Kunden bereits mit ihren WCF-P
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

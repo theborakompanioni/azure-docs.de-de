@@ -1,19 +1,23 @@
 ---
-title: Optimieren der Umgebung mit der SQL Assessment-Lösung in Log Analytics | Microsoft Docs
-description: Sie können die SQL Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten..
+title: "Optimieren der Umgebung mit der SQL Assessment-Lösung in Log Analytics | Microsoft Docs"
+description: "Sie können die SQL Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten.."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 11/09/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: 0b0c739f1d89b83c43314d8ace794d26abf10054
+
 
 ---
 # <a name="optimize-your-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Optimieren der Umgebung mit der SQL Assessment-Lösung in Log Analytics
@@ -39,17 +43,17 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 * Agents müssen auf Servern installiert werden, auf denen SQL Server installiert ist.
 * Für die SQL Assessment-Lösung muss .NET Framework 4 auf jedem Computer installiert sein, der über einen OMS-Agent verfügt.
 * Wenn Sie den Operations Manager-Agent mit SQL Assessment einsetzen möchten, müssen Sie ein ausführendes Operations Manager-Konto verwenden. Weitere Informationen finden Sie unter [Ausführende Operations Manager-Konten für OMS](#operations-manager-run-as-accounts-for-oms) .
-  
+
   > [!NOTE]
   > Der MMA-Agent unterstützt ausführende Operations Manager-Konten nicht.
-  > 
-  > 
+  >
+  >
 * Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Prozesses die SQL Assessment-Lösung Ihrem OMS-Arbeitsbereich hinzu. Es ist keine weitere Konfiguration erforderlich.
 
 > [!NOTE]
 > Nachdem Sie die Lösung hinzugefügt haben, wird die Datei AdvisorAssessment.exe den Servern mit Agents hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an den OMS-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
-> 
-> 
+>
+>
 
 ## <a name="sql-assessment-data-collection-details"></a>Details zur SQL Assessment-Datensammlung
 SQL Assessment erfasst WMI-Daten, Registrierungsdaten, Leistungsdaten und Ergebnisse der dynamischen Verwaltungssicht von SQL Server mithilfe von Agents, die Sie aktiviert haben.
@@ -58,7 +62,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden für Agents und gibt an, o
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![Nein](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![Nein](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |7 Tage |
+| Windows |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![Nein](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![Nein](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![Ja](./media/log-analytics-sql-assessment/oms-bullet-green.png) |7 Tage |
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>Ausführende Operations Manager-Konten für OMS
 Log Analytics in OMS verwendet den Agent und die Verwaltungsgruppe von Operations Manager, um Daten zu sammeln und an den OMS-Dienst zu senden. OMS basiert auf Management Packs für Workloads, um Dienste bereitzustellen, die einen Mehrwert schaffen. Jede Arbeitsauslastung erfordert spezifische Berechtigungen zum Ausführen von Management Packs in einem anderen Sicherheitskontext, z. B. ein Domänenkonto. Sie müssen Anmeldeinformationen angeben, indem Sie ein ausführendes Operations Manager-Konto konfigurieren.
@@ -71,18 +75,18 @@ Verwenden Sie die folgenden Informationen, um das ausführende Operations Manage
 #### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>So konfigurieren Sie das ausführende SQL-Konto in der Betriebskonsole
 > [!NOTE]
 > Wenn Sie den direkten OMS-Agenten statt des SCOM-Agenten verwenden, wird das Management Pack immer im Sicherheitskontext des lokalen Systemkontos ausgeführt. Überspringen Sie die Schritte 1 bis 5 unten, und führen Sie entweder das T-SQL- oder das Powershell-Beispiel aus, wobei Sie „NT AUTHORITY\SYSTEM“ als Benutzernamen angeben.
-> 
-> 
+>
+>
 
 1. Öffnen Sie in Operations Manager die Betriebskonsole, und klicken Sie dann auf **Verwaltung**.
 2. Klicken Sie unter **Ausführen als-Konfiguration** auf **Profile**, und öffnen Sie das **ausführende Profil für OMS SQL Assessment**.
 3. Klicken Sie auf der Seite **Ausführende Konten** auf **Hinzufügen**.
 4. Wählen Sie ein ausführendes Windows-Konto aus, das die Anmeldeinformationen für SQL Server enthält, oder klicken Sie auf **Neu** , um eines zu erstellen.
-   
+
    > [!NOTE]
    > Der Typ des ausführenden Kontos muss "Windows" sein. Das ausführende Konto muss auch Teil der lokalen Administratorengruppe auf allen Windows-Servern sein, auf denen SQL Server-Instanzen gehostet werden.
-   > 
-   > 
+   >
+   >
 5. Klicken Sie auf **Speichern**.
 6. Ändern und führen Sie dann das folgende T-SQL-Beispiel auf jeder SQL Server-Instanz aus, um dem ausführenden Konto die erforderlichen Mindestberechtigungen zum Ausführen von SQL Assessment zu erteilen. Dies ist jedoch nicht erforderlich, wenn ein ausführendes Konto bereits Teil der Serverrolle "sysadmin" auf SQL Server-Instanzen ist.
 
@@ -127,7 +131,7 @@ Gewichtungen sind aggregierte Werte, die auf drei wesentlichen Faktoren basieren
 * Der *Auswirkung* des Problems auf Ihre Organisation, wenn es tatsächlich Schwierigkeiten verursacht. Eine stärkere Auswirkung entspricht einer höheren Gesamtwertung für die Empfehlung.
 * Dem erforderlichen *Aufwand* zur Umsetzung der Empfehlung. Ein höherer Aufwand entspricht einer niedrigeren Gesamtwertung für die Empfehlung.
 
-Die Gewichtung für jede Empfehlung wird als Prozentsatz der Gesamtwertung ausgedrückt, die für jeden Schwerpunktbereich verfügbar ist. Wenn beispielsweise eine Empfehlung im Schwerpunktbereich "Sicherheit und Einhaltung" eine Wertung von 5 % hat, erhöht eine Umsetzung dieser Empfehlung die Gesamtwertung von "Sicherheit und Einhaltung" um 5 %.
+Die Gewichtung für jede Empfehlung wird als Prozentsatz der Gesamtwertung ausgedrückt, die für jeden Schwerpunktbereich verfügbar ist. Wenn beispielsweise eine Empfehlung im Schwerpunktbereich "Sicherheit und Einhaltung" eine Wertung von 5 % hat, erhöht eine Umsetzung dieser Empfehlung die Gesamtwertung von "Sicherheit und Einhaltung" um 5 %.
 
 ### <a name="focus-areas"></a>Schwerpunktbereiche
 **Sicherheit und Compliance** : Dieser Schwerpunktbereich zeigt Empfehlungen hinsichtlich potenzieller Sicherheitsrisiken und Sicherheitsverletzungen sowie Unternehmensrichtlinien und Anforderungen an die Einhaltung gesetzlicher Bestimmungen und technischer Vorgaben.
@@ -142,7 +146,7 @@ Die Gewichtung für jede Empfehlung wird als Prozentsatz der Gesamtwertung ausge
 
 **Änderungs- und Konfigurationsverwaltung**: Dieser Schwerpunktbereich zeigt Empfehlungen dazu, wie Sie den täglichen Betrieb schützen, sicherstellen, dass Änderungen sich nicht negativ auf die Infrastruktur auswirken, Verfahren zur Änderungssteuerung einrichten und Systemkonfigurationen nachverfolgen und überwachen.
 
-### <a name="should-you-aim-to-score-100%-in-every-focus-area?"></a>Müssen in jedem Schwerpunktbereich 100 % erzielt werden?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Müssen in jedem Schwerpunktbereich 100 % erzielt werden?
 Nicht unbedingt. Die Empfehlungen basieren auf den Kenntnissen und Erfahrungen, die Microsoft-Experten bei Tausenden von Kundenbesuchen gesammelt haben. Jedoch sind keine zwei Serverinfrastrukturen identisch, und spezifische Empfehlungen können mal mehr oder mal weniger relevant für Sie sein. Zum Beispiel sind einige Sicherheitsempfehlungen möglicherweise weniger relevant, wenn Ihre virtuellen Computer nicht mit dem Internet verbunden sind. Verschiedene Verfügbarkeitsempfehlungen können weniger relevant für Dienste sein, die Ad-hoc-Datensammlung und -Berichterstattung mit niedriger Priorität bereitstellen. Probleme, die für ein gewachsenes Unternehmen Relevanz haben, sind für ein Start-up ggf. weniger wichtig. Es empfiehlt sich zu ermitteln, welche Schwerpunktbereiche zu Ihren Prioritäten zählen, und dann zu beobachten, wie sich Ihre Wertungen mit der Zeit verändern.
 
 Jede Empfehlung enthält Informationen dazu, warum sie wichtig ist. Sie sollten anhand dieser Anleitung feststellen, ob die Umsetzung der Empfehlung bei Berücksichtigung der Art Ihrer IT-Dienste und der geschäftlichen Anforderungen Ihrer Organisation für Sie geeignet ist.
@@ -164,15 +168,15 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Ermitteln von Empfehlungen, die Sie ignorieren möchten
 1. Melden Sie sich bei Ihrem Arbeitsbereich an, und öffnen Sie die Protokollsuche. Verwenden Sie folgende Abfrage, um Empfehlungen aufzulisten, die für Computer in Ihrer Umgebung nicht funktionieren.
-   
+
    ```
    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
-   
-   Dieser Screenshot zeigt eine Protokollsuchabfrage: ![Empfehlungen mit Fehlern](./media/log-analytics-sql-assessment/sql-assess-failed-recommendations.png)
+
+   Dieser Screenshot zeigt eine Protokollsuchabfrage: ![Empfehlungen mit Fehlern](./media/log-analytics-sql-assessment/sql-assess-failed-recommendations.png).
 2. Wählen Sie die Empfehlungen aus, die Sie ignorieren möchten. Sie werden die Werte für RecommendationId in der nächsten Prozedur verwenden.
 
-### <a name="to-create-and-use-an-ignorerecommendations.txt-text-file"></a>Erstellen und Verwenden einer IgnoreRecommendations.txt-Textdatei
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Erstellen und Verwenden einer IgnoreRecommendations.txt-Textdatei
 1. Erstellen Sie eine Datei namens IgnoreRecommendations.txt.
 2. Fügen oder geben Sie auf separaten Zeilen die RecommendationId für jede Empfehlung ein, die OMS ignorieren soll, und speichern und schließen Sie die Datei.
 3. Legen Sie die Datei auf jedem Computer, auf dem OMS die Empfehlungen ignorieren soll, in folgendem Ordner ab.
@@ -182,7 +186,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Überprüfen, ob Empfehlungen ignoriert werden
 1. Nach Ausführung der nächsten geplanten Bewertung – standardmäßig alle 7 Tage – werden die angegebenen Empfehlungen als „Ignoriert“ gekennzeichnet und auf dem Bewertungsdashboard nicht angezeigt.
 2. Sie können folgende Protokollsuchabfragen verwenden, um alle ignorierten Empfehlungen aufzulisten.
-   
+
    ```
    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
@@ -240,6 +244,8 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 ## <a name="next-steps"></a>Nächste Schritte
 * [Protokollsuche](log-analytics-log-searches.md) , um detaillierte SQL Assessment-Daten und -Empfehlungen anzuzeigen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Java-Web-App-Analyse mit Application Insights | Microsoft Docs
+title: Java-Web-App-Analyse mit Azure Application Insights | Microsoft-Dokumentation
 description: "Überwachung der Anwendungsleistung für Java-Web-Apps mithilfe von Application Insights. "
 services: application-insights
 documentationcenter: java
@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 2c3c0c79e62631a42249ea6dc3865e59f26cad53
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: f7dc72299665a5324de7b9320eb9876c61ced123
 
 
 ---
@@ -31,7 +31,7 @@ Application Insights unterstützt Java-Apps, die unter Linux, Unix oder Windows 
 Erforderlich:
 
 * Oracle JRE 1.6 oder höher bzw. Zulu JRE 1.6 oder höher
-* Ein Abonnement für [Microsoft Azure](https://azure.microsoft.com/). (Sie können mit der [kostenlosen Testversion](https://azure.microsoft.com/pricing/free-trial/)beginnen.)
+* Ein Abonnement für [Microsoft Azure](https://azure.microsoft.com/).
 
 *Wenn Sie eine Web-App haben, die bereits aktiv ist, könnten Sie das alternative Verfahren nutzen, [um das SDK zur Laufzeit auf dem Webserver hinzuzufügen](app-insights-java-live.md). Diese Alternative vermeidet das Neuerstellen des Codes, jedoch erhalten Sie nicht die Möglichkeit, Code schreiben, um die Benutzeraktivität nachzuverfolgen.*
 
@@ -261,7 +261,7 @@ Nicht behandelte Ausnahmen werden automatisch gesammelt:
 
 Um Daten zu anderen Ausnahmen zu erfassen, haben Sie zwei Möglichkeiten:
 
-* [Fügen Sie TrackException()-Aufrufe in den Code ein][apiexceptions]. 
+* [Fügen Sie trackException()-Aufrufe in den Code ein.][apiexceptions] 
 * [Installieren Sie den Java-Agent auf dem Server](app-insights-java-agent.md). Sie geben die Methoden an, die Sie überwachen möchten.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Überwachen von Methodenaufrufen und externen Abhängigkeiten
@@ -323,7 +323,7 @@ Ihre Leistungsindikatoren werden im [Metrik-Explorer][metrics] als benutzerdefin
 ## <a name="get-user-and-session-data"></a>Abrufen von Benutzer- und Sitzungsdaten
 Sie senden also Telemetriedaten vom Webserver. Um jetzt eine Rundum-Ansicht Ihrer Anwendung zu erhalten, können Sie weitere Überwachungsfunktionen hinzufügen:
 
-* [Fügen Sie Ihren Webseiten Telemetrie hinzu][usage] , um Seitenaufrufe und Benutzermetriken zu überwachen.
+* [Fügen Sie Ihren Webseiten Telemetrie hinzu][usage], um Seitenaufrufe und Benutzermetriken zu überwachen.
 * [Richten Sie Webtests ein][availability], um sicherzustellen, dass die Anwendung online und reaktionsfähig bleibt.
 
 ## <a name="capture-log-traces"></a>Erfassen von Protokollablaufverfolgungen
@@ -332,11 +332,11 @@ Sie können Application Insights verwenden, um Protokolle aus Log4J, Logback ode
 ## <a name="send-your-own-telemetry"></a>Senden eigener Telemetriedaten
 Nachdem Sie das SDK installiert haben, können Sie die API verwenden, um eigene Telemetriedaten senden.
 
-* [Verfolgen Sie benutzerdefinierte Ereignisse und Metriken nach][api], um zu erfahren, was Benutzer mit Ihrer Anwendung tun.
+* [Verfolgen Sie benutzerdefinierte Ereignisse und Metriken nach][api], um zu erfahren, welche Aktionen Benutzer ausführen.
 * [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme besser zu diagnostizieren.
 
 ## <a name="availability-web-tests"></a>Verfügbarkeitswebtests
-Application Insights kann Ihre Website in regelmäßigen Abständen testen, um zu überprüfen, ob sie betriebsbereit ist und gut reagiert. [Klicken Sie zum Einrichten][availability] auf „Webtests“.
+Application Insights kann Ihre Website in regelmäßigen Abständen testen, um zu überprüfen, ob sie betriebsbereit ist und gut reagiert. Klicken Sie zum [Einrichten][availability] auf „Webtests“.
 
 ![Klicken Sie auf „Webtests“ und anschließend auf „Webtest hinzufügen“.](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -344,7 +344,7 @@ Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, fall
 
 ![Beispiel für Webtest](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
-[Weitere Informationen zu Verfügbarkeitswebtests.][availability] 
+[Weitere Informationen zu Verfügbarkeitswebtests][availability] 
 
 ## <a name="questions-problems"></a>Fragen? Probleme?
 [Problembehandlung für Java](app-insights-java-troubleshoot.md)
@@ -371,6 +371,6 @@ Sie erhalten Diagramme von Reaktionszeiten sowie E-Mail-Benachrichtigungen, fall
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

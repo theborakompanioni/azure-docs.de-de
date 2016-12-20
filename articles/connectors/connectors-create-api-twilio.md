@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen des Twilio-Connectors zu Ihren Logik-Apps | Microsoft Docs
-description: Übersicht über den Twilio-Connector mit REST-API-Parametern
-services: ''
-documentationcenter: ''
+title: "Hinzufügen des Twilio-Connectors zu Ihren Logik-Apps | Microsoft Docs"
+description: "Übersicht über den Twilio-Connector mit REST-API-Parametern"
+services: 
+documentationcenter: 
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/19/2016
 ms.author: mandia
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0999d96b4819d6bf03faa843750c5c4b19649774
+
 
 ---
-# Erste Schritte mit dem Twilio-Connector
+# <a name="get-started-with-the-twilio-connector"></a>Erste Schritte mit dem Twilio-Connector
 Stellen Sie eine Verbindung mit Twilio her, um global SMS, MMS und IP-Nachrichten zu senden und zu empfangen.
 
 > [!NOTE]
@@ -27,21 +31,21 @@ Stellen Sie eine Verbindung mit Twilio her, um global SMS, MMS und IP-Nachrichte
 
 Mit Twilio können Sie folgende Aktionen ausführen:
 
-* Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Twilio abgerufen werden.
-* Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht z. B. annehmen und als Service Bus-Workflow verwenden.
+* Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Twilio abgerufen werden. 
+* Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht B. annehmen und als Service Bus-Workflow verwenden. 
 
 Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-## Trigger und Aktionen
-Der Twilio-Connector beinhaltet die folgenden Aktionen. Es gibt keine Trigger.
+## <a name="triggers-and-actions"></a>Trigger und Aktionen
+Der Twilio-Connector beinhaltet die folgenden Aktionen. Es gibt keine Trigger. 
 
-| Trigger | Actions |
+| Trigger | Aktionen |
 | --- | --- |
-| Keine |<ul><li>Nachricht abrufen</li><li>Nachrichten auflisten</li><li>Nachricht senden</li></ul> |
+| Keine |<ul><li>Get Message</li><li>List Messages</li><li>Nachricht senden</li></ul> |
 
-Alle Connectors unterstützen Daten im JSON- und XML-Format.
+Alle Connectors unterstützen Daten im JSON- und XML-Format. 
 
-## Herstellen einer Verbindung mit Twilio
+## <a name="create-a-connection-to-twilio"></a>Herstellen einer Verbindung mit Twilio
 Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, geben Sie die folgenden Twilio-Werte ein:
 
 | Eigenschaft | Erforderlich | Beschreibung |
@@ -49,7 +53,7 @@ Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, geben Sie die folgenden 
 | Konto-ID |Ja |Geben Sie Ihre Twilio-Konto-ID ein. |
 | Access Token |Ja |Geben Sie Ihr Twilio-Zugriffstoken ein. |
 
-> [!INCLUDE [Schritte zum Herstellen einer Verbindung mit Twilio](../../includes/connectors-create-api-twilio.md)]
+> [!INCLUDE [Steps to create a connection to Twilio](../../includes/connectors-create-api-twilio.md)]
 > 
 > 
 
@@ -60,16 +64,17 @@ Wenn Sie noch kein Zugriffstoken besitzen, nutzen Sie die Informationen zum Erst
 > 
 > 
 
-## Swagger-REST-API – Referenz
-#### Diese Dokumentation gilt für Version 1.0.
-### Get Message
-Gibt eine einzelne Nachricht zurück, die in der bereitgestellten Nachrichten-ID angegeben ist. ```GET: /Messages/{MessageId}.json```
+## <a name="swagger-rest-api-reference"></a>Swagger-REST-API – Referenz
+#### <a name="this-documentation-is-for-version-10"></a>Diese Dokumentation gilt für Version 1.0.
+### <a name="get-message"></a>Get Message
+Gibt eine einzelne Nachricht zurück, die in der bereitgestellten Nachrichten-ID angegeben ist.  
+```GET: /Messages/{MessageId}.json```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| MessageId |string |Ja |path |(Keine) |Nachrichten-ID |
+| MessageId |string |Ja |path |Keine |Nachrichten-ID |
 
-### Antwort
+### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
@@ -78,34 +83,36 @@ Gibt eine einzelne Nachricht zurück, die in der bereitgestellten Nachrichten-ID
 | 500 |Interner Serverfehler. Unbekannter Fehler ist aufgetreten |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-### List Messages
-Gibt eine Liste von Nachrichten zurück, die Ihrem Konto zugeordnet sind. ```GET: /Messages.json```
+### <a name="list-messages"></a>List Messages
+Gibt eine Liste von Nachrichten zurück, die Ihrem Konto zugeordnet sind.  
+```GET: /Messages.json```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| To | | | | | |
-| string |no |query |(Keine) |Angerufene Telefonnummer | |
-| From |string |no |query |(Keine) |Anrufertelefonnummer |
-| DateSent |string |no |query |(Keine) |Nur an diesem Datum (GMT) gesendete Nachrichten anzeigen, Datum im Format JJJJ-MM-TT. Beispiel: DateSent=2009-07-06. Sie können auch Ungleichheit angeben, d. h. DateSent<=JJJJ-MM-TT für Nachrichten, die an oder vor Mitternacht an einem bestimmten Datum gesendet wurden, sowie DateSent>=JJJJ-MM-TT für Nachrichten, die an oder nach Mitternacht an einem bestimmten Datum gesendet wurden. |
+| To
+ |string |no |query |Keine |Angerufene Telefonnummer |
+| Aus |string |no |query |Keine |Anrufertelefonnummer |
+| DateSent |string |no |query |(Keine) |Nur an diesem Datum (GMT) gesendete Nachrichten anzeigen, Datum im Format JJJJ-MM-TT. Beispiel: DateSent=2009-07-06. Sie können auch Ungleichheit angeben, d. h. DateSent<=JJJJ-MM-TT für Nachrichten, die an oder vor Mitternacht an einem bestimmten Datum gesendet wurden, sowie DateSent>=JJJJ-MM-TT für Nachrichten, die an oder nach Mitternacht an einem bestimmten Datum gesendet wurden. |
 | PageSize |integer |no |query |50 |Die Anzahl der Ressourcen, die auf jeder Listenseite zurückgegeben werden. Standard ist 50. |
 | Seite |integer |no |query |0 |Seitenzahl. Der Standardwert ist 0. |
 
-### Antwort
+### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
 | 400 |Ungültige Anforderung |
 | 500 |Interner Serverfehler. Unbekannter Fehler aufgetreten |
-| default |Fehler beim Vorgang. |
+| die Standardeinstellung |Fehler beim Vorgang. |
 
-### Nachricht senden
-Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json```
+### <a name="send-message"></a>Nachricht senden
+Sendet eine neue Nachricht an eine Mobiltelefonnummer.  
+```POST: /Messages.json```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| sendMessageRequest | |Ja |body |(Keine) |Zu sendende Nachricht |
+| sendMessageRequest | |Ja |body |Keine |Zu sendende Nachricht |
 
-### Antwort
+### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |Vorgang erfolgreich |
@@ -113,125 +120,132 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer. ```POST: /Messages.json``
 | 500 |Interner Serverfehler. Unbekannter Fehler ist aufgetreten |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-## Objektdefinitionen
-#### SendMessageRequest: Anforderungsmodell zum Senden von Nachrichten
+## <a name="object-definitions"></a>Objektdefinitionen
+#### <a name="sendmessagerequest-request-model-for-send-message-operation"></a>SendMessageRequest: Anforderungsmodell zum Senden von Nachrichten
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| from |string |Ja |
-| to |string |Ja |
+| Aus |string |Ja |
+| To
+ |string |Ja |
 | body |string |Ja |
-| media\_url |array |no |
-| status\_callback |string |no |
-| messaging\_service\_sid |string |no |
-| application\_sid |string |no |
-| max\_price |string |no |
+| media_url |array |no |
+| status_callback |string |no |
+| messaging_service_sid |string |no |
+| application_sid |string |no |
+| max_price |string |no |
 
-#### Message: Nachrichtenmodell
+#### <a name="message-model-for-message"></a>Message: Nachrichtenmodell
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | body |string |no |
-| from |string |no |
-| to |string |no |
+| Aus |string |no |
+| To
+ |string |no |
 | status |string |no |
 | sid |string |no |
-| account\_sid |string |no |
-| api\_version |string |no |
-| num\_segments |string |no |
-| num\_media |string |no |
-| date\_created |string |no |
-| date\_sent |string |no |
-| date\_updated |string |no |
+| account_sid |string |no |
+| api_version |string |no |
+| num_segments |string |no |
+| num_media |string |no |
+| date_created |string |no |
+| date_sent |string |no |
+| date_updated |string |no |
 | direction |string |no |
-| error\_code |string |no |
-| error\_message |string |no |
+| error_code |string |no |
+| error_message |string |no |
 | price |string |no |
-| price\_unit |string |no |
+| price_unit |string |no |
 | uri |string |no |
-| subresource\_uris |array |no |
-| messaging\_service\_sid |string |no |
+| subresource_uris |array |no |
+| messaging_service_sid |string |no |
 
-#### MessageList: Antwortmodell zum Auflisten von Nachrichten
+#### <a name="messagelist-response-model-for-list-messages-operation"></a>MessageList: Antwortmodell zum Auflisten von Nachrichten
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | messages |array |no |
-| page |integer |no |
-| page\_size |integer |no |
-| num\_pages |integer |no |
+| Seite |integer |no |
+| page_size |integer |no |
+| num_pages |integer |no |
 | uri |string |no |
-| first\_page\_uri |string |no |
-| next\_page\_uri |string |no |
+| first_page_uri |string |no |
+| next_page_uri |string |no |
 | total |integer |no |
-| previous\_page\_uri |string |no |
+| previous_page_uri |string |no |
 
-#### IncomingPhoneNumberList: Antwortmodell zum Auflisten von Nachrichten
+#### <a name="incomingphonenumberlist-response-model-for-list-messages-operation"></a>IncomingPhoneNumberList: Antwortmodell zum Auflisten von Nachrichten
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| incoming\_phone\_numbers |array |no |
-| page |integer |no |
-| page\_size |integer |no |
-| num\_pages |integer |no |
+| incoming_phone_numbers |array |no |
+| Seite |integer |no |
+| page_size |integer |no |
+| num_pages |integer |no |
 | uri |string |no |
-| first\_page\_uri |string |no |
-| next\_page\_uri |string |no |
+| first_page_uri |string |no |
+| next_page_uri |string |no |
 
-#### AddIncomingPhoneNumberRequest: Anforderungsmodell zum Hinzufügen eingehender Telefonnummern
+#### <a name="addincomingphonenumberrequest-request-model-for-add-incoming-number-operation"></a>AddIncomingPhoneNumberRequest: Anforderungsmodell zum Hinzufügen eingehender Telefonnummern
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | PhoneNumber |string |Ja |
 | AreaCode |string |no |
 | FriendlyName |string |no |
 
-#### IncomingPhoneNumber: Eingehende Telefonnummer
+#### <a name="incomingphonenumber-incoming-phone-number"></a>IncomingPhoneNumber: Eingehende Telefonnummer
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| phone\_number |string |no |
-| friendly\_name |string |no |
+| phone_number |string |no |
+| friendly_name |string |no |
 | sid |string |no |
-| account\_sid |string |no |
-| date\_created |string |no |
-| date\_updated |string |no |
+| account_sid |string |no |
+| date_created |string |no |
+| date_updated |string |no |
 | capabilities |nicht definiert |no |
-| status\_callback |string |no |
-| status\_callback\_method |string |no |
-| api\_version |string |no |
+| status_callback |string |no |
+| status_callback_method |string |no |
+| api_version |string |no |
 
-#### Capabilities: Telefonnummernfunktionen
+#### <a name="capabilities-phone-number-capabilities"></a>Capabilities: Telefonnummernfunktionen
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | mms |Boolescher Wert |no |
 | sms |Boolescher Wert |no |
 | voice |Boolescher Wert |no |
 
-#### AvailablePhoneNumbers: Verfügbare Telefonnummern
+#### <a name="availablephonenumbers-available-phone-numbers"></a>AvailablePhoneNumbers: Verfügbare Telefonnummern
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| phone\_number |string |no |
-| friendly\_name |string |no |
+| phone_number |string |no |
+| friendly_name |string |no |
 | lata |string |no |
 | latitude |string |no |
 | longitude |string |no |
-| postal\_code |string |no |
-| rate\_center |string |no |
+| postal_code |string |no |
+| rate_center |string |no |
 | region |string |no |
-| MMS |Boolescher Wert |no |
-| SMS |Boolescher Wert |no |
+| mms |Boolescher Wert |no |
+| sms |Boolescher Wert |no |
 | voice |Boolescher Wert |no |
 
-#### UsageRecords: Klasse für Nutzungseinträge
+#### <a name="usagerecords-usage-records-class"></a>UsageRecords: Klasse für Nutzungseinträge
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | category |string |no |
 | Nutzung |string |no |
-| usage\_unit |string |no |
-| description |string |no |
+| usage_unit |string |no |
+| Beschreibung |string |no |
 | price |number |no |
-| price\_unit |string |no |
+| price_unit |string |no |
 | count |string |no |
-| count\_unit |string |no |
-| start\_date |string |no |
-| end\_date |string |no |
+| count_unit |string |no |
+| start_date |string |no |
+| end_date |string |no |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

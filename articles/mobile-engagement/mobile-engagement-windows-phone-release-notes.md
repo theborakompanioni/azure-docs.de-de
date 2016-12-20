@@ -1,12 +1,12 @@
 ---
-title: Windows Phone Silverlight SDK – Versionshinweise
-description: Azure Mobile Engagement – Versionshinweise für das Windows Phone Silverlight SDK
+title: "Windows Phone Silverlight SDK – Versionshinweise"
+description: "Azure Mobile Engagement – Versionshinweise für das Windows Phone Silverlight SDK"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 8b87045c-79c2-46da-a147-c075bf276b89
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
@@ -14,34 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6c054db354036c2747cd524fb62c98e4f3e47575
+
 
 ---
-# Windows Phone Silverlight SDK – Versionshinweise
-## 3\.3.0 (19.04.2016)
-Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement* (**v3.4.0**)
+# <a name="windows-phone-silverlight-sdk-release-notes"></a>Windows Phone Silverlight SDK – Versionshinweise
+## <a name="330-04192016"></a>3.3.0 (19.04.2016)
+Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement* ( **v3.4.0**
 
 * „TestLogLevel“-API zum Aktivieren/Deaktivieren/Filtern von Konsolenprotokollen, die vom SDK ausgegeben wurden, wurde hinzugefügt.
 
-## 3\.2.0 (22.01.2016)
-Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement* (**v3.3.0**)
+## <a name="320-01222016"></a>3.2.0 (22.01.2016)
+Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement* ( **v3.3.0**
 
 * Benutzerdefinierte Schemas, ms-appx und ms-appdata in Aktions-URLs verfügbar.
 * Verbesserungen der Stabilität.
 
-## 3\.1.0 (20.11.2015)
-Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement* (**v3.2.0**)
+## <a name="310-11202015"></a>3.1.0 (20.11.2015)
+Teil des NuGet-Pakets *MicrosoftAzure.MobileEngagement* ( **v3.2.0**
 
 * Absturz beim Anfordern der Geräte-ID direkt nach der Initialisierung behoben.
 * Verbesserungen bei Konsolenprotokollen.
 
-## 3\.0.0 (03.04.2015)
+## <a name="300-04032015"></a>3.0.0 (03.04.2015)
 * Standardbenachrichtigungssymbol aktualisiert.
 * Beim Klicken auf eine Benachrichtigung wird Feedback zur Systembenachrichtigungsaktion gesendet.
 * Eine Racebedingung in der Systembenachrichtigung korrigiert.
 
-## 2\.0.0 (17.02.2015)
+## <a name="200-02172015"></a>2.0.0 (17.02.2015)
 * Erste Version von Azure Mobile Engagement.
 * appId/sdkKey-Konfiguration wird durch die Konfiguration einer Verbindungszeichenfolge ersetzt.
 * Verbesserungen der Sicherheit
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

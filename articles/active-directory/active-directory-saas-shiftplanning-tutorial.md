@@ -1,11 +1,11 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit ShiftPlanning | Microsoft Docs'
-description: Erfahren Sie, wie Sie ShiftPlanning mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen.
+description: "Erfahren Sie, wie Sie ShiftPlanning mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: 6aa771e9-31c6-48d1-8dde-024bebc06943
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 403f297e7f0bfdde8ade3f35c401bcefb79ea2f5
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-shiftplanning"></a>Tutorial: Azure Active Directory-Integration mit ShiftPlanning
+# <a name="tutorial-azure-active-directory-integration-with-shiftplanning"></a>Tutorial: Azure Active Directory-Integration mit ShiftPlanning
 In diesem Tutorial wird die Integration von Azure und ShiftPlanning erläutert.  
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
@@ -36,7 +40,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 ## <a name="enabling-the-application-integration-for-shiftplanning"></a>Aktivieren der Anwendungsintegration für ShiftPlanning
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für ShiftPlanning aktivieren.
 
-### <a name="to-enable-the-application-integration-for-shiftplanning,-perform-the-following-steps:"></a>So aktivieren Sie die Anwendungsintegration für ShiftPlanning:
+### <a name="to-enable-the-application-integration-for-shiftplanning-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für ShiftPlanning:
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-shiftplanning-tutorial/IC700993.png "Active Directory")
@@ -63,7 +67,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei erstellen.  
 Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o)
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>So konfigurieren Sie einmaliges Anmelden
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ShiftPlanning** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-shiftplanning-tutorial/IC786615.png "Configure Single Sign-On")
@@ -108,7 +112,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertier
 Damit sich Azure AD-Benutzer bei ShiftPlanning anmelden können, müssen sie in ShiftPlanning bereitgestellt werden.  
 Im Fall von ShiftPlanning ist die Bereitstellung eine manuelle Aufgabe.
 
-### <a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
+### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:
 1. Melden Sie sich bei der **ShiftPlanning** -Unternehmenswebsite als Administrator an.
 2. Klicken Sie auf **Administrator**.
    
@@ -134,7 +138,7 @@ Im Fall von ShiftPlanning ist die Bereitstellung eine manuelle Aufgabe.
 ## <a name="assigning-users"></a>Zuweisen von Benutzern
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-shiftplanning,-perform-the-following-steps:"></a>So weisen Sie ShiftPlanning Benutzer zu:
+### <a name="to-assign-users-to-shiftplanning-perform-the-following-steps"></a>So weisen Sie ShiftPlanning Benutzer zu:
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **ShiftPlanning** auf **Benutzer zuweisen**.
    
@@ -145,6 +149,9 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

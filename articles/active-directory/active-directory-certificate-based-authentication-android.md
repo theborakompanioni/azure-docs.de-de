@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit der zertifikatbasierten Authentifizierung auf Android | Microsoft Docs
-description: Erfahren Sie, wie Sie die zertifikatbasierte Authentifizierung in Lösungen mit Android-Geräten konfigurieren.
+description: "Erfahren Sie, wie Sie die zertifikatbasierte Authentifizierung in Lösungen mit Android-Geräten konfigurieren."
 services: active-directory
 author: MarkusVi
 documentationcenter: na
 manager: femila
-
+ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9ab8558808dc509855d075c6bba305b8524407ff
+
 
 ---
-# <a name="get-started-with-certificate-based-authentication-on-android-public-preview"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung auf Android – öffentliche Vorschau
+# <a name="get-started-with-certificate-based-authentication-on-android---public-preview"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung auf Android – öffentliche Vorschau
 > [!div class="op_single_selector"]
 > * [iOS](active-directory-certificate-based-authentication-ios.md)
 > * [Android](active-directory-certificate-based-authentication-android.md)
@@ -60,9 +64,9 @@ Ein Verbundserver muss konfiguriert werden.
 Damit Azure Active Directory ein Clientzertifikat sperren kann, muss das AD FS-Token die folgenden Ansprüche enthalten:  
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`  
-  (Die Seriennummer des Clientzertifikat) 
+   (Die Seriennummer des Clientzertifikat) 
 * `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`  
-  (Die Zeichenfolge für den Aussteller des Clientzertifikats) 
+   (Die Zeichenfolge für den Aussteller des Clientzertifikats) 
 
 Wenn diese Ansprüche im AD FS-Token (oder in einem anderen SAML-Token) enthalten sind, fügt Azure Active Directory die Ansprüche dem Aktualisierungstoken hinzu. Wenn das Aktualisierungstoken überprüft werden muss, werden diese Informationen zum Überprüfen der Sperrung verwendet. 
 
@@ -137,7 +141,7 @@ Rufen Sie die Zertifizierungsstellen ab, die aktuell in Azure Active Directory f
 ### <a name="removing-a-certificate-authority"></a>Entfernen einer Zertifizierungsstelle
 1. Rufen Sie die Zertifizierungsstellen ab: 
    
-       $c=Get-AzureADTrustedCertificateAuthority 
+     $c=Get-AzureADTrustedCertificateAuthority 
 2. Entfernen Sie das Zertifikat für die Zertifizierungsstelle: 
    
         Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2] 
@@ -145,7 +149,7 @@ Rufen Sie die Zertifizierungsstellen ab, die aktuell in Azure Active Directory f
 ### <a name="modfiying-a-certificate-authority"></a>Ändern einer Zertifizierungsstelle
 1. Rufen Sie die Zertifizierungsstellen ab: 
    
-       $c=Get-AzureADTrustedCertificateAuthority 
+     $c=Get-AzureADTrustedCertificateAuthority 
 2. Ändern Sie die Eigenschaften der Zertifizierungsstelle: 
    
         $c[0].AuthorityType=1 
@@ -192,11 +196,10 @@ Die unten aufgeführten Schritte zeigen, wie Sie das Autorisierungstoken aktuali
         connect-msolservice -credential $msolcred 
 2. Rufen Sie den aktuellen StsRefreshTokensValidFrom-Wert für einen Benutzer ab: 
    
-       $user = Get-MsolUser -UserPrincipalName test@yourdomain.com` 
-       $user.StsRefreshTokensValidFrom 
+     $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`   $user.StsRefreshTokensValidFrom 
 3. Legen Sie einen neuen StsRefreshTokensValidFrom-Wert für den Benutzer fest, der mit dem aktuellen Zeitstempel übereinstimmt: 
    
-       Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+     Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
 Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zukunft liegt, wird die **StsRefreshTokensValidFrom** -Eigenschaft nicht festgelegt. Wenn das Datum in der Zukunft liegt, wird **StsRefreshTokensValidFrom** auf die aktuelle Uhrzeit festgelegt (nicht das Datum, das mit dem Befehl „Set-MsolUser“ angegeben ist). 
 
@@ -204,6 +207,7 @@ Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zu
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

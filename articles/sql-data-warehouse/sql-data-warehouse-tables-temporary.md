@@ -1,22 +1,26 @@
 ---
-title: Temporäre Tabellen in SQL Data Warehouse | Microsoft Docs
-description: Enthält Informationen zu den ersten Schritten mit temporären Tabellen in Azure SQL Data Warehouse.
+title: "Temporäre Tabellen in SQL Data Warehouse | Microsoft Docs"
+description: "Enthält Informationen zu den ersten Schritten mit temporären Tabellen in Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/29/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 83b12c6daf5422039f3dd95eb9b177b972fad840
+
 
 ---
-# Temporäre Tabellen in SQL Data Warehouse
+# <a name="temporary-tables-in-sql-data-warehouse"></a>Temporäre Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
 > * [Übersicht][Übersicht]
 > * [Datentypen][Datentypen]
@@ -28,12 +32,12 @@ ms.author: jrj;barbkess;sonyama
 > 
 > 
 
-Temporäre Tabellen sind sehr nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In SQL Data Warehouse befinden sich temporäre Tabellen auf Sitzungsebene. Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und werden automatisch verworfen, wenn die Sitzung abgemeldet wird. Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher. In Azure SQL Data Warehouse sind temporäre Tabellen etwas anders als in Azure SQL-Datenbank aufgebaut, da darauf innerhalb einer Sitzung von jedem Ort aus zugegriffen werden kann, z.B. innerhalb und außerhalb einer gespeicherten Prozedur.
+Temporäre Tabellen sind sehr nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In SQL Data Warehouse befinden sich temporäre Tabellen auf Sitzungsebene.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und werden automatisch verworfen, wenn die Sitzung abgemeldet wird.  Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.  In Azure SQL Data Warehouse sind temporäre Tabellen etwas anders als in Azure SQL-Datenbank aufgebaut, da darauf innerhalb einer Sitzung von jedem Ort aus zugegriffen werden kann, z.B. innerhalb und außerhalb einer gespeicherten Prozedur.
 
 Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. Mit den Informationen in diesem Artikel können Sie Ihren Code modularisieren und sowohl die Wiederverwendbarkeit als auch die Einfachheit der Verwaltung für den Code verbessern.
 
-## Erstellen einer temporären Tabelle
-Temporäre Tabellen werden erstellt, indem dem Tabellennamen einfach `#` als Präfix vorangestellt wird. Zum Beispiel:
+## <a name="create-a-temporary-table"></a>Erstellen einer temporären Tabelle
+Temporäre Tabellen werden erstellt, indem dem Tabellennamen einfach `#`als Präfix vorangestellt wird.  Zum Beispiel:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -107,12 +111,12 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS` ist ein sehr leistungsfähiger Befehl. Er bietet den zusätzlichen Vorteil, dass er bei der Verwendung des Speicherplatzes für das Transaktionsprotokoll sehr effizient ist.
+> `CTAS` ist ein sehr leistungsfähiger Befehl und bietet den zusätzlichen Vorteil, dass er den Speicherplatz für das Transaktionsprotokoll sehr effizient verwendet. 
 > 
 > 
 
-## Löschen von temporären Tabellen
-Beim Erstellen einer neuen Sitzung sollten keine temporären Tabellen vorhanden sein. Wenn Sie aber dieselbe gespeicherte Prozedur aufrufen, mit der eine temporäre Tabelle mit dem gleichen Namen erstellt wird, können Sie mit einer einfachen Überprüfung auf das Vorhandensein per `DROP` sicherstellen, dass Ihre `CREATE TABLE`-Anweisungen erfolgreich sind. Dies wird im folgenden Beispiel veranschaulicht:
+## <a name="dropping-temporary-tables"></a>Löschen von temporären Tabellen
+Beim Erstellen einer neuen Sitzung sollten keine temporären Tabellen vorhanden sein.  Wenn Sie aber dieselbe gespeicherte Prozedur aufrufen, die eine temporäre Tabelle mit dem gleichen Namen erstellt, können Sie mit einer einfachen Überprüfung auf das Vorhandensein per `DROP` sicherstellen, dass Ihre `CREATE TABLE`-Anweisungen erfolgreich sind. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -121,14 +125,14 @@ BEGIN
 END
 ```
 
-In Bezug auf die Codekonsistenz ist es eine bewährte Methode, dieses Muster sowohl für Tabellen als auch für temporäre Tabellen zu verwenden. Es ist auch eine gute Idee, mit `DROP TABLE` temporäre Tabellen zu entfernen, wenn Sie sie in Ihrem Code nicht mehr benötigen. Bei der Entwicklung gespeicherter Prozeduren ist es üblich, die Befehle zum Löschen am Ende einer Prozedur zu bündeln, um sicherzustellen, dass diese Objekte bereinigt werden.
+In Bezug auf die Codekonsistenz ist es eine bewährte Methode, dieses Muster sowohl für Tabellen als auch für temporäre Tabellen zu verwenden.  Es ist auch eine gute Idee, mit `DROP TABLE` temporäre Tabellen zu entfernen, wenn Sie sie in Ihrem Code nicht mehr benötigen.  Bei der Entwicklung gespeicherter Prozeduren ist es üblich, die Befehle zum Löschen am Ende einer Prozedur zu bündeln, um sicherzustellen, dass diese Objekte bereinigt werden.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-## Modularisieren von Code
-Da temporäre Tabellen in einer Benutzersitzung an einer beliebigen Stelle angezeigt werden können, kann dies zur Modularisierung des Anwendungscodes genutzt werden. Mit der unten angegebenen gespeicherten Prozedur werden beispielsweise die oben beschriebenen empfohlenen Methoden zusammengeführt, um eine DDL zu generieren, mit der alle Statistiken in der Datenbank nach dem Statistiknamen aktualisiert werden.
+## <a name="modularizing-code"></a>Modularisieren von Code
+Da temporäre Tabellen in einer Benutzersitzung an einer beliebigen Stelle angezeigt werden können, kann dies zur Modularisierung des Anwendungscodes genutzt werden.  Mit der unten angegebenen gespeicherten Prozedur werden beispielsweise die oben beschriebenen empfohlenen Methoden zusammengeführt, um eine DDL zu generieren, mit der alle Statistiken in der Datenbank nach dem Statistiknamen aktualisiert werden.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -202,7 +206,7 @@ FROM    t1
 GO
 ```
 
-In dieser Phase ist die einzige Aktion, die durchgeführt wurde, die Erstellung einer gespeicherten Prozedur. Dabei wird einfach die temporäre Tabelle „#stats\_ddl“ mit DDL-Anweisungen generiert. Diese gespeicherte Prozedur verwirft „#stats\_ddl“, wenn sie bereits vorhanden ist, um sicherzustellen, dass kein Fehler auftritt, wenn sie innerhalb einer Sitzung mehr als einmal ausgeführt wird. Da am Ende der gespeicherten Prozedur das Element `DROP TABLE` nicht vorhanden ist, wird die erstellte Tabelle nach Abschluss der gespeicherten Prozedur beibehalten, damit sie außerhalb der gespeicherten Prozedur gelesen werden kann. In SQL Data Warehouse ist es im Gegensatz zu anderen SQL Server-Datenbanken möglich, diese temporäre Tabelle außerhalb der Prozedur zu verwenden, mit der sie erstellt wurde. Temporäre SQL Data Warehouse-Tabellen können **überall** innerhalb der Sitzung verwendet werden. Dies kann zu modularerem und besser verwaltbarem Code führen, wie im Beispiel unten dargestellt:
+In dieser Phase ist die einzige Aktion, die durchgeführt wurde, die Erstellung einer gespeicherten Prozedur. Dabei wird einfach die temporäre Tabelle „#stats_ddl“ mit DDL-Anweisungen generiert.  Diese gespeicherte Prozedur verwirft „#stats_ddl“, wenn sie bereits vorhanden ist, um sicherzustellen, dass kein Fehler auftritt, wenn sie innerhalb einer Sitzung mehr als einmal ausgeführt wird.  Da am Ende der gespeicherten Prozedur keine `DROP TABLE`-Anweisung vorhanden ist, wird die erstellte Tabelle nach Abschluss der gespeicherten Prozedur beibehalten, damit sie außerhalb der gespeicherten Prozedur gelesen werden kann.  In SQL Data Warehouse ist es im Gegensatz zu anderen SQL Server-Datenbanken möglich, diese temporäre Tabelle außerhalb der Prozedur zu verwenden, mit der sie erstellt wurde.  Temporäre SQL Data Warehouse-Tabellen können innerhalb der Sitzung **überall** verwendet werden. Dies kann zu modularerem und besser verwaltbarem Code führen, wie im Beispiel unten dargestellt:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -223,24 +227,20 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-## Einschränkungen der temporären Tabelle
-SQL Data Warehouse weist eine Reihe von Einschränkungen bei der Implementierung von temporären Tabellen auf. Derzeit werden nur temporäre Tabellen für den Sitzungsbereich unterstützt. Globale temporäre Tabellen werden nicht unterstützt. Außerdem können Sichten nicht in temporären Tabellen erstellt werden.
+## <a name="temporary-table-limitations"></a>Einschränkungen der temporären Tabelle
+SQL Data Warehouse weist eine Reihe von Einschränkungen bei der Implementierung von temporären Tabellen auf.  Derzeit werden nur temporäre Tabellen für den Sitzungsbereich unterstützt.  Globale temporäre Tabellen werden nicht unterstützt.  Außerdem können Sichten nicht in temporären Tabellen erstellt werden.
 
-## Nächste Schritte
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition] und [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse). Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Übersicht], [Tabellendatentypen][Datentypen], [Verteilen einer Tabelle][Verteilen], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabellen][Partition] und [Verwalten von Statistiken][Statistiken].  Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
 
 <!--Image references-->
 
 <!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
 [Übersicht]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
 [Datentypen]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Verteilen]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Statistiken]: ./sql-data-warehouse-tables-statistics.md
 [Temporär]: ./sql-data-warehouse-tables-temporary.md
 [Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
@@ -249,4 +249,8 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

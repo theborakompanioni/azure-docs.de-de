@@ -33,14 +33,12 @@
 ### [Bewährte Methoden und Muster für die Sicherheit](security-best-practices-and-patterns.md)
 ### [Entwickeln robuster Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
-# Referenz
+# Verwandte Themen
 ## [Trust Center](security-microsoft-trust-center.md)
 ## [Microsoft Security Response Center](azure-security-response-center.md)
 ## [Penetrationstest](azure-security-pen-testing.md)
-
-# Verwandte Themen
 ## [Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
-## [Schlüsseltresor](../key-vault/key-vault-whatis.md)
+## [Key Vault](../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../log-analytics/log-analytics-overview.md)
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
@@ -52,6 +50,7 @@
 ## [Sicherheitskurse der Virtual Academy](security-microsoft-virtual-academy.md)
 ## [Sicherheitsvideos auf Channel 9](security-channel-nine.md)
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO1-->
 
 

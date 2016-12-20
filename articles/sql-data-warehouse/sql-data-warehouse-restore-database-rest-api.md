@@ -5,8 +5,8 @@ services: sql-data-warehouse
 documentationcenter: NA
 author: Lakshmi1812
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: fca922c6-b675-49c7-907e-5dcf26d451dd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eed4442c5bd7a955e8d380bcb84cd62cd07eca05
+
 
 ---
 # <a name="restore-an-azure-sql-data-warehouse-rest-api"></a>Wiederherstellen einer Azure SQL Data Warehouse-Instanz (REST-API)
@@ -34,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz mi
 So stellen Sie eine Datenbank wieder her:
 
 1. Rufen Sie die Liste mit den Wiederherstellungspunkten für die Datenbank ab, indem Sie den Get Database Restore Points-Vorgang verwenden.
-2. Beginnen Sie die Wiederherstellung mit dem Vorgang [Datenbankwiederherstellungsanforderung erstellen][Datenbankwiederherstellungsanforderung erstellen] .
+2. Beginnen Sie die Wiederherstellung mit dem Vorgang [Datenbankwiederherstellungsanforderung erstellen][Datenbankwiederherstellungsanforderung erstellen].
 3. Verfolgen Sie den Status der Wiederherstellung mithilfe des Vorgangs [Datenbank-Betriebsstatus][Datenbank-Betriebsstatus] nach.
 
 > [!NOTE]
@@ -47,11 +51,11 @@ So stellen Sie eine gelöschte Datenbank wieder her
 
 1. Listen Sie alle gelöschten wiederherstellbaren Datenbanken mithilfe des Vorgangs [Wiederherstellbare gelöschte Datenbanken auflisten][Wiederherstellbare gelöschte Datenbanken auflisten] auf.
 2. Rufen Sie die Details der gelöschten Datenbank, die wiederhergestellt werden soll, mithilfe des Vorgangs [Wiederherstellbare gelöschte Datenbank abrufen][Wiederherstellbare gelöschte Datenbank abrufen] ab.
-3. Beginnen Sie die Wiederherstellung mit dem Vorgang [Datenbankwiederherstellungsanforderung erstellen][Datenbankwiederherstellungsanforderung erstellen] .
+3. Beginnen Sie die Wiederherstellung mit dem Vorgang [Datenbankwiederherstellungsanforderung erstellen][Datenbankwiederherstellungsanforderung erstellen].
 4. Verfolgen Sie den Status der Wiederherstellung mithilfe des Vorgangs [Datenbank-Betriebsstatus][Datenbank-Betriebsstatus] nach.
 
 > [!NOTE]
-> Informationen zum Konfigurieren der Datenbank nach Abschluss der Wiederherstellung finden Sie unter [Konfigurieren der Datenbank nach der Wiederherstellung][Konfigurieren der Datenbank nach der Wiederherstellung]. 
+> Informationen zum Konfigurieren der Datenbank nach Abschluss der Wiederherstellung finden Sie unter [Konfigurieren der Datenbank nach der Wiederherstellung][Konfigurieren der Datenbank nach der Wiederherstellung].
 > 
 > 
 
@@ -61,9 +65,9 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: ./sql-database-business-continuity.md
+[Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: ../sql-database/sql-database-business-continuity.md
 [Anfordern einer DTU-Kontingentänderung]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
-[Konfigurieren der Datenbank nach der Wiederherstellung]: ./sql-database-disaster-recovery.md#configure-your-database-after-recovery
+[Konfigurieren der Datenbank nach der Wiederherstellung]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
 [Installieren und Konfigurieren von Azure PowerShell]: ./powershell-install-configure.md
 [Übersicht]: ./sql-data-warehouse-restore-database-overview.md
 [Portal]: ./sql-data-warehouse-restore-database-portal.md
@@ -83,6 +87,6 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 05/27/2016
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 65d586405bc79ccf0d5e27c09d750818e5f3dd24
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
 
 
 ---
@@ -47,7 +47,7 @@ Ihnen stehen verschiedene Methoden zur Verfügung, um die Voraussetzungen einzur
 > 
 
 ## <a name="install-and-configure-azure-powershell"></a>Installieren und Konfigurieren von Azure PowerShell
-Auf Ihrem Computer muss Azure PowerShell Version 1.2.1 oder höher installiert sein. Der Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) beschreibt alle Schritte, die auszuführen sind, damit Azure PowerShell auf Ihrem Computer funktioniert. Die einfachste Methode besteht in der Verwendung der Web PI-Installation, die in dem o. g. Artikel beschrieben ist. Auch wenn Sie Azure PowerShell bereits installiert haben, installieren Sie es erneut mit der Web PI-Methode, damit Sie über die neueste Version von Azure PowerShell verfügen.
+Auf Ihrem Computer muss Azure PowerShell Version 1.2.1 oder höher installiert sein. Der Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) beschreibt alle Schritte, die auszuführen sind, damit Azure PowerShell auf Ihrem Computer funktioniert. Die einfachste Methode besteht in der Verwendung der Web PI-Installation, die in dem o. g. Artikel beschrieben ist. Auch wenn Sie Azure PowerShell bereits installiert haben, installieren Sie es erneut mit der Web PI-Methode, damit Sie über die neueste Version von Azure PowerShell verfügen.
 
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Rufen Sie das für Azure Disk Encryption erforderliche Konfigurationsskript ab, und führen Sie es aus.
 Das für Azure Disk Encryption erforderliche Konfigurationsskript richtet alle Voraussetzungen ein, die zum Verschlüsseln Ihrer virtuellen Azure-Computer erforderlich sind.
@@ -182,6 +182,6 @@ In diesem Dokument haben Sie gelernt, wie Sie einen virtuellen Azure-Computer ve
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

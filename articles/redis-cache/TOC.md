@@ -45,21 +45,21 @@
 ###[Aktualisieren auf eine andere Größe und einen anderen Tarif](cache-how-to-scale.md)
 ###[Horizontales Herunter-/Hochskalieren mithilfe des Redis-Clusters](cache-how-to-premium-clustering.md)
 
-#Referenz
-## [PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
-## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/)
-## [Java](https://docs.microsoft.com/java/api/)
-## [.NET](https://docs.microsoft.com/dotnet/api/)
+# Referenz
+## [PowerShell](/powershell/resourcemanager/azurerm.rediscache/v2.3.0/azurerm.rediscache)
+## [Azure CLI 2.0 (Vorschau)](/cli/azure/redis)
+## [.NET](/dotnet/api/microsoft.azure.management.redis)
+## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis-Clients](http://redis.io/clients)
 ## [Redis-Befehle](http://redis.io/commands#)
 ## [REST](https://docs.microsoft.com/rest/api/redis/)
+
+# Ressourcen
 ## [Redis Cache – Beispiele](cache-redis-samples.md)
-
-#Ressourcen
-##[Preise](https://azure.microsoft.com/pricing/details/cache/)
+## [Preise](https://azure.microsoft.com/pricing/details/cache/)
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

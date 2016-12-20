@@ -1,5 +1,5 @@
 # Übersicht
-## [Was ist SQL Database?](sql-database-technical-overview.md)
+## [Was ist SQL-Datenbank?](sql-database-technical-overview.md)
 ### [Dienstebenen](sql-database-service-tiers.md)
 ### [Datenbanktransaktionseinheiten (DTUs)](sql-database-what-is-a-dtu.md)
 ### [DTU-Benchmark – Übersicht](sql-database-benchmark-overview.md)
@@ -22,6 +22,7 @@
 ## Sicherheit
 ### [Azure Security Center für Azure SQL-Datenbank](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
 ### [SQL Security Center](https://msdn.microsoft.com/library/azure/bb510589)
+
 # Erste Schritte
 ## Datenbanken und Server
 ### Einzeldatenbanken
@@ -189,6 +190,7 @@
 #### [Upgrade mithilfe des Azure-Portals](sql-database-upgrade-server-portal.md)
 #### [Upgrade mithilfe von PowerShell](sql-database-upgrade-server-powershell.md)
 #### [Tarifempfehlungen](sql-database-service-tier-advisor.md)
+
 # Anleitung
 ## Erstellen und Verwalten
 ### Server und Datenbanken
@@ -315,7 +317,6 @@
 #### [Azure-Portal](sql-database-geo-replication-failover-portal.md)
 #### [PowerShell](sql-database-geo-replication-failover-powershell.md)
 #### [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-
 ## Problembehandlung
 ### [Verbindungsprobleme](sql-database-troubleshoot-common-connection-issues.md)
 ### [Vorübergehender Verbindungsfehler](sql-database-troubleshoot-connection.md)
@@ -325,26 +326,26 @@
 
 
 # Referenz
-## [PowerShell](/powershell/azureps-cmdlets-docs/)
-## [PowerShell – klassisch](/powershell/servicemanagement/)
-## [Java](/java/api/)
-## [.NET](/dotnet/api/)
+## [PowerShell](/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql)
+## [PowerShell (Elastische Datenbank)](/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs)
+## [.NET](https://docs.microsoft.com)
+## [Java](/java/api/com.microsoft.azure.management.sql)
+## [Node.js](https://msdn.microsoft.com/library/mt652093.aspx)
+## [Python](https://msdn.microsoft.com/library/mt652092.aspx)
+## [Ruby](https://msdn.microsoft.com/library/mt691981.aspx)
+## [PHP](https://msdn.microsoft.com/library/dn865013.aspx)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [Azure SQL-Datenbank-Cmdlets](/powershell/resourcemanager/AzureRM.Sql/v1.0.12/AzureRM.Sql)
-## [SQL Server-Cmdlets](https://msdn.microsoft.com/library/mt740629.aspx)
 ## [REST](/rest/api/sql/)
 
+# Verwandte Themen
 ## SQL-Datenbank-Verwaltungsbibliothek
-### [SQL-Datenbank-Verwaltungsbibliothek – Referenz](https://msdn.microsoft.com/library/azure/mt349017.aspx)
 ### [Abrufen des Pakets mit der SQL-Datenbank-Verwaltungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)
 ## [SQL Server-Treiber](https://msdn.microsoft.com/library/mt654049.aspx)
 ### [ADO.NET](https://msdn.microsoft.com/library/mt657768.aspx)
 ### [JDBC](https://msdn.microsoft.com/library/mt484311.aspx)
-### [Node.js](https://msdn.microsoft.com/library/mt652093.aspx)
+
 ### [ODBC](https://msdn.microsoft.com/library/mt654048.aspx)
-### [PHP](https://msdn.microsoft.com/library/dn865013.aspx)
-### [Python](https://msdn.microsoft.com/library/mt652092.aspx)
-### [Ruby](https://msdn.microsoft.com/library/mt691981.aspx)
+
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/sql-database/)
@@ -360,6 +361,6 @@
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

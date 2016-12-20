@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Ariba | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Ariba konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 45a8364c-55d1-4dc7-b079-9eb2a701842d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,21 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4c264854aaac29489bb70e1c0fa52be456a598e9
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-ariba"></a>Tutorial: Azure Active Directory-Integration mit Ariba
+# <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Tutorial: Azure Active Directory-Integration mit Ariba
 Dieses Tutorial soll Ihnen zeigen, wie Sie Ariba in Azure Active Directory (Azure AD) integrieren können.
 
 Die Integration von Ariba in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Ariba hat.
+* Sie können in Azure AD steuern, wer Zugriff auf Ariba hat.
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Ariba anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um die Azure AD-Integration mit Ariba konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Ariba konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
 * Ein Ariba-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -52,7 +56,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-ariba-from-the-gallery"></a>Hinzufügen von Ariba aus dem Katalog
-Zum Konfigurieren der Integration von Ariba in Azure AD müssen Sie Ariba aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Ariba in Azure AD müssen Sie Ariba aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Ariba aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
@@ -79,7 +83,7 @@ Zum Konfigurieren der Integration von Ariba in Azure AD müssen Sie Ariba aus de
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in Ariba konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Ariba als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Ariba muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Ariba als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Ariba muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Ariba zuweisen.
 
@@ -87,14 +91,14 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Ariba müs
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen einen Ariba-Testbenutzers](#creating-a-ariba-test-user)** , um eine Entsprechung von Britta Simon in Ariba zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen einen Ariba-Testbenutzers](#creating-a-ariba-test-user)** , um eine Entsprechung von Britta Simon in Ariba zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Ariba-Anwendung zu konfigurieren.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Ariba die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Ariba die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Ariba** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
@@ -239,6 +243,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Ariba“ klicken, sollten Sie auto
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

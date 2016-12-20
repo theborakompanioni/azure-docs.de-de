@@ -1,13 +1,13 @@
 ---
-title: Problembehandlung bei Netzwerksicherheitsgruppen – PowerShell | Microsoft Docs
-description: Erfahren Sie, wie Sie eine Problembehandlung bei Netzwerksicherheitsgruppen im Azure Resource Manager-Bereitstellungsmodell mit Azure PowerShell durchführen.
+title: "Problembehandlung bei Netzwerksicherheitsgruppen – PowerShell | Microsoft Docs"
+description: "Erfahren Sie, wie Sie eine Problembehandlung bei Netzwerksicherheitsgruppen im Azure Resource Manager-Bereitstellungsmodell mit Azure PowerShell durchführen."
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 4c732bb7-5cb1-40af-9e6d-a2a307c2a9c4
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 10a56e134f0e31e60758d6e616b771dabc0f4dad
+
 
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Problembehandlung bei Netzwerksicherheitsgruppen mit Azure PowerShell
@@ -194,6 +198,9 @@ Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Pu
 * Effektive Sicherheitsregeln werden nur angezeigt, wenn der NIC oder dem Subnetz des virtuellen Computers eine NSG zugeordnet ist. 
 * Wenn der NIC oder dem Subnetz keine NSGs zugeordnet sind und dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen ist, sind alle Ports für den eingehenden und ausgehenden Zugriff geöffnet. Wenn der virtuelle Computer über eine öffentliche IP-Adresse verfügt, empfiehlt es sich dringend, NSGs auf die NIC oder das Subnetz anzuwenden.  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

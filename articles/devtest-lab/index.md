@@ -29,7 +29,7 @@ Azure DevTest Labs ist ein Dienst, der Entwicklern und Testern dabei hilft, Umge
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=devtest-lab">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

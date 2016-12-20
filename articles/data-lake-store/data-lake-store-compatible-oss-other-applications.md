@@ -1,12 +1,12 @@
 ---
-title: Mit Data Lake-Speicher kompatible Big Data-Anwendungen | Microsoft Docs
+title: Mit Data Lake Store kompatible Big Data-Anwendungen | Microsoft Docs
 description: Liste von Open Source-Anwendungen, die mit Azure Data Lake-Speicher funktionieren
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 699e1805-cb76-4807-9ac1-8bd9d9bbb72b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/25/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2966e0e59eef09f5a29945cc1e00bede6a8ade81
+
 
 ---
-# Open Source-Big Data-Anwendungen, die mit Azure Data Lake Store funktionieren
+# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>Open Source-Big Data-Anwendungen, die mit Azure Data Lake Store funktionieren
 In diesem Artikel werden Open Source-Big Data-Anwendungen aufgelistet, die mit Azure Data Lake-Speicher funktionieren. Für die Anwendungen in der Tabelle unten werden nur die Versionen unterstützt, die mit der aufgelisteten Verteilung verfügbar sind. Weitere Informationen dazu, welche Versionen dieser Anwendungen mit HDInsight zur Verfügung stehen, finden Sie unter [HDInsight-Komponentenversionen](../hdinsight/hdinsight-component-versioning.md).
 
 | Open Source-Software | Verteilung |
@@ -34,7 +38,12 @@ In diesem Artikel werden Open Source-Big Data-Anwendungen aufgelistet, die mit A
 | [Apache Tez](http://tez.apache.org/) |HDInsight 3.2 und 3.4 |
 | [Apache Spark](http://spark.apache.org/) |HDInsight 3.4 |
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -31,26 +31,26 @@
     ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)
 
 
-1. Ersetzen Sie in der Datei "MyHandler" die Klassendeklaration durch
+9. Ersetzen Sie in der Datei "MyHandler" die Klassendeklaration durch
    
         public class MyHandler extends NotificationsHandler {
-2. Fügen Sie die folgenden import-Anweisungen für die `MyHandler` -Klasse hinzu:
+10. Fügen Sie die folgenden import-Anweisungen für die `MyHandler` -Klasse hinzu:
    
-       import com.microsoft.windowsazure.notifications.NotificationsHandler;
-       import android.app.NotificationManager;
-       import android.app.PendingIntent;
-       import android.content.Context;
-       import android.content.Intent;
-       import android.os.AsyncTask;
-       import android.os.Bundle;
-       import android.support.v4.app.NotificationCompat;
-3. Als Nächstes fügen Sie der `MyHandler` -Klasse dieses Element hinzu:
+        import com.microsoft.windowsazure.notifications.NotificationsHandler;
+        import android.app.NotificationManager;
+        import android.app.PendingIntent;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.os.AsyncTask;
+        import android.os.Bundle;
+        import android.support.v4.app.NotificationCompat;
+11. Als Nächstes fügen Sie der `MyHandler` -Klasse dieses Element hinzu:
    
-       public static final int NOTIFICATION_ID = 1;
-4. Fügen Sie den folgende Code in die `MyHandler` -Klasse ein, um die **onRegistered** -Methode zu überschreiben, mit der das Gerät im Benachrichtigungs-Hub des mobilen Dienstes registriert wird.
+        public static final int NOTIFICATION_ID = 1;
+12. Fügen Sie den folgende Code in die `MyHandler` -Klasse ein, um die **onRegistered** -Methode zu überschreiben, mit der das Gerät im Benachrichtigungs-Hub des mobilen Dienstes registriert wird.
    
-       @Override
-       public void onRegistered(Context context,  final String gcmRegistrationId) {
+        @Override
+        public void onRegistered(Context context,  final String gcmRegistrationId) {
            super.onRegistered(context, gcmRegistrationId);
    
            new AsyncTask<Void, Void, Void>() {
@@ -67,10 +67,10 @@
                }
            }.execute();
        }
-5. Fügen Sie in der `MyHandler` -Klasse den folgenden Code zum Überschreiben der **onReceive** -Methode hinzu, wodurch die Benachrichtigung nach ihrem Empfang angezeigt wird.
+13. Fügen Sie in der `MyHandler` -Klasse den folgenden Code zum Überschreiben der **onReceive** -Methode hinzu, wodurch die Benachrichtigung nach ihrem Empfang angezeigt wird.
    
-       @Override
-       public void onReceive(Context context, Bundle bundle) {
+        @Override
+        public void onReceive(Context context, Bundle bundle) {
                String msg = bundle.getString("message");
    
                PendingIntent contentIntent = PendingIntent.getActivity(context,
@@ -90,13 +90,13 @@
                        context.getSystemService(Context.NOTIFICATION_SERVICE);
                notificationManager.notify(NOTIFICATION_ID, notification);
        }
-6. Aktualisieren Sie in der Datei „TodoActivity.java“ die **onCreate** -Methode der *ToDoActivity* -Klasse, um die Benachrichtigungsbehandlungsklasse zu registrieren. Stellen Sie sicher, dass dieser Code nach der Instanziierung von *MobileServiceClient* hinzufügt wird.
+14. Aktualisieren Sie in der Datei „TodoActivity.java“ die **onCreate** -Methode der *ToDoActivity* -Klasse, um die Benachrichtigungsbehandlungsklasse zu registrieren. Stellen Sie sicher, dass dieser Code nach der Instanziierung von *MobileServiceClient* hinzufügt wird.
 
         NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
     Ihre App kann Pushbenachrichtigungen nun unterstützen.
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

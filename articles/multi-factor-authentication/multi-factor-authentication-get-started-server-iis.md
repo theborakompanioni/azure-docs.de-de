@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 35f58e8664c47c4e7a86c27e90813ad7be3cea04
 
 
 ---
@@ -25,7 +25,7 @@ Im Bereich IIS-Authentifizierung des Azure Multi-Factor Authentication-Servers k
 
 ![IIS-Authentifizierung](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 
-## <a name="using-formbased-iis-authentication-with-azure-multifactor-authentication-server"></a>Verwenden formularbasierter IIS-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
+## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>Verwenden formularbasierter IIS-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
 Um eine IIS-Webanwendung zu sichern, die die formularbasierte Authentifizierung verwendet, installieren Sie den Azure Multi-Factor Authentication-Server auf dem IIS-Webserver, und konfigurieren Sie den Server wie im folgenden Verfahren dargestellt.
 
 1. Klicken Sie im Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol "IIS-Authentifizierung".
@@ -43,7 +43,7 @@ Um eine IIS-Webanwendung zu sichern, die die formularbasierte Authentifizierung 
 13. Sobald die URL und die Seitenvariablen erkannt bzw. eingegeben wurden, werden die Websitedaten im Bereich "Formularbasiert" angezeigt.
 14. Lesen Sie den nachfolgenden Abschnitt "Aktivieren des IIS-Plug-Ins für den Azure Multi-Factor Authentication-Server", um die Konfiguration der IIS-Authentifizierung abzuschließen.
 
-## <a name="using-integrated-windows-authentication-with-azure-multifactor-authentication-server"></a>Verwenden der integrierten Windows-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
+## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>Verwenden der integrierten Windows-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
 Um eine IIS-Webanwendung zu sichern, die die integrierte Windows-HTTP-Authentifizierung verwendet, installieren Sie den Azure Multi-Factor Authentication-Server auf dem IIS-Webserver, und konfigurieren Sie den Server wie im folgenden Verfahren dargestellt.
 
 1. Klicken Sie im Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol "IIS-Authentifizierung".
@@ -56,7 +56,7 @@ Um eine IIS-Webanwendung zu sichern, die die integrierte Windows-HTTP-Authentifi
 8. Klicken Sie auf die Schaltfläche "OK".
 9. Lesen Sie den nachfolgenden Abschnitt [Aktivieren des IIS-Plug-Ins für den Azure Multi-Factor Authentication-Server](#enable-iis-plug-ins-for-azure-multi-factor-authentication-server) , um die Konfiguration der IIS-Authentifizierung abzuschließen.
 
-## <a name="enable-iis-plugins-for-azure-multifactor-authentication-server"></a>Aktivieren des IIS-Plug-Ins für den Azure Multi-Factor Authentication-Server
+## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Aktivieren des IIS-Plug-Ins für den Azure Multi-Factor Authentication-Server
 Nachdem Sie die URLs und Einstellungen für die formularbasierte oder die HTTP-Authentifizierung konfiguriert haben, müssen Sie die Speicherorte auswählen, in denen die IIS-Plug-Ins von Azure Multi-Factor Authentication in IIS geladen und aktiviert werden sollen. Gehen Sie dazu wie folgt vor:
 
 1. Falls IIS 6 ausgeführt wird, klicken Sie auf die Registerkarte "ISAPI", und wählen Sie die Website, auf der die Webanwendung läuft (z. B. die Standardwebsite), um das ISAPI-Filter-Plug-In von Azure Multi-Factor Authentication für diese Website zu aktivieren.
@@ -74,6 +74,6 @@ Nachdem Sie die URLs und Einstellungen für die formularbasierte oder die HTTP-A
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

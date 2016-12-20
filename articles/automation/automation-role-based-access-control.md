@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9fff24dfd2b20a785c6046b6c9700b583c309de4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
 
 
 ---
-# <a name="rolebased-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
-## <a name="rolebased-access-control"></a>Rollenbasierte Zugriffssteuerung
+# <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
+## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung](../active-directory/role-based-access-control-configure.md)können Sie Aufgaben innerhalb Ihres Teams verteilen und Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Den Benutzern kann die rollenbasierte Zugriffssteuerung über das Azure-Portal, Azure Befehlszeilenwerkzeuge oder Azure Management APIs zugewiesen werden.
 
 ## <a name="rbac-in-automation-accounts"></a>Rollenbasierte Zugriffssteuerung in Automation-Konten
@@ -233,6 +233,6 @@ Ersetzen Sie in den obigen Beispielen die **Anmelde-ID**, die **Abonnement-ID**,
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
