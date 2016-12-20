@@ -7,7 +7,7 @@
 ## [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [Verwenden von Logik-App-Features](../app-service-logic/app-service-logic-use-logic-app-features.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [Übersicht über Vorlagen](../app-service-logic/app-service-logic-use-logic-app-templates.md?toc=%2fazure%2flogic-apps%2ftoc.json)
-## [Erstellen einer benutzerdefinierten Vorlage](../app-service-logic/app-service-logic-arm-provision.md?toc=%2fazure%2flogic-apps%2ftoc.json)
+## [Erstellen einer App mithilfe einer Vorlage](../app-service-logic/app-service-logic-arm-provision.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [Beispiele und Szenarien](../app-service-logic/app-service-logic-examples-and-scenarios.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [Service Bus-Szenario](../app-service-logic/app-service-logic-scenario-function-sb-trigger.md?toc=%2fazure%2flogic-apps%2ftoc.json)
 ## [B2B-Verarbeitung](../app-service-logic/app-service-logic-enterprise-integration-b2b.md?toc=%2fazure%2flogic-apps%2ftoc.json)

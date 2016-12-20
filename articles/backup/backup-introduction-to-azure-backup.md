@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/6/2016
+ms.date: 12/7/2016
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: b9737c3da308aecf25d5f18088f96c319edeafd5
-ms.openlocfilehash: 76ec51a75240710b24c0e91042d6229e60eeada9
+ms.sourcegitcommit: 9de8032bc69b054d5d13857159ff994f505497a6
+ms.openlocfilehash: 08e7d4402ad52835d193b2083e3c9b2776e0332e
 
 
 ---
@@ -33,10 +33,11 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 **Unbegrenzte Skalierung**: Für Azure Backup wird die Leistungsstärke und unbegrenzte Skalierung der Azure-Cloud genutzt, um eine hohe Verfügbarkeit sicherzustellen – ohne Wartungs- oder Überwachungsaufwand. Sie können Warnungen einrichten, um Informationen zu Ereignissen bereitzustellen, aber Sie müssen sich nicht um die hohe Verfügbarkeit für Ihre Daten in der Cloud kümmern.
 
-**Mehrere Speicheroptionen**: Ein Aspekt der hohen Verfügbarkeit ist die Speicherreplikation. Azure Backup bietet zwei Arten der Replikation: mit [lokal redundantem Speicher](../storage/storage-redundancy.md#locally-redundant-storage) und mit [georepliziertem Speicher](../storage/storage-redundancy.md#geo-redundant-storage). Wählen Sie die Sicherungsspeicheroption aus, die zu Ihren Anforderungen passt:
+**Mehrere Speicheroptionen**: Ein Aspekt der hohen Verfügbarkeit ist die Speicherreplikation. Azure Backup bietet zwei Arten der Replikation: mit [lokal redundantem Speicher](../storage/storage-redundancy.md#locally-redundant-storage) und mit [georedundantem Speicher](../storage/storage-redundancy.md#geo-redundant-storage). Wählen Sie die Sicherungsspeicheroption aus, die zu Ihren Anforderungen passt:
 
-* Lokal redundanter Speicher (Locally Redundant Storage, LRS) repliziert Ihre Daten dreimal in einem gekoppelten Datencenter in der gleichen Region. (Es werden also drei Kopien Ihrer Daten erstellt.) LRS ist eine kostengünstige Option und ideal für preisbewusste Kunden geeignet, da Daten vor lokalen Hardwareausfällen geschützt werden.
-* Beim Speicher mit geografischer Replikation (GRS) werden Ihre Daten in eine sekundäre Region repliziert (Hunderte von Kilometern entfernt vom primären Standort der Quelldaten). GRS führt zu höheren Kosten als bei LRS, bietet aber eine höhere Dauerhaftigkeit für Ihre Daten, und zwar auch im Falle eines regionalen Ausfalls.
+* Lokal redundanter Speicher (Locally Redundant Storage, LRS) repliziert Ihre Daten dreimal in einem gekoppelten Datencenter in der gleichen Region. (Es werden also drei Kopien Ihrer Daten erstellt.) LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
+
+* Georedundanter Speicher (GRS) repliziert Ihre Daten in eine sekundäre Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
 
 **Unbegrenzte Datenübertragungen**: Bei Azure Backup ist die Menge der übertragenen eingehenden und ausgehenden Daten nicht beschränkt. Außerdem fallen bei Azure Backup keine Gebühren für die übertragenen Daten an. Aber wenn Sie den Azure Import/Export-Dienst nutzen, um große Datenmengen zu importieren, werden für eingehende Daten Kosten berechnet. Weitere Informationen zu diesen Kosten finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md). Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Backup-Tresor übertragen wurden.
 
@@ -176,17 +177,26 @@ Der Azure Backup-Agent verfügt über die Netzwerkdrosselung, mit der Sie steuer
 
 ### <a name="backup-and-retention"></a>Sicherung und Aufbewahrung
 
-Für Azure Backup gilt eine Obergrenze von 9.999 Wiederherstellungspunkten, die auch als Sicherungskopien oder Momentaufnahmen bezeichnet werden, pro Backup-Tresor. In der folgenden Tabelle ist die maximale Sicherungshäufigkeit (im Tresor) für jede Komponente angegeben. Ihre Konfiguration der Sicherungsrichtlinie bestimmt, wie schnell die Wiederherstellungspunkte verbraucht werden. Wenn Sie beispielsweise jeden Tag einen Wiederherstellungspunkt erstellen, können Sie Wiederherstellungspunkte 27 Jahre lang nutzen, bevor der Vorrat erschöpft ist. Wenn Sie einen monatlichen Wiederherstellungspunkt verwenden, reicht der Vorrat für 833 Jahre. Der Backup-Dienst legt keine Ablaufzeitgrenze für einen Wiederherstellungspunkt fest.
+Für Azure Backup gilt pro *geschützter Instanz* eine Obergrenze von 9999 Wiederherstellungspunkten (auch Sicherungskopien oder Momentaufnahmen genannt). Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die Daten in Azure sichern. Weitere Informationen finden Sie im Abschnitt [Was ist eine geschützte Instanz?](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Eine Instanz ist geschützt, sobald eine Sicherungskopie der Daten gespeichert wurde. Die Sicherungskopie der Daten ist der Schutz. Wenn die Quelldaten verloren gehen oder beschädigt werden, können sie mithilfe der Sicherungskopie wiederhergestellt werden. In der folgenden Tabelle ist die maximale Sicherungshäufigkeit für die einzelnen Komponenten angegeben. Ihre Konfiguration der Sicherungsrichtlinie bestimmt, wie schnell die Wiederherstellungspunkte verbraucht werden. Wenn Sie beispielsweise jeden Tag einen Wiederherstellungspunkt erstellen, können Sie Wiederherstellungspunkte 27 Jahre lang nutzen, bevor der Vorrat erschöpft ist. Wenn Sie einen monatlichen Wiederherstellungspunkt verwenden, reicht der Vorrat für 833 Jahre. Der Backup-Dienst legt keine Ablaufzeitgrenze für einen Wiederherstellungspunkt fest.
 
 |  | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Sicherungshäufigkeit<br/> (im Backup-Tresor) |Drei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Eine Sicherung pro Tag |
 | Sicherungshäufigkeit<br/> (auf Datenträger) |Nicht zutreffend |<li>Alle 15 Minuten für SQL Server <li>Stündlich für andere Workloads |<li>Alle 15 Minuten für SQL Server <li>Stündlich für andere Workloads</p> |Nicht zutreffend |
 | Aufbewahrungsoptionen |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |Täglich, wöchentlich, monatlich, jährlich |
-| Maximale Wiederherstellungspunkte pro Server |9999|9999|9999|9999|
+| Maximale Wiederherstellungspunkte pro geschützter Instanz |9999|9999|9999|9999|
 | Maximale Aufbewahrungsdauer |Abhängig von der Sicherungshäufigkeit |Abhängig von der Sicherungshäufigkeit |Abhängig von der Sicherungshäufigkeit |Abhängig von der Sicherungshäufigkeit |
 | Wiederherstellungspunkte auf lokalem Datenträger |Nicht zutreffend |<li>64 für Dateiserver,<li>448 für Anwendungsserver |<li>64 für Dateiserver,<li>448 für Anwendungsserver |Nicht zutreffend |
 | Wiederherstellungspunkte auf Band |Nicht zutreffend |Unbegrenzt |Nicht zutreffend |Nicht zutreffend |
+
+## <a name="what-is-a-protected-instance"></a>Was ist eine geschützte Instanz?
+Eine geschützte Instanz ist ein generischer Verweis auf einen Windows-Computer, einen (physischen oder virtuellen) Server oder auf eine SQL-Datenbank, der bzw. die Daten in Azure sichert. Eine Instanz ist geschützt, sobald Sie eine Sicherungsrichtlinie für den Computer, den Server oder die Datenbank konfigurieren und eine Sicherungskopie der Daten erstellen. Durch nachfolgende Kopien der Sicherungsdaten für die geschützte Instanz (so genannte Wiederherstellungspunkte) erhöht sich der beanspruchte Speicherplatz. Für eine geschützte Instanz können bis zu 9999 Wiederherstellungspunkte erstellt werden. Aus dem Speicher gelöschte Wiederherstellungspunkte werden nicht in die Gesamtanzahl von 9999 Wiederherstellungspunkten einbezogen.
+Allgemeine Beispiele für geschützte Instanzen sind virtuelle Computer, Anwendungsserver, Datenbanken und PCs unter Windows. Beispiel:
+
+* Ein virtueller Computer, auf dem die Hyper-V- oder die Azure IaaS-Hypervisor-Fabric ausgeführt wird. Mögliche Gastbetriebssysteme für den virtuellen Computer sind Windows Server und Linux.
+* Ein Anwendungsserver: Dabei kann es sich um einen physischen oder virtuellen Computer handeln, auf dem Windows Server und Workloads mit zu sichernden Daten ausgeführt werden. Gängige Workloads sind Microsoft SQL Server, Microsoft Exchange Server, Microsoft SharePoint Server, Microsoft Dynamics und die Dateiserverrolle unter Windows Server. Zum Sichern dieser Workloads benötigen Sie System Center Data Protection Manager (DPM) oder Azure Backup Server.
+* Ein PC oder Laptop unter dem Windows-Betriebssystem.
+
 
 ## <a name="what-is-the-vault-credential-file"></a>Was ist die Datei mit Tresoranmeldeinformationen?
 Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für jeden Backup-Tresor generiert wird. Das Portal lädt anschließend den öffentlichen Schlüssel in den Access Control Service (ACS) hoch. Der private Schlüssel wird beim Herunterladen von Anmeldeinformationen für Sie bereitgestellt. Verwenden Sie ihn, um die zu schützenden Computer zu registrieren. Mit dem privaten Schlüssel können Sie die Server oder Computer für das Senden von Sicherungsdaten an einen bestimmten Backup-Tresor authentifizieren.

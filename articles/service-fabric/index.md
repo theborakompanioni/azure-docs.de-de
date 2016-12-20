@@ -1,8 +1,8 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 2ec806d0d00f8db624820fac72083f3e53b89dfa
+ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
+ms.openlocfilehash: 0598e5ea3dc95853a21a56326241a82854477cbe
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric-Dokumentation
@@ -106,64 +106,44 @@ Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, 
 
 ---
 
-## <a name="reference"></a>Referenz
-
+<h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/servicefabric/vlatest/servicefabric">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Service Fabric-PowerShell-Referenz</p>
+                        <h3>Befehlszeile</h3>
+                        <p><a href="/powershell/servicefabric/vlatest/servicefabric">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/java/api">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Java-API-Referenz</p>
+                        <h3>Sprachen</h3>
+                        <p><a href="/java/api/microsoft.servicefabric.services">Java-API</a></p>
+                        <p><a href="/dotnet/api/microsoft.servicefabric.services">.NET</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Verwaltete Referenz zur .NET-API</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/rest/api/servicefabric">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Service Fabric-REST-API</p>
+                        <p><a href="/rest/api/servicefabric">REST-API-Referenz</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>   
 
