@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 95268d0197f9c79b1650165056cbf4b3e79f12ec
+ms.sourcegitcommit: d269d9a76ff4ccd973eee70d2d5b54a7262383ef
+ms.openlocfilehash: f0491df77418c4d7c79beff87302b64ddc3fa9be
 
 
 ---
-# <a name="create-a-vnet-with-a-sitetosite-connection-using-the-azure-portal"></a>Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das Azure-Portal
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-azure-portal"></a>Erstellen eines VNet mit einer Standort-zu-Standort-Verbindung über das Azure-Portal
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
@@ -33,7 +33,7 @@ In diesem Artikel werden das Erstellen eines virtuellen Netzwerks und das Herste
 
 ![Diagramm](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/s2srmportal.png)
 
-### <a name="deployment-models-and-methods-for-sitetosite-connections"></a>Bereitstellungsmodelle und -methoden für Site-to-Site-Verbindungen
+### <a name="deployment-models-and-methods-for-site-to-site-connections"></a>Bereitstellungsmodelle und -methoden für Site-to-Site-Verbindungen
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
 
 Die folgende Tabelle zeigt die derzeit verfügbaren Bereitstellungsmodelle und -methoden für Site-to-Site-Konfigurationen. Falls ein Artikel mit Konfigurationsschritten verfügbar ist, steht in der Tabelle ein direkter Link zur Verfügung.
@@ -48,7 +48,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 * Ein kompatibles VPN-Gerät (und eine Person, die es konfigurieren kann). Weitere Informationen finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Wenn Sie sich mit dem Konfigurieren des VPN-Geräts oder mit den IP-Adressbereichen Ihrer lokalen Netzwerkkonfiguration nicht auskennen, müssen Sie sich an eine Person wenden, die Ihnen diese Details liefern kann.
 * Eine externe öffentliche IP-Adresse für Ihr VPN-Gerät. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
-* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial/) registrieren.
+* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) aktivieren oder sich für ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial) registrieren.
 
 ### <a name="a-namevaluesasample-configuration-values-for-this-exercise"></a><a name="values"></a>Beispielkonfigurationswerte für diese Übung
 Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden:
@@ -110,7 +110,7 @@ Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beis
 ## <a name="a-namevpndevicea7-configure-your-vpn-device"></a><a name="VPNDevice"></a>7. Konfigurieren des VPN-Geräts
 [!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
-## <a name="a-namecreateconnectiona8-create-a-sitetosite-vpn-connection"></a><a name="CreateConnection"></a>8. Erstellen einer Site-to-Site-VPN-Verbindung
+## <a name="a-namecreateconnectiona8-create-a-site-to-site-vpn-connection"></a><a name="CreateConnection"></a>8. Erstellen einer Site-to-Site-VPN-Verbindung
 Erstellen Sie die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuellen Netzwerks und Ihrem VPN-Gerät. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Der gemeinsame Schlüssel muss dem Wert entsprechen, den Sie für Ihre VPN-Gerätekonfiguration verwendet haben. 
 
 Stellen Sie sicher, dass das Gateway für das virtuelle Netzwerk und die Gateways für das lokale Netzwerk fertig erstellt wurden, bevor Sie mit diesem Abschnitt beginnen. Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen der Verbindung [diese Werte](#values) verwenden.
@@ -124,12 +124,12 @@ Sie können Ihre VPN-Verbindung entweder im Portal oder mithilfe von PowerShell 
 [!INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter dem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) für virtuelle Computer.
-* Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
+*  Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) .
+*  Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,11 +1,11 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit Sciforma | Microsoft Docs'
-description: Hier erfahren Sie, wie Sie Sciforma mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen.
+description: "Hier erfahren Sie, wie Sie Sciforma mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: abbfb5ac-7687-4153-b263-8090102dae37
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2a61552f3275aa58aca9c014d24ae69d91ce59d5
+
 
 ---
-# <a name="tutorial:-azure-ad-integration-with-sciforma"></a>Tutorial: Azure AD-Integration mit Sciforma
+# <a name="tutorial-azure-ad-integration-with-sciforma"></a>Tutorial: Azure AD-Integration mit Sciforma
 In diesem Tutorial wird die Integration von Azure und Sciforma erläutert.  
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
@@ -36,7 +40,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 ## <a name="enabling-the-application-integration-for-sciforma"></a>Aktivieren der Anwendungsintegration für Sciforma
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Sciforma aktivieren.
 
-### <a name="to-enable-the-application-integration-for-sciforma,-perform-the-following-steps:"></a>So aktivieren Sie die Anwendungsintegration für Sciforma:
+### <a name="to-enable-the-application-integration-for-sciforma-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Sciforma:
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-sciforma-tutorial/IC700993.png "Active Directory")
@@ -61,7 +65,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Sci
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Sciforma zu authentifizieren.
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>So konfigurieren Sie einmaliges Anmelden
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Sciforma** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777372.png "Configure single sign-on")
@@ -88,7 +92,7 @@ Ist noch kein Benutzerkonto verfügbar, wird es von Sciforma automatisch erstell
 ## <a name="assigning-users"></a>Zuweisen von Benutzern
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-sciforma,-perform-the-following-steps:"></a>So weisen Sie Sciforma Benutzer zu:
+### <a name="to-assign-users-to-sciforma-perform-the-following-steps"></a>So weisen Sie Sciforma Benutzer zu:
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Sciforma** auf **Benutzer zuweisen**.
    
@@ -99,6 +103,9 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

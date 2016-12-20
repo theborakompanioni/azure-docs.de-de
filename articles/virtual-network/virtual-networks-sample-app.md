@@ -5,8 +5,8 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-
+editor: 
+ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,25 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4d3f5e759f46bd4c4998c5d4bf70d64190ad972e
+
 
 ---
-# Beispielanwendung zur Verwendung in Umgebungen mit Sicherheitsbegrenzung
-[Zurück zur Seite mit bewährten Methoden zur Sicherheitsbegrenzung][HOME]
+# <a name="sample-application-for-use-with-security-boundary-environments"></a>Beispielanwendung zur Verwendung in Umgebungen mit Sicherheitsbegrenzung
+[Zurück zur Seite mit bewährten Methoden zu Sicherheitsgrenzen][HOME]
 
 Diese PowerShell-Skripts können lokal auf den Servern IIS01 und AppVM01 ausgeführt werden, um eine einfache Webanwendung zu installieren und zu konfigurieren, die eine HTML-Seite vom Front-End-Server IIS01 mit Inhalten vom Back-End-Server AppVM01 anzeigt.
 
 Im Folgenden wird eine einfache Testumgebung für viele der DMZ-Beispiele verwendet und erläutert, wie sich Änderungen an den Endpunkten, NSGs, UDRs und Firewallregeln auf den Datenverkehrsfluss auswirken können.
 
-## Firewallregel zum Zulassen von ICMP
+## <a name="firewall-rule-to-allow-icmp"></a>Firewallregel zum Zulassen von ICMP
 Diese einfache PowerShell-Anweisung kann auf jedem virtuellen Windows-Computer ausgeführt werden, um ICMP (Ping)-Datenverkehr zuzulassen. Dies vereinfacht das Testen und die Problembehandlung, da das Ping-Protokoll durch die Windows-Firewall weitergeleitet werden kann (für die meisten Linux-Distributionen ist ICMP standardmäßig aktiviert).
 
     # Turn On ICMPv4
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
         -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 
-**Hinweis**: Wenn Sie die folgenden Skripts verwenden, ist diese Erweiterung der Firewallregel die erste Anweisung.
+**Hinweis** : Wenn Sie die folgenden Skripts verwenden, ist diese Erweiterung der Firewallregel die erste Anweisung.
 
-## IIS01 – Installationsskript für die Webanwendung
+## <a name="iis01---web-application-installation-script"></a>IIS01 – Installationsskript für die Webanwendung
 Mit diesem Skript werden folgende Vorgänge durchgeführt:
 
 1. Öffnen von ICMPv4 (Ping) in der Windows-Firewall des lokalen Servers für einfacheres Testen
@@ -138,7 +142,7 @@ Dieses PowerShell-Skript muss lokal ausgeführt werden, wenn es über das RDP-Pr
         Write-Host
 
 
-## AppVM01 – Installationsskript für den Dateiserver
+## <a name="appvm01---file-server-installation-script"></a>AppVM01 – Installationsskript für den Dateiserver
 Mit diesem Skript wird das Back-End für diese einfache Anwendung eingerichtet. Mit diesem Skript werden folgende Vorgänge durchgeführt:
 
 1. Öffnen von ICMPv4 (Ping) in der Firewall für einfacheres Testen
@@ -184,10 +188,14 @@ Dieses PowerShell-Skript muss lokal ausgeführt werden, wenn es über das RDP-Pr
         Write-Host
 
 
-## DNS01 – Installationsskript für den DNS-Server
-Diese Beispielanwendung enthält kein Skript zum Einrichten des DNS-Servers. Wenn beim Testen der Firewallregeln, NSGs oder UDRs DNS-Datenverkehr einbezogen werden soll, muss der Server DNS01 manuell eingerichtet werden. Die XML-Datei für die Netzwerkkonfiguration für beide Beispiele enthält DNS01 als primären DNS-Server und den auf Ebene 3 gehosteten öffentlichen DNS-Server als DNS-Sicherungsserver. Der DNS-Server auf Ebene 3 wäre der eigentliche für den nicht lokalen Datenverkehr verwendete DNS-Server. Wenn DNS01 nicht eingerichtet ist, können keine lokalen DNS-Abfragen durchgeführt werden.
+## <a name="dns01---dns-server-installation-script"></a>DNS01 – Installationsskript für den DNS-Server
+Diese Beispielanwendung enthält kein Skript zum Einrichten des DNS-Servers. Wenn beim Testen der Firewallregeln, NSGs oder UDRs DNS-Datenverkehr einbezogen werden soll, muss der Server DNS01 manuell eingerichtet werden. Die XML-Datei für die Netzwerkkonfiguration für beide Beispiele enthält DNS01 als primären DNS-Server und den auf Ebene 3 gehosteten öffentlichen DNS-Server als DNS-Sicherungsserver. Der DNS-Server auf Ebene 3 wäre der eigentliche für den nicht lokalen Datenverkehr verwendete DNS-Server. Wenn DNS01 nicht eingerichtet ist, können keine lokalen DNS-Abfragen durchgeführt werden.
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,19 +1,23 @@
 ---
 title: Warnungen in Log Analytics | Microsoft Docs
-description: Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können.
+description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 6cfd2a46-b6a2-4f79-a67b-08ce488f9a91
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/22/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7f8603c9ddfd3f99ea38ad07b7a8a0a553e5e4dd
+
 
 ---
 # <a name="alerts-in-log-analytics"></a>Warnungen in Log Analytics
@@ -205,6 +209,9 @@ Es gibt noch andere Arten von Warnungsdatensätzen, die von der [Alert Managemen
 * Arbeiten Sie eine exemplarische Vorgehensweise für das [Konfigurieren eines Webooks](log-analytics-alerts-webhooks.md) mit einer Warnungsregel durch.  
 * Informieren Sie sich darüber, wie Sie [Runbooks in Azure Automation](https://azure.microsoft.com/documentation/services/automation) schreiben, um von Warnungen identifizierte Probleme zu beheben.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

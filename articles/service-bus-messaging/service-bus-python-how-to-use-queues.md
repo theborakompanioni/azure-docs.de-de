@@ -1,30 +1,34 @@
 ---
 title: Verwenden von Service Bus-Warteschlangen mit Python | Microsoft Docs
 description: Erfahren Sie, wie Azure Service Bus-Warteschlangen von Python aus verwendet werden.
-services: service-bus
+services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: sethm;lmazuel
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6a162dc04f8eb5002cae3bf708ae2fcd4c2aa694
+
 
 ---
 # <a name="how-to-use-service-bus-queues"></a>Verwenden von Service Bus-Warteschlangen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele sind in Python geschrieben und verwenden das [Python Azure Service Bus-Paket][]. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen, Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**.
+In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele sind in Python geschrieben und verwenden das [Python Azure-Servicebus-Paket][Python Azure-Servicebus-Paket]. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen, Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 > [!NOTE]
-> Informationen zur Installation von Python bzw. des [Python Azure Service Bus-Pakets][] finden Sie unter [Installieren von Python und SDK](../python-how-to-install.md).
+> Informationen zur Installation von Python bzw. des [Python Azure Service Bus-Pakets][Python Azure-Servicebus-Paket] finden Sie in den [Installationsanweisungen für Python](../python-how-to-install.md).
 > 
 > 
 
@@ -44,13 +48,13 @@ bus_service = ServiceBusService(
     shared_access_key_value='sharedaccesskey')
 ```
 
-Den Namen und Wert des SAS-Schlüssels finden Sie in den Verbindungsinformationen des [klassischen Azure-Portals][] oder im Bereich **Eigenschaften** von Visual Studio, wenn Sie den Service Bus-Namespace im Server-Explorer auswählen (wie im vorherigen Abschnitt gezeigt).
+Den Namen und Wert des SAS-Schlüssels finden Sie in den Verbindungsinformationen des [klassischen Azure-Portals][Klassisches Azure-Portal] oder im Bereich **Eigenschaften** von Visual Studio, wenn Sie den Service Bus-Namespace im Server-Explorer auswählen (wie im vorherigen Abschnitt gezeigt).
 
 ```
 bus_service.create_queue('taskqueue')
 ```
 
-**create_queue** unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für die Warteschlange überschreiben können, wie zum Beispiel die Gültigkeitsdauer (Time-to-live, TTL) von Nachrichten oder die maximale Warteschlangengröße. Das folgende Beispiel legt die maximale Warteschlangengröße auf 5 GB bei einem TTL-Wert von 1 Minute fest:
+**create_queue** unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für die Warteschlange überschreiben können, wie zum Beispiel die Gültigkeitsdauer (Time-to-live, TTL) von Nachrichten oder die maximale Warteschlangengröße. Das folgende Beispiel legt die maximale Warteschlangengröße auf 5 GB bei einem TTL-Wert von 1 Minute fest:
 
 ```
 queue_options = Queue()
@@ -70,7 +74,7 @@ msg = Message(b'Test Message')
 bus_service.send_queue_message('taskqueue', msg)
 ```
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus-Kontingente].
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus-Kontingente].
 
 ## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 Nachrichten werden von einer Warteschlange über die Methode **receive\_queue\_message** auf dem **ServiceBusService**-Objekt empfangen:
@@ -103,9 +107,9 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der Me
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen der Service Bus-Warteschlangen vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
-* Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements][].
+* Siehe [Warteschlangen, Themen und Abonnements][Warteschlangen, Themen und Abonnements].
 
-[klassischen Azure-Portal]: https://manage.windowsazure.com
+[Klassisches Azure-Portal]: https://manage.windowsazure.com
 [Python Azure-Servicebus-Paket]: https://pypi.python.org/pypi/azure-servicebus  
 [Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
 [Service Bus-Kontingente]: service-bus-quotas.md
@@ -113,6 +117,6 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Warteschlangen vertraut sind,
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

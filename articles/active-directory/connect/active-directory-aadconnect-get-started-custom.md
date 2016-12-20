@@ -4,20 +4,19 @@ description: "In diesem Dokument werden die Optionen für die benutzerdefinierte
 services: active-directory
 keywords: "Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD"
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: femila
-editor: curtand
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2016
+ms.date: 12/06/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
-ms.openlocfilehash: f001bc76161565bd07606d366c07b15edf819e81
+ms.sourcegitcommit: d0e596aed6ae784e4c48b3ddacbf946c4849614f
+ms.openlocfilehash: 397ed8977c35dc18e92239ae4b62bddba2ade8a7
 
 
 ---
@@ -46,13 +45,17 @@ Bei der Installation der Synchronisierungsdienste können Sie den optionalen Kon
 ### <a name="user-sign-in"></a>Benutzeranmeldung
 Nach der Installation der erforderlichen Komponenten werden Sie aufgefordert, die Methode für das einmalige Anmelden Ihrer Benutzer auszuwählen. Die folgende Tabelle enthält eine kurze Beschreibung der verfügbaren Optionen. Eine vollständige Beschreibung der Anmeldemethoden finden Sie unter [Benutzeranmeldung](../active-directory-aadconnect-user-signin.md).
 
-![Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/usersignin.png)
+![Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
 
 | Option zum einmaligen Anmelden | Beschreibung |
 | --- | --- |
 | Kennwortsynchronisierung |Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden. Die Benutzerkennwörter werden über einen Kennworthash mit Azure AD synchronisiert, und die Authentifizierung erfolgt in der Cloud. Weitere Informationen finden Sie unter [Kennwortsynchronisierung](../active-directory-aadconnectsync-implement-password-synchronization.md). |
+|Passthrough-Authentifizierung (Vorschau)|Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Das Benutzerkennwort wird zur Überprüfung an den lokalen Active Directory-Controller übergeben. 
 | Verbund mit AD FS |Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Die Benutzer werden für die Anmeldung jeweils an ihre lokale AD FS-Instanz umgeleitet, und die Authentifizierung erfolgt lokal. |
 | Nicht konfigurieren |Keines der Features wird installiert oder konfiguriert. Wählen Sie diese Option aus, wenn Sie bereits über einen Verbundserver eines Drittanbieters verfügen oder eine andere vorhandene Lösung eingesetzt wird. |
+|Einmaliges Anmelden aktivieren|Diese Option ist sowohl mit Kennwortsynchronisierung als auch mit Passthrough-Authentifizierung verfügbar und ermöglicht das einmalige Anmelden für Desktopbenutzer im Unternehmensnetzwerk.  Weitere Informationen finden Sie unter [Einmaliges Anmelden](../active-directory-aadconnect-sso.md). </br>Beachten Sie, dass diese Option für AD FS-Kunden nicht verfügbar ist, da AD FS bereits das einmalige Anmelden dieser Art ermöglicht</br>(sofern PTA nicht zur gleichen Zeit freigegeben wird).
+|Einmaliges Anmelden|Diese Option ist für Kunden mit Kennwortsynchronisierung verfügbar und ermöglicht das einmalige Anmelden für Desktopbenutzer im Unternehmensnetzwerk.  </br>Weitere Informationen finden Sie unter [Einmaliges Anmelden](../active-directory-aadconnect-sso.md). </br>Beachten Sie, dass diese Option für AD FS-Kunden nicht verfügbar ist, da AD FS bereits das einmalige Anmelden dieser Art ermöglicht.
+
 
 ### <a name="connect-to-azure-ad"></a>Mit Azure AD verbinden
 Geben Sie im Bildschirm "Mit Azure AD verbinden" ein Konto und ein Kennwort für den globalen Administrator ein. Wenn Sie auf der vorherigen Seite **Verbund mit AD FS** ausgewählt haben, melden Sie sich nicht mit einem Konto in einer Domäne an, die Sie für den Verbund aktivieren möchten. Wir empfehlen Ihnen die Verwendung eines Kontos in der standardmäßigen Domäne **onmicrosoft.com** , die in Ihrem Azure AD-Verzeichnis enthalten ist.
@@ -68,6 +71,7 @@ Für das globale Administratorkonto kann auch [Privileged Identity Management](.
 Falls ein Fehler auftritt und Sie Probleme mit der Konnektivität haben, können Sie unter [Problembehebung bei Konnektivitätsproblemen](../active-directory-aadconnect-troubleshoot-connectivity.md) nach einer Lösung suchen.
 
 ## <a name="pages-under-the-section-sync"></a>Seiten im Abschnitt "Synchronisierung"
+
 ### <a name="connect-your-directories"></a>Verzeichnisse verbinden
 Zum Verbinden mit Ihrem Active Directory-Domänendienst benötigt Connect von Azure AD die Anmeldeinformationen für ein Konto, das über ausreichende Berechtigungen verfügt. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\syncuser“ oder „fabrikam.com\syncuser“. Dieses Konto kann ein normales Benutzerkonto sein, da nur die standardmäßigen Leseberechtigungen benötigt werden. Abhängig von Ihrem Szenario benötigen Sie jedoch möglicherweise weitere Berechtigungen. Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account).
 
@@ -80,6 +84,9 @@ Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS
 Überprüfen Sie alle Domänen, die als **Nicht hinzugefügt** und **Nicht überprüft** markiert sind. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Klicken Sie auf das Symbol zum Aktualisieren, wenn Sie Ihre Domänen überprüft haben. Weitere Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../active-directory-add-domain.md).
 
 **userPrincipalName** : Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Die verwendeten Domänen, auch als UPN-Suffix bezeichnet, sollte in Azure AD überprüft werden, bevor die Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. So können Sie beispielsweise „email“ als Attribut mit der Anmelde-ID verwenden. Wenn Sie ein anderes Attribut als „userPrincipalName“ verwenden, wird dieses als **alternative ID**bezeichnet. Der Attributwert der alternativen ID muss dem RFC822-Standard entsprechen. Eine alternative ID kann sowohl für die Kennwortsynchronisierung als auch in einem Verbund verwendet werden.
+
+>[!NOTE]
+> Beim Aktivieren der Passthrough-Authentifizierung müssen Sie mindestens über eine verifizierte Domäne verfügen, um im Assistenten fortfahren zu können.
 
 > [!WARNING]
 > Eine alternative ID ist nicht mit allen Office 365-Workloads kompatibel. Weitere Informationen finden Sie unter [Konfigurieren der alternativen Anmelde-ID](https://technet.microsoft.com/library/dn659436.aspx).
@@ -135,11 +142,44 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 | --- | --- |
 | Exchange-Hybridbereitstellung |Das Exchange-Hybridbereitstellungsfeature ermöglicht die Koexistenz lokaler und Office 365-basierter Exchange-Postfächer. Azure AD Connect synchronisiert eine bestimmte Gruppe von [Attributen](../active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) aus Azure AD mit Ihrem lokalen Verzeichnis. |
 | Azure AD-App- und Attributfilterung |Mithilfe der App- und Attributfilterung von Azure AD kann die Gruppe synchronisierter Attribute individuell konfiguriert werden. Durch diese Option wird der Assistent um zwei weitere Konfigurationsseiten erweitert. Weitere Informationen finden Sie unter [Azure AD-App- und Attributfilterung](#azure-ad-app-and-attribute-filtering). |
-| Kennwortsynchronisierung |Diese Option ist verfügbar, wenn Sie als Anmeldelösung die Verbundoption ausgewählt haben. Die Synchronisierung von Kennwörtern kann dann als Sicherungsoption verwendet werden. Weitere Informationen finden Sie unter [Kennwortsynchronisierung](../active-directory-aadconnectsync-implement-password-synchronization.md). |
+| Kennwortsynchronisierung |Diese Option ist verfügbar, wenn Sie als Anmeldelösung die Verbundoption ausgewählt haben. Die Synchronisierung von Kennwörtern kann dann als Sicherungsoption verwendet werden. Weitere Informationen finden Sie unter [Kennwortsynchronisierung](../active-directory-aadconnectsync-implement-password-synchronization.md). </br></br>Wenn Sie die Passthrough-Authentifizierung ausgewählt haben, ist diese Option standardmäßig aktiviert, um sicherzustellen, dass Legacyclients unterstützt werden und eine Sicherungsoption vorhanden ist. Weitere Informationen finden Sie unter [Kennwortsynchronisierung](../active-directory-aadconnectsync-implement-password-synchronization.md).|
 | Rückschreiben von Kennwörtern |Durch Aktivieren des Kennwortrückschreibens werden Kennwortänderungen aus Azure AD in Ihr lokales Verzeichnis zurückgeschrieben. Weitere Informationen finden Sie unter [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords-getting-started.md). |
 | Gruppenrückschreiben |Bei Verwendung des Features **Office 365-Gruppen** können diese Gruppen in Ihrem lokalen Active Directory dargestellt werden. Diese Option ist nur verfügbar, wenn Exchange in Ihrem lokalen Active Directory vorhanden ist. Weitere Informationen finden Sie unter [Gruppenrückschreiben](../active-directory-aadconnect-feature-preview.md#group-writeback). |
 | Geräterückschreiben |Ermöglicht für bedingte Szenarios das Rückschreiben von Geräteobjekten in Azure AD auf Ihr lokales Active Directory. Weitere Informationen finden Sie unter [Aktivieren des Geräterückschreibens in Azure AD Connect](../active-directory-aadconnect-feature-device-writeback.md). |
 | Verzeichniserweiterungen-Attributsynchronisierung |Durch Aktivieren der Attributsynchronisierung für Verzeichniserweiterungen werden die angegebenen Attribute mit Azure AD synchronisiert. Weitere Informationen finden Sie unter [Verzeichniserweiterungen](../active-directory-aadconnectsync-feature-directory-extensions.md). |
+
+### <a name="enabling-single-sign-on-sso"></a>Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO)
+Das Konfigurieren des einmaligen Anmeldens zur Verwendung mit der Kennwortsynchronisierung oder Passthrough-Authentifizierung ist ein einfacher Prozess, den Sie nur einmal für jede Gesamtstruktur durchführen müssen, die mit Azure AD synchronisiert wird.  Die Konfiguration umfasst zwei Schritte:
+
+1.  Erstellen des erforderlichen Computerkontos in Ihrer lokalen Active Directory-Instanz
+2.  Konfigurieren der Intranetzone der Clientcomputer zur Unterstützung des einmaligen Anmeldens
+
+#### <a name="creating-the-computer-account-in-active-directory"></a>Erstellen des Computerkontos in Active Directory
+Für jede Gesamtstruktur, die mit dem Tool AAD Connect hinzugefügt wurde, müssen Sie Domänenadministrator-Anmeldeinformationen angeben, damit das Computerkonto in jeder Gesamtstruktur erstellt werden kann.  Die Anmeldeinformationen werden nur zum Erstellen des Kontos verwendet und nicht für andere Vorgänge gespeichert oder genutzt.  Fügen Sie die Anmeldeinformationen einfach wie folgt auf der Seite „Einmaliges Anmelden aktivieren“ des AAD Connect-Assistenten hinzu:
+
+![Einmaliges Anmelden aktivieren](./media/active-directory-aadconnect-get-started-custom/enablesso.png)
+
+>[!NOTE]
+>Sie können auch angeben, dass eine bestimmte Gesamtstruktur übersprungen werden soll, wenn das einmalige Anmelden für die Gesamtstruktur nicht verwendet werden soll.
+
+#### <a name="configure-the-intranet-zone-for-client-machines"></a>Konfigurieren der Intranetzone für Clientcomputer
+Um sicherzustellen, dass der Client in der Intranetzone automatisch angemeldet wird, müssen Sie dafür sorgen, dass die URLs Teil der Intranetzone sind.  So wird erreicht, dass der in die Domäne eingebundene Desktopcomputer automatisch ein Kerberos-Ticket sendet, wenn die Verbindung mit dem Unternehmensnetzwerk hergestellt wird.
+Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
+
+1.  Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
+2.  Bearbeiten Sie die Gruppenrichtlinie, die auf alle Benutzer angewendet wird.  Beispiel: Standardrichtlinie der Domäne.
+3.  Navigieren Sie zu „Aktueller Benutzer\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite“, und wählen Sie wie in der folgenden Abbildung dargestellt die Option „Liste der Site zu Zonenzuweisungen“.
+4.  Aktivieren Sie die Richtlinie, und geben Sie die folgenden beiden Elemente in das Dialogfeld ein.
+   
+        Value: https://autologon.microsoftazuread-sso.com
+        Data: 1
+        Value: https://aadg.windows.net.nsatc.net 
+        Data: 1
+
+5.  Das Ergebnis sollte in etwa wie folgt aussehen: ![Intranetzonen](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
+
+6.  Klicken Sie zweimal auf „OK“.
+
 
 ### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD-App- und Attributfilterung
 Wenn Sie einschränken möchten, welche Attribute mit Azure AD synchronisiert werden, wählen Sie zunächst die verwendeten Dienste aus. Falls Sie auf dieser Seite Konfigurationsänderungen vornehmen, muss durch erneutes Ausführen des Installations-Assistenten explizit ein neuer Dienst ausgewählt werden.
@@ -170,7 +210,7 @@ Das Konfigurieren von AD FS mit Azure AD Connect ist mit nur wenigen Mausklicks 
 * Ein SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>Voraussetzungen für die AD FS-Konfiguration
-Vergewissern Sie sich, dass WinRM auf den Remoteservern aktiviert ist, damit Sie Ihre AD FS-Farm mithilfe von Azure AD Connect konfigurieren können. Machen Sie sich außerdem unter [Tabelle 3: Azure AD Connect und Verbund-/WAP-Server](../active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-federation-serverswap) mit den Portanforderungen vertraut.
+Vergewissern Sie sich, dass WinRM auf den Remoteservern aktiviert ist, damit Sie Ihre AD FS-Farm mithilfe von Azure AD Connect konfigurieren können. Machen Sie sich außerdem unter [Tabelle 3: Azure AD Connect und Verbund-/WAP-Server](../active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) mit den Portanforderungen vertraut.
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>Erstellen einer neuen AD FS-Farm oder Verwenden einer vorhandenen AD FS-Farm
 Sie können eine vorhandene AD FS-Farm verwenden oder eine neue AD FS-Farm erstellen. Wenn Sie eine neue Farm erstellen, müssen Sie ein SSL-Zertifikat bereitstellen. Bei Verwendung eines kennwortgeschützten SSL-Zertifikats werden Sie zur Eingabe des Kennworts aufgefordert.
@@ -282,6 +322,6 @@ Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Dire
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

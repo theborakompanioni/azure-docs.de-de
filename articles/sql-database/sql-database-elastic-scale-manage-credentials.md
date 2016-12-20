@@ -1,32 +1,37 @@
 ---
-title: Verwalten von Anmeldeinformationen in der Clientbibliothek für elastische Datenbanken | Microsoft Docs
-description: So richten Sie Anmeldeinformationen mit den passenden Berechtigungen (von Administrator- bis Leseberechtigungen) für Apps für elastische Datenbanken ein
+title: "Verwalten von Anmeldeinformationen in der Clientbibliothek für elastische Datenbanken | Microsoft Docs"
+description: "So richten Sie Anmeldeinformationen mit den passenden Berechtigungen (von Administrator- bis Leseberechtigungen) für Apps für elastische Datenbanken ein"
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 manager: jhubbard
 author: ddove
-editor: ''
-
+editor: 
+ms.assetid: 72e0edaf-795e-4856-84a5-6594f735fb7e
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 10/24/2016
 ms.author: ddove
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bbe3370442ad4117a1a08d0b23595dd98aaba5b5
+
 
 ---
-# Anmeldeinformationen für den Zugriff auf die Clientbibliothek für elastische Datenbanken
+# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Anmeldeinformationen für den Zugriff auf die Clientbibliothek für elastische Datenbanken
 Die [Clientbibliothek für elastische Datenbanken](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) verwendet drei verschiedene Arten von Anmeldeinformationen für den Zugriff auf den [Shardzuordnungs-Manager](sql-database-elastic-scale-shard-map-management.md). Verwenden Sie jeweils die Anmeldeinformationen mit den geringstmöglichen Zugriffsrechten.
 
 * **Verwaltungsanmeldeinformationen**: Zum Erstellen oder Bearbeiten eines Shard-Zuordnungs-Managers. (Siehe [Glossar](sql-database-elastic-scale-glossary.md)) 
 * **Zugriffsanmeldeinformationen**: Zum Zugreifen auf einen vorhandenen Shard-Zuordnungs-Manager zum Abrufen von Informationen zu Shards
 * **Verbindungsanmeldeinformationen**: Zum Herstellen einer Verbindung mit Shards 
 
-Informationen finden Sie auch unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md).
+Informationen finden Sie auch unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md). 
 
-## Informationen zu Anmeldeinformationen
-Die Verwaltungsanmeldeinformationen werden zum Erstellen eines [**ShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)-Objekts für Anwendungen verwendet, die Shard-Zuordnungen ändern. (Ein Beispiel finden Sie unter [Hinzufügen von Shards mit den Tools für elastische Datenbanken](sql-database-elastic-scale-add-a-shard.md) und [Datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md).) Der Benutzer der Clientbibliothek für elastische Datenbanken erstellt die SQL-Benutzer und SQL-Anmeldungen und stellt sicher, dass diesen Lese-/Schreibberechtigungen für die globale Shardzuordnungs-Datenbank und auch alle Sharddatenbanken gewährt werden. Diese Anmeldeinformationen werden zum Verwalten der globalen und der lokalen Shard-Maps verwendet, wenn Änderungen an der Shard-Map vorgenommen werden. Verwenden Sie beispielsweise die Verwaltungsanmeldeinformationen, um das Objekt für den Shard-Zuordnungs-Manager zu erstellen (mit [**GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)):
+## <a name="about-management-credentials"></a>Informationen zu Anmeldeinformationen
+Die Verwaltungsanmeldeinformationen werden zum Erstellen eines [**ShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)-Objekts für Anwendungen verwendet, die Shardzuordnungen ändern. (Ein Beispiel finden Sie unter [Hinzufügen von Shards mit den Tools für elastische Datenbanken](sql-database-elastic-scale-add-a-shard.md) und [Datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md).) Der Benutzer der Clientbibliothek für elastische Datenbanken erstellt die SQL-Benutzer und SQL-Anmeldungen und stellt sicher, dass diesen Lese-/Schreibberechtigungen für die globale Shardzuordnungs-Datenbank und auch alle Sharddatenbanken gewährt werden. Diese Anmeldeinformationen werden zum Verwalten der globalen und der lokalen Shard-Maps verwendet, wenn Änderungen an der Shard-Map vorgenommen werden. Verwenden Sie beispielsweise die Verwaltungsanmeldeinformationen, um das Objekt für den Shard-Zuordnungs-Manager zu erstellen (mit [**GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)): 
 
     // Obtain a shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -38,10 +43,10 @@ Die Variable **smmAdminConnectionString** ist eine Verbindungszeichenfolge, die 
 
      "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;” 
 
-Verwenden Sie die Werte nicht im Format „Benutzername@Server“, sondern stattdessen einfach nur den Wert „Benutzername“. Der Hintergrund ist, dass die Anmeldeinformationen für den Zugriff sowohl auf die Shard-Zuordnungs-Manager-Datenbank als auch auf einzelne Shards verwendet werden, die sich auf unterschiedlichen Servern befinden können.
+Verwenden Sie die Werte nicht im Format "username@server"—instead, sondern einfach nur den Wert „Benutzername“.  Der Hintergrund ist, dass die Anmeldeinformationen für den Zugriff sowohl auf die Shard-Zuordnungs-Manager-Datenbank als auch auf einzelne Shards verwendet werden, die sich auf unterschiedlichen Servern befinden können.
 
-## Zugriffsanmeldeinformationen
-Beim Erstellen eines Shard-Zuordnungs-Managers in einer Anwendung, die keine Shard-Zuordnungen verwaltet, verwenden Sie Anmeldeinformationen, die Leseberechtigungen für die globale Shard-Zuordnung besitzen. Die aus der globalen Shard-Zuordnung unter diesen Anmeldeinformationen abgerufenen Informationen werden für [datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md) und zur Auffüllung des Shard-Zuordnungscaches auf dem Client verwendet. Die Anmeldeinformationen werden über das gleiche Aufrufmuster wie für **GetSqlShardMapManager** bereitgestellt, das oben dargestellt ist:
+## <a name="access-credentials"></a>Zugriffsanmeldeinformationen
+Beim Erstellen eines Shard-Zuordnungs-Managers in einer Anwendung, die keine Shard-Zuordnungen verwaltet, verwenden Sie Anmeldeinformationen, die Leseberechtigungen für die globale Shard-Zuordnung besitzen. Die aus der globalen Shard-Zuordnung unter diesen Anmeldeinformationen abgerufenen Informationen werden für [datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md) und zur Auffüllung des Shard-Zuordnungscaches auf dem Client verwendet. Die Anmeldeinformationen werden über das gleiche Aufrufmuster wie für **GetSqlShardMapManager** bereitgestellt, das oben dargestellt ist: 
 
     // Obtain shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -49,21 +54,21 @@ Beim Erstellen eines Shard-Zuordnungs-Managers in einer Anwendung, die keine Sha
             ShardMapManagerLoadPolicy.Lazy
     );  
 
-Beachten Sie, dass **smmReadOnlyConnectionString** verwendet wird, um die Verwendung unterschiedlicher Anmeldeinformationen für diesen Zugriff für Benutzer **ohne Administratorrechte** darzustellen. Diese Anmeldeinformationen dürfen keine Schreibberechtigungen für die globale Shard-Zuordnung bereitstellen.
+Beachten Sie, dass **smmReadOnlyConnectionString** verwendet wird, um die Verwendung unterschiedlicher Anmeldeinformationen für diesen Zugriff für Benutzer **ohne Administratorrechte** darzustellen. Diese Anmeldeinformationen dürfen keine Schreibberechtigungen für die globale Shardzuordnung bereitstellen. 
 
-## Verbindungsanmeldeinformationen
-Bei Verwendung der [**OpenConnectionForKey**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)-Methode sind zusätzliche Anmeldeinformationen erforderlich, um auf ein mit einem Sharding-Schlüssel verbundenes Shard zuzugreifen. Diese Anmeldeinformationen müssen Berechtigungen für schreibgeschützten Zugriff auf die lokalen Shard-Map-Tabellen bereitstellen, die sich im Shard befinden. Dies ist erforderlich, um eine Verbindungsüberprüfung für datenabhängiges Routing im Shard durchzuführen. Dieser Codeausschnitt ermöglicht den Datenzugriff im Kontext des datenabhängigen Routings:
+## <a name="connection-credentials"></a>Verbindungsanmeldeinformationen
+Bei Verwendung der [**OpenConnectionForKey**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) -Methode sind zusätzliche Anmeldeinformationen erforderlich, um auf ein mit einem Sharding-Schlüssel verbundenes Shard zuzugreifen. Diese Anmeldeinformationen müssen Berechtigungen für schreibgeschützten Zugriff auf die lokalen Shard-Map-Tabellen bereitstellen, die sich im Shard befinden. Dies ist erforderlich, um eine Verbindungsüberprüfung für datenabhängiges Routing im Shard durchzuführen. Dieser Codeausschnitt ermöglicht den Datenzugriff im Kontext des datenabhängigen Routings: 
 
     using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>( 
     targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate)) 
 
-In diesem Beispiel enthält **smmUserConnectionString** die Verbindungszeichenfolge für die Benutzeranmeldeinformationen. Für die Azure SQL-Datenbank finden Sie nachfolgend eine typische Verbindungszeichenfolge für Benutzeranmeldeinformationen:
+In diesem Beispiel enthält **smmUserConnectionString** die Verbindungszeichenfolge für die Benutzeranmeldeinformationen. Für die Azure SQL-Datenbank finden Sie nachfolgend eine typische Verbindungszeichenfolge für Benutzeranmeldeinformationen: 
 
     "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 
-Genau wie bei den Administratoranmeldeinformationen verwenden Sie keine Werte im Format „Benutzername@Server“. Verwenden Sie stattdessen einfach „Benutzername“. Beachten Sie außerdem, dass die Verbindungszeichenfolge keinen Server- und Datenbanknamen enthält. Dies liegt daran, dass der **OpenConnectionForKey**-Aufruf die Verbindung basierend auf dem Schlüssel automatisch an den richtigen Shard leitet. Daher werden der Datenbankname und der Servername nicht bereitgestellt.
+Genau wie bei den Administratoranmeldeinformationen verwenden Sie keine Werte im Format "username@server"., sondern verwenden Sie einfach nur den Wert „Benutzername“.  Beachten Sie außerdem, dass die Verbindungszeichenfolge keinen Server- und Datenbanknamen enthält. Dies liegt daran, dass der **OpenConnectionForKey** -Aufruf die Verbindung basierend auf dem Schlüssel automatisch an den richtigen Shard leitet. Daher werden der Datenbankname und der Servername nicht bereitgestellt. 
 
-## Weitere Informationen
+## <a name="see-also"></a>Informationen finden Sie auch unter 
 [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md)
 
 [Sichern der SQL-Datenbank](sql-database-security.md)
@@ -72,4 +77,9 @@ Genau wie bei den Administratoranmeldeinformationen verwenden Sie keine Werte im
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,61 +1,50 @@
 ---
-title: Verwenden des Application Insights-Portals
-description: Metriken, Suche, Dashboards und Einstellungen im Application Insights-Portal.
+title: Dashboards und Navigation im Application Insights-Portal | Microsoft Docs
+description: "Es wird beschrieben, wie Sie Ansichten für Ihre wichtigsten APM-Diagramme und -Abfragen erstellen."
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 07/30/2016
+ms.date: 10/18/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
+
 
 ---
-# Navigation und Dashboards im Application Insights-Portal
+# <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigation und Dashboards im Application Insights-Portal
 Nachdem Sie [Application Insights für Ihr Projekt eingerichtet haben](app-insights-overview.md), werden Telemetriedaten zur Leistung und Nutzung Ihrer App in der Application Insights-Ressource Ihres Projekts im [Azure-Portal](https://portal.azure.com) angezeigt.
 
-## Finden der Telemetriedaten
-Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und wechseln Sie zur Application Insights-Ressource, die Sie für Ihre App erstellt haben.
+## <a name="find-your-telemetry"></a>Finden der Telemetriedaten
+Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zur Application Insights-Ressource, die Sie für Ihre App erstellt haben.
 
 ![Wählen Sie „Durchsuchen“, „Application Insights“ und dann Ihre App aus.](./media/app-insights-dashboards/00-start.png)
 
-Auf der Übersichtsseite finden Sie grundlegende Telemetriedaten sowie Links zu weiteren Daten. Der Inhalt hängt vom Typ Ihrer App ab und kann angepasst werden.
-
-## Das Blatt für die App-Übersicht
 Das Übersichtsblatt (bzw. die Seite) für Ihre App zeigt eine Zusammenfassung der wichtigen Diagnosemetriken für Ihre App an und ist das Tor zu den anderen Features des Portals.
-
-Klicken Sie auf:
-
-* **Ein Diagramm oder eine Kachel**, um weitere Details darüber anzuzeigen, was im Diagramm dargestellt wird.
-* **Einstellungen**, um vordefinierte Blätter anderer Metriken sowie Konfigurationsseiten anzuzeigen.
-* [**Metrik-Explorer**](app-insights-metrics-explorer.md), um Metrikseiten Ihrer Wahl zu erstellen.
-* [**Suche**](app-insights-diagnostic-search.md), um spezifische Instanzen von Ereignissen zu untersuchen, z.B. Anforderungen, Ausnahmen oder Protokollablaufverfolgungen.
-* [**Analytics**](app-insights-analytics.md) für leistungsfähige Abfragen über Ihre Telemetriedaten.
-* [**Livedatenströme**](app-insights-metrics-explorer.md#live-stream) für einen festen Satz zeitnaher Metriken, die nützlich sind, wenn Sie einen neuen Build bereitstellen oder debuggen.
 
 ![Hauptwege zum Anzeigen von Telemetriedaten](./media/app-insights-dashboards/010-oview.png)
 
-### Anpassen des Blatts „Übersicht“
-Legen Sie fest, was in der Übersicht angezeigt werden soll. Unter „Anpassen“ können Sie Abschnittstitel einfügen, Kacheln und Diagramme anordnen, Elemente entfernen und neue Kacheln und Diagramme aus dem Katalog hinzufügen.
+Sie können alle anderen Diagramme anpassen und an ein Dashboard anheften. Auf diese Weise können Sie die wichtigen Diagramme aus verschiedenen Apps zusammenführen.
 
-![Klicken Sie auf "Bearbeiten". Ziehen Sie Kacheln und Diagramme. Fügen Sie Kacheln aus dem Katalog hinzu. Klicken Sie anschließend auf „Fertig“.](./media/app-insights-dashboards/020-customize.png)
-
-## Dashboards
-Nachdem Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) angemeldet haben, wird Ihnen als Erstes ein Dashboard angezeigt. Hier können Sie für all Ihre Azure-Ressourcen die Diagramme zusammenstellen, die für Sie am wichtigsten sind, einschließlich Telemetriedaten aus [Visual Studio Application Insights](app-insights-overview.md).
+## <a name="dashboards"></a>Dashboards
+Nachdem Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) angemeldet haben, wird Ihnen als Erstes ein Dashboard angezeigt. Hier können Sie für all Ihre Azure-Ressourcen die Diagramme zusammenstellen, die für Sie am wichtigsten sind, einschließlich Telemetriedaten aus [Azure Application Insights](app-insights-overview.md).
 
 ![Ein angepasstes Dashboard.](./media/app-insights-dashboards/31.png)
 
-1. Sie können Dashboards über die Dashboardsymbolleiste erstellen, bearbeiten und freigeben.
-2. Kehren Sie zum aktuellen Dashboard zurück, oder wechseln Sie zu anderen kürzlich verwendeten Ansichten.
-3. Wechseln Sie die Dashboards.
-4. Sie können Dashboards erstellen, bearbeiten und freigeben.
-5. Zeigen Sie auf eine Kachel, und verwenden Sie die obere Leiste, um sie zu verschieben, anzupassen oder zu entfernen.
+1. **Navigieren zu bestimmten Ressourcen**, z.B. zu Ihrer App in Application Insights: Verwenden Sie die linke Leiste.
+2. **Zurückwechseln zum aktuellen Dashboard** oder zu anderen zuletzt verwendeten Ansichten: Verwenden Sie das Dropdownmenü oben links.
+3. **Wechseln von Dashboards**: Verwenden Sie das Dropdownmenü in der Titelleiste des Dashboards.
+4. **Erstellen, Bearbeiten und Freigeben von Dashboards**: Verwenden Sie die Symbolleiste des Dashboards.
+5. **Bearbeiten des Dashboards**: Zeigen Sie auf eine Kachel, und verwenden Sie die obere Leiste, um sie zu verschieben, anzupassen oder zu entfernen.
 
-## Hinzufügen zu einem Dashboard
+## <a name="add-to-a-dashboard"></a>Hinzufügen zu einem Dashboard
 Wenn Sie ein Blatt oder Diagramm anzeigen, das Sie besonders interessiert, können Sie eine Kopie des Blatts oder Diagramms an das Dashboard anheften. Es wird dann angezeigt, wenn Sie das nächste Mal zum Dashboard wechseln.
 
 ![Um ein Diagramm anzuheften, zeigen Sie darauf, und klicken Sie dann in der Kopfzeile auf „...“.](./media/app-insights-dashboards/33.png)
@@ -66,24 +55,24 @@ Wenn Sie ein Blatt oder Diagramm anzeigen, das Sie besonders interessiert, könn
 
 Beachten Sie, dass Diagramme auf Kacheln gruppiert sind: eine Kachel kann mehr als ein Diagramm enthalten. Sie heften die gesamte Kachel an das Dashboard an.
 
-### Analysediagramme
-Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](app-insights-analytics-using.md#pin-to-dashboard). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen.
+### <a name="pin-any-query-in-analytics"></a>Anheften von beliebigen Abfragen in Analytics
+Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](app-insights-analytics-using.md#pin-to-dashboard). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. (Für dieses Feature wird eine Gebühr berechnet.)
 
-## Anpassen einer Kachel auf dem Dashboard
+## <a name="adjust-a-tile-on-the-dashboard"></a>Anpassen einer Kachel auf dem Dashboard
 Sobald ein Kachel sich auf dem Dashboard befindet, können Sie sie anpassen.
 
 ![Bewegen Sie den Mauszeiger über ein Diagramm, um es zu bearbeiten.](./media/app-insights-dashboards/36.png)
 
 1. Fügen Sie der Kachel ein Diagramm hinzu.
 2. Legen Sie die Metrik, die Gruppierungsdimension und den Stil (Tabelle, Graph) eines Diagramms fest.
-3. Legen Sie die Zeitraum- und Filtereigenschaften für die Diagramme auf der Kachel fest. Sie können den Zeitraum des Diagramms direkt angeben oder festlegen, dass er aus dem Zeitraum des Dashboards geerbt wird.
+3. Ziehen Sie den Mauszeiger über das Diagramm, um die Ansicht zu vergrößern. Klicken Sie auf die Schaltfläche „Rückgängig“, um den Zeitraum zurückzusetzen. Legen Sie die Filtereigenschaften für die Diagramme auf der Kachel fest.
 4. Legen Sie den Titel für die Kachel fest.
 
 Für Kacheln, die aus Metrik-Explorer-Blättern angeheftet wurden, stehen mehr Bearbeitungsoptionen zur Verfügung als für Kacheln, die aus Übersichtsblättern angeheftet wurden.
 
 Bearbeitungen wirken sich nicht auf die ursprüngliche Kachel aus, die Sie angeheftet haben,
 
-## Wechsel zwischen Dashboards
+## <a name="switch-between-dashboards"></a>Wechsel zwischen Dashboards
 Sie können mehrere Dashboards speichern und zwischen diesen wechseln. Wenn Sie ein Diagramm oder Blatt anheften, werden diese dem aktuellen Dashboard hinzugefügt.
 
 ![Um zwischen Dashboards zu wechseln, klicken Sie auf ein Dashboard, und wählen Sie dann ein gespeichertes Dashboard aus. Um ein neues Dashboard zu erstellen und zu speichern, klicken Sie auf „Neu“. Um die Anordnung zu ändern, klicken Sie auf „Bearbeiten“.](./media/app-insights-dashboards/32.png)
@@ -94,45 +83,80 @@ Auf dem Dashboard wird ein Blatt als Kachel angezeigt: Klicken Sie darauf, um da
 
 ![Klicken Sie auf eine Kachel, um das Blatt anzuzeigen, das von der Kachel repräsentiert wird.](./media/app-insights-dashboards/35.png)
 
-## Freigeben von Dashboards für Ihr Team
+## <a name="share-dashboards"></a>Freigeben von Dashboards
 Wenn Sie ein Dashboard erstellt haben, können Sie es für andere Benutzer freigeben.
 
 ![Klicken Sie in der Dashboardüberschrift auf „Freigeben“.](./media/app-insights-dashboards/41.png)
 
 Erfahren Sie mehr über [Rollen und Zugriffssteuerung](app-insights-resources-roles-access-control.md).
 
-## Einstellungen
-Über die Schaltfläche „Einstellungen“ auf dem Blatt „Übersicht“ können Sie nicht nur auf die Konfiguration, sondern auch auf verschiedene Diagrammtypen zugreifen.
+## <a name="app-navigation"></a>App-Navigation
+Das Blatt „Übersicht“ ist der Ausgangspunkt für weitere Informationen zu Ihrer App.
 
-* **Überwachungsprotokolle:** Überprüfen Sie Warnungen und Aktionen, die in Ihrer App-Ressource ausgeführt wurden.
-* [Neue Supportanforderung:](app-insights-get-dev-support.md) Hilfeoptionen für alle Aspekte von Azure. Für Application Insights können Sie auch Hilfe erhalten, indem Sie auf die Smiley-Schaltfläche in der oberen rechten Ecke des Fensters klicken.
-* [Anwendungszuordnung:](app-insights-dependencies.md#application-map) Aktive Zuordnung, die die Komponenten Ihrer Anwendung anzeigt, abgeleitet aus den Abhängigkeitsinformationen.
-* [Live Metrics Stream:](app-insights-metrics-explorer.md#live-metrics-stream) Wichtige Metriken mit einer Latenz von etwa 1 Sekunde, zur Überwachung einer neuen Version.
-* **Fehler:** Anforderungen und Abhängigkeitsaufrufe mit Fehlern sowie Ausnahmen. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
-* **Leistung:** Reaktionszeit, Reaktionszeiten von Abhängigkeiten. [Blatt mit bearbeitbaren Metriken](app-insights-metrics-explorer.md).
+* **Diagramm oder Kachel**: Klicken Sie auf eine beliebige Kachel oder ein Diagramm, um weitere Details zur Anzeige einzublenden.
+
+### <a name="overview-blade-buttons"></a>Schaltflächen auf dem Blatt „Übersicht“
+![Obere Navigationsleiste auf dem Blatt „Übersicht“](./media/app-insights-dashboards/app-overview-top-nav.png)
+
+* [**Metrik-Explorer**](app-insights-metrics-explorer.md): Erstellen Sie Ihre eigenen Diagramme für Leistung und Nutzung.
+* [**Suche**](app-insights-diagnostic-search.md): Untersuchen Sie spezifische Instanzen von Ereignissen, z.B. Anforderungen, Ausnahmen oder Protokollablaufverfolgungen.
+* [**Analytics**](app-insights-analytics.md): Leistungsfähige Abfragen Ihrer Telemetriedaten.
+* **Zeitbereich**: Passen Sie den Bereich an, der für alle Diagramme des Blatts angezeigt wird.
+* **Löschen**: Löschen Sie die Application Insights-Ressource für diese App. Sie sollten außerdem entweder die Application Insights-Pakete aus Ihrem App-Code entfernen oder den [Instrumentationsschlüssel](app-insights-create-new-resource.md#copy-the-instrumentation-key) in Ihrer App bearbeiten, um die Telemetriedaten an eine andere Application Insights-Ressource zu leiten.
+
+### <a name="essentials-tab"></a>Registerkarte „Zusammenfassung“
+* [Instrumentationsschlüssels](app-insights-create-new-resource.md#copy-the-instrumentation-key): Identifiziert diese App-Ressource.
+* Preise: Hier können Sie Features verfügbar machen und Obergrenzen für das Volumen festlegen.
+
+### <a name="app-navigation-bar"></a>Leiste für App-Navigation
+![Linke Navigationsleiste](./media/app-insights-dashboards/app-left-nav-bar.png)
+
+* **Übersicht**: Dient zum Zurückwechseln zum Blatt mit der App-Übersicht.
+* **Aktivitätsprotokoll**: Enthält Warnungen und Azure-Verwaltungsereignisse.
+* [**Zugriffssteuerung**](app-insights-resources-roles-access-control.md): Ermöglicht den Zugriff für Teammitglieder und andere Personen.
+* [**Tags**](../resource-group-using-tags.md): Verwenden Sie Tags zum Gruppieren Ihrer App mit anderen Apps.
+
+UNTERSUCHEN
+
+* [**Anwendungszuordnung**](app-insights-app-map.md): Aktive Zuordnung, die die Komponenten Ihrer Anwendung anzeigt, abgeleitet aus den Abhängigkeitsinformationen.
+* [**Proaktive Diagnose**](app-insights-proactive-diagnostics.md): Überprüfung der letzten Leistungswarnungen.
+* [**Livedatenströme**](app-insights-metrics-explorer.md#live-metrics-stream): Ein fester Satz zeitnaher Metriken, die nützlich sind, wenn Sie einen neuen Build bereitstellen oder debuggen.
+* [**Verfügbarkeit/Webtests**](app-insights-monitor-web-app-availability.md): Ermöglicht das weltweite Senden von regelmäßigen Anforderungen an Ihre Web-App.*
+* [**Fehler, Leistung**](app-insights-web-monitor-performance.md): Ausnahmen, Fehlerraten und Antwortzeiten für Anforderungen an Ihre App und für Anforderungen von Ihrer App an [Abhängigkeiten](app-insights-asp-net-dependencies.md).
+* [**Leistung**](app-insights-web-monitor-performance.md): Reaktionszeit, Reaktionszeiten von Abhängigkeiten.
 * [Server:](app-insights-web-monitor-performance.md) Leistungsindikatoren. Verfügbar, wenn Sie den [Statusmonitor installieren](app-insights-monitor-performance-live-website-now.md).
 * **Browser:** Leistung von Seitenansichten und AJAX. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](app-insights-javascript.md).
 * **Nutzung:** Seitenansichts-, Benutzer- und Sitzungszähler. Verfügbar, wenn Sie [Ihre Webseiten instrumentieren](app-insights-javascript.md).
+
+KONFIGURIEREN
+
 * **Erste Schritte:** Inlinetutorial.
 * **Eigenschaften:** Instrumentierungsschlüssel, Abonnement und Ressourcen-ID.
-* [Verfügbarkeit:](app-insights-monitor-web-app-availability.md) Konfiguration und Ergebnisse von Webtests.
 * [Warnungen:](app-insights-alerts.md) Konfiguration von Warnungen zu Metriken.
 * [Fortlaufender Export:](app-insights-export-telemetry.md) Konfigurieren Sie den Export von Telemetriedaten in Azure Storage.
 * [Leistungstests:](app-insights-monitor-web-app-availability.md#performance-tests) Richten Sie eine synthetische Last auf Ihrer Website ein.
 * [Kontingent und Preise](app-insights-pricing.md) und [Erfassungs-Stichprobenerstellung](app-insights-sampling.md).
-* **API-Zugriff:** Zurzeit zum Erstellen von [Versionsanmerkungen](app-insights-annotations.md) und für die Datenzugriffs-API verwendet.
-* [**Arbeitselemente:**](app-insights-diagnostic-search.md#create-work-item) Stellen Sie eine Verbindung mit einem System für die Aufgabennachverfolgung her, um Fehler erstellen zu können, während Sie die Telemetrie überprüfen.
-* [**Benutzer:**](app-insights-resources-roles-access-control.md) Verwalten Sie die Benutzer, die auf Ihre App-Ressource zugreifen dürfen.
-* [**Rollen:**](app-insights-resources-roles-access-control.md) Verwalten Sie die Aktionen, die Benutzer ausführen können.
-* [**Tags:**](../resource-group-using-tags.md) Organisieren Sie Azure-Ressourcen.
-* [**Sperren:**](../resource-group-lock-resources.md) Sperren Sie Azure-Ressourcen.
-* [**Exportieren einer Vorlage:**](app-insights-powershell.md) Exportieren Sie eine Definition der Azure-Ressource, um diese als Vorlage für die Erstellung neuer Ressourcen zu verwenden.
+* **API-Zugriff**: Dient zum Erstellen von [Versionsanmerkungen](app-insights-annotations.md) und wird für die Datenzugriffs-API verwendet.
+* [**Arbeitselemente**](app-insights-diagnostic-search.md#create-work-item): Stellen Sie eine Verbindung mit einem System für die Aufgabennachverfolgung her, um Fehler erstellen zu können, während Sie die Telemetrie überprüfen.
 
-## Wie geht es weiter?
+EINSTELLUNGEN
+
+* [**Sperren**](../resource-group-lock-resources.md): Sperren Sie Azure-Ressourcen.
+* [**Automatisierungsskript**](app-insights-powershell.md): Exportieren Sie eine Definition der Azure-Ressource, um diese als Vorlage für die Erstellung neuer Ressourcen zu verwenden.
+
+SUPPORT
+
+* **Supportanfrage**: Hierfür ist ein kostenpflichtiges Abonnement erforderlich. Siehe auch [Hilfe](app-insights-get-dev-support.md).
+
+## <a name="whats-next"></a>Wie geht es weiter?
 |  |  |
 | --- | --- |
 | [Metrik-Explorer](app-insights-metrics-explorer.md)<br/>Filtern und Segmentieren von Metriken |![Suchbeispiel](./media/app-insights-dashboards/64.png) |
 | [Diagnosesuche](app-insights-diagnostic-search.md)<br/>Suchen und Untersuchen von Ereignissen bzw. zugehörigen Ereignissen und Erstellen von Fehlern |![Suchbeispiel](./media/app-insights-dashboards/61.png) |
-| [Analytics](app-insights-analytics.md)<br/>Leistungsfähige Abfragesprache |![Suchbeispiel](./media/app-insights-dashboards/63.png) |
+| [Analyse](app-insights-analytics.md)<br/>Leistungsfähige Abfragesprache |![Suchbeispiel](./media/app-insights-dashboards/63.png) |
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 08/31/2016
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51833ae656f4c5275b0bd922d21288901cd1f4b3
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
 
 
 ---
@@ -48,7 +48,7 @@ Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der A
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird  
-* Azure PowerShell, **mindestens Version 1.0.1**. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.  
+* Azure PowerShell, **mindestens Version 1.0.1**. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.  
 * Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
 ## <a name="a-idconnectaconnect-to-your-subscriptions"></a><a id="connect"></a>Verbindungsherstellung mit Ihren Abonnements
@@ -66,7 +66,7 @@ Geben Sie dann Folgendes ein, um das Abonnement anzugeben, das dem zu protokolli
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ## <a name="a-idstorageacreate-a-new-storage-account-for-your-logs"></a><a id="storage"></a>Erstellen eines neuen Speicherkontos für Ihre Protokolle
 Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, aber wir erstellen ein neues Speicherkonto, das den Schlüsseltresor-Protokollen zugeordnet wird. Wir speichern die Details in einer Variablen mit dem Namen **sa**, damit wir sie später leicht angeben können.
@@ -266,6 +266,6 @@ Ein Tutorial zur Schlüsselrotation und Protokollüberwachung mit Azure Key Vaul
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

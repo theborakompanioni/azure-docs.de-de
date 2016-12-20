@@ -1,22 +1,26 @@
 ---
-title: Alert Management-Lösung in der Operations Management Suite (OMS) | Microsoft Docs
-description: Die Alert Management-Lösung in Log Analytics unterstützt Sie beim Analysieren aller Warnungen in Ihrer Umgebung.  Zusätzlich zur Konsolidierung von in OMS generierten Warnungen werden Warnungen aus verbundenen Verwaltungsgruppen von System Center Operations Manager (SCOM) in Log Analytics importiert.
+title: "Alert Management-Lösung in der Operations Management Suite (OMS) | Microsoft Docs"
+description: "Die Alert Management-Lösung in Log Analytics unterstützt Sie beim Analysieren aller Warnungen in Ihrer Umgebung.  Zusätzlich zur Konsolidierung von in OMS generierten Warnungen werden Warnungen aus verbundenen Verwaltungsgruppen von System Center Operations Manager (SCOM) in Log Analytics importiert."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2caa3118785fab6919dd088e440bf3483a77bd69
+
 
 ---
-# <a name="alert-management-solution-in-operations-management-suite-(oms)"></a>Alert Management-Lösung in der Operations Management Suite (OMS)
+# <a name="alert-management-solution-in-operations-management-suite-oms"></a>Alert Management-Lösung in der Operations Management Suite (OMS)
 ![Symbol „Alert Management“](media/log-analytics-solution-alert-management/icon.png) Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrer Umgebung.  Zusätzlich zur Konsolidierung von in OMS generierten Warnungen werden Warnungen aus verbundenen Verwaltungsgruppen von System Center Operations Manager (SCOM) in Log Analytics importiert.  In Umgebungen mit mehreren Verwaltungsgruppen bietet die Alert Management-Lösung eine konsolidierte Ansicht der Warnungen über alle Verwaltungsgruppen hinweg.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -114,6 +118,9 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Warnungsdatens
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie sich die Details zum Generieren von Warnungen aus Log Analytics unter [Warnungen in Log Analytics](log-analytics-alerts.md) durch.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

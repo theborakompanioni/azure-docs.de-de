@@ -65,8 +65,7 @@
 
 
 #### [Überwachen von Ereignissen](active-directory-reporting-audit-events.md)
-#### [Vermerkdauer](active-directory-reporting-retention.md)
-#### [Abgleich](active-directory-reporting-backfill.md)
+#### [Aufbewahrung](active-directory-reporting-retention.md)
 #### [Wartezeiten](active-directory-reporting-latencies.md)
 #### [Notifications](active-directory-reporting-notifications.md)
 ### Verstehen von Berichten
@@ -297,6 +296,6 @@
 ## [Azure-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

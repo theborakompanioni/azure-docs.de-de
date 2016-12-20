@@ -1,5 +1,5 @@
 ### <a name="tag-cmdlet-changes-in-latest-powershell-version"></a>Tag-Cmdlet ist in der neuesten Version von PowerShell geändert
-Die August 2016-Version von [Azure PowerShell 2.0][powershell] enthält wesentliche Änderungen für die Verwendung von Tags. Bevor Sie fortfahren, überprüfen Sie Ihre Version des Moduls AzureRm.Resources.
+Die August 2016-Version von Azure PowerShell 2.0 enthält wichtige Änderungen bezüglich der Art und Weise, wie Sie mit Tags arbeiten. Bevor Sie fortfahren, überprüfen Sie Ihre Version des Moduls AzureRm.Resources.
 
     Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 
@@ -226,7 +226,6 @@ Möglicherweise sehen Sie Tags, die mit "hidden-" und "link:" beginnen. Hierbei 
 
 Verwenden Sie das Cmdlet **New-AzureRmTag** , um der Taxonomie neue Markierungen hinzuzufügen. Diese Tags werden in die AutoVervollständigen-Funktion eingeschlossen, obwohl sie noch nicht auf Ressourcen oder Ressourcengruppen angewendet wurden. Um einen Markierungsnamen/Markierungswert zu entfernen, entfernen Sie zuerst die Markierung aus allen Ressourcen, mit denen es möglicherweise verwendet wird, und entfernen Sie es dann mit dem Cmdlet **Remove-AzureRmTag** aus der Taxonomie.
 
-[powershell]: https://msdn.microsoft.com/library/mt619274(v=azure.200).aspx
 
 
 <!--HONumber=Nov16_HO3-->

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/12/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a4395385ab0e6e71e5139883a544add0a081cf2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1a680f20bc9ceee8efd943cd71312372fe56a878
 
 
 ---
@@ -62,12 +62,12 @@ Azure Media Services-Konzepte finden Sie unter [Konzepte](media-services-concept
 
 Eine Reihe mit Vorgehensweisen (Gewusst wie), in der die wichtigsten Komponenten von Azure Media Services beschrieben werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)(Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet eine hervorragende Übersicht über die Konzepte und verwendet das AMSE-Tool, um die AMS-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
 
-## <a name="a-idvodscenariosadelivering-media-ondemand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
+## <a name="a-idvodscenariosadelivering-media-on-demand-with-azure-media-services-common-scenarios-and-tasks"></a><a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
 In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevanten Themen bereitgestellt. Das folgende Diagramm zeigt die Hauptbestandteile der Media Services-Plattform, die am Bereitstellen von On-Demand-Inhalten beteiligt sind. 
 
 ![VoD-Workflow](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
-### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-nonencrypted"></a>Schützen von Inhalte im Speicher und Übermitteln von Streamingmedien ohne Verschlüsselung
+### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Schützen von Inhalte im Speicher und Übermitteln von Streamingmedien ohne Verschlüsselung
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch.
    
     Es wird empfohlen, eine Speicherverschlüsselung auf Medienobjekte anzuwenden, um Ihre Inhalte beim Hochladen und während der Speicherung zu schützen.
@@ -142,13 +142,13 @@ Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten da
 * Von einem lokalen Liveencoder wird Mehrfachbitraten-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco.  Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 > [!NOTE]
-> Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](/pricing/details/media-services/) .
+> Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/media-services/) .
 > 
 > 
 
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
-### <a name="working-with-channels-that-receive-multibitrate-live-stream-from-onpremises-encoders-passthrough"></a>Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)
+### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)
 Das folgende Diagramm zeigt die Hauptkomponenten der AMS-Plattform, die am **Pass-Through-Workflow** beteiligt sind:
 
 ![Liveworkflow][live-overview2]
@@ -201,6 +201,6 @@ Weitere Informationen finden Sie im [Microsoft Azure-SLA](https://azure.microsof
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,13 +1,13 @@
 ---
 title: SendGrid | Microsoft Docs
-description: Erstellen Sie Logik-Apps mit Azure App Service. Mit dem SendGrid-Verbindungsanbieter können Sie E-Mails senden und Empfängerlisten verwalten.
+description: "Erstellen Sie Logik-Apps mit Azure App Service. Mit dem SendGrid-Verbindungsanbieter können Sie E-Mails senden und Empfängerlisten verwalten."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
@@ -15,24 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ad35f6590a39972ec9be7168059738b6daae0574
+
 
 ---
-# Erste Schritte mit dem SendGrid-Connector
+# <a name="get-started-with-the-sendgrid-connector"></a>Erste Schritte mit dem SendGrid-Connector
 Mit dem SendGrid-Verbindungsanbieter können Sie E-Mails senden und Empfängerlisten verwalten.
 
 > [!NOTE]
-> Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+> Diese Version des Artikels gilt für Logik-Apps mit der Schemaversion „2015-08-01-preview“. 
 > 
 > 
 
 Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-## Trigger und Aktionen
-Der SendGrid-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
+## <a name="triggers-and-actions"></a>Trigger und Aktionen
+Der SendGrid-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format. 
 
  Der SendGrid-Connector verfügt über die folgenden Aktionen: Es gibt keine Trigger.
 
-### SendGrid-Aktionen
+### <a name="sendgrid-actions"></a>SendGrid-Aktionen
 Sie können diese Aktionen ausführen:
 
 | Aktion | Beschreibung |
@@ -40,14 +44,14 @@ Sie können diese Aktionen ausführen:
 | [SendEmail](connectors-create-api-sendgrid.md#sendemail) |Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfänger). |
 | [AddRecipientToList](connectors-create-api-sendgrid.md#addrecipienttolist) |Fügt einer Empfängerliste einen einzelnen Empfänger hinzu. |
 
-## Herstellen einer Verbindung mit SendGrid
-Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+## <a name="create-a-connection-to-sendgrid"></a>Herstellen einer Verbindung mit SendGrid
+Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben: 
 
 | Eigenschaft | Erforderlich | Beschreibung |
 | --- | --- | --- |
 | ApiKey |Ja |Angeben Ihres API-Schlüssels für SendGrid |
 
-> [!INCLUDE [Schritte zum Herstellen einer Verbindung mit SendGrid](../../includes/connectors-create-api-sendgrid.md)]
+> [!INCLUDE [Steps to create a connection to SendGrid](../../includes/connectors-create-api-sendgrid.md)]
 > 
 > [!TIP]
 > Sie können diese Verbindung in anderen Logik-Apps verwenden.
@@ -56,56 +60,56 @@ Um Logik-Apps mit SendGrid zu erstellen, müssen Sie zuerst eine **Verbindung** 
 
 Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die in diesem Artikel beschriebenen Trigger verwenden.
 
-## Referenz für SendGrid
+## <a name="reference-for-sendgrid"></a>Referenz für SendGrid
 Gilt für Version 1.0.
 
-## SendEmail
-E-Mail senden: Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfänger).
+## <a name="sendemail"></a>SendEmail
+E-Mail senden: Sendet eine E-Mail über die SendGrid-API (maximal 10.000 Empfänger). 
 
-```POST: /api/mail.send.json```
+```POST: /api/mail.send.json``` 
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
 | request | |Ja |body |(Keine) |Zu sendende E-Mail-Nachricht |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 400 |Ungültige Anforderung |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 404 |Nicht gefunden |
 | 429 |Zu viele Anforderungen |
 | 500 |Interner Serverfehler. Unbekannter Fehler aufgetreten |
-| default |Fehler beim Vorgang. |
+| die Standardeinstellung |Fehler beim Vorgang. |
 
-## AddRecipientToList
-Empfänger zu Liste hinzufügen: Fügt einer Empfängerliste einen einzelnen Empfänger hinzu.
+## <a name="addrecipienttolist"></a>AddRecipientToList
+Empfänger zu Liste hinzufügen: Fügt einer Empfängerliste einen einzelnen Empfänger hinzu. 
 
-```POST: /v3/contactdb/lists/{listId}/recipients/{recipientId}```
+```POST: /v3/contactdb/lists/{listId}/recipients/{recipientId}``` 
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
 | listId |string |Ja |path |(Keine) |Eindeutige ID der Empfängerliste |
 | recipientId |string |Ja |path |(Keine) |Eindeutige ID des Empfängers |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | 400 |Ungültige Anforderung |
 | 401 |Nicht autorisiert |
-| 403 |Verboten |
+| 403 |Verboten (403) |
 | 404 |Nicht gefunden |
 | 500 |Interner Serverfehler. Unbekannter Fehler aufgetreten |
-| default |Fehler beim Vorgang. |
+| die Standardeinstellung |Fehler beim Vorgang. |
 
-## Objektdefinitionen
-### EmailRequest
+## <a name="object-definitions"></a>Objektdefinitionen
+### <a name="emailrequest"></a>EmailRequest
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
-| from |string |Ja |
+| Aus |string |Ja |
 | fromname |string |Nein |
 | to |string |Ja |
 | toname |string |Nein |
@@ -122,37 +126,42 @@ Empfänger zu Liste hinzufügen: Fügt einer Empfängerliste einen einzelnen Emp
 | files |array |Nein |
 | filenames |array |Nein |
 
-### EmailResponse
+### <a name="emailresponse"></a>EmailResponse
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | message |string |Nein |
 
-### RecipientLists
+### <a name="recipientlists"></a>RecipientLists
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | lists |array |Nein |
 
-### RecipientList
+### <a name="recipientlist"></a>RecipientList
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | id |integer |Nein |
 | Name |string |Nein |
-| recipient\_count |integer |Nein |
+| recipient_count |integer |Nein |
 
-### Recipients
+### <a name="recipients"></a>Recipients
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | recipients |array |Nein |
 
-### Recipient
+### <a name="recipient"></a>Recipient
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | email |string |Nein |
-| last\_name |string |Nein |
-| first\_name |string |Nein |
+| last_name |string |Nein |
+| first_name |string |Nein |
 | id |string |Nein |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

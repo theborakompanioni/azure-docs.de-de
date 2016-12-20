@@ -1,6 +1,6 @@
 
 ## <a name="start-your-powershell-session"></a>Starten der PowerShell-Sitzung
-Zuallererst muss die aktuelle Version der [Azure PowerShell](http://msdn.microsoft.com/library/mt619274.aspx) installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md).
+Zuallererst muss die aktuelle Version der [Azure PowerShell](http://msdn.microsoft.com/library/mt619274.aspx) installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 > [!NOTE]
 > In den Beispielen in diesem Thema wird das [Azure Resource Manager-Bereitstellungsmodell](../articles/azure-resource-manager/resource-group-overview.md) verwendet. Daher kommen die [Azure Resource Manager-Cmdlets](http://msdn.microsoft.com/library/azure/mt125356.aspx) zum Einsatz. 
@@ -17,6 +17,6 @@ Wenn Sie über mehrere Abonnements verfügen, wählen Sie mit dem Cmdlet [**Set-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

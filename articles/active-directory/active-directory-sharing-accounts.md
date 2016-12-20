@@ -1,12 +1,12 @@
 ---
 title: Gemeinsame Nutzung von Konten mit Azure AD | Microsoft Docs
-description: Beschreibt, wie es Azure Active Directory Organisationen ermöglicht, Konten für lokale Apps und für Verbraucherclouddienste auf sichere Weise gemeinsam zu nutzen.
+description: "Beschreibt, wie es Azure Active Directory Organisationen ermöglicht, Konten für lokale Apps und für Verbraucherclouddienste auf sichere Weise gemeinsam zu nutzen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: msStevenPo
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e2d77104-d978-46a3-bfea-03ffdf3b61e6
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2016
 ms.author: stevenpo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b689a0033103231d560c9ba4b349e675f304e35c
+
 
 ---
-# <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
+# <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 ## <a name="overview"></a>Übersicht
 Es kann vorkommen, dass in Unternehmen ein Benutzername mit Kennwort für mehrere Personen verwendet werden muss. Dies geschieht in der Regel in zwei Fällen:
 
-* Beim Zugriff auf Anwendungen, die einen eindeutigen Benutzernamen und ein Kennwort für jeden Benutzer erfordern, wobei es sich dabei um lokale Apps oder Clouddienste für Verbraucher (z. B. Unternehmenskonten für Social Media) handeln kann.
-* Beim Erstellen von Mehrbenutzerumgebungen. Möglicherweise verfügen Sie über ein einzelnes lokales Konto mit erhöhten Rechten, das zur Durchführung des Kernsetups sowie für Verwaltungs- und Wiederherstellungsvorgänge verwendet wird (beispielsweise das lokale "globale Administratorkonto" für Office 365, oder das Stammkonto in Salesforce).
+* Beim Zugriff auf Anwendungen, die einen eindeutigen Benutzernamen und ein Kennwort für jeden Benutzer erfordern, wobei es sich dabei um lokale Apps oder Clouddienste für Verbraucher (z. B. Unternehmenskonten für Social Media) handeln kann.
+* Beim Erstellen von Mehrbenutzerumgebungen. Möglicherweise verfügen Sie über ein einzelnes lokales Konto mit erhöhten Rechten, das zur Durchführung des Kernsetups sowie für Verwaltungs- und Wiederherstellungsvorgänge verwendet wird (beispielsweise das lokale "globale Administratorkonto" für Office 365, oder das Stammkonto in Salesforce).
 
 Normalerweise würden diese Konten gemeinsam genutzt werden, indem die Anmeldeinformationen (Benutzername/Kennwort) an geeignete Personen verteilt oder an gemeinsam genutzten Orten aufbewahrt werden, auf die vertrauenswürdige Personen Zugriff haben.
 
@@ -34,17 +38,17 @@ Das herkömmliche Modell der gemeinsamen Nutzung hat mehrere Nachteile:
 * Wenn der Zugriff auf eine Anwendung entfernt werden soll, müssen die Anmeldeinformationen aktualisiert und erneut an alle Benutzer verteilt werden, die Zugriff benötigen.
 
 ## <a name="azure-active-directory-account-sharing"></a>Azure Active Directory-Kontofreigabe
-Azure AD bietet einen neuen Ansatz für die Verwendung von gemeinsam genutzten Konten, der diese Nachteile beseitigt.
+Azure AD bietet einen neuen Ansatz für die Verwendung von gemeinsam genutzten Konten, der diese Nachteile beseitigt.
 
-Der Azure AD-Administrator konfiguriert, auf welche Anwendungen ein Benutzer zugreifen kann, indem er den Zugriffsbereich verwendet und die Art von einmaligem Anmelden auswählt, die für diese Anwendung am besten geeignet ist. Einer dieser Typen, die *kennwortbasierte einmalige Anmeldung*, ermöglicht Azure AD, während des Anmeldevorgangs für die Anwendung als eine Art Zwischenhändler (Broker) aufzutreten.
+Der Azure AD-Administrator konfiguriert, auf welche Anwendungen ein Benutzer zugreifen kann, indem er den Zugriffsbereich verwendet und die Art von einmaligem Anmelden auswählt, die für diese Anwendung am besten geeignet ist. Einer dieser Typen, die *kennwortbasierte einmalige Anmeldung*, ermöglicht Azure AD, während des Anmeldevorgangs für die Anwendung als eine Art Zwischenhändler (Broker) aufzutreten.
 
 Benutzer melden Sie sich einmal mit ihrem Organisationskonto an. Dies ist dasselbe Konto, das Benutzer regelmäßig zum Zugreifen auf den Desktop oder ihre E-Mail verwenden. Sie können nur diejenigen Anwendungen ermitteln und auf sie zugreifen, die ihnen zugewiesen wurden. Bei gemeinsam genutzten Konten kann diese Liste von Anwendungen beliebig viele gemeinsam genutzte Anmeldeinformationen enthalten. Der Endbenutzer muss sich die unterschiedlichen Konten nicht mehr merken oder notieren.
 
-Gemeinsam genutzte Konten verbessern nicht nur den Überblick, sondern auch die Sicherheit. Benutzer mit Berechtigungen zur Verwendung der Anmeldeinformationen sehen das gemeinsame Kennwort nicht, sondern erhalten vielmehr die Berechtigung, es als Teil des orchestrierten Authentifizierungsablaufs nutzen zu dürfen. Darüber hinaus steht bei einigen Kennwort-SSO-Anwendungen die Option zur Verfügung, das Kennwort in regelmäßigen Abständen von Azure AD gegen ein langes, komplexes Kennwort austauschen/aktualisieren zu lassen, wodurch die Kontosicherheit erhöht wird. Der Administrator kann Zugriffsrechte auf bestimmte Anwendungen mühelos gewähren oder widerrufen. Er weiß auch, wer genau Zugriff auf das Konto hat und wer bereits darauf zugegriffen hat.
+Gemeinsam genutzte Konten verbessern nicht nur den Überblick, sondern auch die Sicherheit. Benutzer mit Berechtigungen zur Verwendung der Anmeldeinformationen sehen das gemeinsame Kennwort nicht, sondern erhalten vielmehr die Berechtigung, es als Teil des orchestrierten Authentifizierungsablaufs nutzen zu dürfen. Darüber hinaus steht bei einigen Kennwort-SSO-Anwendungen die Option zur Verfügung, das Kennwort in regelmäßigen Abständen von Azure AD gegen ein langes, komplexes Kennwort austauschen/aktualisieren zu lassen, wodurch die Kontosicherheit erhöht wird. Der Administrator kann Zugriffsrechte auf bestimmte Anwendungen mühelos gewähren oder widerrufen. Er weiß auch, wer genau Zugriff auf das Konto hat und wer bereits darauf zugegriffen hat.
 
-Azure AD unterstützt freigegebene Konten für alle lizenzierten Benutzer von Enterprise Mobility Suite (EMS) Premium oder Basic für alle Typen des einmaligen Anmeldens per Kennwort. Sie können Konten für Tausende im Katalog befindliche, bereits integrierte Anwendungen gemeinsam nutzen und mithilfe [benutzerdefinierter SSO-Apps](active-directory-sso-integrate-saas-apps.md)eigene Anwendungen mit Kennwortauthentifizierung hinzufügen.
+Azure AD unterstützt freigegebene Konten für alle lizenzierten Benutzer von Enterprise Mobility Suite (EMS) Premium oder Basic für alle Typen des einmaligen Anmeldens per Kennwort. Sie können Konten für Tausende im Katalog befindliche, bereits integrierte Anwendungen gemeinsam nutzen und mithilfe [benutzerdefinierter SSO-Apps](active-directory-sso-integrate-saas-apps.md)eigene Anwendungen mit Kennwortauthentifizierung hinzufügen.
 
-Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Funktionen:
+Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Funktionen:
 
 * [Einmaliges Anmelden per Kennwort](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
 * Agent für einmaliges Anmelden per Kennwort
@@ -56,7 +60,7 @@ Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Fu
 * [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## <a name="sharing-an-account"></a>Gemeinsames Nutzen eines Kontos
-Um Azure AD zur gemeinsamen Verwendung eines Kontos zu verwenden, sind folgende Schritte erforderlich:
+Um Azure AD zur gemeinsamen Verwendung eines Kontos zu verwenden, sind folgende Schritte erforderlich:
 
 * Hinzufügen einer Anwendung aus dem [App-Katalog](https://azure.microsoft.com/marketplace/active-directory/) oder einer [benutzerdefinierten Anwendung](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx).
 * Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort (SSO)
@@ -70,6 +74,9 @@ Mithilfe von Azure AD lassen sich gemeinsam genutzte Konten durch Multi-Factor A
 * [Schützen von Apps durch bedingten Zugriff](active-directory-conditional-access.md)
 * [Self-Service-Gruppenverwaltung/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

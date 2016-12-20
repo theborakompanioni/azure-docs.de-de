@@ -28,7 +28,7 @@ Bei der Verwendung einer Parameterdatei zum Übergeben von Parameterwerten währ
 
 Die Parameterdatei darf nicht größer als 64 KB sein.
 
-Wenn Sie einen vertraulichen Wert für einen Parameter (z.B. ein Kennwort) angeben müssen, fügen Sie den Wert einem Schlüsseltresor hinzu. Rufen Sie den Schlüsseltresor während der Bereitstellung wie im vorherigen Beispiel gezeigt ab. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](../articles/resource-manager-keyvault-parameter.md). 
+Wenn Sie einen vertraulichen Wert für einen Parameter (z.B. ein Kennwort) angeben müssen, fügen Sie den Wert einem Schlüsseltresor hinzu. Rufen Sie den Schlüsseltresor während der Bereitstellung wie im vorherigen Beispiel gezeigt ab. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md). 
 
 
 

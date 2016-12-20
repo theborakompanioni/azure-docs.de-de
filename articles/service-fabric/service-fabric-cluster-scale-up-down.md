@@ -1,12 +1,12 @@
 ---
 title: Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters | Microsoft Docs
-description: Skalieren Sie einen Service Fabric-Cluster bedarfsgerecht zentral hoch oder herunter, indem Sie für alle Knotentypen bzw. VM-Skalierungsgruppen Regeln für die automatische Skalierung festlegen. Hinzufügen oder Entfernen von Knoten für einen Service Fabric-Cluster
+description: "Skalieren Sie einen Service Fabric-Cluster bedarfsgerecht zentral hoch oder herunter, indem Sie für alle Knotentypen bzw. VM-Skalierungsgruppen Regeln für die automatische Skalierung festlegen. Hinzufügen oder Entfernen von Knoten für einen Service Fabric-Cluster"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,17 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8fa523b8ff02d5a1304540f58e8fdb097d31ae21
+
 
 ---
-# Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung
-VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate VM-Skalierungsgruppe festgelegt. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Weitere Informationen finden Sie in dem Dokument über die [Service Fabric-Knotentypen](service-fabric-cluster-nodetypes.md). Da die Service Fabric-Knotentypen in Ihrem Cluster am Backend aus VM-Skalierungsgruppen bestehen, müssen Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe Regeln für die automatische Skalierung einrichten.
+# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung
+VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate VM-Skalierungsgruppe festgelegt. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Weitere Informationen finden Sie im Dokument über die [Service Fabric-Knotentypen](service-fabric-cluster-nodetypes.md). Da die Service Fabric-Knotentypen in Ihrem Cluster am Backend aus VM-Skalierungsgruppen bestehen, müssen Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe Regeln für die automatische Skalierung einrichten.
 
 > [!NOTE]
 > Ihr Abonnement muss ausreichend Kerne zum Hinzufügen der neuen virtuellen Computer umfassen, aus denen dieser Cluster besteht. Gegenwärtig erfolgt keine Modellvalidierung. Daher wird für die Bereitstellungszeit ein Fehler ausgegeben, wenn eine der Kontingentgrenzen erreicht wird.
 > 
 > 
 
-## Auswählen des zu skalierenden Knotentyps bzw. der VM-Skalierungsgruppe
+## <a name="choose-the-node-typevm-scale-set-to-scale"></a>Auswählen des zu skalierenden Knotentyps bzw. der VM-Skalierungsgruppe
 Zurzeit können Sie mithilfe des Portals keine Regeln für die automatische Skalierung für VM-Skalierungsgruppen angeben. Daher verwenden wir Azure PowerShell (1.0 und höher), um die Knotentypen aufzulisten und anschließend automatische Skalierungregeln hinzuzufügen.
 
 Führen Sie die folgenden Cmdlets aus, um eine Liste der VM-Skalierungsgruppen abzurufen, aus denen Ihr Cluster besteht:
@@ -35,7 +39,7 @@ Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/
 Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <VM Scale Set name>
 ```
 
-## Festlegen von automatischen Skalierungsregeln für Knotentypen bzw. VM-Skalierungsgruppen
+## <a name="set-auto-scale-rules-for-the-node-typevm-scale-set"></a>Festlegen von automatischen Skalierungsregeln für Knotentypen bzw. VM-Skalierungsgruppen
 Wenn Ihr Cluster mehrere Knotentypen enthält, müssen Sie dies für jeden der Knotentypen bzw. jede der VM-Skalierungsgruppen durchführen, die Sie zentral hoch- oder herunterskalieren möchten. Sie sollten dabei die Anzahl der Knoten berücksichtigen, die Sie benötigen, bevor Sie die automatische Skalierung einrichten. Die minimale Anzahl von Knoten, die für den primären Knotentyp benötigt wird, wird von der Zuverlässigkeitsstufe gesteuert, die Sie ausgewählt haben. Erfahren Sie mehr über [Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
@@ -43,7 +47,7 @@ Wenn Ihr Cluster mehrere Knotentypen enthält, müssen Sie dies für jeden der K
 > 
 > 
 
-Die automatische Skalierungsfunktion wird derzeit nicht durch die Lasten gesteuert, die Ihre Anwendung an Service Fabric meldet. Die bereitgestellte automatische Skalierung wird derzeit ausschließlich durch Leistungsindikatoren gesteuert, die von jeder Instanz der VM-Skalierungsgruppen ausgegeben werden.
+Die automatische Skalierungsfunktion wird derzeit nicht durch die Lasten gesteuert, die Ihre Anwendung an Service Fabric meldet. Die bereitgestellte automatische Skalierung wird derzeit ausschließlich durch Leistungsindikatoren gesteuert, die von jeder Instanz der VM-Skalierungsgruppen ausgegeben werden.  
 
 Folgen Sie den Anleitungen, um eine [automatische Skalierung für jede VM-Skalierungsgruppe einzurichten](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
@@ -52,17 +56,17 @@ Folgen Sie den Anleitungen, um eine [automatische Skalierung für jede VM-Skalie
 > 
 > 
 
-## Manuelles Hinzufügen von virtuellen Computern zu einem Knotentyp oder einer VM-Skalierungsgruppe
-Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs jedes Knotentyps zu ändern.
+## <a name="manually-add-vms-to-a-node-typevm-scale-set"></a>Manuelles Hinzufügen von virtuellen Computern zu einem Knotentyp oder einer VM-Skalierungsgruppe
+Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs in jedem Knotentyp zu ändern. 
 
 > [!NOTE]
 > Das Hinzufügen virtueller Computer braucht Zeit. Rechnen Sie also nicht damit, dass das Hinzufügen unmittelbar erfolgt. Planen Sie deshalb das Hinzufügen von Kapazität vorausschauend, um mehr als 10 Minuten einzuräumen, bis die VM-Kapazität für die Platzierung der Replikate und Dienstinstanzen verfügbar ist.
 > 
 > 
 
-## Manuelles Entfernen von virtuellen Computern von einem primären Knotentyp oder aus einer VM-Skalierungsgruppe
+## <a name="manually-remove-vms-from-the-primary-node-typevm-scale-set"></a>Manuelles Entfernen von virtuellen Computern von einem primären Knotentyp oder aus einer VM-Skalierungsgruppe
 > [!NOTE]
-> Die Service Fabric-Systemdienste werden auf dem Knotentyp „Primär“ in Ihrem Cluster ausgeführt. Sie dürfen also niemals die Anzahl der Instanzen auf diesem Knotentyp herunterfahren oder auf einen Wert herunterskalieren, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md).
+> Die Service Fabric-Systemdienste werden auf dem Knotentyp „Primär“ in Ihrem Cluster ausgeführt. Sie dürfen also niemals die Anzahl der Instanzen auf diesem Knotentyp herunterfahren oder auf einen Wert herunterskalieren, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md). 
 > 
 > 
 
@@ -70,12 +74,12 @@ Sie müssen für eine VM-Instanz die folgenden Schritte nacheinander ausführen.
 
 1. Führen Sie [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) mit der Absicht „Knoten entfernen“ aus, um den Knoten zu deaktivieren, der entfernt werden soll (die höchste Instanz auf diesem Knotentyp).
 2. Führen Sie [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) aus, um sicherzustellen, dass sich der Status des Knotens tatsächlich in „Deaktiviert“ geändert hat. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Sie können diesen Schritt nicht beschleunigen.
-3. Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs auf diesem Knotentyp um 1 zu ändern. Die entfernte Instanz ist die höchste VM-Instanz.
-4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md).
+3. Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs in diesem Knotentyp um 1 zu ändern. Die entfernte Instanz ist die höchste VM-Instanz. 
+4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md). 
 
-## Manuelles Entfernen von virtuellen Computern von einem nicht primären Knotentyp oder aus einer VM-Skalierungsgruppe
+## <a name="manually-remove-vms-from-the-non-primary-node-typevm-scale-set"></a>Manuelles Entfernen von virtuellen Computern von einem nicht primären Knotentyp oder aus einer VM-Skalierungsgruppe
 > [!NOTE]
-> Für einen zustandsbehafteten Dienst muss eine bestimmte Anzahl von Knoten stets aktiv sein, um Verfügbarkeit sicherzustellen und den Status Ihres Diensts beizubehalten. Sie benötigen als äußerstes Minimum eine Anzahl von Knoten, die der Anzahl der Zielreplikatgruppen der Partition oder des Diensts entspricht.
+> Für einen zustandsbehafteten Dienst muss eine bestimmte Anzahl von Knoten stets aktiv sein, um Verfügbarkeit sicherzustellen und den Status Ihres Diensts beizubehalten. Sie benötigen als äußerstes Minimum eine Anzahl von Knoten, die der Anzahl der Zielreplikatgruppen der Partition oder des Diensts entspricht. 
 > 
 > 
 
@@ -83,11 +87,11 @@ Sie müssen für eine VM-Instanz die folgenden Schritte nacheinander ausführen.
 
 1. Führen Sie [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) mit der Absicht „Knoten entfernen“ aus, um den Knoten zu deaktivieren, der entfernt werden soll (die höchste Instanz auf diesem Knotentyp).
 2. Führen Sie [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) aus, um sicherzustellen, dass sich der Status des Knotens tatsächlich in „Deaktiviert“ geändert hat. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Sie können diesen Schritt nicht beschleunigen.
-3. Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs auf diesem Knotentyp um 1 zu ändern. Die höchste VM-Instanz wird jetzt entfernt.
+3. Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs in diesem Knotentyp um 1 zu ändern. Die höchste VM-Instanz wird jetzt entfernt. 
 4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md).
 
-## Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten
-Wenn Sie einen Cluster zentral hochskalieren, wird Service Fabric Explorer die Knotenanzahl (Instanzen der VM-Skalierungsgruppen) anzeigen, die zu dem Cluster gehören. Wenn Sie ein Cluster jedoch zentral herunterskalieren, wird Ihnen der entfernte Knoten bzw. die entfernte VM-Instanz in einem fehlerhaften Zustand angezeigt, es sei denn, Sie rufen das Cmdlet [Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx) mit dem entsprechenden Knotennamen auf.
+## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten
+Wenn Sie einen Cluster zentral hochskalieren, wird Service Fabric Explorer die Knotenanzahl (Instanzen der VM-Skalierungsgruppen) anzeigen, die zu dem Cluster gehören.  Wenn Sie einen Cluster jedoch zentral herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz in einem fehlerhaften Zustand angezeigt, es sei denn, Sie rufen das Cmdlet [Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx) mit dem entsprechenden Knotennamen auf.   
 
 Dieses Verhalten erklärt sich wie folgt:
 
@@ -95,16 +99,17 @@ Die in Service Fabric Explorer aufgeführten Knoten sind ein Abbild der Informat
 
 Sie verfügen über zwei Optionen, um sicherzustellen, dass ein Knoten beim Entfernen eines virtuellen Computers entfernt wird:
 
-1) Wählen Sie die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ (demnächst verfügbar) für die Knotentypen in Ihrem Cluster, die die Infrastrukturintegration für Sie bereitstellt. Wenn Sie zentral herunterskalieren, werden so automatisch die Knoten aus den Systemdiensten (FM) entfernt. Machen Sie sich [hier mit den Details der Dauerhaftigkeitsstufen](service-fabric-cluster-capacity.md) vertraut.
+1) Wählen Sie die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ (demnächst verfügbar) für die Knotentypen in Ihrem Cluster, die die Infrastrukturintegration für Sie bereitstellt. Wenn Sie zentral herunterskalieren, werden so automatisch die Knoten aus den Systemdiensten (FM) entfernt.
+ [hier mit den Details der Dauerhaftigkeitsstufen](service-fabric-cluster-capacity.md)
 
 2) Sobald die VM-Instanz zentral herunterskaliert wurde, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx) aufrufen.
 
 > [!NOTE]
-> Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es für gewöhnlich nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zunächst eine [vollständige Sicherung des Zustands](service-fabric-reliable-services-backup-restore.md) durchgeführt haben.
+> Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es für gewöhnlich nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zuvor eine [vollständige Sicherung des Zustands](service-fabric-reliable-services-backup-restore.md) durchgeführt haben.
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die folgenden Artikel, um mehr über die Kapazitätsplanung von Clustern, das Upgraden von Clusters und das Partitionieren von Diensten zu erfahren:
 
 * [Planen Sie Ihre Clusterkapazität](service-fabric-cluster-capacity.md)
@@ -115,4 +120,8 @@ Lesen Sie die folgenden Artikel, um mehr über die Kapazitätsplanung von Cluste
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
 [ClusterResources]: ./media/service-fabric-cluster-scale-up-down/ClusterResources.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,30 +1,36 @@
 ---
 title: Windows-Ereignisprotokolle in Log Analytics | Microsoft Docs
-description: Windows-Ereignisprotokolle gehören zu den häufigsten von Log Analytics verwendeten Datenquellen.  Dieser Artikel beschreibt die Konfiguration der Sammlung von Windows-Ereignisprotokollen sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden.
+description: "Windows-Ereignisprotokolle gehören zu den häufigsten von Log Analytics verwendeten Datenquellen.  Dieser Artikel beschreibt die Konfiguration der Sammlung von Windows-Ereignisprotokollen sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 11/15/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 055a60c174c280ba56ea40cb47779e233b54fe8e
+ms.openlocfilehash: 867dc9fd84793debc8c8dcd2a27dfc0b0ccf69c4
+
 
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Datenquellen für Windows-Ereignisprotokolle in Log Analytics
-Windows-Ereignisprotokolle gehören zu den häufigsten für Windows-Agents verwendeten [Datenquellen](log-analytics-data-sources.md) , da dies die Methode ist, die von den meisten Anwendungen zum Protokollieren von Informationen und Fehlern verwendet wird.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
+Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](log-analytics-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
 
 ![Windows-Ereignisse](media/log-analytics-data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurieren der Windows-Ereignisprotokolle
 Sie konfigurieren Windows-Ereignisprotokolle über das [Menü „Daten“ in den Log Analytics-Einstellungen](log-analytics-data-sources.md#configuring-data-sources).
 
-Log Analytics sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in den Einstellungen angegeben wurden.  Sie können ein neues Protokoll hinzufügen, indem Sie den Namen des Protokolls eingeben und auf **+**.  Für jedes Protokoll werden nur Ereignisse mit den ausgewählten Schweregraden gesammelt.  Überprüfen Sie die Schweregrade für das Protokoll, aus dem Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien zum Filtern von Ereignissen bereitstellen.
+Log Analytics sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in den Einstellungen angegeben wurden.  Sie können ein Ereignisprotokoll hinzufügen, indem Sie den Namen des Protokolls eingeben und auf **+** klicken.  Für jedes Protokoll werden nur die Ereignisse mit den ausgewählten Schweregraden gesammelt.  Überprüfen Sie die Schweregrade für das Protokoll, aus dem Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien zum Filtern von Ereignissen bereitstellen.
+
+Während der Eingabe des Namens des Ereignisprotokolls bietet Log Analytics Vorschläge gängiger Ereignisprotokollnamen an. Wenn das Protokoll, das Sie hinzufügen möchten, nicht in der Liste enthalten ist, können Sie es dennoch durch Eingabe des vollständigen Namens des Protokolls hinzufügen. Mithilfe der Ereignisanzeige können Sie den vollständigen Namen des Protokolls finden. Öffnen Sie in der Ereignisanzeige die Seite *Eigenschaften* des Protokolls, und kopieren Sie die Zeichenfolge aus dem Feld *Vollständiger Name*.
 
 ![Windows-Ereignisse konfigurieren](media/log-analytics-data-sources-windows-events/configure.png)
 
@@ -32,7 +38,7 @@ Log Analytics sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in
 Log Analytics sammelt jedes Ereignis mit einem ausgewählten Schweregrad aus einem überwachten Ereignisprotokoll, sobald das Ereignis erstellt wird.  Der Agent zeichnet seine Position in jedem Ereignisprotokoll auf, aus dem er Daten sammelt.  Wenn der Agent für einen bestimmten Zeitraum offline geht, sammelt Log Analytics Ereignisse ab dem Zeitpunkt der letzten Sammlung, unabhängig davon, ob die Ereignisse erstellt wurden, während der Agent offline war.
 
 ## <a name="windows-event-records-properties"></a>Eigenschaften von Windows-Ereignisdatensätzen
-Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.
+Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften:
 
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
@@ -44,10 +50,10 @@ Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der
 | EventLevelName |Schweregrad des Ereignisses in Textform. |
 | EventLog |Name des Ereignisprotokolls, aus dem das Ereignis gesammelt wurde. |
 | ParameterXml |Ereignisparameterwerte in XML-Format. |
-| ManagementGroupName |Name der Verwaltungsgruppe für SCOM-Agents.  Bei anderen Agents lautet diese „AOI-<workspace ID>“. |
+| ManagementGroupName |Name der Verwaltungsgruppe für System Center Operations Manager-Agents.  Bei anderen Agents lautet dieser Wert „AOI-<workspace ID>“. |
 | RenderedDescription |Ereignisbeschreibung mit Parameterwerten. |
 | Quelle |Quelle des Ereignisses. |
-| SourceSystem |Typ des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (Direktverbindung oder SCOM) <br>  Linux: Alle Linux-Agents  <br>  AzureStorage – Azure-Diagnose |
+| SourceSystem |Typ des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (entweder Direktverbindung oder von Operations Manager verwaltet) <br>  Linux: Alle Linux-Agents  <br>  AzureStorage – Azure-Diagnose |
 | TimeGenerated |Datum und Uhrzeit, zu der das Ereignis in Windows erstellt wurde. |
 | UserName |Benutzername des Kontos, in dem das Ereignis protokolliert wurde. |
 
@@ -67,6 +73,9 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md) , um die Ereignisdatensätze in einzelnen Feldern zu analysieren.
 * Konfigurieren Sie die [Sammlung von Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) aus Ihren Windows-Agents.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

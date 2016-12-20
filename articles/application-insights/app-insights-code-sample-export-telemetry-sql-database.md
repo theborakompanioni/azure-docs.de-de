@@ -1,66 +1,56 @@
 ---
-title: 'Codebeispiel: Analysieren von Daten, die aus Application Insights exportiert wurden'
-description: Codieren Sie Ihre eigene Telemetrieanalyse in Application Insights mithilfe des Features für den fortlaufenden Export. Speichern Sie Daten in SQL.
+title: 'Codebeispiel: Analysieren von Daten, die aus Application Insights exportiert wurden | Microsoft Docs'
+description: "Codieren Sie Ihre eigene Telemetrieanalyse in Application Insights mithilfe des Features für den fortlaufenden Export. Speichern Sie Daten in SQL."
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: mazharmicrosoft
 manager: douge
-
+ms.assetid: 3ffb62b6-3fe9-455d-a260-b2a0201b5ecd
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2016
+ms.date: 11/16/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: b0782ed5675e5256694f7b9f4e98750e57d23e0a
+
 
 ---
-# Codebeispiel: Analysieren von Daten, die aus Application Insights exportiert wurden
-Dieser Artikel beschreibt, wie JSON-Daten verarbeitet werden, die aus Application Insights exportiert wurden. Als Beispiel schreiben wir Code, um Ihre Telemetriedaten mithilfe von [fortlaufendem Export][export] aus [Visual Studio Application Insights][start] in eine Azure SQL-Datenbank verschieben. (Das Ganze kann auch [mit von Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md) erreicht werden, aber unser Ziel ist es hier, Ihnen Code zu zeigen.)
+# <a name="code-sample-parse-data-exported-from-application-insights"></a>Codebeispiel: Analysieren von Daten, die aus Application Insights exportiert wurden
+In diesem Artikel wird erläutert, wie Sie Code zum Verarbeiten von Daten schreiben, die mit [fortlaufendem Export][export] aus [Azure Application Insights][start] exportiert wurden. Beim fortlaufenden Export werden Ihre Telemetrie im JSON-Format in Azure Storage verschoben. Daher schreiben wir Code zum Analysieren der JSON-Objekte und zum Erstellen von Zeilen in einer Datenbanktabelle.
 
-Beim fortlaufenden Export werden Ihre Telemetrie im JSON-Format in Azure Storage verschoben. Daher schreiben wir Code zum Analysieren der JSON-Objekte und zum Erstellen von Zeilen in einer Datenbanktabelle.
+Als Beispiel schreiben wir Code, um Ihre Telemetriedaten aus Application Insights in eine SQL-Datenbank zu verschieben.
 
-Allgemeiner ausgedrückt, bietet der fortlaufende Export Ihnen die Möglichkeit, selbst eine Analyse der Telemetriedaten durchzuführen, die Ihre Apps an Application Insights senden. Sie können dieses Codebeispiel für andere Aufgaben mit den exportierten Telemetriedaten anpassen.
+Beachten Sie Folgendes, bevor Sie beginnen:
 
-Zu Beginn gehen wir davon aus, dass Sie bereits über die App verfügen, die Sie überwachen möchten.
+* [Mithilfe von Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md) können exportierte Daten effizienter in eine Datenbank übertragen werden, Ziel dieses Artikels ist es jedoch, Code zum Verarbeiten von exportierten Daten zu veranschaulichen. Sie können dieses Codebeispiel für andere Aufgaben mit den exportierten Telemetriedaten anpassen.
+* In diesem Beispiel verschieben wir die Daten durch Ausführen des Codes in einer Azure-Workerrolle in eine Azure-Datenbank. Sie können diesen Code jedoch so anpassen, dass er auf einem lokalen Server ausgeführt wird und die Daten per Pull auf einen lokalen SQL-Server übertragen werden.
+* Sie können [Code schreiben, um direkt in Application Insights auf Ihre Telemetriedaten zuzugreifen](http://dev.applicationinsights.io/), ohne diese zu exportieren.
 
-## Hinzufügen des Application Insights-SDK
-Zum Überwachen Ihrer Anwendung [fügen Sie Ihrer Anwendung ein Application Insights-SDK hinzu][start]. Es gibt verschiedene SDKs und Hilfstools für verschiedene Plattformen, IDEs und Sprachen. Sie können Webseiten, Java- oder ASP.NET-Webserver und verschiedene Arten von mobilen Geräten überwachen. Alle SDKs senden Telemetriedaten an das [Application Insights-Portal][portal], in dem Sie unsere leistungsstarken Analyse- und Diagnosetools verwenden und die Daten in den Speicher exportieren können.
+Wenn Sie noch nicht begonnen haben, Ihre Webanwendung mit Application Insights zu überwachen, [tun Sie dies jetzt][start].
 
-Erste Schritte:
 
-1. Fordern Sie ein [Konto in Microsoft Azure](https://azure.microsoft.com/pricing/) an.
-2. Fügen Sie im [Azure-Portal][portal] eine neue Application Insights-Ressource für Ihre App hinzu:
-   
-    ![Wählen Sie "Neu", "Entwicklerdienste", "Application Insights", und wählen Sie den Typ der Anwendung.](./media/app-insights-code-sample-export-telemetry-sql-database/010-new-asp.png)
 
-    (Ihr App-Typ und Ihr Abonnement können abweichen.)
-1. Informationen zum Einrichten des SDK für Ihren App-Typ finden Sie, indem Sie den Schnellstart öffnen.
-   
-    ![Wählen Sie "Schnellstart", und befolgen Sie die Anweisungen.](./media/app-insights-code-sample-export-telemetry-sql-database/020-quick.png)
-   
-    Wenn Ihr App-Typ nicht aufgeführt ist, sehen Sie sich die Seite [Erste Schritte][start] an.
-2. In diesem Beispiel überwachen wir eine Web-App. Daher können wir die Azure-Tools in Visual Studio verwenden, um das SDK zu installieren. Geben Sie den Namen unserer Application Insights-Ressource an:
-   
-    ![Aktivieren Sie in Visual Studio im Dialogfeld "Neues Projekt" die Option "Application Insights hinzufügen", und wählen Sie unter "Telemetrie senden an", ob eine neue Anwendung erstellt oder eine vorhandene verwendet werden soll.](./media/app-insights-code-sample-export-telemetry-sql-database/030-new-project.png)
+## <a name="create-storage-in-azure"></a>Erstellen von Speicher in Azure
+Daten von Application Insights werden immer in ein Azure-Speicherkonto  im JSON-Format exportiert. Aus diesem Speicher liest Ihr Code dann die Daten.
 
-## Erstellen von Speicher in Azure
-Daten von Application Insights werden immer in ein Azure-Speicherkonto im JSON-Format exportiert. Aus diesem Speicher liest Ihr Code dann die Daten.
-
-1. Erstellen Sie ein "klassisches" Speicherkonto in Ihrem Abonnement im [Azure-Portal][portal].
+1. Erstellen Sie ein „klassisches“ Speicherkonto in Ihrem Abonnement im [Azure-Portal][portal].
    
     ![Wählen Sie im Azure-Portal "Neu", "Daten" und "Speicher".](./media/app-insights-code-sample-export-telemetry-sql-database/040-store.png)
 2. Erstellen eines Containers
    
     ![Wählen Sie im neuen Speicher "Container" aus, klicken Sie auf die Kachel "Container" und anschließend auf "Hinzufügen".](./media/app-insights-code-sample-export-telemetry-sql-database/050-container.png)
 
-## Starten des fortlaufenden Exports in den Azure-Speicher
+## <a name="start-continuous-export-to-azure-storage"></a>Starten des fortlaufenden Exports in den Azure-Speicher
 1. Navigieren Sie im Azure-Portal zu der Application Insights-Ressource, die Sie für Ihre Anwendung erstellt haben.
    
-    ![Wählen Sie "Durchsuchen", "Application Insights" und Ihre Anwendung aus.](./media/app-insights-code-sample-export-telemetry-sql-database/060-browse.png)
+    ![Wählen Sie „Durchsuchen“, „Application Insights“ und Ihre Anwendung aus.](./media/app-insights-code-sample-export-telemetry-sql-database/060-browse.png)
 2. Erstellen Sie einen fortlaufenden Export.
    
-    ![Wählen Sie "Einstellungen", "Fortlaufender Export", "Hinzufügen".](./media/app-insights-code-sample-export-telemetry-sql-database/070-export.png)
+    ![Wählen Sie „Einstellungen“ > „Fortlaufender Export“ > „Hinzufügen“.](./media/app-insights-code-sample-export-telemetry-sql-database/070-export.png)
 
     Wählen Sie das zuvor erstellte Speicherkonto aus:
 
@@ -70,18 +60,18 @@ Daten von Application Insights werden immer in ein Azure-Speicherkonto im JSON-F
 
     ![Wählen Sie Ereignistypen aus.](./media/app-insights-code-sample-export-telemetry-sql-database/085-types.png)
 
-1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](app-insights-metrics-explorer.md) sowie einzelne Ereignisse in der [Diagnosesuche](app-insights-diagnostic-search.md).
+1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](app-insights-metrics-explorer.md) sowie einzelne Ereignisse in der [Diagnosesuche](app-insights-diagnostic-search.md). 
    
-    Darüber hinaus werden die Daten in Ihren Speicher exportiert.
+    Darüber hinaus werden die Daten in Ihren Speicher exportiert. 
 2. Überprüfen Sie die exportierten Daten. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld "Neues Projekt" und anschließend "Visual C# / Cloud / Microsoft Azure SDK für .NET abrufen".)
    
     ![Öffnen Sie in Visual Studio den "Server-Browser", "Azure" und "Storage".](./media/app-insights-code-sample-export-telemetry-sql-database/087-explorer.png)
    
-    Notieren Sie sich den gemeinsamen Teil des Pfadnamens, der sich vom Anwendungsnamen und vom Instrumentierungsschlüssel ableitet.
+    Notieren Sie sich den gemeinsamen Teil des Pfadnamens, der sich vom Anwendungsnamen und vom Instrumentierungsschlüssel ableitet. 
 
 Die Ereignisse werden in Blobdateien im JSON-Format geschrieben. Jede Datei kann ein oder mehrere Ereignisse enthalten. Daher möchten wir die Ereignisdaten lesen und die gewünschten Felder herausfiltern. Es gibt viele verschiedene Möglichkeiten zur Nutzung der Daten, aber unser Plan besteht darin, Code zum Verschieben der Daten in eine SQL-Datenbank zu verfassen. Auf diese Weise können wir ganz einfach viele interessante Abfragen ausführen.
 
-## Erstellen einer Azure-SQL-Datenbank
+## <a name="create-an-azure-sql-database"></a>Erstellen einer Azure-SQL-Datenbank
 In diesem Beispiel schreiben wir Code, um die Daten in eine Datenbank zu übertragen.
 
 Beginnen Sie erneut bei Ihrem Abonnement im [Azure-Portal][portal], und erstellen Sie die Datenbank (und einen neuen Server, sofern noch keiner verfügbar ist), in die die Daten geschrieben werden sollen.
@@ -92,19 +82,19 @@ Stellen Sie sicher, dass der Datenbankserver den Zugriff auf Azure-Dienste ermö
 
 ![Durchsuchen, Server, Ihr Server, Einstellungen, Firewall, Zugriff auf Azure erlauben](./media/app-insights-code-sample-export-telemetry-sql-database/100-sqlaccess.png)
 
-## Erstellen einer Workerrolle
+## <a name="create-a-worker-role"></a>Erstellen einer Workerrolle
 Zu guter Letzt können wir nun [Code](https://sesitai.codeplex.com/) zum Analysieren der JSON-Daten in den exportierten Blobs und zum Erstellen von Datensätzen in der Datenbank schreiben. Da sich der Exportspeicher und die Datenbank in Azure befinden, führen wir den Code in einer Azure-Workerrolle aus.
 
 Dieser Code extrahiert automatisch alle Eigenschaften, die in den JSON-Daten vorhanden sind. Beschreibungen der Eigenschaften finden Sie unter [Exportdatenmodell](app-insights-export-data-model.md).
 
-#### Erstellen eines Workerrollenprojekts
+#### <a name="create-worker-role-project"></a>Erstellen eines Workerrollenprojekts
 Erstellen Sie in Visual Studio ein neues Projekt für die Workerrolle.
 
 !["Neues Projekt", "Visual C#", "Cloud", "Azure Cloud Service"](./media/app-insights-code-sample-export-telemetry-sql-database/110-cloud.png)
 
 ![Wählen Sie im Dialogfeld für den neuen Clouddienst "Visual C#", "Workerrolle"](./media/app-insights-code-sample-export-telemetry-sql-database/120-worker.png)
 
-#### Verbinden mit dem Speicherkonto
+#### <a name="connect-to-the-storage-account"></a>Verbinden mit dem Speicherkonto
 Rufen Sie in Azure die Verbindungszeichenfolge aus Ihrem Storage-Konto ab:
 
 ![Wählen Sie im Storage-Konto "Schlüssel" aus, und kopieren Sie die primäre Verbindungszeichenfolge](./media/app-insights-code-sample-export-telemetry-sql-database/055-get-connection.png)
@@ -113,31 +103,32 @@ Konfigurieren Sie die Workerrolleneinstellungen in Visual Studio mit der Verbind
 
 ![Erweitern Sie im Projektmappen-Explorer unter dem Cloud Service-Projekt die Option "Rollen", und öffnen Sie die" Workerrolle". Öffnen Sie die Registerkarte "Einstellungen", wählen Sie "Einstellung hinzufügen", und legen Sie "name=StorageConnectionString" und "type=Verbindungszeichenfolge" fest. Klicken Sie, um den Wert festzulegen. Legen Sie ihn manuell fest, und fügen Sie die Verbindungszeichenfolge ein.](./media/app-insights-code-sample-export-telemetry-sql-database/130-connection-string.png)
 
-#### Pakete
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt "Workerrolle", und wählen Sie dann "NuGet-Pakete verwalten" aus. Suchen und installieren Sie diese Pakete:
+#### <a name="packages"></a>Pakete
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt "Workerrolle", und wählen Sie dann "NuGet-Pakete verwalten" aus.
+Suchen und installieren Sie diese Pakete: 
 
 * EntityFramework 6.1.2 oder höher – Zum dynamischen Generieren des DB-Tabellenschemas basierend auf dem Inhalt der JSON-Daten im Blob.
-* JsonFx – Zum Reduzieren der JSON-Daten auf C#-Klasseneigenschaften
+* JsonFx – zum Reduzieren der JSON-Daten auf C#-Klasseneigenschaften.
 
-Verwenden Sie dieses Tool zum Generieren von C#-Klassendaten aus dem einzelnen JSON-Dokument. Dazu sind einige kleinere Änderungen erforderlich, wie das Reduzieren von JSON-Arrays in einzelne C#-Eigenschaften in einer einzigen Spalte in der Datenbanktabelle (z. B. urlData\_port).
+Verwenden Sie dieses Tool zum Generieren von C#-Klassendaten aus dem einzelnen JSON-Dokument. Dazu sind einige kleinere Änderungen erforderlich, etwa das Reduzieren von JSON-Arrays in einzelne C#-Eigenschaften in einer einzigen Spalte in der Datenbanktabelle (z.B. urlData_port). 
 
 * [C#-Klassen-Generator aus JSON](http://jsonclassgenerator.codeplex.com/)
 
-## Code
-Sie können diesen Code in `WorkerRole.cs` ablegen.
+## <a name="code"></a>Code
+Sie können diesen Code in `WorkerRole.cs`ablegen.
 
-#### Importe
+#### <a name="imports"></a>Importe
     using Microsoft.WindowsAzure.Storage;
 
     using Microsoft.WindowsAzure.Storage.Blob;
 
-#### Abrufen der Speicherverbindungszeichenfolge
+#### <a name="retrieve-the-storage-connection-string"></a>Abrufen der Speicherverbindungszeichenfolge
     private static string GetConnectionString()
     {
       return Microsoft.WindowsAzure.CloudConfigurationManager.GetSetting("StorageConnectionString");
     }
 
-#### Ausführen des Workers in regelmäßigen Abständen
+#### <a name="run-the-worker-at-regular-intervals"></a>Ausführen des Workers in regelmäßigen Abständen
 Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Intervall. Es sollte mindestens eine Stunde umfassen, da das Exportfeature ein JSON-Objekt pro Stunde abschließt.
 
     public override void Run()
@@ -156,7 +147,7 @@ Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Interva
       }
     }
 
-#### Einfügen der einzelnen JSON-Objekte als Tabellenzeilen
+#### <a name="insert-each-json-object-as-a-table-row"></a>Einfügen der einzelnen JSON-Objekte als Tabellenzeilen
     public void ImportBlobtoDB()
     {
       try
@@ -191,7 +182,7 @@ Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Interva
       }
     }
 
-#### Analysieren der einzelnen Blobs
+#### <a name="parse-each-blob"></a>Analysieren der einzelnen Blobs
     private void ParseEachBlob(CloudBlobContainer container, IListBlobItem item)
     {
       try
@@ -264,7 +255,7 @@ Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Interva
     }
     }
 
-#### Vorbereiten eines Wörterbuchs für jedes JSON-Dokument
+#### <a name="prepare-a-dictionary-for-each-json-document"></a>Vorbereiten eines Wörterbuchs für jedes JSON-Dokument
     private void GenerateDictionary(System.Dynamic.ExpandoObject output, Dictionary<string, object> dict, string parent)
         {
             try
@@ -293,7 +284,7 @@ Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Interva
             }
         }
 
-#### Umwandeln des JSON-Dokuments in C#-Klassen-Telemetrieobjekteigenschaften
+#### <a name="cast-the-json-document-into-c-class-telemetry-object-properties"></a>Umwandeln des JSON-Dokuments in C#-Klassen-Telemetrieobjekteigenschaften
      public object GetObject(IDictionary<string, object> d)
         {
             PropertyInfo[] props = null;
@@ -329,7 +320,7 @@ Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Interva
             return res;
         }
 
-#### Aus JSON-Dokument generierte PageViewPerformance-Klassendatei
+#### <a name="pageviewperformance-class-file-generated-out-of-json-document"></a>Aus JSON-Dokument generierte PageViewPerformance-Klassendatei
     public class PageViewPerformance
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -413,7 +404,7 @@ Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Interva
     }
 
 
-#### DBcontext für SQL-Interaktion nach Entity Framework
+#### <a name="dbcontext-for-sql-interaction-by-entity-framework"></a>DBcontext für SQL-Interaktion nach Entity Framework
     public class TelemetryContext : DbContext
     {
         public DbSet<PageViewPerformance> PageViewPerformanceContext { get; set; }
@@ -425,7 +416,7 @@ Ersetzen Sie die vorhandene run-Methode, und wählen Sie das gewünschte Interva
 
 Fügen Sie die DB-Verbindungszeichenfolge des Namens `TelemetryContext` in `app.config` hinzu.
 
-## Schema (nur zu Informationszwecken)
+## <a name="schema-information-only"></a>Schema (nur zu Informationszwecken)
 Dies ist das Schema für die Tabelle, die für PageView generiert wird.
 
 > [!NOTE]
@@ -488,12 +479,15 @@ Dies ist das Schema für die Tabelle, die für PageView generiert wird.
 
 Um dieses Beispiel in Aktion zu sehen, [laden Sie den vollständigen Arbeitscode herunter](https://sesitai.codeplex.com/), ändern Sie die `app.config`-Einstellungen, und veröffentlichen Sie die Workerrolle in Azure.
 
-## Verwandte Artikel
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Schreiben von Code für den direkten Zugriff auf Telemetriedaten](http://dev.applicationinsights.io/)
 * [Exportieren in SQL über eine Workerrolle](app-insights-code-sample-export-telemetry-sql-database.md)
 * [Fortlaufender Export in Application Insights](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 * [Exportdatenmodell](app-insights-export-data-model.md)
 * [Weitere Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
+
 
 <!--Link references-->
 
@@ -505,4 +499,8 @@ Um dieses Beispiel in Aktion zu sehen, [laden Sie den vollständigen Arbeitscode
 
 
 
-<!---HONumber=AcomDC_0128_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

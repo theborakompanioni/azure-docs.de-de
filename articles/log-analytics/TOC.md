@@ -40,7 +40,7 @@
 #### [Kapazitätsverwaltung](log-analytics-capacity.md)
 #### [Änderungsnachverfolgung](log-analytics-change-tracking.md)
 #### [Container](log-analytics-containers.md)
-#### [Schlüsseltresor](log-analytics-azure-key-vault.md)
+#### [Key Vault](log-analytics-azure-key-vault.md)
 #### [Bewertung von Schadsoftware](log-analytics-malware.md)
 #### [Netzwerkanalysen](log-analytics-azure-networking-analytics.md)
 #### [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md)
@@ -61,12 +61,15 @@
 ### [Protokollsuch-API](log-analytics-log-search-api.md)
 ### [Warnungs-API](log-analytics-api-alerts.md)
 
+# Referenz
+## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+
 # Ressourcen
 ## [Upgradeanalysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
 ## [Preise](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

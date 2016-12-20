@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement – Benutzeroberfläche – Reichweitenkampagne
-description: Erfahren Sie, wie Sie mit Azure Mobile Engagement Kampagnen für Pushbenachrichtigungen erstellen und verwalten können
+title: "Azure Mobile Engagement – Benutzeroberfläche – Reichweitenkampagne"
+description: "Erfahren Sie, wie Sie mit Azure Mobile Engagement Kampagnen für Pushbenachrichtigungen erstellen und verwalten können"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 2fe124a2-a86f-4136-81ba-a9d298ec798a
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,28 +14,32 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
+ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
+
 
 ---
-# Erstellen und Verwalten von Kampagnen für Pushbenachrichtigungen
+# <a name="how-to-create-and-manage-push-notification-campaigns"></a>Erstellen und Verwalten von Kampagnen für Pushbenachrichtigungen
 Sie können auf der Benutzeroberfläche im Abschnitt "Reichweite" eine neue Pushkampagne mit einer komplexen Formel erstellen, indem Sie alle Informationen angeben, die Sie zum Senden einer Pushbenachrichtigung benötigen. Die Optionen einer Pushkampagne variieren geringfügig abhängig von den vier Kampagnentypen: Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone).
 
-### Option gilt für:
-* Sprachen: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
-* Kampagne: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
+### <a name="option-applies-to"></a>Option gilt für:
+* Sprachen: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
+* Kampagne: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
 * Benachrichtigung: Ankündigungen, Umfragen
 * Inhalt: Eindeutig für jeden Kampagnentyp
-* Zielgruppe: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
-* Zeitraum: Ankündigungen, Umfragen, Kacheln
-* Test: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
+* Zielgruppe: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
+* Zeitrahmen: Ankündigungen, Umfragen, Kacheln
+* Test: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
 
 ![Reichweitenkampagne1][20]
 
-## Sprachen
-Über das Dropdownmenü "Sprachen" können Sie eine andere Version Ihres Pushvorgangs an Geräte senden, die für die Nutzung anderer Sprachen eingerichtet sind. Standardmäßig erhalten alle Geräte den gleichen Push unabhängig von der Sprache, die für sie festgelegt ist. Benutzer, deren Gerät auf eine andere Sprache festgelegt ist, erhalten die Version in der Standardsprache des Pushvorgangs. Viele der Optionen für Pushkampagnen ermöglichen Ihnen das Angeben alternativer Inhalte für jede weitere Sprache, die Sie auswählen.
+## <a name="languages"></a>Sprachen
+Über das Dropdownmenü "Sprachen" können Sie eine andere Version Ihres Pushvorgangs an Geräte senden, die für die Nutzung anderer Sprachen eingerichtet sind. Standardmäßig erhalten alle Geräte den gleichen Push unabhängig von der Sprache, die für sie festgelegt ist. Benutzer, deren Gerät auf eine andere Sprache festgelegt ist, erhalten die Version in der Standardsprache des Pushvorgangs. Viele der Optionen für Pushkampagnen ermöglichen Ihnen das Angeben alternativer Inhalte für jede weitere Sprache, die Sie auswählen. 
 
 ![Reichweitenkampagne2][21]
 
-### Sprachunterschiede gelten für:
+### <a name="language-differences-apply-to"></a>Sprachunterschiede gelten für:
 * Sprachen: Neben der Standardsprache können andere Sprachen ausgewählt werden
 * Kampagne: Für alle Sprachen gleich
 * Benachrichtigung: Zusätzlich zur Standardsprache für jede Sprache eindeutig
@@ -44,64 +48,63 @@ Sie können auf der Benutzeroberfläche im Abschnitt "Reichweite" eine neue Push
 * Zeitrahmen: Für alle Sprachen gleich
 * Test: Kann gleichzeitig an alle Sprachen gesendet werden
 
-### Unterstützte Sprachen:
-* Arabisch (Ar)
-* Bulgarisch (bg)
-* Katalanisch (ca)
-* Chinesisch (zh)
-* Kroatisch (hr)
-* Tschechisch (cs)
-* Dänisch (da)
-* Niederländisch (nl)
-* Englisch (en)
-* Finnisch (fi)
-* Französisch (fr)
-* Deutsch (de)
-* Griechisch (el)
-* Hebräisch (he)
-* Hindi (hi)
-* Ungarisch (hu)
-* Indonesisch (id)
-* Italienisch (it)
-* Japanisch (ja)
-* Koreanisch (ko)
-* Lettisch (lv)
-* Litauisch (lt)
-* Malaiisch (Makrosprache) (ms)
-* Norwegisch, Bokmål (nb)
-* Polnisch (pl)
-* Portugiesisch (pt)
-* Rumänisch (ro)
-* Russisch (ru)
-* Serbisch (sr)
-* Slowakisch (sk)
-* Slowenisch (sl)
-* Spanisch (es)
-* Schwedisch (sv)
-* Tagalog (tl)
-* Thai (th)
-* Türkisch (tr)
-* Ukrainisch (uk)
-* Vietnamesisch (vi)
+### <a name="supported-languages"></a>Unterstützte Sprachen:
+* Arabisch (Ar) 
+* Bulgarisch (bg) 
+* Katalanisch (ca) 
+* Chinesisch (zh) 
+* Kroatisch (hr) 
+* Tschechisch (cs) 
+* Dänisch (da) 
+* Niederländisch (nl) 
+* Englisch (en) 
+* Finnisch (fi) 
+* Französisch (fr) 
+* Deutsch (de) 
+* Griechisch (el) 
+* Hebräisch (he) 
+* Hindi (hi) 
+* Ungarisch (hu) 
+* Indonesisch (id) 
+* Italienisch (it) 
+* Japanisch (ja) 
+* Koreanisch (ko) 
+* Lettisch (lv) 
+* Litauisch (lt) 
+* Malaiisch (Makrosprache) (ms) 
+* Norwegisch, Bokmål (nb) 
+* Polnisch (pl) 
+* Portugiesisch (pt) 
+* Rumänisch (ro) 
+* Russisch (ru) 
+* Serbisch (sr) 
+* Slowakisch (sk) 
+* Slowenisch (sl) 
+* Spanisch (es) 
+* Schwedisch (sv) 
+* Tagalog (tl) 
+* Thai (th) 
+* Türkisch (tr) 
+* Ukrainisch (uk) 
+* Vietnamesisch (vi) 
 
-## Kampagne
+## <a name="campaign"></a>Kampagne
 Im Abschnitt "Kampagne" können Sie den Namen und die Kategorie der Kampagne festlegen. Sie können auch planen, den Zielgruppenabschnitt einer Pushkampagne zu ignorieren und stattdessen diese Kampagne über die Reichweite-API (und einige Elemente der untergeordneten Push-API) zu senden. Kategorien können mit einer benutzerdefinierten Benachrichtigungsvorlage verwendet werden, um App-interne Benachrichtigungen basierend auf vordefinierten Einstellungen zu steuern. Über die Reichweite-API können Sie eine Liste Ihrer vorhandenen "Kategorien" abrufen.
 
-> Warnung: Wenn Sie im Abschnitt "Kampagne" einer Reichweitenkampagne die Option "Zielgruppe ignorieren, Push wird Benutzern über die API gesendet" verwenden, wird die Kampagne NICHT automatisch gesendet. Sie müssen die Kampagne manuell über die Reichweite-API senden.
-> 
-> 
+> [!WARNING]
+> Wenn Sie im Abschnitt "Kampagne" einer Reach-Kampagne die Option "Zielgruppe ignorieren, Push wird über die API an Benutzer gesendet" verwenden, wird die Kampagne NICHT automatisch gesendet. Sie müssen die Kampagne manuell über die Reach-API senden.
 
 ![Reichweitenkampagne3][22]
 
-### Option gilt für:
+### <a name="option-applies-to"></a>Option gilt für:
 * Name: Alle
 * Kategorie: Ankündigungen, Umfragen
 * Zielgruppe ignorieren, Push wird Benutzern über die API gesendet: Alle
 
-## Benachrichtigung
-Im Abschnitt "Benachrichtigung" können Sie grundlegende Einstellungen für Ihren Pushvorgang festlegen, z. B.: Den Titel des Pushvorgangs, die Nachricht, ein App-internes Bild der App oder ob sie abweisbar ist. Viele Benachrichtigungseinstellungen sind spezifisch für die Plattform Ihres Geräts. Sie können auswählen, ob Ihr Pushvorgang "App-intern" oder "App-extern" oder in beiden Formen gesendet wird. (Beachten Sie, dass Benutzer auf der Betriebssystemebene ihrer Geräte Pushvorgänge "abonnieren" bzw. diese "Abonnements kündigen" können. Azure Mobile Engagement hat keine Möglichkeit, diese Einstellung außer Kraft zu setzen. Beachten Sie außerdem, dass die Reichweite-API Pushvorgänge "App-intern" und "App-extern" verarbeitet. Die Push-API kann verwendet werden, um auch App-externe Pushvorgänge zu verarbeiten.) Pushvorgänge können mit Bildern oder HTML-Inhalt angepasst werden, einschließlich Deep Links zum Verknüpfen mit Elementen außerhalb Ihrer App oder mit einer anderen Stelle in Ihrer App (Intent-Kategorien von Android-SDK 2.1.0 oder höher erforderlich). Sie können das Symbol oder iOS-Badge ändern und entweder Text oder Webinhalte (ein Popup mit HTML-Inhalt, URL-Link zu einer anderen Stelle innerhalb oder außerhalb der App) senden. Sie können Android-Geräte auch bei der Pushbenachrichtigung klingeln oder vibrieren lassen. (Denken Sie daran, dass Sie die ordnungsgemäßen SDK-Berechtigungen in Ihrer Android-Manifestdatei benötigen, damit ein Gerät klingelt oder vibriert.) Derzeit gibt es keinen Standard für Android-Bilder in Übergrößen, da die Bildschirmgrößen auf jedem Gerät anders sind, aber 400x100-Bilder funktionieren bei nahezu jeder Bildschirmgröße.
+## <a name="notification"></a>Benachrichtigung
+Im Abschnitt "Benachrichtigung" können Sie grundlegende Einstellungen für Ihren Pushvorgang festlegen, z. B.: Den Titel des Pushvorgangs, die Nachricht, ein App-internes Bild der App oder ob sie abweisbar ist. Viele Benachrichtigungseinstellungen sind spezifisch für die Plattform Ihres Geräts. Sie können auswählen, ob Ihr Pushvorgang "App-intern" oder "App-extern" oder in beiden Formen gesendet wird. (Beachten Sie, dass Benutzer auf der Betriebssystemebene ihrer Geräte Pushvorgänge "abonnieren" bzw. diese "Abonnements kündigen" können. Azure Mobile Engagement hat keine Möglichkeit, diese Einstellung außer Kraft zu setzen. Beachten Sie außerdem, dass die Reichweite-API Pushvorgänge "App-intern" und "App-extern" verarbeitet. Die Push-API kann verwendet werden, um auch App-externe Pushvorgänge zu verarbeiten.) Pushvorgänge können mit Bildern oder HTML-Inhalt angepasst werden, einschließlich Deep Links zum Verknüpfen mit Elementen außerhalb Ihrer App oder mit einer anderen Stelle in Ihrer App (Intent-Kategorien von Android-SDK 2.1.0 oder höher erforderlich). Sie können das Symbol oder iOS-Badge ändern und entweder Text oder Webinhalte (ein Popup mit HTML-Inhalt, URL-Link zu einer anderen Stelle innerhalb oder außerhalb der App) senden. Sie können Android-Geräte auch bei der Pushbenachrichtigung klingeln oder vibrieren lassen. (Denken Sie daran, dass Sie die ordnungsgemäßen SDK-Berechtigungen in Ihrer Android-Manifestdatei benötigen, damit ein Gerät klingelt oder vibriert.) Derzeit gibt es keinen Standard für Android-Bilder in Übergrößen, da die Bildschirmgrößen auf jedem Gerät anders sind, aber 400x100-Bilder funktionieren bei nahezu jeder Bildschirmgröße.
 
-### Übermittlungstypen:
+### <a name="delivery-types"></a>Übermittlungstypen:
 * Nur App-extern: die Benachrichtigung wird übermittelt, wenn der Benutzer die Anwendung nicht verwendet.
 * Die ausschließlich App-externe Benachrichtigung erfordert ein Zertifikat von Apple oder Google (APNS- oder GCM-Zertifikat).
 * Nur App-intern: Die Benachrichtigung wird nur angezeigt, wenn die Anwendung ausgeführt wird.
@@ -110,67 +113,65 @@ Im Abschnitt "Benachrichtigung" können Sie grundlegende Einstellungen für Ihre
 
 ![Reichweitenkampagne4][23]
 
-### Option gilt für:
+### <a name="option-applies-to"></a>Option gilt für:
 * Benachrichtigung: Ankündigungen, Umfragen
 
-## Inhalt
-Im Abschnitt "Inhalt" können Sie den Inhalt Ihrer Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone) ändern. Die Einstellung "Inhalt" von Pushkampagnen ist spezifisch für den Typ der Kampagne.
+## <a name="content"></a>Inhalt
+Im Abschnitt "Inhalt" können Sie den Inhalt Ihrer Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone) ändern. Die Einstellung "Inhalt" von Pushkampagnen ist spezifisch für den Typ der Kampagne. 
 
-### Siehe auch
+### <a name="see-also"></a>Siehe auch
 * [Dokumentation zur Benutzeroberfläche – Reichweite – Pushübertragung von Inhalten][Link 29]
 
 ![Reichweitenkampagne5][24]
 
-## Zielgruppe
+## <a name="audience"></a>Zielgruppe
 Im Abschnitt "Zielgruppe" können Sie eine Standardliste von Elementen zum Beschränken Ihrer Kampagne definieren. Sie können die Kampagne auch basierend auf angepassten Kriterien beschränken. Der Standardsatz von Optionen zum Einschränken der Zielgruppe ermöglicht Ihnen einen Push an entweder alte oder neue Benutzer oder nur an systemeigene Pushbenutzer. Sie können auch ein Kontingent festlegen, um die Anzahl der Benutzer zu beschränken, die den Push empfangen. Sie können den Ausdruck bearbeiten, wie Ihre Kampagne gefiltert wird, um mindestens ein Kriterium für Zielbenutzer einzuschließen. Sie können einen Ausdruck für die Zielgruppe manuell eingeben. Ein solcher Ausdruck muss explizit das Verhältnis zwischen Kriterien definieren. Ein Kriterium ist ein Bezeichner, der mit einem Großbuchstaben beginnen muss und keine Leerzeichen enthalten darf. Die Beziehung zwischen den Kriterien kann mit den Operatoren 'und', 'oder', 'nicht' und als '(',')' beschrieben werden. Beispiel: "Kriterium1 oder (Kriterium1 und nicht Kriterium2)".
 
-> Hinweis: Bei einer großen Zielgruppe für Kampagnen kann die Zielsuche auf Serverseite langsam sein, insbesondere dann, wenn Sie versuchen, mehrere Kampagnen gleichzeitig zu starten.
-> 
-> 
+> [!NOTE]
+> Bei einer großen Zielgruppe für Kampagnen kann die Zielsuche auf Serverseite langsam sein, insbesondere dann, wenn Sie versuchen, mehrere Kampagnen gleichzeitig zu starten.
 
 * Starten Sie, sofern möglich, immer nur eine Kampagne gleichzeitig.
 * Maximal sollten nicht mehr als vier Kampagnen gleichzeitig gestartet werden.
-* Übertragen Sie den Push nur an Ihre aktiven Benutzer (Kontrollkästchen "Nur Benutzer erfassen, die über systemeigenen Push erreicht werden können" und "Nur aktive Benutzer erfassen"), damit nur die Benutzer, die die App noch installiert haben und nutzen, durchsucht werden müssen. Nachdem die Zielgruppe definiert wurde, können Sie auf die Schaltfläche "Simulieren" klicken, um herauszufinden, wie viele Benutzer diesen Push empfangen. Dadurch wird die Anzahl bekannter Benutzer berechnet, die potenziell zu dieser Zielgruppe gehören (hierbei handelt es sich um eine Schätzung, die auf einer Zufallsstichprobe von Benutzern basiert). Denken Sie daran, dass Benutzer, die die Anwendung deinstalliert haben, ebenfalls Teil dieser Zielgruppe sind, aber nicht erreicht werden können.
+* Übertragen Sie den Push nur an Ihre aktiven Benutzer (Kontrollkästchen "Nur Benutzer erfassen, die über systemeigenen Push erreicht werden können" und "Nur aktive Benutzer erfassen"), damit nur die Benutzer, die die App noch installiert haben und nutzen, durchsucht werden müssen.
+  Nachdem die Zielgruppe definiert wurde, können Sie auf die Schaltfläche "Simulieren" klicken, um herauszufinden, wie viele Benutzer diesen Push empfangen. Dadurch wird die Anzahl bekannter Benutzer berechnet, die potenziell zu dieser Zielgruppe gehören (hierbei handelt es sich um eine Schätzung, die auf einer Zufallsstichprobe von Benutzern basiert). Denken Sie daran, dass Benutzer, die die Anwendung deinstalliert haben, ebenfalls Teil dieser Zielgruppe sind, aber nicht erreicht werden können.
 
-### Siehe auch
+### <a name="see-also"></a>Siehe auch
 * [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ![Reichweitenkampagne6][25]
 
-### Bearbeitungsausdruck
+### <a name="edit-expression"></a>Bearbeitungsausdruck
 ![Reichweitenkampagne7][26]
 
-### Die Option "Zielgruppe begrenzen" gilt für:
-* Nur eine Teilmenge der Benutzer erfassen: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
-* Nur vorhandene Benutzer erfassen: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
-* Nur neue Benutzer erfassen: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
-* Nur Benutzer im Leerlauf erfassen: Ankündigungen, Umfragen, Kacheln
-* Nur aktive Benutzer erfassen: Alle (Ankündigungen, Umfragen, Datenpushes, Kacheln)
-* Nur Benutzern mit aktiviertem systemeigenen Push erfassen: Ankündigungen, Umfragen
+### <a name="limit-your-audience-option-applies-to"></a>Die Option "Zielgruppe begrenzen" gilt für:
+* Nur an eine Teilmenge von Benutzern richten: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
+* Nur an schon länger vorhandene Benutzer richten: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
+* Nur an neue Benutzer richten: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
+* Nur an inaktive Benutzer richten: Ankündigungen, Umfragen, Kacheln
+* Nur an aktive Benutzer richten: Alle (Ankündigungen, Umfragen, Datenpushvorgänge, Kacheln)
+* Nur an per nativem Push erreichbare Benutzer richten: Ankündigungen, Umfragen
 
-## Zeitraum
+## <a name="time-frame"></a>Zeitraum
 Sie können im Abschnitt "Zeitraum" festlegen, wann der Push gesendet werden soll. Oder Sie können den Zeitraum leer lassen, um die Kampagne sofort zu starten. Denken Sie daran, dass bei Verwenden der Zeitzone der Endbenutzer die Kampagne für Ihre Endbenutzer in Asien einen Tag früher als erwartet starten kann. Senden Sie nacheinander kleine Batches von Pushdaten, bis alle Zeitzonen in der Welt mit dem Zeitraum übereinstimmen, den Sie für die Kampagne festgelegt haben. Das Verwenden der Zeitzone der Endbenutzer kann auch Verzögerungen bei Kampagnen verursachen, da vor dem Starten des Pushvorgangs die Uhrzeit vom Telefon abgerufen werden muss.
 
-> Hinweis: Kampagnen ohne Enddatum können Pushes lokal zwischenspeichern und sie weiter anzeigen, nachdem Sie Kampagnen manuell abgeschlossen haben. Um dieses Verhalten zu vermeiden, geben Sie eine spezifische Endzeit für Kampagnen an.
-> 
-> 
+> [!NOTE]
+> Kampagnen ohne Enddatum können Pushes lokal zwischenspeichern und sie weiter anzeigen, nachdem Sie Kampagnen manuell abgeschlossen haben. Um dieses Verhalten zu vermeiden, geben Sie eine spezifische Endzeit für Kampagnen an.
 
-### Siehe auch
-* [Reichweite – Vorgehensweisen – Zeitplanung][Link 3]
+### <a name="see-also"></a>Siehe auch
+* [Reichweite – Vorgehensweisen – Zeitplanung][Link 3] 
 
 ![Reichweitenkampagne8][27]
 
-### Einstellungen gelten für:
-* Zeitraum: Ankündigungen, Umfragen, Kacheln
+### <a name="settings-apply-to"></a>Einstellungen gelten für:
+* Zeitrahmen: Ankündigungen, Umfragen, Kacheln
 
-## Test
+## <a name="test"></a>Test
 Sie können im Abschnitt "Test" diesen Pushvorgang an Ihr eigenes Testgerät senden, bevor Sie die Kampagne speichern. Wenn Sie bestimmte Sprachen für diese Kampagne konfiguriert haben, können Sie den Push in der jeweiligen Sprache testen. Sie können ein Testgerät in "Mein Konto" einrichten.
 
-> Hinweis: Es werden keine serverseitigen Daten protokolliert, wenn Sie die Schaltfläche zum Testen von Pushvorgängen verwenden. Daten werden nur für reale Pushkampagnen protokolliert.
-> 
-> 
+> [!NOTE]
+> Es werden keine serverseitigen Daten protokolliert, wenn Sie die Schaltfläche zum Testen von Pushvorgängen verwenden. Daten werden nur für reale Pushkampagnen protokolliert.
 
-### Siehe auch
+### <a name="see-also"></a>Siehe auch
 * [Dokumentation zur Benutzeroberfläche – Mein Konto][Link 14]
 
 ![Reichweitenkampagne9][28]
@@ -267,4 +268,8 @@ Sie können im Abschnitt "Test" diesen Pushvorgang an Ihr eigenes Testgerät sen
 [Link 29]: mobile-engagement-user-interface-reach-content.md
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

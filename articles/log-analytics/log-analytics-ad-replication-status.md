@@ -1,12 +1,12 @@
 ---
-title: Active Directory-Replikationsstatus-Lösung in Log Analytics | Microsoft Docs
-description: Mit dem Active Directory-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt.
+title: "Active Directory-Replikationsstatus-Lösung in Log Analytics | Microsoft Docs"
+description: "Mit dem Active Directory-Replikationsstatus-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht, und die Ergebnisse werden in Ihrem OMS-Dashboard angezeigt."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 49e5cc5045f5bd626826b4992b8b49f886ef7bde
+
 
 ---
 # <a name="active-directory-replication-status-solution-in-log-analytics"></a>Active Directory-Replikationsstatus-Lösung in Log Analytics
@@ -34,7 +38,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und weitere Details dazu, 
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |![Nein](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![Nein](./media/log-analytics-ad-replication-status/oms-bullet-red.png) |![Ja](./media/log-analytics-ad-replication-status/oms-bullet-green.png) |alle 5 Tage |
 
-## <a name="optionally,-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Optional können Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS aktivieren
+## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>Optional können Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS aktivieren
 Wenn Sie Ihre Domänencontroller nicht direkt mit OMS verbinden möchten, können Sie einen beliebigen anderen Computer mit OMS-Verbindung in Ihrer Domäne verwenden, um Daten für das AD-Replikationsstatus-Lösungspaket zu sammeln und die Daten zu senden.
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS
@@ -147,6 +151,9 @@ Falls Sie keinen Domänencontroller direkt mit OMS oder SCOM verbinden möchten,
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

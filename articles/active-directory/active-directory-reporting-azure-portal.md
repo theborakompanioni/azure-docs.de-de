@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/31/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 96784e006b5986cbc6dfd4f264b22bd1d1bf208d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e082470c8ad3ee02c528a4ca6e3326e5be4752a3
 
 
 ---
-# <a name="azure-active-directory-reporting-preview"></a>Azure Active Directory-Berichterstellung – Vorschau
+# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory-Berichterstellung – Vorschau
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-reporting-azure-portal.md)
 > * [Klassisches Azure-Portal](active-directory-reporting-guide.md)
@@ -38,8 +38,8 @@ Die Berichterstellung hat zwei Hauptbereiche:
 
 Je nach Umfang der Daten, nach denen Sie suchen, können Sie auf die Berichte zugreifen, indem Sie entweder auf **Benutzer und Gruppen** oder im [Azure-Porta](https://portal.azure.com)l in der Liste mit den Diensten auf **Unternehmensanwendungen** klicken.
 
-## <a name="signin-activities"></a>Anmeldeaktivitäten
-### <a name="user-signin-activities"></a>Benutzeranmeldeaktivitäten
+## <a name="sign-in-activities"></a>Anmeldeaktivitäten
+### <a name="user-sign-in-activities"></a>Benutzeranmeldeaktivitäten
 Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
 
 * Wie sieht das Anmeldemuster eines Benutzers aus?
@@ -97,7 +97,7 @@ Mit der Spaltenauswahl können Sie die Datenfelder auswählen, die Sie anzeigen 
 
 ![Berichterstellung](./media/active-directory-reporting-azure-portal/column_chooser.png "Reporting")
 
-### <a name="filtering-signins"></a>Filtern von Anmeldungen
+### <a name="filtering-sign-ins"></a>Filtern von Anmeldungen
 Sie können Anmeldungen nach einem Zeitintervall filtern, um die Menge der angezeigten Daten mithilfe der folgenden Felder zu begrenzen:
 
 * Datum und Uhrzeit 
@@ -203,6 +203,6 @@ Weitere Informationen finden Sie unter [Anleitung für Azure Active Directory-Be
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

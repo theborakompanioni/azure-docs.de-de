@@ -1,19 +1,23 @@
 ---
 title: Erstellen von Anwendungen, die Service Bus-Themen und -Abonnements verwenden | Microsoft Docs
-description: Einführung in die Funktionen zum Veröffentlichen/Abonnieren von Service Bus-Themen und -Abonnements
-services: service-bus
+description: "Einführung in die Funktionen zum Veröffentlichen/Abonnieren von Service Bus-Themen und -Abonnements"
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a48fc9b0-b7b0-464e-8187-a517bf8b4eb4
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 75f2cddad471c89fd826097831362d9d51a6dccf
+
 
 ---
 # <a name="create-applications-that-use-service-bus-topics-and-subscriptions"></a>Erstellen von Anwendungen, die Service Bus-Themen und -Abonnements verwenden
@@ -45,10 +49,10 @@ Damit das Management-Dashboard unterstützt wird, muss wie im Folgenden gezeigt 
 Bei dieser Konfiguration wird jede Nachricht von den POS-Terminals sowohl dem Abonnement **Dashboard** als auch dem Abonnement **Inventory** zur Verfügung gestellt.
 
 ## <a name="show-me-the-code"></a>Anwendungscode
-Unter [Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden](service-bus-create-queues.md) wird beschrieben, wie Sie sich für ein Azure-Konto registrieren und einen Dienstnamespace erstellen. Zur Verwendung eines Service Bus-Namespaces muss eine Anwendung auf die Service Bus-Assembly verweisen, d. h. auf "Microsoft.ServiceBus.dll". Die einfachste Möglichkeit zum Verweisen auf Service Bus-Abhängigkeiten besteht darin, das [NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) „Service Bus“ zu installieren. Die Assembly ist auch Bestandteil des Azure SDK und kann auf der [Azure SDK-Downloadseite](https://azure.microsoft.com/downloads/) heruntergeladen werden.
+Unter [Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden](service-bus-create-queues.md) wird beschrieben, wie Sie sich für ein Azure-Konto registrieren und einen Dienstnamespace erstellen. Zur Verwendung eines Service Bus-Namespaces muss eine Anwendung auf die Service Bus-Assembly verweisen, d. h. auf "Microsoft.ServiceBus.dll". Die einfachste Möglichkeit zum Verweisen auf Service Bus-Abhängigkeiten besteht darin, das [NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) „Service Bus“ zu installieren. Die Assembly ist auch Bestandteil des Azure SDK und kann auf der [Azure SDK-Downloadseite](https://azure.microsoft.com/downloads/) heruntergeladen werden.
 
 ### <a name="create-the-topic-and-subscriptions"></a>Erstellen des Themas und der Abonnements
-Verwaltungsvorgänge für Service Bus-Nachrichtenentitäten (Warteschlangen und Veröffentlichen/Abonnieren von Themen) werden über die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse ausgeführt. Für die Erstellung einer [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz für einen bestimmten Dienstnamespace werden gültige Anmeldeinformationen benötigt. Service Bus verwendet ein [SAS (Shared Access Signature)](../service-bus/service-bus-sas-overview.md)-basiertes Sicherheitsmodell. Die [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx)-Klasse stellt einen Sicherheitstokenanbieter mit integrierten Factorymethoden dar, die einige bekannte Tokenanbieter zurückgeben. Wir verwenden die [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx)-Methode, um die SAS-Anmeldeinformationen zu speichern. Die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz wird dann mit der Basisadresse des Service Bus-Namespaces und dem Tokenanbieter erstellt.
+Verwaltungsvorgänge für Service Bus-Nachrichtenentitäten (Warteschlangen und Veröffentlichen/Abonnieren von Themen) werden über die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse ausgeführt. Für die Erstellung einer [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz für einen bestimmten Dienstnamespace werden gültige Anmeldeinformationen benötigt. Service Bus verwendet ein [SAS (Shared Access Signature)](service-bus-sas-overview.md)-basiertes Sicherheitsmodell. Die [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx)-Klasse stellt einen Sicherheitstokenanbieter mit integrierten Factorymethoden dar, die einige bekannte Tokenanbieter zurückgeben. Wir verwenden die [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx)-Methode, um die SAS-Anmeldeinformationen zu speichern. Die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz wird dann mit der Basisadresse des Service Bus-Namespaces und dem Tokenanbieter erstellt.
 
 Die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse enthält Methoden zum Erstellen, Aufzählen und Löschen von Nachrichtenentitäten. Mit dem folgenden Code wird gezeigt, wie die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz erstellt und zum Erstellen des Themas **DataCollectionTopic** verwendet wird.
 
@@ -139,6 +143,9 @@ Alle Gründe, die für die Verwendung von Warteschlangen sprechen und die unter 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Verwendung von Warteschlangen im POS-Einzelhandelsszenario finden Sie unter [Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden](service-bus-create-queues.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

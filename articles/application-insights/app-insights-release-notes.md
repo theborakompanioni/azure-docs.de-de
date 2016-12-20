@@ -1,11 +1,11 @@
 ---
-title: Versionshinweise für Application Insights
+title: "Versionshinweise für Application Insights"
 description: Die neuesten Updates.
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: 9cd2ecdb-c2b9-4e4a-b6aa-beb0c2ca4ffc
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,9 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1add923868a3d187401d33f6d4e38cbf028f92dc
+
 
 ---
-# SDK-Versionshinweise – Application Insights
+# <a name="sdk-release-notes---application-insights"></a>SDK-Versionshinweise – Application Insights
 Hier finden Sie detaillierte Versionsinformationen und Updateanweisungen für unsere SDKs:
 
 * [ASP.NET Web Server SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
@@ -31,6 +35,11 @@ Hier finden Sie detaillierte Versionsinformationen und Updateanweisungen für un
 * [Visual Studio-Tools](app-insights-release-notes-vsix.md)
 * [Andere Plattformen](https://github.com/Microsoft/ApplicationInsights-Home)
 
-Lesen Sie auch unsere [Dienstupdates](https://azure.microsoft.com/updates/?service=application-insights), in denen wichtige Verbesserungen beim Application Insights-Dienst zusammengefasst sind.
+Lesen Sie auch unsere [Dienstupdates](https://azure.microsoft.com/updates/?service=application-insights) , in denen wichtige Verbesserungen beim Application Insights-Dienst zusammengefasst sind.
 
-<!---HONumber=AcomDC_0224_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

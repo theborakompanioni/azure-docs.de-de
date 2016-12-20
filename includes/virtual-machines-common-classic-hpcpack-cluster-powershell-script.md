@@ -8,7 +8,7 @@ Hintergrundinformationen zur Planung eines HPC Pack-Clusters finden Sie unter [P
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Abonnement:** Sie können ein Abonnement entweder im Azure Global- oder Azure China-Dienst nutzen. Ihre Abonnementlimits haben Einfluss darauf, wie viele und welche Arten von Knoten Sie bereitstellen können. Informationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../articles/azure-subscription-service-limits.md).
-* **Windows-Clientcomputer mit Azure PowerShell 0.8.7 oder höher (installiert und konfiguriert):** Weitere Informationen zur Installation und Schritte zum Verknüpfen des Azure-Abonnements finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md) .
+* **Windows-Clientcomputer mit Azure PowerShell 0.8.7 oder höher (installiert und konfiguriert):** Weitere Informationen zur Installation und Schritte zum Verknüpfen des Azure-Abonnements finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 * **HPC Pack-IaaS-Bereitstellungsskript:** Laden Sie die neueste Version des Skripts aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949)herunter, und entpacken Sie sie. Führen Sie `New-HPCIaaSCluster.ps1 –Version`aus, um die Version des Skripts zu überprüfen. Dieser Artikel basiert auf der Skriptversion 4.4.1.
 * **Skriptkonfigurationsdatei:** Sie müssen eine XML-Datei erstellen, die vom Skript zum Konfigurieren des HPC-Clusters verwendet wird. Informationen und Beispiele finden Sie in den Abschnitten weiter unten in diesem Artikel sowie in der Datei „Manual.rtf“ für das Bereitstellungsskript.
 
@@ -57,6 +57,6 @@ Die Konfigurationsdatei für das Bereitstellungsskript ist eine XML-Datei. Die S
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

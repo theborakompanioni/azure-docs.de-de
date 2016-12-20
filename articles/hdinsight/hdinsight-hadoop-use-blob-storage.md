@@ -17,12 +17,12 @@ ms.topic: get-started-article
 ms.date: 09/06/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7baf1aa756221df62a36cd975ffb92fc8cd27232
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 74416d2740c4eaa49d508468df68fdb786ea2902
 
 
 ---
-# <a name="use-hdfscompatible-azure-blob-storage-with-hadoop-in-hdinsight"></a>Verwenden des HDFS-kompatiblen Azure-Blobspeichers mit Hadoop in HDInsight
+# <a name="use-hdfs-compatible-azure-blob-storage-with-hadoop-in-hdinsight"></a>Verwenden des HDFS-kompatiblen Azure-Blobspeichers mit Hadoop in HDInsight
 Erfahren Sie, wie Sie kostengünstigen Azure Blob Storage mit HDInsight verwenden, Azure-Speicherkonten und Blob Storage-Container erstellen und die dort vorhandenen Daten ansprechen.
 
 Azure-Blobspeicher stellt eine robuste, universelle Speicherlösung dar, die problemlos mit HDInsight integriert werden kann. Über eine HDFS-Schnittstelle (Hadoop Distributed File System) können sämtliche Komponenten in HDInsight direkt mit strukturierten oder unstrukturierten Daten im Blobspeicher arbeiten.
@@ -34,12 +34,12 @@ Die Speicherung von Daten im Blobspeicher sorgt dafür, dass die HDInsight-Clust
 > 
 > 
 
-Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erste Schritte mit HDInsight][hdinsight-get-started] oder [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-creation].
+Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erste Schritte mit HDInsight][hdinsight-get-started] und [Erstellen von HDInsight-Clustern][hdinsight-creation].
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight-Speicherarchitektur
 Das folgende Diagramm bietet einen zusammenfassenden Überblick über die HDInsight-Speicherarchitektur.
 
-![Hadoop-Cluster verwenden die HDFS-API, um auf strukturierte und unstrukturierte Daten im Blobspeicher zuzugreifen und diese zu speichern.](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight Storage Architecture")
+![Hadoop-Cluster verwenden die HDFS-API, um auf strukturierte und unstrukturierte Daten im Blobspeicher zuzugreifen und diese zu speichern.](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight Storage-Architektur")
 
 HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknoten angefügt ist. Auf dieses Dateisystem kann über den vollständig qualifizierten URI zugegriffen werden. Zum Beispiel:
 
@@ -78,7 +78,7 @@ Der Leistungsaufwand, der damit verbunden ist, dass die Computecluster und Speic
 
 Die Speicherung von Daten im Azure-Blobspeicher statt im HDFS hat mehrere Vorteile:
 
-* **Datenfreigabe und -wiederverwendung:** Die Daten im HDFS befinden sich innerhalb des Rechenclusters. Nur die Anwendungen, die Zugriff auf den Rechencluster haben, können die Daten über die HDFS-API verwenden. Auf die Dateien in Azure Blob Storage kann entweder über die HDFS-APIs oder über die [Blob-Speicher-REST-APIs][blob-storage-restAPI] zugegriffen werden. Somit kann eine größere Menge von Anwendungen (darunter andere HDInsight-Cluster) und Tools verwendet werden, um die Daten zu produzieren und abzurufen.
+* **Datenfreigabe und -wiederverwendung:** Die Daten im HDFS befinden sich innerhalb des Rechenclusters. Nur die Anwendungen, die Zugriff auf den Rechencluster haben, können die Daten über die HDFS-API verwenden. Auf die Dateien im Azure-Blobspeicher kann entweder über die HDFS-APIs oder über die [Blobspeicher-REST-APIs][blob-storage-restAPI] zugegriffen werden. Somit kann eine größere Menge von Anwendungen (darunter andere HDInsight-Cluster) und Tools verwendet werden, um die Daten zu produzieren und abzurufen.
 * **Datenarchivierung:** Die Speicherung von Daten im Azure-Blobspeicher sorgt dafür, dass die HDInsight-Cluster, die für Berechnungen verwendet werden, sicher gelöscht werden können, ohne Benutzerdaten zu verlieren.
 * **Datenspeicherkosten:** Die langfristige Datenspeicherung in DFS ist kostspieliger als die Datenspeicherung im Azure-Blobspeicher, da die Kosten eines Rechenclusters höher liegen als diejenigen eines Azure-Blobspeichercontainers. Da die Daten nicht für jede Erzeugung eines neues Rechenclusters neu geladen werden, sparen Sie auch Kosten für das Laden von Daten.
 * **Elastische horizontale Skalierung:** Auch wenn HDFS ein horizontal skaliertes Dateisystem bietet, wird die Skalierung durch die Anzahl der Knoten bestimmt, die Sie für Ihren Cluster erstellen. Eine Änderung der Skalierung kann weitaus schwieriger werden, als auf die flexiblen Speicherkapazitäten zu vertrauen, die Ihnen der Azure Blob Storage automatisch bietet.
@@ -92,7 +92,7 @@ Bestimmte MapReduce-Jobs und -Pakete können zu Zwischenergebnissen führen, die
 > 
 
 ## <a name="create-blob-containers"></a>Erstellen eines Blob-Containers
-Zum Verwenden von BLOBs erstellen Sie zuerst ein [Azure-Speicherkonto][azure-storage-create]. Dabei geben Sie eine Azure-Region an, in der die mithilfe dieses Kontos erstellten Objekte gespeichert werden. Cluster und Speicherkonto müssen sich in der gleichen Region befinden. Die SQL Server-Datenbanken für den Hive- und Oozie-Metastore müssen sich ebenfalls in der gleichen Region befinden.
+Um Blobs zu verwenden, erstellen Sie zuerst ein Azure-[Speicherkonto][azure-storage-create]. Dabei geben Sie eine Azure-Region an, in der die mithilfe dieses Kontos erstellten Objekte gespeichert werden. Cluster und Speicherkonto müssen sich in der gleichen Region befinden. Die SQL Server-Datenbanken für den Hive- und Oozie-Metastore müssen sich ebenfalls in der gleichen Region befinden.
 
 Ein Blob gehört unabhängig davon, wo es sich befindet, stets zu einem Container Ihres Azure-Speicherkontos. Dieser Container kann ein außerhalb von HDInsight erstelltes Blob sein, oder es handelt sich um einen Container, der für einen HDInsight-Cluster erstellt wird.
 
@@ -216,7 +216,7 @@ Verwenden Sie den folgenden Befehl, um die Blob-bezogenen Cmdlets aufzulisten:
 ![Liste der Blob-bezogenen PowerShell-Cmdlets.][img-hdi-powershell-blobcommands]
 
 ### <a name="upload-files"></a>Hochladen von Dateien
-Anweisungen hierzu finden Sie unter [Hochladen von Daten in HDInsight][hdinsight-upload-data].
+Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 ### <a name="download-files"></a>Herunterladen von Dateien
 Mit dem folgenden Skript wird ein Blockblob in das aktuelle Verzeichnis heruntergeladen. Wechseln Sie vor der Ausführung des Skripts in ein Verzeichnis, für das Sie Schreibberechtigungen haben.
@@ -289,7 +289,7 @@ Weitere Informationen finden Sie unter:
 * [Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight][hdinsight-use-sas]
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
-[powershell-install]: ../powershell-install-configure.md
+[powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-creation]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-tutorial-get-started-windows.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -305,6 +305,6 @@ Weitere Informationen finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

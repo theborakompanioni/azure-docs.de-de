@@ -1,43 +1,48 @@
 ---
-title: Manage historical data in Temporal Tables with retention policy | Microsoft Docs
-description: Learn how to use temporal retention policy to keep historical data under your control.
+title: Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie | Microsoft Docs
+description: "Erfahren Sie, wie Sie eine temporale Aufbewahrungsrichtlinie verwenden, um die Kontrolle über Verlaufsdaten zu behalten."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: bonova
 manager: drasumic
-editor: ''
-
+editor: 
+ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
 ms.service: sql-database
+ms.custom: db development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: bb68239d36203e74faa54859b20a4198ce3cba91
+
 
 ---
-# <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Manage historical data in Temporal Tables with retention policy
-Temporal Tables may increase database size more than regular tables, especially if you retain historical data for a longer period of time. Hence, retention policy for historical data is an important aspect of planning and managing the lifecycle of every temporal table. Temporal Tables in Azure SQL Database come with easy-to-use retention mechanism that helps you accomplish this task.
+# <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie
+Temporale Tabellen können die Größe einer Datenbank mehr erhöhen als reguläre Tabellen, insbesondere, wenn Sie Verlaufsdaten für einen längeren Zeitraum beibehalten. Daher stellt eine Aufbewahrungsrichtlinie für Verlaufsdaten einen wichtigen Aspekt der Planung und Verwaltung des Lebenszyklus jeder temporalen Tabelle dar. Temporale Tabellen in Azure SQL-Datenbank verfügen über einen benutzerfreundlichen Aufbewahrungsmechanismus, der Sie bei dieser Aufgabe unterstützt.
 
-Temporal history retention can be configured at the individual table level, which allows users to create flexible aging polices. Applying temporal retention is simple: it requires only one parameter to be set during table creation or schema change.
+Die temporale Verlaufsbeibehaltung kann auf der Ebene der einzelnen Tabelle konfiguriert werden, wodurch Benutzer flexible Alterungsrichtlinien erstellen können. Das Anwenden der temporalen Aufbewahrung ist einfach: Hierzu muss lediglich beim Erstellen der Tabelle bzw. beim Ändern des Schemas ein entsprechender Parameter gesetzt werden.
 
-After you define retention policy, Azure SQL Database will start checking regularly if there are historical rows that are eligible for automatic data cleanup. Identification of matching rows and their removal from the history table occur transparently, in the background task that is scheduled and run by the system. Age condition for the history table rows is checked based on the column representing end of SYSTEM_TIME period. If retention period, for example, is set to six months, table rows eligible for cleanup satisfy the following condition:
+Nachdem Sie die Aufbewahrungsrichtlinie definiert haben, prüft Azure SQL-Datenbank regelmäßig, ob Zeilen mit Verlaufsdaten vorhanden sind, die für eine automatische Datenbereinigung in Frage kommen. Die Ermittlung passender Zeilen und deren Löschung aus der Verlaufstabelle erfolgen transparent in der Hintergrundaufgabe, die vom System geplant und ausgeführt wird. Die Altersbedingung für die Verlaufstabellenzeilen wird anhand der Spalte geprüft, die das Ende des SYSTEM_TIME-Zeitraums markiert. Wenn als Aufbewahrungszeitraum beispielsweise sechs Monate festgelegt sind, erfüllen für die Bereinigung in Frage kommende Tabellenzeilen die folgende Bedingung:
 
 ````
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ````
 
-In the example above we assumed that **ValidTo** column corresponds to the end of SYSTEM_TIME period.
+Im obigen Beispiel wird angenommen, dass die Spalte **ValidTo** dem Ende des SYSTEM_TIME-Zeitraums entspricht.
 
-## <a name="how-to-configure-retention-policy?"></a>How to configure retention policy?
-Before you configure retention policy for a temporal table, check first whether temporal historical retention is enabled *at the database level*.
+## <a name="how-to-configure-retention-policy"></a>Wie wird die Aufbewahrungsrichtlinie konfiguriert?
+Bevor Sie die Aufbewahrungsrichtlinie für eine temporale Tabelle konfigurieren, überprüfen Sie zunächst, ob die temporale Verlaufsdatenaufbewahrung *auf Datenbankebene* aktiviert ist.
 
 ````
 SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-Database flag **is_temporal_history_retention_enabled** is set to ON by default, but users can change it with ALTER DATABASE statement. It is also automatically set to OFF after [point in time restore](sql-database-point-in-time-restore-portal.md) operation. To enable temporal history retention cleanup for your database, execute the following statement:
+Das Datenbank-Flag **is_temporal_history_retention_enabled** ist standardmäßig auf ON gesetzt, Benutzer können es jedoch mit der ALTER DATABASE-Anweisung ändern. Nach dem Vorgang [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore-portal.md) wird es außerdem automatisch auf OFF gesetzt. Um die Bereinigung der temporalen Verlaufsdatenaufbewahrung für Ihre Datenbank zu aktivieren, führen Sie die folgende Anweisung aus:
 
 ````
 ALTER DATABASE <myDB>
@@ -45,11 +50,11 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
 > [!IMPORTANT]
-> You can configure retention for temporal tables even if **is_temporal_history_retention_enabled** is OFF, but automatic cleanup for aged rows will not be triggered in that case.
+> Sie können die Aufbewahrungsdauer für temporale Tabellen selbst dann konfigurieren, wenn **is_temporal_history_retention_enabled** auf OFF gesetzt ist. In diesem Fall wird jedoch keine automatische Bereinigung veralteter Zeilen ausgelöst.
 > 
 > 
 
-Retention policy is configured during table creation by specifying value for the HISTORY_RETENTION_PERIOD parameter:
+Die Aufbewahrungsrichtlinie wird beim Erstellen der Tabelle durch Angeben eines Werts für den Parameter HISTORY_RETENTION_PERIOD konfiguriert:
 
 ````
 CREATE TABLE dbo.WebsiteUserInfo
@@ -71,9 +76,9 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ````
 
-Azure SQL Database allows you to specify retention period by using different time units: DAYS, WEEKS, MONTHS, and YEARS. If HISTORY_RETENTION_PERIOD is omitted, INFINITE retention is assumed. You can also use INFINITE keyword explicitly.
+Mit Azure SQL-Datenbank können Sie den Aufbewahrungszeitraum mithilfe verschiedener Zeiteinheiten festlegen: TAGE, WOCHEN, MONATE oder JAHRE. Wenn HISTORY_RETENTION_PERIOD weggelassen wird, wird von einer unbegrenzten Aufbewahrungsdauer (INFINITE) ausgegangen. Sie können auch explizit das Schlüsselwort INFINITE verwenden.
 
-In some scenarios, you may want to configure retention after table creation, or to change previously configured value. In that case use ALTER TABLE statement:
+In einigen Szenarios möchten Sie möglicherweise die Aufbewahrung nach dem Erstellen der Tabelle konfigurieren oder einen zuvor konfigurierten Wert ändern. Verwenden Sie in diesem Fall die Anweisung ALTER TABLE:
 
 ````
 ALTER TABLE dbo.WebsiteUserInfo
@@ -81,11 +86,11 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ````
 
 > [!IMPORTANT]
-> Setting SYSTEM_VERSIONING to OFF *does not preserve* retention period value. Setting SYSTEM_VERSIONING to ON without HISTORY_RETENTION_PERIOD specified explicitly results in the INFINITE retention period.
+> Wenn Sie SYSTEM_VERSIONING auf OFF setzen, bleibt der Wert für die Beibehaltungsdauer *nicht* erhalten. Wenn Sie SYSTEM_VERSIONING auf ON setzen, ohne explizit HISTORY_RETENTION_PERIOD anzugeben, führt dies zu einer unbegrenzten Beibehaltungsdauer (INFINITE).
 > 
 > 
 
-To review current state of the retention policy, use the following query that joins temporal retention enablement flag at the database level with retention periods for individual tables:
+Um den aktuellen Status der Aufbewahrungsrichtlinie zu überprüfen, verwenden Sie die folgende Abfrage, die das Flag für die Aktivierung der temporalen Beibehaltungsdauer auf Datenbankebene mit den Beibehaltungsdauern für einzelne Tabellen verknüpft:
 
 ````
 SELECT DB.is_temporal_history_retention_enabled,
@@ -101,28 +106,28 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 ````
 
 
-## <a name="how-sql-database-deletes-aged-rows?"></a>How SQL Database deletes aged rows?
-The cleanup process depends on the index layout of the history table. It is important to notice that *only history tables with a clustered index (B-tree or columnstore) can have finite retention policy configured*. A background task is created to perform aged data cleanup for all temporal tables with finite retention period.
-Cleanup logic for the rowstore (B-tree) clustered index deletes aged row in smaller chunks (up to 10K) minimizing pressure on database log and I/O subsystem. Although cleanup logic utilizes required B-tree index, order of deletions for the rows older than retention period cannot be firmly guaranteed. Hence, *do not take any dependency on the cleanup order in your applications*.
+## <a name="how-sql-database-deletes-aged-rows"></a>Wie löscht SQL-Datenbank veraltete Zeilen?
+Der Bereinigungsprozess hängt vom Indexlayout der Verlaufstabelle ab. Zu beachten ist, dass *nur Verlaufstabellen mit einem gruppierten Index (B-Struktur oder Columnstore) mit einer unendlichen Aufbewahrungsrichtlinie konfiguriert werden können*. Es wird ein Hintergrundtask erstellt, um veraltete Daten für alle temporalen Tabellen mit begrenzter Beibehaltungsdauer zu bereinigen.
+Die Bereinigungslogik für den gruppierten Index für Rowstore (B-Struktur) löscht veraltete Zeilen in kleineren Blöcken (max. 10 K), was die Belastung des Datenbankprotokolls und des E/A-Subsystems minimiert. Zwar verwendet die Bereinigungslogik den benötigten B-Strukturindex, die Löschreihenfolge der Zeilen, deren Alter die Beibehaltungsdauer übersteigt, kann jedoch nicht sicher garantiert werden. *Verwenden Sie in Ihren Anwendungen daher keine Abhängigkeit von der Bereinigungsreihenfolge*.
 
-The cleanup task for the clustered columnstore removes entire [row groups](https://msdn.microsoft.com/library/gg492088.aspx) at once (typically contain 1 million of rows each), which is very efficient, especially when historical data is generated at a high pace.
+Der Bereinigungstask für den gruppierten Columnstore entfernt ganze [Zeilengruppen](https://msdn.microsoft.com/library/gg492088.aspx) gleichzeitig (die üblicherweise jeweils 1 Mio. Zeilen enthalten). Dies ist sehr effizient, vor allem dann, wenn mit einer hohen Geschwindigkeit Verlaufsdaten generiert werden.
 
-![Clustered columnstore retention](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
+![Gruppierte Columnstore-Aufbewahrung](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
 
-Excellent data compression and efficient retention cleanup makes clustered columnstore index a perfect choice for scenarios when your workload rapidly generates high amount of historical data. That pattern is typical for intensive [transactional processing workloads that use temporal tables](https://msdn.microsoft.com/library/mt631669.aspx) for change tracking and auditing, trend analysis, or IoT data ingestion.
+Die hervorragende Datenkomprimierung und eine effiziente Aufbewahrungsbereinigung machen den gruppierten Columnstore-Index zur perfekten Lösung für Szenarios, bei denen Ihre Workload in kürzester Zeit eine große Menge an Verlaufsdaten generiert. Dieses Muster ist typisch für intensive [Transaktionsverarbeitungs-Workloads, die temporale Tabellen verwenden](https://msdn.microsoft.com/library/mt631669.aspx), um die Änderungsnachverfolgung und -überwachung, Trendanalysen oder die Erfassung von IoT-Daten durchzuführen.
 
-## <a name="index-considerations"></a>Index considerations
-The cleanup task for tables with rowstore clustered index requires index to start with the column corresponding the end of SYSTEM_TIME period. If such index doesn’t exist, you won’t be able to configure finite retention period:
+## <a name="index-considerations"></a>Überlegungen bezüglich des Index
+Beim Bereinigungstask für Tabellen mit gruppiertem Rowstore-Index muss der Index mit der Spalte beginnen, die dem Ende des SYSTEM_TIME-Zeitraums entspricht. Wenn kein solcher Index vorhanden ist, können Sie keine begrenzte Beibehaltungsdauer konfigurieren:
 
-*Msg 13765, Level 16, State 1 <br></br> Setting finite retention period failed on system-versioned temporal table 'temporalstagetestdb.dbo.WebsiteUserInfo' because the history table 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' does not contain required clustered index. Consider creating a clustered columnstore or B-tree index starting with the column that matches end of SYSTEM_TIME period, on the history table.*
+*Meldg. 13765, Ebene 16, Status 1 <br></br> Setting finite retention period failed on system-versioned temporal table 'temporalstagetestdb.dbo.WebsiteUserInfo' because the history table 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' does not contain required clustered index. Consider creating a clustered columnstore or B-tree index starting with the column that matches end of SYSTEM_TIME period, on the history table. (Festlegen einer unbegrenzten Beibehaltungsdauer bei der temporalen Tabelle mit Systemversionsverwaltung 'temporalstagetestdb.dbo.WebsiteUserInfo' fehlgeschlagen, da die Verlaufstabelle 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' nicht den erforderlichen gruppierten Index enthält. Erstellen Sie alternativ einen gruppierten Columnstore- oder B-Strukturindex für die Verlaufstabelle, der mit der Spalte beginnt, die dem Ende des SYSTEM_TIME-Zeitraums entspricht.)*
 
-It is important to notice that the default history table created by Azure SQL Database already has clustered index, which is compliant for retention policy. If you try to remove that index on a table with finite retention period, operation fails with the following error:
+Hierbei ist zu beachten, dass die von Azure SQL-Datenbank erstellte Standardverlaufstabelle bereits einen gruppierten Index enthält, der mit der Aufbewahrungsrichtlinie kompatibel ist. Wenn Sie versuchen, diesen Index für eine Tabelle mit begrenzter Beibehaltungsdauer zu entfernen, schlägt der Vorgang fehl, und es wird folgende Fehlermeldung ausgegeben:
 
-*Msg 13766, Level 16, State 1 <br></br> Cannot drop the clustered index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' because it is being used for automatic cleanup of aged data. Consider setting HISTORY_RETENTION_PERIOD to INFINITE on the corresponding system-versioned temporal table if you need to drop this index.*
+*Meldg. 13766, Ebene 16, Status 1 <br></br> Cannot drop the clustered index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' because it is being used for automatic cleanup of aged data. Consider setting HISTORY_RETENTION_PERIOD to INFINITE on the corresponding system-versioned temporal table if you need to drop this index. (Gruppierter Index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' kann nicht entfernt werden, da er für die automatische Bereinigung veralteter Daten verwendet wird. Setzen Sie alternativ HISTORY_RETENTION_PERIOD für die zugehörige temporale Tabelle mit Systemversionsverwaltung auf INFINITE, wenn Sie diesen Index entfernen müssen.)*
 
-Cleanup on the clustered columnstore index works optimally if historical rows are inserted in the ascending order (ordered by the end of period column), which is always the case when the history table is populated exclusively by the SYSTEM_VERSIONIOING mechanism. If rows in the history table are not ordered by end of period column (which may be the case if you migrated existing historical data), you should re-create clustered columnstore index on top of B-tree rowstore index that is properly ordered, to achieve optimal performance.
+Die Bereinigung des gruppierten Columnstore-Index funktioniert optimal, wenn Zeilen mit Verlaufsdaten in aufsteigender Reihenfolge (geordnet nach der Periodenende-Spalte) eingefügt werden, was immer dann der Fall ist, wenn die Verlaufstabelle ausschließlich mithilfe des Mechanismus SYSTEM_VERSIONING gefüllt wird. Wenn Zeilen in der Verlaufstabelle nicht nach der Periodenende-Spalte sortiert sind (was beim Migrieren vorhandener Verlaufsdaten der Fall sein kann), sollten Sie den gruppierten Columnstore-Index auf Basis des ordnungsgemäß sortierten B-Struktur-Rowstore-Index neu erstellen, um eine optimale Leistung zu erzielen.
 
-Avoid rebuilding clustered columnstore index on the history table with the finite retention period, because it may change ordering in the row groups naturally imposed by the system-versioning operation. If you need to rebuild clustered columnstore index on the history table, do that by re-creating it on top of compliant B-tree index, preserving ordering in the rowgroups necessary for regular data cleanup. The same approach should be taken if you create temporal table with existing history table that has clustered column index without guaranteed data order:
+Vermeiden Sie eine Neuerstellung des gruppierten Columnstore-Index für die Verlaufstabelle mit begrenzter Beibehaltungsdauer, da hierdurch die Reihenfolge der Zeilengruppen verändert werden kann, die durch die Systemversionsverwaltung automatisch auferlegt wurde. Wenn Sie den gruppierten Columnstore-Index für die Verlaufstabelle neu erstellen müssen, erstellen Sie ihn hierzu auf Basis des kompatiblen B-Strukturindex neu. So behalten Sie die Reihenfolge der Zeilengruppen bei, die für eine regelmäßige Datenbereinigung erforderlich ist. Derselbe Ansatz sollte gewählt werden, wenn Sie eine temporale Tabelle mit einer vorhandenen Verlaufstabelle erstellen, die über einen gruppierten Spaltenindex ohne garantierte Datenreihenfolge verfügt:
 
 ````
 /*Create B-tree ordered by the end of period column*/
@@ -134,54 +139,57 @@ CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoH
 WITH (DROP_EXISTING = ON);
 ````
 
-When finite retention period is configured for the history table with the clustered columnstore index, you cannot create additional non-clustered B-tree indexes on that table:
+Wenn eine begrenzte Beibehaltungsdauer für die Verlaufstabelle mit dem gruppierten Columnstore-Index konfiguriert ist, können Sie keine zusätzlichen ungruppierten B-Strukturindizes für diese Tabelle erstellen:
 
 ````
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 ````
 
-An attempt to execute above statement will fail with the following error:
+Der Versuch, die obige Anweisung auszuführen, schlägt fehl, und es wird folgende Fehlermeldung ausgegeben:
 
-*Msg 13772, Level 16, State 1 <br></br> Cannot create non-clustered index on a temporal history table 'WebsiteUserInfoHistory' since it has finite retention period and clustered columnstore index defined.*
+*Meldg. 13772, Ebene 16, Status 1 <br></br> Cannot create non-clustered index on a temporal history table 'WebsiteUserInfoHistory' since it has finite retention period and clustered columnstore index defined. (Ungruppierter Index kann für temporale Verlaufstabelle 'WebsiteUserInfoHistory' nicht erstellt werden, da sie eine begrenzte Beibehaltungsdauer hat und ein gruppierter Columnstore-Index definiert wurde.)*
 
-## <a name="querying-tables-with-retention-policy"></a>Querying tables with retention policy
-All queries on the temporal table automatically filter out historical rows matching finite retention policy, to avoid unpredictable and inconsistent results, since aged rows can be deleted by the cleanup task, *at any point in time and in arbitrary order*.
+## <a name="querying-tables-with-retention-policy"></a>Abfragen von Tabellen mit Aufbewahrungsrichtlinie
+Alle Abfragen für die temporale Tabelle filtern automatisch Zeilen mit Verlaufsdaten aus, die der begrenzten Aufbewahrungsrichtlinie entsprechen, um unvorhersehbare und inkonsistente Ergebnisse zu vermeiden, da veraltete Zeilen *jederzeit und in beliebiger Reihenfolge* durch den Bereinigungstask gelöscht werden können.
 
-The following picture shows the query plan for a simple query:
+Das folgende Bild zeigt den Abfrageplan für eine einfache Abfrage:
 
 ````
 SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 ````
 
-The query plan includes additional filter applied to end of period column (ValidTo) in the “Clustered Index Scan” operator on the history table (highlighted). This example assumes that 1 MONTH retention period was set on WebsiteUserInfo table.
+Der Abfrageplan enthält einen zusätzlichen Filter, der auf die Periodenende-Spalte (ValidTo) im Operator „Clustered Index Scan“ für die Verlaufstabelle angewandt wird (siehe Hervorhebung). In diesem Beispiel wird davon ausgegangen, dass in der Tabelle WebsiteUserInfo eine Beibehaltungsdauer von einem MONAT festgelegt wurde.
 
-![Retention query filter](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
+![Aufbewahrungsabfragefilter](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
 
-However, if you query history table directly, you may see rows that are older than specified retention period, but without any guarantee for repeatable query results. The following picture shows query execution plan for the query on the history table without additional filters applied:
+Wenn Sie allerdings die Verlaufstabelle direkt abfragen, sehen Sie möglicherweise Zeilen, die älter sind als die angegebene Beibehaltungsdauer – allerdings ohne Garantie für wiederholbare Abfrageergebnisse. Das folgende Bild zeigt den Abfrageausführungsplan für die Abfrage der Verlaufstabelle, ohne dass zusätzliche Filter angewandt werden:
 
-![Querying history without retention filter](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
+![Abfragen des Verlaufs ohne Beibehaltungsfilter](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
 
-Do not rely your business logic on reading history table beyond retention period as you may get inconsistent or unexpected results. It is recommended to use temporal queries with FOR SYSTEM_TIME clause for analyzing data in temporal tables.
+Basieren Sie Ihre Geschäftslogik nicht auf das Lesen der Verlaufstabelle nach der Beibehaltungsdauer, da Sie inkonsistente oder unerwartete Ergebnisse erhalten könnten. Es wird empfohlen, temporale Abfragen mit der Klausel FOR SYSTEM_TIME zu verwenden, um Daten in temporalen Tabellen zu analysieren.
 
-## <a name="point-in-time-restore-considerations"></a>Point in time restore considerations
-When you create new database by [restoring existing database to a specific point in time](sql-database-point-in-time-restore-portal.md), it has temporal retention disabled at the database level. (**is_temporal_history_retention_enabled** flag set to OFF). This functionality allows you to examine all historical rows upon restore, without worrying that aged rows are removed before you get to query them. You can use it to *inspect historical data beyond configured retention period*.
+## <a name="point-in-time-restore-considerations"></a>Überlegungen zur Point-in-Time-Wiederherstellung
+Wenn Sie eine neue Datenbank erstellen, indem Sie eine [vorhandene Datenbank zu einem bestimmten Zeitpunkt wiederherstellen](sql-database-point-in-time-restore-portal.md), ist die temporale Beibehaltungsdauer auf Datenbankebene deaktiviert. (Das Flag **is_temporal_history_retention_enabled** ist auf OFF gesetzt.) Mit dieser Funktion können Sie bei der Wiederherstellung alle Zeilen mit Verlaufsdaten untersuchen, ohne dass veraltete Zeilen entfernt werden, bevor Sie diese abfragen können. Sie können diese Funktion verwenden, um *Verlaufsdaten außerhalb der konfigurierten Beibehaltungsdauer zu überprüfen*.
 
-Say that a temporal table has one MONTH retention period specified. If your database was created in Premium Service tier, you would be able to create database copy with the database state up to 35 days back in the past. That effectively would allow you to analyze historical rows that are up to 65 days old by querying the history table directly.
+Ein Beispiel: Für eine temporale Tabelle wurde eine Beibehaltungsdauer von einem MONAT angegeben. Wenn Ihre Datenbank im Premium-Tarif erstellt wurde, könnten Sie eine Datenbankkopie mit dem Status der Datenbank vor 35 Tagen erstellen. So könnten Sie effektiv Zeilen mit Verlaufsdaten analysieren, die bis zu 65 Tage alt sind, indem Sie die Verlaufstabelle direkt abfragen.
 
-If you want to activate temporal retention cleanup, run the following Transact-SQL statement after point in time restore:
+Wenn Sie die temporale Aufbewahrungsbereinigung aktivieren möchten, führen Sie die folgende Transact-SQL-Anweisung nach der Point-in-Time-Wiederherstellung aus:
 
 ````
 ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
-## <a name="next-steps"></a>Next steps
-To learn how to use Temporal Tables in your applications check out [Getting Started with Temporal Tables in Azure SQL Database](sql-database-temporal-tables.md).
+## <a name="next-steps"></a>Nächste Schritte
+Um zu erfahren, wie Sie temporale Tabellen in Ihren Anwendungen verwenden, lesen Sie [Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank](sql-database-temporal-tables.md).
 
-Visit Channel 9 to hear a [real customer temporal implementation success story](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) and watch a [live temporal demonstration](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
+Auf Channel 9 können Sie sich einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) anhören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) ansehen.
 
-For detailed information about Temporal Tables, review [MSDN documentation](https://msdn.microsoft.com/library/dn935015.aspx).
+Ausführliche Informationen zu temporalen Tabellen finden Sie in der [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn935015.aspx).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -4,12 +4,20 @@ Falls noch nicht erfolgt, können Sie eine [kostenlose Testversion eines Azure-A
 azure config mode arm
 ```
 
-Erstellen Sie jetzt die Skalierungsgruppe mithilfe des Befehls `azure vmss quick-create`. Das folgende Beispiel erstellt eine Skalierungsgruppe mit dem Namen `myVMSS` mit fünf VM-Instanzen in der Ressourcengruppe mit dem Namen `myResourceGroup`:
+Erstellen Sie jetzt die Skalierungsgruppe mithilfe des Befehls `azure vmss quick-create`. Das folgende Beispiel erstellt eine Linux-Skalierungsgruppe mit dem Namen `myVMSS` mit fünf VM-Instanzen in der Ressourcengruppe mit dem Namen `myResourceGroup`:
 
 ```azurecli
 azure vmss quick-create -n myVMSS -g myResourceGroup -l westus \
     -u ops -p P@ssw0rd! \
-    -C 5 -Q Canonical:UbuntuServer:14.04.4-LTS:latest
+    -C 5 -Q Canonical:UbuntuServer:16.04.0-LTS:latest
+```
+
+Das folgende Beispiel erstellt eine Windows-Skalierungsgruppe mit der gleichen Konfiguration:
+
+```azurecli
+azure vmss quick-create -n myVMSS -g myResourceGroup -l westus \
+    -u ops -p P@ssw0rd! \
+    -C 5 -Q MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 ```
 
 Falls Sie den Standort oder den URN (Uniform Resource Name) des Images anpassen möchten, sehen Sie sich bitte die Befehle `azure location list` und `azure vm image {list-publishers|list-offers|list-skus|list|show}` an.
@@ -56,6 +64,6 @@ FQDN=${split_line[3]}
 ssh -p 50000 negat@$FQDN
 ```
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

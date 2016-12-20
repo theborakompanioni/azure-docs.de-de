@@ -1,26 +1,30 @@
 ---
 title: So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an | Microsoft Docs
-description: Erfahren Sie, wie Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen anpassen können.
+description: "Erfahren Sie, wie Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen anpassen können."
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a195675b-f7d0-4fc9-90bf-860e6f17ccf7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7e9b100a041934e6512a83c936effb48c2cba53b
+
 
 ---
-# So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
 Azure API Management bietet eine Reihe von Anpassungsfeatures, mit denen Administratoren das [Aussehen und Verhalten des Entwicklerportals](api-management-customize-portal.md) sowie die Inhalte der Seiten im Entwicklerportal anpassen können. Zu diesem Zweck werden eine Reihe von Vorlagen verwendet, mit denen die Inhalte der Seiten selbst konfiguriert werden. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und verschiedenen lokalisierten Zeichenfolgenressourcen, Symbolen und Seitensteuerelementen an Ihre Bedürfnisse anpassen.
 
-## Übersicht über die Vorlagen im Entwicklerportal
-Die Vorlagen des Entwicklerportals werden im Entwicklerportal von Administratoren der API Management-Dienstinstanz verwaltet. Zum Verwalten der Entwicklervorlagen wechseln Sie im klassischen Azure-Portal zu Ihrer API Management-Dienstinstanz, und klicken Sie auf **Durchsuchen**.
+## <a name="developer-portal-templates-overview"></a>Übersicht über die Vorlagen im Entwicklerportal
+Die Vorlagen des Entwicklerportals werden im Entwicklerportal von Administratoren der API Management-Dienstinstanz verwaltet. Zum Verwalten von Entwicklervorlagen wechseln Sie im Azure-Portal zu Ihrer API Management-Dienstinstanz. Klicken Sie dort auf der Symbolleiste auf **Entwicklerportal**.
 
 ![Entwicklerportal][api-management-browse]
 
@@ -36,21 +40,21 @@ In der Vorlagenliste werden verschiedene Vorlagenkategorien für die unterschied
 
 ![Entwicklerportal: Vorlagen][api-management-templates-menu]
 
-Wenn Sie auf eine Vorlage klicken, wird die Seite im Entwicklerportal geöffnet, die über diese Vorlage angepasst werden kann. In diesem Beispiel wird die Vorlage **Produktliste** angezeigt. Über die Vorlage **Produktliste** werden die Inhalte des Bereichs festgelegt, der auf der Abbildung in einem roten Rechteck dargestellt ist.
+Wenn Sie auf eine Vorlage klicken, wird die Seite im Entwicklerportal geöffnet, die über diese Vorlage angepasst werden kann. In diesem Beispiel wird die Vorlage **Produktliste** angezeigt. Über die Vorlage **Produktliste** werden die Inhalte des Bereichs festgelegt, der auf der Abbildung in einem roten Rechteck dargestellt ist. 
 
 ![Vorlage „Produktliste“][api-management-developer-portal-templates-overview]
 
-Mit einigen Vorlagen, z.B. mit den **Benutzerprofil**-Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst.
+Mit einigen Vorlagen, z.B. mit den **Benutzerprofil**-Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst. 
 
 ![Vorlage „Benutzerprofil“][api-management-user-profile-templates]
 
-Der Editor der einzelnen Vorlagen im Entwicklerportal verfügt über zwei Abschnitte, die im unteren Bildschirmbereich angezeigt werden. Auf der linken Seite befindet sich der Bearbeitungsbereich für die Vorlage, auf der rechten Seite das Datenmodell für die Vorlage.
+Der Editor der einzelnen Vorlagen im Entwicklerportal verfügt über zwei Abschnitte, die im unteren Bildschirmbereich angezeigt werden. Auf der linken Seite befindet sich der Bearbeitungsbereich für die Vorlage, auf der rechten Seite das Datenmodell für die Vorlage. 
 
 Der Bearbeitungsbereich der Vorlage umfasst das Markup, um das Aussehen und Verhalten der jeweiligen Seite im Entwicklerportal festzulegen. Für das Markup der Vorlage wird die [DotLiquid](http://dotliquidmarkup.org/)-Syntax verwendet. Ein beliebter Editor für DotLiquid ist [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Änderungen, die während der Bearbeitung an der Vorlage vorgenommen werden, werden in Echtzeit im Browser angezeigt. Für Ihre Kunden sind diese Änderungen jedoch erst sichtbar, wenn Sie die Vorlage [speichern](#to-save-a-template) und [veröffentlichen](#to-publish-a-template).
 
 ![Vorlagenmarkup][api-management-template]
 
-Im Bereich **Vorlagendaten** finden Sie Hinweise zum Datenmodell für die Entitäten, die in einer bestimmten Vorlage verwendet werden können. Zu diesem Zweck werden die Livedaten angezeigt, die aktuell im Entwicklerportal sichtbar sind. Um die Vorlagenbereiche zu erweitern, klicken Sie auf das Rechteck oben rechts im Bereich **Vorlagendaten**.
+Im Bereich **Vorlagendaten** finden Sie Hinweise zum Datenmodell für die Entitäten, die in einer bestimmten Vorlage verwendet werden können. Zu diesem Zweck werden die Livedaten angezeigt, die aktuell im Entwicklerportal sichtbar sind. Um die Vorlagenbereiche zu erweitern, klicken Sie auf das Rechteck oben rechts im Bereich **Vorlagendaten** .
 
 ![Vorlagendatenmodell][api-management-template-data]
 
@@ -90,7 +94,7 @@ Im vorstehenden Beispiel werden zwei Produkte im Entwicklerportal angezeigt, die
         ]
     }
 
-Das Markup der Vorlage **Produktliste** verarbeitet die Daten, um die gewünschte Ausgabe bereitzustellen. Dazu wird die Sammlung von Produkten durchlaufen, um Informationen und einen Link zu den einzelnen Produkten anzuzeigen. Beachten Sie die Elemente `<search-control>` und `<page-control>` im Markup. Mit diesen Elementen wird die Anzeige der Such- und Pagingsteuerelemente auf der Seite festgelegt. `ProductsStrings|PageTitleProducts` ist ein lokalisierter Zeichenfolgenverweis, der den `h2`-Kopfzeilentext für die Seite enthält. Eine Liste der Zeichenfolgenressourcen, Seitensteuerelemente und Symbole, die in Vorlagen des Entwicklerportals verwendet werden können, finden Sie hier: [API Management developer portal templates reference (Referenz zu Vorlagen im API Management-Entwicklerportal)](https://msdn.microsoft.com/library/azure/mt697540.aspx)
+Das Markup der Vorlage **Produktliste** verarbeitet die Daten, um die gewünschte Ausgabe bereitzustellen. Dazu wird die Sammlung von Produkten durchlaufen, um Informationen und einen Link zu den einzelnen Produkten anzuzeigen. Beachten Sie die Elemente `<search-control>` und `<page-control>` im Markup. Diese steuern die Anzeige der Steuerelemente für das Durchsuchen und das Paging auf der Seite. `ProductsStrings|PageTitleProducts` ist ein lokalisierter Zeichenfolgenverweis, der den `h2`-Kopfzeilentext für die Seite enthält. Eine Liste der Zeichenfolgenressourcen, Seitensteuerelemente und Symbole, die in Vorlagen des Entwicklerportals verwendet werden können, finden Sie hier: [API Management developer portal templates reference (Referenz zu Vorlagen im API Management-Entwicklerportal)](https://msdn.microsoft.com/library/azure/mt697540.aspx)
 
     <search-control></search-control>
     <div class="row">
@@ -116,64 +120,64 @@ Das Markup der Vorlage **Produktliste** verarbeitet die Daten, um die gewünscht
         </div>
     </div>
 
-## So speichern Sie eine Vorlage
+## <a name="to-save-a-template"></a>So speichern Sie eine Vorlage
 Zum Speichern einer Vorlage klicken Sie im Vorlagen-Editor auf „Speichern“.
 
 ![Vorlage speichern][api-management-save-template]
 
 Gespeicherte Änderungen sind im Entwicklerportal erst nach der Veröffentlichung sichtbar.
 
-## So veröffentlichen Sie eine Vorlage
+## <a name="to-publish-a-template"></a>So veröffentlichen Sie eine Vorlage
 Gespeicherte Vorlagen können einzeln oder gemeinsam veröffentlicht werden. Zum Veröffentlichen einer einzelnen Vorlage klicken Sie im Vorlagen-Editor auf „Veröffentlichen“.
 
 ![Vorlage veröffentlichen][api-management-publish-template]
 
-Klicken Sie auf **Ja**, um den Vorgang zu bestätigen und die Vorlagendaten im Entwicklerportal zu übernehmen.
+Klicken Sie auf **Ja** , um den Vorgang zu bestätigen und die Vorlagendaten im Entwicklerportal zu übernehmen.
 
 ![Veröffentlichung bestätigen][api-management-publish-template-confirm]
 
-Zum Veröffentlichen aller aktuell nicht veröffentlichten Vorlagenversionen klicken Sie in der Vorlagenliste auf **Veröffentlichen**. Nicht veröffentlichte Vorlagen sind mit einem Sternchen gekennzeichnet, der an den Vorlagennamen angefügt ist. In diesem Beispiel werden die Vorlagen **Produktliste** und **Produkt** veröffentlicht.
+Zum Veröffentlichen aller aktuell nicht veröffentlichten Vorlagenversionen klicken Sie in der Vorlagenliste auf **Veröffentlichen** . Nicht veröffentlichte Vorlagen sind mit einem Sternchen gekennzeichnet, der an den Vorlagennamen angefügt ist. In diesem Beispiel werden die Vorlagen **Produktliste** und **Produkt** veröffentlicht.
 
 ![Vorlagen veröffentlichen][api-management-publish-templates]
 
-Klicken Sie auf **Anpassungen veröffentlichen**, um den Vorgang zu bestätigen.
+Klicken Sie auf **Anpassungen veröffentlichen** , um den Vorgang zu bestätigen.
 
 ![Veröffentlichung bestätigen][api-management-publish-customizations]
 
 Neu veröffentlichte Vorlagen werden umgehend im Entwicklerportal übernommen.
 
-## So stellen Sie die vorherige Version einer Vorlage wieder her
+## <a name="to-revert-a-template-to-the-previous-version"></a>So stellen Sie die vorherige Version einer Vorlage wieder her
 Zum Wiederherstellen der zuvor veröffentlichten Version einer Vorlage klicken Sie im Vorlagen-Editor auf „Wiederherstellen“.
 
 ![Vorlage wiederherstellen][api-management-revert-template]
 
-Klicken Sie auf **Ja**, um zu bestätigen.
+Klicken Sie auf **Ja** , um zu bestätigen.
 
 ![Confirm][api-management-revert-template-confirm]
 
 Die zuvor veröffentlichte Version einer Vorlage wird im Entwicklerportal übernommen, sobald der Wiederherstellungsvorgang abgeschlossen wurde.
 
-## So stellen Sie die Standardversion einer Vorlage wieder her
+## <a name="to-restore-a-template-to-the-default-version"></a>So stellen Sie die Standardversion einer Vorlage wieder her
 Der Vorgang zum Wiederherstellen der Standardversion einer Vorlage umfasst zwei Schritte. Zunächst müssen die Vorlagen wiederhergestellt werden, anschließend müssen die wiederhergestellten Versionen veröffentlicht werden.
 
 Zum Wiederherstellen der Standardversion einer einzelnen Vorlage klicken Sie im Vorlagen-Editor auf „Wiederherstellen“.
 
 ![Vorlage wiederherstellen][api-management-reset-template]
 
-Klicken Sie auf **Ja**, um zu bestätigen.
+Klicken Sie auf **Ja** , um zu bestätigen.
 
 ![Confirm][api-management-reset-template-confirm]
 
-Um die Standardversion aller Vorlagen wiederherzustellen, klicken Sie in der Vorlagenliste auf **Standardvorlagen wiederherstellen**.
+Um die Standardversion aller Vorlagen wiederherzustellen, klicken Sie in der Vorlagenliste auf **Standardvorlagen wiederherstellen** .
 
 ![Vorlagen wiederherstellen][api-management-restore-templates]
 
 Die wiederhergestellten Vorlagen müssen dann einzeln oder gemeinsam veröffentlicht werden. Führen Sie dazu die unter [So veröffentlichen Sie eine Vorlage](#to-publish-a-template) beschriebenen Schritte aus.
 
-## Referenz zu Vorlagen im Entwicklerportal
+## <a name="developer-portal-templates-reference"></a>Referenz zu Vorlagen im Entwicklerportal
 Eine Referenz zu Vorlagen im Entwicklerportal, Zeichenfolgenressourcen, Symbolen und Seitensteuerelementen finden Sie unter [API Management developer portal templates reference (Referenz zu Vorlagen im API Management-Entwicklerportal)](https://msdn.microsoft.com/library/azure/mt697540.aspx).
 
-## Überblicksvideo ansehen
+## <a name="watch-a-video-overview"></a>Überblicksvideo ansehen
 Im folgenden Video erfahren Sie, wie Sie Vorlagen nutzen können, um die API um eine Diskussionsrunde und Bewertungen zu erweitern oder Vorgangsseiten im Entwicklerportal hinzuzufügen.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Adding-Developer-Portal-functionality-using-Templates-in-Azure-API-Management/player]
@@ -199,4 +203,15 @@ Im folgenden Video erfahren Sie, wie Sie Vorlagen nutzen können, um die API um 
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+
+
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,12 +1,12 @@
 ---
 title: Bereitstellen und Verwalten von Notification Hubs mit PowerShell
-description: Erstellen und Verwalten von Notification Hubs mit PowerShell für Automation
+description: "Erstellen und Verwalten von Notification Hubs mit PowerShell für Automation"
 services: notification-hubs
-documentationcenter: ''
+documentationcenter: 
 author: ysxu
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: powershell
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: aa0b90781d10be6a87fdad6f04c8630317efd4e4
+
 
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Bereitstellen und Verwalten von Notification Hubs mit PowerShell
@@ -23,7 +27,7 @@ In diesem Artikel wird das Erstellen und Verwalten von Azure Notification Hubs m
 * Erstellen eines Notification Hubs
 * Festlegen von Anmeldeinformationen
 
-Wenn Sie auch einen neuen Servicebus-Namespace für Ihre Notification Hubs erstellen müssen, finden Sie Informationen dazu unter [Verwalten von Service Bus mit PowerShell](../service-bus/service-bus-powershell-how-to-provision.md).
+Wenn Sie auch einen neuen Servicebus-Namespace für Ihre Notification Hubs erstellen müssen, finden Sie Informationen dazu unter [Verwalten von Service Bus mit PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
 
 Das Verwalten von Notification Hubs wird nicht direkt von den in Azure PowerShell enthaltenen Cmdlets unterstützt. Der beste Ansatz für PowerShell ist der Verweis auf die Microsoft.Azure.NotificationHubs.dll-Assembly. Die Assembly wird zusammen mit dem [Microsoft Azure Notification Hubs-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verteilt.
 
@@ -34,7 +38,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 * Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell].
 * Allgemeine Kenntnisse über PowerShell-Skripts, NuGet-Pakete und .NET Framework.
 
-## <a name="including-a-reference-to-the-.net-assembly-for-service-bus"></a>Einschließen eines Verweises auf die .NET-Assembly für Service Bus
+## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Einschließen eines Verweises auf die .NET-Assembly für Service Bus
 Das Verwalten von Azure Notification Hubs ist noch nicht in den PowerShell-Cmdlets in Azure PowerShell enthalten. Um Notification Hubs bereitzustellen, können Sie den .NET-Client aus dem [Microsoft Azure Notification Hubs-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verwenden.
 
 Sie müssen zunächst sicherstellen, dass Ihr Skript die **Microsoft.Azure.NotificationHubs.dll** -Assembly findet, die als NuGet-Paket in einem Visual Studio-Projekt installiert wird. Aus Gründen der Flexibilität führt das Skript folgende Schritte aus:
@@ -142,7 +146,7 @@ else
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Verwalten von Service Bus mit PowerShell](../service-bus/service-bus-powershell-how-to-provision.md)
+* [Verwalten von Service Bus mit PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
 * [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 * [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
@@ -152,7 +156,7 @@ Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
 
 [Kaufoptionen]: http://azure.microsoft.com/pricing/purchase-options/
 [Spezielle Angebote]: http://azure.microsoft.com/pricing/member-offers/
-[kostenlose Testversion]: http://azure.microsoft.com/pricing/free-trial/
+[Kostenlose Testversion]: http://azure.microsoft.com/pricing/free-trial/
 [Installieren und Konfigurieren von Azure PowerShell]: ../powershell-install-configure.md
 [.NET-API für Notification Hubs]: https://msdn.microsoft.com/library/azure/mt414893.aspx
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
@@ -162,6 +166,6 @@ Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

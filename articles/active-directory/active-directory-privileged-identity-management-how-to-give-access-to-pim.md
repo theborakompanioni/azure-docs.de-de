@@ -1,12 +1,12 @@
 ---
-title: Gewähren des Zugriffs auf PIM | Microsoft Docs
-description: Erfahren Sie, wie Sie mit der Erweiterung Azure Active Directory Privileged Identity Management Rollen zu Benutzern hinzufügen, sodass diese PIM verwalten können.
+title: "Gewähren des Zugriffs auf PIM | Microsoft Docs"
+description: "Erfahren Sie, wie Sie mit der Erweiterung Azure Active Directory Privileged Identity Management Rollen zu Benutzern hinzufügen, sodass diese PIM verwalten können."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: d4c53b53-2b37-41e6-813c-96ec08a1c897
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/22/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 42273f2e20be65cc794d078fb4c3ba4585d2aa79
+
 
 ---
 # <a name="how-to-give-access-to-manage-azure-ad-privileged-identity-management"></a>Gewähren des Zugriffs zur Verwaltung von Azure AD Privileged Identity Management
@@ -40,7 +44,7 @@ Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle des Admini
    * Wenn Sie einem Benutzer eine neue Rolle zuweisen, wird er automatisch als berechtigt zum Aktivieren der Rolle eingerichtet. Wenn ihm die Rolle permanent zugewiesen werden soll, klicken Sie auf den Benutzer in der Liste. Wählen Sie im Menü mit den Benutzerinformationen **Als permanent festlegen** aus.
 6. Senden Sie dem Benutzer einen Link zu [Erste Schritte mit Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
 
-## <a name="remove-another-user's-access-rights-for-managing-pim"></a>Entfernen der Zugriffsrechte eines Benutzers für die Verwaltung von PIM
+## <a name="remove-another-users-access-rights-for-managing-pim"></a>Entfernen der Zugriffsrechte eines Benutzers für die Verwaltung von PIM
 Bevor Sie einen Benutzer aus der Rolle der Administratoren für privilegierte Rollen entfernen, stellen Sie sicher, dass dieser Rolle danach noch mindestens zwei Benutzer zugewiesen sind.
 
 1. Klicken Sie auf dem PIM-Dashboard auf die Rolle **Administrator für privilegierte Rollen**.  Es wird eine Liste der Benutzer angezeigt, die diese Rolle derzeit innehaben.
@@ -59,6 +63,6 @@ Bevor Sie einen Benutzer aus der Rolle der Administratoren für privilegierte Ro
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

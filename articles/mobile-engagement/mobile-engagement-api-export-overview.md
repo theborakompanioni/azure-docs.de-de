@@ -1,26 +1,30 @@
 ---
-title: Übersicht über die Mobile Engagement-Export-API
-description: Erfahren Sie die Grundlagen zum Exportieren der Rohdaten, die von den Geräten Ihrer Benutzer generiert werden. So können Sie diese Daten in Ihren eigenen Tools nutzen.
+title: "Übersicht über die Mobile Engagement-Export-API"
+description: "Erfahren Sie die Grundlagen zum Exportieren der Rohdaten, die von den Geräten Ihrer Benutzer generiert werden. So können Sie diese Daten in Ihren eigenen Tools nutzen."
 services: mobile-engagement
 documentationcenter: mobile
 author: kpiteira
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 9380d47b-d7fa-4d4c-888f-97e6482196bb
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 04/26/2016
-ms.author: kpiteira
+ms.author: kapiteir
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9c17a1cb33616ad297d0fad9b8ea674de75bd8fb
+
 
 ---
-# Übersicht über die Mobile Engagement-Export-API
-## Einführung
+# <a name="mobile-engagement-export-api-overview"></a>Übersicht über die Mobile Engagement-Export-API
+## <a name="introduction"></a>Einführung
 In diesem Dokument erfahren Sie die Grundlagen zum Exportieren der Rohdaten, die von den Geräten Ihrer Benutzer generiert werden. So können Sie diese Daten in Ihren eigenen Tools nutzen.
 
-## Voraussetzungen
+## <a name="pre-requisites"></a>Voraussetzungen
 Für den Export der Rohdaten aus Mobile Engagement ist Folgendes erforderlich:
 
 * Eingerichtete API-Authentifizierung, um die APIs verwenden zu können (Informationen hierzu finden Sie unter [Authentifizierung – manuelles Setup](mobile-engagement-api-authentication-manual.md))
@@ -32,8 +36,9 @@ Für den Export der Rohdaten aus Mobile Engagement ist Folgendes erforderlich:
 > 
 > 
 
-## Was kann exportiert werden?
-Mit Mobile Engagement können Benutzer viele Arten von Daten sammeln. Daher gibt es mehrere Exporttypen, die für diese verschiedenen Datentypen geeignet sind. Die beiden wichtigsten Exporttypen sind:
+## <a name="what-can-be-exported"></a>Was kann exportiert werden?
+Mit Mobile Engagement können Benutzer viele Arten von Daten sammeln. Daher gibt es mehrere Exporttypen, die für diese verschiedenen Datentypen geeignet sind.
+Die beiden wichtigsten Exporttypen sind:
 
 * Momentaufnahme: Wird in der Regel zum Exportieren von Daten verwendet, die einen Zustand darstellen und für die Mobile Engagement keinen Verlauf besitzt. Dazu gehören z.B. Tags (App-Info), Token oder Feedbacks zu Pushkampagnen. Daher beziehen sich diese Arten von Export nicht auf ein Datum.
 * Verlaufsdaten: Dieser Exporttyp wird für Daten verwendet, die sich über einen Zeitraum ansammeln, z.B. Ereignisse oder Aktivitäten.
@@ -51,8 +56,9 @@ In der folgenden Tabelle werden alle möglichen Exporte ausführlich beschrieben
 | Verlaufsdaten |Job |Generiert einen Export aller Aufträge für die einzelnen Geräte während eines bestimmten Zeitraums |
 | Verlaufsdaten |Fehler |Generiert einen Export aller Fehler für die einzelnen Geräte während eines bestimmten Zeitraums |
 
-## Wie funktioniert Application Insights?
-Exporte sind Tasks mit langer Ausführungsdauer, die möglicherweise große Datenmengen erzeugen. Aus diesem Grund können sie nicht aufgerufen werden, um sofort eine Datei zum Download zurückzugeben. Zum Exportieren von Daten aus Mobile Engagement müssen Sie per API einen **Exportauftrag** erstellen, in dem Sie in der Regel Folgendes angeben:
+## <a name="how-does-it-work"></a>Wie funktioniert Application Insights?
+Exporte sind Tasks mit langer Ausführungsdauer, die möglicherweise große Datenmengen erzeugen. Aus diesem Grund können sie nicht aufgerufen werden, um sofort eine Datei zum Download zurückzugeben.
+Zum Exportieren von Daten aus Mobile Engagement müssen Sie per API einen **Exportauftrag** erstellen, in dem Sie in der Regel Folgendes angeben:
 
 * Exporttyp (Momentaufnahme oder Verlauf)
 * Datentyp
@@ -64,4 +70,9 @@ Sobald der Auftrag erstellt wurde, kann sein Status überprüft werden, um festz
 
 Sobald der Auftrag ERFOLGREICH abgeschlossen ist, steht die resultierende Datendatei im bereitgestellten Speichercontainer zur Verfügung.
 
-<!---HONumber=AcomDC_0504_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

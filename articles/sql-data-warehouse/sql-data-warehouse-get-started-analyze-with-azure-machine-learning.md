@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: edc3a915a59d83718d05ce39a1ce2bcd14333da4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 42d71bf43070e08ae287a7b251c5bb94a6a80548
 
 
 ---
@@ -39,12 +39,12 @@ In diesem Tutorial wird Azure Machine Learning verwendet, um ein Predictive Mach
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-* Für eine SQL Data Warehouse-Instanz werden AdventureWorksDW-Beispieldaten vorab geladen. Informationen zur Bereitstellung finden Sie unter [Erstellen eines SQL Data Warehouse][Erstellen eines SQL Data Warehouse]. Wählen Sie die Option zum Laden der Beispieldaten. Wenn Sie bereits über ein Data Warehouse verfügen, aber noch keine Beispieldaten besitzen, können Sie [Beispieldaten manuell laden][Beispieldaten manuell laden].
+* Für eine SQL Data Warehouse-Instanz werden AdventureWorksDW-Beispieldaten vorab geladen. Informationen zur Bereitstellung finden Sie unter [Erstellen eines SQL Data Warehouse][Create a SQL Data Warehouse]. Wählen Sie die Option zum Laden der Beispieldaten. Wenn Sie bereits über ein Data Warehouse verfügen, aber noch keine Beispieldaten besitzen, können Sie [Beispieldaten manuell laden][load sample data manually].
 
 ## <a name="1-get-data"></a>1. Datensammlung
 Die Daten befinden sich in der Sicht „dbo.vTargetMail“ in der AdventureWorksDW-Datenbank. Gehen Sie wie folgt vor, um diese Daten zu lesen:
 
-1. Melden Sie sich bei [Azure Machine Learning Studio][Azure Machine Learning Studio] an, und klicken Sie auf „Meine Experimente“.
+1. Melden Sie sich bei [Azure Machine Learning Studio][Azure Machine Learning studio] an, und klicken Sie auf „Meine Experimente“.
 2. Klicken Sie auf **+ NEU**, und wählen Sie **Leeres Experiment**.
 3. Geben Sie einen Namen für das Experiment ein: Zielgerichtetes Marketing.
 4. Ziehen Sie das **Reader** -Modul aus dem Modulbereich in den Zeichenbereich.
@@ -124,7 +124,7 @@ Ihrem Testdatensatz werden zwei weitere Spalten hinzugefügt.
 Durch einen Vergleich der Spalte „BikeBuyer“ (tatsächliche Werte) mit „Bewertete Beschriftungen“ (Vorhersage) können Sie die Leistung des Modells ermitteln. Als Nächstes können Sie mit diesem Modell Vorhersagen für neue Kunden treffen und das Modell als Webdienst veröffentlichen oder Ergebnisse zurück in SQL Data Warehouse schreiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Erstellen von vorhersehbaren Machine Learning-Vorhersagemodellen finden Sie unter [Einführung in Machine Learning in der Cloud][Einführung in Machine Learning in der Cloud].
+Weitere Informationen zum Erstellen von Machine Learning-Vorhersagemodellen finden Sie unter [Einführung in Machine Learning in der Cloud][Introduction to Machine Learning on Azure].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
@@ -142,13 +142,13 @@ Weitere Informationen zum Erstellen von vorhersehbaren Machine Learning-Vorhersa
 
 
 <!--Article references-->
-[Azure Machine Learning Studio]:https://studio.azureml.net/
-[Einführung in Machine Learning in der Cloud]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[Beispieldaten auch manuell laden]: sql-data-warehouse-load-sample-databases.md
-[Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Azure Machine Learning studio]:https://studio.azureml.net/
+[Introduction to Machine Learning on Azure]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: 9fc8295aaa68a0d41a34f714b34642585b13b67d
-ms.openlocfilehash: 37da0020c8fc51a422ce6c70fed26329863a90f0
+ms.sourcegitcommit: 1c603d37735bbbfdfaaf4a191e2ad1ce6ff5b2b7
+ms.openlocfilehash: 67f3e923680a9a2f399c0839d2ec11ef4615da00
 
 
 ---
@@ -37,12 +38,12 @@ Für viele Unternehmen und Apps genügt es, wenn Datenbanken erstellt werden kö
 
 [elastischen Pools](sql-database-elastic-pool.md) in SQL-Datenbank beheben. Das Konzept ist denkbar einfach. Sie weisen einem Pool eine bestimmte Leistung zu und zahlen für die gesamte Leistung des Pools und nicht für die Leistung der Einzeldatenbanken. Sie müssen die Datenbankleistung nicht nach oben oder unten anpassen. Die Datenbanken in dem Pool, die sogenannten *elastischen Datenbanken*, werden automatisch nach Bedarf zentral hoch- und herunterskaliert. Elastische Datenbanken nutzen die Grenzwerte des Pools, überschreiten sie jedoch nicht, sodass Ihre Kosten vorhersagbar bleiben, selbst wenn sich die Nutzung der Datenbanken nicht prognostizieren lässt. Darüber hinaus können Sie [Datenbanken im Pool hinzufügen und entfernen](sql-database-elastic-pool-manage-portal.md)und so Ihre App von einigen wenigen auf Tausende Datenbanken skalieren, und das in einem kontrollierten Kostenrahmen. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die elastische Pools verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-Ob Sie sich nun für Einzeldatenbanken oder elastische Datenbanken entscheiden, ist dies keine endgültige Entscheidung. Sie können Einzeldatenbanken mit Pools für elastische Datenbanken kombinieren und die Dienstebenen von Einzeldatenbanken und Pools ändern, um innovative Anwendungsdesigns zu erhalten. Außerdem können Sie mit der Leistungsstärke und Reichweite von Azure einzelne Azure-Dienste mit der SQL-Datenbank kombinieren, um Ihre individuellen Anforderungen an modernes App-Design zu erfüllen, Kosten- und Ressourceneffizienz zu fördern und neue Geschäftsmöglichkeiten zu erschließen.
+Ob Sie sich nun für Einzeldatenbanken oder elastische Datenbanken entscheiden, ist dies keine endgültige Entscheidung. Sie können Einzeldatenbanken mit Pools für elastische Datenbanken kombinieren und die Dienstebenen von Einzeldatenbanken und Pools schnell und einfach an Ihre Bedürfnisse anpassen. Außerdem können Sie mit der Leistungsstärke und Reichweite von Azure andere Azure-Dienste mit der SQL-Datenbank kombinieren, um Ihre individuellen Anforderungen an App-Design zu erfüllen, Kosten- und Ressourceneffizienz zu fördern und neue Geschäftsmöglichkeiten zu erschließen.
 
-Aber wie können Sie nun die relative Leistung von Datenbanken und Datenbankpools vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Die Antwort liegt in den Datenbank-Transaktionseinheiten (Database Transaction Unit, DTU) für Einzeldatenbanken und in den elastischen DTUs (eDTUs) für elastische Datenbanken und Datenbankpools. Ausführliche Informationen finden Sie unter [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md) .
+Aber wie können Sie nun die relative Leistung von Datenbanken und Datenbankpools vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Die Antwort liegt in den integrierten Leistungsüberwachungs- und Warntools und der Leistungsbewertung, die auf Datenbanktransaktionseinheiten (Database Transaction Units; DTUs) für die einzelnen Datenbanken und elastischen DTUs (eDTUs) für elastische Datenbanken und Datenbankpools basiert. Mit diesen Tools und Funktionen können Sie schnell die Auswirkungen einschätzen, die das zentrale Hoch- oder Herunterskalieren in Abhängigkeit Ihrer aktuellen Leistungsanforderungen oder der Ihres Projekts hervorruft. Ausführliche Informationen finden Sie unter [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md) .
 
 ## <a name="keep-your-app-and-business-running"></a>Aufrechterhalten von App-Ausführung und Geschäftskontinuität
-Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel [(SLA)](http://azure.microsoft.com/support/legal/sla/) von 99,99% sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jeder SQL-Datenbank nutzen Sie den integrierten Datenschutz und die Fehlertoleranz, die Sie andernfalls entwerfen, kaufen, erstellen und verwalten müssten. Abhängig von Ihren Geschäftsanforderungen benötigen Sie möglicherweise dennoch weitere Schutzebenen, um sicherzustellen, dass Ihre App und Ihr Geschäftsbetrieb bei einem Notfall, einem Fehler o. Ä. schnell wiederhergestellt werden kann. Bei der SQL-Datenbank bietet jede Dienstebene verschiedene Funktionen, mit denen Sie schnell einsatzbereit sind (und bleiben). Über die Point-in-Time-Wiederherstellung können Sie den früheren Status einer Datenbank für bis zu 35 Tage wiederherstellen. Bei einem Ausfall des Rechenzentrums, das Ihre Datenbanken hostet, können Sie darüber hinaus Datenbankreplikate in einer anderen Region nutzen. Zudem können Sie Replikate für Aktualisierungen oder zur Verlegung in andere Regionen verwenden.
+Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel [(SLA)](http://azure.microsoft.com/support/legal/sla/) von 99,99% sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jeder SQL-Datenbank nutzen Sie die integrierte Sicherheit, Fehlertoleranz und den Schutz von Daten, die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. Abhängig von Ihren Geschäftsanforderungen benötigen Sie möglicherweise dennoch weitere Schutzebenen, um sicherzustellen, dass Ihre App und Ihr Geschäftsbetrieb bei einem Notfall, einem Fehler o.Ä. schnell wiederhergestellt werden können. In der SQL-Datenbank bietet jede Dienstebene einen umfassenden Satz von Funktionen für Geschäftskontinuität und Optionen, die sicherstellen, dass Sie den Betrieb aufnehmen können und dieser nicht unterbrochen wird. Über die Point-in-Time-Wiederherstellung können Sie den früheren Status einer Datenbank für bis zu 35 Tage wiederherstellen. Wenn das Rechenzentrum, das Ihre Datenbank hostet, außerdem einen Ausfall erlebt, können Sie Ihre Datenbanken aus georedundanten Kopien aus kürzlich erfolgten Sicherungen wiederherstellen oder ein Failover auf die Datenbankreplikate in verschiedenen Regionen ausführen. Sie können Replikate außerdem für Upgrades oder zur Verlegung in verschiedene Regionen verwenden.
 
 ![SQL-Datenbank-Georeplikation](./media/sql-database-technical-overview/azure_sqldb_map.png)
 
@@ -59,11 +60,9 @@ Nachdem Sie eine Einführung in SQL-Datenbank gelesen und die Frage „Was ist S
 * Beginnen Sie mit dem [Erstellen einer ersten Azure SQL-Datenbank](sql-database-get-started.md).
 * [Verbinden und Abfragen mit SSMS](sql-database-connect-query-ssms.md)
 * Erstellen Sie Ihre erste App in C#, Java, Node.js, PHP, Python oder Ruby: [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
-* Einen Index mit den Titeln und Beschreibungen finden Sie unter [Alle Themen für den Azure SQL-Datenbankdienst](sql-database-index-all-articles.md).
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

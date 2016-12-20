@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen des Informix-Connectors zu Ihren Logik-Apps | Microsoft Docs
-description: Übersicht über den Informix-Connector mit REST-API-Parametern
-services: ''
-documentationcenter: ''
+title: "Hinzufügen des Informix-Connectors zu Ihren Logik-Apps | Microsoft Docs"
+description: "Übersicht über den Informix-Connector mit REST-API-Parametern"
+services: 
+documentationcenter: 
 author: gplarsen
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1b9ea0593e0ae6dc9e1b6b07665fc3b3fad264bf
+
 
 ---
 # <a name="get-started-with-the-informix-connector"></a>Erste Schritte mit dem Informix-Connector
@@ -402,6 +406,9 @@ Dieser Connector unterstützt die folgenden IBM Informix-Versionen, wenn diese f
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

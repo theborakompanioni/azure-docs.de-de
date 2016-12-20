@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/22/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4f6bb074a607bd8a6bd201d71973993759860937
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
 
 
 ---
@@ -45,7 +45,7 @@ Dieses Tutorial dauert etwa 10 bis 15 Minuten (ohne Berücksichtigung der Zeit f
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * In diesem Tutorial werden Erfahrungen mit ASP.NET MVC und Visual Studio vorausgesetzt. Eine Einführung finden Sie unter [Erste Schritte mit ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started).
-* Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
   
     Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](http://go.microsoft.com/fwlink/?LinkId=523751). Dort können Sie eine kurzzeitige Start-App in App Service erstellen – ohne Kreditkarte oder weitere Verpflichtungen.
 
@@ -219,6 +219,6 @@ In diesem Lernprogramm haben Sie erfahren, wie eine einfache Webanwendung erstel
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

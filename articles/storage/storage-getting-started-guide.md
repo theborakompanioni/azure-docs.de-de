@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 11/17/2016
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 369e45ed8303735976813c1224ce74842f886536
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a8f90f07a4402c0d2fb9ffc3bd35de18e2a39927
 
 
 ---
@@ -47,10 +47,9 @@ Sobald das Konto eingerichtet ist, können Sie mithilfe eines der Azure-Schnells
 3. Klicken Sie im Dialogfeld **Neues Projekt** auf **Installiert** > **Vorlagen** > **Visual C#** > **Cloud** > **Schnellstarts** > **Data Services**.
     a. Wählen Sie eine der folgenden Vorlagen aus: **Azure Storage: Blobs**, **Azure Storage: Dateien**, **Azure Storage: Warteschlangen** oder **Azure Storage: Tabellen**.
     b. Stellen Sie sicher, dass als Zielframework **.NET Framework 4.5** ausgewählt ist.
-   
-   * 3.c. Geben Sie einen Namen für das Projekt an, und erstellen Sie die neue Visual Studio-Projektmappe, wie hier zu sehen:
+    c. Geben Sie einen Namen für das Projekt an, und erstellen Sie die neue Visual Studio-Projektmappe, wie hier zu sehen:
      
-     ![Azure-Schnellstarts][Image1]
+    ![Azure-Schnellstarts][Image1]
 
 Vor dem Ausführen der Anwendung sollten Sie den Quellcode überprüfen. Um den Code zu anzuzeigen, wählen Sie in Visual Studio im Menü **Ansicht** die Option **Projektmappen-Explorer** aus. Doppelklicken Sie auf die Datei "Program.cs".
 
@@ -59,7 +58,10 @@ Führen Sie nun die Beispielanwendung aus:
 1. Wählen Sie in Visual Studio im Menü **Ansicht** die Option **Projektmappen-Explorer** aus. Öffnen Sie die Datei „App.config“, und kommentieren Sie die Verbindungszeichenfolge für den Azure-Speicheremulator aus:
    
    `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
-2. Kommentieren Sie die Verbindungszeichenfolge für den Azure Storage-Dienst aus, und geben Sie den Speicherkontonamen und den Zugriffsschlüssel in der Datei "App.config" an: `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
+
+2. Kommentieren Sie die Verbindungszeichenfolge für den Azure Storage-Dienst aus, und geben Sie den Speicherkontonamen und den Zugriffsschlüssel in der App.config-Datei an:
+   
+   `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
    
    Informationen zum Abrufen der Zugriffsschlüssel für Ihr Speicherkonto finden Sie unter [Verwalten von Speicherzugriffsschlüsseln](storage-create-storage-account.md#manage-your-storage-access-keys).
 3. Klicken Sie nach Angabe des Speicherkontonamens und des Zugriffsschlüssels in der Datei „App.config“ im Menü **Datei** auf **Alle speichern**, um alle Projektdateien zu speichern.
@@ -79,11 +81,12 @@ Um dies auszuprobieren, erstellen wir nun eine einfache Azure Storage-Anwendung 
     c. Geben Sie einen Namen für das Projekt an, und erstellen Sie die neue Visual Studio-Projektmappe, wie hier zu sehen:
    
     ![Azure-Schnellstarts][Image1]
+
 4. Wählen Sie in Visual Studio im Menü **Ansicht** die Option **Projektmappen-Explorer** aus. Öffnen Sie die Datei „App.config“, und kommentieren Sie die Verbindungszeichenfolge für das Azure-Speicherkonto aus, falls Sie bereits eins hinzugefügt hatten. Heben Sie danach die Auskommentierung für die Verbindungszeichenfolge für den Azure-Speicheremulator auf.
    
    `<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>`
 
-Vor dem Ausführen der Anwendung sollten Sie den Quellcode überprüfen. Um den Code zu anzuzeigen, wählen Sie in Visual Studio im Menü **Ansicht** die Option **Projektmappen-Explorer** aus. Doppelklicken Sie auf die Datei "Program.cs".
+Vor dem Ausführen der Anwendung sollten Sie den Quellcode überprüfen. Um den Code zu anzuzeigen, wählen Sie in Visual Studio im Menü **Ansicht** die Option **Projektmappen-Explorer** aus. Doppelklicken Sie anschließend auf die Datei „Program.cs“.
 
 Führen Sie nun die Beispielanwendung im Azure-Speicheremulator aus:
 
@@ -105,10 +108,10 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 * [Microsoft Azure-Speicherclientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
-[Bild1]: ./media/storage-getting-started-guide/QuickStart.png
+[Image1]: ./media/storage-getting-started-guide/QuickStart.png
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

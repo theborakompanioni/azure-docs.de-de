@@ -1,12 +1,12 @@
 ---
 title: Erneutes Trainieren eines klassischen Webdiensts | Microsoft Docs
-description: Erfahren Sie, wie Sie ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
+description: Erfahren Sie, wie Sie ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Azure Machine Learning verwendet.
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: raymondlaghaeian
-editor: ''
-
+editor: 
+ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,15 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 139980b62aee440ac5f4160e83c7a5eafb32eec2
+
 
 ---
 # <a name="retrain-a-classic-web-service"></a>Erneutes Trainieren eines klassischen Webdiensts
 Der von Ihnen bereitgestellte Vorhersagewebdienst ist der Standardbewertungsendpunkt. Standardendpunkte werden mit den ursprünglichen Trainings- und Bewertungsexperimenten synchronisiert. Daher kann das trainierte Modell für den Standardendpunkt nicht ersetzt werden. Zum erneuten Trainieren des Webdiensts müssen Sie dem Webdienst einen neuen Endpunkt hinzufügen. 
 
-> [!NOTE]
-> Die Schritte in diesem Tutorial setzen voraus, dass Sie den Web gemäß den Anweisungen unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md) erstellt haben.
+## <a name="prerequisites"></a>Voraussetzungen
+Sie benötigen ein Trainingsexperiment und ein Vorhersageexperiment (wie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md) beschrieben). 
+
+> [!IMPORTANT]
+> Das Vorhersageexperiment muss als klassischer Machine Learning-Webdienst bereitgestellt werden. 
 > 
 > 
+
+Weitere Informationen zum Bereitstellen von Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](machine-learning-publish-a-machine-learning-web-service.md).
 
 ## <a name="add-a-new-endpoint"></a>Hinzufügen eines neuen Endpunkts
 Der von Ihnen bereitgestellte Vorhersagewebdienst enthält einen standardmäßigen Bewertungsendpunkt, der mit den ursprünglichen Trainings- und Bewertungsexperimenten des trainierten Modells synchronisiert wird. Erstellen Sie zum Aktualisieren des Webdiensts mit einem neuen trainierten Modell einen neuen Bewertungsendpunkt. 
@@ -45,7 +54,7 @@ Sie können Bewertungsendpunkte mithilfe des Beispielcodes in diesem [GitHub-Rep
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Verwenden des Portals für Microsoft Azure-Webdienste zum Hinzufügen eines Endpunkts
 1. Klicken Sie in Machine Learning Studio links auf „Webdienste“.
-2. Klicken Sie am unteren Rand des Webdienst-Dashboards auf **Manage endpoints preview**(Endpunktvorschau verwalten).
+2. Klicken Sie unten auf dem Dashboards des Webdiensts auf **Manage endpoints preview**(Endpunktvorschau verwalten).
 3. Klicken Sie auf **Hinzufügen**.
 4. Geben Sie einen Namen und eine Beschreibung für den neuen Endpunkt ein. Wählen Sie die Protokollierungsstufe aus, und legen Sie fest, ob Beispieldaten aktiviert sind. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](machine-learning-web-services-logging.md).
 
@@ -56,7 +65,7 @@ Sie können Bewertungsendpunkte mithilfe des Beispielcodes in diesem [GitHub-Rep
 4. Klicken Sie unter „Name“ auf **Census Model [predictive exp.]**.
 5. Klicken Sie unten auf der Seite auf **Endpunkt hinzufügen**. Weitere Informationen zum Hinzufügen von Endpunkten finden Sie unter [Erstellen von Endpunkten](machine-learning-create-endpoint.md). 
 
-## <a name="update-the-added-endpoint’s-trained-model"></a>Aktualisieren des trainierten Modells des hinzugefügten Endpunkts
+## <a name="update-the-added-endpoints-trained-model"></a>Aktualisieren des trainierten Modells des hinzugefügten Endpunkts
 Um das erneute Training abzuschließen, müssen Sie das trainierte Modell des von Ihnen hinzugefügten neuen Endpunkts aktualisieren.
 
 * Wenn Sie den neuen Endpunkt im klassischen Azure-Portal hinzugefügt haben, können Sie im Portal auf seinen Namen klicken. Klicken Sie anschließend auf den **UpdateResource**-Link, um die URL abzurufen, die Sie benötigen, um das Modell des Endpunkts zu aktualisieren.
@@ -68,7 +77,7 @@ So rufen Sie die Pfad-URL ab
 2. Klicken Sie auf den Link „Ressource aktualisieren“.
 3. Kopieren Sie die POST-URL der PATCH-Anforderung. Beispiel:
    
-       PATCH URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
+     PATCH-URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
 Sie können das trainierte Modell jetzt verwenden, um den zuvor erstellten Bewertungsendpunkt zu aktualisieren.
 
@@ -114,7 +123,7 @@ Der folgende Beispielcode zeigt, wie Sie *BaseLocation*, *RelativeLocation*, *Sa
 
 Der *apiKey* und die *endpointUrl* für den Aufruf werden im Dashboard des Endpunkts angezeigt.
 
-Der Wert des Parameters *Name* in *Resources* muss mit dem Namen des gespeicherten trainierten Modells im Vorhersageexperiment übereinstimmen. Gehen Sie wie folgt vor, um den Ressourcennamen abzurufen:
+Der Wert des Parameters *Name* in *Resources* muss mit dem Ressourcennamen des gespeicherten trainierten Modells im Vorhersageexperiment übereinstimmen. Gehen Sie wie folgt vor, um den Ressourcennamen abzurufen:
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 2. Klicken Sie im linken Menü auf **Machine Learning**.
@@ -134,10 +143,12 @@ Mithilfe der APIs zum erneuten Trainieren können Sie das trainierte Modell eine
 * Regelmäßiges erneutes Trainieren des Modells mit neuen Daten
 * Verteilung eines Modells an Kunden, sodass sie das Modell mit ihren eigenen Daten erneut trainieren können
 
-Nächste Schritte
-
+## <a name="next-steps"></a>Nächste Schritte
 [Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts](machine-learning-troubleshooting-retraining-models.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

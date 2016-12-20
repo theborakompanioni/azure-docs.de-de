@@ -1,7 +1,7 @@
 ## <a name="receive-messages-with-apache-storm"></a>Empfangen von Nachrichten mit Apache Storm
-[**Apache Storm**](https://storm.incubator.apache.org) ist ein verteiltes System für Echtzeitberechnungen, das die zuverlässige Verarbeitung unbegrenzter Datenströme vereinfacht. In diesem Abschnitt wird gezeigt, wie Sie den Ereignis-Hub-Spout in Storm zum Empfangen von Ereignissen vom Ereignis-Hubs verwenden. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
+[Apache Storm](https://storm.incubator.apache.org) ist ein verteiltes System für Echtzeitberechnungen, das die zuverlässige Verarbeitung unbegrenzter Datenströme vereinfacht. In diesem Abschnitt wird gezeigt, wie Sie den Ereignis-Hub-Spout in Storm zum Empfangen von Ereignissen vom Ereignis-Hubs verwenden. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
 
-Weitere Informationen zu Empfangsmustern von Event Hubs finden Sie unter [Event Hubs – Übersicht][Event Hubs – Übersicht].
+Weitere Informationen zu Empfangsmustern von Event Hubs finden Sie unter [Event Hubs – Übersicht][Event Hubs overview].
 
 In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
 
@@ -67,148 +67,152 @@ In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation ver
     Der Wert für **eventhub.receiver.credits** bestimmt, wie viele Ereignisse als Stapel verarbeitet werden, bevor sie für die Storm-Pipeline freigegeben werden. Der Einfachheit halber wird in diesem Beispiel der Wert auf 10 gesetzt. In einer Produktionsumgebung sollten normalerweise höhere Werte festgelegt werden, beispielsweise 1024.
 10. Erstellen Sie mit dem folgenden Code eine neue Klasse namens **LoggerBolt** :
     
-        import java.util.Map;
-        import org.slf4j.Logger;
-        import org.slf4j.LoggerFactory;
-        import backtype.storm.task.OutputCollector;
-        import backtype.storm.task.TopologyContext;
-        import backtype.storm.topology.OutputFieldsDeclarer;
-        import backtype.storm.topology.base.BaseRichBolt;
-        import backtype.storm.tuple.Tuple;
+    ```java
+    import java.util.Map;
+    import org.slf4j.Logger;
+    import org.slf4j.LoggerFactory;
+    import backtype.storm.task.OutputCollector;
+    import backtype.storm.task.TopologyContext;
+    import backtype.storm.topology.OutputFieldsDeclarer;
+    import backtype.storm.topology.base.BaseRichBolt;
+    import backtype.storm.tuple.Tuple;
     
-        public class LoggerBolt extends BaseRichBolt {
-            private OutputCollector collector;
-            private static final Logger logger = LoggerFactory
-                      .getLogger(LoggerBolt.class);
+    public class LoggerBolt extends BaseRichBolt {
+        private OutputCollector collector;
+        private static final Logger logger = LoggerFactory
+                  .getLogger(LoggerBolt.class);
     
-            @Override
-            public void execute(Tuple tuple) {
-                String value = tuple.getString(0);
-                logger.info("Tuple value: " + value);
-    
-                collector.ack(tuple);
-            }
-    
-            @Override
-            public void prepare(Map map, TopologyContext context, OutputCollector collector) {
-                this.collector = collector;
-                this.count = 0;
-            }
-    
-            @Override
-            public void declareOutputFields(OutputFieldsDeclarer declarer) {
-                // no output fields
-            }
-    
+        @Override
+        public void execute(Tuple tuple) {
+            String value = tuple.getString(0);
+            logger.info("Tuple value: " + value);
+   
+            collector.ack(tuple);
         }
+   
+        @Override
+        public void prepare(Map map, TopologyContext context, OutputCollector collector) {
+            this.collector = collector;
+            this.count = 0;
+        }
+        
+        @Override
+        public void declareOutputFields(OutputFieldsDeclarer declarer) {
+            // no output fields
+        }
+    
+    }
+    ```
     
     Diese Storm-Klasse protokolliert den Inhalt der empfangenen Ereignisse. Sie kann problemlos erweitert werden, um Tupel in einem Speicherdienst speichern. Im [Lernprogramm zur HDInsight-Sensoranalyse] wird derselbe Ansatz zum Speichern von Daten in HBase verwendet.
 11. Erstellen Sie mit dem folgenden Code eine neue Klasse mit dem Namen **LogTopology** :
     
-        import java.io.FileReader;
-        import java.util.Properties;
-        import backtype.storm.Config;
-        import backtype.storm.LocalCluster;
-        import backtype.storm.StormSubmitter;
-        import backtype.storm.generated.StormTopology;
-        import backtype.storm.topology.TopologyBuilder;
-        import com.microsoft.eventhubs.samples.EventCount;
-        import com.microsoft.eventhubs.spout.EventHubSpout;
-        import com.microsoft.eventhubs.spout.EventHubSpoutConfig;
-    
-        public class LogTopology {
-            protected EventHubSpoutConfig spoutConfig;
-            protected int numWorkers;
-    
-            protected void readEHConfig(String[] args) throws Exception {
-                Properties properties = new Properties();
-                if (args.length > 1) {
-                    properties.load(new FileReader(args[1]));
-                } else {
-                    properties.load(EventCount.class.getClassLoader()
-                            .getResourceAsStream("Config.properties"));
-                }
-    
-                String username = properties.getProperty("eventhubspout.username");
-                String password = properties.getProperty("eventhubspout.password");
-                String namespaceName = properties
-                        .getProperty("eventhubspout.namespace");
-                String entityPath = properties.getProperty("eventhubspout.entitypath");
-                String zkEndpointAddress = properties
-                        .getProperty("zookeeper.connectionstring"); // opt
-                int partitionCount = Integer.parseInt(properties
-                        .getProperty("eventhubspout.partitions.count"));
-                int checkpointIntervalInSeconds = Integer.parseInt(properties
-                        .getProperty("eventhubspout.checkpoint.interval"));
-                int receiverCredits = Integer.parseInt(properties
-                        .getProperty("eventhub.receiver.credits")); // prefetch count
-                                                                    // (opt)
-                System.out.println("Eventhub spout config: ");
-                System.out.println("  partition count: " + partitionCount);
-                System.out.println("  checkpoint interval: "
-                        + checkpointIntervalInSeconds);
-                System.out.println("  receiver credits: " + receiverCredits);
-    
-                spoutConfig = new EventHubSpoutConfig(username, password,
-                        namespaceName, entityPath, partitionCount, zkEndpointAddress,
-                        checkpointIntervalInSeconds, receiverCredits);
-    
-                // set the number of workers to be the same as partition number.
-                // the idea is to have a spout and a logger bolt co-exist in one
-                // worker to avoid shuffling messages across workers in storm cluster.
-                numWorkers = spoutConfig.getPartitionCount();
-    
-                if (args.length > 0) {
-                    // set topology name so that sample Trident topology can use it as
-                    // stream name.
-                    spoutConfig.setTopologyName(args[0]);
-                }
+    ```java
+    import java.io.FileReader;
+    import java.util.Properties;
+    import backtype.storm.Config;
+    import backtype.storm.LocalCluster;
+    import backtype.storm.StormSubmitter;
+    import backtype.storm.generated.StormTopology;
+    import backtype.storm.topology.TopologyBuilder;
+    import com.microsoft.eventhubs.samples.EventCount;
+    import com.microsoft.eventhubs.spout.EventHubSpout;
+    import com.microsoft.eventhubs.spout.EventHubSpoutConfig;
+        
+    public class LogTopology {
+        protected EventHubSpoutConfig spoutConfig;
+        protected int numWorkers;
+        
+        protected void readEHConfig(String[] args) throws Exception {
+            Properties properties = new Properties();
+            if (args.length > 1) {
+                properties.load(new FileReader(args[1]));
+            } else {
+                properties.load(EventCount.class.getClassLoader()
+                        .getResourceAsStream("Config.properties"));
             }
-    
-            protected StormTopology buildTopology() {
-                TopologyBuilder topologyBuilder = new TopologyBuilder();
-    
-                EventHubSpout eventHubSpout = new EventHubSpout(spoutConfig);
-                topologyBuilder.setSpout("EventHubsSpout", eventHubSpout,
-                        spoutConfig.getPartitionCount()).setNumTasks(
-                        spoutConfig.getPartitionCount());
-                topologyBuilder
-                        .setBolt("LoggerBolt", new LoggerBolt(),
-                                spoutConfig.getPartitionCount())
-                        .localOrShuffleGrouping("EventHubsSpout")
-                        .setNumTasks(spoutConfig.getPartitionCount());
-                return topologyBuilder.createTopology();
-            }
-    
-            protected void runScenario(String[] args) throws Exception {
-                boolean runLocal = true;
-                readEHConfig(args);
-                StormTopology topology = buildTopology();
-                Config config = new Config();
-                config.setDebug(false);
-    
-                if (runLocal) {
-                    config.setMaxTaskParallelism(2);
-                    LocalCluster localCluster = new LocalCluster();
-                    localCluster.submitTopology("test", config, topology);
-                    Thread.sleep(5000000);
-                    localCluster.shutdown();
-                } else {
-                    config.setNumWorkers(numWorkers);
-                    StormSubmitter.submitTopology(args[0], config, topology);
-                }
-            }
-    
-            public static void main(String[] args) throws Exception {
-                LogTopology topology = new LogTopology();
-                topology.runScenario(args);
+        
+            String username = properties.getProperty("eventhubspout.username");
+            String password = properties.getProperty("eventhubspout.password");
+            String namespaceName = properties
+                    .getProperty("eventhubspout.namespace");
+            String entityPath = properties.getProperty("eventhubspout.entitypath");
+            String zkEndpointAddress = properties
+                    .getProperty("zookeeper.connectionstring"); // opt
+            int partitionCount = Integer.parseInt(properties
+                    .getProperty("eventhubspout.partitions.count"));
+            int checkpointIntervalInSeconds = Integer.parseInt(properties
+                    .getProperty("eventhubspout.checkpoint.interval"));
+            int receiverCredits = Integer.parseInt(properties
+                    .getProperty("eventhub.receiver.credits")); // prefetch count
+                                                                // (opt)
+            System.out.println("Eventhub spout config: ");
+            System.out.println("  partition count: " + partitionCount);
+            System.out.println("  checkpoint interval: "
+                    + checkpointIntervalInSeconds);
+            System.out.println("  receiver credits: " + receiverCredits);
+     
+            spoutConfig = new EventHubSpoutConfig(username, password,
+                    namespaceName, entityPath, partitionCount, zkEndpointAddress,
+                    checkpointIntervalInSeconds, receiverCredits);
+        
+            // set the number of workers to be the same as partition number.
+            // the idea is to have a spout and a logger bolt co-exist in one
+            // worker to avoid shuffling messages across workers in storm cluster.
+            numWorkers = spoutConfig.getPartitionCount();
+        
+            if (args.length > 0) {
+                // set topology name so that sample Trident topology can use it as
+                // stream name.
+                spoutConfig.setTopologyName(args[0]);
             }
         }
+        
+        protected StormTopology buildTopology() {
+            TopologyBuilder topologyBuilder = new TopologyBuilder();
+       
+            EventHubSpout eventHubSpout = new EventHubSpout(spoutConfig);
+            topologyBuilder.setSpout("EventHubsSpout", eventHubSpout,
+                    spoutConfig.getPartitionCount()).setNumTasks(
+                    spoutConfig.getPartitionCount());
+            topologyBuilder
+                    .setBolt("LoggerBolt", new LoggerBolt(),
+                            spoutConfig.getPartitionCount())
+                    .localOrShuffleGrouping("EventHubsSpout")
+                    .setNumTasks(spoutConfig.getPartitionCount());
+            return topologyBuilder.createTopology();
+        }
+        
+        protected void runScenario(String[] args) throws Exception {
+            boolean runLocal = true;
+            readEHConfig(args);
+            StormTopology topology = buildTopology();
+            Config config = new Config();
+            config.setDebug(false);
+        
+            if (runLocal) {
+                config.setMaxTaskParallelism(2);
+                LocalCluster localCluster = new LocalCluster();
+                localCluster.submitTopology("test", config, topology);
+                Thread.sleep(5000000);
+                localCluster.shutdown();
+            } else {
+                config.setNumWorkers(numWorkers);
+                StormSubmitter.submitTopology(args[0], config, topology);
+            }
+        }
+        
+        public static void main(String[] args) throws Exception {
+            LogTopology topology = new LogTopology();
+            topology.runScenario(args);
+        }
+    }
+    ```
 
     Diese Klasse erstellt einen neuen Ereignis-Hubs-Spout, und verwendet die Eigenschaften in der Konfigurationsdatei zum Instanziieren. Beachten Sie unbedingt, dass in diesem Beispiel eine der Anzahl der Partitionen auf dem Ereignis-Hub entsprechende die Anzahl von Spout-Aufgaben erstellt wird, um die maximale für diesen Ereignis-Hub zulässige Parallelität zulässig zu verwenden.
 
 <!-- Links -->
-[Event Hubs – Übersicht]: ../articles/event-hubs/event-hubs-overview.md
+[Event Hubs overview]: ../articles/event-hubs/event-hubs-overview.md
 [HDInsight Storm]: ../articles/hdinsight/hdinsight-storm-overview.md
 [Lernprogramm zur HDInsight-Sensoranalyse]: ../articles/hdinsight/hdinsight-storm-sensor-data-analysis.md
 
@@ -216,6 +220,6 @@ In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation ver
 
 [12]: ./media/service-bus-event-hubs-get-started-receive-storm/create-storm1.png
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

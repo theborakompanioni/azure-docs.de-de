@@ -1,19 +1,23 @@
 ---
 title: Verwalten von Verbundzertifikaten in Azure AD | Microsoft Docs
-description: Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen.
+description: "Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f516f7f0-b25a-4901-8247-f5964666ce23
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2016
-ms.author: asmalser-msft
+ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 275afec9fd3d2ce6051f48b257c7e116d765186b
+
 
 ---
 # <a name="managing-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
@@ -57,7 +61,7 @@ Im Idealfall sollte die unten gezeigten Schritte zur Erneuerung keine wesentlich
 5. Klicken Sie auf **Zertifikat herunterladen**. Um Ihr Zertifikat zu verlängern, führen Sie die folgenden beiden Schritte aus:
    
    * Laden Sie das neue Zertifikat im Bestätigungsbildschirm der einmaligen Anmeldung der SaaS-App hoch. Um Informationen zu den erforderlichen Schritten für Ihre spezielle SaaS-App zu erhalten, klicken Sie auf **Konfigurationsanweisungen anzeigen**.
-   * Aktivieren Sie in Azure AD das Kontrollkästchen "Bestätigung" unten im Dialogfeld, um das neue Zertifikat zu aktivieren, und klicken Sie zum Senden auf **Weiter** .
+   * Aktivieren Sie in Azure AD das Kontrollkästchen "Bestätigung" unten im Dialogfeld, um das neue Zertifikat zu aktivieren, und klicken Sie zum Senden auf **Weiter** .
      
      > [!IMPORTANT]
      > Die einmalige Anmeldung bei der App wird in dem Moment deaktiviert, in dem einer der beiden Schritte abgeschlossen ist, sie wird jedoch wieder aktiviert, sobald der zweite Schritt abgeschlossen ist. Um daher Ausfallzeiten so gering wie möglich zu halten, bereiten Sie sich darauf vor, beide Schritte möglichst schnell nacheinander auszuführen.
@@ -71,6 +75,9 @@ Im Idealfall sollte die unten gezeigten Schritte zur Erneuerung keine wesentlich
 * [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md)
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

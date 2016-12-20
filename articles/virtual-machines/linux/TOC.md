@@ -46,10 +46,11 @@
 ### [Verwenden von Docker Machine mit Azure](../virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Erstellen von Docker-Hosts mit der Azure Docker-VM-Erweiterung](../virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Verwenden von Docker Compose mit Azure](../virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Bereitstellen einer privaten Docker-Registrierung in Azure](../virtual-machines-linux-docker-registry-in-blob-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [Verwenden der Azure-Containerregistrierung](/azure/container-registry/?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## Verwenden von Azure Storage
 ### [Datenträger und VHDs](../virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [Erweitern des Betriebssystemlaufwerks](../virtual-machines-linux-expand-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Datenträgerverschlüsselung](../virtual-machines-linux-encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Konfigurieren von Software-RAID](../virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Konfigurieren von LVM](../virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -61,11 +62,13 @@
 ### [Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)](../virtual-machines-linux-multiple-nics.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Erstellen von VNETs mithilfe der Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Erstellen von NSGs mithilfe der Befehlszeilenschnittstelle](../../virtual-network/virtual-networks-create-nsg-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-### [Einrichten eines Load Balancers](../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [Erstellen eines Lastenausgleichs](../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Erstellen benutzerdefinierter Routen mithilfe der Befehlszeilenschnittstelle](../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Erstellen einer statischen öffentlichen IP-Adresse](../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Verbinden von klassischen VNETs und Resource Manager-VNETs](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Fehler bei der DNS-Namensauflösung](../virtual-machines-linux-azure-dns.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+### [Verwenden von Azure DNS mit VMs](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Verwenden von Azure Traffic Manager mit VMs](../../traffic-manager/traffic-manager-endpoint-types.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## Bereitstellen
 ### [Kopieren eines virtuellen Computers](../virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -166,24 +169,22 @@
 
 # Referenz
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
-## [Java](/java/api)
+## [Azure CLI 2.0 (Vorschau)](/cli/azure/vm)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
-## [Erstellen von Resource Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)
-## [Compute REST](/rest/api/compute)
-## [Network REST](/rest/api)
-## [Storage REST](/rest/api/storageservices)
-
-
+## [Java](/java/api)
+## [Node.js](https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html)
+## [REST](/rest/api/compute)
 
 # Ressourcen
+## [Erstellen von Resource Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)
 ## [Preise](https://azure.microsoft.com/pricing/details/#Linux)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

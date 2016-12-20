@@ -16,12 +16,12 @@ ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e2fa11046adf828497b142e1043ac1c2a15443ef
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: e0353fe07c98060c88f8fefdcc3c1052437f23ab
 
 
 ---
-# <a name="introduction-to-apache-storm-on-hdinsight-realtime-analytics-for-hadoop"></a>Einführung in Apache Storm in HDInsight: Echtzeitanalysen für Hadoop
+# <a name="introduction-to-apache-storm-on-hdinsight-real-time-analytics-for-hadoop"></a>Einführung in Apache Storm in HDInsight: Echtzeitanalysen für Hadoop
 Mit Apache Storm in HDInsight können Sie verteilte Echtzeitanalyselösungen in der Azure-Umgebung mithilfe von [Apache Hadoop](http://hadoop.apache.org)erstellen.
 
 ## <a name="what-is-apache-storm"></a>Was ist Apache Storm?
@@ -53,7 +53,7 @@ Eine Einführung in Storm finden Sie unter [Erste Schritte mit Storm in HDInsigh
 Sie können einen neuen Storm in HDInsight-Cluster in wenigen Minuten bereitstellen. Geben Sie den Clusternamen, die Größe, das Administratorkonto und das Speicherkonto an. Azure erstellt den Cluster, einschließlich Beispieltopologien und Dashboard zur Webverwaltung.
 
 > [!NOTE]
-> Sie können Storm-Cluster auch über die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder [Azure PowerShell](../powershell-install-configure.md) bereitstellen.
+> Sie können Storm-Cluster auch über die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) oder [Azure PowerShell](/powershell/azureps-cmdlets-docs) bereitstellen.
 > 
 > 
 
@@ -107,7 +107,7 @@ Obwohl Sie die Anzahl der Knoten im Cluster bei der Erstellung angeben können, 
 ### <a name="support"></a>Support
 Für Storm in HDInsight steht umfassender Support auf Unternehmensebene rund um die Uhr zur Verfügung. Storm in HDInsight bietet eine SLA von 99,9 %. Das bedeutet, dass der Cluster garantiert mindestens 99,9 % der Zeit über externe Konnektivität verfügt.
 
-## <a name="common-use-cases-for-realtime-analytics"></a>Allgemeine Szenarien für Echtzeitanalysen
+## <a name="common-use-cases-for-real-time-analytics"></a>Allgemeine Szenarien für Echtzeitanalysen
 Hier finden Sie eine Liste der typischen Szenarien, in denen Apache Storm in HDInsight eingesetzt wird. Weitere Informationen zu realen Szenarien finden Sie unter [Companies using Apache Storm](https://storm.apache.org/documentation/Powered-By.html)(in englischer Sprache).
 
 * Internet der Dinge (IoT, Internet of Things)
@@ -206,6 +206,6 @@ Weitere Informationen zu Lösungen für Echtzeitanalysen mit Apache Storm in HDI
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

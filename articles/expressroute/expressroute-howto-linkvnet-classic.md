@@ -1,13 +1,13 @@
 ---
-title: Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung über das klassische Bereitstellungsmodell und PowerShell | Microsoft Docs
-description: Dieses Dokument bietet Ihnen eine Übersicht über das Verknüpfen virtueller Netzwerke (VNETs) mit ExpressRoute-Verbindungen über das klassische Bereitstellungsmodell und PowerShell.
+title: "Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung über das klassische Bereitstellungsmodell und PowerShell | Microsoft Docs"
+description: "Dieses Dokument bietet Ihnen eine Übersicht über das Verknüpfen virtueller Netzwerke (VNETs) mit ExpressRoute-Verbindungen über das klassische Bereitstellungsmodell und PowerShell."
 services: expressroute
 documentationcenter: na
 author: ganesr
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 9b53fd72-9b6b-4844-80b9-4e1d54fd0c17
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: ganesr
+translationtype: Human Translation
+ms.sourcegitcommit: 99d5facce236b82ea84c708edf5e934a0d69919c
+ms.openlocfilehash: 1c0891c79081f068fd6e4a60a05a6b58ebdc9598
+
 
 ---
 # <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
@@ -66,7 +70,9 @@ Der *Verbindungsbesitzer* ist der Administrator/Co-Administrator des Abonnements
 Der Besitzer der Verbindung hat die Möglichkeit, Autorisierungen jederzeit zu ändern und aufzuheben. Das Aufheben einer Autorisierung führt dazu, dass alle Verknüpfungen aus dem Abonnement gelöscht werden, dessen Zugriff aufgehoben wurde.
 
 ### <a name="circuit-owner-operations"></a>Aktionen als Verbindungsbesitzer
-#### <a name="creating-an-authorization"></a>Erstellen einer Autorisierung
+
+**Erstellen einer Autorisierung**
+
 Der Verbindungsbesitzer autorisiert die Administratoren anderer Abonnements für die Nutzung der angegebenen Verbindung. Im folgenden Beispiel ermöglicht der Administrator der Verbindung (Contoso IT) dem Administrator eines anderen Abonnements (Dev-Test) das Verknüpfen von bis zu zwei virtuellen Netzwerken mit der Verbindung. Der Contoso-IT-Administrator ermöglicht dies durch die Angabe der Microsoft-ID von Dev-Test. Das Cmdlet sendet keine E-Mail an die angegebene Microsoft-ID. Der Verbindungsbesitzer muss den Besitzer des anderen Abonnements explizit darüber benachrichtigen, dass die Autorisierung erfolgt ist.
 
     New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
@@ -77,7 +83,8 @@ Der Verbindungsbesitzer autorisiert die Administratoren anderer Abonnements für
     MicrosoftIds        : devtest@contoso.com
     Used                : 0
 
-#### <a name="reviewing-authorizations"></a>Überprüfen von Autorisierungen
+**Überprüfen von Autorisierungen**
+
 Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung alle für eine bestimmte Verbindung ausgestellten Autorisierungen überprüfen:
 
     Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
@@ -101,7 +108,8 @@ Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung alle für eine besti
     Used                : 2
 
 
-#### <a name="updating-authorizations"></a>Aktualisieren von Autorisierungen
+**Aktualisieren von Autorisierungen**
+
 Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung die Autorisierungen bearbeiten:
 
     Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
@@ -113,14 +121,17 @@ Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung die Autorisierungen 
     Used                : 0
 
 
-#### <a name="deleting-authorizations"></a>Löschen von Autorisierungen
+**Löschen von Autorisierungen**
+
 Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung Autorisierungen für einen Benutzer widerrufen oder löschen:
 
     Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
 
 
 ### <a name="circuit-user-operations"></a>Aktionen als Verbindungsbenutzer
-#### <a name="reviewing-authorizations"></a>Überprüfen von Autorisierungen
+
+**Überprüfen von Autorisierungen**
+
 Mit dem folgenden Cmdlet können Benutzer einer Verbindung Autorisierungen überprüfen.
 
     Get-AzureAuthorizedDedicatedCircuit
@@ -135,7 +146,8 @@ Mit dem folgenden Cmdlet können Benutzer einer Verbindung Autorisierungen über
     Status                           : Enabled
     UsedLinks                        : 0
 
-#### <a name="redeeming-link-authorizations"></a>Abrufen von Verknüpfungsautorisierungen
+**Abrufen von Verknüpfungsautorisierungen**
+
 Mit dem folgenden Cmdlet können Benutzer einer Verbindung eine Verknüpfungsautorisierung abrufen:
 
     New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
@@ -147,6 +159,9 @@ Mit dem folgenden Cmdlet können Benutzer einer Verbindung eine Verknüpfungsaut
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

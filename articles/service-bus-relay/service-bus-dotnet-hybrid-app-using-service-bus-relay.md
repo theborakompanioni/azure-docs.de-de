@@ -1,13 +1,13 @@
 ---
 title: Lokale/Cloud-.NET-Hybridanwendung | Microsoft Docs
-description: Erfahren Sie, wie eine lokale/Cloud-.NET-Hybridanwendung mithilfe von Microsoft Azure Service Bus Relay erstellen.
-services: service-bus
+description: Erfahren Sie, wie eine lokale oder cloudbasierte .NET-Hybridanwendung mithilfe von Azure WCF Relay erstellen.
+services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,35 +15,35 @@ ms.topic: hero-article
 ms.date: 09/16/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
+ms.sourcegitcommit: 29ede770e6e63a50ba398cfb0bc8035cacdea392
+ms.openlocfilehash: 2b00b8206189dbed02e03807658c53f81171b111
 
 
 ---
-# <a name="net-onpremisescloud-hybrid-application-using-azure-service-bus-wcf-relay"></a>Lokale/Cloud-.NET-Hybridanwendung mit Azure Service Bus WCF Relay
+# <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Lokale oder cloudbasierte .NET-Hybridanwendung mit Azure WCF Relay
 ## <a name="introduction"></a>Einführung
 In diesem Artikel wird beschrieben, wie Sie mit Microsoft Azure und Visual Studio eine Hybridcloudanwendung erstellen. Im Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit der Verwendung von Azure haben. In weniger als 30 Minuten verfügen Sie über eine Anwendung, die verschiedene Microsoft Azure-Ressourcen nutzt und aktiv in der Cloud ausgeführt wird.
 
 Sie erhalten Informationen zu folgenden Themen:
 
 * Erstellen oder Anpassen eines vorhandenen Webdiensts zur Verwendung durch eine Weblösung
-* Verwenden des Azure Service Bus WCF Relay-Diensts zum Freigeben von Daten zwischen einer Azure-Anwendung und einem an einem anderen Ort gehosteten Webdienst
+* Verwenden des Azure WCF Relay-Diensts zum Freigeben von Daten zwischen einer Azure-Anwendung und einem an einem anderen Ort gehosteten Webdienst
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="how-the-service-bus-relay-helps-with-hybrid-solutions"></a>Unterstützung hybrider Lösungen durch Service Bus Relay
+## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>So unterstützt Sie Azure Relay bei hybriden Lösungen
 Geschäftslösungen bestehen normalerweise aus einer Kombination von benutzerdefiniertem Code, der geschrieben wurde, um neue und individuelle Geschäftsanforderungen in Angriff zu nehmen und vorhandene Funktionen, die von bereits verwendeten Lösungen und Systemen bereitgestellt werden, zu integrieren.
 
 Lösungsarchitekten setzen die Cloud inzwischen ein, um Skalierungsanforderungen leichter bewältigen zu können und die Betriebskosten zu senken. Dabei stellen sie fest, dass sich vorhandene Dienstressourcen, die sie als Bausteine für ihre Lösungen nutzen möchten, innerhalb der Unternehmensfirewall befinden und somit nicht problemlos von der Cloudlösung darauf zugegriffen werden kann. Viele interne Dienste werden nicht so erstellt oder gehostet, dass sie einfach am Rand des Unternehmensnetzwerks verfügbar gemacht werden können.
 
-Service Bus Relay wurde konzipiert, damit vorhandene WCF (Windows Communication Foundation)-Webdienste sicher von Lösungen aufgerufen werden können, die sich außerhalb des Unternehmensumkreises befinden, ohne dass aufwändige Änderungen an der Netzwerkinfrastruktur des Unternehmens ausgeführt werden müssen. Service Bus Relay-Dienste dieser Art werden weiterhin in der vorhandenen Umgebung gehostet, das Überprüfen auf eingehende Sitzungen und Anforderungen wird jedoch an den in der Cloud gehosteten Servicebus delegiert. Dieser schützt die Dienste durch die SAS-Authentifizierung ([Shared Access Signature](../service-bus-messaging/service-bus-sas-overview.md)) außerdem vor unbefugten Zugriffen.
+Azure Relay wurde konzipiert, damit vorhandene WCF-Webdienste (Windows Communication Foundation) sicher von Lösungen aufgerufen werden können, die sich außerhalb des Unternehmensumkreises befinden, ohne dass aufwändige Änderungen an der Netzwerkinfrastruktur des Unternehmens ausgeführt werden müssen. Solche Relay-Dienste werden weiterhin in der vorhandenen Umgebung gehostet, das Lauschen an eingehenden Sitzungen und Anforderungen wird jedoch an den in der Cloud gehosteten Relay-Dienst delegiert. Azure Relay schützt diese Dienste mit der SAS-Authentifizierung ([Shared Access Signature](../service-bus-messaging/service-bus-sas-overview.md)) außerdem vor unbefugtem Zugriff.
 
 ## <a name="solution-scenario"></a>Lösungszenario
 In diesem Lernprogramm erstellen Sie eine ASP.NET-Website, mit der Sie eine Produktliste auf der Produktbestandsseite anzeigen können.
 
 ![][0]
 
-In diesem Lernprogramm wird davon ausgegangen, dass Sie über Produktinformationen in einem vorhandenen lokalen System verfügen, auf das über Service Bus Relay zugegriffen werden kann. Dies wird durch einen Webdienst simuliert, der in einer einfachen Konsolenanwendung ausgeführt und durch einen im Arbeitsspeicher befindlichen Produktsatz unterstützt wird. Sie können diese Konsolenanwendung auf Ihrem eigenen Computer ausführen und die Webrolle in Azure bereitstellen. Dabei werden Sie feststellen, dass die im Azure-Datencenter ausgeführte Webrolle tatsächlich Aufrufe an Ihren Computer sendet, obwohl dieser sich mit ziemlicher Sicherheit hinter mindestens einer Firewall und einer NAT (Network Address Translation)-Ebene befindet.
+In diesem Tutorial wird davon ausgegangen, dass Sie über Produktinformationen in einem vorhandenen lokalen System verfügen, und mithilfe von Azure Relay darauf zugegriffen. Dies wird durch einen Webdienst simuliert, der in einer einfachen Konsolenanwendung ausgeführt und durch einen im Arbeitsspeicher befindlichen Produktsatz unterstützt wird. Sie können diese Konsolenanwendung auf Ihrem eigenen Computer ausführen und die Webrolle in Azure bereitstellen. Dabei werden Sie feststellen, dass die im Azure-Datencenter ausgeführte Webrolle tatsächlich Aufrufe an Ihren Computer sendet, obwohl dieser sich mit ziemlicher Sicherheit hinter mindestens einer Firewall und einer NAT (Network Address Translation)-Ebene befindet.
 
 Im Folgenden wird ein Bildschirmfoto der Startseite der vollständigen Webanwendung dargestellt.
 
@@ -59,11 +59,11 @@ Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Si
 5. Nach Abschluss der Installation haben Sie alles zur Hand, was Sie benötigen, um mit der Entwicklung der App zu beginnen. Das SDK enthält Tools, mit denen Sie ganz leicht Azure-Anwendungen in Visual Studio entwickeln können. Wenn Visual Studio nicht installiert ist, wird außerdem die kostenlose Version Visual Studio Express vom SDK installiert.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
-Um mit der Verwendung von Service Bus-Features in Azure beginnen zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
+Um Relay-Features in Azure verwenden zu können, müssen Sie zuerst einen Dienstnamespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Azure-Ressourcen innerhalb Ihrer Anwendung.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-an-onpremises-server"></a>Erstellen eines lokalen Servers
+## <a name="create-an-on-premises-server"></a>Erstellen eines lokalen Servers
 Zunächst erstellen Sie ein (falsches) lokales Produktkatalogsystem. Dies ist relativ einfach; Sie können es sich als ein echtes lokales Produktkatalogsystem mit einer vollständigen Dienstoberfläche vorstellen, das integriert werden soll.
 
 Bei diesem Projekt handelt es sich um eine Visual Studio-Konsolenanwendung, bei dem das [Azure Service Bus-NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) verwendet wird, um die Service Bus-Bibliotheken und -Konfigurationseinstellungen einzubinden.
@@ -434,10 +434,10 @@ Bevor Sie die Anwendung in der Cloud ausführen, müssen Sie dafür sorgen, dass
     ![][38]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:  
+Weitere Informationen zu Azure Relay finden Sie in den folgenden Ressourcen:  
 
-* [Azure Service Bus][sbwacom]  
-* [Einsatz von Service Bus-Warteschlangen][sbwacomqhowto]  
+* [Was ist Azure Relay?](relay-what-is-it.md)  
+* [Verwenden von Relay](service-bus-dotnet-how-to-use-relay.md)  
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
@@ -467,12 +467,8 @@ Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
 
 
-[sbwacom]: /documentation/services/service-bus/  
-[sbwacomqhowto]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

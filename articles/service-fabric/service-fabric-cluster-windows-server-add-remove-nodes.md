@@ -1,12 +1,12 @@
 ---
-title: Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster | Microsoft Docs
-description: Enthält Informationen zum Hinzufügen oder Entfernen von Knoten für einen Azure Service Fabric-Cluster auf einem physischen oder virtuellen Computer mit Windows Server, der lokal oder in einer Cloud angeordnet sein kann.
+title: "Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster | Microsoft Docs"
+description: "Enthält Informationen zum Hinzufügen oder Entfernen von Knoten für einen Azure Service Fabric-Cluster auf einem physischen oder virtuellen Computer mit Windows Server, der lokal oder in einer Cloud angeordnet sein kann."
 services: service-fabric
 documentationcenter: .net
 author: dsk-2015
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/20/2016
 ms.author: dkshir;chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
+
 
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server
@@ -38,13 +42,18 @@ Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Com
 3. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen bzw. physischen Computer her, den Sie aus dem Cluster entfernen möchten.
 4. [Laden Sie das eigenständige Paket für Service Fabric für Windows Server herunter](http://go.microsoft.com/fwlink/?LinkId=730690) (bzw. kopieren Sie es), und entpacken Sie das Paket auf diesem virtuellen bzw. physischen Computer.
 5. Führen Sie PowerShell als Administrator aus, und navigieren Sie zum Speicherort des extrahierten Pakets.
-6. Führen Sie das PowerShell-Skript *RemoveNode.ps1* aus. Im folgenden Beispiel wird der aktuelle Knoten aus dem Cluster entfernt. *ExistingClusterConnectionEndPoint* ist ein Verbindungsendpunkt für einen Knoten, der im Cluster bereits vorhanden ist. Für diesen Endpunkt müssen Sie die IP-Adresse von *jedem* **anderen Knoten** im Cluster auswählen.
+6. Führen Sie *RemoveNode.ps1* in PowerShell aus. Im folgenden Beispiel wird der aktuelle Knoten aus dem Cluster entfernt. *ExistingClientConnectionEndpoint* ist ein Clientverbindungsendpunkt für jeden Knoten, der im Cluster verbleibt. Wählen Sie die IP-Adresse und den Endpunktport von *jedem* **anderen Knoten** im Cluster aus. Dieser **andere Knoten** aktualisiert wiederum die Clusterkonfiguration für den entfernten Knoten. 
 
 ```
-.\RemoveNode.ps1 -ExistingClusterConnectionEndPoint 182.17.34.50:19000
+.\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
 ```
 
-Bekannter Fehler, der in der nächsten Version behoben wird: Auch nach dem Entfernen eines Knotens wird der Knoten in Abfragen und SFX als ausgefallen angezeigt. 
+> [!NOTE]
+> Einige Knoten werden möglicherweise aufgrund von Systemdienstabhängigkeiten nicht entfernt. Diese Knoten sind Primärknoten und können durch Abfragen des Clustermanifests mithilfe von `Get-ServiceFabricClusterManifest` und Suchen von mit `IsSeedNode=”true”` markierten Knoteneinträgen ermittelt werden. 
+> 
+> 
+
+Ein Knoten kann auch nach dem Entfernen in Abfragen und SFX als ausgefallen angezeigt werden. Dies ist ein bekanntes Problem. Es wird in einer zukünftigen Version behoben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md)
@@ -52,6 +61,9 @@ Bekannter Fehler, der in der nächsten Version behoben wird: Auch nach dem Entfe
 * [Schützen des eigenständigen Windows-Clusters mit Zertifikaten](service-fabric-windows-cluster-x509-security.md)
 * [Erstellen eines eigenständigen Service Fabric-Clusters mit drei Knoten und Azure-VMs mit Windows Server](service-fabric-cluster-creation-with-windows-azure-vms.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

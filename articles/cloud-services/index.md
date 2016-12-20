@@ -1,11 +1,11 @@
 ---
 layout: LandingPage
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: af0eb3ce49e509992ab582558a342933f950afdb
+ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
+ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
 
 ---
-#<a name="cloud-services-documentation"></a>Dokumentation zu Cloud Services
+# <a name="cloud-services-documentation"></a>Dokumentation zu Cloud Services
 
 Cloud Services ist ein Beispiel für eine PaaS-Implementierung (Platform-as-a-Service). Sie unterstützt skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Cloud Services vereint die Vorteile der Virtualisierung mit der Kontrolle über den virtuellen Computer, um diesen konfigurieren und patchen sowie Software dafür installieren zu können.  
 
@@ -86,48 +86,32 @@ Cloud Services ist ein Beispiel für eine PaaS-Implementierung (Platform-as-a-Se
 
 ---
 
-## <a name="reference"></a>Referenz
-
+<h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="https://msdn.microsoft.com/library/azure/ee460812">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Sprachen</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee758711">CSDEF (XML-Schema)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee758710">CSCFG (XML-Schema)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Cloud Services – REST-API-Referenz</p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/ee460812">REST-API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="https://msdn.microsoft.com/en-us/library/azure/ee758711">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Schemas</h3>
-                        <p>Cloud Services-Definitionsschema</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-        <a href="https://msdn.microsoft.com/en-us/library/azure/ee758710">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <p>Cloud Services-Konfigurationsschema</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
     </li>
 </ul>
 
@@ -141,6 +125,6 @@ Herunterladen der Dokumentation zu Cloud Services </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

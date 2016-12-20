@@ -15,15 +15,15 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 84d644e07036f511e685b0fd020cdf8c310fd969
+ms.sourcegitcommit: f426cf4b91941f19714c33abc21ef0c777f5b233
+ms.openlocfilehash: 38f3ca24b7fa136bdb4b64b6cae77078b7ea3c97
 
 
 ---
 # <a name="frequently-asked-questions-for-azure-data-lake-store"></a>Häufig gestellte Fragen zu Azure Data Lake Store
 In diesem Artikel sind die häufig gestellten Fragen zum Azure Data Lake Store enthalten.
 
-## <a name="how-do-i-handle-disaster-recovery-and-data-corruption-for-my-azure-data-lake-store-account"></a>Wie gehe ich in Bezug auf die Notfallwiederherstellung und Datenbeschädigungen bei meinem Azure Data Lake Store-Konto vor?
+## <a name="how-can-i-further-protect-my-data-from-region-wide-disasters-or-accidental-deletions"></a>Wie kann ich meine Daten weiterhin vor regionsweiten Notfällen oder unbeabsichtigten Löschen schützen?
 Die Daten in Ihrem Azure Data Lake Store-Konto sind über automatisierte Replikate vor vorübergehenden Hardwareausfällen innerhalb einer Region geschützt. So wird für Dauerhaftigkeit und eine hohe Verfügbarkeit gesorgt, und die Vereinbarung zum Servicelevel (SLA) für Azure Data Lake Store wird erfüllt. Hier wird beschrieben, wie Sie Ihre Daten weiter vor selten auftretenden regionsweiten Ausfällen oder dem versehentlichen Löschen schützen.
 
 ### <a name="disaster-recovery-guidance"></a>Leitfäden zur Notfallwiederherstellung
@@ -52,6 +52,6 @@ Organisationen können auch die [Diagnoseprotokollierung](data-lake-store-diagno
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

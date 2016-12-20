@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: osamazia
+ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cebf1a1712b6ba7f1f6125369703694ba19d0244
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 10166e6b8b9144f0a5dde4f2fc10b492120e85d7
 
 
 ---
@@ -64,7 +64,7 @@ Stellen Sie sicher, dass Ihre öffentlichen IP-Adressen gegenüber den entsprech
 
 Wenn Sie ExpressRoute für die Authentifizierung verwenden möchten, müssen öffentliche AD FS-IP-Adressen über ExpressRoute ohne NAT angekündigt werden. Datenverkehr, der von Microsoft stammt und für einen lokalen AD FS-Server bestimmt ist, verläuft dann über ExpressRoute. Für den Datenverkehr vom Kunden zu Microsoft in umgekehrter Richtung wird ExpressRoute verwendet, da dies die bevorzugte Route über die Internetverbindung ist.
 
-### <a name="sourcebased-nat"></a>Quellenbasierte NAT
+### <a name="source-based-nat"></a>Quellenbasierte NAT
 Eine weitere Möglichkeit zur Behandlung von Problemen durch asymmetrisches Routing ist die quellenbasierte NAT (SNAT). Beispiel: Sie haben die öffentliche IP-Adresse eines lokalen SMTP-Servers (Simple Mail Transfer Protocol) nicht über ExpressRoute angekündigt, da Sie für diese Art der Kommunikation die Internetverbindung nutzen möchten. Eine Anforderung, die von Microsoft stammt und für Ihren lokalen SMTP-Server bestimmt ist, wird über die Internetverbindung abgewickelt. Die eingehende Anforderung wird von der SNAT verarbeitet und an eine interne IP-Adresse weitergeleitet. Der Datenverkehr in umgekehrter Richtung vom SMTP-Server verläuft über die Edgefirewall (für die NAT) und nicht über ExpressRoute. Der Antwortdatenverkehr fließt über die Internetverbindung zurück.
 
 ![Netzwerkkonfiguration mit quellenbasierter NAT](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
@@ -75,6 +75,6 @@ Wenn Sie sich vergewissern möchten, dass der Netzwerkdatenverkehr den erwartete
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

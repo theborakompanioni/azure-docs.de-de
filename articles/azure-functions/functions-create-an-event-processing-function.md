@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: c7e4d5c0b2602ba8c12184900eba05fee48c4450
+ms.sourcegitcommit: 44e397c7521ba8f0ba11893c364f51177561bee4
+ms.openlocfilehash: df3d303ee10fcc982552ea9756eb59198c87b650
 
 
 ---
@@ -27,7 +27,7 @@ Azure Functions vermittelt eine durch Ereignissteuerung und Bedarfsabhängigkeit
 In diesem Thema wird gezeigt, wie Sie eine neue Funktion in C# erstellen, die basierend auf einem Ereignistimer ausgeführt wird, um Nachrichten einer Speicherwarteschlange hinzuzufügen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [können Sie ein kostenloses Konto erstellen](https://azure.microsoft.com/free/).
+Eine Funktionen-App hostet die Ausführung Ihrer Funktionen in Azure. Falls Sie noch kein Azure-Konto besitzen, sehen Sie sich die Seite zum Ausprobieren von Funktionen ([Try Functions](https://functions.azure.com/try)) an, oder [erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free/). 
 
 ## <a name="create-a-timer-triggered-function-from-the-template"></a>Erstellen einer per Timer ausgelösten Funktion aus der Vorlage
 Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [können Sie ein kostenloses Konto erstellen](https://azure.microsoft.com/free/). 
@@ -72,13 +72,13 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
    Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
-   Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden  
+  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans.  
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

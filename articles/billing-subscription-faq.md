@@ -205,7 +205,7 @@ Ja, wenn Sie über Software Assurance verfügen, können Sie über die Lizenzmob
 Informationen zu den Vorteilen von Azure-Diensten finden Sie unter [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Preisinformationen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/).
 
 ### <a name="how-do-i-change-my-pricing-plan"></a>Wie ändere ich meinen Tarif?
-Sie können Ihr Abonnement mit nutzungsbasierter Bezahlung auf das [12-Monatsangebot mit Vorauszahlung](https://azure.microsoft.com/offers/ms-azr-0026p/)umstellen. Bei diesem Angebot leisten Sie eine Vorauszahlung für Azure-Dienste mit einer Abonnementlaufzeit von 12 Monaten und erhalten einen Rabatt in Höhe von 5 % auf genutzte Azure-Dienste. Wechseln Sie im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions)zu Ihrem Abonnement, und klicken Sie auf „Angebot wechseln“. Dies ist derzeit das einzige Angebot, das im Konto Center gewechselt werden kann. Alternativ können Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, um zu einem anderen Angebot zu wechseln.
+Sie können Ihr Abonnement mit nutzungsbasierter Bezahlung auf das [12-Monatsangebot mit Vorauszahlung](https://azure.microsoft.com/offers/ms-azr-0026p/)umstellen. Bei diesem Angebot leisten Sie eine Vorauszahlung für Azure-Dienste mit einer Abonnementlaufzeit von 12 Monaten und erhalten einen Rabatt in Höhe von 5 % auf genutzte Azure-Dienste. Wechseln Sie im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions)zu Ihrem Abonnement, und klicken Sie auf „Angebot wechseln“. Dies ist derzeit das einzige Angebot, das im Konto Center gewechselt werden kann. Alternativ können Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, um zu einem anderen Angebot zu wechseln.
 
 ### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account"></a>Können Benachrichtigungen an eine andere E-Mail-Adresse als die E-Mail-Adresse des Kontoinhabers, die meinem Konto zugeordnet ist, gesendet werden?
 Ja. Wenn Sie eine andere E-Mail-Adresse für den Erhalt von Benachrichtigungen angeben möchten, folgen Sie diesen Anweisungen:
@@ -249,11 +249,11 @@ Kunden mit unserem Sonderangebot für Mitglieder (z. B. MSDN) haben die Möglich
 Weitere Informationen finden Sie unter [Ändern des Azure-Ausgabenlimits](https://msdn.microsoft.com/library/azure/dn465781.aspx).
 
 ### <a name="can-i-adjust-the-amount-of-the-spending-limit"></a>Kann der Betrag des Ausgabenlimits angepasst werden?
-Für die erste Version dieses Features gilt, dass das Ausgabenlimit auf $ 0 festgelegt ist und nicht angepasst werden kann. Das Feature wurde entwickelt, um Kunden, die sich für eine kostenlose Testversion oder ein MSDN-, MPN- oder BizSpark-Angebot registrieren, die Nutzung von Azure zu ermöglichen, ohne dass diese Nutzung in Rechnung gestellt wird.
+Für die erste Version dieses Features gilt, dass das Ausgabenlimit auf $ 0 festgelegt ist und nicht angepasst werden kann. Das Feature wurde entwickelt, um Kunden, die sich für eine kostenlose Testversion oder ein MSDN-, MPN- oder BizSpark-Angebot registrieren, die Nutzung von Azure zu ermöglichen, ohne dass diese Nutzung in Rechnung gestellt wird.
 Weitere Informationen finden Sie unter [Azure-Ausgabenlimit](https://azure.microsoft.com/pricing/spending-limits/).
 
 ### <a name="in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure"></a>In welchen Ländern und Regionen ist Microsoft Azure im Handel erhältlich, und in welchen Währungen kann Azure erworben werden?
-Azure ist in 140 Ländern weltweit erhältlich. Die Abrechnung ist in zahlreichen Währungen möglich. Klicken Sie [hier](billing-countries-and-currencies.md), um eine Liste mit Ländern und Währungen anzuzeigen.
+Azure ist in 140 Ländern weltweit erhältlich. Die Abrechnung ist in zahlreichen Währungen möglich. Klicken Sie [hier](billing-countries-and-currencies.md), um eine Liste mit Ländern und Währungen anzuzeigen.
 
 ### <a name="do-we-restrict-resale-of-azure-based-service-into-countries-under-embargo"></a>Wird der Weiterverkauf eines Azure-basierten Diensts an Embargoländer unterbunden?
 Ja.

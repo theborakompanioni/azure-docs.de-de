@@ -1,13 +1,13 @@
 ---
-title: Tokenformat für externe Benutzer bei der Vorschau der Azure Active Directory B2B-Zusammenarbeit | Microsoft Docs
-description: Azure Active Directory B2B ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen.
+title: "Tokenformat für externe Benutzer bei der Vorschau der Azure Active Directory B2B-Zusammenarbeit | Microsoft Docs"
+description: "Azure Active Directory B2B ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: viv-liu
 manager: cliffdi
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 66df5c92-1603-4d26-966b-c06cbfb7931a
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -15,23 +15,27 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/09/2016
 ms.author: viviali
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7edfbd9884d337e80a449f51af6abd962d138ddb
+
 
 ---
-# Vorschau der Azure AD B2B-Zusammenarbeit: Tokenformat für externe Benutzer
+# <a name="azure-ad-b2b-collaboration-preview-external-user-token-format"></a>Vorschau der Azure AD B2B-Zusammenarbeit: Tokenformat für externe Benutzer
 Die Ansprüche für ein standardmäßiges Azure AD-Token werden im Artikel [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md) auf azure.microsoft.com beschrieben.
 
 Die Ansprüche, die für einen für die B2B-Zusammenarbeit authentifizierten externen Benutzer anders sind, lauten wie folgt:<br/>
 
 * **OID:** Objekt-ID aus dem Ressourcenmandanten<br/>
 * **TID:** Mandanten-ID aus dem Ressourcenmandanten<br/>
-* **Aussteller:** Dies ist der Ressourcenmandant.<br/>
-* **IDP:** Hierbei handelt es sich um den Home-Mandanten des Benutzers.<br/>
-* **AltSecId:** Dies ist die alternative Sicherheits-ID, die für Sie nicht transparent ist.<br/>
+* **Aussteller:** Ressourcenmandant<br/>
+* **IDP:** Home-Mandant des Benutzers<br/>
+* **AltSecId:** alternative Sicherheits-ID, die für Sie nicht transparent ist<br/>
 
-## Verwandte Artikel
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+## <a name="related-articles"></a>Verwandte Artikel
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
-* [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
+* [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [So funktioniert's](active-directory-b2b-how-it-works.md)
 * [Ausführliche exemplarische Vorgehensweise](active-directory-b2b-detailed-walkthrough.md)
 * [Referenz zum CSV-Dateiformat](active-directory-b2b-references-csv-file-format.md)
@@ -39,4 +43,9 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

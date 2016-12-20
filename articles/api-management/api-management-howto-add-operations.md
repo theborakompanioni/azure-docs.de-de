@@ -1,38 +1,42 @@
 ---
-title: Hinzufügen von Operationen zu einer API in Azure API Management | Microsoft Docs
-description: Erfahren Sie, wie Sie Operationen zu einer API in Azure API Management hinzufügen.
+title: "Hinzufügen von Operationen zu einer API in Azure API Management | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Operationen zu einer API in Azure API Management hinzufügen."
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 1158a023-1913-4e9c-93de-9164b672f9b3
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
+
 
 ---
-# Hinzufügen von Operationen zu einer API in Azure API Management
+# <a name="how-to-add-operations-to-an-api-in-azure-api-management"></a>Hinzufügen von Operationen zu einer API in Azure API Management
 Bevor eine API in API Management verwendet werden kann, müssen Operationen hinzugefügt werden. Diese Anleitung beschreibt, wie Sie unterschiedliche Typen von Operationen zu einer API in API Management hinzufügen können.
 
 ## <a name="add-operation"> </a>Hinzufügen einer Operation
-Operationen werden einer API im Herausgeberportal hinzugefügt und in diesem konfiguriert. Um auf das Herausgeberportal zuzugreifen, klicken Sie im klassischen Azure-Portal für Ihren API Management-Dienst auf **Verwalten**.
+Operationen werden einer API im Herausgeberportal hinzugefügt und in diesem konfiguriert. Um auf das Herausgeberportal zuzugreifen, klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**.
 
 ![Herausgeberportal][api-management-management-console]
 
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Instanz][Erstellen einer API Management-Instanz] im Lernprogramm [Erste Schritte mit Azure API Management][Erste Schritte mit Azure API Management].
+> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] im Tutorial [Erste Schritte mit Azure API Management][Erste Schritte mit Azure API Management].
 > 
 > 
 
-Wählen Sie die gewünschte API im Herausgeberportal aus, und öffnen Sie die Registerkarte **Vorgänge**.
+Wählen Sie die gewünschte API im Herausgeberportal aus, und öffnen Sie die Registerkarte **Vorgänge** . 
 
-![Operationen][api-management-operations]
+![Vorgänge][api-management-operations]
 
-Klicken Sie auf **Operation hinzufügen**, um eine neue Operation zu erstellen. **Neue Operation** wird angezeigt, und die Registerkarte **Signatur** ist standardmäßig ausgewählt.
+Klicken Sie auf **Operation hinzufügen** , um eine neue Operation zu erstellen. **Neue Operation** wird angezeigt, und die Registerkarte **Signatur** ist standardmäßig ausgewählt.
 
 ![Operation hinzufügen][api-management-add-operation]
 
@@ -42,13 +46,13 @@ Wählen Sie das gewünschte **HTTP-Verb** aus der Dropdownliste aus.
 
 <a name="url-template"></a>
 
-Definieren Sie die URL-Vorlage, indem Sie ein URL-Fragment bestehend aus einem oder mehreren URL-Pfadsegmenten und null oder mehreren Abfrageparametern ein. Die URL-Vorlage wird an die Basis-URL der API angehängt und identifiziert eine einzige HTTP-Operation. Die Vorlage enthält einen oder mehrere variable Bestandteile, die durch geschweifte Klammern gekennzeichnet sind. Diese variablen Teile nennt man Vorlageparameter. Sie enthalten dynamische Werte aus der URL der Anforderung, wenn die Anforderung von der API Management-Plattform verarbeitet wird.
+Definieren Sie die URL-Vorlage, indem Sie ein URL-Fragment bestehend aus einem oder mehreren URL-Pfadsegmenten und null oder mehreren Abfrageparametern ein. Die URL-Vorlage wird an die Basis-URL der API angehängt und identifiziert eine einzige HTTP-Operation. Die Vorlage enthält einen oder mehrere variable Bestandteile, die durch geschweifte Klammern gekennzeichnet sind. Diese variablen Teile nennt man Vorlageparameter. Sie enthalten dynamische Werte aus der URL der Anforderung, wenn die Anforderung von der API-Verwaltungsplattform verarbeitet wird.
 
 ![URL-Vorlage][api-management-url-template]
 
 <a name="rewrite-url-template"></a>
 
-Geben Sie ggf. die **URL-Umschreibevorlage** ein. Mit dieser Vorlage können Sie die Standard-URL-Vorlage für die Verarbeitung eingehender Anforderungen im Front-End verwenden und gleichzeitig das Back-End über eine konvertierte URL anhand der Umschreibevorlage aufrufen. Die Vorlageparameter aus der URL-Vorlage sollten in der Umschreibevorlage verwendet werden. Im folgenden Beispiel wird der als Pfadsegment im Webdienst aus dem vorherigen Beispiel codierte Inhaltstyp mithilfe der URL-Vorlagen als Abfrageparameter an eine API übergeben werden kann, die über die API Management-Plattform veröffentlicht wurde.
+Geben Sie ggf. die Vorlage **URL umschreiben** an. Mit dieser Vorlage können Sie die Standard-URL-Vorlage für die Verarbeitung eingehender Anforderungen im Front-End verwenden und gleichzeitig das Back-End über eine konvertierte URL anhand der Umschreibevorlage aufrufen. Die Vorlageparameter aus der URL-Vorlage sollten in der Umschreibevorlage verwendet werden. Im folgenden Beispiel wird der als Pfadsegment im Webdienst aus dem vorherigen Beispiel codierte Inhaltstyp mithilfe der URL-Vorlagen als Abfrageparameter an eine API übergeben werden kann, die über die API Management-Plattform veröffentlicht wurde.
 
 ![URL-Umschreibevorlage][api-management-url-template-rewrite]
 
@@ -61,15 +65,15 @@ Aufrufe an die Operation verwenden das Format `/customers?customerid=ALFKI` und 
 Die Operationsbeschreibung kann als Nur-Text oder HTML im Textfeld **Beschreibung** eingegeben werden.
 
 ## <a name="operation-caching"> </a>Zwischenspeichern von Operationen
-Das Zwischenspeichern von Antworten verbessert die Latenz der API-Consumer und senkt Bandbreitenverbrauch sowie Prozessorlast auf dem HTTP-Webdienst, der die API implementiert.
+Das Zwischenspeichern von Antworten verbessert die Latenz der API-Consumer und senkt Bandbreitenverbrauch sowie Prozessorlast auf dem HTTP-Webdienst, der die API implementiert. 
 
-Wählen Sie die Registerkarte **Zwischenspeichern** und markieren Sie das Kontrollkästchen **Aktivieren**, um die Zwischenspeicherung für die Operation schnell und einfach zu aktivieren.
+Wählen Sie die Registerkarte **Zwischenspeichern**, und markieren Sie das Kontrollkästchen **Aktivieren**, um die Zwischenspeicherung für die Operation schnell und einfach zu aktivieren.
 
 ![Caching][api-management-caching-tab]
 
-**Dauer** gibt den Zeitraum an, für den eine Operationsantwort im Cache verbleibt. Der Standardwert beträgt 3600 Sekunden oder 1 Stunde.
+**Dauer** gibt den Zeitraum an, für den eine Operationsantwort im Cache verbleibt. Der Standardwert beträgt 3600 Sekunden oder 1 Stunde.
 
-Cacheschlüssel werden zur Unterscheidung von Antworten verwendet, und die Antwort für jeden einzelnen Cacheschlüssel erhält einen eigenen Wert im Cache. Geben Sie optionale Abfrageparameter und/oder HTTP-Header in die Textfelder **Nach Abfrageparametern variieren** bzw. **Nach Headern variieren** ein, die bei der Berechnung der Cacheschlüsselwerte verwendet werden sollen. Wenn Sie keine Parameter angeben, werden die komplette Anforderungs-URL und die folgenden HTTP-Headerwerte beim Generieren der Cacheschlüssel verwendet: **Accept** und **Accept-Charset**.
+Cacheschlüssel werden zur Unterscheidung von Antworten verwendet, und die Antwort für jeden einzelnen Cacheschlüssel erhält einen eigenen Wert im Cache. Geben Sie optional Abfrageparameter und/oder HTTP-Header in die Textfelder **Nach Abfrageparametern variieren** bzw. **Nach Headern variieren** ein, die bei der Berechnung der Cacheschlüsselwerte verwendet werden sollen. Wenn Sie keine Parameter angeben, werden die komplette Anforderungs-URL und die folgenden HTTP-Headerwerte beim Generieren der Cacheschlüssel verwendet: **Accept** und **Accept-Charset**.
 
 > Weitere Informationen zum Zwischenspeichern und zu Richtlinien für das Zwischenspeichern finden Sie unter [Zwischenspeichern von Operationsergebnissen in Azure API Management][Zwischenspeichern von Operationsergebnissen in Azure API Management].
 > 
@@ -84,37 +88,37 @@ Klicken Sie auf **Abfrageparameter hinzufügen** und geben Sie die folgenden Inf
 * **Beschreibung** – eine kurze Beschreibung des Parameters (optional).
 * **Typ** – Parametertyp aus einer Dropdownliste ausgewählt.
 * **Werte** – Werte, die dieser Parameter annehmen kann. Einer der Werte kann als Standard markiert werden (optional).
-* **Erforderlich** – Markieren Sie dieses Kontrollkästchen, um diesen Parameter obligatorisch zu machen.
+* **Erforderlich** – Markieren Sie dieses Kontrollkästchen, um diesen Parameter obligatorisch zu machen. 
 
 ![Anforderungsparameter][api-management-request-parameters]
 
 ## <a name="request-body"> </a>Anforderungstext
-Wenn die Operation einen Anforderungstext erlaubt und benötigt (z. B. PUT, POST), dann können Sie ein Beispiel in allen unterstützten Darstellungsformaten angeben (z. B. JSON, XML).
+Wenn die Operation einen Anforderungstext erlaubt und benötigt (z. B. PUT, POST), dann können Sie ein Beispiel in allen unterstützten Darstellungsformaten angeben (z. B. JSON, XML). 
 
 > Der Anforderungstext wird nur zu Dokumentationszwecken verwendet und wird nicht geprüft.
 > 
 > 
 
-Wechseln Sie zur Registerkarte **Text**, um einen Anforderungstext einzugeben.
+Wechseln Sie zur Registerkarte **Text** , um einen Anforderungstext einzugeben.
 
-Klicken Sie auf **Darstellung hinzufügen**, geben Sie den gewünschten Inhaltstyp ein (z. B. application/json), wählen Sie den Typ in der Dropdownliste aus und fügen Sie den gewünschten Beispiel-Anforderungstext für das jeweilige Format in das Textfeld ein.
+Klicken Sie auf **Darstellung hinzufügen**, geben Sie den gewünschten Inhaltstyp ein (z.B. „application/json“), und wählen Sie den Typ in der Dropdownliste aus. Fügen Sie dann den gewünschten Beispielanforderungstext für das jeweilige Format in das Textfeld ein. 
 
 ![Anforderungstext][api-management-request-body]
 
 Neben den Darstellungen können Sie auch eine optionale **Beschreibung** in Textform in das Textfeld eingeben.
 
 ## <a name="responses"> </a>Antworten
-Sie sollten nach Möglichkeit Beispielantworten für alle Statuscodes angeben, die die Operation zurückgeben kann. Jeder Statuscode kann mehr als einen Antworttext existieren, nämlich einen pro unterstütztem Inhaltstyp.
+Sie sollten nach Möglichkeit Beispielantworten für alle Statuscodes angeben, die die Operation zurückgeben kann. Jeder Statuscode kann mehr als einen Antworttext existieren, nämlich einen pro unterstütztem Inhaltstyp. 
 
-Klicken Sie auf **Hinzufügen** und geben Sie den gewünschten Statuscode ein, um eine Antwort hinzuzufügen. Dieses Beispiel verwendet den Statuscode **200 OK**. Sobald der Code in der Dropdownliste angezeigt wird, können Sie ihn auswählen. Daraufhin wird der Antwortcode angelegt und zu Ihrer Operation hinzugefügt.
+Klicken Sie zum Hinzufügen einer Antwort auf **Hinzufügen**, und beginnen Sie mit der Eingabe des gewünschten Statuscodes. Dieses Beispiel verwendet den Statuscode **200 OK**. Sobald der Code in der Dropdownliste angezeigt wird, können Sie ihn auswählen. Daraufhin wird der Antwortcode angelegt und zu Ihrer Operation hinzugefügt.
 
 ![Antwortcode][api-management-response-code]
 
-Klicken Sie auf **Darstellung hinzufügen**, geben Sie den gewünschten Inhaltstyp ein (z. B. application/json), und wählen Sie den Typ in der Dropdownliste aus.
+Klicken Sie auf **Darstellung hinzufügen**, beginnen Sie mit der Eingabe des gewünschten Inhaltstyps (z.B. „application/json“), und wählen Sie den Typ in der Dropdownliste aus.
 
 ![Inhaltstyp des Texts][api-management-response-body-content-type]
 
-Fügen Sie den Beispiel-Antworttext für das entsprechende Format in das Textfeld ein.
+Fügen Sie den Beispiel-Antworttext für das entsprechende Format in das Textfeld ein. 
 
 ![Antworttext][api-management-response-body]
 
@@ -150,18 +154,22 @@ Nachdem Sie die Operationen zur API hinzugefügt haben, können Sie die API zu e
 [api-management-api-summary]: ./media/api-management-howto-add-operations/api-management-api-summary.png
 [api-management-echo-operations]: ./media/api-management-howto-add-operations/api-management-echo-operations.png
 
-[Add an operation]: #add-operation
-[Operation caching]: #operation-caching
-[Request parameters]: #request-parameters
-[Request body]: #request-body
-[Responses]: #responses
-[Next steps]: #next-steps
+[Hinzufügen einer Operation]: #add-operation
+[Zwischenspeichern von Operationen]: #operation-caching
+[Anforderungsparameter]: #request-parameters
+[Anforderungstext]: #request-body
+[Antworten]: #responses
+[Nächste Schritte]: #next-steps
 
 [Erste Schritte mit Azure API Management]: api-management-get-started.md
-[Erstellen einer API Management-Instanz]: api-management-get-started.md#create-service-instance
+[Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[Hinzufügen von Operationen zu einer API]: api-management-howto-add-operations.md
 [Erstellen und Veröffentlichen eines Produkts]: api-management-howto-add-products.md
 [Zwischenspeichern von Operationsergebnissen in Azure API Management]: api-management-howto-cache.md
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

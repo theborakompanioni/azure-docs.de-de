@@ -1,12 +1,12 @@
 ---
 title: Erstellen und Verwalten von Azure Redis Cache mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) | Microsoft Docs
-description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle auf einer beliebigen Plattform installieren, eine Verbindung mit Ihrem Azure-Konto herstellen und über die Azure-Befehlszeilenschnittstelle einen Redis-Cache erstellen und verwalten.
+description: "Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle auf einer beliebigen Plattform installieren, eine Verbindung mit Ihrem Azure-Konto herstellen und über die Azure-Befehlszeilenschnittstelle einen Redis-Cache erstellen und verwalten."
 services: redis-cache
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
@@ -14,26 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
+ms.openlocfilehash: db8095f225a6d5a954474f7014ce35800a363b55
+
 
 ---
-# Erstellen und Verwalten von Azure Redis Cache mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI)
+# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Erstellen und Verwalten von Azure Redis Cache mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI)
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
 > * [Azure-Befehlszeilenschnittstelle](cache-manage-cli.md)
-> 
-> 
+>
+>
 
 Die Azure-Befehlszeilenschnittstelle ist eine hervorragende Methode, um Ihre Azure-Infrastruktur von einer beliebigen Plattform aus zu verwalten. In diesem Artikel wird das Erstellen und Verwalten Ihrer Azure Redis Cache-Instanzen mit der Azure-Befehlszeilenschnittstelle beschrieben.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Zum Erstellen und Verwalten von Azure Redis Cache-Instanzen mithilfe der Azure-Befehlszeilenschnittstelle müssen Sie die folgenden Schritte ausführen.
 
 * Sie benötigen ein Azure-Abonnement. Wenn Sie dies noch nicht haben, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 * [Installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
-* Verbinden Sie die Installation der Azure-Befehlszeilenschnittstelle mit einem persönlichen Azure-Konto oder einem Arbeits- oder Schulkonto für Azure, und melden Sie sich mit dem `azure login`-Befehl über die Azure-Befehlszeilenschnittstelle an. Um die Unterschiede zu verstehen und die richtige Auswahl treffen zu können, lesen Sie die Informationen unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md).
-* Wechseln Sie vor dem Ausführen eines der folgenden Befehle in der Azure-Befehlszeilenschnittstelle in den Ressourcen-Manager-Modus, indem Sie den Befehl `azure config mode arm` ausführen. Weitere Informationen finden Sie unter [Festlegen des Azure Resource Manager-Modus](../xplat-cli-azure-resource-manager.md#set-the-azure-resource-manager-mode).
+* Verbinden Sie die Installation der Azure-Befehlszeilenschnittstelle mit einem persönlichen Azure-Konto oder einem Arbeits- oder Schulkonto für Azure, und melden Sie sich mit dem `azure login` -Befehl über die Azure-Befehlszeilenschnittstelle an. Um die Unterschiede zu verstehen und die richtige Auswahl treffen zu können, lesen Sie die Informationen unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md).
+* Wechseln Sie vor dem Ausführen eines der folgenden Befehle in der Azure-Befehlszeilenschnittstelle in den Ressourcen-Manager-Modus, indem Sie den Befehl `azure config mode arm` ausführen. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../xplat-cli-azure-resource-manager.md).
 
-## Eigenschaften in Redis Cache
+## <a name="redis-cache-properties"></a>Eigenschaften in Redis Cache
 Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Redis Cache-Instanzen verwendet.
 
 | Eigenschaft | Switch | Beschreibung |
@@ -50,12 +54,12 @@ Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Redis Ca
 | Virtual Network |-v, --virtual-network |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t, --key-type |Der Typ des zu erneuernden Schlüssels. Gültige Werte: [Primary, Secondary] |
 | StaticIP |-p, --static-ip <Statische IP-Adresse> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. |
-| Subnetz |t, --subnet <Subnetz> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |
+| Subnetz |t, --subnet <subnet> |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |
 | VirtualNetwork |-v, --virtual-network <virtuelles Netzwerk> |Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Abonnement |-s, --subscription |Die Abonnement-ID. |
 
-## Übersicht über alle Redis Cache-Befehle
-Wenn Sie alle Redis Cache-Befehle und deren Parameter anzeigen möchten, verwenden Sie den `azure rediscache -h`-Befehl.
+## <a name="see-all-redis-cache-commands"></a>Übersicht über alle Redis Cache-Befehle
+Wenn Sie alle Redis Cache-Befehle und deren Parameter anzeigen möchten, verwenden Sie den `azure rediscache -h` -Befehl.
 
     C:\>azure rediscache -h
     help:    Commands to manage your Azure Redis Cache(s)
@@ -86,12 +90,12 @@ Wenn Sie alle Redis Cache-Befehle und deren Parameter anzeigen möchten, verwend
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## Erstellen eines Redis-Cache
+## <a name="create-a-redis-cache"></a>Erstellen eines Redis-Cache
 Verwenden Sie zum Erstellen eines Redis-Cache den folgenden Befehl:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 
-Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache create -h`-Befehl aus.
+Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache create -h` -Befehl aus.
 
     C:\>azure rediscache create -h
     help:    Create a Redis Cache
@@ -119,12 +123,12 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## Löschen eines vorhandenen Redis-Cache
+## <a name="delete-an-existing-redis-cache"></a>Löschen eines vorhandenen Redis-Cache
 Verwenden Sie zum Löschen eines Redis-Cache den folgenden Befehl:
 
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
 
-Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache delete -h`-Befehl aus.
+Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache delete -h` -Befehl aus.
 
     C:\>azure rediscache delete -h
     help:    Delete an existing Redis Cache
@@ -142,12 +146,12 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## Auflisten aller Redis Cache-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe
+## <a name="list-all-redis-caches-within-your-subscription-or-resource-group"></a>Auflisten aller Redis Cache-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe
 Zum Auflisten aller Redis Cache-Instanzen in Ihrem Abonnement oder Ihrer Ressourcengruppe verwenden Sie den folgenden Befehl:
 
     azure rediscache list [options]
 
-Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache list -h`-Befehl aus.
+Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache list -h` -Befehl aus.
 
     C:\>azure rediscache list -h
     help:    List all Redis Caches within your Subscription or Resource Group
@@ -164,12 +168,12 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## Anzeigen der Eigenschaften eines vorhandenen Redis-Cache
+## <a name="show-properties-of-an-existing-redis-cache"></a>Anzeigen der Eigenschaften eines vorhandenen Redis-Cache
 Verwenden Sie zum Anzeigen der Eigenschaften eines vorhandenen Redis-Cache den folgenden Befehl:
 
     azure rediscache show [--name <name> --resource-group <resource-group>]
 
-Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache show -h`-Befehl aus.
+Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache show -h` -Befehl aus.
 
     C:\>azure rediscache show -h
     help:    Show properties of an existing Redis Cache
@@ -189,12 +193,12 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
 
 <a name="scale"></a>
 
-## Ändern der Einstellungen eines vorhandenen Redis-Cache
+## <a name="change-settings-of-an-existing-redis-cache"></a>Ändern der Einstellungen eines vorhandenen Redis-Cache
 Verwenden Sie zum Ändern der Einstellungen eines vorhandenen Redis-Cache den folgenden Befehl:
 
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 
-Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache set -h`-Befehl aus.
+Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache set -h` -Befehl aus.
 
     C:\>azure rediscache set -h
     help:    Change settings of an existing Redis Cache
@@ -214,7 +218,7 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## Erneuern des Authentifizierungsschlüssels für einen vorhandenen Redis-Cache
+## <a name="renew-the-authentication-key-for-an-existing-redis-cache"></a>Erneuern des Authentifizierungsschlüssels für einen vorhandenen Redis-Cache
 Verwenden Sie zum Erneuern des Authentifizierungsschlüssels für einen vorhandenen Redis-Cache den folgenden Befehl:
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
@@ -240,12 +244,12 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## Auflisten der primären und sekundären Schlüssel eines vorhandenen Redis-Cache
+## <a name="list-primary-and-secondary-keys-of-an-existing-redis-cache"></a>Auflisten der primären und sekundären Schlüssel eines vorhandenen Redis-Cache
 Verwenden Sie zum Auflisten der primären und sekundären Schlüssel eines vorhandenen Redis-Cache den folgenden Befehl:
 
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
 
-Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache list-keys -h`-Befehl aus.
+Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azure rediscache list-keys -h` -Befehl aus.
 
     C:\>azure rediscache list-keys -h
     help:    Lists Primary and Secondary key of an existing Redis Cache
@@ -263,4 +267,8 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

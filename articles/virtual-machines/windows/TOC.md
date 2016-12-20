@@ -21,7 +21,7 @@
 ### [Anmelden an einer VM](../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Installieren einer Rolle und Öffnen von Ports](../virtual-machines-windows-hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Computers](../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-## [Installieren von Azure PowerShell](../../powershell-install-configure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## [Installieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Erstellen eines virtuellen Computers mit PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Exemplarische Vorgehensweise zu Vorlagen](../../resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Erstellen und Bereitstellen von komplexen VM-Vorlagen](../virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -45,9 +45,11 @@
 ### [Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)](../virtual-machines-windows-multiple-nics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Erstellen von VNets mithilfe des Portals](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Erstellen von NSGs mithilfe des Portals](../../virtual-network/virtual-networks-create-nsg-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [Einrichten eines Load Balancers](../../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Erstellen eines Lastenausgleichs](../../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Erstellen einer statischen öffentlichen IP-Adresse](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Verbinden von klassischen VNETs und Resource Manager-VNETs](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Verwenden von Azure DNS mit VMs](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Verwenden von Azure Traffic Manager mit VMs](../../traffic-manager/traffic-manager-endpoint-types.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## Bereitstellen
 ### [Verwenden der Software Assurance-Lizenzierung](../virtual-machines-windows-hybrid-use-benefit-licensing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -65,6 +67,7 @@
 #### [Vorbereiten einer VHD für den Upload](../virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Generalisieren eines virtuellen Computers mithilfe von Sysprep](../virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Hochladen eines VM-Images](../virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+#### [Azure Windows-Agent](../virtual-machines-windows-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Erfassen eines generalisierten virtuellen Azure-Computers](../virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Kopieren eines spezialisierten virtuellen Azure-Computers](../virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Erstellen eines virtuellen Computers aus einer generalisierten VHD](../virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -101,7 +104,9 @@
 #### [DSC und VMSS mit Vorlagen](../virtual-machines-windows-extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Azure Log Collector-Erweiterung](../virtual-machines-windows-log-collector-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Azure-Diagnoseerweiterung](../virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [OMS-Agent-Erweiterung](../virtual-machines-windows-extensions-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Erweiterungen in Vorlagen](../virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Exportieren von VM-Erweiterungen](../virtual-machines-windows-extensions-export-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Konfigurationsbeispiele](../virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Problembehandlung bei Erweiterungen](../virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Azure Automation – Übersicht](../virtual-machines-windows-manage-using-azure-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -113,6 +118,7 @@
 ### [Übersicht über die Migration](../virtual-machines-windows-migration-classic-resource-manager.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Planen der Migration](../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Migrieren mit PowerShell](../virtual-machines-windows-ps-migration-classic-resource-manager.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [Häufige Fehler bei der Migration](../virtual-machines-migration-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Communitytools für die Migration](../virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## Planen
@@ -177,22 +183,22 @@
 
 # Referenz
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
-## [Java](/java/api)
+## [Azure CLI 2.0 (Vorschau)](/cli/azure/vm)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
-## [Erstellen von Resource Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)
+## [Java](/java/api)
+## [Node.js](https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html)
 ## [Compute REST](/rest/api/compute)
-## [Network REST](/rest/api)
-## [Storage REST](/rest/api/storageservices)
 
 # Ressourcen
+## [Erstellen von Resource Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)
 ## [Preise](https://azure.microsoft.com/pricing/details/#Windows)
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

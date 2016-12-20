@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3b3e0fd5342c4729d6ffee4858089099b31404a8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 57b95d5018fa197096992f7cd255a54501875dea
 
 
 ---
@@ -40,13 +40,13 @@ Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs
 ## <a name="a-namehowtoconnectahow-can-i-connect-my-network-to-microsoft-using-expressroute"></a><a name="howtoconnect"></a>Wie kann ich mein Netzwerk mithilfe von ExpressRoute mit Microsoft verbinden?
 Sie können eine Verbindung zwischen Ihrem lokalen Netzwerk und der Microsoft Cloud auf drei unterschiedliche Arten herstellen.
 
-### <a name="colocated-at-a-cloud-exchange"></a>Über einen Cloud Exchange
+### <a name="co-located-at-a-cloud-exchange"></a>Über einen Cloud Exchange
 Wenn Sie sich in einer Einrichtung mit einem Cloud Exchange befinden, können Sie virtuelle Querverbindungen zur Microsoft Cloud über den Ethernet Exchange des Co-Location-Anbieters bestellen. Co-Location-Anbieter stellen entweder Layer 2-Querverbindungen oder verwaltete Layer 3-Querverbindungen zwischen Ihrer Infrastruktur in der Co-Location-Einrichtung und der Microsoft Cloud bereit.
 
-### <a name="pointtopoint-ethernet-connections"></a>Point-to-Point-Ethernet-Verbindungen
+### <a name="point-to-point-ethernet-connections"></a>Point-to-Point-Ethernet-Verbindungen
 Sie können Ihre lokalen Rechenzentren/Büros über Point-to-Point-Ethernet-Links mit der Microsoft Cloud verbinden. Point-to-Point-Ethernet-Anbieter können Layer 2-Verbindungen oder verwaltete Layer 3-Verbindungen zwischen Ihrem Standort und der Microsoft Cloud bereitstellen.
 
-### <a name="anytoany-ipvpn-networks"></a>Any-to-Any-Netzwerke (IPVPN)
+### <a name="any-to-any-ipvpn-networks"></a>Any-to-Any-Netzwerke (IPVPN)
 Sie können Ihr WAN in die Microsoft Cloud integrieren. IPVPN-Anbieter (normalerweise MPLS VPN) bieten Any-to-Any-Konnektivität zwischen Ihren Niederlassungen und den Rechenzentren an. Die Microsoft Cloud kann mit Ihrem WAN verbunden werden, um sie wie eine normale Niederlassung erscheinen zu lassen. WAN-Anbieter stellen in der Regel verwaltete Layer 3-Konnektivität bereit. ExpressRoute-Funktionen und -Features sind für alle oben genannten Konnektivitätsmodelle identisch. 
 
 Konnektivitätsanbieter können ein oder mehrere Konnektivitätsmodelle bereitstellen. Sie können zusammen mit Ihrem Konnektivitätsanbieter das Modell auswählen, das für Sie am besten geeignet ist.
@@ -78,7 +78,7 @@ Sie können über einen unserer [Peeringstandorte](expressroute-locations.md) ei
 
 Wenn Sie beispielsweise in Amsterdam per ExpressRoute mit Microsoft verbunden sind, haben Sie Zugriff auf alle Microsoft-Clouddienste, die in Nordeuropa und Westeuropa gehostet werden. Der Artikel [ExpressRoute-Partner und Peeringstandorte](expressroute-locations.md) enthält eine Übersicht über die geopolitischen Regionen, dazugehörigen Microsoft-Cloudregionen und entsprechenden ExpressRoute-Peeringstandorte.
 
-### <a name="global-connectivity-with-expressroute-premium-addon"></a>Globale Konnektivität mit ExpressRoute Premium-Add-On
+### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Globale Konnektivität mit ExpressRoute Premium-Add-On
 Sie können das ExpressRoute Premium-Add-On-Feature aktivieren, um die Konnektivität über geopolitische Grenzen hinweg zu erweitern. Wenn Sie beispielsweise in Amsterdam per ExpressRoute mit Microsoft verbunden sind, haben Sie Zugriff auf alle Microsoft-Clouddienste, die in allen Regionen weltweit gehostet werden (ausgenommen nationale Clouds). Sie können auf Dienste, die in Südamerika oder Australien bereitgestellt werden, genauso zugreifen, wie Sie auf die Regionen in Nord- und Westeuropa zugreifen.
 
 ### <a name="rich-connectivity-partner-ecosystem"></a>Partner-Ökosystem mit umfassender Konnektivität
@@ -125,6 +125,6 @@ Sie können ein Abrechnungsmodell auswählen, das für Sie am besten geeignet is
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

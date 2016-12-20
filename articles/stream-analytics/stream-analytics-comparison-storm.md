@@ -1,13 +1,13 @@
 ---
 title: 'Analyseplattformen: Vergleich von Apache Storm mit Stream Analytics | Microsoft Docs'
-description: Hier finden Sie anhand eines Vergleichs von Apache Storm mit Stream Analytics Hilfe beim Auswählen einer Cloudanalyseplattform. Lernen Sie die Funktionen und Unterschiede kennen.
+description: "Hier finden Sie anhand eines Vergleichs von Apache Storm mit Stream Analytics Hilfe beim Auswählen einer Cloudanalyseplattform. Lernen Sie die Funktionen und Unterschiede kennen."
 keywords: Analyseplattform, Analyseplattformen, Cloudanalyseplattform, Storm-Vergleich
 services: stream-analytics
-documentationcenter: ''
+documentationcenter: 
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b9aac017-9866-4d0a-b98f-6f03881e9339
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,14 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/26/2016
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 528266346733fff72113104d585540d75512b3a6
+
 
 ---
-# <a name="help-choosing-a-streaming-analytics-platform:-apache-storm-comparison-to-azure-stream-analytics"></a>Hilfe beim Auswählen einer Stream Analytics-Plattform: Vergleich von Apache Storm mit Azure Stream Analytics
+# <a name="help-choosing-a-streaming-analytics-platform-apache-storm-comparison-to-azure-stream-analytics"></a>Hilfe beim Auswählen einer Stream Analytics-Plattform: Vergleich von Apache Storm mit Azure Stream Analytics
 Hier finden Sie anhand eines Vergleichs von Apache Storm mit Azure Stream Analytics Hilfe beim Auswählen einer Cloudanalyseplattform. Finden Sie heraus, welche Wertbeiträge Stream Analytics im Vergleich mit Apache Storm als verwalteter Dienst in Azure HDInsight bietet, damit Sie die richtige Lösung für die Anwendungsfälle in Ihrem Unternehmen auswählen können.
 
 Beide Analyseplattformen bieten Vorteile einer PaaS-Lösung, es gibt aber einige charakteristische Hauptfunktionen, durch die sie sich unterscheiden. Funktionen sowie die Einschränkungen dieser Dienste sind im Folgenden aufgeführt, um Ihnen dabei zu helfen, die Lösung zu finden, die Sie benötigen, um Ihre Ziele zu erreichen.
 
-## <a name="storm-comparison-to-stream-analytics:-general-features"></a>Vergleich von Storm mit Stream Analytics: allgemeine Funktionen
+## <a name="storm-comparison-to-stream-analytics-general-features"></a>Vergleich von Storm mit Stream Analytics: allgemeine Funktionen
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -584,6 +588,6 @@ Durch Konfiguration veröffentlichter Azure Machine Learning-Modelle als Funktio
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

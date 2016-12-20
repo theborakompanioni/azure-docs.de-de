@@ -2,11 +2,11 @@
 title: 'RBAC: integrierte Rollen | Microsoft Docs'
 description: Dieses Thema beschreibt die integrierten Rollen der rollenbasierten Zugriffssteuerung (RBAC).
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/25/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 386e8479a64af20469e3e03180348f674b08ef8f
+
 
 ---
-# RBAC: Integrierte Rollen
+# <a name="rbac-built-in-roles"></a>RBAC: Integrierte Rollen
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definitionen integrierter Rollen können nicht geändert werden. Sie können jedoch [benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md) zur Anpassung an die spezifischen Anforderungen Ihrer Organisation erstellen.
 
-## Rollen in Azure
-Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klicken Sie auf den Rollennamen, um eine detaillierte Liste der **actions** und **notactions** für die Rolle anzuzeigen. Die **Aktions**-Eigenschaft gibt die zulässigen Aktionen für Azure-Ressourcen an. Für Aktionszeichenfolgen dürfen Platzhalter verwendet werden. Die **notactions**-Eigenschaft gibt die Aktionen an, die von den zulässigen Aktionen ausgeschlossen sind.
+## <a name="roles-in-azure"></a>Rollen in Azure
+Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klicken Sie auf den Rollennamen, um eine ausführliche Liste der **actions** und **notactions** für die Rolle anzuzeigen. Die **Aktions** -Eigenschaft gibt die zulässigen Aktionen für Azure-Ressourcen an. Für Aktionszeichenfolgen dürfen Platzhalter verwendet werden. Die **notactions** -Eigenschaft gibt die Aktionen an, die von den zulässigen Aktionen ausgeschlossen sind.
 
 > [!NOTE]
 > Die Definitionen von Azure-Rollen werden ständig weiterentwickelt. Dieser Artikel wird so aktuell wie möglich gehalten. Die aktuellsten Definitionen von Rollen finden Sie jedoch immer in Azure PowerShell. Verwenden Sie je nachdem das Cmdlet `(get-azurermroledefinition "<role name>").actions` oder `(get-azurermroledefinition "<role name>").notactions`.
@@ -37,6 +41,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender](#contributor) |Kann alles außer den Zugriff verwalten |
 | [Mitwirkender von Data Factory](#data-factory-contributor) |Kann Data Factorys und darin enthaltene untergeordnete Ressourcen erstellen und verwalten. |
 | [DevTest Labs-Benutzer](#devtest-labs-user) |Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren |
+| [DNS Zone Contributor](#dns-zone-contributor) |Kann DNS-Zonen und -Einträge verwalten |
 | [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor) |Kann DocumentDB-Konten verwalten |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) |Kann Intelligent Systems-Konten verwalten |
 | [Mitwirkender von virtuellem Netzwerk](#network-contributor) |Kann alle Netzwerkressourcen verwalten |
@@ -59,10 +64,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Mitwirkender von Webplan](#web-plan-contributor) |Kann Webpläne verwalten |
 | [Mitwirkender von Website](#website-contributor) |Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sind |
 
-## Rollenberechtigungen
+## <a name="role-permissions"></a>Rollenberechtigungen
 Die folgenden Tabellen beschreiben die spezifischen Berechtigungen der einzelnen Rollen. Dazu gehören **Actions**, die Berechtigungen erteilen, und **NotActions**, die sie einschränken.
 
-### Mitwirkender des API-Verwaltungsdienstes
+### <a name="api-management-service-contributor"></a>Mitwirkender des API-Verwaltungsdienstes
 Kann API-Verwaltungsdienste verwalten
 
 | **Aktionen** |  |
@@ -75,7 +80,7 @@ Kann API-Verwaltungsdienste verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Rollen und Rollenzuweisungen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender der Application Insights-Komponente
+### <a name="application-insights-component-contributor"></a>Mitwirkender der Application Insights-Komponente
 Kann Application Insights-Komponenten verwalten
 
 | **Aktionen** |  |
@@ -89,7 +94,7 @@ Kann Application Insights-Komponenten verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Operator für Automation
+### <a name="automation-operator"></a>Operator für Automation
 Kann Aufträge starten, unterbrechen und fortsetzen
 
 | **Aktionen** |  |
@@ -113,7 +118,7 @@ Kann Aufträge starten, unterbrechen und fortsetzen
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von BizTalk
+### <a name="biztalk-contributor"></a>Mitwirkender von BizTalk
 Kann BizTalk-Dienste verwalten
 
 | **Aktionen** |  |
@@ -126,7 +131,7 @@ Kann BizTalk-Dienste verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von ClearDB-MySQL-DB
+### <a name="cleardb-mysql-db-contributor"></a>Mitwirkender von ClearDB-MySQL-DB
 Kann ClearDB MySQL-Datenbanken verwalten
 
 | **Aktionen** |  |
@@ -139,7 +144,7 @@ Kann ClearDB MySQL-Datenbanken verwalten
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 | successbricks.cleardb/databases/* |Erstellen und Verwalten von ClearDB MySQL-Datenbanken |
 
-### Mitwirkender
+### <a name="contributor"></a>Mitwirkender
 Kann alles außer den Zugriff verwalten
 
 | **Aktionen** |  |
@@ -151,20 +156,20 @@ Kann alles außer den Zugriff verwalten
 | Microsoft.Authorization/*/Delete |Rollen und Rollenzuweisungen können nicht gelöscht werden. |
 | Microsoft.Authorization/*/Write |Rollen und Rollenzuweisungen können nicht erstellt werden. |
 
-### Mitwirkender von Data Factory
+### <a name="data-factory-contributor"></a>Mitwirkender von Data Factory
 Erstellt und verwaltet Data Factorys und darin enthaltene untergeordnete Ressourcen.
 
 | **Aktionen** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
-| Microsoft.DataFactory/dataFactories/* |Erstellen und Verwalten von Data Factorys und darin enthaltenen untergeordneten Ressourcen. |
+| Microsoft.DataFactory/dataFactories/* |Erstellt und verwaltet Data Factorys und darin enthaltene untergeordnete Ressourcen. |
 | Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### DevTest Labs-Benutzer
+### <a name="devtest-labs-user"></a>DevTest Labs-Benutzer
 Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren
 
 | **Aktionen** |  |
@@ -197,7 +202,20 @@ Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten un
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Storage/storageAccounts/listKeys/action |Auflisten von Speicherkontoschlüsseln |
 
-### Mitwirkender von DocumentDB-Konto
+### <a name="dns-zone-contributor"></a>DNS Zone Contributor
+Kann DNS-Zonen und -Einträge verwalten.
+
+| **Aktionen** |  |
+| --- | --- |
+| Microsoft.Authorization/\*/read |Lesen von Rollen und Rollenzuweisungen |
+| Microsoft.Insights/alertRules/\* |Erstellen und Verwalten von Warnungsregeln |
+| Microsoft.Network/dnsZones/\* |Erstellen und Verwalten von DNS-Zonen und -Einträgen |
+| Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
+| Microsoft.Resources/deployments/\* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
+| Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
+| Microsoft.Support/\* |Erstellen und Verwalten von Supporttickets |
+
+### <a name="documentdb-account-contributor"></a>Mitwirkender von DocumentDB-Konto
 Kann DocumentDB-Konten verwalten
 
 | **Aktionen** |  |
@@ -210,7 +228,7 @@ Kann DocumentDB-Konten verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von Intelligent Systems-Konto
+### <a name="intelligent-systems-account-contributor"></a>Mitwirkender von Intelligent Systems-Konto
 Kann Intelligent Systems-Konten verwalten
 
 | **Aktionen** |  |
@@ -223,7 +241,7 @@ Kann Intelligent Systems-Konten verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von virtuellem Netzwerk
+### <a name="network-contributor"></a>Mitwirkender von virtuellem Netzwerk
 Kann alle Netzwerkressourcen verwalten
 
 | **Aktionen** |  |
@@ -236,7 +254,7 @@ Kann alle Netzwerkressourcen verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von New Relic APM-Konto
+### <a name="new-relic-apm-account-contributor"></a>Mitwirkender von New Relic APM-Konto
 Kann New Relic Application Performance Management-Konten und -Anwendungen verwalten
 
 | **Aktionen** |  |
@@ -249,21 +267,21 @@ Kann New Relic Application Performance Management-Konten und -Anwendungen verwal
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 | NewRelic.APM/accounts/* |Erstellen und Verwalten von New Relic Application Performance Management-Konten |
 
-### Besitzer
+### <a name="owner"></a>Besitzer
 Kann alles verwalten, einschließlich des Zugriffs
 
 | **Aktionen** |  |
 | --- | --- |
 | * |Erstellen und Verwalten von Ressourcen aller Typen |
 
-### Leser
+### <a name="reader"></a>Leser
 Kann alles anzeigen, jedoch keine Änderungen vornehmen
 
 | **Aktionen** |  |
 | --- | --- |
 | */Lesen |Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 
-### Mitwirkender von Redis-Cache
+### <a name="redis-cache-contributor"></a>Mitwirkender von Redis-Cache
 Kann Redis-Caches verwalten
 
 | **Aktionen** |  |
@@ -276,7 +294,7 @@ Kann Redis-Caches verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von Zeitplanungsauftragssammlung
+### <a name="scheduler-job-collections-contributor"></a>Mitwirkender von Zeitplanungsauftragssammlung
 Kann Zeitplanungsauftragssammlungen verwalten
 
 | **Aktionen** |  |
@@ -289,7 +307,7 @@ Kann Zeitplanungsauftragssammlungen verwalten
 | Microsoft.Scheduler/jobcollections/* |Erstellen und Verwalten von Auftragssammlungen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von Suchdienst
+### <a name="search-service-contributor"></a>Mitwirkender von Suchdienst
 Kann Suchdienste verwalten
 
 | **Aktionen** |  |
@@ -302,7 +320,7 @@ Kann Suchdienste verwalten
 | Microsoft.Search/searchServices/* |Erstellen und Verwalten von Suchdiensten |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Sicherheits-Manager
+### <a name="security-manager"></a>Sicherheits-Manager
 Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Maschinen verwalten
 
 | **Aktionen** |  |
@@ -318,7 +336,7 @@ Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Maschinen verw
 | Microsoft.Security/* |Erstellen und Verwalten von Sicherheitskomponenten und -richtlinien |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von SQL DB
+### <a name="sql-db-contributor"></a>Mitwirkender von SQL DB
 Kann SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogenen Richtlinien
 
 | **Aktionen** |  |
@@ -342,7 +360,7 @@ Kann SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogen
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* |Richtlinien für Sicherheitswarnungen können nicht bearbeitet werden |
 | Microsoft.Sql/servers/databases/securityMetrics/* |Kann keine Sicherheitsmetriken bearbeiten |
 
-### SQL-Sicherheits-Manager
+### <a name="sql-security-manager"></a>SQL-Sicherheits-Manager
 Kann die sicherheitsbezogenen Richtlinien von SQL-Server-Instanzen und SQL-Datenbanken verwalten
 
 | **Aktionen** |  |
@@ -369,7 +387,7 @@ Kann die sicherheitsbezogenen Richtlinien von SQL-Server-Instanzen und SQL-Daten
 | Microsoft.Sql/servers/securityAlertPolicies/* |Erstellen und Verwalten von Richtlinien für Sicherheitswarnungen von SQL Server |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von SQL Server
+### <a name="sql-server-contributor"></a>Mitwirkender von SQL Server
 Kann SQL-Server und SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sicherheitsbezogenen Richtlinien
 
 | **Aktionen** |  |
@@ -395,7 +413,7 @@ Kann SQL-Server und SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sic
 | Microsoft.Sql/servers/databases/securityMetrics/* |Kann keine Sicherheitsmetriken von SQL Server-Datenbanken bearbeiten |
 | Microsoft.Sql/servers/securityAlertPolicies/* |Richtlinien für Sicherheitswarnungen von SQL Server können nicht bearbeitet werden |
 
-### Mitwirkender von klassischem Speicherkonto
+### <a name="classic-storage-account-contributor"></a>Mitwirkender von klassischem Speicherkonto
 Kann klassische Speicherkonten verwalten
 
 | **Aktionen** |  |
@@ -408,7 +426,7 @@ Kann klassische Speicherkonten verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von Speicherkonto
+### <a name="storage-account-contributor"></a>Mitwirkender von Speicherkonto
 Kann Speicherkonten verwalten, aber nicht den Zugriff darauf
 
 | **Aktionen** |  |
@@ -422,7 +440,7 @@ Kann Speicherkonten verwalten, aber nicht den Zugriff darauf
 | Microsoft.Storage/storageAccounts/* |Erstellen und Verwalten von Speicherkonten |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Benutzerzugriffsadministrator
+### <a name="user-access-administrator"></a>Benutzerzugriffsadministrator
 Kann den Benutzerzugriff auf Azure-Ressourcen verwalten
 
 | **Aktionen** |  |
@@ -431,7 +449,7 @@ Kann den Benutzerzugriff auf Azure-Ressourcen verwalten
 | Microsoft.Authorization/* |Verwalten der Autorisierung |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von klassischen virtuellen Computern
+### <a name="classic-virtual-machine-contributor"></a>Mitwirkender von klassischen virtuellen Computern
 Kann klassische virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind
 
 | **Aktionen** |  |
@@ -454,7 +472,7 @@ Kann klassische virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwer
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von virtuellen Computern
+### <a name="virtual-machine-contributor"></a>Mitwirkender von virtuellen Computern
 Kann virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind
 
 | **Aktionen** |  |
@@ -485,7 +503,7 @@ Kann virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwerk oder Spei
 | Microsoft.Storage/storageAccounts/read |Lesen von Speicherkonten |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von klassischem Netzwerk
+### <a name="classic-network-contributor"></a>Mitwirkender von klassischem Netzwerk
 Kann klassische virtuelle Netzwerke und reservierte IP-Adressen verwalten
 
 | **Aktionen** |  |
@@ -498,7 +516,7 @@ Kann klassische virtuelle Netzwerke und reservierte IP-Adressen verwalten
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 
-### Mitwirkender von Webplan
+### <a name="web-plan-contributor"></a>Mitwirkender von Webplan
 Kann Webpläne verwalten
 
 | **Aktionen** |  |
@@ -511,7 +529,7 @@ Kann Webpläne verwalten
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 | Microsoft.Web/serverFarms/* |Erstellen und Verwalten von Serverfarmen |
 
-### Mitwirkender von Website
+### <a name="website-contributor"></a>Mitwirkender von Website
 Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sind
 
 | **Aktionen** |  |
@@ -527,12 +545,17 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 | Microsoft.Web/listSitesAssignedToHostName/read |Lesen von Websites, die einem Hostnamen zugewiesen sind |
 | Microsoft.Web/serverFarms/join/action |Verknüpfen von Serverfarmen |
 | Microsoft.Web/serverFarms/read |Lesen von Serverfarmen |
-| Microsoft.Web/sites/* |Erstellen und Verwalten von Websites |
+| Microsoft.Web/sites/* |Erstellen und Verwalten von Websites (die Erstellung von Websites erfordert auch Schreibberechtigungen für den zugehörigen App Service-Plan) |
 
-## Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
 * [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihren Zugriffsanforderungen erstellen.
-* [Erstellen eines Verlaufsberichts zu Zugriffsänderungen:](role-based-access-control-access-change-history-report.md) Verfolgen Sie Änderungen an Rollenzuweisungen in RBAC.
-* [Problembehandlung bei rollenbasierter Zugriffssteuerung:](role-based-access-control-troubleshooting.md) Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
+* [Erstellen eines Verlaufsberichts zu Zugriffsänderungen:](role-based-access-control-access-change-history-report.md)Verfolgen Sie Änderungen an Rollenzuweisungen in RBAC.
+* [Problembehandlung bei rollenbasierter Zugriffssteuerung:](role-based-access-control-troubleshooting.md)Sehen Sie sich Vorschläge zur Behebung häufig auftretender Probleme an.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

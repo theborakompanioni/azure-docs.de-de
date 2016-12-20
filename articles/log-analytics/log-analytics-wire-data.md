@@ -1,19 +1,23 @@
 ---
-title: Wire Data-Lösung in Log Analytics | Microsoft Docs
-description: Bei Wire Data handelt es sich um zusammengefasste Netzwerk- und Leistungsdaten von Computern mit OMS-Agents, z.B. Operations Manager und Agents mit Windows-Verbindung. Netzwerkdaten werden mit Ihren Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
+title: "Wire Data-Lösung in Log Analytics | Microsoft Docs"
+description: "Bei Wire Data handelt es sich um zusammengefasste Netzwerk- und Leistungsdaten von Computern mit OMS-Agents, z.B. Operations Manager und Agents mit Windows-Verbindung. Netzwerkdaten werden mit Ihren Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 11/09/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: be00cb9b1e8ba5d9d8368695ca8d448d466e8f47
+
 
 ---
 # <a name="wire-data-solution-in-log-analytics"></a>Wire Data-Lösung in Log Analytics
@@ -21,8 +25,8 @@ Bei Wire Data handelt es sich um zusammengefasste Netzwerk- und Leistungsdaten v
 
 > [!NOTE]
 > Die Wire Data-Lösung ist zum Hinzufügen zu Arbeitsbereichen derzeit nicht verfügbar. Kunden, für die die Wire Data-Lösung bereits aktiviert wurde, können diese Lösung weiterhin verwenden.
-> 
-> 
+>
+>
 
 Standardmäßig erfasst OMS protokollierte Daten für CPU, Arbeitsspeicher, Datenträger und Netzwerk von Indikatoren, die in Windows integriert sind. Die Erfassung von Netzwerkdaten und anderen Daten wird für jeden Agent in Echtzeit durchgeführt, einschließlich der vom Computer verwendeten Subnetze und Anwendungsebenenprotokolle. Auf der Seite „Einstellungen“ können Sie auf der Registerkarte „Protokolle“ weitere Leistungsindikatoren hinzufügen.
 
@@ -76,7 +80,7 @@ Anforderungen: Um das folgende Beispiel verwenden zu können, muss die Sicherhei
 2. Klicken Sie in der Liste **Allgemeine WireData-Abfragen** auf **Menge des Netzwerkdatenverkehrs (in Byte) nach Prozess**, um die Liste mit den zurückgegebenen Prozessen anzuzeigen.
     ![WireData-Abfragen](./media/log-analytics-wire-data/oms-wiredata-01.png)
 3. Wenn die Liste mit den Prozessen zum einfachen Anzeigen zu lang ist, können Sie die Suchabfrage wie folgt ändern:
-   
+
     ```
     Type WireData | measure count() by ProcessName | where AggregatedValue <40
     ```
@@ -85,24 +89,26 @@ Anforderungen: Um das folgende Beispiel verwenden zu können, muss die Sicherhei
 4. Klicken Sie auf einen benannten Prozess, indem Sie die in der Liste zurückgegebenen Daten verwenden. In diesem Beispiel wurde auf „DancingPigs.exe“ geklickt. Die unten angegebenen Ergebnisse beschreiben den Typ von Netzwerkdatenverkehr, z.B. ausgehende Kommunikation über verschiedene Protokolle.
     ![WireData-Ergebnisse mit Anzeige eines benannten Prozesses](./media/log-analytics-wire-data/oms-wiredata-03.png)
 5. Da die Sicherheits- und Überwachungslösung installiert ist, können Sie die Sicherheitsereignisse überprüfen, die über den gleichen Wert für das Feld ProcessName verfügen. Ändern Sie hierzu die Suchabfrage, indem Sie die Operatoren IN und DISTINCT für die Suchabfrage verwenden. Dies können Sie durchführen, wenn sowohl Wire Data als auch andere Lösungsprotokolle Werte in demselben Format enthalten. Ändern Sie die Suchabfrage so, dass sie in etwa wie folgt aussieht:
-   
+
     ```
     Type=SecurityEvent ProcessName IN {Type:WireData "DancingPigs.exe" | distinct ProcessName}
     ```    
-   
+
     ![Wire Data-Ergebnisse mit Anzeige von kombinierten Daten](./media/log-analytics-wire-data/oms-wiredata-04.png)
 6. In den obigen Ergebnissen sehen Sie, dass Kontoinformationen angezeigt werden. Sie können die Suchabfrage jetzt verfeinern, um zu ermitteln, wie oft das Konto, für das Daten zur Sicherheit und Überprüfung angezeigt werden, von dem Prozess verwendet wurde. Die Abfrage dazu sieht wie folgt aus:        
-   
+
     ```
     Type=SecurityEvent ProcessName IN {Type:WireData "DancingPigs.exe" | distinct ProcessName} | measure count() by Account
     ```
-   
+
     ![Wire Data-Ergebnisse mit Anzeige von Kontodaten](./media/log-analytics-wire-data/oms-wiredata-05.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchsuchen von Protokollen](log-analytics-log-searches.md) und darüber, wie Sie ausführliche Wire Data-Suchdatensätze anzeigen.
 * Sehen Sie sich den Blogeintrag [Using Wire Data in Operations Management Suite Log Search](http://blogs.msdn.com/b/dmuscett/archive/2015/09/09/using-wire-data-in-operations-management-suite.aspx) (Verwenden von Wire Data-Daten für die Protokollsuche der Operations Management Suite) von Daniele Muscetta mit weiteren Informationen dazu an, wie oft Daten erfasst werden und wie Sie Sammlungseigenschaften für Operations Manager-Agents ändern können.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

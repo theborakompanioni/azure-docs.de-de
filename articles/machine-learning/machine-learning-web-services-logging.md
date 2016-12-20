@@ -1,12 +1,12 @@
 ---
-title: Protokollierung für Machine Learning-Webdienste | Microsoft Docs
-description: Erfahren Sie, wie Sie die Protokollierung für Machine Learning-Webdienste aktivieren können. Die Protokollierung stellt zusätzliche Informationen zur Problembehandlung von APIs bereit.
+title: "Protokollierung für Machine Learning-Webdienste | Microsoft Docs"
+description: "Erfahren Sie, wie Sie die Protokollierung für Machine Learning-Webdienste aktivieren können. Die Protokollierung stellt zusätzliche Informationen zur Problembehandlung von APIs bereit."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: raymondlaghaeian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/05/2016
 ms.author: raymondl;garye
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f307a26bfbb55b395f4073f4368432ae69b867ae
+
 
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Aktivieren der Protokollierung für Machine Learning-Webdienste
@@ -60,6 +64,9 @@ Dabei hat „Protokolltyp“ einen der folgenden Werte:
 * score/requests  
 * score/init  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

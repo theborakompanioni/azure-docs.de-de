@@ -2,7 +2,7 @@
 ## [Was ist der Load Balancer?](load-balancer-overview.md)
 ## [Internet Load Balancer](load-balancer-internet-overview.md)
 ## [Interner Load Balancer](load-balancer-internal-overview.md)
-## [Grundlegendes zu Load Balancer-Tests](load-balancer-custom-probe-overview.md)
+## [Load Balancer-Tests](load-balancer-custom-probe-overview.md)
 ## [Support für Azure Resource Manager](load-balancer-arm.md)
 ## [IPv6-Unterstützung](load-balancer-ipv6-overview.md)
 ## [Mehrere VIPs](load-balancer-multivip-overview.md)
@@ -15,9 +15,9 @@
 ### [Konfigurieren des internen Load Balancers (CLI)](load-balancer-get-started-ilb-arm-cli.md)
 ### [Konfigurieren des internen Load Balancers (Vorlage)](load-balancer-get-started-ilb-arm-template.md)
 
-## [Konfigurieren des Internal Load Balancers für Clouddienste](load-balancer-get-started-ilb-classic-cloud.md)
-### [Konfigurieren des Internal Load Balancers für Clouddienste (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
-### [Konfigurieren des Internal Load Balancers für Clouddienste (CLI)](load-balancer-get-started-ilb-classic-cli.md)
+## [Konfigurieren des Internal Load Balancers für Cloud Services](load-balancer-get-started-ilb-classic-cloud.md)
+### [Konfigurieren des Internal Load Balancers für Cloud Services (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
+### [Konfigurieren des Internal Load Balancers für Cloud Services (CLI)](load-balancer-get-started-ilb-classic-cli.md)
 
 ## [Konfigurieren des Load Balancers mit Internetzugriff](load-balancer-get-started-internet-portal.md)
 ### [Konfigurieren des Load Balancers mit Internetzugriff (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
@@ -40,14 +40,17 @@
 ## [Konfigurieren mehrerer VIPs für Clouddienst](load-balancer-multivip.md)
 ## [Kombinieren von Lastenausgleichsdiensten](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [Verwenden mehrerer IP-Konfigurationen](load-balancer-multiple-ip.md)
-## [Protokollanalysen für den Azure Load Balancer](load-balancer-monitor-log.md)
+## [Log Analytics für den Azure Load Balancer](load-balancer-monitor-log.md)
 ## [Konfigurieren von DHCPv6 für virtuelle Linux-Computer](load-balancer-ipv6-for-linux.md)
 
 # Referenz
-## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/lb)
-## [Java](/java/api)
-## [.NET](/dotnet/api)
+## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network)
+## [Azure CLI 2.0 (Vorschau)](/cli/azure/network/lb)
+## [.NET](/dotnet/api/microsoft.azure.management.network.models)
+## [Java](/java/api/com.microsoft.azure.management.network)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)
+## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers)
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations)
 ## [REST](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 # Verwandte Themen
@@ -64,6 +67,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=load-balancer)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

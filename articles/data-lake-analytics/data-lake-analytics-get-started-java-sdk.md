@@ -1,12 +1,12 @@
 ---
-title: Verwenden des Java-SDK für Data Lake Analytics zur Anwendungsentwicklung | Microsoft Docs
-description: Verwenden Sie das Java-SDK für Azure Data Lake Analytics zur Anwendungsentwicklung
+title: Entwickeln von Anwendungen mithilfe des Data Lake Analytics Java SDK | Microsoft Docs
+description: "Verwenden Sie das Java-SDK für Azure Data Lake Analytics zur Anwendungsentwicklung"
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,34 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
+ms.openlocfilehash: 7ab51f4834f3112d4f3379acbaa16a386276cdb8
+
 
 ---
-# Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Java-SDK
+# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-java-sdk"></a>Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Java-SDK
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Erfahren Sie, wie Sie mithilfe des Java-SDK für Azure Data Lake Analytics ein Azure Data Lake-Konto erstellen und grundlegende Vorgänge ausführen, z.B. Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen und mit Aufträgen arbeiten. Weitere Informationen über Data Lake finden Sie unter [Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
-In diesem Tutorial entwickeln Sie eine Java-Konsolenanwendung, die Beispiele für allgemeine Verwaltungsaufgaben enthält. Zudem erstellen Sie Testdaten und übermitteln einen Auftrag. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt.
+In diesem Tutorial entwickeln Sie eine Java-Konsolenanwendung, die Beispiele für allgemeine Verwaltungsaufgaben enthält. Zudem erstellen Sie Testdaten und übermitteln einen Auftrag.  Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 * Java Development Kit (JDK) 8 (mit Java-Version 1.8).
 * IntelliJ oder eine andere geeignete Java-Entwicklungsumgebung. Ist optional, wird aber empfohlen. In der Anleitung unten wird IntelliJ verwendet.
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Analytics. Weitere Informationen finden Sie in den [Anweisungen](data-lake-analytics-get-started-portal.md#signup).
+* **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Analytics. Weitere Informationen finden Sie in den [Anweisungen](data-lake-analytics-get-started-portal.md).
 * Erstellen Sie eine AAD-Anwendung (Azure Active Directory), und rufen Sie dafür **Client-ID**, **Mandanten-ID** und **Schlüssel** ab. Weitere Informationen über AAD-Anwendungen und Anweisungen zum Abrufen einer Client-ID finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md). Der Antwort-URI und der Schlüssel stehen auch über das Portal zur Verfügung, sobald Sie die Anwendung erstellt und den Schlüssel generiert haben.
 
-## Wie authentifiziere ich mich mithilfe von Azure Active Directory?
+## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Wie authentifiziere ich mich mithilfe von Azure Active Directory?
 Der unten angegebene Codeausschnitt enthält Code für die **nicht interaktive** Authentifizierung, bei der die Anwendung eigene Anmeldeinformationen bereitstellt.
 
-Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azure erteilen, damit dieses Tutorial funktioniert. Es wird **dringend empfohlen**, dass Sie dieser Anwendung für die Zwecke dieses Tutorials die Berechtigung „Mitwirkender“ nur für eine neue, unbenutzte und leere Ressourcengruppe in Ihrem Azure-Abonnement gewähren.
+Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azure erteilen, damit dieses Tutorial funktioniert. Es wird **dringend empfohlen** , dass Sie dieser Anwendung für die Zwecke dieses Tutorials die Berechtigung „Mitwirkender“ nur für eine neue, unbenutzte und leere Ressourcengruppe in Ihrem Azure-Abonnement gewähren.
 
-## Erstellen einer Java-Anwendung
+## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
 1. Öffnen Sie IntelliJ, und erstellen Sie mithilfe der Vorlage **Befehlszeilen-App** ein neues Java-Projekt.
 2. Klicken Sie auf der linken Seite des Bildschirms mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **Frameworksupport hinzufügen**. Wählen Sie **Maven** aus, und klicken Sie auf **OK**.
-3. Öffnen Sie die neu erstellte Datei **pom.xml**, und fügen Sie den folgenden Textausschnitt zwischen dem Tag **</version>** und dem Tag **</project>** hinzu:
-   
+3. Öffnen Sie die neu erstellte Datei **pom.xml**, und fügen Sie den folgenden Textausschnitt zwischen dem Tag **\</version>** und dem Tag **\</project>** hinzu:
+
     HINWEIS: Dieser Schritt ist vorläufiger Art, bis das Azure Data Lake Analytics-SDK in Maven verfügbar ist. Der Artikel wird aktualisiert, sobald das SDK in Maven verfügbar ist. Alle zukünftigen Aktualisierungen dieses SDK sind über Maven erhältlich.
-   
+
         <repositories>
             <repository>
                 <id>adx-snapshots</id>
@@ -91,14 +95,14 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
             </dependency>
         </dependencies>
 4. Navigieren Sie zu **Datei**, **Einstellungen** und dann zu **Build**, **Ausführung**, **Bereitstellung**. Wählen Sie **Buildtools**, **Maven**, **Importieren** aus. Aktivieren Sie anschließend die Option **Maven-Projekte automatisch importieren**.
-5. Öffnen Sie die Datei **Main.java**, und ersetzen Sie den vorhandenen Codeblock durch den unten angegebenen Code. Geben Sie zudem die im Codeausschnitt genannten Werte für Parameter an, z.B. **localFolderPath**, **\_adlaAccountName**, **\_adlsAccountName**, **\_resourceGroupName**, und ersetzen Sie die Platzhalter für **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID** und **SUBSCRIPTION-ID**.
-   
+5. Öffnen Sie die Datei **Main.java**, und ersetzen Sie den vorhandenen Codeblock durch den unten angegebenen Code. Geben Sie zudem die im Codeausschnitt genannten Werte für Parameter an, z.B. **localFolderPath**, **_adlaAccountName**, **_adlsAccountName**, **_resourceGroupName**, und ersetzen Sie die Platzhalter für **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID** und **SUBSCRIPTION-ID**.
+
     Mit diesem Code werden Konten für Data Lake-Speicher und Data Lake Analytics erstellt und Dateien im Speicher erstellt. Zudem wird ein Auftrag ausgeführt, der Auftragsstatus abgerufen und die Auftragsausgabe heruntergeladen. Schließlich wird das Konto gelöscht.
-   
+
    > [!NOTE]
-   > Derzeit besteht ein bekanntes Problem mit dem Azure Data Lake-Dienst. Wenn die Beispiel-App unterbrochen wird oder ein Fehler auftritt, müssen Sie das Data Lake-Speicherkonto und das Data Lake Analytics-Konto, die vom Skript erstellt werden, möglicherweise manuell löschen. Wenn Sie mit dem Portal noch nicht vertraut sind, erhalten Sie erste wichtige Informationen im Artikel [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
-   > 
-   > 
+   > Derzeit besteht ein bekanntes Problem mit dem Azure Data Lake-Dienst.  Wenn die Beispiel-App unterbrochen wird oder ein Fehler auftritt, müssen Sie das Data Lake-Speicherkonto und das Data Lake Analytics-Konto, die vom Skript erstellt werden, möglicherweise manuell löschen.  Wenn Sie mit dem Portal noch nicht vertraut sind, erhalten Sie erste wichtige Informationen im Artikel [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md) .
+   >
+   >
 
         package com.company;
 
@@ -146,7 +150,7 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 
                 _clientSecret = "<CLIENT-SECRET>"; // TODO: For production scenarios, we recommend that you replace this line with a more secure way of acquiring the application client secret, rather than hard-coding it in the source code.
 
-                String localFolderPath = "C:\\local_path\"; // TODO: Change this to any unused, new, empty folder on your local machine.
+                String localFolderPath = "C:\\local_path\\"; // TODO: Change this to any unused, new, empty folder on your local machine.
 
                 // Authenticate
                 ApplicationTokenCredentials creds = new ApplicationTokenCredentials(_clientId, _tenantId, _clientSecret, null);
@@ -178,7 +182,7 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
                 WaitForNewline("File created.", "Submitting a job.");
 
                 // Submit a job to Data Lake Analytics
-                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM "/input1.csv" USING Extractors.Csv(); OUTPUT @input TO @"/output1.csv" USING Outputters.Csv();", "testJob");
+                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob");
                 WaitForNewline("Job submitted.", "Getting job status.");
 
                 // Wait for job completion and output job status
@@ -337,7 +341,7 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 
 1. Befolgen Sie die Anweisungen zum Ausführen und Fertigstellen der Anwendung.
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 * Wenn Sie dasselbe Tutorial mit anderen Tools verwenden möchten, klicken Sie oben auf der Seite auf die Registerkartenauswahl.
 * Eine komplexere Abfrage finden Sie unter [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Informationen zu den ersten Schritten der Entwicklung von U-SQL-Anwendungen finden Sie unter [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
@@ -345,4 +349,8 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 * Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 * Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

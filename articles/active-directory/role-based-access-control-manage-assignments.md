@@ -1,12 +1,12 @@
 ---
-title: Anzeigen von Zugriffszuweisungen für Azure-Ressourcen | Microsoft Docs
-description: Anzeigen und Verwalten aller RBAC-Zuweisungen für alle Benutzer oder Gruppen im Azure-Portal
+title: "Anzeigen von Zugriffszuweisungen für Azure-Ressourcen | Microsoft Docs"
+description: "Anzeigen und Verwalten aller RBAC-Zuweisungen für alle Benutzer oder Gruppen im Azure-Portal"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
 editor: jeffsta
-
+ms.assetid: e6f9e657-8ee3-4eec-a21c-78fe1b52a005
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
+
 
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal---public-preview"></a>Anzeigen von Zugriffszuweisungen für Benutzer und Gruppen im Azure-Portal – öffentliche Vorschau
@@ -57,6 +61,9 @@ Auf diesem Blatt können Sie Zugriffszuweisungen löschen, die einem Benutzer od
 * Erste Schritte mit der rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](role-based-access-control-configure.md)
 * Weitere Informationen finden Sie unter [Integrierte RBAC-Rollen in Azure](role-based-access-built-in-roles.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

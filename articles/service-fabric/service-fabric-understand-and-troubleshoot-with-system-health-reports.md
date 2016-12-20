@@ -1,12 +1,12 @@
 ---
-title: Problembehandlung bei Systemintegritätsberichten | Microsoft Docs
-description: Beschreibt die von Komponenten des Azure Fabric-Diensts versendeten Integritätsberichte und ihre Verwendung bei der Behandlung von Problemen mit Clustern oder Anwendungen.
+title: "Problembehandlung bei Systemintegritätsberichten | Microsoft Docs"
+description: "Beschreibt die von Komponenten des Azure Fabric-Diensts versendeten Integritätsberichte und ihre Verwendung bei der Behandlung von Problemen mit Clustern oder Anwendungen."
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2016
 ms.author: oanapl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 5e940cd05a5e3d368f42cf3457f0a4b12e86440a
+
 
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
@@ -27,7 +31,7 @@ Für Azure Service Fabric-Komponenten werden für alle Entitäten im Cluster sta
 Die Systemintegritätsberichte sorgen für Transparenz in Bezug auf die Cluster- und Anwendungsfunktionen und weisen auf Probleme mit der Integrität hin. Für Anwendungen und Dienste wird mit den Systemintegritätsberichten überprüft, ob Entitäten implementiert sind und sich aus Sicht von Service Fabric richtig verhalten. Die Berichte umfassen keine Integritätsüberwachung der Geschäftslogik des Diensts und keine Erkennung von hängenden Prozessen. Benutzerdienste können die Integritätsdaten um spezielle Informationen zu ihrer Logik erweitern.
 
 > [!NOTE]
-> Watchdog-Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Das gleiche gilt, wenn eine neue Instanz der Entität erstellt wird (z. B. eine neue Dienstreplikatinstanz). Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
+> Watchdog-Integritätsberichte werden erst angezeigt, *nachdem* die Systemkomponenten eine Entität erstellt haben. Wenn eine Entität gelöscht wird, werden vom Integritätsspeicher automatisch alle dazugehörigen Integritätsberichte gelöscht. Das gleiche gilt, wenn eine neue Instanz der Entität erstellt wird (z. B. eine neue Dienstreplikatinstanz). Alle Berichte, die der alten Instanz zugeordnet sind, werden gelöscht und im Speicher bereinigt.
 > 
 > 
 
@@ -54,7 +58,7 @@ Im Bericht wird das Global Lease-Timeout als Gültigkeitsdauer (Time to Live, TT
 ## <a name="node-system-health-reports"></a>Knoten-Systemintegritätsberichte
 **System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, mit der die Informationen zu Clusterknoten verwaltet werden. Jeder Knoten sollte über einen Bericht von System.FM verfügen, in dem der Zustand angegeben wird. Die Knotenentitäten werden entfernt, wenn der Knotenstatus entfernt wird (siehe [RemoveNodeStateAsync](https://msdn.microsoft.com/library/azure/mt161348.aspx)).
 
-### <a name="node-up/down"></a>Knoten heraufgefahren/heruntergefahren
+### <a name="node-updown"></a>Knoten heraufgefahren/heruntergefahren
 System.FM meldet „OK“, wenn der Knoten dem Ring beitritt (betriebsbereit). Ein Fehler wird gemeldet, wenn der Knoten den Ring verlässt (nicht betriebsbereit, entweder aufgrund eines Upgrades oder eines Fehlers). Die vom Integritätsspeicher erstellte Integritätshierarchie wird für bereitgestellte Entitäten in Korrelation mit System.FM-Knotenberichten aktiv. Ein Knoten wird als virtuelles übergeordnetes Element aller bereitgestellten Entitäten angesehen. Die bereitgestellten Entitäten auf diesem Knoten werden über Abfragen verfügbar gemacht, wenn der Knoten von System.FM als aktiv gemeldet wird. Dabei wird die gleiche Instanz verwendet, die auch den Entitäten zugeordnet ist. Wenn System.FM meldet, dass der Knoten inaktiv ist oder neu gestartet wurde (neue Instanz), werden im Integritätsspeicher automatisch die bereitgestellten Entitäten bereinigt, die nur auf dem inaktiven Knoten oder der vorherigen Instanz des Knoten vorhanden sein können.
 
 * **SourceId**: System.FM
@@ -358,7 +362,7 @@ HealthEvents          :
 ### <a name="replica-open-status"></a>Öffnungszustand des Replikats
 Die Beschreibung dieses Integritätsberichts enthält den Startzeitpunkt (koordinierte Weltzeit), zu dem der API-Aufruf erfolgt ist.
 
-**System.RA** gibt eine Warnung aus, wenn das Öffnen des Replikats länger länger dauert, als die Konfiguration für den Zeitraum vorgibt (Standardwert: 30 Minuten). Wenn die API sich auf die Dienstverfügbarkeit auswirkt, wird der Bericht deutlich schneller ausgegeben (konfigurierbares Intervall, Standardwert: 30 Sekunden). Die gemessene Zeit enthält auch die Zeit für das Öffnen des Replikators und des Diensts. Die Eigenschaft ändert sich in „OK“, wenn das Öffnen abgeschlossen ist.
+**System.RA** gibt eine Warnung aus, wenn das Öffnen des Replikats länger länger dauert, als die Konfiguration für den Zeitraum vorgibt (Standardwert: 30 Minuten). Wenn die API sich auf die Dienstverfügbarkeit auswirkt, wird der Bericht deutlich schneller ausgegeben (konfigurierbares Intervall, Standardwert: 30 Sekunden). Die gemessene Zeit enthält auch die Zeit für das Öffnen des Replikators und des Diensts. Die Eigenschaft ändert sich in „OK“, wenn das Öffnen abgeschlossen ist.
 
 * **SourceId**: System.RA
 * **Property**: **ReplicaOpenStatus**
@@ -467,7 +471,7 @@ HealthEvents          :
 
 Wenn Sie die fehlerhafte Anwendung mit aktiviertem Debugger starten, wird in den Fenstern mit den Diagnoseereignissen die von RunAsync ausgelöste Ausnahme angezeigt:
 
-![Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in „fabric:/HelloWorldStatefulApplication“.][1]
+![Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in „fabric:/HelloWorldStatefulApplication“.][1]
 
 Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in **fabric:/HelloWorldStatefulApplication**.
 
@@ -678,6 +682,9 @@ HealthEvents          :
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

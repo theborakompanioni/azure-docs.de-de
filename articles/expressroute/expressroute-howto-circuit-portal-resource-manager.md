@@ -1,13 +1,13 @@
 ---
-title: Erstellen und Ändern einer ExpressRoute-Verbindung mit Resource Manager und dem Azure-Portal | Microsoft Docs
-description: Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung.
+title: "Erstellen und Ändern einer ExpressRoute-Verbindung mit Resource Manager und dem Azure-Portal | Microsoft Docs"
+description: "Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung."
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,13 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
+ms.openlocfilehash: 8eb67e0800671f4d41612780db52a243023b9e5a
+
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> [Azure-Portal – Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> [PowerShell – Resource Manager](expressroute-howto-circuit-arm.md)
-> [PowerShell – klassisch](expressroute-howto-circuit-classic.md)
+> * [Azure-Portal – Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell – Resource Manager](expressroute-howto-circuit-arm.md)
+> * [PowerShell – klassisch](expressroute-howto-circuit-classic.md)
 > 
 > 
 
@@ -37,10 +41,10 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung m
 * Stellen Sie sicher, dass Sie über die notwendigen Berechtigungen verfügen, um neue Netzwerkressourcen zu erstellen. Wenden Sie sich an Ihren Kontoadministrator, wenn Sie nicht über die richtigen Berechtigungen verfügen.
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
-### <a name="1.-sign-in-to-the-azure-portal"></a>1. Melden Sie sich auf dem Azure-Portal an.
+### <a name="1-sign-in-to-the-azure-portal"></a>1. Melden Sie sich auf dem Azure-Portal an.
 Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 
-### <a name="2.-create-a-new-expressroute-circuit"></a>2. Erstellen Sie eine neue ExpressRoute-Verbindung.
+### <a name="2-create-a-new-expressroute-circuit"></a>2. Erstellen Sie eine neue ExpressRoute-Verbindung.
 > [!IMPORTANT]
 > Ihre ExpressRoute-Verbindung wird von dem Moment an berechnet, in dem ein Dienstschlüssel ausgegeben wird. Stellen Sie sicher, dass Sie diesen Vorgang ausführen, sobald der Konnektivitätsanbieter dazu bereit ist, die Verbindung bereitzustellen.
 > 
@@ -61,7 +65,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) , un
 > 
 > 
 
-### <a name="3.-view-the-circuits-and-properties"></a>3. Anzeigen von Verbindungen und Eigenschaften
+### <a name="3-view-the-circuits-and-properties"></a>3. Anzeigen von Verbindungen und Eigenschaften
 **Anzeigen aller Verbindungen**
 
 Sie können alle erstellten Verbindungen anzeigen, indem Sie im Menü auf der linken Seite **Alle Ressourcen** auswählen.
@@ -74,7 +78,7 @@ Sie können alle erstellten Verbindungen anzeigen, indem Sie im Menü auf der li
 
 ![Eigenschaften anzeigen](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
-### <a name="4.-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Senden Sie den Dienstschlüssel zur Bereitstellung an Ihren Konnektivitätsanbieter.
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Senden Sie den Dienstschlüssel zur Bereitstellung an Ihren Konnektivitätsanbieter.
 Auf diesem Blatt bietet der **Anbieterstatus** Informationen zum aktuellen Zustand der Bereitstellung auf Dienstanbieterseite. **Schaltkreisstatus** wird der Zustand auf Microsoft-Seite angegeben. Weitere Informationen zu den Bereitstellungszuständen für eine Verbindung finden Sie im Artikel [Workflows](expressroute-workflows.md#expressroute-circuit-provisioning-states) .
 
 Wenn Sie eine neue ExpressRoute-Verbindung erstellen, weist die Verbindung folgenden Zustand auf:
@@ -94,12 +98,12 @@ Damit Sie eine ExpressRoute-Verbindung verwenden können, muss sie sich im folge
 Anbieterstatus: Bereitgestellt<BR>
  Schaltkreisstatus: Aktiviert
 
-### <a name="5.-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
-Sie können die Eigenschaften der gewünschten Verbindung anzeigen, indem Sie die Verbindung auswählen. Überprüfen Sie den **Anbieterstatus**, und stellen Sie sicher, dass er in **Bereitgestellt** geändert wurde, bevor Sie fortfahren.
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
+Sie können die Eigenschaften der gewünschten Verbindung anzeigen, indem Sie die Verbindung auswählen. Überprüfen Sie den **Anbieterstatus**, und stellen Sie sicher, dass er in **Provisioned** geändert wurde, bevor Sie fortfahren.
 
 ![Verbindungs- und Anbieterstatus](./media/expressroute-howto-circuit-portal-resource-manager/viewstatusprovisioned.png)
 
-### <a name="6.-create-your-routing-configuration"></a>6. Erstellen Sie die Routingkonfiguration.
+### <a name="6-create-your-routing-configuration"></a>6. Erstellen Sie die Routingkonfiguration.
 Eine Schritt-für-Schritt-Anleitung zum Erstellen und Ändern von Verbindungspeerings finden Sie im Artikel [Routingkonfiguration für ExpressRoute-Verbindung](expressroute-howto-routing-portal-resource-manager.md) .
 
 > [!IMPORTANT]
@@ -107,7 +111,7 @@ Eine Schritt-für-Schritt-Anleitung zum Erstellen und Ändern von Verbindungspee
 > 
 > 
 
-### <a name="7.-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Verbindung. Lesen Sie den Artikel [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen](expressroute-howto-linkvnet-arm.md) , wenn Sie mit dem Resource Manager-Bereitstellungsmodell arbeiten.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Abrufen des Status einer ExpressRoute-Verbindung
@@ -140,6 +144,9 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 * [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](expressroute-howto-routing-portal-resource-manager.md)
 * [Verknüpfen Ihres virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

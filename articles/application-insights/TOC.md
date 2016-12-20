@@ -30,18 +30,20 @@
 
 # Anleitung
 ## Planen und Entwerfen
-
 ### [Eingehende Diagnose für Web-Apps und Dienste](app-insights-devops.md)
 ### [Developer Analytics mit Application Insights und HockeyApp](app-insights-developer-analytics.md)
 ### [Leistungsüberwachung in Webanwendungen](app-insights-web-monitor-performance.md)
 ### [Verwendungsanalyse mit Application Insights](app-insights-overview-usage.md)
 ### [Trennen von Application Insights-Ressourcen](app-insights-separate-resources.md)
 ### [Wie führe ich in Application Insights ... aus?](app-insights-how-do-i.md)
+## Migrieren
+### [Migrieren von Azure-Endpunktüberwachung zu Verfügbarkeitstests](app-insights-migrate-azure-endpoint-tests.md)
 
 ## Konfigurieren
-
+### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ### Azure
 #### [Diagnose](app-insights-azure-diagnostics.md)
+## [IP-Adressen](app-insights-ip-addresses.md)
 
 ### ASP.NET
 #### [Erweitern der Telemetriedaten](app-insights-asp-net-more.md)
@@ -102,7 +104,6 @@
 ### [Fortlaufendem Export](app-insights-export-telemetry.md)
 ### [Exportieren nach Power BI](app-insights-export-power-bi.md)
 
-
 ## Entwickeln
 
 ### [API für benutzerdefinierte Ereignisse und Metriken](app-insights-api-custom-events-metrics.md)
@@ -111,43 +112,37 @@
 
 
 ## Verwalten
-
 ### [Verwalten von Preisen und Kontingenten](app-insights-pricing.md)
 ### [Überwachung der Anwendungsleistung mithilfe von Application Insights für SCOM](app-insights-scom.md)
 
+##Export
+## [Exportdatenmodell](app-insights-export-data-model.md)
 
 ## Schützen
-
 ### [Datensammlung, -vermerkdauer und -speicherung](app-insights-data-retention-privacy.md)
 ### [Ressourcen, Rollen und Zugriffssteuerung](app-insights-resources-roles-access-control.md)
-
-
 ## Problembehandlung
 ### [Keine Daten für .NET](app-insights-asp-net-troubleshoot-no-data.md)
 ### [Analyse](app-insights-analytics-troubleshooting.md)
 ### [Java](app-insights-java-troubleshoot.md)
 
 # Referenz
-## [Java-API](http://dl.windowsazure.com/applicationinsights/javadoc/)
-## [.NET API](https://docs.microsoft.com/dotnet/api)
-## [JavaScript-API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
+## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
+## [Java](/java/api/com.microsoft.applicationinsights)
+## [REST](https://dev.applicationinsights.io/)
+
+# Ressourcen
 ## [Referenz zu Analytics](app-insights-analytics-reference.md)
-## [Stichproben](app-insights-sampling.md)
-## [IP-Adressen](app-insights-ip-addresses.md)
-## [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-## [Exportdatenmodell](app-insights-export-data-model.md)
-## [Migrieren von Azure-Endpunktüberwachung zu Verfügbarkeitstests](app-insights-migrate-azure-endpoint-tests.md)
+## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [Entwickleranalysen: Sprachen, Plattformen und Integrationsmöglichkeiten](app-insights-platforms.md)
+### [Stichproben](app-insights-sampling.md)
 ### [Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
 #### [Exemplarische Vorgehensweise: Aktivieren von Telemetriedaten für Microsoft Dynamics CRM Online](app-insights-sample-mscrm.md)
 #### [Exemplarische Vorgehensweise: Exportieren in SQL mit Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md)
 #### [Codebeispiel: Analysieren exportierter Daten](app-insights-code-sample-export-telemetry-sql-database.md)
 ## [Anmerkungen zu dieser Version des Application Insights SDK für Windows Phone und Store](app-insights-release-notes-windows.md)
 ## [Anmerkungen zur Version von Developer Analytics Tools](app-insights-release-notes-vsix.md)
-## [Anmerkungen zu dieser Version des Application Insights SDKs](app-insights-release-notes.md)
-## [REST-API für Datenzugriff](https://dev.applicationinsights.io/)
-
-# angeben
+## [Anmerkungen zu dieser Version des Application Insights SDK](app-insights-release-notes.md)
 ## [Preise](https://azure.microsoft.com/pricing/details/application-insights/)  
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
@@ -157,6 +152,7 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO2-->
 
 

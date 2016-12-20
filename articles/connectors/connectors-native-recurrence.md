@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen des Wiederholungstriggers in Logik-Apps | Microsoft Docs
-description: Übersicht über den Wiederholungstrigger und dessen Verwendung in einer Azure-Logik-App.
-services: ''
-documentationcenter: ''
+title: "Hinzufügen des Wiederholungstriggers in Logik-Apps | Microsoft Docs"
+description: "Übersicht über den Wiederholungstrigger und dessen Verwendung in einer Azure-Logik-App."
+services: 
+documentationcenter: 
 author: jeffhollan
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d85eb09283bc464e78bf84401eeb0ff366ef5773
+
 
 ---
-# Erste Schritte mit dem Wiederholungstrigger
+# <a name="get-started-with-the-recurrence-trigger"></a>Erste Schritte mit dem Wiederholungstrigger
 Mit dem Wiederholungstrigger können Sie leistungsstarke Workflows in der Cloud erstellen.
 
 Dazu zählen z. B.:
@@ -27,7 +31,7 @@ Dazu zählen z. B.:
 
 Wenn Sie den Wiederholungstrigger in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-## Verwenden eines Wiederholungstriggers
+## <a name="use-a-recurrence-trigger"></a>Verwenden eines Wiederholungstriggers
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md).
 
 Hier sehen Sie eine Beispielsequenz für die Einrichtung eines Wiederholungstriggers in einer Logik-App:
@@ -39,10 +43,11 @@ Die Logik-App startet nun nach jedem Zeitintervall eine Ausführung.
 
 ![HTTP-Trigger](./media/connectors-native-recurrence/using-trigger.png)
 
-## Triggerdetails
+## <a name="trigger-details"></a>Triggerdetails
 Der Wiederholungstrigger verfügt über die folgenden Eigenschaften, die Sie konfigurieren können.
 
-Er startet nach Ablauf einer festgelegten Zeitspanne eine Logik-App. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+Er startet nach Ablauf einer festgelegten Zeitspanne eine Logik-App.
+Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 
 | Anzeigename | Eigenschaftenname | Beschreibung |
 | --- | --- | --- |
@@ -53,7 +58,12 @@ Er startet nach Ablauf einer festgelegten Zeitspanne eine Logik-App. Ein * bedeu
 
 <br>
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

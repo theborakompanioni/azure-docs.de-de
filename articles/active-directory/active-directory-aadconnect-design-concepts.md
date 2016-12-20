@@ -1,12 +1,12 @@
 ---
-title: Entwurfskonzepte für Azure AD Connect | Microsoft Docs
+title: "Entwurfskonzepte für Azure AD Connect | Microsoft Docs"
 description: In diesem Thema werden bestimmte Aspekte des Implementierungsentwurfs beschrieben.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 4114a6c0-f96a-493c-be74-1153666ce6c9
 ms.service: active-directory
 ms.custom: azure-ad-connect
 ms.devlang: na
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 09/13/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 116ef0786c9c45b549311a59615d06f194093bc2
+
 
 ---
-# <a name="azure-ad-connect:-design-concepts"></a>Azure AD Connect: Designkonzepte
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Designkonzepte
 Dieses Themas beschreibt, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Bestimmte Aspekte werden in diesem Thema sehr gründlich behandelt, und diese Konzepte werden in anderen Themen ebenfalls kurz beschrieben.
 
 ## <a name="sourceanchor"></a>sourceAnchor
@@ -92,6 +96,9 @@ Azure AD Connect erkennt, ob Sie eine nicht routingfähige Domänenumgebung ausf
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

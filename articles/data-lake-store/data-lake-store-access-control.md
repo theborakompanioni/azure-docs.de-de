@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 12/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c73d85497e936b0bfb9a0ee97e0172a70e1706ae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 9637a4dfeaf3d3f95ccdb4bbc5d1f96ec08b6dad
 
 
 ---
@@ -110,11 +110,11 @@ Klicken Sie auf dem Blatt **Daten-Explorer** des Data Lake Store-Kontos auf **Zu
 
 ![Data Lake Store-ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-Klicken Sie anschließend auf dem Blatt **Zugriff** auf **Einfache Ansicht**, um zu einer einfacheren Darstellung zu wechseln.
+Im oberen Bereich dieses Blatts finden Sie eine Übersicht über Ihre Berechtigungen. (Im Screenshot heißt der Benutzer Bob.) Darunter sind die Zugriffsberechtigungen angegeben.
 
 ![Data Lake Store-ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-Klicken Sie auf **Erweiterte Ansicht** , um die erweiterte Ansicht anzuzeigen.
+Klicken Sie auf **Erweitert**, um die erweiterte Ansicht mit Standard-ACLs, Maske und Superuser anzuzeigen.
 
 ![Data Lake Store-ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -133,6 +133,10 @@ Ein Data Lake Store-Konto besitzt in Azure mehrere Azure-Rollen:
 * und weitere
 
 Alle Benutzer, die der Rolle **Besitzer** für ein Data Lake Store-Konto angehören, sind automatisch auch Administratoren für dieses Konto. Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
+
+Wenn Sie eine benutzerdefinierte RBAC-Rolle mit Superuser-Berechtigungen erstellen möchten, muss diese über folgende Berechtigungen verfügen:
+* Microsoft.DataLakeStore/accounts/Superuser/action
+* Microsoft.Authorization/roleAssignments/write
 
 ## <a name="the-owning-user"></a>Der zuständige Benutzer
 Der Benutzer, der das Element erstellt hat, ist automatisch der zuständige Benutzer für das Element. Der zuständige Benutzer hat folgende Möglichkeiten:
@@ -244,7 +248,11 @@ Nein. Die ACL-basierte Zugriffssteuerung ist für ein Data Lake Store-Konto imme
 ### <a name="what-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>Welche Berechtigungen werden zum rekursiven Löschen eines Ordners und seines Inhalts benötigt?
 * Der übergeordnete Ordner muss über **Schreib- und Ausführungsberechtigungen**verfügen.
 * Der zu löschende Ordner und alle darin enthaltenen Ordner müssen über **Lese-, Schreib- und Ausführungsberechtigungen**verfügen.
-  >[AZURE.NOTE] Zum Löschen der in Ordnern enthaltenen Dateien werden keine Schreibberechtigungen für diese Dateien benötigt. Außerdem gilt: Der Stammordner „/“ kann **nie** gelöscht werden.
+
+> [!NOTE] 
+> Zum Löschen der in Ordnern enthaltenen Dateien werden keine Schreibberechtigungen für diese Dateien benötigt. Außerdem gilt: Der Stammordner „/“ kann **nie** gelöscht werden.
+>
+>
 
 ### <a name="who-is-set-as-the-owner-of-a-file-or-folder"></a>Wer wird als Besitzer einer Datei oder eines Ordners festgelegt?
 Der Ersteller einer Datei oder eines Ordners wird als Besitzer festgelegt.
@@ -254,6 +262,12 @@ Hierzu wird die zuständige Gruppe des übergeordneten Ordners kopiert, unter de
 
 ### <a name="i-am-the-owning-user-of-a-file-but-i-dont-have-the-rwx-permissions-i-need-what-do-i-do"></a>Ich bin der zuständige Benutzer einer Datei, verfüge aber nicht über die erforderlichen RWX-Berechtigungen. Wie gehe ich vor?
 Der zuständige Benutzer kann einfach die Berechtigungen der Datei ändern und sich so die erforderlichen RWX-Berechtigungen gewähren.
+
+### <a name="when-i-look-at-acls-in-the-azure-portal-i-see-user-names-but-through-apis-i-see-guids-why-is-that"></a>Wenn ich mir die ACLs im Azure-Portal ansehe, sehe ich dort Benutzernamen, über APIs werden mir jedoch GUIDs angezeigt. Warum ist das so?
+Einträge in den ACLs werden als GUIDs gespeichert, die Benutzern in Azure Active Directory (AAD) entsprechen. Die APIs geben die GUIDs unverändert zurück. Das Azure-Portal wandelt die GUIDs zur Vereinfachung der ACL-Verwendung nach Möglichkeit in benutzerfreundliche Namen um. 
+
+### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-using-the-portal"></a>Warum werden im Portal manchmal GUIDs in den ACLs angezeigt?
+Eine GUID wird angezeigt, wenn der Benutzer in AAD nicht mehr vorhanden ist. Dies ist meist der Fall, wenn der Benutzer aus dem Unternehmen ausgeschieden ist oder sein Konto in AAD gelöscht wurde.
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Unterstützt Data Lake Store die Vererbung von ACLs?
 Nein.
@@ -282,6 +296,6 @@ Nein.
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

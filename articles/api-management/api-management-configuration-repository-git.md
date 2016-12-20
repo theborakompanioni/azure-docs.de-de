@@ -2,21 +2,25 @@
 title: Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 description: Erfahren Sie, wie Sie die API Management-Dienstkonfiguration mit Git speichern und konfigurieren.
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
+
 
 ---
-# Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
+# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 > [!IMPORTANT]
 > Die Git-Konfiguration für API Management ist derzeit in der Vorschau. Sie ist funktionell abgeschlossen, aber in der Vorschau ist, da wir aktiv Feedback zu dieser Funktion suchen. Es ist möglich, dass wir als Reaktion auf Kundenfeedback eine wichtige Änderung vornehmen, und raten daher von der Verwendung der Funktion in Produktionsumgebungen ab. Wenn Sie Feedback oder Fragen haben, informieren Sie uns bitte unter `apimgmt@microsoft.com`.
 > 
@@ -32,7 +36,7 @@ Das folgende Diagramm zeigt eine Übersicht über die verschiedenen Methoden zum
 
 ![Konfigurieren mit Git][api-management-git-configure]
 
-Wenn Sie den Dienst mit dem Herausgeberportal, PowerShell-Cmdlets oder der REST-API ändern, verwalten Sie die Konfigurationsdatenbank des Diensts mithilfe des Endpunkts `https://{name}.management.azure-api.net`, der auf der rechten Seite des Diagramms angezeigt wird. Die linke Seite des Diagramms veranschaulicht, wie Sie die Dienstkonfiguration mithilfe von Git und dem Git-Repository für Ihren Dienst unter `https://{name}.scm.azure-api.net` verwalten können.
+Wenn Sie den Dienst mit dem Herausgeberportal, PowerShell-Cmdlets oder der REST-API ändern, verwalten Sie die Konfigurationsdatenbank des Diensts mithilfe des Endpunkts `https://{name}.management.azure-api.net` , der auf der rechten Seite des Diagramms angezeigt wird. Die linke Seite des Diagramms veranschaulicht, wie Sie die Dienstkonfiguration mithilfe von Git und dem Git-Repository für Ihren Dienst unter `https://{name}.scm.azure-api.net`verwalten können.
 
 Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Management-Dienstinstanz mit Git.
 
@@ -44,7 +48,7 @@ Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Man
 
 In diesem Artikel wird das Aktivieren und Verwenden von Git für die Verwaltung der Dienstkonfiguration beschrieben. Zudem enthält er eine Referenz für die Dateien und Ordner im Git-Repository.
 
-## So aktivieren Sie Git-Zugriff
+## <a name="to-enable-git-access"></a>So aktivieren Sie Git-Zugriff
 Sie können den Status der Git-Konfiguration schnell anzeigen, indem Sie das Git-Symbol im Herausgeberportal in der oberen rechten Ecke anzeigen. In diesem Beispiel ist der Git-Zugriff noch nicht aktiviert.
 
 ![Git-Status][api-management-git-icon-enable]
@@ -53,25 +57,25 @@ Um Ihre Git-Konfiguration anzuzeigen und zu konfigurieren, können Sie entweder 
 
 ![Git aktivieren][api-management-enable-git]
 
-Um den Git-Zugriff zu aktivieren, aktivieren Sie das Kontrollkästchen **Git-Zugriff aktivieren**.
+Um den Git-Zugriff zu aktivieren, aktivieren Sie das Kontrollkästchen **Git-Zugriff aktivieren** .
 
 Kurze Zeit später wird die Änderung gespeichert, und eine Meldung wird angezeigt. Beachten Sie, dass das Git-Symbol farbig geworden ist, um anzuzeigen, dass der Git-Zugriff aktiviert ist, und die Statusmeldung jetzt angibt, dass Änderungen vorliegen, die noch nicht im Repository gespeichert sind. Dies liegt daran, dass die API Management-Dienstkonfigurationsdatenbank noch nicht im Repository gespeichert wurde.
 
 ![Git aktiviert][api-management-git-enabled]
 
 > [!IMPORTANT]
-> Geheime Schlüssel, die nicht als Eigenschaften definiert sind, werden im Repository gespeichert und verbleiben in dessen Verlauf, bis Sie den Git-Zugriff deaktivieren und erneut aktivieren. Eigenschaften stellen einen sicheren Ort zum Verwalten von konstanten Zeichenfolgenwerten, einschließlich geheimer Schlüssel, für alle API-Konfigurationen und -Richtlinien dar. Sie müssen sie also nicht direkt in Ihren Richtlinienanweisungen speichern. Weitere Informationen finden Sie unter [How to use properties in Azure API Management policies](api-management-howto-properties.md) (Verwenden von Eigenschaften in Azure API Management-Richtlinien).
+> Geheime Schlüssel, die nicht als Eigenschaften definiert sind, werden im Repository gespeichert und verbleiben in dessen Verlauf, bis Sie den Git-Zugriff deaktivieren und erneut aktivieren. Eigenschaften stellen einen sicheren Ort zum Verwalten von konstanten Zeichenfolgenwerten, einschließlich geheimer Schlüssel, für alle API-Konfigurationen und -Richtlinien dar. Sie müssen sie also nicht direkt in Ihren Richtlinienanweisungen speichern. Weitere Informationen finden Sie unter [Verwenden von Eigenschaften in Azure API Management-Richtlinien](api-management-howto-properties.md).
 > 
 > 
 
 Informationen zum Aktivieren oder Deaktivieren des Git-Zugriffs mithilfe der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
 
-## So speichern Sie die Dienstkonfiguration im Git-Repository
+## <a name="to-save-the-service-configuration-to-the-git-repository"></a>So speichern Sie die Dienstkonfiguration im Git-Repository
 Der erste Schritt vor dem Klonen des Repositorys ist, den aktuellen Zustand der Dienstkonfiguration im Repository zu speichern. Klicken Sie auf **Konfiguration im Repository speichern**.
 
 ![Konfiguration speichern][api-management-save-configuration]
 
-Nehmen Sie auf dem Bestätigungsbildschirm alle gewünschten Änderungen vor, und klicken Sie zum Speichern auf **OK**.
+Nehmen Sie auf dem Bestätigungsbildschirm alle gewünschten Änderungen vor, und klicken Sie zum Speichern auf **OK** .
 
 ![Konfiguration speichern][api-management-save-configuration-confirm]
 
@@ -83,7 +87,7 @@ Sobald die Konfiguration im Repository gespeichert wurde, kann sie geklont werde
 
 Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Commit der Konfigurationsmomentaufnahme mithilfe der REST-API](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
 
-## So klonen Sie das Repository auf Ihrem lokalen Computer
+## <a name="to-clone-the-repository-to-your-local-machine"></a>So klonen Sie das Repository auf Ihrem lokalen Computer
 Um ein Repository zu klonen, benötigen Sie die URL des Repositorys, einen Benutzernamen und ein Kennwort. Der Benutzername und die URL werden oben auf der Registerkarte **Konfigurationsrepository** angezeigt.
 
 ![Klonen mit Git][api-management-configuration-git-clone]
@@ -109,11 +113,11 @@ In den folgenden Beispielen wird das Tool Git Bash aus [Git für Windows](http:/
 
 Geben Sie nach Aufforderung den Benutzernamen und das Kennwort ein.
 
-Wenn Sie Fehlermeldungen erhalten, ändern Sie den Befehl `git clone`, sodass er den Benutzernamen und das Kennwort enthält, wie im folgenden Beispiel gezeigt.
+Wenn Sie Fehlermeldungen erhalten, ändern Sie den Befehl `git clone` , sodass er den Benutzernamen und das Kennwort enthält, wie im folgenden Beispiel gezeigt.
 
     git clone https://username:password@bugbashdev4.scm.azure-api.net/
 
-Wenn dies zu einem Fehler führt, codieren Sie den Kennwortteil des Befehls als URL. Eine schnelle Möglichkeit, dies zu erreichen, ist, Visual Studio zu öffnen und den folgenden Befehl im **Direktfenster** auszugeben. Um das **Direktfenster** zu öffnen, öffnen Sie eine Projektmappe oder ein Projekt in Visual Studio (oder erstellen Sie eine neue leere Konsolenanwendung), und wählen Sie im Menü **Debuggen** erst **Fenster** und dann **Direkt** aus.
+Wenn dies zu einem Fehler führt, codieren Sie den Kennwortteil des Befehls als URL. Eine schnelle Möglichkeit, dies zu erreichen, ist, Visual Studio zu öffnen und den folgenden Befehl im **Direktfenster**auszugeben. Um das **Direktfenster** zu öffnen, öffnen Sie eine Projektmappe oder ein Projekt in Visual Studio (oder erstellen Sie eine neue leere Konsolenanwendung), und wählen Sie im Menü **Debuggen** erst **Fenster** und dann **Direkt** aus.
 
     ?System.NetWebUtility.UrlEncode("password from publisher portal")
 
@@ -123,7 +127,7 @@ Verwenden Sie das verschlüsselte Kennwort zusammen mit Ihrem Benutzernamen und 
 
 Sobald das Repository geklont wurde, können Sie es anzeigen und in Ihrem lokalen Dateisystem verwenden. Weitere Informationen finden Sie unter [Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys](#file-and-folder-structure-reference-of-local-git-repository).
 
-## So aktualisieren Sie Ihr lokales Repository mit der aktuellen Dienstinstanzkonfiguration
+## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>So aktualisieren Sie Ihr lokales Repository mit der aktuellen Dienstinstanzkonfiguration
 Wenn Sie Ihre API Management-Dienstinstanz im Herausgeberportal oder mit der REST-API ändern, müssen Sie diese Änderungen im Repository speichern, bevor Sie Ihr lokales Repository mit den neuesten Änderungen aktualisieren können. Klicken Sie hierzu im Herausgeberportal auf der Registerkarte **Konfigurationsrepository** auf **Konfiguration im Repository speichern**, und geben Sie dann den folgenden Befehl im lokalen Repository aus.
 
     git pull
@@ -132,7 +136,7 @@ Stellen Sie vor dem Ausführen von `git pull` sicher, dass Sie sich im Ordner f�
 
     cd bugbashdev4.scm.azure-api.net/
 
-## So übertragen Sie Änderungen aus Ihrem lokalen Repository in das Serverrepository
+## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>So übertragen Sie Änderungen aus Ihrem lokalen Repository in das Serverrepository
 Um Änderungen aus Ihrem lokalen Repository in das Serverrepository zu übertragen, müssen Sie einen Commit für die Änderungen ausführen und sie dann in das Serverrepository übertragen. Um einen Commit für die Änderungen auszuführen, öffnen Sie Ihr Git-Befehlstool, wechseln Sie in das Verzeichnis des lokalen Repositorys, und geben Sie die folgenden Befehle aus.
 
     git add --all
@@ -142,14 +146,14 @@ Führen Sie den folgenden Befehl aus, um alle Commits auf den Server zu übertra
 
     git push
 
-## So stellen Sie Änderungen an der Dienstkonfiguration der API Management-Dienstinstanz bereit
+## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>So stellen Sie Änderungen an der Dienstkonfiguration der API Management-Dienstinstanz bereit
 Sobald ein Commit für Ihre lokalen Änderungen ausgeführt wurde und sie in das Serverrepository übertragen wurden, können Sie sie Ihrer API Management-Dienstinstanz bereitstellen.
 
 ![Bereitstellen][api-management-configuration-deploy]
 
 Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [Azure API Management-REST-API-Mandanten-Entität](https://msdn.microsoft.com/library/dn781420.aspx#DeployChanges).
 
-## Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys
+## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys
 Die Dateien und Ordner im lokalen Git-Repository enthalten die Konfigurationsinformationen der Dienstinstanz.
 
 | Item | Beschreibung |
@@ -162,7 +166,7 @@ Die Dateien und Ordner im lokalen Git-Repository enthalten die Konfigurationsinf
 | Ordner „products“ |Enthält die Konfiguration für die Produkte in der Dienstinstanz |
 | Ordner „templates“ |Enthält die Konfiguration für die E-Mail-Vorlagen in der Dienstinstanz |
 
-Jeder Ordner kann eine oder mehrere Dateien enthalten, und in einigen Fällen einen oder mehrere Ordner, z. B. ein Ordner für jede API, jedes Produkt oder jede Gruppe. Die Dateien in jedem Ordner gelten für den Entitätstyp, der durch den Namen des Ordners beschrieben wird.
+Jeder Ordner kann eine oder mehrere Dateien enthalten, und in einigen Fällen einen oder mehrere Ordner, z. B. ein Ordner für jede API, jedes Produkt oder jede Gruppe. Die Dateien in jedem Ordner gelten für den Entitätstyp, der durch den Namen des Ordners beschrieben wird.
 
 | Dateityp | Zweck |
 | --- | --- |
@@ -183,7 +187,7 @@ Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verw
 > 
 > 
 
-### Stammordner „api-management“
+### <a name="root-api-management-folder"></a>Stammordner „api-management“
 Der Stammordner `api-management` enthält eine Datei `configuration.json`, die Informationen der obersten Ebene über die Dienstinstanz im folgenden Format aufweist.
 
     {
@@ -204,10 +208,10 @@ Die ersten vier Einstellungen (`RegistrationEnabled`, `UserRegistrationTerms`, `
 
 | Identitätseinstellung | Entsprechung |
 | --- | --- |
-| RegistrationEnabled |Kontrollkästchen **Anonyme Benutzer zur Anmeldeseite umleiten** |
-| UserRegistrationTerms |Textfeld **Nutzungsbedingungen für die Benutzerregistrierung** |
-| UserRegistrationTermsEnabled |Kontrollkästchen **Nutzungsbedingungen auf der Registrierungsseite anzeigen** |
-| UserRegistrationTermsConsentRequired |Kontrollkästchen **Zustimmung anfordern** |
+| RegistrationEnabled |**Anonyme Benutzer zur Anmeldeseite umleiten**  |
+| UserRegistrationTerms |**Nutzungsbedingungen für die Benutzerregistrierung**  |
+| UserRegistrationTermsEnabled |**Nutzungsbedingungen auf der Registrierungsseite anzeigen**  |
+| UserRegistrationTermsConsentRequired |**Zustimmung anfordern**  |
 
 ![Identitätseinstellungen][api-management-identity-settings]
 
@@ -216,54 +220,54 @@ Die nächsten vier Einstellungen (`DelegationEnabled`, `DelegationUrl`, `Delegat
 | Delegierungseinstellung | Entsprechung |
 | --- | --- |
 | DelegationEnabled |Kontrollkästchen **Anmeldung und Registrierung delegieren** |
-| DelegationUrl |Textfeld **Delegierungsendpunkt-URL** |
-| DelegatedSubscriptionEnabled |Kontrollkästchen **Produktabonnierung delegieren** |
-| DelegationValidationKey |Textfeld **Überprüfungsschlüssel delegieren** |
+| DelegationUrl |**Delegierungsendpunkt-URL**  |
+| DelegatedSubscriptionEnabled |**Produktabonnierung delegieren**  |
+| DelegationValidationKey |**Überprüfungsschlüssel delegieren**  |
 
 ![Delegierungseinstellungen][api-management-delegation-settings]
 
 Die letzte Einstellung, `$ref-policy`, entspricht der globalen Datei mit Richtlinienanweisungen für die Dienstinstanz.
 
-### Ordner „apis“
+### <a name="apis-folder"></a>Ordner „apis“
 Der Ordner `apis` enthält einen Ordner für jede API in der Dienstinstanz, der die folgenden Elemente enthält.
 
-* `apis<api name>\configuration.json`: Dies ist die Konfiguration der API, und die Datei enthält Informationen zur Back-End-Dienst-URL und zu den Vorgängen. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie [Abrufen einer bestimmten API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) mit `export=true` im Format `application/json` aufrufen.
-* `apis<api name>\api.description.html`: Dies ist die Beschreibung der API, und sie entspricht der Eigenschaft `description` der [Entität „API“](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties).
-* `apis<api name>\operations`: Dieser Ordner enthält `<operation name>.description.html`-Dateien, die den Vorgängen in der API entsprechen. Jede Datei enthält die Beschreibung eines einzelnen Vorgangs in der API, die der Eigenschaft `description` der [Entität „Operation“](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties) in der REST-API entspricht.
+* `apis\<api name>\configuration.json`: Dies ist die Konfiguration der API, und die Datei enthält Informationen zur Back-End-Dienst-URL und zu den Vorgängen. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie [Abrufen einer bestimmten API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) mit `export=true` im Format `application/json` aufrufen.
+* `apis\<api name>\api.description.html`: Dies ist die Beschreibung der API, und sie entspricht der Eigenschaft `description` der [Entität „API“](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties).
+* `apis\<api name>\operations\`: Dieser Ordner enthält `<operation name>.description.html`-Dateien, die den Vorgängen in der API entsprechen. Jede Datei enthält die Beschreibung eines einzelnen Vorgangs in der API, die der Eigenschaft `description` der [Entität „Operation“](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties) in der REST-API entspricht.
 
-### Ordner „groups“
+### <a name="groups-folder"></a>Ordner „groups“
 Der Ordner `groups` enthält einen Ordner für jede in der Dienstinstanz definierte Gruppe.
 
-* `groups<group name>\configuration.json`: Dies ist die Konfiguration für die Gruppe. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen einer bestimmten Gruppe](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) aufrufen.
-* `groups<group name>\description.html`: Dies ist die Beschreibung der Gruppe, und sie entspricht der Eigenschaft `description` der [Entität „Group“](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
+* `groups\<group name>\configuration.json`: Dies ist die Konfiguration für die Gruppe. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen einer bestimmten Gruppe](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) aufrufen.
+* `groups\<group name>\description.html`: Dies ist die Beschreibung der Gruppe, und sie entspricht der Eigenschaft `description` der [Entität „Group“](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
 
-### Ordner „policies“
+### <a name="policies-folder"></a>Ordner „policies“
 Der Ordner `policies` enthält die Richtlinienanweisungen für Ihre Dienstinstanz.
 
-* `policies\global.xml`: Enthält Richtlinien, die im globalen Bereich für Ihre Dienstinstanz definiert sind.
-* `policies\apis<api name>`: Wenn Sie über Richtlinien verfügen, die im API-Bereich definiert sind, sind sie in diesem Ordner enthalten.
-* Ordner `policies\apis<api name><operation name>`: Wenn Sie über Richtlinien verfügen, die im Vorgangsbereich definiert sind, sind sie in diesem Ordner in `<operation name>.xml`-Dateien enthalten, die den Richtlinienanweisungen für jeden Vorgang entsprechen.
-* `policies\products`: Wenn Sie über Richtlinien verfügen, die im Produktbereich definiert sind, sind sie in diesem Ordner enthalten, der `<product name>.xml`-Dateien enthält, die den Richtlinienanweisungen für jedes Produkt entsprechen.
+* `policies\global.xml` : Enthält Richtlinien, die im globalen Bereich für Ihre Dienstinstanz definiert sind.
+* `policies\apis\<api name>\`: Wenn Sie über Richtlinien verfügen, die im API-Bereich definiert sind, sind sie in diesem Ordner enthalten.
+* Ordner `policies\apis\<api name>\<operation name>\`: Wenn Sie über Richtlinien verfügen, die im Vorgangsbereich definiert sind, sind sie in diesem Ordner in `<operation name>.xml`-Dateien enthalten, die den Richtlinienanweisungen für jeden Vorgang entsprechen.
+* `policies\products\`: Wenn Sie über Richtlinien verfügen, die im Produktbereich definiert sind, sind sie in diesem Ordner enthalten, der `<product name>.xml`-Dateien enthält, die den Richtlinienanweisungen für jedes Produkt entsprechen.
 
-### Ordner „portalStyles“
+### <a name="portalstyles-folder"></a>Ordner „portalStyles“
 Der Ordner `portalStyles` enthält Konfigurationen und Stylesheets für Anpassungen des Entwicklerportals für die Dienstinstanz.
 
 * `portalStyles\configuration.json`: Enthält die Namen der Stylesheets, die vom Entwicklerportal verwendet werden.
-* `portalStyles<style name>.css`: Jede `<style name>.css`-Datei enthält Stile für das Entwicklerportal (standardmäßig `Preview.css` und `Production.css`).
+* `portalStyles\<style name>.css`: Jede `<style name>.css`-Datei enthält Stile für das Entwicklerportal (standardmäßig `Preview.css` und `Production.css`).
 
-### Ordner „products“
+### <a name="products-folder"></a>Ordner „products“
 Der Ordner `products` enthält einen Ordner für jedes in der Dienstinstanz definierte Produkt.
 
-* `products<product name>\configuration.json`: Dies ist die Konfiguration für das Produkt. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen eines bestimmten Produkts](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) aufrufen.
-* `products<product name>\product.description.html`: Dies ist die Beschreibung des Produkts, und sie entspricht der Eigenschaft `description` der [Entität „Product“](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) in der REST-API.
+* `products\<product name>\configuration.json`: Dies ist die Konfiguration für das Produkt. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie den Vorgang [Abrufen eines bestimmten Produkts](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) aufrufen.
+* `products\<product name>\product.description.html`: Dies ist die Beschreibung des Produkts, und sie entspricht der Eigenschaft `description` der [Entität „Product“](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) in der REST-API.
 
-### Vorlagen
+### <a name="templates"></a>Vorlagen
 Der Ordner `templates` enthält die Konfiguration für die [E-Mail-Vorlagen](api-management-howto-configure-notifications.md) der Dienstinstanz.
 
-* `<template name>\configuration.json`: Dies ist die Konfiguration für die E-Mail-Vorlage.
-* `<template name>\body.html`: Dies ist der Text der E-Mail-Vorlage.
+* `<template name>\configuration.json` : Dies ist die Konfiguration für die E-Mail-Vorlage.
+* `<template name>\body.html` : Dies ist der Text der E-Mail-Vorlage.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz finden Sie unter:
 
 * Verwalten der Dienstinstanz mit den folgenden PowerShell-Cmdlets
@@ -274,7 +278,7 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
 * Verwalten der Dienstinstanz mit der REST-API
   * [REST-API-Referenz zu API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
-## Überblicksvideo ansehen
+## <a name="watch-a-video-overview"></a>Überblicksvideo ansehen
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Configuration-over-Git/player]
 > 
 > 
@@ -293,4 +297,12 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

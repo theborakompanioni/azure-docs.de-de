@@ -145,20 +145,19 @@
 ### [Streamingprotokolle und die Konsole](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Behandeln von Problemen mithilfe von Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
-# Referenz
+# Ressourcen
 ## [Azure-Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [App Service-Referenz](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [bewährten Methoden](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [WebJob-Ressourcen](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [REST](https://docs.microsoft.com/rest/api/appservice/)
-
-# Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/app-service/)  
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=app-service) 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO2-->
 
 

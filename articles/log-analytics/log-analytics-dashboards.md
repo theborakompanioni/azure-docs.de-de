@@ -1,12 +1,12 @@
 ---
 title: Erstellen eines benutzerdefinierten Dashboards in Log Analytics | Microsoft Docs
-description: In diesem Leitfaden wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen einen zentralen Überblick über Ihre Umgebung zu ermöglichen.
+description: "In diesem Leitfaden wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen einen zentralen Überblick über Ihre Umgebung zu ermöglichen."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: afd1e5359edbdfdbd4a8afaac139f5877b306c2b
+
 
 ---
 # <a name="create-a-custom-dashboard-in-log-analytics"></a>Erstellen eines benutzerdefinierten Dashboards in Log Analytics
@@ -28,7 +32,7 @@ Alle benutzerdefinierten Dashboards, die Sie im OMS-Portal erstellen, sind auch 
 
 !["mobile dashboard" ("mobiles Dashboard")](./media/log-analytics-dashboards/oms-search-mobile.png)
 
-## <a name="how-do-i-create-my-dashboard?"></a>Wie erstelle ich mein Dashboard?
+## <a name="how-do-i-create-my-dashboard"></a>Wie erstelle ich mein Dashboard?
 Navigieren Sie zu Beginn zur Übersichtsseite von OMS. Auf der linken Seite sehen Sie die Kachel **Mein Dashboard**. Klicken Sie darauf, um einen Drilldown in das Dashboard durchzuführen.
 
 ![Übersicht](./media/log-analytics-dashboards/oms-dashboards-overview.png)
@@ -42,11 +46,11 @@ Klicken Sie in der Ansicht „Mein Dashboard“ einfach auf **Anpassen**, um in 
 
  Im Bereich, der rechts auf der Seite geöffnet wird, werden alle gespeicherten Protokollsuchen Ihres Arbeitsbereichs angezeigt. Um eine gespeicherte Protokollsuche als Kachel zu visualisieren, zeigen Sie auf eine gespeicherte Suche, und klicken Sie dann auf das **Plussymbol**.
 
-![Hinzufügen von Kacheln 1](./media/log-analytics-dashboards/oms-dashboards-pictorial02.png)
+![Hinzufügen von Kacheln 1](./media/log-analytics-dashboards/oms-dashboards-pictorial02.png)
 
 Wenn Sie auf das **Plussymbol** klicken, wird eine neue Kachel in der Ansicht „Mein Dashboard“ angezeigt.
 
-![Hinzufügen von Kacheln 2](./media/log-analytics-dashboards/oms-dashboards-pictorial03.png)
+![Hinzufügen von Kacheln 2](./media/log-analytics-dashboards/oms-dashboards-pictorial03.png)
 
 ## <a name="edit-a-tile"></a>Bearbeiten einer Kachel
 Klicken Sie in der Ansicht „Mein Dashboard“ einfach auf **Anpassen**, um in den Anpassungsmodus zu wechseln. Klicken Sie auf die Kachel, die Sie bearbeiten möchten. Der rechte Bereich wechselt in den Bearbeitungsmodus, und es werden verschiedene Optionen angezeigt:
@@ -55,7 +59,7 @@ Klicken Sie in der Ansicht „Mein Dashboard“ einfach auf **Anpassen**, um in 
 
 ![Bearbeiten der Kachel](./media/log-analytics-dashboards/oms-dashboards-pictorial05.png)
 
-### <a name="tile-visualizations#"></a>Kachelvisualisierungen
+### <a name="tile-visualizations"></a>Kachelvisualisierungen
 Es stehen drei Arten von Kachelvisualisierungen zur Auswahl:
 
 | Diagrammtyp | Funktionsweise |
@@ -80,6 +84,9 @@ Navigieren Sie zum Entfernen einer Kachel zur Ansicht „Mein Dashboard“, und 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erstellen Sie [Warnungen](log-analytics-alerts.md) in Log Analytics, um Benachrichtigungen zu generieren und Probleme zu beheben.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: 597d27932e1faf82498d5a9eb458a08a4b72a1d1
-ms.openlocfilehash: dadb65611489bf57781e223290c13bb52d59a944
+ms.sourcegitcommit: 806ffa8ce0c434d2a6cc1c7ec3a6e89be9145679
+ms.openlocfilehash: 6661766d71d56e49b8840aeb250c105e132b9b04
 
 ---
 # <a name="what-is-azure-container-registry"></a>Was ist die Azure-Containerregistrierung?
@@ -56,7 +56,7 @@ Rufen Sie Images aus einer Azure-Containerregistrierung für verschiedene Bereit
 * **Skalierbare Orchestrierungssysteme** zum Verwalten von Anwendungen in Containern über Cluster mit Hosts hinweg, z.B. [DC/OS](https://docs.mesosphere.com/), [Docker Swarm](https://docs.docker.com/swarm/) und [Kubernetes](http://kubernetes.io/docs/).
 * **Azure-Dienste**, die die bedarfsorientierte Erstellung und Ausführung von Anwendungen unterstützen, z.B. [Container Service](../container-service/index.md), [App Service](/app-service/index.md), [Batch](../batch/index.md) und [Service Fabric](../service-fabric/index.md). 
 
-Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine Pushübertragung in eine Containerregistrierung durchführen. Sie können Daten beispielsweise mit einem Tool für Continuous Integration und Entwicklung an eine Containerregistrierung übertragen, z.B. [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) oder [Jenkins](https://jenkins.io/).
+Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine Pushübertragung in eine Containerregistrierung durchführen. Sie können Daten beispielsweise mit einem Tool für Continuous Integration und Entwicklung an eine Containerregistrierung wie z.B. [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) oder [Jenkins](https://jenkins.io/) übertragen.
 
 
 
@@ -66,10 +66,11 @@ Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine 
 * [Erstellen einer Containerregistrierung mit dem Azure-Portal](container-registry-get-started-portal.md)
 * [Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md)
 * [Freigeben Ihres ersten Image mit der Docker CLI](container-registry-get-started-docker-cli.md)
-* Informationen zu einer privaten Docker-Registrierung in Azure (ohne öffentlichen Endpunkt) finden Sie unter [Bereitstellen einer privaten Docker-Registrierung in Azure](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md).
+* Informationen zum Erstellen eines Continuous Integration- und Bereitstellungsworkflows mithilfe von Visual Studio Team Services, Azure Container Service und der Azure-Containerregistrierung finden Sie in [diesem Tutorial](../container-service/container-service-setup-ci-cd.md).
+* Informationen zum Einrichten Ihrer privaten Docker-Registrierung in Azure (ohne öffentlichen Endpunkt) finden Sie unter [Bereitstellen einer privaten Docker-Registrierung in Azure](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

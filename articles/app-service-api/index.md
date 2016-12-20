@@ -121,8 +121,6 @@ API-Apps ist einer der vier App-Typen, die in Azure App Service zur Verfügung s
     </li>     
 </ul>
 
----
-
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-api.pdf">
         <div class="img"></div>

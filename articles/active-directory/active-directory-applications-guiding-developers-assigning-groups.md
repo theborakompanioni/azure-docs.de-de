@@ -1,12 +1,12 @@
 ---
 title: 'Azure AD und Anwendungen: Zuweisen von Gruppen zu einer Anwendung | Microsoft Docs'
-description: Informationen zum Implementieren der Zuweisung von Gruppen für Azure-Anwendungen
+description: "Informationen zum Implementieren der Zuweisung von Gruppen für Azure-Anwendungen"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: IHenkel
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 29b5ba89-a1c7-4f1f-a294-248a40106617
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,26 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2015
 ms.author: inhenk
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 698eb6e48f8e7d270ae1b07bfc7e68fd22b02776
+
 
 ---
-# Azure AD und Anwendungen: Zuweisen von Gruppen zu einer Anwendung
-Bevor Sie einer Anwendung Benutzer und Gruppen zuweisen können, müssen Sie die Benutzerzuweisung erfordern. Informationen zum Erfordern der Benutzerzuweisung finden Sie im Artikel zum [Erfordern der Benutzerzuweisung](active-directory-applications-guiding-developers-requiring-user-assignment.md).
+# <a name="azure-ad-and-applications-assigning-groups-to-an-application"></a>Azure AD und Anwendungen: Zuweisen von Gruppen zu einer Anwendung
+Bevor Sie einer Anwendung Benutzer und Gruppen zuweisen können, müssen Sie die Benutzerzuweisung erfordern. Informationen zum Erfordern der Benutzerzuweisung finden Sie im Artikel zum [Erfordern der Benutzerzuweisung](active-directory-applications-guiding-developers-requiring-user-assignment.md) .
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits Gruppen in Active Directory für diese Anwendung erstellt haben.
 
-## Zuweisen von Gruppen zu einer Anwendung
+## <a name="assigning-groups-to-an-application"></a>Zuweisen von Gruppen zu einer Anwendung
 1. Melden Sie sich beim Azure-Portal mit dem Administratorkonto an.
-2. Klicken Sie im Hauptmenü auf **Alle Elemente**.
+2. Klicken Sie im Hauptmenü auf **Alle Elemente** .
 3. Wählen Sie das Verzeichnis aus, das Sie für die Anwendung verwenden.
-4. Klicken Sie auf die Registerkarte **Anwendungen**.
+4. Klicken Sie auf die Registerkarte **Anwendungen** .
 5. Wählen Sie die Anwendung aus der Liste der Programme aus, die diesem Verzeichnis zugeordnet sind.
-6. Klicken Sie auf die Registerkarte **Benutzer und Gruppen**.
-7. Filtern Sie die Liste der Gruppen in Active Directory mithilfe der Dropdownliste **Gruppen**.
+6. Klicken Sie auf die Registerkarte **Benutzer und Gruppen** .
+7. Filtern Sie die Liste der Gruppen in Active Directory mithilfe der Dropdownliste **Gruppen** .
 8. Wählen Sie die Gruppe aus.
 9. Klicken Sie auf **Zuweisen**.
-10. Klicken Sie auf **Ja**, wenn Sie dazu aufgefordert werden.
+10. Klicken Sie auf **Ja** , wenn Sie dazu aufgefordert werden.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

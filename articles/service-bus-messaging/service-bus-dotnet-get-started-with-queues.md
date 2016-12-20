@@ -1,22 +1,22 @@
 ---
 title: Erste Schritte mit Service Bus-Warteschlangen | Microsoft Docs
 description: "Gewusst wie: Erstellen einer C#-Konsolenanwendung für Service Bus-Messaging"
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: jtaubensee
 manager: timlt
 editor: 
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/23/2016
+ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c6405a6353cfcc56c79a6f842c6b150d10db75ee
+ms.sourcegitcommit: 560e73eb7129e665d254c3e93b08f29cfb6b1aa9
+ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
 
 
 ---
@@ -51,7 +51,8 @@ Falls Sie bereits eine Service Bus-Warteschlange erstellt haben, fahren Sie mit 
 Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe von Visual Studio eine C#-Konsolenanwendung.
 
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
-1. Starten Sie Visual Studio, und erstellen Sie eine neue Konsolenanwendung.
+
+- Starten Sie Visual Studio, und erstellen Sie eine neue Konsolenanwendung.
 
 ### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
@@ -62,12 +63,12 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
 ### <a name="write-some-code-to-send-a-message-to-the-queue"></a>Schreiben von Code zum Senden einer Nachricht an die Warteschlange
 1. Fügen Sie am Anfang der Datei „Program.cs“ die folgende using-Anweisung hinzu:
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 2. Fügen Sie der `Main`-Methode den folgenden Code hinzu, und legen Sie die **connectionString**-Variable auf die Verbindungszeichenfolge fest, die Sie beim Erstellen des Namespace abgerufen haben. Legen Sie außerdem **queueName** auf den Warteschlangennamen fest, der beim Erstellen der Warteschlange verwendet wurde.
    
-    ```
+    ```csharp
     var connectionString = "<Your connection string>";
     var queueName = "<Your queue name>";
    
@@ -78,7 +79,7 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
    
     „Program.cs“ sollte nun wie folgt aussehen:
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -107,12 +108,12 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
 1. Erstellen Sie eine neue Konsolenanwendung, und fügen Sie ähnlich wie bei der vorherigen Sendeanwendung einen Verweis auf das NuGet-Paket „Service Bus“ hinzu.
 2. Fügen Sie am Anfang der Datei „Program.cs“ die folgende `using`-Anweisung hinzu:
    
-    ```
+    ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
 3. Fügen Sie der `Main`-Methode den folgenden Code hinzu, und legen Sie die **connectionString**-Variable auf die Verbindungszeichenfolge fest, die Sie beim Erstellen des Namespace abgerufen haben. Legen Sie außerdem **queueName** auf den Warteschlangennamen fest, den Sie beim Erstellen der Warteschlange verwendet haben.
    
-    ```
+    ```csharp
     var connectionString = "";
     var queueName = "samplequeue";
    
@@ -129,7 +130,7 @@ Um Nachrichten an die Warteschlange senden zu können, erstellen wir mithilfe vo
    
     Die Datei „Program.cs“ sollte nun wie folgt aussehen:
    
-    ```
+    ```csharp
     using System;
     using Microsoft.ServiceBus.Messaging;
    
@@ -177,6 +178,6 @@ Sehen Sie sich das [GitHub-Repository mit Beispielen](https://github.com/Azure-S
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

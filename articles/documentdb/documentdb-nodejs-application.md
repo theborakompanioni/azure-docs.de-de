@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: 82da4d7324db83d71b21741f51ebe4e364c5a8f7
-ms.openlocfilehash: bde5635ddb43271920e6258c5df46d6ae6b41985
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d31fdad17c74ffd7ef5e411555c5a5fdb8c7927c
 
 
 ---
@@ -57,9 +57,9 @@ Sie haben keine Zeit, um das Lernprogramm abzuschließen, und möchten nur die v
 
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes vorhanden ist:
 
-* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
+* Ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
 
-   OR
+   ODER
 
    Lokale Installation des [Azure DocumentDB-Emulators](documentdb-nosql-local-emulator.md).
 * [Node.js][Node.js] Version v0.10.29 oder höher.
@@ -546,6 +546,6 @@ Weitere Informationen finden Sie im [Node.js Developer Center](https://azure.mic
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

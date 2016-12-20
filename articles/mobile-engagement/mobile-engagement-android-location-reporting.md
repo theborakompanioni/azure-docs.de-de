@@ -1,12 +1,12 @@
 ---
-title: Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement
-description: Hier wird beschrieben, wie Sie die Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement-konfigurieren.
+title: "Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement"
+description: "Hier wird beschrieben, wie Sie die Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement-konfigurieren."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 6cab5ed1-b767-46ac-9f0b-48a4e249d88c
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,9 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 777d5719cce505b55dfb61c91dcac7e713b077a9
+
 
 ---
-# Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement
+# <a name="location-reporting-for-azure-mobile-engagement-android-sdk"></a>Speicherort-Berichterstellung für das Android-SDK für Azure Mobile Engagement
 > [!div class="op_single_selector"]
 > * [Android](mobile-engagement-android-integrate-engagement.md)
 > 
@@ -24,13 +28,13 @@ ms.author: piyushjo;ricksal
 
 In diesem Thema wird die Berichterstellung für Speicherorte für Ihre Android-Anwendung erläutert.
 
-## Voraussetzungen
-[!INCLUDE [Voraussetzungen](../../includes/mobile-engagement-android-prereqs.md)]
+## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
 
-## Speicherortberichte
+## <a name="location-reporting"></a>Speicherortberichte
 Wenn Sie die Speicherorte melden möchten, müssen Sie einige Zeilen zur Konfiguration hinzufügen (zwischen den Tags `<application>` und `</application>`).
 
-### Verzögerte Bereichsspeicherortberichte
+### <a name="lazy-area-location-reporting"></a>Verzögerte Bereichsspeicherortberichte
 Die verzögerte Berichterstellung für Bereichsspeicherorte ermöglicht Ihnen, das Land, die Region und den Ort zu melden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Der Gerätebereich wird höchstens einmal pro Sitzung gemeldet. Das GPS wird niemals verwendet, daher hat diese Art von Standortbericht nur geringe Auswirkungen auf den Akku.
 
 Die gemeldeten Bereiche werden dazu verwendet, um geografische Statistiken zu Benutzern, Sitzungen, Ereignissen und Fehlern zu berechnen. Sie können auch als Kriterium für Reach-Kampagnen verwendet werden.
@@ -42,16 +46,16 @@ Verzögerte Bereichsspeicherortberichte aktivieren Sie mithilfe der zuvor in die
     engagementConfiguration.setLazyAreaLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-Sie müssen auch eine Speicherortberechtigung angeben. Dieser Code verwendet die ``COARSE``-Berechtigung:
+Sie müssen auch eine Speicherortberechtigung angeben. Dieser Code verwendet die ``COARSE`` -Berechtigung:
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 Wenn Ihre App sie erfordert, können Sie stattdessen ``ACCESS_FINE_LOCATION`` verwenden.
 
-### Echtzeit-Berichterstellung für Speicherorte
+### <a name="real-time-location-reporting"></a>Echtzeit-Berichterstellung für Speicherorte
 Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet standardmäßig ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (z.B. während einer Sitzung).
 
-Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist, die Verwendung des Echtzeit-Geofencing <Reach-Audience-geofencing>-Kriteriums in Reach-Kampagnen zu ermöglichen.
+Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist es, die Verwendung des Echtzeit-Geofencing-Kriteriums \<Reach-Audience-geofencing\> in Reach-Kampagnen zu ermöglichen.
 
 Um die Echtzeit-Berichterstellung für Speicherorte zu aktivieren, fügen Sie eine Codezeile hinzu, in der Sie die Engagement-Verbindungszeichenfolge in der Startprogrammaktivität festlegen. Das Ergebnis sieht wie folgt aus:
 
@@ -66,7 +70,7 @@ Um die Echtzeit-Berichterstellung für Speicherorte zu aktivieren, fügen Sie ei
 
         If your app requires it, you can use ``ACCESS_FINE_LOCATION`` instead.
 
-#### GPS-basierte Berichterstellung
+#### <a name="gps-based-reporting"></a>GPS-basierte Berichterstellung
 Die Echtzeit-Berichterstellung für Speicherorte verwendet standardmäßig nur netzwerkbasierte Speicherorte. Verwenden Sie das Konfigurationsobjekt, um die Verwendung von viel genaueren GPS-basierten Speicherorten zu aktivieren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -79,7 +83,7 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-#### Berichterstellung im Hintergrund
+#### <a name="background-reporting"></a>Berichterstellung im Hintergrund
 Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (z.B. während einer Sitzung). Verwenden Sie das folgende Konfigurationsobjekt, um die Berichterstellung auch im Hintergrund zu aktivieren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -106,7 +110,7 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-## Android M-Berechtigungen
+## <a name="android-m-permissions"></a>Android M-Berechtigungen
 Ab Android M werden bestimmte Berechtigungen zur Laufzeit verwaltet und erfordern die Genehmigung des Benutzers.
 
 Wenn Sie auf die Android-API-Ebene 23 abzielen, werden die Laufzeitberechtigungen für neue App-Installationen standardmäßig deaktiviert. Andernfalls sind sie standardmäßig aktiviert.
@@ -156,4 +160,8 @@ Hier ist ein Codebeispiel, dass Sie in einer Aktivität Ihrer Anwendung verwende
         getEngagementAgent().refreshPermissions();
     }
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,12 +1,12 @@
 ---
-title: Exemplarische Vorgehensweisen für den Team Data Science-Prozess | Microsoft Docs
+title: "Exemplarische Vorgehensweisen für den Team Data Science-Prozess | Microsoft Docs"
 description: Exemplarische Vorgehensweisen zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fde069560d53c5b5010bbb59b52d60a6971d8dac
+
 
 ---
 # <a name="team-data-science-process-walkthroughs"></a>Exemplarische Vorgehensweisen für den Team Data Science-Prozess
@@ -46,9 +50,12 @@ Die exemplarische Vorgehensweise [Data Science End-to-End Walkthrough using SQL 
 ## <a name="use-t-sql-with-sql-server-r-services"></a>T-SQL mit SQL Server R-Diensten
 In der exemplarischen Vorgehensweise [In-Database Advanced Analytics for SQL Developers](https://msdn.microsoft.com/library/mt683480.aspx) (Datenbankinterne erweiterte Analysen für SQL-Entwickler) können SQL-Programmierer Erfahrungen mit der Erstellung einer erweiterten Analyselösung mit Transact-SQL unter Verwendung von SQL Server R-Diensten sammeln, um eine R-Lösung zu operationalisieren.
 
-## <a name="what's-next?"></a>Wie geht es weiter?
+## <a name="whats-next"></a>Wie geht es weiter?
 Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Science-Prozess in Azure umfassen, finden Sie unter [Data Science-Prozess](http://aka.ms/datascienceprocess). 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

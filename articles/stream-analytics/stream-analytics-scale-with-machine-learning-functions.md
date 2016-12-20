@@ -1,13 +1,13 @@
 ---
 title: Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning-Funktionen | Microsoft Docs
-description: Erfahren Sie, wie Sie Stream Analytics-Aufträge (Partitionierung, SU-Menge usw.) richtig skalieren, wenn Sie Azure Machine Learning-Funktionen verwenden.
-keywords: ''
-documentationcenter: ''
+description: "Erfahren Sie, wie Sie Stream Analytics-Aufträge (Partitionierung, SU-Menge usw.) richtig skalieren, wenn Sie Azure Machine Learning-Funktionen verwenden."
+keywords: 
+documentationcenter: 
 services: stream-analytics
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 09/26/2016
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ad7ac0056cead32332b63add61655dbc1d2cb37c
+
 
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning-Funktionen
 Häufig ist es relativ einfach, einen Stream Analytics-Auftrag einzurichten und Beispieldaten dafür auszuführen. Was ist zu tun, wenn derselbe Auftrag mit einem höheren Datenvolumen ausgeführt werden soll? Hierfür müssen wir wissen, wie der Stream Analytics-Auftrag konfiguriert werden muss, damit er skaliert werden kann. In diesem Dokument liegt der Schwerpunkt auf den speziellen Aspekten der Skalierung von Stream Analytics-Aufträgen mit Machine Learning-Funktionen. Allgemeine Informationen zum Skalieren von Stream Analytics-Aufträgen finden Sie im Artikel [Skalieren von Aufträgen](stream-analytics-scale-jobs.md).
 
-## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics?"></a>Was ist in Stream Analytics eine Azure Machine Learning-Funktion?
+## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Was ist in Stream Analytics eine Azure Machine Learning-Funktion?
 Eine Machine Learning-Funktion kann in Stream Analytics wie ein normaler Funktionsaufruf in der Stream Analytics-Abfragesprache verwendet werden. Im Hintergrund handelt es sich bei den Funktionsaufrufen aber um Azure Machine Learning-Webdienstanforderungen. Machine Learning-Webdienste unterstützen das „Batching“ mehrerer Zeilen zu einem so genannten Mini-Batch in demselben Webdienst-API-Aufruf, um den Gesamtdurchsatz zu verbessern. Weitere Details finden Sie im Blogbeitrag [Azure ML Now Available as a Function in Azure Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) (Azure ML jetzt als Funktion in Azure Stream Analytics verfügbar) und im Artikel [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](../machine-learning/machine-learning-consume-web-services.md#request-response-service-rrs).
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurieren eines Stream Analytics-Auftrags mit Machine Learning-Funktionen
@@ -42,7 +46,7 @@ Ein weiterer zu berücksichtigender Aspekt kann auch der Wert für die „maxima
 
 Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierung für Machine Learning-Webdienste](../machine-learning/machine-learning-scaling-webservice.md).
 
-## <a name="example-–-sentiment-analysis"></a>Beispiel: Stimmungsanalyse
+## <a name="example-sentiment-analysis"></a>Beispiel: Stimmungsanalyse
 Das folgende Beispiel enthält einen Stream Analytics-Auftrag mit der Machine Learning-Funktion für die Stimmungsanalyse, die im [Tutorial zur Machine Learning-Integration für Stream Analytics](stream-analytics-machine-learning-integration-tutorial.md)beschrieben ist.
 
 Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion **Stimmung**. Dies ist nachstehend dargestellt:
@@ -73,18 +77,16 @@ Angenommen, die Latenz des Machine Learning-Webdiensts für die Stimmungsanalyse
 
 Unten ist eine Tabelle mit Informationen zum Durchsatz des Stream Analytics-Auftrags für unterschiedliche SUs und Batchgrößen angegeben (Anzahl von Ereignissen pro Sekunde).
 
-| SU |  |  |  | Batchgröße (ML-Latenz) |  |
+| Batchgröße (ML-Latenz) | 500 (200ms) | 1.000 (200ms) | 5.000 (250ms) | 10.000 (300ms) | 25.000 (500ms) |
 | --- | --- | --- | --- | --- | --- |
-|  | | | | | |
-| 500 (200ms) |1.000 (200ms) |5.000 (250ms) |10.000 (300ms) |25.000 (500ms) | |
-| 1 SU |2.500 |5.000 |20.000 |30.000 |50.000 |
-| 3 SUs |2.500 |5.000 |20.000 |30.000 |50.000 |
-| 6 SUs |2.500 |5.000 |20.000 |30.000 |50.000 |
-| 12 SUs |5.000 |10.000 |40.000 |60.000 |100.000 |
-| 18 SUs |7.500 |15.000 |60.000 |90.000 |150.000 |
-| 24 SUs |10.000 |20.000 |80.000 |120.000 |200.000 |
-| … |… |… |… |… |… |
-| 60 SUs |25.000 |50.000 |200.000 |300.000 |500.000 |
+| **1 SU** |2.500 |5.000 |20.000 |30.000 |50.000 |
+| **3 SUs** |2.500 |5.000 |20.000 |30.000 |50.000 |
+| **6 SUs** |2.500 |5.000 |20.000 |30.000 |50.000 |
+| **12 SUs** |5.000 |10.000 |40.000 |60.000 |100.000 |
+| **18 SUs** |7.500 |15.000 |60.000 |90.000 |150.000 |
+| **24 SUs** |10.000 |20.000 |80.000 |120.000 |200.000 |
+| **…** |… |… |… |… |… |
+| **60 SUs** |25.000 |50.000 |200.000 |300.000 |500.000 |
 
 Sie sollten nun bereits über gute Grundlagenkenntnisse verfügen und wissen, wie Machine Learning-Funktionen in Stream Analytics funktionieren. Sie wissen vermutlich auch, dass bei Stream Analytics-Aufträgen Daten aus Datenquellen abgerufen werden („Pull“) und bei jedem Vorgang dieser Art ein Batch mit Ereignissen zur Verarbeitung durch den Stream Analytics-Auftrag zurückgegeben wird. Wie wirkt sich dieses Abrufmodell auf die Machine Learning-Webdienstanforderungen aus?
 
@@ -120,6 +122,9 @@ Weitere Informationen zu Stream Analytics finden Sie unter:
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 10/13/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 05f686407efd3057a9cf41b4688df86033042ce3
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 331ada90e979cd0032907d80e8535d1872e90797
 
 
 ---
@@ -34,7 +34,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Git](http://www.git-scm.com/downloads).
 * [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
-* Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+* Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Zum [Testen von App Service](http://go.microsoft.com/fwlink/?LinkId=523751) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
@@ -106,6 +106,6 @@ Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

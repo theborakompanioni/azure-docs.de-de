@@ -8,7 +8,7 @@
    
    * **Name des virtuellen Computers** darf nur Buchstaben, Zahlen und Bindestriche enthalten. Er muss zudem mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden.
    * **Neuer Benutzername** bezieht sich auf das Administratorkonto, dass Sie zur Verwaltung des Servers verwenden. Das Kennwort muss 8 bis 123 Zeichen lang sein und mindestens drei der folgenden Elemente enthalten: Kleinbuchstaben, Großbuchstaben, eine Zahl und ein Sonderzeichen. **Sie brauchen den Benutzernamen und das Kennwort, um sich am virtuellen Computer anzumelden**.
-   * Die Größe eines virtuellen Computers wirkt sich auf seine Betriebskosten sowie auf die Konfigurationsoptionen aus (z. B. die Anzahl von Datenträgern, die Sie anschließen können). Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+   * Die Größe eines virtuellen Computers wirkt sich auf seine Betriebskosten sowie auf die Konfigurationsoptionen aus (z. B. die Anzahl von Datenträgern, die Sie anschließen können). Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 6. Auf dem dritten Bildschirm können Sie die Ressourcen für Netzwerk, Speicher und Verfügbarkeit konfigurieren. Hier einige Tipps:
    
    * Der **DNS-Name des Clouddienstes** ist der allgemeine DNS-Name, der Teil des URIs wird, das verwendet wird, um den virtuellen Computer zu kontaktieren. Sie müssen einen eigenen Namen für den Clouddienst eingeben, da dieser in Azure eindeutig sein muss. Clouddienste sind wichtig für Szenarios, die [mehrere virtuelle Computer](../articles/virtual-machines/virtual-machines-windows-classic-connect-vms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)verwenden.
@@ -27,6 +27,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

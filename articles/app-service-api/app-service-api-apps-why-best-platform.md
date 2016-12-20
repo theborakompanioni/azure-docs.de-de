@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eda73900ded4c587bacfa3b4d4e8465c1de5a5ed
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: b38f1876b3317a44268caf80a953dee638a342d1
 
 
 ---
@@ -33,7 +33,7 @@ Hier sind einige wichtige Funktionen von API-Apps:
 * **Nutzen Sie eigene APIs in unveränderter Form** – Es ist nicht erforderlich, den Code vorhandener APIs zu ändern, um API-Apps zu nutzen – stellen Sie lediglich Ihren Code in einer API-App bereit. Ihre API kann alle von App Service unterstützten Sprachen oder Frameworks verwenden, einschließlich ASP.NET und C#, Java, PHP, Node.js und Python.
 * **Einfache Nutzung** – Die integrierte Unterstützung für [Swagger-API-Metadaten](http://swagger.io/) ermöglicht es, dass Ihre APIs auf einfache Weise von zahlreichen Clients genutzt werden können.  Clientcode für Ihre APIs kann in zahlreichen verschiedenen Programmiersprachen generiert werden, darunter C#, Java und Javascript. Sie können ganz einfach [CORS](app-service-api-cors-consume-javascript.md) konfigurieren, ohne den Code zu ändern. Weitere Informationen finden Sie unter [Metadaten in App Service-API-Apps für die API-Ermittlung](app-service-api-metadata.md) und [Codegenerierung und Nutzen einer API-App aus JavaScript mit CORS](app-service-api-cors-consume-javascript.md). 
 * **Einfache Zugriffssteuerung** – Sie können eine API-App vor nicht authentifiziertem Zugriff schützen, ohne Änderungen an Ihrem Code vornehmen zu müssen. Integrierte Authentifizierungsdienste sichern APIs für den Zugriff durch andere Dienste oder Clients, die Benutzer repräsentieren. Folgende Identitätsanbieter werden unterstützt: Azure Active Directory, Facebook, Twitter, Google und Microsoft-Konto. Clients können die Active Directory Authentication Library (ADAL) oder das Mobile Apps-SDK verwenden. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung für API-Apps in Azure App Service](app-service-api-authentication.md).
-* **Visual Studio-Integration** – Dedizierte Tools in Visual Studio optimieren das Erstellen, Bereitstellen, Nutzen, Debuggen und Verwalten von API-Apps. Weitere Informationen finden Sie unter [Announcing the Azure SDK 2.8.1 for .NET](/blog/announcing-azure-sdk-2-8-1-for-net/)(in englischer Sprache).
+* **Visual Studio-Integration** – Dedizierte Tools in Visual Studio optimieren das Erstellen, Bereitstellen, Nutzen, Debuggen und Verwalten von API-Apps. Weitere Informationen finden Sie unter [Announcing the Azure SDK 2.8.1 for .NET](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-1-for-net/)(in englischer Sprache).
 * **Integration in Logik-Apps** – Von Ihnen erstellte API-Apps können von [App Service-Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)genutzt werden.  Weitere Informationen finden Sie unter [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../app-service-logic/app-service-logic-custom-hosted-api.md) und [Neue Schemaversion „2015-08-01-preview“](../app-service-logic/app-service-logic-schema-2015-08-01.md).
 
 Darüber hinaus kann eine API-App von Features profitieren, die von [Web-Apps](../app-service-web/app-service-web-overview.md) und [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bereitgestellt werden. Dies gilt auch umgekehrt: Wenn Sie eine API mithilfe einer Web-App oder einer mobilen App hosten, kann diese von API-App-Funktionen wie Swagger-Metadaten zur Generierung des Clientcodes und CORS für den domänenübergreifenden Browserzugriff profitieren. Der einzige Unterschied zwischen den drei App-Typen (API, Web, mobil) ist der Name und das Symbol im Azure-Portal.
@@ -62,6 +62,6 @@ Wenn Sie Fragen zu API-Apps stellen möchten, starten Sie einen Thread im [API-A
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

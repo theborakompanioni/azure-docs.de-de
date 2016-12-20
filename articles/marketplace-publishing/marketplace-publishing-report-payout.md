@@ -1,12 +1,12 @@
 ---
 title: Grundlegendes zu Azure Marketplace-Auszahlungsberichten | Microsoft Docs
-description: Informationen zum Überprüfen und Erfassen des Azure Marketplace-Auszahlungsberichts.
+description: "Informationen zum Überprüfen und Erfassen des Azure Marketplace-Auszahlungsberichts."
 services: marketplace-publishing
 documentationcenter: na
 author: v-jeana
 manager: lakoch
-editor: ''
-
+editor: 
+ms.assetid: 3e99aefe-abeb-414c-8689-15352d25aefd
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2016
 ms.author: v-jeana; hascipio; v-dabosl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 76aa5a1d8023b108b4d7bee1dcf1386e14809df9
+
 
 ---
-# Grundlegendes zu Azure Marketplace-Auszahlungsberichten
-## Öffnen und Anzeigen von Auszahlungsberichten
-Während des Übergangs zum Dev Center können einige Ihrer Auszahlungsberichte ggf. im Dev Center unter https://dev.windows.com/de-DE zu finden sein, während andere ggf. weiter im Veröffentlichungsportal unter https://publish.windowsazure.com zu finden sind.
+# <a name="understand-your-azure-marketplace-payout-reports"></a>Grundlegendes zu Azure Marketplace-Auszahlungsberichten
+## <a name="access-and-view-your-payout-reports"></a>Öffnen und Anzeigen von Auszahlungsberichten
+Während des Übergangs zum Dev Center können einige Ihrer Auszahlungsberichte ggf. im Dev Center unter https://dev.windows.com/en-us zu finden sein, während andere ggf. weiter im Veröffentlichungsportal unter https://publish.windowsazure.com zu finden sind.
 
 Auszahlungsberichte stehen jetzt im **Dev Center** für alle Marketplace-Angebote zur Verfügung, denen moderne Auszahlungsmethoden zugeordnet sind. Hierzu gehören zurzeit Folgende:
 
@@ -30,10 +34,10 @@ Für folgende Angebote stehen die Auszahlungsberichte weiterhin im **Veröffentl
 
 * Im Rahmen von Web Direct angebotene Daten- und Entwicklerdienste (hierfür wird weiter das ältere Auszahlungssystem verwendet).
 
-Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich etwaiger Rückerstattungen berechnet.
+Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich etwaiger Rückerstattungen berechnet.
 
-### Zugriff auf Auszahlungsberichte im Dev Center
-1. Navigieren Sie zum Dev Center unter https://dev.windows.com/de-DE.
+### <a name="access-payout-reports-in-dev-center"></a>Zugriff auf Auszahlungsberichte im Dev Center
+1. Navigieren Sie unter https://dev.windows.com/en-us zum Dev Center.
 2. Klicken Sie auf **Dashboard**.
    
     ![LandingPageDashboardHighlight][1]
@@ -41,37 +45,38 @@ Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich et
    
     ![DashboardPayoutSummary][2]
 
-## Anzeigen von Auszahlungsberichten im Dev Center
+## <a name="view-your-payout-reports-in-dev-center"></a>Anzeigen von Auszahlungsberichten im Dev Center
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-* Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben). Dieser Betrag beläuft sich zumeist auf 0 $, (es sei denn, ein Kunde zahlt weit im Voraus).
-* Klicken Sie in den Bereichen „Anstehende Zahlungen“ oder „Letzte Zahlung“ auf den Link **Details anzeigen**, um einen Hinweis zu diesen Auszahlungen anzuzeigen.
-* Klicken Sie auf **Zahlungsaufstellungen**, um die Details unter „Einnahmen“ nach App oder Produkt anzuzeigen.
-* Klicken Sie auf den Link **Anzeigen**, um einzelne Aufstellungen anzuzeigen.
+* Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben).  Dieser Betrag beläuft sich zumeist auf 0 $, (es sei denn, ein Kunde zahlt weit im Voraus).
+* Klicken Sie in den Bereichen „Anstehende Zahlungen“ oder „Letzte Zahlung“ auf den Link **Details anzeigen** , um einen Hinweis zu diesen Auszahlungen anzuzeigen.
+* Klicken Sie auf **Zahlungsaufstellungen** , um die Details unter „Einnahmen“ nach App oder Produkt anzuzeigen.
+* Klicken Sie auf den Link **Anzeigen** , um einzelne Aufstellungen anzuzeigen.
   
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
 * Verwenden Sie den Filter **Aufschlüsselung der Erlöse** unten in einer Aufstellung, um mehrere Apps/Produkte anzuzeigen, sofern vorhanden.
   
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
-## Anzeigen von Auszahlungsberichten im Veröffentlichungsportal
+## <a name="view-your-payout-reports-in-publishing-portal"></a>Anzeigen von Auszahlungsberichten im Veröffentlichungsportal
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-1. Navigieren Sie zum Veröffentlichungsportal (https://publish.windowsazure.com).
+1. Navigieren Sie zum Veröffentlichungsportal: https://publish.windowsazure.com.
 2. Klicken Sie im Abschnitt **Herausgeber** auf **Auszahlungsberichte**.
 3. Klicken Sie auf die Dropdownliste, um alle verfügbaren vierteljährlichen Auszahlungsberichte anzuzeigen.
    
     ![accessingpayoutreport][5]
 
-### Lesen von Auszahlungsberichten
+### <a name="read-your-payout-reports"></a>Lesen von Auszahlungsberichten
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-* Wenn Sie nach Posten für ein bestimmtes Quartal suchen möchten, wählen Sie in der Dropdownliste den Auszahlungsbericht für das betreffende Quartal aus. Wenn Sie sich also beispielsweise für Posten zwischen April und Juni 2015 interessieren, wählen Sie in der Dropdownliste den entsprechenden Datumsbereich aus.
-* Wenn Sie nach Details zu Auszahlungen für ein bestimmtes Quartal suchen, wählen Sie den Auszahlungsbericht für das Folgequartal aus. Wenn Sie sich also etwa für die Auszahlungen von April bis Juni 2015 interessieren, finden Sie die entsprechenden Beträge im Auszahlungsbericht für Juli bis September 2015. ![readingpayoutreport][6]
+* Wenn Sie nach Posten für ein bestimmtes Quartal suchen möchten, wählen Sie in der Dropdownliste den Auszahlungsbericht für das betreffende Quartal aus. Wenn Sie sich also beispielsweise für Posten zwischen April und Juni 2015 interessieren, wählen Sie in der Dropdownliste den entsprechenden Datumsbereich aus.
+* Wenn Sie nach Details zu Auszahlungen für ein bestimmtes Quartal suchen, wählen Sie den Auszahlungsbericht für das Folgequartal aus. Wenn Sie sich also etwa für die Auszahlungen von April bis Juni 2015 interessieren, finden Sie die entsprechenden Beträge im Auszahlungsbericht für Juli bis September 2015.
+  ![readingpayoutreport][6]
 * Der Bereich mit der Finanzübersicht zeigt Salden sowie Soll und Haben nach Kategorie.
 * Posten zeigen einzelne Transaktionen.
 
-## Definitionen
+## <a name="definitions"></a>Definitionen
 **Bereich mit der Finanzübersicht:**
 
 ![financialdefinitions][7]
@@ -80,17 +85,17 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 
 ![ledgerdefinitions][8]
 
-## Fragen zur Auszahlung
+## <a name="payout-questions"></a>Fragen zur Auszahlung
 Wenden Sie sich bei Fragen zu Ihren Auszahlungen an unser Supportteam.
 
 ![payoutquestions][9]
 
 1. Navigieren Sie zu den Supportseiten.
-2. Wählen Sie **Auszahlungen** aus.
-3. Wählen Sie **Auf Auszahlungen bezogene Anfragen** aus.
+2. Wählen Sie **Auszahlungen**aus.
+3. Wählen Sie **Auf Auszahlungen bezogene Anfragen**aus.
 4. Klicken auf **Anforderung starten**.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Erstellen Sie bei anderen Problemen eine Supportanfrage unter <https://portal.azure.com>.
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png
@@ -103,4 +108,8 @@ Erstellen Sie bei anderen Problemen eine Supportanfrage unter <https://portal.az
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
+ms.sourcegitcommit: ad50c6c12bc3b328d776f37fc31f44d90a0915a3
+ms.openlocfilehash: 990f899681b6828edac6fccfd4509f20812edbdf
 
 
 ---
@@ -29,7 +29,8 @@ ms.openlocfilehash: 47f8601471c6b1f6da5d57d1f30da51af76fba85
 > * [REST-API](data-lake-store-get-started-rest-api.md)
 > * [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
-> 
+> * [Python](data-lake-store-get-started-python.md)
+>
 > 
 
 Erfahren Sie, wie Sie das [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) zum Durchführen von einfachen Vorgängen nutzen, z.B. Ordner erstellen, Datendateien hochladen und herunterladen usw. Weitere Informationen zu Data Lake finden Sie unter [Übersicht über Azure Data Lake Store](data-lake-store-overview.md).
@@ -103,7 +104,7 @@ Erfahren Sie, wie Sie das [Azure Data Lake Store .NET SDK](https://msdn.microsof
 In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügbaren .NET-Methoden verwenden, um Vorgänge wie Authentifizierung, Dateiupload usw. durchzuführen.
 
 ## <a name="authentication"></a>Authentifizierung
-### <a name="if-you-are-using-enduser-authentication-recommended-for-this-tutorial"></a>Verwenden der Endbenutzerauthentifizierung (für dieses Tutorial empfohlen)
+### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>Verwenden der Endbenutzerauthentifizierung (für dieses Tutorial empfohlen)
 Verwenden Sie diese Option mit einer vorhandenen nativen Azure AD-Clientanwendung. Eine solche Anwendung ist im Anschluss bereitgestellt. Dieser Ansatz ermöglicht eine schnellere Bearbeitung des Tutorials.
 
     // User login via interactive popup
@@ -117,14 +118,14 @@ Verwenden Sie diese Option mit einer vorhandenen nativen Azure AD-Clientanwendun
 Im Anschluss folgen einige wissenswerte Informationen zu diesem Codeausschnitt.
 
 * Zur Vereinfachung des Tutorials werden in dem Codeausschnitt eine Azure AD-Domäne und eine Client-ID verwendet, die standardmäßig für alle Azure-Abonnements verfügbar sind. Dadurch können Sie **diesen Codeausschnitt unverändert in Ihrer Anwendung verwenden**.
-* Wenn Sie allerdings Ihre eigene Azure AD-Domäne und Anwendungsclient-ID verwenden möchten, müssen Sie eine native Azure AD-Anwendung erstellen und dann die Azure AD-Domäne, die Client-ID und den Umleitungs-URI für die erstellte Anwendung verwenden. Eine entsprechende Anleitung finden Sie unter [Erstellen einer Active Directory-Anwendung](../resource-group-create-service-principal-portal.md#create-an-active-directory-application) .
+* Wenn Sie allerdings Ihre eigene Azure AD-Domäne und Anwendungsclient-ID verwenden möchten, müssen Sie eine native Azure AD-Anwendung erstellen und dann die Azure AD-Domäne, die Client-ID und den Umleitungs-URI für die erstellte Anwendung verwenden. Eine entsprechende Anleitung finden Sie unter [Erstellen einer Active Directory-Anwendung](data-lake-store-end-user-authenticate-using-active-directory.md) .
 
 > [!NOTE]
 > Die Anleitung unter dem obigen Link bezieht sich auf eine Azure AD-Webanwendung. Zur Erstellung einer nativen Clientanwendung müssen jedoch genau die gleichen Schritte ausgeführt werden. 
 > 
 > 
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-client-secret"></a>Informationen zur Dienst-zu-Dienst-Authentifizierung mit geheimem Clientschlüssel
+### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>Informationen zur Dienst-zu-Dienst-Authentifizierung mit geheimem Clientschlüssel
 Mit dem folgenden Codeausschnitt können Sie unter Verwendung des geheimen Clientschlüssels/Anwendungsschlüssels/Dienstprinzipals eine nicht interaktive Authentifizierung Ihrer Anwendung durchführen. Verwenden Sie diese Option mit einer vorhandenen [Azure AD-Anwendung vom Typ „Web-App“](../resource-group-create-service-principal-portal.md).
 
     // Service principal / appplication authentication with client secret / key
@@ -136,7 +137,7 @@ Mit dem folgenden Codeausschnitt können Sie unter Verwendung des geheimen Clien
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
-### <a name="if-you-are-using-servicetoservice-authentication-with-certificate"></a>Informationen zur Dienst-zu-Dienst-Authentifizierung mit Zertifikat
+### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>Informationen zur Dienst-zu-Dienst-Authentifizierung mit Zertifikat
 Als dritte Möglichkeit können Sie den folgenden Codeausschnitt verwenden, um Ihre Anwendung auf nicht interaktive Weise zu authentifizieren, indem Sie das Zertifikat für eine Anwendung bzw. einen Dienstprinzipal nutzen. Verwenden Sie diese Option mit einer vorhandenen [Azure AD-Anwendung vom Typ „Web-App“](../resource-group-create-service-principal-portal.md).
 
     // Service principal / application authentication with certificate
@@ -260,6 +261,6 @@ Im folgenden Codeausschnitt wird eine `DownloadFile` -Methode veranschaulicht, d
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

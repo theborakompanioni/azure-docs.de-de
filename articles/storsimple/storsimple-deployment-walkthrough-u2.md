@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
+ms.date: 11/16/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 636b4ca48d242edfad2770a29f73f7a76edca034
+ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
+ms.openlocfilehash: f71c7e080b2c0b382f241d55b9ca0c7507c24a88
 
 
 ---
-# <a name="deploy-your-onpremises-storsimple-device-update-2"></a>Bereitstellen lokaler StorSimple-Geräte (Update 2)
+# <a name="deploy-your-on-premises-storsimple-device-update-2"></a>Bereitstellen lokaler StorSimple-Geräte (Update 2)
 > [!div class="op_single_selector"]
 > * [Update 2 oder höher ](storsimple-deployment-walkthrough-u2.md)
 > * [Update 1](storsimple-deployment-walkthrough-u1.md)
@@ -56,7 +56,7 @@ Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSi
 | [Schritt 1: Erstellen eines neuen Diensts](#step-1-create-a-new-service) |Richten Sie Cloudverwaltung und -speicher für Ihr StorSimple-Gerät ein. *Überspringen Sie diesen Schritt, wenn Sie bereits über einen Dienst für andere StorSimple-Geräte verfügen*. |
 | [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) |Verwenden Sie diesen Schlüssel zum Registrieren Ihres StorSimple-Geräts sowie zum Herstellen einer Verbindung mit dem Verwaltungsdienst. |
 | [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |Verwenden Sie den Verwaltungsdienst, um das Gerät zum Abschluss der Einrichtung mit Ihrem Netzwerk zu verbinden und in Azure zu registrieren. |
-| [Schritt 4: Abschließen der minimalen Geräteinstallation](#step-4-complete-minimum-device-setupd)</br>[Optional: Aktualisieren Sie Ihr StorSimple-Gerät.](#scan-for-and-apply-updates) |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
+| [Schritt 4: Abschließen der minimalen Geräteinstallation](#step-4-complete-minimum-device-setup)</br>[Optional: Aktualisieren Sie Ihr StorSimple-Gerät.](#scan-for-and-apply-updates) |Verwenden Sie den Verwaltungsdienst, um die Gerätekonfiguration abzuschließen und es für die Bereitstellung von Speicher zu aktivieren. |
 | [Schritt 5: Erstellen eines Volumecontainers](#step-5-create-a-volume-container) |Erstellen Sie einen Container zum Bereitstellen von Volumes. Ein Volumecontainer verfügt über Einstellungen für das Speicherkonto, die Bandbreite und die Verschlüsselung für alle enthaltenen Volumes. |
 | [Schritt 6: Erstellen eines Volumes](#step-6-create-a-volume) |Stellen Sie ein oder mehrere Speichervolumes für Ihre Server auf dem StorSimple-Gerät bereit. |
 | [Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes](#step-7-mount-initialize-and-format-a-volume)</br>[Optional: Konfigurieren Sie MPIO.](storsimple-configure-mpio-windows-server.md) |Verbinden Sie Ihre Server mit dem vom Gerät bereitgestellten iSCSI-Speicher. Konfigurieren Sie optional MPIO, um sicherzustellen, dass Ihre Server Link-, Netzwerk- und Schnittstellenfehler tolerieren können. |
@@ -95,7 +95,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 * Die Ports in der Datencenter-Firewall werden geöffnet, um iSCSI- und Clouddatenverkehr zu ermöglichen, wie in [Netzwerkanforderungen für das StorSimple-Gerät](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)beschrieben.
 
-## <a name="stepbystep-deployment"></a>SCHRITTWEISE BEREITSTELLUNG
+## <a name="step-by-step-deployment"></a>SCHRITTWEISE BEREITSTELLUNG
 Verwenden Sie die folgenden schrittweisen Anweisungen, um Ihr StorSimple-Gerät im Datencenter bereitzustellen.
 
 ## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
@@ -224,6 +224,6 @@ Führen Sie die folgenden Schritte im Verwaltungsportal aus, um nach Bedarf eine
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

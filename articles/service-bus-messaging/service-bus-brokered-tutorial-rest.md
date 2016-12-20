@@ -1,22 +1,22 @@
 ---
 title: REST-Tutorial zu Service Bus-Brokermessaging | Microsoft Docs
 description: REST-Lernprogramm zu Brokermessaging
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 9b7a8147-a1b1-42fc-b30e-f52e79a902b5
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/27/2016
+ms.date: 12/12/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 45b72037e2de01b9201edf3e4ebee7e80d996383
+ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
+ms.openlocfilehash: b2cd9e5db765aa2ffbb00063ae193e39ffe9de4e
 
 
 ---
@@ -50,7 +50,7 @@ Nach dem Abrufen des Namespace und der Anmeldeinformationen im ersten Schritt er
 2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie im Menü **Datei** auf **Neu** und anschließend auf **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**), wählen Sie die Vorlage **Konsolenanwendung** aus, und nennen Sie sie **Microsoft.ServiceBus.Samples**). Verwenden Sie den standardmäßigen Speicherort. Klicken Sie auf **OK** , um das Projekt zu erstellen.
 3. Stellen Sie in „Program.cs“ sicher, dass Ihre `using`-Anweisungen wie folgt angezeigt werden:
    
-    ```
+    ```csharp
     using System;
     using System.Globalization;
     using System.IO;
@@ -62,7 +62,7 @@ Nach dem Abrufen des Namespace und der Anmeldeinformationen im ersten Schritt er
 4. Benennen Sie den Namespace bei Bedarf für das Programm in `Microsoft.ServiceBus.Samples` um, indem Sie den Standardnamen von Visual Studio ändern.
 5. Fügen Sie in der `Program`-Klasse die folgenden globalen Variablen hinzu:
    
-    ```
+    ```csharp
     static string serviceNamespace;
     static string baseAddress;
     static string token;
@@ -70,7 +70,7 @@ Nach dem Abrufen des Namespace und der Anmeldeinformationen im ersten Schritt er
     ```
 6. Fügen Sie in `Main()` den folgenden Code ein:
    
-    ```
+    ```csharp
     Console.Write("Enter your service namespace: ");
     serviceNamespace = Console.ReadLine();
    
@@ -146,7 +146,7 @@ Der nächste Schritt ist das Schreiben einer Methode, mit der der Namespace und 
 ### <a name="create-a-getsastoken-method"></a>Erstellen einer GetSASToken()-Methode
 Fügen Sie den folgenden Code nach der `Main()`-Methode in der `Program`-Klasse ein:
 
-```
+```csharp
 private static string GetSASToken(string SASKeyName, string SASKeyValue)
 {
   TimeSpan fromEpochStart = DateTime.UtcNow - new DateTime(1970, 1, 1);
@@ -165,7 +165,7 @@ Der nächste Schritt ist das Schreiben einer Methode, die zum Erstellen einer Wa
 
 Fügen Sie den folgenden Code direkt nach dem `GetSASToken()`-Code ein, den Sie im vorherigen Schritt hinzugefügt haben:
 
-```
+```csharp
 // Uses HTTP PUT to create the queue
 private static string CreateQueue(string queueName, string token)
 {
@@ -193,7 +193,7 @@ In diesem Schritt fügen Sie eine Methode hinzu, in der der HTTP POST-Befehl im 
 
 1. Fügen Sie den folgenden Code direkt nach dem `CreateQueue()`-Code ein, den Sie im vorherigen Schritt hinzugefügt haben:
    
-    ```
+    ```csharp
     // Sends a message to the "queueName" queue, given the name and the value to enqueue
     // Uses an HTTP POST request.
     private static void SendMessage(string queueName, string body)
@@ -208,7 +208,7 @@ In diesem Schritt fügen Sie eine Methode hinzu, in der der HTTP POST-Befehl im 
     ```
 2. Standardmäßige Eigenschaften von Brokernachrichten werden in einem `BrokerProperties`-HTTP-Header angeordnet. Die Brokereigenschaften müssen im JSON-Format serialisiert werden. Fügen Sie den folgenden Code wie im vorherigen Beispiel direkt vor dem `webClient.UploadData()`-Aufruf hinzu, um einen **TimeToLive**-Wert von 30 Sekunden anzugeben und der Nachricht die Nachrichtenbezeichnung „M1“ hinzuzufügen:
    
-    ```
+    ```csharp
     // Add brokered message properties "TimeToLive" and "Label"
     webClient.Headers.Add("BrokerProperties", "{ \"TimeToLive\":30, \"Label\":\"M1\"}");
     ```
@@ -216,7 +216,7 @@ In diesem Schritt fügen Sie eine Methode hinzu, in der der HTTP POST-Befehl im 
     Beachten Sie, dass Brokernachrichteneigenschaften hinzugefügt wurden und auch weiterhin hinzugefügt werden. Daher muss in der Sendeanforderung eine API-Version angegeben werden, von der alle Brokernachrichteneigenschaften unterstützt werden, die Teil der Anforderung sind. Wenn die angegebene API-Version eine Brokernachrichteneigenschaft nicht unterstützt, wird diese Eigenschaft ignoriert.
 3. Benutzerdefinierte Nachrichteneigenschaften werden als Satz von Schlüssel-Wert-Paaren definiert. Jede benutzerdefinierte Eigenschaft wird in ihrem eigenen TPPT-Header gespeichert. Fügen Sie den folgenden Code direkt vor dem `webClient.UploadData()`-Aufruf hinzu, der im vorherigen Beispiel zu sehen ist, um die benutzerdefinierten Eigenschaften „Priority“ und „Customer“ hinzuzufügen:
    
-    ```
+    ```csharp
     // Add custom properties "Priority" and "Customer".
     webClient.Headers.Add("Priority", "High");
     webClient.Headers.Add("Customer", "12345");
@@ -227,7 +227,7 @@ Im nächsten Schritt wird eine Methode hinzugefügt, bei der der HTTP DELETE-Bef
 
 Fügen Sie den folgenden Code direkt nach dem `SendMessage()`-Code ein, den Sie im vorherigen Schritt hinzugefügt haben:
 
-```
+```csharp
 // Receives and deletes the next message from the given resource (queue, topic, or subscription)
 // using the resourceName and an HTTP DELETE request
 private static string ReceiveAndDeleteMessage(string resourceName)
@@ -251,7 +251,7 @@ Der nächste Schritt ist das Schreiben einer Methode, die zum Erstellen eines Th
 ### <a name="create-a-topic"></a>Erstellen eines Themas
 Fügen Sie den folgenden Code direkt nach dem `ReceiveAndDeleteMessage()`-Code ein, den Sie im vorherigen Schritt hinzugefügt haben:
 
-```
+```csharp
 // Using an HTTP PUT request.
 private static string CreateTopic(string topicName)
 {
@@ -276,7 +276,7 @@ private static string CreateTopic(string topicName)
 ### <a name="create-a-subscription"></a>Erstellen eines Abonnements
 Mit dem folgenden Code wird ein Abonnement des Themas erstellt, das Sie im vorherigen Schritt erstellt haben. Fügen Sie den folgenden Code direkt nach der `CreateTopic()`-Definition hinzu:
 
-```
+```csharp
 private static string CreateSubscription(string topicName, string subscriptionName)
 {
     var subscriptionAddress = baseAddress + topicName + "/Subscriptions/" + subscriptionName;
@@ -303,7 +303,7 @@ In diesem Schritt fügen Sie Code hinzu, mit dem die Nachrichteneigenschaften ab
 ### <a name="retrieve-an-atom-feed-with-the-specified-resources"></a>Abrufen eines Atom-Feeds mit den angegebenen Ressourcen
 Fügen Sie den folgenden Code direkt nach der `CreateSubscription()`-Methode hinzu, die Sie im vorherigen Schritt hinzugefügt haben:
 
-```
+```csharp
 private static string GetResources(string resourceAddress)
 {
     string fullAddress = baseAddress + resourceAddress;
@@ -317,7 +317,7 @@ private static string GetResources(string resourceAddress)
 ### <a name="delete-messaging-entities"></a>Löschen von Nachrichtenentitäten
 Fügen Sie den folgenden Code direkt nach dem Code hinzu, den Sie im vorherigen Schritt hinzugefügt haben:
 
-```
+```csharp
 private static string DeleteResource(string resourceName)
 {
     string fullAddress = baseAddress + resourceName;
@@ -333,7 +333,7 @@ private static string DeleteResource(string resourceName)
 ### <a name="format-the-atom-feed"></a>Formatieren des Atom-Feeds
 Die `GetResources()`-Methode enthält einen Aufruf von einer `FormatXml()`-Methode, mit der der abgerufene Atom-Feed neu formatiert wird, damit er besser lesbar ist. Unten ist die Definition von `FormatXml()` angegeben. Fügen Sie diesen Code direkt nach dem `DeleteResource()`-Code hinzu, den Sie im vorherigen Abschnitt hinzugefügt haben:
 
-```
+```csharp
 // Formats the XML string to be more human-readable; intended for display purposes
 private static string FormatXml(string inputXml)
 {
@@ -360,7 +360,7 @@ Wenn keine Fehler vorliegen, können Sie F5 drücken, um die Anwendung auszufüh
 ### <a name="example"></a>Beispiel
 Das folgende Beispiel enthält den vollständigen Code nach dem Ausführen aller Schritte in diesem Lernprogramm.
 
-```
+```csharp
 using System;
 using System.Globalization;
 using System.IO;
@@ -604,6 +604,6 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

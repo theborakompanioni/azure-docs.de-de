@@ -2,21 +2,25 @@
 title: Richtlinien in Azure API Management | Microsoft Docs
 description: Erfahren Sie, wie Sie Richtlinien in API Management erstellen, bearbeiten und konfigurieren.
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 537e5caf-708b-430e-a83f-72b70af28aa9
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bb6f3ee125f3640315cbb885148eb6d328f0c6e4
+
 
 ---
-# Richtlinien in Azure API Management
+# <a name="policies-in-azure-api-management"></a>Richtlinien in Azure API Management
 Richtlinien sind ein umfassendes Werkzeug in Azure API Management, mit dem Anbieter das Verhalten der API über eine Konfiguration verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind z. B. Formatumwandlungen von XML nach JSON und Aufrufbeschränkungen, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Viele weitere Richtlinien sind vorkonfiguriert verfügbar.
 
 In der [Richtlinienreferenz][Richtlinienreferenz] finden Sie eine komplette Liste der Richtlinienanweisungen und deren Einstellungen.
@@ -26,7 +30,7 @@ Richtlinien werden im Gateway, das sich zwischen API-Consumer und der verwaltete
 Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung][Ablaufsteuerung] und [Variable festlegen][Variable festlegen], basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien][Erweiterte Richtlinien] und [Richtlinienausdrücke][Richtlinienausdrücke].
 
 ## <a name="scopes"> </a>Konfigurieren von Richtlinien
-Richtlinien können entweder global oder im Geltungsbereich eines [Produkts][Produkts], einer [API][API] oder einer [Operation][Operation] konfiguriert werden. Um Richtlinien zu konfigurieren, navigieren Sie im Herausgeberportal zum Richtlinien-Editor.
+Richtlinien können entweder global oder im Geltungsbereich eines [Produkt][Produkt], einer [API][API] oder eines [Vorgang][Vorgang] konfiguriert werden. Um Richtlinien zu konfigurieren, navigieren Sie im Herausgeberportal zum Richtlinien-Editor.
 
 ![Menü "Richtlinien"][policies-menu]
 
@@ -42,13 +46,13 @@ Da bereits eine Richtlinie angewendet wurde, wird die Konfiguration in der Defin
 
 ![Konfigurieren][policies-configure]
 
-Die Richtlinie wird zunächst schreibgeschützt angezeigt. Klicken Sie auf die Aktion **Richtlinie bearbeiten**, um die Definition zu bearbeiten.
+Die Richtlinie wird zunächst schreibgeschützt angezeigt. Klicken Sie auf die Aktion **Richtlinie bearbeiten** , um die Definition zu bearbeiten.
 
 ![Bearbeiten][policies-edit]
 
 Die Richtliniendefinition ist ein einfaches XML-Dokument, das eine Sequenz eingehender und ausgehender Anweisungen beschreibt. Das XML-Dokument kann direkt im Definitionsfenster bearbeitet werden. Auf der rechten Seite sehen Sie eine Liste mit Anweisungen, und die für den aktuellen Geltungsbereich anwendbaren Anweisungen sind aktiviert und hervorgehoben, wie Sie am Beispiel der Anweisung **Limit Call Rate** im obigen Screenshot sehen können.
 
-Wenn Sie auf eine aktivierte Anweisung klicken, wird der entsprechende XML-Ausschnitt an der Cursorposition in der Definitionsansicht eingefügt.
+Wenn Sie auf eine aktivierte Anweisung klicken, wird der entsprechende XML-Ausschnitt an der Cursorposition in der Definitionsansicht eingefügt. 
 
 > [!NOTE]
 > Wenn die Richtlinie, die Sie hinzufügen möchten, nicht aktiviert ist, stellen Sie sicher, dass Sie sich im richtigen Bereich für diese Richtlinie befinden. Für jede Richtlinienanweisung sind bestimmte Bereiche und Richtlinienabschnitte vorgesehen. Informationen zu den Richtlinienabschnitten und Bereichen für eine Richtlinie finden Sie in der [Richtlinienreferenz][Richtlinienreferenz] im Abschnitt **Verwendung** für die jeweilige Richtlinie.
@@ -57,11 +61,11 @@ Wenn Sie auf eine aktivierte Anweisung klicken, wird der entsprechende XML-Aussc
 
 In der [Richtlinienreferenz][Richtlinienreferenz] finden Sie eine komplette Liste der Richtlinienanweisungen und deren Einstellungen.
 
-Um eine neue Anweisung zur Einschränkung eingehender Anfragen auf bestimmte IP-Adressen zu erstellen, platzieren Sie den Cursor innerhalb des `inbound`-XML-Elements, und klicken Sie auf die Anweisung **Restrict caller IPs**.
+Um eine neue Anweisung zur Einschränkung eingehender Anfragen auf bestimmte IP-Adressen zu erstellen, platzieren Sie den Cursor innerhalb des `inbound` -XML-Elements, und klicken Sie auf die Anweisung **Restrict caller IPs** .
 
 ![Einschränkungsrichtlinien][policies-restrict]
 
-Daraufhin wird ein XML-Ausschnitt in das `inbound`-Element eingefügt, der Anweisungen zur Konfiguration der Anweisung enthält.
+Daraufhin wird ein XML-Ausschnitt in das `inbound` -Element eingefügt, der Anweisungen zur Konfiguration der Anweisung enthält.
 
     <ip-filter action="allow | forbid">
         <address>address</address>
@@ -97,9 +101,9 @@ Richtlinien sind Serien von Anweisungen, die in der Reihenfolge für Anfrage und
       </on-error>
     </policies> 
 
-Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](https://msdn.microsoft.com/library/azure/mt629506.aspx) (in englischer Sprache).
+Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](https://msdn.microsoft.com/library/azure/mt629506.aspx)(in englischer Sprache).
 
-Da Richtlinien auf unterschiedlichen Ebenen angegeben werden können (global, Produkt, API und Operation), können Sie in der Konfiguration die Reihenfolge angeben, in der die Anweisungen der Definition mit Bezug zur übergeordneten Richtlinie ausgeführt werden sollen.
+Da Richtlinien auf unterschiedlichen Ebenen angegeben werden können (global, Produkt, API und Operation), können Sie in der Konfiguration die Reihenfolge angeben, in der die Anweisungen der Definition mit Bezug zur übergeordneten Richtlinie ausgeführt werden sollen. 
 
 Richtlinienbereiche werden in der folgenden Reihenfolge ausgewertet.
 
@@ -110,7 +114,7 @@ Richtlinienbereiche werden in der folgenden Reihenfolge ausgewertet.
 
 Die Anweisungen in diesen Bereichen werden entsprechend der Platzierung des `base`-Elements ausgewertet, sofern es vorhanden ist.
 
-Wenn Sie z. B. eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das Basiselement.
+Wenn Sie z. B. eine Richtlinie auf der globalen Ebene und eine Richtlinie für eine API konfiguriert haben, dann werden immer beide Richtlinien angewendet, wenn diese API aufgerufen wird. API Management ermöglicht eine deterministische Festlegung der Reihenfolge kombinierter Richtlinienanweisungen über das Basiselement. 
 
     <policies>
         <inbound>
@@ -124,9 +128,9 @@ In der obigen Beispiel-Richtliniendefinition wird die `cross-domain`-Anweisung v
 
 Wenn in einer Richtlinienanweisung dieselbe Richtlinie zweimal angezeigt wird, wird die zuletzt ausgewertete Richtlinie angewendet. Auf diese Weise können Sie Richtlinien außer Kraft setzen, die in einem übergeordneten Bereich definiert sind. Um die Richtlinien im aktuellen Bereich im Richtlinien-Editor anzuzeigen, klicken Sie auf **Recalculate effective policy for selected scope**.
 
-Beachten Sie, dass eine globale Richtlinie über keine übergeordnete Richtlinie verfügt und dass daher die Verwendung des `<base>`-Elements in der Richtlinie keinerlei Auswirkung hat.
+Beachten Sie, dass eine globale Richtlinie über keine übergeordnete Richtlinie verfügt und dass daher die Verwendung des `<base>` -Elements in der Richtlinie keinerlei Auswirkung hat. 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich das folgende Video zu Richtlinienausdrücken an.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player]
@@ -134,9 +138,9 @@ Sehen Sie sich das folgende Video zu Richtlinienausdrücken an.
 > 
 
 [Richtlinienreferenz]: api-management-policy-reference.md
-[Produkts]: api-management-howto-add-products.md
-[API]: api-management-howto-add-products.md#add-apis
-[Operation]: api-management-howto-add-operations.md
+[Produkt]: api-management-howto-add-products.md
+[API]: api-management-howto-add-products.md#add-apis 
+[Vorgang]: api-management-howto-add-operations.md
 
 [Erweiterte Richtlinien]: https://msdn.microsoft.com/library/azure/dn894085.aspx
 [Ablaufsteuerung]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
@@ -151,4 +155,8 @@ Sehen Sie sich das folgende Video zu Richtlinienausdrücken an.
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 09/27/2016
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 900967975694a688b6d5054cb351746819b65f16
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8ac37244d1e691a2f075116f3d78b89923cfb845
 
 
 ---
@@ -78,7 +78,7 @@ Bei der erstmaligen Erstellung eines Recovery Services-Tresors bestimmen Sie, wi
 
 Nachdem Sie nun über einen Tresor verfügen, können Sie Ihre Infrastruktur zum Sichern von Dateien und Ordnern vorbereiten, indem Sie den Microsoft Azure Recovery Services-Agent sowie Tresoranmeldeinformationen herunterladen.
 
-## <a name="step-3-download-files"></a>Schritt 3: Herunterladen der Dateien
+## <a name="step-3---download-files"></a>Schritt 3: Herunterladen der Dateien
 1. Klicken Sie auf dem Dashboard des Recovery Services-Tresors auf **Einstellungen** .
    
     ![Öffnen des Blatts „Backup Goal“ (Sicherungsziel)](./media/backup-try-azure-backup-in-10-mins/settings-button.png)
@@ -102,7 +102,7 @@ Nachdem Sie nun über einen Tresor verfügen, können Sie Ihre Infrastruktur zum
    
     ![Agent für Windows Server oder Windows-Client herunterladen](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
 
-## <a name="step-4-install-and-register-the-agent"></a>Schritt 4: Installieren und Registrieren des Agents
+## <a name="step-4--install-and-register-the-agent"></a>Schritt 4: Installieren und Registrieren des Agents
 > [!NOTE]
 > Die Aktivierung der Sicherung über das Azure-Portal wird in Kürze verfügbar. Aktuell wird der Microsoft Azure Recovery Services-Agent lokal zum Sichern von Dateien und Ordnern verwendet.
 > 
@@ -184,6 +184,6 @@ Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möch
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

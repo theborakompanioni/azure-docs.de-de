@@ -1,32 +1,36 @@
 ---
-title: Hinzufügen von Microsoft Translator in Logik-Apps | Microsoft Docs
-description: Übersicht über den Microsoft Translator-Connector mit REST-API-Parametern
-services: ''
-suite: ''
-documentationcenter: ''
+title: "Hinzufügen von Microsoft Translator in Logik-Apps | Microsoft Docs"
+description: "Übersicht über den Microsoft Translator-Connector mit REST-API-Parametern"
+services: 
+suite: 
+documentationcenter: 
 author: MandiOhlinger
-manager: erikre
-editor: ''
+manager: anneta
+editor: 
 tags: connectors
-
+ms.assetid: da782baf-8bf8-4973-8238-e469865f5328
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2016
+ms.date: 11/07/2016
 ms.author: mandia
+translationtype: Human Translation
+ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
+ms.openlocfilehash: f6e7cf0e9e2055df5f8a9fcf9ea49330a91be656
+
 
 ---
-# Erste Schritte mit dem Microsoft Translator-Connector
-Stellen Sie eine Verbindung mit Microsoft Translator her, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Mit Microsoft Translator können Sie folgende Aktionen ausführen:
+# <a name="get-started-with-the-microsoft-translator-connector"></a>Erste Schritte mit dem Microsoft Translator-Connector
+Stellen Sie eine Verbindung mit Microsoft Translator her, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Mit Microsoft Translator können Sie folgende Aktionen ausführen: 
 
-* Erstellen eines Geschäftsworkflows basierend auf den Daten, die von Microsoft Translator abgerufen werden.
+* Erstellen eines Geschäftsworkflows basierend auf den Daten, die von Microsoft Translator abgerufen werden. 
 * Verwenden von Aktionen, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn beispielsweise eine neue Datei in Dropbox erstellt wird, können Sie den Text in der Datei mit Microsoft Translator in eine andere Sprache übersetzen.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-## Trigger und Aktionen
+## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Microsoft Translator umfasst die folgenden Aktionen. Es gibt keine Trigger.
 
 | Trigger | Aktionen |
@@ -35,93 +39,102 @@ Microsoft Translator umfasst die folgenden Aktionen. Es gibt keine Trigger.
 
 Alle Connectors unterstützen Daten im JSON- und XML-Format.
 
-## Herstellen einer Verbindung mit Microsoft Translator
-> [!INCLUDE [Schritte zum Herstellen einer Verbindung mit Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
+## <a name="create-a-connection-to-microsoft-translator"></a>Herstellen einer Verbindung mit Microsoft Translator
+> [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 
 
-## Swagger-REST-API – Referenz
+## <a name="swagger-rest-api-reference"></a>Swagger-REST-API – Referenz
 Gilt für Version: 1.0.
 
-### Sprache erkennen
-Erkennt die Ausgangssprache des angegebenen Texts. ```GET: /Detect```
+### <a name="detect-language"></a>Sprache erkennen
+Erkennt die Ausgangssprache des angegebenen Texts.  
+```GET: /Detect```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| query |string |Ja |query |(Keine) |Text, dessen Sprache identifiziert wird |
+| query |string |Ja |query |Keine |Text, dessen Sprache identifiziert wird |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-### Text-to-Speech
-Konvertiert einen angegebenen Text in eine Sprachausgabe (Audiodatenstrom im Wave-Format). ```GET: /Speak```
+### <a name="text-to-speech"></a>Text-to-Speech
+Konvertiert einen angegebenen Text als Audiodatenstrom im Wave-Format in Sprache.  
+```GET: /Speak```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| query |string |Ja |query |(Keine) |Zu konvertierender Text |
+| query |string |Ja |query |Keine |Zu konvertierender Text |
 | Sprache |string |Ja |query |(Keine) |Sprachcode zum Generieren der Sprache (Beispiel: „de-de“) |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-### Text übersetzen
-Übersetzt Text mit Microsoft Translator in eine angegebene Sprache. ```GET: /Translate```
+### <a name="translate-text"></a>Text übersetzen
+Konvertiert Text mit Microsoft Translator in eine bestimmte Sprache.  
+```GET: /Translate```
 
 | Name | Datentyp | Erforderlich | Enthalten in | Standardwert | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
-| query |string |Ja |query |(Keine) |Zu übersetzender Text |
-| languageTo |string |Ja |query |(Keine) |Code der Zielsprache (Beispiel: „fr“) |
+| query |string |Ja |query |Keine |Zu übersetzender Text |
+| languageTo |string |Ja |query |Keine |Code der Zielsprache (Beispiel: „fr“) |
 | languageFrom |string |no |query |(Keine) |Quellsprache. Wenn diese nicht angegeben wurde, versucht Microsoft Translator, sie automatisch zu erkennen. (Beispiel: „de“) |
 | category |string |no |query |allgemein |Übersetzungskategorie (Standard: „Allgemein“) |
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-### Sprachen abrufen
-Ruft alle Sprachen ab, die von Microsoft Translator unterstützt werden. ```GET: /TranslatableLanguages```
+### <a name="get-languages"></a>Sprachen abrufen
+Ruft alle Sprachen ab, die von Microsoft Translator unterstützt werden.  
+```GET: /TranslatableLanguages```
+
+Es gibt keine Parameter für diesen Aufruf. 
+
+#### <a name="response"></a>Antwort
+| Name | Beschreibung |
+| --- | --- |
+| 200 |OK |
+| die Standardeinstellung |Fehler beim Vorgang. |
+
+### <a name="get-speech-languages"></a>Sprachen für Sprachausgabe abrufen
+Ruft die verfügbaren Sprachen für die Sprachsynthese ab.  
+```GET: /SpeakLanguages``` 
 
 Es gibt keine Parameter für diesen Aufruf.
 
-#### Antwort
+#### <a name="response"></a>Antwort
 | Name | Beschreibung |
 | --- | --- |
 | 200 |OK |
 | die Standardeinstellung |Fehler beim Vorgang. |
 
-### Sprachen für Sprachausgabe abrufen
-Ruft die für die Sprachsynthese verfügbaren Sprachen ab. ```GET: /SpeakLanguages```
-
-Es gibt keine Parameter für diesen Aufruf.
-
-#### Antwort
-| Name | Beschreibung |
-| --- | --- |
-| 200 |OK |
-| die Standardeinstellung |Fehler beim Vorgang. |
-
-## Objektdefinitionen
-#### Sprache: Sprachmodell für mit Microsoft Translator übersetzbare Sprachen
+## <a name="object-definitions"></a>Objektdefinitionen
+#### <a name="language-language-model-for-microsoft-translator-translatable-languages"></a>Sprache: Sprachmodell für mit Microsoft Translator übersetzbare Sprachen
 | Eigenschaftenname | Datentyp | Erforderlich |
 | --- | --- | --- |
 | Code |string |no |
 | Name |string |no |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Kehren Sie zur [Liste mit den APIs](apis-list.md) zurück.
+Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
 
 <!--References-->
 [5]: https://datamarket.azure.com/developer/applications/
 [6]: ./media/connectors-create-api-microsofttranslator/register-your-application.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,13 +1,13 @@
 ---
-title: Konfigurieren der Tunnelerzwingung für Standort-zu-Standort-Verbindungen mit dem Resource Manager-Bereitstellungsmodell | Microsoft Docs
-description: 'Gewusst wie: „Erzwingen“ der Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort.'
+title: "Konfigurieren der Tunnelerzwingung für Standort-zu-Standort-Verbindungen mit dem Resource Manager-Bereitstellungsmodell | Microsoft Docs"
+description: "Gewusst wie: „Erzwingen“ der Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: cbe58db8-b598-4c9f-ac88-62c865eb8721
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4159001eff9010e126a1f0a0f9d9eb06b8397eb3
+
 
 ---
-# Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell
+# <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell
 > [!div class="op_single_selector"]
 > * [PowerShell – klassisch](vpn-gateway-about-forced-tunneling.md)
 > * [PowerShell – Resource Manager](vpn-gateway-forced-tunneling-rm.md)
@@ -40,8 +44,8 @@ Eine Verbindung mit erzwungenem Tunneln kann sowohl für das klassische Bereitst
 
 [!INCLUDE [vpn-gateway-table-forced-tunneling](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
 
-## Informationen zur Tunnelerzwingung
-Das folgende Diagramm veranschaulicht die Funktionsweise der Tunnelerzwingung.
+## <a name="about-forced-tunneling"></a>Informationen zur Tunnelerzwingung
+Das folgende Diagramm veranschaulicht die Funktionsweise der Tunnelerzwingung. 
 
 ![Tunnelerzwingung](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
 
@@ -49,7 +53,7 @@ Im obigen Beispiel wird für das Frontend-Subnetz kein Tunneln erzwungen. Die Wo
 
 Dadurch können Sie den Internetzugriff über die virtuellen Computer oder Clouddienste in Azure einschränken und überprüfen, während die erforderliche mehrschichtige Dienstarchitektur weiterhin in Betrieb bleibt. Sie können das erzwungene Tunneln auch auf alle virtuellen Netzwerke anwenden, wenn in diesen keine Workloads mit Internetverbindung erforderlich sind.
 
-## Anforderungen und Überlegungen
+## <a name="requirements-and-considerations"></a>Anforderungen und Überlegungen
 Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen Netzwerk konfiguriert. Das Umleiten von Datenverkehr an einen lokalen Standort wird als eine Standardroute zum Azure-VPN-Gateway umgesetzt. Weitere Informationen zu benutzerdefiniertem Routing und virtuellen Netzwerken finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](../virtual-network/virtual-networks-udr-overview.md).
 
 * Jedes Subnetz des virtuellen Netzwerks verfügt über eine integrierte Systemroutingtabelle. Die Systemroutingtabelle verfügt über die folgenden drei Gruppen von Routen:
@@ -59,33 +63,33 @@ Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen
   * **Standardroute:** direkt zum Internet. Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
 * In diesem Verfahren werden benutzerdefinierte Routen (User Defined Routes, UDR) verwendet, um eine Routingtabelle zu erstellen, damit eine Standardroute hinzugefügt wird. Anschließend verknüpfen Sie die Routingtabelle mit den VNet-Subnetzen, um die Tunnelerzwingung in diesen Subnetzen zu aktivieren.
 * Die Tunnelerzwingung muss einem VNet zugeordnet werden, das über ein routenbasiertes VPN-Gateway verfügt. Sie müssen einen "Standardstandort" unter den standortübergreifenden lokalen Standorten auswählen, der mit dem virtuellen Netzwerk verbunden ist.
-* Die ExpressRoute-Tunnelerzwingung kann über diesen Mechanismus nicht konfiguriert werden. Sie wird stattdessen durch Anfordern einer Standardroute über die ExpressRoute-BGP-Peeringsitzungen aktiviert. Weitere Informationen finden Sie unter der [ExpressRoute-Dokumentation](https://azure.microsoft.com/documentation/services/expressroute/).
+* Die ExpressRoute-Tunnelerzwingung kann über diesen Mechanismus nicht konfiguriert werden. Sie wird stattdessen durch Anfordern einer Standardroute über die ExpressRoute-BGP-Peeringsitzungen aktiviert. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 
-## Konfigurationsübersicht
+## <a name="configuration-overview"></a>Konfigurationsübersicht
 Das folgende Verfahren unterstützt Sie beim Erstellen einer Ressourcengruppe und eines VNets. Anschließend erstellen Sie ein VPN-Gateway und konfigurieren die Tunnelerzwingung. Bei diesem Verfahren verfügt das virtuelle Netzwerk „MultiTier-VNet“ über drei Subnetze: *Frontend*, *Midtier* und *Backend*, die vier standortübergreifende Verbindungen aufweisen: *DefaultSiteHQ* und drei *Verzweigungen*.
 
 Mithilfe der Schritte wird festgelegt, dass *DefaultSiteHQ* die Standard-Standortverbindung für die Tunnelerzwingung ist und die Subnetze „Midtier“ und „Backend“ die Tunnelerzwingung verwenden müssen.
 
-## Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
 
-* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager (1.0 oder höher) installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+* Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager (1.0 oder höher) installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
 
-## Konfigurieren der Tunnelerzwingung
+## <a name="configure-forced-tunneling"></a>Konfigurieren der Tunnelerzwingung
 1. Melden Sie sich in der PowerShell-Konsole bei Ihrem Azure-Konto an. Sie werden von diesem Cmdlet zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto aufgefordert. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen.
    
         Login-AzureRmAccount 
 2. Rufen Sie eine Liste Ihrer Azure-Abonnements ab.
    
         Get-AzureRmSubscription
-3. Geben Sie das Abonnement an, das Sie verwenden möchten.
+3. Geben Sie das Abonnement an, das Sie verwenden möchten. 
    
         Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 4. Erstellen Sie eine Ressourcengruppe.
    
         New-AzureRmResourceGroup -Name "ForcedTunneling" -Location "North Europe"
-5. Erstellen Sie ein virtuelles Netzwerks, und geben Sie Subnetze an.
+5. Erstellen Sie ein virtuelles Netzwerks, und geben Sie Subnetze an. 
    
         $s1 = New-AzureRmVirtualNetworkSubnetConfig -Name "Frontend" -AddressPrefix "10.1.0.0/24"
         $s2 = New-AzureRmVirtualNetworkSubnetConfig -Name "Midtier" -AddressPrefix "10.1.1.0/24"
@@ -110,7 +114,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
         Set-AzureRmVirtualNetworkSubnetConfig -Name "MidTier" -VirtualNetwork $vnet -AddressPrefix "10.1.1.0/24" -RouteTable $rt
         Set-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-9. Erstellen Sie das Gateway mit einem Standardstandort. Dieser Schritt dauert einige Zeit (manchmal 45 Minuten oder länger), da Sie das Gateway erstellen und konfigurieren. <br> Der Cmdlet-Parameter `-GatewayDefaultSite` sorgt dafür, dass die erzwungene Routingkonfiguration funktioniert. Achten Sie daher darauf, diese Einstellung korrekt zu konfigurieren. Dieser Parameter ist ab PowerShell 1.0 verfügbar.
+9. Erstellen Sie das Gateway mit einem Standardstandort. Dieser Schritt dauert einige Zeit (manchmal 45 Minuten oder länger), da Sie das Gateway erstellen und konfigurieren.<br> Der Cmdlet-Parameter `-GatewayDefaultSite` sorgt dafür, dass die erzwungene Routingkonfiguration funktioniert. Achten Sie daher darauf, diese Einstellung korrekt zu konfigurieren. Dieser Parameter ist ab PowerShell 1.0 verfügbar.
    
         $pip = New-AzureRmPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
         $gwsubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
@@ -131,4 +135,9 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
     
          Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

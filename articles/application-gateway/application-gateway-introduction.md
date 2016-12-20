@@ -12,21 +12,24 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2016
+ms.date: 11/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
-ms.openlocfilehash: b365a44d59b7d6f4d0f1eec42aa02a565412b18e
+ms.sourcegitcommit: 93dab7804e03ba55ed17c3160420f2aec029c9ef
+ms.openlocfilehash: e3d36b50ed1253e40dc7a40f0611b840bb5498be
 
 
 ---
 # <a name="application-gateway-overview"></a>Übersicht über Application Gateway
+
 ## <a name="what-is-application-gateway"></a>Was ist Application Gateway?
+
 Microsoft Azure Application Gateway verfügt über einen ADC (Application Delivery Controller) als Dienst und damit für Ihre Anwendung über verschiedene Lastenausgleichsfunktionen auf Schicht 7. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive SSL-Beendigung auf das Application Gateway verlagert wird. Außerdem werden noch andere Routingfunktionen für Schicht 7 bereitgestellt, z.B. die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway verfügt auch über eine Web Application Firewall (WAF), mit der Ihre Anwendung vor den meisten von OWASP ermittelten Top 10-Websicherheitsrisiken geschützt ist. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit. Application Gateway kann für virtuelle Computer, Clouddienste und interne oder externe Webanwendungen genutzt werden.
 
 Application Gateway ist eine dedizierte virtuelle Appliance für Ihre Anwendung und umfasst mehrere Workerinstanzen zur Sicherstellung der Skalierbarkeit und hohen Verfügbarkeit. Wenn Sie ein Anwendungsgateway erstellen, wird ein Endpunkt (öffentliche VIP oder interne ILB-IP) zugeordnet und für eingehenden Netzwerkverkehr verwendet. Diese VIP oder ILB-IP wird vom Azure Load Balancer auf Transportebene (TCP/UDP) bereitgestellt, und für den gesamten eingehenden Netzwerkdatenverkehr wird ein Lastenausgleich auf die Application Gateway-Workerinstanzen durchgeführt. Das Anwendungsgateway leitet den HTTP/HTTPS-Datenverkehr dann auf Grundlage der Konfiguration weiter: virtueller Computer, Clouddienst oder eine interne oder externe IP-Adresse. Die Vereinbarung zum Servicelevel und die Preise finden Sie auf den Seiten [SLA](https://azure.microsoft.com/support/legal/sla/) und [Preise](https://azure.microsoft.com/pricing/details/application-gateway/).
 
 ## <a name="features"></a>Features
+
 Application Gateway unterstützt derzeit die Anwendungsbereitstellung der Ebene 7 mit folgenden Features:
 
 * **[Web Application Firewall (Vorschau):](application-gateway-webapplicationfirewall-overview.md)** Die Web Application Firewall (WAF) in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen.
@@ -41,6 +44,7 @@ Application Gateway unterstützt derzeit die Anwendungsbereitstellung der Ebene 
 * **[Erweiterte Diagnose](application-gateway-diagnostics.md)**: Application Gateway bietet umfassende Diagnose- und Zugriffsprotokolle. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
 
 ## <a name="benefits"></a>Vorteile
+
 Application Gateway ist nützlich für Folgendes:
 
 * Anwendungen, bei denen Anforderungen einer Benutzer-/Clientsitzung den gleichen virtuellen Back-End-Computer erreichen müssen. Beispiele für solche Anwendungen wären Einkaufswagen-Apps und E-Mail-Webserver.
@@ -56,11 +60,12 @@ Der Application Gateway-Lastenausgleich als ein von Azure verwalteter Dienst erm
 [!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
 
 ## <a name="gateway-sizes-and-instances"></a>Gatewaygrößen und -instanzen
-Application Gateway wird derzeit in drei Größen angeboten: klein, mittel und groß. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
 
-Derzeit gibt es zwei SKUs für das Application Gateway: WAF und Standard.
+Application Gateway wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
 
-Sie können bis zu 50 Application Gateways pro Abonnement erstellen, und jedes Application Gateway kann jeweils bis zu 10 Instanzen aufweisen. Jedes Anwendungsgateway kann aus 20 HTTP-Listenern bestehen. Eine vollständige Übersicht der anderer Einschränkungen von Application Gateway finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-subscription-service-limits.md).
+Derzeit gibt es zwei SKUs für Application Gateway: **WAF** und **Standard**.
+
+Sie können bis zu 50 Application Gateways pro Abonnement erstellen, und jedes Application Gateway kann jeweils bis zu 10 Instanzen aufweisen. Jedes Anwendungsgateway kann aus 20 HTTP-Listenern bestehen. Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
 Die folgende Tabelle zeigt einen durchschnittlichen Leistungsdurchsatz für jede Anwendungsgatewayinstanz:
 
@@ -75,20 +80,23 @@ Die folgende Tabelle zeigt einen durchschnittlichen Leistungsdurchsatz für jede
 >
 
 ## <a name="health-monitoring"></a>Systemüberwachung
+
 Azure Application Gateway überprüft die Integrität der Back-End-Instanzen automatisch mithilfe einfacher oder benutzerdefinierter Integritätstests. Mit Integritätstests wird so sichergestellt, dass nur fehlerfreie Hosts auf Datenverkehr reagieren. Weitere Informationen finden Sie unter [Systemüberwachung von Application Gateway – Übersicht](application-gateway-probe-overview.md).
 
 ## <a name="configuring-and-managing"></a>Konfigurieren und Verwalten
+
 Application Gateway kann für seinen Endpunkt eine öffentliche IP-Adresse, eine private IP-Adresse oder beides besitzen (sofern konfiguriert). Application Gateway wird innerhalb eines virtuellen Netzwerks in einem eigenen Subnetz konfiguriert. Das für Application Gateway erstellte oder verwendete Subnetz darf außer anderen Anwendungsgateways keine anderen Arten von Ressourcen enthalten. Zum Absichern von Back-End-Ressourcen können die Back-End-Server sich in einem anderen Subnetz im gleichen virtuellen Netzwerk befinden wie das Anwendungsgateway. Dieses zusätzliche Subnetz wird für die Back-End-Anwendungen nicht benötigt. Solange das Anwendungsgateway die IP-Adresse erreichen kann, kann das Application Gateway ADC-Funktionen für die Back-End-Server bereitstellen.
 
 Sie können ein Anwendungsgateway mit REST-APIs, mit PowerShell-Cmdlets, mithilfe der Azure-Befehlszeilenschnittstelle oder über das [Azure-Portal](https://portal.azure.com/)erstellen und verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie sich mit Anwendungsgateways vertraut gemacht haben, können Sie [ein Anwendungsgateway erstellen](application-gateway-create-gateway-portal.md) oder [ein Anwendungsgateway für SSL-Auslagerung erstellen](application-gateway-ssl-arm.md), um einen Lastenausgleich für HTTPS-Verbindungen durchzuführen.
 
 Weitere Informationen zum Erstellen eines Anwendungsgateways mit URL-basiertem Inhaltsrouting finden Sie unter [Erstellen eines Anwendungsgateways mit URL-basiertem Routing](application-gateway-create-url-route-arm-ps.md) .
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

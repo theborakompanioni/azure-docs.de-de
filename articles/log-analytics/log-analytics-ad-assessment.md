@@ -1,12 +1,12 @@
 ---
-title: Optimieren der Umgebung mit der Active Directory Assessment-Lösung in Log Analytics | Microsoft Docs
-description: Sie können die Active Directory Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten.
+title: "Optimieren der Umgebung mit der Active Directory Assessment-Lösung in Log Analytics | Microsoft Docs"
+description: "Sie können die Active Directory Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 58eee787b54122380b48f1c7a96dbe2e79e4bcef
+
 
 ---
 # <a name="optimize-your-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Optimieren der Umgebung mit der Active Directory Assessment-Lösung in Log Analytics
@@ -50,7 +54,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden für Agents und gibt an, o
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![Nein](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![Nein](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 Tage |
+| Windows |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![Nein](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![Nein](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![Ja](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 Tage |
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>Grundlegendes zum Priorisieren von Empfehlungen
 Jede vorgenommene Empfehlung erhält einen Gewichtungswert, der die relative Wichtigkeit der Empfehlung angibt. Es werden nur die zehn wichtigsten Empfehlungen angezeigt.
@@ -62,7 +66,7 @@ Gewichtungen sind aggregierte Werte, die auf drei wesentlichen Faktoren basieren
 * Der *Auswirkung* des Problems auf Ihre Organisation, wenn es tatsächlich Schwierigkeiten verursacht. Eine stärkere Auswirkung entspricht einer höheren Gesamtwertung für die Empfehlung.
 * Dem erforderlichen *Aufwand* zur Umsetzung der Empfehlung. Ein höherer Aufwand entspricht einer niedrigeren Gesamtwertung für die Empfehlung.
 
-Die Gewichtung für jede Empfehlung wird als Prozentsatz der Gesamtwertung ausgedrückt, die für jeden Schwerpunktbereich verfügbar ist. Wenn beispielsweise eine Empfehlung im Schwerpunktbereich "Sicherheit und Einhaltung" eine Wertung von 5 % hat, erhöht eine Umsetzung dieser Empfehlung die Gesamtwertung von "Sicherheit und Einhaltung" um 5 %.
+Die Gewichtung für jede Empfehlung wird als Prozentsatz der Gesamtwertung ausgedrückt, die für jeden Schwerpunktbereich verfügbar ist. Wenn beispielsweise eine Empfehlung im Schwerpunktbereich "Sicherheit und Einhaltung" eine Wertung von 5 % hat, erhöht eine Umsetzung dieser Empfehlung die Gesamtwertung von "Sicherheit und Einhaltung" um 5 %.
 
 ### <a name="focus-areas"></a>Schwerpunktbereiche
 **Sicherheit und Compliance** : Dieser Schwerpunktbereich zeigt Empfehlungen hinsichtlich potenzieller Sicherheitsrisiken und Sicherheitsverletzungen sowie Unternehmensrichtlinien und Anforderungen an die Einhaltung gesetzlicher Bestimmungen und technischer Vorgaben.
@@ -73,7 +77,7 @@ Die Gewichtung für jede Empfehlung wird als Prozentsatz der Gesamtwertung ausge
 
 **Aktualisierung, Migration und Bereitstellung** : Dieser Schwerpunktbereich zeigt Empfehlungen, mit deren Hilfe Sie Active Directory aktualisieren, migrieren und in Ihrer vorhandenen Infrastruktur bereitstellen können.
 
-### <a name="should-you-aim-to-score-100%-in-every-focus-area?"></a>Müssen in jedem Schwerpunktbereich 100 % erzielt werden?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Müssen in jedem Schwerpunktbereich 100 % erzielt werden?
 Nicht unbedingt. Die Empfehlungen basieren auf den Kenntnissen und Erfahrungen, die Microsoft-Experten bei Tausenden von Kundenbesuchen gesammelt haben. Jedoch sind keine zwei Serverinfrastrukturen identisch, und spezifische Empfehlungen können mal mehr oder mal weniger relevant für Sie sein. Zum Beispiel sind einige Sicherheitsempfehlungen möglicherweise weniger relevant, wenn Ihre virtuellen Computer nicht mit dem Internet verbunden sind. Verschiedene Verfügbarkeitsempfehlungen können weniger relevant für Dienste sein, die Ad-hoc-Datensammlung und -Berichterstattung mit niedriger Priorität bereitstellen. Probleme, die für ein gewachsenes Unternehmen Relevanz haben, sind für ein Start-up ggf. weniger wichtig. Es empfiehlt sich zu ermitteln, welche Schwerpunktbereiche zu Ihren Prioritäten zählen, und dann zu beobachten, wie sich Ihre Wertungen mit der Zeit verändern.
 
 Jede Empfehlung enthält Informationen dazu, warum sie wichtig ist. Sie sollten anhand dieser Anleitung feststellen, ob die Umsetzung der Empfehlung bei Berücksichtigung der Art Ihrer IT-Dienste und der geschäftlichen Anforderungen Ihrer Organisation für Sie geeignet ist.
@@ -103,7 +107,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
    Dieser Screenshot zeigt eine Protokollsuchabfrage: ![Empfehlungen mit Fehlern](./media/log-analytics-ad-assessment/ad-failed-recommendations.png).
 2. Wählen Sie die Empfehlungen aus, die Sie ignorieren möchten. Sie werden die Werte für RecommendationId in der nächsten Prozedur verwenden.
 
-### <a name="to-create-and-use-an-ignorerecommendations.txt-text-file"></a>Erstellen und Verwenden einer IgnoreRecommendations.txt-Textdatei
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Erstellen und Verwenden einer IgnoreRecommendations.txt-Textdatei
 1. Erstellen Sie eine Datei namens IgnoreRecommendations.txt.
 2. Fügen oder geben Sie auf separaten Zeilen die RecommendationId für jede Empfehlung ein, die Log Analytics ignorieren soll, und speichern und schließen Sie die Datei.
 3. Legen Sie die Datei auf jedem Computer, auf dem OMS die Empfehlungen ignorieren soll, in folgendem Ordner ab.
@@ -167,6 +171,9 @@ Nach Ausführung der nächsten geplanten Bewertung – standardmäßig alle 7 Ta
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md) , um detaillierte Daten und Empfehlungen von AD Assessment anzuzeigen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

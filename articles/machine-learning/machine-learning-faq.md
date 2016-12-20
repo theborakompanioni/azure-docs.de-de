@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/26/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 36fd6b01dae6aa9a48985a252766d3f2d0b19342
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fd0e8f5bd41fcf105571f76aab2f192c2f6dd21d
 
 
 ---
@@ -140,7 +140,7 @@ Da die an den Browser übertragenen Daten umfangreich sein können, ist die Date
 ### <a name="algorithms"></a>Algorithmen
 **Welche vorhandenen Algorithmen werden in Machine Learning Studio unterstützt?**
 
-Machine Learning Studio unterstützt moderne Algorithmen, z.B. skalierbare Boosted Decision-Strukturen, Bayessche Empfehlungssysteme, tiefe neuronale Netze und die von Microsoft Research entwickelten „Entscheidungsdschungel“. Skalierbare Open Source-Pakete für Machine Learning wie z. B. Vowpal Wabbit sind ebenfalls enthalten. Machine Learning Studio unterstützt Algorithmen für Machine Learning für mehrklassige und binäre Klassifizierung, Regression und Clustering. Informationen finden Sie in der vollständigen Liste mit [Machine Learning-Modulen][machine-learning-modules].
+Machine Learning Studio unterstützt moderne Algorithmen, z.B. skalierbare Boosted Decision-Strukturen, Bayessche Empfehlungssysteme, tiefe neuronale Netze und die von Microsoft Research entwickelten „Entscheidungsdschungel“. Skalierbare Open Source-Pakete für Machine Learning wie z. B. Vowpal Wabbit sind ebenfalls enthalten. Machine Learning Studio unterstützt Algorithmen für Machine Learning für mehrklassige und binäre Klassifizierung, Regression und Clustering. Weitere Informationen finden Sie in der vollständigen Liste der [Machine Learning-Module][machine-learning-modules].
 
 **Wird automatisch der richtige Machine Learning-Algorithmus für meine Daten vorgeschlagen?**
 
@@ -185,7 +185,7 @@ Nein, es gibt keine REPL-Umgebung für R in Machine Learning Studio.
 ### <a name="python-module"></a>Python-Modul
 **Ist es möglich, benutzerdefinierte Python-Module zu erstellen?**
 
-Derzeit nicht. Sie können aber ein oder mehrere Module vom Typ [Python-Skript][python] ausführen verwenden, um das gleiche Ergebnis zu erzielen.
+Derzeit nicht. Sie können aber ein oder mehrere Module vom Typ [Python-Skript ausführen][python] verwenden, um das gleiche Ergebnis zu erzielen.
 
 **Gibt es eine REPL-Umgebung für Python?**
 
@@ -245,7 +245,7 @@ Nr.
 
 **Wie viele Daten kann ich für das Training verwenden?**
 
-Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen DataSets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn für ein Modul mehr als eine Eingabe verwendet wird, beträgt die Gesamtgröße für alle Eingaben zusammen 10 GB. Sie können über Hive- oder Azure SQL-Datenbank-Abfragen oder per Vorverarbeitung durch Module vom Typ [Learning with Counts][counts] (Lernen mit Zahlen) auch Teile größerer Datasets übernehmen.  
+Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen DataSets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn für ein Modul mehr als eine Eingabe verwendet wird, beträgt die Gesamtgröße für alle Eingaben zusammen 10 GB. Sie können über Hive- oder Azure SQL-Datenbankabfragen oder per Vorverarbeitung durch Module vom Typ [Learning with Counts][counts] (Lernen mit Zahlen) auch Teile größerer Datasets übernehmen.  
 
 Die folgenden Typen von Daten können während der Featurenormalisierung in größere DataSets erweitert werden und sind auf weniger als 10 GB beschränkt:
 
@@ -332,7 +332,7 @@ Weitere Informationen zur Abrechnung und zu Preisen finden Sie unter [Machine Le
 
  Azure Machine Learning verfügt über die Abonnementoption „Free“ (Details unter [Machine Learning – Preise](https://azure.microsoft.com/pricing/details/machine-learning/)), und für Machine Learning Studio wird eine acht Stunden gültige Testversion für die Schnellevaluierung angeboten (melden Sie sich hierzu bei [Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) an).
 
- Wenn Sie sich für die kostenlose Azure-Testversion anmelden, können Sie außerdem die Azure-Dienste einen Monat lang ausprobieren. Weitere Informationen zur kostenlosen Azure-Testversion finden Sie in den [häufig gestellten Fragen zur kostenlosen Testversion von Azure](/pricing/free-trial-faq/).
+ Wenn Sie sich für die kostenlose Azure-Testversion anmelden, können Sie außerdem die Azure-Dienste einen Monat lang ausprobieren. Weitere Informationen zur kostenlosen Azure-Testversion finden Sie in den [häufig gestellten Fragen zur kostenlosen Testversion von Azure](https://azure.microsoft.com/pricing/free-trial-faq/).
 
 **Was ist eine Transaktion?**
 
@@ -530,7 +530,7 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst, und die tatsä
 ### <a name="guest-access"></a>Gastzugriff
 **Was umfasst der Gastzugriff für Azure Machine Learning Studio?**
 
-Über den Gastzugriff können Sie Azure Machine Learning Studio in begrenztem Umfang testen und die Umgebung kostenlos und ohne Authentifizierung nutzen, um Experimente zu erstellen und auszuführen. Gastsitzungen sind nicht persistent (können nicht gespeichert werden) und auf acht Stunden begrenzt. Außerdem werden R und Python nicht unterstützt, es können keine Staging-APIs verwendet werden, und sowohl die Größe von Datasets als auch die Speicherkapazität sind beschränkt. Im Gegensatz dazu haben Benutzer, die sich mit einem Microsoft-Konto anmelden, vollen Zugriff auf den oben beschriebenen Funktionsumfang von Machine Learning Studio im Free-Tarif, der einen persistenten Arbeitsbereich und umfangreichere Optionen bietet. Wenn Sie Machine Learning kostenlos nutzen möchten, klicken Sie unter [https://studio.azureml.net](https://studio.azureml.net) einfach auf **Getting started** und wählen entweder den Gastzugriff oder die Anmeldung über ein Microsoft-Konto.
+Über den Gastzugriff können Sie Azure Machine Learning Studio in begrenztem Umfang testen und die Umgebung kostenlos und ohne Authentifizierung nutzen, um Experimente zu erstellen und auszuführen. Gastsitzungen sind nicht persistent (können nicht gespeichert werden) und auf acht Stunden begrenzt. Außerdem werden R und Python nicht unterstützt, es können keine Staging-APIs verwendet werden, und sowohl die Größe von Datasets als auch die Speicherkapazität sind beschränkt. Im Gegensatz dazu haben Benutzer, die sich mit einem Microsoft-Konto anmelden, vollen Zugriff auf den oben beschriebenen Funktionsumfang von Machine Learning Studio im Free-Tarif, der einen persistenten Arbeitsbereich und umfangreichere Optionen bietet. Wenn Sie Machine Learning kostenlos nutzen möchten, klicken Sie unter **https://studio.azureml.net** einfach auf [Getting started](https://studio.azureml.net)und wählen entweder den Gastzugriff oder die Anmeldung über ein Microsoft-Konto.
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/
@@ -545,6 +545,6 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst, und die tatsä
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

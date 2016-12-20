@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: f7f34994e85fee330c98f1d65700f4d0fd7b5fb8
-ms.openlocfilehash: d40f530c382f3918007a73246a4a9952b67240e1
+ms.sourcegitcommit: 05ca343cfdfc602759eb3ea30a7186a0bb47bd74
+ms.openlocfilehash: 4dd8331ed2fd30d61b4a653f04cae9049385ce3c
 
 
 ---
@@ -32,7 +32,7 @@ Ein Event Hub wird auf der Event Hubs-Namespaceebene erstellt (ähnlich wie Serv
 ![Event Hubs](./media/event-hubs-overview/ehoverview2.png)
 
 ## <a name="conceptual-overview"></a>Konzeptionelle Übersicht
-Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster. Für Warteschlangen und Themen wird ein Modell [konkurrierender Consumer](https://msdn.microsoft.com/library/dn568101.aspx) verwendet, in dem jeder Consumer versucht, aus der gleichen Warteschlange oder Ressource zu lesen. Diese Konkurrenz um Ressourcen sorgt letztlich für Komplexitäts- und Skalierungsgrenzen für Streamverarbeitungsanwendungen. Event Hubs verwendet ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Patition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind.
+Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster. Für Warteschlangen und Themen wird ein Modell [*konkurrierender Consumer*](https://msdn.microsoft.com/library/dn568101.aspx) verwendet, in dem jeder Consumer versucht, aus der gleichen Warteschlange oder Ressource zu lesen. Diese Konkurrenz um Ressourcen sorgt letztlich für Komplexitäts- und Skalierungsgrenzen für Streamverarbeitungsanwendungen. Event Hubs verwendet ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Patition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind.
 
 ### <a name="partitions"></a>Partitionen
 Eine Partition ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. Eine Partition kann als "Commitprotokoll" betrachtet werden
@@ -61,7 +61,7 @@ In diesem Abschnitt werden allgemeine Aufgaben für Ereignisherausgeber beschrie
 Shared Access Signature (SAS) ist der Authentifizierungsmechanismus für Event Hubs. Service Bus bietet SAS-Richtlinien auf Namespace- und Event Hub-Ebene. Ein SAS-Token wird aus einem SAS-Schlüssel generiert und ist ein SHA-Hash einer URL, der in einem bestimmten Format codiert ist. Mit dem Namen des Schlüssels (der Richtlinie) und dem Token kann Service Bus den Hash nachgenerieren und somit den Absender authentifizieren. In der Regel werden SAS-Token für Ereignisherausgeber nur mit **Senden** -Berechtigung für einen bestimmten Event Hub erstellt. Dieser SAS-Token-URL-Mechanismus bildet die Grundlage für die Herausgeberidentifizierung, die in der Herausgeberrichtlinie eingeführt wurde. Weitere Informationen zur Verwendung von SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus](../service-bus-messaging/service-bus-shared-access-signature-authentication.md).
 
 #### <a name="publishing-an-event"></a>Veröffentlichen eines Ereignisses
-Sie können ein Ereignis über AMQP 1.0 oder HTTPS veröffentlichen. Service Bus bietet eine [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx)-Klasse zum Veröffentlichen von Ereignissen für einen Event Hub von .NET-Clients aus. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](http://qpid.apache.org/). Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 256 KB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von größeren Ereignissen führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt eingeführt) oder die eigene Identität über das SAS-Token anzugeben.
+Sie können ein Ereignis über AMQP 1.0 oder HTTPS veröffentlichen. Service Bus bietet eine [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient?redirectedfrom=MSDN#microsoft_servicebus_messaging_eventhubclient)-Klasse zum Veröffentlichen von Ereignissen für einen Event Hub von .NET-Clients aus. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](http://qpid.apache.org/). Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 256 KB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von größeren Ereignissen führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt eingeführt) oder die eigene Identität über das SAS-Token anzugeben.
 
 Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. Dies kann bezüglich des Netzwerkverkehrs ein kostenintensiver Vorgang sein, geschieht jedoch nur am Anfang einer AMQP-Sitzung. HTTPS weist einen geringeren anfänglichen Aufwand auf, erfordert jedoch zusätzlichen SSL-Mehraufwand für jede Anforderung. AMQP bietet Herausgebern, die häufig Ereignisse veröffentlichen, deutliche Einsparungen in der Leistung, der Wartezeit und dem Durchsatz.
 
@@ -80,8 +80,10 @@ Der Veröffentlichen-/Abonnieren-Mechanismus von Event Hubs erfolgt durch Consum
 
 Es folgen Beispiele für die URI-Konvention für Consumergruppen:
 
-    //<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
-    //<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
+```
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
+```
 
 Die folgende Abbildung zeigt die Ereignisconsumer in ihren Consumergruppen.
 
@@ -119,7 +121,7 @@ Die Durchsatzkapazität von Event Hubs wird durch Durchsatzeinheiten gesteuert. 
 * Eingang: Bis zu 1 MB pro Sekunde oder 1000 Ereignisse pro Sekunde.
 * Ausgang: Bis zu 2 MB pro Sekunde.
 
-Der Eingang wird auf die Kapazität beschränkt, die der erworbenen Anzahl von Durchsatzeinheiten entspricht. Das Senden von Daten über diese Menge hinaus führt zur Ausnahme "Datenträgerkontingent überschritten". Diese Menge ist entweder 1 MB pro Sekunde oder 1000 Ereignisse pro Sekunde, je nachdem, was zuerst eintritt. Am Ausgang erfolgt keine Beschränkung, jedoch ist dieser auf Datenübertragungsmenge anhand der erworbenen Durchsatzeinheiten beschränkt: 2 MB pro Sekunde pro Durchsatzeinheit. Wenn Sie Ausnahmen für die Veröffentlichungsrate erhalten oder einen größeren Ausgang erwarten, überprüfen Sie, wie viele Durchsatzeinheiten Sie für den Namespace erworben haben, in dem der Event Hub erstellt wurde. Um weitere Durchsatzeinheiten zu erhalten, können Sie die Einstellung auf der Seite **Namespaces** auf der Registerkarte **Skalieren** im [klassischen Azure-Portal][klassischen Azure-Portal] anpassen. Sie können diese Einstellung auch mit den Azure-APIs ändern.
+Der Eingang wird auf die Kapazität beschränkt, die der erworbenen Anzahl von Durchsatzeinheiten entspricht. Das Senden von Daten über diese Menge hinaus führt zur Ausnahme "Datenträgerkontingent überschritten". Diese Menge ist entweder 1 MB pro Sekunde oder 1000 Ereignisse pro Sekunde, je nachdem, was zuerst eintritt. Am Ausgang erfolgt keine Beschränkung, jedoch ist dieser auf Datenübertragungsmenge anhand der erworbenen Durchsatzeinheiten beschränkt: 2 MB pro Sekunde pro Durchsatzeinheit. Wenn Sie Ausnahmen für die Veröffentlichungsrate erhalten oder einen größeren Ausgang erwarten, überprüfen Sie, wie viele Durchsatzeinheiten Sie für den Namespace erworben haben, in dem der Event Hub erstellt wurde. Um weitere Durchsatzeinheiten zu erhalten, können Sie die Einstellung auf der Seite **Namespaces** auf der Registerkarte **Skalieren** im [klassischen Azure-Portal][Azure classic portal] anpassen. Sie können diese Einstellung auch mit den Azure-APIs ändern.
 
 Während Partitionen ein Datenorganisationskonzept sind, sind Durchsatzeinheiten ausschließlich ein Kapazitätskonzept. Durchsatzeinheiten werden auf Stundenbasis abgerechnet und im Voraus erworben. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Für einen Event Hubs-Namespace können bis zu 20 Durchsatzeinheiten erworben werden, und für ein Azure-Konto besteht ebenfalls eine Begrenzung auf 20 Durchsatzeinheiten. Diese Durchsatzeinheiten werden für alle Event Hubs in einem bestimmten Namespace gemeinsam genutzt.
 
@@ -132,25 +134,27 @@ Preisinformationen finden Sie unter [Event Hubs Preise](https://azure.microsoft.
 ### <a name="publisher-policy"></a>Herausgeberrichtlinie
 Event Hubs ermöglicht eine differenzierte Kontrolle über Ereignisherausgeber durch *Herausgeberrichtlinien*. Herausgeberrichtlinien sind eine Sammlung von Laufzeitfunktionen, mit denen große Mengen unabhängiger Herausgeber verwaltet werden können. Mit Herausgeberrichtlinien verwendet jeder Herausgeber einen eigenen eindeutigen Bezeichner für die Veröffentlichung von Ereignissen in einem Event Hub. Dabei kommt der folgende Mechanismen zum Einsatz:
 
-    //<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
+```
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
+```
 
 Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit dem SAS-Token übereinstimmen, das beim Veröffentlichen eines Ereignisses verwendet wird, um die Identitäten unabhängiger Herausgeber sicherzustellen. Weitere Informationen zu SAS finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus](../service-bus-messaging/service-bus-shared-access-signature-authentication.md). Bei Verwendung von Herausgeberrichtlinien wird der Wert **PartitionKey** auf den Herausgebernamen festgelegt. Diese Werte müssen übereinstimmen, damit alles ordnungsgemäß funktioniert.
 
 ## <a name="summary"></a>Zusammenfassung
-Azure Event Hubs bietet einen hyperskalierbaren Ereignis- und Telemetrieverarbeitungsdienst, der für die Überwachung allgemeiner Anwendungs- und Benutzerworkflows in jeder Größenordnung verwendet werden kann. Mit der Möglichkeit, Veröffentlichen-/Abonnieren-Funktionen mit niedriger Latenz und enormem Umfang anzubieten, sind Event Hubs der Einstiegspunkt für Big Data. Durch die Identitäts-und Sperrlisten auf Herausgeberbasis können diese Funktionen in verbreitete Internet of Things-Szenarios erweitert werden. Weitere Informationen zum Entwickeln von Event Hubs-Anwendungen finden Sie im [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md).
+Azure Event Hubs bietet einen hyperskalierbaren Ereignis- und Telemetrieverarbeitungsdienst, der für die Überwachung allgemeiner Anwendungs- und Benutzerworkflows in jeder Größenordnung verwendet werden kann. Mit der Möglichkeit, Veröffentlichen-/Abonnieren-Funktionen mit niedriger Latenz und enormem Umfang anzubieten, sind Event Hubs der Einstiegspunkt für Big Data. Durch die Identitäts-und Sperrlisten auf Herausgeberbasis können diese Funktionen in verbreitete [Internet of Things](https://docs.microsoft.com/azure/#pivot=services&panel=iot)-Szenarios erweitert werden. Weitere Informationen zum Entwickeln von Event Hubs-Anwendungen finden Sie im [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nun, da Sie sich mit Event Hubs-Konzepten vertraut gemacht haben, können Sie mit den folgenden Szenarios fortfahren:
+Sie haben sich nun mit Event Hubs-Konzepten vertraut gemacht und können mit den folgenden Szenarios fortfahren:
 
 * Beginnen Sie mit einem [Event Hubs-Lernprogramm].
 * Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs].
 
-[klassischen Azure-Portal]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 [Event Hubs-Lernprogramm]: event-hubs-csharp-ephcs-getstarted.md
 [Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

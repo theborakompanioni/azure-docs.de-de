@@ -1,5 +1,5 @@
 
-Der Code für alle Funktionen in einer bestimmten Funktionen-App befindet sich in einem Stammordner, der eine Hostkonfigurationsdatei und mindestens einen Unterordner enthält. Jeder dieser Unterordner enthält den Code für eine separate Funktion, wie im folgenden Beispiel gezeigt.
+Der Code für alle Funktionen in einer bestimmten Funktionen-App befindet sich in einem Stammordner, der eine Hostkonfigurationsdatei und mindestens einen Unterordner enthält. Jeder dieser Unterordner enthält den Code für eine separate Funktion, wie im folgenden Beispiel gezeigt:
 
 ```
 wwwroot
@@ -21,6 +21,6 @@ Jede Funktion verfügt über einen Ordner, der mindestens eine Codedatei, die fu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

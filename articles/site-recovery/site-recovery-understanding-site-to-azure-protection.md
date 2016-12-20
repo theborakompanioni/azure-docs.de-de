@@ -1,12 +1,12 @@
 ---
 title: Hyper-V-Replikation mit Azure Site Recovery | Microsoft Docs
-description: Verwenden Sie diesen Artikel, um sich mit den technischen Konzepten vertraut zu machen, die Sie beim Installieren, Konfigurieren und Verwalten von Azure Site Recovery unterstützen.
+description: "Verwenden Sie diesen Artikel, um sich mit den technischen Konzepten vertraut zu machen, die Sie beim Installieren, Konfigurieren und Verwalten von Azure Site Recovery unterstützen."
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: Rajani-Janaki-Ram
 manager: mkjain
-editor: ''
-
+editor: 
+ms.assetid: 97916915-1379-47df-8369-12ddf022c4da
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/12/2016
 ms.author: rajanaki
+translationtype: Human Translation
+ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
+ms.openlocfilehash: b49771ff1e29aeb6ec582c21061085504705991b
+
 
 ---
 # <a name="hyper-v-replication-with-azure-site-recovery"></a>Hyper-V-Replikation mit Azure Site Recovery
@@ -43,7 +47,7 @@ Wenn die erste Replikation ausgelöst wird, wird eine [Hyper-V-Momentaufnahme f�
 
 Nach Abschluss der ersten Replikation konfiguriert der Auftrag **Schutz auf dem virtuellen Computer abschließen** die Einstellungen für das Netzwerk und für die Zeit nach der Replikation. Während der Durchführung der ersten Replikation gilt:
 
-* Alle Änderungen an den Datenträgern werden nachverfolgt. 
+* Alle Änderungen an den Datenträgern werden nachverfolgt.
 * Die Dateien für die Momentaufnahme und für das Hyper-V-Replikatprotokoll (Hyper-V Replica Log, HRL) beanspruchen zusätzlichen Speicherplatz.
 
 Nach Abschluss der ersten Replikation wird die Hyper-V-Momentaufnahme für den virtuellen Computer gelöscht. Im Zuge dieser Löschung werden Datenänderungen zusammengeführt, die nach der ersten Replikation am übergeordneten Datenträger vorgenommen wurden.
@@ -55,7 +59,7 @@ Die im Replikationsmodul des Hyper-V-Replikats enthaltene Hyper-V-Replikat-Repli
 
 Jedem für die Replikation konfigurierten Datenträger ist eine HRL-Datei zugeordnet. Dieses Protokoll wird nach Abschluss der ersten Replikation an das Speicherkonto des Kunden gesendet. Beim Übermitteln eines Protokolls an Azure werden Änderungen am primären Element in einer anderen Protokolldatei im gleichen Verzeichnis nachverfolgt.
 
-Während der ersten Replikation oder einer Deltareplikation können Sie die Replikationsintegrität des virtuellen Computers wie unter [Überwachen der Replikationsintegrität für virtuelle Computer](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machine)beschrieben in der Ansicht des virtuellen Computers überwachen.  
+Während der ersten Replikation oder einer Deltareplikation können Sie die Replikationsintegrität des virtuellen Computers wie unter [Überwachen der Replikationsintegrität für virtuelle Computer](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machines)beschrieben in der Ansicht des virtuellen Computers überwachen.  
 
 ### <a name="resynchronization"></a>Neusynchronisierung
 Ein virtueller Computer wird für eine Neusynchronisierung markiert, wenn die Deltareplikation nicht erfolgreich war und eine vollständige Erstreplikation die Netzwerkbandbreite zu stark beansprucht oder zu zeitaufwendig ist. Wenn also beispielsweise eine HRL-Datei 50 Prozent des gesamten Datenträgers einnimmt, wird der virtuelle Computer für eine Neusynchronisierung markiert. Bei der Neusynchronisierung wird die über das Netzwerk übertragene Datenmenge minimiert, indem Prüfsummen der Datenträger des virtuellen Quell- und Zielcomputers berechnet werden und nur die Differenz gesendet wird.
@@ -81,9 +85,11 @@ Für Replikationsfehler steht eine integrierte Wiederholungslogik zur Verfügung
 
 ## <a name="other-references"></a>Andere Referenzen
 * [Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft-Support](site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
-* [Häufige Fehler bei der automatischen Systemwiederherstellung und deren Lösungen](site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
+* [Microsoft-Support](site-recovery-monitoring-and-troubleshooting.md#reach-out-for-microsoft-support)
+* [Häufige Fehler bei der automatischen Systemwiederherstellung und deren Lösungen](site-recovery-monitoring-and-troubleshooting.md#common-azure-site-recovery-errors-and-their-resolutions)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

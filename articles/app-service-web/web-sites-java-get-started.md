@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: acacfbead6cf0d68ccfeb5e818a2b04f2be9b902
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e2785d007aa30d3ef70ce2ca6049cdd4e9733099
 
 
 ---
 # <a name="create-a-java-web-app-in-azure-app-service"></a>Erstellen einer Java Web-App in Azure App Service
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Dieses Tutorial zeigt die Erstellung einer [Java-Web-App in Azure App Service] über das [Azure-Portal]. Das Azure-Portal ist eine Weboberfläche, über die Sie Azure-Ressourcen verwalten können.
+Dieses Tutorial zeigt die Erstellung einer [Web-App in Azure App Service] über das [Azure-Portal]. Das Azure-Portal ist eine Weboberfläche, über die Sie Azure-Ressourcen verwalten können.
 
 > [!NOTE]
 > Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial auszuführen. Wenn Sie kein Konto haben, können Sie [Ihre Visual Studio-Abonnentenvorteile aktivieren] oder [sich für eine kostenlose Testversion registrieren].
@@ -37,7 +37,7 @@ Es gibt verschiedene Möglichkeiten, wie Sie eine Java-Anwendung in einer App Se
 
 1. Erstellen einer App und anschließendes Konfigurieren der **Anwendungseinstellungen**
    
-    App Service bietet verschiedene Tomcat- und Jetty-Versionen mit Standardkonfigurationen. Wenn die zu hostende Anwendung für eine der integrierten Versionen geeignet ist, ist diese Methode zur Einrichtung eines Webcontainers die einfachste Möglichkeit und auch die richtige Wahl, wenn Sie lediglich eine WAR-Datei in einen Webcontainer hochladen möchten. Bei dieser Methode erstellen Sie eine App im Azure-Portal und öffnen dann das Blatt **Anwendungseinstellungen** für Ihre App, um Ihre Version von Java und den gewünschten Java-Webcontainer auszuwählen. Bei Verwendung dieser Methode werden sowohl der Java-Code als auch Ihr Webcontainer über Programmdateien ausgeführt. Bei anderen Methoden werden der Webcontainer und ggf. auch die JVM in Ihren Festplattenspeicher eingefügt. Beim Einsatz dieses Modells fehlt Ihnen der Zugriff, um Dateien in diesem Teil des Dateisystems zu bearbeiten. Das heißt, Sie können z.B. nicht die Datei *server.xml* konfigurieren oder Bibliotheksdateien im Ordner */lib* ablegen. Weitere Informationen finden Sie weiter unten in diesem Tutorial unter [Erstellen und Konfigurieren einer Java-Web-App](#appsettings).
+    App Service bietet verschiedene Tomcat- und Jetty-Versionen mit Standardkonfigurationen. Wenn die zu hostende Anwendung für eine der integrierten Versionen geeignet ist, ist diese Methode zur Einrichtung eines Webcontainers die einfachste Möglichkeit und auch die richtige Wahl, wenn Sie lediglich eine WAR-Datei in einen Webcontainer hochladen möchten. Bei dieser Methode erstellen Sie eine App im Azure-Portal und öffnen dann das Blatt **Anwendungseinstellungen** für Ihre App, um Ihre Version von Java und den gewünschten Java-Webcontainer auszuwählen. Bei Verwendung dieser Methode werden sowohl der Java-Code als auch Ihr Webcontainer über Programmdateien ausgeführt. Bei anderen Methoden werden der Webcontainer und ggf. auch die JVM in Ihren Festplattenspeicher eingefügt. Beim Einsatz dieses Modells fehlt Ihnen der Zugriff, um Dateien in diesem Teil des Dateisystems zu bearbeiten. Das heißt, Sie können z.B. nicht die Datei *server.xml* konfigurieren oder Bibliotheksdateien im Ordner */lib* ablegen. Weitere Informationen finden Sie weiter unten in diesem Tutorial unter [Erstellen und Konfigurieren einer Java-Web-App](#portal).
 2. Verwenden einer Vorlage aus dem Azure Marketplace
    
     Der Azure Marketplace bietet Vorlagen, die automatisch Java-Web-Apps mit Tomcat- oder Jetty-Webcontainern erstellen und konfigurieren. Die durch die Vorlagen erstellten Webcontainer sind konfigurierbar. Weitere Informationen finden Sie in diesem Tutorial im Abschnitt [Verwenden einer Java-Vorlage aus dem Azure Marketplace](#marketplace) .
@@ -64,7 +64,7 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Web-App erstellen und mit dem Bla
     Der Name muss innerhalb der Domäne "azurewebsites.net" eindeutig sein, da die URL der Web-App "{name}.azurewebsites.net" lauten wird. Wenn der eingegebene Name nicht eindeutig ist, wird im Textfeld ein rotes Ausrufezeichen angezeigt.
 4. Wählen Sie eine **Ressourcengruppe** aus, oder erstellen Sie eine neue.
    
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen].
+    Weitere Informationen zu Ressourcengruppen finden Sie unter [Resource Manager – Übersicht].
 5. Wählen Sie einen **App Service-Plan/-Standort** aus, oder erstellen Sie einen neuen Plan und Standort.
    
     Weitere Informationen zu App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht].
@@ -111,7 +111,7 @@ Dieser Abschnitt zeigt, wie der Azure Marketplace zum Erstellen einer Java-Web-A
     Der Name muss innerhalb der Domäne "azurewebsites.net" eindeutig sein, da die URL der Web-App "{name}.azurewebsites.net" lauten wird. Wenn der eingegebene Name nicht eindeutig ist, wird im Textfeld ein rotes Ausrufezeichen angezeigt.
 8. Wählen Sie eine **Ressourcengruppe** aus, oder erstellen Sie eine neue.
    
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen].
+    Weitere Informationen zu Ressourcengruppen finden Sie unter [Resource Manager – Übersicht].
 9. Wählen Sie einen **App Service-Plan/-Standort** aus, oder erstellen Sie einen neuen Plan und Standort.
    
     Weitere Informationen zu App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht].
@@ -146,11 +146,11 @@ Weitere Informationen zum Entwickeln von Java-Anwendungen in Azure finden Sie im
 [Azure App Service-Pläne – Detaillierte Übersicht]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [Azure-Portal]: https://portal.azure.com/
 [Ihre Visual Studio-Abonnentenvorteile aktivieren]: http://go.microsoft.com/fwlink/?LinkId=623901
-[für eine kostenlose Testversion registrieren]: http://go.microsoft.com/fwlink/?LinkId=623901
-[App Service testen]: http://go.microsoft.com/fwlink/?LinkId=523751
+[sich für eine kostenlose Testversion registrieren]: http://go.microsoft.com/fwlink/?LinkId=623901
+[Azure App Service-App erstellen]: http://go.microsoft.com/fwlink/?LinkId=523751
 [Web-App in Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Java Developer Center]: /develop/java/
-[Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen]: ../azure-portal/resource-group-portal.md
+[Resource Manager – Übersicht]: ../azure-resource-manager/resource-group-overview.md
 [Hochladen einer benutzerdefinierten Java-Web-App in Azure]: ./web-sites-java-custom-upload.md
 
 <!-- IMG List -->
@@ -169,6 +169,6 @@ Weitere Informationen zum Entwickeln von Java-Anwendungen in Azure finden Sie im
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

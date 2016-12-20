@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8cb91a8cdc6d16070034c79515731be7b820d389
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e3d6caee50a57648f4f775029a2e381cee0f1e72
 
 
 ---
@@ -49,7 +49,7 @@ Nach der Definition von Anwendungsfällen und Segmenten erhalten Sie eine Anleit
 
 Nach der Veröffentlichung von Anwendungen können Sie Ihre Analysen als Vermarkter auf Basis der Integration in Echtzeit anzeigen, Ihre Zielgruppe segmentieren und dann mit dem Senden intelligent ausgerichteter Pushbenachrichtigungen beginnen, um sich mit Endbenutzern innerhalb und außerhalb der App zu beschäftigen.
 
-### <a name="usecases-to-get-started"></a>Erste Anwendungsfälle
+### <a name="use-cases-to-get-started"></a>Erste Anwendungsfälle
 1. Begrüßungsstrategie: Erstellen Sie verschiedene Pushbenachrichtigungskampagnen, die auf dem Verhalten der Endbenutzer beim Anwendungsstart basieren, um nach der ersten Sitzung am „D+2/5/10/15“ erneut Kontakt aufzunehmen und die Beibehaltung für die erste Ausführung zu erhöhen.
 2. Preisen Sie neue Inhalte an (Feature, Artikel/Video oder Produkt), die auf dem Verhalten der Endbenutzer basieren, damit die Informationen nur an Benutzer gesendet werden, bei denen die Wahrscheinlichkeit der Inanspruchnahme höher ist.
 3. Bewerten Sie die Anwendung: Richten Sie diesen Vorgang auf weniger als 1 % der Benutzerbasis aus, die Ihre App im Store wahrscheinlich mit fünf Sternen bewerten wird.
@@ -66,13 +66,13 @@ Damit Sie bei der Kontaktaufnahme zu Ihrer Zielgruppe möglichst kontextbezogen 
 > 
 > 
 
-### <a name="usecases-and-best-practices"></a>Anwendungsfälle und bewährte Methoden
+### <a name="use-cases-and-best-practices"></a>Anwendungsfälle und bewährte Methoden
 In den folgenden Abschnitten werden einige wichtige Anwendungsfälle kurz beschrieben, die Ihnen bei Ihren ersten Schritten helfen können.
 
 #### <a name="media"></a>Medien
 Erfassen Sie die Art von Inhalten, die vom Endbenutzer konsumiert wird, und segmentieren Sie dann die Zielgruppe auf Grundlage dieses Verhaltens, um bestimmte Arten von Inhalten nur auf eine Zielgruppe auszurichten, bei der die Wahrscheinlichkeit höher ist, dass sie diese Inhalte auch konsumiert. Dadurch wird vermieden, dass eine große Benutzerbasis mit unerwünschten Informationen belästigt wird. Zudem wird eine verbesserte Beibehaltung gewährleistet.
 
-#### <a name="mcommerce"></a>M-Commerce
+#### <a name="m-commerce"></a>M-Commerce
 Erfassen Sie die innerhalb der Anwendung und der Zielgruppe am häufigsten besuchten Produktkategorien, um einen Rabatt oder ein neues Produkt in dieser Kategorie zu bewerben, bei der die Wahrscheinlichkeit für den Endbenutzer höher ist, dass dieser einen Kauf tätigt. Streben Sie höhere Umsätze an. Ziel ist es auch hier wieder, den Benutzer nicht mit unerwünschten Informationen zu belästigen!
 
 #### <a name="gaming"></a>Spiele
@@ -134,6 +134,6 @@ Zu sämtlichen Datentypen können Parameter hinzugefügt werden (*extra-informat
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

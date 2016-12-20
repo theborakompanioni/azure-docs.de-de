@@ -64,6 +64,13 @@
 #### [Klassisches Portal](cloud-services-how-to-scale.md)
 ### [Verwenden von Python zum Verwalten von Azure-Ressourcen](cloud-services-python-how-to-use-service-management.md)
 
+### [Patches für Gastbetriebssysteme](cloud-services-guestos-msrc-releases.md)
+### Deaktivierung von Gastbetriebssystemen
+#### [Deaktivierungsrichtlinie](cloud-services-guestos-retirement-policy.md)
+#### [Deaktivierungsinformationen für die Betriebssystemfamilie 1](cloud-services-guestos-family1-retirement.md)
+### [Neuigkeiten zur Version des Azure-Gastbetriebssystems](cloud-services-guestos-update-matrix.md)
+### [Cloud Services-Rollenkonfiguration – XPath-Cheat Sheet](cloud-services-role-config-xpath.md)
+
 ## Verwalten von Zertifikaten
 ### [Cloud Services und Verwaltungszertifikate](cloud-services-certs-create.md)
 ### Konfigurieren von SSL 
@@ -101,12 +108,6 @@
 ## [CSDEF (XML-Schema)](https://msdn.microsoft.com/library/azure/ee758711)
 ## [CSCFG (XML-Schema)](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
-## [Patches für Gastbetriebssysteme](cloud-services-guestos-msrc-releases.md)
-## Deaktivierung von Gastbetriebssystemen
-### [Deaktivierungsrichtlinie](cloud-services-guestos-retirement-policy.md)
-### [Deaktivierungsinformationen für die Betriebssystemfamilie 1](cloud-services-guestos-family1-retirement.md)
-## [Neuigkeiten zur Version des Azure-Gastbetriebssystems](cloud-services-guestos-update-matrix.md)
-## [Cloud Services-Rollenkonfiguration – XPath-Cheat Sheet](cloud-services-role-config-xpath.md)
 
 # Ressourcen
 ## [Preise](https://azure.microsoft.com/pricing/details/cloud-services/)
@@ -116,6 +117,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

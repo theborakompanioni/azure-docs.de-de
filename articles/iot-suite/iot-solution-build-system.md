@@ -1,12 +1,12 @@
 ---
-title: MyDriving-Beispiel für Azure IoT – Buildvorgang | Microsoft Docs
-description: Erstellen Sie eine App, bei der es sich um eine umfassende Demonstration handelt, wie Sie mit Microsoft Azure ein IoT-System einschließlich Stream Analytics, Machine Learning und Event Hubs zusammenstellen.
-services: ''
+title: "MyDriving-Beispiel für Azure IoT – Buildvorgang | Microsoft Docs"
+description: "Erstellen Sie eine App, bei der es sich um eine umfassende Demonstration handelt, wie Sie mit Microsoft Azure ein IoT-System einschließlich Stream Analytics, Machine Learning und Event Hubs zusammenstellen."
+services: 
 documentationcenter: .net
-suite: ''
+suite: 
 author: harikmenon
 manager: douge
-
+ms.assetid: c2fcd6ee-3bbe-43d1-a066-dce52cc3a53d
 ms.service: multiple
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/25/2016
 ms.author: harikm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 012bfc7d8431e2edb2b1056fb465421fad58193a
+
 
 ---
 # <a name="build-and-deploy-the-mydriving-solution-to-your-environment"></a>Erstellen und Bereitstellen der MyDriving-Lösung für Ihre Umgebung
@@ -192,7 +196,7 @@ Sehen Sie in der ausführlichen Anleitung in **scripts/README.md**nach, um eine 
 
 Microsoft Azure verfügt über viele verschiedene Dienste, die Sie zum Erstellen von Cloudanwendungen verwenden können. Ein Großteil davon kann auch einzeln genutzt werden (z.B. App Service/Web-Apps), aber die beste Leistung wird erzielt, wenn sie zusammen ein integriertes System bilden, z.B. für MyDriving.
 
-Es ist möglich, Azure-Dienste manuell zu erstellen und zu verknüpfen, aber viel schneller und zuverlässiger ist die Verwendung von Azure Resource Manager-Vorlagen. [Resource Manager](../resource-group-overview.md) wird die Bereitstellung der Ressourcen einer Lösung und die entsprechende Verknüpfung automatisiert.
+Es ist möglich, Azure-Dienste manuell zu erstellen und zu verknüpfen, aber viel schneller und zuverlässiger ist die Verwendung von Azure Resource Manager-Vorlagen. [Resource Manager](../azure-resource-manager/resource-group-overview.md) wird die Bereitstellung der Ressourcen einer Lösung und die entsprechende Verknüpfung automatisiert.
 
 Sie finden die Vorlage für das MyDriving-System im GitHub-Repository unter [scripts/ARM](https://github.com/Azure-Samples/MyDriving/tree/master/scripts/ARM). Hier wird umfassend und gleichzeitig in kurzer Form beschrieben, wie die unterschiedlichen Dienste in unserer Architektur miteinander verbunden sind. Noch ausführlicher wird hierauf im [MyDriving-Referenzleitfaden](http://aka.ms/mydrivingdocs)eingegangen, aber Sie können bereits viel erfahren, indem Sie sich die Vorlage durchlesen.
 
@@ -394,6 +398,9 @@ Wir freuen uns darauf, von Ihnen zu hören!
 ## <a name="next-steps"></a>Nächste Schritte
 Wir empfehlen Ihnen den [MyDriving-Referenzleitfaden](http://aka.ms/mydrivingdocs), bei dem es sich um eine umfassende Beschreibung des Systemdesigns und der dazugehörigen Komponenten handelt.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

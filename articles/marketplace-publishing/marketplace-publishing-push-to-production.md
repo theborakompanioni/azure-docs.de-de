@@ -2,11 +2,11 @@
 title: Bereitstellen Ihres Angebots im Azure Marketplace | Microsoft Docs
 description: Hier erhalten Sie weitere Informationen zum Bereitstellen Ihres Angebots (VM-Image, Entwicklungsdienst, Datendienst usw.) in Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: ''
+documentationcenter: 
 author: HannibalSII
-manager: ''
-editor: ''
-
+manager: hascipio
+editor: 
+ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
@@ -14,10 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a91e8b3d64ec68ae43e7237c27488e5240585a4e
+
 
 ---
-# Bereitstellen Ihres Angebots im Azure Marketplace
-Wenn Sie nach dem Testen von Kundenszenarien, Marketinginhalten und Ähnlichem mit Ihrem Angebot zufrieden sind und es veröffentlichen möchten, verwenden Sie auf der Registerkarte **Veröffentlichen** die Option **Für Produktionsumgebungen freigeben**.
+# <a name="deploy-your-offer-to-the-azure-marketplace"></a>Bereitstellen Ihres Angebots im Azure Marketplace
+Wenn Sie nach dem Testen von Kundenszenarien, Marketinginhalten und Ähnlichem mit Ihrem Angebot zufrieden sind und es veröffentlichen möchten, verwenden Sie auf der Registerkarte **Veröffentlichen** die Option **Für Produktionsumgebungen freigeben**.  
 
 1. Die vier Schritte auf der Seite VORGEHENSWEISE im Veröffentlichungsportal sollten abgeschlossen und grün sein. Stellen Sie für VM-Angebote sicher, dass die folgenden Richtlinien eingehalten werden.
    
@@ -42,7 +46,7 @@ Wenn Sie nach dem Testen von Kundenszenarien, Marketinginhalten und Ähnlichem m
 > 
 > 
 
-## Produktionscheckliste für alle VM-Angebote
+## <a name="production-checklist-for-all-virtual-machine-offers"></a>Produktionscheckliste für alle VM-Angebote
 * Stellen Sie sicher, dass Sie ein Microsoft Azure Certified-Partner sind.
 * Die Option „SKU für Marketplace ausblenden, da sie immer über eine Lösungsvorlage erworben werden sollte“ auf der SKU-Registerkarte sollte nur dann auf JA festgelegt werden, wenn die SKU Teil einer Lösungsvorlage ist. Andernfalls sollte diese Option immer auf NEIN festgelegt werden.
 * Denken Sie daran: Ändern Sie nicht die Sichtbarkeitseinstellungen der SKU, sobald die SKU aufgeführt ist. Diese Funktionalität wird nicht unterstützt.
@@ -65,21 +69,25 @@ Wenn Sie nach dem Testen von Kundenszenarien, Marketinginhalten und Ähnlichem m
 
 * Ein Herologo ist optional. Der Herausgeber muss kein Herologo hochladen. **Ist das Herosymbol jedoch einmal hochgeladen, dann kann es nicht mehr aus dem Veröffentlichungsportal gelöscht werden. Zu diesem Zeitpunkt muss der Partner die Azure Marketplace-Richtlinien für Herosymbole einhalten, sonst wird das Angebot nicht zur Produktion genehmigt.**
 * Anzeigename des Herausgebers, SKU-Titel und ausführliche Angebotsübersicht werden in weißer Schrift angezeigt. Daher sollten Sie helle Farben im Hintergrund des Herosymbols vermeiden. Schwarzer, weißer und transparenter Hintergrund ist für Herosymbole nicht zulässig.
-* Der Anzeigename des Herausgebers, der SKU-Titel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie sollten beim Entwerfen des Herologos keinen Text eingeben. Lassen Sie einfach Leerraum auf der rechten Seite, da der Text (d.h. Anzeigename des Herausgebers, SKU-Titel, ausführliche Angebotsübersicht) programmgesteuert von uns dort berücksichtigt werden. Der Leerraum für den Text sollte 415 x 100 auf der rechten Seite betragen (und ist 370 Pixel von links versetzt).
+* Der Anzeigename des Herausgebers, der SKU-Titel, die ausführliche Angebotsübersicht und die Erstellen-Schaltfläche werden programmgesteuert in das Herologo eingebettet, wenn das Angebot live geschaltet wird. Sie sollten beim Entwerfen des Herologos keinen Text eingeben. Lassen Sie einfach Platz auf der rechten Seite, da der Text (also Anzeigename des Herausgebers, SKU-Titel, ausführliche Angebotsübersicht) von uns dort programmgesteuert eingefügt wird. Der Leerraum für den Text sollte 415 x 100 auf der rechten Seite betragen (und ist 370 Pixel von links versetzt).
 
-## Zusätzliche Produktionscheckliste für bereits aufgeführte VM-Angebote
+## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>Zusätzliche Produktionscheckliste für bereits aufgeführte VM-Angebote
 * Überprüfen Sie, ob bereits ein Angebot mit gleichem Angebotsnamen von Ihrem Unternehmen vorhanden ist. Wenn ja, sollten Sie eine neue Version der SKU dem vorhandenen Angebot hinzufügen, anstatt ein neues doppeltes Angebot zu erstellen.
 * Datenträger sollten zwischen zwei Versionen der gleichen SKU nicht wechseln.
 * Azure Marketplace unterstützt keine Preisänderung der aufgeführten SKUs, da dies die Abrechnung der bestehenden Kunden beeinflusst. Stellen Sie sicher, dass Sie die Preise der aufgeführten SKUs in den Regionen, in denen die SKU verfügbar ist, nicht ändern. Sie können jedoch neue SKUs hinzufügen, oder einer vorhandenen SKU neue Regionen hinzufügen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Wenn das Angebot live geschaltet wurde, testen Sie die Kundenszenarien in der Produktionsumgebung, um zu prüfen, ob alle Verträge und Funktionen wie bei den Tests und Überprüfungen in der Stagingumgebung funktionieren.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-[img-pubportal-walkthru-checked]: media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
-[img-pubportal-menu-publish]: media/marketplace-publishing-push-to-production/pubportal-menu-publish.png
-[img-pubportal-publish-pushproduction]: media/marketplace-publishing-push-to-production/pubportal-publish-pushproduction.png
+[img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
+[img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png
+[img-pubportal-publish-pushproduction]:media/marketplace-publishing-push-to-production/pubportal-publish-pushproduction.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

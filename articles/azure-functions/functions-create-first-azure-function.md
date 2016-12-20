@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: d40304cd4f7ede4e37d32f66330ac712d325f898
-ms.openlocfilehash: ea7d8acec83103c981bad279507dd7ead5f72370
+ms.sourcegitcommit: ae5837b4fce52aad4c8b39434c27c450aafc1310
+ms.openlocfilehash: 6f42f79abed80df12148463e25935893a4bbdcde
 
 
 ---
@@ -68,7 +68,7 @@ In dieser Schnellstartanleitung wird eine einfache Ausführung einer grundlegend
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
    Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
-  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des dynamischen Serviceplans) und enthält Informationen zur Wahl des geeigneten Plans. 
+  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
 * [Was ist Azure App Service?](../app-service/app-service-value-prop-what-is.md)  
    Azure Functions nutzt die Azure App Service-Plattform für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
 
@@ -77,6 +77,6 @@ In dieser Schnellstartanleitung wird eine einfache Ausführung einer grundlegend
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

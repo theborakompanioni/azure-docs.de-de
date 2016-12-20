@@ -1,19 +1,23 @@
 ---
 title: Installieren von Apache Qpid Proton-C auf einem virtuellen Linux-Computer | Microsoft Docs
 description: Sie erfahren, wie Sie einen virtuellen CentOS Linux-Computer mit Azure Virtual Machines erstellen und die Apache Qpid Proton-C-Bibliothek erstellen und installieren.
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 3158d69f-c409-494d-9a6c-32613c1a3c74
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 226703f9b4a4b295231ecd48d719638321ae55ef
+
 
 ---
 # <a name="install-apache-qpid-proton-c-on-an-azure-linux-vm"></a>Installieren von Apache Qpid Proton-C auf einem virtuellen Azure-Linux-Computer
@@ -21,7 +25,7 @@ ms.author: sethm
 
 In diesem Abschnitt wird gezeigt, wie Sie einen virtuellen CentOS Linux-Computer mit Azure Virtual Machines erstellen und die Apache Qpid Proton-C-Bibliothek zusammen mit den Python- und PHP-Sprachbindungen herunterladen, erstellen und installieren. Nachdem Sie diese Schritte ausgeführt haben, können Sie die Python- und PHP-Beispiele ausführen, die in diesem Leitfaden enthalten sind.
 
-Der erste Schritt wird im [klassischen Azure-Portal][klassischen Azure-Portal] ausgeführt. Der folgende Screenshot zeigt die Erstellung eines virtuellen CentOS-Computers mit dem Namen „scott-centos“:
+Der erste Schritt wird im [klassischen Azure-Portal][klassisches Azure-Portal] ausgeführt. Der folgende Screenshot zeigt die Erstellung eines virtuellen CentOS-Computers mit dem Namen „scott-centos“:
 
 ![Proton auf einem virtuellen Azure-Linux-Computer][0]
 
@@ -29,7 +33,7 @@ Nach der Bereitstellung wird im Portal Folgendes angezeigt:
 
 ![Proton auf einem virtuellen Azure-Linux-Computer][1]
 
-Um sich am Computer anzumelden, müssen Sie den Endpunktport für SSH kennen. Sie können diesen Wert aus dem [klassischen Azure-Portal][klassischen Azure-Portal] abrufen, indem Sie den neu erstellten virtuellen Computer auswählen und auf die Registerkarte **Endpunkte** klicken. Der folgende Screenshot zeigt, dass der öffentliche SSH-Port für diesen Computer 57146 lautet.
+Um sich am Computer anzumelden, müssen Sie den Endpunktport für SSH kennen. Sie können diesen Wert aus dem [klassischen Azure-Portal][klassisches Azure-Portal] abrufen, indem Sie den neu erstellten virtuellen Computer auswählen und auf die Registerkarte **Endpunkte** klicken. Der folgende Screenshot zeigt, dass der öffentliche SSH-Port für diesen Computer 57146 lautet.
 
 ![Proton auf einem virtuellen Azure-Linux-Computer][2]
 
@@ -84,15 +88,15 @@ Für die Python- und PHP-Apps werden in diesem Beispiel die Proton-Clientbibliot
    
    mkdir build cd build
    
-   # Set the install prefix. You may need to adjust depending on your      
-   # system.       
+   # Set the install prefix. You may need to adjust depending on your        
+   # system.        
    cmake -DCMAKE\_INSTALL\_PREFIX=/usr ..
    
-   # Omit the docs target if you do not wish to build or install       
+   # Omit the docs target if you do not wish to build or install        
    # documentation.        
    make all docs
    
-   # Note that this step will require root privileges.     
+   # Note that this step will require root privileges.        
    make install
    ```
 
@@ -109,12 +113,12 @@ Möchten Sie mehr erfahren? Nutzen Sie die den folgenden Link:
 [2]: ./media/service-bus-amqp-apache/amqp-apache-3.png
 [3]: ./media/service-bus-amqp-apache/amqp-apache-4.png
 
-[klassischen Azure-Portal]: http://manage.windowsazure.com
+[klassisches Azure-Portal]: http://manage.windowsazure.com
 
 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

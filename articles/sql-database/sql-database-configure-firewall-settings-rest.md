@@ -1,22 +1,27 @@
 ---
-title: Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe der REST-API | Microsoft Docs
-description: Sie erfahren, wie Sie die Firewall für IP-Adressen mit Zugriff auf Azure SQL-Datenbanken konfigurieren.
+title: "Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe der REST-API | Microsoft Docs"
+description: "Sie erfahren, wie Sie die Firewall für IP-Adressen mit Zugriff auf Azure SQL-Datenbanken konfigurieren."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: fc874f3c-c623-4924-8cb7-32a8c31e666c
 ms.service: sql-database
+ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
+translationtype: Human Translation
+ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
+ms.openlocfilehash: cd5d47aa012b21a283e3d6482fe0afddcfa14033
+
 
 ---
-# Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe der REST-API
+# <a name="configure-azure-sql-database-server-level-firewall-rules-using-the-rest-api"></a>Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe der REST-API
 > [!div class="op_single_selector"]
 > * [Übersicht](sql-database-firewall-configure.md)
 > * [Azure-Portal](sql-database-configure-firewall-settings.md)
@@ -33,7 +38,7 @@ Microsoft Azure SQL-Datenbank verwendet Firewallregeln, um Verbindungen mit Ihre
 > 
 > 
 
-## Verwalten von Firewallregeln auf Serverebene über die REST-API
+## <a name="manage-server-level-firewall-rules-through-rest-api"></a>Verwalten von Firewallregeln auf Serverebene über die REST-API
 1. Beim Verwalten von Firewallregeln über die REST-API muss eine Authentifizierung erfolgen. Informationen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](../resource-manager-api-authentication.md).
 2. Regeln auf Serverebene können über die REST-API erstellt, aktualisiert oder gelöscht werden.
    
@@ -55,23 +60,25 @@ Microsoft Azure SQL-Datenbank verwendet Firewallregeln, um Verbindungen mit Ihre
         https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/firewallRules/{rule-name}?api-version={api-version}
 
 
-## Verwalten von Firewallregeln mithilfe der REST-API
-* [Create or Update Firewall Rule](https://msdn.microsoft.com/library/azure/mt445501.aspx) (Erstellen oder Aktualisieren der Firewallregel)
+## <a name="manage-firewall-rules-using-the-rest-api"></a>Verwalten von Firewallregeln mithilfe der REST-API
+* [Create or Update Firewall Rule](https://msdn.microsoft.com/library/azure/mt445501.aspx)
 * [Delete Firewall Rule](https://msdn.microsoft.com/library/azure/mt445502.aspx)
 * [Get Firewall Rule](https://msdn.microsoft.com/library/azure/mt445503.aspx)
-* [List Firewall Rules](https://msdn.microsoft.com/library/azure/mt604478.aspx) (Auflisten der Firewallregeln)
+* [List Firewall Rules](https://msdn.microsoft.com/library/azure/mt604478.aspx)
 
-## Nächste Schritte
-Einen Artikel mit einer Anleitung zur Verwendung von Transact-SQL zum Erstellen von Firewallregeln auf Serverebene und Datenbankebene finden Sie unter [Konfigurieren von Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank mit T-SQL](sql-database-configure-firewall-settings-tsql.md).
+## <a name="next-steps"></a>Nächste Schritte
+Einen Artikel mit einer Anleitung zur Verwendung von Transact-SQL zum Erstellen von Firewallregeln auf Serverebene und Datenbankebene finden Sie unter [Konfigurieren von Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank mit T-SQL](sql-database-configure-firewall-settings-tsql.md). 
 
-Artikel mit Anleitungen zum Erstellen von Firewallregeln auf Serverebene mit anderen Methoden finden Sie unter:
+Artikel mit Anleitungen zum Erstellen von Firewallregeln auf Serverebene mit anderen Methoden finden Sie unter: 
 
 * [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md)
 * [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe von PowerShell](sql-database-configure-firewall-settings-powershell.md)
 
-Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md). Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx). Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).
+Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md).
+Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx).
+Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).
 
-## Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Sichern der Datenbank](sql-database-security.md)
 * [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589)
 
@@ -82,4 +89,8 @@ Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL
 
 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

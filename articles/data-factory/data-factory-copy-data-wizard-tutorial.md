@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/16/2016
+ms.date: 12/06/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d47c43201b15a3452871d662038a1246ea403f02
+ms.sourcegitcommit: 3205077236dd44253b3fa36d6eace36fb307871e
+ms.openlocfilehash: 11754bbe534638d8321f509d7d82e025c667176c
 
 
 ---
@@ -60,8 +60,8 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    2. Wählen Sie Ihr Azure- **Abonnement**aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus: 
       
-      1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
-      2. Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
+      - Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
+      - Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
          
           Bei einigen Schritten dieses Lernprogramms wird davon ausgegangen, dass Sie die Ressourcengruppe namens **ADFTutorialResourceGroup** verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
    4. Wählen Sie einen **Standort** für die Data Factory aus.
@@ -163,6 +163,6 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

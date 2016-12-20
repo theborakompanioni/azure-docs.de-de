@@ -1,12 +1,12 @@
 ---
-title: Configurable Token Lifetimes in Azure Active Directory  | Microsoft Docs
-description: This feature is used by admins and developers to specify the lifetimes of tokens issued by Azure AD.
+title: "Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory | Microsoft Docs"
+description: Diese Funktion wird von Administratoren und Entwicklern verwendet, um die Lebensdauer der von Azure AD ausgegebenen Token festzulegen.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,189 +14,193 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/06/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f61d23fec6badb8dd53379d183b177e4c19e5711
+
 
 ---
-# <a name="configurable-token-lifetimes-in-azure-active-directory-(public-preview)"></a>Configurable Token Lifetimes in Azure Active Directory (Public Preview)
+# <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
 > [!NOTE]
-> This capability is currently in public preview.  You should be prepared to revert or remove any changes.  We are opening up this feature for everyone to try during the public preview, however, certain aspects may require an [Azure AD Premium subscription](active-directory-get-started-premium.md) once generally available.
+> Diese Funktion befindet sich derzeit in der Phase der öffentlichen Vorschau.  Sie sollten darauf vorbereitet sein, Änderungen zurückzusetzen bzw. zu löschen.  Im Rahmen der öffentlichen Vorschau kann diese Funktion von jedermann getestet werden. Bestimmte Aspekte erfordern jedoch unter Umständen ein [Azure AD-Premium-Abonnement](active-directory-get-started-premium.md), sobald sie allgemein verfügbar sind.
 > 
 > 
 
-## <a name="introduction"></a>Introduction
-This feature is used by admins and developers to specify the lifetimes of tokens issued by Azure AD. Token lifetimes can be configured for all apps in a tenant, for a multi-tenant application, or for a specific Service Principal in a tenant.
+## <a name="introduction"></a>Einführung
+Diese Funktion wird von Administratoren und Entwicklern verwendet, um die Lebensdauer der von Azure AD ausgegebenen Token festzulegen. Die Tokengültigkeitsdauer kann für alle Apps in einem Mandanten, für eine mehrinstanzenfähige Anwendung oder für einen bestimmten Dienstprinzipal in einem Mandanten konfiguriert werden.
 
-In Azure AD, a policy object represents a set of rules enforced on individual applications or all applications in a tenant.  Each type of policy has a unique structure with a set of properties that are then applied to objects to which they are assigned.
+In Azure AD steht ein Richtlinienobjekt für eine Reihe von Regeln, die für einzelne Anwendungen oder alle Anwendungen in einem Mandanten erzwungen werden.  Jede Art von Richtlinie verfügt über eine eindeutige Struktur mit einem Satz von Eigenschaften, die auf Objekte angewendet werden, denen sie zugewiesen sind.
 
-A policy can be designated as the default for a tenant. This policy then takes effect on any application that resides within that tenant as long as it is not overridden by a policy with a higher priority. Policies can also be assigned to specific applications. The order of priority varies by policy type.
+Eine Richtlinie kann für einen Mandanten als Standard festgelegt werden. Diese Richtlinie wird dann für jede Anwendung wirksam, die sich innerhalb dieses Mandanten befindet, solange sie nicht durch eine Richtlinie mit höherer Priorität außer Kraft gesetzt wird. Richtlinien können auch bestimmten Anwendungen zugewiesen werden. Die Reihenfolge der Priorität variiert je nach Richtlinientyp.
 
-Token lifetime policies can be configured for refresh tokens, access tokens, session tokens, and ID tokens.
+Tokengültigkeitsdauer-Richtlinien können für Aktualisierungstoken, Zugriffstoken, Sitzungstoken und ID-Token konfiguriert werden.
 
-### <a name="access-tokens"></a>Access tokens
-An access token is used by a client to access a protected resource. An access token can only be used for a specific combination of user, client, and resource. Access tokens cannot be revoked and are valid until their expiry. A malicious actor that has obtained an access token can use it for extent of its lifetime.  Adjusting access token lifetime is a trade-off between improving system performance and increasing the amount of time that the client retains access after the user’s account is disabled.  Improved system performance is achieved by reducing the number of times a client needs to acquire a fresh access token. 
+### <a name="access-tokens"></a>Zugriffstoken
+Ein Zugriffstoken wird von einem Client verwendet, um auf eine geschützte Ressource zuzugreifen. Ein Zugriffstoken kann nur für eine bestimmte Kombination aus Benutzer, Client und Ressource verwendet werden. Zugriffstoken können nicht widerrufen werden und sind bis zu ihrem Ablauf gültig. Ein böswilliger Akteur, der ein Zugriffstoken abgerufen hat, kann es während seiner gesamten Lebensdauer verwenden.  Das Anpassen der Gültigkeitsdauer von Zugriffstoken erfordert einen Kompromiss. Hierbei steht eine Verbesserung der Systemleistung einer Verlängerung der Zeitspanne gegenüber, die der Client weiterhin Zugriff hat, nachdem das Konto des Benutzers deaktiviert wurde.  Eine verbesserte Systemleistung wird dadurch erzielt, dass ein Client weniger oft ein neues Zugriffstoken abrufen muss. 
 
-### <a name="refresh-tokens"></a>Refresh tokens
-When a client acquires an access token to access a protected resource, it receives both a refresh token and an access token. The refresh token is used to obtain new access/refresh token pairs when the current access token expires. Refresh tokens are bound to combinations of user and client. They can be revoked and their validity is checked every time they are used.
+### <a name="refresh-tokens"></a>Aktualisierungstoken
+Wenn ein Client ein Zugriffstoken für den Zugriff auf eine geschützte Ressource abruft, erhält er ein Aktualisierungstoken und ein Zugriffstoken. Das Aktualisierungstoken wird verwendet, um neue Zugriffs-/Aktualisierungstoken-Paare abzurufen, wenn das aktuelle Zugriffstoken abläuft. Aktualisierungstoken sind an die Kombination aus Benutzer und Client gebunden. Sie können widerrufen werden, und ihre Gültigkeit wird bei jeder Verwendung überprüft.
 
-It is important to make a distinction between confidential and public clients. Confidential clients are applications that are able to securely store a client password, allowing them to prove that requests are coming from the client application and not a malicious actor. As these flows are more secure, the default lifetimes of refresh tokens issued to these flows are higher and cannot be changed using policy.
+Es ist wichtig, zwischen vertraulichen und öffentlichen Clients zu unterscheiden. Vertrauliche Clients sind Anwendungen, die ein Clientkennwort sicher speichern können, was es ihnen ermöglicht nachzuweisen, dass Anforderungen von der Clientanwendung und nicht von einem böswilligen Akteur stammen. Da derartige Flüsse sicherer sind, ist die Standardgültigkeitsdauer von Aktualisierungstoken, die für diese Flüsse ausgestellt werden, höher und kann nicht mithilfe einer Richtlinie geändert werden.
 
-Due to limitations of the environment that the applications run in, public clients are unable to securely store a client password. Policies can be set on resources to prevent refresh tokens from public clients older than a specified period from obtaining a new access/refresh token pair (Refresh Token Max Inactive Time).  Additionally, policies can be used to set a period of time beyond which the refresh tokens are no longer accepted (Refresh Token Max Age).  Adjusting refresh token lifetime allows you to control when and how often the user is required to reenter credentials instead of being silently re-authenticated when using a public client application.
+Aufgrund der Einschränkungen der Umgebungen, in denen die Anwendungen ausgeführt werden, können öffentliche Clients ein Clientkennwort nicht sicher speichern. Für Ressourcen können Richtlinien festgelegt werden, um zu verhindern, dass Aktualisierungstoken aus öffentlichen Clients, deren Alter einen festgelegten Wert überschritten hat, ein neues Zugriffs-/Aktualisierungstoken-Paar abrufen können (maximale Zeit der Inaktivität für Aktualisierungstoken).  Darüber hinaus können Richtlinien verwendet werden, um eine bestimmte Zeitspanne festzulegen, nach der die Aktualisierungstoken nicht mehr akzeptiert werden (maximales Alter für Aktualisierungstoken).  Durch das Anpassen der Gültigkeitsdauer von Aktualisierungstoken können Sie steuern, wann und wie oft der Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch erneut authentifiziert zu werden, wenn er eine öffentliche Clientanwendung verwendet.
 
-### <a name="id-tokens"></a>ID tokens
-ID tokens are passed to web sites and native clients and contain profile information about a user. An ID token is bound to a specific combination of user and client. ID tokens are considered valid until expiry.  Normally, a web application matches a user’s session lifetime in the application to the lifetime of the ID token issued for the user.  Adjusting ID token lifetime allows you to control how often the web application will expire the application session and require the user to be re-authenticated with Azure AD (either silently or interactively).
+### <a name="id-tokens"></a>ID-Token
+ID-Token werden an Websites und native Clients weitergegeben und enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zum Ablaufdatum als gültig betrachtet.  In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an.  Durch das Anpassen der Gültigkeitsdauer des ID-Tokens können Sie steuern, wie oft die Sitzung der Webanwendung abläuft und der Benutzer erneut (im Hintergrund oder interaktiv) bei Azure AD authentifiziert werden muss.
 
-### <a name="single-sign-on-session-token"></a>Single sign-on session token
-When a user authenticates with Azure AD, a single sign-on session is established with the user’s browser and Azure AD.  The Single Sign-On Session Token, in the form of a cookie, represents this session. It is important to note that the SSO session token is not bound to a specific resource/client application. SSO session tokens can be revoked and their validity is checked every time they are used.
+### <a name="single-sign-on-session-token"></a>Sitzungstoken für die einmalige Anmeldung
+Wenn ein Benutzer eine Authentifizierung bei Azure AD vornimmt und das Kontrollkästchen „Angemeldet bleiben“ aktiviert, wird eine Sitzung für einmaliges Anmelden beim Browser des Benutzers und bei Azure AD hergestellt.  Ein Sitzungstoken für die einmalige Anmeldung hat die Form eines Cookies und repräsentiert diese Sitzung. Dabei ist zu beachten, dass das SSO-Sitzungstoken nicht an eine bestimmte Ressource/Clientanwendung gebunden ist. SSO-Sitzungstoken können widerrufen werden, und ihre Gültigkeit wird bei jeder Verwendung überprüft.
 
-There are two kinds of SSO session tokens. Persistent session tokens are stored as persistent cookies by the browser and non-persistent session tokens are stored as session cookies (these are destroyed when the browser is closed).
+Es gibt zwei Arten von SSO-Sitzungstoken. Permanente Sitzungstoken werden vom Browser als permanente Cookies gespeichert, während nicht-permanente Sitzungstoken als Sitzungscookies gespeichert werden (diese gehen verloren, wenn der Browser geschlossen wird).
 
-Non-persistent session tokens have a lifetime of 24 hours whereas persistent tokens have a lifetime of 180 days. Any time the SSO session token is used within its validity period, the validity period is extended another 24 hours or 180 days. If the SSO session token is not used within its validity period, it is considered expired and will no longer be accepted. 
+Nicht-permanente Sitzungstoken haben eine Gültigkeit von 24 Stunden, wohingegen permanente Token eine Gültigkeit von 180 Tagen haben. Jedes Mal, wenn das SSO-Sitzungstoken innerhalb seiner Gültigkeitsdauer verwendet wird, verlängert sich die Gültigkeitsdauer um weitere 24 Stunden bzw. 180 Tage. Wenn das SSO-Sitzungstoken innerhalb seiner Gültigkeitsdauer nicht verwendet wird, wird es als abgelaufen erachtet und nicht mehr akzeptiert. 
 
-Policies can be used to set a period of time after the first session token was issued beyond which the session tokens are no longer accepted (Session Token Max Age).  Adjusting session token lifetime allows you to control when and how often the user is required to re-enter credentials instead of being silently authenticated when using a web application.
+Es können Richtlinien verwendet werden, um einen Zeitraum ab der Ausstellung des ersten Sitzungstokens festzulegen, nach dem keine Sitzungstoken mehr akzeptiert werden (maximales Alter Sitzungstoken).  Durch das Anpassen der Gültigkeitsdauer von Sitzungstoken können Sie steuern, wann und wie oft der Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch authentifiziert zu werden, wenn er eine Webanwendung verwendet.
 
-### <a name="token-lifetime-policy-properties"></a>Token lifetime policy properties
-A token lifetime policy is a type of policy object that contains token lifetime rules.  The properties of the policy are used to control specified token lifetimes.  If no policy is set, the system enforces the default lifetime value.
+### <a name="token-lifetime-policy-properties"></a>Eigenschaften von Tokengültigkeitsdauer-Richtlinien
+Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln für die Tokengültigkeitsdauer enthält.  Die Eigenschaften der Richtlinie werden verwendet, um angegebene Tokengültigkeitsdauern zu steuern.  Wenn keine Richtlinie festgelegt ist, erzwingt das System den Standardwert für die Gültigkeitsdauer.
 
-### <a name="configurable-token-lifetime-properties"></a>Configurable token lifetime properties
-| Property | Policy property string | Affects | Default | Minimum | Maximum |
+### <a name="configurable-token-lifetime-properties"></a>Konfigurierbare Eigenschaften der Tokengültigkeitsdauer
+| Eigenschaft | Richtlinien-Eigenschaftszeichenfolge | Betrifft | Standard | Minimum | Maximum |
 | --- | --- | --- | --- | --- | --- |
-| Access Token Lifetime |AccessTokenLifetime |Access tokens, ID tokens, SAML2 tokens |1 hour |10 minutes |1 day |
-| Refresh Token Max Inactive Time |MaxInactiveTime |Refresh tokens |14 days |10 minutes |90 days |
-| Single-Factor Refresh Token Max Age |MaxAgeSingleFactor |Refresh tokens (for any users) |90 days |10 minutes |Until-revoked* |
-| Multi-Factor Refresh Token Max Age |MaxAgeMultiFactor |Refresh tokens (for any users) |90 days |10 minutes |Until-revoked* |
-| Single-Factor Session Token Max Age |MaxAgeSessionSingleFactor** |Session tokens(persistent and non-persistent) |Until-revoked |10 minutes |Until-revoked* |
-| Multi-Factor Session Token Max Age |MaxAgeSessionMultiFactor*** |Session tokens (persistent and non-persistent) |Until-revoked |10 minutes |Until-revoked* |
+| Gültigkeitsdauer Zugriffstoken |AccessTokenLifetime |Zugriffstoken, ID-Token, SAML2-Token |1 Stunde |10 Minuten |1 Tag |
+| Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime |Aktualisierungstoken |14 Tage |10 Minuten |90 Tage |
+| Max. Alter Single-Factor-Aktualisierungstoken |MaxAgeSingleFactor |Aktualisierungstoken (für alle Benutzer) |90 Tage |10 Minuten |Bis zum Widerruf* |
+| Max. Alter Multi-Factor-Aktualisierungstoken |MaxAgeMultiFactor |Aktualisierungstoken (für alle Benutzer) |90 Tage |10 Minuten |Bis zum Widerruf* |
+| Max. Alter Single-Factor-Sitzungstoken |MaxAgeSessionSingleFactor** |Sitzungstoken (permanent oder nicht-permanent) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf* |
+| Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor*** |Sitzungstoken (permanent oder nicht-permanent) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf* |
 
-* *365 days is the maximum explicit length that can be set for these attributes.
-* **If MaxAgeSessionSingleFactor is not set then this value takes the MaxAgeSingleFactor value. If neither parameter is set, the property takes on the default value (Until-revoked).
-* ***If MaxAgeSessionMultiFactor is not set then this value takes the MaxAgeMultiFactor value. If neither parameter is set, the property takes on the default value (Until-revoked).
+* *365 Tage ist die explizite Maximallänge, die für diese Attribute festgelegt werden kann.
+* **Wenn MaxAgeSessionSingleFactor nicht festgelegt ist, wird der Wert MaxAgeSingleFactor angenommen. Wenn keiner der Parameter festgelegt ist, nimmt die Eigenschaft den Standardwert (Bis zum Widerruf) an.
+* ***Wenn MaxAgeSessionMultiFactor nicht festgelegt ist, wird der Wert MaxAgeMultiFactor angenommen. Wenn keiner der Parameter festgelegt ist, nimmt die Eigenschaft den Standardwert (Bis zum Widerruf) an.
 
-### <a name="exceptions"></a>Exceptions
-| Property | Affects | Default |
+### <a name="exceptions"></a>Ausnahmen
+| Eigenschaft | Betrifft | Standard |
 | --- | --- | --- |
-| Refresh Token Max Inactive Time (federated users with insufficient revocation information) |Refresh tokens (Issued for federated users with insufficient revocation information) |12 hours |
-| Refresh Token Max Inactive Time (Confidential Clients) |Refresh tokens (Issued for Confidential Clients) |90 days |
-| Refresh token Max Age (Issued for Confidential Clients) |Refresh tokens (Issued for Confidential Clients) |Until-revoked |
+| Max. Zeit der Inaktivität für Aktualisierungstoken (Verbundbenutzer mit unzureichenden Widerrufsinformationen) |Aktualisierungstoken (für Verbundbenutzer mit unzureichenden Widerrufsinformationen ausgestellt) |12 Stunden |
+| Max. Zeit der Inaktivität für Aktualisierungstoken (vertrauliche Clients) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |90 Tage |
+| Max. Alter Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Bis zum Widerruf |
 
-### <a name="priority-and-evaluation-of-policies"></a>Priority and evaluation of policies
-Token Lifetime policies can be created and assigned to specific applications, tenants and service principals. This means that it is possible for multiple policies to apply to a specific application. The Token Lifetime policy that takes effect follows these rules:
+### <a name="priority-and-evaluation-of-policies"></a>Priorität und Auswertung von Richtlinien
+Richtlinien für die Tokengültigkeitsdauer können erstellt und bestimmten Anwendungen, Mandanten und Dienstprinzipalen zugewiesen werden. Dies bedeutet, dass mehrere Richtlinien auf eine bestimmte Anwendung angewandt werden können. Folgende Regeln bestimmen, welche Tokengültigkeitsdauer-Richtlinie wirksam wird:
 
-* If a policy is explicitly assigned to the service principal, it will be enforced. 
-* If no policy is explicitly assigned to the service principal, a policy explicitly assigned to the parent tenant of the service principal will be enforced. 
-* If no policy is explicitly assigned to the service principal or the tenant, the policy assigned to the application will be enforced. 
-* If no policy has been assigned to the service principal, the tenant, or the application object, the default values will be enforced (see table above).
+* Wenn eine Richtlinie explizit dem Dienstprinzipal zugewiesen ist, wird sie erzwungen. 
+* Wenn keine Richtlinie explizit dem Dienstprinzipal zugewiesen ist, wird eine Richtlinie erzwungen, die explizit dem übergeordneten-Mandanten des Dienstprinzipals zugewiesen ist. 
+* Wenn keine Richtlinie explizit dem Dienstprinzipal oder dem Mandanten zugewiesen ist, wird die Richtlinie erzwungen, die der Anwendung zugewiesen ist. 
+* Wenn dem Dienstprinzipal, Mandanten oder Anwendungsobjekt keine Richtlinie zugewiesen ist, werden die Standardwerte erzwungen (siehe obige Tabelle).
 
-For more information on the relationship between application objects and service principal objects in Azure AD, see [Application and service principal objects in Azure Active Directory](active-directory-application-objects.md).
+Ausführliche Informationen zu den Beziehungen zwischen Anwendungsobjekten und Dienstprinzipalobjekten in Azure AD finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](active-directory-application-objects.md).
 
-A token’s validity is evaluated at the time it is used. The policy with the highest priority on the application that is being accessed takes effect.
+Die Gültigkeit des Tokens wird zum Zeitpunkt seiner Verwendung überprüft. Die Richtlinie mit der höchsten Priorität für die Anwendung, auf die zugegriffen wird, wird wirksam.
 
 > [!NOTE]
-> Example
+> Beispiel
 > 
-> A user wants to access 2 web applications, A and B. 
+> Ein Benutzer möchte auf die beiden Webanwendungen A und B zugreifen. 
 > 
-> * Both applications are in the same parent tenant. 
-> * Token lifetime policy 1 with a Session Token Max Age of 8 hours is set as the parent tenant’s default.
-> * Web application A is a regular use web application and isn’t linked to any policies. 
-> * Web application B is used for highly sensitive processes and its service principal is linked to token lifetime policy 2 with a Session Token Max Age of 30 minutes.
+> * Beide Anwendungen gehören zu demselben übergeordneten Mandanten. 
+> * Als Standard für den übergeordneten Mandanten wird die Tokengültigkeitsdauer-Richtlinie 1 mit einem maximalen Alter für Sitzungstoken von 8 Stunden festgelegt.
+> * Webanwendung A ist eine regelmäßig verwendete Webanwendung, die nicht mit Richtlinien verknüpft ist. 
+> * Webanwendung B wird für hochsensible Prozesse verwendet, und ihr Dienstprinzipal ist mit der Tokengültigkeitsdauer-Richtlinie 2 mit einem maximalen Alter für Sitzungstoken von 30 Minuten verknüpft.
 > 
-> At 12:00PM the user opens up a new browser session and tries to access web application A. the user is redirected to Azure AD and is asked to sign-in. This drops a cookie with a session token in the browser. The user is redirected back to web application A with an ID token that allows them to access the application.
+> Um 12 Uhr öffnet der Benutzer eine neue Browsersitzung und versucht, auf die Webanwendung A zuzugreifen. Der Benutzer wird an Azure AD umgeleitet und aufgefordert, sich anzumelden. Hierdurch wird im Browser ein Cookie mit einem Sitzungstoken gespeichert. Der Benutzer wird mit einem ID-Token an die Webanwendung A zurückgeleitet. Dieses ID-Token erlaubt ihm den Zugriff auf die Anwendung.
 > 
-> At 12:15PM, the user then tries to access web application B. The browser redirects to Azure AD which detects the session cookie. Web application B’s service principal is linked to a policy 1, but is also part of the parent tenant with default policy 2. Policy 2 takes effect since policies linked to service principals have a higher priority than tenant default policies. The session token was originally issued within the last 30 minutes so it is considered valid. The user is redirected back to web application B with an ID token granting them access.
+> Um 12:15 Uhr versucht der Benutzer, auf Webanwendung B zuzugreifen. Der Browser nimmt die Umleitung an Azure AD vor, welches das Sitzungscookie erkennt. Der Dienstprinzipal von Webanwendung B ist mit Richtlinie 2 verknüpft, ist aber zugleich Teil des übergeordneten Mandanten mit der Standardrichtlinie 1. Richtlinie 2 wird wirksam, da mit Dienstprinzipalen verknüpfte Richtlinien eine höhere Priorität haben als Mandantenstandardrichtlinien. Das Sitzungstoken wurde innerhalb der letzten 30 Minuten erstmalig ausgegeben, weshalb es als gültig erachtet wird. Der Benutzer wird mit einem ID-Token, das ihm Zugriff gewährt, an die Webanwendung B zurückgeleitet.
 > 
-> At 1:00PM the user tries navigating to web application A. The user is redirected to Azure AD. Web application A is not linked to any policies, but since it is in a tenant with default policy 1, this policy takes effect. The session cookie is detected that was originally issued within the last 8 hours and the user is silently redirected back to web application A with a new ID token without needing to authenticate.
+> Um 13:00 Uhr versucht der Benutzer, zur Webanwendung A zu navigieren. Der Benutzer wird an Azure AD umgeleitet. Webanwendung A ist nicht mit Richtlinien verknüpft, aber da sie sich in einem Mandanten mit Standardrichtlinie 1 befindet, wird diese Richtlinie wirksam. Das innerhalb der letzten acht Stunden erstmalig ausgestellte Sitzungscookie wird erkannt, und der Benutzer wird im Hintergrund mit einem neuen ID-Token an die Webanwendung A zurückgeleitet, ohne dass er sich authentifizieren muss.
 > 
-> The user immediately tries to access web application B. The user is redirected to Azure AD. As before, policy 2 takes effect. As the token was issued longer than 30 minutes ago, the user is then prompted to re-enter their credentials, and a brand new session and ID token are issued. The user can then access web application B.
+> Der Benutzer versucht unmittelbar danach, auf Webanwendung B zuzugreifen und wird an Azure AD umgeleitet. Wie bereits zuvor tritt Richtlinie 2 in Kraft. Da die Ausstellung des Tokens mehr als 30 Minuten zurückliegt, wird der Benutzer aufgefordert, seine Anmeldeinformationen erneut eingeben, und es werden völlig neue Sitzungs- und ID-Token ausgestellt. Nun kann der Benutzer auf Webanwendung B zugreifen.
 > 
 > 
 
-## <a name="configurable-policy-properties:-in-depth"></a>Configurable policy properties: In-Depth
-### <a name="access-token-lifetime"></a>Access token lifetime
-**String:** AccessTokenLifetime
+## <a name="configurable-policy-properties-in-depth"></a>Konfigurierbare Richtlinieneigenschaften: ausführliche Informationen
+### <a name="access-token-lifetime"></a>Gültigkeitsdauer Zugriffstoken
+**Zeichenfolge:** AccessTokenLifetime
 
-**Affects:** Access tokens, ID tokens
+**Betrifft:** Zugriffstoken, ID-Token
 
-**Summary:** This policy controls how long access and ID tokens for this resource are considered valid. Reducing the access token lifetime mitigates the risk of an access or ID token being used by a malicious actor for an extended period of time (as they cannot be revoked) but also adversely impacts performance as the tokens will have to be replaced more often.
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Das Reduzieren der Gültigkeitsdauer eines Zugriffstokens verringert das Risiko, dass ein Zugriffstoken oder ein ID-Token für längere Zeit von einem böswilligen Akteur verwendet wird (da das Token nicht widerrufen werden kann). Allerdings wirkt sich dies nachteilig auf die Leistung aus, da die Token häufiger ersetzt werden müssen.
 
-### <a name="refresh-token-max-inactive-time"></a>Refresh token max inactive time
-**String:** MaxInactiveTime
+### <a name="refresh-token-max-inactive-time"></a>Max. Zeit der Inaktivität für Aktualisierungstoken
+**Zeichenfolge:** MaxInactiveTime
 
-**Affects:** Refresh tokens
+**Betrifft:** Aktualisierungstoken
 
-**Summary:** This policy controls how old a refresh token can be before a client can no longer use it to retrieve a new access/refresh token pair when attempting to access this resource. Since a new Refresh token is usually returned a refresh token is used, the client must not have reached out to any resource using the current refresh token for the specified period of time before this policy would prevent access. 
+**Zusammenfassung:** Diese Richtlinie steuert, wie alt ein Aktualisierungstoken sein darf, bevor ein Client es nicht mehr verwenden kann, um ein neues Zugriffs-/Aktualisierungstoken-Paar abzurufen, wenn versucht wird, auf diese Ressource zuzugreifen. Da bei Verwendung eines Aktualisierungstokens üblicherweise ein neues Aktualisierungstoken zurückgegeben wird, darf der Client im festgelegten Zeitraum, bis diese Richtlinie den Zugriff verhindern würde, nicht mit dem aktuellen Aktualisierungstoken versucht haben, auf eine Ressource zuzugreifen. 
 
-This policy will force users who have not been active on their client to re-authenticate to retrieve a new refresh token. 
+Durch diese Richtlinie werden Benutzer, die nicht auf ihrem Client aktiv waren, gezwungen, sich erneut zu authentifizieren, um ein neues Aktualisierungstoken abzurufen. 
 
-It is important to note that the Refresh Token Max Inactive Time must be set to a lower value than the Single-Factor Token Max Age and the Multi-Factor Refresh Token Max Age.
+Hierbei ist zu beachten, dass das Token „Maximale Inaktivitätszeit Aktualisierungstoken“ auf einen niedrigeren Wert gesetzt sein muss als die Token „Maximales Alter Single-Factor-Token“ und „Maximales Alter Multi-Factor-Aktualisierungstoken“.
 
-### <a name="single-factor-refresh-token-max-age"></a>Single-factor refresh token max age
-**String:** MaxAgeSingleFactor
+### <a name="single-factor-refresh-token-max-age"></a>Max. Alter Single-Factor-Aktualisierungstoken
+**Zeichenfolge:** MaxAgeSingleFactor
 
-**Affects:** Refresh tokens
+**Betrifft:** Aktualisierungstoken
 
-**Summary:** This policy controls how long a user can continue to use refresh tokens to get new access/refresh token pairs after the last time they authenticated successfully with only a single factor. Once a user authenticates and receives a new refresh token, they will be able to use the refresh token flow (as long as the current refresh token is not revoked and it is not left unused for longer than the inactive time) for the specified period of time. At that point, users will be forced to re-authenticate to receive a new refresh token. 
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer weiterhin Aktualisierungstoken verwenden kann, um neue Zugriffs-/Aktualisierungtoken-Paare zu erhalten, nachdem er sich letztmalig erfolgreich mit nur einem Faktor authentifiziert hat. Sobald sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhält, kann er den Aktualisierungstokenfluss für den angegebenen Zeitraum verwenden (solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht über die Inaktivitätszeit hinaus ungenutzt bleibt). An diesem Punkt werden Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Aktualisierungstoken zu erhalten. 
 
-Reducing the max age will force users to authenticate more often. Since single-factor authentication is considered less secure than a multi-factor authentication, it is recommended that this policy is set to an equal or lesser value than the Multi-Factor Refresh Token Max Age Policy.
+Durch die Reduzierung des maximalen Alters müssen sich Benutzer öfter authentifizieren. Da die Single-Factor Authentication als weniger sicher erachtet wird als die Multi-Factor Authentication, wird empfohlen, diese Richtlinie auf einen Wert gleich oder kleiner des Wertes für die Richtlinie „Max. Alter Multi-Factor-Aktualisierungstoken“ festzulegen.
 
-### <a name="multi-factor-refresh-token-max-age"></a>Multi-factor refresh token max age
-**String:** MaxAgeMultiFactor
+### <a name="multi-factor-refresh-token-max-age"></a>Max. Alter Multi-Factor-Aktualisierungstoken
+**Zeichenfolge:** MaxAgeMultiFactor
 
-**Affects:** Refresh tokens
+**Betrifft:** Aktualisierungstoken
 
-**Summary:** This policy controls how long a user can continue to use refresh tokens to get new access/refresh token pairs after the last time they authenticated successfully with multiple factors. Once a user authenticates and receives a new refresh token, they will be able to use the refresh token flow (as long as the current refresh token is not revoked and it is not left unused for longer than the inactive time) for the specified period of time. At that point, users will be forced to re-authenticate to receive a new refresh token. 
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer weiterhin Aktualisierungstoken verwenden kann, um neue Zugriffs-/Aktualisierungtoken-Paare zu erhalten, nachdem er sich letztmalig erfolgreich mit mehreren Faktoren authentifiziert hat. Sobald sich ein Benutzer authentifiziert und ein neues Aktualisierungstoken erhält, kann er den Aktualisierungstokenfluss für den angegebenen Zeitraum verwenden (solange das aktuelle Aktualisierungstoken nicht widerrufen wird und nicht über die Inaktivitätszeit hinaus ungenutzt bleibt). An diesem Punkt werden Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Aktualisierungstoken zu erhalten. 
 
-Reducing the max age will force users to authenticate more often. Since single-factor authentication is considered less secure than a multi-factor authentication, it is recommended that this policy is set to an equal or greater value than the Single-Factor Refresh Token Max Age Policy.
+Durch die Reduzierung des maximalen Alters müssen sich Benutzer öfter authentifizieren. Da die Single-Factor Authentication als weniger sicher erachtet wird als die Multi-Factor Authentication, wird empfohlen, diese Richtlinie auf einen Wert gleich oder größer des Wertes für die Richtlinie „Max. Alter Single-Factor-Aktualisierungstoken“ festzulegen.
 
-### <a name="single-factor-session-token-max-age"></a>Single-factor session token max age
-**String:** MaxAgeSessionSingleFactor
+### <a name="single-factor-session-token-max-age"></a>Max. Alter Single-Factor-Sitzungstoken
+**Zeichenfolge:** MaxAgeSessionSingleFactor
 
-**Affects:** Session tokens (persistent and non-persistent)
+**Betrifft:** Sitzungstoken (permanent oder nicht-permanent)
 
-**Summary:** This policy controls how long a user can continue to use session tokens to get new ID and session tokens after the last time they authenticated successfully with only a single factor. Once a user authenticates and receives a new session token, they will be able to use the session token flow (as long as the current session token is not revoked or expired) for the specified period of time. At that point, users will be forced to re-authenticate to receive a new session token. 
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer weiterhin Sitzungstoken verwenden kann, um neue ID- und Sitzungstoken zu erhalten, nachdem er sich letztmalig erfolgreich mit nur einem Faktor authentifiziert hat. Sobald sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhält, kann er den Sitzungstokenfluss für den angegebenen Zeitraum verwenden (solange das aktuelle Sitzungstoken nicht widerrufen wurde oder abgelaufen ist). An diesem Punkt werden Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten. 
 
-Reducing the max age will force users to authenticate more often. Since single-factor authentication is considered less secure than a multi-factor authentication, it is recommended that this policy is set to an equal or lesser value than the Multi-Factor Session Token Max Age Policy.
+Durch die Reduzierung des maximalen Alters müssen sich Benutzer öfter authentifizieren. Da die Single-Factor Authentication als weniger sicher erachtet wird als die Multi-Factor Authentication, wird empfohlen, diese Richtlinie auf einen Wert gleich oder kleiner des Wertes für die Richtlinie „Max. Alter Multi-Factor-Sitzungstoken“ festzulegen.
 
-### <a name="multi-factor-session-token-max-age"></a>Multi-factor session token max age
-**String:** MaxAgeSessionMultiFactor
+### <a name="multi-factor-session-token-max-age"></a>Max. Alter Multi-Factor-Sitzungstoken
+**Zeichenfolge:** MaxAgeSessionMultiFactor
 
-**Affects:** Session tokens (persistent and non-persistent)
+**Betrifft:** Sitzungstoken (permanent oder nicht-permanent)
 
-**Summary:** This policy controls how long a user can continue to use session tokens to get new ID and session tokens after the last time they authenticated successfully with multiple factors. Once a user authenticates and receives a new session token, they will be able to use the session token flow (as long as the current session token is not revoked or expired) for the specified period of time. At that point, users will be forced to re-authenticate to receive a new session token. 
+**Zusammenfassung:** Diese Richtlinie steuert, wie lange ein Benutzer weiterhin Sitzungstoken verwenden kann, um neue ID- und Sitzungstoken zu erhalten, nachdem er sich letztmalig erfolgreich mit mehreren Faktoren authentifiziert hat. Sobald sich ein Benutzer authentifiziert und ein neues Sitzungstoken erhält, kann er den Sitzungstokenfluss für den angegebenen Zeitraum verwenden (solange das aktuelle Sitzungstoken nicht widerrufen wurde oder abgelaufen ist). An diesem Punkt werden Benutzer gezwungen, sich erneut zu authentifizieren, um ein neues Sitzungstoken zu erhalten. 
 
-Reducing the max age will force users to authenticate more often. Since single-factor authentication is considered less secure than a multi-factor authentication, it is recommended that this policy is set to an equal or greater value than the Single-Factor Session Token Max Age Policy.
+Durch die Reduzierung des maximalen Alters müssen sich Benutzer öfter authentifizieren. Da die Single-Factor Authentication als weniger sicher erachtet wird als die Multi-Factor Authentication, wird empfohlen, diese Richtlinie auf einen Wert gleich oder größer des Wertes für die Richtlinie „Max. Alter Single-Factor-Sitzungstoken“ festzulegen.
 
-## <a name="sample-token-lifetime-policies"></a>Sample token lifetime policies
-Being able to create and manage token lifetimes for apps, service principals, and your overall tenant exposes all kinds of new scenarios possible in Azure AD.  We're going to walk through a few common policy scenarios that will help you impose new rules for:
+## <a name="sample-token-lifetime-policies"></a>Beispiel: Tokengültigkeitsdauer-Richtlinien
+Die Möglichkeit zum Erstellen und Verwalten von Tokengültigkeitsdauern für Apps, Dienstprinzipale und Ihren gesamten Mandanten eröffnet unterschiedlichste neue Szenarios in Azure AD.  Wir werden einige allgemeine Richtlinienszenarios durchgehen, die es ermöglichen, neue Regeln für folgende Festlegungen vorzugeben:
 
-* Token Lifetimes
-* Token Max Inactive Times
-* Token Max Age
+* Tokengültigkeitsdauer
+* Max. Inaktivitätszeit von Token
+* Max. Alter von Token
 
-We'll walk through a few scenarios including:
+Wir werden einige Szenarios durchgehen, beispielsweise:
 
-* Managing a Tenant's Default Policy
-* Creating a Policy for Web Sign-in
-* Creating a Policy for Native Apps calling a Web API
-* Managing an Advanced Policy 
+* Verwalten der Standardrichtlinie eines Mandanten
+* Erstellen einer Richtlinie für die Webanmeldung
+* Erstellen einer Richtlinie für native Apps, die eine Web-API aufrufen
+* Verwalten einer erweiterten Richtlinie 
 
-### <a name="prerequisites"></a>Prerequisites
-In the sample scenarios we'll be creating, updating, linking, and deleting policies on apps, service principals, and your overall tenant.  If you are new to Azure AD, checkout [this article](active-directory-howto-tenant.md) to help you get started before proceeding with these samples.  
+### <a name="prerequisites"></a>Voraussetzungen
+In den Beispielszenarios werden wir Richtlinien für Apps, Dienstprinzipale und Ihren gesamten Mandanten erstellen, aktualisieren, verknüpfen und löschen.  Lesen Sie [diesen Artikel](active-directory-howto-tenant.md), wenn Sie noch nicht mit Azure AD vertraut sind. Dort erhalten Sie Hilfestellung bei der Einrichtung, bevor Sie sich den nachstehenden Beispielen zuwenden.  
 
-1. To begin, download the latest [Azure AD PowerShell Cmdlet Preview](https://www.powershellgallery.com/packages/AzureADPreview). 
-2. Once you have the Azure AD PowerShell Cmdlets, run Connect command to sign into your Azure AD admin account. You'll need to do this whenever you start a new session.
+1. Laden Sie zunächst das aktuelle [Azure AD PowerShell-Cmdlet (Vorschau)](https://www.powershellgallery.com/packages/AzureADPreview) herunter. 
+2. Nach dem Herunterladen des Azure AD PowerShell-Cmdlets führen Sie den Befehl „Connect“ aus, um sich bei Ihrem Azure AD-Administratorkonto anzumelden. Sie müssen dies jedes Mal tun, wenn Sie eine neue Sitzung starten.
    
-       Connect-AzureAD -Confirm
-3. Run the following command to see all policies that have been created in your tenant.  This command should be used after most operations in the following scenarios.  It will also help you get the **Object ID** of your policies. 
+     Connect-AzureAD -Confirm
+3. Führen Sie den folgenden Befehl aus, um alle Richtlinien anzuzeigen, die in Ihrem Mandanten erstellt wurden.  Dieser Befehl sollte nach den meisten Vorgängen in den folgenden Szenarios verwendet werden.  Außerdem erhalten Sie so die **Objekt-ID** Ihrer Richtlinien. 
    
-       Get-AzureADPolicy
+     Get-AzureADPolicy
 
-### <a name="sample:-managing-a-tenant's-default-policy"></a>Sample: Managing a tenant's default policy
-In this sample, we will create a policy that allows your users to sign in less frequently across your entire tenant. 
+### <a name="sample-managing-a-tenants-default-policy"></a>Beispiel: Verwalten der Standardrichtlinie eines Mandanten
+In diesem Beispiel wird eine Richtlinie erstellt, die es den Benutzern ermöglicht, sich weniger häufig bei Ihrem gesamten Mandanten anzumelden. 
 
-To do this, we create a token lifetime policy for Single-Factor Refresh Tokens that is applied across your tenant. This policy will be applied to every application in your tenant, and each service principal that doesn’t already have a policy set to it. 
+Hierzu erstellen wir eine Richtlinie für die Tokengültigkeitsdauer für Single-Factor-Aktualisierungstoken, die auf Ihren gesamten Mandanten angewandt wird. Diese Richtlinie wird auf jede Anwendung in Ihrem Mandanten und jeden Dienstprinzipal angewandt, für die/den noch keine Richtlinie festgelegt wurde. 
 
-1. **Create a Token Lifetime Policy.** 
+1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.** 
 
-Set the Single-Factor Refresh Token to "until-revoked" meaning it won't expire until access is revoked.  The policy definition below is what we will be creating:
+Setzen Sie das Single-Factor-Aktualisierungstoken auf „Bis zum Widerruf“, was bedeutet, es läuft erst ab, wenn der Zugriff widerrufen wird.  Wir werden die untenstehende Richtliniendefinition erstellen:
 
         @("{
           `"TokenLifetimePolicy`":
@@ -206,247 +210,250 @@ Set the Single-Factor Refresh Token to "until-revoked" meaning it won't expire u
               }
         }")
 
-Then run the following command to create this policy. 
+Führen Sie nun den folgenden Befehl zum Erstellen dieser Richtlinie aus. 
 
     New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName TenantDefaultPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
 
-To see your new policy and get its ObjectID, run the following command.
+Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
     Get-AzureADPolicy
-&nbsp;&nbsp;2.  **Update the Policy**
+&nbsp;&nbsp;2.    **Aktualisieren Sie die Richtlinie.**
 
-You've decided that the first policy is not quite as strict as your service requires, and have decided you want your Single-Factor Refresh Tokens to expire in 2 days. Run the following command. 
+Sie haben festgestellt, dass die erste Richtlinie nicht so streng ist, wie es Ihr Dienst erfordert, weshalb Ihre Single-Factor-Aktualisierungstoken nach zwei Tagen ablaufen sollen. Führen Sie den folgenden Befehl aus: 
 
     Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName TenantDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
 
-&nbsp;&nbsp;3. **You're done!** 
+&nbsp;&nbsp;3. **Fertig!** 
 
-### <a name="sample:-creating-a-policy-for-web-sign-in"></a>Sample: Creating a policy for web sign-in
-In this sample, we will create a policy that will require your users to authenticate more frequently into your Web App. This policy will set the lifetime of the Access/Id Tokens and the Max Age of a Multi-Factor Session Token to the service principal of your web app.
+### <a name="sample-creating-a-policy-for-web-sign-in"></a>Beispiel: Erstellen einer Richtlinie für die Webanmeldung
+In diesem Beispiel erstellen wir eine Richtlinie, die öfter eine Authentifizierung von Benutzern in Ihrer Web-App erfordert. Diese Richtlinie wird die Lebensdauer der Zugriffs-/ID-Token und das maximale Alter eines Multi-Factor-Sitzungstokens auf die Werte des Dienstprinzipals Ihrer Web-App setzen.
 
-1. **Create a Token Lifetime Policy.**
+1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.**
 
-This policy for Web Sign-in will set the Access/Id Token lifetime and the Max Single-Factor Session Token Age to 2 hours.
+Diese Richtlinie für die Webanmeldung wird die Gültigkeit des Zugriffs-/ID-Tokens und das maximale Alter des Single-Factor-Sitzungstokens auf zwei Stunden festlegen.
 
     New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
 
-To see your new policy and get its ObjectID, run the following command.
+Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
     Get-AzureADPolicy
-&nbsp;&nbsp;2.  **Assign the policy to your service principal.**
+&nbsp;&nbsp;2.    **Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu.**
 
-We're going to link this new policy with a service principal.  You'll also need a way to access the **ObjectId** of your service principal. You can query the [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) or go to our [Graph Explorer Tool](https://graphexplorer.cloudapp.net/) and sign into your Azure AD account to see all your tenant's service principals. 
+Wir werden diese neue Richtlinie mit einen Dienstprinzipal verknüpfen.  Sie benötigen auch eine Möglichkeit, auf die **ObjectId** Ihres Dienstprinzipals zuzugreifen. Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen oder zum [Graph-Tester](https://graphexplorer.cloudapp.net/) wechseln und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihres Mandanten zu sehen. 
 
-Once you have the **ObjectId**, Run the following command.
+Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
     Add-AzureADServicePrincipalPolicy -ObjectId <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
-&nbsp;&nbsp;3.  **You're Done!** 
+&nbsp;&nbsp;3.    **Fertig!** 
 
  
 
-### <a name="sample:-creating-a-policy-for-native-apps-calling-a-web-api"></a>Sample: Creating a policy for native apps calling a Web API
+### <a name="sample-creating-a-policy-for-native-apps-calling-a-web-api"></a>Beispiel: Erstellen einer Richtlinie für native Apps, die eine Web-API aufrufen
 > [!NOTE]
-> Linking policies to applications is currently disabled.  We are working on enabling this shortly.  This page will be updated as soon as the feature is available.
+> Das Verknüpfen von Richtlinien mit Anwendungen ist derzeit deaktiviert.  Wir arbeiten daran, dass diese Funktion in Kürze bereitgestellt wird.  Diese Seite wird aktualisiert, sobald die Funktion verfügbar ist.
 > 
 > 
 
-In this sample, we will create a policy that requires users to authenticate less and will lengthen the amount of time they can be inactive without having to authenticate again. The policy will be applied to the Web API, that way when the Native App requests it as a resource this policy will be applied.
+In diesem Beispiel werden wir eine Richtlinie erstellen, mit der sich Benutzer seltener authentifizieren müssen und die die Zeitspanne verlängert, die Benutzer inaktiv sein können, ohne sich erneut authentifizieren zu müssen. Die Richtlinie wird auf die Web-API angewandt. Wenn die native App sie als Ressource anfordert, wird diese Richtlinie somit angewandt.
 
-1. **Create a Token Lifetime Policy.** 
+1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.** 
 
-This command will create a strict policy for a Web API. 
+Mit diesem Befehl wird eine strenge Richtlinie für eine Web-API erstellt. 
 
     New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
 
-To see your new policy and get its ObjectID, run the following command.
+Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
     Get-AzureADPolicy
 
-&nbsp;&nbsp;2.  **Assign the policy to your Web API**.
+&nbsp;&nbsp;2.    **Weisen Sie die Richtlinie Ihrer Web-API zu**.
 
-We're going to link this new policy with an application.  You'll also need a way to access the **ObjectId** of your application. The best way to find your app's **ObjectId** is to use the [Azure Portal](https://portal.azure.com/). 
+Wir werden diese neue Richtlinie mit einer Anwendung verknüpfen.  Sie benötigen ferner eine Möglichkeit, auf die **ObjectId** Ihrer Anwendung zuzugreifen. Die **ObjectId** Ihrer App suchen Sie idealerweise über das [Azure-Portal](https://portal.azure.com/). 
 
-Once you have the **ObjectId**, Run the following command.
+Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
     Add-AzureADApplicationPolicy -ObjectId <ObjectID of the App> -RefObjectId <ObjectId of the Policy>
 
-&nbsp;&nbsp;3.  **You're Done!** 
+&nbsp;&nbsp;3.    **Fertig!** 
 
-### <a name="sample:-managing-an-advanced-policy"></a>Sample: Managing an advanced policy
-In this sample, we will create a few policies to demonstrate how the priority system works, and how you can manage multiple policies applied to several objects. This will give some insight into the priority of policies explained above, and will also help you manage more complicated scenarios. 
+### <a name="sample-managing-an-advanced-policy"></a>Beispiel: Verwalten einer erweiterten Richtlinie
+In diesem Beispiel erstellen wir einige Richtlinien, um zu zeigen, wie das Prioritätssystem funktioniert und wie Sie mehrere Richtlinien verwalten können, die auf mehrere Objekte angewandt werden. Dadurch erhalten Sie Einblick in die Priorität der oben erläuterten Richtlinien und können auch komplexere Szenarios verwalten. 
 
-1. **Create a Token Lifetime Policy**
+1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.**
 
-So far pretty simple. We've created a tenant default policy that sets the Single-Factor Refresh Token lifetime to 30 days. 
+Bisher war es noch ziemlich einfach. Wir haben eine Standardrichtlinie für den Mandanten erstellt, die die Gültigkeitsdauer des Single-Factor-Aktualisierungstokens auf 30 Tage festsetzt. 
 
     New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
-To see your new policy and get it's ObjectID, run the following command.
+Um Ihre neue Richtlinie anzuzeigen und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
     Get-AzureADPolicy
 
-&nbsp;&nbsp;2.  **Assign the Policy to a Service Principal**
+&nbsp;&nbsp;2.    **Weisen Sie die Richtlinie einem Dienstprinzipal zu.**
 
-Now we have a policy on the entire tenant.  Let's say we want to preserve this 30 day policy for a specific service principal, but change the tenant default policy to be the upper limit of "until-revoked". 
+Nun verfügen wir über eine Richtlinie für den gesamten Mandanten.  Nehmen wir an, dass diese 30-Tage-Richtlinie für einen bestimmten Dienstprinzipal beibehalten werden soll, die Mandantenstandardrichtlinie jedoch so geändert werden soll, dass sie als Obergrenze für „Bis zum Widerruf“ fungiert. 
 
-First, We're going to link this new policy with our service principal.  You'll also need a way to access the **ObjectId** of your service principal. You can query the [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) or go to our [Graph Explorer Tool](https://graphexplorer.cloudapp.net/) and sign into your Azure AD account to see all your tenant's service principals. 
+Wir werden diese neue Richtlinie zunächst mit unserem Dienstprinzipal verknüpfen.  Sie benötigen auch eine Möglichkeit, auf die **ObjectId** Ihres Dienstprinzipals zuzugreifen. Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen oder zum [Graph-Tester](https://graphexplorer.cloudapp.net/) wechseln und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihres Mandanten zu sehen. 
 
-Once you have the **ObjectId**, Run the following command.
+Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
     Add-AzureADServicePrincipalPolicy -ObjectId <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 
-&nbsp;&nbsp;3.  **Set the IsTenantDefault flag to false using the following command**. 
+&nbsp;&nbsp;3.    **Setzen Sie das IsTenantDefault-Flag mithilfe des folgenden Befehls auf „false“**. 
 
     Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsTenantDefault $false
-&nbsp;&nbsp;4.  **Create a new Tenant Default Policy**
+&nbsp;&nbsp;4.    **Erstellen Sie eine neue Mandantenstandardrichtlinie.**
 
     New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsTenantDefault $true -Type TokenLifetimePolicy
 
-&nbsp;&nbsp;5.   **You're Done!** 
+&nbsp;&nbsp;5.     **Fertig!** 
 
-You now have the original policy linked to your service principal and the new policy set as your tenant default policy.  It's important to remember that policies applied to service principals have priority over tenant default policies. 
+Sie haben jetzt die ursprüngliche Richtlinie mit Ihrem Dienstprinzipal verknüpft und die neue Richtlinie als Mandantenstandardrichtlinie festgelegt.  Beachten Sie, dass Richtlinien für Dienstprinzipale Priorität vor Mandantenstandardrichtlinien haben. 
 
-## <a name="cmdlet-reference"></a>Cmdlet Reference
-### <a name="manage-policies"></a>Manage policies
-The following cmdlets can be used to manage policies.</br></br>
+## <a name="cmdlet-reference"></a>Cmdlet-Referenz
+### <a name="manage-policies"></a>Verwalten von Richtlinien
+Mit den folgenden Cmdlets können Richtlinien verwaltet werden.</br></br>
 
 #### <a name="new-azureadpolicy"></a>New-AzureADPolicy
-Creates a new policy.
+Erstellt eine neue Richtlinie.
 
     New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsTenantDefault <boolean> -Type <Policy Type> 
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -Definition |The array of stringified JSON that contains all the rules of the policy. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
-| -DisplayName |String of the policy name |-DisplayName MyTokenPolicy |
-| -IsTenantDefault |If true sets the policy as tenant's default policy, if false does nothing |-IsTenantDefault $true |
-| -Type |The type of policy, for token lifetimes always use "TokenLifetimePolicy" |-Type TokenLifetimePolicy |
-| -AlternativeIdentifier [Optional] |Sets an alternative id to the policy. |-AlternativeIdentifier myAltId |
+| -Definition |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
+| -DisplayName |Zeichenfolge mit dem Namen der Richtlinie |-DisplayName MyTokenPolicy |
+| -IsTenantDefault |Bei TRUE wird die Richtlinie als Standardrichtlinie des Mandanten festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsTenantDefault $true |
+| -Type |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. |-Type TokenLifetimePolicy |
+| -AlternativeIdentifier [optional] |Legt eine alternative ID für die Richtlinie fest. |-AlternativeIdentifier myAltId |
 
 </br></br>
 
 #### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-Gets all AzureAD Policies or specified policy 
+Ruft alle Azure AD-Richtlinien oder die angegebene Richtlinie ab. 
 
     Get-AzureADPolicy 
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId [Optional] |The object Id of the Policy you would like to get. |-ObjectId &lt;ObjectID of Policy&gt; |
+| -ObjectId [optional] |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
 
 </br></br>
 
 #### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-Gets all apps and service principals linked to a policy
+Ruft alle Apps und Dienstprinzipale ab, die mit einer Richtlinie verknüpft sind.
 
     Get-AzureADPolicyAppliedObject -ObjectId <object id of policy> 
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Policy you would like to get. |-ObjectId &lt;ObjectID of Policy&gt; |
+| -ObjectId |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
 
 </br></br>
 
 #### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-Updates an existing policy
+Aktualisiert eine vorhandene Richtlinie.
 
     Set-AzureADPolicy -ObjectId <object id of policy> -DisplayName <string> 
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Policy you would like to get. |-ObjectId &lt;ObjectID of Policy&gt; |
-| -DisplayName |String of the policy name |-DisplayName MyTokenPolicy |
-| -Definition [Optional] |The array of stringified JSON that contains all the rules of the policy. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
-| -IsTenantDefault [Optional] |If true sets the policy as tenant's default policy, if false does nothing |-IsTenantDefault $true |
-| -Type [Optional] |The type of policy, for token lifetimes always use "TokenLifetimePolicy" |-Type TokenLifetimePolicy |
-| -AlternativeIdentifier [Optional] |Sets an alternative id to the policy. |-AlternativeIdentifier myAltId |
+| -ObjectId |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
+| -DisplayName |Zeichenfolge mit dem Namen der Richtlinie |-DisplayName MyTokenPolicy |
+| -Definition [optional] |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
+| -IsTenantDefault [optional] |Bei TRUE wird die Richtlinie als Standardrichtlinie des Mandanten festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsTenantDefault $true |
+| -Type [optional] |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. |-Type TokenLifetimePolicy |
+| -AlternativeIdentifier [optional] |Legt eine alternative ID für die Richtlinie fest. |-AlternativeIdentifier myAltId |
 
 </br></br>
 
 #### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-Deletes the specified policy
+Löscht die angegebene Richtlinie
 
      Remove-AzureADPolicy -ObjectId <object id of policy>
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Policy you would like to get. |-ObjectId &lt;ObjectID of Policy&gt; |
+| -ObjectId |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
 
 </br></br>
 
-### <a name="application-policies"></a>Application policies
-The following cmdlets can be used for application policies.</br></br>
+### <a name="application-policies"></a>Anwendungsrichtlinien
+Die folgenden Cmdlets können für Anwendungsrichtlinien verwendet werden.</br></br>
 
 #### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-Links the specified policy to an application
+Verknüpft die angegebene Richtlinie mit einer Anwendung
 
     Add-AzureADApplicationPolicy -ObjectId <object id of application> -RefObjectId <object id of policy>
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Application. |-ObjectId &lt;ObjectID of Application&gt; |
-| -RefObjectId |The object Id of the Policy. |-RefObjectId &lt;ObjectID of Policy&gt; |
+| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
+| -RefObjectId |Die Objekt-ID der Richtlinie |-RefObjectId &lt;Objekt-ID der Richtlinie&gt; |
 
 </br></br>
 
 #### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-Gets the policy assigned to an application
+Ruft die Richtlinie ab, die einer Anwendung zugewiesen ist
 
     Get-AzureADApplicationPolicy -ObjectId <object id of application>
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Application. |-ObjectId &lt;ObjectID of Application&gt; |
+| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
 
 </br></br>
 
 #### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-Removes a policy from an application
+Entfernt eine Richtlinie aus einer Anwendung
 
     Remove-AzureADApplicationPolicy -ObjectId <object id of application> -PolicyId <object id of policy>
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Application. |-ObjectId &lt;ObjectID of Application&gt; |
-| -PolicyId |The ObjectId of Policy. |-PolicyId &lt;ObjectID of Policy&gt; |
+| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
+| -PolicyId |Die Objekt-ID der Richtlinie |-PolicyId &lt;ObjectID der Richtlinie&gt; |
 
 </br></br>
 
-### <a name="service-principal-policies"></a>Service principal policies
-The following cmdlets can be used for service principal policies.</br></br>
+### <a name="service-principal-policies"></a>Dienstprinzipalrichtlinien
+Die folgenden Cmdlets können für Dienstprinzipalrichtlinien verwendet werden.</br></br>
 
 #### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-Links the specified policy to a service principal
+Verknüpft die angegebene Richtlinie mit einem Dienstprinzipal
 
     Add-AzureADServicePrincipalPolicy -ObjectId <object id of service principal> -RefObjectId <object id of policy>
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Application. |-ObjectId &lt;ObjectID of Application&gt; |
-| -RefObjectId |The object Id of the Policy. |-RefObjectId &lt;ObjectID of Policy&gt; |
+| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
+| -RefObjectId |Die Objekt-ID der Richtlinie |-RefObjectId &lt;Objekt-ID der Richtlinie&gt; |
 
 </br></br>
 
 #### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-Gets any policy linked to the specified service principal
+Ruft alle Richtlinien ab, die mit dem angegebenen Dienstprinzipal verknüpft sind
 
     Get-AzureADServicePrincipalPolicy -ObjectId <object id of service principal>
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Application. |-ObjectId &lt;ObjectID of Application&gt; |
+| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
 
 </br></br>
 
 #### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-Removes the policy from specified service principal
+Entfernt die Richtlinie aus dem angegebenen Dienstprinzipal
 
     Remove-AzureADServicePrincipalPolicy -ObjectId <object id of service principal>  -PolicyId <object id of policy>
 
-| Parameters | Description | Example |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
-| -ObjectId |The object Id of the Application. |-ObjectId &lt;ObjectID of Application&gt; |
-| -PolicyId |The ObjectId of Policy. |-PolicyId &lt;ObjectID of Policy&gt; |
+| -ObjectId |Die Objekt-ID der Anwendung |-ObjectId &lt;Objekt-ID der Anwendung&gt; |
+| -PolicyId |Die Objekt-ID der Richtlinie |-PolicyId &lt;ObjectID der Richtlinie&gt; |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

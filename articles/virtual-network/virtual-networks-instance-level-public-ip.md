@@ -1,12 +1,12 @@
 ---
-title: Öffentliche IP-Adresse auf Instanzebene (ILPIP) | Microsoft Docs
-description: Grundlegendes zu ILPIP (PIP) und deren Verwaltung
+title: "Öffentliche IP-Adresse (klassisch) auf Instanzebene mit PowerShell | Microsoft Docs"
+description: Grundlegendes zu ILPIP (PIP) und deren Verwaltung mit PowerShell
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,21 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: f1a4dc135721a1c2a134806fbae031ee60e23074
+ms.openlocfilehash: 1aa0990f53059fa832100f9fcf88f93633ca93ce
+
 
 ---
-# Übersicht über die öffentliche IP-Adresse auf Instanzebene
+# <a name="instance-level-public-ip-classic-overview"></a>Übersicht über die öffentliche IP-Adresse (klassisch) auf Instanzebene
 Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) ist eine öffentliche IP-Adresse, die Sie anstelle des Clouddiensts, in dem sich die VM- oder Rolleninstanz befindet, Ihrer VM- oder Rolleninstanz direkt zuweisen können. Sie tritt nicht an die Stelle der VIP (Virtual IP), die dem Clouddienst zugeordnet ist. Es ist vielmehr eine zusätzliche IP-Adresse, mit der Sie direkt eine Verbindung mit der VM oder Rolleninstanz herstellen können.
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-network-ip-addresses-overview-arm.md).
-
-Stellen Sie sicher, dass Sie die Funktionsweise von [IP-Adressen](virtual-network-ip-addresses-overview-classic.md) in Azure verstehen.
-
-> [!NOTE]
-> In der Vergangenheit wurde die ILPIP als PIP bezeichnet, was für Public IP bzw. öffentliche IP-Adresse steht.
-> 
-> 
+> [!IMPORTANT]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung von Resource Manager. Stellen Sie sicher, dass Sie die Funktionsweise von [IP-Adressen](virtual-network-ip-addresses-overview-classic.md) in Azure verstehen.
 
 ![Unterscheidung zwischen ILPIP und VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
@@ -36,34 +32,45 @@ Wie in Abbildung 1 dargestellt, erfolgt der Zugriff auf den Clouddienst über ei
 
 Bei der Erstellung eines Clouddiensts in Azure werden automatisch entsprechende DNS A-Datensätze für den Zugriff auf den Dienst über einen vollständig qualifizierten Domänennamen (FQDN) anstelle der tatsächlichen VIP-Adresse erstellt. Dasselbe geschieht für die ILPIP, um den Zugriff auf die VM- oder Rolleninstanz über den FQDN statt der ILPIP zu ermöglichen. Wenn Sie beispielsweise einen Clouddienst namens *contosoadservice* erstellen und eine Webrolle namens *contosoweb* mit zwei Instanzen konfigurieren, registriert Azure die folgenden A-Datensätze für die Instanzen:
 
-* contosoweb\_IN\_0.contosoadservice.cloudapp.net
-* contosoweb\_IN\_1.contosoadservice.cloudapp.net
+* contosoweb\_IN_0.contosoadservice.cloudapp.net
+* contosoweb\_IN_1.contosoadservice.cloudapp.net 
 
 > [!NOTE]
 > Sie können einer VM- oder Rolleninstanz jeweils nur eine ILPIP zuweisen. Sie können bis zu 5 ILPIPs pro Abonnement verwenden. Derzeit wird die ILPIP nicht für virtuelle Computer mit mehreren Netzwerkkarten unterstützt.
 > 
 > 
 
-## Warum sollte ich ein ILPIP anfordern?
+## <a name="why-should-i-request-an-ilpip"></a>Warum sollte ich ein ILPIP anfordern?
 Wenn Sie über eine direkt zugewiesene IP-Adresse eine Verbindung mit Ihrer VM- oder Rolleninstanz herstellen möchten, anstatt VIP:&lt;Portnummer&gt; des Clouddiensts zu verwenden, fordern Sie eine ILPIP für die VM- oder Rolleninstanz an.
 
 * **Passives FTP:** Wenn dem virtuellen Computer eine ILPIP zugewiesen ist, können Sie an fast allen Ports Daten empfangen und müssen keinen Endpunkt für das Empfangen von Daten öffnen. Dadurch werden Szenarios wie passives FTP möglich, in denen die Ports dynamisch ausgewählt werden.
 * **Ausgehende IP:** Der vom virtuellen Computer ausgehende Datenverkehr wird mit der ILPIP als Quelle gesendet, und dadurch wird der virtuelle Computer gegenüber externen Entitäten eindeutig identifiziert.
 
-## Anfordern einer ILPIP während der Erstellung des virtuellen Computers
-Das folgende PowerShell-Skript erstellt einen neuen Clouddienst namens *FTPService*, ruft dann ein Image aus Azure ab und erstellt mit dem abgerufenen Image einen virtuellen Computer namens *FTPInstance*, konfiguriert den virtuellen Computer für die Verwendung einer ILPIP, und fügt den virtuellen Computer dem neuen Dienst hinzu:
+> [!NOTE]
+> In der Vergangenheit wurde die ILPIP als PIP bezeichnet, was für Public IP bzw. öffentliche IP-Adresse steht.
+> 
 
-    New-AzureService -ServiceName FTPService -Location "Central US"
-    $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
-    New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
-    | Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-    | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
+## <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>So fordern Sie eine ILPIP während der Erstellung des virtuellen Computers mit PowerShell an
+Das folgende PowerShell-Skript erstellt einen neuen Clouddienst namens *FTPService*, ruft dann ein Image aus Azure ab und erstellt mit dem abgerufenen Image einen virtuellen Computer namens *FTPInstance*.PowerShell konfiguriert den virtuellen Computer für die Verwendung einer ILPIP und fügt den virtuellen Computer dem neuen Dienst hinzu:
 
-## Abrufen von ILPIP-Informationen für einen virtuellen Computer
-Zum Anzeigen der ILPIP-Informationen für den mit dem obigen Beispielskript erstellten virtuellen Computer führen Sie den folgenden PowerShell-Befehl aus, und beobachten Sie die Werte für *PublicIPAddress* und *PublicIPName*:
+```powershell
+New-AzureService -ServiceName FTPService -Location "Central US"
 
-    Get-AzureVM -Name FTPInstance -ServiceName FTPService
+$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"} `
+New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
+| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
+| Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
+```
 
+## <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Abrufen von ILPIP-Informationen für einen virtuellen Computer
+Führen Sie zum Anzeigen der ILPIP-Informationen für den mit dem obigen Beispielskript erstellten virtuellen Computer den folgenden PowerShell-Befehl aus, und beobachten Sie die Werte für *PublicIPAddress* und *PublicIPName*:
+
+```powershell
+Get-AzureVM -Name FTPInstance -ServiceName FTPService
+```
+
+Erwartete Ausgabe:
+ 
     DeploymentName              : FTPService
     Name                        : FTPInstance
     Label                       : 
@@ -81,7 +88,7 @@ Zum Anzeigen der ILPIP-Informationen für den mit dem obigen Beispielskript erst
     AvailabilitySetName         : 
     DNSName                     : http://ftpservice888.cloudapp.net/
     Status                      : ReadyRole
-    GuestAgentStatus            : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.GuestAgentStatus
+    GuestAgentStatus            :   Microsoft.WindowsAzure.Commands.ServiceManagement.Model.GuestAgentStatus
     ResourceExtensionStatusList : {Microsoft.Compute.BGInfo}
     PublicIPAddress             : 104.43.142.188
     PublicIPName                : ftpip
@@ -91,22 +98,22 @@ Zum Anzeigen der ILPIP-Informationen für den mit dem obigen Beispielskript erst
     OperationId                 : 568d88d2be7c98f4bbb875e4d823718e
     OperationStatus             : OK
 
-## Entfernen einer ILPIP von einem virtuellen Computer
+## <a name="how-to-remove-an-ilpip-from-a-vm"></a>Entfernen einer ILPIP von einem virtuellen Computer
 Führen Sie den folgenden PowerShell-Befehl aus, um die ILPIP zu entfernen, die dem virtuellen Computer im obigen Skript hinzugefügt wurde:
 
-    Get-AzureVM -ServiceName FTPService -Name FTPInstance `
-    | Remove-AzurePublicIP `
-    | Update-AzureVM
+```powershell
+Get-AzureVM -ServiceName FTPService -Name FTPInstance | Remove-AzurePublicIP | Update-AzureVM
+```
 
-## Hinzufügen einer ILPIP zu einem vorhandenen virtuellen Computer
+## <a name="how-to-add-an-ilpip-to-an-existing-vm"></a>Hinzufügen einer ILPIP zu einem vorhandenen virtuellen Computer
 Führen Sie den folgenden Befehl aus, um dem virtuellen Computer, der mit dem obigen Skript erstellt wurde, eine ILPIP hinzuzufügen:
 
-    Get-AzureVM -ServiceName FTPService -Name FTPInstance `
-    | Set-AzurePublicIP -PublicIPName ftpip2 `
-    | Update-AzureVM
+```powershell
+Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
+```
 
-## Zuordnen einer ILPIP zu einem virtuellen Computer mithilfe einer Dienstkonfigurationsdatei
-Eine ILPIP kann auch mithilfe einer Dienstkonfigurationsdatei einem virtuellen Computer zugeordnet werden. Im folgenden XML-Beispiel wird gezeigt, wie Sie einen Clouddienst so konfigurieren, dass eine ILPIP mit dem Namen *MyPublicIP* für eine Rolleninstanz verwendet wird:
+## <a name="how-to-associate-an-ilpip-to-a-vm-by-using-a-service-configuration-file"></a>Zuordnen einer ILPIP zu einem virtuellen Computer mithilfe einer Dienstkonfigurationsdatei
+Eine ILPIP kann auch mithilfe einer Dienstkonfigurationsdatei einem virtuellen Computer zugeordnet werden. Im folgenden XML-Beispiel wird gezeigt, wie Sie einen Clouddienst so konfigurieren, dass eine ILPIP mit dem Namen *MyPublicIP* für eine Rolleninstanz verwendet wird: 
 
     <?xml version="1.0" encoding="utf-8"?>
     <ServiceConfiguration serviceName="ReservedIPSample" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-01.2.3">
@@ -132,8 +139,13 @@ Eine ILPIP kann auch mithilfe einer Dienstkonfigurationsdatei einem virtuellen C
       </NetworkConfiguration>
     </ServiceConfiguration>
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die Funktionsweise der [IP-Adressierung](virtual-network-ip-addresses-overview-classic.md) im klassischen Bereitstellungsmodell.
 * Informieren Sie sich über [reservierte IPs](virtual-networks-reserved-public-ip.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

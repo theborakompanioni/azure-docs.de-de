@@ -1,12 +1,12 @@
 ---
-title: Failback von virtuellen VMware-Computern und physischen Servern aus Azure an VMware (Legacy) | Microsoft Docs
+title: Failback von virtuellen VMware-Computern und physischen Servern von Azure auf VMware (Legacy) | Microsoft Docs
 description: Dieser Artikel beschreibt das Failback von virtuellen VMware-Computern, die in Azure mit Azure Site Recovery repliziert wurden.
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: ruturaj
 manager: mkjain
-editor: ''
-
+editor: 
+ms.assetid: a63524bf-990c-42ee-8554-e017e6e67e68
 ms.service: site-recovery
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: ruturajd@microsoft.com
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 45695926bce3ec3460a572c0c01ffa4038f73ea5
+
 
 ---
-# <a name="fail-back-vmware-virtual-machines-and-physical-servers-from-azure-to-vmware-with-azure-site-recovery-(legacy)"></a>Failback von virtuellen VMware-Maschinen und physischen Servern von Azure auf VMware mit Azure Site Recovery (Legacy)
+# <a name="fail-back-vmware-virtual-machines-and-physical-servers-from-azure-to-vmware-with-azure-site-recovery-legacy"></a>Failback von virtuellen VMware-Maschinen und physischen Servern von Azure auf VMware mit Azure Site Recovery (Legacy)
 > [!div class="op_single_selector"]
 > * [Azure-Portal](site-recovery-failback-azure-to-vmware.md)
 > * [Klassisches Azure-Portal](site-recovery-failback-azure-to-vmware-classic.md)
@@ -24,7 +28,7 @@ ms.author: ruturajd@microsoft.com
 > 
 > 
 
-Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden. Computer können in Azure oder in einem sekundären lokalen Datencenter repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
+Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden. Computer können in Azure oder in einem sekundären lokalen Rechenzentrum repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel beschreibt, wie ein Failback von virtuellen VMware-Computern und physischen Windows- oder Linux-Servern aus Azure auf Ihren lokalen Standort durchgeführt wird, nachdem Sie eine Replikation von Ihrem lokalen Standort zu Azure durchgeführt haben.
@@ -48,7 +52,7 @@ Folgendermaßen richten Sie Failback ein:
 1. **Einrichten der Failbackkomponenten:**Sie müssen einen lokalen vContinuum-Server einrichten und auf den virtuellen Konfigurationsservercomputer in Azure zeigen lassen. Sie müssen auch einen Prozessserver als virtuellen Azure-Computer einrichten, um Daten an den lokalen Masterzielserver zurückzusenden. Sie registrieren den Prozessserver mit dem Konfigurationsserver, der das Failover verarbeitet hat. Sie installieren einen lokalen Masterzielserver. Wenn Sie einen Windows-Masterzielserver benötigen, wird dieser automatisch bei der Installation von vContinuum eingerichtet. Wenn Sie Linux benötigen, müssen Sie ihn manuell auf einem separaten Server einrichten.
 2. **Aktivieren von Schutz und Failback:**Nachdem Sie die Komponenten eingerichtet haben, müssen Sie in vContinuum einen Schutz für virtuelle Azure-Computer aktivieren, für die ein Failover ausgeführt wurde. Sie führen eine Bereitschaftsüberprüfung für die virtuellen Computer und ein Failover von Azure zum lokalen Standort durch. Nach Abschluss des Failbacks schützen Sie lokale Computer erneut, damit sie mit der Replikation in Azure beginnen.
 
-## <a name="step-1:-install-vcontinuum-on-premises"></a>Schritt 1: Installieren von vContinuum (lokal)
+## <a name="step-1-install-vcontinuum-on-premises"></a>Schritt 1: Installieren von vContinuum (lokal)
 Sie müssen einen lokalen vContinuum-Server installieren und ihn auf den Konfigurationsserver zeigen lassen.
 
 1. [Laden Sie VContinuum herunter](http://go.microsoft.com/fwlink/?linkid=526305). 
@@ -72,7 +76,7 @@ Sie müssen einen lokalen vContinuum-Server installieren und ihn auf den Konfigu
 9. Nach Abschluss der Installation können Sie vContinuum starten.
     ![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
-## <a name="step-2:-install-a-process-server-in-azure"></a>Schritt 2: Installieren eines Prozessservers in Azure
+## <a name="step-2-install-a-process-server-in-azure"></a>Schritt 2: Installieren eines Prozessservers in Azure
 Sie müssen einen Prozessserver in Azure installieren, damit die virtuellen Computer in Azure die Daten zurück an einem lokalen Masterzielserver senden können. 
 
 1. Klicken Sie auf der Seite **Konfigurationsserver** in Azure auf die Option zum Hinzufügen eines neuen Prozessservers.
@@ -94,7 +98,7 @@ Sie müssen einen Prozessserver in Azure installieren, damit die virtuellen Comp
 > 
 > 
 
-## <a name="step-3:-install-a-master-target-server-on-premises"></a>Schritt 3: Installieren eines lokalen Masterzielservers
+## <a name="step-3-install-a-master-target-server-on-premises"></a>Schritt 3: Installieren eines lokalen Masterzielservers
 Abhängig vom Betriebssystem Ihrer virtuellen Quellcomputer muss lokal entweder ein Linux- oder ein Windows-basierter Masterzielserver installiert werden.
 
 ### <a name="deploy-a-windows-master-target-server"></a>Bereitstellen eines Windows-Masterzielservers
@@ -190,7 +194,7 @@ Stellen Sie vor dem Übernehmen dieser Änderungen sicher, dass Sie den vorherig
 1. [herunterladen](http://go.microsoft.com/fwlink/?LinkID=529757) .
 2. Kopieren Sie die Datei mithilfe eines beliebigen SFTP-Clienthilfsprogramms auf den virtuellen Linux-Computer für das Masterziel. Alternativ können Sie sich auch bei dem virtuellen Linux-Computer für das Masterziel anmelden und das Installationspaket mittels „wget“ unter dem angegebenen Link herunterladen.
 3. Melden Sie sich bei dem virtuellen Computer für den Linux-Masterzielserver mit einem beliebigen SSH-Client an.
-4. Wenn Sie über eine VPN-Verbindung mit dem Azure-Netzwerk verbunden sind, in dem Sie den Linux-Masterzielserver bereitgestellt haben, verwenden Sie die interne IP-Adresse für den Server, den Sie auf der Registerkarte **Dashboard** für den virtuellen Computer finden können, und den Port 22, um über Secure Shell eine Verbindung mit dem Linux-Masterzielserver herzustellen.
+4. Wenn Sie über eine VPN-Verbindung mit dem Azure-Netzwerk verbunden sind, in dem Sie den Linux-Masterzielserver bereitgestellt haben, verwenden Sie die interne IP-Adresse für den Server, den Sie auf der Registerkarte **Dashboard** für den virtuellen Computer finden können, und den Port 22, um über Secure Shell eine Verbindung mit dem Linux-Masterzielserver herzustellen.
 5. Wenn Sie über eine öffentliche Internetverbindung eine Verbindung mit dem Linux-Masterzielserver herstellen, verwenden Sie die öffentliche virtuelle IP-Adresse des Linux-Masterzielservers (zu finden auf der Registerkarte **Dashboard** für virtuelle Computer) und den für SSH erstellten öffentlichen Endpunkt, um sich bei dem Linux-Server anzumelden.
 6. Extrahieren Sie die Dateien aus dem mit gzip komprimierten tar-Archiv des Installationsprogramms für den Linux-Masterzielserver, indem Sie den Befehl *"tar –xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64\"* in dem Verzeichnis ausführen, das die Datei des Installationsprogramms enthält.
    
@@ -221,7 +225,7 @@ Sie können im Azure Site Recovery-Tresor unter **Konfigurationsserver** > **Ser
 > 
 > 
 
-## <a name="step-4:-protect-the-virtual-machines-to-the-on-premises-site"></a>Schritt 4: Schützen der virtuellen Computer auf dem lokalen Standort
+## <a name="step-4-protect-the-virtual-machines-to-the-on-premises-site"></a>Schritt 4: Schützen der virtuellen Computer auf dem lokalen Standort
 Sie müssen die virtuellen Computer auf dem lokalen Standort schützen, bevor Sie ein Failback durchführen.
 
 ### <a name="before-you-begin"></a>Voraussetzungen
@@ -349,7 +353,7 @@ Deaktivieren Sie die virtuellen Azure-Computer, bevor Sie die Wiederherstellung 
 Nach Abschluss des Failbacks empfiehlt es sich unter Umständen, die virtuellen Computer wieder zu schützen. Gehen Sie hierzu wie folgt vor:
 
 1. Vergewissern Sie sich, dass die virtuellen Computer lokal ordnungsgemäß funktionieren und dass Anwendungen erreichbar sind.
-2. Wählen Sie die virtuellen Computer im Azure Site Recovery-Portal aus und löschen Sie sie. Deaktivieren Sie den Schutz der virtuellen Computer. Dadurch wird sichergestellt, dass die virtuellen Computer nicht mehr geschützt sind.
+2. Wählen Sie die virtuellen Computer im Azure Site Recovery-Portal aus und löschen Sie sie. Deaktivieren Sie den Schutz der virtuellen Computer. Dadurch wird sichergestellt, dass die virtuellen Computer nicht mehr geschützt sind.
 3. Löschen Sie in Azure die virtuellen Azure-Computer, für die ein Failover ausgeführt wurde.
 4. Löschen Sie den alten virtuellen Computer bei vSphere. Hierbei handelt es sich um die virtuellen Computer, für die zuvor ein Failover zu Azure ausgeführt wurde.
 5. Schützen Sie im Site Recovery-Portal die virtuellen Computer, für die vor kurzem ein Failover ausgeführt wurde. Nachdem sie geschützt wurden, können Sie sie einem Wiederherstellungsplan hinzufügen.
@@ -357,6 +361,9 @@ Nach Abschluss des Failbacks empfiehlt es sich unter Umständen, die virtuellen 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie mehr](site-recovery-vmware-to-azure-classic.md) über das Replizieren von virtuellen VMware-Computern und physischen Servern nach Azure mithilfe der erweiterten Bereitstellung.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

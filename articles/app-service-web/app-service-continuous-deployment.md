@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 59f2a4d48959cca07ea9e04865207f9100657f53
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 033fd0cb3512a22bb05488fe83aa2ffa9d81def3
 
 
 ---
@@ -84,19 +84,19 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 [Azure App Service]: https://azure.microsoft.com/en-us/documentation/articles/app-service-changes-existing-services/
 [Azure-Portal]: https://portal.azure.com
-[VSTS-Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
-[Installieren von Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Verwenden von PowerShell für Azure]: ../powershell-install-configure.md
+[VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
+[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[Verwenden von PowerShell für Azure]: /powershell/azureps-cmdlets-docs
 [Verwenden des Azure-Befehlszeilentools für Mac und Linux]: ../xplat-cli-install.md
 [Git-Dokumentation]: http://git-scm.com/documentation
 
 [Erstellen eines Repositorys (GitHub)]: https://help.github.com/articles/create-a-repo
 [Erstellen eines Repositorys (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [Erste Schritte mit VSTS]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
-[Continuous Delivery für Azure mithilfe von Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
+[Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

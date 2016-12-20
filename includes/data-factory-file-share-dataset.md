@@ -24,25 +24,29 @@ Wie im vorherigen Abschnitt erwähnt, kann „partitionedBy“ verwendet werden,
 In den Artikeln [Erstellen von Datasets](../articles/data-factory/data-factory-create-datasets.md), [Planung und Ausführung](../articles/data-factory/data-factory-scheduling-and-execution.md) und [Erstellen von Pipelines](../articles/data-factory/data-factory-create-pipelines.md) finden Sie weitere Informationen zu Zeitreihen-Datasets, Planung und Slices. 
 
 #### <a name="sample-1"></a>Beispiel 1:
-    "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
-    "partitionedBy": 
-    [
-        { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
-    ],
 
+```json
+"folderPath": "wikidatagateway/wikisampledataout/{Slice}",
+"partitionedBy": 
+[
+    { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
+],
+```
 Im obigen Beispiel wird „{Slice}“ durch den Wert der Data Factory-Systemvariablen „SliceStart“ ersetzt, die im Format „JJJJMMTTHH“ angegeben ist. "SliceStart" bezieht sich auf die Startzeit des Slices. "folderPath" unterscheidet sich für jeden Slice. Beispiel: „wikidatagateway/wikisampledataout/2014100103“ oder „wikidatagateway/wikisampledataout/2014100104“.
 
 #### <a name="sample-2"></a>Beispiel 2:
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-    "fileName": "{Hour}.csv",
-    "partitionedBy": 
-     [
-        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-    ],
 
+```json
+"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+"fileName": "{Hour}.csv",
+"partitionedBy": 
+ [
+    { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+    { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
+    { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
+    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+],
+```
 Im Beispiel oben werden Jahr, Monat, Tag und Uhrzeit von SliceStart in separate Variablen extrahiert, die von den Eigenschaften „folderPath“ und „fileName“ verwendet werden.
 
 

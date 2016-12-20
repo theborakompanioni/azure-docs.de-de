@@ -1,12 +1,12 @@
 ---
-title: Übersicht über Anbieter von Netzwerkressourcen| Microsoft Docs
-description: Erfahren Sie mehr über neue Anbieter von Netzwerkressourcen im Azure-Ressourcen-Manager.
+title: "Übersicht über Anbieter von Netzwerkressourcen| Microsoft Docs"
+description: "Erfahren Sie mehr über neue Anbieter von Netzwerkressourcen im Azure-Ressourcen-Manager."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
-
+ms.assetid: 79bf09da-4809-45cb-8d21-705616ef24dc
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 18234ad720d4e85b50d1871dacf243c65f45be33
+
 
 ---
-# Anbieter von Netzwerkressourcen
+# <a name="network-resource-provider"></a>Anbieter von Netzwerkressourcen
 Ein zentrales Bedürfnis für den heutigen Geschäftserfolg ist die Fähigkeit, großmaßstäbliche netzwerksensible Anwendungen auf agile, flexible und wiederholbare Weise aufzubauen und zu verwalten. Mit Azure Resource Manager (ARM) können Sie solche Anwendungen als eine einzelne Ressourcensammlung in Ressourcengruppen erstellen. Solche Ressourcen werden durch mehrere Ressourcenanbieter unter ARM verwaltet.
 
 Azure Resource Manager stützt sich auf verschiedene Ressourcenanbieter, um den Zugriff auf Ressourcen zu ermöglichen. Es gibt drei Hauptressourcenanbieter: Netzwerk, Speicher und Compute. In diesem Dokument werden Merkmale und Vorteile des Netzwerkressourcenanbieters wie die Folgenden beschrieben:
@@ -38,7 +42,7 @@ Azure Resource Manager stützt sich auf verschiedene Ressourcenanbieter, um den 
   * Vorschauportal
   * ARM-Vorlagensprache
 
-## Netzwerkressourcen
+## <a name="network-resources"></a>Netzwerkressourcen
 Die Verwaltung von Netzwerkressourcen kann nun unabhängig voneinander erfolgen, anstatt sie alle durch eine einzelne Computerressource (virtueller Computer) zu verwalten. Das stellt ein höheres Maß an Flexibilität und Agilität beim Verfassen einer komplexen und großmaßstäblichen Infrastruktur in einer Ressourcengruppe sicher.
 
 Eine konzeptionelle Ansicht einer Beispielbereitstellung mit einer Multi-Tier-Anwendung ist nachstehend dargestellt. Alle angezeigten Ressourcen wie Netzwerkkarten, öffentliche IP-Adressen und virtuelle Computer können unabhängig voneinander verwaltet werden.
@@ -75,10 +79,10 @@ Die spezifischen Eigenschaften der Ressourcen finden Sie in den folgenden Abschn
 
 [!INCLUDE [virtual-networks-nrp-tm-include](../../includes/virtual-networks-nrp-tm-include.md)]
 
-## Verwaltungsschnittstellen
+## <a name="management-interfaces"></a>Verwaltungsoberflächen
 Azure-Netzwerkressourcen können über verschiedene Schnittstellen verwaltet werden. In diesem Dokument liegt der Schwerpunkt auf zwei dieser Schnittstellen: der REST-API und Vorlagen.
 
-### REST-API
+### <a name="rest-api"></a>REST-API
 Wie zuvor erwähnt können Netzwerkressourcen über eine Vielzahl an Schnittstellen verwaltet werden, einschließlich REST API, .NET SDK, Node.JS SDK, Java SDK, PowerShell, CLI, Azure Portal und Vorlagen.
 
 Die Rest APIs entsprechen der HTTP 1.1 Protokollspezifikation. Die allgemeine URI-Struktur der API ist nachstehend dargestellt:
@@ -99,7 +103,7 @@ Die folgenden HTTP-Methoden werden bei Aufrufen der REST API unterstützt:
 
 Sowohl die Anforderung als auch die Antwort entsprechen einem JSON-Nutzlast-Format. Weitere Informationen finden Sie unter [Azure Resource Management APIs](https://msdn.microsoft.com/library/azure/dn948464.aspx).
 
-### ARM-Vorlagensprache
+### <a name="arm-template-language"></a>ARM-Vorlagensprache
 Neben dem unerlässlichen Verwalten von Ressourcen (über APIs oder SDK) können Sie auch einen deklarativen Programmierstil verwenden, um Netzwerkressourcen mithilfe der ARM-Vorlagensprache zu erstellen und zu verwalten.
 
 Nachstehend finden Sie eine Beispieldarstellung einer Vorlage –
@@ -240,26 +244,31 @@ Weitere Informationen zur ARM-Vorlagensprache finden Sie unter [Azure Resource M
 
 Die oben abgebildete Vorlage nutzt das virtuelle Netzwerk und Subnetzressourcen. Wie unten aufgeführt, gibt es weitere Netzwerkressourcen, die Sie nutzen können:
 
-### Verwenden einer Vorlage
+### <a name="using-a-template"></a>Verwenden einer Vorlage
 Sie können Dienste in Azure über eine Vorlage bereitstellen, indem Sie PowerShell oder AzureCLI verwenden oder indem Sie die Bereitstellung von GitHub per Klick ausführen. Führen Sie zum Bereitstellen von Diensten über eine Vorlage in GitHub die folgenden Schritte aus:
 
 1. Öffnen Sie die Datei "template3" von GitHub. Öffnen Sie beispielsweise [Virtual network with two subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network).
 2. Klicken Sie auf **Deploy to Azure**, und melden Sie sich dann mit Ihren Anmeldeinformationen im Azure-Portal an.
 3. Überprüfen Sie die Vorlage, und klicken Sie dann auf **Speichern**.
-4. Klicken Sie auf **Parameter bearbeiten**, und wählen Sie einen Speicherort aus, z. B. *USA, Westen* für VNet und Subnetze.
+4. Klicken Sie auf **Parameter bearbeiten**, und wählen Sie einen Speicherort für das VNET und die Subnetze aus, z.B. *USA, Westen*.
 5. Ändern Sie ggf. die Parameter **ADDRESSPREFIX** und **SUBNETPREFIX**, und klicken Sie dann auf **OK**.
-6. Klicken Sie auf **Ressourcengruppe auswählen**, und klicken Sie dann auf die Ressourcengruppe, die VNet und den Subnetzen hinzugefügt werden soll. Alternativ können Sie eine neue Ressourcengruppe erstellen, indem Sie auf **Oder neu erstellen** klicken.
-7. Klicken Sie auf **Create**. Beachten Sie die Kachel mit dem Text **Bereitstellung der Vorlagenbereitstellung**. Wenn die Bereitstellung abgeschlossen ist, wird ein Bildschirm wie der folgende angezeigt.
+6. Klicken Sie auf **Ressourcengruppe auswählen** , und klicken Sie dann auf die Ressourcengruppe, die VNet und den Subnetzen hinzugefügt werden soll. Alternativ können Sie eine neue Ressourcengruppe erstellen, indem Sie auf **Oder neu erstellen**klicken.
+7. Klicken Sie auf **Create**. Beachten Sie die Kachel mit dem Text **Bereitstellung der  Vorlagenbereitstellung**. Wenn die Bereitstellung abgeschlossen ist, wird ein Bildschirm wie der folgende angezeigt.
 
 ![Bereitstellung von Beispielvorlagen](./media/resource-groups-networking/Figure6.png)
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Azure Resource Manager-Vorlagensprache](../resource-group-authoring-templates.md)
 
 [Azure-Netzwerk – Häufig verwendete Vorlagen](https://github.com/Azure/azure-quickstart-templates)
 
-[Anbieter von Computerressourcen](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)
+[Azure Resource Manager vs. classic deployment (Azure Resource Manager vs. klassische Bereitstellung)](../resource-manager-deployment-model.md)
 
-[Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md)
+[Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

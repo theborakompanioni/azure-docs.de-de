@@ -2,21 +2,25 @@
 title: Transparent Data Encryption in SQL Data Warehouse (Portal) | Microsoft Docs
 description: Transparent Data Encryption (TDE) in SQL Data Warehouse
 services: sql-data-warehouse
-documentationcenter: ''
+documentationcenter: 
 author: ronortloff
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: fabf75d3-9bbf-4e0d-9b31-8b5a8713f08d
 ms.service: sql-data-warehouse
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2016
-ms.author: rortloff;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: rortloff;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 177062eab9f2825a510aa1b66117ce942c959352
+
 
 ---
-# Erste Schritte mit Transparent Data Encryption (TDE) in SQL Data Warehouse
+# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Erste Schritte mit Transparent Data Encryption (TDE) in SQL Data Warehouse
 > [!div class="op_single_selector"]
 > * [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
 > * [Authentifizierung](sql-data-warehouse-authentication.md)
@@ -25,37 +29,39 @@ ms.author: rortloff;barbkess;sonyama
 > 
 > 
 
-## Erforderliche Berechtigungen
+## <a name="required-permssions"></a>Erforderliche Berechtigungen
 Sie müssen Administrator oder ein Mitglied der Rolle „dbmanager“ sein, um Transparent Data Encryption (TDE) zu aktivieren.
 
-## Aktivieren der Verschlüsselung
+## <a name="enabling-encryption"></a>Aktivieren der Verschlüsselung
 Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu aktivieren:
 
-1. Öffnen Sie die Datenbank im [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen**.
-3. Wählen Sie die Option **Transparent data encryption** aus. ![][1]
-4. Wählen Sie die Einstellung **Ein** aus. ![][2]
-5. Wählen Sie **Speichern** aus. ![][3]
+1. Öffnen Sie die Datenbank im [Azure-Portal](https://portal.azure.com)
+2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen** .
+3. Wählen Sie die Option **Transparten Data Encryption** aus. ![][1]
+4. Wählen Sie die Einstellung **Ein**. ![][2]
+5. Wählen Sie **Speichern** aus. 
+   ![][3]  
 
-## Deaktivieren der Verschlüsselung
+## <a name="disabling-encryption"></a>Deaktivieren der Verschlüsselung
 Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu deaktivieren:
 
-1. Öffnen Sie die Datenbank im [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen**.
-3. Wählen Sie die Option **Transparent data encryption** aus. ![][1]
-4. Wählen Sie die Einstellung **Aus** aus. ![][4]
-5. Wählen Sie **Speichern** aus. ![][5]
+1. Öffnen Sie die Datenbank im [Azure-Portal](https://portal.azure.com)
+2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen** .
+3. Wählen Sie die Option **Transparten Data Encryption** aus. ![][1]
+4. Wählen Sie die Einstellung **Aus**. ![][4]
+5. Wählen Sie **Speichern** aus. 
+   ![][5]  
 
-## Verschlüsselung-DMVs
+## <a name="encryption-dmvs"></a>Verschlüsselung-DMVs
 Die Verschlüsselung kann mit folgenden DMVs überprüft werden:
 
 * [sys.databases]
-* [sys.dm\_pdw\_nodes\_database\_encryption\_keys]
+* [sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
-[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparente Datenverschlüsselung (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 [sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx
-[sys.dm\_pdw\_nodes\_database\_encryption\_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png
@@ -66,4 +72,8 @@ Die Verschlüsselung kann mit folgenden DMVs überprüft werden:
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

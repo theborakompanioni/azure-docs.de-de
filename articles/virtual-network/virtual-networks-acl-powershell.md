@@ -1,12 +1,12 @@
 ---
-title: Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell
+title: "Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell"
 description: Hier erfahren Sie, wie Sie ACLs mit PowerShell verwalten.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
 editor: tysonn
-
+ms.assetid: c84e40af-f351-4572-b3f0-d572d46bafe7
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 6d0e461daa9a06f490c2fe1a85d160d013f26829
+
 
 ---
-# Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell
-Sie können mit Azure PowerShell oder im Verwaltungsportal Netzwerk-Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte erstellen und verwalten. In diesem Thema finden Sie Verfahren für häufige Aufgaben in Zusammenhang mit ACLs, die Sie mit PowerShell durchführen können. Die Liste der Azure PowerShell-Cmdlets, finden Sie unter [Azure-Verwaltungs-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=317721). Weitere Informationen zu ACLs finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (ACL)?](virtual-networks-acl.md). Informationen zum Verwalten der ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuelle Computer](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
+# <a name="how-to-manage-access-control-lists-acls-for-endpoints-by-using-powershell"></a>Verwalten von Zugriffssteuerungslisten (ACLs) für Endpunkte mithilfe von PowerShell
+Sie können mit Azure PowerShell oder im Verwaltungsportal Netzwerk-Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte erstellen und verwalten. In diesem Thema finden Sie Verfahren für häufige Aufgaben in Zusammenhang mit ACLs, die Sie mit PowerShell durchführen können. Die Liste der Azure PowerShell-Cmdlets, finden Sie unter [Azure-Verwaltungs-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=317721). Weitere Informationen zu ACLs finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (ACL)?](virtual-networks-acl.md). Informationen zum Verwalten der ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuelle Computer](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## Verwalten von Netzwerk-ACLs mithilfe von Azure PowerShell
+## <a name="manage-network-acls-by-using-azure-powershell"></a>Verwalten von Netzwerk-ACLs mithilfe von Azure PowerShell
 Sie können Azure PowerShell-Cmdlets zum Erstellen, Entfernen und Konfigurieren (Festlegen) von Netzwerk-Zugriffssteuerungslisten (ACLs) verwenden. Im Folgenden finden Sie einige Beispiele dafür, wie Sie eine ACL mit PowerShell konfigurieren können.
 
 Eine vollständige Liste der PowerShell-Cmdlets für ACLs können Sie mit einem der folgenden Befehle abrufen:
@@ -27,13 +31,13 @@ Eine vollständige Liste der PowerShell-Cmdlets für ACLs können Sie mit einem 
     Get-Help *AzureACL*
     Get-Command -Noun AzureACLConfig
 
-### Erstellen einer Netzwerk-ACL mit Regeln, die den Zugriff von einem Remotesubnetz zulassen
+### <a name="create-a-network-acl-with-rules-that-permit-access-from-a-remote-subnet"></a>Erstellen einer Netzwerk-ACL mit Regeln, die den Zugriff von einem Remotesubnetz zulassen
 Das folgende Beispiel veranschaulicht eine Möglichkeit zum Erstellen einer neuen ACL, die Regeln enthält. Diese ACL wird dann auf den Endpunkt eines virtuellen Computers angewendet. Die ACL-Regeln im folgenden Beispiel lassen den Zugriff von einem Remotesubnetz zu. Um eine neue Netzwerk-ACL mit Zulassungsregeln für ein Remotesubnetz zu erstellen, öffnen Sie eine Azure PowerShell ISE. Kopieren Sie das unten stehende Skript, fügen Sie es ein, konfigurieren Sie es mit Ihren eigenen Werten, und führen Sie es anschließend aus.
 
 1. Erstellen Sie das neue Netzwerk-ACL-Objekt.
    
         $acl1 = New-AzureAclConfig
-2. Legen Sie eine Regel fest, die den Zugriff von einem Remotesubnetz zulässt. Im folgenden Beispiel legen Sie die Regel *100* fest (diese hat Priorität vor der Regel 200 und höher), um dem Remotesubnetz *10.0.0.0/8* den Zugriff auf den Endpunkt des virtuellen Computers zu ermöglichen. Ersetzen Sie die Werte durch Ihre eigenen Konfigurationswerte. Der Name „SharePoint ACL config“ sollte durch den Anzeigenamen ersetzt werden, den Sie für diese Regel verwenden möchten.
+2. Legen Sie eine Regel fest, die den Zugriff von einem Remotesubnetz zulässt. Im folgenden Beispiel legen Sie die Regel *100* fest (diese hat Priorität vor der Regel 200 und höher), um dem Remotesubnetz *10.0.0.0/8* den Zugriff auf den Endpunkt des virtuellen Computers zu erteilen. Ersetzen Sie die Werte durch Ihre eigenen Konfigurationswerte. Der Name „SharePoint ACL config“ sollte durch den Anzeigenamen ersetzt werden, den Sie für diese Regel verwenden möchten.
    
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
@@ -61,8 +65,8 @@ Das folgende Beispiel veranschaulicht eine Möglichkeit zum Erstellen einer neue
         |Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
         |Update-AzureVM
 
-### Entfernen einer Netzwerk-ACL-Regel, die den Zugriff von einem Remotesubnetz zulässt
-Das folgende Beispiel veranschaulicht eine Möglichkeit zum Entfernen einer Netzwerk-ACL-Regel. Um eine Netzwerk-ACL -Regel mit Zulassungsregeln für ein Remotesubnetz zu entfernen, öffnen Sie eine Azure PowerShell ISE. Kopieren Sie das unten stehende Skript, fügen Sie es ein, konfigurieren Sie es mit Ihren eigenen Werten, und führen Sie es anschließend aus.
+### <a name="remove-a-network-acl-rule-that-permits-access-from-a-remote-subnet"></a>Entfernen einer Netzwerk-ACL-Regel, die den Zugriff von einem Remotesubnetz zulässt
+Das folgende Beispiel veranschaulicht eine Möglichkeit zum Entfernen einer Netzwerk-ACL-Regel.  Um eine Netzwerk-ACL -Regel mit Zulassungsregeln für ein Remotesubnetz zu entfernen, öffnen Sie eine Azure PowerShell ISE. Kopieren Sie das unten stehende Skript, fügen Sie es ein, konfigurieren Sie es mit Ihren eigenen Werten, und führen Sie es anschließend aus.
 
 1. Als Erstes rufen Sie das Netzwerk-ACL-Objekt für den Endpunkt des virtuellen Computers ab. Anschließend entfernen Sie die ACL-Regel. In diesem Fall entfernen wir die Regel anhand der Regel-ID. Dadurch wird nur die Regel-ID 0 aus der ACL entfernt. Das ACL-Objekt wird nicht aus dem Endpunkt des virtuellen Computers entfernt.
    
@@ -75,14 +79,19 @@ Das folgende Beispiel veranschaulicht eine Möglichkeit zum Entfernen einer Netz
         | Set-AzureEndpoint –ACL $acl1 –Name "web" `
         | Update-AzureVM
 
-### Entfernen einer Netzwerk-ACL aus einem Endpunkt des virtuellen Computers
+### <a name="remove-a-network-acl-from-a-virtual-machine-endpoint"></a>Entfernen einer Netzwerk-ACL aus einem Endpunkt des virtuellen Computers
 In bestimmten Szenarien ist es erforderlich, ein Netzwerk-ACL-Objekt aus einem Endpunkt des virtuellen Computers zu entfernen. Dazu öffnen Sie eine Azure PowerShell ISE. Kopieren Sie das unten stehende Skript, fügen Sie es ein, konfigurieren Sie es mit Ihren eigenen Werten, und führen Sie es anschließend aus.
 
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Remove-AzureAclConfig –EndpointName "web" `
         | Update-AzureVM
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Was ist eine Netzwerk-Zugriffssteuerungsliste (Access Control List, ACL)?](virtual-networks-acl.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

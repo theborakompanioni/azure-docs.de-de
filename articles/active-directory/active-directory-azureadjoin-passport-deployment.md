@@ -2,13 +2,13 @@
 title: Aktivieren von Microsoft Windows Hello for Business in Ihrer Organisation | Microsoft Docs
 description: Bereitstellungsanweisungen zum Aktivieren von Microsoft Passport in Ihrer Organisation.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 keywords: Konfigurieren von Microsoft Passport, Bereitstellung von Microsoft Windows Hello for Business
 author: MarkusVi
 manager: femila
-editor: ''
+editor: 
 tags: azure-classic-portal
-
+ms.assetid: 7dbbe3c6-1cd7-429c-a9b2-115fcbc02416
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,6 +16,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 115fbee1990b20f6a7186e5f36d0b618cf2e3b7b
+
 
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>Aktivieren von Windows Hello for Business in Ihrer Organisation
@@ -48,15 +52,15 @@ Das Verwenden von System Center Configuration Manager ist die bevorzugte Methode
 **Schritte**:
 
 1. Öffnen Sie den Server-Manager, und navigieren Sie zu **Tools** > **Gruppenrichtlinienverwaltung**.
-2. Navigieren Sie von der Gruppenrichtlinienverwaltung zu dem Domänenknoten, der der Domäne entspricht, in der Sie Azure AD Join aktivieren möchten.
+2. Navigieren Sie von der Gruppenrichtlinienverwaltung zu dem Domänenknoten, der der Domäne entspricht, in der Sie Azure AD Join aktivieren möchten.
 3. Klicken Sie mit der rechten Maustaste auf **Gruppenrichtlinienobjekte**, und wählen Sie dann **Neu** aus. Geben Sie Ihrem Gruppenrichtlinienobjekt einen Namen, z.B. „Windows Hello for Business aktivieren“. Klicken Sie auf **OK**.
 4. Klicken Sie mit der rechten Maustaste auf Ihr neues Gruppenrichtlinienobjekt, und wählen Sie dann **Bearbeiten**aus.
 5. Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Windows Hello for Business**.
 6. Klicken Sie mit der rechten Maustaste auf **Windows Hello for Business aktivieren**, und wählen Sie dann **Bearbeiten** aus.
 7. Aktivieren Sie das Optionsfeld **Aktiviert**, und klicken Sie dann auf **Übernehmen**. Klicken Sie auf **OK**.
-8. Sie können das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl verknüpfen. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10-Geräte in Ihrer Organisation zu aktivieren, verknüpfen Sie die Gruppenrichtlinie mit der Domäne. Beispiel:
-   * Eine bestimmte Organisationseinheit in Active Directory, in der in die Domäne eingebundene Windows 10-Computer platziert werden
-   * Eine bestimmte Sicherheitsgruppe mit in die Domäne eingebundenen Windows 10-Computern, die automatisch bei Azure AD registriert werden
+8. Sie können das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl verknüpfen. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10-Geräte in Ihrer Organisation zu aktivieren, verknüpfen Sie die Gruppenrichtlinie mit der Domäne. Beispiel:
+   * Eine bestimmte Organisationseinheit in Active Directory, in der in die Domäne eingebundene Windows 10-Computer platziert werden
+   * Eine bestimmte Sicherheitsgruppe mit in die Domäne eingebundenen Windows 10-Computern, die automatisch bei Azure AD registriert werden
 
 ### <a name="configure-windows-hello-for-business-using-system-center-configuration-manager"></a>Konfigurieren von Windows Hello for Business mithilfe von System Center Configuration Manager
 **Schritte**:
@@ -103,13 +107,16 @@ Wenn Sie die zertifikatbasierte Authentifizierung für die lokale Authentifizier
 Wählen Sie auf der Seite **SCEP-Registrierung** für das Zertifikatprofil als **Schlüsselspeicheranbieter** die Option **In Passport for Work installieren, andernfalls Fehler** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Windows 10 für Unternehmen: Möglichkeiten der geschäftlichen Nutzung von Geräten](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Windows 10 für Unternehmen: Möglichkeiten der geschäftlichen Nutzung von Geräten](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
 * [Authentifizieren von Identitäten ohne Kennwörter über Microsoft Passport](active-directory-azureadjoin-passport.md)
 * [Weitere Informationen zu Verwendungsszenarios für Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
+* [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

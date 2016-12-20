@@ -1,12 +1,12 @@
 ---
-title: Übersicht über das Azure AD .NET-Protokoll | Microsoft Docs
+title: "Übersicht über das Azure AD .NET-Protokoll | Microsoft-Dokumentation"
 description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Autorisieren des Zugriffs auf Webanwendungen und Web-APIs in Ihrem Mandanten mithilfe von Azure Active Directory und OpenID Connect verwenden.
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
+ms.openlocfilehash: c5b1305b71c5d4076cb22fb70be3d7904695715c
+
 
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorisieren des Zugriffs auf Webanwendungen mit OpenID Connect und Azure Active Directory
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) ist eine einfache Identitätsebene, die auf dem OAuth 2.0-Protokoll aufbaut. OAuth 2.0 definiert Mechanismen zum Beziehen und Verwenden von **Zugriffstoken** für den Zugriff auf geschützte Ressourcen, jedoch keine Standardmethoden zum Bereitstellen von Identitätsinformationen. OpenID Connect implementiert die Authentifizierung als Erweiterung des OAuth 2.0-Autorisierungsprozesses und stellt Informationen zum Endbenutzer in Form eines `id_token` -Elements bereit, mit dem die Identität des Benutzers überprüft und grundlegende Profilinformationen zum Benutzer bereitgestellt werden.
 
 OpenID Connect wird für Webanwendungen empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
+
+[!INCLUDE [active-directory-protocols-getting-started](../../includes/active-directory-protocols-getting-started.md)]
 
 ## <a name="authentication-flow-using-openid-connect"></a>Authentifizierungsfluss bei OpenID Connect
 Der grundlegende Anmeldevorgang umfasst die folgenden Schritte – sie werden unten jeweils im Detail beschrieben.
@@ -52,7 +58,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | --- | --- | --- |
 | Mandant |erforderlich |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können.  Die zulässigen Werte sind Mandantenbezeichner (also etwa `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` – oder `common` für mandantenunabhängige Token). |
 | client_id |erforderlich |Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im klassischen Azure-Portal. Klicken Sie auf **Active Directory**. Klicken Sie anschließend auf das Verzeichnis, auf die Anwendung und dann auf **Konfigurieren**. |
-| response_type |erforderlich |Muss das `id_token` für die OpenID Connect-Anmeldung enthalten.  Es können auch andere Antworttypen enthalten sein, z. B. `code`. |
+| response_type |erforderlich |Muss das `id_token` für die OpenID Connect-Anmeldung enthalten.  Es können auch andere Antworttypen enthalten sein, z. B. `code`. |
 | Bereich |erforderlich |Eine durch Leerzeichen getrennte Liste von Bereichen.  Für OpenID Connect muss der Bereich `openid`enthalten sein, der auf der Zustimmungsbenutzeroberfläche die Anmeldeberechtigung ergibt.  Sie können in diese Anforderung auch andere Bereiche für das Anfordern der Zustimmung aufnehmen. |
 | nonce |erforderlich |Ein Wert in der von der App erzeugten Anforderung, die im resultierenden `id_token` -Element als Anspruch enthalten ist.  Die App kann diesen Wert dann überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu vermindern.  Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge oder GUID, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
 | redirect_uri |empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können.  Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
@@ -108,7 +114,7 @@ Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -P
 | temporarily_unavailable |Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. |Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 | invalid_resource |Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. |Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
 
-## <a name="validate-the-id_token"></a>Überprüfen des ID-Tokens
+## <a name="validate-the-idtoken"></a>Überprüfen des ID-Tokens
 Das Empfangen eines `id_token`-Elements allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen die Signatur validieren und die Ansprüche im `id_token`-Element gemäß den Anforderungen der App überprüfen. Der Azure AD-Endpunkt verwendet JSON-Webtoken (JWTs) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
 
 Sie können `id_token` auch im Clientcode überprüfen. Es ist jedoch eine bewährte Methode, `id_token` an einen Back-End-Server zu senden und die Überprüfung dort auszuführen. Nach der Überprüfung der Signatur des `id_token`-Elements müssen noch einige Ansprüche überprüft werden.
@@ -146,14 +152,14 @@ Zum Abrufen von Zugriffstoken müssen Sie die oben aufgeführte Anmeldeanforderu
 // Line breaks for legibility only
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e      // Your registered Application Id
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
 &response_type=id_token+code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // form_post', or 'fragment'
 &scope=openid
-&resource=https%3A%2F%2Fservice.contoso.com%2F                                   
-&state=12345                                         // Any value, provided by your app
-&nonce=678910                                        // Any value, provided by your app
+&resource=https%3A%2F%2Fservice.contoso.com%2F                                     
+&state=12345                                          // Any value, provided by your app
+&nonce=678910                                         // Any value, provided by your app
 ```
 
 Durch das Einschließen von Berechtigungsbereichen in die Anforderung und die Verwendung von `response_type=code+id_token` stellt der `authorize`-Endpunkt sicher, dass der Benutzer den im `scope`-Abfrageparameter angegebenen Berechtigungen zugestimmt hat, und gibt dann einen Autorisierungscode an die App zurück, der gegen ein Zugriffstoken ausgetauscht wird.
@@ -193,8 +199,10 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Eine Beschreibung der möglichen Fehlercodes und der jeweils empfohlenen Clientaktion finden Sie unter [Fehlercodes beim Autorisierungsendpunktfehler](#error-codes-for-authorization-endpoint-errors).
 
-Nachdem Sie einen Autorisierungs`code` und einen `id_token` erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen.  Zum Anmelden des Benutzers müssen Sie das `id_token` genau wie oben beschrieben überprüfen. Zum Abrufen von Zugriffstoken können Sie die in unserer [OAuth-Protokolldokumentation beschriebenen Schritte](active-directory-protocols-oauth-code.md#Use-the-Authorization-Code-to-Request-an-Access-Token)ausführen
+Nachdem Sie einen Autorisierungs`code` und einen `id_token` erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen.  Zum Anmelden des Benutzers müssen Sie das `id_token` genau wie oben beschrieben überprüfen. Sie können die Schritte befolgen, die im Abschnitt „Fordern Sie ein Zugriffstoken mithilfe des Autorisierungscodes an.“ Ihrer [OAuth-Protokolldokumentation](active-directory-protocols-oauth-code.md) beschrieben sind, um Zugriffstoken zu erhalten.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

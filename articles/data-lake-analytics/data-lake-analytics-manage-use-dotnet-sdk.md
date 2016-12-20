@@ -1,12 +1,12 @@
 ---
 title: Verwalten von Azure Data Lake Analytics mithilfe des Azure .NET SDK | Microsoft Docs
-description: 'Erfahren Sie, wie Sie Data Lake Analytics-Aufträge, -Datenquellen, und -Benutzer verwalten. '
+description: "Erfahren Sie, wie Sie Data Lake Analytics-Aufträge, -Datenquellen, und -Benutzer verwalten. "
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/23/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 63ce27657ecf1c89f5d3dfc163ee655bc15ce0b7
+
 
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-.net-sdk"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure .NET SDK
+# <a name="manage-azure-data-lake-analytics-using-azure-net-sdk"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure .NET SDK
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mithilfe des Azure .NET SDK verwalten. Klicken Sie oben auf die Auswahlregisterkarte, um Themen anzuzeigen, in denen die Verwaltung mit anderen Tools stattfindet.
@@ -178,20 +182,20 @@ Unter „Suchen eines Kontos“ in diesem Artikel erfahren Sie, wie Sie ein Data
 
 
 ## <a name="use-azure-resource-manager-groups"></a>Verwenden von Azure-Ressourcen-Manager-Gruppen
-Anwendungen bestehen normalerweise aus vielen Komponenten, z. B. Web-App, Datenbank, Datenbankserver, Speicher und Drittanbieterdiensten. Mit Azure Resource Manager können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, die als Azure-Ressourcengruppe bezeichnet wird. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe anzeigen. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md). 
+Anwendungen bestehen normalerweise aus vielen Komponenten, z. B. Web-App, Datenbank, Datenbankserver, Speicher und Drittanbieterdiensten. Mit Azure Resource Manager können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, die als Azure-Ressourcengruppe bezeichnet wird. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe anzeigen. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md). 
 
 Ein Data Lake Analytics-Dienst kann folgende Komponenten enthalten:
 
-* Azure Data Lake Analytics-Konto
+* Azure Data Lake Analytics-Konto
 * Erforderliches Azure Data Lake-Speicherkonto
-* Zusätzliche Azure Data Lake-Speicherkonten
+* Zusätzliche Azure Data Lake-Speicherkonten
 * Zusätzliche Azure-Speicherkonten
 
 Alle diese Komponenten lassen sich zur einfacheren Verwaltung in einer Ressourcenverwaltungsgruppe erstellen.
 
 ![Azure Data Lake Analytics-Konto und -Speicher](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
 
-Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen sich im gleichen Azure-Rechenzentrum befinden.
+Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen sich im gleichen Azure-Rechenzentrum befinden.
 Die Ressourcenverwaltungsgruppe kann sich jedoch in einem anderen Rechenzentrum befinden.  
 
 ## <a name="see-also"></a>Weitere Informationen
@@ -200,6 +204,9 @@ Die Ressourcenverwaltungsgruppe kann sich jedoch in einem anderen Rechenzentrum 
 * [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
 * [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

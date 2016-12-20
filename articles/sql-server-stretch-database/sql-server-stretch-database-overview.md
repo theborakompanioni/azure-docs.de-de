@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2fcea994b3de924f1170dae2d7a0a3b6d4786538
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f63900b0a4f32e1bc5a88c068091916bd96aafb8
 
 
 ---
@@ -28,13 +28,13 @@ Wenn Sie sofort mit Stretch-Datenbank beginnen möchten, lesen Sie [Erste Schrit
 ## <a name="what-are-the-benefits-of-stretch-database"></a>Was sind die Vorteile von Stretch-Datenbank?
 Stretch-Datenbank bietet die folgenden Vorteile:
 
-### <a name="provides-costeffective-availability-for-cold-data"></a>Bietet kostengünstige Verfügbarkeit für inaktive Daten
+### <a name="provides-cost-effective-availability-for-cold-data"></a>Bietet kostengünstige Verfügbarkeit für inaktive Daten
 Verlagern Sie aktive und inaktive Transaktionsdaten mit SQL Server Stretch-Datenbank dynamisch von SQL Server zu Microsoft Azure. Im Gegensatz zu anderen Arten der Speicherung von inaktiven Daten, sind Ihre Daten immer online und jederzeit abfragbar. Sie können eine längere Dauer der Datenaufbewahrung anbieten, ohne für große Tabellen wie eine Kundenauftragshistorie hohe Ausgaben tätigen zu müssen. Profitieren Sie vom kostengünstigen Azure, statt teure lokale Speicher hochzuskalieren. Wählen Sie einen Tarif, und konfigurieren Sie die Einstellungen im Azure-Portal, um die Kontrolle über die Kosten zu behalten. Skalieren Sie je nach Bedarf hoch oder herunter. Einzelheiten finden Sie auf der Seite [SQL Server Stretch-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/) .
 
 ### <a name="doesnt-require-changes-to-queries-or-applications"></a>Keine Änderungen von Abfragen oder Anwendungen erforderlich
 Greifen Sie nahtlos auf Ihre SQL Server\-Daten zu – unabhängig davon, ob diese lokal gespeichert oder in die Cloud verlagert wurden.  Sie legen die Richtlinien dafür fest, wo Daten gespeichert werden, und wie SQL Server das Verschieben von Daten im Hintergrund handhabt. Die ganze Tabelle ist immer online und jederzeit abfragbar. Die Stretch-Datenbank benötigt außerdem keine Änderungen der vorhandenen Abfragen oder Anwendungen – der Speicherort der Daten ist für die Anwendung vollständig transparent.
 
-### <a name="streamlines-onpremises-data-maintenance"></a>Optimierung der Wartung lokaler Daten
+### <a name="streamlines-on-premises-data-maintenance"></a>Optimierung der Wartung lokaler Daten
 Verringern Sie den lokalen Wartungs- und Speicheraufwand für Ihre Daten. Die Sicherungen für Ihre lokalen Daten werden schneller durchgeführt und enden innerhalb des Wartungsfensters. Sicherungen für den Teil Ihrer Daten, der sich in der Cloud befindet, werden automatisch ausgeführt. Ihr Bedarf an lokalem Speicher verringert sich in hohem Umfang. Azure-Speicher kann bis zu 80% günstiger sein als der Ausbau von lokalen SSD.
 
 ### <a name="keeps-your-data-secure-even-during-migration"></a>Datensicherheit auch während der Migration
@@ -84,6 +84,6 @@ Verwenden Sie den Stretch-Datenbank-Ratgeber, eine Funktion von SQL Server 2016-
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
