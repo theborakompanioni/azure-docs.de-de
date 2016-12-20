@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 12/16/2016
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -78,32 +78,33 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
   
     Um den bestmögliche Durchsatz zu erreichen, muss mithilfe eines Benutzers von SQL Data Warehouse, der zur Ressourcenklasse `xlargerc` gehört, ein Kopiervorgang ausgeführt werden.  Erfahren Sie, wie das geht, indem Sie das folgende [Beispiel: Ändern der Ressourcenklasse eines Benutzers](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example) ausführen.  
 * Erstellen Sie eine Zieltabellenschema in der Datenbank von Azure SQL Data Warehouse, indem Sie die folgende DDL-Anweisung ausführen:
-  
-        CREATE TABLE [dbo].[lineitem]
-        (
-            [L_ORDERKEY] [bigint] NOT NULL,
-            [L_PARTKEY] [bigint] NOT NULL,
-            [L_SUPPKEY] [bigint] NOT NULL,
-            [L_LINENUMBER] [int] NOT NULL,
-            [L_QUANTITY] [decimal](15, 2) NULL,
-            [L_EXTENDEDPRICE] [decimal](15, 2) NULL,
-            [L_DISCOUNT] [decimal](15, 2) NULL,
-            [L_TAX] [decimal](15, 2) NULL,
-            [L_RETURNFLAG] [char](1) NULL,
-            [L_LINESTATUS] [char](1) NULL,
-            [L_SHIPDATE] [date] NULL,
-            [L_COMMITDATE] [date] NULL,
-            [L_RECEIPTDATE] [date] NULL,
-            [L_SHIPINSTRUCT] [char](25) NULL,
-            [L_SHIPMODE] [char](10) NULL,
-            [L_COMMENT] [varchar](44) NULL
-        )
-        WITH
-        (
-            DISTRIBUTION = ROUND_ROBIN,
-            CLUSTERED COLUMNSTORE INDEX
-        )
 
+    ```SQL  
+    CREATE TABLE [dbo].[lineitem]
+    (
+        [L_ORDERKEY] [bigint] NOT NULL,
+        [L_PARTKEY] [bigint] NOT NULL,
+        [L_SUPPKEY] [bigint] NOT NULL,
+        [L_LINENUMBER] [int] NOT NULL,
+        [L_QUANTITY] [decimal](15, 2) NULL,
+        [L_EXTENDEDPRICE] [decimal](15, 2) NULL,
+        [L_DISCOUNT] [decimal](15, 2) NULL,
+        [L_TAX] [decimal](15, 2) NULL,
+        [L_RETURNFLAG] [char](1) NULL,
+        [L_LINESTATUS] [char](1) NULL,
+        [L_SHIPDATE] [date] NULL,
+        [L_COMMITDATE] [date] NULL,
+        [L_RECEIPTDATE] [date] NULL,
+        [L_SHIPINSTRUCT] [char](25) NULL,
+        [L_SHIPMODE] [char](10) NULL,
+        [L_COMMENT] [varchar](44) NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    ```
 Nachdem die vorbereitenden Schritte abgeschlossen sind, kann jetzt die Kopieraktivität mithilfe des Kopier-Assistenten ausgeführt werden.
 
 ## <a name="launch-copy-wizard"></a>Starten des Kopier-Assistenten
@@ -139,67 +140,66 @@ Auf der Seite **Eigenschaften** :
 2. Wählen Sie die Option **Run once now (Einmalig ausführen)** aus.   
 3. Klicken Sie auf **Weiter**.  
 
-![Kopier-Assistent – Eigenschaftsseite](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
+    ![Kopier-Assistent – Eigenschaftsseite](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>Schritt 2: Konfigurieren der Quelle
 In diesem Abschnitt werden die Schritte beschrieben, mit denen Sie die Quelle konfigurieren: Azure Blob mit 1 TB TPC-H-Elementdateien.
 
-Wählen Sie **Azure Blob Storage** als Datenspeiche aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie **Azure Blob Storage** als Datenspeiche aus, und klicken Sie auf **Weiter**.
 
-![Kopier-Assistent – Seite Quelle auswählen](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
+    ![Kopier-Assistent – Seite Quelle auswählen](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-Geben Sie die Verbindungsinformationen für das Azure Blob Storage-Konto ein, und klicken Sie auf **Weiter**.
+2. Geben Sie die Verbindungsinformationen für das Azure Blob Storage-Konto ein, und klicken Sie auf **Weiter**.
 
-![Kopier-Assistent – Quellenverbindungsinformation](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
+    ![Kopier-Assistent – Quellenverbindungsinformation](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-Wählen Sie den **Ordner** mit den TPC-H-Elementdateien und klicken Sie auf **Weiter**.
+3. Wählen Sie den **Ordner** mit den TPC-H-Elementdateien und klicken Sie auf **Weiter**.
 
-![Kopier-Assistent – Seite Eingabeordner auswählen](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
+    ![Kopier-Assistent – Seite Eingabeordner auswählen](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-Sobald Sie auf **Weiter** geklickt haben, werden die Dateiformateinstellungen automatisch erkannt.  Stellen Sie sicher, dass das Spaltentrennzeichen als „|“ statt des standardmäßigen Kommas „,“ eingestellt ist.  Klicken Sie auf **Weiter** nachdem Sie die Daten in der Vorschau angezeigt haben.
+4. Sobald Sie auf **Weiter** geklickt haben, werden die Dateiformateinstellungen automatisch erkannt.  Stellen Sie sicher, dass das Spaltentrennzeichen als „|“ statt des standardmäßigen Kommas „,“ eingestellt ist.  Klicken Sie auf **Weiter** nachdem Sie die Daten in der Vorschau angezeigt haben.
 
-![Kopiertool – Dateiformateinstellungen](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
+    ![Kopiertool – Dateiformateinstellungen](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>Schritt 3: Konfigurieren des Ziels
 Dieser Abschnitt beschreibt das Konfigurieren des Ziels: Tabelle `lineitem` in der Azure SQL Data Warehouse-Datenbank.
 
-Wählen Sie **Azure SQL Data Warehouse** als Zielspeicher aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie **Azure SQL Data Warehouse** als Zielspeicher aus, und klicken Sie auf **Weiter**.
 
-![Kopier-Assistent – Ziel-Datenspeicher auswählen](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
+    ![Kopier-Assistent – Ziel-Datenspeicher auswählen](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-Geben Sie die Verbindungsinformationen für Azure SQL Data Warehouse ein.  Stellen Sie sicher, dass Sie den Benutzer angeben, der Mitglied der Rolle `xlargerc` ist (siehe Abschnitt **Voraussetzungen** für detaillierte Anweisungen), und klicken Sie auf **Weiter**. 
+2. Geben Sie die Verbindungsinformationen für Azure SQL Data Warehouse ein.  Stellen Sie sicher, dass Sie den Benutzer angeben, der Mitglied der Rolle `xlargerc` ist (siehe Abschnitt **Voraussetzungen** für detaillierte Anweisungen), und klicken Sie auf **Weiter**. 
 
-![Kopier-Assistent: Zielverbindungsinformation](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
+    ![Kopier-Assistent: Zielverbindungsinformation](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-Wählen Sie die Zieltabelle aus, und klicken Sie auf **Weiter**.
+3. Wählen Sie die Zieltabelle aus, und klicken Sie auf **Weiter**.
 
-![Kopier-Assistent – Seite Zuordnung der Tabelle](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
+    ![Kopier-Assistent – Seite Zuordnung der Tabelle](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-Akzeptieren Sie die Standardeinstellungen für die Spaltenzuordnung und klicken Sie auf **Weiter**.
+4. Akzeptieren Sie die Standardeinstellungen für die Spaltenzuordnung und klicken Sie auf **Weiter**.
 
-![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/schema-mapping.png)
+    ![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/schema-mapping.png)
 
 ## <a name="step-4-performance-settings"></a>Schritt 4: Leistungseinstellungen
+
 **Allow polybase (Zulassen von PolyBase)** ist standardmäßig aktiviert.  Klicken Sie auf **Weiter**.
 
 ![Kopier-Assistent – Seite Zuordnung des Schemas](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>Schritt 5: Bereitstellen und Ladeergebnisse überwachen
-Klicken Sie für die Bereitstellung auf **Fertig stellen**. 
+1. Klicken Sie für die Bereitstellung auf **Fertig stellen**. 
 
-![Kopier-Assistent – Seite Zusammenfassung](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![Kopier-Assistent – Seite Zusammenfassung](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-Nachdem die Bereitstellung abgeschlossen ist, klicken Sie auf `Click here to monitor copy pipeline` um Ausführung und Fortschritt des Kopiervorgangs zu überwachen.
+2. Nachdem die Bereitstellung abgeschlossen ist, klicken Sie auf `Click here to monitor copy pipeline` um Ausführung und Fortschritt des Kopiervorgangs zu überwachen. Wählen Sie die Kopierpipeline aus, die Sie in der **Activity Windows**-Liste erstellt haben.
 
-Wählen Sie die Kopierpipeline aus, die Sie in der **Activity Windows**-Liste erstellt haben.
+    ![Kopier-Assistent – Seite Zusammenfassung](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
-![Kopier-Assistent – Seite Zusammenfassung](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    Sie können die Details zum Kopiervorgang unter **Activity Window Explorer** im rechten Bereich anzeigen, darunter das Datenvolumen, das aus der Quelle gelesen und in das Ziel geschrieben wurde, die Dauer und den durchschnittlichen Durchsatz der Ausführung.
 
-Sie können die Details zum Kopiervorgang unter **Activity Window Explorer** im rechten Bereich anzeigen, darunter das Datenvolumen, das aus der Quelle gelesen und in das Ziel geschrieben wurde, die Dauer und den durchschnittlichen Durchsatz der Ausführung.
+    Wie Sie im folgenden Screenshot sehen können, dauerte das Kopieren von 1 TB aus Azure Blob Storage in SQL Data Warehouse 14 Minuten, und es wurde ein effektiver Durchsatz von 1,22 GBit/s erreicht!
 
-Wie Sie im folgenden Screenshot sehen können, dauerte das Kopieren von 1 TB aus Azure Blob Storage in SQL Data Warehouse 14 Minuten, und es wurde ein effektiver Durchsatz von 1,22 GBit/s erreicht!
-
-![Kopier-Assistent – Kopieren erfolgreich Dialog](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
+    ![Kopier-Assistent – Kopieren erfolgreich Dialog](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
 ## <a name="best-practices"></a>Bewährte Methoden
 Hier sind einige bewährte Methoden für die Ausführung Ihrer Azure SQL Data Warehouse-Datenbank:
