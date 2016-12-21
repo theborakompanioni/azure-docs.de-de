@@ -1,35 +1,13 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Synchronization Service Manager-Benutzeroberfläche | Microsoft Docs'
-description: Verstehen Sie die Registerkarte „Metaverse Search“, im Synchronization Service Manager für Azure AD Connect.
-services: active-directory
-documentationcenter: ''
-author: andkjell
-manager: femila
-editor: ''
-
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/07/2016
-ms.author: andkjell
+redirect_url: /azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch
+translationtype: Human Translation
+ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
+ms.openlocfilehash: 814bc2c4c17bee545560ac769c2eaa1d424eef86
 
 ---
-# Azure AD Connect-Synchronisierung: Synchronization Service Manager
-| [Vorgänge](active-directory-aadconnectsync-service-manager-ui-operations.md) | [Connectors](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [Metaverse Designer](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [Metaverse Search](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) |
-| --- | --- | --- | --- |
-|  | | | |
 
-![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvsearch.png)
 
-Die Registerkarte „Metaverse Search“ ist nützlich für die Behandlung von Datenproblemen. In der oberen Hälfte können Sie eine auf einer Kombination von Attributen basierende Abfrage erstellen. Wenn Sie mit Ihrer Abfrage zufrieden sind, klicken Sie auf **Suchen**. Das Ergebnis wird im unteren Raster angezeigt. Mit **Spalteneinstellungen** können Sie auswählen, welche Spalten sichtbar sein sollen.
 
-Wählen Sie in den Suchergebnissen ein Objekt und **Eigenschaften** aus, um die [Metaverse-Objekteigenschaften](active-directory-aadconnectsync-service-manager-ui-connectors.md#metaverse-object-properties) anzuzeigen.
+<!--HONumber=Dec16_HO3-->
 
-## Nächste Schritte
-Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md).
 
-Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-<!---HONumber=AcomDC_0907_2016-->
