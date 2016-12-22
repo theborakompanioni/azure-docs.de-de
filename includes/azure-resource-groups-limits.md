@@ -1,6 +1,6 @@
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Ressourcen pro [Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (pro Ressourcentyp) |800 |800 |
+| Ressourcen pro [Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (pro Ressourcentyp) |800 |Variiert je nach Ressourcentyp |
 | Bereitstellungen pro Ressourcengruppe |800 |800 |
 | Ressourcen pro Bereitstellung |800 |800 |
 | Managementsperren (pro eindeutigem Bereich) |20 |20 |
@@ -10,6 +10,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

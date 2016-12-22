@@ -3,7 +3,7 @@ title: Erstellen eines Azure Batch-Kontos | Microsoft Docs
 description: "Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstellen, um umfangreiche parallele Workloads in der Cloud auszuführen."
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/21/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1a4e242c2d179d9aaf869d6f95af96ff754adf93
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 8875c5e91a2a1ae848ebf725ca00bd43ec667dce
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 1a4e242c2d179d9aaf869d6f95af96ff754adf93
 > 
 > 
 
-Hier erfahren Sie, wie Sie ein Azure Batch-Konto im [Azure-Portal][azure_portal] erstellen und wo Sie wichtige Kontoeigenschaften wie Zugriffsschlüssel und Konto-URLs finden. Außerdem werden die Batch-Preise erörtert und das Verknüpfen eines Azure-Speicherkontos mit dem Batch-Konto erläutert, sodass Sie [Anwendungspakete](batch-application-packages.md) verwenden und die [Ausgabe von Aufträgen und Tasks beibehalten](batch-task-output.md) können.
+Hier erfahren Sie, wie Sie im [Azure-Portal][azure_portal] ein Azure Batch-Konto erstellen und wo Sie wichtige Kontoeigenschaften wie Zugriffsschlüssel und Konto-URLs finden. Außerdem werden die Batch-Preise erörtert und das Verknüpfen eines Azure-Speicherkontos mit dem Batch-Konto erläutert, sodass Sie [Anwendungspakete](batch-application-packages.md) verwenden und die [Ausgabe von Aufträgen und Tasks beibehalten](batch-task-output.md) können.
 
 ## <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
 1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
@@ -67,7 +67,7 @@ Nachdem das Konto erstellt wurde, können Sie das Blatt **Batch-Konto** öffnen,
     ![Batch-Kontoschlüssel im Azure-Portal][account_keys]
 
 ## <a name="pricing"></a>Preise
-Batch-Konten werden nur mit einem „Free-Tarif“ angeboten. Dies bedeutet, dass Ihnen keine Kosten für das Batch-Konto selbst in Rechnung gestellt werden. Kosten fallen für die zugrunde liegenden Azure-Computeressourcen an, die von Ihren Batch-Lösungen genutzt werden, sowie für die Ressourcen, die bei der Ausführung Ihrer Workloads von anderen Diensten genutzt werden. Beispielsweise werden Ihnen Computeknoten in Ihren Pools berechnet und die Daten, die Sie in Azure Storage als Ein- oder Ausgabe für Ihre Aufgaben speichern. Wenn Sie das Feature [Anwendungspakete](batch-application-packages.md) von Batch verwenden, fallen zudem Kosten für die Azure Storage-Ressourcen an, die zum Speichern der Anwendungspakete verwendet werden. Weitere Informationen finden Sie unter [Batch – Preise][batch_pricing].
+Batch-Konten werden nur mit einem „Free-Tarif“ angeboten. Dies bedeutet, dass Ihnen keine Kosten für das Batch-Konto selbst in Rechnung gestellt werden. Kosten fallen für die zugrunde liegenden Azure-Computeressourcen an, die von Ihren Batch-Lösungen genutzt werden, sowie für die Ressourcen, die bei der Ausführung Ihrer Workloads von anderen Diensten genutzt werden. Beispielsweise werden Ihnen Computeknoten in Ihren Pools berechnet und die Daten, die Sie in Azure Storage als Ein- oder Ausgabe für Ihre Aufgaben speichern. Wenn Sie das Feature [Anwendungspakete](batch-application-packages.md) von Batch verwenden, fallen zudem Kosten für die Azure Storage-Ressourcen an, die zum Speichern der Anwendungspakete verwendet werden. Weitere Informationen finden Sie unter [Batch-Preise][batch_pricing].
 
 ## <a name="linked-azure-storage-account"></a>Verknüpftes Azure-Speicherkonto
 Wie zuvor erwähnt, können Sie optional ein Speicherkonto vom Typ **Allgemein** mit Ihrem Batch-Konto verknüpfen. Das Feature [Anwendungspakete](batch-application-packages.md) von Batch verwendet ebenso wie die .NET-Bibliothek [Batch-Dateikonventionen](batch-task-output.md) Blobspeicher in einem verknüpften allgemeinen Speicherkonto. Diese optionalen Features unterstützen Sie beim Bereitstellen der von Ihren Batch-Aufgaben ausgeführten Anwendungen und Beibehalten der von ihnen erzeugten Daten.
@@ -83,7 +83,7 @@ Wir empfehlen die Erstellung eines Speicherkontos, das ausschließlich von Ihrem
 > 
 > 
 
-  ![Speicherkontoschlüssel erneut generieren][4]
+  ![Erneutes Generieren der Speicherkontoschlüssel][4]
 
 ## <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 Beachten Sie, dass wie bei Ihrem Azure-Abonnement und anderen Azure-Diensten bestimmte [Kontingente und Grenzwerte](batch-quota-limit.md) für Batch-Konten gelten. Die aktuellen Kontingente für ein Batch-Konto werden im Portal in den **Eigenschaften**des Kontos angezeigt.
@@ -113,7 +113,7 @@ Neben der Verwendung des Azure-Portals stehen Ihnen zum Erstellen und Verwalten 
 [azure_portal]: https://portal.azure.com
 [batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
 
-[4]: ./media/batch-account-create-portal/batch_acct_04.png "Speicherkontoschlüssel erneut generieren"
+[4]: ./media/batch-account-create-portal/batch_acct_04.png "Erneutes Generieren der Speicherkontoschlüssel"
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
@@ -124,6 +124,6 @@ Neben der Verwendung des Azure-Portals stehen Ihnen zum Erstellen und Verwalten 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

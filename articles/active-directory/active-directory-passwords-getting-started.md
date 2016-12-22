@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 93e02bc36c0502623316d6b896dd802ac8bdc284
+ms.sourcegitcommit: 48821a3b2b7da4646c4569cc540d867f02a4a32f
+ms.openlocfilehash: 6dc23714a4a052c7bf0bb5162fe1568ec272b5e3
 
 
 ---
@@ -256,12 +256,40 @@ Sie können die erfolgreiche Installation des Diensts auch überprüfen, indem S
   ![][023]
 
 ### <a name="step-3-configure-your-firewall"></a>Schritt 3: Konfigurieren der Firewall
-Nachdem Sie das Zurückschreiben von Kennwörtern in Azure AD Connect aktiviert haben, müssen Sie sicherstellen, dass der Dienst eine Verbindung mit der Cloud herstellen kann.
+Nachdem Sie das Kennwortrückschreiben aktiviert haben, müssen Sie sicherstellen, dass der Computer, auf dem Azure AD Connect ausgeführt wird, eine Verbindung mit Microsoft-Clouddiensten herstellen und somit Anforderungen zum Kennwortrückschreiben empfangen kann. Dieser Schritt beinhaltet die Aktualisierung von Verbindungsregeln in Ihren Netzwerkgeräten (Proxyserver, Firewalls usw.), um ausgehende Verbindungen mit bestimmten URLs und IP-Adressen von Microsoft über bestimmte Netzwerkports zuzulassen. Diese Änderungen variieren je nach Version des Azure AD Connect-Tools. Weitere Informationen finden Sie unter [Funktionsweise der Kennwortrückschreibung](active-directory-passwords-learn-more.md#how-password-writeback-works) und [Sicherheitsmodell für die Kennwortrückschreibung](active-directory-passwords-learn-more.md#password-writeback-security-model).
 
-1. Wenn Sie nach dem Abschluss der Installation in Ihrer Umgebung unbekannte ausgehende Verbindungen blockieren, müssen Sie außerdem Änderungen an den folgenden Regeln Ihrer Firewall vornehmen. Stellen Sie sicher, dass Sie Ihren AAD Connect-Computer nach dem Durchführen dieser Änderungen neu starten:
-   * Lassen Sie ausgehende Verbindungen über TCP-Port 443 zu.
-   * Lassen Sie ausgehende Verbindungen zu „https://ssprsbprodncu-sb.accesscontrol.windows.net/“ zu.
-   * Wenn Sie einen Proxy verwenden oder allgemeine Verbindungsprobleme vorliegen, lassen Sie ausgehende Verbindungen über TCP-Port 9350-9354 und 5671 zu.
+#### <a name="why-do-i-need-to-do-this"></a>Weshalb ist dieser Schritt erforderlich?
+
+Damit das Kennwortrückschreiben korrekt funktioniert, muss der Computer, auf dem Azure AD Connect ausgeführt wird, ausgehende HTTPS-Verbindungen mit **.servicebus.windows.net* und bestimmten von Azure verwendeten IP-Adressen herstellen können. Diese IP-Adressen sind in der Liste [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (IP-Adressbereiche für Microsoft Azure-Datencenter) definiert.
+
+Azure AD Connect-Toolversionen 1.0.8667.0 und höher:
+
+- **Option 1:** Zulassen aller ausgehenden HTTPS-Verbindungen über Port 443 (anhand der URL oder IP-Adresse)
+    - Verwendung dieser Option:
+        - Verwenden Sie diese Option, wenn Sie die einfachste Konfiguration einsetzen möchten, die nicht aktualisiert werden muss, wenn sich die IP-Adressbereiche für Azure-Datencenter im Laufe der Zeit ändern.
+    - Erforderliche Schritte:
+        - Lassen Sie alle ausgehenden HTTPS-Verbindungen über Port 443 anhand der URL oder IP-Adresse zu.
+<br><br>
+- **Option 2:** Zulassen ausgehender HTTPS-Verbindungen mit bestimmten IP-Adressbereichen und URLs
+    - Verwendung dieser Option:
+        - Verwenden Sie diese Option, wenn für Ihre Netzwerkumgebung Einschränkungen gelten oder Sie aus anderen Gründen Bedenken haben, ausgehende Verbindungen zuzulassen.
+        - Bei dieser Konfiguration müssen Sie sicherstellen, dass Ihre Netzwerkgeräte wöchentlich mit den aktuellen IP-Adressen aus der Liste der IP-Adressbereiche für Microsoft Azure-Datencenter aktualisiert werden, damit das Kennwortrückschreiben korrekt funktioniert. Diese IP-Adressbereiche stehen als XML-Datei zur Verfügung, die jeden Mittwoch (Pacific Time) aktualisiert wird und am folgenden Montag (Pacific Time) in Kraft tritt.
+    - Erforderliche Schritte:
+        - Lassen Sie alle ausgehenden HTTPS-Verbindungen mit *.servicebus.windows.net zu.
+        - Lassen Sie alle ausgehenden HTTPS-Verbindungen mit allen IP-Adressen in der Liste der IP-Adressbereiche für Microsoft Azure-Datencenter zu, und aktualisieren Sie diese Konfiguration wöchentlich.
+
+> [!NOTE]
+> Wenn Sie das Kennwortrückschreiben gemäß den obigen Anweisungen konfiguriert haben und keine Fehler im Azure AD Connect-Ereignisprotokoll angezeigt werden, aber beim Testen Verbindungsfehler auftreten, blockiert möglicherweise ein Netzwerkgerät in Ihrer Umgebung HTTPS-Verbindungen mit IP-Adressen. Während eine Verbindung mit *https://*.servicebus.windows.net* zulässig ist, kann beispielsweise eine Verbindung mit einer bestimmten IP-Adresse innerhalb dieses Bereichs blockiert sein. Um dieses Problem zu beheben, müssen Sie entweder Ihre Netzwerkumgebung zum Zulassen aller ausgehenden HTTPS-Verbindungen über Port 443 mit beliebigen URLs oder IP-Adressen konfigurieren (Option 1 oben) oder in Zusammenarbeit mit Ihrem Netzwerkteam explizit nur HTTPS-Verbindungen mit bestimmten IP-Adressen zulassen (Option 2 oben).
+
+**Ältere Versionen:**
+
+- Zulassen ausgehender TCP-Verbindungen über Port 443, 9350 – 9354 und Port 5671 
+- Zulassen ausgehender Verbindungen mit *https://ssprsbprodncu-sb.accesscontrol.windows.net/*
+
+> [!NOTE]
+> Wenn Sie mit einer Azure AD Connect-Version vor 1.0.8667.0 arbeiten, empfiehlt Microsoft dringend, auf die [neueste Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) zu aktualisieren, die eine Reihe von Verbesserungen für das Rückschreiben im Netzwerk enthält und die Konfiguration vereinfacht.
+
+Nachdem die Netzwerkgeräte konfiguriert wurden, starten Sie den Computer neu, auf dem das Azure AD Connect-Tool ausgeführt wird.
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen
 Bei der anfänglichen Konfiguration mit dem Konfigurations-Assistenten wird ein Konto X eingerichtet. Für jede Gesamtstruktur, die Benutzer enthält, deren Kennwörter zurückgesetzt werden, müssen X die Berechtigungen **Kennwort zurücksetzen**, **Kennwort ändern**, **Schreibzugriff** für `lockoutTime` und **Schreibzugriff** für `pwdLastSet` sowie die erweiterten Rechte für das Stammobjekt jeder Domäne in dieser Gesamtstruktur erteilt werden. Die Rechte müssen hierbei so festgelegt werden, dass sie an alle Benutzerobjekte vererbt werden.  
