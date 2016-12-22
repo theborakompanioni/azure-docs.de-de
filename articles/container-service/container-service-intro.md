@@ -1,14 +1,14 @@
 ---
-title: Einführung in Azure Container Service | Microsoft Docs
-description: Azure Container Service bietet eine Möglichkeit zur Vereinfachung der Erstellung, Konfiguration und Verwaltung eines Clusters virtueller Computer, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind.
+title: "Einführung in Azure Container Service | Microsoft Docs"
+description: "Azure Container Service bietet eine Möglichkeit zur Vereinfachung der Erstellung, Konfiguration und Verwaltung eines Clusters virtueller Computer, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind."
 services: container-service
-documentationcenter: ''
+documentationcenter: 
 author: rgardler
 manager: timlt
-editor: ''
+editor: 
 tags: acs, azure-container-service
 keywords: Docker, Container, Microservices, Mesos, Azure
-
+ms.assetid: 52da4163-1182-4b2e-be00-4951e5c1da16
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,28 +16,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
+translationtype: Human Translation
+ms.sourcegitcommit: 3edc4bf663244805fc184d9598621b3fbca72d5d
+ms.openlocfilehash: 430f895a783cbbe6b7454ccd24c2dd8d99f6228b
+
 
 ---
-# Einführung in Azure Container Service
+# <a name="azure-container-service-introduction"></a>Einführung in Azure Container Service
 Azure Container Service (ACS) vereinfacht Ihnen das Erstellen, Konfigurieren und Verwalten eines Clusters virtueller Computer, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind. Der Dienst verwendet eine optimierte Konfiguration gängiger Tools für Open-Source-Planung und Orchestrierung. So können Sie Ihre vorhandenen Kenntnisse nutzen, bzw. auf einen großen und wachsenden Pool von Communityfachkenntnissen zur Bereitstellung und Verwaltung von containerbasierten Anwendungen in Microsoft Azure zurückgreifen.
 
-![Azure Container Service bietet eine Möglichkeit, Anwendungen, die in Containern ausgeführt werden, auf mehreren Hosts in Azure zu verwalten.](./media/acs-intro/acs-cluster.png)
+![Azure Container Service bietet eine Möglichkeit, Anwendungen, die in Containern ausgeführt werden, auf mehreren Hosts in Azure zu verwalten.](./media/acs-intro/acs-cluster-new.png)
 
-Azure Container Service nutzt das Docker-Containerformat, um sicherzustellen, dass Ihre Anwendungscontainer vollständig portierbar sind. Der Dienst unterstützt außerdem Marathon und DC/OS oder Docker Swarm, sodass Sie diese Anwendungen auf Tausende und sogar Zehntausende von Containern skalieren können.
+Azure Container Service nutzt das Docker-Containerformat, um sicherzustellen, dass Ihre Anwendungscontainer vollständig portierbar sind. Der Dienst unterstützt außerdem Marathon und DC/OS, Docker Swarm oder Kubernetes, sodass Sie diese Anwendungen auf Tausende und sogar Zehntausende von Containern skalieren können.
 
 Mit dem Azure Container Service können Sie die Unternehmensfunktionen von Azure nutzen, während gleichzeitig die Anwendungsportierbarkeit erhalten bleibt, auch auf den Orchestrierungsebenen.
 
-## Verwenden von Azure Container Service
-Mit dem Azure Container Service verfolgen wir das Ziel, mit Open Source-Tools und -Technologien, die heutzutage bei unseren Kunden beliebt sind, eine Umgebung für das Containerhosting bereitzustellen. Zu diesem Zweck machen wir die Standard-API-Endpunkte für Docker und den von Ihnen ausgewählten Orchestrator (DC/OS oder Docker Swarm) verfügbar. Mithilfe dieser Endpunkte können Sie jede Software nutzen, die mit diesen Endpunkten kommunizieren kann. Im Fall des Docker Swarm-Endpunkts können Sie z. B. die Docker-Befehlszeilenschnittstelle (Command-Line Interface, CLI) verwenden. Für DC/OS könnten Sie die DCOS-CLI verwenden.
+## <a name="using-azure-container-service"></a>Verwenden von Azure Container Service
+Mit dem Azure Container Service verfolgen wir das Ziel, mit Open Source-Tools und -Technologien, die heutzutage bei unseren Kunden beliebt sind, eine Umgebung für das Containerhosting bereitzustellen. Zu diesem Zweck machen wir die Standard-API-Endpunkte für den von Ihnen ausgewählten Orchestrator (DC/OS, Docker Swarm oder Kubernetes) verfügbar. Mithilfe dieser Endpunkte können Sie jede Software nutzen, die mit diesen Endpunkten kommunizieren kann. Im Fall des Docker Swarm-Endpunkts können Sie z. B. die Docker-Befehlszeilenschnittstelle (Command-Line Interface, CLI) verwenden. Für DC/OS könnten Sie die DCOS-CLI verwenden. Für Kubernetes können Sie „kubectl“ verwenden.
 
-## Erstellen eines Docker-Clusters mit Azure Container Service
-Stellen Sie zum Verwenden von Azure Container Service zunächst einen Azure Container Service-Cluster über das Portal bereit. (Suchen Sie nach „Azure Container Service“.) Verwenden Sie dazu entweder eine Azure Resource Manager-Vorlage ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm) oder [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)) oder die [Befehlszeilenschnittstelle](/documentation/articles/xplat-cli-install/). Die bereitgestellten Schnellstartvorlagen können auch so geändert werden, dass sie eine zusätzliche oder erweiterte Azure-Konfiguration enthalten. Weitere Informationen zum Bereitstellen eines Azure Container Service-Clusters finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
+## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Erstellen eines Docker-Clusters mit Azure Container Service
+Stellen Sie zum Verwenden von Azure Container Service zunächst einen Azure Container Service-Cluster über das Portal bereit (suchen Sie nach „Azure Container Service“). Verwenden Sie hierzu entweder eine Azure Resource Manager-Vorlage ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) oder [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) oder die [Befehlszeilenschnittstelle](/documentation/articles/xplat-cli-install/). Die bereitgestellten Schnellstartvorlagen können auch so geändert werden, dass sie eine zusätzliche oder erweiterte Azure-Konfiguration enthalten. Weitere Informationen zum Bereitstellen eines Azure Container Service-Clusters finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
 
-## Bereitstellen einer Anwendung
-Der Azure Container Service ermöglicht die Auswahl von Docker Swarm oder DC/OS zur Orchestrierung. Wie Sie Ihre Anwendung bereitstellen, hängt davon ab, welchen Orchestrator Sie wählen.
+## <a name="deploying-an-application"></a>Bereitstellen einer Anwendung
+Azure Container Service ermöglicht die Auswahl von Docker Swarm, DC/OS oder Kubernetes zur Orchestrierung. Wie Sie Ihre Anwendung bereitstellen, hängt davon ab, welchen Orchestrator Sie wählen.
 
-### Verwenden von DC/OS
-DC/OS ist ein verteiltes Betriebssystem und basiert auf dem Apache Mesos-Kernel für verteilte Systeme. Apache Mesos stammt von der Apache Software Foundation. Zu seinen Benutzern und Mitwirkenden zählen einige der [größten Namen in der IT](http://mesos.apache.org/documentation/latest/powered-by-mesos/).
+### <a name="using-dcos"></a>Verwenden von DC/OS
+DC/OS ist ein verteiltes Betriebssystem und basiert auf dem Apache Mesos-Kernel für verteilte Systeme. Apache Mesos stammt von der Apache Software Foundation. Zu seinen Benutzern und Mitwirkenden zählen einige der [größten Namen im IT-Bereich](http://mesos.apache.org/documentation/latest/powered-by-mesos/).
 
 ![Für Swarm konfigurierter Azure Container Service mit angezeigten Agents und Mastern.](media/acs-intro/dcos.png)
 
@@ -51,18 +55,18 @@ Die Features von DC/OS und Apache Mesos können sich sehen lassen:
 * Java-, Python- und C++-APIs zur Entwicklung neuer paralleler Anwendungen
 * Eine Webbenutzeroberfläche zum Anzeigen von Clusterzuständen
 
-Unter dem Azure-Containerdienst beinhaltet DC/OS standardmäßig die Marathon-Orchestrierungsplattform für die Workloadplanung. Zur DC/OS-Bereitstellung von ACS gehört jedoch das Mesosphere Universe mit Diensten, die Ihrem Dienst hinzugefügt werden können, wie z.B. Spark, Hadoop, Cassandra u.v.m.
+Unter dem Azure Container Service umfasst DC/OS standardmäßig die Marathon-Orchestrierungsplattform für die Workloadplanung. Zur DC/OS-Bereitstellung von ACS gehört jedoch das Mesosphere Universe mit Diensten, die Ihrem Dienst hinzugefügt werden können, wie z.B. Spark, Hadoop, Cassandra u.v.m.
 
-![DC/OS Universe im Azure-Containerdienst](media/dcos/universe.png)
+![DC/OS Universe in Azure Container Service](media/dcos/universe.png)
 
-#### Verwenden von Marathon
+#### <a name="using-marathon"></a>Verwenden von Marathon
 Marathon ist ein clusterweites Initialisierungs- und Steuerungssystem für Dienste in cgroups – oder, im Fall von Azure Container Service, in Containern im Docker-Format. Marathon verfügt über eine Webbenutzeroberfläche, über die Sie Ihre Anwendungen bereitstellen können. Der Zugriff erfolgt über eine URL, die in etwa wie folgt aussieht: `http://DNS_PREFIX.REGION.cloudapp.azure.com`. „DNS\_PREFIX“ und „REGION“ werden erst zum Zeitpunkt der Bereitstellung definiert. Natürlich können Sie auch Ihren eigenen DNS-Namen angeben. Weitere Informationen zum Ausführen eines Containers über die Marathon-Webbenutzeroberfläche finden Sie unter [Containerverwaltung über die Webbenutzeroberfläche](container-service-mesos-marathon-ui.md).
 
 ![Liste der Marathon-Anwendungen](media/dcos/marathon-applications-list.png)
 
 Sie können auch die REST-APIs für die Kommunikation mit Marathon verwenden. Es gibt eine Reihe von Clientbibliotheken, die für jedes Tool verfügbar sind. Sie decken zahlreiche Sprachen ab – und natürlich können Sie das HTTP-Protokoll in einer beliebigen Sprache verwenden. Darüber hinaus bieten viele beliebte DevOps-Tools Unterstützung für Marathon. Dies bietet maximale Flexibilität für Ihr Arbeitsteam, wenn es in einem Azure Container Service-Cluster arbeitet. Weitere Informationen zum Ausführen eines Containers über die Marathon-REST-API finden Sie unter [Containerverwaltung über die REST-API](container-service-mesos-marathon-rest.md).
 
-### Verwenden von Docker Swarm
+### <a name="using-docker-swarm"></a>Verwenden von Docker Swarm
 Docker Swarm bietet eine systemeigene Clusterfunktion für Docker. Da Docker die Standard-API von Docker Swarm bedient, kann jedes Tool, das bereits mit einem Docker-Daemon kommuniziert, Swarm verwenden, um transparent auf mehreren Hosts in Azure Container Service zu skalieren.
 
 ![Für die Verwendung von DC/OS konfigurierter Azure Container Service – zeigt Jumpbox, Agents und Master an.](media/acs-intro/acs-swarm2.png)
@@ -74,8 +78,23 @@ Unterstützte Tools für die Verwaltung von Containern auf einem Swarm-Cluster s
 * Krane
 * Jenkins
 
-## Videos
-Erste Schritte mit dem Azure Container Service:
+### <a name="using-kubernetes"></a>Verwenden von Kubernetes
+Kubernetes ist ein gängiges Open Source-Containerorchestrierungstool auf Produktionsebene für automatisierte Containerbereitstellungen, Skalierung und die Verwaltung von Anwendungen, die in Containern ausgeführt werden. Als Open Source-Lösung, die von der Open Source-Community unterstützt wird, kann das Tool nahtlos in Azure Container Service ausgeführt und für die Bereitstellung einer großen Anzahl von Containern in Azure Container Service verwendet werden.
+
+![Azure Container Service, konfiguriert für Kubernetes, zeigt Agents und Master an](media/acs-intro/kubernetes.png)
+
+Das Tool bietet zahlreiche Funktionen, darunter:
+* Horizontale Skalierung
+* Dienstermittlung und Lastenausgleich
+* Geheimnis- und Konfigurationsverwaltung
+* API-basierte automatisierte Rollouts und Rollbacks
+* Selbstreparatur 
+* und vieles mehr...
+
+
+
+## <a name="videos"></a>Videos
+Erste Schritte mit dem Azure Container Service:  
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Container-Service-101/player]
 > 
@@ -87,4 +106,9 @@ Erstellen von Anwendungen mithilfe von Azure Container Service (Build 2016)
 > 
 > 
 
-<!---HONumber=AcomDC_0914_2016--->
+
+
+
+<!--HONumber=Nov16_HO5-->
+
+

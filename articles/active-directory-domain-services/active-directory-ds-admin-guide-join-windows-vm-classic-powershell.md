@@ -1,22 +1,26 @@
 ---
-title: 'Azure Active Directory Domain Services: Administratorhandbuch | Microsoft Docs'
-description: Binden Sie einen virtuellen Windows-Computer mit Azure PowerShell und dem klassischen Bereitstellungsmodell in eine verwaltete Domäne ein.
+title: 'Azure Active Directory Domain Services: Administratorhandbuch | Microsoft-Dokumentation'
+description: "Binden Sie einen virtuellen Windows-Computer mit Azure PowerShell und dem klassischen Bereitstellungsmodell in eine verwaltete Domäne ein."
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 9143b843-7327-43c3-baab-6e24a18db25e
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 10/01/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
+ms.openlocfilehash: 6f952fc8ae2ab065c3e1aa5f1a5622ee894d6fd1
+
 
 ---
-# Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne mit PowerShell
+# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-powershell"></a>Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne mit PowerShell
 > [!div class="op_single_selector"]
 > * [Klassisches Azure-Portal – Windows](active-directory-ds-admin-guide-join-windows-vm.md)
 > * [PowerShell – Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
@@ -26,7 +30,7 @@ ms.author: maheshu
 <br>
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Die Azure AD-Domänendienste unterstützen das Resource Manager-Modell derzeit nicht.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Die Azure AD-Domänendienste unterstützen das Resource Manager-Modell derzeit nicht.
 > 
 > 
 
@@ -34,15 +38,15 @@ Diese Schritte zeigen, wie Sie eine Reihe von Azure PowerShell-Befehlen anpassen
 
 Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung von Azure PowerShell-Befehlssätzen. Dieser Ansatz kann hilfreich sein, wenn Sie noch nicht mit PowerShell gearbeitet haben oder wissen möchten, welche Werte Sie für die erfolgreiche Konfiguration angeben müssen. Erweiterte PowerShell-Benutzer können die Befehle verwenden und sie durch eigene Werte für die Variablen ersetzen (Zeilen, die mit "$" beginnen).
 
-Wenn Sie dies noch nicht getan haben, verwenden Sie die Anweisungen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md), um Azure PowerShell auf Ihrem lokalen Computer zu installieren. Öffnen Sie anschließend eine Windows PowerShell-Eingabeaufforderung.
+Wenn Sie dies noch nicht getan haben, verwenden Sie die Anweisungen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) , um Azure PowerShell auf Ihrem lokalen Computer zu installieren. Öffnen Sie anschließend eine Windows PowerShell-Eingabeaufforderung.
 
-## Schritt 1: Hinzufügen Ihres Kontos
-1. Geben Sie an der PowerShell-Eingabeaufforderung **Add-AzureAccount** ein, und drücken Sie die **EINGABETASTE**.
+## <a name="step-1-add-your-account"></a>Schritt 1: Hinzufügen Ihres Kontos
+1. Geben Sie an der PowerShell-Eingabeaufforderung **Add-AzureAccount** ein, und drücken Sie die EINGABETASTE****.
 2. Geben Sie die mit Ihrem Azure-Abonnement verknüpfte E-Mail-Adresse ein, und klicken Sie auf **Weiter**.
 3. Geben Sie das Kennwort für Ihr Konto ein.
 4. Klicken Sie auf **Anmelden**.
 
-## Schritt 2: Festlegen Ihres Abonnements und Speicherkontos
+## <a name="step-2-set-your-subscription-and-storage-account"></a>Schritt 2: Festlegen Ihres Abonnements und Speicherkontos
 Legen Sie Ihr Azure-Abonnement und -Speicherkonto fest, indem Sie diese Befehle in der Windows PowerShell-Eingabeaufforderung ausführen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
 
     $subscr="<subscription name>"
@@ -50,9 +54,9 @@ Legen Sie Ihr Azure-Abonnement und -Speicherkonto fest, indem Sie diese Befehle 
     Select-AzureSubscription -SubscriptionName $subscr –Current
     Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
 
-Sie erhalten den korrekten Abonnementnamen aus der Eigenschaft "SubscriptionName" der Ausgabe des Befehls **Get-AzureSubscription**. Sie erhalten den korrekten Speicherkontonamen aus der Eigenschaft "Label" der Ausgabe des Befehls **Get-AzureStorageAccount**, nachdem Sie den Befehl **Select-AzureSubscription** ausgeführt haben.
+Sie erhalten den korrekten Abonnementnamen aus der Eigenschaft "SubscriptionName" der Ausgabe des Befehls **Get-AzureSubscription** . Sie erhalten den korrekten Speicherkontonamen aus der Eigenschaft „Label“ der Ausgabe des Befehls **Get-AzureStorageAccount**, nachdem Sie den Befehl **Select-AzureSubscription** ausgeführt haben.
 
-## Schritt 3: Exemplarische Vorgehensweise – Bereitstellen des virtuellen Computers und Einbinden des Computers in die virtuelle Domäne
+## <a name="step-3-step-by-step-walkthrough---provision-the-virtual-machine-and-join-it-to-the-managed-domain"></a>Schritt 3: Exemplarische Vorgehensweise – Bereitstellen des virtuellen Computers und Einbinden des Computers in die virtuelle Domäne
 Hier finden Sie den entsprechenden Azure PowerShell-Befehlssatz zum Erstellen dieses virtuellen Computers, mit Leerzeilen zwischen jedem Block für Lesbarkeit.
 
 Geben Sie Informationen zum bereitzustellenden virtuellen Windows-Computer an.
@@ -84,7 +88,7 @@ Konfigurieren Sie den virtuellen Computer, indem Sie den Namen, die Instanzgrö�
 
     $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
-Rufen Sie Anmeldeinformationen für den lokalen Administrator des virtuellen Computers ab. Wählen Sie ein sicheres Kennwort für den lokalen Administrator. Sie können die Sicherheit des Kennworts unter [Password Checker: Using Strong Passwords](https://www.microsoft.com/security/pc-security/password-checker.aspx) (Kennwortprüfung – Verwenden sicherer Kennwörter) überprüfen.
+Rufen Sie Anmeldeinformationen für den lokalen Administrator des virtuellen Computers ab. Wählen Sie ein sicheres Kennwort für den lokalen Administrator.
 
     $localadmincred=Get-Credential –Message "Type the name and password of the local administrator account."
 
@@ -110,7 +114,7 @@ Stellen Sie jetzt den in die Domäne eingebundenen virtuellen Windows-Computer b
 
 <br>
 
-## Skript für die Bereitstellung eines virtuellen Windows-Computers und für den automatischen Beitritt zu einer durch die Azure AD-Domänendienste verwalteten Domäne
+## <a name="script-to-provision-a-windows-vm-and-automatically-join-it-to-an-aad-domain-services-managed-domain"></a>Skript für die Bereitstellung eines virtuellen Windows-Computers und für den automatischen Beitritt zu einer durch die Azure AD-Domänendienste verwalteten Domäne
 Dieser PowerShell-Befehlssatz erstellt einen virtuellen Computer für einen Branchenserver, für den Folgendes gilt:
 
 * das Windows Server 2012 R2 Datacenter-Image verwendet
@@ -149,8 +153,13 @@ Hier ist das vollständige Beispielskript zur Erstellung des virtuellen Windows-
 
 <br>
 
-## Verwandte Inhalte
-* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)
+## <a name="related-content"></a>Verwandte Inhalte
+* [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+
