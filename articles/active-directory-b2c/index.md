@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie eine umfassende Kundenidentitätsverwaltung in der Cloud bereitstellen. Die Dokumentation zeigt, wie Sie kundenorientierte Web-Apps und mobile Apps schützen."
 translationtype: Human Translation
-ms.sourcegitcommit: 3cee8c74ed77a27c8a2006dcd28729f9c077aea9
-ms.openlocfilehash: 330f2c0efed16ae587c6f069d3feae1bb80f3097
+ms.sourcegitcommit: e3ffd8f83b4ad25d28f6d0afd82efc6150d98fa2
+ms.openlocfilehash: c5f925446b5e2cc7ea8739e22e9d093428700483
 
 ---
 
 #<a name="active-directory-b2c-documentation"></a>Active Directory B2C-Dokumentation
 
-Bei Azure Active Directory B2C handelt es sich um eine umfassende Lösung zur Cloudidentitätsverwaltung für kundenorientierte Web- und Mobilanwendungen. Es ist ein hochverfügbarer globaler Dienst, der für Hunderte von Millionen von Kundenidentitäten skaliert werden kann. Azure Active Directory B2C basiert auf einer sicheren Plattform der Unternehmensklasse und schützt Ihre Anwendungen, Ihr Unternehmen und Ihre Kunden.
+Hier erfahren Sie, wie Sie mithilfe von Active Directory B2C eine umfassende Kundenidentitätsverwaltung in der Cloud einrichten und verwalten. Anhand von Tutorials, Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie kundenorientierte Web-Apps und mobile Apps mit einer sicheren Anmeldung schützen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -187,6 +188,6 @@ Herunterladen der Active Directory B2C-Dokumentation </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

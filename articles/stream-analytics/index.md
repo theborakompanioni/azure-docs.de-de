@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie IoT-Analysen in der Cloud mit vollständig verwalteter Ereignisverarbeitung durchführen. Analysieren Sie Daten von Anwendungen, Sensoren, Geräten und mehr in Echtzeit."
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: c57faa7c307420bb92bec2f661e6739a7cfca7ee
+ms.sourcegitcommit: 5fbbb4ad21bbc4c4206d051e9585cd5d9888a545
+ms.openlocfilehash: 7d19b3b972bf5fdd9545f87f48eb924da8333ff7
 
 ---
 
 # <a name="stream-analytics-documentation"></a>Stream Analytics-Dokumentation
 
-Azure Stream Analytics ist ein vollständig verwaltetes Echtzeit-Ereignisverarbeitungsmodul zur Durchführung detaillierter Datenanalysen.  Stream Analytics erleichtert die Einrichtung von analytischen Echtzeitberechnungen von Datenströmen von Geräten, Sensoren, Websites, sozialen Medien, Anwendungen, Infrastruktursystemen und mehr.
+Hier erfahren Sie, wie Sie mit Stream Analytics (einen vollständig verwalteten Ereignisverarbeitungsmodul) IoT-Analysen in der Cloud ausführen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie unter anderem Daten von Anwendungen, Sensoren und Geräten sowie aus sozialen Medien in Echtzeit analysieren. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -171,6 +172,6 @@ Herunterladen der Stream Analytics-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

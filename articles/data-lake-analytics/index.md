@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie Data Lake Analytics für Big Data-Analysen nutzen. In Tutorials wird gezeigt, wie Sie batchbasierte, echtzeitbasierte und interaktive Analysen ausführen und U-SQL-Abfragen schreiben."
 translationtype: Human Translation
-ms.sourcegitcommit: 98fdd8ee3dc1b90aae349652e471a218ef44a44e
-ms.openlocfilehash: aff52fe8a31d7ef9fe30f271a2885dca1cd9a861
+ms.sourcegitcommit: 84b03eb578df1a4122b18a01c0ffba8558adc088
+ms.openlocfilehash: f36a830ede202a7519d46fa9f12299dcec4c8130
 
 ---
 # <a name="data-lake-analytics-documentation"></a>Dokumentation zu Data Lake Analytics
 
-Azure Data Lake Analytics ist ein neuer Dienst zur Vereinfachung von Big Data-Analysen. Mit diesem Dienst können Sie sich auf das Schreiben, Ausführen und Verwalten von Aufträgen konzentrieren, statt zusätzlich den Betrieb der verteilten Infrastruktur übernehmen zu müssen. Anstatt sich der Bereitstellung, Konfiguration und Optimierung von Hardware zu widmen, schreiben Sie Abfragen, mit denen Sie Ihre Daten transformieren und nützliche Einblicke erhalten. Unser Analysedienst ist in der Lage, umgehend Aufträge jeglicher Größenordnung zu verarbeiten. Wählen Sie dazu ganz einfach die jeweils erforderliche Ressourcenkapazität aus. Da Sie nur für die Leistung bezahlen, die während der Ausführung Ihres Auftrags tatsächlich in Anspruch genommen wurde, ist Data Lake eine überaus kosteneffektive Lösung. Durch die Unterstützung von Azure Active Directory kann Data Lake zur Verwaltung von Zugriffsberechtigungen und Rollen in Ihr lokales Identitätssystem integriert werden. Darüber hinaus umfasst dieser Dienst U-SQL, eine Sprache, bei der die Vorteile von SQL mit den Ausdrücken von Benutzercode kombiniert werden. Die skalierbare verteilte Laufzeit von U-SQL ermöglicht eine effiziente Analyse von Daten im Speicher sowie auf SQL Server-Instanzen in Azure, Azure SQL-Datenbank und Azure SQL Data Warehouse.
+Hier erfahren Sie, wie Sie mithilfe von Data Lake Analytics Big Data-Analyseaufträge ausführen, die sich auf besonders umfangreiche Datasets skalieren lassen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie batchbasierte, echtzeitbasierte und interaktive Analyseaufträge erstellen und verwalten und wie Sie Abfragen mithilfe der U-SQL-Sprache durchführen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Azure Data Lake Analytics ist ein neuer Dienst zur Vereinfachung von Big Data-An
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=data-lake-analytics">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=data-lake-analytics">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -175,68 +176,47 @@ Azure Data Lake Analytics ist ein neuer Dienst zur Vereinfachung von Big Data-An
 </ul>
 
 ---
-
-## <a name="reference"></a>Referenz
-
+ 
+<h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/resourcemanager/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>PowerShell-Cmdlets des Resource Managers für Data Lake Analytics</p>
+                        <h3>Befehlszeile</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/java/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Java</h3>
-                        <p>Data Lake Analytics – Java-API-Referenz</p>
+                        <h3>Sprachen</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.datalake.analytics">.NET</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-analytics">Node.js</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html">Python</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt591959">U-SQL</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="/dotnet/api">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Verwaltete Referenz zu Data Lake Analytics</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="/rest/api/datalakeanalytics/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Data Lake Analytics – REST-API-Referenz</p>
+                        <p><a href="/rest/api/datalakeanalytics/">REST-API</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
@@ -252,6 +232,6 @@ Herunterladen der Dokumentation zu Data Lake Analytics </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

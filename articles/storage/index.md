@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie Azure Storage (Blob-/Tabellen-/Warteschlangen-/Dateispeicher sowie Speicher für die Datenträger virtueller Computer) in der Cloud verwenden. Tutorials, API-Referenzen und anderes Dokumentationsmaterial."
 translationtype: Human Translation
-ms.sourcegitcommit: a6c333ae45868d5c29ce2f2587f1417fa9fafc0b
-ms.openlocfilehash: 27fd664b69ca4467daa2b0abc6e53c9cece221ae
+ms.sourcegitcommit: 3cd1ef210c363fc280cefca3c0697eb66da85a1d
+ms.openlocfilehash: 426166d22b721d45853f3f578d39e14966c57c50
 
 ---
 
 # <a name="storage-documentation"></a>Speicher-Dokumentation
 
-Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen.  Die Lösung ist überaus skalierbar, elastisch, bietet einen globalen Zugriff und sorgt basierend auf dem Datenverkehr automatisch für einen Lastenausgleich.  Azure Storage umfasst fünf Dienste zum Erfüllen von Anwendungsanforderungen: Blobspeicher, Tabellenspeicher, Warteschlangenspeicher, Datenträgerspeicher und Dateispeicher.
+Hier erfahren Sie, wie Sie Azure Storage (einen beständigen, verfügbaren und skalierbaren Cloudspeicherdienst) verwenden. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Blob-/Tabellen-/Warteschlangen-/Dateispeicher sowie Speicher für die Datenträger virtueller Computer einrichten und verwalten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,6 +149,6 @@ Herunterladen der Storage-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 
