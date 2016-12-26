@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 12/09/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: f15333cde5304579ff0d0ba9571a870ddde19163
+ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
+ms.openlocfilehash: e377f176fe24a8e7e42d409f86d6b0093ce5e7c4
 
 ---
 
@@ -26,11 +26,15 @@ ms.openlocfilehash: f15333cde5304579ff0d0ba9571a870ddde19163
 > * [PowerShell](dns-getstarted-create-recordset.md)
 > * [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
 
-Dieser Artikel beschreibt das Erstellen von Einträgen und Eintragssätzen mithilfe der CLI. Nach dem Erstellen der DNS-Zone müssen Sie die DNS-Einträge für Ihre Domäne hinzufügen. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
+Dieser Artikel beschreibt das Erstellen von Einträgen und Eintragssätzen mithilfe der CLI. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## <a name="create-a-record-set-and-record"></a>Erstellen eines Eintragssatzes und eines Eintrags
+In diesem Abschnitt erfahren Sie, wie Sie DNS-Einträge in Azure DNS erstellen. Bei den Beispielen wird vorausgesetzt, dass Sie bereits [die Azure-Befehlszeilenschnittstelle installiert haben, angemeldet sind und eine DNS-Zone erstellt haben](dns-getstarted-create-dnszone-cli.md).
+
+In allen Beispielen auf dieser Seite werden DNS-Einträge vom Typ „A“ verwendet. Andere Eintragstypen und weitere Details zum Verwalten von DNS-Einträgen und Eintragstypen finden Sie unter [Verwalten von DNS-Ressourceneinträgen und DNS-Ressourceneintragssätzen über die Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md).
+
+## <a name="create-a-record-set-and-record"></a>Erstellen eines Ressourceneintragssatzes und eines Ressourceneintrags
 
 Dieser Abschnitt zeigt, wie Sie einen Eintragssatz und Einträge erstellen. In diesem Beispiel erstellen Sie einen Eintragssatz mit dem relativen Namen „www“ in der DNS-Zone „contoso.com“. Der vollqualifizierte Name der Einträge ist „www.contoso.com“. Der Eintragstyp ist „A“, und die Gültigkeitsdauer beträgt 60 Sekunden. Wenn Sie diesen Schritt ausgeführt haben, haben Sie eine leere Datensatzgruppe erstellt.
 
@@ -38,43 +42,58 @@ Zum Erstellen eines Eintragssatzes auf oberster Ebene der Zone (in diesem Fall �
 
 ### <a name="1-create-a-record-set"></a>1. Erstellen einer Datensatzgruppe
 
-Verwenden Sie `azure network dns record-set create` zum Erstellen eines Eintragssatzes. Geben Sie die Ressourcengruppe, den Zonennamen, den relativen Namen des Eintragssatzes, den Eintragstyp und die Gültigkeitsdauer an. Wenn der Parameter `--ttl` nicht definiert ist, liegt der Standardwert bei vier (in Sekunden). Wenn Sie diesen Schritt ausgeführt haben, verfügen Sie über eine leere „www“-Datensatzgruppe.
+Wenn Ihr neuer Eintrag den gleichen Namen und Typ besitzt wie ein bereits vorhandener Eintrag, müssen Sie ihn dem vorhandenen Ressourceneintragssatz hinzufügen. Sie können diesen Schritt überspringen und weiter unten mit [Hinzufügen von Datensätzen](#add-records) fortfahren. Besitzt Ihr neuer Eintrag einen anderen Namen und Typ als alle bereits vorhandenen Datensätze, müssen Sie einen neuen Ressourceneintragssatz erstellen.
 
-*Syntax: network dns record-set create \<Ressourcengruppe\> \<Name der DNS-Zone\> \<Name\> \<Typ\> \<TTL\>*
+Ressourceneintragssätze werden mithilfe des Befehls `azure network dns record-set create` erstellt. Entsprechende Hilfeinformationen finden Sie unter `azure network dns record-set create -h`.  
+
+Beim Erstellen eines Ressourceneintragssatzes müssen Sie den Namen des Ressourceneintragssatzes, die Zone, die Gültigkeitsdauer (TTL) und den Ressourceneintragstyp angeben. 
 
 ```azurecli
-azure network dns record-set create myresourcegroup  contoso.com  www A  60
+azure network dns record-set create myresourcegroup contoso.com www A 60
 ```
+
+Wenn Sie diesen Schritt ausgeführt haben, verfügen Sie über eine leere „www“-Datensatzgruppe. Damit Sie den neu erstellten Ressourceneintragssatz „www“ verwenden können, müssen Sie zuerst Einträge hinzufügen.
 
 ### <a name="2-add-records"></a>2. Hinzufügen von Datensätzen
 
-Damit Sie den neu erstellten Eintragssatz „www“ verwenden können, müssen Sie Einträge hinzufügen. Einträge werden Eintragssätzen mithilfe von `azure network dns record-set add-record`hinzugefügt.
+Einträge werden Eintragssätzen mithilfe von `azure network dns record-set add-record`hinzugefügt. Entsprechende Hilfeinformationen finden Sie unter `azure network dns record-set add-record -h`.
 
-Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Eintragssatz vom Typ „A“ verwenden, können Sie nur Einträge mit dem Parameter `-a <IPv4 address>`angeben.
+Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Ressourceneintragssatz des Typs „A“ verwenden, können Sie nur Einträge mit dem Parameter `-a <IPv4 address>` angeben. Informationen zu den Parametern für andere Eintragstypen erhalten Sie mithilfe von `azure network dns record-set add-record -h`.
 
-Mit dem folgenden Befehl können Sie dem Eintragssatz „www“ IPv4-Einträge vom Typ *A* hinzufügen:
-
-*Syntax: network dns record-set add-record \<Ressourcengruppe\> \<Name der DNS-Zone\> \<Name des Eintragssatzes\> \<Typ>\>*
+Mit dem folgenden Befehl können Sie dem weiter oben erstellten Ressourceneintragssatz „www“ einen A-Eintrag hinzufügen:
 
 ```azurecli
-azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
+azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 1.2.3.4
 ```
 
-## <a name="additional-record-type-examples"></a>Zusätzliche Beispiele für Datensatztypen
+### <a name="verify-name-resolution"></a>Überprüfen der Namensauflösung
 
-Die folgenden Beispiele zeigen, wie Sie einen Eintragssatz jedes Eintragstyps erstellen. Jeder Eintragssatz enthält einen einzelnen Eintrag.
+Mithilfe von DNS-Tools wie nslookup oder dig oder mit dem [PowerShell-Cmdlet Resolve-DnsName](https://technet.microsoft.com/library/jj590781.aspx) können Sie testen, ob Ihre DNS-Einträge auf den Azure DNS-Namenservern vorhanden sind.
 
-[!INCLUDE [dns-add-record-cli-include](../../includes/dns-add-record-cli-include.md)]
+Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie [die DNS-Abfrage direkt an einen der Namenserver für Ihre Zone richten](dns-getstarted-create-dnszone.md#test-name-servers). Fügen Sie im folgenden Befehl die passenden Werte für Ihre Eintragszone ein.
+
+    nslookup
+    > set type=A
+    > server ns1-01.azure-dns.com
+    > www.contoso.com
+
+    Server:  ns1-01.azure-dns.com
+    Address:  40.90.4.1
+
+    Name:    www.contoso.com
+    Address:  1.2.3.4
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Verwaltung Ihrer Eintragssätze und Einträge finden Sie unter [Verwalten von DNS-Ressourceneinträgen und DNS-Ressourceneintragssätzen über die Befehlszeilenschnittstelle](dns-operations-recordsets-portal.md).
+Informieren Sie sich, wie Sie [Ihren Domänennamen an die Azure DNS-Namenserver delegieren](dns-domain-delegation.md).
 
-Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
+Erfahren Sie, wie Sie [DNS-Zonen über die Azure-Befehlszeilenschnittstelle verwalten](dns-operations-dnszones-cli.md).
+
+Informieren Sie sich, wie Sie [DNS-Einträge und Ressourceneintragssätze über die Azure-Befehlszeilenschnittstelle verwalten](dns-operations-recordsets-cli.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

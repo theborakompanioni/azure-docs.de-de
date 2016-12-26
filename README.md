@@ -19,7 +19,7 @@ Vielen Dank für Ihr Interesse an der Azure-Dokumentation.
 ## <a name="ways-to-contribute"></a>Möglichkeiten zur Mitwirkung
 Sie können wie folgt Updates für die [Azure-Dokumentation](http://docs.microsoft.com/azure) senden:
 
-* Tragen Sie zu technischen Artikeln über die GitHub-Benutzeroberfläche bei. Das ist einfach. Entweder finden Sie den Artikel in diesem Repository, oder Sie besuchen die Seite mit dem Artikel unter [http://docs.microsoft.com/azur](http://docs.microsoft.com/azur) und klicken dort auf den Link, der zum GitHub-Quelltext des Artikels führt.
+* Tragen Sie zu technischen Artikeln über die GitHub-Benutzeroberfläche bei. Das ist einfach. Entweder finden Sie den Artikel in diesem Repository, oder Sie besuchen die Seite mit dem Artikel unter [http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) und klicken dort auf den Link, der zum GitHub-Quelltext des Artikels führt.
 * Wenn Sie wesentliche Änderungen an einem vorhandenen Artikel vornehmen, Bilder hinzufügen oder austauschen oder einen neuen Artikel verfassen möchten, müssen Sie einen Fork (d.h. eine Abspaltung) dieses Repositorys erstellen, Git Bash und Markdown Pad installieren und einige Git-Befehle erlernen.
 
 ## <a name="code-of-conduct"></a>Verhaltenskodex
@@ -87,6 +87,6 @@ Alle Anleitungsthemen finden Sie im [Index zum Leitfaden für Mitwirkende](contr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

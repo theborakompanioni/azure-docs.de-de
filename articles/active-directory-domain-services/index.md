@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie mithilfe von Active Directory Domain Services virtuelle Azure-Computer ohne Verwendung von Domänencontrollern einer Domäne hinzufügen und mithilfe von Gruppenrichtlinien verwalten."
 translationtype: Human Translation
-ms.sourcegitcommit: 55dedcab5b8e62b3666cffcfc7d9a0a31c624784
-ms.openlocfilehash: d3a6b967921edad13479c615ebec8edc9e568458
+ms.sourcegitcommit: 5c25e7f81a4f2219c244044ea70416d1e0c63b4e
+ms.openlocfilehash: b05e7bfbc89de74937daa7daf578aa8a9bb39d64
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Dokumentation zu Active Directory Domain Services
 
-Azure AD Domain Services (DS) stellen verwaltete Domänendienste bereit, z.B. Domänenbeitritt, Gruppenrichtlinie, LDAP, Kerberos-/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind.  Mit diesem Dienst können Benutzer eine Vielzahl von Computinglösungen auf flexible Weise bereitstellen.
+Hier erfahren Sie, wie Sie mithilfe von Active Directory Domain Services virtuelle Azure-Computer ohne Verwendung von Domänencontrollern einer Domäne hinzufügen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie virtuelle Computer mithilfe von Gruppenrichtlinien verwalten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -168,6 +169,6 @@ Herunterladen der Dokumentation zu Active Directory Domain Services </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: f33928b445ab93c48e9967cd6a2f64c6686e1a58
+ms.sourcegitcommit: 4e86c1c1460f7b6eb312f10a0666f92b33697763
+ms.openlocfilehash: f6356a5a647940796c337e345a8b901dae9eb9b4
 
 
 ---
@@ -31,13 +31,18 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 * Anzeigen des live in der Produktion ausgeführten Codes
 * Aktualisieren Ihrer Web-App wie beim [Ausführen von Git-Commits mittels Push](https://git-scm.com/docs/git-push)
 
-> [!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
-> 
-> 
+[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
+
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
+
+Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
+
+- [Azure CLI 1.0:](app-service-web-get-started-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0 (Vorschau):](app-service-web-get-started.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Git](http://www.git-scm.com/downloads).
-* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+* [Azure CLI 2.0 Preview](/cli/azure/install-az-cli2).
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
@@ -50,25 +55,40 @@ Wir stellen jetzt eine Web-App unter Azure App Service bereit.
 
 1. Öffnen Sie eine neue Windows-Eingabeaufforderung, ein PowerShell-Fenster, eine Linux-Shell oder ein OS X-Terminal. Vergewissern Sie sich durch Ausführen von `git --version` und `azure --version`, dass Git und die Azure-Befehlszeilenschnittstelle auf Ihrem Computer installiert sind.
    
-    ![Testen der Installation der CLI-Tools für Ihre erste Web-App in Azure](./media/app-service-web-get-started/1-test-tools.png)
+    ![Testen der Installation der CLI-Tools für Ihre erste Web-App in Azure](./media/app-service-web-get-started/1-test-tools-2.0.png)
    
     Entsprechende Downloadlinks finden Sie bei Bedarf unter [Voraussetzungen](#Prerequisites) .
+
 2. Melden Sie sich wie folgt bei Azure an:
    
-        azure login
+        az login
    
     Folgen Sie der Hilfemeldung, um den Anmeldeprozess fortzusetzen.
    
-    ![Anmelden bei Azure zur Erstellung Ihrer ersten Web-App](./media/app-service-web-get-started/3-azure-login.png)
-3. Wechseln Sie Azure-CLI in den ASM-Modus, und legen Sie dann den Bereitstellungsbenutzer für App Service fest. Sie werden später unter Verwendung der Anmeldeinformationen Code bereitstellen.
+    ![Anmelden bei Azure zur Erstellung Ihrer ersten Web-App](./media/app-service-web-get-started/3-azure-login-2.0.png)
+
+3. Legen Sie den Bereitstellungsbenutzer für App Service fest. Später stellen Sie Code mit diesen Anmeldeinformationen bereit.
    
-        azure config mode asm
-        azure site deployment user set --username <username> --pass <password>
-4. Wechseln Sie in ein Arbeitsverzeichnis (`CD`), und klonen Sie die Beispiel-App wie folgt:
+        az appservice web deployment user set --user-name <username> --password <password>
+
+3. Erstellen Sie eine neue [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). In diesem ersten App Service-Tutorial müssen Sie nicht unbedingt wissen, worum es sich dabei genau handelt.
+
+        az group create --location "<location>" --name my-first-app-group
+
+    Welche Werte Sie für `<location>` verwenden können, erfahren Sie mithilfe des CLI-Befehls `az appservice list-locations`.
+
+3. Erstellen Sie einen neuen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) vom Typ „FREE“. In diesem ersten App Service-Tutorial reicht es, wenn Sie wissen, dass Ihnen für Web-Apps im Rahmen dieses Plans keine Kosten entstehen.
+
+        az appservice plan create --name my-free-appservice-plan --resource-group my-first-app-group --sku FREE
+
+4. Erstellen Sie in `<app_name>` eine neue Web-App mit einem eindeutigen Namen.
+
+        az appservice web create --name <app_name> --resource-group my-first-app-group --plan my-free-appservice-plan
+
+4. Besorgen Sie sich als Nächstes den Beispielcode, den Sie bereitstellen möchten. Wechseln Sie in ein Arbeitsverzeichnis (`CD`), und klonen Sie die Beispiel-App wie folgt:
    
+        cd <working_directory>
         git clone <github_sample_url>
-   
-    ![Klonen des App-Beispielcodes für Ihre erste Web-App in Azure](./media/app-service-web-get-started/2-clone-sample.png)
    
     Verwenden Sie für *&lt;github_sample_url>* je nach gewünschtem Framework eine der folgenden URLs:
    
@@ -78,18 +98,28 @@ Wir stellen jetzt eine Web-App unter Azure App Service bereit.
    * Node.js (Express): [https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git](https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git)
    * Java: [https://github.com/Azure-Samples/app-service-web-java-get-started.git](https://github.com/Azure-Samples/app-service-web-java-get-started.git)
    * Python (Django): [https://github.com/Azure-Samples/app-service-web-python-get-started.git](https://github.com/Azure-Samples/app-service-web-python-get-started.git)
+
+    ![Klonen des App-Beispielcodes für Ihre erste Web-App in Azure](./media/app-service-web-get-started/2-clone-sample.png)
+   
 5. Wechseln Sie in das Repository Ihrer Beispiel-App. Beispiel:
    
         cd app-service-web-html-get-started
-6. Erstellen Sie die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen und dem zuvor konfigurierten Bereitstellungsbenutzer. Geben Sie die Zahl der gewünschten Region ein, wenn Sie dazu aufgefordert werden.
+
+5. Konfigurieren Sie mit dem folgenden Befehl die lokale Git-Bereitstellung für Ihre App Service-Web-App:
+
+        az appservice web source-control config-local-git --name <app_name> --resource-group my-first-app-group
+
+    Sie erhalten eine JSON-Ausgabe wie die folgende, was bedeutet, dass das Git-Remoterepository konfiguriert ist:
+
+        {
+        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
+        }
+
+6. Fügen Sie die URL im JSON-Code als Git-Remotespeicherort für Ihr lokales Repository (der Einfachheit halber `azure` genannt) hinzu.
+
+        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
    
-        azure site create <app_name> --git --gitusername <username>
-   
-    ![Erstellen der Azure-Ressource für Ihre erste Web-App in Azure](./media/app-service-web-get-started/4-create-site.png)
-   
-    Ihre App wird jetzt in Azure erstellt. Ihr aktuelles Verzeichnis wird außerdem für Git initialisiert und mit der neuen App Service-App als Git-Remoteelement verbunden.
-    Sie können zwar auch zur URL der App (http://&lt;app_name>.azurewebsites.net) navigieren, um die HTML-Standardseite anzuzeigen, wir möchten hier aber eigentlich Ihren eigenen Code verwenden.
-7. Gehen Sie wie bei anderen Pushübertragungen von Code mit Git vor, um Ihren Beispielcode für die Azure-App bereitzustellen. Wenn Sie aufgefordert werden, verwenden Sie das Kennwort, das Sie zuvor konfiguriert haben.
+7. Stellen Sie Ihren Beispielcode für den Git-Remotespeicherort `azure` bereit. Geben Sie die zuvor konfigurierten Anmeldeinformationen für die Bereitstellung an, wenn Sie dazu aufgefordert werden.
    
         git push azure master
    
@@ -100,11 +130,13 @@ Wir stellen jetzt eine Web-App unter Azure App Service bereit.
 Herzlichen Glückwunsch! Sie haben Ihre App in Azure App Service bereitgestellt.
 
 ## <a name="see-your-app-running-live"></a>Verfolgen der Liveausführung der App
-Führen Sie den folgenden Befehl aus einem beliebigen Verzeichnis in Ihrem Repository aus, um die Liveausführung der App in Azure zu verfolgen:
 
-    azure site browse
+Führen Sie diesen Befehl aus, um die Liveausführung der App in Azure zu verfolgen:
+
+    az appservice web browse --name <app_name> --resource-group my-first-app-group
 
 ## <a name="make-updates-to-your-app"></a>Durchführen von Updates für die App
+
 Sie können jetzt Git verwenden, um aus Ihrem Projektstamm (Repositorystamm) jederzeit einen Pushvorgang durchzuführen und so ein Update für die Live-Website vorzunehmen. Dazu gehen Sie wie bei der erstmaligen Bereitstellung Ihres Codes vor. Wenn Sie beispielsweise eine neue Änderung übertragen möchten, die Sie lokal getestet haben, führen Sie einfach die folgenden Befehle in Ihrem Projektstamm (Repositorystamm) aus:
 
     git add .
@@ -112,6 +144,7 @@ Sie können jetzt Git verwenden, um aus Ihrem Projektstamm (Repositorystamm) jed
     git push azure master
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Lesen Sie den Artikel zu den bevorzugten Schritten für die Entwicklung und Bereitstellung für Ihr Sprachen-Framework:
 
 > [!div class="op_single_selector"]
@@ -131,6 +164,6 @@ Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,19 +1,23 @@
 ---
 title: Verwenden von Service Bus-Themen mit Python | Microsoft Docs
-description: Erfahren Sie mehr über die Verwendung von Azure Service Bus-Themen und -Abonnements über Python.
-services: service-bus
+description: "Erfahren Sie mehr über die Verwendung von Azure Service Bus-Themen und -Abonnements über Python."
+services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
+ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 86fa1e1cc5db31bdbec216e1c1f20c2b07cf68d9
+
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Verwenden von Service Bus-Themen und -Abonnements
@@ -23,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
-**Hinweis:** Informationen zur Installation von Python bzw. des [Python Azure-Pakets][] finden Sie unter [Installieren von Python und SDK](../python-how-to-install.md).
+**Hinweis:** Informationen zur Installation von Python bzw. des [Python Azure-Pakets][Python Azure-Paket] finden Sie in den [Installationsanweisungen für Python](../python-how-to-install.md).
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
 Das **ServiceBusService**-Objekt ermöglicht es Ihnen, mit Themen zu arbeiten. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Service Bus zugreifen möchten, den folgenden Code hinzu:
@@ -65,7 +69,7 @@ Abonnements von Themen werden ebenfalls mit dem **ServiceBusService**-Objekt ers
 > 
 > 
 
-### <a name="create-a-subscription-with-the-default-(matchall)-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
 **MatchAll** ist der Standardfilter, der verwendet wird, wenn beim Erstellen eines neuen Abonnements kein Filter angegeben wird. Wenn der Filter **MatchAll** verwendet wird, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements gestellt. Mit dem folgenden Beispiel wird ein Abonnement namens „AllMessages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
 
 ```
@@ -75,7 +79,7 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 ### <a name="create-subscriptions-with-filters"></a>Erstellen von Abonnements mit Filtern
 Sie können auch Filter definieren, durch die Sie angeben können, welche an ein Thema gesendeten Nachrichten in einem bestimmten Themenabonnement angezeigt werden sollen.
 
-Der flexibelste, von Abonnements unterstützte Filtertyp ist **SqlFilter**, der eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
+Der flexibelste, von Abonnements unterstützte Filtertyp ist **SqlFilter**, der eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax zu [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
 Sie können einem Abonnement mithilfe der Methode **create\_rule** des **ServiceBusService**-Objekts Filter hinzufügen. Durch diese Methode können Sie neue Filter zu einem vorhandenen Abonnement hinzufügen.
 
@@ -123,7 +127,7 @@ for i in range(5):
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus-Kontingente].
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus-Kontingente].
 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 Nachrichten werden von einem Abonnement über die Methode **receive\_subscription\_message** auf dem **ServiceBusService**-Objekt empfangen:
@@ -154,7 +158,7 @@ Zudem wird einer im Abonnement gesperrten Anwendung ein Zeitlimit zugeordnet. We
 Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der Methode **delete** abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als **At Least Once Processing** (Mindestens einmal verarbeiten) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
-Themen und Abonnements sind persistent und müssen über das [Azure-Portal][Azure-Portal] oder programmgesteuert explizit gelöscht werden. Im folgenden Beispiel wird das Thema `mytopic` gelöscht:
+Themen und Abonnements sind persistent und müssen über das [Azure-Portal][Azure-Portal]oder programmgesteuert explizit gelöscht werden. Im folgenden Beispiel wird das Thema `mytopic` gelöscht:
 
 ```
 bus_service.delete_topic('mytopic')
@@ -169,7 +173,7 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
-* Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements][].
+* Siehe [Warteschlangen, Themen und Abonnements][Warteschlangen, Themen und Abonnements].
 * Referenz für [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
 [Azure-Portal]: https://portal.azure.com
@@ -180,6 +184,6 @@ Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden S
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

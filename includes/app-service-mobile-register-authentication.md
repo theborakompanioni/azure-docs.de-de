@@ -1,8 +1,8 @@
 
-Zuerst müssen Sie Ihre App auf der Website eines Identitätsanbieters registrieren. Anschließend legen Sie die vom Anbieter erstellten Anmeldeinformationen im Back-End der mobilen App fest.
+Zuerst müssen Sie Ihre App auf der Website eines Identitätsanbieters registrieren und anschließend die vom Anbieter generierten Anmeldeinformationen im Mobile Apps-Back-End festlegen.
 
-1. Konfigurieren Sie Ihren bevorzugten Identitätsanbieter anhand der anbieterspezifischen Anweisungen: 
-   
+1. Konfigurieren Sie Ihren bevorzugten Identitätsanbieter anhand der anbieterspezifischen Anweisungen:
+
    * [Azure Active Directory](../articles/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)
    * [Facebook](../articles/app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md)
    * [Google](../articles/app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md)
@@ -11,9 +11,9 @@ Zuerst müssen Sie Ihre App auf der Website eines Identitätsanbieters registrie
 2. Wiederholen Sie die oben stehenden Schritte für jeden Anbieter, den Sie in Ihrer App unterstützen möchten.
 
 <!-- URLs. -->
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

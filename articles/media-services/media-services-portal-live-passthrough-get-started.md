@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ec6bb243872b3d4794050f735122f587a299e978
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 7f22e8fb10f61cc0bb2e7d0a83449bf2e46a12d3
 
 
 ---
-# <a name="how-to-perform-live-streaming-with-onpremise-encoders-using-the-azure-portal"></a>Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal
+# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -80,7 +80,7 @@ Klicken Sie auf das Symbol „Benachrichtigung“, wenn Sie Benachrichtigungen u
 ![Benachrichtigungen](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
 ## <a name="configure-streaming-endpoints"></a>Konfigurieren von Streamingendpunkten
-Media Services umfasst die dynamische Paketerstellung, bei der Sie MP4-Dateien mit Mehrfachbitrate in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS, Smooth Streaming oder HDS. Hierbei ist es nicht erforderlich, diese Streamingformate erneut zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
+Media Services bietet eine dynamische Paketerstellung, bei der Sie MP4-Dateien mit variablen Bitraten in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS und Smooth Streaming. Hierbei ist es nicht erforderlich, diese Streamingformate neu zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
 
 Um die dynamische Paketerstellung nutzen zu können, ist mindestens eine Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die Inhalte geliefert werden sollen.  
 
@@ -101,7 +101,7 @@ Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern
    > 
    > 
 
-## <a name="create-and-start-passthrough-channels-and-events"></a>Erstellen und Starten von Pass-Through-Kanälen und -Ereignissen
+## <a name="create-and-start-pass-through-channels-and-events"></a>Erstellen und Starten von Pass-Through-Kanälen und -Ereignissen
 Einem Kanal sind Ereignisse/Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livedatenstrom steuern können. Kanäle verwalten Ereignisse. 
 
 Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden. Von der Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Ereignisse können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Durch den Wert dieser Eigenschaft wird außerdem festgelegt, wie lange Clientmanifeste wachsen können.
@@ -180,6 +180,6 @@ Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf *
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

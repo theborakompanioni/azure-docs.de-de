@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0b200aff6a38a76abd1abaa742006f3d75e7121e
-ms.openlocfilehash: 0cbde2e33517e46e49824d9f66f75e4e2f384d97
+ms.sourcegitcommit: ad6fb631f05b1e88e8cbaaca83f9863cfb643269
+ms.openlocfilehash: 25725a28686dc3bb33bb400f4882d539cba2b691
 
 
 ---
@@ -135,7 +135,7 @@ In den folgenden Tutorials erfahren Sie mehr über die [SQL-Datenbankentwicklung
 | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby](sql-database-develop-ruby-simple.md) |In diesem Tutorial erfahren Sie, wie Sie mithilfe von Ruby eine Verbindung mit einer Azure SQL-Datenbank herstellen. |
 |  | |
 
-## <a name="database-access"></a>Datenbankzugriff
+## <a name="database-authentication-and-authorization"></a>Datenbankauthentifizierung und Autorisierung
 In den folgenden Tutorials erfahren Sie mehr über das [Erstellen und Verwalten von Anmeldungen und Benutzern](sql-database-manage-logins.md).
 
 | Lernprogramm: | Beschreibung |
@@ -152,7 +152,7 @@ In den folgenden Tutorials erfahren Sie mehr über das [Erstellen und Verwalten 
 | [Herstellen einer Verbindung mit Azure SQL-Datenbank als Benutzer](sql-database-get-started-security.md#connect-to-azure-sql-database-as-a-user) |In diesem Tutorial erfahren Sie, wie Sie mithilfe eines Benutzerkontos auf Datenbankebene eine Verbindung mit einer Azure SQL-Datenbank herstellen. |
 |  | |
 
-## <a name="data-security"></a>Datensicherheit
+## <a name="secure-and-protect-data"></a>Sichern und Schützen von Daten
 In den folgenden Tutorials erfahren Sie mehr zur [Sicherung von Azure SQL-Datenbank-Daten](sql-database-security.md).
 
 | Lernprogramm: | Beschreibung |
@@ -164,7 +164,7 @@ In den folgenden Tutorials erfahren Sie mehr zur [Sicherung von Azure SQL-Datenb
 | [Einrichten der dynamischen Datenmaskierung](sql-database-dynamic-data-masking-get-started.md#set-up-dynamic-data-masking-for-your-database-using-the-azure-portal) |In diesem Tutorial erfahren Sie, wie Sie die dynamische Datenmaskierung für Ihre Azure SQL-Datenbank einrichten. |
 |  | |
 
-## <a name="business-continuity-and-query-scale-out"></a>Geschäftskontinuität und horizontales Skalieren von Abfragen
+## <a name="business-continuity"></a>Geschäftskontinuität
 In den folgenden Tutorials erfahren Sie mehr über die Verwendung der [Geowiederherstellung und der aktiven Georeplikation](sql-database-business-continuity.md) zum Wiederherstellen nach Fehlern, für die Geschäftskontinuität und für das horizontale Skalieren von Abfragen.
 
 | Lernprogramm: | Beschreibung |
@@ -194,6 +194,6 @@ In diesem Tutorial erfahren Sie mehr über die [Datensynchronisierung](http://do
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: Hier erfahren Sie, wie Sie Power BI-Datenvisualisierungen und interaktive Berichte in Apps einbetten. Tutorials, API-Referenzen und anderes Dokumentationsmaterial.
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: b15e8e9676cba8969505728e6b9f7f2db4559e9a
+ms.sourcegitcommit: 531e3606330a55563ae77d18d5fd270d799d6d30
+ms.openlocfilehash: 08270fca90bb74f166c94e0f4acc406bca936eb8
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Dokumentation zu Power BI Embedded
 
-Power BI Embedded ist ein Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können. Power BI Embedded kann mit vorhandenen Anwendungen verwendet werden, ohne dass der Entwurf oder der Anmeldevorgang der Benutzer geändert werden müssen.
+Hier erfahren Sie, wie Sie Anwendungen mithilfe von Power BI Embedded Datenvisualisierungen und interaktive Berichte hinzufügen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Power BI-Berichte und -Dashboards nahtlos in Apps einbetten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -137,6 +138,7 @@ Herunterladen der Dokumentation zu Power BI Embedded </div>
 </div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 

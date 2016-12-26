@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie Verzeichnisse synchronisieren und einmaliges Anmelden aktivieren. Die Dokumentation zeigt, wie Sie umfassende Identitätsverwaltungsfunktionen integrieren."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 72d219c4150ddbfd59231f9131bf3502897f0ab4
+ms.sourcegitcommit: 5a478ce5c06cd875ec4ed5ff2bed4d0cd98fac53
+ms.openlocfilehash: 500c764b124ac811432212bab50f83dc6f6b86ee
 
 ---
 
 # <a name="azure-active-directory-documentation"></a>Dokumentation zu Azure Active Directory
 
-Azure Active Directory Premium ist eine cloudbasierte Identitäts- und Zugriffsverwaltungslösung und ermöglicht einmaliges Anmelden bei Tausenden von Cloud-Apps (SaaS) und den Zugriff auf lokal ausgeführte Web-Apps. Azure Active Directory ermöglicht Enterprise Mobility und Zusammenarbeit und bietet erweiterte Identity Protection mittels mehrstufiger Authentifizierung (Multi-Factor Authentication, MFA) sowie Sicherheitsberichte, Überwachungen, Warnungen und adaptive bedingte Zugriffsrichtlinien auf der Grundlage von Geräteintegrität, Benutzerstandort und Risikostufe.
+Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory (Azure AD) Verzeichnisse synchronisieren und einmaliges Anmelden aktivieren. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Identitätsverwaltungsfunktionen integrieren. Hierzu zählen unter anderem mehrstufige Authentifizierung, Geräteregistrierung, rollenbasierte Zugriffssteuerung sowie Sicherheitsüberwachung und -warnungen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -138,6 +139,6 @@ Herunterladen der Dokumentation zu Active Directory </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

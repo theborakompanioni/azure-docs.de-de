@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: f5e9d1a7f26ed3cac5767034661739169968a44e
-ms.openlocfilehash: ba0c710a0c28e9d52021ec966905a007b06f125e
+ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
+ms.openlocfilehash: 3727972c544bb8c2724e9f38953882a7f2251a60
 
 
 ---
@@ -46,9 +46,9 @@ Für eine vollständige Bereitstellung empfiehlt es sich dringend, alle Schritte
 | **Lokale Einschränkungen** |HTTPS-basierte Proxys werden nicht unterstützt. |
 | **Anbieter/Agent** |Replizierte virtuelle Computer benötigen den Azure Site Recovery-Anbieter.<br/><br/> Hyper-V-Hosts benötigen den Recovery Services-Agent.<br/><br/> Diese werden während der Bereitstellung installiert. |
 |  **Anforderungen für Azure** |Azure-Konto<br/><br/> Recovery Services-Tresor<br/><br/> LRS- oder GRS-Speicherkonto in der Tresorregion<br/><br/> Standardspeicherkonto<br/><br/> Virtuelles Azure-Netzwerk in der Tresorregion. [Details](#azure-prerequisites) |
-|  **Azure-Einschränkungen** |Bei Verwendung von GRS benötigen Sie ein weiteres LRS-Konto für die Protokollierung.<br/><br/> Beachten Sie, dass im Azure-Portal erstellte Speicherkonten nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden können. <br/><br/> Storage Premium wird nicht unterstützt.<br/><br/> Für Site Recovery verwendete Azure-Netzwerke können nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden. |
-|  **VM-Replikation** |[VMs müssen die Anforderungen für Azure erfüllen ](site-recovery-best-practices.md#azure-virtual-machine-requirements)<br/><br/> |
-|  **Replikationseinschränkungen** |Virtuelle Linux-Computer mit einer statischen IP-Adresse können nicht repliziert werden.<br/><br/> Es ist nicht möglich, bestimmte Datenträger von der Replikation auszuschließen. |
+|  **Azure-Einschränkungen** |Bei Verwendung von GRS benötigen Sie ein weiteres LRS-Konto für die Protokollierung.<br/><br/> Beachten Sie, dass im Azure-Portal erstellte Speicherkonten nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden können. <br/><br/> Storage Premium wird nicht unterstützt.<br/><br/> Für Site Recovery verwendete Azure-Netzwerke können nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden. 
+|  **VM-Replikation** |[VMs müssen die Anforderungen für Azure erfüllen ](site-recovery-best-practices.md#azure-virtual-machine-requirements)<br/><br/>
+|  **Replikationseinschränkungen** |Virtuelle Linux-Computer mit einer statischen IP-Adresse können nicht repliziert werden.<br/><br/> Sie können bestimmte Datenträger von der Replikation ausschließen, allerdings nicht den Betriebssystem-Datenträger.
 | **Bereitstellungsschritte** |1) Vorbereiten von Azure (Abonnement, Speicher, Netzwerk) -> 2) Vorbereiten der lokalen Umgebung (VMM und Netzwerkzuordnung) -> 3) Erstellen des Recovery Services-Tresors -> 4) Einrichten von VMM- und Hyper-V-Host -> 5) Konfigurieren der Replikationseinstellungen -> 6) Aktivieren der Replikation -> 7) Testen von Replikation und Failover |
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Site Recovery im Azure-Portal
@@ -372,6 +372,7 @@ Mit dem Registrierungswert **UploadThreadsPerVM** wird die Anzahl von Threads ge
 2. Der Standardwert ist 4. In einem absichtlich mit großen Reserven ausgestatteten Netzwerk müssen die Standardwerte dieser Registrierungsschlüssel geändert werden. Der maximale Wert beträgt 32. Überwachen Sie den Datenverkehr, um den Wert zu optimieren.
 
 ## <a name="step-6-enable-replication"></a>Schritt 6: Aktivieren der Replikation
+
 Aktivieren Sie die Replikation jetzt wie folgt:
 
 1. Klicken Sie auf **Schritt 2: Replizieren Sie die Anwendung** > **Quelle**. Klicken Sie nach der erstmaligen Aktivierung der Replikation im Tresor auf **+Replizieren**, um die Replikation für weitere Computer zu aktivieren.
@@ -388,9 +389,20 @@ Aktivieren Sie die Replikation jetzt wie folgt:
 6. Klicken Sie auf **Virtuelle Computer** > **Virtuelle Computer auswählen**, und wählen Sie die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Klicken Sie dann auf **OK**.
 
     ![Replikation aktivieren](./media/site-recovery-vmm-to-azure/enable-replication5.png)
-7. Geben Sie unter **Eigenschaften** > **Eigenschaften konfigurieren**das Betriebssystem für die ausgewählten VMs und den Betriebssystem-Datenträger aus. Klicken Sie dann auf **OK**. Sie können später weitere Eigenschaften festlegen.
+7. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Betriebssystem für die ausgewählten virtuellen Computer und den Betriebssystem-Datenträger aus. Standardmäßig werden alle Datenträger des virtuellen Computers für die Replikation ausgewählt. Sie können jedoch Datenträger von der Replikation ausschließen, um die Replizierung unnötiger Daten in Azure zu vermeiden und so die beanspruchte Bandbreite zu verringern. Beispielsweise möchten Sie vielleicht nicht, dass Datenträger mit temporären Daten oder Daten, die bei jedem Neustart des Computers oder der Anwendung aktualisiert werden (etwa „pagefile.sys“ oder Microsoft SQL Server tempdb), repliziert werden. Durch Aufheben der Auswahl eines Datenträgers können Sie ihn von der Replikation ausschließen. Stellen Sie sicher, dass der Name des virtuellen Azure-Computers (Zielname) den [Anforderungen für virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements) entspricht, und ändern Sie diesen bei Bedarf. Klicken Sie dann auf **OK**. Weitere Eigenschaften können später festgelegt werden.
 
-    ![Replikation aktivieren](./media/site-recovery-vmm-to-azure/enable-replication6.png)
+    ![Replikation aktivieren](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
+    
+    >[!NOTE]
+    > 
+    > * Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Der Betriebssystem-Datenträger kann nicht ausgeschlossen werden, und es wird davon abgeraten, dynamische Datenträger auszuschließen. ASR kann nicht ermitteln, ob es sich bei einer VHD des virtuellen Gastcomputers um einen Basisdatenträger oder um einen dynamischen Datenträger handelt.  Wenn keiner der abhängigen dynamischen Volumendatenträger ausgeschlossen wird, tritt bei geschützten dynamischen Datenträgern auf einem virtuellen Failovercomputer ein Fehler auf, und auf die Daten des Datenträgers kann nicht zugegriffen werden.   
+    > * Nach Aktivierung der Replikation können keine Datenträger für die Replikation hinzugefügt oder entfernt werden. Wenn Sie einen Datenträger hinzufügen oder entfernen möchten, müssen Sie den Schutz für den virtuellen Computer deaktivieren und anschließend wieder aktivieren.
+    > * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie ihn nach dem Failover auf Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
+    > * Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf dem virtuellen Azure-Computer erstellen, wird nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback von Azure zu Hyper-V ausgeführt. Manuell erstellte Datenträger können nicht in das Failback oder in die umgekehrte Replikation von Hyper-V zu Azure einbezogen werden.
+    >
+    >
+    
+
 8. Wählen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren** die Replikationsrichtlinie aus, die Sie für die geschützten VMs anwenden möchten. Klicken Sie dann auf **OK**. Sie können die Replikationsrichtlinie unter **Einstellungen** > **Replikationsrichtlinien** > Richtlinienname > **Einstellungen bearbeiten** ändern. Von Ihnen vorgenommene Änderungen werden für Computer, die bereits repliziert werden, und für neue Computer verwendet.
 
    ![Replikation aktivieren](./media/site-recovery-vmm-to-azure/enable-replication7.png)
@@ -426,6 +438,7 @@ Zum Testen der Bereitstellung können Sie ein Testfailover für einen einzelnen 
 * Zum Ausführen eines Testfailovers empfehlen wir Folgendes: Erstellen Sie ein neues Azure-Zielnetzwerk, das von Ihrem Azure-Produktionsnetzwerk isoliert ist. Dies ist das Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure. [Erfahren Sie mehr](site-recovery-failover.md#run-a-test-failover) über die Ausführung von Testfailovervorgängen.
 * Installieren Sie den Azure-Agent auf dem geschützten Computer, um für das Failover zu Azure die beste Leistung zu erzielen. Hierdurch wird der Startvorgang beschleunigt und die Problembehandlung vereinfacht. Installieren Sie den Agent für [Linux](https://github.com/Azure/WALinuxAgent) oder [Windows](http://go.microsoft.com/fwlink/?LinkID=394789).
 * Zum vollständigen Testen der Bereitstellung benötigen Sie eine entsprechende Infrastruktur, damit der replizierte Computer wie erwartet funktioniert. Wenn Sie Active Directory und DNS testen möchten, können Sie einen virtuellen Computer als Domänencontroller mit DNS erstellen und per Azure Site Recovery zu Azure replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations).
+* Wenn Sie Datenträger von der Replikation ausgeschlossen haben, müssen Sie diese Datenträger nach einem Failover möglicherweise manuell in Azure erstellen, damit die Anwendung wie erwartet ausgeführt wird.
 * Wenn Sie anstelle eines Testfailovers ein ungeplantes Failover durchführen möchten, beachten Sie Folgendes:
 
   * Fahren Sie primäre Computer nach Möglichkeit herunter, bevor Sie ein ungeplantes Failover ausführen. Dadurch wird sichergestellt, dass die Quell- und Replikatcomputer nicht gleichzeitig ausgeführt werden.
@@ -496,6 +509,6 @@ Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

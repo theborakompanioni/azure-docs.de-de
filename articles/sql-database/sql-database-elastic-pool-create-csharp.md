@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eines Pools für elastische Datenbanken mit C# | Microsoft Docs"
-description: "Verwenden Sie C#-Datenbankentwicklungstechniken, um einen skalierbaren Pool für elastische Datenbanken in Azure SQL-Datenbank zu erstellen, damit Sie Ressourcen für zahlreiche Datenbanken freigeben können."
+title: Erstellen eines elastischen Pools mit C# | Microsoft-Dokumentation
+description: "Verwenden Sie C#-Datenbankentwicklungstechniken, um in Azure SQL-Datenbank einen skalierbaren elastischen Pool zu erstellen, damit Sie Ressourcen für zahlreiche Datenbanken freigeben können."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,20 +8,20 @@ manager: jhubbard
 editor: 
 ms.assetid: 2dedddbb-618d-462b-80dd-e4a57857c737
 ms.service: sql-database
-ms.custom: sharded databases pool
+ms.custom: multiple databases
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: get-started-article
 ms.tgt_pltfrm: csharp
 ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0e670c1bbc6266d24e089ce460529661dbb99b8d
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: b905aa65f46f601121b6774a633e72152e8ef80a
 
 
 ---
-# <a name="create-an-elastic-database-pool-with-cx23"></a>Erstellen eines Pools für elastische Datenbanken mit C&#x23;
+# <a name="create-an-elastic-pool-with-cx23"></a>Erstellen eines elastischen Pools mit C&#x23;
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-database-elastic-pool-create-portal.md)
 > * [PowerShell](sql-database-elastic-pool-create-powershell.md)
@@ -29,7 +29,7 @@ ms.openlocfilehash: 0e670c1bbc6266d24e089ce460529661dbb99b8d
 > 
 > 
 
-In diesem Artikel wird gezeigt, wie Sie einen Pool für elastische Datenbanken in Azure SQL-Datenbank mithilfe von C# und der [Azure SQL-Datenbankbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)erstellen. Informationen zum Erstellen einer eigenständigen SQL-Datenbank finden Sie unter [Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET](sql-database-get-started-csharp.md).
+In diesem Artikel erfahren Sie, wie Sie in Azure SQL-Datenbank mithilfe von C# und der [Azure SQL-Datenbankbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) einen elastischen Pool erstellen. Informationen zum Erstellen einer eigenständigen SQL-Datenbank finden Sie unter [Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET](sql-database-get-started-csharp.md).
 
 Die Azure SQL-Datenbank-Bibliothek für .NET bietet eine [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
 
@@ -60,7 +60,7 @@ Laden Sie zum Erstellen einer SQL-Datenbank mit C# die erforderlichen Verwaltung
 > 
 > 
 
-## <a name="create-a-sql-elastic-database-pool---c-example"></a>Beispiel: Erstellen eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit C#
+## <a name="create-a-sql-elastic-pool---c-example"></a>Erstellen eines elastischen SQL-Pools – C#-Beispiel
 Im folgenden Beispiel werden die folgenden Komponenten erstellt: Ressourcengruppe, Server, Firewallregel, elastischer Pool und eine SQL-Datenbank im Pool. Informationen zum Abrufen der `_subscriptionId, _tenantId, _applicationId, and _applicationSecret`-Variablen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen](#create-a-service-principal-to-access-resources).
 
 Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisieren Sie `{variables}` mit Ihren App-Werten (ohne `{}`).

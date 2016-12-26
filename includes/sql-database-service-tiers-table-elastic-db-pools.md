@@ -31,7 +31,7 @@ sql-database-service-tiers.md
 | Max. Anz. von eDTUs pro Datenbank | {10,20,<br>50} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | {10,20,<br>50,100} | 
 ||||||||
 
-### <a name="standard-elastic-pool-limits-continued-"></a>Grenzwerte für elastische Pools – Standard (Fortsetzung) **
+### <a name="standard-elastic-pool-limits-continued"></a>Grenzwerte für elastische Pools – Standard (Fortsetzung) 
 
 | Poolgröße (eDTUs)  |  **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
@@ -57,7 +57,7 @@ sql-database-service-tiers.md
 | Max. Anz. von eDTUs pro Datenbank | {25,50,75,<br>125} | {25,50,75,<br>125,250} | {25,50,75,<br>125,250,500} | {25,50,75,<br>125,250,500,<br>1000} | {25,50,75,<br>125,250,500,<br>1000,1500} |  
 ||||||||
 
-### <a name="premium-elastic-pool-limits-continued-"></a>Grenzwerte für elastische Pools – Premium (Fortsetzung) **
+### <a name="premium-elastic-pool-limits-continued"></a>Grenzwerte für elastische Pools – Premium (Fortsetzung) 
 
 | Poolgröße (eDTUs)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
 |:---|---:|---:|---:| ---: | ---: | 
@@ -72,9 +72,8 @@ sql-database-service-tiers.md
 
 \* Elastische Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenbankspeicher auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt
 
-\** Die Poolgröße von 3000 eDTU für einen elastischen Pool vom Typ „Standard“ und die Poolgröße von 4000 eDTU für einen elastischen Pool vom Typ „Premium“ ist derzeit nur über die PowerShell und REST-API verfügbar. Diese Poolgrößen stehen in Kürze im Azure-Portal zur Verfügung. 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

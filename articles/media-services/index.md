@@ -1,15 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) sicheres On-Demand- oder Livevideostreaming in Broadcastqualität verwenden. Tutorials, API-Referenzen und mehr."
 translationtype: Human Translation
-ms.sourcegitcommit: 54d90fa8d337b95a8bb03938ae6f3ce7c4e2de85
-ms.openlocfilehash: a7eda833f1bbaaa64ebfb1a26925dc42cbf6cb9c
+ms.sourcegitcommit: bc22da83e1683cc8be164e9ff3ed95d2fdc95d27
+ms.openlocfilehash: 7b6ff41479fdfe332148dc2366c7e547af5e98f9
 
 ---
 # <a name="media-services-documentation"></a>Dokumentation zu Media Services
 
-Azure Media Services ist eine erweiterbare, cloudbasierte Plattform, die Entwicklern das Erstellen von skalierbaren Medienverwaltungslösungen und Bereitstellungsanwendungen ermöglicht. Media Services basiert auf REST-APIs, mit denen Sie auf sichere Weise Video- oder Audioinhalte hochladen, speichern, codieren und paketieren können – sowohl für eine bedarfsgesteuerte als auch für eine Livestreaming-basierte Bereitstellung auf verschiedenen Clients (z. B. TV, PC und mobile Geräte).
-
-Sie können ausschließlich mithilfe von Media Services lückenlose Workflows erstellen. Es ist auch möglich, Drittanbieterkomponenten für einige Elemente Ihres Workflows zu nutzen. Sie können mit einem Encoder eines Drittanbieters eine Codierung vornehmen und die Daten dann mit Media Services hochladen, schützen, packen und übermitteln.
+Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) Videos in Broadcastqualität streamen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -159,52 +158,46 @@ Sie können ausschließlich mithilfe von Media Services lückenlose Workflows er
 
 ---
 
-## <a name="reference"></a>Referenz
-
+<h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell-Referenz</p>
+                        <h3>Befehlszeile</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.media/v0.3.1/azurerm.media">PowerShell (Resource Manager)</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.compute/v3.1.0/azure.compute">PowerShell (Dienstverwaltung)</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/dotnet/api/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Verwaltete Referenz zur .NET-API</p>
-                    </div>
+                        <h3>Sprachen</h3>
+                        <p><a href="/dotnet/api/microsoft.windowsazure.mediaservices.client">.NET</a></p>
+                   </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="/rest/api/media/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Media Services – REST-API-Referenz</p>
+                        <p><a href="/rest/api/media">REST-API-Referenz</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-<ul>
+</ul>
 
 <div class="downloadHolder">
     <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/media-services.pdf">
@@ -216,6 +209,6 @@ Herunterladen der Media Services-Dokumentation </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

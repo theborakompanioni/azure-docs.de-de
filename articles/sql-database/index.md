@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: "Machen Sie sich mit SQL-Datenbank (einer Database-as-a-Service-Lösung in der Cloud) vertraut. Anhand von Tutorials, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine relationale Datenbank einrichten, eine Verbindung damit herstellen und eine relationale Datenbank verwalten."
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: 07cbe71fc9330724dd8b92c5321d4fca9ecde512
+ms.sourcegitcommit: e4df0029db106923e3d28f16b3dfe239cae5b032
+ms.openlocfilehash: 4c148d62e435f063810c096069c4020ef78568d8
 
 ---
 
 # <a name="sql-database-documentation"></a>SQL-Datenbank-Dokumentation
 
-Azure SQL-Datenbank ist ein auf dem Microsoft SQL Server-Modul basierender relationaler Datenbankdienst in der Cloud mit unternehmenswichtigen Funktionen. SQL-Datenbank bietet vorhersagbare Leistung, Skalierbarkeit ohne Ausfallzeiten, Geschäftskontinuität, Datenschutz und nur minimalen Verwaltungsaufwand. Da SQL-Datenbank auf dem SQL Server-Modul basiert, werden vorhandene SQL Server-Tools, -Bibliotheken und -APIs unterstützt, sodass der Schritt bzw. die Erweiterung in die Cloud vereinfacht wird.
+Hier erfahren Sie, wie Sie SQL-Datenbank (eine relationale, auf Microsoft SQL Server basierende Database-as-a-Service-Lösung in der Cloud) verwenden. Anhand von Tutorials, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine SQL-Datenbank einrichten, eine Verbindung damit herstellen und eine SQL-Datenbank verwalten.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -162,6 +163,6 @@ Herunterladen der SQL-Datenbankdokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

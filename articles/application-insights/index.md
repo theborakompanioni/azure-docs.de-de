@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: Hier erfahren Sie, wie Sie mithilfe von Application Insights (einer erweiterbaren Anwendungsleistungsverwaltung) Probleme in Web-Apps und Diensten erkennen, selektieren und diagnostizieren.
 translationtype: Human Translation
-ms.sourcegitcommit: 7f01669fe78aebfb17ebc6a33ae29d098b62868a
-ms.openlocfilehash: 8100f42cc97155431e4d3ba47f7946b546296700
+ms.sourcegitcommit: f0fdb938519737e67849831a0751542f69c269d9
+ms.openlocfilehash: e5425bc1f39c9ca71b6eaf2c928b0d8397319d85
 
 ---
 # <a name="application-insights-documentation"></a>Application Insights-Dokumentation
 
-Application Insights ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM). Verwenden Sie ihn, um Ihre aktiven Webanwendung zu überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen, wie z.B. .NET, Node.js oder J2EE – lokal gehostet oder in der Cloud. Darüber hinaus lässt sich der Dienst in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl anderer Tools.
+Hier erfahren Sie, wie Sie Application Insights (einen erweiterbaren, für Webentwickler konzipierten Dienst zur Verwaltung der Anwendungsleistung) verwenden. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Probleme in Web-Apps und Diensten erkennen, selektieren und diagnostizieren.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -161,6 +162,6 @@ Herunterladen der Application Insights-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

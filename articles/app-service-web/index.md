@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: Hier erfahren Sie, wie Sie mithilfe von App Service-Web-Apps Websites und Webanwendungen erstellen und hosten. Tutorials, Videos, API-Referenzen und mehr.
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: d6fc4fe4f47571cbb8114b3de5ed9bc9466123fe
+ms.sourcegitcommit: c25534b4e5cda07ffe124ad151a3093a40137a6f
+ms.openlocfilehash: 4fda1c1635159a0bf6a502c4197b8523cd77a5f8
 
 ---
 # <a name="azure-web-apps-documentation"></a>Azure-Web-Apps-Dokumentation
 
-Bei App Service-Web-Apps handelt es sich um eine vollständig verwaltete Computeplattform, die für das Hosten von Websites und Webanwendungen optimiert ist. Mit diesem PaaS-Angebot (Platform as a Service) von Microsoft Azure können Sie sich auf Ihre Geschäftslogik konzentrieren, während Azure sich um die Infrastruktur zum Ausführen und Skalieren Ihrer Apps kümmert.
+Hier erfahren Sie, wie Sie mithilfe von App Service-Web-Apps Websites und Webanwendungen erstellen und hosten. Anhand von Tutorials, Videos, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Entwicklungsaufgaben auf dieser vollständig verwalteten Computeplattform durchführen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -229,6 +230,6 @@ Herunterladen der Web-Apps-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

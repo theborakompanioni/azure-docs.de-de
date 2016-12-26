@@ -1,14 +1,15 @@
 ---
 layout: LandingPage
+description: Hier erfahren Sie, wie Sie Containerregistrierungen zur Speicherung Ihrer Bereitstellungsimages mit einem verwalteten Docker-Registrierungsdienst erstellen und verwalten. Tutorials, API-Referenz und mehr.
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 2e77ba043efd03ecffd3e5e786046dedbed58877
+ms.sourcegitcommit: ab80e1ef9771caa4369863c0aff1cee2c3055830
+ms.openlocfilehash: c42d5fe49d099fed7b5df9901c313832d966e340
 
 ---
 
 # <a name="azure-container-registry-documentation"></a>Dokumentation zur Azure-Containerregistrierung
 
-Bei der Azure-Containerregistrierung (Vorschau) handelt es sich um eine private Registrierung zum Hosten von Containerimages. Mithilfe der Azure-Containerregistrierung können Sie Images im Docker-Format für alle Arten von Containerbereitstellungen speichern. Die Azure-Containerregistrierung lässt sich nahtlos in Orchestratoren integrieren, die in Azure Container Service gehostet werden. Hierzu zählen beispielsweise Docker Swarm, DC/OS und Kubernetes. 
+Hier erfahren Sie, wie Sie mithilfe der Containerregistrierung Images für alle Arten von Containerbereitstellungen speichern und verwalten. Anhand von Tutorials, einer REST-API-Referenz und anderem Dokumentationsmaterial wird gezeigt, wie Sie Containerregistrierungen mit diesem verwalteten Docker-Registrierungsdienst erstellen und verwalten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,6 +99,7 @@ Bei der Azure-Containerregistrierung (Vorschau) handelt es sich um eine private 
 </ul>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Dec16_HO3-->
 
 
