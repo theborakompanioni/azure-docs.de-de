@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie einen Cloud-ADC (Application Delivery Controller) bereitstellen. Die Dokumentation zeigt, wie Sie auf Anwendungsebene Routing und Lastenausgleich für ein Web-Front-End einrichten."
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 3bf27e3ba3e53aa2f06a078b81fff18fc449bc1c
+ms.sourcegitcommit: 8f9b8cee583b9bc12df14bf5161cab1952e3e022
+ms.openlocfilehash: 5e7843adfb31fcfc56986cce44fc5d59ee558d58
 
 ---
 #<a name="application-gateway-documentation"></a>Dokumentation zu Application Gateway
 
-Azure Application Gateway stellt Application Deliver Controller (ADC) als Dienst bereit.  Dies ermöglicht Kunden die Optimierung der Webfarmproduktivität durch Auslagerung der CPU-intensiven SSL-Beendigung an das Anwendungsgateway.  Hierbei handelt es sich um ein dediziertes virtuelles Gerät für Ihre Anwendung, das sich durch Skalierbarkeit und hohe Verfügbarkeit auszeichnet und dank umfangreicher Diagnose- und Protokollierungsfeatures eine bessere Verwaltbarkeit bietet.
+Hier erfahren Sie, wie Sie Application Gateway (Application Delivery Controller-as-a-Service) bereitstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Routing- und Lastenausgleichsdienste auf Anwendungsebene einrichten, mit denen Sie ein skalierbares und hoch verfügbares Web-Front-End erstellen können.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -29,7 +30,7 @@ Azure Application Gateway stellt Application Deliver Controller (ADC) als Dienst
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=application-gateway">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=application-gateway">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -112,15 +113,15 @@ Azure Application Gateway stellt Application Deliver Controller (ADC) als Dienst
                 <div class="card">
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
-                        <p><a href="/powershell/resourcemanager">PowerShell-Cmdlets</a></p>
-                        <p><a href="/cli/azure/network/application-gateway">Azure-Befehlszeilenschnittstelle</a></p>
+                        <p><a href="/powershell/resourcemanager">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0 Preview</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
@@ -136,13 +137,13 @@ Azure Application Gateway stellt Application Deliver Controller (ADC) als Dienst
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST-API</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">REST-API (klassisch)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt684941">REST-API-Referenz</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt299393">Referenz für die klassische REST-API</a></p>
                     </div>
                 </div>
             </div>
@@ -160,6 +161,6 @@ Herunterladen der Dokumentation zu Application Gateway </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie Ihren Anwendungen intelligente Funktionen wie Bildanalyse, Spracherkennung oder Sprachanalyse hinzufügen. Informieren Sie sich anhand von Schnellstartanleitungen und API-Referenzen."
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: f59bb52f11334d93bbc6cf655b7f790a58a3ebfd
+ms.sourcegitcommit: d08cbd179ffb64630a37dd04e33ae50dfda3c615
+ms.openlocfilehash: 9e31044fb3be93befb18939210e0bc703462fbd6
 
 ---
 #<a name="cognitive-services-documentation"></a>Dokumentation zu Cognitive Services
 
-Bei Cognitive Services (Vorschau) handelt es sich um eine Reihe von APIs, die verwendet werden können, um die natürliche und kontextbezogene Interaktion in Ihren Anwendungen zu ermöglichen.  Cognitive Services verfügt über APIs für die Bereiche „Sprachen“, „Spracheingabe“, „Sehen“, „Suche“ und „Knowledge“.
+Hier erfahren Sie, wie Sie in Ihren Anwendungen mithilfe von Cognitive Services eine natürliche und kontextbezogene Interaktion erreichen. Anhand von Schnellstarttutorials und API-Referenzen wird gezeigt, wie Sie KI-Funktionen für Text, Sprache, Bild und Suche integrieren. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -68,52 +69,31 @@ Bei Cognitive Services (Vorschau) handelt es sich um eine Reihe von APIs, die ve
 
 ---
 
-## <a name="reference"></a>Referenz
-
+<h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell-Referenz</p>
+                        <h3>Befehlszeile</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.cognitiveservices/v0.4.1/azurerm.cognitiveservices">PowerShell</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-
     <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt416943">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>.NET</h3>
-                        <p>Verwaltete Referenz zu Cognitive Services</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-
-    <li>
-        <a href="/rest/api/cognitiveservices">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p>Cognitive Services – REST-API</p>
+                        <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/">REST-API-Referenz</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
@@ -127,6 +107,6 @@ Herunterladen der Dokumentation zu Cognitive Services </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

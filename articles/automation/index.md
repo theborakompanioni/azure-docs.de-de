@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie mithilfe von Automation Prozesse und die Konfigurationsverwaltung automatisieren, um Zeit zu sparen und die Zuverlässigkeit regulärer Verwaltungsaufgaben zu erhöhen."
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c9444c341bc5746c96719e6ebfa464f294adf2f8
+ms.sourcegitcommit: 9f7b84331bd0575062518834ce1cd3db60fa6289
+ms.openlocfilehash: 98ddde79d422b692a1ded866fb12061bf942fc8a
 
 ---
 # <a name="automation-documentation"></a>Dokumentation zu Automation
 
-Azure Automation bietet Benutzern die Möglichkeit, die manuellen, langfristigen, Fehler verursachenden und häufig wiederholten Aufgaben zu automatisieren, die für gewöhnlich in einer Cloudumgebung ausgeführt werden. Dies spart Zeit, erhöht die Zuverlässigkeit normaler Verwaltungsaufgaben und plant diese sogar so ein, dass sie in regelmäßigen Abständen automatisch ausgeführt werden.
+Hier erfahren Sie, wie Sie mithilfe von Automation Zeit sparen und die Zuverlässigkeit regulärer Verwaltungsaufgaben in einer Cloudumgebung erhöhen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Prozesse mithilfe von Runbooks automatisieren oder die Konfigurationsverwaltung unter Verwendung der Konfiguration für den gewünschten Zustand automatisieren.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -175,6 +176,6 @@ Herunterladen der Dokumentation zu Automation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,22 +1,26 @@
 ---
 title: Service Bus und PHP mit AMQP 1.0 | Microsoft Docs
 description: Verwenden von Service Bus aus PHP mit AMQP
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: dfb26c2b-41d3-4ed6-936b-b8d2f1dbd470
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 122865f056d6bd7fc8c75665d29753542a83405c
+
 
 ---
-# <a name="using-service-bus-from-php-with-amqp-1.0"></a>Verwenden von Service Bus aus PHP mit AMQP 1.0
+# <a name="using-service-bus-from-php-with-amqp-10"></a>Verwenden von Service Bus aus PHP mit AMQP 1.0
 [!INCLUDE [service-bus-selector-amqp](../../includes/service-bus-selector-amqp.md)]
 
 Proton-PHP ist eine PHP-Sprachbindung an Proton-C. Dies bedeutet, dass Proton-PHP als Wrapper für ein Modul implementiert wird, das in C implementiert wurde.
@@ -29,7 +33,7 @@ Sie können Proton-C und die dazugehörigen Bindungen (einschließlich PHP) unte
 > 
 > 
 
-## <a name="working-with-service-bus-queues,-topics,-and-subscriptions-from-php"></a>Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus PHP
+## <a name="working-with-service-bus-queues-topics-and-subscriptions-from-php"></a>Verwenden von Service Bus-Warteschlangen, -Themen und -Abonnements aus PHP
 Der folgende Code veranschaulicht, wie Sie Nachrichten aus einer Service Bus-Messagingentität senden und empfangen.
 
 ### <a name="sending-messages-using-proton-php"></a>Senden von Nachrichten mithilfe von Proton-PHP
@@ -65,9 +69,9 @@ if($messenger->incoming())
 $messenger->stop();
 ```
 
-## <a name="messaging-between-.net-and-proton-php"></a>Übertragen von Nachrichten zwischen .NET und Proton-PHP
+## <a name="messaging-between-net-and-proton-php"></a>Übertragen von Nachrichten zwischen .NET und Proton-PHP
 ### <a name="application-properties"></a>Anwendungseigenschaften
-#### <a name="protonphp-to-service-bus-.net-apis"></a>ProtonPHP zu .NET-APIs von Service Bus
+#### <a name="protonphp-to-service-bus-net-apis"></a>ProtonPHP zu .NET-APIs von Service Bus
 Proton-PHP-Nachrichten unterstützen Anwendungseigenschaften der folgenden Typen: **integer**, **double**, **Boolean**, **string** und **object**. Der folgende PHP-Code veranschaulicht, wie Sie Eigenschaften für eine Nachricht festlegen, indem Sie diese Eigenschaftstypen verwenden.
 
 ```
@@ -78,7 +82,7 @@ $message->properties["TestString"] = "Service Bus";
 $message->properties["TestObject"] = new UUID("1234123412341234");   
 ```
 
-In den .NET-APIs von Service Bus sind die Nachrichtenanwendungseigenschaften in der **Properties**-Auflistung von [BrokeredMessage][BrokeredMessage] enthalten. Der folgende Code veranschaulicht, wie die Anwendungseigenschaften einer Nachricht gelesen werden, die von einem PHP-Client empfangen wird.
+In der Service Bus .NET-API sind die Nachrichtenanwendungseigenschaften in der **Properties**-Sammlung von [BrokeredMessage][BrokeredMessage] enthalten. Der folgende Code veranschaulicht, wie die Anwendungseigenschaften einer Nachricht gelesen werden, die von einem PHP-Client empfangen wird.
 
 ```
 if (message.Properties.Keys.Count > 0)
@@ -110,8 +114,8 @@ In der folgende Tabelle sind die PHP-Eigenschaftstypen den .NET-Eigenschaftstype
 | string |string |
 | objekt |Objekt |
 
-#### <a name="service-bus-.net-apis-to-php"></a>.NET-API von Service Bus zu PHP
-Der [BrokeredMessage][BrokeredMessage]-Typ unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][BrokeredMessage]-Objekt festlegen, indem Sie diese Eigenschaftstypen verwenden:
+#### <a name="service-bus-net-apis-to-php"></a>.NET-API von Service Bus zu PHP
+Der [BrokeredMessage][BrokeredMessage]-Typ unterstützt Anwendungseigenschaften der folgenden Typen: **byte**, **sbyte**, **char**, **short**, **ushort**, **int**, **uint**, **long**, **ulong**, **float**, **double**, **decimal**, **bool**, **Guid**, **string**, **Uri**, **DateTime**, **DateTimeOffset** und **TimeSpan**. Der folgende .NET-Code veranschaulicht, wie Sie Eigenschaften für ein [BrokeredMessage][BrokeredMessage]-Objekt festlegen, indem Sie diese Eigenschaftstypen verwenden.
 
 ```
 message.Properties["TestByte"] = (byte)128;
@@ -168,7 +172,7 @@ In der folgende Tabelle sind die .NET-Eigenschaftstypen den PHP-Eigenschaftstype
 | string |string |- |
 | DateTime |ganze Zahl |- |
 | Datetimeoffset |DescribedType |„DateTimeOffset.UtcTicks“ ist AMQP-Typ zugeordnet:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> |
-| TimeSpan |DescribedType |„Timespan.Ticks“ mapped ist AMQP-Typ zugeordnet:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> |
+| TimeSpan |DescribedType |„Timespan.Ticks“ ist AMQP-Typ zugeordnet:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> |
 | Uri |DescribedType |„Uri.AbsoluteUri“ ist AMQP-Typ zugeordnet:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
 
 ### <a name="standard-properties"></a>Standardeigenschaften
@@ -196,21 +200,20 @@ Die folgenden Tabellen enthalten die Zuordnung zwischen den Proton-PHP-Standardn
 | reply\_to\_group\_id |Message.ReplyToSessionId |- |
 | Format |– |- |
 
-#### <a name="service-bus-.net-apis-to-proton-php"></a>.NET-APIs von Service Bus zu Proton-PHP
+#### <a name="service-bus-net-apis-to-proton-php"></a>.NET-APIs von Service Bus zu Proton-PHP
 | Service Bus .NET | Proton-PHP | Hinweise |
 | --- | --- | --- |
-| ContentType |Nachricht-\>content\_type |- |
-| CorrelationId |Nachricht-\>correlation\_id |- |
-| EnqueuedTimeUtc |Nachricht-\>annotations[x-opt-enqueued-time] |- |
-| Bezeichnung |Nachricht-\>subject |- |
-| MessageId |Nachricht-\>id |- |
-| ReplyTo |Nachricht-\>reply\_to |- |
-| ReplyToSessionId |Nachricht-\>reply\_to\_group\_id |- |
-| ScheduledEnqueueTimeUtc |Nachricht-\>annotations ["x-opt-scheduled-enqueue-time"] |- |
-| SessionId |Nachricht-\>group\_id |- |
-| TimeToLive |Nachricht-\>ttl |Konvertierung, Proton-Python-TTL-Wert wird in Millisekunden definiert. |
-| To | | |
-| Nachricht-\>address |- | |
+| ContentType |Message-\>content\_type |- |
+| CorrelationId |Message-\>correlation\_id |- |
+| EnqueuedTimeUtc |Message-\>annotations[x-opt-enqueued-time] |- |
+| Bezeichnung |Message-\>subject |- |
+| MessageId |Message-\>id |- |
+| ReplyTo |Message-\>reply\_to |- |
+| ReplyToSessionId |Message-\>reply\_to\_group\_id |- |
+| ScheduledEnqueueTimeUtc |Message-\>annotations ["x-opt-scheduled-enqueue-time"] |- |
+| SessionId |Message-\>group\_id |- |
+| TimeToLive |Message-\>ttl |Konvertierung, Proton-Python-TTL-Wert wird in Millisekunden definiert. |
+| To |Message-\>address |- |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
@@ -224,6 +227,6 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

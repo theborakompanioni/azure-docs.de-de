@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/22/2016
+ms.date: 12/06/2016
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: a977cb509fb64d7c986e2e0f7e2b5e4e3e45dec0
-ms.openlocfilehash: a7c95f9219920932d56487c0e9b96499cc963af0
+ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
+ms.openlocfilehash: 7d582960e615962a3952dd2f58c74ed91e5c450d
 
 
 ---
@@ -122,9 +122,6 @@ Bei diesem Ablauf führt die App [Richtlinien](active-directory-b2c-reference-po
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 Azure AD B2C unterstützt derzeit nicht die folgenden Arten von Apps, die aber trotzdem Teil der Roadmap sind. Weitere Einschränkungen für Azure AD B2C werden unter [Einschränkungen](active-directory-b2c-limitations.md)beschrieben.
 
-### <a name="single-page-apps-javascript"></a>Single-Page-Apps (JavaScript)
-Viele moderne Apps besitzen ein Single-Page-App-Front-End, das in erster Linie in JavaScript geschrieben ist. Sie verwenden häufig ein Framework wie AngularJS, Ember.js oder Durandal. Der allgemein verfügbare Azure AD-Dienst unterstützt diese Apps über den impliziten OAuth 2.0-Fluss. Dieser Ablauf ist in Azure AD B2C noch nicht verfügbar.
-
 ### <a name="daemonsserver-side-apps"></a>Daemons/serverseitige Apps
 Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff arbeiten, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) sowie über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen.
 
@@ -137,6 +134,6 @@ Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anme
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

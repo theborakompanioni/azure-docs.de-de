@@ -1,14 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie mithilfe von Mobile Apps in Azure App Service native iOS-/Android-/Windows-Apps oder plattformübergreifende Apps mit Xamarin oder Cordova erstellen und hosten."
 translationtype: Human Translation
-ms.sourcegitcommit: 14e447744ba2aa89a50783916a42af2e0314c5cd
-ms.openlocfilehash: 531a1066195512504e2417c1661b13c36649b3e9
-
+ms.sourcegitcommit: 5735759300fddfb650220cebc49bd5968621a8d4
+ms.openlocfilehash: 59bab7c719a01643dacf5549c0674d149e8b92f4
 
 ---
 # <a name="mobile-apps-documentation"></a>Mobile Apps-Dokumentation
 
-Mobile Apps in Azure App Service bietet Unternehmensentwicklern und Systemintegratoren eine skalierbare und vielseitige Entwicklungsplattform für mobile Anwendungen.
+Hier erfahren Sie, wie Sie mithilfe von Mobile Apps in Azure App Service native iOS-/Android-/Windows-Apps oder plattformübergreifende Apps mit Xamarin oder Cordova erstellen. Anhand von Tutorials, Videos, der Client-SDK-Dokumentation und anderem Dokumentationsmaterial wird gezeigt, wie Sie das Back-End für eine beliebige mobile App erstellen und hosten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -30,7 +30,7 @@ Mobile Apps in Azure App Service bietet Unternehmensentwicklern und Systemintegr
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -177,21 +177,24 @@ Mobile Apps in Azure App Service bietet Unternehmensentwicklern und Systemintegr
 
 ---
 
-## <a name="reference"></a>Referenz
+<h2>Referenz</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Sprachen</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 
-### <a name="net"></a>.NET
-[Mobile Apps – .NET-Referenz](https://msdn.microsoft.com/library/azure/dn961176)
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service-mobile.pdf">
-        <div class="img"></div>
-        <div class="text">
-Mobile Apps-Dokumentation herunterladen </div>
-    </a>
-</div>
 
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

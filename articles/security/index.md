@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: Hier erfahren Sie, wie Sie die Sicherheitsoptionen in Azure-Diensten auf die Anforderungen Ihrer in der Cloud bereitgestellten Dienste und Daten abstimmen.
 translationtype: Human Translation
-ms.sourcegitcommit: d06c292b36ef6dd6bd4f858603debfe93d498cb6
-ms.openlocfilehash: 622e8ccb62538110991c4f882ada9014ea03ffb4
+ms.sourcegitcommit: 07febed306b53cc62c882f3f7865284e96875bf8
+ms.openlocfilehash: be29bc97d4fcf8e0c1efa655d05126a3f49d9636
 
 ---
 # <a name="security-documentation"></a>Dokumentation zur Sicherheit
 
-Die Infrastruktur von Azure ist von den Hardwareressourcen bis zu den Anwendungen vollständig auf das gleichzeitige Hosten von Millionen von Kunden ausgelegt und stellt für Unternehmen eine vertrauenswürdige Grundlage zur Erfüllung ihrer Sicherheitsanforderungen dar. Darüber hinaus bietet Azure Ihnen ein breites Spektrum an konfigurierbaren Sicherheitsoptionen, die Sie selbst steuern können, um die Sicherheit an die individuellen Anforderungen Ihrer Bereitstellungen anzupassen.
+Hier erfahren Sie, wie Sie mithilfe von Azure Security Dienst und Daten in der Cloud schützen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie die Sicherheitsoptionen in Azure-Diensten auf die Anforderungen Ihrer Bereitstellungen abstimmen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -114,6 +115,6 @@ Herunterladen der Dokumentation zur Sicherheit </div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

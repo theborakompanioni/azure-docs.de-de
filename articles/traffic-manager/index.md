@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: Hier erfahren Sie, wie Sie eingehenden Datenverkehr zur Optimierung der Anwendungsleistung verwalten. Die Dokumentation zeigt, wie Sie Datenverkehr verteilen, der bei Azure oder an externen Dienstendpunkten eingeht.
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 07d7e13862c252db61136110e04559e51a53e4b7
+ms.sourcegitcommit: 3123dc992bb821e79edceef01d2654aaff2468c1
+ms.openlocfilehash: a10c68140066de5be6690f30c89f4f6f2fad0825
 
 ---
 #<a name="traffic-manager-documentation"></a>Traffic Manager-Dokumentation
 
-Azure Traffic Manager ermöglicht die Verteilung von Benutzerdatenverkehr für Dienstendpunkte in unterschiedlichen Regionen. Traffic Manager verwendet das Domain Name System (DNS), um Clientanforderungen auf der Grundlage der ausgewählten Datenverkehrsrouting-Methode und der Integrität der Endpunkte an den optimalen Endpunkt weiterzuleiten und so eine höhere Verfügbarkeit und Reaktionsfähigkeit Ihrer Anwendung sicherzustellen.
+Hier erfahren Sie, wie Sie mithilfe von Traffic Manager eingehenden Datenverkehr weiterleiten, um die Leistung und Zuverlässigkeit von Anwendungen zu optimieren. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie an Azure oder an externe Dienstendpunkte gerichteten Datenverkehr verwalten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -129,6 +130,6 @@ Herunterladen der Traffic Manager-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

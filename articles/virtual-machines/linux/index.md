@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl einen virtuellen Computer erstellen. Die Dokumentation zeigt verschiedene Erstellungsmöglichkeiten für VM-Vorlagen."
 translationtype: Human Translation
-ms.sourcegitcommit: f368f2700bd349e106169d1828af7a148daa5cc2
-ms.openlocfilehash: f87947ed5f072ba4f0927ade1b1d3ec0e1424f3c
+ms.sourcegitcommit: eabfc16b3714006f74cdaec68efb46f651ee1b97
+ms.openlocfilehash: 4ae49635b13d564a4bf03ea12e233c1b18985cce
 
 ---
-#<a name="linux-virtual-machine-documentation"></a>Dokumentation zu virtuellen Linux-Computern
+# <a name="linux-virtual-machine-documentation"></a>Dokumentation zu virtuellen Linux-Computern
 
-Verwenden Sie Azure Virtual Machines, um virtuelle Linux-Computer in der Compute-, Netzwerk- und Speicherinfrastruktur von Azure zu erstellen und auszuführen.  Skalieren Sie auf Tausende von Computern für internetweite Bereitstellungen, oder führen Sie einen Computer für wenige Minuten aus, um riesige Datenmengen zu verarbeiten: Sie erhalten sowohl Geschwindigkeit als auch Konsistenz.
+Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl virtuelle Computer unter Azure ausführen. In der Dokumentation sowie in den API-Referenzen und Beispielen werden verschiedene Erstellungs- und Bereitstellungsmöglichkeiten für VM-Vorlagen gezeigt.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -140,6 +141,6 @@ Herunterladen der Dokumentation zu virtuellen Linux-Computern </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen."
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
+ms.sourcegitcommit: 2b32d1a06f7db06ad3f443548b33d3c8e2032a9e
+ms.openlocfilehash: 69bcbae09192ecbb6b375bac522b433f8cd5391f
 
 ---
 # <a name="cloud-services-documentation"></a>Dokumentation zu Cloud Services
 
-Cloud Services ist ein Beispiel für eine PaaS-Implementierung (Platform-as-a-Service). Sie unterstützt skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Cloud Services vereint die Vorteile der Virtualisierung mit der Kontrolle über den virtuellen Computer, um diesen konfigurieren und patchen sowie Software dafür installieren zu können.  
+Hier erfahren Sie, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen.  Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Hosts für virtuelle Computer verwalten und Software konfigurieren, patchen und installieren.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,6 +126,6 @@ Herunterladen der Dokumentation zu Cloud Services </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

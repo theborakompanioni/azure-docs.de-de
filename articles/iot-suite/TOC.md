@@ -19,6 +19,7 @@
 ## [Verbinden einer Logik-App mit der Remoteüberwachungslösung](iot-suite-logic-apps-tutorial.md)
 ## [Anpassen vorkonfigurierter Lösungen](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [Verwenden dynamischer Telemetriedaten mit der Remoteüberwachungslösung](iot-suite-dynamic-telemetry.md)
+## [Erstellen einer benutzerdefinierten Regel in der Remoteüberwachungslösung](iot-suite-custom-rule.md)
 ## [Geräteinformationen in der Remoteüberwachungslösung](iot-suite-remote-monitoring-device-info.md)
 
 # Referenz
@@ -42,6 +43,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

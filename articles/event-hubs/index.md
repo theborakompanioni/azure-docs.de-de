@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie mithilfe von Event Hubs pro Sekunde Millionen von Ereignissen von verbundenen IoT-Geräten und -Anwendungen erfassen, die auf einer breiten Palette von Plattformen basieren."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 8244f410fa3337ae161657fe11ae5db2a2f378cd
+ms.sourcegitcommit: bedc8c16671de6071383659697ecd932e14cf3ba
+ms.openlocfilehash: 3d404f115c9a21c7ea62fb485a2129bca9de5c6c
 
 ---
 #<a name="event-hubs-documentation"></a>Event Hubs-Dokumentation
 
-Event Hubs ist ein überaus skalierbarer Datenerfassungsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeitanalyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern.
+Hier erfahren Sie, wie Sie mithilfe von Event Hubs pro Sekunde Millionen von Ereignissen von verbundenen IoT-Geräten und -Anwendungen sammeln und verwalten. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine skalierbare Erfassung für Ereignisse auf einer breiten Palette von Plattformen einrichten.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -125,6 +126,6 @@ Herunterladen der Event Hubs-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 
