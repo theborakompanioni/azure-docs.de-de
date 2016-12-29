@@ -1,24 +1,12 @@
 ---
-title: 'Erste Schritte für das Anmelden und Abmelden bei Azure AD mit '
-node.js"": ''
-description: 'In diesem Thema erfahren Sie, wie eine Express-MVC-Web-App mit '
-node.js": ''
-erstellt: ''
-wird,: ''
-die: ''
-für: ''
-anmeldung: ''
-in: ''
-azure: ''
-ad: ''
-integriert: ''
-wird.": ''
+title: "Erste Schritte für das Anmelden und Abmelden bei Azure AD mit &quot;node.js&quot;"
+description: "In diesem Thema erfahren Sie, wie eine Express-MVC-Web-App mit &quot;node.js&quot; erstellt wird, die für die Anmeldung in Azure AD integriert wird."
 services: active-directory
 documentationcenter: nodejs
-author: brandwe
+author: xerners
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -26,9 +14,13 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 1865043ca9c9019b9813f11eb4a55f7f16d79287
+ms.openlocfilehash: fc31f2c157cb91b95820e18aa186818d69977e24
+
 
 ---
-# <a name="nodejs-web-app-sign-in-&-sign-out-with-azure-ad"></a>An- und Abmeldung bei NodeJS-Web-Apps mit Azure AD
+# <a name="nodejs-web-app-sign-in--sign-out-with-azure-ad"></a>An- und Abmeldung bei NodeJS-Web-Apps mit Azure AD
 Hier wird Passport für Folgendes verwendet:
 
 * Anmelden des Benutzers bei der App mit Azure AD
@@ -50,18 +42,17 @@ Der Code für dieses Lernprogramm wird [auf GitHub](https://github.com/AzureADQu
 
 Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt.
 
-## <a name="1.-register-an-app"></a>1. Registrieren einer App
-* Melden Sie sich beim Azure-Verwaltungsportal an.
-* Klicken Sie in der linken Navigationsleiste auf **Active Directory**.
+## <a name="1-register-an-app"></a>1. Registrieren einer App
+* Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 * Wählen Sie den Mandanten aus, in dem die Beispielanwendung registriert werden soll.
-* Klicken Sie auf die Registerkarte **Anwendungen** und dann in der unteren Schublade auf „Hinzufügen“.
+* Klicken Sie in der linken Navigationsleiste auf **Azure Active Directory**.
+* Klicken Sie auf die Registerkarte **App-Registrierungen** und anschließend auf **Hinzufügen**.
 * Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
   * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
   * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet „http://localhost:3000/auth/openid/return“.
-  * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung.  Üblicherweise wird `https://<tenant-domain>/<app-name>` verwendet, zum Beispiel: `https://contoso.onmicrosoft.com/my-first-aad-app`
-* Nach Abschluss der Registrierung weist AAD Ihrer Anwendung eine eindeutige Client-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten, weswegen Sie ihn aus der Registerkarte „Konfigurieren“ kopieren sollten.
+* Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 
-## <a name="2.-add-pre-requisities-to-your-directory"></a>2. Erforderliche Komponenten zu Ihrem Verzeichnis hinzufügen
+## <a name="2-add-pre-requisities-to-your-directory"></a>2. Erforderliche Komponenten zu Ihrem Verzeichnis hinzufügen
 Wechseln Sie über die Befehlszeile vom Verzeichnis auf Ihren Stammordner, wenn dies noch nicht der Fall ist, und führen Sie die folgenden Befehle aus:
 
 * `npm install express`
@@ -77,11 +68,11 @@ Wechseln Sie über die Befehlszeile vom Verzeichnis auf Ihren Stammordner, wenn 
 
 Dadurch werden die Bibliotheken installiert, von denen "passport-azure-ad" abhängt.
 
-## <a name="3.-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3. Richten Sie Ihre App zur Nutzung der "passport-node-js"-Strategie ein.
+## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3. Richten Sie Ihre App zur Nutzung der "passport-node-js"-Strategie ein.
 Hier konfigurieren wir die Express-Middleware für die Verwendung des Authentifizierungsprotokolls OpenID Connect.  Passport wird unter anderem für die Ausgabe von Anmelde- und Abmeldeanforderungen, für die Verwaltung der Benutzerssitzungen und für das Abrufen der Benutzerinformationen verwendet.
 
 * Öffnen Sie zunächst die Datei `config.js` aus dem Stammverzeichnis des Projekts, und geben Sie die Konfigurationswerte Ihrer App im Abschnitt `exports.creds` ein.
-  
+
   * `clientID:` ist die **Anwendungs-ID** , die Ihrer App im Registrierungsportal zugewiesen ist.
   * `returnURL` ist der **Umleitungs-URI** , den Sie im Portal eingegeben haben.
   * `clientSecret` ist der geheime Schlüssel, den Sie im Portal generiert haben.
@@ -100,8 +91,8 @@ var log = bunyan.createLogger({
 * Verwenden Sie danach die Strategie, auf die gerade verwiesen wurde, um die Anmeldeanforderungen zu verarbeiten.
 
 ```JavaScript
-// Use the OIDCStrategy within Passport. (Section 2) 
-// 
+// Use the OIDCStrategy within Passport. (Section 2)
+//
 //   Strategies in passport require a `validate` function, which accept
 //   credentials (in this case, an OpenID identifier), and invoke a callback
 //   with a user object.
@@ -141,8 +132,8 @@ Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook
 
 > [!IMPORTANT]
 > Der obige Code erfasst alle Benutzer, die sich an unserem Server authentifizieren. Dies wird als automatische Registrierung bezeichnet. Bei Produktionsservern müssten die Benutzer zunächst einen Registrierungsprozess durchlaufen, den Sie festlegen. Dies ist normalerweise das Muster, das Sie bei Consumer-Apps finden, die es Ihnen ermöglichen, sich bei Facebook zu registrieren, aber dann dazu auffordern, zusätzliche Informationen anzugeben. Wenn dies nicht eine Beispielanwendung wäre, könnten wir einfach die E-Mail aus dem Tokenobjekt extrahieren, das zurückgegeben wird, und dann dazu auffordern, zusätzliche Informationen einzugeben. Da es sich um einen Testserver handelt, fügen wir sie einfach der Datenbank im Arbeitsspeicher hinzu.
-> 
-> 
+>
+>
 
 * Als Nächstes fügen Sie die Methoden hinzu, mit denen die angemeldeten Benutzer nachverfolgt werden können, wie es von Passport gefordert wird. Dies umfasst die Serialisierung und Deserialisierung von Informationen des Benutzers:
 
@@ -250,8 +241,8 @@ app.post('/auth/openid/return',
   });
   ```
 
-## <a name="4.-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4. Verwenden von Passport zur Ausgabe von An- und Abmeldeanforderungen für Azure AD
-Ihre App ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpunkt über das OpenID Connect-Authentifizierungsprotokoll konfiguriert.  `passport-azure-ad` hat dabei alle Details zur Erstellung von Authentifizierungsnachrichten, zur Überprüfung der Token von Azure AD und zur Verwaltung von Benutzersitzungen übernommen.  Sie müssen es Ihren Benutzern nur noch ermöglichen, sich anzumelden und abzumelden, und zusätzliche Informationen zu den angemeldeten Benutzer sammeln.
+## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4. Verwenden von Passport zur Ausgabe von An- und Abmeldeanforderungen für Azure AD
+Ihre App ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpunkt über das OpenID Connect-Authentifizierungsprotokoll konfiguriert.  `passport-azure-ad` hat dabei alle Details zur Erstellung von Authentifizierungsnachrichten, zur Überprüfung der Token von Azure AD und zur Verwaltung von Benutzersitzungen übernommen.  Sie müssen es Ihren Benutzern nur noch ermöglichen, sich anzumelden und abzumelden, und zusätzliche Informationen zu den angemeldeten Benutzer sammeln.
 
 * Zuerst fügen wir der Datei `app.js` Standard-, Anmelde-, Konto- und Abmeldemethoden hinzu:
 
@@ -282,7 +273,7 @@ app.get('/logout', function(req, res){
 ```
 
 * Betrachten Sie diese im Detail:
-  
+
   * Die Route `/` leitet an die Ansicht "index.ejs" weiter und übergibt den Benutzer in der Anforderung (falls vorhanden).
   * Die Route `/account` ***stellt zuerst sicher, dass wir authentifiziert sind*** (wird weiter unten implementiert) und übergibt dann den Benutzer in der Anforderung, damit wir zusätzliche Informationen zum Benutzer abrufen können.
   * Die Route `/login` ruft die azuread-openidconnect -Authentifizierung von `passport-azuread` auf und leitet den Benutzer an "/login" um, wenn dies nicht erfolgreich ist.
@@ -312,7 +303,7 @@ app.listen(3000);
 ```
 
 
-## <a name="5.-create-the-views-and-routes-in-express-to-display-our-user-in-the-website"></a>5. Erstellen von Ansichten und Routen in Express, um die Benutzer auf der Website anzuzeigen
+## <a name="5-create-the-views-and-routes-in-express-to-display-our-user-in-the-website"></a>5. Erstellen von Ansichten und Routen in Express, um die Benutzer auf der Website anzuzeigen
 `app.js` ist jetzt vollständig. Nun müssen einfach die Routen und Ansichten hinzugefügt werden, die die Informationen für die Benutzer anzeigen und die erstellten Routen `/logout` und `/login` verarbeiten.
 
 * Erstellen der Route `/routes/index.js` im Stammverzeichnis
@@ -385,13 +376,13 @@ Diese einfachen Routen übergeben lediglich die Anforderung an die Ansichten, ei
     <body>
         <% if (!user) { %>
             <p>
-            <a href="/">Home</a> | 
+            <a href="/">Home</a> |
             <a href="/login">Log In</a>
             </p>
         <% } else { %>
             <p>
-            <a href="/">Home</a> | 
-            <a href="/account">Account</a> | 
+            <a href="/">Home</a> |
+            <a href="/account">Account</a> |
             <a href="/logout">Log Out</a>
             </p>
         <% } %>
@@ -400,7 +391,7 @@ Diese einfachen Routen übergeben lediglich die Anforderung an die Ansichten, ei
 </html>
 ```
 
-Erstellen und führen Sie Ihre Anwendung zum Schluss aus! 
+Erstellen und führen Sie Ihre Anwendung zum Schluss aus!
 
 Führen Sie `node app.js` aus, und navigieren Sie zu `http://localhost:3000`.
 
@@ -416,6 +407,8 @@ Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren.  Wie
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!--HONumber=Oct16_HO4-->
+
+
+<!--HONumber=Nov16_HO5-->
 
 

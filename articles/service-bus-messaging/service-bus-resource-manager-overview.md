@@ -1,39 +1,43 @@
 ---
 title: Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen | Microsoft Docs
 description: Verwenden von Azure Resource Manager-Vorlagen, um die Erstellung von Service Bus-Ressourcen zu automatisieren
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 07/11/2016
+ms.date: 10/14/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 182b4378cfd876d3700a1f0028a681ce936be03c
+ms.openlocfilehash: 1425628c6e0c544b5b84a4f828bfaef3073fddee
+
 
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen
-Dieser Artikel erläutert das Erstellen und Bereitstellen von Service Bus- und Event Hubs-Ressourcen mithilfe von Azure Resource Manager-Vorlagen, PowerShell und dem Service Bus-Ressourcenanbieter.
+Dieser Artikel erläutert das Erstellen und Bereitstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen, PowerShell und dem Service Bus-Ressourcenanbieter.
 
-Azure Resource Manager-Vorlagen helfen Ihnen dabei, die für eine Lösung bereitzustellenden Ressourcen zu definieren und die Parameter und Variablen anzugeben, die Sie zur Eingabe von Werten für verschiedene Umgebungen benötigen. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können. Detaillierte Informationen zum Erstellen von Azure Resource Manager-Vorlagen sowie eine Beschreibung des Vorlagenformats finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md). 
+Azure Resource Manager-Vorlagen helfen Ihnen dabei, die für eine Lösung bereitzustellenden Ressourcen zu definieren und die Parameter und Variablen anzugeben, die Sie zur Eingabe von Werten für verschiedene Umgebungen benötigen. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Detaillierte Informationen zum Erstellen von Azure Resource Manager-Vorlagen sowie eine Beschreibung des Vorlagenformats finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
 
 > [!NOTE]
-> Die Beispiele in diesem Artikel zeigen, wie Sie Azure Resource Manager verwenden, um einen Service Bus-Namespace und eine Messagingentität (Warteschlange) zu erstellen. Um Beispiele für andere Vorlagen zu finden, rufen Sie [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Service Bus“.
+> Die Beispiele in diesem Artikel zeigen, wie Sie Azure Resource Manager verwenden, um einen Service Bus-Namespace und eine Messagingentität (Warteschlange) zu erstellen. Um andere Beispielvorlagen zu finden, rufen Sie die [Azure-Schnellstartvorlagen][Azure-Schnellstartvorlagen-Katalog] auf, und suchen Sie nach „Service Bus“.
 > 
 > 
 
 ## <a name="service-bus-and-event-hubs-resource-manager-templates"></a>Resource Manager-Vorlagen für Service Bus und Event Hubs
-Diese Azure Resource Manager-Vorlagen für Service Bus und Event Hubs sind zum Download und zur Bereitstellung verfügbar. Klicken Sie auf die folgenden Links, um Details zu jeder Vorlage abzurufen (auf jeder Seite finden Sie Links zu den Vorlagen in GitHub): 
+Diese Azure Resource Manager-Vorlagen für Service Bus sind zum Download und zur Bereitstellung verfügbar. Klicken Sie auf die folgenden Links, um Details zu jeder Vorlage abzurufen (auf jeder Seite finden Sie Links zu den Vorlagen in GitHub):
 
 * [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
 * [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
 * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 * [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template (Erstellen einer Service Bus-Autorisierungsregel für Namespace und Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-auth-rule.md)
-* [Erstellen eines Event Hubs-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
+* [Create a Service Bus namespace with topic, subscription, and rule (Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel)](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 Das folgende Verfahren beschreibt die Verwendung von PowerShell, um eine Azure Resource Manager-Vorlage bereitzustellen, die einen Service Bus-Namespace im Tarif **Standard** sowie eine Warteschlange innerhalb dieses Namespace erstellt. Dieses Beispiel basiert auf der Vorlage [Create a Service Bus namespace with queue](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) (Erstellen eines Service Bus-Namespace mit Warteschlange). Der Workflow sieht in etwa folgendermaßen aus:
@@ -46,7 +50,7 @@ Das folgende Verfahren beschreibt die Verwendung von PowerShell, um eine Azure R
 6. Legen Sie ggf. den Bereitstellungsmodus fest.
 7. Stellen Sie die Vorlage bereit.
 
-Vollständige Informationen zur Bereitstellung von Azure Resource Manager-Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell][Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell].
+Vollständige Informationen zur Bereitstellung von Azure Resource Manager-Vorlagen finden Sie unter [Deploy resources with Azure Resource Manager template (Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen)][Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell].
 
 ### <a name="install-powershell"></a>Installieren von PowerShell
 Installieren Sie Azure PowerShell mithilfe der Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
@@ -120,8 +124,8 @@ Klonen oder kopieren Sie die Vorlage [201-servicebus-create-queue](https://githu
 }
 ```
 
-### <a name="create-a-parameters-file-(optional)"></a>Erstellen einer Parameterdatei (optional)
-Um eine optionale Parameterdatei zu verwenden, kopieren Sie die Datei [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json). Ersetzen Sie den Wert von `serviceBusNamespaceName` durch den Namen des Service Bus-Namespace, den Sie in dieser Bereitstellung erstellen möchten, und ersetzen Sie den Wert von `serviceBusQueueName` durch den Namen der Warteschlange, die Sie erstellen möchten. 
+### <a name="create-a-parameters-file-optional"></a>Erstellen einer Parameterdatei (optional)
+Um eine optionale Parameterdatei zu verwenden, kopieren Sie die Datei [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json). Ersetzen Sie den Wert von `serviceBusNamespaceName` durch den Namen des Service Bus-Namespace, den Sie in dieser Bereitstellung erstellen möchten, und ersetzen Sie den Wert von `serviceBusQueueName` durch den Namen der Warteschlange, die Sie erstellen möchten.
 
 ```
 {
@@ -141,7 +145,7 @@ Um eine optionale Parameterdatei zu verwenden, kopieren Sie die Datei [201-servi
 }
 ```
 
-Weitere Informationen finden Sie im Thema [Parameterdatei](../resource-group-template-deploy.md#parameter-file).
+Weitere Informationen finden Sie im Thema [Parameterdatei](../resource-group-template-deploy.md#parameter-precedence).
 
 ### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Anmelden bei Azure und Festlegen des Azure-Abonnements
 Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
@@ -210,7 +214,7 @@ New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyD
 Legen Sie zum Ausführen einer [vollständigen](../resource-group-template-deploy.md#incremental-and-complete-deployments) Bereitstellung den Parameter **Mode** auf **Complete** fest:
 
 ```
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
@@ -235,15 +239,16 @@ Parameters        :
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben nun den grundlegenden Workflow und die grundlegenden Befehle für die Bereitstellung einer Azure Resource Manager-Vorlage kennengelernt. Detaillierte Informationen finden Sie unter folgenden Links:
 
-* [Übersicht über den Azure Ressource Manager][]
-* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell][Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell]
+* [Übersicht über den Azure Resource Manager][Übersicht über den Azure Resource Manager]
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen][Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell]
 * [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md)
 
-[Übersicht über den Azure Resource Manager]: ../resource-group-overview.md
+[Übersicht über den Azure Resource Manager]: ../azure-resource-manager/resource-group-overview.md
 [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell]: ../resource-group-template-deploy.md
 [Azure-Schnellstartvorlagen-Katalog]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

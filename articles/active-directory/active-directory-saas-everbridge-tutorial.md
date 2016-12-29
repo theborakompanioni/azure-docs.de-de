@@ -1,22 +1,26 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Everbridge | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Everbridge | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Everbridge konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 58d7cd22-98c0-4606-9ce5-8bdb22ee8b3e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 11/22/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 5608f38de6ae78772499a40c4e2d449cd5efc79c
+ms.openlocfilehash: 511a3883cadd9bf2fe1cc39a8626c49fa19a7d8e
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-everbridge"></a>Tutorial: Azure Active Directory-Integration mit Everbridge
+# <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Tutorial: Azure Active Directory-Integration mit Everbridge
 In diesem Tutorial erfahren Sie, wie Sie Everbridge in Azure Active Directory (Azure AD) integrieren.
 
 Diese Integration bietet die folgenden Vorteile:
@@ -25,7 +29,7 @@ Diese Integration bietet die folgenden Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Everbridge anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Everbridge konfigurieren zu können, benötigen Sie Folgendes:
@@ -173,17 +177,18 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
     c. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-everbridge-tutorial/create_aaduser_06.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-everbridge-tutorial/create_aaduser_06.png)
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
    
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
    
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
    
-   e. Klicken Sie auf **Weiter**.
+    e. Klicken Sie auf **Weiter**.
+
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-everbridge-tutorial/create_aaduser_07.png)
@@ -248,6 +253,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Everbridge“ klicken, sollten Sie
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

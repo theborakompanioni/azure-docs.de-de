@@ -1,12 +1,12 @@
 ---
-title: Erste Schritte in Azure AD Java | Microsoft Docs
-description: Erstellen einer Java-Web-App, bei der sich Benutzer mit einem Geschäfts- oder Schulkonto anmelden
+title: Erste Schritte in Azure AD Java | Microsoft-Dokumentation
+description: "Erstellen einer Java-Web-App, bei der sich Benutzer mit einem Geschäfts- oder Schulkonto anmelden"
 services: active-directory
 documentationcenter: java
-author: brandwe
+author: xerners
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 2b92b605-9cd5-4b99-bcbb-66c026558119
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: java
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: brandwe
+translationtype: Human Translation
+ms.sourcegitcommit: 1865043ca9c9019b9813f11eb4a55f7f16d79287
+ms.openlocfilehash: db0113dc98480b63d2b3eb50578fd97bdfb0a89d
+
 
 ---
-# An- und Abmeldung bei Java-Web-Apps mit Azure AD
+# <a name="java-web-app-sign-in--sign-out-with-azure-ad"></a>An- und Abmeldung bei Java-Web-Apps mit Azure AD
 [!INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Azure AD erleichtert die Auslagerung der Identitätsverwaltung für Webanwendungen, indem es eine einmalige An- und Abmeldung (Single Sign-on und Single Sign-out) mit nur wenigen Codezeilen ermöglicht. Für Java-Web-Apps erreichen Sie das Gleiche durch die Microsoft-Implementierung des Community-gestützten ADAL4J.
+Azure AD erleichtert die Auslagerung der Identitätsverwaltung für Webanwendungen, indem es eine einmalige An- und Abmeldung (Single Sign-on und Single Sign-out) mit nur wenigen Codezeilen ermöglicht.  Für Java-Web-Apps erreichen Sie das Gleiche durch die Microsoft-Implementierung des Community-gestützten ADAL4J.
 
   Hier verwenden wir ADAL4J für Folgendes:
 
-* Anmelden von Benutzern an der App mit Azure AD als Identitätsanbieter
+* Anmelden von Benutzern an der App mit Azure AD als Identitätsanbieter
 * Anzeigen einiger Informationen zum Benutzer
 * Abmelden des Benutzers von der App
 
@@ -31,28 +35,27 @@ Dazu müssen Sie folgende Schritte ausführen:
 
 1. Registrieren einer Anwendung in Azure AD
 2. Legen Sie fest, dass Ihre App die Bibliothek „ADAL4J“ verwendet.
-3. Verwenden Sie die Bibliothek „ADAL4J“ zur Ausgabe von An- und Abmeldeanforderungen für Azure AD.
+3. Verwenden Sie die Bibliothek „ADAL4J“ zur Ausgabe von An- und Abmeldeanforderungen für Azure AD.
 4. Ausdrucken von Informationen zum Benutzer
 
-Beginnen Sie, indem Sie [das Anwendungsgerüst](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip). Außerdem benötigen Sie einen Azure AD-Mandanten, bei dem Sie Ihre Anwendung registrieren. Wenn Sie noch keinen Mandanten haben, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
+Beginnen Sie, indem Sie das [Anwendungsgerüst](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).  Außerdem benötigen Sie einen Azure AD-Mandanten, bei dem Sie Ihre Anwendung registrieren.  Wenn Sie noch keinen Mandanten haben, [erfahren Sie hier, wie Sie einen erhalten](active-directory-howto-tenant.md).
 
-## 1\. Registrieren einer Anwendung in Azure AD
+## <a name="1--register-an-application-with-azure-ad"></a>1.  Registrieren einer Anwendung in Azure AD
 Damit Ihre Anwendung Benutzer authentifizieren kann, müssen Sie zunächst in Ihrem Mandanten eine neue Anwendung registrieren.
 
-* Melden Sie sich beim Azure-Verwaltungsportal an.
-* Klicken Sie in der linken Navigationsleiste auf **Active Directory**.
+* Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 * Wählen Sie den Mandanten aus, in dem die Beispielanwendung registriert werden soll.
-* Klicken Sie auf die Registerkarte **Anwendungen** und dann in der unteren Schublade auf „Hinzufügen“.
+* Klicken Sie in der linken Navigationsleiste auf **Azure Active Directory**.
+* Klicken Sie auf die Registerkarte **App-Registrierungen** und anschließend auf **Hinzufügen**.
 * Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
   * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
-  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung. Der Standardwert des Gerüsts lautet `http://localhost:8080/adal4jsample/`.
-  * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird `https://<tenant-domain>/<app-name>` verwendet, zum Beispiel: `http://localhost:8080/adal4jsample/`
-* Nach Abschluss der Registrierung weist AAD Ihrer Anwendung eine eindeutige Client-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten, weswegen Sie ihn aus der Registerkarte „Konfigurieren“ kopieren sollten.
+  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:8080/adal4jsample/`.
+* Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 
-Erstellen Sie im Portal für Ihre App einen **geheimen Schlüssel** für Ihre Anwendung, und notieren Sie ihn sich. Sie benötigen ihn später.
+Erstellen Sie im Portal für Ihre App auf der Seite **Einstellungen** einen **Schlüssel** für Ihre Anwendung, und notieren Sie ihn.  Sie benötigen ihn später.
 
-## 2\. Festlegen, dass Ihre App die Bibliothek „ADAL4J“ verwendet und Bestimmen der Voreinstellungen für Maven
-Hier konfigurieren wir ADAL4J für die Verwendung des OpenID Connect-Authentifizierungsprotokolls. ADAL4J wird unter anderem für die Ausgabe von Anmelde- und Abmeldeanforderungen, für die Verwaltung der Benutzersitzungen und für das Abrufen von Benutzerinformationen verwendet.
+## <a name="2-set-up-your-app-to-use-adal4j-library-and-prerequisities-using-maven"></a>2. Festlegen, dass Ihre App die Bibliothek „ADAL4J“ verwendet und Bestimmen der Voreinstellungen für Maven
+Hier konfigurieren wir ADAL4J für die Verwendung des OpenID Connect-Authentifizierungsprotokolls.  ADAL4J wird unter anderem für die Ausgabe von Anmelde- und Abmeldeanforderungen, für die Verwaltung der Benutzersitzungen und für das Abrufen von Benutzerinformationen verwendet.
 
 * Öffnen oder erstellen Sie `pom.xml` im Stammverzeichnis des Projekts, suchen Sie `// TODO: provide dependencies for Maven`, und ersetzen Sie es durch Folgendes:
 
@@ -167,10 +170,10 @@ Hier konfigurieren wir ADAL4J für die Verwendung des OpenID Connect-Authentifiz
 ```
 
 
-## 3\. Erstellen Sie Java-Webanwendungsdateien (WEB-INF)
-Hier konfigurieren wir die Java-Web-App für die Verwendung des OpenID Connect-Authentifizierungsprotokolls. Die Bibliothek „ADAL4J“ wird unter anderem für die Ausgabe von Anmelde- und Abmeldeanforderungen, für die Verwaltung der Benutzersitzungen und zum Abrufen von Benutzerinformationen verwendet.
+## <a name="3-create-the-java-web-application-files-web-inf"></a>3. Erstellen Sie  Java-Webanwendungsdateien (WEB-INF)
+Hier konfigurieren wir die Java-Web-App für die Verwendung des OpenID Connect-Authentifizierungsprotokolls.  Die Bibliothek „ADAL4J“ wird unter anderem für die Ausgabe von Anmelde- und Abmeldeanforderungen, für die Verwaltung der Benutzersitzungen und zum Abrufen von Benutzerinformationen verwendet.
 
-* Öffnen Sie zunächst die Datei `web.xml` unter `\webapp\WEB-INF`, und geben Sie die Konfigurationswerte Ihrer App in die XML-Datei ein.
+* Öffnen Sie zunächst die Datei `web.xml` unter `\webapp\WEB-INF\`, und geben Sie die Konfigurationswerte Ihrer App in die XML-Datei ein.
 
 Die Datei sollte folgendermaßen aussehen:
 
@@ -178,7 +181,7 @@ Die Datei sollte folgendermaßen aussehen:
 <?xml version="1.0"?>
 <web-app id="WebApp_ID" version="2.4"
     xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
     http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <display-name>Archetype Created Web Application</display-name>
     <context-param>
@@ -231,18 +234,18 @@ Die Datei sollte folgendermaßen aussehen:
 ```
 
 
-    -    The `YOUR_CLIENT_ID` is the **Application Id** assigned to your app in the registration portal.
-    -    The `YOUR_CLIENT_SECRET` is the **Application Secret**  you created in the portal.
-    - The `YOUR_TENANT_NAME` is the **tenant name** of your app, e.g. contoso.onmicrosoft.com
+    -    `YOUR_CLIENT_ID` ist die **Anwendungs-ID** , die Ihrer App im Registrierungsportal zugewiesen ist.
+    -    `YOUR_CLIENT_SECRET` ist das **Anwendungsgeheimnis**, das Sie im Portal erstellt haben.
+    - `YOUR_TENANT_NAME` ist der **Mandantenname** Ihrer App, z.B. „contoso.onmicrosoft.com“.
 
 Lassen Sie den Rest der Konfigurationsparameter unverändert.
 
 > [!NOTE]
 > Aus der XML-Datei ist ersichtlich, dass wir eine JSP/Servlet-Web-App namens `mvc-dispatcher` schreiben, die den `BasicFilter` verwendet, wenn wir die /secure-URL besuchen. Im restlichen Text sehen Sie, dass /secure als Bereich für geschützte Inhalte genutzt wird und die Authentifizierung bei Azure Active Directory erzwingt.
-> 
-> 
+>
+>
 
-* Erstellen Sie als Nächstes die Datei `mvc-dispatcher-servlet.xml` unter `\webapp\WEB-INF`, und geben Sie Folgendes ein:
+* Erstellen Sie als Nächstes die Datei `mvc-dispatcher-servlet.xml` unter `\webapp\WEB-INF\`, und geben Sie Folgendes ein:
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -251,7 +254,7 @@ Lassen Sie den Rest der Konfigurationsparameter unverändert.
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:component-scan base-package="com.microsoft.aad.adal4jsample" />
@@ -271,14 +274,14 @@ Lassen Sie den Rest der Konfigurationsparameter unverändert.
 
 Das dient dazu, dass die Web-App Spring verwendet und die im Folgenden erstellte .JSP-Datei finden kann.
 
-## 4\. Erstellen der Java JSP-Ansichtsdateien (für BasicFilter MVC)
+## <a name="4-create-the-java-jsp-view-files-for-basicfilter-mvc"></a>4. Erstellen der Java JSP-Ansichtsdateien (für BasicFilter MVC)
 Die Einrichtung unserer Web-App in WEB-INF ist erst zur Hälfte abgeschlossen. Als Nächstes müssen wir die JavaServer Pages-Dateien erstellen, die – wie in der Konfiguration bereits erwähnt – von der Web-App ausgeführt werden.
 
 Wie Sie sich bestimmt erinnern, haben wir Java mitgeteilt, dass es eine `/`-Ressource gibt, die JSP-Dateien lädt, und eine `/secure`-Ressource, die einen Filter namens `BasicFilter` durchläuft.
 
 Und diese möchten wir jetzt erstellen.
 
-* Erstellen Sie zunächst die Datei `index.jsp` unter `\webapp`, und fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
+* Erstellen Sie zunächst die Datei `index.jsp` unter `\webapp\`, und fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
 
 ```jsp
 <html>
@@ -344,22 +347,22 @@ Wie Sie sehen, wird diese Seite zu bestimmten Anforderungen umgeleitet, die unse
 
 Jetzt müssen wir natürlich noch unsere Java-Dateien einrichten, damit das Servlet auch funktioniert.
 
-## 5\. Erstellen von Java- Hilfedateien (für BasicFilter MVC)
+## <a name="5-create-some-java-helper-files-for-basicfilter-mvc"></a>5. Erstellen von Java- Hilfedateien (für BasicFilter MVC)
 Unser Ziel ist es, Java-Dateien zu erstellen, die:
 
 1. Das An- und Abmelden des Benutzers ermöglichen
 2. Daten über den Benutzer erfassen
 
 > [!NOTE]
-> Damit wir Daten über den Benutzer erhalten, müssen wir die Graph-API von Azure Active Directory verwenden. Die Graph-API ist ein sicherer Webdienst, den Sie zum Erfassen von Daten über Ihr Unternehmen, einschließlich einzelne Benutzer, verwenden können. Dies ist eine bessere Option als das Einfügen sensibler Daten in Token. Es stellt nämlich sicher, dass der Benutzer, der die Daten anfordert, autorisiert ist und Personen, die in Besitz des Token gelangen (z. B. von einem Jailbreak-Gerät oder über den Browsercache auf einem Desktop), keine wichtigen Daten über den Benutzer oder das Unternehmen daraus erhalten.
-> 
-> 
+> Damit wir Daten über den Benutzer erhalten, müssen wir die Graph-API von Azure Active Directory verwenden. Die Graph-API ist ein sicherer Webdienst, den Sie zum Erfassen von Daten über Ihr Unternehmen, einschließlich einzelne Benutzer, verwenden können. Dies ist eine bessere Option als das Einfügen sensibler Daten in Token. Es stellt nämlich sicher, dass der Benutzer, der die Daten anfordert, autorisiert ist und Personen, die in Besitz des Token gelangen (z. B. von einem Jailbreak-Gerät oder über den Browsercache auf einem Desktop), keine wichtigen Daten über den Benutzer oder das Unternehmen daraus erhalten.
+>
+>
 
 Für diese Aufgabe können wir Java-Dateien erstellen:
 
 1. Erstellen Sie in Ihrem Stammverzeichnis einen Ordner namens „adal4jsample“, um alle Java-Dateien zu speichern.
 
-Wir verwenden den Namespace `com.microsoft.aad.adal4jsample` in den Java-Dateien. Die meisten IDEs erstellen dafür eine verschachtelte Ordnerstruktur (z. B. `/com/microsoft/aad/adal4jsample`). Dies können Sie auch tun, es ist aber nicht erforderlich.
+Wir verwenden den Namespace `com.microsoft.aad.adal4jsample` in den Java-Dateien. Die meisten IDEs erstellen dafür eine verschachtelte Ordnerstruktur (z. B. `/com/microsoft/aad/adal4jsample`). Dies können Sie auch tun, es ist aber nicht erforderlich.
 
 1. Erstellen Sie in diesem Ordner eine Datei namens `JSONHelper.java`, die wir beim Analysieren von JSON-Daten von den Token verwenden. Fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
 
@@ -383,9 +386,9 @@ import org.json.JSONObject;
 /**
  * This class provides the methods to parse JSON Data from a JSON Formatted
  * String.
- * 
+ *
  * @author Azure Active Directory Contributor
- * 
+ *
  */
 public class JSONHelper {
 
@@ -398,7 +401,7 @@ public class JSONHelper {
     /**
      * This method parses an JSON Array out of a collection of JSON Objects
      * within a string.
-     * 
+     *
      * @param jSonData
      *            The JSON String that holds the collection.
      * @return An JSON Array that would contains all the collection object.
@@ -413,7 +416,7 @@ public class JSONHelper {
     /**
      * This method parses an JSON Object out of a collection of JSON Objects
      * within a string
-     * 
+     *
      * @param jsonObject
      * @return An JSON Object that would contains the DirectoryObject.
      * @throws Exception
@@ -426,7 +429,7 @@ public class JSONHelper {
 
     /**
      * This method parses the skip token from a json formatted string.
-     * 
+     *
      * @param jsonData
      *            The JSON Formatted String.
      * @return The skipToken.
@@ -470,7 +473,7 @@ public class JSONHelper {
     /**
      * This method would create a string consisting of a JSON document with all
      * the necessary elements set from the HttpServletRequest request.
-     * 
+     *
      * @param request
      *            The HttpServletRequest
      * @return the string containing the JSON document.
@@ -500,7 +503,7 @@ public class JSONHelper {
                         }
                     } else {
                         if (fieldName.equalsIgnoreCase("password")) {
-                            obj.put("passwordProfile", new JSONObject("{"password": "" + param + ""}"));
+                            obj.put("passwordProfile", new JSONObject("{\"password\": \"" + param + "\"}"));
                         } else {
                             obj.put(fieldName, param);
 
@@ -519,7 +522,7 @@ public class JSONHelper {
     }
 
     /**
-     * 
+     *
      * @param key
      * @param value
      * @return string format of this JSON obje
@@ -540,7 +543,7 @@ public class JSONHelper {
     /**
      * This is a generic method that copies the simple attribute values from an
      * argument jsonObject to an argument generic object.
-     * 
+     *
      * @param jsonObject
      *            The jsonObject from where the attributes are to be copied.
      * @param destObject
@@ -584,7 +587,7 @@ public class JSONHelper {
 
 ```
 
-1. Erstellen Sie als Nächstes eine Datei namens `HttpClientHelper.java`, die wir beim Analysieren von HTTP-Daten vom AAD-Endpunkt verwenden. Fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
+1. Erstellen Sie als Nächstes eine Datei namens `HttpClientHelper.java` , die wir beim Analysieren von HTTP-Daten vom AAD-Endpunkt verwenden. Fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
 
 ```Java
 
@@ -603,9 +606,9 @@ import org.json.JSONObject;
 
 /**
  * This is Helper class for all RestClient class.
- * 
+ *
  * @author Azure Active Directory Contributor
- * 
+ *
  */
 public class HttpClientHelper {
 
@@ -672,7 +675,7 @@ public class HttpClientHelper {
 
     /**
      * for bad response, whose responseCode is not 200 level
-     * 
+     *
      * @param responseCode
      * @param errorCode
      * @param errorMsg
@@ -690,7 +693,7 @@ public class HttpClientHelper {
 
     /**
      * for bad response, whose responseCode is not 200 level
-     * 
+     *
      * @param responseCode
      * @param errorCode
      * @param errorMsg
@@ -711,7 +714,7 @@ public class HttpClientHelper {
 
     /**
      * for good response
-     * 
+     *
      * @param responseCode
      * @param responseMsg
      * @return
@@ -740,10 +743,10 @@ public class HttpClientHelper {
 
 ```
 
-## 6\. Erstellen der Graph-API-Modelldateien (für BasicFilter MVC)
+## <a name="6-create-the-java-graph-api-model-files-for-basicfilter-mvc"></a>6. Erstellen der Graph-API-Modelldateien (für BasicFilter MVC)
 Wie bereits erwähnt, wird Graph-API zum Abrufen von Daten über den angemeldeten Benutzer verwendet. Das ist einfacher, wenn wir sowohl eine Datei erstellen, die ein **Verzeichnisobjekt** darstellt, als auch eine separate Datei, die den **Benutzer** darstellt. So kann das OO-Muster von Java genutzt werden.
 
-1. Erstellen Sie eine Datei namens `DirectoryObject.java`, die grundlegende Informationen zu jedem DirectoryObject speichert (dies kann später für beliebige andere Graph-Abfragen verwendet werden). Fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
+1. Erstellen Sie eine Datei namens `DirectoryObject.java` , die grundlegende Informationen zu jedem DirectoryObject speichert (dies kann später für beliebige andere Graph-Abfragen verwendet werden). Fügen Sie mit Ausschneiden/Einfügen Folgendes ein:
 
 ```Java
 
@@ -760,7 +763,7 @@ public abstract class DirectoryObject {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public abstract String getObjectId();
@@ -771,25 +774,25 @@ public abstract class DirectoryObject {
     public abstract void setObjectId(String objectId);
 
     /**
-     * 
+     *
      * @return
      */
     public abstract String getObjectType();
 
     /**
-     * 
+     *
      * @param objectType
      */
     public abstract void setObjectType(String objectType);
 
     /**
-     * 
+     *
      * @return
      */
     public abstract String getDisplayName();
 
     /**
-     * 
+     *
      * @param displayName
      */
     public abstract void setDisplayName(String displayName);
@@ -857,10 +860,10 @@ public class User extends DirectoryObject{
     // The directReports holds a list of directReports
     private ArrayList<User> directReports;
 
-    // The groups holds a list of group entity this user belongs to. 
+    // The groups holds a list of group entity this user belongs to.
     private ArrayList<Group> groups;
 
-    // The roles holds a list of role entity this user belongs to. 
+    // The roles holds a list of role entity this user belongs to.
     private ArrayList<Group> roles;
 
 
@@ -1306,7 +1309,7 @@ public class User extends DirectoryObject{
 //
 //    
 //    /**
-//     *  @return The objectId of this direct report entry. 
+//     *  @return The objectId of this direct report entry.
 //     */
 //    public String getObjectId() {
 //        return objectId;
@@ -1316,12 +1319,12 @@ public class User extends DirectoryObject{
 
 ```
 
-## 7\. Erstellen von Authentifizierungsmodell/Controller-Dateien (für BasicFilter)
-Java ist recht umfassend, aber wir haben es fast geschafft. Bevor wir als Letztes das BasicFilter-Servlet zum Verarbeiten der Anforderungen erstellen, erstellen wir noch ein paar Hilfedateien für die Bibliothek `ADAL4J`.
+## <a name="7-create-the-authentication-modelcontroller-files-for-basicfilter"></a>7. Erstellen von Authentifizierungsmodell/Controller-Dateien (für BasicFilter)
+Java ist recht umfassend, aber wir haben es fast geschafft. Bevor wir als Letztes das BasicFilter-Servlet zum Verarbeiten der Anforderungen erstellen, erstellen wir noch ein paar Hilfedateien für die Bibliothek `ADAL4J` .
 
-1. Erstellen Sie eine Datei namens `AuthHelper.java`, die Methoden umfasst, mit denen der Status des angemeldeten Benutzers bestimmt werden kann. Das umfasst:
+1. Erstellen Sie eine Datei namens `AuthHelper.java` , die Methoden umfasst, mit denen der Status des angemeldeten Benutzers bestimmt werden kann. Das umfasst:
 
-* Die `isAuthenticated()`-Methode gibt an, ob der Benutzer angemeldet ist.
+* `isAuthenticated()` -Methode gibt an, ob der Benutzer angemeldet ist.
 * `containsAuthenticationData()` gibt an, ob das Token Daten beinhaltet.
 * `isAuthenticationSuccessful()` gibt an, ob die Authentifizierung des Benutzers erfolgreich war.
 
@@ -1470,10 +1473,10 @@ public class AadController {
 
 ```
 
-## 8\. Erstellen einer BasicFilter-Datei (für BasicFilter MVC)
+## <a name="8-create-the-basicfilter-file-for-basicfilter-mvc"></a>8. Erstellen einer BasicFilter-Datei (für BasicFilter MVC)
 Nun können wir die BasicFilter-Datei zum Verwalten unserer Anforderungen aus unserer Ansicht erstellen (JSP-Dateien).
 
-Erstellen Sie eine Datei namens `BasicFilter.java`, die Folgendes enthält:
+Erstellen Sie eine Datei namens `BasicFilter.java` , die Folgendes enthält:
 
 ```Java
 
@@ -1718,13 +1721,13 @@ public class BasicFilter implements Filter {
 Dieses Servlet stellt alle Methoden bereit, die `ADAL4J` von der Anwendung für die Ausführung erwartet. Dies umfasst:
 
 * `getAccessTokenFromClientCredentials()` – bezieht das Zugriffstoken vom geheimen Schlüssel
-* `getAccessTokenFromRefreshToken()`: bezieht das Zugriffstoken von einem Aktualisierungstoken
-* `getAccessToken()`: bezieht das Zugriffstoken von einem OpenID Connect-Ablauf (von uns verwendet)
-* `createSessionPrincipal()`: erstellt einen Prinzipal, den wir für den Graph-API-Zugriff verwenden
-* `getRedirectUrl()`: ruft die redirectURL ab und vergleicht sie mit dem im Portal eingegebenen Wert
+* `getAccessTokenFromRefreshToken()` : bezieht das Zugriffstoken von einem Aktualisierungstoken
+* `getAccessToken()` : bezieht das Zugriffstoken von einem OpenID Connect-Ablauf (von uns verwendet)
+* `createSessionPrincipal()` : erstellt einen Prinzipal, den wir für den Graph-API-Zugriff verwenden
+* `getRedirectUrl()` : ruft die redirectURL ab und vergleicht sie mit dem im Portal eingegebenen Wert
 
-## Kompilieren und Ausführen des Beispiels in Tomcat
-Wechseln Sie zurück zum Stammverzeichnis, und führen Sie den folgenden Befehl aus, um mit `maven` das gerade zusammengestellte Beispiel zu erstellen. Dabei wird die Datei `pom.xml` verwendet, die Sie für Abhängigkeiten erstellt haben.
+## <a name="compile-and-run-the-sample-in-tomcat"></a>Kompilieren und Ausführen des Beispiels in Tomcat
+Wechseln Sie zurück zum Stammverzeichnis, und führen Sie den folgenden Befehl aus, um mit `maven`das gerade zusammengestellte Beispiel zu erstellen. Dabei wird die Datei `pom.xml` verwendet, die Sie für Abhängigkeiten erstellt haben.
 
 `$ mvn package`
 
@@ -1733,15 +1736,19 @@ In Ihrem Verzeichnis `/targets` sollte sich nun die Datei `adal4jsample.war` bef
 `http://localhost:8080/adal4jsample/`
 
 > [!NOTE]
-> Mit den aktuellen Tomcat-Servern können WAR-Dateien einfach bereitgestellt werden. Navigieren Sie einfach zu `http://localhost:8080/manager/`, und führen Sie die Schritte zum Hochladen der Datei `adal4jsample.war` aus. Sie wird automatisch mit dem richtigen Endpunkt bereitgestellt.
-> 
-> 
+> Mit den aktuellen Tomcat-Servern können WAR-Dateien einfach bereitgestellt werden. Navigieren Sie einfach zu `http://localhost:8080/manager/`, und führen Sie die Schritte zum Hochladen der Datei „adal4jsample.war“ aus. Sie wird automatisch mit dem richtigen Endpunkt bereitgestellt.
+>
+>
 
-## Nächste Schritte
-Glückwunsch! Sie haben nun eine funktionierende Java-Anwendung, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann. Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen.
+## <a name="next-steps"></a>Nächste Schritte
+Glückwunsch! Sie haben nun eine funktionierende Java-Anwendung, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann.  Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen.
 
 Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswerte) [hier als ZIP-Datei bereit](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip). Sie können es alternativ aus GitHub klonen:
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO5-->
+
+

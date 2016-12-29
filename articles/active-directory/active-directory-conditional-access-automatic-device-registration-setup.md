@@ -1,132 +1,235 @@
 ---
-title: Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory | Microsoft Docs
-description: IT-Administratoren können Ihre in Domänen eingebundenen Windows-Geräte automatisch und im Hintergrund bei Azure Active Directory (Azure AD) registrieren.
+title: "Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory | Microsoft-Dokumentation"
+description: "Einrichten Ihrer in Domänen eingebundenen Windows-Geräte für die automatische und im Hintergrund durchgeführte Registrierung bei Azure Active Directory."
 services: active-directory
-documentationcenter: ''
-author: markusvi
+documentationcenter: 
+author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 12/05/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: f26ca6e30e3070b2d2ee1861b88c52013158ba03
+ms.openlocfilehash: 45f52d4e02896d38726552adbe81261551151683
+
 
 ---
-# <a name="how-to-setup-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>Einrichten der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten bei Azure Active Directory
-Windows-Computer, die in die Domäne eingebunden sind, müssen für Azure AD registriert werden, um den [gerätebasierten bedingten Zugriff für Azure Active Directory](active-directory-conditional-access.md)zu aktivieren.
+# <a name="how-to-configure-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>Es wird beschrieben, wie Sie die automatische Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory konfigurieren.
 
-Es sind Aktualisierungen vorhanden, wie z.B. die Möglichkeit, ein Geschäfts- oder Schulkonto zu verwenden, um erweiterte SSO-Funktionen in Azure AD-Apps nutzen zu können, geräteübergreifendes Enterprise Roaming von Einstellungen, Verwendung des Windows Store für Unternehmen sowie eine sicherere Authentifizierung und praktische Anmeldung mit Windows Hello. 
+Wenn Sie den [gerätebasierten bedingten Zugriff über Azure Active Directory](active-directory-conditional-access.md) verwenden möchten, müssen Ihre Computer in Azure Active Directory (Azure AD) registriert werden. Dieser Artikel enthält die Schritte zum Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure AD in Ihrer Organisation.
 
 > [!NOTE]
-> Das Windows 10 November 2015 Update unterstützt einige der Funktionen für eine verbesserte Benutzerumgebung, vollständige Unterstützung des gerätebasierten bedingten Zugriffs bietet jedoch das Anniversary Update.  
-> Weitere Informationen zum bedingten Zugriff finden Sie unter [Gerätebasierter bedingter Zugriff für Azure Active Directory](active-directory-conditional-access.md).  
-> Weitere Informationen zu Windows 10-Geräten am Arbeitsplatz und zum Benutzererlebnis bei der Registrierung für Azure AD finden Sie unter [Windows 10 für Unternehmen: Möglichkeiten der geschäftlichen Nutzung von Geräten](active-directory-azureadjoin-windows10-devices-overview.md). 
+> Der November-Update für Windows 10 bietet bereits einige der erweiterten Benutzererfahrungen in Azure AD, aber das Windows 10 Anniversary Update unterstützt den gerätebasierten bedingten Zugriff vollständig. Weitere Informationen zum bedingten Zugriff finden Sie unter [Gerätebasierter bedingter Zugriff für Azure Active Directory](active-directory-conditional-access.md). Weitere Informationen zu Windows 10-Geräten am Arbeitsplatz und dazu, wie Benutzer Windows 10-Geräte bei Azure AD registrieren, finden Sie unter [Windows 10 für Unternehmen: Möglichkeiten der geschäftlichen Nutzung von Geräten](active-directory-azureadjoin-windows10-devices-overview.md).
 > 
 > 
 
-Die Registrierung wird u.a. von folgenden früheren Windows-Versionen unterstützt: 
+Für Geräte, auf denen Windows ausgeführt wird, können Sie einige frühere Versionen von Windows registrieren, z.B.:
 
-* Windows 8.1 
-* Windows 7 
+- Windows 8.1
+- Windows 7
 
-Wenn Windows Server-Computer als Desktop verwendet werden (z.B. wenn ein Entwickler einen Windows Server-Computer als primären Computer verwendet), können folgende Plattformen registriert werden: 
+Für Geräte, auf denen Windows Server ausgeführt wird, können Sie die folgenden Plattformen registrieren:
 
-* Windows Server 2016 
-* Windows Server 2012 R2 
-* Windows Server 2012 
-* Windows Server 2008 R2 
+- Windows Server 2016
+- Windows Server 2012 R2
+- Windows Server 2012
+- Windows Server 2008 R2
 
-Im Folgenden wird beschrieben, welche Schritte Sie in Ihrer Umgebung ausführen müssen, um die Registrierung von Windows-Geräten, die in die Domäne eingebunden sind, für Azure AD in Ihrer Organisation zu aktivieren. Sie sehen: 
 
-1. Voraussetzungen 
-2. Bereitstellung und Rollout 
-3. Problembehandlung 
-4. Häufig gestellte Fragen 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Die wichtigste Voraussetzung für die Aktivierung der automatischen Registrierung von in die Domäne eingebundenen Geräten für Azure AD ist eine aktuelle Version von Azure AD Connect. 
 
-Abhängig davon, wie Sie Azure AD Connect bereitgestellt haben (Express- oder benutzerdefinierte Installation bzw. direktes Upgrade), wurden die folgenden erforderlichen Komponenten möglicherweise automatisch konfiguriert: 
+Die wichtigste Voraussetzung für die automatische Registrierung von in die Domäne eingebundenen Geräten mit Azure AD ist eine aktuelle Version von Azure Active Directory Connect (Azure AD Connect).
 
-1. Dienstverbindungspunkt in der lokalen Active Directory-Bereitstellung für die Ermittlung von Azure AD-Mandanteninformationen von Computern, die in Azure AD registriert werden. 
-2. AD FS-Ausstellungstransformationsregeln für die Computerauthentifizierung bei der Registrierung (gilt für Verbundkonfigurationen). 
+Abhängig davon, wie Sie Azure AD Connect bereitgestellt haben (Express- oder benutzerdefinierte Installation bzw. direktes Upgrade), wurden die folgenden Voraussetzungen möglicherweise automatisch konfiguriert:
 
-Wenn in Ihrer Organisation Computer unter einem anderen Betriebssystem als Windows 10 in die Domäne eingebunden sind, müssen folgende Voraussetzungen erfüllt sein: 
+- **Dienstverbindungspunkt in der lokalen Active Directory-Instanz:** Für die Ermittlung von Azure AD-Mandanteninformationen mit Computern, die für Azure AD registriert werden.
+ 
+- **AD FS-Ausstellungstransformationsregeln (Active Directory Federation Services):** Für die Computerauthentifizierung bei der Registrierung (gilt für Verbundkonfigurationen).
 
-1. Stellen Sie sicher, dass die Richtlinie, die Benutzern die Geräteregistrierung ermöglicht, in Azure AD aktiviert ist. 
-2. Stellen Sie sicher, dass die integrierte Windows-Authentifizierung (WIA) als gültige Alternative zur mehrstufigen Authentifizierung (MFA) in AD FS festgelegt ist. 
+Führen Sie die folgenden Schritte aus, wenn einige Geräte in Ihrer Organisation keine in die Domäne eingebundenen Windows 10-Geräte sind:
 
-## <a name="service-connection-point-for-discovery-of-azure-ad-tenant"></a>Dienstverbindungspunkt für die Ermittlung von Azure AD-Mandanten
-Ein Dienstverbindungspunktobjekt, das Ermittlungsinformationen über den Azure AD-Mandanten enthält, bei dem Computer registriert werden sollen, muss in der Partition für den Konfigurationsnamenskontext der Gesamtstruktur der Domäne vorhanden sein, in die Computer eingebunden sind. In einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen muss der Dienstverbindungspunkt in allen Gesamtstrukturen vorhanden sein, denen Computer beigetreten sind. 
+* Festlegen einer Richtlinie in Azure AD, um Benutzern das Registrieren von Geräten zu ermöglichen
+* Einrichten der integrierten Windows-Authentifizierung (IWA) als gültige Alternative zur Multi-Factor Authentication (MFA) in AD FS
 
-Der Dienstverbindungspunkt sollte sich in Active Directory an folgender Stelle befinden: 
+## <a name="step-1-configure-service-connection-point"></a>Schritt 1: Konfigurieren des Dienstverbindungspunkts 
 
-    CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,[Configuration Naming Context] 
+Ein Dienstverbindungspunkt-Objekt (Service Connection Point, SCP) muss in der Partition für den Konfigurationsnamenskontext der Computerdomäne vorhanden sein. Der Dienstverbindungspunkt enthält die ermittelten Informationen zum Azure AD-Mandanten, beim dem die Computer registriert werden. In einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen muss der Dienstverbindungspunkt in allen Gesamtstrukturen vorhanden sein, die in die Domäne eingebundene Computer enthalten.
+
+Der Dienstverbindungspunkt befindet sich unter:  
+
+**CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,[Ihr Konfigurationsnamenskontext]**
+
+Für eine Gesamtstruktur mit dem Active Directory-Domänennamen *example.com* lautet der Konfigurationsnamenskontext:  
+
+**CN=Configuration,DC=example,DC=com**
+
+Mit dem folgenden Windows PowerShell-Skript können Sie das Vorhandensein des Objekts überprüfen und die Ermittlungswerte abrufen: 
+
+    $scp = New-Object System.DirectoryServices.DirectoryEntry;
+
+    $scp.Path = "LDAP://CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=example,DC=com";
+
+    $scp.Keywords;
+
+Die Ausgabe von **$scp.Keywords** enthält die Azure AD-Mandanteninformationen, z.B.:
+
+azureADName:microsoft.com  
+azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
+
+Wenn der Dienstverbindungspunkt nicht vorhanden ist, erstellen Sie ihn mithilfe des folgenden PowerShell-Skripts auf Ihrem Azure AD Connect-Server:
+
+    Import-Module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1";
+
+    $aadAdminCred = Get-Credential;
+
+    Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
+
+
+
+**Hinweise:**
+
+- Beim Ausführen von **$aadAdminCred = Get-Credential** müssen Sie einen Benutzernamen eingeben. Verwenden Sie für den Benutzernamen das folgende Format: **user@example.com** 
+
+
+- Ersetzen Sie beim Ausführen des Cmdlets **Initialize-ADSyncDomainJoinedComputerSync** den [*Connectorkontonamen*] durch das Domänenkonto, das als Active Directory-Connectorkonto verwendet wird.
+  
+- Das Cmdlet verwendet das Active Directory-PowerShell-Modul, das von Active Directory-Webdiensten auf einem Domänencontroller abhängt. Active Directory-Webdienste werden auf Domänencontrollern unter Windows Server 2008 R2 und höher unterstützt. Verwenden Sie für Domänencontroller in Windows Server 2008 oder früher die API System.DirectoryServices mithilfe von PowerShell, um den Dienstverbindungspunkt zu erstellen, und weisen Sie dann die Werte der Schlüsselwörter zu.
+ 
+ 
+
+
+
+##<a name="step-2-register-your-devices"></a>Schritt 2: Registrieren der Geräte
+
+Die richtigen Schritte zum Registrieren des Geräts hängen davon ab, ob für Ihre Organisation ein Verbund verwendet wird. 
+
+
+### <a name="device-registration-in-non-federated-organizations"></a>Registrierung von Geräten in Organisationen ohne Verbund
+
+Die Registrierung von Geräten in Organisationen ohne Verbund wird nur unterstützt, wenn folgende Voraussetzungen erfüllt sind:
+
+- Auf dem Gerät wird entweder Windows 10 oder Windows Server 2016 ausgeführt
+- Die Geräte sind in eine Domäne eingebunden
+- Die Kennwortsynchronisierung mit Azure AD Connect ist aktiviert
+
+Wenn diese Anforderungen vollständig erfüllt sind, müssen Sie nichts weiter unternehmen, um die Geräte zu registrieren.  
+
+
+### <a name="device-registration-in-federated-organizations"></a>Registrierung von Geräten in Organisationen mit Verbund
+
+In einer Azure AD-Verbundkonfiguration benötigen die Geräte AD FS (oder den lokalen Verbundserver) zum Authentifizieren in Azure AD. Sie werden über den Azure Active Directory-Geräteregistrierungsdienst registriert.
+
+Für Windows 10- und Windows Server 2016-Computer ordnet Azure AD Connect das Geräteobjekt in Azure AD dem lokalen Computerkonto-Objekt zu. Die folgenden Ansprüche müssen während der Authentifizierung vorhanden sein, damit der Azure AD-Geräteregistrierungsdienst die Registrierung abschließen und das Geräteobjekt erstellen kann:
+
+- **http://schemas.microsoft.com/ws/2012/01/accounttype**: Enthält den DJ-Wert, der den Prinzipalauthentifikator als in die Domäne eingebundenen Computer identifiziert.
+
+- **http://schemas.microsoft.com/identity/claims/onpremobjectguid**: Enthält den Wert des **objectGUID**-Attributs für das lokale Computerkonto.
+ 
+- **http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid**: Enthält die primäre Sicherheits-ID (SID) des Computers, die dem Wert des **objectSid**-Attributs des lokalen Computerkontos entspricht.
+
+- **http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid**: Enthält den Wert, mit dem Azure AD die Vertrauensstellung für den Token bewertet, das von AD FS oder vom lokalen Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Dies ist wichtig, wenn Sie in Azure AD über mehrere überprüfte Domänen verfügen. Bei AD FS verwenden Sie den Wert **http://\<*Domänenname*\>/adfs/services/trust/**, wobei **\<Domänenname\>** der überprüfte Domänenname in Azure AD ist.
+
+Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md).  
+Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain)-Cmdlet verwenden. 
+
+![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
+
+
+In Domänen eingebundene Windows 10- und Windows Server 2016-Computer authentifizieren sich mit der integrierten Windows-Authentifizierung gegenüber einem aktiven, von AD FS gehosteten WS-Trust-Endpunkt. Stellen Sie sicher, dass dieser Endpunkt aktiviert ist. Wenn Sie einen Webauthentifizierungsproxy verwenden, stellen Sie außerdem sicher, dass dieser Endpunkt durch den Proxy veröffentlicht wird. Der Endpunkt ist **adfs/services/trust/13/windowstransport**. 
+
+Er sollte in der AD FS-Verwaltungskonsole unter **Dienst > Endpunkte** aktiviert werden. Wenn Sie nicht AD FS als lokalen Verbundserver nutzen, befolgen Sie die Anweisungen Ihres Anbieters, um sicherzustellen, dass der entsprechende Endpunkt aktiviert ist. 
+
+
 
 > [!NOTE]
-> Für eine Gesamtstruktur mit dem Active Directory-Domänennamen „example.com“ lautet der Konfigurationsnamenskontext wie folgt: CN=Configuration,DC=example,DC=com 
+> Wenn Sie als lokalen Verbundserver nicht AD FS nutzen, befolgen Sie die Anweisungen Ihres Anbieters, um die Regeln für diese Ansprüche zu erstellen.
 > 
 > 
 
-Sie können das Vorhandensein des Objekts und die Werte für die Ermittlung des Azure AD-Mandanten mit dem folgenden PowerShell-Skript überprüfen (ersetzen Sie den Konfigurationsnamenskontext im Beispiel durch den eigenen): 
-
-    $scp = New-Object System.DirectoryServices.DirectoryEntry; 
-
-    $scp.Path = "LDAP://CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=example,DC=com"; 
-
-    $scp.Keywords; 
-
-Die Ausgabe von $scp.Keywords zeigt die Azure AD-Mandanteninformationen wie folgt an: 
-
-    azureADName:microsoft.com 
-
-    azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47 
-
-Wenn der Dienstverbindungspunkt nicht vorhanden ist, können Sie ihn mithilfe des folgenden PowerShell-Skripts auf dem Azure AD Connect-Server erstellen: 
-
-    Import-Module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1"; 
-
-    $aadAdminCred = Get-Credential; 
-
-    Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred; 
 
 
-> [!NOTE]
-> Verwenden Sie beim Ausführen von „$aadAdminCred = Get-Credential“ das Format user@example.com für den Benutzernamen der Anmeldeinformationen, die eingegeben werden, wenn das Popupfenster „Get-Credential“ angezeigt wird.  
-> Ersetzen Sie beim Ausführen des Cmdlets „Initialize-ADSyncDomainJoinedComputerSync“ den Connectorkontonamen ([connector account name]) durch das Domänenkonto, das als Active Directory-Connectorkonto verwendet wird.  
-> Das obige Cmdlet verwendet das Active Directory-PowerShell-Modul, das von Active Directory-Webdiensten (ADWS) in Domänencontrollern (DCs) abhängt. AD-Webdienste werden in Domänencontrollern mit Windows Server 2008 R2 oder einer höheren Version unterstützt. Wenn Sie über Domänencontroller mit Windows Server 2008 oder früheren Versionen verfügen, können Sie die System.DirectoryServices-API über PowerShell verwenden, um den Dienstverbindungspunkt zu erstellen und die entsprechenden Schlüsselwortwerte zuzuweisen. 
-> 
-> 
 
-## <a name="ad-fs-rules-for-instant-computer-registration-(federated-orgs)"></a>AD FS-Regeln für die sofortige Computerregistrierung (Verbundorganisationen)
-In einer Verbundkonfiguration von Azure AD benötigen Computer AD FS (oder den lokalen Verbundserver) für die Authentifizierung gegenüber Azure AD, um die Registrierung beim Azure-Geräteregistrierungsdienst (Azure DRS) durchzuführen. 
+**Gehen Sie in AD FS wie folgt vor, um die Regeln manuell zu erstellen:**
 
-> [!NOTE]
-> In einer Konfiguration ohne Verbund (d.h. Benutzerkennworthashes, die mit Azure AD synchronisiert sind) werden in die Domäne eingebundene Windows 10- und Windows Server 2016-Computer mithilfe von Anmeldeinformationen gegenüber Azure DRS authentifiziert, die lokal in die Computerkonten geschrieben und über Azure AD Connect an Azure AD übermittelt werden. Informationen zu Computern unter einem anderen Betriebssystem als Windows 10/Windows Server 2016 in einer Konfiguration ohne Verbund finden Sie im Abschnitt zum Windows Installer-Paket für die Registrierung von in Domänen eingebundenen Computern unter einem anderen Betriebssystem als Windows 10/Windows Server 2016 unter „Bereitstellung und Rollout“ weiter unten in diesem Dokument. Dort finden Sie Optionen zur Aktivierung des gerätebasierten bedingten Zugriffs in Ihrer Organisation. 
-> 
-> 
+- Wählen Sie eines der folgenden Windows PowerShell-Skripts aus. 
+- Führen Sie das Windows PowerShell-Skript in einer Sitzung aus, die mit Ihrem Server verbunden ist. 
+- Ersetzen Sie die erste Zeile durch den überprüften Domänennamen Ihrer Organisation in Azure AD.
 
-Für Windows 10- und Windows Server 2016-Computer ordnet Azure AD Connect das Geräteobjekt in Azure AD dem lokalen Computerkonto-Objekt zu. Damit dies funktioniert, müssen die folgenden Ansprüche während der Authentifizierung vorhanden sein, so dass Azure DRS die Registrierung abschließen und das Geräteobjekt erstellen kann: 
 
-* `http://schemas.microsoft.com/ws/2012/01/accounttype` : enthält den Wert „DJ“, der den authentifizierenden Prinzipal als einen in die Domäne eingebundenen Computer identifiziert. 
-* `http://schemas.microsoft.com/identity/claims/onpremobjectguid` : enthält den Wert des Attributs „objectGUID“ im lokalen Computerkonto. 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid` : enthält die primäre SID des Computers, die dem Wert des Attributs „objectSid“ im lokalen Computerkonto entspricht. 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` : enthält den entsprechenden Wert, mit dem Azure AD dem von AD FS oder vom lokalen STS ausgegebenen Token vertrauen kann. Dies ist wichtig für eine Active Directory-Konfiguration mit mehreren Gesamtstrukturen, bei der Computer möglicherweise einer anderen Gesamtstruktur hinzugefügt werden als der, die mit Azure AD verbunden ist (und AD FS oder den lokalen STS enthält). Bei AD FS muss der Wert `http://<domain-name>/adfs/services/trust/` lauten, wobei „\<<domain-name>\>“ der validierte Domänenname in Azure AD ist. 
 
-Um diese Regeln manuell zu erstellen, können Sie in AD FS das folgende PowerShell-Skript in einer Sitzung verwenden, die mit Ihrem Server verbunden ist. Beachten Sie, dass die erste Zeile durch den validierten Domänennamen in Azure AD für Ihre Organisation ersetzt werden muss. 
 
-> [!NOTE]
-> Wenn Sie nicht AD FS als lokalen Verbundserver nutzen, befolgen Sie die Anweisungen Ihres Anbieters, um die entsprechenden Regeln für diese Ansprüche zu erstellen. 
-> 
-> 
+#### <a name="setting-ad-fs-rules-in-a-single-domain-environment"></a>Festlegen von AD FS-Regeln in einer Umgebung mit einer Einzeldomäne
 
-    $validatedDomain = "example.com"      # Replace example.com with your validated domain name in Azure AD 
+Verwenden Sie das folgende Skript, um die AD FS-Regeln hinzuzufügen, falls Sie nur über **eine überprüfte Domäne** verfügen:
+
+
+    <#----------------------------------------------------------------------
+    |   Modify the Azure AD Relying Party to include the claims needed
+    |   for DomainJoin++. The rules include:
+    |   -ObjectGuid
+    |   -AccountType
+    |   -ObjectSid
+    +---------------------------------------------------------------------#>
 
     $rule1 = '@RuleName = "Issue object GUID" 
+
+    c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
+
+    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
+
+    => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/identity/claims/onpremobjectguid"), query = ";objectguid;{0}", param = c2.Value);' 
+
+    $rule2 = '@RuleName = "Issue account type for domain joined computers" 
+
+    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
+
+    => issue(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "DJ");' 
+
+    $rule3 = '@RuleName = "Pass through primary SID" 
+
+    c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
+
+    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
+
+    => issue(claim = c2);' 
+
+    $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:MicrosoftOnline).IssuanceTransformRules 
+
+    $updatedRules = $existingRules + $rule1 + $rule2 + $rule3
+
+    $crSet = New-ADFSClaimRuleSet -ClaimRule $updatedRules 
+
+    Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
+
+
+#### <a name="setting-ad-fs-rules-in-a-multi-domain-environment"></a>Festlegen von AD FS-Regeln in einer Umgebung mit mehreren Domänen
+
+Führen Sie die folgenden Schritte aus, wenn Sie mehr als eine überprüfte Domäne verwenden:
+
+1. Entfernen Sie die vorhandene **IssuerID**-Regel, die mit Azure AD Connect erstellt wurde.  
+Hier ist ein Beispiel für diese Regel angegeben: c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/")); 
+
+
+2. Führen Sie dieses Skript aus: 
+
+        <#----------------------------------------------------------------------  
+        |   Modify the Azure AD Relying Party to include the claims needed  
+        |   for DomainJoin++. The rules include:
+        |   -ObjectGuid
+        |   -AccountType
+        |   -ObjectSid
+        +---------------------------------------------------------------------#>
+
+        $VerifiedDomain = 'example.com'      # Replace example.com with one of your verified domains
+
+        $rule1 = '@RuleName = "Issue object GUID" 
 
         c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
 
@@ -134,123 +237,127 @@ Um diese Regeln manuell zu erstellen, können Sie in AD FS das folgende PowerShe
 
         => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/identity/claims/onpremobjectguid"), query = ";objectguid;{0}", param = c2.Value);' 
 
-    $rule2 = '@RuleName = "Issue account type for domain joined computers" 
+        $rule2 = '@RuleName = "Issue account type for domain joined computers" 
 
-      c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
+        c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
 
-      => issue(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "DJ");' 
+        => issue(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "DJ");' 
 
-    $rule3 = '@RuleName = "Pass through primary SID" 
+        $rule3 = '@RuleName = "Pass through primary SID" 
 
-      c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
+        c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
 
-      c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
+        c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
 
-      => issue(claim = c2);' 
+        => issue(claim = c2);' 
 
-    $rule4 = '@RuleName = "Issue AccountType with the value User when it’s not a computer account" 
+        $rule4 = '@RuleName = "Issue AccountType with the value User when its not a computer account" 
 
-      NOT EXISTS([Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "DJ"]) 
+        NOT EXISTS([Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "DJ"]) 
 
-      => add(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "User");' 
+        => add(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "User");' 
 
-    $rule5 = '@RuleName = "Capture UPN when AccountType is User and issue the IssuerID" 
+        $rule5 = '@RuleName = "Capture UPN when AccountType is User and issue the IssuerID" 
 
-      c1:[Type == "http://schemas.xmlsoap.org/claims/UPN"] && 
+        c1:[Type == "http://schemas.xmlsoap.org/claims/UPN"] && 
 
-      c2:[Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "User"] 
+        c2:[Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "User"] 
 
-      => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c1.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));' 
+        => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c1.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));' 
 
-    $rule6 = '@RuleName = "Update issuer for DJ computer auth" 
+        $rule6 = '@RuleName = "Update issuer for DJ computer auth" 
 
-      c1:[Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "DJ"] 
+        c1:[Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "DJ"] 
 
-      => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = "http://'+$validatedDomain+'/adfs/services/trust/");' 
+        => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = "http://'+$VerifiedDomain+'/adfs/services/trust/");' 
 
-    $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:MicrosoftOnline).IssuanceTransformRules 
+        $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:MicrosoftOnline).IssuanceTransformRules 
 
-    $updatedRules = $existingRules + $rule1 + $rule2 + $rule3 + $rule4 + $rule5 + $rule6 
+        $updatedRules = $existingRules + $rule1 + $rule2 + $rule3 + $rule4+ $rule5+  $rule6 
 
-    $crSet = New-ADFSClaimRuleSet -ClaimRule $updatedRules 
+        $crSet = New-ADFSClaimRuleSet -ClaimRule $updatedRules 
 
-    Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
+        Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
 
-> [!NOTE]
-> In Domänen eingebundene Windows 10- und Windows Server 2016-Computer authentifizieren sich mit der integrierten Windows-Authentifizierung gegenüber einem aktiven, von AD FS gehosteten WS-Trust-Endpunkt. Stellen Sie sicher, dass dieser Endpunkt aktiviert ist. Wenn Sie einen Webauthentifizierungsproxy verwenden, stellen Sie außerdem sicher, dass dieser Endpunkt durch den Proxy veröffentlicht wird. Der Endpunkt ist „adfs/services/trust/13/windowstransport“. Er sollte in der AD FS-Verwaltungskonsole unter „Dienst > Endpunkte“ als aktiviert angezeigt werden. Wenn Sie nicht AD FS als lokalen Verbundserver nutzen, befolgen Sie die Anweisungen Ihres Anbieters, um sicherzustellen, dass der entsprechende Endpunkt aktiviert ist. 
-> 
-> 
 
-## <a name="ensure-ad-fs-is-set-up-to-support-authentication-of-device-for-registration"></a>Sicherstellen, dass AD FS für die Unterstützung der Authentifizierung von Geräten für die Registrierung eingerichtet ist
-Stellen Sie für die Geräteregistrierung sicher, dass die integrierte Windows-Authentifizierung (WIA) als gültige Alternative zur mehrstufigen Authentifizierung (MFA) in AD FS festgelegt ist.
 
-Dafür benötigen Sie eine Ausstellungstransformationsregel, die die Authentifizierungsmethode weitergibt.
+## <a name="step-3-setup-ad-fs-for-authentication-of-device-registration"></a>Schritt 3: Einrichten von AD FS für die Authentifizierung von Geräteregistrierungen
 
-1. Öffnen Sie die AD FS-Verwaltungskonsole, und navigieren Sie zu **AD FS > Vertrauensstellungen > Vertrauensstellungen der vertrauenden Seite**. 
-2. Klicken Sie mit der rechten Maustaste auf das Vertrauensstellungsobjekt der vertrauenden Seite, „Microsoft Office 365 Identity Platform“, und wählen Sie dann **Anspruchsregeln bearbeiten**aus.
+Vergewissern Sie sich, dass WIA als gültige Alternative zur Multi-Factor Authentication für die Geräteregistrierung in AD FS festgelegt ist. Dafür benötigen Sie eine Ausstellungstransformationsregel, die die Authentifizierungsmethode weitergibt.
+
+1. Navigieren Sie in der AD FS-Verwaltungskonsole zu **AD FS** > **Vertrauensstellungen** > **Vertrauensstellungen der vertrauenden Seite**.
+2. Klicken Sie mit der rechten Maustaste auf das Vertrauensstellungsobjekt der vertrauenden Seite, „Microsoft Office 365 Identity Platform“, und wählen Sie dann **Anspruchsregeln bearbeiten** aus.
 3. Wählen Sie auf der Registerkarte **Ausstellungstransformationsregeln** die Option **Regel hinzufügen** aus.
-4. Wählen Sie in der Vorlagenliste **Anspruchsregel** die Option **Ansprüche mit benutzerdefinierter Regel senden** aus. 
+4. Wählen Sie in der Vorlagenliste **Anspruchsregel** die Option **Ansprüche mit benutzerdefinierter Regel senden** aus.
 5. Wählen Sie **Weiter**.
-6. Geben Sie **Anspruchsregel für Authentifizierungsmethode** in das Textfeld **Anspruchsregelname** ein.
-7. Geben Sie im Textfeld **Anspruchsregel** Folgendes ein: `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"]
-   => issue(claim = c);`
-8. Öffnen Sie Windows PowerShell auf dem Verbundserver.
-9. Geben Sie den folgenden Befehl ein: 
+6. Geben Sie in das Feld **Anspruchsregelname** den Text **Anspruchsregel für Authentifizierungsmethode** ein.
+7. Geben Sie im Feld **Anspruchsregel** diese Regel ein:  
+**c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);**
+8. Geben Sie auf dem Verbundserver diesen PowerShell-Befehl ein:
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
-**\<RPObjectName>\** ist der Objektname der vertrauenden Seite für Ihr Azure Active Directory-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen „Microsoft Office 365 Identity Platform“.
+**\<RPObjectName\>** ist der Objektname der vertrauenden Seite für Ihr Azure AD-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen **Microsoft Office 365 Identity Platform**.
 
-## <a name="deployment-and-roll-out"></a>Bereitstellung und Rollout
-Nachdem die Voraussetzungen erfüllt worden sind, können in Domänen eingebundene Computer für Azure AD registriert werden. 
 
-In Domänen eingebundene Computer mit Windows 10 Anniversary Update und Windows Server 2016 werden automatisch beim nächsten Neustart oder bei der nächsten Benutzeranmeldung bei Windows für Azure AD registriert. Neue Computer, die der Domäne hinzugefügt werden, werden beim Neustart nach dem Vorgang zum Einbinden des Computers in die Domäne bei Azure AD registriert. 
 
-> [!NOTE]
-> In die Domäne eingebundene Windows 10-Computer werden nur dann automatisch bei Azure AD registriert, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist. Weitere Informationen finden Sie im folgenden Abschnitt. 
-> 
-> 
+##<a name="step-4-deployment-and-rollout"></a>Schritt 4: Bereitstellung und Rollout
 
-Um das Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10/Windows Server 2016 zu steuern, kann ein Gruppenrichtlinienobjekt verwendet werden. Für das Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter einem anderen Betriebssystem als Windows 10 ist ein Windows Installer-Paket verfügbar, das auf ausgewählten Computern bereitgestellt werden kann. 
+Nachdem die Voraussetzungen erfüllt wurden, können in Domänen eingebundene Computer bei Azure AD registriert werden.
+
+In Domänen eingebundene Computer mit Windows 10 Anniversary Update und Windows Server 2016 werden automatisch beim nächsten Geräteneustart oder bei der nächsten Benutzeranmeldung bei Windows für Azure AD registriert. Neue Computer, die der Domäne hinzugefügt werden, werden beim Geräteneustart nach dem Vorgang zum Einbinden des Computers in die Domäne bei Azure AD registriert.
 
 > [!NOTE]
-> Die Gruppenrichtlinie für die Rolloutsteuerung löst auch die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern aus. Sie können die Richtlinie für die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern verwenden oder, wenn Sie über eine Kombination aus Windows 7- oder Windows Server-Versionen verfügen, die Registrierung aller Computer unter einem anderen Betriebssystem als Windows 10/Windows Server 2016 über das Windows Installer-Paket aktivieren. 
+> In die Domäne eingebundene Windows 10-Computer werden nur dann automatisch bei Azure AD registriert, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist.
 > 
 > 
 
-### <a name="group-policy-object-to-control-roll-out-of-automatic-registration"></a>Gruppenrichtlinienobjekt, um das Rollout der automatischen Registrierung zu steuern
-Um das Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern bei Azure AD zu steuern, können Sie die in die Domäne „Gruppenrichtlinienregistrierung“ eingebundenen Computer als Geräte für die zu registrierenden Computer bereitstellen. Beispielsweise können Sie die Richtlinie basierend auf einer Sicherheitsgruppe oder in einer Organisationseinheit (OE) bereitstellen. 
+Sie können ein Gruppenrichtlinienobjekt verwenden, um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10/Windows Server 2016 zu steuern. 
 
-Um die Richtlinie festzulegen, führen Sie die folgenden Schritte aus: 
+Für den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter einem anderen Betriebssystem als Windows 10 ist ein Windows Installer-Paket verfügbar, das auf den von Ihnen ausgewählten Computern bereitgestellt werden kann.
 
-1. Öffnen Sie den Server-Manager, und navigieren Sie zu **Tools > Gruppenrichtlinienverwaltung**. 
-2. Navigieren Sie von der Gruppenrichtlinienverwaltung aus zu dem Domänenknoten, der der Domäne entspricht, in der Sie die automatische Registrierung von Windows 10- oder Windows Server 2016-Computern aktivieren möchten. 
-3. Klicken Sie mit der rechten Maustaste auf **Gruppenrichtlinienobjekte**, und wählen Sie dann **Neu** aus. 
-4. Geben Sie für das Gruppenrichtlinienobjekt einen Namen ein, beispielsweise *Automatische Registrierung bei Azure AD*. Klicken Sie auf OK. 
-5. Klicken Sie mit der rechten Maustaste auf Ihr neues Gruppenrichtlinienobjekt, und wählen Sie dann **Bearbeiten**aus. 
-6. Navigieren Sie zu **Computerkonfiguration > Richtlinien > Administrative Vorlagen > Windows-Komponenten > Geräteregistrierung**, klicken Sie mit der rechten Maustaste auf **In die Domäne eingebundene Computer als Geräte registrieren**, und wählen Sie dann **Bearbeiten** aus. 
+> [!NOTE]
+> Die Gruppenrichtlinie für die Rolloutsteuerung löst auch die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern aus. Sie können die Richtlinie für die Registrierung von in die Domäne eingebundenen Computern mit Windows 8.1 verwenden. Wenn Sie mehrere Windows-Versionen verwenden, einschließlich Windows 7 oder Windows Server-Versionen, können Sie alle Computer ohne Windows 10 oder Windows Server 2016 mit einem Windows Installer-Paket registrieren.
+> 
+> 
+
+### <a name="create-a-group-policy-object-to-control-the-rollout-of-automatic-registration"></a>Erstellen eines Gruppenrichtlinienobjekts zum Steuern des Rollouts der automatischen Registrierung
+
+Um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern bei Azure AD zu steuern, können Sie die Gruppenrichtlinie **In die Domäne eingebundene Computer als Geräte registrieren** für die zu registrierenden Computer bereitstellen. Beispielsweise können Sie die Richtlinie für eine Organisationseinheit oder eine Sicherheitsgruppe bereitstellen.
+
+**Legen Sie die Richtlinie fest:**
+
+1. Öffnen Sie den Server-Manager, und navigieren Sie zu **Tools** > **Gruppenrichtlinienverwaltung**.
+2. Wechseln Sie zu dem Domänenknoten, der der Domäne entspricht, in der Sie die automatische Registrierung von Computern unter Windows 10 oder Windows Server 2016 aktivieren möchten.
+3. Klicken Sie mit der rechten Maustaste auf **Gruppenrichtlinienobjekte**, und wählen Sie dann **Neu** aus.
+4. Geben Sie einen Namen für das Gruppenrichtlinienobjekt ein. Beispiel: *Automatische Registrierung bei Azure AD*. Klicken Sie auf **OK**.
+5. Klicken Sie mit der rechten Maustaste auf Ihr neues Gruppenrichtlinienobjekt, und wählen Sie dann **Bearbeiten** aus.
+6. Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Geräteregistrierung**. Klicken Sie mit der rechten Maustaste auf **In die Domäne eingebundene Computer als Geräte registrieren**, und wählen Sie dann **Bearbeiten** aus.
    
    > [!NOTE]
-   > In früheren Versionen der Gruppenrichtlinienverwaltungskonsole hatte diese Gruppenrichtlinienvorlage einen anderen Namen. Wenn Sie eine frühere Version der Konsole ausführen, finden Sie die Richtlinie unter „Computerkonfiguration“ > „Richtlinien“ > „Administrative Vorlagen“ > „Windows-Komponenten“ > Arbeitsplatzeinbindung mit dem Namen „Automatische Arbeitsplatzeinbindung von Clientcomputern“. 
+   > In früheren Versionen der Gruppenrichtlinien-Verwaltungskonsole hatte diese Gruppenrichtlinienvorlage einen anderen Namen. Wenn Sie eine frühere Version der Konsole verwenden, navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Arbeitsbereichverknüpfung** > **Automatically workplace join client computers** (Clientcomputer automatisch in Arbeitsbereich einbinden).
    > 
    > 
-7. Aktivieren Sie das Optionsfeld **Aktiviert**, und klicken Sie dann auf **Übernehmen**. 
-8. Klicken Sie auf **OK**. 
-9. Verknüpfen Sie das Gruppenrichtlinienobjekt mit einem Speicherort Ihrer Wahl. Wählen Sie z.B. eine bestimmte Organisationseinheit (OU), in der sich Computer befinden, oder eine bestimmte Sicherheitsgruppe mit Computern, die automatisch bei Azure AD registriert werden. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10- und Windows Server 2016-Computer in Ihrer Organisation zu aktivieren, verknüpfen Sie das Gruppenrichtlinienobjekt mit der Domäne. 
+7. Wählen Sie **Aktiviert** und dann **Übernehmen** aus.
+8. Klicken Sie auf **OK**.
+9. Verknüpfen Sie das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl. Sie können es beispielsweise mit einer bestimmten Organisationseinheit verknüpfen. Sie können es aber auch mit einer bestimmten Sicherheitsgruppe von Computern verbinden, die automatisch bei Azure AD registriert werden. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10- und Windows Server 2016-Computer in Ihrer Organisation festzulegen, verknüpfen Sie das Gruppenrichtlinienobjekt mit der Domäne.
 
-## <a name="msi-package-for-non-windows-10-computers"></a>MSI-Paket für Nicht-Windows 10-Computer
-Für die Registrierung von in die Domäne eingebundenen Computern unter Windows 7, Windows 8.1, Windows Server 2008 R2, Windows Server 2012 oder Windows Server 2012 R2 kann ein Windows Installer-Paket (MSI) heruntergeladen werden:
+### <a name="windows-installer-packages-for-non-windows-10-computers"></a>Windows Installer-Pakete für Computer ohne Windows 10
+Für die Registrierung von in die Domäne eingebundenen Computern unter Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 in einer Verbundumgebung können Sie die folgenden Windows Installer-Paketdateien (.msi) herunterladen und installieren:
 
 * [x64](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x64.msi)
 * [x86](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x86.msi)
 
-Sie sollten dieses Paket mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager bereitstellen. Das Paket unterstützt die standardmäßigen Optionen für die automatische Installation unter Verwendung des Parameters „/quiet“. Die Verwendung von System Center Configuration Manager 2016 bietet zusätzliche Vorteile, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen. Weitere Informationen finden Sie unter [System Center 2016](https://www.microsoft.com/cloud-platform/system-center-2016). 
+Stellen Sie das Paket mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager bereit. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des Parameters *quiet*. System Center Configuration Manager 2016 bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen. Weitere Informationen finden Sie unter [System Center 2016](https://www.microsoft.com/en-us/cloud-platform/system-center).
 
-Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im Kontext des Benutzers ausgeführt und ausgelöst wird, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung über die integrierte Windows-Authentifizierung registriert der Task das Gerät unter Verwendung der Anmeldeinformationen des Benutzers automatisch bei Azure AD. Den geplanten Task finden Sie in der Aufgabenplanungsbibliothek unter **Microsoft > Arbeitsplatzeinbindung**. 
+Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung durch IWA registriert der Task das Gerät unter Verwendung der Anmeldeinformationen des Benutzers im Hintergrund bei Azure AD. Um den geplanten Task anzuzeigen, wechseln Sie zu **Microsoft** > **Arbeitsbereichverknüpfung**, und navigieren Sie dann zur Aufgabenplanungsbibliothek.
 
-## <a name="additional-topics"></a>Weitere Themen
+## <a name="next-steps"></a>Nächste Schritte
 * [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

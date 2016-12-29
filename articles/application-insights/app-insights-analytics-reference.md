@@ -1,27 +1,30 @@
 ---
-title: Referenz in Analytics in Application Insights | Microsoft Docs
-description: 'Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights. '
+title: "Referenz für Analytics in Azure Application Insights | Microsoft Docs"
+description: "Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights. "
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
-manager: douge
-
+manager: carmonm
+ms.assetid: eea324de-d5e5-4064-9933-beb3a97b350b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 11/23/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
+ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
+
 
 ---
 # <a name="reference-for-analytics"></a>Referenz für Analytics
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-> [!NOTE]
-> [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo), wenn Ihre App noch keine Daten an Application Insights sendet.
-> 
-> 
+* In der [Kurzübersicht für SQL-Benutzer](https://aka.ms/sql-analytics) finden Sie eine Übersetzung der gängigsten Sprachen.
+* [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo), wenn Ihre App noch keine Daten an Application Insights sendet.
+ 
 
 ## <a name="index"></a>Index
 **Let** [let](#let-clause)
@@ -36,7 +39,7 @@ ms.author: awills
 
 **Datum und Uhrzeit** [Datums- und Uhrzeitausdrücke](#date-and-time-expressions) | [Datums- und Uhrzeitliterale](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-**Zeichenfolge** [GUIDs](#guids) | [Verborgene Zeichenfolgenliterale](#obfuscated-string-literals) | [Zeichenfolgenliterale](#string-literals) | [Zeichenfolgenvergleiche](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+**Zeichenfolge** [GUIDs](#guids) | [Verborgene Zeichenfolgenliterale](#obfuscated-string-literals) | [Zeichenfolgenliterale](#string-literals) | [Zeichenfolgenvergleiche](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
 
 **Arrays, Objekte und Dynamik** [Array- und Objektliterale](#array-and-object-literals) | [Dynamische Objektfunktionen](#dynamic-object-functions) | [Dynamische Objekte in let-Klauseln](#dynamic-objects-in-let-clauses) | [JSON Path-Ausdrücke](#json-path-expressions) | [Namen](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
 
@@ -58,8 +61,14 @@ ms.author: awills
        (interval:timespan) { requests | where timestamp > ago(interval) };
     Recent(3h) | count
 
-    let us_date = (t:datetime) { strcat(getmonth(t),'/',dayofmonth(t),'/',getyear(t)) }; 
-    requests | summarize count() by bin(timestamp, 1d) | project count_, day=us_date(timestamp)
+    let us_date = (t:datetime)
+    {
+      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ", 
+      bin((t-1h)%12h+1h,1s), iff(t%24h<12h, "AM", "PM"))
+    };
+    requests 
+    | summarize count() by bin(timestamp, 1h) 
+    | project count_, pacificTime=us_date(timestamp-8h)
 
 Eine let-Klausel bindet einen [Namen](#names) an ein tabellarisches Ergebnis, einen Skalarwert oder eine Funktion. Die Klausel ist das Präfix einer Abfrage, und diese Abfrage ist der Bereich der Bindung. (Die let-Klausel bietet keine Möglichkeit, Dinge zu benennen, die Sie später in der Sitzung verwenden.)
 
@@ -86,12 +95,12 @@ Selbstverknüpfung:
 
     let Recent = events | where timestamp > ago(7d);
     Recent | where name contains "session_started" 
-      | project start = timestamp, session_id
-      | join (Recent 
+    | project start = timestamp, session_id
+    | join (Recent 
         | where name contains "session_ended" 
         | project stop = timestamp, session_id)
       on session_id
-      | extend duration = stop - start 
+    | extend duration = stop - start 
 
 
 ## <a name="queries-and-operators"></a>Abfragen und Operatoren
@@ -345,7 +354,7 @@ Eine Kopie der Eingabetabelle mit den angegebenen zusätzlichen Spalten.
 * Verwenden Sie stattdessen [`project`](#project-operator) , wenn Sie auch einige Spalten löschen oder umbenennen möchten.
 * Verwenden Sie nicht einfach `extend` , um einen kürzeren Namen zur Verwendung in einem langen Ausdruck zu erhalten. `...| extend x = anonymous_user_id_from_client | ... func(x) ...` 
   
-    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
+    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
 
 **Beispiel**
 
@@ -395,11 +404,15 @@ Wenn mehrere Zeilen mit denselben Werten für diese Felder vorhanden sind, erhal
 
 **Tipps**
 
+Für die Ergebnistabelle gilt ein Grenzwert von 64 MB.
+
 Für eine optimale Leistung:
 
 * Verwenden Sie `where` und `project`, um die Anzahl von Zeilen und Spalten in den Eingabetabellen vor der Verknüpfung (`join`) zu reduzieren. 
 * Wenn eine Tabelle immer kleiner als die andere ist, verwenden Sie diese als die linke (weitergeleitete) Seite der Verknüpfung.
 * Die Spalten für die Verknüpfungsübereinstimmung müssen den gleichen Namen haben. Verwenden Sie ggf. den project-Operator, um eine Spalte in einer der Tabellen umzubenennen.
+
+
 
 **Beispiel**
 
@@ -408,13 +421,13 @@ Abrufen erweiterter Aktivitäten aus einem Protokoll, in dem einige Einträge de
 ```AIQL
     let Events = MyLogTable | where type=="Event" ;
     Events
-      | where Name == "Start"
-      | project Name, City, ActivityId, StartTime=timestamp
-      | join (Events
+    | where Name == "Start"
+    | project Name, City, ActivityId, StartTime=timestamp
+    | join (Events
            | where Name == "Stop"
            | project StopTime=timestamp, ActivityId)
         on ActivityId
-      | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
+    | project City, ActivityId, StartTime, StopTime, Duration, StopTime, StartTime
 
 ```
 
@@ -493,7 +506,7 @@ Zwei Erweiterungsmodi für Eigenschaftenbehälter werden unterstützt:
 **Beispiele**
 
     exceptions | take 1 
-      | mvexpand details[0]
+    | mvexpand details[0]
 
 Teilt einen Ausnahmedatensatz für jedes Element im Feld „Details“ in Zeilen auf.
 
@@ -507,7 +520,7 @@ Teilt einen Ausnahmedatensatz für jedes Element im Feld „Details“ in Zeilen
     with * "got" counter:long " " present "for" * "was" year:long * 
 
     T |  parse kind=regex "I got socks for my 63rd birthday" 
-    with "(I|She) got" present "for .*?" year:long * 
+    with "(I|She) got " present " for .*?" year:long * 
 
 Extrahiert Werte aus einer Zeichenfolge. Kann einfache oder reguläre Ausdrücke für Übereinstimmungen verwenden.
 
@@ -603,21 +616,21 @@ Wenn die Eingabe eine ordnungsgemäße Übereinstimmung für jede typisierte Spa
 // Run a test without reading a table:
 range x from 1 to 1 step 1 
 // Test string:
-| extend s = "Event: NotifySliceRelease (resourceName=Scheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)" 
+| extend s = "Event: NotifySliceRelease (resourceName=Scheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 07:31, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 06:20:00 ) }" 
 // Parse it:
 | parse kind=regex s 
-  with ".*?[a-zA-Z]*=" resource 
+  with ".*?=" resource 
        ", total.*?sliceNumber=" slice:long *
        "lockTime=" lock
        ",.*?releaseTime=" release 
        ",.*?previousLockTime=" previous:date 
-       ".*\\)"
+       @".*\)" *
 | project-away x, s
 ```
 
 | Ressource | Slice | Sperre | Freigabe | Vorherige |
 | --- | --- | --- | --- | --- |
-| Scheduler |16 |02/17/2016 08:41:00 (17.02.2016) |02/17/2016 08:41 (17.02.2016) |2016-02-17T08:40:00Z |
+| Scheduler |16 |02/17/2016 07:31:00 |02/17/2016 08:41 (17.02.2016) |2016-02-17T06:20:00Z |
 
 ### <a name="project-operator"></a>project-Operator
     T | project cost=price*quantity, price
@@ -654,7 +667,7 @@ T
     ['where'] = client_City // rename, using a keyword as a column name
 ```
 
-### <a name="projectaway-operator"></a>project-away-Operator
+### <a name="project-away-operator"></a>project-away-Operator
     T | project-away column1, column2, ...
 
 Schließt bestimmte Spalten aus. Das Ergebnis enthält alle Eingabespalten mit Ausnahme der angegebenen Spalten.
@@ -791,14 +804,14 @@ Alle Zeilen in der Tabelle „Traces“ mit einer bestimmten Aktivitäts-ID ( `A
 Erzeugt eine Tabelle, die den Inhalt der Eingabetabelle aggregiert.
 
     requests
-      | summarize count(), avg(duration), makeset(client_City) 
+    | summarize count(), avg(duration), makeset(client_City) 
       by client_CountryOrRegion
 
 Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städten in jedem Land zeigt. Die Ausgabe enthält eine Zeile für jedes unterschiedliche Land. Die Ausgabespalten zeigen die Anzahl, durchschnittliche Dauer, Städte und das Land. Alle anderen Eingabespalten werden ignoriert.
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0],[10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 **Syntax**
 
@@ -850,12 +863,12 @@ Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 
 `top 5 by name` entspricht oberflächlich betrachtet `sort by name | take 5`. Allerdings ist die Ausführung schneller, und es werden immer sortierte Ergebnisse zurückgegeben; dies ist mit `take` nicht garantiert.
 
-### <a name="topnested-operator"></a>top-nested operator
+### <a name="top-nested-operator"></a>top-nested operator
     requests 
-      | top-nested 5 of name by count()  
+    | top-nested 5 of name by count()  
     , top-nested 3 of performanceBucket by count() 
     , top-nested 3 of client_CountryOrRegion by count()
-      | render barchart 
+    | render barchart 
 
 Erzeugt die hierarchische Ergebnisse, wobei jede Ebene einen Drilldown der vorherigen Ebene darstellt. Dies ist nützlich für die Beantwortung von Fragen wie „Was sind die Top 5-Anfragen, welches sind für jede von diesen die 3 besten Leistungsbuckets und aus welchen 3 Ländern stammen die meisten Anforderungen für diese?“.
 
@@ -895,35 +908,51 @@ Verwendet mindestens zwei Tabellen und gibt die Zeilen aller Tabellen zurück.
 
 Eine Tabelle, deren Anzahl an Zeilen der Anzahl in allen Eingabetabellen entspricht und deren Anzahl an Spalten mit der Anzahl an eindeutigen Spaltennamen in den Eingaben übereinstimmt.
 
-**Beispiel**
-
-```AIQL
-
-let ttrr = requests | where timestamp > ago(1h);
-let ttee = exceptions | where timestamp > ago(1h);
-union tt* | count
-```
-Union aller Tabellen, deren Namen mit „tt“ beginnen.
+Es gibt keine garantierte Reihenfolge in den Zeilen.
 
 **Beispiel**
 
+Vereinigung aller Tabellen, deren Namen mit „tt“ beginnen:
+
 ```AIQL
 
-union withsource=SourceTable kind=outer Query, Command
-| where Timestamp > ago(1d)
-| summarize dcount(UserId)
+    let ttrr = requests | where timestamp > ago(1h);
+    let ttee = exceptions | where timestamp > ago(1h);
+    union tt* | count
 ```
+
+**Beispiel**
+
 Die Anzahl der unterschiedlichen Benutzer, die während des Vortags entweder ein `exceptions`- oder ein `traces`-Ereignis herbeigeführt haben. Im Ergebnis gibt die Spalte „SourceTable“ entweder „Abfrage“ oder „Befehl“ an.
 
 ```AIQL
-exceptions
-| where Timestamp > ago(1d)
-| union withsource=SourceTable kind=outer 
-   (Command | where Timestamp > ago(1d))
-| summarize dcount(UserId)
+
+    union withsource=SourceTable kind=outer Query, Command
+    | where Timestamp > ago(1d)
+    | summarize dcount(UserId)
 ```
 
-Mit dieser effizienteren Version wird dasselbe Ergebnis erzielt. Jede Tabelle wird vor dem Erstellen der Union gefiltert.
+Mit dieser effizienteren Version wird dasselbe Ergebnis erzielt. Jede Tabelle wird vor dem Erstellen der Vereinigung gefiltert.
+
+```AIQL
+
+    exceptions
+    | where Timestamp > ago(1d)
+    | union withsource=SourceTable kind=outer 
+       (Command | where Timestamp > ago(1d))
+    | summarize dcount(UserId)
+```
+
+### <a name="forcing-an-order-of-results"></a>Erzwingen der Reihenfolge der Ergebnisse
+
+„Union“ garantiert keine bestimmte Reihenfolge der Zeilen in den Ergebnissen.
+Fügen Sie zum Abrufen derselben Reihenfolge bei jeder Ausführung der Abfrage eine Spalte des Typs „Tag“ an jede Eingabetabelle an:
+
+    let r1 = (traces | count | extend tag = 'r1');
+    let r2 = (requests | count| extend tag = 'r2');
+    let r3 = (pageViews | count | extend tag = 'r3');
+    r1 | union r2,r3 | sort by tag
+
 
 ### <a name="where-operator"></a>where-Operator
      requests | where resultCode==200
@@ -963,11 +992,11 @@ traces
     and ActivityId == SubActivityIt 
 ```
 
-Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen. 
+Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen. 
 
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
-### <a name="wherein-operator"></a>where-in-Operator
+### <a name="where-in-operator"></a>where-in-Operator
     requests | where resultCode !in (200, 201)
 
     requests | where resultCode in (403, 404)
@@ -996,7 +1025,7 @@ Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [summarize-Vo
 
 Wählt eine Zeile der Gruppe nach dem Zufallsprinzip aus, und gibt den Wert des angegebenen Ausdrucks zurück.
 
-Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten. 
+Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten. 
 
 **Beispiel**  
 
@@ -1033,7 +1062,7 @@ Zeigen Sie alle Details der längsten Anforderung, nicht nur den Zeitstempel:
 Suchen Sie den niedrigsten Wert jeder Metrik, zusammen mit dem Zeitstempel und anderen Daten:
 
     metrics 
-      | summarize minValue=argmin(value, *) 
+    | summarize minValue=argmin(value, *) 
       by name
 
 
@@ -1167,7 +1196,7 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 **Beispiel**
 
     pageViews 
-      | summarize cities=dcount(client_City) 
+    | summarize cities=dcount(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-reference/dcount.png)
@@ -1186,7 +1215,7 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 **Beispiel**
 
     pageViews 
-      | summarize cities=dcountif(client_City, client_City startswith "St") 
+    | summarize cities=dcountif(client_City, client_City startswith "St") 
       by client_CountryOrRegion
 
 
@@ -1207,7 +1236,7 @@ Gibt ein `dynamic` -Array (JSON) des Satzes eindeutiger Werte zurück, die *Expr
 **Beispiel**
 
     pageViews 
-      | summarize cities=makeset(client_City) 
+    | summarize cities=makeset(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-reference/makeset.png)
@@ -1252,7 +1281,7 @@ Wie `percentilew()`, berechnet aber eine Anzahl von Perzentilwerten.
 Der Wert von `duration` , der größer als 95% und kleiner als 5% des Stichprobensatzes ist, berechnet für jeden Anforderungsnamen:
 
     request 
-      | summarize percentile(duration, 95)
+    | summarize percentile(duration, 95)
       by name
 
 Lassen Sie „by...“ aus, um den Wert für die gesamte Tabelle zu berechnen.
@@ -1260,7 +1289,7 @@ Lassen Sie „by...“ aus, um den Wert für die gesamte Tabelle zu berechnen.
 Berechnen Sie gleichzeitig mehrere Perzentile für andere Anforderungsnamen:
 
     requests 
-      | summarize 
+    | summarize 
         percentiles(duration, 5, 20, 50, 80, 95) 
       by name
 
@@ -1271,7 +1300,7 @@ Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der
 Berechnen Sie mehrere Statistiken:
 
     requests 
-      | summarize 
+    | summarize 
         count(), 
         avg(Duration),
         percentiles(Duration, 5, 50, 95)
@@ -1320,8 +1349,8 @@ Das Perzentilaggregat stellt einen ungefähren Wert mithilfe von [T-Digest](http
 
 Einige wichtige Punkte: 
 
-* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt. 
-* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Perzentil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
+* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt. 
+* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Perzentil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
 
 ### <a name="stdev"></a>stdev
      stdev(Expr)
@@ -1515,7 +1544,7 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
         | where floor(timestamp, 1d) == floor(ago(5d),1d) | count);
     // List the counts relative to that baseline:
     requests | summarize daycount = count() by floor(timestamp, 1d)  
-      | extend relative = daycount - baseline
+    | extend relative = daycount - baseline
 ```
 
 
@@ -1551,7 +1580,6 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 | * |Multiplizieren |
 | / |Dividieren |
 | % |Modulo |
-|  | |
 | `<` |Kleiner |
 | `<=` |Kleiner oder gleich |
 | `>` |Größer |
@@ -1702,7 +1730,7 @@ Die Quadratwurzelfunktion.
 ## <a name="date-and-time"></a>Datum und Uhrzeit
 [ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) |  [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)|  [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-### <a name="date-and-time-literals"></a>Datum und Uhrzeit – Literale
+### <a name="date-and-time-literals"></a>Datum und Uhrzeit – Literale
 |  |  |
 | --- | --- |
 | **datetime** | |
@@ -1711,19 +1739,19 @@ Die Quadratwurzelfunktion.
 | `now(`-*timespan*`)` |`now()-`*timespan* |
 | `ago(`*timespan*`)` |`now()-`*timespan* |
 | **timespan** | |
-| `2d` |2 Tage |
+| `2d` |2 Tage |
 | `1.5h` |1,5 Stunden |
 | `30m` |30 Minuten |
-| `10s` |10 Sekunden |
-| `0.1s` |0,1 Sekunde |
-| `100ms` |100 Millisekunden |
+| `10s` |10 Sekunden |
+| `0.1s` |0,1 Sekunde |
+| `100ms` |100 Millisekunden |
 | `10microsecond` | |
-| `1tick` |100 ns |
+| `1tick` |100 ns |
 | `time("15 seconds")` | |
-| `time("2")` |2 Tage |
+| `time("2")` |2 Tage |
 | `time("0.12:34:56.7")` |`0d+12h+34m+56.7s` |
 
-### <a name="date-and-time-expressions"></a>Datum und Uhrzeit – Ausdrücke
+### <a name="date-and-time-expressions"></a>Datum und Uhrzeit – Ausdrücke
 | Expression | Ergebnis |
 | --- | --- |
 | `datetime("2015-01-02") - datetime("2015-01-01")` |`1d` |
@@ -1935,7 +1963,7 @@ Alias: `timespan()`
 Das ganzzahlige Ergebnis stellt die Wochennummer nach ISO-8601-Standard dar. Der erste Tag einer Woche ist Sonntag, und die erste Woche des Jahres ist die Woche, in die der erste Donnerstag des Jahres fällt. (Die letzten Tage eines Jahres können daher einige Tage der 1. Woche des Folgejahres enthalten, und die ersten Tage können einige Tage der Woche 52 oder 53 des vorherigen Jahres enthalten.)
 
 ## <a name="string"></a>String
-[countof](#countof) | [extract](#extract) | [extractjson](#extractjson)  | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
+[countof](#countof) | [extract](#extract) | [extractjson](#extractjson)  | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
 
 ### <a name="string-literals"></a>Zeichenfolgenliterale
 Die Regeln sind mit JavaScript identisch.
@@ -2048,7 +2076,7 @@ Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehl
 
 **Beispiele**
 
-Die Beispielzeichenfolge `Trace` wird nach einer Definition für `Duration` durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Typ `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
+Die Beispielzeichenfolge `Trace` wird nach einer Definition für `Duration` durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Typ `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
 
 ```AIQL
 ...
@@ -2099,7 +2127,35 @@ Gibt an, ob das Argument eine leere Zeichenfolge oder isnull ist.
     T | where isempty(fieldName) | count
 
 
+### <a name="parseurl"></a>parseurl
+Zerlegen Sie eine URL in ihre Bestandteile.
 
+**Syntax**
+
+    parseurl(urlstring)
+
+**Argumente**
+
+* *urlstring:* Eine URL
+
+**Rückgabe**
+
+Ein Objekt, das die Teile als Zeichenfolgen enthält
+
+**Beispiel**
+
+    parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
+
+    {
+    "Scheme" : "http",
+    "Host" : "contoso.com",
+    "Port" : "80",
+    "Path" : "/icecream/buy.aspx",
+    "Username" : "user",
+    "Password" : "pass",
+    "Query Parameters" : {"a":"1","b":"2"},
+    "Fragment" : "tag"
+    }
 
 ### <a name="replace"></a>replace
 Ersetzen Sie alle regex-Übereinstimmungen mit einer anderen Zeichenfolge.
@@ -2173,7 +2229,7 @@ split("aabbcc", "bb")         // ["aa","cc"]
 ### <a name="strcat"></a>strcat
     strcat("hello", " ", "world")
 
-Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
+Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
 
 ### <a name="strlen"></a>strlen
     strlen("hello") == 5
@@ -2233,7 +2289,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **Indizierung:** Arrays und Objekte werden wie in JavaScript indiziert:
 
     exceptions | take 1
-      | extend 
+    | extend 
         line = details[0].parsedStack[0].line,
         stackdepth = arraylength(details[0].parsedStack)
 
@@ -2242,11 +2298,11 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **Typumwandlung:** In einigen Fällen ist es erforderlich, ein Element umzuwandeln, das Sie aus einem Objekt extrahieren, da der Typ variieren kann. `summarize...to` benötigt beispielsweise einen bestimmten Typ:
 
     exceptions 
-      | summarize count() 
+    | summarize count() 
       by toint(details[0].parsedStack[0].line)
 
     exceptions 
-      | summarize count() 
+    | summarize count() 
       by tostring(details[0].parsedStack[0].assembly)
 
 **Literale:** Um ein explizites Array oder ein Eigenschaftenbehälterobjekt zu erstellen, schreiben Sie es als JSON-Zeichenfolge mit Typumwandlung:
@@ -2257,7 +2313,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **mvexpand:** Verwenden Sie „mvexpand“, um die Eigenschaften eines Objekts in separate Zeilen aufzuteilen:
 
     exceptions | take 1 
-      | mvexpand details[0].parsedStack[0]
+    | mvexpand details[0].parsedStack[0]
 
 
 ![](./media/app-insights-analytics-reference/410.png)
@@ -2265,8 +2321,8 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 **treepath:** Zum Auffinden aller Pfade in einem komplexen Objekt:
 
     exceptions | take 1 | project timestamp, details 
-      | extend path = treepath(details) 
-      | mvexpand path
+    | extend path = treepath(details) 
+    | mvexpand path
 
 
 ![](./media/app-insights-analytics-reference/420.png)
@@ -2548,6 +2604,9 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

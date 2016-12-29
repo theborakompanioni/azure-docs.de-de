@@ -1,22 +1,27 @@
 ---
-title: Migrieren zur SQL-Datenbank per Transaktionsreplikation | Microsoft Docs
+title: Migrieren zu SQL-Datenbank per Transaktionsreplikation | Microsoft Docs
 description: Microsoft Azure SQL-Datenbank, Datenbankmigration, Datenbank importieren, Transaktionsreplikation
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: eebdd725-833d-4151-9b2b-a0303f39e30f
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
-ms.date: 08/23/2016
+ms.date: 11/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
+ms.openlocfilehash: 891c10b2f8e560a3c97f93198c742f657a92e927
+
 
 ---
-# Migrieren von SQL Server-Datenbank zu Azure SQL-Datenbank per Transaktionsreplikation
+# <a name="migrate-sql-server-database-to-azure-sql-database-using-transactional-replication"></a>Migrieren von SQL Server-Datenbank zu Azure SQL-Datenbank per Transaktionsreplikation
 > [!div class="op_single_selector"]
 > * [SSMS-Migrations-Assistent](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
 > * [Exportieren in eine BACPAC-Datei](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
@@ -27,8 +32,8 @@ ms.author: carlrab
 
 In diesem Artikel erfahren Sie, wie Sie eine kompatible SQL Server-Datenbank mithilfe der Transaktionsreplikation von SQL Server mit nur minimalen Ausfallzeiten zu Azure SQL-Datenbank migrieren.
 
-## Verstehen der Architektur der Transaktionsreplikation
-Wenn Sie es sich nicht leisten können, Ihre SQL Server-Datenbank während der Migration aus der Produktion herauszunehmen, können Sie die SQL Server-Transaktionsreplikation als Migrationslösung verwenden. Um diese Lösung zu verwenden, können Sie Ihre Azure SQL-Datenbank-Instanz als Abonnenten der lokalen SQL Server-Instanz konfigurieren, die Sie migrieren möchten. Der Verteiler der lokalen Transaktionsreplikation synchronisiert die Daten aus der zu synchronisierenden lokalen Datenbank (dem Herausgeber), während weiterhin neue Transaktionen ausgeführt werden.
+## <a name="understanding-the-transactional-replication-architecture"></a>Verstehen der Architektur der Transaktionsreplikation
+Wenn Sie es sich nicht leisten können, Ihre SQL Server-Datenbank während der Migration aus der Produktion herauszunehmen, können Sie die SQL Server-Transaktionsreplikation als Migrationslösung verwenden. Um diese Lösung zu verwenden, können Sie Ihre Azure SQL-Datenbank-Instanz als Abonnenten der lokalen SQL Server-Instanz konfigurieren, die Sie migrieren möchten. Der Verteiler der lokalen Transaktionsreplikation synchronisiert die Daten aus der zu synchronisierenden lokalen Datenbank (dem Herausgeber), während weiterhin neue Transaktionen ausgeführt werden. 
 
 Sie können die Transaktionsreplikation auch zum Migrieren einer Teilmenge Ihrer lokalen Datenbank verwenden. Die Veröffentlichung, die Sie zu Azure SQL-Datenbank replizieren, kann auf eine Teilmenge der Tabellen in der replizierten Datenbank beschränkt werden. Für jede replizierte Tabelle können Sie die Daten auf eine Teilmenge der Zeilen bzw. eine Teilmenge der Spalten beschränken.
 
@@ -36,10 +41,10 @@ Bei der Transaktionsreplikation werden alle Änderungen an Daten oder Schema in 
 
  ![SeedCloudTR-Diagramm](./media/sql-database-cloud-migrate/SeedCloudTR.png)
 
-## Anforderungen der Transaktionsreplikation
-Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQL Server integriert ist. Es handelt sich hierbei um eine ausgereifte und bewährte Technologie, mit der die meisten Datenbankadministratoren über Erfahrung verfügen. Mit [SQL Server 2016](https://www.microsoft.com/de-DE/cloud-platform/sql-server) kann die Azure SQL-Datenbank als [Transaktionsreplikationsabonnent](https://msdn.microsoft.com/library/mt589530.aspx) für die lokale Veröffentlichung konfiguriert werden. Wenn Sie die Einrichtung über Management Studio durchführen, erhalten Sie das gleiche Ergebnis wie beim Einrichten eines Abonnenten der Transaktionsreplikation auf einem lokalen Server. Der Support für dieses Szenario ist gegeben, wenn der Herausgeber und der Verteiler mindestens über eine der folgenden SQL Server-Versionen verfügen:
+## <a name="transactional-replication-requirements"></a>Anforderungen der Transaktionsreplikation
+Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQL Server integriert ist. Es handelt sich hierbei um eine ausgereifte und bewährte Technologie, mit der die meisten Datenbankadministratoren über Erfahrung verfügen. Mit [SQL Server 2016](https://www.microsoft.com/sql-server/sql-server-2016) kann Azure SQL-Datenbank als [Transaktionsreplikationsabonnent](https://msdn.microsoft.com/library/mt589530.aspx) für die lokale Veröffentlichung konfiguriert werden. Wenn Sie die Einrichtung über Management Studio durchführen, erhalten Sie das gleiche Ergebnis wie beim Einrichten eines Abonnenten der Transaktionsreplikation auf einem lokalen Server. Der Support für dieses Szenario ist gegeben, wenn der Herausgeber und der Verteiler mindestens über eine der folgenden SQL Server-Versionen verfügen:
 
-* SQL Server 2016 und höher
+* SQL Server 2016 und höher 
 * SQL Server 2014 SP1 CU3 und höher
 * SQL Server 2014 RTM CU10 und höher
 * SQL Server 2012 SP2 CU8 und höher
@@ -50,15 +55,20 @@ Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQL
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 * [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-* [SQL Server 2016](https://www.microsoft.com/de-DE/cloud-platform/sql-server)
+* [SQL Server 2016](https://www.microsoft.com/sql-server/sql-server-2016)
 
-## Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx)
-* [SQL-Datenbank V12](sql-database-v12-whats-new.md)
+* [Azure SQL Database features (Features der Azure SQL-Datenbank)](sql-database-features.md)
 * [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 * [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+
