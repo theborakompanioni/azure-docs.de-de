@@ -1,12 +1,12 @@
 ---
 title: Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund | Microsoft Docs
-description: Erläutert das Durchführen einer Installation des Azure AD-Anwendungsproxyconnectors im Hintergrund, um sicheren Remotezugriff auf lokale Apps zu gewähren.
+description: "Erläutert das Durchführen einer Installation des Azure AD-Anwendungsproxyconnectors im Hintergrund, um sicheren Remotezugriff auf lokale Apps zu gewähren."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,15 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
+
 
 ---
-# Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
-Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation zum Installieren und Registrieren des Azure AD-Anwendungsproxyconnectors ermöglicht.
+# <a name="how-to-silently-install-the-azure-ad-application-proxy-connector"></a>Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
+Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation zum Installieren und Registrieren des Azure AD-Anwendungsproxyconnectors ermöglicht.
 
-## Aktivieren des Zugriffs
+## <a name="enabling-access"></a>Aktivieren des Zugriffs
 Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Für das Funktionieren des Anwendungsproxyconnectors muss dieser im Azure AD-Verzeichnis durch einen globalen Administrator mit Kennwort registriert werden. Dieses wird normalerweise während der Installation des Connectors in einem Popupdialogfeld eingegeben. Stattdessen können Sie mit Windows PowerShell ein Anmeldeinformationsobjekt erstellen, um die Registrierungsinformationen einzugeben. Sie können jedoch auch ein eigenes Token erstellen und zur Eingabe der Registrierungsinformationen verwenden.
 
-## Schritt 1: Installieren des Connectors ohne Registrierung
+## <a name="step-1--install-the-connector-without-registration"></a>Schritt 1: Installieren des Connectors ohne Registrierung
 Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registrieren:
 
 1. Öffnen Sie eine Eingabeaufforderung.
@@ -30,24 +34,24 @@ Installieren Sie die Connector-MSIs wie folgt, ohne den Connector zu registriere
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## Schritt 2: Registrieren des Connectors in Azure Active Directory
+## <a name="step-2-register-the-connector-with-azure-active-directory"></a>Schritt 2: Registrieren des Connectors in Azure Active Directory
 Dies lässt sich mit einer folgenden Methoden bewirken:
 
 * Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekts
 * Registrieren des Connectors mithilfe eines offline erstellten Tokens
 
-### Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekts
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrieren des Connectors mit einem Windows PowerShell-Anmeldeinformationsobjekts
 1. Erstellen Sie das Windows PowerShell-Anmeldeinformationsobjekt durch Ausführen des folgenden Befehls, wobei <username> und <password> durch den Benutzernamen und das Kennwort für das betreffende Verzeichnis ersetzt werden muss:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Wechseln Sie zu **C:\\Programme\\Microsoft AAD App Proxy Connector**, und führen Sie das Skript mithilfe des zuvor erstellten PowerShell-Anmeldeinformationsobjekts aus, wobei „$cred“ für den Namen des erstellten PowerShell-Anmeldeinformationsobjekts steht:
+2. Wechseln Sie zu **C:\Programme\Microsoft AAD App Proxy Connector**, und führen Sie das Skript mithilfe des zuvor erstellten PowerShell-Anmeldeinformationsobjekts aus, wobei „$cred“ für den Namen des erstellten PowerShell-Anmeldeinformationsobjekts steht:
    
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
-### Registrieren des Connectors mithilfe eines offline erstellten Tokens
+### <a name="register-the-connector-using-a-token-created-offline"></a>Registrieren des Connectors mithilfe eines offline erstellten Tokens
 1. Erstellen Sie mithilfe der AuthenticationContext-Klasse ein Offlinetoken, indem Sie die Werte in dem Codeausschnitt verwenden:
 
         using System;
@@ -107,15 +111,22 @@ Dies lässt sich mit einer folgenden Methoden bewirken:
 
 
 
-1. Sobald das Token vorliegt, erstellen Sie einen SecureString, der das Token verwendet: <br> `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
-2. Führen Sie den folgenden Windows PowerShell-Befehl aus, wobei „SecureToken“ der Name des soeben erstellten Tokens ist, und „tenantID“ die GUID des Mandanten: <br> `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
+1. Sobald das Token vorliegt, erstellen Sie einen SecureString, der das Token verwendet:  <br>
+   `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
+2. Führen Sie den folgenden Windows PowerShell-Befehl aus, wobei „SecureToken“ der Name des soeben erstellten Tokens ist, und „tenantID“ die GUID des Mandanten:  <br>
+   `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [Aktivieren des Azure AD-Anwendungsproxys](active-directory-application-proxy-enable.md)
 * [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
 * [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 * [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
 
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
+Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+
+<!--HONumber=Dec16_HO4-->
+
+

@@ -1,12 +1,12 @@
 ---
-title: Verwalten der Gruppen, denen Ihre Gruppe angehört, in der Azure Active Directory-Vorschau | Microsoft Docs
-description: Gruppen können in Azure Active Directory andere Gruppen enthalten. Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
+title: "Verwalten der Gruppen, denen Ihre Gruppe angehört, in der Azure Active Directory-Vorschau | Microsoft Docs"
+description: "Gruppen können in Azure Active Directory andere Gruppen enthalten.  Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e785c2d0-7724-47d4-a56e-c58280c08a14
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1968862a68d86c0f42e86ecb1f23aeebd264076c
+
 
 ---
-# Verwalten der Gruppen, denen Ihre Gruppe angehört, in der Azure Active Directory-Vorschau
-Gruppen können in der Azure Active Directory-Vorschau andere Gruppen enthalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
+# <a name="manage-the-groups-your-group-is-a-member-of-in-azure-active-directory-preview"></a>Verwalten der Gruppen, denen Ihre Gruppe angehört, in der Azure Active Directory-Vorschau
+Gruppen können in der Azure Active Directory-Vorschau andere Gruppen enthalten. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)  Nachfolgend wird erläutert, wie Sie diese Mitgliedschaften verwalten.
 
-## Wie finde ich die Gruppen, in denen meine Gruppe Mitglied ist?
+## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>Wie finde ich die Gruppen, in denen meine Gruppe Mitglied ist?
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
    
    ![Öffnen der Benutzerverwaltung](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.
@@ -41,7 +45,7 @@ Gruppen können in der Azure Active Directory-Vorschau andere Gruppen enthalten.
    ![Befehl zum Entfernen der Mitgliedschaft](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
 10. Klicken Sie auf **Speichern**, wenn Sie die Bearbeitung der Gruppenmitgliedschaften für Ihre Gruppe abgeschlossen haben.
 
-## Zusätzliche Informationen
+## <a name="additional-information"></a>Zusätzliche Informationen
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Anzeigen vorhandener Gruppen](active-directory-groups-view-azure-portal.md)
@@ -50,4 +54,9 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
 * [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](active-directory-groups-dynamic-membership-azure-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Dec16_HO4-->
+
+
