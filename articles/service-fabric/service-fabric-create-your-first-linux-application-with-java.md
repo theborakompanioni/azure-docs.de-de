@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/04/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 4450ad62a9b05ac4c963ae3271590f9431b782ed
-ms.openlocfilehash: 87f5ac490f113a7c0144b20563a4f8f4bbcc6b21
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 05361e08b93c93491111661b5fe997ebf5053d16
 
 
 ---
@@ -110,7 +110,6 @@ Die Service Fabric-Vorlagen enthalten eine Reihe von Gradle-Aufgaben zum Erstell
 
 Ihre App wird innerhalb weniger Augenblicke erstellt und bereitgestellt. Der Status kann über Service Fabric Explorer verfolgt werden.
 
-
 ## <a name="adding-more-services-to-an-existing-application"></a>Hinzufügen weiterer Dienste zu einer vorhandenen Anwendung
 
 Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus: 
@@ -121,6 +120,7 @@ Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die berei
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie mehr über Reliable Actors.](service-fabric-reliable-actors-introduction.md)
 * [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
+* Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png

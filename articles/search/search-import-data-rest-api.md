@@ -13,32 +13,33 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
-ms.openlocfilehash: 340287e4a3331eba441bce7feb957f27aca38b2b
-
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
 
 ---
+
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Hochladen von Daten in Azure Search über die REST-API
 > [!div class="op_single_selector"]
+>
 > * [Übersicht](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
 > * [REST](search-import-data-rest-api.md)
-> 
-> 
+>
+>
 
-In diesem Artikel erfahren Sie, wie Sie die [Azure Search REST-API](https://msdn.microsoft.com/library/azure/dn798935.aspx) zum Importieren von Daten in einen Azure Search-Index verwenden.
+In diesem Artikel erfahren Sie, wie Sie die [Azure Search REST-API](https://docs.microsoft.com/rest/api/searchservice/) zum Importieren von Daten in einen Azure Search-Index verwenden.
 
 [Erstellen Sie einen Azure Search-Index](search-what-is-an-index.md), bevor Sie mit dieser exemplarischen Vorgehensweise beginnen.
 
 Um Dokumente mit der REST-API mithilfe von Push in Ihren Index zu verschieben, geben Sie eine HTTP POST-Anforderung an das URL-Endpunkt Ihres Indexes aus. Der Hauptteil der HTTP-Anforderung ist ein JSON-Objekt, das die Dokumente enthält, die hinzugefügt, geändert oder gelöscht werden sollen.
 
-## <a name="i-identify-your-azure-search-services-admin-apikey"></a>I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
+## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Beim Ausgeben von HTTP-Anforderungen in Ihrem Dienst mithilfe der REST-API muss *jede* API-Anforderung den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu ermitteln.
 2. Wechseln Sie zum Blatt Ihres Azure Search-Diensts.
 3. Klicken Sie auf das Schlüsselsymbol.
 
@@ -65,9 +66,9 @@ Jedes JSON-Objekt im Array „value“ stellt ein zu indizierendes Dokument dar.
 Da Sie nun die erforderlichen Feldwerte für Ihre Indexaktionen gesammelt haben, können Sie die HTTP-Anforderung und den JSON-Anforderungstext für den Datenimport erstellen.
 
 #### <a name="request-and-request-headers"></a>Anforderung und Anforderungsheader
-In der URL müssen Sie Ihren Dienstnamen, den Indexnamen (in diesem Fall „hotels“) sowie die entsprechende API-Version (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2015-02-28` ) bereitstellen. Sie müssen die Anforderungsheader `Content-Type` und `api-key` festlegen. Verwenden Sie für letzteres einen der Admin-Schlüssel Ihres Diensts.
+In der URL müssen Sie Ihren Dienstnamen, den Indexnamen (in diesem Fall „hotels“) sowie die entsprechende API-Version (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2016-09-01` ) bereitstellen. Sie müssen die Anforderungsheader `Content-Type` und `api-key` festlegen. Verwenden Sie für letzteres einen der Admin-Schlüssel Ihres Diensts.
 
-    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -160,8 +161,8 @@ Der Statuscode `207` wird zurückgegeben, wenn mindestens ein Element nicht erfo
 
 > [!NOTE]
 > Dies bedeutet häufig, dass die Auslastung Ihres Suchdiensts einen Punkt erreicht, an dem Indizierungsanforderungen damit beginnen, `503`-Antworten zurückzugeben. In diesem Fall empfehlen wir ein Backoff des Clientcodes. Versuchen Sie es daraufhin nach einer Weile erneut. Dadurch hat das System ausreichend Zeit für eine Wiederherstellung, und die Wahrscheinlichkeit, dass spätere Anforderungen gelingen, steigt. Wenn Sie Ihre Anforderungen schnell wiederholen, dauert das Problem nur an.
-> 
-> 
+>
+>
 
 #### <a name="429"></a>429
 Der Statuscode `429` wird zurückgegeben, wenn Sie Ihr Kontingent hinsichtlich der Anzahl der Dokumente pro Index überschritten haben.
@@ -171,17 +172,16 @@ Der Statuscode `503` wird zurückgegeben, wenn keines der Elemente in der Anford
 
 > [!NOTE]
 > In diesem Fall empfehlen wir ein Backoff des Clientcodes. Versuchen Sie es daraufhin nach einer Weile erneut. Dadurch hat das System ausreichend Zeit für eine Wiederherstellung, und die Wahrscheinlichkeit, dass spätere Anforderungen gelingen, steigt. Wenn Sie Ihre Anforderungen schnell wiederholen, dauert das Problem nur an.
-> 
-> 
+>
+>
 
-Weitere Informationen zu Dokumentaktionen und Antworten bei Erfolg/Fehler finden Sie unter [Hinzufügen, Aktualisieren und Löschen von Dokumenten](https://msdn.microsoft.com/library/azure/dn798930.aspx). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP-Statuscodes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx).
+Weitere Informationen zu Dokumentaktionen und Antworten bei Erfolg/Fehler finden Sie unter [Hinzufügen, Aktualisieren und Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP-Statuscodes (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
 ## <a name="next"></a>Weiter
 Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen in Azure Search](search-query-overview.md) .
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

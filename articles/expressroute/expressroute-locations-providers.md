@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2016
+ms.date: 12/08/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: bd4d6f59ac4fbaa9bd0cb6a33a697cac0d13eb8c
-ms.openlocfilehash: 7a86469a9513869362eb37b21b155889dcee7942
+ms.sourcegitcommit: cbbc9f29fc4dea49807f1093b673bebac628314b
+ms.openlocfilehash: e886f9c1984003d1bd1391012b26eea39d4a0b76
 
 
 ---
@@ -37,7 +37,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | --- | --- | --- |
 | **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Las Vegas, Los Angeles, New York, Seattle, Silicon Valley, Washington DC, Montreal+, Quebec City+, Toronto |
 | **Südamerika** |Brasilien Süd |Sao Paulo |
-| **Europa** |Europa, Norden, Europa, Westen, Großbritannien Westen, Großbritannien Süden |Amsterdam, Dublin, London, Newport(Wales)+, Paris |
+| **Europa** |Europa, Norden, Europa, Westen, Großbritannien Westen, Großbritannien Süden |Amsterdam, Dublin, London, Newport (Wales), Paris |
 | **Asien** |Ostasien, Südostasien |Hongkong, Singapur |
 | **Japan** |Japan West, Japan Ost |Osaka, Tokio |
 | **Australien** |Südostaustralien, Ostaustralien |Melbourne, Sydney |
@@ -134,11 +134,13 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 
 | **Standort** | **Exchange** | **Konnektivitätsanbieter** |
 | --- | --- | --- |
+| **London** | Equinix | Exponential E |
 | **New York** |Equinix |Lightower |
 | **Seattle** |Equinix |Alaska Communications |
 | **Silicon Valley** |Equinix |XO Communications |
 | **Singapur** |Equinix |1CLOUDSTAR |
-| **Washington DC** |Equinix |Lightower |
+| **Sydney** | Megaport | Macquarie |
+| **Washington DC** |Equinix | Lightower, Masergy |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute-Systemintegratoren
 Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihre Anforderungen problematisch sein. Alle Systemintegratoren, die in der folgenden Tabelle aufgeführt sind, können Ihnen beim Integrieren von ExpressRoute helfen.
@@ -158,6 +160,6 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

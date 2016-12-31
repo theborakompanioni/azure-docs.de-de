@@ -3,7 +3,7 @@ title: "Tutorial – Erste Schritte mit der Azure Batch-Bibliothek für .NET | M
 description: "Erfahren Sie mehr über grundlegende Konzepte zu Azure Batch, und informieren Sie sich anhand eines Beispielszenarios darüber, wie Sie den Batch-Dienst einsetzen können."
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 76cb9807-cbc1-405a-8136-d1e53e66e82b
@@ -13,10 +13,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 11/22/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ecf07295a2e56e1aae8fc8fce77ca219db1f371e
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 8243e2304d846e02ecf0114b79be73c0016941df
 
 
 ---
@@ -106,8 +106,8 @@ private const string StorageAccountKey  = "";
 
 Die Kontoanmeldeinformationen für Batch und Storage finden Sie im [Azure-Portal][azure_portal] auf dem Kontoblatt des jeweiligen Diensts:
 
-![Batch-Anmeldeinformationen im Verwaltungsportal][9]
-![Storage-Anmeldeinformationen im Verwaltungsportal][10]<br/>
+![Batch-Anmeldeinformationen im Portal][9]
+![Storage-Anmeldeinformationen im Portal][10]<br/>
 
 Nachdem Sie das Projekt mit Ihren Anmeldeinformationen aktualisiert haben, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe und klicken anschließend auf **Projektmappe erstellen**. Bestätigen Sie die Wiederherstellung von NuGet-Paketen, wenn Sie hierzu aufgefordert werden.
 
@@ -372,7 +372,7 @@ Beachten Sie im obigen Codeausschnitt auch die Verwendung von zwei Umgebungsvari
 >
 
 ## <a name="step-4-create-batch-job"></a>Schritt 4: Erstellen eines Batch-Auftrags
-![Batch-Auftrag erstellen][4]<br/>
+![Erstellen eines Batch-Auftrags][4]<br/>
 
 Ein Batch- **Auftrag** ist im Wesentlichen eine Sammlung von Aufgaben, die einem Pool mit Computeknoten zugeordnet sind. Die Aufgaben in einem Auftrag werden auf den Computeknoten des zugeordneten Pools ausgeführt.
 
@@ -593,7 +593,7 @@ private static async Task<bool> MonitorTasks(
 ```
 
 ## <a name="step-7-download-task-output"></a>Schritt 7: Herunterladen der Aufgabenausgabe
-![Aufgabenausgabe aus Storage herunterladen][7]<br/>
+![Herunterladen der Aufgabenausgabe aus Storage][7]<br/>
 
 Nachdem der Auftrag abgeschlossen wurde, kann die Ausgabe der Aufgaben aus Azure Storage heruntergeladen werden. Hierzu wird `DownloadBlobsFromContainerAsync` in der Datei `Program.cs` von *DotNetTutorial* aufgerufen:
 
