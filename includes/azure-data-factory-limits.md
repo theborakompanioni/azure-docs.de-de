@@ -6,7 +6,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | Pipelines innerhalb einer Data Factory |2500 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Datasets innerhalb einer Data Factory |5.000 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Gleichzeitige Slices pro Dataset |10 |10 |
-| Bytes pro Objekt für Pipelineobjekte <sup>1</sup> |200 KB |2000 KB |
+| Bytes pro Objekt für Pipelineobjekte <sup>1</sup> |200 KB |200 KB |
 | Bytes pro Objekt für Datasetobjekte und Objekte für verknüpfte Dienste <sup>1</sup> |100 KB |2000 KB |
 | Bedarfsgesteuerte HDInsight-Clusterkerne innerhalb eines Abonnements <sup>2</sup> |48 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Einheit für Clouddatenverschiebungen <sup>3</sup> |8 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
@@ -29,6 +29,6 @@ Azure Resource Manager weist Grenzwerte für API-Aufrufe auf. Sie können API-Au
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,19 +1,23 @@
 ---
-title: Referenz zur Log Analytics-Suche | Microsoft Docs
-description: Die Referenz zur Log Analytics-Suche enthält eine Beschreibung der Suchsprache und die allgemeinen Optionen zur Abfragesyntax, die Sie beim Suchen von Daten und Filtern von Ausdrücken verwenden können, um Ihre Suche einzugrenzen.
+title: Referenz zur Log Analytics-Suche | Microsoft-Dokumentation
+description: "Die Referenz zur Log Analytics-Suche enthält eine Beschreibung der Suchsprache und die allgemeinen Optionen zur Abfragesyntax, die Sie beim Suchen von Daten und Filtern von Ausdrücken verwenden können, um Ihre Suche einzugrenzen."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 10/25/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: d3abf62e590b5e9466c69f971f4cc6490a7e0d6e
+ms.openlocfilehash: fbbf8c75fa78bf94f0ad84401013d37327329028
+
 
 ---
 # <a name="log-analytics-search-reference"></a>Referenz zur Log Analytics-Suche
@@ -94,7 +98,7 @@ Type:Perf 0.5
 HTTP 500
 ```
 
-### <a name="date/time"></a>Datum/Uhrzeit
+### <a name="datetime"></a>Datum/Uhrzeit
 Jedes Datenelement im System besitzt eine *TimeGenerated*-Eigenschaft, die das ursprüngliche Datum und die Uhrzeit des Datensatzes darstellt. Einige Datentypen können darüber hinaus weitere Datums-/Uhrzeitfelder haben (z.B. *LastModified*).
 
 Das Zeitachsen-Diagramm bzw. der Uhrzeit-Selektor in Log Analytics zeigt eine Verteilung von Ergebnissen im Zeitverlauf an (gemäß der aktuell ausgeführten Abfrage), basierend auf dem Feld *TimeGenerated*. Datums-/Uhrzeit-Felder verfügen über ein bestimmtes Zeichenfolgenformat, das in Abfragen verwendet werden kann, um diese auf einen bestimmten Zeitraum zu beschränken. Sie können mit der Syntax auch auf relative Zeitintervalle verweisen (z. B. "zwischen vor 3 Tagen und vor 2 Stunden") .
@@ -140,7 +144,7 @@ In diesem Fall ist es unwahrscheinlich, dass dies ein Ergebnis gibt, da Daten ni
 
 Diese Beispiele sind die Bausteine für relative und absolute Datumsangaben. In den nächsten drei Unterabschnitten erläutern wir die Verwendung in erweiterten Filter mit Beispielen, bei denen ein relativer Datumsbereich verwendet wird.
 
-### <a name="date/time-math"></a>Datums-/Uhrzeit-Mathematik
+### <a name="datetime-math"></a>Datums-/Uhrzeit-Mathematik
 Verwenden Sie mathematische Datums-/Uhrzeit-Operatoren, um Datums-/Uhrzeitwerte zu versetzen oder zu runden, indem einfache Datums-/Uhrzeit-Berechnungen verwendet werden.
 
 Syntax:
@@ -301,7 +305,7 @@ Syntax:
 
 Sortiert die Ergebnisse nach bestimmten Feldern. Das Präfix "Asc/Desc" ist optional. Wenn es ausgelassen wird, wird von der *Asc*-Sortierreihenfolge ausgegangen. Wenn eine Abfrage den Befehl *Sortieren* nicht explizit verwendet, ist „**TimeGenerated** abst. sortieren“ das Standardverhalten. Dabei werden die neuesten Ergebnisse immer zuerst zurückgegeben.
 
-### <a name="top/limit"></a>"Top"/"Limit"
+### <a name="toplimit"></a>"Top"/"Limit"
 Syntax:
 
     top number
@@ -359,7 +363,7 @@ Aggregiert die Ergebnisse nach *groupField* und berechnet die aggregierten „Me
 | Measure-Statistikfunktion | Beschreibung |
 | --- | --- |
 | *aggregateFunction* |Der Name der Aggregatfunktion (ohne Berücksichtigung der Groß-/Kleinschreibung). Die folgenden Aggregatfunktionen werden unterstützt: COUNT, MAX, MIN, SUM, AVG, STDDEV, COUNTDISTINCT, PERCENTILE## oder PCT## (## ist eine beliebige Zahl zwischen 1 und 99). |
-| *aggregatedField* |Das Feld, das aggregiert wird. Dieses Feld ist für die Aggregatfunktion COUNT optional, aber es muss sich um ein vorhandenes numerisches Feld für SUM, MAX, MIN, AVG, STDDEV oder PERCENTILE## bzw. PCT## handeln (## ist eine beliebige Zahl zwischen 1 und 99). |
+| *aggregatedField* |Das Feld, das aggregiert wird. Dieses Feld ist für die Aggregatfunktion COUNT optional, aber es muss sich um ein vorhandenes numerisches Feld für SUM, MAX, MIN, AVG, STDDEV oder PERCENTILE## bzw. PCT## handeln (## ist eine beliebige Zahl zwischen 1 und 99). Bei aggregatedField kann es sich auch um eine der von „Extend“ unterstützten Funktionen handeln. |
 | *fieldAlias* |Der (optionale) Alias für den berechneten aggregierten Wert. Wenn keine Angabe gemacht wird, lautet der Feldname „AggregatedValue“. |
 | *groupField* |Der Name des Felds, nach dem das Resultset gruppiert ist. |
 | *Intervall* |Das Zeitintervall im Format**nnnNAME** , wobei nnn die positive ganze Zahl ist. **NAME** ist der Intervallname. Beispiele für unterstützte Intervallnamen (mit Berücksichtigung der Groß-/Kleinschreibung): MILLISECOND[S], SECOND[S], MINUTE[S], HOUR[S], DAY[S], MONTH[S], YEAR[S]. |
@@ -370,7 +374,7 @@ Wenn die BY-Klausel weggelassen, aber ein Intervall angegeben wird (als zweite S
 
 Beispiele:
 
-**Beispiel 1**
+**Beispiel 1**
 
     Type:Alert | measure count() as Count by ObjectId
 
@@ -378,7 +382,7 @@ Beispiele:
 
 Gruppiert die Warnungen nach *ObjectID* und berechnet die Anzahl der Warnungen für jede Gruppe. Der aggregierte Wert wird als das *Count* -Feld (Alias) zurückgegeben.
 
-**Beispiel 2**
+**Beispiel 2**
 
     Type:Alert | measure count() interval 1HOUR
 
@@ -386,7 +390,7 @@ Gruppiert die Warnungen nach *ObjectID* und berechnet die Anzahl der Warnungen f
 
 Gruppiert die Warnungen in stündlichen Intervallen mithilfe des *TimeGenerated* -Felds, und gibt die Anzahl der Warnungen in jedem Intervall zurück.
 
-**Beispiel 3**
+**Beispiel 3**
 
     Type:Alert | measure count() as AlertsPerHour interval 1HOUR
 
@@ -528,6 +532,16 @@ Type:Perf CounterName=”% Processor Time”  | measure min(CounterValue) as MIN
 
 Gruppiert „% Processor Time“ zunächst nach „Computer“ und dann nach „InstanceName“ und gibt für jede Stunde Minimalwert, Mittelwert, 75. Perzentil und Maximalwert zurück
 
+**Beispiel 20**
+
+```
+Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | measure max(product(CounterValue,60)) as MaxDWPerMin by InstanceName Interval 1HOUR
+```
+
+*Erklärung*
+
+Berechnet die maximale Anzahl von Schreibvorgängen auf dem Datenträger pro Minute für jeden Datenträger auf dem Computer.
+
 ### <a name="where"></a>Where
 Syntax:
 
@@ -573,24 +587,24 @@ Type=Event Computer IN {Type:Update Classification="Security Updates"  UpdateSta
 
 **Beispiel**
 
-    Type=Event | sort TimeGenerated DESC | Dedup EventID
+    Type=Event | Dedup EventID | sort TimeGenerated DESC
 
-Im obigen Beispiel wird pro EventID ein Ereignis (das aktuellste seit wir DESC für TimeGenerated verwenden) zurückgegeben
+Im obigen Beispiel wird ein Ereignis (das letzte, da wir DESC für TimeGenerated verwenden) pro EventID zurückgegeben.
 
 ### <a name="extend"></a>Extend
-**Beschreibung** Ermöglicht Ihnen die Erstellung von Laufzeitfeldern in Abfragen.
+**Beschreibung** Ermöglicht Ihnen die Erstellung von Laufzeitfeldern in Abfragen. Sie können nach „Extend“ auch den Befehl „measure“ verwenden, wenn Sie eine Aggregation ausführen möchten.
 
-**Beispiel 1**
+**Beispiel 1**
 
     Type=SQLAssessmentRecommendation | Extend product(RecommendationScore, RecommendationWeight) AS RecommendationWeightedScore
 Anzeigen einer gewichteten Empfehlungsbewertung für SQL Assessment-Empfehlungen
 
-**Beispiel 2**
+**Beispiel 2**
 
     Type=Perf CounterName="Private Bytes" | EXTEND div(CounterValue,1024) AS KBs | Select CounterValue,Computer,KBs
 Anzeigen des Zählerwerts in KB anstelle von Byte
 
-**Beispiel 3**
+**Beispiel 3**
 
     Type=WireData | EXTEND scale(TotalBytes,0,100) AS ScaledTotalBytes | Select ScaledTotalBytes,TotalBytes | SORT TotalBytes DESC
 Skalieren des Werts von WireData TotalBytes, sodass alle Ergebnisse zwischen 0 und 100 liegen
@@ -599,8 +613,15 @@ Skalieren des Werts von WireData TotalBytes, sodass alle Ergebnisse zwischen 0 u
 
 ```
 Type=Perf CounterName="% Processor Time" | EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION
-Tag Perf Counter Values less than 50% las LOW and others as HIGH
 ```
+Kennzeichnen von Leistungsindikatorwerten von unter 50% als LOW, andernfalls als HIGH
+
+**Beispiel 5**
+
+```
+Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Extend product(CounterValue,60) as DWPerMin| measure max(DWPerMin) by InstanceName Interval 1HOUR
+```
+Berechnet die maximale Anzahl von Schreibvorgängen auf dem Datenträger pro Minute für jeden Datenträger auf dem Computer.
 
 **Unterstützte Funktionen**
 
@@ -695,7 +716,7 @@ Wenn Sie die Protokollsuche verwenden, um Daten zu finden, zeigen die Ergebnisse
 | AdvisorWorkload |Empfehlung |Technologie oder "Arbeitsauslastung", auf die sich die Empfehlung bezieht. |
 | Beschreibung |ConfigurationAlert |Beschreibung der Warnung (kurz) |
 | DaysSinceLastUpdate |UpdateAgent |Vor wie vielen Tagen (in Bezug auf 'TimeGenerated' für diesen Datensatz) hat dieser Agent ein Update von WSUS oder Microsoft Update installiert? |
-| DaysSinceLastUpdateBucket |UpdateAgent |Eine Kategorisierung in "Perioden" basierend auf DaysSinceLastUpdate, wann zuletzt ein Update von WSUS/Microsoft Update installiert wurde. |
+| DaysSinceLastUpdateBucket |UpdateAgent | Eine Kategorisierung in "Perioden" basierend auf DaysSinceLastUpdate, wann zuletzt ein Update von WSUS/Microsoft Update installiert wurde. |
 | AutomaticUpdateEnabled |UpdateAgent |Ist die Überprüfung der automatischen Aktualisierung auf diesem Agent aktiviert oder deaktiviert? |
 | AutomaticUpdateValue |UpdateAgent |Ist die Überprüfung der automatischen Aktualisierung auf automatisches Herunterladen und Installieren, nur Herunterladen oder nur Überprüfen festgelegt? |
 | WindowsUpdateAgentVersion |UpdateAgent |Versionsnummer des Microsoft Update-Agents |
@@ -767,6 +788,9 @@ Weitere Informationen zu Protokollsuchen:
 * Machen Sie sich mit [Protokollsuchvorgängen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
 * Lesen Sie [Benutzerdefinierte Felder in Log Analytics](log-analytics-custom-fields.md) , um mehr über Protokollsuchen zu erfahren.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO5-->
 
 

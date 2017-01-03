@@ -1,5 +1,5 @@
 # <a name="azure-technical-documentation-contributor-guide"></a>Leitfaden für Mitwirkende bei der technischen Dokumentation zu Azure
-Sie haben das GitHub-Repository mit der Quelle für die technische Azure-Dokumentation gefunden, die unter [http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) veröffentlicht wird.
+Sie haben das GitHub-Repository mit der Quelle für die technische Azure-Dokumentation gefunden, die unter [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) veröffentlicht wird.
 
 Dieses Repository enthält auch Hinweise dazu, wie Sie zu unserer technischen Dokumentation beitragen können. Die einzelnen Artikel dieses Leitfadens für Mitwirkende finden Sie [im Index](contributor-guide/contributor-guide-index.md).
 
@@ -17,9 +17,9 @@ Vielen Dank für Ihr Interesse an der Azure-Dokumentation.
 * [Index aller Artikel im Leitfaden für Mitwirkende](contributor-guide/contributor-guide-index.md) (öffnet eine neue Seite)
 
 ## <a name="ways-to-contribute"></a>Möglichkeiten zur Mitwirkung
-Sie können wie folgt Updates für die [Azure-Dokumentation](http://docs.microsoft.com/azure) senden:
+Sie können wie folgt Updates für die [Azure-Dokumentation](https://docs.microsoft.com/azure) senden:
 
-* Tragen Sie zu technischen Artikeln über die GitHub-Benutzeroberfläche bei. Das ist einfach. Entweder finden Sie den Artikel in diesem Repository, oder Sie besuchen die Seite mit dem Artikel unter [http://docs.microsoft.com/azure](http://docs.microsoft.com/azure) und klicken dort auf den Link, der zum GitHub-Quelltext des Artikels führt.
+* Tragen Sie zu technischen Artikeln über die GitHub-Benutzeroberfläche bei. Das ist einfach. Entweder finden Sie den Artikel in diesem Repository, oder Sie besuchen die Seite mit dem Artikel unter [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) und klicken dort auf den Link, der zum GitHub-Quelltext des Artikels führt.
 * Wenn Sie wesentliche Änderungen an einem vorhandenen Artikel vornehmen, Bilder hinzufügen oder austauschen oder einen neuen Artikel verfassen möchten, müssen Sie einen Fork (d.h. eine Abspaltung) dieses Repositorys erstellen, Git Bash und Markdown Pad installieren und einige Git-Befehle erlernen.
 
 ## <a name="code-of-conduct"></a>Verhaltenskodex
@@ -27,16 +27,16 @@ Für dieses Projekt wird der [Microsoft Open Source Code of Conduct](https://ope
 
 ## <a name="about-your-contributions-to-azure-content"></a>Über Ihre Beiträge zu Azure-Inhalten
 ### <a name="minor-corrections"></a>Kleinere Korrekturen
-Kleinere Korrekturen oder Klarstellungen, die Sie für die Dokumentation oder für Codebeispiele in diesem Repository einreichen, werden durch die [Nutzungsbedingungen für „docs.microsoft.com“](/enterprise-mobility-security/termsofuse) abgedeckt.
+Kleinere Korrekturen oder Klarstellungen, die Sie für die Dokumentation oder für Codebeispiele in diesem Repository einreichen, werden durch die [Nutzungsbedingungen für „docs.microsoft.com“](https://docs.microsoft.com/legal/termsofuse) abgedeckt.
 
 ### <a name="larger-submissions"></a>Größere Beiträge
 Wenn Sie einen Pull Request mit neuen Inhalten oder signifikanten Änderungen an der Dokumentation und an Codebeispielen übermitteln, senden wir Ihnen einen Kommentar in GitHub, in dem wir Sie bitten, online eine Lizenzvereinbarung für Beiträge (Contribution License Agreement, CLA) zu unterzeichnen. Dies gilt, wenn Sie kein Mitarbeiter von Microsoft sind. Sie müssen das Onlineformular ausfüllen, damit wir Ihren Pull Request annehmen können.
 
 ## <a name="repository-organization"></a>Aufbau des Repositorys
-Der Inhalt im Repository „azure-docs“ folgt in seiner Struktur der Dokumentation unter „http://docs.microsoft.com/azure“. Das Repository enthält zwei Stammordner:
+Der Inhalt im Repository „azure-docs“ folgt in seiner Struktur der Dokumentation unter „https://docs.microsoft.com/azure“. Das Repository enthält zwei Stammordner:
 
 ### <a name="articles"></a>\articles
-Der Ordner *\articles* enthält die Dokumentationsartikel, formatiert als Markdowndateien mit der Erweiterung *.md*. Artikel werden normalerweise nach Azure-Dienst gruppiert. 
+Der Ordner *\articles* enthält die Dokumentationsartikel, formatiert als Markdowndateien mit der Erweiterung *.md*. Artikel werden normalerweise nach Azure-Dienst gruppiert.
 
 Für die Artikel müssen strenge Richtlinien für die Dateibenennung befolgt werden. Ausführliche Informationen hierzu finden Sie in [unserer Anleitung zur Benennung von Dateien](contributor-guide/file-names-and-locations.md).
 
@@ -49,7 +49,7 @@ Sie können Abschnitte mit wiederverwendbaren Inhalten erstellen, die in einen o
 Dieser Ordner enthält unsere Markdown-Standardvorlage mit der grundlegenden Markdown-Formatierung, die Sie für einen Artikel benötigen.
 
 ### <a name="contributor-guide"></a>\contributor-guide
-Dieser Ordner enthält die Artikel unseres Leitfadens für Mitwirkende.  
+Dieser Ordner enthält die Artikel unseres Leitfadens für Mitwirkende.
 
 ## <a name="use-github-git-and-this-repository"></a>Verwenden von GitHub und Git sowie dieses Repositorys
 Lesen Sie unter [Installieren und Einrichten der Tools zum Erstellen von Beiträgen in GitHub](contributor-guide/tools-and-setup.md), wie Sie über die GitHub-Benutzeroberfläche kleine Änderungen vornehmen oder einen Fork oder Klon des Repositorys erstellen, um größere Beiträge zu verfassen.
@@ -87,6 +87,6 @@ Alle Anleitungsthemen finden Sie im [Index zum Leitfaden für Mitwirkende](contr
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

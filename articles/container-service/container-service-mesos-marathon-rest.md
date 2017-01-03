@@ -3,7 +3,7 @@ title: "Azure Container Service-Containerverwaltung über die REST-API | Microso
 description: "Stellen Sie mithilfe der Marathon-REST-API Container für einen Azure Container Service-Mesos-Cluster bereit."
 services: container-service
 documentationcenter: 
-author: neilpeterson
+author: dlepow
 manager: timlt
 editor: 
 tags: acs, azure-container-service
@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
-ms.author: timlt
+ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e8f1ad596d2b64380876a501ebcf127afdda9ccf
+ms.sourcegitcommit: 54832afbc9a7bf1d660de3fd898ad5c97715ca5d
+ms.openlocfilehash: a01993eb01b9e05b4848d5a81b841fe10ccae035
 
 
 ---
@@ -33,13 +33,13 @@ Es sind zwar Frameworks für viele gängige Workloads verfügbar, aber in diesem
 Nachdem die Verbindung mit dem Azure Container Service-Cluster hergestellt wurde, können Sie auf DC/OS und die verwandten REST-APIs über „http://localhost:local-port“ zugreifen. Bei den Beispielen in diesem Dokument wird davon ausgegangen, dass das Tunneling über Port 80 erfolgt. Der Marathon-Endpunkt kann beispielsweise unter `http://localhost/marathon/v2/`erreicht werden. Weitere Informationen zu den verschiedenen APIs finden Sie in der Mesosphere-Dokumentation für die [Marathon-API](https://mesosphere.github.io/marathon/docs/rest-api.html) und die [Chronos-API](https://mesos.github.io/chronos/docs/api.html) sowie in der Apache-Dokumentation für die [Mesos Scheduler-API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Erfassen von Informationen von DC/OS und Marathon
-Erfassen Sie vor dem Bereitstellen von Containern im DC/OS-Cluster einige Informationen zum DC/OS-Cluster, z.B. die Namen und den aktuellen Status der DC/OS-Agents. Fragen Sie dazu den `master/slaves`-Endpunkt der DC/OS-REST-API ab. Wenn alles gut geht, wird eine Liste der DC/OS-Agents mit jeweils einigen Eigenschaften angezeigt.
+Erfassen Sie vor dem Bereitstellen von Containern im DC/OS-Cluster einige Informationen zum DC/OS-Cluster, z.B. die Namen und den aktuellen Status der DC/OS-Agents. Fragen Sie dazu den `master/slaves`-Endpunkt der DC/OS-REST-API ab. Wenn alles geklappt hat, gibt die Abfrage eine Liste mit DC/OS-Agents und jeweils einigen Eigenschaften zurück.
 
 ```bash
 curl http://localhost/mesos/master/slaves
 ```
 
-Verwenden Sie nun den Marathon-`/apps`-Endpunkt, um aktuelle Anwendungsbereitstellungen im DC/OS-Cluster zu überprüfen. Wenn es sich um einen neuen Cluster handelt, wird ein leeres Array für Apps angezeigt.
+Verwenden Sie nun den Marathon-`/apps`-Endpunkt, um aktuelle Anwendungsbereitstellungen im DC/OS-Cluster zu überprüfen. Im Falle eines neuen Clusters wird ein leeres Array für Apps angezeigt.
 
 ```
 curl localhost/marathon/v2/apps
@@ -84,7 +84,7 @@ Die Ausgabe sieht etwa wie folgt aus:
 {"version":"2015-11-20T18:59:00.494Z","deploymentId":"b12f8a73-f56a-4eb1-9375-4ac026d6cdec"}
 ```
 
-Wenn Sie jetzt Marathon auf Anwendungen abfragen, wird diese neue Anwendung in der Ausgabe angezeigt.
+Wenn Sie jetzt Marathon auf Anwendungen abfragen, erscheint diese neue Anwendung in der Ausgabe.
 
 ```
 curl localhost/marathon/v2/apps
@@ -100,7 +100,7 @@ Sie können auch die Marathon-API verwenden, um Anwendungsbereitstellungen horiz
 Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
 
 > [!NOTE]
-> Der URI ist „http://localhost/marathon/v2/apps/“ gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
+> Der URI lautet „http://localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
 > 
 > 
 
@@ -108,7 +108,7 @@ Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskaliere
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-Fragen Sie den Marathon-Endpunkt zum Schluss auf Anwendungen ab. Sie sehen, dass jetzt drei Nginx-Container vorhanden sind.
+Fragen Sie den Marathon-Endpunkt zum Schluss auf Anwendungen ab. Wie Sie sehen, sind nun drei Nginx-Container vorhanden.
 
 ```
 curl localhost/marathon/v2/apps
@@ -159,7 +159,7 @@ Sie können auch die Marathon-API verwenden, um Anwendungsbereitstellungen horiz
 Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
 
 > [!NOTE]
-> Der URI ist „http://localhost/marathon/v2/apps/“ gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
+> Der URI lautet „http://localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
 > 
 > 
 
@@ -174,6 +174,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

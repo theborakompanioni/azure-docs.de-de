@@ -1,12 +1,12 @@
 ---
-title: Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Ermitteln der Anforderungen in Bezug auf die Verzeichnissynchronisierung | Microsoft Docs
-description: Identifizieren Sie, welche Anforderungen für die Synchronisierung aller Benutzer zwischen lokalen Speicherorten und Cloudspeicherorten für das Unternehmen gelten.
-documentationcenter: ''
+title: "Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Ermitteln der Anforderungen in Bezug auf die Verzeichnissynchronisierung | Microsoft Docs"
+description: "Identifizieren Sie, welche Anforderungen für die Synchronisierung aller Benutzer zwischen lokalen Speicherorten und Cloudspeicherorten für das Unternehmen gelten."
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 32039e6c9291879a4151cd12dfa5dac11a153ee0
+
 
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Ermitteln der Anforderungen an die Verzeichnissynchronisierung
@@ -32,7 +36,7 @@ Beantworten Sie die folgenden Fragen:
 * Verwenden Sie derzeit lokal ein Synchronisierungstool?
   
   * Wenn ja: Ist für Ihre Benutzer ein virtuelles Verzeichnis bzw. eine Integration der Identitäten vorhanden?
-* Sind lokal noch weitere Verzeichnisse vorhanden, die synchronisiert werden sollen (z. B. LDAP-Verzeichnis, HR-Datenbank usw.)?
+* Sind lokal noch weitere Verzeichnisse vorhanden, die synchronisiert werden sollen (z. B. LDAP-Verzeichnis, HR-Datenbank usw.)?
   * Sollen GALSync-Vorgänge durchgeführt werden?
   * Welchen aktuellen Stand haben UPNs in Ihrem Unternehmen? 
   * Verwenden Sie ein anderes Verzeichnis, das für die Authentifizierung der Benutzer eingesetzt wird?
@@ -52,7 +56,7 @@ Außerdem müssen Sie die Sicherheitsanforderungen und Einschränkungen der Verz
 
 * Wo soll sich der Synchronisierungsserver befinden?
 * Soll er Mitglied einer Domäne sein?
-* Befindet sich der Server in einem eingeschränkten Netzwerk hinter einer Firewall, z. B. einer DMZ?
+* Befindet sich der Server in einem eingeschränkten Netzwerk hinter einer Firewall, z. B. einer DMZ?
   * Können Sie die erforderlichen Firewallports öffnen, um die Synchronisierung zu unterstützen?
 * Verfügen Sie für den Synchronisierungsserver über einen Plan für die Notfallwiederherstellung?
 * Verfügen Sie über ein Konto mit den richtigen Berechtigungen für alle Gesamtstrukturen, für die eine Synchronisierung durchgeführt werden soll?
@@ -70,6 +74,9 @@ Außerdem müssen Sie die Sicherheitsanforderungen und Einschränkungen der Verz
 ## <a name="see-also"></a>Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

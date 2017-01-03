@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
+ms.date: 12/09/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3e587c9422e008a7b3c46e34fed4d0f1b2a8189c
+ms.sourcegitcommit: 0500d903438e0fb062ca848e6f488860e214a705
+ms.openlocfilehash: 55b6f6e03bfd1877d4f204cb5751ae46379d6951
 
 
 ---
@@ -58,10 +58,12 @@ In diesen Artikeln wird beschrieben, wie Sie mit Azure Active Directory bestimmt
 
 * [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
 * [How to sign in any Azure Active Directory (AD) user using the multi-tenant application pattern](active-directory-devhowto-multi-tenant-overview.md)
+* [Authenticate a service/daemon application using a certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/) (Authentifizieren eines Diensts/einer Daemon-Anwendung mithilfe eines Zertifikats)
 * Aktivieren von App-übergreifendem SSO per ADAL auf [Android](active-directory-sso-android.md)- und [iOS](active-directory-sso-ios.md)-Geräten
 * [How to get AppSource Certified for Azure Active Directory (AD)](active-directory-devhowto-appsource-certified.md)
 * [Auflisten Ihrer Anwendung im Azure AD-Anwendungskatalog](active-directory-app-gallery-listing.md)
 * [Übertragen von Web-Apps für Office 365 an das Verkäuferdashboard (in englischer Sprache)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+* [Registrieren einer Anwendung mit Azure Active Directory über das Azure-Portal](active-directory-app-registration.md)
 * [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md)
 * [Grundlegendes zu den Brandingrichtlinien für die Schaltflächen für Anmeldung und App-Erwerb in Ihrer Clientanwendung](active-directory-branding-guidelines.md)
 * [Vorschau: Erstellen von Apps, bei denen sich Benutzer sowohl mit persönlichen als auch mit Geschäfts-, Schul- oder Unikonto anmelden können](active-directory-appmodel-v2-overview.md)
@@ -121,7 +123,6 @@ Hilfestellung bei der Entwicklung mit Windows Server und Active Directory Federa
 
 * [AD FS Scenarios for Developers](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) (AD FS-Szenarios für Entwickler): bietet eine Übersicht über AD FS-Komponenten und deren Funktionsweise sowie Einzelheiten zu den unterstützten Authentifizierungs- und Autorisierungsszenarios.
 * [AD FS walkthroughs](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/ad-fs-development) (Exemplarische Vorgehensweisen für AD FS): enthält eine Liste von Artikeln mit exemplarischen Vorgehensweisen, die ausführliche Anleitungen zum Implementieren der zugehörigen Authentifizierungs- und Autorisierungsabläufe bereitstellen.
-
 
 
 

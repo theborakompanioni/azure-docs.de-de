@@ -9,7 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cfff2299-a474-4054-8d99-759af1ae5188
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: csharp
@@ -17,20 +17,14 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 82b042fa17af4bc93989a4f12982530f44755280
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: e051a8828a5d36e08a0ea7d352f3d8aabf00b911
 
 
 ---
-# <a name="try-sql-database-use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
-> [!div class="op_single_selector"]
-> * [Azure-Portal](sql-database-get-started.md)
-> * [C#](sql-database-get-started-csharp.md)
-> * [PowerShell](sql-database-get-started-powershell.md)
-> 
-> 
+# <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
 
-Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Microsoft Azure SQL-Verwaltungsbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) verwenden. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen von Pools für elastische Datenbanken finden Sie unter [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-csharp.md).
+Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Microsoft Azure SQL-Verwaltungsbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) verwenden. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen elastischer Pools finden Sie unter [Erstellen eines elastischen Pools](sql-database-elastic-pool-create-csharp.md).
 
 Die Azure SQL-Datenbank-Verwaltungsbibliothek für .NET bietet eine [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für die SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
 
@@ -293,6 +287,6 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

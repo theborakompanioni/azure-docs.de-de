@@ -2,11 +2,11 @@
 title: 'Vorschau der Azure Active Directory Domain Services: Features | Microsoft Docs'
 description: Features der Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 8d1c3eb3-1022-4add-a919-c98cc6584af1
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 18c3400063097cdf70398a95e9e39e9097e27992
+
 
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
@@ -33,9 +37,12 @@ Die folgenden Features sind in Domänen verfügbar, die in Azure AD Domain Servi
 * **DNS verwalten:** Mitglieder der Gruppe der AAD-DC-Administratoren können DNS für Ihre verwaltete Domäne mit vertrauten DNS-Verwaltungstools wie dem MMC-Snap-In verwalten.
 * **Benutzerdefinierte Organisationseinheiten (OUs) erstellen:** Mitglieder der Gruppe der AAD-DC-Administratoren können benutzerdefinierte Organisationseinheiten in der verwalteten Domäne erstellen. Diesen Benutzern werden vollständige Administratorrechte für benutzerdefinierte Organisationseinheiten erteilt, sodass sie Dienstkonten, Computer, Gruppen usw. in diesen benutzerdefinierten Organisationseinheiten hinzufügen/entfernen können.
 * **Verfügbar in mehreren Azure-Regionen:** Informationen zu den Azure-Regionen, in denen Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/) .
-* **Hohe Verfügbarkeit:** Azure AD Domain Services bieten eine hohe Verfügbarkeit für Ihre Domäne. Durch dieses Feature wird eine höhere Dienstverfügbarkeit und Stabilität bei Fehlern gewährleistet. Die integrierte Integritätsüberwachung bietet eine automatische Wiederherstellung nach Fehlern durch das Einrichten neuer Instanzen zum Ersetzen fehlerhafter Instanzen und zum Bereitstellen eines fortlaufenden Diensts für Ihre Domäne.
+* **Hohe Verfügbarkeit:** Azure AD Domain Services bieten eine hohe Verfügbarkeit für Ihre Domäne. Durch dieses Feature wird eine höhere Dienstverfügbarkeit und Stabilität bei Fehlern gewährleistet. Die integrierte Integritätsüberwachung bietet eine automatische Wiederherstellung nach Fehlern durch das Einrichten neuer Instanzen zum Ersetzen fehlerhafter Instanzen und zum Bereitstellen eines fortlaufenden Diensts für Ihre Domäne.
 * **Verwendung vertrauter Verwaltungstools:** Sie können vertraute Windows Server Active Directory-Verwaltungstools wie das Active Directory-Verwaltungscenter oder Active Directory-PowerShell zur Verwaltung von Domänen einsetzen, um Domänen zu verwalten.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

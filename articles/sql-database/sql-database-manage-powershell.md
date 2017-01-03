@@ -8,15 +8,16 @@ manager: jhubbard
 editor: monicar
 ms.assetid: 3f21ad5e-ba99-4010-b244-5e5815074d31
 ms.service: sql-database
+ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.date: 11/15/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: a91b60f20394c236d64bfae242f820e56dd3ed79
-ms.openlocfilehash: 83ff32bb99ba0cf08f61ba4f2a97dee74bd6e1c5
+ms.sourcegitcommit: adad6b8e27e0996559d5e6dacb8dd60fbf52a631
+ms.openlocfilehash: 0c1ce1c29e447d9db4ef0df7873ef89cb835abee
 
 
 ---
@@ -30,6 +31,10 @@ ms.openlocfilehash: 83ff32bb99ba0cf08f61ba4f2a97dee74bd6e1c5
 
 In diesem Thema werden die PowerShell-Cmdlets vorgestellt, mit deren Hilfe zahlreiche Azure SQL-Datenbankaufgaben ausgeführt werden. Eine vollständige Liste finden Sie unter [Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/mt574084\(v=azure.300\).aspx).
 
+> [!TIP]
+> Das [Tutorial zu den ersten Schritten](sql-database-get-started-powershell.md) veranschaulicht, wie Sie einen Server und eine serverbasierte Firewall erstellen, Servereigenschaften anzeigen, eine Verbindung mit der Masterdatenbank herstellen und diese abfragen, eine Beispieldatenbank und eine leere Datenbank erstellen, Datenbankeigenschaften abfragen, eine Verbindung mit der Beispieldatenbank herstellen und diese abfragen.
+>
+
 ## <a name="how-do-i-create-a-resource-group"></a>Wie erstelle ich eine neuen Ressourcengruppe?
 Um eine Ressourcengruppe für Ihre SQL-Datenbank und die zugehörigen Azure-Ressourcen zu erstellen Sie, verwenden Sie das Cmdlet [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt759837\(v=azure.300\).aspx).
 
@@ -40,7 +45,7 @@ New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocati
 ```
 
 Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
-Ein Beispielskript finden Sie unter [Erstellen eines SQL-Datenbank-PowerShell-Skripts](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+Ein umfassendes Tutorial finden Sie unter [Erste Schritte mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit Azure PowerShell](sql-database-get-started-powershell.md).
 
 ## <a name="how-do-i-create-a-sql-database-server"></a>Wie erstelle ich einen SQL-Datenbankserver?
 Verwenden Sie das Cmdlet [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715\(v=azure.300\).aspx), um einen SQL-Datenbank-Server zu erstellen. Ersetzen Sie *server1* durch den Namen Ihres Servers. Servernamen müssen auf allen Azure SQL-Datenbankservern eindeutig sein. Es wird eine Fehlermeldung angezeigt, wenn der Servername bereits vergeben ist. Dieser Befehl kann mehrere Minuten in Anspruch nehmen. Die Ressourcengruppe muss bereits in Ihrem Abonnement vorhanden sein.
@@ -62,7 +67,7 @@ $sqlServer = New-AzureRmSqlServer -ServerName $sqlServerName `
  -ResourceGroupName $resourceGroupName -ServerVersion $sqlServerVersion
 ```
 
-Weitere Informationen stehen unter [Was ist SQL-Datenbank?](sql-database-technical-overview.md). Ein Beispielskript finden Sie unter [Erstellen eines SQL-Datenbank-PowerShell-Skripts](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+Weitere Informationen zu Servern finden Sie unter [Features der Azure SQL-Datenbank](sql-database-features.md). Ein umfassendes Tutorial finden Sie unter [Erste Schritte mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit Azure PowerShell](sql-database-get-started-powershell.md).
 
 ## <a name="how-do-i-create-a-sql-database-server-firewall-rule"></a>Wie erstelle ich eine Firewallregel für einen Azure SQL-Datenbankserver?
 Um eine Firewallregel für den Zugriff auf den Server zu erstellen, verwenden Sie das Cmdlet [New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860\(v=azure.300\).aspx). Führen Sie den folgenden Befehl aus, wobei Sie die Start- und End-IP-Adresse durch gültige Werte für Ihren Client ersetzen. Die Ressourcengruppe und der Server müssen bereits in Ihrem Abonnement vorhanden sein.
@@ -82,7 +87,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
 
 Um anderen Azure-Diensten den Zugriff auf Ihren Server zu ermöglichen, erstellen Sie eine Firewallregel, und legen Sie sowohl `-StartIpAddress` als auch `-EndIpAddress` auf **0.0.0.0** fest. Mit dieser speziellen Firewallregel wird dem gesamten Azure-Datenverkehr der Zugriff auf den Server gestattet.
 
-Weitere Informationen finden Sie unter [Firewall für die Azure SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee621782.aspx). Ein Beispielskript finden Sie unter [Erstellen eines SQL-Datenbank-PowerShell-Skripts](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+Weitere Informationen finden Sie unter [Firewall für die Azure SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee621782.aspx). Ein umfassendes Tutorial finden Sie unter [Erste Schritte mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit Azure PowerShell](sql-database-get-started-powershell.md).
 
 ## <a name="how-do-i-create-a-sql-database"></a>Wie erstelle ich eine SQL-Datenbank?
 Um eine SQL-Datenbank zu erstellen, verwenden Sie das Cmdlet [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339\(v=azure.300\).aspx). Die Ressourcengruppe und der Server müssen bereits in Ihrem Abonnement vorhanden sein. 
@@ -100,7 +105,7 @@ $currentDatabase = New-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName 
  -Edition $databaseEdition -RequestedServiceObjectiveName $databaseServiceLevel
 ```
 
-Weitere Informationen stehen unter [Was ist SQL-Datenbank?](sql-database-technical-overview.md). Ein Beispielskript finden Sie unter [Erstellen eines SQL-Datenbank-PowerShell-Skripts](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
+Weitere Informationen stehen unter [Was ist SQL-Datenbank?](sql-database-technical-overview.md). Ein umfassendes Tutorial finden Sie unter [Erste Schritte mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit Azure PowerShell](sql-database-get-started-powershell.md).
 
 ## <a name="how-do-i-change-the-performance-level-of-a-sql-database"></a>Wie ändere ich die Leistungsebene einer SQL-Datenbank?
 Skalieren Sie Ihre Datenbank mit dem Cmdlet [Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433\(v=azure.300\).aspx) zentral hoch oder herunter, um die Leistungsebene zu ändern. Die Ressourcengruppe, der Server und die Datenbank müssen bereits in Ihrem Abonnement vorhanden sein. Legen Sie für den Tarif „Basic“ `-RequestedServiceObjectiveName` (wie im folgenden Codeausschnitt) auf ein einzelnes Leerzeichen fest. Legen Sie diese Einstellung für andere Tarife wie im vorangehenden Beispiel auf *S0*, *S1*, *P1*, *P6* usw. fest.
@@ -141,7 +146,7 @@ New-AzureRmSqlDatabaseCopy -DatabaseName $databaseName `
 Weitere Informationen finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md). Ein Beispielskript finden Sie unter [Kopieren eines SQL-Datenbank-PowerShell-Skripts](sql-database-copy-powershell.md#example-powershell-script).
 
 ## <a name="how-do-i-delete-a-sql-database"></a>Wie lösche ich eine SQL-Datenbank?
-Verwenden Sie  das Cmdlet [Remove-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619368\(v=azure.300\).aspx), um eine SQL-Datenbank zu löschen. Die Ressourcengruppe, der Server und die Datenbank müssen bereits in Ihrem Abonnement vorhanden sein.
+Zum Löschen einer SQL-Datenbank verwenden Sie das Cmdlet [Remove-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619368\(v=azure.300\).aspx). Die Ressourcengruppe, der Server und die Datenbank müssen bereits in Ihrem Abonnement vorhanden sein.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -162,10 +167,10 @@ $sqlServerName = "server1"
 Remove-AzureRmSqlServer -ServerName $sqlServerName -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="how-do-i-create-and-manage-elastic-database-pools-using-powershell"></a>Wie erstelle und verwalte ich Pools für elastische Datenbanken mithilfe von PowerShell?
-Einzelheiten zum Erstellen von Pools für elastische Datenbanken mit PowerShell finden Sie unter [Erstellen eines neuen Pools für elastische Datenbanken mit PowerShell](sql-database-elastic-pool-create-powershell.md).
+## <a name="how-do-i-create-and-manage-elastic-pools-using-powershell"></a>Wie erstelle und verwalte ich elastische Pools mithilfe von PowerShell?
+Einzelheiten zum Erstellen von elastischen Pools mit PowerShell finden Sie unter [Erstellen eines neuen elastischen Pools mit PowerShell](sql-database-elastic-pool-create-powershell.md).
 
-Einzelheiten zum Verwalten von Pools für elastische Datenbanken mit PowerShell finden Sie unter [Überwachen und Verwalten eines Pools für elastische Datenbanken mit PowerShell](sql-database-elastic-pool-manage-powershell.md).
+Einzelheiten zum Verwalten von elastischen Pools mit PowerShell finden Sie unter [Überwachen und Verwalten elastischer Pools mit PowerShell](sql-database-elastic-pool-manage-powershell.md).
 
 ## <a name="related-information"></a>Verwandte Informationen
 * [Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)
@@ -174,6 +179,6 @@ Einzelheiten zum Verwalten von Pools für elastische Datenbanken mit PowerShell 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

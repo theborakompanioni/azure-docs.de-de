@@ -2,11 +2,11 @@
 title: 'Anpassen: Azure AD-Kennwortverwaltung | Microsoft Docs'
 description: Vorgehensweise zum Anpassen von Aussehen und Verhalten der Kennwortverwaltung und von Benachrichtigungen in Azure AD an Ihre Anforderungen.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asteen
 manager: femila
 editor: curtand
-
+ms.assetid: 2cddd150-8747-447a-a7cf-1d7d5775c0b3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: asteen
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
+
 
 ---
-# <a name="customizing-password-management-to-fit-your-organization's-needs"></a>Anpassen der Kennwortverwaltung an die Anforderungen Ihrer Organisation
+# <a name="customizing-password-management-to-fit-your-organizations-needs"></a>Anpassen der Kennwortverwaltung an die Anforderungen Ihrer Organisation
 > [!IMPORTANT]
 > **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 > 
@@ -443,9 +447,9 @@ Zum Zeitpunkt der Kennwortzurücksetzung wird diese Anzahl von Fragen nach dem Z
                 </p>
                 <ul>
                   <li class="unordered">
-Alle Fragen der Wissensdatenbank werden anhand des Gebietsschemas im Browser in den vollständigen Satz von Office 365-Sprachen lokalisiert. <br><br></li>
+Alle Fragen der Wissensdatenbank werden anhand des Gebietsschemas im Browser in den vollständigen Satz von Office 365-Sprachen lokalisiert. <br><br></li>
                   <li class="unordered">
-Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
+Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
                  <li class="unordered">
 Die Mindestanzahl von Zeichen für Antworten ist 3 Zeichen.<br><br></li>
                   <li class="unordered">
@@ -494,7 +498,7 @@ Legt fest, welche Fragen ein Benutzer zum Zurücksetzen eines Kennworts verwende
                 </p>
                 <ul>
                   <li class="unordered">
-Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
+Insgesamt können bis zu 20 Fragen definiert werden (Summe aus benutzerdefinierten und Wissensdatenbank-Fragen).<br><br></li>
                   <li class="unordered">
 Die maximale Zeichenanzahl für Fragen ist 200 Zeichen.<br><br></li>
                   <li class="unordered">
@@ -540,7 +544,7 @@ Legt fest, welche Fragen ein Benutzer zum Zurücksetzen eines Kennworts verwende
               <td>
                 <p>Legt fest, ob ein Benutzer bei der nächsten Anmeldung Kontaktdaten für die Kennwortzurücksetzung registrieren muss.  
                 </p>
-                <p>Diese Funktion funktioniert auf jeder Anmeldeseite, die ein Geschäfts- oder Schulkonto verwendet.  Zu diesen Seiten gehören alle Office 365-Seiten, das Azure-Verwaltungsportal, der Zugriffsbereich und alle Verbundbenutzer oder speziell entwickelten Anwendungen, bei denen die Anmeldung über Azure AD erfolgt.
+                <p>Diese Funktion funktioniert auf jeder Anmeldeseite, die ein Geschäfts- oder Schulkonto verwendet.  Zu diesen Seiten gehören alle Office 365-Seiten, das Azure-Verwaltungsportal, der Zugriffsbereich und alle Verbundbenutzer oder speziell entwickelten Anwendungen, bei denen die Anmeldung über Azure AD erfolgt.
                 </p>
                 <p>
 
@@ -705,7 +709,7 @@ Wenn Sie eine URL angeben, wird der Link zu einem standardmäßigen "href", der 
                 <p>
 
                 </p>
-                <p>Diese Einstellung ist nützlich, wenn Sie den Dienst vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.</p>
+                <p>Diese Einstellung ist nützlich, wenn Sie den Dienst vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.</p>
               </td>
               <td>
                 <p>
@@ -750,7 +754,7 @@ Wenn die Option auf <strong>Ja</strong> gesetzt ist, wird das Rückschreiben akt
               </td>
               <td>
 
-              <p>Legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden Azure AD-Konten beim Zurücksetzen von Kennwörtern stets entsperrt – mit dieser Einstellung können Sie diese beiden Vorgänge trennen.</p>
+              <p>Legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden Azure AD-Konten beim Zurücksetzen von Kennwörtern stets entsperrt – mit dieser Einstellung können Sie diese beiden Vorgänge trennen.</p>
 
               <p>Bei der Einstellung „Ja“ erhalten die Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos, und auch die Option des Entsperrens ohne ein Zurücksetzen des Kennworts. </p>
 
@@ -763,7 +767,7 @@ Wenn die Option auf <strong>Ja</strong> gesetzt ist, wird das Rückschreiben akt
                 </p>
                 <ul>
                   <li class="unordered">
-Um dieses Feature verwenden zu können, müssen Sie die Azure AD Connect-Version von August 2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen.</a></li>
+Um dieses Feature verwenden zu können, müssen Sie die Azure AD Connect-Version von August 2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen.</a></li>
 
                   <li class="unordered">
                     <strong>Hinweis</strong>: Um diese Funktion zu testen, muss das Kennwortrückschreiben aktiviert sein sowie ein lokal erstelltes Konto (beispielsweise eines Verbundbenutzers oder synchronisierten Benutzers) verwendet werden, bei dem ein gesperrtes Konto vorliegt.  Benutzern, die nicht lokal bereitgestellt sind und über kein gesperrtes Konto verfügen, wird die Option zum Entsperren ihres Kontos nicht angezeigt.</li>
@@ -861,7 +865,7 @@ Diese Benachrichtigung wird per E-Mail an den Benutzerprinzipalnamen und die alt
 <br/>
 
 ## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
 * **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
@@ -876,6 +880,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

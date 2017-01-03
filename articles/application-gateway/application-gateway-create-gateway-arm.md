@@ -4,7 +4,7 @@ description: "Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Sta
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 866e9b5f-0222-4b6a-a95f-77bc3d31d17b
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/12/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: f4648ea78c07d501164b44389302cedf717b28bd
+ms.sourcegitcommit: cb2b7bc626294e12c6e19647c1e787e1f671595b
+ms.openlocfilehash: 5da4b087131b0adef49f7019297db834d7bb9416
 
 
 ---
@@ -28,8 +28,6 @@ ms.openlocfilehash: f4648ea78c07d501164b44389302cedf717b28bd
 > * [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
 > * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
-> 
-> 
 
 Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites. Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
@@ -37,8 +35,6 @@ In diesem Artikel werden Sie durch die Schritte zum Erstellen, Konfigurieren, St
 
 > [!IMPORTANT]
 > Bevor Sie mit Azure-Ressourcen arbeiten, sollten Sie wissen, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: die Bereitstellung mit dem Resource Manager und die klassische Bereitstellung. Machen Sie sich vor der Verwendung von Azure-Ressourcen unbedingt mit den [Bereitstellungsmodellen und -tools](../azure-classic-rm.md) vertraut. Zum Anzeigen der Dokumentation für verschiedene Tools klicken Sie auf die Registerkarten oben in diesem Artikel. In diesem Dokument erfahren Sie alles über das Erstellen eines Anwendungsgateways mit Azure Resource Manager. Um die klassische Version zu verwenden, wechseln Sie zu [Erstellen, Starten oder Löschen eines Anwendungsgateways](application-gateway-create-gateway.md).
-> 
-> 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -106,8 +102,6 @@ Im obigen Beispiel haben wir eine Ressourcengruppe namens **appgw-RG** mit dem S
 
 > [!NOTE]
 > Wenn Sie einen benutzerdefinierten Test für Ihr Anwendungsgateway konfigurieren müssen, finden Sie unter [Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure-Ressourcen-Manager](application-gateway-create-probe-ps.md)weitere Informationen. Weitere Informationen finden Sie unter [Benutzerdefinierte Tests und Systemüberwachung](application-gateway-probe-overview.md) .
-> 
-> 
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway
 
@@ -145,9 +139,9 @@ Erstellen Sie eine öffentliche IP-Ressource namens **publicIP01** in der Ressou
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "West US" -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway-configuration-object"></a>Erstellen eines Konfigurationsobjekts für das Anwendungsgateway
+## <a name="create-the-application-gateway-configuration-objects"></a>Erstellen der Konfigurationsobjekte für das Anwendungsgateway
 
-Sie müssen alle Konfigurationselemente einrichten, bevor Sie das Anwendungsgateway erstellen. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Application Gateway-Ressource benötigt werden.
+Vor der Erstellung des Anwendungsgateways müssen alle Konfigurationselemente eingerichtet werden. Die folgenden Schritten erstellen die Konfigurationselemente, die für eine Application Gateway-Ressource benötigt werden.
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -215,8 +209,6 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 
 > [!NOTE]
 > Der Standardwert für **InstanceCount** ist 2, der Maximalwert ist 10. Der Standardwert für **GatewaySize** ist "Medium". Sie können zwischen **Standard_Small**, **Standard_Medium** und **Standard_Large** wählen.
-> 
-> 
 
 ## <a name="create-an-application-gateway-by-using-new-azurermapplicationgateway"></a>Erstellen eines Application Gateways mit dem Cmdlet „New-AzureRmApplicationGateway“
 
@@ -225,8 +217,6 @@ Erstellen Sie ein Anwendungsgateway mit allen Konfigurationselementen aus den vo
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
-
-### <a name="step-9"></a>Schritt 9
 
 Rufen Sie die DNS- und VIP-Details des Anwendungsgateways aus der öffentlichen IP-Ressource ab, die an das Anwendungsgateway angefügt ist.
 
@@ -262,8 +252,6 @@ Remove-AzureRmApplicationGateway -Name $appgwtest -ResourceGroupName appgw-rg -F
 
 > [!NOTE]
 > Mit dem optionalen Switch **-force** kann diese Bestätigungsmeldung unterdrückt werden.
-> 
-> 
 
 Mithilfe des Cmdlets `Get-AzureRmApplicationGateway` können Sie sicherstellen, dass der Dienst entfernt wurde. Dieser Schritt ist nicht erforderlich.
 
@@ -315,6 +303,6 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

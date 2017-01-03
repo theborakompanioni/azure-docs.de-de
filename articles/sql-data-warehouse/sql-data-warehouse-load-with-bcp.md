@@ -82,7 +82,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> In der [Übersicht über Tabellen][Übersicht über Tabellen] oder unter [CREATE TABLE (Azure SQL Data Warehouse)][CREATE TABLE (Azure SQL Data Warehouse)] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
+> In der [Tabellenübersicht][Tabellenübersicht] oder unter [CREATE TABLE][CREATE TABLE] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
 > 
 > 
 

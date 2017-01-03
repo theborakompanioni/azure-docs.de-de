@@ -3,8 +3,8 @@ title: Erste Schritte mit Azure Blob Storage (Objektspeicher) mit .NET | Microso
 description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
 services: storage
 documentationcenter: .net
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: d18a8fc8-97cb-4d37-a408-a6f8107ea8b3
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 11/17/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: fe4b9c356e5f7d56cb7e1fa62344095353d0b699
-ms.openlocfilehash: d2d1a5aae3e1965e7010b11218b6b1aa27ec524d
+ms.sourcegitcommit: 12ce6b6bccf3ea2aa2945ddd775716f29cf01e1f
+ms.openlocfilehash: 24b23c412ae4e092427b4e68b16df0369f9e9f0e
 
 ---
 
@@ -33,7 +33,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 
 **Voraussetzungen:**
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
 * [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * Ein [Azure Storage-Konto](storage-create-storage-account.md#create-a-storage-account)
@@ -50,7 +50,7 @@ Weitere Beispiele für die Verwendung von Blobspeicher finden Sie unter [Getting
 [!INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
 ### <a name="add-namespace-declarations"></a>Hinzufügen von Namespace-Deklarationen
-Fügen Sie die folgenden **using**-Anweisungen am Anfang der Datei `program.cs` ein:
+Fügen Sie die folgenden **Using**-Anweisungen am Anfang der Datei `program.cs` ein:
 
 ```csharp
 using Microsoft.Azure; // Namespace for CloudConfigurationManager
@@ -279,7 +279,7 @@ blockBlob.Delete();
 ## <a name="list-blobs-in-pages-asynchronously"></a>Asynchrones Auflisten von Blobs auf Seiten
 Wenn Sie eine große Anzahl von Blobs auflisten oder die Anzahl der Ergebnisse steuern möchten, die in einem Auflistungsvorgang zurückgegeben werden, können Sie Blobs auf Ergebnisseiten auflisten. In diesem Beispiel wird gezeigt, wie Sie Ergebnisse auf Seiten asynchron zurückgeben, sodass die Ausführung nicht durch einen großen Ergebnissatz blockiert wird.
 
-In diesem Beispiel wird eine einfache BLOB-Auflistung gezeigt, aber Sie können auch eine hierarchische Auflistung verwenden, indem Sie den _useFlatBlobListing_-Parameter der **ListBlobsSegmentedAsync**-Methode auf _FALSE_ festlegen.
+In diesem Beispiel wird eine einfache Blobauflistung gezeigt, aber Sie können auch eine hierarchische Auflistung verwenden, indem Sie den _useFlatBlobListing_-Parameter der **ListBlobsSegmentedAsync**-Methode auf _FALSE_ festlegen.
 
 Da die Beispielmethode eine asynchrone Methode aufruft, muss sie mit dem Schlüsselwort _async_ eingeleitet werden und ein **Task**-Objekt zurückgeben. Das Schlüsselwort "await" für die Methode **ListBlobsSegmentedAsync** hält die Ausführung der Beispielmethode an, bis die Auflistung abgeschlossen ist.
 
@@ -403,13 +403,13 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 [Blob8]: ./media/storage-dotnet-how-to-use-blobs/blob8.png
 [Blob9]: ./media/storage-dotnet-how-to-use-blobs/blob9.png
 
-[Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Konfigurieren von Verbindungszeichenfolgen]: http://msdn.microsoft.com/library/azure/ee758697.aspx
-[Referenz zur .NET-Clientbibliothek]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[REST-API-Referenz]: http://msdn.microsoft.com/library/azure/dd179355
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
+[.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
+[REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -49,7 +49,7 @@ Nachdem Sie das Image ausgewählt haben, können Sie die Standardeinstellungen v
 4. Klicken Sie anschließend auf **OK** , um zum nächsten Abschnitt zu gelangen. 
    
     ![Screenshot des Blatts **Grundlagen** mit den Einstellungen für die Konfiguration eines virtuellen Azure-Computers](./media/virtual-machines-windows-hero-tutorial/basics-blade.png)
-5. Wählen Sie eine VM-Größe [](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)aus, und klicken Sie anschließend auf **Auswählen** , um den Vorgang fortzusetzen. 
+5. Wählen Sie eine [VM-Größe](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)aus, und klicken Sie anschließend auf **Auswählen** , um den Vorgang fortzusetzen. 
    
     ![Screenshot des Blatts „Größe“ mit den Größenoptionen für den virtuellen Azure-Computer](./media/virtual-machines-windows-hero-tutorial/size-blade.png)
 6. Auf dem Blatt **Einstellungen** können Sie die Speicher- und Netzwerkoptionen ändern. Übernehmen Sie für dieses Tutorial die Standardwerte. Wenn Sie eine geeignete Größe für den virtuellen Computer ausgewählt haben, können Sie durch Auswahl von **Premium (SSD)** unter **Datenträgertyp** Azure Storage Premium testen. Klicken Sie auf **OK**, nachdem Sie alle gewünschten Änderungen vorgenommen haben.

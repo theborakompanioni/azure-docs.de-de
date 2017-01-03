@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 638054fb49ace081a7d67817d9dcecb8f5ca1a94
-ms.openlocfilehash: b2ad194b62b61e3b16d660718aee155ff2dbf197
+ms.sourcegitcommit: 8d7823b6ecbc1a762839fc620f76d0bf4687d8fa
+ms.openlocfilehash: 5b33a36a3415efd2bc4673999806aa797f4a1c9f
 
 
 ---
@@ -35,9 +35,9 @@ Zum Erstellen Ihrer ersten Funktion benötigen Sie ein aktives Azure-Konto. Fall
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 2. Klicken Sie auf **+Neu** > **Compute** > **Funktionen-App**, wählen Sie Ihr **Abonnement** aus, geben Sie einen eindeutigen **App-Namen** zur Identifizierung Ihrer Funktionen-App ein, und geben Sie anschließend folgende Einstellungen an:
    
-   * **[Ressourcengruppe](../azure-resource-manager/resource-group-overview.md)**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe ein. Sie können auch eine vorhandene Ressourcengruppe auswählen. Möglicherweise können Sie jedoch keinen dynamischen App Service-Plan für Ihre Funktionen-App erstellen.
+   * **[Ressourcengruppe](../azure-resource-manager/resource-group-overview.md)**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe ein. Sie können auch eine vorhandene Ressourcengruppe auswählen. Möglicherweise können Sie jedoch keinen verbrauchsbasierten App Service-Plan für Ihre Funktionen-App erstellen.
    * **[Hostingplan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)**. Mögliche Optionen: 
-     * **Dynamischer Plan**: Der Standardplantyp für Azure Functions. Wenn Sie einen dynamischen Plan auswählen, müssen Sie auch den **Standort** und die **Speicherbelegung** (in MB) festlegen. Informationen zu den Auswirkungen der Speicherbelegung auf die Kosten finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/). 
+     * **Verbrauchsplan**: Der Standardplantyp für Azure Functions. Wenn Sie einen Verbrauchsplan auswählen, müssen Sie auch den **Standort** und die **Speicherbelegung** (in MB) festlegen. Informationen zu den Auswirkungen der Speicherbelegung auf die Kosten finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/). 
      * **App Service-Plan**: Bei Verwendung eines App Service-Plans müssen Sie einen **App Service-Plan/Standort** erstellen oder einen bereits vorhandenen App Service-Plan/Standort auswählen. Diese Einstellungen bestimmen den [Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App.  
    * **Speicherkonto**: Für jede Funktionen-App ist ein Speicherkonto erforderlich. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. 
      
@@ -77,7 +77,7 @@ In dieser Schnellstartanleitung wird eine einfache Ausführung einer grundlegend
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
    Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
-  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des dynamischen Serviceplans) und enthält Informationen zur Wahl des geeigneten Plans. 
+  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des verbrauchsbasierten App Service-Plans) und enthält Informationen zur Wahl des geeigneten Plans. 
 * [Was ist Azure App Service?](../app-service/app-service-value-prop-what-is.md)  
    Azure Functions nutzt die Azure App Service-Plattform für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen. 
 

@@ -44,17 +44,17 @@ Sie sollten die bewährten Methoden in Hinblick auf die Speicherkonten befolgen,
 
 1. **Alle Datenträger (Betriebssystem und Daten) müssen einem virtuellen Computer im selben Speicherkonto zugeordnet sein**
 2. **Die [Grenzwerte](../articles/storage/storage-scalability-targets.md) des Speicherkontos müssen beachtet werden**, wenn einem Speicherkonto weitere VHDs hinzugefügt werden.
-3. **Verwenden mehrerer Speicherkonten für jede Verfügbarkeitsgruppe** Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe. Mehrere virtuelle Computer in derselben Verfügbarkeitsgruppe dürfen NICHT dasselbe Speicherkonto verwenden. Virtuelle Computer, die über verschiedene Verfügbarkeitsgruppen verteilt sind, können Speicherkonten teilen, solange die oben genannten bewährten Methoden befolgt werden.
+3. **Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe.** Mehrere virtuelle Computer in derselben Verfügbarkeitsgruppe dürfen NICHT dasselbe Speicherkonto verwenden. Virtuelle Computer, die über verschiedene Verfügbarkeitsgruppen verteilt sind, können Speicherkonten teilen, solange die oben genannten bewährten Methoden befolgt werden.
 
 <!-- Link references -->
 [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
 [Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen]: #configure-each-application-tier-into-separate-availability-sets
 [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]: #combine-a-load-balancer-with-availability-sets
-[Vermeiden virtueller Computer, die eine Einzelinstanz darstellen, in Verfügbarkeitsgruppen]: #avoid-single-instance-virtual-machines-in-availability-sets
+[Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Verwenden mehrerer Speicherkonten für jede Verfügbarkeitsgruppe]: #use-multiple-storage-accounts-for-each-availability-set
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

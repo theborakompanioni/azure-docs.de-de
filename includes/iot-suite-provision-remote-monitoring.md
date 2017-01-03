@@ -1,9 +1,9 @@
 ## <a name="provision-the-solution"></a>Bereitstellen der Lösung
-1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine neue Lösung zu erstellen.
+1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine Lösung zu erstellen.
 2. Klicken Sie auf der Kachel **Remoteüberwachung** auf **Auswählen**.
 3. Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Remoteüberwachungslösung ein.
 4. Wählen Sie die gewünschten Angaben für **Region** und **Abonnement**, um die Lösung bereitzustellen.
-5. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Dies dauert normalerweise einige Minuten.
+5. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Das dauert in der Regel einige Minuten.
 
 ### <a name="wait-for-the-provisioning-process-to-complete"></a>Warten auf den Abschluss des Bereitstellungsvorgangs
 1. Klicken Sie auf die Kachel für Ihre Lösung mit dem Status **Bereitstellung** .
@@ -12,7 +12,7 @@
 4. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen.
 
 > [!NOTE]
-> Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Falls die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
+> Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
 > 
 > 
 
@@ -23,6 +23,6 @@ Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Sende
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-faq.md
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 10/28/2016
 ms.author: skwan;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f34c5c10ec57f46fc9179362ddb77fce41bccf14
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 01c6d3c3fa8648ef9ecaefcf43191315380d13d4
 
 
 ---
@@ -61,6 +61,6 @@ Verwenden Sie den Disqus-Kommentarabschnitt nach diesem Artikel, um uns Feedback
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

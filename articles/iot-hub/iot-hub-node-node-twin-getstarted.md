@@ -1,12 +1,12 @@
 ---
-title: Erste Schritte mit Gerätezwillingen | Microsoft Docs
-description: In diesem Tutorial wird die Verwendung von Gerätezwillingen erläutert.
+title: "Erste Schritte mit Gerätezwillingen | Microsoft-Dokumentation"
+description: "In diesem Tutorial wird die Verwendung von Gerätezwillingen erläutert."
 services: iot-hub
 documentationcenter: node
 author: fsautomata
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 314c88e4-cce1-441c-b75a-d2e08e39ae7d
 ms.service: iot-hub
 ms.devlang: node
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
+translationtype: Human Translation
+ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
+ms.openlocfilehash: d7b615476bb5e9ed08e1e84f63c1a40c11154b23
+
 
 ---
-# <a name="tutorial:-get-started-with-device-twins-(preview)"></a>Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)
+# <a name="tutorial-get-started-with-device-twins"></a>Tutorial: Erste Schritte mit Gerätezwillingen
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolenanwendungen:
@@ -25,19 +29,21 @@ Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolenanwendungen:
 * **TwinSimulatedDevice.js**, eine Node.js-App, die ein Gerät simuliert, das eine Verbindung mit dem IoT Hub mit der zuvor erstellten Geräteidentität herstellt und seine Verbindungsbedingung meldet.
 
 > [!NOTE]
-> Im Artikel [IoT Hub-SDKs][lnk-hub-sdks] finden Sie Informationen über die verschiedenen SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Anwendungen erstellen können.
+> Im Artikel [Azure IoT SDKs][lnk-hub-sdks] finden Sie Informationen über die verschiedenen Azure IoT SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Anwendungen erstellen können.
 > 
 > 
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Node.js, Version 0.10.x oder höher.
-* Ein aktives Azure-Konto. (Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Azure – Kostenlose Testversion][lnk-free-trial].)
+* Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
-[!INCLUDE [iot-hub-get-started-create-hub-pp](../../includes/iot-hub-get-started-create-hub-pp.md)]
+[!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
+
+[!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-the-service-app"></a>Erstellen der Dienst-App
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, mit der dem Gerätezwilling, der **myDeviceId** zugeordnet ist, Standortmetadaten hinzugefügt werden. Anschließend werden die in dem Hub, der die Geräte in den USA auswählt, gespeicherten Gerätezwillinge abgefragt und dann diejenigen, die eine Mobilfunkverbindung melden.
+In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, mit der dem Gerätezwilling, der **myDeviceId** zugeordnet ist, Standortmetadaten hinzugefügt werden. Anschließend werden die Gerätezwillinge abgefragt, die in dem IoT-Hub gespeichert sind, der die Geräte in den USA auswählt, und dann diejenigen, die eine Mobilfunkverbindung melden.
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **addtagsandqueryapp**. Erstellen Sie im Ordner **addtagsandqueryapp** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
    
@@ -47,7 +53,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, mit der dem Ge
 2. Führen Sie an der Eingabeaufforderung im Ordner **addtagsandqueryapp** den folgenden Befehl aus, um das Paket **azure-iothub** zu installieren:
    
     ```
-    npm install azure-iothub@dtpreview --save
+    npm install azure-iothub --save
     ```
 3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **AddTagsAndQuery.js** im Ordner **addtagsandqueryapp**.
 4. Fügen Sie in der Datei **AddTagsAndQuery.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{service connection string}** durch die Verbindungszeichenfolge, die Sie beim Erstellen des Hubs kopiert haben:
@@ -81,7 +87,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, mit der dem Ge
             }
         });
    
-    Das **Registry**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Diensts erforderlich sind. Mit dem vorherigen Code werden zunächst das **Registry**-Objekt initialisiert, dann der Gerätezwilling für **myDeviceId** abgerufen und schließlich die zugehörigen Tags mit den gewünschten Standortinformationen aktualisiert.
+    Das **Registry**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Diensts erforderlich sind. Mit dem vorherigen Code wird zunächst das **Registry**-Objekt initialisiert und dann der Gerätezwilling für **myDeviceId** abgerufen, und schließlich werden die zugehörigen Tags mit den gewünschten Standortinformationen aktualisiert.
    
     Nach dem Aktualisieren der Tags wird die Funktion **queryTwins** aufgerufen.
 5. Fügen Sie am Ende der Datei **AddTagsAndQuery.js** den folgenden Code ein, um die Funktion **queryTwins** zu implementieren:
@@ -135,7 +141,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
 2. Führen Sie an der Eingabeaufforderung im Ordner **reportconnectivity** den folgenden Befehl aus, um das Paket **azure-iot-device** und das Paket **azure-iot-device-mqtt** zu installieren:
    
     ```
-    npm install azure-iot-device@dtpreview azure-iot-device-mqtt@dtpreview --save
+    npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **ReportConnectivity.js** im Ordner **reportconnectivity**.
 4. Fügen Sie in der Datei **ReportConnectivity.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{device connection string}** durch die Verbindungszeichenfolge, die Sie beim Erstellen der Geräteidentität **myDeviceId** kopiert haben:
@@ -176,7 +182,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
         }
         });
    
-    Das **Client**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Geräts erforderlich sind. Mit diesem Code wird nach dem Initialisieren des **Client**-Objekts der Gerätezwilling für **myDeviceId** abgerufen, und die zugehörige gemeldete Eigenschaft mit den Verbindungsinformationen wird aktualisiert.
+    Das **Client**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Geräts erforderlich sind. Mit diesem Code wird nach dem Initialisieren des **Client**-Objekts der Gerätezwilling für **myDeviceId** abgerufen und die zugehörige gemeldete Eigenschaft mit den Verbindungsinformationen aktualisiert.
 5. Führen Sie die Geräte-App aus.
    
         node ReportConnectivity.js
@@ -191,13 +197,13 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
     ![][3]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie im Portal einen neuen IoT Hub konfiguriert und anschließend in der Identitätsregistrierung des Hubs eine Geräteidentität erstellt. Sie haben Gerätemetadaten aus einer Back-End-Anwendung als Tags hinzugefügt und eine simulierte Geräte-App zum Melden der Verbindungsinformationen des Geräts im Gerätezwilling geschrieben. Sie haben zudem erfahren, wie diese Informationen mithilfe der SQL-ähnlichen IoT Hub-Abfragesprache abgefragt werden können.
+In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT-Hub konfiguriert und anschließend in der Identitätsregistrierung des IoT-Hubs eine Geräteidentität erstellt. Sie haben Gerätemetadaten aus einer Back-End-Anwendung als Tags hinzugefügt und eine simulierte Geräte-App zum Melden der Verbindungsinformationen des Geräts im Gerätezwilling geschrieben. Sie haben zudem erfahren, wie diese Informationen mithilfe der SQL-ähnlichen IoT Hub-Abfragesprache abgefragt werden können.
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* Informationen zum Senden von Telemetriedaten von Geräten im Tutorial [Erste Schritte mit IoT Hub][lnk-iothub-getstarted]
-* Informationen zum Konfigurieren von Geräten mit den gewünschten Eigenschaften des Gerätezwillings im Tutorial [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten][lnk-twin-how-to-configure]
-* Informationen zur interaktiven Steuerung von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App) im Tutorial [Verwenden von direkten Methoden][lnk-methods-tutorial]
+* Senden von Telemetriedaten von Geräten im Tutorial [Erste Schritte mit IoT Hub][lnk-iothub-getstarted]
+* Konfigurieren von Geräten mit den gewünschten Eigenschaften des Gerätezwillings im Tutorial [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten][lnk-twin-how-to-configure]
+* Interaktive Steuerung von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App) im Tutorial [Use direct methods][lnk-methods-tutorial] (Verwenden von direkten Methoden)
 
 <!-- images -->
 [1]: media/iot-hub-node-node-twin-getstarted/service1.png
@@ -214,17 +220,18 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 [lnk-identity]: iot-hub-devguide-identity-registry.md
 
 [lnk-iothub-getstarted]: iot-hub-node-node-getstarted.md
-[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
 [lnk-twin-how-to-configure]: iot-hub-node-node-twin-how-to-configure.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
 
-[lnk-methods-tutorial]: iot-hub-c2d-methods.md
+[lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO5-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/12/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d7307d4d1823f6422e62ebf2969c3d57bbe6f931
+ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
+ms.openlocfilehash: e9d59c593c3637d72611516fd8a6b03f3f5f917b
 
 
 ---
@@ -61,19 +61,25 @@ Zum Konfigurieren der Integration von Allocadia in Azure AD müssen Sie Allocadi
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
    
     ![Active Directory][1]
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
     ![Anwendungen][2]
+
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
     ![Anwendungen][3]
+
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
     ![Anwendungen][4]
+
 6. Geben Sie im Suchfeld als Suchbegriff **Allocadia**ein.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_01.png)
+
 7. Wählen Sie im Ergebnisbereich **Allocadia** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_06.png)
@@ -104,18 +110,18 @@ Die Allocadia-Anwendung erwartet die SAML-Assertions in einem bestimmten Format.
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **Allocadia** im Menü oben auf **Attribute**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_general_80.png) 
+
 2. Führen Sie im Dialogfeld **SAML-Tokenattribute** für jede Zeile in der folgenden Tabelle die folgenden Schritte aus:
    
-   | Attributname | Attributwert |
-   | --- | --- |
-   | firstname |user.givenname |
-   | lastname |user.surname |
-   | email |user.mail |
+    | Attributname | Attributwert |
+    | --- | --- |
+    | firstname |user.givenname |
+    | lastname |user.surname |
+    | email |user.mail |
 
     a. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_general_81.png) 
-
 
     b. Geben Sie im Textfeld **Attributname** den für die Zeile angezeigten Attributnamen ein.
 
@@ -127,9 +133,11 @@ Die Allocadia-Anwendung erwartet die SAML-Assertions in einem bestimmten Format.
 1. Klicken Sie im oberen Menü auf **Schnellstart**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_general_83.png)  
+
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Allocadia anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_03.png) 
+
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_04.png) 
@@ -137,6 +145,7 @@ Die Allocadia-Anwendung erwartet die SAML-Assertions in einem bestimmten Format.
     a. Geben Sie im Feld „Bezeichner“ die URL wie folgt ein: Verwenden Sie für die Testumgebung die URL **https://na2standby.allocadia.com** und für die Produktionsumgebung **https://na2.allocadia.com**.
    
     b. Geben Sie im Feld „Antwort-URL“ die URL wie folgt ein: Verwenden Sie für die Testumgebung das URL-Muster **https://na2standby.allocadia.com/allocadia/saml/SSO** und für die Produktionsumgebung **https://na2.allocadia.com/allocadia/saml/SSO**.
+
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Allocadia** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_05.png) 
@@ -144,15 +153,18 @@ Die Allocadia-Anwendung erwartet die SAML-Assertions in einem bestimmten Format.
     a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
     b. Klicken Sie auf **Next**.
+
 5. Kontaktieren Sie das [Allocadia-Supportteam](mailTo:support@allocadia.com) , um Unterstützung bei der SSO-Konfiguration für Ihre Anwendung zu erhalten. Bitte beachten Sie, dass Sie eine E-Mail senden und die heruntergeladene Metadatendatei anfügen müssen, damit SSO von Allocadia konfiguriert werden kann.
    
-   > [!NOTE]
-   > Stellen Sie sicher, dass das Allocadia-Team den Bezeichnerwert in der Testumgebung als **https://na2standby.allocadia.com** und in der Produktionsumgebung als **https://na2.allocadia.com** festgelegt hat.
-   > 
-   > 
+    > [!NOTE]
+    > Stellen Sie sicher, dass das Allocadia-Team den Bezeichnerwert in der Testumgebung als **https://na2standby.allocadia.com** und in der Produktionsumgebung als **https://na2.allocadia.com** festgelegt hat.
+    > 
+    > 
+
 6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
+
 7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
@@ -168,13 +180,17 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_09.png) 
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_03.png) 
+
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_04.png) 
+
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_05.png) 
@@ -184,22 +200,25 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
     b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
    
     c. Klicken Sie auf **Weiter**.
+
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_06.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
    
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
    
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
    
-   e. Klicken Sie auf **Weiter**.
+    e. Klicken Sie auf **Weiter**.
+
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_07.png) 
+
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-allocadia-tutorial/create_aaduser_08.png) 
@@ -226,13 +245,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
     ![Benutzer zuweisen][201] 
+
 2. Wählen Sie in der Anwendungsliste **Allocadia**aus.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_50.png) 
+
 3. Klicken Sie im oberen Menü auf **Benutzer**.
    
     ![Benutzer zuweisen][203] 
+
 4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+
 5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
    
     ![Benutzer zuweisen][205]
@@ -265,6 +288,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Allocadia“ klicken, sollten Sie 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

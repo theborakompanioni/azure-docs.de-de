@@ -1,19 +1,23 @@
 ---
-title: Log Analytics-Funktionen für Dienstanbieter | Microsoft Docs
-description: Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden.
+title: "Log Analytics-Funktionen für Dienstanbieter | Microsoft-Dokumentation"
+description: "Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: richrundmsft
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 11/22/2016
 ms.author: richrund
+translationtype: Human Translation
+ms.sourcegitcommit: d5e4a19ddb2b60a6796ba48c864d443164de86c1
+ms.openlocfilehash: 8a67d9a9d345682e9e6c8f5c7779204a038f5f6a
+
 
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Log Analytics-Funktionen für Dienstanbieter
@@ -47,7 +51,7 @@ Als *Kunde* eines Cloud-Lösungsanbieters haben Sie folgende Möglichkeiten:
 * Anzeigen und Verwenden der Seite für die Benutzerverwaltung unter „Einstellungen“ im OMS-Portal
 
 > [!NOTE]
-> Die Backup und Site Recovery-Lösungen für Log Analytics können keine Verbindung mit dem Recovery Services-Tresor herstellen und nicht in einem CSP-Abonnement konfiguriert werden.
+> Die integrierten Backup- und Site Recovery-Lösungen für Log Analytics können keine Verbindung mit dem Recovery Services-Tresor herstellen und nicht in einem CSP-Abonnement konfiguriert werden. 
 > 
 > 
 
@@ -61,13 +65,15 @@ Es wird empfohlen, für jeden Kunden, den Sie verwalten, einen Log Analytics-Arb
 
 Durch das Erstellen eines Arbeitsbereichs pro Kunde können Sie die Daten der einzelnen Kunden getrennt halten und außerdem die Nutzung durch die einzelnen Kunden nachverfolgen.
 
-Weitere Informationen darüber, wann und warum mehrere Arbeitsbereiche erstellt werden sollten, finden Sie unter [Verwalten des Zugriffs auf Log Analytics](log-analytics-manage-access.md#determine-the-number-of-workspaces-you-need).
+Weitere Informationen dazu, wann und warum mehrere Arbeitsbereiche erstellt werden sollten, finden Sie unter [Verwalten des Zugriffs auf Log Analytics](log-analytics-manage-access.md#determine-the-number-of-workspaces-you-need).
 
 Die Erstellung und Verwaltung von Kundenarbeitsbereichen kann mit [PowerShell](log-analytics-powershell-workspace-configuration.md), [Resource Manager-Vorlagen](log-analytics-template-workspace-configuration.md) oder der [REST-API](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/) automatisiert werden.
 
 Die Verwendung von Resource Manager-Vorlagen für die Konfiguration von Arbeitsbereichen ermöglicht es Ihnen, Arbeitsbereiche mithilfe einer Hauptkonfiguration zu erstellen und zu konfigurieren. Sie können sich darauf verlassen, dass beim Erstellen von Arbeitsbereichen für Kunden diese automatisch entsprechend deren Bedürfnissen konfiguriert werden. Wenn Sie die Anforderungen aktualisieren, wird die Vorlage ebenfalls aktualisiert und dann erneut auf die vorhandenen Arbeitsbereiche angewendet. Dadurch wird sichergestellt, dass selbst bereits vorhandene Arbeitsbereiche die neuen Standards erfüllen.    
 
 Beim Verwalten mehrerer Log Analytics-Arbeitsbereiche wird empfohlen, mithilfe der Funktion [Warnungen](log-analytics-alerts.md) jeden Arbeitsbereich in das vorhandene Ticketausstellungssystem/die vorhandene Betriebskonsole zu integrieren. Durch die Integration in die vorhandenen Systeme können die Supportmitarbeiter weiterhin die ihnen vertrauten Verfahren verwenden. Log Analytics überprüft regelmäßig jeden Arbeitsbereich anhand der von Ihnen angegebenen Kriterien und generiert eine Warnung, wenn eine Aktion erforderlich ist.
+
+Verwenden Sie für personalisierte Ansichten von Daten die [Dashboard](../azure-portal/azure-portal-dashboards.md)-Funktion im Azure-Portal.  
 
 Für Berichte auf Leitungsebene, in denen Daten mehrerer Arbeitsbereiche zusammengefasst werden, können Sie die Integration zwischen Log Analytics und [Power BI](log-analytics-powerbi.md) nutzen. Wenn die Integration in ein anderes Berichterstellungssystem erforderlich ist, können Sie die Search-API verwenden (über PowerShell oder [REST](log-analytics-log-search-api.md)), um Abfragen auszuführen und Suchergebnisse zu exportieren.
 
@@ -77,6 +83,9 @@ Für Berichte auf Leitungsebene, in denen Daten mehrerer Arbeitsbereiche zusamme
 * Verwenden Sie [Warnungen](log-analytics-alerts.md) für die Integration in vorhandene Systeme.
 * Generieren Sie mit [Power BI](log-analytics-powerbi.md) Zusammenfassungsberichte.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

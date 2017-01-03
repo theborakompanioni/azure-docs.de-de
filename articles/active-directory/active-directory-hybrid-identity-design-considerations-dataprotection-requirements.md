@@ -1,12 +1,12 @@
 ---
-title: Überlegungen zum Entwurf der Azure Active Directory-Hybrididentität – Ermitteln der Anforderungen in Bezug auf den Schutz von Daten | Microsoft Docs
-description: Beim Planen der Hybrididentitätslösung müssen Sie die Anforderungen für den Schutz der Daten ermitteln, die für Ihr Unternehmen gelten. Außerdem müssen Sie wissen, welche Optionen verfügbar sind, um diese Anforderungen am besten zu erfüllen.
-documentationcenter: ''
+title: "Überlegungen zum Entwurf der Azure Active Directory-Hybrididentität – Ermitteln der Anforderungen in Bezug auf den Schutz von Daten | Microsoft Docs"
+description: "Beim Planen der Hybrididentitätslösung müssen Sie die Anforderungen für den Schutz der Daten ermitteln, die für Ihr Unternehmen gelten. Außerdem müssen Sie wissen, welche Optionen verfügbar sind, um diese Anforderungen am besten zu erfüllen."
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 40dc4baa-fe82-4ab6-a3e4-f36fa9dcd0df
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d971823ecd237c90787d4b923b5f9aad08fff4ee
+
 
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>Planen einer Erweiterung der Datensicherheit mit einer starken Identitätslösung
@@ -58,10 +62,10 @@ Unabhängig davon, an welchem Ort sich die Daten im Ruhezustand befinden (Gerät
 * Ist die Cloudidentitätsverwaltung in der Lage, die Anmeldeinformationen der Benutzer und andere Daten zu schützen, die in der Cloud gespeichert sind?
 
 ## <a name="data-protection-in-transit"></a>Schutz von Daten während der Übertragung
-Daten, die zwischen dem Gerät und dem Rechenzentrum oder dem Gerät und der Cloud übertragen werden, müssen geschützt werden. Mit der Übertragung ist aber nicht unbedingt immer ein Kommunikationsprozess mit einer Komponente außerhalb Ihres Clouddiensts gemeint. Es geht auch um interne Übertragungen, z. B. zwischen zwei virtuellen Netzwerken. Stellen Sie für diesen Bereich sicher, dass die folgenden Fragen gestellt werden:
+Daten, die zwischen dem Gerät und dem Rechenzentrum oder dem Gerät und der Cloud übertragen werden, müssen geschützt werden. Mit der Übertragung ist aber nicht unbedingt immer ein Kommunikationsprozess mit einer Komponente außerhalb Ihres Clouddiensts gemeint. Es geht auch um interne Übertragungen, z. B. zwischen zwei virtuellen Netzwerken. Stellen Sie für diesen Bereich sicher, dass die folgenden Fragen gestellt werden:
 
 * Müssen Daten während der Übertragung in Ihrem Unternehmen geschützt werden?
-  * Wenn ja: Kann die Hybrid-Identitätslösung in sichere Kontrollmechanismen integriert werden, z. B. SSL/TLS?
+  * Wenn ja: Kann die Hybrid-Identitätslösung in sichere Kontrollmechanismen integriert werden, z. B. SSL/TLS?
 * Sorgt die Cloud-Identitätsverwaltung dafür, dass der Datenverkehr an den Verzeichnisspeicher bzw. im Verzeichnisspeicher (innerhalb und zwischen Rechenzentren) immer signiert ist?
 
 ## <a name="compliance"></a>Compliance
@@ -81,6 +85,9 @@ Die Regulierungen, Gesetze und Compliance-Anforderungen variieren je nach Branch
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

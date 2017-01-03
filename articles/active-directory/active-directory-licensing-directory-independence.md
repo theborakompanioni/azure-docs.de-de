@@ -1,19 +1,23 @@
 ---
-title: Hinzufügen und Verwalten von mehreren Azure Active Directory-Verzeichnissen | Microsoft Docs
-description: Anleitungen und bewährte Methoden für das Hinzufügen und Verwalten von Azure Active Directory-Verzeichnissen, wobei Verzeichnisse als vollständig unabhängige Ressource betrachtet werden
+title: "Hinzufügen und Verwalten von mehreren Azure Active Directory-Verzeichnissen | Microsoft Docs"
+description: "Anleitungen und bewährte Methoden für das Hinzufügen und Verwalten von Azure Active Directory-Verzeichnissen, wobei Verzeichnisse als vollständig unabhängige Ressource betrachtet werden"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 2b862b75-14df-45f2-a8ab-2a3ff1e2eb08
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2016
+ms.date: 11/09/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
+ms.openlocfilehash: fff714765508285f4c074b3a7287701a538fbf95
+
 
 ---
 # <a name="add-and-manage-multiple-azure-active-directory-directories"></a>Hinzufügen und Verwalten von mehreren Azure Active Directory-Verzeichnissen
@@ -40,11 +44,13 @@ Um ein Azure AD-Verzeichnis im klassischen Azure-Portal hinzuzufügen, wählen S
 
 > [!NOTE]
 > Im Gegensatz zu anderen Azure-Ressourcen sind Ihre Verzeichnisse keine untergeordneten Ressourcen eines Azure-Abonnements. Wenn Sie Ihr Azure-Abonnement kündigen oder ablaufen lassen, können Sie weiterhin mithilfe von Azure PowerShell, der Azure Graph-API oder anderen Schnittstellen wie Office 365 Admin Center auf Ihre Verzeichnisdaten zugreifen. Sie können dem Verzeichnis auch ein anderes Abonnement zuordnen.
-> 
-> 
+>
+>
 
 Eine grobe Übersicht über Lizenzierungsprobleme und bewährte Methoden im Zusammenhang mit Azure AD finden Sie unter [Was ist Azure Active Directory-Lizenzierung?](active-directory-licensing-what-is.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Jan17_HO1-->
 
 

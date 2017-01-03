@@ -1,12 +1,12 @@
 ---
-title: Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Ermitteln der Identitätsanforderungen | Microsoft Docs
-description: Identifizieren der geschäftlichen Anforderungen des Unternehmens, mit denen Sie die Anforderungen für den Entwurf der Hybrid-Identität definieren.
-documentationcenter: ''
+title: "Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Ermitteln der Identitätsanforderungen | Microsoft Docs"
+description: "Identifizieren der geschäftlichen Anforderungen des Unternehmens, mit denen Sie die Anforderungen für den Entwurf der Hybrid-Identität definieren."
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 73b5a52b143d17283f677ce3181d8381db41d3c4
+
 
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Identitätsanforderungen für Ihre Hybrid-Identitätslösung
@@ -24,7 +28,7 @@ Sie müssen diese wichtige Aspekte des Unternehmens prüfen, um zu verstehen, we
 Einige Komponenten, die Teil der Hybrid-Identitätsarchitektur sind ![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Ermitteln von Geschäftsanforderungen
-Jedes Unternehmen hat unterschiedliche Anforderungen – auch wenn diese Unternehmen derselben Branche angehören, können die tatsächlichen geschäftlichen Anforderungen variieren. Sie können weiterhin Best Practices der Branche nutzen, doch letztendlich bestimmen die geschäftlichen Anforderungen des Unternehmens die Anforderungen an die Gestaltung der Hybrid-Identität. 
+Jedes Unternehmen hat unterschiedliche Anforderungen – auch wenn diese Unternehmen derselben Branche angehören, können die tatsächlichen geschäftlichen Anforderungen variieren. Sie können weiterhin Best Practices der Branche nutzen, doch letztendlich bestimmen die geschäftlichen Anforderungen des Unternehmens die Anforderungen an die Gestaltung der Hybrid-Identität. 
 
 Stellen Sie sich die folgenden Fragen, um Ihre geschäftlichen Anforderungen zu identifizieren:
 
@@ -78,7 +82,7 @@ Als Nächstes müssen Sie die Identitäts-Integrationsanforderungen bewerten. Di
 * Verfügt das Unternehmen über Apps, die für die Integration mit Cloud-Diensten erforderlich sind?
 * Verfügt die Organisation über mehrere Domänen und verwenden diese alle die Standard- oder Verbund-Authentifizierung?
 
-## <a name="evaluate-applications-that-run-in-your-environment"></a>Anwendungen bewerten, die in Ihrer Umgebung ausgeführt werden
+## <a name="evaluate-applications-that-run-in-your-environment"></a>Anwendungen bewerten, die in Ihrer Umgebung ausgeführt werden 
 Da Sie nun eine Vorstellung von Ihrer lokalen und Cloud-Infrastruktur haben, müssen Sie die Anwendungen bewerten, die in diesen Umgebungen ausgeführt werden. Diese Auswertung ist wichtig, um die technischen Anforderungen zum Integrieren dieser Anwendungen in das Cloud-Identitätsverwaltungssystem zu definieren. Beantworten Sie die folgenden Fragen:
 
 * Wo werden unsere Anwendungen ausgeführt?
@@ -105,6 +109,9 @@ Sie müssen zudem die Benutzeranforderungen bewerten. Diese Bewertung ist wichti
 ## <a name="see-also"></a>Siehe auch
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

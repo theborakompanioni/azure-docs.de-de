@@ -1,12 +1,12 @@
 ---
 title: Bekannte Netzwerke | Microsoft Docs
-description: Durch das Konfigurieren bekannter Netzwerkwerke können Sie vermeiden, dass IP-Adressen Ihrer Organisation in die Berichte „Anmeldungen aus mehreren geografischen Regionen“ und „Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten“ aufgenommen werden.
+description: "Durch das Konfigurieren bekannter Netzwerkwerke können Sie vermeiden, dass IP-Adressen Ihrer Organisation in die Berichte „Anmeldungen aus mehreren geografischen Regionen“ und „Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten“ aufgenommen werden."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e6c6ce37be42bafe091bad30424c3055b91f6105
+
 
 ---
 # <a name="known-networks"></a>Bekannte Netzwerke
@@ -43,6 +47,9 @@ Damit in diesen Fällen keine irreführenden Sicherheitsberichte generiert werde
 * [Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
 * [Anmeldungen aus mehreren geografischen Regionen](active-directory-reporting-sign-ins-from-multiple-geographies.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

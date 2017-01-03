@@ -1,12 +1,12 @@
 ---
-title: Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in der Azure Active Directory-Vorschau | Microsoft Docs
-description: Erfahren Sie, wie Sie mithilfe der Azure Active Directory-Vorschau die Benutzerkontobereitstellung für Unternehmens-Apps verwalten.
+title: "Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in der Azure Active Directory-Vorschau | Microsoft Docs"
+description: "Erfahren Sie, wie Sie mithilfe der Azure Active Directory-Vorschau die Benutzerkontobereitstellung für Unternehmens-Apps verwalten."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2016
 ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 103eade46452d979705e06dd77441f42d7a514b8
+
 
 ---
-# <a name="preview:-managing-user-account-provisioning-for-enterprise-apps-in-the-new-azure-portal"></a>Vorschau: Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal
+# <a name="preview-managing-user-account-provisioning-for-enterprise-apps-in-the-new-azure-portal"></a>Vorschau: Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal
 Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der automatischen Bereitstellung und der Aufhebung der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen – insbesondere für Anwendungen, die aus der Kategorie „Vorgestellt“ des [Azure Active Directory-Anwendungskatalogs](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. Diese Verwaltungsfunktionen im neuen Azure-Portal liegen derzeit als öffentliche Vorschau vor, und dieser Artikel beschreibt die neuen Funktionen sowie einige temporäre Einschränkungen, die während des Vorschauzeitraums gelten. [Was enthält die Vorschauversion?](active-directory-preview-explainer.md)
 
 Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md).
@@ -81,6 +85,6 @@ Es wird ein Link zum **Bericht über die Bereitstellungsaktivität** bereitgeste
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

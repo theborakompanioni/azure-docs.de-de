@@ -3,7 +3,7 @@ title: Erste Schritte mit der Azure Batch-Befehlszeilenschnittstelle | Microsoft
 description: "Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der Azure-Befehlszeilenschnittstelle zum Verwalten von Ressourcen des Azure Batch-Diensts."
 services: batch
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 09/30/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a874623c7ab24478af14e6cf4391dcc29052590f
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: cb1f049597d53263f0f92fe1192b285c09d78eeb
 
 
 ---
@@ -129,7 +129,7 @@ Beim Erstellen von Batch-Ressourcen wie Pools und Aufträgen können Sie eine JS
 
 Viele Ressourcenerstellungsvorgänge können zwar allein mithilfe von Befehlszeilenoptionen ausgeführt werden, manche Features erfordern jedoch die Verwendung einer JSON-Datei mit den Ressourcendetails. Eine JSON-Datei ist beispielsweise erforderlich, wenn Sie Ressourcendateien für eine Startaufgabe angeben möchten.
 
-Den JSON-Code für die Ressourcenerstellung finden Sie auf MSDN in der [Batch REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen von *Ressourcentypen*“ enthält JSON-Beispielcode zum Erstellen der entsprechenden Ressource. Diesen Code können Sie als Vorlage für Ihre JSON-Dateien verwenden. Den JSON-Code für die Poolerstellung finden Sie etwa unter [Add a pool to an account][rest_add_pool] (Hinzufügen eines Pools zu einem Konto).
+Den JSON-Code für die Ressourcenerstellung finden Sie auf MSDN in der [Batch REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen von *Ressourcentypen*“ enthält JSON-Beispielcode zum Erstellen der entsprechenden Ressource. Diesen Code können Sie als Vorlage für Ihre JSON-Dateien verwenden. Den JSON-Code für die Poolerstellung finden Sie beispielsweise unter [Add a pool to an account][rest_add_pool] (Hinzufügen eines Pools zu einem Konto).
 
 > [!NOTE]
 > Wenn Sie bei der Ressourcenerstellung eine JSON-Datei angeben, werden alle anderen Parameter, die Sie an der Befehlszeile für diese Ressource angeben, ignoriert.
@@ -259,12 +259,12 @@ Dieser Abschnitt enthält Ressourcen zur Behandlung von Problemen mit der Azure-
 * Verwenden Sie `-h` , um **Hilfetext** für Befehle der Befehlszeilenschnittstelle anzuzeigen.
 * Verwenden Sie `-v` und `-vv`, um eine **ausführliche** Befehlsausgabe zu erhalten. Mit `-vv` wird die Ausgabe noch ausführlicher und enthält die tatsächlichen REST-Anforderungen und -Antworten. Mit diesen praktischen Switches können Sie die vollständige Fehlerausgabe anzeigen.
 * Mit der Option `--json` können Sie die **Befehlsausgabe als JSON** anzeigen. `azure batch pool show "pool001" --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter [JSON-Dateien](#json-files)).
-* Das [Batch-Forum auf MSDN][batch_forum] ist eine großartige Hilferessource und wird von den Mitgliedern des Batch-Teams aufmerksam verfolgt. Stellen Sie Ihre Fragen dort, wenn bei Ihnen Probleme auftreten oder Sie Hilfe bei einem bestimmten Vorgang benötigen.
+* Das [Batch-Forum auf MSDN][batch_forum] ist eine praktische Hilferessource und wird von den Mitgliedern des Batch-Teams aufmerksam verfolgt. Stellen Sie Ihre Fragen dort, wenn bei Ihnen Probleme auftreten oder Sie Hilfe bei einem bestimmten Vorgang benötigen.
 * Von der Azure-Befehlszeilenschnittstelle werden derzeit nicht alle Batch-Ressourcenvorgänge unterstützt. So kann momentan beispielsweise nur die Paket-ID eines Anwendungspakets für einen Pool angegeben werden, aber keine *Version*. In solchen Fällen müssen Sie anstelle von Befehlszeilenoptionen für Ihren Befehl ggf. ein Element vom Typ `--json-file` verwenden. Verwenden Sie immer die neueste Version der Befehlszeilenschnittstelle, um zukünftige Erweiterungen nutzen zu können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md) erfahren Sie, wie Sie dieses Feature zum Verwalten und Bereitstellen der Anwendungen verwenden, die Sie auf Batch-Computeknoten ausführen.
-* Unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) finden Sie weitere Informationen dazu, wie Sie die Anzahl der Elemente sowie die Art der Informationen verringern, die bei Abfragen an Batch zurückgegeben werden.
+* Unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) finden Sie weitere Informationen dazu, wie Sie die Anzahl von Elementen sowie die Art der Informationen verringern, die bei Abfragen an Batch zurückgegeben werden.
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
@@ -273,6 +273,6 @@ Dieser Abschnitt enthält Ressourcen zur Behandlung von Problemen mit der Azure-
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

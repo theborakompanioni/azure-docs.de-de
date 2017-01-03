@@ -1,12 +1,12 @@
 ---
-title: Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Ermitteln der Anforderungen in Bezug auf das Content Management | Microsoft Docs
-description: Sie erhalten einen Einblick, wie Sie die Content Management-Anforderungen für Ihr Unternehmen ermitteln. Wenn Benutzer ein eigenes Gerät verwenden, verfügen sie meist auch über unterschiedliche Anmeldeinformationen, die je nach genutzter Anwendung eingesetzt werden. Es ist wichtig zu unterscheiden, welche Inhalte mit persönlichen Anmeldeinformationen und welche Inhalte mit den Anmeldeinformationen des Unternehmens erstellt wurden. Ihre Identitätslösung sollte in der Lage sein, mit Clouddiensten zu interagieren, um für Endbenutzer eine nahtlose Erfahrung zu schaffen, und dabei den Datenschutz sicherzustellen und den Schutz vor Datenlecks zu erhöhen.
-documentationcenter: ''
+title: "Überlegungen zum Entwurf der Azure Active Directory-Hybrididentität – Ermitteln der Anforderungen in Bezug auf das Content Management | Microsoft Docs"
+description: "Sie erhalten einen Einblick, wie Sie die Content Management-Anforderungen für Ihr Unternehmen ermitteln. Wenn Benutzer ein eigenes Gerät verwenden, verfügen sie meist auch über unterschiedliche Anmeldeinformationen, die je nach genutzter Anwendung eingesetzt werden. Es ist wichtig zu unterscheiden, welche Inhalte mit persönlichen Anmeldeinformationen und welche Inhalte mit den Anmeldeinformationen des Unternehmens erstellt wurden. Ihre Identitätslösung sollte in der Lage sein, mit Clouddiensten zu interagieren, um für Endbenutzer eine nahtlose Erfahrung zu schaffen, und dabei den Datenschutz sicherzustellen und den Schutz vor Datenlecks zu erhöhen."
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: dd1ef776-db4d-4ab8-9761-2adaa5a4f004
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 58f4227fc6ac6ca1bd76c440d3d4441786693b3b
+
 
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Content Management-Anforderungen für Ihre Hybrid-Identitätslösung
@@ -63,6 +67,9 @@ Stellen Sie beim Planen Ihrer Hybrid-Identitätslösung sicher, dass die folgend
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

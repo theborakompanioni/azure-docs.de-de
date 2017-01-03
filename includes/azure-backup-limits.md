@@ -1,16 +1,22 @@
- (Sicherungstresore<properties
-   pageTitle="Azure Backup limits table"
-   description="Beschreibung der Systembegrenzung für Azure Backup."
-   services="backup"
-   documentationCenter="NA"
-   authors="Jim-Parker"
-   manager="jwhit"
-   editor="" />
-
 ---
-{}
+title: "Tabelle zu Beschränkungen für Azure Backup"
+description: "Beschreibung der Systembegrenzung für Azure Backup."
+services: backup
+documentationcenter: NA
+author: Jim-Parker
+manager: jwhit
+editor: 
+ms.service: backup
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: TBD
+ms.date: 10/05/2015
+ms.author: trinadhk
+translationtype: Human Translation
+ms.sourcegitcommit: 4b234af8249a64e8d56e9f4c41815749f154af3e
+ms.openlocfilehash: e7147f7712fd22fc07d7af551a12a07808bca9b9
 
-ms.service: backup ms.devlang: NA ms.topic: article ms.tgt_pltfrm: NA ms.workload: TBD ms.date: 10/05/2015 ms.author: trinadhk ;"jimpark";: '' "\"aashishr\"": ''
 
 ---
 Für Azure Backup gelten die folgenden Beschränkungen.
@@ -27,6 +33,7 @@ Für Azure Backup gelten die folgenden Beschränkungen.
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO1-->
 
 

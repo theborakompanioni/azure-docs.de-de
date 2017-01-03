@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 10/29/2016
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ff5c4cd342814a3a5baf19f711daae586deed5f6
+ms.sourcegitcommit: afb3882364a8c4378705f4e2e90d253f8bd4f789
+ms.openlocfilehash: d79794b2e1a855954281128f0c538dbeb0780c9d
 
 
 ---
@@ -323,6 +323,6 @@ Um den Zugriff einer mehrinstanzenfähigen Anwendung auf Ihr Verzeichnis zu entz
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 
