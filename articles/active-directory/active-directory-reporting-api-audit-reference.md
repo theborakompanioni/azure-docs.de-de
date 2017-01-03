@@ -1,19 +1,23 @@
 ---
-title: Referenz zur Azure Active Directory-Überwachungs-API | Microsoft Docs
-description: Vorgehensweise zum Einstieg in die Azure Active Directory-Überwachungs-API
+title: "Referenz zur Azure Active Directory-Überwachungs-API | Microsoft Docs"
+description: "Vorgehensweise zum Einstieg in die Azure Active Directory-Überwachungs-API"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
+ms.date: 11/16/2016
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: b1de516d907826d3e6ede0783649f6101b381852
+ms.openlocfilehash: 261cce0b8424f73df4c7ca86784a14e95a8336f1
+
 
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Referenz zur Azure Active Directory-Überwachungs-API
@@ -28,7 +32,7 @@ Unter
 
 Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
 
-## <a name="who-can-access-the-data?"></a>Wer kann auf die Daten zugreifen?
+## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 * Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
 * Globale Administratoren
 * Jede App mit Autorisierung zum Zugriff auf die API (die App-Autorisierung kann nur basierend auf der Berechtigung eines globalen Administrators eingerichtet werden)
@@ -86,7 +90,7 @@ Um festzulegen, an welcher Art von Datensätzen Sie interessiert sind, können S
 
 **Beispiel**:
 
-    $filter=tdomain + 'activities/audit?api-version=beta&`$filter=eventTime gt ' + $7daysago    
+    $filter=tdomain + 'activities/audit?api-version=beta&`$filter=activityDate gt ' + $7daysago    
 
 **Hinweise**:
 
@@ -98,7 +102,7 @@ datetime muss im UTC-Format angegeben werden.
 
 **Beispiel**:
 
-    $filter=activityType eq 'User'  
+    $filter=activityType eq 'User'    
 
 **Hinweise**:
 
@@ -110,26 +114,26 @@ Erfordert eine Beachtung der Groß-/Kleinschreibung.
 
 **Beispiel**:
 
-    $filter=activity eq 'Add application' or contains(activity, 'Application') or startsWith(activity, 'Add')   
+    $filter=activity eq 'Add application' or contains(activity, 'Application') or startsWith(activity, 'Add')    
 
 **Hinweise**:
 
 Erfordert eine Beachtung der Groß-/Kleinschreibung.
 
 - - -
-### <a name="actor/name"></a>actor/name
+### <a name="actorname"></a>actor/name
 **Unterstützte Operatoren**: eq, contains, startsWith
 
 **Beispiel**:
 
-    $filter=actor/name eq 'test' or contains(actor/name, 'test') or startswith(actor/name, 'test')  
+    $filter=actor/name eq 'test' or contains(actor/name, 'test') or startswith(actor/name, 'test')    
 
 **Hinweise**:
 
 Groß-/Kleinschreibung muss nicht beachtet werden.
 
 - - -
-### <a name="actor/objectid"></a>actor/objectid
+### <a name="actorobjectid"></a>actor/objectid
 **Unterstützte Operatoren**: eq
 
 **Beispiel**:
@@ -137,24 +141,24 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
     $filter=actor/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba'    
 
 - - -
-### <a name="target/name"></a>actor/name
+### <a name="targetname"></a>actor/name
 **Unterstützte Operatoren**: eq, contains, startsWith
 
 **Beispiel**:
 
-    $filter=targets/any(t: t/name eq 'some name')   
+    $filter=targets/any(t: t/name eq 'some name')    
 
 **Hinweise**:
 
 Groß-/Kleinschreibung muss nicht beachtet werden.
 
 - - -
-### <a name="target/upn"></a>target/upn
+### <a name="targetupn"></a>target/upn
 **Unterstützte Operatoren**: eq, startsWith
 
 **Beispiel**:
 
-    $filter=targets/any(t: startswith(t/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity/userPrincipalName,'abc')) 
+    $filter=targets/any(t: startswith(t/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity/userPrincipalName,'abc'))    
 
 **Hinweise**:
 
@@ -162,7 +166,7 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
 * Sie müssen bei der Abfrage von „Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity“ den vollständigen Namespace hinzufügen.
 
 - - -
-### <a name="target/objectid"></a>target/objectid
+### <a name="targetobjectid"></a>target/objectid
 **Unterstützte Operatoren**: eq
 
 **Beispiel**:
@@ -170,12 +174,12 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
     $filter=targets/any(t: t/objectId eq 'e8096343-86a2-4384-b43a-ebfdb17600ba')    
 
 - - -
-### <a name="actor/upn"></a>actor/upn
+### <a name="actorupn"></a>actor/upn
 **Unterstützte Operatoren**: eq, startsWith
 
 **Beispiel**:
 
-    $filter=startswith(actor/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity/userPrincipalName,'abc')  
+    $filter=startswith(actor/Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity/userPrincipalName,'abc')    
 
 **Hinweise**:
 
@@ -187,6 +191,9 @@ Groß-/Kleinschreibung muss nicht beachtet werden.
 * Möchten Sie Beispiele für gefilterte Systemaktivitäten anzeigen? Sehen Sie sich die [Beispiele zur Azure Active Directory-Überwachungs-API](active-directory-reporting-api-audit-samples.md)an.
 * Sie möchten mehr über die Azure AD-Berichterstellungs-API erfahren? Lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Replicate Hyper-V virtual machines in VMM clouds to a secondary VMM site using PowerShell (Resource Manager) | Microsoft Docs
-description: Describes how to deploy Azure Site Recovery to orchestrate replication, failover and recovery of Hyper-V VMs in VMM clouds to a secondary VMM site using PowerShell (Resource Manager)
+title: "Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären VMM-Standort mithilfe von PowerShell (Resource Manager) | Microsoft Docs"
+description: "Es wird beschrieben, wie Sie Azure Site Recovery bereitstellen, um Replikation, Failover und Wiederherstellung von Hyper-V-VMs in VMM-Clouds an einem sekundären VMM-Standort mithilfe von PowerShell (Resource Manager) zu orchestrieren."
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: sujaytalasila
 manager: rochakm
 editor: raynew
-
+ms.assetid: 9d38e9c3-217c-4e44-830c-575e9a4141f2
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
@@ -14,132 +14,136 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2016
 ms.author: sutalasi
+translationtype: Human Translation
+ms.sourcegitcommit: 740c03f7785017e8c778c034491585b3addb765d
+ms.openlocfilehash: 151234a5a357cec808ad5deeef0d4150cb794f8e
+
 
 ---
-# <a name="replicate-hyperv-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>Replicate Hyper-V virtual machines in VMM clouds to a secondary VMM site using PowerShell (Resource Manager)
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären VMM-Standort von PowerShell (Resource Manager)
 > [!div class="op_single_selector"]
-> * [Azure Portal](site-recovery-vmm-to-vmm.md)
-> * [Classic Portal](site-recovery-vmm-to-vmm-classic.md)
-> * [PowerShell - Resource Manager](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
+> * [Azure-Portal](site-recovery-vmm-to-vmm.md)
+> * [Klassisches Portal](site-recovery-vmm-to-vmm-classic.md)
+> * [PowerShell – Resource Manager](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 > 
 > 
 
-Welcome to Azure Site Recovery! Use this article if you want to replicate on-premises Hyper-V  virtual machines managed in System Center Virtual Machine Manager (VMM) clouds to a secondary site. 
+Willkommen bei Azure Site Recovery! Verwenden Sie die Informationen in diesem Artikel, wenn Sie lokale virtuelle Hyper-V-Computer, die in System Center Virtual Machine Manager-Clouds (VMM) verwaltet werden, an einen sekundären Standort replizieren möchten. 
 
-This article shows you how to use PowerShell to automate common tasks you need to perform when you set up Azure Site Recovery to replicate Hyper-V virtual machines in System Center VMM clouds to System Center VMM clouds in secondary site.
+In diesem Artikel erfahren Sie, wie Sie PowerShell zur Automatisierung häufiger Aufgaben verwenden, die Sie ausführen müssen, wenn Sie Azure Site Recovery zum Replizieren virtueller Hyper-V-Computer in System Center VMM-Clouds an einem sekundären Standort einrichten.
 
-The article includes prerequisites for the scenario, and shows you 
+Der Artikel enthält Voraussetzungen für das Szenario und zeigt Ihnen folgende Vorgänge: 
 
-* How to set up a Recovery Services Vault
-* Install the Azure Site Recovery Provider on the source VMM server and the target VMM server
-* Register the VMM server(s) in the vault
-* Configure replication policy for the VMM Cloud. The replication settings in the policy will be applied to all protected virtual machines 
-* Enable protection for the virtual machines. 
-* Test the failover of VMs individually or as part of a recovery plan to make sure everything is working as expected.
-* Perform a planned or an unplanned failover of VMs individually or as part of a recovery plan to make sure everything is working as expected.
+* Einrichten eines Recovery Services-Tresors
+* Installieren des Azure Site Recovery-Anbieters auf dem VMM-Quellserver und dem VMM-Zielserver
+* Registrieren der VMM-Server im Tresor
+* Konfigurieren der Replikationsrichtlinie für die VMM-Cloud; die Replikationseinstellungen in der Richtlinie werden auf alle geschützten virtuellen Computer angewendet 
+* Aktivieren des Schutzes für diese virtuellen Computer 
+* Testen des Failovers für virtuelle Computer als Einzelvorgang oder im Rahmen eines Wiederherstellungsplans, um sicherzustellen, dass alle Komponenten erwartungsgemäß funktionieren
+* Durchführen eines geplanten oder ungeplanten Failovers für virtuelle Computer als Einzelvorgang oder im Rahmen eines Wiederherstellungsplans, um sicherzustellen, dass alle Komponenten erwartungsgemäß funktionieren
 
-If you run into problems setting up this scenario, post your questions on the [Azure Recovery Services Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Sollten beim Einrichten dieses Szenarios Probleme auftreten, besuchen Sie das [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 > [!NOTE]
-> Azure has two different [deployment models](../resource-manager-deployment-model.md) for creating and working with resources: Azure Resource Manager and classic. Azure also has two portals – the Azure classic portal that supports the classic deployment model, and the Azure portal with support for both deployment models. This article covers the Resource Manager deployment model.
+> Azure verfügt über zwei verschiedene [Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md) für das Erstellen und Verwenden von Ressourcen: Azure Resource Manager- und klassische Bereitstellung. Azure verfügt auch über zwei Portale: das klassische Azure-Portal mit Unterstützung des klassischen Bereitstellungsmodells und das Azure-Portal mit Unterstützung für beide Bereitstellungsmodelle. Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 > 
 > 
 
-## <a name="onpremises-prerequisites"></a>On-premises prerequisites
-Here's what you'll need in the primary and secondary on-premises sites to deploy this scenario:
+## <a name="on-premises-prerequisites"></a>Lokale Voraussetzungen
+Folgendes benötigen Sie am primären und sekundären lokalen Standort, um dieses Szenario bereitzustellen:
 
-| **Prerequisites** | **Details** |
+| **Voraussetzungen** | **Details** |
 | --- | --- |
-| **VMM** |We recommend you deploy a VMM server in the primary site and a VMM server in the secondary site.<br/><br/> You can also [replicate between clouds on a single VMM server](site-recovery-single-vmm.md). To do this you'll need at least two clouds configured on the VMM server.<br/><br/> VMM servers should be running at least System Center 2012 SP1 with the latest updates.<br/><br/> Each VMM server must have at one or more clouds configured and all clouds must have the Hyper-V Capacity profile set. <br/><br/>Clouds must contain one or more VMM host groups.<br/><br/>Learn more about setting up VMM clouds in [Configuring the VMM cloud fabric](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric), and [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).<br/><br/> VMM servers should have internet access. |
-| **Hyper-V** |Hyper-V servers must be running at least Windows Server 2012 with the Hyper-V role and have the latest updates installed.<br/><br/> A Hyper-V server should contain one or more VMs.<br/><br/>  Hyper-V host servers should be located in host groups in the primary and secondary VMM clouds.<br/><br/> If you're running Hyper-V in a cluster on Windows Server 2012 R2 you should install [update 2961977](https://support.microsoft.com/kb/2961977)<br/><br/> If you're running Hyper-V in a cluster on Windows Server 2012 note that cluster broker isn't created automatically if you have a static IP address-based cluster. You'll need to configure the cluster broker manually. [Read more](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx). |
-| **Provider** |During Site Recovery deployment you install the Azure Site Recovery Provider on VMM servers. The Provider communicates with Site Recovery over HTTPS 443 to orchestrate replication. Data replication occurs between the primary and secondary Hyper-V servers over the LAN or a VPN connection.<br/><br/> The Provider running on the VMM server needs access to these URLs: *.hypervrecoverymanager.windowsazure.com; *.accesscontrol.windows.net; *.backup.windowsazure.com; *.blob.core.windows.net; *.store.core.windows.net.<br/><br/> In addition allow firewall communication from the VMM servers to the [Azure datacenter IP ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) and allow the HTTPS (443) protocol. |
+| **VMM** |Wir empfehlen Ihnen, am primären und am sekundären Standort je einen VMM-Server bereitzustellen.<br/><br/> Eine [Replikation zwischen Clouds auf einem einzelnen VMM-Server](site-recovery-single-vmm.md). Zu diesem Zweck benötigen Sie mindestens zwei auf dem VMM-Server konfigurierte Clouds.<br/><br/> Auf den VMM-Servern muss mindestens System Center 2012 SP1 mit den neuesten Updates ausgeführt werden.<br/><br/>  Für jeden VMM-Server muss mindestens eine Cloud konfiguriert sein, und für alle Clouds muss das Hyper-V-Kapazitätsprofil festgelegt sein. <br/><br/>Die Clouds müssen mindestens eine VMM-Hostgruppe enthalten.<br/><br/>Weitere Informationen zum Einrichten von VMM-Clouds finden Sie unter [Vorbereiten der Azure Site Recovery-Bereitstellung](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric) sowie unter [Exemplarische Vorgehensweise: Erstellen von privaten Clouds mit System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).<br/><br/>  VMM-Server sollten über Internetzugriff verfügen. |
+| **Hyper-V** |Auf den Hyper-V-Servern muss mindestens Windows Server 2012 mit der Hyper-V-Rolle ausgeführt werden, und die neuesten Updates müssen installiert sein.<br/><br/> Ein Hyper-V-Server muss mindestens einen virtuellen Computer enthalten.<br/><br/>  Hyper-V-Hostserver müssen sich in Hostgruppen in der primären und in der sekundären VMM-Cloud befinden.<br/><br/> Wenn Sie Hyper-V in einem Cluster unter Windows Server 2012 R2 ausführen, müssen Sie das [Update 2961977](https://support.microsoft.com/kb/2961977) installieren.<br/><br/>  Wenn Sie Hyper-V unter Windows Server 2012 in einem Cluster ausführen, beachten Sie, dass der Clusterbroker nicht automatisch erstellt wird, falls Sie einen auf statischen IP-Adressen basierenden Cluster haben. Sie müssen den Clusterbroker manuell konfigurieren. [Weitere Informationen](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx) |
+| **Anbieter** |Während der Site Recovery-Bereitstellung installieren Sie den Azure Site Recovery-Anbieter auf VMM-Servern. Der Anbieter kommuniziert mit Azure Site Recovery über HTTPS 443, um die Replikation zu orchestrieren. Die Datenreplikation erfolgt über das LAN oder eine VPN-Verbindung zwischen dem primären und sekundären Hyper-V-Server.<br/><br/> Der auf dem VMM-Server ausgeführte Anbieter benötigt Zugriff auf folgende URLs: *.hypervrecoverymanager.windowsazure.com, *.accesscontrol.windows.net, *.backup.windowsazure.com, *.blob.core.windows.net, *.store.core.windows.net.<br/><br/> Ermöglichen Sie darüber hinaus die Firewallkommunikation der VMM-Server mit den [IP-Bereichen des Azure-Rechenzentrums](https://www.microsoft.com/download/confirmation.aspx?id=41653) , und lassen Sie das HTTPS-Protokoll (443) zu. |
 
-### <a name="network-mapping-prerequisites"></a>Network mapping prerequisites
-Network mapping maps between VMM VM networks on the primary and secondary VMM servers to:
+### <a name="network-mapping-prerequisites"></a>Voraussetzungen für die Netzwerkzuordnung
+Die Netzwerkzuordnung zwischen VMM-VM-Netzwerken auf dem primären und sekundären VMM-Server dient folgenden Zwecken:
 
-* Optimally place replica VMs on secondary Hyper-V hosts after failover.
-* Connect replica VMs to appropriate VM networks.
-* If you don't configure network mapping replica VMs won't be connected to any network after failover.
-* If you want to set up network mapping during Site Recovery deployment here's what you'll need:
+* Optimales Platzieren von Replikat-VMs auf sekundären Hyper-V-Hosts nach dem Failover.
+* Verbinden von Replikat-VMs mit entsprechenden VM-Netzwerken.
+* Wenn Sie die Netzwerkzuordnung nicht konfigurieren, werden Replikat-VMs nach einem Failover nicht mit einem Netzwerk verbunden.
+* Wenn Sie die Netzwerkzuordnung während der Site Recovery-Bereitstellung einrichten möchten, benötigen Sie Folgendes:
   
-  * Make sure that VMs on the source Hyper-V host server are connected to a VMM VM network. That network should be linked to a logical network that is associated with the cloud.
-  * Verify that the secondary cloud that you'll use for recovery has a corresponding VM network configured. That VM network should be linked to a logical network that's associated with the secondary cloud.
+  * Stellen Sie sicher, dass VMs auf dem Hyper-V-Quellhostserver mit einem VMM-VM-Netzwerk verbunden sind. Dieses Netzwerk sollte mit einem logischen Netzwerk verbunden sein, das der Cloud zugeordnet ist.
+  * Stellen Sie sicher, dass für die sekundäre Cloud, die Sie für die Wiederherstellung verwenden, ein entsprechendes VM-Netzwerk konfiguriert ist. Dieses VM-Netzwerk sollte mit einem logischen Netzwerk verbunden sein, das der sekundären Cloud zugeordnet ist.
 
-Learn more about configuring VMM networks in the below articles
+Weitere Informationen zur Konfiguration von VMM-Netzwerken finden Sie in unten stehenden Artikeln.
 
-* [How to configure logical networks in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
-* [How to configure VM networks and gateways in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
+* [Konfigurieren von logischen Netzwerken in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
+* [Konfiguration von VM-Netzwerken und Gateways in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[Learn more](site-recovery-network-mapping.md) about how network mapping works.
+[hier](site-recovery-network-mapping.md) .
 
-### <a name="powershell-prerequisites"></a>PowerShell prerequisites
-Make sure you have Azure PowerShell ready to go. If you are already using PowerShell, you'll need to upgrade to version 0.8.10 or later. For information about setting up PowerShell, see the [Guide to install and configure Azure PowerShell](../powershell-install-configure.md). Once you have set up and configured PowerShell, you can view all of the available cmdlets for the service [here](https://msdn.microsoft.com/library/dn850420.aspx). 
+### <a name="powershell-prerequisites"></a>PowerShell-Voraussetzungen
+Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell bereits verwenden, müssen Sie auf Version 0.8.10 oder höher aktualisieren. Informationen zum Einrichten von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Nach dem Einrichten und Konfigurieren von PowerShell können Sie alle verfügbaren Cmdlets für den Dienst [hier](https://msdn.microsoft.com/library/dn850420.aspx)anzeigen. 
 
-To learn about tips that can help you use the cmdlets, such as how parameter values, inputs, and outputs are typically handled in Azure PowerShell, see the [Guide to get Started with Azure Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx).
+Tipps für die Verwendung von Cmdlets, beispielsweise wie Parameterwerte, Eingaben und Ausgaben in der Regel in Azure PowerShell behandelt werden, finden Sie unter [Erste Schritte mit Azure-Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx).
 
-## <a name="step-1-set-the-subscription"></a>Step 1: Set the subscription
-1. From Azure powershell, login to your Azure account: using the following cmdlets
+## <a name="step-1-set-the-subscription"></a>Schritt 1: Festlegen des Abonnements
+1. Melden Sie sich über Azure PowerShell mithilfe der folgenden Cmdlets beim Azure-Konto an.
    
         $UserName = "<user@live.com>"
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
         Login-AzureRmAccount #-Credential $Cred 
-2. Get a list of your subscriptions. This will also list the subscriptionIDs for each of the subscriptions. Note down the subscriptionID of the subscription in which you wish to create the recovery services vault    
+2. Rufen Sie eine Liste Ihrer Abonnements ab. Dadurch werden auch die subscriptionIDs für die einzelnen Abonnements aufgeführt. Notieren Sie sich die subscriptionID des Abonnements, in dem Sie den Recovery Services-Tresor erstellen möchten.    
    
         Get-AzureRmSubscription 
-3. Set the subscription in which the recovery services vault is to be created by mentioning the subscription ID
+3. Legen Sie das Abonnement fest, in dem der Recovery Services-Tresor erstellt werden soll, indem Sie die Abonnement-ID angeben.
    
         Set-AzureRmContext –SubscriptionID <subscriptionId>
 
-## <a name="step-2-create-a-recovery-services-vault"></a>Step 2: Create a Recovery Services vault
-1. Create an Azure Resource Manager resource group if you don't have one already
+## <a name="step-2-create-a-recovery-services-vault"></a>Schritt 2: Erstellen eines Recovery Services-Tresors
+1. Erstellen Sie eine Azure Resource Manager-Ressourcengruppe, falls noch keine vorhanden ist.
    
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
-2. Create a new Recovery Services vault and save the created ASR vault object in a variable (will be used later). You can also retrieve the ASR vault object post creation using the Get-AzureRMRecoveryServicesVault cmdlet:-
+2. Erstellen Sie einen neuen Recovery Services-Tresor, und speichern Sie das erstellte ASR-Tresorobjekt in einer Variablen (die später verwendet wird). Sie können das ASR-Tresorobjekt auch nach der Erstellung abrufen, indem Sie das Cmdlet „Get-AzureRMRecoveryServicesVault“ verwenden:
    
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Step 3: Set the Recovery Services Vault context
-1. If you have a vault already created, run the below command to get the vault.
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Schritt 3: Festlegen des Kontexts des Recovery Services-Tresors
+1. Wenn bereits ein Tresor erstellt wurde, führen Sie unten stehenden Befehl aus, um den Tresor abzurufen.
    
        $vault = Get-AzureRmRecoveryServicesVault -Name #vaultname
-2. Set the vault context by running the below command.
+2. Legen Sie den Tresorkontext durch Ausführen des nachstehenden Befehls fest.
    
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
-## <a name="step-4-install-the-azure-site-recovery-provider"></a>Step 4: Install the Azure Site Recovery Provider
-1. On the VMM machine, create a directory by running the following command:
+## <a name="step-4-install-the-azure-site-recovery-provider"></a>Schritt 4: Installieren des Azure Site Recovery-Anbieters
+1. Erstellen Sie ein Verzeichnis auf dem VMM-Computer durch Ausführen des folgenden Befehls:
    
        New-Item c:\ASR -type directory
-2. Extract the files using the downloaded provider by running the following command
+2. Extrahieren Sie die Dateien mithilfe des heruntergeladenen Anbieters durch Ausführen des folgenden Befehls.
    
        pushd C:\ASR\
        .\AzureSiteRecoveryProvider.exe /x:. /q
-3. Install the provider using the following commands:
+3. Installieren Sie den Anbieter mithilfe der folgenden Befehls:
    
        .\SetupDr.exe /i
        $installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
        do
        {
-                       $isNotInstalled = $true;
-                       if(Test-Path $installationRegPath)
-                       {
-                                       $isNotInstalled = $false;
-                       }
+         $isNotInstalled = $true;
+         if(Test-Path $installationRegPath)
+         {
+           $isNotInstalled = $false;
+         }
        }While($isNotInstalled)
    
-   Wait for the installation to finish.
-4. Register the server in the vault using the following command:
+   Warten Sie, bis die Installation abgeschlossen ist.
+4. Registrieren Sie den Server beim Tresor mithilfe des folgenden Befehls:
    
        $BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
        pushd $BinPath
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 
-## <a name="step-5-create-and-associate-a-replication-policy"></a>Step 5: Create and associate a replication policy
-1. Create a Hyper-V 2012 R2 replication policy by running the following command:
+## <a name="step-5-create-and-associate-a-replication-policy"></a>Schritt 5: Erstellen und Zuordnen einer Replikationsrichtlinie
+1. Erstellen Sie eine Hyper-V 2012 R2-Replikationsrichtlinie, indem Sie folgenden Befehl ausführen:
 
-        $ReplicationFrequencyInSeconds = "300";     #options are 30,300,900
+        $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
         $RepProvider = HyperVReplica2012R2
         $Recoverypoints = 24                    #specify the number of hours to retain recovery pints
@@ -150,109 +154,113 @@ To learn about tips that can help you use the cmdlets, such as how parameter val
 
         $policyresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod 
 
-    > [AZURE.NOTE] The VMM cloud can contain Hyper-V hosts running different versions of Windows Server (as mentioned in the Hyper-V prerequisites), but the replication policy is OS version specific. If you have different hosts running on different operating system versions, then create separate replication policies for each type of OS version. For eg: If you have five hosts running on Windows Servers 2012 and three on Windows Server 2012 R2, create two replication polices – one for each type of operating system versions.
+    > [!NOTE] 
+    > Die VMM-Cloud kann Hyper-V-Hosts enthalten, auf denen verschiedene Versionen von Windows Server ausgeführt werden (wie in den Voraussetzungen für Hyper-V beschrieben), aber die Replikationsrichtlinie ist betriebssystemspezifisch. Wenn Sie über verschiedene Hosts verfügen, die unter verschiedenen Betriebssystemversionen ausgeführt werden, erstellen Sie getrennte Replikationsrichtlinien für jede Betriebssystemversion. Beispiel: Sie haben fünf Hosts unter Windows Server 2012 und drei Hosts unter Windows Server 2012 R2. In diesem Fall erstellen Sie zwei Replikationsrichtlinien – eine für jede Betriebssystemversion.
 
-1. Get the primary protection container (primary VMM Cloud) and recovery protection container (recovery VMM Cloud) by running the following commands:
+1. Rufen Sie den primären Schutzcontainer (primäre VMM-Cloud) und den Schutzcontainer für die Wiederherstellung (VMM-Cloud für die Wiederherstellung) ab, indem Sie folgende Befehle ausführen:
    
        $PrimaryCloud = "testprimarycloud"
        $primaryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
    
        $RecoveryCloud = "testrecoverycloud"
        $recoveryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $RecoveryCloud;  
-2. Retrieve the policy you created in step 1 using the friendly name of the policy
+2. Rufen Sie die in Schritt 1 erstellte Richtlinie ab, und verwenden Sie dabei den Anzeigenamen der Richtlinie:
    
        $policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $policyname
-3. Start the association of the protection container (VMM Cloud) with the replication policy:
+3. Starten Sie die Zuordnung des Schutzcontainers (VMM-Cloud) zur Replikationsrichtlinie:
    
        $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
-4. Wait for the policy association job to complete. You can check if the job has completed using the following PowerShell snippet.
+4. Warten Sie, bis der Auftrag der Richtlinienzuordnung abgeschlossen ist. Mithilfe des folgenden PowerShell-Codeausschnitts können Sie prüfen, ob der Auftrag abgeschlossen ist.
    
        $job = Get-AzureRmSiteRecoveryJob -Job $associationJob
+   
        if($job -eq $null -or $job.StateDescription -ne "Completed")
-        {
-           $isJobLeftForProcessing = $true;
+       {
+         $isJobLeftForProcessing = $true;
        }
    
-   After the job has finished processing, run the following command:
+   Nachdem die Verarbeitung des Auftrags abgeschlossen ist, führen Sie den folgenden Befehl aus:
    
        if($isJobLeftForProcessing)
        {
-       Start-Sleep -Seconds 60
+         Start-Sleep -Seconds 60
        }
        }While($isJobLeftForProcessing)
 
-To check the completion of the operation, follow the steps in [Monitor Activity](#monitor).
+Um den Abschluss des Vorgangs zu überprüfen, führen Sie die Schritte in [Überwachen der Aktivität](#monitor)aus.
 
-## <a name="step-5-configure-network-mapping"></a>Step 5: Configure network mapping
-1. The first command gets servers for the current Azure Site Recovery vault. The command stores the Microsoft Azure Site Recovery servers in the $Servers array variable.
+## <a name="step-6-configure-network-mapping"></a>Schritt 6: Konfigurieren der Netzwerkzuordnung
+1. Der erste Befehl ruft Server für den aktuellen Azure Site Recovery-Tresor ab. Der Befehl speichert die Microsoft Azure Site Recovery-Server in der "$Servers"-Arrayvariablen.
    
         $Servers = Get-AzureRmSiteRecoveryServer
-2. The below commands get the site recovery network for the source VMM server and the target VMM server.
+2. Mit den unten stehenden Befehlen rufen Sie das Site Recovery-Netzwerk für den VMM-Quellserver und den VMM-Zielserver ab.
    
         $PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]        
    
         $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
 
-    > [AZURE.NOTE] The source VMM server can be the first one or the second one in the servers array. Check the names of the VMM servers and get the networks appropriately
+    > [!NOTE] 
+    > Der VMM-Quellserver kann der erste oder zweite Server im Serverarray sein. Überprüfen Sie die Namen der VMM-Server, und rufen Sie die entsprechenden Netzwerke ab.
 
 
-1. The final cmdlet creates a mapping between the primary network and the recovery network. The cmdlet specifies the primary network as the first element of $PrimaryNetworks and the recovery network as the first element of $RecoveryNetworks.
+1. Das letzte Cmdlet erstellt eine Zuordnung zwischen dem primären Netzwerk und dem Wiederherstellungsnetzwerk. Das Cmdlet legt das primäre Netzwerk als erstes Element von $PrimaryNetworks und das Wiederherstellungsnetzwerk als erstes Element von $RecoveryNetworks fest.
    
         New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
-## <a name="step-6-configure-storage-mapping"></a>Step 6: Configure storage mapping
-1. The below command gets the list of storage classifications into $storageclassifications variable.
+## <a name="step-7-configure-storage-mapping"></a>Schritt 7: Konfigurieren der Speicherzuordnung
+1. Mit dem folgenden Befehl wird die Liste der Speicherklassifizierungen in der $storageclassifications-Variablen abgerufen.
    
         $storageclassifications = Get-AzureRmSiteRecoveryStorageClassification
-2. The below commands get the source classification into $SourceClassificaion variable and target classification into $TargetClassification variable. 
+2. Mit den folgenden Befehlen werden die Quellklassifizierung in der $SourceClassificaion-Variablen und die Zielklassifizierung in $TargetClassification-Variablen abgerufen. 
    
         $SourceClassificaion = $storageclassifications[0]
    
         $TargetClassification = $storageclassifications[1]
 
-    > [AZURE.NOTE] The source and target classifications can be any element in the array. Refer to the output of the below command to figure the index of source and target classifications in $storageclassifications array. 
+    > [!NOTE] 
+    > Die Quell- und Zielklassifizierungen können ein beliebiges Element im Array sein. Über die Ausgabe des folgenden Befehls können Sie den Index der Quell- und Zielklassifizierungen im $storageclassifications-Array ermitteln. 
 
     > Get-AzureRmSiteRecoveryStorageClassification | Select-Object -Property FriendlyName, Id | Format-Table
 
 
-1. The below cmdlet creates a mapping between the source classification and the target classification. 
+1. Mit dem folgenden Cmdlet wird eine Zuordnung zwischen der Quellklassifizierung und der Zielklassifizierung erstellt. 
    
         New-AzureRmSiteRecoveryStorageClassificationMapping -PrimaryStorageClassification $SourceClassificaion -RecoveryStorageClassification $TargetClassification
 
-## <a name="step-7-enable-protection-for-virtual-machines"></a>Step 7: Enable protection for virtual machines
-After the servers, clouds and networks are configured correctly, you can enable protection for virtual machines in the cloud. 
+## <a name="step-8-enable-protection-for-virtual-machines"></a>Schritt 8: Aktivieren des Schutzes für virtuelle Computer
+Nach der korrekten Konfiguration der Server, Clouds und Netzwerke können Sie den Schutz für die virtuellen Computer in der Cloud aktivieren. 
 
-1. To enable protection, run the following command to get the protection container:
+1. Führen Sie den folgenden Befehl aus, um den Schutzcontainer abzurufen und den Schutz zu aktivieren:
    
           $PrimaryProtectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloudName
-2. Get the protection entity (VM) by running the following command:
+2. Rufen Sie die Schutzentität (VM) durch Ausführen des folgenden Befehls ab:
    
-          $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
-3. Enable replication for the VM by running the following command:
+           $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
+3. Aktivieren Sie die Replikation für die VM, indem Sie den folgenden Befehl ausführen:
    
           $jobResult = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
 
-## <a name="test-your-deployment"></a>Test your deployment
-To test your deployment you can run a test failover for a single virtual machine, or create a recovery plan consisting of multiple virtual machines and run a test failover for the plan. Test failover simulates your failover and recovery mechanism in an isolated network. 
+## <a name="test-your-deployment"></a>Testen der Bereitstellung
+Um Ihre Bereitstellung zu testen, können Sie ein Testfailover für einen einzelnen virtuellen Computer durchführen oder einen Wiederherstellungsplan erstellen, der mehrere virtuelle Computer umfasst, und ein Testfailover für diesen Plan durchführen. Das Test-Failover simuliert Ihre Failover- und Wiederherstellungsmechanismen in einem isolierten Netzwerk. 
 
 > [!NOTE]
-> You can create a recovery plan for your application in Azure portal.
+> Sie können im Azure-Portal einen Wiederherstellungsplan für Ihre Anwendung erstellen.
 > 
 > 
 
-To check the completion of the operation, follow the steps in [Monitor Activity](#monitor).
+Um den Abschluss des Vorgangs zu überprüfen, führen Sie die Schritte in [Überwachen der Aktivität](#monitor)aus.
 
-### <a name="run-a-test-failover"></a>Run a test failover
-1. Run the below cmdlets to get the VM network to which you want to test failover your VMs to.
+### <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
+1. Führen Sie die unten stehenden Cmdlets aus, um das VM-Netzwerk abzurufen, mit dem Sie ein Testfailover für Ihre VMs durchführen möchten.
    
        $Servers = Get-AzureRmSiteRecoveryServer
        $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
-2. Perform a test failover of a VM by doing the following:
+2. Führen Sie ein Testfailover einer VM durch, indem Sie folgende Befehle ausführen:
    
        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -FriendlyName $VMName -ProtectionContainer $PrimaryprotectionContainer
    
        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -VMNetwork $RecoveryNetworks[1] 
-3. Perform a test failover of a recovery plan by doing the following:
+3. Führen Sie ein Testfailover eines Wiederherstellungsplans durch, indem Sie folgende Befehle ausführen:
    
        $recoveryplanname = "test-recovery-plan"
    
@@ -260,13 +268,13 @@ To check the completion of the operation, follow the steps in [Monitor Activity]
    
        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan -VMNetwork $RecoveryNetworks[1] 
 
-### <a name="run-a-planned-failover"></a>Run a planned failover
-1. Perform a planned failover of a VM by doing the following:
+### <a name="run-a-planned-failover"></a>Ausführen eines geplanten Failovers
+1. Führen Sie ein geplantes Failover einer VM durch, indem Sie folgende Befehle ausführen:
    
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
    
         $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
-2. Perform a planned failover of a recovery plan by doing the following:
+2. Führen Sie ein geplantes Failover eines Wiederherstellungsplans durch, indem Sie folgende Befehle ausführen:
    
         $recoveryplanname = "test-recovery-plan"
    
@@ -274,14 +282,14 @@ To check the completion of the operation, follow the steps in [Monitor Activity]
    
         $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan
 
-### <a name="run-an-unplanned-failover"></a>Run an unplanned failover
-1. Perform an unplanned failover of a VM by doing the following:
+### <a name="run-an-unplanned-failover"></a>Ausführen eines ungeplanten Failovers
+1. Führen Sie ein ungeplantes Failover einer VM durch, indem Sie folgende Befehle ausführen:
    
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
    
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity 
 
-2.Perform an unplanned failover of a recovery plan by doing the following:
+2. Führen Sie ein ungeplantes Failover eines Wiederherstellungsplans durch, indem Sie folgende Befehle ausführen:
 
         $recoveryplanname = "test-recovery-plan"
 
@@ -289,8 +297,8 @@ To check the completion of the operation, follow the steps in [Monitor Activity]
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity 
 
-## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a> Monitor Activity
-Use the following commands to monitor the activity. Note that you have to wait in between jobs for the processing to finish.
+## <a name="a-namemonitora-monitor-activity"></a><a name=monitor></a> Überwachen der Aktivität
+Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie, dass Sie zwischen den Aufträgen auf den Abschluss der Verarbeitung warten müssen.
 
     Do
     {
@@ -309,9 +317,12 @@ Use the following commands to monitor the activity. Note that you have to wait i
 
 
 
-## <a name="next-steps"></a>Next steps
-[Read more](https://msdn.microsoft.com/library/azure/mt637930.aspx) about Azure Site Recovery with Azure Resource Manager PowerShell cmdlets.
+## <a name="next-steps"></a>Nächste Schritte
+[Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO4-->
 
 

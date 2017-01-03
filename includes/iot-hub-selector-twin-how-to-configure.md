@@ -78,7 +78,7 @@ Wenn eine neue gewünschte Konfiguration empfangen wird, meldet die Geräte-App 
             }
         }
 
-Zu einem späteren Zeitpunkt meldet die Geräte-App dann den Erfolg oder Misserfolg dieses Vorgangs, indem die obige Eigenschaft aktualisiert wird.
+Später meldet die Geräte-App dann mittels Aktualisierung der obigen Eigenschaft den Erfolg oder Misserfolg dieses Vorgangs.
 Beachten Sie, dass das Lösungs-Back-End jederzeit den Status des Konfigurationsprozesses über alle Geräte hinweg abfragen kann.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
@@ -93,6 +93,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 [lnk-twin-tutorial]: ../articles/iot-hub/iot-hub-node-node-twin-getstarted.md
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Dec16_HO2-->
 
 

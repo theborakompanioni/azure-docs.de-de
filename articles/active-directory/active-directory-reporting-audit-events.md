@@ -1,27 +1,31 @@
 ---
-title: Azure Active Directory-Überwachungsberichtsereignisse | Microsoft Docs
-description: Überwachte Ereignisse, die zum Anzeigen und Herunterladen aus Azure Active Directory verfügbar sind
+title: "Azure Active Directory-Überwachungsberichtsereignisse | Microsoft Docs"
+description: "Überwachte Ereignisse, die zum Anzeigen und Herunterladen aus Azure Active Directory verfügbar sind"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: 307eedf7-05bc-448d-a84d-bead5a4c5770
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2016
+ms.date: 12/14/2016
 ms.author: dhanyahk
+translationtype: Human Translation
+ms.sourcegitcommit: 6950072b8970dfc1b80674efe0be6cb7496fd5ce
+ms.openlocfilehash: 2dda60160bbcaa729bc8e5cec4f47efc10d120cf
+
 
 ---
-# Azure Active Directory-Überwachungsberichtsereignisse
-*Diese Dokumentation ist Teil des [Handbuchs für Azure Active Directory Reporting](active-directory-reporting-guide.md).*
+# <a name="azure-active-directory-audit-report-events"></a>Azure Active Directory-Überwachungsberichtsereignisse
+*Diese Dokumentation ist Teil des Handbuchs für [Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
 Der Azure Active Directory-Überwachungsbericht hilft Kunden, privilegierte Aktionen zu bestimmen, die in ihrem Azure Active Directory aufgetreten sind. Privilegierte Aktionen umfassen Änderungen zur Rechteerweiterung (z. B. das Erstellen von Rollen oder Zurücksetzen von Kennwörtern), das Ändern von Richtlinienkonfigurationen (z. B. Kennwortrichtlinien) oder Änderungen an der Verzeichniskonfiguration (z. B. Änderungen an Domänenverbundeinstellungen). Die Berichte enthalten den Überwachungsdatensatz für den Ereignisnamen, den Akteur, der die Aktion ausgeführt hat, die von der Änderung betroffene Zielressource sowie Datum und Uhrzeit (in UTC). Kunden können die Liste mit den Überwachungsereignissen für ihre Azure Active Directory-Instanz über das [Azure-Portal](https://portal.azure.com/) abrufen, wie im Artikel zur Anzeige von Überwachungsprotokollen ([Azure Active Directory-Berichterstellung – Vorschau](active-directory-reporting-azure-portal.md)) beschrieben.
 
-## Liste der Überwachungsberichtsereignisse
+## <a name="list-of-audit-report-events"></a>Liste der Überwachungsberichtsereignisse
 <!--- audit event descriptions should be in the past tense --->
 
 | Ereignisse | Beschreibung des Ereignisses |
@@ -33,15 +37,13 @@ Der Azure Active Directory-Überwachungsbericht hilft Kunden, privilegierte Akti
 | Benutzerkennwort zurücksetzen |Kennwort eines Benutzers im Verzeichnis zurückgesetzt. |
 | Benutzerkennwort ändern |Kennwort eines Benutzers im Verzeichnis geändert. |
 | Benutzerlizenz ändern |Die einem Benutzer im Verzeichnis zugewiesene Lizenz geändert. Unten unter den Eigenschaften von [Benutzer aktualisieren](#update-user-attributes) können Sie sehen, welche Lizenzen aktualisiert wurden. |
-| Benutzer aktualisieren |Einen Benutzer im Verzeichnis aktualisiert. Informationen zu Attributen, die aktualisiert werden können, [finden Sie weiter unter](#update-user-attributes). |
+| Benutzer aktualisieren |Einen Benutzer im Verzeichnis aktualisiert. [finden Sie weiter unter](#update-user-attributes) . |
 | Änderung des Benutzerkennworts erzwingen |Eigenschaft festgelegt, die einen Benutzer zwingt, sein Kennwort bei der Anmeldung zu ändern. |
 | Benutzeranmeldeinformationen aktualisieren |Der Benutzer hat das Kennwort geändert. |
 | **Gruppenereignisse** | |
 | Gruppe hinzufügen |Eine Gruppe wurde im Verzeichnis erstellt. |
 | Gruppe aktualisieren |Eine Gruppe wurde im Verzeichnis aktualisiert. Unter [Überprüfte Gruppeneigenschaften](#update-group-attributes) im Abschnitt unten können Sie sehen, welche Gruppeneigenschaften aktualisiert wurden. |
 | Gruppe löschen |Eine Gruppe wurde im Verzeichnis gelöscht. |
-| Mitglied zur Gruppe hinzufügen |Einer Gruppe im Verzeichnis wurde ein Mitglied hinzugefügt. |
-| Mitglied aus Gruppe entfernen |Ein Mitglied wurde aus einer Gruppe im Verzeichnis entfernt. |
 | CreateGroupSettings |Gruppeneinstellungen erstellt |
 | UpdateGroupSettings |Gruppeneinstellungen aktualisiert. Unter [Überprüfte Gruppeneigenschaften](#update-group-attributes) im Abschnitt unten können Sie sehen, welche Gruppeneinstellungen aktualisiert wurden. |
 | DeleteGroupSettings |Gruppeneinstellungen gelöscht |
@@ -59,21 +61,6 @@ Der Azure Active Directory-Überwachungsbericht hilft Kunden, privilegierte Akti
 | Delegierungseintrag hinzufügen |[OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) im Verzeichnis erstellt. |
 | Delegierungseintrag festlegen |[OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) im Verzeichnis aktualisiert. |
 | Delegierungseintrag entfernen |[OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) im Verzeichnis gelöscht. |
-| **Rollenereignisse** | |
-| Rollenmitglied zur Rolle hinzufügen |Benutzer einer Verzeichnisrolle hinzugefügt. |
-| Rollenmitglied aus Rolle entfernen |Benutzer aus einer Verzeichnisrolle entfernt. |
-| Kontaktinformationen für das Unternehmen festlegen |Kontakteinstellungen auf Unternehmensebene festgelegt. Dazu gehören E-Mail-Adressen für das Marketing sowie technische Benachrichtigungen zu Microsoft Online Services. |
-| Delegierungseintrag hinzufügen |[OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) im Verzeichnis erstellt. |
-| Delegierungseintrag festlegen |[OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) im Verzeichnis aktualisiert. |
-| Delegierungseintrag entfernen |[OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) im Verzeichnis gelöscht. |
-| AddServicePrincipalOwner |Besitzer dem Dienstprinzipal hinzugefügt |
-| RemoveSevicePrincipalOwner |Besitzer aus Dienstprinzipal entfernt |
-| AddApplication |Anwendung hinzufügen |
-| UpdateApplication |Anwendung aktualisieren. Unter [Überprüfte Anwendungseigenschaften](#update-application-attributes) im Abschnitt unten können Sie sehen, welche App-Einstellungen aktualisiert wurden. |
-| DeleteApplication |Anwendung löschen |
-| RestoreApplication |Anwendung wiederherstellen |
-| AddApplicationOwner |Besitzer der Anwendung hinzufügen |
-| RemoveApplicationOwner |Besitzer aus Anwendung entfernen |
 | **Rollenereignisse** | |
 | Rollenmitglied zur Rolle hinzufügen |Benutzer einer Verzeichnisrolle hinzugefügt. |
 | Rollenmitglied aus Rolle entfernen |Benutzer aus einer Verzeichnisrolle entfernt. |
@@ -152,12 +139,12 @@ Der Azure Active Directory-Überwachungsbericht hilft Kunden, privilegierte Akti
 | RemoveDefaultPolicyServicePrincipal |Richtlinie aus Dienstprinzipal entfernen |
 | RemovePolicyCredentials |Richtlinien-Anmeldeinformationen entfernen |
 
-## Aufbewahrung von Überwachungsberichten
-Ereignisse im Azure AD-Überwachungsbericht werden für 180 Tage beibehalten. Weitere Informationen zur Aufbewahrung von Berichten finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md).
+## <a name="audit-report-retention"></a>Aufbewahrung von Überwachungsberichten
+Ereignisse im Azure AD-Überwachungsbericht werden für 180 Tage beibehalten. Weitere Informationen zur Aufbewahrung von Berichten finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md).
 
-Kunden, die ihre Überwachungsereignisse für längere Zeit speichern möchten, können mithilfe der Reporting-API regelmäßig Überwachungsereignisse in einen separaten Datenspeicher abrufen. Ausführliche Informationen finden Sie unter [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md).
+Kunden, die ihre Überwachungsereignisse für längere Zeit speichern möchten, können mithilfe der Reporting-API regelmäßig Überwachungsereignisse in einen separaten Datenspeicher abrufen. Ausführliche Informationen finden Sie unter [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md) .
 
-## In jedem Überwachungsereignis enthaltene Eigenschaften
+## <a name="properties-included-with-each-audit-event"></a>In jedem Überwachungsereignis enthaltene Eigenschaften
 | Eigenschaft | Beschreibung |
 | --- | --- |
 | Datum und Uhrzeit |Datum und Uhrzeit des Auftretens des Überwachungsereignisses |
@@ -165,7 +152,7 @@ Kunden, die ihre Überwachungsereignisse für längere Zeit speichern möchten, 
 | Aktion |Die Aktion, die ausgeführt wurde |
 | Ziel |Der Benutzer oder Dienstprinzipal, auf den die Aktion angewendet wurde |
 
-## Attribute von "Benutzer aktualisieren"
+## <a name="update-user-attributes"></a>Attribute von "Benutzer aktualisieren"
 Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, welche Benutzerattribute aktualisiert wurden. Für jedes Attribut sind der vorherige Wert und der neue Wert enthalten.
 
 | Attribut | Beschreibung |
@@ -188,7 +175,7 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | InviteReplyUrl |Liste mit URLs für die Antwort nach Annahme der Einladung. |
 | InviteResources |Liste mit Ressourcen, für die der Benutzer eine Einladung erhalten hat. |
 | LastDirSyncTime |Letzte Aktualisierung des Objekts aufgrund der Synchronisierung des autoritativen Verzeichnisses (Kunde, lokal). |
-| MSExchRemoteRecipientType |Führt die Zuordnung zu MSO-Empfängertypen durch. Empfängertypen finden Sie unter [MSO-Empfängertypen] https://msdn.microsoft.com/library/microsoft.office.interop.outlook.recipient.type.aspx. |
+| MSExchRemoteRecipientType |Führt die Zuordnung zu MSO-Empfängertypen durch. Informationen zu Empfängertypen [MSO-Empfängertypen] finden Sie unter https://msdn.microsoft.com/library/microsoft.office.interop.outlook.recipient.type.aspx |
 | PreferredDataLocation |Der bevorzugte Speicherort für die Daten von Benutzern, Gruppen, Kontakten, öffentlichen Ordnern oder Geräten. |
 | ProxyAddresses |Die Adresse, unter der ein Exchange Server-Empfängerobjekt in einem fremden E-Mail-System erkannt wird. |
 | StsRefreshTokensValidFrom |Enthält Informationen zum Widerrufen von Aktualisierungstoken. Alle STS-Aktualisierungstoken, die vor diesem Zeitpunkt ausgestellt wurden, werden als abgelaufen angesehen. |
@@ -197,11 +184,11 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | UserStateChangedOn |TimeStamp (Zeitstempel) der letzten Änderung von UserState. Wird verwendet, um Lebenszyklus-Workflows auszulösen. |
 | UserType |Typ des Benutzers: Mitglied (0), Gast (1), Viral (2). |
 
-## Attribute vom Typ „Gruppe aktualisieren“
+## <a name="update-group-attributes"></a>Attribute vom Typ „Gruppe aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | Classification |Die Klassifizierung für eine einheitliche Gruppe (HBI, MBI usw.). |
-| Description |Für Menschen lesbare Beschreibungen des Objekts. |
+| Beschreibung |Für Menschen lesbare Beschreibungen des Objekts. |
 | DisplayName |Der Anzeigename für ein Objekt. |
 | DirSyncEnabled |Gibt an, ob die Synchronisierung über ein autoritatives Verzeichnis (Kunde, lokal) erfolgt. |
 | GroupLicenseAssignment |Die Lizenzzuweisung einer Gruppe. |
@@ -211,7 +198,7 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | LastDirSyncTime |Letzte Aktualisierung des Objekts aufgrund der Synchronisierung des autoritativen Verzeichnisses (Kunde, lokal). |
 | Mail |Die primäre E-Mail-Adresse. |
 | MailEnabled |Gibt an, ob diese Gruppe über die E-Mail-Funktion verfügt. |
-| MailNickname |Moniker für ein Adressbuchobjekt, normalerweise der Teil des E-Mail-Namens vor dem Symbol „@“. |
+| MailNickname |Moniker für ein Adressbuchobjekt, normalerweise der Teil des E-Mail-Namens vor dem Symbol „"@"“. |
 | MembershipRule |Eine Zeichenfolge, mit der die vom Self-Service-Gruppenverwaltungsdienst verwendeten Kriterien ausgedrückt werden, um zu ermitteln, welche Mitglieder der Gruppe angehören sollen. Siehe auch „IsMembershipRuleLocked“. Gilt nur für Gruppen, bei denen GroupType das Element „GroupType.DynamicMembership“ enthält. |
 | MembershipRuleProcessingState |Ein vom Self-Service-Gruppenverwaltungsdienst definierter Wert, mit dem der Status der Mitgliedschaftsverarbeitung für diese Gruppe festgelegt wird. Gilt nur für Gruppen, bei denen GroupType das Element „GroupType.DynamicMembership“ enthält. |
 | ProxyAddresses |Die Adresse, unter der ein Exchange Server-Empfängerobjekt in einem fremden E-Mail-System erkannt wird. |
@@ -219,7 +206,7 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | SecurityEnabled |Gibt an, ob sich die Mitgliedschaft in der Gruppe auf Autorisierungsentscheidungen auswirken kann. |
 | WellKnownObject |Bezeichnet ein Verzeichnisobjekt, indem es als Teil einer vordefinierten Gruppe angegeben wird. |
 
-## Attribute vom Typ „Gerät aktualisieren“
+## <a name="update-device-attributes"></a>Attribute vom Typ „Gerät aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | AccountEnabled |Gibt an, ob für einen Sicherheitsprinzipal eine Authentifizierung möglich ist. |
@@ -240,13 +227,13 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | IsManaged |Mit diesem Attribut wird angegeben, dass das Gerät per Cloud-MDM verwaltet wird. |
 | LastDirSyncTime |Letzte Aktualisierung des Objekts aufgrund der Synchronisierung des autoritativen Verzeichnisses (Kunde, lokal). |
 
-## Attribute vom Typ „Gerätekonfiguration aktualisieren“
+## <a name="update-device-configuration-attributes"></a>Attribute vom Typ „Gerätekonfiguration aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | MaximumRegistrationInactivityPeriod |Die maximale Anzahl von Tagen, über die ein Gerät inaktiv sein kann, bevor es für die Entfernung vorgesehen wird. |
 | RegistrationQuota |Richtlinie zum Beschränken der Anzahl von Registrierungen, die für einen einzelnen Benutzer zulässig sind. |
 
-## Attribute vom Typ „Dienstprinzipalkonfiguration aktualisieren“
+## <a name="update-service-principal-configuration-attributes"></a>Attribute vom Typ „Dienstprinzipalkonfiguration aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | AccountEnabled |Gibt an, ob für einen Sicherheitsprinzipal eine Authentifizierung möglich ist. |
@@ -254,12 +241,12 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | DisplayName |Der Anzeigename für ein Objekt. |
 | ServicePrincipalName |Ein Dienstprinzipalname mit „name/authority“. Hierbei wird mit „name“ ein Anwendungsklassenwert angegeben, und „authority“ enthält mindestens „hostname[:port]“ oder „name“, um einen Bezeichner für den Dienstprinzipal anzugeben. |
 
-## Attribute vom Typ „App aktualisieren“
+## <a name="update-app-attributes"></a>Attribute vom Typ „App aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | AppAddress |Der Satz mit den Adressen (Umleitungs-URLs), die einem Dienstprinzipal zugewiesen sind. |
 | AppId |Die Anwendungs-ID der App. |
-| AppIdentifierUri |Anwendungs-URI, mit dem die Anwendung identifiziert wird. Dies ist normalerweise die URL für den Anwendungszugriff. |
+| AppIdentifierUri |Anwendungs-URI, mit dem die Anwendung identifiziert wird.  Dies ist normalerweise die URL für den Anwendungszugriff. |
 | AppLogoUrl |Die URL für das Anwendungslogobild, das in einem CDN gespeichert ist. |
 | AvailableToOtherTenants |Bei „True“ ist die Anwendung mehrinstanzenfähig (sie kann also von anderen Mandanten verwendet werden). |
 | DisplayName |Der Anzeigename für einen Anwendungsnamen. |
@@ -272,15 +259,15 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | WebApp |Mit der Einstellung „True“ wird angegeben, dass die Anwendung eine Web-App ist. |
 | WwwHomepage |Die primäre Webseite. |
 
-## Attribute vom Typ „Rolle aktualisieren“
+## <a name="update-role-attributes"></a>Attribute vom Typ „Rolle aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | AppAddress |Der Satz mit den Adressen (Umleitungs-URLs), die einem Dienstprinzipal zugewiesen sind. |
 | BelongsToFirstLoginObjectSet |Mit „True“ wird angegeben, dass dieses Objekt zu der Gruppe von Objekten gehört, die zum Aktivieren der Anmeldung für den ersten Administrator eines neuen Mandanten erforderlich sind. |
 | Builtin |Gibt an, ob sich die Lebensdauer eines Objekts im Besitz des Systems befindet. |
-| Description |Für Menschen lesbare Beschreibungen des Objekts. |
+| Beschreibung |Für Menschen lesbare Beschreibungen des Objekts. |
 | DisplayName |Der Anzeigename für ein Objekt. |
-| MailNickname |Moniker für ein Adressbuchobjekt, normalerweise der Teil des E-Mail-Namens vor dem Symbol „@“. |
+| MailNickname |Moniker für ein Adressbuchobjekt, normalerweise der Teil des E-Mail-Namens vor dem Symbol „"@"“. |
 | RoleDisabled |Gibt an, ob die Rolle zum Zweck der Zugriffsüberprüfung ignoriert werden soll. |
 | RoleTemplateId |Die Identität der Rollenvorlage. |
 | ServiceInfo |Dienstspezifische Bereitstellungsinformationen, die von MOAC und/oder anderen Dienstinstanzen (mit den gleichen oder anderen Diensttypen) genutzt werden können. |
@@ -288,20 +275,20 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | ValidationError |Von einem Verbunddienst veröffentlichte Informationen zum Beschreiben eines dauerhaften dienstspezifischen Fehlers in Bezug auf die Eigenschaften oder einen Link von einer Objektadministratoraktion, die gelöst werden soll. |
 | WellKnownObject |Bezeichnet ein Verzeichnisobjekt, indem es als Teil einer vordefinierten Gruppe angegeben wird. |
 
-## Attribute vom Typ „Rollendefinition aktualisieren“
+## <a name="update-role-definition-attributes"></a>Attribute vom Typ „Rollendefinition aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | AssignableScopes |Sammlung mit Autorisierungsbereichen, auf die verwiesen werden kann, wenn das RoleDefinition-Element einem Dienstprinzipal zugewiesen wird. |
 | DisplayName |Der Anzeigename für ein Objekt. |
 | GrantedPermissions |Vom RoleDefinition-Element gewährte Berechtigungen. |
 
-## Attribute vom Typ „Verwaltungseinheit aktualisieren“
+## <a name="update-administrative-unit-attributes"></a>Attribute vom Typ „Verwaltungseinheit aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | Beschreibung |Diese Eigenschaft wird aktualisiert, wenn Sie die Beschreibung einer Verwaltungseinheit ändern. |
 | DisplayName |Diese Eigenschaft wird aktualisiert, wenn Sie den Namen einer Verwaltungseinheit ändern. |
 
-## Attribute vom Typ „Unternehmen aktualisieren“
+## <a name="update-company-attributes"></a>Attribute vom Typ „Unternehmen aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | AllowedDataLocation |Ein Standort, an dem die Benutzer des Unternehmens bereitgestellt werden können. |
@@ -326,7 +313,7 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 | TenantType |Der Typ eines Mandanten. Wenn dieser Wert nicht angegeben wird, ist der Mandant ein Unternehmen (Company). Andere mögliche Werte sind: MicrosoftSupport (0), SyndicatePartner (1), BreadthPartner (2), BreadthPartnerDelegatedAdmin (3), ResellerPartnerDelegatedAdmin (4), ValueAddedResellerPartnerDelegatedAdmin (5). |
 | VerifiedDomain |Ein Satz mit DNS-Domänennamen, die an ein Unternehmen gebunden sind. |
 
-## Attribute vom Typ „Domäne aktualisieren“
+## <a name="update-domain-attributes"></a>Attribute vom Typ „Domäne aktualisieren“
 | Attribut | Beschreibung |
 | --- | --- |
 | Funktionen |Bitflags, mit denen die Funktionen der Domäne beschrieben werden, falls vorhanden. |
@@ -339,4 +326,9 @@ Das Überwachungsereignis "Benutzer aktualisieren" enthält Informationen dazu, 
 
 Überwachungsdatensätze sind ein erforderliches Steuerelement in vielen Richtlinien zur Einhaltung von Vorschriften. Kunden, die den Azure Active Directory-Überwachungsbericht zum Erfüllen dieser Vorschriften nutzen, wird empfohlen, der Kopie des exportierten Überwachungsberichts eine Kopie dieses Hilfethemas zur Erläuterung der Berichtsdetails hinzuzufügen. Wenn der Prüfer die Richtlinien zur Vorschrifteneinhaltung bestimmen möchte, die Azure derzeit erfüllt, leiten Sie ihn zur [Seite "Compliance"](https://azure.microsoft.com/support/trust-center/compliance/) im Microsoft Azure Trust Center.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Dec16_HO4-->
+
+

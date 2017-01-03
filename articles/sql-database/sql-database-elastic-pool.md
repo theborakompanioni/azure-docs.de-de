@@ -9,16 +9,16 @@ manager: jhubbard
 editor: 
 ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
-ms.custom: sharded databases pool
+ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 12/06/2016
+ms.date: 12/14/2016
 ms.author: CarlRabeler
 ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 829229542c05477d427b15a9d862f414d9c730d6
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: c3757dadb09ba070b30820a46007a9c82490d8f2
 
 
 ---
@@ -46,7 +46,7 @@ Einem vorhandenen Pool können zusätzliche eDTUs hinzugefügt werden, ohne dass
 Und Sie können dem Pool Datenbanken hinzufügen oder Datenbanken aus dem Pool entfernen. Wenn die Ressourcen für eine Datenbank voraussichtlich nicht ausgeschöpft werden, sollten Sie sie entfernen.
 
 ## <a name="which-databases-go-in-a-pool"></a>Welche Datenbanken werden in einem Pool angeordnet?
-![SQL-Datenbanken, die eDTUs in einem Pool für elastische Datenbanken gemeinsam nutzen][1]
+![SQL-Datenbanken, die eDTUs in einem elastischen Pool gemeinsam nutzen.][1]
 
 Datenbanken, die für elastische Pools besonders geeignet sind, weisen in der Regel Zeiträume der Aktivität als auch der Inaktivität auf. Im obigen Beispiel sehen Sie die Aktivität einer einzelnen Datenbank, von 4 Datenbanken und schließlich eines elastischen Pools mit 20 Datenbanken. Datenbanken mit veränderlicher Aktivität im Laufe der Zeit eignen sich besonders für elastische Pools, da sie nicht alle zur gleichen Zeit aktiv sind und eDTUs gemeinsam nutzen können. Nicht alle Datenbanken entsprechen jedoch diesem Muster. Datenbanken mit einem konstanteren Ressourcenbedarf eignen sich besser für die Basic-, Standard- und Premium-Dienstebenen, bei denen Ressourcen einzeln zugewiesen werden.
 
@@ -54,7 +54,7 @@ Datenbanken, die für elastische Pools besonders geeignet sind, weisen in der Re
 
 ## <a name="edtu-and-storage-limits-for-elastic-pools-and-elastic-databases"></a>eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken
 
-In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Datenbankpools beschrieben.
+In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Pools beschrieben.
 
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
@@ -88,7 +88,7 @@ Mit einem Pool werden die Verwaltungsaufgaben vereinfacht, indem Skripts in **[e
 Weitere Informationen zu anderen Tools für elastische Datenbanken finden Sie unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md).
 
 ## <a name="business-continuity-features-for-databases-in-a-pool"></a>Funktionen der Geschäftskontinuität für Datenbanken in einem Pool
-Elastische Datenbanken unterstützen in der Regel die gleichen [Funktionen der Geschäftskontinuität](sql-database-business-continuity.md) , die auch für Einzeldatenbanken auf V12-Servern zur Verfügung stehen.
+Elastische Datenbanken unterstützen in der Regel die gleichen [Geschäftskontinuitätsfeatures](sql-database-business-continuity.md), die auch bei Einzeldatenbanken zur Verfügung stehen.
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen verwendet, um den Status einer Datenbank in einem Pool zu einem bestimmten Zeitpunkt wiederherzustellen. Siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
@@ -107,6 +107,6 @@ Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

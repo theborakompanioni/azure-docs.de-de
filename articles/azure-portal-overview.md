@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7383380ee07f9ee52858038bd4d623be4689a31a
+ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
+ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
 
 
 ---
@@ -59,16 +59,6 @@ Von diesem Bereich aus können Sie sich mithilfe des Remotedesktop mit dem virtu
 5. Wählen Sie einen Benutzer und eine Rolle.
 
 ![Verwalten von Ressourcen][ManageResource]
-
-## <a name="how-to-customize-a-resource-blade"></a>Anpassen eines Ressourcenbereichs
-Die Bereiche für Ihre Ressourcen werden von Azure konfiguriert; die Kacheln in diesen Bereichen können jedoch von Ihnen angepasst werden.  Sie können problemlos in den Anpassungsmodus wechseln, um die Kacheln zu entfernen, ihre Größe zu verändern oder sie anders anzuordnen. Um einen Bereich anzupassen, führen Sie folgende Aktionen aus:
-
-1. Navigieren Sie zu der Ressource.
-2. Klicken Sie auf die Schaltfläche „...“ oben auf dem Blatt, das Sie anpassen möchten.
-3. Klicken Sie auf „Elemente hinzufügen“.
-4. Nun können Sie Elemente per Drag & Drop hinzufügen.  
-
-![Anpassen von Bereichen (Blades)][CustomizeBlades]
 
 ## <a name="how-to-get-help"></a>So erhalten Sie Hilfe
 Sollten Sie auf ein Problem stoßen, sind wir für Sie da.  Das Portal verfügt über eine Hilfe- und Support-Seite, die Sie in die richtige Richtung verweisen kann.  Abhängig von Ihrem [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Supportanfragen ggf. auch direkt im Portal erstellen.  Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets vom Portal aus verwalten. Um zur Hilfe- und Support-Seite zu gelangen, gehen Sie zu „Durchsuchen“ und dann zu „Hilfe + Support“.  

@@ -1,12 +1,12 @@
 ---
-title: 'Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft Docs'
-description: 'Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio.'
+title: 'Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft-Dokumentation'
+description: "Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: c7e5bf29aacbcb11bfa1db01738d234ae64b46b2
+ms.openlocfilehash: 141586d880e6a8f069ec26b3279d9787c5e046b4
+
 
 ---
-# <a name="walkthrough-step-5:-deploy-the-azure-machine-learning-web-service"></a>Exemplarische Vorgehensweise – Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
+# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Exemplarische Vorgehensweise – Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
 Dies ist der fünfte Schritt der exemplarischen Vorgehensweise zum [Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Erstellen eines Machine Learning-Arbeitsbereichs](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -172,13 +176,11 @@ Nachdem Sie Ihren klassischen Webdienst bereitgestellt haben, können Sie ihn im
 6. Klicken Sie auf den Endpunkt „Default“.
 
 Hier können Sie überwachen, wie der Webdienst funktioniert, und Leistungsanpassungen vornehmen, indem Sie ändern, wie viele gleichzeitige Aufrufe der Dienst unterstützen kann.
-Sie können sogar Ihren Webdienst in Azure Marketplace veröffentlichen.
 
 Weitere Informationen finden Sie unter:
 
 * [Erstellen von Endpunkten](machine-learning-create-endpoint.md)
 * [Skalieren von Webdiensten](machine-learning-scaling-webservice.md)
-* [Veröffentlichen eines Azure Machine Learning-Webdiensts in Azure Marketplace](machine-learning-publish-web-service-to-azure-marketplace.md)
 
 **Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal**
 
@@ -215,6 +217,7 @@ So überwachen Sie die Leistung des Webdiensts
 [project-columns]: https://msdn.microsoft.com/en-us/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO4-->
 
 

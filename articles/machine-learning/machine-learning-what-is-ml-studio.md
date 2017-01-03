@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/09/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a5bcc177d298aecd9fd474bd15fc0331b26e887
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
 
 
 ---
@@ -33,25 +33,30 @@ Für die Entwicklung eines prädiktiven Analysemodells verwendet man typischerwe
 
 **Azure Machine Learning Studio** stellt Ihnen einen interaktiven, visuellen Arbeitsbereich zur Verfügung, in dem Sie ein Vorhersageanalysemodell ganz einfach entwickeln, testen und durchlaufen können. Sie fügen per Drag & Drop ***DataSets*** und ***Analysemodule*** in eine interaktive Canvas ein und verbinden sie zu einem ***Experiment***, das Sie in Machine Learning Studio ausführen. Für die Iteration des Modelldesigns bearbeiten Sie das Experiment, speichern ggf. eine Kopie und führen es erneut aus. Wenn Sie bereit sind, können Sie Ihr ***Trainingsexperiment*** in ein ***Vorhersageexperiment*** konvertieren und anschließend als ***Webdienst*** veröffentlichen, damit andere Benutzer auf das Modell zugreifen können.
 
+Es ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbinden von Datasets und Modulen zum Erstellen eines prädiktiven Analysemodells.
+
 > [!TIP]
 > Informationen zum Herunterladen und Drucken des Diagramms, mit dem Sie sich einen Überblick über die Machine Learning Studio-Funktionen verschaffen können, finden Sie unter [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](machine-learning-studio-overview-diagram.md).
 > 
 > 
-
-Es ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbinden von Datasets und Modulen zum Erstellen eines prädiktiven Analysemodells.
 
 ![Azure ML Studio-Diagramm: Erstellen von Experimenten, Lesen von Daten aus vielen Quellen, Schreiben der ausgewerteten Daten, Erstellen der Modelle.][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>Erste Schritte mit Machine Learning Studio
 Wenn Sie [Machine Learning Studio](https://studio.azureml.net) zum ersten Mal öffnen, sehen Sie die **Startseite** . Hier finden Sie die Dokumentation, Videos, Webinare und weitere wertvolle Ressourcen.
 
-Im oberen Bereich befinden sich drei Registerkarten: **Home** (Ihr Ausgangspunkt), **Studio** und **Gallery**.
+Klicken Sie auf das Menü links oben. ![Menü](media/machine-learning-what-is-ml-studio/menu.png) Daraufhin werden mehrere Optionen angezeigt.
 
-### <a name="studio"></a>Studio
-Klicken Sie auf die Registerkarte **Studio**. Sie werden aufgefordert, sich mit Ihrem Microsoft-Konto oder Ihrem Geschäfts-, Schul- oder Unikonto anzumelden. Nach der Anmeldung sehen Sie auf der linken Seite die folgenden Registerkarten:
+### <a name="cortana-intelligence"></a>Cortana Intelligence
+Klicken Sie auf **Cortana Intelligence**, um zur Startseite der [Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) zu gelangen. Die Cortana Intelligence Suite ist eine vollständig verwaltete Big Data-Lösung für erweiterte Analysen, mit der Sie Ihre Daten in intelligente Aktionen verwandeln können. Eine umfassende Dokumentation sowie Kundenstimmen finden Sie auf der Startseite der Suite.
+
+### <a name="azure-machine-learning"></a>Azure Machine Learning
+Hier stehen zwei Optionen zur Verfügung: **Startseite** (die Seite, auf der Sie begonnen haben), und **Studio**.
+
+Klicken Sie auf **Studio**, um zu **Azure Machine Learning Studio** zu gelangen. Sie werden zunächst aufgefordert, sich mit Ihrem Microsoft-Konto oder Ihrem Geschäfts-, Schul- oder Unikonto anzumelden. Nach der Anmeldung sehen Sie auf der linken Seite die folgenden Registerkarten:
 
 * **PROJECTS** (PROJEKTE): Sammlungen mit Experimenten, Datasets, Notebooks und anderen Ressourcen, die ein einzelnes Projekt darstellen
-* **EXPERIMENTS** : Experimente, die erstellt, ausgeführt und als Entwürfe gespeichert wurden
+* **EXPERIMENTS**: Experimente, die Sie erstellt und ausgeführt oder als Entwürfe gespeichert haben
 * **WEB SERVICES** : Webdienste, die Sie über Ihre Experimente bereitgestellt haben
 * **NOTEBOOKS** : Jupyter-Notebooks, die Sie erstellt haben
 * **DATASETS** : DataSets, die Sie in Studio hochgeladen haben
@@ -59,7 +64,7 @@ Klicken Sie auf die Registerkarte **Studio**. Sie werden aufgefordert, sich mit 
 * **EINSTELLUNGEN** – eine Sammlung von Einstellungen, mit denen Sie Ihr Konto und Ihre Ressourcen konfigurieren
 
 ### <a name="gallery"></a>Gallery
-Klicken Sie auf die Registerkarte **Katalog** , um zum Cortana Intelligence-Katalog zu gelangen. In diesem Katalog kann eine Community von Datenwissenschaftlern und Entwicklern Lösungen freigeben, die mithilfe von Komponenten der Cortana Intelligence Suite erstellt wurden.
+Klicken Sie auf **Katalog**, um zum **[Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/)** zu gelangen. In diesem Katalog teilt eine Community von Datenwissenschaftlern und Entwicklern Lösungen, die mithilfe von Komponenten der Cortana Intelligence Suite erstellt wurden.
 
 Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Lösungen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
 
@@ -92,10 +97,10 @@ Eine Liste der in Machine Learning Studio enthaltenen Beispiel-DataSets finden S
 ### <a name="modules"></a>Module
 Ein Modul ist ein Algorithmus, den Sie auf Ihre Daten anwenden können. Machine Learning Studio hat eine Reihe von Modulen, die von Funktionen für die Dateneinspeisung bis zu Trainings-, Bewertungs- und Überprüfungsvorgängen reichen. Hier einige Beispiele der enthaltenen Module:
 
-* [In ARFF konvertieren][convert-to-arff]: Konvertiert ein .NET-serialisiertes DataSet in das ARFF-Format (Attribute-Relation File Format).
-* [Elementare Statistiken berechnen][elementary-statistics]: Berechnet elementare Statistiken wie beispielsweise Mittelwert, Standardabweichung usw.
-* [Lineare Regression][linear-regression]: Erstellt ein lineares Onlineregressionsmodell, das auf einem Gradientenverfahrenmodell beruht.
-* [Bewertungsmodell][score-model]: Bewertet ein trainiertes Klassifizierungs- oder Regressionsmodell.
+* [In ARFF konvertieren:][convert-to-arff] Konvertiert ein serialisiertes .NET-Dataset in ARFF (Attribute-Relation File Format).
+* [Elementare Statistiken berechnen:][elementary-statistics] Berechnet elementare Statistiken wie Mittelwert, Standardabweichung usw.
+* [Lineare Regression:][linear-regression] Erstellt ein lineares Onlineregressionsmodell, das auf einem Gradientenverfahrenmodell beruht.
+* [Bewertungsmodell:][score-model] Bewertet ein trainiertes Klassifizierungs- oder Regressionsmodell.
 
 Beim Erstellen eines Experiments können Sie links neben dem Arbeitsbereich aus der Liste der Module auswählen.  
 
@@ -116,6 +121,6 @@ Wenn Ihr Predictive Analytics-Modell bereit ist, können Sie es als Webdienst di
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

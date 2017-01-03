@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/22/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e20618b60f8bb517618a994cdb5c2fde18c10e43
+ms.sourcegitcommit: f9c1e41c423cc0d638d5c1d273d58b2fe713fa1c
+ms.openlocfilehash: 2aeb1f20255264ca97b8aff6bd506b5fa1832e28
 
 
 ---
@@ -64,14 +64,6 @@ Wenn Sie den Azure-BLOB-Speicher zum Hosten Ihrer Beispielinhalte verwenden möc
 6. Geben Sie einen **Namen** für den Container an (z.B. „b2c“), und wählen Sie als **Zugriffstyp** die Einstellung **Blob** aus. Klicken Sie auf **OK**.
 7. Der Container, den Sie erstellt haben, wird in der Liste auf dem Blatt **Blobs** angezeigt. Notieren Sie sich die URL des Containers. Sie sollte ähnlich wie die folgende URL aussehen: `https://contoso.blob.core.windows.net/b2c`. Schließen Sie das Blatt **Blobs**.
 8. Klicken Sie auf dem Blatt für das Speicherkonto auf **Schlüssel**, und notieren Sie sich die Werte der Felder **Speicherkontoname** und **Primärer Zugriffsschlüssel**.
-9. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-10. Klicken Sie auf **+ Neu** > **Daten und Speicher** > **Speicherkonto**. Sie benötigen ein Azure-Abonnement, um ein Azure-Blobspeicherkonto zu erstellen. Sie können sich auf der [Azure-Website](https://azure.microsoft.com/pricing/free-trial/)für eine kostenlose Testversion registrieren.
-11. Wählen Sie unter **Kontoart** die Option **Blob Storage**, und behalten Sie die anderen Standardwerte bei.  Bei Bedarf können Sie die Ressourcengruppe und den Speicherort bearbeiten.  Klicken Sie auf **Erstellen**.
-12. Wechseln Sie zurück zum Startmenü, und klicken Sie auf das Speicherkonto, das Sie gerade erstellt haben.
-13. Klicken Sie im Abschnitt **Zusammenfassung** auf **+ Container**.
-14. Geben Sie einen **Namen** für den Container an (z.B. „b2c“), und wählen Sie als **Zugriffstyp** die Einstellung **Blob** aus. Klicken Sie auf **OK**.
-15. Öffnen Sie den Container **properties**, und notieren Sie sich die URL des Containers. Sie sollte ähnlich wie die folgende URL aussehen: `https://contoso.blob.core.windows.net/b2c`. Schließen Sie das Blatt „Container“.
-16. Klicken Sie auf dem Blatt für das Speicherkonto auf das **Schlüsselsymbol**, und notieren Sie sich die Werte der Felder **Speicherkontoname** und **Primärer Zugriffsschlüssel**.
 
 > [!NOTE]
 > **Primärer Zugriffsschlüssel** ist eine wichtige Anmeldeinformation.
@@ -98,6 +90,6 @@ Sie können nun die Schaltfläche **Jetzt ausführen** oder Ihre eigene Anwendun
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

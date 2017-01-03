@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 12/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: b557c6d3591b1d56144651e876fa4bb1b0646935
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: d00b7b543f105fd944e91f6ed27e6613366c6716
 
 
 ---
@@ -31,9 +31,9 @@ In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie PowerShell für
 * Erstellen eines logischen Azure SQL-Servers
 * Anzeigen der Eigenschaften eines Azure SQL-Servers
 * Erstellen einer Firewallregel auf Serverebene
-* Erstellen der AdventureWorksLT-Beispieldatenbank als eigenständige Datenbank
+* Erstellen der AdventureWorksLT-Beispieldatenbank als Einzeldatenbank
 * Anzeigen von Eigenschaften der AdventureWorksLT-Beispieldatenbank
-* Erstellen einer leeren eigenständigen Datenbank
+* Erstellen einer leeren Einzeldatenbank
 
 In diesem Tutorial führen Sie außerdem die folgenden Schritte aus:
 
@@ -577,6 +577,6 @@ Nachdem Sie dieses Tutorial zu den ersten Schritten abgeschlossen und eine Daten
 [Was ist SQL Database?](sql-database-technical-overview.md)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

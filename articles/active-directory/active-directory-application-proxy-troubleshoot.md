@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/01/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 654acd092f9e8469d7014e1ff15cb7d812918e8b
-
+ms.sourcegitcommit: 1eada96773b1d9c6adb9326c9100da7cde8abf77
+ms.openlocfilehash: e3143d787104ffbba9fb0c3806b187382d9d5c5b
 
 ---
+
+
 # <a name="troubleshoot-application-proxy"></a>Problembehandlung von Anwendungsproxys
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
 
@@ -53,7 +54,7 @@ Wenn während der Connector-Installation durch den Assistenten ein Fehler bei de
 | Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie den Anwendungsproxy im Azure-Verwaltungsportal aktiviert haben, und dass Sie Ihren Active Directory-Benutzernamen und das Kennwort richtig eingegeben haben. Fehler: "Mindestens ein Fehler." |Wenn das Registrierungsfenster geöffnet und dann sofort geschlossen wird, ohne dass Sie sich anmelden können, erhalten Sie ggf. diese Fehlermeldung. Dieser Fehler tritt auf, wenn in Ihrem System ein Netzwerkfehler vorliegt. |Stellen Sie sicher, dass es möglich ist, mit einem Browser eine Verbindung mit einer öffentlichen Website herzustellen, und dass die Ports wie unter [Voraussetzungen für den Anwendungsproxy](active-directory-application-proxy-enable.md)angegeben geöffnet sind. |
 | Fehler bei der Connector-Registrierung: Vergewissern Sie sich, dass der Computer mit dem Internet verbunden ist. Fehler: „Unter `https://connector.msappproxy.net :9090/register/RegisterConnector` hat kein Endpunkt gelauscht, der die Nachricht akzeptieren konnte. Ursache dieses Fehlers ist häufig eine falsche Adresse oder SOAP-Aktion. Weitere Informationen können Sie, sofern vorhanden, der InnerException entnehmen." |Wenn Sie sich mithilfe Ihres Azure AD-Benutzernamens und -Kennworts anmelden und dann diese Fehlermeldung erhalten, sind ggf. alle Ports über 8081 blockiert. |Stellen Sie sicher, dass die erforderlichen Ports geöffnet sind. Weitere Informationen finden Sie unter [Voraussetzungen für den Anwendungsproxy](active-directory-application-proxy-enable.md). |
 | Klartextfehler wird im Registrierungsfenster angezeigt. Der Vorgang kann nicht fortgesetzt werden – Fenster schließen. |Sie haben einen falschen Benutzernamen oder ein falsches Kennwort eingegeben. |Versuchen Sie es erneut. |
-| Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie den Anwendungsproxy im Azure-Verwaltungsportal aktiviert haben, und dass Sie Ihren Active Directory-Benutzernamen und das Kennwort richtig eingegeben haben. Fehler: AADSTS50059: In der Anforderung oder in den bereitgestellten Anmeldeinformationen wurden keine Informationen gefunden, die den Mandanten identifizieren, und bei der Suche nach dem Dienstprinzipal-URI ist ein Fehler aufgetreten. |Sie versuchen, sich mithilfe eines Microsoft-Kontos und nicht mithilfe einer Domäne anzumelden, die Bestandteil der Organisations-ID des Verzeichnisses ist, auf das Sie versuchen, zuzugreifen. |Stellen Sie sicher, dass der Administrator Teil des gleichen Domänennamens wie die Mandantendomäne ist. Wenn die Azure AD-Domäne z.B. contoso.com ist, sollte der Administrator admin@contoso.com sein. |
+| Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie den Anwendungsproxy im Azure-Verwaltungsportal aktiviert haben, und dass Sie Ihren Active Directory-Benutzernamen und das Kennwort richtig eingegeben haben. Fehler: AADSTS50059: In der Anforderung oder in den bereitgestellten Anmeldeinformationen wurden keine Informationen gefunden, die den Mandanten identifizieren, und bei der Suche nach dem Dienstprinzipal-URI ist ein Fehler aufgetreten. |Sie versuchen, sich mithilfe eines Microsoft-Kontos und nicht mithilfe einer Domäne anzumelden, die Bestandteil der Organisations-ID des Verzeichnisses ist, auf das Sie versuchen, zuzugreifen. |Stellen Sie sicher, dass der Administrator Teil des gleichen Domänennamens wie die Mandantendomäne ist. Wenn die Azure AD-Domäne z. B. contoso.com ist, sollte der Administrator admin@contoso.com lauten. |
 | Fehler beim Abrufen der aktuellen Ausführungsrichtlinie für die Ausführung von PowerShell-Skripts. |Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. |Öffnen Sie den Gruppenrichtlinien-Editor. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen ** > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**. Die Option kann entweder auf **Nicht konfiguriert** oder auf **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. |
 | Der Connector konnte die Konfiguration nicht herunterladen. |Das Clientzertifikat des Connectors, das für die Authentifizierung verwendet wird, ist abgelaufen. Dies kann auch auftreten, wenn Sie den Connector hinter einem Proxy installiert haben. In diesem Fall kann der Connector nicht auf das Internet zugreifen und ist nicht in der Lage, Anwendungen für Remotebenutzer bereitzustellen. |Erneuern Sie die Vertrauensstellung manuell mithilfe des Cmdlets `Register-AppProxyConnector` in Windows PowerShell. Wenn sich der Connector hinter einem Proxy befindet, ist es notwendig, den Connector-Konten „Netzwerkdienste“ und „Lokales System“ Zugriff auf das Internet zu gewähren. Hierzu können sie entweder Zugriff auf den Proxy erhalten, oder sie werden zur Umgehung des Proxys eingestellt. |
 | Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie ein globaler Administrator Ihres Active Directory-Verzeichnisses sind, um den Connector zu registrieren. Fehler: "Die Registrierungsanforderung wurde verweigert." |Der Alias, mit dem Sie versuchen, sich anzumelden, ist kein Administrator für diese Domäne. Ihr Connector wird immer für das Verzeichnis installiert, das Besitzer der Domäne des Benutzers ist. |Stellen Sie sicher, dass der Administrator, als der Sie sich anmelden möchten, über globale Berechtigungen für den Azure AD-Mandanten verfügt. |
@@ -86,6 +87,6 @@ Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http:/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

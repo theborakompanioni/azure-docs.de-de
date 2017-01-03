@@ -1,207 +1,214 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with TigerText | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and TigerText.
+title: 'Tutorial: Azure Active Directory-Integration mit TigerText Secure Messenger | Microsoft Docs'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und TigerText Secure Messenger konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 03f1e128-5bcb-4e49-b6a3-fe22eedc6d5e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 11/21/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: a2129813f7214b2b32b2d7d6c9d666e96b60a926
+ms.openlocfilehash: 05fe44861c33933b394162b3b27ccee9a99754eb
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-tigertext"></a>Tutorial: Azure Active Directory integration with TigerText
-In this tutorial, you learn how to integrate TigerText with Azure Active Directory (Azure AD).
+# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Tutorial: Azure Active Directory-Integration mit TigerText Secure Messenger
+In diesem Tutorial erfahren Sie, wie Sie TigerText in Azure Active Directory (Azure AD) integrieren.
 
-Integrating TigerText with Azure AD provides you with the following benefits:
+Die Integration von TigerText in Azure AD bietet folgende Vorteile:
 
-* You can control in Azure AD who has access to TigerText
-* You can enable your users to automatically get signed-on to TigerText (Single Sign-On) with their Azure AD accounts
-* You can manage your accounts in one central location - the Azure classic portal
+* Sie können in Azure AD steuern, wer Zugriff auf TigerText hat.
+* Sie können es Benutzern ermöglichen, sich per SSO (Single Sign-On, einmaliges Anmelden) mit ihren Azure AD-Konten automatisch bei TigerText anzumelden.
+* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Prerequisites
-To configure Azure AD integration with TigerText, you need the following items:
+## <a name="prerequisites"></a>Voraussetzungen
+Um die TigerText-Integration in Azure AD konfigurieren zu können, benötigen Sie Folgendes:
 
-* An Azure AD subscription
-* A TigerText single-sign on enabled subscription
+* Ein Azure AD-Abonnement.
+* Ein TigerText-Abonnement, für das einmaliges Anmelden aktiviert ist.
 
 > [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 > 
 > 
 
-To test the steps in this tutorial, you should follow these recommendations:
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* You should not use your production environment, unless this is necessary.
-* If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment.
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
 
-The scenario outlined in this tutorial consists of two main building blocks:
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Adding TigerText from the gallery
-2. Configuring and testing Azure AD single sign-on
+1. Hinzufügen von TigerText aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-tigertext-from-the-gallery"></a>Adding TigerText from the gallery
-To configure the integration of TigerText into Azure AD, you need to add TigerText from the gallery to your list of managed SaaS apps.
+## <a name="adding-tigertext-from-the-gallery"></a>Hinzufügen von TigerText aus dem Katalog
+Zum Konfigurieren der Integration von TigerText in Azure AD müssen Sie TigerText über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**To add TigerText from the gallery, perform the following steps:**
+**Um TigerText aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
     ![Active Directory][1]
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Applications][2]
-4. Click **Add** at the bottom of the page.
+    ![Anwendungen][2]
+4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Applications][3]
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+    ![Anwendungen][3]
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Applications][4]
-6. In the search box, type **TigerText**.
+    ![Anwendungen][4]
+6. Geben Sie im Suchfeld den Suchbegriff **TigerText** ein.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_01.png)
-7. In the results pane, select **TigerText**, and then click **Complete** to add the application.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_01.png)
+7. Wählen Sie im Ergebnisbereich **TigerText** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with TigerText based on a test user called "Britta Simon".
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei TigerText mithilfe eines Testbenutzers namens Britta Simon.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in TigerText is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in TigerText needs to be established.
+Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in TigerText als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TigerText muss eine Linkbeziehung eingerichtet werden.
 
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in TigerText.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in TigerText zuweisen.
 
-To configure and test Azure AD single sign-on with TigerText, you need to complete the following building blocks:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei TigerText müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a TigerText test user](#creating-a-tigertext-test-user)** - to have a counterpart of Britta Simon in TigerText that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines TigerText-Testbenutzers](#creating-a-tigertext-test-user)**, um eine Entsprechung von Britta Simon in TigerText zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
-In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your TigerText application.
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer TigerText-Anwendung.
 
-**To configure Azure AD single sign-on with TigerText, perform the following steps:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TigerText die folgenden Schritte aus:**
 
-1. In the classic portal, on the **TigerText** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **TigerText** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Configure Single Sign-On][6] 
-2. On the **How would you like users to sign on to TigerText** page, select **Azure AD Single Sign-On**, and then click **Next**.
+    ![Einmaliges Anmelden konfigurieren][6] 
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei TigerText anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Configure Single Sign-On](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_03.png) 
-3. On the **Configure App Settings** dialog page, perform the following steps:
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_03.png) 
+3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![Configure Single Sign-On](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_04.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_04.png) 
    
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your TigerText application using the following pattern: `https://<your-subdomain>.region.tigertext.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei Ihrer TigerText-Anwendung verwendet wird, nach folgendem Muster ein: `https://<your-subdomain>.region.tigertext.com`.
    
-    b. In the **Identifier** textbox, type a URL using the following pattern:`https://saml-lb.tigertext.me/v1/organization/<instance Id>`
-4. On the **Configure single sign-on at TigerText** page, perform the following steps:
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://saml-lb.tigertext.me/v1/organization/<instance Id>`.
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für TigerText** die folgenden Schritte aus:
    
-    ![Configure Single Sign-On](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_05.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_05.png)
    
-    a. Click **Download metadata**, and then save the file on your computer.
+    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
-    b. Click **Next**.
-5. To get SSO configured for your application, contact TigerText support  team at [prosupport@tigertext.com](mailTo:prosupport@tigertext.com) and provide them with the following:
+    b. Klicken Sie auf **Weiter**.
+5. Wenden Sie sich unter [prosupport@tigertext.com](mailTo:prosupport@tigertext.com) an das Supportteam von TigerText, um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
    
-    • The **Downloaded metadata**
-6. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    • Die **heruntergeladenen Metadaten**
+6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
-    ![Azure AD Single Sign-On][10]
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+    ![Azure AD – einmaliges Anmelden][10]
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
-    ![Azure AD Single Sign-On][11]
+    ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-In this section, you create a test user in the classic portal called Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
-![Create Azure AD User][20]
+![Azure AD-Benutzer erstellen][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/create_aaduser_09.png) 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To display the list of users, in the menu on the top, click **Users**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/create_aaduser_09.png) 
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/create_aaduser_03.png) 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/create_aaduser_03.png) 
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/create_aaduser_04.png) 
-5. On the **Tell us about this user** dialog page, perform the following steps:  ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/create_aaduser_05.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/create_aaduser_04.png) 
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/create_aaduser_05.png) 
    
-    a. As Type Of User, select New user in your organization.
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
    
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
    
-    c. Click **Next**.
-6. On the **User Profile** dialog page, perform the following steps: ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/create_aaduser_06.png) 
+    c. Klicken Sie auf **Weiter**.
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/create_aaduser_06.png) 
    
-   a. In the **First Name** textbox, type **Britta**.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
-   b. In the **Last Name** textbox, type, **Simon**.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
    
-   c. In the **Display Name** textbox, type **Britta Simon**.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
    
-   d. In the **Role** list, select **User**.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
    
-   e. Click **Next**.
-7. On the **Get temporary password** dialog page, click **create**.
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/create_aaduser_07.png) 
-8. On the **Get temporary password** dialog page, perform the following steps:
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-tigertext-tutorial/create_aaduser_08.png) 
-   
-    a. Write down the value of the **New Password**.
-   
-    b. Click **Complete**.   
+    e. Klicken Sie auf **Weiter**.
 
-### <a name="creating-an-tigertext-test-user"></a>Creating an TigerText test user
-In this section, you create a user called Britta Simon in TigerText. Please reach out to TigerText support team at [prosupport@tigertext.com](mailTo:prosupport@tigertext.com) to add the users in the TigerText platform.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-In this section, you enable Britta Simon to use Azure single sign-on by granting her access to TigerText.
-
-![Assign User][200] 
-
-**To assign Britta Simon to TigerText, perform the following steps:**
-
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
-    ![Assign User][201] 
-2. In the applications list, select **TigerText**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/create_aaduser_07.png) 
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Configure Single Sign-On](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_50.png) 
-3. In the menu on the top, click **Users**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tigertext-tutorial/create_aaduser_08.png) 
    
-    ![Assign User][203]
-4. In the Users list, select **Britta Simon**.
-5. In the toolbar on the bottom, click **Assign**.
+    a. Notieren Sie den Wert von **Neues Kennwort**.
    
-    ![Assign User][205]
+    b. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+### <a name="creating-an-tigertext-test-user"></a>Erstellen eines TigerText-Testbenutzers
+In diesem Abschnitt erstellen Sie in TigerText einen Benutzer namens Britta Simon. Wenden Sie sich an das TigerText Support-Team unter [prosupport@tigertext.com](mailTo:prosupport@tigertext.com), um der TigerText-Plattform Benutzer hinzuzufügen.
 
-When you click the TigerText tile in the Access Panel, you should get automatically signed-on to your TigerText application.
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf TigerText gewähren.
 
-## <a name="additional-resources"></a>Additional resources
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+![Benutzer zuweisen][200] 
+
+**Um Britta Simon zu TigerText zuzuweisen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
+   
+    ![Benutzer zuweisen][201] 
+2. Wählen Sie in der Anwendungsliste den Eintrag **TigerText** aus.
+   
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_50.png) 
+3. Klicken Sie im oberen Menü auf **Benutzer**.
+   
+    ![Benutzer zuweisen][203]
+4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+   
+    ![Benutzer zuweisen][205]
+
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „TigerText“ klicken, sollten Sie automatisch bei Ihrer TigerText-Anwendung angemeldet werden.
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -223,6 +230,6 @@ When you click the TigerText tile in the Access Panel, you should get automatica
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

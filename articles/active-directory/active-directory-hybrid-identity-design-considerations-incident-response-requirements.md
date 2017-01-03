@@ -1,13 +1,12 @@
-
 ---
-title: Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Bestimmen der Anforderungen an Reaktionen auf Vorfälle | Microsoft Docs
-description: Ermitteln Sie für die Hybrid-Identitätslösung die Funktionen für Überwachung und Meldung, die von der IT-Abteilung genutzt werden können, um Maßnahmen zur Identifizierung und Minimierung einer potenziellen Bedrohung zu ergreifen.
-documentationcenter: ''
+title: "Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Bestimmen der Anforderungen an Reaktionen auf Vorfälle | Microsoft-Dokumentation"
+description: "Ermitteln Sie für die Hybrid-Identitätslösung die Funktionen für Überwachung und Meldung, die von der IT-Abteilung genutzt werden können, um Maßnahmen zur Identifizierung und Minimierung einer potenziellen Bedrohung zu ergreifen."
+documentationcenter: 
 services: active-directory
 author: billmath
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2016
 ms.author: billmath
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: bc8e3b76aad18e8d7a73de8bc12e6527e415035d
+
 
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Bestimmen der Anforderungen an Reaktionen auf Vorfälle für Ihre Hybrid-Identitätslösung
@@ -63,6 +66,9 @@ Während der Phase der Schadensbegrenzung und Risikominderung ist es wichtig, di
 ## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

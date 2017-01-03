@@ -1,5 +1,5 @@
 ---
-title: "# Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte | Microsoft Docs"
+title: "# Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte | Microsoft-Dokumentationcs"
 description: "Schritte zum Konfigurieren der in eine Windows 7-Domäne eingebundene Geräte für die automatische Registrierung bei Azure AD. Und Schritte zum Bereitstellen des Geräteregistrierungs-Softwarepakets für Ihre in eine Domäne eingebundenen Windows 7-Geräte mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager."
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: MarkVi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2bc945283ca99dc91ae7e824606886a5389f20a6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e31a22237fb6b715c1d5c24d75f645edfbeb7c9e
 
 
 ---
@@ -48,7 +48,7 @@ In der folgenden Abbildung ist der schrittweise Vorgang für die automatische Ge
 2. Der geplante Task "Arbeitsbereichverknüpfung" wird ausgeführt.
 3. Der Benutzer wird im Hintergrund bei AD FS mithilfe der integrierten Windows-Authentifizierung authentifiziert.
 4. Der Windows 7-PC wird für den Benutzer in Azure AD registriert.
-5. Ein Geräteobjekt und Zertifikat werden in Azure AD erstellt. Das Objekt stellt benutzer@gerät dar.
+5. Ein Geräteobjekt und Zertifikat werden in Azure AD erstellt. Das Objekt stellt user@device dar.
 6. Das Arbeitsbereichverknüpfungs-Zertifikat wird auf dem Computer gespeichert.
 
 ## <a name="unregistering-your-windows-7-domain-joined-devices"></a>Aufheben der Registrierung Ihrer in eine Domäne eingebundenen Windows 7-Geräte
@@ -75,6 +75,6 @@ Das Windows-Ereignisprotokoll auf dem Windows 7-Computer zeigt Meldungen im Zusa
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

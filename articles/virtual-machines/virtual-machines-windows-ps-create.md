@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/21/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: edeee13457c1098eb1b44efaa97e9a84d29e88e7
-ms.openlocfilehash: 12903dc79ac6349da9f4897cdb0db5cb62f67b22
+ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
+ms.openlocfilehash: 819b40302f158d1d6224878c164cf7ff71947887
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Artikel ist beschrieben, wie Sie einen virtuellen Azure-Computer, der 
 Alle in diesem Artikel beschriebenen Schritte sind erforderlich, um einen virtuellen Computer zu erstellen. Die Durchführung dauert etwa 30 Minuten. Ersetzen Sie die Beispielparameterwerte in den Befehlen durch Namen, die für Ihre Umgebung sinnvoll sind.
 
 ## <a name="step-1-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
-Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
+Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
 
 ## <a name="step-2-create-a-resource-group"></a>Schritt 2: Erstellen einer Ressourcengruppe
 Alle Ressourcen müssen in einer Ressourcengruppe enthalten sein. Daher erstellen wir zuerst eine Ressourcengruppe.  
@@ -159,6 +159,6 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

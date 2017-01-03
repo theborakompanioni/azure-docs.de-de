@@ -1,12 +1,12 @@
 ---
-title: Konfigurieren von sicherem LDAP (LDAPS) in den Azure AD Domain Services | Microsoft Docs
-description: Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
+title: Konfigurieren von sicherem LDAP (LDAPS) in Azure AD Domain Services | Microsoft Docs
+description: "Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 53cf596d1c1df77872696f2a55363cf3a83d5efe
+
 
 ---
-# <a name="configure-secure-ldap-(ldaps)-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
+# <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
 Dieser Artikel zeigt, wie Sie sicheres LDAP (LDAPS, Secure Lightweight Directory Access Protocol) für eine durch Azure AD Domain Services verwaltete Domäne aktivieren können. Sicheres LDAP ist auch bekannt als „Lightweight Directory Access Protocol (LDAP) über Secure Sockets Layer (SSL)/Transport Layer Security (TLS)“.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -36,8 +40,8 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 Erwerben Sie ein gültiges Zertifikat, das den folgenden Richtlinien entspricht, bevor Sie sicheres LDAP aktivieren. Es kommt zu Fehlern, wenn Sie beim Aktivieren von sicherem LDAP für Ihre verwaltete Domäne ein ungültiges oder falsches Zertifikat verwenden.
 
 1. **Vertrauenswürdiger Aussteller** : Das Zertifikat muss von einer Zertifizierungsstelle ausgestellt sein, der die Computer vertrauen, die über sicheres LDAP eine Verbindung mit der Domäne herstellen. Hierbei kann es sich um die Unternehmenszertifizierungsstelle Ihrer Organisation oder um eine öffentliche Zertifizierungsstelle handeln, der diese Computer vertrauen.
-2. **Lebensdauer** : Das Zertifikat muss mindestens für die nächsten 3 bis 6 Monate gültig sein. Der Zugriff auf Ihre verwaltete Domäne über sicheres LDAP wird unterbrochen, wenn das Zertifikat abläuft.
-3. **Antragstellername**: Als Name des Antragstellers muss im Zertifikat für die verwaltete Domäne ein Platzhalter angegeben werden. Wenn Ihre Domäne z. B. „contoso100.com“ heißt, muss als Antragstellername im Zertifikat „*.contoso100.com“ angegeben sein. Legen Sie als DNS-Name (bzw. alternativen Antragstellernamen) diesen Platzhalternamen fest.
+2. **Lebensdauer** : Das Zertifikat muss mindestens für die nächsten 3 bis 6 Monate gültig sein. Der Zugriff auf Ihre verwaltete Domäne über sicheres LDAP wird unterbrochen, wenn das Zertifikat abläuft.
+3. **Antragstellername**: Als Name des Antragstellers muss im Zertifikat für die verwaltete Domäne ein Platzhalter angegeben werden. Wenn Ihre Domäne z. B. „contoso100.com“ heißt, muss als Antragstellername im Zertifikat „*.contoso100.com“ angegeben sein. Legen Sie als DNS-Name (bzw. alternativen Antragstellernamen) diesen Platzhalternamen fest.
 4. **Schlüsselverwendung** : Das Zertifikat muss für die folgenden Verwendungszwecke konfiguriert sein: digitale Signaturen und Schlüsselverschlüsselung.
 5. **Zertifikatzweck** : Das Zertifikat muss für die SSL-Serverauthentifizierung gültig sein.
 
@@ -49,7 +53,7 @@ Zuerst müssen Sie ein Zertifikat erwerben, das Sie zum Zugriff auf die verwalte
 * Erwerben Sie ein SSL-Zertifikat von einer Zertifizierungsstelle. Hierbei kann es sich um die Unternehmenszertifizierungsstelle Ihrer Organisation oder um eine öffentliche Zertifizierungsstelle handeln.
 * Erstellen eines selbstsignierten Zertifikats
 
-### <a name="option-a-(recommended)---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Option A (empfohlen): Erwerben eines Zertifikats für sicheres LDAP von einer Zertifizierungsstelle
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Option A (empfohlen): Erwerben eines Zertifikats für sicheres LDAP von einer Zertifizierungsstelle
 Wenn Ihre Organisation eine unternehmensinterne Public Key-Infrastruktur (PKI) unterhält, müssen Sie das Zertifikat über die Unternehmenszertifizierungsstelle (ZS) für Ihre Organisation erwerben. Wenn Ihre Organisation ihre Zertifikate von einer öffentlichen Zertifizierungsstelle erhält, müssen Sie das Zertifikat für sicheres LDAP bei dieser öffentlichen Zertifizierungsstelle erwerben.
 
 Stellen Sie beim Anfordern des Zertifikats sicher, dass alle Anforderungen erfüllt werden, die unter [Anforderungen an ein Zertifikat für sicheres LDAP](#requirements-for-the-secure-ldap-certificate)aufgeführt sind.
@@ -59,7 +63,7 @@ Stellen Sie beim Anfordern des Zertifikats sicher, dass alle Anforderungen erfü
 > 
 > 
 
-### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Option B: Erstellen eines selbstsignierten Zertifikats für sicheres LDAP
+### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Option B: Erstellen eines selbstsignierten Zertifikats für sicheres LDAP
 Sie können sich unter folgenden Umständen für das Erstellen eines selbstsignierten Zertifikats für sicheres LDAP entscheiden:
 
 * Die Zertifikate in Ihrer Organisation werden nicht von einer Unternehmenszertifizierungsstelle ausgestellt, oder
@@ -73,13 +77,13 @@ Sie können sich unter folgenden Umständen für das Erstellen eines selbstsigni
 
     New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
 
-Ersetzen Sie im vorstehenden Beispiel „contoso100.com“ durch den DNS-Domänennamen der Domäne, die durch die Azure AD Domain Services verwaltet wird.
+Ersetzen Sie im vorstehenden Beispiel „contoso100.com“ durch den DNS-Domänennamen der Domäne, die durch die Azure AD Domain Services verwaltet wird.
 
-![Auswählen des Azure AD-Verzeichnisses](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
+![Auswählen des Azure AD-Verzeichnisses](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 
 Die neu erstellten selbstsignierten Zertifikate werden im Zertifikatspeicher des lokalen Computers platziert.
 
-## <a name="task-2---export-the-secure-ldap-certificate-to-a-.pfx-file"></a>Aufgabe 2: Exportieren der Zertifikate für sicheres LDAP in eine PFX-Datei
+## <a name="task-2---export-the-secure-ldap-certificate-to-a-pfx-file"></a>Aufgabe 2: Exportieren der Zertifikate für sicheres LDAP in eine PFX-Datei
 Vergewissern Sie sich vor dem Ausführen dieser Aufgabe, dass Sie das Zertifikat für sicheres LDAP von Ihrer Unternehmenszertifizierungsstelle oder von einer öffentlichen Zertifizierungsstelle erhalten oder ein selbstsigniertes Zertifikat erstellt haben.
 
 Gehen Sie folgendermaßen vor, um das Zertifikat für sicheres LDAP (LDAPS) in eine PFX-Datei zu exportieren.
@@ -149,9 +153,9 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 
 1. Navigieren Sie zum **[klassischen Azure-Portal](https://manage.windowsazure.com)**.
 2. Wählen Sie den Knoten **Active Directory** im linken Bereich aus.
-3. Wählen Sie das Azure AD-Verzeichnis aus (auch als „Mandant“ bezeichnet), für das Sie die Azure AD Domain Services aktiviert haben.
+3. Wählen Sie das Azure AD-Verzeichnis aus (auch als „Mandant“ bezeichnet), für das Sie die Azure AD Domain Services aktiviert haben.
    
-    ![Auswählen des Azure AD-Verzeichnisses](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
+    ![Auswählen des Azure AD-Verzeichnisses](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
 4. Klicken Sie auf die Registerkarte **Configure** .
    
     ![Registerkarte „Konfigurieren“ des Verzeichnisses](./media/active-directory-domain-services-getting-started/configure-tab.png)
@@ -169,7 +173,7 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
     ![Sicheres LDAP – Status „Ausstehend“](./media/active-directory-domain-services-admin-guide/secure-ldap-pending-state.png)
    
    > [!NOTE]
-   > Es dauert ungefähr 10 bis 15 Minuten, bis sicheres LDAP für die verwaltete Domäne aktiviert ist. Wenn das bereitgestellte Zertifikat für sicheres LDAP nicht den erforderlichen Kriterien entspricht, wird LDAPS nicht für Ihr Verzeichnis aktiviert, und Sie sehen einen Fehler. Mögliche Fehlerursachen sind z.B. ein falscher Domänenname, ein abgelaufenes oder bald ablaufendes Zertifikat usw.
+   > Es dauert ungefähr 10 bis 15 Minuten, bis sicheres LDAP für die verwaltete Domäne aktiviert ist. Wenn das bereitgestellte Zertifikat für sicheres LDAP nicht den erforderlichen Kriterien entspricht, wird LDAPS nicht für Ihr Verzeichnis aktiviert, und Sie sehen einen Fehler. Mögliche Fehlerursachen sind z.B. ein falscher Domänenname, ein abgelaufenes oder bald ablaufendes Zertifikat usw.
    > 
    > 
 9. Wenn sicheres LDAP für Ihre verwaltete Domäne erfolgreich aktiviert wurde, wird die Meldung **Ausstehend** nicht mehr angezeigt. Sie sehen dann den Fingerabdruck des Zertifikats.
@@ -178,7 +182,7 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 
 <br>
 
-## <a name="task-4---enable-secure-ldap-access-over-the-internet"></a>Aufgabe 4: Aktivieren des Zugriffs über sicheres LDAP und eine Internetverbindung
+## <a name="task-4---enable-secure-ldap-access-over-the-internet"></a>Aufgabe 4: Aktivieren des Zugriffs über sicheres LDAP und eine Internetverbindung
 **Optionale Aufgabe** : Wenn Sie nicht über eine Internetverbindung mit LDAPS auf die verwaltete Domäne zugreifen möchten, überspringen Sie diese Konfigurationsaufgabe.
 
 Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](#task-3---enable-secure-ldap-for-the-managed-domain)beschriebenen Schritte vollständig ausgeführt haben.
@@ -193,7 +197,7 @@ Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](#task-3---enabl
     ![Sicheres LDAP – Status „Ausstehend“](./media/active-directory-domain-services-admin-guide/secure-ldap-enable-internet-access-pending-state.png)
    
    > [!NOTE]
-   > Es dauert ungefähr 10 Minuten, bis der Internetzugriff über sicheres LDAP auf die verwaltete Domäne aktiviert ist.
+   > Es dauert ungefähr 10 Minuten, bis der Internetzugriff über sicheres LDAP auf die verwaltete Domäne aktiviert ist.
    > 
    > 
 4. Wenn der Zugriff auf die verwaltete Domäne über eine Internetverbindung und sicheres LDAP erfolgreich aktiviert wurde, wird die Meldung **Ausstehend** nicht mehr angezeigt. Im Feld **EXTERNE IP-ADRESSE FÜR LDAPS-ZUGRIFF**sehen Sie dann die externe IP-Adresse, mit der über LDAPS auf Ihr Verzeichnis zugegriffen werden kann.
@@ -202,7 +206,7 @@ Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 3](#task-3---enabl
 
 <br>
 
-## <a name="task-5---configure-dns-to-access-the-managed-domain-from-the-internet"></a>Aufgabe 5: Konfigurieren von DNS für den Zugriff auf die verwaltete Domäne über das Internet
+## <a name="task-5---configure-dns-to-access-the-managed-domain-from-the-internet"></a>Aufgabe 5: Konfigurieren von DNS für den Zugriff auf die verwaltete Domäne über das Internet
 **Optionale Aufgabe** : Wenn Sie nicht über eine Internetverbindung mit LDAPS auf die verwaltete Domäne zugreifen möchten, überspringen Sie diese Konfigurationsaufgabe.
 
 Vor dem Ausführen dieser Aufgabe müssen Sie die in [Aufgabe 4](#task-4---enable-secure-ldap-access-over-the-internet)beschriebenen Schritte vollständig ausgeführt haben.
@@ -225,6 +229,9 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Verwalten einer durch die Azure AD Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

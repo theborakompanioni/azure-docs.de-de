@@ -1,12 +1,12 @@
 ---
-title: Dienst-zu-Dienst-Authentifizierung für Azure AD mit OAuth 2.0 | Microsoft Docs
-description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen verwenden.
+title: "Dienst-zu-Dienst-Authentifizierung für Azure AD mit OAuth 2.0 | Microsoft Docs"
+description: "In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Fluss zum Gewähren von OAuth 2.0-Clientanmeldeinformationen verwenden."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: 3fdd561bba898b0e790f69a82ed731d7fd87d8c8
+ms.openlocfilehash: 7cf9fe659a91816e42394c1377232e122fe924a6
+
 
 ---
 # <a name="service-to-service-calls-using-client-credentials"></a>Verwenden von Clientanmeldeinformationen für Dienst-zu-Dienst-Aufrufe
@@ -30,7 +34,7 @@ Im folgenden Diagramm wird veranschaulicht, wie der Fluss zur Gewährung von Cli
 4. Die Daten aus der geschützten Ressource werden an die Webanwendung zurückgegeben.
 
 ## <a name="register-the-services-in-azure-ad"></a>Registrieren der Dienste in Azure AD
-Registrieren Sie sowohl den aufrufenden Dienst als auch den empfangenden Dienst in Azure Active Directory (Azure AD). Eine ausführliche Anleitung finden Sie unter [Hinzufügen, Aktualisieren und Entfernen einer App](active-directory-integrating-applications.md#BKMK_Native)
+Registrieren Sie sowohl den aufrufenden Dienst als auch den empfangenden Dienst in Azure Active Directory (Azure AD). Ausführlichere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md).
 
 ## <a name="request-an-access-token"></a>Anfordern eines Zugriffstokens
 Verwenden Sie zum Anfordern eines Zugriffstokens ein HTTP POST-Element für den mandantenspezifischen Azure AD-Endpunkt.
@@ -44,7 +48,7 @@ Eine Dienst-zu-Dienst-Zugriffstokenanforderung enthält die folgenden Parameter:
 
 | Parameter |  | Beschreibung |
 | --- | --- | --- |
-| response_type |erforderlich |Gibt den angeforderten Antworttyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
+| grant_type |erforderlich |Gibt den angeforderten Antworttyp an. In einem Fluss zur Gewährung von Clientanmeldeinformationen muss der Wert **client_credentials** lauten. |
 | client_id |erforderlich |Gibt die Azure AD-Client-ID des aufrufenden Webdiensts an. Klicken Sie zum Ermitteln der Client-ID der aufrufenden Anwendung im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
 | client_secret |erforderlich |Geben Sie einen Schlüssel ein, der für den aufrufenden Webdienst in Azure AD registriert ist. Klicken Sie zum Erstellen eines Schlüssels im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
 | resource |erforderlich |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
@@ -85,8 +89,10 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für 
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-* [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md)
+* [OAuth 2.0 in Azure AD](active-directory-protocols-oauth-code.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO4-->
 
 

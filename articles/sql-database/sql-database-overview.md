@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 1db24abb38ff28dd3535f527ef95a84abac5ea9c
-ms.openlocfilehash: 6f479beb6caf8a6dfccc0b13e6926bd5e47fb547
+ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
+ms.openlocfilehash: 3d45ec5a6636de4213c6c02dca0e5288ec3aa0e3
 
 
 ---
@@ -28,7 +28,7 @@ Dieses Thema enthält eine Übersicht über Azure SQL-Datenbanken. Weitere Infor
 Jede Datenbank in Azure SQL-Datenbank ist einem logischen Server zugeordnet. Die Datenbank kann Folgendes sein:
 
 - Eine einzelne Datenbank mit ihrem [eigenen Ressourcensatz](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTUs)
-- Teil eines [Pools von Datenbanken](sql-database-elastic-pool.md), der [einen Ressourcensatz teilt](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTUs)
+- Teil eines [elastischen Pools](sql-database-elastic-pool.md) mit [gemeinsamer Nutzung eines Ressourcensatzes](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTUs)
 - Teil eines [skalierten Satzes von Sharddatenbanken](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), die entweder einfache oder in einem Pool zusammengefasste Datenbanken sein können
 - Teil von Datenbanksätzen, die an einem [mehrinstanzfähigen SaaS-Entwurfsmuster](sql-database-design-patterns-multi-tenancy-saas-applications.md) teilnehmen, und deren Datenbanken entweder einzelne oder in einem Pool zusammengefasste Datenbanken (oder beides) sein können 
 
@@ -71,6 +71,6 @@ Sie können logische Azure SQL-Datenbankserver mit verschiedenen Methoden verwal
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

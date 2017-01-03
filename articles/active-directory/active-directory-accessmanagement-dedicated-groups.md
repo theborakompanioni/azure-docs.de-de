@@ -1,22 +1,26 @@
 ---
 title: Dedizierte Gruppen in Azure Active Directory | Microsoft Docs
-description: Übersicht über die Funktionsweise dedizierter Gruppen in Azure Active Directory und ihrer Erstellung.
+description: "Übersicht über die Funktionsweise dedizierter Gruppen in Azure Active Directory und ihrer Erstellung."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 86158909-083a-41fe-8090-955e96ad1865
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2016
+ms.date: 11/01/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3cacf9edde4ed2cabf996e390bb1e00113bc47cb
+
 
 ---
-# Dedizierte Gruppen in Azure Active Directory
+# <a name="dedicated-groups-in-azure-active-directory"></a>Dedizierte Gruppen in Azure Active Directory
 Die Funktion „dedizierte Gruppen“ erstellt und befüllt in Azure Active Directory (Azure AD) die Mitgliedschaft für vordefinierte Azure AD-Gruppen. Mitglieder dedizierter Gruppen können weder über das klassische Azure-Portal, noch mit Windows PowerShell-Cmdlets oder programmgesteuert hinzugefügt oder entfernt werden.
 
 > [!NOTE]
@@ -29,11 +33,11 @@ Die Funktion „dedizierte Gruppen“ erstellt und befüllt in Azure Active Dire
 
 **Dedizierte Gruppen aktivieren**
 
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **Active Directory**, und öffnen Sie dann das Verzeichnis Ihrer Organisation.
-2. Wählen Sie die Registerkarte **Gruppen**, und öffnen Sie dann die Gruppe, die Sie bearbeiten möchten.
-3. Wählen Sie die Registerkarte **Konfigurieren**, und legen Sie dann **Zugeordnete Gruppen aktivieren** auf **Ja** fest.
+1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com)die Option **Active Directory**, und öffnen Sie dann das Verzeichnis Ihrer Organisation.
+2. Wählen Sie die Registerkarte **Gruppen** aus, und öffnen Sie dann die Gruppe, die Sie bearbeiten möchten.
+3. Wählen Sie die Registerkarte **Konfigurieren** aus, und legen Sie dann **Zugeordnete Gruppen aktivieren** auf **Ja** fest.
 
-Sobald der Schalter "Zugeordnete Gruppen aktivieren" auf **Ja** festgelegt ist, können Sie das Verzeichnis für das automatische Erstellen der dedizierten Gruppe **"Alle Benutzer" aktivieren**, indem Sie den Schalter "Gruppe 'Alle Benutzer' aktivieren" auf** Ja** festlegen. Sie können den Namen dieser dedizierten Gruppe bearbeiten, indem Sie Text in das Feld **Anzeigename für Gruppe "Alle Benutzer "** eingeben.
+Sobald der Schalter „Zugeordnete Gruppen aktivieren“ auf **Ja** festgelegt ist, können Sie das Verzeichnis zum automatischen Erstellen der dedizierten Gruppe „Alle Benutzer“ aktiveren, indem Sie den Schalter **Gruppe " Alle Benutzer" aktivieren** auf **Ja** festlegen. Sie können den Namen dieser dedizierten Gruppe bearbeiten, indem Sie Text in das Feld **Anzeigename für Gruppe  "Alle Benutzer "** eingeben.
 
 Mithilfe der Gruppe „Alle Benutzer“ können allen Benutzern in Ihrem Verzeichnis die gleichen Berechtigungen zugewiesen werden. Beispielsweise können Sie allen Benutzern in Ihrem Verzeichnis Zugriff auf eine SaaS-Anwendung gewähren, indem Sie der dedizierten Gruppe "Alle Benutzer" Zugriff auf diese Anwendung zuweisen.
 
@@ -54,4 +58,9 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Was ist Azure Active Directory?](active-directory-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Jan17_HO1-->
+
+

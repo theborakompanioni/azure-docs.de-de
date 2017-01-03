@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Google Apps | Microsoft Docs'
-description: Erfahren Sie, wie Sie Google Apps mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und mehr zu aktivieren!
+title: 'Tutorial: Azure Active Directory-Integration mit Google Apps | Microsoft-Dokumentation'
+description: "Erfahren Sie, wie Sie Google Apps mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und mehr zu aktivieren!"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2016
 ms.author: asmalser-msft
+translationtype: Human Translation
+ms.sourcegitcommit: 0edd2d9b2d71d95260aa122545930aab64612106
+ms.openlocfilehash: cc7348b933b1ed4a79bf282c1d9a8e073b1f3ba4
+
 
 ---
-# <a name="tutorial:-how-to-integrate-google-apps-with-azure-active-directory"></a>Tutorial: Integrieren von Google Apps in Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-google-apps"></a>Tutorial: Azure Active Directory-Integration mit Google Apps
 In diesem Tutorial erfahren Sie, wie Sie Ihre Google Apps-Umgebung mit Ihrem Azure Active Directory (Azure AD) verbinden. Sie lernen, wie Sie die einmalige Anmeldung bei Google Apps konfigurieren, die automatisierte Benutzerbereitstellung aktivieren und Benutzern den Zugriff auf Google Apps zuweisen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -42,9 +46,9 @@ So aktivieren Sie das einmalige Anmelden bei Google Apps in zwei Minuten
     A: Nein. Wenn Sie einmaliges Anmelden aktivieren, müssen sich all Ihre Google Apps-Benutzer sofort mit ihren Azure AD-Anmeldeinformationen authentifizieren. Da Google Apps die Verwendung mehrerer Identitätsanbieter nicht unterstützt, kann entweder Azure AD oder Google als Identitätsanbieter für Ihre Google Apps-Umgebung dienen – aber nicht beide gleichzeitig.
 4. **F: Wenn ein Benutzer über Windows angemeldet ist, wird er dann automatisch bei Google Apps authentifiziert, ohne dass er zur Eingabe eines Kennworts aufgefordert wird?**
    
-    A: Es gibt zwei Optionen zum Aktivieren dieses Szenarios. Benutzer können sich über die [Azure Active Directory-Einbindung](active-directory-azureadjoin-overview.md)bei Windows 10-Geräten anmelden. Alternativ dazu können Benutzer sich bei Windows-Geräten anmelden, die über eine Domäne mit einem lokalen Active Directory verbunden sind, das für einmaliges Anmelden bei Azure AD über eine [AD FS](active-directory-aadconnect-user-signin.md) -Bereitstellung (Active Directory-Verbunddienste) aktiviert wurde. Für beide Optionen müssen Sie das Tutorial unten befolgen, um einmaliges Anmelden zwischen Azure AD und Google Apps zu aktivieren.
+    A: Es gibt zwei Optionen zum Aktivieren dieses Szenarios. Benutzer können sich über die [Azure Active Directory-Einbindung](active-directory-azureadjoin-overview.md)bei Windows 10-Geräten anmelden. Alternativ dazu können Benutzer sich bei Windows-Geräten anmelden, die über eine Domäne mit einem lokalen Active Directory verbunden sind, das für einmaliges Anmelden bei Azure AD über eine [AD FS](active-directory-aadconnect-user-signin.md) -Bereitstellung (Active Directory-Verbunddienste) aktiviert wurde. Für beide Optionen müssen Sie das Tutorial unten befolgen, um einmaliges Anmelden zwischen Azure AD und Google Apps zu aktivieren.
 
-## <a name="step-1:-add-google-apps-to-your-directory"></a>Schritt 1: Hinzufügen von Google Apps zu Ihrem Verzeichnis
+## <a name="step-1-add-google-apps-to-your-directory"></a>Schritt 1: Hinzufügen von Google Apps zu Ihrem Verzeichnis
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com)auf **Active Directory**.
    
     ![Wählen Sie im linken Navigationsbereich "Active Directory".][0]
@@ -58,14 +62,14 @@ So aktivieren Sie das einmalige Anmelden bei Google Apps in zwei Minuten
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
     ![Klicken Sie auf "Anwendung aus dem Katalog hinzufügen".][3]
-6. Geben Sie im **Suchfeld** den Suchbegriff **Google Apps** ein. Wählen Sie in den Ergebnissen die Option **Google Apps** aus, und klicken Sie auf **Fertig stellen**, um die Anwendung hinzufügen.
+6. Geben Sie im **Suchfeld** den Suchbegriff **Google Apps** ein. Wählen Sie in den Ergebnissen die Option **Google Apps** aus, und klicken Sie auf **Fertig stellen**, um die Anwendung hinzuzufügen.
    
     ![Fügen Sie Google Apps hinzu.][4]
 7. Sie sollten jetzt die Seite "Schnellstart" für Google Apps sehen:
    
     ![Seite "Schnellstart" für Google Apps in Azure AD][5]
 
-## <a name="step-2:-enable-single-sign-on"></a>Schritt 2: Aktivieren der einmaligen Anmeldung
+## <a name="step-2-enable-single-sign-on"></a>Schritt 2: Aktivieren der einmaligen Anmeldung
 1. Klicken Sie in Azure AD auf der Seite "Schnellstart" für Google Apps auf die Schaltfläche **Einmaliges Anmelden konfigurieren** .
    
     ![Schaltfläche zum Konfigurieren der einmaligen Anmeldung][6]
@@ -97,7 +101,7 @@ So aktivieren Sie das einmalige Anmelden bei Google Apps in zwei Minuten
    ![Geben Sie Ihre E-Mail-Adresse ein.][14]
 8. Klicken Sie auf **Fertig stellen** , um das Dialogfeld zu schließen. Weiter unten im Abschnitt [Zuweisen von Benutzern zu Google Apps](#step-4-assign-users-to-google-apps)erfahren Sie, wie Sie Ihre Konfiguration testen können.
 
-## <a name="optional-step:-manually-configure-single-sign-on"></a>Optionaler Schritt: Manuelles Konfigurieren des einmaligen Anmeldens
+## <a name="optional-step-manually-configure-single-sign-on"></a>Optionaler Schritt: Manuelles Konfigurieren des einmaligen Anmeldens
 Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie die folgenden Schritte aus:
 
 1. Klicken Sie in Azure AD auf der Seite "Schnellstart" für Google Apps auf die Schaltfläche **Einmaliges Anmelden konfigurieren** .
@@ -145,7 +149,7 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
     ![Geben Sie Ihre E-Mail-Adresse ein.][14]
 12. Klicken Sie auf **Fertig stellen** , um das Dialogfeld zu schließen. Weiter unten im Abschnitt [Zuweisen von Benutzern zu Google Apps](#step-4-assign-users-to-google-apps)erfahren Sie, wie Sie Ihre Konfiguration testen können.
 
-## <a name="step-3:-enable-automated-user-provisioning"></a>Schritt 3: Aktivieren der automatisierten Benutzerbereitstellung
+## <a name="step-3-enable-automated-user-provisioning"></a>Schritt 3: Aktivieren der automatisierten Benutzerbereitstellung
 > [!NOTE]
 > Eine weitere Option für die Automatisierung der Benutzerbereitstellung für Google Apps ist die Verwendung von [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en) , um Ihre lokalen Active Directory-Identitäten für Google Apps bereitzustellen. Im Gegensatz dazu stellt die Lösung in diesem Tutorial Ihre Azure Active Directory-Benutzer (Cloud) und E-Mail-aktivierten Gruppen für Google Apps bereit.
 > 
@@ -221,7 +225,7 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
     ![Überprüfen Sie die Berechtigungen.][28]
 12. Klicken Sie auf **Fertig stellen** , um das Dialogfeld zu schließen.
 
-## <a name="step-4:-assign-users-to-google-apps"></a>Schritt 4: Zuweisen von Benutzern zu Google Apps
+## <a name="step-4-assign-users-to-google-apps"></a>Schritt 4: Zuweisen von Benutzern zu Google Apps
 1. Um Ihre Konfiguration zu testen, beginnen Sie mit dem Erstellen eines neuen Testkontos im Verzeichnis.
 2. Klicken Sie auf der Seite "Schnellstart" für Google Apps auf die Schaltfläche **Benutzer zuweisen** .
    
@@ -230,7 +234,7 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
    
    * Wenn Sie die automatisierte Benutzerbereitstellung nicht aktiviert haben, werden Sie aufgefordert, Folgendes zu bestätigen:
      
-        ![Confirm the assignment.][30]
+        ![Zuweisung bestätigen][30]
    * Wenn Sie die automatisierte Benutzerbereitstellung aktiviert haben, werden Sie aufgefordert, zu definieren, welche Art von Rolle der Benutzer in Google Apps erhalten soll. Neu bereitgestellte Benutzer sollten in Ihrer Google Apps-Umgebung nach einigen Minuten angezeigt werden.
 4. Um Ihre Einstellungen für einmaliges Anmelden zu testen, öffnen Sie den Zugriffsbereich unter [https://myapps.microsoft.com](https://myapps.microsoft.com/), melden Sie sich bei Ihrem Testkonto an, und klicken Sie auf **Google Apps**.
 
@@ -272,6 +276,6 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 
