@@ -20,7 +20,7 @@ ms.openlocfilehash: dbb749b056c36f16e921933fb8345211e3eaa697
 
 
 ---
-# <a name="virtual-network-business-continuity"></a>Virtuelles Netzwerk: Geschäftskontinuität
+# <a name="virtual-network--business-continuity"></a>Virtuelles Netzwerk: Geschäftskontinuität
 ## <a name="overview"></a>Übersicht
 Ein virtuelles Netzwerk (VNet) ist eine logische Darstellung Ihres Netzwerks in der Cloud. Es ermöglicht Ihnen das Definieren Ihres eigenen privaten IP-Adressraums und das Segmentieren des Netzwerks in Subnetze. VNets dienen als Vertrauensstellungsgrenze beim Hosten von Computeressourcen wie Azure Virtual Machines und Cloud Services (Web-/Workerrollen). Ein VNet ermöglicht die direkte private IP-Kommunikation zwischen den darin gehosteten Ressourcen. Ein virtuelles Netzwerk kann auch über eine der Hybridoptionen wie VPN-Gateway oder ExpressRoute mit einem lokalen Netzwerk verknüpft werden.
 

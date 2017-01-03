@@ -8,15 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: d1a46fa4-53d2-4d25-a0a7-92e8f9d70828
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 11/28/2016
-ms.author: carlrab
+ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 717d84bbfbc51912bca7c2d279a6a0603ea97107
-ms.openlocfilehash: 10dcc43035169ec399dfe93835c2d872a518170a
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: c7cb4b872723e07b720c87ecef9d9d8f136c25eb
 
 
 ---
@@ -26,12 +27,12 @@ Dieses Thema bietet eine Übersicht über die logischen Azure SQL-Datenbankserve
 ## <a name="what-is-an-azure-sql-database-logical-server"></a>Was ist ein logischer Azure SQL-Datenbankserver?
 Ein logischer Azure SQL-Datenbankserver fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken. In SQL-Datenbank ist ein Server ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene. Weitere Informationen zu logischen Azure SQL-Servern, finden Sie unter [Logical Servers (Logische Server)](sql-database-server-overview.md). 
 
-## <a name="what-is-azure-sql-database"></a>Was ist Azure SQL-Datenbank?
-Jede Datenbank in Azure SQL-Datenbank ist einem logischen Server zugeordnet. Die Datenbank kann sein:
+## <a name="what-is-an-azure-sql-database"></a>Was ist eine Azure SQL-Datenbank?
+Jede Datenbank in Azure SQL-Datenbank ist einem logischen Server zugeordnet. Die Datenbank kann Folgendes sein:
 
-- eine einzelne Datenbank mit ihrem [eigenen Ressourcensatz](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTUs)
-- Teil eines [Pool von Datenbanken](sql-database-elastic-pool.md), der [einen Ressourcensatz teilt](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTUs)
-- Teil eines [skalierten Satzes von Sharddatenbanken](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), die entweder einfache oder in einem Pool zusammengefasste Datenbanken sein können.
+- Eine einzelne Datenbank mit ihrem [eigenen Ressourcensatz](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTUs)
+- Teil eines [Pools von Datenbanken](sql-database-elastic-pool.md), der [einen Ressourcensatz teilt](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) (eDTUs)
+- Teil eines [skalierten Satzes von Sharddatenbanken](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), die entweder einfache oder in einem Pool zusammengefasste Datenbanken sein können
 - Teil von Datenbanksätzen, die an einem [mehrinstanzfähigen SaaS-Entwurfsmuster](sql-database-design-patterns-multi-tenancy-saas-applications.md) teilnehmen, und deren Datenbanken entweder einzelne oder in einem Pool zusammengefasste Datenbanken (oder beides) sein können 
 
 Weitere Informationen zu Azure SQL-Datenbanken, finden Sie unter [SQL databases (SQL-Datenbanken)](sql-database-overview.md).
@@ -68,7 +69,7 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 | Änderungsnachverfolgung | [Unterstützt](https://msdn.microsoft.com/library/bb933875.aspx) | [Unterstützt](https://msdn.microsoft.com/library/bb933875.aspx) |
 | Sortierung-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848763.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ff848763.aspx) |
 | ColumnStore-Indizes | [Unterstützt](https://msdn.microsoft.com/library/gg492088.aspx) | [Nur Premium Edition](https://msdn.microsoft.com/library/gg492088.aspx) |
-| Common Language Runtime (CLR) | [Unterstützt](https://msdn.microsoft.com/library/ms131102.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms131102.aspx) |
+| Common Language Runtime (CLR) | [Unterstützt](https://msdn.microsoft.com/library/ms131102.aspx) | Nicht unterstützt |
 | Eigenständige Datenbanken | [Unterstützt](https://msdn.microsoft.com/library/ff929071.aspx) | Integriert |
 | Enthaltene Benutzer | [Unterstützt](https://msdn.microsoft.com/library/ff929188.aspx) | [Unterstützt](sql-database-manage-logins.md#non-administrator-users) |
 | Schlüsselwörter der Sprache zur Ablaufsteuerung | [Unterstützt](https://msdn.microsoft.com/library/ms174290.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms174290.aspx) |
@@ -89,7 +90,7 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 | DML-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848766.aspx) | [Die meisten](https://msdn.microsoft.com/library/ff848766.aspx) |
 | DML-Trigger | [Unterstützt](https://msdn.microsoft.com/library/ms178110.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms178110.aspx) |
 | DMVs | [Alle](https://msdn.microsoft.com/library/ms188754.aspx) | [Einige](https://msdn.microsoft.com/library/ms188754.aspx) |
-| Elastische Datenbankpools | Nicht unterstützt | [Unterstützt](sql-database-elastic-pool.md) |
+| Elastische Pools | Nicht unterstützt | [Unterstützt](sql-database-elastic-pool.md) |
 | Elastische Aufträge | Nicht unterstützt – siehe [SQL Server-Agent](https://msdn.microsoft.com/library/ms189237.aspx) | [Unterstützt](sql-database-elastic-jobs-getting-started.md) | 
 | Elastische Abfragen | Nicht unterstützt – siehe [Datenbankübergreifende Abfragen](https://msdn.microsoft.com/library/dn584627.aspx) | [Unterstützt](sql-database-elastic-query-overview.md) |
 | Ereignisbenachrichtigungen | [Unterstützt](https://msdn.microsoft.com/library/ms186376.aspx) | [Unterstützt](sql-database-insights-alerts-portal.md) |
@@ -122,7 +123,7 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 | Sicherheitsanweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848791.aspx) | [Einige](https://msdn.microsoft.com/library/ff848791.aspx) |
 | Semantische Suche | [Unterstützt](https://msdn.microsoft.com/library/gg492075.aspx) | Nicht unterstützt |
 | Sequenznummern | [Unterstützt](https://msdn.microsoft.com/library/ff878058.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ff878058.aspx) |
-| Service Broker | [Unterstützt](https://msdn.microsoft.com/library/bb522893.aspx) | [Nur innerhalb der Datenbank](https://msdn.microsoft.com/library/bb522893.aspx) |
+| Service Broker | [Unterstützt](https://msdn.microsoft.com/library/bb522893.aspx) | Nicht unterstützt |
 | Server-Konfigurationsoptionen | [Unterstützt](https://msdn.microsoft.com/library/ms189631.aspx) | Nicht unterstützt – siehe [Database configuration options (Datenbank-Konfigurationsoptionen)](https://msdn.microsoft.com/library/mt629158.aspx) |
 | SET-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ms190356.aspx) | [Die meisten](https://msdn.microsoft.com/library/ms190356.aspx) 
 | Spatial | [Unterstützt](https://msdn.microsoft.com/library/bb933790.aspx) | [Unterstützt](https://msdn.microsoft.com/library/bb933790.aspx) |
@@ -131,7 +132,7 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 | SQL Server Integration Services (SSIS) | [Unterstützt](https://msdn.microsoft.com/library/ms141026.aspx) | Nicht unterstützt – siehe [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) |
 | SQL Server PowerShell | [Unterstützt](https://msdn.microsoft.com/library/hh245198.aspx) | [Unterstützt](https://msdn.microsoft.com/library/hh245198.aspx) |
 | SQL Server Profiler | [Unterstützt](https://msdn.microsoft.com/library/ms181091.aspx) | Nicht unterstützt – siehe [Erweiterte Ereignisse](https://msdn.microsoft.com/library/ms181091.aspx) |
-| SQL Server-Replikation | [Unterstützt](https://msdn.microsoft.com/library/ms151198.aspx) | [Nur für Transaktionsreplikationsabonnent](sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
+| SQL Server-Replikation | [Unterstützt](https://msdn.microsoft.com/library/ms151198.aspx) | [Nur für Transaktions- und Momentaufnahmenreplikationsabonnent](sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
 | SQL Server Reporting Services (SSRS) | [Unterstützt](https://msdn.microsoft.com/library/ms159106.aspx) | Nicht unterstützt |
 | Gespeicherte Prozeduren | [Unterstützt](https://msdn.microsoft.com/library/ms190782.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms190782.aspx) |
 | Gespeicherte Systemfunktionen | [Unterstützt](https://msdn.microsoft.com/library/ff848780.aspx) | [Einige](https://msdn.microsoft.com/library/ff848780.aspx) |
@@ -154,12 +155,12 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 - Eine Übersicht über logische Azure SQL-Server finden Sie unter [SQL Database logical server overview (Übersicht über logische SQL-Datenbankserver)](sql-database-server-overview.md)
 - Unter [Übersicht zu Azure SQL-Datenbank](sql-database-overview.md) finden Sie eine Übersicht über Azure SQL-Datenbanken.
 - Informationen zur Unterstützung von Transact-SQL und Unterschiede finden Sie unter [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md).
-- Informationen zu bestimmten Ressourcenkontingente und Einschränkungen aufgrund Ihrer **Dienstebene**. Eine Übersicht über die Dienstebenen finden Sie unter [SQL-Datenbanken-Dienstebenen](sql-database-service-tiers.md).
+- Informationen zu bestimmten Ressourcenkontingenten und Einschränkungen basierend auf Ihrer **Dienstebene**. Eine Übersicht über die Dienstebenen finden Sie unter [SQL-Datenbanken-Dienstebenen](sql-database-service-tiers.md).
 - Sicherheitsbezogene Leitlinien finden Sie unter [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md).
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 
