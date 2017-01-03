@@ -1,31 +1,35 @@
 ---
-title: IoT Hub MQTT-Unterstützung | Microsoft Docs
-description: Beschreibung der MQTT-Unterstützung auf IoT Hub-Ebene
+title: "IoT Hub MQTT-Unterstützung | Microsoft-Dokumentation"
+description: "Beschreibung der MQTT-Unterstützung auf IoT Hub-Ebene"
 services: iot-hub
 documentationcenter: .net
-author: dominicbetts
+author: kdotchkoff
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 1d71c27c-b466-4a40-b95b-d6550cf85144
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
-ms.author: dobett
+ms.date: 10/24/2016
+ms.author: kdotchko
+translationtype: Human Translation
+ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
+ms.openlocfilehash: cb771818a437fdacd20fe192a087ebc0c8952f21
+
 
 ---
 # <a name="iot-hub-mqtt-support"></a>IoT Hub MQTT-Unterstützung
-IoT Hub ermöglicht Geräten mithilfe des Protokolls [MQTT v3.1.1][lnk-mqtt-org] die Kommunikation mit den IoT Hub-Geräteendpunkten an Port 8883. IoT Hub setzt voraus, dass die gesamte Gerätekommunikation mithilfe von TLS/SSL gesichert wird.
+IoT Hub ermöglicht Geräten mithilfe des Protokolls [MQTT v3.1.1][lnk-mqtt-org] an Port 8883 oder MQTT v3.1.1 über WebSocket an Port 443 die Kommunikation mit den IoT Hub-Geräteendpunkten. IoT Hub setzt voraus, dass die gesamte Gerätekommunikation mithilfe von TLS/SSL geschützt wird (weshalb IoT Hub keine ungeschützten Verbindungen über Port 1883 unterstützt).
 
 ## <a name="connecting-to-iot-hub"></a>Herstellen einer Verbindung mit einem IoT Hub
-Ein Gerät kann sich entweder über die Bibliotheken in den [Microsoft Azure IoT-SDKs][lnk-device-sdks] oder direkt über das Protokoll MQTT mit IoT Hub verbinden.
+Ein Gerät kann sich entweder über die Bibliotheken in den [Azure IoT SDKs][lnk-device-sdks] oder direkt über das Protokoll MQTT mit IoT Hub verbinden.
 
-## <a name="using-the-device-client-sdks"></a>Verwenden der SDKs für Geräteclients
-[SDKs für Geräteclients][lnk-device-sdks], die das MQTT-Protokoll unterstützen, stehen für Java, Node.js, C und C# zur Verfügung. Die SDKs für Geräteclients verwenden die standardmäßige IoT Hub-Verbindungszeichenfolge zum Herstellen einer Verbindung mit einem IoT Hub. Um das MQTT-Protokoll verwenden zu können, muss der Clientprotokollparameter auf **MQTT**festgelegt werden. Standardmäßig verbinden sich die SDKs von Geräteclients mit einem IoT Hub, indem das **CleanSession**-Flag auf **0** festgelegt und **QoS-1** für den Nachrichtenaustausch mit dem IoT Hub verwendet wird.
+## <a name="using-the-device-sdks"></a>Verwenden der Geräte-SDKs
+[Geräte-SDKs][lnk-device-sdks], die das MQTT-Protokoll unterstützen, stehen für Java, Node.js, C, C# und Python zur Verfügung. Die SDKs für Geräte verwenden die IoT Hub-Standard-Verbindungszeichenfolge zum Herstellen einer Verbindung mit einem IoT Hub. Um das MQTT-Protokoll verwenden zu können, muss der Clientprotokollparameter auf **MQTT**festgelegt werden. Standardmäßig verbinden sich die SDKs von Geräten mit einem IoT Hub, indem das **CleanSession**-Flag auf **0** festgelegt und **QoS 1** für den Nachrichtenaustausch mit dem IoT Hub verwendet wird.
 
-Wenn ein Gerät mit einem IoT Hub verbunden ist, bieten die SDKs von Geräteclients Methoden, die dem Gerät das Senden von Nachrichten an und Empfangen von Nachrichten von einem IoT Hub ermöglichen.
+Wenn ein Gerät mit einem IoT Hub verbunden ist, werden mit den SDKs von Geräten Methoden bereitgestellt, die dem Gerät das Senden von Nachrichten an und Empfangen von Nachrichten von einem IoT Hub ermöglichen.
 
 Die folgende Tabelle enthält Links zu Codebeispielen für jede unterstützte Sprache und gibt die Parameter zum Herstellen einer Verbindung mit einem IoT Hub über das Protokoll MQTT an.
 
@@ -37,40 +41,39 @@ Die folgende Tabelle enthält Links zu Codebeispielen für jede unterstützte Sp
 | [C#][lnk-sample-csharp] |TransportType.Mqtt |
 | [Python][lnk-sample-python] |IoTHubTransportProvider.MQTT |
 
-### <a name="migrate-a-device-app-from-amqp-to-mqtt"></a>Migrieren einer Geräte-App von AMQP zu MQTT
-Bei Verwendung der [SDKs für Geräteclients][lnk-device-sdks] muss bei einem Wechsel von AMQP zu MQTT der Protokollparameter, wie oben erwähnt, in der Clientinitialisierung geändert werden.
+### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrieren einer Geräte-App von AMQP zu MQTT
+Bei Verwendung der [Geräte-SDKs][lnk-device-sdks] muss bei einem Wechsel von AMQP zu MQTT der Protokollparameter, wie oben erwähnt, in der Clientinitialisierung geändert werden.
 
 Dabei sollten Sie die folgenden Punkte beachten:
 
 * Bei AMQP werden Fehler für viele Bedingungen zurückgegeben, bei MQTT wird dagegen die Verbindung beendet. Daher müssen an der Ausnahmebehandlungslogik möglicherweise einige Änderungen vorgenommen werden.
-* MQTT unterstützt beim Empfang von [C2D-Nachrichten][lnk-messaging] keine *reject*-Vorgänge. Wenn das Back-End eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden][lnk-method] verwenden.
-* Derzeit ist MQTT über WebSockets nicht verfügbar.
+* MQTT unterstützt beim Empfang von [Cloud-zu-Gerät-Nachrichten][lnk-messaging] keine *reject*-Vorgänge. Wenn das Back-End eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden][lnk-methods] verwenden.
 
 ## <a name="using-the-mqtt-protocol-directly"></a>Direktes Verwenden des Protokolls MQTT
-Wenn ein Gerät die SDKs von Geräteclients nicht verwenden kann, lässt es sich dennoch mithilfe des Protokolls MQTT mit den öffentlichen Geräteendpunkten verbinden. Das Gerät muss im **CONNECT** -Paket die folgenden Werte verwenden:
+Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich dennoch mithilfe des Protokolls MQTT mit den öffentlichen Geräteendpunkten verbinden. Das Gerät muss im **CONNECT** -Paket die folgenden Werte verwenden:
 
-* Verwenden Sie für das Feld **ClientId** die **deviceId**-Eigenschaft. 
+* Verwenden Sie für das Feld **ClientId** die **deviceId**-Eigenschaft.
 * Verwenden Sie `{iothubhostname}/{device_id}` für das Feld **Benutzername**, wobei {iothubhostname} der vollständige CNAME für den IoT Hub ist.
-  
+
     Beispiel: Wenn der Name für den IoT Hub **contoso.azure devices.net** und der Name des Geräts **MyDevice01** lautet, sollte das vollständige Feld **Benutzername** den Namen `contoso.azure-devices.net/MyDevice01` enthalten.
-* Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie für die Protokolle HTTP und AMQP: <br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`festgelegt werdenfestgelegt werden.
-  
+* Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie für die Protokolle HTTP und AMQP: <br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`.
+
     Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT Hub-Sicherheitstoken][lnk-sas-tokens] im Abschnitt zu Geräten.
-  
-    Beim Testen können Sie auch das Tool [Geräte-Explorer][lnk-device-explorer] nutzen, um schnell ein SAS-Token zu generieren, das Sie kopieren und in Ihren eigenen Code einfügen können:
-  
+
+    Beim Testen können Sie auch das Tool [Device Explorer][lnk-device-explorer] nutzen, um schnell ein SAS-Token zu generieren, das Sie kopieren und in Ihren eigenen Code einfügen können:
+
   1. Klicken Sie in Device Explorer auf die Registerkarte **Management** .
   2. Klicken Sie auf **SAS Token** (oben rechts).
   3. Wählen Sie unter **SASTokenForm** Ihr Gerät in der Dropdownliste **DeviceID** aus. Legen Sie Ihre **TTL**fest.
   4. Klicken Sie auf **Generieren** , um Ihr Token zu erstellen.
-     
-     Das generierte SAS-Token weist die folgende Struktur auf:   `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`.
-     
-     Der folgende Teil des Tokens wird im Feld **Kennwort** verwendet, um über MQTT eine Verbindung herzustellen:   `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`.
 
-Für die MQTT-Pakete CONNECT und DISCONNECT löst IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus.
+     Das generierte SAS-Token weist die folgende Struktur auf: `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`.
 
-### <a name="sending-messages-to-iot-hub"></a>Senden von Nachrichten an einen IoT Hub
+     Der folgende Teil des Tokens wird im Feld **Kennwort** verwendet, um über MQTT eine Verbindung herzustellen: `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`.
+
+Für die MQTT-Pakete CONNECT und DISCONNECT löst IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus, das zusätzliche Informationen liefert, mit deren Hilfe Sie Verbindungsprobleme beheben können.
+
+### <a name="sending-device-to-cloud-messages"></a>Senden von D2C-Nachrichten
 Nachdem Sie erfolgreich eine Verbindung hergestellt haben, kann ein Gerät Nachrichten mithilfe von `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Themenname** an IoT Hub senden. Das `{property_bag}` -Element ermöglicht dem Gerät das Senden von Nachrichten mit zusätzlichen Eigenschaften in einem URL-codierten Format. Beispiel:
 
 ```
@@ -79,22 +82,115 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 > [!NOTE]
 > Dieses `{property_bag}`-Element verwendet die gleiche Codierung wie bei Abfragezeichenfolgen im HTTP-Protokoll.
-> 
-> 
+>
+>
 
 Die Geräteclientanwendung kann auch `devices/{device_id}/messages/events/{property_bag}` als **Will-Themennamen** verwenden, um festzulegen, dass *Will-Nachrichten* als Telemetrienachricht weitergeleitet werden.
 
-### <a name="receiving-messages"></a>Empfangen von Nachrichten
-Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#”` als **Themenfilter** einrichten. IoT Hub sendet Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z.B. **messageId** oder **correlationId**) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$**, Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix.
+IoT Hub unterstützt keine QoS 2-Nachrichten. Wenn ein Geräteclient eine Nachricht mit **QoS 2**veröffentlicht, schließt IoT Hub die Netzwerkverbindung.
+IoT Hub speichert Beibehaltungsnachrichten („Retain“) nicht beständig. Wenn ein Geräte eine Nachricht mit auf 1 festgelegtem **RETAIN**-Flag sendet, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-Anwendung.
+
+Weitere Informationen finden Sie im [Entwicklerleitfaden zum Messaging][lnk-messaging].
+
+### <a name="receiving-cloud-to-device-messages"></a>Empfangen von C2D-Nachrichten
+Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#` als **Themenfilter** einrichten. Der Platzhalter mit mehreren Ebenen **#** im Themenfilter wird nur verwendet, um dem Gerät das Empfangen zusätzlicher Eigenschaften im Themennamen zu erlauben. IoT Hub lässt sich nicht die Verwendung der Platzhalter **#** und **?** für die Filterung von Unterthemen zu. Da IoT Hub kein allgemeiner Nachrichtenbrokerdienst für das Veröffentlichen und Abonnieren ist, werden nur die dokumentierten Themennamen und -filter unterstützt.
+
+Beachten Sie, dass das Gerät erst Nachrichten von IoT Hub empfängt, nachdem es dessen gerätespezifischen Endpunkt erfolgreich abonniert hat, der vom Themenfilter `devices/{device_id}/messages/devicebound/#` dargestellt wird. Nachdem das Abonnement erfolgreich eingerichtet wurde, beginnt das Gerät mit dem Empfangen von ausschließlich Cloud-zu-Gerät-Nachrichten, die nach der Zeit des Abonnements an das Gerät gesendet wurden. Wenn das Gerät eine Verbindung mit auf **0** festgelegtem Flag **CleanSession** herstellt, wird das Abonnement verschiedene Sitzungen übergreifend beibehalten. In diesem Fall empfängt das Gerät beim nächsten Verbindungsaufbau mit **CleanSession 0** ausstehende Nachrichten, die ihm gesendet wurden, als es vom Netzwerk getrennt war. Wenn das Gerät das auf **1** festgelegte **CleanSession**-Flag verwendet, empfängt es keine Nachrichten von IoT Hub, bis es dessen Geräteendpunkt abonniert.
+
+IoT Hub sendet Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z.B. **messageId** oder **correlationId**) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$**, Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix.
+
+Wenn ein Geräteclient ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1. Danach übermittelt IoT Hub Nachrichten an das Gerät mithilfe von QoS 1.
+
+### <a name="retrieving-a-device-twins-properties"></a>Abrufen der Eigenschaften eines Gerätezwillings
+
+Als Erstes abonniert ein Gerät `$iothub/twin/res/#`, um die Antworten des Vorgangs zu erhalten. Anschließend wird eine leere Nachricht an das Thema `$iothub/twin/GET/?$rid={request id}` gesendet, wobei der Wert für **request id** ausgefüllt ist. Als Nächstes sendet der Dienst eine Antwortnachricht mit den Daten des Gerätezwillings im Thema `$iothub/twin/res/{status}/?$rid={request id}`, indem die gleiche **request id** wie für die Anforderung verwendet wird.
+
+Die Anforderungs-ID (request id) kann ein beliebiger gültiger Wert für den Eigenschaftswert einer Nachricht sein (siehe [Entwicklerhandbuch zum IoT Hub-Messaging][lnk-messaging], und der Status wird als ganze Zahl validiert.
+Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwillings:
+
+Der Text des Eintrags in der Identitätsregistrierung ist auf den Member „properties“ beschränkt, z.B.:
+
+        {
+            "properties": {
+                "desired": {
+                    "telemetrySendFrequency": "5m",
+                    "$version": 12
+                },
+                "reported": {
+                    "telemetrySendFrequency": "5m",
+                    "batteryLevel": 55,
+                    "$version": 123
+                }
+            }
+        }
+
+Die möglichen Statuscodes lauten:
+
+|Status | Beschreibung |
+| ----- | ----------- |
+| 200 | Erfolgreich |
+| 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung][lnk-quotas] |
+| 5** | Serverfehler |
+
+Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][lnk-devguide-twin].
+
+### <a name="update-twins-reported-properties"></a>Aktualisieren der gemeldeten Eigenschaften des Zwillings
+
+Als Erstes muss ein Gerät `$iothub/twin/res/#` abonnieren, um die Antworten des Vorgangs zu erhalten. Anschließend wird eine Nachricht mit der Aktualisierung des Gerätezwillings an `$iothub/twin/PATCH/properties/reported/?$rid={request id}` gesendet, wobei der Wert für **request id** aufgefüllt ist. Als Nächstes sendet der Dienst eine Antwortnachricht mit den Daten des Gerätezwillings im Thema `$iothub/twin/res/{status}/?$rid={request id}`, indem die gleiche **request id** wie für die Anforderung verwendet wird.
+
+Der Text der Antwortnachricht enthält ein JSON-Dokument, mit dem neue Werte für die gemeldeten Eigenschaften bereitgestellt werden (keine anderen Eigenschaftsdaten oder Metadaten können geändert werden).
+Jeder Member im JSON-Dokument wird aktualisiert, oder der entsprechende Member wird im Dokument des Gerätezwillings hinzugefügt. Wenn ein Member auf `null` festgelegt ist, wird der Member aus dem enthaltenden Objekt gelöscht. Beispiel:
+
+        {
+            "telemetrySendFrequency": "35m",
+            "batteryLevel": 60
+        }
+
+Die möglichen Statuscodes lauten:
+
+|Status | Beschreibung |
+| ----- | ----------- |
+| 200 | Erfolgreich |
+| 400 | Ungültige Anforderung; falsch formatierter JSON-Code |
+| 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung][lnk-quotas] |
+| 5** | Serverfehler |
+
+Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][lnk-devguide-twin].
+
+### <a name="receiving-desired-properties-update-notifications"></a>Empfangen von Aktualisierungsbenachrichtigungen für gewünschte Eigenschaften
+
+Wenn für ein Gerät die Verbindung hergestellt wird, sendet IoT Hub Benachrichtigungen an das Thema `$iothub/twin/PATCH/properties/desired/?$version={new version}`. Die Benachrichtigungen enthalten den Inhalt der Aktualisierung, die vom Back-End durchgeführt wird. Beispiel:
+
+        {
+            "telemetrySendFrequency": "5m",
+            "route": null
+        }
+
+Für Aktualisierungen von Eigenschaften bedeutet die Angabe von `null` für die Werte, dass der JSON-Objektmember gelöscht wird.
+
+> [AZURE.IMPORTANT] IoT Hub generiert Änderungsbenachrichtigungen nur, wenn Geräte verbunden sind. Achten Sie darauf, den [Ablauf zur Wiederherstellung der Geräteverbindung][lnk-devguide-twin-reconnection] zu implementieren, um für die gewünschten Eigenschaften die Synchronisierung zwischen IoT Hub und der Geräte-App aufrechtzuerhalten.
+
+Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][lnk-devguide-twin].
+
+### <a name="respond-to-a-direct-method"></a>Antworten auf eine direkte Methode
+
+Als Erstes muss ein Gerät `$iothub/methods/POST/#` abonnieren. IoT Hub sendet Methodenanforderungen an das Thema `$iothub/methods/POST/{method name}/?$rid={request id}`, die entweder gültigen JSON-Code oder leeren Text enthalten.
+
+Als Antwort sendet das Gerät eine Nachricht mit gültigem JSON-Code oder leerem Text an das Thema `$iothub/methods/res/{status}/?$rid={request id}`, wobei die **request id** mit der ID in der Anforderungsnachricht übereinstimmen und **status** eine ganze Zahl sein muss.
+
+Weitere Informationen finden Sie im [Entwicklerhandbuch zur direkten Methode][lnk-methods].
+
+### <a name="additional-considerations"></a>Zusätzliche Überlegungen
+Wenn Sie das Verhalten des Protokolls MQTT auf Cloudseite anpassen möchten, sollte schließlich noch der Einsatz eines [Azure IoT-Protokollgateways][lnk-azure-protocol-gateway] erwogen werden, das die Bereitstellung eines hochleistungsfähigen benutzerdefinierten Protokollgateways mit einer direkten Schnittstelle zu IoT Hub ermöglicht. Das Azure IoT-Protokollgateway dient zum Anpassen des Geräteprotokolls zum Unterstützen von Brownfield MQTT-Bereitstellungen oder anderer benutzerdefinierter Protokolle. Dieser Ansatz setzt jedoch voraus, dass Sie ein benutzerdefiniertes Protokollgateway ausführen und betreiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Hinweise zur MQTT-Unterstützung][lnk-mqtt-devguide] im Entwicklerhandbuch für Azure IoT Hub.
+Weitere Informationen finden Sie unter [Hinweise zur MQTT-Unterstützung][lnk-mqtt-devguide] im Entwicklungsleitfaden für Azure IoT Hub.
 
 Weitere Informationen zum Protokoll MQTT finden Sie in der [MQTT-Dokumentation][lnk-mqtt-docs].
 
 Weitere Informationen zum Planen Ihrer IoT Hub-Bereitstellung finden Sie unter:
 
-* [Unterstützte Geräte][lnk-devices]
+* [Katalog mit Azure Certified for IoT-Geräten][lnk-devices]
 * [Unterstützen zusätzlicher Protokolle][lnk-protocols]
 * [Vergleich mit Event Hubs][lnk-compare]
 * [Skalierung, hohe Verfügbarkeit und Notfallwiederherstellung][lnk-scaling]
@@ -102,7 +198,7 @@ Weitere Informationen zum Planen Ihrer IoT Hub-Bereitstellung finden Sie unter:
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Entwicklerhandbuch][lnk-devguide]
-* [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+* [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
 [lnk-mqtt-org]: http://mqtt.org/
@@ -113,10 +209,11 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdks/tree/master/python/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md
-[lnk-sas-tokens]: iot-hub-devguide-security.md#using-sas-tokens-as-a-device
+[lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-client
 [lnk-mqtt-devguide]: iot-hub-devguide-messaging.md#notes-on-mqtt-support
+[lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
-[lnk-devices]: iot-hub-tested-configurations.md
+[lnk-devices]: https://catalog.azureiotsuite.com/
 [lnk-protocols]: iot-hub-protocol-gateway.md
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-scaling]: iot-hub-scaling.md
@@ -126,8 +223,11 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-messaging]: iot-hub-devguide-messaging.md
 
+[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
+[lnk-devguide-twin-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
+[lnk-devguide-twin]: iot-hub-devguide-device-twins.md
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO5-->
 
 

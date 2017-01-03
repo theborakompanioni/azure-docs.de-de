@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/30/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 21adeddc5896a4c9123bf3525e9b9ab4abbf6fa5
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 56dd9b73a31d27c2c953bf4350e55e851f634b79
 
 
 ---
@@ -45,7 +45,7 @@ Es bietet sich an, einen Standort in Active Directory zu erstellen, der die Netz
 
 ## <a name="create-an-azure-virtual-network"></a>Erstellen eines virtuellen Azure-Netzwerks
 1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Neu** > **Netzwerkdienste** > **Virtuelles Netzwerk** > **Benutzerdefiniert erstellen**, und verwenden Sie die folgenden Werte, um den Assistenten abzuschließen.
-   
+
    | Seite des Assistenten… | Einzugebende Werte |
    | --- | --- |
    |  **Details zum virtuellen Netzwerk** |<p>Name: Geben Sie einen Namen für das virtuelle Netzwerk ein, z.B. WestUSVNet.</p><p>Region: Wählen Sie die nächstgelegene Region aus.</p> |
@@ -60,7 +60,7 @@ Wiederholen Sie die folgenden Schritte, um virtuelle Computer zum Hosten der DC-
 Um die virtuellen Computer mithilfe von Windows PowerShell anstelle der Benutzeroberfläche zu erstellen, lesen Sie [Verwenden von Azure PowerShell zum Erstellen und Vorabkonfigurieren Windows-basierter virtueller Computer](../virtual-machines/virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 1. Klicken Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) auf **Neu** > **Compute** > **Virtueller Computer** > **Aus Katalog**. Verwenden Sie die folgenden Werte, um den Assistenten abzuschließen. Übernehmen Sie den Standardwert für eine Einstellung, sofern kein anderer Wert empfohlen wird oder erforderlich ist.
-   
+
    | Seite des Assistenten… | Einzugebende Werte |
    | --- | --- |
    |  **Image auswählen** |Windows Server 2012 R2 Datacenter |
@@ -69,8 +69,8 @@ Um die virtuellen Computer mithilfe von Windows PowerShell anstelle der Benutzer
    |  **Konfiguration des virtuellen Computers** |<p>Wählen Sie <b>VM-Agent installieren</b> und alle anderen erforderlichen Erweiterungen aus.</p> |
 2. Fügen Sie an jeden virtuellen Computer, der die DC-Serverrolle ausführt, einen Datenträger an. Der zusätzliche Speicherplatz ist erforderlich, um die AD-Datenbank, Protokolle und SYSVOL zu speichern. Geben Sie eine Größe für den Datenträger (z. B. 10 GB) an, und belassen Sie für **Hostcacheeinstellungen** die Einstellung **Keine**. Weitere Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer](../virtual-machines/virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 3. Nachdem Sie sich erstmals auf dem virtuellen Computer angemeldet haben, öffnen Sie **Server-Manager** > **Datei- und Speicherdienste**, um auf diesem Datenträger ein Volume mit NTFS zu erstellen.
-4. Reservieren Sie eine statische IP-Adresse für virtuelle Computer, auf denen die DC-Rolle ausgeführt wird. Laden Sie zum Reservieren einer statischen IP-Adresse den Microsoft-Webplattform-Installer herunter, [installieren Sie Azure PowerShell](../powershell-install-configure.md) , und führen Sie anschließend das Cmdlet "Set-AzureStaticVNetIP" aus. Beispiel:
-   
+4. Reservieren Sie eine statische IP-Adresse für virtuelle Computer, auf denen die DC-Rolle ausgeführt wird. Laden Sie zum Reservieren einer statischen IP-Adresse den Microsoft-Webplattform-Installer herunter, [installieren Sie Azure PowerShell](/powershell/azureps-cmdlets-docs) , und führen Sie anschließend das Cmdlet "Set-AzureStaticVNetIP" aus. Beispiel:
+
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
 Weitere Informationen zum Festlegen einer statischen IP-Adresse finden Sie unter [Konfigurieren einer statischen internen IP-Adresse für einen virtuellen Computer](../virtual-network/virtual-networks-reserved-private-ip.md).
@@ -84,7 +84,7 @@ Melden Sie sich bei einem virtuellen Computer an, und stellen Sie sicher, dass S
 
 ## <a name="create-vms-for-application-servers"></a>Erstellen von virtuellen Computern für Anwendungsserver
 1. Wiederholen Sie die folgenden Schritte, um virtuelle Computer zu erstellen, die als Anwendungsserver ausgeführt werden. Übernehmen Sie den Standardwert für eine Einstellung, sofern kein anderer Wert empfohlen wird oder erforderlich ist.
-   
+
    | Seite des Assistenten… | Einzugebende Werte |
    | --- | --- |
    |  **Image auswählen** |Windows Server 2012 R2 Datacenter |
@@ -112,6 +112,6 @@ Weitere Informationen zum Verwenden von Windows PowerShell finden Sie unter [Ers
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

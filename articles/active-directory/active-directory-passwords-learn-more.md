@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
-ms.openlocfilehash: 62358ef4d02515a2625fb5f78421f71e581944e9
+ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
+ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
 
 
 ---
@@ -32,12 +32,13 @@ Wenn Sie die Kennwortverwaltung bereits bereitgestellt haben oder vor der Bereit
   * [Funktionsweise der Kennwortrückschreibung](#how-password-writeback-works)
   * [Unterstützte Szenarien für die Kennwortrückschreibung](#scenarios-supported-for-password-writeback)
   * [Sicherheitsmodell für die Kennwortrückschreibung](#password-writeback-security-model)
+  * [Bandbreitennutzung für das Kennwortrückschreiben](#password-writeback-bandwidth-usage)
 * [**Wie funktioniert das Portal für die Kennwortzurücksetzung?**](#how-does-the-password-reset-portal-work)
   * [Welche Daten werden bei der Kennwortzurücksetzung verwendet?](#what-data-is-used-by-password-reset)
   * [Zugriff auf Daten zur Kennwortzurücksetzung für Ihre Benutzer](#how-to-access-password-reset-data-for-your-users)
 
 ## <a name="password-writeback-overview"></a>Übersicht über die Kennwortrückschreibung
-Die Kennwortrückschreibung ist eine Komponente von [Azure Active Directory Connect](active-directory-aadconnect.md) , die von den aktuellen Abonnenten von Azure Active Directory Premium aktiviert und verwendet werden kann. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+Die Kennwortrückschreibung ist eine Komponente von [Azure Active Directory Connect](connect/active-directory-aadconnect.md) , die von den aktuellen Abonnenten von Azure Active Directory Premium aktiviert und verwendet werden kann. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
 Mit der Kennwortrückschreibung können Sie Ihren Cloudmandanten so konfigurieren, dass Kennwörter in das lokale Active Directory zurückgeschrieben werden.  Auf diese Weise ist es nicht erforderlich, eine lokale Self-Service-Lösung für das Zurücksetzen von Kennwörtern einzurichten und zu verwalten. Gleichzeitig bietet diese Funktion Ihren Benutzern eine bequeme, cloudbasierte Möglichkeit zum Zurücksetzen ihrer lokalen Kennwörter – unabhängig davon, wo sie sich gerade befinden.  Nachfolgend werden einige der wichtigsten Merkmale der Kennwortrückschreibung aufgeführt:
 
@@ -75,7 +76,7 @@ Wenn ein  Verbundbenutzer oder ein Benutzer mit Kennworthashsynchronisierung ihr
 10. Wenn beim Zurücksetzen des Kennworts ein Fehler auftritt, wird dem Benutzer eine Fehlermeldung angezeigt, und der Benutzer kann es erneut versuchen.  Es kann zu Fehlern kommen, weil der Dienst nicht verfügbar ist, weil das ausgewählte Kennwort nicht den Organisationsrichtlinien entspricht, weil der Benutzer nicht im lokalen AD gefunden wurde, oder weil andere Gründe vorliegen.  Es gibt für jeden dieser Fälle eine spezifische Meldung, die den Benutzer darüber informiert, was zur Problemlösung unternommen werden kann.
 
 ### <a name="scenarios-supported-for-password-writeback"></a>Unterstützte Szenarien für die Kennwortrückschreibung
-In der nachstehenden Tabelle wird beschrieben, welche Szenarien für welche Versionen der Synchronisierungsfunktionen unterstützt werden.  Im Allgemeinen wird dringend empfohlen, die aktuelle Version von [Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect) zu installieren, wenn Sie die Kennwortrückschreibung verwenden möchten.
+In der nachstehenden Tabelle wird beschrieben, welche Szenarien für welche Versionen der Synchronisierungsfunktionen unterstützt werden.  Im Allgemeinen wird dringend empfohlen, die aktuelle Version von [Azure AD Connect](connect/active-directory-aadconnect.md#install-azure-ad-connect) zu installieren, wenn Sie die Kennwortrückschreibung verwenden möchten.
 
   ![][002]
 
@@ -86,6 +87,21 @@ Die Kennwortrückschreibung ist ein äußerst sicherer und zuverlässiger Dienst
 * **Nicht zugänglicher, sicherer Kryptografieschlüssel für die Kennwortverschlüsselung** – Nach der Erstellung des Service Bus Relays wird ein sicherer symmetrischer Schlüssel erstellt, mit dem das Kennwort verschlüsselt wird, bevor es gesendet wird.  Dieser Schlüssel liegt ausschließlich im Speicher für geheime Schlüssel Ihres Unternehmens in der Cloud vor, der streng geschützt und überwacht wird, wie jedes Kennwort im Verzeichnis.
 * **TLS nach Industriestandard** – Beim Zurücksetzen oder Ändern eines Kennworts in der Cloud wird das Klartextkennwort mit Ihrem öffentlichen Schlüssel verschlüsselt.  Anschließend wird es in eine HTTPS-Nachricht eingefügt und über einen mithilfe der SSL-Zertifikate von Microsoft verschlüsselten Kanal an Ihre Service Bus Relay gesendet.  Nachdem die Nachricht vom Service Bus empfangen wurde, wird der lokale Agent aktiviert, authentifiziert sich beim Service Bus mit dem zuvor generierten sicheren Kennwort, nimmt die verschlüsselte Nachricht entgegen, entschlüsselt diese mit dem generierten privaten Schlüssel und versucht anschließend, das Kennwort über die AD DS-SetPassword-API festzulegen.  In diesem Schritt kann Ihre lokale AD-Kennwortrichtlinie (Komplexität, Alter, Verlauf, Filter usw.) in der Cloud erzwungen werden.
 * **Richtlinien zum Nachrichtenablauf** – Falls die Nachricht im Service Bus verbleibt, weil der lokale Dienst nicht verfügbar ist, kommt es nach wenigen Minuten zu einem Timeout, und die Nachricht wird entfernt, um die Sicherheit weiter zu erhöhen.
+
+### <a name="password-writeback-bandwidth-usage"></a>Bandbreitennutzung für das Kennwortrückschreiben
+
+Kennwortrückschreiben ist ein Dienst, für den sehr wenig Bandbreite erforderlich ist und der nur unter folgenden Umständen Anforderungen zurück an den lokalen Agent sendet:
+
+1. Beim Aktivieren oder Deaktivieren des Features über Azure AD Connect werden zwei Nachrichten gesendet.
+2. Während der gesamten Ausführungsdauer des Diensts wird als Diensttakt alle fünf Minuten eine Nachricht gesendet.
+3. Bei jeder Übermittlung eines neuen Kennworts werden zwei Nachrichten gesendet: eine Nachricht als Anforderung zur Ausführung des Vorgangs und eine nachfolgende Nachricht mit dem Ergebnis des Vorgangs. Diese Nachrichten werden in folgenden Situationen gesendet:
+4. Bei jeder Übermittlung eines neuen Kennworts während einer Self-Service-Kennwortzurücksetzung durch Benutzer
+5. Bei jeder Übermittlung eines neuen Kennworts während einer Benutzerkennwortänderung
+6. Bei jeder Übermittlung eines neuen Kennworts während einer vom Administrator initiierten Benutzerkennwortzurücksetzung (nur über die Azure-Administratorportale)
+
+#### <a name="message-size-and-bandwidth-considerations"></a>Überlegungen zur Nachrichtengröße und Bandbreite
+
+Die Größe der einzelnen oben beschriebenen Nachrichten beträgt in der Regel weniger als 1 KB. Das bedeutet, dass selbst bei extrem hoher Auslastung der Dienst für die Kennwortrückschreibung höchstens eine Bandbreite von einigen wenigen Kilobits pro Sekunde nutzt. Da jede Nachricht in Echtzeit und nur dann gesendet wird, wenn dies für eine Kennwortaktualisierung erforderlich ist, und die Nachrichten nicht besonders groß sind, ist die Bandbreitennutzung der Rückschreibfunktion zu klein, um messbare Auswirkungen zu haben.
 
 ## <a name="how-does-the-password-reset-portal-work"></a>Wie funktioniert das Portal für die Kennwortzurücksetzung?
 Wenn ein Benutzer zum Portal für die Kennwortzurücksetzung navigiert, wird ein Workflow gestartet. Über diesen Workflow wird geprüft, ob das Benutzerkonto gültig ist, welcher Organisation der Benutzer angehört, wo das Benutzerkennwort verwaltet wird und ob der Benutzer zur Verwendung der Funktion lizenziert ist.  Nachfolgend wird beschrieben, welche Logik hinter der Seite zur Kennwortzurücksetzung steckt.
@@ -391,6 +407,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

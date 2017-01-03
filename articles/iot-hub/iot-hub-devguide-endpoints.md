@@ -1,12 +1,12 @@
 ---
-title: Developer guide - IoT Hub endpoints | Microsoft Docs
-description: Azure IoT Hub developer guide - reference information about IoT Hub endpoints
+title: 'Entwicklungsleitfaden: IoT Hub-Endpunkte | Microsoft-Dokumentation'
+description: "Entwicklungsleitfaden für Azure IoT Hub: Referenzinformationen zu IoT Hub-Endpunkten"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 57ba52ae-19c6-43e4-bc6c-d8a5c2476e95
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,53 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: dobett
+translationtype: Human Translation
+ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
+ms.openlocfilehash: f2da46ba3fdf9386ad78ade4d2364a4a8990cd6d
+
 
 ---
-# <a name="reference---iot-hub-endpoints"></a>Reference - IoT Hub endpoints
-## <a name="list-of-iot-hub-endpoints"></a>List of IoT Hub endpoints
-Azure IoT Hub is a multi-tenant service that exposes its functionality to various actors. The following diagram shows the various endpoints that IoT Hub exposes.
+# <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
+## <a name="list-of-iot-hub-endpoints"></a>Liste der IoT Hub-Endpunkte
+Azure IoT Hub ist ein mehrinstanzenfähiger Dienst, der seine Funktionen für zahlreiche Akteure bereitstellt. Das nachstehende Diagramm zeigt die verschiedenen Endpunkte, die von IoT Hub verfügbar gemacht werden.
 
-![IoT Hub endpoints][img-endpoints]
+![IoT Hub-Endpunkte][img-endpoints]
 
-The following is a description of the endpoints:
+Im Folgenden finden Sie eine Beschreibung der Endpunkte:
 
-* **Resource provider**. The IoT Hub resource provider exposes an [Azure Resource Manager][lnk-arm] interface that enables Azure subscription owners to create and delete IoT hubs, and update IoT hub properties. IoT Hub properties govern [hub-level security policies][lnk-accesscontrol], as opposed to device-level access control, and functional options for cloud-to-device and device-to-cloud messaging. The resource provider also enables you to [export device identities][lnk-importexport].
-* **Device identity management**. Each IoT hub exposes a set of HTTP REST endpoints to manage device identities (create, retrieve, update, and delete). [Device identities][lnk-device-identities] are used for device authentication and access control.
-* **Device twin management**. Each IoT hub exposes a set of service-facing HTTP REST endpoint to query and update [device twins][lnk-twins] (update tags and properties).
-* **Jobs management**. Each IoT hub exposes a set of service-facing HTTP REST endpoint to query and manage [jobs][lnk-jobs].
-* **Device endpoints**. For each device provisioned in the device identity registry, IoT Hub exposes a set of endpoints that a device can use to send and receive messages:
+* **Ressourcenanbieter**. Der IoT Hub-Ressourcenanbieter macht eine [Azure Resource Manager][lnk-arm]-Schnittstelle verfügbar, mit der Azure-Abonnementbesitzer IoT-Hubs erstellen und löschen sowie IoT Hub-Eigenschaften aktualisieren können. IoT Hub-Eigenschaften steuern [Sicherheitsrichtlinien auf Hubebene][lnk-accesscontrol] (im Gegensatz zur Zugriffssteuerung auf Geräteebene) und funktionale Optionen für das Messaging zwischen Cloud und Gerät (Cloud-to-Device, C2D) sowie Gerät und Cloud (Device-to-Cloud, D2C). Der IoT Hub-Ressourcenanbieter ermöglicht außerdem das [Exportieren von Geräteidentitäten][lnk-importexport].
+* **Geräteidentitätsverwaltung**. Jeder IoT Hub legt einen Satz an HTTP-REST-Endpunkten zum Verwalten von Geräteidentitäten offen (zum Erstellen, Abrufen, Aktualisieren und Löschen). [Geräteidentitäten][lnk-device-identities] werden zur Geräteauthentifizierung und für die Zugriffssteuerung eingesetzt.
+* **Verwaltung von Gerätezwillingen**. Jeder IoT-Hub macht eine Reihe von dienstseitigen HTTP-REST-Endpunkten zum Abfragen und Aktualisieren von [Gerätezwillingen][lnk-twins] (Updatetags und Eigenschaften) verfügbar.
+* **Auftragsverwaltung**. Jeder IoT-Hub macht eine Reihe von dienstseitigen HTTP-REST-Endpunkten zum Abfragen und Verwalten von [Aufträgen][lnk-jobs] verfügbar.
+* **Geräteendpunkte**. Für jedes in der Identitätsregistrierung bereitgestellte Gerät stellt IoT Hub eine Reihe von Endpunkten zur Verfügung, die ein Gerät zum Senden und Empfangen von Nachrichten verwenden kann:
   
-  * *Send device-to-cloud messages*. Use this endpoint to [send device-to-cloud messages][lnk-d2c].
-  * *Receive cloud-to-device messages*. A device uses this endpoint to receive targeted [cloud-to-device messages][lnk-c2d].
-  * *Initiate file uploads*. A device uses this endpoint to receive an Azure Storage SAS URI from IoT Hub to [upload a file][lnk-upload].
-  * *Retrieve and update twin's properties*. A device uses this endpoints to access its [device twin][lnk-twins]'s properties.
-  * *Receive direct methods requests*. A device uses this endpoints to listen to [direct methods][lnk-methods]'s requests.
+  * *Senden von D2C-Nachrichten*. Verwenden Sie diesen Endpunkt, um [D2C-Nachrichten zu senden][lnk-d2c].
+  * *Empfangen von C2D-Nachrichten*. Ein Gerät verwendet diesen Endpunkt, um gezielte [C2D-Nachrichten zu empfangen][lnk-c2d].
+  * *Einleiten von Dateiuploads*. Ein Gerät verwendet diesen Endpunkt zum Empfangen eines Azure Storage-SAS-URIs von IoT Hub, um [eine Datei hochzuladen][lnk-upload].
+  * *Abrufen und Aktualisieren der Eigenschaften von Gerätezwillingen*. Ein Gerät verwendet diese Endpunkte für den Zugriff auf die Eigenschaften seines [Gerätezwillings][lnk-twins].
+  * *Empfangen von Anforderungen direkter Methoden*. Ein Gerät verwendet diese Endpunkte zum Lauschen auf Anforderungen [direkter Methoden][lnk-methods].
     
-    These endpoints are exposed using [MQTT v3.1.1][lnk-mqtt], HTTP 1.1, and [AMQP 1.0][lnk-amqp] protocols. Note that AMQP is also available over [WebSockets][lnk-websockets] on port 443.
+    Diese Endpunkte werden über die Protokolle [MQTT v3.1.1][lnk-mqtt], HTTP 1.1 und [AMQP 1.0][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
     
-    The twins' and methods' endpoins are available only using [MQTT v3.1.1][lnk-mqtt].
-* **Service endpoints**. Each IoT hub exposes a set of endpoints your application back end can use to communicate with your devices. These endpoints are currently only exposed using the [AMQP][lnk-amqp] protocol, except for the method invocation endpoint that is exposed via HTTP 1.1.
+    Die Zwillings- und Methodenendpunkte sind nur über [MQTT 3.1.1][lnk-mqtt] verfügbar.
+* **Dienstendpunkte**. Jeder IoT Hub legt eine Reihe von Endpunkten offen, die Ihr Anwendungs-Back-End zur Kommunikation mit Ihren Geräten verwenden kann. Diese Endpunkte werden derzeit nur über das Protokoll [AMQP][lnk-amqp] verfügbar gemacht. Eine Ausnahme ist der Endpunkt für den Methodenaufruf, der über HTTP 1.1 verfügbar gemacht wird.
   
-  * *Receive device-to-cloud messages*. This endpoint is compatible with [Azure Event Hubs][lnk-event-hubs]. A back-end service can use it to read all the [device-to-cloud messages][lnk-d2c] sent by your devices.
-  * *Send cloud-to-device messages and receive delivery acknowledgments*. These endpoints enable your application back end to send reliable [cloud-to-device messages][lnk-c2d], and to receive the corresponding delivery or expiration acknowledgments.
-  * *Receive file notifications*. This messaging endpoint allows you to receive notifications of when your devices successfully upload a file. 
-  * *Direct method invocation*. This endpoint allows a back-end service to invoke a [direct method][lnk-methods] on a device.
+  * *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs][lnk-event-hubs]. Ein Back-End-Dienst kann ihn zum Lesen aller [D2C-Nachrichten][lnk-d2c] verwenden, die Ihre Geräte senden.
+  * *Senden von C2D-Nachrichten und Empfangen von Übermittlungsbestätigungen*. Diese Endpunkte ermöglichen Ihrem Anwendungs-Back-End das Senden von zuverlässigen [C2D-Nachrichten][lnk-c2d] sowie das Empfangen zugehöriger Übermittlungs- oder Ablaufbestätigungen.
+  * *Empfangen von Dateibenachrichtigungen*. Dieser Messaging-Endpunkt ermöglicht den Empfang von Benachrichtigungen, wenn Ihre Geräte erfolgreich eine Datei hochgeladen haben. 
+  * *Aufruf direkter Methoden*. Dieser Endpunkt ermöglicht einem Back-End-Dienst das Aufrufen einer [direkten Methode][lnk-methods] auf einem Gerät.
 
-The [IoT Hub APIs and SDKs][lnk-sdks] article describes the various ways to access these endpoints.
+Im Artikel [Azure IoT SDKs][lnk-sdks] werden die verschiedenen Möglichkeiten zum Zugriff auf diese Endpunkte beschrieben.
 
-Finally, it is important to note that all IoT Hub endpoints use the [TLS][lnk-tls] protocol, and no endpoint is ever exposed on unencrypted/unsecured channels.
+Schließlich ist es wichtig zu wissen, dass alle IoT Hub-Endpunkte das [TLS][lnk-tls]-Protokoll nutzen und Endpunkte niemals auf unverschlüsselten/unsicheren Kanälen verfügbar gemacht werden.
 
-## <a name="field-gateways"></a>Field gateways
-In an IoT solution, a *field gateway* sits between your devices and your IoT Hub endpoints. It is typically located close to your devices. Your devices communicate directly with the field gateway by using a protocol supported by the devices. The field gateway connects to an IoT Hub endpoint using a protocol that is supported by IoT Hub. A field gateway can be highly specialized hardware or a low power computer running software that accomplishes the end-to-end scenario for which the gateway is intended.
+## <a name="field-gateways"></a>Bereichsgateways
+Bei einer IoT-Lösung ist zwischen Ihren Geräten und IoT Hub-Endpunkten ein *Bereichsgateway* angeordnet. Es befindet sich normalerweise in der Nähe Ihrer Geräte. Ihre Geräte kommunizieren direkt mit dem Bereichsgateway, indem sie ein von den Geräten unterstütztes Protokoll nutzen. Das Bereichsgateway verbindet sich mit einem IoT Hub-Endpunkt über ein Protokoll, das von IoT Hub unterstützt wird. Bei einem Bereichsgateway kann es sich um hochspezialisierte Hardware oder einen Computer mit niedriger Leistung handeln, auf dem Software für das End-to-End-Szenario ausgeführt wird, für das das Gateway vorgesehen ist.
 
-You can use the [Azure IoT Gateway SDK][lnk-gateway-sdk] to implement a field gateway. This SDK offers specific functionality such as the ability to multiplex the communication from multiple devices onto the same connection to IoT Hub.
+Sie können das [Azure IoT Gateway SDK][lnk-gateway-sdk] verwenden, um ein Bereichsgateway zu implementieren. Dieses SDK bietet bestimmte Funktionen, z.B. die Möglichkeit, die Kommunikation von mehreren Geräten über eine Verbindung mit IoT Hub im Multiplexverfahren zu übertragen.
 
-## <a name="next-steps"></a>Next steps
-Other reference topics in this IoT Hub developer guide include:
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
-* [Query language for twins, methods, and jobs][lnk-devguide-query]
-* [Quotas and throttling][lnk-devguide-quotas]
-* [IoT Hub MQTT support][lnk-devguide-mqtt]
+* [IoT Hub-Abfragesprache für Gerätezwillinge und Aufträge][lnk-devguide-query]
+* [Kontingente und Drosselung][lnk-devguide-quotas]
+* [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt]
 
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
@@ -68,7 +72,7 @@ Other reference topics in this IoT Hub developer guide include:
 [lnk-amqp]: https://www.amqp.org/
 [lnk-mqtt]: http://mqtt.org/
 [lnk-websockets]: https://tools.ietf.org/html/rfc6455
-[lnk-arm]: ../resource-group-overview.md
+[lnk-arm]: ../azure-resource-manager/resource-group-overview.md
 [lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
 
 [lnk-tls]: https://tools.ietf.org/html/rfc5246
@@ -91,6 +95,7 @@ Other reference topics in this IoT Hub developer guide include:
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO5-->
 
 

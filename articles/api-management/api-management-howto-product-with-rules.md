@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5050b99039da511ed3e6179b5b4ca2d04de527f7
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
 
 
 ---
@@ -31,7 +31,7 @@ Informationen zu fortgeschritteneren Drosselungsszenarien mithilfe der Richtlini
 In diesem Schritt erstellen Sie ein kostenloses Testprodukt, für das keine Abonnementgenehmigung erforderlich ist.
 
 > [!NOTE]
-> Wenn Sie bereits ein Produkt konfiguriert haben und dieses für das Tutorial verwenden möchten, können Sie direkt zum Abschnitt [Konfigurieren von Richtlinien für Aufruflimits und Kontingente][Konfigurieren von Richtlinien für Aufruflimits und Kontingente] wechseln und die weiteren Schritte im Lernprogramm ausführen. Ersetzen Sie hierbei die kostenlose Testversion durch Ihr Produkt.
+> Wenn Sie bereits ein Produkt konfiguriert haben und dieses für das Tutorial verwenden möchten, können Sie direkt zum Abschnitt [Konfigurieren von Richtlinien für Aufruflimits und Kontingente][Configure call rate limit and quota policies] wechseln und die weiteren Schritte im Tutorial ausführen. Ersetzen Sie hierbei die kostenlose Testversion durch Ihr Produkt.
 > 
 > 
 
@@ -39,7 +39,7 @@ Klicken Sie zunächst im Azure-Portal für Ihren API Management-Dienst auf **Ent
 
 ![Herausgeberportal][api-management-management-console]
 
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] im Tutorial [Verwalten Ihrer ersten API in Azure API Management][Verwalten Ihrer ersten API in Azure API Management].
+> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance] des Tutorials [Verwalten Ihrer ersten API in Azure API Management][Manage your first API in Azure API Management].
 > 
 > 
 
@@ -67,7 +67,7 @@ Geben Sie alle Werte ein und klicken Sie auf **Speichern** , um das Produkt zu e
 
 Standardmäßig sind neue Produkte für Benutzer in der Gruppe **Administratoren** sichtbar. Wir werden die Gruppe **Entwickler** hinzufügen. Klicken Sie auf **Kostenlose Testversion** und anschließend auf die Registerkarte **Sichtbarkeit**.
 
-> In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten für Entwickler zu verwalten. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management][Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management].
+> In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten für Entwickler zu verwalten. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen in Azure API Management][How to create and use groups in Azure API Management].
 > 
 > 
 
@@ -78,7 +78,7 @@ Wählen Sie das Kontrollkästchen **Entwickler**, und klicken Sie dann auf **Spe
 ## <a name="add-api"> </a>So fügen Sie eine API zum Produkt hinzu
 In diesem Schritt des Lernprogramms werden Sie die Echo API zu dem neu erstellten Produkt "Kostenloser Test" hinzufügen.
 
-> Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Verwalten Ihrer ersten API in Azure API Management][Verwalten Ihrer ersten API in Azure API Management].
+> Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Verwalten Ihrer ersten API in Azure API Management][Manage your first API in Azure API Management].
 > 
 > 
 
@@ -113,66 +113,82 @@ In diesem Tutorial erstellen wir die Richtlinien [Aufruflimit pro Abonnement](ht
 
 Nachdem Sie den Cursor im Richtlinienelement **Eingehend** platziert haben, klicken Sie auf den Pfeil neben **Aufruflimit pro Abonnement**, um die Richtlinienvorlage einzufügen.
 
-    <rate-limit calls="number" renewal-period="seconds">
-    <api name="name" calls="number">
-    <operation name="name" calls="number" />
-    </api>
-    </rate-limit>
+```xml
+<rate-limit calls="number" renewal-period="seconds">
+<api name="name" calls="number">
+<operation name="name" calls="number" />
+</api>
+</rate-limit>
+```
 
 **Aufruflimit pro Abonnement** kann auf der Produktebene sowie auf der API- und auf der Namensebene für einzelne Vorgänge verwendet werden. Dieses Lernprogramm verwendet Richtlinien auf Produktebene. Löschen Sie also die Elemente **api** und **operation** aus dem Element **rate-limit**, sodass nur das äußere **rate-limit**-Element verbleibt, wie im folgenden Beispiel gezeigt.
 
-    <rate-limit calls="number" renewal-period="seconds">
-    </rate-limit>
+```xml
+<rate-limit calls="number" renewal-period="seconds">
+</rate-limit>
+```
 
 Für das Produkt „Kostenlose Testversion“ sind maximal 10 Aufrufe pro Minute erlaubt. Geben Sie also **10** als Wert für das **calls**-Attribut und **60** für das **renewal-period**-Attribut ein.
 
-    <rate-limit calls="10" renewal-period="60">
-    </rate-limit>
+```xml
+<rate-limit calls="10" renewal-period="60">
+</rate-limit>
+```
 
 Um die Richtlinie **Nutzungskontingent pro Abonnement** zu konfigurieren, platzieren Sie den Cursor innerhalb des **inbound**-Elements direkt unterhalb des neu erstellten **rate-limit**-Elements und klicken dann auf den Pfeil links neben **Nutzungskontingent pro Abonnement einstellen**.
 
-    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-    <api name="name" calls="number" bandwidth="kilobytes">
-    <operation name="name" calls="number" bandwidth="kilobytes" />
-    </api>
-    </quota>
+```xml
+<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+<api name="name" calls="number" bandwidth="kilobytes">
+<operation name="name" calls="number" bandwidth="kilobytes" />
+</api>
+</quota>
+```
 
 Da diese Richtlinie auf der Produktebene arbeiten soll, löschen Sie die Elemente mit den Namen **api** und **operation**, wie im folgenden Beispiel gezeigt.
 
-    <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
-    </quota>
+```xml
+<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
+</quota>
+```
 
 Kontingente können basierend auf der Anzahl von Aufrufen pro Intervall, der Bandbreite oder beiden Werten konfiguriert werden. In diesem Lernprogramm drosseln wir nicht nach Bandbreite. Löschen Sie also das **bandwidth**-Attribut.
 
-    <quota calls="number" renewal-period="seconds">
-    </quota>
+```xml
+<quota calls="number" renewal-period="seconds">
+</quota>
+```
 
 Für das Produkt Kostenloser Test gilt ein Kontingent von 200 Aufrufen pro Woche. Geben Sie **200** als Wert für das **calls**-Attribut und dann **604800** als Wert für das **renewal-period**-Attribut ein.
 
-    <quota calls="200" renewal-period="604800">
-    </quota>
+```xml
+<quota calls="200" renewal-period="604800">
+</quota>
+```
 
-> Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl von Tagen (7) mit der Anzahl von Stunden pro Tag (24), der Anzahl von Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 · 24 · 60 · 60 = 604.800.
+> Die Richtlinienintervalle werden in Sekunden angegeben. Um die Intervalle für eine Woche zu berechnen, multiplizieren Sie die Anzahl der Tage (7) mit der Anzahl der Stunden pro Tag (24), der Anzahl der Minuten pro Stunde (60) und der Anzahl von Sekunden pro Minute (60): 7 * 24 * 60 x 60 = 604800.
 > 
 > 
 
 Konfigurieren Sie die Richtlinie, sodass diese dem folgenden Beispiel entspricht.
 
-    <policies>
-        <inbound>
-            <rate-limit calls="10" renewal-period="60">
-            </rate-limit>
-            <quota calls="200" renewal-period="604800">
-            </quota>
-            <base />
-
-    </inbound>
-    <outbound>
-
+```xml
+<policies>
+    <inbound>
+        <rate-limit calls="10" renewal-period="60">
+        </rate-limit>
+        <quota calls="200" renewal-period="604800">
+        </quota>
         <base />
 
-        </outbound>
-    </policies>
+</inbound>
+<outbound>
+
+    <base />
+
+    </outbound>
+</policies>
+```
 
 Nachdem Sie die gewünschten Richtlinien konfiguriert haben, klicken Sie auf **Speichern**.
 
@@ -286,30 +302,30 @@ Wenn das Aufruflimit von 10 Aufrufen pro Minute aktiv ist, werden nachfolgende A
 [api-management-subscription-added]: ./media/api-management-howto-product-with-rules/api-management-subscription-added.png
 [api-management-add-subscription-multiple]: ./media/api-management-howto-product-with-rules/api-management-add-subscription-multiple.png
 
-[Hinzufügen von Operationen zu einer API]: api-management-howto-add-operations.md
-[Hinzufügen und Veröffentlichen eines Produkts]: api-management-howto-add-products.md
-[Überwachung und Analyse]: ../api-management-monitoring.md
-[Hinzufügen von APIs zu einem Produkt]: api-management-howto-add-products.md#add-apis
-[Veröffentlichen eines Produkts]: api-management-howto-add-products.md#publish-product
-[Verwalten Ihrer ersten API in Azure API Management]: api-management-get-started.md
-[Erstellen und Verwenden von Gruppen in Azure API Management]: api-management-howto-create-groups.md
-[Anzeigen von Abonnenten eines Produkts]: api-management-howto-add-products.md#view-subscribers
-[Erste Schritte mit Azure API Management]: api-management-get-started.md
-[Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
-[Nächste Schritte]: #next-steps
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: ../api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Manage your first API in Azure API Management]: api-management-get-started.md
+[How to create and use groups in Azure API Management]: api-management-howto-create-groups.md
+[View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Next steps]: #next-steps
 
-[Erstellen eines Produkts]: #create-product
-[Konfigurieren von Richtlinien für Aufruflimits und Kontingente]: #policies
-[Hinzufügen einer API zum Produkt]: #add-api
-[Veröffentlichen des Produkts]: #publish-product
-[Abonnieren des Produkts über ein Entwicklerkonto]: #subscribe-account
-[Aufrufen einer Operation und Testen des Aufruflimits]: #test-rate-limit
+[Create a product]: #create-product
+[Configure call rate limit and quota policies]: #policies
+[Add an API to the product]: #add-api
+[Publish the product]: #publish-product
+[Subscribe a developer account to the product]: #subscribe-account
+[Call an operation and test the rate limit]: #test-rate-limit
 
-[Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate (Einschränken der Aufrufrate)
-[Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota (Festlegen des Nutzungskontingents)
+[Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
+[Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

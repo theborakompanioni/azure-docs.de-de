@@ -1,20 +1,24 @@
 ---
 title: Azure Active Directory Identity Protection-Playbook| Microsoft Docs
-description: Erfahren Sie, wie Sie mit Azure AD Identity Protection für Angreifer die Möglichkeit einschränken können, eine kompromittierte Identität oder ein Gerät auszunutzen, und wie Sie eine Identität oder ein Gerät schützen, das zuvor vermutlich oder mit Sicherheit kompromittiert war.
+description: "Erfahren Sie, wie Sie mit Azure AD Identity Protection für Angreifer die Möglichkeit einschränken können, eine kompromittierte Identität oder ein Gerät auszunutzen, und wie Sie eine Identität oder ein Gerät schützen, das zuvor vermutlich oder mit Sicherheit kompromittiert war."
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 11/11/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
+ms.openlocfilehash: 87070d7680a6d48e94099b47f9dc336a75332f6c
+
 
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
@@ -32,7 +36,7 @@ Dieser Abschnitt bietet Ihnen die Schritte zum Simulieren der folgenden Risikoer
 
 Andere Risikoereignisse können nicht auf sichere Weise simuliert werden.
 
-### <a name="signins-from-anonymous-ip-addresses"></a>Anmeldungen von anonymen IP-Adressen
+### <a name="sign-ins-from-anonymous-ip-addresses"></a>Anmeldungen von anonymen IP-Adressen
 Bei dieser Art von Risikoereignis werden Benutzer identifiziert, die sich erfolgreich unter einer IP-Adresse angemeldet haben, die als anonyme Proxy-IP-Adresse identifiziert wurde. Diese Proxys werden von Personen verwendet, die die IP-Adresse ihres Geräts verbergen möchten, und können in böswilliger Absicht eingesetzt werden.
 
 **Führen Sie die folgende Schritte aus, um eine Anmeldung über eine anonyme IP-Adresse zu simulieren,**:
@@ -43,19 +47,19 @@ Bei dieser Art von Risikoereignis werden Benutzer identifiziert, die sich erfolg
 
 Die Anmeldung wird auf dem Identity Protection Dashboard innerhalb von fünf Minuten angezeigt. 
 
-### <a name="signins-from-unfamiliar-locations"></a>Anmeldungen von unbekannten Standorten
+### <a name="sign-ins-from-unfamiliar-locations"></a>Anmeldungen von unbekannten Standorten
 Beim Risiko vom Typ „Unbekannter Standort“ handelt es sich um ein Verfahren zur Echtzeitauswertung von Anmeldungen, bei dem die letzten Standorte (IP, Breiten-/Längengrad und ASN) berücksichtigt werden, um neue oder unbekannte Orte zu ermitteln. Das System speichert vorherige IPs, Breiten-/Längengrad und ASNs eines Benutzers und stuft diese als „vertraute“ Orte ein. Ein Anmeldestandort wird als nicht vertraut angesehen, wenn er nicht mit einem der vertrauten Standorte identisch ist.
 
 Azure Active Directory Identity Protection:  
 
-* benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden.
-* ignoriert Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem vorhandenen bekannten Speicherort liegen.
+*  benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden.
+*  ignoriert Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem vorhandenen bekannten Speicherort liegen.
 
 Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit einem Gerät anmelden, der bzw. das für das Konto noch nicht verwendet wurde. 
 
 **Gehen Sie folgendermaßen vor, um eine Anmeldung von einem unbekannten Ort zu simulieren**:
 
-1. Wählen Sie ein Konto aus, das bereits über einen Anmeldeverlauf von mindestens 14 Tagen verfügt. 
+1. Wählen Sie ein Konto aus, das bereits über einen Anmeldeverlauf von mindestens 14 Tagen verfügt. 
 2. Entscheiden Sie sich für eine der folgenden Optionen:
    
    a. Navigieren Sie bei Verwendung eines VPN zu [https://myapps.microsoft.com](https://myapps.microsoft.com) , und geben Sie die Anmeldeinformationen des Kontos ein, für das Sie das Risikoereignis simulieren möchten.
@@ -65,7 +69,7 @@ Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit ei
 Die Anmeldung wird auf dem Identity Protection Dashboard innerhalb von fünf Minuten angezeigt.
 
 ### <a name="impossible-travel-to-atypical-location"></a>Unmöglicher Ortswechsel zu atypischen Orten
-Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus einen Machine Learning-Ansatz nutzt, um falsch positive Ergebnisse auszusieben, z. B. der unmögliche Ortswechsel vertrauter Geräte oder Anmeldungen über VPNs, die von anderen Benutzern im Verzeichnis verwendet werden. Außerdem ist für den Algorithmus ein Anmeldeverlauf von 3 bis 14 Tagen des Benutzers erforderlich, bevor mit dem Generieren von Risikoereignissen begonnen wird.
+Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus einen Machine Learning-Ansatz nutzt, um falsch positive Ergebnisse auszusieben, z. B. der unmögliche Ortswechsel vertrauter Geräte oder Anmeldungen über VPNs, die von anderen Benutzern im Verzeichnis verwendet werden. Außerdem ist für den Algorithmus ein Anmeldeverlauf von 3 bis 14 Tagen des Benutzers erforderlich, bevor mit dem Generieren von Risikoereignissen begonnen wird.
 
 **Führen Sie die folgenden Schritte aus, um einen unmöglichen Ortswechsel zu einen atypischen Ort zu simulieren**:
 
@@ -108,7 +112,7 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
     ![Playbook](./media/active-directory-identityprotection-playbook/201.png "Playbook")
     <br>
 
-## <a name="signin-risk"></a>Anmelderisiko
+## <a name="sign-in-risk"></a>Anmelderisiko
 **Führen Sie die folgenden Schritte aus, um das Anmelderisiko zu testen:**
 
 1. Melden Sie sich unter [https://portal.azure.com ](https://portal.azure.com) mit den Anmeldeinformationen für „Globaler Administrator“ für Ihren Mandanten an.
@@ -126,13 +130,16 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 9. Klicken Sie auf **Speichern**.
 10. Sie können den risikobasierten bedingten Zugriff nun testen, indem Sie die Risikoereignisse „Unbekannte Standorte“ oder „Anonyme IP-Adresse“ simulieren, da beide als Risikoereignisse der Stufe **Mittel** angesehen werden.
 
-<br>
-![Playbook](./media/active-directory-identityprotection-playbook/200.png "Playbook")
-<br>
 
-## <a name="see-also"></a>Weitere Informationen
+![Playbook](./media/active-directory-identityprotection-playbook/200.png "Playbook")
+
+
+## <a name="see-also"></a>Siehe auch
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

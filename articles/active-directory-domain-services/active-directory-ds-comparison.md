@@ -1,12 +1,12 @@
 ---
-title: 'Azure AD Domain Services: Vergleich zwischen Azure AD Domain Services und DIY-Domänencontrollern | Microsoft Docs'
-description: Vergleich zwischen Azure Active Directory Domain Services und DIY-Domänencontrollern
+title: "Azure AD Domain Services: Vergleich zwischen Azure AD Domain Services und DIY-Domänencontrollern | Microsoft Docs"
+description: "Vergleich zwischen Azure Active Directory Domain Services und DIY-Domänencontrollern"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 67575bbbb7d99ffeef3cb5dab74f4a68065bacc1
+
 
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>So entscheiden Sie, ob die Azure AD Domain Services für Ihren Anwendungsfall geeignet sind
@@ -87,7 +91,7 @@ Komplexe Gruppenrichtlinienelemente werden in der verwalteten AAD DS-Domäne nic
 #### <a name="geo-dispersed-deployments"></a>Geografisch verteilte Bereitstellungen
 Verwaltete Azure AD Domain Services-Domänen stehen in einem einzigen virtuellen Netzwerk in Azure zur Verfügung. Für Szenarios, die es erforderlich machen, dass Domänencontroller in mehreren Azure-Regionen weltweit zur Verfügung stehen, stellt das Einrichten von Domänencontrollern in Azure-IaaS-VMs möglicherweise die bessere Alternative dar.
 
-## <a name="'do-it-yourself'-(diy)-ad-deployment-options"></a>DIY-AD-Bereitstellungsoptionen
+## <a name="do-it-yourself-diy-ad-deployment-options"></a>DIY-AD-Bereitstellungsoptionen
 Es gibt Anwendungsfälle, bei denen möglicherweise einige der Funktionen einer Windows Server AD-Installation benötigt werden. Erwägen Sie in diesen Fällen eine der folgenden DIY-Optionen (Do-It-Yourself):
 
 * **Eigenständige Clouddomäne:** Sie können eine eigenständige Clouddomäne mithilfe von virtuellen Azure-Computern einrichten, die als Domänencontroller konfiguriert wurden. Diese Infrastruktur kann nicht in Ihre lokale AD-Umgebung integriert werden. Diese Option erfordert einen anderen Satz mit Anmeldeinformationen, um sich bei den VMs in der Cloud anzumelden und diese zu verwalten.
@@ -106,6 +110,9 @@ Wir haben [Richtlinien für die Bereitstellung von Windows Server Active Directo
 * [Bereitstellungsszenarios: Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

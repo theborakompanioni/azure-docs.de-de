@@ -1,12 +1,12 @@
 ---
-title: Konzeptioneller Überblick über benutzerdefinierte Domänennamen in Azure Active Directory | Microsoft Docs
-description: Erläutert das Konzept der Verwendung von benutzerdefinierten Domänennamen in Azure Active Directory, einschließlich Verbundkonfiguration für einmaliges Anmelden.
+title: "Konzeptioneller Überblick über benutzerdefinierte Domänennamen in Azure Active Directory | Microsoft Docs"
+description: "Erläutert das Konzept der Verwendung von benutzerdefinierten Domänennamen in Azure Active Directory, einschließlich Verbundkonfiguration für einmaliges Anmelden."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeffsta
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: fd0c5def-0da2-43af-81bc-76f4cfe86afd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: curtand;jeffsta
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2faa2c270b192a9b3476fa911333f6abfabb1ee9
+
 
 ---
 # <a name="conceptual-overview-of-custom-domain-names-in-azure-active-directory"></a>Konzeptioneller Überblick über benutzerdefinierte Domänennamen in Azure Active Directory
@@ -58,6 +62,9 @@ Aufgaben der Domänenverwaltung können über das klassische Azure-Portal oder m
 * [Verwenden von PowerShell zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Verwenden der Azure AD-Graph-API zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

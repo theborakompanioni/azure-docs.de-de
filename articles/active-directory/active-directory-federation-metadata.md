@@ -1,12 +1,12 @@
 ---
 title: Azure AD-Verbundmetadaten | Microsoft Docs
-description: In diesem Artikel wird das Verbundmetadaten-Dokument beschrieben, das von Azure Active Directory für Dienste veröffentlicht wird, die Azure Active Directory-Token akzeptieren.
+description: "In diesem Artikel wird das Verbundmetadaten-Dokument beschrieben, das von Azure Active Directory für Dienste veröffentlicht wird, die Azure Active Directory-Token akzeptieren."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: priyamo
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5388af5524a8e14d55c611e4433258d3cb8e0cdc
+
 
 ---
 # <a name="federation-metadata"></a>Verbundmetadaten
@@ -142,7 +146,7 @@ Die folgenden Metadaten enthalten ein Beispiel für ein `PassiveResistorEndpoint
   </IDPSSODescriptor>
 ```
 
-Auf ähnliche Weise werden die Endpunkte für die gemeinsamen SAML 2.0-Protokollendpunkte in den mandantenunabhängigen Verbundmetadaten veröffentlicht, wie im folgenden Beispiel gezeigt wird.
+Auf ähnliche Weise werden die Endpunkte für die gemeinsamen SAML 2.0-Protokollendpunkte in den mandantenunabhängigen Verbundmetadaten veröffentlicht, wie im folgenden Beispiel gezeigt wird.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -154,6 +158,6 @@ Auf ähnliche Weise werden die Endpunkte für die gemeinsamen SAML 2.0-Protokoll
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

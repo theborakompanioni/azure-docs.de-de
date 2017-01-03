@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 11/30/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0a642046ee26c242900b480a5144f53f2ac23769
+ms.sourcegitcommit: 71eb6a2fecbd76c9715b9a556a7ffd31b5b4950e
+ms.openlocfilehash: 6b788b3120565895e908bdfc4c9267e715bc5bec
 
 
 ---
@@ -25,8 +25,8 @@ Mit Azure Active Directory (AD) Privileged Identity Management können Sie den Z
 
 > [!NOTE]
 > Privileged Identity Management ist nur mit der Premium P2 Edition von Azure Active Directory verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-> 
-> 
+>
+>
 
 Organisationen möchten die Anzahl der Personen minimieren, die auf sichere Informationen oder Ressourcen zugreifen können, da dadurch das Risiko reduziert wird, dass ein böswilligen Benutzers Zugriff hat. Benutzer müssen jedoch immer noch in der Lage sein, in Azure-, Office 365- oder SaaS-Apps privilegierte Vorgänge auszuführen. Organisationen gewähren Benutzern privilegierten Zugriff in Azure AD, ohne zu überwachen, was Benutzer mit ihren Administratorberechtigungen machen. Mit Azure AD Privileged Identity Management können Sie dieses Risiko in den Griff bekommen.  
 
@@ -53,8 +53,8 @@ Im [Azure-Portal](https://portal.azure.com/)können Sie mit der Nutzung von Azur
 
 > [!NOTE]
 > Sie müssen ein globaler Administrator mit einem Geschäftskonto (wie @yourdomain.com),) und keinem Microsoft-Konto (wie @outlook.com),) sein, um Azure AD Privileged Identity Management für ein Verzeichnis zu aktivieren.
-> 
-> 
+>
+>
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
 2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen. Wählen Sie das Verzeichnis aus, in dem Sie Azure AD Privileged Identity Management verwenden möchten.
@@ -107,6 +107,9 @@ Ihnen stehen zwei Möglichkeiten zur Verfügung, um nachzuverfolgen, wie Ihre Mi
 
 Die zweite Option besteht darin, regelmäßige [Zugriffsüberprüfungen](active-directory-privileged-identity-management-how-to-start-security-review.md)einzurichten. Diese Zugriffsüberprüfungen können von einem zugewiesenen Prüfer (wie etwa einem Teamleiter) durchgeführt werden, oder die Mitarbeiter führen die Überprüfung selbst durch. Dies ist die beste Möglichkeit, um zu prüfen, wer noch Zugriff benötigt und wer nicht mehr.
 
+## <a name="azure-ad-pim-at-subscription-expiration"></a>Azure AD PIM bei Abonnementablauf
+Vor dem Erreichen der allgemeinen Verfügbarkeit war Azure AD PIM als Vorschauversion verfügbar, und für die Vorschau auf Azure AD PIM wurden keine Lizenzüberprüfungen für einen Mandanten durchgeführt.  Jetzt, da Azure AD PIM allgemein verfügbar ist, muss im Mandanten ein Testabonnement oder kostenpflichtiges Abonnement vorhanden sein, damit PIM nach Dezember 2016 weiterhin verwendet werden kann.  Wenn Ihr Unternehmen Azure AD Premium P2 nicht erwirbt, oder Ihr Abonnement abläuft, wird Azure AD PIM nicht mehr in Ihrem Mandanten verfügbar sein.  Weitere Informationen finden Sie in den [Abonnementanforderungen von Azure AD PIM](./privileged-identity-management/subscription-requirements.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
@@ -121,6 +124,6 @@ Die zweite Option besteht darin, regelmäßige [Zugriffsüberprüfungen](active-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

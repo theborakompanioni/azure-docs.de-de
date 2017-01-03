@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2016
+ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b37d419f799e5a56c67344ca634bdecec2f3c1f2
+ms.sourcegitcommit: 9cc0081588f54f77a69ded336d063651b12c8dd8
+ms.openlocfilehash: a185e802a2713c6b6d4101477f0fc61bca0bf29c
 
 
 ---
@@ -25,7 +25,8 @@ Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstel
 
 1. Lebensdauer von Sicherheitstoken, die von Azure Active Directory (Azure AD) B2C ausgegeben werden.
 2. Lebensdauer von Webanwendungssitzungen, die von Azure AD B2C verwaltet werden.
-3. App- und richtlinienübergreifendes SSO-Verhalten in Ihrem B2C-Mandanten.
+3. Formate wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheitstoken
+4. App- und richtlinienübergreifendes SSO-Verhalten in Ihrem B2C-Mandanten.
 
 Sie können diese Funktion in Ihrem B2C-Mandanten wie folgt verwenden:
 
@@ -37,8 +38,6 @@ Sie können diese Funktion in Ihrem B2C-Mandanten wie folgt verwenden:
 6. Nehmen Sie die gewünschten Änderungen vor. Informieren Sie sich in den folgenden Abschnitten zu verfügbaren Eigenschaften.
 7. Klicken Sie auf **OK**.
 8. Klicken Sie oben auf dem Blatt auf **Speichern**.
-
-![Screenshot von Token, Sitzung und SSO-Konfiguration](./media/active-directory-b2c-token-session-sso/token-session-sso.png)
 
 ## <a name="token-lifetimes-configuration"></a>Konfiguration der Tokengültigkeitsdauer
 Azure AD B2C unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-b2c-reference-protocols.md) zum Aktivieren des sicheren Zugriffs auf geschützte Ressourcen. Um diese Unterstützung zu implementieren, gibt Azure AD B2C verschiedene [Sicherheitstoken](active-directory-b2c-reference-tokens.md) aus. Dies sind die Eigenschaften, die Sie zum Verwalten der Gültigkeitsdauer von Sicherheitstoken, die von Azure AD B2C ausgegeben werden, verwenden können:
@@ -61,7 +60,20 @@ Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren k
 * Ermöglichen Sie einem Benutzer, unbegrenzt in einer mobilen Anwendung angemeldet zu bleiben, solange er ständig in der Anwendung aktiv ist. Hierzu können Sie die Option **Lebensdauer für gleitendes Fenster des Aktualisierungstokens (Tage)** in Ihrer Richtlinie auf **Unbegrenzt** festlegen.
 * Erfüllen Sie die Sicherheits- und Complianceanforderungen Ihrer Branche durch Festlegung der entsprechenden Zugriffstoken-Gültigkeitsdauer.
 
-## <a name="session-configuration"></a>Sitzungskonfiguration
+## <a name="token-compatibility-settings"></a>Tokenkompatibilitätseinstellungen
+Das Format wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheitstoken wurde geändert. Diese Änderung wurde zur Verbesserung der Standardprotokollunterstützung und zur besseren Interoperabilität mit Identitätsbibliotheken von Drittanbietern vorgenommen. Um die fehlerfreie Nutzung vorhandener Apps zu gewährleisten, wurden die folgenden Eigenschaften erstellt, um Kunden die Anwendung nach Bedarf zu ermöglichen:
+
+* **Issuer (iss) claim** (Ausstelleranspruch): Der Azure AD B2C-Mandant, der das Token ausgestellt hat
+  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: Dies ist der Standardwert.
+  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Dieser Wert enthält IDs für den B2C-Mandanten und die in der Tokenanforderung verwendete Richtlinie. Verwenden Sie diesen Wert, wenn für Ihre App oder Bibliothek Azure AD B2C die [OpenID Connect Discovery 1.0-Spezifikationen](http://openid.net/specs/openid-connect-discovery-1_0.html) erfüllen muss.
+* **Subject (sub) claim** (Antragstelleranspruch): Die Entität, d.h. der Benutzer, für den das Token Informationen bestätigt
+  * **ObjectID**: Dies ist der Standardwert. Er wird als Objekt-ID des Benutzers im Verzeichnis in den `sub`-Anspruch des Tokens eingefügt.
+  * **Not supported** (Nicht unterstützt): Nur für Abwärtskompatibilität. Es wird empfohlen, baldmöglichst auf **ObjectID** umzustellen.
+* **Claim representing policy ID** (Anspruch, der für die Richtlinien-ID steht): Der Anspruchstyp, in den die in der Tokenanforderung verwendete Richtlinien-ID eingefügt wird
+  * **tfp**: Dies ist der Standardwert.
+  * **acr**: Nur für Abwärtskompatibilität. Es wird empfohlen, baldmöglichst auf `tfp` umzustellen.
+
+## <a name="session-behavior"></a>Sitzungsverhalten
 Azure AD B2C unterstützt das [OpenID Connect-Authentifizierungsprotokoll](active-directory-b2c-reference-oidc.md) zum Aktivieren der sicheren Anmeldung bei Webanwendungen. Dies sind die Eigenschaften, die Sie verwenden können, um Webanwendungssitzungen zu verwalten:
 
 * **Lebensdauer der Web-App-Sitzung (Minuten)**: Die Gültigkeitsdauer von Azure AD B2C-Sitzungscookies, die nach erfolgreicher Authentifizierung des Benutzers im Browser gespeichert werden.
@@ -86,6 +98,6 @@ Wenn Sie in Ihrem B2C-Mandanten über mehrere Anwendungen und Richtlinien verfü
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

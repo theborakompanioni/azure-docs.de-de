@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 12/14/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: f26ca6e30e3070b2d2ee1861b88c52013158ba03
-ms.openlocfilehash: 45f52d4e02896d38726552adbe81261551151683
+ms.sourcegitcommit: 70448a88fb9fc338132c5199aafaac02bd4aeb5a
+ms.openlocfilehash: ac58f3f5498edbd6f7b19db647a9513a485d6dbf
 
 
 ---
@@ -308,7 +308,7 @@ Nachdem die Voraussetzungen erfüllt wurden, können in Domänen eingebundene Co
 In Domänen eingebundene Computer mit Windows 10 Anniversary Update und Windows Server 2016 werden automatisch beim nächsten Geräteneustart oder bei der nächsten Benutzeranmeldung bei Windows für Azure AD registriert. Neue Computer, die der Domäne hinzugefügt werden, werden beim Geräteneustart nach dem Vorgang zum Einbinden des Computers in die Domäne bei Azure AD registriert.
 
 > [!NOTE]
-> In die Domäne eingebundene Windows 10-Computer werden nur dann automatisch bei Azure AD registriert, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist.
+> In Domänen eingebundene Windows 10 Computer mit dem November-Update für Windows 10 werden nur dann automatisch bei Azure AD registriert, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist.
 > 
 > 
 
@@ -317,7 +317,7 @@ Sie können ein Gruppenrichtlinienobjekt verwenden, um den Rollout der automatis
 Für den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter einem anderen Betriebssystem als Windows 10 ist ein Windows Installer-Paket verfügbar, das auf den von Ihnen ausgewählten Computern bereitgestellt werden kann.
 
 > [!NOTE]
-> Die Gruppenrichtlinie für die Rolloutsteuerung löst auch die Registrierung von in die Domäne eingebundenen Windows 8.1-Computern aus. Sie können die Richtlinie für die Registrierung von in die Domäne eingebundenen Computern mit Windows 8.1 verwenden. Wenn Sie mehrere Windows-Versionen verwenden, einschließlich Windows 7 oder Windows Server-Versionen, können Sie alle Computer ohne Windows 10 oder Windows Server 2016 mit einem Windows Installer-Paket registrieren.
+> Für alle Nicht-Windows 10/Windows Server 2016-Computer wird empfohlen, das Windows Installer-Paket wie nachfolgend in diesem Dokument beschrieben zu verwenden.
 > 
 > 
 
@@ -358,6 +358,6 @@ Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im K
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

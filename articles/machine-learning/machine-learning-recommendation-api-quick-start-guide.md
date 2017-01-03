@@ -1,57 +1,62 @@
 ---
-title: 'Schnellstartanleitung: Machine Learning-Empfehlungs-API | Microsoft Docs'
-description: Azure Machine Learning-Empfehlungen – Erste Schritte
+title: 'Schnellstartanleitung: Machine Learning-Empfehlungs-API | Microsoft-Dokumentation'
+description: "Azure Machine Learning-Empfehlungen – Erste Schritte"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: LuisCabrer
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 5bce1a4a-1ad6-473f-812b-84f800fdc09a
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 11/17/2016
 ms.author: luisca
+translationtype: Human Translation
+ms.sourcegitcommit: 099090d06163f15a08592e25f6171cfacf24b0f1
+ms.openlocfilehash: bf47dd8f88405f2bed31c621e37531e3641ddc6c
+
 
 ---
-# Kurzanleitung für die Machine Learning Empfehlungen-API
+# <a name="quick-start-guide-for-the-machine-learning-recommendations-api"></a>Kurzanleitung für die Machine Learning Empfehlungen-API
 > [!NOTE]
-> Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw. Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
+> Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw.
+> Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate)
 > 
 > 
 
 Dieses Dokument beschreibt, wie Sie Ihren Dienst oder Ihre Anwendung zur Verwendung von Microsoft Azure Machine Learning-Empfehlungen einrichten. Weitere Informationen zur Empfehlungs-API finden Sie im [Katalog](http://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
 
-[!INCLUDE [machine-learning-kostenlose-Testversion](../../includes/machine-learning-free-trial.md)]
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Allgemeine Übersicht
+## <a name="general-overview"></a>Allgemeine Übersicht
 Zur Verwendung von Azure Machine Learning-Empfehlungen müssen Sie die folgenden Schritte ausführen:
 
 * Erstellen eines Modells – ein Modell ist ein Container für Ihre Nutzungsdaten, Katalogdaten und das Empfehlungsmodell.
-* Importieren von Katalogdaten – Kataloge enthalten Metadateninformationen zu den Elementen.
-* Importieren von Nutzungsdaten – Nutzungsdaten können auf zwei Arten (oder beide Arten) hochgeladen werden:
+* Importieren von Katalogdaten – Kataloge enthalten Metadateninformationen zu den Elementen. 
+* Importieren von Nutzungsdaten – Nutzungsdaten können auf eine von zwei Arten (oder beide Arten) hochgeladen werden:
   * Durch Hochladen einer Datei, die die Verwendung von Daten enthält.
   * Durch das Senden von Ereignissen zur Datenerfassung.
     In der Regel laden Sie eine Nutzungsdatei hoch, damit Sie ein erstes Empfehlungsmodell (bootstrap) erstellen und dieses verwenden können, bis das System über das Datenerfassungsformat ausreichend Daten gesammelt hat.
 * Entwickeln eines Empfehlungsmodells – Dies ist ein asynchroner Vorgang, in dem das Empfehlungssystem anhand aller Nutzungsdaten ein Empfehlungsmodell erstellt. Dieser Vorgang dauert einige Minuten oder mehrere Stunden, je nach Größe der Daten und der Build-Konfigurationsparameter. Beim Auslösen des Builds erhalten Sie eine Build-ID. Überprüfen Sie anhand dieser ID, wann der Buildprozess beendet wurde, bevor Sie beginnen, die Empfehlungen zu nutzen.
 * Empfehlungen nutzen – Sie erhalten Empfehlungen für ein bestimmtes Element oder eine Liste von Elementen.
 
-Die oben aufgeführten Schritte erfolgen über die Azure Machine Learning-Empfehlungs-API. Sie können [auch im Katalog](http://1drv.ms/1xeO2F3) eine Beispielanwendung herunterladen, in der die einzelnen Schritte implementiert sind.
+Die oben aufgeführten Schritte erfolgen über die Azure Machine Learning-Empfehlungs-API.  Sie können [auch im Katalog](http://1drv.ms/1xeO2F3)
 
-## Einschränkungen
+## <a name="limitations"></a>Einschränkungen
 * Die Maximale Anzahl von Modellen pro Abonnement beträgt 10.
 * Die maximale Anzahl von Elementen, die ein Katalog aufnehmen kann, beträgt 100.000.
 * Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
-* Die maximale Größe der Daten, die in POST gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
+* Die maximale Größe der Daten, die in POST gesendet werden können (z.B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
+* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
 
-## Integration
-### Authentifizierung
-Microsoft Azure Marketplace unterstützt sowohl die Standard- als auch die OAuth-Authentifizierungsmethode. Sie können die Kontoschlüssel einfach finden, indem Sie im Marketplace unter Ihren [Kontoeinstellungen](https://datamarket.azure.com/account/keys) zu den Schlüsseln navigieren.
+## <a name="integration"></a>Integration
+### <a name="authentication"></a>Authentifizierung
+Microsoft Azure Marketplace unterstützt sowohl die Standard- als auch die OAuth-Authentifizierungsmethode. Sie können die Kontoschlüssel einfach finden, indem Sie im Marketplace unter Ihren [Kontoeinstellungen](https://datamarket.azure.com/account/keys)zu den Schlüsseln navigieren. 
 
-#### Standardauthentifizierung
+#### <a name="basic-authentication"></a>Standardauthentifizierung
 Fügen Sie den Autorisierungsheader hinzu:
 
     Authorization: Basic <creds>
@@ -70,27 +75,27 @@ Konvertieren zu Base64 (JavaScript)
 
 
 
-### Dienst-URI
-Den Dienststamm-URI für die APIs zu Azure Machine Learning-Empfehlungen finden Sie [hier](https://api.datamarket.azure.com/amla/recommendations/v2/).
+### <a name="service-uri"></a>Dienst-URI
+Den Dienststamm-URI für die APIs zu Azure Machine Learning-Empfehlungen finden Sie [hier](https://api.datamarket.azure.com/amla/recommendations/v2/)
 
 Der vollständige Dienst-URI wird unter Verwendung von Elementen der OData-Spezifikation angegeben.
 
-### API-Version
+### <a name="api-version"></a>API-Version
 Jeder API-Aufruf enthält am Ende einen Abfrageparameter namens apiVersion. Dieser muss auf 1.0 festgelegt sein.
 
-### Groß-/Kleinschreibung bei IDs
+### <a name="ids-are-case-sensitive"></a>Groß-/Kleinschreibung bei IDs
 Bei IDs, die von den APIs zurückgegeben werden, muss die Groß-/Kleinschreibung beachtet werden, wenn sie in nachfolgenden API-Aufrufen als Parameter weitergegeben werden. Beispielsweise muss bei Modell- und Katalog-IDs die Groß-/Kleinschreibung beachtet werden.
 
-### Modellerstellung
+### <a name="create-a-model"></a>Modellerstellung
 Erstellen einer Anforderung „Modell erstellen“:
 
 | HTTP-Methode | URI |
 |:--- |:--- |
-| POST |`<rootURI>/CreateModel?modelName=%27<model_name>%27&apiVersion=%271.0%27`<br><br>Beispiel<br>`<rootURI>/CreateModel?modelName=%27MyFirstModel%27&apiVersion=%271.0%27`: |
+| POST |`<rootURI>/CreateModel?modelName=%27<model_name>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/CreateModel?modelName=%27MyFirstModel%27&apiVersion=%271.0%27` |
 
 | Parametername | Gültige Werte |
 |:--- |:--- |
-| modelName |Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 |
+| modelName |Nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstrich (_) sind zulässig.<br>Max. Länge: 20 |
 | apiVersion |1,0 |
 |  | |
 | Anforderungstext |KEINE |
@@ -100,7 +105,7 @@ Erstellen einer Anforderung „Modell erstellen“:
 HTTP-Statuscode: 200
 
 * `feed/entry/content/properties/id` - Enthält die Modell-ID.
-  **Hinweis**: Bei der Modell-ID muss die Groß-/Kleinschreibung beachtet werden.
+  Beachten Sie, dass bei der Modell-ID die Groß-/Kleinschreibung beachtet werden muss.
 
 OData-XML
 
@@ -133,20 +138,20 @@ OData-XML
     </feed>
 
 
-### Katalogdaten importieren
+### <a name="import-catalog-data"></a>Katalogdaten importieren
 Wenn Sie durch mehrere Aufrufe mehrere Katalogdateien zum gleichen Modell hochladen, werden nur die neuen Katalogelemente eingefügt. Vorhandene Elemente bleiben innerhalb der ursprünglichen Werte.
 
 | HTTP-Methode | URI |
 |:--- |:--- |
-| POST |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>Beispiel<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`: |
+| POST |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27` |
 
 | Parametername | Gültige Werte |
 |:--- |:--- |
-| modelId |Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
-| filename |Dies ist ein Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 |
+| modelId |Eindeutiger Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden.) |
+| filename |Dies ist der Textbezeichner des Katalogs.<br>Nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstrich (_) sind zulässig.<br>Maximale Länge: 50 |
 | apiVersion |1,0 |
 |  | |
-| Anforderungstext |Katalogdaten. Format:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Elementname</td><td>Ja</td><td>Alphanumerisch, max. Länge: 255</td><td>Elementname</td></tr><tr><td>Elementkategorie</td><td>Ja</td><td>Alphanumerisch, max. Länge: 255</td><td>Kategorie, zu der das Element gehört (Kochbücher, Drama…)</td></tr><tr><td>Beschreibung</td><td>Nein</td><td>Alphanumerisch, max. Länge: 4000</td><td>Beschreibung dieses Elements</td></tr></table><br>Max. Dateigröße: 200 MB.<br><br>Beispiel:<br><pre>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Buch<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: Belletristik (Byzanz-Reihe),Buch<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Buch<br>552a1940-21e4-4399-82bb-594b46d7ed54,Die Herren der Zäune,Buch</pre> |
+| Anforderungstext |Katalogdaten. Format:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Name</th><th>Erforderlich</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge 50</td><td>Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Item Name</td><td>Ja</td><td>Alphanumerisch, max. Länge 255</td><td>Name des Elements</td></tr><tr><td>Item Category</td><td>Ja</td><td>Alphanumerisch, max. Länge 255</td><td>Kategorie, zu der dieses Element gehört (z.B. Kochbücher, Drama ...)</td></tr><tr><td>Beschreibung</td><td>Nein</td><td>Alphanumerisch, max. Länge 4.000</td><td>Beschreibung des Elements</td></tr></table><br>Die maximale Dateigröße beträgt 200 MB.<br><br>Beispiel:<br><code>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</code> |
 
 **Antwort**:
 
@@ -179,21 +184,21 @@ OData-XML
     </feed>
 
 
-### Nutzungsdaten importieren
-#### Hochladen einer Datei
+### <a name="import-usage-data"></a>Nutzungsdaten importieren
+#### <a name="uploading-a-file"></a>Hochladen einer Datei
 In diesem Abschnitt wird gezeigt, wie Nutzungsdaten mithilfe einer Datei hochgeladen werden können. Sie können diese API mit Nutzungsdaten mehrmals aufrufen. Alle Nutzungsdaten werden für alle Aufrufe gespeichert.
 
 | HTTP-Methode | URI |
 |:--- |:--- |
-| POST |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>Beispiel<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27`: |
+| POST |`<rootURI>/ImportUsageFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/ImportUsageFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27ImplicitMatrix10_Guid_small.txt%27&apiVersion=%271.0%27` |
 
 | Parametername | Gültige Werte |
 |:--- |:--- |
-| modelId |Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
-| filename |Dies ist ein Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 50 |
+| modelId |Eindeutiger Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden.) |
+| filename |Dies ist der Textbezeichner des Katalogs.<br>Nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstrich (_) sind zulässig.<br>Maximale Länge: 50 |
 | apiVersion |1,0 |
 |  | |
-| Anforderungstext |Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>Alphanumerisch</td><td>Eindeutiger Bezeichner eines Benutzers</td></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Zeit</td><td>Nein</td><td>Datum im Format: YYYY/MM/DDTHH:MM:SS (Beispiel: 2013/06/20T10:00:00)</td><td>Zeitstempel der Daten</td></tr><tr><td>Ereignis</td><td>Nein. Bei Angabe muss auch ein Datum angegeben werden.</td><td>Eins der Folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Max. Dateigröße: 200 MB.<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| Anforderungstext |Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Erforderlich</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>Alphanumerisch</td><td>Eindeutiger Bezeichner eines Benutzers</td></tr><tr><td>Element-ID</td><td>Ja</td><td>Alphanumerisch, max. Länge 50</td><td>Eindeutiger Bezeichner eines Elements</td></tr><tr><td>Time</td><td>Nein</td><td>Datum im Format: JJJJ/MM/TTTHH:MM:SS (z.B. 2013/06/20T10:00:00)</td><td>Zeitpunkt der Daten</td></tr><tr><td>Ereignis</td><td>Nein, aber wenn angegeben, dann muss auch ein Datum angegeben werden.</td><td>Eins der folgenden Elemente:<br>• Click<br>• RecommendationClick<br>•    AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Die maximale Dateigröße beträgt 200 MB.<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Antwort**:
 
@@ -228,7 +233,7 @@ OData-XML
     </feed>
 
 
-#### Verwenden der Datenerfassung
+#### <a name="using-data-acquisition"></a>Verwenden der Datenerfassung
 In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Learning-Empfehlungen gesendet werden (in der Regel von Ihrer Website).
 
 | HTTP-Methode | URI |
@@ -328,15 +333,15 @@ In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Le
 
 **Antwort**: HTTP-Statuscode: 200
 
-### Erstellen eines Empfehlungsmodells
+### <a name="build-a-recommendation-model"></a>Erstellen eines Empfehlungsmodells
 | HTTP-Methode | URI |
 |:--- |:--- |
-| POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>Beispiel<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`: |
+| POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27` |
 
 | Parametername | Gültige Werte |
 |:--- |:--- |
-| modelId |Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
-| userDescription |Dies ist der Textbezeichner des Katalogs. Beachten Sie, dass Sie bei Verwendung von Leerzeichen diese stattdessen mit "%20" codieren müssen. Siehe Beispiel oben. <br>Max. Länge: 50 |
+| modelId |Eindeutiger Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden.) |
+| userDescription |Dies ist der Textbezeichner des Katalogs. Beachten Sie, dass Sie bei Verwendung von Leerzeichen diese stattdessen mit "%20" codieren müssen. Siehe Beispiel oben.<br>Maximale Länge: 50 |
 | apiVersion |1,0 |
 |  | |
 | Anforderungstext |KEINE |
@@ -356,8 +361,8 @@ Gültige Buildstatus:
 * Building (Erstellen): Das Modell wird erstellt.
 * Success (Erfolg): Der Build wurde erfolgreich abgeschlossen.
 * Error (Fehler): Der Build wurde mit einem Fehler beendet.
-* Cancelled: Die Builderstellung wurde abgebrochen.
-* Cancelling: Die Builderstellung wird abgebrochen.
+* Canceled (Abgebrochen): Die Builderstellung wurde abgebrochen.
+* Canceling (Wird abgebrochen): Die Builderstellung wird abgebrochen.
 
 Hinweis: Sie finden die Build-ID unter folgendem Pfad: `Feed\entry\content\properties\Id`
 
@@ -400,14 +405,14 @@ OData-XML
       </entry>
     </feed>
 
-### Abrufen des Buildstatus eines Modells
+### <a name="get-build-status-of-a-model"></a>Abrufen des Buildstatus eines Modells
 | HTTP-Methode | URI |
 |:--- |:--- |
-| GET |`<rootURI>/GetModelBuildsStatus?modelId=%27<modelId>%27&onlyLastBuild=<bool>&apiVersion=%271.0%27`<br><br>Beispiel<br>`<rootURI>/GetModelBuildsStatus?modelId=%279559872f-7a53-4076-a3c7-19d9385c1265%27&onlyLastBuild=true&apiVersion=%271.0%27`: |
+| GET |`<rootURI>/GetModelBuildsStatus?modelId=%27<modelId>%27&onlyLastBuild=<bool>&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/GetModelBuildsStatus?modelId=%279559872f-7a53-4076-a3c7-19d9385c1265%27&onlyLastBuild=true&apiVersion=%271.0%27` |
 
 | Parametername | Gültige Werte |
 |:--- |:--- |
-| modelId |Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
+| modelId |Eindeutiger Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden.) |
 | onlyLastBuild |Hier wird angegeben, ob der gesamte Buildverlauf des Modells oder nur der Status des letzten Builds zurückgegeben werden soll. |
 | apiVersion |1,0 |
 
@@ -417,18 +422,18 @@ HTTP-Statuscode: 200
 
 Die Antwort enthält einen Eintrag pro Build. Jeder Eintrag enthält die folgenden Daten:
 
-* `feed/entry/content/properties/UserName`: Name des Benutzers
-* `feed/entry/content/properties/ModelName`: Name des Modells
-* `feed/entry/content/properties/ModelId`: Eindeutiger Bezeichner des Modells
+* `feed/entry/content/properties/UserName` : Name des Benutzers
+* `feed/entry/content/properties/ModelName` : Name des Modells
+* `feed/entry/content/properties/ModelId` : Eindeutiger Bezeichner des Modells
 * `feed/entry/content/properties/IsDeployed`: Bereitstellungszustand des Builds (aktiver Build)
-* `feed/entry/content/properties/BuildId`: Eindeutiger Bezeichner des Builds
-* `feed/entry/content/properties/BuildType`: Typ des Builds
-* `feed/entry/content/properties/Status`: Status des Builds. Es gibt folgende Status: Error, Building, Queued, Cancelling, Cancelled, Success
-* `feed/entry/content/properties/StatusMessage`: Detaillierte Statusmeldung (gilt nur für bestimmte Status)
-* `feed/entry/content/properties/Progress`: Fortschritt des Builds (%)
-* `feed/entry/content/properties/StartTime`: Startzeit des Builds
-* `feed/entry/content/properties/EndTime`: Endzeit des Builds
-* `feed/entry/content/properties/ExecutionTime`: Dauer des Builds
+* `feed/entry/content/properties/BuildId` : Eindeutiger Bezeichner des Builds
+* `feed/entry/content/properties/BuildType` : Typ des Builds
+* `feed/entry/content/properties/Status` : Status des Builds. Es gibt folgende Status: Error (Fehler), Building (Erstellen), Queued (In Warteschlange), Canceling (Wird abgebrochen), Canceled (Abgebrochen), Success (Erfolg)
+* `feed/entry/content/properties/StatusMessage` : Detaillierte Statusmeldung (gilt nur für bestimmte Status)
+* `feed/entry/content/properties/Progress` : Fortschritt des Builds (%)
+* `feed/entry/content/properties/StartTime` : Startzeit des Builds
+* `feed/entry/content/properties/EndTime` : Endzeit des Builds
+* `feed/entry/content/properties/ExecutionTime` : Dauer des Builds
 * `feed/entry/content/properties/ProgressStep` – Details zur aktuellen Phase eines Builds, der gerade verarbeitet wird.
 
 Gültige Buildstatus:
@@ -438,8 +443,8 @@ Gültige Buildstatus:
 * Building: Builderstellung wird durchgeführt.
 * Success (Erfolg): Der Build wurde erfolgreich abgeschlossen.
 * Error (Fehler): Der Build wurde mit einem Fehler beendet.
-* Cancelled: Die Builderstellung wurde abgebrochen.
-* Cancelling: Die Builderstellung wird abgebrochen.
+* Canceled (Abgebrochen): Die Builderstellung wurde abgebrochen.
+* Canceling (Wird abgebrochen): Die Builderstellung wird abgebrochen.
 
 Gültige Werte für Buildtyp:
 
@@ -483,15 +488,15 @@ OData-XML
     </feed>
 
 
-### Abrufen von Empfehlungen
+### <a name="get-recommendations"></a>Abrufen von Empfehlungen
 | HTTP-Methode | URI |
 |:--- |:--- |
-| GET |`<rootURI>/ItemRecommend?modelId=%27<modelId>%27&itemIds=%27<itemId>%27&numberOfResults=<int>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>Beispiel<br>`<rootURI>/ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemIds=%271003%27&numberOfResults=10&includeMetadata=false&apiVersion=%271.0%27`: |
+| GET |`<rootURI>/ItemRecommend?modelId=%27<modelId>%27&itemIds=%27<itemId>%27&numberOfResults=<int>&includeMetadata=<bool>&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/ItemRecommend?modelId=%272779c063-48fb-46c1-bae3-74acddc8c1d1%27&itemIds=%271003%27&numberOfResults=10&includeMetadata=false&apiVersion=%271.0%27` |
 
 | Parametername | Gültige Werte |
 |:--- |:--- |
-| modelId |Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
-| itemIds |Durch Trennzeichen getrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen.<br>Max. Länge: 1024 |
+| modelId |Eindeutiger Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden.) |
+| itemIds |Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen.<br>Max. Länge: 1024 |
 | numberOfResults |Dies ist die Anzahl der erforderlichen Ergebnisse. |
 | includeMetatadata |Zur zukünftigen Verwendung, stets „false“ |
 | apiVersion |1,0 |
@@ -505,11 +510,11 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 * `Feed\entry\content\properties\Id` - ID des empfohlenen Elements.
 * `Feed\entry\content\properties\Name` - Name des Elements.
 * `Feed\entry\content\properties\Rating` - Bewertung der Empfehlung, höhere Werte bedeuten höhere Zuverlässigkeit.
-* `Feed\entry\content\properties\Reasoning` - Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+* `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung)
 
 OData-XML
 
-Die folgende Beispielantwort enthält 10 empfohlene Elemente:
+Die folgende Beispielantwort enthält 10 empfohlene Elemente:
 
     <feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
       <title type="text" />
@@ -660,19 +665,19 @@ Die folgende Beispielantwort enthält 10 empfohlene Elemente:
       </entry>
     </feed>
 
-### Aktualisieren des Modells
+### <a name="update-model"></a>Aktualisieren des Modells
 Sie können die Modellbeschreibung oder die aktive Build-ID aktualisieren.
-*Aktive Build-ID*: Jeder Build für jedes Modell weist eine „Build-ID“ auf. Die aktive Build-ID ist der erste erfolgreich erstellte Build jedes neuen Modells. Wenn Sie über eine aktive Build-ID verfügen und für das gleiche Modell zusätzliche Builds erstellen, müssen Sie die aktive Build-ID gegebenenfalls ausdrücklich als Standard-Build-ID festlegen. Wenn Sie Empfehlungen nutzen und die zu verwendende Build-ID nicht definieren, wird automatisch der Standardbuild verwendet.
+*Aktive Build-ID* : Jeder Build für jedes Modell weist eine „Build-ID“ auf. Die aktive Build-ID ist der erste erfolgreich erstellte Build jedes neuen Modells. Wenn Sie über eine aktive Build-ID verfügen und für das gleiche Modell zusätzliche Builds erstellen, müssen Sie die aktive Build-ID gegebenenfalls ausdrücklich als Standard-Build-ID festlegen. Wenn Sie Empfehlungen nutzen und die zu verwendende Build-ID nicht definieren, wird automatisch der Standardbuild verwendet.
 
 Wenn ein Empfehlungsmodell in der Produktion verwendet wird, können mit diesem Mechanismus neue Modelle erstellt und getestet werden, bevor sie in der Produktion verwendet werden.
 
 | HTTP-Methode | URI |
 |:--- |:--- |
-| PUT |`<rootURI>/UpdateModel?id=%27<modelId>%27&apiVersion=%271.0%27`<br><br>Beispiel<br>`<rootURI>/UpdateModel?id=%279559872f-7a53-4076-a3c7-19d9385c1265%27&apiVersion=%271.0%27`: |
+| PUT |`<rootURI>/UpdateModel?id=%27<modelId>%27&apiVersion=%271.0%27`<br><br>Beispiel:<br>`<rootURI>/UpdateModel?id=%279559872f-7a53-4076-a3c7-19d9385c1265%27&apiVersion=%271.0%27` |
 
 | Parametername | Gültige Werte |
 |:--- |:--- |
-| id |Dies ist der eindeutige Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden). |
+| id |Eindeutiger Bezeichner des Modells (Groß-/Kleinschreibung muss beachtet werden.) |
 | apiVersion |1,0 |
 |  | |
 | Anforderungstext |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>Beachten Sie, dass die XML-Tags „Description“ und „ActiveBuildId“ optional sind. Wenn Sie keine Beschreibung oder aktive Build-ID festlegen möchten, entfernen Sie das gesamte Tag. |
@@ -692,10 +697,12 @@ OData-XML
       <link rel="self" href="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/UpdateModel?id='9559872f-7a53-4076-a3c7-19d9385c1265'&amp;apiVersion='1.0'" />
     </feed>
 
-## Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden.
-Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Keine Ähnlichkeit oder Verbindung ist beabsichtigt und ist rein zufällig.
-Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. 
-© 2014 Microsoft. Alle Rechte vorbehalten.
+## <a name="legal"></a>Rechtliche Hinweise
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.  Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. © 2014 Microsoft. Alle Rechte vorbehalten. 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO4-->
+
+

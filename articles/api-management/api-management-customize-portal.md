@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2016
+ms.date: 12/15/2016
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 398b845a6549341d6afba101acec9eefd146d810
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
 
 
 ---
@@ -55,7 +55,7 @@ In diesem Abschnitt werden wir nur den Stil für die Kopfzeile ändern. Klicken 
 
 Jede Regel steht für eine Stileigenschaft des ausgewählten Elements. Der ausgewählte Kopfzeilentext hat z. B. den Schriftgrad @font-size-h1, und der Name der Schriftart mit Alternativen befindet sich in @headings-font-family.
 
-> Falls Sie mit [Bootstrap][Bootstrap] vertraut sind, werden Sie feststellen, dass es sich bei diesen Regeln um [LESS-Variablen][LESS-Variablen] aus dem Bootstrap-Design für das Entwicklerportal handelt.
+> Falls Sie mit [Bootstrap][bootstrap] vertraut sind, werden Sie feststellen, dass es sich bei diesen Regeln um [LESS-Variablen][LESS variables] aus dem Bootstrap-Design für das Entwicklerportal handelt.
 > 
 > 
 
@@ -87,12 +87,12 @@ Klicken Sie auf die **Willkommensseite**, um den Inhalt zu bearbeiten, der auf d
 ## <a name="next-steps"> </a>Nächste Schritte
 * Erfahren Sie, wie Sie den Inhalt von Enwicklerportalseiten mithilfe von [Entwicklerportalvorlagen](api-management-developer-portal-templates.md)anpassen.
 
-[Ändern von Text/Logo in den Kopfzeilen]: #change-page-headers
-[Ändern des Stils der Kopfzeilen]: #change-headers-styling
-[Bearbeiten der Seiteninhalte]: #edit-page-contents
-[Nächste Schritte]: #next-steps
+[Change the text/logo in the page headers]: #change-page-headers
+[Change the styling of the headers]: #change-headers-styling
+[Edit the contents of a page]: #edit-page-contents
+[Next steps]: #next-steps
 
-[Klassisches Azure-Portal]: https://manage.windowsazure.com/
+[Azure Classic Portal]: https://manage.windowsazure.com/
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
@@ -103,10 +103,10 @@ Klicken Sie auf die **Willkommensseite**, um den Inhalt zu bearbeiten, der auf d
 
 
 [bootstrap]: http://getbootstrap.com/
-[LESS-Variablen]: http://getbootstrap.com/css/
+[LESS variables]: http://getbootstrap.com/css/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

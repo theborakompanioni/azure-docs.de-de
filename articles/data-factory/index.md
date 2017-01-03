@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie mithilfe von Data Factory automatisierte bidirektionale Datenpipelines für lokale und cloudbasierte Quellen einrichten, um Daten für die Analyse zu verschieben und zu verarbeiten."
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: b23fd70f2941898524a848d5c0f353542f416e59
+ms.sourcegitcommit: 82f628be33ab24ef29a42121c577792768882eb5
+ms.openlocfilehash: ac936a317b6a68e2f0670ca9903dbbe100c82cdd
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure Data Factory-Dokumentation
 
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem das Verschieben und Transformieren von Daten automatisiert wird. Mit dem Data Factory-Dienst werden Datenintegrationslösungen erstellt, die Daten aus verschiedenen Speichern erfassen, Daten transformieren und verarbeiten und die Ergebnisdaten anschließend wieder in den Datenspeichern veröffentlichen.
+Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren.
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -85,7 +86,7 @@ Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem das V
 </ul>
 
 ---
- 
+
 <h2>Referenz</h2>
 <ul class="panelContent cardsW">
     <li>
@@ -101,25 +102,25 @@ Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem das V
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>Sprachen</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
                         <p><a href="/azure/data-factory/data-factory-sdks">Azure Data Factory-Entwicklerreferenz</a></p>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     </li>
     <li>
-        <div class="cardSize"><p />
+        <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/datafactory/">REST-API</a></p>
+                        <p><a href="/rest/api/datafactory/">REST-API-Referenz</a></p>
                     </div>
                 </div>
             </div>
@@ -139,6 +140,6 @@ Herunterladen der Data Factory-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
