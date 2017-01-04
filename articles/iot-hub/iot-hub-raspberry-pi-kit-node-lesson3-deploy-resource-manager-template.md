@@ -64,7 +64,7 @@ Aktualisieren Sie die Datei `arm-template-param.json` in Visual Studio Code.
 Nach der Aktualisierung der Datei `arm-template-param.json` stellen Sie die Ressourcen in Azure bereit, indem Sie den folgenden Befehl ausführen:
 
 ```bash
-az resource group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
+az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
 ```
 
 Es dauert etwa fünf Minuten, diese Ressourcen zu erstellen. Sie können während der Ressourcenerstellung mit dem nächsten Artikel fortfahren.

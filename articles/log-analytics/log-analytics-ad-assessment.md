@@ -4,7 +4,7 @@ description: "Sie können die Active Directory Assessment-Lösung verwenden, um 
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -41,11 +41,11 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 * Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind.
 * Für die Active Directory Assessment-Lösung muss .NET Framework 4 auf jedem Computer installiert sein, der über einen OMS-Agent verfügt.
 * Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Prozesses die Active Directory Assessment-Lösung Ihrem OMS-Arbeitsbereich hinzu.  Es ist keine weitere Konfiguration erforderlich.
-  
+
   > [!NOTE]
   > Nachdem Sie die Lösung hinzugefügt haben, wird die Datei AdvisorAssessment.exe den Servern mit Agents hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an den OMS-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
-  > 
-  > 
+  >
+  >
 
 ## <a name="active-directory-assessment-data-collection-details"></a>Details zur Active Directory Assessment-Datensammlung
 Active Directory Assessment erfasst WMI-Daten, Registrierungsdaten und Leistungsdaten mithilfe von Agents, die Sie aktiviert haben.
@@ -99,11 +99,11 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Ermitteln von Empfehlungen, die Sie ignorieren möchten
 1. Melden Sie sich bei Ihrem Arbeitsbereich an, und öffnen Sie die Protokollsuche. Verwenden Sie folgende Abfrage, um Empfehlungen aufzulisten, die für Computer in Ihrer Umgebung nicht funktionieren.
-   
+
    ```
    Type=ADAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
    ```
-   
+
    Dieser Screenshot zeigt eine Protokollsuchabfrage: ![Empfehlungen mit Fehlern](./media/log-analytics-ad-assessment/ad-failed-recommendations.png).
 2. Wählen Sie die Empfehlungen aus, die Sie ignorieren möchten. Sie werden die Werte für RecommendationId in der nächsten Prozedur verwenden.
 
@@ -118,7 +118,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 Nach Ausführung der nächsten geplanten Bewertung – standardmäßig alle 7 Tage – werden die angegebenen Empfehlungen als *Ignoriert* gekennzeichnet und auf dem Bewertungsdashboard nicht angezeigt.
 
 1. Sie können folgende Protokollsuchabfragen verwenden, um alle ignorierten Empfehlungen aufzulisten.
-   
+
     ```
     Type=ADAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
@@ -170,7 +170,6 @@ Nach Ausführung der nächsten geplanten Bewertung – standardmäßig alle 7 Ta
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md) , um detaillierte Daten und Empfehlungen von AD Assessment anzuzeigen.
-
 
 
 
