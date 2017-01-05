@@ -169,6 +169,6 @@ Weitere Informationen zum Entwickeln von Java-Anwendungen in Azure finden Sie im
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

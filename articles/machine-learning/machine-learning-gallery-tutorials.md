@@ -81,6 +81,6 @@ Ihr Tutorial ist jetzt Teil des Cortana Intelligence-Katalogs. Es wird auf der S
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -129,6 +129,6 @@ Beispielsweise berechnet das Tool für sechs VMs mit den in der Tabelle angezeig
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -261,6 +261,6 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO4-->
 
 

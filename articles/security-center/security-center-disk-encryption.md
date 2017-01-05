@@ -181,6 +181,6 @@ In diesem Dokument haben Sie gelernt, wie Sie einen virtuellen Azure-Computer ve
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

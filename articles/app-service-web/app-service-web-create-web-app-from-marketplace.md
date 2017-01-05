@@ -168,6 +168,6 @@ Weitere Informationen zum Entwickeln von WordPress-Web-Apps in Azure finden Sie 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

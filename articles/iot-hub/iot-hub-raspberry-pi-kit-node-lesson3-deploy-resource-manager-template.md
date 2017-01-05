@@ -58,7 +58,7 @@ Aktualisieren Sie die Datei `arm-template-param.json` in Visual Studio Code.
 
 ![Azure Resource Manager-Vorlagenparameter](media/iot-hub-raspberry-pi-lessons/lesson3/arm_para.png)
 
-* Ersetzen Sie **[your IoT Hub name]** (Ihr IoT Hub-Name) durch **{mein Hub-Name}**, den Sie beim [Erstellen des IoT-Hubs und Registrieren von Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md) angegeben haben.
+* Ersetzen Sie **[Ihr IoT Hub-Name]** durch den Hub-Namen (**{my hub name}**), den Sie beim [Erstellen des IoT-Hubs und Registrieren von Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md) angegeben haben.
 * Ersetzen Sie **[prefix string for new resources]** durch ein beliebiges Präfix. Durch das Präfix wird sichergestellt, dass der Ressourcenname global eindeutig ist, um Konflikte zu vermeiden. Verwenden Sie beim Präfix keine Gedankenstriche oder Zahlen als erstes Zeichen.
 
 Nach der Aktualisierung der Datei `arm-template-param.json` stellen Sie die Ressourcen in Azure bereit, indem Sie den folgenden Befehl ausführen:
@@ -78,6 +78,6 @@ Sie haben die Azure-Funktionen-App zum Verarbeiten von IoT Hub-Nachrichten sowie
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO5-->
 
 

@@ -83,6 +83,6 @@ Informationen zur Funktionsweise der globalen Datenreplikation in DocumentDB fin
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO4-->
 
 

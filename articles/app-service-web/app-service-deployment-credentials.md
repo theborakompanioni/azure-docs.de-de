@@ -40,6 +40,6 @@ Beim Delegieren des Zugriffs auf Azure-Ressourcen über die rollenbasierte Zugri
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO4-->
 
 
