@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
-ms.openlocfilehash: 3727972c544bb8c2724e9f38953882a7f2251a60
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 8de917236d1dcbfdf0c1232380879a33d9425291
 
 
 ---
@@ -115,13 +115,13 @@ Sie benötigen ein Azure-Netzwerk, mit dem nach dem Failover erstellte virtuelle
 * Das Netzwerk muss sich in der gleichen Region befinden wie der Recovery Services-Tresor.
 * Richten Sie das Azure-Netzwerk im [Resource Manager-Modus](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) oder im [klassischen Modus](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
 * Wir empfehlen Ihnen, ein Netzwerk einzurichten, bevor Sie beginnen. Falls Sie es nicht tun, müssen Sie diesen Schritt während der Site Recovery-Bereitstellung ausführen.
-Beachten Sie, dass von Site Recovery verwendete Azure-Netzwerke nicht innerhalb eines Abonnements oder über mehrere Abonnements hinweg [verschoben](../resource-group-move-resources.md) werden können.
+Beachten Sie, dass von Site Recovery verwendete Azure-Netzwerke nicht innerhalb eines Abonnements oder über mehrere Abonnements hinweg [verschoben](../azure-resource-manager/resource-group-move-resources.md) werden können.
 
 ### <a name="set-up-an-azure-storage-account"></a>Richten Sie ein Azure-Speicherkonto ein
 * Für die Daten, die in Azure repliziert werden, benötigen Sie ein standardmäßiges Azure-Speicherkonto. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 * Richten Sie ein Konto im [Resource Manager-Modus](../storage/storage-create-storage-account.md) oder im [klassischen Modus](../storage/storage-create-storage-account-classic-portal.md) ein (je nachdem, welches Ressourcenmodell Sie für virtuelle Azure-Computer nach dem Failover verwenden möchten).
 * Es wird empfohlen, ein Konto einzurichten, bevor Sie beginnen. Falls Sie es nicht tun, müssen Sie diesen Schritt während der Site Recovery-Bereitstellung ausführen.
-- Beachten Sie, dass von Site Recovery verwendete Azure-Speicherkonten nicht innerhalb eines Abonnements oder über mehrere Abonnements hinweg [verschoben](../resource-group-move-resources.md) werden können.
+- Beachten Sie, dass von Site Recovery verwendete Azure-Speicherkonten nicht innerhalb eines Abonnements oder über mehrere Abonnements hinweg [verschoben](../azure-resource-manager/resource-group-move-resources.md) werden können.
 
 ### <a name="prepare-the-vmm-server"></a>Bereiten Sie den VMM-Server vor
 * Stellen Sie sicher, dass der VMM-Server die [Voraussetzungen](#on-premises-prerequisites)erfüllt.
@@ -144,7 +144,7 @@ Sie müssen die Netzwerkzuordnung während der Site Recovery-Bereitstellung einr
 
     ![Neuer Tresor](./media/site-recovery-vmm-to-azure/new-vault3.png)
 3. Geben Sie unter **Name**einen Anzeigenamen an, mit dem der Tresor identifiziert wird. Wenn Sie mehrere Abonnements haben, müssen Sie ein Abonnement auswählen.
-4. [Erstellen Sie eine Ressourcengruppe](../resource-group-template-deploy-portal.md), oder wählen Sie eine vorhandene Ressourcengruppe aus. Geben Sie eine Azure-Region an. Computer werden in dieser Region repliziert. Sie finden eine Liste der unterstützten Regionen unter Geografische Verfügbarkeit auf der Seite [Azure Site Recovery – Preisübersicht](https://azure.microsoft.com/pricing/details/site-recovery/)
+4. [Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/resource-group-template-deploy-portal.md), oder wählen Sie eine vorhandene Ressourcengruppe aus. Geben Sie eine Azure-Region an. Computer werden in dieser Region repliziert. Sie finden eine Liste der unterstützten Regionen unter Geografische Verfügbarkeit auf der Seite [Azure Site Recovery – Preisübersicht](https://azure.microsoft.com/pricing/details/site-recovery/)
 5. Wenn Sie schnell über das Dashboard auf den Tresor zugreifen möchten, klicken Sie auf **An Dashboard anheften** > **Tresor erstellen**.
 
     ![Neuer Tresor](./media/site-recovery-vmm-to-azure/new-vault-settings.png)
@@ -509,6 +509,6 @@ Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

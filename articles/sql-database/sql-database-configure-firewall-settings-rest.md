@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
-ms.openlocfilehash: cd5d47aa012b21a283e3d6482fe0afddcfa14033
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: cc0faa49daaafe19c71d2c765b8e865be04f81e2
 
 
 ---
@@ -39,7 +39,7 @@ Microsoft Azure SQL-Datenbank verwendet Firewallregeln, um Verbindungen mit Ihre
 > 
 
 ## <a name="manage-server-level-firewall-rules-through-rest-api"></a>Verwalten von Firewallregeln auf Serverebene über die REST-API
-1. Beim Verwalten von Firewallregeln über die REST-API muss eine Authentifizierung erfolgen. Informationen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](../resource-manager-api-authentication.md).
+1. Beim Verwalten von Firewallregeln über die REST-API muss eine Authentifizierung erfolgen. Informationen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](../azure-resource-manager/resource-manager-api-authentication.md).
 2. Regeln auf Serverebene können über die REST-API erstellt, aktualisiert oder gelöscht werden.
    
     Um eine Firewallregel auf Serverebene zu erstellen oder zu aktualisieren, führen Sie die PUT-Methode mit folgendem Inhalt aus:
@@ -79,7 +79,7 @@ Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open 
 Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Sichern der Datenbank](sql-database-security.md)
+* [Sichern der Datenbank](sql-database-security-overview.md)
 * [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589)
 
 <!--Image references-->
@@ -91,6 +91,6 @@ Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Date
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

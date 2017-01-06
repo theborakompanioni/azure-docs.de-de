@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 11/01/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 0994765e37dd8ee1fa6a639a2ed60c913cb170fe
-ms.openlocfilehash: fdfe28f9bf0ab38b19c1b7b7188f484e769558b0
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: 8b085c94078a8e6c4ded95c85443d14637025dc2
 
 
 ---
@@ -36,7 +36,7 @@ In diesem Artikel verwenden Sie die Data Factory-REST-API zum Erstellen Ihrer er
 ## <a name="prerequisites"></a>Voraussetzungen
 * Lesen Sie sich den Artikel mit der [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md) durch, und führen Sie die erforderlichen Schritte aus, damit die **Voraussetzungen** erfüllt sind.
 * Installieren Sie [Curl](https://curl.haxx.se/dlwiz/) auf Ihrem Computer. Sie können das Curl-Tool mit REST-Befehlen zum Erstellen einer Data Factory verwenden.
-* Befolgen Sie die Anleitung in [diesem Artikel](../resource-group-create-service-principal-portal.md) , um Folgendes durchzuführen:
+* Befolgen Sie die Anleitung in [diesem Artikel](../azure-resource-manager/resource-group-create-service-principal-portal.md) , um Folgendes durchzuführen:
   1. Erstellen Sie eine Webanwendung mit dem Namen **ADFGetStartedApp** in Azure Active Directory.
   2. Beschaffen Sie die **Client-ID** und den **geheimen Schlüssel**.
   3. Beschaffen Sie die **Mandanten-ID**.
@@ -487,6 +487,6 @@ In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (H
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 
