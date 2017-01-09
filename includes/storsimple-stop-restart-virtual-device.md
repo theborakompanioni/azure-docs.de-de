@@ -16,6 +16,6 @@ Verwenden Sie die folgenden Cmdlets für den Neustart eines virtuellen Geräts.
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
