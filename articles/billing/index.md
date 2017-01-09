@@ -12,7 +12,7 @@ Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen und die Nutzung 
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/billing/billing-understand-your-bill">
+        <a href="/azure/billing/billing-getting-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

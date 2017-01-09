@@ -39,9 +39,9 @@ Auf dieser Seite können Sie alle Tutorials im Katalog durchsuchen, oder eine Su
  Klicken Sie auf ein beliebiges Tutorial, um die Detailseite des Tutorials zu öffnen, und weitere Informationen darüber zu erhalten.
 Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch einen Link zum Tutorial per E-Mail verschicken, um andere Benutzer dazu einzuladen, die Seite zu besuchen.
 
-![Teilen Sie dieses Element mit Freunden](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![Teilen Sie dieses Element mit Freunden](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![Fügen Sie Ihre eigenen Kommentare hinzu](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![Fügen Sie Ihre eigenen Kommentare hinzu](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="contribute"></a>Mitwirken
 Sie können sich auch selbst mit einem Tutorial am Katalog beteiligen, um anderen Benutzern dabei zu helfen, ein Problem zu lösen oder mehr über ein Konzept zu erfahren.
@@ -52,16 +52,16 @@ Führen Sie die folgenden Schritte aus, um ein Tutorial zu erstellen und dem Cor
 * Melden Sie sich mit Ihrem Microsoft-Konto am Katalog an.
 * Klicken Sie auf Ihr Image am oberen Rand des Fensters und dann auf Ihren Namen
   
-    ![Klicken Sie auf den Namen Ihres Kontos](media\\machine-learning-gallery-tutorials\\click-account-name.png)
+    ![Klicken Sie auf den Namen Ihres Kontos](media/machine-learning-gallery-tutorials/click-account-name.png)
 * Klicken Sie auf **Neues Element**
   
-    ![Klicken Sie auf „Neues Element“](media\\machine-learning-gallery-collections\\click-new-item.png)
+    ![Klicken Sie auf „Neues Element“](media/machine-learning-gallery-collections/click-new-item.png)
 * Wählen Sie für **Elementtyp** **Sammlung** aus, versehen Sie die Sammlung mit einem Namen, einer kurzen Zusammenfassung, einer Beschreibung und den Tags, die Benutzern beim Auffinden der Sammlung als Hilfe dienen
   
-    ![Geben Sie Informationen für die neue Sammlung ein](media\\machine-learning-gallery-tutorials\\create-tutorial-page-1.png)
+    ![Geben Sie Informationen für die neue Sammlung ein](media/machine-learning-gallery-tutorials/create-tutorial-page-1.png)
 * Klicken Sie auf **Weiter** – Sie können eine Image-Datei hochladen, oder ein vorhandenes Image hochladen, das mit der Sammlung angezeigt wird. Wählen Sie ein Image aus, anhand dessen Benutzer einfach den Inhalt und den Zweck der Sammlung erkennen können
   
-    ![Geben Sie Informationen für die neue Sammlung ein](media\\machine-learning-gallery-tutorials\\create-tutorial-page-2.png)
+    ![Geben Sie Informationen für die neue Sammlung ein](media/machine-learning-gallery-tutorials/create-tutorial-page-2.png)
 * Klicken Sie auf **Weiter** – Sie können entscheiden, ob das Tutorial **Öffentlich** (kann von jedem angesehen werden), oder **Nicht aufgeführt** (nur Benutzer mit einem direkten Link können das Tutorial sehen) sein soll
   
   > [!IMPORTANT]
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um ein Tutorial zu erstellen und dem Cor
   > 
   > 
   
-    ![Wählen Sie „Öffentlich“ oder „Nicht aufgeführt“ aus](media\\machine-learning-gallery-tutorials\\create-tutorial-page-3.png)
+    ![Wählen Sie „Öffentlich“ oder „Nicht aufgeführt“ aus](media/machine-learning-gallery-tutorials/create-tutorial-page-3.png)
 * Klicken Sie auf **Erstellen**
 
 Ihr Tutorial ist jetzt Teil des Cortana Intelligence-Katalogs. Es wird auf der Seite Ihres Kontos unter der Registerkarte **Elemente** angezeigt.

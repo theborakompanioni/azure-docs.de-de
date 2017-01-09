@@ -4,7 +4,7 @@ description: "Mit dem Active Directory-Replikationsstatus-Lösungspaket wird die
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -45,15 +45,15 @@ Wenn Sie Ihre Domänencontroller nicht direkt mit OMS verbinden möchten, könne
 1. Stellen Sie sicher, dass der Computer Mitglied der Domäne ist, die Sie mit der AD-Replikationsstatus-Lösung überwachen möchten.
 2. [Verbinden Sie den Windows-Computer mit OMS](log-analytics-windows-agents.md), oder [stellen Sie die Verbindung mit OMS über die vorhandene Operations Manager-Umgebung her](log-analytics-om-agents.md), falls die Verbindung noch nicht besteht.
 3. Legen Sie auf diesem Computer den folgenden Registrierungsschlüssel fest:
-   
+
    * Schlüssel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<Verwaltungsgruppenname>\Solutions\ADReplication**
    * Wert: **IsTarge**
    * Wertdaten: **true**
-   
+
    > [!NOTE]
    > Diese Änderungen werden erst wirksam, wenn Sie den Microsoft Monitoring Agent-Dienst (HealthService.exe) neu starten.
-   > 
-   > 
+   >
+   >
 
 ## <a name="understanding-replication-errors"></a>Grundlegendes zu Replikationsfehlern
 Wenn die Daten von AD-Replikationsstatus an OMS gesendet werden, wird im OMS-Dashboard eine Kachel angezeigt, die der Kachel in der folgenden Abbildung ähnelt. Darauf wird angegeben, wie viele Replikationsfehler derzeit vorliegen.  
@@ -97,8 +97,8 @@ Wie bereits erwähnt, wird auf der Dashboardkachel für die AD-Replikationsstatu
 
 > [!NOTE]
 > Alle Berechnungen der prozentualen Tombstonelebensdauer basieren auf der tatsächlichen Tombstonelebensdauer für die Active Directory-Gesamtstruktur. Sie können also sicher sein, dass diese Prozentangaben auch dann genau sind, wenn Sie einen benutzerdefinierten Wert für die Tombstonelebensdauer festgelegt haben.
-> 
-> 
+>
+>
 
 ### <a name="ad-replication-status-details"></a>Details des AD-Replikationsstatus
 Wenn Sie in einer der Listen auf ein Element klicken, werden weitere Details zur Verwendung der Protokollsuche angezeigt. Die Ergebnisse werden gefiltert, damit nur die Fehler zu diesem Element angezeigt werden. Wenn Sie beispielsweise auf den ersten Domänencontroller klicken, der unter **Destination Server Status (ADDC02)** (Zielserverstatus (ADDC02)) aufgeführt ist, sehen Sie, dass die Suchergebnisse gefiltert werden. Es werden die Fehler angezeigt, bei denen der Domänencontroller als Zielserver angegeben ist:
@@ -150,7 +150,6 @@ Falls Sie keinen Domänencontroller direkt mit OMS oder SCOM verbinden möchten,
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [Protokollsuchen in Log Analytics](log-analytics-log-searches.md) , um ausführliche Active Directory-Replikationsstatus-Daten anzuzeigen.
-
 
 
 

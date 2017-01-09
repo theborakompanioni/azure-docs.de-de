@@ -27,7 +27,7 @@ Anwendungen müssen häufig einfach neue Shards hinzufügen, um Daten zu verwalt
 
 Wenn der neue Schlüsselwertbereich nicht bereits Teil einer vorhandenen Zuordnung (Mapping) ist, ist es sehr einfach, den neuen Shard hinzuzufügen und den neuen Schlüssel oder Bereich mit dem Shard zu verknüpfen. 
 
-### <a name="example-adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Beispiel: Hinzufügen eines Shards und seines Bereichs zu einer vorhandenen Shardzuordnung
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Beispiel: Hinzufügen eines Shards und seines Bereichs zu einer vorhandenen Shardzuordnung
 In diesem Beispiel werden die Methoden [TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx), [CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx) und [CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\)) verwendet, und es wir eine Instanz der [ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.)-Klasse erstellt. Im Beispiel unten wurden eine Datenbank namens **sample_shard_2** mit allen erforderlichen darin enthaltenen Schemaobjekten so erstellt, dass sie den Bereich [300, 400) abdecken.  
 
     // sm is a RangeShardMap object.

@@ -56,15 +56,15 @@ Anwendungen, die nur auf Ressourcen zugreifen (d.h. Microsoft Graph, KeyVault, O
 
 Native Clientanwendungen (sowohl für Desktop- als auch für Mobilgeräte) fallen in diese Kategorie und werden durch den Rollover nicht beeinträchtigt.
 
-### <a name="a-namewebclientaweb-applications-apis-accessing-resources"></a><a name="webclient"></a>Webanwendungen/-APIs mit Ressourcenzugriff
+### <a name="a-namewebclientaweb-applications--apis-accessing-resources"></a><a name="webclient"></a>Webanwendungen/-APIs mit Ressourcenzugriff
 Anwendungen, die nur auf Ressourcen zugreifen (d.h. Microsoft Graph, KeyVault, Outlook-API und andere Microsoft-APIs), beziehen in der Regel lediglich ein Token und übergeben es an den Ressourcenbesitzer. Da sie keine Ressourcen schützen, untersuchen sie das Token nicht und müssen somit auch nicht sicherstellen, dass es ordnungsgemäß signiert ist.
 
 Webanwendungen und Web-APIs, die den App-exklusiven Fluss (Clientanmeldeinformationen/Clientzertifikat) verwenden, fallen in diese Kategorie und werden durch den Rollover nicht beeinträchtigt.
 
-### <a name="a-nameappservicesaweb-applications-apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Mit Azure App Services erstellte Webanwendungen/-APIs zum Schutz von Ressourcen
+### <a name="a-nameappservicesaweb-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Mit Azure App Services erstellte Webanwendungen/-APIs zum Schutz von Ressourcen
 Die Authentifizierungs-/Autorisierungsfunktion von Azure App Services (EasyAuth) verfügt bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
-### <a name="a-nameowinaweb-applications-apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET OWIN OpenID Connect-, WS-Fed- oder WindowsAzureActiveDirectoryBearerAuthentication-Middleware
+### <a name="a-nameowinaweb-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET OWIN OpenID Connect-, WS-Fed- oder WindowsAzureActiveDirectoryBearerAuthentication-Middleware
 Wenn Ihre Anwendung .NET OWIN OpenID Connect-, WS-Fed- oder WindowsAzureActiveDirectoryBearerAuthentication-Middleware verwendet, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
 Sie können überprüfen, ob Ihre Anwendung diese Komponenten nutzt, indem Sie in der Datei „Startup.cs“ oder „Startup.Auth.cs“ der Anwendung nach den folgenden Codeausschnitten suchen:
@@ -91,7 +91,7 @@ app.UseWsFederationAuthentication(
      });
 ```
 
-### <a name="a-nameowincoreaweb-applications-apis-protecting-resources-using-net-core-openid-connect-or-jwtbearerauthentication-middleware"></a><a name="owincore"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET Core OpenID Connect- oder JwtBearerAuthentication-Middleware
+### <a name="a-nameowincoreaweb-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung von .NET Core OpenID Connect- oder JwtBearerAuthentication-Middleware
 Wenn Ihre Anwendung .NET Core OWIN OpenID Connect- oder JwtBearerAuthentication-Middleware verwendet, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
 Sie können überprüfen, ob Ihre Anwendung diese Komponenten nutzt, indem Sie in der Datei „Startup.cs“ oder „Startup.Auth.cs“ der Anwendung nach den folgenden Codeausschnitten suchen:
@@ -111,7 +111,7 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="a-namepassportaweb-applications-apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung des Node.js-passport-azure-ad-Moduls
+### <a name="a-namepassportaweb-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung des Node.js-passport-azure-ad-Moduls
 Wenn Ihre Anwendung das Node.js-passport-ad-Modul verwendet, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers.
 
 Sie können überprüfen, ob Ihre Anwendung passport-ad verwendet, indem Sie in der Datei „app.js“ der Anwendung nach dem folgenden Codeausschnitt suchen:
@@ -124,7 +124,7 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="a-namevs2015aweb-applications-apis-protecting-resources-and-created-with-visual-studio-2015"></a><a name="vs2015"></a>Mit Visual Studio 2015 erstellte Webanwendungen/-APIs zum Schutz von Ressourcen
+### <a name="a-namevs2015aweb-applications--apis-protecting-resources-and-created-with-visual-studio-2015"></a><a name="vs2015"></a>Mit Visual Studio 2015 erstellte Webanwendungen/-APIs zum Schutz von Ressourcen
 Wenn Ihre Anwendung mithilfe einer Webanwendungsvorlage in Visual Studio 2015 erstellt wurde und Sie im Menü **Authentifizierung ändern** die Option **Geschäfts-, Schul- oder Unikonten** ausgewählt haben, verfügt sie bereits über die erforderliche Logik zur automatischen Behandlung des Schlüsselrollovers. Mit dieser Logik, die in die OWIN OpenID Connect-Middleware eingebettet ist, werden die Schlüssel aus dem OpenID Connect Discovery-Dokument abgerufen und zwischengespeichert und regelmäßig aktualisiert.
 
 Wenn Sie die Authentifizierung Ihrer Lösung manuell hinzugefügt haben, verfügt die Anwendung unter Umständen nicht über die erforderliche Logik für einen Schlüsselrollover. Sie müssen diese Logik selbst erstellen oder die Schritte unter [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle](#other)ausführen.
@@ -299,7 +299,7 @@ Anweisungen zum Aktualisieren Ihrer Konfiguration mithilfe des FedUtil-Tools:
 3. Wenn Sie dazu aufgefordert werden, wählen Sie **Aktualisieren** aus, um mit der Aktualisierung Ihrer Verbundmetadaten zu beginnen. Sofern Sie über Zugriff auf die Serverumgebung verfügen, in der die Anwendung gehostet wird, können Sie optional die [automatische Metadaten-Aktualisierungsplanung](https://msdn.microsoft.com/library/ee517272.aspx)von FedUtil verwenden.
 4. Klicken Sie auf **Fertig stellen** , um die Aktualisierung abzuschließen.
 
-### <a name="a-nameotheraweb-applications-apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle
+### <a name="a-nameotheraweb-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle
 Wenn Sie eine andere Bibliothek verwenden oder eines der unterstützten Protokolle manuell implementiert haben, müssen Sie die Bibliothek bzw. die Implementierung überprüfen. Stellen Sie sicher, dass der Schlüssel entweder aus dem OpenID Connect Discovery-Dokument oder aus dem Verbundmetadaten-Dokument abgerufen wird. Eine Möglichkeit der Überprüfung ist das Durchsuchen Ihres Codes oder des Codes der Bibliothek nach Aufrufen des OpenID Discovery-Dokuments oder Verbundmetadaten-Dokuments.
 
 Wenn der Schlüssel an einem Speicherort gespeichert wird oder in der Anwendung hartcodiert ist, können Sie ihn manuell abrufen und entsprechend aktualisieren, indem Sie gemäß den Anweisungen am Ende dieses Anleitungsdokuments einen manuellen Rollover durchführen. **Es wird dringend empfohlen, Ihre Anwendung zu erweitern, sodass sie den automatischen Rollover unterstützt**, wie in den Vorgehensweisen dieses Artikels beschrieben. So verhindern Sie zukünftige Störungen und Mehraufwand, wenn die Rolloverkadenz von Azure AD erhöht oder im Notfall ein Out-of-Band-Rollover durchgeführt wird.

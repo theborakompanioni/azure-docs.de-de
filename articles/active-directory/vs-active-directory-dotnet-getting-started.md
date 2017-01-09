@@ -30,7 +30,7 @@ ms.openlocfilehash: facba2ca8ad0b65965cd761a4d2403226902ed9a
 ## <a name="requiring-authentication-to-access-controllers"></a>Erfordern von Authentifizierung für den Zugriff auf Controller
 Alle Controller in Ihrem Projekt wurden mit dem Attribut **Authorize** versehen. Dieses Attribut erfordert, dass der Benutzer vor dem Zugriff auf diese Controller authentifiziert werden muss. Wenn Sie anonymen Zugriff auf diesen Controller erlauben möchten, entfernen Sie dieses Attribut vom Controller. Wenn Sie die Berechtigungen präziser festlegen möchten, wenden Sie das Attribut auf jede Methode an, die Autorisierung erfordert, anstatt es auf die Controllerklasse anzuwenden.
 
-## <a name="adding-signin-signout-controls"></a>Hinzufügen von SignIn-/SignOut-Steuerelementen
+## <a name="adding-signin--signout-controls"></a>Hinzufügen von SignIn-/SignOut-Steuerelementen
 Wenn Sie zu Ihrer Ansicht SignIn-/SignOut-Steuerelemente hinzufügen möchten, können Sie die Teilansicht **_LoginPartial.cshtml** zum Hinzufügen der Funktion zu einer Ihrer Ansichten verwenden. Das folgende Beispiel zeigt die Funktion, die der Standardansicht **_Layout.cshtml** hinzugefügt wurde. (Beachten Sie das letzte Element in div mit der Klasse navbar-collapse):
 
 <pre>

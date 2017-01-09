@@ -150,7 +150,7 @@ Gehen Sie folgendermaßen vor, um übergreifendes SSO für Anwendungen in Ihrem 
 3. Fordern Sie für jede Ihrer Anwendungen die gleichen Schlüsselbundberechtigung an.
 4. Geben Sie für die Microsoft Identity SDKs an, welchen freigegebenen Schlüsselbund wir verwenden sollen.
 
-#### <a name="using-the-same-client-id-application-id-for-all-the-applications-in-your-suite-of-apps"></a>Verwenden der gleichen Client-ID/Anwendungs-ID für alle Anwendungen in Ihrer App-Suite
+#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Verwenden der gleichen Client-ID/Anwendungs-ID für alle Anwendungen in Ihrer App-Suite
 Damit die Microsoft Identity-Plattform weiß, dass Token anwendungsübergreifend verwendet werden dürfen, muss jede Ihrer Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden. Hierbei handelt es sich um den eindeutigen Bezeichner, den Sie bei der Registrierung Ihrer ersten Anwendung im Portal erhalten haben.
 
 Nun fragen Sie sich vielleicht, wie unterschiedliche Apps gegenüber dem Microsoft Identity-Dienst identifiziert werden, wenn sie die gleiche Anwendungs-ID verwenden. Die Antwort lautet: mithilfe von **Umleitungs-URIs**. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Nachfolgend sehen Sie ein Beispiel hierfür:

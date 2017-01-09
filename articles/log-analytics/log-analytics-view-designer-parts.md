@@ -58,7 +58,7 @@ Zeigt eine Liste der Protokollsuchabfragen an.  Die Benutzer kann auf die einzel
 | Suchabfrage |Die auszuführende Abfrage. |
 | Anzeigename |Beschreibender Name der Abfrage, der für den Benutzer angezeigt wird. |
 
-## <a name="number-list-part"></a>Komponente mit Zahl und Liste
+## <a name="number--list-part"></a>Komponente mit Zahl und Liste
 Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus einer Protokollsuchabfrage angibt.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
 
 ![Ansicht der Liste der Abfragen](media/log-analytics-view-designer/view-number-list.png)
@@ -86,7 +86,7 @@ Die Kopfzeile weist eine einzelne Zahl auf, die die Anzahl der Datensätze aus e
 | **Liste** |**> Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="two-numbers-list-part"></a>Komponente mit zwei Zahlen und Liste
+## <a name="two-numbers--list-part"></a>Komponente mit zwei Zahlen und Liste
 Die Kopfzeile weist zwei Zahlen auf, die die Anzahl der Datensätze aus getrennten Protokollsuchabfragen angeben.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
 
 ![Ansicht mit zwei Zahlen und Liste](media/log-analytics-view-designer/view-two-numbers-list.png)
@@ -115,7 +115,7 @@ Die Kopfzeile weist zwei Zahlen auf, die die Anzahl der Datensätze aus getrennt
 | **Liste** |**> Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="donut-list-part"></a>Komponente mit Ring und Liste
+## <a name="donut--list-part"></a>Komponente mit Ring und Liste
 Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer Protokollabfrage zusammenfasst.  Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar.
 
 ![Ansicht mit Ring und Liste](media/log-analytics-view-designer/view-donut-list.png)
@@ -155,7 +155,7 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer P
 | **Liste** |**> Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="two-timelines-list-part"></a>Komponente mit zwei Zeitachsen und Liste
+## <a name="two-timelines--list-part"></a>Komponente mit zwei Zeitachsen und Liste
 Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an. In einer Legende wird eine einzelne Zahl dargestellt, die eine Wertespalte in einer Protokollabfrage zusammenfasst.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
 
 ![Ansicht mit zwei Zeitachsen und Liste](media/log-analytics-view-designer/view-two-timelines-list.png)
@@ -206,7 +206,7 @@ Die Kopfzeile zeigt statischen Text und einen optionalen Link an.  Die Liste zei
 | Titel |Text, der für Titel der einzelnen Elemente angezeigt wird. |
 | Inhalt |Text, der für die einzelnen Elemente angezeigt wird. |
 
-## <a name="line-chart-callout-list-part"></a>Komponente mit Liniendiagramm, Legende und Liste
+## <a name="line-chart-callout--list-part"></a>Komponente mit Liniendiagramm, Legende und Liste
 Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
 
 ![Ansicht mit Liniendiagramm, Legende und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
@@ -245,7 +245,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | **Liste** |**> Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diese Option, um Schwellenwerte zu aktivieren.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
-## <a name="line-chart-list-part"></a>Komponente mit Liniendiagramm und Liste
+## <a name="line-chart--list-part"></a>Komponente mit Liniendiagramm und Liste
 Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an.  Die Liste zeigt die ersten zehn Ergebnisse aus einer Abfrage an. Ein Diagramm gibt dabei den relativen Wert einer numerischen Spalte oder die Änderung des Werts im Lauf der Zeit an.
 
 ![Ansicht mit Liniendiagramm und Liste](media/log-analytics-view-designer/view-line-chart-callout-list.png)
@@ -304,7 +304,7 @@ Zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im zeitl
 ## <a name="common-settings"></a>Allgemeine Einstellungen
 In den folgenden Abschnitten werden die Einstellungen beschrieben, die für verschiedene Visualisierungskomponenten gelten.
 
-### <a name="a-namename-value-separatorname-value-separatora"></a><a name="name-value-separator">Trennzeichen für Name und Wert</a>
+### <a name="a-namename-value-separatorname--value-separatora"></a><a name="name-value-separator">Trennzeichen für Name und Wert</a>
 Ein Trennzeichen, um die Texteigenschaft aus einer Listenabfrage in mehrere Werte zu zergliedern.  Wenn Sie ein Trennzeichen angeben, können Sie Namen für die einzelnen Felder getrennt durch dieses Trennzeichen im Feld „Name“ bereitstellen.
 
 Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude12* auf.  Sie könnten - als Trennzeichen für Name und Wert und *Ort-Gebäude* als Namen angeben.  Dadurch wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* zergliedert. 

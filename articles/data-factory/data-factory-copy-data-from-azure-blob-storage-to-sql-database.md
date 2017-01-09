@@ -57,13 +57,13 @@ Sie benötigen in diesem Tutorial den Kontonamen und -schlüssel Ihres Azure-Spe
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im linken Menü auf **Weitere Dienste**, und wählen Sie **Speicherkonten** aus.
 
-    ![Durchsuchen > Speicherkonten](media\\data-factory-copy-data-from-azure-blob-storage-to-sql-database\\browse-storage-accounts.png)
+    ![Durchsuchen > Speicherkonten](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. Wählen Sie auf dem Blatt **Speicherkonten** das **Azure-Speicherkonto** aus, das Sie in diesem Tutorial verwenden möchten.
 4. Klicken Sie unter **EINSTELLUNGEN** auf den Link **Zugriffsschlüssel**.
 5. Klicken Sie auf die (Bild-)Schaltfläche **Kopieren** neben dem Textfeld **Speicherkontoname**, und speichern Sie den Eintrag beispielsweise in einer Textdatei.
 6. Wiederholen Sie den vorherigen Schritt zum Kopieren oder Notieren von **key1**.
 
-    ![Speicherzugriffsschlüssel](media\\data-factory-copy-data-from-azure-blob-storage-to-sql-database\\storage-access-key.png)
+    ![Speicherzugriffsschlüssel](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
 7. Schließen Sie alle Blätter, indem Sie auf **X**klicken.
 
 ## <a name="collect-sql-server-database-user-names"></a>Erfassen der Namen von SQL Server, Datenbank und Benutzer

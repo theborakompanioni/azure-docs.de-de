@@ -197,7 +197,7 @@ Als Datenspeicher verwenden wir MongoDB. Daher müssen wir sowohl das weit verbr
 
 * `npm install mongoose`
 
-## <a name="9-install-additional-modules"></a>9.  Installieren zusätzlicher Module
+## <a name="9--install-additional-modules"></a>9.  Installieren zusätzlicher Module
 Nun installieren Sie alle weiteren erforderlichen Module.
 
 Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:

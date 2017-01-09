@@ -19,6 +19,6 @@ Nach dem Abschluss der Konfiguration und Registrierung wird das Gerät online ge
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

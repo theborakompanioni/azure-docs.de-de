@@ -87,6 +87,6 @@ ms.openlocfilehash: 708444a1b2569cf794ce1f6d8d6c97c7d9e339b7
  Weitere Informationen im Zusammenhang mit Media Services-Encodern finden Sie unter [Azure On-Demand Media Encoder – Überblick und Vergleich](https://azure.microsoft.com/en-us/documentation/articles/media-services-encode-asset/).
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO5-->
 
 

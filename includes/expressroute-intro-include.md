@@ -5,6 +5,6 @@ Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine d
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

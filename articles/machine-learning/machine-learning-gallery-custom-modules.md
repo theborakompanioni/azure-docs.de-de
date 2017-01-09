@@ -39,9 +39,9 @@ Auf dieser Seite können Sie alle benutzerdefinierten Module im Katalog durchsuc
 ### <a name="comment-and-share"></a>Kommentieren und teilen
  Klicken Sie auf ein beliebiges benutzerdefiniertes Modul zum Öffnen der Seite „Details“ des Moduls und zum Lesen von Informationen zur Funktionsweise des Moduls und dessen Verwendung. Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch einen Link zum benutzerdefinierten Modul per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
 
-![Teilen Sie dieses Element mit Freunden](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![Teilen Sie dieses Element mit Freunden](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![Fügen Sie Ihre eigenen Kommentare hinzu](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![Fügen Sie Ihre eigenen Kommentare hinzu](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>Download
 Sie können alle benutzerdefinierten Module im Katalog für Ihre eigenen Experimente verwenden.
@@ -55,7 +55,7 @@ Nachdem das benutzerdefinierte Modul in der Modulpalette ist, können Sie es in 
 1. Neues Experiment erstellen oder vorhandenes öffnen
 2. Klicken Sie in der Modulpalette links vom Experimentbereich auf **Custom** zum Erweitern der Liste der benutzerdefinierten Module im Arbeitsbereich
    
-    ![Benutzerdefinierte Modulliste in Studio Palette](media\\machine-learning-gallery-custom-modules\\custom-module-in-studio-palette.png)
+    ![Benutzerdefinierte Modulliste in Studio Palette](media/machine-learning-gallery-custom-modules/custom-module-in-studio-palette.png)
 3. Wählen Sie das Modul, das Sie importiert haben, und ziehen Sie es zum Experiment
 
 ### <a name="from-the-gallery"></a>Aus dem Katalog
@@ -64,7 +64,7 @@ So laden Sie eine Kopie eines benutzerdefinierten Moduls aus dem Katalog herunte
 1. Öffnen Sie die Detailseite des Moduls im Katalog
 2. Klicken Sie auf **In Studio öffnen**
    
-    ![Öffnen eines benutzerdefinierten Moduls aus dem Katalog](media\\machine-learning-gallery-custom-modules\\open-custom-module-from-gallery.png)
+    ![Öffnen eines benutzerdefinierten Moduls aus dem Katalog](media/machine-learning-gallery-custom-modules/open-custom-module-from-gallery.png)
    
     Jedes benutzerdefinierte Modul enthält ein Beispielexperiment, das die Verwendung des Moduls veranschaulicht. Wenn Sie auf **In Studio öffnen** klicken, wird dieses Beispielexperiment in den Machine Learning Studio-Arbeitsbereich geladen und geöffnet (sofern Sie noch nicht bei Studio angemeldet sind, werden Sie aufgefordert, sich mit Ihrem Microsoft-Konto anzumelden, bevor das Experiment in Ihren Arbeitsbereich kopiert wird).
 
@@ -77,7 +77,7 @@ Sie können die gleichen benutzerdefinierten Module auch aus dem Katalog importi
 2. Wählen Sie **Module** aus – Eine Liste der Module aus dem Katalog wird angezeigt, in der Sie Ihre Wahl treffen können, oder suchen Sie mithilfe des Suchfelds ein bestimmtes Modul
 3. Zeigen Sie die Maus auf ein Modul, und wählen **Modul importieren** (um Informationen zum Modul anzuzeigen, wählen Sie **Im Katalog anzeigen**, anschließend gelangen Sie zur Detailseite für das Modul im Katalog)
    
-    ![Import von benutzerdefinierten Modulen in Machine Learning Studio](media\\machine-learning-gallery-custom-modules\\add-custom-module-in-studio.png)
+    ![Import von benutzerdefinierten Modulen in Machine Learning Studio](media/machine-learning-gallery-custom-modules/add-custom-module-in-studio.png)
 
 Das benutzerdefinierte Modul ist in Ihren Arbeitsbereich kopiert und in der Modulpalette zusammen mit alle anderen integrierten oder benutzerdefinierten Studio Modulen platziert. Sie können es jetzt wie andere Module in Ihrem Arbeitsbereich verwenden.
 

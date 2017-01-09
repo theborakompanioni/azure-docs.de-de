@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/06/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -35,8 +35,8 @@ Jede App, die Azure AD B2C verwendet, muss im B2C-Verzeichnis im [Azure-Portal](
 Nach dem Registrieren Ihrer App kommuniziert diese mit Azure AD, indem sie Anforderungen an den v2.0-Endpunkt sendet:
 
 ```
-https://login.microsoftonline.com/common/oauth2/v2.0/authorize
-https://login.microsoftonline.com/common/oauth2/v2.0/token
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
 In fast allen OAuth- und OpenID Connect-Abläufen gibt es beim Austausch vier Beteiligte:

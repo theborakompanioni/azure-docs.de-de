@@ -170,7 +170,7 @@ Hier ist der Code für die Datenerfassung.
 
 Für die Ausführung der obigen Zelle benötigte Zeit: 51,72 Sekunden
 
-## <a name="data-exploration-visualization"></a>Durchsuchen und Visualisierung von Daten
+## <a name="data-exploration--visualization"></a>Durchsuchen und Visualisierung von Daten
 Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Data Science-Prozess darin, durch Durchsuchen und Visualisieren eine tiefer gehende Einsicht in die Daten zu erhalten. In diesem Abschnitt untersuchen wir die Taxidaten mit SQL-Abfragen und zeichnen Diagramme der Zielvariablen und künftigen Merkmale zur Sichtprüfung. Insbesondere stellen wir die Häufigkeit der Fahrgastzahlen bei Taxifahrten, die Häufigkeit der Trinkgeldbeträge und die Variation der Trinkgelder nach Zahlungsbetrag und -art im Diagramm dar.
 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Zeichnen eines Histogramms der Häufigkeit der Fahrgastzahlen im Taxifahrtenbeispiel

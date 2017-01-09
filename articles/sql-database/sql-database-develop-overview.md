@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 72a20c51416cd3022e2a749c51f25c4b3d9268df
-ms.openlocfilehash: 88b8076e740f80154e410050cd55cd2fa4783b38
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 18dc3cce7451d90b6b65b990b80c05e7f6decb56
 
 
 ---
@@ -41,7 +41,7 @@ Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mi
 ## <a name="security"></a>Sicherheit
 Azure SQL-Datenbank stellt Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten sowie zum Überwachen von Aktivitäten in einer SQL-Datenbank bereit.
 
-* Weitere Informationen: [Sichern der SQL-Datenbank](sql-database-security.md)
+* Weitere Informationen: [Sichern der SQL-Datenbank](sql-database-security-overview.md)
 
 ## <a name="authentication"></a>Authentifizierung
 * Azure SQL-Datenbank unterstützt Benutzer und Anmeldungen mit SQL Server-Authentifizierung sowie Benutzer und Anmeldungen mit [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md) .
@@ -77,6 +77,6 @@ Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/se
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

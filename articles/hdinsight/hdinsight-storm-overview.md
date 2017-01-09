@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: e0353fe07c98060c88f8fefdcc3c1052437f23ab
+ms.sourcegitcommit: bccec1e4078c38e1cc9205a36d3a5df579df35b6
+ms.openlocfilehash: d5ff397e947a7edc8310da59ff9fe8896829e35d
 
 
 ---
@@ -36,8 +36,9 @@ Apache Storm in HDInsight wird als verwalteter Cluster angeboten, der in die Azu
   * Unterstützung für gemischte Programmiersprachen: Daten werden mit Java gelesen und dann mit C verarbeitet.#
     
     > [!NOTE]
-    > C#-Topologien werden nur auf Windows-basierten HDInsight-Clustern unterstützt.
+    > Um eine C#-Topologie mit einem Linux-basierten Cluster zu verwenden, müssen Sie das NuGet-Paket „Microsoft.SCP.Net.SDK“, das vom Projekt verwendet wird, auf Version 0.10.0.6 oder höher aktualisieren. Die Version des Pakets muss zudem mit der Hauptversion der Storm-Installation auf HDInsight übereinstimmen. Beispielsweise verwenden die Storm in HDInsight-Versionen 3.3 und 3.4 die Storm-Version 0.10.x, während HDInsight 3.5 Storm 1.0.x verwendet.
     > 
+    > C#-Topologien in Linux-basierten Clustern müssen .NET 4.5 verwenden. Zudem muss Mono im HDInsight-Cluster ausgeführt werden. Das meiste ist funktionsfähig, Sie sollten jedoch das Dokument zur [Mono-Kompatibilität](http://www.mono-project.com/docs/about-mono/compatibility/) auf mögliche Inkompatibilitäten überprüfen.
     > 
   * Verwendung der **Trident** -Java-Schnittstelle zum Erstellen von Storm-Topologien, die eine "exakt einmalige" Verarbeitung von Nachrichten, "transaktionale" Datenspeicherpersistenz sowie eine Reihe allgemeiner Datenstrom-Analysevorgänge unterstützen.
 * Integrierte Funktionen für zentrales Hoch- und Herunterskalieren: Skalieren Sie einen HDInsight-Cluster ohne Auswirkungen auf die Ausführung von Storm-Topologien.
@@ -206,6 +207,6 @@ Weitere Informationen zu Lösungen für Echtzeitanalysen mit Apache Storm in HDI
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

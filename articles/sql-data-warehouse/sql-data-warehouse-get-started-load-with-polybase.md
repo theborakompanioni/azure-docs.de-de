@@ -278,6 +278,6 @@ Im [PolyBase-Handbuch][PolyBase-Handbuch] finden Sie weitere Informationen, die 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
