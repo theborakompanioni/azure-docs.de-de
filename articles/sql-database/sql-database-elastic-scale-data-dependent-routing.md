@@ -90,7 +90,7 @@ Eine bewährte Methode bei der Entwicklung von Anwendungen für den Datenzugriff
 
 Die Behandlung vorübergehender Fehler kann natürlich zusammen mit dem datenabhängigen Routing verwendet werden. Die wichtigste Anforderung besteht in einer Wiederholung der gesamten Datenzugriffsanforderung, darunter des **using** -Blocks, der die datenabhängige Routingverbindung abgerufen hat. Das obige Beispiel könnte wie folgt umgeschrieben werden (beachten Sie die hervorgehobenen Änderungen). 
 
-### <a name="example-data-dependent-routing-with-transient-fault-handling"></a>Beispiel – Datenabhängiges Routing mit Behandlung vorübergehender Fehler
+### <a name="example--data-dependent-routing-with-transient-fault-handling"></a>Beispiel – Datenabhängiges Routing mit Behandlung vorübergehender Fehler
 <pre><code>int customerId = 12345; 
 int newPersonId = 4321; 
 

@@ -173,47 +173,53 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Vorbereitung des lokalen SQL Servers für das Lernprogramm
 1. Verwenden Sie in der Datenbank, die Sie für den lokalen verknüpften SQL Server-Dienst (**SqlServerLinkedService**) angegeben haben, das folgende SQL-Skript zum Erstellen der Tabelle **emp** in der Datenbank.
-   
-        CREATE TABLE dbo.emp
-        (
-            ID int IDENTITY(1,1) NOT NULL, 
-            FirstName varchar(50),
-            LastName varchar(50),
-            CONSTRAINT PK_emp PRIMARY KEY (ID)
-        )
-        GO 
+
+    ```SQL   
+    CREATE TABLE dbo.emp
+    (
+        ID int IDENTITY(1,1) NOT NULL, 
+        FirstName varchar(50),
+        LastName varchar(50),
+        CONSTRAINT PK_emp PRIMARY KEY (ID)
+    )
+    GO
+    ``` 
 2. Fügen Sie einige Beispiele in die Tabelle ein: 
    
-        INSERT INTO emp VALUES ('John', 'Doe')
-        INSERT INTO emp VALUES ('Jane', 'Doe')
+    ```SQL
+    INSERT INTO emp VALUES ('John', 'Doe')
+    INSERT INTO emp VALUES ('Jane', 'Doe')
+    ```
 
 ### <a name="create-input-dataset"></a>Erstellen eines Eingabedatasets
+
 1. Klicken Sie im **Data Factory-Editor** in der Befehlszeile auf **... Mehr**, auf der Befehlszeile auf **Neues Dataset** und dann auf **SQL Server-Tabelle**. 
 2. Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:
-   
-         {        
-             "name": "EmpOnPremSQLTable",
-             "properties": {
-                 "type": "SqlServerTable",
-                 "linkedServiceName": "SqlServerLinkedService",
-                 "typeProperties": {
-                     "tableName": "emp"
-                 },
-                 "external": true,
-                 "availability": {
-                     "frequency": "Hour",
-                     "interval": 1
-                 },
-                 "policy": {
-                     "externalData": {
-                         "retryInterval": "00:01:00",
-                         "retryTimeout": "00:10:00",
-                         "maximumRetry": 3
-                     }
-                 }
-             }
-         }     
-   
+
+    ```JSON   
+    {        
+        "name": "EmpOnPremSQLTable",
+        "properties": {
+            "type": "SqlServerTable",
+            "linkedServiceName": "SqlServerLinkedService",
+            "typeProperties": {
+                "tableName": "emp"
+            },
+            "external": true,
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "policy": {
+                "externalData": {
+                    "retryInterval": "00:01:00",
+                    "retryTimeout": "00:10:00",
+                    "maximumRetry": 3
+                }
+            }
+        }
+    }     
+    ```     
    Beachten Sie folgende Punkte: 
    
    * **type** ist auf **SqlServerTable** festgelegt.
@@ -225,28 +231,30 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 3. Klicken Sie in der Befehlsleiste auf **Bereitstellen** , um das Dataset bereitzustellen.  
 
 ### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
+
 1. Klicken Sie im **Data Factory-Editor** auf der Symbolleiste auf **Neues Dataset** und dann auf **Azure-Blobspeicher**.
 2. Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text: 
-   
-         {
-             "name": "OutputBlobTable",
-             "properties": {
-                 "type": "AzureBlob",
-                 "linkedServiceName": "AzureStorageLinkedService",
-                 "typeProperties": {
-                       "folderPath": "adftutorial/outfromonpremdf",
-                       "format": {
-                         "type": "TextFormat",
-                         "columnDelimiter": ","
-                       }
-                 },
-                 "availability": {
-                       "frequency": "Hour",
-                       "interval": 1
-                 }
-               }
-         }
-   
+
+    ```JSON   
+    {
+        "name": "OutputBlobTable",
+        "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "AzureStorageLinkedService",
+            "typeProperties": {
+                "folderPath": "adftutorial/outfromonpremdf",
+                "format": {
+                    "type": "TextFormat",
+                    "columnDelimiter": ","
+                }
+            },
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
+            }
+        }
+     }
+    ```   
    Beachten Sie folgende Punkte: 
    
    * **type** ist auf **AzureBlob** festgelegt.
@@ -258,20 +266,20 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
    
    Um **folderPath** und **fileName** dynamisch basierend auf der **SliceStart**-Zeit festzulegen, verwenden Sie die Eigenschaft „partitionedBy“. Im folgenden Beispiel verwendet folderPath die Angaben für Jahr, Monat und Tag aus „SliceStart“ (Startzeit des zu verarbeitenden Slices) und „fileName“ die Angabe für Stunde aus „SliceStart“. Wenn beispielsweise ein Slice für den Zeitpunkt "2014-10-20T08:00:00" erzeugt wird, wird "folderName" auf "wikidatagateway/wikisampledataout/2014/10/20" und "filName" auf "08.csv" festgelegt. 
 
-```
-"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-"fileName": "{Hour}.csv",
-"partitionedBy": 
-[
+    ```JSON
+    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+    "fileName": "{Hour}.csv",
+    "partitionedBy": 
+    [
+    
+        { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+        { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
+        { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
+        { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
+    ],
+    ```
 
-    { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-    { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-    { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-    { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-],
-```
-
-Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus Azure Blob Storage](data-factory-azure-blob-connector.md).
+    Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus Azure Blob Storage](data-factory-azure-blob-connector.md).
 3. Klicken Sie in der Befehlsleiste auf **Bereitstellen** , um das Dataset bereitzustellen. Vergewissern Sie sich, dass beide Datasets in der Strukturansicht angezeigt werden.  
 
 ## <a name="create-pipeline"></a>Erstellen der Pipeline
@@ -279,50 +287,51 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 
 1. Klicken Sie im Data Factory-Editor auf **... More** (Mehr), und klicken Sie auf **Neue Pipeline**. 
 2. Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:    
-   
-         {
-             "name": "ADFTutorialPipelineOnPrem",
-             "properties": {
-             "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
-             "activities": [
+
+    ```JSON   
+     {
+         "name": "ADFTutorialPipelineOnPrem",
+         "properties": {
+         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+         "activities": [
+           {
+             "name": "CopyFromSQLtoBlob",
+             "description": "Copy data from on-prem SQL server to blob",
+             "type": "Copy",
+             "inputs": [
                {
-                 "name": "CopyFromSQLtoBlob",
-                 "description": "Copy data from on-prem SQL server to blob",
-                 "type": "Copy",
-                 "inputs": [
-                   {
-                     "name": "EmpOnPremSQLTable"
-                   }
-                 ],
-                 "outputs": [
-                   {
-                     "name": "OutputBlobTable"
-                   }
-                 ],
-                 "typeProperties": {
-                   "source": {
-                     "type": "SqlSource",
-                     "sqlReaderQuery": "select * from emp"
-                   },
-                   "sink": {
-                     "type": "BlobSink"
-                   }
-                 },
-                 "Policy": {
-                   "concurrency": 1,
-                   "executionPriorityOrder": "NewestFirst",
-                   "style": "StartOfInterval",
-                   "retry": 0,
-                   "timeout": "01:00:00"
-                 }
+                 "name": "EmpOnPremSQLTable"
                }
              ],
-             "start": "2016-07-05T00:00:00Z",
-             "end": "2016-07-06T00:00:00Z",
-             "isPaused": false
+             "outputs": [
+               {
+                 "name": "OutputBlobTable"
+               }
+             ],
+             "typeProperties": {
+               "source": {
+                 "type": "SqlSource",
+                 "sqlReaderQuery": "select * from emp"
+               },
+               "sink": {
+                 "type": "BlobSink"
+               }
+             },
+             "Policy": {
+               "concurrency": 1,
+               "executionPriorityOrder": "NewestFirst",
+               "style": "StartOfInterval",
+               "retry": 0,
+               "timeout": "01:00:00"
+             }
            }
-         }
-   
+         ],
+         "start": "2016-07-05T00:00:00Z",
+         "end": "2016-07-06T00:00:00Z",
+         "isPaused": false
+       }
+     }
+    ```   
    > [!IMPORTANT]
    > Ersetzen Sie den Wert der **start**-Eigenschaft durch den aktuellen Tag und den der **end**-Eigenschaft durch den nächsten Tag.
    > 

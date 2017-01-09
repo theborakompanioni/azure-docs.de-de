@@ -1,13 +1,18 @@
-Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Um mit dem Hosten der Domäne zu beginnen, müssen Sie eine DNS-Zone erstellen. Alle DNS-Einträge, die für eine bestimmte Domäne erstellt wurden, befinden sich in einer DNS-Zone für die Domäne.
+Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt.
 
 Beispiel: Die Domäne „contoso.com“ kann eine Reihe von DNS-Einträgen wie „mail.contoso.com“ (für einen E-Mail-Server) und „www.contoso.com“ (für eine Website) enthalten.
 
-## <a name="a-namenamesaabout-dns-zone-names"></a><a name="names"></a>Informationen zu DNS-Zonennamen
-* Der Name der Zone muss innerhalb der Ressourcengruppe eindeutig sein. Außerdem darf die Zone noch nicht vorhanden sein. Andernfalls schlägt der Vorgang fehl.
+Beim Erstellen einer DNS-Zone in Azure DNS gilt Folgendes:
+
+* Der Name der Zone muss innerhalb der Ressourcengruppe eindeutig sein. Außerdem darf die Zone noch nicht vorhanden sein. Andernfalls ist der Vorgang nicht erfolgreich.
 * Der gleiche Zonennamen kann in einer anderen Ressourcengruppe oder einem anderen Azure-Abonnement erneut verwendet werden.
-* Wenn mehrere Zonen denselben Namen haben, werden jeder Instanz verschiedene Namensserveradressen zugewiesen, und nur eine Instanz kann von der übergeordneten Domäne delegiert werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](../articles/dns/dns-domain-delegation.md).
+* Wenn mehrere Zonen den gleichen Namen haben, erhält jede Instanz eine andere Adresse für den Namenserver. Mit der Domänennamen-Registrierungsstelle kann nur ein Satz von Adressen konfiguriert werden.
 
+> [!NOTE]
+> Sie müssen keinen Domänennamen besitzen, um eine DNS-Zone mit diesem Domänennamen in Azure DNS zu erstellen. Sie müssen jedoch die Domäne besitzen, um die Azure DNS-Namenserver als korrekte Namenserver für den Domänennamen mit der Domänennamen-Registrierungsstelle zu konfigurieren.
+> 
+> Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](../articles/dns/dns-domain-delegation.md).
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -23,12 +23,12 @@ ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
 # <a name="encrypt-an-azure-virtual-machine"></a>Verschlüsseln eines virtuellen Azure-Computers
 Azure Security Center gibt eine Warnung aus, wenn Sie über nicht verschlüsselte virtuelle Computer verfügen. Dies wird als Warnung mit hohem Schweregrad angezeigt. Empfohlen wird in diesem Fall die Verschlüsselung der virtuellen Computer.
 
-![Empfehlung für Datenträgerverschlüsselung](./media/security-center-disk-encryption\\security-center-disk-encryption-fig1.png)
+![Empfehlung für Datenträgerverschlüsselung](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
 > Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center.
-> 
-> 
+>
+>
 
 Zum Verschlüsseln virtueller Azure-Computer, für die von Azure Security Center festgestellt wurde, dass sie verschlüsselt werden müssen, empfehlen wir die folgenden Schritte:
 
@@ -43,8 +43,8 @@ Ihnen stehen verschiedene Methoden zur Verfügung, um die Voraussetzungen einzur
 
 > [!NOTE]
 > Weitere Informationen zu alternativen Methoden zum Konfigurieren der Verschlüsselung für virtuelle Azure-Computer finden Sie unter [Azure Disk Encryption for Windows and Linux Azure Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)(Azure Disk Encryption für virtuelle Azure-Computer unter Windows und Linux).
-> 
-> 
+>
+>
 
 ## <a name="install-and-configure-azure-powershell"></a>Installieren und Konfigurieren von Azure PowerShell
 Auf Ihrem Computer muss Azure PowerShell Version 1.2.1 oder höher installiert sein. Der Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) beschreibt alle Schritte, die auszuführen sind, damit Azure PowerShell auf Ihrem Computer funktioniert. Die einfachste Methode besteht in der Verwendung der Web PI-Installation, die in dem o. g. Artikel beschrieben ist. Auch wenn Sie Azure PowerShell bereits installiert haben, installieren Sie es erneut mit der Web PI-Methode, damit Sie über die neueste Version von Azure PowerShell verfügen.
@@ -70,7 +70,7 @@ Nachdem Sie den Inhalt des Skripts nun gespeichert haben, öffnen Sie das Skript
 
 Ihnen sollte nun in etwa Folgendes angezeigt werden:
 
-![PowerShell ISE-Fenster](./media/security-center-disk-encryption\\security-center-disk-encryption-fig2.png)
+![PowerShell ISE-Fenster](./media/security-center-disk-encryption/security-center-disk-encryption-fig2.png)
 
 Der obere Bereich wird als „Skriptbereich“ bezeichnet, und der untere Bereich als „Konsole“. Diese Begriffe werden später in diesem Artikel verwendet.
 
@@ -84,8 +84,8 @@ Wenn Sie das für Azure Disk Encryption erforderliche Skript starten, werden Sie
 
 > [!NOTE]
 > Wenn Sie wissen möchten, weshalb Sie eine Azure Active Directory-Anwendung erstellen müssen, finden Sie unter *Registrieren einer Anwendung mit Azure Active Directory* im Artikel [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md)weitere Informationen.
-> 
-> 
+>
+>
 
 Führen Sie die folgenden Schritte aus, um einen virtuellen Azure-Computer zu verschlüsseln:
 
@@ -94,12 +94,12 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Azure-Computer zu ve
 3. Legen Sie die Ausführungsrichtlinie auf Ihrem Computer fest, damit Sie das Skript ausführen können. Geben Sie in der Konsole **Set-ExecutionPolicy Unrestricted** ein, und betätigen Sie dann die EINGABETASTE. Wenn ein Dialogfeld erscheint, das auf die Auswirkungen der Änderung zu der Ausführungsrichtlinie hinweist, klicken Sie entweder auf **Ja, alle** oder auf **Ja** (wenn Ihnen die Option **Ja, alle** angezeigt wird, wählen Sie diese aus, ****andernfalls wählen Sie **Ja**).
 4. Melden Sie sich bei Ihrem Azure-Konto an. Geben Sie in der Konsole **Login-AzureRmAccount** ein, und betätigen Sie die ****EINGABETASTE. Ein Dialogfeld wird angezeigt, in dem Sie Ihre Anmeldeinformationen eingeben. (Dabei müssen Sie über die Rechte zum Ändern der virtuellen Computer verfügen, da Sie diese andernfalls nicht verschlüsseln können. Falls Sie sich nicht sicher sind, können Sie bei Ihrem Abonnementbesitzer oder Administrator nachfragen.) Es sollten Informationen zu **Environment**, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden. Kopieren Sie die **SubscriptionId** in den Editor. Diese ist in Schritt Nr. 6 erforderlich.
 5. Ermitteln Sie das Abonnement, zum dem Ihr virtueller Computer gehört, sowie den Speicherort. Melden Sie sich bei [https://portal.azure.com](ttps://portal.azure.com) an.  Klicken Sie im linken Bereich der Seite auf **Virtuelle Computer**. Daraufhin wird eine Liste Ihrer virtuellen Computer mit den dazugehörige Abonnements angezeigt.
-   
-   ![Virtuelle Computer](./media/security-center-disk-encryption\\security-center-disk-encryption-fig3.png)
+
+   ![Virtuelle Computer](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Kehren Sie zu PowerShell ISE zurück. Legen Sie den Abonnementkontext fest, in dem das Skript ausgeführt wird. Geben Sie in der Konsole **Select-AzureRmSubscription –SubscriptionId <Ihre_Abonnement-ID>** ein (ersetzen Sie **<Ihre_Abonnement-ID>** durch Ihre Abonnement-ID), und drücken Sie die EINGABETASTE****. Es sollten Informationen zu „Environment“, **Account**, **TenantId**, **SubscriptionId** und **CurrentStorageAccount** angezeigt werden.
 7. Nun können Sie das Skript ausführen. Klicken Sie auf die Schaltfläche **Skript ausführen**, oder drücken Sie auf der Tastatur die ****F5-TASTE.
-   
-   ![Ausführen eines PowerShell-Skripts](./media/security-center-disk-encryption\\security-center-disk-encryption-fig4.png)
+
+   ![Ausführen eines PowerShell-Skripts](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
 8. Im Skript wird nach **resourceGroupName** gefragt: Geben Sie den Namen der *Ressourcengruppe* ein, die Sie verwenden möchten, und drücken Sie die EINGABETASTE****. Geben Sie, falls Sie über keinen solchen Tresor verfügen, einen Namen für einen neuen Tresor ein. Wenn Sie bereits über eine *Ressourcengruppe* verfügen, die Sie verwenden möchten (z.B. diejenige, in der sich Ihr virtueller Computer befindet), geben Sie den Namen der vorhandenen Ressourcengruppe ein.
 9. Das Skript fragt nach **keyVaultName:** – Geben Sie den Namen des *Schlüsseltresors* an, den Sie verwenden möchten, und betätigen Sie die EINGABETASTE. Geben Sie, falls Sie über keinen solchen Tresor verfügen, einen Namen für einen neuen Tresor ein. Wenn Sie bereits über einen Schlüsseltresor verfügen, der in diesem Abonnement verwendet werden soll, geben Sie den Namen des entsprechenden *Schlüsseltresors*an.
 10. Das Skript fragt nach **location**: Geben Sie den Namen des Speicherorts an, an dem sich der zu verschlüsselnde virtuelle Computer befindet, und betätigen Sie anschließend die EINGABETASTE****. Wenn Sie den Speicherort vergessen haben, gehen Sie zurück zu Schritt Nr. 5.
@@ -110,7 +110,7 @@ Führen Sie die folgenden Schritte aus, um einen virtuellen Azure-Computer zu ve
 
 Die Ausgabe des Skripts sieht etwa wie folgt aus:
 
-![PowerShell-Ausgabe](./media/security-center-disk-encryption\\security-center-disk-encryption-fig5.png)
+![PowerShell-Ausgabe](./media/security-center-disk-encryption/security-center-disk-encryption-fig5.png)
 
 ## <a name="encrypt-the-azure-virtual-machine"></a>Verschlüsseln des virtuellen Azure-Computers
 Sie können Ihren virtuellen Computer nun verschlüsseln. Wenn sich Ihr virtueller Computer in der gleichen Ressourcengruppe wie Ihr Schlüsseltresor befindet, können Sie zum Abschnitt mit den Verschlüsselungsschritten weitergehen. Wenn der virtuelle Computer sich jedoch nicht in der gleichen Ressourcengruppe wie der Schlüsseltresor befindet, geben Sie in die Konsole von PowerShell ISE Folgendes ein:
@@ -124,7 +124,7 @@ Geben Sie in die PowerShell ISE-Konsole Folgendes ein, um zu bestätigen, dass d
 
 Betätigen Sie die **EINGABETASTE**. Der Name der Ressourcengruppe, in der sich Ihre virtuellen Computer befinden, wird daraufhin angezeigt. Beispiel:
 
-![PowerShell-Ausgabe](./media/security-center-disk-encryption\\security-center-disk-encryption-fig6.png)
+![PowerShell-Ausgabe](./media/security-center-disk-encryption/security-center-disk-encryption-fig6.png)
 
 ### <a name="encryption-steps"></a>Verschlüsselungsschritte
 Geben Sie in PowerShell zunächst den Namen des zu verschlüsselnden virtuellen Computers an. Geben Sie in der Konsole Folgendes ein:
@@ -139,7 +139,7 @@ Geben Sie Folgendes ein, um zu bestätigen, dass der richtige Name des virtuelle
 
 Betätigen Sie die **EINGABETASTE**. Ihnen wird nun der Name des zu verschlüsselnden virtuellen Computers angezeigt. Beispiel:
 
-![PowerShell-Ausgabe](./media/security-center-disk-encryption\\security-center-disk-encryption-fig7.png)
+![PowerShell-Ausgabe](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
 Den Verschlüsselungsbefehl zum Verschlüsseln des virtuellen Computers kann auf zweierlei Weise ausgeführt werden. Die erste Methode besteht darin, in der PowerShell ISE-Konsole den folgenden Befehl einzugeben:
 
@@ -151,25 +151,25 @@ Betätigen Sie nach der Eingabe dieses Befehls die **EINGABETASTE**.
 
 Die zweite Methode besteht darin, in den Skriptbereich (dem oberen Bereich von PowerShell ISE) zu klicken, um im Skript nach unten zu scrollen. Markieren Sie den oben aufgeführten Befehl, und klicken Sie dann mit der rechten Maustaste darauf und anschließend auf **Auswahl ausführen**, oder drücken Sie auf der Tastatur die ****F8-TASTE.
 
-![PowerShell ISE](./media/security-center-disk-encryption\\security-center-disk-encryption-fig8.png)
+![PowerShell ISE](./media/security-center-disk-encryption/security-center-disk-encryption-fig8.png)
 
 Unabhängig von der verwendeten Methode erscheint ein Dialogfeld, das Sie darüber informiert, dass es bis zum Abschluss des Vorgangs 10–15 Minuten dauert. Klicken Sie auf **Ja**.
 
 Während des Verschlüsselungsvorgangs können Sie zum Azure-Portal zurückkehren und den Status des virtuellen Computers einsehen. Klicken Sie im linken Bereich der Seite auf **Virtuelle Computer**. Klicken Sie anschließend auf dem Blatt **Virtuelle Computer** auf den Namen des virtuellen Computers, der verschlüsselt wird. Auf dem angezeigten Blatt wird **Wird aktualisiert** als **Status** angezeigt. Dies zeigt, dass die Verschlüsselung gerade durchgeführt wird.
 
-![Weitere Informationen zum virtuellen Computer](./media/security-center-disk-encryption\\security-center-disk-encryption-fig9.png)
+![Weitere Informationen zum virtuellen Computer](./media/security-center-disk-encryption/security-center-disk-encryption-fig9.png)
 
 Kehren Sie zu PowerShell ISE zurück. Wenn das Skript abgeschlossen ist, wird Ihnen Folgendes angezeigt.
 
-![PowerShell-Ausgabe](./media/security-center-disk-encryption\\security-center-disk-encryption-fig10.png)
+![PowerShell-Ausgabe](./media/security-center-disk-encryption/security-center-disk-encryption-fig10.png)
 
 Damit Sie sehen können, dass der virtuelle Computer nun verschlüsselt ist, kehren Sie zum Azure-Portal zurück, und klicken Sie im linken Bereich der Seite auf **Virtuelle Computer** . Klicken Sie auf den Namen des verschlüsselten virtuellen Computers. Klicken Sie auf dem Blatt **Einstellungen** auf **Datenträger**.
 
-![Einstellungsoptionen](./media/security-center-disk-encryption\\security-center-disk-encryption-fig11.png)
+![Einstellungsoptionen](./media/security-center-disk-encryption/security-center-disk-encryption-fig11.png)
 
 Auf dem Blatt **Datenträger** sehen Sie, dass **Aktiviert** unter **Verschlüsselung** angegeben ist.
 
-![Datenträgereigenschaften](./media/security-center-disk-encryption\\security-center-disk-encryption-fig12.png)
+![Datenträgereigenschaften](./media/security-center-disk-encryption/security-center-disk-encryption-fig12.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie gelernt, wie Sie einen virtuellen Azure-Computer verschlüsseln können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
@@ -178,7 +178,6 @@ In diesem Dokument haben Sie gelernt, wie Sie einen virtuellen Azure-Computer ve
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
-
 
 
 

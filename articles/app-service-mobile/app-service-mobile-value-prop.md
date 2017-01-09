@@ -90,17 +90,17 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
-[Xamarin für iOS and Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
+[(Xamarin für iOS und Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[auto scaling]: ../app-service-web/web-sites-scale.md
-[staging environments]: ../app-service-web/web-sites-staged-publishing.md
+[automatische Skalierung]: ../app-service-web/web-sites-scale.md
+[Stagingumgebungen]: ../app-service-web/web-sites-staged-publishing.md
 [Bereitstellungsoptionen]: ../app-service-web/web-sites-deploy.md
 [Hybridverbindungen]: ../app-service-web/web-sites-hybrid-connection-get-started.md
-[Virtuelle Netzwerke]: ../app-service-web/web-sites-integrate-with-vnet.md
+[virtuelle Netzwerke]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service-Umgebungen]: ../app-service-web/app-service-app-service-environment-intro.md
-[Lernkurve]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
+[Lernpfad]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
 
 
 

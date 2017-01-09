@@ -113,6 +113,6 @@ Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [verschiedene
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

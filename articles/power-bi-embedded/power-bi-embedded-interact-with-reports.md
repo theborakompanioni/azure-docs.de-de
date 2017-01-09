@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 83d997577d3a5854eafd9906bd38d3e703c09f5e
+ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
+ms.openlocfilehash: 28eddb52c33d9883219f146480b110574f728f89
 
 
 ---
@@ -26,18 +26,18 @@ Mithilfe der Power BI-JavaScript-API können Sie mühelos Power BI-Berichte in I
 
 Zum Einbetten eines Power BI-Berichts in Ihre Anwendung verwenden Sie einen IFrame, der als Teil der Anwendung gehostet wird. Wie Sie in der folgenden Abbildung sehen können, fungiert der IFrame als Grenze zwischen Ihrer Anwendung und dem Bericht. 
 
-![Power BI Embedded, IFrame ohne JavaScript-API](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-1.png)
+![Power BI Embedded, IFrame ohne JavaScript-API](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-1.png)
 
 Der IFrame erleichtert den Einbettungsprozess erheblich, ohne die JavaScript-API können der Bericht und die Anwendung jedoch nicht miteinander interagieren. Durch diese mangelnde Interaktion kann der Eindruck entstehen, dass der Bericht eigentlich kein Teil der Anwendung ist. Der Bericht und die Anwendung müssen wie in der folgenden Abbildung gezeigt in beiden Richtungen miteinander kommunizieren.
 
-![Power BI Embedded, IFrame mit JavaScript-API](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-2.png)
+![Power BI Embedded, IFrame mit JavaScript-API](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-2.png)
 
 Die Power BI-JavaScript-API ermöglicht Ihnen das Schreiben von Code, der die IFrame-Grenze sicher passieren kann. Dadurch kann die Anwendung programmgesteuert eine Aktion in einem Bericht ausführen und auf Ereignisse von Aktionen lauschen, die Benutzer innerhalb des Berichts durchführen.
 
 ## <a name="what-can-you-do-with-the-power-bi-javascript-api"></a>Welche Möglichkeiten bietet Ihnen die Power BI-JavaScript-API?
 Mit der JavaScript-API können Sie Berichte verwalten, zu Seiten in einem Bericht navigieren, einen Bericht filtern und Einbettungsereignisse behandeln. Das folgende Diagramm zeigt die Struktur der API.
 
-![Power BI-JavaScript-API – Diagramm](media\\powerbi-embedded-interact-with-reports\\powerbi-embedded-interact-report-3.png)
+![Power BI-JavaScript-API – Diagramm](media/powerbi-embedded-interact-with-reports/powerbi-embedded-interact-report-3.png)
 
 ### <a name="manage-reports"></a>Verwalten von Berichten
 Mit der JavaScript-API können Sie das Verhalten auf der Berichts- und Seitenebene verwalten:
@@ -139,6 +139,6 @@ Weitere Informationen zur Power BI-JavaScript-API finden Sie unter folgenden Lin
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

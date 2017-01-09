@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/26/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fd0e8f5bd41fcf105571f76aab2f192c2f6dd21d
+ms.sourcegitcommit: c5479dd817e8929ff5e9129d4643d49758e7ab16
+ms.openlocfilehash: 82d4d74a14ec31453f0d3eb9a18140c3569f806c
 
 
 ---
@@ -289,9 +289,6 @@ In Machine Learning Studio ist ein vom Benutzer bereitgestelltes Azure-Speicherk
 
 Wenn Sie Zugriffsschlüssel für Speicherkonten geändert haben, müssen Sie die Zugriffsschlüssel im Arbeitsbereich über das klassische Azure-Portal neu synchronisieren.  
 
-## <a name="azure-marketplace"></a>Azure Marketplace
-Weitere Informationen finden Sie unter [FAQ zum Veröffentlichen und Verwenden von Apps im Machine Learning Marketplace](machine-learning-marketplace-faq.md).
-
 ## <a name="support-and-training"></a>Support und Lernmaterial
 **Wo erhalte ich Lernmaterial für Azure Machine Learning?**
 
@@ -545,6 +542,6 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst, und die tatsä
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -16,6 +16,6 @@ Beachten Sie, dass die UltraPerformance-Gateway-SKU nicht in dieser Tabelle enth
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -4,7 +4,7 @@ description: "Die Kapazitätsplanungslösung in Log Analytics hilft Ihnen dabei,
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: 57e7fbdaa393e078b62a6d6a0b181b67d532523d
@@ -27,8 +27,8 @@ Beispielsweise kann anhand einer Prognose ermittelt werden, wann zusätzliche Pr
 
 > [!NOTE]
 > Die Kapazitätsverwaltungslösung kann keinen Arbeitsbereichen hinzugefügt werden. Kunden, die die Kapazitätsverwaltungslösung installiert haben, können die Lösung weiterhin verwenden.  
-> 
-> 
+>
+>
 
 Ein Nachfolgelösung der Kapazitäts- und Leistungslösung ist in der Phase „Private Vorschau“. Diese Nachfolgelösung dient zum Beheben der folgenden von Kunden gemeldeten Problemen mit der ursprünglichen Kapazitätsverwaltungslösung:
 
@@ -173,7 +173,6 @@ Mithilfe des Projektionstools können Sie historische Trends für die Speicherpl
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md) , um ausführliche Daten zur Kapazitätsverwaltung anzuzeigen.
-
 
 
 

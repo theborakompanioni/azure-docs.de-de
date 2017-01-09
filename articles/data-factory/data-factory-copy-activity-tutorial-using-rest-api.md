@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/16/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 6bb9415180f7235b7521d5a4dc9d8a6f0e060756
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: ac1c60e04b42e2804ef17ba35368dd28c1d748a4
 
 
 ---
@@ -43,7 +43,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine Azure Data Factory mit der
 ## <a name="prerequisites"></a>Voraussetzungen
 * Lesen Sie sich die [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) durch, und führen Sie die Schritte zur Erfüllung der **Voraussetzungen** aus.
 * Installieren Sie [Curl](https://curl.haxx.se/dlwiz/) auf Ihrem Computer. Sie können das Curl-Tool mit REST-Befehlen zum Erstellen einer Data Factory verwenden. 
-* Befolgen Sie die Anleitung in [diesem Artikel](../resource-group-create-service-principal-portal.md) , um Folgendes durchzuführen: 
+* Befolgen Sie die Anleitung in [diesem Artikel](../azure-resource-manager/resource-group-create-service-principal-portal.md) , um Folgendes durchzuführen: 
   1. Erstellen Sie eine Webanwendung mit dem Namen **ADFCopyTutorialApp** in Azure Active Directory.
   2. Beschaffen Sie die **Client-ID** und den **geheimen Schlüssel**. 
   3. Beschaffen Sie die **Mandanten-ID**. 
@@ -578,6 +578,6 @@ In diesem Tutorial haben Sie mit der REST-API eine Azure Data Factory erstellt, 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

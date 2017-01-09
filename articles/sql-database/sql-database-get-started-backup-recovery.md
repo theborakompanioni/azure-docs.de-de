@@ -186,17 +186,17 @@ In diesem Abschnitt des Tutorials [konfigurieren Sie einen Azure Recovery Servic
 
 2. Klicken Sie auf **Long-term backup retention** (Langfristige Beibehaltung der Sicherung).
 
-   ![Link „Long-term backup retention“ (Langfristige Beibehaltung der Sicherung)](./media/sql-database-get-started-backup-recovery/long-term-backup-retention-link.png)
+   ![Link „Long-term backup retention“ (Langfristige Sicherungsaufbewahrung)](./media/sql-database-get-started-backup-recovery/long-term-backup-retention-link.png)
 
 3. Lesen und akzeptieren Sie auf dem Blatt **sqldbtutorial - Long-term backup retention** (sqldbtutorial - Langfristige Beibehaltung der Sicherung) die Preview-Bedingungen (es sei denn, Sie haben sie bereits akzeptiert, oder die Funktion befindet sich nicht mehr in der Vorschauphase).
 
    ![Preview-Bedingungen akzeptieren](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
 
-4. Um die langfristige Beibehaltung der Sicherung für die Datenbank „sqldbtutorialdb“ zu konfigurieren, wählen Sie die Datenbank im Raster aus, und klicken Sie dann auf der Symbolleiste auf **Konfigurieren**.
+4. Um die langfristige Sicherungsaufbewahrung für die Datenbank „sqldbtutorialdb“ zu konfigurieren, wählen Sie die Datenbank im Raster aus, und klicken Sie dann auf der Symbolleiste auf **Konfigurieren**.
 
    ![Datenbank für langfristige Beibehaltung der Sicherung auswählen](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
-5. Klicken Sie auf dem Blatt **Konfigurieren** unter **Recovery service vault** (Recovery Service-Tresor) auf **Erforderliche Einstellungen konfigurieren**.
+5. Klicken Sie auf dem Blatt **Konfigurieren** unter **Recovery service vault** (Recovery Services-Tresor) auf **Erforderliche Einstellungen konfigurieren**.
 
    ![Link zum Konfigurieren des Tresors](./media/sql-database-get-started-backup-recovery/configure-vault-link.png)
 
@@ -230,15 +230,15 @@ In diesem Abschnitt des Tutorials [konfigurieren Sie einen Azure Recovery Servic
 
    ![Aufbewahrungsrichtlinie definieren](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
 
-13. Klicken Sie auf dem Blatt **sqldbtutorial - Long-term backup retention** (sqldbtutorial - Langfristige Beibehaltung der Sicherung) auf **Speichern** und dann auf **OK**, um die Richtlinie für langfristige Beibehaltung der Sicherung auf alle ausgewählten Datenbanken anzuwenden.
+13. Klicken Sie auf dem Blatt **sqldbtutorial - Long-term backup retention** (sqldbtutorial - Langfristige Sicherungsaufbewahrung) auf **Speichern** und dann auf **OK**, um die Richtlinie für langfristige Beibehaltung der Sicherung auf alle ausgewählten Datenbanken anzuwenden.
 
    ![Aufbewahrungsrichtlinie definieren](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
 
-14. Klicken Sie auf **Speichern**, um die langfristige Beibehaltung der Sicherung anhand der neuen Richtlinie für den von Ihnen konfigurierten Azure Recovery Services-Tresor zu aktivieren.
+14. Klicken Sie auf **Speichern**, um die langfristige Sicherungsaufbewahrung anhand der neuen Richtlinie für den von Ihnen konfigurierten Azure Recovery Services-Tresor zu aktivieren.
 
    ![Aufbewahrungsrichtlinie definieren](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
 
-15. Öffnen Sie nach dem Aktivieren der langfristigen Beibehaltung der Sicherung das Blatt **sqldbtutorialvault** (wechseln Sie zu **Alle Ressourcen**, und wählen Sie den Tresor in der Liste der Ressourcen für Ihr Abonnement aus).
+15. Öffnen Sie nach dem Aktivieren der langfristigen Sicherungsaufbewahrung das Blatt **sqldbtutorialvault** (wechseln Sie zu **Alle Ressourcen**, und wählen Sie den Tresor in der Liste der Ressourcen für Ihr Abonnement aus).
 
    ![Recovery Services-Tresors anzeigen](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault.png)
 

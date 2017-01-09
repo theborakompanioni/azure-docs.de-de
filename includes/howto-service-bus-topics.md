@@ -14,7 +14,7 @@ Um mit der Verwendung von Service Bus-Themen und -Abonnements in Azure beginnen 
 
 So erstellen Sie einen Namespace
 
-1. Melden Sie sich beim [Azure-Portal][Azure-Portal] an.
+1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 2. Klicken Sie im linken Navigationsbereich des Portals auf **Neu** > **Enterprise Integration** > **Service Bus**.
 3. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
@@ -35,7 +35,7 @@ So erstellen Sie einen Namespace
    
     ![connection-string][connection-string]
 
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [create-namespace]: ./media/howto-service-bus-topics/create-namespace.png
 [connection-info]: ./media/howto-service-bus-topics/connection-info.png
 [connection-string]: ./media/howto-service-bus-topics/connection-string.png
@@ -43,6 +43,6 @@ So erstellen Sie einen Namespace
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
