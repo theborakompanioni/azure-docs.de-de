@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2016
+ms.date: 01/09/2017
 ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: 0821ec479f21ddcc6dc370070d9a40221054877f
@@ -47,7 +47,6 @@ Für jede bewährte Methode erläutern wir Folgendes:
 * Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
 
 Das Angebot an Artikeln zur Sicherheitsarchitektur von Azure sowie zu bewährten Methoden wird in Zukunft noch erweitert. Themenwünsche können im Diskussionsbereich am Ende dieser Seite geäußert werden.
-
 
 
 
