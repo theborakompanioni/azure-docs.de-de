@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 412483cfbce7621612a7283b8a72c24d23b851b5
+ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
+ms.openlocfilehash: ad9cc8765f1a8b83c9dbf5caca573811c6e7f10e
 
 
 ---
@@ -52,7 +52,7 @@ Sie konfigurieren Datenquellen über das Menü **Daten** in den **Einstellungen*
 ## <a name="data-collection"></a>Datensammlung
 Die Konfigurationen der Datenquellen werden innerhalb weniger Minuten an Agents übermittelt, die direkt mit OMS verbunden sind.  Die angegebenen Daten werden vom Agent gesammelt und in den für jede Datenquelle spezifischen Intervallen direkt an Log Analytics übermittelt.  Informationen zu diesen Spezifikationen finden Sie in der Dokumentation zu jeder Datenquelle.
 
-Bei SCOM-Agents (System Center Operations Manager) in einer verbundenen Verwaltungsgruppe werden Datenquellenkonfigurationen in Management Packs übersetzt und standardmäßig alle fünf Minuten an die Verwaltungsgruppe übermittelt.  Der Agent lädt das Management Pack wie jedes andere Paket herunter und sammelt die angegebenen Daten. Je nach Datenquelle werden die Daten entweder an einen Verwaltungsserver gesendet, der die Daten an Log Analytics weiterleitet, oder der Agent sendet die Daten ohne den Umweg über den Verwaltungsserver direkt an Log Analytics. Weitere Informationen finden Sie unter [Details zur Datensammlung für OMS-Features und -Lösungen](log-analytics-add-solutions.md#data-collection-details-for-oms-features-and-solutions).  Informationen zum Verbinden von SCOM und OMS und zum Ändern der Häufigkeit, mit der die Konfiguration übermittelt wird, finden Sie unter [Configure Integration with System Center Operations Manager](log-analytics-om-agents.md)(Konfigurieren der Integration mit System Center Manager).
+Bei SCOM-Agents (System Center Operations Manager) in einer verbundenen Verwaltungsgruppe werden Datenquellenkonfigurationen in Management Packs übersetzt und standardmäßig alle fünf Minuten an die Verwaltungsgruppe übermittelt.  Der Agent lädt das Management Pack wie jedes andere Paket herunter und sammelt die angegebenen Daten. Je nach Datenquelle werden die Daten entweder an einen Verwaltungsserver gesendet, der die Daten an Log Analytics weiterleitet, oder der Agent sendet die Daten ohne den Umweg über den Verwaltungsserver direkt an Log Analytics. Weitere Informationen finden Sie unter [Details zur Datensammlung für OMS-Features und -Lösungen](log-analytics-add-solutions.md#data-collection-details).  Informationen zum Verbinden von SCOM und OMS und zum Ändern der Häufigkeit, mit der die Konfiguration übermittelt wird, finden Sie unter [Configure Integration with System Center Operations Manager](log-analytics-om-agents.md)(Konfigurieren der Integration mit System Center Manager).
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 Alle von Log Analytics gesammelten Daten werden im OMS-Repository als Datensätze gespeichert.  Datensätze, die aus verschiedenen Datenquellen gesammelt wurde, verfügen über einen eigenen Eigenschaftensatz und werden über die Eigenschaft **Typ** identifiziert.  Weitere Informationen zu den Datensatztypen finden Sie in der Dokumentation zur jeweiligen Datenquelle und Lösung.
@@ -64,7 +64,6 @@ Alle von Log Analytics gesammelten Daten werden im OMS-Repository als Datensätz
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

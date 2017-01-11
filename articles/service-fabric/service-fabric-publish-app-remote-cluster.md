@@ -1,12 +1,12 @@
 ---
-title: Veröffentlichen einer App in einem Remotecluster mit Visual Studio | Microsoft Docs
-description: Erfahren Sie, wie Sie eine Anwendung mit Visual Studio in einem Service Fabric-Remotecluster veröffentlichen.
+title: "Veröffentlichen einer App in einem Remotecluster mit Visual Studio | Microsoft Docs"
+description: "Erfahren Sie, wie Sie eine Anwendung mit Visual Studio in einem Service Fabric-Remotecluster veröffentlichen."
 services: service-fabric
 documentationcenter: na
 author: cawams
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: faecd892-eb54-4d9c-8023-c67442afb8e8
 ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/29/2016
 ms.author: cawa
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e7bd4398503566684187831bde1e82f334a59f32
+
 
 ---
 # <a name="publish-an-application-to-a-remote-cluster-by-using-visual-studio"></a>Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio
@@ -28,7 +32,7 @@ ms.author: cawa
 Die Azure Service Fabric-Erweiterung für Visual Studio bietet eine einfache, wiederholbare und skriptfähige Möglichkeit zum Veröffentlichen einer Anwendung in einem Service Fabric-Cluster.
 
 ## <a name="the-artifacts-required-for-publishing"></a>Für die Veröffentlichung erforderliche Artefakte
-### <a name="deploy-fabricapplication.ps1"></a>Deploy-FabricApplication.ps1
+### <a name="deploy-fabricapplicationps1"></a>Deploy-FabricApplication.ps1
 Dies ist ein PowerShell-Skript, das den Pfad zu einem Veröffentlichungsprofil als Parameter zum Veröffentlichen von Service Fabric-Anwendungen verwendet. Da dieses Skript Teil Ihrer Anwendung ist, können Sie es für Ihre Anwendung gern je nach Bedarf ändern.
 
 ### <a name="publish-profiles"></a>Veröffentlichungsprofile
@@ -84,10 +88,10 @@ Folgende Schritte zeigen die Veröffentlichung einer Anwendung über das Dialogf
    > 
 6. Wenn Sie alle erforderlichen Einstellungen festgelegt haben, klicken Sie auf die Schaltfläche **Veröffentlichen** , um die Anwendung im ausgewählten Service Fabric-Cluster zu veröffentlichen. Die von Ihnen festgelegten Einstellungen werden auf den Veröffentlichungsprozess angewendet.
 
-## <a name="publish-to-an-arbitrary-cluster-endpoint-(including-party-clusters)"></a>Veröffentlichen auf einem beliebigen Clusterendpunkt (einschließlich Party Cluster)
-Die Veröffentlichungsoberfläche von Visual Studio ist zum Veröffentlichen auf Remoteclustern optimiert, das einem Ihrer Azure-Abonnements zugeordnet ist. Es ist aber möglich, die Veröffentlichung auf beliebigen Endpunkten durchzuführen (z. B. Service Fabric-Party Clustern), indem die XML-Datei mit dem Veröffentlichungsprofil direkt bearbeitet wird. Wie oben beschrieben, werden standardmäßig zwei Veröffentlichungsprofile bereitgestellt: **Local.xml** und **Cloud.xml**. Sie können aber gern weitere Profile für unterschiedliche Umgebungen erstellen. Es kann beispielsweise sein, dass Sie ein Profil für die Veröffentlichung auf Partyclustern erstellen möchten, z.B. **Party.xml**.
+## <a name="publish-to-an-arbitrary-cluster-endpoint-including-party-clusters"></a>Veröffentlichen auf einem beliebigen Clusterendpunkt (einschließlich Party Cluster)
+Die Veröffentlichungsoberfläche von Visual Studio ist zum Veröffentlichen auf Remoteclustern optimiert, das einem Ihrer Azure-Abonnements zugeordnet ist. Es ist aber möglich, die Veröffentlichung auf beliebigen Endpunkten durchzuführen (z. B. Service Fabric-Party Clustern), indem die XML-Datei mit dem Veröffentlichungsprofil direkt bearbeitet wird. Wie oben beschrieben, werden standardmäßig zwei Veröffentlichungsprofile bereitgestellt: **Local.xml** und **Cloud.xml**. Sie können aber gern weitere Profile für unterschiedliche Umgebungen erstellen. Es kann beispielsweise sein, dass Sie ein Profil für die Veröffentlichung auf Partyclustern erstellen möchten, z.B. **Party.xml**.
 
-Wenn Sie eine Verbindung mit einem nicht geschützten Cluster herstellen, benötigen Sie lediglich den Cluster-Verbindungsendpunkt, z. B. `partycluster1.eastus.cloudapp.azure.com:19000`. In diesem Fall sieht der Verbindungsendpunkt im Veröffentlichungsprofil etwa wie folgt aus:
+Wenn Sie eine Verbindung mit einem nicht geschützten Cluster herstellen, benötigen Sie lediglich den Cluster-Verbindungsendpunkt, z. B. `partycluster1.eastus.cloudapp.azure.com:19000`. In diesem Fall sieht der Verbindungsendpunkt im Veröffentlichungsprofil etwa wie folgt aus:
 
 ```XML
 <ClusterConnectionParameters ConnectionEndpoint="partycluster1.eastus.cloudapp.azure.com:19000" />
@@ -112,6 +116,6 @@ Informationen zur Automatisierung des Veröffentlichungsprozesses in einer Conti
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

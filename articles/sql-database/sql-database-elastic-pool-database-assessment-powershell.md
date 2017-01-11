@@ -1,19 +1,24 @@
 ---
-title: PowerShell-Skript zum Identifizieren einzelner für einen Pool geeignete Datenbanken | Microsoft Docs
-description: Ein elastischer Datenbankpool stellt eine Sammlung der verfügbaren Ressourcen dar, die von einer Gruppe von elastischen Datenbanken gemeinsam verwendet werden. Dieses Dokument enthält ein PowerShell-Skript, das Ihnen helfen soll, die Eignung eines Pools für elastische Datenbanken für eine Gruppe von Datenbanken einzuschätzen.
+title: "PowerShell-Skript zum Identifizieren einzelner für einen Pool geeigneter Datenbanken | Microsoft Docs"
+description: "Ein elastischer Datenbankpool stellt eine Sammlung der verfügbaren Ressourcen dar, die von einer Gruppe von elastischen Datenbanken gemeinsam verwendet werden. Dieses Dokument enthält ein PowerShell-Skript, das Ihnen helfen soll, die Eignung eines Pools für elastische Datenbanken für eine Gruppe von Datenbanken einzuschätzen."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: db541e94-abc8-4578-bae0-9b8c8ad0170e
 ms.service: sql-database
+ms.custom: V11; elastic database pool
 ms.devlang: NA
 ms.date: 09/28/2016
 ms.author: sstein
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8a197799de3fcb898f6fa9a7c90b63b3311150ee
+
 
 ---
 # <a name="powershell-script-for-identifying-databases-suitable-for-an-elastic-database-pool"></a>PowerShell-Skript zum Ermitteln der für einen Pool für elastische Datenbanken geeigneten Datenbanken
@@ -29,7 +34,7 @@ Dieses Skript ist für die Evaluierung von Datenbanken auf v11-Servern nützlich
 ## <a name="prerequisites"></a>Voraussetzungen
 Installieren Sie Folgendes, bevor Sie das Skript ausführen:
 
-* Aktuelle Azure PowerShell-Version. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* Aktuelle Azure PowerShell-Version. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 * Das [SQL Server 2014-Featurepack](https://www.microsoft.com/download/details.aspx?id=42295).
 
 ## <a name="script-details"></a>Details zum Skript
@@ -272,6 +277,6 @@ $data | %{'{0}' -f $_[0]}
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

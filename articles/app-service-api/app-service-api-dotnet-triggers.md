@@ -1,12 +1,12 @@
 ---
-title: App Service – API-App-Trigger | Microsoft Docs
-description: Hier wird erläutert, wie Trigger in einer API-App in Azure App Service implementiert werden.
+title: "App Service – API-App-Trigger | Microsoft-Dokumentation"
+description: "Hier wird erläutert, wie Trigger in einer API-App in Azure App Service implementiert werden."
 services: logic-apps
 documentationcenter: .net
 author: guangyang
 manager: wpickett
 editor: jimbe
-
+ms.assetid: 493c3703-786d-4434-9dca-8f77744b2f5d
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: dotnet
@@ -14,34 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2016
 ms.author: rachelap
+translationtype: Human Translation
+ms.sourcegitcommit: 015ca80c952110d3289888ed82d7a543be29950c
+ms.openlocfilehash: cf020b0f5f14d73635cf44e0157b53b35eb00d60
+
 
 ---
-# Azure App Service – API-App-Trigger
+# <a name="azure-app-service-api-app-triggers"></a>Azure App Service – API-App-Trigger
 > [!NOTE]
 > Diese Version des Artikels gilt für die API-Apps-Schemaversion 2014-12-01-preview.
-> 
-> 
+>
+>
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 Dieser Artikel beschreibt die Implementierung von API-App-Triggern und deren Nutzung über eine Logik-App.
 
-Alle Codeausschnitte in diesem Thema wurden aus dem [FileWatcher API-App-Codebeispiel](http://go.microsoft.com/fwlink/?LinkId=534802) kopiert.
+Alle Codeausschnitte in diesem Thema wurden aus dem [FileWatcher API-App-Codebeispiel](http://go.microsoft.com/fwlink/?LinkId=534802)kopiert.
 
 Beachten Sie, dass Sie folgendes Nuget-Paket herunterladen müssen, damit Sie den Code in diesem Artikel erstellen und ausführen können: [http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/](http://www.nuget.org/packages/Microsoft.Azure.AppService.ApiApps.Service/).
 
-## Was sind API-App-Trigger?
+## <a name="what-are-api-app-triggers"></a>Was sind API-App-Trigger?
 Es ist ein übliches Szenario, dass eine API-App ein Ereignis auslöst, damit Clients der API-App als Reaktion auf das Ereignis die entsprechende Aktion durchführen können. Der REST-API-basierte Mechanismus, der dieses Szenario unterstützt, wird als API-App-Trigger bezeichnet.
 
-Ein Beispiel: Ihr Clientcode verwendet die [Twitter Connector-API-App](../app-service-logic/app-service-logic-connector-twitter.md) und der Code muss auf eine Aktion basierend auf neuen Tweets ausführen, die bestimmte Wörter enthalten. In diesem Fall können Sie einen Abfrage- oder Pushtrigger einrichten, um diese Anforderung leichter zu erfüllen.
+Ein Beispiel: Ihr Clientcode verwendet die [Twitter Connector-API-App](../connectors/connectors-create-api-twitter.md) und der Code muss auf eine Aktion basierend auf neuen Tweets ausführen, die bestimmte Wörter enthalten. In diesem Fall können Sie einen Abfrage- oder Pushtrigger einrichten, um diese Anforderung leichter zu erfüllen.
 
-## Abfragetrigger im Vergleich zu Pushtriggern
+## <a name="poll-trigger-versus-push-trigger"></a>Abfragetrigger im Vergleich zu Pushtriggern
 Zurzeit werden zwei Arten von Triggern unterstützt:
 
 * Abfragetrigger – Der Client fragt die API-App ab, um eine Benachrichtigung zu erhalten, dass ein Ereignis ausgelöst wurde.
 * Pushtrigger – Der Client wird durch die API-App benachrichtigt, wenn ein Ereignis ausgelöst wurde.
 
-### Abfragetrigger
-Ein Abfragetrigger wird als reguläre REST-API implementiert und erwartet, dass die Clients (z. B. eine App-Logik) ihn abfragen, um eine Benachrichtigung zu erhalten. Während der Client sein Zustand beibehalten kann, ist der Abfragetrigger selbst zustandslos.
+### <a name="poll-trigger"></a>Abfragetrigger
+Ein Abfragetrigger wird als reguläre REST-API implementiert und erwartet, dass die Clients (z. B. eine App-Logik) ihn abfragen, um eine Benachrichtigung zu erhalten. Während der Client sein Zustand beibehalten kann, ist der Abfragetrigger selbst zustandslos.
 
 Die folgenden Informationen in Bezug auf die Anforderungs- und Antwortpakete veranschaulichen einige wichtige Aspekte des Abfragetriggervertrags:
 
@@ -89,11 +93,13 @@ Der folgende Codeausschnitt ist ein Beispiel für die Implementierung eines Abfr
 
 Um diesen Abfragetrigger zu testen, gehen Sie folgendermaßen vor:
 
-1. Stellen Sie die API-App mit der Authentifizierungseinstellung **Öffentlich (anonym)** bereit.
-2. Rufen Sie den **touch**-Vorgang auf, um eine Datei zu bearbeiten. Die folgende Abbildung zeigt eine Beispielanforderung über Postman. ![Aufrufen des Touchvorgangs über Postman](./media/app-service-api-dotnet-triggers/calltouchfilefrompostman.PNG)
-3. Rufen Sie den Abfragetrigger mit dem **triggerState**-Parameter auf, der auf einen Zeitstempel vor Schritt 2 festgelegt wurde. Die folgende Abbildung zeigt die Beispielanforderung über Postman. ![Aufrufen des Abfragetriggers über Postman](./media/app-service-api-dotnet-triggers/callpolltriggerfrompostman.PNG)
+1. Stellen Sie die API-App mit der Authentifizierungseinstellung **Öffentlich (anonym)**bereit.
+2. Rufen Sie den **touch** -Vorgang auf, um eine Datei zu bearbeiten. Die folgende Abbildung zeigt eine Beispielanforderung über Postman.
+   ![Aufrufen des Touchvorgangs über Postman](./media/app-service-api-dotnet-triggers/calltouchfilefrompostman.PNG)
+3. Rufen Sie den Abfragetrigger mit dem **triggerState** -Parameter auf, der auf einen Zeitstempel vor Schritt 2 festgelegt wurde. Die folgende Abbildung zeigt die Beispielanforderung über Postman.
+   ![Aufrufen des Abfragetriggers über Postman](./media/app-service-api-dotnet-triggers/callpolltriggerfrompostman.PNG)
 
-### Pushtrigger
+### <a name="push-trigger"></a>Pushtrigger
 Ein Pushtrigger wird als reguläre REST-API implementiert, die Benachrichtigungen an Clients sendet, die für den Erhalt von Benachrichtigungen nach der Auslösung bestimmter Ereignisse registriert wurden.
 
 Die folgenden Informationen in Bezug auf die Anforderungs- und Antwortpakete veranschaulichen einige wichtige Aspekte des Pushtriggervertrags:
@@ -101,7 +107,7 @@ Die folgenden Informationen in Bezug auf die Anforderungs- und Antwortpakete ver
 * Request
   * HTTP-Methode: PUT
   * Parameter
-    * triggerId: erforderlich – nicht transparente Zeichenfolge (z. B. eine GUID), welche die Registrierung eines Pushtriggers darstellt.
+    * triggerId: erforderlich – nicht transparente Zeichenfolge (z. B. eine GUID), welche die Registrierung eines Pushtriggers darstellt.
     * callbackUrl: erforderlich – URL des Rückrufs, der bei Auslösung des Ereignisses aufgerufen werden soll. Der Aufruf ist ein einfacher POST-HTTP-Aufruf.
     * API-spezifische Parameter
 * Antwort
@@ -191,13 +197,16 @@ Der folgende Codeausschnitt ist ein Beispiel für die Implementierung eines Push
 
 Um diesen Abfragetrigger zu testen, gehen Sie folgendermaßen vor:
 
-1. Stellen Sie die API-App mit der Authentifizierungseinstellung **Öffentlich (anonym)** bereit.
-2. Navigieren Sie zu [http://requestb.in/](http://requestb.in/), um ein RequestBin-Element zu erstellen, das als Rückruf-URL verwendet wird.
-3. Rufen Sie den Pushtrigger mit der GUID als **triggerId** und der RequestBin-URL als **callbackUrl** auf. ![Aufrufen des Pushtriggers über Postman](./media/app-service-api-dotnet-triggers/callpushtriggerfrompostman.PNG)
-4. Rufen Sie den **touch**-Vorgang auf, um eine Datei zu bearbeiten. Die folgende Abbildung zeigt eine Beispielanforderung über Postman. ![Aufrufen des Touchvorgangs über Postman](./media/app-service-api-dotnet-triggers/calltouchfilefrompostman.PNG)
-5. Überprüfen Sie das RequestBin-Element, um sicherzustellen, dass der Pushtriggerrückruf mit der Ausgabe der Eigenschaften aufgerufen wird. ![Aufrufen des Abfragetriggers über Postman](./media/app-service-api-dotnet-triggers/pushtriggercallbackinrequestbin.PNG)
+1. Stellen Sie die API-App mit der Authentifizierungseinstellung **Öffentlich (anonym)**bereit.
+2. Navigieren Sie zu [http://requestb.in/](http://requestb.in/) , um ein RequestBin-Element zu erstellen, das als Rückruf-URL verwendet wird.
+3. Rufen Sie den Pushtrigger mit der GUID als **triggerId** und der RequestBin-URL als **callbackUrl** auf.
+   ![Aufrufen des Pushtriggers über Postman](./media/app-service-api-dotnet-triggers/callpushtriggerfrompostman.PNG)
+4. Rufen Sie den **touch** -Vorgang auf, um eine Datei zu bearbeiten. Die folgende Abbildung zeigt eine Beispielanforderung über Postman.
+   ![Aufrufen des Touchvorgangs über Postman](./media/app-service-api-dotnet-triggers/calltouchfilefrompostman.PNG)
+5. Überprüfen Sie das RequestBin-Element, um sicherzustellen, dass der Pushtriggerrückruf mit der Ausgabe der Eigenschaften aufgerufen wird.
+   ![Aufrufen des Abfragetriggers über Postman](./media/app-service-api-dotnet-triggers/pushtriggercallbackinrequestbin.PNG)
 
-### Beschreiben der Trigger in der API-Definition
+### <a name="describe-triggers-in-api-definition"></a>Beschreiben der Trigger in der API-Definition
 Navigieren Sie nach der Implementierung der Trigger und der Bereitstellung der API-App in Azure zum Blatt **API-Definition** im Azure-Vorschauportal. Dort sehen Sie, dass die Trigger auf der Benutzeroberfläche, die durch die Swagger 2.0-Definition der API-App gesteuert wird, automatisch erkannt werden.
 
 ![Blatt "API-Definition"](./media/app-service-api-dotnet-triggers/apidefinitionblade.PNG)
@@ -222,16 +231,16 @@ Wenn Sie auf die Schaltfläche **Swagger herunterladen** klicken und die JSON-Da
 Mit der Erweiterungseigenschaft **x-ms-scheduler-trigger** werden Trigger in der API-Definition beschrieben. Diese Eigenschaft wird automatisch vom API-App-Gateway hinzugefügt, wenn Sie die API-Definition über das Gateway anfordern und die Anforderung eines der folgenden Kriterien erfüllt. (Sie können diese Eigenschaft auch manuell hinzufügen.)
 
 * Abfragetrigger
-  * Wenn die HTTP-Methode **GET** lautet.
+  * Wenn die HTTP-Methode **GET**lautet.
   * Wenn die **operationId**-Eigenschaft die Zeichenfolge **trigger** enthält.
   * Wenn die **parameters**-Eigenschaft einen Parameter enthält, dessen **name**-Eigenschaft auf **triggerState** festgelegt ist.
 * Pushtrigger
-  * Wenn die HTTP-Methode **PUT** lautet.
+  * Wenn die HTTP-Methode **PUT**lautet.
   * Wenn die **operationId**-Eigenschaft die Zeichenfolge **trigger** enthält.
   * Wenn die **parameters**-Eigenschaft einen Parameter enthält, dessen **name**-Eigenschaft auf **triggerId** festgelegt ist.
 
-## Verwenden von API-App-Triggern in Logik-Apps
-### Auflisten und Konfigurieren von API-App-Triggern im Logik-Apps-Designer
+## <a name="use-api-app-triggers-in-logic-apps"></a>Verwenden von API-App-Triggern in Logik-Apps
+### <a name="list-and-configure-api-app-triggers-in-the-logic-apps-designer"></a>Auflisten und Konfigurieren von API-App-Triggern im Logik-Apps-Designer
 Wenn Sie eine Logik-App in der gleichen Ressourcengruppe wie die API-App erstellen, können Sie die App zum Designerbereich hinzufügen, indem Sie einfach darauf klicken. Die folgenden Abbildungen verdeutlichen dies:
 
 ![Trigger im Logik-Apps-Designer](./media/app-service-api-dotnet-triggers/triggersinlogicappdesigner.PNG)
@@ -240,16 +249,16 @@ Wenn Sie eine Logik-App in der gleichen Ressourcengruppe wie die API-App erstell
 
 ![Konfigurieren des Pushtriggers im Logik-Apps-Designer](./media/app-service-api-dotnet-triggers/configurepushtriggerinlogicappdesigner.PNG)
 
-## Optimieren von API-App-Triggern für Logik-Apps
+## <a name="optimize-api-app-triggers-for-logic-apps"></a>Optimieren von API-App-Triggern für Logik-Apps
 Nachdem Sie Trigger zu einer API-App hinzugefügt haben, können Sie einige Maßnahmen ergreifen, um die Benutzerfreundlichkeit bei der Verwendung der API-App in einer Logik-App zu verbessern.
 
-Beispielsweise sollte der **triggerState**-Parameter für Abfragetrigger auf den folgenden Ausdruck in der Logik-App festgelegt werden. Der Ausdruck sollte den letzten Aufruf des Triggers aus der Logik-App auswerten und diesen Wert zurückgeben.
+Beispielsweise sollte der **triggerState** -Parameter für Abfragetrigger auf den folgenden Ausdruck in der Logik-App festgelegt werden. Der Ausdruck sollte den letzten Aufruf des Triggers aus der Logik-App auswerten und diesen Wert zurückgeben.  
 
     @coalesce(triggers()?.outputs?.body?['triggerState'], '')
 
 HINWEIS: Eine Erläuterung der in oben stehendem Ausdruck verwendeten Funktionen finden Sie in der Dokumentation zur [Definitionssprache für Logik-App-Workflows](https://msdn.microsoft.com/library/azure/dn948512.aspx).
 
-Benutzer von Logik-Apps müssen bei Verwendung des Triggers den oben stehenden Ausdruck für den **triggerState**-Parameter bereitstellen. Es ist möglich, diesen Wert durch den Logik-Apps-Designer über die Erweiterungseigenschaft **x-ms-scheduler-recommendation** voreinstellen zu lassen. Die **x-ms-visibility**-Erweiterungseigenschaft kann auf den Wert *internal* festgelegt werden, sodass der Parameter selbst im Designer nicht angezeigt wird. Der folgende Codeausschnitt veranschaulicht dies.
+Benutzer von Logik-Apps müssen bei Verwendung des Triggers den oben stehenden Ausdruck für den **triggerState** -Parameter bereitstellen. Es ist möglich, diesen Wert durch den Logik-Apps-Designer über die Erweiterungseigenschaft **x-ms-scheduler-recommendation**voreinstellen zu lassen.  Die **x-ms-visibility** -Erweiterungseigenschaft kann auf den Wert *internal* festgelegt werden, sodass der Parameter selbst im Designer nicht angezeigt wird.  Der folgende Codeausschnitt veranschaulicht dies.
 
     "/api/Messages/poll": {
       "get": {
@@ -269,7 +278,7 @@ Benutzer von Logik-Apps müssen bei Verwendung des Triggers den oben stehenden A
       }
     }
 
-Bei Pushtriggern muss der **triggerId**-Parameter die Logik-App eindeutig identifizieren. Es empfiehlt sich, diese Eigenschaft mithilfe des folgenden Ausdrucks auf den Namen des Workflows festzulegen:
+Bei Pushtriggern muss der **triggerId** -Parameter die Logik-App eindeutig identifizieren. Es empfiehlt sich, diese Eigenschaft mithilfe des folgenden Ausdrucks auf den Namen des Workflows festzulegen:
 
     @workflow().name
 
@@ -286,14 +295,14 @@ Mithilfe der Erweiterungseigenschaften **x-ms-scheduler-recommendation** und **x
           },
 
 
-### Hinzufügen von Erweiterungseigenschaften in der API-Definition
-In der API-Definition können zusätzliche Metadateninformationen – wie z. B. die Erweiterungseigenschaften **x-ms-scheduler-recommendation** und **x-ms-visibility** – auf zwei Arten hinzugefügt werden: statisch oder dynamisch.
+### <a name="add-extension-properties-in-api-defintion"></a>Hinzufügen von Erweiterungseigenschaften in der API-Definition
+In der API-Definition können zusätzliche Metadateninformationen – wie z.B. die Erweiterungseigenschaften **x-ms-scheduler-recommendation** und **x-ms-visibility** – auf zwei Arten hinzugefügt werden: statisch oder dynamisch.
 
 Bei statischen Metadaten können Sie die Datei */metadata/apiDefinition.swagger.json* in Ihrem Projekt direkt bearbeiten und die Eigenschaften manuell hinzufügen.
 
 Bei API-Apps, die dynamische Metadaten verwenden, können Sie die Datei "SwaggerConfig.cs" bearbeiten, um einen Vorgangsfilter einzufügen, der diese Erweiterungen hinzufügen kann.
 
-    GlobalConfiguration.Configuration 
+    GlobalConfiguration.Configuration
         .EnableSwagger(c =>
             {
                 ...
@@ -333,4 +342,7 @@ Im Folgenden finden Sie ein Beispiel dafür, wie diese Klasse implementiert werd
     }
 
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Dec16_HO1-->
+
+

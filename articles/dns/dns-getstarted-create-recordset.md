@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 02d720a04fdc0fa302c2cb29b0af35ee92c14b3b
-ms.openlocfilehash: a6b72b96c241e3d459abad0d3986f2d757cf1752
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fe82db80f0efc02809bbd898e990860c7bcce8da
 
 ---
 
@@ -32,7 +32,7 @@ Dieser Artikel beschreibt das Erstellen von Ressourceneinträgen und Ressourcene
 
 ## <a name="verify-that-you-have-the-latest-version-of-powershell"></a>Stellen Sie sicher, dass Sie über die neueste Version von PowerShell verfügen.
 
-Stellen Sie sicher, dass Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager installiert haben. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+Stellen Sie sicher, dass Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager installiert haben. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 ## <a name="create-a-record-set-and-record"></a>Erstellen eines Ressourceneintragssatzes und eines Ressourceneintrags
 
@@ -154,6 +154,6 @@ Die folgenden Beispiele zeigen, wie Sie einen Eintragssatz jedes Eintragstyps er
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

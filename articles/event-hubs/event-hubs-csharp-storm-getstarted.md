@@ -1,19 +1,23 @@
 ---
 title: Erste Schritte mit Event Hubs in C# mit Apache Storm | Microsoft Docs
-description: Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung von Azure Event Hubs für das Senden von Ereignissen in C# und das Empfangen in einem Apache Storm-Cluster.
+description: "Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung von Azure Event Hubs für das Senden von Ereignissen in C# und das Empfangen in einem Apache Storm-Cluster."
 services: event-hubs
-documentationcenter: ''
+documentationcenter: 
 author: jtaubensee
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: f64cb2bd-2e38-4c78-8d0d-9af14c000d9f
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 12/07/2016
 ms.author: jotaub;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: f603a3c3304af3e64ef40f2cdef3745e3b2085b3
+ms.openlocfilehash: 508b1390bee1e61514e6e7499071d0503a051c10
+
 
 ---
 # <a name="get-started-with-event-hubs"></a>Erste Schritte mit Event Hubs
@@ -49,20 +53,19 @@ Sie können jetzt die Anwendung ausführen.
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hub erstellt und Daten sendet und empfängt, können Sie mit den folgenden Szenarios fortfahren:
 
-* Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs][Beispielanwendung mit Verwendung von Ereignis-Hubs].
-* Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs][Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs]
+* Eine vollständige [Beispielanwendung mit Verwendung von Event Hubs][sample application that uses Event Hubs]
+* Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs][Scale out Event Processing with Event Hubs]
 
 <!-- Images. -->
 [22]: ./media/event-hubs-csharp-storm-getstarted/receive-storm1.png
 
 <!-- Links -->
-[klassischen Azure-Portal]: https://manage.windowsazure.com/
 [Übersicht über Event Hubs]: event-hubs-overview.md
-[Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 
