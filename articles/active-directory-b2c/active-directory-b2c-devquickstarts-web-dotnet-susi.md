@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/22/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -20,7 +20,7 @@ ms.openlocfilehash: 9d161973b8b299305993162510be7027f05dec39
 
 
 ---
-# <a name="azure-ad-b2c-sign-up-sign-in-in-a-aspnet-web-app"></a>Azure AD B2C: Registrierung und Anmeldung in einer ASP.NET-Web-App
+# <a name="azure-ad-b2c-sign-up--sign-in-in-a-aspnet-web-app"></a>Azure AD B2C: Registrierung und Anmeldung in einer ASP.NET-Web-App
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Web-Apps in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel erfahren Sie, wie eine ASP.NET-Web-App erstellt wird, die Benutzerregistrierung und -anmeldung sowie das Zurücksetzen von Kennwörtern umfasst. Die App umfasst Unterstützung für die Registrierung und Anmeldung mit einem Benutzernamen oder einer E-Mail-Adresse sowie über Konten für soziale Netzwerke wie Facebook und Google.
@@ -319,6 +319,6 @@ You can now move on to more advanced B2C topics. You might try:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

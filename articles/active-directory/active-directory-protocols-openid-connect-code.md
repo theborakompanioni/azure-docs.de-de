@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/07/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: f1ad2206f1b2da35d4a442beb91c5fcf7cbcddf6
-ms.openlocfilehash: 37673952137b3fb7f4bca2759795ce1c96a9916d
+ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
+ms.openlocfilehash: c5b1305b71c5d4076cb22fb70be3d7904695715c
 
 
 ---
@@ -203,6 +203,6 @@ Nachdem Sie einen Autorisierungs`code` und einen `id_token` erhalten haben, kön
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

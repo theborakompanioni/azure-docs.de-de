@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
 ms.sourcegitcommit: 87c73981c74fc763fd1aec6c283e934c77008441
@@ -44,7 +44,7 @@ Erstellen Sie eine neue App unter [apps.dev.microsoft.com](https://apps.dev.micr
 * die **Web** -Plattform für Ihre App hinzufügen.
 * den richtigen **Umleitungs-URI**eingeben. Der Umleitungs-URI verweist auf Azure AD, wohin Authentifizierungsantworten gesendet werden sollen – der Standardwert in diesem Lernprogramm lautet `https://localhost:44326/`.
 
-## <a name="install-configure-owin-authentication"></a>Installieren und Konfigurieren der OWIN-Authentifizierung
+## <a name="install--configure-owin-authentication"></a>Installieren und Konfigurieren der OWIN-Authentifizierung
 Hier konfigurieren wir die OWIN-Middleware für die Verwendung des Authentifizierungsprotokolls OpenID Connect.  OWIN wird unter anderem für die Ausgabe von Anmelde- und Abmeldeanforderungen, für die Verwaltung der Benutzerssitzungen und für das Abrufen der Benutzerinformationen verwendet.
 
 * Öffnen Sie zunächst die Datei `web.config` aus dem Stammverzeichnis des Projekts, und geben Sie die Konfigurationswerte Ihrer App im Abschnitt `<appSettings>` ein.
