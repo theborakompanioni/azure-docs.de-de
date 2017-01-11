@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über die Geräteverwaltung mit IoT Hub| Microsoft Docs"
-description: "Dieser Artikel bietet anhand folgender Aspekte einen Überblick über die Geräteverwaltung in Azure IoT Hub: Lebenszyklus von Unternehmensgeräten, Neustart, Zurücksetzung auf Werkseinstellungen, Firmwareupdate, Konfiguration, Gerätezwillinge, Abfragen und Aufträge."
+title: "Geräteverwaltung mit Azure IoT Hub| Microsoft-Dokumentation"
+description: "Übersicht über die Geräteverwaltung in Azure IoT Hub: Lebenszyklus von Unternehmensgeräten und Geräteverwaltungsmuster wie Neustart, Zurücksetzung auf Werkseinstellungen, Firmwareupdate, Konfiguration, Gerätezwillinge, Abfragen und Aufträge."
 services: iot-hub
 documentationcenter: 
 author: bzurcher
@@ -13,10 +13,10 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2016
-ms.author: bzurcher
+ms.author: briz
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 4a80d22f0d306035dc3e710d9a1b04f0624e94d6
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 91dcace2d74d44a5d2ab3b9a1352b2fa052ddc44
 
 
 ---
@@ -67,19 +67,19 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
 ## <a name="device-management-patterns"></a>Geräteverwaltungsmuster
 IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster.  In den [Tutorials zur Geräteverwaltung][lnk-get-started] erfahren Sie ausführlicher, wie Sie diese Muster auf Ihr individuelles Szenario abstimmen und auf der Grundlage der grundlegenden Vorlagen neue Muster entwerfen.
 
-* **Neustart:** Die Back-End-Anwendung informiert das Gerät mithilfe einer direkten Methode darüber, dass sie einen Neustart initiiert hat.  Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Neustartstatus des Geräts.
+* **Neustart:** Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie einen Neustart initiiert hat.  Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Neustartstatus des Geräts.
   
     ![Neustartmuster der Geräteverwaltung – Grafik][img-reboot_pattern]
-* **Zurücksetzung auf Werkseinstellungen:** Die Back-End-Anwendung informiert das Gerät mithilfe einer direkten Methode darüber, dass sie einen Zurücksetzung auf die Werkseinstellungen initiiert hat.  Das Gerät nutzt die vom Gerätezwilling gemeldeten Eigenschaften zum Aktualisieren des Status der Zurücksetzung auf Werkseinstellung des Geräts.
+* **Zurücksetzung auf Werkseinstellungen:** Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie eine Zurücksetzung auf die Werkseinstellungen initiiert hat.  Das Gerät nutzt die vom Gerätezwilling gemeldeten Eigenschaften zum Aktualisieren des Status der Zurücksetzung auf Werkseinstellung des Geräts.
   
     ![Muster für die Zurücksetzung auf Werkseinstellungen der Geräteverwaltung – Grafik][img-facreset_pattern]
-* **Konfiguration:** Die Back-End-Anwendung verwendet die gewünschten Eigenschaften zum Konfigurieren der auf dem Gerät ausgeführten Software.  Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Konfigurationsstatus des Geräts.
+* **Konfiguration:** Die Back-End-App verwendet die gewünschten Eigenschaften zum Konfigurieren der auf dem Gerät ausgeführten Software.  Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Konfigurationsstatus des Geräts.
   
     ![Konfigurationsmuster der Geräteverwaltung – Grafik][img-config_pattern]
-* **Firmwareupdate:** Die Back-End-Anwendung informiert das Gerät mithilfe einer direkten Methode darüber, dass sie ein Firmwareupdate initiiert hat.  Das Gerät initiiert einen Prozess mit mehreren Schritten, um das Firmwareimage herunterzuladen, das Firmwareimage anzuwenden und schließlich wieder eine Verbindung mit dem IoT Hub-Dienst herzustellen.  Während dieses gesamten Prozesses mit mehreren Schritten, verwendet das Gerät die gemeldeten Eigenschaften, um die Fortschrittsanzeige und den Status des Geräts zu aktualisieren.
+* **Firmwareupdate:** Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie ein Firmwareupdate initiiert hat.  Das Gerät initiiert einen Prozess mit mehreren Schritten, um das Firmwareimage herunterzuladen, das Firmwareimage anzuwenden und schließlich wieder eine Verbindung mit dem IoT Hub-Dienst herzustellen.  Während dieses gesamten Prozesses mit mehreren Schritten, verwendet das Gerät die gemeldeten Eigenschaften, um die Fortschrittsanzeige und den Status des Geräts zu aktualisieren.
   
     ![Firmwareupdate-Muster der Geräteverwaltung – Grafik][img-fwupdate_pattern]
-* **Meldung von Fortschritt und Status:** Das Anwendungs-Back-End führt Gerätezwillingsabfragen für eine Gruppe von Geräten durch, um den Status und Fortschritt von Aktionen zu melden, die auf dem Gerät ausgeführt werden.
+* **Meldung von Fortschritt und Status:** Das Lösungs-Back-End führt Gerätezwillingsabfragen für eine Gruppe von Geräten durch, um den Status und Fortschritt von Aktionen zu melden, die auf dem Gerät ausgeführt werden.
   
     ![Muster für Fortschritts- und Statusmeldungen der Geräteverwaltung – Grafik][img-report_progress_pattern]
 
@@ -112,6 +112,6 @@ Weitere Informationen zu den Geräteverwaltungsfunktionen in IoT Hub finden Sie 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 
