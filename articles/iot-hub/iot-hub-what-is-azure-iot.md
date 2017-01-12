@@ -41,7 +41,7 @@ Hilfe zu den ersten Schritten beim Schreiben von Code und dem Ausführen von Bei
 Möglicherweise interessieren Sie sich auch für [Azure IoT Suite][lnk-iot-suite], eine Sammlung vorkonfigurierter Lösungen. IoT Suite ermöglicht den schnellen Einstieg und das Skalieren von IoT-Projekten und eignet sich damit für allgemeine IoT-Szenarien wie Remoteüberwachung, Asset Management und vorbeugende Wartung.
 
 [lnk-getstarted]: iot-hub-csharp-csharp-getstarted.md
-[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
+[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-iot-hub]: iot-hub-what-is-iot-hub.md
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
