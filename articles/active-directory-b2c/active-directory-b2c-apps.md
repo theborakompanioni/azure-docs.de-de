@@ -134,6 +134,6 @@ Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anme
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 
