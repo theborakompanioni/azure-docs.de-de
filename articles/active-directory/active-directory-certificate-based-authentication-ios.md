@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/16/2016
+ms.date: 10/21/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: ce9474f2926a856673efbab5103a308d31001343
-ms.openlocfilehash: fe00603de855e621b751004fdbd74acafaee017f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7fb47b9f40f92b956cd2152d143cd510e2ff6f13
 
 
 ---
-# <a name="get-started-with-certificate-based-authentication-on-ios"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung unter iOS
+# <a name="get-started-with-certificate-based-authentication-on-ios---public-preview"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung auf iOS – öffentliche Vorschau
 > [!div class="op_single_selector"]
 > * [iOS](active-directory-certificate-based-authentication-ios.md)
 > * [Android](active-directory-certificate-based-authentication-android.md)
@@ -77,12 +77,7 @@ Als bewährte Methode sollten Sie die AD FS-Fehlerseiten mit folgenden Informati
 * Die Voraussetzungen für die Installation von Azure Authenticator auf iOS
 * Anleitungen zum Abrufen eines Benutzerzertifikats 
 
-Weitere Einzelheiten finden Sie unter [Anpassen der AD FS-Anmeldeseiten](https://technet.microsoft.com/library/dn280950.aspx).
-
-Einige Office-Apps (mit aktivierter moderner Authentifizierung) senden „*prompt=login*“ in der Anforderung an Azure AD. Azure AD übersetzt dies in der Anforderung standardmäßig in „*wauth=usernamepassworduri*“ (fordert AD FS zum Durchführen der U/P-Authentifizierung auf) und „*wfresh = 0*“ (fordert AD FS auf, den SSO-Status zu ignorieren und eine erneute Authentifizierung durchzuführen). Wenn Sie eine zertifikatbasierte Authentifizierung für diese Apps aktivieren möchten, müssen Sie das Azure AD-Standardverhalten ändern. Legen Sie dazu einfach „*PromptLoginBehavior*“ in den Einstellungen der Verbunddomäne auf „*deaktiviert*“ fest. Für diese Aufgabe können Sie das Cmdlet [MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) verwenden:
-
-`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
-  
+Weitere Einzelheiten finden Sie unter [Anpassen der AD FS-Anmeldeseiten](https://technet.microsoft.com/library/dn280950.aspx).  
 
 ### <a name="exchange-activesync-clients-support"></a>Unterstützung von Exchange ActiveSync-Clients
 Unter iOS 9 oder höher wird der native iOS-E-Mail-Client unterstützt. Wenden Sie sich bei allen anderen Exchange ActiveSync-Anwendungen an den Anwendungsentwickler, um zu erfragen, ob dieses Feature unterstützt wird.  
@@ -123,9 +118,9 @@ Nachfolgend finden Sie Beispiele für das Hinzufügen, Entfernen oder Ändern ei
 
 ### <a name="configuring-your-azure-ad-tenant-for-certificate-based-authentication"></a>Konfigurieren Ihres Azure AD-Mandanten für die zertifikatbasierte Authentifizierung
 1. Starten Sie Windows PowerShell mit Administratorrechten. 
-2. Installieren Sie das Azure AD-Modul. Sie müssen die Version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) oder eine höhere Version installieren.  
+2. Installieren Sie das Azure AD-Modul. Sie müssen die Version [1.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) oder eine höhere Version installieren.  
    
-        Install-Module -Name AzureADPreview –RequiredVersion 2.0.0.33 
+        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
 3. Verbinden Sie sich mit Ihrem Zielmandanten: 
    
         Connect-AzureAD 
@@ -219,6 +214,6 @@ Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zu
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

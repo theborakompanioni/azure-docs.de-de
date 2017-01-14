@@ -15,8 +15,8 @@ ms.workload: required
 ms.date: 10/23/2016
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 946719d1cef70c841c119c49df8d17482f1e9b98
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ce018e8057a19f1b21081b9fae4b33c3e791a000
 
 
 ---
@@ -90,7 +90,7 @@ Damit stehen die beiden Einstellungen in Ihren Ressourcen zur Verfügung.
 
 ![](media/site-recovery-runbook-automation/11.png)
 
-Weitere Informationen zum Herstellen einer Verbindung mit Ihrem Abonnement über PowerShell finden Sie [hier](../powershell-install-configure.md).
+Weitere Informationen zum Herstellen einer Verbindung mit Ihrem Abonnement über PowerShell finden Sie [hier](/powershell/azureps-cmdlets-docs).
 
 Im nächsten Schritt wird in Azure Automation ein Runbook erstellt, das nach dem Failover einen Endpunkt für den virtuellen Front-End-Computer hinzufügen kann.
 
@@ -282,6 +282,6 @@ In diesem Lernprogramm haben Sie gesehen, wie Sie eine häufig verwendete Aufgab
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

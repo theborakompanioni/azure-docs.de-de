@@ -1,19 +1,23 @@
 ---
 title: Azure Storage-Sicherheitsleitfaden | Microsoft Docs
-description: Details der vielen Methoden zum Schützen von Azure Storage, einschließlich, aber nicht beschränkt auf RBAC, Storage Service Encryption, clientseitige Verschlüsselung, SMB 3.0 und Azure Disk Encryption.
+description: "Details der vielen Methoden zum Schützen von Azure Storage, einschließlich, aber nicht beschränkt auf RBAC, Storage Service Encryption, clientseitige Verschlüsselung, SMB 3.0 und Azure Disk Encryption."
 services: storage
 documentationcenter: .net
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: 6f931d94-ef5a-44c6-b1d9-8a3c9c327fb2
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/08/2016
-ms.author: cbrooks;robinsh
+ms.date: 12/08/2016
+ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: c5e6c3a63a7dbe0a598136a32990f65f7ee077d9
+
 
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
@@ -50,8 +54,8 @@ Wenn Sie ein neues Speicherkonto erstellen, wählen Sie ein Modell zur Bereitste
 
 Dieser Leitfaden konzentriert sich auf das Resource Manager-Modell, der empfohlenen Methode zum Erstellen von Speicherkonten. Mit den Resource Manager-Speicherkonten können Sie, anstatt Zugriff auf das gesamte Abonnement zu gewähren, den Zugriff auf die Verwaltungsebene mit der rollenbasierten Zugriffssteuerung präziser steuern.
 
-### <a name="how-to-secure-your-storage-account-with-role-based-access-control-(rbac)"></a>Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)
-Was ist RBAC, und wie können Sie sie verwenden? Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im zugehörigen Azure-Abonnement gewährt werden, die das Resource Manager-Bereitstellungsmodell verwenden. Dies wird als rollenbasierte Zugriffssteuerung (RBAC) bezeichnet. Um diesen Zugriff zu verwalten, können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](../powershell-install-configure.md) oder die [REST-APIs des Azure Storage-Ressourcenanbieters](https://msdn.microsoft.com/library/azure/mt163683.aspx) verwenden.
+### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)
+Was ist RBAC, und wie können Sie sie verwenden? Jedes Azure-Abonnement hat ein Azure Active Directory. Benutzern, Gruppen und Anwendungen aus diesem Verzeichnis kann Verwaltungszugriff auf Ressourcen im zugehörigen Azure-Abonnement gewährt werden, die das Resource Manager-Bereitstellungsmodell verwenden. Dies wird als rollenbasierte Zugriffssteuerung (RBAC) bezeichnet. Um diesen Zugriff zu verwalten, können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs des Azure Storage-Ressourcenanbieters](https://msdn.microsoft.com/library/azure/mt163683.aspx) verwenden.
 
 Mit dem Resource Manager-Modell platzieren Sie das Speicherkonto in einer Ressourcengruppe und steuern den Zugriff auf die Verwaltungsebene dieses bestimmten Speicherkontos mithilfe von Active Directory. Beispielsweise können Sie bestimmten Benutzern den Zugriff auf die Speicherkontoschlüssel gewähren, während andere Benutzer Informationen über das Speicherkonto anzeigen, jedoch nicht auf die Speicherkontoschlüssel zugreifen können.
 
@@ -85,12 +89,9 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 * [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md)
   
   In diesem Artikel werden alle in RBAC verfügbaren integrierten Rollen ausführlich beschrieben.
-* [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md)
+* [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md)
   
-  Dieser Artikel erläutert die Resource Manager-Bereitstellung sowie klassische Bereitstellungsmodelle und erläutert die Vorteile der Verwendung der Resource Manager- und Ressourcengruppen.
-* [Azure Computing-, Netzwerk- und Speicheranbieter unter dem Azure-Ressourcen-Manager](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)
-  
-  In diesem Artikel wird erläutert, wie die Azure Compute-, Netzwerk- und Speicheranbieter im Resource Manager-Modell funktionieren.
+  Dieser Artikel erläutert die Resource Manager-Bereitstellung sowie klassische Bereitstellungsmodelle und erläutert die Vorteile der Verwendung der Resource Manager- und Ressourcengruppen. Es wird erläutert, wie die Azure Compute-, Netzwerk- und Speicheranbieter im Resource Manager-Modell funktionieren.
 * [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](../active-directory/role-based-access-control-manage-access-rest.md)
   
   Dieser Artikel beschreibt die Verwendung der REST-API zum Verwalten von RBAC.
@@ -187,15 +188,17 @@ Eine Shared Access Signature ist ein Satz von Abfrageparametern, die an die URL 
 
 die Informationen über den erlaubten Zugriff und die Zeitspanne bieten, für die der Zugriff zulässig ist. Der URI in diesem Beispiel bietet für fünf Minuten Lesezugriff auf ein Blob. Beachten Sie, dass die SAS-Abfrageparameter URL-codiert sein müssen, d. h. % 3A steht für den Doppelpunkt (:) oder %20 für ein Leerzeichen.
 
-    http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
-    ?sv=2015-04-05 (storage service version)
-    &st=2015-12-10T22%3A18%3A26Z (start time, in UTC time and URL encoded)
-    &se=2015-12-10T22%3A23%3A26Z (end time, in UTC time and URL encoded)
-    &sr=b (resource is a blob)
-    &sp=r (read access)
-    &sip=168.1.5.60-168.1.5.70 (requests can only come from this range of IP addresses)
-    &spr=https (only allow HTTPS requests)
-    &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
+```
+http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
+?sv=2015-04-05 (storage service version)
+&st=2015-12-10T22%3A18%3A26Z (start time, in UTC time and URL encoded)
+&se=2015-12-10T22%3A23%3A26Z (end time, in UTC time and URL encoded)
+&sr=b (resource is a blob)
+&sp=r (read access)
+&sip=168.1.5.60-168.1.5.70 (requests can only come from this range of IP addresses)
+&spr=https (only allow HTTPS requests)
+&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
+```
 
 #### <a name="how-the-shared-access-signature-is-authenticated-by-the-azure-storage-service"></a>Authentifizierung der Shared Access Signature durch den Azure Storage-Dienst
 Wenn der Speicherdienst die Anforderung empfängt, erstellt er aufgrund der Eingabeabfrageparameter mit der gleichen Methode wie das aufrufende Programm eine Signatur. Anschließend werden die zwei Signaturen verglichen. Wenn sie übereinstimmen, kann der Speicherdienst die Speicherdienstversion prüfen, um die Gültigkeit sicherzustellen sowie festzustellen, ob aktuelles Datum und aktuelle Uhrzeit im angegebenen Fenster liegen, ob der angeforderte Zugriff der Anforderung entspricht usw.
@@ -256,7 +259,7 @@ Weitere ausführliche Informationen zur Verwendung von SAS und gespeicherten Zug
   * [SAS-Erste-Schritte-Tutorial](https://github.com/Azure-Samples/storage-dotnet-sas-getting-started)
 
 ## <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
-### <a name="transport-level-encryption-–-using-https"></a>Verschlüsselung auf Transportebene – mithilfe von HTTPS
+### <a name="transport-level-encryption--using-https"></a>Verschlüsselung auf Transportebene – mithilfe von HTTPS
 Ein weiterer Schritt, mit dem Sie die Sicherheit Ihrer Azure Storage-Daten sicherstellen sollten, ist das Verschlüsseln der Daten bei der Übertragung zwischen dem Client und Azure Storage. Erstens sollten Sie immer das [HTTPS](https://en.wikipedia.org/wiki/HTTPS) -Protokoll verwenden, denn es gewährleistet die sichere Kommunikation über das öffentliche Internet.
 
 Beim Abrufen von REST-APIs oder Zugreifen auf Objekte im Speicher sollten Sie immer HTTPS verwenden. Mit **Shared Access Signatures**, die zum Delegieren des Zugriffs auf Azure Storage-Objekte verwendet werden können, können Sie außerdem festlegen, dass bei Verwendung von Shared Access Signatures nur das HTTPS-Protokoll verwendet werden darf. So können Sie sicherstellen, dass jeder, der Links mit SAS-Token sendet, das richtige Protokoll verwendet.
@@ -292,7 +295,7 @@ Drei Azure-Funktionen ermöglichen die Verschlüsselung ruhender Daten. Mit Azur
 
 Obwohl Sie die clientseitige Verschlüsselung zum Verschlüsseln der Daten (die auch in verschlüsselter Form in Azure Storage gespeichert werden) während der Übertragung verwenden können, sollten Sie während der Übertragung einfach HTTPS verwenden und eine Möglichkeit zur automatischen Verschlüsselung der Daten bei der Speicherung einsetzen. Hierzu gibt es zwei Möglichkeiten – Azure Disk Encryption und SSE. Eine wird verwendet, um die Daten auf Betriebssystemdatenträgern und anderen Datenträgern, die von VMs verwendet werden, direkt zu verschlüsseln, und die andere dient zum Verschlüsseln von Daten, die in den Azure-Blobspeicher geschrieben werden.
 
-### <a name="storage-service-encryption-(sse)"></a>Storage Service Encryption (SSE)
+### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 Mit SSE können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt. Wenn Sie die Daten aus Azure Storage lesen, werden sie vom Speicherdienst vor der Rückgabe entschlüsselt. So können Sie Daten schützen, ohne dass Sie in Anwendungen Code ändern oder hinzufügen müssen.
 
 Diese Einstellung gilt für das gesamte Speicherkonto. Sie können dieses Feature aktivieren und deaktivieren, indem Sie den Wert der Einstellung ändern. Zu diesem Zweck können Sie das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle, die REST-API des Azure Storage-Ressourcenanbieters oder die .NET-Speicherclientbibliothek verwenden. SSE ist standardmäßig deaktiviert.
@@ -342,7 +345,7 @@ Die Lösung unterstützt bei Aktivierung in Microsoft Azure für virtuelle IaaS-
 
 * Integration in Azure-Schlüsseltresor
 * Standardmäßige [virtuelle IaaS-Computer der A-, D- und G-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Aktivieren der Verschlüsselung für virtuelle IaaS-Computer, die mit dem [Azure-Ressourcen-Manager](../resource-group-overview.md) -Modell erstellt werden
+* Aktivieren der Verschlüsselung für virtuelle IaaS-Computer, die mit dem [Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md) -Modell erstellt werden
 * Alle öffentlichen Azure- [Regionen](https://azure.microsoft.com/regions/)
 
 Dieses Feature stellt sicher, dass alle Daten auf den Datenträgern Ihrer virtuellen Computer in Azure Storage ruhend verschlüsselt sind.
@@ -352,7 +355,7 @@ Dieses Feature stellt sicher, dass alle Daten auf den Datenträgern Ihrer virtue
   
   Dieser Artikel beschreibt die Preview-Version von Azure Disk Encryption und enthält einen Link, um das Whitepaper herunterzuladen.
 
-### <a name="comparison-of-azure-disk-encryption,-sse,-and-client-side-encryption"></a>Vergleich zwischen Azure Disk Encryption, SSE und clientseitiger Verschlüsselung
+### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Vergleich zwischen Azure Disk Encryption, SSE und clientseitiger Verschlüsselung
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS-VMs und ihre zugehörigen VHD-Dateien
 Für Datenträger, die von IaaS-VMs verwendet werden, sollten Sie Azure Disk Encryption verwenden. Sie können SSE aktivieren, um die VHD-Dateien zu verschlüsseln, mit denen diese Datenträger in Azure Storage gesichert werden, aber es werden nur neu geschriebene Daten verschlüsselt. Dies bedeutet: Wenn Sie einen virtuellen Computer erstellen und dann SSE für das Speicherkonto aktivieren, das die VHD-Datei enthält, werden nur die Änderungen verschlüsselt, nicht die ursprüngliche VHD-Datei.
 
@@ -364,7 +367,7 @@ Wenn Sie über eine lokale, noch nicht verschlüsselte VHD-Datei verfügen, kön
 
 Wenn Sie einen Datenträger hinzufügen und ihn auf dem virtuellen Computer einbinden, können Sie Azure Disk Encryption für diesen Datenträger aktivieren. Dieser Datenträger wird zuerst lokal verschlüsselt, und dann führt die Dienstverwaltungsebene einen verzögerten Schreibvorgang im Speicher aus, damit der Speicherinhalt verschlüsselt wird.
 
-#### <a name="client-side-encryption####"></a>clientseitiger Verschlüsselung
+#### <a name="client-side-encryption"></a>clientseitiger Verschlüsselung
 Die clientseitige Verschlüsselung ist die sicherste Methode zum Verschlüsseln Ihrer Daten, da die Verschlüsselung vor der Übertragung stattfindet und die Daten als ruhende Daten verschlüsselt werden. Allerdings ist es hierzu erforderlich, dass Sie Ihren Anwendungen, die den Speicher benutzen, Code hinzuzufügen, und das möchten Sie vielleicht nicht. In diesen Fällen können Sie HTTPS für die Übertragung Ihrer Daten und SSE zum Verschlüsseln ruhender Daten verwenden.
 
 Mit der clientseitigen Verschlüsselung können Sie Tabellenentitäten, Warteschlangennachrichten und Blobs verschlüsseln. Mit SSE können Sie nur Blobs verschlüsseln. Wenn Sie Tabellen- und Warteschlangendaten verschlüsseln müssen, sollten Sie die clientseitige Verschlüsselung verwenden.
@@ -373,7 +376,7 @@ Die clientseitige Verschlüsselung wird vollständig von der Anwendung verwaltet
 
 Die clientseitige Verschlüsselung ist eine zusätzliche Belastung des Clients, und dies müssen Sie in Ihren Skalierbarkeitsplänen berücksichtigen, insbesondere dann, wenn Sie große Datenmengen verschlüsseln und übertragen müssen.
 
-#### <a name="storage-service-encryption-(sse)"></a>Storage Service Encryption (SSE)
+#### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 SSE wird von Azure Storage verwaltet. SSE sorgt nicht für die Sicherheit der Daten während der Übertragung, verschlüsselt sie jedoch beim Schreiben in Azure Storage. Die Verwendung dieser Funktion hat keine Auswirkungen auf die Leistung.
 
 Sie können mit SSE nur Blockblobs, Anfügeblobs und Seitenblobs verschlüsseln. Wenn Sie Tabellen- oder Warteschlangendaten verschlüsseln müssen, sollten Sie die clientseitige Verschlüsselung verwenden.
@@ -390,7 +393,7 @@ Außerdem sehen Sie in den Speicheranalyseprotokollen die Authentifizierungsmeth
 
 Dies kann sehr hilfreich sein, wenn Sie den Zugriff auf den Speicher sehr genau beobachten. In Blob Storage können Sie z. B. alle Container als privat festlegen und die Verwendung eines SAS-Diensts in allen Anwendungen implementieren. Anschließend können Sie die Protokolle regelmäßig überprüfen, um festzustellen, ob der Zugriff auf Ihre Blobs über die Schlüssel des Speicherkontos erfolgt, was auf eine Sicherheitslücke hinweisen könnte, oder ob die Blobs öffentlich sind, obwohl sie es nicht sein sollten.
 
-#### <a name="what-do-the-logs-look-like?"></a>Wie sind die Protokolle strukturiert?
+#### <a name="what-do-the-logs-look-like"></a>Wie sind die Protokolle strukturiert?
 Nachdem Sie die Speicherkontometriken und die Protokollierung über das Azure-Portal aktiviert haben, sammeln sich schnell Analysedaten an. Protokollierung und Metriken sind für jeden Dienst getrennt; die Protokollierung wird nur geschrieben, wenn Aktivitäten in diesem Speicherkonto stattfinden, während die Metriken – abhängig von Ihrer Konfiguration – minütlich, stündlich oder täglich protokolliert werden.
 
 Die Protokolle werden im Speicherkonto in einem Container namens „$logs“ in Blockblobs gespeichert. Dieser Container wird automatisch erstellt, wenn die Speicheranalyse aktiviert ist. Sobald Sie diesen Container erstellt haben, können Sie ihn zwar nicht löschen, jedoch seinen Inhalt.
@@ -405,7 +408,7 @@ Jede Anforderung an Azure Storage wird protokolliert. Hier ist eine Momentaufnah
 
 Sie sehen, dass Sie mit den Protokollen jede Art von Aufrufen eines Speicherkontos nachverfolgen können.
 
-#### <a name="what-are-all-of-those-fields-for?"></a>Wofür sind alle diese Felder bestimmt?
+#### <a name="what-are-all-of-those-fields-for"></a>Wofür sind alle diese Felder bestimmt?
 In den nachstehenden Ressourcen ist ein Artikel aufgeführt, der die Liste der vielen Felder in den Protokollen und Informationen zu ihrer Verwendung enthält. Hier sehen Sie die Liste der Felder in der richtigen Reihenfolge:
 
 ![Momentaufnahme von Feldern einer Protokolldatei](./media/storage-security-guide/image3.png)
@@ -414,7 +417,7 @@ Uns interessieren die Einträge für „GetBlob“ und deren Authentifizierung. 
 
 In den ersten Zeilen der obigen Auflistung ist z. B. der „request-status“ „Success“ und der „authorization-type“ „authenticated“. Dies bedeutet, dass die Anforderung mithilfe des Speicherkontoschlüssels überprüft wurde.
 
-#### <a name="how-are-my-blobs-being-authenticated?"></a>Wie werden meine Blobs authentifiziert?
+#### <a name="how-are-my-blobs-being-authenticated"></a>Wie werden meine Blobs authentifiziert?
 Drei Fälle interessieren uns.
 
 1. Das Blob ist öffentlich, und der Zugriff erfolgt mithilfe einer URL ohne SAS. In diesem Fall ist der „request-status“ „AnonymousSuccess“ und der „authorization-type“ „anonymous“.
@@ -446,7 +449,7 @@ Sie können diese Protokolle mit dem Microsoft Message Analyzer anzeigen und ana
   
   Dieser Artikel ist die Referenz für den Microsoft Message Analyzer und enthält Links zu Tutorial, Schnellstart und Funktionsübersicht.
 
-## <a name="cross-origin-resource-sharing-(cors)"></a>Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)
+## <a name="cross-origin-resource-sharing-cors"></a>Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)
 ### <a name="cross-domain-access-of-resources"></a>Domänenübergreifender Ressourcenzugriff
 Wenn ein Webbrowser, der in einer Domäne ausgeführt wird, eine HTTP-Anforderung für eine Ressource aus einer anderen Domäne sendet, wird dies als Ursprünge übergreifende HTTP-Anforderung bezeichnet. Beispiel: Eine HTML-Seite von „contoso.com“ sendet eine Anforderung für eine JPEG-Datei, die auf „fabrikam.blob.core.windows.net“ gehostet wird. Aus Sicherheitsgründen schränken Browser aus Skripts wie JavaScript heraus initiierte, Ursprünge übergreifende HTTP-Anforderungen ein. Dies bedeutet: Wenn JavaScript-Code auf einer Webseite von „contoso.com“ diese JPEG-Datei auf „fabrikam.blob.core.windows.net“ anfordert, lässt der Browser die Anforderung nicht zu.
 
@@ -457,22 +460,24 @@ Eine Möglichkeit zur Lösung des Problems ist, „fabrikam.blob.core.windows.ne
 
 Eine weitere Möglichkeit zur Lösung des Problems ist, die Webanwendung als Proxy für die Speicheraufrufe einzusetzen. Dies bedeutet: Wenn Sie eine Datei in Blob Storage hochladen, schreibt die Webanwendung sie entweder lokal und kopiert sie in Blob Storage, oder sie liest alle Daten in den Arbeitsspeicher und schreibt sie anschließend in Blob Storage. Alternativ könnten Sie eine dedizierte Webanwendung (z. B. eine Web-API) schreiben, die die Dateien lokal hochlädt und in Blob Storage schreibt. In beiden Fällen müssen Sie diese Funktion berücksichtigen, wenn Sie die Skalierbarkeit bestimmen.
 
-#### <a name="how-can-cors-help?"></a>Wie kann CORS helfen?
+#### <a name="how-can-cors-help"></a>Wie kann CORS helfen?
 Mit Azure Storage können Sie CORS aktivieren – Ressourcenfreigabe zwischen verschiedenen Ursprüngen. Für jedes Speicherkonto können Sie Domänen angeben, die auf die Ressourcen in diesem Speicherkonto zugreifen können. Beispielsweise können wir im oben genannten Fall CORS für das Speicherkonto auf „fabrikam.blob.core.windows.net“ aktivieren und es so konfigurieren, dass es auf „contoso.com“ zugreifen darf. Dann kann die Webanwendung „contoso.com“ direkt auf die auf „fabrikam.blob.core.windows.net“ gespeicherten Ressourcen zugreifen.
 
 Dabei ist zu beachten, dass CORS Zugriff ermöglicht, aber keine Authentifizierung bietet, die für jeglichen nichtöffentlichen Zugriff auf Speicherressourcen erforderlich ist. Dies bedeutet, dass Sie nur dann auf Blobs zugreifen können, wenn sie öffentlich sind, oder Sie beziehen eine SAS ein, die Ihnen die entsprechende Berechtigung gewährt. Tabellen, Warteschlangen und Dateien haben keinen öffentlichen Zugriff und erfordern eine SAS.
 
 CORS ist standardmäßig für alle Dienste deaktiviert. Sie können CORS mithilfe der REST-API oder der Speicherclientbibliothek für den Aufruf einer der Methoden zum Festlegen von Dienstrichtlinien aktivieren. Wenn Sie dies tun, beziehen Sie eine CORS-Regel im XML-Format ein. Hier ist ein Beispiel für eine CORS-Regel, die mithilfe des Set Service Properties-Vorgangs für den Blob-Dienst für ein Speicherkonto festgelegt wurde. Sie können diesen Vorgang mithilfe der Speicherclientbibliothek oder der REST-APIs für Azure Storage ausführen.
 
-    <Cors>    
-        <CorsRule>
-            <AllowedOrigins>http://www.contoso.com, http://www.fabrikam.com</AllowedOrigins>
-            <AllowedMethods>PUT,GET</AllowedMethods>
-            <AllowedHeaders>x-ms-meta-data*,x-ms-meta-target*,x-ms-meta-abc</AllowedHeaders>
-            <ExposedHeaders>x-ms-meta-*</ExposedHeaders>
-            <MaxAgeInSeconds>200</MaxAgeInSeconds>
-        </CorsRule>
-    <Cors>
+```xml
+<Cors>    
+    <CorsRule>
+        <AllowedOrigins>http://www.contoso.com, http://www.fabrikam.com</AllowedOrigins>
+        <AllowedMethods>PUT,GET</AllowedMethods>
+        <AllowedHeaders>x-ms-meta-data*,x-ms-meta-target*,x-ms-meta-abc</AllowedHeaders>
+        <ExposedHeaders>x-ms-meta-*</ExposedHeaders>
+        <MaxAgeInSeconds>200</MaxAgeInSeconds>
+    </CorsRule>
+<Cors>
+```
 
 Die einzelnen Zeilen haben folgende Bedeutung:
 
@@ -521,6 +526,7 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
   
   Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO1-->
 
 

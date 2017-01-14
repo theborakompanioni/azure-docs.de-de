@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 8d7823b6ecbc1a762839fc620f76d0bf4687d8fa
-ms.openlocfilehash: 5b33a36a3415efd2bc4673999806aa797f4a1c9f
+ms.sourcegitcommit: 91e19b321026840a062078d7af2a55967fb3904b
+ms.openlocfilehash: 417c545e34f1d652594c8527a3c8b0a845a4e8fa
 
 
 ---
@@ -30,7 +30,7 @@ In diesem Thema erfahren Sie, wie Sie über das Azure-Portal eine einfache Node.
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 Eine Funktionen-App hostet die Ausführung Ihrer Funktionen in Azure. Führen Sie die folgenden Schritte aus, um eine Funktionen-App im Azure-Portal zu erstellen.
 
-Zum Erstellen Ihrer ersten Funktion benötigen Sie ein aktives Azure-Konto. Falls Sie noch kein Azure-Konto haben, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
+Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Falls Sie noch kein Azure-Konto besitzen, sehen Sie sich die Seite zum Ausprobieren von Funktionen ([Try Functions](https://functions.azure.com/try)) an, oder [erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free/). 
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 2. Klicken Sie auf **+Neu** > **Compute** > **Funktionen-App**, wählen Sie Ihr **Abonnement** aus, geben Sie einen eindeutigen **App-Namen** zur Identifizierung Ihrer Funktionen-App ein, und geben Sie anschließend folgende Einstellungen an:
@@ -86,6 +86,6 @@ In dieser Schnellstartanleitung wird eine einfache Ausführung einer grundlegend
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/16/2016
+ms.date: 10/10/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: ce9474f2926a856673efbab5103a308d31001343
-ms.openlocfilehash: ed1c66f72b09a14a14c6ecd0bf39cd92f2bd22b8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d73b4ad270f868b3ec1d99c142f35688a80abbe1
 
 
 ---
-# <a name="get-started-with-certificate-based-authentication-on-android"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung unter Android
+# <a name="get-started-with-certificate-based-authentication-on-android---public-preview"></a>Erste Schritte mit der zertifikatbasierten Authentifizierung auf Android – öffentliche Vorschau
 > [!div class="op_single_selector"]
 > * [iOS](active-directory-certificate-based-authentication-ios.md)
 > * [Android](active-directory-certificate-based-authentication-android.md)
@@ -50,7 +50,7 @@ Die folgenden Voraussetzungen müssen für alle Szenarien in diesem Thema erfül
 | Apps | Support |
 | --- | --- |
 | Word/Excel/PowerPoint |![Prüfen][1] |
-| OneNote |![Prüfen][1] |
+| OneNote |In Kürze verfügbar |
 | OneDrive |![Prüfen][1] |
 | Outlook |![Prüfen][1] |
 | Yammer |![Prüfen][1] |
@@ -70,14 +70,9 @@ Damit Azure Active Directory ein Clientzertifikat sperren kann, muss das AD FS-T
 
 Wenn diese Ansprüche im AD FS-Token (oder in einem anderen SAML-Token) enthalten sind, fügt Azure Active Directory die Ansprüche dem Aktualisierungstoken hinzu. Wenn das Aktualisierungstoken überprüft werden muss, werden diese Informationen zum Überprüfen der Sperrung verwendet. 
 
-Als bewährte Methode wird empfohlen, die AD FS-Fehlerseiten mit Anleitungen zum Abrufen eines Benutzerzertifikats zu aktualisieren.  
+Als bewährte Methode wird empfohlen, die AD FS-Fehlerseiten mit Anleitungen zum Abrufen eines Benutzerzertifikats zu aktualisieren. 
+
 Weitere Einzelheiten finden Sie unter [Anpassen der AD FS-Anmeldeseiten](https://technet.microsoft.com/library/dn280950.aspx).  
-
-Einige Office-Apps (mit aktivierter moderner Authentifizierung) senden „*prompt=login*“ in der Anforderung an Azure AD. Azure AD übersetzt dies in der Anforderung standardmäßig in „*wauth=usernamepassworduri*“ (fordert AD FS zum Durchführen der U/P-Authentifizierung auf) und „*wfresh = 0*“ (fordert AD FS auf, den SSO-Status zu ignorieren und eine erneute Authentifizierung durchzuführen). Wenn Sie eine zertifikatbasierte Authentifizierung für diese Apps aktivieren möchten, müssen Sie das Azure AD-Standardverhalten ändern. Legen Sie dazu einfach „*PromptLoginBehavior*“ in den Einstellungen der Verbunddomäne auf „*deaktiviert*“ fest. Für diese Aufgabe können Sie das Cmdlet [MSOLDomainFederationSettings](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msoldomainfederationsettings) verwenden:
-
-`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
-
-
 
 ### <a name="exchange-activesync-clients-support"></a>Unterstützung von Exchange ActiveSync-Clients
 Bestimmte Exchange ActiveSync-Anwendungen auf Android 5.0 (Lollipop) oder einer höheren Version werden unterstützt. Wenden Sie sich an Ihren Anwendungsentwickler, um herauszufinden, ob Ihre E-Mail-Anwendung dieses Feature unterstützt. 
@@ -118,9 +113,9 @@ Nachfolgend finden Sie Beispiele für das Hinzufügen, Entfernen oder Ändern ei
 
 ### <a name="configuring-your-azure-ad-tenant-for-certificate-based-authentication"></a>Konfigurieren Ihres Azure AD-Mandanten für die zertifikatbasierte Authentifizierung
 1. Starten Sie Windows PowerShell mit Administratorrechten. 
-2. Installieren Sie das Azure AD-Modul. Sie müssen die Version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) oder eine höhere Version installieren.  
+2. Installieren Sie das Azure AD-Modul. Sie müssen die Version [1.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) oder eine höhere Version installieren.  
    
-        Install-Module -Name AzureADPreview –RequiredVersion 2.0.0.33 
+        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
 3. Verbinden Sie sich mit Ihrem Zielmandanten: 
    
         Connect-AzureAD 
@@ -213,6 +208,6 @@ Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zu
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

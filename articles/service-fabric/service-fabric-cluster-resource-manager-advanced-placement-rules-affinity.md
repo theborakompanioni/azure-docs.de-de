@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/19/2016
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ef1b4c5ab23365b62c3c1061061aec5a9155c3f4
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 70c7209c0971c7015f585a5b5afcc8881c9f9f1a
 
 
 ---
@@ -68,11 +68,11 @@ Der letzte wichtige Affinitätsaspekt ist, dass Affinitätsbeziehungen nicht unt
 * Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen unter [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md)
 * Viele Gründe, weshalb Benutzer Affinität verwenden, z.B. das Einschränken von Diensten auf eine kleine Gruppe von Computern, und der Versuch, die Last einer Sammlung von Diensten zu aggregieren, werden besser durch Anwendungsgruppen unterstützt. Weitere Informationen finden Sie unter [Anwendungsgruppen](service-fabric-cluster-resource-manager-application-groups.md).
 
-[Bild1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
-[Bild2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png
+[Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
+[Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

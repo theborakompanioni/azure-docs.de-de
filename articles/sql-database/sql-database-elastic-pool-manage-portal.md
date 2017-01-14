@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 3dc9b7a3-4b10-423a-8e44-9174aca5cf3d
 ms.service: sql-database
+ms.custom: sharded databases pool; how to
 ms.devlang: NA
 ms.date: 11/17/2016
 ms.author: ninarn
@@ -16,8 +17,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 37249c24c3e74ff9f4fcf9362b6053d1ba7b0cbd
-ms.openlocfilehash: 10bb7d9672824b00a1e3ba02e0e3d1db4260b128
+ms.sourcegitcommit: c17cedb24dacc6aeefa02a963b4dffcf22e246ec
+ms.openlocfilehash: 285be87188be8fa426e42d6ec43cd066100f423d
 
 
 ---
@@ -60,20 +61,21 @@ Navigieren Sie zu einem bestimmten Pool, um dessen Ressourcenverwendung anzuzeig
 
 Sie können das Diagramm und das Metrikblatt bearbeiten, um andere Metriken wie etwa die prozentuale Verwendung von CPU, Daten-E/A und Protokoll-E/A anzuzeigen.
 
-2. Klicken Sie auf dem Metrikblatt auf **Bearbeiten**.
+1. Klicken Sie auf dem Metrikblatt auf **Bearbeiten**.
 
     ![Klicken auf „Bearbeiten“][6]
 
-- Wählen Sie auf dem Blatt **Diagramm bearbeiten** einen neuen Zeitbereich („Letzte Stunde“, „Heute“ oder „Letzte Woche“) aus, oder klicken Sie auf **Benutzerdefiniert**, um einen beliebigen Datumsbereich innerhalb der letzten beiden Wochen auszuwählen. Wählen Sie den Diagrammtyp („Balken“ oder „Linie“) und dann die zu überwachenden Ressourcen aus.
+2. Wählen Sie auf dem Blatt **Diagramm bearbeiten** einen neuen Zeitbereich („Letzte Stunde“, „Heute“ oder „Letzte Woche“) aus, oder klicken Sie auf **Benutzerdefiniert**, um einen beliebigen Datumsbereich innerhalb der letzten beiden Wochen auszuwählen. Wählen Sie den Diagrammtyp („Balken“ oder „Linie“) und dann die zu überwachenden Ressourcen aus.
 
-> [!Note]
-> Hinweis: Nur Metriken mit der gleichen Maßeinheit können gleichzeitig im Diagramm angezeigt werden. Wenn Sie also beispielsweise die Option für den eDTU-Prozentsatz auswählen, können nur andere prozentbasierte Metriken ausgewählt werden.
->
->
+   > [!Note]
+   > Hinweis: Nur Metriken mit der gleichen Maßeinheit können gleichzeitig im Diagramm angezeigt werden. Wenn Sie also beispielsweise die Option für den eDTU-Prozentsatz auswählen, können nur andere prozentbasierte Metriken ausgewählt werden.
+   >
 
-    ![Click edit](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
+    ![Klicken auf „Bearbeiten“](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
 
-- Klicken Sie dann auf **OK**.
+    
+
+3. Klicken Sie dann auf **OK**.
 
 
 ## <a name="elastic-database-monitoring"></a>Überwachung der elastischen Datenbank
@@ -226,6 +228,6 @@ Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

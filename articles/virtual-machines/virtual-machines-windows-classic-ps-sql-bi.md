@@ -1,13 +1,13 @@
 ---
 title: SQL Server Business Intelligence | Microsoft Docs
-description: Dieses Thema verwendet mit dem klassischen Bereitstellungsmodell erstellte Ressourcen und beschreibt die für SQL Server auf virtuellen Azure-Computern (Virtual Machines, VMs) verfügbaren Business Intelligence-Features (BI).
+description: "Dieses Thema verwendet mit dem klassischen Bereitstellungsmodell erstellte Ressourcen und beschreibt die für SQL Server auf virtuellen Azure-Computern (Virtual Machines, VMs) verfügbaren Business Intelligence-Features (BI)."
 services: virtual-machines-windows
 documentationcenter: na
 author: guyinacube
 manager: erikre
 editor: monicar
 tags: azure-service-management
-
+ms.assetid: c681e7a7-eeda-48aa-bc35-6277f4828244
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: f88fc3390f819ce6952b3249c1a7a8ef286bc4ec
+
 
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server-Business Intelligence in Azure Virtual Machines
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 Der Microsoft Azure Virtual Machine-Katalog verfügt über Images, die SQL Server-Installationen enthalten. Die in den Katalogimages unterstützten SQL Server-Editionen sind die gleichen Installationsdateien, die Sie auf lokalen Computern und virtuellen Computern installieren können. Dieses Thema beschreibt die SQL Server Business Intelligence-Features (BI), die in den Images installiert sind, und die Konfigurationsschritte, die nach dem Bereitstellen eines virtuellen Computers erforderlich sind. Außerdem werden in diesem Thema die unterstützten Bereitstellungstopologien für BI-Funktionen und bewährte Methoden erläutert.
 
@@ -65,8 +70,8 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
 * SQL Server 2016 RC3
 * SQL Server 2014 SP1 Enterprise
 * SQL Server 2014 SP1 Standard
-* SQL Server 2012 SP2 Enterprise
-* SQL Server 2012 SP2 Standard
+* SQL Server 2012 SP2 Enterprise
+* SQL Server 2012 SP2 Standard
 
 | BI-Funktion von SQL Server | In Katalogimage installiert | Hinweise |
 | --- | --- | --- |
@@ -85,13 +90,13 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
 ## <a name="general-recommendations-and-best-practices"></a>Allgemeine Empfehlungen und bewährte Methoden
 * Die empfohlene Minimalgröße für einen virtuellen Computer bei Verwendung von SQL Server Enterprise Edition ist **A3** . **A4** wird als Größe für einen virtuellen Computer empfohlen, wenn SQL Server-BI-Bereitstellungen von Analysis Services und Reporting Services verwendet werden.
   
-    Informationen zu den aktuellen Größen virtueller Computer finden Sie unter [Größen virtueller Computer unter Azure](virtual-machines-linux-sizes.md).
+    Informationen zu den aktuellen Größen virtueller Computer finden Sie unter [Größen virtueller Computer unter Azure](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Eine bewährte Methode für die Datenträgerverwaltung ist das Speichern von Daten-, Protokoll- und Sicherungsdateien auf anderen Laufwerken als **C:** und **D:**. Erstellen Sie beispielsweise die Datenträger **E:** und **F:** für Daten.
   
   * Die Laufwerk-Cacherichtlinie für das Standardlaufwerk **C:**ist für die Verwendung von Daten nicht optimal.
   * Das Laufwerk **D:** ist ein temporäres Laufwerk, das hauptsächlich für die Auslagerungsdatei verwendet wird. Das Laufwerk **D:** wird nicht beibehalten und nicht in Blob Storage gespeichert. Bei Verwaltungsaufgaben, z.B. einer Änderung der Größe des virtuellen Computers, wird das Laufwerk **D:** zurückgesetzt. Es wird empfohlen, das Laufwerk **D:** **NICHT** für Datenbankdateien zu verwenden, einschließlich „tempdb“.
     
-    Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md).
+    Weitere Informationen zum Erstellen und Anfügen von Datenträgern finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Beenden oder deinstallieren Sie Dienste, die Sie nicht verwenden möchten. Beenden oder deinstallieren Sie beispielsweise Analysis Services und SQL Server Integration Services, falls der virtuelle Computer nur für Reporting Services verwendet wird. Die folgende Abbildung enthält ein Beispiel für die Dienste, die standardmäßig gestartet werden.
   
     ![SQL Server-Dienste](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
@@ -118,13 +123,13 @@ Analysis Services, Reporting Services, SQL Server-Datenbankmodul und Datenquelle
 
 ![BI-IaaS-Szenario mit 2 virtuellen Computern](./media/virtual-machines-windows-classic-ps-sql-bi/IC650109.gif)
 
-### <a name="mixed-azure-–-data-on-azure-sql-database"></a>Azur-Mischung – Daten in Azure SQL-Datenbank
+### <a name="mixed-azure--data-on-azure-sql-database"></a>Azur-Mischung – Daten in Azure SQL-Datenbank
 * Analysis Services, Reporting Services und SQL Server-Datenbankmodul auf einem einzelnen virtuellen Computer. Diese Bereitstellung enthält die Berichtsserver-Datenbanken.
 * Die Datenquelle ist Azure SQL-Datenbank.
 
 ![BI-IaaS-Szenarios mit VM und Azure SQL als Datenquelle](./media/virtual-machines-windows-classic-ps-sql-bi/IC650110.gif)
 
-### <a name="hybrid-–data-on-premises"></a>Hybrid – Lokale Daten
+### <a name="hybrid-data-on-premises"></a>Hybrid – Lokale Daten
 * In dieser Beispielbereitstellung werden Analysis Services, Reporting Services und das SQL Server-Datenbankmodul auf einem einzelnen virtuellen Computer ausgeführt. Der virtuelle Computer hostet die Berichtsserver-Datenbanken. Für den virtuellen Computer wird der Beitritt zu einer lokalen Domäne per Azure Virtual Networking oder mit einer anderen VPN-Tunnellösung durchgeführt.
 * Die Datenquelle liegt lokal vor.
 
@@ -134,7 +139,7 @@ Analysis Services, Reporting Services, SQL Server-Datenbankmodul und Datenquelle
 Das Image für SQL Server im Katalog mit den virtuellen Computern enthält eine Installation von Reporting Services – Einheitlicher Modus. Der Berichtsserver ist aber nicht konfiguriert. Mit den Schritten in diesem Abschnitt wird der Reporting Services-Berichtsserver konfiguriert. Ausführlichere Informationen zur Konfiguration des einheitlichen Modus der Reporting Services finden Sie unter [Installieren des Reporting Services-Berichtsservers im einheitlichen Modus](https://msdn.microsoft.com/library/ms143711.aspx).
 
 > [!NOTE]
-> Ähnliche Inhalte, bei denen Windows PowerShell-Skripts zum Konfigurieren des Berichtsservers verwendet werden, finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](virtual-machines-windows-classic-ps-sql-report.md).
+> Ähnliche Inhalte, bei denen Windows PowerShell-Skripts zum Konfigurieren des Berichtsservers verwendet werden, finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](virtual-machines-windows-classic-ps-sql-report.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 > 
 > 
 
@@ -155,10 +160,10 @@ Es gibt zwei allgemeine Workflows zum Herstellen einer Verbindung mit einem virt
 
 **Starten Sie den Konfigurations-Manager für Reporting Services.**
 
-1. In **Windows Server 2012**:
+1. In **Windows Server 2012**:
 2. Geben Sie auf dem Bildschirm **Start** den Text **Reporting Services** ein, um eine Liste von Apps anzuzeigen.
 3. Klicken Sie mit der rechten Maustaste auf **Konfigurations-Manager für Reporting Services**, und klicken Sie auf **Als Administrator ausführen**.
-4. In **Windows Server 2008 R2**:
+4. In **Windows Server 2008 R2**:
 5. Klicken Sie auf **Start** und dann auf **Alle Programme**.
 6. Klicken Sie auf **Microsoft SQL Server 2016**.
 7. Klicken Sie auf **Konfigurationstools**.
@@ -167,7 +172,7 @@ Es gibt zwei allgemeine Workflows zum Herstellen einer Verbindung mit einem virt
 oder
 
 1. Klicken Sie auf **Start**.
-2. Geben Sie im Dialogfeld **Programme/Dateien durchsuchen** den Text **Reporting Services** ein. Wenn auf dem virtuellen Computer Windows Server 2012 ausgeführt wird, geben Sie auf dem Startbildschirm von Windows Server 2012 den Text **Reporting Services** ein.
+2. Geben Sie im Dialogfeld **Programme/Dateien durchsuchen** den Text **Reporting Services** ein. Wenn auf dem virtuellen Computer Windows Server 2012 ausgeführt wird, geben Sie auf dem Startbildschirm von Windows Server 2012 den Text **Reporting Services** ein.
 3. Klicken Sie mit der rechten Maustaste auf **Konfigurations-Manager für Reporting Services**, und klicken Sie auf **Als Administrator ausführen**.
    
     ![Nach SSRS-Konfigurations-Manager suchen](./media/virtual-machines-windows-classic-ps-sql-bi/IC650113.gif)
@@ -181,7 +186,7 @@ oder
 4. Klicken Sie auf **Dienstkonto** , und ändern Sie das Konto nach Bedarf. Wenn der virtuelle Computer in einer Umgebung verwendet wird, die keiner Domäne beigetreten ist, reicht das integrierte **ReportServer** -Konto aus. Weitere Informationen zum Dienstkonto finden Sie unter [Dienstkonto](https://msdn.microsoft.com/library/ms189964.aspx).
 5. Klicken Sie im linken Bereich auf **Webdienst-URL** .
 6. Klicken Sie auf **Übernehmen** , um die Standardwerte zu konfigurieren.
-7. Sehen Sie sich die Option **URLs für Berichtsserver-Webdienst**an. Beachten Sie, dass der TCP-Standardport 80 lautet und Teil der URL ist. In einem späteren Schritt erstellen Sie einen Microsoft Azure Virtual Machine-Endpunkt für den Port.
+7. Sehen Sie sich die Option **URLs für Berichtsserver-Webdienst**an. Beachten Sie, dass der TCP-Standardport 80 lautet und Teil der URL ist. In einem späteren Schritt erstellen Sie einen Microsoft Azure Virtual Machine-Endpunkt für den Port.
 8. Überprüfen Sie im Bereich **Ergebnisse** , ob die Aktionen erfolgreich abgeschlossen wurden.
 
 **Datenbank:**
@@ -211,11 +216,11 @@ Navigieren Sie zum Berichts-Manager auf dem virtuellen Computer, um die Konfigur
 1. Starten Sie Internet Explorer auf dem virtuellen Computer mit Administratorrechten.
 2. Navigieren Sie auf dem virtuellen Computer zu http://localhost/reports.
 
-### <a name="to-connect-to-remote-web-portal,-or-report-manager-for-2014-and-2012"></a>So stellen Sie eine Verbindung zum Remotewebportal oder Berichts-Manager für 2014 und 2012 her
-Wenn Sie über einen Remotecomputer eine Verbindung mit dem Webportal oder Berichts-Manager für 2014 und 2012 herstellen möchten, erstellen Sie einen neuen TCP-Endpunkt für den virtuellen Computer. Standardmäßig überwacht der Berichtsserver **Port 80**auf HTTP-Anforderungen. Wenn Sie die Berichtsserver-URLs für die Verwendung eines anderen Ports konfigurieren, müssen Sie diese Portnummer bei den folgenden Schritten angeben.
+### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>So stellen Sie eine Verbindung zum Remotewebportal oder Berichts-Manager für 2014 und 2012 her
+Wenn Sie über einen Remotecomputer eine Verbindung mit dem Webportal oder Berichts-Manager für 2014 und 2012 herstellen möchten, erstellen Sie einen neuen TCP-Endpunkt für den virtuellen Computer. Standardmäßig überwacht der Berichtsserver **Port 80**auf HTTP-Anforderungen. Wenn Sie die Berichtsserver-URLs für die Verwendung eines anderen Ports konfigurieren, müssen Sie diese Portnummer bei den folgenden Schritten angeben.
 
-1. Erstellen Sie einen Endpunkt für den virtuellen Computer von TCP-Port 80. Weitere Informationen finden Sie im Abschnitt [Endpunkte und Firewallports von virtuellen Computern](#virtual-machine-endpoints-and-firewall-ports) in diesem Dokument.
-2. Öffnen Sie Port 80 in der Firewall des virtuellen Computers.
+1. Erstellen Sie einen Endpunkt für den virtuellen Computer von TCP-Port 80. Weitere Informationen finden Sie im Abschnitt [Endpunkte und Firewallports von virtuellen Computern](#virtual-machine-endpoints-and-firewall-ports) in diesem Dokument.
+2. Öffnen Sie Port 80 in der Firewall des virtuellen Computers.
 3. Navigieren Sie zum Webportal oder Berichts-Manager, indem Sie den **DNS-Namen** des virtuellen Azure-Computers als Servernamen in der URL verwenden. Beispiel:
    
     **Berichtsserver:** http://uebi.cloudapp.net/reportserver  **Webportal:** http://uebi.cloudapp.net/reports
@@ -240,11 +245,11 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
   
   1. Erstellen Sie eine VHD-Festplatte auf dem lokalen Computer, der die Berichte enthält.
   2. Erstellen Sie ein Verwaltungszertifikat, und installieren Sie es.
-  3. Laden Sie die VHD-Datei mit dem Cmdlet "Add-AzureVHD" nach Azure hoch ( [Erstellen und Hochladen einer Windows Server-VHD nach Azure](virtual-machines-windows-classic-createupload-vhd.md)).
+  3. Laden Sie die VHD-Datei mit dem Cmdlet "Add-AzureVHD" nach Azure hoch ( [Erstellen und Hochladen einer Windows Server-VHD nach Azure](virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)).
   4. Fügen Sie den Datenträger an den virtuellen Computer an.
 
 ## <a name="install-other-sql-server-services-and-features"></a>Installieren anderer SQL Server-Dienste und -Features
-Führen Sie den SQL Server-Setup-Assistenten aus, um zusätzliche SQL Server-Dienste zu installieren, z. B. Analysis Services im tabellarischen Modus. Die Setupdateien befinden sich auf dem lokalen Datenträger des virtuellen Computers.
+Führen Sie den SQL Server-Setup-Assistenten aus, um zusätzliche SQL Server-Dienste zu installieren, z. B. Analysis Services im tabellarischen Modus. Die Setupdateien befinden sich auf dem lokalen Datenträger des virtuellen Computers.
 
 1. Klicken Sie auf **Start** und dann auf **Alle Programme**.
 2. Klicken Sie auf **Microsoft SQL Server 2016**, **Microsoft SQL Server 2014** oder **Microsoft SQL Server 2012** und dann auf **Konfigurationstools**.
@@ -255,7 +260,7 @@ Sie können auch „C:\SQLServer_13.0_full\setup.exe“, „C:\SQLServer_12.0_fu
 > [!NOTE]
 > Beim ersten Ausführen des SQL Server-Setups können mehr Setupdateien heruntergeladen werden und erfordern einen Neustart des virtuellen Computers und einen Neustart des SQL Server-Setups.
 > 
-> Wenn Sie das von der Microsoft Azure Virtual Machine ausgewählte Image wiederholt anpassen müssen, können Sie erwägen, ein eigenes SQL Server-Image zu erstellen. Die Analysis Services-SysPrep-Funktionalität wurde mit SQL Server 2012 SP1 CU2 aktiviert. Weitere Informationen finden Sie unter [Überlegungen zur Installation von SQL Server mit Sysprep](https://msdn.microsoft.com/library/ee210754.aspx) und [Sysprep-Unterstützung für Serverrollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+> Wenn Sie das von der Microsoft Azure Virtual Machine ausgewählte Image wiederholt anpassen müssen, können Sie erwägen, ein eigenes SQL Server-Image zu erstellen. Die Analysis Services-SysPrep-Funktionalität wurde mit SQL Server 2012 SP1 CU2 aktiviert. Weitere Informationen finden Sie unter [Überlegungen zur Installation von SQL Server mit Sysprep](https://msdn.microsoft.com/library/ee210754.aspx) und [Sysprep-Unterstützung für Serverrollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 > 
 > 
 
@@ -280,7 +285,7 @@ Die Schritte in diesem Abschnitt sind eine **Zusammenfassung** der Installation 
 
 ## <a name="analysis-services-configuration"></a>Analysis Services-Konfiguration
 ### <a name="remote-access-to-analysis-services-server"></a>Remotezugriff auf Analysis Services-Server
-Der Analysis Services-Server unterstützt nur die Windows-Authentifizierung. Um den Remotezugriff auf Analysis Services mit Clientanwendungen durchzuführen, z. B. SQL Server Management Studio oder SQL Server Data Tools, muss der virtuelle Computer Ihrer lokalen Domäne per Azure Virtual Networking beitreten. Weitere Informationen finden Sie unter [Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
+Der Analysis Services-Server unterstützt nur die Windows-Authentifizierung. Um den Remotezugriff auf Analysis Services mit Clientanwendungen durchzuführen, z. B. SQL Server Management Studio oder SQL Server Data Tools, muss der virtuelle Computer Ihrer lokalen Domäne per Azure Virtual Networking beitreten. Weitere Informationen finden Sie unter [Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
 Eine **Standardinstanz** von Analysis Services lauscht an TCP-Port **2383**. Öffnen Sie den Port in der Firewall für die virtuellen Computer. Eine benannte Clusterinstanz von Analysis Services überwacht ebenfalls Port **2383**.
 
@@ -307,21 +312,21 @@ In diesem Abschnitt werden die zu erstellenden Microsoft Azure Virtual Machine-E
   
   * Öffnen Sie die Ports in der Firewall auf dem virtuellen Computer.
   * Erstellen Sie die Endpunkte des virtuellen Computers für die genannten Ports (*).
-* Wenn für den virtuellen Computer der Beitritt zu einer Domäne mit einer VPN-Tunnellösung durchgeführt wird, z. B. Azure Virtual Networking, sind die Endpunkte nicht erforderlich. Öffnen Sie aber die Ports in der Firewall auf dem virtuellen Computer.
+* Wenn für den virtuellen Computer der Beitritt zu einer Domäne mit einer VPN-Tunnellösung durchgeführt wird, z. B. Azure Virtual Networking, sind die Endpunkte nicht erforderlich. Öffnen Sie aber die Ports in der Firewall auf dem virtuellen Computer.
   
-      |Port|Typ|Beschreibung|
-  |---|---|---|
-  |**80**|TCP|Remotezugriff auf den Berichtsserver (*).|
-  |**1433**|TCP|SQL Server Management Studio (*).|
-  |**1434**|UDP|SQL Server-Browser. Ist erforderlich, wenn der virtuelle Computer einer Domäne beigetreten ist.|
-  |**2382**|TCP|SQL Server-Browser.|
-  |**2383**|TCP|SQL Server Analysis Services-Standardinstanz und gruppierte benannte Instanzen.|
-  |**Benutzerdefiniert**|TCP|Erstellen Sie einen statischen Analysis Services-Port für die benannte Instanz. Wählen Sie hierfür eine Portnummer aus, und entsperren Sie dann die Portnummer in der Firewall.|
+  | Port | Typ | Beschreibung |
+  | --- | --- | --- |
+  | **80** |TCP |Remotezugriff auf den Berichtsserver (*). |
+  | **1433** |TCP |SQL Server Management Studio (*). |
+  | **1434** |UDP |SQL Server-Browser. Ist erforderlich, wenn der virtuelle Computer einer Domäne beigetreten ist. |
+  | **2382** |TCP |SQL Server-Browser. |
+  | **2383** |TCP |SQL Server Analysis Services-Standardinstanz und gruppierte benannte Instanzen. |
+  | **Benutzerdefiniert** |TCP |Erstellen Sie einen statischen Analysis Services-Port für die benannte Instanz. Wählen Sie hierfür eine Portnummer aus, und entsperren Sie dann die Portnummer in der Firewall. |
 
 Weitere Informationen zum Erstellen von Endpunkten finden Sie hier:
 
-* Erstellen von Endpunkten:[Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md).
-* SQL Server: Abschnitt "Konfigurationsschritte zum Verbinden des virtuellen Computers mit SQL Server Management Studio" unter [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-portal-sql-server-provision.md)
+* Erstellen von Endpunkten:[Einrichten von Endpunkten für einen virtuellen Computer](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* SQL Server: Abschnitt "Konfigurationsschritte zum Verbinden des virtuellen Computers mit SQL Server Management Studio" unter [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtuellen Computers geöffnet werden müssen, um den Remotezugriff auf die Funktionen und Komponenten auf dem virtuellen Computer zu ermöglichen.
 
@@ -329,11 +334,11 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 ## <a name="resources"></a>Ressourcen
 * Informieren Sie sich über die Unterstützungsrichtlinie für Microsoft-Serversoftware, die in der Azure Virtual Machine-Umgebung verwendet wird. Im folgenden Thema wird die Unterstützung für Features wie BitLocker, Failoverclustering und Netzwerklastenausgleich zusammengefasst. [Microsoft Server Software-Support für Microsoft Azure virtuelle Maschinen](http://support.microsoft.com/kb/2721672)
-* [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Virtuelle Computer](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-portal-sql-server-provision.md)
-* [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md)
-* [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](virtual-machines-windows-migrate-sql.md)
+* [Bereitstellen eines virtuellen Computers mit SQL Server auf Azure](virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Bestimmen des Servermodus einer Analysis Services-Instanz](https://msdn.microsoft.com/library/gg471594.aspx)
 * [Mehrdimensionale Modellierung (Adventure Works-Tutorial)](https://technet.microsoft.com/library/ms170208.aspx)
 * [Azure-Dokumentationscenter](https://azure.microsoft.com/documentation/)
@@ -347,6 +352,9 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 ### <a name="community-content"></a>Community-Inhalte
 * [Verwalten von Azure SQL-Datenbank mit PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 
