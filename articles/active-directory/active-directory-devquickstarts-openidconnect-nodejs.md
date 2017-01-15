@@ -49,7 +49,7 @@ Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt
 * Klicken Sie auf die Registerkarte **App-Registrierungen** und anschließend auf **Hinzufügen**.
 * Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
   * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
-  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet „http://localhost:3000/auth/openid/return“.
+  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Gerüsts lautet `http://localhost:3000/auth/openid/return``.
 * Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 
 ## <a name="2-add-pre-requisities-to-your-directory"></a>2. Erforderliche Komponenten zu Ihrem Verzeichnis hinzufügen
