@@ -18,7 +18,7 @@ Auf hoher Ebene ermöglicht die Verwendung von Gerätezwillingen das Lösung-Bac
 
 In diesem Tutorial ändert das Lösungs-Back-End die Telemetriekonfiguration eines Zielgeräts. Daher nutzt die Geräte-App einen Prozess mit mehreren Schritten, um ein Konfigurationsupdate anzuwenden (z.B. ein obligatorischer Neustart eines Softwaremoduls). In diesem Tutorial wird dies anhand einer einfachen Verzögerung simuliert.
 
-Das Back-End speichert die Konfiguration wie folgt in den gewünschten Eigenschaften des Gerätezwillings:
+Das Lösungs-Back-End speichert die Konfiguration wie folgt in den gewünschten Eigenschaften des Gerätezwillings:
 
         {
             ...
@@ -94,6 +94,6 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 [lnk-guid]: https://en.wikipedia.org/wiki/Globally_unique_identifier
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

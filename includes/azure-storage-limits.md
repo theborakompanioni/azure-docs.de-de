@@ -5,8 +5,10 @@
 | Maximale Anzahl an Blob-Containern, Blobs, Dateifreigaben, Tabellen, Warteschlangen, Entitäten oder Meldungen pro Speicherkonto |Die einzige Einschränkung besteht in der Speicherkontokapazität von 500 TB. |
 | Maximale Größe eines einzelnen Blob-Containers, einer Tabelle oder einer Warteschlange |500 TB |
 | Maximale Anzahl von Blöcken in einem Blockblob oder einem Anfügeblob |50.000 |
-| Maximale Größe eines Blocks in einem Blockblob oder einem Anfügeblob |4 MB |
-| Maximale Größe eines Blockblobs oder eines Anfügeblobs |50.000 x 4 MB (ca. 195 GB) |
+| Maximale Größe eines Blocks in einem Blockblob |100 MB |
+| Maximale Größe eines Blockblobs |50.000 x 100 MB (ca. 4,75 TB) |
+| Maximale Größe eines Blocks in einem Anfügeblob |4 MB |
+| Maximale Größe eines Anfügeblobs |50.000 x 4 MB (ca. 195 GB) |
 | Max. Größe eines Seitenblobs |1 TB |
 | Maximale Größe einer Tabellenentität |1 MB |
 | Max. Anzahl von Eigenschaften in einer Tabellenentität |252 |
@@ -18,7 +20,7 @@
 | Maximale Anzahl an Dateien in einer Dateifreigabe |Die einzige Einschränkung besteht in der Gesamtkapazität der Dateifreigabe von 5 TB. |
 | Maximale Anzahl an Blob-Containern, Blobs, Dateifreigaben, Tabellen, Warteschlangen, Entitäten oder Meldungen pro Speicherkonto |Die einzige Einschränkung besteht in der Speicherkontokapazität von 500 TB. |
 | Maximale Anzahl der gespeicherten Zugriffsrichtlinien pro Container, Dateifreigabe, Tabelle oder Warteschlange |5 |
-| Gesamtanfragerate (ausgehend von einer Objektgröße von 1 KB) pro Speicherkonto |Bis zu 20.000 IOPS, Entitäten pro Sekunde oder Nachrichten pro Sekunde |
+| Gesamtanfragerate (ausgehend von einer Objektgröße von 1 KB) pro Speicherkonto |Bis zu 20.000 IOPS, Entitäten pro Sekunde oder Nachrichten pro Sekunde |
 | Zieldurchsatz bei Einzel-Blob |Bis zu 60 MB pro Sekunde, oder bis zu 500 Anforderungen pro Sekunde |
 | Zieldurchsatz bei Einzelwarteschlange (Meldungen mit 1 KB) |Bis zu 2000 Meldungen pro Sekunde |
 | Zieldurchsatz bei einzelner Tabellenpartition (Entitäten mit 1 KB) |Bis zu 2000 Entitäten pro Sekunde |
@@ -41,6 +43,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
