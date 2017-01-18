@@ -12,8 +12,6 @@ Sie müssen einen Endpunkt mit Lastenausgleich für jeden virtuellen Computer mi
    
     Nachdem die Datei mit Veröffentlichungseinstellungen importiert wurde, können Sie Ihr Azure-Abonnement in der PowerShell-Sitzung verwalten.
 
-
-
 <!--HONumber=Nov16_HO3-->
 
 

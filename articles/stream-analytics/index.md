@@ -172,6 +172,6 @@ Herunterladen der Stream Analytics-Dokumentation </div>
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
