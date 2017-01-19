@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: fb25351de7f4b64ab36d5a1f2629677f0acece47
-ms.openlocfilehash: 3d1d6ea9ea933c5aaf27b58b9f49a5b845f610ce
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: c1fd18ad8889033cba8a92f6ae255ba6478e6595
 
 
 ---
@@ -169,7 +169,7 @@ Konfigurieren Sie ein Gateway mit dynamischem Routing für jedes virtuelle Netzw
 2. Klicken Sie auf der Seite **Den Adressraum angeben** unten rechts auf das Häkchen, ohne Änderungen vorzunehmen.
 
 ## <a name="step-7---create-the-vpn-connection"></a>Schritt 7: Erstellen der VPN-Verbindung
-Legen Sie nach Abschluss aller zuvor beschriebenen Schritte die vorinstallierten IPSec-/IKE-Schlüssel fest, und stellen Sie die Verbindung her. Diese Schritte werden mit PowerShell ausgeführt und können nicht im Portal konfiguriert werden. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) . Stellen Sie sicher, dass Sie die neueste Version der Dienstverwaltungs-Cmdlets (SM) herunterladen. 
+Legen Sie nach Abschluss aller zuvor beschriebenen Schritte die vorinstallierten IPSec-/IKE-Schlüssel fest, und stellen Sie die Verbindung her. Diese Schritte werden mit PowerShell ausgeführt und können nicht im Portal konfiguriert werden. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) . Stellen Sie sicher, dass Sie die neueste Version der Dienstverwaltungs-Cmdlets (SM) herunterladen. 
 
 1. Öffnen Sie Windows PowerShell, und melden Sie sich an.
    
@@ -200,6 +200,6 @@ Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a044412d138478cf8ebd8ed8768fd4764b8a551
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f70240f2bebca76872194e556cf9cae9130b56db
 
 
 ---
@@ -339,15 +339,15 @@ Weitere Einblicke in die Entwurfsprinzipien der Facettennavigation erhalten Sie 
 Auch [Azure Search Deep Dive](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)ist in diesem Zusammenhang interessant. Ab 45:25 wird die Implementierung von Facetten vorgeführt.
 
 <!--Anchors-->
-[Vorgehensweise bei der Erstellung]: #howtobuildit
-[Erstellen der Darstellungsschicht]: #presentationlayer
-[Erstellen des Index]: #buildindex
-[Überprüfen der Datenqualität]: #checkdata
-[Erstellen der Abfrage]: #buildquery
-[Steuerungstipps für die Facettennavigation]: #tips
-[Facettennavigation auf der Grundlage von Bereichswerten]: #rangefacets
-[Facettennavigation auf der Grundlage von Geopunkten]: #geofacets
-[Ausprobieren]: #tryitout
+[How to build it]: #howtobuildit
+[Build the presentation layer]: #presentationlayer
+[Build the index]: #buildindex
+[Check for data quality]: #checkdata
+[Build the query]: #buildquery
+[Tips on how to control faceted navigation]: #tips
+[Faceted navigation based on range values]: #rangefacets
+[Faceted navigation based on GeoPoints]: #geofacets
+[Try it out]: #tryitout
 
 <!--Image references-->
 [1]: ./media/search-faceted-navigation/Facet-1-slide.PNG
@@ -364,16 +364,16 @@ Auch [Azure Search Deep Dive](http://channel9.msdn.com/Events/TechEd/Europe/2014
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
 [Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
-[Erstellen Ihrer ersten Anwendung]: search-create-first-solution.md
-[OData-Ausdruckssyntax für Azure Search]: http://msdn.microsoft.com/library/azure/dn798921.aspx
-[Azure Search – Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
+[Create your first application]: search-create-first-solution.md
+[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
-[Forumsbeitrag zu Facetbildung bei Azure Search]: ../faceting-on-azure-search.md?forum=azuresearch
-[Dokumente durchsuchen (Azure Search-API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
+[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

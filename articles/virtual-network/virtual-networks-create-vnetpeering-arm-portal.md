@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
-ms.author: narayanannamalai;annahar
+ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 2ae62a2e657e3b20e258b5afaa1d03b6825e8019
-ms.openlocfilehash: e40af1e363f7add88ead6e552290926abe4db328
+ms.sourcegitcommit: ed7c37ee5482b3ec91489b7aba9b5a9d5df5c97e
+ms.openlocfilehash: 06130f18bad86dbbe009548ac95ac0e6c4953db2
 
 
 ---
@@ -82,8 +82,7 @@ Jeder Link in einem VNet-Peering verfügt über die obigen Eigenschaften. Sie k�
 4. Wählen Sie auf dem Blatt „Zugriff hinzufügen“ eine Rolle und dann die Option „Netzwerkmitwirkender“ aus. Klicken Sie auf „Benutzer hinzufügen“, geben Sie den Anmeldenamen „UserB“ ein, und klicken Sie auf „OK“.
    
     ![RBAC](./media/virtual-networks-create-vnetpeering-arm-portal/figure10.png)
-   
-    Dies ist nicht zwingend erforderlich. Das Peering kann auch dann eingerichtet werden, wenn Benutzer individuell Peeringanforderungen für ihre jeweiligen VNets auslösen, solange die Anforderungen übereinstimmen. Das Hinzufügen von privilegierten Benutzern des anderen VNet als Benutzer im lokalen VNet vereinfacht das Setup im Portal.
+
 5. Melden Sie sich anschließend am Azure-Portal mit UserB an, also mit dem privilegierten Benutzer für Abonnement B. Führen Sie die obigen Schritte zum Hinzufügen des Benutzers als „Netzwerkmitwirkender“ aus.
    
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
@@ -138,6 +137,6 @@ Jeder Link in einem VNet-Peering verfügt über die obigen Eigenschaften. Sie k�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

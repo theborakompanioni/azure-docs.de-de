@@ -1,13 +1,13 @@
 ---
 title: Verwalten von Azure Search mit PowerShell-Skripts | Microsoft Docs
-description: Verwalten Sie den Azure Search-Dienst mit PowerShell-Skripts. Erstellen oder Aktualisieren eines Azure Search-Diensts und Verwalten von Azure Search-Administratorschlüsseln
+description: "Verwalten Sie den Azure Search-Dienst mit PowerShell-Skripts. Erstellen oder Aktualisieren eines Azure Search-Diensts und Verwalten von Azure Search-Administratorschlüsseln"
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: seansaleh
 manager: mblythe
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 9b3dc1f2-3619-4235-ba1f-d2d6f5c45dd5
 ms.service: search
 ms.devlang: na
 ms.workload: search
@@ -15,9 +15,13 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
+translationtype: Human Translation
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: f73bd0a6563f8411877b55182b01f2e3e42c883f
+
 
 ---
-# Verwalten des Azure Search-Diensts mit PowerShell
+# <a name="manage-your-azure-search-service-with-powershell"></a>Verwalten des Azure Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
@@ -25,10 +29,11 @@ ms.author: seasa
 > 
 > 
 
-In diesem Thema werden die PowerShell-Befehle zur Durchführung vieler Verwaltungsaufgaben für Azure Search-Dienste beschrieben. Wir führen Sie schrittweise durch das Erstellen und Skalieren eines Search-Diensts und die Verwaltung der zugehörigen API-Schlüssel. Diese Befehle stehen parallel zu den Verwaltungsoptionen der [Azure Search Management REST API](http://msdn.microsoft.com/library/dn832684.aspx) zur Verfügung.
+In diesem Thema werden die PowerShell-Befehle zur Durchführung vieler Verwaltungsaufgaben für Azure Search-Dienste beschrieben. Wir führen Sie schrittweise durch das Erstellen und Skalieren eines Search-Diensts und die Verwaltung der zugehörigen API-Schlüssel.
+Diese Befehle stehen parallel zu den Verwaltungsoptionen der [Azure Search Management REST API](http://msdn.microsoft.com/library/dn832684.aspx)zur Verfügung.
 
-## Voraussetzungen
-* Azure PowerShell 1.0 oder höher muss installiert sein. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+## <a name="prerequisites"></a>Voraussetzungen
+* Azure PowerShell 1.0 oder höher muss installiert sein. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 * Sie müssen in PowerShell wie im Folgenden beschrieben bei Ihrem Azure-Abonnement angemeldet sein.
 
 Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden:
@@ -37,7 +42,7 @@ Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden:
 
 Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
 
-Als Alternative steht die [Nicht interaktive Anmeldung mit einem Dienstprinzipal](../resource-group-authenticate-service-principal.md) zur Verfügung.
+Als Alternative steht die [Nicht interaktive Anmeldung mit einem Dienstprinzipal](../resource-group-authenticate-service-principal.md)zur Verfügung.
 
 Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie Ihr Azure-Abonnement festlegen. Führen Sie den folgenden Befehl aus, um eine Liste Ihrer aktuellen Abonnements anzuzeigen.
 
@@ -47,7 +52,7 @@ Führen Sie den folgenden Befehl aus, um das Abonnement anzugeben. Im folgenden 
 
     Select-AzureRmSubscription -SubscriptionName ContosoSubscription
 
-## Befehle als Starthilfe
+## <a name="commands-to-help-you-get-started"></a>Befehle als Starthilfe
     $serviceName = "your-service-name-lowercase-with-dashes"
     $sku = "free" # or "basic" or "standard" for paid services
     $location = "West US"
@@ -125,13 +130,18 @@ Führen Sie den folgenden Befehl aus, um das Abonnement anzugeben. Im folgenden 
     # Deleting your service will delete all indexes and data in the service
     $resource | Remove-AzureRmResource
 
-## Nächste Schritte
-Nachdem der Dienst erstellt wurde, können Sie die nächsten Schritte ausführen: Erstellen eines [Index](search-what-is-an-index.md), [Abfragen eines Index](search-query-overview.md) und schließlich Erstellen und Verwalten von eigenen Suchanwendungen, die Azure Search verwendet.
+## <a name="next-steps"></a>Nächste Schritte
+Nachdem der Dienst erstellt wurde, können Sie die nächsten Schritte ausführen: Erstellen eines [Index](search-what-is-an-index.md), [Abfragen eines Index](search-query-overview.md) und schließlich Erstellen und Verwalten Ihrer eigenen Suchanwendung, die Azure Search verwendet.
 
-* [Erstellen eines Azure Search-Index im Azure-Portal](search-create-index-portal.md)
+* [Erstellen eines Azure Search-Index im Azure-Portal](search-create-index-portal.md)
 * [Abfragen eines Azure Search-Index per Suchexplorer im Azure-Portal](search-explorer.md)
 * [Einrichten eines Indexers zum Laden von Daten anderer Dienste](search-indexer-overview.md)
 * [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md)
 * [Analysieren Ihres Azure Search-Datenverkehrs](search-traffic-analytics.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Dec16_HO1-->
+
+
