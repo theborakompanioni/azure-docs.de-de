@@ -1,13 +1,13 @@
 ---
-title: Bereitstellen von Azure-Ressourcen mithilfe von C# | Microsoft Docs
-description: Erfahren Sie, wie Sie C# und Azure Resource Manager zum Erstellen von Microsoft Azure-Ressourcen verwenden können.
+title: Deploy Azure Resources Using C# | Microsoft Docs
+description: "Erfahren Sie, wie Sie C# und Azure Resource Manager zum Erstellen von Microsoft Azure-Ressourcen verwenden können."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,20 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/06/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 37ab64cb40def50342eb31c240aa301e9d751055
+ms.openlocfilehash: 6fa33715484a4bb371148410b43c5ac606744160
+
 
 ---
-# <a name="deploy-azure-resources-using-c#"></a>Bereitstellen von Azure-Ressourcen mit C
+# <a name="deploy-azure-resources-using-c"></a>Bereitstellen von Azure-Ressourcen mit C# #
 In diesem Artikel erfahren Sie, wie Sie Azure-Ressourcen mithilfe von C# erstellen können.
 
 Vergewissern Sie sich zunächst, dass Sie die folgenden Aufgaben erledigt haben:
 
 * Installieren von [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 * Überprüfen der Installation von [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)
-* Abrufen eines [Authentifizierungstokens](../resource-group-authenticate-service-principal.md)
+* Abrufen eines [Authentifizierungstokens](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
-Die Durchführung dieser Schritte dauert etwa 30 Minuten.
+Die Durchführung dieser Schritte dauert etwa 30 Minuten.
 
-## <a name="step-1:-create-a-visual-studio-project-and-install-the-libraries"></a>Schritt 1: Erstellen eines Visual Studio-Projekts und Installieren der Bibliotheken
+## <a name="step-1-create-a-visual-studio-project-and-install-the-libraries"></a>Schritt 1: Erstellen eines Visual Studio-Projekts und Installieren der Bibliotheken
 NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installieren, die Sie zum Abschluss dieses Lernprogramms benötigen. Gehen Sie wie folgt vor, um die in Visual Studio benötigten Bibliotheken zu erhalten:
 
 1. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
@@ -42,7 +46,7 @@ NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installier
 
 Sie können nun die Bibliotheken verwenden, um Ihre Anwendung zu erstellen.
 
-## <a name="step-2:-create-the-credentials-that-are-used-to-authenticate-requests"></a>Schritt 2: Erstellen der Anmeldeinformationen zum Authentifizieren von Anforderungen
+## <a name="step-2-create-the-credentials-that-are-used-to-authenticate-requests"></a>Schritt 2: Erstellen der Anmeldeinformationen zum Authentifizieren von Anforderungen
 Formatieren Sie nun die zuvor erstellten Anwendungsinformationen als Anmeldeinformationen für die Authentifizierung von Anforderungen an Azure Resource Manager.
 
 1. Öffnen Sie die Datei „Program.cs“ für das von Ihnen erstellte Projekt, und fügen Sie dann die folgenden using-Anweisungen am Anfang der Datei hinzu:
@@ -79,7 +83,7 @@ Formatieren Sie nun die zuvor erstellten Anwendungsinformationen als Anmeldeinfo
         var credential = new TokenCredentials(token.Result.AccessToken);
 4. Speichern Sie die Datei "Program.cs".
 
-## <a name="step-3:-register-the-resource-providers-and-create-the-resources"></a>Schritt 3: Registrieren der Ressourcenanbieter und Erstellen der Ressourcen
+## <a name="step-3-register-the-resource-providers-and-create-the-resources"></a>Schritt 3: Registrieren der Ressourcenanbieter und Erstellen der Ressourcen
 ### <a name="register-the-providers-and-create-a-resource-group"></a>Registrieren Sie die Anbieter, und erstellen Sie eine Ressourcengruppe.
 Alle Ressourcen müssen in einer Ressourcengruppe enthalten sein. Bevor Sie Ressourcen zu einer Gruppe hinzufügen können, muss Ihr Abonnement bei Ressourcenanbietern registriert werden.
 
@@ -428,7 +432,7 @@ Nachdem Sie nun alle benötigten Ressourcen erstellt haben, können Sie einen vi
         }
    
    > [!NOTE]
-   > In diesem Tutorial wird eine virtuelle Maschine erstellt, auf dem eine Version des Windows Server-Betriebssystems ausgeführt wird. Weitere Informationen zur Auswahl von anderen Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](virtual-machines-linux-cli-ps-findimage.md).
+   > In diesem Tutorial wird eine virtuelle Maschine erstellt, auf dem eine Version des Windows Server-Betriebssystems ausgeführt wird. Weitere Informationen zur Auswahl von anderen Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
    > 
    > 
 2. Fügen Sie der Main-Methode den folgenden Code hinzu, um die zuvor hinzugefügte Methode aufzurufen:
@@ -447,30 +451,35 @@ Nachdem Sie nun alle benötigten Ressourcen erstellt haben, können Sie einen vi
         Console.WriteLine(vmResult.Result.ProvisioningState);
         Console.ReadLine();
 
-## <a name="step-4:-delete-the-resources"></a>Schritt 4: Löschen der Ressourcen
+## <a name="step-4-delete-the-resources"></a>Schritt 4: Löschen der Ressourcen
 Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es sich grundsätzlich, nicht mehr benötigte Ressourcen zu löschen. Um den virtuellen Computer und alle unterstützenden Ressourcen zu löschen, müssen Sie lediglich die Ressourcengruppe löschen.
 
 1. Fügen Sie der Program-Klasse die folgende Methode hinzu, um die Ressourcengruppe zu löschen:
    
-       public static async void DeleteResourceGroupAsync(
-         TokenCredentials credential,
-         string groupName,
-         string subscriptionId)
-       {
-         Console.WriteLine("Deleting resource group...");
-         var resourceManagementClient = new ResourceManagementClient(credential)
-           { SubscriptionId = subscriptionId };
-         await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
-       }
+   ```
+   public static async void DeleteResourceGroupAsync(
+     TokenCredentials credential,
+     string groupName,
+     string subscriptionId)
+   {
+     Console.WriteLine("Deleting resource group...");
+     var resourceManagementClient = new ResourceManagementClient(credential)
+       { SubscriptionId = subscriptionId };
+     await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
+   }
+   ```
+
 2. Fügen Sie der Main-Methode den folgenden Code hinzu, um die zuvor hinzugefügte Methode aufzurufen:
    
-       DeleteResourceGroupAsync(
-         credential,
-         groupName,
-         subscriptionId);
-       Console.ReadLine();
+   ```   
+   DeleteResourceGroupAsync(
+     credential,
+     groupName,
+     subscriptionId);
+   Console.ReadLine();
+   ```
 
-## <a name="step-5:-run-the-console-application"></a>Schritt 5: Ausführen der Konsolenanwendung
+## <a name="step-5-run-the-console-application"></a>Schritt 5: Ausführen der Konsolenanwendung
 1. Klicken Sie zum Ausführen der Konsolenanwendung in Visual Studio auf **Starten** , und melden Sie sich dann bei Azure AD mit demselben Benutzernamen und Kennwort an, die Sie für Ihr Abonnement verwenden.
 2. Drücken Sie nach der Rückgabe jedes Statuscodes die **EINGABETASTE** , um jede Ressource zu erstellen. Führen Sie nach der Erstellung des virtuellen Computers den nächsten Schritt aus, bevor Sie die EINGABETASTE drücken, um alle Ressourcen zu löschen.
    
@@ -480,9 +489,12 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
     ![Durchsuchen von Überwachungsprotokollen im Azure-Portal](./media/virtual-machines-windows-csharp/crpportal.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage](virtual-machines-windows-csharp-template.md)durchlesen.
-* Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-csharp-manage.md).
+* Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage](virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)durchlesen.
+* Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

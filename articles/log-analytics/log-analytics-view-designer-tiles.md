@@ -1,19 +1,23 @@
 ---
 title: Referenz der Kacheln im Ansicht-Designer in Log Analytics | Microsoft Docs
-description: Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
+description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/26/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: c00a472e2dda12874dd7bee4ccb6c4d53bf104a7
+ms.openlocfilehash: 1f4a42ea42000c3a8dd25baea610332ea6cd6a71
+
 
 ---
 # <a name="log-analytics-view-designer-tile-reference"></a>Referenz der Kacheln im Ansicht-Designer in Log Analytics
@@ -51,9 +55,7 @@ Die Kachel **Zahl** zeigt eine einzelne Zahl, die die Anzahl der Datensätze ein
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
-| **Zeitintervall** | |
-| Duration |Dauer ab dem aktuellen Datum, die für das Zeitintervall der Abfrage verwendet wird.  Beispiel: Wenn **7 Tage** angegeben ist, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 7 Tagen bis zum aktuellen Datum erstellt wurden. |
-| Offset für das Enddatum |Optionaler Offset vom aktuellen Datum, der für das Zeitintervall der Hauptabfrage verwendet wird.  Beispiel: Wenn **-1 Tag** für den **Offset für das Enddatum** und **7 Tage** für die **Dauer** verwendet werden, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 8 Tagen bis gestern erstellt wurden. |
+
 
 ## <a name="two-numbers-tile"></a>Kachel „Zwei Zahlen“
 Die Kachel **Zwei Zahlen** zeigt zwei Zahlen, die die Anzahl der Datensätze aus zwei verschiedenen Protokollabfragen angeben, sowie jeweils eine Bezeichnung an.
@@ -74,9 +76,7 @@ Die Kachel **Zwei Zahlen** zeigt zwei Zahlen, die die Anzahl der Datensätze aus
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
-| **Zeitintervall** | |
-| Duration |Dauer ab dem aktuellen Datum, die für das Zeitintervall der Abfrage verwendet wird.  Beispiel: Wenn **7 Tage** angegeben ist, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 7 Tagen bis zum aktuellen Datum erstellt wurden. |
-| Offset für das Enddatum |Optionaler Offset vom aktuellen Datum, der für das Zeitintervall der Hauptabfrage verwendet wird.  Beispiel: Wenn **-1 Tag** für den **Offset für das Enddatum** und **7 Tage** für die **Dauer** verwendet werden, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 8 Tagen bis gestern erstellt wurden. |
+
 
 ## <a name="donut-tile"></a>Kachel „Ring“
 Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in einer Protokollabfrage zusammenfasst.  Der Ring stellt die Ergebnisse der ersten drei Datensätze grafisch dar.
@@ -100,9 +100,7 @@ Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in e
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
-| **Zeitintervall** | |
-| Duration |Dauer ab dem aktuellen Datum, die für das Zeitintervall der Abfrage verwendet wird.  Beispiel: Wenn **7 Tage** angegeben ist, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 7 Tagen bis zum aktuellen Datum erstellt wurden. |
-| Offset für das Enddatum |Optionaler Offset vom aktuellen Datum, der für das Zeitintervall der Hauptabfrage verwendet wird.  Beispiel: Wenn **-1 Tag** für den **Offset für das Enddatum** und **7 Tage** für die **Dauer** verwendet werden, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 8 Tagen bis gestern erstellt wurden. |
+
 
 ## <a name="line-chart-tile"></a>Kachel „Liniendiagramm“
 Die Kachel **Liniendiagramm** zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf an.  
@@ -123,11 +121,9 @@ Die Kachel **Liniendiagramm** zeigt ein Liniendiagramm mit mehreren Reihen aus e
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
-| **Zeitintervall** | |
-| Duration |Dauer ab dem aktuellen Datum, die für das Zeitintervall der Abfrage verwendet wird.  Beispiel: Wenn **7 Tage** angegeben ist, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 7 Tagen bis zum aktuellen Datum erstellt wurden. |
-| Offset für das Enddatum |Optionaler Offset vom aktuellen Datum, der für das Zeitintervall der Hauptabfrage verwendet wird.  Beispiel: Wenn **-1 Tag** für den **Offset für das Enddatum** und **7 Tage** für die **Dauer** verwendet werden, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 8 Tagen bis gestern erstellt wurden. |
 
-## <a name="line-chart-&-callout-tile"></a>Kachel „Liniendiagramm und Legende“
+
+## <a name="line-chart--callout-tile"></a>Kachel „Liniendiagramm und Legende“
 Die Kachel **Liniendiagramm und Legende** zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollabfrage im Verlauf und eine Legende mit einem zusammengefassten Wert an.  
 
 ![Kachel „Liniendiagramm und Legende“](media/log-analytics-view-designer/tile-line-chart-callout.png)
@@ -150,9 +146,7 @@ Die Kachel **Liniendiagramm und Legende** zeigt ein Liniendiagramm mit mehreren 
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
-| **Zeitintervall** | |
-| Duration |Dauer ab dem aktuellen Datum, die für das Zeitintervall der Abfrage verwendet wird.  Beispiel: Wenn **7 Tage** angegeben ist, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 7 Tagen bis zum aktuellen Datum erstellt wurden. |
-| Offset für das Enddatum |Optionaler Offset vom aktuellen Datum, der für das Zeitintervall der Hauptabfrage verwendet wird.  Beispiel: Wenn **-1 Tag** für den **Offset für das Enddatum** und **7 Tage** für die **Dauer** verwendet werden, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 8 Tagen bis gestern erstellt wurden. |
+
 
 ## <a name="two-timelines-tile"></a>Kachel „Zwei Zeitachsen“
 Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Säulendiagramme an.  Für jede Reihe wird eine Legende angezeigt.  
@@ -177,14 +171,15 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 | Aktiviert |Wählen Sie diese Option aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll.  Dadurch wird eine andere Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind.  Dies wird normalerweise verwendet, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Abfrage, die ausgeführt wird, um zu überprüfen, ob Daten für die Ansicht verfügbar sind.  Wenn die Abfrage keine Ergebnisse zurückgibt, wird eine Meldung anstelle des Werts aus der Hauptabfrage angezeigt. |
 | Nachricht |Die Meldung, die angezeigt wird, wenn die Abfrage zur Datenflussüberprüfung keine Daten zurückgibt.  Wenn Sie keine Meldung angeben, wird *Bewertung wird durchgeführt* angezeigt. |
-| **Zeitintervall** | |
-| Duration |Dauer ab dem aktuellen Datum, die für das Zeitintervall der Abfrage verwendet wird.  Beispiel: Wenn **7 Tage** angegeben ist, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 7 Tagen bis zum aktuellen Datum erstellt wurden. |
-| Offset für das Enddatum |Optionaler Offset vom aktuellen Datum, der für das Zeitintervall der Hauptabfrage verwendet wird.  Beispiel: Wenn **-1 Tag** für den **Offset für das Enddatum** und **7 Tage** für die **Dauer** verwendet werden, wird die Abfrage auf Datensätze beschränkt, die im Zeitraum von vor 8 Tagen bis gestern erstellt wurden. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zur Unterstützung der Abfragen in Kacheln.
 * Fügen Sie [Visualisierungskomponenten](log-analytics-view-designer-parts.md) zu Ihrer benutzerdefinierten Ansicht hinzu.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 
