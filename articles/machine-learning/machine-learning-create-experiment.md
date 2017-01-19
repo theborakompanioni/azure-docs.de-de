@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/21/2016
+ms.date: 12/14/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dd3e982ba908e542ce0b536699e37e2bc95e6706
+ms.sourcegitcommit: de2c52f8db5445e3e2eee62f673109f6d38cffa0
+ms.openlocfilehash: c58ee1c07e454a711ab0d6365a5cd432b0d939c8
 
 
 ---
@@ -33,7 +33,7 @@ In diesem Tutorial wird erläutert, wie Sie Studio zum ersten Mal zum Erstellen 
 >
 >Wenn dies Ihre erste Berührung mit maschinellem Lernen ist, stellt die Videoreihe [Data Science für Einsteiger](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) möglicherweise einen guten Start dar. Diese Videoreihe bietet eine gute Einführung in das maschinelle Lernen und verwendet alltägliche Sprache und Konzepte.
 >
->Wenn Sie sich bereits mit maschinellem Lernen auskennen, aber weitere allgemeine Informationen zu Machine Learning Studio und den darin enthaltenen Algorithmen für maschinelles Lernen wünschen, finden Sie nachstehend einige guten Ressourcen:
+>Wenn Sie bereits mit maschinellem Lernen vertraut sind, aber weitere allgemeine Informationen zu Machine Learning Studio und den darin enthaltenen Algorithmen für maschinelles Lernen wünschen, finden Sie nachstehend einige gute Ressourcen:
 >
 - [Was ist Machine Learning Studio?](machine-learning-what-is-ml-studio.md) - Hierbei handelt es sich um eine allgemeine Übersicht über Studio.
 - [Grundlagen des maschinellen Lernens mit Algorithmusbeispielen](machine-learning-basics-infographic-with-algorithm-examples.md) – Diese Infografik ist hilfreich, wenn Sie mehr über die verschiedenen Algorithmustypen für maschinelles Lernen in Machine Learning Studio erfahren möchten.
@@ -95,7 +95,9 @@ Hier wird erklärt, wie Sie das Dataset in Ihr Experiment importieren.
 
 1. Erstellen Sie ein neues Experiment, indem Sie am unteren Rand des Machine Learning Studio-Fensters auf **+NEW** (+NEU) klicken. Wählen Sie anschließend **EXPERIMENT** und **Blank Experiment** (Leeres Experiment) aus.
 
-2. Dieses Experiment erhält einen Standardnamen, der oben im Zeichenbereich angezeigt wird. Wählen Sie den Text aus, und benennen Sie das Experiment mit einem aussagekräftigen Namen um, z.B. **Automobile price prediction** (Vorhersage für Automobilpreise).
+2. Dieses Experiment erhält einen Standardnamen, der oben im Zeichenbereich angezeigt wird. Wählen Sie den Text aus, und benennen Sie das Experiment mit einem aussagekräftigen Namen um, z.B. **Automobile price prediction** (Vorhersage für Automobilpreise). Der Name muss nicht eindeutig sein.
+
+    ![Umbenennen des Experiments][rename-experiment]
 
 2. Links vom Experimentbereich finden Sie eine Palette mit Datensätzen und Modulen. Geben Sie im oberen Bereich dieser Palette **automobile** in das Suchfeld ein, um das Dataset mit dem Namen **Automobile price data (Raw)** zu finden. Ziehen Sie das Dataset in den Experimentbereich.
 
@@ -111,7 +113,7 @@ Sie können auf den Ausgabeport im unteren Bereich des Automobil-Datasets klicke
 
 > [!TIP]
 > Datasets und Module verfügen über Ein- und Ausgabe-Anschlüsse, die in Form kleiner Kreise dargestellt werden: Eingabe-Anschlüsse oben und Ausgabe-Anschlüsse unten.
-Sie müssen diese Anschlüsse miteinander verbinden, um in Ihrem Experiment einen Datenfluss zu erstellen.
+Zum Erstellen eines Datenflusses über Ihr Experiment verbinden Sie einen Ausgabeport eines Moduls mit dem Eingabeport eines anderen Moduls.
 Sie können zu einem beliebigen Zeitpunkt auf den Ausgabe-Anschluss eines Datasets oder eines Moduls klicken, um die Daten an diesem Punkt im Datenfluss anzuzeigen.
 
 In diesem Beispieldataset wird jede Instanz eines Autos als Zeile angezeigt, während die den einzelnen Automobilen zugeordneten Variablen als Spalten angezeigt werden. Anhand der Variablen für ein bestimmtes Automobil werden wir versuchen, den Preis in der äußersten rechten Spalte vorherzusagen (Spalte 26 namens „Price“ (Preis)).
@@ -169,7 +171,7 @@ Zunächst fügen wir ein Modul hinzu, das die Spalte **normalized-losses** (norm
     <br/>
     ***Legen Sie den Reinigungsmodus für das Modul „Clean Missing Data“ auf „Remove entire row“ fest.***
 
-4. Führen Sie das Experiment aus, indem Sie unterhalb des Experimentbereichs auf **AUSFÜHREN** klicken.
+4. Führen Sie das Experiment, indem Sie am unteren Rand der Seite auf **AUSFÜHREN** klicken.
 
     Nach Abschluss des Experiments sind alle Module mit einem grünen Häkchen markiert, um anzuzeigen, dass diese erfolgreich abgeschlossen wurden. Beachten Sie auch den Status **Finished running** in der oberen rechten Ecke.
 
@@ -326,7 +328,7 @@ Da Sie nun das erste Tutorial zu maschinellem Lernen abgeschlossen und das Exper
 Ein Beispiel für den Vergleich mehrerer Modelle in einem einzigen Experiment finden Sie unter [Compare Regressors (Vergleichen von Regressoren)](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) in der [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com).
 
     > [!TIP]
-    > Mit der Schaltfläche **SAVE AS** (SPEICHERN ALS) unterhalb des Experimentbereichs können Sie Kopien der Iterationen Ihres Experiments speichern. Sie können alle Iterationen Ihres Experiments anzeigen, indem Sie unterhalb des Experimentbereichs auf **AUSFÜHRUNGSVERLAUF ANZEIGEN** klicken. Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning-Studio][runhistory].
+    > Mit der Schaltfläche **SPEICHERN UNTER** am unteren Rand der Seite können Sie Kopien der Iterationen Ihres Experiments speichern. Sie können alle Iterationen Ihres Experiments anzeigen, indem Sie am unteren Rand der Seite auf **AUSFÜHRUNGSVERLAUF ANZEIGEN** klicken. Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning-Studio][runhistory].
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
@@ -340,6 +342,7 @@ Sie möchten mehr erfahren? Eine umfassendere und ausführlichere exemplarische 
 
 <!-- Images -->
 [sign-in-to-studio]: ./media/machine-learning-create-experiment/sign-in-to-studio.png
+[rename-experiment]: ./media/machine-learning-create-experiment/rename-experiment.png
 [visualize-auto-data]:./media/machine-learning-create-experiment/visualize-auto-data.png
 [select-visualize]: ./media/machine-learning-create-experiment/select-visualize.png
 [showing-excluded-column]:./media/machine-learning-create-experiment/showing-excluded-column.png
@@ -377,6 +380,6 @@ Sie möchten mehr erfahren? Eine umfassendere und ausführlichere exemplarische 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 
