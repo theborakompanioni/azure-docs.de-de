@@ -275,6 +275,6 @@ Die Erläuterungen für jeden Teil dieser Antwort lauten:
 ## Nächste Schritte
 Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschlossen. Sie können nun Informationen über die Nutzung eines Tools wie z.B. [Power BI](//powerbi.microsoft.com) einholen, um Ihre Daten zu visualisieren, und Ihre Erkenntnisse automatisieren, damit Sie Ihre Textdaten in Echtzeit anzeigen können.
 
-Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden können, zeigt Ihnen das Beispiel [Emotional Bot](http://docs.botframework.com/de-DE/bot-intelligence/language/#example-emotional-bot) (Emotionaler Bot) auf der Bot-Framework-Website.
+Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden können, zeigt Ihnen das Beispiel [Emotional Bot](https://docs.botframework.com/en-us/bot-intelligence/language/#example-emotional-bot) (Emotionaler Bot) auf der Bot-Framework-Website.
 
 <!---HONumber=AcomDC_0914_2016-->
