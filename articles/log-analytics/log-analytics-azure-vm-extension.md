@@ -161,7 +161,7 @@ Im Folgenden finden Sie ein Beispiel für eine Resource Manager-Vorlage für die
     "workspaceName": {
       "type": "string",
       "metadata": {
-         "description": "OMD workspace name"
+         "description": "OMS workspace name"
       }
     },
     "windowsOSVersion": {
