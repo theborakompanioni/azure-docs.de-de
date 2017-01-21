@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/17/2016
+ms.date: 01/05/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 32afda1861c2c558f8bb9ffedf897cd8d1df0b5c
+ms.sourcegitcommit: aec8fd057bd31fc933d19996567437b2a897623b
+ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
 
 
 ---
@@ -54,7 +54,7 @@ Beachten Sie Folgendes, bevor Sie fortfahren.
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal ein neues Azure Automation-Konto zu erstellen.  Dadurch werden sowohl das ausführende als auch das klassische ausführende Konto erstellt.  
 
 > [!NOTE]
-> Der Benutzer, der diese Schritte ausführt, *muss* ein Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements sein, das dem Benutzer Zugriff auf das Abonnement gewährt.  Zudem muss der Benutzer der Active Directory-Standardinstanz dieses Abonnements als Benutzer hinzugefügt werden. Das Konto muss keiner privilegierten Rolle zugewiesen werden.
+> Der Benutzer, der diese Schritte ausführt, muss ein Mitglied der Rolle „Dienstadministratoren“ oder Co-Administrator des Abonnements sein, das dem Benutzer Zugriff auf das Abonnement gewährt. Zudem muss der Benutzer der Active Directory-Standardinstanz dieses Abonnements als Benutzer hinzugefügt werden. Das Konto muss keiner privilegierten Rolle zugewiesen werden. Benutzer, die vor dem Hinzufügen zur Rolle des Co-Administrators kein Mitglied der Active Directory-Instanz des Abonnements waren, werden der Active Directory-Instanz als Gast hinzugefügt, und ihnen wird auf dem Blatt **Automation-Konto hinzufügen** die Warnung „Sie haben keine Berechtigungen zum Erstellen…“ angezeigt. Benutzer, die zuerst der Rolle des Co-Administrators hinzugefügt wurden, können aus der Active Directory-Instanz des Abonnements entfernt und erneut hinzugefügt werden, um sie als Vollbenutzer in Active Directory einzurichten. Dies kann im Azure-Portal im Bereich **Azure Active Directory** überprüft werden. Wählen Sie dazu **Benutzer und Gruppen**, **Alle Benutzer** und nach der Auswahl des bestimmten Benutzers die Option **Profil**.  Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.  
 > 
 > 
 
@@ -394,6 +394,6 @@ Sie können den unten stehenden aktualisierten Beispielcode aus dem Beispielrunb
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

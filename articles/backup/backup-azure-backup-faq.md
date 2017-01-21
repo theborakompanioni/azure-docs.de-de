@@ -1,3 +1,4 @@
+
 ---
 title: "Häufig gestellte Fragen zu Azure Backup | Microsoft Docs"
 description: "Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Dienst, zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Sicherung und Notfallwiederherstellung."
@@ -16,8 +17,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: trinadhk; giridham; arunak; markgal; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: be06f1eca1848ff6d00661cfc1166797649a98a4
-ms.openlocfilehash: cb45e7113073d19c1dc3e305d7b69373bd38d84f
+ms.sourcegitcommit: 1b2eeab756309148db5890ccc0d93853f3e69372
+ms.openlocfilehash: 4b7a8a88d21b11deb377c2fef4e2d8f9fbcf9036
 
 
 ---
@@ -33,6 +34,7 @@ Azure Backup unterstützt die folgenden Betriebssysteme für die Sicherung von: 
 | Windows 7 und die neuesten SPs |64-Bit |Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
 | Windows 8.1 und die neuesten SPs |64-Bit |Enterprise, Pro |
 | Windows 10 |64-Bit |Enterprise, Pro, Home |
+| Windows Server 2016 |64-Bit |Standard, Datacenter, Essentials |
 | Windows Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 und die neuesten SPs |64-Bit |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Workgroup |
@@ -172,7 +174,7 @@ Ja. Mit DPM können Sie tägliche, wöchentliche, monatliche und jährliche Zeit
 ## <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-ie-on-windows-server-without-dpmbr"></a>Gibt es einen Unterschied zwischen der Aufbewahrungsrichtlinie für DPM und Windows Server bzw. Windows-Client (also unter Windows Server ohne DPM)?<br/>
 Nein. Sowohl für DPM als auch für Windows Server bzw. Windows-Clients gelten tägliche, wöchentliche, monatliche und jährliche Aufbewahrungsrichtlinien.
 
-## <a name="can-i-configure-my-retention-policies-selectively-ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Kann ich meine Aufbewahrungsrichtlinien selektiv konfigurieren – d.h. wöchentlich und täglich, jedoch nicht jährlich und monatlich?<br/>
+## <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Kann ich meine Aufbewahrungsrichtlinien selektiv konfigurieren – d.h. wöchentlich und täglich, jedoch nicht jährlich und monatlich?<br/>
 Ja, durch die Struktur der Azure Backup-Aufbewahrungsrichtlinie können Sie die Aufbewahrungsrichtlinie entsprechend Ihren Anforderungen flexibel definieren.
 
 ## <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>Kann ich eine Sicherung um 18:00 Uhr planen und Aufbewahrungsrichtlinien für einen anderen Zeitpunkt festlegen?<br/>
@@ -275,6 +277,6 @@ Klassische VM-Wiederherstellungspunkte in einem Sicherungstresor migrieren nicht
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

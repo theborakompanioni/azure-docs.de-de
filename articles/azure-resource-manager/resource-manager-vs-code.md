@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/03/2017
 ms.author: chmatsk;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f839784aaef511c60ec1c3eea0b64bfdd5f67a4f
+ms.sourcegitcommit: 10c7051c9b1218081d95cb10403006bfd95126ba
+ms.openlocfilehash: 2ac1c2cce7a9e045990894b0bbaa045df3d48954
 
 
 ---
 # <a name="working-with-azure-resource-manager-templates-in-visual-studio-code"></a>Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code
-Bei Azure Resource Manager-Vorlagen handelt es sich um JSON-Dateien, die eine Ressource und die dazugehörigen Abhängigkeiten beschreiben. Da diese Dateien groß und kompliziert aufgebaut sein können, ist eine Unterstützung durch Tools unerlässlich. Visual Studio Code ist ein neuer, einfacher Open-Source-Code-Editor für alle Plattformen. Er unterstützt die Erstellung und Bearbeitung von Resource Manager-Vorlagen mit einer [neuen Erweiterung](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). VS Code kann überall ausgeführt werden und benötigt keinen Internetzugriff, es sei denn, Sie möchten Ihre Resource Manager-Vorlagen auch bereitstellen.
+Bei Azure Resource Manager-Vorlagen handelt es sich um JSON-Dateien, die eine Ressource und die dazugehörigen Abhängigkeiten beschreiben. Da diese Dateien groß und kompliziert aufgebaut sein können, ist eine Unterstützung durch Tools unerlässlich. Visual Studio Code ist ein neuer, einfacher Open-Source-Code-Editor für alle Plattformen. Er unterstützt die Erstellung und Bearbeitung von Resource Manager-Vorlagen mit einer [neuen Erweiterung](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). VS Code kann überall ausgeführt werden. Internetzugriff ist nur erforderlich, wenn Sie Ihre Resource Manager-Vorlagen für Ihr Azure-Abonnement bereitstellen möchten.
 
 Wenn Sie nicht bereits über VS Code verfügen, können Sie die Anwendung unter [https://code.visualstudio.com/](https://code.visualstudio.com/)installieren.
 
@@ -42,7 +42,7 @@ Mit den obigen Schritten wurde die Toolunterstützung installiert, aber jetzt m�
 
 1. Kopieren Sie den Inhalt der Datei aus dem Repository [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) in die Zwischenablage.
 2. Starten Sie VS Code. 
-3. In VS Code können Sie die Datei mit den JSON-Codeausschnitten öffnen, indem Sie entweder zu **Datei** -> **Einstellungen** -> **User Snippets (Benutzercodeausschnitte)** -> **JSON** navigieren oder **F1** wählen und **Einstellungen** eingeben, bis Sie **Preferences: Snippets** (Einstellungen: Codeausschnitte) auswählen können.
+3. In VS Code können Sie die Datei mit JSON-Codeausschnitten öffnen, indem Sie zu **File (Datei)** -> **Preferences (Einstellungen)** -> **User Snippets (Benutzercodeausschnitte)** -> **JSON** navigieren. Sie können auch **F1** drücken und **preferences** (Einstellungen) eingeben, bis Sie **Preferences: Snippets** (Einstellungen: Codeausschnitte) auswählen können.
    
     ![Einstellungen: Ausschnitte](./media/resource-manager-vs-code/preferences-snippets.png)
    
@@ -61,16 +61,16 @@ Die einfachste Möglichkeit zur Verwendung einer Vorlage besteht darin, entweder
 1. Wenn Sie eine Vorlage aus einer Ressourcengruppe exportiert haben, können Sie die extrahierten Dateien in VS Code öffnen.
    
     ![Dateien anzeigen](./media/resource-manager-vs-code/show-files.png)
-2. Öffnen Sie die Datei „template.json“, damit Sie sie bearbeiten und einige zusätzliche Ressourcen hinzufügen können. Drücken Sie nach der Zeile **"resources": [** die EINGABETASTE, um eine neue Zeile zu beginnen. Wenn Sie **arm**eingeben, wird eine Liste mit Optionen angezeigt. Diese Optionen sind die Vorlagencodeausschnitte, die Sie installiert haben. Diese sollte wie folgt aussehen: 
+2. Öffnen Sie die Datei „template.json“, damit Sie sie bearbeiten und einige zusätzliche Ressourcen hinzufügen können. Drücken Sie nach `"resources": [` die EINGABETASTE, um eine neue Zeile zu beginnen. Wenn Sie **arm** eingeben, wird eine Liste mit Optionen angezeigt. Diese Optionen sind die Vorlagencodeausschnitte, die Sie installiert haben. 
    
     ![Codeausschnitte anzeigen](./media/resource-manager-vs-code/type-snippets.png)
-3. Wählen Sie den gewünschten Codeausschnitt. Für diesen Artikel wähle ich **arm-ip** , um eine neue öffentliche IP-Adresse zu erstellen. Setzen Sie nach der schließenden Klammer („}“) der neu erstellten Ressource ein Komma, um sicherzustellen, dass die Vorlagensyntax gültig ist.
+3. Wählen Sie den gewünschten Codeausschnitt. Für diesen Artikel wähle ich **arm-ip** , um eine neue öffentliche IP-Adresse zu erstellen. Setzen Sie nach der schließenden Klammer (`}`) der neu erstellten Ressource ein Komma, um sicherzustellen, dass die Vorlagensyntax gültig ist.
    
      ![Komma hinzufügen](./media/resource-manager-vs-code/add-comma.png)
-4. In VS Code ist IntelliSense integriert. Beim Bearbeiten der Vorlagen schlägt VS Code verfügbare Werte vor. Um der Vorlage beispielsweise einen Variablenabschnitt hinzuzufügen, fügen Sie **""** (zwei doppelte Anführungszeichen) ein und drücken zwischen den Anführungszeichen **STRG+LEERTASTE**. Es werden Optionen angezeigt, z.B. **variables**.
+4. In VS Code ist IntelliSense integriert. Beim Bearbeiten der Vorlagen schlägt VS Code verfügbare Werte vor. Um der Vorlage beispielsweise einen Variablenabschnitt hinzuzufügen, fügen Sie `""` (zwei doppelte Anführungszeichen) ein und drücken zwischen den Anführungszeichen **STRG+LEERTASTE**. Es werden Optionen angezeigt, z.B. **variables**.
    
     ![Variablen hinzufügen](./media/resource-manager-vs-code/add-variables.png)
-5. Außerdem kann IntelliSense verfügbare Werte oder Funktionen vorschlagen. Um eine Eigenschaft auf einen Parameterwert festzulegen, erstellen Sie einen Ausdruck mit **"[]"** und drücken **STRG+LEERTASTE**. Sie können mit der Eingabe des Namens einer Funktion beginnen. Wählen Sie die **TAB-TASTE** , wenn Sie die gewünschte Funktion gefunden haben.
+5. Außerdem kann IntelliSense verfügbare Werte oder Funktionen vorschlagen. Um eine Eigenschaft auf einen Parameterwert festzulegen, erstellen Sie einen Ausdruck mit `"[]"` und drücken **STRG+LEERTASTE**. Sie können mit der Eingabe des Namens einer Funktion beginnen. Wählen Sie die **TAB-TASTE** , wenn Sie die gewünschte Funktion gefunden haben.
    
     ![Parameter hinzufügen](./media/resource-manager-vs-code/select-parameters.png)
 6. Drücken Sie erneut **STRG+LEERTASTE** innerhalb der Funktion, um in der Vorlage eine Liste mit den verfügbaren Parametern anzuzeigen.
@@ -85,35 +85,51 @@ Die einfachste Möglichkeit zur Verwendung einer Vorlage besteht darin, entweder
     ![Fehlermeldung](./media/resource-manager-vs-code/unrecognized-function.png)
 
 ## <a name="deploy-your-new-resources"></a>Bereitstellen von neuen Ressourcen
-Wenn die Vorlage fertig ist, können Sie die neuen Ressourcen wie unten beschrieben bereitstellen: 
+Wenn die Vorlage fertig ist, können Sie die neuen Ressourcen bereitstellen, indem Sie diese Anleitung verwenden: 
 
 ### <a name="windows"></a>Windows
 1. Öffnen Sie eine PowerShell-Eingabeaufforderung. 
-2. Geben Sie zum Anmelden Folgendes ein: 
+2. Geben Sie Folgendes ein, um sich anzumelden: 
    
-        Login-AzureRmAccount 
+  ```powershell
+  Login-AzureRmAccount
+  ```
+
 3. Wenn Sie über mehrere Abonnements verfügen, erhalten Sie wie folgt eine Liste mit den Abonnements:
-   
-        Get-AzureRmSubscription
+
+  ```powershell 
+  Get-AzureRmSubscription
+  ```
    
     Wählen Sie anschließend das zu verwendende Abonnement aus.
-   
-        Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionId <Subscription Id>
+  ```
+
 4. Aktualisieren Sie die Parameter in der Datei „parameters.json“.
 5. Führen Sie die Datei „Deploy.ps1“ aus, um die Vorlage unter Azure bereitzustellen.
 
 ### <a name="osxlinux"></a>OSX/Linux
 1. Öffnen Sie ein Terminalfenster. 
-2. Geben Sie zum Anmelden Folgendes ein:
-   
-        azure login 
+2. Geben Sie Folgendes ein, um sich anzumelden:
+
+  ```azurecli
+  azure login
+  ```
+
 3. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das richtige Abonnement wie folgt aus:
-   
-        azure account set <subscriptionNameOrId> 
+
+  ```azurecli
+  azure account set <subscriptionNameOrId> 
+  ```
+
 4. Aktualisieren Sie die Parameter in der Datei „parameters.json“.
 5. Führen Sie Folgendes aus, um die Vorlage bereitzustellen:
-   
-        azure group deployment create -f <PathToTemplate> 
+
+  ```azurecli 
+  azure group deployment create -f <PathToTemplate>
+  ``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
@@ -123,6 +139,6 @@ Wenn die Vorlage fertig ist, können Sie die neuen Ressourcen wie unten beschrie
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
