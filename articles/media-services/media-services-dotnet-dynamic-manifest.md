@@ -1,12 +1,12 @@
 ---
 title: Erstellen von Filtern mit dem Azure Media Services .NET SDK
-description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
+description: "In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 2f6894ca-fb43-43c0-9151-ddbb2833cafd
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,32 +14,36 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/18/2016
 ms.author: juliako;cenkdin
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 07239a392438afd9807ce69fba657c27e853a219
+
 
 ---
-# Erstellen von Filtern mit dem Azure Media Services .NET SDK
+# <a name="creating-filters-with-azure-media-services-net-sdk"></a>Erstellen von Filtern mit dem Azure Media Services .NET SDK
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-Ab Version 2.11 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z. B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte erfolgt über **dynamische Manifeste**, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
+Ab Version 2.11 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z. B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte erfolgt über **dynamische Manifeste**, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
 
 Ausführlichere Informationen zu Filtern und dynamischen Manifesten finden Sie in der [Übersicht über dynamische Manifeste](media-services-dynamic-manifest-overview.md).
 
-In diesem Thema wird die Verwendung des Media Services-.NET-SDKs zum Erstellen, Aktualisieren und Löschen von Filtern erläutert.
+In diesem Thema wird die Verwendung des Media Services-.NET-SDKs zum Erstellen, Aktualisieren und Löschen von Filtern erläutert. 
 
-Beachten Sie, dass es beim Aktualisieren eines Filters bis zu 2 Minuten dauern kann, bis die Regeln am Streamingendpunkt aktualisiert wurden. Wenn der Inhalt mit diesem Filter verarbeitet (und in Proxys und CDN-Caches zwischengespeichert) wurde, können durch Aktualisieren des Filters Player-Fehler auftreten. Es wird empfohlen, den Cache nach dem Aktualisieren des Filters zu leeren. Wenn dies nicht möglich ist, empfiehlt sich die Verwendung eines anderen Filters.
+Beachten Sie, dass es beim Aktualisieren eines Filters bis zu 2 Minuten dauern kann, bis die Regeln am Streamingendpunkt aktualisiert wurden. Wenn der Inhalt mit diesem Filter verarbeitet (und in Proxys und CDN-Caches zwischengespeichert) wurde, können durch Aktualisieren des Filters Player-Fehler auftreten. Es wird empfohlen, den Cache nach dem Aktualisieren des Filters zu leeren. Wenn dies nicht möglich ist, empfiehlt sich die Verwendung eines anderen Filters. 
 
-## Verwendete Typen zum Erstellen von Filtern
-Die folgenden Typen werden beim Erstellen von Filtern verwendet:
+## <a name="types-used-to-create-filters"></a>Verwendete Typen zum Erstellen von Filtern
+Die folgenden Typen werden beim Erstellen von Filtern verwendet: 
 
-* **IStreamingFilter**. Dieser Typ basiert auf der folgenden REST-API [Filter](http://msdn.microsoft.com/library/azure/mt149056.aspx).
-* **IStreamingAssetFilter**. Dieser Typ basiert auf der folgenden REST-API [AssetFilter](http://msdn.microsoft.com/library/azure/mt149053.aspx).
-* **PresentationTimeRange**. Dieser Typ basiert auf dem folgenden REST-API [PresentationTimeRange](http://msdn.microsoft.com/library/azure/mt149052.aspx).
-* **FilterTrackSelectStatement** und **IFilterTrackPropertyCondition**. Diese Typen basieren auf den folgenden REST-APIs [FilterTrackSelect und FilterTrackPropertyCondition](http://msdn.microsoft.com/library/azure/mt149055.aspx).
+* **IStreamingFilter**.  Dieser Typ basiert auf der folgenden REST-API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**. Dieser Typ basiert auf der folgenden REST-API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Dieser Typ basiert auf der folgenden REST-API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** und **IFilterTrackPropertyCondition**. Diese Typen basieren auf den folgenden REST-APIs [FilterTrackSelect und FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
-## Erstellen/Aktualisieren/Lesen/Löschen globaler Filter
+## <a name="createupdatereaddelete-global-filters"></a>Erstellen/Aktualisieren/Lesen/Löschen globaler Filter
 Der folgende Code zeigt, wie Sie mithilfe von .NET Asset-Filter erstellen, aktualisieren, lesen und löschen.
 
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -68,7 +72,7 @@ Der folgende Code zeigt, wie Sie mithilfe von .NET Asset-Filter erstellen, aktua
     filter.Delete();
 
 
-## Erstellen/Aktualisieren/Lesen/Löschen von Asset-Filtern
+## <a name="createupdatereaddelete-asset-filters"></a>Erstellen/Aktualisieren/Lesen/Löschen von Asset-Filtern
 Der folgende Code zeigt, wie Sie mithilfe von .NET Asset-Filter erstellen, aktualisieren, lesen und löschen.
 
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -99,12 +103,12 @@ Der folgende Code zeigt, wie Sie mithilfe von .NET Asset-Filter erstellen, aktua
 
 
 
-## Erstellen von Streaming-URLs, die Filter verwenden
+## <a name="build-streaming-urls-that-use-filters"></a>Erstellen von Streaming-URLs, die Filter verwenden
 Informationen zum Veröffentlichen und Bereitstellen Ihrer Medienobjekte finden Sie unter [Bereitstellen von Inhalten für Kunden – Übersicht](media-services-deliver-content-overview.md).
 
 In den folgenden Beispielen sehen Sie, wie Sie Ihren Streaming-URLs Filter hinzufügen können.
 
-**MPEG DASH**
+**MPEG DASH** 
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
@@ -121,18 +125,18 @@ In den folgenden Beispielen sehen Sie, wie Sie Ihren Streaming-URLs Filter hinzu
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
 
-**HDS**
-
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f, filter=MyFilter)
-
-
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Übersicht über dynamische Manifeste](media-services-dynamic-manifest-overview.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+
+<!--HONumber=Jan17_HO2-->
+
+

@@ -16,15 +16,15 @@ ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 72ca562c53f813599f19069cfac7ef3ac1957968
-ms.openlocfilehash: 1e56580e0ee84be40430661f5ea76a39ed315586
+ms.sourcegitcommit: 756369d219c34e5530edc91de0dc74cbf88c02c5
+ms.openlocfilehash: 78276ecfbeb339721c76af40428a452681c3407d
 
 
 ---
 # <a name="create-linux-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-Erfahren Sie mehr über das Erstellen von HDInsight-Clustern mithilfe von Azure Resource Manager-Vorlagen (ARM-Vorlagen). Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
+Erfahren Sie mehr über das Erstellen von HDInsight-Clustern mithilfe von Azure Resource Manager-Vorlagen (ARM-Vorlagen). Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
 
 ## <a name="prerequisites"></a>Voraussetzungen:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -34,7 +34,7 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * [Azure-Abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure PowerShell und/oder Azure-Befehlszeilenschnittstelle
 
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ### <a name="access-control-requirements"></a>Voraussetzungen für die Zugriffssteuerung
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -46,8 +46,8 @@ Eine Resource Manager-Vorlage zum Erstellen eines HDInsight-Clusters und des abh
 
 Weitere Informationen über Resource Manager-Vorlagen finden Sie unter:
 
-* [Erstellen von Azure Resource-Manager-Vorlagen](../resource-group-authoring-templates.md)
-* [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../resource-group-template-deploy.md)
+* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md)
 
 Um das JSON-Schema für bestimmte Elemente zu ermitteln, können Sie wie folgt vorgehen:
 
@@ -134,12 +134,12 @@ Sie werden dazu aufgefordert, den Clusternamen, das Benutzerkennwort für den Cl
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{\"clusterName\":{\"value\":\"hdi1229\"},\"clusterLoginPassword\":{\"value\":\"Pass@word1\"},\"sshPassword\":{\"value\":\"Pass@word1\"}}'
 
 ## <a name="deploy-with-rest-api"></a>Bereitstellen über die REST-API
-Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../resource-group-template-deploy-rest.md).
+Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
 ## <a name="deploy-with-visual-studio"></a>Bereitstellen mit Visual Studio 2013
 Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Resource Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
-Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -147,8 +147,8 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 * Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](../virtual-machines/virtual-machines-windows-csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Ein ausführliches Beispiel für die Bereitstellung einer Anwendung finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](../app-service-web/app-service-deploy-complex-application-predictably.md).
 * Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](../solution-dev-test-environments.md).
-* Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../resource-group-authoring-templates.md).
-* Unter [Vorlagenfunktionen](../resource-group-template-functions.md)finden Sie eine Liste der Funktionen, die Sie in einer Azure Resource Manager-Vorlage verwenden können.
+* Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+* Unter [Vorlagenfunktionen](../azure-resource-manager/resource-group-template-functions.md)finden Sie eine Liste der Funktionen, die Sie in einer Azure Resource Manager-Vorlage verwenden können.
 
 ## <a name="appx-a-resource-manager-template"></a>Anhang A: Resource Manager-Vorlage
 Die folgende Azure Resource Manager-Vorlage erstellt einen Linux-basierten Hadoop-Cluster mit abhängigem Azure-Speicherkonto.
@@ -359,6 +359,6 @@ Die folgende Azure Resource Manager-Vorlage erstellt einen Linux-basierten Hadoo
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2016
+ms.date: 01/03/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: aac0354a8fbfb73bab3e7b5da7d9aefa69c9eb16
-ms.openlocfilehash: 5251ab851dd2934050747cd3ad7b2c4f0b9e98bb
+ms.sourcegitcommit: 7f074883c2330c5814eef415f193e1775caec432
+ms.openlocfilehash: ddb38f99adef288958fd3828cb685912bf35f218
 
 
 ---
@@ -35,7 +35,7 @@ Auf der Kachel **Sicherheitsintegrität der Ressource** können Sie den Sicherhe
 
 ![Kachel „Sicherheitsintegrität der Ressource“](./media/security-center-monitoring/security-center-monitoring-fig1-new4.png)
 
-Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss (beispielsweise einen virtuellen Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md)), wird dies hier angegeben.
+Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss (beispielsweise einen virtuellen Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](/virtual-network/virtual-networks-nsg.md)), wird dies hier angegeben.
 
 ### <a name="monitor-virtual-machines"></a>Überwachen virtueller Maschinen
 Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Virtuelle Computer** klicken, wird das Blatt **Virtuelle Computer** geöffnet. Dieses enthält weitere Details zum Onboarding sowie Vorbeugungsschritte und eine Liste mit allen virtuellen Computern, die von Security Center überwacht werden (wie im folgenden Screenshot zu sehen).
@@ -162,22 +162,22 @@ Diese Tabelle ist nach Schweregrad sortiert (virtuelle Computer und Subnetze):
 * Orange: Mittlere Priorität; sollte zeitnah behoben werden.
 * Grün (ganz unten): Fehlerfrei.
 
-In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md), [virtuelle Netzwerkgateways](../vpn-gateway/vpn-gateway-site-to-site-create.md) und [virtuelle Netzwerke (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Die zweite Ebene umfasst Subnetze und die dritte Ebene die virtuellen Computer dieser Subnetze. Die rechte Spalte enthält den aktuellen Status der Netzwerksicherheitsgruppe für diese Ressourcen, wie im folgenden Beispiel zu sehen:
+In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md), [virtuelle Netzwerkgateways](/vpn-gateway/vpn-gateway-site-to-site-create.md) und [virtuelle Netzwerke (klassisch)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). Die zweite Ebene umfasst Subnetze und die dritte Ebene die virtuellen Computer dieser Subnetze. Die rechte Spalte enthält den aktuellen Status der Netzwerksicherheitsgruppe für diese Ressourcen, wie im folgenden Beispiel zu sehen:
 
 ![Status der Netzwerksicherheitsgruppe im Abschnitt „Netzwerktopologie“](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
 Im unteren Bereich des Blatts befinden sich die Empfehlungen für diesen virtuellen Computer (ähnlich wie weiter oben beschrieben). Sie können auf eine Empfehlung klicken, um weitere Informationen zu erhalten oder die erforderliche Sicherheitskontrolle/-konfiguration anzuwenden.
 
 ### <a name="monitor-data"></a>Überwachen von Daten
-Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Daten** klicken, wird das Blatt **SQL** geöffnet. Es enthält Empfehlungen zu Problemen, die mit der Überwachung oder der nicht aktivierten Transparent Data Encryption zusammenhängen. Außerdem werden [Empfehlungen](security-center-sql-service-recommendations.md) zum allgemeinen Integritätsstatus der Datenbank abgegeben.
+Wenn Sie auf der Kachel **Sicherheitsintegrität der Ressource** auf **Daten** klicken, wird das Blatt **Data Resources** (Datenressourcen) mit Empfehlungen für SQL und Storage geöffnet. Außerdem werden [Empfehlungen](security-center-sql-service-recommendations.md) zum allgemeinen Integritätsstatus der Datenbank abgegeben. Weitere Informationen zur Speicherverschlüsselung finden Sie unter „Enable encryption for Azure storage account in Azure Security Center“ (Aktivieren der Verschlüsselung für Azure-Speicherkonten in Azure Security Center).
 
-![SQL-Ressourcenintegrität](./media/security-center-monitoring/security-center-monitoring-fig13-ga.png)
+![Datenressourcen](./media/security-center-monitoring/security-center-monitoring-fig13-ga-new.png)
 
-Sie können auf eine Empfehlung klicken und ausführlichere Informationen zu weiteren Aktionen erhalten, um ein Problem zu beheben. Das folgende Beispiel zeigt die Erweiterung der Empfehlung **Datenbanküberwachung nicht aktiviert**.
+Sie können unter **SQL Recommendations** (SQL-Empfehlungen) auf eine Empfehlung klicken und ausführlichere Informationen zu weiteren Aktionen erhalten, um ein Problem zu beheben. Das folgende Beispiel zeigt die Erweiterung der Empfehlung **Database Auditing & Threat detection on SQL databases** (Datenbanküberwachung und Bedrohungserkennung bei SQL-Datenbanken).
 
-![Details zu einer SQL-Empfehlung](./media/security-center-monitoring/security-center-monitoring-fig14-ga.png)
+![Details zu einer SQL-Empfehlung](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
 
-Das Blatt **Überwachung für SQL-Datenbanken aktivieren** enthält folgende Informationen:
+Das Blatt **Enable Auditing & Threat detection on SQL databases** (Überwachung und Bedrohungserkennung für SQL-Datenbanken aktivieren) enthält folgende Informationen:
 
 * Liste der SQL-Datenbanken
 * Server, auf dem sich eine Datenbank befindet
@@ -185,13 +185,14 @@ Das Blatt **Überwachung für SQL-Datenbanken aktivieren** enthält folgende Inf
 * Aktueller Status
 * Schweregrad des Problems
 
-Wenn Sie auf die Datenbank klicken, um die Empfehlung umzusetzen, erscheint das Blatt **Überwachung und Bedrohungserkennung**, wie im folgenden Screenshot zu sehen.
+Wenn Sie auf die Datenbank klicken, um die Empfehlung umzusetzen, wird das Blatt **Überwachung und Bedrohungserkennung** angezeigt, wie im folgenden Screenshot dargestellt.
 
 ![Blatt „Überwachung und Bedrohungserkennung“](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
 Um die Überwachung zu aktivieren, wählen Sie für **Überwachung** die Option **EIN** aus.
 
 ### <a name="monitor-applications"></a>Überwachen von Anwendungen
+
 Wenn Ihre Azure-Workload Anwendungen umfasst, die sich auf [(über Azure Resource Manager erstellten) virtuellen Computern](../azure-resource-manager/resource-manager-deployment-model.md) mit verfügbar gemachten Webports (TCP-Ports 80 und 443) befinden, kann Security Center diese Ports überwachen, um potenzielle Sicherheitsprobleme zu erkennen und Problembehandlungsschritte zu empfehlen. Wenn Sie auf die Kachel **Anwendungen** klicken, wird das Blatt **Anwendungen** mit einer Reihe von Empfehlungen im Abschnitt **Application recommendations** (Anwendungsempfehlungen) geöffnet. Außerdem werden die Anwendungen nach Host/virtueller IP aufgeschlüsselt, wie im folgenden Screenshot zu sehen.
 
 ![Sicherheitsintegrität für Anwendungen](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
@@ -216,6 +217,6 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

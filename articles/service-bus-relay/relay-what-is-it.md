@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 11/16/2016
 ms.author: babanisa,sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 8ba8baa1b6500b3300e0bfc1c6b9f00f214f0179
-ms.openlocfilehash: 4329e0f99828f5a0651e6b03be0813d9e68debaa
+ms.sourcegitcommit: 14a5c029eef714134079b960109e58d821d0a609
+ms.openlocfilehash: 34b54d54b20d9aec69486c5ef98c97beee21bd94
 
 
 ---
@@ -40,7 +40,7 @@ Hybridverbindungen und WCF-Relays aktivieren beide die sichere Verbindung mit As
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |x |
-| **.NET Framework** |x |
+| **.NET Framework** |x |x |
 | **JavaScript/NodeJS*** | |x |
 | **Java*** | |x |
 | **Standardbasierte offene Protokolle** | |x |
@@ -55,7 +55,7 @@ Die [Hybridverbindungsfunktion von Azure Relay](relay-hybrid-connections-protoco
 Das WCF-Relay funktioniert für das gesamte .NET Framework (NETFX) sowie für WCF. Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-Bindungen vom Typ „Relay“. Im Prinzip werden die Relaybindungen neuen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die mit Service Bus in der Cloud integriert werden.
 
 ## <a name="service-history"></a>Dienstverlauf
-Hybridverbindungen ersetzen die ehemalige gleichnamige Funktion „BizTalk Services“, die auf dem Azure Service Bus-WCF-Relay erstellt wurde. Die neue Funktion „Hybridverbindungen“ komplementiert das vorhandene WCF-Relay und diese beiden Dienstfunktionen werden parallel im Relaydienst für die nächste Zeit vorhanden sein. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
+Hybridverbindungen ersetzen die ehemalige ähnliche benannte Funktion „BizTalk Services“, die auf dem Azure Service Bus-WCF-Relay erstellt wurde. Die neue Funktion „Hybridverbindungen“ ergänzt die vorhandene WCF-Relayfunktion, und diese beiden Dienstfunktionen werden parallel im Relaydienst für die nächste Zeit vorhanden sein. Sie teilen sich ein allgemeines Gateway, sind jedoch andererseits verschiedene Implementierungen.
 
 ## <a name="next-steps"></a>Nächste Schritte:
 * [Relay – Häufig gestellte Fragen](relay-faq.md)
@@ -66,6 +66,6 @@ Hybridverbindungen ersetzen die ehemalige gleichnamige Funktion „BizTalk Servi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: f73bd0a6563f8411877b55182b01f2e3e42c883f
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 618d067bf3b4ab279c7d4fcc72454fe4e69d0364
 
 
 ---
@@ -42,7 +42,7 @@ Zunächst müssen Sie sich mit dem folgenden Befehl in Azure anmelden:
 
 Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
 
-Als Alternative steht die [Nicht interaktive Anmeldung mit einem Dienstprinzipal](../resource-group-authenticate-service-principal.md)zur Verfügung.
+Als Alternative steht die [Nicht interaktive Anmeldung mit einem Dienstprinzipal](../azure-resource-manager/resource-group-authenticate-service-principal.md)zur Verfügung.
 
 Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie Ihr Azure-Abonnement festlegen. Führen Sie den folgenden Befehl aus, um eine Liste Ihrer aktuellen Abonnements anzuzeigen.
 
@@ -142,6 +142,6 @@ Nachdem der Dienst erstellt wurde, können Sie die nächsten Schritte ausführen
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

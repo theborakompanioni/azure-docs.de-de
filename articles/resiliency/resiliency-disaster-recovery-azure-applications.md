@@ -1,12 +1,12 @@
 ---
-title: Notfallwiederherstellung für Azure-Anwendungen | Microsoft Docs
-description: Technische Übersicht und ausführliche Informationen zum Entwerfen von Anwendungen für die Notfallwiederherstellung in Microsoft Azure.
-services: ''
+title: "Notfallwiederherstellung für Azure-Anwendungen | Microsoft Docs"
+description: "Technische Übersicht und ausführliche Informationen zum Entwerfen von Anwendungen für die Notfallwiederherstellung in Microsoft Azure."
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: f9e0cbdc-ec82-46dc-bee6-558b35518252
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: d0ea8137dcdd72cf09806006bdca4c24d6f1c1de
+
 
 ---
 # <a name="disaster-recovery-for-applications-built-on-microsoft-azure"></a>Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen
@@ -148,7 +152,7 @@ Die größte Herausforderung beim Implementieren dieser Architektur ist die Stra
 Bei einer möglichen Implementierung kann die zwischengeschaltete Warteschlange aus dem vorherigen Beispiel verwendet werden. Die Workerrolle, die die Daten verarbeitet, um das endgültige Speicherziel zu finden, kann die Änderung in der primären und sekundären Region vornehmen. Dies sind keine einfachen Aufgaben, doch eine vollständige Anleitung im Zusammenhang mit dem Replikationscode ist nicht Gegenstand dieses Artikels. Der wichtigste Punkt ist, dass Sie einen Großteil Ihrer Zeit und Tests darauf konzentrieren sollten, wie die Daten in der sekundären Region repliziert werden. Zusätzliche Verarbeitungsschritte und Tests können helfen sicherzustellen, dass die Failover- und Wiederherstellungsprozesse jede mögliche Dateninkonsistenz und doppelte Transaktionen ordnungsgemäß verarbeiten.
 
 > [!NOTE]
-> Dieser Artikel beschäftigt sich schwerpunktmäßig mit PaaS (Platform as a Service). Es gibt jedoch zusätzliche Replikations- und Verfügbarkeitsoptionen für Hybridanwendungen, die Azure Virtual Machines verwenden. Diese Hybridanwendungen nutzen IaaS (Infrastructure as a Service), um SQL Server auf virtuellen Computern in Azure zu hosten. Dadurch werden herkömmliche Verfügbarkeitsansätze in SQL Server ermöglicht, z.B. AlwaysOn-Verfügbarkeitsgruppen oder Protokollversand. Einige Techniken, wie z.B. AlwaysOn, funktionieren nur zwischen lokalen SQL Server-Instanzen und virtuellen Azure-Computern. Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md).
+> Dieser Artikel beschäftigt sich schwerpunktmäßig mit PaaS (Platform as a Service). Es gibt jedoch zusätzliche Replikations- und Verfügbarkeitsoptionen für Hybridanwendungen, die Azure Virtual Machines verwenden. Diese Hybridanwendungen nutzen IaaS (Infrastructure as a Service), um SQL Server auf virtuellen Computern in Azure zu hosten. Dadurch werden herkömmliche Verfügbarkeitsansätze in SQL Server ermöglicht, z.B. AlwaysOn-Verfügbarkeitsgruppen oder Protokollversand. Einige Techniken, wie z.B. AlwaysOn, funktionieren nur zwischen lokalen SQL Server-Instanzen und virtuellen Azure-Computern. Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md).
 > 
 > 
 
@@ -242,7 +246,7 @@ Eine weitere Strategie für die Notfallwiederherstellung ist, eine Hybridanwendu
 
 In diesen Hybridarchitekturen gibt es einige Herausforderungen. Erstens wurden in diesem Artikel schwerpunktmäßig PaaS-Architekturmuster (Platform as a Service) behandelt. Typische PaaS-Anwendungen in Azure basieren auf Azure-spezifischen Konstrukten wie Rollen, Clouddiensten und Traffic Manager. Zum Erstellen einer lokalen Lösung für diese Art von PaaS-Anwendung ist eine grundlegend andere Architektur erforderlich. Diese kann aus Verwaltungs- und Kostengründen nicht sinnvoll sein.
 
-Allerdings bedeutet eine Hybridlösung für die Notfallwiederherstellung weniger Herausforderungen, wenn herkömmliche Architekturen einfach in die Cloud verschoben wurden. Dies gilt für Architekturen, die IaaS (Infrastructure as a Service) nutzen. IaaS-Anwendungen verwenden virtuelle Computer in der Cloud, die direkte lokale Entsprechungen haben können. Durch die Verwendung von virtuellen Netzwerken können Sie zudem Computer in der Cloud mit lokalen Netzwerkressourcen verbinden. Dadurch ergeben sich eine Reihe von Möglichkeiten, die mit reinen PaaS-Anwendungen nicht möglich sind. SQL Server kann z.B. die Notfallwiederherstellungslösungen wie AlwaysOn-Verfügbarkeitsgruppen und Datenbankspiegelung nutzen. Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md).
+Allerdings bedeutet eine Hybridlösung für die Notfallwiederherstellung weniger Herausforderungen, wenn herkömmliche Architekturen einfach in die Cloud verschoben wurden. Dies gilt für Architekturen, die IaaS (Infrastructure as a Service) nutzen. IaaS-Anwendungen verwenden virtuelle Computer in der Cloud, die direkte lokale Entsprechungen haben können. Durch die Verwendung von virtuellen Netzwerken können Sie zudem Computer in der Cloud mit lokalen Netzwerkressourcen verbinden. Dadurch ergeben sich eine Reihe von Möglichkeiten, die mit reinen PaaS-Anwendungen nicht möglich sind. SQL Server kann z.B. die Notfallwiederherstellungslösungen wie AlwaysOn-Verfügbarkeitsgruppen und Datenbankspiegelung nutzen. Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md).
 
 IaaS-Lösungen bieten zudem einen einfacheren Weg für lokale Anwendungen, Azure als Failoveroption zu verwenden. Möglicherweise verfügen Sie über eine voll funktionsfähige Anwendung in einer vorhandenen lokalen Region. Was geschieht aber, wenn die Ressourcen nicht ausreichen, um eine geografisch getrennte Region für ein Failover zu verwalten? Sie könnten virtuelle Computer und virtuelle Netzwerke verwenden, damit Ihre Anwendung in Azure ausgeführt wird. Definieren Sie in diesem Fall Prozesse, um die Daten mit der Cloud zu synchronisieren. Die Azure-Bereitstellung wird dann zur sekundären Region, die für das Failover verwendet wird. Die primäre Region bleibt die lokale Anwendung. Weitere Informationen zu IaaS-Architekturen und -Funktionen finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
@@ -281,6 +285,9 @@ Es gibt verschiedene Techniken, mit denen Sie Notfallwiederherstellungspläne te
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-disaster-recovery-high-availability-azure-applications.md). Der vorangegangene Artikel dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

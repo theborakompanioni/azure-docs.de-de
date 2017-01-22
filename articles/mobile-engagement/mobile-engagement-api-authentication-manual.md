@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 9d6132e1a01be489b8e8e28a0219cf8a0b50b318
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 458140eb9491950a8cbd04a2702da5d7ac637129
 Dies ist eine Zusatzdokumentation zu [Authentifizieren bei Mobile Engagement-REST-APIs](mobile-engagement-api-authentication.md). Lesen Sie den Artikel unbedingt zuerst, um den Kontext zu kennen. Hier wird eine alternative Möglichkeit zum einmaligen Einrichten Ihrer Authentifizierung für die Mobile Engagement-REST-APIs über das Azure-Portal beschrieben. 
 
 > [!NOTE]
-> Die folgenden Anweisungen basieren auf diesem [Active Directory-Handbuch](../resource-group-create-service-principal-portal.md) und wurden an die Anforderungen der Authentifizierung für Mobile Engagement-APIs angepasst. In diesem Handbuch können Sie nachschlagen, wenn Sie die folgenden Schritte im Detail verstehen möchten. 
+> Die folgenden Anweisungen basieren auf diesem [Active Directory-Handbuch](../azure-resource-manager/resource-group-create-service-principal-portal.md) und wurden an die Anforderungen der Authentifizierung für Mobile Engagement-APIs angepasst. In diesem Handbuch können Sie nachschlagen, wenn Sie die folgenden Schritte im Detail verstehen möchten. 
 > 
 > 
 
@@ -137,6 +137,6 @@ Sie haben nun die erforderliche AAD-Konfiguration abgeschlossen und sind jetzt z
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

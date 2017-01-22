@@ -12,11 +12,11 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9029b6a0fc97525ff8a462a725a256b3997e44f1
+ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
+ms.openlocfilehash: 25fef9472f023c37538cfc2f5f7c37c0bfca746e
 
 
 ---
@@ -34,23 +34,25 @@ Aktuelle Sicherheitsvorfälle können auf der Kachel „Sicherheitswarnungen“ 
 1. Auf dem Security Center-Dashboard sehen Sie die Kachel **Sicherheitswarnungen** .
    
     ![Kachel „Sicherheitswarnungen“ in Security Center](./media/security-center-incident/security-center-incident-fig1.png)
+
 2. Klicken Sie auf diese Kachel, um sie zu erweitern. Wenn ein Sicherheitsvorfall erkannt wird, wird er im Diagramm für die Sicherheitswarnungen eingeblendet, wie hier dargestellt:
    
-   ![Sicherheitsvorfall](./media/security-center-incident/security-center-incident-fig2.png)
+    ![Sicherheitsvorfall](./media/security-center-incident/security-center-incident-fig2.png)
+
 3. Beachten Sie, dass die Beschreibung des Sicherheitsvorfalls im Gegensatz zu anderen Warnungen ein anderes Symbol enthält. Klicken Sie darauf, um weitere Details zu diesem Vorfall anzuzeigen.
    
-   ![Sicherheitsvorfall](./media/security-center-incident/security-center-incident-fig3.png)
-4. Auf dem Blatt **Vorfall** sind weitere Details zum Sicherheitsvorfall angegeben. Hierzu zählen beispielsweise die vollständige Beschreibung des Vorfalls, der Schweregrad (in diesem Fall „Hoch“) und der aktuelle Status des Vorfalls – hier noch *aktiv*, was bedeutet, dass der Vorfall vom Benutzer noch nicht *geschlossen* wurde (durch Klicken auf den Vorfall mit der rechten Maustaste auf dem Blatt **Sicherheitswarnungen**). Darüber hinaus werden die angegriffene Ressource (hier *VM1*), die Lösungsschritte und im unteren Bereich die in diesem Vorfall enthaltenen Warnungen angezeigt. Weitere Informationen zu den einzelnen Warnungen erhalten Sie, indem Sie auf die jeweilige Warnung klicken. Daraufhin wird ein weiteres Blatt geöffnet, wie hier dargestellt:
+    ![Sicherheitsvorfall](./media/security-center-incident/security-center-incident-fig3.png)
+
+4. Auf dem Blatt **Vorfall** sind weitere Details zum Sicherheitsvorfall angegeben. Hierzu zählen beispielsweise die vollständige Beschreibung des Vorfalls, der Schweregrad (in diesem Fall „Hoch“) und der aktuelle Status des Vorfalls – hier noch *aktiv*, was bedeutet, dass der Benutzer noch keine Maßnahmen für den Vorfall ergriffen hat (durch Klicken auf den Vorfall mit der rechten Maustaste auf dem Blatt **Sicherheitswarnungen**). Darüber hinaus werden die angegriffene Ressource (hier *VM1*), die Lösungsschritte und im unteren Bereich die in diesem Vorfall enthaltenen Warnungen angezeigt. Weitere Informationen zu den einzelnen Warnungen erhalten Sie, indem Sie auf die jeweilige Warnung klicken. Daraufhin wird ein weiteres Blatt geöffnet, wie hier dargestellt:
    
-   ![Sicherheitsvorfall](./media/security-center-incident/security-center-incident-fig4.png)
+    ![Sicherheitsvorfall](./media/security-center-incident/security-center-incident-fig4.png)
 
 Die Informationen auf diesem Blatt variieren je nach Warnung. Weitere Informationen zur Verwaltung dieser Warnungen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) . Wichtige Aspekte zu dieser Funktion:
 
 * Mit einem neuen Filter können Sie Ihre Ansicht wie gewünscht anpassen (Nur Vorfall, Nur Warnungen oder beides). 
 * Die gleiche Warnung kann als Teil eines Vorfalls vorhanden sein (falls zutreffend) und als eigenständige Warnung angezeigt werden. 
-* Wenn ein Vorfall verworfen wird, werden die dazugehörigen Warnungen nicht verworfen.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie die Sicherheitsvorfallfunktion in Security Center verwenden. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
@@ -63,6 +65,6 @@ In diesem Dokument haben Sie erfahren, wie Sie die Sicherheitsvorfallfunktion in
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

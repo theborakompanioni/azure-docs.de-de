@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b0f1954b44e42b406aa5ffa71eee74a3bd7be4cc
+ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
+ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
 
 
 ---
@@ -79,7 +79,7 @@ Die Verfügbarkeit wird mit HTTP-Antwortcodes überwacht, und die Reaktionszeit 
 
 Informationen zur Einrichtungen finden Sie unter [Gewusst wie: Überwachen von Apps in Azure App Service](web-sites-monitor.md).
 
-Ein Video zur Endgeräteüberwachung finden Sie unter [Pflegen von Azure-Websites plus Endgeräteüberwachung - mit Stefan Schackow](/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/) .
+Ein Video zur Endgeräteüberwachung finden Sie unter [Pflegen von Azure-Websites plus Endgeräteüberwachung - mit Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) .
 
 #### <a name="application-performance-monitoring-using-extensions"></a>Überwachung der Anwendungsleistung mithilfe von Erweiterungen
 Sie können die Anwendungsleistung auch mit *Websiteerweiterungen*überwachen.
@@ -174,6 +174,6 @@ Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informatio
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

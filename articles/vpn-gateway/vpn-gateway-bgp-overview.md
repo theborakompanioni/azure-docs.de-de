@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/16/2016
+ms.date: 01/12/2017
 ms.author: yushwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5f270d383750dc6308f01807e04469e3873d70f9
-ms.openlocfilehash: 6d2a72831726f59ff79a7f4c1ff0e258275bfe4f
+ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
+ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
 
 
 ---
@@ -35,11 +35,6 @@ BGP bietet einige Vorteile und neue Möglichkeiten:
 Mit BGP müssen Sie lediglich ein Mindestpräfix für einen bestimmten BGP-Peer über den IPsec-S2S-VPN-Tunnel deklarieren. Das Präfix muss mindestens die Größe eines Hostpräfix (/32) der BGP-Peer-IP-Adresse Ihres lokalen VPN-Geräts besitzen. Sie können steuern, welche lokalen Netzwerkpräfixe sie gegenüber Azure ankündigen möchten, um Ihrem virtuellen Azure-Netzwerk den Zugriff darauf zu ermöglichen.
 
 Sie können auch größere Präfixe ankündigen, die ggf. einige Ihrer VNET-Adresspräfixe umfassen, z.B. einen großen privaten IP-Adressraum (etwa 10.0.0.0/8). Beachten Sie jedoch, dass die Präfixe keinem Ihrer VNET-Präfixe entsprechen dürfen. Mit Ihren VNET-Präfixen identische Routen werden abgelehnt.
-
-> [!IMPORTANT]
-> Das Ankündigen der Standardroute (0.0.0.0/0) für Azure VPN Gateways ist derzeit blockiert. Weitere Updates werden bereitgestellt, sobald diese Funktion aktiviert wurde.
-> 
-> 
 
 ### <a name="support-multiple-tunnels-between-a-vnet-and-an-on-premises-site-with-automatic-failover-based-on-bgp"></a>Unterstützung mehrerer Tunnel zwischen einem VNET und einem lokalen Standort mit automatischem Failover auf der Grundlage von BGP
 Sie können mehrere Verbindungen zwischen Ihrem Azure-VNET und Ihren lokalen VPN-Geräten am gleichen Standort herstellen. Dies ermöglicht die Einrichtung mehrerer Tunnel (Pfade) zwischen den beiden Netzwerken in einer Aktiv/Aktiv-Konfiguration. Wird die Verbindung eines der Tunnel getrennt, werden die entsprechenden Routen per BGP zurückgezogen, und der Datenverkehr wird automatisch auf die verbleibenden Tunnel verlagert.
@@ -64,6 +59,6 @@ Schritte zum Konfigurieren von BGP für standortübergreifende Verbindungen und 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

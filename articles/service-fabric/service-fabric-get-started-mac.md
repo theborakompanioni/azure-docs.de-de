@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2016
+ms.date: 12/27/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 7e33e00a676f4aa7143cede3380adb58ba1d11e4
-ms.openlocfilehash: 80e0ae758f02b7647a1d61344799bbc500449a04
+ms.sourcegitcommit: d5a04e34a3f46097b3ad1b04ac6b2b845fc946af
+ms.openlocfilehash: beb869fd5c1fcc19101b16149244187c37a6d6a3
 
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
 > [!div class="op_single_selector"]
-> * [Windows](service-fabric-get-started.md) 
+> * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
-> 
+>
 >  
 
 Sie können Service Fabric-Anwendungen für die Ausführung in Linux-Clustern unter Mac OS X erstellen. In diesem Artikel erfahren Sie, wie Sie Ihren Mac für die Entwicklung einrichten.
@@ -33,41 +33,42 @@ Sie können Service Fabric-Anwendungen für die Ausführung in Linux-Clustern un
 ## <a name="prerequisites"></a>Voraussetzungen
 Service Fabric wird nicht nativ unter OS X ausgeführt. Für die Verwendung eines lokalen Service Fabric-Clusters stellen wir einen vorkonfigurierten virtuellen Ubuntu-Computer mit Vagrant und VirtualBox bereit. Bevor Sie beginnen, benötigen Sie Folgendes:
 
-* [Vagrant (mindestens Version 1.8.4)](http://wwww.vagrantup.com/downloads)
+* [Vagrant (mindestens Version 1.8.4)](http://www.vagrantup.com/downloads.html)
 * [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
 ## <a name="create-the-local-vm"></a>Erstellen des lokalen virtuellen Computers
 Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit einem Service Fabric-Cluster mit fünf Knoten zu erstellen:
 
-1. Klonen Sie das Vagrantfile-Repository:
+1. Klonen Sie das **Vagrantfile**-Repository:
    
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
 2. Navigieren Sie zum lokalen Klon des Repositorys:
-   
+
     ```bash
     cd service-fabric-linux-vagrant-onebox
     ```
 3. Optional: Ändern Sie die Standardeinstellungen des virtuellen Computers
-   
+
     Der lokale virtuelle Computer ist standardmäßig wie folgt konfiguriert:
-   
+
    * 3 GB zugeordneter Arbeitsspeicher
    * Privates Hostnetzwerk (konfiguriert mit der IP-Adresse 192.168.50.50, um Pass-Through-Datenverkehr des Mac-Hosts zu ermöglichen)
-     
+
      Sie können diese Einstellungen ändern oder die Konfiguration des virtuellen Computers über Vagrantfile ergänzen. Eine Liste mit allen Konfigurationsoptionen finden Sie in der [Vagrant-Dokumentation](http://www.vagrantup.com/docs) .
 4. Erstellen des virtuellen Computers
-   
+
     ```bash
     vagrant up
     ```
+  
+   In diesem Schritt wird das vorkonfigurierte VM-Image heruntergeladen und lokal gestartet. Anschließend wird auf dem virtuellen Computer ein lokaler Service Fabric-Cluster eingerichtet. Dieser Vorgang dauert ein paar Minuten. Wenn die Einrichtung erfolgreich war, erscheint in der Ausgabe eine Meldung mit dem Hinweis, dass der Cluster gestartet wird.
    
-    In diesem Schritt wird das vorkonfigurierte VM-Image heruntergeladen und lokal gestartet. Anschließend wird auf dem virtuellen Computer ein lokaler Service Fabric-Cluster eingerichtet. Dieser Vorgang dauert ein paar Minuten. Wenn die Einrichtung erfolgreich war, erscheint in der Ausgabe eine Meldung mit dem Hinweis, dass der Cluster gestartet wird:
-   
+
     ![Start der Clustereinrichtung nach Bereitstellung des virtuellen Computers][cluster-setup-script]
 5. Vergewissern Sie sich, dass der Cluster ordnungsgemäß eingerichtet wurde, indem Sie unter http://192.168.50.50:19080/Explorer zu Service Fabric Explorer navigieren (vorausgesetzt, Sie haben die standardmäßige IP-Adresse des privaten Netzwerks beibehalten).
-   
+
     ![Service Fabric Explorer auf dem Host-Mac][sfx-mac]
 
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon-optional"></a>Installieren des Service Fabric-Plug-Ins für Eclipse Neon (optional)
@@ -77,16 +78,15 @@ Service Fabric bietet ein Plug-In für die Eclipse Neon-IDE, das die Erstellung 
 2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe > Neue Software installieren...** aus.
 3. Geben Sie in das Textfeld „Arbeiten mit“ ein: http://dl.windowsazure.com/eclipse/servicefabric.
 4. Klicken Sie auf "Hinzufügen".
-   
+
     ![Eclipse Neon-Plug-In für Service Fabric][sf-eclipse-plugin-install]
 5. Wählen Sie das Service Fabric-Plug-In aus, und klicken Sie auf „Weiter“.
 6. Fahren Sie mit der Installation fort, und akzeptieren Sie den Endbenutzer-Lizenzvertrag.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Create your first Azure Service Fabric application](service-fabric-create-your-first-linux-application-with-java.md)
-
 <!-- Links -->
 
+* [Create your first Azure Service Fabric application](service-fabric-create-your-first-linux-application-with-java.md)
 * [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md)
 * [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 * [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md)
@@ -99,6 +99,6 @@ Service Fabric bietet ein Plug-In für die Eclipse Neon-IDE, das die Erstellung 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

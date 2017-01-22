@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ede557e1678aa6c24f50bd120552345dcd00cdc3
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: d6bf108a4d03855171d2b9c5552c57f8ee6f1f9b
 
 
 ---
@@ -65,7 +65,7 @@ Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvor
 7. Klicken Sie auf **Kaufen**, um die Lösung zu installieren.
 
 ### <a name="deploy-azure-resource-manager-template"></a>Bereitstellen der Azure Resource Manager-Vorlage
-Lösungen, die Sie von der Community erhalten oder die Sie [selbst erstellen](#creating-a-solution), werden als Resource Manager-Vorlage implementiert, und Sie können die Standardmethoden für das [Bereitstellen einer Vorlage](../resource-group-template-deploy-portal.md) verwenden.  Beachten Sie, dass Sie vor der Installation der Lösung den [OMS-Arbeitsbereich und das Automation-Konto](#oms-workspace-and-automation-account) erstellen und verknüpfen müssen.
+Lösungen, die Sie von der Community erhalten oder die Sie [selbst erstellen](#creating-a-solution), werden als Resource Manager-Vorlage implementiert, und Sie können die Standardmethoden für das [Bereitstellen einer Vorlage](../azure-resource-manager/resource-group-template-deploy-portal.md) verwenden.  Beachten Sie, dass Sie vor der Installation der Lösung den [OMS-Arbeitsbereich und das Automation-Konto](#oms-workspace-and-automation-account) erstellen und verknüpfen müssen.
 
 ## <a name="oms-workspace-and-automation-account"></a>OMS-Arbeitsbereich und Automation-Konto
 Die meisten Verwaltungslösungen erfordern einen [OMS-Arbeitsbereich](../log-analytics/log-analytics-manage-access.md) für Ansichten und ein [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen. Der Arbeitsbereich und das Konto müssen den folgenden Anforderungen entsprechen.
@@ -116,6 +116,6 @@ Vollständige Anleitungen zur Erstellung von Verwaltungslösungen finden Sie unt
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

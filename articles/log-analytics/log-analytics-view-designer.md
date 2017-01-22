@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4ba6ce876df3ec426e02e10eda062b67d0d42c4e
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: efe0eeb6c9389545f51f22bbf0a2d6389939c375
 
 
 ---
@@ -66,7 +66,7 @@ Um eine vorhandene Ansicht zu löschen, öffnen Sie die Ansicht, indem Sie im OM
 ![Löschen einer Ansicht](media/log-analytics-view-designer/edit-menu-delete.png)
 
 ### <a name="export-an-existing-view"></a>Exportieren einer vorhandenen Ansicht
-Sie können eine Ansicht in eine JSON-Datei exportieren, die Sie in einen anderen Arbeitsbereich importieren oder in einer [Azure Resource Manager-Vorlage](../resource-group-authoring-templates.md) verwenden können.  Um eine vorhandene Ansicht zu exportieren, öffnen Sie die Ansicht, indem Sie im OMS-Hauptdashboard auf deren Kachel klicken.  Klicken Sie dann auf die Schaltfläche **Exportieren**, um eine Datei im Downloadordner des Browsers zu erstellen.  Der Name der Datei wird zum Namen der Ansicht mit der Erweiterung *omsview*.
+Sie können eine Ansicht in eine JSON-Datei exportieren, die Sie in einen anderen Arbeitsbereich importieren oder in einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) verwenden können.  Um eine vorhandene Ansicht zu exportieren, öffnen Sie die Ansicht, indem Sie im OMS-Hauptdashboard auf deren Kachel klicken.  Klicken Sie dann auf die Schaltfläche **Exportieren**, um eine Datei im Downloadordner des Browsers zu erstellen.  Der Name der Datei wird zum Namen der Ansicht mit der Erweiterung *omsview*.
 
 ![Exportieren einer Ansicht](media/log-analytics-view-designer/edit-menu-export.png)
 
@@ -99,6 +99,6 @@ Ansichten weisen nur eine Zeile mit Visualisierungskomponenten auf.  Sie können
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

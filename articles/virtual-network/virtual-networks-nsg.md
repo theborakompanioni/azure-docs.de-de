@@ -1,5 +1,5 @@
 ---
-title: Netzwerksicherheitsgruppen | Microsoft Docs
+title: Netzwerksicherheitsgruppen | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie den Flow des Datenverkehrs in Ihren virtuellen Netzwerken isolieren und steuern, indem Sie die verteilte Firewall in Azure und Netzwerksicherheitsgruppen verwenden.
 services: virtual-network
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c3b96b583260bc8975082b952929d524e4040730
-ms.openlocfilehash: ba8bfc32b6662f629fc2203f605f8d9f51b3b559
+ms.sourcegitcommit: 1de0827c01c772a4298b7b568363e89f08910ff7
+ms.openlocfilehash: 46dce57f509872580c57bb1d8d93af51623211ac
 
 
 ---
@@ -120,17 +120,11 @@ Sie können NSGs mit den verschiedenen unten aufgeführten Tools im klassischen 
 
 | Bereitstellungstool | Klassisch | Ressourcen-Manager |
 | --- | --- | --- |
-| Klassisches Portal |![Nein](./media/virtual-network-nsg-overview/red.png) |![Nein](./media/virtual-network-nsg-overview/red.png) |
-| Azure-Portal |![Ja](./media/virtual-network-nsg-overview/green.png) |[![Ja][grün]](virtual-networks-create-nsg-arm-pportal.md) |
-| PowerShell |[![Ja][grün]](virtual-networks-create-nsg-classic-ps.md) |[![Ja][grün]](virtual-networks-create-nsg-arm-ps.md) |
-| Azure-Befehlszeilenschnittstelle |[![Ja][grün]](virtual-networks-create-nsg-classic-cli.md) |[![Ja][grün]](virtual-networks-create-nsg-arm-cli.md) |
-| ARM-Vorlage |![Nein](./media/virtual-network-nsg-overview/red.png) |[![Ja][grün]](virtual-networks-create-nsg-arm-template.md) |
-
-**Schlüssel**
-
-![Ja](./media/virtual-network-nsg-overview/green.png)  Unterstützt.
-
-![Nein](./media/virtual-network-nsg-overview/red.png)  Nicht unterstützt.
+| Klassisches Portal | Nein  | Nein |
+| Azure-Portal   | Ja | [Ja](virtual-networks-create-nsg-arm-pportal.md) |
+| PowerShell     | [Ja](virtual-networks-create-nsg-classic-ps.md) | [Ja](virtual-networks-create-nsg-arm-ps.md) |
+| Azure-Befehlszeilenschnittstelle      | [Ja](virtual-networks-create-nsg-classic-cli.md) | [Ja](virtual-networks-create-nsg-arm-cli.md) |
+| ARM-Vorlage   | Nein  | [Ja](virtual-networks-create-nsg-arm-template.md) |
 
 ## <a name="planning"></a>Planung
 Bevor Sie NSGs implementieren, müssen Sie folgende Fragen beantworten:
@@ -265,12 +259,8 @@ Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden
 * [Bereitstellen von NSGs im Ressourcen-Manager](virtual-networks-create-nsg-arm-pportal.md)
 * [Verwalten von NSG-Protokollen](virtual-network-nsg-manage-log.md)
 
-[grün]: ./media/virtual-network-nsg-overview/green.png
-[gelb]: ./media/virtual-network-nsg-overview/yellow.png
-[rot]: ./media/virtual-network-nsg-overview/red.png
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

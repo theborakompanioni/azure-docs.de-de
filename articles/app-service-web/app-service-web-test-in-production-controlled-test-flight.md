@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 705d548661fd0a33a077aab563af415d959b6ebf
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
 
 
 ---
@@ -351,7 +351,7 @@ Mit Azure App Service können kleine und mittelgroße Unternehmen ihre kundenori
 * [Agile Softwareentwicklung mit Azure App Service](app-service-agile-software-development.md)
 * [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](web-sites-staged-publishing.md)
 * [Vorhersagbares Bereitstellen einer komplexen Anwendung in Azure](app-service-deploy-complex-application-predictably.md)
-* [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md)
+* [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 * [JSONLint – The JSON Validator](http://jsonlint.com/)
 * [Git Branching – Basic Branching and Merging](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 * [Azure PowerShell](/powershell/azureps-cmdlets-docs)
@@ -359,6 +359,6 @@ Mit Azure App Service können kleine und mittelgroße Unternehmen ihre kundenori
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

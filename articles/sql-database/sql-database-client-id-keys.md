@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2956ce36ab851de6dd4a6c0725044cf832c213a0
-ms.openlocfilehash: 16a735bf5c0c85a41b960c20dc9ff8877f9a3855
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 321b1630680f8bd4271f863b2cbe39be1a00cb89
 
 
 ---
@@ -28,7 +28,7 @@ Zum Erstellen und Verwalten der SQL-Datenbank über den Code müssen Sie Ihre Ap
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen aus einer Anwendung
 Die aktuelle Version von [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) muss installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
-Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung und der Dienstprinzipal erstellt, den wir zum Authentifizieren der C#-App benötigen. Das Skript gibt Werte aus, die für das vorhergehende C#-Beispiel erforderlich sind. Ausführliche Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../resource-group-authenticate-service-principal.md).
+Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung und der Dienstprinzipal erstellt, den wir zum Authentifizieren der C#-App benötigen. Das Skript gibt Werte aus, die für das vorhergehende C#-Beispiel erforderlich sind. Ausführliche Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
     # Sign in to Azure.
     Add-AzureRmAccount
@@ -78,6 +78,6 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: milanga;cenkdin;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 63669ba827771c75937568276f32b130980f3f65
-ms.openlocfilehash: e236c31e7fbce304ceaa069235b23efb180fb111
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 8321f677d344109e35da3d8ba1109d8bece70db1
 
 
 ---
@@ -43,7 +43,7 @@ Aktualisieren Sie Media Services, damit der sekundäre Speicherzugriffsschlüsse
 * Azure-Portal: Um die Werte für den Namen und den Schlüssel zu suchen, öffnen Sie das Azure-Portal und wählen Ihr Konto aus. Das Fenster „Einstellungen“ wird auf der rechten Seite angezeigt. Wählen Sie im Fenster „Einstellungen“ die Option „Schlüssel“ aus. Je nachdem, welcher Speicherschlüssel mit Media Services synchronisiert werden soll, klicken Sie auf die Schaltfläche für das Synchronisieren des primären oder des sekundären Schlüssels. Verwenden Sie in diesem Fall den sekundären Schlüssel.
 * Mit der Media Services REST-API.
 
-Im folgenden Codebeispiel wird veranschaulicht, wie die Abfrage https://endpoint/*subscriptionId*/services/mediaservices/Accounts/*accountName*/StorageAccounts/*storageAccountName*/Key erstellt wird, um den angegebenen Speicherschlüssel mit Media Services zu synchronisieren. In diesem Fall wird der Wert des sekundären Speicherschlüssels verwendet. Weitere Informationen finden Sie unter [Vorgehensweise: Verwenden der Media Services-Verwaltungs-REST-API](http://msdn.microsoft.com/library/azure/dn167656.aspx).
+Im folgenden Codebeispiel wird veranschaulicht, wie die Abfrage https://endpoint/*subscriptionId*/services/mediaservices/Accounts/*accountName*/StorageAccounts/*storageAccountName*/Key erstellt wird, um den angegebenen Speicherschlüssel mit Media Services zu synchronisieren. In diesem Fall wird der Wert des sekundären Speicherschlüssels verwendet. Weitere Informationen finden Sie unter [Vorgehensweise: Verwenden der Media Services-Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/media/management/how-to-use-media-services-management-rest-api).
 
     public void UpdateMediaServicesWithStorageAccountKey(string mediaServicesAccount, string storageAccountName, string storageAccountKey)
     {
@@ -165,6 +165,6 @@ Wir möchten folgenden Personen für ihre Beiträge zur Erstellung dieses Dokume
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

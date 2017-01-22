@@ -1,19 +1,23 @@
 ---
-title: Anzeigen der aggregierten Integrität für Azure Service Fabric-Entitäten | Microsoft Docs
-description: Beschreibt, wie Sie die aggregierte Integrität von Azure Service Fabric-Entitäten abfragen, anzeigen und auswerten, indem Sie Integritätsabfragen und allgemeine Abfragen nutzen.
+title: "Anzeigen der aggregierten Integrität für Azure Service Fabric-Entitäten | Microsoft Docs"
+description: "Beschreibt, wie Sie die aggregierte Integrität von Azure Service Fabric-Entitäten abfragen, anzeigen und auswerten, indem Sie Integritätsabfragen und allgemeine Abfragen nutzen."
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2016
+ms.date: 01/12/2017
 ms.author: oanapl
+translationtype: Human Translation
+ms.sourcegitcommit: 2573f300231ceb080343dad5c1c2aa65cc31c59e
+ms.openlocfilehash: f62a7a8f594c67cac687159d72bfdb00a3355025
+
 
 ---
 # <a name="view-service-fabric-health-reports"></a>Anzeigen von Service Fabric-Integritätsberichten
@@ -55,27 +59,27 @@ Ansicht des Clusters mit dem Service Fabric Explorer:
 
 > [!NOTE]
 > Erfahren Sie mehr über den [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-> 
-> 
+>
+>
 
 ## <a name="health-queries"></a>Integritätsabfragen
 Service Fabric macht für jeden unterstützten [Entitätstyp](service-fabric-health-introduction.md#health-entities-and-hierarchy)Integritätsabfragen verfügbar. Darauf kann über die API (Methoden finden Sie unter **FabricClient.HealthManager**), mit PowerShell-Cmdlets und mit REST zugegriffen werden. Mit diesen Abfragen werden vollständige Integritätsinformationen zur Entität zurückgegeben: der zusammengefasste Integritätsstatus, Integritätsereignisse der Entität, untergeordnete Integritätsstatus (falls verfügbar) und Fehlerauswertungen, sofern Fehler für die Entität auftreten.
 
 > [!NOTE]
 > Eine Integritätsentität wird zurückgegeben, wenn sie im Integritätsspeicher vollständig aufgefüllt wurde. Die Entität muss aktiv sein (nicht gelöscht) und einen Systembericht aufweisen. Außerdem müssen für ihre übergeordneten Entitäten in der Hierarchiekette ebenfalls Systemberichte vorliegen. Falls eine dieser Bedingungen nicht erfüllt ist, geben die Integritätsabfragen eine Ausnahme mit Informationen dazu zurück, warum die Entität nicht zurückgegeben wurde.
-> 
-> 
+>
+>
 
 Die Integritätsabfragen müssen den Entitätsbezeichner übergeben, der sich nach dem Entitätstyp richtet. Die Abfragen akzeptieren optionale Integritätsrichtlinienparameter. Wenn keine Integritätsrichtlinien angegeben werden, werden die [Integritätsrichtlinien](service-fabric-health-introduction.md#health-policies) aus dem Cluster- oder Anwendungsmanifest für die Auswertung verwendet. Außerdem akzeptieren die Abfragen auch Filter für die Teilrückgabe von untergeordneten Elementen oder Ereignissen, sofern die angegebenen Filter jeweils berücksichtigt werden.
 
 > [!NOTE]
 > Die Ausgabefilter werden auf der Serverseite angewendet, damit die Antwortgröße der Nachricht reduziert wird. Es wird empfohlen, die Ausgabefilter zum Eingrenzen der zurückgegebenen Daten zu verwenden, anstatt Filter auf der Clientseite anzuwenden.
-> 
-> 
+>
+>
 
 Die Integrität einer Entität enthält Folgendes:
 
-* Den zusammengefassten Integritätsstatus der Entität. Dieser wird vom Integritätsspeicher anhand der Berichte zur Entitätsintegrität, anhand des Integritätsstatus der untergeordneten Elemente (falls zutreffend) und anhand der Integritätsrichtlinien berechnet. Erfahren Sie mehr über die [Auswertung der Entitätsintegrität](service-fabric-health-introduction.md#entity-health-evaluation).  
+* Den zusammengefassten Integritätsstatus der Entität. Dieser wird vom Integritätsspeicher anhand der Berichte zur Entitätsintegrität, anhand des Integritätsstatus der untergeordneten Elemente (falls zutreffend) und anhand der Integritätsrichtlinien berechnet. Erfahren Sie mehr über die [Auswertung der Entitätsintegrität](service-fabric-health-introduction.md#health-evaluation).  
 * Die Integritätsereignisse der Entität
 * Die Integritätsstatusauflistung für alle untergeordneten Elemente für die Entitäten, denen Elemente untergeordnet sein können. Die Integritätsstatusangaben enthalten Entitätsbezeichner und den aggregierten Integritätsstatus. Rufen Sie zum Erhalten der vollständigen Integrität für ein untergeordnetes Element die Abfrageintegrität für den untergeordneten Entitätstyp auf, und übergeben Sie den Bezeichner des untergeordneten Elements.
 * Wenn die Entität nicht fehlerfrei ist, die Fehlerauswertungen in Verbindung mit dem Bericht, über den der Status der Entität ausgelöst wurde.
@@ -85,7 +89,7 @@ Gibt die Integrität der Clusterentität zurück und enthält die Integritätsst
 
 * [Optional] Die Clusterintegritätsrichtlinie zum Auswerten der Knoten und der Clusterereignisse.
 * [Optional] Die Zuordnung der Anwendungsintegritätsrichtlinien mit den Integritätsrichtlinien zum Außerkraftsetzen der Richtlinien für das Anwendungsmanifest.
-* [Optional] Filter für Ereignisse, Knoten und Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse, Knoten und Anwendungen – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse, Knoten und Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse, Knoten und Anwendungen – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Erstellen Sie zum Abrufen der Clusterintegrität ein Element vom Typ `FabricClient` , und rufen Sie die Methode [GetClusterHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getclusterhealthasync.aspx) für das dazugehörige Element vom Typ **HealthManager**auf.
@@ -215,7 +219,7 @@ Gibt die Integrität einer Knotenentität zurück und enthält die auf dem Knote
 
 * [Erforderlich] Der Knotenname, mit dem der Knoten identifiziert wird.
 * [Optional] Einstellungen zur Clusterintegritätsrichtlinie zum Auswerten der Integrität.
-* [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Erstellen Sie zum Abrufen der Knotenintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetNodeHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getnodehealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf.
@@ -284,7 +288,7 @@ Gibt die Integrität einer Anwendungsentität zurück. Enthält die Integritäts
 
 * [Erforderlich] Der Anwendungsname (URI) zum Identifizieren der Anwendung.
 * [Optional] Die Anwendungsintegritätsrichtlinie zum Außerkraftsetzen der Anwendungsmanifestrichtlinien.
-* [Optional] Filter für Ereignisse, Dienste und bereitgestellte Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse, Dienste und bereitgestellten Anwendungen werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse, Dienste und bereitgestellte Anwendungen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse, Dienste und bereitgestellten Anwendungen werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Erstellen Sie zum Abrufen der Anwendungsintegrität ein Element vom Typ `FabricClient` , und rufen Sie die [GetApplicationHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getapplicationhealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf.
@@ -430,7 +434,7 @@ Gibt die Integrität einer Dienstentität zurück. Enthält die Integritätsstat
 
 * [Erforderlich] Der Dienstname (URI) zum Identifizieren des Diensts.
 * [Optional] Die Anwendungsintegritätsrichtlinie zum Außerkraftsetzen der Anwendungsmanifestrichtlinie.
-* [Optional] Filter für Ereignisse und Partitionen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und Partitionen werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse und Partitionen, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und Partitionen werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Erstellen Sie zum Abrufen der Dienstintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetServiceHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getservicehealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf.
@@ -532,7 +536,7 @@ Gibt die Integrität einer Partitionsentität zurück. Enthält die Angaben zum 
 
 * [Erforderlich] Die Partitions-ID (GUID) zur Identifizierung der Partition.
 * [Optional] Die Anwendungsintegritätsrichtlinie zum Außerkraftsetzen der Anwendungsmanifestrichtlinie.
-* [Optional] Filter für Ereignisse und Replikate, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und Replikate werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse und Replikate, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und Replikate werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Erstellen Sie zum Abrufen der Partitionsintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetPartitionHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getpartitionhealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Erstellen Sie zum Angeben optionaler Parameter das Element [PartitionHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.partitionhealthquerydescription.aspx).
@@ -593,7 +597,7 @@ Gibt die Integrität eines zustandsbehafteten Dienstreplikats oder einer zustand
 
 * [Erforderlich] Die Partitions-ID (GUID) und die Replikat-ID zum Identifizieren des Replikats.
 * [Optional] Die Anwendungsintegritätsrichtlinien-Parameter zum Überschreiben der Anwendungsmanifestrichtlinien.
-* [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Erstellen Sie zum Abrufen der Replikatintegrität über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetReplicaHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getreplicahealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Erweiterte Parameter können mit [ReplicaHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.replicahealthquerydescription.aspx)angegeben werden.
@@ -636,7 +640,7 @@ Gibt die Integrität einer Anwendung zurück, die auf einer Knotenentität berei
 
 * [Erforderlich] Der Anwendungsname (URI) und der Knotenname (Zeichenfolge) zum Identifizieren der bereitgestellten Anwendung.
 * [Optional] Die Anwendungsintegritätsrichtlinie zum Außerkraftsetzen der Anwendungsmanifestrichtlinien.
-* [Optional] Filter für Ereignisse und bereitgestellte Dienstpakete, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und bereitgestellten Dienste werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse und bereitgestellte Dienstpakete, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse und bereitgestellten Dienste werden – unabhängig vom Filter – zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Um die Integrität für eine auf einem Knoten bereitgestellte Anwendung über die API abzurufen, erstellen Sie ein Element vom Typ `FabricClient` , und rufen Sie die [GetDeployedApplicationHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Optionale Parameter können mit [DeployedApplicationHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.deployedapplicationhealthquerydescription.aspx)angegeben werden.
@@ -689,7 +693,7 @@ Gibt die Integrität einer bereitgestellten Dienstpaketentität zurück. Eingabe
 
 * [Erforderlich] Der Anwendungsname (URI), der Knotenname (Zeichenfolge) und der Dienstmanifestname (Zeichenfolge) zum Identifizieren des bereitgestellten Dienstpakets.
 * [Optional] Die Anwendungsintegritätsrichtlinie zum Außerkraftsetzen der Anwendungsmanifestrichtlinie.
-* [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
+* [Optional] Filter für Ereignisse, die angeben, welche Einträge von Interesse sind und im Ergebnis zurückgegeben werden sollen (z. B. nur Fehler oder sowohl Warnungen als auch Fehler). Alle Ereignisse – unabhängig vom Filter – werden zum Auswerten der aggregierten Entitätsintegrität verwendet.
 
 ### <a name="api"></a>API
 Erstellen Sie zum Abrufen der Integrität eines bereitgestellten Dienstpakets über die API ein Element vom Typ `FabricClient` , und rufen Sie die [GetDeployedServicePackageHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync.aspx) -Methode für das dazugehörige HealthManager-Element auf. Optionale Parameter können mit [DeployedServicePackageHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.deployedservicepackagehealthquerydescription.aspx)angegeben werden.
@@ -987,11 +991,11 @@ Sie können den Clusterintegritätsblock mit einer [GET-Anforderung](https://msd
 Mit den allgemeinen Abfragen wird die Liste der Service Fabric-Entitäten des angegebenen Typs zurückgegeben. Sie werden über die API (über die Methoden unter **FabricClient.QueryManager**), über PowerShell-Cmdlets und über REST verfügbar gemacht. Mit diesen Abfragen werden Unterabfragen aus mehreren Komponenten zusammengefasst. Eine davon ist der [Integritätsspeicher](service-fabric-health-introduction.md#health-store), in dem der aggregierte Integritätszustand für jedes Abfrageergebnis aufgefüllt wird.  
 
 > [!NOTE]
-> Mit den allgemeinen Abfragen wird der aggregierte Integritätsstatus der Entität zurückgegeben. Sie enthalten keine umfassenden Integritätsdaten. Wenn eine Entität fehlerhaft ist, können Sie mit Integritätsabfragen alle Informationen zur Integrität abrufen, z. B. Ereignisse, Integritätsstatusangaben untergeordneter Elemente und Fehlerauswertungen.
-> 
-> 
+> Mit den allgemeinen Abfragen wird der aggregierte Integritätsstatus der Entität zurückgegeben. Sie enthalten keine umfassenden Integritätsdaten. Wenn eine Entität fehlerhaft ist, können Sie mit Integritätsabfragen alle Informationen zur Integrität abrufen, z. B. Ereignisse, Integritätsstatusangaben untergeordneter Elemente und Fehlerauswertungen.
+>
+>
 
-Wenn allgemeine Abfragen einen unbekannten Integritätsstatus für eine Entität zurückgeben, ist es möglich, dass der Integritätsspeicher keine vollständigen Daten über die Entität besitzt. Es ist auch möglich, dass eine Unterabfrage an den Integritätsspeicher nicht erfolgreich war (z. B. ein Kommunikationsfehler aufgetreten ist oder der Integritätsspeicher gedrosselt wurde). Verwenden Sie danach eine Integritätsabfrage für die Entität. Wenn bei der Unterabfrage vorübergehende Fehler, beispielsweise Netzwerkfehler, aufgetreten sind, ist diese nachfolgende Abfrage möglicherweise erfolgreich. Sie kann Ihnen auch weitere Details aus dem Integritätsspeicher zu den Gründen bereitstellen, aus denen die Entität nicht verfügbar gemacht wird.
+Wenn allgemeine Abfragen einen unbekannten Integritätsstatus für eine Entität zurückgeben, ist es möglich, dass der Integritätsspeicher keine vollständigen Daten über die Entität besitzt. Es ist auch möglich, dass eine Unterabfrage an den Integritätsspeicher nicht erfolgreich war (z. B. ein Kommunikationsfehler aufgetreten ist oder der Integritätsspeicher gedrosselt wurde). Verwenden Sie danach eine Integritätsabfrage für die Entität. Wenn bei der Unterabfrage vorübergehende Fehler, beispielsweise Netzwerkfehler, aufgetreten sind, ist diese nachfolgende Abfrage möglicherweise erfolgreich. Sie kann Ihnen auch weitere Details aus dem Integritätsspeicher zu den Gründen bereitstellen, aus denen die Entität nicht verfügbar gemacht wird.
 
 Die Abfragen, die **HealthState** für Entitäten enthalten, lauten:
 
@@ -1019,8 +1023,8 @@ Die Abfragen, die **HealthState** für Entitäten enthalten, lauten:
 
 > [!NOTE]
 > Einige Abfragen geben unter Umständen auf Seiten aufgeteilte Ergebnisse zurück. Die Rückgabe dieser Abfragen ist eine von [PagedList<T>](https://msdn.microsoft.com/library/azure/mt280056.aspx) abgeleitete Liste. Falls die Ergebnisse nicht in eine Nachricht passen, wird nur eine Seite zurückgegeben, und mit einem ContinuationToken (Fortsetzungstoken) wird nachverfolgt, wo die Enumeration beendet wurde. Sie sollten die gleiche Abfrage wiederholen und dabei das Fortsetzungstoken aus der vorherigen Abfrage übergeben, um weitere Ergebnisse zu erhalten.
-> 
-> 
+>
+>
 
 ### <a name="examples"></a>Beispiele
 Mit dem folgenden Code werden die fehlerhaften Anwendungen im Cluster abgerufen:
@@ -1067,7 +1071,7 @@ HealthState            : Warning
 ```
 
 ## <a name="cluster-and-application-upgrades"></a>Cluster- und Anwendungsupgrades
-Während eines überwachten Upgrades von Cluster und Anwendung wird von Service Fabric die Integrität überprüft, um sicherzustellen, dass alles fehlerfrei bleibt. Wenn eine Entität von den konfigurierten Integritätsrichtlinien als fehlerhaft ausgewertet wird, wendet das Upgrade spezifische Richtlinien an, um die nächste Aktion festzulegen. Das Upgrade kann angehalten werden, um eine Benutzerinteraktion (z. B. das Beheben von Fehlerbedingungen oder das Ändern von Richtlinien) zu ermöglichen, oder es kann automatisch einen Rollback auf die vorherige, einwandfreie Version durchführen.
+Während eines überwachten Upgrades von Cluster und Anwendung wird von Service Fabric die Integrität überprüft, um sicherzustellen, dass alles fehlerfrei bleibt. Wenn eine Entität von den konfigurierten Integritätsrichtlinien als fehlerhaft ausgewertet wird, wendet das Upgrade spezifische Richtlinien an, um die nächste Aktion festzulegen. Das Upgrade kann angehalten werden, um eine Benutzerinteraktion (z. B. das Beheben von Fehlerbedingungen oder das Ändern von Richtlinien) zu ermöglichen, oder es kann automatisch einen Rollback auf die vorherige, einwandfreie Version durchführen.
 
 Während des Upgrades eines *Clusters* können Sie den Clusterupgradestatus abrufen. Zum Upgradestatus gehören auch Fehlerauswertungen, die anzeigen, was im Cluster fehlerhaft ist. Falls für das Upgrade aufgrund von Integritätsproblemen ein Rollback durchgeführt wird, werden im Upgradestatus die letzten Gründe für Fehler beibehalten und können abgerufen werden. Mit diesen Informationen können Administratoren untersuchen, was falsch gelaufen ist, nachdem das Upgrade zurückgesetzt oder angehalten wurde.
 
@@ -1134,8 +1138,8 @@ Wenn im Cluster oder in einer Anwendung ein Problem vorliegt, können Sie sich d
 
 > [!NOTE]
 > Die Fehlerauswertungen geben Aufschluss über den ersten Grund für den aktuellen Integritätszustand der Entität. Der Zustand ist unter Umständen auf mehrere andere Ereignisse zurückzuführen, aber diese werden bei der Auswertung nicht berücksichtigt. Sehen Sie sich die Detailinformationen der Integritätsentitäten an, um mehr Informationen zu erhalten und alle Fehlerberichte im Cluster zu ermitteln.
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwenden von Systemintegritätsberichten für die Problembehandlung](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
@@ -1148,6 +1152,8 @@ Wenn im Cluster oder in einer Anwendung ein Problem vorliegt, können Sie sich d
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Jan17_HO2-->
 
 

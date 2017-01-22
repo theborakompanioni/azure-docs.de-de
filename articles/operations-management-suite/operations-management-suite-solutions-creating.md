@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: 63b95e205a48e11a5a0717c07ad49cccc8da91b4
+ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
+ms.openlocfilehash: ab33a7610b8e7bbf64e9f1bfde3753f95956a82f
 
 
 ---
@@ -34,7 +34,7 @@ Verwaltungslösungen in der OMS umfassen mehrere Ressourcen, die ein bestimmtes 
 Eine Verwaltungslösung kann beispielsweise ein [Azure Automation-Runbook](../automation/automation-intro.md) enthalten, das basierend auf einem [Zeitplan](../automation/automation-schedules.md) Daten für das Log Analytics-Repository sammelt und eine [Ansicht](../log-analytics/log-analytics-view-designer.md) verwendet, um verschiedene Visualisierungen der gesammelten Daten bereitzustellen.  Der gleiche Zeitplan wird möglicherweise auch von einer anderen Lösung verwendet.  Als Ersteller der Verwaltungslösung definieren Sie alle drei Ressourcen, geben aber an, dass das Runbook und die Ansicht automatisch entfernt werden sollen, wenn die Lösung entfernt wird.    Sie definieren auch den Zeitplan, geben aber an, dass dieser beim Entfernen der Lösung beibehalten werden soll, für den Fall, dass der Plan noch von der anderen Lösung verwendet wird.
 
 ## <a name="management-solution-files"></a>Dateien der Verwaltungslösung
-Verwaltungslösungen werden als [Resource Manager-Vorlagen](../resource-manager-template-walkthrough.md) implementiert.  Wenn Sie lernen möchten, wie Sie Verwaltungslösungen erstellen, ist der wichtigste Punkt das [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md).  In diesem Artikel erhalten Sie wichtige Informationen zu Vorlagen, die für Lösungen verwendet werden, und erfahren, wie Sie typische Lösungsressourcen definieren.
+Verwaltungslösungen werden als [Resource Manager-Vorlagen](../azure-resource-manager/resource-manager-template-walkthrough.md) implementiert.  Wenn Sie lernen möchten, wie Sie Verwaltungslösungen erstellen, ist der wichtigste Punkt das [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md).  In diesem Artikel erhalten Sie wichtige Informationen zu Vorlagen, die für Lösungen verwendet werden, und erfahren, wie Sie typische Lösungsressourcen definieren.
 
 Die grundlegende Struktur einer Verwaltungslösung entspricht einer [Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md#template-format), die wie folgt aussieht.  Jeder der folgenden Abschnitte beschreibt die Elemente auf oberster Ebene und die zugehörigen Inhalte in einer Lösung.  
 
@@ -181,7 +181,7 @@ Das Element **resources** definiert die verschiedenen Ressourcen, die in Ihrer V
     ]
 
 ### <a name="dependencies"></a>Abhängigkeiten
-Die **dependsOn**-Elemente geben eine [Abhängigkeit](../resource-group-define-dependencies.md) auf einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](operations-management-suite-solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](operations-management-suite-solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
+Die **dependsOn**-Elemente geben eine [Abhängigkeit](../azure-resource-manager/resource-group-define-dependencies.md) auf einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](operations-management-suite-solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](operations-management-suite-solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
 
 ### <a name="oms-workspace-and-automation-account"></a>OMS-Arbeitsbereich und Automation-Konto
 Verwaltungslösungen erfordern einen [OMS-Arbeitsbereich](../log-analytics/log-analytics-manage-access.md) für Ansichten und ein [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen.  Diese müssen verfügbar sein, bevor die Ressourcen in der Lösung erstellt werden und sie sollten nicht in der Lösung selbst definiert werden.  Der Benutzer wird [einen Arbeitsbereich und ein Konto angeben](operations-management-suite-solutions.md#oms-workspace-and-automation-account), wenn dieser Ihre Lösung bereitstellt. Als Autor sollten Sie aber die nachstehenden Punkte beachten.
@@ -228,7 +228,7 @@ Dies würde einen Namen wie folgt auflösen.
 
 
 ### <a name="dependencies"></a>Abhängigkeiten
-Die Lösungsressource muss über eine [Abhängigkeit](../resource-group-define-dependencies.md) auf jeder anderen Ressource in der Lösung verfügen, da sie vorhanden sein müssen, bevor die Lösung erstellt werden kann.  Hierzu fügen Sie im Element **dependsOn** einen Eintrag für jede Ressource hinzu.
+Die Lösungsressource muss über eine [Abhängigkeit](../azure-resource-manager/resource-group-define-dependencies.md) auf jeder anderen Ressource in der Lösung verfügen, da sie vorhanden sein müssen, bevor die Lösung erstellt werden kann.  Hierzu fügen Sie im Element **dependsOn** einen Eintrag für jede Ressource hinzu.
 
 ### <a name="properties"></a>Eigenschaften
 Die Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.  Dies umfasst die Ressourcen, die in der Lösung enthalten sind oder von dieser referenziert werden. Dadurch wird definiert, wie die Ressource nach Installation der Lösung verwaltet wird.  Jede Ressource in der Lösung muss entweder in der Eigenschaft **referencedResources** oder in der Eigenschaft **containedResources** aufgelistet werden.
@@ -268,6 +268,6 @@ Bevor Sie Ihre Verwaltungslösung bereitstellen, empfiehlt es sich, diese mithil
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

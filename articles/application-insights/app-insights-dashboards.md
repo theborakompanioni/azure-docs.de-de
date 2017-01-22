@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 369feec4d8d5234ffcde9d4f75811f3847d88834
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
 
 
 ---
@@ -114,7 +114,7 @@ Das Blatt „Übersicht“ ist der Ausgangspunkt für weitere Informationen zu I
 * **Übersicht**: Dient zum Zurückwechseln zum Blatt mit der App-Übersicht.
 * **Aktivitätsprotokoll**: Enthält Warnungen und Azure-Verwaltungsereignisse.
 * [**Zugriffssteuerung**](app-insights-resources-roles-access-control.md): Ermöglicht den Zugriff für Teammitglieder und andere Personen.
-* [**Tags**](../resource-group-using-tags.md): Verwenden Sie Tags zum Gruppieren Ihrer App mit anderen Apps.
+* [**Tags**](../azure-resource-manager/resource-group-using-tags.md): Verwenden Sie Tags zum Gruppieren Ihrer App mit anderen Apps.
 
 UNTERSUCHEN
 
@@ -141,7 +141,7 @@ KONFIGURIEREN
 
 EINSTELLUNGEN
 
-* [**Sperren**](../resource-group-lock-resources.md): Sperren Sie Azure-Ressourcen.
+* [**Sperren**](../azure-resource-manager/resource-group-lock-resources.md): Sperren Sie Azure-Ressourcen.
 * [**Automatisierungsskript**](app-insights-powershell.md): Exportieren Sie eine Definition der Azure-Ressource, um diese als Vorlage für die Erstellung neuer Ressourcen zu verwenden.
 
 SUPPORT
@@ -157,6 +157,6 @@ SUPPORT
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

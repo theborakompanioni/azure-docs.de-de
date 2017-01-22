@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: e5a090acb88db0139ad1cea627060e5076ece1b4
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 01a554815a48cf1b81037eaa2f55bc4f07838721
 
 
 ---
@@ -235,7 +235,7 @@ Nachdem einige Minuten die Meldung „Auf Abschluss der Bereitstellung wird gewa
     data:    requestedServiceObjectiveName  String        S0
     info:    group deployment create command OKx
 
-Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut.  Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-troubleshoot-deployments-cli.md) .
+Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut.  Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-common-deployment-errors.md) .
 
 Geben Sie an der Befehlszeilenschnittstelle den folgenden Befehl ein, um der Ressourcengruppe, die Sie für die Testumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
 
@@ -278,7 +278,7 @@ Nachdem einige Minuten lang ein blinkender Cursor zu sehen war, gibt der Befehl 
 
     Outputs           :
 
-  Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut.  Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-troubleshoot-deployments-powershell.md) .
+  Wenn der Befehl nicht erfolgreich ausgeführt wird, lösen Sie alle Fehlermeldungen auf, und versuchen Sie es erneut.  Häufig werden Probleme durch Parameterwerte verursacht, die nicht den Namenseinschränkungen für Azure-Ressourcen entsprechen. Weitere Tipps zur Problembehandlung finden Sie im Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-common-deployment-errors.md) .
 
   Geben Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl ein, um der Ressourcengruppe, die Sie für die Testumgebung erstellt haben, Ressourcen bereitzustellen. Ersetzen Sie dabei [path] durch den Pfad zu den Dateien, die Sie in den vorherigen Schritten gespeichert haben.
 
@@ -364,6 +364,6 @@ Jetzt wissen Sie, wie einfach es ist, Entwicklungs- und Testumgebungen zu erstel
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

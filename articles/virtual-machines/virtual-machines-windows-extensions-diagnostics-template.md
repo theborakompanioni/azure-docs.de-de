@@ -1,13 +1,13 @@
 ---
-title: Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen | Microsoft Docs
+title: "Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen | Microsoft Docs"
 description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um einen neuen virtuellen Windows-Computer mit Azure-Diagnoseerweiterung zu erstellen.
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: sbtron
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,10 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
+translationtype: Human Translation
+ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
+ms.openlocfilehash: b84b4c0bd31d2e0bebafa2053a725e5e78bc3c9f
+
 
 ---
 # <a name="create-a-windows-virtual-machine-with-monitoring-and-diagnostics-using-azure-resource-manager-template"></a>Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen
-Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure-Ressourcen-Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](virtual-machines-windows-extensions-authoring-templates.md) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.  
+Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure-Ressourcen-Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Hinzufügen der Azure-Diagnoseerweiterung zur VM-Ressourcendefinition
 Um die Diagnoseerweiterung auf einem virtuellen Windows-Computer zu aktivieren, müssen Sie die Erweiterung als VM-Ressource in der Ressourcen-Manager-Vorlage hinzufügen.
@@ -76,7 +80,7 @@ Das Element *settings* enhält Konfigurationseigenschaften für die Erweiterung,
 Die Eigenschaften in *protectedSettings* (zuweilen als „private Konfiguration“ bezeichnet) können festgelegt, danach jedoch nicht eingelesen werden. Da *protectedSettings* schreibgeschützt ist, eignet sich diese Eigenschaft sehr gut zum Speichern von geheimen Informationen wie etwa des Schlüssels für das Speicherkonto, in das die Diagnosedaten geschrieben werden.    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Angeben des Diagnosespeicherkontos als Parameter
-Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vorhandensein der beiden Parameter *existingdiagnosticsStorageAccountName* und *existingdiagnosticsStorageResourceGroup* voraus, um das Diagnosespeicherkonto anzugeben, in dem Diagnosedaten gespeichert werden. Wenn Sie das Diagnosespeicherkonto als Parameter angeben, lässt es sich für verschiedene Umgebungen ganz einfach ändern – so können Sie z. B. ein Konto zum Testen und ein anderes für Ihre Produktionsbereitstellung verwenden.  
+Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vorhandensein der beiden Parameter *existingdiagnosticsStorageAccountName* und *existingdiagnosticsStorageResourceGroup* voraus, um das Diagnosespeicherkonto anzugeben, in dem Diagnosedaten gespeichert werden. Wenn Sie das Diagnosespeicherkonto als Parameter angeben, lässt es sich für verschiedene Umgebungen ganz einfach ändern – so können Sie z. B. ein Konto zum Testen und ein anderes für Ihre Produktionsbereitstellung verwenden.  
 
         "existingdiagnosticsStorageAccountName": {
             "type": "string",
@@ -88,7 +92,7 @@ Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vor
             "type": "string",
             "metadata": {
         "description": "The resource group for the storage account specified in existingdiagnosticsStorageAccountName"
-            }
+              }
         }
 
 Es empfiehlt sich, ein Diagnosespeicherkonto in einer anderen Ressourcengruppe als der Ressourcengruppe für den virtuellen Computer anzugeben. Eine Ressourcengruppe kann als Bereitstellungseinheit mit eigener Lebensdauer angesehen werden. Ein virtueller Computer kann bereitgestellt und bei Konfigurationsupdates erneut bereitgestellt werden. Möglicherweise möchten Sie die Diagnosedaten jedoch für alle VM-Bereitstellungen weiterhin im gleichen Speicherkonto speichern. Indem Sie das Speicherkonto in einer anderen Ressourcengruppe bereitstellen, können Daten aus verschiedenen VM-Bereitstellungen in diesem Konto gespeichert werden, und die Behandlung von Problemen über die verschiedenen Versionen hinweg wird vereinfacht.
@@ -142,7 +146,7 @@ Die oben stehende Metrikkonfiguration generiert Tabellen mit den folgenden Benen
 
 * **WADMetrics:** Standardpräfix für alle WADMetrics-Tabellen.
 * **PT1H** oder **PT1M**: Weist darauf hin, dass die Tabelle Daten enthält, die während einer Stunde bzw. einer Minute aggregiert wurden.
-* **P10D:** gibt an, dass die Tabelle Daten für einen Zeitraum von 10 Tagen ab dem Tag enthält, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
+* **P10D:** gibt an, dass die Tabelle Daten für einen Zeitraum von 10 Tagen ab dem Tag enthält, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
 * **V2S** : Zeichenfolgenkonstante.
 * **jjjjmmdd:** das Datum, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
 
@@ -161,9 +165,12 @@ Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine vollständige Beispielvorlage für einen virtuellen Windows-Computer mit Diagnoseerweiterung finden Sie unter [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* Stellen Sie die Resource Manager-Vorlage über [Azure PowerShell](virtual-machines-windows-ps-manage.md) oder die [Azure-Befehlszeile](virtual-machines-linux-cli-deploy-templates.md) bereit.
-* Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md)
+* Stellen Sie die Resource Manager-Vorlage über [Azure PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder die [Azure-Befehlszeile](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereit.
+* Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

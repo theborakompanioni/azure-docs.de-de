@@ -1,39 +1,43 @@
 ---
-title: Entwickeln von Java MapReduce-Programmen für Linux-basiertes HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie MapReduce-Programme entwickeln und in Linux-basiertem HDInsight bereitstellen können.
+title: "Entwickeln von Java MapReduce-Programmen für Linux-basiertes HDInsight | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie MapReduce-Programme entwickeln und in Linux-basiertem HDInsight bereitstellen können."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: Blackmist
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
-
+ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 01/17/2017
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: a63cedc57b863d03f65b99d4c2490d5e8aec25b5
+
 
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight-linux"></a>Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight (Linux)
 In diesem Dokument wird erläutert, wie Apache Maven zum Erstellen einer MapReduce-Anwendung und zum anschließenden Bereitstellen und Ausführen der Anwendung auf einem Linux-basierten Hadoop-Cluster in HDInsight verwendet wird.
 
-## <a name="<a-name="prerequisites"></a>prerequisites"></a><a name="prerequisites"></a>Voraussetzungen
+## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 oder höher (oder eine entsprechende Anwendung wie OpenJDK)
 * [Apache Maven](http://maven.apache.org/)
 * **Ein Azure-Abonnement**
 * **Azure-Befehlszeilenschnittstelle**
-  
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ## <a name="configure-environment-variables"></a>Konfigurieren von Umgebungsvariablen
 Bei der Installation von Java und dem JDK können die folgenden Umgebungsvariablen festgelegt werden. Sie sollten dennoch prüfen, ob die Variablen vorhanden sind und korrekte Werte für Ihr System enthalten.
 
-* **JAVA_HOME** – sollte auf das Verzeichnis verweisen, in dem die Java-Laufzeitumgebung (Java Runtime Environment, JRE) installiert ist. Für ein OS X-, Unix- oder Linux-System sollte z. B. ein Wert wie `/usr/lib/jvm/java-7-oracle` verwendet werden. Unter Windows sollte der Wert so ähnlich sein wie `c:\Program Files (x86)\Java\jre1.7`
+* **JAVA_HOME** – sollte auf das Verzeichnis verweisen, in dem die Java-Laufzeitumgebung (Java Runtime Environment, JRE) installiert ist. Für ein OS X-, Unix- oder Linux-System sollte z. B. ein Wert wie `/usr/lib/jvm/java-7-oracle` verwendet werden. Unter Windows sollte der Wert so ähnlich sein wie `c:\Program Files (x86)\Java\jre1.7`
 * **PATH** – sollte die folgenden Pfade enthalten:
   
   * **JAVA_HOME** (oder den entsprechenden Pfad)
@@ -62,15 +66,15 @@ Bei der Installation von Java und dem JDK können die folgenden Umgebungsvariabl
           <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-mapreduce-client-common</artifactId>
-          <version>2.5.1</version>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapreduce-client-common</artifactId>
+            <version>2.5.1</version>
           <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>org.apache.hadoop</groupId>
-          <artifactId>hadoop-common</artifactId>
-          <version>2.5.1</version>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.5.1</version>
           <scope>provided</scope>
         </dependency>
    
@@ -80,26 +84,26 @@ Bei der Installation von Java und dem JDK können die folgenden Umgebungsvariabl
 2. Fügen Sie der Datei **pom.xml** folgenden Code hinzu. Dieser muss sich in der Datei innerhalb der `<project>...</project>`-Tags befinden, z. B. zwischen `</dependencies>` und `</project>`.
    
         <build>
-          <plugins>
+            <plugins>
             <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-shade-plugin</artifactId>
-              <version>2.3</version>
-              <configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
                 <transformers>
-                  <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
                   </transformer>
                 </transformers>
-              </configuration>
-              <executions>
+                </configuration>
+                <executions>
                 <execution>
-                  <phase>package</phase>
-                    <goals>
+                    <phase>package</phase>
+                      <goals>
                       <goal>shade</goal>
-                    </goals>
+                      </goals>
                 </execution>
-              </executions>
-            </plugin>
+                </executions>
+              </plugin>
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
@@ -108,7 +112,7 @@ Bei der Installation von Java und dem JDK können die folgenden Umgebungsvariabl
                <target>1.7</target>
               </configuration>
             </plugin>
-          </plugins>
+            </plugins>
         </build>
    
     Das erste Plug-In konfiguriert das [Maven Shade-Plug-In](http://maven.apache.org/plugins/maven-shade-plugin/), das verwendet wird, um ein Uberjar (wird auch als Fatjar bezeichnet) zu erstellen, das die von der Anwendung benötigten Abhängigkeiten enthält. Zudem wird damit eine Duplizierung von Lizenzen innerhalb des JAR-Pakets verhindert, die bei einigen Systemen Probleme verursachen kann.
@@ -206,7 +210,7 @@ Bei der Installation von Java und dem JDK können die folgenden Umgebungsvariabl
    > 
    > 
 
-## <a name="<a-id="upload"></a>upload-the-jar"></a><a id="upload"></a>Hochladen der JAR-Datei
+## <a name="a-iduploadaupload-the-jar"></a><a id="upload"></a>Hochladen der JAR-Datei
 Verwenden Sie den folgenden Befehl, um die JAR-Datei in den HDInsight-Hauptknoten hochzuladen:
 
     scp wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
@@ -220,7 +224,7 @@ Dadurch werden die Dateien aus dem lokalen System auf den Stammknoten kopiert.
 > 
 > 
 
-## <a name="<a-name="run"></a>run-the-mapreduce-job"></a><a name="run"></a>Ausführen des MapReduce-Auftrags
+## <a name="a-namerunarun-the-mapreduce-job"></a><a name="run"></a>Ausführen des MapReduce-Auftrags
 1. Stellen Sie über SSH eine Verbindung mit HDInsight her, wie in den folgenden Artikeln beschrieben:
    
    * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
@@ -240,7 +244,7 @@ Dadurch werden die Dateien aus dem lokalen System auf den Stammknoten kopiert.
         zelus   1
         zenith  2
 
-## <a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>Nächste Schritte
+## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>Nächste Schritte
 In diesem Dokument haben Sie gelernt, wie ein Java MapReduce-Auftrag entwickelt wird. In den folgenden Dokumenten finden Sie andere Möglichkeiten zum Arbeiten mit HDInsight.
 
 * [Verwenden von Hive mit HDInsight][hdinsight-use-hive]
@@ -268,6 +272,6 @@ Weitere Informationen finden Sie außerdem im [Java Developer Center](https://az
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

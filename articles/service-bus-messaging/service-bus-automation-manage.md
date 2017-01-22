@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/10/2017
 ms.author: magoedte;csand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1912275b05948525486e4e30e2065bd7f63630cb
+ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
+ms.openlocfilehash: 4817cda757b9f85f6225237f79293860c990ca88
 
 
 ---
@@ -31,7 +31,7 @@ Azure Automation bietet ein äußerst zuverlässiges, hoch verfügbares Workflow
 Indem Sie die Aufgaben im Zusammenhang mit der Cloudverwaltung mit Azure Automation automatisieren, verringern Sie den Verwaltungsaufwand und ermöglichen es Ihren IT- und DevOps-Mitarbeitern, sich Aufgaben zu widmen, die einen Mehrwert für Ihr Unternehmen liefern.
 
 ## <a name="how-can-azure-automation-help-manage-azure-service-bus"></a>Wie kann Azure Automation Sie beim Verwalten von Azure Service Bus unterstützen?
-Sie können Service Bus mit Azure Automation verwalten, indem Sie zu diesem Zweck die [Service Bus-REST-API](https://msdn.microsoft.com/library/azure/mt639375.aspx)einsetzen. Sie können PowerShell-Skripts in Azure Automation ausführen, um viele Ihrer Service Bus-Aufgaben mithilfe von REST-API auszuführen. Sie können diese REST-API-Aufrufe in Azure Automation auch mit den Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben in Azure-Diensten und Systemen anderer Hersteller zu automatisieren.
+Sie können Service Bus mit Azure Automation verwalten, indem Sie zu diesem Zweck die [Service Bus-REST-API](https://docs.microsoft.com/rest/api/servicebus/)einsetzen. Sie können PowerShell-Skripts in Azure Automation ausführen, um viele Ihrer Service Bus-Aufgaben mithilfe von REST-API auszuführen. Sie können diese REST-API-Aufrufe in Azure Automation auch mit den Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben in Azure-Diensten und Systemen anderer Hersteller zu automatisieren.
 
 Hier sind einige Beispiele für die Verwendung von PowerShell zum Verwalten von Azure Service Bus aufgeführt:
 
@@ -50,6 +50,6 @@ Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Verwendu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

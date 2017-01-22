@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2016
+ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
-ms.openlocfilehash: 5bbd490925e5e25f10044af55af49daa494ee026
+ms.sourcegitcommit: f156e4d4c5ffddb7e93ebf21baa75864e0e260e9
+ms.openlocfilehash: d00792a4bb19e194dbbcee8b9c11e4a744891388
 
 ---
 
@@ -26,69 +26,14 @@ ms.openlocfilehash: 5bbd490925e5e25f10044af55af49daa494ee026
 > * [PowerShell](dns-getstarted-create-dnszone.md)
 > * [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-dnszone-cli.md)
 
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der plattformübergreifenden, für Windows, Mac und Linux verfügbaren Azure-Befehlszeilenschnittstelle eine DNS-Zone erstellen. Die DNS-Zone kann auch mithilfe von PowerShell oder über das Azure-Portal erstellt werden.
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der plattformübergreifenden, für Windows, Mac und Linux verfügbaren Azure-Befehlszeilenschnittstelle eine DNS-Zone erstellen. Die DNS-Zone kann auch mithilfe von [Azure PowerShell](dns-getstarted-create-dnszone.md) oder über das [Azure-Portal](dns-getstarted-create-dnszone-portal.md) erstellt werden.
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
+[!INCLUDE [dns-cli-setup](../../includes/dns-cli-setup-include.md)]
 
-## <a name="before-you-begin"></a>Voraussetzungen
 
-Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
-
-* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Sie müssen die neueste Version der für Windows, Mac und Linux verfügbaren Azure-Befehlszeilenschnittstelle installieren. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
-
-## <a name="step-1---sign-in-and-create-a-resource-group"></a>Schritt 1: Anmelden und Erstellen einer Ressourcengruppe
-
-### <a name="switch-cli-mode"></a>Wechseln des CLI-Modus
-
-Azure DNS verwendet den Azure-Ressourcen-Manager. Achten Sie darauf, zum CLI-Modus zur Verwendung von ARM-Befehlen zu wechseln.
-
-```azurecli
-azure config mode arm
-```
-
-### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
-
-Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert. Denken Sie daran, dass Sie nur OrgID-Konten verwenden können.
-
-```azurecli
-azure login
-```
-
-### <a name="select-the-subscription"></a>Auswählen des Abonnements
-
-Überprüfen Sie die Abonnements für das Konto.
-
-```azurecli
-azure account list
-```
-
-Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
-
-```azurecli
-azure account set "subscription name"
-```
-
-### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Da alle DNS-Ressourcen global und nicht regional sind, hat die Auswahl des Speicherorts für die Ressourcengruppe jedoch keine Auswirkungen auf Azure DNS.
-
-Dieser Schritt kann übersprungen werden, wenn Sie eine vorhandene Ressourcengruppe verwenden.
-
-```azurecli
-azure group create -n myresourcegroup --location "West US"
-```
-
-### <a name="register-resource-provider"></a>Registrieren des Ressourcenanbieters
-
-Der Azure DNS-Dienst wird vom Ressourcenanbieter "Microsoft.Network" verwaltet. Ihr Azure-Abonnement muss für die Verwendung dieses Ressourcenanbieters registriert werden, bevor Sie Azure DNS verwenden können. Dieser Schritt muss einmal für jedes Abonnement ausgeführt werden.
-
-```azurecli
-azure provider register --namespace Microsoft.Network
-```
-
-## <a name="step-2---create-a-dns-zone"></a>Schritt 2: Erstellen einer DNS-Zone
+## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
 Eine DNS-Zone wird mit dem `azure network dns zone create` -Befehl erstellt. Hilfe zu diesem Befehl erhalten Sie mit `azure network dns zone create -h`.
 
@@ -98,14 +43,14 @@ Im folgenden Beispiel wird in der Ressourcengruppe namens *MyResourceGroup* eine
 azure network dns zone create MyResourceGroup contoso.com
 ```
 
-## <a name="step-3---verify"></a>Schritt 3: Überprüfen
+## <a name="verify-your-dns-zone"></a>Überprüfen der DNS-Zone
 
 ### <a name="view-records"></a>Anzeigen von Datensätzen
 
 Beim Erstellen einer DNS-Zone werden auch die folgenden DNS-Einträge erstellt:
 
-* Der Start of Authority-Eintrag (SOA). Dieser ist im Stamm jeder DNS-Zone vorhanden.
-* Die autoritativen Namenserver (NS)-Einträge. Diese zeigen, welche Namenserver die Zone hosten. Azure DNS verwendet einen Pool von Namenservern, sodass verschiedene Namenserver verschiedenen Zonen in Azure DNS zugewiesen werden können. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md) .
+* Der *Start of Authority*-Eintrag (SOA). Dieser Eintrag ist im Stamm jeder DNS-Zone vorhanden.
+* Die autoritativen Namenserver (NS)-Einträge. Diese Einträge zeigen, welche Namenserver die Zone hosten. Azure DNS verwendet einen Pool von Namenservern, sodass verschiedene Namenserver verschiedenen Zonen in Azure DNS zugewiesen werden können. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
 
 Verwenden Sie zum Anzeigen dieser Einträge `azure network dns-record-set list`:
 
@@ -144,10 +89,12 @@ info:    network dns record-set list command OK
 
 Mithilfe von DNS-Tools wie nslookup oder dig oder mit dem PowerShell-Cmdlet `Resolve-DnsName` können Sie testen, ob Ihre DNS-Zone auf den Azure DNS-Namenservern vorhanden ist.
 
-Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für die Zone sind in den NS-Einträgen enthalten, die von „azure network dns-record-set show“ aufgelistet werden. Ersetzen Sie im folgenden Befehl die Werte durch die für Ihre Zone ordnungsgemäßen Werte.
+Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für die Zone sind gemäß Angabe durch `azure network dns record-set list` in den NS-Einträgen enthalten.
 
-Im folgenden Beispiel wird die Domäne „contoso.com“ mit dig und unter Verwendung der Namenserver abgefragt, die für die DNS-Zone zugewiesen sind. Die Abfrage muss mit dig durchgeführt werden und auf einen Namenserver, für den wir *@\<Namenserver für die Zone\>* verwendet haben, sowie auf den Zonennamen verweisen.
+Im folgenden Beispiel wird die Domäne „contoso.com“ mit dig und unter Verwendung der Namenserver abgefragt, die der DNS-Zone zugewiesen sind. Ersetzen Sie die Werte durch die für Ihre Zone ordnungsgemäßen Werte.
 
+     > dig @ns1-01.azure-dns.com contoso.com
+     
      <<>> DiG 9.10.2-P2 <<>> @ns1-01.azure-dns.com contoso.com
     (1 server found)
     global options: +cmd
@@ -171,11 +118,11 @@ Im folgenden Beispiel wird die Domäne „contoso.com“ mit dig und unter Verwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Erstellen einer DNS-Zone müssen Sie [Ressourceneintragssätze und Einträge erstellen](dns-getstarted-create-recordset-cli.md), um DNS-Einträge für Ihre Internetdomäne zu erstellen.
+Nach dem Erstellen einer DNS-Zone können Sie in Ihrer Zone [DNS-Ressourceneintragssätze und -Einträge erstellen](dns-getstarted-create-recordset-cli.md).
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 5939119e2b42b13acaf08678cae11b99d45fdf51
+ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
+ms.openlocfilehash: 547a2c0ab49c0b79d85bab1bd3abd800c9288ccf
 
 
 ---
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um ein VNet-Peering mit Resource Manager
    | UseRemoteGateways |Gibt an, dass das VNet-Gateway des per Peering verknüpften VNet verwendet wird. Für das verknüpfte VNet muss ein Gateway konfiguriert sein, und „AllowGatewayTransit“ muss ausgewählt sein. Diese Option kann nicht verwendet werden, wenn Sie ein Gateway konfiguriert haben. |Nein |
    
     Jeder Link in einem VNet-Peering verfügt über die oben angegebenen Eigenschaften. So können Sie beispielsweise die Eigenschaft „AllowVirtualNetworkAccess“ beim VNet-Peeringlink für „VNet1 zu VNet2“ auf „true“ und beim VNet-Peeringlink für die Gegenrichtung auf „false“ festlegen.
-4. Zum Bereitstellen der Vorlagendatei können Sie das Cmdlet „New-AzureRmResourceGroupDeployment“ ausführen und die Bereitstellung erstellen oder aktualisieren. Weitere Informationen zur Verwendung von Resource Manager-Vorlagen finden Sie in [diesem Artikel](../resource-group-template-deploy.md).
+4. Zum Bereitstellen der Vorlagendatei können Sie das Cmdlet „New-AzureRmResourceGroupDeployment“ ausführen und die Bereitstellung erstellen oder aktualisieren. Weitere Informationen zur Verwendung von Resource Manager-Vorlagen finden Sie in [diesem Artikel](../azure-resource-manager/resource-group-template-deploy.md).
    
         New-AzureRmResourceGroupDeployment -ResourceGroupName <resource group name> -TemplateFile <template file path> -DeploymentDebugLogLevel all
    
@@ -382,6 +382,6 @@ Nach dem Peering zwischen einem klassischen VNet und einem Resource Manager-VNet
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

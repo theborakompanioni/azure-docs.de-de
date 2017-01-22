@@ -1,12 +1,12 @@
 ---
-title: Technischer Leitfaden – Wiederherstellung nach lokalen Ausfällen in Azure | Microsoft Docs
-description: Artikel über die Grundlagen und den Entwurf von robusten, hoch verfügbaren, fehlertoleranten Anwendungen sowie die Planung der Notfallwiederherstellung nach lokalen Fehlern in Azure.
-services: ''
+title: "Technischer Leitfaden – Wiederherstellung nach lokalen Ausfällen in Azure | Microsoft Docs"
+description: "Artikel über die Grundlagen und den Entwurf von robusten, hoch verfügbaren, fehlertoleranten Anwendungen sowie die Planung der Notfallwiederherstellung nach lokalen Fehlern in Azure."
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: 2e50f6c1-fa61-4c7d-ac26-566a142fbfc2
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 6df92e3c43a9e7ae2e13f21b05cbb94088c46516
+
 
 ---
-# <a name="azure-resiliency-technical-guidance:-recovery-from-local-failures-in-azure"></a>Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach lokalen Ausfällen in Azure
+# <a name="azure-resiliency-technical-guidance-recovery-from-local-failures-in-azure"></a>Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach lokalen Ausfällen in Azure
 Es gibt zwei primäre Bedrohungen der Anwendungsverfügbarkeit:
 
 * Ausfall von Geräten, z.B. Festplatten und Servern
@@ -72,7 +76,7 @@ Azure bietet native Unterstützung für die Ebenen einer PaaS-Anwendung (Webroll
 Im vorherigen Diagramm sind die IIS-Ebene (Internet Information Services), die als Web-App-Ebene fungiert, und die SQL-Ebene, die als Datenebene fungiert, verschiedenen Verfügbarkeitsgruppen zugewiesen. Indem virtuelle Computer auf verschiedene Fehlerdomänen verteilt werden, wird sichergestellt, dass alle Instanzen jeder Ebene über Hardwareredundanz verfügen und während einer Aktualisierung nicht ganze Ebenen heruntergefahren werden.
 
 ### <a name="load-balancing"></a>Lastenausgleich
-Wenn der Datenverkehr auf die virtuellen Computer verteilt werden soll, müssen Sie die virtuellen Computer in einer Anwendung gruppieren und den Lastenausgleich über einen bestimmten TCP- oder UDP-Endpunkt ausführen. Weitere Informationen finden Sie unter [Lastenausgleich zwischen virtuellen Computern](../virtual-machines/virtual-machines-linux-load-balance.md). Wenn die virtuellen Computer Eingaben aus einer anderen Quelle erhalten (beispielsweise einem Warteschlangenmechanismus), ist kein Lastenausgleich erforderlich. Der Lastenausgleich verwendet eine grundlegende Integritätsprüfung, um zu ermitteln, ob der Datenverkehr an den Knoten gesendet werden soll. Sie können auch selbst Tests erstellen, um anwendungsspezifische Integritätsmetriken zu implementieren, die bestimmen, ob der virtuelle Computer Datenverkehr empfangen soll.
+Wenn der Datenverkehr auf die virtuellen Computer verteilt werden soll, müssen Sie die virtuellen Computer in einer Anwendung gruppieren und den Lastenausgleich über einen bestimmten TCP- oder UDP-Endpunkt ausführen. Weitere Informationen finden Sie unter [Lastenausgleich zwischen virtuellen Computern](../virtual-machines/virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Wenn die virtuellen Computer Eingaben aus einer anderen Quelle erhalten (beispielsweise einem Warteschlangenmechanismus), ist kein Lastenausgleich erforderlich. Der Lastenausgleich verwendet eine grundlegende Integritätsprüfung, um zu ermitteln, ob der Datenverkehr an den Knoten gesendet werden soll. Sie können auch selbst Tests erstellen, um anwendungsspezifische Integritätsmetriken zu implementieren, die bestimmen, ob der virtuelle Computer Datenverkehr empfangen soll.
 
 ## <a name="storage"></a>Speicher
 Azure Storage ist der grundlegende permanente Datendienst für Azure. Er stellt Blob-, Tabellen-, Warteschlangen- und VM-Datenträgerspeicher bereit. Storage verwendet eine Kombination aus Replikation und Ressourcenverwaltung, um innerhalb eines einzelnen Rechenzentrums hohe Verfügbarkeit bereitzustellen. Mit der Vereinbarung zum Servicelevel (SLA) zur Verfügbarkeit von Azure Storage wird gewährleistet, dass mindestens 99,9% der Zeit Folgendes sichergestellt ist:
@@ -121,16 +125,16 @@ Diese Empfehlung gilt nicht im gleichen Ausmaß für den Protokollversand. Es ha
 
 Damit sich Azure Cloud Services-VMs, die über das klassische Portal bereitgestellt werden, in derselben Verfügbarkeitsgruppe befinden, müssen Sie sie in derselben Cloud Service-Instanz bereitstellen. Für VMs, die mit dem Azure Resource Manager (aktuelles Portal) bereitgestellt werden, besteht diese Einschränkung nicht. Für VMs, die mit dem klassischen Portal in Azure Cloud Services bereitgestellt werden, können nur Knoten in derselben Cloud Services-Instanz an derselben Verfügbarkeitsgruppe beteiligt sein. Darüber hinaus sollten sich die Cloud Services-VMs in demselben virtuellen Netzwerk befinden, um sicherzustellen, dass sie auch nach einer Dienstreparatur ihre IPs beibehalten. So können Störungen beim DNS-Update vermieden werden.
 
-### <a name="azure-only:-high-availability-solutions"></a>Nur in Azure: Lösungen mit hoher Verfügbarkeit
+### <a name="azure-only-high-availability-solutions"></a>Nur in Azure: Lösungen mit hoher Verfügbarkeit
 Sie können eine Lösung mit hoher Verfügbarkeit für SQL Server-Datenbanken in Azure mit AlwaysOn-Verfügbarkeitsgruppen oder per Datenbankspiegelung umsetzen.
 
-Das folgende Diagramm veranschaulicht die Architektur von AlwaysOn-Verfügbarkeitsgruppen, die auf Azure Virtual Machines ausgeführt werden. Das Diagramm stammt aus dem detaillierten Artikel zu diesem Thema: [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md).
+Das folgende Diagramm veranschaulicht die Architektur von AlwaysOn-Verfügbarkeitsgruppen, die auf Azure Virtual Machines ausgeführt werden. Das Diagramm stammt aus dem detaillierten Artikel zu diesem Thema: [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md).
 
 ![AlwaysOn-Verfügbarkeitsgruppen in Microsoft Azure](./media/resiliency-technical-guidance-recovery-local-failures/high_availability_solutions-1.png)
 
 Sie können eine AlwaysOn-Verfügbarkeitsgruppe auch als automatische End-to-End-Bereitstellung auf virtuellen Azure-Computern implementieren, indem Sie die AlwaysOn-Vorlage im Azure-Portal verwenden. Weitere Informationen finden Sie unter [SQL Server AlwaysOn Offering in Microsoft Azure Portal Gallery](https://blogs.technet.microsoft.com/dataplatforminsider/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery/)(in englischer Sprache).
 
-Das folgende Diagramm veranschaulicht die Verwendung der Datenbankspiegelung auf Azure Virtual Machines. Auch dieses Diagramm stammt aus dem detaillierten Artikel [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md).
+Das folgende Diagramm veranschaulicht die Verwendung der Datenbankspiegelung auf Azure Virtual Machines. Auch dieses Diagramm stammt aus dem detaillierten Artikel [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md).
 
 ![Datenbankspiegelung in Microsoft Azure](./media/resiliency-technical-guidance-recovery-local-failures/high_availability_solutions-2.png)
 
@@ -144,11 +148,6 @@ Anwendungen, die unter Azure erstellt werden, profitieren von Plattformfunktione
 
 ### <a name="service-bus"></a>Service Bus
 Um die Risiken durch einen vorübergehenden Ausfall von Azure Service Bus zu minimieren, können Sie eine dauerhafte clientseitige Warteschlange erstellen. Diese Warteschlange verwendet vorübergehend einen alternativen, lokalen Speichermechanismus, um Nachrichten zu speichern, die der Service Bus-Warteschlange nicht hinzugefügt werden können. Die Anwendung kann entscheiden, wie die temporär gespeicherten Nachrichten verarbeitet werden sollen, nachdem der Dienst wiederhergestellt wurde. Weitere Informationen finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](../service-bus-messaging/service-bus-performance-improvements.md) sowie unter [Service Bus (Notfallwiederherstellung)](resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
-
-### <a name="mobile-services"></a>Mobile Services
-Es gibt zwei Überlegungen zur Verfügbarkeit für Azure Mobile Services. Erstens: Sichern Sie regelmäßig die SQL-Datenbank-Instanz, die mit Ihrem mobilen Dienst verknüpft ist. Zweitens: Sichern Sie die Skripts für den mobilen Dienst. Weitere Informationen finden Sie unter [Notfallwiederherstellung mobiler Dienste](../mobile-services/mobile-services-disaster-recovery.md).
-
-Bei einem temporären Ausfall von Mobile Services müssen Sie möglicherweise vorübergehend ein alternatives Azure-Rechenzentrum verwenden. Weitere Informationen finden Sie unter [Mobile Services (Notfallwiederherstellung)](resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
 
 ### <a name="hdinsight"></a>HDInsight
 Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob Storage gespeichert. Azure Storage stellt Eigenschaften für hohe Verfügbarkeit und Dauerhaftigkeit für Blob Storage bereit. Die Verarbeitung über mehrere Knoten hinweg, die für Hadoop MapReduce-Aufträge erforderlich ist, erfolgt auf einem vorübergehenden Hadoop Distributed File System (HDFS), das bei Bedarf für HDInsight bereitgestellt wird. Die Ergebnisse eines MapReduce-Auftrags werden standardmäßig auch in Azure Blob Storage gespeichert, sodass die verarbeiteten Daten dauerhaft und hoch verfügbar sind, nachdem die Bereitstellung des Hadoop-Clusters aufgehoben wurde. Weitere Informationen finden Sie unter [HDInsight (Notfallwiederherstellung)](resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services).
@@ -195,6 +194,9 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](resiliency-technical-guidance.md)dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

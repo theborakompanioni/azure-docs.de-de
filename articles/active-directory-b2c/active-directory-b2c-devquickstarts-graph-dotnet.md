@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 271e2bd40fb605dc6be229bea8fb479effae4298
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: a932b617d57184ef714bf18f1e1e23599db52487
 
 
 ---
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C-Mandanten sind normalerweise sehr groß. D
 Für B2C-Mandanten gibt es zwei primäre Modi für die Kommunikation mit der Graph-API.
 
 * Für interaktive Aufgaben mit einmaliger Ausführung sollten Sie beim Ausführen der Aufgaben ein Administratorkonto im B2C-Mandanten verwenden. In diesem Modus muss sich ein Administrator mit Anmeldeinformationen anmelden, bevor er alle Aufrufe der Graph-API ausführen kann.
-* Für automatisierte, kontinuierliche Aufgaben sollte eine Art von Dienstkonto verwendet werden, dem Sie die benötigten Rechte zum Ausführen von Verwaltungsaufgaben gewähren. In Azure AD registrieren Sie dazu eine Anwendung und authentifizieren sie bei Azure AD. Dies geschieht mithilfe einer **Anwendungs-ID** , die die [OAuth 2.0-Clientanmeldeinformationen](../active-directory/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)verwendet. In diesem Fall verhält sich die Anwendung beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
+* Für automatisierte, kontinuierliche Aufgaben sollte eine Art von Dienstkonto verwendet werden, dem Sie die benötigten Rechte zum Ausführen von Verwaltungsaufgaben gewähren. In Azure AD registrieren Sie dazu eine Anwendung und authentifizieren sie bei Azure AD. Dies geschieht mithilfe einer **Anwendungs-ID** , die die [OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)verwendet. In diesem Fall verhält sich die Anwendung beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
 
 In diesem Artikel wird erläutert, wie Sie den automatisierten Anwendungsfall durchführen. Wir erstellen zu Demozwecken das .NET 4.5-Element `B2CGraphClient` , das Benutzervorgänge zum Erstellen, Lesen, Aktualisieren und Löschen (CRUD) ausführt. Der Client verfügt über eine Windows-Befehlszeilenschnittstelle, über die Sie verschiedene Methoden aufrufen können. Der Code ist aber so geschrieben, dass er sich auf nicht interaktive, automatisierte Weise verhält.
 
@@ -364,6 +364,6 @@ Wenn Sie Fragen haben oder Aktionen anfordern möchten, die Sie mit der Graph-AP
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

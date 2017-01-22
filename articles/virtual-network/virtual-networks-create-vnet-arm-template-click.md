@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: bec644c851d4d2bfbcdda87bd9f8d795dc343afc
+ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
+ms.openlocfilehash: be3fbc2c14be06cac2b9213ee2da58545e34fc0e
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: bec644c851d4d2bfbcdda87bd9f8d795dc343afc
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und klassisch. Microsoft empfiehlt, Ressourcen mit dem Resource Manager-Bereitstellungsmodell zu erstellen. Weitere Informationen zu den Unterschieden zwischen den beiden Modellen finden Sie im Artikel zum Thema [Understand Azure deployment models](../resource-manager-deployment-model.md) (Grundlegendes zu Azure-Bereitstellungsmodellen).
+Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und klassisch. Microsoft empfiehlt, Ressourcen mit dem Resource Manager-Bereitstellungsmodell zu erstellen. Weitere Informationen zu den Unterschieden zwischen den beiden Modellen finden Sie im Artikel zum Thema [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md) (Grundlegendes zu Azure-Bereitstellungsmodellen).
  
 In diesem Artikel wird beschrieben, wie Sie mit dem Resource Manager-Bereitstellungsmodell mithilfe einer Azure Resource Manager-Vorlage ein VNET erstellen. Sie können ein VNet per Resource Manager auch mit anderen Tools erstellen oder dafür das klassische Bereitstellungsmodell verwenden, indem Sie in der folgenden Liste eine andere Option wählen:
 
@@ -244,6 +244,6 @@ Informieren Sie sich, wie folgende Verbindungen hergestellt werden:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

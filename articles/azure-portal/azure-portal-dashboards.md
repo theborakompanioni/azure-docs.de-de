@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bd378c8dedd3d2bfed540be0fa009f751bcc5d1c
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: dc5b6f194a7e34d5061b9fa2e4a6123f54f6c14a
 
 
 ---
@@ -33,7 +33,7 @@ Wählen Sie zum Erstellen eines Dashboards die Schaltfläche **Neues Dashboard**
 
 ![Dashboard erstellen](./media/azure-portal-dashboards/new-dashboard.png)
 
-Bei dieser Aktion wird ein neues, leeres, privates Dashboard erstellt. Außerdem wird der Anpassungsmodus aktiviert, in dem Sie dem Dashboard einen Namen geben und Kacheln hinzufügen oder neu anordnen können.  In diesem Modus ersetzt der ausblendbare Kachelkatalog das Navigationsmenü auf der linken Seite.  Im Kachelkatalog können Sie auf verschiedene Arten nach Kacheln für Ihre Azure-Ressourcen suchen: Sie können nach [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), Ressourcentyp, [Tag](../resource-group-using-tags.md) oder nach dem Namen der Ressource suchen.  
+Bei dieser Aktion wird ein neues, leeres, privates Dashboard erstellt. Außerdem wird der Anpassungsmodus aktiviert, in dem Sie dem Dashboard einen Namen geben und Kacheln hinzufügen oder neu anordnen können.  In diesem Modus ersetzt der ausblendbare Kachelkatalog das Navigationsmenü auf der linken Seite.  Im Kachelkatalog können Sie auf verschiedene Arten nach Kacheln für Ihre Azure-Ressourcen suchen: Sie können nach [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), Ressourcentyp, [Tag](../azure-resource-manager/resource-group-using-tags.md) oder nach dem Namen der Ressource suchen.  
 
 ![Dashboard anpassen](./media/azure-portal-dashboards/customize-dashboard.png)
 
@@ -97,12 +97,12 @@ Nach der Veröffentlichung des Dashboards wird der Steuerungsbereich für **Frei
 ![Zugriffssteuerung verwalten](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](resource-group-portal.md).
-* Informationen zum Bereitstellen von Ressourcen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
+* Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](../azure-resource-manager/resource-group-portal.md).
+* Informationen zum Bereitstellen von Ressourcen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

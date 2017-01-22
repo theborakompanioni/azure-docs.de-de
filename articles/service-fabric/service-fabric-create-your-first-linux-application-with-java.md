@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/04/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
-ms.openlocfilehash: 05361e08b93c93491111661b5fe997ebf5053d16
+ms.sourcegitcommit: 2cf98a0ef478a058c03122d3e027ef37e2404a09
+ms.openlocfilehash: 8a7b100a531ea1dd5420451064fdfb1eb3f21782
 
 
 ---
@@ -33,13 +33,18 @@ Service Fabric bietet SDKs, mit denen sich Dienste unter Linux sowohl in .NET Co
 <img src="./media/service-fabric-create-your-first-linux-application-with-java/LinuxVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
+> [!NOTE]
+> Java als erstklassige integrierte Programmiersprache wird nur für die Linux-Vorschauversion unterstützt (Windows-Unterstützung ist geplant). Allerdings können alle Anwendungen, einschließlich Java-Anwendungen, als ausführbare Gastdateien oder in Containern unter Windows oder Linux ausgeführt werden. Weitere Informationen finden Sie unter [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md) und [Vorschau: Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md).
+> 
+
+
 ## <a name="prerequisites"></a>Voraussetzungen
 Vor Beginn des Tutorials müssen Sie zunächst [Ihre Linux-Entwicklungsumgebung einrichten](service-fabric-get-started-linux.md). Bei Verwendung von Mac OS X können Sie [mithilfe von Vagrant eine Linux-One-Box-Umgebung auf einem virtuellen Computer einrichten](service-fabric-get-started-mac.md).
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
 Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jeweils eine bestimmte Rolle bei der Bereitstellung von Funktionen der Anwendung haben. Das Service Fabric SDK für Linux enthält ein [Yeoman](http://yeoman.io/) -Generator, mit dem Sie problemlos Ihren ersten Dienst erstellen und später weitere Dienste hinzufügen können. Im nächsten Schritt erstellen wir mithilfe von Yeoman eine Anwendung mit einem einzelnen Dienst.
 
-1. Geben Sie in einem Terminal die Zeichenfolge **yo azuresfjava**ein.
+1. Geben Sie in einem Terminal ``yo azuresfjava`` ein.
 2. Benennen Sie Ihre Anwendung.
 3. Wählen Sie die Art Ihres ersten Diensts aus, und benennen Sie ihn. Im Rahmen dieses Tutorials wählen wir einen Reliable Actor-Dienst aus.
    
@@ -47,7 +52,6 @@ Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jew
 
 > [!NOTE]
 > Weitere Informationen zu den Optionen finden Sie unter [Übersicht über die Service Fabric-Programmiermodelle](service-fabric-choose-framework.md).
-> 
 > 
 
 ## <a name="build-the-application"></a>Erstellen der Anwendung
@@ -66,12 +70,15 @@ Die erstellte Anwendung kann mithilfe der Azure-Befehlszeilenschnittstelle im lo
     ```bash
     azure servicefabric cluster connect
     ```
+
 2. Verwenden Sie das in der Vorlage bereitgestellte Installationsskript, um das Anwendungspaket in den Imagespeicher des Clusters zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
    
     ```bash
     ./install.sh
     ```
+
 3. Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:19080/Explorer). Falls Sie Vagrant unter Mac OS X verwenden, ersetzen Sie „localhost“ durch die private IP-Adresse des virtuellen Computers.
+
 4. Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Starten des Testclients und Ausführen eines Failovers
@@ -83,21 +90,27 @@ Actor-Projekte führen keine eigenständigen Aktionen durch. Sie benötigen eine
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh
     ```
+
 2. Suchen Sie in Service Fabric Explorer den Knoten, der das primäre Replikat für den Actor-Dienst hostet. Im folgenden Screenshot ist das „Node_3“:
    
     ![Suchen des primären Replikats in Service Fabric Explorer][sfx-primary]
-3. Klicken Sie auf den Knoten, den Sie im vorherigen Schritt ermittelt haben, und wählen Sie im Aktionsmenü die Option **Deaktivieren (neu starten)** aus. Dadurch wird einer der fünf Knoten in Ihrem lokalen Cluster neu gestartet und ein Failover auf eines der sekundären Replikate erzwungen, das auf einem anderen Knoten ausgeführt wird. Behalten Sie hierbei die Ausgabe des Testclients im Auge, und beachten Sie, dass sich der Zähler trotz des Failovers weiter erhöht.
+
+3. Klicken Sie auf den Knoten, den Sie im vorherigen Schritt ermittelt haben, und wählen Sie im Aktionsmenü die Option **Deaktivieren (neu starten)** aus. Mit dieser Aktion wird einer der fünf Knoten in Ihrem lokalen Cluster neu gestartet und ein Failover auf eines der sekundären Replikate erzwungen, das auf einem anderen Knoten ausgeführt wird. Behalten Sie bei dieser Aktion die Ausgabe des Testclients im Auge, und beachten Sie, dass sich der Zähler trotz des Failovers weiter erhöht.
 
 ## <a name="build-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Erstellen und Bereitstellen einer Anwendung mit dem Eclipse Neon-Plug-In
+
 Wenn Sie das [Service Fabric-Plug-In](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-linux#install-the-java-sdk-and-eclipse-neon-plugin-optional) für Eclipse Neon installiert haben, können Sie damit Java-basierte Service Fabric-Anwendungen erstellen und bereitstellen.  Wählen Sie bei der Installation von Eclipse die **Eclipse-IDE für Java-Entwickler**.
 
 ### <a name="create-the-application"></a>Erstellen der Anwendung
+
 Das Service Fabric-Plug-In ist im Rahmen der Erweiterbarkeit von Eclipse verfügbar.
 
 1. Wählen Sie in Eclipse **Datei > Sonstiges > Service Fabric** aus. Daraufhin wird eine Reihe von Optionen angezeigt. Hierzu zählen auch Actors und Container.
    
     ![Service Fabric-Vorlagen in Eclipse][sf-eclipse-templates]
+
 2. Wählen Sie in diesem Szenario die Option für den zustandslosen Dienst aus.
+
 3. Sie werden aufgefordert, die Verwendung der Service Fabric-Perspektive zu bestätigen. Dadurch wird Eclipse für die Verwendung mit Service Fabric-Projekten optimiert. Wählen Sie die Option „Ja“ aus.
 
 ### <a name="deploy-the-application"></a>Bereitstellen der Anwendung
@@ -120,6 +133,7 @@ Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die berei
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie mehr über Reliable Actors.](service-fabric-reliable-actors-introduction.md)
 * [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
+* [Problembehandlung bei der Bereitstellung](service-fabric-azure-cli.md#troubleshooting)
 * Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 <!-- Images -->
@@ -129,6 +143,6 @@ Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die berei
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

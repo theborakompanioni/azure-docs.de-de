@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f9ce6c56598e2318821c2e81a1bab1b876d6a866
+ms.sourcegitcommit: 84d3aa963f8538c0721f6c0a02cee5b8e7269770
+ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
 
 
 ---
@@ -63,10 +63,10 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
 ### <a name="create-a-new-android-project"></a>Erstellen eines neuen Android-Projekts
 1. Starten Sie in Android Studio ein neues Android Studio-Projekt.
    
-       ![Android Studio - new project][13]
+     ![Android Studio – Neues Projekt][13]
 2. Wählen Sie den Formfaktor **Phone and Tablet** und das **Minimum SDK** aus, das unterstützt werden soll. Klicken Sie auf **Weiter**.
    
-       ![Android Studio - project creation workflow][14]
+     ![Android Studio – Projekterstellungsworkflow][14]
 3. Wählen Sie **Empty Activity** als Hauptaktivität aus, und klicken Sie auf **Weiter** und anschließend auf **Fertig stellen**.
 
 ### <a name="add-google-play-services-to-the-project"></a>Hinzufügen von Google Play Services zum Projekt
@@ -660,10 +660,10 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie in unserem [Not
 
 
 <!-- URLs. -->
-[Erste Schritte mit Pushbenachrichtigungen in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Verweisen auf ein Bibliotheksprojekt]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Klassisches Azure-Portal]: https://manage.windowsazure.com/
+[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs-Leitfaden]: http://msdn.microsoft.com/library/jj927170.aspx
 [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
@@ -671,6 +671,6 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie in unserem [Not
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Media Services PlayReady-Lizenzvorlage – Übersicht
-description: Dieses Thema bietet einen Überblick über eine PlayReady-Lizenzvorlage, mit der PlayReady-Lizenzen konfiguriert werden können.
+title: "Media Services PlayReady-Lizenzvorlage – Übersicht"
+description: "Dieses Thema bietet einen Überblick über eine PlayReady-Lizenzvorlage, mit der PlayReady-Lizenzen konfiguriert werden können."
 author: juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: fddce5d0-1278-478f-ae05-9b985c748731
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: ea0b54a1041c0008071a9b11afc81e1b91f3e409
+
 
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady-Lizenzvorlage – Übersicht
@@ -53,9 +57,9 @@ Der XML-Code entspricht dem XML-Schema der PlayReady-Lizenzvorlage, das im XML-S
 
 Media Services definiert auch eine Reihe von .NET-Klassen, die für die Serialisierung und Deserialisierung in und aus XML verwendet werden können. Eine Beschreibung der Hauptklassen finden Sie unter [Media Services-.NET-Klassen](media-services-playready-license-template-overview.md#classes). Diese werden zum Konfigurieren von Lizenzvorlagen verwendet.
 
-Ein End-to-End-Beispiel, in dem mit .NET-Klassen die PlayReady-Lizenzvorlage konfiguriert wird, finden Sie unter [Verwenden der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts](https://msdn.microsoft.com/library/azure/dn783467.aspx).
+Ein End-to-End-Beispiel, in dem mit .NET-Klassen die PlayReady-Lizenzvorlage konfiguriert wird, finden Sie unter [Verwenden der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts](media-services-protect-with-drm.md).
 
-## <a name="<a-id="classes"></a>media-services-.net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>Media Services-.NET-Klassen zum Konfigurieren von Lizenzvorlagen
+## <a name="a-idclassesamedia-services-net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>Media Services-.NET-Klassen zum Konfigurieren von Lizenzvorlagen
 Im Folgenden werden die wichtigsten .NET-Klassen zum Konfigurieren von PlayReady-Lizenzvorlagen für Media Services aufgeführt. Diese Klassen sind den im [XML-Schema für PlayReady-Lizenzvorlagen](media-services-playready-license-template-overview.md#schema)definierten Typen zugeordnet.
 
 Die [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) -Klasse wird zum Serialisieren und Deserialisieren in und aus dem XML-Code für die Media Services-Lizenzvorlage verwendet.
@@ -68,8 +72,8 @@ Dies ist in der Vorlagenhierarchie die Klasse der obersten Ebene. Dies bedeutet,
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
 [PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) : Diese Klasse stellt eine Lizenzvorlage zum Erstellen von PlayReady-Lizenzen dar, die an die Endbenutzer zurückgegeben werden. Sie enthält die Daten zum Inhaltsschlüssel in der Lizenz und alle Berechtigungen oder Einschränkungen, die von der PlayReady-DRM-Runtime erzwungen werden, wenn der Inhaltsschlüssel verwendet wird.
 
-### <a name="<a-id="playreadyplayright"></a>playreadyplayright"></a><a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): Diese Klasse repräsentiert PlayRight für eine PlayReady-Lizenz. Sie gewährt dem Benutzer die Möglichkeit, Inhalte gemäß den null oder mehr Einschränkungen wiederzugeben, die in der Lizenz oder in PlayRight selbst (für wiedergabespezifische Richtlinien) konfiguriert wurden. Die Richtlinie für PlayRight bezieht sich in erster Linie auf Ausgabeneinschränkungen, mit denen gesteuert wird, über welche Ausgabetypen der Inhalt wiedergegeben werden kann, sowie Einschränkungen, die bei der Verwendung einer bestimmten Ausgabe gelten müssen. Wenn z. B. DigitalVideoOnlyContentRestriction aktiviert wird, lässt die DRM-Runtime nur zu, dass das Video über digitale Ausgaben angezeigt wird (für analoge Videoausgaben ist das Übergeben des Inhalts nicht zulässig).
+### <a name="a-idplayreadyplayrightaplayreadyplayright"></a><a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
+[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): Diese Klasse repräsentiert PlayRight für eine PlayReady-Lizenz. Sie gewährt dem Benutzer die Möglichkeit, Inhalte gemäß den null oder mehr Einschränkungen wiederzugeben, die in der Lizenz oder in PlayRight selbst (für wiedergabespezifische Richtlinien) konfiguriert wurden. Die Richtlinie für PlayRight bezieht sich in erster Linie auf Ausgabeneinschränkungen, mit denen gesteuert wird, über welche Ausgabetypen der Inhalt wiedergegeben werden kann, sowie Einschränkungen, die bei der Verwendung einer bestimmten Ausgabe gelten müssen. Wenn z. B. DigitalVideoOnlyContentRestriction aktiviert wird, lässt die DRM-Runtime nur zu, dass das Video über digitale Ausgaben angezeigt wird (für analoge Videoausgaben ist das Übergeben des Inhalts nicht zulässig).
 
 > [!IMPORTANT]
 > Dieser Einschränkungstypen können sehr effektiv sein, können jedoch auch die Benutzerfreundlichkeit beeinträchtigen. Wenn der Ausgabeschutz mit zu vielen Einschränkungen konfiguriert wird, kann der Inhalt möglicherweise in einigen Clients nicht wiedergegeben werden. Weitere Informationen finden Sie im Dokument [Compliance &amp; Robustness Rules](https://www.microsoft.com/playready/licensing/compliance/) (in englischer Sprache).
@@ -78,7 +82,7 @@ Dies ist in der Vorlagenhierarchie die Klasse der obersten Ebene. Dies bedeutet,
 
 Ein Beispiel für die von Silverlight unterstützten Schutzebenen finden Sie unter [Silverlight-Unterstützung für Ausgabeschutz](http://go.microsoft.com/fwlink/?LinkId=617318).
 
-## <a name="<a-id="schema"></a>playready-license-template-xml-schema"></a><a id="schema"></a>XML-Schema für PlayReady-Lizenzvorlage
+## <a name="a-idschemaaplayready-license-template-xml-schema"></a><a id="schema"></a>XML-Schema für PlayReady-Lizenzvorlage
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
@@ -308,6 +312,9 @@ Ein Beispiel für die von Silverlight unterstützten Schutzebenen finden Sie unt
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

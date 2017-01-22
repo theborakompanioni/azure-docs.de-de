@@ -1,36 +1,40 @@
 ---
-title: 'Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET | Microsoft Docs'
-description: In diesem Thema wird veranschaulicht, wie mit .NET Live Encoding mit lokalen Encodern durchgeführt wird.
+title: "Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET | Microsoft Docs"
+description: "In diesem Thema wird veranschaulicht, wie mit .NET Live Encoding mit lokalen Encodern durchgeführt wird."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 15908152-d23c-4d55-906a-3bfd74927db5
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 01/05/2017
 ms.author: cenkdin;juliako
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: b00dcddf38885b002822b9e92010bdf2c5938cc4
+
 
 ---
-# Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
+# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-net"></a>Gewusst wie: Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
-In diesem Tutorial werden Sie durch die Schritte des Azure Media Services-.NET SDK zum Erstellen eines **Kanals** geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist.
+In diesem Tutorial werden Sie durch die Schritte des Azure Media Services-.NET SDK zum Erstellen eines **Kanals** geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist. 
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
 * Ein Azure-Konto.
-* Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Media Services Kontos](media-services-create-account.md).
+* Media Services-Konto.    Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Richten Sie Ihre Entwicklungsumgebung ein. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-set-up-computer.md).
 * Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](http://www.telestream.net/wirecast/overview.htm).
 
@@ -39,7 +43,7 @@ Wir empfehlen, die folgenden Artikel zu lesen:
 * [Azure Media Services RTMP Support and Live Encoders (in englischer Sprache).](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md)
 
-## Beispiel
+## <a name="example"></a>Beispiel
 Im folgenden Codebeispiel wird veranschaulicht, wie die folgenden Aufgaben ausgeführt werden:
 
 * Verbinden mit Mediendiensten
@@ -54,7 +58,10 @@ Im folgenden Codebeispiel wird veranschaulicht, wie die folgenden Aufgaben ausge
 * Abrufen von Locators für alle Streamingendpunkte
 * Herunterfahren von Ressourcen
 
-Informationen zum Konfigurieren eines Liveencoders finden Sie unter [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) (in englischer Sprache).
+>[!NOTE]
+>Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet. 
+    
+Informationen zum Konfigurieren eines Liveencoders finden Sie unter [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)(in englischer Sprache).
 
     using System;
     using System.Collections.Generic;
@@ -382,12 +389,17 @@ Informationen zum Konfigurieren eines Liveencoders finden Sie unter [Azure Media
         }
     }
 
-## Nächster Schritt
+## <a name="next-step"></a>Nächster Schritt
 Media Services-Lernpfade ansehen
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Jan17_HO2-->
+
+

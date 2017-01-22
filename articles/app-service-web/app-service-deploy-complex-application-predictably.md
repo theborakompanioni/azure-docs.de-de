@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a48fa69b198f832de8c0ee42564dfea15bd871c1
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 37a10d284afa6b9ee2aa65e7ec015c3c364f551d
 
 
 ---
@@ -41,7 +41,7 @@ In diesem Lernprogramm verwenden Sie die folgenden Tools. Da dies keine umfassen
 ### <a name="azure-resource-manager-templates-json"></a>Azure-Ressourcen-Manager-Vorlagen (JSON)
 Jedes Mal, wenn Sie beispielsweise eine Web-App in Azure App Service erstellen, verwendet der Azure-Ressourcen-Manager eine JSON-Vorlage zum Erstellen der gesamten Ressourcengruppe mit den Komponentenressourcen. Eine komplexe Vorlage aus [Azure Marketplace](/marketplace) wie die App [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) kann die MySQL-Datenbank, Speicherkonten, den App Service-Plan, die Web-App selbst, Warnregeln, App-Einstellungen, Einstellungen für die automatische Skalierung und mehr enthalten, und alle diese Vorlagen stehen Ihnen über PowerShell zur Verfügung. Informationen zum Herunterladen und Verwenden dieser Vorlagen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
-Weitere Informationen zu den Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md)
+Weitere Informationen zu den Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 für Visual Studio
 Das neueste SDK enthält Verbesserungen für die Unterstützung von Ressourcen-Manager-Vorlagen im JSON-Editor. Sie können damit schnell eine Ressourcengruppenvorlage ganz neu erstellen oder eine vorhandene JSON-Vorlage (z. B. eine heruntergeladene Katalogvorlage) zur Bearbeitung öffnen, die Parameterdatei füllen und sogar die Ressourcengruppe direkt aus einer Azure-Ressourcengruppenlösung bereitstellen.
@@ -129,7 +129,7 @@ Beachten Sie Folgendes im Zusammenhang mit dem hervorgehobenen JSON-Code:
 * Die geschachtelten Ressourcen in `“resources”: […]`, in denen die Datenbank und die Firewallregeln definiert werden, haben ein `dependsOn`-Element, das die Ressourcen-ID der SQLServer-Ressource auf Stammebene angibt. Dadurch wird der Azure-Ressourcen-Manager angewiesen, dass vor dem Erstellen dieser Ressource, die andere Ressource bereits vorhanden sein muss; und wenn diese andere Ressource in der Vorlage definiert ist, muss sie zuerst erstellt werden.
   
   > [!NOTE]
-  > Ausführliche Informationen zur Verwendung der `resourceId()`-Funktion finden Sie unter [Azure Resource Manager template functions](../resource-group-template-functions.md) (Funktionen von Azure Resource Manager-Vorlagen).
+  > Ausführliche Informationen zur Verwendung der `resourceId()`-Funktion finden Sie unter [Azure Resource Manager template functions](../azure-resource-manager/resource-group-template-functions.md) (Funktionen von Azure Resource Manager-Vorlagen).
   > 
   > 
 * Die Wirkung des `dependsOn` -Elements ist, dass der Azure-Ressourcen-Manager weiß, welche Ressourcen parallel erstellt werden können und welche Ressourcen sequenziell erstellt werden müssen. 
@@ -265,16 +265,16 @@ Informieren Sie sich, wie Sie [agile Methoden umsetzen und eine aus Microservice
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>Weitere Ressourcen
-* [Azure Resource Manager-Vorlagensprache](../resource-group-authoring-templates.md)
-* [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md)
-* [Vorlagenfunktionen im Azure-Ressourcen-Manager](../resource-group-template-functions.md)
-* [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../resource-group-template-deploy.md)
-* [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
-* [Troubleshooting Resource Group Deployments in Azure (Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure)](../resource-manager-troubleshoot-deployments-portal.md)
+* [Azure Resource Manager-Vorlagensprache](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Vorlagenfunktionen im Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-template-functions.md)
+* [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md)
+* [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Troubleshooting Resource Group Deployments in Azure (Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure)](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

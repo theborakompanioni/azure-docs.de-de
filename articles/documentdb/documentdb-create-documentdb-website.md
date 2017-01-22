@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2016
+ms.date: 12/08/2016
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ea624ffc9a33fe89aea065de8c96efd79d6c2b9a
+ms.sourcegitcommit: 08b101f42558280d8ffa690829570257d8d6deca
+ms.openlocfilehash: 6f519ac78d28fac69171b083f18d783cf1d9b24a
 
 
 ---
@@ -73,7 +73,8 @@ Jetzt stellen wir unsere erste Vorlage bereit.
       
       ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen an, um eine neue Ressourcengruppe zu erstellen, und wählen Sie einen Speicherort für die Ressourcengruppe.
-    ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
+
+    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.** > **Kaufen** und anschließend auf **Erstellen**, um mit der Bereitstellung zu beginnen.  Wählen Sie **An Dashboard anheften** , damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist.
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
 7. Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet.
@@ -113,7 +114,8 @@ Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr 
       
       ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen an, um eine neue Ressourcengruppe zu erstellen, und wählen Sie einen Speicherort für die Ressourcengruppe.
-    ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
+
+    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
 6. Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.** > **Kaufen** und anschließend auf **Erstellen**, um mit der Bereitstellung zu beginnen.  Wählen Sie **An Dashboard anheften** , damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist.
    ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
 7. Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet.
@@ -121,7 +123,8 @@ Jetzt stellen wir unsere zweite Vorlage bereit.  Diese Vorlage zeigt Ihnen sehr 
 8. Klicken Sie in der Liste „Ressourcen“ auf die Web-App-Ressource und anschließend auf **Anwendungseinstellungen**.
     ![Screenshot der Ressourcengruppe](./media/documentdb-create-documentdb-website/TemplateDeployment9.png)  
 9. Beachten Sie, dass Anwendungseinstellungen für den DocumentDB-Endpunkt und jeden der DocumentDB-Hauptschlüssel vorhanden sind.
-    ![Screenshot der Anwendungseinstellungen](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)  
+
+    ![Screenshot von Anwendungseinstellungen](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)  
 10. Sie können das Azure-Portal gerne weiter erkunden oder eines der DocumentDB- [Beispiele](http://go.microsoft.com/fwlink/?LinkID=402386) durcharbeiten, um Ihre eigene DocumentDB-Anwendung zu erstellen.
 
 <a name="NextSteps"></a>
@@ -145,6 +148,6 @@ Glückwunsch! Sie haben DocumentDB, eine App Service-Web-App und eine Beispielwe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

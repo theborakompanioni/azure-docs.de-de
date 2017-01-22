@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2016
+ms.date: 12/13/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: c2bdd3adc9f22005dbaca971472bdc65fead1a76
-ms.openlocfilehash: a6e415f6b8f2203209c1cfe3de37193fe18ce2b4
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 237a92713ee8dca72a09550c47519189f2fd23cc
 
 
 ---
@@ -37,7 +37,7 @@ DocumentDB unterstützt sowohl **benutzerdefinierte** als auch **vordefinierte**
 
 |Leistungstyp|Details|Durchsatz|Speicher|Version|APIs|
 |----------------|-------|----------|-------|-------|----|
-|Benutzerdefinierte Leistung|Durchsatz in Einheiten von 100 RU/s (vom Benutzer festgelegt)|Unbegrenzt. <br><br>standardmäßig 400 - 250.000 RU/s (höher auf Anforderung)|Unbegrenzt. <br><br>standardmäßig 250 GB (höher auf Anforderung)|V2|API 2015-12-16 und neuer|
+|Benutzerdefinierte Leistung|Durchsatz in Einheiten von 100 RU/s (vom Benutzer festgelegt)|Unbegrenzt|Unbegrenzt|V2|API 2015-12-16 und neuer|
 |Vordefinierte Leistung|10 GB reservierter Speicher.<br><br>S1 = 250 RU/s<br>S2 = 1000 RU/s<br>S3 = 2500 RU/s|2.500 RU/s|10 GB|V1|Beliebig|
 
 Der Durchsatz ist für jede Sammlung reserviert und kann nur für diese Sammlung verwendet werden. Durchsatz wird in [Anforderungseinheiten (Request Unit, RU)](documentdb-request-units.md) gemessen, die den Ressourcenverbrauch verschiedener DocumentDB-Datenbankvorgänge bezeichnen.
@@ -169,7 +169,6 @@ Sobald Sie eine Sammlung von S1, S2, oder S3 zu Standard verschieben, stehen S1,
 Weitere Informationen zu Preisen und der Datenverwaltung mit Azure DocumentDB finden Sie in folgenden Ressourcen:
 
 * [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/)
-* [Verwalten der DocumentDB-Kapazität](documentdb-manage.md)
 * [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md)
 * [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md)
 * [Anforderungseinheiten](http://go.microsoft.com/fwlink/?LinkId=735027)
@@ -183,6 +182,6 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 11/23/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 8ff2423f5b546864757a75cd7af1e6c76f047b19
-ms.openlocfilehash: 221027027e57413b6244c97e3e5c57d6423d94ea
+ms.sourcegitcommit: ea89244efea6afa7d7b9d60f400117284fb5d1e1
+ms.openlocfilehash: 3c5e51c562d9251f2ad40eeb1939d1651c845391
 
 
 ---
@@ -168,13 +168,13 @@ Parameter:
 * **/proxyAddress**; **/proxyport**; **/proxyUsername**; **/proxyPassword**: Optional. Geben Sie Proxyparameter ein, wenn Sie einen benutzerdefinierten Proxyserver verwenden möchten oder falls für den vorhandenen Proxy eine Authentifizierung erforderlich ist.
 
 ## <a name="step-4-create-an-azure-storage-account"></a>Schritt 4: Erstellen eines Azure-Speicherkontos
-1. Wählen Sie unter **Ressourcen vorbereiten** die Option **Speicherkonto erstellen** aus, um ein Azure-Speicherkonto zu erstellen, sofern noch nicht vorhanden. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region befinden wie der Azure Site Recovery-Tresor und dem gleichen Abonnement zugeordnet sein.
+* Wählen Sie unter **Ressourcen vorbereiten** die Option **Speicherkonto erstellen** aus, um ein Azure-Speicherkonto zu erstellen, sofern noch nicht vorhanden. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region befinden wie der Azure Site Recovery-Tresor und dem gleichen Abonnement zugeordnet sein.
 
     ![Speicherkonto erstellen](./media/site-recovery-hyper-v-site-to-azure-classic/create-resources.png)
 
 > [!NOTE]
-> 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.                               2. [Die Migration von Speicherkonten](../resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
->
+> 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
+> 2. [Die Migration von Speicherkonten](../azure-resource-manager/resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
 >
 
 ## <a name="step-5-create-and-configure-protection-groups"></a>Schritt 5: Erstellen und Konfigurieren von Schutzgruppen
@@ -218,19 +218,21 @@ Fügen Sie einer Schutzgruppe virtuelle Computer hinzu, um sie zu schützen.
 
      * **Netzwerkadapter**: Die Anzahl der Netzwerkadapter hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Überprüfen Sie in den [Spezifikationen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md#size-tables) , wie viele Netzwerkschnittstellenkarten von virtuellen Maschinen einer bestimmten Größe unterstützt werden.
 
-            When you modify the size for a virtual machine and save the settings, the number of network adapter will change when you open **Configure** page the next time. The number of network adapters of target virtual machines is minimum of the number of network adapters on source virtual machine and maximum number of network adapters supported by the size of the virtual machine chosen. It is explained below:
+       Wenn Sie die Größe für einen virtuellen Computer ändern und die Einstellungen speichern, wird die Anzahl der Netzwerkadapter beim nächsten Öffnen der Seite **Konfigurieren** geändert. Die Anzahl der Netzwerkadapter der virtuellen Zielcomputer entspricht mindestens der Anzahl der Netzwerkadapter auf virtuellen Quellcomputern und der maximalen Anzahl der Netzwerkadapter, die nach der unterstützten Größe des virtuellen Computers ausgewählt werden. Hierzu eine kurze Erläuterung:
 
+       * Wenn die Anzahl der Netzwerkadapter des Quellcomputers maximal der Anzahl der Netzwerkadapter entspricht, die für die Größe des Zielcomputers zulässig ist, hat der Zielcomputer die gleiche Anzahl von Netzwerkadaptern wie der Quellcomputer.
+       * Wenn die Anzahl der Netzwerkadapter für den virtuellen Quellcomputer die maximal zulässige Anzahl für die Größe des Zielcomputers übersteigt, wird die Anzahl verwendet, die maximal für die Größe des Zielcomputers zulässig ist.
+       * Ein Beispiel: Wenn ein Quellcomputer zwei Netzwerkkarten besitzt und der Zielcomputer aufgrund seiner Größe vier Netzwerkkarten unterstützt, erhält der Zielcomputer zwei Netzwerkkarten. Wenn der Quellcomputer dagegen zwei Netzwerkadapter besitzt und der Zielcomputer aufgrund seiner Größe nur einen Adapter unterstützt, erhält der Zielcomputer nur einen Adapter.
+       
+     * **Azure-Netzwerk**: Geben Sie das Failover-Zielnetzwerk für den virtuellen Computer an. Wenn der virtuelle Computer mehrere Netzwerkadapter besitzt, müssen alle Adapter mit dem gleichen Azure-Netzwerk verbunden werden.
+     * **Subnetz** : Wählen Sie für jeden Netzwerkadapter des virtuellen Computers das Subnetz im Azure-Netzwerk aus, mit dem der Computer nach einem Failover eine Verbindung herstellen soll.
+     * **Ziel-IP-Adresse**: Wenn der Netzwerkadapter der virtuellen Quellmaschine für die Verwendung einer statischen IP-Adresse konfiguriert ist, können Sie die IP-Adresse für die virtuelle Zielmaschine angeben, um sicherzustellen, dass die Maschine nach dem Failover die gleiche IP-Adresse besitzt.  Wenn Sie keine IP-Adresse angeben, wird beim Failover eine der verfügbaren Adressen zugewiesen. Wenn Sie eine Adresse angeben, die bereits verwendet wird, ist das Failover nicht erfolgreich.
 
-            - If the number of network adapters on the source machine is less than or equal to the number of adapters allowed for the target machine size, then the target will have the same number of adapters as the source.
-            - If the number of adapters for the source virtual machine exceeds the number allowed for the target size then the target size maximum will be used.
-            - For example if a source machine has two network adapters and the target machine size supports four, the target machine will have two adapters. If the source machine has two adapters but the supported target size only supports one then the target machine will have only one adapter.     
-        - **Azure-Netzwerk**: Geben Sie das Failover-Zielnetzwerk für den virtuellen Computer an. Wenn der virtuelle Computer mehrere Netzwerkadapter besitzt, müssen alle Adapter mit dem gleichen Azure-Netzwerk verbunden werden.
-        - **Subnetz** : Wählen Sie für jeden Netzwerkadapter des virtuellen Computers das Subnetz im Azure-Netzwerk aus, mit dem der Computer nach einem Failover eine Verbindung herstellen soll.
-        - **Ziel-IP-Adresse**: Wenn der Netzwerkadapter der virtuellen Quellmaschine für die Verwendung einer statischen IP-Adresse konfiguriert ist, können Sie die IP-Adresse für die virtuelle Zielmaschine angeben, um sicherzustellen, dass die Maschine nach dem Failover die gleiche IP-Adresse besitzt.  Wenn Sie keine IP-Adresse angeben, wird beim Failover eine der verfügbaren Adressen zugewiesen. Wenn Sie eine Adresse angeben, die bereits verwendet wird, ist das Failover nicht erfolgreich.
+     > [!NOTE] 
+     > Für Netzwerke, die für die Site Recovery-Bereitstellung verwendet werden, wird die [Migration von Netzwerken](../azure-resource-manager/resource-group-move-resources.md) zwischen Ressourcengruppen im selben Abonnement oder zwischen verschiedenen Abonnements nicht unterstützt.
+     >
 
-        > [AZURE.NOTE] Für Netzwerke, die für die Site Recovery-Bereitstellung verwendet werden, wird die [Migration von Netzwerken](../resource-group-move-resources.md) zwischen Ressourcengruppen im selben Abonnement oder zwischen verschiedenen Abonnements nicht unterstützt.
-
-        ![Konfigurieren der Eigenschaften virtueller Computer](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
+     ![Konfigurieren der Eigenschaften virtueller Computer](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
 
 
 
@@ -284,6 +286,6 @@ Wenn die Bereitstellung eingerichtet ist und ausgeführt wird, informieren Sie s
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 

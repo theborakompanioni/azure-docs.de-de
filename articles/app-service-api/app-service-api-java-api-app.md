@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 10/19/2016
+ms.date: 12/22/2016
 ms.author: rachelap;robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b073958fd41fec05b473594b23b586d561e996f3
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
 
 
 ---
@@ -168,13 +168,11 @@ In diesem Abschnitt ersetzen Sie die serverseitige Implementierung des von Swagg
         package io.swagger.api.impl;
    
         import io.swagger.api.*;
-        import io.swagger.model.*;
+        
         import io.swagger.model.Contact;
         import java.util.*;
         import io.swagger.api.NotFoundException;
-        import java.io.InputStream;
-        import com.sun.jersey.core.header.FormDataContentDisposition;
-        import com.sun.jersey.multipart.FormDataParam;
+               
         import javax.ws.rs.core.Response;
         import javax.ws.rs.core.SecurityContext;
    
@@ -271,7 +269,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal eine neue API-App
     ![Verwenden Ihrer Java-Kontakte-REST-API in einer Liveinstanz in Azure][postman-calling-azure-contacts]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel konnten Sie mit einer Swagger-JSON-Datei und Java-Code beginnen, der mit dem swagger.io-Editor generiert wurde. Durch einfache Änderungen und einen Git-Bereitstellungsprozess haben Sie eine funktionale, in Java geschriebene API-App erhalten. Im nächsten Tutorial erfahren Sie, wie Sie [API-Apps über JavaScript-Clients mit CORS nutzen][API-Apps CORS]. In weiteren Tutorials dieser Serie wird die Implementierung von Authentifizierung und Autorisierung erläutert.
+In diesem Artikel konnten Sie mit einer Swagger-JSON-Datei und Java-Code beginnen, der mit dem swagger.io-Editor generiert wurde. Durch einfache Änderungen und einen Git-Bereitstellungsprozess haben Sie eine funktionale, in Java geschriebene API-App erhalten. Im nächsten Tutorial erfahren Sie, wie Sie [API-Apps über JavaScript-Clients mit CORS nutzen][App Service API CORS]. In weiteren Tutorials dieser Serie wird die Implementierung von Authentifizierung und Autorisierung erläutert.
 
 Aufbauend auf diesem Beispiel können Sie mehr über das [Storage SDK für Java] erfahren, um die JSON-Blobs beständig zu speichern. Alternativ Sie können mithilfe des [Java SDK für DocumentDB] Ihre Kontaktdaten in Azure DocumentDB speichern. 
 
@@ -287,7 +285,7 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Java SDK für DocumentDB]: ../documentdb/documentdb-java-application.md
 [kostenlose Testversion]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
-[Azure Developer Center für Java]: /develop/java/
+[Azure Java Developer Center]: /develop/java/
 [Java Developer Kit 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
@@ -319,6 +317,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
