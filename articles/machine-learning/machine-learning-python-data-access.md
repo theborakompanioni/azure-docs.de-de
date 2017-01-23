@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: huvalo;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1efa86208ef45f84de5143a6a906c871d958e9d
+ms.sourcegitcommit: 045e40bccad59586987c0a18253dafff2f955a93
+ms.openlocfilehash: ea5005e7cff775c798b030748324781ef7dcfe7d
 
 
 ---
@@ -78,7 +78,7 @@ Um das Autorisierungstoken zu erhalten, führen Sie eine der folgenden Aktionen 
 
 * Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihren Autorisierungstoken auf der Seite „Einstellungen“ von ihrem Arbeitsbereich im Studio zugreifen. Wählen Sie im linken Bereich **Einstellungen**, und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen.  Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
 
-![](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
+![Autorisierungstoken](./media/machine-learning-python-data-access/ml-python-access-settings-tokens.png)
 
 * Bitten Sie darum, zur Rolle „Besitzer“ hochgestuft zu werden.  Zu diesem Zweck muss ein aktueller Besitzer des Arbeitsbereichs Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
 
@@ -114,7 +114,7 @@ Die folgenden Formate werden unterstützt (Konstanten hierfür sind der `azureml
 
 Sie können das Format bestimmen, indem Sie mit dem Mauszeiger über einen Modulausgabeknoten fahren. Er wird zusammen mit den Knotennamen in einer QuickInfo angezeigt.
 
-Einige der Module, z.B. das Modul [Aufteilen ][split], geben ein Format mit dem Namen `Dataset` aus, das von der Python-Clientbibliothek nicht unterstützt wird.
+Einige der Module, wie z.B. das Modul [Split][split] geben ein Format mit dem Namen `Dataset` aus, das von der Python-Clientbibliothek nicht unterstützt wird.
 
 ![Dataset-Format][dataset-format]
 
@@ -126,10 +126,10 @@ Die folgenden Schritte zeigen ein Beispiel, das ein Experiment erstellt, dieses 
 
 1. Erstellen eines neuen Experiments.
 2. Fügen Sie ein Modul **Binäres Klassifizierungsdataset der Einkommenserhebung für Erwachsene** ein.
-3. Einfügen eines [Aufteilen][split] -Moduls und Verbinden seiner Eingabe mit der Ausgabe des Dataset-Moduls.
-4. Einfügen eines [Convert to CSV][convert-to-csv]-Moduls und Verbinden seiner Eingabe mit einer Ausgabe des [Aufteilen][split]-Moduls.
+3. Einfügen eines Moduls [Split][split] und Verbinden seines Eingangs mit dem Ausgang des Datasetmoduls.
+4. Einfügen eines Moduls [Convert to CSV][convert-to-csv] und Verbinden seines Eingangs mit einem Ausgang des Moduls [Split][split].
 5. Speichern Sie das Experiment, führen Sie es aus und warten Sie, bis es ausgeführt ist.
-6. Klicken Sie auf den Ausgabeknoten des Moduls [Convert to CSV][convert-to-csv].
+6. Klicken Sie auf den Ausgangsknoten des Moduls [Convert to CSV][convert-to-csv].
 7. Wenn das Kontextmenü angezeigt wird, wählen Sie **Datenzugriffscode generieren**.
    
     ![Kontextmenü][experiment]
@@ -338,6 +338,6 @@ Wenn Ihre Daten bereits serialisiert sind, verwenden Sie `update_from_raw_data` 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

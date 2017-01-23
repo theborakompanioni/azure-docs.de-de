@@ -63,6 +63,6 @@ Nachdem Sie nun über eine bei Azure AD B2C registrierte Anwendung verfügen, k
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

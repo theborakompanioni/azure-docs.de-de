@@ -5,8 +5,8 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-
+editor: 
+ms.assetid: f8622b1d-c07d-4ea6-b41c-4ae98d998fff
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8d100aca58285c435435f9eda26cc7b6e1381e7a
+
 
 ---
-# Beispiel 1: Erstellen einer einfachen DMZ mit Netzwerksicherheitsgruppen
-[Zurück zur Seite mit bewährten Methoden zu Sicherheitsgrenzen][HOME]
+# <a name="example-1--build-a-simple-dmz-with-nsgs"></a>Beispiel 1: Erstellen einer einfachen DMZ mit Netzwerksicherheitsgruppen
+[Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
 
-Mit diesem Beispiel wird eine einfache DMZ mit vier Windows-Servern und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können.
+Mit diesem Beispiel wird eine einfache DMZ mit vier Windows-Servern und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können. 
 
 ![Eingehende DMZ mit NSG][1]
 
-## Beschreibung der Umgebung
+## <a name="environment-description"></a>Beschreibung der Umgebung
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
 * Zwei Clouddienste: "FrontEnd001" und "BackEnd001"
@@ -33,7 +37,7 @@ Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 * Zwei Windows Server-Instanzen, die Back-End-Anwendungsserver darstellen ("AppVM01", "AppVM02")
 * Eine Windows Server-Instanz, die einen DNS-Server darstellt ("DNS01")
 
-Der Referenzabschnitt enthält ein PowerShell-Skript, mit dem sich der größte Teil der oben beschriebenen Umgebung erstellen lässt. Die Erstellung der virtuellen Computer und Netzwerke wird zwar durch das Beispielskript ausgeführt, aber dies wird in diesem Dokument nicht im Einzelnen beschrieben.
+Der Referenzabschnitt enthält ein PowerShell-Skript, mit dem sich der größte Teil der oben beschriebenen Umgebung erstellen lässt. Die Erstellung der virtuellen Computer und Netzwerke wird zwar durch das Beispielskript ausgeführt, aber dies wird in diesem Dokument nicht im Einzelnen beschrieben. 
 
 So erstellen Sie die Umgebung
 
@@ -47,8 +51,8 @@ Nach Ausführung des Skripts können weitere Schritte ausgeführt werden. Im Ref
 
 In den nächsten Abschnitten werden anhand der wichtigsten Zeilen des PowerShell-Skripts detailliert die Netzwerksicherheitsgruppen sowie deren Funktionsweise in diesem Beispiel beschrieben.
 
-## Netzwerksicherheitsgruppen
-Für dieses Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit sechs Regeln geladen.
+## <a name="network-security-groups-nsg"></a>Netzwerksicherheitsgruppen
+Für dieses Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit sechs Regeln geladen. 
 
 > [!TIP]
 > Im Allgemeinen sollten Sie zuerst die spezifischeren Regeln zum Zulassen von Aktionen und danach die allgemeineren Regeln zum Ablehnen von Aktionen erstellen. Die zugewiesene Priorität bestimmt, welche Regeln zuerst ausgewertet werden. Sobald eine Regel auf den Datenverkehr zutrifft, werden keine weiteren Regeln ausgewertet. NSG-Regeln können sowohl in eingehender als auch in ausgehender Richtung zutreffen (aus Perspektive des Subnetzes).
@@ -57,18 +61,18 @@ Für dieses Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit s
 
 Folgende Regeln werden deklarativ für eingehenden Datenverkehr erstellt:
 
-1. Interner DNS-Datenverkehr (Port 53) wird zugelassen.
-2. RDP-Datenverkehr (Port 3389) aus dem Internet zu jedem virtuellen Computer wird zugelassen.
-3. HTTP-Datenverkehr (Port 80) aus dem Internet zum Webserver (IIS01) wird zugelassen.
+1. Interner DNS-Datenverkehr (Port 53) wird zugelassen.
+2. RDP-Datenverkehr (Port 3389) aus dem Internet zu jedem virtuellen Computer wird zugelassen.
+3. HTTP-Datenverkehr (Port 80) aus dem Internet zum Webserver (IIS01) wird zugelassen.
 4. Jeglicher Datenverkehr (alle Ports) von IIS01 zu AppVM1 wird zugelassen.
 5. Jeglicher Datenverkehr (alle Ports) aus dem Internet in das gesamte VNet (beide Subnetze) wird abgelehnt.
 6. Jeglicher Datenverkehr (alle Ports) vom Front-End-Subnetz zum Back-End-Subnetz wird abgelehnt.
 
-Diese Regeln sind an jedes Subnetz gebunden. Wenn also eine HTTP-Anforderung aus dem Internet an den Webserver gesendet wird, gilt sowohl Regel 3 (Zulassen) als auch Regel 5 (Ablehnen). Da jedoch Regel 3 eine höhere Priorität besitzt, wird nur diese angewendet, und Regel 5 wird nicht berücksichtigt. Aus diesem Grund wird die HTTP-Anforderung für den Webserver als zulässig eingestuft. Falls versucht würde, denselben Datenverkehr an den DNS01-Server zu senden, würde Regel 5 (Ablehnen) zuerst angewendet, der Datenverkehr also nicht an den Server übergeben. Mit Regel 6 (Verweigern) wird die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz blockiert (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Dies dient dem Schutz des Back-End-Netzwerks, falls ein Angreifer die Webanwendung am Front-End attackiert. Der Angreifer hat dann nur beschränkten Zugriff auf das „geschützte“ Back-End-Netzwerk (nur auf Ressourcen, die auf dem Server AppVM01 verfügbar gemacht werden).
+Diese Regeln sind an jedes Subnetz gebunden. Wenn also eine HTTP-Anforderung aus dem Internet an den Webserver gesendet wird, gilt sowohl Regel 3 (Zulassen) als auch Regel 5 (Ablehnen). Da jedoch Regel 3 eine höhere Priorität besitzt, wird nur diese angewendet, und Regel 5 wird nicht berücksichtigt. Aus diesem Grund wird die HTTP-Anforderung für den Webserver als zulässig eingestuft. Falls versucht würde, denselben Datenverkehr an den DNS01-Server zu senden, würde Regel 5 (Ablehnen) zuerst angewendet, der Datenverkehr also nicht an den Server übergeben. Mit Regel 6 (Verweigern) wird die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz blockiert (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Dies dient dem Schutz des Back-End-Netzwerks, falls ein Angreifer die Webanwendung am Front-End attackiert. Der Angreifer hat dann nur beschränkten Zugriff auf das „geschützte“ Back-End-Netzwerk (nur auf Ressourcen, die auf dem Server AppVM01 verfügbar gemacht werden).
 
-Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine ausgehenden Regeln geändert. Um den Datenverkehr in beide Richtungen zu sperren, ist benutzerdefiniertes Routing (User Defined Routing, UDR) erforderlich. Dies wird in Beispiel 3 erläutert.
+Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine ausgehenden Regeln geändert. Um den Datenverkehr in beide Richtungen zu sperren, ist benutzerdefiniertes Routing (User Defined Routing, UDR) erforderlich. Dies wird in Beispiel 3 erläutert.
 
-Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Element in der folgenden Liste, das mit einem Dollarzeichen beginnt [Beispiel: $NSGName], ist eine benutzerdefinierte Variable aus dem Skript im Referenzabschnitt dieses Dokuments.)
+Jede Regel wird im Folgenden detailliert beschrieben (**Hinweis:** Jedes Element in der folgenden Liste, das mit einem Dollarzeichen beginnt [Beispiel: $NSGName], ist eine benutzerdefinierte Variable aus dem Skript im Referenzabschnitt dieses Dokuments):
 
 1. Zuerst muss eine Netzwerksicherheitsgruppe zum Speichern der Regeln erstellt werden:
    
@@ -78,7 +82,7 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
 2. Mit der ersten Regel in diesem Beispiel wird DNS-Datenverkehr zwischen allen internen Netzwerken und dem DNS-Server im Back-End-Subnetz zugelassen. Die Regel weist einige wichtige Parameter auf:
    
    * Der Parameter "Type" gibt an, für welche Datenverkehrsrichtung diese Regel gilt – aus der Perspektive des Subnetzes oder des virtuellen Computers (je nachdem, wo diese Netzwerksicherheitsgruppe gebunden wurde). Wenn der Typ "eingehend" lautet und Datenverkehr an das Subnetz gesendet wird, wird die Regel angewendet. Auf Datenverkehr, der das Subnetz verlässt, wirkt sich die Regel dagegen nicht aus.
-   * Der Parameter "Priority" legt die Reihenfolge fest, in der ein Datenverkehrsfluss ausgewertet wird. Je niedriger die Nummer ist, desto höher ist die Priorität. Sobald eine Regel auf einen bestimmten Datenverkehrsfluss angewendet wird, werden keine weiteren Regeln verarbeitet. Wenn daher eine Regel mit Priorität 1 Datenverkehr zulässt und eine Regel mit Priorität 2 Datenverkehr ablehnt und beide Regeln auf einen Datenverkehrsfluss zutreffen, wird dieser Datenverkehr zugelassen, da Regel 1 mit der höheren Priorität greift und keine weiteren Regeln angewendet werden.
+   * Der Parameter "Priority" legt die Reihenfolge fest, in der ein Datenverkehrsfluss ausgewertet wird. Je niedriger die Nummer ist, desto höher ist die Priorität. Sobald eine Regel auf einen bestimmten Datenverkehrsfluss angewendet wird, werden keine weiteren Regeln verarbeitet. Wenn daher eine Regel mit Priorität 1 Datenverkehr zulässt und eine Regel mit Priorität 2 Datenverkehr ablehnt und beide Regeln auf einen Datenverkehrsfluss zutreffen, wird dieser Datenverkehr zugelassen, da Regel 1 mit der höheren Priorität greift und keine weiteren Regeln angewendet werden.
    * Der Parameter "Action" gibt an, ob Datenverkehr, auf den diese Regel zutrifft, blockiert oder zugelassen wird.
      
          Get-AzureNetworkSecurityGroup -Name $NSGName | `
@@ -88,7 +92,7 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
              -DestinationAddressPrefix $VMIP[4] `
              -DestinationPortRange '53' `
              -Protocol *
-3. Diese Regel lässt RDP-Datenverkehr aus dem Internet an den RDP-Port auf jedem Server in beiden Subnetzen im VNet zu. Diese Regel verwendet zwei bestimmte Arten von Adresspräfixen: "VIRTUAL\_NETWORK" und "INTERNET". Dies ist eine einfache Möglichkeit, eine größere Bandbreite an Adresspräfixen zu verarbeiten.
+3. Diese Regel lässt RDP-Datenverkehr aus dem Internet an den RDP-Port auf jedem Server in beiden Subnetzen im VNet zu. Diese Regel verwendet zwei bestimmte Arten von Adresspräfixen: "VIRTUAL_NETWORK" und "INTERNET". Dies ist eine einfache Möglichkeit, eine größere Bandbreite an Adresspräfixen zu verarbeiten.
    
      Get-AzureNetworkSecurityGroup -Name $NSGName | `
    
@@ -98,7 +102,7 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
          -DestinationAddressPrefix VIRTUAL_NETWORK `
          -DestinationPortRange '3389' `
          -Protocol *
-4. Diese Regel lässt zu, dass eingehender Internetdatenverkehr den Webserver erreicht. Sie ändert nicht das Routingverhalten, sondern ermöglicht nur die Weiterleitung von Datenverkehr mit dem Ziel IIS01. Wenn also eingehender Datenverkehr aus dem Internet den Webserver als Ziel hat, lässt diese Regel den Datenverkehr zu und verhindert die Auswertung weiterer Regeln. (In der Regel mit Priorität 140 wird sämtlicher eingehender Datenverkehr aus dem Internet blockiert.) Wenn Sie nur HTTP-Datenverkehr verarbeiten, kann diese Regel weiter eingeschränkt werden und nur Zielport 80 zulassen.
+4. Diese Regel lässt zu, dass eingehender Internetdatenverkehr den Webserver erreicht. Sie ändert nicht das Routingverhalten, sondern ermöglicht nur die Weiterleitung von Datenverkehr mit dem Ziel IIS01. Wenn also eingehender Datenverkehr aus dem Internet den Webserver als Ziel hat, lässt diese Regel den Datenverkehr zu und verhindert die Auswertung weiterer Regeln. (In der Regel mit Priorität 140 wird sämtlicher eingehender Datenverkehr aus dem Internet blockiert.) Wenn Sie nur HTTP-Datenverkehr verarbeiten, kann diese Regel weiter eingeschränkt werden und nur Zielport 80 zulassen.
    
      Get-AzureNetworkSecurityGroup -Name $NSGName | `
    
@@ -108,7 +112,7 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
          -DestinationAddressPrefix $VMIP[0] `
          -DestinationPortRange '*' `
          -Protocol *
-5. Diese Regel lässt Datenverkehr vom IIS01-Server an den AppVM01-Server zu. Eine spätere Regel blockiert sämtlichen Datenverkehr vom Front-End zum Back-End. Wenn der Port bekannt ist, sollte dieser der Regel hinzugefügt werden, um deren Funktionalität zu verbessern. Wenn der IIS-Server z. B. nur Daten an SQL Server auf AppVM01 sendet, sollte der Zielportbereich von "*" (beliebig) in 1433 (dem SQL-Port) geändert werden. So bietet AppVM01 eine geringere Angriffsfläche bei Angriffen auf die Webanwendung.
+5. Diese Regel lässt Datenverkehr vom IIS01-Server an den AppVM01-Server zu. Eine spätere Regel blockiert sämtlichen Datenverkehr vom Front-End zum Back-End. Wenn der Port bekannt ist, sollte dieser der Regel hinzugefügt werden, um deren Funktionalität zu verbessern. Wenn der IIS-Server z. B. nur Daten an SQL Server auf AppVM01 sendet, sollte der Zielportbereich von "*" (beliebig) in 1433 (dem SQL-Port) geändert werden. So bietet AppVM01 eine geringere Angriffsfläche bei Angriffen auf die Webanwendung.
    
      Get-AzureNetworkSecurityGroup -Name $NSGName | `
    
@@ -116,9 +120,8 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
          -Type Inbound -Priority 130 -Action Allow `
      -SourceAddressPrefix $VMIP[1] -SourcePortRange '*' `
      -DestinationAddressPrefix $VMIP[2] `
-     -DestinationPortRange '*' `
-     -Protocol *
-6. Dies Regel lehnt Datenverkehr aus dem Internet an alle Server im Netzwerk ab. In Kombination mit den Regeln mit Priorität 110 und 120 wird nur eingehender Datenverkehr aus dem Internet an die Firewall- und RDP-Ports anderer Server zugelassen, jeglicher anderer Datenverkehr wird blockiert.
+     -DestinationPortRange '*' `   -Protocol *
+6. Dies Regel lehnt Datenverkehr aus dem Internet an alle Server im Netzwerk ab. In Kombination mit den Regeln mit Priorität 110 und 120 wird nur eingehender Datenverkehr aus dem Internet an die Firewall- und RDP-Ports anderer Server zugelassen, jeglicher anderer Datenverkehr wird blockiert. 
    
      Get-AzureNetworkSecurityGroup -Name $NSGName | `
    
@@ -141,23 +144,23 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
          -DestinationPortRange '*' `
          -Protocol * 
 
-## Datenverkehrsszenarien
-#### (*Zulässig*) Web an Webserver
+## <a name="traffic-scenarios"></a>Datenverkehrsszenarien
+#### <a name="allowed-web-to-web-server"></a>(*Zulässig*) Web an Webserver
 1. Internetbenutzer fordert HTTP-Seite von FrontEnd001.CloudApp.Net (Clouddienst mit Schnittstelle zum Internet) an.
-2. Clouddienst übergibt Datenverkehr über offenen Endpunkt an Port 80 an IIS01 (den Webserver).
+2. Clouddienst übergibt Datenverkehr über offenen Endpunkt an Port 80 an IIS01 (den Webserver).
 3. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 4. Datenverkehr trifft an interner IP-Adresse des Webservers IIS01 ein (10.0.1.5).
 5. IIS01 lauscht auf Webdatenverkehr, empfängt diese Anforderung und beginnt mit der Verarbeitung der Anforderung.
 6. IIS01 fragt Informationen von SQL Server unter AppVM01 ab.
 7. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 8. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu, weiter zur nächsten Regel.
-   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu, weiter zur nächsten Regel.
+   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 9. AppVM01 empfängt die SQL-Abfrage und antwortet.
 10. Da es keine ausgehenden Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
 11. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
@@ -166,21 +169,21 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
 12. Der IIS-Server empfängt die SQL-Antwort, erstellt die HTTP-Antwort und sendet sie an den Anforderer.
 13. Da im Front-End-Subnetz keine ausgehenden Regeln vorhanden sind, wird die Antwort zugelassen, und der Internetbenutzer empfängt die angeforderte Webseite.
 
-#### *(Zulässig)* RDP an Back-End
+#### <a name="allowed-rdp-to-backend"></a>*(Zulässig)*RDP an Back-End
 1. Serveradministrator im Internet fordert RDP-Sitzung für AppVM01 an BackEnd001.CloudApp.Net:xxxxx an, wobei "xxxxx" für die zufällig zugewiesene Portnummer für RDP auf AppVM01 steht (den zugewiesenen Port finden Sie im Azure-Portal oder über PowerShell).
 2. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 3. Da keine ausgehenden Regeln vorhanden sind, werden Standardregeln angewendet, und der zurückkommende Datenverkehr wird zugelassen.
 4. Die RDP-Sitzung wird aktiviert.
 5. AppVM01 fordert zur Eingabe von Benutzername und Kennwort auf.
 
-#### (*Zulässig*) Webserver-DNS-Lookup auf DNS-Server
+#### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(*Zulässig*) Webserver-DNS-Lookup auf DNS-Server
 1. Der Webserver IIS01 benötigt einen Datenfeed von "www.data.gov", muss jedoch die Adresse auflösen.
 2. Die Netzwerkkonfiguration für das VNet listet DNS01 (10.0.2.4 im Back-End-Subnetz) als primären DNS-Server auf, IIS01 sendet die DNS-Anforderung an DNS01.
 3. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 4. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 5. DNS-Server empfängt Anforderung.
 6. Die Adresse ist nicht im DNS-Server zwischengespeichert, daher fragt der DNS-Server die Adresse bei einem DNS-Stammserver im Internet ab.
 7. Keine ausgehenden Regeln im Back-End-Subnetz, Datenverkehr wird zugelassen.
@@ -192,14 +195,14 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
     2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
 12. IIS01 empfängt die Antwort von DNS01.
 
-#### (*Zulässig*) Webserver greift auf Datei auf AppVM01 zu
+#### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Zulässig*) Webserver greift auf Datei auf AppVM01 zu
 1. IIS01 fordert eine Datei auf AppVM01 an.
 2. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 3. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an IIS01) trifft nicht zu, weiter zur nächsten Regel.
-   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an IIS01) trifft nicht zu, weiter zur nächsten Regel.
+   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 4. AppVM01 empfängt die Anforderung und antwortet mit der Datei (autorisierter Zugriff vorausgesetzt).
 5. Da es keine ausgehenden Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
 6. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
@@ -207,42 +210,43 @@ Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Elemen
    2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
 7. Der IIS-Server empfängt die Datei.
 
-#### (*Abgelehnt*) Web an Back-End-Server
+#### <a name="denied-web-to-backend-server"></a>(*Abgelehnt*) Web an Back-End-Server
 1. Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf eine Datei auf AppVM01 zuzugreifen.
 2. Da keine Endpunkte für Dateifreigaben geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
-3. Wären aus irgendeinem Grund Endpunkte offen, würde die NSG-Regel 5 (Internet an VNet) diesen Datenverkehr blockieren.
+3. Wären aus irgendeinem Grund Endpunkte offen, würde die NSG-Regel 5 (Internet an VNet) diesen Datenverkehr blockieren.
 
-#### (*Abgelehnt*) Web-DNS-Lookup auf DNS-Server
+#### <a name="denied-web-dns-lookup-on-dns-server"></a>(*Abgelehnt*) Web-DNS-Lookup auf DNS-Server
 1. Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf DNS01 einen internen DNS-Eintrag nachzuschlagen.
 2. Da keine Endpunkte für DNS geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
-3. Wären aus irgendeinem Grund Endpunkte offen, würde NSG-Regel 5 (Internet an VNet) diesen Datenverkehr blockieren. (Hinweis: Regel 1 (DNS) würde aus zwei Gründen nicht gelten: Erstens befindet sich die Quelladresse im Internet, und diese Regel gilt nur für das lokale VNet als Quelle, und zweitens handelt es sich um eine Zulassungsregel, mit der niemals Datenverkehr abgelehnt wird.)
+3. Wenn die Endpunkte aus irgendeinem Grund geöffnet wären, würde NSG-Regel 5 (Internet an VNet) diesen Datenverkehr blockieren. (Hinweis: Regel 1 (DNS) würde aus zwei Gründen nicht gelten: Erstens befindet sich die Quelladresse im Internet, und diese Regel gilt nur für das lokale VNet als Quelle, und zweitens handelt es sich um eine Zulassungsregel, sodass damit niemals Datenverkehr verweigert wird.)
 
-#### (*Abgelehnt*) Zugriff auf SQL aus dem Web über Firewall
+#### <a name="denied-web-to-sql-access-through-firewall"></a>(*Abgelehnt*) Zugriff auf SQL aus dem Web über Firewall
 1. Internetbenutzer fordert SQL-Daten von FrontEnd001.CloudApp.Net (Clouddienst mit Schnittstelle zum Internet) an.
 2. Da keine Endpunkte für SQL geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher die Firewall nicht erreichen.
 3. Wenn Endpunkte aus irgendeinem Grund geöffnet wären, würde das Front-End-Subnetz mit der Verarbeitung der eingehenden Regel beginnen:
-   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-   3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 4. Datenverkehr trifft an interner IP-Adresse von IIS01 ein (10.0.1.5).
-5. IIS01 lauscht nicht auf Port 1433, daher wird diese Anforderung nicht beantwortet.
+5. IIS01 lauscht nicht auf Port 1433, daher wird diese Anforderung nicht beantwortet.
 
-## Zusammenfassung
+## <a name="conclusion"></a>Zusammenfassung
 Dies ist eine relativ einfache und direkte Möglichkeit, das Back-End-Subnetz von eingehendem Datenverkehr zu isolieren.
 
-Weitere Beispiele und einen Überblick über die Sicherheitgrenzen des Netzwerks finden Sie [hier][HOME].
+Weitere Beispiele und eine Übersicht über die Sicherheitsgrenzen des Netzwerks finden Sie [hier][HOME].
 
-## Referenzen
-### Hauptskript und Netzwerkkonfiguration
-Speichern Sie das vollständige Skript in einer PowerShell-Skriptdatei. Speichern Sie die Netzwerkkonfiguration in einer Datei namens "NetworkConf1.xml". Bearbeiten Sie die benutzerdefinierten Variablen nach Bedarf. Führen Sie das Skript aus, und befolgen Sie dann oben stehende Anweisungen zur Einrichtung der Firewallregel.
+## <a name="references"></a>Referenzen
+### <a name="main-script-and-network-config"></a>Hauptskript und Netzwerkkonfiguration
+Speichern Sie das vollständige Skript in einer PowerShell-Skriptdatei. Speichern Sie die Netzwerkkonfiguration in einer Datei namens "NetworkConf1.xml".
+Bearbeiten Sie die benutzerdefinierten Variablen nach Bedarf. Führen Sie das Skript aus, und befolgen Sie dann oben stehende Anweisungen zur Einrichtung der Firewallregel.
 
-#### Vollständiges Skript
+#### <a name="full-script"></a>Vollständiges Skript
 Dieses Skript führt basierend auf den benutzerdefinierten Variablen Folgendes aus:
 
 1. Herstellen einer Verbindung mit einem Azure-Abonnement
 2. Erstellen eines neuen Speicherkontos
 3. Erstellen eines neuen VNets und zweier Subnetze, wie in der Netzwerkkonfigurationsdatei definiert
-4. Erstellen von Windows Server-VMs (Build 4)
+4. Erstellen von Windows Server-VMs (Build 4)
 5. Konfigurieren von Netzwerksicherheitsgruppen einschließlich:
    * Erstellen einer Netzwerksicherheitsgruppe
    * Auffüllen der Gruppe mit Regeln
@@ -511,7 +515,7 @@ Dieses PowerShell-Skript sollte lokal auf einem mit dem Internet verbundenen PC 
       Write-Host
 
 
-#### Netzwerkkonfigurationsdatei
+#### <a name="network-config-file"></a>Netzwerkkonfigurationsdatei
 Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie den Link zu dieser Datei in die $NetworkConfigFile-Variable im obigen Skript ein.
 
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -544,7 +548,7 @@ Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
 
-#### Beispielanwendungsskripts
+#### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
 Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
 
 <!--Image References-->
@@ -554,4 +558,9 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

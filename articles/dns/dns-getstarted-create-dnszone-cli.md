@@ -123,6 +123,6 @@ Nach dem Erstellen einer DNS-Zone können Sie in Ihrer Zone [DNS-Ressourceneintr
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 
