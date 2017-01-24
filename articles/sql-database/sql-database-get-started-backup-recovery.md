@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: bc36f38c0089940e8f4f53a0abb13d9bb756eb1e
+ms.sourcegitcommit: 7f26cd0f6c5f9c7a2fe692bfcdc6ef60d1b2200f
+ms.openlocfilehash: d4ea089ed4b5d29c261b25e95f4d304611f9a857
 
 
 ---
@@ -104,11 +104,10 @@ In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie das Azure-Porta
 
 * Sie haben das Tutorial [Erste Schritte mit Azure SQL-Datenbankservern, -Servern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio](sql-database-get-started.md) oder die entsprechende [PowerShell-Version](sql-database-get-started-powershell.md) des Tutorials abgeschlossen. Arbeiten Sie andernfalls entweder dieses erforderliche Tutorial durch, oder führen Sie das PowerShell-Skript am Ende der [PowerShell-Version](sql-database-get-started-powershell.md) des Tutorials aus, bevor Sie fortfahren.
 
-<!------------------
+
 > [!TIP]
-> You can perform these same tasks in a getting started tutorial by using either [C#](sql-database-get-started-csharp.md) or [PowerShell](sql-database-get-started-powershell.md).
->
--------------------->
+> Sie können diese Aufgaben auch in einem Tutorial zu den ersten Schritten durchführen, indem Sie [PowerShell](sql-database-get-started-backup-recovery-powershell.md) verwenden.
+
 
 ## <a name="sign-in-by-using-your-existing-account"></a>Anmelden mit einem vorhandenen Konto
 Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorhandenen Abonnements](https://account.windowsazure.com/Home/Index)eine Verbindung mit dem Azure-Portal herzustellen.
@@ -179,6 +178,11 @@ In diesem Abschnitt des Tutorials stellen Sie einen bestimmten Zustand Ihrer Dat
 ## <a name="configure-long-term-retention-of-automated-backups-in-an-azure-recovery-services-vault"></a>Konfigurieren der langfristigen Beibehaltung von automatisierten Sicherungen in einem Azure Recovery Services-Tresor 
 
 In diesem Abschnitt des Tutorials [konfigurieren Sie einen Azure Recovery Services-Tresor zur Beibehaltung von automatisierten Sicherungen](sql-database-long-term-retention.md) für einen längeren Zeitraum als gemäß der Beibehaltungsdauer für Ihre Dienstebene vorgesehen ist. 
+
+
+> [!TIP]
+> Informationen zum Löschen von Sicherungen finden Sie unter [Delete long-term retention backups](sql-database-long-term-retention-delete.md) (Löschen der langfristigen Aufbewahrung von Sicherungen).
+
 
 1. Öffnen Sie das Blatt **SQL Server** für Ihren Server **sqldbtutorialserver**.
 
@@ -299,12 +303,12 @@ In diesem Abschnitt des Tutorials stellen Sie die Datenbank aus einer Sicherung 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu vom Dienst generierten automatischen Sicherungen finden Sie im Artikel zu [automatischen Sicherungen](: https://azure.microsoft.com/en-us/documentation/articles/)sql-database-automated-backups.MD.
+- Weitere Informationen zu vom Dienst generierten automatischen Sicherungen finden Sie im Artikel zu [automatischen Sicherungen](sql-database-automated-backups.md).
 - Weitere Informationen zur langfristigen Beibehaltung von Sicherungen finden Sie im Artikel zur [langfristigen Beibehaltung von Sicherungen](sql-database-long-term-retention.md).
 - Weitere Informationen zum Wiederherstellen von Daten aus Sicherungen finden Sie im Artikel zur [Wiederherstellung aus einer Sicherung](sql-database-recovery-using-backups.md).
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

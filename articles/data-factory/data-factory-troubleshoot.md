@@ -2,109 +2,125 @@
 title: Problembehandlung bei Azure Data Factory
 description: Erfahren Sie, wie Sie Probleme mithilfe von Azure Data Factory beheben.
 services: data-factory
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 11/15/2016
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
+ms.openlocfilehash: d4589b5e9ca7f08b2152605dc26a96d4b5d656c8
+
 
 ---
-# Problembehandlung bei Data Factory
-Dieser Artikel enthält Tipps zur Behandlung von Problemen bei der Verwendung von Azure Data Factory. Dieser Artikel führt nicht alle Probleme auf, die bei Verwendung des Diensts möglicherweise auftreten können, sondern erläutert einige ausgewählte Probleme und die allgemeine Problembehandlung.
+# <a name="troubleshoot-data-factory-issues"></a>Problembehandlung bei Data Factory
+Dieser Artikel enthält Tipps zur Behandlung von Problemen bei der Verwendung von Azure Data Factory. Dieser Artikel führt nicht alle Probleme auf, die bei Verwendung des Diensts möglicherweise auftreten können, sondern erläutert einige ausgewählte Probleme und die allgemeine Problembehandlung.   
 
-## Tipps zur Problembehandlung
-### Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
 Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter nicht auf Ihrem Computer registriert. Gehen Sie wie folgt vor:
 
 1. Starten Sie Azure PowerShell.
-2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an. Login-AzureRmAccount
-3. Führen Sie den folgenden Befehl aus, um den Azure Data Factory-Anbieter zu registrieren. Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an.
 
-### Problem: Autorisierungsfehler beim Ausführen eines Data Factory-Cmdlets
+    ```powershell
+    Login-AzureRmAccount
+    ```
+3. Führen Sie den folgenden Befehl aus, um den Azure Data Factory-Anbieter zu registrieren.
+    
+    ```powershell        
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
+
+### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problem: Autorisierungsfehler beim Ausführen eines Data Factory-Cmdlets
 Sie verwenden wahrscheinlich nicht das richtige Azure-Konto oder -Abonnement für Azure PowerShell. Wählen Sie mithilfe der folgenden Cmdlets das richtige Azure-Konto und -Abonnement für die Verwendung mit Azure PowerShell aus.
 
 1. Login-AzureRmAccount: Verwenden Sie die richtige Benutzer-ID und das richtige Kennwort.
 2. Get-AzureRmSubscription: Zeigen Sie alle Abonnements für das Konto an.
 3. Select-AzureRmSubscription &lt;Name des Abonnements&gt;: Wählen Sie das richtige Abonnement aus. Verwenden Sie dasselbe Abonnement, das Sie auch zum Erstellen einer Data Factory im Azure-Portal verwenden.
 
-### Problem: Das Express-Setup für das Datenverwaltungsgateway kann über das Azure-Portal nicht gestartet werden.
+### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Problem: Das Express-Setup für das Datenverwaltungsgateway kann über das Azure-Portal nicht gestartet werden.
 Für das Express-Setup des Datenverwaltungsgateways ist Internet Explorer oder ein mit Microsoft ClickOnce kompatibler Webbrowser erforderlich. Wenn das Express-Setup nicht gestartet wird, führen Sie einen der folgenden Schritte aus:
 
 * Verwenden Sie Internet Explorer oder einen mit Microsoft ClickOnce kompatiblen Webbrowser.
-  
+
     Navigieren Sie bei Verwendung von Chrome zum [Chrome Web Store](https://chrome.google.com/webstore/), und suchen Sie nach „ClickOnce“. Wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
-  
+
     Gehen Sie bei Firefox genauso vor (Installation des Add-Ins). Klicken Sie auf der Symbolleiste auf die Schaltfläche „Menü öffnen“ (drei waagerechte Striche oben rechts), klicken Sie auf „Add-Ons“, suchen Sie nach dem Stichwort „ClickOnce“, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
-* Verwenden Sie den Link **Manuelles Setup**, der im Portal auf dem gleichen Blatt angezeigt wird. Mit dieser Vorgehensweise laden Sie die Installationsdatei herunter und führen Sie manuell aus. Wenn die Installation abgeschlossen ist, wird das Dialogfeld für die Datenverwaltungsgateway-Konfiguration angezeigt. Kopieren Sie den **Schlüssel** auf dem Portalbildschirm, und verwenden Sie ihn im Konfigurations-Manager, um das Gateway manuell für den Dienst zu registrieren.
+* Verwenden Sie den Link **Manuelles Setup** , der im Portal auf dem gleichen Blatt angezeigt wird. Mit dieser Vorgehensweise laden Sie die Installationsdatei herunter und führen Sie manuell aus. Wenn die Installation abgeschlossen ist, wird das Dialogfeld für die Datenverwaltungsgateway-Konfiguration angezeigt. Kopieren Sie den **Schlüssel** auf dem Portalbildschirm, und verwenden Sie ihn im Konfigurations-Manager, um das Gateway manuell für den Dienst zu registrieren.  
 
-### Problem: Fehler beim Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank
-Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
+### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Problem: Fehler beim Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank
+Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.   
 
-### Problem: Eingabeslices haben dauerhaft den Status „Waiting“
+### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Problem: Eingabeslices haben dauerhaft den Status „Waiting“
 Die Slices können sich aus verschiedenen Gründen im Status **Warten** befinden. Einer der häufigsten Gründe ist, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Diese Eigenschaft weist darauf hin, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
-Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData*** angeben, wenn Sie „external“ auf „true“ festlegen.
+Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external** . Sie können optional **externalData*** angeben, wenn Sie „external“ auf „true“ festlegen.
 
-Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](data-factory-create-datasets.md).
+Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](data-factory-create-datasets.md) .
 
-    {
-      "name": "CustomerTable",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "MyLinkedService",
-        "typeProperties": {
-          "folderPath": "MyContainer/MySubFolder/",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "rowDelimiter": ";"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Hour",
-          "interval": 1
-        },
-        "policy": {
-          }
-        }
+```json
+{
+  "name": "CustomerTable",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "MyLinkedService",
+    "typeProperties": {
+      "folderPath": "MyContainer/MySubFolder/",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "rowDelimiter": ";"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Hour",
+      "interval": 1
+    },
+    "policy": {
       }
     }
+  }
+}
+```
 
 Um den Fehler zu beheben, fügen Sie die Eigenschaft **external** und den optionalen Abschnitt **externalData** der JSON-Definition für die Eingabetabelle hinzu und erstellen die Tabelle erneut.
 
-### Problem: Fehler beim Hybridkopiervorgang
-Die Schritte zum Behandeln von Problemen beim Kopieren in lokale Datenspeicher und aus lokalen Datenspeichern mit dem Datenverwaltungsgateway finden Sie unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues).
+### <a name="problem-hybrid-copy-operation-fails"></a>Problem: Fehler beim Hybridkopiervorgang
+Die Schritte zum Behandeln von Problemen beim Kopieren in lokale Datenspeicher und aus lokalen Datenspeichern mit dem Datenverwaltungsgateway finden Sie unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
 
-### Problem: Fehler bei der bedarfsgesteuerten HDInsight-Bereitstellung
-Wenn Sie einen verknüpften Dienst vom Typ „HDInsightOnDemand“ verwenden, müssen Sie einen „linkedServiceName“ angeben, der auf einen Azure-Blobspeicher verweist. Der Data Factory-Dienst verwendet diesen Speicher, um Protokolle und unterstützende Dateien für Ihren bedarfsgesteuerten HDInsight-Cluster zu speichern. Manchmal schlägt die Bereitstellung eines bedarfsgesteuerten HDInsight-Clusters mit dem folgenden Fehler fehl:
+### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Problem: Fehler bei der bedarfsgesteuerten HDInsight-Bereitstellung
+Wenn Sie einen verknüpften Dienst vom Typ „HDInsightOnDemand“ verwenden, müssen Sie einen „linkedServiceName“ angeben, der auf einen Azure-Blobspeicher verweist. Der Data Factory-Dienst verwendet diesen Speicher, um Protokolle und unterstützende Dateien für Ihren bedarfsgesteuerten HDInsight-Cluster zu speichern.  Manchmal schlägt die Bereitstellung eines bedarfsgesteuerten HDInsight-Clusters mit dem folgenden Fehler fehl:
 
-        Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+```
+Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+```
 
 Dieser Fehler gibt normalerweise an, dass der Speicherort des Speicherkontos, das in „linkedServiceName“ angegeben ist, nicht dem Speicherort im Rechenzentrum entspricht, in dem die HDInsight-Bereitstellung erfolgt. Beispiel: Wenn sich Ihre Data Factory in der Region „USA, Westen“ und der Azure-Speicher in der Region „USA, Osten“ befinden, tritt bei der bedarfsgesteuerten Bereitstellung in „USA, Westen“ ein Fehler auf.
 
 Darüber hinaus können in der weiteren JSON-Eigenschaft "additionalLinkedServiceNames" zusätzliche Speicherkonten in bedarfsgesteuertem HDInsight angegeben werden. Diese zusätzlichen verknüpften Speicherkonten müssen sich am gleichen Standort wie der HDInsight-Cluster befinden. Andernfalls tritt derselbe Fehler auf.
 
-### Problem: Fehler bei benutzerdefinierter .NET-Aktivität
-Die ausführlichen Schritte finden Sie unter [Debuggen einer Pipeline mit benutzerdefinierten Aktivitäten](data-factory-use-custom-activities.md#debug-the-pipeline).
+### <a name="problem-custom-net-activity-fails"></a>Problem: Fehler bei benutzerdefinierter .NET-Aktivität
+Die ausführlichen Schritte finden Sie unter [Debuggen einer Pipeline mit benutzerdefinierten Aktivitäten](data-factory-use-custom-activities.md#debug-the-pipeline) .
 
-## Verwenden des Azure-Portals zur Problembehandlung
-### Verwenden von Portalblättern
-Entsprechende Schritte finden Sie unter [Überwachen der Pipeline](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline).
+## <a name="use-azure-portal-to-troubleshoot"></a>Verwenden des Azure-Portals zur Problembehandlung
+### <a name="using-portal-blades"></a>Verwenden von Portalblättern
+Entsprechende Schritte finden Sie unter [Überwachen der Pipeline](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline) .
 
-### Verwenden der App „Überwachung und Verwaltung“
-Ausführliche Informationen finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
+### <a name="using-monitor-and-manage-app"></a>Verwenden der App „Überwachung und Verwaltung“
+Ausführliche Informationen finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) .
 
-## Verwenden von Azure PowerShell zur Problembehandlung
-### Verwenden von Azure PowerShell zur Behandlung eines Fehlers
-Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipelines mithilfe von Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline).
+## <a name="use-azure-powershell-to-troubleshoot"></a>Verwenden von Azure PowerShell zur Problembehandlung
+### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Verwenden von Azure PowerShell zur Behandlung eines Fehlers
+Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipelines mithilfe von Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline) .
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
@@ -136,4 +152,7 @@ Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipel
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
 
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Jan17_HO1-->
+
+

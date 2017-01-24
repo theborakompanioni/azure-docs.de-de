@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/18/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 09f5ba954dd712d71f41397b2243b6d3f3f0ca42
-ms.openlocfilehash: a70fe33047bc47096f7964d93dce411da9e0da9c
+ms.sourcegitcommit: b9fda8b5f4ffa6679cc8ca9696a4c51084c80645
+ms.openlocfilehash: 7c3d73ca6f4f567247ec9796199e68f764a52808
 
 
 ---
@@ -52,7 +52,7 @@ In diesem Abschnitt erstellen Sie mithilfe einer Azure Resource Manager-Vorlage 
 
 1. Klicken Sie auf die folgende Abbildung, um die Vorlage im Azure-Portal zu öffnen:         
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight-35.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight-35.json" target="_blank"><img src="./media/hdinsight-apache-storm-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
     Die Vorlage befindet sich in einem öffentlichen Blob-Container (*https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*). 
 
@@ -80,7 +80,7 @@ In diesem Abschnitt erstellen Sie mithilfe einer Azure Resource Manager-Vorlage 
      > * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
      > * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows mit PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-3. Wählen Sie __Ich stimme den oben genannten Geschäftsbedingungen zu__**OK** aus, und wählen Sie dann __An Dashboard anheften__
+3. Wählen Sie __Ich stimme den oben genannten Geschäftsbedingungen zu__, klicken Sie auf **OK**, und wählen Sie dann __An Dashboard anheften__.
 
 6. Klicken Sie auf **Kaufen**. Daraufhin wird eine neue Kachel mit der Bezeichnung "Bereitstellung für Vorlagenbereitstellung wird gesendet" angezeigt. Das Erstellen des Clusters dauert ca. 20 Minuten.
 
@@ -216,6 +216,6 @@ Beispieltechnologien, die mit Storm in HDInsight verwendet werden können, finde
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,34 +1,38 @@
 ---
-title: Automatische Skalierung und App Service-Umgebung | Microsoft Docs
+title: Automatische Skalierung und App Service-Umgebung | Microsoft-Dokumentation
 description: Automatische Skalierung und App Service-Umgebung
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: btardif
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2016
+ms.date: 10/24/2016
 ms.author: byvinyal
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 41ad9eb4d248b1f3e6c888c3037b121511799193
+
 
 ---
-# Automatische Skalierung und App Service-Umgebung
+# <a name="autoscaling-and-app-service-environment"></a>Automatische Skalierung und App Service-Umgebung
 Azure App Service-Umgebungen unterstützen die *automatische Skalierung*. Sie können einzelne Workerpools basierend auf Metriken oder nach einem Zeitplan automatisch skalieren.
 
 ![Optionen für automatische Skalierung für einen Workerpool][intro]
 
 Durch die automatische Skalierung wird die Ressourcenverwendung optimiert, indem Sie eine App Service-Umgebung automatisch vergrößern und verkleinern, sodass sie zu Ihrem Budget und Lastprofil passt.
 
-## Konfigurieren der automatischen Skalierung für Workerpools
+## <a name="configure-worker-pool-autoscale"></a>Konfigurieren der automatischen Skalierung für Workerpools
 Sie können auf die Funktionalität für die automatische Skalierung über die Registerkarte **Einstellungen** des Workerpools zugreifen.
 
 ![Registerkarte „Einstellungen“ des Workerpools][settings-scale]
 
-Die Oberfläche sollte Ihnen vertraut vorkommen, da sie der Oberfläche beim Skalieren eines App Service-Plans stark ähnelt. Sie können einen Skalierungswert manuell eingeben:
+Die Oberfläche sollte Ihnen vertraut vorkommen, da sie der Oberfläche beim Skalieren eines App Service-Plans stark ähnelt. 
 
 ![Einstellungen für manuelle Skalierung][scale-manual]
 
@@ -46,24 +50,24 @@ Nach dem Definieren eines Profils können Sie Regeln für die automatische Skali
 
  Alle Workerpool- oder Front-End-Metriken können zum Definieren von Regeln für die automatische Skalierung verwendet werden. Hierbei handelt es sich um die gleichen Metriken, die Sie in den Diagrammen des Ressourcenblatts überwachen oder für die Sie Warnungen festlegen können.
 
-## Beispiel für die automatische Skalierung
+## <a name="autoscale-example"></a>Beispiel für die automatische Skalierung
 Die automatische Skalierung einer App Service-Umgebung kann am besten anhand eines Szenarios dargestellt werden.
 
-In diesem Artikel werden alle erforderlichen Punkte der Einrichtung einer automatischen Skalierung und alle Interaktionen beschrieben, die für die automatische Skalierung von App Service-Umgebungen gelten.
+In diesem Artikel werden alle erforderlichen Aspekte für die Einrichtung der automatischen Skalierung beschrieben. Es werden die einzelnen Interaktionen beschrieben, die relevant sind, wenn Sie die automatische Skalierung von App Service-Umgebungen beim Hosten in einer App Service-Umgebung verwenden.
 
-### Einführung in das Szenario
+### <a name="scenario-introduction"></a>Einführung in das Szenario
 Frank ist Systemadministrator in einem Unternehmen. Er hat einen Teil der Workloads, die er verwaltet, zu einer App Service-Umgebung migriert.
 
 Die App Service-Umgebung ist wie folgt für die manuelle Skalierung konfiguriert:
 
-* **Front-Ends**: 3
+* **Front-Ends** : 3
 * **Workerpool 1**: 10
 * **Workerpool 2**: 5
 * **Workerpool 3**: 5
 
 Workerpool 1 wird für Produktionsworkloads verwendet, und Workerpool 2 und Workerpool 3 werden für Workloads der Qualitätssicherung (QA) und der Entwicklung verwendet.
 
-Die App Service-Pläne für die Qualitätskontrolle und die Entwicklung sind für manuelles Skalieren konfiguriert, aber der App Service-Plan für die Produktion ist auf automatisches Skalieren festgelegt, um Schwankungen bei Last und Datenverkehr zu bewältigen.
+Die App Service-Pläne für die Qualitätskontrolle und die Entwicklung sind für manuelles Skalieren konfiguriert. Der App Service-Plan für die Produktion ist dagegen auf automatisches Skalieren festgelegt, um Schwankungen bei Last und Datenverkehr zu bewältigen.
 
 Frank ist mit der Anwendung gut vertraut. Er weiß, dass die Spitzenzeiten mit der höchsten Auslastung zwischen 9:00 und 18:00 Uhr liegen, da es sich um eine Branchenanwendung handelt, die von den Mitarbeitern während der Geschäftszeiten genutzt wird. Die Nutzung fällt ab, sobald die Benutzer Feierabend machen. Außerhalb der Spitzenzeiten ist immer noch eine geringe Auslastung vorhanden, da die Benutzer die App per Remotezugriff mit mobilen Geräten oder PCs zu Hause nutzen können. Der App Service-Plan für die Produktion ist bereits konfiguriert, um eine automatische Skalierung basierend auf der CPU-Auslastung mit den folgenden Regeln vorzunehmen:
 
@@ -83,8 +87,8 @@ Frank ist mit der Anwendung gut vertraut. Er weiß, dass die Spitzenzeiten mit d
 | **Regel für die automatische Skalierung (Zentral hochskalieren)** |**Regel für die automatische Skalierung (Zentral hochskalieren)** |
 | **Ressource:** Produktion (App Service-Umgebung) |**Ressource:** Produktion (App Service-Umgebung) |
 | **Metrik:** CPU in % |**Metrik:** CPU in % |
-| **Operation:** Größer als 60 % |**Operation:** Größer als 80 % |
-| **Dauer:** 5 Minuten |**Dauer:** 10 Minuten |
+| **Operation:** Größer als 60 % |**Operation:** Größer als 80 % |
+| **Dauer:** 5 Minuten |**Dauer:** 10 Minuten |
 | **Zeitaggregation:** Durchschnitt |**Zeitaggregation:** Durchschnitt |
 | **Aktion:** Anzahl um 2 erhöhen |**Aktion:** Anzahl um 1 erhöhen |
 | **Abkühlen (Minuten):** 15 |**Abkühlen (Minuten):** 20 |
@@ -98,7 +102,7 @@ Frank ist mit der Anwendung gut vertraut. Er weiß, dass die Spitzenzeiten mit d
 | **Aktion:** Anzahl um 1 verringern |**Aktion:** Anzahl um 1 verringern |
 | **Abkühlen (Minuten):** 20 |**Abkühlen (Minuten):** 10 |
 
-### Inflationsrate für den App Service-Plan
+### <a name="app-service-plan-inflation-rate"></a>Inflationsrate für den App Service-Plan
 App Service-Pläne, die für die automatische Skalierung konfiguriert sind, nutzen dafür eine maximale Rate pro Stunde. Diese Rate kann basierend auf den Werten berechnet werden, die in der Regel für die automatische Skalierung bereitgestellt werden.
 
 Das Verstehen und Berechnen der *Inflationsrate für den App Service-Plan* ist wichtig für die automatische Skalierung in einer App-Service-Umgebung, da Größenänderungen bei einem Workerpool erst nach einiger Zeit wirksam werden.
@@ -107,7 +111,7 @@ Die Inflationsrate für den App Service-Plan wird wie folgt berechnet:
 
 ![Berechnung der Inflationsrate für den App Service-Plan][ASP-Inflation]
 
-Basierend auf der „Regel für die automatische Skalierung (Zentral hochskalieren)“ für das Profil „Werktage“ des App Service-Plans für die Produktion würde dies wie folgt aussehen:
+Basierend auf der „Regel für die automatische Skalierung (Zentral hochskalieren)“ für das Profil „Werktage“ des App Service-Plans für die Produktion:
 
 ![Inflationsrate für den App Service-Plan für Werktage basierend auf der „Regel für die automatische Skalierung (Zentral hochskalieren)“][Equation1]
 
@@ -121,17 +125,17 @@ Basierend auf der „Regel für die automatische Skalierung (Zentral herunterska
 
 ![Inflationsrate für den App Service-Plan für Werktage basierend auf der „Regel für die automatische Skalierung (Zentral herunterskalieren)“][Equation3]
 
-Für die „Regel für die automatische Skalierung (Zentral herunterskalieren)“ für das Profil „Wochenenden“ des App Service-Plans für die Produktion würde die Formel wie folgt aufgelöst werden:
+Für die „Regel für die automatische Skalierung (Zentral herunterskalieren)“ für das Profil „Wochenenden“ des App Service-Plans für die Produktion würde die Formel wie folgt aufgelöst werden:  
 
 ![Inflationsrate für den App Service-Plan für Wochenenden basierend auf der „Regel für die automatische Skalierung (Zentral herunterskalieren)“][Equation4]
 
-Dies bedeutet, dass der App Service-Plan für die Produktion mit einer maximalen Rate von acht Instanzen pro Stunde während der Woche und vier Instanzen pro Stunde an Wochenenden vergrößert werden kann. Instanzen können mit einer maximalen Rate von vier Instanzen pro Stunde während der Woche und sechs Instanzen pro Stunde an Wochenenden freigegeben werden.
+Der App Service-Plan kann für die Produktion mit einer maximalen Rate von acht Instanzen pro Stunde während der Woche und vier Instanzen pro Stunde an Wochenenden vergrößert werden. Instanzen können mit einer maximalen Rate von vier Instanzen pro Stunde während der Woche und sechs Instanzen pro Stunde an Wochenenden freigegeben werden.
 
 Wenn mehrere App Service-Pläne in einem Workerpool gehostet werden, müssen Sie die *Gesamtinflationsrate* als Summe der Inflationsraten für alle App Service-Pläne berechnen, die in diesem Workerpool gehostet werden.
 
 ![Berechnung der Gesamtinflationsrate für mehrere App Service-Pläne, die in einem Workerpool gehostet werden][ASP-Total-Inflation]
 
-### Verwenden der Inflationsrate für den App Service-Plan zum Definieren von Regeln für die automatische Skalierung für Workerpools
+### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Verwenden der Inflationsrate für den App Service-Plan zum Definieren von Regeln für die automatische Skalierung für Workerpools
 Workerpools, von denen App Service-Pläne gehostet werden, die für die automatische Skalierung konfiguriert sind, muss ein Kapazitätspuffer zugeordnet werden. Der Puffer ermöglicht, dass die Vorgänge der automatischen Skalierung den App Service-Plan je nach Bedarf erhöhen oder verringern. Die Mindestgröße des Puffers wäre die berechnete Gesamtinflationsrate für den App Service-Plan.
 
 Da Skalierungsvorgänge in der App Service-Umgebung einige Zeit dauern, sollten bei jeder Änderung weitere Bedarfsänderungen berücksichtigt werden, die stattfinden können, während eine Skalierung ausgeführt wird. Zur Berücksichtigung dieser Latenz empfehlen wir Ihnen, die berechnete Gesamtinflationsrate für den App Service-Plan als Mindestanzahl von Instanzen zu verwenden, die der automatischen Skalierung für jeden Vorgang hinzugefügt werden.
@@ -177,10 +181,11 @@ Bei den Regeln für das zentrale Hochskalieren sollte die Anzahl, um die erhöht
 
 Die Anzahl, um die verringert wird, kann zwischen dem 0,5- und 1-Fachen der Inflationsrate für den App Service-Plan für das zentrale Herunterskalieren liegen.
 
-### Automatische Skalierung für Front-End-Pool
-Regeln für die automatische Front-End-Skalierung sind einfacher als für Workerpools. Sie sollten in erster Linie sicherstellen, dass für die Dauer der Messung und die Abkühltimer berücksichtigt wird, dass Skalierungsvorgänge eines App Service-Plans nicht sofort wirksam werden.
+### <a name="autoscale-for-front-end-pool"></a>Automatische Skalierung für Front-End-Pool
+Regeln für die automatische Front-End-Skalierung sind einfacher als für Workerpools. In erster Linie  
+sollten Sie sicherstellen, dass für die Dauer der Messung und die Abkühltimer berücksichtigt wird, dass Skalierungsvorgänge eines App Service-Plans nicht sofort wirksam werden.
 
-Bei diesem Szenario weiß Frank, dass die Fehlerrate ansteigt, nachdem Front-Ends eine CPU-Auslastung von 80% erreichen. Um dies zu verhindern, legt er für die Regel für die automatische Skalierung wie folgt fest, dass Instanzen erhöht werden sollen:
+In diesem Szenario weiß Frank, dass sich die Fehlerrate erhöht, sobald Front-Ends eine CPU-Auslastung von 80% erreichen. Er legt die Regel für die automatische Skalierung zum Erhöhen von Instanzen wie folgt fest:
 
 ![Einstellungen für automatische Skalierung für Front-End-Pool][Front-End-Scale]
 
@@ -198,7 +203,7 @@ Bei diesem Szenario weiß Frank, dass die Fehlerrate ansteigt, nachdem Front-End
 | **Regel für die automatische Skalierung (Zentral hochskalieren)** |
 | **Ressource:** Front-End-Pool |
 | **Metrik:** CPU in % |
-| **Operation:** Größer als 60 % |
+| **Operation:** Größer als 60 % |
 | **Dauer:** 20 Minuten |
 | **Zeitaggregation:** Durchschnitt |
 | **Aktion:** Anzahl um 3 erhöhen |
@@ -208,7 +213,7 @@ Bei diesem Szenario weiß Frank, dass die Fehlerrate ansteigt, nachdem Front-End
 | **Ressource:** Workerpool 1 |
 | **Metrik:** CPU in % |
 | **Betrieb:** Weniger als 30% |
-| **Dauer:** 20 Minuten |
+| **Dauer:** 20 Minuten |
 | **Zeitaggregation:** Durchschnitt |
 | **Aktion:** Anzahl um 3 verringern |
 | **Abkühlen (Minuten):** 120 |
@@ -230,4 +235,8 @@ Bei diesem Szenario weiß Frank, dass die Fehlerrate ansteigt, nachdem Front-End
 [Worker-Pool-Scale]: ./media/app-service-environment-auto-scale/wp-scale.png
 [Front-End-Scale]: ./media/app-service-environment-auto-scale/fe-scale.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

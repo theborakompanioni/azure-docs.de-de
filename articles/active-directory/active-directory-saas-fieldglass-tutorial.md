@@ -133,11 +133,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
     b. Klicken Sie auf **Weiter**.
 5. Wenden Sie sich an das Supportteam von Fieldglass, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit: 
    
-    - Die **heruntergeladene Zertifikatdatei**
+    - Die **heruntergeladene Zertifikatdatei**
    
-    - Die **Entitäts-ID**
+    - Die **Entitäts-ID**
    
-    - Die **Dienst-URL für einmaliges Abmelden**
+    - Die **Dienst-URL für einmaliges Abmelden**
 6. Wählen Sie im klassischen Portal die Bestätigung für die Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]

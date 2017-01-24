@@ -1,22 +1,27 @@
 ---
 title: Planen Sie Ihr Upgrade auf die SQL-Datenbank V12 | Microsoft Docs
-description: Beschreibt die Vorbereitungen und Einschränkungen im Zusammenhang mit einem Upgrade auf Version V12 der Azure SQL-Datenbank.
+description: "Beschreibt die Vorbereitungen und Einschränkungen im Zusammenhang mit einem Upgrade auf Version V12 der Azure SQL-Datenbank."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: MightyPen
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 8020f904-ad27-40c5-8c59-bdf2e690f77d
 ms.service: sql-database
+ms.custom: V11
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2016
+ms.date: 10/24/2016
 ms.author: genemi
+translationtype: Human Translation
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: 237aa26a40c34d8fb511881604cb26bf9380322e
+
 
 ---
-# Planen und Vorbereiten des Upgrades auf die SQL-Datenbank V12
+# <a name="plan-and-prepare-to-upgrade-to-sql-database-v12"></a>Planen und Vorbereiten des Upgrades auf die SQL-Datenbank V12
 In diesem Thema werden die Planung und die Vorbereitungen beschrieben, die Sie ausführen müssen, um das Upgrade Ihrer Azure SQL-Datenbanken von Version V11 auf V12 vorzunehmen.
 
 Es ist ein neues [Azure-Portal](https://portal.azure.com/) verfügbar, um Ihr Upgrade auf V12 zu unterstützten.
@@ -25,20 +30,20 @@ In der folgenden Tabelle sind weitere Hilfethemen für V12 aufgeführt.
 
 | Titel und Link | Beschreibung des Inhalts |
 |:--- |:--- |
-| [Neuerungen in SQL-Datenbank V12](sql-database-v12-whats-new.md) |Beschreibt die Details, wie V12 die Azure SQL-Datenbank der vollständigen Funktionalität von Microsoft SQL Server weiter annähert. |
+| [Azure SQL Database features (Features der Azure SQL-Datenbank)](sql-database-features.md) |Stellt eine Funktionsmatrix für Azure SQL-Datenbank versus SQL Server bereit. |
 | [Erstellen einer Datenbank in SQL-Datenbank V12](sql-database-get-started.md) |Beschreibt, wie Sie eine neue Azure-SQL-Datenbank unter Version V12 erstellen können. In diesem Thema werden verschiedene Optionen beschrieben, die über eine leere Datenbank hinausgehen. |
 
-## Vorausplanung
+## <a name="plan-ahead"></a>Vorausplanung
 In den folgenden Unterabschnitten werden die Lern- und Entscheidungsvorgänge beschrieben, die berücksichtigt werden müssen, bevor Aktionen für ein Upgrade Ihrer Azure SQL-Datenbank auf V12 ausgeführt werden.
 
-### Versionsklärung
+### <a name="version-clarification"></a>Versionsklärung
 Dieses Dokument beschäftigt sich mit dem Upgrade von Microsoft Azure SQL-Datenbank von Version V11 auf V12. Formal ähneln die Versionsnummern den folgenden beiden Werten, die mithilfe der Transact-SQL-Anweisung **SELECT @@version;** abgerufen werden:
 
-* 12\.0.2000.8 *(oder etwas höher, V12)*
-* 11\.0.9228.18 *(V11)*
+* 12.0.2000.8 *(oder etwas höher, V12)*
+* 11.0.9228.18 *(V11)*
   * V11 wurde zum Teil auch als SAWA V2 bezeichnet.
 
-### Planung der Dienstebene
+### <a name="service-tier-planning"></a>Planung der Dienstebene
 Ab V12 unterstützt die Azure SQL-Datenbank nur die Dienstebenen Basic, Standard und Premium. Die Web- und Business-Dienstebene wird unter V12 nicht unterstützt. Wenn Sie ein Upgrade Ihrer Azure SQL-Datenbank planen, die zurzeit die Web- oder Business-Dienstebene verwendet, müssen Sie daher entscheiden, welche neue Dienstebene genutzt werden soll.
 
 Ausführliche Informationen zu den Dienstebenen Basic, Standard und Premium finden Sie hier:
@@ -46,40 +51,40 @@ Ausführliche Informationen zu den Dienstebenen Basic, Standard und Premium find
 * [SQL-Datenbank – Dienstebenen](sql-database-service-tiers.md)
 * [Upgrade von Web-/Business-Datenbanken der SQL-Datenbank auf neue Dienstebenen](sql-database-upgrade-server-portal.md)
 
-### Überprüfen der Konfiguration der Georeplikation
+### <a name="review-the-geo-replication-configuration"></a>Überprüfen der Konfiguration der Georeplikation
 Wenn Ihre Azure SQL-Datenbank für Georeplikation konfiguriert ist, sollten Sie ihre aktuelle Konfiguration dokumentieren und die Georeplikation dann beenden, bevor Sie mit den Vorbereitungsaktionen für das Upgrade beginnen. Nachdem das Upgrade abgeschlossen ist, müssen Sie Ihre Datenbank erneut für Georeplikation konfigurieren.
 
 Die Strategie besteht darin, die Quelle intakt zu lassen und den Test mit einer Kopie der Datenbank auszuführen.
 
-## Vorbereitungsmaßnahmen
+## <a name="preparation-actions"></a>Vorbereitungsmaßnahmen
 Nachdem Sie Ihre Planung abgeschlossen haben, können Sie die Aktionsschritte ausführen, die in den folgenden Unterabschnitten beschrieben werden, um die endgültige Upgradephase vorzubereiten.
 
 Ausführliche Beschreibungen der endgültigen Upgradephase sind in den Hilfethemen verfügbar, auf die die Links oben in diesem Hilfethema verweisen.
 
-### Dienstebenenaktionen
+### <a name="service-tier-actions"></a>Dienstebenenaktionen
 Der Tarif des Web- und Business-Diensts wird unter V12 nicht unterstützt.
 
 Wenn Ihre V11 Azure SQL-Datenbank eine Web- oder Business-Datenbank ist, bietet Ihnen der Upgradevorgang an, Ihre Datenbank in eine unterstützte Ebene umzuschalten. Das Upgrade empfiehlt eine Ebene, die dem Workloadverlauf Ihrer Datenbank entspricht. Sie können jedoch jede gewünschte Ebene auswählen, die unterstützt wird.
 
-Sie können die Schritte verringern, die während des Upgrades erforderlich sind, indem Sie Ihre V11-Datenbank von der Web- und Business-Ebene abkoppeln, bevor Sie mit dem Upgrade beginnen. Dies kann mithilfe des neuen [Azure-Portals](https://portal.azure.com/) erfolgen.
+Sie können die Schritte verringern, die während des Upgrades erforderlich sind, indem Sie Ihre V11-Datenbank von der Web- und Business-Ebene abkoppeln, bevor Sie mit dem Upgrade beginnen. Dies kann mithilfe des neuen [Azure-Portals](https://portal.azure.com/)erfolgen.
 
 Wenn Sie sich nicht sicher sind, auf welche Dienstebene Sie wechseln sollten, kann die S2-Stufe der Standardebene eine sinnvolle Wahl für den Anfang sein. Alle niedrigeren Ebenen verfügen über weniger Ressourcen als bei der Web- und Business-Ebene verfügbar waren.
 
-### Anhalten der Georeplikation während des Upgrades
+### <a name="suspend-geo-replication-during-upgrade"></a>Anhalten der Georeplikation während des Upgrades
 Das Upgrade auf V12 kann nicht ausgeführt werden, wenn Georeplikation für Ihre Datenbank aktiv ist. Sie müssen Ihre Datenbank zuvor so konfigurieren, dass die Georeplikation nicht mehr verwendet wird.
 
 Nachdem das Upgrade abgeschlossen ist, können Sie Ihre Datenbank erneut für die Verwendung von Georeplikation konfigurieren.
 
-### Client auf einem virtuellen Azure-Computer
+### <a name="open-ports-on-an-azure-vm-for-client-connectivity"></a>Öffnen von Ports auf einem virtuellen Azure-Computer für Clientverbindungen
 Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank V12 herstellt, wobei der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie die folgenden Portbereiche auf dem virtuellen Computer öffnen:
 
 * 11000-11999
 * 14000-14999
 
-Klicken Sie auf [hier](sql-database-develop-direct-route-ports-adonet-v12.md), um ausführliche Informationen über die Ports für die SQL-Datenbank V12 zu erhalten. Die Ports werden für Leistungssteigerungen in der SQL-Datenbank V12 benötigt.
+Klicken Sie auf [hier](sql-database-develop-direct-route-ports-adonet-v12.md) , um ausführliche Informationen über die Ports für die SQL-Datenbank V12 zu erhalten. Die Ports werden für Leistungssteigerungen in der SQL-Datenbank V12 benötigt.
 
-## <a id="limitations"></a>Einschränkungen während und nach dem Upgrade auf V12
-### Portale für V12
+## <a name="a-idlimitationsalimitations-during-and-after-upgrade-to-v12"></a><a id="limitations"></a>Einschränkungen während und nach dem Upgrade auf V12
+### <a name="portals-for-v12"></a>Portale für V12
 Es gibt drei Portale für Azure, wobei jedes über unterschiedliche Funktionen im Hinblick auf SQL-Datenbank V12 verfügt.
 
 * [http://portal.azure.com/](https://portal.azure.com/)<br/>Dieses Azure-Portal ist neu und befindet sich noch im Vorschaustatus. Dieses Portal hat noch nicht vollständig die allgemeine Verfügbarkeit erreicht. Dieses Portal:
@@ -90,47 +95,47 @@ Es gibt drei Portale für Azure, wobei jedes über unterschiedliche Funktionen i
   
   * Kann Ihre V12-Server und -Datenbanken verwalten.
   * Kann *kein* Upgrade Ihrer V11-Datenbank auf V12 durchführen.
-* (http://*yourservername*.database.windows.net)<br/> Klassisches Portal für Azure SQL-Datenbanken:
+* (http://*IhrServername*.database.windows.net)<br/> Klassisches Portal für Azure SQL-Datenbanken:
   
-  * Kann V12-Server *nicht* verwalten.
+  * Kann V12-Server*nicht* verwalten.
 
-Wir empfehlen Kunden, die Verbindung zu ihren Azure SQL-Datenbanken mit Visual Studio 2013 (VS2013) herzustellen. VS2013 kann für folgende Aufgaben verwendet werden:
+Wir empfehlen Ihnen, die Verbindung mit Ihren Azure SQL-Datenbanken über Visual Studio 2015 (VS2015) herzustellen. VS2015 kann für folgende Aufgaben verwendet werden:
 
 * Ausführen einer Transact-SQL-Anweisung
 * Entwerfen eines Schemas
 * Entwickeln einer Datenbank, entweder online oder offline
 
-Sie können die Verbindung stattdessen mit [Visual Studio Community 2013](https://www.visualstudio.com/de-DE/news/vs2013-community-vs.aspx/) herstellen, bei dem es sich um eine kostenlose, voll funktionsfähige Version von VS2013 handelt.
+Sie können auch [Visual Studio Community 2015](https://www.visualstudio.com/vs/community/), eine voll funktionsfähige Version von VS2015, kostenlos herunterladen.
 
-Im älteren klassischen Azure-Portal können Sie auf der Datenbankseite auf **In Visual Studio öffnen** klicken, um VS2013 auf Ihrem Computer zu starten und die Verbindung zu Ihrer Azure SQL-Datenbank herzustellen.
+Im älteren klassischen Azure-Portal können Sie auf der Datenbankseite auf **In Visual Studio öffnen** klicken, um VS2015 auf Ihrem Computer zu starten und die Verbindung mit Ihrer Azure SQL-Datenbank herzustellen.
 
-Als weitere Alternative können Sie SQL Server Management Studio (SSMS) 2014 mit[CU6](http://support.microsoft.com/kb/3031047/) verwenden, um die Verbindung zur Azure SQL-Datenbank herzustellen. Weitere Informationen finden Sie in diesem Blogbeitrag:<br/>[Clienttool-Updates für Azure SQL-Datenbank](https://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/).
+Als weitere Alternative können Sie SQL Server Management Studio (SSMS) 2014 mit [CU6](http://support.microsoft.com/kb/3031047/) verwenden, um die Verbindung zur Azure SQL-Datenbank herzustellen. Weitere Informationen finden Sie in diesem Blogbeitrag:<br/>[Clienttool-Updates für Azure SQL-Datenbank](https://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/)erfolgen.
 
 > [!IMPORTANT]
 > Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 > 
 > 
 
-### Einschränkung *während* Upgrades auf V12
+### <a name="limitation-during-upgrade-to-v12"></a>Einschränkung *während* Upgrades auf V12
 Während des Upgrades auf V12 kann weiterhin auf Daten in V11-Datenbanken zugegriffen werden. Es gibt jedoch einige Einschränkungen zu beachten.
 
-| Einschränkung | Beschreibung |
+| Einschränkung  | Beschreibung |
 |:--- |:--- |
-| Dauer des Upgrades |Die Dauer des Upgrades, hängt von der Größe, der Edition und der Anzahl der Datenbanken auf dem Server ab. Der Upgradevorgang kann Stunden oder Tage dauern, insbesondere bei Servern mit Datenbanken mit den folgenden Eigenschaften:<br/><br/>* Größer als 50 GB oder<br/>* Andere Dienstebene als Premium<br/><br/>Auch die Erstellung neuer Datenbanken auf dem Server während des Upgrades kann die Dauer für das Upgrade verlängern. |
+| Dauer des Upgrades |Die Dauer des Upgrades, hängt von der Größe, der Edition und der Anzahl der Datenbanken auf dem Server ab. Der Upgradevorgang kann Stunden oder Tage dauern, insbesondere bei Servern mit Datenbanken mit den folgenden Eigenschaften:<br/><br/>* Größer als 50 GB oder<br/>* Nicht im Premium-Tarif<br/><br/>Auch die Erstellung neuer Datenbanken auf dem Server während des Upgrades kann die Dauer für das Upgrade verlängern. |
 | Keine Georeplikation |Georeplikation wird auf einem V12-Server nicht unterstützt, für den aktuell ein Upgrade aus V11 ausgeführt wird. |
 | Datenbank ist in der abschließenden Phase des Upgrades auf V12 kurzzeitig nicht verfügbar |Die Datenbanken, die zu Ihrem V11-Server gehören, bleiben während des Upgradeprozesses verfügbar. Die Verbindung mit dem Server und den Datenbanken ist jedoch in der abschließenden Phase, wenn der Wechsel von V11 zur vorbereiteten V12 beginnt, kurzzeitig nicht verfügbar.<br/><br/>Der Wechselzeitraum kann von 40 Sekunden bis zu 5 Minuten lang sein. Für die meisten Server ist zu erwarten, dass der Wechsel innerhalb von 90 Sekunden abgeschlossen ist. Die Wechselzeit verlängert sich für Server, die eine große Anzahl von Datenbanken haben, oder verlängert sich, wenn es umfangreiche Schreibworkloads für die Datenbanken gibt. |
 
-### Einschränkung *nach* Upgrades auf V12
-| Einschränkung | Beschreibung |
+### <a name="limitation-after-upgrade-to-v12"></a>Einschränkung *nach* Upgrades auf V12
+| Einschränkung  | Beschreibung |
 |:--- |:--- |
 | Keine Zurücksetzung auf V11 |Nachdem das Upgrade abgeschlossen wurde, kann das Ergebnis nicht mehr zurückgesetzt oder rückgängig gemacht werden. |
 | Web- oder Business-Ebene |Sobald das Upgrade gestartet wurde, kann der Server für die neue V12-Datenbank die Web- oder Business-Dienstebene nicht mehr erkennen oder akzeptieren. |
 
-### Exportieren und Importieren *nach* Upgrades auf V12
-Sie können eine V12-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com/) exportieren oder importieren. Alternativ können Sie den Export oder Import mithilfe der folgenden Tools ausführen:
+### <a name="export-and-import-after-upgrade-to-v12"></a>Exportieren und Importieren *nach* Upgrades auf V12
+Sie können eine V12-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com/)exportieren oder importieren. Alternativ können Sie den Export oder Import mithilfe der folgenden Tools ausführen:
 
 * SQL Server Management Studio (SSMS)
-* Visual Studio 2013
+* Visual Studio 2015
 * Datenebenenanwendungs-Framework (DacFx)
 
 Zur Verwendung der Tools müssen Sie allerdings zuerst die aktuellen Updates installieren, um sicherzustellen, dass die neuen V12-Funktionen unterstützt werden:
@@ -144,19 +149,16 @@ Zur Verwendung der Tools müssen Sie allerdings zuerst die aktuellen Updates ins
 > 
 > 
 
-#### Automatisierter Export
-Automatisierter Export ist weiterhin als Vorschau verfügbar. Bei Verwendung von automatisiertem Export sind keine Clienttool-Updates erforderlich. Bei Auswahl der resultierenden Datei und deren Import auf einen lokalen Server werden die oben aufgeführten Tool-Updates benötigt, damit der Import erfolgreich ist.
-
-### Wiederherstellung einer gelöschten V11-Datenbank in V12
+### <a name="restore-to-v12-of-a-deleted-v11-database"></a>Wiederherstellung einer gelöschten V11-Datenbank in V12
 Im folgenden Szenario wird erläutert, dass eine gelöschte V11 Azure SQL-Datenbank auf einem V12 Azure SQL-Datenbankserver wiederhergestellt werden kann.
 
-1. Angenommen, Sie verwenden einen V11 Azure SQL-Datenbankserver. <br/> Auf dem Server befindet sich eine Datenbank in der veralteten Web- und Business-Dienstebene.
+1. Angenommen, Sie verwenden einen V11 Azure SQL-Datenbankserver. <br/>  Auf dem Server befindet sich eine Datenbank in der veralteten Web- und Business-Dienstebene.
 2. Sie löschen diese Datenbank.
 3. Sie führen ein Upgrade des Servers auf V12 aus.
-4. Im nächsten Schritt stellen Sie die Datenbank auf den Server wieder her. <br/> Dabei erfolgt ein Upgrade der Datenbank auf V12, mit Stufe S0 der Dienstebene Standard.
+4. Im nächsten Schritt stellen Sie die Datenbank auf den Server wieder her. <br/>  Dabei erfolgt ein Upgrade der Datenbank auf V12, mit Stufe S0 der Dienstebene Standard.
 5. Sie können die Datenbank in jede unterstützte Dienstebene umschalten, wenn S0 nicht Ihre Wahl ist.
 
-### PowerShell-Cmdlets
+### <a name="powershell-cmdlets"></a>PowerShell-Cmdlets
 PowerShell-Cmdlets sind verfügbar, um ein Upgrade auf Azure SQL-Datenbank V12 von V11 oder einer anderen niedrigeren Version als V12 zu starten, zu beenden oder zu überwachen.
 
 * [Upgrade auf SQL-Datenbank V12 mithilfe von PowerShell](sql-database-upgrade-server-powershell.md)
@@ -169,13 +171,17 @@ Referenzdokumentation zu diesen PowerShell-Cmdlets finden Sie unter:
 
 Mit dem Cmdlet „Stop-“ wird der Vorgang abgebrochen, nicht angehalten. Ein Upgrade kann nach einem Abbruch nicht fortgesetzt werden, es muss wieder von vorne begonnen werden. Das Cmdlet "Stop-" bereinigt und setzt alle entsprechenden Ressourcen frei.
 
-## Fehlerbehebung
+## <a name="failure-resolution"></a>Fehlerbehebung
 Wenn aus einem bestimmten Grund ein Upgradefehler auftritt, bleibt Ihre V11-Datenbank aktiv und ist wie üblich verfügbar.
 
-## Verwandte Links
+## <a name="related-links"></a>Verwandte Links
 * Microsoft Azure [Vorschaufeatures](https://azure.microsoft.com/services/preview/)
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Dec16_HO1-->
+
+

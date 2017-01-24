@@ -1,19 +1,23 @@
 ---
-title: Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts | Microsoft Docs
-description: Es wird beschrieben, wie Sie häufige Probleme erkennen und beheben, die beim erneuten Trainieren des Modells für einen Azure Machine Learning-Webdienst auftreten können.
+title: "Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts | Microsoft Docs"
+description: "Es wird beschrieben, wie Sie häufige Probleme erkennen und beheben, die beim erneuten Trainieren des Modells für einen Azure Machine Learning-Webdienst auftreten können."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: VDonGlover
 manager: raymondl
-editor: ''
-
+editor: 
+ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
+ms.openlocfilehash: e8d9043630f16fa65902e11f459f85b5821a6a61
+
 
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts
@@ -36,7 +40,7 @@ Wenn alle Elemente vorhanden sind, können Sie diese Hauptschritte zu erneuten T
 
 1. Aufrufen des Trainingswebdiensts: Hierbei wird der Stapelausführungsdienst (Batch Execution Service, BES) aufgerufen und nicht der Anforderung/Antwort-Dienst (Request Response Service, RRS). Sie können den C#-Beispielcode auf der API-Hilfeseite verwenden, um den Aufruf durchzuführen. 
 2. Suchen nach den Werten für *BaseLocation*, *RelativeLocation* und *SasBlobToken*: Diese Werte werden in der Ausgabe des Aufrufs des Trainingswebdiensts zurückgegeben. 
-     ![Ausgabe des Beispiels für das erneute Trainieren und Werte „BaseLocation“, „RelativeLocation“ und „SasBlobToken“][image6]
+   ![Ausgabe des Beispiels für das erneute Trainieren und Werte „BaseLocation“, „RelativeLocation“ und „SasBlobToken“][image6]
 3. Aktualisieren des hinzugefügten Endpunkts über den Bewertungswebdienst mit dem neuen trainierten Modell: Aktualisieren Sie mit dem Beispielcode aus „Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen“ den neuen Endpunkt, den Sie dem Bewertungsmodell mit dem neu trainierten Modell aus dem Trainingswebdienst hinzugefügt haben.
 
 ## <a name="common-obstacles"></a>Häufige Hindernisse
@@ -58,7 +62,7 @@ Gehen Sie wie folgt vor, um die richtige PATCH-URL abzurufen:
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 2. Öffnen Sie die Registerkarte „Machine Learning“. 
-    ![Registerkarte „Machine Learning“][image4]
+   ![Registerkarte „Machine Learning“][image4]
 3. Klicken Sie auf den Namen Ihres Arbeitsbereichs und dann auf **Webdienste**.
 4. Klicken Sie auf den Bewertungswebdienst, den Sie verwenden. (Wenn Sie den Standardnamen des Webdiensts nicht geändert haben, endet er mit „[Scoring Exp.]“.)
 5. Klicken Sie auf **Endpunkt hinzufügen**.
@@ -88,7 +92,7 @@ Sie können überprüfen, unter welchem Webdienst sich der Endpunkt befindet, in
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Öffnen Sie die Registerkarte „Machine Learning“. 
-    ![ Benutzeroberfläche des Machine Learning-Arbeitsbereichs][image4]
+   ![ Benutzeroberfläche des Machine Learning-Arbeitsbereichs][image4]
 3. Wählen Sie Ihren Arbeitsbereich aus.
 4. Klicken Sie auf **Webdienste**.
 5. Wählen Sie Ihren Vorhersagewebdienst aus.
@@ -97,20 +101,21 @@ Sie können überprüfen, unter welchem Webdienst sich der Endpunkt befindet, in
 ### <a name="check-the-workspace-that-your-web-service-is-in-to-ensure-it-is-in-the-correct-region"></a>Sicherstellen, dass sich der Webdienst-Arbeitsbereich in der richtigen Region befindet
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Wählen Sie im Menü die Option „Machine Learning“.
-     ![Benutzeroberfläche der Machine Learning-Region][image4]
+   ![Benutzeroberfläche der Machine Learning-Region][image4]
 3. Überprüfen Sie den Speicherort Ihres Arbeitsbereichs.
 
 <!-- Image Links -->
 
-[Abbildung 1]: ./media/machine-learning-troubleshooting-retraining-a-model/ml-studio-tm-connnected-to-web-service-out.png
-[Abbildung 2]: ./media/machine-learning-troubleshooting-retraining-a-model/addEndpoint-output.png
-[Abbildung 3]: ./media/machine-learning-troubleshooting-retraining-a-model/azure-portal-update-resource.png
-[Abbildung 4]: ./media/machine-learning-troubleshooting-retraining-a-model/azure-portal-machine-learning-tab.png
-[Abbildung 5]: ./media/machine-learning-troubleshooting-retraining-a-model/ml-help-page-patch-url.png
-[Abbildung 6]: ./media/machine-learning-troubleshooting-retraining-a-model/retraining-output.png
-[Abbildung 7]: ./media/machine-learning-troubleshooting-retraining-a-model/web-services-tab.png
+[image1]: ./media/machine-learning-troubleshooting-retraining-a-model/ml-studio-tm-connnected-to-web-service-out.png
+[image2]: ./media/machine-learning-troubleshooting-retraining-a-model/addEndpoint-output.png
+[image3]: ./media/machine-learning-troubleshooting-retraining-a-model/azure-portal-update-resource.png
+[image4]: ./media/machine-learning-troubleshooting-retraining-a-model/azure-portal-machine-learning-tab.png
+[image5]: ./media/machine-learning-troubleshooting-retraining-a-model/ml-help-page-patch-url.png
+[image6]: ./media/machine-learning-troubleshooting-retraining-a-model/retraining-output.png
+[image7]: ./media/machine-learning-troubleshooting-retraining-a-model/web-services-tab.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Jan17_HO2-->
 
 

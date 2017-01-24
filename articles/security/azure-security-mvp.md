@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -27,10 +27,9 @@ Wir freuen uns, ankündigen zu können, dass Microsoft Azure jetzt Communityexpe
 
 ![Microsoft-MVP](./media/azure-security-mvp/azure-security-mvp-fig1.png)
 
-Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein MVP zu werden, unter anderem darum, weil dies abhängig von der Technologie und ihrem Lebenszyklus variiert, bewerten wir u.a. den Einfluss der Beiträge des Kandidaten auf Onlineforen wie Microsoft Answers, TechNet und MSDN, Wikis, Online-Inhalte, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und soziale Medien sowie Artikel und Bücher. 
+Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein MVP zu werden, unter anderem darum, weil dies abhängig von der Technologie und ihrem Lebenszyklus variiert, bewerten wir u.a. den Einfluss der Beiträge des Kandidaten auf Onlineforen wie Microsoft Answers, TechNet und MSDN, Wikis, Online-Inhalte, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und soziale Medien sowie Artikel und Bücher.
 
 Sind Sie Experte für Azure-Sicherheit? Kennen Sie eine Person, auf die dies zutrifft? Dann [nominieren Sie sich selbst oder eine andere Person](https://mvp.microsoft.com/Nomination/nominate-an-mvp) heute als Azure-Sicherheits-MVP!
-
 
 
 

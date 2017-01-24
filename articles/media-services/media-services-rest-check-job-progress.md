@@ -1,12 +1,12 @@
 ---
-title: 'Gewusst wie: Prüfen des Auftragsfortschritts mit der REST-API | Microsoft Docs'
+title: "Gewusst wie: Prüfen des Auftragsfortschritts mit der REST-API | Microsoft Docs"
 description: Erfahren Sie, wie Sie den Auftragsfortschritt verfolgen.
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 0f66bb4291d4e8c457f592734437513a727ecc29
+
 
 ---
-# <a name="how-to:-check-job-progress"></a>Vorgehensweise: Prüfen des Auftragsfortschritts
+# <a name="how-to-check-job-progress"></a>Vorgehensweise: Prüfen des Auftragsfortschritts
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -24,7 +28,7 @@ ms.author: juliako
 > 
 > 
 
-Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Auftragsstatus mithilfe der State-Eigenschaft des Auftrags feststellen. Weitere Informationen zur State-Eigenschaft finden Sie unter [Eigenschaften von Auftragsentitäten](https://msdn.microsoft.com/library/azure/5100ddd7-92ff-4c37-84d2-4f84fee250a7#job_entity_properties).
+Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Auftragsstatus mithilfe der State-Eigenschaft des Auftrags feststellen. Weitere Informationen zur State-Eigenschaft finden Sie unter [Eigenschaften von Auftragsentitäten](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
 Anforderung:
 
@@ -62,6 +66,9 @@ Antwort:
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

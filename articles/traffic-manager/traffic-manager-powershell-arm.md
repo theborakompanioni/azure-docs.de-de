@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: c5df6d998812568c764ccb6914b3c81fe4e568ec
-ms.openlocfilehash: d9d9630487f9eeb381198230a20d01c1c5f6678d
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: f97ba8ebc940d4b3eec5d2610503f8a86af8dbe2
 
 ---
 
@@ -52,7 +52,7 @@ Traffic Manager-Endpunkte, die auf einen Endpunkt vom Typ „AzureEndpoints“ f
 
 Für diese Anweisungen wird Microsoft Azure PowerShell verwendet. Im folgenden Artikel wird die Installation und Konfiguration von Azure PowerShell erläutert.
 
-* [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md)
+* [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie eine vorhandene Ressourcengruppe besitzen. Sie können mithilfe des folgenden Befehls eine Ressourcengruppe erstellen:
 
@@ -342,6 +342,6 @@ Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remov
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

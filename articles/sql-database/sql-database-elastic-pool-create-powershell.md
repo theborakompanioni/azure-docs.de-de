@@ -84,6 +84,6 @@ Dieses Skript erstellt eine neue Azure-Ressourcengruppe und einen neuen Server. 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

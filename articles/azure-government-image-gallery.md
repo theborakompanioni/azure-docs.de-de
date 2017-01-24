@@ -1,28 +1,72 @@
 ---
-title: Azure Government – Imagekatalog | Microsoft Docs
-description: Dieser Artikel bietet einen Überblick über den Imagekatalog von Azure Government und die darin enthaltenen Images.
+title: "Azure Government – Imagekatalog | Microsoft-Dokumentation"
+description: "Dieser Artikel bietet einen Überblick über den Imagekatalog von Azure Government und die darin enthaltenen Images."
 services: Azure-Government
 cloud: gov
-documentationcenter: ''
-author: joharve2
-manager: chrisnie
-editor: ''
-
+documentationcenter: 
+author: brendalee
+manager: zakramer
+editor: 
+ms.assetid: f6dd4386-7b79-448a-8ae3-409258cc257b
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 06/01/2016
-ms.author: brendalee
+ms.date: 10/20/2016
+ms.author: brendal
+translationtype: Human Translation
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 1b325a849cc3d7f97a1b2b3f4612e2cbc72ad06b
+
 
 ---
-# Microsoft Azure Government – Imagekatalog
-<p> Der Imagekatalog von Microsoft Azure Government ähnelt dem öffentlichen Azure-Portal. Kunden können auch vorgefertigte Images von Microsoft und unseren Partnern bereitstellen oder ihre eigenen VHDs hochladen. Dies bietet Flexibilität, um bei Bedarf Ihre eigenen standardisierten Images bereitzustellen.
+# <a name="azure-government-marketplace-images"></a>Azure Government Marketplace-Images
+## <a name="overview"></a>Übersicht
+Der Microsoft Azure Government Marketplace ähnelt dem öffentlichen Azure-Portal.  Kunden können auch vorgefertigte Images von Microsoft und unseren Partnern bereitstellen oder ihre eigenen VHDs hochladen.  Dies bietet Flexibilität, um bei Bedarf Ihre eigenen standardisierten Images bereitzustellen.
 
-Unten ist eine Liste angeführt, welche die im Bilderkatalog von Azure Government verfügbaren Images enthält. Einige der vorgefertigten Images enthalten eine Zahlung für bestimmte Software-Lizenzierungen. Informieren Sie sich auf der Seite <a href="http://azure.microsoft.com/pricing/details/virtual-machines/">Virtual Machine – Preisübersicht</a>, wenn Sie weitere Anleitungen benötigen, und kontaktieren Sie Ihren Microsoft-Kundenbetreuer oder den Reseller von Azure Government bezüglich bestimmter Preise.
+Unten ist eine Liste angeführt, welche die im Azure Government Marketplace verfügbaren Images enthält.  Einige der vorgefertigten Images enthalten eine Zahlung für bestimmte Software-Lizenzierungen.  Informieren Sie sich auf der Seite <a href="http://azure.microsoft.com/pricing/details/virtual-machines/">Virtual Machine – Preisübersicht</a>, wenn Sie weitere Anleitungen benötigen, und kontaktieren Sie Ihren Microsoft-Kundenbetreuer oder den Reseller von Azure Government bezüglich bestimmter Preise.
 
-## Azure Government – Imageliste
+## <a name="images---azure-resource-manager"></a>Images – Azure Resource Manager
+| Herausgeber | Imagename |
+| --- | --- |
+| Esri |ArcGIS 10.4.1 für Server |
+| Barracuda Networks, Inc. |Barracuda NextGen Control Center (BYOL) |
+| Barracuda Networks, Inc. |Barracuda NextGen Firewall F-Serie (BYOL) |
+| Microsoft |BizTalk Server 2016 Community Technology Preview 2 |
+| Microsoft |{BYOL} SQL Server 2012 SP3 Enterprise unter Windows Server 2012 R2 |
+| Microsoft |{BYOL} SQL Server 2012 SP3 Standard unter Windows Server 2012 R2 |
+| Microsoft |{BYOL} SQL Server 2014 SP1 Enterprise unter Windows Server 2012 R2 |
+| Microsoft |{BYOL} SQL Server 2014 SP1 Standard unter Windows Server 2012 R2 |
+| Microsoft |{BYOL} SQL Server 2016 RTM Enterprise unter Windows Server 2012 R2 |
+| Microsoft |{BYOL} SQL Server 2016 RTM Standard unter Windows Server 2012 R2 |
+| OpenLogic |6.7 (CentOS-basiert) |
+| OpenLogic |6.8 (CentOS-basiert) |
+| OpenLogic |7.2 (CentOS-basiert) |
+| CoreOS |CoreOS Linux (stabil) |
+| F5 Networks |F5 BIG-IP ADC+SEC BEST – BYOL |
+| F5 Networks |F5 BIG-IP ADC BETTER – BYOL |
+| F5 Networks |F5 BIG-IP ADC GOOD (LTM) - BYOL |
+| Bitnami |Moodle |
+| Citrix |NetScaler VPX Bring Your Own License |
+| SUSE |openSUSE Leap 42.1 |
+| Red Hat |Red Hat Enterprise Linux 6.8 |
+| Red Hat |Red Hat Enterprise Linux 7.2 |
+| Microsoft |SQL Server 2012 SP3 Enterprise unter Windows Server 2012 R2 |
+| Microsoft |SQL Server 2012 SP3 Standard unter Windows Server 2012 R2 |
+| Microsoft |SQL Server 2014 SP1 Enterprise unter Windows Server 2012 R2 |
+| Microsoft |SQL Server 2014 SP1 Standard unter Windows Server 2012 R2 |
+| Microsoft |SQL Server 2016 RTM Enterprise unter Windows Server 2012 R2 |
+| Microsoft |SQL Server 2016 RTM Standard unter Windows Server 2012 R2 |
+| SUSE |SLES 11 SP4 |
+| SUSE |SLES 12 SP1 |
+| Microsoft |Windows Server 2012 R2 Datacenter |
+| Barracuda Networks, Inc. |Barracuda Web Application Firewall (WAF) – BYOL |
+| Microsoft |Windows Server 2008 R2 SP1 |
+| Microsoft |Windows Server 2012 Datacenter |
+| Microsoft |Windows Server 2012 R2 Datacenter |
+
+## <a name="images---classic-resource-provider"></a>Images – klassische Ressourcenanbieter
 | Herausgeber | Imagename | Beschreibung | Betriebssystem | Datenträgergröße |
 | --- | --- | --- | --- | --- |
 | ASR-Prod-GalleryImages |Microsoft Azure Site Recovery-Prozessserver |Der Microsoft Azure Site Recovery-Prozessserver wird für die Zwischenspeicherung, Komprimierung und Verschlüsselung von Replikationsdatenverkehr in Microsoft Azure Site Recovery verwendet, wenn ein Failback von virtuellen... |Windows |GB |
@@ -59,21 +103,21 @@ Unten ist eine Liste angeführt, welche die im Bilderkatalog von Azure Governmen
 | Microsoft Hybrid-Cloudspeichergruppe |StorSimple Virtual Appliance 1100, Juli 2015 |Microsoft StorSimple Virtual Appliance 1100 |Windows |32 GB |
 | Microsoft Hybrid-Cloudspeichergruppe |StorSimple Virtual Appliance 1100, Oktober 2015 |Microsoft StorSimple Virtual Appliance 1100 |Windows |32 GB |
 | Microsoft Hybrid-Cloudspeichergruppe |StorSimple Virtual Appliance GU2, Februar 2016 |Microsoft StorSimple Virtual Appliance GU2 |Windows |32 GB |
-| Microsoft Open Technologies Inc. |Oracle WebLogic Server 11g Standard Edition auf Windows Server 2008 R2 |Oracle WebLogic Server http://www.oracle.com/weblogicserver 11g Standard Edition (10.3.6) ist ein führender Java-Anwendungsserver für Unternehmen aller Größen, der Entwicklern das Tool bereitstellt... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle WebLogic Server 11g Enterprise Edition auf Windows Server 2008 R2 |Oracle WebLogic Server http://www.oracle.com/weblogicserver 11g Enterprise Edition (10.3.6) ist ein führender Java-Anwendungsserver für moderne Rechenzentren. Es nutzt die neuesten... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c Standard Edition unter Windows Server 2012 |Oracle-Datenbank http://www.oracle.com/database 12c Standard Edition (12.1.0.1.0) ist eine erschwingliche, umfassende Datenmanagement-Lösung, die sich ideal für mittelständische Unternehmen eignet. Mindestempfehlung... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c und WebLogic Server 12c-Standard-Edition unter Windows Server 2012 |Oracle-Datenbank http://www.oracle.com/database 12c Standard Edition (12.1.0.1.0) ist eine erschwingliche, umfassende Datenmanagement-Lösung, die sich ideal für mittelständische Unternehmen eignet. Oracle WebLogic... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c und WebLogic Server 12c Enterprise Edition unter Windows Server 2012 |Oracle-Datenbank http://www.oracle.com/database 12c Enterprise Edition (12.1.0.1.0) ist eine Datenbank Lösungen der nächsten Generation, die für die Cloud entwickelt wurde und eine neue mehrinstanzenfähige Architektur bietet... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c Enterprise Edition unter Windows Server 2012 |Oracle-Datenbank http://www.oracle.com/database 12c Enterprise Edition (12.1.0.1.0) ist eine Datenbank Lösungen der nächsten Generation, die für die Cloud entwickelt wurde und eine neue mehrinstanzenfähige Architektur bietet... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle WebLogic Server 12c Standard Edition unter Windows Server 2012 |Oracle WebLogic Server http://www.oracle.com/weblogicserver 12c-Standard Edition (12.1.2.0) ist ein führender Java EE-Anwendungsserver Bereitstellen von Anwendungen der nächsten Generation auf... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle Database 11g R2 Standard Edition unter Windows Server 2008 R2 |Oracle-Datenbank http://www.oracle.com/database 11g R2 Standard Edition (11.2.0.4.0) ist eine erschwingliche, umfassende Datenmanagement-Lösung, die sich ideal für mittelständische Unternehmen eignet. Mindestempfehlung... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle Database 11g R2 und WebLogic Server 11g Enterprise Edition auf Windows Server 2008 R2 |Oracle-Datenbank http://www.oracle.com/database 11g R2 Enterprise Edition (11.2.0.4.0) bietet umfassende Funktionen für eine einfache Verwaltung der anspruchsvollsten Transaktionsverarbeitung, Business Intel... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle Database 11g R2 Enterprise Edition auf Windows Server 2008 R2 |Oracle-Datenbank http://www.oracle.com/database 11g R2 Enterprise Edition (11.2.0.4.0) bietet umfassende Funktionen für eine einfache Verwaltung der anspruchsvollsten Transaktionsverarbeitung, Business Intel... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |JDK 8 unter Windows Server 2012 R2 |Java-Plattform http://www.oracle.com/java, Standard Edition 8 (Update 25) ermöglicht die Entwicklung von sicheren, portablen Hochleistungsanwendungen und enthält ein Java Development Kit (JDK), Java... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |JDK 7 unter Windows Server 2012 |Java-Plattform http://www.oracle.com/java, Standard Edition 7 (Update 71) ermöglicht die Entwicklung von sicheren, portablen Hochleistungsanwendungen und enthält ein Java Development Kit (JDK), Java... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |JDK 6 unter Windows Server 2012 |Java-Plattform http://www.oracle.com/java, Standard Edition 6 (Update 85) ermöglicht die Entwicklung von sicheren, portablen Hochleistungsanwendungen und enthält ein Java Development Kit (JDK), Java... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle Database 11g R2 und WebLogic Server 11g Standard Edition unter Windows Server 2008 R2 |Oracle-Datenbank http://www.oracle.com/database 11g R2 Standard Edition (11.2.0.4.0) ist eine erschwingliche, umfassende Datenmanagement-Lösung, die sich ideal für mittelständische Unternehmen eignet. Oracle-WebLogic... |Windows |128 GB |
-| Microsoft Open Technologies Inc. |Oracle WebLogic Server 12c Enterprise Edition unter Windows Server 2012 |Oracle WebLogic Server http://www.oracle.com/weblogicserver 12c Enterprise Edition (12.1.2.0) ist ein führender Java EE-Anwendungsserver zur Bereitstellung von Anwendungen der nächsten Generation auf... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle WebLogic Server 11g Standard Edition auf Windows Server 2008 R2 |Oracle WebLogic Server (http://www.oracle.com/weblogicserver) 11g Standard Edition (10.3.6) ist ein führender Java-Anwendungsserver für Unternehmen aller Größen, der Entwicklern das Tool bereitstellt... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle WebLogic Server 11g Enterprise Edition auf Windows Server 2008 R2 |Oracle WebLogic Server (http://www.oracle.com/weblogicserver) 11g Enterprise Edition (10.3.6) ist ein führender Java-Anwendungsserver für moderne Datencenter. Es nutzt die neuesten... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c Standard Edition unter Windows Server 2012 |Oracle-Datenbank (http://www.oracle.com/database) 12c Standard Edition (12.1.0.1.0) ist eine erschwingliche, umfassende Datenverwaltungslösung, die sich ideal für mittelständische Unternehmen eignet.  Mindestempfehlung... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c und WebLogic Server 12c-Standard-Edition unter Windows Server 2012 |Oracle-Datenbank (http://www.oracle.com/database) 12c Standard Edition (12.1.0.1.0) ist eine erschwingliche, umfassende Datenverwaltungslösung, die sich ideal für mittelständische Unternehmen eignet. Oracle WebLogic... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c und WebLogic Server 12c Enterprise Edition unter Windows Server 2012 |Oracle-Datenbank (http://www.oracle.com/database) 12c Enterprise Edition (12.1.0.1.0) ist eine Datenbank Lösungen der nächsten Generation, die für die Cloud entwickelt wurde und eine neue mehrinstanzenfähige Architektur bietet... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle-Datenbank 12c Enterprise Edition unter Windows Server 2012 |Oracle-Datenbank (http://www.oracle.com/database) 12c Enterprise Edition (12.1.0.1.0) ist eine Datenbank Lösungen der nächsten Generation, die für die Cloud entwickelt wurde und eine neue mehrinstanzenfähige Architektur bietet... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle WebLogic Server 12c Standard Edition unter Windows Server 2012 |Oracle WebLogic Server (http://www.oracle.com/weblogicserver) 12c Standard Edition (12.1.2.0) ist ein führender Java EE-Anwendungsserver Bereitstellen von Anwendungen der nächsten Generation auf... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle Database 11g R2 Standard Edition unter Windows Server 2008 R2 |Oracle-Datenbank (http://www.oracle.com/database) 11g R2 Standard Edition (11.2.0.4.0) ist eine erschwingliche, umfassende Datenverwaltungslösung, die sich ideal für mittelständische Unternehmen eignet. Mindestempfehlung... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle Database 11g R2 und WebLogic Server 11g Enterprise Edition auf Windows Server 2008 R2 |Oracle-Datenbank (http://www.oracle.com/database) 11g R2 Enterprise Edition (11.2.0.4.0) bietet umfassende Funktionen für eine einfache Verwaltung der anspruchsvollsten Transaktionsverarbeitung, Business Intel... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle Database 11g R2 Enterprise Edition auf Windows Server 2008 R2 |Oracle-Datenbank (http://www.oracle.com/database) 11g R2 Enterprise Edition (11.2.0.4.0) bietet umfassende Funktionen für eine einfache Verwaltung der anspruchsvollsten Transaktionsverarbeitung, Business Intel... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |JDK 8 unter Windows Server 2012 R2 |Java-Plattform (http://www.oracle.com/java) Standard Edition 8 (Update 25) ermöglicht die Entwicklung von sicheren, portablen Hochleistungsanwendungen und enthält ein Java Development Kit (JDK), Java... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |JDK 7 unter Windows Server 2012 |Java-Plattform (http://www.oracle.com/java) Standard Edition 7 (Update 71) ermöglicht die Entwicklung von sicheren, portablen Hochleistungsanwendungen und enthält ein Java Development Kit (JDK), Java... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |JDK 6 unter Windows Server 2012 |Java-Plattform (http://www.oracle.com/java) Standard Edition 6 (Update 85) ermöglicht die Entwicklung von sicheren, portablen Hochleistungsanwendungen und enthält ein Java Development Kit (JDK), Java... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle Database 11g R2 und WebLogic Server 11g Standard Edition unter Windows Server 2008 R2 |Oracle-Datenbank (http://www.oracle.com/database) 11g R2 Standard Edition (11.2.0.4.0) ist eine erschwingliche, umfassende Datenverwaltungslösung, die sich ideal für mittelständische Unternehmen eignet. Oracle-WebLogic... |Windows |128 GB |
+| Microsoft Open Technologies Inc. |Oracle WebLogic Server 12c Enterprise Edition unter Windows Server 2012 |Oracle WebLogic Server (http://www.oracle.com/weblogicserver) 12c Enterprise Edition (12.1.2.0) ist ein führender Java EE-Anwendungsserver Bereitstellen von Anwendungen der nächsten Generation auf... |Windows |128 GB |
 | Microsoft SQL Server-Gruppe |SQL Server 2012 SP2 Standard unter Windows Server 2012 |Einige SQL Server-Komponenten erfordern eine zusätzliche Einrichtung und Konfiguration vor der Verwendung. Wir empfehlen die Verwendung eines virtuellen Rechners der Größe A2 oder höher. Dieses Image wurde für Microsoft Azure vorkonfiguriert... |Windows |127 GB |
 | Microsoft SQL Server-Gruppe |SQL Server 2014 RTM Enterprise unter Windows Server 2012 R2 |Dieses Image enthält die Vollversion von SQL Server. Wir empfehlen die Verwendung eines virtuellen Rechners der Größe A3 oder höher. Dieses Image wurde für Microsoft Azure vorkonfiguriert, einschließlich der Aktivierung des CEIP, das... |Windows |127 GB |
 | Microsoft SQL Server-Gruppe |SQL Server 2014 SP1 Enterprise unter Windows Server 2012 R2 |Dieses Image enthält die Vollversion von SQL Server. Für Produktionsworkloads empfehlen wir Ihnen die Verwendung eines virtuellen Computers der Größe DS3 oder höher. Dieses Image wurde für Microsoft Azure vorkonfiguriert, ... |Windows |127 GB |
@@ -90,7 +134,7 @@ Unten ist eine Liste angeführt, welche die im Bilderkatalog von Azure Governmen
 | Microsoft SQL Server-Gruppe |SQL Server 2016 RTM Express Windows Server 2012 R2 |Dieses Image enthält die Version „Express with Tools“ von SQL Server. Bei diesem Image fallen keine Kosten für eine SQL-Lizenz an. Es ist für Entwicklung/Testing und kleine Workloads ausgelegt. Dieses Image wurde vorkonfiguriert für... |Windows |127 GB |
 | Microsoft SQL Server-Gruppe |SQL Server 2016 RTM Standard unter Windows Server 2012 R2 |Dieses Image enthält die Vollversion von SQL Server. Für Produktionsworkloads empfehlen wir Ihnen die Verwendung eines virtuellen Computers der Größe DS3 oder höher. Dieses Image wurde für Microsoft Azure vorkonfiguriert, ... |Windows |127 GB |
 | Microsoft SQL Server-Gruppe |SQL Server 2016 RTM Web Windows Server 2012 R2 |Dieses Image enthält die Vollversion von SQL Server. Für Produktionsworkloads empfehlen wir Ihnen die Verwendung eines virtuellen Computers der Größe DS3 oder höher. Dieses Image wurde für Microsoft Azure vorkonfiguriert, ... |Windows |127 GB |
-| Microsoft SQL Server-Gruppe |SQL Server 2012 SP2 Enterprise unter Windows Server 2012 |Dieses Image enthält die Vollversion von SQL Server. Einige SQL Server-Komponenten erfordern eine zusätzliche Einrichtung und Konfiguration vor der Verwendung. Wir empfehlen die Verwendung eines virtuellen Rechners der Größe A3 oder höher. |Windows |127 GB |
+| Microsoft SQL Server-Gruppe |SQL Server 2012 SP2 Enterprise unter Windows Server 2012 |Dieses Image enthält die Vollversion von SQL Server. Einige SQL Server-Komponenten erfordern eine zusätzliche Einrichtung und Konfiguration vor der Verwendung. Wir empfehlen die Verwendung eines virtuellen Rechners der Größe A3 oder höher. ... |Windows |127 GB |
 | Microsoft SQL Server-Gruppe |SQL Server 2012 SP3 Web unter Windows Server 2012 R2 |Dieses Image enthält die Vollversion von SQL Server. Für Produktionsworkloads empfehlen wir Ihnen die Verwendung eines virtuellen Computers der Größe DS3 oder höher. Dieses Image wurde für Microsoft Azure vorkonfiguriert, ... |Windows |127 GB |
 | Microsoft SQL Server-Gruppe |SQL Server 2016 RTM Enterprise unter Windows Server 2012 R2 |Dieses Image enthält die Vollversion von SQL Server. Für Produktionsworkloads empfehlen wir Ihnen die Verwendung eines virtuellen Computers der Größe DS3 oder höher. Dieses Image wurde für Microsoft Azure vorkonfiguriert, ... |Windows |127 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 R2 Datacenter, Juni 2016 |Als Kernstück der Vision von Microsoft Cloud OS überträgt Windows Server 2012 R2 die Erfahrung von Microsoft in Bezug auf globale Clouddienste in Ihre Infrastruktur. Er bietet Leistung für Unternehmen... |Windows |128 GB |
@@ -100,25 +144,25 @@ Unten ist eine Liste angeführt, welche die im Bilderkatalog von Azure Governmen
 | Microsoft Windows Server-Gruppe |Windows Server 2016 Technical Preview 5 – Nano Server |Nano Server ist eine neue monitorlose Bereitstellungsoption für Windows Server, die mit einem Bruchteil der Größe des gesamten Betriebssystems ausgeführt wird. Mit dieser technischen Vorschau können Sie Nano Server testen, und erfahren, wie... |Windows |8 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 R2 Datacenter, Juli 2016 |Als Kernstück der Vision von Microsoft Cloud OS überträgt Windows Server 2012 R2 die Erfahrung von Microsoft in Bezug auf globale Clouddienste in Ihre Infrastruktur. Er bietet Leistung für Unternehmen... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 R2 Datacenter, Dezember 2015 |Als Kernstück der Vision von Microsoft Cloud OS überträgt Windows Server 2012 R2 die Erfahrung von Microsoft in Bezug auf globale Clouddienste in Ihre Infrastruktur. Er bietet Leistung für Unternehmen... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, August 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, August 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, Juli 2016 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, August 2016 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2016 mit Containern – Tech Preview 5 |Windows Server bringt die Bandbreite und den Umfang der Erfahrung von Microsoft in Bezug auf globale Clouddienste in die Infrastruktur Ihres Datencenters ein. Windows Server 2016 mit Containern – Technical Preview 5... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 R2 Datacenter, November 2015 |Als Kernstück der Vision von Microsoft Cloud OS überträgt Windows Server 2012 R2 die Erfahrung von Microsoft in Bezug auf globale Clouddienste in Ihre Infrastruktur. Er bietet Leistung für Unternehmen... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, November 2015 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, November 2015 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, April 2016 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, Juni 2016 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2016 Technical Preview 5 |Windows Server 2016 Technical Preview bietet die Möglichkeit zum Kennenlernen des cloudfähigen Betriebssystems, das über neue Sicherheitsebenen und von Azure inspirierte innovative Komponenten für Anwendungen und Infra... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 R2 Datacenter, August 2016 |Als Kernstück der Vision von Microsoft Cloud OS überträgt Windows Server 2012 R2 die Erfahrung von Microsoft in Bezug auf globale Clouddienste in Ihre Infrastruktur. Er bietet Leistung für Unternehmen... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Dezember 2015 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Januar 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Februar 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Juli 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Juni 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Dezember 2015 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Januar 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Februar 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Juli 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, Juni 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, November 2015 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, Dezember 2015 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, Januar 2016 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
-| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, April 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren. Er bietet... |Windows |128 GB |
+| Microsoft Windows Server-Gruppe |Windows Server 2008 R2 SP1, April 2016 |Windows Server 2008 R2 ist ein Mehrzweck-Server, der entwickelt wurde, um die Zuverlässigkeit und Flexibilität Ihres Servers oder einer privaten Cloudinfrastruktur zu verbessern und der Ihnen dabei hilft, Zeit zu sparen und Kosten zu reduzieren.  Er bietet... |Windows |128 GB |
 | Microsoft Windows Server-Gruppe |Windows Server 2012 Datacenter, Februar 2016 |Windows Server 2012 nutzt die Erfahrungen von Microsoft in Bezug auf das Erstellen und Betreiben von öffentlichen Clouds, um eine dynamische, hochverfügbare Serverplattform zu bieten. Er bietet eine skalierbare, dynamische und mehrinstanzfähige Anwendung... |Windows |128 GB |
 | OpenLogic |OpenLogic 6.7 |Diese Linux-Distribution basiert auf CentOS-Version 6.7 und wird von OpenLogic bereitgestellt. Sie enthält eine Installation von Basisserverpaketen. |Linux |30 GB |
 | OpenLogic |OpenLogic 6.8 |Diese Linux-Distribution basiert auf CentOS-Version 7.2 und wird von OpenLogic bereitgestellt. Sie enthält eine Installation von Basisserverpaketen. |Linux |30 GB |
@@ -126,7 +170,7 @@ Unten ist eine Liste angeführt, welche die im Bilderkatalog von Azure Governmen
 | OpenLogic |OpenLogic 7.2 |Diese Linux-Distribution basiert auf CentOS-Version 7.2 und wird von OpenLogic bereitgestellt. Sie enthält eine Installation von Basisserverpaketen. |Linux |30 GB |
 | OpenLogic |OpenLogic 7.2n |Diese Linux-Distribution basiert auf CentOS-Version 7.2 und wird von OpenLogic bereitgestellt. Sie enthält eine Installation von Basisserverpaketen. Dieses Image ist identisch mit dem CentOS 7.2-Standardimage... |Linux |30 GB |
 | Oracle |Oracle WebLogic Server 12.1.2 unter Oracle Linux 6.4.0.0.0 |Oracle WebLogic Server 12c Enterprise Edition ist ein führender Java EE-Anwendungsserver zur Bereitstellung von Anwendungen der nächsten Generation auf einer unternehmenskritischen Cloudplattform mit systemeigener Cloudverwaltung und... |Linux |30 GB |
-| Oracle |Oracle Database 12.1.0.1 Standard Edition unter Oracle Linux 6.4.0.0.0 |Oracle-Datenbank 12c Standard Edition ist eine erschwingliche, umfassende Datenverwaltungslösung, die sich ideal für mittelständische Unternehmen eignet. Weitere Informationen finden Sie unter http://www.oracle.com/database. |Linux |40 GB |
+| Oracle |Oracle Database 12.1.0.1 Standard Edition unter Oracle Linux 6.4.0.0.0 |Oracle-Datenbank 12c Standard Edition ist eine erschwingliche, umfassende Datenverwaltungslösung, die sich ideal für mittelständische Unternehmen eignet. Weitere Informationen finden Sie unter "http://www.oracle.com/database". |Linux |40 GB |
 | Oracle |Oracle Linux 7.0.0.0.0 |Oracle Linux 7.0.0.0 liefert höchste Leistung, erweiterte Skalierbarkeit und Zuverlässigkeit für Unternehmensanwendungen und -systeme. Dank seiner Optimierung für Unternehmensworkloads ist Oracle Linux das einzige Betriebs... |Linux |30 GB |
 | Oracle |Oracle Database 12.1.0.1 Enterprise Edition unter Oracle Linux 6.4.0.0.0 |Oracle-Datenbank 12c Enterprise Edition ist eine Datenbank der nächsten Generation, die für die Cloud entwickelt wurde und eine neue mehrinstanzenfähige Architektur bietet, die auf einer schnellen, skalierbaren, zuverlässigen und sicheren Datenbankplattform aufsetzt... |Linux |40 GB |
 | Remotedesktophost |Windows Server-Remotedesktop-Sitzungshost mit Microsoft Office 365 ProPlus |Dieses Image enthält das Betriebssystem Windows Server 2012 R2 mit der installierten Rolle „Remotedesktop-Sitzungshost“ (RD-Sitzungshost) zusammen mit Microsoft Office 365 ProPlus und weist gemeinsam genutzte Computer auf... |Windows |127 GB |
@@ -142,24 +186,57 @@ Unten ist eine Liste angeführt, welche die im Bilderkatalog von Azure Governmen
 | SUSE |SUSE Linux Enterprise Server 11 SP4 |Wenn Sie Ihre Produktionsworkloads unter SUSE Linux Enterprise Server in Microsoft Azure ausführen, können Sie sicher sein, dass Ihre Servicelevel garantiert sind, und dass Sie jederzeit Hilfe von den SUSE- und Microsoft-Technikern erhalten, wenn Sie... |Linux |30 GB |
 | SUSE |SUSE Linux Enterprise Server 11 SP4 |Wenn Sie Ihre Produktionsworkloads unter SUSE Linux Enterprise Server in Microsoft Azure ausführen, können Sie sicher sein, dass Ihre Servicelevel garantiert sind, und dass Sie jederzeit Hilfe von den SUSE- und Microsoft-Technikern erhalten, wenn Sie... |Linux |30 GB |
 | Visual Studio |Team Foundation Server 2013 Update 4 unter Windows Server 2012 R2 |Testversion von Microsoft Team Foundation Server 2013 unter Windows Server 2012 R2 Update. Für virtuelle Computer, die mit diesem Testimage erstellt werden, ist ein Product Key für Team Foundation Server erforderlich (z.B. von MSDN... |Windows |128 GB |
-| Visual Studio |Visual Studio Community 2013 Update 5 mit Tools für Apache Cordova CTP 3.2 unter Windows Server 2012 R2 |Dieses Image umfasst Visual Studio Community 2013 Update 5, Azure Tools 2.8 und CTP 3.2 für die Tools für Apache Cordova unter Windows Server 2012 R2. Es ermöglicht das einfache und schnelle Einrichten... |Windows |128 GB |
-| Visual Studio |Visual Studio Ultimate 2013 Update 5 unter Windows Server 2012 |Visual Studio Ultimate 2013 Update 5 Developer Desktop ist ein exklusives Angebot für MSDN-Abonnenten. Das Image enthält Visual Studio Ultimate 2013 Update 5, SharePoint 2013 Trial, SQL Server 2012... |Windows |128 GB |
-| Visual Studio |Visual Studio Community 2015 mit Azure SDK 2.9 unter Windows Server 2012 R2 |Visual Studio Community 2015 ist unsere kostenlose erweiterbare IDE mit vollem Funktionsumfang für andere Anwendungen als Unternehmensanwendungen. Dieses Image enthält Windows Server 2012 R2 mit Visual Studio Community 2015. I... |Windows |128 GB |
+| Visual Studio |Visual Studio Community 2013 Update 5 mit Tools für Apache Cordova CTP 3.2 unter Windows Server 2012 R2 |Dieses Image umfasst Visual Studio Community 2013 Update 5, Azure Tools 2.8 und CTP 3.2 für die Tools für Apache Cordova unter Windows Server 2012 R2.  Es ermöglicht das einfache und schnelle Einrichten... |Windows |128 GB Visual Studio |
+| Visual Studio |Visual Studio Community 2015 mit Azure SDK 2.9 unter Windows Server 2012 R2 |Visual Studio Community 2015 ist unsere kostenlose erweiterbare IDE mit vollem Funktionsumfang für andere Anwendungen als Unternehmensanwendungen.  Dieses Image enthält Windows Server 2012 R2 mit Visual Studio Community 2015.  I... |Windows |128 GB |
 | Visual Studio |Visual Studio Community 2015 Update 2 mit Azure SDK 2.9 unter Windows Server 2012 R2 |Visual Studio Community 2015 Update 2 ist unsere kostenlose erweiterbare IDE mit vollem Funktionsumfang für andere Anwendungen als Unternehmensanwendungen. Dieses Image enthält Windows Server 2012 R2 mit Visual Studio Community... |Windows |128 GB |
-| Visual Studio |Visual Studio Enterprise 2015 mit Azure SDK 2.9 unter Windows Server 2012 R2 |Mit Visual Studio Enterprise können Sie mit nur einer Lösung auf einer einheitlichen Entwicklungsoberfläche Clientanwendungen für Geräte und Dienste erstellen. Sie erhalten die Tools, die Sie zum Bereitstellen von Desktop... |Windows |128 GB |
+| Visual Studio |Visual Studio Enterprise 2015 mit Azure SDK 2.9 unter Windows Server 2012 R2 |Mit Visual Studio Enterprise können Sie mit nur einer Lösung auf einer einheitlichen Entwicklungsoberfläche Clientanwendungen für Geräte und Dienste erstellen.  Sie erhalten die Tools, die Sie zum Bereitstellen von Desktop... |Windows |128 GB |
 | Visual Studio |Visual Studio Enterprise 2015 Update 3 mit Azure SDK 2.9.1 unter Windows Server 2012 R2 |Mit Visual Studio Enterprise 2015 Update 3 können Sie mit nur einer Lösung auf einer einheitlichen Entwicklungsoberfläche Clientanwendungen für Geräte und Dienste erstellen. Sie erhalten die Tools, die Sie... |Windows |128 GB |
-| Visual Studio |Visual Studio Community 2013 Update 5 mit Azure 2.9 unter Windows Server 2012 R2 |Mit diesem Image von Visual Studio Community 2013 Update 5 mit Azure Tools 2.9 können Sie die volle Leistung von Visual Studio für die Entwicklung von plattformübergreifenden Lösungen nutzen. Erstellen Sie Apps in einer einheitlichen IDE, ... |Windows |128 GB |
-| Visual Studio |Visual Studio Enterprise 2015 Update 2 mit Azure SDK 2.9 unter Windows Server 2012 R2 |Mit Visual Studio Enterprise 2015 Update 2 können Sie mit einer einzigen Lösung auf einer konsistenten Entwicklungsoberfläche Clientanwendungen für Geräte und Dienste erstellen. Sie erhalten die Tools, die Sie benötigen... |Windows |128 GB |
+| Visual Studio |Visual Studio Community 2013 Update 5 mit Azure 2.9 unter Windows Server 2012 R2 |Mit diesem Image von Visual Studio Community 2013 Update 5 mit Azure Tools 2.9 können Sie die volle Leistung von Visual Studio für die Entwicklung von plattformübergreifenden Lösungen nutzen.  Erstellen Sie Apps in einer einheitlichen IDE, ... |Windows |128 GB |
+| Visual Studio |Visual Studio Enterprise 2015 Update 2 mit Azure SDK 2.9 unter Windows Server 2012 R2 |Mit Visual Studio Enterprise 2015 Update 2 können Sie mit einer einzigen Lösung auf einer konsistenten Entwicklungsoberfläche Clientanwendungen für Geräte und Dienste erstellen.  Sie erhalten die Tools, die Sie benötigen... |Windows |128 GB |
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged -->
 
-## <a name="next"></a>Nächste Schritte
-Die folgenden Ressourcen bieten nähere Informationen zur Bereitstellung über den Imagekatalog oder zur Erstellung Ihrer eigenen VHDs. Informationen zu den programmatischen Unterschieden zu Endpunkten bei der Arbeit mit Azure Government finden Sie im <a href="../azure-government-developer-guide">Azure Government-Entwicklerhandbuch</a>.
+## <a name="quick-start-templates"></a>Schnellstartvorlagen
+### <a name="step-1"></a>Schritt 1
+Wechseln Sie zum GitHub-Repository mit Azure-Schnellstartvorlagen, und wählen Sie aus der folgenden Liste mit Lösungsvorlagen aus:
 
-### Weitere Ressourcen:
-* [Bereitstellen eines virtuellen Windows-Rechners](virtual-machines/virtual-machines-windows-hero-tutorial.md)
-* [Virtuelle Computer – häufig gestellte Fragen](http://msdn.microsoft.com/library/azure/dn683781.aspx)
-* [Aufzeichnen eines Linux-VM-Image](virtual-machines/virtual-machines-linux-classic-capture-image.md)
+| Schnellstartvorlage |
+| --- |
+| <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/ethereum-consortium-blockchain-network"> Blockchainnetzwerk für Konsortien von Ethereum </a> |
+| <a href="https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/splunk-on-ubuntu"> Splunk unter Ubuntu </a> |
+| <a href="https://github.com/Azure/azure-quickstart-templates/tree/058f18cbb43165b043e5bb56a82a406290c02dac/cisco-csr-1000v"> Cisco CSR1000v (2 NICs) </a> |
+| <a href="https://github.com/Azure/azure-quickstart-templates/tree/058f18cbb43165b043e5bb56a82a406290c02dac/cisco-csr-1000v-4-nic"> Cisco CSR1000v (4 NICs) </a> |
+| <a href="https://github.com/Azure/azure-quickstart-templates/tree/058f18cbb43165b043e5bb56a82a406290c02dac/cisco-csr-1000v-existing-vnet-4-nic"> Cisco CSR1000v (4 NICs, vorhandenes Vnet) </a> |
+
+### <a name="step-2"></a>Schritt 2
+Starten Sie die Vorlage in der Readme-Datei, indem Sie auf die Schaltfläche/den Link „Deploy to Azure Government“ oben auf der Seite klicken.
+
+### <a name="step-3"></a>Schritt 3
+Eine Browserseite öffnet das Blatt für die Vorlagenbereitstellung im Azure Government-Portal. Füllen Sie im Blatt „Parameter“ die erforderlichen Felder aus, und klicken Sie auf „OK“.
+
+### <a name="step-4"></a>Schritt 4
+Akzeptieren Sie die Geschäftsbedingungen, aktivieren Sie das Feld „An Dashboard anheften“, und klicken Sie dann auf „Erstellen“.
+
+> [!NOTE]
+> Sie benötigen ein gültiges Azure Government-Konto, um fortzufahren. Um die Leistungsfähigkeit von Azure Government in Ihrer Organisation zu erleben, melden Sie sich für eine [Azure-Testversion für Behörden](https://azuregov.microsoft.com/trial/azuregovtrial) an.
+> 
+> 
+
+### <a name="step-5"></a>Schritt 5
+Die Blätter werden geschlossen, und Sie kehren zurück zu Ihrer Portaldashboardansicht, auf der die Imagebereitstellung angezeigt wird. Dies dauert einige Minuten. Sobald die VM-Lösung ausgeführt wird, wird sie im Dashboard angezeigt. Wenn Sie in Schritt 4 nicht die Option „An Dashboard anheften“ ausgewählt haben, müssen Sie in Ihren Ressourcen nach der VM suchen.
+
+> [!NOTE]
+> Lösungsvorlagen werden von Microsoft und Drittanbietern nur als Ausgangspunkt bereitgestellt. Sie sind allein für das Entwickeln, Implementieren und Verwalten Ihrer Anwendungen und/oder Abonnements in Microsoft Azure und Azure Government gemäß geltender Gesetze, Vorschriften und vertraglichen Verpflichtungen verantwortlich.  Diese Vorlagen werden „wie besehen“ und ohne Gewährleistungen jeglicher Art, ob ausdrücklich, konkludent oder gesetzlich vorgeschrieben, bereitgestellt, und Microsoft schließt ausdrücklich alle Gewährleistungen der Handelsüblichkeit, der Eignung für einen bestimmten Zweck oder der Nichtverletzung von Rechten Dritter aus.
+> 
+> 
+
+## <a name="next-steps"></a>Nächste Schritte
+Die folgenden Ressourcen bieten nähere Informationen zur Bereitstellung über den Imagekatalog oder zur Erstellung Ihrer eigenen VHDs.  Informationen zu den programmatischen Unterschieden zu Endpunkten bei der Arbeit mit Azure Government finden Sie im [Azure Government-Entwicklerhandbuch](azure-government-developer-guide.md).
+
+### <a name="other-resources"></a>Weitere Ressourcen:
+* [Bereitstellen eines virtuellen Windows-Rechners](virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Virtuelle Computer – häufig gestellte Fragen](virtual-machines/virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Aufzeichnen eines Linux-VM-Image](virtual-machines/virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 <!--- **<A href="/azure-government-service-description">Azure Government Service Descriptions</a>**-->
 
@@ -176,4 +253,8 @@ Die folgenden Ressourcen bieten nähere Informationen zur Bereitstellung über d
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

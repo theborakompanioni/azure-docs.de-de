@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/12/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: a3643b9b6ae6c1750a7c7c900375fdf1dee06f8f
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 5b7c701cc7bd3c4ad586f2e7407fa45f102771d7
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: a3643b9b6ae6c1750a7c7c900375fdf1dee06f8f
 > 
 > 
 
-Wenn eine Ihrer Anwendungen oder eines Ihrer Skripts Zugriff auf Ressourcen benötigt, möchten Sie diesen Prozess wahrscheinlich nicht unter Ihren eigenen Anmeldeinformationen ausführen. Sie besitzen möglicherweise andere Berechtigungen, als sie für die Anwendung festlegen möchten, und die Anwendung soll Ihre Anmeldeinformationen nicht weiterhin nutzen, wenn sich Ihre Zuständigkeiten ändern. Stattdessen erstellen Sie für die Anwendung eine Identität, die Anmeldeinformationen für die Authentifizierung und Rollenzuweisungen enthält. Bei jeder Ausführung der App authentifiziert sie sich selbst mit diesen Anmeldeinformationen. In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](../powershell-install-configure.md) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
+Wenn eine Ihrer Anwendungen oder eines Ihrer Skripts Zugriff auf Ressourcen benötigt, möchten Sie diesen Prozess wahrscheinlich nicht unter Ihren eigenen Anmeldeinformationen ausführen. Sie besitzen möglicherweise andere Berechtigungen, als sie für die Anwendung festlegen möchten, und die Anwendung soll Ihre Anmeldeinformationen nicht weiterhin nutzen, wenn sich Ihre Zuständigkeiten ändern. Stattdessen erstellen Sie für die Anwendung eine Identität, die Anmeldeinformationen für die Authentifizierung und Rollenzuweisungen enthält. Bei jeder Ausführung der App authentifiziert sie sich selbst mit diesen Anmeldeinformationen. In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
 
 Mit PowerShell stehen Ihnen für die Authentifizierung Ihrer AD-Anwendung zwei Optionen zur Verfügung:
 
@@ -274,6 +274,6 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

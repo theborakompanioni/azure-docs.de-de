@@ -1,7 +1,7 @@
 ---
 title: Was ist ein elastischer Azure-Pool? | Microsoft Docs
 description: "Verwalten Sie hunderte oder tausende Datenbanken mithilfe eines Pools. Ein Preis für einen Satz Leistungseinheiten kann über den Pool verteilt werden. Verschieben Sie die Datenbanken je nach Wunsch in den oder aus dem Pool."
-keywords: elastische Datenbank, SQL-Datenbanken
+keywords: elastischer Pool,SQL-Datenbanken
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -11,14 +11,14 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 12/14/2016
+ms.date: 01/04/2017
 ms.author: CarlRabeler
 ms.workload: data-management
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
-ms.openlocfilehash: c3757dadb09ba070b30820a46007a9c82490d8f2
+ms.sourcegitcommit: ce30d47075636d3b64215d50b81acc09e7ed72f1
+ms.openlocfilehash: d74be42963206c82218bc82ea1bf12e5c0cdb0f3
 
 
 ---
@@ -35,13 +35,12 @@ Ein weit verbreitetes SaaS-Anwendungsmuster ist das Einzelmandanten-Datenbankmod
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
->
 
-In SQL-Datenbank wird das relative Maß für die Fähigkeit einer Datenbank, mit Ressourcenanforderungen umzugehen, in Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) für einzelne Datenbanken und in elastischen DTUs (eDTUs) für elastische Datenbanken in einem elastischen Pool angegeben. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Einführung in SQL-Datenbank](sql-database-technical-overview.md).
+In SQL-Datenbank wird das relative Maß für die Fähigkeit einer Datenbank, mit Ressourcenanforderungen umzugehen, in Datenbanktransaktionseinheiten (Database Transaction Units, DTUs) für einzelne Datenbanken und in elastischen DTUs (eDTUs) für Datenbanken in einem elastischen Pool angegeben. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Einführung in SQL-Datenbank](sql-database-technical-overview.md).
 
 Ein Pool erhält eine festgelegte Anzahl von eDTUs zu einem festen Preis. Im Pool können einzelne Datenbanken die automatische Skalierung innerhalb der angegebenen Parameter flexibel automatisch skalieren. Bei hoher Auslastung kann eine Datenbank mehr eDTUs nutzen, um die Anforderungen zu erfüllen. Datenbanken verbrauchen bei geringerer Auslastung weniger Ressourcen und ohne Auslastung gar keine eDTUs. Durch die Bereitstellung von Ressourcen für den gesamten Pool und nicht nur für einzelne Datenbanken vereinfachen Sie Ihre Verwaltungsaufgaben. Außerdem verfügen Sie über ein vorhersagbares Budget für den Pool.
 
-Einem vorhandenen Pool können zusätzliche eDTUs hinzugefügt werden, ohne dass es zu Datenbankausfällen oder Auswirkungen auf die Datenbanken im elastischen Pool kommt. Ebenso können zusätzliche eDTUs, die nicht mehr benötigt werden, zu jedem beliebigen Zeitpunkt aus einem vorhandenen Pool entfernt werden.
+Einem vorhandenen Pool können zusätzliche eDTUs hinzugefügt werden, ohne dass es zu Datenbankausfällen kommt. Es gilt jedoch die Ausnahme, dass die Datenbanken unter Umständen verschoben werden müssen, um die zusätzlichen Computeressourcen für die neue eDTU-Reserverierung bereitzustellen. Ebenso können zusätzliche eDTUs, die nicht mehr benötigt werden, zu jedem beliebigen Zeitpunkt aus einem vorhandenen Pool entfernt werden.
 
 Und Sie können dem Pool Datenbanken hinzufügen oder Datenbanken aus dem Pool entfernen. Wenn die Ressourcen für eine Datenbank voraussichtlich nicht ausgeschöpft werden, sollten Sie sie entfernen.
 
@@ -52,43 +51,43 @@ Datenbanken, die für elastische Pools besonders geeignet sind, weisen in der Re
 
 [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md).
 
-## <a name="edtu-and-storage-limits-for-elastic-pools-and-elastic-databases"></a>eDTUs und Speicherbeschränkungen für elastische Pools und elastische Datenbanken
+## <a name="edtu-and-storage-limits-for-elastic-pools"></a>eDTUs und Speicherbeschränkungen für elastische Pools
 
 In der folgenden Tabelle sind die Merkmale von elastischen Basic-, Standard- und Premium-Pools beschrieben.
 
-[!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
+[!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
 Wenn alle DTUs eines elastischen Pools verwendet werden, erhält jede Datenbank im Pool gleich viel Ressourcen zum Verarbeiten von Abfragen.  Der SQL-Datenbank-Dienst bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in elastischen Pools ergänzt jegliche Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn das DTU-Minimum pro Datenbank auf einen Wert ungleich null festgelegt ist.
 
-## <a name="elastic-pool-and-elastic-database-properties"></a>Eigenschaften elastischer Pools und elastischer Datenbanken
+## <a name="elastic-pool-properties"></a>Eigenschaften elastischer Pools
 
-Die nachfolgenden Tabellen beschreiben die Beschränkungen für elastische Pools und elastische Datenbanken.
+Die nachfolgenden Tabellen beschreiben die Beschränkungen für elastische Pools und in einem Pool zusammengefasste Datenbanken.
 
 ### <a name="limits-for-elastic-pools"></a>Beschränkungen für elastische Pools
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Dienstebene |Basic, Standard oder Premium. Die Dienstebene bestimmt den Bereich der Leistungs- und Speichergrenzen, die konfiguriert werden können, sowie die Wahlmöglichkeiten für die Geschäftskontinuität. Jede Datenbank innerhalb eines Pools hat die gleiche Dienstebene wie der Pool. „Dienstebene“ wird auch als „Edition“ bezeichnet. |
 | eDTUs pro Pool |Die maximale Anzahl der eDTUs, die von Datenbanken im Pool gemeinsam verwendet werden können. Die Gesamtanzahl der eDTUs, die von Datenbanken im Pool genutzt werden, kann diese Grenze zum gleichen Zeitpunkt nicht überschreiten. |
-| Max. Speicherkapazität pro Pool (GB) |Der maximale Speicherplatz in GB, der von Datenbanken im Pool gemeinsam verwendet werden kann. Der Gesamtspeicher, der von allen Datenbanken im Pool verwendet wird, kann diese Grenze nicht überschreiten. Die Grenze wird durch die eDTUs per Pool bestimmt. Wenn diese Grenze überschritten wird, werden alle Datenbanken zu schreibgeschützten Datenbanken. |
+| Max. Speicherkapazität pro Pool (GB) |Der maximale Speicherplatz in GB, der von Datenbanken im Pool gemeinsam verwendet werden kann. Der Gesamtspeicher, der von allen Datenbanken im Pool verwendet wird, kann diese Grenze nicht überschreiten. Die Grenze wird durch die eDTUs per Pool bestimmt. Wenn diese Grenze überschritten wird, werden alle Datenbanken zu schreibgeschützten Datenbanken. Der maximale Speicherplatz pro Pool bezieht sich auf den maximalen Speicher der Datendateien im Pool und beinhaltet nicht den von Protokolldateien belegten Speicherplatz. |
 | Max. Anzahl von Datenbanken pro Pool |Die maximale Anzahl der pro Pool zulässigen Datenbanken. |
 | Max. gleichzeitige Worker pro Pool |Die maximale Anzahl der gleichzeitigen für alle Datenbanken im Pool verfügbaren Worker (Anforderungen). |
 | Max. gleichzeitige Anmeldungen pro Pool |Die maximale Anzahl der gleichzeitigen Anmeldungen für alle Datenbanken im Pool. |
 | Max. gleichzeitige Sitzungen pro Pool |Die maximale Anzahl der für alle Datenbanken im Pool verfügbaren Sitzungen. |
 
-### <a name="limits-for-elastic-databases"></a>Beschränkungen für elastische Datenbanken
+### <a name="limits-for-pooled-databases"></a>Grenzwerte für in einem Pool zusammengefasste Datenbanken
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
 | Max. Anz. von eDTUs pro Datenbank |Die maximale Anzahl von eDTUs, die jede Datenbank im Pool verwenden kann, sofern basierend auf der Nutzung durch andere Datenbanken im Pool verfügbar.  Die maximale Anzahl der eDTUs pro Datenbank ist keine Ressourcengarantie für eine Datenbank.  Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Legen Sie die maximale Anzahl der eDTUs pro Datenbank hoch genug fest, sodass Spitzen bei der Datenbanknutzung verarbeitet werden können. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind. Angenommen, die Spitzenauslastung pro Datenbank beträgt 20 eDTUs und betrifft nur 20 % der 100 Datenbanken im Pool.  Wenn die eDTU-Höchstanzahl pro Datenbank auf 20 eDTUs festgelegt ist, ist es sinnvoll, die fünffache Mehrlast für den Pool einzuplanen und die eDTUs pro Pool auf 400 festzulegen. |
 | Min. Anz. von eDTUs pro Datenbank |Die minimale Anzahl der eDTUs, die für jede Datenbank im Pool garantiert werden können.  Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Die Mindestanzahl der eDTUs pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist auf einen Wert zwischen 0 und der durchschnittlichen eDTU-Nutzung pro Datenbank festgelegt. Das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von eDTUs pro Datenbank darf die tatsächliche Anzahl der eDTUs pro Pool nicht übersteigen.  Wenn ein Pool beispielsweise 20 Datenbanken umfasst und die Mindestanzahl der eDTUs pro Datenbank auf 10 eDTUs festgelegt hat, müssen mindestens 200 eDTUs pro Pool festgelegt sein. |
-| Max. Speicherkapazität pro Datenbank (GB) |Der maximale Speicherplatz für eine Datenbank in einem Pool. Elastische Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenbankspeicher auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt. |
+| Max. Speicherkapazität pro Datenbank (GB) |Der maximale Speicherplatz für eine Datenbank in einem Pool. In einem Pool zusammengefasste Datenbanken nutzen den Poolspeicher gemeinsam, daher ist der Datenbankspeicher auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder des maximalen Speicherplatzes pro Datenbank beschränkt. Der maximale Speicherplatz pro Datenbank bezieht sich auf die maximale Größe der Datendateien und beinhaltet nicht den von Protokolldateien belegten Speicherplatz. |
 
-## <a name="elastic-database-jobs"></a>Aufträge für die elastische Datenbank
-Mit einem Pool werden die Verwaltungsaufgaben vereinfacht, indem Skripts in **[elastischen Aufträgen](sql-database-elastic-jobs-overview.md)** ausgeführt werden. Durch einen Auftrag für die elastische Datenbank werden die meisten aufwändigen Schritte beseitigt, die bei der Verwendung einer großen Zahl von Datenbanken anfallen. Lesen Sie sich [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md)durch, bevor Sie beginnen.
+## <a name="elastic-jobs"></a>Elastische Aufträge
+Mit einem Pool werden die Verwaltungsaufgaben vereinfacht, indem Skripts in **[elastischen Aufträgen](sql-database-elastic-jobs-overview.md)** ausgeführt werden. Durch einen elastischen Auftrag werden die meisten aufwändigen Schritte beseitigt, die bei der Verwendung einer großen Anzahl von Datenbanken anfallen. Lesen Sie sich [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md) durch, bevor Sie beginnen.
 
-Weitere Informationen zu anderen Tools für elastische Datenbanken finden Sie unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md).
+Weitere Informationen zu anderen Datenbanktools für die Verwendung mit mehreren Datenbanken finden Sie unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md).
 
 ## <a name="business-continuity-features-for-databases-in-a-pool"></a>Funktionen der Geschäftskontinuität für Datenbanken in einem Pool
-Elastische Datenbanken unterstützen in der Regel die gleichen [Geschäftskontinuitätsfeatures](sql-database-business-continuity.md), die auch bei Einzeldatenbanken zur Verfügung stehen.
+In einem Pool zusammengefasste Datenbanken unterstützen in der Regel die gleichen [Geschäftskontinuitätsfeatures](sql-database-business-continuity.md), die auch bei Einzeldatenbanken zur Verfügung stehen.
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen verwendet, um den Status einer Datenbank in einem Pool zu einem bestimmten Zeitpunkt wiederherzustellen. Siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
@@ -99,8 +98,8 @@ Die geografische Wiederherstellung ist die Standardoption für die Wiederherstel
 ### <a name="active-geo-replication"></a>Aktive Georeplikation
 Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei der geografischen Wiederherstellung erforderlich sind, konfigurieren Sie die aktive Georeplikation über das [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](sql-database-geo-replication-powershell.md) oder [Transact-SQL](sql-database-geo-replication-transact-sql.md).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Microsoft Virtual Academy video course on elastic database capabilities](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken)
+## <a name="additional-resources"></a>Weitere Ressourcen
+* [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank)
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png

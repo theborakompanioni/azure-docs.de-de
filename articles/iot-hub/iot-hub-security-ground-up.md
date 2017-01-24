@@ -1,6 +1,6 @@
 ---
-title: "Schützen Ihrer IoT-Lösung von Grund auf | Microsoft Docs"
-description: In diesem Artikel werden die integrierten Sicherheitsfeatures der Microsoft Azure IoT Suite beschrieben.
+title: "Schützen Ihrer Azure IoT-Lösung von Grund auf | Microsoft Docs"
+description: "Erfahren Sie etwas über die integrierten Sicherheitsfeatures der Microsoft Azure IoT Suite und von IoT Hub."
 services: iot-hub
 documentationcenter: 
 author: YuriDio
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/17/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 896cec2befa3f8f681ecb4e14687300a90b5fc24
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: a4452dee2beec650f84dff4083e91684fe61d8b6
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: 896cec2befa3f8f681ecb4e14687300a90b5fc24
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zum Schützen Ihrer IoT-Lösung finden Sie hier:
 
-* [Internet der Dinge – bewährte Methoden für die Sicherheit][lnk-security-best-practices]
-* [Internet der Dinge – Sicherheitsarchitektur][lnk-security-architecture]
+* [Best Practices für die IoT-Sicherheit][lnk-security-best-practices]
+* [IoT-Sicherheitsarchitektur][lnk-security-architecture]
 * [Schützen Ihrer IoT-Bereitstellung][lnk-security-deployment]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
@@ -41,6 +41,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

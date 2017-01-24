@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: bc5e50e4-bbb2-4ce1-9ee5-9a632de6fa06
 ms.service: sql-database
+ms.custom: business continuity; how to
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -15,8 +16,8 @@ ms.workload: NA
 ms.date: 07/14/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 293dc178b955f8b3a24c2dde7d97fe44cb1fe91f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 605f7d33c197af60579e30f0b2823968865c7229
 
 
 ---
@@ -42,7 +43,7 @@ Wenn Sie die aktive Georeplikation mithilfe von PowerShell konfigurieren möchte
 
 * Ein Azure-Abonnement. 
 * Eine Azure SQL-Datenbank: Die primäre Datenbank, die Sie replizieren möchten.
-* Azure PowerShell 1.0 oder höher Sie können die Azure PowerShell-Module herunterladen und installieren, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
+* Azure PowerShell 1.0 oder höher Sie können die Azure PowerShell-Module herunterladen und installieren, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) befolgen.
 
 ## <a name="configure-your-credentials-and-select-your-subscription"></a>Konfigurieren der Anmeldeinformationen und Auswählen des Abonnements
 Zuerst müssen Sie den Zugriff auf Ihr Azure-Konto einrichten. Starten Sie also PowerShell, und führen Sie dann das folgende Cmdlet aus. Geben Sie auf dem Anmeldebildschirm die E-Mail-Adresse und das Kennwort wie für die Anmeldung beim Azure-Portal ein.
@@ -140,6 +141,6 @@ Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der pr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

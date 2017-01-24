@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: zhangya
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8a9ec607cf4e8ae6ee5c69f4ed4db5f1a0854400
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e689f1e6fad3e65c3d25631adc93f1e0106706f2
 
 
 ---
@@ -91,7 +91,7 @@ Die Interpretation dieses Tests lautet wie folgt. Angenommen, das Ziel der Daten
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei [Execute R Script][execute-r-script]-Module in den Arbeitsbereich gezogen. Das Datenschema wurde mit einem einfachen [Execute R Script][execute-r-script]-Modul erstellt, welches das Eingabedatenschema für den Webdienst definiert. Dieses Modul wird dann mit dem zweiten [Execute R Script][execute-r-script]-Modul verknüpft, das die Hauptarbeit übernimmt. Dieses Modul führt die Datenvorverarbeitung, Modellerstellung und Vorhersagen aus. Beim Schritt der Datenvorverarbeitung werden die Eingabedaten, die durch eine lange Zeichenfolge dargestellt werden, transformiert und in einem Datenrahmen konvertiert. Im Modellerstellungsschritt wird ein externes R-Paket "survival_2.37-7.zip" zuerst für die Durchführung von Lebensdaueranalysen installiert. Anschließend wird die Funktion "coxph" nach einer Reihe von Datenverarbeitungsaufgaben ausgeführt. Die Details der Funktion "coxph" für Lebensdaueranalysen können der R-Dokumentation entnommen werden. Im Prognoseschritt wird eine Testinstanz in das trainierte Modell mit der Funktion "surfit" ein gespeist und die Lebensdauerkurve für diese Testinstanz wird als Variable "curve" erstellt. Schließlich erhalten Sie die Wahrscheinlichkeit des erwarteten Zeitpunkts. 
+In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei Module [Execute R Script][execute-r-script] in den Arbeitsbereich gezogen. Das Datenschema wurde mit einem einfachen Modul [Execute R Script][execute-r-script] erstellt, das das Eingabedatenschema für den Webdienst definiert. Dieses Modul wird dann mit dem zweiten Modul [Execute R Script][execute-r-script] verknüpft, das die Hauptarbeit übernimmt. Dieses Modul führt die Datenvorverarbeitung, Modellerstellung und Vorhersagen aus. Beim Schritt der Datenvorverarbeitung werden die Eingabedaten, die durch eine lange Zeichenfolge dargestellt werden, transformiert und in einem Datenrahmen konvertiert. Im Modellerstellungsschritt wird ein externes R-Paket "survival_2.37-7.zip" zuerst für die Durchführung von Lebensdaueranalysen installiert. Anschließend wird die Funktion "coxph" nach einer Reihe von Datenverarbeitungsaufgaben ausgeführt. Die Details der Funktion "coxph" für Lebensdaueranalysen können der R-Dokumentation entnommen werden. Im Prognoseschritt wird eine Testinstanz in das trainierte Modell mit der Funktion "surfit" ein gespeist und die Lebensdauerkurve für diese Testinstanz wird als Variable "curve" erstellt. Schließlich erhalten Sie die Wahrscheinlichkeit des erwarteten Zeitpunkts. 
 
 ### <a name="experiment-flow"></a>Experimentablauf:
 ![Experimentablauf][1]
@@ -209,6 +209,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

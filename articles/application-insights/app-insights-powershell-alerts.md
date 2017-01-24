@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: ff5e7721e2cdf2f8b034f714b6b58642efcb6368
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 710663e122bdebff575c762a501a0d261056e1bc
 
 
 ---
@@ -38,7 +38,7 @@ Installieren Sie das Azure-PowerShell-Modul auf dem Computer, auf dem die Skript
 * Installieren Sie hiermit Microsoft Azure PowerShell.
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
-Starten Sie Azure PowerShell, und [stellen Sie eine Verbindung mit Ihrem Abonnement her](../powershell-install-configure.md):
+Starten Sie Azure PowerShell, und [stellen Sie eine Verbindung mit Ihrem Abonnement her](/powershell/azureps-cmdlets-docs):
 
 ```PowerShell
 
@@ -142,6 +142,6 @@ Sie können [Ihre Reaktion auf eine Warnung automatisieren](../monitoring-and-di
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

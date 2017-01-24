@@ -1,34 +1,38 @@
 ---
-title: Hinzufügen von Codierungseinheiten
-description: Erfahren Sie, wie Sie mit .NET Codierungseinheiten hinzufügen.
+title: "Hinzufügen von Codierungseinheiten"
+description: "Erfahren Sie, wie Sie mit .NET Codierungseinheiten hinzufügen."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 33f7625a-966a-4f06-bc09-bccd6e2a42b5
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 01/10/2017
 ms.author: juliako;milangada;gtrifonov
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: ad0cf996390a792495c492e4205d5be3d27ffa9b
+
 
 ---
-# Skalieren der Codierung mit .NET SDK
+# <a name="how-to-scale-encoding-with-net-sdk"></a>Skalieren der Codierung mit .NET SDK
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 > [!IMPORTANT]
-> Lesen Sie unbedingt das [Übersichtsthema](media-services-scale-media-processing-overview.md), um weitere Informationen zum Skalieren der Medienverarbeitung zu erhalten.
+> Lesen Sie unbedingt das [Übersichtsthema](media-services-scale-media-processing-overview.md) , um weitere Informationen zum Skalieren der Medienverarbeitung zu erhalten.
 > 
 > 
 
@@ -44,10 +48,10 @@ Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anz
 
     Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
-## Öffnen eines Supporttickets
+## <a name="opening-a-support-ticket"></a>Öffnen eines Supporttickets
 Standardmäßig kann jedes Media Services-Konto auf bis zu 25 für das Codieren und bis zu 4 für das bedarfsgesteuerte Streaming reservierte Einheiten skaliert werden. Sie können einen höheren Grenzwert durch Öffnen eines Supporttickets anfordern.
 
-### Öffnen eines Supporttickets
+### <a name="open-a-support-ticket"></a>Öffnen eines Supporttickets
 Um ein Supportticket zu öffnen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie auf [Support erhalten](https://manage.windowsazure.com/?getsupport=true). Wenn Sie nicht angemeldet sind, werden Sie zur Eingabe Ihrer Anmeldeinformationen aufgefordert.
@@ -60,10 +64,15 @@ Um ein Supportticket zu öffnen, gehen Sie folgendermaßen vor:
 8. Befolgen Sie die Anweisungen auf der nächsten Seite, und geben Sie dann die Details zu Ihrem Problem an.
 9. Klicken Sie auf "Senden", um das Ticket zu öffnen.
 
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Jan17_HO2-->
+
+

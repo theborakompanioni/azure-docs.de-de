@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2016
+ms.date: 01/05/2017
 ms.author: seanmck;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d2766c64f4ffdcaf8e583493060116a244e89f3d
+ms.sourcegitcommit: 60d440c75d6352d5e65e0158e439df9db2315ecd
+ms.openlocfilehash: 70c393f1185844bb26ff1f89cb69cb06b51fc155
 
 
 ---
@@ -40,7 +40,7 @@ Standardmäßig entfernt Visual Studio vorhandene Instanzen Ihres Anwendungstyps
 #### <a name="to-set-the-application-debug-mode-property"></a>So legen Sie die „Anwendungsdebugmodus“-Eigenschaft fest
 1. Wählen Sie im Kontextmenü des Anwendungsprojekts **Eigenschaften** aus (oder drücken Sie **F4**).
 2. Legen Sie im Fenster **Eigenschaften** die Eigenschaft **Anwendungsdebugmodus** fest.
-   
+
     ![Festlegen der „Application Debug Mode“-Eigenschaft][debugmodeproperty]
 
 Dies sind die für **Anwendungsdebugmodus** verfügbaren Optionen.
@@ -55,8 +55,8 @@ Beim **Automatischen Upgrade** werden Daten beibehalten, wenn die Anwendungsupgr
 
 > [!NOTE]
 > Diese Eigenschaft ist erst ab Version 1.1 der Service Fabric-Tools für Visual Studio verfügbar. Verwenden Sie in Versionen vor 1.1 die Eigenschaft **Daten beim Start beibehalten** , um das gleiche Ergebnis zu erzielen. Die Option „Anwendung behalten“ wurde in Version 1.2 der Service Fabric-Tools für Visual Studio eingeführt.
-> 
-> 
+>
+>
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>Fügen Sie der Service Fabric-Anwendung einen Dienst hinzu.
 Sie können der Anwendung neue Dienste hinzufügen, um den Funktionsumfang der Anwendung zu erweitern.  Um sicherzustellen, dass der Dienst in das Anwendungspaket aufgenommen wird, fügen Sie den Dienst über das Menüelement **Neuer Fabric-Dienst** hinzu.
@@ -81,8 +81,8 @@ Einfache Clusterverwaltungsvorgänge können in Visual Studio mit dem Cloud-Expl
 
 > [!TIP]
 > Informationen zu komplexeren Clusterverwaltungsfunktionen finden Sie unter [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-> 
-> 
+>
+>
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
@@ -90,7 +90,7 @@ Einfache Clusterverwaltungsvorgänge können in Visual Studio mit dem Cloud-Expl
 * [Service Fabric-Anwendungsbereitstellung](service-fabric-deploy-remove-applications.md)
 * [Verwalten von Anwendungsparametern für mehrere Umgebungen](service-fabric-manage-multiple-environment-app-configuration.md)
 * [Debuggen einer Service Fabric-Anwendung](service-fabric-debugging-your-application.md)
-* [Visualisieren des Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
+* [Visualisieren des Clusters mit Service Fabric-Explorer](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
 [addserviceproject]:./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png
@@ -102,6 +102,6 @@ Einfache Clusterverwaltungsvorgänge können in Visual Studio mit dem Cloud-Expl
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

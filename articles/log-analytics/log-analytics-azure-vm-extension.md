@@ -1,12 +1,12 @@
 ---
 title: Verbinden von virtuellen Azure-Computern mit Log Analytics | Microsoft Docs
-description: Für Windows- und Linux-VMs sollte die Azure-VM-Erweiterung Log Analytics für erfasste Protokolle und Metriken installiert werden. Sie können das Azure-Portal oder PowerShell zum Installieren der VM-Erweiterung Log Analytics auf Azure-VMs verwenden.
+description: "Für Windows- und Linux-VMs sollte die Azure-VM-Erweiterung Log Analytics für erfasste Protokolle und Metriken installiert werden. Sie können das Azure-Portal oder PowerShell zum Installieren der VM-Erweiterung Log Analytics auf Azure-VMs verwenden."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: richrundmsft
 manager: jochan
-editor: ''
-
+editor: 
+ms.assetid: ca39e586-a6af-42fe-862e-80978a58d9b1
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: richrund
+translationtype: Human Translation
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
+
 
 ---
 # <a name="connect-azure-virtual-machines-to-log-analytics"></a>Verbinden von virtuellen Azure-Computern mit Log Analytics
@@ -24,7 +28,7 @@ Die einfachste Möglichkeit für die Installation des Log Analytics-Agents auf v
 Auf virtuellen Windows-Computern aktivieren Sie die VM-Erweiterung *Microsoft Monitoring Agent*.
 Auf virtuellen Linux-Computern aktivieren Sie die VM-Erweiterung *OMS-Agent für Linux*.
 
-Erfahren Sie mehr über [Azure-VM-Erweiterungen](../virtual-machines/virtual-machines-windows-extensions-features.md) und den [Linux-Agent](../virtual-machines/virtual-machines-linux-agent-user-guide.md).
+Erfahren Sie mehr über [Azure VM-Erweiterungen](../virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und den [Linux-Agent](../virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Wenn die Erfassung von Protokolldaten auf Agentbasis erfolgt, müssen Sie [Datenquellen in Log Analytics](log-analytics-data-sources.md) konfigurieren, um die zu erfassenden Protokolle und Metriken anzugeben.
 
@@ -117,7 +121,7 @@ Mit dem Azure Resource Manager können Sie eine einfache Vorlage (im JSON-Format
 
 Wenn Sie den Log Analytics-Agent in Ihre Resource Manager-Vorlage einschließen, können Sie sicherstellen, dass jeder virtuelle Computer zum Berichten an Ihren Log Analytics-Arbeitsbereich vorkonfiguriert wird.
 
-Weitere Informationen zu den Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
+Weitere Informationen zu den Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Im Folgenden finden Sie ein Beispiel für eine Resource Manager-Vorlage für die Bereitstellung eines virtuellen Computers, auf dem Windows mit installierter Microsoft Monitoring Agent-Erweiterung ausgeführt wird. Diese Vorlage ist eine typische VM-Vorlage mit folgenden Ergänzungen:
 
@@ -157,7 +161,7 @@ Im Folgenden finden Sie ein Beispiel für eine Resource Manager-Vorlage für die
     "workspaceName": {
       "type": "string",
       "metadata": {
-         "description": "OMD workspace name"
+         "description": "OMS workspace name"
       }
     },
     "windowsOSVersion": {
@@ -362,7 +366,7 @@ Wenn die VM-Agent-Erweiterung *Microsoft Monitoring Agent* nicht installiert ist
 1. Überprüfen Sie, ob der Azure-VM-Agent installiert ist und ordnungsgemäß funktioniert, indem Sie die Schritte unter [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) ausführen.
    * Sie können auch die Protokolldatei `C:\WindowsAzure\logs\WaAppAgent.log` des VM-Agents überprüfen.
    * Wenn das Protokoll nicht vorhanden ist, wurde der VM-Agent nicht installiert.
-     * [Installieren des Azure-VM-Agents auf klassischen VMs](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)
+     * [Installieren des Azure-VM-Agents auf klassischen VMs](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 2. Vergewissern Sie sich anhand der folgenden Schritte, dass die Taktaufgabe der Microsoft Monitoring Agent-Erweiterung ausgeführt wird:
    * Melden Sie sich beim virtuellen Computer an.
    * Öffnen Sie den Taskplaner, und suchen Sie die Aufgabe `update_azureoperationalinsight_agent_heartbeat`.
@@ -374,18 +378,18 @@ Wenn die VM-Agent-Erweiterung *Microsoft Monitoring Agent* nicht installiert ist
 6. Zeigen Sie den Status des Microsoft Monitoring Agents an, indem Sie Folgendes in einem PowerShell-Fenster mit erhöhten Rechten auf dem virtuellen Computer eingeben: `  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`.
 7. Überprüfen Sie die Setupprotokolldateien des Microsoft Monitoring Agents in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`.
 
-Weitere Informationen finden Sie unter [Behandeln von Problemen bei Windows-Erweiterungen](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md).
+Weitere Informationen finden Sie unter [Behandeln von Problemen bei Windows-Erweiterungen](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="troubleshooting-linux-virtual-machines"></a>Behandeln von Problemen bei virtuellen Linux-Computern
 Wenn die VM-Agent-Erweiterung *OMS-Agent für Linux* nicht installiert ist oder keine Berichte erstellt, können Sie die folgenden Schritte ausführen, um das Problem zu beheben.
 
 1. Wenn der Status der Erweiterung *Unbekannt* lautet, überprüfen Sie, ob der Azure-VM-Agent installiert ist und ordnungsgemäß funktioniert. Dazu überprüfen Sie die Protokolldatei des VM-Agents: `/var/log/waagent.log`.
    * Wenn das Protokoll nicht vorhanden ist, wurde der VM-Agent nicht installiert.
-   * [Installieren des Azure-VM-Agents auf Linux-VMs](../virtual-machines/virtual-machines-linux-agent-user-guide.md)
+   * [Installieren des Azure-VM-Agents auf Linux-VMs](../virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 2. Bei einem anderen fehlerhaften Status überprüfen Sie die Protokolldateien der VM-Erweiterung OMS-Agent für Linux in `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` und `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`.
 3. Wenn der Status der Erweiterung fehlerfrei ist, aber keine Daten hochgeladen werden, überprüfen Sie Protokolldateien des OMS-Agents für Linux in `/var/opt/microsoft/omsagent/log/omsagent.log`.
 
-Weitere Informationen finden Sie unter [Behandeln von Problemen bei Linux-Erweiterungen](../virtual-machines/virtual-machines-linux-extensions-troubleshoot.md).
+Weitere Informationen finden Sie unter [Behandeln von Problemen bei Linux-Erweiterungen](../virtual-machines/virtual-machines-linux-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren Sie [Datenquellen in Log Analytics](log-analytics-data-sources.md) , um die zu sammelnden Protokolle und Metriken anzugeben.
@@ -397,6 +401,9 @@ Für Computer, die nicht in Azure ausgeführt werden, können Sie den Log Analyt
 * [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md)
 * [Verbinden von Linux-Computern mit Log Analytics](log-analytics-linux-agents.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

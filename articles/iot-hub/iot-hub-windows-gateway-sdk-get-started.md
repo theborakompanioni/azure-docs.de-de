@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit dem IoT Hub Gateway SDK | Microsoft Docs
-description: "Exemplarische Vorgehensweise für das Azure IoT Gateway SDK unter Verwendung von Windows zum Veranschaulichen der grundlegenden Konzepte, die Sie beim Verwenden des Azure IoT Gateway SDK kennen sollten."
+title: Erste Schritte mit dem Azure IoT Gateway SDK (Windows) | Microsoft Docs
+description: Hier finden Sie Informationen zum Erstellen eines Gateways auf einem Windows-Computer und erfahren mehr zu wichtigen Konzepten im Azure IoT Gateway SDK wie Modulen und JSON-Konfigurationsdateien.
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 2d8b98fbd5345edd5dc6891df12f05eccd8e7ca8
-ms.openlocfilehash: 6f2fe4fd3442d97955519348416b35fe6f9075d1
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
 
 
 ---
-# <a name="azure-iot-gateway-sdk---get-started-using-windows"></a>Azure IoT-Gateway SDK – erste Schritte mit Windows
+# <a name="get-started-with-the-azure-iot-gateway-sdk-windows"></a>Erste Schritte mit dem Azure IoT Gateway SDK (Windows)
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>Erstellen des Beispiels
@@ -86,6 +86,6 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

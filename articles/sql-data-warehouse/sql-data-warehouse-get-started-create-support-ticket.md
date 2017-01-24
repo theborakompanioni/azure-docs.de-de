@@ -15,16 +15,20 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ede330870f451bd1e0ed6805fa937e74438fd644
+ms.sourcegitcommit: bd85b9eae0e1cb281116748edcad6643b1ec537f
+ms.openlocfilehash: 6ad20a246fce996e6a11ce6fa4715c0d734c4323
 
 
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse
 Bei Problemen mit Ihrer Instanz von SQL Data Warehouse ist es ratsam, ein Supportticket zu erstellen, damit Sie Hilfe von unserem Entwicklungsteam erhalten können.
 
+> [!NOTE] 
+> Seit dem 20.12.2016 funktioniert die Ressourcenintegritätsüberprüfung im Azure-Portal nicht mehr ordnungsgemäß. Wir arbeiten aktiv an der Behebung dieses Problems. 
+
+
 ## <a name="create-a-support-ticket"></a>Erstellen ein Supporttickets
-1. Öffnen Sie das [Azure-Portal][Azure-Portal].
+1. Öffnen Sie das [Azure-Portal][Azure portal].
 2. Klicken Sie auf der Startseite auf die Kachel **Hilfe und Support** .
    
     ![Hilfe und Support](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
@@ -38,7 +42,7 @@ Bei Problemen mit Ihrer Instanz von SQL Data Warehouse ist es ratsam, ein Suppor
     ![Typ der Anfrage](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
    
    > [!NOTE]
-   > Standardmäßig verfügt jeder SQL-Server (z.B. myserver.database.windows.net) über ein **DTU-Kontingent** in Höhe von 45.000. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein Supportticket erstellen und als Anfragetyp *Kontingent* wählen. Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten [DWUs][DWUs] mit 7,5. Wenn Sie beispielsweise zwei DW6000-Einheiten auf einer SQL Server-Instanz hosten möchten, sollten Sie ein DTU-Kontingent in Höhe von 90.000 anfordern.  Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. 
+   > Standardmäßig verfügt jeder SQL-Server (z.B. myserver.database.windows.net) über ein **DTU-Kontingent** in Höhe von 45.000. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein Supportticket erstellen und als Anfragetyp *Kontingent* wählen. Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten [DWUs][DWU] mit 7,5. Wenn Sie beispielsweise zwei DW6000-Einheiten auf einer SQL Server-Instanz hosten möchten, sollten Sie ein DTU-Kontingent in Höhe von 90.000 anfordern.  Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. 
    > 
    > 
 5. Wählen Sie das **Abonnement** aus, unter dem die Datenbank mit dem gemeldeten Problem gehostet wird.
@@ -47,13 +51,13 @@ Bei Problemen mit Ihrer Instanz von SQL Data Warehouse ist es ratsam, ein Suppor
 6. Wählen Sie **SQL Data Warehouse** als Ressource aus.
    
     ![Ressource](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
-7. Wählen Sie Ihren [Azure-Supportplan][Azure-Supportplan].
+7. Wählen Sie Ihren [Azure-Supportplan][Azure support plan].
    
    * **Verwaltung von Abrechnung, Kontingenten und Abonnements** ist in allen Supportstufen verfügbar.
-   * **Problemlösungssupport** wird in den Supportstufen [Entwickler][Entwickler], [Standard][Standard], [Professional Direct][Professional Direct] oder [Premier][Premier] bereitgestellt. Problemlösungssupport betrifft Probleme, die bei der Verwendung von Azure auftreten und bei denen Grund zu der Annahme besteht, dass das Problem durch Microsoft verursacht wurde.
+   * **Problemlösungssupport** wird in den Supportstufen [Entwickler][Developer], [Standard][Standard], [Professional Direct][Professional Direct] oder [Premier][Premier] bereitgestellt. Problemlösungssupport betrifft Probleme, die bei der Verwendung von Azure auftreten und bei denen Grund zu der Annahme besteht, dass das Problem durch Microsoft verursacht wurde.
    * **Anleitung für Entwickler** und **beratende Dienstleistungen** sind für die Supportstufen [Professional Direct][Professional Direct] und [Premier][Premier] verfügbar. 
      
-     Wenn Sie über den Supportplan „Premier“ verfügen, können Sie mit SQL Data Warehouse verbundene Probleme auch im [Microsoft Premier-Onlineportal][Microsoft Premier-Onlineportal] melden.  Weitere Informationen zu den unterschiedlichen Supportplänen, z.B. zu Umfang, Reaktionszeiten, Preisen usw., finden Sie auf der Seite mit den [Azure-Supportplänen][Azure-Supportplan].  Häufig gestellte Fragen zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support][Häufig gestellte Fragen zum Azure-Support].  
+     Wenn Sie über den Supportplan „Premier“ verfügen, können Sie Probleme im Zusammenhang mit SQL Data Warehouse auch im [Microsoft Premier-Onlineportal][Microsoft Premier online portal] melden.  Weitere Informationen zu den unterschiedlichen Supportplänen, z.B. zu Umfang, Reaktionszeiten, Preisen usw., finden Sie auf der Seite mit den [Azure-Supportplänen][Azure support plan].  Häufig gestellte Fragen zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support][Azure support FAQs].  
      
      ![Supportplan](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
 8. Wählen Sie **Problemtyp** und **-kategorie** aus.
@@ -73,7 +77,7 @@ Nachdem Sie die Supportanfrage übermittelt haben, nimmt das Azure-Supportteam K
 ![Status überprüfen](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
 
 ## <a name="other-resources"></a>Weitere Ressourcen
-Außerdem können Sie sich auch an der SQL Data Warehouse-Community unter [Stack Overflow][Stack Overflow] oder im [Azure SQL Data Warehouse-MSDN-Forum][Azure SQL Data Warehouse-MSDN-Forum] beteiligen.
+Außerdem können Sie sich an der SQL Data Warehouse-Community unter [Stack Overflow][Stack Overflow] oder im [Azure SQL Data Warehouse-MSDN-Forum][Azure SQL Data Warehouse MSDN forum] beteiligen.
 
 <!--Image references--> 
 
@@ -83,20 +87,20 @@ Außerdem können Sie sich auch an der SQL Data Warehouse-Community unter [Stack
 <!--MSDN references--> 
 
 <!--Other web references--> 
-[Azure-Portal]: https://portal.azure.com/
-[Azure-Supportplan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/  
-[Entwickler]: https://azure.microsoft.com/support/plans/developer/  
+[Azure portal]: https://portal.azure.com/
+[Azure support plan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/  
+[Developer]: https://azure.microsoft.com/support/plans/developer/  
 [Standard]: https://azure.microsoft.com/support/plans/standard/  
 [Professional Direct]: https://azure.microsoft.com/support/plans/prodirect/  
 [Premier]: https://azure.microsoft.com/support/plans/premier/  
-[Häufig gestellte Fragen zum Azure-Support]: https://azure.microsoft.com/support/faq/
-[Microsoft Premier-Onlineportal]: https://premier.microsoft.com/
+[Azure support FAQs]: https://azure.microsoft.com/support/faq/
+[Microsoft Premier online portal]: https://premier.microsoft.com/
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
-[Azure SQL Data Warehouse-MSDN-Forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
+[Azure SQL Data Warehouse MSDN forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

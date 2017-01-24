@@ -8,6 +8,7 @@ manager: jhubbard
 editor: v-romcal
 ms.assetid: b50d232a-4225-46ed-91e7-75288f55ee84
 ms.service: sql-database
+ms.custom: secure and protect
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -15,8 +16,8 @@ ms.workload: data-services
 ms.date: 07/10/2016
 ms.author: ronmat; ronitr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 95cfe24cee2ed852662da418cf7c1256007e420e
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: ed606037846bfc28ec95333660e42ac66a18d53d
 
 
 ---
@@ -34,7 +35,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 2. Navigieren Sie zum Konfigurationsblatt der SQL-Datenbank, die Sie überwachen möchten. Wählen Sie auf dem Blatt „Einstellungen“ die Option **Überwachung und Bedrohungserkennung**.
    
     ![Navigationsbereich][1]
-3. **Aktivieren Sie** auf dem Konfigurationsblatt für die **Überwachung und Bedrohungserkennung** die Überwachung. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
+3. **Aktivieren** Sie die Überwachung auf dem Blatt für die Konfiguration der **Überwachung und Bedrohungserkennung**. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
    
     ![Navigationsbereich][2]
 4. Aktivieren Sie **** die Bedrohungserkennung.
@@ -55,7 +56,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
    
     ![Navigationsbereich][6]
 4. Klicken Sie auf dem Blatt mit den Überwachungsdatensätzen auf **In Excel öffnen**, um eine vorkonfigurierte Excel-Vorlage zu öffnen, das Überwachungsprotokoll zu importieren und eine ausführlichere Analyse für die Zeit des verdächtigen Ereignisses durchzuführen.<br/>
-   **Hinweis:** Ab Excel 2010 werden Power Query und die Einstellung **Schnelles Kombinieren** benötigt.
+   **Hinweis:** Ab Excel 2010 werden Power Query und die Einstellung **Schnelles Kombinieren** benötigt.
    
     ![Navigationsbereich][7]
 5. So konfigurieren Sie die Einstellung **Schnelles Kombinieren**: Klicken Sie auf der Registerkarte **POWER QUERY** des Menübands auf **Optionen**, um das gleichnamige Dialogfeld anzuzeigen. Navigieren Sie zum Datenschutzabschnitt, und wählen Sie die zweite Option zum Ignorieren der Sicherheitsstufen und zur potenziellen Verbesserung der Leistung:
@@ -79,6 +80,6 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

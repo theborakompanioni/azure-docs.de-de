@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: 75c2b2a467a03b51519cad530bf3d03ed32c4300
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d5110a33e13802fd6e5e0f075c7d3ddd521a1ef9
 
 
 ---
@@ -119,7 +119,7 @@ Im Abschnitt "Benachrichtigung" können Sie grundlegende Einstellungen für Ihre
 ## <a name="content"></a>Inhalt
 Im Abschnitt "Inhalt" können Sie den Inhalt Ihrer Ankündigungen, Umfragen, Datenpushes und Kacheln (nur Windows Phone) ändern. Die Einstellung "Inhalt" von Pushkampagnen ist spezifisch für den Typ der Kampagne. 
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Dokumentation zur Benutzeroberfläche – Reichweite – Pushübertragung von Inhalten][Link 29]
 
 ![Reichweitenkampagne5][24]
@@ -135,7 +135,7 @@ Im Abschnitt "Zielgruppe" können Sie eine Standardliste von Elementen zum Besch
 * Übertragen Sie den Push nur an Ihre aktiven Benutzer (Kontrollkästchen "Nur Benutzer erfassen, die über systemeigenen Push erreicht werden können" und "Nur aktive Benutzer erfassen"), damit nur die Benutzer, die die App noch installiert haben und nutzen, durchsucht werden müssen.
   Nachdem die Zielgruppe definiert wurde, können Sie auf die Schaltfläche "Simulieren" klicken, um herauszufinden, wie viele Benutzer diesen Push empfangen. Dadurch wird die Anzahl bekannter Benutzer berechnet, die potenziell zu dieser Zielgruppe gehören (hierbei handelt es sich um eine Schätzung, die auf einer Zufallsstichprobe von Benutzern basiert). Denken Sie daran, dass Benutzer, die die Anwendung deinstalliert haben, ebenfalls Teil dieser Zielgruppe sind, aber nicht erreicht werden können.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ![Reichweitenkampagne6][25]
@@ -157,7 +157,7 @@ Sie können im Abschnitt "Zeitraum" festlegen, wann der Push gesendet werden sol
 > [!NOTE]
 > Kampagnen ohne Enddatum können Pushes lokal zwischenspeichern und sie weiter anzeigen, nachdem Sie Kampagnen manuell abgeschlossen haben. Um dieses Verhalten zu vermeiden, geben Sie eine spezifische Endzeit für Kampagnen an.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Reichweite – Vorgehensweisen – Zeitplanung][Link 3] 
 
 ![Reichweitenkampagne8][27]
@@ -171,7 +171,7 @@ Sie können im Abschnitt "Test" diesen Pushvorgang an Ihr eigenes Testgerät sen
 > [!NOTE]
 > Es werden keine serverseitigen Daten protokolliert, wenn Sie die Schaltfläche zum Testen von Pushvorgängen verwenden. Daten werden nur für reale Pushkampagnen protokolliert.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Dokumentation zur Benutzeroberfläche – Mein Konto][Link 14]
 
 ![Reichweitenkampagne9][28]
@@ -270,6 +270,6 @@ Sie können im Abschnitt "Test" diesen Pushvorgang an Ihr eigenes Testgerät sen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

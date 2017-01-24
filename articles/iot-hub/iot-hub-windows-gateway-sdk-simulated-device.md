@@ -1,12 +1,12 @@
 ---
-title: Simulieren eines Geräts mit dem Gateway SDK | Microsoft Docs
-description: Exemplarische Vorgehensweise für das Azure IoT Hub Gateway SDK unter Verwendung von Windows, um zu veranschaulichen, wie Telemetriedaten mithilfe des Azure IoT Hub Gateway SDK von einem simulierten Gerät gesendet werden.
+title: "Simulieren eines Geräts mit dem Azure IoT Gateway SDK (Windows) | Microsoft Docs"
+description: "Erfahren Sie, wie Sie das Azure IoT Gateway SDK unter Windows verwenden, um ein simuliertes Gerät zu erstellen, das Telemetriedaten über ein Gateway an eine IoT Hub-Instanz sendet."
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: chipalost
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 6a2aeda0-696a-4732-90e1-595d2e2fadc6
 ms.service: iot-hub
 ms.devlang: cpp
 ms.topic: article
@@ -14,17 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2016
 ms.author: andbuc
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 432fa33d0b7340e075270f4959217978e89b8c69
+
 
 ---
-# <a name="iot-gateway-sdk-(beta)-–-send-device-to-cloud-messages-with-a-simulated-device-using-windows"></a>IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Windows
+# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-simulated-device-windows"></a>Senden von D2C-Nachrichten mit einem simulierten Gerät mithilfe des Azure IoT Gateway SDKs (Windows)
 [!INCLUDE [iot-hub-gateway-sdk-simulated-selector](../../includes/iot-hub-gateway-sdk-simulated-selector.md)]
 
 ## <a name="build-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 Bevor Sie beginnen, müssen Sie Folgendes ausführen:
 
 * [Richten Sie eine Entwicklungsumgebung ein][lnk-setupdevbox], um mit dem SDK unter Windows arbeiten zu können.
-* [Erstellen Sie einen IoT Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Der Name des Hubs wird später in dieser exemplarischen Vorgehensweise benötigt. Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto][lnk-free-trial] erstellen.
-* Fügen Sie Ihrem IoT Hub zwei Geräte hinzu, und notieren Sie die IDs und Geräteschlüssel. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um Geräte zu dem im vorherigen Schritt erstellten IoT Hub hinzuzufügen und die zugehörigen Schlüssel abzurufen.
+* [Erstellen Sie einen IoT Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Der Name des Hubs wird später in dieser exemplarischen Vorgehensweise benötigt. Wenn Sie kein Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
+* Fügen Sie Ihrem IoT Hub zwei Geräte hinzu, und notieren Sie die IDs und Geräteschlüssel. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um Geräte zu dem im vorherigen Schritt erstellten IoT-Hub hinzuzufügen und die zugehörigen Schlüssel abzurufen.
 
 So erstellen Sie das Beispiel:
 
@@ -40,70 +44,90 @@ So führen Sie das Beispiel aus:
 * Das Modul **Mapping** ordnet die MAC-Adressen Ihrer simulierten Geräte den IoT Hub-Geräte-IDs zu. Stellen Sie sicher, dass die **deviceId**-Werte mit den IDs der beiden Geräte übereinstimmen, die Sie Ihrem IoT Hub hinzugefügt haben, und dass die **deviceKey**-Werte die Schlüssel der beiden Geräte enthalten.
 * Bei den Modulen **BLE1** und **BLE2** handelt es sich um die simulierten Geräte. Beachten Sie, dass die MAC-Adressen mit den Werten im Modul **Mapping** übereinstimmen.
 * Das Modul **Logger** protokolliert die Aktivitäten Ihres Gateways in einer Datei.
-* Bei den unten gezeigten **module path**-Werten wird davon ausgegangen, dass Sie das Gateway SDK-Repository in den Stammordner Ihres Laufwerks **C:** geklont haben. Wenn Sie das Repository an einen anderen Speicherort heruntergeladen haben, müssen Sie die **module path** -Werte entsprechend anpassen.
+* Bei den unten gezeigten **module path**-Werten wird davon ausgegangen, dass Sie das IoT Gateway SDK-Repository in den Stammordner Ihres Laufwerks **C:** geklont haben. Wenn Sie das Repository an einen anderen Speicherort heruntergeladen haben, müssen Sie die **module path** -Werte entsprechend anpassen.
 * Das Array **Links** unten in der JSON-Datei verbindet die Module **BLE1** und **BLE2** mit dem Modul **Mapping** und das Modul **Mapping** mit dem Modul **IoTHub**. Zusätzlich wird gewährleistet, dass alle Nachrichten vom Modul **Logger** protokolliert werden.
 
 ```
 {
     "modules" :
-    [ 
-        {
-            "module name" : "IoTHub",
-            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\iothub\\Debug\\iothub_hl.dll",
-            "args" : 
-            {
-                "IoTHubName" : "{Your IoT hub name}",
-                "IoTHubSuffix" : "azure-devices.net",
-                "Transport": "HTTP"
-            }
+    [
+      {
+        "name": "IotHub",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "..\\..\\..\\modules\\iothub\\Debug\\iothub.dll"
+          }
+          },
+          "args": {
+            "IoTHubName": "<<insert here IoTHubName>>",
+            "IoTHubSuffix": "<<insert here IoTHubSuffix>>",
+            "Transport": "HTTP"
+          }
         },
-        {
-            "module name" : "mapping",
-            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\identitymap\\Debug\\identity_map_hl.dll",
-            "args" : 
-            [
-                {
-                    "macAddress" : "01-01-01-01-01-01",
-                    "deviceId"   : "{Device ID 1}",
-                    "deviceKey"  : "{Device key 1}"
-                },
-                {
-                    "macAddress" : "02-02-02-02-02-02",
-                    "deviceId"   : "{Device ID 2}",
-                    "deviceKey"  : "{Device key 2}"
-                }
-            ]
-        },
-        {
-            "module name":"BLE1",
-            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\simulated_device\\Debug\\simulated_device_hl.dll",
-            "args":
+      {
+        "name": "mapping",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "..\\..\\..\\modules\\identitymap\\Debug\\identity_map.dll"
+          }
+          },
+          "args": [
             {
-                "macAddress" : "01-01-01-01-01-01"
-            }
-        },
-        {
-            "module name":"BLE2",
-            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\simulated_device\\Debug\\simulated_device_hl.dll",
-            "args":
+              "macAddress": "01:01:01:01:01:01",
+              "deviceId": "<<insert here deviceId>>",
+              "deviceKey": "<<insert here deviceKey>>"
+            },
             {
-                "macAddress" : "02-02-02-02-02-02"
+              "macAddress": "02:02:02:02:02:02",
+              "deviceId": "<<insert here deviceId>>",
+              "deviceKey": "<<insert here deviceKey>>"
             }
+          ]
         },
-        {
-            "module name":"Logger",
-            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\logger\\Debug\\logger_hl.dll",
-            "args":
-            {
-                "filename":"C:\\azure-iot-gateway-sdk\\deviceCloudUploadGatewaylog.log"
-            }
+      {
+        "name": "BLE1",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "..\\..\\..\\modules\\simulated_device\\Debug\\simulated_device.dll"
+          }
+          },
+          "args": {
+            "macAddress": "01:01:01:01:01:01"
+          }
+        },
+      {
+        "name": "BLE2",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "..\\..\\..\\modules\\simulated_device\\Debug\\simulated_device.dll"
+          }
+          },
+          "args": {
+            "macAddress": "02:02:02:02:02:02"
+          }
+        },
+      {
+        "name": "Logger",
+        "loader": {
+          "name": "native",
+          "entrypoint": {
+            "module.path": "..\\..\\..\\modules\\logger\\Debug\\logger.dll"
+          }
+        },
+        "args": {
+          "filename": "deviceCloudUploadGatewaylog.log"
         }
+      }
     ],
     "links" : [
         { "source" : "*", "sink" : "Logger" },
         { "source" : "BLE1", "sink" : "mapping" },
         { "source" : "BLE2", "sink" : "mapping" },
-        { "source" : "mapping", "sink" : "IoTHub" }
+        { "source" : "mapping", "sink" : "IotHub" }
     ]
 }
 ```
@@ -121,14 +145,14 @@ So führen Sie das Beispiel aus:
 3. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um die Nachrichten zu überwachen, die IoT Hub vom Gateway empfängt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie noch mehr über das Gateway SDK wissen und mit einigen Codebeispielen experimentieren möchten, sehen Sie sich die folgenden Tutorials und Ressourcen für Entwickler an:
+Wenn Sie noch mehr über das IoT Gateway SDK wissen und mit einigen Codebeispielen experimentieren möchten, sehen Sie sich die folgenden Tutorials und Ressourcen für Entwickler an:
 
-* [Senden von Device-to-Cloud-Nachrichten von einem echten Gerät mit dem Gateway-SDK][lnk-physical-device]
-* [Azure IoT-Gateway-SDK][lnk-gateway-sdk]
+* [IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem realen Gerät unter Linux][lnk-physical-device]
+* [Azure IoT Gateway SDK][lnk-gateway-sdk]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch][lnk-devguide]
+* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
@@ -142,6 +166,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-create-hub]: iot-hub-create-through-portal.md 
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO2-->
 
 

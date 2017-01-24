@@ -1,27 +1,32 @@
 ---
-title: Sicherheit für Ihr StorSimple-Gerät | Microsoft Docs
-description: Beschreibt Sicherheitskonventionen, Richtlinien und Überlegungen. Darüber hinaus wird erläutert, wie das StorSimple-Gerät sicher installiert und verwendet wird.
+title: "Sicherheit für Ihr StorSimple-Gerät | Microsoft Docs"
+description: "Beschreibt Sicherheitskonventionen, Richtlinien und Überlegungen. Darüber hinaus wird erläutert, wie das StorSimple-Gerät sicher installiert und verwendet wird."
 services: storsimple
-documentationcenter: ''
+documentationcenter: 
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: dae6d535-1ca2-4d2b-b221-6819043aa068
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2016
+ms.date: 11/16/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
+ms.openlocfilehash: 4dca50c6a0e6809876357edee8c6475796984c70
+
 
 ---
-# Sichere Installation und Verwendung des StorSimple-Geräts
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol "Sicherheitshinweis lesen"](./media/storsimple-safety/IC740885.png)**LESEN SIE DIE INFORMATIONEN ZUR SICHERHEIT UND INTEGRITÄT**
+# <a name="safely-install-and-operate-your-storsimple-device"></a>Sichere Installation und Verwendung des StorSimple-Geräts
+![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)
+ ![Symbol "Sicherheitshinweis lesen"](./media/storsimple-safety/IC740885.png) **LESEN SIE DIE INFORMATIONEN ZUR SICHERHEIT UND INTEGRITÄT**
 
 Lesen Sie alle Informationen zur Sicherheit und Integrität in diesem Artikel, die sich auf Ihr Microsoft Azure StorSimple-Gerät beziehen. Bewahren Sie für die künftige Verwendung alle gedruckten Handbücher auf, die im Lieferumfang des StorSimple-Geräts enthalten waren. Wenn die Anweisungen nicht befolgt werden und das Produkt nicht ordnungsgemäß eingerichtet, verwendet und gewartet wird, kann sich das Risiko von schwerwiegenden Verletzungen, Todesfällen oder Schäden am Gerät/an den Geräten erhöhen. Eine [herunterladbare Version dieses Handbuchs](http://www.microsoft.com/download/details.aspx?id=44233) ist ebenfalls verfügbar.
 
-## Konventionen für Sicherheitssymbole
+## <a name="safety-icon-conventions"></a>Konventionen für Sicherheitssymbole
 Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet werden müssen, wenn Sie Ihr Microsoft Azure StorSimple-Gerät einrichten und ausführen.
 
 | Symbol | Beschreibung |
@@ -34,10 +39,10 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 | ![Symbol "Schwergewicht"](./media/storsimple-safety/IC740883.png) **Schwergewicht** | |
 | ![Symbol "Keine durch Benutzer zu wartenden Teile"](./media/storsimple-safety/IC740879.png) **Keine durch Benutzer zu wartenden Teile** |Zugriff nur bei ausreichender Schulung. |
 | ![Symbol "Sicherheitshinweis lesen"](./media/storsimple-safety/IC740885.png)**Alle Anleitungen zuvor lesen** | |
-| ![Symbol "Kippgefahr"](./media/storsimple-safety/IC740886.png)**Kippgefahr** | |
+| ![Symbol "Kippgefahr"](./media/storsimple-safety/IC740886.png) **Kippgefahr** | |
 
-## Vorsichtsmaßnahmen bei der Handhabung
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png) ![Symbol "Schwergewicht"](./media/storsimple-safety/IC740883.png) **WARNUNG!**
+## <a name="handling-precautions"></a>Vorsichtsmaßnahmen bei der Handhabung
+![Symbol "Warnung"](./media/storsimple-safety/IC740879.png) ![Symbol "Schwergewicht"](./media/storsimple-safety/IC740883.png) **WARNUNG!** 
 
 So wird die Gefahr von Verletzungen verringert:
 
@@ -45,7 +50,7 @@ So wird die Gefahr von Verletzungen verringert:
 * Stellen Sie vor dem Verschieben des Gehäuses immer sicher, dass zwei Personen verfügbar sind, um das Gewicht zu tragen. Denken Sie daran: Wenn eine Person versucht, das Gewicht alleine zu heben, kann dies zu Verletzungen führen.
 * Heben Sie das Gehäuse nicht an den Griffen der Stromversorgungs- und Kühleinheiten (PCMs) auf der Rückseite der Einheit an. Diese sind nicht dafür ausgelegt, das Gewicht zu tragen.
 
-## Vorsichtsmaßnahmen bei der Verbindung
+## <a name="connection-precautions"></a>Vorsichtsmaßnahmen bei der Verbindung
 ![Symbol "Warnung"](./media/storsimple-safety/IC740879.png) ![Symbol "Stromschlag"](./media/storsimple-safety/IC740882.png) **WARNUNG!**
 
 So reduzieren Sie die Wahrscheinlichkeit, dass Verletzungen, Elektroschocks oder Tod eintreten:
@@ -73,7 +78,7 @@ Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu v
 * Achten Sie darauf, das Gerät auf einem Gestell zu platzieren, das eine vorder- bis hinterseitige Kühlung bietet.
 * Alle Plug-In-Module und leere Platinen sind Teil des Systemgehäuses. Sie dürfen nur entfernt werden, wenn sie sofort ersetzt werden können. Das System darf nicht ohne die vollständige Anzahl an Modulen oder Platinen ausgeführt werden.
 
-## Vorsichtsmaßnahmen beim Gestellsystem
+## <a name="rack-system-precautions"></a>Vorsichtsmaßnahmen beim Gestellsystem
 Wenn Sie das Gerät auf einem Gestellsystem montieren, müssen die folgenden Sicherheitsanforderungen berücksichtigt werden.
 
 ![Symbol "Warnung"](./media/storsimple-safety/IC740879.png) ![Symbol "Kippgefahr"](./media/storsimple-safety/IC740886.png) **WARNUNG!**
@@ -100,14 +105,14 @@ Für die ordnungsgemäße Kühlung des Gestellsystems:
 * Stellen Sie sicher, dass der Gestellaufbau die maximale vom Gehäuse erzeugte Umgebungstemperatur von 35 Grad Celsius berücksichtigt.
 * Das System wird mit einer Installation mit niedrigem Druck und hinterer Lüftung betrieben (der hintere Druck durch die Gestelltüren und -hindernisse darf 5 Pascal [0,5 mm auf der Wasserstandsanzeige] nicht überschreiben).
 
-## Vorsichtsmaßnahmen bei der Stromversorgungs- und Kühleinheit (PCM)
+## <a name="power-cooling-module-pcm-precautions"></a>Vorsichtsmaßnahmen bei der Stromversorgungs- und Kühleinheit (PCM)
 Das Gerät ist für den Betrieb mit zwei Kühleinheiten ausgelegt. Jede der Kühleinheiten verfügt über eine Stromversorgung und ein Doppelachsgebläse. In kritischem Zustand lässt das System das Versagen einer Stromzufuhr zu, während der normale Betrieb aufrecht erhalten wird. Zwei Kühleinheiten (und daher Stromzufuhren) müssen immer installiert sein. Ein einzelnes PCM bietet keine redundante Stromversorgung. Aus diesem Grund kann der Ausfall von nur einem PCM zu Ausfallzeiten und Datenverlusten führen.
 
 ![Symbol "Warnung"](./media/storsimple-safety/IC740879.png) ![Symbol "Stromschlag"](./media/storsimple-safety/IC740882.png) **WARNUNG!**
 
 So reduzieren Sie die Wahrscheinlichkeit, dass Verletzungen, Elektroschocks oder Tod eintreten:
 
-* Entfernen Sie nicht die Abdeckungen vom PCM. Innen besteht die Gefahr von Elektroschocks. Um ein PCM zurückzugeben und Ersatz zu erhalten, [wenden Sie sich an den Microsoft-Support](https://msdn.microsoft.com/library/azure/dn757750.aspx).
+* Entfernen Sie nicht die Abdeckungen vom PCM. Innen besteht die Gefahr von Elektroschocks. Um ein PCM zurückzugeben und Ersatz zu erhalten, [wenden Sie sich an den Microsoft-Support](storsimple-contact-microsoft-support.md).
 
 ![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
@@ -116,7 +121,7 @@ Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu v
 * Ersetzen Sie das fehlerhafte PCM innerhalb von 24 Stunden. Nach dem Entfernen eines PCMs zum Austausch muss der Ersatz innerhalb von 10 Minuten nach dem Entfernen installiert werden.
 * Ein PCM kann nicht entfernt werden, sofern kein Ersatz sofort installiert werden kann. Das Gehäuse darf nicht ohne alle an der richtigen Stelle vorhandenen Module betrieben werden.
 
-## Vorsichtsmaßnahmen bei der elektrostatischen Entladung (ESD)
+## <a name="electrostatic-discharge-esd-precautions"></a>Vorsichtsmaßnahmen bei der elektrostatischen Entladung (ESD)
 ![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
 Beachten Sie die folgenden, auf ESD bezogenen Vorsichtsmaßnahmen.
@@ -126,7 +131,7 @@ Beachten Sie die folgenden, auf ESD bezogenen Vorsichtsmaßnahmen.
 * Vermeiden Sie den Kontakt mit der Rückwandplatinenkomponenten und Modulverbindungen.
 * ESD-Schäden werden nicht von der Gewährleistung abgedeckt.
 
-## Vorsichtsmaßnahmen bei der Batterieentsorgung
+## <a name="battery-disposal-precautions"></a>Vorsichtsmaßnahmen bei der Batterieentsorgung
 Das Netzteil verwendet eine speziellen Batterie, um den Inhalt des Arbeitsspeichers während temporärer, kurzfristiger Stromausfälle zu schützen. Die Batterie ist im PCM eingesetzt. Beachten Sie folgende Informationen zum Akku.
 
 ![Symbol "Warnung"](./media/storsimple-safety/IC740879.png) **WARNUNG!**
@@ -143,8 +148,13 @@ Beim Versand oder bei anderweitiger Beförderung der Batterien in der Luft befol
 
 Nachdem Sie diese Sicherheitshinweise gelesen haben, ist der nächste Schritt, das Gerät zu entpacken, aufzustellen und zu an den Strom anzuschließen.
 
-## Nächste Schritte
-* Wenn es sich um ein 8100-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md).
-* Wenn es sich um ein 8600-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
+## <a name="next-steps"></a>Nächste Schritte
+* Wenn es sich um ein 8100-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md).
+* Wenn es sich um ein 8600-Gerät handelt, navigieren Sie zu [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

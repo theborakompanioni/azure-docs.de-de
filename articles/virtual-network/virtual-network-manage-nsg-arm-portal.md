@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 60343b409c734bcc9bb50d6216ff2295aede783b
-ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
+ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
+ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
 
 
 ---
@@ -27,13 +27,13 @@ ms.openlocfilehash: f4f56614bab80849820c31127b190953e2ef8b87
 > * [Portal](virtual-network-manage-nsg-arm-portal.md)
 > * [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 > * [Azure-CLI](virtual-network-manage-nsg-arm-cli.md)
-> 
+>
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des klassischen Bereitstellungsmodells empfohlen wird.
-> 
+>
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
@@ -68,7 +68,7 @@ Führen Sie die folgenden Schritte aus, um die Liste der NSGs in der Ressourceng
 
 ### <a name="list-all-rules-for-an-nsg"></a>Auflisten aller Regeln für eine NSG
 
-Führen Sie die folgenden Schritte aus, um die Regeln für eine NSG namens **NSG-FrontEnd** anzuzeigen: 
+Führen Sie die folgenden Schritte aus, um die Regeln für eine NSG namens **NSG-FrontEnd** anzuzeigen:
 
 1. Klicken Sie auf dem Blatt **Netzwerksicherheitsgruppen** oder auf dem oben gezeigten Blatt **Ressourcen** auf **NSG-FrontEnd**.
 
@@ -84,7 +84,7 @@ Führen Sie die folgenden Schritte aus, um die Regeln für eine NSG namens **NSG
 
     > [!NOTE]
     > Um Standardregeln anzuzeigen, klicken Sie auf das Symbol **Standardregeln** am oberen Rand des Blatts, auf dem die Regeln angezeigt werden.
-    > 
+    >
 
 ### <a name="view-nsgs-associations"></a>Anzeigen von NSG-Zuordnungen
 
@@ -182,7 +182,7 @@ Führen Sie die folgenden Schritte aus, um die **NSG-FrontEnd**-NSG erneut dem *
 
 > [!NOTE]
 > Sie können auch vom Blatt **Einstellungen** der NSG aus eine NSG einem Subnetz zuordnen.
-> 
+>
 
 ## <a name="delete-an-nsg"></a>Löschen einer NSG
 Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Führen Sie die folgenden Schritte durch, um eine NSG zu löschen:
@@ -195,13 +195,13 @@ Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Fü
 6. Wenn Subnetze aufgeführt sind, klicken Sie auf das Subnetz, und führen Sie die Schritte 2 und 3 in [Aufheben der Zuordnung einer NSG zu einem Subnetz](#Dissociate-an-NSG-from-a-subnet)aus.
 7. Führen Sie einen Bildlauf nach links zum **NSG-FrontEnd**-Blatt aus, und klicken Sie anschließen auf **Löschen** > **Ja**.
 
-    [Azure-Portal – NSGs](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
+    ![Azure-Portal – NSGs](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Aktivieren der Protokollierung](virtual-network-nsg-manage-log.md) für NSGs.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

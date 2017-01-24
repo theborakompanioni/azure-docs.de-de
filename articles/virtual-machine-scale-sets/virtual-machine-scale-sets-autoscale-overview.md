@@ -1,20 +1,24 @@
 ---
-title: Automatische Skalierung und Skalierungsgruppen für virtuelle Computer | Microsoft Docs
-description: Hier erfahren Sie, wie Sie virtuelle Computer in einer Skalierungsgruppe mithilfe der Diagnose und mit Ressourcen für die automatische Skalierung automatisch skalieren.
+title: "Automatische Skalierung und Skalierungsgruppen für virtuelle Computer | Microsoft Docs"
+description: "Hier erfahren Sie, wie Sie virtuelle Computer in einer Skalierungsgruppe mithilfe der Diagnose und mit Ressourcen für die automatische Skalierung automatisch skalieren."
 services: virtual-machine-scale-sets
-documentationcenter: ''
-author: davidmu1
+documentationcenter: 
+author: Thraka
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: davidmu
+ms.date: 10/18/2016
+ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: 090374b057a62251e40ccc41f60f61e84e08a03f
+ms.openlocfilehash: ff137ead5e3490a129b36c959040d3571bff7669
+
 
 ---
 # <a name="automatic-scaling-and-virtual-machine-scale-sets"></a>Automatische Skalierung und Skalierungsgruppen für virtuelle Computer
@@ -22,10 +26,10 @@ Bei der automatischen Skalierung virtueller Computer in einer Skalierungsgruppe 
 
 Die automatische Skalierung ist ein automatisierter Prozess, der den Verwaltungsaufwand erleichtert. Dank des geringeren Aufwands müssen Sie nicht ständig die Systemleistung überwachen oder Entscheidungen für die Ressourcenverwaltung treffen. Die Skalierung ist ein elastischer Prozess. Bei zunehmender Auslastung können weitere Ressourcen hinzugefügt und bei geringerem Bedarf wieder entfernt werden, um die Kosten gering zu halten, ohne die Leistung zu beeinträchtigen.
 
-Richten Sie die automatische Skalierung für eine Skalierungsgruppe mit einer Azure Resource Manager-Vorlage, Azure PowerShell oder der Azure-CLI ein.
+Richten Sie die automatische Skalierung für eine Skalierungsgruppe mit einer Azure Resource Manager-Vorlage, Azure PowerShell, Azure-CLI oder im Azure-Portal ein.
 
 ## <a name="set-up-scaling-by-using-resource-manager-templates"></a>Einrichten der Skalierung mithilfe von Resource Manager-Vorlagen
-Anstatt jede Ressource Ihrer Anwendung gesondert bereitzustellen und zu verwalten, können Sie eine Vorlage verwenden, die alle Ressourcen in einem einzelnen koordinierten Vorgang bereitstellt. In der Vorlage werden Anwendungsressource definiert und Bereitstellungsparameter für verschiedene Umgebungen festgelegt. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
+Anstatt jede Ressource Ihrer Anwendung gesondert bereitzustellen und zu verwalten, können Sie eine Vorlage verwenden, die alle Ressourcen in einem einzelnen koordinierten Vorgang bereitstellt. In der Vorlage werden Anwendungsressource definiert und Bereitstellungsparameter für verschiedene Umgebungen festgelegt. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Legen Sie in der Vorlage das Kapazitätselement fest:
 
@@ -159,7 +163,7 @@ Im obigen Beispiel werden zwei Regeln erstellt, um Aktionen für die automatisch
 * **metricResourceUri** : Der Ressourcenbezeichner der VM-Skalierungsgruppe. Dieser Bezeichner enthält den Namen der Ressourcengruppe, den Namen des Ressourcenanbieters und den Namen der zu skalierenden Skalierungsgruppe.
 * **timeGrain** : Die Granularität der erfassten Metriken. Im vorherigen Beispiel werden Daten in einem Intervall von einer Minute erfasst. Dieser Wert wird zusammen mit „timeWindow“ verwendet.
 * **statistic** : Bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden sollen. Mögliche Werte sind: Average, Min, Max.
-* **timeWindow** : Der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
+* **timeWindow** : Der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
 * **timeAggregation** : Bestimmt, wie die gesammelten Daten im Laufe der Zeit kombiniert werden sollen. Der Standardwert ist "Average". Mögliche Werte sind: Average, Minimum, Maximum, Last, Total, Count.
 * **operator** : Der Operator, der zum Vergleichen der Metrikdaten und des Schwellenwerts verwendet wird. Mögliche Werte sind: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
 * **threshold** : Der Wert, der die Skalierungsaktion auslöst. Achten Sie auf eine ausreichende Differenz zwischen den Schwellenwerten für das horizontale Hochskalieren und für das horizontale Herunterskalieren. Ist beides auf den gleichen Wert festgelegt, erwartet das System kontinuierlich eine Veränderung und kann daher keine Skalierungsaktion implementieren. Wenn Sie also beispielsweise beide Werte wie im vorherigen Beispiel auf 600 Threads festlegen, funktioniert die Skalierung nicht.
@@ -193,14 +197,17 @@ Der Skalierungsgruppe wird ein virtueller Computer hinzugefügt:
 Wenn die durchschnittliche Threadanzahl nach einer Abkühlperiode von fünf Minuten noch immer größer ist als 600, wird der Gruppe ein weiterer Computer hinzugefügt. Wenn die durchschnittliche Threadanzahl kleiner als 550 bleibt, wird die Kapazität der Skalierungsgruppe um den Wert 1 verringert, und ein Computer wird aus der Gruppe entfernt.
 
 ## <a name="set-up-scaling-using-azure-powershell"></a>Einrichten der Skalierung mithilfe von Azure PowerShell
-Beispiele für die Einrichtung der automatischen Skalierung mithilfe von PowerShell finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md).
+Beispiele für die Einrichtung der automatischen Skalierung mithilfe von PowerShell finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md).
 
 ## <a name="set-up-scaling-using-azure-cli"></a>Einrichten der Skalierung mithilfe der Azure-Befehlszeilenschnittstelle
-Beispiele für die Einrichtung der automatischen Skalierung mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure Insights – Schnellstartbeispiele für plattformübergreifende Befehlszeilenschnittstelle](../azure-portal/insights-cli-samples.md).
+Beispiele für die Einrichtung der automatischen Skalierung mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure Monitor – Schnellstartbeispiele für plattformübergreifende Befehlszeilenschnittstelle](../monitoring-and-diagnostics/insights-cli-samples.md).
+
+## <a name="set-up-scaling-using-the-azure-portal"></a>Einrichten der Skalierung im Azure-Portal
+Ein Beispiel der Einrichtung der automatischen Skalierung im Azure-Portal finden Sie unter [Erstellen einer VM-Skalierungsgruppe mit dem Azure-Portal](virtual-machine-scale-sets-portal-create.md).
 
 ## <a name="investigate-scaling-actions"></a>Untersuchen von Skalierungsaktionen
-* [Azure-Portal]() : Das Portal liefert aktuell eine begrenzte Menge an Informationen.
-* [Azure-Ressourcen-Explorer]() : Dieses Tool eignet sich perfekt zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe. Über den folgenden Pfad gelangen Sie zur Instanzansicht für die von Ihnen erstellte Skalierungsgruppe: Abonnements > {Ihr Abonnement} > resourceGroups > {Ihre Ressourcengruppe} > Anbieter > Microsoft.Compute > virtualMachineScaleSets > {Ihre Skalierungsgruppe} > virtualMachines
+* Azure-Portal: Das Portal liefert aktuell eine begrenzte Menge an Informationen.
+* Azure-Ressourcen-Explorer: Dieses Tool eignet sich am besten zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe. Über den folgenden Pfad gelangen Sie zur Instanzansicht für die von Ihnen erstellte Skalierungsgruppe: Abonnements > {Ihr Abonnement} > resourceGroups > {Ihre Ressourcengruppe} > Anbieter > Microsoft.Compute > virtualMachineScaleSets > {Ihre Skalierungsgruppe} > virtualMachines
 * Azure PowerShell: Verwenden Sie den folgenden Befehl, um Informationen zu erhalten:
   
         Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
@@ -209,11 +216,14 @@ Beispiele für die Einrichtung der automatischen Skalierung mithilfe der Azure-B
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-autoscale.md) finden Sie ein Beispiel für die Erstellung einer Skalierungsgruppe mit automatischer Skalierung.
-* Beispiele für Überwachungsfeatures von Azure Insights finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md)
-* Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-autoscale-to-webhook-email.md).
-* Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights finden Sie [hier](../azure-portal/insights-auditlog-to-webhook-email.md)
+* Beispiele für Überwachungsfeatures von Azure Monitor finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md)
+* Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
+* Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor finden Sie [hier](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
 * Erfahren Sie mehr über [erweiterte Szenarien für die automatische Skalierung](virtual-machine-scale-sets-advanced-autoscale.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

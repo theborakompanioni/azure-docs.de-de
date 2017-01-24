@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 15654731e0658532c52e67c0119b07f7e7ecc5e2
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 70ccb773b70f1b58f039ea5f4aca488d91fa3dad
 
 
 ---
@@ -219,7 +219,7 @@ Richten Sie ein Azure-Netzwerk ein, damit die virtuellen Azure-Computer nach dem
 [Erfahren Sie mehr](../virtual-network/virtual-networks-overview.md) über Azure-Netzwerke.
 
 > [!NOTE]
-> Für Netzwerke, die für die Site Recovery-Bereitstellung verwendet werden, wird die [Migration von Netzwerken](../resource-group-move-resources.md) zwischen Ressourcengruppen im selben Abonnement oder zwischen verschiedenen Abonnements nicht unterstützt.
+> Für Netzwerke, die für die Site Recovery-Bereitstellung verwendet werden, wird die [Migration von Netzwerken](../azure-resource-manager/resource-group-move-resources.md) zwischen Ressourcengruppen im selben Abonnement oder zwischen verschiedenen Abonnements nicht unterstützt.
 >
 >
 
@@ -249,7 +249,8 @@ Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die fo
 >
 >
 
-[!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
+
+>[!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
 
 
 1. Laden Sie auf der Seite **Schnellstart** die einheitliche Installationsdatei auf den Server herunter.
@@ -507,7 +508,7 @@ Nach dem Ausführen des Assistenten können Sie die IP-Adresse des Verwaltungsse
 
 **Sie können die Installation auch über die Befehlszeile ausführen**:
 
-1. Kopieren Sie die Passphrase aus „C:\Program Files (x86)\InMage Systems\private\connection“ auf dem Verwaltungsserver, und speichern Sie sie in „passphrase.txt“ auf dem Verwaltungsserver. Führen Sie anschließend die aufgeführten Befehle aus. In unserem Beispiel wird für den Verwaltungsserver die IP-Adresse 104.40.75.37 verwendet, und der HTTPS-Port muss 443 sein:
+Kopieren Sie die Passphrase aus „C:\Program Files (x86)\InMage Systems\private\connection“ auf dem Verwaltungsserver, und speichern Sie sie in „passphrase.txt“ auf dem Verwaltungsserver. Führen Sie anschließend die aufgeführten Befehle aus. In unserem Beispiel wird für den Verwaltungsserver die IP-Adresse 104.40.75.37 verwendet, und der HTTPS-Port muss 443 sein:
 
 So installieren Sie den Dienst auf einem Produktionsserver:
 
@@ -544,7 +545,8 @@ So fügen Sie Computer einer Schutzgruppe hinzu:
 4. Wählen Sie unter **Zielressourcen angeben** das Speicherkonto aus, das für die Replikation verwendet werden soll, und wählen Sie aus, ob die Einstellungen für alle Workloads verwendet werden sollen. Beachten Sie, dass Premium-Speicherkonten derzeit nicht unterstützt werden.
 
    > [!NOTE]
-   > 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.                           2. [Die Migration von Speicherkonten](../resource-group-move-resources.md) zwischen Ressourcengruppen im selben Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
+   > 1. Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.                           
+   > 2. [Die Migration von Speicherkonten](../azure-resource-manager/resource-group-move-resources.md) zwischen Ressourcengruppen im gleichen Abonnement oder zwischen verschiedenen Abonnements wird für Speicherkonten nicht unterstützt, die für die Site Recovery-Bereitstellung verwendet werden.
    >
    >
 
@@ -720,6 +722,6 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 
