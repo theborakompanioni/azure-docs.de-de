@@ -10,11 +10,11 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3f2a2b6c82c6c931261036ae1fba733b46a074dc
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
 
 
 ---
@@ -39,7 +39,7 @@ Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute
 | Typ | Beschreibung |
 | --- | --- |
 | *Edm.String* |Text, der optional für die Volltextsuche (Worttrennung, Wortstammerkennung usw.) mit einem Token versehen werden kann |
-| *Collection(Edm.String)* |Eine Liste von Zeichenfolgen, die für die Volltextsuche mit einem Token versehen werden können. Für die Anzahl der Elemente in einer Sammlung gibt es keine Obergrenze, allerdings gilt die Obergrenze  für die Größe der Nutzlast von 16 MB auch für Sammlungen. |
+| *Collection(Edm.String)* |Eine Liste von Zeichenfolgen, die für die Volltextsuche mit einem Token versehen werden können. Für die Anzahl der Elemente in einer Sammlung gibt es keine Obergrenze, allerdings gilt die Obergrenze für die Größe der Nutzlast von 16 MB auch für Sammlungen. |
 | *Edm.Boolean* |Enthält TRUE/FALSE-Werte |
 | *Edm.Int32* |32-Bit-Ganzzahlwerte |
 | *Edm.Int64* |64-Bit-Ganzzahlwerte |
@@ -47,7 +47,7 @@ Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute
 | *Edm.DateTimeOffset* |Datums-/Uhrzeitwerte im OData V4-Format (z. B. `yyyy-MM-ddTHH:mm:ss.fffZ` oder `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`) |
 | *Edm.GeographyPoint* |Ein Punkt, der einen weltweiten geografischen Standort darstellt |
 
-Hier finden Sie ausführlichere Informationen zu den von Azure Search [unterstützten Datentypen auf MSDN](https://msdn.microsoft.com/library/azure/dn798938.aspx).
+Ausführlichere Informationen zu den von Azure Search unterstützten Datentypen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="field-attributes"></a>Feldattribute
 | Attribut | Beschreibung |
@@ -59,16 +59,16 @@ Hier finden Sie ausführlichere Informationen zu den von Azure Search [unterstü
 | *Facettierbar* |Ermöglicht die Verwendung eines Felds in einer [Facettennavigationsstruktur](search-faceted-navigation.md) für benutzerdefiniertes Filtern. Repetitive Werte, mit denen sich mehrere Dokumente zu einer Gruppe zusammenfassen lassen (etwa mehrere Dokumente der gleichen Marken- oder Dienstleistungskategorie), sind in der Regel am besten für die Verwendung als Facetten geeignet. |
 | *Durchsuchbar* |Markiert das Feld als in die Volltextsuche einbeziehbar. |
 
-Hier finden Sie ausführlichere Informationen zu den von [Indexattribute von Azure Search auf MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx).
+Ausführlichere Informationen zu den Indexattributen von Azure Search finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
 ## <a name="guidance-for-defining-an-index-schema"></a>Anleitung zum Definieren eines Indexschemas
-Nehmen Sie sich beim Entwerfen Ihres Indexes in der Planungsphase genügend Zeit, um jede Entscheidung sorgfältig zu durchdenken. Berücksichtigen Sie beim Gestalten des Indexes die Benutzerfreundlichkeit und die geschäftlichen Anforderungen, da jedem Feld die [richtigen Attribute](https://msdn.microsoft.com/library/azure/dn798941.aspx)zugewiesen sein müssen. Das Ändern eines Indexes nach seiner Bereitstellung erfordert dessen Neuerstellung und das erneute Laden der Daten.
+Nehmen Sie sich beim Entwerfen Ihres Indexes in der Planungsphase genügend Zeit, um jede Entscheidung sorgfältig zu durchdenken. Berücksichtigen Sie beim Gestalten des Indexes die Benutzerfreundlichkeit und die geschäftlichen Anforderungen, da jedem Feld die [richtigen Attribute](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zugewiesen sein müssen. Das Ändern eines Indexes nach seiner Bereitstellung erfordert dessen Neuerstellung und das erneute Laden der Daten.
 
 Wenn sich die Datenspeicheranforderungen mit der Zeit ändern, können Sie die Kapazität erhöhen oder verringern, indem Sie Partitionen hinzufügen oder entfernen. Weitere Informationen finden Sie unter [Verwalten Ihres Suchdiensts in Azure](search-manage.md) oder [Grenzwerte für Dienste](search-limits-quotas-capacity.md).
 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

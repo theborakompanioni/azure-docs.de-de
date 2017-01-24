@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 80b452bd96e3a328899ed455b71cf68da8bfde54
-ms.openlocfilehash: b411a31b1e972f3a614735ef53d593f9f8f442cd
+ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
+ms.openlocfilehash: 0bf0f3b64319a42a3b693f64ae705756b10be64e
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: b411a31b1e972f3a614735ef53d593f9f8f442cd
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Bevor Sie mit Azure-Ressourcen arbeiten, sollten Sie wissen, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: die Bereitstellung mit dem Azure Resource Manager und die klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../resource-manager-deployment-model.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Klicken Sie zum Anzeigen der Dokumentation für verschiedene Tools auf eine Option oben in diesem Artikel. Dieser Artikel gilt für das klassische Bereitstellungsmodell.
+> Bevor Sie mit Azure-Ressourcen arbeiten, sollten Sie wissen, dass Azure derzeit über zwei Bereitstellungsmodelle verfügt: die Bereitstellung mit dem Azure Resource Manager und die klassische Bereitstellung. Stellen Sie sicher, dass Sie die [Bereitstellungsmodelle und -tools](../azure-resource-manager/resource-manager-deployment-model.md) verstanden haben, bevor Sie mit Azure-Ressouren arbeiten. Klicken Sie zum Anzeigen der Dokumentation für verschiedene Tools auf eine Option oben in diesem Artikel. Dieser Artikel gilt für das klassische Bereitstellungsmodell.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
@@ -94,7 +94,7 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz e
     -Label "Route table for back end subnet"
     ```
 
-2. Führen Sie den Befehl aus, um in der Routingtabelle eine Route zu erstellen, die sämtlichen an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet:
+2. Führen Sie den folgenden Befehl aus, um in der Routingtabelle eine Route zu erstellen, die sämtlichen an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet:
 
     ```powershell
     Get-AzureRouteTable UDR-BackEnd `
@@ -134,6 +134,6 @@ Führen Sie zum Aktivieren der IP-Weiterleitung auf dem virtuellen Computer „F
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

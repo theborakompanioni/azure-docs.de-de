@@ -1,12 +1,12 @@
 ---
 title: Konfigurieren einer Verbindung eines Azure Search-Indexers mit SQL Server auf einer Azure-VM | Microsoft Docs
-description: Aktivieren Sie verschlüsselte Verbindungen, und konfigurieren Sie die Firewall für Verbindungen mit SQL Server auf einem virtuellen Azure-Computer (VM) über einen Azure Search-Indexer.
+description: "Aktivieren Sie verschlüsselte Verbindungen, und konfigurieren Sie die Firewall für Verbindungen mit SQL Server auf einem virtuellen Azure-Computer (VM) über einen Azure Search-Indexer."
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: jack4it
 manager: pablocas
-editor: ''
-
+editor: 
+ms.assetid: 46e42e0e-c8de-4fec-b11a-ed132db7e7bc
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
@@ -14,10 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/26/2016
 ms.author: jackma
+translationtype: Human Translation
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 2150735fbf1e1438feeef70f0ea92ed041d0cd24
+
 
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurieren einer Verbindung eines Azure Search-Indexers mit SQL Server auf einer Azure-VM
-Wie in [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md#frequently-asked-questions) erläutert, wird das Erstellen von Indexern für **SQL Server auf Azure-VMs** (oder kurz **SQL Azure-VMs**) von Azure Search unterstützt. Zunächst müssen aber einige sicherheitsbezogene Voraussetzungen erfüllt werden. 
+Wie in [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#frequently-asked-questions) erläutert, wird das Erstellen von Indexern für **SQL Server auf Azure-VMs** (oder kurz **SQL Azure-VMs**) von Azure Search unterstützt. Zunächst müssen aber einige sicherheitsbezogene Voraussetzungen erfüllt werden. 
 
 **Aufgabendauer**: Ca. 30 Minuten, vorausgesetzt, Sie haben auf der VM bereits ein Zertifikat installiert.
 
@@ -46,12 +50,12 @@ Für Azure Search ist für alle Indexeranforderungen über eine öffentliche Int
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurieren der SQL Server-Konnektivität in der VM
 Nachdem Sie die für Azure Search erforderliche verschlüsselte Verbindung eingerichtet haben, müssen noch weitere Konfigurationsschritte für SQL Server auf Azure-VMs ausgeführt werden. Falls dies noch nicht erfolgt ist, ist der nächste Schritt das Abschließen der Konfiguration mit einem dieser Artikel:
 
-* Informationen für eine **Resource Manager** -VM finden unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](../virtual-machines/virtual-machines-windows-sql-connect.md). 
-* Informationen für eine **klassische** VM finden unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)](../virtual-machines/virtual-machines-windows-classic-sql-connect.md).
+* Informationen für eine **Resource Manager** -VM finden unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
+* Informationen für eine **klassische** VM finden unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)](../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md).
 
 Sehen Sie sich in den Artikeln vor allem jeweils den Abschnitt zum „Verbinden über das Internet“ an.
 
-## <a name="configure-the-network-security-group-(nsg)"></a>Konfigurieren der Netzwerksicherheitsgruppe (NSG)
+## <a name="configure-the-network-security-group-nsg"></a>Konfigurieren der Netzwerksicherheitsgruppe (NSG)
 Es ist nicht ungewöhnlich, die NSG und den entsprechenden Azure-Endpunkt oder die Zugriffssteuerungsliste (Access Control List, ACL) zu konfigurieren, um Ihre Azure-VM für andere Parteien zugänglich zu machen. Wahrscheinlich haben Sie diese Konfiguration bereits durchgeführt, damit Ihre eigene Anwendungslogik die Verbindung mit Ihrer SQL Azure-VM herstellen kann. Für eine Azure Search-Verbindung mit Ihrer SQL Azure-VM ist es nicht anders. 
 
 Die folgenden Links führen zu Anleitungen zur NSG-Konfiguration für VM-Bereitstellungen. Verwenden Sie diese Anleitungen, um für einen Azure Search-Endpunkt basierend auf seiner IP-Adresse eine Zugriffssteuerungsliste einzurichten.
@@ -82,8 +86,11 @@ Der dritte mögliche (wenn auch nicht besonders sichere) Ansatz besteht darin, d
 Wenn Sie zum Erstellen eines Indexers das Azure-Portal verwenden, benötigt die Logik des Azure Search-Portals auch während der Erstellung Zugriff auf Ihre SQL Azure-VM. Die IP-Adressen des Azure Search-Portals ermitteln Sie durch Anpingen von `stamp2.search.ext.azure.com`.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Da die Konfiguration nun abgeschlossen ist, können Sie jetzt eine SQL Server-Instanz auf Ihrer Azure-VM als Datenquelle für einen Azure Search-Indexer angeben. Weitere Informationen finden Sie unter [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) .
+Da die Konfiguration nun abgeschlossen ist, können Sie jetzt eine SQL Server-Instanz auf Ihrer Azure-VM als Datenquelle für einen Azure Search-Indexer angeben. Weitere Informationen finden Sie unter [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

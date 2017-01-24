@@ -1,22 +1,26 @@
 ---
-title: Aktivieren von Remotedesktop für Clouddienste (Node.js)
-description: Hier erfahren Sie, wie Sie Remotedesktopzugriff für virtuelle Computer aktivieren, die auf Ihrer Azure-Node.js-Anwendung gehostet werden.
+title: "Aktivieren von Remotedesktop für Clouddienste (Node.js)"
+description: "Hier erfahren Sie, wie Sie Remotedesktopzugriff für virtuelle Computer aktivieren, die auf Ihrer Azure-Node.js-Anwendung gehostet werden."
 services: cloud-services
 documentationcenter: nodejs
 author: rmcmurray
-manager: wpickett
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: a0141904-c9bc-478d-82af-5bceaca5cf6a
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 09878cccc847040c59cbf285f40ac6a1a310c993
+
 
 ---
-# Aktivieren von Remotedesktop in Azure
+# <a name="enabling-remote-desktop-in-azure"></a>Aktivieren von Remotedesktop in Azure
 Mit Remotedesktop können Sie auf den Desktop einer Rolleninstanz zugreifen, die in Azure ausgeführt wird. Sie können eine Remotedesktop-Verbindung zur Konfiguration eines virtuellen Computers oder zur Lösung von Problemen mit Ihrer Anwendung verwenden.
 
 > [!NOTE]
@@ -24,16 +28,16 @@ Mit Remotedesktop können Sie auf den Desktop einer Rolleninstanz zugreifen, die
 > 
 > 
 
-## Voraussetzungen
-* Installieren und konfigurieren Sie [Azure PowerShell](../powershell-install-configure.md).
+## <a name="prerequisites"></a>Voraussetzungen
+* Installieren und konfigurieren Sie [Azure PowerShell](/powershell/azureps-cmdlets-docs).
 * Stellen Sie eine Node.js-App in einem Azure-Clouddienst bereit. Weitere Informationen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](cloud-services-nodejs-develop-deploy-app.md).
 
-## Schritt 1: Verwenden von Azure PowerShell zum Konfigurieren des Diensts für Remotedesktopzugriff
-Um Remotedesktop verwenden zu können, müssen Sie die Azure-Dienstdefinition und Konfiguration mit einem Benutzernamen, Kennwort und Zertifikat aktualisieren.
+## <a name="step-1-use-azure-powershell-to-configure-the-service-for-remote-desktop-access"></a>Schritt 1: Verwenden von Azure PowerShell zum Konfigurieren des Diensts für Remotedesktopzugriff
+Um Remotedesktop verwenden zu können, müssen Sie die Azure-Dienstdefinition und Konfiguration mit einem Benutzernamen, Kennwort und Zertifikat aktualisieren. 
 
 Führen Sie die folgenden Schritte auf einem Computer aus, der die Quelldateien für die App enthält.
 
-1. Führen Sie **Windows PowerShell** als Administrator aus. (Suchen Sie im Startmenü oder auf dem Startbildschirm nach **Windows PowerShell**.)
+1. Führen Sie **Windows PowerShell** als Administrator aus. (Suchen Sie im **Startmenü** oder auf dem **Startbildschirm** nach **Windows PowerShell**.)
 2. Navigieren Sie zu dem Verzeichnis, das die Dienstdefinitionsdateien (.csdef) und die Dienstkonfigurationsdateien (.cscfg) enthält.
 3. Führen Sie das folgende PowerShell-Cmdlet aus:
    
@@ -47,30 +51,30 @@ Führen Sie die folgenden Schritte auf einem Computer aus, der die Quelldateien 
    
    ![publish-azureserviceproject][publish-project]
 
-## Schritt 2: Verbinden mit der Rolleninstanz
+## <a name="step-2-connect-to-the-role-instance"></a>Schritt 2: Verbinden mit der Rolleninstanz
 Nachdem Sie die aktualisierte Dienstdefinition veröffentlicht haben, können Sie eine Verbindung mit der Rolleninstanz herstellen.
 
-1. Wählen Sie im [klassischen Azure-Portal] die Option **Cloud Services** und anschließend den Dienst aus.
+1. Wählen Sie im [klassischen Azure-Portal]die Option **Cloud Services** und anschließend den Dienst aus.
    
    ![Klassisches Azure-Portal][cloud-services]
-2. Klicken Sie auf **Instanzen** und anschließend auf **Produktion** oder **Staging**, um die Instanzen für Ihren Dienst anzuzeigen. Wählen Sie eine Instanz aus, und klicken Sie unten auf der Seite auf **Verbinden**.
+2. Klicken Sie auf **Instanzen** und anschließend auf **Produktion** oder **Staging**, um die Instanzen für Ihren Dienst anzuzeigen. Wählen Sie eine Instanz aus, und klicken Sie unten auf der Seite auf **Verbinden** .
    
    ![Die Seite "Instanzen"][3]
-3. Wenn Sie auf **Verbinden** klicken, werden Sie vom Webbrowser aufgefordert, eine .rdp-Datei zu speichern. Öffnen Sie diese Datei. (Wenn Sie beispielsweise Internet Explorer verwenden, klicken Sie auf **Öffnen**.)
+3. Wenn Sie auf **Verbinden**klicken, werden Sie vom Webbrowser aufgefordert, eine .rdp-Datei zu speichern. Öffnen Sie diese Datei. (Wenn Sie beispielsweise Internet Explorer verwenden, klicken Sie auf **Öffnen**.)
    
    ![Aufforderung, die .rdp-Datei zu öffnen oder zu speichern][4]
 4. Wenn die Datei geöffnet wird, erscheint der folgende Sicherheitshinweis:
    
    ![Windows-Sicherheitshinweis][5]
-5. Klicken Sie auf **Verbinden**. Ein Sicherheitshinweis wird angezeigt, mit dem gemeldet wird, dass Sie Ihre Anmeldedaten eingeben müssen, um auf die Instanz zuzugreifen. Geben Sie das Kennwort ein, das Sie in [Schritt 1]\(Schritt 1: Konfigurieren des Diensts für Remotedesktopzugriff mit Azure PowerShell) erstellt haben, und klicken Sie dann auf **OK.**
+5. Klicken Sie auf **Verbinden**. Ein Sicherheitshinweis wird angezeigt, mit dem gemeldet wird, dass Sie Ihre Anmeldedaten eingeben müssen, um auf die Instanz zuzugreifen. Geben Sie das Kennwort ein, das Sie in [Schritt 1][Schritt 1: Konfigurieren des Diensts für Remotedesktopzugriff mit Azure PowerShell] erstellt haben, und klicken Sie dann auf **OK**.
    
    ![Hinweis auf Benutzernamen/Kennwort][6]
 
-Wenn die Verbindung hergestellt ist, zeigt die Remotedesktopverbindung den Desktop der Instanz in Azure an.
+Wenn die Verbindung hergestellt ist, zeigt die Remotedesktopverbindung den Desktop der Instanz in Azure an. 
 
 ![Remotedesktop-Sitzung][7]
 
-## Schritt 3: Konfigurieren des Diensts zur Deaktivierung des Remotedesktopzugriffs
+## <a name="step-3-configure-the-service-to-disable-remote-desktop-access"></a>Schritt 3: Konfigurieren des Diensts zur Deaktivierung des Remotedesktopzugriffs
 Wenn Sie die Remotedesktopverbindungen zu den Rolleninstanzen in der Cloud nicht mehr benötigen, deaktivieren Sie den Remotedesktopzugriff über [Azure PowerShell].
 
 1. Führen Sie das folgende PowerShell-Cmdlet aus:
@@ -80,7 +84,7 @@ Wenn Sie die Remotedesktopverbindungen zu den Rolleninstanzen in der Cloud nicht
    
        Publish-AzureServiceProject
 
-## Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Fernzugriff auf Rolleninstanzen in Azure] 
 * [Verwenden von Remotedesktop mit Azure-Rollen]
 * [Node.js Developer Center](/develop/nodejs/)
@@ -101,4 +105,7 @@ Wenn Sie die Remotedesktopverbindungen zu den Rolleninstanzen in der Cloud nicht
 [Verwenden von Remotedesktop mit Azure-Rollen]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
 
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Dec16_HO2-->
+
+

@@ -2,38 +2,43 @@
 title: Bereitstellen einer Web-App per MSDeploy mit Hostname und SSL-Zertifikat
 description: Verwenden einer Azure-Ressourcen-Manager-Vorlage zum Bereitstellen einer Web-App mit MSDeploy und Festlegen eines benutzerdefinierten Hostnamens und eines SSL-Zertifikats
 services: app-service\web
-documentationcenter: ''
+manager: erikre
+documentationcenter: 
 author: jodehavi
-
+ms.assetid: 66366a72-cef7-4d75-8779-f4d32ed33cf7
 ms.service: app-service-web
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
-ms.author: john.dehavilland
+ms.author: jodehavi
+translationtype: Human Translation
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: f836bffd0610224b5cb69f4f6836dbc55e0721a3
+
 
 ---
-# Bereitstellen einer Web-App mit MSDeploy, benutzerdefinierten Hostnamen und SSL-Zertifikat
+# <a name="deploy-a-web-app-with-msdeploy-custom-hostname-and-ssl-certificate"></a>Bereitstellen einer Web-App mit MSDeploy, benutzerdefinierten Hostnamen und SSL-Zertifikat
 In diesem Leitfaden werden Sie durch das Erstellen einer End-to-End-Bereitstellung für eine Azure-Web-App, das Verwenden von MSDeploy und das Hinzufügen eines benutzerdefinierten Hostnamens sowie eines SSL-Zertifikats zur ARM-Vorlage geführt.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
-### Erstellen der Beispielanwendung
+### <a name="create-sample-application"></a>Erstellen der Beispielanwendung
 Sie stellen eine ASP.NET-Webanwendung bereit. Der erste Schritt ist die Erstellung einer einfachen Webanwendung. (Sie können auch eine vorhandene nutzen und diesen Schritt überspringen.)
 
-Öffnen Sie Visual Studio 2015, und wählen Sie „Datei“ > „Neues Projekt“. Wählen Sie im angezeigten Dialogfeld die Option „Web“ > „ASP.NET-Webanwendung“. Wählen Sie unter „Vorlagen“ die Option „Web“ und dann die MVC-Vorlage. Legen Sie *Authentifizierungsart ändern* auf *Keine Authentifizierung* fest. Das Ziel hierbei ist, die Beispielanwendung so einfach wie möglich zu gestalten.
+Öffnen Sie Visual Studio 2015, und wählen Sie „Datei“ > „Neues Projekt“. Wählen Sie im angezeigten Dialogfeld die Option „Web“ > „ASP.NET-Webanwendung“. Wählen Sie unter „Vorlagen“ die Option „Web“ und dann die MVC-Vorlage. Legen Sie *Authentifizierungsart ändern* auf *Keine Authentifizierung* fest. Das Ziel hierbei ist, die Beispielanwendung so einfach wie möglich zu gestalten.
 
 An diesem Punkt verfügen Sie über eine grundlegende ASP.Net-Web-App, die für die Verwendung im Rahmen Ihres Bereitstellungsprozesses bereit ist.
 
-### Erstellen des MSDeploy-Pakets
+### <a name="create-msdeploy-package"></a>Erstellen des MSDeploy-Pakets
 Im nächsten Schritt erstellen Sie das Paket zum Bereitstellen der Web-App für Azure. Speichern Sie hierzu Ihr Projekt, und führen Sie dann Folgendes über die Befehlszeile aus:
 
     msbuild yourwebapp.csproj /t:Package /p:PackageLocation="path\to\package.zip"
 
 Im Ordner „PackageLocation“ wird ein gezipptes Paket erstellt. Die Anwendung kann jetzt bereitgestellt werden. Hierfür können Sie eine Azure-Ressourcen-Manager-Vorlage erstellen.
 
-### Erstellen einer ARM-Vorlage
+### <a name="create-arm-template"></a>Erstellen einer ARM-Vorlage
 Zunächst beginnen wir mit einer grundlegenden ARM-Vorlage, mit der eine Webanwendung und ein Hostingplan erstellt werden (Parameter und Variablen werden aus Platzgründen nicht angezeigt).
 
     {
@@ -112,11 +117,11 @@ Als Nächstes müssen Sie die Web-App-Ressource ändern, damit eine geschachtelt
         ]
     }
 
-Sie sehen, dass für die MSDeploy-Ressource eine **packageUri**-Eigenschaft verwendet wird, die wie folgt definiert ist:
+Sie sehen, dass für die MSDeploy-Ressource eine **packageUri** -Eigenschaft verwendet wird, die wie folgt definiert ist:
 
     "packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('webDeployPackageFolder'), '/', parameters('webDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
 
-Für diese **packageUri** wird der Speicherkonto-URI verwendet, der auf das Speicherkonto verweist, in das Sie das gezippte Paket hochladen. Der Azure-Ressourcen-Manager nutzt [Shared Access Signatures](../storage/storage-dotnet-shared-access-signature-part-1.md) zum lokalen Abrufen des Pakets aus dem Speicherkonto, wenn Sie die Vorlage bereitstellen. Dieser Prozess ist per PowerShell-Skript automatisiert, mit dem das Paket hochgeladen und die API für die Azure-Verwaltung aufgerufen wird, um die erforderlichen Schlüssel zu erstellen und als Parameter an die Vorlage zu übergeben (*\_artifactsLocation* und *\_artifactsLocationSasToken*). Sie müssen Parameter für den Ordner und den Dateinamen des Speicherorts definieren, an das das Paket im Speichercontainer hochgeladen wird.
+Für diese **packageUri** wird der Speicherkonto-URI verwendet, der auf das Speicherkonto verweist, in das Sie das gezippte Paket hochladen. Der Azure-Ressourcen-Manager nutzt [Shared Access Signatures](../storage/storage-dotnet-shared-access-signature-part-1.md) zum lokalen Abrufen des Pakets aus dem Speicherkonto, wenn Sie die Vorlage bereitstellen. Dieser Prozess ist per PowerShell-Skript automatisiert, mit dem das Paket hochgeladen und die Azure-Verwaltungs-API aufgerufen wird, um die erforderlichen Schlüssel zu erstellen und als Parameter an die Vorlage zu übergeben (*_artifactsLocation* und *_artifactsLocationSasToken*). Sie müssen Parameter für den Ordner und den Dateinamen des Speicherorts definieren, an das das Paket im Speichercontainer hochgeladen wird.
 
 Als Nächstes müssen Sie eine weitere geschachtelte Ressource hinzufügen, um die Hostnamenbindungen zum Verwenden einer benutzerdefinierten Domäne einzurichten. Zuerst müssen Sie sicherstellen, dass Sie im Besitz des Hostnamens sind, und diesen so einrichten, dass dies von Azure überprüft werden kann. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service](web-sites-custom-domain-name.md). Danach können Sie der Vorlage im Abschnitt mit der Ressource „Microsoft.Web/sites“ Folgendes hinzufügen:
 
@@ -157,7 +162,7 @@ Sie können dies dann als Parameter an Ihre ARM-Bereitstellungsvorlage übergebe
 
 Die ARM-Vorlage ist jetzt fertig.
 
-### Vorlage bereitstellen
+### <a name="deploy-template"></a>Vorlage bereitstellen
 Mit den abschließenden Schritten werden alle Elemente zu einer vollständigen End-to-End-Bereitstellung zusammengefasst. Um die Bereitstellung einfacher zu gestalten, können Sie das PowerShell-Skript **Deploy-AzureResourceGroup.ps1** nutzen, das beim Erstellen eines Azure-Ressourcengruppenprojekts in Visual Studio erstellt wird. Es ist hilfreich für das Hochladen von erforderlichen Artefakten für die Vorlage. Hierfür müssen Sie vorher ein Speicherkonto erstellt haben, das Sie verwenden möchten. In diesem Beispiel habe ich ein freigegebenes Speicherkonto erstellt, in das „package.zip“ hochgeladen werden kann. Im Skript wird AzCopy verwendet, um das Paket in das Speicherkonto hochzuladen. Sie übergeben den Speicherort Ihres Artefaktordners. Über das Skript werden dann automatisch alle Dateien in diesem Verzeichnis in den benannten Speichercontainer hochgeladen. Nach dem Aufrufen von „Deploy-AzureResourceGroup.ps1“ müssen Sie die SSL-Bindungen aktualisieren, um den benutzerdefinierten Hostnamen Ihrem SSL-Zertifikat zuzuordnen.
 
 Der folgende PowerShell-Code zeigt die vollständige Bereitstellung mit dem Aufruf von „Deploy-AzureResourceGroup.ps1“:
@@ -174,7 +179,7 @@ Der folgende PowerShell-Code zeigt die vollständige Bereitstellung mit dem Aufr
                                     -StorageAccountResourceGroupName "resource-group-name-storage-acct" `
                                     -TemplateFile "web-app-deploy.json" `
                                     -TemplateParametersFile "web-app-deploy-parameters.json" `
-                                    -ArtifactStagingDirectory "C:\path\to\packagefolder"
+                                    -ArtifactStagingDirectory "C:\path\to\packagefolder\"
 
     #update web app to bind ssl certificate to hostname. This has to be done after creation above.
 
@@ -190,6 +195,11 @@ Der folgende PowerShell-Code zeigt die vollständige Bereitstellung mit dem Aufr
 
     Set-AzureRmResource -ApiVersion 2014-11-01 -Name nameofwebsite -ResourceGroupName $rgName -ResourceType Microsoft.Web/sites -PropertyObject $props
 
-An diesem Punkt sollte Ihre Anwendung bereitgestellt werden, und Sie sollten über https://www.yourcustomdomain.com darauf zugreifen können.
+An diesem Punkt sollte Ihre Anwendung bereitgestellt werden, und Sie sollten über „https://www.yourcustomdomain.com“ darauf zugreifen können.
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+
+<!--HONumber=Dec16_HO3-->
+
+

@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Tidemark | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Tidemark konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 5cf80d4e-6e8b-48ec-81c8-27872af5e5d5
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5b32c40c1887d6695c4ad1379ac14e0aa525bb43
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-tidemark"></a>Tutorial: Azure Active Directory-Integration mit Tidemark
+# <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>Tutorial: Azure Active Directory-Integration mit Tidemark
 Dieses Tutorial soll Ihnen zeigen, wie Sie Tidemark in Azure Active Directory (Azure AD) integrieren können.
 
 Die Integration von Tidemark in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Tidemark hat.
+* Sie können in Azure AD steuern, wer Zugriff auf Tidemark hat.
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Tidemark anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Tidemark konfigurieren zu können, benötigen Sie Folgendes:
@@ -79,7 +83,7 @@ Zum Konfigurieren der Integration von Tidemark in Azure AD müssen Sie Tidemark 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in Tidemark konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Tidemark als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Tidemark muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Tidemark als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Tidemark muss eine Linkbeziehung eingerichtet werden.
 
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Tidemark zuweisen.
 
@@ -232,6 +236,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Tidemark“ klicken, sollten Sie a
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

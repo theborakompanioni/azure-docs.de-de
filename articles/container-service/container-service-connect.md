@@ -17,13 +17,17 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 319978579ae6ad868030d2ec99bce6e6aaa22299
-ms.openlocfilehash: 24a8b9c4e78971199236553802a71134bd12829c
+ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
+ms.openlocfilehash: 5296586b9266f432042f847f4dff9e6ff62ebc8b
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>Verbinden mit einem Azure Container Service-Cluster
-Für alle DC/OS-, Kubernetes- und Docker Swarm-Cluster, die vom Azure Container Service bereitgestellt werden, werden REST-Endpunkten verfügbar gemacht.  Dieser Endpunkt von Kubernetes wird sicher im Internet verfügbar gemacht, und Sie können direkt von jedem Computer aus auf ihn zugreifen, der mit dem Internet verbunden ist. Für DC/OS und Docker Swarm müssen Sie einen SSH-Tunnel erstellen, um eine sichere Verbindung zum REST-Endpunkt herzustellen. Jede dieser Verbindungen ist unten beschrieben.
+Für alle DC/OS-, Kubernetes- und Docker Swarm-Cluster, die von Azure Container Service bereitgestellt werden, werden REST-Endpunkte verfügbar gemacht.  Dieser Endpunkt von Kubernetes wird sicher im Internet verfügbar gemacht, und Sie können direkt von jedem Computer aus auf ihn zugreifen, der mit dem Internet verbunden ist. Für DC/OS und Docker Swarm müssen Sie einen SSH-Tunnel erstellen, um eine sichere Verbindung zum REST-Endpunkt herzustellen. Jede dieser Verbindungen ist unten beschrieben.
+
+> [!NOTE]
+> Die Kubernetes-Unterstützung in Azure Container Service befindet sich derzeit in der Vorschauphase.
+>
 
 ## <a name="connecting-to-a-kubernetes-cluster"></a>Herstellen einer Verbindung zu einem Kubernetes-Cluster
 Sie müssen das `kubectl`-Befehlszeilentool installieren, um eine Verbindung mit einem Kubernetes-Cluster herstellen zu können.  Die einfachste Möglichkeit zum Installieren dieses Tools ist die Verwendung des Azure 2.0 `az`-Befehlszeilentools.
@@ -172,6 +176,6 @@ Bereitstellen und Verwalten von Containern mit DC/OS oder Swarm:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

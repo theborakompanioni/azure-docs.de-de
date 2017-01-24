@@ -3,8 +3,8 @@ title: "Einführung in Storage | Microsoft Docs"
 description: "Eine Übersicht über Azure Storage, dem Onlinedatenspeicher von Microsoft in der Cloud. Hier erfahren Sie, wie Sie in Ihren Anwendungen die beste verfügbare Cloudspeicherlösung verwenden."
 services: storage
 documentationcenter: 
-author: tamram
-manager: carmonm
+author: mmacy
+manager: timlt
 editor: tysonn
 ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2016
-ms.author: tamram
+ms.date: 12/08/2016
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ac0044da9cf804dabd9d71e3380782120728a55a
+ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
+ms.openlocfilehash: 40ab7632f47de4d4eef277f4c4071ce2d4de1eed
 
 
 ---
@@ -75,7 +75,7 @@ Blob Storage ist eine kostengünstige und skalierbare Lösung für Benutzer, die
 * Konfigurationsdaten für Cloudanwendungen
 * Big Data wie Protokolle und andere umfangreiche Datasets
 
-Jedes Blob ist in einem Container organisiert. Container sind auch eine praktische Möglichkeit, um Gruppen von Objekten Sicherheitsrichtlinien zuzuordnen. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten, und ein Container kann eine beliebige Anzahl von Blobs enthalten. Die Speicherkapazität eines Speicherkontos beträgt maximal 500 TB.  
+Jedes Blob ist in einem Container organisiert. Container sind auch eine praktische Möglichkeit, um Gruppen von Objekten Sicherheitsrichtlinien zuzuordnen. Ein Speicherkonto kann eine beliebige Anzahl von Containern enthalten, und ein Container kann eine beliebige Anzahl von Blobs enthalten. Die Speicherkapazität eines Speicherkontos beträgt maximal 500 TB.
 
 Blob Storage bietet drei Arten von Blobs: Blockblobs, Anfügeblobs und Seitenblobs (Festplatten).
 
@@ -128,32 +128,32 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Acces
 ## <a name="replication-for-durability-and-high-availability"></a>Replikation für Dauerhaftigkeit und hohe Verfügbarkeit
 Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Bei der Replikation werden Ihre Daten kopiert, und zwar entweder innerhalb desselben Rechenzentrums, oder in ein zweites Rechenzentrum. Dies hängt davon ab, welche Replikationsoption Sie wählen. Mit der Replikation werden Ihre Daten geschützt, und die Betriebszeit der Anwendung wird hoch gehalten, falls es zu vorübergehenden Hardwareausfällen kommt. Wenn Ihre Daten in einem zweiten Rechenzentrum repliziert werden, werden Ihre Daten außerdem vor einem Ausfall aufgrund einer Katastrophe am primären Standort geschützt.
 
-Mit der Replikation wird sichergestellt, dass Ihr Speicherkonto auch bei Ausfällen die [Servicelevelvereinbarung (SLA) für Storage](https://azure.microsoft.com/support/legal/sla/storage/) erfüllt. Die Servicelevelvereinbarung enthält Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit. 
+Mit der Replikation wird sichergestellt, dass Ihr Speicherkonto auch bei Ausfällen die [Servicelevelvereinbarung (SLA) für Storage](https://azure.microsoft.com/support/legal/sla/storage/) erfüllt. Die Servicelevelvereinbarung enthält Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit.
 
-Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Replikationsoptionen auswählen:  
+Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Replikationsoptionen auswählen:
 
-* **Lokal redundanter Speicher (LRS)**  Lokal redundanter Speicher verwaltet drei Kopien Ihrer Daten. LRS wird innerhalb eines einzelnen Rechenzentrums dreimal in einer einzelnen Region repliziert. LRS schützt Ihre Daten vor normalen Hardwareausfällen, aber nicht vor dem Ausfall eines einzelnen Rechenzentrums.  
-  
+* **Lokal redundanter Speicher (LRS)**  Lokal redundanter Speicher verwaltet drei Kopien Ihrer Daten. LRS wird innerhalb eines einzelnen Rechenzentrums dreimal in einer einzelnen Region repliziert. LRS schützt Ihre Daten vor normalen Hardwareausfällen, aber nicht vor dem Ausfall eines einzelnen Rechenzentrums.
+
     LRS wird zu günstigen Preisen angeboten. Für maximale Stabilität empfehlen wir, dass Sie georedundanten Speicher (nachfolgend beschrieben) verwenden.
-* **Zonenredundanter Speicher (ZRS)**  Zonenredundanter Speicher verwaltet drei Kopien Ihrer Daten. ZRS wird über zwei oder drei Standorte hinweg dreimal repliziert, entweder innerhalb einer einzelnen Region oder über zwei Regionen hinweg, wodurch eine höhere Stabilität als bei LRS entsteht. ZRS gewährleistet die Dauerhaftigkeit Ihrer Daten innerhalb einer einzelnen Region.  
-  
-    ZRS bietet eine höhere Dauerhaftigkeit als LRS. Für maximale Dauerhaftigkeit empfehlen wir jedoch die Verwendung von georedundantem Speicher (siehe Beschreibung weiter unten).  
-  
+* **Zonenredundanter Speicher (ZRS)**  Zonenredundanter Speicher verwaltet drei Kopien Ihrer Daten. ZRS wird über zwei oder drei Standorte hinweg dreimal repliziert, entweder innerhalb einer einzelnen Region oder über zwei Regionen hinweg, wodurch eine höhere Stabilität als bei LRS entsteht. ZRS gewährleistet die Dauerhaftigkeit Ihrer Daten innerhalb einer einzelnen Region.
+
+    ZRS bietet eine höhere Dauerhaftigkeit als LRS. Für maximale Dauerhaftigkeit empfehlen wir jedoch die Verwendung von georedundantem Speicher (siehe Beschreibung weiter unten).
+
   > [!NOTE]
   > ZRS ist derzeit nur für Blockblobs verfügbar und wird erst ab der Version 2014-02-14 unterstützt.
-  > 
+  >
   > Sobald Sie Ihr Speicherkonto erstellt und die ZRS ausgewählt haben, ist die Wahl eines anderen Replikationstyps nicht mehr möglich.
-  > 
-  > 
+  >
+  >
 * **Georedundanter Speicher (GRS)**: GRS hält sechs Kopien Ihrer Daten vor. Mit GRS werden Ihre Daten dreimal innerhalb der primären Region und dreimal in einer sekundären Region repliziert, die hunderte Kilometer von der primären Region entfernt ist. Mit GRS werden Ihre Daten dreimal innerhalb der primären Region und dreimal in einer sekundären Region hunderte von Kilometern von der primären Region entfernt repliziert, wodurch höchste Stabilität erreicht wird. Im Falle eines Ausfalls in der primären Region führt Azure Storage ein Failover auf die sekundäre Region aus. Durch GRS wird die Dauerhaftigkeit Ihrer Daten in zwei separaten Regionen gewährleistet.
-  
+
     Informationen zu den Kombinationen aus primären und sekundären Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
-* **Georedundanter Speicher mit Lesezugriff (RA-GRS)** Georedundanter Speicher mit Lesezugriff repliziert Ihre Daten an einen sekundären geografischen Standort und bietet außerdem Lesezugriff auf die Daten am sekundären Standort. Mithilfe von RA-GRS können Sie entweder vom primären oder vom sekundären Standort aus auf Ihre Daten zugreifen, falls einer der Standorte nicht mehr verfügbar ist. Bei der Erstellung Ihres Speicherkontos ist RA-GRS die Standardoption. 
-  
+* **Georedundanter Speicher mit Lesezugriff (RA-GRS)** Georedundanter Speicher mit Lesezugriff repliziert Ihre Daten an einen sekundären geografischen Standort und bietet außerdem Lesezugriff auf die Daten am sekundären Standort. Mithilfe von RA-GRS können Sie entweder vom primären oder vom sekundären Standort aus auf Ihre Daten zugreifen, falls einer der Standorte nicht mehr verfügbar ist. Bei der Erstellung Ihres Speicherkontos ist RA-GRS die Standardoption.
+
   > [!IMPORTANT]
   > Die Art der Datenreplikation kann nach der Speicherkontoerstellung geändert werden, sofern bei der Kontoerstellung nicht die ZRS-Option angegeben wurde. Beachten Sie jedoch, dass unter Umständen zusätzlich einmalige Datenübertragungskosten anfallen, wenn Sie von LRS zu GRS oder RA-GRS wechseln.
-  > 
-  > 
+  >
+  >
 
 Weitere Details zu den Speicherreplikationsoptionen finden Sie unter [Azure-Speicherreplikation](storage-redundancy.md) .
 

@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 3ba16154857f8e7b59a1013b736d6131a4161185
-ms.openlocfilehash: 3d45ec5a6636de4213c6c02dca0e5288ec3aa0e3
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 315fb49ba25c46afaa6571d9249ecd1c8da13e91
 
 
 ---
@@ -65,12 +65,12 @@ Sie können logische Azure SQL-Datenbankserver mit verschiedenen Methoden verwal
 - Eine Übersicht über logische Azure SQL-Server finden Sie unter [SQL Database logical server overview (Übersicht über logische SQL-Datenbankserver)](sql-database-server-overview.md).
 - Informationen zur Unterstützung von Transact-SQL und Unterschieden finden Sie unter [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md).
 - Informationen zu bestimmten Ressourcenkontingenten und Einschränkungen basierend auf Ihrer **Dienstebene**. Eine Übersicht über die Dienstebenen finden Sie unter [SQL-Datenbanken-Dienstebenen](sql-database-service-tiers.md).
-- Sicherheitsbezogene Leitlinien finden Sie unter [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md).
+- Eine Übersicht über Sicherheit finden Sie unter [Azure SQL Database Security Overview](sql-database-security-overview.md) (Übersicht über die Sicherheit von Azure SQL-Datenbank).
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

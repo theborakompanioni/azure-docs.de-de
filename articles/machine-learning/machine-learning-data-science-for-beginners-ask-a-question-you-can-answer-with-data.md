@@ -34,11 +34,11 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur L
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-* 1. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
-* 2. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
-* 3. Video: Stellen einer Frage, die Sie mit Daten beantworten können
-* 4. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
-* 5. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
+* Video 1: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+* Video 2: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
+* Video 3: Stellen einer Frage, die Sie mit Daten beantworten können
+* Video 4: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
+* Video 5: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Aufzeichnung: Stellen einer Frage, die Sie mit Daten beantworten können
 Willkommen beim dritten Video der Reihe „Data Science für Einsteiger“.  

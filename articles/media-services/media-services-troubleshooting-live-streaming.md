@@ -2,11 +2,11 @@
 title: Anleitung zur Behandlung von Problemen bei Livestreaming | Microsoft Docs
 description: Dieses Thema bietet Empfehlungen zum Behandeln von Problemen bei Livestreaming.
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 3a7f6c1d-ce57-4fa4-a7a6-edb526b3ffbf
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 0c77ee0f612c1cbef551a129a22cf3f125e6f29d
+ms.openlocfilehash: 69fa0a7802ca39f86ada0af47b7a99e56436f973
+
 
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Anleitung zur Behandlung von Problemen bei Livestreaming
@@ -22,19 +26,19 @@ Dieses Thema bietet Empfehlungen zum Behandeln von Problemen bei Livestreaming.
 ## <a name="issues-related-to-on-premises-encoders"></a>Probleme im Zusammenhang mit lokalen Encodern
 Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang mit lokalen Encodern, die zum Senden eines Single-Bitrate-Datenstroms an für Livecodierung aktivierte AMS-Kanäle konfiguriert sind.
 
-### <a name="problem:-would-like-to-see-logs"></a>Problem: Anzeigen von Protokollen
+### <a name="problem-would-like-to-see-logs"></a>Problem: Anzeigen von Protokollen
 * **Mögliches Problem:**Encoderprotokolle, mit denen möglicherweise Fehler behoben werden können, können nicht gefunden werden.
   
   * **Telestream Wirecast**: Normalerweise finden Sie Protokolle unter „C:\Benutzer\{Benutzername}\AppData\Roaming\Wirecast\“. 
   * **Elemental Live**: Links zu Protokollen finden Sie im Verwaltungsportal. Klicken Sie auf **Statistiken** und dann auf **Protokolle**. Auf der Seite **Protokolldateien** sehen Sie eine Liste der Protokolle für alle LiveEvent-Elemente. Wählen Sie das Protokoll für Ihre aktuelle Sitzung aus. 
   * **Flash Media Live-Encoder**: Sie finden das **Protokollverzeichnis** auf der Registerkarte **Codierungsprotokoll**.
 
-### <a name="problem:-there-is-no-option-for-outputting-a-progressive-stream"></a>Problem: Es ist keine Option zum Ausgeben eines progressiven Datenstroms vorhanden
+### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Problem: Es ist keine Option zum Ausgeben eines progressiven Datenstroms vorhanden
 * **Mögliches Problem**: Der verwendete Encoder führt kein automatisches Deinterlacing aus. 
   
     **Problembehandlungsschritte**: Suchen Sie auf der Encoder-Benutzeroberfläche nach einer Option für Deinterlacing. Sobald Deinterlacing aktiviert ist, suchen Sie erneut nach Einstellungen für die progressive Ausgabe. 
 
-### <a name="problem:-tried-several-encoder-output-settings-and-still-unable-to-connect."></a>Problem: Ich habe verschiedene Encoderausgabeeinstellungen ausprobiert und kann immer noch keine Verbindung herstellen.
+### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Problem: Ich habe verschiedene Encoderausgabeeinstellungen ausprobiert und kann immer noch keine Verbindung herstellen.
 * **Mögliches Problem**: Der Azure-Codierungskanal wurde nicht ordnungsgemäß zurückgesetzt. 
   
     **Problembehandlungsschritte**: Stellen Sie sicher, dass der Encoder keine Pushübertragungen an AMS mehr ausführt, beenden Sie den Kanal, und setzen Sie ihn zurück. Sobald er erneut ausgeführt wird, versuchen Sie mit den neuen Einstellungen, den Encoder zu verbinden. Wenn das Problem damit immer noch nicht behoben ist, erstellen Sie einen vollkommen neuen Kanal. Manchmal werden Kanäle nach mehreren fehlgeschlagenen Versuchen beschädigt.  
@@ -45,7 +49,7 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
   
     **Problembehandlungsschritte**: Überprüfen Sie beim Streamen per RTMP in den Firewall- und/oder Proxyeinstellungen, ob die ausgehenden Ports 1935 und 1936 geöffnet sind. Wenn Sie RTP-Streaming verwenden, stellen Sie sicher, dass der ausgehende Port 2010 geöffnet ist. 
 
-### <a name="problem:-when-configuring-the-encoder-to-stream-with-the-rtp-protocol,-there-is-no-place-to-enter-a-host-name."></a>Problem: Beim Konfigurieren des Encoders für Streaming per RTP besteht keine Möglichkeit zur Eingabe eines Hostnamens.
+### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>Problem: Beim Konfigurieren des Encoders für Streaming per RTP besteht keine Möglichkeit zur Eingabe eines Hostnamens.
 * **Mögliches Problem**: Viele RTP-Encoder lassen die Angabe von Hostnamen nicht zu, und es muss eine IP-Adresse bezogen werden.  
   
     **Problembehandlungsschritte**: Um die IP-Adresse zu suchen, öffnen Sie ein Eingabeaufforderungsfenster auf einem beliebigen Computer. Öffnen Sie zu diesem Zweck das Dialogfeld "Ausführen" (Windows-Taste+R), und geben Sie zum Öffnen der Eingabeaufforderung "cmd" ein.  
@@ -58,11 +62,6 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
   
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
 
-### <a name="problem:-unable-to-playback-the-published-stream."></a>Problem: Der veröffentlichte Datenstrom kann nicht wiedergegeben werden.
-* **Mögliches Problem**: Es wird kein Streamingendpunkt ausgeführt, oder es sind keine Streamingeinheiten (Skalierungseinheiten) zugeordnet. 
-  
-    **Problembehandlungsschritte**: Navigieren Sie im AMSE-Tool zur Registerkarte "Streamingendpunkt", und stellen Sie sicher, dass ein Streamingendpunkt mit einer Streamingeinheit ausgeführt wird. 
-
 > [!NOTE]
 > Wenn Sie nach dem Ausführen der Problembehandlungsschritte immer noch nicht streamen können, senden Sie über das klassische Azure-Portal ein Supportticket.
 > 
@@ -74,6 +73,9 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

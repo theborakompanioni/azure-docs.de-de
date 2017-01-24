@@ -1,13 +1,13 @@
 ---
-title: Anleitung zur Überwachung und Diagnose | Microsoft Docs
-description: Bewährte Methoden für die Überwachung verteilter Anwendungen in der Cloud.
-services: ''
+title: "Anleitung zur Überwachung und Diagnose | Microsoft Docs"
+description: "Bewährte Methoden für die Überwachung verteilter Anwendungen in der Cloud."
+services: 
 documentationcenter: na
 author: dragon119
 manager: christb
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 2d2a8497-73d0-4a46-aac6-6d504003de2b
 ms.service: best-practice
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
+translationtype: Human Translation
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 0eb72af5c0f904655fc4a0d8fd44d6e481c73645
+
 
 ---
 # <a name="monitoring-and-diagnostics-guidance"></a>Anleitung zur Überwachung und Diagnose
@@ -60,7 +64,7 @@ Ein Operator sollte schnell (innerhalb weniger Sekunden) benachrichtigt werden, 
 
 Eine umfassende Systemüberwachung ermöglicht es einem Operator, der einen Drilldown durch das System zum Anzeigen des Integritätsstatus von Subsystemen und Komponenten ausführen. Wenn z. B. das gesamte System als teilweise fehlerfrei dargestellt ist, sollte der Operator in der Lage sein, es zu vergrößern und zu bestimmen, welche Funktionalität zurzeit nicht verfügbar ist.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Rohdaten, die zur Unterstützung der Systemüberwachung erforderlich sind, können als Ergebnis folgender Aktionen generiert werden:
 
 * Nachverfolgen der Ausführung von Benutzeranforderungen. Diese Informationen können verwendet werden, um zu bestimmen, welche Anforderungen erfolgreich ausgeführt wurden, welche fehlgeschlagen sind und wie lange jede Anforderung dauert.
@@ -93,7 +97,7 @@ Ein Operator sollte auch die bisherige Verfügbarkeit der einzelnen Systeme und 
 
 Eine Überwachungslösung sollte eine unmittelbare und historische Ansicht der Verfügbarkeit bzw. Nichtverfügbarkeit der einzelnen Subsysteme bereitstellen. Sie sollte außerdem einen Operator schnell warnen können, wenn mindestens ein Dienst ausfällt oder wenn Benutzer keine Verbindung mit Diensten herstellen können. Hierbei geht es nicht nur darum, die einzelnen Dienste zu überwachen, sondern auch darum, die von den einzelnen Benutzern durchgeführten Aktionen zu untersuchen, wenn beim Kommunikationsversuch mit einem Dienst ein Fehler auftritt. In gewissem Umfang sind Verbindungsfehler normal und können durch vorübergehende Fehler verursacht werden. Es kann jedoch hilfreich sein, dem System das Ausgeben einer Warnung für die Anzahl von Verbindungsfehlern mit einem bestimmten Subsystem zu ermöglichen, die während eines bestimmten Zeitraums auftreten.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Wie bei der Integritätsüberwachung können die Rohdaten zur Unterstützung der Verfügbarkeitsüberwachung als Ergebnis der synthetischen Benutzerüberwachung und der Protokollierung aller Ausnahmen, Fehler und Warnungen generiert werden. Darüber hinaus können Verfügbarkeitsdaten durch eine Endpunktüberwachung abgerufen werden. Die Anwendung kann einen oder mehrere Integritätsendpunkte offenlegen, von dem jeder den Zugriff auf den Funktionsbereich innerhalb des Systems prüft. Das Überwachungssystem kann jeden Endpunkt nach einem definierten Zeitplan pingen und die Ergebnisse erfassen (erfolgreich oder Fehler).
 
 Alle Timeouts, Netzwerkkonnektivitätsfehler und wiederholte Verbindungsversuche müssen aufgezeichnet werden. Alle Daten sollten mit einem Zeitstempel versehen sein.
@@ -157,7 +161,7 @@ Bei allen Visualisierungen sollte ein Operator die Möglichkeit erhalten, einen 
 
 Ein Operator sollte basierend auf den Leistungsmeasures eine Warnung für jeden angegebenen Wert während eines angegebenen Zeitintervalls ausgeben können.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Durch Überwachen der Fortschritte von eingehenden und das System passierenden Benutzeranforderungen können Sie allgemeine Leistungsdaten sammeln (Durchsatz, Anzahl gleichzeitiger Benutzer, Anzahl von Geschäftstransaktionen, Fehlerraten und so weiter). Dies beinhaltet das Einbinden von Ablaufverfolgungsanweisungen an wichtigen Punkten im Anwendungscode zusammen mit Informationen zur zeitlichen Steuerung. Alle Fehler, Ausnahmen und Warnungen sollten mit einer ausreichenden Datenmenge erfasst werden, damit ein Bezug zu den Anforderungen hergestellt werden kann, die sie verursacht haben. Das IIS-Protokoll (Internet Information Services) ist eine weitere nützliche Datenquelle.
 
 Wenn möglich, sollten Sie Leistungsdaten für alle externen Systeme erfassen, die die Anwendung verwendet. Diese externen Systeme bieten möglicherweise eigene Leistungsindikatoren oder andere Features für die Anforderung von Leistungsdaten. Wenn dies nicht möglich ist, erfassen Sie Informationen wie z. B. die Start- und Endzeit der einzelnen Anforderungen an ein externes System zusammen mit dem Status des Vorgangs (Erfolgreich, Fehler oder Warnung). Beispielsweise können Sie einen Stoppuhransatz verfolgen, um Anforderungen zeitlich zu erfassen: Starten Sie einen Timer, wenn die Anforderung gestartet wird, und stoppen Sie den Timer, wenn die Anforderung abgeschlossen ist.
@@ -199,7 +203,7 @@ Die einem Operator bereitgestellten Informationen sollten für jede Anforderung 
 
 Eine wichtige Rolle bei der Wahrung der Sicherheit eines Systems ist das schnelle Erkennen von Aktionen, die vom üblichen Muster abweichen. Informationen wie z. B. die Anzahl fehlerhafter und/oder erfolgreicher Anmeldeanforderungen kann visuell dargestellt werden, um zu erkennen, ob zu einer ungewöhnlichen Zeit eine Spitze in der Aktivität vorliegt. (Ein Beispiel für diese Aktivität ist, wenn Benutzer sich um 3:00 Uhr morgens anmelden und eine große Anzahl von Vorgängen ausführen, wenn der Arbeitstag um 9:00 Uhr beginnt). Anhand dieser Informationen kann auch die zeitbasierte automatische Skalierung konfiguriert werden. Wenn z. B. ein Operator beobachtet, dass eine große Anzahl von Benutzern sich regelmäßig zu einer bestimmten Tageszeit anmeldet, kann er den Start zusätzlicher Authentifizierungsdienste veranlassen, um das Arbeitsvolumen verarbeiten zu können. Er kann diese zusätzlichen Dienste wieder beenden, wenn die Spitze vorbei ist.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Sicherheit ist bei den meisten verteilten Systemen ein allumfassender Aspekt. Die relevanten Daten werden wahrscheinlich an mehreren Punkten in einem System generiert. Sie sollten die Implementierung eines SIEM-Ansatzes (Security Information and Event Management) erwägen, um die Sicherheitsinformationen aus Ereignissen zu sammeln, die von der Anwendung, Netzwerkgeräten, Servern, Firewalls, Antivirensoftware und anderen Elementen des Eindringschutzes ausgelöst wurden.
 
 Die Sicherheitsüberwachung kann Daten aus Tools integrieren, die nicht Teil der Anwendung sind. Dazu gehören beispielsweise Hilfsprogramme, die Portüberwachungsaktivitäten durch externe Einrichtungen ermitteln, oder Netzwerkfilter, die nicht authentifizierte Zugriffsversuche auf Anwendung und Daten erkennen.
@@ -251,7 +255,7 @@ Eine Cloud-Anwendung umfasst wahrscheinlich eine Anzahl von Subsystemen und Komp
 
 Zu Warnzwecken sollte das System möglicherweise ein Ereignis auslösen, wenn einer der allgemeinen Indikatoren den angegebenen Schwellenwert überschreitet. Die Low-Level-Details der verschiedenen Faktoren, aus denen sich der High-Level-Indikator zusammensetzt, sollten dem Warnsystem als Kontextdaten zur Verfügung stehen.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Rohdaten, die zur Unterstützung der SLA-Überwachung erforderlich sind, ähneln den Rohdaten, die für die Leistungsüberwachung benötigt werden, und umfassen zudem einige Aspekte der Integritäts- und Verfügbarkeitsüberwachung. (Weitere Informationen hierzu finden Sie in den betreffenden Abschnitten.) Sie können diese Daten erfassen durch:
 
 * Durchführen von Endpunkt-Überwachung
@@ -283,7 +287,7 @@ Analysten müssen in der Lage sein, die Abfolge der von den Benutzern durchgefü
 
 Überwachungsinformationen sind sehr vertraulich. Wahrscheinlich umfassen sie Daten, durch die die Benutzer des Systems sowie die von ihnen ausgeführten Aufgaben identifiziert werden. Aus diesem Grund werden Überwachungsinformationen wahrscheinlich in Form von Berichten bereitgestellt, die nur vertrauenswürdigen Analysten zur Verfügung stehen, und nicht als interaktives System, das grafische Drilldownvorgänge unterstützt. Ein Analyst sollte eine Reihe von Berichten generieren können. Beispielsweise können Berichte alle Benutzeraktivitäten während eines angegebenen Zeitraums auflisten, die Abfolge der Aktivitäten für einen einzelnen Benutzer beschreiben oder die aufeinanderfolgenden Vorgänge für eine oder mehrere Ressourcen umfassen.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die primären Informationsquellen für die Überwachung können umfassen:
 
 * Das Sicherheitssystem, das die Benutzerauthentifizierung verwaltet.
@@ -314,7 +318,7 @@ Um die Systemnutzung zu untersuchen, muss ein Operator in der Regel Informatione
 
 Ein Operator sollte auch Diagramme generieren können. Ein Diagramm kann z. B. die Benutzer anzeigen, die die meisten Ressourcen verschlingen, oder die am häufigsten verwendeten Ressourcen oder Systemfunktionen.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Nutzungsverfolgung kann auf einer relativ allgemeinen Ebene ausgeführt werden. Dabei können die Anfangs- und die Endzeiten der einzelnen Anforderungen sowie die Art der jeweiligen Anforderung erfasst werden (Lesen, Schreiben usw., abhängig von der betreffenden Ressource). Sie erhalten diese Informationen durch:
 
 * Ablaufverfolgung der Benutzeraktivität.
@@ -331,7 +335,7 @@ Kunden und andere Benutzer könnten bei unerwarteten Ereignissen oder unerwartet
 ### <a name="requirements-for-issue-tracking"></a>Anforderungen für die Problemverfolgung
 Operatoren führen die Problemverfolgung häufig anhand eines separaten Systems durch, mit dem sie die Details der von den Benutzern gemeldeten Probleme aufzeichnen und in Berichten erfassen können. Zu diesen Details zählen die Aufgaben, die der Benutzer durchführen wollte, die Symptome des Problems, die Abfolge der Ereignisse und alle ausgegebenen Fehler- oder Warnmeldungen.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die ursprüngliche Datenquelle für die Problemverfolgung von Daten ist der Benutzer, der das Problem überhaupt gemeldet hat. Der Benutzer kann möglicherweise zusätzliche Daten bereitstellen, beispielsweise:
 
 * Ein Absturzabbild (wenn die Anwendung eine Komponente umfasst, die auf dem Desktop des Benutzers ausgeführt wird).
@@ -348,7 +352,7 @@ Der Verlauf der Debugmaßnahmen sollte für jeden Problembericht aufgezeichnet w
 Wenn ein Benutzer ein Problem meldet, zu dem es eine bekannte Lösung im Problemverfolgungssystem gibt, sollte der Operator den Benutzer umgehend über die Lösung informieren können.
 
 ## <a name="tracing-operations-and-debugging-software-releases"></a>Ablaufverfolgung von Vorgängen und das Debuggen von Software-Versionen.
-Wenn ein Benutzer ein Problem meldet, sind ihm häufig nur die unmittelbaren Auswirkungen auf seine Vorgänge bekannt. Der Benutzer kann nur die Ergebnisse der eigenen Erfahrungen an einen Operator melden, der für die Wartung des Systems zuständig ist. Diese Erfahrungen sind in der Regel nur sichtbare Symptome für ein grundlegendes Problem oder mehrere. In vielen Fällen müssen Analysten die Abfolge der zugrunde liegenden Vorgänge prüfen, um die eigentliche Ursache des Problems zu rekonstruieren. Dieser Prozess wird als _Fehlerursachenanalyse_bezeichnet.
+Wenn ein Benutzer ein Problem meldet, sind ihm häufig nur die unmittelbaren Auswirkungen auf seine Vorgänge bekannt. Der Benutzer kann nur die Ergebnisse der eigenen Erfahrungen an einen Operator melden, der für die Wartung des Systems zuständig ist. Diese Erfahrungen sind in der Regel nur sichtbare Symptome für ein grundlegendes Problem oder mehrere. In vielen Fällen müssen Analysten die Abfolge der zugrunde liegenden Vorgänge prüfen, um die eigentliche Ursache des Problems zu rekonstruieren. Dieser Prozess wird als *Fehlerursachenanalyse*bezeichnet.
 
 > [!NOTE]
 > Die Fehlerursachenanalyse kann Ineffizienzen im Design einer Anwendung aufdecken. In diesen Fällen kann es möglich sein, die betroffenen Elemente zu überarbeiten und im Rahmen einer späteren Version bereitzustellen. Dieser Vorgang erfordert eine sorgfältige Steuerung und die aktualisierten Komponenten sollten genau überwacht werden.
@@ -358,7 +362,7 @@ Wenn ein Benutzer ein Problem meldet, sind ihm häufig nur die unmittelbaren Aus
 ### <a name="requirements-for-tracing-and-debugging"></a>Anforderungen für Ablaufverfolgung und Debuggen
 Für die Ablaufverfolgung unerwarteter Ereignisse und anderer Probleme ist es wichtig, dass die Überwachungsdaten aussagekräftig sind, damit ein Analyst die Ursprünge dieser Probleme nachverfolgen und die Abfolge der aufgetretenen Ereignisse rekonstruieren kann. Diese Informationen müssen ausreichen, um einem Analysten die Diagnose der Problemursache zu ermöglichen. Ein Entwickler kann dann die erforderlichen Änderungen vornehmen, um ein erneutes Auftreten zu verhindern.
 
-### <a name="data-sources,-instrumentation,-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
+### <a name="data-sources-instrumentation-and-data-collection-requirements"></a>Datenquellen, Instrumentierung und Anforderungen für die Datensammlung
 Die Problembehandlung kann die Ablaufverfolgung aller Methoden (und ihrer Parameter) beinhalten, die im Rahmen eines Vorgangs aufgerufen werden. Daraus wird eine Struktur erstellt, die den logischen Fluss des Systems bei Eingang einer bestimmten Kundenanforderung darstellt. Vom System als Ergebnis dieses Flusses generierte Ausnahmen und Warnungen müssen erfasst und protokolliert werden.
 
 Um das Debuggen zu unterstützen, kann das System Hooks bereitstellen, mit denen ein Operator Zustandsinformationen an wichtigen Stellen im System erfassen kann. Alternativ dazu kann das System detaillierte Schritt-für-Schritt-Informationen liefern, während die ausgewählten Vorgänge fortschreiten. Die Erfassung von Daten auf dieser Detailebene kann das System zusätzlich belasten und sollte nur vorübergehend durchgeführt werden. Ein Operator verwendet diesen Prozess in erster Linie, wenn eine besonders ungewöhnliche Serie von Ereignissen auftritt und schwer zu replizieren ist oder wenn eine neue Version eines oder mehrerer Elemente in einem System sorgfältig überwacht werden muss, um sicherzustellen, dass die Elemente wie erwartet funktionieren.
@@ -370,7 +374,7 @@ Sie können sich die gesamte Überwachung und den Diagnoseprozess als eine Pipel
 
 ![Phasen in der Überwachungs- und Diagnosepipeline](media/best-practices-monitoring/Pipeline.png)
 
-*Abbildung 1: Die Phasen in der Überwachungs- und Diagnosepipeline*
+*Abbildung 1: Die Phasen in der Überwachungs- und Diagnosepipeline*
 
 Abbildung 1 zeigt, wie die Daten für die Überwachung und Diagnose aus einer Vielzahl von Datenquellen stammen können. In der Instrumentierungs- und der Sammlungsphase werden die Quellen ermittelt, von denen die Daten erfasst werden müssen. Dabei wird festgelegt, welche Daten auf welche Weise erfasst werden und wie diese Daten so formatiert werden, dass sie leicht überprüft werden können. In der Analyse-/Diagnosephase werden anhand der Rohdaten aussagekräftige Informationen generiert, mit denen ein Operator den Systemzustands feststellen kann. Der Operator kann anhand dieser Informationen Entscheidungen über mögliche Maßnahmen treffen und die Ergebnisse in die Instrumentierungs- und die Sammlungsphase zurückführen. Die Visualisierungs-/Warnungsphase bietet eine Nutzungsansicht des Systemzustands. Darin können Informationen anhand einer Reihe von Dashboards nahezu in Echtzeit angezeigt werden. Zudem kann sie Berichte, Graphen und Diagramme generieren, um eine historische Ansicht der Daten zum Ermitteln langfristiger Trends bereitzustellen. Wenn Informationen darauf hinweisen, dass eine KPI wahrscheinlich die zulässigen Begrenzungen überschreitet, kann in dieser Phase außerdem eine Warnung an einen Operator ausgelöst werden. In einigen Fällen kann über eine Warnung auch ein automatisierter Prozess ausgelöst werden, der versucht, Korrekturmaßnahmen wie z. B. die automatische Skalierung durchzuführen.
 
@@ -494,7 +498,7 @@ Die Datensammlung erfolgt häufig über einen Sammlungsdienst, der unabhängig v
 
 ![Beispiel für das Erfassen von Instrumentierungsdaten](media/best-practices-monitoring/TelemetryService.png)
 
-*Abbildung 2: Erfassen von Instrumentierungsdaten*
+*Abbildung 2: Erfassen von Instrumentierungsdaten*
 
 Bitte beachten Sie, dass dies eine vereinfachte Ansicht ist. Der Sammlungsdienst ist nicht unbedingt ein einzelner Prozess und umfasst möglicherweise viele Bestandteile, die auf verschiedenen Computern ausgeführt werden, wie in den folgenden Abschnitten beschrieben. Wenn die Analyse einiger Telemetriedaten darüber hinaus schnell ausgeführt werden muss (heiße Analyse, wie im Abschnitt [Unterstützung von heißer, warmer und kalter Analyse](#supporting-hot-warm-and-cold-analysis) weiter unten in diesem Dokument beschrieben), können lokale Komponenten außerhalb des Erfassungsdienstes die Analyseaufgaben sofort durchführen. Abbildung 2 zeigt diese Situation für ausgewählte Ereignisse. Nach der analytischen Verarbeitung können die Ergebnisse direkt an das Visualisierungs- und Warnsubsystem gesendet werden. Daten zur warmen oder kalten Analyse werden im Speicher gehalten, während sie auf die Verarbeitung warten.
 
@@ -517,14 +521,14 @@ Angesichts der Elastizität der Cloud und um zu vermeiden, dass Telemetriedaten 
 
 Um die Verwendung der Bandbreite zu optimieren, können Sie festlegen, dass weniger dringende Daten in Segmenten als Batches übertragen werden. Jedoch dürfen die Daten nicht unbegrenzt verzögert werden, insbesondere, wenn sie zeitgebundene Informationen beinhalten.
 
-#### <a name="_pulling-and-pushing-instrumentation-data_"></a>*Pullen und Pushen von Instrumentierungsdaten*
+#### <a name="pulling-and-pushing-instrumentation-data"></a>*Pullen und Pushen von Instrumentierungsdaten*
 Das Subsystem für die Instrumentierungsdatensammlung kann Instrumentierungsdaten aktiv aus den verschiedenen Protokollen und anderen Quellen für die einzelnen Instanzen der Anwendung abrufen (das *Pullmodell*). Alternativ dazu kann es als passiver Empfänger fungieren, der wartet, bis die Daten von den Komponenten gesendet werden, aus denen sich die einzelnen Instanzen der Anwendung zusammensetzen (das *Pushmodell*).
 
 Ein Ansatz zum Implementieren des Pullmodells ist die Verwendung von Überwachungs-Agents, die lokal auf den einzelnen Instanzen der Anwendung ausgeführt werden. Ein Überwachungs-Agent ist ein separater Prozess, der per Pull in regelmäßigen Abständen Telemetriedaten abruft, die vom lokalen Knoten gesammelt werden, und diese Informationen direkt in den zentralen Speicher schreibt, der von allen Instanzen der Anwendung gemeinsam verwendet wird. Dies ist der Mechanismus, der in der Azure-Diagnose implementiert wird. Jede Instanz einer Web- oder Workerrolle in Azure kann so konfiguriert werden, dass Diagnose- und andere lokal gespeicherte Ablaufverfolgungsinformationen erfasst werden. Der Überwachungs-Agent, der neben den einzelnen Instanzen ausgeführt wird, kopiert die angegebenen Daten in Azure Storage. Im Artikel [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services/cloud-services-dotnet-diagnostics.md) finden Sie nähere Einzelheiten. Einige Elemente, wie z. B. IIS-Protokolle, Absturzabbilder und benutzerdefinierte Fehlerprotokolle, werden in Blobspeicher geschrieben. Daten aus dem Windows-Ereignisprotokoll, ETW-Ereignisse und Leistungsindikatoren werden im Tabellenspeicher aufgezeichnet. Dieser Mechanismus ist in Abbildung 3 dargestellt.
 
 ![Abbildung zur Verwendung eines Überwachungs-Agents zum Abrufen von Informationen und zum Schreiben in freigegebenen Speicher](media/best-practices-monitoring/PullModel.png)
 
-*Abbildung 3: Verwenden eines Überwachungs-Agents zum Abrufen von Informationen und Schreiben in einen freigegebenen Speicher*
+*Abbildung 3: Verwenden eines Überwachungs-Agents zum Abrufen von Informationen und Schreiben in einen freigegebenen Speicher*
 
 > [!NOTE]
 > Die Verwendung eines Überwachungs-Agents eignet sich hervorragend zum Erfassen von Instrumentierungsdaten, die naturgemäß per Pull aus einer Datenquelle übertragen werden. Ein Beispiel sind Informationen von SQL Server Dynamic Management Views oder die Länge einer Azure Service Bus-Warteschlange.
@@ -537,7 +541,7 @@ Um diese Aspekte abzudecken, können Sie Warteschlangen implementieren, wie in A
 
 ![Abbildung zur Verwendung einer Warteschlange zum Puffern von Instrumentierungsdaten](media/best-practices-monitoring/BufferedQueue.png)
 
-*Abbildung 4: Mithilfe einer Warteschlange Instrumentierungsdaten puffern*
+*Abbildung 4: Mithilfe einer Warteschlange Instrumentierungsdaten puffern*
 
 Der lokale Datensammlungsdienst kann Daten unmittelbar nach deren Empfang einer Warteschlange hinzufügen. Die Warteschlange fungiert als Puffer, und der Speicherschreibdienst kann die Daten in seinem eigenen Tempo abrufen und schreiben. Standardmäßig arbeitet eine Warteschlange nach dem Prinzip „First In, First Out“. Sie können Nachrichten jedoch priorisieren, um ihren Weg durch die Warteschlange zu beschleunigen, wenn sie Daten enthalten, die schneller verarbeitet werden müssen. Weitere Informationen finden Sie unter [Prioritätswarteschlange](https://msdn.microsoft.com/library/dn589794.aspx). Alternativ dazu können Sie, abhängig von der Form der erforderlichen analytischen Verarbeitung, verschiedene Kanäle (z. B. Service Bus-Topics) verwenden, um Daten an verschiedene Ziele zu leiten.
 
@@ -545,12 +549,12 @@ Aus Gründen der Skalierbarkeit könnten Sie mehrere Instanzen des Speicherschre
 
 <a name="consolidating-instrumentation-data"></a>
 
-#### <a name="_consolidating-instrumentation-data_"></a>*Konsolidierung von Instrumentierungsdaten*
+#### <a name="consolidating-instrumentation-data"></a>*Konsolidierung von Instrumentierungsdaten*
 Die vom Datensammlungsdienst aus einer einzelnen Instanz einer Anwendung abgerufenen Instrumentierungsdaten bieten eine lokalisierte Ansicht der Integrität und Leistung dieser Instanz. Um die allgemeine Integrität des Systems zu bewerten, ist es erforderlich, einige Aspekte der Daten in den lokalen Ansichten zu konsolidieren. Diesen Schritt können Sie nach der Speicherung der Daten durchführen. In einigen Fällen kann die Konsolidierung auch während der Sammlung erfolgen. Statt direkt in den freigegebenen Speicher geschrieben zu werden, können die Instrumentierungsdaten einen separaten Datenkonsolidierungsdienst durchlaufen, der Daten kombiniert und die Rolle eines Filter- und Bereinigungsprozesses übernimmt. Beispielsweise können Instrumentierungsdaten mit den gleichen Korrelationsinformationen, z. B. einer Aktivitäts-ID, zusammengelegt werden. (Es ist möglich, dass ein Benutzer einen Geschäftsvorgang auf einem Knoten beginnt und dann bei einem Knotenausfall oder durch die Konfiguration des Lastenausgleichs auf einen anderen Knoten verwiesen wird.) Dieser Prozess kann auch alle doppelt vorhandenen Daten erkennen und entfernen (immer eine Möglichkeit, wenn der Telemetriedienst Nachrichtenwarteschlangen verwendet, um Instrumentierungsdaten aus dem Speicher zu pushen). Abbildung 5 zeigt ein Beispiel für diese Struktur.
 
 ![Beispiel für das Verwenden eines Diensts zum Konsolidieren von Instrumentierungsdaten](media/best-practices-monitoring/Consolidation.png)
 
-*Abbildung 5: Verwenden eines separaten Dienstes zum Konsolidieren und Bereinigen von Instrumentierungsdaten*
+*Abbildung 5: Verwenden eines separaten Dienstes zum Konsolidieren und Bereinigen von Instrumentierungsdaten*
 
 ### <a name="storing-instrumentation-data"></a>Speichern von Instrumentierungsdaten
 Die vorherigen Diskussionen haben auf eher simple Weise dargestellt, wie Instrumentierungsdaten gespeichert werden. In der Realität kann es sinnvoll sein, die verschiedenen Arten von Informationen mithilfe von Technologien zu speichern, die am besten für die Art der Verwendung geeignet sind.
@@ -566,7 +570,7 @@ Sie können einen zusätzlichen Dienst implementieren, der die Daten in regelmä
 
 ![Partitionierung und Speicherung von Daten](media/best-practices-monitoring/DataStorage.png)
 
-*Abbildung 6: Partitionierung von Daten anhand analytischer Anforderungen und Speicheranforderungen*
+*Abbildung 6: Partitionierung von Daten anhand analytischer Anforderungen und Speicheranforderungen*
 
 Die gleichen Instrumentierungsdaten können für mehrere Zwecke erforderlich sein. Leistungsindikatoren können z. B. verwendet werden, um eine historische Ansicht der Systemleistung über einen Zeitraum bereitzustellen. Diese Informationen können mit anderen Nutzungsdaten kombiniert werden, um Abrechnungsinformationen für Kunden zu generieren. In diesen Fällen können dieselben Daten an mehrere Ziele gesendet werden, z. B. eine Dokumentendatenbank, die als langfristiger Speicher für Abrechnungsinformationen dient, und einen mehrdimensionalen Speicher für die Verarbeitung komplexer Leistungsanalysen.
 
@@ -574,12 +578,12 @@ Sie sollten auch berücksichtigen, wie dringend die Daten benötigt werden. Date
 
 Informationen, die für eine eingehendere Analyse, für die Berichterstellung und für das Erkennen historischer Trends verwendet werden, sind weniger dringend und können so gespeichert werden, dass Data Mining und Ad-hoc-Abfragen unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Unterstützung von heißer, warmer und kalter Analyse](#supporting-hot-warm-and-cold-analysis) weiter unten in diesem Dokument.
 
-#### <a name="_log-rotation-and-data-retention_"></a>*Protokollrotation und Aufbewahrung von Daten*
+#### <a name="log-rotation-and-data-retention"></a>*Protokollrotation und Aufbewahrung von Daten*
 Die Instrumentierung kann erhebliche Datenmengen generieren. Diese Daten können an mehreren Stellen gehalten werden, von den rohen Protokolldateien, den Ablaufverfolgungsdateien und anderen Informationen, die in jedem Knoten erfasst werden, zur konsolidierten, bereinigten und partitionierten Ansicht der Daten im freigegebenen Speicher. In einigen Fällen können die ursprünglichen, rohen Quelldaten aus den einzelnen Knoten entfernt werden, sobald die Daten verarbeitet und übertragen wurden. In anderen Fällen kann es notwendig oder einfach nützlich sein, die unformatierten Informationen zu speichern. Z. B. kann es möglicherweise besser sein, zu Debugzwecken generierte Daten in unformatierter Form zu belassen. Diese Daten können jedoch schnell verworfen werden, sobald alle Fehler behoben wurden.
 
 Leistungsdaten haben häufig eine längere Lebensdauer, damit sie zum Erkennen von Leistungstrends und für die Kapazitätsplanung verwendet werden können. Die konsolidierte Ansicht dieser Daten bleibt in der Regel für einen begrenzten Zeitraum online, um einen schnellen Zugriff zu ermöglichen. Danach können diese Daten archiviert oder verworfen werden. Für die Messung und die Kundenabrechnung gesammelte Daten müssen möglicherweise dauerhaft gespeichert werden. Darüber hinaus kann es gesetzlich vorgeschrieben sein, dass für Überwachungs- und Sicherheitszwecke gesammelte Daten ebenfalls archiviert und gespeichert werden müssen. Diese Daten sind zudem vertraulich und müssen möglicherweise verschlüsselt oder auf andere Art geschützt werden, um Manipulationen zu verhindern. Sie sollten niemals Benutzerkennwörter oder andere Informationen aufzeichnen, die für Identitätsdiebstähle verwendet werden können. Diese Angaben sollten aus den Daten bereinigt werden, bevor sie gespeichert werden.
 
-#### <a name="_down-sampling_"></a>*Downsampling*
+#### <a name="down-sampling"></a>*Downsampling*
 Dies ist zum Speichern von Verlaufsdaten sinnvoll, um langfristige Trends zu ermitteln zu können. Statt alte Daten in ihrer Gesamtheit zu speichern, kann ein Downsampling der Daten möglich sein, um die Auflösung zu reduzieren und Speicherkosten zu sparen. Anstatt beispielsweise Leistungsindikatoren minütlich zu speichern, können Sie Daten, die über einen Monat alt sind, so konsolidieren, dass sie einen stündlichen Überblick geben.
 
 ### <a name="best-practices-for-collecting-and-storing-logging-information"></a>Bewährte Methoden für das Sammeln und Speichern von Protokollierungsinformationen
@@ -597,7 +601,7 @@ Wie im Abschnitt [Konsolidierung von Instrumentierungsdaten](#consolidating-inst
 
 <a name="supporting-hot-warm-and-cold-analysis"></a>
 
-### <a name="supporting-hot,-warm,-and-cold-analysis"></a>Unterstützung von heißer, warmer und kalter Analyse
+### <a name="supporting-hot-warm-and-cold-analysis"></a>Unterstützung von heißer, warmer und kalter Analyse
 Das Analysieren und Umformatieren von Daten zu Visualisierungs-, Berichterstellungs- und Alarmierungszwecken kann ein komplexer Prozess sein, der einen eigenen Satz von Ressourcen nutzt. Einige Formen der Überwachung sind zeitkritisch und erfordern eine sofortige Analyse der Daten, um effektiv zu sein. Dies bezeichnet man als *heiße Analyse*. Beispiele hierfür sind die für Warnungen und einige Aspekte der Sicherheitsüberwachung erforderlichen Analysen (z. B. Erkennen eines Angriffs auf das System). Daten, die für diese Zwecke benötigt werden, müssen schnell verfügbar und für eine effiziente Verarbeitung strukturiert sein. In einigen Fällen kann es erforderlich sein, die Analyseverarbeitung auf die einzelnen Knoten zu verschieben, auf denen die Daten gespeichert sind.
 
 Andere Arten der Analyse sind weniger zeitkritisch und erfordern möglicherweise Berechnung und Aggregation, nachdem die Rohdaten empfangen wurden. Dies wird als *warme Analyse* bezeichnet. Die Leistungsanalyse wird oft zu dieser Kategorie gezählt. In diesem Fall ist ein isoliertes, einzelnes Leistungsereignis statistisch wahrscheinlich nicht signifikant. (Es kann auf eine plötzliche Spitze oder Störung zurückzuführen sein.) Die Daten aus einer Reihe von Ereignissen sollten ein zuverlässigeres Bild der Systemleistung ergeben.
@@ -699,10 +703,13 @@ In vielen Fällen können Batchprozesse Berichte nach einem definierten Zeitplan
 * [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services/cloud-services-dotnet-diagnostics.md)
 * [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) und [HDInsight](https://azure.microsoft.com/services/hdinsight/)
 * [Verwenden von Service Bus-Warteschlangen](service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
-* [SQL Server-Business Intelligence in Azure Virtual Machines](virtual-machines/virtual-machines-windows-classic-ps-sql-bi.md)
-* [Empfangen von Warnbenachrichtigungen](azure-portal/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](azure-portal/insights-service-health.md)
+* [SQL Server-Business Intelligence in Azure Virtual Machines](virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-bi.md)
+* [Empfangen von Warnbenachrichtigungen](monitoring-and-diagnostics/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](monitoring-and-diagnostics/insights-service-health.md)
 * [Application Insights](application-insights/app-insights-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

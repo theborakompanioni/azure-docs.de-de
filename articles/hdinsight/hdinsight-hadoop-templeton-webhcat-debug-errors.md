@@ -1,13 +1,13 @@
 ---
 title: Verstehen und Beheben von WebHCat-Fehlern in HDInsight
-description: Erfahren Sie mehr zu Ursachen und Lösungen von Fehlern, die WebHCat in HDInsight zurückgibt.
+description: "Erfahren Sie mehr zu Ursachen und Lösungen von Fehlern, die WebHCat in HDInsight zurückgibt."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 1b3d94b1-207d-4550-aece-21dc45485549
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6b50b1c0522db3efe3bb5a10fd978dfaa41e2987
+
 
 ---
-# <a name="understand-and-resolve-errors-received-from-webhcat-(templeton,)-on-hdinsight"></a>Verstehen und Beheben von Fehlern in HDInsight, die von WebHCat (Templeton) ausgegeben wurden
+# <a name="understand-and-resolve-errors-received-from-webhcat-templeton-on-hdinsight"></a>Verstehen und Beheben von Fehlern in HDInsight, die von WebHCat (Templeton) ausgegeben wurden
 Wenn Sie für die Arbeit mit HDInsight WebHCat (ehemals Templeton) verwenden, erhalten Sie eventuell Fehler. In diesem Dokument finden Sie Hinweise zu den Ursachen und Lösungen häufiger Fehler.
 
-## <a name="what-is-webhcat?"></a>Was ist WebHCat?
+## <a name="what-is-webhcat"></a>Was ist WebHCat?
 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) ist eine REST-API für [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), eine Tabellen- und Speicherverwaltungsschicht für Hadoop. WebHCat ist in HDInsight-Clustern standardmäßig aktiviert und wird von verschiedenen Tools zum Übermitteln von Aufträgen, Abfragen des Auftragsstatus und ähnlichem verwendet, ohne dass eine Anmeldung beim Cluster erforderlich ist.
 
 ## <a name="modifying-configuration"></a>Konfigurationsänderungen
@@ -39,7 +43,7 @@ Nachfolgend finden Sie eine Liste der Standardkonfigurationswerte, deren Übersc
 | --- | --- | --- |
 | [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Die maximale Anzahl an Aufträgen, die gleichzeitig aktiv sein können (ausstehend oder in Bearbeitung). |10.000 |
 | [templeton.exec.max-procs][max-procs] |Die maximale Anzahl an Anforderungen, die gleichzeitig bearbeitet werden können. |20 |
-| [mapreduce.jobhistory.max-age-ms][max-age-ms] |Die Anzahl der Tage, die der Auftragsverlauf gespeichert wird. |7 Tage |
+| [mapreduce.jobhistory.max-age-ms][max-age-ms] |Die Anzahl der Tage, die der Auftragsverlauf gespeichert wird. |7 Tage |
 
 ## <a name="too-many-requests"></a>Zu viele Anforderungen
 **HTTP-Statuscode**: 429
@@ -55,7 +59,7 @@ Nachfolgend finden Sie eine Liste der Standardkonfigurationswerte, deren Übersc
 | --- | --- |
 | Dieser Fehler tritt gewöhnlich bei einem Failover zwischen dem primären und sekundären Hauptknoten des Clusters auf. |Warten Sie zwei Minuten, bevor Sie den Vorgang wiederholen. |
 
-## <a name="bad-request-content:-could-not-find-job"></a>Ungültige Anforderung: Auftrag nicht gefunden
+## <a name="bad-request-content-could-not-find-job"></a>Ungültige Anforderung: Auftrag nicht gefunden
 **HTTP-Statuscode**: 400
 
 | Ursache | Lösung |
@@ -82,6 +86,6 @@ Nachfolgend finden Sie eine Liste der Standardkonfigurationswerte, deren Übersc
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

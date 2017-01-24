@@ -1,19 +1,23 @@
 ---
-title: Azure Storage Service Encryption für ruhende Daten | Microsoft Docs
-description: Verwenden Sie Azure Storage Service Encryption, um Ihren Azure-Blobspeicher auf der Dienstseite zu verschlüsseln, wenn die Daten gespeichert werden, und beim Abrufen der Daten zu entschlüsseln.
+title: "Azure Storage Service Encryption für ruhende Daten | Microsoft Docs"
+description: "Verwenden Sie Azure Storage Service Encryption, um Ihren Azure-Blobspeicher auf der Dienstseite zu verschlüsseln, wenn die Daten gespeichert werden, und beim Abrufen der Daten zu entschlüsseln."
 services: storage
 documentationcenter: .net
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/08/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b582e7515ccc588b1381285bdf4bfae00554ac3f
+
 
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption für ruhende Daten
@@ -56,16 +60,16 @@ Für SSE gelten die folgenden Einschränkungen:
 * Tabellen, Warteschlangen und Dateidaten werden nicht verschlüsselt.
 
 ## <a name="getting-started"></a>Erste Schritte
-### <a name="step-1:-[create-a-new-storage-account](storage-create-storage-account.md)."></a>Schritt 1: [Erstellen eines neuen Speicherkontos](storage-create-storage-account.md)
-### <a name="step-2:-enable-encryption."></a>Schritt 2: Aktivieren der Verschlüsselung
+### <a name="step-1-create-a-new-storage-accountstorage-create-storage-accountmd"></a>Schritt 1: [Erstellen eines neuen Speicherkontos](storage-create-storage-account.md)
+### <a name="step-2-enable-encryption"></a>Schritt 2: Aktivieren der Verschlüsselung
 Sie können die Verschlüsselung im [Azure-Portal](https://portal.azure.com)aktivieren.
 
 > [!NOTE]
-> Wenn Sie SSE programmgesteuert für ein Speicherkonto aktivieren oder deaktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://msdn.microsoft.com/library/azure/mt163683.aspx), die [Clientbibliothek des Speicherressourcenanbieters für .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx), [Azure PowerShell](../powershell-install-configure.md) oder die [Azure-CLI](storage-azure-cli.md) verwenden.
+> Wenn Sie SSE programmgesteuert für ein Speicherkonto aktivieren oder deaktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://msdn.microsoft.com/library/azure/mt163683.aspx), die [Clientbibliothek des Speicherressourcenanbieters für .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [Azure-CLI](storage-azure-cli.md) verwenden.
 > 
 > 
 
-### <a name="step-3:-copy-data-to-storage-account"></a>Schritt 3: Kopieren von Daten in das Speicherkonto
+### <a name="step-3-copy-data-to-storage-account"></a>Schritt 3: Kopieren von Daten in das Speicherkonto
 Wenn Sie SSE für ein Speicherkonto aktivieren und dann Blobs in dieses Speicherkonto schreiben, werden die Blobs verschlüsselt. Alle Blobs, die sich bereits in diesem Speicherkonto befinden, werden erst verschlüsselt, nachdem sie erneut geschrieben wurden. Sie können die Daten aus einem Speicherkonto in ein mit SSE verschlüsseltes Konto kopieren und sogar SSE aktivieren und die Blobs aus einem Container in einen anderen kopieren, um sicherzustellen, dass ältere Daten verschlüsselt werden. Sie können dazu eines der folgenden Tools verwenden.
 
 #### <a name="using-azcopy"></a>Verwenden von AzCopy
@@ -83,7 +87,7 @@ Mit einem Storage-Explorer können Sie Speicherkonten erstellen, Daten hoch- und
 
 Weitere Informationen finden Sie unter [Microsoft Azure-Speicher-Explorer](storage-explorers.md).
 
-### <a name="step-4:-query-the-status-of-the-encrypted-data"></a>Schritt 4: Abfragen des Status der verschlüsselten Daten
+### <a name="step-4-query-the-status-of-the-encrypted-data"></a>Schritt 4: Abfragen des Status der verschlüsselten Daten
 Eine aktualisierte Version der Speicherclientbibliotheken wurde bereitgestellt, mit denen Sie den Status eines Objekts ermitteln können, um zu bestimmen, ob es verschlüsselt ist oder nicht. In naher Zukunft werden diesem Dokument Beispiele hinzugefügt.
 
 Rufen Sie in der Zwischenzeit [Kontoeigenschaften abrufen](https://msdn.microsoft.com/library/azure/mt163553.aspx) auf, um zu überprüfen, ob die Verschlüsselung für das Speicherkonto aktiviert wurde, oder zeigen Sie die Eigenschaften des Speicherkontos im Azure-Portal an.
@@ -175,6 +179,9 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 ## <a name="next-steps"></a>Nächste Schritte
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -27,7 +27,7 @@ Für dieses Projekt wird der [Microsoft Open Source Code of Conduct](https://ope
 
 ## <a name="about-your-contributions-to-azure-content"></a>Über Ihre Beiträge zu Azure-Inhalten
 ### <a name="minor-corrections"></a>Kleinere Korrekturen
-Kleinere Korrekturen oder Klarstellungen, die Sie für die Dokumentation oder für Codebeispiele in diesem Repository einreichen, werden durch die [Nutzungsbedingungen für „docs.microsoft.com“](https://docs.microsoft.com/legal/termsofuse) abgedeckt.
+Kleinere Korrekturen oder Klarstellungen, die Sie für die Dokumentation oder für Codebeispiele in diesem Repository einreichen, werden durch die [Nutzungsbedingungen für „docs.microsoft.com“](/enterprise-mobility-security/termsofuse) abgedeckt.
 
 ### <a name="larger-submissions"></a>Größere Beiträge
 Wenn Sie einen Pull Request mit neuen Inhalten oder signifikanten Änderungen an der Dokumentation und an Codebeispielen übermitteln, senden wir Ihnen einen Kommentar in GitHub, in dem wir Sie bitten, online eine Lizenzvereinbarung für Beiträge (Contribution License Agreement, CLA) zu unterzeichnen. Dies gilt, wenn Sie kein Mitarbeiter von Microsoft sind. Sie müssen das Onlineformular ausfüllen, damit wir Ihren Pull Request annehmen können.
@@ -87,6 +87,6 @@ Alle Anleitungsthemen finden Sie im [Index zum Leitfaden für Mitwirkende](contr
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

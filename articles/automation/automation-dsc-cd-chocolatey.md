@@ -3,9 +3,9 @@ title: "Azure Automation DSC – Fortlaufende Bereitstellung mit Chocolatey | Mi
 description: "Fortlaufende DevOps-Bereitstellung per Azure Automation DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-ARM-Vorlage und PowerShell-Quelle."
 services: automation
 documentationcenter: 
-author: sebastus
-manager: stevenka
-editor: 
+author: eslesar
+manager: carmonm
+editor: tysonn
 ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
 ms.devlang: na

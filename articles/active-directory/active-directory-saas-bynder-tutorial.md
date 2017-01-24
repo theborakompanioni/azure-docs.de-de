@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Bynder | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Bynder konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 4fb0ab26-b3b9-420a-8072-a0be80ea021e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f7c5269387b044a025afaa59316703d0988e85d8
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-bynder"></a>Tutorial: Azure Active Directory-Integration mit Bynder
+# <a name="tutorial-azure-active-directory-integration-with-bynder"></a>Tutorial: Azure Active Directory-Integration mit Bynder
 Dieses Tutorial soll Ihnen zeigen, wie Sie Bynder in Azure Active Directory (Azure AD) integrieren können.
 
 Die Integration von Bynder in Azure AD bietet die folgenden Vorteile:
@@ -25,7 +29,7 @@ Die Integration von Bynder in Azure AD bietet die folgenden Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Bynder anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Bynder konfigurieren zu können, benötigen Sie Folgendes:
@@ -244,6 +248,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Bynder“ klicken, sollten Sie aut
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

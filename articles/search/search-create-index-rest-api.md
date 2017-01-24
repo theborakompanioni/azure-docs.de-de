@@ -13,11 +13,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 107186c6d77550948169caa6f0f89589dd3bddd9
+ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
+ms.openlocfilehash: 7e28fdde31c735b5de99aa7031ceb1b2abf72576
 
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Erstellen eines Azure Search-Indexes mit der REST-API
@@ -30,16 +30,16 @@ ms.openlocfilehash: 107186c6d77550948169caa6f0f89589dd3bddd9
 >
 >
 
-In diesem Artikel lernen Sie, wie Sie einen Azure Search- [Index](https://msdn.microsoft.com/library/azure/dn798941.aspx) mithilfe der Azure Search REST-API erstellen.
+In diesem Artikel lernen Sie, wie Sie einen Azure Search- [Index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) mithilfe der Azure Search REST-API erstellen.
 
 Bevor Sie dieser Anleitung folgen und einen Index erstellen, müssen Sie einen [Azure Search-Dienst erstellen](search-create-service-portal.md).
 
 Zum Erstellen des Azure Search-Indexes mithilfe der REST-API können Sie eine einzelne HTTP POST-Anforderung an den URL-Endpunkt Ihres Azure Search-Diensts ausgeben. Ihre Indexdefinition ist im Anforderungstext als richtig formatierter JSON-Inhalt enthalten.
 
 ## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
-Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, können Sie HTTP-Anforderungen für den URL-Endpunkt Ihres Diensts mithilfe der REST-API ausgeben. Allerdings müssen *alle* API-Anforderungen den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
+Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, können Sie HTTP-Anforderungen für den URL-Endpunkt Ihres Diensts mithilfe der REST-API ausgeben. *Alle* API-Anforderungen müssen den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu ermitteln.
 2. Wechseln Sie zum Blatt Ihres Azure Search-Diensts.
 3. Klicken Sie auf das Schlüsselsymbol.
 
@@ -51,12 +51,12 @@ Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 Verwenden Sie zum Erstellen eines Indexes entweder den primären oder den sekundären Admin-Schlüssel.
 
 ## <a name="ii-define-your-azure-search-index-using-well-formed-json"></a>II. Definieren des Azure Search-Indexes mithilfe richtig formatierter JSON
-Eine einzelne HTTP POST-Anforderung an Ihren Dienst erstellt den Index. Der Hauptteil der HTTP POST-Anforderung enthält ein  einzelnes JSON-Objekt, das den Azure Search-Index definiert.
+Eine einzelne HTTP POST-Anforderung an Ihren Dienst erstellt den Index. Der Hauptteil der HTTP POST-Anforderung enthält ein einzelnes JSON-Objekt, das den Azure Search-Index definiert.
 
 1. Die erste Eigenschaft des JSON-Objekts ist der Name des Indexes.
 2. Die zweite Eigenschaft des JSON-Objekts ist ein JSON-Array mit dem Namen `fields` , das ein separates JSON-Objekt für jedes Feld im Index enthält. Diese JSON-Objekte enthalten mehrere Name-Wert-Paare für jedes Feldattribut, einschließlich Name, Typ usw.
 
-Berücksichtigen Sie beim Gestalten des Indexes die Benutzerfreundlichkeit und die geschäftlichen Anforderungen, da jedem Feld die [richtigen Attribute](https://msdn.microsoft.com/library/azure/dn798941.aspx)zugewiesen sein müssen. Diese Attribute steuern, welche Suchfunktionen (Filtern, Facettierung, Sortieren der Volltextsuche usw.) für welche Felder gelten. Für jedes nicht festgelegte Attribut ist die entsprechende Suchfunktion standardmäßig aktiviert, sofern Sie sie nicht explizit deaktivieren.
+Berücksichtigen Sie beim Gestalten des Indexes die Benutzerfreundlichkeit und die geschäftlichen Anforderungen, da jedem Feld die [richtigen Attribute](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zugewiesen sein müssen. Diese Attribute steuern, welche Suchfunktionen (Filtern, Facettierung, Sortieren der Volltextsuche usw.) für welche Felder gelten. Für jedes nicht festgelegte Attribut ist die entsprechende Suchfunktion standardmäßig aktiviert, sofern Sie sie nicht explizit deaktivieren.
 
 In unserem Beispiel hat der Index den Namen „hotels“. Die Felder wurden wie folgt definiert:
 
@@ -84,7 +84,7 @@ Wir haben die Indexattribute für jedes Feld ausgehend davon ausgewählt, wie si
 
 In Ihrem Index des Typs `Edm.String` muss genau ein Feld als „key“ bestimmt sein.
 
-Diese Indexdefinition verwendet für das Feld `description_fr` eine benutzerdefinierte Sprachanalyse, da sie Text auf Französisch speichern soll. Im [Thema zur Sprachunterstützung auf MSDN](https://msdn.microsoft.com/library/azure/dn879793.aspx) sowie im entsprechenden [Blogbeitrag](https://azure.microsoft.com/blog/language-support-in-azure-search/) finden Sie weitere Informationen zu Sprachanalysen.
+Diese Indexdefinition verwendet für das Feld `description_fr` eine Sprachanalyse, da es für Text in französischer Sprache vorgesehen ist. Weitere Informationen zu Sprachanalysen finden Sie im [Thema zur Sprachunterstützung](https://docs.microsoft.com/rest/api/searchservice/Language-support) sowie im entsprechenden [Blogbeitrag](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
 ## <a name="iii-issue-the-http-request"></a>III. Stellen der HTTP-Anforderung
 1. Stellen Sie eine HTTP POST-Anforderung an die Endpunkt-URL des Azure Search-Diensts, indem Sie Ihre Indexdefinition als Anforderungstext verwenden. Verwenden Sie in der URL Ihren Dienstnamen als Hostnamen, und geben Sie die richtige `api-version` als Abfragezeichenfolgeparameter ein (zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2016-09-01` die aktuelle API-Version).
@@ -97,7 +97,7 @@ Zum Übermitteln der folgenden Anforderung müssen Sie Ihren Dienstnamen und API
     api-key: [api-key]
 
 
-Bei einer erfolgreichen Anforderung erscheint der Statuscode 201 (erstellt). Weitere Informationen zum Erstellen eines Indexes über die REST-API finden Sie in der API-Referenz auf [MSDN](https://msdn.microsoft.com/library/azure/dn798941.aspx). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP status codes (Azure Search)](https://msdn.microsoft.com/library/azure/dn798925.aspx)(HTTP-Statuscodes (Azure Search)).
+Bei einer erfolgreichen Anforderung erscheint der Statuscode 201 (erstellt). Weitere Informationen zum Erstellen eines Index über die REST-API finden Sie in der [API-Referenz](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP-Statuscodes (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
 Wenn Sie einen Index nicht mehr benötigen und ihn löschen möchten, stellen Sie einfach eine HTTP DELETE-Anforderung. Der Index „hotels“ wird beispielsweise wie folgt gelöscht:
 
@@ -110,6 +110,6 @@ Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den I
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

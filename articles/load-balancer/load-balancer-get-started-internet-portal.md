@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 196f9f002a1639867c210fc0dafdb783ed1e90af
+ms.sourcegitcommit: 5ce773311b691bf28ea3e9590ab74603a1a9b641
+ms.openlocfilehash: 052a9e6a511875dcb2a79ecad89ee09b32948d06
 
 ---
 
@@ -37,7 +37,7 @@ Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Hier erfa
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-Hier finden Sie eine ausführliche Beschreibung der einzelnen Aufgaben, die zum Erstellen eines Load Balancers durchgeführt werden müssen.
+Hier finden Sie eine ausführliche Beschreibung der einzelnen Aufgaben, die zum Erstellen eines Lastenausgleichs ausgeführt werden müssen.
 
 ## <a name="what-is-required-to-create-an-internet-facing-load-balancer"></a>Was ist erforderlich, um einen Load Balancer mit Internetzugriff zu erstellen?
 
@@ -115,6 +115,6 @@ Zum Löschen eines Load Balancers wählen Sie den Load Balancer aus, den Sie ent
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

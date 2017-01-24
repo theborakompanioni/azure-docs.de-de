@@ -9,7 +9,7 @@ manager: jhubbard
 editor: 
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
-ms.custom: overview
+ms.custom: single databases
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: d772dabf84fc3b6c061c0f4607c989aabf9dd272
-ms.openlocfilehash: 6d15839ce4084a808d9ecd5900a39a4f67dec822
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 6b016384339f0dc943237a88787c2c86debd9016
 
 
 ---
@@ -30,15 +30,15 @@ In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie das Azure-Porta
 * Erstellen eines logischen Azure SQL-Servers
 * Anzeigen der Eigenschaften eines logischen Azure SQL-Servers
 * Erstellen einer Firewallregel auf Serverebene
-* Erstellen der Beispieldatenbank Adventure Works LT
+* Erstellen der Adventure Works LT-Beispieldatenbank als eigenständige Datenbank
 * Anzeigen von Eigenschaften der Adventure Works LT-Beispieldatenbank in Azure
 
 In diesem Tutorial verwenden Sie auch die aktuelle Version von SQL Server Management Studio für folgende Aufgaben:
 
 * Herstellen einer Verbindung mit dem logischen Server und der dazugehörigen Masterdatenbank
-* Anzeigen von Eigenschaften der Masterdatenbank
+* Abfragen der Masterdatenbank
 * Herstellen einer Verbindung mit der Beispieldatenbank
-* Anzeigen von Eigenschaften der Benutzerdatenbank
+* Abfragen der Beispieldatenbank
 
 Nach Abschluss dieses Tutorials verfügen Sie über eine Beispieldatenbank und eine leere Datenbank, die in einer Azure-Ressourcengruppe ausgeführt wird und einem logischen Server zugeordnet ist. Außerdem verfügen Sie über eine Firewallregel auf Serverebene, die so konfiguriert ist, dass sich der Prinzipal auf Serverebene am Server über eine angegebene IP-Adresse (oder einen IP-Adressbereich) anmelden kann. 
 
@@ -208,7 +208,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
     ![Serveranmeldeinformationen](./media/sql-database-get-started/server-credentials.png)
 
     > [!NOTE]
-    > Beim Hinzufügen einer Datenbank zu einem Server kann die Datenbank als Einzeldatenbank (Standardeinstellung) oder einem elastischen SQL-Pool hinzugefügt werden. Weitere Informationen zu elastischen Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
+    > Beim Hinzufügen einer Datenbank zu einem Server kann die Datenbank als eigenständige Datenbank (Standardeinstellung) oder einem elastischen Pool hinzugefügt werden. Weitere Informationen zu elastischen Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
     >
 
 7. Ändern Sie unter „Tarif“ den Tarif in **Basic**. (Sie können die Tarifstufe später wieder erhöhen, aber zu Lernzwecken ist es ratsam, hier den einfachsten Tarif zu wählen.)
@@ -304,6 +304,6 @@ Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutoria
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

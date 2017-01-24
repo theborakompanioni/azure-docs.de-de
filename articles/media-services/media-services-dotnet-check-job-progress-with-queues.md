@@ -1,12 +1,12 @@
 ---
-title: Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET | Microsoft Docs
-description: Hier erfahren Sie, wie Sie Media Services-Auftragsbenachrichtigungen mithilfe des Azure-Warteschlangenspeichers überwachen. Das Codebeispiel ist in C# geschrieben und verwendet das Media Services SDK für .NET.
+title: "Verwenden von Azure Queue Storage zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie Media Services-Auftragsbenachrichtigungen mithilfe des Azure-Warteschlangenspeichers überwachen. Das Codebeispiel ist in C# geschrieben und verwendet das Media Services SDK für .NET."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: f535d0b5-f86c-465f-81c6-177f4f490987
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,36 +14,40 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 876b6a81c5fba7cd9567f913860dd5bdc2391c15
+
 
 ---
-# Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
-Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Fortschritt überprüfen, indem Sie den Azure-Warteschlangenspeicher zur Überwachung von Media Services-Auftragsbenachrichtigungen verwenden (wie im vorliegenden Thema beschrieben) oder einen StateChanged-Ereignishandler definieren (wie in [diesem Thema](media-services-check-job-progress.md) beschrieben).
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
+Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Fortschritt überprüfen, indem Sie den Azure-Warteschlangenspeicher zur Überwachung von Media Services-Auftragsbenachrichtigungen verwenden (wie im vorliegenden Thema beschrieben) oder einen StateChanged-Ereignishandler definieren (wie in [diesem Thema](media-services-check-job-progress.md) beschrieben).  
 
-## Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen
-Microsoft Azure Media Services bietet bei der Verarbeitung von Medienaufträgen die Möglichkeit, Benachrichtigungen an den [Azure-Warteschlangenspeicher](../storage/storage-dotnet-how-to-use-queues.md#what-is) zu übermitteln. In diesem Thema wird gezeigt, wie Sie diese Benachrichtigungen aus dem Warteschlangenspeicher abrufen.
+## <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen
+Microsoft Azure Media Services bietet bei der Verarbeitung von Medienaufträgen die Möglichkeit, Benachrichtigungen an [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) zu übermitteln. In diesem Thema wird gezeigt, wie Sie diese Benachrichtigungen aus dem Warteschlangenspeicher abrufen.
 
 Auf die an den Warteschlangenspeicher übermittelten Nachrichten kann von überall auf der Welt aus zugegriffen werden. Die Benachrichtigungsarchitektur für Azure-Warteschlangen ist zuverlässig und hochgradig skalierbar. Das Abrufen des Warteschlangenspeichers wird gegenüber anderen Methoden empfohlen.
 
-Häufig werden Media Services-Benachrichtigungen überwacht, wenn Sie ein Content Management System entwickeln, das nach Abschluss der Codierung eines Auftrags einige zusätzliche Aufgaben durchführen soll (z. B. den nächsten Schritt in einem Workflow auslösen oder Inhalte veröffentlichen).
+Häufig werden Media Services-Benachrichtigungen überwacht, wenn Sie ein Content Management System entwickeln, das nach Abschluss der Codierung eines Auftrags einige zusätzliche Aufgaben durchführen soll (z. B. den nächsten Schritt in einem Workflow auslösen oder Inhalte veröffentlichen).
 
-### Überlegungen
+### <a name="considerations"></a>Überlegungen
 Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die die Azure-Speicherwarteschlange verwenden.
 
 * Der Warteschlangendienst bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
 * Azure-Speicherwarteschlangen sind kein Push-Dienst. Sie müssen die Warteschlange abfragen.
-* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://msdn.microsoft.com/library/azure/dd179363.aspx).
-* Azure-Speicherwarteschlangen weisen einige Einschränkungen und Besonderheiten auf, die im folgenden Artikel beschrieben werden: [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://docs.microsoft.com/rest/api/storageservices/fileservices/Queue-Service-REST-API).
+* Azure-Speicherwarteschlangen weisen einige Einschränkungen und Besonderheiten auf, die im folgenden Artikel beschrieben werden: [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
-### Codebeispiel
+### <a name="code-example"></a>Codebeispiel
 Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 
-1. Definiert die **EncodingJobMessage**-Klasse, die das Format der Benachrichtigung zuordnet. Der Code deserialisiert Nachrichten aus der Warteschlange in Objekte vom Typ **EncodingJobMessage**.
+1. Definiert die **EncodingJobMessage** -Klasse, die das Format der Benachrichtigung zuordnet. Der Code deserialisiert Nachrichten aus der Warteschlange in Objekte vom Typ **EncodingJobMessage** .
 2. Lädt die Informationen zu Media Services und Speicherkonto aus der Datei "app.config". Verwendet diese Informationen zum Erstellen des **CloudMediaContext**-Objekts und des **CloudQueue**-Objekts.
 3. Erstellt die Warteschlange, die Benachrichtigungen zum Codierungsauftrag empfängt.
 4. Erstellt den Endpunkt für Benachrichtigungen, der der Warteschlange zugeordnet ist.
 5. Fügt den Endpunkt für die Benachrichtigung an den Auftrag an und übermittelt den Codierungsauftrag. Sie können mehrere Benachrichtigungsendpunkte an einen Auftrag anfügen.
 6. In diesem Beispiel interessieren wir uns nur für die Endphasen der Auftragsverarbeitung, daher übergeben wir **NotificationJobState.FinalStatesOnly** an die **AddNew**-Methode.
-   
+
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
 7. Wenn Sie „NotificationJobState.All“ übergeben, sollten Sie damit alle Benachrichtigungen über Statusänderungen empfangen: „Warteschlange“ > „Geplant“ > „Verarbeitung“ > „Abgeschlossen“. Wie aber bereits erwähnt, garantiert der Azure Storage-Warteschlangendienst keine geordneten Übermittlung. Sie können die "Timestamp"-Eigenschaft (im Beispiel unten im Typ "EncodingJobMessage" definiert) zum Ordnen der Nachrichten verwenden. Es kann vorkommen, dass Sie Benachrichtigungen mehrfach erhalten. Mithilfe der "ETag"-Eigenschaft (im Typ "EncodingJobMessage" definiert) können Sie nach Duplikaten suchen. Andererseits kann es auch vorkommen, dass Statusänderungsbenachrichtigungen übersprungen werden.
 8. Wartet, bis der Auftrag abgeschlossen ist, indem er die Warteschlange alle zehn Sekunden überprüft. Löscht Nachrichten, nachdem sie verarbeitet wurden.
@@ -51,10 +55,10 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 
 > [!NOTE]
 > Die empfohlene Methode zum Überwachen des Auftragsstatus ist das Überwachen von Benachrichtigungen, wie im folgenden Beispiel gezeigt.
-> 
-> Sie können aber auch den Status eines Auftrags mithilfe der **IJob.State**-Eigenschaft überprüfen. Eine Benachrichtigung zum Abschluss eines Auftrags kann eintreffen, bevor der Zustand für **IJob** auf **Abgeschlossen** festgelegt wurde. Die **IJob.State**-Eigenschaft gibt den korrekten Zustand leicht verzögert an.
-> 
-> 
+>
+> Sie können aber auch den Status eines Auftrags mithilfe der **IJob.State** -Eigenschaft überprüfen.  Eine Benachrichtigung zum Abschluss eines Auftrags kann eintreffen, bevor der Zustand für **IJob** auf **Abgeschlossen** festgelegt wurde. Die **IJob.State**-Eigenschaft gibt den korrekten Zustand leicht verzögert an.
+>
+>
 
     using System;
     using System.Linq;
@@ -75,14 +79,14 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
     {
         public class EncodingJobMessage
         {
-            // MessageVersion is used for version control. 
+            // MessageVersion is used for version control.
             public String MessageVersion { get; set; }
 
-            // Type of the event. Valid values are 
+            // Type of the event. Valid values are
             // JobStateChange and NotificationEndpointRegistration.
             public String EventType { get; set; }
 
-            // ETag is used to help the customer detect if 
+            // ETag is used to help the customer detect if
             // the message is a duplicate of another message previously sent.
             public String ETag { get; set; }
 
@@ -99,9 +103,9 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
             //          Scheduled, Processing, Canceling, Cancelled, Error, Finished
 
             // For the NotificationEndpointRegistration event the values are:
-            //     NotificationEndpointId- Id of the NotificationEndpoint 
+            //     NotificationEndpointId- Id of the NotificationEndpoint
             //          that triggered the notification.
-            //     State- The state of the Endpoint. 
+            //     State- The state of the Endpoint.
             //          Valid values are: Registered and Unregistered.
 
             public IDictionary<string, object> Properties { get; set; }
@@ -126,14 +130,14 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 
                 string endPointAddress = Guid.NewGuid().ToString();
 
-                // Create the context. 
+                // Create the context.
                 _context = new CloudMediaContext(mediaServicesAccountName, mediaServicesAccountKey);
 
                 // Create the queue that will be receiving the notification messages.
                 _queue = CreateQueue(storageConnectionString, endPointAddress);
 
                 // Create the notification point that is mapped to the queue.
-                _notificationEndPoint = 
+                _notificationEndPoint =
                         _context.NotificationEndPoints.Create(
                         Guid.NewGuid().ToString(), NotificationEndPointType.AzureQueue, endPointAddress);
 
@@ -172,15 +176,15 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My MP4 to Smooth Streaming encoding job");
 
-                //Create an encrypted asset and upload the mp4. 
-                IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.StorageEncrypted, 
+                //Create an encrypted asset and upload the mp4.
+                IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.StorageEncrypted,
                     inputMediaFilePath);
 
-                // Get a media processor reference, and pass to it the name of the 
+                // Get a media processor reference, and pass to it the name of the
                 // processor to use for the specific task.
                 IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-                // Create a task with the conversion details, using a configuration file. 
+                // Create a task with the conversion details, using a configuration file.
                 ITask task = job.Tasks.AddNew("My encoding Task",
                     processor,
                     "H264 Multiple Bitrate 720p",
@@ -194,7 +198,7 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
                     AssetCreationOptions.None);
 
                 // Add a notification point to the job. You can add multiple notification points.  
-                job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, 
+                job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly,
                     _notificationEndPoint);
 
                 job.Submit();
@@ -237,7 +241,7 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
                                 Console.WriteLine("    {0}: {1}", property.Key, property.Value);
                             }
 
-                            // We are only interested in messages 
+                            // We are only interested in messages
                             // where EventType is "JobStateChange".
                             if (encodingJobMsg.EventType == "JobStateChange")
                             {
@@ -254,7 +258,7 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 
                                     if (newJobState == (JobState)expectedState)
                                     {
-                                        Console.WriteLine("job with Id: {0} reached expected state: {1}", 
+                                        Console.WriteLine("job with Id: {0} reached expected state: {1}",
                                             jobId, newJobState);
                                         jobReachedExpectedState = true;
                                         break;
@@ -271,7 +275,7 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
                     bool timedOut = (timeDiff.TotalSeconds > timeOutInSeconds);
                     if (timedOut)
                     {
-                        Console.WriteLine(@"Timeout for checking job notification messages, 
+                        Console.WriteLine(@"Timeout for checking job notification messages,
                                             latest found state ='{0}', wait time = {1} secs",
                             jobState,
                             timeDiff.TotalSeconds);
@@ -283,7 +287,7 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 
             static private IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
             {
-                var asset = _context.Assets.Create("UploadSingleFile_" + DateTime.UtcNow.ToString(), 
+                var asset = _context.Assets.Create("UploadSingleFile_" + DateTime.UtcNow.ToString(),
                     assetCreationOptions);
 
                 var fileName = Path.GetFileName(singleFilePath);
@@ -336,16 +340,20 @@ Das Beispiel oben generiert die folgende Ausgabe. Die Werte können variieren.
         NewState: Finished
         OldState: Processing
         AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected 
+    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
     State: Finished
 
 
-## Nächster Schritt
+## <a name="next-step"></a>Nächster Schritt
 Media Services-Lernpfade ansehen
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Jan17_HO2-->
+
+

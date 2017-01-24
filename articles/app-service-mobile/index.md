@@ -195,6 +195,6 @@ Hier erfahren Sie, wie Sie mithilfe von Mobile Apps in Azure App Service native 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -5,9 +5,9 @@ services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 42cc83b058f504ba5eb7a918fbcc775f14c632fd
+
 
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell
@@ -35,7 +39,8 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
 
 [!INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-#### <a name="vnet-peering"></a>VNet-Peering
+**VNet-Peering**
+
 [!INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
 ## <a name="before-beginning"></a>Vorbereitungen
@@ -44,9 +49,9 @@ Die folgenden Schritte führen Sie durch die erforderlichen Einstellungen zum Ko
 ### <a name="prerequisites"></a>Voraussetzungen
 * Beide VNets wurden bereits erstellt.
 * Die Adressbereiche für die VNets überlappen weder einander noch die Bereiche für andere Verbindungen, mit denen die Gateways verbunden werden können.
-* Sie haben die aktuellen PowerShell-Cmdlets (1.0.2 oder höher) installiert. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) . Installieren Sie sowohl die SM-Cmdlets (Dienstverwaltung) als auch die RM-Cmdlets (Resource Manager). 
+* Sie haben die aktuellen PowerShell-Cmdlets (1.0.2 oder höher) installiert. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) . Installieren Sie sowohl die SM-Cmdlets (Dienstverwaltung) als auch die RM-Cmdlets (Resource Manager). 
 
-### <a name="<a-name="exampleref"></a>example-settings"></a><a name="exampleref"></a>Beispieleinstellungen
+### <a name="a-nameexamplerefaexample-settings"></a><a name="exampleref"></a>Beispieleinstellungen
 Sie können die Beispieleinstellungen als Referenz verwenden.
 
 **Einstellungen für das klassische VNet**
@@ -72,7 +77,7 @@ Lokales Netzwerkgateway = ClassicVNetLocal <br>
 Name des Gateways für virtuelle Netzwerke = RMGateway <br>
  Gateway-IP-Adressierungskonfiguration = gwipconfig
 
-## <a name="<a-name="createsmgw"></a>section-1---configure-the-classic-vnet"></a><a name="createsmgw"></a>Abschnitt 1 – Konfigurieren des klassischen VNet
+## <a name="a-namecreatesmgwasection-1---configure-the-classic-vnet"></a><a name="createsmgw"></a>Abschnitt 1 – Konfigurieren des klassischen VNet
 ### <a name="part-1---download-your-network-configuration-file"></a>Teil 1 – Herunterladen der Netzwerkkonfigurationsdatei
 1. Melden Sie sich in der PowerShell-Konsole mit erhöhten Rechten bei Ihrem Azure-Konto an. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto auf. Nach dem Anmelden werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen. Für diesen Teil der Konfiguration verwenden Sie die SM-PowerShell-Cmdlets.
    
@@ -148,14 +153,14 @@ Verwenden Sie das folgende Beispiel, um ein Gateway mit dynamischem Routing zu e
 
 Sie können den Gatewaystatus mithilfe des Cmdlets `Get-AzureVNetGateway` überprüfen.
 
-## <a name="<a-name="creatermgw"></a>section-2:-configure-the-rm-vnet-gateway"></a><a name="creatermgw"></a>Abschnitt 2: Konfigurieren des RM-VNet-Gateways
+## <a name="a-namecreatermgwasection-2-configure-the-rm-vnet-gateway"></a><a name="creatermgw"></a>Abschnitt 2: Konfigurieren des RM-VNet-Gateways
 Gehen Sie wie im Folgenden beschrieben vor, um ein VPN-Gateway für das RM-VNet zu erstellen. Bevor Sie diese Schritte ausführen, müssen Sie die öffentliche IP-Adresse für das Gateway des klassischen VNet abrufen. 
 
 1. **Azure-Konto** an. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto auf. Nachdem Sie sich angemeldet haben, werden Ihre Kontoeinstellungen heruntergeladen, sodass sie in Azure PowerShell verfügbar sind.
    
         Login-AzureRmAccount 
    
-    Falls Sie mehrere Abonnements haben, benötigen Sie eine Liste Ihrer Azure-Abonnements.
+     Falls Sie mehrere Abonnements haben, benötigen Sie eine Liste Ihrer Azure-Abonnements.
    
         Get-AzureRmSubscription
    
@@ -201,7 +206,7 @@ Gehen Sie wie im Folgenden beschrieben vor, um ein VPN-Gateway für das RM-VNet 
    
         Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
 
-## <a name="section-3:-modify-the-local-network-for-the-classic-vnet"></a>Abschnitt 3: Ändern des lokalen Netzwerks für das klassische VNet
+## <a name="section-3-modify-the-local-network-for-the-classic-vnet"></a>Abschnitt 3: Ändern des lokalen Netzwerks für das klassische VNet
 Zum Ausführen dieses Schritts können Sie entweder die Netzwerkkonfigurationsdatei exportieren, bearbeiten, speichern und wieder in Azure importieren oder die Einstellung im klassischen Portal ändern. 
 
 ### <a name="to-modify-in-the-portal"></a>So nehmen Sie die Änderung im Portal vor
@@ -217,7 +222,7 @@ Zum Ausführen dieses Schritts können Sie entweder die Netzwerkkonfigurationsda
         <VPNGatewayAddress>13.68.210.16</VPNGatewayAddress>
 3. Speichern Sie die Änderungen, und importieren Sie die bearbeitete Datei wieder in Azure.
 
-## <a name="<a-name="connect"></a>section-4:-create-a-connection-between-the-gateways"></a><a name="connect"></a>Abschnitt 4: Erstellen einer Verbindung zwischen den Gateways
+## <a name="a-nameconnectasection-4-create-a-connection-between-the-gateways"></a><a name="connect"></a>Abschnitt 4: Erstellen einer Verbindung zwischen den Gateways
 Zum Erstellen einer Verbindung zwischen den Gateways ist PowerShell erforderlich. Sie müssen Ihr Azure-Konto hinzufügen, um die klassischen PowerShell-Cmdlets zu verwenden. Dazu können Sie das folgende Cmdlet verwenden: 
 
     Add-AzureAccount
@@ -243,11 +248,14 @@ Zum Erstellen einer Verbindung zwischen den Gateways ist PowerShell erforderlich
    
         Get-AzureRmVirtualNetworkGatewayConnection -Name RM-Classic -ResourceGroupName RG1
 
-## <a name="<a-name="faq"></a>vnet-to-vnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
+## <a name="a-namefaqavnet-to-vnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
 Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Informationen zu VNet-zu-VNet-Verbindungen zu erhalten.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 

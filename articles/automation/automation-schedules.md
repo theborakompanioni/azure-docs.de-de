@@ -1,19 +1,23 @@
 ---
-title: Zeitpläne in Azure Automation | Microsoft Docs
-description: Automation-Zeitpläne werden verwendet, um die automatische Ausführung von Runbooks in Azure Automation zu planen. Beschreibt die Erstellung und Verwaltung eines Zeitplans, sodass ein Runbook automatisch zu einer bestimmten Uhrzeit oder nach einem sich wiederholenden Zeitplan gestartet wird.
+title: "Zeitpläne in Azure Automation | Microsoft Docs"
+description: "Automation-Zeitpläne werden verwendet, um die automatische Ausführung von Runbooks in Azure Automation zu planen. Beschreibt die Erstellung und Verwaltung eines Zeitplans, sodass ein Runbook automatisch zu einer bestimmten Uhrzeit oder nach einem sich wiederholenden Zeitplan gestartet wird."
 services: automation
-documentationcenter: ''
+documentationcenter: 
 author: MGoedtel
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 1c2da639-ad20-4848-920b-88e471b2e1d9
 ms.service: automation
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: mgoedtel
+ms.author: magoedte
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d12b1522e1935e4e9ebefd1a49fdfda8b339286c
+
 
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planen eines Runbooks in Azure Automation
@@ -25,7 +29,7 @@ Um ein Runbook in Azure-Automation für die Ausführung zu einer bestimmten Uhrz
 > 
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-Cmdlets
-Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Zeitplänen mit Windows PowerShell in Azure Automation verwendet. Sie sind im [Azure PowerShell-Modul](../powershell-install-configure.md)enthalten.
+Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Zeitplänen mit Windows PowerShell in Azure Automation verwendet. Sie sind im [Azure PowerShell-Modul](/powershell/azureps-cmdlets-docs)enthalten.
 
 | Cmdlets | Beschreibung |
 |:--- |:--- |
@@ -162,6 +166,9 @@ Die folgenden Beispielbefehle verdeutlichen, wie Sie einen Zeitplan deaktivieren
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu den ersten Schritten mit Runbooks in Azure Automation finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md) 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2016
+ms.date: 12/09/2016
 ms.author: kipandya
 translationtype: Human Translation
-ms.sourcegitcommit: f480b8155c7bee797f1fed0f80200eec500e95a2
-ms.openlocfilehash: b188c8d8d66f0af1afa6f357f4d67db7b778ec86
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a0b1418168d493ce0e669a9eb0594d37e741df7d
 
 
 ---
@@ -55,6 +55,8 @@ Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.WriteEndpoint bz
     // Getting endpoints from application settings or other configuration location
     Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
     string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+    
+    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 
     //Setting read region selection preference
     connectionPolicy.PreferredLocations.Add(LocationNames.WestUS); // first preference
@@ -157,6 +159,6 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

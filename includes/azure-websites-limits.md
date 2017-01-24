@@ -25,7 +25,7 @@
 | [WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) -Unterstützung: | |X |X |X |X |
 | [Endpunktüberwachung](../articles/app-service-web/web-sites-monitor.md) | | |X |X |X |
-| [Stagingslots (Vorschau)](../articles/app-service-web/web-sites-staged-publishing.md) | | | |5 |20 |
+| [Stagingslots](../articles/app-service-web/web-sites-staged-publishing.md) | | | |5 |20 |
 | Benutzerdefinierte Domänen pro App</a> | |500 |500 |500 |500 |
 | SLA | |<p> |99,9 % |99,95 %<sup>10</sup> |99,95 %<sup>10</sup> |
 
@@ -42,6 +42,6 @@
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

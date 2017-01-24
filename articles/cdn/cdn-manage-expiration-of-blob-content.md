@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/15/2016
 ms.author: casoper
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 49eb28ad017d2422295171f534292d0880b9acf8
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 751db56ee29ebc635d4d2a27dd18f99f7efb5a34
 
 
 ---
@@ -41,7 +41,7 @@ Der [Blobdienst](../storage/storage-introduction.md#blob-storage) in [Azure Stor
 Dieses Tutorial zeigt verschiedene Methoden, mit denen Sie die Gültigkeitsdauer für ein Blob in Azure Storage festlegen können.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](../powershell-install-configure.md) ist eine der schnellsten und leistungsstärksten Möglichkeiten zum Verwalten Ihrer Azure-Dienste.  Verwenden Sie das `Get-AzureStorageBlob`-Cmdlet zum Abrufen eines Verweises auf das Blob, und legen Sie dann die Eigenschaft `.ICloudBlob.Properties.CacheControl` fest. 
+[Azure PowerShell](/powershell/azureps-cmdlets-docs) ist eine der schnellsten und leistungsstärksten Möglichkeiten zum Verwalten Ihrer Azure-Dienste.  Verwenden Sie das `Get-AzureStorageBlob`-Cmdlet zum Abrufen eines Verweises auf das Blob, und legen Sie dann die Eigenschaft `.ICloudBlob.Properties.CacheControl` fest. 
 
 ```powershell
 # Create a storage context
@@ -122,6 +122,6 @@ Sie können die Gültigkeitsdauer Ihrer Blobs einfach überprüfen.  Mithilfe de
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

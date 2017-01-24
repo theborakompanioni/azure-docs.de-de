@@ -1,26 +1,38 @@
-
 ---
-title: Verwenden von Attributen zum Erstellen erweiterter Regeln | Microsoft Docs
-description: Vorgehensweisen zum Erstellen erweiterter Regeln für eine Gruppe, einschließlich unterstützter Ausdrucksregeloperatoren und -parameter.
+title: Verwenden von Attributen zum Erstellen erweiterter Regeln | Microsoft-Dokumentation
+description: "Vorgehensweisen zum Erstellen erweiterter Regeln für eine Gruppe, einschließlich unterstützter Ausdrucksregeloperatoren und -parameter."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 04813a42-d40a-48d6-ae96-15b7e5025884
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 11/01/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: d83372fbce5f49d7cd038a15bd271e9d8a463b7b
+ms.openlocfilehash: f1cff67f31da87d6361603f0216a68c55686db0e
+
 
 ---
 # <a name="using-attributes-to-create-advanced-rules"></a>Verwenden von Attributen zum Erstellen erweiterter Regeln
 Im klassischen Azure-Portal haben Sie die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Azure Active Directory-Gruppen (Azure AD) aktivieren können.  
 
 Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamischen Gruppenregeln in einem Verzeichnis, um zu ermitteln, ob die Attributänderung des Benutzers Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer eine Regel für eine Gruppe erfüllt, wird er als Mitglieder zu dieser Gruppe hinzugefügt. Wenn er die Regel einer Gruppe nicht mehr erfüllt, deren Mitglied er ist, wird er aus dieser Gruppe entfernt.
+
+> [!NOTE]
+> Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuweisung zu Anwendungen derzeit nicht unterstützt.
+> 
+> Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
+> 
+> * Dem Administrator, der die Regel für eine Gruppe verwaltet
+> * Alle Mitglieder der Gruppe
+> 
 
 ## <a name="to-create-the-advanced-rule"></a>So erstellen Sie eine erweiterte Regel
 1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com)die Option **Active Directory**aus, und öffnen Sie dann das Verzeichnis Ihrer Organisation.
@@ -42,11 +54,18 @@ Hier finden Sie Beispiele für eine richtig aufgebaute erweiterte Regel:
 
 Eine vollständige Liste der unterstützten Parameter und Ausdrucksregeloperatoren finden Sie in den folgenden Abschnitten.
 
-Die Gesamtlänge des Texts der erweiterten Regel darf 2048 Zeichen nicht überschreiten.
+Beachten Sie, dass die Eigenschaft als Präfix über den richtigen Objekttyp verfügen muss: „user“ oder „device“.
+Die folgende Regel führt bei der Überprüfung zu einem Fehler: mail –ne null
+
+Die richtige Regel lautet: 
+
+user.mail –ne null
+
+Die Gesamtlänge des Texts der erweiterten Regel darf 2048 Zeichen nicht überschreiten.
 
 > [!NOTE]
-> Bei string- und regex-Vorgängen wird die Groß-und Kleinschreibung nicht  beachtet. Sie können auch NULL-Prüfungen durchführen, indem Sie "$null" als Konstante verwenden, z. B.: user.department -eq $null.
-> Zeichenfolgen mit Anführungszeichen (") sollten mit einem Escapezeichen (') maskiert werden. Beispiel: user.department -eq \`"Sales".
+> Bei string- und regex-Vorgängen wird die Groß-und Kleinschreibung nicht  beachtet. Zeichenfolgen mit Anführungszeichen (") sollten mit einem Escapezeichen (') maskiert werden. Beispiel: user.department -eq \`"Sales".
+> Verwenden Sie nur für Zeichenfolgentyp-Werte Anführungszeichen, und verwenden Sie nur englische Anführungszeichen (also Anführungszeichen oben).
 > 
 > 
 
@@ -63,6 +82,20 @@ Die folgende Tabelle enthält alle Ausdrucksregeloperatoren und ihre Syntax zur 
 | Contains |-contains |
 | Not Match |-notMatch |
 | Match |-match |
+
+## <a name="operator-precedence"></a>Rangfolge der Operatoren
+
+Unten sind alle Operatoren nach ihrer Rangfolge von niedrig bis hoch aufgeführt (Operator in derselben Zeile haben die gleiche Rangfolge): -any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch
+ 
+Alle Operatoren können mit oder ohne Bindestrich als Präfix verwendet werden.
+
+Beachten Sie, dass die Klammern nicht immer benötigt werden. Das Einfügen von Klammern ist nur erforderlich, wenn die Rangfolge nicht Ihre Anforderungen erfüllt: Beispiel:
+
+   user.department –eq "Marketing" –and user.country –eq "US" 
+   
+entspricht: 
+
+   (user.department –eq "Marketing") –and (user.country –eq "US")
 
 ## <a name="query-error-remediation"></a>Korrektur von Abfragefehlern
 In der folgenden Tabelle sind mögliche Fehler und deren entsprechende Behebung aufgeführt.
@@ -138,10 +171,16 @@ Zulässige Operatoren
 | otherMails |Jeder string-Wert. |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
+## <a name="use-of-null-values"></a>Verwenden von NULL-Werten
+
+Zum Angeben eines NULL-Werts in einer Regel können Sie „null“ oder „$null“ verwenden. Beispiel: 
+
+   user.mail –ne null ist äquivalent zu user.mail –ne $null
+
 ## <a name="extension-attributes-and-custom-attributes"></a>Erweiterungsattribute und benutzerdefinierte Attribute
 Erweiterungsattribute und benutzerdefinierte Attribute werden in Regeln für dynamische Mitgliedschaft unterstützt.
 
-Erweiterungsattributes werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten folgendes Format: ExtensionAttributeX. Dabei entspricht X 1 bis 15.
+Erweiterungsattributes werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten folgendes Format: ExtensionAttributeX. Dabei entspricht X 1 bis 15.
 Beispiel für eine Regel, die ein Erweiterungsattribut verwendet:
 
 (user.extensionAttribute15 -eq "Marketing")
@@ -153,8 +192,14 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 Den Namen des benutzerdefinierten Attributs finden Sie im Verzeichnis. Fragen Sie dazu das Attribut eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Attributnamen.
 
+## <a name="support-for-multi-value-properties"></a>Unterstützung von mehrwertigen Eigenschaften
+
+Verwenden Sie den Operator „-any“, um eine mehrwertige Eigenschaft in eine Regel einzufügen. Beispiel:
+
+  user.assignedPlans -any assignedPlan.service -startsWith "SCO"
+  
 ## <a name="direct-reports-rule"></a>Mitarbeiterregel
-Sie können Mitglieder einer Gruppe jetzt basierend auf dem manager-Attribut eines Benutzers auffüllen.
+Sie können Mitglieder einer Gruppe basierend auf dem manager-Attribut eines Benutzers auffüllen.
 
 **So konfigurieren Sie eine Gruppe als Gruppe mit "Vorgesetzten"**
 
@@ -178,16 +223,16 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
 | displayName |Jeder string-Wert. |(device.displayName -eq "Rob Iphone”) |
 | deviceOSType |Jeder string-Wert. |(device.deviceOSType -eq "IOS") |
 | deviceOSVersion |Jeder string-Wert. |(device.OSVersion -eq "9.1") |
-| isDirSynced |true false null |(device.isDirSynced -eq "true") |
-| isManaged |true false null |(device.isManaged -eq "false") |
-| isCompliant |true false null |(device.isCompliant -eq "true") |
+| isDirSynced |true false null |(device.isDirSynced -eq true) |
+| isManaged |true false null |(device.isManaged -eq false) |
+| isCompliant |true false null |(device.isCompliant -eq true) |
 | deviceCategory |Jeder string-Wert. |(device.deviceCategory -eq "") |
 | deviceManufacturer |Jeder string-Wert. |(device.deviceManufacturer -eq "Microsoft") |
 | deviceModel |Jeder string-Wert. |(device.deviceModel -eq "IPhone 7+") |
 | deviceOwnership |Jeder string-Wert. |(device.deviceOwnership -eq "") |
 | domainName |Jeder string-Wert. |(device.domainName -eq "contoso.com") |
 | enrollmentProfileName |Jeder string-Wert. |(device.enrollmentProfileName -eq "") |
-| isRooted |true false null |(device.deviceOSType -eq "true") |
+| isRooted |true false null |(device.isRooted -eq true) |
 | managementType |Jeder string-Wert. |(device.managementType -eq "") |
 | organizationalUnit |Jeder string-Wert. |(device.organizationalUnit -eq "") |
 | deviceId |Eine gültige deviceId |(device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
@@ -206,6 +251,9 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO3-->
 
 

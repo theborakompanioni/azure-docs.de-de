@@ -1,30 +1,34 @@
 ---
 title: Azure App Service und seine Auswirkungen auf vorhandene Azure-Dienste
-description: Erläutert, wie sich der neue Azure App Service und seine Funktionen auf vorhandene Dienste in Azure auswirken.
+description: "Erläutert, wie sich der neue Azure App Service und seine Funktionen auf vorhandene Dienste in Azure auswirken."
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: yochay
 manager: nirma
-editor: ''
-
+editor: 
+ms.assetid: 86c6a292-3c33-49f4-890c-89cc0321b397
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2016
-ms.author: yochayk
+ms.author: yochaykk
+translationtype: Human Translation
+ms.sourcegitcommit: 75d42f41e6218d83cda00f2ef8926d6ca1f0aacd
+ms.openlocfilehash: 8f458884d0ea649dffa5f92fd459bbaaa9f5e4cf
+
 
 ---
-# Azure App Service und vorhandene Azure-Dienste
-Dieser Artikel beschreibt die Änderungen an vorhandenen Azure-Diensten, die im Rahmen der Zusammenfassung verschiedener Azure-Dienste im neuen integrierten Angebot [Azure App Service](https://azure.microsoft.com/services/app-service/) erfolgen.
+# <a name="azure-app-service-and-existing-azure-services"></a>Azure App Service und vorhandene Azure-Dienste
+Dieser Artikel beschreibt die Änderungen an vorhandenen Azure-Diensten, die im Rahmen der Zusammenfassung verschiedener Azure-Dienste im neuen integrierten Angebot [Azure App Service](https://azure.microsoft.com/services/app-service/)erfolgen.
 
-[!INCLUDE [app-service-mobile-to-web-and-api](../../includes/app-service-web-to-api-and-mobile.md)]
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 [Azure App Service](https://azure.microsoft.com/services/app-service/) ist ein neuer, besonderer Clouddienst, der es Entwicklern ermöglicht, Web- und mobile Anwendungen für beliebige Plattformen und Geräte zu entwickeln. App Service ist eine integrierte Lösung für die Optimierung wiederholt ausgeführter Codierungsaufgaben, die Integration in Unternehmens- und SaaS-Systeme und die Automatisierung von Geschäftsprozessen bei gleichzeitiger Erfüllung Ihrer Anforderungen an Sicherheit, Zuverlässigkeit und Skalierbarkeit.
 
-App Service vereint verschiedene vorhandene Azure-Dienste – [Websites](https://azure.microsoft.com/services/websites/), [Mobile Services](https://azure.microsoft.com/services/mobile-services/) und [Biztalk Services](https://azure.microsoft.com/services/biztalk-services/) – zu einem einzelnen kombinierten Dienst, der leistungsfähige neue Funktionen bietet. Mit App Service können Sie die folgenden App-Typen hosten:
+App Service vereint verschiedene vorhandene Azure-Dienste – [Websites](https://azure.microsoft.com/services/websites/), [Mobile Services](https://azure.microsoft.com/services/mobile-services/) und [Biztalk Services](https://azure.microsoft.com/services/biztalk-services/) – zu einem einzelnen kombinierten Dienst, der leistungsfähige neue Funktionen bietet.  Mit App Service können Sie die folgenden App-Typen hosten:
 
 * Web-Apps
 * Mobile Apps
@@ -45,12 +49,12 @@ In der folgenden Tabelle wird erläutert, wie vorhandene Azure-Dienste App Servi
 <tr class="odd">
 <td align="left">Azure Websites</td>
 <td align="left">Web-Apps</td>
-<td align="left"><li>Für Azure Websites beschränkt sich die Änderung in App Service auf die Änderung des Namens "Websites" in "Web-Apps".
+<td align="left"><li>Für Azure Websites beschränkt sich die Änderung in App Service auf die Änderung des Namens „Websites“ in „Web-Apps“.
 <p><li>Alle vorhandenen Instanzen von Websites heißen in App Service jetzt Web-Apps.</p>
-<p><li>Sie können auf Ihre vorhandenen Websites über das <a href="http://go.microsoft.com/fwlink/?LinkId=529715">Azure-Portal</a> zugreifen. Sie finden alle vorhandenen Websites unter <em>Web-Apps</em>.</p>
-<p><li><em>Webhostingpläne</em> sind jetzt <em>App Service-Pläne</em>. Ein <em>App Service-Plan</em> kann beliebige App-Typen von App Service hosten, z. B. Web-Apps, mobile Apps, Logik-Apps oder API-Apps.</p>
+<p><li>Sie können auf Ihre vorhandenen Websites über das<a href="http://go.microsoft.com/fwlink/?LinkId=529715">Azure-Portal</a> zugreifen. Sie finden alle vorhandenen Websites unter <em>Web-Apps</em>.</p>
+<p><li><em>Webhostingpläne</em> sind jetzt <em>App Service-Pläne</em>. Ein <em>App Service-Plan</em> kann beliebige App-Typen von App Service hosten, z.B. Web-Apps, mobile Apps, Logik-Apps oder API-Apps.</p>
 <p><li>Azure App Service-Web-Apps ist jetzt allgemein verfügbar.</p>
-<p><li><a href="http://azure.microsoft.com/services/app-service/web/">Weitere Informationen zu Web-Apps</a></p></td>
+<p><li><a href="http://azure.microsoft.com/services/app-service/web/">Weitere Informationen zu Web-Apps</a>.</p></td>
 </tr>
 <tr class="even">
 <td align="left">Azure Mobile Services</td>
@@ -80,12 +84,17 @@ In der folgenden Tabelle wird erläutert, wie vorhandene Azure-Dienste App Servi
 <td align="left">BizTalk-API-Apps</td>
 <td align="left">
 <li><p>BizTalk Services steht weiterhin als eigenständiger Dienst zur Verfügung und wird weiter vollständig unterstützt.</p>
-<li><p>Alle Funktionen von BizTalk Services sind in App Service als API-Apps integriert. Dies ermöglicht Benutzern die Integration von Unternehmensanwendungen und B2B-Integrationsszenarien mit beliebigen App-Typen in App Service.</p>
+<li><p>Alle Funktionen von BizTalk Services sind in App Service als API-Apps integriert. Dies ermöglicht Benutzern die Enterprise Application Integration und B2B-Integrationsszenarien mit beliebigen App-Typen in App Service.</p>
 <li><p>Mit Logik-Apps können Sie nun Geschäftsprozesse mithilfe einer visuellen Entwurfsumgebung zum Erstellen von Workflows automatisieren.</p></td>
 </tr>
 </tbody>
 </table>
 
-Weitere Informationen finden Sie in der[ App Service-Dokumentation](https://azure.microsoft.com/documentation/services/app-service/).
+Weitere Informationen finden Sie in der [App Service-Dokumentation](https://azure.microsoft.com/documentation/services/app-service/).
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+
+<!--HONumber=Dec16_HO1-->
+
+

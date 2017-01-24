@@ -59,7 +59,7 @@ Die Visual Studio-Tools können automatische Rollups von Versionen durchführen,
 
 Speichern Sie die Änderungen, und aktivieren Sie nun das Kontrollkästchen **Anwendungs- und Dienstversionen automatisch aktualisieren** .
 
-## <a name="step-3-upgrade-your-application"></a>Schritt 3: Upgrade der Anwendung
+## <a name="step-3--upgrade-your-application"></a>Schritt 3: Upgrade der Anwendung
 Machen Sie sich mit den [Parametern für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md) und dem [Upgradeprozess](service-fabric-application-upgrade.md) vertraut, um ein tieferes Verständnis der verschiedenen anwendbaren Upgradeparameter, Timeouts und Integritätskriterien zu erhalten. In dieser exemplarischen Vorgehensweise ist das Kriterium für die Evaluierung der Systemintegrität auf die Standardeinstellung (nicht überwachter Modus) festgelegt. Sie können diese Einstellungen konfigurieren, indem Sie **Upgradeeinstellungen konfigurieren** auswählen und die Parameter anschließend wie gewünscht ändern.
 
 Nun können wir das Anwendungsupgrade über die Schaltfläche **Veröffentlichen** starten. Dadurch wird die Anwendung auf Version 2.0.0 aktualisiert, in der sich die Objekte drehen. Service Fabric aktualisiert Updatedomänen nacheinander (einige Objekte werden zuerst aktualisiert, dann folgen andere). Auf den Dienst kann während des Upgrades zugegriffen werden. Der Zugriff auf den Dienst kann mit Ihrem Client (Browser) überprüft werden.  
@@ -81,10 +81,10 @@ Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upg
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
 
-[Bild1]: media/service-fabric-application-upgrade-tutorial/upgrade7.png
-[Abbildung 2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png
-[Abbildung 3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
-[Bild4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
+[image1]: media/service-fabric-application-upgrade-tutorial/upgrade7.png
+[image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png
+[image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
+[image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
 
 
 

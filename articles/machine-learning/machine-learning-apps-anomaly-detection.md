@@ -2,21 +2,25 @@
 title: 'Machine Learning-App: Anomaly Detection Service | Microsoft Docs'
 description: Die Anomaly Detection-API ist ein mit Microsoft Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: alokkirpal
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
 ms.devlang: na
-ms.topic: reference
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/11/2016
-ms.author: alokkirpal
+ms.author: alok
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cbcd469f39b42d741d73f9d96daf17d011b7ebc7
+
 
 ---
-# <a name="machine-learning-anomaly-detection-service#"></a>Machine Learning Anomaly Detection Service
+# <a name="machine-learning-anomaly-detection-service"></a>Machine Learning Anomaly Detection Service
 ## <a name="overview"></a>Übersicht
 Die [Anomaly Detection-API](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind. 
 
@@ -139,10 +143,10 @@ Die Antwort lautet wie folgt:
         "odata.metadata": "https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v2/$metadata#AnomalyDetection.FrontEndService.Models.AnomalyDetectionResult",
         "ADOutput": "{
             "ColumnNames":["Time","OriginalData","ProcessedData","TSpike","ZSpike","PScore","PAlert","RPScore","RPAlert","TScore","TAlert"],
-            "ColumnTypes":["DateTime","Double","Double","Double","Double","Double","Int32","Double","Int32","Double","Int32"],
-            "Values":[
+              "ColumnTypes":["DateTime","Double","Double","Double","Double","Double","Int32","Double","Int32","Double","Int32"],
+              "Values":[
                 ["9/21/201411: 20: 00AM","10","10","0","0","-1.30229513613974","0","-1.30229513613974","0","-1.173800281031","0"]
-            ]
+              ]
         }"
     }
 
@@ -167,7 +171,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | preprocess.replaceMissing |Werte zum Zuordnen fehlender Daten |lkv (last known value) |enumerated |zero, lkv, mean |N/V |
 | detectors.historyWindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | upleveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für Pegeländerungen in Aufwärtsrichtung |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
+| bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | trenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | tspikedetector.sensitivity |Empfindlichkeit für TSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
@@ -204,6 +208,6 @@ Diese Ausgabe kann mit einem [einfachen Parser](https://adresultparser.codeplex.
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 12/13/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 034539eabb6ec7110dd584c42cf35157d39446b6
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: a2f124de8a35f6fdff23fa8b3c816b8c0b44acdd
 
 
 ---
@@ -41,7 +41,7 @@ Geben Sie **RedisSessionStateProvider** in das Suchfeld ein, wählen Sie in den 
 
 Das Redis-Sitzungszustandsanbieter-NuGet-Paket steht in einer Abhängigkeitsbeziehung zum Paket „StackExchange.Redis.StrongName“. Wenn das Paket „StackExchange.Redis.StrongName“ nicht in Ihrem Projekt vorhanden ist, wird es installiert. Beachten Sie, dass es außer dem Paket „StackExchange.Redis.StrongName“ mit starkem Namen auch noch das Paket „StackExchange.Redis“ als Version ohne starken Namen gibt. Wenn in Ihrem Projekt die Version „StackExchange.Redis“ ohne starken Namen verwendet wird, müssen Sie diese vor oder nach dem Installieren des Redis-Sitzungszustandsanbieter-NuGet-Pakets deinstallieren. Andernfalls treten Namenskonflikte in Ihrem Projekt auf. Weitere Informationen über diese Pakete finden Sie unter [Konfigurieren der .NET-Cacheclients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
-Das NuGet-Paket wird heruntergeladen und fügt die benötigten Assemblyverweise sowie den folgenden Abschnitt zu Ihrer Web.config-Datei hinzu. Dieser Abschnitt enthält die Konfiguration, die Ihre ASP.NET-Anwendung für die Verwendung des Cache-Sitzungszustandsanbieters braucht.
+Das NuGet-Paket wird heruntergeladen und fügt die erforderlichen Assemblyverweise sowie den folgenden Abschnitt zu Ihrer web.config-Datei hinzu. Dieser Abschnitt enthält die Konfiguration, die Ihre ASP.NET-Anwendung für die Verwendung des Redis Cache-Sitzungszustandsanbieters benötigt.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -118,6 +118,6 @@ Lesen Sie [ASP.NET-Ausgabecacheanbieter für Azure Redis Cache](cache-aspnet-out
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

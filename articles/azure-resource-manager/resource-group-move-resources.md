@@ -12,11 +12,11 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2016
+ms.date: 12/06/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: ea6553d2024516b4c4bd307db4e92d598b78bc75
+ms.sourcegitcommit: a8b41b598b21ba61db9bae82d467aed5a781a8b4
+ms.openlocfilehash: fe551944f8fd13451aa2db91f4b2794b7c9f045d
 
 
 ---
@@ -66,7 +66,6 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * Automation
 * Batch
 * Bing Maps
-* BizTalk Services
 * CDN
 * Cloud Services – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Cognitive Services
@@ -80,7 +79,7 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * DNS
 * DocumentDB
 * Event Hubs
-* HDInsight-Cluster
+* HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * IoT Hubs
 * Schlüsseltresor 
 * Load Balancer
@@ -113,6 +112,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * AD Hybrid Health Service
 * Application Gateway
 * Application Insights
+* BizTalk Services
 * ExpressRoute
 * Dynamics LCS
 * Recovery Services-Tresor – verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
@@ -165,6 +165,12 @@ Sie können ein App Service Certificate ohne Probleme in eine neue Ressourcengru
 Das Verschieben von Speicher-, Netzwerk- und Computeressourcen, die dazu dienen, eine Notfallwiederherstellung mit Azure Site Recovery einzurichten, ist nicht möglich. 
 
 Angenommen, Sie haben die Replikation Ihrer lokalen Computer in ein Speicherkonto (Storage1) eingerichtet, und möchten, dass der geschützte Computer nach einem Failover zu Azure als virtueller Computer (VM1) angezeigt wird, der an ein virtuelles Netzwerk (Network1) angeschlossen ist. Sie können dann die Azure-Ressourcen „Storage1“, „VM1“ und „Network1“ nicht zwischen Ressourcengruppen im selben Abonnement oder zwischen Abonnements verschieben.
+
+## <a name="hdinsight-limitations"></a>HDInsight-Einschränkungen
+
+Sie können HDInsight-Cluster in ein neues Abonnement oder eine neue Ressourcengruppe verschieben. Dagegen können die mit dem HDInsight-Cluster verknüpften Netzwerkressourcen (z.B. virtuelles Netzwerk, NIC oder Load Balancer) nicht zwischen Abonnements verschoben werden. Darüber hinaus kann eine NIC, die an einen virtuellen Computer für den Cluster angefügt ist, nicht in eine neue Ressourcengruppe verschoben werden.
+
+Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zunächst andere Ressourcen (z.B. das Speicherkonto) verschieben. Verschieben Sie erst anschließend den HDInsight-Cluster.
 
 ## <a name="classic-deployment-limitations"></a>Einschränkungen bei der klassischen Bereitstellung
 Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell bereitgestellt wurden, unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. 
@@ -323,6 +329,6 @@ Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressource
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

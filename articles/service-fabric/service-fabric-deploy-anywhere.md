@@ -1,19 +1,23 @@
 ---
 title: Erstellen von Azure Service Fabric-Clustern unter Windows Server und Linux| Microsoft Docs
-description: Service Fabric-Cluster werden unter Windows Server und Linux ausgeführt, sodass Service Fabric-Anwendungen überall dort bereitgestellt und gehostet werden können, wo die Ausführung von Windows Server oder Linux möglich ist.
+description: "Service Fabric-Cluster werden unter Windows Server und Linux ausgeführt, sodass Service Fabric-Anwendungen überall dort bereitgestellt und gehostet werden können, wo die Ausführung von Windows Server oder Linux möglich ist."
 services: service-fabric
 documentationcenter: .net
 author: Chackdan
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 12/06/2016
 ms.author: chackdan
+translationtype: Human Translation
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 140bee520dd8de0d9303a7d80e10cae407c8b10d
+
 
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Erstellen von Service Fabric-Clustern unter Windows Server oder Linux
@@ -26,7 +30,7 @@ Das Erstellen eines Clusters unter Azure wird entweder mit einer Resource Manage
 Sie können Cluster auf virtuellen Computern mit diesen Betriebssystemen erstellen:
 
 * Windows Server 2012 R2
-* Windows Server 2016 (sobald die allgemeine Verfügbarkeit angekündigt wurde)
+* Windows Server 2016 
 * Linux Ubuntu 16.04 (in der öffentlichen Vorschau) 
 
 ## <a name="create-service-fabric-standalone-clusters-on-premise-or-with-any-cloud-provider"></a>Erstellen lokaler oder cloudbasierter eigenständiger Service Fabric-Cluster
@@ -34,22 +38,22 @@ Service Fabric verfügt über ein Installationspaket, mit dem Sie eigenständige
 
 Weitere Informationen zum Einrichten eigenständiger Service Fabric-Cluster unter Windows Server finden Sie unter [Erstellen und Verwalten eines Windows Server-Clusters](service-fabric-cluster-creation-for-windows-server.md)
 
-### <a name="any-cloud-deployments-vs.-on-premises-deployments"></a>Gegenüberstellung von cloudbasierten und lokalen Bereitstellungen
+### <a name="any-cloud-deployments-vs-on-premises-deployments"></a>Gegenüberstellung von cloudbasierten und lokalen Bereitstellungen
 Der Prozess zum lokalen Erstellen eines Service Fabric-Clusters ist vergleichbar mit der Erstellung eines Clusters in einer beliebigen Cloud mit einer Gruppe von VMs. Die ersten Schritte zum Bereitstellen der VMs sind abhängig von Ihrem Cloudanbieter bzw. von Ihrer lokalen Umgebung. Sobald Sie aber über eine Gruppe von VMs verfügen, die über ein Netzwerk verbunden sind, sind die Schritte zum Einrichten des Service Fabric-Pakets, Bearbeiten der Clustereinstellungen und Ausführen der Skripts zum Erstellen und Verwalten des Clusters identisch. Dadurch wird sichergestellt, dass Ihre Kompetenz und Erfahrung beim Betreiben und Verwalten von Service Fabric-Clustern bei Wahl einer neuen Hostingumgebung übertragbar sind.
 
 ### <a name="benefits-of-creating-standalone-service-fabric-clusters"></a>Vorteile der Erstellung eigenständiger Service Fabric-Cluster
 * Sie können einen beliebigen Cloudanbieter zum Hosten des Clusters auswählen.
-* Einmal entwickelte Service Fabric-Anwendungen können mit minimalen oder sogar ganz ohne Änderungen in mehreren Hostingumgebungen ausgeführt werden.
+* Einmal entwickelte Service Fabric-Anwendungen können mit minimalen oder sogar ganz ohne Änderungen in mehreren Hostingumgebungen ausgeführt werden.
 * Kenntnisse der Erstellung von Service Fabric-Anwendungen lassen sich in andere Hostingumgebungen übertragen.
 * Erfahrungen mit dem Betrieb und der Verwaltung von Service Fabric-Clustern lassen sich von einer Umgebung in eine andere Umgebung übertragen.
 * Die Kundenreichweite wird nicht durch Einschränkungen bei der Hostingumgebung begrenzt.
-* Die Möglichkeit, Dienste im Falle eines Ausfalls in einem Datencenter oder bei einem Cloudanbieter in eine andere Bereitstellungsumgebung zu verlagern, sorgt für ein zusätzliches Maß an Zuverlässigkeit und schützt vor weitreichenden Ausfällen.
+* Die Möglichkeit, Dienste im Falle eines Ausfalls in einem Rechenzentrum oder bei einem Cloudanbieter in eine andere Bereitstellungsumgebung zu verlagern, sorgt für ein zusätzliches Maß an Zuverlässigkeit und schützt vor weitreichenden Ausfällen.
 
 ## <a name="supported-operating-systems-for-standalone-clusters"></a>Unterstützte Betriebssysteme für eigenständige Cluster
 Sie können Cluster auf VMs oder Computer mit diesen Betriebssystemen erstellen:
 
 * Windows Server 2012 R2
-* Windows Server 2016 (sobald die allgemeine Verfügbarkeit angekündigt wurde)
+* Windows Server 2016 
 * Linux (bald verfügbar)
 
 ## <a name="advantages-of-service-fabric-clusters-on-azure-over-standalone-service-fabric-clusters-created-on-premises"></a>Vorteile von Service Fabric-Clustern in Azure gegenüber eigenständigen Service Fabric-Clustern, die lokal erstellt wurden
@@ -63,10 +67,14 @@ Die Verwendung von Service Fabric-Clustern unter Azure bietet Vorteile gegenübe
 * **Automatische Skalierung:** Integrierte automatische Skalierungsfunktion für in Azure gehostete Cluster aufgrund von Virtual Machines-Skalierungsgruppen. In lokalen und anderen Cloudumgebungen müssen Sie eine eigene automatische Skalierungsfunktion entwickeln oder eine manuelle Skalierung mithilfe der APIs vornehmen, die Service Fabric für die Skalierung von Clustern verfügbar macht.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erstellen eines Clusters auf virtuellen Windows- oder Windows Server-Computern: [Erstellen eines Service Fabric-Clusters für Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 
-Erstellen eines Clusters auf virtuellen Linux- oder Linux-Computern: [Service Fabric on Linux](service-fabric-linux-overview.md)
+* Erstellen eines Clusters auf virtuellen Windows- oder Windows Server-Computern: [Erstellen eines Service Fabric-Clusters für Windows Server](service-fabric-cluster-creation-for-windows-server.md)
+* Erstellen eines Clusters auf virtuellen Linux- oder Linux-Computern: [Service Fabric on Linux](service-fabric-linux-overview.md)
+* Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

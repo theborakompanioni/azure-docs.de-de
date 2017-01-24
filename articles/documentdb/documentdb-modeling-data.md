@@ -3,7 +3,7 @@ title: Modellieren von Daten in Azure DocumentDB | Microsoft Docs
 description: "Informationen zur Datenmodellierung für DocumentDB, eine  NoSQL-Dokumentdatenbank."
 keywords: Modellieren von Daten
 services: documentdb
-author: kiratp
+author: arramac
 manager: jhubbard
 editor: mimig1
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2016
-ms.author: kipandya
+ms.date: 01/03/2016
+ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ba0dbc287964aa700cbded834e4b5da09144efe8
+ms.sourcegitcommit: 09f42bae67f794f12c7c37cd25c25f4c991fe893
+ms.openlocfilehash: 93d0d7276e4ff426e87bdc3dadd736de8d6525fb
 
 
 ---
@@ -119,11 +119,6 @@ Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
     }
 
 So könnte eine Beitragsentität mit eingebetteten Kommentaren aussehen, wenn wir ein typisches Blog- oder CMS-System modellieren würden. Das Problem bei diesem Beispiel besteht darin, dass das Kommentar-Array **unbegrenzt** ist, d.h. es gibt (praktisch) keine Begrenzung hinsichtlich der Anzahl an Kommentaren zu einem einzelnen Beitrag. Dies wird zu einem Problem, da die Größe des Dokuments erheblich zunehmen kann.
-
-> [!TIP]
-> Dokumente in DocumentDB weisen eine Maximalgröße auf. Weitere Informationen dazu finden Sie unter [DocumentDB-Grenzen](documentdb-limits.md).
-> 
-> 
 
 Mit zunehmender Größe des Dokuments wird die Möglichkeit zum Übertragen von Daten über das Netz sowie zum Lesen und Aktualisieren des Dokuments bei Skalierung beeinträchtigt.
 
@@ -409,6 +404,6 @@ Anleitungen für die Datenmodellierung und das Sharding für mehrinstanzenfähig
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

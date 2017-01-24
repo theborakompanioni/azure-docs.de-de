@@ -1,6 +1,6 @@
 ---
-title: "Durchführen eines Firmwareupdates mit Azure IoT Hub | Microsoft Docs"
-description: "In diesem Tutorial erfahren Sie, wie Sie eine Aktualisierung der Firmware durchführen."
+title: "Durchführen eines Firmwareupdates mit Azure IoT Hub (.NET/Node) | Microsoft Docs"
+description: "Erfahren Sie, wie die Geräteverwaltung in Azure IoT Hub verwendet wird, um ein Firmwareupdate zu initiieren. Sie können das Azure IoT-Geräte-SDK für Node.js verwenden, um eine simulierte Geräte-App zu implementieren, und das Azure IoT-Dienst-SDK, um eine Service-App zu implementieren, die das Firmwareupdate auslöst."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 7cbb823f2d8b9a337bd987ae3fc41a85ddb6ae80
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 5b8aaa7e7b04224fd51c264822d619866e0161af
 
 
 ---
-# <a name="tutorial-how-to-do-a-firmware-update"></a>Tutorial: Durchführen eines Firmwareupdates
+# <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>Initiieren eines Firmwareupdates mithilfe der Geräteverwaltung (.NET/Node)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Einführung
@@ -28,7 +28,7 @@ Im Tutorial [Get started with device management][lnk-dm-getstarted] (Erste Schri
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-* Erstellen einer Konsolen-App, die die direkte firmwareUpdate-Methode auf der simulierten Geräte-App über Ihren IoT-Hub aufruft.
+* Erstellen einer .NET-Konsolen-App, die die direkte firmwareUpdate-Methode in der simulierten Geräte-App über Ihre IoT Hub-Instanz aufruft
 * Erstellen einer simulierten Geräte-App, die eine direkte firmwareUpdate-Methode implementiert, die einen mehrstufigen Prozess durchläuft und über diesen auf das Herunterladen des Firmwareimages wartet, das Firmwareimage herunterlädt und schließlich das Firmwareimage übernimmt.  Während der gesamten Ausführung aller Phasen aktualisiert das Gerät den Fortschritt über die gemeldeten Eigenschaften.
 
 Am Ende dieses Tutorials verfügen Sie über eine Node.js-Konsolen-Geräte-App und eine .NET-Konsolen-Back-End-App (C#):
@@ -43,7 +43,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Node.js Version 0.12.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
-Befolgen Sie die Schritte im Artikel [Erste Schritte mit der Geräteverwaltung](iot-hub-csharp-node-device-management-get-started.md), um Ihren IoT Hub zu erstellen und die Verbindungszeichenfolge abzurufen.
+Befolgen Sie die Schritte im Artikel [Erste Schritte mit der Geräteverwaltung](iot-hub-csharp-node-device-management-get-started.md), um Ihren IoT Hub zu erstellen und die IoT Hub-Verbindungszeichenfolge abzurufen.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -57,14 +57,14 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mit C#), die mit einer
     ![Neues Visual C#-Projekt für den klassischen Windows-Desktop][img-createapp]
 
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **TriggerFWUpdate**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
-3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen**, suchen Sie nach **microsoft.azure.devices**, wählen Sie zum Installieren des Pakets **Microsoft.Azure.Devices** die Option **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren werden das NuGet-Paket für das [Dienst SDK für Microsoft Azure IoT][lnk-nuget-service-sdk] sowie die dazugehörigen Abhängigkeiten heruntergeladen, installiert und mit einem Verweis versehen.
+3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **microsoft.azure.devices**, wählen Sie zum Installieren des Pakets **Microsoft.Azure.Devices** die Option **Installieren** aus, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket [Azure IoT-Dienst-SDK][lnk-nuget-service-sdk] heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 
     ![Fenster „NuGet-Paket-Manager“][img-servicenuget]
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
    
         using Microsoft.Azure.Devices;
         
-5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den mehrfachen Platzhalterwert durch die Verbindungszeichenfolge für den IoT Hub, den Sie im vorherigen Abschnitt erstellt haben.
+5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den mehrfachen Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben.
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -108,11 +108,11 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mit C#), die mit einer
 8. Erstellen Sie die Projektmappe.
 
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
-In diesem Abschnitt werden Sie Folgendes durchführen:
+In diesem Abschnitt werden Sie folgende Schritte ausführen:
 
-* Eine Node.js-Konsolen-App erstellen, die auf eine von der Cloud aufgerufene direkte Methode antwortet
-* Ein simuliertes Firmwareupdate auslösen
-* Mit den gemeldeten Eigenschaften Gerätezwillingabfragen ermöglichen, um Geräte und den Zeitpunkt ihres letzten abgeschlossenen Firmwareupdates zu identifizieren
+* Erstellen einer Node.js-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet
+* Auslösen eines simulierten Firmwareupdates
+* Ermöglichen von Gerätezwillingabfragen mit den gemeldeten Eigenschaften, um Geräte und den Zeitpunkt ihres letzten abgeschlossenen Firmwareupdates zu identifizieren
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **manageddevice**.  Erstellen Sie im Ordner **manageddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl verwenden.  Übernehmen Sie alle Standardeinstellungen:
    
@@ -133,7 +133,7 @@ In diesem Abschnitt werden Sie Folgendes durchführen:
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen eines Geräteclients.  
+5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
@@ -155,7 +155,7 @@ In diesem Abschnitt werden Sie Folgendes durchführen:
       });
     };
     ```
-7. Fügen Sie die folgende Funktionen hinzu, die das Herunterladen und Übernehmen des Firmwareimages simulieren.
+7. Fügen Sie die folgenden Funktionen hinzu, die das Herunterladen und Übernehmen des Firmwareimages simulieren.
    
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -323,7 +323,7 @@ In diesem Abschnitt werden Sie Folgendes durchführen:
 ## <a name="run-the-apps"></a>Ausführen der Apps
 Sie können die Apps nun ausführen.
 
-1. Führen Sie in der Befehlszeile im Ordner **manageddevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
+1. Führen Sie an der Befehlszeile im Ordner **manageddevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
    
     ```
     node dmpatterns_fwupdate_device.js
@@ -335,7 +335,7 @@ Sie können die Apps nun ausführen.
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie mit einer direkten Methode ein Remotefirmwareupdate auf einem Gerät ausgelöst und mithilfe der gemeldeten Eigenschaften in regelmäßigen Abständen den Fortschritt des Firmwareaktualisierungsvorgangs überprüft.  
 
-Im Tutorial [Planen und Senden von Aufträgen][lnk-tutorial-jobs] erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
+Im Tutorial [Schedule and broadcast jobs][lnk-tutorial-jobs] (Planen und Senden von Aufträgen) erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-firmware-update/servicesdknuget.png
@@ -346,13 +346,13 @@ Im Tutorial [Planen und Senden von Aufträgen][lnk-tutorial-jobs] erfahren Sie, 
 [lnk-dm-getstarted]: iot-hub-node-node-device-management-get-started.md
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[lnk-rpi-implementation]: https://github.com/Azure/azure-iot-sdks/tree/master/c/iothub_client/samples/iothub_client_sample_mqtt_dm/pi_device
+[lnk-rpi-implementation]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm/pi_device
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 1f5bbbe4285c1635138d40af25cd0cb1d0177300
-ms.openlocfilehash: 76d0ba4334d647008b4b1508d231059d21d0f128
+ms.sourcegitcommit: 653c9a04016c0157b2107710e170ba63b3a499f7
+ms.openlocfilehash: 38f68d6df19d24492a234933e10d5d5cf34d1b23
 
 
 ---
@@ -43,7 +43,7 @@ Azure Analysis Services ist mit der SQL Server 2016 Analysis Services Enterprise
 ## <a name="use-the-tools-you-already-know"></a>Verwenden Sie die Tools, die Sie bereits kennen
 ![BI-Entwicklertools](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-Beim Erstellen von Datenmodellen für Azure Analysis Services verwenden Sie dieselben Tools wie für SQL Server Analysis Services. Verwenden Sie zum Erstellen und Bereitstellen tabellarischer Modelle die neuesten Versionen von [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) oder [Azure Powershell](../powershell-install-configure.md)- und [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+Beim Erstellen von Datenmodellen für Azure Analysis Services verwenden Sie dieselben Tools wie für SQL Server Analysis Services. Verwenden Sie zum Erstellen und Bereitstellen tabellarischer Modelle die neuesten Versionen von [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) oder [Azure Powershell](/powershell/azureps-cmdlets-docs)- und [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="connect-to-data-sources"></a>Verbindungen mit Datenquellen
 Auf Servern in Azure bereitgestellte Datenmodelle unterstützen das Herstellen von Verbindungen mit lokalen Datenquellen in der Organisation oder mit Datenquellen in der Cloud. Kombinieren Sie Daten aus lokalen und Clouddatenquellen für eine hybride BI-Lösung.
@@ -106,7 +106,7 @@ Für die Vorschau werden in tabellarischen Modellen mit dem Kompatibilitätsgrad
 | --- | --- |
 | SQL database |SQL Server |
 | SQL Data Warehouse |APS |
-| Oracle | |
+| Oracle | Oracle |
 | Teradata | |
 
 ### <a name="data-source-providers"></a>Datenquellenanbieter
@@ -123,6 +123,6 @@ Da Sie jetzt mehr über Azure Analysis Services wissen, können Sie loslegen. Er
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

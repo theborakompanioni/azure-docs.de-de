@@ -1,13 +1,12 @@
-
 ---
-title: Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1
-description: Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1
+title: "Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1"
+description: "Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1"
 services: app-service\web
 documentationcenter: .net
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 877d070a-9bd5-49b3-8fac-6bb5f65c3554
 ms.service: app-service
 ms.devlang: multiple
 ms.topic: article
@@ -15,23 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/17/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 877fb34d2fe5d4b85157a8338e180358d2226ef1
+
 
 ---
-# <a name="azure-sdk-for-.net-2.7-and-.net-2.7.1-release-notes"></a>Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1
+# <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Versionshinweise zum Azure SDK für .NET 2.7 und .NET 2.7.1
 ## <a name="overview"></a>Übersicht
-Dieses Dokument enthält die Versionshinweise für das Azure SDK für .NET 2.7. 
+Dieses Dokument enthält die Versionshinweise für das Azure SDK für .NET 2.7. 
 
-Dieses Dokument enthält auch die Versionshinweise für das Azure SDK für .NET 2.7.1.
+Dieses Dokument enthält auch die Versionshinweise für das Azure SDK für .NET 2.7.1.
 
 Azure SDK 2.7 wird nur in Visual Studio 2015 und Visual Studio 2013 unterstützt. [Azure SDK 2.6](https://azure.microsoft.com/downloads/) ist das letzte unterstützte SDK für Visual Studio 2012.
 
 Ausführliche Informationen zu dieser Version finden Sie im [Ankündigungsbeitrag zu Azure SDK 2.7](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/) und im [Ankündigungsbeitrag zu Azure SDK 2.7.1](http://go.microsoft.com/fwlink/?LinkId=623850).
 
-## <a name="azure-sdk-for-.net-2.7"></a>Azure SDK für .NET 2.7
+## <a name="azure-sdk-for-net-27"></a>Azure SDK für .NET 2.7
 ### <a name="sign-in-improvements-for-visual-studio-2015"></a>Verbesserungen bei der Anmeldung für Visual Studio 2015
 Azure SDK 2.7 für Visual Studio 2015 unterstützt die neuen Identitätsverwaltungsfunktionen in Visual Studio 2015.  Dies umfasst die Unterstützung für Konten, bei denen der Zugriff auf Azure über die rollenbasierte Access Control, Cloud-Lösungsanbieter und DreamSpark erfolgt, und für andere Konto- und Abonnementtypen.
 
-Diese Verbesserungen bei der Anmeldung im Azure SDK 2.7 sind nur in Visual Studio 2015 verfügbar. Die Unterstützung für Visual Studio 2013 ist im Azure SDK 2.7.1 enthalten.
+Diese Verbesserungen bei der Anmeldung im Azure SDK 2.7 sind nur in Visual Studio 2015 verfügbar. Die Unterstützung für Visual Studio 2013 ist im Azure SDK 2.7.1 enthalten.
 
 ### <a name="mobile-sdk"></a>Mobile SDK
 Aktualisierte **Mobile Apps** -Vorlagen entsprechend dem neuesten [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) und Installationsvorgang.
@@ -61,7 +64,7 @@ In dieser Version wurden die folgenden Aktualisierungen an den Erweiterungen fü
 #### <a name="known-issues"></a>Bekannte Probleme
 Knoten des Web-App-Bereitstellungsslots werden unter dem Knoten "Slots" in Server-Explorer nicht angezeigt, und untergeordnete Knoten des Web-App-Bereitstellungsslots werden unter Cloud Explorer nicht geladen. Dieses Problem wurde behoben und für die nächste SDK-Version vorbereitet. 
 
-### <a name="<a-name="cloud_explorer"></a>cloud-explorer-for-visual-studio-2015"></a><a name="cloud_explorer"></a>Cloud Explorer für Visual Studio 2015
+### <a name="a-namecloudexploreracloud-explorer-for-visual-studio-2015"></a><a name="cloud_explorer"></a>Cloud Explorer für Visual Studio 2015
 Azure SDK 2.7 enthält Cloud Explorer für Visual Studio 2015, mit dem Sie Ihre Azure-Ressourcen anzeigen, deren Eigenschaften überprüfen und wichtige Entwickleraktionen in Visual Studio ausführen können. 
 
 In Cloud Explorer wird Folgendes unterstützt:
@@ -95,7 +98,7 @@ Einführung von **Azure Data Factory-Tools** für Visual Studio. Es folgt eine A
 * **Veröffentlichung in mehreren Umgebungen**: Sie können erstellte Pipelines für die Entwicklungs-, Test- oder Produktionsumgebung veröffentlichen, indem Sie für jede Umgebung gesonderte Konfigurationsdateien erstellen.
 * **Unterstützung für die Pig-, Hive- und .Net-basierte Datenverarbeitung**: Pig- und Hive-Skripts werden in Data Factory-Projekten unterstützt. Unterstützung für Verweise auf C#-Projekte zum Verwalten von .Net-Aktivitäten.
 
-## <a name="azure-sdk-for-.net-2.7.1"></a>Azure SDK für .NET 2.7.1
+## <a name="azure-sdk-for-net-271"></a>Azure SDK für .NET 2.7.1
 Der folgende Abschnitt enthält Updates, die mit dem Azure SDK für .NET 2.7.1 eingeführt wurden.
 
 ### <a name="hdinsight-tools"></a>HDInsight-Tools
@@ -109,7 +112,7 @@ Eine ausführlichere Erläuterung zu den Updates für die HDInsight-Tools finden
     Damit Sie Grammatikfehler sofort anzeigen können, wurde das Hive-Fehlermarker-Feature hinzugefügt. Außerdem wurden die Fehlermeldungen verbessert. Sie können nun sofort ausführliche Grammatikfehler sehen (bis zu dieser Version mussten Sie ein Hive-Skript an den Cluster übermitteln und einige Zeit warten, bis Sie Details zu der Fehlermeldung erhalten haben).  
 * Storm-Topologiediagramm (neues Feature)
   
-    Visualisierung ist sehr wichtig, um festzustellen, ob die Topologie wie erwartet funktioniert. In dieser Version wurde eine Visualisierung für Storm-Diagramme hinzugefügt. Sie können die wichtigen Metriken für die Topologie visuell darstellen (eine Farbe gibt z. B. an, ob ein bestimmter Bolt "ausgelastet" oder nicht). Sie können auch auf Bolts/Spouts doppelklicken, um weitere Details anzuzeigen.
+    Visualisierung ist sehr wichtig, um festzustellen, ob die Topologie wie erwartet funktioniert. In dieser Version wurde eine Visualisierung für Storm-Diagramme hinzugefügt. Sie können die wichtigen Metriken für die Topologie visuell darstellen (eine Farbe gibt z. B. an, ob ein bestimmter Bolt "ausgelastet" oder nicht). Sie können auch auf Bolts/Spouts doppelklicken, um weitere Details anzuzeigen.
 * Unterstützung für HDInsight-Cluster, die im Azure-Portal erstellt wurden (Programmfehlerbehebung)
   
     Sie können nun Visual Studio zum Anzeigen und Übermitteln von Aufträgen an alle HDInsight-Cluster verwenden, unabhängig davon, wo der Cluster erstellt wurde.
@@ -124,7 +127,7 @@ Eine ausführlichere Erläuterung zu den Updates für die HDInsight-Tools finden
 * Mit Azure SDK 2.7.1 steht das neue Cloud Explorer-Toolfenster jetzt auch in Visual Studio 2013 zur Verfügung.
 
 ### <a name="known-issues"></a>Bekannte Probleme
-Bei der Installation des Azure SDK 2.6 oder 2.7.1 für Visual Studio Community 2013 unter einem nichtenglischen Betriebssystem wird eventuell eine Warnung angezeigt, dass die englischen und die nichtenglischen Ressourcen von Visual Studio falsch zugeordnet werden könnten. Diese Warnung kann sicher ignoriert werden. Sie tritt nur auf, wenn der Computer keine vorherige Installation von Visual Studio Community 2013 enthält und das SDK unter einem nichtenglischen Betriebssystem installiert wird. Die Warnung wird angezeigt, nachdem das Sprachpaket die RTM-Ressourcen auf Visual Studio angewendet hat, aber bevor das Update 4 angewendet wird. Wenn Sie die Warnung schließen, kann das Sprachpaket fortgesetzt und das Update 4 des Sprachpakets angewendet werden.
+Bei der Installation des Azure SDK 2.6 oder 2.7.1 für Visual Studio Community 2013 unter einem nichtenglischen Betriebssystem wird eventuell eine Warnung angezeigt, dass die englischen und die nichtenglischen Ressourcen von Visual Studio falsch zugeordnet werden könnten. Diese Warnung kann sicher ignoriert werden. Sie tritt nur auf, wenn der Computer keine vorherige Installation von Visual Studio Community 2013 enthält und das SDK unter einem nichtenglischen Betriebssystem installiert wird. Die Warnung wird angezeigt, nachdem das Sprachpaket die RTM-Ressourcen auf Visual Studio angewendet hat, aber bevor das Update 4 angewendet wird. Wenn Sie die Warnung schließen, kann das Sprachpaket fortgesetzt und das Update 4 des Sprachpakets angewendet werden.
 
 LightSwitch-Projekte sind mit dieser Version nicht kompatibel. Dieses Problem wird in der nächsten SDK-Version behoben.
 
@@ -135,6 +138,9 @@ LightSwitch-Projekte sind mit dieser Version nicht kompatibel. Dieses Problem wi
 
 [Unterstützungs- und Deaktivierungsinformationen zum Azure SDK für .NET und APIs](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

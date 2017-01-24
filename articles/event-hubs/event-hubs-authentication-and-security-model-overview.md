@@ -1,5 +1,5 @@
 ---
-title: "Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell | Microsoft Docs"
+title: "Übersicht über Azure Event Hubs-Authentifizierung und -Sicherheitsmodell | Microsoft Docs"
 description: "Übersicht über Event Hubs-Authentifizierung und -Sicherheitsmodell."
 services: event-hubs
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/30/2016
 ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9447b863b62fc71d2619591f78be0494711dc6a3
+ms.sourcegitcommit: 05ca343cfdfc602759eb3ea30a7186a0bb47bd74
+ms.openlocfilehash: 3f20a19c212c082aa766cc2bd67e938aaabf715e
 
 
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)
-Das Sicherheitsmodell von Event Hubs erfüllt die folgenden Voraussetzungen:
+Das Sicherheitsmodell von Azure Event Hubs erfüllt die folgenden Voraussetzungen:
 
 * Nur Geräte, die über gültige Anmeldeinformationen verfügen, können Daten an einen Event Hub senden.
 * Ein Gerät kann kein anderes Gerät imitieren.
@@ -39,7 +39,7 @@ Obwohl dies nicht empfohlen wird, ist es möglich, Geräte mit Token auszustatte
 Alle Token werden mit einem SAS-Schlüssel signiert. Alle Token werden in der Regel mit demselben Schlüssel signiert. Geräte kennen den Schlüssel nicht. Dadurch wird verhindert, dass Geräte Token erzeugen.
 
 ### <a name="create-the-sas-key"></a>Erstellen des SAS-Schlüssels
-Wenn Sie einen Event Hubs-Namespace erstellen, generiert Azure Event Hubs einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel `EventHubSendKey`benannt haben.
+Wenn Sie einen Azure Event Hubs-Namespace erstellen, generiert der Dienst einen 256-Bit-SAS-Schlüssel mit dem Namen **RootManageSharedAccessKey**. Dieser Schlüssel erteilt die Rechte zum Senden, Überwachen und Verwalten für den Namespace. Sie können zusätzliche Schlüssel erstellen. Es wird empfohlen, dass Sie einen Schlüssel erzeugen, der Berechtigungen zum Senden an den bestimmten Event Hub erteilt. Für den Rest dieses Themas wird davon ausgegangen, dass Sie diesen Schlüssel mit **EventHubSendKey** benannt haben.
 
 Das folgende Beispiel erstellt einen reinen Sende-Schlüssel beim Erstellen des Event Hubs:
 
@@ -103,16 +103,16 @@ In Ermangelung einer SAS-Authentifizierung für einzelne Consumergruppen können
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 
 * [Übersicht über Event Hubs]
-* Eine [Messaginglösung mit Warteschlange] unter Verwendung von Service Bus-Warteschlangen.
-* Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs].
+* [SAS-Übersicht]
+* Eine vollständige [Beispielanwendung mit Verwendung von Event Hubs]
 
 [Übersicht über Event Hubs]: event-hubs-overview.md
-[Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Messaginglösung mit Warteschlange]: ../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+[Beispielanwendung mit Verwendung von Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[SAS-Übersicht]: ../service-bus-messaging/service-bus-sas-overview.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

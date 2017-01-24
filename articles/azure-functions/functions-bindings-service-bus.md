@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: f5ea64ffc044faceec08e9a2b756a414e446a1b1
+ms.sourcegitcommit: 7ff4286d6006eb362b6fba705e2afca1fd872f72
+ms.openlocfilehash: afefa826577999897a537add7a6c6301144fa38c
 
 
 ---
@@ -43,7 +43,7 @@ Die Trigger von Notification Hubs-Warteschlange und -Thema zu einer Funktion ver
         "name" : "<Name of input parameter in function signature>",
         "queueName" : "<Name of the queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
@@ -57,7 +57,7 @@ Die Trigger von Notification Hubs-Warteschlange und -Thema zu einer Funktion ver
         "topicName" : "<Name of the topic>",
         "subscriptionName" : "<Name of the subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
@@ -196,7 +196,7 @@ In C# und F# kann Azure Functions eine Service Bus-Warteschlangennachricht mit e
   Functions deserialisiert das Objekt in eine JSON-Nachricht. Wenn der Ausgabewert NULL ist, wenn die Funktion beendet wird, erstellt Functions die Nachricht mit einem NULL-Objekt.
 * `string` – Parameterdefinition sieht wie `out string paraName` aus (C#). Wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird, erstellt Functions eine Nachricht.
 * `byte[]` – Parameterdefinition sieht wie `out byte[] paraName` aus (C#). Wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird, erstellt Functions eine Nachricht.
-* `BrokeredMessage` – Parameterdefinition sieht wie `out byte[] paraName` aus (C#). Wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird, erstellt Functions eine Nachricht.
+* `BrokeredMessage` – Parameterdefinition sieht wie `out BrokeredMessage paraName` aus (C#). Wenn der Parameterwert nicht NULL ist, sobald die Funktion beendet wird, erstellt Functions eine Nachricht.
 
 Für das Erstellen mehrerer Nachrichten in einer C#-Funktion können Sie `ICollector<T>` oder `IAsyncCollector<T>` verwenden. Beim Aufrufen der `Add` -Methode wird eine Nachricht erstellt.
 
@@ -303,6 +303,6 @@ module.exports = function (context, myTimer) {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
