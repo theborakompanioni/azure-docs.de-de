@@ -1,12 +1,12 @@
 ---
-title: Bereitstellen einer Web-App, die mit einem GitHub-Repository verknüpft ist
-description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App bereitzustellen, die ein Projekt aus einem GitHub-Repository enthält.
+title: "Bereitstellen einer Web-App, die mit einem GitHub-Repository verknüpft ist | Microsoft Docs"
+description: "Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App bereitzustellen, die ein Projekt aus einem GitHub-Repository enthält."
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: 32739607-85fe-43c8-a4dc-1feb46d93a4d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,28 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
+ms.openlocfilehash: a2f0cbd56ebb90411de882f5b80b80c21d2ce884
+
 
 ---
-# Bereitstellen einer Web-App in einem GitHub-Repository
+# <a name="deploy-a-web-app-linked-to-a-github-repository"></a>Bereitstellen einer Web-App in einem GitHub-Repository
 In diesem Thema erfahren Sie, wie Sie eine Azure-Ressourcen-Manager-Vorlage erstellen, die eine Web-App bereitstellt, die mit einem Projekt in einem GitHub-Repository verknüpft ist. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Die vollständige Vorlage finden Sie unter [Web-App verknüpft mit GitHub-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## Was Sie bereitstellen
+## <a name="what-you-will-deploy"></a>Was Sie bereitstellen
 Mit dieser Vorlage stellen Sie eine Web-App mit dem Code aus einem Projekt in GitHub bereit.
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
-[![Bereitstellen in Azure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
 
-## Parameter
+## <a name="parameters"></a>Parameter
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
-### repoURL
+### <a name="repourl"></a>repoURL
 URL des GitHub-Repositorys, das das bereitzustellende Projekt enthält. Dieser Parameter enthält einen Standardwert, der aber nur den Zweck hat, Ihnen zu zeigen, wie Sie die URL für das Repository angeben. Sie können diesen Wert verwenden, wenn Sie die Vorlage testen. Sie müssen allerdings die URL Ihres eigenen Repositorys angeben, wenn Sie mit der Vorlage arbeiten.
 
     "repoURL": {
@@ -43,7 +47,7 @@ URL des GitHub-Repositorys, das das bereitzustellende Projekt enthält. Dieser P
         "defaultValue": "https://github.com/davidebbo-test/Mvc52Application.git"
     }
 
-### Verzweigung
+### <a name="branch"></a>Verzweigung
 Die beim Bereitstellen der Anwendung zu verwendende Verzweigung des Repositorys. Der Standardwert ist "master", doch Sie können den Namen einer beliebigen Verzweigung im Repository angeben, die Sie bereitstellen möchten.
 
     "branch": {
@@ -51,15 +55,16 @@ Die beim Bereitstellen der Anwendung zu verwendende Verzweigung des Repositorys.
         "defaultValue": "master"
     }
 
-## Bereitzustellende Ressourcen
+## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### Web-App
-Erstellt die Web-App, die mit dem Projekt in GitHub verknüpft ist.
+### <a name="web-app"></a>Web-App
+Erstellt die Web-App, die mit dem Projekt in GitHub verknüpft ist. 
 
-Sie geben den Namen der Webanwendung über den **siteName**-Parameter und den Speicherort der Web-App über den **siteLocation**-Parameter an. Im **dependsOn**-Element definiert die Vorlage die Web-App als abhängig vom Diensthostingplan. Da sie vom Hostingplan abhängig ist, wird die Web-App erst erstellt, wenn der Hostingplan vollständig erstellt wurde. Das **dependsOn**-Element wird nur verwendet, um die Bereitstellungsreihenfolge anzugeben. Wenn Sie die Webanwendung nicht als abhängig vom Webhostingplan markieren, versucht der Azure-Ressourcen-Manager, beide Ressourcen zur gleichen Zeit zu erstellen, und Sie erhalten möglicherweise einen Fehler, wenn die Web-App vor dem Hostingplan erstellt wird.
+Sie geben den Namen der Web-App über den **siteName**-Parameter und den Speicherort der Web-App über den **siteLocation**-Parameter an. Im **dependsOn** -Element definiert die Vorlage die Web-App als abhängig vom Diensthostingplan. Da sie vom Hostingplan abhängig ist, wird die Web-App erst erstellt, wenn der Hostingplan vollständig erstellt wurde. Das **dependsOn** -Element wird nur verwendet, um die Bereitstellungsreihenfolge anzugeben. Wenn Sie die Webanwendung nicht als abhängig vom Webhostingplan markieren, versucht der Azure-Ressourcen-Manager, beide Ressourcen zur gleichen Zeit zu erstellen, und Sie erhalten möglicherweise einen Fehler, wenn die Web-App vor dem Hostingplan erstellt wird.
 
-Die Web-App verfügt auch über eine untergeordnete Ressource, die unter **Ressourcen** weiter unten definiert wird. Diese untergeordnete Ressource definiert die Quellcodeverwaltung für das Projekt, das mit der Web-App bereitgestellt wird. In dieser Vorlage wird die Quellcodeverwaltung mit einem bestimmten GitHub-Repository verknüpft. Das GitHub-Repository wird durch den Code **"RepoUrl": "https://github.com/davidebbo-test/Mvc52Application.git"** definiert. Sie können die Repository-URL hart codieren, wenn Sie eine Vorlage erstellen möchten, die ein einzelnes Projekt wiederholt bereitstellt, während die minimale Anzahl von Parametern erforderlich ist. Anstelle einer hart codierten Repository-URL können Sie auch einen Parameter für die Repository-URL hinzufügen und diesen Wert für die **RepoUrl**-Eigenschaft verwenden.
+Die Web-App verfügt auch über eine untergeordnete Ressource, die unter **Ressourcen** weiter unten definiert wird. Diese untergeordnete Ressource definiert die Quellcodeverwaltung für das Projekt, das mit der Web-App bereitgestellt wird. In dieser Vorlage wird die Quellcodeverwaltung mit einem bestimmten GitHub-Repository verknüpft. Das GitHub-Repository wird durch den Code **"RepoUrl": "https://github.com/davidebbo-test/Mvc52Application.git"** definiert. Sie können die Repository-URL hart codieren, wenn Sie eine Vorlage erstellen möchten, die ein einzelnes Projekt wiederholt bereitstellt, während die minimale Anzahl von Parametern erforderlich ist.
+Anstelle einer hart codierten Repository-URL können Sie auch einen Parameter für die Repository-URL hinzufügen und diesen Wert für die **RepoUrl**-Eigenschaft verwenden.
 
     {
       "apiVersion": "2015-08-01",
@@ -89,16 +94,28 @@ Die Web-App verfügt auch über eine untergeordnete Ressource, die unter **Resso
       ]
     }
 
-## Befehle zum Ausführen der Bereitstellung
+## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### PowerShell
+### <a name="powershell"></a>PowerShell
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json -siteName ExampleSite -hostingPlanName ExamplePlan -siteLocation "West US" -ResourceGroupName ExampleDeployGroup
 
-### Azure-Befehlszeilenschnittstelle
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+    azure group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json
+
+### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+
+    az group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json --parameters '@azuredeploy.parameters.json'
+
+> [!NOTE] 
+> Den Inhalt der JSON-Parameterdatei finden Sie in [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json).
+>
+>
 
 
 
 
-<!---HONumber=AcomDC_0504_2016-->
+<!--HONumber=Dec16_HO3-->
+
+
