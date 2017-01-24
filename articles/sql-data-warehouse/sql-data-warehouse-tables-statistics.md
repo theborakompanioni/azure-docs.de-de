@@ -15,20 +15,20 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fb76a6b58a88b2c80958c867f02a0f43d3b0fe25
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b2b99ec031ea26b4ab19e7327da035788661a0a8
 
 
 ---
 # <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Verwalten von Statistiken für Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
-> * [Übersicht][Übersicht]
-> * [Datentypen][Datentypen]
-> * [Verteilen][Verteilen]
+> * [Übersicht][Overview]
+> * [Datentypen][Data Types]
+> * [Verteilen][Distribute]
 > * [Index][Index]
 > * [Partition][Partition]
-> * [Statistiken][Statistiken]
-> * [Temporär][Temporär]
+> * [Statistiken][Statistics]
+> * [Temporär][Temporary]
 > 
 > 
 
@@ -95,7 +95,7 @@ WHERE
 
 Beispielsweise benötigen Datumsspalten in einem Data Warehouse normalerweise häufige Statistikaktualisierungen. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Dadurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell.  Im Gegensatz dazu müssen die Statistiken für die Spalte „Geschlecht“ in einer Kundentabelle unter Umständen nie aktualisiert werden. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse aber nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ auf jeden Fall aktualisieren.
 
-Weitere Informationen finden Sie unter [Statistiken][Statistiken] auf der MSDN-Website.
+Weitere Informationen finden Sie bei MSDN unter [Statistiken][Statistics].
 
 ## <a name="implementing-statistics-management"></a>Implementieren der Statistikverwaltung
 Häufig ist es ratsam, den Datenladeprozess zu erweitern, um sicherzustellen, dass die Statistiken am Ende des Ladevorgangs aktualisiert werden. Das Laden von Daten ist der Zeitpunkt, zu dem Tabellen am häufigsten ihre Größe oder die Verteilung der Werte ändern. Daher ist dies ein logischer Ansatzpunkt zum Implementieren einiger Verwaltungsprozesse.
@@ -113,7 +113,7 @@ Unten sind einige Richtlinien zur Aktualisierung von Statistiken während des La
 > 
 > 
 
-Weitere Informationen finden Sie unter [Kardinalitätsschätzung][Kardinalitätsschätzung] auf der MSDN-Website.
+Weitere Informationen finden Sie bei MSDN unter [Kardinalitätsschätzung][Cardinality Estimation].
 
 ## <a name="examples-create-statistics"></a>Beispiele: Erstellen von Statistiken
 In diesen Beispielen wird veranschaulicht, wie Sie verschiedene Optionen zum Erstellen von Statistiken verwenden. Die Optionen, die Sie für die einzelnen Spalten verwenden, richten Sie nach den Merkmalen Ihrer Daten und nach der Verwendung der Spalten in Abfragen.
@@ -178,7 +178,7 @@ Sie können die Optionen natürlich kombinieren. Im folgenden Beispiel wird ein 
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Die gesamte Referenz finden Sie unter [CREATE STATISTICS][CREATE STATISTICS] auf der MSDN-Website.
+Die gesamte Referenz finden Sie bei MSDN unter [CREATE STATISTICS][CREATE STATISTICS].
 
 ### <a name="f-create-multi-column-statistics"></a>F. Erstellen von Mehrspaltenstatistiken
 Verwenden Sie zum Erstellen einer Mehrspaltenstatistik einfach die vorherigen Beispiele, aber geben Sie mehr Spalten an.
@@ -350,9 +350,9 @@ Diese Anweisung ist einfach zu verwenden. Bedenken Sie, dass hiermit alle Statis
 > 
 > 
 
-Eine Implementierung einer `UPDATE STATISTICS` -Prozedur wird im Artikel [Temporäre Tabellen][Temporär] beschrieben. Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS` -Prozedur, aber das Endergebnis ist identisch.
+Eine Implementierung einer `UPDATE STATISTICS`-Prozedur wird im Artikel [Temporäre Tabellen][Temporary] beschrieben. Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS` -Prozedur, aber das Endergebnis ist identisch.
 
-Die vollständige Syntax finden Sie unter [Aktualisieren von Statistiken][Aktualisieren von Statistiken] auf der MSDN-Website.
+Die vollständige Syntax finden Sie bei MSDN unter [Aktualisieren von Statistiken][Update Statistics].
 
 ## <a name="statistics-metadata"></a>Statistikmetadaten
 Es gibt mehrere Systemsichten und -funktionen, die Sie zum Suchen nach Informationen zu Statistiken verwenden können. Beispielsweise können Sie sehen, ob ein Statistikobjekt veraltet ist, indem Sie die stats-date-Funktion verwenden. Damit können Sie anzeigen, wann Statistiken zuletzt erstellt oder aktualisiert wurden.
@@ -464,25 +464,25 @@ DBCC SHOW_STATISTICS() ist im Vergleich zu SQL Server strenger in SQL Data Wareh
 7. Benutzerdefinierter Fehler 2767 wird nicht unterstützt
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] auf der MSDN-Website.  Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Übersicht], [Tabellendatentypen][Datentypen], [Verteilen einer Tabelle][Verteilen], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabellen][Partition] und [Temporäre Tabellen][Temporär].  Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].  
+Weitere Informationen finden Sie bei MSDN unter [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS].  Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition] und [Temporäre Tabellen][Temporary].  Weitere Informationen zu Best Practices finden Sie unter [SQL Data Warehouse – Best Practices][SQL Data Warehouse Best Practices].  
 
 <!--Image references-->
 
 <!--Article references-->
-[Übersicht]: ./sql-data-warehouse-tables-overview.md
-[Datentypen]: ./sql-data-warehouse-tables-data-types.md
-[Verteilen]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistiken]: ./sql-data-warehouse-tables-statistics.md
-[Temporär]: ./sql-data-warehouse-tables-temporary.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->  
-[Kardinalitätsschätzung]: https://msdn.microsoft.com/library/dn600374.aspx
+[Cardinality Estimation]: https://msdn.microsoft.com/library/dn600374.aspx
 [CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
 [DBCC SHOW_STATISTICS]:https://msdn.microsoft.com/library/ms174384.aspx
-[Statistiken]: https://msdn.microsoft.com/library/ms190397.aspx
+[Statistics]: https://msdn.microsoft.com/library/ms190397.aspx
 [STATS_DATE]: https://msdn.microsoft.com/library/ms190330.aspx
 [sys.columns]: https://msdn.microsoft.com/library/ms176106.aspx
 [sys.objects]: https://msdn.microsoft.com/library/ms190324.aspx
@@ -497,6 +497,6 @@ Weitere Informationen finden Sie unter [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTI
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

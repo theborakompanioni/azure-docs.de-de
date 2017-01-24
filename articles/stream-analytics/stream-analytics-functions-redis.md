@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/26/2016
 ms.author: ryancraw
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 26808d4d73e5b6256b56dd3c5d5ae5d075eaac5a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e792f8c8b1ffddbd534b1660421e4cc89a63d35a
 
 
 ---
@@ -81,7 +81,7 @@ Befolgen Sie das Tutorial [Erstellen Sie Ihre erste Funktion in Azure Functions]
     ![Screenshot der App Services-Funktionsliste](./media/stream-analytics-functions-redis/app-services-function-list.png)
 2. Klicken Sie auf **Neue Funktion > ServiceBusQueueTrigger – C#**. Geben Sie in den folgenden Feldern die nachstehenden Informationen ein:
    
-   * **Warteschlangenname**: Der Name, den Sie beim Erstellen der Warteschlange unter [Erste Schritte mit Service Bus-Warteschlangen][servicebus-getstarted] angegeben haben (nicht der Service Bus-Name). Stellen Sie sicher, dass Sie die Warteschlange verwenden, die mit der Stream Analytics-Ausgabe verbunden ist.
+   * **Warteschlangenname:** Der Name, den Sie beim Erstellen der Warteschlange unter [Erste Schritte mit Service Bus-Warteschlangen][servicebus-getstarted] angegeben haben (nicht der Service Bus-Name). Stellen Sie sicher, dass Sie die Warteschlange verwenden, die mit der Stream Analytics-Ausgabe verbunden ist.
    * **Service Bus-Verbindung**: Wählen Sie **Verbindungszeichenfolge hinzufügen** aus. Um die Verbindungszeichenfolge zu ermitteln, wechseln Sie zum klassischen Portal und wählen **Service Bus** – der von Ihnen erstellte Service Bus – und am unteren Bildschirmrand **VERBINDUNGSINFORMATIONEN** aus. Stellen Sie sicher, dass Sie sich auf dem Hauptbildschirm dieser Seite befinden. Kopieren Sie die Verbindungszeichenfolge, und fügen Sie sie ein. Sie können auf Wunsch auch einen Namen für die Verbindung eingeben.
      
        ![Screenshot der Service Bus-Verbindung](./media/stream-analytics-functions-redis/servicebus-connection.png)
@@ -207,6 +207,6 @@ Um bei den neuesten Features auf dem Laufenden zu bleiben, folgen Sie [@AzureStr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

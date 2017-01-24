@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
+ms.custom: secure and protect
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: CarlRabeler; ronitr; giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 80680647559fe8b42cfa09985b9da3713b9c9305
-ms.openlocfilehash: cf0152b0cbcc85befa1b753b92f1593af958dd89
+ms.sourcegitcommit: 7b3c6d29ad7ded2ea65f378a1f807235c688d738
+ms.openlocfilehash: 9f51fcdb291021064dc02a71afdf849f1f4a3d85
 
 
 ---
-# <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
+# <a name="get-started-with-sql-database--auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto.
 
 Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
@@ -183,7 +184,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 3. Wechseln Sie zurück zum Blatt für die Überwachungskonfiguration, ändern Sie den **Speicherzugriffsschlüssel** von *Sekundär* zu *Primär*, und klicken Sie dann unten auf **OK**. Klicken Sie anschließend oben auf dem Blatt für die Überwachungskonfiguration auf **SPEICHERN**.
 4. Wechseln Sie zurück zum Blatt für die Speicherkonfiguration, und **generieren Sie erneut** den *sekundären Zugriffsschlüssel* (als Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
 
-## <a name="a-idsubheading-7aautomation-powershell-rest-api"></a><a id="subheading-7"></a>Automatisierung (PowerShell / REST-API)
+## <a name="a-idsubheading-7aautomation-powershell--rest-api"></a><a id="subheading-7"></a>Automatisierung (PowerShell / REST-API)
 Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Automatisierungstools konfigurieren:
 
 1. **PowerShell-Cmdlets**
@@ -213,9 +214,9 @@ Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Autom
 [Übersicht über die Überwachung von Azure SQL-Datenbank]: #subheading-1
 [Einrichten der Überwachung für Ihre Datenbank]: #subheading-2
 [Analysieren von Überwachungsprotokollen und -berichten]: #subheading-3
-[Methoden zur Verwendung in der Produktion]: #subheading-5
-[Erneute Speicherschlüsselgenerierung]: #subheading-6
-[Automatisierung (PowerShell / REST-API)]: #subheading-7
+[Practices for usage in production]: #subheading-5
+[Storage Key Regeneration]: #subheading-6
+[Automation (PowerShell / REST API)]: #subheading-7
 
 
 <!--Image references-->
@@ -241,6 +242,6 @@ Sie können die Überwachung in Azure SQL-Datenbank auch mit den folgenden Autom
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
