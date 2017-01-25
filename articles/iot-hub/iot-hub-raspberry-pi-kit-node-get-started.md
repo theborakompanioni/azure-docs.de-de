@@ -1,12 +1,14 @@
 ---
-title: Erste Schritte mit Raspberry Pi 3 | Microsoft-Dokumentation
-description: "Führen Sie erste Schritte mit Raspberry Pi 3 aus, erstellen Sie Ihre Azure IoT Hub-Instanz, und verbinden Sie Pi mit dieser IoT Hub-Instanz."
+title: Verbinden eines Raspberry Pi 3 mit Azure IoT Hub | Microsoft Docs
+description: Erste Schritte mit dem Raspberry Pi 3, erstellen Sie Ihre Azure IoT Hub-Instanz, und verbinden Sie Ihren Pi mit Ihrer IoT Hub-Instanz.
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
 keywords: Azure IoT Hub, erste Schritte mit dem Internet der Dinge, IoT Toolkit
+experimental: true
+experiment_id: xshi-happypathemu-20161202
 ms.assetid: b0e14bfa-8e64-440a-a6ec-e507ca0f76ba
 ms.service: iot-hub
 ms.devlang: node
@@ -16,12 +18,15 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: e453ad240c7f537ef2d150564996827ebcb9474d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d04f9d219451d683b572df43f73944011d686797
 
 
 ---
 # <a name="get-started-with-raspberry-pi-3-nodejs"></a>Erste Schritte mit Raspberry Pi 3 (Node.js)
+> [!div class="op_single_selector"]
+> * [Node.JS](iot-hub-raspberry-pi-kit-node-get-started.md)
+> * [C](iot-hub-raspberry-pi-kit-c-get-started.md)
 
 In diesem Tutorial erlernen Sie die Grundlagen der Verwendung von Raspberry Pi 3 und Raspbian. Anschließend erfahren Sie, wie Sie Ihre Geräte mithilfe von [Azure IoT Hub](iot-hub-what-is-iot-hub.md) nahtlos mit der Cloud verbinden. Beispiele für Windows 10 IoT Core finden Sie im [Windows Dev Center](http://www.windowsondevices.com/).
 
@@ -129,6 +134,6 @@ Wenn während der Lektionen Probleme auftreten, können Sie im Artikel [Problemb
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 
