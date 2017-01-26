@@ -54,10 +54,10 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
     Das Blatt „Recovery Services-Tresor“ wird geöffnet, und Sie werden aufgefordert, **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** anzugeben.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-configure-vault/rs-vault-attributes.png)
-4. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-5. Klicken Sie auf **Abonnement** , um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
+4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden. Wenn Sie eine geografische Region in der Nähe Ihres eigenen Standorts auswählen, können Sie dadurch die Netzwerklatenz beim Sichern in Azure reduzieren.
+7. Klicken Sie auf **Standort**, um die geografische Region für den Tresor auszuwählen. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden. Wenn Sie eine geografische Region in der Nähe Ihres eigenen Standorts auswählen, können Sie dadurch die Netzwerklatenz beim Sichern in Azure reduzieren.
 8. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal. Nachdem der Tresor erstellt wurde, sollte er im Portal geöffnet werden. Sollte Ihr Tresor nach Abschluss des Vorgangs nicht in der Liste angezeigt werden, klicken Sie auf **Aktualisieren**. Klicken Sie in der aktualisierten Liste auf den Namen des Tresors.
 
 ### <a name="to-determine-storage-redundancy"></a>So bestimmen Sie die Speicherredundanz
@@ -153,7 +153,7 @@ Die erste Sicherung umfasst zwei wichtige Aufgaben:
 Für die erste Sicherung verwenden Sie den Microsoft Azure Backup-Agent.
 
 ### <a name="to-schedule-the-backup"></a>So planen Sie die Sicherung
-1. Öffnen Sie den Microsoft Azure Backup-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.
+1. Öffnen Sie den Microsoft Azure Backup-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.
 
     ![Starten des Azure Backup-Agents](./media/backup-configure-vault/snap-in-search.png)
 2. Klicken Sie im Backup-Agent auf **Sicherung planen**.
@@ -186,7 +186,7 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Backup-Agent.
 Der Backup-Agent ermöglicht die Netzwerkdrosselung. Über die Drosselung wird die Verwendung der Netzwerkbandbreite bei der Datenübertragung gesteuert. Diese Steuerungsmöglichkeit kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den weiteren Internetdatenverkehr haben soll. Die Drosselung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
 
 > [!NOTE]
-> Die Netzwerkdrosselung ist nicht verfügbar für Windows Server 2008 R2 SP1, Windows Server 2008 SP2 oder Windows 7 (mit Servicepacks). Das Azure Backup-Netzwerkdrosselungs-Feature beauftragt Quality of Service (QoS) auf dem lokalen Betriebssystem. Obwohl Azure Backup diese Betriebssysteme schützen kann, funktioniert die auf diesen Plattformen verfügbare Version von QoS mit der Azure Backup-Netzwerkdrosselung nicht. Die Netzwerkdrosselung kann auf allen anderen [unterstützten Betriebssystemen](backup-azure-backup-faq.md)verwendet werden.
+> Die Netzwerkdrosselung ist nicht verfügbar für Windows Server 2008 R2 SP1, Windows Server 2008 SP2 oder Windows 7 (mit Servicepacks). Das Azure Backup-Netzwerkdrosselungs-Feature beauftragt Quality of Service (QoS) auf dem lokalen Betriebssystem. Obwohl Azure Backup diese Betriebssysteme schützen kann, funktioniert die auf diesen Plattformen verfügbare Version von QoS mit der Azure Backup-Netzwerkdrosselung nicht. Die Netzwerkdrosselung kann auf allen anderen [unterstützten Betriebssystemen](backup-azure-backup-faq.md) verwendet werden.
 >
 >
 
@@ -200,11 +200,11 @@ Der Backup-Agent ermöglicht die Netzwerkdrosselung. Über die Drosselung wird d
     ![Netzwerkdrosselung](./media/backup-configure-vault/throttling-dialog.png)
 3. Nachdem Sie die Drosselung aktiviert haben, geben Sie die zulässige Bandbreite für die Backupdatenübertragung für **Arbeitsstunden** und **Arbeitsfreie Stunden** an.
 
-    Die Bandbreitenwerte beginnen bei 512 Kilobits pro Sekunde (KBit/s) und können mit bis zu 1.023 Megabits pro Sekunde (MBit/s) angegeben werden. Sie können außerdem den Start und das Ende für die **Arbeitsstunden**angeben und festlegen, welche Tage der Woche als Arbeitstage betrachtet werden. Stunden außerhalb der festgelegten Arbeitsstunden gelten arbeitsfreie Stunden.
+    Die Bandbreitenwerte beginnen bei 512 Kilobits pro Sekunde (KBit/s) und können mit bis zu 1.023 Megabits pro Sekunde (MBit/s) angegeben werden. Sie können außerdem den Start und das Ende für die **Arbeitsstunden** angeben und festlegen, welche Tage der Woche als Arbeitstage betrachtet werden. Stunden außerhalb der festgelegten Arbeitsstunden gelten arbeitsfreie Stunden.
 4. Klicken Sie auf **OK**.
 
 ### <a name="to-back-up-files-and-folders-for-the-first-time"></a>So führen Sie erstmals eine Sicherung von Dateien und Ordnern durch
-1. Klicken Sie im Backup-Agent auf **Jetzt sichern** , um das erste Seeding über das Netzwerk abzuschließen.
+1. Klicken Sie im Backup-Agent auf **Jetzt sichern**, um das erste Seeding über das Netzwerk abzuschließen.
 
     ![Windows Server jetzt sichern](./media/backup-configure-vault/backup-now.png)
 2. Überprüfen Sie auf der Seite „Bestätigung“ die Einstellungen, die vom Assistenten für die sofortige Sicherung zum Sichern des Computers verwendet werden. Klicken Sie dann auf **Sichern**.
