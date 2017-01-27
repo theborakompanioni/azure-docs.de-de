@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: e982d29f76d521720eea7cbb56c5084572f4a542
-ms.openlocfilehash: 1982b7ec7b7322366382e250b7f27f3da6448aa0
+ms.sourcegitcommit: 3c1fda0661d577e3042f1ad7103017eed74704ad
+ms.openlocfilehash: bb979cde449a7e6d8038f6ea392c3529ced29853
 
 
 ---
@@ -95,6 +95,6 @@ Weitere Informationen zum Erstellen eines Anwendungsgateways mit URL-basiertem I
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

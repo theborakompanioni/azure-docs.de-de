@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 10/18/2016
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: f4712d70c0323e607ddcc021809f8097a621730d
-ms.openlocfilehash: 82508d01f9f1aaee11ebb5a5f936dfc71ace9cad
+ms.sourcegitcommit: 356cc4c6d8e25d36880e4b12bf471326e61990c3
+ms.openlocfilehash: f12ed9d76e7c6db5e14ed3c00d7d4087dbd4069c
 
 
 ---
@@ -26,7 +26,8 @@ ms.openlocfilehash: 82508d01f9f1aaee11ebb5a5f936dfc71ace9cad
 Zur Gewährleistung der Sicherheit steuert SQL-Datenbank den Zugriff mit Firewallregeln, die die Konnektivität nach IP-Adresse einschränken, Authentifizierungsmechanismen, die die Identitätsbestätigung durch Benutzer erfordern, und Autorisierungsmechanismen, die bestimmte Aktionen und Daten für Benutzer eingrenzen. 
 
 > [!IMPORTANT]
-> Eine Übersicht über die Sicherheitsfunktionen von SQL-Datenbank finden Sie unter [Securing your SQL Database](sql-database-security-overview.md) (Schützen Ihrer SQL-Datenbank).
+> Eine Übersicht über die Sicherheitsfunktionen von SQL-Datenbank finden Sie unter [Securing your SQL Database](sql-database-security-overview.md) (Schützen Ihrer SQL-Datenbank). Ein Tutorial mit Verwendung der SQL Server-Authentifizierung finden Sie unter [Tutorial zu SQL-Datenbank: SQL Server-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-sql-authentication-get-started.md). Ein Tutorial mit Verwendung der Azure Active Directory-Authentifizierung finden Sie unter [Tutorial zu SQL-Datenbank: AAD-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-aad-authentication-get-started.md).
+
 >
 
 ## <a name="firewall-and-firewall-rules"></a>Firewall und Firewallregeln
@@ -69,10 +70,11 @@ Darüber hinaus können diese Funktionen zum Beschränken oder Erweitern von Ber
 - Weitere Informationen zu Benutzern und Anmeldungenen finden Sie unter [Verwalten von Anmeldungen](sql-database-manage-logins.md). 
 - Eine Beschreibung der Nutzung von Funktionen zum Schützen von Daten in SQL-Datenbank finden Sie unter [Protecting data within your SQL Database](sql-database-protect-data.md) (Schützen von Daten in Ihrer SQL-Datenbank).
 - Eine Beschreibung der proaktiven Überwachung finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing-get-started.md) und [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection-get-started.md).
+- Ein Tutorial mit Verwendung der SQL Server-Authentifizierung finden Sie unter [Tutorial zu SQL-Datenbank: SQL Server-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-sql-authentication-get-started.md).
+- Ein Tutorial mit Verwendung der Azure Active Directory-Authentifizierung finden Sie unter [Tutorial zu SQL-Datenbank: AAD-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-aad-authentication-get-started.md).
 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 
