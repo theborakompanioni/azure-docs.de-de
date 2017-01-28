@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 6fb71859d0ba2e0f2b39d71edd6d518b7a03bfe9
-ms.openlocfilehash: 1d92c9a2dfae4a209ea95a33facd4b8e058fd866
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 61f4c723e8d790f5c6dd76b7aff6c5372ed1a979
 
 
 ---
@@ -51,9 +51,9 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 Laden Sie zum Erstellen einer SQL-Datenbank mit C# die erforderlichen Verwaltungsbibliotheken (mithilfe der [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console)):
 
 1. Klicken Sie auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
-2. Geben Sie `Install-Package Microsoft.Azure.Management.Sql –Pre` ein, um die [Microsoft Azure SQL-Verwaltungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)zu installieren.
-3. Geben Sie `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` ein, um die [Microsoft Azure Resource Manager-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)zu installieren.
-4. Geben Sie `Install-Package Microsoft.Azure.Common.Authentication –Pre` ein, um die [Microsoft Azure-Bibliothek für die allgemeine Authentifizierung](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)zu installieren. 
+2. Geben Sie `Install-Package Microsoft.Azure.Management.Sql -Pre` ein, um die [Microsoft Azure SQL-Verwaltungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)zu installieren.
+3. Geben Sie `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` ein, um die [Microsoft Azure Resource Manager-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)zu installieren.
+4. Geben Sie `Install-Package Microsoft.Azure.Common.Authentication -Pre` ein, um die [Microsoft Azure-Bibliothek für die allgemeine Authentifizierung](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)zu installieren. 
 
 > [!NOTE]
 > Bei den Beispielen in diesem Artikel wird eine synchrone Form der einzelnen API-Anforderungen und -Blöcke bis zur Beendigung des REST-Aufrufs für den zugrunde liegenden Dienst verwendet. Es stehen asynchrone Methoden zur Verfügung.
