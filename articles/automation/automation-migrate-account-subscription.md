@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 98f5a017221f0aaba04e2b90afc674e4c42d1bb3
-ms.openlocfilehash: 1c768e4e09f2b452804c65f751963a8d0c312c64
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 687da15bdaf854254321b59350f47549781676f5
 
 
 ---
 # <a name="migrate-automation-account-and-resources"></a>Migrieren von Automation-Konto und Ressourcen
-Für Automation-Konten und die zugehörigen Ressourcen (d.h. Assets, Runbooks, Module usw.), die Sie im Azure-Portal erstellt haben und aus einer Ressourcengruppe in eine andere oder aus einem Abonnement in ein anderes migrieren möchten, können Sie dies problemlos mit der im Azure-Portal verfügbaren Option [Ressourcen verschieben](../resource-group-move-resources.md) realisieren. Bevor Sie allerdings mit dieser Aktion fortfahren, sollten Sie zunächst die folgende [Prüfliste vor dem Verschieben der Ressourcen](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources) und darüber hinaus die spezifische Liste zur Automatisierung unten durchsehen.   
+Für Automation-Konten und die zugehörigen Ressourcen (d.h. Assets, Runbooks, Module usw.), die Sie im Azure-Portal erstellt haben und aus einer Ressourcengruppe in eine andere oder aus einem Abonnement in ein anderes migrieren möchten, können Sie dies problemlos mit der im Azure-Portal verfügbaren Option [Ressourcen verschieben](../azure-resource-manager/resource-group-move-resources.md) realisieren. Bevor Sie allerdings mit dieser Aktion fortfahren, sollten Sie zunächst die folgende [Prüfliste vor dem Verschieben der Ressourcen](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources) und darüber hinaus die spezifische Liste zur Automatisierung unten durchsehen.   
 
 1. Das Zielabonnement/die Zielressourcengruppe muss sich in der gleichen Region wie die Quelle befinden.  Automation-Konten können also nicht Regionen übergreifend verschoben werden.
 2. Beim Verschieben von Ressourcen (z.B. Runbooks, Aufträge, etc.) werden die Quellgruppe und die Zielgruppe für die Dauer des Vorgangs gesperrt. Schreib- und Löschvorgänge in den Gruppen werden bis zum Abschluss der Verschiebung blockiert.  
@@ -61,13 +61,13 @@ Um Ressourcen in ein neues Abonnement zu verschieben, schließen Sie einen Wert 
 Wie im vorherigen Beispiel werden Sie aufgefordert, die Verschiebung zu bestätigen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../resource-group-move-resources.md).
+* Weitere Informationen zum Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
 * Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure Automation finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
-* Informationen zu PowerShell-Cmdlets zum Verwalten Ihres Abonnements finden Sie unter [Verwenden von Azure PowerShell mit Resource Manager](../powershell-azure-resource-manager.md)
-* Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](../azure-portal/resource-group-portal.md).
+* Informationen zu PowerShell-Cmdlets zum Verwalten Ihres Abonnements finden Sie unter [Verwenden von Azure PowerShell mit Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
+* Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](../azure-resource-manager/resource-group-portal.md).
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

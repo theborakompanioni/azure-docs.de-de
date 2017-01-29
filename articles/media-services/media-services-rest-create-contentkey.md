@@ -1,12 +1,12 @@
 ---
 title: Erstellen von ContentKeys mit REST | Microsoft Docs
-description: Erfahren Sie, wie Sie Inhaltsschlüssel erstellen, die den sicheren Zugriff auf Medienobjekte ermöglichen.
+description: "Erfahren Sie, wie Sie Inhaltsschlüssel erstellen, die den sicheren Zugriff auf Medienobjekte ermöglichen."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: ffe17f50db9afe7c562b0890e8ea24d517e31bf7
+
 
 ---
 # <a name="create-contentkeys-with-rest"></a>Erstellen von ContentKeys mit REST
@@ -36,7 +40,7 @@ Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüssel
 1. Generieren Sie nach dem Zufallsprinzip einen 16-Byte-AES-Schlüssel (für die allgemeine und Umschlagsverschlüsselung) oder einen 32-Byte-AES-Schlüssel (für die Speicherverschlüsselung). 
    
     Dies ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen. 
-2. Rufen Sie die [GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid)-Methode und die [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey)-Methode auf, um das richtige X.509-Zertifikat zur Verschlüsselung Ihres Inhaltsschlüssels abzurufen.
+2. Rufen Sie die [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid)-Methode und die [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey)-Methode auf, um das richtige X.509-Zertifikat zur Verschlüsselung Ihres Inhaltsschlüssels abzurufen.
 3. Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats. 
    
    Das Media Services .NET SDK verwendet RSA mit OAEP zur Verschlüsselung.  Ein Beispiel finden Sie in der [EncryptSymmetricKeyData-Funktion](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
@@ -44,22 +48,22 @@ Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüssel
    
    Im folgenden .NET-Beispiel wird die Prüfsumme anhand des GUID-Abschnitts der Schlüsselkennung und des unverschlüsselten Inhaltsschlüssels berechnet.
    
-       public static string CalculateChecksum(byte[] contentKey, Guid keyId)
-       {
-           byte[] array = null;
-           using (AesCryptoServiceProvider aesCryptoServiceProvider = new AesCryptoServiceProvider())
-           {
-               aesCryptoServiceProvider.Mode = CipherMode.ECB;
-               aesCryptoServiceProvider.Key = contentKey;
-               aesCryptoServiceProvider.Padding = PaddingMode.None;
-               ICryptoTransform cryptoTransform = aesCryptoServiceProvider.CreateEncryptor();
-               array = new byte[16];
-               cryptoTransform.TransformBlock(keyId.ToByteArray(), 0, 16, array, 0);
-           }
-           byte[] array2 = new byte[8];
-           Array.Copy(array, array2, 8);
-           return Convert.ToBase64String(array2);
-       }
+     public static string CalculateChecksum(byte[] contentKey, Guid keyId)   {
+   
+         byte[] array = null;
+         using (AesCryptoServiceProvider aesCryptoServiceProvider = new AesCryptoServiceProvider())
+         {
+             aesCryptoServiceProvider.Mode = CipherMode.ECB;
+             aesCryptoServiceProvider.Key = contentKey;
+             aesCryptoServiceProvider.Padding = PaddingMode.None;
+             ICryptoTransform cryptoTransform = aesCryptoServiceProvider.CreateEncryptor();
+             array = new byte[16];
+             cryptoTransform.TransformBlock(keyId.ToByteArray(), 0, 16, array, 0);
+         }
+         byte[] array2 = new byte[8];
+         Array.Copy(array, array2, 8);
+         return Convert.ToBase64String(array2);
+     }
 5. Erstellen Sie den Inhaltsschlüssel mit den Werten für **EncryptedContentKey** (in eine Base64-codierte Zeichenfolge konvertiert), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** und **Checksum**, die Sie in den vorherigen Schritten erhalten haben.
 6. Verwenden Sie den $links-Vorgang, um die **ContentKey**-Entität mit der **Asset**-Entität zu verknüpfen.
 
@@ -251,6 +255,9 @@ Antwort:
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO2-->
 
 

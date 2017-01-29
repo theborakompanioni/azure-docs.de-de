@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie ein virtuelles Netzwerk über PowerShell ers
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a31f4f12-54ee-4339-b968-1a8097ca77d3
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2016
+ms.date: 01/03/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3d854b5073909f30a1bf59e0986c7f0f926ee21c
-ms.openlocfilehash: 2ce6f0d280609dc62063f87d2ab17256b3ff67c4
+ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
+ms.openlocfilehash: 33f3a1f490b51123054440b6098de1ae4aca941f
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 2ce6f0d280609dc62063f87d2ab17256b3ff67c4
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und klassisch. Microsoft empfiehlt, Ressourcen mit dem Resource Manager-Bereitstellungsmodell zu erstellen. Weitere Informationen zu den Unterschieden zwischen den beiden Modellen finden Sie im Artikel zum Thema [Understand Azure deployment models](../resource-manager-deployment-model.md) (Grundlegendes zu Azure-Bereitstellungsmodellen).
+Azure verfügt über zwei Bereitstellungsmodelle: Azure Resource Manager und klassisch. Microsoft empfiehlt, Ressourcen mit dem Resource Manager-Bereitstellungsmodell zu erstellen. Weitere Informationen zu den Unterschieden zwischen den beiden Modellen finden Sie im Artikel zum Thema [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md) (Grundlegendes zu Azure-Bereitstellungsmodellen).
  
 In diesem Artikel wird beschrieben, wie Sie mit dem Resource Manager-Bereitstellungsmodell über PowerShell ein VNET erstellen. Sie können ein VNet per Resource Manager auch mit anderen Tools erstellen oder dafür das klassische Bereitstellungsmodell verwenden, indem Sie in der folgenden Liste eine andere Option wählen:
 
@@ -44,7 +44,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Resource Manager-Bereitstell
 
 Um ein virtuelles Netzwerk mit PowerShell zu erstellen, müssen Sie die folgenden Schritte ausführen:
 
-1. Installieren und konfigurieren Sie Azure PowerShell mithilfe der Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+1. Installieren und konfigurieren Sie Azure PowerShell mithilfe der Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 2. Erstellen Sie ggf. eine neue Ressourcengruppe, wie unten dargestellt. Erstellen Sie für dieses Szenario eine Ressourcengruppe mit dem Namen *TestRG*. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md).
 
@@ -182,6 +182,7 @@ Informieren Sie sich, wie folgende Verbindungen hergestellt werden:
 - Eine Verbindung des virtuellen Netzwerks mit einem lokalen Netzwerk. Verwenden Sie hierfür ein Site-to-Site-VPN oder eine ExpressRoute-Verbindung. Informationen zur Vorgehensweise finden Sie in den Artikeln [Add a Site-to-Site connection to a VNet with an existing VPN gateway connection](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) (Hinzufügen einer Site-to-Site-Verbindung zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung) und [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](../expressroute/expressroute-howto-linkvnet-arm.md).
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO1-->
 
 

@@ -2,12 +2,12 @@
 title: Erstellen und Hochladen eines benutzerdefinierten Linux-Images | Microsoft Docs
 description: Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit einem benutzerdefinierten Linux-Image mithilfe des Resource Manager-Bereitstellungsmodells, und laden Sie sie in Azure hoch.
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 9f944edcafb55634c9338bc8dd518a5f032f56e0
+ms.openlocfilehash: edab3b3058a2e28ce74e62434b85b1643f267493
+
 
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage
@@ -76,7 +80,7 @@ Das Zielspeicherkonto muss mit dem Konto identisch sein, in das Sie den virtuell
 ## <a name="requirements"></a>Anforderungen
 Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
 
-* **In einer VHD-Datei installiertes Linux-Betriebssystem:** Installieren Sie auf einer virtuellen Festplatte im VHD-Format eine [von Azure unterstützte Linux-Distribution](virtual-machines-linux-endorsed-distros.md). (Informationen zu nicht unterstützten Distributionen finden Sie [hier](virtual-machines-linux-create-upload-generic.md).) Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
+* **In einer VHD-Datei installiertes Linux-Betriebssystem:** Installieren Sie auf einer virtuellen Festplatte im VHD-Format eine [von Azure unterstützte Linux-Distribution](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). (Informationen zu nicht unterstützten Distributionen finden Sie [hier](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).) Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
   * Installieren und konfigurieren Sie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) oder [KVM](http://www.linux-kvm.org/page/RunningKVM), und verwenden Sie dabei „VHD“ als Imageformat. Bei Bedarf können Sie ein Image mithilfe von `qemu-img convert` [konvertieren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats).
   * Unter [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) und [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) können Sie auch Hyper-V verwenden.
 
@@ -100,25 +104,25 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-image-to-be-uploaded"></a>Vorbereiten des hochzuladenden Images
-Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden:
+Azure unterstützt eine Vielzahl von Linux-Distributionen (siehe [Unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Die folgenden Artikel führen Sie durch die Vorbereitung der verschiedenen Linux-Distributionen, die in Azure unterstützt werden:
 
-* **[CentOS-basierte Verteilungen](virtual-machines-linux-create-upload-centos.md)**
-* **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
-* **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md)**
-* **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md)**
-* **[SLES und openSUSE](virtual-machines-linux-suse-create-upload-vhd.md)**
-* **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
-* **[Sonstige – nicht unterstützte Distributionen](virtual-machines-linux-create-upload-generic.md)**
+* **[CentOS-basierte Verteilungen](virtual-machines-linux-create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES und openSUSE](virtual-machines-linux-suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Sonstige – nicht unterstützte Distributionen](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 Beachten Sie auch die **[Installationshinweise für Linux](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)**. Diese enthalten allgemeine Tipps zur Vorbereitung von Linux-Images für Azure.
 
 > [!NOTE]
-> Die [Azure Platform-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) gilt nur dann für virtuelle Computer unter Linux, wenn eine der unterstützten Distributionen mit Konfigurationsdetails verwendet wird, die im Abschnitt mit den unterstützten Versionen unter [Linux auf von Azure unterstützten Verteilungen](virtual-machines-linux-endorsed-distros.md) angegeben sind.
+> Die [Azure Platform-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) gilt nur dann für virtuelle Computer unter Linux, wenn eine der unterstützten Distributionen mit Konfigurationsdetails verwendet wird, die im Abschnitt mit den unterstützten Versionen unter [Linux auf von Azure unterstützten Verteilungen](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angegeben sind.
 > 
 > 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Ressourcengruppen verknüpfen logisch alle Azure-Ressourcen zur Unterstützung Ihrer virtuellen Computer, z.B. das virtuelle Netzwerk und den Speicher. Erfahren Sie [hier](../resource-group-overview.md) mehr über Azure-Ressourcengruppen. Vor dem Hochladen Ihres benutzerdefinierten Datenträgerimages und dem Erstellen virtueller Computer müssen Sie zuerst eine Ressourcengruppe erstellen. 
+Ressourcengruppen verknüpfen logisch alle Azure-Ressourcen zur Unterstützung Ihrer virtuellen Computer, z.B. das virtuelle Netzwerk und den Speicher. Erfahren Sie [hier](../azure-resource-manager/resource-group-overview.md) mehr über Azure-Ressourcengruppen. Vor dem Hochladen Ihres benutzerdefinierten Datenträgerimages und dem Erstellen virtueller Computer müssen Sie zuerst eine Ressourcengruppe erstellen. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `WestUS`:
 
@@ -196,7 +200,7 @@ azure vm create myVM -l "WestUS" --resource-group myResourceGroup \
 Sie müssen alle erforderlichen Zusatzparameter für den `azure vm create`-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername und SSH-Schlüssel. Erfahren Sie mehr zu den [verfügbaren Resource Manager-Parametern für die Befehlszeilenschnittstelle](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
 
 ### <a name="create-a-vm-using-a-json-template"></a>Erstellen eines virtuellen Computers mit einer JSON-Vorlage
-Azure Resource Manager-Vorlagen sind JSON-Dateien (JavaScript Object Notation), die die Umgebung definieren, die Sie erstellen möchten. Die Vorlagen werden nach unterschiedlichen Ressourcenanbieter unterteilt, z.B. Compute oder Netzwerk. Sie können vorhandene Vorlagen verwenden oder eigene schreiben. Erfahren Sie [Verwendung von Resource Manager und Vorlagen](../resource-group-overview.md)einen virtuellen Computer erstellen.
+Azure Resource Manager-Vorlagen sind JSON-Dateien (JavaScript Object Notation), die die Umgebung definieren, die Sie erstellen möchten. Die Vorlagen werden nach unterschiedlichen Ressourcenanbieter unterteilt, z.B. Compute oder Netzwerk. Sie können vorhandene Vorlagen verwenden oder eigene schreiben. Erfahren Sie [Verwendung von Resource Manager und Vorlagen](../azure-resource-manager/resource-group-overview.md)einen virtuellen Computer erstellen.
 
 Im Anbieter `Microsoft.Compute/virtualMachines` der Vorlage ist ein `storageProfile`-Knoten vorhanden, der die Konfigurationsdetails für den virtuellen Computer enthält. Die beiden wichtigsten zu bearbeitenden Parameter sind die `image`- und `vhd`-URIs, die auf Ihr benutzerdefiniertes Datenträgerimage und die neue virtuelle Festplatte Ihres virtuellen Computers verweisen. Im Folgenden finden Sie ein JSON-Beispiel für die Verwendung eines benutzerdefinierten Datenträgerimages:
 
@@ -216,7 +220,7 @@ Im Anbieter `Microsoft.Compute/virtualMachines` der Vorlage ist ein `storageProf
           }
 ```
 
-Sie können [diese vorhandene Vorlage zum Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) verwenden oder sich mit dem [Erstellen eigener Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) beschäftigen. 
+Sie können [diese vorhandene Vorlage zum Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) verwenden oder sich mit dem [Erstellen eigener Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) beschäftigen. 
 
 Nachdem Sie eine Vorlage konfiguriert haben, erstellen Sie Ihre virtuellen Computer mit dem Befehl `azure group deployment create` . Geben Sie den URI der JSON-Vorlage mit dem Parameter `--template-uri` an:
 
@@ -234,8 +238,11 @@ azure group deployment create --resource-group myResourceGroup
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie den benutzerdefinierten virtuellen Datenträger vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../resource-group-overview.md)beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](virtual-machines-linux-add-disk.md) . Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](virtual-machines-linux-nsg-quickstart.md).
+Nachdem Sie den benutzerdefinierten virtuellen Datenträger vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../azure-resource-manager/resource-group-overview.md)beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO1-->
 
 

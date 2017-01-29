@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2016
 ms.author: chkuhtz
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 0cedf46bd0b8c352c8a8d87407ed7fbbc58e3b46
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: e9ffa674363b250a5e286c6e34200fa2b3323173
 
 ---
 
@@ -65,8 +65,8 @@ Wir definieren zwei Regeln:
 
 | Regel | Front-End-Zuordnung | Im Back-End-Pool |
 | --- | --- | --- |
-| 1 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  DIP2:81 |
+| 1 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Die vollständige Zuordnung in Azure Load Balancer sieht jetzt wie folgt aus:
 
@@ -113,8 +113,8 @@ Wir definieren zwei Regeln:
 
 | Regel | Front-End-Zuordnung | Im Back-End-Pool |
 | --- | --- | --- |
-| 1 |![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  VIP1:80 (in VM1 und VM2) |
-| 2 |![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  VIP2:80 (in VM1 und VM2) |
+| 1 |![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) VIP1:80 (in VM1 und VM2) |
+| 2 |![Regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 |![Back-End](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) VIP2:80 (in VM1 und VM2) |
 
 Die folgende Tabelle veranschaulicht die vollständige Zuordnung im Load Balancer:
 
@@ -127,7 +127,7 @@ Das Ziel des eingehenden Datenflusses ist die VIP-Adresse der Loopback-Schnittst
 
 Beachten Sie, dass in diesem Beispiel der Zielport nicht geändert wird. Obwohl dies ein Floating IP-Szenario ist, unterstützt Azure Load Balancer auch das Definieren einer Regel, um den Back-End-Zielport zu ändern, damit er sich vom Front-End-Zielport unterscheidet.
 
-Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigurationsmuster. Ein Beispiel, das derzeit verfügbar ist, ist die [Konfiguration von SQL AlwaysOn mit mehreren Listenern](../virtual-machines/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Mit der Zeit werden weitere dieser Szenarien dokumentiert.
+Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigurationsmuster. Ein Beispiel, das derzeit verfügbar ist, ist die [Konfiguration von SQL AlwaysOn mit mehreren Listenern](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) . Mit der Zeit werden weitere dieser Szenarien dokumentiert.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -138,6 +138,6 @@ Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
