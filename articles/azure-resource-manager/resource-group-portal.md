@@ -12,11 +12,11 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: 550ca15e68c2bb6bf1958e5a24417a3efa9532d0
+ms.sourcegitcommit: f1955e3e1618c6228bfa5439ca66155148ff1cb3
+ms.openlocfilehash: 3eb3ea76fa577dfcc360e209a645b45e0cb4ab34
 
 
 ---
@@ -34,6 +34,11 @@ In diesem Thema wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://por
 Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten unterstützt. Für diese Dienste müssen Sie das [klassische Portal](https://manage.windowsazure.com)verwenden. Den Status der einzelnen Dienste finden Sie im [Verfügbarkeitsdiagramm der Azure-Portale](https://azure.microsoft.com/features/azure-portal/availability/).
 
 ## <a name="manage-resource-groups"></a>Verwalten von Ressourcengruppen
+
+Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Die Ressourcengruppe kann alle Ressourcen für die Lösung oder nur die Ressourcen enthalten, die Sie als Gruppe verwalten möchten. Sie entscheiden in Abhängigkeit davon, was für Ihre Organisation am sinnvollsten ist, wie Sie die Ressourcen den Ressourcengruppen zuordnen möchten. Im Allgemeinen fügen Sie einer Ressourcengruppe Ressourcen hinzu, die den gleichen Lebenszyklus haben, damit Sie diese einfacher als Gruppe bereitstellen, aktualisieren und löschen können. 
+
+In der Ressourcengruppe werden Metadaten zu den Ressourcen gespeichert. Wenn Sie einen Standort für die Ressourcengruppe angeben, legen Sie also fest, wo die Metadaten gespeichert werden. Aus Compliance-Gründen müssen Sie unter Umständen sicherstellen, dass Ihre Daten in einer bestimmten Region gespeichert werden.
+
 1. Wählen Sie zum Anzeigen aller Ressourcengruppen in Ihrem Abonnement die Option **Ressourcengruppen**.
    
     ![Ressourcengruppen durchsuchen](./media/resource-group-portal/browse-groups.png)
@@ -128,7 +133,7 @@ Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen ge
 ![Gruppe löschen](./media/resource-group-portal/delete-group.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
+* Informationen zum Anzeigen von Aktivitätsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
 * Informationen zur Behebung von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
 * Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
 * Informationen zum Verwalten des Zugriffs auf Ressourcen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
@@ -137,6 +142,6 @@ Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen ge
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,26 +1,37 @@
 ---
-title: Erneutes Trainieren eines neuen Webdiensts mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning | Microsoft Docs
-description: Hier erfahren Sie, wie Sie mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
+title: "Erneutes Trainieren eines neuen Webdiensts mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning | Microsoft Docs"
+description: "Hier erfahren Sie, wie Sie mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: raymondlaghaeian
-editor: ''
-
+editor: 
+ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/13/2016
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 066ff1d2c8255c895fbfcb0ad8c0b1fef298f8c7
+ms.openlocfilehash: d0decc1da1444254c319e7c2e1bbe4f567ef386e
+
 
 ---
 # <a name="retrain-a-new-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Erneutes Trainieren eines neuen Webdiensts mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning
 Beim erneuten Trainieren eines neuen Webdiensts wird die Definition des Vorhersagewebdiensts so aktualisiert, dass sie auf das neue trainierte Modell verweist.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Sie benötigen ein Trainingsexperiment und ein Vorhersageexperiment (wie unter „Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen“ beschrieben). Informationen zum Erstellen des Trainings- und des Vorhersageexperiments finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md).
+Sie benötigen ein Trainingsexperiment und ein Vorhersageexperiment (wie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md) beschrieben). 
+
+> [!IMPORTANT]
+> Das Vorhersageexperiment muss als ein auf Azure Resource Manager (neu) basierender Machine Learning-Webdienst bereitgestellt werden. 
+> 
+> 
+
+Weitere Informationen zum Bereitstellen von Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](machine-learning-publish-a-machine-learning-web-service.md).
 
 Für diesen Prozess müssen die Azure Machine Learning-Cmdlets installiert sein. Informationen zum Installieren der Machine Learning-Cmdlets finden Sie in der Referenz zu [Azure Machine Learning-Cmdlets](https://msdn.microsoft.com/library/azure/mt767952.aspx) auf MSDN.
 
@@ -42,7 +53,7 @@ Auszuführende Schritte:
 Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) bei Ihrem Azure-Konto an.
 
 ## <a name="get-the-web-service-definition"></a>Rufen Sie die Webdienstdefinition ab.
-Rufen Sie als Nächstes mithilfe des Cmdlets [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) den Webdienst ab. Die Webdienstdefinition ist eine interne Darstellung des trainierten Modells für den Webdienst und kann nicht direkt geändert werden. Achten Sie darauf, die Webdienstdefinition für Ihr Vorhersageexperiment (und nicht für Ihr Trainingsexperiment) abzurufen.
+Rufen Sie als Nächstes mithilfe des Cmdlets [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) den Webdienst ab. Die Webdienstdefinition ist eine interne Darstellung des trainierten Modells für den Webdienst und kann nicht direkt geändert werden. Achten Sie darauf, die Webdienstdefinition für das Vorhersageexperiment (und nicht für das Trainingsexperiment) abzurufen.
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
@@ -65,8 +76,8 @@ Um die Definition so zu ändern, dass das neu trainierte Modell verwendet wird, 
 
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
-## <a name="update-the-reference-to-the-ilearner-blob-in-the-json."></a>Aktualisieren Sie im JSON-Code den Verweis auf das iLearner-Blob.
-Suchen Sie in den Assets nach „[trained model]“, und aktualisieren Sie den Wert *uri* im Knoten *locationInfo* mit dem URI des iLearner-Blobs. Der URI wird auf der Grundlage von *BaseLocation* und *RelativeLocation* aus der Ausgabe des BES-Aufrufs für das erneute Training generiert.
+## <a name="update-the-reference-to-the-ilearner-blob-in-the-json"></a>Aktualisieren Sie im JSON-Code den Verweis auf das iLearner-Blob.
+Suchen Sie in den Assets nach „[trained model]“, und aktualisieren Sie den Wert *uri* im Knoten *locationInfo* mit dem URI des iLearner-Blobs. Der URI wird auf der Grundlage von *BaseLocation* und *RelativeLocation* aus der Ausgabe des BES-Aufrufs für das erneute Training generiert. Dadurch wird den Pfad aktualisiert, sodass er auf das neue trainierte Modell verweist.
 
      "asset3": {
         "name": "Retrain Samp.le [trained model]",
@@ -82,13 +93,13 @@ Suchen Sie in den Assets nach „[trained model]“, und aktualisieren Sie den W
       },
 
 ## <a name="import-the-json-into-a-web-service-definition"></a>Importieren Sie den JSON-Code in eine Webdienstdefinition.
-Konvertieren Sie die geänderte JSON-Datei mithilfe des Cmdlets [Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) wieder in eine Webdienstdefinition, mit der Sie das Vorhersageexperiment aktualisieren können.
+Konvertieren Sie die geänderte JSON-Datei mithilfe des Cmdlets [Import-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) wieder in eine Webdienstdefinition, mit der Sie die Webdienstdefinition aktualisieren können.
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
 ## <a name="update-the-web-service-with-new-web-service-definition"></a>Aktualisieren Sie den Webdienst mit der neuen Webdienstdefinition.
-Verwenden Sie abschließend das Cmdlet [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) , um das Vorhersageexperiment zu aktualisieren.
+Verwenden Sie abschließend das Cmdlet [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx), um die Webdienstdefinition zu aktualisieren.
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'  -ServiceUpdates $wsd
 
@@ -98,6 +109,9 @@ Mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning können
 * Regelmäßiges erneutes Trainieren des Modells mit neuen Daten
 * Verteilung eines Modells an Kunden, sodass sie das Modell mit ihren eigenen Daten erneut trainieren können
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO3-->
 
 

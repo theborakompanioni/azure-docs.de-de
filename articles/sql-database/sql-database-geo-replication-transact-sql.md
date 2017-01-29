@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: d94d89a6-3234-46c5-8279-5eb8daad10ac
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,12 +16,12 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 702a01f7ea56e8af6286149bcb42590294cb618b
+ms.sourcegitcommit: 7b9803d7d0b4982dece276d6f5a7ec8293ce4361
+ms.openlocfilehash: 37725b1abe0ad13124b9206c9aa6fcf1185b6db4
 
 
 ---
-# <a name="configure-geo-replication-for-azure-sql-database-with-transact-sql"></a>Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL
+# <a name="configure-active-geo-replication-for-azure-sql-database-with-transact-sql"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit Transact-SQL
 > [!div class="op_single_selector"]
 > * [Übersicht](sql-database-geo-replication-overview.md)
 > * [Azure-Portal](sql-database-geo-replication-portal.md)
@@ -53,8 +53,8 @@ Wenn Sie die aktive Georeplikation mithilfe von Transact-SQL konfigurieren möch
 > 
 
 ## <a name="add-secondary-database"></a>Hinzufügen einer sekundären Datenbank 
-Mithilfe der **ALTER DATABASE** -Anweisung können Sie auf einem Partnerserver eine georeplizierte sekundäre Datenbank erstellen. Sie führen diese Anweisung in der „master“-Datenbank des Servers mit der Datenbank aus, die repliziert werden soll. Die geografisch replizierte Datenbank (die „primäre Datenbank“) hat denselben Namen wie die zu replizierende Datenbank und standardmäßig dieselbe Dienstebene wie die primäre Datenbank. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzel- oder elastische Datenbank sein. Weitere Informationen finden Sie unter [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) und [Tarife](sql-database-service-tiers.md).
-Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die asynchrone Replikation aus der primären Datenbank. In den nachfolgenden Schritten wird beschrieben, wie die Georeplikation mithilfe von Management Studio konfiguriert wird. Schritte zum Erstellen von nicht lesbaren und lesbaren sekundären Datenbanken, entweder mit einer einzelnen oder einer elastischen Datenbank, sind angegeben.
+Mithilfe der **ALTER DATABASE** -Anweisung können Sie auf einem Partnerserver eine georeplizierte sekundäre Datenbank erstellen. Sie führen diese Anweisung in der „master“-Datenbank des Servers mit der Datenbank aus, die repliziert werden soll. Die geografisch replizierte Datenbank (die „primäre Datenbank“) hat denselben Namen wie die zu replizierende Datenbank und standardmäßig dieselbe Dienstebene wie die primäre Datenbank. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder ein elastischer Pool sein. Weitere Informationen finden Sie unter [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) und [Tarife](sql-database-service-tiers.md).
+Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die asynchrone Replikation aus der primären Datenbank. In den nachfolgenden Schritten wird beschrieben, wie die Georeplikation mithilfe von Management Studio konfiguriert wird. Schritte zum Erstellen von nicht lesbaren und lesbaren sekundären Datenbanken entweder mit einer einzelnen Datenbank oder einem elastischen Pool sind angegeben.
 
 > [!NOTE]
 > Wenn auf dem angegebenen Partnerserver eine Datenbank mit dem gleichen Namen wie die primäre Datenbank vorhanden ist, wird durch den Befehl ein Fehler verursacht.
@@ -88,8 +88,8 @@ Führen Sie zum Erstellen einer lesbaren sekundären Datenbank als Einzeldatenba
            ADD SECONDARY ON SERVER <MySecondaryServer2> WITH (ALLOW_CONNECTIONS = ALL);
 4. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
 
-### <a name="add-non-readable-secondary-elastic-database"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (elastische Datenbank)
-Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank als elastische Datenbank die folgenden Schritte aus:
+### <a name="add-non-readable-secondary-elastic-pool"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (elastischer Pool)
+Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank in einem elastischen Pool die folgenden Schritte aus.
 
 1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver.
 2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
@@ -100,8 +100,8 @@ Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank als elastis
            , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 4. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
 
-### <a name="add-readable-secondary-elastic-database"></a>Hinzufügen einer lesbaren sekundären Datenbank (elastische Datenbank)
-Führen Sie zum Erstellen einer lesbaren sekundären Datenbank als elastische Datenbank die folgenden Schritte aus.
+### <a name="add-readable-secondary-elastic-pool"></a>Hinzufügen einer lesbaren sekundären Datenbank (elastischer Pool)
+Führen Sie zum Erstellen einer lesbaren sekundären Datenbank in einem elastischen Pool die folgenden Schritte aus.
 
 1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver.
 2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
@@ -125,10 +125,11 @@ Führen Sie zum Entfernen der sekundären Datenbank aus der Georeplikationsbezie
            REMOVE SECONDARY ON SERVER <MySecondaryServer1>;
 4. Klicken Sie auf **Ausführen** , um die Abfrage durchzuführen.
 
-## <a name="monitor-geo-replication-configuration-and-health"></a>Überprüfen der Konfiguration und Integrität der Georeplikation
+## <a name="monitor-active-geo-replication-configuration-and-health"></a>Überprüfen der Konfiguration und Integrität der aktiven Georeplikation
+
 Zu den Überwachungsaufgaben gehören die Überwachung der Konfiguration der Georeplikation und der Integrität der Datenreplikation.  Sie können die dynamische Verwaltungssicht **sys.dm_geo_replication_links** in der Masterdatenbank nutzen, um Informationen zu allen vorhandenen Replikationsverknüpfungen für alle Datenbanken auf dem logischen Azure SQL-Datenbankserver abzurufen. Diese Ansicht enthält eine Zeile für jede Replikationsverknüpfung zwischen primären und sekundären Datenbanken. Sie können die dynamische Verwaltungssicht **sys.dm_replication_link_status** verwenden, um eine Zeile für jede Azure SQL-Datenbank zurückzugeben, die derzeit an einer Replikationsverknüpfung beteiligt ist. Dies schließt primäre und sekundäre Datenbanken ein. Wenn für eine bestimmte primäre Datenbank mehrere Verknüpfungen für die fortlaufende Replikation vorhanden sind, enthält die Tabelle eine Zeile für jede der Beziehungen. Die Sicht wird in allen Datenbanken, einschließlich der logischen „master“-Datenbank, erstellt. Doch bei Abfragen dieser Sicht in der logischen „master“-Datenbank wird ein leeres Ergebnis zurückgegeben. Sie können mithilfe der Verwaltungssicht **sys.dm_operation_status** den Status aller Datenbankvorgänge anzeigen, einschließlich des Status der Replikationsverknüpfungen. Weitere Informationen finden Sie unter [sys.geo_replication_links (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt575501.aspx), [sys.dm_geo_replication_link_status (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt575504.aspx) und [sys.dm_operation_status (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn270022.aspx).
 
-Gehen Sie folgendermaßen vor, um eine Georeplikationspartnerschaft zu überwachen.
+Gehen Sie folgendermaßen vor, um eine Gemeinschaft aktiver Georeplikation zu überwachen.
 
 1. Verbinden Sie sich in Management Studio mit dem logischen Azure SQL-Datenbankserver.
 2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
@@ -170,6 +171,6 @@ Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 
