@@ -65,8 +65,8 @@ Führen Sie die folgenden Schritte aus, um den lokalen virtuellen Computer mit e
   
    In diesem Schritt wird das vorkonfigurierte VM-Image heruntergeladen und lokal gestartet. Anschließend wird auf dem virtuellen Computer ein lokaler Service Fabric-Cluster eingerichtet. Dieser Vorgang dauert ein paar Minuten. Wenn die Einrichtung erfolgreich war, erscheint in der Ausgabe eine Meldung mit dem Hinweis, dass der Cluster gestartet wird.
    
-
     ![Start der Clustereinrichtung nach Bereitstellung des virtuellen Computers][cluster-setup-script]
+    
 5. Vergewissern Sie sich, dass der Cluster ordnungsgemäß eingerichtet wurde, indem Sie unter http://192.168.50.50:19080/Explorer zu Service Fabric Explorer navigieren (vorausgesetzt, Sie haben die standardmäßige IP-Adresse des privaten Netzwerks beibehalten).
 
     ![Service Fabric Explorer auf dem Host-Mac][sfx-mac]
