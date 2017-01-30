@@ -1,7 +1,7 @@
 Der erste Schritt ist das Erstellen eines neuen Kontos zur Verwendung im Lernprogramm. Sie können den Plan "FREE Sandbox" verwenden, der perfekt für dieses Lernprogramm geeignet ist.
 
-### Anmelden für ein Pusher-Konto
-1. Melden Sie sich beim [Azure-Verwaltungsportal][Azure-Verwaltungsportal] an.
+### <a name="to-sign-up-for-a-pusher-account"></a>Anmelden für ein Pusher-Konto
+1. Melden Sie sich im [Azure-Verwaltungsportal][Azure Management Portal] an.
 2. Klicken Sie im unteren Bereich des Verwaltungsportal auf **Neu**.
    
     ![command-bar-new][command-bar-new]
@@ -13,16 +13,16 @@ Der erste Schritt ist das Erstellen eines neuen Kontos zur Verwendung im Lernpro
 6. Geben Sie einen Namen zur Identifizierung Ihres **Pusher**-Diensts in Ihren Azure-Einstellungen ein, oder verwenden Sie den Standardwert **Pusher**. Namen müssen zwischen 1 und 100 Zeichen lang sein und dürfen nur alphanumerische Zeichen, Gedankenstriche, Punkte und Unterstriche enthalten. Der Name muss in der Liste der abonnierten Azure Store-Artikel eindeutig sein.
    
     ![store-screen-1][store-screen-1]
-7. Wählen Sie einen Wert für die Region aus; z. B. West-USA.
+7. Wählen Sie einen Wert für die Region aus; z. B. West-USA. 
 8. Klicken Sie auf den Pfeil nach rechts.
-9. Prüfen Sie den Plan, die Preisinformationen sowie die rechtlichen Bedingungen auf der Registerkarte **Bestellung prüfen**. Aktivieren Sie das Kontrollkästchen, wenn Sie den Bedingungen zustimmen. Nachdem Sie das Kontrollkästchen aktiviert haben, beginnt der Bereitstellungsvorgang Ihres Pusher-Kontos.
+9. Prüfen Sie den Plan, die Preisinformationen sowie die rechtlichen Bedingungen auf der Registerkarte **Bestellung prüfen** . Aktivieren Sie das Kontrollkästchen, wenn Sie den Bedingungen zustimmen. Nachdem Sie das Kontrollkästchen aktiviert haben, beginnt der Bereitstellungsvorgang Ihres Pusher-Kontos. 
    
    ![store-screen-2][store-screen-2]
-10. Nach der Bestätigung Ihres Kaufs werden Sie zum Add-Ons-Dashboard umgeleitet und die Meldung **Purchasing Pusher** wird angezeigt.
+10. Nach der Bestätigung Ihres Kaufs werden Sie zum Add-Ons-Dashboard umgeleitet und die Meldung **Purchasing Pusher**wird angezeigt.
     
     ![store-screen-3][store-screen-3]
 
-Ihr Pusher-Konto wird sofort bereitgestellt und die Meldung **Successfully purchased Add-On Pusher** wird angezeigt. Ihr Konto wurde erstellt und Sie können den Pusher-Dienst jetzt verwenden.
+Ihr Pusher-Konto wird sofort bereitgestellt und die Meldung **Successfully purchased Add-On Pusher**wird angezeigt. Ihr Konto wurde erstellt und Sie können den Pusher-Dienst jetzt verwenden.
 
 Um den Abonnementplan so zu ändern, dass die Pusher-Kontakteinstellungen angezeigt werden, klicken Sie auf den Namen des Pusher-Diensts, um das Pusher-Add-On-Dashboard zu öffnen.
 
@@ -30,15 +30,15 @@ Um den Abonnementplan so zu ändern, dass die Pusher-Kontakteinstellungen angeze
 
 Wenn Sie Pusher verwenden, müssen Sie Ihre Pusher-Anwendungsverbindungseinstellungen angeben.
 
-### Suchen der Pusher-Verbindungseinstellungen
+### <a name="to-find-your-pusher-connection-settings"></a>Suchen der Pusher-Verbindungseinstellungen
 1. Klicken Sie auf **Verbindungsinformationen**.
    
     ![pusher-connection-info-button][pusher-connection-info-button]
-2. Im Dialogfeld *Verbindungsinformationen* wird die Anwendungs-ID, der Schlüssel und der geheime Schlüssel angezeigt. Sie werden diese Werte später im Lernprogramm verwenden. Kopieren Sie sie daher für die spätere Verwendung.
+2. Im Dialogfeld *Verbindungsinformationen* werden die Anwendungs-ID, der Schlüssel und das Geheimnis angezeigt. Sie werden diese Werte später im Lernprogramm verwenden. Kopieren Sie sie daher für die spätere Verwendung.
    
     ![pusher-connection-info][pusher-connection-info]
 
-Weitere Informationen zu den ersten Schritten mit Pusher finden Sie im Thema zu den [Grundlagen von Pusher][Grundlagen von Pusher].
+Weitere Informationen zu den ersten Schritten mit Pusher finden Sie im Thema zu den [Grundlagen von Pusher][Understanding Pusher].
 
 <!--images-->
 
@@ -53,7 +53,11 @@ Weitere Informationen zu den ersten Schritten mit Pusher finden Sie im Thema zu 
 
 <!--Links-->
 
-[Azure-Verwaltungsportal]: https://manage.windowsazure.com
-[Grundlagen von Pusher]: http://pusher.com/docs
+[Azure Management Portal]: https://manage.windowsazure.com
+[Understanding Pusher]: http://pusher.com/docs
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

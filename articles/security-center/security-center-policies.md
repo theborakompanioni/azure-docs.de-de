@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/12/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: ec32e3937d08d912c8f96987b0c5ebbf73060258
-ms.openlocfilehash: d9915ecbfca1eab7515b4879ae2b947c59f3ea2b
+ms.sourcegitcommit: fc82aaf3300a8d40fe00a2ae4dc008ccee6e2a66
+ms.openlocfilehash: 66cdc1fbe5afea4790e5c8ef34b4fcf2d7e89d84
 
 
 ---
@@ -50,7 +50,7 @@ Sie können Sicherheitsrichtlinien für jedes Abonnement oder jede Ressourcengru
    > Es empfiehlt sich, die Datensammlung für Ihre gesamten Abonnements zu aktivieren, damit die Sicherheitsüberwachung für alle vorhandenen und neuen virtuellen Computer verfügbar ist. Wird Datensammlung aktiviert, wird der Überwachungs-Agent installiert. Wenn Sie die Datensammlung von diesem Standort momentan nicht aktivieren möchten, können Sie dies später über die Ansichten **Integrität** und **Empfehlungen** nachholen. Sie können die Datensammlung auch nur für das Abonnement oder für ausgewählte virtuelle Computer aktivieren. Weitere Informationen zu den unterstützten virtuellen Computern finden Sie unter [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) .
    > 
    > 
-5. Wenn das Speicherkonto noch nicht konfiguriert wurde, wird unter Umständen eine Warnung wie im folgenden Screenshot angezeigt, wenn Sie die Option **Sicherheitsrichtlinie**öffnen:
+5. Wenn das Speicherkonto noch nicht konfiguriert wurde, wird unter Umständen eine Warnung wie im folgenden Screenshot angezeigt, sobald Sie die Option **Sicherheitsrichtlinie** öffnen. Wenn Sie kein Speicherkonto für die einzelnen Regionen auswählen, wird ein Speicherkonto für Sie erstellt.
    
     ![Speicherauswahl](./media/security-center-policies/security-center-policies-fig2.png)
 6. Sollte diese Warnung angezeigt werden, klicken Sie auf die angegebene Option und wählen die Region aus, wie im folgenden Screenshot zu sehen:
@@ -111,6 +111,6 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

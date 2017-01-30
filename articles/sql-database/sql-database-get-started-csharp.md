@@ -1,5 +1,5 @@
 ---
-title: 'Ausprobieren von SQL-Datenbank: Erstellen einer SQL-Datenbank mit C# | Microsoft Docs'
+title: 'C#: Erste Schritte mit Azure SQL-Datenbank | Microsoft-Dokumentation'
 description: "Probieren Sie SQL-Datenbank für das Entwickeln von SQL- und C#-Apps aus, und erstellen Sie eine Azure SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET."
 keywords: Ausprobieren von SQL, SQL C#
 services: sql-database
@@ -17,14 +17,14 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: d33128d8fa2bf0ba1025eff75378ccd42ce5aee0
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: d55c08dbd1d2372e5396f40e74b4f63f3e2f0022
 
 
 ---
 # <a name="use-c-to-create-a-sql-database-with-the-sql-database-library-for-net"></a>Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET
 
-Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Microsoft Azure SQL-Verwaltungsbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) verwenden. In diesem Artikel erfahren Sie, wie Sie mit SQL und C# eine eigenständige Datenbank erstellen. Informationen zum Erstellen elastischer Pools finden Sie unter [Erstellen eines elastischen Pools](sql-database-elastic-pool-create-csharp.md).
+Erfahren Sie, wie Sie C# zum Erstellen einer Azure SQL-Datenbank mithilfe der [Microsoft Azure SQL-Verwaltungsbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) verwenden. In diesem Artikel wird beschrieben, wie Sie eine Einzeldatenbank mit SQL und C# erstellen. Informationen zum Erstellen elastischer Pools finden Sie unter [Erstellen eines elastischen Pools](sql-database-elastic-pool-create-csharp.md).
 
 Die Azure SQL-Datenbank-Verwaltungsbibliothek für .NET bietet eine [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-basierte API, die die [Resource Manager-basierte REST-API für die SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt163571.aspx) umfasst.
 
@@ -51,9 +51,9 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 Laden Sie zum Erstellen einer SQL-Datenbank mit C# die erforderlichen Verwaltungsbibliotheken (mithilfe der [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console)):
 
 1. Klicken Sie auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
-2. Geben Sie `Install-Package Microsoft.Azure.Management.Sql –Pre` ein, um die aktuelle [Microsoft Azure SQL-Verwaltungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) zu installieren.
-3. Geben Sie `Install-Package Microsoft.Azure.Management.ResourceManager –Pre` ein, um die [Microsoft Azure Resource Manager-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)zu installieren.
-4. Geben Sie `Install-Package Microsoft.Azure.Common.Authentication –Pre` ein, um die [Microsoft Azure-Bibliothek für die allgemeine Authentifizierung](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)zu installieren. 
+2. Geben Sie `Install-Package Microsoft.Azure.Management.Sql -Pre` ein, um die aktuelle [Microsoft Azure SQL-Verwaltungsbibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) zu installieren.
+3. Geben Sie `Install-Package Microsoft.Azure.Management.ResourceManager -Pre` ein, um die [Microsoft Azure Resource Manager-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)zu installieren.
+4. Geben Sie `Install-Package Microsoft.Azure.Common.Authentication -Pre` ein, um die [Microsoft Azure-Bibliothek für die allgemeine Authentifizierung](https://www.nuget.org/packages/Microsoft.Azure.Common.Authentication)zu installieren. 
 
 > [!NOTE]
 > Bei den Beispielen in diesem Artikel wird eine synchrone Form der einzelnen API-Anforderungen und -Blöcke bis zur Beendigung des REST-Aufrufs für den zugrunde liegenden Dienst verwendet. Es stehen asynchrone Methoden zur Verfügung.
@@ -223,7 +223,7 @@ Ersetzen Sie den Inhalt von **Program.cs** durch folgende Angaben, und aktualisi
 
 
 ## <a name="create-a-service-principal-to-access-resources"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen
-Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung und der Dienstprinzipal erstellt, den wir zum Authentifizieren der C#-App benötigen. Das Skript gibt Werte aus, die für das vorhergehende C#-Beispiel erforderlich sind. Ausführliche Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../resource-group-authenticate-service-principal.md).
+Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung und der Dienstprinzipal erstellt, den wir zum Authentifizieren der C#-App benötigen. Das Skript gibt Werte aus, die für das vorhergehende C#-Beispiel erforderlich sind. Ausführliche Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
     # Sign in to Azure.
     Add-AzureRmAccount
@@ -287,6 +287,6 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,167 +1,172 @@
 ---
-title: Install MongoDB on a Windows VM | Microsoft Docs
-description: Learn how to install MongoDB on an Azure VM running Windows Server 2012 R2 created with the Resource Manager deployment model.
+title: Installieren von MongoDB auf einem virtuellen Windows-Computer in Azure | Microsoft Docs
+description: "Erfahren Sie, wie Sie MongoDB auf einem virtuellen Azure-Computer installieren, auf dem Windows Server 2012 R2 ausgeführt wird und der mit dem Resource Manager-Bereitstellungsmodell erstellt wurde."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: iainfoulds
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 12/20/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 370bcf5189c855185f11277518e0cbd5377993ab
+ms.openlocfilehash: 0772376d2d858b32dfdd06b64d61003388268361
+
 
 ---
-# <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Install and Configure MongoDB on a Windows VM in Azure
-[MongoDB](http://www.mongodb.org) is a popular open-source, high-performance NoSQL database. This article guides you through installing and configuring MongoDB on a Windows Server 2012 R2 virtual machine (VM) in Azure created using the Resource Manager deployment model. You can also [install MongoDB on a Linux VM in Azure](virtual-machines-linux-install-mongodb.md).
+# <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Windows-Computer in Azure
+[MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. Dieser Artikel führt Sie durch die Installation und Konfiguration von MongoDB auf einem virtuellen Windows Server 2012 R2-Computer in Azure. Sie können [MongoDB auch auf einem virtuellen Linux-Computer in Azure installieren](virtual-machines-linux-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="prerequisites"></a>Prerequisites
-Before you install and configure MongoDB you need to create a VM and, ideally, add a data disk to it. See the following articles to create a VM and add a data disk:
+## <a name="prerequisites"></a>Voraussetzungen
+Vor der Installation und Konfiguration von MongoDB müssen Sie zunächst einen virtuellen Computer erstellen und ihm im Idealfall einen Datenträger hinzufügen. Informationen zum Erstellen eines virtuellen Computers und Hinzufügen eines Datenträgers finden Sie in den folgenden Artikeln:
 
-* [Create a Windows Server VM using the Azure portal](virtual-machines-windows-hero-tutorial.md)
-  * Or, [create a Windows Server VM using Azure PowerShell](virtual-machines-windows-ps-create.md)
-* [Attach a data disk to a Windows Server VM using the Azure portal](virtual-machines-windows-attach-disk-portal.md)
-  * Or, [attach a data disk to a Windows Server VM using Azure PowerShell](https://msdn.microsoft.com/library/mt603673.aspx)
+* [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Erstellen einer Windows-VM mit dem Resource Manager und PowerShell](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Attach a data disk to a Windows Server VM using Azure PowerShell](https://msdn.microsoft.com/library/mt603673.aspx) (Anfügen eines Datenträgers an einen virtuellen Windows Server-Computer mit Azure PowerShell)
 
-[Log on to your Windows Server VM](virtual-machines-windows-connect-logon.md) using Remote Desktop to begin installing and configuring MongoDB.
+Um mit der Installation und Konfiguration von MongoDB zu beginnen, [melden Sie sich mit Remotedesktop bei Ihrem virtuellen Windows Server-Computer an](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="install-mongodb"></a>Install MongoDB
+## <a name="install-mongodb"></a>Installieren von MongoDB
 > [!IMPORTANT]
-> MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment. For more information, see [MongoDB Security and Authentication](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> MongoDB-Sicherheitsfunktionen wie Authentifizierung und IP-Adressen-Anbindung werden nicht standardmäßig aktiviert. Die Sicherheitsfunktionen sollten aktiviert werden, bevor MongoDB in einer Produktionsumgebung eingesetzt wird. Weitere Informationen finden Sie unter [MongoDB Security and Authentication](http://www.mongodb.org/display/DOCS/Security+and+Authentication) (MongoDB: Sicherheit und Authentifizierung).
 > 
 > 
 
-1. After you've connected to your VM using Remote Desktop, open Internet Explorer from the **Start** menu on the VM.
-2. Select **Use recommended security, privacy, and compatibility settings** when Internet Explorer first opens and click **OK**.
-3. Internet Explorer enhanced security configuration is enabled by default. Add the MongoDB website to the list of allowed sites:
+1. Wenn Sie über Remotedesktop eine Verbindung mit dem virtuellen Computer hergestellt haben, öffnen Sie auf dem virtuellen Computer im Menü **Start** Internet Explorer.
+2. Wählen Sie beim ersten Öffnen von Internet Explorer die Option **Empfohlene Sicherheits-, Datenschutz- und Kompatibilitätseinstellungen verwenden**, und klicken Sie auf **OK**.
+3. Die verstärkte Sicherheitskonfiguration für Internet Explorer ist standardmäßig aktiviert. Fügen Sie die MongoDB-Website zur Liste zugelassener Websites hinzu:
    
-   * Select the **Tools** button in the upper right corner.
-   * In **Internet Options**, select the **Security** tab, and then select the **Trusted Sites** icon.
-   * Click the **Sites** button. Add *https://\*.mongodb.org* to the list of trusted sites, then close the dialog box.
+   * Klicken Sie in der oberen rechten Ecke auf das Symbol **Extras**.
+   * Öffnen Sie unter **Internetoptionen** die Registerkarte **Sicherheit**, und wählen Sie anschließend das Symbol **Vertrauenswürdige Sites**.
+   * Klicken Sie dann auf die Schaltfläche **Sites**. Fügen Sie *https://\*.mongodb.org* der Liste mit den vertrauenswürdigen Sites hinzu, und schließen Sie dann das Dialogfeld.
      
-     ![Configure Internet Explorer security settings](./media/virtual-machines-windows-install-mongodb/configure-internet-explorer-security.png)
-4. Browse to the [MongoDB - Downloads](http://www.mongodb.org/downloads) page (http://www.mongodb.org/downloads).
-5. By default, it should select the **Community Server** edition and the latest current stable release for Windows Server 2008 R2 64-bit and later. To download the installer, click the **DOWNLOAD (msi)** button:
+     ![Konfigurieren der Internet Explorer-Sicherheitseinstellungen](./media/virtual-machines-windows-install-mongodb/configure-internet-explorer-security.png)
+4. Navigieren Sie zur [Downloadseite für MongoDB](http://www.mongodb.org/downloads) (http://www.mongodb.org/downloads).
+5. Bei Bedarf wählen Sie die Edition **Community Server** und dann die aktuelle stabile Version für Windows Server 2008 R2 64 Bit und höher aus. Klicken Sie zum Herunterladen des Installationsprogramms auf **DOWNLOAD (msi)**.
    
-    ![Download MongoDB installer](./media/virtual-machines-windows-install-mongodb/download-mongodb.png)
+    ![MongoDB-Installationsprogramm herunterladen](./media/virtual-machines-windows-install-mongodb/download-mongodb.png)
    
-    Run the installer once the download is complete.
-6. Read and accept the license agreement. When prompted, select **Complete** install.
-7. On the final screen, click **Install**.
+    Führen Sie das Installationsprogramm nach Abschluss des Downloads aus.
+6. Lesen und akzeptieren Sie die Lizenzbedingungen. Wählen Sie bei entsprechender Aufforderung die Option zum Abschließen der Installation****.
+7. Klicken Sie auf dem letzten Bildschirm auf **Installieren**.
 
-## <a name="configure-vm-and-mongodb"></a>Configure VM and MongoDB
-1. The PATH variables are not updated by the MongoDB installer. Without the MongoDB `bin` location in your PATH variable, you need to specify the full path each time you use a MongoDB executable. To add the location to your PATH variable:
+## <a name="configure-the-vm-and-mongodb"></a>Konfigurieren des virtuellen Computers und von MongoDB
+1. Die Pfadvariablen werden vom MongoDB-Installationsprogramm nicht aktualisiert. Ist der MongoDB-Speicherort `bin` in Ihrer Pfadvariablen nicht enthalten, müssen Sie jedes Mal bei Verwendung einer ausführbaren MongoDB-Datei den vollständigen Pfad angeben. So fügen Sie den Speicherort zur Pfadvariablen hinzu:
    
-   * Right-click the **Start** menu and select **System**.
-   * Click **Advanced System Settings** and then **Environment Variables**.
-   * Under **System variables**, select **Path** and then click **Edit**.
+   * Klicken Sie mit der rechten Maustaste auf das **Startmenü**, und wählen Sie **System**.
+   * Klicken Sie auf die Registerkarte **Erweiterte Systemeinstellungen** und dann auf **Umgebungsvariablen**.
+   * Wählen Sie unter **Systemvariablen** den Eintrag **Path**, und klicken Sie dann auf **Bearbeiten**.
      
-     ![Configure PATH variables](./media/virtual-machines-windows-install-mongodb/configure-path-variables.png)
+     ![Konfigurieren von PATH-Variablen](./media/virtual-machines-windows-install-mongodb/configure-path-variables.png)
      
-     Add the path to your MongoDB `bin` folder. MongoDB is typically installed in `C:\Program Files\MongoDB`. Verify the installation path on your VM. The following example adds the default MongoDB install location to the `PATH` variable:
+     Fügen Sie den Pfad zum MongoDB-Ordner `bin` hinzu. MongoDB wird in der Regel unter `C:\Program Files\MongoDB` installiert. Überprüfen Sie den Installationspfad auf Ihrem virtuellen Computer. Im folgenden Beispiel wird der standardmäßige Installationsspeicherort von MongoDB der `PATH`-Variablen hinzugefügt:
      
      ```
      ;C:\Program Files\MongoDB\Server\3.2\bin
      ```
      
      > [!NOTE]
-     > Be sure to add the leading semicolon (`;`) to indicate that you are adding a location to your `PATH` variable.
+     > Achten Sie darauf, dass Sie das vorangestellte Semikolon (`;`) hinzufügen, um anzugeben, dass Sie einen Speicherort zur `PATH`-Variablen hinzufügen.
      > 
      > 
-2. Create MongoDB data and log directories on your data disk. From the **Start** menu, select **Command Prompt**. The following examples create the directories on the **F:** drive:
+2. Erstellen Sie auf Ihrem Datenträger Daten- und Protokollverzeichnisse für MongoDB. Wählen Sie im Menü **Start** die Option **Eingabeaufforderung**. Die folgenden Beispiele erstellen die Verzeichnisse auf Laufwerk F:
    
     ```
     mkdir F:\MongoData
     mkdir F:\MongoLogs
     ```
-3. Start a MongoDB instance with the following command, adjusting the path to your data and log directories accordingly:
+3. Starten Sie mit dem folgenden Befehl eine MongoDB-Instanz, und passen Sie den Pfad zu Ihren Daten- und Protokollverzeichnissen entsprechend an:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    It may take several minutes for MongoDB to preallocate the journal files and start listening for connections. All log messages are directed to the *F:\MongoLogs\mongolog.log* file as `mongod.exe` server starts and preallocates journal files.
+    Es kann einige Minuten dauern, bis MongoDB die Journaldateien zugeordnet hat und mit dem Lauschen auf Verbindungen beginnt. Alle Protokollmeldungen werden in die Datei *F:\MongoLogs\mongolog.log* geleitet, sobald der Server `mongod.exe` startet und die Journaldateien zuordnet.
    
    > [!NOTE]
-   > The command prompt stays focused on this task while your MongoDB instance is running. Leave the command prompt window open to continue running MongoDB. Or, install MongoDB as service, as detailed in the next step.
+   > Die Eingabeaufforderung bleibt bei dieser Aufgabe, während die MongoDB-Instanz ausgeführt wird. Lassen Sie das Eingabeaufforderungsfenster geöffnet, damit MongoDB weiterhin ausgeführt wird. Oder installieren Sie MongoDB als Dienst, wie im nächsten Schritt beschrieben.
    > 
    > 
-4. For a more robust MongoDB experience, install the `mongod.exe` as a service. Creating a service means you don't need to leave a command prompt running each time you wish to use MongoDB. Create the service as follows, adjusting the path to your data and log directories accordingly:
+4. Installieren Sie für zusätzliche Stabilität von MongoDB `mongod.exe` als Dienst. Die Erstellung eines Diensts bedeutet, dass Sie nicht bei jeder Nutzung von MongoDB eine Eingabeaufforderung geöffnet lassen müssen. Erstellen Sie den Dienst wie folgt, und passen Sie den Pfad zu Ihren Daten- und Protokollverzeichnissen entsprechend an:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log `
         --logappend  --install
     ```
    
-    The preceding command creates a service named MongoDB with a description of "Mongo DB". The following parameters are also specified:
+    Der vorherige Befehl erstellt den Dienst „MongoDB“ mit der Beschreibung „Mongo DB“. Die folgenden Parameter werden ebenfalls angegeben:
    
-   * The `--dbpath` option specifies the location of the data directory. 
-   * The `--logpath` option must be used to specify a log file, since the running service does not have a command window to display output.
-   * The `--logappend` option specifies that a restart of the service causes output to append to the existing log file.
-     
-     To start the MongoDB service, run the following command:
-     
-     ```
-     net start MongoDB
-     ```
-     
-     For more information about creating the MongoDB service, see [Configure a Windows Service for MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service).
+   * Die Option `--dbpath` gibt den Ort des Datenverzeichnisses an.
+   * Zur Festlegung einer Protokolldatei muss die Option `--logpath` verwendet werden, da der laufende Dienst kein Befehlsfenster zur Anzeige der Ausgabe hat.
+   * Mit der Option `--logappend` wird festgelegt, dass ein Neustart des Diensts eine Ausgabe erzeugt, die an die vorhandene Protokolldatei angehängt wird.
+   
+   Führen Sie zum Starten des MongoDB-Diensts den folgenden Befehl aus:
+   
+    ```
+    net start MongoDB
+    ```
+   
+    Weitere Informationen zum Erstellen des MongoDB-Diensts finden Sie unter [Configure a Windows Service for MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service) (Konfigurieren eines Windows-Diensts für MongoDB).
 
-## <a name="test-the-mongodb-instance"></a>Test the MongoDB instance
-With MongoDB running as a single instance or installed as a service, you can now start creating and using your databases. To start the MongoDB administrative shell, open another command prompt window from the **Start** menu and enter the following command:
+## <a name="test-the-mongodb-instance"></a>Testen der MongoDB-Instanz
+Wenn MongoDB als einzelne Instanz ausgeführt wird oder als Dienst installiert wurde, können Sie mit dem Erstellen und Verwenden von Datenbanken beginnen. Starten Sie die MongoDB-Administrator-Shell, indem Sie im Menü **Start** ein weiteres Eingabeaufforderungsfenster öffnen und folgenden Befehl eingeben:
 
 ```
 mongo  
 ```
 
-You can list the databases with the `db` command. Insert some data as follows:
+Sie können die Datenbanken mit dem Befehl `db` auflisten. Fügen Sie wie folgt einige Daten ein:
 
 ```
 db.foo.insert( { a : 1 } )
 ```
 
-Search for data as follows:
+Suchen Sie wie folgt nach Daten:
 
 ```
 db.foo.find()
 ```
 
-The output is similar to the following example:
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
 ```
-{ "_id" : "ObjectId("57f6a86cee873a6232d74842"), "a" : 1 } 
+{ "_id" : "ObjectId("57f6a86cee873a6232d74842"), "a" : 1 }
 ```
 
-Exit the `mongo` console as follows:
+Beenden Sie die `mongo`-Konsole wie folgt:
 
 ```
 exit
 ```
 
-## <a name="configure-firewall-and-network-security-group-rules"></a>Configure firewall and Network Security Group rules
-Now that MongoDB is installed and running, open a port in Windows Firewall so you can remotely connect to MongoDB. To create a new inbound rule to allow TCP port 27017, open an administrative PowerShell prompt and enter the following command:
+## <a name="configure-firewall-and-network-security-group-rules"></a>Konfigurieren von Firewall- und Netzwerksicherheitsgruppen-Regeln
+Nach der Installation und Ausführung von MongoDB öffnen Sie einen Port in der Windows-Firewall, um eine Remoteverbindung mit MongoDB herzustellen. Wenn Sie eine neue eingehende Regel erstellen möchten, um TCP-Port 27017 zuzulassen, öffnen Sie eine administrative PowerShell-Eingabeaufforderung, und geben Sie den folgenden Befehl ein:
 
 ```powerShell
 New-NetFirewallRule -DisplayName "Allow MongoDB" -Direction Inbound `
     -Protocol TCP -LocalPort 27017 -Action Allow
 ```
 
-You can also create the rule using **Windows Firewall with Advanced Security** graphical management tool. Create a new inbound rule to allow TCP port 27017.
+Sie können die Regel auch mithilfe des grafischen Verwaltungstools **Windows-Firewall mit erweiterter Sicherheit ** erstellen. Erstellen Sie eine neue eingehende Regel zum Zulassen von TCP-Port 27017.
 
-If needed, create a Network Security Group rule to allow access to MongoDB from outside of the existing Azure virtual network subnet. You can create the Network Security Group rules using the [Azure portal](virtual-machines-windows-nsg-quickstart-portal.md) or [Azure PowerShell](virtual-machines-windows-nsg-quickstart-powershell.md). As with the Windows Firewall rules, allow TCP port 27017 to the virtual network interface of your MongoDB VM.
+Erstellen Sie ggf. eine Netzwerksicherheitsgruppen-Regel, um den Zugriff auf MongoDB von außerhalb des vorhandenen Subnetzes Ihres virtuellen Azure-Netzwerks zuzulassen. Sie können die Netzwerksicherheitsgruppen-Regeln im [Azure-Portal](virtual-machines-windows-nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder mit [Azure PowerShell](virtual-machines-windows-nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) erstellen. Lassen Sie wie bei den Windows-Firewallregeln TCP-Port 27017 für die virtuelle Netzwerkschnittstelle des virtuellen MongoDB-Computers zu.
 
 > [!NOTE]
-> TCP port 27017 is the default port used by MongoDB. You can change this port by using the `--port` parameter when starting `mongod.exe` manually or from a service. If you change the port, make sure to update the Windows Firewall and Network Security Group rules in the preceding steps.
+> TCP-Port 27017 wird in MongoDB als Standardport verwendet. Sie können diesen Port mithilfe des `--port`-Parameters ändern, wenn sie `mongod.exe` manuell oder über einen Dienst starten. Aktualisieren Sie bei Änderung des Ports unbedingt die Windows-Firewall- und die Netzwerksicherheitsgruppen-Regeln in den vorhergehenden Schritten.
 > 
 > 
 
-## <a name="next-steps"></a>Next steps
-In this tutorial, you learned how to install and configure MongoDB on your Windows VM. You can now access MongoDB on your Windows VM, by following the advanced topics in the [MongoDB documentation](https://docs.mongodb.com/manual/).
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial haben Sie erfahren, wie Sie MongoDB auf dem virtuellen Windows-Computer installieren und konfigurieren. Sie können nun auf Ihrem virtuellen Windows-Computer auf MongoDB zugreifen. Lesen Sie dazu die Informationen in den weiterführenden Themen in der [MongoDB-Dokumentation](https://docs.mongodb.com/manual/).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO3-->
 
 

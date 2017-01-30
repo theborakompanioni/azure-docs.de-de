@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 12/09/2016
 ms.author: gokuma;weig;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 211012d7c1a4ec3ad8f281bc758d2f91f452dc67
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1072ab3d7c8cc472258925baaa2ef82cdfb17eed
 
 
 ---
@@ -78,7 +78,7 @@ Sobald Sie das Notebook geöffnet haben, sehen Sie ein Verzeichnis, das einige B
 * Ein neues Notebook erstellen, indem Sie auf das Jupyter-Symbol klicken (linke obere Ecke), dann auf der rechten Seite auf die Schaltfläche **New** klicken und die Notebook-Sprache (auch Kernels genannt) wählen.   
 
 > [!NOTE]
-> Derzeit werden Python 2.7, Python 3.5  und R unterstützt. Der R-Kernel unterstützt sowohl das Programmieren in Open Source-R als auch den Enterprise-skalierbaren Microsoft R-Server.   
+> Derzeit werden Python 2.7, Python 3.5 und R unterstützt. Der R-Kernel unterstützt sowohl das Programmieren in Open Source-R als auch den Enterprise-skalierbaren Microsoft R-Server.   
 > 
 > 
 
@@ -90,7 +90,7 @@ Sobald Sie Ihr Modell erstellt und überprüft haben, ist der nächste Schritt i
 Wenn Sie Ihr Modell in Azure Machine Learning operationalisieren, steht ein Webdienst zur Verfügung, der Clients REST-Aufrufe erlaubt, die Eingabeparameter übergeben und Vorhersagen aus dem Modell als Ausgaben empfangen.   
 
 > [!NOTE]
-> Wenn Sie sich noch nicht für AzureML registriert haben, erhalten Sie einen freien oder einen Standardarbeitsbereich, wenn Sie die Startseite von [AzureML Studio](https://studio.azureml.net/) besuchen und auf „Get Started“ klicken.   
+> Wenn Sie sich noch nicht für Azure Machine Learning registriert haben, erhalten Sie einen kostenlosen Arbeitsbereich oder einen Standardarbeitsbereich, wenn Sie die Startseite von [Azure Machine Learning Studio](https://studio.azureml.net/) besuchen und auf „Sign Up“ (Registrieren) klicken.   
 > 
 > 
 
@@ -143,9 +143,9 @@ Sie können R-Modelle, die auf der Data Science Virtual Machine oder anderswo er
 Hier sehen Sie die Vorgehensweise und Codeausschnitte, die Sie verwenden können, um ein Modell als Webdienst in Azure Machine Learning einzurichten, zu erstellen, zu veröffentlichen und zu nutzen.
 
 #### <a name="setup"></a>Einrichtung
-1. Installieren Sie das AzureML-R-Paket, indem Sie ```install.packages("AzureML")``` in die IDE „Revolution R Enterprise 8.0“ oder in Ihre R-IDE eingeben.
-2. RTools können Sie [hier](https://cran.r-project.org/bin/windows/Rtools/)herunterladen. Sie benötigen das Zip-Programm im Pfad (mit der Bezeichnung zip.exe), um Ihr R-Paket in AzureML zu operationalisieren.
-3. Erstellen Sie eine Datei „settings.json“ in einem Verzeichnis namens ```.azureml``` in Ihrem Basisverzeichnis, und geben Sie die Parameter aus Ihrem Azure ML-Arbeitsbereich ein:
+1. Installieren Sie das Machine Learning-R-Paket, indem Sie ```install.packages("AzureML")``` in die IDE „Revolution R Enterprise 8.0“ oder in Ihre R-IDE eingeben.
+2. RTools können Sie [hier](https://cran.r-project.org/bin/windows/Rtools/)herunterladen. Das ZIP-Hilfsprogramm muss sich im Pfad befinden (und mit „zip.exe“ benannt sein), um Ihr R-Paket in Machine Learning zu operationalisieren.
+3. Erstellen Sie in Ihrem Basisverzeichnis in einem Verzeichnis namens ```.azureml``` eine Datei namens „settings.json“, und geben Sie die Parameter aus Ihrem Azure Machine Learning-Arbeitsbereich ein:
 
 Struktur der Datei „settings.json“:
 
@@ -155,7 +155,7 @@ Struktur der Datei „settings.json“:
     }}
 
 
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-ml"></a>Erstellen eines Modells in R und seine Veröffentlichung in Azure ML
+#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Erstellen eines Modells in R und Veröffentlichen des Modells in Azure Machine Learning
     library(AzureML)
     ws <- workspace(config="~/.azureml/settings.json")
 
@@ -172,7 +172,7 @@ Struktur der Datei „settings.json“:
 
     ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
 
-#### <a name="consume-the-model-deployed-in-azure-ml"></a>Nutzung des bereitgestellten Modells in Azure ML 
+#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Nutzen des bereitgestellten Modells in Azure Machine Learning
 Um das Modell aus einer Clientanwendung zu nutzen, verwenden wir die Azure Machine Learning-Bibliothek, um den veröffentlichten Webdienst anhand seines Namens mit dem API-Aufruf `services` zu suchen, und um den Endpunkt zu bestimmen. Dann rufen Sie einfach die Funktion `consume` auf und übergeben den Datenrahmen, der vorhergesagt werden soll.
 Der folgende Code wird verwendet, um das als Azure Machine Learning-Webdienst veröffentlichte Modell zu nutzen.
 
@@ -295,10 +295,10 @@ Kurz nachdem Sie den AzCopy-Befehl zum Kopieren in einen Azure-Blobspeicher ausg
 
 Außerdem können Sie Daten aus der lokalen Datei auf Ihrem virtuellen Computer mit dem Azure Storage-Explorer hochladen:
 
-* Um Daten in einen Container hochzuladen, wählen Sie den Zielcontainer aus, und klicken Sie auf die Schaltfläche **Hochladen**.![](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
-* Klicken Sie auf die Schaltfläche **...** rechts neben dem Feld **Dateien**, wählen Sie aus dem Dateisystem eine oder mehrere Dateien zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen.![](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
+* Um Daten in einen Container hochzuladen, wählen Sie den Zielcontainer aus, und klicken Sie auf die Schaltfläche **Hochladen**.![Hochladen in den Speicher-Explorer](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
+* Klicken Sie rechts neben dem Feld **Dateien** auf die Schaltfläche **...**, wählen Sie im Dateisystem eine oder mehrere Dateien zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen.![Hochladen von Dateien in das Blob](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
 
-**Lesen von Daten aus dem Azure-Blobspeicher: AML-Readermodul**
+**Lesen von Daten aus dem Azure-Blob: Machine Learning-Readermodul**
 
 In Azure Machine Learning Studio können Sie mit einem **„Import Data“-Modul** Daten aus Ihrem Blobspeicher lesen.
 
@@ -377,11 +377,11 @@ Sie können auch eine Datenpipeline erstellen, um die Datenverschiebung zu oder 
 
 Wenn Ihre Daten sich im Azure-Blobspeicher befinden, können Sie die Daten mit einer U-SQL-Abfrage direkt aus dem Azure-Blobspeicher lesen. Stellen Sie vor dem Formulieren der U-SQL-Abfrage sicher, dass Ihr Blobspeicherkonto mit Azure Data Lake verknüpft ist. Rufen Sie das **Azure-Portal** auf, klicken Sie auf Ihrem Azure Data Lake Analytics-Dashboard auf **Datenquelle hinzufügen**, wählen Sie als Speichertyp **Azure Storage** aus, und geben Sie den Namen und den Schlüssel Ihres Azure Storage-Kontos an. Anschließend können Sie auf die auf dem Speicherkonto gespeicherten Daten verweisen.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![Eingeben von Speicherkonto und Schlüssel](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 In Visual Studio können Sie Daten aus dem Blobspeicher lesen, einige Datenmanipulationen ausführen, Features entwickeln und die resultierenden Daten entweder in Azure Data Lake oder im Azure-Blobspeicher ausgeben. Wenn Sie auf die Daten im Blobspeicher verweisen, verwenden Sie **wasb://**; wenn Sie auf die Daten in Azure Data Lake verweisen, verwenden Sie **swbhdfs://**.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![Datenrahmen](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Sie können die folgenden U-SQL-Abfragen in Visual Studio verwenden:
 
@@ -427,7 +427,7 @@ Sie können die folgenden U-SQL-Abfragen in Visual Studio verwenden:
 
 Nachdem Ihre Abfrage an den Server gesendet wurde, wird ein Diagramm mit dem Status des Auftrags angezeigt.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
+![Auftragsstatusdiagramm](./media/machine-learning-data-science-vm-do-ten-things/USQL_Job_Status.PNG)
 
 **Datenabfragen in Data Lake: U-SQL**
 
@@ -435,11 +435,11 @@ Nachdem das Dataset in Azure Data Lake aufgenommen wurde, können Sie die [U-SQL
 
 Nachdem die Abfrage an den Server gesendet wurde, finden Sie nach kurzer Zeit die Datei „tripdata_summary.CSV“ in **Azure Data Lake Explorer**. Zur Datenvorschau können Sie mit der rechten Maustaste auf die Datei klicken.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_create_summary.png)
+![Datei in Azure Data Lake Explorer](./media/machine-learning-data-science-vm-do-ten-things/USQL_create_summary.png)
 
 So zeigen Sie die Dateiinformationen an:
 
-![](./media/machine-learning-data-science-vm-do-ten-things/USQL_tripdata_summary.png)
+![Dateizusammenfassung](./media/machine-learning-data-science-vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop-Cluster
 Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Dienst in der Cloud. Sie können problemlos mit Azure HDInsight-Clustern der Data Science Virtual Machine arbeiten.
@@ -448,25 +448,25 @@ Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Die
 
 * Erstellen Sie ein Azure-Blobspeicherkonto im [Azure-Portal](https://portal.azure.com). Dieses Speicherkonto wird zum Speichern von Daten für HDInsight-Cluster verwendet.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
+![Erstellen des Azure Blob Storage-Kontos](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Passen Sie Azure HDInsight Hadoop-Cluster im [Azure-Portal](machine-learning-data-science-customize-hadoop-cluster.md)
   
   * Sie müssen das mit dem HDInsight-Cluster erstellte Speicherkonto verknüpfen, sobald es erstellt ist. Mit diesem Speicherkonto wird auf Daten zugegriffen, die innerhalb des Clusters verarbeitet werden können.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
+![Verknüpfen mit dem Speicherkonto, das mit dem HDInsight-Cluster erstellt wurde](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_v4.PNG)
 
 * Sie müssen nach dem Erstellen den **Remotezugriff** auf den Hauptknoten des Clusters aktivieren. Merken Sie sich die hier angegebenen RAS-Anmeldeinformationen (die sich von denen beim Erstellen des Clusters unterscheiden). Sie werden diese später benötigen.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![Aktivieren des Remotezugriffs](./media/machine-learning-data-science-vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Erstellen eines Azure ML-Arbeitsbereichs Ihre Machine Learning-Experimente werden in diesem ML-Arbeitsbereich gespeichert. Wählen Sie die hervorgehobenen Optionen im Portal aus, wie im Screenshot unten dargestellt.
+* Erstellen Sie einen Azure Machine Learning-Arbeitsbereich. Ihre Machine Learning-Experimente werden in diesem Machine Learning-Arbeitsbereich gespeichert. Wählen Sie die hervorgehobenen Optionen im Portal aus, wie im Screenshot unten dargestellt.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
+![Erstellen eines Azure Machine Learning-Arbeitsbereichs](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space.PNG)
 
-* Geben Sie dann die Parameter für Ihren Azure ML-Arbeitsbereich ein.
+* Geben Sie die Parameter für Ihren Arbeitsbereich ein.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
+![Eingeben der Parameter für den Machine Learning-Arbeitsbereich](./media/machine-learning-data-science-vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
 * Hochladen von Daten mit IPython Notebook. Importieren Sie zunächst die erforderlichen Pakete, geben Sie Ihre Anmeldeinformationen ein, erstellen Sie eine Datenbank in Ihrem Speicherkonto, und laden Sie dann Daten in die HDI-Cluster hoch.
 
@@ -577,7 +577,7 @@ Da sich die Daten im Hadoop-Cluster befinden, können Sie das Paket „pyodbc“
     pd.read_sql(queryString,connection)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
+![Anzeigen vorhandener Tabellen](./media/machine-learning-data-science-vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
 Betrachten wir nun die Anzahl der Datensätze in jedem Monat, und wie häufig Trinkgeld gegeben wurde, in der Fahrttabelle:
 
@@ -594,7 +594,7 @@ Betrachten wir nun die Anzahl der Datensätze in jedem Monat, und wie häufig Tr
     df['trip_count'].plot(kind='bar')
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
+![Darstellung der Anzahl von Datensätzen in den einzelnen Monaten](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
 
     queryString = """
         SELECT tipped, COUNT(*) AS tip_freq
@@ -613,7 +613,7 @@ Betrachten wir nun die Anzahl der Datensätze in jedem Monat, und wie häufig Tr
     df['trip_count'].plot(kind='bar')
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
+![Darstellung der Trinkgeldhäufigkeit](./media/machine-learning-data-science-vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
 Außerdem können wir die Entfernung zwischen dem Aufnahmestandort und dem Absetzstandort berechnen und sie dann mit der Fahrtstrecke vergleichen.
 
@@ -636,7 +636,7 @@ Außerdem können wir die Entfernung zwischen dem Aufnahmestandort und dem Abset
     results.head(5)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![Aufnahme- und Absetztabelle](./media/machine-learning-data-science-vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -645,9 +645,9 @@ Außerdem können wir die Entfernung zwischen dem Aufnahmestandort und dem Abset
     plt.scatter(df['direct_distance'], df['trip_distance'])
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
+![Darstellung mit Aufnahme-/Absetzstrecke und Fahrtstrecke](./media/machine-learning-data-science-vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
 
-Nun bereiten wir komprimierte Daten (1 %) für die Modellierung vor. Wir können diese Daten im AML-Readermodul verwenden.
+Nun bereiten wir komprimierte Daten (1 %) für die Modellierung vor. Wir können diese Daten im Machine Learning-Readermodul verwenden.
 
         queryString = """
         create  table if not exists nyctaxi_downsampled_dataset_testNEW (
@@ -780,19 +780,19 @@ Nach einer Weile können Sie sehen, dass die Daten in Hadoop-Cluster geladen wur
     pd.read_sql(queryString,connection)
 
 
-![](./media/machine-learning-data-science-vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![Datentabelle](./media/machine-learning-data-science-vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-**Lesen von Daten aus HDI mit AML: Readermodul**
+**Lesen von Daten aus HDI mithilfe von Machine Learning: Readermodul**
 
 Sie können auch das **Readermodul** in Azure Machine Learning Studio für den Datenbankzugriff in Hadoop-Clustern verwenden. Geben Sie die Anmeldeinformationen für Ihre HDI-Cluster und Ihr Azure Storage-Konto an, und Sie können die Datenbank in HDI-Clustern verwenden, um Machine Learning-Modelle zu erstellen.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
+![Eigenschaften des Readermoduls](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
 
 Das bewertete Dataset kann dann angezeigt werden:
 
-![](./media/machine-learning-data-science-vm-do-ten-things/AML_Model_Results.PNG)
+![Anzeigen des bewerteten Datasets](./media/machine-learning-data-science-vm-do-ten-things/AML_Model_Results.PNG)
 
-### <a name="azure-sql-data-warehouse-databases"></a>Azure SQL Data Warehouse und Datenbanken
+### <a name="azure-sql-data-warehouse--databases"></a>Azure SQL Data Warehouse und Datenbanken
 Azure SQL Data Warehouse ist ein elastisches Data Warehouse-as-a-Service-Angebot mit SQL Server-Funktionalität auf Unternehmensniveau.
 
 Sie können Ihr Azure SQL Data Warehouse bereitstellen, indem Sie die Anweisungen in diesem [Artikel](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)befolgen. Nachdem Sie Ihr Azure SQL Data Warehouse bereitgestellt haben, können Sie diese [exemplarische Vorgehensweise](machine-learning-data-science-process-sqldw-walkthrough.md) verwenden, um Daten in SQL Data Warehouse hochzuladen, zu durchsuchen und zu modellieren.
@@ -816,13 +816,13 @@ Nun visualisieren wir die Volcano JSON-Datei aus dem obigen DocumentDB-Beispiel 
 
 1. Öffnen Sie Power BI Desktop, und führen Sie „Get Data“ aus. Geben Sie die URL an: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. Sie sollten die JSON-Datensätze in einer importierten Liste sehen.
-3. Konvertieren Sie die Liste in eine Tabelle, damit PowerBI mit dem Inhalt arbeiten kann.
+3. Konvertieren Sie die Liste in eine Tabelle, damit Power BI damit arbeiten kann.
 4. Erweitern Sie die Spalten durch Klicken auf das Erweiterungssymbol (das Symbol „Pfeil nach links und Pfeil nach rechts“ auf der rechten Seite der Spalte).
 5. Beachten Sie, dass bei „Location“ das Feld „Record“ steht. Erweitern Sie den Datensatz und wählen Sie nur „coordinates“. „coordinates“ ist eine Listenspalte.
 6. Fügen Sie eine neue Spalte hinzu, um die Listenspalte „coordinates“ in eine kommagetrennte LatLong-Spalte zu konvertieren, wobei die beiden Elemente im Listenfeld „coordinates“ mithilfe der Formel ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```verkettet werden.
 7. Konvertieren Sie schließlich die Spalte ```Elevation``` zu „Dezimal“, und wählen Sie **Schließen** und **Anwenden**.
 
-Anstelle der oben beschriebenen Schritte können Sie den folgenden Code, in dem die obigen Schritte ausformuliert sind, in den Erweiterten Editor in PowerBI einfügen, der Ihnen ermöglicht, die Datentransformationen in einer Abfragesprache zu schreiben.
+Anstelle der oben beschriebenen Schritte können Sie den folgenden Code, in dem die obigen Schritte ausformuliert sind, in den erweiterten Editor in Power BI einfügen, der Ihnen ermöglicht, die Datentransformationen in einer Abfragesprache zu schreiben.
 
     let
         Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
@@ -838,7 +838,7 @@ Anstelle der oben beschriebenen Schritte können Sie den folgenden Code, in dem 
 
 Jetzt befinden sich die Daten in Ihrem Power BI-Datenmodell. Ihr Power BI-Desktop sollte nun wie unten dargestellt aussehen.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
+![Power BI Desktop](./media/machine-learning-data-science-vm-do-ten-things/PowerBIVolcanoData.png)
 
 Sie können beginnen, Berichte und Visualisierungen mit dem Datenmodell zu erstellen. Sie können die in diesem [Power BI-Artikel](../documentdb/documentdb-powerbi-visualize.md#build-the-reports) beschriebenen Schritte verwenden, um einen Bericht zu erstellen. Das Endergebnis ist ein Bericht, der wie folgt aussieht.
 
@@ -856,7 +856,7 @@ Wenn Sie einige umfangreiche Analysen abwickeln müssen und mehr CPU- und/oder A
 
 Auch wenn Ihr Bedarf an VM-Verarbeitungskapazität sinkt (wenn Sie z.B. eine erhebliche Workload in einen Hadoop- oder Spark-Cluster verschoben haben), können Sie den Cluster im [Azure-Portal](https://portal.azure.com) über die Einstellungen Ihrer VM-Instanz zentral herunterskalieren. Hier sehen Sie einen Screenshot.
 
-![](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
+![VM-Instanzeinstellungen](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
 
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10. Installieren zusätzlicher Tools auf Ihrem virtuellen Computer
 Wir haben mehrere Tools zu einem Paket zusammengefasst, die unserer Ansicht nach vielen der allgemeinen Datenanalyseanforderungen gerecht werden und Ihnen Zeit sparen sollten, da sie vermeiden, dass Sie Ihre Umgebungen einzeln installieren und konfigurieren müssen. Außerdem sparen Sie Geld, da Sie nur für die Ressourcen bezahlen, die Sie auch wirklich verwenden.
@@ -869,6 +869,6 @@ Dies sind nur einige Dinge, die mit der Microsoft Data Science Virtual Machine m
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

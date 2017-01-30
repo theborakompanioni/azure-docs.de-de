@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -54,8 +54,8 @@ Mit dem **Azure Data Catalog** -Tool zum Registrieren von Datenquellen können B
 
 > [!NOTE]
 > Für eine breite Tabellen mit einer großen Anzahl von Spalten werden möglicherweise weniger als 20 Datensätze in deren Vorschau eingefügt.
-> 
-> 
+>
+>
 
 ## <a name="including-data-profiles"></a>Einschließen von Datenprofilen
 Ähnlich wie ein Einschließen von Vorschauen wertvollen Kontext für Benutzer bereitstellen kann, die in **Azure Data Catalog**nach Datenquellen suchen, lässt sich auch durch Einschließen eines Datenprofils erreichen, die ermittelten Datenquellen einfacher verstehen zu können.
@@ -71,8 +71,8 @@ Diese statistischen Daten werden dann zusammen mit den strukturellen und beschre
 
 > [!NOTE]
 > Für Text- oder Datumsspalten werden keine Durchschnitts- und Standardabweichungswerte in deren Datenprofile eingeschlossen.
-> 
-> 
+>
+>
 
 ## <a name="updating-registrations"></a>Aktualisieren von Registrierungen
 Durch das Registrieren einer Datenquelle kann diese in **Azure Data Catalog** anhand der Metadaten und der optionalen Vorschau ermittelt werden, die während der Registrierung extrahiert wurden. Wenn die Datenquelle im Katalog aktualisiert werden muss (z. B. wenn das Schema eines Objekts geändert wurde, ursprünglich ausgeschlossene Tabellen eingeschlossen werden sollen oder ein Benutzer die in der Vorschau enthaltenen Daten aktualisieren möchte), kann das Registrierungstool für Datenquellen erneut ausgeführt werden.
@@ -84,7 +84,6 @@ Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden struk
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) .
-
 
 
 

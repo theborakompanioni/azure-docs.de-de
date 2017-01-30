@@ -26,10 +26,13 @@ Das Azure-VPN-Gateway kündigt Ihren lokalen BGP-Geräten gegenüber folgende Ro
 * Routen, die in anderen, mit dem Azure VPN Gateway verbundenen BGP-Peeringsitzungen ermittelt wurden ( **mit Ausnahme der Standardrouten oder Routen, die sich mit VNET-Präfixen überschneiden**)
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Kann ich die Standardroute (0.0.0.0/0) für Azure VPN Gateways ankündigen?
-Derzeit leider nicht.
+Ja.
 
 ### <a name="can-i-advertise-the-exact-prefixes-as-my-virtual-network-prefixes"></a>Kann ich die gleichen Präfixe wie meine Virtual Network-Präfixe ankündigen?
-Nein. Das Ankündigen der gleichen Präfixe wie Ihre Virtual Network-Adresspräfixe wird von der Azure-Plattform blockiert oder gefiltert. Sie können jedoch ein Präfix ankündigen, das eine Obermenge der Inhalte Ihres virtuellen Netzwerks ist. Ihr virtuelles Netzwerk könnte z.B. den Adressraum 10.10.0.0/16 verwenden, und Sie könnten 10.0.0.0/8 ankündigen.
+
+Nein. Das Ankündigen der gleichen Präfixe wie Ihre Virtual Network-Adresspräfixe wird von der Azure-Plattform blockiert oder gefiltert. Sie können jedoch ein Präfix ankündigen, das eine Obermenge der Inhalte Ihres virtuellen Netzwerks ist. 
+
+Sie können beispielsweise 10.0.0.0/8 ankündigen, wenn für Ihr virtuelles Netzwerk der Adressraum 10.0.0.0/16 verwendet wird. Das Ankündigen von 10.0.0.0/16 oder 10.0.0.0/24 ist dagegen nicht möglich.
 
 ### <a name="can-i-use-bgp-with-my-vnet-to-vnet-connections"></a>Kann ich BGP mit meinen VNET-zu-VNET-Verbindungen verwenden?
 Ja. BGP kann sowohl für standortübergreifende Verbindungen als auch für VNET-zu-VNET-Verbindungen verwendet werden.
@@ -40,17 +43,19 @@ Ja. Für ein Azure-VPN-Gateway kann eine Kombination aus BGP-Verbindungen und BG
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Wird BGP-Transitrouting vom Azure-VPN-Gateway unterstützt?
 Ja. BGP-Transitrouting wird unterstützt. Einzige Einschränkung: Azure-VPN-Gateways kündigen gegenüber anderen BGP-Peers **KEINE** Standardrouten an. Wenn Sie Transitrouting über mehrere Azure-VPN-Gateways hinweg nutzen möchten, müssen Sie BGP für alle VNET-zu-VNET-Zwischenverbindungen aktivieren.
 
-### <a name="can-i-have-more-than-one-tunnels-between-azure-vpn-gateway-and-my-on-premises-network"></a>Kann ich zwischen Azure-VPN-Gateway und meinem lokalen Netzwerk mehrere Tunnel verwenden?
-Ja. Zwischen einem Azure-VPN-Gateway und Ihrem lokalen Netzwerk können mehrere S2S-VPN-Tunnel eingerichtet werden. Beachten Sie, dass diese Tunnel alle auf die Gesamtanzahl von Tunneln für Ihre Azure-VPN-Gateways angerechnet werden. Wenn also etwa zwischen Ihrem Azure-VPN-Gateway und einem Ihrer lokalen Netzwerke zwei redundante Tunnel bestehen, werden dadurch zwei Tunnel des Gesamtkontingents für Ihr Azure-VPN-Gateway (10 für „Standard“, 30 für „HighPerformance“) belegt.
+### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Kann ich zwischen Azure-VPN-Gateway und meinem lokalen Netzwerk mehrere Tunnel verwenden?
+Ja. Zwischen einem Azure-VPN-Gateway und Ihrem lokalen Netzwerk können mehrere S2S-VPN-Tunnel eingerichtet werden. Beachten Sie, dass diese Tunnel alle auf die Gesamtzahl von Tunneln für Ihre Azure-VPN-Gateways angerechnet werden und dass Sie BGP für beide Tunnel aktivieren müssen.
+
+Wenn also etwa zwischen Ihrem Azure-VPN-Gateway und einem Ihrer lokalen Netzwerke zwei redundante Tunnel bestehen, werden dadurch zwei Tunnel des Gesamtkontingents für Ihr Azure-VPN-Gateway (10 für „Standard“, 30 für „HighPerformance“) belegt.
 
 ### <a name="can-i-have-multiple-tunnels-between-two-azure-vnets-with-bgp"></a>Kann ich zwischen zwei Azure-VNETs mit BGP mehrere Tunnel verwenden?
-Nein. Redundante Tunnel zwischen einem Paar virtueller Netzwerke werden nicht unterstützt.
+Ja. Aber mindestens eines der virtuellen Netzwerkgateways muss über eine Aktiv/Aktiv-Konfiguration verfügen.
 
 ### <a name="can-i-use-bgp-for-s2s-vpn-in-an-expressroutes2s-vpn-co-existence-configuration"></a>Kann ich BGP für S2S-VPN-Verbindungen in einer Konfiguration mit ExpressRoute und S2S-VPN verwenden?
-Derzeit leider nicht.
+Ja. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Welche Adresse verwendet das Azure-VPN-Gateway als BGP-Peer-IP-Adresse?
-Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem für das virtuelle Netzwerk definierten GatewaySubnet-Bereich zu. Dabei handelt es sich standardmäßig um die vorletzte Adresse des Bereichs. Wenn also beispielsweise der GatewaySubnet-Bereich 10.12.255.0/27 von 10.12.255.0 bis 10.12.255.31 reicht, wird 10.12.255.30 als BGP-Peer-IP-Adresse für das Azure-VPN-Gateway verwendet. Diese Information können Sie der Liste mit den Azure-VPN-Gateway-Informationen entnehmen.
+Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem für das virtuelle Netzwerk definierten GatewaySubnet-Bereich zu. Dabei handelt es sich standardmäßig um die vorletzte Adresse des Bereichs. Wenn also beispielsweise der GatewaySubnet-Bereich 10.12.255.0/27 von 10.12.255.0 bis 10.12.255.31 reicht, wird 10.12.255.30 als BGP-Peer-IP-Adresse für das Azure-VPN Gateway verwendet. Diese Information können Sie der Liste mit den Azure-VPN-Gateway-Informationen entnehmen.
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Welche Anforderungen müssen die BGP-Peer-IP-Adressen auf meinem VPN-Gerät erfüllen?
 Ihre lokale BGP-Peeradresse darf **NICHT** der öffentlichen IP-Adresse Ihres VPN-Geräts entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine Adresse handeln, die der Loopback-Schnittstelle des Geräts zugewiesen ist. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt.
@@ -63,6 +68,6 @@ Sie müssen eine Hostroute der Azure-BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät hi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

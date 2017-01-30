@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2016
+ms.date: 12/06/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21f7735767b6655046b354d2a782b2730f117976
+ms.sourcegitcommit: 628df1df8f5de99a5c18d0df5b7ee41e2fb747df
+ms.openlocfilehash: c3ff370b105a1f9bdacd1bdb4b32d6209e150be2
 
 
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
-Ein Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Cluster sollten immer gesichert werden, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit dem Cluster herstellen können, insbesondere dann, wenn im Cluster Produktionsworkloads ausgeführt werden. Es ist zwar möglich, einen nicht gesicherten Cluster zu erstellen, allerdings kann in diesem Fall jeder anonyme Benutzer eine Verbindung herstellen, wenn der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht. 
+Ein Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Cluster müssen immer gesichert werden, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit dem Cluster herstellen können, insbesondere dann, wenn im Cluster Produktionsworkloads ausgeführt werden. Es ist zwar möglich, einen nicht gesicherten Cluster zu erstellen, allerdings kann in diesem Fall jeder anonyme Benutzer eine Verbindung herstellen, wenn der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht. 
 
 Dieser Artikel enthält eine Übersicht über die Sicherheitsszenarien für Cluster unter Azure oder eigenständige Cluster sowie über die verschiedenen Technologien, mit denen diese Szenarien implementiert werden. Die Szenarien für die Clustersicherheit sind:
 
@@ -109,14 +109,18 @@ Clientzertifikate werden in der Regel nicht von einer Drittanbieter-Zertifizieru
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Dieser Artikel enthält Konzeptinformationen zur Clustersicherheit. Als Nächstes [erstellen Sie einen Cluster in Azure mithilfe einer Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) oder über das [Azure-Portal](service-fabric-cluster-creation-via-portal.md).
+Dieser Artikel enthält Konzeptinformationen zur Clustersicherheit. Als Nächstes
+
+
+1.  [erstellen Sie einen Cluster in Azure mithilfe einer Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) oder über das 
+2.  [Azure-Portal](service-fabric-cluster-creation-via-portal.md).
 
 <!--Image references-->
-[Knoten zu Knoten]: ./media/service-fabric-cluster-security/node-to-node.png
-[Client zu Knoten]: ./media/service-fabric-cluster-security/client-to-node.png
+[Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
+[Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -23,6 +23,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Virtuelle Netzwerke pro Abonnement |50 |500 |
+| Subnetze pro virtuellem Netzwerk |1.000 |an den Support wenden |
 | DNS-Server pro virtuellem Netzwerk |9 |25 |
 | Private IP-Adressen pro virtuellem Netzwerk |4096 |4096 |
 | Parallele TCP-Verbindungen für einen virtuellen Computer bzw. eine Rolleninstanz |500K |500K |
@@ -38,11 +39,12 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Öffentliche Front-End-IP pro Lastenausgleichsmodul |5 |Support kontaktieren |
 | Private Front-End-IP pro Lastenausgleichsmodul |30 |Support kontaktieren |
 | VNets Peerings pro Virtual Network-Instanz |10 |50 |
+| Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
 
 Wenden Sie sich an den Support, falls Sie Limits gegenüber den Standardwerten erhöhen müssen.
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

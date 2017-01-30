@@ -1,26 +1,31 @@
 ---
 title: "Veröffentlichen von Apps mit Azure AD-Anwendungsproxy | Microsoft Docs"
-description: "Es wird beschrieben, wie Sie lokale Anwendungen mit dem Azure AD-Anwendungsproxy in der Cloud veröffentlichen."
+description: "Es wird beschrieben, wie Sie lokale Anwendungen im klassischen Portal mit dem Azure AD-Anwendungsproxy in der Cloud veröffentlichen."
 services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
+editor: harshja
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/19/2016
+ms.date: 11/30/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0ba28b2708045a216e1b9fdd7601010b2b554737
+ms.sourcegitcommit: d7fe552e0c8856a8d7799ae8a7732e57a350fee3
+ms.openlocfilehash: 2a42605c75fe183d57030e4a3ff3f3218a7dbc2b
 
 
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy
+
+> [!div class="op_single_selector"]
+> * [Azure-Portal](application-proxy-publish-azure-portal.md)
+> * [klassischen Azure-Portal](active-directory-application-proxy-publish.md)
+
 Mit Azure AD-Anwendungsproxy können Sie Remotearbeiter unterstützen, indem Sie lokale Anwendungen veröffentlichen, auf die über das Internet zugegriffen werden kann. Zu diesem Zeitpunkt sollten Sie den [Anwendungsproxy im klassischen Azure-Portal bereits aktiviert haben](active-directory-application-proxy-enable.md). In diesem Artikel werden Sie durch die Schritte zum Veröffentlichen von Anwendungen geführt, die in Ihrem lokalen Netzwerk ausgeführt werden, sowie zum Ermöglichen des sicheren Remotezugriffs von außerhalb Ihres Netzwerks. Nach dem Durcharbeiten dieses Artikels können Sie die Anwendung mit personalisierten Informationen oder Sicherheitsanforderungen konfigurieren.
 
 > [!NOTE]
@@ -101,6 +106,6 @@ Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http:/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 
