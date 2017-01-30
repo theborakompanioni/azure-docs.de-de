@@ -5,9 +5,9 @@ services: virtual-machines-windows
 documentationcenter: python
 author: huguesv
 manager: wpickett
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: e36484d1-afbf-47f5-b755-5e65397dc1c3
 ms.service: virtual-machines-windows
 ms.workload: web
 ms.tgt_pltfrm: vm-windows
@@ -15,18 +15,23 @@ ms.devlang: python
 ms.topic: article
 ms.date: 08/04/2015
 ms.author: huvalo
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: bd3e269815628411ff51d0274eb8ba36f04e6fcb
+
 
 ---
-# Django-Webanwendung "Hello World" auf einem virtuellen Windows Server-Computer
+# <a name="django-hello-world-web-application-on-a-windows-server-vm"></a>Django-Webanwendung "Hello World" auf einem virtuellen Windows Server-Computer
 > [!div class="op_single_selector"]
-> * [Windows](virtual-machines-windows-classic-python-django-web-app.md)
-> * [Mac/Linux](virtual-machines-linux-python-django-web-app.md)
+> * [Windows](virtual-machines-windows-classic-python-django-web-app.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+> * [Mac/Linux](virtual-machines-linux-python-django-web-app.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
 
 <br>
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Informationen zu Resource Manager-Vorlagen für die Bereitstellung von Django finden Sie [hier](https://azure.microsoft.com/documentation/templates/django-app/).
 
 In diesem Lernprogramm erfahren Sie, wie Sie eine Django-basierte Website unter Microsoft Azure mithilfe eines virtuellen Windows Server-Computers hosten können. Bei diesem Lernprogramm wird davon ausgegangen, dass Sie noch keine Erfahrung mit der Verwendung von Azure haben. Nach Abschluss dieses Lernprogramms verfügen Sie über eine Django-basierte Anwendung, die in der Cloud ausgeführt wird.
 
@@ -43,19 +48,21 @@ Nachstehend finden Sie einen Screenshot der vollständigen Anwendung:
 
 [!INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
-## Erstellen und Konfigurieren eines virtuellen Azure-Computers als Host von Django
-1. Befolgen Sie die [hier](virtual-machines-windows-classic-tutorial.md) aufgeführten Anweisungen, um einen virtuellen Azure-Computer mit der Windows Server 2012 R2 Datacenter-Distribution zu erstellen.
-2. Weisen Sie Azure an, den Port 80-Datenverkehr aus dem Web an Port 80 auf dem virtuellen Computer zu leiten.
+## <a name="creating-and-configuring-an-azure-virtual-machine-to-host-django"></a>Erstellen und Konfigurieren eines virtuellen Azure-Computers als Host von Django
+1. Befolgen Sie die [hier](virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) aufgeführten Anweisungen, um einen virtuellen Azure-Computer mit der Windows Server 2012 R2 Datacenter-Distribution zu erstellen.
+2. Weisen Sie Azure an, den Port 80-Datenverkehr aus dem Web an Port 80 auf dem virtuellen Computer zu leiten.
    
-   * Navigieren Sie im klassischen Azure-Portal zu Ihrem neu erstellten virtuellen Computer, und klicken Sie auf die Registerkarte **ENDPUNKTE**.
-   * Klicken Sie unten auf der Seite auf **HINZUFÜGEN**. ![Endpunkt hinzufügen](./media/virtual-machines-windows-classic-python-django-web-app/django-helloworld-addendpoint.png)
-   * Öffnen Sie **ÖFFENTLICHER PORT 80 ** des **TCP**-Protokolls als **PRIVATER PORT 80**. ![][port80]
-3. Klicken Sie auf der Registerkarte **DASHBOARD** auf **Verbinden** zum Verwenden von **Remotedesktop**, um sich beim neu erstellten virtuellen Azure-Computer remote anzumelden.
+   * Navigieren Sie im klassischen Azure-Portal zu Ihrem neu erstellten virtuellen Computer, und klicken Sie auf die Registerkarte **ENDPUNKTE** .
+   * Klicken Sie unten auf der Seite auf **HINZUFÜGEN** .
+     ![Endpunkt hinzufügen](./media/virtual-machines-windows-classic-python-django-web-app/django-helloworld-addendpoint.png)
+   * Öffnen Sie den **ÖFFENTLICHEN PORT 80** des **TCP**-Protokolls als **PRIVATEN PORT 80**.
+     ![][port80]
+3. Klicken Sie auf der Registerkarte **DASHBOARD** auf **VERBINDEN**, um sich über **Remotedesktop** remote bei dem neu erstellten virtuellen Azure-Computer anzumelden.  
 
 **Wichtiger Hinweis:** Für alle nachfolgend aufgeführten Anweisungen müssen Sie ordnungsgemäß beim virtuellen Computer angemeldet sein und Befehle dort anstatt von Ihrem lokalen Computer aus eingeben.
 
 ## <a id="setup"> </a>Installation von Python, Django, WFastCGI
-**Hinweis:** Für den Download mithilfe von Internet Explorer müssen Sie möglicherweise die erweiterten Sicherheitseinstellungen für Internet Explorer konfigurieren ("Start > Verwaltung > Server-Manager > Lokaler Server". Klicken Sie dann auf **Verstärkte Sicherheitskonfiguration für IE**, und legen Sie "Aus" fest.)
+**Hinweis**: Für den Download über Internet Explorer müssen Sie möglicherweise die erweiterten Sicherheitseinstellungen für Internet Explorer konfigurieren. Klicken Sie auf „Start > Verwaltung > Server-Manager > Lokaler Server“. Klicken Sie dann auf **Verstärkte Sicherheitskonfiguration für IE**, und legen Sie „Aus“ fest.
 
 1. Installieren Sie das neueste Python 2.7 oder 3.4 über [python.org][python.org].
 2. Installieren Sie die Wfastcgi- und Django-Pakete mithilfe von PIP.
@@ -70,13 +77,13 @@ Nachstehend finden Sie einen Screenshot der vollständigen Anwendung:
         c:\python34\scripts\pip install wfastcgi
         c:\python34\scripts\pip install django
 
-## Installieren von IIS mit FastCGI
-1. Installieren Sie IIS mit Unterstützung für FastCGI. Die Ausführung nimmt möglicherweise einige Minuten in Anspruch.
+## <a name="installing-iis-with-fastcgi"></a>Installieren von IIS mit FastCGI
+1. Installieren Sie IIS mit Unterstützung für FastCGI.  Die Ausführung nimmt möglicherweise einige Minuten in Anspruch.
    
         start /wait %windir%\System32\PkgMgr.exe /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-LoggingLibraries;IIS-RequestMonitor;IIS-Security;IIS-RequestFiltering;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementConsole;WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-CGI
 
-## Erstellen einer neuen Django-Anwendung
-1. Geben Sie in *C:\\inetpub\\wwwroot* den folgenden Befehl zum Erstellen eines neuen Django-Projekts ein:
+## <a name="creating-a-new-django-application"></a>Erstellen einer neuen Django-Anwendung
+1. Geben Sie in *C:\inetpub\wwwroot* den folgenden Befehl ein, um ein neues Django-Projekt zu erstellen:
    
    Verwenden Sie für Python 2.7 den folgenden Befehl.
    
@@ -89,10 +96,10 @@ Nachstehend finden Sie einen Screenshot der vollständigen Anwendung:
    ![Ergebnis des Befehls 'New-AzureService'](./media/virtual-machines-windows-classic-python-django-web-app/django-helloworld-cmd-new-azure-service.png)
 2. Mit dem Befehl **django-admin** wird eine Grundstruktur für Django-basierte Websites erstellt:
    
-   * **helloworld\\manage.py** hilft Ihnen, den Hostvorgang für Ihre Django-basierte Website zu starten und zu beenden.
-   * **helloworld\\helloworld\\settings.py** enthält Django-Einstellungen für Ihre Anwendung.
-   * **helloworld\\helloworld\\urls.py** enthält den Zuordnungscode zwischen den einzelnen URLs und der entsprechenden Ansicht.
-3. Erstellen Sie eine neue Datei mit dem Namen **views.py** im Verzeichnis *C:\\inetpub\\wwwroot\\helloworld\\helloworld*. Diese enthält die Ansicht, mit der die "Hello World"-Seite generiert wird. Starten Sie den Editor, und geben Sie Folgendes ein:
+   * Mit **helloworld\manage.py** können Sie den Hostvorgang für Ihre Django-basierte Website starten und beenden.
+   * **helloworld\helloworld\settings.py** enthält Django-Einstellungen für Ihre Anwendung.
+   * **helloworld\helloworld\urls.py** enthält den Zuordnungscode zwischen den einzelnen URLs und der entsprechenden Ansicht.
+3. Erstellen Sie eine neue Datei mit dem Namen **views.py** im Verzeichnis *C:\inetpub\wwwroot\helloworld\helloworld*. Diese enthält die Ansicht, mit der die "Hello World"-Seite generiert wird. Starten Sie den Editor, und geben Sie Folgendes ein:
    
        from django.http import HttpResponse
        def home(request):
@@ -105,11 +112,11 @@ Nachstehend finden Sie einen Screenshot der vollständigen Anwendung:
            url(r'^$', 'helloworld.views.home', name='home'),
        )
 
-## Konfigurieren von IIS
-1. Entsperren Sie den Abschnitt für Handler in der globalen Datei "applicationhost.config". Dies ermöglicht die Verwendung des Python-Handlers in "web.config".
+## <a name="configuring-iis"></a>Konfigurieren von IIS
+1. Entsperren Sie den Abschnitt für Handler in der globalen Datei "applicationhost.config".  Dies ermöglicht die Verwendung des Python-Handlers in "web.config".
    
         %windir%\system32\inetsrv\appcmd unlock config -section:system.webServer/handlers
-2. Aktivieren Sie WFastCGI. Dadurch wird der globalen Datei "applicationhost.config" eine Anwendung hinzugefügt, die auf die ausführbare Datei des Python-Interpreters und das Skript "wfastcgi.py" verweist.
+2. Aktivieren Sie WFastCGI.  Dadurch wird der globalen Datei "applicationhost.config" eine Anwendung hinzugefügt, die auf die ausführbare Datei des Python-Interpreters und das Skript "wfastcgi.py" verweist.
    
     Python 2.7:
    
@@ -118,7 +125,7 @@ Nachstehend finden Sie einen Screenshot der vollständigen Anwendung:
     Python 3.4:
    
         c:\python34\scripts\wfastcgi-enable
-3. Erstellen Sie eine Datei "web.config" unter *C:\\inetpub\\wwwroot\\helloworld*. Der Wert des `scriptProcessor`-Attributs sollte mit der Ausgabe des vorherigen Schritts übereinstimmen. Weitere Informationen zu wfastcgi-Einstellungen finden Sie auf der Seite zu [wfastcgi][wfastcgi] auf PyPI.
+3. Erstellen Sie eine web.config-Datei in *C:\inetpub\wwwroot\helloworld*.  Der Wert des `scriptProcessor` -Attributs sollte mit der Ausgabe des vorherigen Schritts übereinstimmen.  Weitere Informationen zu wfastcgi-Einstellungen finden Sie auf der Seite zu [wfastcgi][wfastcgi] bei PyPI.
    
     Python 2.7:
    
@@ -156,7 +163,7 @@ Nachstehend finden Sie einen Screenshot der vollständigen Anwendung:
 
 ![Ein Browserfenster, das die Seite 'Hello World' in Azure anzeigt.][1]
 
-## Herunterfahren des virtuellen Azure-Computers
+## <a name="shutting-down-your-azure-virtual-machine"></a>Herunterfahren des virtuellen Azure-Computers
 Wenn Sie mit diesem Lernprogramm fertig sind, fahren Sie den neu erstellten virtuellen Azure-Computer herunter, oder entfernen Sie diesen, sodass die Ressourcen für andere Lernprogramme zur Verfügung stehen und anfallende Kosten für die Verwendung von Azure vermieden werden.
 
 [1]: ./media/virtual-machines-windows-classic-python-django-web-app/django-helloworld-browser-azure.png
@@ -167,4 +174,8 @@ Wenn Sie mit diesem Lernprogramm fertig sind, fahren Sie den neu erstellten virt
 [python.org]: https://www.python.org/downloads/
 [wfastcgi]: https://pypi.python.org/pypi/wfastcgi
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Dec16_HO1-->
+
+

@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mithilfe von PowerShell einen benutzerdefini
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 338a7be1-835c-48e9-a072-95662dc30f5e
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/13/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
-ms.openlocfilehash: 7812179e56372237f9760eccea5ebf8db2cb8d2d
+ms.sourcegitcommit: aaf13418331f29287399621cb911e4b9f5b33dc0
+ms.openlocfilehash: a995495f003edbff6cd0a4a15d09585458664f78
 
 
 ---
@@ -27,14 +27,12 @@ ms.openlocfilehash: 7812179e56372237f9760eccea5ebf8db2cb8d2d
 > * [Azure-Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klassische Azure PowerShell](application-gateway-create-probe-classic-ps.md)
-> 
-> 
+
 
 [!INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
+> [!IMPORTANT]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -46,9 +44,9 @@ So erstellen Sie ein Application Gateway
 2. Erstellen Sie eine XML-Konfigurationsdatei oder ein Konfigurationsobjekt.
 3. Ordnen Sie die Konfiguration der neu erstellten Application Gateway-Ressource zu.
 
-### <a name="create-an-application-gateway-resource"></a>Erstellen einer Application Gateway-Ressource
+### <a name="create-an-application-gateway-resource"></a>Erstellen einer Anwendungsgatewayressource
 
-Verwenden Sie zum Erstellen des Gateways das **New-AzureApplicationGateway** -Cmdlet, und ersetzen Sie die Werte durch Ihre eigenen Werte. Die Abrechnung für das Gateway beginnt jetzt noch nicht. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
+Erstellen Sie das Gateway mithilfe des Cmdlets `New-AzureApplicationGateway`. Ersetzen Sie dabei die Werte durch eigene Werte. Die Abrechnung für das Gateway beginnt jetzt noch nicht. Die Abrechnung beginnt in einem späteren Schritt, wenn das Gateway erfolgreich gestartet wurde.
 
 Das folgende Beispiel erstellt ein Anwendungsgateway mithilfe eines virtuellen Netzwerks mit dem Namen „testvnet1“ und eines Subnetzes mit dem Namen „subnet-1“.
 
@@ -56,7 +54,7 @@ Das folgende Beispiel erstellt ein Anwendungsgateway mithilfe eines virtuellen N
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Sie können das **Get-AzureApplicationGateway** -Cmdlet verwenden, um zu überprüfen, ob das Gateway erstellt wurde.
+Mithilfe des Cmdlets `Get-AzureApplicationGateway` können Sie überprüfen, ob das Gateway erstellt wurde.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -88,7 +86,7 @@ Kopieren Sie den folgenden Text in Editor.
         <Name>fip1</Name>
         <Type>Private</Type>
     </FrontendIPConfiguration>
-</FrontendIPConfigurations>    
+</FrontendIPConfigurations>
 <FrontendPorts>
     <FrontendPort>
         <Name>port1</Name>
@@ -147,12 +145,10 @@ Kopieren Sie den folgenden Text in Editor.
 
 Bearbeiten Sie die Werte zwischen den Klammern für die Konfigurationselemente. Speichern Sie die Datei mit der Erweiterung XML.
 
-Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei und eines benutzerdefinierten Tests das Anwendungsgateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten.
+Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Application Gateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten, indem Sie einen benutzerdefinierten Test verwenden.
 
 > [!IMPORTANT]
 > Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
-> 
-> 
 
 Es wird ein neues Konfigurationselement vom Typ \<Test\> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
 
@@ -165,7 +161,7 @@ Die Konfigurationsparameter sind:
 * **Timeout** : Definiert das Timeout des Tests für eine HTTP-Antwortprüfung.
 * **UnhealthyThreshold** : Die Anzahl von HTTP-Antworten mit Fehlern, ab der die Back-End-Instanz als *fehlerhaft*gekennzeichnet wird.
 
-Auf den Namen des Tests wird in der Konfiguration <BackendHttpSettings> verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für den benutzerdefinierten Test verwenden soll.
+Auf den Namen der Überprüfung wird in der \<BackendHttpSettings\>-Konfiguration verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für die benutzerdefinierte Überprüfung verwenden soll.
 
 ## <a name="add-a-custom-probe-configuration-to-an-existing-application-gateway"></a>Hinzufügen der Konfiguration eines benutzerdefinierten Tests zu einem vorhandenen Application Gateway
 
@@ -173,7 +169,7 @@ Zum Ändern der aktuellen Konfiguration eines Application Gateways sind drei Sch
 
 ### <a name="step-1"></a>Schritt 1
 
-Rufen Sie mit get-AzureApplicationGatewayConfig die XML-Datei ab. Dadurch wird die XML-Konfigurationsdatei exportiert, sodass ihr die Einstellungen für den Test hinzugefügt werden können.
+Rufen Sie die XML-Datei mit `Get-AzureApplicationGatewayConfig` ab. Dieses Cmdlet exportiert die XML-Konfigurationsdatei, damit ihr die Einstellungen für die Überprüfung hinzugefügt werden können.
 
 ```powershell
 Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
@@ -214,7 +210,7 @@ Speichern Sie die XML-Datei.
 
 ### <a name="step-3"></a>Schritt 3
 
-Aktualisieren Sie die Konfiguration des Anwendungsgateways mit der neuen XML-Datei, indem Sie **Set-AzureApplicationGatewayConfig**verwenden. Dadurch wird das Anwendungsgateway mit der neuen Konfiguration aktualisiert.
+Aktualisieren Sie die Konfiguration des Anwendungsgateways mit der neuen XML-Datei, und verwenden Sie dazu `Set-AzureApplicationGatewayConfig`. Dieses Cmdlet aktualisiert das Anwendungsgateway mit der neuen Konfiguration.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
@@ -229,6 +225,6 @@ Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausg
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

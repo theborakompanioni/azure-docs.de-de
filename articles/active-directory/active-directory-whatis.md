@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 12/16/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 21cd9fa752f6f3bf2e3aab572ad3336fbd2bee92
-ms.openlocfilehash: 067bef695d8d6a340f7974478e6580b10a1e8dc8
+ms.sourcegitcommit: b247388bff35fb755c8363eb48695e47f2510574
+ms.openlocfilehash: a5f8adfa278b096914239357c675654fd9fc2908
 
 
 ---
@@ -61,56 +61,100 @@ Azure AD ist ein öffentlicher Verzeichnisdienst mit mehreren Kunden, was bedeut
 
 Sie können Azure AD Connect zum Synchronisieren Ihrer lokalen Identitäten mit Azure AD verwenden.
 
+---
+
 ### <a name="authentication-and-authorization-details"></a>Informationen zu Authentifizierung und Autorisierung
 
-| Azure AD                                   | AD DS lokal |
-|--------------------------------------------|-------------------|
-| <li>   SAML      <li>   WS-Federation-    <li>   interaktiv mit unterstützten Anmeldeinformationen  <li>   OAuth 2.0   <li>   OpenID Connect                          | <li>   SAML   <li>   WS-Federation-  <li>   NTLM  <li>   Kerberos   <li>   MD5   <li>   Basic          |
+#### <a name="azure-ad"></a>Azure AD
+`SAML`, `WS-Federation`, interaktiv mit unterstützten Anmeldeinformationen, OAuth 2.0, OpenID Connect 
+
+#### <a name="on-premises-ad-ds"></a>AD DS lokal
+`SAML`, `WS-Federation`, NTLM, Kerberos, MD5, Basic
+
+---
 
 ### <a name="object-repository-details"></a>Informationen zum Objektrepository
 
-| Azure AD                                          | AD DS lokal |
-|---------------------------------------------------|-------------------|
-| Zugriff über Azure AD Graph und Microsoft Graph | X.500 LDAP    |
+#### <a name="azure-ad"></a>Azure AD
+Zugriff über Azure AD Graph und Microsoft Graph 
+
+#### <a name="on-premises-ad-ds"></a>AD DS lokal
+X.500 LDAP  
+
+---
+
 
 ### <a name="programmatic-access-details"></a>Informationen zum programmgesteuerten Zugriff
 
-| Azure AD                        | AD DS lokal |
-|---------------------------------|-------------------|
-| MS/Azure AD Graph REST-APIs | LDAP          |
+#### <a name="azure-ad"></a>Azure AD
+MS/Azure AD Graph REST-APIs 
+
+#### <a name="on-premises-ad-ds"></a>AD DS lokal
+LDAP 
+
+---
 
 ### <a name="sso-to-applications-details"></a>Informationen zum einmaligen Anmelden bei Anwendungen
 
-| Azure AD           | AD DS lokal   |
-|--------------------|---------------------|
-| <li>   OpenID Connect  <li>   SAML          | <li>   SAML      <li>   WS-Fed   <li>   Open-ID connect  |
+#### <a name="azure-ad"></a>Azure AD
+`OpenID Connect`, `SAML` 
+
+#### <a name="on-premises-ad-ds"></a>AD DS lokal
+`Open-ID Connect`, `SAML`, WS-Fed 
+
+---
 
 ### <a name="access-management-details"></a>Informationen zur Zugriffsverwaltung
 
-| Azure AD         | AD DS lokal     |
-|------------------------------------|------------------------------------------------------------------------|
-| <li>   Ressourcendefinierter Bereich und rollenbasierte Zugriffssteuerung   <li>   Clientdefinierte Delegierung und Anwendungsberechtigungen        <li>   Consent Framework (erzwingt die ordnungsgemäße Zustimmung durch Benutzer/Administrator, wie von der Ressource/vom Client definiert/angefordert)  <li>   Über App-Rolle, kann individuell oder über Gruppen angewendet werden, unterstützt:   <ul> <li>   Verwaltung durch Administrator       <li>   Self-Service-Anwendungszugriff  <li>   Benutzerzustimmung </ul>         | <li>   Über Zugriffssteuerungslisten, kann individuell oder über Gruppen angewendet werden, unterstützt:  <ul><li>   Verwaltung durch Administrator  </ul>                                                 |
+#### <a name="azure-ad"></a>Azure AD
+Ressourcendefinierter Bereich und rollenbasierte Access Control, clientdefinierte Delegierung und Anwendungsberechtigungen, Consent Framework (erzwingt die ordnungsgemäße Zustimmung durch Benutzer/Administrator, wie von der Ressource/vom Client definiert bzw. angefordert) 
+
+Über App-Rolle, individuell oder über Gruppen angewendet, unterstützt: Verwaltung durch Administrator, Self-Service-Anwendungszugriff, Benutzerzustimmung
+
+#### <a name="on-premises-ad-ds"></a>AD DS lokal
+Über Zugriffssteuerungslisten, individuell oder über Gruppen angewendet, unterstützt: Verwaltung durch Administrator 
+
+---
 
 ### <a name="group-management-details"></a>Informationen zur Gruppenverwaltung
 
-| Azure AD                          | AD DS lokal                                 |
-|-----------------------------------|---------------------------------------------------|
-| <li>   Verwaltung durch Administrator    <li>   Verwaltung durch Regeln oder dynamisch   <li>   Self-Service-Gruppenverwaltung  | <li>   Verwaltung durch Administrator      <li>   Externes System (FIM oder anderes) erforderlich für:  <ul><li>   Verwaltung durch Regeln oder dynamisch      </ul>                 |
+#### <a name="azure-ad"></a>Azure AD
+`Admin managed`, Verwaltung durch Regeln oder dynamisch, Self-Service-Gruppenverwaltung 
+
+#### <a name="on-premises-ad-ds"></a>AD DS lokal
+`Admin managed`, externes System (FIM oder anderes) erforderlich für Verwaltung durch Regeln oder dynamisch |
+
+---
 
 ### <a name="supported-credentials-details"></a>Unterstützte Anmeldeinformationen
 
-| Azure AD           | AD DS lokal  |
-|--------------------|--------------------|
-| <li>   Benutzername und Kennwort  <li>   Smartcard     | <li>   Benutzername und Kennwort  <li>   Smartcard     |
+#### <a name="azure-ad"></a>Azure AD
+`Username + password`, `Smartcard` 
+
+#### <a name="on-premises-ad-ds"></a>AD DS lokal
+`Username + password`, `Smartcard` 
+ 
+---
+
+
+
+
+
 
 
 ## <a name="how-can-i-get-started"></a>Wie fange ich an?
-* Wenn Sie IT-Administrator sind:
-  * [Probieren Sie es aus!](https://azure.microsoft.com/trial/get-started-active-directory/)  – Registrieren Sie sich noch heute über diesen Link für eine kostenlose 30-Tage-Testversion, und stellen Sie Ihre erste Cloudlösung in weniger als 5 Minuten bereit.
-  * Lesen Sie den Artikel „Erste Schritte mit Azure AD“ mit Tipps und Tricks zum schnellen Einrichten und Ausführen eines Azure AD-Mandanten.
-* Wenn Sie Entwickler sind:
-  * Sehen Sie sich die [Anleitung für Entwickler](active-directory-developers-guide.md) für Azure Active Directory an.
-  * [Starten Sie eine Testversion:](https://azure.microsoft.com/trial/get-started-active-directory/) Registrieren Sie sich noch heute für eine kostenlose 30-Tage-Testversion, und beginnen Sie damit, Ihre Apps in Azure AD zu integrieren.
+
+**Wenn Sie IT-Administrator sind:**
+
+* [Erste Schritte mit einem Azure-Abonnement:](https://azure.microsoft.com/trial/get-started-active-directory/) – Registrieren Sie sich noch heute über diesen Link für eine kostenlose 30-Tage-Testversion, und stellen Sie Ihre erste Cloudlösung in weniger als 5 Minuten bereit.
+
+* Lesen Sie den Artikel „Erste Schritte mit Azure AD“ mit Tipps und Tricks zum schnellen Einrichten und Ausführen eines Azure AD-Mandanten.
+
+**Wenn Sie Entwickler sind:**
+ 
+* Sehen Sie sich die [Anleitung für Entwickler](active-directory-developers-guide.md) für Azure Active Directory an.
+
+* [Starten Sie eine Testversion:](https://azure.microsoft.com/trial/get-started-active-directory/) Registrieren Sie sich noch heute für eine kostenlose 30-Tage-Testversion, und beginnen Sie damit, Ihre Apps in Azure AD zu integrieren.
 
 ## <a name="where-can-i-learn-more"></a>Wo kann ich mehr erfahren?
 Wir haben viele hervorragende Ressourcen online gestellt, in denen Sie alles Wissenswerte über Azure AD erfahren. Hier finden Sie eine Liste mit wichtigen Artikeln, um Ihnen den Einstieg zu erleichtern:
@@ -129,6 +173,6 @@ Wir haben viele hervorragende Ressourcen online gestellt, in denen Sie alles Wis
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -49,7 +49,7 @@
                 await RefreshTodoItems();
             }
         }
-4. Öffnen Sie im Windows Store-App-Projekt die Projektdatei "MainPage.xaml", und fügen Sie unmittelbar vor dem Element, das die Schaltfläche **Save** definiert, folgendes **Button**-Element hinzu:
+4. Öffnen Sie im Windows Store-App-Projekt die Projektdatei „MainPage.xaml“, und fügen Sie unmittelbar vor dem Element, das die Schaltfläche **Save** definiert, das folgende **Button**-Element hinzu:
    
         <Button Name="ButtonLogin" Click="ButtonLogin_Click" 
                         Visibility="Visible">Sign in</Button>
@@ -75,9 +75,13 @@
         }
    
     Wenn die **OnActivated**-Methode bereits vorhanden ist, fügen Sie lediglich den Codeabschnitt `#if...#endif` hinzu.
-7. Drücken Sie F5, um die Windows Store-App auszuführen, und klicken Sie auf die Schaltfläche **Sign in**, und sich mit dem von Ihnen ausgewählten Identitätsanbieter bei der App anzumelden.
+7. Drücken Sie F5, um die Windows Store-App auszuführen, und klicken Sie auf die Schaltfläche **Sign in** , und sich mit dem von Ihnen ausgewählten Identitätsanbieter bei der App anzumelden. 
    
-       Wenn Sie erfolgreich angemeldet sind, sollte die App ohne Fehler ausgeführt werden, und Sie sollten in der Lage sein, Ihr Back-End abzufragen und Daten zu aktualisieren.
-8. Klicken Sie mit der rechten Maustaste auf das Windows Phone Store-App-Projekt, klicken Sie auf **Als Startprojekt festlegen**, und führen Sie dann den obigen Schritt erneut aus, um sicherzustellen, dass die Windows Phone Store-App ebenfalls ordnungsgemäß ausgeführt wird.
+       When you are successfully logged-in, the app should run without errors, and you should be able to query your backend and make updates to data.
+8. Klicken Sie mit der rechten Maustaste auf das Windows Phone Store-App-Projekt, klicken Sie auf **Als Startprojekt festlegen**, und führen Sie dann den obigen Schritt erneut aus, um sicherzustellen, dass die Windows Phone Store-App ebenfalls ordnungsgemäß ausgeführt wird.  
 
-<!---HONumber=AcomDC_1203_2015-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

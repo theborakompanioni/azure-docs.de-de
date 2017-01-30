@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 12/15/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f574a3cd837e4fc9cf292d672432a7960cae177b
+ms.sourcegitcommit: 8867cda9d4b35fa908db8749aaad74d85cec67f3
+ms.openlocfilehash: 5f82274838de2e6d2a753a685760b5f144065d94
 
 
 ---
@@ -156,13 +156,13 @@ Für die Daten, die an die Datensammlungs-API von Log Analytics gesendet werden,
 * Die empfohlene maximale Anzahl von Feldern eines bestimmten Typs beträgt 50. Dies ist aus Sicht der Benutzerfreundlichkeit und Suchleistung ein praktikabler Wert.  
 
 ## <a name="return-codes"></a>Rückgabecodes
-Der HTTP-Statuscode 202 bedeutet, dass die Anforderung für die Verarbeitung angenommen wurde, aber die Verarbeitung noch nicht abgeschlossen wurde. Dies gibt an, dass der Vorgang erfolgreich abgeschlossen wurde.
+Der HTTP-Statuscode 200 bedeutet, dass die Anforderung für die Verarbeitung empfangen wurde. Dies gibt an, dass der Vorgang erfolgreich abgeschlossen wurde.
 
 Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst zurückgegeben werden können:
 
 | Code | Status | Fehlercode | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| 202 |Zulässig | |Die Anforderung wurde erfolgreich angenommen. |
+| 200 |OK | |Die Anforderung wurde erfolgreich angenommen. |
 | 400 |Ungültige Anforderung |InactiveCustomer |Der Arbeitsbereich wurde geschlossen. |
 | 400 |Ungültige Anforderung |InvalidApiVersion |Die angegebene API-Version wurde vom Dienst nicht erkannt. |
 | 400 |Ungültige Anforderung |InvalidCustomerId |Die angegebene Arbeitsbereichs-ID ist ungültig. |
@@ -173,7 +173,9 @@ Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst z
 | 400 |Ungültige Anforderung |MissingLogType |Der erforderliche Protokolltyp für den Wert wurde nicht angegeben. |
 | 400 |Ungültige Anforderung |UnsupportedContentType |Der Inhaltstyp wurde nicht auf **application/json** festgelegt. |
 | 403 |Verboten (403) |InvalidAuthorization |Der Dienst konnte die Anforderung nicht authentifizieren. Vergewissern Sie sich, dass die Arbeitsbereichs-ID und der Verbindungsschlüssel gültig sind. |
-| 500 |Interner Serverfehler |UnspecifiedError |Auf dem Server wurde ein interner Fehler festgestellt.  Versuchen Sie die Anforderung erneut. |
+| 404 |Nicht gefunden | | Die angegebene URL ist falsch, oder die Anforderung ist zu groß. |
+| 429 |Zu viele Anforderungen | | Der Dienst erwartet eine große Datenmenge von Ihrem Konto. Versuchen Sie die Anforderung später erneut. |
+| 500 |Interner Serverfehler |UnspecifiedError |Auf dem Server wurde ein interner Fehler festgestellt. Versuchen Sie die Anforderung erneut. |
 | 503 |Dienst nicht verfügbar |ServiceUnavailable |Der Dienst kann derzeit keine Anforderungen empfangen. Bitte wiederholen Sie die Anforderung. |
 
 ## <a name="query-data"></a>Abfragen von Daten
@@ -416,7 +418,7 @@ def post_data(customer_id, shared_key, body, log_type):
     }
 
     response = requests.post(uri,data=body, headers=headers)
-    if (response.status_code == 202):
+    if (response.status_code >= 200 and response.status_code <= 299):
         print 'Accepted'
     else:
         print "Response code: {}".format(response.status_code)
@@ -430,6 +432,6 @@ post_data(customer_id, shared_key, body, log_type)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

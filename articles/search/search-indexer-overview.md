@@ -13,24 +13,25 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2016
+ms.date: 10/27/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 6ff31940f3a4e7557e0caf3d9d3740590be3bc04
-ms.openlocfilehash: 9a8a4454a0676c403356e9989665242978949011
-
+ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
+ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
 
 ---
+
 # <a name="indexers-in-azure-search"></a>Indexer in Azure Search
 > [!div class="op_single_selector"]
+>
 > * [Übersicht](search-indexer-overview.md)
 > * [Portal](search-import-data-portal.md)
-> * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
-> * [DocumentDB](../documentdb/documentdb-search-indexer.md)
+> * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+> * [DocumentDB](search-howto-index-documentdb.md)
 > * [Blob Storage (Vorschau)](search-howto-indexing-azure-blob-storage.md)
 > * [Table Storage (Vorschau)](search-howto-indexing-azure-tables.md)
-> 
-> 
+>
+>
 
 Ein **Indexer** in Azure Search ist ein Crawler, mit dem durchsuchbare Daten und Metadaten aus einer externen Datenquelle extrahiert werden und ein Index basierend auf Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle aufgefüllt wird. Dieser Ansatz wird auch als „Pullmodell“ bezeichnet, da der Dienst Daten abruft, ohne dass Sie Code zum Übertragen per Pushvorgang an einen Index schreiben müssen.
 
@@ -45,8 +46,6 @@ Für allgemein verfügbare Indexer wie Azure SQL oder DocumentDB können Sie Ind
 * [Dienst-REST-API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
 * [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx)
 
-Für Vorschauindexer, z.B. Azure Blob oder Table Storage, ist Code erforderlich. Außerdem werden Vorschau-APIs benötigt, z.B. [Azure Search Preview-REST-API für Indexer](search-api-indexers-2015-02-28-preview.md). Portaltools sind normalerweise nicht für Vorschaufeatures verfügbar.
-
 ## <a name="basic-configuration-steps"></a>Grundlegende Konfigurationsschritte
 Indexer können Features bereitstellen, die für die Datenquelle eindeutig sind. In dieser Hinsicht variieren einige Aspekte von Indexern oder der Datenquellenkonfiguration nach Indexertyp. Für alle Indexer werden aber die gleiche grundlegende Zusammenstellung und die gleichen Anforderungen verwendet. Die Schritte, die für alle Indexer gelten, sind unten beschrieben.
 
@@ -56,12 +55,12 @@ Mit einem Indexer werden einige Aufgaben in Bezug auf die Datenerfassung automat
 ### <a name="step-2-create-a-data-source"></a>Schritt 2: Erstellen einer Datenquelle
 Ein Indexer ruft Daten per Pull aus einer **Datenquelle** ab, die Informationen enthält, z.B. aus einer Verbindungszeichenfolge. Derzeit werden die folgenden Datenquellen unterstützt:
 
-* [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
-* [DocumentDB](../documentdb/documentdb-search-indexer.md)
-* [Azure-Blobspeicher (Vorschau)](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
-* [Azure Table Storage (Vorschau)](search-howto-indexing-azure-tables.md)
+* [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure-Blobspeicher](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
-Datenquellen werden unabhängig von den Indexern, die darauf zugreifen, konfiguriert und verwaltet. Dies bedeutet, dass eine Datenquelle von mehreren Indexern verwendet werden kann, um mehr als einen Index gleichzeitig zu laden. 
+Datenquellen werden unabhängig von den Indexern, die darauf zugreifen, konfiguriert und verwaltet. Dies bedeutet, dass eine Datenquelle von mehreren Indexern verwendet werden kann, um mehr als einen Index gleichzeitig zu laden.
 
 ### <a name="step-3create-and-schedule-the-indexer"></a>Schritt 3: Erstellen und Planen des Indexers
 Die Indexerdefinition ist ein Konstrukt, bei dem der Index, die Datenquelle und ein Zeitplan angegeben werden. Ein Indexer kann von einem anderen Dienst aus auf eine Datenquelle verweisen, solange diese Datenquelle aus demselben Abonnement stammt. Weitere Informationen zum Strukturieren eines Indexers finden Sie unter [Create Indexer (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn946899.aspx)(Create Indexer (Azure Search REST-API)).
@@ -69,16 +68,15 @@ Die Indexerdefinition ist ein Konstrukt, bei dem der Index, die Datenquelle und 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich über die Grundlagen informiert haben, ist der nächste Schritt das Überprüfen der Anforderungen und Aufgaben für jeden Datenquellentyp.
 
-* [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
-* [DocumentDB](../documentdb/documentdb-search-indexer.md)
-* [Azure-Blobspeicher (Vorschau)](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
-* [Azure Table Storage (Vorschau)](search-howto-indexing-azure-tables.md)
+* [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure-Blobspeicher](search-howto-indexing-azure-blob-storage.md)zum Extrahieren von Text aus PDF, Office-Dokumenten, HTML oder XML
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Indizieren von CSV-Blobs mit Azure Search-Blobindexer (Vorschau)](search-howto-index-csv-blobs.md)
 * [Indizieren von JSON-Blobs mit Azure Search-Blobindexer (Vorschau)](search-howto-index-json-blobs.md)
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

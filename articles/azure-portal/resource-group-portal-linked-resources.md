@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/16/2015
 ms.author: adamab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a20b0b2f3967f64d2248e017b6888e21be6ef26a
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: b4c8ad69674c553f8b521a85765edbad0ce1faf2
 
 
 ---
@@ -27,16 +27,16 @@ Im Kachelkatalog können Sie Kacheln für eine bestimmte Ressource suchen und si
 Die Verknüpfung ist eine Funktion des Azure-Ressourcen-Managers.  Mit der Verknüpfung können Sie Beziehungen zwischen Ressourcen deklarieren, selbst wenn diese sich nicht in der gleichen Ressourcengruppe befinden. Die Verknüpfung wirkt sich weder auf die Laufzeit von Ressourcen, auf die Abrechnung noch auf den rollenbasierten Zugriff aus.  Es handelt sich einfach nur um eine Methode zum Darstellen von Beziehungen, sodass Tools wie der Kachelkatalog über vielfältige Verwaltungsfunktionen verfügen.  Die Tools können die Verknüpfungen mithilfe der Verknüpfungs-API prüfen und auch benutzerdefinierte Beziehungsverwaltungsfunktionen umfassen. 
 
 ## <a name="how-do-i-link-my-resources"></a>Wie können Ressourcen verknüpft werden?
-Wenn Sie Ressourcen im Portal oder durch Bereitstellen einer Vorlage über Azure PowerShell oder die Azure-Befehlszeilenschnittstelle erstellen, werden für einige abhängige Ressourcen automatisch Verknüpfungen erstellt. Sie können Ressourcen zudem programmgesteuert verknüpfen, indem Sie die [REST-API "Linked Resources"](https://msdn.microsoft.com/library/azure/mt238499.aspx) verwenden oder die Beziehungen in der Vorlage deklarieren. Eine umfassende Beschreibung der Arbeit mit verknüpften Ressourcen finden Sie unter [Verknüpfen von Ressourcen im Azure-Ressourcen-Manager](../resource-group-link-resources.md).
+Wenn Sie Ressourcen im Portal oder durch Bereitstellen einer Vorlage über Azure PowerShell oder die Azure-Befehlszeilenschnittstelle erstellen, werden für einige abhängige Ressourcen automatisch Verknüpfungen erstellt. Sie können Ressourcen zudem programmgesteuert verknüpfen, indem Sie die [REST-API "Linked Resources"](https://msdn.microsoft.com/library/azure/mt238499.aspx) verwenden oder die Beziehungen in der Vorlage deklarieren. Eine umfassende Beschreibung der Arbeit mit verknüpften Ressourcen finden Sie unter [Verknüpfen von Ressourcen im Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-link-resources.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Einführung in das Schreiben von Vorlagen für den Azure-Ressourcen-Manager finden Sie unter [Erstellen von Vorlagen](../resource-group-authoring-templates.md).
-* Ausführliche Informationen zum Erstellen von Verknüpfungen zwischen Ressourcen finden Sie unter [Verknüpfen von Ressourcen im Azure-Ressourcen-Manager](../resource-group-link-resources.md).
-* Weitere Informationen zum Arbeiten mit Ressourcengruppen über das Vorschauportal finden Sie unter [Verwenden des Azure-Vorschauportals zum Verwalten Ihrer Azure-Ressourcen](resource-group-portal.md).
+* Eine Einführung in das Schreiben von Vorlagen für den Azure-Ressourcen-Manager finden Sie unter [Erstellen von Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+* Ausführliche Informationen zum Erstellen von Verknüpfungen zwischen Ressourcen finden Sie unter [Verknüpfen von Ressourcen im Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-link-resources.md).
+* Weitere Informationen zum Arbeiten mit Ressourcengruppen über das Vorschauportal finden Sie unter [Verwenden des Azure-Vorschauportals zum Verwalten Ihrer Azure-Ressourcen](../azure-resource-manager/resource-group-portal.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

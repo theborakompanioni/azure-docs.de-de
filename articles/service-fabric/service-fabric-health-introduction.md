@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2016
+ms.date: 01/12/2017
 ms.author: oanapl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6ec1e341bc87475251161521e808dcbb821c2939
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 240ae97458747099bde6807bf13e0ce6fd9452d1
 
 
 ---
@@ -24,6 +24,10 @@ ms.openlocfilehash: 6ec1e341bc87475251161521e808dcbb821c2939
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
 
 Die Service Fabric-Komponenten verwenden dieses umfangreiche Integritätsmodell, um ihren aktuellen Zustand zu melden. Sie können den gleichen Mechanismus verwenden, um Integritätsberichte für Anwendungen zu erstellen. Wenn Sie in hochwertige Integritätsberichte zur Erfassung Ihrer individuellen Bedingungen investieren, können Sie Probleme für Ihre ausgeführte Anwendung viel leichter erkennen und beheben.
+
+Im folgende Microsoft Virtual Academy-Video werden auch das Service Fabric-Integritätsmodell und seine Verwendung beschrieben: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
+</a></center>
 
 > [!NOTE]
 > Das Integritätssubsystem wurde ursprünglich für das Überwachen von Upgrades eingeführt. Service Fabric bietet überwachte Anwendungs- und Clusterupgrades mit uneingeschränkter Verfügbarkeit, ohne Ausfallzeit und mit minimaler oder sogar ganz ohne Benutzerinteraktion. Hierzu prüft das Upgrade die Integrität basierend auf den konfigurierten Upgraderichtlinien und lässt die Fortsetzung des Upgrades nur dann zu, wenn die Integrität die gewünschten Schwellenwerte erfüllt. Werden die Schwellenwerte nicht erfüllt, wird entweder automatisch ein Rollback des Upgrades durchgeführt oder das Upgrade angehalten, damit Administratoren das Problem beheben können. Weitere Informationen zu Anwendungsupgrades finden Sie in [diesem Artikel](service-fabric-application-upgrade.md).
@@ -41,7 +45,7 @@ Die Integritätsentitäten spiegeln die Service Fabric-Entitäten wider. (Beispi
 Die Integritätsentitäten und die Hierarchie ermöglichen das effektive Melden, Debuggen und Überwachen des Clusters und der Anwendungen. Das Integritätsmodell ermöglicht eine exakte, *differenzierte* Darstellung der Integrität der zahlreichen beweglichen Bestandteile eines Clusters.
 
 ![Integritätsentitäten][1].
- In einer Hierarchie organisierte Integritätsentitäten, basierend auf Beziehungen zwischen übergeordneten und untergeordneten Elementen.
+In einer Hierarchie organisierte Integritätsentitäten, basierend auf Beziehungen zwischen übergeordneten und untergeordneten Elementen.
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
 
@@ -318,6 +322,6 @@ Das Integritätsmodell wird hauptsächlich für die Überwachung und Diagnose, E
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

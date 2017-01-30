@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit Java | Microsoft Docs
-description: "Beschreibt die Verwendung von Azure Media Services für gängige Aufgaben wie Codierung, Verschlüsselung und Streaming von Ressourcen."
+description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe von Java einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit der AMS-Anwendung (Azure Media Services) implementieren."
 services: media-services
 documentationcenter: java
 author: juliako
@@ -12,28 +12,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 12/20/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 18054a72c3ead02311465d97dc13b7b5e4d87321
-ms.openlocfilehash: 401b3c931fa046ee2bdf0a12e9e837b820ec5464
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 55ecdb72c85276cbc8bb5c9ce67978e648ebddb1
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-java"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit Java
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-## <a name="setting-up-an-azure-account-for-media-services"></a>Einrichten eines Azure-Kontos für Media Services
-Sie können Ihr Media Services-Konto im Azure-Portal einrichten. Weitere Informationen finden Sie unter [Erstellen eines Media Services-Kontos](media-services-portal-create-account.md). Nach der Erstellung des Kontos im Azure-Portal können Sie Ihren Computer für die Media Services-Entwicklung einrichten.
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe von Java einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit der AMS-Anwendung (Azure Media Services) implementieren.
 
-## <a name="setting-up-for-media-services-development"></a>Einrichtung für die Media Services-Entwicklung
-Dieser Abschnitt beschreibt allgemeine Voraussetzungen für die Media Services-Entwicklung mithilfe des Media Services SDK für Java.
+## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="prerequisites"></a>Voraussetzungen
-* Ein Mediendienstekonto in einem neuen oder existierenden Azure-Abonnement. Weitere Informationen finden Sie unter [Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
+Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
+
+* Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/). 
+* Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Die Azure-Bibliotheken für Java, die Sie im [Azure Developer Center für Java][Azure Java Developer Center] installieren können.
 
 ## <a name="how-to-use-media-services-with-java"></a>Gewusst wie: Verwenden von Media Services mit Java
+
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+
 Im Code weiter unten wird ein Medienobjekt erstellt, eine Mediendatei in das Medienobjekt hochgeladen, eine Aufgabe zur Transformation des Medienobjekts ausgeführt und ein Locator erstellt, um Ihr Video zu streamen.
 
 Zur Verwendung dieses Codes benötigen Sie ein Media Services-Konto. Informationen zum Einrichten eines Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
@@ -270,6 +274,6 @@ Media Services-Javadoc-Dokumentation finden Sie in den [Azure-Bibliotheken für 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

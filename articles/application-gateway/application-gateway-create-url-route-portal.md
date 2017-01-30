@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie eine pfadbasierte Regel für ein Application
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 87bd93bc-e1a6-45db-a226-555948f1feb7
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/13/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0cae4172b9317784e7ed6f671c5722304e2f0e92
+ms.sourcegitcommit: 09aeb63d4c2e68f22ec02f8c08f5a30c32d879dc
+ms.openlocfilehash: 2889716d6b5b6079c311d6a7f1eb97b001098b45
 
 
 ---
@@ -26,8 +26,6 @@ ms.openlocfilehash: 0cae4172b9317784e7ed6f671c5722304e2f0e92
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
-> 
-> 
 
 Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf dem URL-Pfad der Http-Anforderung zuordnen. Es wird überprüft, ob eine Route zu einem Backend-Pool für die URL-Listen im Application Gateway konfiguriert ist, und der Netzwerkverkehr wird an den definierten Back-End-Pool gesendet. Ein gängiges Szenario für URL-basiertes Routing ist der Lastenausgleich von Anforderungen für verschiedene Inhaltstypen auf verschiedene Back-End-Serverpools.
 
@@ -46,7 +44,7 @@ Eine pfadbasierende Regel erfordert einen eigenen Listener. Stellen Sie daher vo
 
 ### <a name="step-1"></a>Schritt 1
 
-Navigieren Sie zu „http://portal.azure.com“, und wählen Sie ein vorhandenes Anwendungsgateway aus. Klicken Sie auf **Regeln**
+Navigieren Sie zum [Azure-Portal](http://portal.azure.com), und wählen Sie ein vorhandenes Anwendungsgateway aus. Klicken Sie auf **Regeln**
 
 ![Übersicht über Application Gateway][1]
 
@@ -74,8 +72,6 @@ Das Blatt **Add path-based rule** (Pfadbasierte Regel hinzufügen) verfügt übe
 
 > [!IMPORTANT]
 > Pfade: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „\*“ ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/“*.  
-> 
-> 
 
 ![Hinzufügen eines Blatts mit pfadbasierten Regeln mit bereitgestellten Informationen][2]
 
@@ -90,10 +86,10 @@ Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gatewa
 [1]: ./media/application-gateway-create-url-route-portal/figure1.png
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png
 [3]: ./media/application-gateway-create-url-route-portal/figure3.png
-[Szenario]: ./media/application-gateway-create-url-route-portal/scenario.png
+[scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -4,10 +4,15 @@ Sie können die MongoLab-Benutzeroberfläche für die meisten Datenbank-Tasks wi
 
 Gehen Sie folgendermaßen vor, um auf die MongoLab-Benutzeroberfläche zuzugreifen:
 
-1. Klicken Sie auf **Add-Ons**. ![AddonsButton][button-addons]
-2. Suchen Sie in Ihrer Add-On-Liste nach Ihrem MongoLab-Dienst. ![MongolabEntry][entry-mongolabaddon]
+1. Klicken Sie auf **Add-Ons**.  
+   ![AddonsButton][button-addons]
+2. Suchen Sie in Ihrer Add-On-Liste nach Ihrem MongoLab-Dienst.  
+   ![MongolabEntry][entry-mongolabaddon]
 3. Klicken Sie auf den Namen Ihres Add-Ons, um auf die Add-On-Seite zu gelangen.
-4. Klicken Sie auf **Manage**. ![ManageButton][button-manage] Eine neue Registerkarte wird geöffnet. Auf dieser wird die Startseite der MongoLab-Datenbank angezeigt: ![DbHome][screen-dblanding]
+4. Klicken Sie auf **Manage**.  
+   ![ManageButton][button-manage]  
+   Eine neue Registerkarte wird geöffnet. Auf dieser wird die Startseite der MongoLab-Datenbank angezeigt:  
+   ![DbHome][screen-dblanding]
 
 Hier können Sie eine bestimmte Sammlung auswählen und einzelne Dokumente anzeigen. Melden Sie sich ab, wenn Sie fertig sind.
 
@@ -16,4 +21,7 @@ Hier können Sie eine bestimmte Sammlung auswählen und einzelne Dokumente anzei
 [button-addons]: ./media/howto-access-mongolab-ui/button-addons.png
 [screen-dblanding]: ./media/howto-access-mongolab-ui/screen-mongolab_dblanding.png
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Jan17_HO3-->
+
+

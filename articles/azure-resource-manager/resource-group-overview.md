@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 01/12/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: 21ebc8083113238ef70f57dae2381ebcf102c39d
+ms.sourcegitcommit: 1460a3e6b3d225a507e5da51dcc66810862ee2de
+ms.openlocfilehash: 4001c2d9bf2a635d7189ae46a855e347b93185c8
 
 
 ---
@@ -82,23 +82,35 @@ Jeder Ressourcenanbieter stellt einen Satz mit Ressourcen und Vorgängen für di
 
 Bevor Sie mit der Bereitstellung Ihrer Ressourcen beginnen, ist es ratsam, sich über die verfügbaren Ressourcenanbieter zu informieren. Wenn Sie die Namen der Ressourcenanbieter und Ressourcen kennen, können Sie besser definieren, welche Ressourcen Sie unter Azure bereitstellen möchten.
 
+Sie können alle Ressourcenanbieter über das Portal anzeigen. Wählen Sie auf dem Blatt für Ihr Abonnement die Option **Ressourcenanbieter** aus:
+
+![Anzeigen der Ressourcenanbieter](./media/resource-group-overview/view-resource-providers.png)
+
 Sie können alle Ressourcenanbieter mit dem folgenden PowerShell-Cmdlet abrufen:
 
-    Get-AzureRmResourceProvider -ListAvailable
+```powershell
+Get-AzureRmResourceProvider -ListAvailable
+```
 
 Mit der Azure-Befehlszeilenschnittstelle rufen Sie alle Ressourcenanbieter mit dem folgenden Befehl ab:
 
-    azure provider list
+```azurecli
+azure provider list
+```
 
 In der zurückgegebenen Liste können Sie den gewünschten Ressourcenanbieter auswählen.
 
 Fügen Sie dem Befehl den Anbieternamespace hinzu, um Details zu einem Ressourcenanbieter abzurufen. Mit dem Befehl werden die unterstützten Ressourcentypen für den Ressourcenanbieter und die unterstützten Standorte und API-Versionen für jeden Ressourcentyp zurückgegeben. Mit dem folgenden PowerShell-Cmdlet erhalten Sie Details zu „Microsoft.Compute“:
 
-    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
+```powershell
+(Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
+```
 
 Mit der Azure-Befehlszeilenschnittstelle rufen Sie die unterstützten Ressourcentypen, Standorte und API-Versionen für „Microsoft.Compute“ mit dem folgenden Befehl ab:
 
-    azure provider show Microsoft.Compute --json > c:\Azure\compute.json
+```azurecli
+azure provider show Microsoft.Compute --json > c:\Azure\compute.json
+```
 
 Weitere Informationen finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
 
@@ -109,35 +121,39 @@ Weitere Informationen zum Format der Vorlage und zu ihrer Erstellung finden Sie 
 
 Der Resource Manager verarbeitet die Vorlage wie andere Anforderungen auch (siehe Abbildung für [Einheitliche Verwaltungsebene](#consistent-management-layer)). Er analysiert die Vorlage und konvertiert deren Syntax in REST-API-Vorgänge für die entsprechenden Ressourcenanbieter. Beispielsweise kann der Resource Manager eine Vorlage mit der folgenden Ressourcendefinition empfangen:
 
-    "resources": [
-      {
-        "apiVersion": "2016-01-01",
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "mystorageaccount",
-        "location": "westus",
-        "sku": {
-          "name": "Standard_LRS"
-        },
-        "kind": "Storage",
-        "properties": {
-        }
-      }
-      ]
+```json
+"resources": [
+  {
+    "apiVersion": "2016-01-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "mystorageaccount",
+    "location": "westus",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "properties": {
+    }
+  }
+]
+```
 
 Er konvertiert die Definition in den folgenden REST-API-Vorgang, der an den Microsoft.Storage-Ressourcenanbieter gesendet wird:
 
-    PUT
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
-    REQUEST BODY
-    {
-      "location": "westus",
-      "properties": {
-      }
-      "sku": {
-        "name": "Standard_LRS"
-      },   
-      "kind": "Storage"
-    }
+```HTTP
+PUT
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+REQUEST BODY
+{
+  "location": "westus",
+  "properties": {
+  }
+  "sku": {
+    "name": "Standard_LRS"
+  },   
+  "kind": "Storage"
+}
+```
 
 Sie können völlig frei entscheiden, wie Sie Vorlagen und Ressourcengruppen definieren und Ihre Lösung verwalten möchten. Beispielsweise können Sie Ihre Anwendung mit drei Ebenen über eine einzelne Vorlage für eine einzelne Ressourcengruppe bereitstellen.
 
@@ -177,26 +193,32 @@ Ressourcen müssen sich nicht in derselben Ressourcengruppe befinden, um ein gem
 
 Das folgende Beispiel enthält ein Tag, das auf einen virtuellen Computer angewendet wird.
 
-    "resources": [    
-      {
-        "type": "Microsoft.Compute/virtualMachines",
-        "apiVersion": "2015-06-15",
-        "name": "SimpleWindowsVM",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "costCenter": "Finance"
-        },
-        ...
-      }
-    ]
+```json
+"resources": [    
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2015-06-15",
+    "name": "SimpleWindowsVM",
+    "location": "[resourceGroup().location]",
+    "tags": {
+        "costCenter": "Finance"
+    },
+    ...
+  }
+]
+```
 
 Verwenden Sie das folgende PowerShell-Cmdlet, um alle Ressourcen mit einem Tagwert abzurufen:
 
-    Find-AzureRmResource -TagName costCenter -TagValue Finance
+```powershell
+Find-AzureRmResource -TagName costCenter -TagValue Finance
+```
 
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
 
-    azure resource list -t costCenter=Finance --json
+```azurecli
+azure resource list -t costCenter=Finance --json
+```
 
 Sie haben auch die Möglichkeit, Ressourcen mit Tags über das Azure-Portal anzuzeigen.
 
@@ -238,7 +260,7 @@ Es kann vorkommen, dass Sie Codeabschnitte oder Skripts ausführen möchten, mit
 Sie können kritische Ressourcen auch explizit sperren, um zu verhindern, dass sie von Benutzern gelöscht oder geändert werden. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](resource-group-lock-resources.md).
 
 ## <a name="activity-logs"></a>Aktivitätsprotokolle
-Resource Manager protokolliert alle Vorgänge, mit denen eine Ressource erstellt, geändert oder gelöscht wird. Sie können bei der Problembehandlung mithilfe der Aktivitätsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat. Wählen Sie zum Anzeigen der Protokolle auf dem Blatt **Einstellungen** die Option **Aktivitätsprotokolle** für eine Ressourcengruppe. Sie können die Protokolle nach vielen verschiedenen Werten filtern, z.B. nach dem Benutzer, der den Vorgang initiiert hat. Informationen zum Arbeiten mit den Aktivitätsprotokollen finden Sie unter [Überwachen von Vorgängen mit dem Ressourcen-Manager](resource-group-audit.md).
+Resource Manager protokolliert alle Vorgänge, mit denen eine Ressource erstellt, geändert oder gelöscht wird. Sie können bei der Problembehandlung mithilfe der Aktivitätsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat. Wählen Sie zum Anzeigen der Protokolle auf dem Blatt **Einstellungen** die Option **Aktivitätsprotokolle** für eine Ressourcengruppe. Sie können die Protokolle nach vielen verschiedenen Werten filtern, z.B. nach dem Benutzer, der den Vorgang initiiert hat. Informationen zum Verwenden von Aktivitätsprotokollen finden Sie unter [View activity logs to audit actions on resources](resource-group-audit.md) (Anzeigen von Aktivitätsprotokollen zum Überwachen von Aktionen von Ressourcen).
 
 ## <a name="customized-policies"></a>Benutzerdefinierte Richtlinien
 Mit dem Ressourcen-Manager können Sie benutzerdefinierte Richtlinien zum Verwalten Ihrer Ressourcen erstellen. Die Arten der von Ihnen erstellten Richtlinien können unterschiedliche Szenarien umfassen. Sie können eine Namenskonvention für Ressourcen erzwingen, begrenzen, welche Arten und Instanzen von Ressourcen bereitgestellt werden können, oder begrenzen, in welchen Regionen eine Ressourcenart gehostet werden kann. Um die Abrechnung nach Abteilungen zu organisieren, können Sie die Verwendung eines Tagwerts für Ressourcen obligatorisch machen. Sie erstellen Richtlinien, um Kosten zu senken und die Konsistenz in Ihrem Abonnement zu wahren. 
@@ -247,17 +269,19 @@ Sie definieren Richtlinien per JSON-Code und wenden diese Richtlinien dann entwe
 
 Das folgende Beispiel enthält eine Richtlinie zum Sicherstellen der Einheitlichkeit von Tags, indem angegeben wird, dass alle Ressourcen ein costCenter-Tag enthalten.
 
-    {
-      "if": {
-        "not" : {
-          "field" : "tags",
-          "containsKey" : "costCenter"
-        }
-      },
-      "then" : {
-        "effect" : "deny"
-      }
+```json
+{
+  "if": {
+    "not" : {
+      "field" : "tags",
+      "containsKey" : "costCenter"
     }
+  },
+  "then" : {
+    "effect" : "deny"
+  }
+}
+```
 
 Es gibt noch viele weitere Arten von Richtlinien, die Sie erstellen können. Weitere Informationen finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
@@ -322,6 +346,6 @@ Hier sehen Sie eine Videodemonstration dieser Übersicht:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 
