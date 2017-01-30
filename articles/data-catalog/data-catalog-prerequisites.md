@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -37,8 +37,8 @@ Azure Active Directory (Azure AD) bietet Ihrem Unternehmen eine einfache Mögli
 
 > [!NOTE]
 > Über das [Azure-Portal](http://portal.azure.com/) können sich Benutzer entweder mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto für Azure Active Directory anmelden. Zum Einrichten von Azure Data Catalog mit dem Azure-Portal oder dem [Data Catalog-Portal](http://www.azuredatacatalog.com) müssen Sie mit einem Azure Active Directory-Konto und nicht einem persönlichen Konto angemeldet sein.
-> 
-> 
+>
+>
 
 ## <a name="active-directory-policy-configuration"></a>Active Directory-Richtlinienkonfiguration
 Es gibt Situationen, in denen Benutzer sich beim Azure Data Catalog-Portal anmelden können, jedoch bei dem Versuch, sich beim Tool zum Registrieren von Datenquellen anzumelden, eine Fehlermeldung erhalten, die die Anmeldung verhindert. Dieses Problem tritt möglicherweise nur dann auf, wenn der Benutzer über das Unternehmensnetzwerk arbeitet oder wenn der Benutzer von außerhalb des Unternehmensnetzwerks eine Verbindung herstellt.
@@ -50,7 +50,6 @@ Mit der globalen Authentifizierungsrichtlinie können separate Authentifizierung
  ![Globale Authentifizierungsrichtlinie für Active Directory](./media/data-catalog-prerequisites/global-auth-policy.png)
 
 Weitere Informationen finden Sie unter [Konfigurieren von Authentifizierungsrichtlinien](https://technet.microsoft.com/library/dn486781.aspx).
-
 
 
 

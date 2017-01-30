@@ -13,7 +13,7 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/03/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -65,7 +65,6 @@ Diese ständige Weitergabe des „Stammeswissens“ ist Teil des Datenquellen-Er
 Es kommt vor, dass diese Datenexperten ihr Wissen dokumentieren und per E-Mail oder in Word-Dokumenten auf einer SharePoint-Website des Teams bereitstellen. Dies ist zwar hilfreich, aber damit werden gleichzeitig neue Ermittlungsprobleme geschaffen: Woher wissen die Mitarbeiter, welche Dokumentation vorhanden ist und wo sie sich befindet?
 
 Azure Data Catalog ist ein Speicherort zum Bereitstellen dieses Stammeswissens, an dem es leicht auffindbar ist. Datenexperten können die Datenassets direkt mit Anmerkungen versehen und Links zur vorhandenen Dokumentation einfügen. Hierdurch wird nicht nur das Wissen selbst erfasst, sondern es wird auch in derselben Umgebung angeordnet, die für die Ermittlung von Datenquellen verwendet wird. Wenn der Katalog zum Ermitteln einer Datenquelle verwendet wird, finden Benutzer nicht nur die eigentliche Quelle, sondern auch das Expertenwissen, dass sich vorher nur im Kopf des Experten befunden hat.
-
 
 
 

@@ -1,80 +1,159 @@
 ---
-title: Sammeln von Azure-Speicherdaten in Log Analytics (Übersicht) | Microsoft Docs
-description: Azure-Ressourcen können mit Azure-Diagnose Protokolle und Metriken in ein Azure-Speicherkonto schreiben. Log Analytics kann diese Daten indizieren und durchsuchbar machen.
+title: "Erfassen von Protokollen und Metriken für Azure-Dienste in Log Analytics | Microsoft-Dokumentation"
+description: "Konfigurieren Sie Diagnosen für Azure-Ressourcen, um Protokolle und Metriken in Log Analytics zu schreiben."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+omanager: jwhit
+editor: 
+ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 12/1/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 75a0e93b17cf2bf5476803bcea47a09ee224ef56
+ms.openlocfilehash: fa0a442c6c1349d8d25ac76d3cae379afe1b13e3
+
 
 ---
-# <a name="collecting-azure-storage-data-in-log-analytics-overview"></a>Sammeln von Azure-Speicherdaten in Log Analytics – Übersicht
-Viele Azure-Ressourcen können Protokolle und Metriken in ein Azure-Speicherkonto schreiben. Log Analytics kann diese Daten verarbeiten und damit das Überwachen Ihrer Azure-Ressourcen erleichtern.
+# <a name="collecting-logs-and-metrics-for-azure-services-in-log-analytics"></a>Erfassen von Protokollen und Metriken für Azure-Dienste in Log Analytics
 
-Für das Schreiben in Azure Storage kann eine Ressource Azure-Diagnose oder eine eigene Methode zum Schreiben von Daten verwenden. Diese Daten können in verschiedenen Formaten an einen der folgenden Speicherorte geschrieben werden:
+Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden:
 
-* Azure-Tabelle
-* Azure-Blob
-* EventHub
+1. Azure-Diagnosen direkt an Log Analytics (*Diagnose* in der folgenden Tabelle)
+2. Azure-Diagnosen über Azure Storage an Log Analytics (*Storage* in der folgenden Tabelle)
+3. Connectors für Azure-Dienste (*Connectors* in der folgenden Tabelle)
+4. Skripts zum Sammeln und anschließenden Veröffentlichen von Daten in Log Analytics (Leerstellen in der folgenden Tabelle und für nicht aufgeführte Dienste)
 
-Log Analytics unterstützt Azure-Dienste, die Daten mit [Azure Diagnoseprotokollen](../azure-portal/monitoring-overview-of-diagnostic-logs.md) schreiben. Darüber hinaus unterstützt Log Analytics andere Dienste, die Protokolle und Metriken in verschiedenen Formaten und an unterschiedlichen Speicherorten ausgeben.  
+
+| Dienst | Ressourcentyp | Protokolle | Metriken | Lösung |
+| --- | --- | --- | --- | --- |
+| Anwendungsgateways    | Microsoft.Network/applicationGateways   | Diagnose | Diagnose | Azure Network Analytics (Vorschau) |
+| API Management          | Microsoft.ApiManagement/service         |             | Diagnose | |
+| Application Insights    |                                         | Connector   | Connector   | Application Insights-Connector (Vorschau) |
+| Automation-Konten     | Microsoft.Automation/AutomationAccounts | Diagnose |             | |
+| Batch-Konten          | Microsoft.Batch/batchAccounts           | Diagnose | Diagnose | |
+| Klassische Clouddienste  |                                         | Storage     |             | |
+| Cognitive Services      | Microsoft.CognitiveServices/accounts    |             | Diagnose | |
+| Data Lake Analytics     | Microsoft.DataLakeAnalytics/accounts    | Diagnose |             | |
+| Data Lake Store         | Microsoft.DataLakeStore/accounts        | Diagnose |             | |
+| Event Hub-Namespace     | Microsoft.EventHub/namespaces           | Diagnose | Diagnose | |
+| IoT Hubs                | Microsoft.Devices/IotHubs               |             | Diagnose | |
+| Schlüsseltresor               | Microsoft.KeyVault/vaults               | Diagnose |             | Key Vault-Analysen (Vorschau) |
+| Load Balancer          | Microsoft.Network/loadBalancers         | Diagnose |             |  |
+| Logik-Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
+| Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | Azure Network Analytics (Vorschau) |
+| Redis-Cache             | Microsoft.Cache/redis                   |             | Diagnose | |
+| Suchdienste         | Microsoft.Search/searchServices         | Diagnose | Diagnose | |
+| Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | |
+| Service Fabric          |                                         | Speicher     |             | Service Fabric-Analysen (Vorschau) |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnose | |
+| Stream Analytics        | Microsoft.StreamAnalytics/streamingjobs | Diagnose | Diagnose | |
+| Virtual Machines        | Microsoft.Compute/virtualMachines       | Durchwahl   | Durchwahl <br> Diagnose  | |
+| VM-Skalierungsgruppen | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnose | |
+| Webserverfarmen        | Microsoft.Web/serverfarms               |             | Diagnose | |
+| Websites               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnose | |
+
+
+> [!NOTE]
+> Für die Überwachung von virtuellen Azure-Computern (Linux und Windows) empfehlen wir die Installation der [Log Analytics-VM-Erweiterung](log-analytics-azure-vm-extension.md). Der Agent liefert Erkenntnisse, die aus Ihren virtuellen Computern zusammengetragen wurden. Die Erweiterung kann auch für VM-Skalierungsgruppen verwendet werden. 
+> 
+> 
+
+## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure-Diagnosen direkt an Log Analytics
+Viele Azure-Ressourcen können Diagnoseprotokolle und Metriken direkt in Log Analytics schreiben. Dies ist die bevorzugte Datensammlungsmethode für die Analyse. Bei Verwendung von Azure-Diagnosen werden Daten unmittelbar in Log Analytics geschrieben und müssen nicht zuerst in den Speicher geschrieben werden. 
+
+Azure-Ressourcen, die [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) unterstützen, können ihre Protokolle und Metriken direkt an Log Analytics senden.
+
+* Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (Von Azure Monitor unterstützte Metriken).
+* Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#supported-services-and-schema-for-diagnostic-logs) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
+
+### <a name="enable-diagnostics-with-powershell"></a>Aktivieren der Diagnose mit PowerShell
+
+Das folgende PowerShell-Beispiel zeigt, wie mithilfe von [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/resourcemanager/azurerm.insights/v2.3.0/set-azurermdiagnosticsetting) die Diagnose für eine Netzwerksicherheitsgruppe aktiviert wird. Die gleiche Herangehensweise kann für alle unterstützten Ressourcen verwendet werden. Legen Sie einfach `$resourceId` auf die Ressourcen-ID der Ressource fest, für die Sie die Diagnose aktivieren möchten.
+
+```
+$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+
+$resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
+
+Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
+```
+
+### <a name="enable-diagnostics-with-resource-manager-templates"></a>Aktivieren der Diagnose mithilfe von Resource Manager-Vorlagen
+
+Wenn die Diagnose für eine Ressource bei deren Erstellung aktiviert und an Ihren Log Analytics-Arbeitsbereich gesendet werden soll, können Sie eine Vorlage wie die folgende verwenden. Hierbei handelt es sich zwar um ein Beispiel für ein Automation-Konto, es kann jedoch für jeden unterstützten Ressourcentyp verwendet werden.
+
+```
+        {
+            "type": "Microsoft.Automation/automationAccounts/providers/diagnosticSettings",
+            "name": "[concat(parameters('omsAutomationAccountName'), '/', 'Microsoft.Insights/service')]",
+            "apiVersion": "2015-07-01",
+            "dependsOn": [
+                "[concat('Microsoft.Automation/automationAccounts/', parameters('omsAutomationAccountName'))]",
+                "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspaceName'))]"
+            ],
+            "properties": {
+                "workspaceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('omsWorkspaceName'))]",
+                "logs": [
+                    {
+                        "category": "JobLogs",
+                        "enabled": true
+                    },
+                    {
+                        "category": "JobStreams",
+                        "enabled": true
+                    }
+                ]
+            }
+        }
+```
+
+
+## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure-Diagnose über den Speicher an Log Analytics
+
+Bei einigen Ressourcen können Sie die Protokolle an Azure Storage senden und Log Analytics so konfigurieren, dass die Protokolle aus dem Speicher gelesen werden.
+
+Mit dieser Vorgehensweise kann Log Analytics Diagnosen für folgende Ressourcen und Protokolle aus Azure Storage erfassen:
+
+| Ressource | Protokolle |
+| --- | --- |
+| Service Fabric |ETWEvent <br> Operative Ereignisse <br> Reliable Actor-Ereignis <br> Reliable Services-Ereignis | 
+| Virtual Machines |Linux-Syslog <br> Windows-Ereignis <br> IIS-Protokoll <br> Windows-ETWEvent |
+| Webrollen <br> Workerrollen |Linux-Syslog <br> Windows-Ereignis <br> IIS-Protokoll <br> Windows-ETWEvent |
 
 > [!NOTE]
 > Ihnen werden die üblichen Azure-Datenraten für Speicherung und Transaktionen in Rechnung gestellt, wenn Sie Diagnosedaten an ein Speicherkonto senden und Log Analytics die Daten aus Ihrem Speicherkonto liest.
 > 
 > 
 
-![Azure-Speicherdiagramm](media/log-analytics-azure-storage/azure-storage-diagram.png)
+Weitere Information dazu, wie Log Analytics diese Protokolle erfassen kann, finden Sie unter [Verwenden von Blob Storage für IIS und Table Storage für Ereignisse](log-analytics-azure-storage-iis-table.md).
 
-## <a name="supported-azure-resources"></a>Unterstützte Azure-Ressourcen
-Log Analytics kann Daten für die folgenden Azure-Ressourcen sammeln:
+## <a name="connectors-for-azure-services"></a>Connectors für Azure-Dienste
 
-| Ressourcentyp | Protokolle (Diagnosekategorien) | Log Analytics-Lösung |
-| --- | --- | --- |
-| Application Insights |Availability <br> Benutzerdefinierte Ereignisse <br> Ausnahmen <br> Anforderungen <br> |Application Insights (Vorschau) |
-| API Management | |*keine* (Vorschau) |
-| Automation <br> Microsoft.Automation/AutomationAccounts |JobLogs <br> JobStreams |AzureAutomation (Vorschau) |
-| Schlüsseltresor <br> Microsoft.KeyVault/Vaults |AuditEvent |KeyVault (Vorschau) |
-| Application Gateway <br> Microsoft.Network/ApplicationGateways |ApplicationGatewayAccessLog <br> ApplicationGatewayPerformanceLog |AzureNetworking (Vorschau) |
-| Netzwerksicherheitsgruppen (NSG) <br> Microsoft.Network/NetworkSecurityGroups |NetworkSecurityGroupEvent <br> NetworkSecurityGroupRuleCounter |AzureNetworking (Vorschau) |
-| Service Fabric |ETWEvent <br> Operative Ereignisse <br> Reliable Actor-Ereignis <br> Reliable Services-Ereignis |ServiceFabric (Vorschau) |
-| Virtual Machines |Linux-Syslog <br> Windows-Ereignis <br> IIS-Protokoll <br> Windows-ETWEvent |*keine* |
-| Webrollen <br> Workerrollen |Linux-Syslog <br> Windows-Ereignis <br> IIS-Protokoll <br> Windows-ETWEvent |*keine* |
+Es gibt einen Connector für Application Insights, mit dem Daten, die von Application Insights gesammelt wurden, an Log Analytics gesendet werden können.
 
-> [!NOTE]
-> Für die Überwachung von virtuellen Azure-Computern (Linux und Windows) empfehlen wir die Installation der [Log Analytics-VM-Erweiterung](log-analytics-azure-vm-extension.md). Der Agent bietet ausführlichere Informationen zu Ihren virtuellen Computern als die in den Speicher geschriebenen Diagnosedaten.
-> 
-> 
+Weitere Informationen zum Application Insights-Connector finden Sie [hier](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
 
-Sie können uns durch Ihre Stimme auf unserer [Feedbackseite](http://feedback.azure.com/forums/267889-azure-log-analytics/category/88086-log-management-and-log-collection-policy)helfen, die Prioritäten für weitere zu analysierende Protokolle für OMS zu verteilen.
+## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Skripts zum Sammeln und Veröffentlichen von Daten für Log Analytics
 
-* Unter [Analysieren von Azure-Diagnoseprotokollen mit Log Analytics](log-analytics-azure-storage-json.md) erfahren Sie, wie Log Analytics Protokolle von Azure-Diensten, die [Azure-Diagnoseprotokolle](../azure-portal/monitoring-overview-of-diagnostic-logs.md) unterstützen, liest:
-  * Azure-Schlüsseltresor
-  * Azure-Automatisierung
-  * Application Gateway
-  * Netzwerksicherheitsgruppen
-* Unter [Verwenden von Blob Storage für IIS und Table Storage für Ereignisse](log-analytics-azure-storage-iis-table.md) erfahren Sie, wie Log Analytics die Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, oder IIS-Protokolle, die in Blob Storage geschrieben werden, liest. Dazu gehören:
-  * Service Fabric
-  * Webrollen
-  * Workerrollen
-  * Virtual Machines
+Für Azure-Dienste, bei denen Protokolle und Metriken nicht direkt an Log Analytics gesendet werden können, können Sie das Protokoll und die Metriken mithilfe von Azure Automation erfassen. Das Skript kann die Daten dann über die [Datensammler-API](log-analytics-data-collector-api.md) an Log Analytics senden.
 
-Application Insights befindet sich in der privaten Vorschau und verwendet den fortlaufenden Export in Blob Storage. Wenn Sie an der privaten Vorschau teilnehmen möchten, wenden Sie sich an Ihr Microsoft-Kundenteam, oder lesen Sie die Details auf der [Feedback-Website](https://feedback.azure.com/forums/267889-log-analytics/suggestions/6519248-integration-with-app-insights).
-
+Der Azure-Vorlagenkatalog enthält [Beispiele für die Verwendung von Azure Automation](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) zum Sammeln von Daten aus Diensten und zum Senden der Daten an Log Analytics.
+ 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Analysieren von Azure-Diagnoseprotokollen mit Log Analytics](log-analytics-azure-storage-json.md) enthält Informationen zum Lesen der Protokolle von Azure-Diensten, die Diagnosedaten im JSON-Format in Blob Storage schreiben.
+
 * [Verwenden von Blob Storage für IIS und Table Storage für Ereignisse](log-analytics-azure-storage-iis-table.md) enthält Informationen zum Lesen der Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, oder der IIS-Protokolle, die in Blob Storage geschrieben werden.
 * [Aktivieren Sie Lösungen](log-analytics-add-solutions.md) , um Einblick in die Daten bereitzustellen.
 * [Erstellen Sie Suchabfragen](log-analytics-log-searches.md) , um die Daten zu analysieren.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 

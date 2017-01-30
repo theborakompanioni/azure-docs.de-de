@@ -1,5 +1,5 @@
 ---
-title: "Übersicht über das Schützen von HDInsight | Microsoft Docs"
+title: "Hadoop-Sicherheit – In die Domäne eingebundene HDInsight-Cluster – Azure | Microsoft-Dokumentation"
 description: 'Inhalt:'
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,13 @@ ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ff45fa2abc0f77f133491e9ee9695c69a79eea33
+ms.sourcegitcommit: cd57f3a43142b3af3546eafd9749123fadd333c2
+ms.openlocfilehash: 27cb0cda5d836e042e9eca3c053577db0bd8c148
 
 
 ---
-# <a name="an-introduction-to-domain-joined-hdinsight-clusters-preview"></a>Einführung in HDInsight-Cluster mit Domänenverknüpfung (Vorschau)
+# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>Einführung in die Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern (Vorschau)
+
 Von Azure HDInsight wurde bislang nur ein einzelner lokaler Administratorbenutzer unterstützt. Für kleinere Anwendungsteams oder Abteilungen hat das hervorragend funktioniert. Mit der zunehmenden Verbreitung von Hadoop-basierten Workloads im Unternehmenssektor gewinnen jedoch professionelle Funktionen wie Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung immer mehr an Bedeutung. Mithilfe von in die Domäne eingebundenen HDInsight-Clustern können Sie einen HDInsight-Cluster erstellen, der einer Active Directory-Domäne angehört, und anschließend eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die sich für die Anmeldung bei dem HDInsight-Cluster über Azure Active Directory authentifizieren können. Externe Benutzer können sich nicht bei dem HDInsight-Cluster anmelden oder darauf zugreifen. Der Unternehmensadministrator kann mithilfe von [Apache Ranger](http://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffskontrolle für Hive-Sicherheit konfigurieren und so den Datenzugriff optimal beschränken. Darüber hinaus kann der Administrator den mitarbeiterspezifischen Datenzugriff sowie jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen und so ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen.
 
 > [!NOTE]
@@ -32,7 +33,7 @@ Von Azure HDInsight wurde bislang nur ein einzelner lokaler Administratorbenutze
 ## <a name="benefits"></a>Vorteile
 Die Unternehmenssicherheit basiert auf vier zentralen Säulen: Umgebungssicherheit, Authentifizierung, Autorisierung und Verschlüsselung.
 
-![Vorteile von in die Domäne eingebundenen HDInsight-Clustern (Säulen)](./media/hdinsight-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png) zu erstellen und zu verwalten.
+![Vorteile von in die Domäne eingebundenen HDInsight-Clustern (Säulen)](./media/hdinsight-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png)zu erstellen und zu verwalten.
 
 ### <a name="perimeter-security"></a>Umgebungssicherheit
 Die Umgebungssicherheit in HDInsight wird mithilfe von virtuellen Netzwerken und einem Gatewaydienst erreicht. Unternehmensadministratoren können einen HDInsight-Cluster in einem virtuellen Netzwerk erstellen und den Zugriff auf das virtuelle Netzwerk mithilfe von Netzwerksicherheitsgruppen (eingehende oder ausgehende Firewallregeln) beschränken. Zum Schutz der Umgebung können nur IP-Adressen, die in den eingehenden Firewallregeln definiert sind, mit dem HDInsight-Cluster kommunizieren. Durch die Verwendung eines Gatewaydiensts lässt sich die Umgebungssicherheit weiter verbessern. Der Gatewaydienst fungiert als erste Verteidigungslinie für eingehende, an den HDInsight-Cluster gerichtete Anforderungen. Er nimmt die Anforderung entgegen, prüft sie und leitet sie erst dann an die anderen Knoten im Cluster weiter. Dadurch wird die Umgebungssicherheit für andere Namen- und Datenknoten im Cluster gewährleistet.
@@ -57,6 +58,6 @@ Datenschutz spielt eine wichtige Rolle bei der Erfüllung der Sicherheits- und C
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

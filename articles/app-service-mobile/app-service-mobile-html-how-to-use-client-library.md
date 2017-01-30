@@ -1,19 +1,23 @@
 ---
-title: Verwenden des JavaScript-SDKs für Azure Mobile Apps
+title: "Verwenden des JavaScript-SDKs für Azure Mobile Apps"
 description: Vorgehensweise beim Verwenden von V for Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: adrianhall
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 10/30/2016
 ms.author: adrianha
+translationtype: Human Translation
+ms.sourcegitcommit: d6e68497cf0a4c48e6f611834089224b50b9bd5e
+ms.openlocfilehash: 79743cab91f8c22d06796803eb7e31681a581233
+
 
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Verwenden der JavaScript-Clientbibliothek für Azure Mobile Apps
@@ -26,7 +30,7 @@ Wir beschränken die Browserunterstützung auf die aktuellen Versionen der wicht
 
 Das Paket wird als universelles JavaScript-Modul bereitgestellt und unterstützt daher globale Formate ebenso wie AMD- und CommonJS-Formate.
 
-## <a name="<a-name="setup"></a>setup-and-prerequisites"></a><a name="Setup"></a>Einrichtung und Voraussetzungen
+## <a name="a-namesetupasetup-and-prerequisites"></a><a name="Setup"></a>Einrichtung und Voraussetzungen
 Dieses Lernprogramm setzt voraus, dass Sie ein Back-End mit einer Tabelle erstellt haben. In dieser Anleitung wird davon ausgegangen, dass die Tabelle das gleiche Schema wie die Tabellen in diesen Lernprogrammen aufweist.
 
 Die Installation des JavaScript SDKs für Azure Mobile Apps kann durch den Befehl `npm` vorgenommen werden.
@@ -35,13 +39,7 @@ Die Installation des JavaScript SDKs für Azure Mobile Apps kann durch den Befeh
 npm install azure-mobile-apps-client --save
 ```
 
-Wenn die Installation abgeschlossen ist, befindet sich die Bibliothek in `node_modules/azure-mobile-apps-client/dist/MobileServices.Web.min.js`.  Kopieren Sie diese Datei in Ihren Web-Bereich.
-
-```
-<script src="path/to/MobileServices.Web.min.js"></script>
-```
-
-Die Bibliothek kann auch als ES2015-Modul in CommonJS-Umgebungen verwendet werden, wie z. B. Browserify und Webpack sowie als eine AMD-Bibliothek.  Beispiel:
+Die Bibliothek kann auch als ES2015-Modul in CommonJS-Umgebungen verwendet werden, wie z. B. Browserify und Webpack sowie als eine AMD-Bibliothek.  Beispiel:
 
 ```
 # For ECMAScript 5.1 CommonJS
@@ -50,16 +48,22 @@ var WindowsAzure = require('azure-mobile-apps-client');
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
+Sie können auch eine vorab erstellte Version des SDK verwenden, die Sie direkt aus unserem CDN herunterladen:
+
+```html
+<script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
+```
+
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="<a-name="auth"></a>how-to:-authenticate-users"></a><a name="auth"></a>Gewusst wie: Authentifizieren von Benutzern
+## <a name="a-nameauthahow-to-authenticate-users"></a><a name="auth"></a>Gewusst wie: Authentifizieren von Benutzern
 Azure App Service unterstützt die Authentifizierung und Autorisierung von Anwendungsbenutzern mit einer Vielzahl externer Identitätsanbieter: Facebook, Google, Microsoft-Konto und Twitter. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Erste Schritte mit der Authentifizierung] .
 
-Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein Serverfluss und ein Clientfluss.  Der Serverfluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der Clientfluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten wie z. B. einmalige Anmeldung, da in diesem Fall anbieterspezifische SDKs verwendet werden.
+Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein Serverfluss und ein Clientfluss.  Der Serverfluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der Clientfluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten wie z. B. einmalige Anmeldung, da in diesem Fall anbieterspezifische SDKs verwendet werden.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="<a-name="configure-external-redirect-urls"></a>how-to:-configure-your-mobile-app-service-for-external-redirect-urls."></a><a name="configure-external-redirect-urls"></a>Vorgehensweise: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
+### <a name="a-nameconfigure-external-redirect-urlsahow-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>Vorgehensweise: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
 Mehrere JavaScript-Anwendungen verwenden eine Loopback-Funktion, um Abläufe in der OAuth-Benutzeroberfläche zu verarbeiten.  Diese Funktionen umfassen:
 
 * Lokale Ausführung Ihres Dienstes
@@ -97,15 +101,15 @@ Nach der Aktualisierung des Back-Ends können Sie die neuen Loopback-URLs in Ihr
 <!-- URLs. -->
 [Schnellstart von Azure Mobile Apps]: app-service-mobile-cordova-get-started.md
 [Erste Schritte mit der Authentifizierung]: app-service-mobile-cordova-get-started-users.md
-[Hinzufügen von Authentifizierung zur App]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure-Portal]: https://portal.azure.com/
 [JavaScript-SDKs für Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx (Dokumentation zum „Query-“Objekt“)
+[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
 
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,19 +1,23 @@
 ---
 title: Anforderungseinheiten in DocumentDB | Microsoft Docs
-description: Enthält Informationen zu den Grundlagen von Anforderungseinheiten in DocumentDB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten.
+description: "Enthält Informationen zu den Grundlagen von Anforderungseinheiten in DocumentDB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten."
 services: documentdb
 author: syamkmsft
 manager: jhubbard
 editor: mimig
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2016
+ms.date: 11/16/2016
 ms.author: syamk
+translationtype: Human Translation
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 8b2d13dd16f629fbb2108856cd1e1b2954ece8bf
+
 
 ---
 # <a name="request-units-in-documentdb"></a>Anforderungseinheiten in DocumentDB
@@ -36,6 +40,12 @@ DocumentDB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung*
 
 Bei DocumentDB wird der reservierte Durchsatz in Anforderungseinheiten pro Sekunde angegeben.  Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen, wobei Sie eine Anzahl garantierter Anforderungseinheiten auf Sekundenbasis für Ihre Anwendung *reservieren* .  Jeder Vorgang in DocumentDB – das Schreiben eines Dokuments, das Durchführen einer Abfrage, das Aktualisieren eines Dokuments – beansprucht CPU, Arbeitsspeicher und IOPS.  Mit anderen Worten: Für jeden Vorgang fällt eine *Anforderungsgebühr* an, die in *Anforderungseinheiten* ausgedrückt wird.  Wenn Sie die Faktoren, die sich auf die berechneten Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie die Kosten für Ihre Anwendung optimieren. 
 
+Wir empfehlen Ihnen, sich zunächst das folgende Video anzusehen, in dem Aravind Ramachandran Anforderungseinheiten erklärt und die vorhersagbare Leistung mit DocumentDB erläutert.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Predictable-Performance-with-DocumentDB/player]
+> 
+> 
+
 ## <a name="specifying-request-unit-capacity"></a>Angeben der Kapazität der Anforderungseinheiten
 Wenn Sie eine DocumentDB-Sammlung erstellen, geben Sie die Anzahl von Anforderungseinheiten pro Sekunde (Request Units, RUs) an, die für die Sammlung reserviert werden sollen.  Sobald die Sammlung erstellt wurde, ist die vollständige Zuweisung von RUs für die Sammlung reserviert.  Für jede Sammlung werden dedizierte und isolierte Durchsatzmerkmale garantiert.  
 
@@ -53,10 +63,10 @@ Beim Abschätzen der Anzahl von Anforderungseinheiten, die für Ihre DocumentDB-
 * **Skriptnutzung**.  Wie bei Abfragen beanspruchen gespeicherte Prozeduren und Trigger Anforderungseinheiten basierend auf der Komplexität des ausgeführten Vorgangs. Untersuchen Sie während der Entwicklung Ihrer Anwendung den "x-ms-request-charge"-Header, um herauszufinden, wie viel Anforderungseinheiten die einzelnen Vorgänge verbrauchen.
 
 ## <a name="estimating-throughput-needs"></a>Schätzen der Durchsatzanforderungen
-Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsverarbeitungskosten. Eine einzelne Anforderungseinheit stellt die Verarbeitungskapazität dar, die erforderlich ist, um ein einzelnes, aus 10 eindeutigen Eigenschaftswerten (außer Systemeigenschaften) bestehendes JSON-Dokument von 1 KB zu lesen (per „self link“ oder ID). Eine Anforderung zum Erstellen (Einfügen), Ersetzen oder Löschen des gleichen Dokuments verbraucht mehr Verarbeitungsleistung des Diensts und daher mehr Anforderungseinheiten.   
+Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsverarbeitungskosten. Eine einzelne Anforderungseinheit stellt die Verarbeitungskapazität dar, die erforderlich ist, um ein einzelnes, aus 10 eindeutigen Eigenschaftswerten (außer Systemeigenschaften) bestehendes JSON-Dokument von 1 KB zu lesen (per „self link“ oder ID). Eine Anforderung zum Erstellen (Einfügen), Ersetzen oder Löschen des gleichen Dokuments verbraucht mehr Verarbeitungsleistung des Diensts und daher mehr Anforderungseinheiten.   
 
 > [!NOTE]
-> Die Baseline einer Anforderungseinheit für ein Dokument von 1 KB entspricht einem einfachen GET-Vorgang per „self link“ oder ID des Dokuments.
+> Die Baseline einer Anforderungseinheit für ein Dokument von 1 KB entspricht einem einfachen GET-Vorgang per „self link“ oder ID des Dokuments.
 > 
 > 
 
@@ -114,50 +124,50 @@ Betrachten Sie das folgende Dokument von 1 KB:
 
     {
      "id": "08259",
-    "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
-    "tags": [
+      "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
+      "tags": [
         {
-        "name": "cereals ready-to-eat"
+          "name": "cereals ready-to-eat"
         },
         {
-        "name": "kellogg"
+          "name": "kellogg"
         },
         {
-        "name": "kellogg's crispix"
+          "name": "kellogg's crispix"
         }
     ],
-    "version": 1,
-    "commonName": "Includes USDA Commodity B855",
-    "manufacturerName": "Kellogg, Co.",
-    "isFromSurvey": false,
-    "foodGroup": "Breakfast Cereals",
-    "nutrients": [
+      "version": 1,
+      "commonName": "Includes USDA Commodity B855",
+      "manufacturerName": "Kellogg, Co.",
+      "isFromSurvey": false,
+      "foodGroup": "Breakfast Cereals",
+      "nutrients": [
         {
-        "id": "262",
-        "description": "Caffeine",
-        "nutritionValue": 0,
-        "units": "mg"
+          "id": "262",
+          "description": "Caffeine",
+          "nutritionValue": 0,
+          "units": "mg"
         },
         {
-        "id": "307",
-        "description": "Sodium, Na",
-        "nutritionValue": 611,
-        "units": "mg"
+          "id": "307",
+          "description": "Sodium, Na",
+          "nutritionValue": 611,
+          "units": "mg"
         },
         {
-        "id": "309",
-        "description": "Zinc, Zn",
-        "nutritionValue": 5.2,
-        "units": "mg"
+          "id": "309",
+          "description": "Zinc, Zn",
+          "nutritionValue": 5.2,
+          "units": "mg"
         }
-    ],
-    "servings": [
+      ],
+      "servings": [
         {
-        "amount": 1,
-        "description": "cup (1 NLEA serving)",
-        "weightInGrams": 29
+          "amount": 1,
+          "description": "cup (1 NLEA serving)",
+          "weightInGrams": 29
         }
-    ]
+      ]
     }
 
 > [!NOTE]
@@ -199,7 +209,7 @@ Mit diesen Informationen können wir den RU-Bedarf für diese Anwendung angesich
 
 In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1,275 RU/s.  Wir runden auf den nächsten Hunderter auf und würden für die Sammlung dieser Anwendung 1.300 RU/s bereitstellen.
 
-## <a name="<a-id="requestratetoolarge"></a>-exceeding-reserved-throughput-limits"></a><a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz
+## <a name="a-idrequestratetoolargea-exceeding-reserved-throughput-limits"></a><a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz
 Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für eine Sammlung überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den x-ms-retry-after-ms-Header zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
 
     HTTP Status 429
@@ -214,7 +224,6 @@ Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht da
 Weitere Informationen zum reservierten Durchsatz mit Azure DocumentDB-Datenbanken finden Sie in folgenden Ressourcen:
 
 * [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/)
-* [Verwalten der DocumentDB-Kapazität](documentdb-manage.md) 
 * [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md)
 * [Leistungsebenen in DocumentDB](documentdb-partition-data.md)
 
@@ -230,6 +239,6 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

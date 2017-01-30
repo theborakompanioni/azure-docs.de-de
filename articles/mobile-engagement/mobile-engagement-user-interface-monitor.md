@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement - Benutzeroberfläche – Überwachen
-description: Informationen zum Überwachen von Echtzeitdaten zu Ihrer Anwendung mithilfe von Azure Mobile Engagement
+title: "Azure Mobile Engagement - Benutzeroberfläche – Überwachen"
+description: "Informationen zum Überwachen von Echtzeitdaten zu Ihrer Anwendung mithilfe von Azure Mobile Engagement"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,45 +14,49 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a2971c3b66b31e2936ca7ebc95d103ff5daf5881
+
 
 ---
-# Gewusst wie: Überwachen von Echtzeitdaten zu Ihrer Anwendung
-In diesem Artikel wird die Registerkarte **ÜBERWACHEN** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement**-Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement**-Konto erstellen müssen.
+# <a name="how-to-monitor-real-time-data-about-your-application"></a>Gewusst wie: Überwachen von Echtzeitdaten zu Ihrer Anwendung
+In diesem Artikel wird die Registerkarte **ÜBERWACHEN** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. Beachten Sie, dass Sie zur Verwendung des Portals zuerst ein **Azure Mobile Engagement** -Konto erstellen müssen. 
 
-Der Abschnitt „Überwachen“ der Benutzeroberfläche enthält Informationen für Echtzeitanalysen und ermöglicht das Festlegen von Warnungen, wenn Schwellenwerte für die meisten der Informationen erreicht werden, die auch im Abschnitt [ANALYSE](mobile-engagement-user-interface-analytics.md) der Benutzeroberfläche verfügbar sind. Der Abschnitt **Glossar** im Thema [Konzepte](http://go.microsoft.com/fwlink/?LinkId=525555) enthält die Definitionen der Begriffe und Abkürzungen in Analysen und in der Überwachung. Beispiele: aktiver Benutzer, neuer Benutzer, vermerkter Benutzer, Sitzung, Benutzerpfaddiagramm, Benutzerzuordnung, Nachverfolgungs-URLs, Trends, Aktivität, Ereignis, Auftrag, Fehler, zusätzliche Informationen, Absturz und App-Info.
+Der Abschnitt „Überwachen“ der Benutzeroberfläche enthält Informationen für Echtzeitanalysen und ermöglicht das Festlegen von Warnungen, wenn Schwellenwerte für die meisten der Informationen erreicht werden, die auch im Abschnitt [ANALYSE](mobile-engagement-user-interface-analytics.md) der Benutzeroberfläche verfügbar sind. Der Abschnitt **Glossar** im Thema [Konzepte](http://go.microsoft.com/fwlink/?LinkId=525555) enthält die Definitionen der Begriffe und Abkürzungen für Analyse und Überwachung. Beispiele: aktiver Benutzer, neuer Benutzer, vermerkter Benutzer, Sitzung, Benutzerpfaddiagramm, Benutzerzuordnung, Nachverfolgungs-URLs, Trends, Aktivität, Ereignis, Auftrag, Fehler, zusätzliche Informationen, Absturz und App-Info.
 
 > [!NOTE]
 > Viele Abschnitte der Benutzeroberfläche des **Mobile Engagement**-Portals enthalten die Schaltfläche **HILFE ANZEIGEN**. Drücken Sie diese Schaltfläche, um weitere Kontextinformationen zu einem bestimmten Bereich zu erhalten.
 > 
 > 
 
-## Überwachen - Sitzungen, Aufträge, Ereignisse, Fehler und Abstürze
-Sie können erkennen, wie viele Benutzer sich derzeit in einer Sitzung und auf bestimmten Bildschirmen befinden oder bestimmte Aktionen ausführen. Sie können die Benutzeraktivität unterteilt in Sitzungen, Aufträge, Ereignisse, Fehler und Abstürze anzeigen. Sie können die aktuellen Informationen und die Informationen der letzten Stunde, des letzten Tags oder der letzten Woche anzeigen. Sie können alle Informationen in jeder Kategorie anzeigen oder eine Sortierung nach Sitzung, Auftrag, Ereignis, Fehler und Absturz vornehmen. Die Live-Überwachung ist z. B. während eines Ereignisses wie einer Pushkampagne hilfreich, um zu prüfen, ob nach dem Senden Ihrer Pushbenachrichtigung ein Aktivitätsanstieg zu verzeichnen ist.
+## <a name="monitor---sessions-jobs-events-errors-and-crashes"></a>Überwachen - Sitzungen, Aufträge, Ereignisse, Fehler und Abstürze
+Sie können erkennen, wie viele Benutzer sich derzeit in einer Sitzung und auf bestimmten Bildschirmen befinden oder bestimmte Aktionen ausführen. Sie können die Benutzeraktivität unterteilt in Sitzungen, Aufträge, Ereignisse, Fehler und Abstürze anzeigen. Sie können die aktuellen Informationen und die Informationen der letzten Stunde, des letzten Tags oder der letzten Woche anzeigen. Sie können alle Informationen in jeder Kategorie anzeigen oder eine Sortierung nach Sitzung, Auftrag, Ereignis, Fehler und Absturz vornehmen.  Die Live-Überwachung ist z. B. während eines Ereignisses wie einer Pushkampagne hilfreich, um zu prüfen, ob nach dem Senden Ihrer Pushbenachrichtigung ein Aktivitätsanstieg zu verzeichnen ist.
 
-![Monitor1][14]
+![Monitor1][14]  
 
-## Problembehandlung mit "Überwachen - Ereignisse – Details"
+## <a name="troubleshooting-with-monitor---events---details"></a>Problembehandlung mit "Überwachen - Ereignisse – Details"
 Das Generieren eines Ereignisses in Ihrer Anwendung auf dem Testgerät, um es anschließend in "Überwachen - Ereignisse – Details" anzuzeigen, ist eine der einfachsten Möglichkeiten, die Geräte-ID Ihres Testgeräts zu bestimmen und zu bestätigen, dass die Azure Mobile Engagement-Integration von "Analyse", "Überwachen" und "Segmente" in Ihrer Anwendung funktioniert. Sobald Sie die Geräte-ID Ihres Testgeräts bestimmt haben, können Sie sie Ihren Testgeräten in "Mein Konto – Geräte" hinzufügen. Wenn Sie kein Ereignis generieren können, prüfen Sie, ob Azure Mobile Engagement ordnungsgemäß mit dem SDK in Ihre Android-/iOS-/Web-/Windows-/Windows Phone-App integriert wurde.
 
 Weitere Informationen finden Sie in der [SDK-Dokumentation][Link 5].
 
-![Monitor2][15]
+![Monitor2][15]  
 
-## Problembehandlung mit "Überwachen - Absturz - Details"
+## <a name="troubleshooting-with-monitor---crashes---details"></a>Problembehandlung mit "Überwachen - Absturz - Details"
 Sie können Absturzinformationen zu Ihrer App in "Überwachen - Absturz - Details" überprüfen, um zu ermitteln, warum die App abstürzt. Sie sollten auch bekannte Probleme bei jeder Version des SDK in den Versionshinweisen für jede Version des SDK für Android/iOS/Web/Windows/Windows Phone nachsehen.
 
-Weitere Informationen finden Sie unter [SDK-Dokumentation – Versionshinweise ][Link 5].
+Weitere Informationen finden Sie unter [SDK-Dokumentation – Versionshinweise][Link 5].
 
 ![Monitor3][16]
 
-## Überwachen - Warnungen
-Sie können auch Bedingungen für Warnungen angeben, die automatisch per E-Mail oder SMS an Sie gesendet werden. (XMPP-kompatible Dienste wie Google GTalk oder Apple iChat werden unterstützt). Warnungen basieren auf einem vordefinierten Schwellenwert für die Erkennung größer als (>) oder kleiner als (<) einer bestimmten Anzahl von Sitzungen, Aufträgen, Ereignissen, Fehlern oder Abstürzen pro Sekunde, Minute oder Stunde. Warnungen können alle Aktivitäten eines bestimmten Typs oder nur einen bestimmten Auftrag, ein bestimmtes Ereignis oder eine bestimmte Fehleraktivität überwachen.
+## <a name="monitor---alerts"></a>Überwachen - Warnungen
+Sie können auch Bedingungen für Warnungen angeben, die automatisch per E-Mail oder SMS an Sie gesendet werden. (XMPP-kompatible Dienste wie Google GTalk oder Apple iChat werden unterstützt). Warnungen basieren auf einem vordefinierten Schwellenwert für die Erkennung größer als (>) oder kleiner als (<) einer bestimmten Anzahl von Sitzungen, Aufträgen, Ereignissen, Fehlern oder Abstürzen pro Sekunde, Minute oder Stunde. Warnungen können alle Aktivitäten eines bestimmten Typs oder nur einen bestimmten Auftrag, ein bestimmtes Ereignis oder eine bestimmte Fehleraktivität überwachen. 
 
 Sie können auch eine Mindesterkennungsrate angeben, wobei es sich um den Mindestzeitraum (in Minuten) handelt, der zwei Benachrichtigungen für dieselbe Warnung voneinander trennt, um sicherzustellen, dass Sie beim Auslösen einer Warnung nicht mehrere Benachrichtigungen pro Intervall erhalten.
 
 ![Monitor4][17]
 
-## Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Konzepte][Link 6]
 * [Handbuch zur Problembehandlung – Dienst][Link 24]
 
@@ -151,4 +155,8 @@ Sie können auch eine Mindesterkennungsrate angeben, wobei es sich um den Mindes
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

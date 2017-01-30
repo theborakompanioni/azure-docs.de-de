@@ -1,14 +1,18 @@
 > [!div class="op_single_selector"]
-> * [What is it](../articles/active-directory/active-directory-passwords.md)
-> * [How it works](../articles/active-directory/active-directory-passwords-how-it-works.md)
-> * [Getting started](../articles/active-directory/active-directory-passwords-getting-started.md)
-> * [Customize](../articles/active-directory/active-directory-passwords-customize.md)
-> * [Best practices](../articles/active-directory/active-directory-passwords-best-practices.md)
-> * [Get insights](../articles/active-directory/active-directory-passwords-get-insights.md)
-> * [FAQ](../articles/active-directory/active-directory-passwords-faq.md)
-> * [Troubleshooting](../articles/active-directory/active-directory-passwords-troubleshoot.md)
-> * [Learn more](../articles/active-directory/active-directory-passwords-learn-more.md)
+> * [Was ist das?](../articles/active-directory/active-directory-passwords.md)
+> * [So funktioniert's](../articles/active-directory/active-directory-passwords-how-it-works.md)
+> * [Erste Schritte](../articles/active-directory/active-directory-passwords-getting-started.md)
+> * [Anpassen](../articles/active-directory/active-directory-passwords-customize.md)
+> * [bewährten Methoden](../articles/active-directory/active-directory-passwords-best-practices.md)
+> * [Gewinnen von Erkenntnissen](../articles/active-directory/active-directory-passwords-get-insights.md)
+> * [Häufig gestellte Fragen](../articles/active-directory/active-directory-passwords-faq.md)
+> * [Problembehandlung](../articles/active-directory/active-directory-passwords-troubleshoot.md)
+> * [Weitere Informationen](../articles/active-directory/active-directory-passwords-learn-more.md)
 > 
 > 
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

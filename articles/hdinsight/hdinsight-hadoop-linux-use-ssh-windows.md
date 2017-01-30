@@ -1,5 +1,5 @@
 ---
-title: "Verwenden von SSH-Schlüsseln mit Hadoop in Linux-basierten Clustern unter Windows | Microsoft Docs"
+title: Verwenden von SSH mit HDInsight-Clustern aus PuTTY unter Windows | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie Sie auf Windows-basierten Clients unter Verwendung des PuTTY-SSH-Clients SSH-Schlüssel für die Authentifizierung bei Linux-basierten HDInsight-Clustern erstellen und verwenden."
 services: hdinsight
 documentationcenter: 
@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/30/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: b72443c0ca60196535ac093a6ac03df456f776ea
-ms.openlocfilehash: 5498cfa6b8bcf50b1f375daa2e9adea585ce0d75
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 744d41a85d39cb468a17ac5a60cd2517f3e60147
 
 
 ---
-# <a name="use-ssh-with-linux-based-hadoop-on-hdinsight-from-windows-with-putty"></a>Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows mit PuTTY
+# <a name="use-ssh-with-hdinsight-hadoop-from-putty-on-windows"></a>Verwenden von SSH mit HDInsight (Hadoop) aus PuTTY unter Windows
+
 > [!div class="op_single_selector"]
-> * [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-> * [Linux, Unix, OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
+> * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
+> * [SSH (Windows, Linux, Unix, OS X)](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) ermöglicht die Remoteausführung von Vorgängen in Linux-basierten HDInsight-Clustern über eine Befehlszeilenschnittstelle. Dieses Dokument enthält Informationen zum Herstellen einer Verbindung von Windows-Clients mit HDInsight über den PuTTY SSH-Client.
 
@@ -99,7 +100,7 @@ Für jede dieser Methoden ist der öffentliche Schlüssel erforderlich. Vollstä
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Wenn Sie das [Azure-Portal][preview-portal] verwenden, um einen Linux-basierten HDInsight-Cluster zu erstellen, müssen Sie einen **SSH-Benutzernamen** eingeben und auswählen, ob Sie ein **KENNWORT** oder einen **ÖFFENTLICHEN SSH-SCHLÜSSEL** eingeben.
+Wenn Sie das [Azure-Portal][preview-portal] verwenden, um einen Linux-basierten HDInsight-Cluster zu erstellen, müssen Sie einen **SSH-Benutzernamen** eingeben und auswählen, ob Sie ein **Kennwort** oder einen **öffentlichen SSH-Schlüssel** eingeben.
 
 Wenn Sie **ÖFFENTLICHER SSH-SCHLÜSSEL** auswählen, können Sie den öffentlichen Schlüssel (angezeigt im Feld **Öffentliche Schlüssel für die Datei für\_ autorisierte OpenSSH-Schlüssel** in PuttyGen) in das Feld **Öffentlicher SSH-Schlüssel** einfügen. Oder klicken Sie auf **Datei auswählen**, um die Datei mit dem öffentlichen Schlüssel zu suchen und auszuwählen.
 
@@ -241,6 +242,6 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank mithilfe von T-SQL | Microsoft Docs"
-description: "Sie erfahren, wie Sie die Firewall für IP-Adressen mit Zugriff auf Azure SQL-Datenbanken konfigurieren."
+title: "T-SQL: Firewallregeln für SQL-Datenbank | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie Firewallregeln auf Serverebene und Datenbankebene für IP-Adressen konfigurieren, mit denen per Transact-SQL auf Azure SQL-Datenbanken zugegriffen wird."
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: a49bc9cd8fb50dcc753fbb04bf7f2d96cf79f3ab
+ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
+ms.openlocfilehash: ef51f63984d342422ee5f2a93acfee6357df57ca
 
 
 ---
@@ -76,6 +76,11 @@ Firewallregeln auf Datenbankebene können nur von Datenbankbenutzern erstellt we
 
 Weitere Informationen zu diesen gespeicherten Prozeduren finden Sie unter [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) sowie unter [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx).
 
+> [!NOTE]
+> Ein Tutorial, in dem die Verwendung von Firewalls auf Datenbankebene veranschaulicht wird, finden Sie unter [Tutorial zu SQL-Datenbank: SQL Server-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-sql-authentication-get-started.md).
+>
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 Artikel mit Anleitungen zum Erstellen von Firewallregeln auf Serverebene mit anderen Methoden finden Sie unter: 
 
@@ -94,6 +99,6 @@ Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Date
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -12,7 +12,7 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 19/01/2017
 ms.author: rajanaki
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -130,7 +130,8 @@ Tipps für die Verwendung von Cmdlets, beispielsweise wie Parameterwerte, Eingab
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>Schritt 3: Festlegen des Kontexts des Recovery Services-Tresors
-1. Legen Sie den Tresorkontext durch Ausführen des nachstehenden Befehls fest.
+
+Legen Sie den Tresorkontext durch Ausführen des nachstehenden Befehls fest.
    
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
@@ -163,7 +164,8 @@ Tipps für die Verwendung von Cmdlets, beispielsweise wie Parameterwerte, Eingab
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 
 ## <a name="step-5-create-an-azure-storage-account"></a>Schritt 5: Erstellen eines Azure-Speicherkontos
-1. Wenn Sie kein Azure-Speicherkonto haben, erstellen Sie durch Ausführen des folgenden Befehls ein Konto für die Georeplikation in derselben geografischen Region, in der sich der Tresor befindet:
+
+Wenn Sie kein Azure-Speicherkonto haben, erstellen Sie durch Ausführen des folgenden Befehls ein Konto für die Georeplikation in derselben geografischen Region, in der sich der Tresor befindet:
    
         $StorageAccountName = "teststorageacc1"    #StorageAccountname
         $StorageAccountGeo  = "Southeast Asia"     

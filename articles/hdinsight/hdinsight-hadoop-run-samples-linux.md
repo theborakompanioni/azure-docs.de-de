@@ -1,13 +1,13 @@
 ---
-title: Ausführen der Hadoop MapReduce-Beispiele in Linux-basiertem HDInsight | Microsoft Docs
-description: Erste Schritte bei der Verwendung von MapReduce-Beispielen mit Linux-basierten HDInsight-Clustern. Verwenden Sie SSH, um eine Verbindung mit dem Cluster herzustellen, und verwenden Sie dann den Hadoop-Befehl, um Beispielaufträge auszuführen.
+title: "Ausführen der Hadoop MapReduce-Beispiele in Linux-basiertem HDInsight | Microsoft Docs"
+description: "Erste Schritte bei der Verwendung von MapReduce-Beispielen mit Linux-basierten HDInsight-Clustern. Verwenden Sie SSH, um eine Verbindung mit dem Cluster herzustellen, und verwenden Sie dann den Hadoop-Befehl, um Beispielaufträge auszuführen."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8e9cf3d1a2ae950f4f843458ae8b22d99beddd7e
+
 
 ---
 # <a name="run-the-hadoop-samples-in-hdinsight"></a>Ausführen der Hadoop-Beispiele in HDInsight
@@ -45,8 +49,8 @@ Linux-basierte HDInsight-Cluster bieten eine Reihe von MapReduce-Beispielen, mit
 * **multifilewc**: Ein Auftrag, der die Wörter aus mehreren Dateien zählt
 * **pentomino**: Ein MapReduce-Programm für die Ablage von Platten, um Lösungen für Probleme mit Pentomino zu finden
 * **pi**: Ein MapReduce-Programm, das Pi anhand  einer Quasi-Monte-Carlo-Methode schätzt
-* **randomtextwriter**: Ein MapReduce-Programm, das 10 GB zufälliger Textdaten pro Knoten schreibt
-* **randomwriter**: Ein MapReduce-Programm, das 10 GB zufälliger Daten pro Knoten schreibt
+* **randomtextwriter**: Ein MapReduce-Programm, das 10 GB zufälliger Textdaten pro Knoten schreibt
+* **randomwriter**: Ein MapReduce-Programm, das 10 GB zufälliger Daten pro Knoten schreibt
 * **secondarysort**: Ein Beispiel, das eine sekundäre Reduce-Sortierung definiert
 * **sort**: Ein MapReduce-Programm, das die vom zufälligen Writer geschriebenen Daten sortiert
 * **sudoku**: Ein Programm zum Lösen von Sudokus
@@ -153,7 +157,7 @@ Die Ergebnisse sollten in etwa wie folgt aussehen:
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## <a name="pi-(π)"></a>Pi (π)
+## <a name="pi-"></a>Pi (π)
 Das Beispiel verwendet eine statistische (Quasi-Monte-Carlo-) Methode, um den Wert von Pi zu schätzen. Zufällig platzierte Punkte in einem Einheitsquadrat liegen mit einer Wahrscheinlichkeit gleich der Kreisoberfläche Pi/4 innerhalb eines Kreises, der sich im Quadrat befindet. Der Wert für Pi kann aus dem Wert 4R ermittelt werden, wobei R das Verhältnis zwischen der Anzahl der Punkte innerhalb des Kreises zur Gesamtanzahl der Punkte innerhalb des Quadrats ist. Je größer die Anzahl der Punkte, desto genauer die Schätzung.
 
 Der Mapper für dieses Beispiel generiert eine Reihe von Punkten an zufälligen Orten innerhalb eines Einheitsquadrats und zählt anschließend, wie viele dieser Punkte innerhalb des Kreises liegen.
@@ -166,7 +170,7 @@ Verwenden Sie den folgenden Befehl zum Ausführen dieses Beispiels. Dabei werden
 
 Der zurückgegebene Wert sollte etwa **3.14159155000000000000**lauten. Als Referenz: Die ersten 10 Dezimalstellen von Pi sind 3,1415926535.
 
-## <a name="10gb-greysort"></a>Greysort mit 10 GB
+## <a name="10gb-greysort"></a>Greysort mit 10 GB
 GraySort ist ein Sortierungs-Benchmark, der die Sortiergeschwindigkeit (TB/Minute) als Metrik verwendet, die beim Sortieren sehr großer Datenmengen erreicht wird (normalerweise mindestens 100 TB).
 
 Dieses Beispiel verwendet bescheidene 10 GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen ("daytona") Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/) .
@@ -198,7 +202,7 @@ Verwenden Sie die folgenden Schritte, um Daten zu generieren und die Ausgabe zu 
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie die Beispiele ausgeführt werden, die in Linux-basierten HDInsight-Clustern enthalten sind. Lernprogramme zu Pig, Hive und MapReduce mit HDInsight finden Sie in den folgenden Themen:
+In diesem Artikel haben Sie gelernt, wie die Beispiele ausgeführt werden, die in Linux-basierten HDInsight-Clustern enthalten sind. Tutorials zu Pig, Hive und MapReduce mit HDInsight finden Sie in den folgenden Themen:
 
 * [Verwenden von Pig mit Hadoop in HDInsight][hdinsight-use-pig]
 * [Verwenden von Hive mit Hadoop in HDInsight][hdinsight-use-hive]
@@ -220,6 +224,6 @@ In diesem Artikel haben Sie gelernt, wie die Beispiele ausgeführt werden, die i
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

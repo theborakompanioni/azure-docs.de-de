@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: 6a9edd88dd49dd8d8edd687f8808f7d49b774139
+ms.sourcegitcommit: 193c1836fc8076c2486684a7ec4a92ece948050c
+ms.openlocfilehash: 2419f7bd69b9d7fab1a37330b68283012e43f5fd
 
 
 ---
@@ -47,7 +47,7 @@ Auf Linux-Servercomputern:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
    * Fügen Sie diesen Codeausschnitt mit dem Instrumentationsschlüssel der Ressource hinzu:
 
-```
+```XML
 
      LoadPlugin "com.microsoft.applicationinsights.collectd.ApplicationInsightsWriter"
      <Plugin ApplicationInsightsWriter>
@@ -56,6 +56,8 @@ Auf Linux-Servercomputern:
 ```
 
 Er ist Teil der Beispielkonfigurationsdatei:
+
+```XML
 
     ...
     # collectd plugins
@@ -83,7 +85,8 @@ Er ist Teil der Beispielkonfigurationsdatei:
       # Other plugin configurations ...
       ...
     </Plugin>
-.   ...
+    ...
+```
 
 Konfigurieren Sie andere [collectd-Plug-Ins](https://collectd.org/wiki/index.php/Table_of_Plugins), die verschiedenste Daten aus unterschiedlichen Quellen sammeln können.
 
@@ -137,6 +140,6 @@ Trennen Sie Direktiven mit einem Zeilenumbruch.
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,23 +1,27 @@
 ---
-title: Prognose mit exponentieller Glättung | Microsoft Docs
-description: 'Webdienst: Prognose mit exponentieller Glättung'
+title: "Prognose mit exponentieller Glättung | Microsoft Docs"
+description: "Webdienst: Prognose mit exponentieller Glättung"
 services: machine-learning
-documentationcenter: ''
-author: xueshanz
+documentationcenter: 
+author: yijichen
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: a4150681-6eac-4145-9eca-0cdf60781dde
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
-ms.author: xueshzha
+ms.date: 12/13/2016
+ms.author: yijichen
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 47ef9bce59b62bbd5b2c630ee101a655814d96d2
+
 
 ---
-# Prognose mit exponentieller Glättung
-Dieser [Webdienst](https://datamarket.azure.com/dataset/aml_labs/ets) implementiert das Modell der exponentiellen Glättung (Exponential Smoothing, ETS), um Vorhersagen auf Grundlage der vom Benutzer bereitgestellten Verlaufsdaten zu erzeugen. Erhöht sich der Bedarf für ein bestimmtes Produkt in diesem Jahr? Kann ich meine Produktverkäufe für die Weihnachtssaison vorhersagen, damit ich meine Inventur effektiv planen kann? Planungsmodelle sind für solche Fragen die passende Lösung. Angesichts der letzten Daten, untersuchen diese Modelle versteckte Trends und Saisonabhängigkeit, um zukünftige Trends vorherzusagen.
+# <a name="forecasting---exponential-smoothing"></a>Prognose mit exponentieller Glättung
+Dieser [Webdienst](https://datamarket.azure.com/dataset/aml_labs/ets) implementiert das Modell der exponentiellen Glättung (Exponential Smoothing, ETS), um Vorhersagen auf Grundlage der vom Benutzer bereitgestellten Verlaufsdaten zu erzeugen. Erhöht sich der Bedarf für ein bestimmtes Produkt in diesem Jahr? Kann ich meine Produktverkäufe für die Weihnachtssaison vorhersagen, damit ich meine Inventur effektiv planen kann? Planungsmodelle sind für solche Fragen die passende Lösung. Angesichts der letzten Daten, untersuchen diese Modelle versteckte Trends und Saisonabhängigkeit, um zukünftige Trends vorherzusagen.  
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -25,8 +29,9 @@ Dieser [Webdienst](https://datamarket.azure.com/dataset/aml_labs/ets) implementi
 > 
 > 
 
-## Nutzung des Webdiensts
-Dieser Dienst akzeptiert 4 Argumente und berechnet die ETS-Prognosen. Die Eingabeargumente sind:
+## <a name="consumption-of-web-service"></a>Nutzung des Webdiensts
+Dieser Dienst akzeptiert 4 Argumente und berechnet die ETS-Prognosen.
+Die Eingabeargumente sind:
 
 * Frequency – Gibt die Häufigkeit der Rohdaten an (täglich/wöchentlich/monatlich/vierteljährlich/jährlich)
 * Horizon – Zeitrahmen der zukünftigen Prognose
@@ -35,20 +40,20 @@ Dieser Dienst akzeptiert 4 Argumente und berechnet die ETS-Prognosen. Die Eingab
 
 Die Ausgabe des Dienstes sind die berechneten Werte für die Prognose.
 
-Eine Beispieleingabe wäre:
+Eine Beispieleingabe wäre: 
 
 * Frequency – 12
 * Horizon – 12
 * Date – 1/15/2012;2/15/2012;3/15/2012;4/15/2012;5/15/2012;6/15/2012;7/15/2012;8/15/2012;9/15/2012;10/15/2012;11/15/2012;12/15/2012; 1/15/2013;2/15/2013;3/15/2013;4/15/2013;5/15/2013;6/15/2013;7/15/2013;8/15/2013;9/15/2013;10/15/2013;11/15/2013;12/15/2013; 1/15/2014;2/15/2014;3/15/2014;4/15/2014;5/15/2014;6/15/2014;7/15/2014;8/15/2014;9/15/2014
 * Value – 3.479;3.68;3.832;3.941;3.797;3.586;3.508;3.731;3.915;3.844;3.634;3.549;3.557;3.785;3.782;3.601;3.544;3.556;3.65;3.709;3.682;3.511; 3.429;3.51;3.523;3.525;3.626;3.695;3.711;3.711;3.693;3.571;3.509
 
-> Dieser Dienst, der im Azure Marketplace gehostet wird, ist ein OData-Dienst. Diese Dienste können durch POST- oder GET-Methoden aufgerufen werden.
+> Dieser Dienst, der im Azure Marketplace gehostet wird, ist ein OData-Dienst. Diese Dienste können durch POST- oder GET-Methoden aufgerufen werden. 
 > 
 > 
 
 Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([hier](http://microsoftazuremachinelearning.azurewebsites.net/etsForecasting.aspx) finden Sie eine Beispiel-App).
 
-### Starten von C#-Code für Webdienstnutzung:
+### <a name="starting-c-code-for-web-service-consumption"></a>Starten von C#-Code für Webdienstnutzung:
     public class Input
     {
             public string frequency;
@@ -80,20 +85,20 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
 
 
 
-## Erstellen des Webdiensts
+## <a name="creation-of-web-service"></a>Erstellen des Webdiensts
 > Dieser Webdienst wurde mithilfe von Azure Machine Learning erstellt. Eine kostenlose Testversion sowie Einführungsvideos zum Erstellen von Experimenten und [Veröffentlichen von Webdiensten](machine-learning-publish-a-machine-learning-web-service.md) finden Sie unter [azure.com/ml](http://azure.com/ml). Im Folgenden finden Sie einen Screenshot des Experiments, mit dem der Webdienst erstellt wurde und Beispielcode für die einzelnen Module im Experiment.
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Stichprobeneingabedaten wurden mit einem vordefinierten Datenschema hochgeladen. Mit dem Schema ist ein [Execute R Script][execute-r-script]-Modul verknüpft, welches das ETS-Prognosemodell mithilfe der ets- und forecast-Funktionen von R generiert.
+In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Stichprobeneingabedaten wurden mit einem vordefinierten Datenschema hochgeladen. Mit dem Schema ist ein Modul [Execute R Script][execute-r-script] verknüpft, das das ETS-Prognosemodell mithilfe der R-Funktionen ets und forecast generiert. 
 
 ![Experimentablauf][2]
 
-#### Modul 1:
+#### <a name="module-1"></a>Modul 1:
     # Add in the CSV file with the data in the format shown below 
-![Datenstichprobe][3]
+![Datenstichprobe][3]    
 
-#### Modul 2:
+#### <a name="module-2"></a>Modul 2:
     # Data input
     data <- maml.mapInputPort(1) # class: data.frame
     library(forecast)
@@ -121,10 +126,10 @@ In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Stichprobe
     maml.mapOutputPort("data.forecast");
 
 
-## Einschränkungen
-Dies ist ein sehr einfaches Beispiel für die Prognose mit ETS. Wie aus dem oben stehenden Beispielcode ersichtlich ist, wird kein Abfangen von Fehlern implementiert, und der Dienst geht davon aus, dass alle Variablen kontinuierliche/positive Werte sind und die Häufigkeit eine ganze Zahl größer als 1 sein sollte. Die Länge der Vektoren Datum und Wert sollte identisch sein. Die Variable für das Datum muss dem Format "mm/tt/jjjj" entsprechen.
+## <a name="limitations"></a>Einschränkungen
+Dies ist ein sehr einfaches Beispiel für die Prognose mit ETS. Wie aus dem oben stehenden Beispielcode ersichtlich ist, wird kein Abfangen von Fehlern implementiert, und der Dienst geht davon aus, dass alle Variablen kontinuierliche/positive Werte sind und die Häufigkeit eine ganze Zahl größer als 1 sein sollte. Die Länge der Vektoren Datum und Wert sollte identisch sein. Die Variable für das Datum muss dem Format "mm/tt/jjjj" entsprechen.
 
-## Häufig gestellte Fragen
+## <a name="faq"></a>Häufig gestellte Fragen
 Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im Azure Marketplace finden Sie [hier](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-forecasting-exponential-smoothing/ets-img1.png
@@ -136,4 +141,8 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

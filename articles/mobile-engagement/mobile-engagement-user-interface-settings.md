@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1e8ff1a27941984ae3fcd16dc8648cd8dc9b5e7c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f3c20ee0d5abb40d7650eeaa722e87142275448d
 
 
 ---
@@ -66,7 +66,7 @@ Um systemeigenen Push über GCM zu aktivieren, müssen Sie den Anweisungen von G
 
 Weitere Informationen finden Sie unter: 
 
-* [SDK-Dokumentation – Android – Integration von GCM][Link 5]
+* [SDK-Dokumentation – Android – Integrieren von GCM][Link 5]
 * [Google Developer-Handbuch für GCM](http://developer.android.com/guide/google/gcm/gs.html)
 
 ### <a name="amazon-device-messaging-for-android-adm"></a>Amazon Device Messaging (ADM) für Android
@@ -74,7 +74,7 @@ Zum Aktivieren von systemeigenem Push mit ADM müssen Sie Amazon-<OAuth credenti
 
 Weitere Informationen finden Sie unter: 
 
-* [SDK-Dokumentation – Android – Integration von ADM][Link 5]
+* [SDK-Dokumentation – Android – Integrieren von ADM][Link 5]
 * [Amazon Developer-ADM-Dokumentation](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
 
 ![settings6][51]
@@ -90,7 +90,7 @@ Zeigt die aktuelle Pushgeschwindigkeit Ihrer Anwendung und ermöglicht Ihnen, di
 ## <a name="commercial-pressure"></a>Kommerzieller Druck
 ![settings12][57]
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Konzepte][Link 6]
 * [Handbuch zur Problembehandlung – Dienst][Link 24]
 
@@ -192,6 +192,6 @@ Zeigt die aktuelle Pushgeschwindigkeit Ihrer Anwendung und ermöglicht Ihnen, di
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

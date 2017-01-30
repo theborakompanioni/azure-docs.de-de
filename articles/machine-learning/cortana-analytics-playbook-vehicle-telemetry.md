@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 55c85d95a16e0c0ea7bb11d6f47ae85aeb80577d
+ms.sourcegitcommit: 307ed83dc1f47bb86af4a476acbb51876012ff25
+ms.openlocfilehash: e4311a740ccb4cac2c1d6e7e1197a736d3a4a777
 
 
 ---
@@ -41,10 +41,10 @@ Die Lösung ist als ein [Lambda-Architekturmuster](https://en.wikipedia.org/wiki
 * bietet ein umfassendes Dashboard für Visualisierungen von Echtzeitdaten und prädiktiver Analyse mit Power BI.
 
 ## <a name="architecture"></a>Architektur
-![](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
+![Lösungsarchitekturdiagramm](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
 *Abbildung 1 – Lösungsarchitektur für die Fahrzeugtelemetrieanalyse*
 
-Diese Lösung umfasst die folgenden **Cortana Intelligence-Komponenten** und zeigt ihre End-to-End-Integration:
+Diese Lösung umfasst die folgenden **Cortana Intelligence-Komponenten** und stellt ihre End-to-End-Integration vor:
 
 * **Event Hubs** für das Erfassen von Millionen von Telemetrie-Ereignissen in Azure.
 * **Stream Analytics** für das Gewinnen von Einblicken in Echtzeit hinsichtlich des Fahrzeugzustands und Speichern dieser Daten in beständigem Speicher zur umfangreicheren Batchanalyse.
@@ -61,6 +61,6 @@ Diese Lösung greift auf die folgenden zwei unterschiedlichen **Datenquellen**zu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,18 +12,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 11/30/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d49567f5efe212852d6f9dc4008d616b8191184
+ms.sourcegitcommit: 0b1f6f7ec47e47f39407cdbfd5efef2a18944ecc
+ms.openlocfilehash: 38692f530a84f89f3b4573dbdc86712ffcb08322
 
 
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions"></a>Verwenden von Service Bus-Themen und -Abonnements
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele wurden in Java geschrieben und verwenden das [Azure SDK für Java][Azure SDK für Java]. Die behandelten Szenarios umfassen **das Erstellen von Themen und Abonnements**, **das Erstellen von Abonnementfiltern**, **das Senden von Nachrichten an ein Thema**, **das Empfangen von Nachrichten von einem Abonnement** und **das Löschen von Themen und Abonnements**.
+In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele wurden in Java geschrieben und verwenden das [Azure-SDK für Java][Azure SDK for Java]. Die behandelten Szenarios umfassen **das Erstellen von Themen und Abonnements**, **das Erstellen von Abonnementfiltern**, **das Senden von Nachrichten an ein Thema**, **das Empfangen von Nachrichten von einem Abonnement** und **das Löschen von Themen und Abonnements**.
 
 ## <a name="what-are-service-bus-topics-and-subscriptions"></a>Was sind Service Bus-Themen und -Abonnements?
 Service Bus-Themen und -Abonnements unterstützen ein Modell der Messagingkommunikation über das *Veröffentlichen/Abonnieren* . Bei der Verwendung von Themen und Abonnements kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über ein Thema aus, das als Zwischenstufe fungiert.
@@ -44,13 +44,13 @@ So erstellen Sie einen Namespace
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-Stellen Sie vor dem Erstellen dieses Beispiels sicher, dass Sie das [Azure SDK für Java][Azure SDK für Java] installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure-Toolkit für Eclipse][Azure-Toolkit für Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
+Stellen Sie vor dem Erstellen dieses Beispiels sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
 
 ![](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 
 Fügen Sie die folgenden import-Anweisungen am Anfang der Java-Datei ein:
 
-```
+```java
 import com.microsoft.windowsazure.services.servicebus.*;
 import com.microsoft.windowsazure.services.servicebus.models.*;
 import com.microsoft.windowsazure.core.*;
@@ -64,32 +64,36 @@ Sie können Verwaltungsvorgänge für Service Bus-Themen über die **ServiceBusC
 
 Die **ServiceBusService**-Klasse enthält Methoden zum Erstellen, Aufzählen und Löschen von Themen. Das folgende Beispiel zeigt, wie Sie mit einem **ServiceBusService**-Objekt ein Thema mit dem Namen `TestTopic` in einem Namespace mit dem Namen `HowToSample` erstellen können:
 
-    Configuration config =
-        ServiceBusConfiguration.configureWithSASAuthentication(
-          "HowToSample",
-          "RootManageSharedAccessKey",
-          "SAS_key_value",
-          ".servicebus.windows.net"
-          );
+```java
+Configuration config =
+    ServiceBusConfiguration.configureWithSASAuthentication(
+      "HowToSample",
+      "RootManageSharedAccessKey",
+      "SAS_key_value",
+      ".servicebus.windows.net"
+      );
 
-    ServiceBusContract service = ServiceBusService.create(config);
-    TopicInfo topicInfo = new TopicInfo("TestTopic");
-    try  
-    {
-        CreateTopicResult result = service.createTopic(topicInfo);
-    }
-    catch (ServiceException e) {
-        System.out.print("ServiceException encountered: ");
-        System.out.println(e.getMessage());
-        System.exit(-1);
-    }
+ServiceBusContract service = ServiceBusService.create(config);
+TopicInfo topicInfo = new TopicInfo("TestTopic");
+try  
+{
+    CreateTopicResult result = service.createTopic(topicInfo);
+}
+catch (ServiceException e) {
+    System.out.print("ServiceException encountered: ");
+    System.out.println(e.getMessage());
+    System.exit(-1);
+}
+```
 
 Mit den Methoden in **TopicInfo** können die Eigenschaften des Themas festgelegt werden (z.B. kann der Standardwert für die Gültigkeitsdauer festgelegt werden, der auf an das Thema gesendete Nachrichten angewendet wird). Das folgende Beispiel zeigt, wie Sie ein Thema mit der Bezeichnung `TestTopic` mit einer maximalen Größe von 5 GB erstellen:
 
-    long maxSizeInMegabytes = 5120;  
-    TopicInfo topicInfo = new TopicInfo("TestTopic");  
-    topicInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
-    CreateTopicResult result = service.createTopic(topicInfo);
+```java
+long maxSizeInMegabytes = 5120;  
+TopicInfo topicInfo = new TopicInfo("TestTopic");  
+topicInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
+CreateTopicResult result = service.createTopic(topicInfo);
+```
 
 Sie können mit der **listTopics**-Methode von **ServiceBusContract**-Objekten überprüfen, ob ein Thema mit einem spezifischen Namen bereits innerhalb eines Dienstnamespaces vorhanden ist.
 
@@ -99,18 +103,20 @@ Abonnements von Themen werden ebenfalls mit der **ServiceBusService**-Klasse ers
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
 **MatchAll** ist der Standardfilter, der verwendet wird, wenn beim Erstellen eines neuen Abonnements kein Filter angegeben wird. Wenn der Filter **MatchAll** verwendet wird, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements gestellt. Mit dem folgenden Beispiel wird ein Abonnement namens „AllMessages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
 
-    SubscriptionInfo subInfo = new SubscriptionInfo("AllMessages");
-    CreateSubscriptionResult result =
-        service.createSubscription("TestTopic", subInfo);
+```java
+SubscriptionInfo subInfo = new SubscriptionInfo("AllMessages");
+CreateSubscriptionResult result =
+    service.createSubscription("TestTopic", subInfo);
+```
 
 ### <a name="create-subscriptions-with-filters"></a>Erstellen von Abonnements mit Filtern
 Sie können auch Filter erstellen, durch die Sie angeben können, welche an ein Thema gesendeten Nachrichten in einem bestimmten Themenabonnement angezeigt werden sollen.
 
-Der flexibelste von Abonnements unterstützte Filtertyp ist [SqlFilter][SqlFilter], der eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax zu [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
+Der flexibelste von Abonnements unterstützte Filtertyp ist [SqlFilter][SqlFilter], der eine Teilmenge von SQL92 implementiert. SQL-Filter werden auf die Eigenschaften der Nachrichten angewendet, die für das Thema veröffentlicht werden. Weitere Informationen zu den Ausdrücken, die mit einem SQL-Filter verwendet werden können, finden Sie in der Syntax von [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
 Mit dem folgenden Beispiel wird ein Abonnement namens `HighMessages` mit einem [SqlFilter][SqlFilter]-Objekt erstellt, das nur Nachrichten auswählt, deren benutzerdefinierte **MessageNumber**-Eigenschaft größer ist als 3:
 
-```
+```java
 // Create a "HighMessages" filtered subscription  
 SubscriptionInfo subInfo = new SubscriptionInfo("HighMessages");
 CreateSubscriptionResult result = service.createSubscription("TestTopic", subInfo);
@@ -123,7 +129,7 @@ service.deleteRule("TestTopic", "HighMessages", "$Default");
 
 Ebenso erstellt das folgende Beispiel ein Abonnement namens `LowMessages` mit einem [SqlFilter][SqlFilter]-Objekt, das nur Nachrichten auswählt, deren benutzerdefinierte **MessageNumber**-Eigenschaft kleiner oder gleich 3 ist:
 
-```
+```java
 // Create a "LowMessages" filtered subscription
 SubscriptionInfo subInfo = new SubscriptionInfo("LowMessages");
 CreateSubscriptionResult result = service.createSubscription("TestTopic", subInfo);
@@ -139,17 +145,17 @@ Wenn jetzt eine Nachricht an `TestTopic` gesendet wird, wird diese stets an Empf
 ## <a name="send-messages-to-a-topic"></a>Senden von Nachrichten an ein Thema
 Um eine Nachricht an ein Service Bus-Thema zu senden, ruft Ihre Anwendung ein **ServiceBusContract**-Objekt ab. Der folgende Code zeigt, wie Sie eine Nachricht an das Thema `TestTopic` senden können, das Sie zuvor im Namespace `HowToSample` erstellt haben:
 
-```
+```java
 BrokeredMessage message = new BrokeredMessage("MyMessage");
 service.sendTopicMessage("TestTopic", message);
 ```
 
-An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage][BrokeredMessage]-Klasse. [BrokeredMessage][BrokeredMessage]*-Objekte enthalten eine Reihe von Standardmethoden (**setLabel** und **TimeToLive**), ein Wörterbuch für die Aufnahme benutzerdefinierter anwendungsspezifischer Eigenschaften und einen Hauptteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Haupttext der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt in den Konstruktor der [BrokeredMessage][BrokeredMessage] übergeben wird. Anschließend wird der passende **DataContractSerializer** zum Serialisieren des Objekts verwendet. Alternativ kann ein **java.io.InputStream** bereitgestellt werden.
+An Service Bus-Themen gesendete Nachrichten sind Instanzen der [BrokeredMessage][BrokeredMessage]-Klasse. [BrokeredMessage][BrokeredMessage]*-Objekte enthalten eine Reihe von Standardmethoden (wie etwa **setLabel** und **TimeToLive**), ein Wörterbuch für die Aufnahme benutzerdefinierter, anwendungsspezifischer Eigenschaften und einen Hauptteil mit beliebigen Anwendungsdaten. Eine Anwendung kann den Haupttext der Nachricht festlegen, indem ein beliebiges serialisierbares Objekt in den Konstruktor der [BrokeredMessage][BrokeredMessage] übergeben wird. Anschließend wird der passende **DataContractSerializer** zum Serialisieren des Objekts verwendet. Alternativ kann ein **java.io.InputStream** bereitgestellt werden.
 
 Das folgende Beispiel veranschaulicht, wie fünf Testnachrichten an den **MessageSender** `TestTopic` gesendet werden, der im vorherigen Codeausschnitt abgerufen wurde.
 Beachten Sie, wie der Eigenschaftswert **MessageNumber** jeder Nachricht gemäß der Iteration der Schleife variiert (dadurch wird bestimmt, welche Abonnements die Nachricht erhalten):
 
-```
+```java
 for (int i=0; i<5; i++)  {
 // Create message, passing a string message for the body
 BrokeredMessage message = new BrokeredMessage("Test message " + i);
@@ -171,7 +177,7 @@ Im **PeekLock**-Modus ist der Empfangsvorgang zweistufig. Dadurch können Anwend
 
 Das folgende Beispiel zeigt, wie Nachrichten im nicht standardmäßig verwendeten **PeekLock**-Modus empfangen und verarbeitet werden können. Das folgende Beispiel verarbeitet Nachrichten aus dem "HighMessages"-Abonnement in einer Schleife und endet, wenn keine Nachrichten mehr vorhanden sind (alternativ könnte der Code auf neue Nachrichten warten).
 
-```
+```java
 try
 {
     ReceiveMessageOptions opts = ReceiveMessageOptions.DEFAULT;
@@ -234,7 +240,7 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Ausgabe der **
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 Der einfachste Weg zum Löschen von Themen und Abonnements sind **ServiceBusContract**-Objekte. Durch das Löschen eines Themas werden auch alle Abonnements gelöscht, die mit dem Thema registriert sind. Abonnements können auch unabhängig gelöscht werden.
 
-```
+```java
 // Delete subscriptions
 service.deleteSubscription("TestTopic", "AllMessages");
 service.deleteSubscription("TestTopic", "HighMessages");
@@ -245,15 +251,14 @@ service.deleteTopic("TestTopic");
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, finden Sie weitere Informationen unter [Service Bus-Warteschlangen, -Themen und -Abonnements][Service Bus-Warteschlangen, -Themen und -Abonnements].
+Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, finden Sie weitere Informationen unter [Service Bus-Warteschlangen, -Themen und -Abonnements][Service Bus queues, topics, and subscriptions].
 
-[Azure SDK für Java]: http://azure.microsoft.com/develop/java/
-[Azure-Toolkit für Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
-[Unhealthy]: http://manage.windowsazure.com/
-[Service Bus-Warteschlangen, -Themen und -Abonnements]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx 
-[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+[Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
+[Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter 
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
 [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
 [2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png
@@ -261,6 +266,6 @@ Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind,
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

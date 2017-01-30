@@ -1,8 +1,8 @@
 
 Im vorherigen Beispiel werden bei jedem Start der App der Identitätsanbieter und der Mobile Service kontaktiert. Sie können jedoch auch das Authentifizierungstoken zwischenspeichern und zunächst versuchen, dieses Token zu verwenden.
 
-* Als Methode zum Verschlüsseln und Speichern von Authentifizierungstokens auf einem iOS-Client wird der iOS-Schlüsselbund empfohlen. Hier wird [SSKeychain](https://github.com/soffes/sskeychain) verwendet – ein einfacher Wrapper für den iOS-Schlüsselbund. Folgen Sie den Anweisungen auf der SSKeychain-Seite und fügen Sie ihn Ihrem Projekt hinzu. Überprüfen Sie, ob die Einstellung für das **Aktivieren der Module** in den **Buildeinstellungen** des Projekts aktiviert ist (Abschnitt **Apple LLVM - Sprachen - Module**.)
-* Öffnen Sie **QSTodoListViewController.m**, und fügen Sie folgenden Code hinzu:
+* Als Methode zum Verschlüsseln und Speichern von Authentifizierungstokens auf einem iOS-Client wird der iOS-Schlüsselbund empfohlen. Hier wird [SSKeychain](https://github.com/soffes/sskeychain) verwendet – ein einfacher Wrapper für den iOS-Schlüsselbund. Folgen Sie den Anweisungen auf der SSKeychain-Seite und fügen Sie ihn Ihrem Projekt hinzu. Überprüfen Sie, ob die Einstellung für das ****Aktivieren der Module in den **Buildeinstellungen** des Projekts aktiviert ist (Abschnitt **Apple LLVM > Sprachen > Module**).
+* Öffnen Sie **QSTodoListViewController.m** , und fügen Sie folgenden Code hinzu:
 
 ```
         - (void) saveAuthInfo {
@@ -21,7 +21,7 @@ Im vorherigen Beispiel werden bei jedem Start der App der Identitätsanbieter un
         }
 ```
 
-* Ändern Sie in `loginAndGetData` den `loginWithProvider:controller:animated:completion:`-completion-Block. Fügen Sie zum Speichern der Benutzer-ID und der Token-Eigenschaften die folgende Zeile direkt vor `[self refresh]` ein:
+* Ändern Sie in `loginAndGetData` den completion-Block von `loginWithProvider:controller:animated:completion:`. Fügen Sie zum Speichern der Benutzer-ID und der Token-Eigenschaften die folgende Zeile direkt vor `[self refresh]` ein:
 
 ```
                 [self saveAuthInfo];
@@ -33,4 +33,7 @@ Im vorherigen Beispiel werden bei jedem Start der App der Identitätsanbieter un
                 [self loadAuthInfo];
 ```
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Jan17_HO3-->
+
+

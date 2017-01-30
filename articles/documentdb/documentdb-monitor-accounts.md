@@ -12,27 +12,36 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 12/15/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1a7f34989dce97f32bfbbbede9acd96a1dd58e14
+ms.sourcegitcommit: ea24ad915b3d6f5180182a454c03edc578f7b761
+ms.openlocfilehash: 3751d1a24684bbf9b7230eb3ab4827ee2ba52379
 
 
 ---
 # <a name="monitor-documentdb-requests-usage-and-storage"></a>Überwachen von Anforderungen, Nutzung und Speicher in DocumentDB
 Sie können Ihre Azure DocumentDB-Konten im [Azure-Portal](https://portal.azure.com/)überwachen. Für jedes DocumentDB-Konto sind sowohl Leistungsmetriken (wie Anforderungen und Serverfehler) als auch Nutzungsmetriken (wie belegter Speicher) verfügbar.
 
-Metriken können auf dem Blatt „Konto“ oder dem Blatt mit neuen Metriken überprüft werden.
+Metriken können auf dem Blatt „Konto“, dem Blatt mit neuen Metriken oder in Azure Monitor überprüft werden.
 
 ## <a name="view-performance-metrics-on-the-metrics-blade"></a>Anzeigen von Leistungsmetriken auf dem Blatt „Metriken“
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/) in einem neuen Fenster, und klicken Sie nacheinander auf **Weitere Dienste** und **DocumentDB (NoSQL)**. Klicken Sie anschließend auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
-2. Klicken Sie im Ressourcenmenü auf **Metriken**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **NoSQL (DocumentDB)** und dann auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
+2. Klicken Sie im Ressourcenmenü unter **Überwachung** auf **Metriken**.
 
 Das Blatt „Metriken“ wird geöffnet, und Sie können die zu überprüfende Sammlung auswählen. Sie können die Metriken „Verfügbarkeit“, „Anforderungen“, „Durchsatz“ und „Speicher“ überprüfen und sie mit den DocumentDB-SLAs vergleichen.
 
+## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Anzeigen von Leistungsmetriken mithilfe der Azure-Überwachung
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf der Navigationsleiste auf **Überwachen**.
+2. Klicken Sie im Ressourcenmenü auf **Metriken**.
+3. Wählen Sie im Fenster **Überwachung – Metriken** im Dropdownmenü **Ressourcengruppe** die Ressourcengruppe aus, die dem DocumentDB-Konto zugeordnet ist, das Sie überwachen möchten. 
+4. Wählen Sie im Dropdownmenü **Ressource** das zu überwachende Datenbankkonto aus.
+5. Wählen Sie in der Liste mit **verfügbaren Metriken** die anzuzeigenden Metriken aus. Verwenden Sie die STRG-TASTE, um mehrere Metriken auszuwählen. 
+
+    Die Metriken werden im Fenster **Diagrammausgabe** angezeigt. 
+
 ## <a name="view-performance-metrics-on-the-account-blade"></a>Anzeigen von Leistungsmetriken auf dem Blatt „Konto“
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/) in einem neuen Fenster, und klicken Sie nacheinander auf **Weitere Dienste** und **DocumentDB (NoSQL)**. Klicken Sie anschließend auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, klicken Sie auf **NoSQL (DocumentDB)** und dann auf den Namen des DocumentDB-Kontos, dessen Leistungsmetriken Sie anzeigen möchten.
 2. Der Fokus **Überwachung** zeigt standardmäßig folgende Kacheln an:
    
    * Gesamtanforderungen des aktuellen Tags.
@@ -41,7 +50,7 @@ Das Blatt „Metriken“ wird geöffnet, und Sie können die zu überprüfende S
    Wenn die Tabelle **Keine Daten verfügbar** anzeigt, und Sie glauben, dass Ihre Datenbank Daten enthält, nutzen Sie den Abschnitt [Problembehandlung](#troubleshooting) .
    
    ![Screenshot des Fokus „Überwachung“, in dem die Gesamtzahl der Anforderungen und die Speichernutzung angezeigt werden](./media/documentdb-monitor-accounts/documentdb-total-requests-and-usage.png)
-3. Wenn Sie auf die Kachel **Anforderungen** oder **Speicher** klicken, wird das detaillierte Blatt **Metrik** geöffnet.
+3. Wenn Sie auf die Kachel **Anforderungen** oder **Nutzungskontingent** klicken, wird das detaillierte Blatt **Metrik** geöffnet.
 4. Das Blatt **Metrik** zeigt Details zu den ausgewählten Metriken.  Im oberen Bereich des Blatts befindet sich ein Diagramm der pro Stunde erfassten Anforderungen. Darunter befindet sich eine Tabelle, die Aggregierungswerte für gedrosselte Anforderungen und Anforderungen gesamt zeigt.  Das Fenster „Metrik“ zeigt auch eine Liste von Warnung, die definiert wurden. Sie ist gefiltert nach den im aktuellen Fenster „Metrik“ anzeigten Metriken (wenn Sie eine Reihe von Warnungen haben, dann werden auf diese Weise hier nur die relevanten gezeigt).   
    
    ![Screenshot des Blatts „Metrik“ mit gedrosselten Anforderungen](./media/documentdb-monitor-accounts/documentdb-metric-blade.png)
@@ -118,6 +127,6 @@ Weitere Informationen zur Kapazität von DocumentDB finden Sie unter [Verwalten 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 
