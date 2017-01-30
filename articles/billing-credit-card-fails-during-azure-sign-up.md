@@ -58,7 +58,7 @@ Die Rechnungszahlungsoption kann nur von Unternehmen genutzt werden. Diese Optio
 
 Ausführliche Informationen zur Rechnungseinrichtung finden Sie unter [Azure – Rechnungsstellung](https://azure.microsoft.com/pricing/invoicing/).
 
-### Aktualisieren der Kreditk- oder Debitkarteninformationen
+### Aktualisieren der Kreditkarten- oder Debitkarten-Informationen
 Wenn Sie die Kreditkartendaten aktualisieren bzw. eine Karte wechseln oder entfernen möchten, informieren Sie sich über die [Verwaltung Ihrer Zahlungsinformationen](billing-how-to-change-credit-card.md).
 
 > [!NOTE]
