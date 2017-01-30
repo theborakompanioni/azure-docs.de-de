@@ -14,8 +14,8 @@ ms.topic: get-started-article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57daba3f23b2a35afc2d704e4913584f21259ec7
+ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
+ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
 
 
 ---
@@ -44,7 +44,7 @@ Wenn keine Ressource vorhanden ist, erstellen Sie sie:
 
 ![Wählen Sie "Neu", "Entwicklerdienste", Application Insights.](./media/app-insights-javascript/01-create.png)
 
-*Schon Fragen?* [Weitere Informationen zum Erstellen einer Ressource](app-insights-create-new-resource-Abonnement.md)-Abonnement.
+*Schon Fragen?* [Weitere Informationen zum Erstellen einer Ressource](app-insights-create-new-resource.md)Abonnement.
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Hinzufügen des SDK-Skripts zu Ihrer App oder Ihren Webseiten
 Rufen Sie im Schnellstart das Skript für Webseiten ab:
@@ -135,11 +135,11 @@ Beachten Sie die Anzahl der Seitenaufrufe und die Standardabweichung. Wenn die S
 
 Klicken Sie auf `...` , um eine Liste mit allen Eigenschaften für das Ereignis anzuzeigen, oder untersuchen Sie die Ajax-Aufrufe und die dazugehörigen Ereignisse. Langsame Ajax-Aufrufe beeinträchtigen die Gesamtdauer der Seitenladevorgänge, wenn sie synchron erfolgen. Zu den verwandten Ereignissen gehören Serveranforderungen für dieselbe URL (wenn Sie Application Insights auf Ihrem Webserver eingerichtet haben).
 
-**Seitenleistung in Abhängigkeit der Zeit:**  Wechseln Sie wieder zum Blatt „Browser“, und ändern Sie das Raster für die „Dauer der Seitenansicht“ in ein Liniendiagramm, um zu ermitteln, ob zu bestimmten Zeiten Spitzen aufgetreten sind:
+**Seitenleistung in Abhängigkeit der Zeit:** Wechseln Sie wieder zum Blatt „Browser“, und ändern Sie das Raster für die „Dauer der Seitenansicht“ in ein Liniendiagramm, um zu ermitteln, ob zu bestimmten Zeiten Spitzen aufgetreten sind:
 
 ![Klicken Sie auf den oberen Bereich des Rasters, und wählen Sie einen neuen Diagrammtyp aus.](./media/app-insights-javascript/10-page-perf-area.png)
 
-**Segmentieren nach anderen Dimensionen:**  Es kann beispielsweise sein, dass Ihre Seiten für einen bestimmten Browser, ein Clientbetriebssystem oder einen Benutzerstandort langsamer geladen werden. Fügen Sie ein neues Diagramm hinzu, und experimentieren Sie mit der Dimension **Group-by** .
+**Segmentieren nach anderen Dimensionen:** Es kann beispielsweise sein, dass Ihre Seiten für einen bestimmten Browser, ein Clientbetriebssystem oder einen Benutzerstandort langsamer geladen werden. Fügen Sie ein neues Diagramm hinzu, und experimentieren Sie mit der Dimension **Group-by** .
 
 ![](./media/app-insights-javascript/21.png)
 
@@ -170,7 +170,7 @@ Klicken Sie auf eine beliebige Zeile, um besondere Details anzuzeigen.
 Klicken Sie auf `...` , um die gesamten Telemetriedaten für einen Ajax-Aufruf anzuzeigen.
 
 ### <a name="no-ajax-calls-reported"></a>Es wurden keine Ajax-Aufrufe gemeldet?
-Zu Ajax-Aufrufen gehören sämtliche HTTP-Aufrufe, die vom Skript für Ihre Webseite durchgeführt werden. Falls keine Aufrufe gemeldet werden, sollten Sie sicherstellen, dass im Codeausschnitt die [Parameter](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) `disableAjaxTracking` und `maxAjaxCallsPerView` nicht festgelegt sind.
+Zu Ajax-Aufrufen gehören sämtliche HTTP-/HTTPS-Aufrufe, die vom Skript für Ihre Webseite durchgeführt werden. Falls keine Aufrufe gemeldet werden, sollten Sie sicherstellen, dass im Codeausschnitt die [Parameter](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) `disableAjaxTracking` und `maxAjaxCallsPerView` nicht festgelegt sind.
 
 ## <a name="browser-exceptions"></a>Browserausnahmen
 Auf dem Blatt „Browser“ befindet sich ein Übersichtsdiagramm zu Ausnahmen und weiter unten auf dem Blatt ein Raster mit Ausnahmetypen.
@@ -193,7 +193,7 @@ Wählen Sie ein Ereignis, um weitere Details anzuzeigen. Klicken Sie auf der Det
 > 
 > 
 
-Sie können auch die leistungsfähige [Analytics-Abfragesprache](app-insights-analytics-tour.md) verwenden, um Seitenansichten zu durchsuchen.
+Sie können auch die leistungsfähige [Analytics-Abfragesprache](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour#browser-timings-table) verwenden, um Seitenansichten zu durchsuchen.
 
 ### <a name="page-view-properties"></a>Eigenschaften von Seitenansichten
 * **Dauer der Seitenansicht** 
@@ -230,6 +230,6 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 
