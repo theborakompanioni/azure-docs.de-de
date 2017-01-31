@@ -132,7 +132,7 @@ Im Abschnitt „Daily Usage“ der Datei werden Nutzungsdetails angezeigt, die s
 |Service Info 2 |Dies ist ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden. |
 
 ## <a name="how-do-i-make-a-payment"></a>Wie kann ich bezahlen?
-Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festlegen, erfolgt die Zahlung automatisch. Wenn Sie die [Zahlung per Rechnung](https://azure.microsoft.com/pricing/invoicing/)festgelegt haben, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Sie können den [Support kontaktieren](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Unterstützung benötigen.
+Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festlegen, erfolgt die Zahlung automatisch. Wenn Sie die [Zahlung per Rechnung](https://azure.microsoft.com/pricing/invoicing/) festgelegt haben, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Sie können den [Support kontaktieren](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Unterstützung benötigen.
 
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>Wie überprüfe ich den Status einer per Kreditkarte erfolgten Zahlung?
 [Erstellen Sie ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um den Status Ihrer Zahlung zu erfragen. 
