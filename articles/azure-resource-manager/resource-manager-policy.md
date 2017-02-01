@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2016
+ms.date: 12/07/2016
 ms.author: gauravbh;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: bdc759341e1f9707ddf688512249c3297d85c29b
+ms.sourcegitcommit: 223a890fd18405b2d1331e526403da89354a68f2
+ms.openlocfilehash: 467e9f4f7372c619f41bb64445784485de18a863
 
 
 ---
 # <a name="use-policy-to-manage-resources-and-control-access"></a>Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung
-Sie können nun den Azure-Ressourcen-Manager zum Steuern des Zugriffs über benutzerdefinierte Richtlinien verwenden. Mithilfe von Richtlinien können Sie Benutzer in Ihrer Organisation hindern, gegen Konventionen zu verstoßen, die für das Verwalten der Ressourcen Ihrer Organisation gelten. 
+Azure Resource Manager ermöglicht Ihnen das Steuern des Zugriffs über benutzerdefinierte Richtlinien. Mithilfe von Richtlinien können Sie Benutzer in Ihrer Organisation hindern, gegen Konventionen zu verstoßen, die für das Verwalten der Ressourcen Ihrer Organisation gelten. 
 
 Sie erstellen Richtliniendefinitionen, die die Aktionen oder Ressourcen beschreiben, die spezifisch verweigert werden. Sie weisen diese Richtliniendefinitionen dem gewünschten Ziel zu, z. B. einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn also eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie auch für alle Ressourcen in der Ressourcengruppe.
 
@@ -46,7 +46,41 @@ Mithilfe von Richtlinien können diese Szenarios problemlos umgesetzt werden.
 ## <a name="policy-definition-structure"></a>Struktur von Richtliniendefinitionen
 Richtliniendefinitionen werden mit JSON erstellt. Sie enthalten eine oder mehrere Bedingungen/logische Operatoren, die Aktionen und deren Auswirkungen definieren und damit festlegen, was geschieht, wenn die Bedingungen erfüllt sind. Das Schema wird unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json)veröffentlicht. 
 
-Grundsätzlich enthält eine Richtlinie folgende Elemente:
+Das folgende Beispiel zeigt eine Richtlinie, mit der Sie einschränken können, wo Ressourcen bereitgestellt werden:
+
+```json
+{
+  "properties": {
+    "parameters": {
+      "listOfAllowedLocations": {
+        "type": "array",
+        "metadata": {
+          "description": "An array of permitted locations for resources.",
+          "strongType": "location",
+          "displayName": "List of locations"
+        }
+      }
+    },
+    "displayName": "Geo-compliance policy template",
+    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",
+    "policyRule": {
+      "if": {
+        "not": {
+          "field": "location",
+          "in": "[parameters('listOfAllowedLocations')]"
+        }
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}
+```
+
+Grundsätzlich enthält eine Richtlinie folgende Abschnitte:
+
+**Parameter:** Werte, die beim Zuweisen der Richtlinie angegeben wewrden.
 
 **Bedingung/logische Operatoren:** eine Reihe von Bedingungen, die über einen Satz von logischen Operatoren bearbeitet werden können.
 
@@ -68,6 +102,30 @@ Richtlinien werden bei der Erstellung von Ressourcen ausgewertet. Für die Berei
 > Die Richtlinie wertet derzeit keine Ressourcentypen aus, die „tags“, „kind“ und „location“ nicht unterstützen, wie etwa der Ressourcentyp „Microsoft.Resources/deployments“. Diese Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt. Um Probleme mit der Abwärtskompatibilität zu vermeiden, sollten Sie beim Erstellen von Richtlinien den Typ explizit angeben. Beispiel: Eine Richtlinie für Tags, in der keine Typen angegeben sind, wird auf alle Typen angewendet. In diesem Fall kann eine Vorlagenbereitstellung fehlschlagen, wenn eine geschachtelte Ressource vorhanden ist, die Tags nicht unterstützt, und der Ressourcentyp der Bereitstellung der Richtlinienauswertung hinzugefügt wurde. 
 > 
 > 
+
+## <a name="parameters"></a>Parameter
+Ab API-Version 2016-12-01 können Sie Parameter in der Richtliniendefinition verwenden. Das Verwenden von Parametern vereinfacht die Richtlinienverwaltung, da die Anzahl von Richtliniendefinitionen reduziert wird. Sie geben Werte für die Parameter beim Zuweisen der Richtlinie an.
+
+Sie deklarieren die Parameter beim Erstellen von Richtliniendefinitionen.
+
+    "parameters": {
+      "listOfLocations": {
+        "type": "array",
+        "metadata": {
+          "description": "An array of permitted locations for resources.",
+          "displayName": "List Of Locations"
+        }
+      }
+    }
+
+Der Typ eines Parameters kann Zeichenfolge oder Array sein. Die Metadateneigenschaft wird für Tools wie das Azure-Portal verwendet, um benutzerfreundliche Informationen anzuzeigen. 
+
+In der Richtlinienregel können Sie ähnlich wie in Vorlagen auf die Parameter verweisen. Beispiel: 
+        
+    { 
+        "field" : "location",
+        "in" : "[parameters(listOfLocations)]"
+    }
 
 ## <a name="logical-operators"></a>Logische Operatoren
 Die unterstützten logischen Operatoren sind zusammen mit der Syntax nachfolgend aufgeführt:
@@ -148,7 +206,6 @@ Derzeit werden die folgenden Aliase unterstützt:
 | Microsoft.SQL/servers/elasticPools/dtu | |
 | Microsoft.SQL/servers/elasticPools/edition | |
 
-Derzeit gilt die Richtlinie nur bei PUT-Anforderungen. 
 
 ## <a name="effect"></a>Effekt
 Die Richtlinie unterstützt drei Arten von Auswirkungen: **deny**, **audit** und **append**. 
@@ -159,7 +216,6 @@ Die Richtlinie unterstützt drei Arten von Auswirkungen: **deny**, **audit** und
 
 Für **append**müssen Sie die folgenden Details angeben:
 
-    ....
     "effect": "append",
     "details": [
       {
@@ -169,6 +225,7 @@ Für **append**müssen Sie die folgenden Details angeben:
     ]
 
 Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein. 
+
 
 ## <a name="policy-definition-examples"></a>Beispiele für Richtliniendefinitionen
 Jetzt sehen wir uns an, wie die Richtlinie für die oben genannten Szenarios definiert wird.
@@ -356,25 +413,34 @@ Zum Erstellen einer Richtlinie führen Sie folgenden Befehl aus:
 
     PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 
-Verwenden Sie als „api-version“ die Einstellung *2016-04-01*. Nehmen Sie einen Anforderungstext auf, der dem im folgenden Beispiel dargestellten ähnelt:
+Verwenden Sie für „api-version“ die Einstellung *2016-04-01* oder *2016-12-01*. Nehmen Sie einen Anforderungstext auf, der dem im folgenden Beispiel dargestellten ähnelt:
 
     {
-      "properties":{
-        "policyType":"Custom",
-        "description":"Test Policy",
-        "policyRule":{
-          "if" : {
-            "not" : {
-              "field" : "tags",
-              "containsKey" : "costCenter"
+      "properties": {
+        "parameters": {
+          "listOfAllowedLocations": {
+            "type": "array",
+            "metadata": {
+              "description": "An array of permitted locations for resources.",
+              "strongType": "location",
+              "displayName": "List Of Locations"
+            }
+          }
+        },
+        "displayName": "Geo-compliance policy template",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",
+        "policyRule": {
+          "if": {
+            "not": {
+              "field": "location",
+              "in": "[parameters('listOfAllowedLocations')]"
             }
           },
-          "then" : {
-            "effect" : "deny"
+          "then": {
+            "effect": "deny"
           }
         }
-      },
-      "name":"testdefinition"
+      }
     }
 
 Sie können die Richtliniendefinition mithilfe von [Policy Assignments](https://docs.microsoft.com/rest/api/resources/policyassignments)(Richtlinienzuweisungen, in englischer Sprache) auf den gewünschten Bereich anwenden. Die REST-API ermöglicht es Ihnen, Richtlinienzuweisungen zu erstellen und zu löschen sowie Informationen zu vorhandenen Zuweisungen abzurufen.
@@ -383,17 +449,20 @@ Führen Sie zum Erstellen einer neuen Richtlinienzuweisung folgenden Befehl aus:
 
     PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 
-"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*. 
+"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie für „api-version“ die Einstellung *2016-04-01* oder *2016-12-01* (für Parameter). 
 
 Der Anforderungstext sollte dem folgenden Beispiel ähneln:
 
     {
       "properties":{
-        "displayName":"VM_Policy_Assignment",
+        "displayName":"West US only policy assignment on the subscription ",
+        "description":"Resources can only be provisioned in West US regions",
+        "parameters": {
+             "listOfAllowedLocations": ["West US", "West US2"]
+         },
         "policyDefinitionId":"/subscriptions/########/providers/Microsoft.Authorization/policyDefinitions/testdefinition",
         "scope":"/subscriptions/########-####-####-####-############"
       },
-      "name":"VMPolicyAssignment"
     }
 
 ### <a name="powershell"></a>PowerShell
@@ -510,6 +579,6 @@ Um eine Richtlinie abzurufen, verwenden Sie den Vorgang [Richtliniendefinition a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
