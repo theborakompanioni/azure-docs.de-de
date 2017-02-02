@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 11/21/2016
 ms.author: jingwang;kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: b46ac604c10a2cb014991f3707fc3fc3b300f772
-ms.openlocfilehash: 5b045ed236771919ea3f644a6b2351d54c75549b
+ms.sourcegitcommit: 5c8b3ef69cd2bc663d6ee744c2351da9c22adb94
+ms.openlocfilehash: 24b9e5c2f423f7ef8bb29ab18359318f93c1d88c
 
 
 ---
 
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Laden von Daten in SQL Data Warehouse mit Data Factory
 
-In diesem Tutorial werden Daten mithilfe von Azure Data Factory in Azure SQL Data Warehouse geladen und eine SQL Server-Datenbank als Datenquelle verwendet. Nach diesem Tutorial befinden sich Ihre Daten in SQL Data Warehouse.
+Mit Azure Data Factory können Sie Daten aus allen [unterstützten Quelldatenspeichern](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats) in Azure SQL Data Warehouse laden. Beispielsweise können Sie Daten aus einer Azure SQL-Datenbank oder einer Oracle-Datenbank mithilfe von Data Factory in ein SQL Data Warehouse laden. Das Tutorial in diesem Artikel zeigt, wie Daten aus einer lokalen SQL Server-Datenbank in ein SQL Data Warehouse geladen werden.
 
 **Geschätzte Zeit**: Dieses Tutorial dauert ca. 10 bis 15 Minuten, sobald Sie die Voraussetzungen eingerichtet haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Für dieses Tutorial werden grundlegende Kenntnisse der Verwendung von Transact-SQL zum Erstellen von Tabellen und Schemas vorausgesetzt.  
+- Eine SQL Server-Datenbank, deren Tabellen die Daten enthalten, die in das SQL Data Warehouse kopiert werden sollen  
 
-- Sie benötigen ein Azure Storage-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+- Sie benötigen ein Azure Storage-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
 
 - Sie benötigen ein online SQL Data Warehouse. Sollten Sie noch nicht über ein Data Warehouse verfügen, machen Sie sich mit der [Erstellung eines Azure SQL Data Warehouse](sql-data-warehouse-get-started-provision.md) vertraut. Zur Verbesserung der Leistung sollten sich das Speicherkonto und das Data Warehouse in der gleichen Azure-Region befinden.
 
@@ -44,10 +44,10 @@ In diesem Tutorial werden Daten mithilfe von Azure Data Factory in Azure SQL Dat
 3. Klicken Sie auf dem Blatt **Eigenschaften** auf **Daten laden > Azure Data Factory**.
 
     ![Starten des Assistenten zum Laden von Daten](media/sql-data-warehouse-load-with-data-factory/launch-load-data-wizard.png)
+4. Wenn in Ihrem Abonnement keine Data Factory enthalten ist, wird auf einer separaten Registerkarte des Browsers das Dialogfeld **Neue Data Factory** angezeigt. Geben Sie die erforderlichen Informationen ein, und klicken Sie auf **Erstellen**. Nach der Erstellung der Data Factory wird das Dialogfeld **Neue Data Factory** geschlossen, und das Dialogfeld **Data Factory auswählen** angezeigt.
 
-4. Das Dialogfeld **Neue Data Factory** wird angezeigt. Geben Sie die angeforderten Informationen ein, oder wählen Sie eine vorhandene Data Factory aus. Klicken Sie auf **Erstellen**.
-
-5. Im Dialogfeld **Data Factory auswählen** ist die Option **Daten laden** standardmäßig aktiviert. Klicken Sie auf **Weiter**, um die Erstellung der Data Factory abzuschließen. 
+    Wenn im Ihrem Azure-Abonnement bereits mindestens eine Data Factory verfügbar ist, wird das Dialogfeld **Data Factory auswählen** angezeigt. In diesem Dialogfeld können Sie entweder eine vorhandene Data Factory auswählen oder auf **Neue Data Factory erstellen** klicken, um eine neue zu erstellen. 
+5. Im Dialogfeld **Data Factory auswählen** ist die Option **Daten laden** standardmäßig aktiviert. Klicken Sie auf **Weiter**, um mit der Erstellung einer Datenladeaufgabe zu beginnen. 
 
 ## <a name="configure-the-data-factory-properties"></a>Konfigurieren der Data Factory-Eigenschaften
 Nun, da Sie eine Data Factory erstellt haben, konfigurieren Sie im nächsten Schritt einen Datenladezeitplan. 
@@ -75,16 +75,22 @@ Jetzt können Sie Data Factory über die lokale SQL Server-Datenbank informieren
     - **Authentifizierungstyp**: Wählen Sie den Authentifizierungstyp aus, den Sie verwenden.
     - **Benutzername** und **Kennwort**: Geben Sie den Benutzernamen und das Kennwort für einen Benutzer ein, der über die Berechtigung zum Kopieren der Daten verfügt.
 
-4. Das letzte Feld fragt nach dem Namen des Gateways. Klicken Sie auf den Link **Gateway erstellen**, um ein Gateway zur Datenverwaltung zu erstellen. Das Gateway ist ein Client-Agent, den Sie in Ihrer lokalen Umgebung installieren müssen, um Daten zwischen lokalen und Clouddatenspeichern kopieren zu können. 
+4. Das letzte Feld ist für den Namen des Gateways vorgesehen. Wenn der Quelldatenspeicher lokal vorliegt oder sich auf einem virtuellen Azure IaaS-Computer befindet, ist das Gateway erforderlich. Wenn Sie eine vorhandene Data Factory verwenden, die bereits über ein Gateway verfügt, können Sie das Gateway wiederverwenden, indem Sie es aus der Dropdownliste auswählen. Klicken Sie auf den Link **Gateway erstellen**, um ein Gateway zur Datenverwaltung zu erstellen.  
+
+    > [!NOTE]
+    > Für ein Gateway besteht eine 1:1-Beziehung mit einer Data Factory. Es kann nicht in einer anderen Data Factory verwendet werden, die Verwendung durch mehrere Datenladeaufgaben in derselben Data Factory ist jedoch möglich. Ein Gateway kann beim Ausführen von Datenladeaufgaben zum Herstellen von Verbindungen mit mehreren Datenspeichern verwendet werden.
+    > 
+    > Ausführliche Informationen zum Gateway finden Sie im Artikel [Datenverwaltungsgateway](../data-factory/data-factory-data-management-gateway.md). 
 
 5. Ein Dialogfeld **Gateway erstellen** wird angezeigt. Geben Sie **GatewayForDWLoading** als Namen ein, und klicken Sie auf **Erstellen**.
 
 6. Ein Dialogfeld **Gateway konfigurieren** wird angezeigt.  
     ![Express-Setup starten](media/sql-data-warehouse-load-with-data-factory/launch-express-setup.png)
 
-7. Klicken Sie auf **Launch express setup on this computer** (Express-Setup auf diesem Computer starten) zum Herunterladen, Installieren und Registrieren des Gateways auf Ihrem aktuellen Computer. Der Status wird in einem Popupfenster angezeigt.
+7. Klicken Sie auf **Launch express setup on this computer** (Express-Setup auf diesem Computer starten), um das Datenverwaltungsgateway auf Ihrem aktuellen Computer (mit dem Sie auf das Portal zugreifen) herunterzuladen, zu installieren und zu registrieren. Wenn der Computer keine Verbindung mit dem Datenspeicher herstellen kann, können Sie das Gateway auf einem Computer, der eine Verbindung mit dem Datenspeicher herstellen kann, [herunterladen und installieren](https://www.microsoft.com/download/details.aspx?id=39717) und dann mithilfe des Schlüssels registrieren. Der Status wird in einem Popupfenster angezeigt.
 
-    Das Express-Setup funktioniert nativ in Microsoft Edge und im Internet Explorer. Wenn Sie Google Chrome verwenden, installieren Sie zunächst die ClickOnce-Erweiterung über den Chrome-Webstore. Alternativ können Sie das Gateway manuell herunterladen und installieren und den Schlüssel zur Registrierung nutzen.
+    > [!NOTE]
+    > Das Express-Setup funktioniert nativ in Microsoft Edge und im Internet Explorer. Wenn Sie Google Chrome verwenden, installieren Sie zunächst die ClickOnce-Erweiterung über den Chrome-Webstore. 
 
 8. Warten Sie auf den Abschluss des Gateway-Setups. Sobald das Gateway erfolgreich registriert wurde und online ist, wird das Popupfenster geschlossen, und das neue Gateway wird im Gateway-Feld angezeigt. Klicken Sie auf **Weiter**.
 
@@ -95,12 +101,12 @@ Jetzt können Sie Data Factory über die lokale SQL Server-Datenbank informieren
 ## <a name="configure-the-destination-your-sql-data-warehouse"></a>Konfigurieren des Ziels, Ihres SQL Data Warehouse
 
 1. Klicken Sie auf **Ziel**. Die Verbindungsinformationen für Ihr SQL Data Warehouse werden automatisch ausgefüllt.
-2. Geben Sie das Kennwort für den Benutzernamen ein,  und klicken Sie auf **Weiter**.
+2. Geben Sie das Kennwort für den Benutzernamen ein, und klicken Sie auf **Weiter**.
 
     ![Konfigurieren des Ziels](media/sql-data-warehouse-load-with-data-factory/configure-destination.png)
 
 3. Eine intelligente Tabellenzuordnung wird angezeigt, die auf der Grundlage von ähnlichen Namen die Quell- und Zieltabellen zuordnet. Fügen
-4.   Sie die Zuordnung für eine beliebige Tabelle hinzu, und die restlichen Zuordnungen werden automatisch anhand der Beispiele hergeleitet und durchgeführt. 
+4.  Sie die Zuordnung für jede Tabelle hinzu und der Rest wird automatisch aus den Beispielen zugeordnet. 
 5. Überprüfen Sie die Zuordnung, und klicken Sie auf **Weiter**.
 
     ![Zuordnen von Tabellen](media/sql-data-warehouse-load-with-data-factory/table-mapping.png)
@@ -135,8 +141,8 @@ Nachdem die Bereitstellung abgeschlossen ist, wird die Option **Bereitstellung**
 
     ![Überwachen der Pipeline](media/sql-data-warehouse-load-with-data-factory/monitor-pipeline.png)
 
-3. Erweitern Sie im **Ressourcen-Explorer** die Knotenpipelines, und klicken Sie auf die Datenladepipeline **DWLoadData-fromSQL
-4.  Server**, die Sie in diesem Tutroial erstellt haben.
+3. Erweitern Sie im **Ressourcen-Explorer** die Knotenpipelines, und klicken Sie auf **DWLoadData-fromSQL
+4. Die Server**datenladepipeline, die Sie in diesem Tutorial erstellt haben.
 
     ![Anzeigen der Pipeline](media/sql-data-warehouse-load-with-data-factory/view-pipeline.png)
 
@@ -154,14 +160,21 @@ Nachdem die Bereitstellung abgeschlossen ist, wird die Option **Bereitstellung**
 
 Informationen zur Migration Ihrer Datenbank zu SQL Data Warehouse finden Sie unter [Migrationsübersicht](sql-data-warehouse-overview-migrate.md).
 
-Weitere Informationen zu den Kopierfunktionen von Azure Data Factory finden Sie unter [Einführung in Azure Data Factory](../data-factory/data-factory-introduction.md) und [Verschieben von Daten mithilfe von Copy Activity](../data-factory/data-factory-data-movement-activities.md).
+Weitere Informationen zu Azure Data Factory und den zugehörigen Funktionen für die Datenverschiebung finden Sie in den folgenden Artikeln: 
 
-Weitere Informationen zum Auswerten Ihrer Daten in SQL Data Warehouse finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse mit Visual Studio und SSDT](sql-data-warehouse-query-visual-studio.md) und [Visuellen Daten mit Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md).
+- [Einführung in den Azure Data Factory-Dienst](../data-factory/data-factory-introduction.md)
+- [Verschieben von Daten mit der Kopieraktivität](../data-factory/data-factory-data-movement-activities.md)
+- [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](../data-factory/data-factory-azure-sql-data-warehouse-connector.md)
+
+Informationen zum Untersuchen Ihrer Daten in SQL Data Warehouse finden Sie in den folgenden Artikeln: 
+
+- [Herstellen einer Verbindung mit SQL Data Warehouse über Visual Studio und SSDT](sql-data-warehouse-query-visual-studio.md) 
+- [Visuelle Daten mit Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 
 <!-- Azure references -->
 [Azure-Portal]: https://portal.azure.com 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

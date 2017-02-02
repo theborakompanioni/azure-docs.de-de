@@ -28,7 +28,7 @@ Der [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) in der [IoT 
 
 Um die in die Azure IoT Suite integrierten Sicherheits- und Datenschutzfeatures auf bestmögliche Weise kommunizieren zu können, haben wir die Suite in drei Hauptsicherheitsbereiche unterteilt. 
 
-![Azure IoT Suite](media/iot-security-ground-up/securing-iot-ground-up-fig2.png)
+![Azure IoT Suite](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>Sichere Gerätebereitstellung und -authentifizierung
 Mit der Azure IoT Suite werden Geräte im Außeneinsatz geschützt, indem ein eindeutiger Identitätsschlüssel für jedes Gerät vergeben wird. Der Schlüssel kann von der IoT-Infrastruktur verwendet werden, um mit dem Gerät zu kommunizieren, während es in Betrieb ist. Der Prozess kann schnell und einfach eingerichtet werden. Der generierte Schlüssel mit einer vom Benutzer ausgewählten Geräte-ID bildet die Basis eines Tokens, das bei der gesamten Kommunikation zwischen dem Gerät und dem Azure IoT Hub verwendet wird.
