@@ -16,25 +16,26 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: bradsev;garye
 translationtype: Human Translation
-ms.sourcegitcommit: bac1b01a40b3e7bed2edaf1f694daf0ab70de68c
-ms.openlocfilehash: 26353f84e22aec1964f520edc60d036c2ab57c28
+ms.sourcegitcommit: 701c54bac16cbf208fd655fd72f2d4acfc0ba891
+ms.openlocfilehash: 89856f6509d0d2e2e472a61db70b9b04dc1ac7b7
 
 
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Importieren von Trainingsdaten aus verschiedenen Onlinedatenquellen mit dem „Import Data“-Modul in Azure Machine Learning Studio
+
+[!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
+
 In diesem Artikel werden die Unterstützung des Importierens von Onlinedaten aus verschiedenen Datenquellen und die erforderlichen Informationen zum Verschieben von Daten aus diesen Quellen in ein Azure Machine Learning-Experiment beschrieben.
 
 > [!NOTE]
-> Dieser Artikel bietet allgemeine Informationen zum [Import Data][import-data]-Modul. Ausführlichere Informationen zu den Datentypen, auf die Sie zugreifen können, sowie zu Formaten, Parametern und Antworten auf häufig gestellte Fragen finden Sie im Modulreferenzthema zum [Import Data][import-data]-Modul.
+> Dieser Artikel bietet allgemeine Informationen zum Modul [Import Data][import-data]. Ausführlichere Informationen zu den Datentypen, auf die Sie zugreifen können, zu Formaten, Parametern und Antworten auf häufig gestellte Fragen finden Sie im Modulreferenzthema zum Modul [Import Data][import-data].
 > 
 > 
 
 <!-- -->
 
-[!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
-
 ## <a name="introduction"></a>Einführung
-Sie können in Azure Machine Learning Studio auf Daten aus einer von mehreren Onlinedatenquellen zugreifen, während Ihr Experiment mithilfe des [Import Data][import-data]-Moduls ausgeführt wird:
+Sie können in Azure Machine Learning Studio auf Daten aus einer von mehreren Onlinedatenquellen zugreifen, während Ihr Experiment mithilfe des Moduls [Import Data][import-data] ausgeführt wird:
 
 * Web-URL über HTTP
 * Hadoop über HiveQL
@@ -44,7 +45,7 @@ Sie können in Azure Machine Learning Studio auf Daten aus einer von mehreren On
 * Lokale SQL Server-Datenbank
 * Datenfeedanbieter (derzeit OData)
 
-Der Workflow für Ihre Experimente in Azure Machine Learning Studio besteht aus dem Ziehen und Ablegen von Komponenten auf die Canvas. Für den Zugriff auf Onlinedatenquellen fügen Sie Ihrem Experiment das [Import Data][import-data]-Modul hinzu, wählen **Data source** aus und geben dann die für den Zugriff auf die Daten erforderlichen Parameter an. In der folgenden Tabelle werden die unterstützten Onlinedatenquellen beschrieben. Diese Tabelle enthält auch die unterstützten Dateiformate und die Parameter für den Zugriff auf die Daten.
+Der Workflow für Ihre Experimente in Azure Machine Learning Studio besteht aus dem Ziehen und Ablegen von Komponenten auf die Canvas. Für den Zugriff auf Onlinedatenquellen fügen Sie Ihrem Experiment das Modul [Import Data][import-data] hinzu, wählen **Data source** (Datenquelle) aus und geben dann die für den Zugriff auf die Daten erforderlichen Parameter an. In der folgenden Tabelle werden die unterstützten Onlinedatenquellen beschrieben. Diese Tabelle enthält auch die unterstützten Dateiformate und die Parameter für den Zugriff auf die Daten.
 
 Hinweis: Da auf diese Trainingsdaten zugegriffen wird, während das Experiment läuft, stehen sie nur in diesem Experiment zur Verfügung. Im Vergleich dazu stehen Daten, die in Datasetmodulen gespeichert sind, allen Experimente in Ihrem Arbeitsbereich zur Verfügung.
 
@@ -82,6 +83,6 @@ Das **Import Data** -Modul von Azure Machine Learning unterstützt die folgenden
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

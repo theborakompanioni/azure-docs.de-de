@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4ba0f864dc28beebb80567d3fac7f12cc42df677
-ms.openlocfilehash: 09557bd9c83318b2bdff8ecdefedc141eb7f80db
+ms.sourcegitcommit: 65775053918e12ef8881f417dacc0a63f080d093
+ms.openlocfilehash: 6de98012e768abc7f8450e97648444a74474b5e9
 
 
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
-Wenn ein Client eine Verbindung mit einem Service Fabric-Clusterknoten herstellt, kann der Client mit der Zertifikatssicherheit oder mit Azure Active Directory (AAD) authentifiziert und eine sichere Kommunikation eingerichtet werden. Mit dieser Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster zugreifen, Anwendungen bereitstellen und Verwaltungsaufgaben ausführen können.  Zertifikat- oder AAD-Sicherheit muss zuvor beim Erstellen des Clusters auf dem Cluster aktiviert worden sein.  Weitere Informationen zu Clustersicherheitsszenarien finden Sie unter [Schützen von Service Fabric-Clustern](service-fabric-cluster-security.md). Wenn Sie eine Verbindung zu einem mit Zertifikaten gesicherten Cluster herstellen, [richten Sie das Clientzertifikat](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) auf dem Computer ein, der mit dem Cluster verbunden wird.
+Wenn ein Client eine Verbindung mit einem Service Fabric-Clusterknoten herstellt, kann der Client mit der Zertifikatssicherheit oder mit Azure Active Directory (AAD) authentifiziert und eine sichere Kommunikation eingerichtet werden. Mit dieser Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster zugreifen, Anwendungen bereitstellen und Verwaltungsaufgaben ausführen können.  Zertifikat- oder AAD-Sicherheit muss zuvor beim Erstellen des Clusters auf dem Cluster aktiviert worden sein.  Weitere Informationen zu Clustersicherheitsszenarien finden Sie unter [Schützen von Service Fabric-Clustern](service-fabric-cluster-security.md). Wenn Sie eine Verbindung mit einem mit Zertifikaten gesicherten Cluster herstellen, [richten Sie das Clientzertifikat](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) auf dem Computer ein, der mit dem Cluster verbunden wird. 
 
 <a id="connectsecureclustercli"></a> 
 
@@ -56,7 +56,7 @@ Verwenden Sie zum Herstellen einer Verbindung mit einem Cluster, der durch ein s
 azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false --reject-unauthorized-false
 ```
 
-Nach dem Herstellen der Verbindung können Sie durch Ausführen anderer Befehle über die Befehlszeilenschnittstelle mit dem Cluster interagieren. 
+Nach dem Herstellen der Verbindung können Sie durch [Ausführen anderer Befehle über die Befehlszeilenschnittstelle](service-fabric-azure-cli.md) mit dem Cluster interagieren. 
 
 <a id="connectsecurecluster"></a>
 
@@ -175,7 +175,7 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 
 Durch dieses Verfahren wird Azure Active Directory für die Clientidentität und das Serverzertifikat für die Serveridentität aktiviert.
 
-So verwenden Sie den interaktiven Modus, der das AAD-Dialogfeld für die interaktive Anmeldung anzeigt:
+So verwenden Sie den interaktiven Modus, der das AAD-Dialogfeld für die interaktive Anmeldung anzeigt
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -279,7 +279,7 @@ static string GetAccessToken(
 <a id="connectsecureclustersfx"></a>
 
 ## <a name="connect-to-a-secure-cluster-using-service-fabric-explorer"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit Service Fabric Explorer
-Um [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) für einen bestimmten Cluster zu erreichen, verweisen Sie Ihren Browser auf:
+Um [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) für einen bestimmten Cluster zu erreichen, navigieren Sie mit Ihrem Browser zu:
 
 `http://<your-cluster-endpoint>:19080/Explorer`
 
@@ -291,7 +291,7 @@ Um eine Verbindung zu einem Cluster herzustellen, das mit AAD gesichert ist, ver
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-Sie werden automatisch aufgefordert, sich in AAD anzumelden.
+Sie werden automatisch aufgefordert, sich bei AAD anzumelden.
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Herstellen einer Verbindung mit einem sicheren Cluster mithilfe eines Clientzertifikats
 
@@ -330,6 +330,6 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

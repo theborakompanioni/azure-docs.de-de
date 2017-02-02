@@ -3,7 +3,7 @@ title: Migrieren zu SQL-Datenbank per Transaktionsreplikation | Microsoft Docs
 description: Microsoft Azure SQL-Datenbank, Datenbankmigration, Datenbank importieren, Transaktionsreplikation
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: jognanay
 manager: jhubbard
 editor: 
 ms.assetid: eebdd725-833d-4151-9b2b-a0303f39e30f
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
-ms.date: 11/08/2016
-ms.author: carlrab
+ms.date: 12/09/2016
+ms.author: carlrab; jognanay;
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 891c10b2f8e560a3c97f93198c742f657a92e927
+ms.sourcegitcommit: 8baeadbf7ef24e492c4115745c0d384e4f526188
+ms.openlocfilehash: 8380925a56d39bd53fe737bed539b862cc835fad
 
 
 ---
@@ -41,19 +41,41 @@ Bei der Transaktionsreplikation werden alle Änderungen an Daten oder Schema in 
 
  ![SeedCloudTR-Diagramm](./media/sql-database-cloud-migrate/SeedCloudTR.png)
 
+## <a name="how-transactional-replication-works"></a>Funktionsweise der Transaktionsreplikation
+
+Die Transaktionsreplikation umfasst drei Hauptkomponenten: den Herausgeber, den Verteiler und den Abonnenten. Diese Komponenten führen gemeinsam die Replikation durch. Der Verteiler ist für die Steuerung der Prozesse verantwortlich, durch die Ihre Daten zwischen Servern verschoben werden. Wenn Sie die Verteilung einrichten, erstellt SQL eine Verteilungsdatenbank. Jeder Herausgeber muss an eine Verteilungsdatenbank gebunden werden. Die Verteilungsdatenbank enthält die Metadaten für jede zugehörige Veröffentlichung und Daten zum Status jeder Replikation. Bei der Transaktionsreplikation enthält sie alle Transaktionen, die auf dem Abonnenten ausgeführt werden müssen.
+
+Der Herausgeber ist die Datenbank, aus der alle Daten für die Migration stammen. Im Herausgeber können viele Veröffentlichungen vorhanden sein. Die Veröffentlichungen enthalten Artikel, die all den Tabellen und Daten entsprechen, die repliziert werden müssen. Abhängig davon, wie Sie die Veröffentlichung und die Artikel definieren, können Sie entweder Ihre gesamte Datenbank oder einen Teil der Datenbank replizieren. 
+
+Bei der Replikation ist der Abonnent der Server, der alle Daten und Transaktionen aus der Veröffentlichung empfängt. Jede Veröffentlichung kann über viele Replikationen verfügen.
+
 ## <a name="transactional-replication-requirements"></a>Anforderungen der Transaktionsreplikation
-Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQL Server integriert ist. Es handelt sich hierbei um eine ausgereifte und bewährte Technologie, mit der die meisten Datenbankadministratoren über Erfahrung verfügen. Mit [SQL Server 2016](https://www.microsoft.com/sql-server/sql-server-2016) kann Azure SQL-Datenbank als [Transaktionsreplikationsabonnent](https://msdn.microsoft.com/library/mt589530.aspx) für die lokale Veröffentlichung konfiguriert werden. Wenn Sie die Einrichtung über Management Studio durchführen, erhalten Sie das gleiche Ergebnis wie beim Einrichten eines Abonnenten der Transaktionsreplikation auf einem lokalen Server. Der Support für dieses Szenario ist gegeben, wenn der Herausgeber und der Verteiler mindestens über eine der folgenden SQL Server-Versionen verfügen:
-
-* SQL Server 2016 und höher 
-* SQL Server 2014 SP1 CU3 und höher
-* SQL Server 2014 RTM CU10 und höher
-* SQL Server 2012 SP2 CU8 und höher
-* SQL Server 2012 SP3 und höher
-
+[Eine aktualisierte Liste von Anforderungen finden Sie unter diesem Link.](https://msdn.microsoft.com/en-US/library/mt589530.aspx)
 > [!IMPORTANT]
 > Verwenden Sie die neueste Version von SQL Server Management Studio, um immer den Updates von Microsoft Azure und SQL-Datenbank zu entsprechen. Ältere Versionen von SQL Server Management Studio können SQL-Datenbank nicht als Abonnenten einrichten. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 > 
-> 
+
+## <a name="migration-to-sql-database-using-transaction-replication-workflow"></a>Migration zu SQL-Datenbank mithilfe des Workflows der Transaktionsreplikation
+
+1. Einrichten der Verteilung
+   -  [Verwenden von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_1)
+   -  [Verwenden von Transact-SQL](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
+2. Erstellen der Veröffentlichung
+   -  [Verwenden von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
+   -  [Verwenden von Transact-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
+3. Erstellen des Abonnements
+   -  [Verwenden von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
+   -  [Verwenden von Transact-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
+
+## <a name="some-tips-and-differences-for-migrating-to-sql-database"></a>Einige Tipps und Informationen zu den Unterschieden, die beim Migrieren zu SQL-Datenbank zu beachten sind
+
+1. Verwendung eines lokalen Verteilers: 
+   - Ein lokaler Verteiler beeinträchtigt die Leistung des Servers. 
+   - Wenn die Leistungsbeeinträchtigung inakzeptabel ist, können Sie einen anderen Server verwenden, dies erhöht jedoch die Komplexität der Verwaltung und Administration.
+2. Achten Sie bei der Auswahl eines Momentaufnahmeordners darauf, dass der Ordner ausreichend groß ist, um eine BCP-Datei von jeder zu replizierenden Tabelle darin zu speichern. 
+3. Durch die Erstellung der Momentaufnahme werden die zugehörigen Tabellen gesperrt, bis der Vorgang abgeschlossen ist. Bedenken Sie dies bei der Planung Ihrer Momentaufnahme. 
+4. In Azure SQL-Datenbank werden nur Pushabonnements unterstützt.
+   - Sie können nur Abonnenten von der Seite Ihrer lokalen Datenbank hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
@@ -61,14 +83,11 @@ Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQ
 * [SQL Server 2016](https://www.microsoft.com/sql-server/sql-server-2016)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx)
-* [Azure SQL Database features (Features der Azure SQL-Datenbank)](sql-database-features.md)
-* [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
-* [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
+* Weitere Informationen zur Transaktionsreplikation finden Sie unter [Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx).
+* Weitere Informationen zum gesamten Migrationsprozess und zu den Optionen finden Sie unter [Migrieren einer SQL Server-Datenbank zu SQL-Datenbank in der Cloud](sql-database-cloud-migrate.md).
 
 
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

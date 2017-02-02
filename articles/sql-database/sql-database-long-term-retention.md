@@ -17,8 +17,8 @@ ms.workload: NA
 ms.date: 11/22/2016
 ms.author: carlrab; sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 92a2cca71380ac609e900d223908eda1a40be635
-ms.openlocfilehash: 17de9fd999b904b66c4e9d574fb4754069ae133a
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 8b13faf1f6cdac355cc4d22b825cc2362a50e8f9
 
 
 ---
@@ -69,6 +69,14 @@ Nachdem der Azure SQL-Datenbankserver im Tresor registriert ist, wird Ihnen der 
 
 Auf dem Blatt „Azure SQL-Datenbankserver“ können Sie die langfristige Beibehaltung konfigurieren und, falls notwendig, einen Azure Recovery Services-Tresor erstellen.
 
+- Informationen zum Konfigurieren der langfristigen Beibehaltung von automatisierten Sicherungen in einem Azure Recovery Services-Tresor finden Sie unter [Configure long-term retention of automated backups in an Azure Recovery Services vault](sql-database-configure-long-term-retention.md) (Konfigurieren der langfristigen Beibehaltung von automatisierten Sicherungen in einem Azure Recovery Services-Tresor).
+- Informationen zum Wiederherstellen einer Datenbank aus einer Sicherung mit langfristiger Beibehaltung finden Sie im Artikel zum [Wiederherstellen aus einer Sicherung mit langfristiger Beibehaltung](sql-database-restore-from-long-term-retention.md).
+- Informationen zum Anzeigen von Sicherungen im Azure Recovery Services-Tresor finden Sie unter [Anzeigen von Sicherungen mit langfristiger Beibehaltung](sql-database-view-backups-in-vault.md).
+
+> [!TIP]
+> Ein Tutorial finden Sie unter [Erste Schritte mit der Sicherung und Wiederherstellung für Datenschutz und Wiederherstellung](sql-database-get-started-backup-recovery.md).
+>
+
 ## <a name="configuring-long-term-retention-using-powershell"></a>Konfigurieren der langfristigen Beibehaltung mithilfe von PowerShell
 
 Führen Sie die folgenden Schritte aus, um die langfristige Beibehaltung mithilfe von PowerShell zu konfigurieren.
@@ -102,7 +110,7 @@ Führen Sie die folgenden Schritte aus, um die langfristige Beibehaltung mithilf
    #for your database you can select any policy created in the vault with which your server is registered
    Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy –ResourceGroupName 'RG1' –ServerName 'Server1' -DatabaseName 'DB1' -State 'enabled' -ResourceId $policy.Id
    ```
-5. Führen Sie den Server auf, der dem Tresor zugeordnet ist. Jeder Server ist einem bestimmten Container im Tresor zugeordnet. Sie können die registrierten Server auflisten, indem Sie die folgenden Befehle ausführen.
+5. Führen Sie den Server auf, der dem Tresor zugeordnet ist. Jeder Server ist einem bestimmten Container im Tresor zugeordnet. Sie können die registrierten Server auflisten, indem Sie die folgenden Befehle ausführen:
    
    ```
    #each server has an associated container in the vault
@@ -193,7 +201,7 @@ So entfernen sie manuell Sicherungen aus dem Tresor:
 ## <a name="long-term-retention-faq"></a>Häufig gestellte Fragen zur langfristigen Beibehaltung:
 
 1. Frage: Kann ich bestimme Sicherungen im Tresor manuell löschen?
-   Antwort: Nicht zu diesem Zeitpunkt. Der Tresor wird automatisch Sicherungen bereinigen, wenn die Beibehaltung abgelaufen ist.
+   Antwort: Nicht zu diesem Zeitpunkt. Der Tresor bereinigt Sicherungen nach Ablauf des Aufbewahrungszeitraums automatisch.
 2. Frage: Kann ich meinen Server registrieren, um in mehr als einem Tresor Sicherungen zu speichern?
    Antwort: Nein, Sie können momentan nur Sicherungen in einem Tresor gleichzeitig speichern.
 3. Frage: Kann ich über einen Tresor und Server in verschiedenen Abonnements verfügen?
@@ -204,15 +212,15 @@ So entfernen sie manuell Sicherungen aus dem Tresor:
    Antwort: Derzeit unterstützen wir nur bis zu 1000 Datenbanken pro Tresor. 
 6. F: Wie viele Tresore kann ich pro Abonnement erstellen? Antwort: Sie können bis zu 25 Tresore pro Abonnement erstellen.
 7. F: Wie viele Datenbanken kann ich pro Tresor und pro Tag konfigurieren? Antwort: Sie können nur 200 Datenbanken pro Tresor und pro Tag einrichten.
-8. Frage: Funktioniert die langfristige Beibehaltung mit Pools für elastische Datenbanken?
+8. Frage: Funktioniert die langfristige Beibehaltung mit elastischen Pools?
    A: Ja. Jede Datenbank im Pool kann mit der Beibehaltungsrichtlinie konfiguriert werden.
 9. Frage: Kann ich den Zeitpunkt auswählen, an dem die Sicherungen erstellt werden?
    Antwort: SQL-Datenbanken kontrollieren den Zeitplan der Sicherungen, um die Auswirkungen auf die Leistung an Ihren Datenbanken zu minimieren.
-10. Frage: Ich habe TDE für meine Datenbank aktiviert. Werde ich sie aus dem Tresor wiederherstellen können? Antwort: Ja, TDE wird unterstützt. Selbst wenn die ursprüngliche Datenbank nicht mehr vorhanden ist, können Sie die Datenbank aus dem Tresor wiederherstellen.
-11. F: Was geschieht mit den Sicherungen im Tresor, wenn mein Abonnement unterbrochen wird? Antwort: Falls Ihr Abonnement unterbrochen wird, werden wir die vorhandenen Datenbanken und Sicherungen beibehalten, aber neue Sicherungen werden nicht in den Tresor kopiert. Nachdem Sie das Abonnement reaktiviert haben, wird der Dienst das Kopieren der Sicherungen in den Tresor fortsetzen. Ihr Tresor bekommt wieder Zugriff auf die Wiederherstellungsvorgänge, indem die Sicherungen genutzt werden, die vor dem Unterbrechen des Abonnements kopiert wurden. 
-12. Frage: Kann ich Zugriff auf die SQL-Datenbank-Sicherungsdateien bekommen, sodass ich sie herunterladen / auf SQL Server wiederherstellen kann?
-   Antwort: Derzeit leider nicht.
-13. Frage: Ist es möglich, mehrere Zeitpläne (täglich, wöchentlich, monatlich, jährlich) in einer SQL-Beibehaltungsrichtlinie zu haben.
+10. Frage: Ich habe TDE für meine Datenbank aktiviert. Kann ich TDE mit dem Tresor verwenden? Antwort: Ja, TDE wird unterstützt. Selbst wenn die ursprüngliche Datenbank nicht mehr vorhanden ist, können Sie die Datenbank aus dem Tresor wiederherstellen.
+11. F: Was geschieht mit den Sicherungen im Tresor, wenn mein Abonnement unterbrochen wird? Antwort: Falls Ihr Abonnement unterbrochen wird, werden wir die vorhandenen Datenbanken und Sicherungen beibehalten, aber neue Sicherungen werden nicht in den Tresor kopiert. Nachdem Sie das Abonnement reaktiviert haben, setzt der Dienst das Kopieren der Sicherungen in den Tresor fort. Ihr Tresor erhält wieder Zugriff auf die Wiederherstellungsvorgänge, indem die Sicherungen genutzt werden, die vor dem Unterbrechen des Abonnements kopiert wurden. 
+12. Frage: Kann ich Zugriff auf die SQL-Datenbank-Sicherungsdateien erhalten, damit ich sie herunterladen/auf dem SQL Server wiederherstellen kann?
+   Antwort: Derzeit ist dies nicht möglich.
+13. Frage: Ist es möglich, mehrere Zeitpläne (täglich, wöchentlich, monatlich, jährlich) in einer SQL-Beibehaltungsrichtlinie zu haben?
    Antwort: Nein, das ist zu diesem Zeitpunkt nur für Sicherungen von virtuellen Computern verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -221,6 +229,6 @@ Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Gesc
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
