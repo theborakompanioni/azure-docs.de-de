@@ -62,7 +62,7 @@ Wenn der gewünschte Leistungsindikator in der Liste der Metriken nicht angezeig
    * Wenn Sie den Statusmonitor zum Instrumentieren einer Web-App zur Laufzeit verwendet haben, finden Sie die Datei „ApplicationInsights.config“ im Stammverzeichnis der App in IIS. Aktualisieren Sie sie dort in allen Serverinstanzen.
 3. Bearbeiten Sie Leistungserfassungsanweisung:
    
-   ```XML
+```XML
    
     <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
       <Counters>
@@ -84,17 +84,23 @@ Wenn Sie eine Instanz angeben, wird sie als CounterInstanceName-Dimension der ge
 ### <a name="collecting-performance-counters-in-code"></a>Erfassen von Leistungsindikatoren im Code
 Um Systemleistungsindikatoren zu erfassen und an Application Insights zu senden, können Sie den folgenden Codeausschnitt anpassen:
 
+
+``` C#
+
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\.NET CLR Memory([replace-with-application-process-name])\# GC Handles", "GC Handles")));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+```
 
 Alternativ können Sie dieselben Schritte mit von Ihnen erstellten benutzerdefinierten Metriken ausführen:
 
+``` C#
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(photo)\# Items Sold", "Photo sales"));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
+```
 
 ## <a name="performance-counters-in-analytics"></a>Leistungsindikatoren in Analytics
 In [Analytics](app-insights-analytics.md) können Sie nach Leistungsindikatorberichten suchen und diese anzeigen.
