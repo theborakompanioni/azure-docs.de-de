@@ -62,10 +62,10 @@ Sie können dies jetzt problemlos für Abonnements mit nutzungsbasierter Bezahlu
   
   Sie können wie folgt überprüfen, wer der Kontoadministrator des Abonnements ist:
   
-  1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
-  2. Wählen Sie im Menü „Hub“ die Option **Abonnement**aus.
-  3. Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen**aus.
-  4. Wählen Sie **Eigenschaften**aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.  
+  1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
+  2. Wählen Sie im Menü „Hub“ die Option **Abonnement** aus.
+  3. Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen** aus.
+  4. Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.  
 * **Führt eine Übertragung des Abonnements zu Ausfallzeiten?**
   
   Die Übertragung hat keine Auswirkung auf den Dienst. Effektiv wird dabei das Abonnement für den aktuellen Kontoadministrator gekündigt und ein neues im Konto des Empfängers erstellt. Dabei werden die zugrunde liegenden Azure-Dienste dem neuen Abonnement zugeordnet. Die Abonnement-ID bleibt unverändert.
@@ -99,7 +99,7 @@ Sie können dies jetzt problemlos für Abonnements mit nutzungsbasierter Bezahlu
   Nein, zu diesem Zeitpunkt wird dies nicht unterstützt. Das Benutzerkonto des Empfängers muss sich im gleichen Land befinden.
 * **Kann der Empfänger einen anderen Zahlungsmechanismus nutzen?**
   
-  Ja. Es gibt hier Einschränkungen: der Abrechnungsverlauf des Abonnements ist nun auf zwei Konten aufgeteilt. Der Vorteil ist jedoch, dass Sie sich dazu nicht an den [Support wenden](http://go.microsoft.com/fwlink/?LinkID=619338)müssen.
+  Ja. Es gibt hier Einschränkungen: der Abrechnungsverlauf des Abonnements ist nun auf zwei Konten aufgeteilt. Der Vorteil ist jedoch, dass Sie sich dazu nicht an den [Support wenden](http://go.microsoft.com/fwlink/?LinkID=619338) müssen.
 * **Hat die Übertragung eines Azure-Abonnements Auswirkungen auf die Zahlungsmethode?**
   
   Damit eine Abonnementübertragung akzeptiert wird, muss eine Kreditkarte oder eine ähnliche Zahlungsmethode für das Abonnement angegeben werden. Beispiel: Wenn Bob ein Abonnement auf Jane überträgt und Jane die Übertragung akzeptiert, muss Jane auch eine Zahlungsmethode angeben, die sie zur Bezahlung des Abonnements verwendet. Nachdem die Übertragung abgeschlossen ist, wird das Abonnement, das Bob auf Jane übertragen hat, nicht mehr über ihn abgerechnet.
@@ -112,7 +112,7 @@ Sie können dies jetzt problemlos für Abonnements mit nutzungsbasierter Bezahlu
    * Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Anzeigen, Kopieren und erneutes Generieren von Speicherzugriffsschlüsseln](storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)
    * RAS-Anmeldeinformationen für Dienste wie Azure Virtual Machines
 4. Aktualisieren Sie die Abrechnungswarnungen für dieses Abonnement im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions).  [Weitere Informationen](http://go.microsoft.com/fwlink/?LinkID=533292)
-5. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID in diesem Abonnement aktualisieren. Sie können diese im [Azure Account Center](https://account.windowsazure.com/Subscriptions)durchführen.
+5. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID in diesem Abonnement aktualisieren. Sie können diese im [Azure Account Center](https://account.windowsazure.com/Subscriptions) durchführen.
 
 > [!NOTE]
 > Wenn Sie weitere Fragen haben, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um das Problem schnell zu lösen.
