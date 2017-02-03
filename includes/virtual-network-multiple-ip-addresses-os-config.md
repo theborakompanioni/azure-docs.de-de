@@ -111,7 +111,7 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
 6. Bearbeiten Sie die Datei *ifcfg-eth0:0* mit dem folgenden Befehl:
 
     ```bash
-    vi ifcfg-eth1
+    vi ifcfg-eth0:0
     ```
 
 7. Geben Sie den folgenden Befehl ein, um das Gerät in den entsprechenden Namen in der Datei zu ändern (in diesem Fall *eth0:0* ):
@@ -131,7 +131,7 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
 
     ```bash
     /etc/init.d/network restart
-    Ipconfig
+    ifconfig
     ```
 
     In der zurückgegebenen Liste sollte die hinzugefügte IP-Adresse *eth0:0*angezeigt werden.
