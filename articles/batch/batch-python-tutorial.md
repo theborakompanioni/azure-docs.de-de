@@ -3,7 +3,7 @@ title: "Tutorial – Erste Schritte mit dem Azure Batch-Python-Client | Microsof
 description: "Erfahren Sie mehr über die grundlegenden Konzepte von Azure Batch, und lesen Sie, wie Sie den Batch-Dienst in einem einfachen Szenario für die Entwicklung einsetzen."
 services: batch
 documentationcenter: python
-author: mmacy
+author: tamram
 manager: timlt
 editor: 
 ms.assetid: 42cae157-d43d-47f8-88f5-486ccfd334f4
@@ -13,10 +13,10 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 11/30/2016
-ms.author: marsma
+ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 64f70aab802ed377de1686fcdb7e641c30299b9c
-ms.openlocfilehash: 6630899081a76d7a8bc54f53a33c76dda9f1b0fa
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 3c1efaa277c6fba7965d6fe10cc5991cb02281d7
 
 
 ---
@@ -35,7 +35,7 @@ Lernen Sie die Grundlagen von [Azure Batch][azure_batch] und [Batch-Python][py_a
 In diesem Artikel wird davon ausgegangen, dass Sie über Python-Kenntnisse verfügen und mit Linux vertraut sind. Außerdem wird vorausgesetzt, dass Sie die Anforderungen an die Kontoerstellung erfüllen können, die unten für Azure und die Batch- und Storage-Dienste angegeben sind.
 
 ### <a name="accounts"></a>Konten
-* **Azure-Konto**: Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
+* **Azure-Konto**: Falls Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
 * **Batch-Konto**: Wenn Sie über ein Azure-Abonnement verfügen, können Sie ein [Azure Batch-Konto erstellen](batch-account-create-portal.md).
 * **Storage-Konto**: Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
 
@@ -109,7 +109,7 @@ Das folgende Diagramm veranschaulicht die primären Vorgänge, die von den Clien
     &nbsp;&nbsp;&nbsp;&nbsp;**5b.** Jede Aufgabe lädt ihre Eingabedaten aus Azure Storage und beginnt dann mit der Ausführung.<br/>
 [**Schritt 6.**](#step-6-monitor-tasks) Überwachen der Aufgaben<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**6a.** Nach Abschluss der Aufgaben werden die zugehörigen Ausgabedaten in Azure Storage hochgeladen.<br/>
-[**Schritt 7.**](#step-7-download-task-output)  Herunterladen der Aufgabenausgabe aus Storage
+[**Schritt 7.**](#step-7-download-task-output) Herunterladen der Aufgabenausgabe aus Storage
 
 Wie bereits erwähnt, werden nicht von jeder Batch-Lösung genau diese Schritte ausgeführt, und es können auch erheblich mehr Schritte enthalten sein. Im Beispiel werden jedoch die Prozesse veranschaulicht, die in einer Batch-Lösung häufig vorkommen.
 
@@ -133,8 +133,8 @@ storage_account_key  = "";
 
 Die Kontoanmeldeinformationen für Batch und Storage finden Sie im [Azure-Portal][azure_portal] auf dem Kontoblatt des jeweiligen Diensts:
 
-![Batch-Anmeldeinformationen im Verwaltungsportal][9]
-![Storage-Anmeldeinformationen im Verwaltungsportal][10]<br/>
+![Batch-Anmeldeinformationen im Portal][9]
+![Storage-Anmeldeinformationen im Portal][10]<br/>
 
 In den folgenden Abschnitten analysieren wir die Schritte, die von den Skripts verwendet werden, um eine Workload im Batch-Dienst zu verarbeiten. Werfen Sie regelmäßig einen Blick auf die Skripts in Ihrem Editor, während Sie den Rest dieses Artikels lesen.
 
@@ -375,7 +375,7 @@ Beachten Sie im obigen Codeausschnitt auch die Verwendung von zwei Umgebungsvari
 >
 
 ## <a name="step-4-create-batch-job"></a>Schritt 4: Erstellen eines Batch-Auftrags
-![Batch-Auftrag erstellen][4]<br/>
+![Erstellen eines Batch-Auftrags][4]<br/>
 
 Ein Batch- **Auftrag** ist im Wesentlichen eine Sammlung von Aufgaben, die einem Pool mit Computeknoten zugeordnet sind. Die Aufgaben in einem Auftrag werden auf den Computeknoten des zugeordneten Pools ausgeführt.
 
@@ -525,7 +525,7 @@ def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
 ```
 
 ## <a name="step-7-download-task-output"></a>Schritt 7: Herunterladen der Aufgabenausgabe
-![Aufgabenausgabe aus Storage herunterladen][7]<br/>
+![Herunterladen der Aufgabenausgabe aus Storage][7]<br/>
 
 Nachdem der Auftrag abgeschlossen wurde, kann die Ausgabe der Aufgaben aus Azure Storage heruntergeladen werden. Hierzu wird `download_blobs_from_container` in *python_tutorial_client.py* aufgerufen:
 
@@ -708,6 +708,6 @@ Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertra
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

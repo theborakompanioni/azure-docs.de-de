@@ -67,7 +67,7 @@ In diesem Lernprogramm wird das Azure-Portal verwendet, um die folgenden Aufgabe
 
 1. Konfigurieren von Streamingendpunkten
 2. Erstellen eines Kanals, der zum Ausführen von Livecodierung aktiviert ist
-3. Abrufen der Erfassungs-URL, um sie dem Liveencoder bereitzustellen Diese URL wird vom Liveencoder verwendet, um den Datenstrom in den Kanal zu leiten.  zu erstellen und zu verwalten.
+3. Abrufen der Erfassungs-URL, um sie dem Liveencoder bereitzustellen Diese URL wird vom Liveencoder verwendet, um den Datenstrom in den Kanal zu leiten. zu erstellen und zu verwalten.
 4. Erstellen eines Ereignisses/Programms (und eines Assets)
 5. Veröffentlichen des Medienobjekts und Abrufen von Streaming-URLs  
 6. Wiedergeben Ihrer Inhalte 

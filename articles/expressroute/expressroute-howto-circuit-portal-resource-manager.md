@@ -14,20 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: cherylmc
+ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: 8eb67e0800671f4d41612780db52a243023b9e5a
+ms.sourcegitcommit: 5c6ee9ef23e8594391a4fce313f945b31e6870a7
+ms.openlocfilehash: ed4bd2e039196e60b7366fd9d2e8a8b43ce00f30
 
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Azure-Portal – Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell – Resource Manager](expressroute-howto-circuit-arm.md)
-> * [PowerShell – klassisch](expressroute-howto-circuit-classic.md)
+> * [Resource Manager – Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Resource Manager – PowerShell](expressroute-howto-circuit-arm.md)
+> * [Klassisch – PowerShell](expressroute-howto-circuit-classic.md)
+> * [Video – Azure-Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
-> 
+>
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung mithilfe des Azure-Portals und des Azure Resource Manager-Bereitstellungsmodells erstellen. In den folgenden Schritten wird auch veranschaulicht, wie Sie den Status der Verbindung prüfen, aktualisieren, löschen oder deren Bereitstellung aufheben.
 
@@ -39,6 +40,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung m
 * Lesen Sie vor Beginn der Konfiguration die Seiten zu den [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
 * Stellen Sie sicher, dass Sie auf das [Azure-Portal](https://portal.azure.com)zugreifen können.
 * Stellen Sie sicher, dass Sie über die notwendigen Berechtigungen verfügen, um neue Netzwerkressourcen zu erstellen. Wenden Sie sich an Ihren Kontoadministrator, wenn Sie nicht über die richtigen Berechtigungen verfügen.
+* Sie können sich das [Video ansehen](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit), bevor Sie beginnen, um die Schritte besser zu verstehen.
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 ### <a name="1-sign-in-to-the-azure-portal"></a>1. Melden Sie sich auf dem Azure-Portal an.
@@ -84,19 +86,19 @@ Auf diesem Blatt bietet der **Anbieterstatus** Informationen zum aktuellen Zusta
 Wenn Sie eine neue ExpressRoute-Verbindung erstellen, weist die Verbindung folgenden Zustand auf:
 
 Anbieterstatus: Nicht bereitgestellt<BR>
- Schaltkreisstatus: Aktiviert
+Schaltkreisstatus: Aktiviert
 
 ![Bereitstellung initiieren](./media/expressroute-howto-circuit-portal-resource-manager/viewstatus.png)
 
 Die Verbindung wechselt in den folgenden Zustand, wenn sie vom Konnektivitätsanbieter für Sie aktiviert wird:
 
 Anbieterstatus: Wird bereitgestellt<BR>
- Schaltkreisstatus: Aktiviert
+Schaltkreisstatus: Aktiviert
 
 Damit Sie eine ExpressRoute-Verbindung verwenden können, muss sie sich im folgenden Zustand befinden:
 
 Anbieterstatus: Bereitgestellt<BR>
- Schaltkreisstatus: Aktiviert
+Schaltkreisstatus: Aktiviert
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
 Sie können die Eigenschaften der gewünschten Verbindung anzeigen, indem Sie die Verbindung auswählen. Überprüfen Sie den **Anbieterstatus**, und stellen Sie sicher, dass er in **Provisioned** geändert wurde, bevor Sie fortfahren.
@@ -147,6 +149,6 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

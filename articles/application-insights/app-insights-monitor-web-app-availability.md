@@ -11,20 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/07/2016
+ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: d3478ef704c0029f69cca141bd3fa0b3ac54de15
+ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
+ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
-Nachdem Sie die Web-App oder Website für einen beliebigen Server bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Visual Studio Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
+Nachdem Sie die Web-App oder Website für einen beliebigen Server bereitgestellt haben, können Sie Webtests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
 
 ![Beispiel für Webtest](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
-Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Internet zugänglich ist, Webtests einrichten.
+Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Internet zugänglich ist, Webtests einrichten. Der zu testenden Website muss nichts hinzugefügt werden. Es muss sich nicht einmal um Ihre Website handeln: Sie können auch einen benötigten REST-API-Dienst testen.
 
 Es gibt zwei Arten von Webtests:
 
@@ -58,7 +58,7 @@ Suchen Sie in der Application Insights-Ressource nach der Kachel "Verfügbarkeit
 
     **HTTP-Antwort**: Der zurückgegebene Statuscode, der als Erfolg gezählt wird. 200 ist der Code, der angibt, dass eine normale Webseite zurückgegeben wurde.
 
-    **Inhaltsübereinstimmung**: Eine Zeichenfolge, zum Beispiel „Willkommen!“ Wir testen, ob sie in jeder Antwort auftritt. Dies muss eine Zeichenfolge in Klartext, ohne Platzhalter sein. Vergessen Sie nicht, diese zu aktualisieren, wenn sich der Seiteninhalt ändert.
+    **Inhaltsübereinstimmung**: Eine Zeichenfolge, zum Beispiel „Willkommen!“ Wir vergewissern uns, dass in jeder Antwort eine exakte Übereinstimmung unter Berücksichtigung der Groß-und Kleinschreibung vorkommt. Dies muss eine Zeichenfolge in Klartext, ohne Platzhalter sein. Vergessen Sie nicht, diese zu aktualisieren, wenn sich der Seiteninhalt ändert.
 * **Warnungen** werden standardmäßig an Sie gesendet, wenn innerhalb von fünf Minuten an drei Standorten Fehler auftreten. Bei einem Fehler an einem Standort handelt es sich wahrscheinlich um ein Netzwerkproblem und nicht um ein Problem mit Ihrer Website. Sie können den Schwellenwert auf eine engere oder weitere Überwachung einstellen oder den Empfänger der E-Mails ändern.
 
     Sie können einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) einrichten, der bei einer Warnung aufgerufen wird. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Eigenschaften übergeben werden.)
@@ -100,10 +100,22 @@ Klicken Sie auf das Ergebnis, um es im Portal auszuwerten und die Fehlerursache 
 
 Alternativ dazu können Sie die Ergebnisdatei herunterladen und in Visual Studio überprüfen.
 
-*Sieht gut aus, wird jedoch als fehlerhaft gemeldet?*  Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird.
+*Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird.
 
-## <a name="multistep-web-tests"></a>Webtests mit mehreren Schritten
+### <a name="open-the-server-request-and-exceptions"></a>Öffnen der Serveranforderung und Ausnahmen
+
+Über die detaillierten Eigenschaften eines bestimmten Tests können Sie den serverseitigen Bericht der Anforderung sowie andere Ereignisse (etwa Ausnahmen) öffnen.
+
+![Ausführungsergebnis des Webtests](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
+
+Sollten keine verwandten Elemente angezeigt werden, wird möglicherweise gerade ein [Samplingvorgang](app-insights-sampling.md) ausgeführt.
+
+## <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.
+
+> [!NOTE] 
+> Für Webtests mit mehreren Schritten wird eine Gebühr erhoben. Informationen hierzu finden Sie in der [Preisübersicht](http://azure.microsoft.com/pricing/details/application-insights/).
+> 
 
 Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio auf. Laden Sie dann die Aufzeichnung in Application Insights hoch. Application Insights wiederholt das Szenario in bestimmten Abständen und überprüft die Antworten.
 
@@ -153,7 +165,7 @@ Denken Sie daran, dass alle Ressourcen einer Seite richtig geladen werden müsse
 
 Beachten Sie, dass der Webtest vollständig in der Webtest-Datei enthalten sein muss: Sie können keine codierten Funktionen im Test verwenden.
 
-### <a name="plugging-time-and-random-numbers-into-your-multistep-test"></a>Einfügen von Zeiten und Zufallszahlen in einen mehrstufigen Test
+### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>Einfügen von Zeiten und Zufallszahlen in einen mehrstufigen Test
 Angenommen, Sie testen ein Tool, das zeitabhängige Daten, wie z. B. Bestände, aus einem externen Feed abruft. Beim Aufzeichnen eines Webtests müssen Sie bestimmte Zeiten verwenden, aber als Parameter des Tests – StartTime und EndTime – festlegen.
 
 ![Ein Webtest mit Parametern.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
@@ -166,7 +178,7 @@ Webtest-Plug-Ins sind eine Möglichkeit zum Parametrisieren von Zeiten.
 
     ![Wählen Sie "Webtest-Plug-In hinzufügen", und wählen Sie einen Typ aus.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
 
-    In diesem Beispiel verwenden wir zwei Instanzen des Datums-/Uhrzeit-Plug-Ins. Eine Instanz gilt für „vor 15 Minuten“ und eine weitere für „jetzt“.
+    In diesem Beispiel verwenden wir zwei Instanzen des Datums-/Uhrzeit-Plug-Ins. Eine Instanz gilt für „vor&15; Minuten“ und eine weitere für „jetzt“.
 2. Öffnen Sie die Eigenschaften der einzelnen Plug-Ins. Geben Sie einen Namen ein, und legen Sie es so fest, dass die aktuelle Uhrzeit verwendet wird. Legen Sie für eines der Plug-Ins "Add Minutes = -15" fest.
 
     ![Legen Sie den Name fest, wählen Sie "Aktuelle Uhrzeit verwenden" und "Minuten hinzufügen".](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-parameters.png)
@@ -176,7 +188,7 @@ Webtest-Plug-Ins sind eine Möglichkeit zum Parametrisieren von Zeiten.
 
 Laden Sie nun den Test in das Portal hoch. Bei jeder Ausführung des Tests werden die dynamischen Werte verwendet.
 
-## <a name="dealing-with-signin"></a>Umgang mit der Anmeldung
+## <a name="dealing-with-sign-in"></a>Umgang mit der Anmeldung
 Wenn sich Benutzer bei Ihrer App anmelden, stehen Ihnen verschiedene Optionen für die Anmeldungssimulation zur Verfügung, damit Sie Seiten testen können, die auf die Anmeldung folgen. Der verwendete Ansatz hängt vom Typ der von der App bereitgestellten Sicherheit ab.
 
 In allen Fällen sollten Sie in der Anwendung ein Konto erstellen, das nur Testzwecken dient. Schränken Sie die Berechtigungen dieses Testkontos nach Möglichkeit ein, damit ausgeschlossen ist, dass sich die Webtests auf echte Benutzer auswirken.
@@ -269,7 +281,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
 [Durchsuchen der Diagnoseprotokolle][diagnostic]
 
-[Problembehandlung][qna]
+[Behandeln von Problemen][qna]
 
 [IP-Adressen von Webtest-Agents](app-insights-ip-addresses.md)
 
@@ -282,6 +294,6 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

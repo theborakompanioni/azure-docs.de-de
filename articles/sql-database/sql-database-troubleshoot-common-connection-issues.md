@@ -4,7 +4,7 @@ description: "Schritte zum Ermitteln und Behandeln von häufigen Verbindungsprob
 services: sql-database
 documentationcenter: 
 author: dalechen
-manager: cshepard
+manager: felixwu
 editor: 
 ms.assetid: ac463d1c-aec8-443d-b66e-fa5eadcccfa8
 ms.service: sql-database
@@ -13,11 +13,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 08/31/2016
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 7e443a350e5f3597e9d59fe934c28bd8cd93be26
-ms.openlocfilehash: 8ccf72046e95b12316685d1de9632e18f0943948
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 48ccd940efb75427461c3a8018aa6b31f46a626e
 
 
 ---
@@ -77,7 +77,7 @@ Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblem
 | 4 |[Problembehandlung bei Verbindungen mit Microsoft Azure SQL-Datenbank](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database) |Mit diesem Tool können Sie Ihr Problem ermitteln und Verbindungsfehler beheben. |
 | 5 |[Problembehandlung bei Fehlern wie „Die Datenbank &lt;x&gt; auf dem Server &lt;y&gt; ist zurzeit nicht verfügbar. Bitte wiederholen Sie den Verbindungsversuch später.“](sql-database-troubleshoot-connection.md) |Beschreibt die Ermittlung und Behebung eines Fehlers 40613: „Datenbank &lt;x&gt; auf Server &lt;y&gt; ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später.“ |
 | 6 |[SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md) |Stellt Informationen über SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen, beispielsweise zu häufigen Datenbankverbindungsfehlern, Datenbankkopiefehlern und allgemeinen Fehlern, bereit. |
-| 7 |[Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md) |Stellt Anleitungen zum Ermitteln des richtigen Diensttarifs für Ihre Anwendung bereit. Enthält zudem Empfehlungen zur Optimierung Ihrer Anwendung, damit Sie Ihre Azure SQL-Datenbank optimal nutzen können. |
+| 7 |[Leitfaden zur Azure SQL-Datenbankleistung für eigenständige Datenbanken](sql-database-performance-guidance.md) |Stellt Anleitungen zum Ermitteln des richtigen Diensttarifs für Ihre Anwendung bereit. Enthält zudem Empfehlungen zur Optimierung Ihrer Anwendung, damit Sie Ihre Azure SQL-Datenbank optimal nutzen können. |
 | 8 |[Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md) |Enthält Links zu Codebeispielen für verschiedene Technologien, die Sie zum Herstellen einer Verbindung und zum Interagieren mit der Azure SQL-Datenbank verwenden können. |
 | 9 |Seite zum Upgrade auf Azure SQL-Datenbank V12 ([Azure-Portal](sql-database-upgrade-server-portal.md), [PowerShell](sql-database-upgrade-server-powershell.md)) |Enthält Anweisungen zum Aktualisieren von vorhandenen Azure SQL-Datenbank V11-Servern und -Datenbanken auf Azure SQL-Datenbank V12 mithilfe des Azure-Portals oder PowerShell. |
 
@@ -97,6 +97,6 @@ Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblem
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 
