@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 727891d92c047abe405415ea544db6f77a0db9f9
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c214e37fb4211e8a2686a2beb18cf84ee77d5783
 
 
 ---
@@ -73,7 +73,7 @@ Sie verwenden auch die übliche Verzweigungsstrategie, bei der Code aus der Entw
 > * Sie können ein [Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/) : Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und kostenlose Azure-Dienste wie etwa Web-Apps nutzen, wenn das Guthaben aufgebraucht ist.
 > * Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) : Ihr Visual Studio-Abonnement schließt ein monatliches Guthaben ein, das Sie für kostenpflichtige Azure-Dienste nutzen können.
 > 
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -276,6 +276,6 @@ Eine agile Softwareentwicklung ist für viele Unternehmen unverzichtbar, die Azu
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

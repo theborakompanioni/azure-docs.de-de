@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: facd5c50cb65bc1f656c0b5adf1e81087644934a
+ms.sourcegitcommit: 88e8ead2b22bf53510c9c6008e34647272326690
+ms.openlocfilehash: 32d93f1ff6cf4ae78051b7208e38b6915509210f
 
 
 ---
@@ -95,7 +95,7 @@ Das **NotificationHubService** -Objekt enthält die folgenden Objektinstanzen f�
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Gewusst wie: Senden von Pushbenachrichtigungen an Android-Apps
 Das **GcmService**-Objekt enthält eine **send**-Methode, mit der Sie Pushbenachrichtigungen an Android-Apps senden können. Die **send** -Methode nimmt die folgenden Parameter entgegen:
 
-* **Tags:** die Tag-ID. Falls kein Tag angegeben ist, wird die Benachrichtigung an alle Clients geschickt
+* **Tags:** die Tag-ID. Falls kein Tag angegeben ist, wird die Benachrichtigung an alle Clients gesendet.
 * **Payload:** die Nutzlast der Nachricht als JSON oder unformatierte Zeichenfolge.
 * **Callback:** die Rückruffunktion.
 
@@ -215,6 +215,6 @@ Mit den obigen Beispielcodeausschnitten können Sie problemlos eine Dienstinfras
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

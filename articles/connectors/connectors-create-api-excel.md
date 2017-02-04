@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen des Excel-Connectors | Microsoft Docs
-description: Übersicht über den Excel-Connector mit REST-API-Parametern
-services: ''
-documentationcenter: ''
+title: "Hinzufügen des Excel-Connectors | Microsoft Docs"
+description: "Übersicht über den Excel-Connector mit REST-API-Parametern"
+services: 
+documentationcenter: 
 author: msftman
 manager: erikre
-editor: ''
+editor: 
 tags: connectors
-
+ms.assetid: 03af8652-9223-4348-9490-602872a680f0
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,13 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 5c585b988cc1989288e1e5953d1bdab6b5281707
+ms.openlocfilehash: aa8b95bd92d6bed60ba20ffd28e53d26930d7a31
+
 
 ---
-# Erste Schritte mit dem Excel-Connector
-Derzeit steht in Logic Apps kein Excel-Connector zur Verfügung.
+# <a name="get-started-with-the-excel-connector"></a>Erste Schritte mit dem Excel-Connector
+Derzeit steht in Logic Apps kein Excel-Connector zur Verfügung. 
 
-## So verwenden Sie Excel-Daten
-Sie können Excel-Daten in einer durch Trennzeichen getrennten Datei (CSV-Datei) in einem Speicherordner speichern (beispielsweise in [OneDrive](connectors-create-api-onedrive.md)). Diese CSV-Datei kann auch mit dem [Flatfile-Connector](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md) verwendet werden.
+## <a name="to-use-excel-data"></a>So verwenden Sie Excel-Daten
+Sie können Excel-Daten in einer durch Trennzeichen getrennten Datei (CSV-Datei) in einem Speicherordner speichern (beispielsweise in [OneDrive](connectors-create-api-onedrive.md)). Diese CSV-Datei kann auch mit dem [Flatfile-Connector](../logic-apps/logic-apps-enterprise-integration-flatfile.md)verwendet werden.
 
 <!---
 
@@ -208,9 +212,13 @@ Applies to version: 1.0.
 
 
 ## Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)  
+[Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md)  
 
 
 -->
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

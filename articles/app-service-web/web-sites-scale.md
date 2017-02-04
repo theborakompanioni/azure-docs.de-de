@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 0ab1dcc8ccc621f5dabfffffb17fd1822f78eb1c
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: b7ef8386e974486c2d327d0b042eeabdb9701b7e
 
 
 ---
@@ -89,7 +89,7 @@ Je nach Preisstufe stehen die folgenden entwicklungsbezogenen Funktionen zur Ver
 * Ausführliche Informationen zu allen weiteren Funktionen in den App Service-Plänen, einschließlich Preisgestaltung und allgemein interessanten Funktionen (auch für Entwickler) finden Sie in den [App Service – Preisdetails](https://azure.microsoft.com/pricing/details/web-sites/).
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte und keine Verpflichtungen erforderlich.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte und keine Verpflichtungen erforderlich.
 > 
 > 
 
@@ -143,6 +143,6 @@ Je nach Preisstufe stehen die folgenden entwicklungsbezogenen Funktionen zur Ver
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

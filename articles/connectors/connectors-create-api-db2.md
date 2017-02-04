@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d9b00d1db69951ce183f05c8237db02cd046931b
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: bba03cfb21e8eebdbf67152de9c6e2da6f22f5a2
 
 
 ---
@@ -40,7 +40,7 @@ Der DB2-Connector unterstützt die folgenden Datenbankvorgänge:
 
 In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App zum Verarbeiten von Datenbankvorgängen verwenden.
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Weitere Informationen zu Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="available-actions"></a>Verfügbare Aktionen
 Der DB2-Connector unterstützt die folgenden Logik-App-Aktionen:
@@ -409,11 +409,11 @@ Dieser Connector unterstützt die folgenden IBM DB2-Plattformen und -Versionen s
 * IBM DB2 für LUW 10.5
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
+[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

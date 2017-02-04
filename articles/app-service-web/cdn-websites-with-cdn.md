@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: e564a1a277e559c10b13932ed7e017a28780c334
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 0b1f13f816c7836557cd6f646f2d9b38f7bc5b14
 
 
 ---
@@ -47,7 +47,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 > * Sie können ein [Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/) : Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und kostenlose Azure-Dienste wie etwa Web-Apps nutzen, wenn das Guthaben aufgebraucht ist.
 > * Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) : Ihr Visual Studio-Abonnement schließt ein monatliches Guthaben ein, das Sie für kostenpflichtige Azure-Dienste nutzen können.
 > 
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -548,6 +548,6 @@ Die [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.as
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

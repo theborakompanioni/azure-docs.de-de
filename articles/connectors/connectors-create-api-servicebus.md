@@ -16,15 +16,15 @@ ms.workload: integration
 ms.date: 08/02/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a1ecedf9bf78e0a15908c1a03ca24d611f551875
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 1e23402cbc63aeb262bfb471745589cc0bbd734f
 
 
 ---
 # <a name="get-started-with-the-azure-service-bus-connector"></a>Erste Schritte mit dem Azure Service Bus-Connector
 Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange und Empfangen aus Abonnements usw.
 
-Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
+Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
 
 ## <a name="connect-to-service-bus"></a>Herstellen einer Verbindung mit Service Bus
 Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine Verbindung mit dem Dienst herstellen. Eine [Verbindung](connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.  
@@ -34,14 +34,14 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zun
 > 
 
 ## <a name="use-a-service-bus-trigger"></a>Verwenden eines Service Bus-Triggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
 
 > [!INCLUDE [Steps to create a Service Bus trigger](../../includes/connectors-create-api-servicebus-trigger.md)]
 > 
 > 
 
 ## <a name="use-a-service-bus-action"></a>Verwenden einer Service Bus-Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
 [!INCLUDE [Steps to create a Service Bus action](../../includes/connectors-create-api-servicebus-action.md)]
 
@@ -106,8 +106,7 @@ ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer
 | ContentType |string |Inhaltstyp des Nachrichteninhalts. |
 | Eigenschaften |Objekt |Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften. |
 | MessageId |string |Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert). |
-| To
- |string |Zieladresse. |
+| To |string |Zieladresse. |
 | ReplyTo |string |Warteschlangenadresse für die Antwort. |
 | ReplyToSessionId |string |Sitzungs-ID für die Antwort. |
 | Bezeichnung |string |Anwendungsspezifische Bezeichnung. |
@@ -157,11 +156,11 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 | die Standardeinstellung |Fehler beim Vorgang. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

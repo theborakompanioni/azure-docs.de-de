@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 6bbbf253b9735695e7ace0c27e4bc96df7a0c779
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: cddcfcc816a2af74fbdd68e4e1031051c42b45a7
 
 
 ---
@@ -53,7 +53,7 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Sehen Sie sich eine Web-App in Aktion an: [Probieren Sie App Service gleich aus](http://go.microsoft.com/fwlink/?LinkId=523751), und erstellen Sie eine kurzzeitige Start-App – ohne Kreditkarte oder weitere Verpflichtungen.
+> Sehen Sie sich eine Web-App in Aktion an: [Probieren Sie App Service gleich aus](https://azure.microsoft.com/try/app-service/), und erstellen Sie eine kurzzeitige Start-App – ohne Kreditkarte oder weitere Verpflichtungen.
 > 
 > 
 
@@ -177,7 +177,7 @@ Wir werden diese Aufgaben nun nacheinander konfigurieren.
    > 
    > 
 4. Für die letzten beiden Aufgaben (Festlegen des virtuellen Verzeichnisses und Aktivieren von Composer) ist das [Azure-Portal](https://portal.azure.com) erforderlich. Melden Sie sich also mit Ihrem Azure-Konto beim [Portal](https://portal.azure.com) an.
-5. Beginnen Sie im linken Menü, und klicken Sie auf **App Services** > **&lt;App-Name>** > **Erweiterungen**.
+5. Klicken Sie im linken Menü auf **App Services** > **&lt;App-Name>** > **Erweiterungen**.
    
     ![Aktivieren von Composer für die PHP-App (Laravel) in Azure](./media/app-service-web-php-get-started/configure-composer-tools.png)
    
@@ -205,7 +205,7 @@ Wir werden diese Aufgaben nun nacheinander konfigurieren.
 11. Scrollen Sie zum unteren Rand des [Blatts](../azure-resource-manager/resource-group-portal.md#manage-resources), und ändern Sie das virtuelle Stammverzeichnis so, dass es nicht auf **site\wwwroot**, sondern auf **site\wwwroot\public** verweist.
     
      ![Festlegen des virtuellen Verzeichnisses für die PHP-App (Laravel) in Azure](./media/app-service-web-php-get-started/configure-virtual-dir-public.png)
-12. Klicken Sie oben auf dem [Blatt](../azure-resource-manager/resource-group-portal.md#manage-resources) auf **Speichern** .
+12. Klicken Sie oben auf dem [Blatt](../azure-resource-manager/resource-group-portal.md#manage-resources) auf **Speichern**.
     
      Sie haben das Festlegen des virtuellen Verzeichnisses abgeschlossen. 
 
@@ -278,6 +278,6 @@ Informieren Sie sich darüber, wie Sie Ihrer App Daten hinzufügen, indem Sie [i
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

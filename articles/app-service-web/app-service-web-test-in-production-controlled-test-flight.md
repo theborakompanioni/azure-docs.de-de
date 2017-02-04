@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 152b08cf72c48109f17b5c4715e4ca5fafbb1b7b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 84b5f28fcd0640fd85b5f8c9d655105790c70d62
 
 
 ---
@@ -56,7 +56,7 @@ In diesem Tutorial lernen Sie, wie Sie folgende Szenarien kombinieren, um Ihre A
 > * Sie können ein [Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/) : Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und kostenlose Azure-Dienste wie etwa Web-Apps nutzen, wenn das Guthaben aufgebraucht ist.
 > * Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) : Ihr Visual Studio-Abonnement schließt ein monatliches Guthaben ein, das Sie für kostenpflichtige Azure-Dienste nutzen können.
 >
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 >
 >
 
@@ -359,6 +359,6 @@ Mit Azure App Service können kleine und mittelgroße Unternehmen ihre kundenori
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

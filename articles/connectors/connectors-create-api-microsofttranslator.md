@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: f6e7cf0e9e2055df5f8a9fcf9ea49330a91be656
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: add307420b9e16a60b0e57b0ba08188b2509978e
 
 
 ---
@@ -28,7 +28,7 @@ Stellen Sie eine Verbindung mit Microsoft Translator her, um Text zu übersetzen
 * Erstellen eines Geschäftsworkflows basierend auf den Daten, die von Microsoft Translator abgerufen werden. 
 * Verwenden von Aktionen, um Text zu übersetzen, eine Sprache zu erkennen und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn beispielsweise eine neue Datei in Dropbox erstellt wird, können Sie den Text in der Datei mit Microsoft Translator in eine andere Sprache übersetzen.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Microsoft Translator umfasst die folgenden Aktionen. Es gibt keine Trigger.
@@ -125,7 +125,7 @@ Es gibt keine Parameter für diesen Aufruf.
 | Name |string |no |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
 
@@ -135,6 +135,6 @@ Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

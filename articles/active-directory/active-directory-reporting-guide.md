@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/16/2016
+ms.date: 01/19/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 0c9d13d0489645cf566c5451e0c10e7f5a799d92
-ms.openlocfilehash: f29e020b184ac92c85d0fa0ef47319532d43f278
+ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
+ms.openlocfilehash: b51d409a78d737ac6d15d05d5b146ed185223e75
 
 
 ---
 # <a name="azure-active-directory-reporting-guide"></a>Anleitung für Azure Active Directory-Berichte
 > [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-reporting-azure-portal.md)
-> * [Klassisches Azure-Portal](active-directory-reporting-guide.md)
+> * [Azure-Portal](active-directory-reporting-guide.md)
+> * [Klassisches Azure-Portal](active-directory-reporting-guide-classic-portal.md)
 > 
 > 
 
@@ -30,12 +30,10 @@ ms.openlocfilehash: f29e020b184ac92c85d0fa0ef47319532d43f278
 * [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md)
 * [Azure Active Directory-Überwachungsberichtsereignisse](active-directory-reporting-audit-events.md)
 * [Vermerkdauer für Azure Active Directory-Berichte](active-directory-reporting-retention.md)
-* [Latenzen bei Azure Active Directory-Berichten](active-directory-reporting-latencies.md)
-* [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

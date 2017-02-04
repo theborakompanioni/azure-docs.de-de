@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5749b37408be8eeab6a3fba40d6768ca1d035096
+ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
+ms.openlocfilehash: a4cde433850ab3627f870b51f5a897c6f846c2f0
 
 
 ---
@@ -29,16 +29,6 @@ ms.openlocfilehash: 5749b37408be8eeab6a3fba40d6768ca1d035096
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
 > 
 > 
-
-Passen Sie die Leistung durch horizontales Hochskalieren der Computeressourcen und des Arbeitsspeichers an, um die wechselnden Anforderungen Ihrer Workload zu erfüllen. Sparen Sie außerhalb von Spitzenzeiten Kosten, indem Sie die zur Verfügung stehenden Ressourcen verringern oder den Computevorgang vollständig pausieren.
-
-Diese Sammlung von Tasks verwendet das Azure-Portal für folgende Aufgaben:
-
-* Skalieren von Computeressourcen
-* Anhalten von Computeressourcen
-* Fortsetzen von Computeressourcen
-
-Informationen hierzu finden Sie in der [Übersicht über das Verwalten von Computeleistung][Manage compute overview].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 ### <a name="install-the-latest-version-of-azure-powershell"></a>Installieren der neuesten Version von Azure PowerShell
@@ -141,6 +131,6 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][Management 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
