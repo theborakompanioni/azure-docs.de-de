@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -27,8 +27,8 @@ Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom 
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **VM-Agent aktivieren**.
