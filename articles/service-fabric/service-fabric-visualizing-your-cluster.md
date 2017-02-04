@@ -15,13 +15,17 @@ ms.workload: na
 ms.date: 08/22/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b97cd5d2f9a29d3fa8f13363b937ace276e556ff
+ms.sourcegitcommit: 1825e1400b95eb2a810082b6a3f15324261084b0
+ms.openlocfilehash: b9e10181e123b91f5593ea135220f97b780186c9
 
 
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
 Service Fabric Explorer ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Azure Service Fabric-Cluster. Service Fabric Explorer wird direkt innerhalb des Clusters gehostet und ist daher immer verfügbar – unabhängig davon, wo der Cluster ausgeführt wird.
+
+Im folgenden Microsoft Virtual Academy-Video erfahren Sie, wie Sie den Service Fabric Explorer verwenden: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965">
+<img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244">
+</a></center>
 
 ## <a name="connect-to-service-fabric-explorer"></a>Verbinden mit Service Fabric Explorer
 Wenn Sie die Anweisungen zum [Vorbereiten Ihrer Entwicklungsumgebung](service-fabric-get-started.md) befolgt haben, können Sie Service Fabric Explorer im lokalen Cluster starten, indem Sie zu „http://localhost:19080/Explorer“ navigieren.
@@ -128,6 +132,6 @@ Wenn Sie versuchen, eine Verbindung mit Service Fabric Explorer auf einem sicher
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

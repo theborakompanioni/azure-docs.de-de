@@ -1,14 +1,14 @@
 ---
-title: Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer | Microsoft Docs
-description: Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer einen persistenten Datenträger hinzufügen.
-keywords: virtueller Linux-Computer,Ressourcendatenträger hinzufügen
+title: "Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer einen persistenten Datenträger hinzufügen."
+keywords: "virtueller Linux-Computer,Ressourcendatenträger hinzufügen"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: rickstercdn
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-
+ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
@@ -16,55 +16,59 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.date: 09/06/2016
 ms.author: rclaus
+translationtype: Human Translation
+ms.sourcegitcommit: 17ddda372f3a232be62e565b700bb1be967fb8e3
+ms.openlocfilehash: 5e9fb48fdf0da9a1c75f4d08ab7d97976859340c
+
 
 ---
-# Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
-In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. Zum Hinzufügen eines Datenträgers benötigen Sie die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), die im Resource Manager-Modus (`azure config mode arm`) konfiguriert wurde.
+# <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
+In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. Zum Hinzufügen eines Datenträgers benötigen Sie die im Resource Manager-Modus (`azure config mode arm`) konfigurierte [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (CLI).  
 
-## Schnellbefehle
-Ersetzen Sie in den folgenden Befehlsbeispielen die Werte zwischen &lt; und &gt; durch die Werte aus Ihrer eigenen Umgebung.
+## <a name="quick-commands"></a>Schnellbefehle
+Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
 
-```bash
-azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>
+```azurecli
+azure vm disk attach-new myResourceGroup myVM 50
 ```
 
-## Anfügen eines Datenträgers
-Neue Datenträger lassen sich schnell anfügen. Geben Sie `azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Das Ergebnis sollte etwa wie folgt aussehen:
+## <a name="attach-a-disk"></a>Anfügen eines Datenträgers
+Neue Datenträger lassen sich schnell anfügen. Geben Sie `azure vm disk attach-new myResourceGroup myVM sizeInGB` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
 
-```bash
-azure vm disk attach-new myuniquegroupname myuniquevmname 5
+```azurecli
+azure vm disk attach-new myResourceGroup myVM 50
 ```
 
 Ausgabe
 
-```bash
+```azurecli
 info:    Executing command vm disk attach-new
-+ Looking up the VM "myuniquevmname"
-info:    New data disk location: https://cliexxx.blob.core.windows.net/vhds/myuniquevmname-20150526-0xxxxxxx43.vhd
-+ Updating VM "myuniquevmname"
++ Looking up the VM "myVM"
+info:    New data disk location: https://mystorageaccount.blob.core.windows.net/vhds/myVM-20150526-043.vhd
++ Updating VM "myVM"
 info:    vm disk attach-new command OK
 ```
 
-## Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
 > [!NOTE]
-> In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-mac-create-ssh-keys.md). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
+> In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
 > 
 > 
 
 Sie benötigen SSH für Ihren virtuellen Azure-Computer, um den neuen Datenträger zu partitionieren, zu formatieren und bereitzustellen, damit er von Ihrem virtuellen Linux-Computer verwendet werden kann. Falls Sie mit dem Herstellen einer Verbindung über **SSH** nicht vertraut sind: Der Befehl hat das Format `ssh <username>@<FQDNofAzureVM> -p <the ssh port>` und sieht wie folgt aus:
 
 ```bash
-ssh ops@myuni-westu-1432328437727-pip.westus.cloudapp.azure.com -p 22
+ssh ops@mypublicdns.westus.cloudapp.azure.com -p 22
 ```
 
 Ausgabe
 
 ```bash
-The authenticity of host 'myuni-westu-1432328437727-pip.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
+The authenticity of host 'mypublicdns.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
 ECDSA key fingerprint is bx:xx:xx:xx:xx:xx:xx:xx:xx:x:x:x:x:x:x:xx.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'myuni-westu-1432328437727-pip.westus.cloudapp.azure.com,191.239.51.1' (ECDSA) to the list of known hosts.
-ops@myuni-westu-1432328437727-pip.westus.cloudapp.azure.com's password:
+Warning: Permanently added 'mypublicdns.westus.cloudapp.azure.com,191.239.51.1' (ECDSA) to the list of known hosts.
+ops@mypublicdns.westus.cloudapp.azure.com's password:
 Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.16.0-37-generic x86_64)
 
 * Documentation:  https://help.ubuntu.com/
@@ -90,10 +94,10 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-ops@myuniquevmname:~$
+ops@myVM:~$
 ```
 
-Nachdem Sie die Verbindung zu Ihrem virtuellen Computer hergestellt haben, können Sie einen Datenträger anfügen. Suchen Sie zunächst den Datenträger mithilfe von `dmesg | grep SCSI` (die Methode zum Ermitteln Ihres neuen Datenträgers kann anders sein). In diesem Fall sieht er in etwa so aus:
+Nachdem Sie die Verbindung zu Ihrem virtuellen Computer hergestellt haben, können Sie einen Datenträger anfügen.  Suchen Sie zunächst den Datenträger mithilfe von `dmesg | grep SCSI` (die Methode zum Ermitteln Ihres neuen Datenträgers kann anders sein). In diesem Fall sieht er in etwa so aus:
 
 ```bash
 dmesg | grep SCSI
@@ -109,7 +113,7 @@ Ausgabe
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Wir verwenden den Datenträger `sdc`. Partitionieren Sie nun den Datenträger mit `sudo fdisk /dev/sdc` – wir gehen davon aus, dass der Datenträger `sdc` war. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte.
+Wir verwenden den Datenträger `sdc`. Partitionieren Sie nun den Datenträger mit `sudo fdisk /dev/sdc` – wir gehen davon aus, dass der Datenträger `sdc` war. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte.
 
 ```bash
 sudo fdisk /dev/sdc
@@ -190,19 +194,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Erstellen Sie mit `mkdir` ein Verzeichnis zum Bereitstellen des neuen Dateisystems.
+Erstellen Sie mit `mkdir`ein Verzeichnis zum Bereitstellen des neuen Dateisystems.
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Stellen Sie das Verzeichnis mit `mount` bereit:
+Stellen Sie das Verzeichnis mit `mount`bereit:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Der Datenträger kann nun als `/datadrive` verwendet werden.
+Der Datenträger kann nun als `/datadrive`verwendet werden.
 
 ```bash
 ls
@@ -240,43 +244,54 @@ Die Ausgabe sieht in etwa wie folgt aus:
 sudo vi /etc/fstab
 ```
 
-In diesem Beispiel verwenden wir den UUID-Wert für das neue Gerät **/dev/sdc1**, das in den vorhergehenden Schritten erstellt wurde, und den Bereitstellungspunkt **/datadrive**. Fügen Sie am Ende der Datei **/etc/fstab** die folgende Zeile hinzu:
+In diesem Beispiel verwenden wir den UUID-Wert für das neue Gerät **/dev/sdc1**, das in den vorherigen Schritten erstellt wurde, und den Bereitstellungspunkt **/datadrive**. Fügen Sie am Ende der Datei **/etc/fstab** die folgende Zeile hinzu:
 
 ```bash
-UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
 > Wenn Sie später einen Datenträger entfernen, ohne „fstab“ zu bearbeiten, kann der Start des virtuellen Computers fehlschlagen. Bei den meisten Distributionen wird entweder die fstab-Option `nofail` oder `nobootwait` bereitgestellt (bzw. auch beide). Mit diesen Optionen kann ein System auch dann starten, wenn der Datenträger beim Start nicht bereitgestellt wird. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution.
 > 
-> 
+> Die **nofail**-Option stellt sicher, dass der virtuelle Computer gestartet wird, selbst wenn das Dateisystem beschädigt oder der Datenträger zur Startzeit nicht vorhanden ist. Ohne diese Option können Verhalten auftreten, die unter [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (Aufgrund von FSTAB-Fehler keine SSH-Verbindung mit Linux-VM möglich) beschrieben sind.
 
-### TRIM/UNMAP-Unterstützung für Linux in Azure
+### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP-Unterstützung für Linux in Azure
 Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann Kosten sparen, wenn Sie große Dateien erstellen und diese dann löschen.
 
 Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
 
 * Verwenden Sie die Bereitstellungsoption `discard` in `/etc/fstab`, z.B.:
-  
-        UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
-* Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
+
+    ```bash
+    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+    ```
+* In einigen Fällen kann sich die Option `discard` auf die Leistung auswirken. Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder ihn „crontab“ hinzufügen, um eine regelmäßige Ausführung zu erzielen:
   
     **Ubuntu**
   
-        # sudo apt-get install util-linux
-        # sudo fstrim /datadrive
+    ```bash
+    sudo apt-get install util-linux
+    sudo fstrim /datadrive
+    ```
   
     **RHEL/CentOS**
-  
-        # sudo yum install util-linux
-        # sudo fstrim /datadrive
 
-## Problembehandlung
+    ```bash
+    sudo yum install util-linux
+    sudo fstrim /datadrive
+    ```
+
+## <a name="troubleshooting"></a>Problembehandlung
 [!INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
-* Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](virtual-machines-linux-optimization.md), um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
-* Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md) für zusätzliche Leistung.
+* Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](virtual-machines-linux-optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
+* Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) für zusätzliche Leistung.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Dec16_HO1-->
+
+

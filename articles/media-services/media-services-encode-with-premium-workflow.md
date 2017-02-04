@@ -1,12 +1,12 @@
 ---
 title: Erweiterte Codierung mit dem Media Encoder Premium Workflow | Microsoft Docs
-description: Erfahren Sie, wie Sie eine Codierung mit dem Media Encoder Premium Workflow durchführen. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET.
+description: "Erfahren Sie, wie Sie eine Codierung mit dem Media Encoder Premium Workflow durchführen. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0f4c87ac-810a-4d42-8df8-923dff2016c6
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,23 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6dcc79a2adf81c82d245c99116f28eb4db983396
+
 
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Erweiterte Codierung mit dem Media Encoder Premium Workflow
 > [!NOTE]
 > Der in diesem Thema beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar.
-> 
-> 
+>
+>
 
 Fragen zu Encoder Premium senden Sie per E-Mail an „mepd at Microsoft.com“.
 
 ## <a name="overview"></a>Übersicht
-Microsoft Azure Media Services stellt den **Media Encoder Premium Workflow** -Medienprozessor vor. Dieser Prozessor bietet leistungsstarke Codierungsfunktionen für Ihre bedarfsgesteuerten Premium-Workflows. 
+Microsoft Azure Media Services stellt den **Media Encoder Premium Workflow** -Medienprozessor vor. Dieser Prozessor bietet leistungsstarke Codierungsfunktionen für Ihre bedarfsgesteuerten Premium-Workflows.
 
-In den folgenden Themen erhalten Sie nähere Informationen zum **Media Encoder Premium Workflow**: 
+In den folgenden Themen erhalten Sie nähere Informationen zum **Media Encoder Premium Workflow**:
 
 * [Von Media Encoder Premium Workflow unterstützte Formate](media-services-premium-workflow-encoder-formats.md) : Erläutert die von **Media Encoder Premium Workflow**unterstützten Formate.
-* Im Abschnitt [Vergleich der Encoder](media-services-encode-asset.md#compare_encoders) werden die Codierungsfunktionen von **Media Encoder Premium Workflow** und **Media Encoder Standard** verglichen.
+* Im Abschnitt [Azure On-Demand Media Encoder – Übersicht und Vergleich](media-services-encode-asset.md) werden die Codierungsfunktionen von **Media Encoder-Premium-Workflow** und **Media Encoder Standard** verglichen.
 
 Dieses Thema demonstriert die Codierung mit **Media Encoder Premium Workflow** unter Verwendung von .NET.
 
@@ -43,28 +47,29 @@ Sie können die standardmäßigen Workflowdateien [hier](https://github.com/Azur
 
 Die Workflowdateien müssen als Medienobjekt in Ihr Media Services-Konto hochgeladen und das Medienobjekt muss an die Codierungsaufgabe übergeben werden.
 
-Das folgende Beispiel zeigt, wie Sie mit dem **Media Encoder Premium Workflow**eine Codierung durchführen. 
+Das folgende Beispiel zeigt, wie Sie mit dem **Media Encoder Premium Workflow**eine Codierung durchführen.
 
-Es werden folgende Schritte ausgeführt: 
+Es werden folgende Schritte ausgeführt:
 
-1. Erstellen eines Medienobjekts und Hochladen einer Workflowdatei. 
+1. Erstellen eines Medienobjekts und Hochladen einer Workflowdatei.
 2. Erstellen eines Medienobjekts und Hochladen einer Quellmediendatei.
 3. Abrufen des Medienprozessors "Media Encoder Premium Workflow".
-4. Erstellen eines Auftrags und einer Aufgabe. 
-   
+4. Erstellen eines Auftrags und einer Aufgabe.
+
     In den meisten Fällen die Konfigurationszeichenfolge für die Aufgabe leer (wie im folgenden Beispiel). Es gibt einige erweiterte Szenarios, bei denen Sie eine XML-Zeichenfolge an die Codierungsaufgabe bereitstellen (und Laufzeiteigenschaften dynamisch festlegen) müssen. Beispiele für solche Szenarios sind das Erstellen einer Überlagerung, das parallele oder sequenzielle Zusammenfügen von Medien und die Untertitelung.
 5. Hinzufügen von zwei Medienobjekten zur Aufgabe.
-   
+
     a. 1. – das Medienobjekt für den Workflow
-   
+
     b. 2. – das Videomedienobjekt
-   
-    **Hinweis**: Das Medienobjekt für den Workflow muss der Aufgabe vor dem Videomedienobjekt hinzugefügt werden. Die Konfigurationszeichenfolge für diese Aufgabe sollte leer sein. 
+
+    **Hinweis**: Das Medienobjekt für den Workflow muss der Aufgabe vor dem Videomedienobjekt hinzugefügt werden.
+   Die Konfigurationszeichenfolge für diese Aufgabe sollte leer sein.
 6. Übermitteln des Codierungsauftrags.
 
 Im folgenden finden Sie ein vollständiges Beispiel. Informationen zum Einrichten der Media Services-Entwicklung mit .NET finden Sie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md).
 
-    using System; 
+     using System;
     using System.Linq;
     using System.Configuration;
     using System.IO;
@@ -111,7 +116,7 @@ Im folgenden finden Sie ein vollständiges Beispiel. Informationen zum Einrichte
 
                 var workflowAsset = CreateAssetAndUploadSingleFile(_workflowFilePath);
                 var videoAsset = CreateAssetAndUploadSingleFile(_singleMP4InputFilePath);
-                IAsset outputAsset = CreateEncodingJob(workflowAsset, videoAsset); 
+                IAsset outputAsset = CreateEncodingJob(workflowAsset, videoAsset);
 
             }
 
@@ -146,7 +151,7 @@ Im folgenden finden Sie ein vollständiges Beispiel. Informationen zum Einrichte
             {
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("Premium Workflow encoding job");
-                // Get a media processor reference, and pass to it the name of the 
+                // Get a media processor reference, and pass to it the name of the
                 // processor to use for the specific task.
                 IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
 
@@ -159,9 +164,9 @@ Im folgenden finden Sie ein vollständiges Beispiel. Informationen zum Einrichte
                 // Specify the input asset to be encoded.
                 task.InputAssets.Add(workflow);
                 task.InputAssets.Add(video); // we add one asset
-                // Add an output asset to contain the results of the job. 
-                // This output is specified as AssetCreationOptions.None, which 
-                // means the output asset is not encrypted. 
+                // Add an output asset to contain the results of the job.
+                // This output is specified as AssetCreationOptions.None, which
+                // means the output asset is not encrypted.
                 task.OutputAssets.AddNew("Output asset",
                     AssetCreationOptions.None);
 
@@ -172,12 +177,12 @@ Im folgenden finden Sie ein vollständiges Beispiel. Informationen zum Einrichte
                 // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job to finish. 
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
                 progressJobTask.Wait();
 
-                // If job state is Error the event handling 
-                // method for job progress should log errors.  Here we check 
+                // If job state is Error the event handling
+                // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)
                 {
@@ -272,6 +277,8 @@ Fragen zu Encoder Premium senden Sie per E-Mail an „mepd at Microsoft.com“.
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO2-->
 
 

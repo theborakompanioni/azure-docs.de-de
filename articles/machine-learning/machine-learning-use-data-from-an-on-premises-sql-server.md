@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: garye;krishnan
 translationtype: Human Translation
-ms.sourcegitcommit: 08e02c8e7bf031e42c574e457b70f3db45375096
-ms.openlocfilehash: b505c79f3a4df9717da021dc70b9f77452636f85
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 60bd35262c0aa017b42b303dd8244054743a4635
 
 
 ---
@@ -80,19 +80,19 @@ Der erste Schritt ist das Erstellen und Einrichten des Gateways für den Zugriff
 2. Klicken Sie links auf das Blatt **SETTINGS** und dann oben auf die Registerkarte **DATA GATEWAYS**.
 3. Klicken Sie am unteren Bildschirmrand auf **NEW DATA GATEWAY** .
 
-    ![](media/machine-learning-use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
+    ![Neues Datengateway](media/machine-learning-use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
 4. Geben Sie im Dialogfeld **New data gateway** den **Gateway Name** ein, und fügen Sie mit **Description** optional eine Beschreibung hinzu. Klicken Sie auf den Pfeil in der unteren rechten Ecke, um mit dem nächsten Schritt der Konfiguration fortzufahren.
 
-    ![](media/machine-learning-use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
+    ![Geben Sie einen Namen und eine Beschreibung für das Gateway ein.](media/machine-learning-use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
 5. Kopieren Sie im Dialogfeld „Download and register data gateway“ den GATEWAY REGISTRATION KEY in die Zwischenablage.
 
-    ![](media/machine-learning-use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
+    ![Herunterladen und Registrieren des Datengateways](media/machine-learning-use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>Wenn Sie das Microsoft-Datenverwaltungsgateway noch nicht heruntergeladen und installiert haben, klicken Sie auf **Download data management gateway**. So gelangen Sie zum Microsoft Download Center, in dem Sie die benötigte Gatewayversion auswählen können, um sie herunterzuladen und zu installieren. Ausführliche Informationen zu Installationsvoraussetzungen, Installationsschritten und Tipps zur Problembehandlung finden Sie in den Anfangsabschnitten des Artikels [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md).
 7. Nachdem das Gateway installiert ist, wird der Konfigurations-Manager des Datenverwaltungsgateways geöffnet und das Dialogfeld **Gateway registrieren** angezeigt. Fügen Sie den **Gatewayregistrierungsschlüssel** ein, den Sie in die Zwischenablage kopiert haben, und klicken Sie auf **Registrieren**.
 8. Wenn Sie bereits ein Gateway installiert haben, führen Sie den Konfigurations-Manager des Datenverwaltungsgateways aus, klicken Sie auf **Schlüssel ändern**, fügen Sie den  **Gatewayregistrierungsschlüssel** ein, den Sie in die Zwischenablage kopiert haben, und klicken Sie auf **OK**.
 9. Wenn die Installation abgeschlossen ist, wird das Dialogfeld **Gateway registrieren** für den Konfigurations-Manager des Microsoft-Datenverwaltungsgateways angezeigt. Fügen Sie den GATEWAYREGISTRIERUNGSSCHLÜSSEL ein, den Sie oben in die Zwischenablage kopiert haben, und klicken Sie auf **Registrieren**.
 
-    ![](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
+    ![Registrieren des Gateways](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. Die Gatewaykonfiguration ist abgeschlossen, wenn die folgenden Werte auf der Registerkarte **Startseite** des Konfigurations-Managers des Microsoft-Datenverwaltungsgateways festgelegt wurden:
 
     * **Gatewayname** und **Instanzname** sind auf den Namen des Gateways festgelegt.
@@ -100,20 +100,20 @@ Der erste Schritt ist das Erstellen und Einrichten des Gateways für den Zugriff
     * **Status** wird auf **Gestartet** festgelegt.
     * Die Statusleiste im unteren Bereich zeigt **Connected to Data Management Gateway Cloud Service** sowie ein grünes Häkchen an.
 
-      ![](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
+      ![Manager des Gateways zur Datenverwaltung](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
       Azure Machine Learning Studio wird bei erfolgreicher Registrierung auch aktualisiert.
 
-    ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\gateway-registered.png)
+    ![Gatewayregistrierung erfolgreich](media/machine-learning-use-data-from-an-on-premises-sql-server/gateway-registered.png)
 11. Klicken Sie im Dialogfeld **Datengateway herunterladen und registrieren** auf das Häkchen, um das Setup abzuschließen. Auf der Seite **Einstellungen** wird der Gatewaystatus „Online“ angezeigt. Im rechten Bereich finden Sie Status- und andere nützliche Informationen.
 
-    ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\gateway-status.png)
+    ![Gatewayeinstellungen](media/machine-learning-use-data-from-an-on-premises-sql-server/gateway-status.png)
 12. Wechseln Sie im Konfigurations-Managers des Microsoft-Datenverwaltungsgateways zur Registerkarte **Zertifikat** . Das auf dieser Registerkarte angegebene Zertifikat wird zum Verschlüsseln/Entschlüsseln von Anmeldeinformationen für den lokalen Datenspeicher verwendet, den Sie im Portal angeben. Dies ist das generierte Standardzertifikat. Microsoft empfiehlt Ihnen, dies in Ihr persönliches Zertifikat zu ändern, das Sie in Ihrem Zertifikatsverwaltungssystem sichern. Klicken Sie auf **Ändern** , um Ihr eigenes Zertifikat zu verwenden.
 
-    ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\data-gateway-configuration-manager-certificate.png)
+    ![Ändern des Gatewayzertifikats](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
 13. (Optional) Wenn Sie die ausführliche Protokollierung aktivieren möchten, um Probleme mit dem Gateway behandeln zu können, wechseln Sie im Konfigurations-Manager des Microsoft-Datenverwaltungsgateways zur Registerkarte **Diagnose**, und aktivieren Sie die Option **Ausführliche Protokollierung für die Problembehandlung aktivieren**. Die Protokollinformationen finden Sie in der Windows-Ereignisanzeige unter **Anwendungs- und Dienstprotokolle** -&gt; Knoten **Datenverwaltungsgateway**. Sie können die Verbindung mit einer lokalen Datenquelle über das Gateway auch über die Registerkarte **Diagnose** testen.
 
-    ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\data-gateway-configuration-manager-verbose-logging.png)
+    ![Ausführliche Protokollierung aktivieren](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
 Damit ist die Einrichtung des Gateways in Azure Machine Learning abgeschlossen.
 Nun können Sie Ihre lokalen Daten nutzen.
@@ -127,19 +127,19 @@ Nachdem Sie das Gateway eingerichtet haben, können Sie ein **Import Data** -Mod
 2. Suchen Sie das Modul **Import Data** , und ziehen Sie es in den Experimentbereich.
 3. Klicken Sie unter dem Bereich auf **Save as** . Geben Sie „Azure Machine Learning On-Premises SQL Server Tutorial“ als Namen des Experiments ein, wählen Sie den Arbeitsbereich, und klicken Sie auf das **OK** -Häkchen.
 
-   ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\experiment-save-as.png)
+   ![Speichern des Experiments unter einem neuen Namen](media/machine-learning-use-data-from-an-on-premises-sql-server/experiment-save-as.png)
 4. Klicken Sie auf das **Import Data**-Modul, um es auszuwählen, wählen Sie dann rechts neben dem Bereich in **Properties** in der Dropdownliste **Data source** „On-Premises SQL Database“ aus.
 5. Wählen Sie das **Data gateway** , das sie installiert und registriert haben. Sie können ein anderes Gateway einrichten, indem Sie „(add new Data Gateway…)“ auswählen.
 
-   ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\import-data-select-on-premises-data-source.png)
+   ![Auswählen des Datengateways für das Modul „Import Data“](media/machine-learning-use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
 6. Geben Sie **Database server name** und **Database name** der SQL-Datenbank ein, zusammen mit der SQL-**Database query**, die Sie ausführen möchten.
 7. Klicken Sie unter **User name and password** auf **Enter values**, und geben Sie Ihre Datenbank-Anmeldeinformationen ein. Je nach Ihrer lokalen SQL Server-Konfiguration können Sie die Integrierte Windows-Authentifizierung oder SQL Server-Authentifizierung verwenden.
 
-   ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\database-credentials.png)
+   ![Eingeben der Anmeldeinformationen für die Datenbank](media/machine-learning-use-data-from-an-on-premises-sql-server/database-credentials.png)
 
    Die Meldung „values required“ ändert sich in „values set“ mit einem grünen Häkchen. Sie müssen die Anmeldeinformationen nur einmal eingeben, solange sich die Datenbankinformationen oder das Kennwort nicht ändern. Azure Machine Learning verwendet das Zertifikat, das Sie bei der Installation des Gateways zum Verschlüsseln der Anmeldeinformationen in der Cloud bereitgestellt haben. Azure speichert nie unverschlüsselt lokale Anmeldeinformationen.
 
-   ![](media\\machine-learning-use-data-from-an-on-premises-sql-server\\import-data-properties-entered.png)
+   ![Eigenschaften des Moduls „Import Data“](media/machine-learning-use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. Klicken Sie auf **RUN** , um das Experiment auszuführen.
 
 Nach Abschluss der Ausführung des Experiments können Sie die Daten, die Sie aus der Datenbank importiert haben, durch Klicken auf den Ausgabeport des **Import Data**-Moduls und Auswählen von **Visualize** visuell darstellen.
@@ -148,6 +148,6 @@ Wenn Sie die Entwicklung des Experiments abgeschlossen haben, können Sie Ihr Mo
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

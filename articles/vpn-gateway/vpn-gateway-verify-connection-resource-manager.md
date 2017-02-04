@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 420b193d558d00f574d24c87ab9db6e9e757a952
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: d1b6d12b1976b317e9ed496857439c86e99253f9
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 420b193d558d00f574d24c87ab9db6e9e757a952
 Es gibt verschiedene Möglichkeiten zum Überprüfen der Gatewayverbindung. In diesem Artikel wird gezeigt, wie Sie den Status einer Resource Manager-Gatewayverbindung mithilfe des Azure-Portals und mithilfe von PowerShell überprüfen.
 
 ## <a name="verify-using-powershell"></a>Überprüfen mithilfe von PowerShell
-Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Weitere Informationen zur Verwendung von Resource Manager-Cmdlets finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
+Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Weitere Informationen zur Verwendung von Resource Manager-Cmdlets finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
 
 ### <a name="step-1-log-in-to-your-azure-account"></a>Schritt 1: Melden Sie sich bei Ihrem Azure-Konto an.
 1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her.
@@ -50,6 +50,6 @@ Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Ma
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e88511058b1de79ca222d87ada6c9abdf4daf11c
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 2459f106e90616b05062224be82a06ef20fbc7b4
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: e88511058b1de79ca222d87ada6c9abdf4daf11c
 Manchmal ändern sich die Einstellungen für „AddressPrefix“ oder „GatewayIPAddress“ Ihres lokalen Netzwerkgateways. Die folgenden Anweisungen unterstützen Sie beim Ändern der Einstellungen für Ihr lokales Netzwerkgateway. Sie können diese Einstellungen auch im Azure-Portal ändern.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 ## <a name="to-modify-ip-address-prefixes"></a>So ändern Sie IP-Adresspräfixe
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
@@ -39,6 +39,6 @@ Sie können die Gatewayverbindung überprüfen. Informationen finden Sie unter [
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

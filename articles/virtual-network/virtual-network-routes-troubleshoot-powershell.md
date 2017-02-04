@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
 
 
 ---
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um die auf einen virtuellen Computer ang
 ### <a name="view-effective-routes-for-a-network-interface"></a>Anzeigen der effektiven Routen für eine Netzwerkschnittstelle
 Führen Sie die folgenden Schritte durch, um die auf eine Netzwerkschnittstelle angewendeten Aggregatrouten anzuzeigen:
 
-1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wir: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wir: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 2. Mit dem folgenden Befehl werden alle Routen zurückgegeben, die auf die Netzwerkschnittstelle *VM1-NIC1* in der Ressourcengruppe *RG1* angewendet werden.
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -139,6 +139,6 @@ Beim Überprüfen der zurückgegebenen Liste der Routen sind einige Punkte zu be
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

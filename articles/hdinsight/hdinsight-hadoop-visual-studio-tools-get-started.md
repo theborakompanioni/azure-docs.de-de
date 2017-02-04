@@ -232,7 +232,7 @@ Mit der Aufgabenausführungsansicht für Hive bei Tez-Aufträgen können Sie str
 ## <a name="run-pig-scripts"></a>Ausführen von Pig-Skripts
 Data Lake-Tools für Visual Studio unterstützen das Erstellen und Senden von Pig-Skripts an HDInsight-Cluster. Benutzer können ein Pig-Projekt über eine Vorlage erstellen und das Skript dann an HDInsight-Cluster senden.
 
-## <a name="feedbacks-known-issues"></a>Feedbacks und bekannte Probleme
+## <a name="feedbacks--known-issues"></a>Feedbacks und bekannte Probleme
 * Derzeit werden HiveServer2-Ergebnisse als Nur-Text angezeigt, was nicht gerade ideal ist. Wir arbeiten an der Behebung dieses Problems.
 * Wenn die Ergebnisse mit NULL-Werten beginnen, werden die Ergebnisse derzeit nicht angezeigt. Dieses Problem wurde inzwischen behoben. Sollte es bei Ihnen auftreten, senden Sie uns eine E-Mail, oder wenden Sie sich an das Supportteam.
 * Das von Visual Studio erstellte HQL-Skript wird je nach der lokalen Regionseinstellung des Benutzer codiert. Es wird unter Umständen nicht richtig ausgeführt, wenn der Benutzer das Skript als Binärdaten in einen Cluster hochlädt.

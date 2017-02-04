@@ -1,13 +1,13 @@
 ---
 title: Herstellen einer Verbindung zwischen einem virtuellen Netzwerk und mehreren Standorten mithilfe von VPN Gateway und PowerShell | Microsoft Docs
-description: In diesem Artikel werden die Schritte zum Verbinden mehrerer lokaler Standorte mit einem virtuellen Netzwerk erläutert. Dabei wird ein VPN-Gateway im klassischen Bereitstellungsmodell verwendet.
+description: "In diesem Artikel werden die Schritte zum Verbinden mehrerer lokaler Standorte mit einem virtuellen Netzwerk erläutert. Dabei wird ein VPN-Gateway im klassischen Bereitstellungsmodell verwendet."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2016
 ms.author: yushwang
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3d6f2d2bc7bd55d7f7d609e66826e3a3722c8f32
+
 
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Hinzufügen einer Site-to-Site-Verbindung (S2S) zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung
@@ -53,28 +57,28 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 * Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 * Kompatible VPN-Hardware für jeden lokalen Standort. Lesen Sie unter [Informationen zu VPN-Geräten und Gateways für virtuelle Netzwerkverbindungen](vpn-gateway-about-vpn-devices.md) nach, ob das Gerät, das Sie verwenden möchten, bekanntermaßen kompatibel ist.
 * Eine externe öffentliche IPv4-Adresse für jedes VPN-Gerät. Die IP-Adresse darf sich nicht hinter einer NAT befinden. Dies ist eine Voraussetzung
-* Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+* Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 * Eine Person, die sich mit der Konfiguration Ihrer VPN-Hardware auskennt. Es ist nicht möglich, automatisch generierte VPN-Skripts aus dem klassischen Azure-Portal zum Konfigurieren der VPN-Geräte zu verwenden. Daher müssen Sie über profunde Kenntnisse in der Konfiguration des VPN-Geräts verfügen oder jemanden mit entsprechenden Fachkenntnissen hinzuziehen.
 * Die IP-Adressbereiche, die Sie für Ihr virtuelles Netzwerk verwenden möchten (sofern Sie sie noch nicht erstellt haben). 
 * Die IP-Adressbereiche für alle lokalen Netzwerkstandorte, mit denen Sie eine Verbindung herstellen. Sie müssen sicherstellen, dass sich die IP-Adressbereiche der lokalen Netzwerkstandorte nicht überlappen. Andernfalls wird das Hochladen der Konfiguration vom klassischen Azure-Portal oder von der REST-API abgelehnt. 
   
-    Wenn Sie z. B. zwei lokale Netzwerkstandorte haben, die beide den IP-Adressbereich 10.2.3.0/24 enthalten, und ein Paket die Zieladresse 10.2.3.3 aufweist, würde Azure nicht wissen, an welchen Standort Sie das Paket senden möchten, weil sich die Adressbereiche überlappen. Zur Vermeidung von Routingproblemen lässt Azure das Hochladen von Konfigurationsdateien mit überlappenden Bereichen nicht zu.
+    Wenn Sie z. B. zwei lokale Netzwerkstandorte haben, die beide den IP-Adressbereich 10.2.3.0/24 enthalten, und ein Paket die Zieladresse 10.2.3.3 aufweist, würde Azure nicht wissen, an welchen Standort Sie das Paket senden möchten, weil sich die Adressbereiche überlappen. Zur Vermeidung von Routingproblemen lässt Azure das Hochladen von Konfigurationsdateien mit überlappenden Bereichen nicht zu.
 
-## <a name="1.-create-a-site-to-site-vpn"></a>1. Erstellen eines Standort-zu-Standort-VPN
+## <a name="1-create-a-site-to-site-vpn"></a>1. Erstellen eines Standort-zu-Standort-VPN
 Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit dynamischem Routing. In diesem Fall können Sie direkt mit dem [Exportieren der Konfigurationseinstellungen für das virtuelle Netzwerk](#export)fortfahren. Andernfalls führen Sie die folgenden Schritte aus:
 
-### <a name="if-you-already-have-a-site-to-site-virtual-network,-but-it-has-a-static-(policy-based)-routing-gateway:"></a>Wenn Sie bereits über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, für dieses aber ein Gateway mit statischem (richtlinienbasiertem) Routing konfiguriert ist, gehen Sie wie folgt vor:
+### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Wenn Sie bereits über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, für dieses aber ein Gateway mit statischem (richtlinienbasiertem) Routing konfiguriert ist, gehen Sie wie folgt vor:
 1. Ändern Sie den Gatewaytyp in dynamisches Routing. Für ein VPN mit mehreren Standorten ist ein Gateway mit dynamischem Routing (auch als „routenbasiert“ bezeichnet) erforderlich. Um den Gatewaytyp zu ändern, müssen Sie zuerst das vorhandene Gateway löschen und dann ein neues erstellen. Anweisungen finden Sie unter [Gewusst wie: Ändern des VPN-Routingtyps für Ihr Gateway](vpn-gateway-configure-vpn-gateway-mp.md#how-to-change-the-vpn-routing-type-for-your-gateway).  
-2. Konfigurieren Sie das neue Gateway, und erstellen Sie den VPN-Tunnel. Anweisungen dazu finden Sie unter [Konfigurieren eines VPN Gateways im klassischen Azure-Portal](vpn-gateway-configure-vpn-gateway-mp.md). Ändern Sie zunächst den Gatewaytyp in dynamisches Routing. 
+2. Konfigurieren Sie das neue Gateway, und erstellen Sie den VPN-Tunnel. Anweisungen dazu finden Sie unter [Konfigurieren eines VPN Gateways im klassischen Azure-Portal](vpn-gateway-configure-vpn-gateway-mp.md). Ändern Sie zunächst den Gatewaytyp in dynamisches Routing. 
 
-### <a name="if-you-don't-have-a-site-to-site-virtual-network:"></a>Wenn Sie nicht über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, gehen Sie wie folgt vor:
+### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Wenn Sie nicht über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, gehen Sie wie folgt vor:
 1. Erstellen Sie anhand der folgenden Anweisungen das virtuelle Standort-zu-Standort-Netzwerk: [Erstellen eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung im klassischen Azure-Portal](vpn-gateway-site-to-site-create.md).  
-2. Konfigurieren Sie anhand der folgenden Anweisungen ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
+2. Konfigurieren Sie anhand der folgenden Anweisungen ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
-## <a name="<a-name="export"></a>2.-export-the-network-configuration-file"></a><a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
+## <a name="a-nameexporta2-export-the-network-configuration-file"></a><a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
 Exportieren Sie die Netzwerkkonfigurationsdatei. Die exportierte Datei wird zum Konfigurieren der neuen Multisite-Einstellungen verwendet. Anweisungen zum Exportieren einer Datei finden Sie unter [Gewusst wie: Erstellen eines VNET mithilfe einer Netzwerkkonfigurationsdatei im Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md#how-to-create-a-vnet-using-a-network-config-file-in-the-azure-portal). 
 
-## <a name="3.-open-the-network-configuration-file"></a>3. Öffnen der Netzwerkkonfigurationsdatei
+## <a name="3-open-the-network-configuration-file"></a>3. Öffnen der Netzwerkkonfigurationsdatei
 Öffnen Sie die Netzwerkkonfigurationsdatei, die Sie im letzten Schritt heruntergeladen haben. Verwenden Sie dazu einen beliebigen XML-Editor. Die Datei sollte in etwa wie folgt aussehen:
 
         <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -124,7 +128,7 @@ Exportieren Sie die Netzwerkkonfigurationsdatei. Die exportierte Datei wird zum 
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-## <a name="4.-add-multiple-site-references"></a>4. Hinzufügen von mehreren Standortverweisen
+## <a name="4-add-multiple-site-references"></a>4. Hinzufügen von mehreren Standortverweisen
 Beim Hinzufügen oder Entfernen der Informationen für Standortverweise nehmen Sie Konfigurationsänderungen an „ConnectionsToLocalNetwork/LocalNetworkSiteRef“ vor. Wenn Sie einen neuen Verweis für einen lokalen Standort hinzufügen, erstellt Azure einen neuen Tunnel. Das folgende Beispiel zeigt die Netzwerkkonfiguration für eine Einzelstandortverbindung. Speichern Sie die Datei, wenn Sie alle Änderungen vorgenommen haben.
 
         <Gateway>
@@ -142,10 +146,10 @@ Beim Hinzufügen oder Entfernen der Informationen für Standortverweise nehmen S
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-## <a name="5.-import-the-network-configuration-file"></a>5. Importieren der Netzwerkkonfigurationsdatei
+## <a name="5-import-the-network-configuration-file"></a>5. Importieren der Netzwerkkonfigurationsdatei
 Importieren Sie die Netzwerkkonfigurationsdatei. Wenn Sie diese Datei mit den Änderungen importieren, werden die neuen Tunnel hinzugefügt. Die Tunnel verwenden das dynamische Gateway, das Sie zuvor erstellt haben. Anweisungen zum Importieren einer Datei finden Sie unter [Gewusst wie: Erstellen eines VNET mithilfe einer Netzwerkkonfigurationsdatei im Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md#how-to-create-a-vnet-using-a-network-config-file-in-the-azure-portal). 
 
-## <a name="6.-download-keys"></a>6. Herunterladen der Schlüssel
+## <a name="6-download-keys"></a>6. Herunterladen der Schlüssel
 Nachdem die neuen Tunnel hinzugefügt wurden, rufen Sie mit dem PowerShell-Cmdlet `Get-AzureVNetGatewayKey` die vorinstallierten IPsec-/IKE-Schlüssel für jeden Tunnel ab.
 
 Beispiel:
@@ -156,7 +160,7 @@ Beispiel:
 
 Sie können auch die REST-API *Get Virtual Network Gateway Shared Key* zum Abrufen der vorinstallierten Schlüssel verwenden.
 
-## <a name="7.-verify-your-connections"></a>7. Überprüfen der Verbindungen
+## <a name="7-verify-your-connections"></a>7. Überprüfen der Verbindungen
 Überprüfen Sie den Multisite-Tunnelstatus. Nachdem Sie die Schlüssel für jeden Tunnel heruntergeladen haben, sollten Sie die Verbindungen überprüfen. Verwenden Sie wie im folgenden Beispiel gezeigt `Get-AzureVnetConnection` , um eine Liste der virtuellen Netzwerktunnel abzurufen. „VNet1“ ist der Name des VNets.
 
     Get-AzureVnetConnection -VNetName VNET1
@@ -188,6 +192,9 @@ Sie können auch die REST-API *Get Virtual Network Gateway Shared Key* zum Abruf
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu VPN-Gateways finden Sie unter [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 60343b409c734bcc9bb50d6216ff2295aede783b
-ms.openlocfilehash: 100fcf956425a9eed7bdbb495f8249f5d78fb9b1
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 5e5a0283fee79b9068784ad88017e96d3ab8e729
 
 
 ---
@@ -101,7 +101,7 @@ In der verfügbaren Beispielvorlage im öffentlichen Repository wird eine Parame
 ## <a name="deploy-the-arm-template-by-using-powershell"></a>Bereitstellen der ARM-Vorlage mithilfe von PowerShell
 Führen Sie zum Bereitstellen der mithilfe von PowerShell heruntergeladenen ARM-Vorlage die folgenden Schritte aus.
 
-1. Falls Sie Azure PowerShell noch nicht verwendet haben, befolgen Sie die Anleitung unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md), um PowerShell zu installieren und zu konfigurieren.
+1. Falls Sie Azure PowerShell noch nicht verwendet haben, befolgen Sie die Anleitung unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs), um PowerShell zu installieren und zu konfigurieren.
 2. Führen Sie das Cmdlet **`New-AzureRmResourceGroup`** aus, um mit der Vorlage eine Ressourcengruppe zu erstellen.
 
     ```powershell
@@ -191,6 +191,6 @@ Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilensc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
 title: Zuschneiden von Video | Microsoft Docs
-description: In diesem Artikel wird erläutert, wie Videos mit Media Encoder Standard zugeschnitten werden.
+description: "In diesem Artikel wird erläutert, wie Videos mit Media Encoder Standard zugeschnitten werden."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: anilmur
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7628f674-2005-4531-8b61-d7a4f53e46ba
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: anilmur;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 7b0d7469e9c3688092bf7f98962ede0e4d7ef951
+
 
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Zuschneiden von Videos mit Media Encoder Standard
@@ -25,7 +29,7 @@ Angenommen Sie, Ihr Eingabevideo hat eine Auflösung von 1920 x 1080 Pixel (das 
 
 Das Zuschneiden im MES ist eine Vorverarbeitungsphase, weshalb die Zuschneideparameter in der Codierungsvoreinstellung für das ursprüngliche Eingabevideo gelten. Die Codierung ist eine nachfolgende Phase, weshalb die Einstellungen für Breite und Höhe für das *vorverarbeitete Video* und nicht für das Originalvideo gelten. Beim Bestimmen Ihrer Voreinstellung müssen Sie die folgenden Schritte ausführen: a.) die Zuschneideparameter basierend auf dem ursprünglichen Eingabevideo auswählen und b.) Ihre Codierungseinstellungen basierend auf dem zugeschnittenen Video auswählen. Wenn Ihre Codierungseinstellungen nicht mit dem zugeschnittenen Video übereinstimmen, ist die Ausgabe nicht wie erwartet.
 
-Im [folgenden](media-services-advanced-encoding-with-mes.md#encoding_with_dotnet) Thema wird gezeigt, wie Sie mit MES einen Codierungsauftrag erstellen und für die Codierungsaufgabe eine benutzerdefinierte Voreinstellung angeben. 
+Im [folgenden](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) Thema wird gezeigt, wie Sie mit MES einen Codierungsauftrag erstellen und für die Codierungsaufgabe eine benutzerdefinierte Voreinstellung angeben. 
 
 ## <a name="creating-a-custom-preset"></a>Erstellen einer benutzerdefinierten Voreinstellung
 Für das im Diagramm gezeigte Beispiel gilt Folgendes:
@@ -139,6 +143,8 @@ Unter den Azure Media Services-Lernpfaden finden Sie Informationen zu weiteren A
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Dec16_HO2-->
 
 

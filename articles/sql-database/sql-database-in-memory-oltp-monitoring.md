@@ -13,26 +13,26 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 12/19/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 475af239e4c77626d4c069f1238bc32d3b440a0e
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: 86b2358b045bd5bc0c9f4fc2674efd03b098212f
 
 
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Überwachen des In-Memory-OLTP-Speichers
-Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md)befinden sich die Daten der speicheroptimierten Tabellen und Tabellenvariablen im In-Memory-OLTP-Speicher. Jeder Premium-Tarif weist eine maximale In-Memory-OLTP-Speichergröße auf, die im Artikel zu [Dienstebenen von SQL-Datenbank](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)dokumentiert ist. Wenn dieses Limit überschritten wird, treten bei Einfüge- und Aktualisierungsvorgängen möglicherweise Fehler auf (Fehlercode: 41823). An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder ein Upgrade der Leistungsstufe Ihrer Datenbank durchführen.
+Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md)befinden sich die Daten der speicheroptimierten Tabellen und Tabellenvariablen im In-Memory-OLTP-Speicher. Jeder Premium-Tarif weist eine maximale In-Memory-OLTP-Speichergröße auf, die im Artikel zu [Dienstebenen von SQL-Datenbank](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)dokumentiert ist. Wenn dieses Limit überschritten wird, treten bei Einfüge- und Aktualisierungsvorgängen möglicherweise Fehler auf (Fehlercode: 41823). An diesem Punkt müssen Sie entweder Daten löschen, um Speicherplatz freizugeben, oder ein Upgrade der Leistungsstufe Ihrer Datenbank durchführen.
 
 ## <a name="determine-whether-data-will-fit-within-the-in-memory-storage-cap"></a>Bestimmen, ob genügend In-Memory-Speicherplatz für die Daten vorhanden ist
-Bestimmen Sie die Speicherkapazität: Nutzen Sie zur Information über die Speicherkapazitäten der verschiedenen Premium-Dienstebenen den Artikel [Dienstebenen von SQL-Datenbank](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels).
+Bestimmen Sie die Speicherkapazität: Nutzen Sie zur Information über die Speicherkapazitäten der verschiedenen Premium-Dienstebenen den Artikel [Dienstebenen von SQL-Datenbank](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels).
 
 Das Einschätzen des Speicherbedarfs für eine speicheroptimierte Tabelle funktioniert für SQL Server genauso wie in Azure SQL-Datenbank. Lesen Sie die Informationen hierzu in [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
 
 Beachten Sie, dass sowohl die Tabellen- und Tabellenvariablenzeilen als auch die Indizes in die maximale Größe für Benutzerdaten eingerechnet werden. Darüber hinaus benötigt ALTER TABLE genügend Platz, um eine neue Version der gesamten Tabelle und ihrer Indizes zu erstellen.
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
-Sie können die Nutzung von In-Memory-Speicher als Prozentsatz der [Speicherkapazität für Ihre Leistungsstufe ](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels) im [Azure-Portal](https://portal.azure.com/) überwachen: 
+Sie können die Nutzung von In-Memory-Speicher als Prozentsatz der [Speicherkapazität für Ihre Leistungsstufe ](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels) im [Azure-Portal](https://portal.azure.com/) überwachen: 
 
 * Suchen Sie auf dem Blatt „Datenbank“ das Feld „Ressourcenverwendung“, und klicken Sie auf „Bearbeiten“.
 * Wählen Sie dann die Metrik `In-Memory OLTP Storage percentage`.
@@ -58,6 +58,6 @@ Zusätzliche Ressourcen zum [Überwachen der Azure SQL-Datenbank mit dynamischen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
