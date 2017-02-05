@@ -1,26 +1,30 @@
 ---
-title: Anpassen von vorkonfigurierten Lösungen | Microsoft Docs
-description: Dieses Dokument bietet eine Anleitung zum Anpassen vorkonfigurierter Azure IoT Suite-Lösungen.
-services: ''
+title: "Anpassen von vorkonfigurierten Lösungen | Microsoft Docs"
+description: "Dieses Dokument bietet eine Anleitung zum Anpassen vorkonfigurierter Azure IoT Suite-Lösungen."
+services: 
 suite: iot-suite
 documentationcenter: .net
-author: stevehob
+author: aguilaaj
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
 ms.service: iot-suite
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2016
-ms.author: stevehob
+ms.date: 10/11/2016
+ms.author: aguilaaj
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6cca62c7245304bf49b47c1548aa3352b7c2a76e
+
 
 ---
-# Anpassen vorkonfigurierter Lösungen
+# <a name="customize-a-preconfigured-solution"></a>Anpassen vorkonfigurierter Lösungen
 Die vorkonfigurierten Lösungen in der Azure IoT Suite veranschaulichen das Bereitstellen einer umfassenden Lösung basierend auf dem Zusammenwirken der Dienste in der Suite. Von hier ausgehend gibt es verschiedene Möglichkeiten zur Erweiterung und Anpassung der Lösung für bestimmte Szenarios. Diese allgemeinen Anpassungsmöglichkeiten werden in den folgenden Abschnitten beschrieben.
 
-## Suchen des Quellcodes
+## <a name="finding-the-source-code"></a>Suchen des Quellcodes
 Der Quellcode für die vorkonfigurierten Lösungen ist auf GitHub in den folgenden Repositorys verfügbar:
 
 * Remoteüberwachung: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
@@ -28,17 +32,17 @@ Der Quellcode für die vorkonfigurierten Lösungen ist auf GitHub in den folgend
 
 Der Quellcode für die vorkonfigurierten Lösungen wird bereitgestellt, um Muster und Verfahren zum Implementieren der umfassenden Funktionalität von IoT-Lösungen mithilfe von Azure IoT Suite zu veranschaulichen. Weitere Informationen zur Erstellung und Bereitstellung von Lösungen finden Sie in den GitHub-Repositorys.
 
-## Ändern der vorkonfigurierten Regeln
+## <a name="changing-the-preconfigured-rules"></a>Ändern der vorkonfigurierten Regeln
 Die Remoteüberwachungslösung enthält drei [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Aufträge, um die Geräteinformationen, Telemetriedaten und Regellogik für die Lösung zu implementieren.
 
-Die drei Stream Analytics-Aufträge und ihre Syntax werden ausführlich unter [Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung](iot-suite-remote-monitoring-sample-walkthrough.md) beschrieben.
+Die drei Stream Analytics-Aufträge und ihre Syntax werden ausführlich unter [Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung](iot-suite-remote-monitoring-sample-walkthrough.md)beschrieben. 
 
 Sie können diese Aufträge direkt bearbeiten, um die Logik zu ändern oder spezifische Logik für das Szenario hinzuzufügen. Sie finden die Stream Analytics-Aufträge wie folgt:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-2. Navigieren Sie zu der Ressourcengruppe mit demselben Namen wie Ihre IoT-Lösung.
-3. Wählen Sie den Azure Stream Analytics-Auftrag aus, den Sie ändern möchten.
-4. Beenden Sie den Auftrag, indem Sie aus den Befehlen **Beenden** auswählen.
+2. Navigieren Sie zu der Ressourcengruppe mit demselben Namen wie Ihre IoT-Lösung. 
+3. Wählen Sie den Azure Stream Analytics-Auftrag aus, den Sie ändern möchten. 
+4. Beenden Sie den Auftrag, indem Sie aus den Befehlen **Beenden**auswählen. 
 5. Bearbeiten Sie die Eingaben, die Abfrage und die Ausgaben.
    
     Eine einfache Änderung besteht darin, die Abfrage für den Auftrag **Regeln** so zu ändern, dass **„<“** anstelle von **„>“** verwendet wird. Das Lösungsportal zeigt weiterhin **„>“** an, wenn Sie eine Regel bearbeiten. Sie werden allerdings feststellen, dass sich das Verhalten aufgrund der Änderung am zugrunde liegenden Auftrag umkehrt.
@@ -49,47 +53,47 @@ Sie können diese Aufträge direkt bearbeiten, um die Logik zu ändern oder spez
 > 
 > 
 
-## Hinzufügen eigener Regeln
+## <a name="adding-your-own-rules"></a>Hinzufügen eigener Regeln
 Sie können nicht nur die vorkonfigurierten Azure Stream Analytics-Aufträge ändern, sondern auch im Azure-Portal neue Aufträge hinzufügen oder vorhandenen Aufträgen neue Abfragen hinzufügen.
 
-## Anpassen von Geräten
+## <a name="customizing-devices"></a>Anpassen von Geräten
 Eine der am häufigsten Erweiterungsaktivitäten ist das Arbeiten mit speziellen Geräten für Ihr Szenario. Es gibt mehrere Methoden zum Arbeiten mit Geräten. Dazu gehören das Anpassen eines simulierten Geräts an Ihr Szenario und das Verknüpfen des physischen Geräts mit der Lösung mithilfe des [IoT-Geräte-SDK][IoT-Geräte-SDK].
 
 Eine schrittweise Anleitung zum Hinzufügen von Geräten zur vorkonfigurierten Remoteüberwachungslösung finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite](iot-suite-connecting-devices.md) und im [C-SDK-Beispiel zur Remoteüberwachung](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring), das für den Einsatz mit der vorkonfigurierten Remoteüberwachungslösung konzipiert ist.
 
-### Erstellen eines eigenen simulierten Geräts
+### <a name="creating-your-own-simulated-device"></a>Erstellen eines eigenen simulierten Geräts
 Der Quellcode der Remoteüberwachungslösung (auf den oben verwiesen wird) enthält einen .NET-Simulator. Dieser Simulator wird als Teil der Lösung bereitgestellt und kann geändert werden, um andere Metadaten oder Telemetrie zu senden oder auf andere Befehle zu reagieren.
 
 Der vorkonfigurierte Simulator in der vorkonfigurierten Lösung zur Remoteüberwachung ist ein Kühlgerät, das Telemetriedaten zu Temperatur und Feuchtigkeit ausgibt. Sie können den Simulator im Projekt [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) ändern, wenn Sie das GitHub-Repository verzweigt haben.
 
-### Verfügbare Standorte für simulierte Geräte
+### <a name="available-locations-for-simulated-devices"></a>Verfügbare Standorte für simulierte Geräte
 Die Standorte befinden sich standardmäßig in Seattle/Redmond, Washington, USA. Diese Standorte können in [SampleDeviceFactory.cs][lnk-sample-device-factory] geändert werden.
 
-### Erstellen und Verwenden eines eigenen (physischen) Geräts
+### <a name="building-and-using-your-own-physical-device"></a>Erstellen und Verwenden eines eigenen (physischen) Geräts
 Die [Azure IoT-SDKs](https://github.com/Azure/azure-iot-sdks) bieten Bibliotheken zum Verbinden zahlreicher Gerätetypen (Sprachen und Betriebssysteme) mit IoT-Lösungen.
 
-## Ändern von Dashboardgrenzwerten
-### Anzahl angezeigter Geräte im Dropdownfeld des Dashboards
+## <a name="modifying-dashboard-limits"></a>Ändern von Dashboardgrenzwerten
+### <a name="number-of-devices-displayed-in-dashboard-dropdown"></a>Anzahl angezeigter Geräte im Dropdownfeld des Dashboards
 Standardwert: 200. Diese Zahl kann in [DashboardController.cs][lnk-dashboard-controller] geändert werden.
 
-### Anzahl angezeigter Pins im Bing Karten-Steuerelement
+### <a name="number-of-pins-to-display-in-bing-map-control"></a>Anzahl angezeigter Pins im Bing Karten-Steuerelement
 Standardwert: 200. Diese Zahl kann in [TelemetryApiController.cs][lnk-telemetry-api-controller-01] geändert werden.
 
-### Zeitraum der Telemetriegrafik
+### <a name="time-period-of-telemetry-graph"></a>Zeitraum der Telemetriegrafik
 Standardwert: 10 Minuten. Dieser Wert kann in [TelemetryApiController.cs][lnk-telemetry-api-controller-02] geändert werden.
 
-## Manuelles Einrichten der Anwendungsrollen
+## <a name="manually-setting-up-application-roles"></a>Manuelles Einrichten der Anwendungsrollen
 Das folgende Verfahren beschreibt das Hinzufügen von **Admin**- und **ReadOnly**-Anwendungsrollen zu einer vorkonfigurierten Lösung. In von „azureiotsuite.com“ bereitgestellten, vorkonfigurierten Lösungen sind die **Admin**- und die **ReadOnly**-Rolle bereits enthalten.
 
-Mitglieder der **ReadOnly**-Rolle können das Dashboard und die Geräteliste anzeigen, dürfen jedoch keine Geräte hinzufügen, Geräteattribute ändern oder Befehle senden. Mitglieder der **Admin**-Rolle haben uneingeschränkten Zugriff auf alle Funktionen in der Lösung.
+Mitglieder der **ReadOnly** -Rolle können das Dashboard und die Geräteliste anzeigen, dürfen jedoch keine Geräte hinzufügen, Geräteattribute ändern oder Befehle senden.  Mitglieder der **Admin** -Rolle haben uneingeschränkten Zugriff auf alle Funktionen in der Lösung.
 
-1. Rufen Sie das [klassische Azure-Portal][lnk-classic-portal] auf.
-2. Wählen Sie **Active Directory** aus.
+1. Wechseln Sie zum [klassischen Azure-Portal][lnk-classic-portal].
+2. Wählen Sie **Active Directory**aus.
 3. Klicken Sie auf den Namen des AAD-Mandanten, den Sie bei der Bereitstellung Ihrer Lösung verwendet haben.
 4. Klicken Sie auf **Anwendungen**.
 5. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt. Sollte Ihre Anwendung nicht in der Liste angezeigt werden, wählen Sie in der Dropdownliste **Anzeigen** die Option **Anwendungen im Besitz meines Unternehmens** aus, und klicken Sie auf das Häkchen.
 6. Klicken Sie unten auf der Seite auf **Manifest verwalten** und dann auf **Manifest herunterladen**.
-7. Dadurch wird eine JSON-Datei auf Ihren lokalen Computer heruntergeladen. Öffnen Sie diese Datei zur Bearbeitung in einem Text-Editor Ihrer Wahl.
+7. Dadurch wird eine JSON-Datei auf Ihren lokalen Computer heruntergeladen.  Öffnen Sie diese Datei zur Bearbeitung in einem Text-Editor Ihrer Wahl.
 8. In der dritten Zeile der JSON-Datei steht:
    
    ```
@@ -125,10 +129,10 @@ Mitglieder der **ReadOnly**-Rolle können das Dashboard und die Geräteliste anz
 11. Sie haben nun die **Admin**- und die **ReadOnly**-Rolle Ihrer Anwendung hinzugefügt.
 12. Unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] erfahren Sie, wie Sie einem Benutzer in Ihrem Verzeichnis eine dieser Rollen zuweisen.
 
-## Feedback
-Möchten Sie Anpassungsvorschläge zu diesem Dokument machen? Nutzen Sie [UserVoice](https://feedback.azure.com/forums/321918-azure-iot), um neue Features vorzuschlagen, oder verfassen Sie weiter unten einen Kommentar zu diesem Artikel.
+## <a name="feedback"></a>Feedback
+Möchten Sie Anpassungsvorschläge zu diesem Dokument machen? Nutzen Sie [UserVoice](https://feedback.azure.com/forums/321918-azure-iot), um neue Features vorzuschlagen, oder verfassen Sie weiter unten einen Kommentar zu diesem Artikel. 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Optionen zum Anpassen der vorkonfigurierten Lösungen finden Sie unter:
 
 * [Verbinden einer Logik-App mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite][lnk-logicapp]
@@ -143,8 +147,12 @@ Weitere Informationen zu den Optionen zum Anpassen der vorkonfigurierten Lösung
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-dashboard-controller]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/Controllers/DashboardController.cs#L27
 [lnk-telemetry-api-controller-01]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L27
-[lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25
+[lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-classic-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

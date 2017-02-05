@@ -1,13 +1,13 @@
 ---
-title: Entwickeln von Python MapReduce-Aufträgen mit HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie Python MapReduce-Aufträge auf Linux-basierten HDInsight-Clustern erstellen und ausführen.
+title: "Entwickeln von Python MapReduce-Aufträgen mit HDInsight | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Python MapReduce-Aufträge auf Linux-basierten HDInsight-Clustern erstellen und ausführen."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 7631d8d9-98ae-42ec-b9ec-ee3cf7e57fb3
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 729550243e18c7a9f514aa18d1f4fdd8142d141b
+
 
 ---
 # <a name="develop-python-streaming-programs-for-hdinsight"></a>Entwickeln von Python-Streamingprogrammen für HDInsight
@@ -46,7 +50,7 @@ Im folgenden Flußdiagramm ist dargestellt, was in den Mapper- und Reducer-Funkt
 
 ![Abbildung von MapReduce](./media/hdinsight-hadoop-streaming-python/HDI.WordCountDiagram.png)
 
-## <a name="why-python?"></a>Gründe für Python
+## <a name="why-python"></a>Gründe für Python
 Python ist eine allgemeine Programmiersprache, mit der Sie Konzepte in weniger Codezeilen als in vielen anderen Sprachen ausdrücken können. Sie wurde kürzlich bei Datenwissenschaftlern als Prototyping-Sprache beliebt, da sie durch ihre interpretierende Art, dynamische Typisierung und elegante Syntax für die schnelle Anwendungsentwicklung geeignet ist.
 
 Python wird auf allen HDInsight-Clustern installiert.
@@ -63,7 +67,7 @@ Python kann diese Anforderungen einfach mithilfe des Moduls **sys** zum Lesen vo
 ## <a name="create-the-mapper-and-reducer"></a>Erstellen von Mapper und Reducer
 Mapper und Reducer sind reine Textdateien, in diesem Fall **mapper.py** und **reducer.py**, daher ist eindeutig, welche Datei wofür zuständig ist. Sie können diese mit einem Editor Ihrer Wahl erstellen.
 
-### <a name="mapper.py"></a>Mapper.py
+### <a name="mapperpy"></a>Mapper.py
 Erstellen Sie eine neue Datei namens **mapper.py** , und verwenden Sie den folgenden Inhalt für die Datei.
 
     #!/usr/bin/env python
@@ -92,7 +96,7 @@ Erstellen Sie eine neue Datei namens **mapper.py** , und verwenden Sie den folge
 
 Nehmen Sie sich einen Moment Zeit, um den Code zu lesen und seine Funktionsweise zu verstehen.
 
-### <a name="reducer.py"></a>reducer.py
+### <a name="reducerpy"></a>reducer.py
 Erstellen Sie eine neue Datei namens **mapper.py** , und verwenden Sie den folgenden Inhalt für die Datei:
 
     #!/usr/bin/env python
@@ -204,6 +208,9 @@ Nachdem Sie erfahren haben, wie Sie Streaming-MapReduce-Aufträge mit HDInsight 
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

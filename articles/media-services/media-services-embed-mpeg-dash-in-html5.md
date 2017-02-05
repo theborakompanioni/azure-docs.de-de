@@ -1,12 +1,12 @@
 ---
-title: Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js | Microsoft Docs
-description: In diesem Thema wird die Einbettung eines Videos mit adaptivem Streaming im MPEG-DASH-Format mithilfe von DASH.js in eine HTML5-Anwendung erläutert.
+title: Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js | Microsoft-Dokumentation
+description: "In diesem Thema wird die Einbettung eines Videos mit adaptivem Streaming im MPEG-DASH-Format mithilfe von DASH.js in eine HTML5-Anwendung erläutert."
 author: Juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 5aa0e7b6-f5c3-4cc1-aa33-ed16ea4780c2
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 35ba9161f70a27a215685830d1a9e7c1881cc3bb
+
 
 ---
-# <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dash.js"></a>Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js
+# <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js
 ## <a name="overview"></a>Übersicht
 MPEG-DASH ist ein ISO-Standard für adaptives Streaming von Videoinhalten, der wichtige Vorteile für das Bereitstellen qualitativ hochwertiger Videoausgaben mit adaptivem Streaming bietet. Mit MPEG-DASH wird der Videostream automatisch auf eine niedrigere Auflösung gesetzt, wenn das Netzwerk überlastet ist. Dadurch verringert sich die Wahrscheinlichkeit eines "angehaltenen" Videos, während der Player die nächsten Sekunden für die Wiedergabe herunterlädt (Pufferung). Wenn die Netzwerküberlastung abnimmt, kehrt der Videoplayer zu einem Streaming mit höherer Qualität zurück. Diese Möglichkeit, die erforderliche Bandbreite anzupassen, führt außerdem zu einer kürzeren Startzeit für Videos. Das bedeutet, dass die ersten Sekunden in einem schnell herunterladbaren Segment mit niedriger Qualität wiedergegeben werden können und die Qualität anschließend erhöht wird, wenn genügend Inhalte gepuffert wurden.
 
 Dash.js ist ein Open Source-MPEG-DASH-Videoplayer, der in JavaScript geschrieben wurde. Es handelt sich um einen robusten, plattformübergreifenden Player, der kostenlos in Anwendungen zur Videowiedergabe verwendet werden kann. Er stellt die MPEG-DASH-Wiedergabe in allen Browsern zur Verfügung, die W3C MSE (Media Source Extensions) unterstützen. Zurzeit sind dies Chrome, Microsoft Edge und IE11, für andere Browser wurde eine baldige Unterstützung von MSE zugesichert. Weitere Informationen zu DASH.js finden Sie im dash.js-Repository von GitHub.
 
 ## <a name="creating-a-browser-based-streaming-video-player"></a>Erstellen eines browserbasierten Streaming-Videoplayers
-So erstellen Sie eine einfache Webseite, auf der ein Videoplayer mit den erwarteten Bedienelementen angezeigt wird, z. B. Wiedergeben, Anhalten, Bildsuchlauf usw.:
+So erstellen Sie eine einfache Webseite, auf der ein Videoplayer mit den erwarteten Bedienelementen angezeigt wird, z. B. Wiedergeben, Anhalten, Bildsuchlauf usw.:
 
 1. Erstellen einer HTML-Seite
 2. Hinzufügen des Videotags
@@ -46,7 +50,7 @@ Im ersten Schritt wird eine HTML-Standardseite mit dem **video**-Element erstell
       </body>
     </html>
 
-## <a name="adding-the-dash.js-player"></a>Hinzufügen des Players "DASH.js"
+## <a name="adding-the-dashjs-player"></a>Hinzufügen des Players "DASH.js"
 Zum Hinzufügen der Referenzimplementierung von "dash.js" zu Ihrer Anwendung müssen Sie die Datei "dash.all.js" vom dash.js-Projekt, Version 1.0, abrufen. Diese Datei sollte im JavaScript-Ordner der Anwendung gespeichert werden. Der gesamte dash.js-Code ist in dieser Datei bequem zusammengefasst. Wenn Sie sich das dash.js-Repository ansehen, finden Sie dort die einzelnen Dateien, den Testcode und vieles mehr. Wenn Sie allerdings nur "dash.js" verwenden möchten, benötigen Sie nur die Datei "dash.all.js".
 
 Zum Hinzufügen des Players "dash.js" zu Ihren Anwendungen fügen Sie dem Anfangsabschnitt von "basicPlayer.html" ein Skript-Tag hinzu:
@@ -71,7 +75,7 @@ Erstellen Sie anschließend eine Funktion zum Initialisieren des Players beim La
 
 Diese Funktion erstellt zunächst einen DashContext. Dieser wird zum Konfigurieren der Anwendung für eine bestimmte Laufzeitumgebung verwendet. Aus technischer Sicht definiert er die Klassen, die das Dependency Injection-Framework beim Erstellen der Anwendung verwenden soll. In den meisten Fällen verwenden Sie Dash.di.DashContext.
 
-Als Nächstes instanziieren Sie MediaPlayer, die Hauptklasse des dash.js-Frameworks. Diese Klasse enthält die benötigten Kernmethoden, z. B. "Wiedergeben" oder "Anhalten", und verwaltet die Beziehung mit dem Videoelement sowie die Interpretation der MPD-Datei (Media Presentation Description), die das Video beschreibt, das wiedergeben werden soll.
+Als Nächstes instanziieren Sie MediaPlayer, die Hauptklasse des dash.js-Frameworks. Diese Klasse enthält die benötigten Kernmethoden, z. B. "Wiedergeben" oder "Anhalten", und verwaltet die Beziehung mit dem Videoelement sowie die Interpretation der MPD-Datei (Media Presentation Description), die das Video beschreibt, das wiedergeben werden soll.
 
 Die startup()-Funktion der MediaPlayer-Klasse wird aufgerufen, um sicherzustellen, dass der Player für die Wiedergabe des Videos bereit ist. Diese Funktion stellt unter anderem sicher, dass alle erforderlichen Klassen (wie vom Kontext definiert) geladen wurden. Wenn der Player bereit ist, können Sie ihn mithilfe der attachView()-Funktion mit dem Videoelement verknüpfen. Auf diese Weise kann MediaPlayer den Videostream in das Element einfügen und zudem die Wiedergabe nach Bedarf steuern.
 
@@ -79,7 +83,7 @@ Die startup()-Funktion der MediaPlayer-Klasse wird aufgerufen, um sicherzustelle
 
     <body onload="setupVideo()">
 
-Legen Sie schließlich die Größe des Videoelements mithilfe von CSS fest. In einer Umgebung für adaptives Streaming ist dies besonders wichtig, da sich die Größe des wiedergegebenen Videos ändern kann, wenn die Wiedergabe an veränderte Netzwerkbedingungen angepasst wird. In dieser einfachen Demo wird das Videoelement einfach auf 80 % des verfügbaren Browserfensters gesetzt, indem das folgende CSS zum Anfangsabschnitt der Seite hinzugefügt wird:
+Legen Sie schließlich die Größe des Videoelements mithilfe von CSS fest. In einer Umgebung für adaptives Streaming ist dies besonders wichtig, da sich die Größe des wiedergegebenen Videos ändern kann, wenn die Wiedergabe an veränderte Netzwerkbedingungen angepasst wird. In dieser einfachen Demo wird das Videoelement einfach auf 80 % des verfügbaren Browserfensters gesetzt, indem das folgende CSS zum Anfangsabschnitt der Seite hinzugefügt wird:
 
     <style>
     video {
@@ -102,6 +106,9 @@ Zeigen Sie zur Wiedergabe eines Videos in Ihrem Browser auf die Datei "basicPlay
 
 [dash.js-Repository von GitHub (in englischer Sprache)](https://github.com/Dash-Industry-Forum/dash.js) 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

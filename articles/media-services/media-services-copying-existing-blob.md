@@ -1,12 +1,12 @@
 ---
-title: Kopieren eines vorhandenen Blobs in ein Media Services-Medienobjekt | Microsoft Docs
-description: In diesem Thema wird erläutert, wie ein vorhandener Blob in ein Media Services-Medienobjekt kopiert wird.
+title: Kopieren eines vorhandenen Blobs in ein Media Services-Medienobjekt | Microsoft-Dokumentation
+description: "In diesem Thema wird erläutert, wie ein vorhandener Blob in ein Media Services-Medienobjekt kopiert wird."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 6a63823f-f3c9-424c-91b8-566f70bec346
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/13/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 62e675d3e87e40a09d67eb5d00b58ea8857e9610
+
 
 ---
 # <a name="copying-an-existing-blob-into-a-media-services-asset"></a>Kopieren eines vorhandenen Blobs in ein Media Services-Medienobjekt
@@ -156,7 +160,8 @@ Mit dem Codebeispiel unten werden die folgenden Aufgaben ausgeführt:
    
             externalMediaBlobContainer.CreateIfNotExists();
    
-            // Upload files to the blob container.  
+            // Upload files to the block blob container. 
+            // Page blobs are not supported by Azure Media Services. 
             DirectoryInfo uploadDirectory = new DirectoryInfo(localPath);
             foreach (var file in uploadDirectory.EnumerateFiles())
             {
@@ -317,6 +322,9 @@ Mit dem Codebeispiel unten werden die folgenden Aufgaben ausgeführt:
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

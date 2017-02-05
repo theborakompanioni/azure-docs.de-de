@@ -1,12 +1,12 @@
 ---
 title: IIS-Protokolle in Log Analytics | Microsoft Docs
-description: IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Log Analytics gesammelt werden können.  Dieser Artikel beschreibt die Konfiguration der Sammlung von IIS-Protokollen sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden.
+description: "IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Log Analytics gesammelt werden können.  Dieser Artikel beschreibt die Konfiguration der Sammlung von IIS-Protokollen sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 920b5feee8e94af5b98e8dffc127da4085bac597
+
 
 ---
 # <a name="iis-logs-in-log-analytics"></a>IIS-Protokolle in Log Analytics
@@ -77,6 +81,9 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 * Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
 * Konfigurieren Sie Warnungen in Log Analytics, sodass Sie proaktiv benachrichtigt werden, wenn in IIS-Protokollen wichtige Probleme gefunden werden.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

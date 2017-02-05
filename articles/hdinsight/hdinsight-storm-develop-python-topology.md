@@ -1,12 +1,12 @@
 ---
-title: Verwenden von Python-Komponenten in einer Storm-Topologie in HDinsight | Microsoft Docs
-description: Hier erfahren Sie, wie Sie Python-Komponenten mit Apache Storm in Azure HDInsight verwenden. Das Dokument enthält Informationen zur Verwendung von Python-Komponenten in Java- und Clojure-basierten Storm-Topologien.
+title: Verwenden von Python-Komponenten in einer Storm-Topologie in HDinsight | Microsoft-Dokumentation
+description: "Hier erfahren Sie, wie Sie Python-Komponenten mit Apache Storm in Azure HDInsight verwenden. Das Dokument enthält Informationen zur Verwendung von Python-Komponenten in Java- und Clojure-basierten Storm-Topologien."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.devlang: python
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4b667dda33c61c44090cf89ebeebece0b19c84ea
+
 
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Entwickeln von Apache Storm-Topologien mit Python in HDInsight
@@ -32,15 +36,15 @@ Da Apache Storm ein Java-Prozess ist, der auf der Java Virtual Machine (JVM) aus
 ### <a name="the-storm-module"></a>Das Storm-Modul
 Das Storm-Modul (https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) bietet die erforderlichen Bits zum Erstellen von Python-Komponenten, die mit Storm eingesetzt werden können.
 
-Das Modul unterstützt u. a. `storm.emit` zum Ausgeben von Tupeln und `storm.logInfo` zum Schreiben in die Protokolle. Ich empfehle Ihnen, diese Datei durchzulesen und sich damit vertraut zu machen, welche Möglichkeiten sie bietet.
+Das Modul unterstützt u. a. `storm.emit` zum Ausgeben von Tupeln und `storm.logInfo` zum Schreiben in die Protokolle. Ich empfehle Ihnen, diese Datei durchzulesen und sich damit vertraut zu machen, welche Möglichkeiten sie bietet.
 
 ## <a name="challenges"></a>Herausforderungen
 Mithilfe des Moduls **storm.py** können Sie Python-Spouts erstellen, die Daten nutzen, und Bolts, die Daten verarbeiten. Die allgemeine Storm-Topologiedefinition für die Kommunikation zwischen Komponenten wird jedoch nach wie vor in Java oder Clojure geschrieben. Zudem müssen Sie bei der Verwendung von Java auch Java-Komponenten erstellen, die als Schnittstelle zu den Python-Komponenten fungieren.
 
 Da Storm-Cluster verteilt ausgeführt werden, müssen Sie außerdem sicherstellen, dass alle erforderlichen Module für Ihre Python-Komponenten auf sämtlichen Workerknoten im Cluster verfügbar sind. Storm bietet keine Möglichkeit, mit der sich dies für mehrsprachige Ressourcen einfach bewerkstelligen lässt. Sie müssen entweder alle Abhängigkeiten in die JAR-Datei für die Topologie aufnehmen oder Abhängigkeiten manuell auf jedem Workerknoten im Cluster installieren.
 
-### <a name="java-vs.-clojure-topology-definition"></a>Java- und Clojure-Topologiedefinitionen im Vergleich
-Von den zwei Methoden zum Definieren einer Topologie ist Clojure bei weitem die einfachste/sauberste Methode, da Sie direkt in der Topologiedefinition auf Python-Komponenten verweisen können. Bei Java-basierten Topologiedefinitionen müssen Sie auch Java-Komponenten für bestimmte Aufgaben definieren, z. B. zum Deklarieren der Felder in den von den Python-Komponenten zurückgegebenen Tupeln.
+### <a name="java-vs-clojure-topology-definition"></a>Java- und Clojure-Topologiedefinitionen im Vergleich
+Von den zwei Methoden zum Definieren einer Topologie ist Clojure bei weitem die einfachste/sauberste Methode, da Sie direkt in der Topologiedefinition auf Python-Komponenten verweisen können. Bei Java-basierten Topologiedefinitionen müssen Sie auch Java-Komponenten für bestimmte Aufgaben definieren, z. B. zum Deklarieren der Felder in den von den Python-Komponenten zurückgegebenen Tupeln.
 
 In diesem Dokument werden beide Methoden anhand von Beispielprojekten beschrieben.
 
@@ -58,7 +62,7 @@ Eine Java-basierte Topologie mit Python (oder anderen JVM-Sprachkomponenten) sch
 
 An dieser Stelle ruft Java Python auf und führt das Skript aus, das die eigentliche Bolt-Logik enthält. Die Java-Spouts/-Bolts (in diesem Beispiel) deklarieren lediglich die Felder im Tupel, das von der zugrunde liegenden Python-Komponente ausgegeben wird.
 
-Die eigentlichen Python-Dateien werden in diesem Beispiel im Verzeichnis `/multilang/resources` gespeichert. Auf das Verzeichnis `/multilang` wird in der Datei __pom.xml__verwiesen:
+Die eigentlichen Python-Dateien werden in diesem Beispiel im Verzeichnis `/multilang/resources` gespeichert. Auf das Verzeichnis `/multilang` wird in der Datei **pom.xml**verwiesen:
 
 <resources>
     <resource>
@@ -101,12 +105,12 @@ Um das Projekt auf einem HDInsight-Cluster mit Apache Storm bereitzustellen, geh
      
      * **JAR-Datei**: Wählen Sie **Durchsuchen**, und wählen Sie dann die Datei **WordCount-1.0-SNAPSHOT.jar** aus.
      * **Klassenname**: Geben Sie `com.microsoft.example.WordCount` ein.
-     * **Zusätzliche Parameter**: Geben Sie einen Anzeigenamen (z. B. `wordcount`) zum Identifizieren der Topologie ein.
+     * **Zusätzliche Parameter**: Geben Sie einen Anzeigenamen (z. B. `wordcount`) zum Identifizieren der Topologie ein.
        
        Klicken Sie abschließend auf **Senden** , um die Topologie zu starten.
 
 > [!NOTE]
-> Eine gestartete Storm-Topologie wird ausgeführt, bis sie beendet (abgebrochen) wird. Führen Sie zum Beenden der Topologie entweder den Befehl `storm kill TOPOLOGYNAME` über die Befehlszeile aus (z. B. in einer SSH-Sitzung mit einem Linux-Cluster), oder wählen Sie in der Storm-Benutzeroberfläche die Topologie aus, und klicken Sie dann auf die Schaltfläche **Kill**.
+> Eine gestartete Storm-Topologie wird ausgeführt, bis sie beendet (abgebrochen) wird. Führen Sie zum Beenden der Topologie entweder den Befehl `storm kill TOPOLOGYNAME` über die Befehlszeile aus (z. B. in einer SSH-Sitzung mit einem Linux-Cluster), oder wählen Sie in der Storm-Benutzeroberfläche die Topologie aus, und klicken Sie dann auf die Schaltfläche **Kill**.
 > 
 > 
 
@@ -147,7 +151,7 @@ Gehen Sie wie folgt vor, um **ein Uberjar zu erstellen und in HDInsight bereitzu
          Ersetzen Sie USERNAME durch einen SSH-Benutzer für Ihren Cluster und CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
      2. Nachdem die Datei in den Cluster kopiert wurde, stellen Sie über SSH eine Verbindung mit dem Cluster her, und übermitteln Sie den Auftrag. Informationen zur Verwendung von SSH mit HDInsight finden Sie in den folgenden Artikeln:
         
-        * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
+        * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
         * [Verwenden von SSH mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
      3. Führen Sie nach dem Herstellen der Verbindung den folgenden Befehl aus, um die Topologie zu starten:
         
@@ -159,7 +163,7 @@ Gehen Sie wie folgt vor, um **ein Uberjar zu erstellen und in HDInsight bereitzu
         
         * **JAR-Datei**: Wählen Sie **Durchsuchen**, und wählen Sie dann die Datei **wordcount-1.0-SNAPSHOT.jar** aus.
         * **Klassenname**: Geben Sie `wordcount.core` ein.
-        * **Zusätzliche Parameter**: Geben Sie einen Anzeigenamen (z. B. `wordcount`) zum Identifizieren der Topologie ein.
+        * **Zusätzliche Parameter**: Geben Sie einen Anzeigenamen (z. B. `wordcount`) zum Identifizieren der Topologie ein.
           
           Klicken Sie abschließend auf **Senden** , um die Topologie zu starten.
 
@@ -174,6 +178,9 @@ In diesem Dokument haben Sie erfahren, wie Python-Komponenten in einer Storm-Top
 * [Verwenden von Python für Streaming-MapReduce-Aufträge](hdinsight-hadoop-streaming-python.md)
 * [Verwenden von benutzerdefinierten Python-Funktionen (UDFs) in Pig und Hive](hdinsight-python.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

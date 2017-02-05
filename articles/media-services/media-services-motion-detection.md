@@ -1,12 +1,12 @@
 ---
 title: Erkennen von Bewegungen mit Azure Media Analytics | Microsoft Docs
-description: Mit dem Medienprozessor (MP) Azure Media Motion Detector können Sie effizient Ihrem Interesse entsprechende Abschnitte innerhalb eines ansonsten langen und ereignislosen Videos identifizieren.
+description: "Mit dem Medienprozessor (MP) Azure Media Motion Detector können Sie effizient Ihrem Interesse entsprechende Abschnitte innerhalb eines ansonsten langen und ereignislosen Videos identifizieren."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: d144f813-1a55-442f-a895-5c4cb6d0aeae
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7b92e9290396009e59bfadb2eb3f75cf4952a45d
+
 
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Erkennen von Bewegungen mit Azure Media Analytics
@@ -29,7 +33,7 @@ Dieses Thema enthält Details zu **Azure Media Motion Detector** und zeigt die V
 ## <a name="motion-detector-input-files"></a>Motion Detector-Eingabedateien
 Videodateien. Derzeit werden folgende Formate unterstützt: MP4, MOV und WMV.
 
-## <a name="task-configuration-(preset)"></a>Taskkonfiguration (Voreinstellung)
+## <a name="task-configuration-preset"></a>Taskkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Motion Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. 
 
 ### <a name="parameters"></a>Parameter
@@ -45,28 +49,28 @@ Sie können die folgenden Parameter verwenden:
 
 ### <a name="json-example"></a>JSON-Beispiel
     {
-      'version': '1.0',
-      'options': {
-        'sensitivityLevel': 'medium',
-        'frameSamplingValue': 1,
-        'detectLightChange': 'False',
+      "version": "1.0",
+      "options": {
+        "sensitivityLevel": "medium",
+        "frameSamplingValue": 1,
+        "detectLightChange": "False",
         "mergeTimeThreshold":
-        '00:00:02',
-        'detectionZones': [
+        "00:00:02",
+        "detectionZones": [
           [
-            {'x': 0, 'y': 0},
-            {'x': 0.5, 'y': 0},
-            {'x': 0, 'y': 1}
+            {"x": 0, "y": 0},
+            {"x": 0.5, "y": 0},
+            {"x": 0, "y": 1}
            ],
           [
-            {'x': 0.3, 'y': 0.3},
-            {'x': 0.55, 'y': 0.3},
-            {'x': 0.8, 'y': 0.3},
-            {'x': 0.8, 'y': 0.55},
-            {'x': 0.8, 'y': 0.8},
-            {'x': 0.55, 'y': 0.8},
-            {'x': 0.3, 'y': 0.8},
-            {'x': 0.3, 'y': 0.55}
+            {"x": 0.3, "y": 0.3},
+            {"x": 0.55, "y": 0.3},
+            {"x": 0.8, "y": 0.3},
+            {"x": 0.8, "y": 0.55},
+            {"x": 0.8, "y": 0.8},
+            {"x": 0.55, "y": 0.8},
+            {"x": 0.3, "y": 0.8},
+            {"x": 0.3, "y": 0.55}
           ]
         ]
       }
@@ -78,7 +82,7 @@ Ein Bewegungserkennungsauftrag gibt eine JSON-Datei in das Ausgabeasset zurück,
 
 Die Motion Detector-API stellt Indikatoren bereit, sobald bewegte Objekte in einem Video mit unbewegtem Hintergrund (z. B. einem Überwachungsvideo) auftreten. Der Motion Detector wird trainiert, falsche Alarme, die z. B. auf Änderungen von Lichtverhältnissen und Schatten beruhen, zu reduzieren. Die aktuellen Einschränkungen der Algorithmen beziehen sich auf Nachtsichtvideos, halbtransparente und kleine Objekte.
 
-### <a name="<a-id="output_elements"></a>elements-of-the-output-json-file"></a><a id="output_elements"></a>Elemente der JSON-Ausgabedatei
+### <a name="a-idoutputelementsaelements-of-the-output-json-file"></a><a id="output_elements"></a>Elemente der JSON-Ausgabedatei
 > [!NOTE]
 > In der neuesten Version hat sich das JSON-Ausgabeformat geändert und stellt für einige Kunden unter Umständen eine größere Umstellung dar.
 > 
@@ -161,28 +165,28 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 2. Erstellen eines Auftrags mit einer Bewegungserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält. 
    
         {
-          'Version': '1.0',
-          'Options': {
-            'SensitivityLevel': 'medium',
-            'FrameSamplingValue': 1,
-            'DetectLightChange': 'False',
+          "Version": "1.0",
+          "Options": {
+            "SensitivityLevel": "medium",
+            "FrameSamplingValue": 1,
+            "DetectLightChange": "False",
             "MergeTimeThreshold":
-            '00:00:02',
-            'DetectionZones': [
+            "00:00:02",
+            "DetectionZones": [
               [
-                {'x': 0, 'y': 0},
-                {'x': 0.5, 'y': 0},
-                {'x': 0, 'y': 1}
+                {"x": 0, "y": 0},
+                {"x": 0.5, "y": 0},
+                {"x": 0, "y": 1}
                ],
               [
-                {'x': 0.3, 'y': 0.3},
-                {'x': 0.55, 'y': 0.3},
-                {'x': 0.8, 'y': 0.3},
-                {'x': 0.8, 'y': 0.55},
-                {'x': 0.8, 'y': 0.8},
-                {'x': 0.55, 'y': 0.8},
-                {'x': 0.3, 'y': 0.8},
-                {'x': 0.3, 'y': 0.55}
+                {"x": 0.3, "y": 0.3},
+                {"x": 0.55, "y": 0.3},
+                {"x": 0.8, "y": 0.3},
+                {"x": 0.8, "y": 0.55},
+                {"x": 0.8, "y": 0.8},
+                {"x": 0.55, "y": 0.8},
+                {"x": 0.3, "y": 0.8},
+                {"x": 0.3, "y": 0.55}
               ]
             ]
           }
@@ -365,6 +369,9 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

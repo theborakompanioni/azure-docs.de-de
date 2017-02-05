@@ -1,12 +1,12 @@
 ---
 title: Media Encoder Standard-Formate und -Codecs
-description: Dieses Thema bietet eine Übersicht über Media Encoder Standard-Formate und -Codecs.
+description: "Dieses Thema bietet eine Übersicht über Media Encoder Standard-Formate und -Codecs."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: f334b1ce-2f56-4968-a019-f0a2b0016d9f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 382913f0501c692cc1ee460d2264118414ad20c3
+
 
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-Formate und -Codecs
 Dieses Dokument enthält eine Liste der gängigsten Import- und Exportdateiformate, die Sie mit Media Encoder Standard verwenden können.
 
-## <a name="input-container/file-formats"></a>Eingabecontainer/Dateiformate
+## <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
 | Dateiformate (Dateierweiterungen) | Unterstützt |
 | --- | --- | --- | --- |
 | FLV (mit H.264- und AAC-Codecs) (.flv) |Ja |
@@ -62,7 +66,7 @@ Beachten Sie, dass der Support für die explizite oder vom Benutzer angegebene K
 | MPEG-1 |Ja |
 | VC-1/WMV9 |Ja |
 | Canopus HQ/HQX |Nein |
-| MPEG-4 Teil 2 |Ja |
+| MPEG-4 Teil 2 |Ja |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Ja |
 | YUV420, nicht komprimiert oder Mezzanine |Ja |
 | Apple ProRes 422 |Ja |
@@ -108,6 +112,9 @@ In der folgenden Tabelle werden die Codecs und Dateiformate aufgeführt, die fü
 
 [Gewusst wie: Codieren mit Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

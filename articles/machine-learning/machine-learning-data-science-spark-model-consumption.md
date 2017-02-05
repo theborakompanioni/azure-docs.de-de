@@ -2,11 +2,11 @@
 title: Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden | Microsoft Docs
 description: Bewerten von Learning-Modellen, die im Azure-Blobspeicher (WASB) gespeichert wurden.
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 626305a2-0abf-4642-afb0-dad0f6bd24e9
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2387baad5737998d2ba7f289e0a4fcdd6dd04245
+
 
 ---
 # <a name="score-spark-built-machine-learning-models"></a>Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden
@@ -27,7 +31,7 @@ In diesem Thema wird das Laden von Machine Learning-Modellen (ML) beschrieben, d
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup:-storage-locations,-libraries,-and-the-preset-spark-context"></a>Setup: Speicherorte, Bibliotheken und vorab festgelegter Spark-Kontext
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Setup: Speicherorte, Bibliotheken und vorab festgelegter Spark-Kontext
 Spark kann aus einem Azure Storage-Blob (WASB) lesen und darin schreiben. Es können also alle Ihre vorhandenen Daten mithilfe von Spark verarbeitet und die Ergebnisse wieder im WASB gespeichert werden.
 
 Um Modelle oder Dateien im WASB zu speichern, muss der Pfad korrekt angegeben werden. Auf den an den Spark-Cluster angefügten Standardcontainer können Sie mit einem Pfad verweisen, der mit *wasb//*beginnt. Das folgende Codebeispiel gibt den Speicherort der zu lesenden Daten und den Pfad für das Modellspeicherverzeichnis an, in dem die Ausgabe des Modells gespeichert wird. 
@@ -174,7 +178,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 46,37 Sekunden
 ## <a name="prepare-data-for-scoring-in-spark"></a>Vorbereiten von Daten für die Bewertung in Spark
 In diesem Abschnitt wird das Indizieren, Codieren und Skalieren kategorischer Features beschrieben, um sie für die Verwendung in MLlib-überwachten Lernalgorithmen für Klassifizierung und Regression vorzubereiten.
 
-### <a name="feature-transformation:-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Featuretransformation: Indizieren und Codieren kategorischer Features für die Eingabe in Modelle für die Bewertung
+### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Featuretransformation: Indizieren und Codieren kategorischer Features für die Eingabe in Modelle für die Bewertung
 In diesem Abschnitt wird gezeigt, wie kategorische Daten mithilfe von `StringIndexer` indiziert und Features mit `OneHotEncoder`-Eingabe in den Modellen codiert werden.
 
 Der [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) codiert eine Zeichenfolgenspalte von Bezeichnungen in eine Spalte mit Bezeichnungsindizes. Die Indizes werden nach der Häufigkeit der Bezeichnungen sortiert. 
@@ -393,7 +397,7 @@ Der Code in diesem Abschnitt zeigt, wie die im Azure-Blobspeicher gespeicherten 
     # RECORD START TIME
     timestart = datetime.datetime.now()
 
-    #IMPORT MLLIB LIBRARIES 
+    #IMPORT MLLIB LIBRARIES    
     from pyspark.mllib.tree import RandomForest, RandomForestModel
 
 
@@ -573,9 +577,12 @@ Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie [Azure Logic A
 
 ![](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="what's-next?"></a>Wie geht es weiter?
+## <a name="whats-next"></a>Wie geht es weiter?
 **Kreuzvalidierung und Hyperparameter-Sweeping:**Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

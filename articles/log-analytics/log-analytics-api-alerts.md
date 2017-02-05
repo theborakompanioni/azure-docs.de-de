@@ -1,19 +1,23 @@
 ---
-title: REST-API für Log Analytics-Warnungen
-description: Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Operations Management Suite (OMS) erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
+title: "REST-API für Log Analytics-Warnungen"
+description: "Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Operations Management Suite (OMS) erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 628ad256-7181-4a0d-9e68-4ed60c0f3f04
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 11/18/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 53a7be4d213f3f4c6d01b95355543fc9cd55717f
+
 
 ---
 # <a name="log-analytics-alert-rest-api"></a>REST-API für Log Analytics-Warnungen
@@ -47,25 +51,30 @@ Verwenden Sie die Get-Methode mit einer Zeitplan-ID, um einen bestimmten Zeitpla
 
 Im Folgenden finden Sie eine Beispielantwort für einen Zeitplan.
 
-    {
+```json
+{
+    "value": [{
         "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
         "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
         "properties": {
-        "Interval": 15,
-        "QueryTimeSpan": 15
-    }
+            "Interval": 15,
+            "QueryTimeSpan": 15
+        }
+    }]
+}
+```
 
 ### <a name="creating-a-schedule"></a>Erstellen eines Zeitplans
 Verwenden Sie die Put-Methode mit der eindeutigen Zeitplan-ID, um einen neuen Zeitplan zu erstellen.  Beachten Sie, dass zwei Zeitpläne dieselbe ID haben können, auch wenn sie unterschiedlichen gespeicherten Suchvorgängen zugeordnet sind.  Wenn Sie einen Zeitplan in der OMS-Konsole erstellen, wird für die Zeitplan-ID eine GUID erstellt.
 
-    $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' }"
+    $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 ### <a name="editing-a-schedule"></a>Bearbeiten eines Zeitplans
 Verwenden Sie die Put-Methode mit einer vorhandenen Zeitplan-ID für die gleiche gespeicherte Suche, um diesen Zeitplan zu bearbeiten.  Der Hauptteil der Anforderung muss das ETag des Zeitplans enthalten.
 
-    $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+      $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
+      armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 
 ### <a name="deleting-schedules"></a>Löschen von Zeitplänen
@@ -183,12 +192,12 @@ Unten ist eine Beispielantwort für eine E-Mail-Benachrichtigungsaktion mit eine
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine neue E-Mail-Aktion für einen Zeitplan zu erstellen.  Im folgenden Beispiel wird eine E-Mail-Benachrichtigung mit einem Schwellenwert erstellt, damit die E-Mail gesendet wird, wenn die Ergebnisse der gespeicherten Suche den Schwellenwert überschreiten.
 
     $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $ emailJson
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine E-Mail-Aktion für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
 
     $emailJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $ emailJson
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 #### <a name="remediation-actions"></a>Aktionen zur Problembehebung
 Bei Behebungen wird ein Runbook in Azure Automation gestartet, mit dem versucht wird, das von der Warnung identifizierte Problem zu korrigieren.  Sie müssen einen Webhook für das Runbook erstellen, das in der Aktion für die Problembehebung verwendet wird, und anschließend den URI in der WebhookUri-Eigenschaft angeben.  Wenn Sie diese Aktion mit der OMS-Konsole erstellen, wird automatisch ein neuer Webhook für das Runbook erstellt.
@@ -306,6 +315,9 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Webhooka
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [REST-API zum Durchführen von Protokollsuchen](log-analytics-log-search-api.md) in Log Analytics.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

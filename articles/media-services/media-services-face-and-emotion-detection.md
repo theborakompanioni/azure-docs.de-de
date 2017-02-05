@@ -1,19 +1,23 @@
 ---
-title: Gesichts- und Emotionenerkennung mit Azure Media Analytics | Microsoft Docs
+title: Gesichts- und Emotionenerkennung mit Azure Media Analytics | Microsoft-Dokumentation
 description: Dieses Thema veranschaulicht, wie Azure Media Analytics Gesichter und Emotionen erkennt.
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5ca4692c-23f1-451d-9d82-cbc8bf0fd707
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/15/2016
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 48a4cdf7d50e765ee42cb44d12d1dafd49c13795
+ms.openlocfilehash: 3147eba8bd31d3d05bd990571a986316d6f5093f
+
 
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gesichts- und Emotionenerkennung mit Azure Media Analytics
@@ -44,7 +48,7 @@ Die API zur Gesichtserkennung und -nachverfolgung ermöglicht Gesichtspositionse
 
 Die erkannten und nachverfolgten Gesichter werden mit den Koordinaten (links, oben, Breite und Höhe) zurückgegeben, die die Position der Gesichter im Bild in Pixeln sowie eine Gesichts-ID angeben, die die Nachverfolgung einer einzelnen Person kenntlich macht. Gesichts-IDs können zurückgesetzt werden, wenn die Frontalansicht des Gesichts verloren geht oder im Frame überlappt wird, sodass einigen Personen möglicherweise mehrere IDs zugewiesen werden.
 
-### <a name="<a-id="output_elements"></a>elements-of-the-output-json-file"></a><a id="output_elements"></a>Elemente der Ausgabe-JSON-Datei
+### <a name="a-idoutputelementsaelements-of-the-output-json-file"></a><a id="output_elements"></a>Elemente der Ausgabe-JSON-Datei
 Für die Gesichtserkennung und -nachverfolgung liegen als Ausgabeergebnis die Metadaten aus den Gesichtern in der jeweiligen Datei im JSON-Format vor.
 
 Die JSON-Datei für Gesichtserkennung und -nachverfolgung umfasst die folgenden Attribute:
@@ -70,18 +74,11 @@ Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zei
 * Start/Zeitskala = 2,1 Sekunden
 * Sekunden x (Framerate/Zeitskala) = 63 Bilder
 
-Im Folgenden finden Sie ein einfaches Beispiel für das Extrahieren der JSON-Daten in ein Pro-Frame-Format für Gesichtserkennung und -nachverfolgung:
-
-    var faceDetectionResultJsonString = operationResult.ProcessingResult;
-    var faceDetecionTracking = 
-         JsonConvert.DeserializeObject<FaceDetectionResult>(faceDetectionResultJsonString, settings);
-
-
 ## <a name="face-detection-input-and-output-example"></a>Eingabe- und Ausgabebeispiel für Gesichtserkennung
 ### <a name="input-video"></a>Videoeingang
 [Videoeingang](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-(preset)"></a>Aufgabenkonfiguration (Voreinstellung)
+### <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung ist nur zur Gesichtserkennung bestimmt.
 
     {"version":"1.0"}
@@ -140,7 +137,7 @@ Das folgende Beispiel einer JSON-Ausgabe wurde abgeschnitten.
 ### <a name="input-video"></a>Videoeingang
 [Videoeingang](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-(preset)"></a>Aufgabenkonfiguration (Voreinstellung)
+### <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung gibt an, eine JSON-Datei auf Basis der Emotionenerkennung zu erstellen.
 
     {
@@ -514,6 +511,9 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

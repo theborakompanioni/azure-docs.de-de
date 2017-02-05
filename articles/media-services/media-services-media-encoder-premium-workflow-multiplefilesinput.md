@@ -1,12 +1,12 @@
 ---
-title: Verwenden mehrerer Eingabedateien und Komponenteneigenschaften mit Premium-Encoder | Microsoft Docs
-description: In diesem Thema wird das Verwenden von „setRuntimeProperties“ zum Arbeiten mit mehreren Eingabedateien und Übergeben benutzerdefinierter Daten an den Medienprozessor „Media Encoder Premium Workflow“ erläutert.
+title: Verwenden mehrerer Eingabedateien und Komponenteneigenschaften mit Premium-Encoder | Microsoft-Dokumentation
+description: "In diesem Thema wird das Verwenden von „setRuntimeProperties“ zum Arbeiten mit mehreren Eingabedateien und Übergeben benutzerdefinierter Daten an den Medienprozessor „Media Encoder Premium Workflow“ erläutert."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: xpouyat
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7fb35bdd-9891-4401-a65b-ef3cc8190e8a
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: xpouyat;anilmur;juliako
+translationtype: Human Translation
+ms.sourcegitcommit: f8b0917b6eb0295641360c4e0a80e81100809f6e
+ms.openlocfilehash: 1d7f5aeb5fcdb6b80289bbd77c12957148d03732
+
 
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Verwenden mehrerer Eingabedateien und Komponenteneigenschaften mit Premium-Encoder
@@ -105,8 +109,8 @@ Beispiel:
 
 > [!NOTE]
 > Setzen Sie hinter `<![CDATA[` kein Wagenrücklaufzeichen.
-> 
-> 
+>
+>
 
 ### <a name="propertypath-value"></a>Wert von „propertyPath“
 In den vorherigen Beispielen hatte „propertyPath“ den Wert „/Media File Input/filename“ oder „/inactiveTimeout“ oder „clipListXml“.
@@ -262,8 +266,8 @@ Im obigen Beispiel wird der Name der Videodatei an die „Media File Input“-Ko
 
 > [!NOTE]
 > Der Name der Videodatei wird an die primarySourceFile-Eigenschaft übergeben. Der Grund dafür ist die Verwendung dieser Eigenschaft im Workflow, um z.B. mithilfe von Ausdrücken den ordnungsgemäßen Ausgabedateinamen zu erstellen.
-> 
-> 
+>
+>
 
 ### <a name="step-by-step-workflow-creation-that-overlays-a-logo-on-top-of-the-video"></a>Schritte zum Erstellen eines Workflows zum Überlagern des Videos mit einem Logo
 Es folgen die Schritte zum Erstellen eines Workflows, der zwei Dateien als Eingabe verwendet: ein Video und ein Bild. Das Bild soll das Video überlagern.
@@ -354,8 +358,8 @@ Dieses Tutorial zeigt Ihnen, wie Medienobjekte mit dem AMSE verwaltet werden. Es
 
 > [!NOTE]
 > Stellen Sie sicher, dass sich eine primäre Datei im Medienobjekt (der Hauptvideodatei) befindet.
-> 
-> 
+>
+>
 
 ![Medienobjektdateien im AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
 
@@ -399,7 +403,7 @@ Sie können den Beispielworkflow von [GitHub](https://github.com/Azure/azure-med
 ## <a name="see-also"></a>Weitere Informationen
 * [Introducing Premium Encoding in Azure Media Services (in englischer Sprache)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [How to Use Premium Encoding in Azure Media Services](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
-* [Codieren von On-Demand-Inhalten mit Azure Media Services](media-services-encode-asset.md#media_encoder_premium_workflow)
+* [Codieren von On-Demand-Inhalten mit Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [Media Encoder Premium Workflow-Formate und -Codecs](media-services-premium-workflow-encoder-formats.md)
 * [Workflow-Beispieldateien](https://github.com/AzureMediaServicesSamples/Encoding-Presets/tree/master/VoD/MediaEncoderPremiumWorkfows)
 * [Azure Media Services Explorer](http://aka.ms/amse)
@@ -410,6 +414,8 @@ Sie können den Beispielworkflow von [GitHub](https://github.com/Azure/azure-med
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

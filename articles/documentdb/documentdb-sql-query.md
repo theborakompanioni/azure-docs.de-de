@@ -1,33 +1,37 @@
 ---
-title: SQL-Syntax und SQL-Abfrage für DocumentDB | Microsoft Docs
-description: Informationen zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen für DocumentDB, eine NoSQL-Datenbank. SQL kann als JSON-Abfragesprache in DocumentDB verwendet.
+title: "SQL-Syntax und SQL-Abfrage für DocumentDB | Microsoft Docs"
+description: "Informationen zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen für DocumentDB, eine NoSQL-Datenbank. SQL kann als JSON-Abfragesprache in DocumentDB verwendet."
 keywords: SQL-Syntax, SQL-Abfrage, SQL-Abfragen, JSON-Abfragesprache, Datenbankkonzepte und SQL-Abfragen, Aggregatfunktionen
 services: documentdb
-documentationcenter: ''
+documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: monicar
-
+ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 11/01/2016
 ms.author: arramac
+translationtype: Human Translation
+ms.sourcegitcommit: a28aace9269bafe9158cccf9bea2dc26f77cf937
+ms.openlocfilehash: 54a763530961073655257251f0381b0b379ae73c
+
 
 ---
-# SQL-Abfrage und SQL-Syntax in DocumentDB
-Microsoft Azure DocumentDB unterstützt Dokumentabfragen mit SQL (Structured Query Language) als JSON-Abfragesprache. DocumentDB funktioniert ohne Schema. Die direkte Integration des JSON-Datenmodells in das Datenbankmodul ermöglicht eine automatische Indexierung von JSON-Dokumenten ohne explizite Schemas oder die Erstellung sekundärer Indizes.
+# <a name="sql-query-and-sql-syntax-in-documentdb"></a>SQL-Abfrage und SQL-Syntax in DocumentDB
+Microsoft Azure DocumentDB unterstützt Dokumentabfragen mit SQL (Structured Query Language) als JSON-Abfragesprache. DocumentDB funktioniert ohne Schema. Die direkte Integration des JSON-Datenmodells in das Datenbankmodul ermöglicht eine automatische Indexierung von JSON-Dokumenten ohne explizite Schemas oder die Erstellung sekundärer Indizes. 
 
 Bei der Entwicklung der Abfragesprache für DocumentDB hatten wir zwei Hauptziele:
 
 * Wir wollten SQL unterstützen, anstatt eine neue JSON-Abfragesprache zu entwickeln. SQL ist eine der meistverwendeten und beliebtesten Abfragesprachen. DocumentDB-SQL bietet ein formelles Programmiermodell zur Durchführung umfassender Abfragen für JSON-Dokumente.
-* Als JSON-Dokumentdatenbank, die JavaScript direkt im Datenbankmodul ausführen kann, wollten wir das JavaScript-Programmiermodell als Fundament für unsere Abfragesprache verwenden. Die SQL von DocumentDB verwendet Typsystem, Ausdrucksauswertung und Funktionsaufrufe von JavaScript. Dies wiederum bietet ein natürliches Programmiermodell für relationale Projektionen, eine hierarchische Navigation in JSON-Dokumenten, Selbstverknüpfungen, Abfragen für räumliche Daten, den Aufruf vollständig in JavaScript geschriebener, benutzerdefinierter Funktionen (User Defined Functions, UDFs) und andere Features.
+* Als JSON-Dokumentdatenbank, die JavaScript direkt im Datenbankmodul ausführen kann, wollten wir das JavaScript-Programmiermodell als Fundament für unsere Abfragesprache verwenden. Die SQL von DocumentDB verwendet Typsystem, Ausdrucksauswertung und Funktionsaufrufe von JavaScript. Dies wiederum bietet ein natürliches Programmiermodell für relationale Projektionen, eine hierarchische Navigation in JSON-Dokumenten, Selbstverknüpfungen, Abfragen für räumliche Daten, den Aufruf vollständig in JavaScript geschriebener, benutzerdefinierter Funktionen (User Defined Functions, UDFs) und andere Features. 
 
 Diese Funktionen sind unserer Ansicht nach der Schlüssel zur Minimierung der Reibung zwischen Anwendung und Datenbank und sind entscheidend für die Produktivität von Entwicklern.
 
-Für den Beginn empfiehlt sich folgendes Video, in dem Aravind Ramachandran die Abfragefunktionen von DocumentDB zeigt. Testen Sie außerdem unseren [Query Playground](http://www.documentdb.com/sql/demo), in dem Sie DocumentDB ausprobieren und SQL-Abfragen für unser Dataset ausführen können.
+Für den Einstieg empfiehlt sich folgendes Video, in dem Aravind Ramachandran die Abfragefunktionen von DocumentDB veranschaulicht. Testen Sie außerdem unseren [Query Playground](http://www.documentdb.com/sql/demo), in dem Sie DocumentDB ausprobieren und SQL-Abfragen für unser Dataset ausführen können.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
 > 
@@ -35,10 +39,10 @@ Für den Beginn empfiehlt sich folgendes Video, in dem Aravind Ramachandran die 
 
 Kehren Sie anschließend zu diesem Artikel zurück. Dort werden im Rahmen eines SQL-Abfragetutorials zunächst einige einfache JSON-Dokumente und SQL-Befehle behandelt.
 
-## Erste Schritte mit SQL-Befehlen in DocumentDB
-Um die DocumentDB-SQL-Sprache in Aktion zu sehen, beginnen wir mit einigen einfachen JSON-Dokumenten und betrachten einige einfache Abfragen für diese Dokumente. Betrachten Sie diese beiden JSON-Dokumente über zwei Familien. Beachten Sie, dass wir in DocumentDB keine Schemas oder sekundäre Indizes explizit erstellen müssen. Wir fügen einfach die JSON-Dokumente in eine DocumentDB-Sammlung ein und führen anschließend Abfragen aus. Hier haben wir ein einfaches JSON-Dokument für die Familie Andersen mit Eltern, Kindern (und deren Haustieren), Adresse und Registrierungsinformationen. Das Dokument enthält Zeichenfolgen, Zahlen, boolesche Werte, Arrays und verschachtelte Eigenschaften.
+## <a name="getting-started-with-sql-commands-in-documentdb"></a>Erste Schritte mit SQL-Befehlen in DocumentDB
+Um die DocumentDB-SQL-Sprache in Aktion zu sehen, beginnen wir mit einigen einfachen JSON-Dokumenten und betrachten einige einfache Abfragen für diese Dokumente. Betrachten Sie diese beiden JSON-Dokumente über zwei Familien. Beachten Sie, dass wir in DocumentDB keine Schemas oder sekundäre Indizes explizit erstellen müssen. Wir fügen einfach die JSON-Dokumente in eine DocumentDB-Sammlung ein und führen anschließend Abfragen aus. Hier haben wir ein einfaches JSON-Dokument für die Familie Andersen mit Eltern, Kindern (und deren Haustieren), Adresse und Registrierungsinformationen. Das Dokument enthält Zeichenfolgen, Zahlen, boolesche Werte, Arrays und verschachtelte Eigenschaften. 
 
-**Dokument**
+**Dokument**  
 
     {
         "id": "AndersenFamily",
@@ -61,7 +65,7 @@ Um die DocumentDB-SQL-Sprache in Aktion zu sehen, beginnen wir mit einigen einfa
 
 Nun folgt ein zweites Dokument mit einem kleinen Unterschied: `givenName` und `familyName` werden anstelle von `firstName` und `lastName` verwendet.
 
-**Dokument**
+**Dokument**  
 
     {
         "id": "WakefieldFamily",
@@ -92,7 +96,7 @@ Nun folgt ein zweites Dokument mit einem kleinen Unterschied: `givenName` und `f
 
 
 
-Wir werden nun einige Abfragen an die Daten ausführen, um einige der Schlüsselaspekte von DocumentDB-SQL besser zu verstehen. Die folgende Abfrage gibt z. B. die Dokumente zurück, in denen das ID-Feld den Text `AndersenFamily` enthält. Da es sich um `SELECT *` handelt, ist die Rückgabe der Abfrage das komplette JSON-Dokument:
+Wir werden nun einige Abfragen an die Daten ausführen, um einige der Schlüsselaspekte von DocumentDB-SQL besser zu verstehen. Die folgende Abfrage gibt z. B. die Dokumente zurück, in denen das ID-Feld den Text `AndersenFamily` enthält. Da es sich um `SELECT *` handelt, ist die Rückgabe der Abfrage das komplette JSON-Dokument:
 
 **Abfragen**
 
@@ -123,7 +127,7 @@ Wir werden nun einige Abfragen an die Daten ausführen, um einige der Schlüssel
 
 Betrachten wir nun einen Fall, in dem wir die JSON-Ausgabe nach unseren Wünschen formatieren möchten. Diese Abfrage projiziert ein neues JSON-Objekt mit zwei ausgewählten Feldern (Name und Stadt), wenn die Stadt in der Adresse denselben Namen wie der Staat hat. In diesem Fall stimmt "NY, NY" überein.
 
-**Abfragen**
+**Abfragen**    
 
     SELECT {"Name":f.id, "City":f.address.city} AS Family 
     FROM Families f 
@@ -157,29 +161,29 @@ Die nächste Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren I
     ]
 
 
-Beachten Sie einige der bemerkenswerten Aspekte der DocumentDB-Abfragesprache, die wir in den bisherigen Beispielen gesehen haben:
+Beachten Sie einige der bemerkenswerten Aspekte der DocumentDB-Abfragesprache, die wir in den bisherigen Beispielen gesehen haben:  
 
-* Da DocumentDB-SQL mit JSON-Werten arbeitet, werden baumförmige Entitäten anstelle von Spalten und Zeilen verarbeitet. Daher können Sie auf Knoten in der Baumstruktur in beliebiger Tiefe verweisen, z. B. `Node1.Node2.Node3…..Nodem`, ähnlich wie relationale SQL mit einem zweiteiligen Verweis auf `<table>.<column>`.
-* Die strukturierte Abfragesprache arbeitet mit schemalosen Daten. Daher muss das Typsystem dynamisch gebunden werden. Derselbe Ausdruck kann unterschiedliche Typen in unterschiedlichen Dokumenten ergeben. Das Ergebnis einer Abfrage ist ein gültiger JSON-Wert, aber nicht garantiert innerhalb eines festen Schemas.
-* DocumentDB unterstützt nur strikte JSON-Dokumente. Typsystem und Ausdrücke sind also auf JSON-Typen beschränkt. Weitere Informationen finden Sie unter [JSON-Spezifikation](http://www.json.org/).
+* Da DocumentDB-SQL mit JSON-Werten arbeitet, werden baumförmige Entitäten anstelle von Spalten und Zeilen verarbeitet. Daher können Sie auf Knoten in der Baumstruktur in beliebiger Tiefe verweisen, z. B. `Node1.Node2.Node3…..Nodem`, ähnlich wie relationale SQL mit einem zweiteiligen Verweis auf `<table>.<column>`.   
+* Die strukturierte Abfragesprache arbeitet mit schemalosen Daten. Daher muss das Typsystem dynamisch gebunden werden. Derselbe Ausdruck kann unterschiedliche Typen in unterschiedlichen Dokumenten ergeben. Das Ergebnis einer Abfrage ist ein gültiger JSON-Wert, aber nicht garantiert innerhalb eines festen Schemas.  
+* DocumentDB unterstützt nur strikte JSON-Dokumente. Typsystem und Ausdrücke sind also auf JSON-Typen beschränkt. Weitere Informationen finden Sie unter [JSON-Spezifikation](http://www.json.org/) .  
 * Eine DocumentDB-Sammlung ist ein schemaloser Container mit JSON-Dokumenten. Die Beziehungen in Datenentitäten innerhalb und zwischen Dokumenten in einer Sammlung werden implizit durch Einschluss erfasst, und nicht durch Beziehungen von primären Schlüsseln und Fremdschlüsseln. Dieser Aspekt ist wichtig angesichts der später in diesem Artikel besprochenen dokumentinternen Verknüpfungen.
 
-## DocumentDB-Indexierung
-Bevor wir auf die DocumentDB-SQL-Syntax eingehen, empfiehlt es sich, dass Sie sich zunächst mit dem Indizierungsdesign in DocumentDB vertraut machen.
+## <a name="documentdb-indexing"></a>DocumentDB-Indexierung
+Bevor wir auf die DocumentDB-SQL-Syntax eingehen, empfiehlt es sich, dass Sie sich zunächst mit dem Indizierungsdesign in DocumentDB vertraut machen. 
 
-Datenbankindizes dienen zur Ausführung von Abfragen verschiedenster Arten und Formen mit minimaler Ressourcennutzung (CPU, E/A) sowie mit gutem Durchsatz und niedriger Latenz. Die Auswahl der richtigen Indizes für Datenbankabfragen erfordert oft viel Planungs- und Testaufwand. Dieser Ansatz ist eine Herausforderung für schemalose Datenbanken, in denen die Daten nicht einem strikten Schema folgen und sich laufend verändern.
+Datenbankindizes dienen zur Ausführung von Abfragen verschiedenster Arten und Formen mit minimaler Ressourcennutzung (CPU, E/A) sowie mit gutem Durchsatz und niedriger Latenz. Die Auswahl der richtigen Indizes für Datenbankabfragen erfordert oft viel Planungs- und Testaufwand. Dieser Ansatz ist eine Herausforderung für schemalose Datenbanken, in denen die Daten nicht einem strikten Schema folgen und sich laufend verändern. 
 
 Daher haben wir uns für die Entwicklung des Indexierungs-Untersystems von DocumentDB die folgenden Ziele gesetzt:
 
-* Indizierung von Dokumenten ohne Schema: Das Indizierungsuntersystem benötigt keine Schemainformationen und stellt keinerlei Annahmen über das Schema der Dokumente an.
+* Indizierung von Dokumenten ohne Schema: Das Indizierungsuntersystem benötigt keine Schemainformationen und stellt keinerlei Annahmen über das Schema der Dokumente an. 
 * Unterstützung für effiziente, umfassende hierarchische und relationale Abfragen: Der Index unterstützt die DocumentDB-Abfragesprache auf effiziente Weise und bietet Unterstützung für hierarchische und relationale Projektionen.
 * Unterstützung für konsistente Abfragen auch bei steigendem Volumen an Schreibvorgängen: Bei Workloads mit hohem Schreibaufwand und konsistenten Abfragen wird der Index inkrementell, effizient und online aktualisiert, um mit dem hohen Aufkommen an Schreibvorgängen Schritt zu halten. Die konsistente Indexaktualisierung ist entscheidend, um Abfragen auf der Konsistenzebene zu bieten, mit der die Benutzer den Dokumentdienst konfiguriert haben.
-* Mehrinstanzenfähigkeit: Beim reservierungsbasierten Modell für mandantenübergreifende Ressourcenverwaltung werden Indexaktualisierungen innerhalb des Budgets der pro Replikat verfügbaren Systemressourcen (CPU, Speicher und E/A-Vorgänge pro Sekunde) durchgeführt.
-* Speichereffizienz: Aus Kostengründen ist der zusätzlich benötigte Speicherplatz für den Index beschränkt und vorhersagbar. Dies ist entscheidend, da Entwickler mit DocumentDB kostenbasierte Kompromisse zwischen Index-Mehraufwand und Abfrageleistung treffen können.
+* Mehrinstanzenfähigkeit: Beim reservierungsbasierten Modell für mandantenübergreifende Ressourcenverwaltung werden Indexaktualisierungen innerhalb des Budgets der pro Replikat verfügbaren Systemressourcen (CPU, Speicher und E/A-Vorgänge pro Sekunde) durchgeführt. 
+* Speichereffizienz: Aus Kostengründen ist der zusätzlich benötigte Speicherplatz für den Index beschränkt und vorhersagbar. Dies ist entscheidend, da Entwickler mit DocumentDB kostenbasierte Kompromisse zwischen Index-Mehraufwand und Abfrageleistung treffen können.  
 
 Beispiele zum Konfigurieren der Indexrichtlinie für Sammlungen finden Sie in den [DocumentDB-Beispielen](https://github.com/Azure/azure-documentdb-net) auf der MSDN-Website. Wenden wir uns nun den Details der DocumentDB-SQL-Syntax zu.
 
-## Grundlagen der DocumentDB-SQL-Abfrage
+## <a name="basics-of-a-documentdb-sql-query"></a>Grundlagen der DocumentDB-SQL-Abfrage
 Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI-SQL-Standards. Normalerweise wird in jeder Abfrage die jeweilige Quelle in der From-Klausel aufgelistet. Anschließend wird in der WHERE-Klausel ein Filter auf die Quelle angewendet, um eine Teilmenge der JSON-Dokumente zurückzugeben. Zuletzt wird die SELECT-Klausel verwendet, um die abgefragten JSON-Werte in die ausgewählte Liste zu projizieren.
 
     SELECT [TOP <top_expression>] <select_list> 
@@ -188,16 +192,16 @@ Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Kla
     [ORDER BY <sort_specification]    
 
 
-## Die FROM-Klausel
-Die `FROM <from_specification>`-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient die gesamte Sammlung als Quelle, stattdessen kann aber auch eine Teilmenge der Sammlung angegeben werden.
+## <a name="from-clause"></a>Die FROM-Klausel
+Die `FROM <from_specification>` -Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient die gesamte Sammlung als Quelle, stattdessen kann aber auch eine Teilmenge der Sammlung angegeben werden. 
 
 Abfragen wie `SELECT * FROM Families` geben an, dass die gesamte Families-Sammlung als Quelle dient, die durchlaufen werden soll. Der Sonderbezeichner "ROOT" kann anstelle des Sammlungsnamens verwendet werden, um die Sammlung darzustellen. Die folgende Liste enthält die Regeln, die pro Abfrage erzwungen werden:
 
-* Die Sammlung kann Aliase enthalten, z. B. `SELECT f.id FROM Families AS f` oder einfach `SELECT f.id FROM Families f`. Hier ist `f` das Äquivalent zu `Families`. `AS` ist ein optionales Schlüsselwort als Alias für den Bezeichner.
+* Die Sammlung kann Aliase enthalten, z. B. `SELECT f.id FROM Families AS f` oder einfach `SELECT f.id FROM Families f`. Hier ist `f` das Äquivalent von `Families`. `AS` ist ein optionales Schlüsselwort, das als Alias für den Bezeichner fungiert.
 * Nach der Aliasverwendung kann die Originalquelle nicht mehr gebunden werden. `SELECT Families.id FROM Families f` ist beispielsweise syntaktisch ungültig, da der Bezeichner „Families“ nicht mehr aufgelöst werden kann.
 * Alle referenzierten Eigenschaften müssen vollqualifiziert sein. Dies ist ohne strikte Schemaverwendung notwendig, um mehrdeutige Bindungen zu vermeiden. Daher ist `SELECT id FROM Families f` syntaktisch ungültig, da die `id`-Eigenschaft nicht gebunden ist.
 
-### Unterdokumente
+### <a name="sub-documents"></a>Unterdokumente
 Die Quelle kann auch auf eine kleinere Teilmenge reduziert werden. Wenn Sie z. B. nur eine Teilstruktur in jedem Dokument auflisten möchten, kann der Stammknoten der Teilstruktur zur Quelle werden, wie im folgenden Beispiel gezeigt.
 
 **Abfragen**
@@ -205,7 +209,7 @@ Die Quelle kann auch auf eine kleinere Teilmenge reduziert werden. Wenn Sie z. B
     SELECT * 
     FROM Families.children
 
-**Ergebnisse**
+**Ergebnisse**  
 
     [
       [
@@ -251,10 +255,10 @@ Das obige Beispiel verwendet ein Array als Quelle. Sie können jedoch auch ein O
     ]
 
 
-## WHERE-Klausel
-Die WHERE-Klausel (**`WHERE <filter_condition>`**) ist optional. Sie gibt die Bedingungen an, die die in der Quelle angegebenen JSON-Dokumente erfüllen müssen, um als Teil des Ergebnisses zurückgegeben zu werden. Jedes JSON-Dokument muss die angegebenen Bedingungen erfüllen, um in das Ergebnis einbezogen zu werden. Die WHERE-Klausel wird von der Indexebene verwendet, um die absolut kleinste Teilmenge von Quelldokumenten zu bestimmen, die Teil des Ergebnisses sein können.
+## <a name="where-clause"></a>WHERE-Klausel
+Die WHERE-Klausel (**`WHERE <filter_condition>`**) ist optional. Sie gibt die Bedingungen an, die die in der Quelle angegebenen JSON-Dokumente erfüllen müssen, um als Teil des Ergebnisses zurückgegeben zu werden. Jedes JSON-Dokument muss die angegebenen Bedingungen erfüllen, um in das Ergebnis einbezogen zu werden. Die WHERE-Klausel wird von der Indexebene verwendet, um die absolut kleinste Teilmenge von Quelldokumenten zu bestimmen, die Teil des Ergebnisses sein können. 
 
-Die folgende Abfrage fordert Dokumente an, die eine „name“-Eigenschaft enthalten, deren Eigenschaftswert gleich `AndersenFamily` ist. Alle anderen Dokumente, die keine „name“-Eigenschaft aufweisen oder deren Wert nicht gleich `AndersenFamily` ist, werden ausgeschlossen.
+Die folgende Abfrage fordert Dokumente an, die eine „name“-Eigenschaft enthalten, deren Eigenschaftswert gleich `AndersenFamily`ist. Alle anderen Dokumente, die keine „name“-Eigenschaft aufweisen oder deren Wert nicht gleich `AndersenFamily` ist, werden ausgeschlossen. 
 
 **Abfragen**
 
@@ -273,9 +277,9 @@ Die folgende Abfrage fordert Dokumente an, die eine „name“-Eigenschaft entha
     }]
 
 
-Das vorstehende Beispiel zeigt eine einfache Gleichheitsabfrage. DocumentDB-SQL unterstützt außerdem eine Vielzahl skalarer Ausdrücke. Die am häufigsten verwendeten Ausdrücke sind binäre und unäre Ausdrücke. Eigenschaftsverweise aus dem JSON-Quellobjekt sind ebenfalls gültige Ausdrücke.
+Das vorstehende Beispiel zeigt eine einfache Gleichheitsabfrage. DocumentDB-SQL unterstützt außerdem eine Vielzahl skalarer Ausdrücke. Die am häufigsten verwendeten Ausdrücke sind binäre und unäre Ausdrücke. Eigenschaftsverweise aus dem JSON-Quellobjekt sind ebenfalls gültige Ausdrücke. 
 
-Die folgenden binären Operatoren werden momentan unterstützt und können in Abfragen verwendet werden, wie in den folgenden Beispielen gezeigt:
+Die folgenden binären Operatoren werden momentan unterstützt und können in Abfragen verwendet werden, wie in den folgenden Beispielen gezeigt:  
 
 <table>
 <tr>
@@ -284,7 +288,7 @@ Die folgenden binären Operatoren werden momentan unterstützt und können in Ab
 </tr>
 <tr>
 <td>Bitweise</td>    
-<td>|, &amp;, ^, &lt;&lt;, >>, >>> (Nullverschiebung nach rechts) </td>
+<td>|, &, ^, <<, >>, >>> (Nullauffüllung, Verschiebung nach rechts)</td>
 </tr>
 <tr>
 <td>Logisch</td>
@@ -292,13 +296,14 @@ Die folgenden binären Operatoren werden momentan unterstützt und können in Ab
 </tr>
 <tr>
 <td>Vergleich</td>    
-<td>=, !=, &lt;, >, &lt;=, >=, &lt;></td>
+<td>=, !=, &lt;, &gt;, &lt;=, &gt;=, <></td>
 </tr>
 <tr>
 <td>String</td>    
 <td>|| (Verkettung)</td>
 </tr>
 </table>  
+
 
 Betrachten wir nun einige Abfragen mit binären Operatoren.
 
@@ -327,9 +332,9 @@ Die unären Operatoren "+,-, ~ und NOT" werden ebenfalls unterstützt und könne
 
 
 
-Neben binären und unären Operatoren sind auch Eigenschaftsverweise zulässig. Beispielsweise gibt `SELECT * FROM Families f WHERE f.isRegistered` das JSON-Dokument zurück, das die `isRegistered`-Eigenschaft enthält und dessen Eigenschaftswert gleich dem JSON-Wert `true` ist. Alle anderen Werte (false, null, Undefined, `<number>`, `<string>`, `<object>`, `<array>` usw.) führen dazu, dass das Quelldokument aus dem Ergebnis ausgeschlossen wird.
+Neben binären und unären Operatoren sind auch Eigenschaftsverweise zulässig. Beispielsweise gibt `SELECT * FROM Families f WHERE f.isRegistered` das JSON-Dokument zurück, das die `isRegistered`-Eigenschaft enthält und dessen Eigenschaftswert gleich dem JSON-Wert `true` ist. Alle anderen Werte (false, null, Undefined, `<number>`, `<string>`, `<object>`, `<array>` usw.) führen dazu, dass das Quelldokument aus dem Ergebnis ausgeschlossen wird. 
 
-### Gleichheits- und Vergleichsoperatoren
+### <a name="equality-and-comparison-operators"></a>Gleichheits- und Vergleichsoperatoren
 Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in DocumentDB-SQL zwischen den einzelnen JSON-Typen.
 
 <table style = "width:300px">
@@ -354,7 +359,7 @@ Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in Document
             <strong>String</strong>
          </td>
          <td valign="top">
-            <strong>Objekt</strong>
+            <strong>Object</strong>
          </td>
          <td valign="top">
             <strong>Array</strong>
@@ -365,179 +370,136 @@ Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in Document
             <strong>Undefined<strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Null<strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Boolean<strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Number<strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>String<strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Object<strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Array<strong>
          </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
-            Undefined
-         </td>
+Undefined </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
@@ -545,17 +507,17 @@ Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in Document
    </tbody>
 </table>
 
-Für andere Vergleichsoperatoren wie >, >=, !=, < und <= gelten die folgenden Regeln:
+Für andere Vergleichsoperatoren wie >, >=, !=, < und <= gelten die folgenden Regeln:   
 
 * Vergleiche zwischen zwei unterschiedlichen Typen ergeben Undefined.
-* Vergleiche zwischen zwei Objekten oder zwei Arrays ergeben Undefined.
+* Vergleiche zwischen zwei Objekten oder zwei Arrays ergeben Undefined.   
 
 Wenn das Ergebnis eines skalaren Ausdrucks im Filter Undefined ist, wird das entsprechende Dokument aus dem Ergebnis ausgeschlossen, da Undefined logisch nicht gleich "true" ist.
 
-### Schlüsselwort BETWEEN
+### <a name="between-keyword"></a>Schlüsselwort BETWEEN
 Mit BETWEEN können Abfragen für Wertebereiche wie ANSI SQL ausgedrückt werden. BETWEEN kann für Zeichenfolgen oder Zahlen verwendet werden.
 
-Diese Abfrage gibt beispielsweise alle Familiendokumente zurück, in denen das erste Kind die Klassen 1-5 besucht.
+Diese Abfrage gibt beispielsweise alle Familiendokumente zurück, in denen das erste Kind die Klassen 1-5 besucht. 
 
     SELECT *
     FROM Families.children[0] c
@@ -566,11 +528,11 @@ Anders als in ANSI-SQL, kann die BETWEEN-Klausel wie im folgenden Beispiel in de
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 
-Für schnellere Ausführungszeiten von Abfragen müssen Sie eine Indexrichtlinie erstellen, die einen Bereichindextyp für alle in der BETWEEN-Klausel gefilterten numerischen Eigenschaften/Pfade verwendet.
+Für schnellere Ausführungszeiten von Abfragen müssen Sie eine Indexrichtlinie erstellen, die einen Bereichindextyp für alle in der BETWEEN-Klausel gefilterten numerischen Eigenschaften/Pfade verwendet. 
 
 Der Hauptunterschied zwischen BETWEEN in DocumentDB und ANSI SQL besteht darin, dass Bereichsabfragen für Eigenschaften gemischte Typen enthalten können. "grade" kann beispielsweise in einigen Dokumenten eine Zahl (5) sein, in anderen eine Zeichenfolge ("grade4"). In diesen Fällen gibt, wie in JavaScript, ein Vergleich zwischen zwei unterschiedlichen Typen "undefined" zurück, und das Dokument wird übersprungen.
 
-### Logische Operatoren (AND, OR und NOT)
+### <a name="logical-and-or-and-not-operators"></a>Logische Operatoren (AND, OR und NOT)
 Logische Operatoren arbeiten mit booleschen Werten. Es folgt eine Liste der logischen Wahrheitstabellen für diese Operatoren.
 
 | OR | True | False | Undefined |
@@ -591,8 +553,8 @@ Logische Operatoren arbeiten mit booleschen Werten. Es folgt eine Liste der logi
 | False |True |
 | Undefined |Undefined |
 
-### IN-Schlüsselwort
-Mit dem Schlüsselwort „IN“ kann überprüft werden, ob ein angegebener Wert mit einem Wert in einer Liste übereinstimmt. Bei dieser Abfrage werden beispielsweise alle Familiendokumente zurückgegeben, bei denen die ID entweder „WakefieldFamily“ oder „AndersenFamily“ lautet.
+### <a name="in-keyword"></a>IN-Schlüsselwort
+Mit dem Schlüsselwort „IN“ kann überprüft werden, ob ein angegebener Wert mit einem Wert in einer Liste übereinstimmt. Bei dieser Abfrage werden beispielsweise alle Familiendokumente zurückgegeben, bei denen die ID entweder „WakefieldFamily“ oder „AndersenFamily“ lautet. 
 
     SELECT *
     FROM Families 
@@ -604,10 +566,10 @@ In diesem Beispiel werden alle Dokumente zurückgegeben, in denen der Bundesstaa
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 
-### Ternäre (?) und koaleszierte (??) Operatoren
-Ternäre und koaleszierte Operatoren können ähnlich wie in den gängigen Programmiersprachen wie C# und JavaScript zum Erstellen von bedingten Ausdrücken verwendet werden.
+### <a name="ternary--and-coalesce--operators"></a>Ternäre (?) und koaleszierte (??) Operatoren
+Ternäre und koaleszierte Operatoren können ähnlich wie in den gängigen Programmiersprachen wie C# und JavaScript zum Erstellen von bedingten Ausdrücken verwendet werden. 
 
-Der ternäre (?) Operator kann beim schnellen Erstellen von neuen JSON-Eigenschaften sehr nützlich sein. Sie können nun z. B. Abfragen zum Klassifizieren von Klassenstufen in einem für Menschen lesbaren Format wie Anfänger/Fortgeschrittene/Profis wie unten dargestellt erstellen.
+Der ternäre (?) Operator kann beim schnellen Erstellen von neuen JSON-Eigenschaften sehr nützlich sein. Sie können nun z. B. Abfragen zum Klassifizieren von Klassenstufen in einem für Menschen lesbaren Format wie Anfänger/Fortgeschrittene/Profis wie unten dargestellt erstellen.
 
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel 
      FROM Families.children[0] c
@@ -624,20 +586,20 @@ Der koaleszierte (??) Operator kann zur effizienten Prüfung des Vorkommens eine
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-### Eigenschaftenaccessor in Anführungszeichen
-Sie können auf Eigenschaften auch zugreifen, indem Sie den Anführungszeichenoperator `[]` für Eigenschaften verwenden. Beispielsweise sind `SELECT c.grade` und `SELECT c["grade"]` gleichwertig. Diese Syntax ist hilfreich, wenn Sie eine Eigenschaft mit Escapezeichen versehen müssen, die Leerzeichen oder Sonderzeichen enthält oder zufällig den gleichen Namen wie ein SQL-Schlüsselwort oder ein reserviertes Wort hat.
+### <a name="quoted-property-accessor"></a>Eigenschaftenaccessor in Anführungszeichen
+Sie können auf Eigenschaften auch zugreifen, indem Sie den Anführungszeichenoperator `[]`für Eigenschaften verwenden.  `SELECT c.grade` and `SELECT c["grade"]` gleichwertig. Diese Syntax ist hilfreich, wenn Sie eine Eigenschaft mit Escapezeichen versehen müssen, die Leerzeichen oder Sonderzeichen enthält oder zufällig den gleichen Namen wie ein SQL-Schlüsselwort oder ein reserviertes Wort hat.
 
     SELECT f["lastName"]
     FROM Families f
     WHERE f["id"] = "AndersenFamily"
 
 
-## Die SELECT-Klausel
-Die SELECT-Klausel (**`SELECT <select_list>`**) ist obligatorisch und gibt an, welche Werte die Abfrage zurückgeben soll, wie auch in ANSI-SQL. Die gefilterte Teilmenge aus den Quelldokumenten wird an die Projektionsphase übergeben, in der die angegebenen JSON-Werte abgerufen werden und ein neues JSON-Objekt für jede übergebene Eingabe erstellt wird.
+## <a name="select-clause"></a>Die SELECT-Klausel
+Die SELECT-Klausel (**`SELECT <select_list>`**) ist obligatorisch und gibt an, welche Werte die Abfrage zurückgeben soll, wie auch in ANSI-SQL. Die gefilterte Teilmenge aus den Quelldokumenten wird an die Projektionsphase übergeben, in der die angegebenen JSON-Werte abgerufen werden und ein neues JSON-Objekt für jede übergebene Eingabe erstellt wird. 
 
-Das folgende Beispiel zeigt eine typische SELECT-Abfrage:
+Das folgende Beispiel zeigt eine typische SELECT-Abfrage: 
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.address
     FROM Families f 
@@ -654,10 +616,10 @@ Das folgende Beispiel zeigt eine typische SELECT-Abfrage:
     }]
 
 
-### Verschachtelte Eigenschaften
-Im folgenden Beispiel werden zwei verschachtelte Eigenschaften projiziert: `f.address.state` und `f.address.city`.
+### <a name="nested-properties"></a>Verschachtelte Eigenschaften
+Im folgenden Beispiel werden zwei verschachtelte Eigenschaften projiziert: `f.address.state` and `f.address.city` verwendet.
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.address.state, f.address.city
     FROM Families f 
@@ -673,7 +635,7 @@ Im folgenden Beispiel werden zwei verschachtelte Eigenschaften projiziert: `f.ad
 
 Die Projektion unterstützt auch JSON-Ausdrücke, wie im folgenden Beispiel gezeigt.
 
-**Abfrage**
+**Abfragen**
 
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
     FROM Families f 
@@ -690,9 +652,9 @@ Die Projektion unterstützt auch JSON-Ausdrücke, wie im folgenden Beispiel geze
     }]
 
 
-Beachten Sie die Rolle von `$1`. Die `SELECT`-Klausel muss ein JSON-Objekt erstellen. Da kein Schlüssel angegeben ist, verwenden wir implizite Argumentvariablennamen beginnend mit `$1`. Diese Abfrage gibt z. B. zwei implizite Argumentvariablen mit den Bezeichnungen `$1` und `$2` zurück.
+Beachten Sie die Rolle von `$1`. Die `SELECT`-Klausel muss ein JSON-Objekt erstellen. Da kein Schlüssel angegeben ist, verwenden wir implizite Argumentvariablennamen beginnend mit `$1`. Diese Abfrage gibt z. B. zwei implizite Argumentvariablen mit den Bezeichnungen `$1` und `$2` zurück.
 
-**Abfrage**
+**Abfragen**
 
     SELECT { "state": f.address.state, "city": f.address.city }, 
            { "name": f.id }
@@ -712,12 +674,12 @@ Beachten Sie die Rolle von `$1`. Die `SELECT`-Klausel muss ein JSON-Objekt erste
     }]
 
 
-### Aliase
-Wir werden das obige Beispiel nun erweitern und explizite Aliase für Werte verwenden. AS ist das Schlüsselwort für die Aliasvergabe. Dieses Schlüsselwort ist optional, wie Sie bei der Projektion des zweiten Werts als `NameInfo` sehen.
+### <a name="aliasing"></a>Aliase
+Wir werden das obige Beispiel nun erweitern und explizite Aliase für Werte verwenden. AS ist das Schlüsselwort für die Aliasvergabe. Dieses Schlüsselwort ist optional, wie Sie bei der Projektion des zweiten Werts als `NameInfo`sehen. 
 
 Wenn eine Abfrage zwei Eigenschaften mit demselben Namen hat, müssen Aliase verwendet werden, um mindestens eine der Eigenschaften umzubenennen, sodass diese im projizierten Ergebnis eindeutig sind.
 
-**Abfrage**
+**Abfragen**
 
     SELECT 
            { "state": f.address.state, "city": f.address.city } AS AddressInfo, 
@@ -738,10 +700,10 @@ Wenn eine Abfrage zwei Eigenschaften mit demselben Namen hat, müssen Aliase ver
     }]
 
 
-### Skalare Ausdrücke
-Neben Eigenschaftsverweisen unterstützt die SELECT-Klausel auch skalare Ausdrücke wie Konstanten, arithmetische Ausdrücke, logische Ausdrücke usw. Hier sehen Sie z. B. eine einfache „Hello World“-Abfrage.
+### <a name="scalar-expressions"></a>Skalare Ausdrücke
+Neben Eigenschaftsverweisen unterstützt die SELECT-Klausel auch skalare Ausdrücke wie Konstanten, arithmetische Ausdrücke, logische Ausdrücke usw. Hier sehen Sie z. B. eine einfache „Hello World“-Abfrage.
 
-**Abfrage**
+**Abfragen**
 
     SELECT "Hello World"
 
@@ -754,7 +716,7 @@ Neben Eigenschaftsverweisen unterstützt die SELECT-Klausel auch skalare Ausdrü
 
 Hier ist ein komplexeres Beispiel mit einem skalaren Ausdruck:
 
-**Abfrage**
+**Abfragen**
 
     SELECT ((2 + 11 % 7)-2)/3    
 
@@ -767,7 +729,7 @@ Hier ist ein komplexeres Beispiel mit einem skalaren Ausdruck:
 
 Das Ergebnis des skalaren Ausdrucks im folgenden Beispiel ist ein Boolean-Wert.
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.address.city = f.address.state AS AreFromSameCityState
     FROM Families f    
@@ -784,15 +746,15 @@ Das Ergebnis des skalaren Ausdrucks im folgenden Beispiel ist ein Boolean-Wert.
     ]
 
 
-### Objekt- und Arrayerstellung
+### <a name="object-and-array-creation"></a>Objekt- und Arrayerstellung
 Eine weitere Schlüsselfunktion von DocumentDB-SQL ist die Objekt- und Arrayerstellung. Im vorherigen Beispiel haben wir ein neues JSON-Objekt erstellt. Auf dieselbe Weise können Sie Arrays erstellen, wie in den folgenden Beispielen gezeigt.
 
-**Abfrage**
+**Abfragen**
 
     SELECT [f.address.city, f.address.state] AS CityState 
     FROM Families f    
 
-**Ergebnisse**
+**Ergebnisse**  
 
     [
       {
@@ -809,10 +771,10 @@ Eine weitere Schlüsselfunktion von DocumentDB-SQL ist die Objekt- und Arrayerst
       }
     ]
 
-### VALUE-Schlüsselwort
-Mit dem **VALUE**-Schlüsselwort können Sie JSON-Werte zurückgeben. Die folgende Abfrage gibt z. B. den skalaren Wert `"Hello World"` anstelle von `{$1: "Hello World"}` zurück.
+### <a name="value-keyword"></a>VALUE-Schlüsselwort
+Das **VALUE**-Schlüsselwort ermöglicht die Rückgabe von JSON-Werten. Die folgende Abfrage gibt z. B. den skalaren Wert `"Hello World"` anstelle von `{$1: "Hello World"}` zurück.
 
-**Abfrage**
+**Abfragen**
 
     SELECT VALUE "Hello World"
 
@@ -823,14 +785,14 @@ Mit dem **VALUE**-Schlüsselwort können Sie JSON-Werte zurückgeben. Die folgen
     ]
 
 
-Die folgende Abfrage gibt den JSON-Wert ohne die `"address"`-Bezeichnung in den Ergebnissen zurück.
+Die folgende Abfrage gibt den JSON-Wert ohne die `"address"` -Bezeichnung in den Ergebnissen zurück.
 
-**Abfrage**
+**Abfragen**
 
     SELECT VALUE f.address
     FROM Families f    
 
-**Ergebnisse**
+**Ergebnisse**  
 
     [
       {
@@ -845,9 +807,9 @@ Die folgende Abfrage gibt den JSON-Wert ohne die `"address"`-Bezeichnung in den 
       }
     ]
 
-Das folgende Beispiel zeigt, wie Sie primitive JSON-Werte zurückgeben können (auf der Blattebene der JSON-Baumstruktur).
+Das folgende Beispiel zeigt, wie Sie primitive JSON-Werte zurückgeben können (auf der Blattebene der JSON-Baumstruktur). 
 
-**Abfrage**
+**Abfragen**
 
     SELECT VALUE f.address.state
     FROM Families f    
@@ -860,10 +822,10 @@ Das folgende Beispiel zeigt, wie Sie primitive JSON-Werte zurückgeben können (
     ]
 
 
-### * Operator
-Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projizieren. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. Abfragen wie `SELECT * FROM Families f` sind z. B. gültig, während `SELECT VALUE * FROM Families f ` und `SELECT *, f.id FROM Families f ` nicht gültig sind.
+### <a name="-operator"></a>* Operator
+Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projizieren. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. So sind beispielsweise Abfragen wie `SELECT * FROM Families f` gültig, `SELECT VALUE * FROM Families f ` und `SELECT *, f.id FROM Families f ` aber nicht.
 
-**Abfrage**
+**Abfragen**
 
     SELECT * 
     FROM Families f 
@@ -889,10 +851,10 @@ Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projiz
         "isRegistered": true
     }]
 
-### TOP-Operator
-Das TOP-Schlüsselwort kann verwendet werden, um die Anzahl der Werte aus einer Abfrage zu beschränken. Wenn TOP in Verbindung mit der ORDER BY-Klausel verwendet wird, ist das Resultset auf die ersten N der geordneten Werte beschränkt. Andernfalls werden die ersten N der Ergebnisse in einer nicht definierten Reihenfolge zurückgegeben. Es hat sich bewährt, in einer SELECT-Anweisung immer eine ORDER BY-Klausel mit der TOP-Klausel zu verwenden. Dies ist die einzige Möglichkeit, zuverlässig anzugeben, welche Zeilen von TOP betroffen sind.
+### <a name="top-operator"></a>TOP-Operator
+Das TOP-Schlüsselwort kann verwendet werden, um die Anzahl der Werte aus einer Abfrage zu beschränken. Wenn TOP in Verbindung mit der ORDER BY-Klausel verwendet wird, ist das Resultset auf die ersten N der geordneten Werte beschränkt. Andernfalls werden die ersten N der Ergebnisse in einer nicht definierten Reihenfolge zurückgegeben. Es hat sich bewährt, in einer SELECT-Anweisung immer eine ORDER BY-Klausel mit der TOP-Klausel zu verwenden. Dies ist die einzige Möglichkeit, zuverlässig anzugeben, welche Zeilen von TOP betroffen sind. 
 
-**Abfrage**
+**Abfragen**
 
     SELECT TOP 1 * 
     FROM Families f 
@@ -919,12 +881,12 @@ Das TOP-Schlüsselwort kann verwendet werden, um die Anzahl der Werte aus einer 
 
 TOP kann mit einem konstanten Wert (wie oben gezeigt) oder einen Variablenwert mithilfe von parametrisierten Abfragen verwendet werden. Weitere Informationen finden Sie unten zu parametrisierte Abfragen.
 
-## ORDER BY-Klausel
+## <a name="order-by-clause"></a>ORDER BY-Klausel
 Wie bei ANSI-SQL auch, können Sie beim Abfragen eine optionale Order By-Klausel einbinden. Die Klausel kann ein optionales ASC/DESC-Argument enthalten, um die Reihenfolge anzugeben, in der Ergebnisse abgerufen werden sollen. Eine ausführlichere Betrachtung von Order By finden Sie unter [Exemplarische Vorgehensweise: DocumentDB und „Order By“](documentdb-orderby.md).
 
 Dies ist beispielsweise eine Abfrage, mit der Familien sortiert nach dem Namen des Wohnorts abgerufen werden.
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.id, f.address.city
     FROM Families f 
@@ -943,9 +905,9 @@ Dies ist beispielsweise eine Abfrage, mit der Familien sortiert nach dem Namen d
       }
     ]
 
-Und mit dieser Abfrage werden Familien sortiert nach dem Erstellungsdatum abgerufen. Dieser Wert wird als Zahl gespeichert, der die „Epoche“ repräsentiert, also die seit dem 1. Januar 1970 verstrichene Zeit in Sekunden.
+Und mit dieser Abfrage werden Familien sortiert nach dem Erstellungsdatum abgerufen. Dieser Wert wird als Zahl gespeichert, der die „Epoche“ repräsentiert, also die seit dem 1. Januar 1970 verstrichene Zeit in Sekunden.
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.id, f.creationDate
     FROM Families f 
@@ -964,16 +926,16 @@ Und mit dieser Abfrage werden Familien sortiert nach dem Erstellungsdatum abgeru
       }
     ]
 
-## Erweiterte Datenbankkonzepte und SQL-Abfragen
-### Iteration
-Es wurde ein neues Konstrukt mit dem **IN**-Schlüsselwort in DocumentDB-SQL eingeführt, mit dem JSON-Arrays durchlaufen werden können. Die FROM-Quelle bietet Unterstützung für Iterationen. Beginnen wir mit dem folgenden Beispiel:
+## <a name="advanced-database-concepts-and-sql-queries"></a>Erweiterte Datenbankkonzepte und SQL-Abfragen
+### <a name="iteration"></a>Iteration
+Es wurde ein neues Konstrukt mit dem **IN** -Schlüsselwort in DocumentDB-SQL eingeführt, mit dem JSON-Arrays durchlaufen werden können. Die FROM-Quelle bietet Unterstützung für Iterationen. Beginnen wir mit dem folgenden Beispiel:
 
-**Abfrage**
+**Abfragen**
 
     SELECT * 
     FROM Families.children
 
-**Ergebnisse**
+**Ergebnisse**  
 
     [
       [
@@ -1000,14 +962,14 @@ Es wurde ein neues Konstrukt mit dem **IN**-Schlüsselwort in DocumentDB-SQL ein
       ]
     ]
 
-Betrachten wir nun eine andere Abfrage, die untergeordnete Elemente in der Sammlung durchläuft. Beachten Sie den Unterschied im Ausgabe-Array. Dieses Beispiel teilt `children` und fügt das Ergebnis in ein einzelnes Array ein.
+Betrachten wir nun eine andere Abfrage, die untergeordnete Elemente in der Sammlung durchläuft. Beachten Sie den Unterschied im Ausgabe-Array. Dieses Beispiel teilt `children` und fügt das Ergebnis in ein einzelnes Array ein.  
 
-**Abfrage**
+**Abfragen**
 
     SELECT * 
     FROM c IN Families.children
 
-**Ergebnisse**
+**Ergebnisse**  
 
     [
       {
@@ -1032,32 +994,32 @@ Betrachten wir nun eine andere Abfrage, die untergeordnete Elemente in der Samml
 
 Mit dieser Funktion können Sie über einzelne Einträge im Array filtern, wie im folgenden Beispiel gezeigt.
 
-**Abfrage**
+**Abfragen**
 
     SELECT c.givenName
     FROM c IN Families.children
     WHERE c.grade = 8
 
-**Ergebnisse**
+**Ergebnisse**  
 
     [{
       "givenName": "Lisa"
     }]
 
-### Joins
+### <a name="joins"></a>Joins
 Die Möglichkeit, Tabellen zu verknüpfen, ist sehr wichtig in relationalen Datenbanken. Es ist die logische Grundvoraussetzung für die Planung normalisierter Schemas. Im Gegensatz dazu arbeitet DocumentDB mit denormalisierten Datenmodellen schemafreier Dokumente. Dies ist das logische Äquivalent zu "Selbstverknüpfungen".
 
-Die Sprache unterstützt die folgende Syntax: <from\_source1> JOIN <from\_source2> JOIN ... JOIN <from\_sourceN>. Dabei wird ein Satz von **N**-Tupeln (Tupel mit **N** Werten) zurückgegeben. Jedes Tupel enthält Werte, die durch Iteration aller Sammlungsaliase über deren jeweilige Sätze entstanden sind. In anderen Worten, dies ist ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze.
+Die Sprache unterstützt die folgende Syntax: <from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>. Dabei wird ein Satz von **N**-Tupeln (Tupel mit **N**-Werten) zurückgegeben. Jedes Tupel enthält Werte, die durch Iteration aller Sammlungsaliase über deren jeweilige Sätze entstanden sind. In anderen Worten, dies ist ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze.
 
 Die folgenden Beispiele veranschaulichen die Funktionsweise der JOIN-Klausel. Das Ergebnis im folgenden Beispiel ist leer, da das Kreuzprodukt der einzelnen Quelldokumente und einem leeren Satz leer ist.
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.id
     FROM Families f
     JOIN f.NonExistent
 
-**Ergebnisse**
+**Ergebnisse**  
 
     [{
     }]
@@ -1065,7 +1027,7 @@ Die folgenden Beispiele veranschaulichen die Funktionsweise der JOIN-Klausel. Da
 
 Im folgenden Beispiel findet die Verknüpfung zwischen dem Dokumentstamm und dem Unterstamm `children` statt. Es handelt sich um ein Kreuzprodukt zweier JSON-Objekte. Die Tatsache, dass die untergeordnete Struktur ein Array ist, macht für die Verknüpfung keinen Unterschied, da wir auf einem einzigen Stammknoten arbeiten, der das untergeordnete Array darstellt. Das Ergebnis enthält also nur zwei Ergebnisse, da das Kreuzprodukt der einzelnen Dokumente mit dem Array jeweils genau ein Dokument ergibt.
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.id
     FROM Families f
@@ -1085,7 +1047,7 @@ Im folgenden Beispiel findet die Verknüpfung zwischen dem Dokumentstamm und dem
 
 Das folgende Beispiel zeigt eine gewöhnlichere Verknüpfung:
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.id
     FROM Families f
@@ -1107,17 +1069,17 @@ Das folgende Beispiel zeigt eine gewöhnlichere Verknüpfung:
 
 
 
-Beachten Sie zunächst, dass `from_source` für die **JOIN**-Klausel ein Iterator ist. Der Fluss verläuft in diesem Fall also wie folgt:
+Beachten Sie zunächst, dass `from_source` für die **JOIN** -Klausel ein Iterator ist. Der Fluss verläuft in diesem Fall also wie folgt:  
 
 * Alle untergeordneten Elemente **c** im Array erweitern.
-* Kreuzprodukt mit dem Stammknoten des Dokuments **f** mit den einzelnen untergeordneten Elementen **c** anwenden, die im ersten Schritt vereinfacht wurden.
-* Zuletzt wird die Namenseigenschaft des Stammobjekts **f** alleine projiziert.
+* Kreuzprodukt mit dem Stammknoten des Dokuments **f** mit den einzelnen untergeordneten Elementen vom Typ **c** anwenden, die im ersten Schritt vereinfacht wurden.
+* Zuletzt wird die Namenseigenschaft des Stammobjekts **f** alleine projiziert. 
 
 Das erste Dokument (`AndersenFamily`) enthält nur ein untergeordnetes Element. Daher enthält der Ergebnissatz für dieses Dokument auch nur ein einzelnes Objekt. Das zweite Dokument (`WakefieldFamily`) enthält zwei untergeordnete Elemente. Daher ergibt das Kreuzprodukt ein separates Objekt für jedes untergeordnete Element und das Ergebnis enthält zwei Objekte, je eines pro untergeordnetem Element im Dokument. Die Stammfelder sind in beiden Dokumenten gleich, wie Sie es bei einem Kreuzprodukt erwarten würden.
 
 Der wahre Nutzen von JOIN ist die Bildung von Tupeln aus dem Kreuzprodukt auf eine Weise, die auf anderen Wegen schwer zu projizieren ist. Außerdem könnten Sie Filter auf die Kombination von Tupeln anwenden, mit denen Benutzer eine Bedingung auswählen können, die von der Gesamtheit der Tupel erfüllt sein muss, wie im folgenden Beispiel gezeigt.
 
-**Abfrage**
+**Abfragen**
 
     SELECT 
         f.id AS familyName,
@@ -1168,9 +1130,9 @@ Dieses Beispiel ist eine natürliche Erweiterung des vorherigen Beispiels und ze
 
 `AndersenFamily` hat ein Kind mit einem Haustier. Das Kreuzprodukt ergibt also eine Zeile (1*1*1) für diese Familie. WakefieldFamily hat dagegen zwei Kinder, von denen allerdings nur "Jesse" Haustiere hat. Jesse hat jedoch zwei Haustiere. Das Kreuzprodukt ergibt also 1*1*2 = 2 Zeilen für diese Familie.
 
-Das nächste Beispiel verwendet einen zusätzlichen Filter für `pet`. Damit werden alle Tupel ausgeschlossen, bei denen der Haustiername nicht "Shadow" ist. Wir können also Tupel aus Arrays bilden, beliebige Elemente der Tupel filtern und beliebige Kombinationen aus Elementen projizieren.
+Das nächste Beispiel verwendet einen zusätzlichen Filter für `pet`. Damit werden alle Tupel ausgeschlossen, bei denen der Haustiername nicht "Shadow" ist. Wir können also Tupel aus Arrays bilden, beliebige Elemente der Tupel filtern und beliebige Kombinationen aus Elementen projizieren. 
 
-**Abfrage**
+**Abfragen**
 
     SELECT 
         f.id AS familyName,
@@ -1193,14 +1155,14 @@ Das nächste Beispiel verwendet einen zusätzlichen Filter für `pet`. Damit wer
     ]
 
 
-## JavaScript-Integration
+## <a name="javascript-integration"></a>JavaScript-Integration
 DocumentDB bietet ein Programmiermodell zur Ausführung JavaScript-basierter Anwendungslogik direkt auf die Sammlungen über gespeicherte Prozeduren und Trigger. Damit ist Folgendes möglich:
 
-* Transaktionale CRUD-Operationen und Abfragen auf Dokumente in einer Sammlung mit hoher Leistung dank der tiefen Integration der JavaScript-Laufzeit direkt im Datenbankmodul.
+* Transaktionale CRUD-Operationen und Abfragen auf Dokumente in einer Sammlung mit hoher Leistung dank der tiefen Integration der JavaScript-Laufzeit direkt im Datenbankmodul. 
 * Eine natürliche Modellierung von Kontrollfluss, Variablen-Bereichssteuerung, Zuweisung und Integration der Ausnahmebehandlung für Datenbanktransaktionen. Weitere Informationen zur DocumentDB-Unterstützung für die JavaScript-Integration finden Sie in der Dokumentation für serverseitige JavaScript-Programmierung.
 
-### Benutzerdefinierte Funktionen (User Defined Functions UDFs)
-Neben den bereits in diesem Artikel definierten Typen bietet DocumentDB-SQL auch Unterstützung für benutzerdefinierte Funktionen (UDF). Insbesondere skalare UDFs werden unterstützt, bei denen Entwickler null oder mehrere Argumente übergeben und ein einziges Argumentergebnis zurückerhalten können. Für dieser Argumente wird geprüft, ob es sich um gültige JSON-Werte handelt.
+### <a name="user-defined-functions-udfs"></a>Benutzerdefinierte Funktionen (User Defined Functions UDFs)
+Neben den bereits in diesem Artikel definierten Typen bietet DocumentDB-SQL auch Unterstützung für benutzerdefinierte Funktionen (UDF). Insbesondere skalare UDFs werden unterstützt, bei denen Entwickler null oder mehrere Argumente übergeben und ein einziges Argumentergebnis zurückerhalten können. Für dieser Argumente wird geprüft, ob es sich um gültige JSON-Werte handelt.  
 
 Die Syntax von DocumentDB-SQL wurde erweitert und unterstützt nun benutzerdefinierte Anwendungslogik mit diesen benutzerdefinierten Funktionen (User Defined Functions, UDFs). UDFs können in DocumentDB registriert und anschließend als Teil einer SQL-Abfrage referenziert werden. UDFs dienen in der Tat ausschließlich dazu, in Abfragen aufgerufen zu werden. Als Nebeneffekt haben UDFs im Gegensatz zu den anderen JavaScript-Typen (gespeicherte Prozeduren und Trigger) keinen Zugriff auf das Kontextobjekt. Da Abfragen schreibgeschützt ausgeführt werden, können sie entweder auf primären oder auf sekundären Replikaten ausgeführt werden. Daher werden UDFs normalerweise im Gegensatz zu anderen JavaScript-Typen für die Ausführung auf sekundären Replikaten entwickelt.
 
@@ -1220,14 +1182,14 @@ Hier sehen Sie ein Beispiel für die Registrierung einer UDF in der DocumentDB-D
 
 Im vorherigen Beispiel wird eine UDF mit dem Namen `REGEX_MATCH` erstellt. Es werden die beiden JSON-Zeichenfolgenwerte `input` und `pattern` akzeptiert, und es wird überprüft, ob der erste Wert mit dem im zweiten Wert angegebenen Muster übereinstimmt. Hierfür wird die string.match()-JavaScript-Funktion verwendet.
 
-Wir können diese UDF nun in einer Abfrage in einer Projektion verwenden. UDFs müssen mit dem Präfix "udf." qualifiziert werden (unter Berücksichtigung der Groß-/Kleinschreibung), wenn sie aus Abfragen aufgerufen werden.
+Wir können diese UDF nun in einer Abfrage in einer Projektion verwenden. UDFs müssen mit dem Präfix „udf.“ qualifiziert werden (unter Berücksichtigung der Groß-/Kleinschreibung), wenn sie innerhalb von Abfragen aufgerufen werden. 
 
 > [!NOTE]
-> Vor dem 17.3.2015 hat DocumentDB UDF-Aufrufe ohne das Präfix „udf.“, z. B. SELECT REGEX\_MATCH(), unterstützt. Dieses Aufrufmuster ist veraltet.
+> Vor dem 17.03.2015 wurden von DocumentDB UDF-Aufrufe ohne das Präfix „udf.“ unterstützt. Beispiel: SELECT REGEX_MATCH(). Dieses Aufrufmuster ist veraltet.  
 > 
 > 
 
-**Abfrage**
+**Abfragen**
 
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
     FROM Families
@@ -1243,9 +1205,9 @@ Wir können diese UDF nun in einer Abfrage in einer Projektion verwenden. UDFs m
       }
     ]
 
-Die UDF kann auch in einem Filter verwendet werden, wie im folgenden Beispiel gezeigt – ebenfalls mit dem Präfix "udf." qualifiziert:
+Die UDF kann auch in einem Filter verwendet werden, wie im folgenden Beispiel gezeigt (ebenfalls mit dem Präfix „udf.“ qualifiziert):
 
-**Abfrage**
+**Abfragen**
 
     SELECT Families.id, Families.address.city
     FROM Families
@@ -1259,7 +1221,7 @@ Die UDF kann auch in einem Filter verwendet werden, wie im folgenden Beispiel ge
     }]
 
 
-UDFs sind gültige skalare Ausdrücke und können sowohl in Projektionen als auch in Filtern verwendet werden.
+UDFs sind gültige skalare Ausdrücke und können sowohl in Projektionen als auch in Filtern verwendet werden. 
 
 Wir erweitern den Funktionsumfang von UDFs im folgenden Beispiel um konditionale Logik:
 
@@ -1286,7 +1248,7 @@ Wir erweitern den Funktionsumfang von UDFs im folgenden Beispiel um konditionale
 
 Hier sehen Sie ein Verwendungsbeispiel für die UDF.
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
     FROM Families f    
@@ -1307,21 +1269,21 @@ Hier sehen Sie ein Verwendungsbeispiel für die UDF.
 
 Wie im vorherigen Beispiel gezeigt, vereinen UDFs den Funktionsumfang der JavaScript-Sprache mit DocumentDB-SQL zu einer umfassenden, programmierbaren Schnittstelle für komplexe verfahrensorientierte und konditionale Logik mithilfe der Fähigkeiten der integrierten JavaScript-Laufzeit.
 
-DocumentDB-SQL übergibt die Argumente an die UDFs für die einzelnen Quelldokumente für die aktuelle Phase (WHERE-Klausel oder SELECT-Klausel) der UDF-Ausführung. Das Ergebnis wird nahtlos in die Gesamt-Ausführungspipeline aufgenommen. Wenn die von den UDF-Parametern referenzierten Eigenschaften nicht im JSON-Wert verfügbar sind, wird der Parameter als "Undefined" betrachtet und der UDF-Aufruf daher komplett übersprungen. Wenn das Ergebnis der UDF "Undefined" ist, wird es ebenfalls nicht in das Ergebnis aufgenommen.
+DocumentDB-SQL übergibt die Argumente an die UDFs für die einzelnen Quelldokumente für die aktuelle Phase (WHERE-Klausel oder SELECT-Klausel) der UDF-Ausführung. Das Ergebnis wird nahtlos in die Gesamt-Ausführungspipeline aufgenommen. Wenn die von den UDF-Parametern referenzierten Eigenschaften nicht im JSON-Wert verfügbar sind, wird der Parameter als "Undefined" betrachtet und der UDF-Aufruf daher komplett übersprungen. Wenn das Ergebnis der UDF "Undefined" ist, wird es ebenfalls nicht in das Ergebnis aufgenommen. 
 
 UDFs sind also hervorragende Werkzeuge, um komplexe Geschäftslogik als Teil der Abfragen zu integrieren.
 
-### Operatorauswertung
+### <a name="operator-evaluation"></a>Operatorauswertung
 DocumentDB ist eine JSON-Datenbank und enthält daher Parallelen zu JavaScript-Operatoren und deren Auswertungslogik. Obwohl DocumentDB versucht, die JavaScript-Logik für die JSON-Unterstützung zu erhalten, weicht die Auswertung von Operationen doch in manchen Fällen davon ab.
 
-In der DocumentDB-SQL ist der Typ eines Werts im Gegensatz zu herkömmlichem SQL oft nicht bekannt, bevor der Wert tatsächlich aus der Datenbank abgerufen wird. Um effiziente Abfragen zu ermöglichen, haben die meisten Operatoren strikte Typanforderungen.
+In der DocumentDB-SQL ist der Typ eines Werts im Gegensatz zu herkömmlichem SQL oft nicht bekannt, bevor der Wert tatsächlich aus der Datenbank abgerufen wird. Um effiziente Abfragen zu ermöglichen, haben die meisten Operatoren strikte Typanforderungen. 
 
-DocumentDB-SQL führt im Gegensatz zu JavaScript keine impliziten Konvertierungen durch. Eine Abfrage wie `SELECT * FROM Person p WHERE p.Age = 21` stimmt beispielsweise mit Dokumenten überein, die eine Age-Eigenschaft mit dem Wert 21 enthalten. Alle weiteren Dokumente, deren Age-Eigenschaft mit der Zeichenfolge "21" übereinstimmt, oder sonstige Variationen wie "021", "21,0", "0021", "00021" usw. werden nicht zurückgegeben. Bei JavaScript würden diese Zeichenfolgenwerte dagegen implizit in Zahlen umgewandelt (je nach Operator, z. B.: ==). Dieser Unterschied ist wichtig für die effiziente Indexierung in DocumentDB-SQL.
+DocumentDB-SQL führt im Gegensatz zu JavaScript keine impliziten Konvertierungen durch. Eine Abfrage wie `SELECT * FROM Person p WHERE p.Age = 21` stimmt beispielsweise mit Dokumenten überein, die eine Age-Eigenschaft mit dem Wert 21 enthalten. Alle weiteren Dokumente, deren Age-Eigenschaft mit der Zeichenfolge "21" übereinstimmt, oder sonstige Variationen wie "021", "21,0", "0021", "00021" usw. werden nicht zurückgegeben. Bei JavaScript würden diese Zeichenfolgenwerte dagegen implizit in Zahlen umgewandelt (je nach Operator, z. B.: ==). Dieser Unterschied ist wichtig für die effiziente Indexierung in DocumentDB-SQL. 
 
-## Parametrisierte SQL-Abfragen
-DocumentDB unterstützt Abfragen mit Parametern, die mit der bekannten @-Notation ausgedrückt werden. Parametrisiertes SQL bietet stabile Fehlerbehandlung und Schutz von Benutzereingaben, wodurch eine versehentliche Offenlegung von Daten durch SQL-Injektion verhindert wird.
+## <a name="parameterized-sql-queries"></a>Parametrisierte SQL-Abfragen
+DocumentDB unterstützt Abfragen mit Parametern, die mit der bekannten @-Notation ausgedrückt werden. Parametrisiertes SQL bietet stabile Fehlerbehandlung und Schutz von Benutzereingaben, wodurch eine versehentliche Offenlegung von Daten durch SQL-Injektion verhindert wird. 
 
-Sie können z. B. eine Abfrage erstellen, die "last name" und "adress state" als Parameter verwendet, und sie dann für unterschiedliche "last name"- und "address state"-Werte auf Grundlage von Benutzereingaben ausführen.
+Sie können z. B. eine Abfrage erstellen, die "last name" und "adress state" als Parameter verwendet, und sie dann für unterschiedliche "last name"- und "address state"-Werte auf Grundlage von Benutzereingaben ausführen.
 
     SELECT * 
     FROM Families f
@@ -1348,141 +1310,52 @@ Das Argument für TOP kann, wie unten gezeigt, mit parametrisierte Abfragen fest
 
 Parameterwerte können alle gültigen JSON-Werte sein (Zeichenfolgen, Zahlen, boolesche Werte, Null, Arrays oder verschachteltes JSON). Da DocumentDB über weniger Schemata verfügt, werden Parameter nicht für jeden Typ überprüft.
 
-## Integrierte Funktionen
+## <a name="built-in-functions"></a>Integrierte Funktionen
 DocumentDB unterstützt auch eine Reihe von integrierten Funktionen für häufige Vorgänge, die wie benutzerdefinierte Funktionen (User Defined Functions, UDFs) in Abfragen verwendet werden können.
 
-<table>
-<tr>
-<td>Mathematische Funktionen</td>    
-<td>ABS, CEILING, EXP, FLOOR, LOG, LOG10, POWER, ROUND, SIGN, SQRT, SQUARE, TRUNC, ACOS, ASIN, ATAN, ATN2, COS, COT, DEGREES, PI, RADIANS, SIN und TAN</td>
-</tr>
-<tr>
-<td>Funktionen für die Typprüfung</td>    
-<td>IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED und IS_PRIMITIVE</td>
-</tr>
-<tr>
-<td>Zeichenfolgenfunktionen</td>    
-<td>CONCAT, CONTAINS, ENDSWITH, INDEX_OF, LEFT, LENGTH, LOWER, LTRIM, REPLACE, REPLICATE, REVERSE, RIGHT, RTRIM, STARTSWITH, SUBSTRING und UPPER</td>
-</tr>
-<tr>
-<td>Arrayfunktionen</td>    
-<td>ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH und ARRAY_SLICE</td>
-</tr>
-<tr>
-<td>Räumliche Funktionen</td>    
-<td>ST_DISTANCE, ST_WITHIN, ST_ISVALID und ST_ISVALIDDETAILED</td>
-</tr>
-</table>  
+| Funktionsgruppe          | Vorgänge                                                                                                                                          |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Mathematische Funktionen  | ABS, CEILING, EXP, FLOOR, LOG, LOG10, POWER, ROUND, SIGN, SQRT, SQUARE, TRUNC, ACOS, ASIN, ATAN, ATN2, COS, COT, DEGREES, PI, RADIANS, SIN und TAN |
+| Funktionen für die Typprüfung | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED und IS_PRIMITIVE                                                           |
+| Zeichenfolgenfunktionen        | CONCAT, CONTAINS, ENDSWITH, INDEX_OF, LEFT, LENGTH, LOWER, LTRIM, REPLACE, REPLICATE, REVERSE, RIGHT, RTRIM, STARTSWITH, SUBSTRING und UPPER       |
+| Arrayfunktionen         | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH und ARRAY_SLICE                                                                                         |
+|  Räumliche Funktionen      | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID und ST_ISVALIDDETAILED                                                                           | 
 
-Wenn Sie derzeit eine UDF verwenden, für die jetzt eine entsprechende integrierte Funktion verfügbar ist, sollten Sie diese integrierte Funktion verwenden, da sie schneller und effizienter ausgeführt werden kann.
+Wenn Sie derzeit eine UDF verwenden, für die jetzt eine entsprechende integrierte Funktion verfügbar ist, sollten Sie diese integrierte Funktion verwenden, da sie schneller und effizienter ausgeführt werden kann. 
 
-### Mathematische Funktionen
+### <a name="mathematical-functions"></a>Mathematische Funktionen
 Jede mathematische Funktion führt eine Berechnung durch, üblicherweise basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück. Im Folgenden finden Sie eine Tabelle der unterstützten integrierten mathematischen Funktionen.
 
-<table>
-<tr>
-<td><strong>Verwendung</strong></td>
-<td><strong>Beschreibung</strong></td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_abs">ABS (num_expr)</a></td>    
-<td>Gibt den absoluten (positiven) Wert des angegebenen numerischen Ausdrucks zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ceiling">CEILING (num_expr)</a></td>    
-<td>Gibt den kleinsten ganzzahligen Wert zurück, der größer oder gleich dem angegebenen numerischen Ausdruck ist.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_floor">FLOOR (num_expr)</a></td>    
-<td>Gibt den größten ganzzahligen Wert zurück, der kleiner oder gleich dem angegebenen numerischen Ausdruck ist.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_exp">EXP (num_expr)</a></td>    
-<td>Gibt den Exponenten des angegebenen numerischen Ausdrucks zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_log">LOG (num_expr [,base])</a></td>    
-<td>Gibt den natürlichen Logarithmus des angegebenen numerischen Ausdrucks oder den Logarithmus basierend auf der angegebenen Basis zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_log10">LOG10 (num_expr)</a></td>    
-<td>Gibt den dekadischen Logarithmuswert des angegebenen numerischen Ausdrucks zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_round">ROUND (num_expr)</a></td>    
-<td>Gibt einen numerischen Wert zurück, gerundet auf den nächsten ganzzahligen Wert.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_trunc">TRUNC (num_expr)</a></td>    
-<td>Gibt einen numerischen Wert zurück, gekürzt auf den nächsten ganzzahligen Wert.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_sqrt">SQRT (num_expr)</a></td>    
-<td>Gibt die Quadratwurzel des angegebenen numerischen Ausdrucks zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_square">SQUARE (num_expr)</a></td>    
-<td>Gibt das Quadrat des angegebenen numerischen Ausdrucks zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_power">POWER (num_expr, num_expr)</a></td>    
-<td>Gibt die Potenz des angegebenen numerischen Ausdrucks über den angegebenen Wert zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_sign">SIGN (num_expr)</a></td>    
-<td>Gibt den Vorzeichenwert (-1, 0, 1) des angegebenen numerischen Ausdrucks zurück.</td>
-</tr>
-<tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_acos">ACOS (num_expr)</a></td>    
-<td>Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Kosinus der angegebene numerische Ausdruck ist. Wird auch als Arkuskosinus bezeichnet.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_asin">ASIN (num_expr)</a></td>    
-<td>Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Sinus der angegebene numerische Ausdruck ist. Wird auch als Arkussinus bezeichnet.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_atan">ATAN (num_expr)</a></td>    
-<td>Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Tangens der angegebene numerische Ausdruck ist. Wird auch als Arkustangens bezeichnet.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_atn2">ATN2 (num_expr)</a></td>    
-<td>Gibt den Winkel in „rad“ (Bogenmaß) zwischen der positiven X-Achse und dem Strahl vom Ursprung zum Punkt (y, x) zurück, wobei x und y die Werte der beiden angegebenen float-Ausdrücke sind.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_cos">COS (num_expr)</a></td>    
-<td>Gibt den trigonometrischen Kosinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_cot">COT (num_expr)</a></td>    
-<td>Gibt den trigonometrischen Kotangens des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen numerischen Ausdruck zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_degrees">DEGREES (num_expr)</a></td>    
-<td>Gibt den entsprechenden Winkel in Grad für einen in „rad“ (Bogenmaß) angegebenen Winkel zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_pi">PI ()</a></td>    
-<td>Gibt den konstanten Wert von PI zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_radians">RADIANS (num_expr)</a></td>    
-<td>Gibt das Bogenmaß zurück, wenn ein numerischer Ausdruck in Grad eingegeben wird.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_sin">SIN (num_expr)</a></td>    
-<td>Gibt den trigonometrischen Sinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück.</td>
-</tr>
-<tr>
-<td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_tan">TAN (num_expr)</a></td>    
-<td>Gibt den Tangens des Eingabeausdrucks im angegebenen Ausdruck zurück.</td>
-</tr>
 
-</table> 
+| Verwendung | Beschreibung |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [[ABS (num_expr)](#bk_abs) | Gibt den absoluten (positiven) Wert des angegebenen numerischen Ausdrucks zurück. |
+| [CEILING (num_expr)](#bk_ceiling) | Gibt den kleinsten ganzzahligen Wert zurück, der größer oder gleich dem angegebenen numerischen Ausdruck ist. |
+| [FLOOR (num_expr)](#bk_floor) | Gibt den größten ganzzahligen Wert zurück, der kleiner oder gleich dem angegebenen numerischen Ausdruck ist. |
+| [EXP (num_expr)](#bk_exp) | Gibt den Exponenten des angegebenen numerischen Ausdrucks zurück. |
+| [LOG (num_expr [,base])](#bk_log) | Gibt den natürlichen Logarithmus des angegebenen numerischen Ausdrucks oder den Logarithmus basierend auf der angegebenen Basis zurück. |
+| [LOG10 (num_expr)](#bk_log10) | Gibt den dekadischen Logarithmuswert des angegebenen numerischen Ausdrucks zurück. |
+| [ROUND (num_expr)](#bk_round) | Gibt einen numerischen Wert zurück, gerundet auf den nächsten ganzzahligen Wert. |
+| [TRUNC (num_expr)](#bk_trunc) | Gibt einen numerischen Wert zurück, gekürzt auf den nächsten ganzzahligen Wert. |
+| [SQRT (num_expr)](#bk_sqrt) | Gibt die Quadratwurzel des angegebenen numerischen Ausdrucks zurück. |
+| [SQUARE (num_expr)](#bk_square) | Gibt das Quadrat des angegebenen numerischen Ausdrucks zurück. |
+| [POWER (num_expr, num_expr)](#bk_power) | Gibt die Potenz des angegebenen numerischen Ausdrucks über den angegebenen Wert zurück. |
+| [SIGN (num_expr)](#bk_sign) | Gibt den Vorzeichenwert (-1, 0, 1) des angegebenen numerischen Ausdrucks zurück. |
+| [ACOS (num_expr)](#bk_acos) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Kosinus der angegebene numerische Ausdruck ist. Wird auch als Arkuskosinus bezeichnet. |
+| [ASIN (num_expr)](#bk_asin) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Sinus der angegebene numerische Ausdruck ist. Wird auch als Arkussinus bezeichnet. |
+| [ATAN (num_expr)](#bk_atan) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Tangens der angegebene numerische Ausdruck ist. Wird auch als Arkustangens bezeichnet. |
+| [ATN2 (num_expr)](#bk_atn2) | Gibt den Winkel in „rad“ (Bogenmaß) zwischen der positiven X-Achse und dem Strahl vom Ursprung zum Punkt (y, x) zurück, wobei x und y die Werte der beiden angegebenen float-Ausdrücke sind. |
+| [COS (num_expr)](#bk_cos) | Gibt den trigonometrischen Kosinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück. |
+| [COT (num_expr)](#bk_cot) | Gibt den trigonometrischen Kotangens des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen numerischen Ausdruck zurück. |
+| [DEGREES (num_expr)](#bk_degrees) | Gibt den entsprechenden Winkel in Grad für einen in „rad“ (Bogenmaß) angegebenen Winkel zurück. |
+| [PI ()](#bk_pi) | Gibt den konstanten Wert von PI zurück. |
+| [RADIANS (num_expr)](#bk_radians) | Gibt das Bogenmaß zurück, wenn ein numerischer Ausdruck in Grad eingegeben wird. |
+| [SIN (num_expr)](#bk_sin) | Gibt den trigonometrischen Sinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück. |
+| [TAN (num_expr)](#bk_tan) | Gibt den Tangens des Eingabeausdrucks im angegebenen Ausdruck zurück. |
 
 Sie können nun beispielsweise Abfragen wie die folgende ausführen:
 
-**Abfrage**
+**Abfragen**
 
     SELECT VALUE ABS(-4)
 
@@ -1492,7 +1365,7 @@ Sie können nun beispielsweise Abfragen wie die folgende ausführen:
 
 Der Hauptunterschied zwischen den DocumentDB-Funktionen und ANSI SQL besteht darin, dass die Funktionen sich gut für Daten ohne und mit gemischtem Schema einsetzen lassen. Wenn Sie beispielsweise ein Dokument haben, in dem die "Size"-Eigenschaft fehlt oder einen nicht numerischen Wert wie "unbekannt" aufweist, wird dieses Dokument übersprungen anstatt einen Fehler zurückzugeben.
 
-### Funktionen für die Typprüfung
+### <a name="type-checking-functions"></a>Funktionen für die Typprüfung
 Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen. Typprüfungsfunktionen können verwendet werden, um den Typ von Eigenschaften innerhalb von Dokumenten während der Übertragung zu ermitteln, wenn dieser variabel oder unbekannt ist. Im Folgenden finden Sie eine Tabelle der unterstützten integrierten Typprüfungsfunktionen.
 
 <table>
@@ -1537,7 +1410,7 @@ Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in S
 
 Mithilfe dieser Funktionen können Sie nun Abfragen wie die folgende ausführen:
 
-**Abfrage**
+**Abfragen**
 
     SELECT VALUE IS_NUMBER(-4)
 
@@ -1545,31 +1418,31 @@ Mithilfe dieser Funktionen können Sie nun Abfragen wie die folgende ausführen:
 
     [true]
 
-### Zeichenfolgenfunktionen
+### <a name="string-functions"></a>Zeichenfolgenfunktionen
 Die folgenden Skalarfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück. Diese Tabelle enthält integrierte Zeichenfolgenfunktionen:
 
 | Verwendung | Beschreibung |
 | --- | --- |
-| [LENGTH (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |Gibt die Anzahl der Zeichen im angegebenen Zeichenfolgenausdruck zurück. |
-| [CONCAT (str\_expr, str\_expr [, str\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt. |
-| [SUBSTRING (str\_expr, num\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |Gibt einen Teil eines Zeichenfolgenausdrucks zurück. |
-| [STARTSWITH (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten beginnt. |
-| [ENDSWITH (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten endet. |
-| [CONTAINS (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck den zweiten enthält. |
-| [INDEX\_OF (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |Gibt die Anfangsposition des ersten Vorkommens des zweiten Zeichenfolgenausdrucks innerhalb des ersten angegebenen Zeichenfolgenausdrucks zurück, oder -1, wenn die Zeichenfolge nicht gefunden wird. |
-| [LEFT (str\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |Gibt den linken Teil einer Zeichenfolge mit der angegebenen Anzahl von Zeichen zurück. |
-| [RIGHT (str\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |Gibt den rechten Teil einer Zeichenfolge mit der angegebenen Anzahl von Zeichen zurück. |
-| [LTRIM (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) |Gibt einen Zeichenfolgenausdruck zurück, nachdem vorangestellte Leerzeichen entfernt wurden. |
-| [RTRIM (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) |Gibt einen Zeichenfolgenausdruck zurück, nachdem alle nachgestellten Leerzeichen entfernt wurden. |
-| [LOWER (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Gibt eine Zeichenfolge zurück, nachdem Großbuchstaben in Kleinbuchstaben konvertiert wurden. |
-| [UPPER (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |Gibt eine Zeichenfolge zurück, nachdem Kleinbuchstaben in Großbuchstaben konvertiert wurden. |
-| [REPLACE (str\_expr, str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |Ersetzt alle Vorkommen eines angegebenen Zeichenfolgenwerts durch einen anderen Zeichenfolgenwert. |
-| [REPLICATE (str\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replicate) |Wiederholt einen Zeichenfolgenwert mit der angegebenen Häufigkeit. |
-| [REVERSE (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Gibt einen Zeichenfolgenwert in umgekehrter Reihenfolge zurück. |
+| [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |Gibt die Anzahl der Zeichen im angegebenen Zeichenfolgenausdruck zurück. |
+| [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt. |
+| [SUBSTRING (str_expr, num_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |Gibt einen Teil eines Zeichenfolgenausdrucks zurück. |
+| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten beginnt. |
+| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck mit dem zweiten beginnt. |
+| [CONTAINS (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Gibt einen booleschen Wert zurück, um anzugeben, ob der erste Zeichenfolgenausdruck den zweiten enthält. |
+| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |Gibt die Anfangsposition des ersten Vorkommens des zweiten Zeichenfolgenausdrucks innerhalb des ersten angegebenen Zeichenfolgenausdrucks zurück, oder -1, wenn die Zeichenfolge nicht gefunden wird. |
+| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |Gibt den linken Teil einer Zeichenfolge mit der angegebenen Anzahl von Zeichen zurück. |
+| [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |Gibt den rechten Teil einer Zeichenfolge mit der angegebenen Anzahl von Zeichen zurück. |
+| [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) |Gibt einen Zeichenfolgenausdruck zurück, nachdem vorangestellte Leerzeichen entfernt wurden. |
+| [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) |Gibt einen Zeichenfolgenausdruck zurück, nachdem alle nachgestellten Leerzeichen entfernt wurden. |
+| [LOWER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Gibt eine Zeichenfolge zurück, nachdem Großbuchstaben in Kleinbuchstaben konvertiert wurden. |
+| [UPPER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |Gibt eine Zeichenfolge zurück, nachdem Kleinbuchstaben in Großbuchstaben konvertiert wurden. |
+| [REPLACE (str_expr, str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |Ersetzt alle Vorkommen eines angegebenen Zeichenfolgenwerts durch einen anderen Zeichenfolgenwert. |
+| [REPLICATE (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replicate) |Wiederholt einen Zeichenfolgenwert mit der angegebenen Häufigkeit. |
+| [REVERSE (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Gibt einen Zeichenfolgenwert in umgekehrter Reihenfolge zurück. |
 
 Mithilfe dieser Funktionen können Sie nun Abfragen wie die folgende ausführen: Beispielsweise können Sie den Familiennamen wie folgt in Großbuchstaben zurückgeben:
 
-**Abfrage**
+**Abfragen**
 
     SELECT VALUE UPPER(Families.id)
     FROM Families
@@ -1602,7 +1475,7 @@ Oder Zeichenfolgen wie in diesem Beispiel verketten:
 
 Zeichenfolgenfunktionen können auch in der WHERE-Klausel zum Filtern von Ergebnissen verwendet werden, wie im folgenden Beispiel:
 
-**Abfrage**
+**Abfragen**
 
     SELECT Families.id, Families.address.city
     FROM Families
@@ -1615,19 +1488,19 @@ Zeichenfolgenfunktionen können auch in der WHERE-Klausel zum Filtern von Ergebn
       "city": "NY"
     }]
 
-### Arrayfunktionen
+### <a name="array-functions"></a>Arrayfunktionen
 Die folgenden Skalarfunktionen führen einen Vorgang für einen Arrayeingabewert durch und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück. Diese Tabelle enthält integrierte Arrayfunktionen:
 
 | Verwendung | Beschreibung |
 | --- | --- |
-| [ARRAY\_LENGTH (arr\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Gibt die Anzahl der Elemente des angegebenen Arrayausdrucks zurück. |
-| [ARRAY\_CONCAT (arr\_expr, arr\_expr [, arr\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Gibt ein Array zurück, das das Ergebnis der Verkettung von zwei oder mehr Arraywerten darstellt. |
-| [ARRAY\_CONTAINS (arr\_expr, expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Gibt einen booleschen Wert zurück, um anzugeben, ob das Array den angegebenen Wert enthält. |
-| [ARRAY\_SLICE (arr\_expr, num\_expr [, num\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Gibt einen Teil eines Arrayausdrucks zurück. |
+| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Gibt die Anzahl der Elemente des angegebenen Arrayausdrucks zurück. |
+| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Gibt ein Array zurück, das das Ergebnis der Verkettung von zwei oder mehr Arraywerten darstellt. |
+| [ARRAY_CONTAINS (arr_expr, expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Gibt einen booleschen Wert zurück, um anzugeben, ob das Array den angegebenen Wert enthält. |
+| [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Gibt einen Teil eines Arrayausdrucks zurück. |
 
-Arrayfunktionen können verwendet werden, um Arrays in JSON zu bearbeiten. Mit dieser Abfrage werden beispielsweise alle Dokumente zurückgegeben, in denen ein Elternteil „Robin Wakefield“ ist.
+Arrayfunktionen können verwendet werden, um Arrays in JSON zu bearbeiten. Mit dieser Abfrage werden beispielsweise alle Dokumente zurückgegeben, in denen ein Elternteil „Robin Wakefield“ ist. 
 
-**Abfrage**
+**Abfragen**
 
     SELECT Families.id 
     FROM Families 
@@ -1639,9 +1512,9 @@ Arrayfunktionen können verwendet werden, um Arrays in JSON zu bearbeiten. Mit d
       "id": "WakefieldFamily"
     }]
 
-Dies ist ein weiteres Beispiel für die Verwendung von ARRAY\_LENGTH. Hierbei wird die Anzahl der Kinder pro Familie abgerufen.
+Dies ist ein weiteres Beispiel für die Verwendung von ARRAY_LENGTH. Hierbei wird die Anzahl der Kinder pro Familie abgerufen.
 
-**Abfrage**
+**Abfragen**
 
     SELECT Families.id, ARRAY_LENGTH(Families.children) AS numberOfChildren
     FROM Families 
@@ -1657,8 +1530,8 @@ Dies ist ein weiteres Beispiel für die Verwendung von ARRAY\_LENGTH. Hierbei wi
       "numberOfChildren": 1
     }]
 
-### Räumliche Funktionen
-DocumentDB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. Weitere Informationen zur Unterstützung von Geodaten in DocumentDB finden Sie unter [Arbeiten mit Geodaten in Azure DocumentDB](documentdb-geospatial.md).
+### <a name="spatial-functions"></a>Räumliche Funktionen
+DocumentDB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. 
 
 <table>
 <tr>
@@ -1667,25 +1540,29 @@ DocumentDB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospati
 </tr>
 <tr>
   <td>ST_DISTANCE (point_expr, point_expr)</td>
-  <td>Gibt den Abstand zwischen den beiden GeoJSON-Punktausdrücken zurück.</td>
+  <td>Gibt den Abstand zwischen den beiden GeoJSON-Punkt-, Polygon- oder LineString-Ausdrücken zurück.</td>
 </tr>
 <tr>
   <td>ST_WITHIN (point_expr, polygon_expr)</td>
-  <td>Gibt einen booleschen Ausdruck zurück, der angibt, ob der im ersten Argument angegebene GeoJSON-Punkt sich innerhalb des GeoJSON-Polygons im zweiten Argument befindet.</td>
+  <td>Gibt einen booleschen Ausdruck zurück, der angibt, ob das erste GeoJSON-Objekt (Punkt, Polygon oder LineString) innerhalb des zweiten GeoJSON-Objekts (Punkt, Polygon oder LineString) enthalten ist.</td>
+</tr>
+<tr>
+  <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
+  <td>Gibt einen booleschen Ausdruck, der angibt, ob die beiden angegebenen GeoJSON-Objekte (Punkt, Polygon oder LineString) sich überschneiden.</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
-  <td>Gibt einen booleschen Wert zurück, der angibt, ob der angegebene GeoJSON-Punkt- oder -Polygon-Ausdruck gültig ist.</td>
+  <td>Gibt einen booleschen Wert zurück, der angibt, ob der/das angegebene GeoJSON-Punkt, -Polygon, oder -LineString gültig ist.</td>
 </tr>
 <tr>
   <td>ST_ISVALIDDETAILED</td>
-  <td>Gibt einen JSON-Wert mit einem booleschen Wert zurück, wenn der angegebene GeoJSON-Punkt oder -Polygon-Ausdruck gültig ist. Falls ungültig, wird außerdem der Grund als Zeichenfolge zurückgegeben.</td>
+  <td>Gibt einen JSON-Wert mit einem booleschen Wert zurück, wenn der angegebene GeoJSON-Punkt-, -Polygon- oder -LineString-Ausdruck gültig ist. Falls ungültig, wird außerdem der Grund als Zeichenfolge zurückgegeben.</td>
 </tr>
 </table>
 
-Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räumliche Daten anzuwenden. Hier ist z. B. eine Abfrage, die alle Familiendokumente zurückgibt, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST\_DISTANCE-Funktion verwendet.
+Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räumliche Daten anzuwenden. Hier ist z. B. eine Abfrage, die alle Familiendokumente zurückgibt, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST_DISTANCE-Funktion verwendet. 
 
-**Abfrage**
+**Abfragen**
 
     SELECT f.id 
     FROM Families f 
@@ -1697,71 +1574,16 @@ Räumliche Funktionen können verwendet werden, um Entfernungsabfragen auf räum
       "id": "WakefieldFamily"
     }]
 
-Wenn Sie die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen, werden "Entfernungsabfragen" effizient über den Index beantwortet. Weitere Informationen zur räumliche Indizierung finden Sie im Abschnitt weiter unten. Wenn Sie keinen räumlichen Index für die angegebenen Pfade haben, können Sie dennoch raumbezogene Abfragen ausführen, indem Sie den `x-ms-documentdb-query-enable-scan`-Anforderungsheader mit auf „True“ festgelegtem Wert angeben. In .NET erfolgt dies durch Übergeben des optionalen **FeedOptions**-Arguments an Abfragen mit auf „True“ festgelegter [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery)-Einstellung.
+Weitere Informationen zur Unterstützung von Geodaten in DocumentDB finden Sie unter [Arbeiten mit Geodaten in Azure DocumentDB](documentdb-geospatial.md). Dies sind alle Informationen zu den räumlichen Funktionen und zur SQL-Syntax für DocumentDB. Als Nächstes sehen wir uns an, wie LINQ-Abfragen funktionieren und wie sie mit der bereits behandelten Syntax interagieren.
 
-ST\_WITHIN kann verwendet werden, um zu prüfen, ob ein Punkt innerhalb eines Polygons liegt. Polygone werden häufig verwendet, um Umgrenzungen wie Postleitzahlen, Staatsgrenzen oder natürliche Gebilde darzustellen. Wenn Sie wiederum die räumliche Indizierung in Ihre Indizierungsrichtlinie einschließen, werden Abfragen nach enthaltenen Elementen effizient über den Index beantwortet.
+## <a name="linq-to-documentdb-sql"></a>LINQ zu DocumentDB-SQL
+LINQ ist ein .NET-Programmiermodell, das Berechnungen als Abfragen auf Streams von Objekten darstellt. DocumentDB bietet eine clientseitige Bibliothek als Schnittstelle zu LINQ und erleichtert die Konvertierung zwischen JSON- und .NET-Objekten sowie die Zuordnung einer Teilmenge von LINQ-Abfragen zu DocumentDB-Abfragen. 
 
-Polygonargumente in ST\_WITHIN dürfen nur einen einzigen Ring enthalten, d. h. die Polygone dürfen keine Löcher aufweisen. Überprüfen Sie die [DocumentDB-Grenzen](documentdb-limits.md) auf die maximale Anzahl von Punkten in einem Polygon, die für eine ST\_WITHIN-Abfrage zulässig ist.
-
-**Abfrage**
-
-    SELECT * 
-    FROM Families f 
-    WHERE ST_WITHIN(f.location, {
-        'type':'Polygon', 
-        'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
-    })
-
-**Ergebnisse**
-
-    [{
-      "id": "WakefieldFamily",
-    }]
-
-> [!NOTE]
-> Wenn (ähnlich wie bei der Funktionsweise nicht übereinstimmender Typen in DocumentDB-Abfragen) der in einem der Argumente angegebene Standortwert falsch formatiert oder ungültig ist, wird dieser mit **undefiniert** ausgewertet. Die ausgewerteten Dokumente werden aus den Abfrageergebnissen entfernt. Wenn Ihre Abfrage keine Ergebnisse zurückgibt, führen Sie ST\_ISVALIDDETAILED aus, um herauszufinden, warum der räumliche Typ ungültig ist.
-> 
-> 
-
-ST\_ISVALID und ST\_ISVALIDDETAILED können verwendet werden, um zu prüfen, ob ein räumliches Objekt gültig ist. Die folgende Abfrage untersucht z. B. die Gültigkeit eines Punkts mit einem Längengradwert außerhalb des Gültigkeitsbereichs (-132,8). ST\_ISVALID gibt nur einen booleschen Wert zurück. ST\_ISVALIDDETAILED gibt den booleschen Wert und eine Zeichenfolge mit dem Grund zurück, warum das Argument als ungültig eingestuft wird.
-
-**Abfrage**
-
-    SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
-
-**Ergebnisse**
-
-    [{
-      "$1": false
-    }]
-
-Diese Funktionen können auch verwendet werden, um Polygone zu überprüfen. Beispielsweise verwenden wir hier ST\_ISVALIDDETAILED, um ein Polygon zu überprüfen, das nicht geschlossen ist.
-
-**Abfrage**
-
-    SELECT ST_ISVALIDDETAILED({ "type": "Polygon", "coordinates": [[ 
-        [ 31.8, -5 ], [ 31.8, -4.7 ], [ 32, -4.7 ], [ 32, -5 ] 
-        ]]})
-
-**Ergebnisse**
-
-    [{
-       "$1": { 
-            "valid": false, 
-            "reason": "The Polygon input is not valid because the start and end points of the ring number 1 are not the same. Each ring of a polygon must have the same start and end points." 
-          }
-    }]
-
-Dies sind alle Informationen zu den räumlichen Funktionen und zur SQL-Syntax für DocumentDB. Als Nächstes sehen wir uns an, wie LINQ-Abfragen funktionieren und wie sie mit der bereits behandelten Syntax interagieren.
-
-## LINQ zu DocumentDB-SQL
-LINQ ist ein .NET-Programmiermodell, das Berechnungen als Abfragen auf Streams von Objekten darstellt. DocumentDB bietet eine clientseitige Bibliothek als Schnittstelle zu LINQ und erleichtert die Konvertierung zwischen JSON- und .NET-Objekten sowie die Zuordnung einer Teilmenge von LINQ-Abfragen zu DocumentDB-Abfragen.
-
-Die folgende Abbildung zeigt die Architektur für die Unterstützung von LINQ-Abfragen in DocumentDB. Mit dem DocumentDB-Client können Entwickler ein **IQueryable**-Objekt erstellen, das den DocumentDB-Abfrageanbieter direkt abfragt, der die LINQ-Abfrage wiederum in eine DocumentDB-Abfrage übersetzt. Anschließend wird die Abfrage an den DocumentDB-Server übergeben, um einen Ergebnissatz im JSON-Format abzurufen. Die zurückgegebenen Ergebnisse werden clientseitig in einen Stream von .NET-Objekten deserialisiert.
+Die folgende Abbildung zeigt die Architektur für die Unterstützung von LINQ-Abfragen in DocumentDB.  Mit dem DocumentDB-Client können Entwickler ein **IQueryable** -Objekt erstellen, das den DocumentDB-Abfrageanbieter direkt abfragt, der die LINQ-Abfrage wiederum in eine DocumentDB-Abfrage übersetzt. Anschließend wird die Abfrage an den DocumentDB-Server übergeben, um einen Ergebnissatz im JSON-Format abzurufen. Die zurückgegebenen Ergebnisse werden clientseitig in einen Stream von .NET-Objekten deserialisiert.
 
 ![Architektur für die Unterstützung von LINQ-Abfragen mit DocumentDB – SQL-Syntax, JSON-Abfragesprache, Datenbankkonzepte und SQL-Abfragen][1]
 
-### .NET- und JSON-Zuordnung
+### <a name="net-and-json-mapping"></a>.NET- und JSON-Zuordnung
 Die Zuordnung zwischen .NET- und JSON-Objekten erfolgt auf natürliche Weise. Jedes Datenelementfeld wird einem JSON-Objekt zugeordnet. Dabei wird der Feldname in den "key"-Teil des Objekts übernommen, und der "value"-Teil wird rekursiv zur Wertkomponente des Objekts zugeordnet. Betrachten Sie das folgende Beispiel. Das erstellte Family-Objekt wird wie hier gezeigt zum JSON-Dokument zugeordnet. Umgekehrt wird das JSON-Dokument zurück zu einem .NET-Objekt zugeordnet.
 
 **C#-Klasse**
@@ -1811,7 +1633,7 @@ Die Zuordnung zwischen .NET- und JSON-Objekten erfolgt auf natürliche Weise. Je
     Family family = new Family { Id = "WakefieldFamily", parents = new Parent [] { mother, father}, children = new Child[] { child }, isRegistered = false };
 
 
-**JSON**
+**JSON**  
 
     {
         "id": "WakefieldFamily",
@@ -1843,7 +1665,7 @@ Die Zuordnung zwischen .NET- und JSON-Objekten erfolgt auf natürliche Weise. Je
 
 
 
-### LINQ zu SQL-Übersetzung
+### <a name="linq-to-sql-translation"></a>LINQ zu SQL-Übersetzung
 Der DocumentDB-Abfrageanbieter führt eine bestmögliche Zuordnung von LINQ-Abfragen in DocumentDB-SQL-Abfragen durch. Die folgende Beschreibung geht davon aus, das Sie mit den Grundsätzen von LINQ vertraut sind.
 
 Für das Typsystem werden alle primitiven JSON-Typen unterstützt: numerische Typen, boolesche Typen, String und null. Andere JSON-Typen werden nicht unterstützt. Die folgenden skalaren Ausdrücke werden unterstützt.
@@ -1851,25 +1673,19 @@ Für das Typsystem werden alle primitiven JSON-Typen unterstützt: numerische Ty
 * Konstante Werte – dazu gehören konstante Werte der primitiven Datentypen zum Zeitpunkt der Ausführung der Abfrage.
 * Indexausdrücke auf Eigenschaften/Arrays – diese Ausdrücke beziehen sich auf die Eigenschaft eines Objekts oder eines Arrayelements.
   
-     family.Id;
-     family.children[0].familyName;
-     family.children[0].grade;
-     family.children[n].grade; //n is an int variable
+     family.Id;    family.children[0].familyName;    family.children[0].grade;    family.children[n].grade; //n ist eine INT-Variable
 * Arithmetische Ausdrücke - dazu gehören arithmetische Ausdrücke auf numerische und boolesche Werte. Eine vollständige Liste finden Sie in der SQL-Dokumentation.
   
-     2 * family.children[0].grade;
-     x + y;
-* Zeichenfolgenvergleiche - dazu gehören Vergleiche von Zeichenfolgenwerten mit konstanten Zeichenfolgen.
+     2 * family.children[0].grade;    x + y;
+* Zeichenfolgenvergleiche - dazu gehören Vergleiche von Zeichenfolgenwerten mit konstanten Zeichenfolgen.  
   
-     mother.familyName == "Smith";
-     child.givenName == s; //s is a string variable
+     mother.familyName == "Smith";    child.givenName == s; //s ist eine Zeichenfolgenvariable
 * Erstellungsausdrücke für Objekte/Arrays - diese Ausdrücke geben ein Objekt mit einem Verbundwerttyp oder anonymen Typ bzw. ein Array solcher Objekte zurück. Diese Werte können verschachtelt sein.
   
-     new Parent { familyName = "Smith", givenName = "Joe" };
-     new { first = 1, second = 2 }; //an anonymous type with 2 fields              
+     new Parent { familyName = "Smith", givenName = "Joe" }; new { first = 1, second = 2 }; //ein anonymer Typ mit 2 Feldern              
      new int[] { 3, child.grade, 5 };
 
-### Liste der unterstützten LINQ-Operatoren
+### <a name="list-of-supported-linq-operators"></a>Liste der unterstützten LINQ-Operatoren
 Es folgt eine Liste der unterstützten LINQ-Operatoren im LINQ-Anbieter, die im DocumentDB .NET SDK enthalten sind.
 
 * **Select**: Projektionen einschließlich Objektkonstruktion werden in SQL SELECT übersetzt.
@@ -1883,19 +1699,19 @@ Es folgt eine Liste der unterstützten LINQ-Operatoren im LINQ-Anbieter, die im 
 * **Arrayfunktionen**: Unterstützt die Übersetzung von „Concat“, „Contains“ und „Count“ aus .NET in die entsprechenden SQL-integrierten Funktionen.
 * **Geospatial-Erweiterungsfunktionen**: Unterstützt die Übersetzung aus den Stubmethoden „Distance“, „Within“, „IsValid“ und „IsValidDetailed“ in die entsprechenden SQL-integrierten Funktionen.
 * **Erweiterungsfunktion für benutzerdefinierte Funktion**: Unterstützt die Übersetzung aus der Stubmethode „UserDefinedFunctionProvider.Invoke“ in die entsprechende benutzerdefinierte Funktion.
-* **Sonstiges**: Unterstützt die Übersetzung der Zusammenfügungs- und bedingten Operatoren. Kann „Contains“ je nach Kontext in die Zeichenfolge CONTAINS, ARRAY\_CONTAINS oder SQL IN übersetzen.
+* **Sonstiges**: Unterstützt die Übersetzung der Zusammenfügungs- und bedingten Operatoren. Kann „Contains“ je nach Kontext in die Zeichenfolge CONTAINS, ARRAY_CONTAINS oder SQL IN übersetzen.
 
-### SQL-Abfrageoperatoren
+### <a name="sql-query-operators"></a>SQL-Abfrageoperatoren
 Die folgenden Beispiele zeigen, wie einige der Standard-LINQ-Abfrageoperatoren in DocumentDB-Abfragen übersetzt werden.
 
-#### Select-Operator
+#### <a name="select-operator"></a>Select-Operator
 Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist.
 
 **LINQ Lambda-Ausdruck**
 
     input.Select(family => family.parents[0].familyName);
 
-**SQL**
+**SQL** 
 
     SELECT VALUE f.parents[0].familyName
     FROM Families f
@@ -1907,7 +1723,7 @@ Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist.
     input.Select(family => family.children[0].grade + c); // c is an int variable
 
 
-**SQL**
+**SQL** 
 
     SELECT VALUE f.children[0].grade + c
     FROM Families f 
@@ -1923,7 +1739,7 @@ Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist.
     });
 
 
-**SQL**
+**SQL** 
 
     SELECT VALUE {"name":f.children[0].familyName, 
                   "grade": f.children[0].grade + 3 }
@@ -1931,28 +1747,28 @@ Die Syntax ist `input.Select(x => f(x))`, wobei `f` ein skalarer Ausdruck ist.
 
 
 
-#### SelectMany-Operator
+#### <a name="selectmany-operator"></a>SelectMany-Operator
 Die Syntax ist `input.SelectMany(x => f(x))`, wobei `f` ein skalarer Ausdruck ist, der einen Sammlungstyp zurückgibt.
 
-**LINQ-Lambdaausdruck**
+**LINQ Lambda-Ausdruck**
 
     input.SelectMany(family => family.children);
 
-**SQL**
+**SQL** 
 
     SELECT VALUE child
     FROM child IN Families.children
 
 
 
-#### Where-Operator
+#### <a name="where-operator"></a>Where-Operator
 Die Syntax ist `input.Where(x => f(x))`, wobei `f` ein skalarer Ausdruck ist, der einen booleschen Wert zurückgibt.
 
 **LINQ Lambda-Ausdruck**
 
     input.Where(family=> family.parents[0].familyName == "Smith");
 
-**SQL**
+**SQL** 
 
     SELECT *
     FROM Families f
@@ -1966,7 +1782,7 @@ Die Syntax ist `input.Where(x => f(x))`, wobei `f` ein skalarer Ausdruck ist, de
         family => family.parents[0].familyName == "Smith" && 
         family.children[0].grade < 3);
 
-**SQL**
+**SQL** 
 
     SELECT *
     FROM Families f
@@ -1974,10 +1790,10 @@ Die Syntax ist `input.Where(x => f(x))`, wobei `f` ein skalarer Ausdruck ist, de
     AND f.children[0].grade < 3
 
 
-### Zusammengesetzte SQL-Abfragen
+### <a name="composite-sql-queries"></a>Zusammengesetzte SQL-Abfragen
 Die obigen Operatoren können zu komplexeren Abfragen zusammengesetzt werden. Da DocumentDB verschachtelte Sammlungen unterstützt, kann die Zusammensetzung entweder verkettet oder verschachtelt werden.
 
-#### Verkettung
+#### <a name="concatenation"></a>Verkettung
 Die Syntax ist `input(.|.SelectMany())(.Select()|.Where())*`. Eine verkettete Abfrage kann mit einer optionalen `SelectMany`-Abfrage beginnen, gefolgt von mehreren `Select`- oder `Where`-Operatoren.
 
 **LINQ Lambda-Ausdruck**
@@ -1998,7 +1814,7 @@ Die Syntax ist `input(.|.SelectMany())(.Select()|.Where())*`. Eine verkettete Ab
     input.Where(family => family.children[0].grade > 3)
         .Select(family => family.parents[0].familyName);
 
-**SQL**
+**SQL** 
 
     SELECT VALUE f.parents[0].familyName
     FROM Families f
@@ -2011,7 +1827,7 @@ Die Syntax ist `input(.|.SelectMany())(.Select()|.Where())*`. Eine verkettete Ab
     input.Select(family => new { grade=family.children[0].grade}).
         Where(anon=> anon.grade < 3);
 
-**SQL**
+**SQL** 
 
     SELECT *
     FROM Families f
@@ -2024,7 +1840,7 @@ Die Syntax ist `input(.|.SelectMany())(.Select()|.Where())*`. Eine verkettete Ab
     input.SelectMany(family => family.parents)
         .Where(parent => parents.familyName == "Smith");
 
-**SQL**
+**SQL** 
 
     SELECT *
     FROM p IN Families.parents
@@ -2032,7 +1848,7 @@ Die Syntax ist `input(.|.SelectMany())(.Select()|.Where())*`. Eine verkettete Ab
 
 
 
-#### Verschachtelung
+#### <a name="nesting"></a>Verschachtelung
 Die Syntax ist `input.SelectMany(x=>x.Q())`, wobei „Q“ ein `Select`-, `SelectMany`- oder `Where`-Operator ist.
 
 In verschachtelten Abfragen wird die innere Abfrage auf jedes Element der äußeren Abfrage angewendet. Hierbei ist wichtig, dass die innere Abfrage auf die Felder der Elemente in der äußeren Abfrage wie bei Selbstverknüpfungen verweisen kann.
@@ -2042,7 +1858,7 @@ In verschachtelten Abfragen wird die innere Abfrage auf jedes Element der äuße
     input.SelectMany(family=> 
         family.parents.Select(p => p.familyName));
 
-**SQL**
+**SQL** 
 
     SELECT VALUE p.familyName
     FROM Families f
@@ -2054,7 +1870,7 @@ In verschachtelten Abfragen wird die innere Abfrage auf jedes Element der äuße
     input.SelectMany(family => 
         family.children.Where(child => child.familyName == "Jeff"));
 
-**SQL**
+**SQL** 
 
     SELECT *
     FROM Families f
@@ -2068,7 +1884,7 @@ In verschachtelten Abfragen wird die innere Abfrage auf jedes Element der äuße
     input.SelectMany(family => family.children.Where(
         child => child.familyName == family.parents[0].familyName));
 
-**SQL**
+**SQL** 
 
     SELECT *
     FROM Families f
@@ -2076,12 +1892,12 @@ In verschachtelten Abfragen wird die innere Abfrage auf jedes Element der äuße
     WHERE c.familyName = f.parents[0].familyName
 
 
-## Ausführen von SQL-Abfragen
+## <a name="executing-sql-queries"></a>Ausführen von SQL-Abfragen
 DocumentDB stellt Ressourcen über eine REST-API zur Verfügung, die in jeder Sprache aufgerufen werden kann, die HTTP/HTTPS-Anfragen unterstützt. Zusätzlich bietet DocumentDB Programmierbibliotheken für einige beliebte Sprachen an wie .NET, Node.js, JavaScript und Python. Die REST-API und die verschiedenen Bibliotheken unterstützen allesamt SQL-Abfragen. Das .NET SDK unterstützt LINQ-Abfragen zusätzlich zu SQL.
 
 Die folgenden Beispiele zeigen, wie Sie eine Abfrage erstellen und auf ein DocumentDB-Datenbankkonto ausführen können.
 
-### REST-API
+### <a name="rest-api"></a>REST-API
 DocumentDB bietet ein RESTful-Programmiermodell über HTTP. Datenbankkonten können im Rahmen eines Azure-Abonnements erstellt werden. Das Ressourcenmodell von DocumentDB besteht aus einem Satz von Ressourcen in einem Datenbankkonto, die jeweils über einen logischen und beständigen URI adressiert werden können. Ein Ressourcensatz wird in diesem Dokument als Feed bezeichnet. Ein Datenbankkonto besteht aus einem Satz von Datenbanken, die je mehrere Sammlungen enthalten, die wiederum Dokumente, UDFs und andere Ressourcentypen enthalten.
 
 Die Interaktion mit diesen Ressourcen erfolgt über die HTTP-Verben GET, PUT, POST und DELETE mit deren Standardinterpretation. Das POST-Verb dient zur Erstellung neuer Ressourcen, zur Ausführung gespeicherter Prozeduren oder zum Ausführen von DocumentDB-Abfragen. Abfragen werden immer als schreibgeschützte Operationen ohne Nebeneffekte ausgeführt.
@@ -2208,17 +2024,17 @@ Das zweite Beispiel zeigt eine komplexere Abfrage, die mehrere Ergebnisse der Ve
     }
 
 
-Wenn die Abfrageergebnisse nicht auf eine einzelne Ergebnisseite passen, gibt die REST-API ein Fortsetzungstoken im `x-ms-continuation-token`-Antwortheader zurück. Clients können einzelne Ergebnisseiten abfragen, indem sie den Header in nachfolgenden Abfragen angeben. Die Anzahl der Ergebnisse pro Seite kann über den `x-ms-max-item-count`-number-Header gesteuert werden.
+Wenn die Abfrageergebnisse nicht auf eine einzelne Ergebnisseite passen, gibt die REST-API ein Fortsetzungstoken im `x-ms-continuation-token` -Antwortheader zurück. Clients können einzelne Ergebnisseiten abfragen, indem sie den Header in nachfolgenden Abfragen angeben. Die Anzahl der Ergebnisse pro Seite kann über den `x-ms-max-item-count` -number-Header gesteuert werden.
 
-Für die Verwaltung der Datenkonsistenzrichtlinie für Abfragen verwenden Sie den `x-ms-consistency-level`-Header, wie in allen REST-API-Anfragen. Für die Sitzungskonsistenz muss außerdem der letzte `x-ms-session-token`-Cookie-Header in der Abfrageanforderung wiederholt werden. Die Indexierungsrichtlinie der abgefragten Sammlung kann die Konsistenz der Abfrageergebnisse ebenfalls beeinflussen. Mit den Standardeinstellungen für Indexierungsrichtlinien stimmt der Index einer Sammlung immer mit dem aktuellen Dokumentinhalt überein, und Abfragen liefern die Daten in der gewünschten Konsistenz zurück. Wenn eine verzögerte Indexierungsrichtlinie verwendet wird, kann es passieren, dass veraltete Ergebnisse zurückgegeben werden. Weitere Informationen finden Sie unter [DocumentDB-Konsistenzebenen][consistency-levels].
+Für die Verwaltung der Datenkonsistenzrichtlinie für Abfragen verwenden Sie den `x-ms-consistency-level` -Header, wie in allen REST-API-Anfragen. Für die Sitzungskonsistenz muss außerdem der letzte `x-ms-session-token` -Cookie-Header in der Abfrageanforderung wiederholt werden. Die Indexierungsrichtlinie der abgefragten Sammlung kann die Konsistenz der Abfrageergebnisse ebenfalls beeinflussen. Mit den Standardeinstellungen für Indexierungsrichtlinien stimmt der Index einer Sammlung immer mit dem aktuellen Dokumentinhalt überein, und Abfragen liefern die Daten in der gewünschten Konsistenz zurück. Wenn eine verzögerte Indexierungsrichtlinie verwendet wird, kann es passieren, dass veraltete Ergebnisse zurückgegeben werden. Weitere Informationen finden Sie unter [DocumentDB-Konsistenzebenen][consistency-levels].
 
 Wenn die konfigurierte Indexierungsrichtlinie der Sammlung die angegebene Abfrage nicht unterstützen kann, gibt der DocumentDB-Server "400 Bad Request" zurück. Dies wird z. B. für Bereichsabfragen auf Pfade zurückgegeben, die für Hash (Gleichheits)-Suchvorgänge konfiguriert sind, oder für Pfade, die ausdrücklich von der Indexierung ausgeschlossen wurden. Mit dem `x-ms-documentdb-query-enable-scan`-Header kann angegeben werden, dass eine Abfrage einen Scan durchführen darf, wenn kein Index verfügbar ist.
 
-### C# (.NET) SDK
+### <a name="c-net-sdk"></a>C# (.NET) SDK
 Das .NET SDK unterstützt Abfragen per LINQ und SQL. Das folgende Beispiel zeigt, wie Sie die weiter oben in diesem Dokument gezeigte einfache Filterabfrage ausführen können.
 
     foreach (var family in client.CreateDocumentQuery(collectionLink, 
-        "SELECT * FROM Families f WHERE f.id = "AndersenFamily""))
+        "SELECT * FROM Families f WHERE f.id = \"AndersenFamily\""))
     {
         Console.WriteLine("\tRead {0} from SQL", family);
     }
@@ -2248,7 +2064,7 @@ Das .NET SDK unterstützt Abfragen per LINQ und SQL. Das folgende Beispiel zeigt
     }
 
 
-Das Beispiel vergleicht zwei Eigenschaften auf Gleichheit in den einzelnen Dokumenten und verwendet anonyme Projektionen.
+Das Beispiel vergleicht zwei Eigenschaften auf Gleichheit in den einzelnen Dokumenten und verwendet anonyme Projektionen. 
 
     foreach (var family in client.CreateDocumentQuery(collectionLink,
         @"SELECT {""Name"": f.id, ""City"":f.address.city} AS Family 
@@ -2299,13 +2115,13 @@ Das nächste Beispiel zeigt Verknüpfungen mithilfe von LINQ-SelectMany.
 
 
 
-Der .NET-Client durchläuft automatisch alle Seiten der Abfrageergebnisse in den foreach-Blöcken, wie oben gezeigt. Die im Abschnitt zur REST-API vorgestellten Abfrageoptionen sind auch im .NET SDK über die Klassen `FeedOptions` und `FeedResponse` in der CreateDocumentQuery-Methode verfügbar. Die Anzahl der Ergebnisse pro Seite kann über die `MaxItemCount`-Einstellung gesteuert werden.
+Der .NET-Client durchläuft automatisch alle Seiten der Abfrageergebnisse in den foreach-Blöcken, wie oben gezeigt. Die im Abschnitt zur REST-API vorgestellten Abfrageoptionen sind auch im .NET SDK über die Klassen `FeedOptions` and `FeedResponse` in der CreateDocumentQuery-Methode verfügbar. Die Anzahl der Ergebnisse pro Seite kann über die `MaxItemCount` -Einstellung gesteuert werden. 
 
-Sie können die Seitenaufteilung steuern, indem sie ein `IDocumentQueryable`-Element mit dem `IQueryable`-Objekt erstellen, anschließend die ` ResponseContinuationToken`-Werte lesen und als `RequestContinuationToken` in `FeedOptions` zurückgeben. `EnableScanInQuery` kann festgelegt werden, um Suchvorgänge zu ermöglichen, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt werden kann. Für partitionierte Sammlungen können Sie `PartitionKey` verwenden, um die Abfrage für eine einzelne Partition auszuführen (auch wenn DocumentDB dies automatisch aus dem Abfragetext extrahieren kann). Mit `EnableCrossPartitionQuery` können Sie Abfragen ausführen, die unter Umständen für mehrere Partitionen ausgeführt werden müssen.
+Sie können die Seitenaufteilung steuern, indem Sie mithilfe des `IQueryable`-Objekts ein `IDocumentQueryable`-Element erstellen, die ` ResponseContinuationToken`-Werte lesen und sie anschließend als `RequestContinuationToken` in `FeedOptions` zurückgeben. `EnableScanInQuery` kann festgelegt werden, um Suchvorgänge zu ermöglichen, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt werden kann. Für partitionierte Sammlungen können Sie `PartitionKey` verwenden, um die Abfrage für eine einzelne Partition auszuführen (auch wenn DocumentDB dies automatisch aus dem Abfragetext extrahieren kann). Mit `EnableCrossPartitionQuery` können Sie Abfragen ausführen, die unter Umständen für mehrere Partitionen ausgeführt werden müssen. 
 
-Weitere Beispiele, die Abfragen enthalten, finden Sie unter [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net).
+Weitere Beispiele, die Abfragen enthalten, finden Sie unter [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net) . 
 
-### Serverseitige JavaScript-API
+### <a name="javascript-server-side-api"></a>Serverseitige JavaScript-API
 DocumentDB bietet ein Programmiermodell zur Ausführung JavaScript-basierter Anwendungslogik direkt auf die Sammlungen über gespeicherte Prozeduren und Trigger. Die auf Sammlungsebene registrierte JavaScript-Logik kann anschließend Datenbankoperationen auf die Dokumente der jeweiligen Sammlung ausführen. Diese Operationen werden in ACID-Transaktionen der jeweiligen Umgebung gekapselt.
 
 Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der serverseitigen JavaScript-API Abfragen aus gespeicherten Prozeduren und Triggers heraus ausführen können.
@@ -2340,8 +2156,8 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von "queryDocuments" in der server
             });
     }
 
-## Aggregatfunktionen
-Native Unterstützung für Aggregatfunktionen ist in Arbeit, wenn Sie jedoch bis dahin Zähl- oder Summenfunktionen benötigen, können Sie hierfür verschiedene Methoden einsetzen.
+## <a name="aggregate-functions"></a>Aggregatfunktionen
+Native Unterstützung für Aggregatfunktionen ist in Arbeit, wenn Sie jedoch bis dahin Zähl- oder Summenfunktionen benötigen, können Sie hierfür verschiedene Methoden einsetzen.  
 
 Lesepfad:
 
@@ -2350,21 +2166,21 @@ Lesepfad:
 
 Schreibpfad:
 
-* Ein weiteres allgemeines Muster besteht darin, die Ergebnisse im Schreibpfad vorab zu aggregieren. Dies empfiehlt sich insbesondere dann, wenn der Umfang der Leseanforderungen größer ist als der Umfang der Schreibanforderungen. Nach dieser Vorab-Aggregation sind die Ergebnisse über eine einzelne Leseanforderung verfügbar. Eine solche Vorab-Aggregation in DocumentDB wird am besten durchgeführt, indem Sie einen Trigger einrichten, der bei jedem Schreiben ausgelöst wird, und ein Metadatendokument aktualisieren, das die neuesten Ergebnisse für die materialisierte Abfrage enthält. Das Beispiel [UpdateMetadata.js](https://github.com/Azure/azure-documentdb-js-server/blob/master/samples/triggers/UpdateMetadata.js) aktualisiert z.B. „minSize“, „maxSize“ und „totalSize“ des Metadatendokuments für die Sammlung. Das Beispiel kann so erweitert werden, dass die Anzahl, Summe usw. aktualisiert wird.
+* Ein weiteres allgemeines Muster besteht darin, die Ergebnisse im Schreibpfad vorab zu aggregieren. Dies empfiehlt sich insbesondere dann, wenn der Umfang der Leseanforderungen größer ist als der Umfang der Schreibanforderungen. Nach dieser Vorab-Aggregation sind die Ergebnisse über eine einzelne Leseanforderung verfügbar.  Eine solche Vorab-Aggregation in DocumentDB wird am besten durchgeführt, indem Sie einen Trigger einrichten, der bei jedem Schreiben ausgelöst wird, und ein Metadatendokument aktualisieren, das die neuesten Ergebnisse für die materialisierte Abfrage enthält. So werden im Beispiel [UpdateaMetadata.js](https://github.com/Azure/azure-documentdb-js-server/blob/master/samples/triggers/UpdateMetadata.js) etwa „minSize“, „maxSize“ und „totalSize“ des Metadatendokuments für die Sammlung aktualisiert. Das Beispiel kann so erweitert werden, dass die Anzahl, Summe usw. aktualisiert wird.
 
-## Referenzen
+## <a name="references"></a>Referenzen
 1. [Einführung in Azure DocumentDB][introduction]
 2. [DocumentDB-SQL-Spezifikation](http://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net)
 4. [DocumentDB-Konsistenzebenen][consistency-levels]
-5. ANSI SQL 2011 [http://www.iso.org/iso/iso\_catalogue/catalogue\_tc/catalogue\_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
+5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
-7. JavaScript-Spezifikation [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx)
+7. JavaScript-Spezifikation [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
 9. Abfrageauswertungstechniken für große Datenbanken [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994
 11. Lu, Ooi, Tan, Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994.
-12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing, SIGMOD 2008.
+12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing, SIGMOD 2008.
 13. G. Graefe. The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
 
 [1]: ./media/documentdb-sql-query/sql-query1.png
@@ -2372,4 +2188,8 @@ Schreibpfad:
 [consistency-levels]: documentdb-consistency-levels.md
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

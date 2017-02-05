@@ -129,7 +129,7 @@ ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
 ### <a name="a-name100100a"></a><a name="1.0.0"/>1.0.0</a>
 * Allgemeine Verfügbarkeit (GA) des SDK
 
-## <a name="release-retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
+## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher empfiehlt es sich, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.

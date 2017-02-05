@@ -1,23 +1,27 @@
 ---
-title: Remoteübermittlung von Spark-Aufträgen mithilfe von Livy | Microsoft Docs
-description: Hier erhalten Sie Informationen zur Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy mit HDInsight-Clustern.
+title: "Remoteübermittlung von Spark-Aufträgen mithilfe von Livy | Microsoft-Dokumentation"
+description: "Hier erhalten Sie Informationen zur Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy mit HDInsight-Clustern."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 2817b779-1594-486b-8759-489379ca907d
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 10/28/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 564bd1f3095446edf839d0353b92e0df256e1007
+
 
 ---
-# Remoteübermittlung von Spark-Aufträgen an einen Apache Spark-Cluster unter HDInsight (Linux) mithilfe von Livy
+# <a name="submit-spark-jobs-remotely-to-an-apache-spark-cluster-on-hdinsight-linux-using-livy"></a>Remoteübermittlung von Spark-Aufträgen an einen Apache Spark-Cluster unter HDInsight (Linux) mithilfe von Livy
 Der Apache Spark-Cluster in Azure HDInsight bietet mit Livy eine REST-Schnittstelle zur Remoteübermittlung von Aufträgen an einen Spark-Cluster. Eine ausführliche Dokumentation finden Sie unter [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server).
 
 Mit Livy können Sie interaktive Spark-Shells ausführen oder Batchaufträge zur Ausführung in Spark übermitteln. In diesem Artikel wird die Übermittlung von Batchaufträgen mithilfe von Livy behandelt. Die Syntax weiter unten verwendet cURL für an den Livy-Endpunkt gerichtete REST-Aufrufe.
@@ -26,11 +30,11 @@ Mit Livy können Sie interaktive Spark-Shells ausführen oder Batchaufträge zur
 
 Sie benötigen Folgendes:
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
-* Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
+* Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
-## Übermitteln eines Batchauftrags an den Cluster
-Vor dem Übermitteln eines Batchauftrags muss die JAR-Anwendungsdatei an den Clusterspeicher hochgeladen werden, der dem Cluster zugeordnet ist. Dafür können Sie etwa das Befehlszeilenprogramm [**AzCopy**](../storage/storage-use-azcopy.md) verwenden. Die Daten können aber auch mit zahlreichen anderen Clients hochgeladen werden. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md).
+## <a name="submit-a-batch-job-the-cluster"></a>Übermitteln eines Batchauftrags an den Cluster
+Vor dem Übermitteln eines Batchauftrags muss die JAR-Anwendungsdatei an den Clusterspeicher hochgeladen werden, der dem Cluster zugeordnet ist. Dafür können Sie das Befehlszeilenprogramm [**AzCopy**](../storage/storage-use-azcopy.md) verwenden. Die Daten können aber auch mit zahlreichen anderen Clients hochgeladen werden. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md).
 
     curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches'
 
@@ -43,7 +47,7 @@ Vor dem Übermitteln eines Batchauftrags muss die JAR-Anwendungsdatei an den Clu
   
         curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
-## Abrufen von Informationen zu im Cluster ausgeführten Batches
+## <a name="get-information-on-batches-running-on-the-cluster"></a>Abrufen von Informationen zu im Cluster ausgeführten Batches
     curl -k --user "<hdinsight user>:<user password>" -v -X GET "https://<spark_cluster_name>.azurehdinsight.net/livy/batches"
 
 **Beispiele**:
@@ -55,21 +59,21 @@ Vor dem Übermitteln eines Batchauftrags muss die JAR-Anwendungsdatei an den Clu
   
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
 
-## Löschen eines Batchauftrags
+## <a name="delete-a-batch-job"></a>Löschen eines Batchauftrags
     curl -k --user "<hdinsight user>:<user password>" -v -X DELETE "https://<spark_cluster_name>.azurehdinsight.net/livy/batches/{batchId}"
 
 **Beispiel**:
 
     curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
 
-## Livy und hohe Verfügbarkeit
+## <a name="livy-and-high-availability"></a>Livy und hohe Verfügbarkeit
 Livy bietet hohe Verfügbarkeit für im Cluster ausgeführte Spark-Aufträge. Nachstehend sind einige Beispiele angegeben.
 
 * Wenn der Livy-Dienst nach der Übermittlung eines Remoteauftrags an einen Spark-Cluster abstürzt, wird der Auftrag weiterhin im Hintergrund ausgeführt. Wenn Livy wieder funktioniert, stellt es den Status des Auftrags wieder her und erstattet Bericht.
-* Jupyter Notebooks für HDInsight wird am Back-End durch Livy unterstützt. Wenn ein Notebook einen Spark-Auftrag ausführt und der Livy-Dienst neu gestartet wird, führt das Notebook weiterhin die Codezellen aus.
+* Jupyter Notebooks für HDInsight wird am Back-End durch Livy unterstützt. Wenn ein Notebook einen Spark-Auftrag ausführt und der Livy-Dienst neu gestartet wird, führt das Notebook weiterhin die Codezellen aus. 
 
-## Beispiele
-In diesem Abschnitt erfahren Sie anhand von Beispielen, wie Sie mit Livy eine Spark-Anwendung übermitteln, den Status der Anwendung überwachen und den Auftrag anschließend löschen. Dabei verwenden wir die im Artikel [Erstellen einer eigenständigen Scala-Anwendung zur Ausführung in HDInsight Spark-Clustern](hdinsight-apache-spark-create-standalone-application.md) entwickelte Anwendung. In den Schritten wird Folgendes vorausgesetzt:
+## <a name="show-me-an-example"></a>Beispiele
+In diesem Abschnitt erfahren Sie anhand von Beispielen, wie Sie mit Livy eine Spark-Anwendung übermitteln, den Status der Anwendung überwachen und den Auftrag anschließend löschen. Dabei verwenden wir die im Artikel [Erstellen einer eigenständigen Scala-Anwendung zur Ausführung in HDInsight Spark-Clustern](hdinsight-apache-spark-create-standalone-application.md)entwickelte Anwendung. In den Schritten wird Folgendes vorausgesetzt:
 
 * Die JAR-Anwendungsdatei wurde bereits in das dem Cluster zugeordnete Speicherkonto kopiert.
 * Auf dem Computer, auf dem die Schritte ausgeführt werden, ist cURL installiert.
@@ -114,7 +118,7 @@ Führen Sie die folgenden Schritte aus:
         <
         {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
    
-    Beachten Sie die Angabe **state:starting** in der letzten Zeile der Ausgabe. Und die Angabe **id:0**. Hierbei handelt es sich um die Batch-ID.
+    Beachten Sie die Angabe **state:starting**in der letzten Zeile der Ausgabe. Und die Angabe **id:0**. Hierbei handelt es sich um die Batch-ID.
 3. Anhand der Batch-ID können Sie nun den Status dieses speziellen Batchs abrufen.
    
         curl -k --user "admin:mypassword1!" -v -X GET "https://mysparkcluster.azurehdinsight.net/livy/batches/0"
@@ -150,20 +154,20 @@ Führen Sie die folgenden Schritte aus:
    
     Die letzte Zeile der Ausgabe zeigt, dass der Batch erfolgreich gelöscht wurde. Wenn Sie einen Auftrag während der Ausführung löschen, wird seine Beendigung erzwungen. Beim Löschen eines (erfolgreich oder anderweitig) abgeschlossenen Auftrags werden die Auftragsinformationen vollständig gelöscht.
 
-## <a name="seealso"></a>Weitere Informationen
+## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
 
-### Szenarios
+### <a name="scenarios"></a>Szenarios
 * [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools.md)
 * [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 * [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark-Streaming: Erstellen von Echtzeitstreaminganwendungen mithilfe von Spark in HDInsight](hdinsight-apache-spark-eventhub-streaming.md)
 * [Websiteprotokollanalyse mithilfe von Spark in HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
-### Erstellen und Ausführen von Anwendungen
+### <a name="create-and-run-applications"></a>Erstellen und Ausführen von Anwendungen
 * [Erstellen einer eigenständigen Anwendung mit Scala](hdinsight-apache-spark-create-standalone-application.md)
 
-### Tools und Erweiterungen
+### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
@@ -171,8 +175,13 @@ Führen Sie die folgenden Schritte aus:
 * [Verwenden von externen Paketen mit Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
-### Verwalten von Ressourcen
+### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

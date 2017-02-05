@@ -2,18 +2,22 @@
 title: Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal | Microsoft Docs
 description: Verwalten des Zugriffs auf Azure Machine Learning-Arbeitsbereiche sowie Bereitstellen und Verwalten von ML-API-Webdiensten
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: vDonGlover
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b62cf2ca-dd2a-4a83-bb54-469f948fb026
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3b04aa7406f44130deb4f12c856b459369301449
+
 
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal
@@ -22,7 +26,7 @@ Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen u
 Das Machine Learning Web Services-Portal bietet diese Möglichkeiten:
 
 * Überwachen der Nutzung des Webdiensts
-* Konfigurieren der Beschreibung, Aktualisieren der Schlüssel für den Webdienst (nur neu) und des Schlüssels Ihres Speicherkontos (nur neu), Aktivieren der Protokollierung (nur klassisch) und Aktivieren oder Deaktivieren von Beispieldaten
+* Konfigurieren der Beschreibung, Aktualisieren der Schlüssel für den Webdienst (nur neu) und des Schlüssels Ihres Speicherkontos (nur neu), Aktivieren der Protokollierung und Aktivieren oder Deaktivieren von Beispieldaten
 * Löschen des Webdiensts
 * Erstellen, Löschen und Aktualisieren von Abrechnungsplänen (nur neu)
 * Hinzufügen und Löschen von Endpunkten (nur klassisch)
@@ -171,6 +175,9 @@ Um zusätzliche Konten zu verwalten, die Zugriff auf den Arbeitsbereich in Machi
 > 
 > 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

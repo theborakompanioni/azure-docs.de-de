@@ -1,13 +1,13 @@
 ---
-title: Verwenden von Hadoop Oozie-Workflows in Linux-basiertem HDInsight | Microsoft Docs
-description: Verwenden von Hadoop Oozie in Linux-basiertem HDInsight Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
+title: Verwenden von Hadoop Oozie-Workflows in Linux-basiertem HDInsight | Microsoft-Dokumentation
+description: "Verwenden von Hadoop Oozie in Linux-basiertem HDInsight Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 79c3ad47ca40c2b64b5304ae377d2e84224a823e
+
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem HDInsight
@@ -182,7 +186,7 @@ Definitionen von Oozie-Workflows werden in hPDL (einer XML-Prozessdefinitionsspr
      > 
      > 
      
-     Beachten Sie, dass der Workflow mehrere Einträge hat (z. B. `${jobTracker}`), die durch Werte ersetzt werden, die Sie in der Auftragsdefinition weiter unten in diesem Dokument verwenden.
+     Beachten Sie, dass der Workflow mehrere Einträge hat (z. B. `${jobTracker}`), die durch Werte ersetzt werden, die Sie in der Auftragsdefinition weiter unten in diesem Dokument verwenden.
      
      Beachten Sie auch den Eintrag `<archive>sqljdbc4.jar</arcive>` im Abschnitt „Sqoop“. Dieser weist Oozie an, dieses Archiv für Sqoop zur Verfügung zu stellen, wenn diese Aktion ausgeführt wird.
 3. Drücken Sie zum Speichern der Datei STRG+X, **Y** und dann die **EINGABETASTE**.
@@ -452,7 +456,7 @@ Um auf die Oozie-Webbenutzeroberfläche zuzugreifen, gehen Sie folgendermaßen v
    * **JobDAG**: Der DAG ist eine grafische Übersicht über die Datenpfade, die im Workflow gewählt wurden.
      
        ![DAG des Auftrags](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
-7. Bei Auswahl einer der Aktionen auf der Registerkarte **Auftragsinformationen** werden Informationen zur Aktion eingeblendet. Wählen Sie z. B. die Aktion **RunHiveScript** aus.
+7. Bei Auswahl einer der Aktionen auf der Registerkarte **Auftragsinformationen** werden Informationen zur Aktion eingeblendet. Wählen Sie z. B. die Aktion **RunHiveScript** aus.
    
     ![Aktionsinformationen](./media/hdinsight-use-oozie-linux-mac/action.png)
 8. Sie können Details zur Aktion anzeigen, einschließlich eines Links zur **Konsolen-URL**, die zum Anzeigen von JobTracker-Informationen für den Auftrag dient.
@@ -553,7 +557,7 @@ Bei der Behandlung von Problemen mit Oozie-Aufträgen ist die Oozie-Benutzerober
 
 Es folgen Fehlermeldungen, die auftreten können, und Möglichkeiten zu ihrer Behebung.
 
-### <a name="ja009:-cannot-initialize-cluster"></a>JA009: Cluster kann nicht initialisiert werden.
+### <a name="ja009-cannot-initialize-cluster"></a>JA009: Cluster kann nicht initialisiert werden.
 **Symptome**: Der Auftragsstatus ändert sich in **SUSPENDED**. In den Details für den Auftrag wird für den Status von RunHiveScript **START_MANUAL** angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
@@ -562,7 +566,7 @@ Es folgen Fehlermeldungen, die auftreten können, und Möglichkeiten zu ihrer Be
 
 **Lösung**: Ändern Sie die vom Auftrag verwendeten WASB-Adressen.
 
-### <a name="ja002:-oozie-is-not-allowed-to-impersonate-&lt;user>"></a>JA002: Oozie darf nicht die Identität von &lt;USER> annehmen.
+### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie darf nicht die Identität von &lt;USER> annehmen.
 **Symptome**: Der Auftragsstatus ändert sich in **SUSPENDED**. In den Details für den Auftrag wird für den Status von RunHiveScript **START_MANUAL** angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
 
     JA002: User: oozie is not allowed to impersonate <USER>
@@ -578,14 +582,14 @@ Es folgen Fehlermeldungen, die auftreten können, und Möglichkeiten zu ihrer Be
 > 
 > 
 
-### <a name="launcher-error-(sqoop)"></a>Launcher ERROR (Sqoop)
+### <a name="launcher-error-sqoop"></a>Launcher ERROR (Sqoop)
 **Symptome**: Der Auftragsstatus wird in **KILLED** geändert. In den Details zum Auftrag wird der Status von „RunSqoopExport“ als **ERROR**angezeigt. Bei Auswahl der Aktion wird die folgende Fehlermeldung angezeigt:
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
 **Ursache**: Sqoop kann den Datenbanktreiber nicht laden, der für den Zugriff auf die Datenbank erforderlich ist.
 
-**Lösung**: Bei Verwendung von Sqoop in einem Oozie-Auftrag müssen Sie den Datenbanktreiber mit anderen vom Auftrag verwendeten Ressourcen (z. B. „workflow.xml“) angeben.
+**Lösung**: Bei Verwendung von Sqoop in einem Oozie-Auftrag müssen Sie den Datenbanktreiber mit anderen vom Auftrag verwendeten Ressourcen (z. B. „workflow.xml“) angeben.
 
 Sie müssen auch im Abschnitt `<sqoop>...</sqoop>` der Datei "workflow.xml" auf das Archiv mit dem Datenbanktreiber verweisen.
 
@@ -655,6 +659,6 @@ In diesem Lernprogramm haben Sie gelernt, wie ein Oozie-Workflow definiert und e
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

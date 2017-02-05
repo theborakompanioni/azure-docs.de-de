@@ -2,11 +2,11 @@
 title: Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
 description: In diesem Thema wird gezeigt, wie Sie .NET verwenden, um mithilfe von Media Encoder Standard gleichzeitig ein Medienobjekt zu codieren und Miniaturansichten zu generieren.
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: b8dab73a-1d91-4b6d-9741-a92ad39fc3f7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
+
 
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-.net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
 In diesem Thema wird gezeigt, wie Sie das Media Services .NET SDK zum Codieren eines Medienobjekts und Generieren von Miniaturansichten mithilfe von Media Encoder Standard verwenden. In dem Thema werden die XML- und JSON-Voreinstellungen für Miniaturansichten definiert, mit denen Sie eine Aufgabe erstellen können, die Miniaturansichten gleichzeitig codiert und generiert. [Dieses](https://msdn.microsoft.com/library/mt269962.aspx) Dokument enthält Beschreibungen der Elemente, die durch diese Voreinstellungen verwendet werden.
 
 Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) .
@@ -168,7 +172,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
             }
         }
 
-## <a name="<a-id="json"></a>thumbnail-json-preset"></a><a id="json"></a>JSON-Voreinstellung für Miniaturansichten
+## <a name="a-idjsonathumbnail-json-preset"></a><a id="json"></a>JSON-Voreinstellung für Miniaturansichten
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
 
     {
@@ -270,7 +274,7 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
     }
 
 
-## <a name="<a-id="xml"></a>thumbnail-xml-preset"></a><a id="xml"></a>XML-Voreinstellung für Miniaturansichten
+## <a name="a-idxmlathumbnail-xml-preset"></a><a id="xml"></a>XML-Voreinstellung für Miniaturansichten
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
 
     <?xml version="1.0" encoding="utf-16"?>
@@ -351,13 +355,13 @@ Es gelten die folgenden Bedingungen:
 * Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 * Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf. Diese können folgendermaßen interpretiert werden:
   
-  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z. B. "Start": "120",
-  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z. B. "Start": "15%" ODER
+  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z. B. "Start": "120",
+  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z. B. "Start": "15%" ODER
   * Zeitstempel bei Ausdrücken im HH:MM:SS...- Format. Beispiel: "Start" : "00:01:00"
     
     Sie können die Formate nach Belieben mischen.
     
-    „Start“ unterstützt darüber hinaus auch das spezielle Makro „{Best}“, das versucht, den ersten „interessanten“ Frame des Inhalts zu ermitteln. (HINWEIS: „Step“ und „Range“ werden ignoriert, wenn „Start“ auf „{Best}“ festgelegt ist.)
+    "Start" unterstützt darüber hinaus auch das spezielle Makro "{Best}", das versucht, den ersten "interessanten" Frame des Inhalts zu ermitteln. (HINWEIS: "Step" und "Range" werden ignoriert, wenn "Start" auf "{Best}" festgelegt ist.)
   * Standardwerte: Start:{Best}
 * Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Wenn vorhanden, ordnet MES "JpgVideo" "JpgFormat" zu usw. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
@@ -370,6 +374,9 @@ Es gelten die folgenden Bedingungen:
 ## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
 title: Exportieren von Log Analytics-Daten nach Power BI | Microsoft Docs
-description: Power BI ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  Log Analytics kann Daten kontinuierlich aus dem OMS-Repository nach Power BI exportieren, sodass Sie die Visualisierungsfunktionen und Analysetools von Power BI nutzen können.  Dieser Artikel beschreibt, wie Sie Abfragen in Log Analytics konfigurieren, die Daten automatisch in regelmäßigen Intervallen nach Power BI exportieren.
+description: "Power BI ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  Log Analytics kann Daten kontinuierlich aus dem OMS-Repository nach Power BI exportieren, sodass Sie die Visualisierungsfunktionen und Analysetools von Power BI nutzen können.  Dieser Artikel beschreibt, wie Sie Abfragen in Log Analytics konfigurieren, die Daten automatisch in regelmäßigen Intervallen nach Power BI exportieren."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 83edc411-6886-4de1-aadd-33982147b9c3
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7870e2aebf6c142b0f3103a500ca73d691e6d3e6
+
 
 ---
 # <a name="export-log-analytics-data-to-power-bi"></a>Exportieren von Log Analytics-Daten nach Power BI
@@ -114,6 +118,9 @@ Speichern Sie den Bericht, indem Sie am oberen Bildschirmrand auf die Schaltflä
 * Erfahren Sie mehr zu [Protokollsuchvorgängen](log-analytics-log-searches.md) zum Erstellen von Abfragen, die nach Power BI exportiert werden können.
 * Erfahren Sie mehr über [Power BI](http://powerbi.microsoft.com), um Visualisierungen anhand von Log Analytics-Exporten zu erstellen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

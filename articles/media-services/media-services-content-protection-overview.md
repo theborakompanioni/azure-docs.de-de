@@ -1,12 +1,12 @@
 ---
-title: Schützen von Inhalten – Übersicht | Microsoft Docs
-description: In diesem Artikel finden Sie eine Übersicht über die Content Protection mit Media Services.
+title: "Schützen von Inhalten – Übersicht | Microsoft Docs"
+description: "In diesem Artikel finden Sie eine Übersicht über die Content Protection mit Media Services."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 576d3a1c242c74715e7a6dc33ec0a4adebcc9959
+
 
 ---
 # <a name="protecting-content-overview"></a>Schützen von Inhalten – Übersicht
@@ -51,7 +55,7 @@ Verwenden Sie die Speicherverschlüsselung, um Ihre unverschlüsselten Inhalte l
 
 Um ein speicherverschlüsseltes Medienobjekt zu übermitteln, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren und Media Services so mitteilen, wie die Inhalte bereitgestellt werden sollen. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie (AES, Common Encryption oder unverschlüsselt) gestreamt.
 
-## <a name="common-encryption-(cenc)"></a>Allgemeine Verschlüsselung (Common Encryption, CENC)
+## <a name="common-encryption-cenc"></a>Allgemeine Verschlüsselung (Common Encryption, CENC)
 Die allgemeine Verschlüsselung wird verwendet, wenn Sie Ihre Inhalte mit PlayReady und/oder mit Widevine verschlüsseln.
 
 ## <a name="using-cbcs-aapl-encryption"></a>Verwenden der cbcs-aapl-Verschlüsselung
@@ -115,6 +119,6 @@ Die folgenden Themen enthalten Informationen zum Schützen von Inhalten im Speic
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

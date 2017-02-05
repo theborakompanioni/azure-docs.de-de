@@ -1,13 +1,13 @@
 ---
-title: Ausführen von Hive-Abfragen per HDInsight .NET-SDK | Microsoft Docs
-description: Erfahren Sie, wie Sie Hadoop-Aufträge per HDInsight .NET-SDK an Azure HDInsight Hadoop übermitteln können.
+title: "Ausführen von Hive-Abfragen per HDInsight .NET SDK | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Hadoop-Aufträge per HDInsight .NET-SDK an Azure HDInsight Hadoop übermitteln können."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
-
+ms.assetid: 4e291890-f8b4-426c-b5e8-d4fd512ff042
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,10 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 2168147972184e14705781765b9afb3f2ee902e3
+
 
 ---
-# Ausführen von Hive-Abfragen per HDInsight .NET-SDK
-[!INCLUDE [Hive-Selektor](../../includes/hdinsight-selector-use-hive.md)]
+# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Ausführen von Hive-Abfragen per HDInsight .NET-SDK
+[!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
 Erfahren Sie, wie Sie Hive-Abfragen mit dem HDInsight .NET-SDK übermitteln.
 
@@ -27,14 +31,14 @@ Erfahren Sie, wie Sie Hive-Abfragen mit dem HDInsight .NET-SDK übermitteln.
 > 
 > 
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
-* **Einen Hadoop-Cluster in HDInsight**. Siehe [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* **Einen Hadoop-Cluster in HDInsight**. Siehe [Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 * **Visual Studio 2012/2013/2015**.
 
-## Übermitteln von Hive-Abfragen per HDInsight .NET-SDK
-Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen.
+## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>Übermitteln von Hive-Abfragen per HDInsight .NET-SDK
+Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. 
 
 **So übermitteln Sie Aufträge**
 
@@ -43,7 +47,8 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 3. Verwenden Sie den folgenden Code:
-   
+
+    ```csharp
         using System.Collections.Generic;
         using System.IO;
         using System.Text;
@@ -124,9 +129,10 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
                 }
             }
         }
-4. Drücken Sie **F5**, um die Anwendung auszuführen.
+    ```
+4. Drücken Sie **F5** , um die Anwendung auszuführen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
@@ -135,9 +141,15 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 * [HDInsight .NET SDK-Referenz](https://msdn.microsoft.com/library/mt271028.aspx)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von Sqoop mit HDInsight](hdinsight-use-sqoop-mac-linux.md)
-* [Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung ](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
+* [Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

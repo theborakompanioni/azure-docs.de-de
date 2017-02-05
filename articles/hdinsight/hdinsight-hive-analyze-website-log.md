@@ -1,13 +1,13 @@
 ---
-title: Verwenden von Hive mit Hadoop für Analysen von Websiteprotokollen | Microsoft Docs
-description: Erfahren Sie, wie Sie Website-Protokolle mit Hive in HDInsight analysieren können. Sie verwenden eine Protokolldatei als Eingabe für eine HDInsight-Tabelle und verwenden anschließend HiveQL, um die Daten abzufragen.
+title: "Verwenden von Hive mit Hadoop für Analysen von Websiteprotokollen | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Website-Protokolle mit Hive in HDInsight analysieren können. Sie verwenden eine Protokolldatei als Eingabe für eine HDInsight-Tabelle und verwenden anschließend HiveQL, um die Daten abzufragen."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 6fb7b5c2-8df4-40b1-a9e2-6815080004f9
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7038ba5e4229f65125efffb1d403364fc36a3783
+
 
 ---
-# Verwenden von Hive in HDInsight zum Analysieren von Website-Protokollen
+# <a name="use-hive-with-hdinsight-to-analyze-logs-from-websites"></a>Verwenden von Hive in HDInsight zum Analysieren von Website-Protokollen
 Erfahren Sie, wie Sie Website-Protokolle mit HiveQL in HDInsight analysieren können. Mit der Analyse von Websiteprotokollen können Sie Ihr Publikum nach ähnlichen Aktivitäten gruppieren, Seitenbesucher nach demografischen Daten kategorisieren, die angezeigten Inhalte und die Ursprungsseiten ermitteln und vieles mehr.
 
 In diesem Beispiel analysieren Sie Websiteprotokolle in einem HDInsight-Cluster, um Einblicke in die Häufigkeit von Besuchen der Website von externen Websites pro Tag zu erhalten. Sie generieren zudem eine Zusammenfassung der Websitefehler, die bei den Benutzern auftreten. Sie lernen Folgendes:
@@ -29,22 +33,22 @@ In diesem Beispiel analysieren Sie Websiteprotokolle in einem HDInsight-Cluster,
 
 ![HDI.Samples.Website.Log.Analysis][img-hdi-weblogs-sample]
 
-## Voraussetzungen
-* Sie müssen einen Hadoop-Cluster unter Azure HDInsight bereitgestellt haben. Weitere Informationen finden Sie unter [Bereitstellen eines HDInsight-Clusters][hdinsight-provision].
+## <a name="prerequisites"></a>Voraussetzungen
+* Sie müssen einen Hadoop-Cluster unter Azure HDInsight bereitgestellt haben. Anweisungen finden Sie unter [Bereitstellen von HDInsight-Clustern][hdinsight-provision]. 
 * Microsoft Excel 2013 oder Excel 2010 muss installiert sein.
-* Sie benötigen den [Microsoft Hive ODBC-Treiber](http://www.microsoft.com/download/details.aspx?id=40886), um die Daten aus Hive in Excel zu importieren.
+* Sie benötigen den [Microsoft Hive ODBC-Treiber](http://www.microsoft.com/download/details.aspx?id=40886) , um die Daten aus Hive in Excel zu importieren.
 
-## Ausführen des Beispiels
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü (sofern Sie den Cluster dort angeheftet haben) auf die Clusterkachel, für die Sie das Beispiel ausführen möchten.
+## <a name="to-run-the-sample"></a>Ausführen des Beispiels
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü (sofern Sie den Cluster dort angeheftet haben) auf die Clusterkachel, für die Sie das Beispiel ausführen möchten.
 2. Klicken Sie auf dem Blatt für den Cluster unter **Quicklinks** auf **Clusterdashboard** und auf dem Blatt **Clusterdashboard** auf **HDInsight-Cluster-Dashboard**. Alternativ können Sie das Dashboard direkt über die folgende URL öffnen:
    
          https://<clustername>.azurehdinsight.net
    
     Geben Sie den Benutzernamen und das Kennwort des Administrators ein, den Sie bei der Clusterbereitstellung verwendet haben, wenn Sie dazu aufgefordert werden.
-3. Klicken Sie auf der Webseite, die sich daraufhin öffnet, auf die Registerkarte **Erste Schritte mit dem Katalog** und anschließend in der Kategorie **Lösungen mit Beispieldaten** auf das Beispiel für die **Website-Protokollanalyse**.
+3. Klicken Sie auf der Webseite, die sich daraufhin öffnet, auf die Registerkarte **Getting Started Gallery** (Erste Schritte mit dem Katalog) und anschließend in der Kategorie **Solutions with Sample Data** (Lösungen mit Beispieldaten) auf das Beispiel für die **Websiteprotokollanalyse**.
 4. Folgen Sie den Anweisungen auf der Webseite, um das Beispiel abzuschließen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Versuchen Sie es mit dem folgenden Beispiel: [Analysieren von Sensordaten mit Hive mit HDInsight](hdinsight-hive-analyze-sensor-data.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
@@ -53,4 +57,8 @@ Versuchen Sie es mit dem folgenden Beispiel: [Analysieren von Sensordaten mit Hi
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

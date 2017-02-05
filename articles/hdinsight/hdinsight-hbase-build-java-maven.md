@@ -1,56 +1,57 @@
 ---
 title: Erstellen einer HBase-Anwendung mit Maven und Bereitstellen in Windows-basiertem HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HBase-Anwendung erstellen und anschließend in einem Windows-basiertem Azure HDInsight-Cluster bereitstellen können.
+description: "Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HBase-Anwendung erstellen und anschließend in einem Windows-basiertem Azure HDInsight-Cluster bereitstellen können."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 7f4a4e02-45ab-40dd-842b-3ec034f256c9
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 10/03/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 24d9c1d185eef811a37924be184e4e5894dcdb01
+
 
 ---
-# Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen
-Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in Java mithilfe von Apache Maven erstellen und entwickeln. Setzen Sie anschließend die Anwendung mit Azure HDInsight (Hadoop) ein.
+# <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen
+Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung in Java mithilfe von Apache Maven erstellen und entwickeln. Setzen Sie anschließend die Anwendung mit Azure HDInsight (Hadoop) ein.
 
 [Maven](http://maven.apache.org/) ist ein Projektmanagement- und Verständnistool, mit dem Sie Software, Dokumentationen und Berichte für Java-Projekte erstellen können. In diesem Artikel erfahren Sie, wie Sie es für das Erstellen einer einfachen Java-Anwendung verwenden, die eine HBase-Tabelle auf einem Azure HDInsight-Cluster erstellt, abfragt und löscht.
 
 > [!NOTE]
-> Die Schritte in diesem Artikel setzen voraus, dass Sie einen Windows-basierten HDInsight-Cluster verwenden. Informationen zur Verwendung eines Linux-basierten HDInsight-Clusters finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven-linux.md).
+> Die Schritte in diesem Artikel setzen voraus, dass Sie einen Windows-basierten HDInsight-Cluster verwenden. Informationen zur Verwendung eines Linux-basierten HDInsight-Clusters finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven-linux.md)
 > 
 > 
 
-## Anforderungen
+## <a name="requirements"></a>Anforderungen
 * [Java-Plattform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 oder höher
 * [Maven](http://maven.apache.org/)
-* [Ein Windows-basierter HDInsight-Cluster mit HBase](hdinsight-hbase-get-started.md#create-hbase-cluster)
-  
-  > [!NOTE]
-  > Die Schritte in diesem Dokument wurden mit HDInsight-Clustern der Versionen 3.2 und 3.3 getestet. Die Standardwerte in den Beispielen gelten für einen Cluster mit HDInsight 3.3.
-  > 
-  > 
+* [Ein Windows-basierter HDInsight-Cluster mit HBase](hdinsight-hbase-tutorial-get-started.md#create-hbase-cluster)
 
-## Erstellen des Projekts
-1. Ändern Sie an der Befehlszeile Ihrer Entwicklungsumgebung die Verzeichnisse auf den Speicherort, an dem Sie das Projekt erstellen möchten, beispielsweise `cd code\hdinsight`.
-2. Verwenden Sie den Befehl **mvn**, der mit Maven installiert wird, um das Gerüst für das Projekt zu erstellen.
+    > [AZURE.NOTE] Die Schritte in diesem Dokument wurden mit HDInsight-Clustern der Versionen 3.2 und 3.3 getestet. Die Standardwerte in den Beispielen gelten für einen Cluster mit HDInsight 3.3.
+
+## <a name="create-the-project"></a>Erstellen des Projekts
+1. Wechseln Sie in der Befehlszeile Ihrer Entwicklungsumgebung zu dem Speicherort, an dem Sie das Projekt erstellen möchten, z.B. `cd code\hdinsight`.
+2. Verwenden Sie den Befehl **mvn** , der mit Maven installiert wird, um das Gerüst für das Projekt zu erstellen.
    
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    
-    Damit wird ein neues Verzeichnis im aktuellen erstellt, das den Namen trägt, der vom Parameter **artifactID** (in diesem Beispiel **hbaseapp**) festgelegt wurde. Dieses Verzeichnis enthält die folgenden Elemente:
+    Mit diesem Befehl wird ein Verzeichnis am aktuellen Speicherort erstellt, das den Namen trägt, der mit dem Parameter **artifactID** (in diesem Beispiel **hbaseapp**) festgelegt wurde. Dieses Verzeichnis enthält die folgenden Elemente:
    
-   * **pom.xml**: Das Projektobjektmodell ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) enthält Informationen und Konfigurationsdetails für das Erstellen des Projekts.
-   * **src**: Das Verzeichnis, das das Verzeichnis **main\\java\\com\\microsoft\\examples** enthält, in dem Sie die Anwendung erstellen.
-3. Löschen Sie die Datei **src\\test\\java\\com\\microsoft\\examples\\apptest.java**, da sie in diesem Beispiel nicht verwendet wird.
+   * **pom.xml**: Das Projektobjektmodell ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) enthält Informationen und Konfigurationsdetails zum Erstellen des Projekts.
+   * **src**: Das Verzeichnis mit dem Verzeichnis **main\java\com\microsoft\examples**, in dem Sie die Anwendung erstellen.
+3. Löschen Sie die Datei **src\test\java\com\microsoft\examples\apptest.java**, da sie in diesem Beispiel nicht verwendet wird.
 
-## Aktualisieren des Projektobjektmodells
-1. Bearbeiten Sie die Datei **pom.xml**, und fügen Sie folgenden Code im Abschnitt `<dependencies>` ein.
+## <a name="update-the-project-object-model"></a>Aktualisieren des Projektobjektmodells
+1. Bearbeiten Sie die Datei **pom.xml**, und fügen Sie folgenden Code im Abschnitt `<dependencies>` ein:
    
         <dependency>
           <groupId>org.apache.hbase</groupId>
@@ -58,7 +59,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           <version>1.1.2</version>
         </dependency>
    
-    Damit wird Maven informiert, dass das Projekt den **hbase-Client** in der Version **1.1.2** benötigt. Beim Kompilieren wird er aus dem standardmäßigen Maven-Repository heruntergeladen. Sie können die [Suche im zentralen Maven-Repository](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) verwenden, wenn Sie weitere Informationen zu dieser Abhängigkeit erhalten möchten.
+    In diesem Abschnitt wird Maven informiert, dass das Projekt den **hbase-Client** in der Version **1.1.2** benötigt. Beim Kompilieren wird diese Abhängigkeit aus dem Maven-Standardrepository heruntergeladen. Sie können die [Suche im zentralen Maven-Repository](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) verwenden, wenn Sie weitere Informationen zu dieser Abhängigkeit erhalten möchten.
    
    > [!IMPORTANT]
    > Die Versionsnummer muss mit der Version von HBase übereinstimmen, die mit Ihrem HDInsight-Cluster bereitgestellt wird. Suchen Sie die richtige Versionsnummer mithilfe der folgenden Tabelle.
@@ -67,11 +68,11 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
    
    | HDInsight-Clusterversion | Zu verwendende HBase-Version |
    | --- | --- |
-   | 3\.2 |0\.98.4-hadoop2 |
-   | 3\.3 |1\.1.2 |
+   | 3.2 |0.98.4-hadoop2 |
+   | 3.3 |1.1.2 |
    
     Weitere Informationen zu HDInsight-Versionen und Komponenten finden Sie unter [Was sind die verschiedenen Hadoop-Komponenten, die in HDInsight verfügbar sind?](hdinsight-component-versioning.md).
-2. Wenn Sie einen HDInsight 3.3-Cluster verwenden, müssen Sie dem `<dependencies>`-Abschnitt auch Folgendes hinzufügen:
+2. Wenn Sie einen HDInsight 3.3-Cluster verwenden, müssen Sie dem `<dependencies>` -Abschnitt auch Folgendes hinzufügen:
    
         <dependency>
             <groupId>org.apache.phoenix</groupId>
@@ -79,8 +80,8 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
             <version>4.4.0-HBase-1.1</version>
         </dependency>
    
-    Dies lädt die Phoenix-Kernkomponenten, die Hbase-Version 1.1.x verwendet.
-3. Fügen Sie der Datei **pom.xml** folgenden Code hinzu: Dieser muss sich in der Datei innerhalb der `<project>...</project>`-Tags befinden, z. B. zwischen `</dependencies>` und `</project>`.
+    Diese Abhängigkeit lädt die Phoenix-Kernkomponenten, die von Hbase-Version 1.1.x verwendet werden.
+3. Fügen Sie der Datei **pom.xml** folgenden Code hinzu: Dieser Abschnitt muss sich in der Datei innerhalb der `<project>...</project>`-Tags befinden, z.B. zwischen `</dependencies>` und `</project>`.
    
         <build>
           <sourceDirectory>src</sourceDirectory>
@@ -125,18 +126,18 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           </plugins>
         </build>
    
-    Damit wird eine Ressource (**conf\\hbase-site.xml**,) konfiguriert, die die Konfigurationsinformationen für HBase enthält.
+    Mit dem Abschnitt `<resources>` wird eine Ressource (**conf/hbase-site.xml**) konfiguriert, die die Konfigurationsinformationen für HBase enthält.
    
    > [!NOTE]
    > Sie können die Konfigurationswerte auch per Code festlegen. Wie Sie hierbei vorgehen, erfahren Sie in den Kommentaren im Beispiel **CreateTable** weiter unten.
    > 
    > 
    
-    Damit werden auch das [Maven Compiler-Plug-In](http://maven.apache.org/plugins/maven-compiler-plugin/) und das [Maven Shade-Plug-In](http://maven.apache.org/plugins/maven-shade-plugin/) konfiguriert. Das Compiler-Plug-In wird zum Kompilieren der Topologie verwendet. Das Shade-Plug-In wird verwendet, um die Lizenzduplizierung in dem von Maven erstellten JAR-Paket zu verhindern. Es wird deshalb verwendet, weil die doppelten Lizenzdateien bei der Laufzeit einen Fehler auf dem HDInsight-Cluster verursachen. Wird maven-shade-plugin mit der `ApacheLicenseResourceTransformer`-Implementierung verwendet, so wird dieser Fehler verhindert.
+    Mit diesem Abschnitt `<plugins>` werden auch das [Maven Compiler-Plug-In](http://maven.apache.org/plugins/maven-compiler-plugin/) und das [Maven Shade-Plug-In](http://maven.apache.org/plugins/maven-shade-plugin/) konfiguriert. Das Compiler-Plug-In wird zum Kompilieren der Topologie verwendet. Das Shade-Plug-In wird verwendet, um die Lizenzduplizierung in dem von Maven erstellten JAR-Paket zu verhindern. Es wird deshalb verwendet, weil die doppelten Lizenzdateien bei der Laufzeit einen Fehler auf dem HDInsight-Cluster verursachen. Wenn das Maven-Shade-Plug-In mit der `ApacheLicenseResourceTransformer` -Implementierung verwendet wird, wird dieser Fehler verhindert.
    
-    Das maven-shade-plugin erzeugt außerdem ein Uberjar (oder Fatjar), das alle Abhängigkeiten enthält, die von der Anwendung benötigt werden.
-4. Speichern Sie die Datei **pom.xml**.
-5. Erstellen Sie ein neues Verzeichnis namens **conf** im Verzeichnis **hbaseapp**. Erstellen Sie im Verzeichnis **conf** eine neue Datei namens **hbase-site.xml**, und verwenden Sie Folgendes als Inhalt.
+    Das Maven-Shade-Plug-In erzeugt außerdem ein Uberjar (oder Fatjar), das alle Abhängigkeiten enthält, die von der Anwendung benötigt werden.
+4. Speichern Sie die Datei **pom.xml** .
+5. Erstellen Sie ein neues Verzeichnis mit dem Namen **conf** im Verzeichnis **hbaseapp**. Erstellen Sie im Verzeichnis **conf** eine Datei mit dem Namen **hbase-site.xml**. Fügen Sie Folgendes als Inhalt der Datei hinzu:
    
         <?xml version="1.0"?>
         <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -179,14 +180,14 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
     Diese Datei wird zum Laden der HBase-Konfiguration für einen HDInsight-Cluster verwendet.
    
    > [!NOTE]
-   > Das ist eine sehr minimale Datei vom Typ "hbase-site.xml", und sie enthält Mindesteinstellungen für den HDInsight-Cluster.
+   > Dies ist eine kompakte Datei vom Typ „hbase-site.xml“, die nur die wichtigsten Einstellungen für den HDInsight-Cluster enthält.
    > 
    > 
 6. Speichern Sie die Datei **hbase-site.xml**.
 
-## Erstellen der Anwendung
-1. Wechseln Sie zum Verzeichnis **hbaseapp\\src\\main\\java\\com\\microsoft\\examples**, und benennen Sie die Datei "app.java" in **CreateTable.java** um.
-2. Öffnen Sie die Datei **CreateTable.java**, und ersetzen Sie die vorhandenen Inhalte mit Folgendem:
+## <a name="create-the-application"></a>Erstellen der Anwendung
+1. Wechseln Sie zum Verzeichnis **hbaseapp\src\main\java\com\microsoft\examples**, und benennen Sie die Datei „app.java“ in **CreateTable.java** um.
+2. Öffnen Sie die Datei **CreateTable.java**, und ersetzen Sie die vorhandenen Inhalte durch den folgenden Code:
    
         package com.microsoft.examples;
         import java.io.IOException;
@@ -252,9 +253,9 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           }
         }
    
-    Das ist die Klasse **CreateTable**, die eine Tabelle namens **people** erzeugt und sie mit einigen vordefinierten Benutzern füllt.
+    Dies ist die **CreateTable**-Klasse, die eine Tabelle namens **people** erzeugt und sie mit einigen vordefinierten Benutzern füllt.
 3. Speichern Sie die Datei **CreateTable.java**.
-4. Erstellen Sie im Verzeichnis **hbaseapp\\src\\main\\java\\com\\microsoft\\examples** eine Datei mit dem Namen **SearchByEmail.java**. Fügen Sie Folgendes als Inhalt der Datei hinzu:
+4. Erstellen Sie im Verzeichnis **hbaseapp\src\main\java\com\microsoft\examples** eine Datei mit dem Namen **SearchByEmail.java**. Fügen Sie den folgenden Code als Inhalt dieser Datei hinzu:
    
         package com.microsoft.examples;
         import java.io.IOException;
@@ -327,9 +328,9 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           }
         }
    
-    Die Klasse **SearchByEmail** kann zur Abfrage von Zeilen nach E-Mail-Adresse verwendet werden. Da sie einen Filter für reguläre Ausdrücke verwendet, können Sie beim Einsatz der Klasse entweder eine Zeichenfolge angeben oder einen regulären Ausdruck.
+    Die **SearchByEmail**-Klasse kann für Abfragen von Zeilen nach der E-Mail-Adresse verwendet werden. Da sie einen Filter für reguläre Ausdrücke verwendet, können Sie beim Einsatz der Klasse entweder eine Zeichenfolge angeben oder einen regulären Ausdruck.
 5. Speichern Sie die Datei **SearchByEmail.java**.
-6. Erstellen Sie im Verzeichnis **hbaseapp\\src\\main\\hava\\com\\microsoft\\examples** eine Datei mit dem Namen **DeleteTable.java**. Fügen Sie Folgendes als Inhalt der Datei hinzu:
+6. Erstellen Sie im Verzeichnis **hbaseapp\src\main\hava\com\microsoft\examples** eine Datei mit dem Namen **DeleteTable.java**. Fügen Sie den folgenden Code als Inhalt dieser Datei hinzu:
    
         package com.microsoft.examples;
         import java.io.IOException;
@@ -351,25 +352,25 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           }
         }
    
-    Diese Klasse dient zum Aufräumen dieses Beispiels. Sie deaktiviert die von der Klasse **CreateTable** erstellte Tabelle und verwirft sie.
+    Diese Klasse dient zum Aufräumen dieses Beispiels. Sie deaktiviert die von der **CreateTable**-Klasse erstellte Tabelle und verwirft sie.
 7. Speichern Sie die Datei **DeleteTable.java**.
 
-## Erstellen und Packen der Anwendung
+## <a name="build-and-package-the-application"></a>Erstellen und Packen der Anwendung
 1. Öffnen Sie eine Eingabeaufforderung, und ändern Sie das Verzeichnis in **hbaseapp**.
 2. Verwenden Sie den folgenden Befehl, um eine JAR-Datei zu erstellen, die die Anwendung enthält:
    
         mvn clean package
    
     Damit werden etwaige frühere Erstellungsartefakte entfernt, alle noch nicht installierten Abhängigkeiten heruntergeladen und dann die Anwendung erstellt und gepackt.
-3. Nachdem dieser Befehl ausgeführt wurde, enthält das Verzeichnis **hbaseapp\\target** eine Datei namens **hbaseapp-1.0-SNAPSHOT.jar**.
+3. Nachdem dieser Befehl ausgeführt wurde, enthält das Verzeichnis **hbaseapp\target** eine Datei namens **hbaseapp-1.0-SNAPSHOT.jar**.
    
    > [!NOTE]
    > Die Datei **hbaseapp-1.0-SNAPSHOT.jar** ist ein Uberjar (manchmal auch Fatjar genannt) mit allen Abhängigkeiten, die für das Ausführen der Anwendung erforderlich sind.
    > 
    > 
 
-## Hochladen der JAR-Datei und Starten eines Auftrags
-Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen, wie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md) beschrieben. Für die folgenden Schritte wird Azure PowerShell verwendet.
+## <a name="upload-the-jar-file-and-start-a-job"></a>Hochladen der JAR-Datei und Starten eines Auftrags
+Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen, wie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md)beschrieben. Für die folgenden Schritte wird Azure PowerShell verwendet.
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -581,20 +582,20 @@ Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen,
    
     Diese Datei enthält zwei Module:
    
-   * **Add-HDInsightFile** – wird für das Hochladen von Dateien zu HDInsight verwendet
-   * **Start-HBaseExample** – wird für das Ausführen der bereits erstellter Klassen verwendet
+   * **Add-HDInsightFile** wird für das Hochladen von Dateien zu HDInsight verwendet.
+   * **Start-HBaseExample** wird für das Ausführen der bereits erstellten Klassen verwendet.
 2. Speichern Sie die Datei **hbase-runner.psm1**.
-3. Öffnen Sie ein neues Azure PowerShell-Fenster, ändern Sie die Verzeichnis auf **hbaseapp** und führen Sie dann den folgenden Befehl aus.
+3. Öffnen Sie ein neues Azure PowerShell-Fenster, ändern Sie das Verzeichnis in **hbaseapp**, und führen Sie dann den folgenden Befehl aus:
    
         PS C:\ Import-Module c:\path\to\hbase-runner.psm1
    
-    Ändern Sie den Pfad auf den Speicherort der früher erstellten Datei **hbase-runner.psm1**. Dadurch wird das Modul für diese Azure PowerShell-Sitzung registriert.
-4. Verwenden Sie den folgenden Befehl zu Hochladen von **hbaseapp-1.0-SNAPSHOT.jar** zum HDInsight-Cluster.
+    Legen Sie den Pfad auf den Speicherort der früher erstellten Datei **hbase-runner.psm1** fest. Dadurch wird das Modul für diese Azure PowerShell-Sitzung registriert.
+4. Verwenden Sie den folgenden Befehl zu Hochladen von **hbaseapp-1.0-SNAPSHOT.jar** in den HDInsight-Cluster.
    
         Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
    
     Ersetzen Sie **hdinsightclustername** durch den Namen Ihres HDInsight-Clusters. Der Befehl lädt dann **hbaseapp-1.0-SNAPSHOT.jar** in **example/jars** im Hauptspeicher Ihres HDInsight-Clusters hoch.
-5. Verwenden Sie nach dem Hochladen der Dateien folgenden Code, um eine neue Tabelle mithilfe von **hbaseapp** zu erstellen.
+5. Verwenden Sie nach dem Hochladen der Dateien folgenden Code, um eine Tabelle mithilfe von **hbaseapp** zu erstellen.
    
         Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
    
@@ -607,7 +608,7 @@ Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen,
    
     Ersetzen Sie **hdinsightclustername** durch den Namen Ihres HDInsight-Clusters.
    
-    Dieser Befehl verwendet die Klasse **SearchByEmail** Klasse, um nach allen Zeilen zu suchen, in denen die Spaltenfamilie **contactinformation** und die Spalte **email** die Zeichenfolge **contoso.com** enthält. Daraufhin sollte Sie folgende Ergebnisse erhalten:
+    Dieser Befehl verwendet die **SearchByEmail**-Klasse, um nach allen Zeilen zu suchen, in denen die Spaltenfamilie **contactinformation** und die Spalte **email** die Zeichenfolge **contoso.com** enthalten. Daraufhin sollte Sie folgende Ergebnisse erhalten:
    
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -616,17 +617,22 @@ Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen,
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
    
-    Wird **fabrikam.com** als `-emailRegex`-Wert verwendet, werden Benutzer zurückgegeben, die **fabrikam.com** im Feld "E-Mail" aufweisen. Da diese Suche mithilfe eines auf regulären Ausdrücken basierenden Filters implementiert wurde, können Sie auch reguläre Ausdrücke wie etwa **^r** eingeben, womit Einträge zurückgegeben werden, bei denen die E-Mail-Adresse mit dem Buchstaben "r" beginnt.
+    Wenn **fabrikam.com** als `-emailRegex`-Wert verwendet wird, werden Benutzer zurückgegeben, die **fabrikam.com** im Feld „E-Mail“ enthalten. Da diese Suche mithilfe eines auf regulären Ausdrücken basierenden Filters implementiert wurde, können Sie auch reguläre Ausdrücke wie etwa **^r** eingeben, womit Einträge zurückgegeben werden, bei denen die E-Mail-Adresse mit dem Buchstaben „r“ beginnt.
 
-## Löschen der Tabelle
-Wenn Sie mit dem Beispiel fertig sind, verwenden Sie den folgenden Befehl aus der Azure PowerShell-Sitzung zum Löschen der Tabelle **people**, die in diesem Beispiel verwendet wurde.
+## <a name="delete-the-table"></a>Löschen der Tabelle
+Wenn Sie mit dem Beispiel fertig sind, verwenden Sie den folgenden Befehl aus der Azure PowerShell-Sitzung zum Löschen der Tabelle **people**, die in diesem Beispiel verwendet wurde:
 
     Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName hdinsightclustername
 
 Ersetzen Sie **hdinsightclustername** durch den Namen Ihres HDInsight-Clusters.
 
-## Problembehandlung
-### Keine oder unerwartete Ergebnisse bei Verwenden von "Start-HBaseExample"
-Verwenden Sie den Parameter `-showErr`, wenn Sie den Standardfehler (STDERR) sehen möchten, der während der Ausführung des Auftrags erzeugt wurde.
+## <a name="troubleshooting"></a>Problembehandlung
+### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Keine oder unerwartete Ergebnisse bei Verwenden von "Start-HBaseExample"
+Verwenden Sie den Parameter `-showErr` , wenn Sie den Standardfehler (STDERR) sehen möchten, der während der Ausführung des Auftrags erzeugt wurde.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,33 +1,37 @@
 ---
 title: DocumentDB-Skalierung und -Leistung | Microsoft Docs
-description: Erfahren Sie, wie Sie Skalierungs- und Leistungstests mit Azure DocumentDB durchführen.
+description: "Erfahren Sie, wie Sie Skalierungs- und Leistungstests mit Azure DocumentDB durchführen."
 keywords: Leistungstests
 services: documentdb
 author: arramac
 manager: jhubbard
-editor: ''
-documentationcenter: ''
-
+editor: 
+documentationcenter: 
+ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2016
+ms.date: 10/27/2016
 ms.author: arramac
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f9acb44fb6b6fac41da4dc05745a68066b0477fb
+
 
 ---
-# Leistungs- und Skalierungstests mit Azure DocumentDB
-Leistungs- und Skalierungstests sind ein wichtiger Schritt bei der Entwicklung von Anwendungen. Die Datenbankebene hat bei vielen Anwendungen einen erheblichen Einfluss auf die allgemeine Leistung und Skalierbarkeit und ist daher eine wichtige Komponente von Leistungstests. [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) wurde speziell für die elastische Skalierung und vorhersagbare Leistung entwickelt und eignet sich deshalb hervorragend für Anwendungen, die eine leistungsstarke Datenbankebene benötigen.
+# <a name="performance-and-scale-testing-with-azure-documentdb"></a>Leistungs- und Skalierungstests mit Azure DocumentDB
+Leistungs- und Skalierungstests sind ein wichtiger Schritt bei der Entwicklung von Anwendungen. Die Datenbankebene hat bei vielen Anwendungen einen erheblichen Einfluss auf die allgemeine Leistung und Skalierbarkeit und ist daher eine wichtige Komponente von Leistungstests. [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) wurde speziell für die elastische Skalierung und vorhersagbare Leistung entwickelt und eignet sich deshalb hervorragend für Anwendungen, die eine leistungsstarke Datenbankebene benötigen. 
 
 Dieser Artikel ist eine Referenz für Entwickler, die Leistungstestsammlungen für ihre DocumentDB-Workloads implementieren oder DocumentDB für leistungsstarke Anwendungsszenarien auswerten. Er konzentriert sich hauptsächlich auf isolierte Leistungstests der Datenbank, enthält jedoch auch bewährte Methoden für Produktionsanwendungen.
 
-Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
+Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:   
 
-* Wo kann ich eine Beispiel-.NET-Clientanwendung für Leistungstests von Azure DocumentDB finden?
+* Wo kann ich eine Beispiel-.NET-Clientanwendung für Leistungstests von Azure DocumentDB finden? 
 * Wie erreiche ich über meine Clientanwendung hohe Durchsätze mit Azure DocumentDB?
 
-Sie können das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren zu beginnen.
+Sie können das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren zu beginnen. 
 
 > [!NOTE]
 > Das Ziel dieser Anwendung ist die Veranschaulichung von bewährten Methoden, um mit einer geringeren Anzahl von Clientcomputern eine bessere Leistung für DocumentDB zu erzielen. Diese Anwendung soll nicht die Spitzenleistung des Diensts zeigen – dieser lässt sich grenzenlos skalieren.
@@ -36,7 +40,7 @@ Sie können das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung]
 
 Die clientseitigen Konfigurationsoptionen zur Verbesserung der Leistung von DocumentDB finden Sie unter [Tipps zur Leistungssteigerung für DocumentDB](documentdb-performance-tips.md).
 
-## Ausführen der Anwendung zur Leistungsüberprüfung
+## <a name="run-the-performance-testing-application"></a>Ausführen der Anwendung zur Leistungsüberprüfung
 Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompilieren und auszuführen, wie in den folgenden Schritten beschrieben. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Clientanwendungen ähneln.
 
 **Schritt 1:** Laden Sie das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie eine Verzweigung des GitHub-Repositorys.
@@ -44,7 +48,7 @@ Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompiliere
 **Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für „EndpointUrl“, „AuthorizationKey“, „CollectionThroughput“ und „DocumentTemplate“ (optional).
 
 > [!NOTE]
-> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/), um die Kosten pro Sammlung abschätzen zu können. DocumentDB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer DocumentDB-Sammlungen nach dem Testen löschen oder verringern.
+> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/documentdb/) , um die Kosten pro Sammlung abschätzen zu können. DocumentDB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer DocumentDB-Sammlungen nach dem Testen löschen oder verringern.
 > 
 > 
 
@@ -94,11 +98,11 @@ Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompiliere
     DocumentDBBenchmark completed successfully.
 
 
-**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) muss mindestens dem bereitgestellten Durchsatz der Sammlung entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von „DegreeOfParallelism“ in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Clientanwendung seinen Höchstwert erreicht, hilft Ihnen das Starten mehrerer App-Instanzen auf demselben oder auf verschiedenen Computern dabei, den bereitgestellten Grenzwert auf den verschiedenen Instanzen zu erreichen. Wenn Sie bei diesem Schritt Hilfe benötigen, schreiben Sie bitte eine E-Mail an askdocdb@microsoft.com, oder füllen Sie ein Support-Ticket aus.
+**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) muss mindestens dem bereitgestellten Durchsatz der Sammlung entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von „DegreeOfParallelism“ in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Clientanwendung seinen Höchstwert erreicht, hilft Ihnen das Starten mehrerer App-Instanzen auf demselben oder auf verschiedenen Computern dabei, den bereitgestellten Grenzwert auf den verschiedenen Instanzen zu erreichen. Wenn Sie bei diesem Schritt Hilfe benötigen, schreiben Sie bitte eine E-Mail an askdocdb@microsoft.com , oder füllen Sie ein Support-Ticket aus.
 
 Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](documentdb-indexing-policies.md) und [Konsistenzebenen](documentdb-consistency-levels.md) ausprobieren, um die Auswirkungen auf Durchsatz und Latenz zu ermitteln. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer .NET-Konsolenanwendung die Leistung und Skalierung mit DocumentDB testen können. Weitere Informationen zu der Arbeit mit DocumentDB finden Sie unter den folgenden Links.
 
 * [Beispiel zu Leistungstests in DocumentDB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
@@ -109,4 +113,9 @@ In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer .NET-Konsolenanwend
 * [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB-Blog zu Leistungstipps](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

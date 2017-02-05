@@ -1,12 +1,12 @@
 ---
-title: Entwicklerhandbuch zu Schlüsseltresor | Microsoft Docs
-description: 'Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten. '
+title: "Entwicklerhandbuch zu Schlüsseltresor | Microsoft Docs"
+description: "Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten. "
 services: key-vault
-documentationcenter: ''
+documentationcenter: 
 author: BrucePerlerMS
 manager: mbaldwin
 editor: bruceper
-
+ms.assetid: b2b1bd28-e149-4d69-b08b-97f6c50ebe30
 ms.service: key-vault
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2016
 ms.author: bruceper
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3b4664cdfebad63307c0e964527fc5ecf6500348
+
 
 ---
-# <a name="azure-key-vault-developer's-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
+# <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertrauliche Daten zugreifen:
 
 * Schlüssel und geheime Schlüssel werden geschützt, ohne dass Sie den Code selbst schreiben müssen, und können auf einfache Weise in Ihren Anwendungen verwendet werden.
@@ -102,6 +106,9 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 * [Key Vault Blog](http://aka.ms/kvblog)
 * [Key Vault Forum](http://aka.ms/kvforum)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

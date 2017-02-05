@@ -1,12 +1,12 @@
 ---
-title: Einleitung zu U-SQL-Katalogen für Azure Data Lake Analytics | Microsoft Docs
-description: Einleitung zu U-SQL-Katalogen für Azure Data Lake Analytics
+title: "Einleitung zu U-SQL-Katalogen für Azure Data Lake Analytics | Microsoft Docs"
+description: "Einleitung zu U-SQL-Katalogen für Azure Data Lake Analytics"
 services: data-lake-analytics
-documentationcenter: ''
+documentationcenter: 
 author: edmacauley
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 55fef96f-e941-4d09-af5e-dd7c88c502b2
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: edmaca
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 15b22d577343667c9232b3394cf64bc307ccd777
+
 
 ---
-# Verwenden des U-SQL-Katalogs
+# <a name="use-u-sql-catalog"></a>Verwenden des U-SQL-Katalogs
 Der U-SQL-Katalog wird zum Strukturieren von Daten und Code verwendet, damit diese von U-SQL-Skripts gemeinsam genutzt werden können. Der Katalog ermöglicht die höchstmögliche Leistung mit Daten in Azure Data Lake.
 
 Jedes Azure Data Lake Analytics-Konto ist genau einem U-SQL-Katalog zugeordnet. Der U-SQL-Katalog kann nicht gelöscht werden. Derzeit können U-SQL-Kataloge nicht von mehreren Data Lake-Speicherkonten gemeinsam verwendet werden.
 
-Jeder U-SQL-Katalog enthält eine Datenbank namens **Master**. Die Masterdatenbank kann nicht gelöscht werden. Jeder U-SQL-Katalog kann zusätzliche Datenbanken enthalten.
+Jeder U-SQL-Katalog enthält eine Datenbank namens **Master**. Die Masterdatenbank kann nicht gelöscht werden.  Jeder U-SQL-Katalog kann zusätzliche Datenbanken enthalten.
 
 U-SQL-Datenbanken enthalten:
 
@@ -30,23 +34,23 @@ U-SQL-Datenbanken enthalten:
 * Tabellen – nutzen Daten in mehreren U-SQL-Skripts gemeinsam.
 * Schemas – nutzen Tabellenschemas in mehreren U-SQL-Skripts gemeinsam.
 
-## Verwalten von Katalogen
+## <a name="manage-catalogs"></a>Verwalten von Katalogen
 Jedes Azure Data Lake Analytics-Konto verfügt über ein zugehöriges Azure Data Lake-Speicherkonto. Dieses Data Lake-Speicherkonto wird als Data Lake-Standardspeicherkonto bezeichnet. Der U-SQL-Katalog wird im Data Lake-Standardspeicherkonto im Ordner „/catalog“ gespeichert. Löschen Sie keine Dateien im Ordner „/catalog“.
 
-### Verwenden des Azure-Portals
-Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics mithilfe des Portals](data-lake-analytics-use-portal.md#view-u-sql-catalog)
+### <a name="use-azure-portal"></a>Verwenden des Azure-Portals
+Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics mithilfe des Portals](data-lake-analytics-manage-use-portal.md#view-u-sql-catalog).
 
-### Verwenden der Data Lake-Tools für Visual Studio.
-Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen. Weitere Informationen zu den Tools finden Sie unter [Verwenden der Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+### <a name="use-data-lake-tools-for-visual-studio"></a>Verwenden der Data Lake-Tools für Visual Studio.
+Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.  Weitere Informationen zu den Tools finden Sie unter [Verwenden der Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
 
 **So verwalten Sie den Katalog**
 
 1. Öffnen Sie Visual Studio, und stellen Sie eine Verbindung mit Azure her. Die Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure](data-lake-analytics-data-lake-tools-get-started.md#connect-to-azure).
 2. Öffnen Sie den **Server-Explorer**, indem Sie **STRG+ALT+S** drücken.
-3. Erweitern Sie im **Server-Explorer** nacheinander die Optionen **Azure**, **Data Lake Analytics**, dann Ihr Data Lake Analytics-Konto, die Option **Databases** und schließlich **master**.
+3. Erweitern Sie im **Server-Explorer** nacheinander die Optionen **Azure**, **Data Lake Analytics**, Ihr Data Lake Analytics-Konto, die Option **Datenbanken** und schließlich **master**.
 
-    - Zum Hinzufügen einer neuen Datenbank klicken Sie mit rechten Maustaste auf **Database**, und klicken Sie dann auf **Create Database**.
-    - Zum Hinzufügen einer neuen Assembly klicken Sie mit der rechten Maustaste auf **Assemblys**, und klicken Sie dann auf **Register Assembly**.
+    - Zum Hinzufügen einer neuen Datenbank klicken Sie mit rechten Maustaste auf **Datenbank**, und klicken Sie dann auf **Datenbank erstellen**.
+    - Zum Hinzufügen einer neuen Assembly klicken Sie mit der rechten Maustaste auf **Assemblys**, und klicken Sie dann auf **Assembly registrieren**.
     - Zum Hinzufügen eines neuen Schemas klicken Sie mit der rechten Maustaste auf **Schemas**, und klicken Sie dann auf „Schema erstellen“.
     - Zum Hinzufügen einer neuen Tabelle klicken Sie mit der rechten Maustaste auf **Tabellen**, und klicken Sie dann auf „Tabelle erstellen“.
     - Informationen zum Hinzufügen einer neuen Tabellenwertfunktion finden Sie unter [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md).
@@ -54,7 +58,7 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
 
 ![Durchsuchen von Visual Studio U-SQL-Katalogen](./media/data-lake-analytics-use-u-sql-catalog/data-lake-analytics-browse-catalogs.png)
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 * Erste Schritte
   
   * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
@@ -65,16 +69,21 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
 * U-SQL und Entwicklung
   
   * [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md)
-  * [Verwenden von U-SQL-Fensterfunktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
-  * [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-Analytics-u-sql-user-defined-operators.md)
+  * [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
+  * [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 * Verwaltung
   
-  * [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-use-portal.md)
-  * [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-use-powershell.md)
-  * [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+  * [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
+  * [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
+  * [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 * Komplettes Lernprogramm
   
   * [Verwenden interaktiver Lernprogramme zu Azure Data Lake Analytics](data-lake-analytics-use-interactive-tutorials.md)
   * [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

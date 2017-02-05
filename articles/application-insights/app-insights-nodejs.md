@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fb80168b38be88ab18952569e6b6f9bcb53d473a
+ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
+ms.openlocfilehash: fd089f0cc5c23dcddb392df55c65907519f59248
 
 
 ---
 # <a name="add-application-insights-sdk-to-monitor-your-nodejs-app"></a>Hinzufügen des Application Insights SDK zur Überwachung der Node.js-App
-*Application Insights befindet sich in der Vorschau.*
 
-[Visual Studio Application Insights](app-insights-overview.md) überwacht Ihre Live-Anwendung. So können Sie [Leistungsprobleme und -ausnahmen erkennen und diagnostizieren](app-insights-detect-triage-diagnose.md) und zudem [ermitteln, wie Ihre App verwendet wird](app-insights-overview-usage.md). Dies funktioniert für Apps, die auf den eigenen lokalen IIS-Servern oder Azure-VMs gehostet werden, sowie für Azure-Web-Apps.
+
+[Azure Application Insights](app-insights-overview.md) überwacht Ihre Live-Anwendung. So können Sie [Leistungsprobleme und -ausnahmen erkennen und diagnostizieren](app-insights-detect-triage-diagnose.md) und zudem [ermitteln, wie Ihre App verwendet wird](app-insights-overview-usage.md). Dies funktioniert für Apps, die auf den eigenen lokalen IIS-Servern oder Azure-VMs gehostet werden, sowie für Azure-Web-Apps.
 
 Das SDK ermöglicht die automatische Erfassung der Raten eingehender HTTP-Anforderungen sowie von Antworten, Leistungsindikatoren (CPU, Speicher, RPS) und Ausnahmefehlern. Darüber hinaus können Sie benutzerdefinierte Aufrufe zum Nachverfolgen von Abhängigkeiten, Metriken und anderen Ereignisse hinzufügen.
 
@@ -95,7 +95,7 @@ Stellen Sie jetzt Ihre Anwendung für IIS bereit, und beobachten Sie, wie die Da
 Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
 
 ## <a name="customized-usage"></a>Benutzerdefinierte Verwendung
-### <a name="disabling-autocollection"></a>Deaktivieren der automatischen Erfassung
+### <a name="disabling-auto-collection"></a>Deaktivieren der automatischen Erfassung
 ```javascript
 import appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>")
@@ -200,6 +200,6 @@ server.on("listening", () => {
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

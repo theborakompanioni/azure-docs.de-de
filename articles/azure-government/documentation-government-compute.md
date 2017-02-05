@@ -1,13 +1,13 @@
 ---
-title: Dokumentation zu Azure Government | Microsoft Docs
-description: Dies bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government
+title: "Azure Government – Compute | Microsoft Docs"
+description: "Dies bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government"
 services: Azure-Government
 cloud: gov
-documentationcenter: ''
+documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: ''
-
+editor: 
+ms.assetid: fb11f60c-5a70-46a9-82a0-abb2a4f4239b
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: azure-government
 ms.date: 09/29/2016
 ms.author: ryansoc
+translationtype: Human Translation
+ms.sourcegitcommit: a0374d6aeae42641e906a7f8e39bfc58eaacf096
+ms.openlocfilehash: b351229c474e84a9e385d2ed81f2eb73267d9fd1
+
 
 ---
 # <a name="azure-government-compute"></a>Azure Government Compute
 ## <a name="virtual-machines"></a>Virtual Machines
-Ausführliche Informationen zu diesem Dienst und seiner Verwendungsweise finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md).
+Ausführliche Informationen zu diesem Dienst und seiner Verwendungsweise finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="variations"></a>Variationen
 In Azure Government sind die folgenden VM-SKUs allgemein verfügbar:
@@ -43,6 +47,9 @@ Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Gove
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

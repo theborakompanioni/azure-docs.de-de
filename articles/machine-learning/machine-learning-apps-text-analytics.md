@@ -1,28 +1,32 @@
 ---
 title: 'Machine Learning APIs: Text Analytics | Microsoft Docs'
-description: Mit den Textanalyse-APIs von Microsoft Machine Learning kann unstrukturierter Text für Aufgaben wie Stimmungsanalyse, Schlüsselausdruckextraktion, Sprach- und Themenerkennung analysiert werden.
+description: "Mit den Textanalyse-APIs von Microsoft Machine Learning kann unstrukturierter Text für Aufgaben wie Stimmungsanalyse, Schlüsselausdruckextraktion, Sprach- und Themenerkennung analysiert werden."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: onewth
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 5b60694e-5521-4e4d-bf6a-1a92fdf94b65
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2016
+ms.date: 01/09/2017
 ms.author: onewth
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f4389705a81b531bd706cbabc0b4c3b171febd5f
+
 
 ---
-# Machine Learning APIs: Textanalyse für Stimmungsanalyse, Schlüsselausdruckextraktion, Sprach- und Themenerkennung
+# <a name="machine-learning-apis-text-analytics-for-sentiment-key-phrase-extraction-language-detection-and-topic-detection"></a>Machine Learning APIs: Textanalyse für Stimmungsanalyse, Schlüsselausdruckextraktion, Sprach- und Themenerkennung
 > [!NOTE]
 > Dieses Handbuch bezieht sich auf Version 1 der API. Informationen zu Version 2 [**finden Sie in diesem Dokument**](../cognitive-services/cognitive-services-text-analytics-quick-start.md). Version 2 ist jetzt die bevorzugte Version dieser API.
 > 
 > 
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 Die Text Analytics-API ist eine Zusammenstellung von [Webdiensten](https://datamarket.azure.com/dataset/amla/text-analytics) zur Textanalyse, die mit Azure Machine Learning erstellt wurden. Die API kann verwendet werden, um unstrukturierten Text für Aufgaben wie Stimmungsanalyse, Schlüsselausdruckextraktion, Sprach- und Themenerkennung zu analysieren. Zur Verwendung dieser API sind keine Trainingsdaten erforderlich. Geben Sie einfach Ihre Textdaten ein. Diese API greift auf erweiterte Techniken der natürlichen Sprachverarbeitung zurück, um bestmögliche Vorhersagen zu treffen.
 
 Auf unserer [Demowebsite](https://text-analytics-demo.azurewebsites.net/) können Sie Textanalysen in Aktion sehen. Hier finden Sie auch [Beispiele](https://text-analytics-demo.azurewebsites.net/Home/SampleCode) in C# und Python zum Implementieren von Textanalysen.
@@ -30,21 +34,21 @@ Auf unserer [Demowebsite](https://text-analytics-demo.azurewebsites.net/) könne
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 - - -
-## Stimmungsanalyse
+## <a name="sentiment-analysis"></a>Stimmungsanalyse
 Die API gibt einen numerischen Wert zwischen 0 und 1 zurück. Werte nahe 1 zeigen eine positive Absicht an, Werte nahe 0 zeigen eine negative Absicht an. Mithilfe von Klassifizierungstechniken wird eine Absichtsbewertung generiert. Die Eingabefunktionen für das Klassifizierungsmodul schließen N-Gramme, aus Satzteil-Tags generierte Funktionen sowie Worteinbettung ein. Englisch ist derzeit die einzige unterstützte Sprache.
 
-## Schlüsselwortextraktion
+## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 Die API gibt eine Liste von Zeichenfolgen zurück, die die wichtigsten Themen im Eingabetext angeben. Wir nutzen Methoden des ausgereiften Toolkits für natürliche Sprachverarbeitung von Microsoft Office. Englisch ist derzeit die einzige unterstützte Sprache.
 
-## Spracherkennung
-Die API gibt die erkannte Sprache und einen numerischen Wert von 0 bis 1 zurück. Werte nahe 1 stehen für 100 %-ige Sicherheit, dass die identifizierte Sprache stimmt. Insgesamt werden 120 Sprachen unterstützt.
+## <a name="language-detection"></a>Spracherkennung
+Die API gibt die erkannte Sprache und einen numerischen Wert von 0 bis 1 zurück. Werte nahe 1 stehen für 100 %-ige Sicherheit, dass die identifizierte Sprache stimmt. Insgesamt werden 120 Sprachen unterstützt.
 
-## Themenerkennung
-Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Dieser API müssen mindestens 100 Datensätze übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen. Beachten Sie, dass diese API pro übermittelten Textdatensatz 1 Transaktion berechnet. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z. B. Kritiken und Feedback von Benutzern.
+## <a name="topic-detection"></a>Themenerkennung
+Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Dieser API müssen mindestens 100 Datensätze übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen. Beachten Sie, dass diese API pro übermittelten Textdatensatz 1 Transaktion berechnet. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z. B. Kritiken und Feedback von Benutzern.
 
 - - -
-## API-Definition
-### Header
+## <a name="api-definition"></a>API-Definition
+### <a name="headers"></a>Header
 Stellen Sie sicher, dass Sie die richtigen Header in Ihre Anforderung einbeziehen, was so erfolgen muss:
 
     Authorization: Basic <creds>
@@ -55,9 +59,9 @@ Stellen Sie sicher, dass Sie die richtigen Header in Ihre Anforderung einbeziehe
 Sie finden den Schlüssel Ihres Kontos in [Azure Data Market](https://datamarket.azure.com/account/keys). Beachten Sie, dass derzeit nur JSON für Eingabe- und Ausgabeformate akzeptiert wird. XML wird nicht unterstützt.
 
 - - -
-## APIs für einzelne Antworten
-### GetSentiment
-**URL**
+## <a name="single-response-apis"></a>APIs für einzelne Antworten
+### <a name="getsentiment"></a>GetSentiment
+**URL**    
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentiment
 
@@ -75,7 +79,7 @@ Daraufhin wird eine Antwort wie die folgende zurückgegeben:
     }
 
 - - -
-### GetKeyPhrases
+### <a name="getkeyphrases"></a>GetKeyPhrases
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrases
@@ -99,14 +103,14 @@ Daraufhin wird eine Antwort wie die folgende zurückgegeben:
     }
 
 - - -
-### GetLanguage
+### <a name="getlanguage"></a>GetLanguage
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguage
 
 **Beispiel für eine Anforderung**
 
-Im nachstehenden GET-Aufruf fordern wir die Stimmung für die Schlüsselausdrücke im Text *Hello World* an.
+Im nachstehenden GET-Aufruf fordern wir die Stimmung für die Schlüsselausdrücke im Text *Hello World*
 
     GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguages?
     Text=Hello+World
@@ -127,13 +131,13 @@ Daraufhin wird eine Antwort wie die folgende zurückgegeben:
 `NumberOfLanguagesToDetect` ist ein optionaler Parameter. Der Standardwert ist 1.
 
 - - -
-## Batch-APIs
+## <a name="batch-apis"></a>Batch-APIs
 Mit dem Text Analytics-Dienst können Sie Stimmung- und Schlüsselphrasen-Extraktionen im Batchmodus durchführen. Beachten Sie, dass jeder der Datensätze als eine Transaktion gezählt wird. Wenn Sie also beispielsweise bei einem Aufruf die Stimmung für 1000 Datensätze anfordern, fallen 1000 Transaktionen an.
 
-Die in das System eingegebenen IDs sind die vom System zurückgegeben IDs. Der Webdienst prüft nicht, ob diese IDs eindeutig sind. Es ist die Verantwortung des Aufrufers, deren Eindeutigkeit zu prüfen.
+Die in das System eingegebenen IDs sind die vom System zurückgegeben IDs. Der Webdienst prüft nicht, ob diese IDs eindeutig sind. Es ist die Verantwortung des Aufrufers, deren Eindeutigkeit zu prüfen. 
 
-### GetSentimentBatch
-**URL**
+### <a name="getsentimentbatch"></a>GetSentimentBatch
+**URL**    
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentimentBatch
 
@@ -167,14 +171,14 @@ In der folgenden Antwort erhalten Sie die Bewertungsliste im Zusammenhang mit Ih
 
 
 - - -
-### GetKeyPhrasesBatch
+### <a name="getkeyphrasesbatch"></a>GetKeyPhrasesBatch
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrasesBatch
 
 **Beispiel für eine Anforderung**
 
-Im folgenden Beispiel fordern wir die Liste der Stimmungen für die Schlüsselausdrücke in den folgenden Texten an:
+Im folgenden Beispiel fordern wir die Liste der Stimmungen für die Schlüsselausdrücke in den folgenden Texten an: 
 
 * „It was a wonderful hotel to stay at, with unique decor and friendly staff“ (Das Hotel war wunderbar mit einem angenehmen Ambiente und sehr freundlichen Mitarbeitern)
 * „It was an amazing build conference, with very interesting talks“ (Es war eine fantastische Build-Konferenz mit sehr interessanten Gesprächen)
@@ -205,9 +209,8 @@ In der folgenden Antwort erhalten Sie die Schlüsselwortliste im Zusammenhang mi
         "Errors":[]
     }
 
----
-
-### GetLanguageBatch
+- - -
+### <a name="getlanguagebatch"></a>GetLanguageBatch
 
 Im folgenden POST-Aufruf fordern wir die Spracherkennung für zwei Texteingaben an:
 
@@ -245,14 +248,14 @@ Dies ergibt die folgende Antwort, wobei Englisch in der ersten Eingabe und Franz
        }],
        "Errors": []
     }
----
 
-## Themenerkennung-APIs
+- - -
+## <a name="topic-detection-apis"></a>Themenerkennung-APIs
 Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Beachten Sie, dass diese API pro übermittelten Textdatensatz 1 Transaktion berechnet.
 
-Dieser API müssen mindestens 100 Datensätze übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen.
+Dieser API müssen mindestens 100 Datensätze übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen.
 
-### Themen – Auftrag senden
+### <a name="topics--submit-job"></a>Themen – Auftrag senden
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection
@@ -281,9 +284,9 @@ In der folgenden Antwort erhalten Sie die „JobId“ für den gesendeten Auftra
         "JobId":"<JobId>"
     }
 
-Eine Liste von Ausdrücken, die aus einem oder mehreren Wörtern bestehen, die nicht als Themen zurückgegeben werden sollen. Sie kann verwendet werden, um sehr allgemeine Themen herauszufiltern. In einem Dataset zu Hotelkritiken könnten z. B. „Hotel“ und „Hostel“ sinnvolle Stoppausdrücke sein.
+Eine Liste von Ausdrücken, die aus einem oder mehreren Wörtern bestehen, die nicht als Themen zurückgegeben werden sollen. Sie kann verwendet werden, um sehr allgemeine Themen herauszufiltern. In einem Dataset zu Hotelkritiken könnten z. B. „Hotel“ und „Hostel“ sinnvolle Stoppausdrücke sein.  
 
-### Themen – Abrufen von Auftragsergebnissen
+### <a name="topics--poll-for-job-results"></a>Themen – Abrufen von Auftragsergebnissen
 **URL**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult
@@ -358,4 +361,9 @@ Die Eigenschaften für jeden Teil der Antwort lauten:
 | TopicId |Die Themen-ID, der der Datensatz zugewiesen wurde. |
 | Distance |Zuverlässigkeit, dass der Datensatz zu dem Thema gehört. Je näher „Distance“ an 0 liegt, desto höher ist die Zuverlässigkeit. |
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

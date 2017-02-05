@@ -1,14 +1,14 @@
 ---
-title: Verstehen von Hadoop mithilfe einer Hadoop-Sandbox | Microsoft Docs
-description: 'Um sich mit dem Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. '
+title: Verstehen von Hadoop mithilfe einer Hadoop-Sandbox | Microsoft-Dokumentation
+description: "Um sich mit dem Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. "
 keywords: hadoop emulator,hadoop sandbox
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
 author: nitinme
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
-
+ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -16,17 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 74d50642911d59d13bed27324c3fca1867f2fa2d
+
 
 ---
-# Erste Schritte im Hadoop-Ökosystem mit einer Hadoop-Sandbox auf einem virtuellen Computer
+# <a name="get-started-in-the-hadoop-ecosystem-with-a-hadoop-sandbox-on-a-virtual-machine"></a>Erste Schritte im Hadoop-Ökosystem mit einer Hadoop-Sandbox auf einem virtuellen Computer
 Hier erfahren Sie, wie Sie die Hadoop-Sandbox von Hortonworks auf einem virtuellen Computer installieren, um sich mit dem Hadoop-Ökosystem vertraut zu machen. Die Sandbox bietet eine lokale Entwicklungsumgebung, in der Sie Hadoop, Hadoop Distributed File System (HDFS) und die Übermittlung von Aufträgen kennenlernen.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 * [Oracle VirtualBox](https://www.virtualbox.org/)
 
 Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure verwenden und einen HDInsight-Cluster erstellen. Weitere Informationen für Ihren Einstieg finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
-## Herunterladen und Installieren des virtuellen Computers
+## <a name="download-and-install-the-virtual-machine"></a>Herunterladen und Installieren des virtuellen Computers
 1. Wählen Sie unter [http://hortonworks.com/downloads/#sandbox](http://hortonworks.com/downloads/#sandbox) für „HDP 2.4 on Hortonworks Sandbox“ die Option **DOWNLOAD FOR VIRTUALBOX** (FÜR VIRTUALBOX HERUNTERLADEN) aus. Vor Beginn des Downloads werden Sie aufgefordert, sich bei Hortonworks zu registrieren.
    
     ![Abbildung des Links zum Herunterladen von Hortonworks Sandbox für VirtualBox](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
@@ -34,17 +38,17 @@ Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure 
    
     ![Anzeigen des Installationshandbuchs](./media/hdinsight-hadoop-emulator-get-started/view-install-guide.png)
 
-## Starten des virtuellen Computers
-1. Starten Sie VirtualBox. Wählen Sie „Hortonworks Sandbox“ > **Start** und anschließend **Normal Start** (Normaler Start) aus.
+## <a name="start-the-virtual-machine"></a>Starten des virtuellen Computers
+1. Starten Sie VirtualBox. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus.
    
     ![Normaler Start](./media/hdinsight-hadoop-emulator-get-started/normal-start.png)
-2. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel http://127.0.0.1:8888).
+2. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel „http://127.0.0.1:8888“).
 
-## Festlegen von Kennwörtern
+## <a name="set-passwords"></a>Festlegen von Kennwörtern
 1. Wählen Sie im Schritt **Get Started** (Erste Schritte) der Seite „Hortonworks Sandbox“ die Option **View Advanced Options** (Erweiterte Optionen anzeigen) aus. Verwenden Sie die Informationen auf dieser Seite, um sich mittels SSH bei der Sandbox anzumelden. Verwenden Sie den angegebenen Namen und das angegebene Kennwort.
    
    > [!NOTE]
-   > Sollte kein SSH-Client installiert sein, können Sie die webbasierte SSH verwenden, die vom virtuellen Computer unter „\_\_http://localhost:4200/__“ bereitgestellt wird.
+   > Sollte kein SSH-Client installiert sein, können Sie die webbasierte SSH verwenden, die vom virtuellen Computer unter **http://localhost:4200/** bereitgestellt wird.
    > 
    > 
    
@@ -55,7 +59,7 @@ Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure 
    
     Geben Sie ein Kennwort für das Ambari-Administratorkonto ein, wenn Sie dazu aufgefordert werden. Dieses wird verwendet, wenn Sie auf die Ambari-Webbenutzeroberfläche zugreifen.
 
-## Verwenden des Hive-Befehls
+## <a name="use-the-hive-command"></a>Verwenden des Hive-Befehls
 1. Verwenden Sie bei einer SSH-Verbindung mit der Sandbox den folgenden Befehl, um die Hive-Shell zu starten:
    
         hive
@@ -66,9 +70,14 @@ Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure 
    
         select * from sample_07 limit 10;
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden von Visual Studio mit der Sandbox von Hortonworks](hdinsight-hadoop-emulator-visual-studio.md)
-* [Learning the ropes of the Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) (Einführung in Hortonworks Sandbox)
-* [Hadoop tutorial - Getting started with HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/) (Hadoop-Tutorial – Erste Schritte mit HDP)
+* [Learning the ropes of the Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Hadoop tutorial - Getting started with HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

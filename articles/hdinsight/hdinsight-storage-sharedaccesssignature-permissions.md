@@ -1,12 +1,12 @@
 ---
-title: Einschränken des HDInsight-Zugriffs auf Daten mithilfe von Shared Access Signatures
-description: Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zugriff auf Daten in Azure-Speicherblobs einschränken.
+title: "Einschränken des HDInsight-Zugriffs auf Daten mithilfe von Shared Access Signatures"
+description: "Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zugriff auf Daten in Azure-Speicherblobs einschränken."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -14,10 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7f2e5bbd2516c0f697084a802d6963c3d1023914
+
 
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-with-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
-HDInsight verwendet zur Datenspeicherung Azure-Speicherblobs. Während HDInsight Vollzugriff auf das Blob benötigt, das als Standardspeicher des Clusters verwendet wird, können Sie Berechtigungen für Daten beschränken, die in anderen vom Cluster verwendeten Blobs gespeichert sind. Sie können z. B. bestimmte Daten mit Schreibschutz versehen. Nutzen Sie dazu Shared Access Signatures.
+HDInsight verwendet zur Datenspeicherung Azure-Speicherblobs. Während HDInsight Vollzugriff auf das Blob benötigt, das als Standardspeicher des Clusters verwendet wird, können Sie Berechtigungen für Daten beschränken, die in anderen vom Cluster verwendeten Blobs gespeichert sind. Sie können z. B. bestimmte Daten mit Schreibschutz versehen. Nutzen Sie dazu Shared Access Signatures.
 
 Shared Access Signatures (SAS) sind ein Feature von Azure Storage-Konten, das das Einschränken des Zugriffs auf Daten ermöglicht. Sie können beispielsweise einen schreibgeschützten Zugriff auf Daten bieten. In diesem Dokument erfahren Sie, wie Sie in HDInsight mithilfe von SAS einen Lese- und Auflistungszugriff auf einen Blobcontainer aktivieren.
 
@@ -26,7 +30,7 @@ Shared Access Signatures (SAS) sind ein Feature von Azure Storage-Konten, das da
 * C# oder Python. C#-Beispielcode wird als Visual Studio-Projektmappe bereitgestellt.
   
   * Die Visual Studio-Version 2013 oder 2015 ist erforderlich.
-  * Die Python-Version 2.7 oder höher ist erforderlich.
+  * Die Python-Version 2.7 oder höher ist erforderlich.
 * Einen Linux-basierten HDInsight-Cluster ODER [Azure PowerShell][powershell] – Wenn Sie bereits über einen Linux-basierten Cluster verfügen, können Sie mit Ambari eine Shared Access Signature zum Cluster hinzuzufügen. Falls nicht, können Sie mit Azure PowerShell einen neuen Cluster erstellen und eine Shared Access Signature während der Clustererstellung hinzufügen.
 * Die Beispieldateien aus [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Dieses Repository enthält Folgendes:
   
@@ -59,7 +63,7 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Grundlagen z
 ## <a name="create-a-stored-policy-and-generate-a-sas"></a>Erstellen einer gespeicherte Richtlinie und Generieren einer SAS
 Derzeit müssen Sie eine gespeicherte Richtlinie programmgesteuert erstellen. Das C#- und Python-Beispiel zum Erstellen einer gespeicherten Richtlinie und SAS finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature).
 
-### <a name="create-a-stored-policy-and-sas-using-c\#"></a>Erstellen einer gespeicherte Richtlinie und SAS mit C\
+### <a name="create-a-stored-policy-and-sas-using-c"></a>Erstellen einer gespeicherte Richtlinie und SAS mit C\
 1. Öffnen Sie die Projektmappe in Visual Studio.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SASToken**, und wählen Sie **Eigenschaften** aus.
 3. Wählen Sie **Einstellungen** aus, und fügen Sie Werte für die folgenden Einträge hinzu:
@@ -149,7 +153,7 @@ Ein Beispiel zum Erstellen eines HDInsight-Clusters, der die SAS verwendet, befi
    > 
    > 
 
-Die Ausführung dieses Skripts dauert meist ca. 15 Minuten. Wenn das Skript ohne Fehler abgeschlossen wird, wurde der Cluster erstellt.
+Die Ausführung dieses Skripts dauert meist ca. 15 Minuten. Wenn das Skript ohne Fehler abgeschlossen wird, wurde der Cluster erstellt.
 
 ### <a name="update-an-existing-cluster-to-use-the-sas"></a>Aktualisieren einen vorhandenen Clusters für die SAS-Verwendung
 Wenn Sie bereits einen Linux-basierten Cluster haben, können Sie die SAS der **core-site** -Konfiguration mithilfe der folgenden Schritte hinzufügen:
@@ -163,7 +167,7 @@ Wenn Sie bereits einen Linux-basierten Cluster haben, können Sie die SAS der **
    * **Value**: Die SAS, die von der zuvor ausgeführten C#- oder Python-Anwendung zurückgegeben wurde.
      
      Ersetzen Sie **CONTAINERNAME** durch den Containernamen, den Sie mit der C#- oder SAS-Anwendung verwendet haben. Ersetzen Sie **STORAGEACCOUNTNAME** durch den Namen des verwendeten Speicherkontos.
-5. Klicken Sie auf die Schaltfläche **Add**, um diesen Schlüssel und Wert zu speichern. Klicken Sie dann auf die Schaltfläche **Save**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z. B. „Hinzufügen des SAS-Speicherzugriffs“), und klicken Sie dann auf **Save**.
+5. Klicken Sie auf die Schaltfläche **Add**, um diesen Schlüssel und Wert zu speichern. Klicken Sie dann auf die Schaltfläche **Save**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z. B. „Hinzufügen des SAS-Speicherzugriffs“), und klicken Sie dann auf **Save**.
    
     Klicken Sie auf **OK** , wenn die Änderungen abgeschlossen sind.
    
@@ -184,7 +188,7 @@ Um sicherzustellen, dass der Zugriff eingeschränkt wird, verwenden Sie die folg
     Nachdem die Verbindung aufgebaut wurde, verwenden Sie das Symbol **Hadoop-Befehlszeile** auf dem Desktop, um eine Eingabeaufforderung zu öffnen.
 * Verwenden Sie für **Linux-basierte** -Cluster SSH zur Verbindung mit dem Cluster. Informationen zur Verwendung von SSH mit Linux-basierten Clustern finden Sie in den folgenden Artikeln:
   
-  * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, OS X und Unix](hdinsight-hadoop-linux-use-ssh-unix.md)
+  * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, OS X und Unix](hdinsight-hadoop-linux-use-ssh-unix.md)
   * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folgenden Schritte zum Überprüfen, ob Sie Elemente im SAS-Speicherkonto ausschließlich lesen und auflisten können:
@@ -203,7 +207,7 @@ Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folge
    
         hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
    
-    Damit wird die Datei in eine lokale Datei mit dem Namen __testfile.txt__heruntergeladen.
+    Damit wird die Datei in eine lokale Datei mit dem Namen **testfile.txt**heruntergeladen.
 4. Gehen Sie zum Hochladen der lokalen Datei in eine neue Datei mit dem Namen **testupload.txt** in den SAS-Speicher Folgendes an:
    
         hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -249,6 +253,6 @@ Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingesc
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

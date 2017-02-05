@@ -1,12 +1,12 @@
 ---
-title: 'Gewusst wie: Konfigurieren von lokalen Encodern beim Erstellen von Datenströmen mit Mehrfachbitraten mithilfe von Azure Media Services | Microsoft Docs'
-description: Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird.
+title: "Konfigurieren von lokalen Encodern beim Erstellen von Datenströmen mit Mehrfachbitraten mithilfe von Azure Media Services | Microsoft-Dokumentation"
+description: "Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0ec6f046-0841-4673-9057-883bdbc30d5c
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6ae703cd1edcfca58aea40376e3b961e3e77d5ee
+
 
 ---
 # <a name="how-to-configure-on-premise-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Gewusst wie: Konfigurieren von lokalen Encodern beim Erstellen von Multi-Bitrate-Datenströmen mit Azure Media Services
@@ -40,6 +44,9 @@ Informationen zum Konfigurieren des [Tricaster](http://newtek.com/products/trica
 ## <a name="see-also"></a>Weitere Informationen
 [Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen](media-services-manage-live-encoder-enabled-channels.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

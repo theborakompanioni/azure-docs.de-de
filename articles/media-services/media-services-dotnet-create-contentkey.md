@@ -1,12 +1,12 @@
 ---
 title: Erstellen von ContentKeys mit .NET
-description: Erfahren Sie, wie Sie Inhaltsschlüssel erstellen, die den sicheren Zugriff auf Medienobjekte ermöglichen.
+description: "Erfahren Sie, wie Sie Inhaltsschlüssel erstellen, die den sicheren Zugriff auf Medienobjekte ermöglichen."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c547afd9535eb4764caf6b37d4e38a22f6e88186
+
 
 ---
-# <a name="create-contentkeys-with-.net"></a>Erstellen von ContentKeys mit .NET
+# <a name="create-contentkeys-with-net"></a>Erstellen von ContentKeys mit .NET
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
@@ -63,7 +67,7 @@ Einer der Werte, die Sie beim Erstellen eines Inhaltsschlüssels festlegen müss
         EnvelopeEncryption = 4
     }
 
-## <a name="<a-id="envelope_contentkey"></a>create-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Umschlagverschlüsselung"
+## <a name="a-idenvelopecontentkeyacreate-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Umschlagverschlüsselung"
 Im folgenden Codeausschnitt wird ein Inhaltsschlüssel vom Typ „Umschlagverschlüsselung“ erstellt. Anschließend wird der Schlüssel dem angegebenen Medienobjekt zugeordnet.
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -100,7 +104,7 @@ Aufruf
 
 
 
-## <a name="<a-id="common_contentkey"></a>create-common-type-contentkey"></a><a id="common_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Allgemeine Verschlüsselung"
+## <a name="a-idcommoncontentkeyacreate-common-type-contentkey"></a><a id="common_contentkey"></a>Erstellen eines "ContentKey" vom Typ "Allgemeine Verschlüsselung"
 Im folgenden Codeausschnitt wird ein Inhaltsschlüssel vom Typ „Allgemeine Verschlüsselung“ erstellt. Anschließend wird der Schlüssel dem angegebenen Medienobjekt zugeordnet.
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
@@ -144,6 +148,9 @@ Aufruf
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

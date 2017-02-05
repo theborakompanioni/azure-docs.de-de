@@ -1,19 +1,23 @@
 ---
-title: Konfigurieren von Content Protection-Richtlinien über das Azure-Portal | Microsoft Docs
-description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals Content Protection-Richtlinien konfigurieren. Außerdem erfahren Sie, wie Sie die dynamische Verschlüsselung für Ihre Assets aktivieren.
+title: "Konfigurieren von Content Protection-Richtlinien über das Azure-Portal | Microsoft Docs"
+description: "In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals Content Protection-Richtlinien konfigurieren. Außerdem erfahren Sie, wie Sie die dynamische Verschlüsselung für Ihre Assets aktivieren."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 10/24/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0f9b0cf4e88a1ab27546063ae89cde8de7761609
+
 
 ---
 # <a name="configuring-content-protection-policies-using-the-azure-portal"></a>Konfigurieren von Content Protection-Richtlinien über das Azure-Portal
@@ -39,12 +43,12 @@ In diesem Artikel erfahren Sie, wie Sie Content Protection-Richtlinien über das
 ## <a name="start-configuring-content-protection"></a>Erste Schritte beim Konfigurieren von Content Protection
 Gehen Sie wie folgt vor, um Content Protection über das Portal global für Ihr AMS-Konto zu konfigurieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
 2. Wählen Sie **Einstellungen** > **Inhaltsschutz** aus.
 
 ![Inhalt schützen](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
-## <a name="key/license-authorization-policy"></a>Schlüssel-/Lizenzautorisierungsrichtlinie
+## <a name="keylicense-authorization-policy"></a>Schlüssel-/Lizenzautorisierungsrichtlinie
 AMS unterstützt mehrere Methoden zur Authentifizierung von Benutzern, die Schlüssel oder Lizenzen anfordern. Die Inhaltsschlüssel-Authentifizierungsrichtlinie muss von Ihnen konfiguriert und von Ihrem Client erfüllt werden, damit der Schlüssel/die Lizenz an den Client übermittelt wird. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Token**.
 
 Über das Azure-Portal können Sie eine einzelne **Schlüssel-/Lizenzautorisierungsrichtlinie** für alle Arten von Verschlüsselungen erstellen.
@@ -130,6 +134,9 @@ Wählen Sie eine Verschlüsselung aus, und klicken Sie anschließend auf **Über
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

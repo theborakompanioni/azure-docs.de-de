@@ -1,12 +1,12 @@
 ---
-title: Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs | Microsoft Docs
-description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird. Die PlayReady-Lizenz stammt vom Media Services PlayReady-Lizenzserver, und die Widevine-Lizenz wird vom castLabs-Lizenzserver übermittelt.
+title: "Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs | Microsoft-Dokumentation"
+description: "In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Media Services (AMS) einen Stream übermitteln, der von AMS mit PlayReady- und Widevine-DRMs dynamisch verschlüsselt wird. Die PlayReady-Lizenz stammt vom Media Services PlayReady-Lizenzserver, und die Widevine-Lizenz wird vom castLabs-Lizenzserver übermittelt."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Mingfeiy
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 2a9a408a-a995-49e1-8d8f-ac5b51e17d40
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: Mingfeiy;willzhan;Juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 30bd93e54da4b8e7fcb58fcdc1f5c1bb5240fa53
+
 
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von castLabs
@@ -76,7 +80,7 @@ So verwenden Sie die Konsolenanwendung
 2. Laden Sie ein Medienobjekt in AMS hoch.
 3. Rufen Sie die UUID aus dem hochgeladenen Medienobjekt ab, und ändern Sie die Zeile 32 in der Datei "Program.cs":
    
-        var objIAsset = _context.Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf").FirstOrDefault();
+      var objIAsset = _context.Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf").FirstOrDefault();
 4. Verwenden Sie zur Benennung des Medienobjekts im castLabs-System eine AssetId (Zeile 44 in der Datei "Program.cs").
    
    Für die AssetId für **castLabs**müssen Sie eine eindeutige alphanumerische Zeichenfolge festlegen.
@@ -108,6 +112,9 @@ Ein durch allgemeine Verschlüsselung (PlayReady und/oder Widevine) verschlüsse
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

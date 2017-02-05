@@ -1,12 +1,12 @@
 ---
-title: Überwachen des Auftragsfortschritts mit .NET
-description: Erfahren Sie, wie Sie den Fortschritt von Aufträgen mit Ereignishandlern abrufen und Statusupdates senden können. Das Codebeispiel ist in C# geschrieben und verwendet das Media Services SDK für .NET.
+title: "Überwachen des Auftragsfortschritts mit .NET"
+description: "Erfahren Sie, wie Sie den Fortschritt von Aufträgen mit Ereignishandlern abrufen und Statusupdates senden können. Das Codebeispiel ist in C# geschrieben und verwendet das Media Services SDK für .NET."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: ee720ed6-8ce5-4434-b6d6-4df71fca224e
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1420c9dbaba1767526fa86a27aacb4fa3b2e2fe0
+
 
 ---
-# Überwachen des Auftragsfortschritts mit .NET
+# <a name="monitor-job-progress-using-net"></a>Überwachen des Auftragsfortschritts mit .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -26,7 +30,7 @@ ms.author: juliako
 
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Fortschritt überprüfen, indem Sie einen StateChanged-Ereignishandler definieren (wie im vorliegenden Thema beschrieben) oder Azure-Warteschlangenspeicher zur Überwachung von Media Services-Auftragsbenachrichtigungen verwenden (wie in [diesem](media-services-dotnet-check-job-progress-with-queues.md) Thema beschrieben).
 
-## Definieren eines StateChanged-Ereignishandlers zum Überwachen des Auftragsfortschritts
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Definieren eines StateChanged-Ereignishandlers zum Überwachen des Auftragsfortschritts
 Das folgende Codebeispiel definiert den StateChanged-Ereignishandler. Dieser Ereignishandler verfolgt den Auftragsfortschritt und liefert Statusupdates je nach Auftragsstatus. Der Code definiert außerdem die LogJobStop-Methode. Diese Helfermethode protokolliert Fehlerdetails.
 
     private static void StateChanged(object sender, JobStateChangedEventArgs e)
@@ -106,12 +110,17 @@ Das folgende Codebeispiel definiert den StateChanged-Ereignishandler. Dieser Ere
 
 
 
-## Nächster Schritt
+## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

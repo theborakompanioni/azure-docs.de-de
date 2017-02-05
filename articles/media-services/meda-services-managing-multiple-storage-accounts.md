@@ -1,12 +1,12 @@
 ---
-title: Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten | Microsoft Docs
-description: In diesem Artikel erhalten Sie Anweisungen zum Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten.
+title: "Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten | Microsoft-Dokumentation"
+description: "In diesem Artikel erhalten Sie Anweisungen zum Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 4e4a9ec3-8ddb-4938-aec1-d7172d3db858
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
+
 
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten
 Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto mehrere Speicherkonten anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
 
 * Lastenausgleich der Assets für mehrere Speicherkonten.
-* Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
+* Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
 
 In diesem Thema wird erläutert, wie mehrere Speicherkonten mit der Azure-Dienstverwaltungs-REST-API an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
 
@@ -250,6 +254,9 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

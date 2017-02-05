@@ -1,12 +1,12 @@
 ---
-title: Mehrinstanzenfähige Anwendungen in Azure | Microsoft Docs
-description: Hier finden Sie Übersichten über die Architektur und Entwurfsmuster, die beschreiben, wie Sie eine mehrinstanzenfähige Webanwendung in Azure implementieren.
-services: ''
+title: "Muster für mehrinstanzenfähige Webanwendungen | Microsoft-Dokumentation"
+description: "Hier finden Sie Übersichten über die Architektur und Entwurfsmuster, die beschreiben, wie Sie eine mehrinstanzenfähige Webanwendung in Azure implementieren."
+services: 
 documentationcenter: .net
 author: wadepickett
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: 4f0281d2-1555-42b0-a99d-1222fade0b0f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,16 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c1614eeac922a4fc496be77b4d1d1588f28b4284
+
 
 ---
-# Mehrinstanzenfähige Anwendungen in Azure
+# <a name="multitenant-applications-in-azure"></a>Mehrinstanzenfähige Anwendungen in Azure
 Eine mehrinstanzenfähige Anwendung ist eine gemeinsame Ressource, mit der unterschiedliche Benutzer, oder "Mandanten", die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis individualisieren möchten, aber ansonsten die gleichen grundlegenden Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Office 365, Outlook.com und visualstudio.com.
 
 Aus Sicht des Anbieters der Anwendung liegen die Vorteile vor allem in der Effizienz bei Betrieb und Kosten. Eine Version Ihrer Anwendung kann die Anforderungen vieler Mandanten/Kunden erfüllen. Dies ermöglicht eine Konsolidierung von Systemadministrationsaufgaben wie Überwachung, Leistungssteigerung, Softwarewartung und Datensicherung.
 
 Im Folgenden finden Sie eine Liste der wichtigsten Anforderungen aus Sicht des Anbieters.
 
-* **Bereitstellung**: Sie müssen neue Mandanten für die Anwendung bereitstellen können. Bei mehrinstanzenfähigen Anwendungen mit einer großen Zahl an Mandanten ist es normalerweise notwendig, diesen Prozess mittels Self-Service-Bereitstellung zu automatisieren.
+* **Bereitstellung**: Sie müssen neue Mandanten für die Anwendung bereitstellen können.  Bei mehrinstanzenfähigen Anwendungen mit einer großen Zahl an Mandanten ist es normalerweise notwendig, diesen Prozess mittels Self-Service-Bereitstellung zu automatisieren.
 * **Wartbarkeit**: Sie müssen in der Lage sein, Upgrades der Anwendung und weitere Wartungsaufgaben durchzuführen, während diese von mehreren Mandanten verwendet wird.
 * **Monitoring**: Sie müssen die Anwendung stets überwachen, um Probleme zu erkennen und zu beheben. Hier muss auch überwacht werden, wie jeder einzelne Mandat die Anwendung nutzt.
 
@@ -37,7 +41,7 @@ Eine korrekt implementierte mehrinstanzenfähige Anwendung bietet Benutzern die 
 
 Kurz, obwohl es einige Überlegungen gibt, die Sie bei der Bereitstellung eines hochskalierbaren Dienstes berücksichtigen müssen, gibt es auch einige Ziele und Anforderungen, die bei vielen mehrinstanzenfähigen Anwendungen üblich sind. Einige sind möglicherweise für bestimmte Szenarien nicht relevant, und die Wichtigkeit einzelner Ziele und Anforderungen unterscheidet sich je nach Szenario. Als Anbieter einer mehrinstanzenfähigen Anwendung gibt es für Sie ebenfalls Ziele und Anforderungen wie das Erfüllen der Ziele und Anforderungen des Mandanten, Rentabilität, mehrere Serviceebenen, Bereitstellung, Wartbarkeit, Überwachung und Automatisierung.
 
-Weitere Informationen zu zusätzlichen Überlegungen bei der Entwicklung einer mehrinstanzenfähigen Anwendung finden Sie unter [Hosting a Multi-Tenant Application on Azure][Hosting a Multi-Tenant Application on Azure] \(Hosten einer mehrinstanzenfähigen Anwendung in Azure, in englischer Sprache). Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Weitere Informationen zu zusätzlichen Überlegungen bei der Entwicklung einer mehrinstanzenfähigen Anwendung finden Sie unter [Hosting a Multi-Tenant Application on Azure][Hosting a Multi-Tenant Application on Azure] (Hosten einer mehrinstanzenfähigen Anwendung in Azure). Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
 
 Azure bietet viele Funktionen, mit denen Sie die entscheidenden Probleme lösen können, die bei der Entwicklung eines mehrinstanzenfähigen Systems auftreten.
 
@@ -87,6 +91,10 @@ Azure bietet viele verschiedene Möglichkeiten zur Bereitstellung neuer Mandante
 <!--links-->
 
 [Hosting a Multi-Tenant Application on Azure]: http://msdn.microsoft.com/library/hh534480.aspx
-[Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
+[Entwerfen von mehrinstanzenfähigen Anwendungen in Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,12 +1,12 @@
 ---
 title: Herstellen einer Verbindung mit einem Media Services-Konto mithilfe von .NET
-description: In diesem Thema wird veranschaulicht, wie Sie über .NET eine Verbindung mit Media Services herstellen.
+description: "In diesem Thema wird veranschaulicht, wie Sie über .NET eine Verbindung mit Media Services herstellen."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a8412a29-59dc-44a0-ace0-be79a97dab63
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 72e94aeae9e210b25b8f22dd02feb0b98a5ddfeb
+
 
 ---
-# <a name="connecting-to-media-services-account-using-media-services-sdk-for-.net"></a>Herstellen einer Verbindung mit einem Media Services-Konto über das Media Services SDK für .NET
+# <a name="connecting-to-media-services-account-using-media-services-sdk-for-net"></a>Herstellen einer Verbindung mit einem Media Services-Konto über das Media Services SDK für .NET
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-connect-programmatically.md)
 > * [.NET](media-services-dotnet-connect-programmatically.md)
@@ -120,7 +124,7 @@ Ab dem Media Services SDK, Version 3.0.0.0, können Sie die ACS-Token wiederverw
         }
 
 
-* Wenn Sie mehrere Media Services-Konten besitzen (z. B. für die Verteilung der Nutzlast oder geografische Verteilung), können Sie MediaServicesCredentials-Objekte mithilfe der System.Collections.Concurrent.ConcurrentDictionary-Auflistung zwischenspeichern (die ConcurrentDictionary-Auflistung stellt eine threadsichere Auflistung von Schlüssel/Wert-Paaren dar, auf die von mehreren Threads gleichzeitig zugegriffen werden kann). Sie können dann die GetOrAdd-Methode verwenden, um die zwischengespeicherten Anmeldeinformationen abzurufen. 
+* Wenn Sie mehrere Media Services-Konten besitzen (z. B. für die Verteilung der Nutzlast oder geografische Verteilung), können Sie MediaServicesCredentials-Objekte mithilfe der System.Collections.Concurrent.ConcurrentDictionary-Auflistung zwischenspeichern (die ConcurrentDictionary-Auflistung stellt eine threadsichere Auflistung von Schlüssel/Wert-Paaren dar, auf die von mehreren Threads gleichzeitig zugegriffen werden kann). Sie können dann die GetOrAdd-Methode verwenden, um die zwischengespeicherten Anmeldeinformationen abzurufen. 
   
         // Declare a static class variable of the ConcurrentDictionary type in which the Media Services credentials will be cached.  
         private static readonly ConcurrentDictionary<string, MediaServicesCredentials> mediaServicesCredentialsCache = 
@@ -182,6 +186,9 @@ Zum Abrufen von Verbindungswerten aus der Konfiguration können Sie die **Config
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

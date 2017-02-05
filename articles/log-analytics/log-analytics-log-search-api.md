@@ -1,12 +1,12 @@
 ---
-title: Log Analytics-REST-API für die Protokollsuche | Microsoft Docs
-description: Dieser Artikel enthält ein allgemeines Tutorial, in dem beschrieben wird, wie Sie die Log Analytics-REST-API für die Suche in der Operations Management Suite (OMS) nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt.
+title: "Log Analytics-REST-API für die Protokollsuche | Microsoft Docs"
+description: "Dieser Artikel enthält ein allgemeines Tutorial, in dem beschrieben wird, wie Sie die Log Analytics-REST-API für die Suche in der Operations Management Suite (OMS) nutzen können. Außerdem werden Beispiele zur Verwendung der Befehle genannt."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: b4e9ebe8-80f0-418e-a855-de7954668df7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 81dd7d9dc799f6f4c0dd54a12409724c182a0349
+
 
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics-REST-API für die Protokollsuche
@@ -93,7 +97,7 @@ Der Azure Resource Manager kann über eine [Bibliothek für .NET](https://msdn.m
 ## <a name="log-analytics-search-rest-api-reference-examples"></a>Referenzbeispiele für die Log Analytics-REST-API für die Suche
 Die folgenden Beispiele zeigen Ihnen, wie Sie die Search-API verwenden können.
 
-### <a name="search---action/read"></a>Search – Aktion/Lesen
+### <a name="search---actionread"></a>Search – Aktion/Lesen
 **Beispiel-URL:**
 
 ```
@@ -179,7 +183,7 @@ Die folgende Tabelle beschreibt die verfügbaren Eigenschaften.
     }
 ```
 
-### <a name="search/{id}---action/read"></a>Search/{ID} – Aktion/Lesen
+### <a name="searchid---actionread"></a>Search/{ID} – Aktion/Lesen
 **Fordern Sie den Inhalt einer gespeicherten Suche an:**
 
 ```
@@ -356,7 +360,7 @@ Im Folgenden finden Sie eine Beispielantwort für eine Computergruppe.
         "Tags": [{
             "Name": "Group",
             "Value": "Computer"
-        }],
+          }],
     "Version": 1
     }
 
@@ -395,6 +399,9 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{Resource Group
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) , um Abfragen mithilfe von benutzerdefinierten Feldern für die Kriterien zu erstellen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

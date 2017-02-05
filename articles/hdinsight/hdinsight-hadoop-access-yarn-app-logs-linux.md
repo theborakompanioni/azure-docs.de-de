@@ -1,13 +1,13 @@
 ---
-title: Zugreifen auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight | Microsoft Docs
+title: Zugreifen auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie auf einem Linux-basierten HDInsight (Hadoop)-Cluster mithilfe der Befehlszeile und eines Webbrowsers auf YARN-Anwendungsprotokolle zugreifen.
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3ec08d20-4f19-4a8e-ac86-639c04d2f12e
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f03c595977f098f19d396cc460c73e27163f070c
+
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
@@ -29,7 +33,7 @@ Dieses Dokument erläutert den Zugriff auf Protokolle für YARN (Yet Another Res
 * Ein Linux-basierter HDInsight-Cluster.
 * Sie müssen einen [SSH-Tunnel erstellen](hdinsight-linux-ambari-ssh-tunnel.md) , bevor Sie auf die Webbenutzeroberfläche für ResourceManager-Protokolle zugreifen können.
 
-## <a name="<a-name="yarntimelineserver"></a>yarn-timeline-server"></a><a name="YARNTimelineServer"></a>YARN Timeline Server
+## <a name="a-nameyarntimelineserverayarn-timeline-server"></a><a name="YARNTimelineServer"></a>YARN Timeline Server
 Der [YARN Timeline Server](http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) bietet über zwei Schnittstellen allgemeine Informationen zu abgeschlossenen Anwendungen sowie frameworkspezifische Anwendungsinformationen. Dies bedeutet Folgendes:
 
 * Speicherung und Abruf allgemeiner Anwendungsinformationen zu HDInsight-Clustern sind für Versionen ab 3.1.1.374 aktiviert.
@@ -42,8 +46,8 @@ Zu den allgemeinen Informationen zu Anwendungen zählen die folgenden Datenarten
 * Informationen zu den erfolgten Versuchen, die Anwendung abzuschließen
 * Die bei Anwendungsversuchen verwendeten Container
 
-## <a name="<a-name="yarnappsandlogs"></a>yarn-applications-and-logs"></a><a name="YARNAppsAndLogs"></a>YARN-Anwendungen und -Protokolle
-YARN unterstützt mehrere Programmierungsmodelle (u. a. MapReduce), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. Dies erfolgt über einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
+## <a name="a-nameyarnappsandlogsayarn-applications-and-logs"></a><a name="YARNAppsAndLogs"></a>YARN-Anwendungen und -Protokolle
+YARN unterstützt mehrere Programmierungsmodelle (u. a. MapReduce), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. Dies erfolgt über einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
 
 Darüber hinaus kann jede Anwendung aus mehreren *Anwendungsversuchen* mit dem Zweck bestehen, die Anwendung bei Abstürzen oder Unterbrechungen der Kommunikation zwischen einem AM und RM abzuschließen. Demzufolge werden Container einem bestimmten Versuch einer Anwendung zugewiesen. In gewisser Weise stellt ein Container den Kontext für eine Basiseinheit von Aufgaben bereit, die von einer YARN-Anwendung ausgeführt werden. Sämtliche Aufgaben, die im Kontext eines Containers ausgeführt werden, erfolgen auf dem einzelnen Arbeitsknoten, dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [YARN-Konzepte][YARN-concepts].
 
@@ -74,7 +78,7 @@ Die YARN-ResourceManager-Benutzeroberfläche wird im Hauptknoten des Clusters au
 Nachdem Sie einen SSH-Tunnel erstellt haben, zeigen Sie die YARN-Protokolle mithilfe folgender Schritte an:
 
 1. Navigieren Sie in Ihrem Webbrowser zu „https://CLUSTERNAME.azurehdinsight.net“. Ersetzen Sie CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
-2. Wählen Sie aus der Liste der Dienste auf der linken Seite den Dienst __YARN__aus.
+2. Wählen Sie aus der Liste der Dienste auf der linken Seite den Dienst **YARN**aus.
    
     ![Ausgewählter YARN-Dienst](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
 3. Wählen Sie aus der Dropdownliste **QuickLinks** einen der Clusterhauptknoten und dann **ResourceManager-Protokoll** aus.
@@ -91,6 +95,6 @@ Nachdem Sie einen SSH-Tunnel erstellt haben, zeigen Sie die YARN-Protokolle mith
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
