@@ -1,38 +1,42 @@
 ---
 title: Erkennung, Eingrenzung und Diagnose
-description: Analysieren von Abstürzen und Erkennen und Diagnostizieren von Leistungsproblemen in Ihren Anwendungen
+description: "Analysieren von Abstürzen und Erkennen und Diagnostizieren von Leistungsproblemen in Ihren Anwendungen"
 author: alancameronwills
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 manager: douge
-
+ms.assetid: 6ccab5d4-34c4-4303-9d3b-a0f1b11e6651
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2015
+ms.date: 10/01/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
+ms.openlocfilehash: 9589adad2f8f227043b2c8f864a48d1c9ba43732
+
 
 ---
-# Erkennung, Eingrenzung und Diagnose mit Application Insights
-*Application Insights befindet sich in der Vorschau.*
+# <a name="detect-triage-and-diagnose-with-application-insights"></a>Erkennung, Eingrenzung und Diagnose mit Application Insights
 
-Mithilfe von Application Insights können Sie die Leistung und Verwendung Ihrer App nach ihrer Liveschaltung ermitteln. Wenn ein Problem vorliegt, informiert Application Insights Sie darüber, sodass Sie die Auswirkungen bewerten und die Ursache ermitteln können.
+
+[Application Insights](app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM). Sie können damit die Leistung und Verwendung Ihrer App nach ihrer Aktivierung ermitteln. Wenn ein Problem vorliegt, informiert Application Insights Sie darüber, sodass Sie die Auswirkungen bewerten und die Ursache ermitteln können.
 
 Hier beschreibt ein Team, das Webanwendungen entwickelt, seine Erfahrungen:
 
 * *"Vor ein paar Tagen haben wir einen 'kleineren' Hotfix bereitgestellt. Wir haben keinen umfassenden Testdurchlauf ausgeführt, doch leider gerieten einige unerwartete Änderungen in die Nutzlast, die eine Inkompatibilität zwischen dem Front-End und dem Back-End verursacht haben. Sofort nahmen die Serverausnahmen zu, unsere Warnungen wurden ausgelöst, und wir wurden auf die Situation aufmerksam gemacht. Nach ein paar Klicks im Application Insights-Portal hatten wir genügend Informationen über die Aufruflisten für Ausnahmen gesammelt, um das Problem einzugrenzen. Wir haben die Änderung umgehend rückgängig gemacht und dadurch den Schaden begrenzt. Dank Application Insights war dieser Teil des DevOps-Zyklus sehr einfach umsetzbar."*
 
-Sehen wir uns an, wie ein typisches Webentwicklungsteam Application Insights zur Leistungsüberwachung nutzt. Wir begleiten das Team der Fabrikam Bank, das das Onlinebankingsystem (OBS) entwickelt.
+Sehen wir uns an, wie ein typisches Webentwicklungsteam Application Insights zur Leistungsverwaltung nutzt. Wir begleiten das Team der Fabrikam Bank, das das Onlinebankingsystem (OBS) entwickelt.
 
 ![Beispiel der Website einer Bank](./media/app-insights-detect-triage-diagnose/03-bank.png)
 
-Das Team arbeitet an ungefähr folgendem Zyklus:
+Das Team arbeitet an ungefähr folgendem DevOps-Zyklus:
 
 ![DevOps-Zyklus](./media/app-insights-detect-triage-diagnose/00-devcycle.png)
 
-Anforderungen werden in den Entwicklungs-Backlog (Aufgabenliste) geladen. Sie arbeiten mit kurzen Sprints, in denen häufig Software – in der Regel in Form von Verbesserungen und Erweiterungen der vorhandenen Anwendung – bereitgestellt wird. Die Live-App wird regelmäßig mit neuen Features aktualisiert. Während die App live geschaltet ist, überwacht das Team sie mithilfe von Application Insights in Hinblick auf Leistung und Verwendung. Diese Analyse wird zurück in ihr Entwicklungs-Backlog geladen.
+Anforderungen werden in den Entwicklungs-Backlog (Aufgabenliste) geladen. Sie arbeiten mit kurzen Sprints, in denen häufig Software – in der Regel in Form von Verbesserungen und Erweiterungen der vorhandenen Anwendung – bereitgestellt wird. Die Live-App wird regelmäßig mit neuen Features aktualisiert. Während die App live geschaltet ist, überwacht das Team sie mithilfe von Application Insights in Hinblick auf Leistung und Verwendung. Diese APM-Daten werden zurück in ihr Entwicklungs-Backlog geladen.
 
 Das Team verwendet Application Insights zum genauen Überwachen der Live-Webanwendung in Bezug auf:
 
@@ -44,13 +48,13 @@ Konzentrieren wir uns auf den Feedbackteil des Zyklus:
 
 ![Erkennung-Eingrenzung-Diagnose](./media/app-insights-detect-triage-diagnose/01-pipe1.png)
 
-## Erkennen schlechter Verfügbarkeit
-Marcela Markova ist leitende Entwicklerin im OBS-Team, und ist für Tests sowie für die Überwachung der Onlineleistung zuständig. Sie richtet mehrere [Webtests][availability] ein:
+## <a name="detect-poor-availability"></a>Erkennen schlechter Verfügbarkeit
+Marcela Markova ist leitende Entwicklerin im OBS-Team, und ist für Tests sowie für die Überwachung der Onlineleistung zuständig. Sie richtet mehrere [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) ein:
 
-* Einen einzelnen URL-Test für die Hauptangebotsseite der App, http://fabrikambank.com/onlinebanking/. Sie legt Kriterien für den HTTP-Code 200 und den Text "Willkommen!" fest. Wenn dieser Test misslingt, ist etwas mit dem Netzwerk oder den Servern ernsthaft nicht in Ordnung, oder es liegt ggf. ein Bereitstellungsproblem vor. (Oder jemand hat ohne ihr Wissen die Begrüßungsmeldung auf der Seite geändert.)
+* Einen einzelnen URL-Test für die Hauptangebotsseite der App: http://fabrikambank.com/onlinebanking/. Sie legt Kriterien für den HTTP-Code 200 und den Text "Willkommen!" fest. Wenn dieser Test misslingt, ist etwas mit dem Netzwerk oder den Servern ernsthaft nicht in Ordnung, oder es liegt ggf. ein Bereitstellungsproblem vor. (Oder jemand hat ohne ihr Wissen die Begrüßungsmeldung auf der Seite geändert.)
 * Einen umfassenden mehrstufigen Test, der eine Anmeldung ausführt, eine aktuelle Kontoauflistung abruft und einige wichtige Details auf jeder Seite überprüft. Dieser Test bestätigt, dass die Verbindung mit der Kontendatenbank funktioniert. Sie verwendet eine fiktive Kunden-ID, von denen einige für Testzwecke vorgehalten werden.
 
-Nach dem Einrichten dieser Tests ist Marcela sicher, dass das Team schnell über Systemausfälle informiert wird.
+Nach dem Einrichten dieser Tests ist Marcela sicher, dass das Team schnell über Systemausfälle informiert wird.  
 
 Ausfälle bzw. Fehler werden im Diagramm des Webtests als rote Punkte angezeigt:
 
@@ -58,14 +62,14 @@ Ausfälle bzw. Fehler werden im Diagramm des Webtests als rote Punkte angezeigt:
 
 Aber noch wichtiger ist, dass eine Warnung zu allen Fehlern per E-Mail an das Entwicklungsteam gesendet wird. Auf diese Weise wissen sie vor fast allen Kunden um das Problem.
 
-## Überwachen von Leistungsmetriken
-Die Übersichtsseite in Application Insights enthält ein Diagramm, das eine Vielzahl [wichtiger Metriken][perf] zeigt.
+## <a name="monitor-performance-metrics"></a>Überwachen von Leistungsmetriken
+Die Übersichtsseite in Application Insights enthält ein Diagramm, das eine Vielzahl [wichtiger Metriken](app-insights-web-monitor-performance.md) zeigt.
 
 ![Verschiedene Metriken](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
 
 Die Browser-Seitenladezeit wird von Telemetriedaten abgeleitet, die direkt von Webseiten gesendet werden. Die Serverantwortzeit, die Anzahl von Serveranforderungen und die Anzahl der Anforderungsfehler werden alle auf dem Webserver gemessen und von dort an Application Insights gesendet.
 
-Marcela ist etwas besorgt über den Serverantwortgraphen, der die Durchschnittszeit anzeigt, in der ein Server eine HTTP-Anforderung vom Browser eines Benutzers erhält und in der der Server die Antwort zurückgibt. Es ist nicht ungewöhnlich, dass eine Abweichung in diesem Diagramm auftritt, da die Systemauslastung variiert. In diesem Fall existiert aber scheinbar eine Korrelation zwischen geringfügigen Anstiegen in der Anzahl der Anforderungen, und großen Anstiegen in der Antwortzeit. Das könnte darauf hinweisen, dass das System genau an seiner Grenze arbeitet.
+Marcela ist etwas besorgt über den Serverantwortgraphen, der die Durchschnittszeit anzeigt, in der ein Server eine HTTP-Anforderung vom Browser eines Benutzers erhält und in der der Server die Antwort zurückgibt. Es ist nicht ungewöhnlich, dass eine Abweichung in diesem Diagramm auftritt, da die Systemauslastung variiert. In diesem Fall existiert aber scheinbar eine Korrelation zwischen geringfügigen Anstiegen in der Anzahl der Anforderungen, und großen Anstiegen in der Antwortzeit. Das könnte darauf hinweisen, dass das System genau an seiner Grenze arbeitet. 
 
 Sie öffnet die Serverdiagramme:
 
@@ -73,23 +77,23 @@ Sie öffnet die Serverdiagramme:
 
 Es scheinen keine Anzeichen einer Ressourceneinschränkung vorhanden zu sein, also sind die Unregelmäßigkeiten in den Serverantwort-Diagrammen möglicherweise nur ein Zufall.
 
-## Warnungen
+## <a name="alerts"></a>Warnungen
 Dennoch möchte sie die Antwortzeiten im Auge behalten. Wenn diese zu lang werden, möchte sie sofort darüber informiert sein.
 
-Also richtet sie eine [Warnung][metrics] für Antwortzeiten ein, die länger sind als der typische Schwellenwert. Dies gibt ihr Zuversicht, dass Bescheid weiß, wenn Antwortzeiten zu langsam sind.
+Also richtet sie eine [Warnung](app-insights-metrics-explorer.md) für Antwortzeiten ein, die länger sind als der typische Schwellenwert. Dies gibt ihr Zuversicht, dass Bescheid weiß, wenn Antwortzeiten zu langsam sind.
 
 ![Blatt "Warnung hinzufügen"](./media/app-insights-detect-triage-diagnose/07-alerts.png)
 
 Warnungen können für eine Vielzahl anderer Metriken eingerichtet werden. Beispielsweise können Sie E-Mails empfangen, wenn die Anzahl der Ausnahmen hoch wird oder der verfügbare Arbeitsspeicher zur Neige geht oder es zu einer Spitze bei den Clientanforderungen kommt.
 
-## Proaktive Diagnosewarnungen
+## <a name="smart-detection-alerts"></a>Warnungen der intelligenten Erkennung
 Am nächsten Tag kommt eine E-Mail mit einer Warnung von Application Insights. Als sie die E-Mail öffnet, erkennt sie, dass dies nicht die Warnung für Antwortzeiten ist, die sie eingerichtet hat. Stattdessen wird ihr mitgeteilt, dass es einen plötzlichen Anstieg an gescheiterten Anforderungen gab. Dies sind Anforderungen, die mindestens 500 Fehlercodes oder mehr zurückgegeben haben.
 
 Anforderungsfehler sind Fälle, bei denen Benutzern ein Fehler angezeigt wurde, meist im Anschluss an eine im Code ausgelöste Ausnahme. Vielleicht wird den Benutzern auf dem Bildschirm die Meldung "Es tut uns leid, dass wir Ihre Daten zur Zeit nicht aktualisieren können" oder aber (im absolut peinlichsten Fall) ein Stapelabbild des Webservers gezeigt.
 
-Diese Warnung ist eine Überraschung, denn das letzte Mal, als sie die Situation prüfte, war die Anzahl der Anforderungsfehler ermutigend niedrig. Eine kleine Anzahl von Fehlern werden in einem ausgelasteten Server erwartet.
+Diese Warnung ist eine Überraschung, denn das letzte Mal, als sie die Situation prüfte, war die Anzahl der Anforderungsfehler ermutigend niedrig. Eine kleine Anzahl von Fehlern werden in einem ausgelasteten Server erwartet. 
 
-Dies war ebenso eine Überraschung für sie, denn sie musste diese Warnung nicht konfigurieren. Die Proaktive Diagnose ist schon in Application Insights enthalten. Sie passt sich automatisch dem üblichen Fehlermuster Ihrer App an, und „gewöhnt sich“ an Fehler auf einer bestimmten Seite, unter hoher Last oder verknüpft mit anderen Metriken. Es wird nur dann ein Alarm ausgelöst, wenn der Anstieg über einen erwarteten Punkt hinausgeht.
+Dies war ebenso eine Überraschung für sie, denn sie musste diese Warnung nicht konfigurieren. Die intelligente Erkennung ist automatisch in Application Insights enthalten. Sie passt sich automatisch dem üblichen Fehlermuster Ihrer App an, und „gewöhnt sich“ an Fehler auf einer bestimmten Seite, unter hoher Last oder verknüpft mit anderen Metriken. Es wird nur dann ein Alarm ausgelöst, wenn der Anstieg über einen erwarteten Punkt hinausgeht.
 
 ![Proaktive Diagnose-E-Mail](./media/app-insights-detect-triage-diagnose/21.png)
 
@@ -97,16 +101,16 @@ Dies ist eine sehr nützliche E-Mail. Sie löst nicht nur einen Alarm aus, sie f
 
 Es wird gezeigt, wie viele Kunden, Webseiten oder Vorgänge betroffen sind. Marcela kann entscheiden, ob das gesamte Team als Übung für den Erstfall daran arbeiten soll, oder ob es reicht, diese Arbeit bis zur nächsten Woche aufzuschieben.
 
-Die E-Mail zeigt auch, dass eine bestimmte Ausnahme aufgetreten ist, und dass der Fehler den fehlerhaften Aufrufen auf eine bestimmte Datenbank zugeordnet werden kann, was sogar noch interessanter ist. Dies erklärt, warum der Fehler plötzlich aufgetreten ist, obwohl Marcelas Team in letzter Zeit keine Updates bereitgestellt hat.
+Die E-Mail zeigt auch, dass eine bestimmte Ausnahme aufgetreten ist, und dass der Fehler den fehlerhaften Aufrufen auf eine bestimmte Datenbank zugeordnet werden kann, was sogar noch interessanter ist. Dies erklärt, warum der Fehler plötzlich aufgetreten ist, obwohl Marcelas Team in letzter Zeit keine Updates bereitgestellt hat. 
 
 Sie sendet Ping-Nachrichten an den Leiter des Datenbankteams. Ja, sie haben ein Hotfix in der letzten halben Stunde herausgegeben, und ups, eine kleine Schemaänderung könnte durchgeführt worden sein ...
 
-Das Problem wird also behoben, noch vor der Untersuchung von Protokollen, und innerhalb von 15 Minuten vor dessen Erscheinen. Marcela klickt trotzdem auf den Link, um Application Insights zu öffnen. Sie wird direkt auf eine fehlgeschlagene Anforderung geleitet und sie kann die fehlerhafte Datenbankanforderung in der Liste der Abhängigkeitsaufrufe sehen.
+Das Problem wird also behoben, noch vor der Untersuchung von Protokollen, und innerhalb von 15 Minuten vor dessen Erscheinen. Marcela klickt trotzdem auf den Link, um Application Insights zu öffnen. Sie wird direkt auf eine fehlgeschlagene Anforderung geleitet und sie kann die fehlerhafte Datenbankanforderung in der Liste der Abhängigkeitsaufrufe sehen. 
 
 ![Fehlgeschlagene Anforderung](./media/app-insights-detect-triage-diagnose/23.png)
 
-## Erkennen von Ausnahmen
-Mit nur wenigen Einrichtungsschritten werden [Ausnahmen](app-insights-asp-net-exceptions.md) automatisch an Application Insights gemeldet. Die Ausnahmen können auch explizit aufgezeichnet werden, indem Aufrufe von [TrackException()](app-insights-api-custom-events-metrics.md#track-exception) in den Code eingefügt werden:
+## <a name="detecting-exceptions"></a>Erkennen von Ausnahmen
+Mit nur wenigen Einrichtungsschritten werden [Ausnahmen](app-insights-asp-net-exceptions.md) automatisch an Application Insights gemeldet. Die Ausnahmen können auch explizit aufgezeichnet werden, indem Aufrufe von [TrackException()](app-insights-api-custom-events-metrics.md#track-exception) in den Code eingefügt werden:  
 
     var telemetry = new TelemetryClient();
     ...
@@ -127,7 +131,7 @@ Mit nur wenigen Einrichtungsschritten werden [Ausnahmen](app-insights-asp-net-ex
     }
 
 
-Das Team der Fabrikam-Bank hat lässt sich bei einer Ausnahme stets Telemetriedaten senden, es sei denn, es gibt eine offensichtliche Problemlösung.
+Das Team der Fabrikam-Bank hat lässt sich bei einer Ausnahme stets Telemetriedaten senden, es sei denn, es gibt eine offensichtliche Problemlösung.  
 
 Die Strategie des Teams ist sogar noch umfassender: es lässt sich Telemetriedaten in allen Fällen senden, in denen der Kunde nicht den gewünschten Schritt ausführen kann, ob aufgrund einer Ausnahme im Code oder nicht. Wenn z. B. das externe Interbank-Überweisungssystem die Meldung "Diese Transaktion kann nicht abgeschlossen werden" aus bestimmten betrieblichen Gründen (ohne Fehlverhalten des Kunden) zurückgibt, wird auch dieses Ereignis nachverfolgt.
 
@@ -143,16 +147,16 @@ Die Strategie des Teams ist sogar noch umfassender: es lässt sich Telemetriedat
 
 "TrackException" wird verwendet, um Ausnahmen zu melden, da eine Kopie des Stapels gesendet wird. "TrackEvent" wird verwendet, um andere Ereignisse zu melden. Sie können alle Eigenschaften anfügen, die für die Diagnose hilfreich sein können.
 
-Ausnahmen und Ereignisse werden auf dem Blatt [Diagnosesuche][diagnostic] gezeigt. Sie können eine Detailsuche durchführen, um die weiteren Eigenschaften und die Stapelüberwachung anzuzeigen.
+Ausnahmen und Ereignisse werden auf dem Blatt [Diagnosesuche](app-insights-diagnostic-search.md) angezeigt. Sie können eine Detailsuche durchführen, um die weiteren Eigenschaften und die Stapelüberwachung anzuzeigen.
 
 ![Verwenden Sie bei der Diagnosesuche Filter, um bestimmte Datentypen anzeigen](./media/app-insights-detect-triage-diagnose/appinsights-333facets.png)
 
-## Überwachen der Benutzeraktivität
+## <a name="monitoring-user-activity"></a>Überwachen der Benutzeraktivität
 Wenn die Antwortzeit durchweg gut ist und nur wenige Ausnahmen auftreten, kann das Entwicklungsteam überlegen, wie es die Benutzererfahrung verbessern und mehr Benutzer ermutigen kann, die gewünschten Ziele zu erreichen.
 
 Die Websitenavigation von Benutzern folgt üblicherweise einem Trichtermodell: Viele Kunden sehen sich die Zinssätze verschiedener Darlehen an. Einige füllen das Angebotsformular aus. Und von denjenigen, die ein Angebot erhalten, nehmen einige wenige anschließend tatsächlich ein Darlehen auf.
 
-![](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![Anzahl von Seitenaufrufen](./media/app-insights-detect-triage-diagnose/12-funnel.png)
 
 Ein Unternehmen kann nun untersuchen, an welcher Stelle die meisten Kunden den Vorgang abbrechen, und so ermitteln, wie sich mehr Benutzer durch den gesamten Trichter schleusen lassen. In manchen Fällen tritt ein Fehler auf der Benutzeroberfläche auf. Beispielsweise ist die Schaltfläche „Weiter“ schwer zu finden, oder die Anweisungen sind nicht eindeutig zu erkennen. Wahrscheinlicher sind jedoch geschäftliche Gründe (wie etwa zu hohe Zinssätze für Darlehen).
 
@@ -160,17 +164,17 @@ Unabhängig von den Gründen kann das Team mithilfe der Daten ermitteln, welche 
 
 Das Team gewöhnt sich daran, Informationen zur Benutzeraktivität zu erhalten. Heute entwickelt das Team beim Entwerfen eines neuen Features ein Feedbackkonzept, um Informationen zur Nutzung zu erhalten. Es arbeitet von Anfang an Aufrufe zur Nachverfolgung in das Feature ein. Es verwendet das Feedback dazu, das Feature in jedem Entwicklungszyklus zu verbessern.
 
-## Proaktive Überwachung
-Marcela sitzt nicht bloß herum und wartet auf Warnungen. Schon bald nach jeder erneuten Bereitstellung befasst sie sich mit [Antwortzeiten][perf] – sowohl mit der Gesamtanzahl und der Tabelle mit den langsamsten Anforderungen als auch mit der Anzahl der Ausnahmen.
+## <a name="proactive-monitoring"></a>Proaktive Überwachung
+Marcela sitzt nicht bloß herum und wartet auf Warnungen. Schon bald nach jeder erneuten Bereitstellung befasst sie sich mit [Antwortzeiten](app-insights-web-monitor-performance.md) – sowohl mit der Gesamtanzahl und der Tabelle mit den langsamsten Anforderungen als auch mit der Anzahl der Ausnahmen.  
 
 ![Antwortzeitdiagramm und Raster von Serverantwortzeiten.](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
 
 Sie kann die Auswirkung jeder Bereitstellung auf die Leistung bewerten, indem üblicherweise jede Woche mit der Vorwoche verglichen wird. Sobald es eine plötzliche Verschlechterung gibt, wendet sie sich an die entsprechenden Entwickler.
 
-## Eingrenzung
-Die Eingrenzung, d. h. das Bewerten des Schweregrads und Ausmaßes eines Problems, ist der erste Schritt nach der Erkennung. Müssen wir das Team um Mitternacht herbeirufen? Oder kann es bis zur nächsten praktischen Lücke im Rückstand unbehandelt bleiben? Es gibt einige wichtigen Fragen bei der Eingrenzung.
+## <a name="triage"></a>Eingrenzung
+Die Eingrenzung, d. h. das Bewerten des Schweregrads und Ausmaßes eines Problems, ist der erste Schritt nach der Erkennung. Müssen wir das Team um Mitternacht herbeirufen? Oder kann es bis zur nächsten praktischen Lücke im Rückstand unbehandelt bleiben? Es gibt einige wichtigen Fragen bei der Eingrenzung.
 
-Wie ist das Ausmaß? Die Diagramme auf dem Blatt "Übersicht" setzen das Problem in Perspektive. Beispielsweise hat die Fabrikam-Anwendung vier Webtestwarnungen in einer Nacht generiert. Als sich das Team das Diagramm am Morgen ansah, konnte es einige rote Punkte erkennen, wenngleich für die meisten Tests die Zeichen auf grün standen. Nach einer Detailsuche im Verfügbarkeitsdiagramm war klar, dass all diese zwischenzeitlichen Probleme von einem bestimmten Test herrührten. Es handelte sich offensichtlich um ein Netzwerkproblem, das sich auf nur eine Route auswirkte und sich wahrscheinlich von selbst beheben sollte.
+Wie ist das Ausmaß? Die Diagramme auf dem Blatt "Übersicht" setzen das Problem in Perspektive. Beispielsweise hat die Fabrikam-Anwendung vier Webtestwarnungen in einer Nacht generiert. Als sich das Team das Diagramm am Morgen ansah, konnte es einige rote Punkte erkennen, wenngleich für die meisten Tests die Zeichen auf grün standen. Nach einer Detailsuche im Verfügbarkeitsdiagramm war klar, dass all diese zwischenzeitlichen Probleme von einem bestimmten Test herrührten. Es handelte sich offensichtlich um ein Netzwerkproblem, das sich auf nur eine Route auswirkte und sich wahrscheinlich von selbst beheben sollte.  
 
 Im Gegensatz dazu ist ein drastischer und stabiler Anstieg im Diagramm der Anzahl von Ausnahmen oder Dauer von Antwortzeiten natürlich etwas, das Grund zur Panik gibt.
 
@@ -184,12 +188,12 @@ Vergleichen Sie bei langsamen Antwortzeiten die Tabelle mit den am langsamsten b
 
 Wie wichtig ist das Szenario einer Blockierung? Wenn es sich um ein funktionales Problem handelt, das eine bestimmte User Story blockiert, wie wichtig ist es wirklich? Wenn Kunden ihre Rechnungen nicht zahlen können, ist es ernsthaft. Wenn sie die Farbeinstellungen ihres Bildschirms nicht ändern können, kann es möglicherweise warten. Die Details eines Ereignisses oder einer Ausnahme bzw. die Identität der langsamen Seite sagen Ihnen, wo Kunden Probleme haben.
 
-## Diagnose
+## <a name="diagnosis"></a>Diagnose
 Eine Diagnose ist nicht ganz dasselbe wie ein Debugging. Bevor Sie die Ablaufverfolgung im Code starten, müssen Sie eine grobe Vorstellung haben, warum, wo und wann das Problem auftritt.
 
 **Wann tritt es auf?** Die von den Ereignis- und Metrikdiagrammen bereitgestellte Verlaufsansicht vereinfacht das Korrelieren von Auswirkungen mit möglichen Ursachen. Wenn es bei den Antwortzeiten oder Ausnahmeraten zwischenzeitliche Spitzen gibt, untersuchen Sie die Anzahl der Anforderungen. Wenn die Spitze zur selben Zeit auftritt, liegt wahrscheinlich ein Ressourcenproblem vor. Müssen Sie mehr CPU oder Arbeitsspeicher zuweisen? Oder gibt es eine Abhängigkeit, die die Last nicht bewältigen kann?
 
-**Sind wir es?** Wenn es bei einem bestimmten Typ von Anforderung einen plötzlichen Leistungsabfall gibt, z. B. wenn der Kunde einen Kontoauszug wünscht, besteht die Möglichkeit, dass die Ursache ein externes Subsystem und nicht Ihre Webanwendung ist. Wählen Sie im Metrik-Explorer die Raten "Abhängigkeitsfehler" und "Abhängigkeitsdauer" aus, und vergleichen Sie deren Verlauf in den letzten Stunden oder Tagen mit dem erkannten Problem. Wenn es korrelierende Änderungen gibt, ist vielleicht ein externes Subsystem Schuld.
+**Sind wir es?**  Wenn es bei einem bestimmten Typ von Anforderung einen plötzlichen Leistungsabfall gibt, z. B. wenn der Kunde einen Kontoauszug wünscht, besteht die Möglichkeit, dass die Ursache ein externes Subsystem und nicht Ihre Webanwendung ist. Wählen Sie im Metrik-Explorer die Raten "Abhängigkeitsfehler" und "Abhängigkeitsdauer" aus, und vergleichen Sie deren Verlauf in den letzten Stunden oder Tagen mit dem erkannten Problem. Wenn es korrelierende Änderungen gibt, ist vielleicht ein externes Subsystem Schuld.  
 
 ![Diagramme von Abhängigkeitsfehlern und Dauer von Aufrufen von Abhängigkeiten](./media/app-insights-detect-triage-diagnose/11-dependencies.png)
 
@@ -197,36 +201,40 @@ Bei einigen Problemen mit langsamen Abhängigkeiten ist die Geolocation die Ursa
 
 **Was haben wir gemacht?** Wenn das Problem nicht einer Abhängigkeit zuzuschreiben ist und nicht immer vorhanden war, wird es wahrscheinlich durch eine zuletzt erfolgte Änderung verursacht. Die von den Metrik- und Ereignisdiagrammen zur Verfügung gestellte Verlaufsansicht erleichtert das Korrelieren plötzlicher Änderungen mit Bereitstellungen Dadurch kann die Suche nach der Problemursache eingeengt werden.
 
-**Was passiert?** Einige Probleme treten nur selten auf und können schwierig aufzuspüren sein, wenn Tests offline erfolgen. Alles, was wir tun können, ist versuchen, den Fehler zu erfassen, wenn er online auftritt. Sie können das Stapelabbild in den Ausnahmeberichten prüfen. Darüber hinaus können Sie die Ablaufverfolgungsaufrufe mit Ihrem bevorzugten Protokollierungsframework oder mit "TrackTrace()" oder "TrackEvent()" schreiben.
+**Was passiert?**  Einige Probleme treten nur selten auf und können schwierig aufzuspüren sein, wenn Tests offline erfolgen. Alles, was wir tun können, ist versuchen, den Fehler zu erfassen, wenn er online auftritt. Sie können das Stapelabbild in den Ausnahmeberichten prüfen. Darüber hinaus können Sie die Ablaufverfolgungsaufrufe mit Ihrem bevorzugten Protokollierungsframework oder mit "TrackTrace()" oder "TrackEvent()" schreiben.  
 
 Bei Fabrikam war ein zwischenzeitliches Problem bei Überweisungen zwischen Konten, jedoch nur bei bestimmten Kontotypen aufgetreten. Um besser zu verstehen, was passiert ist, hat das Team "TrackTrace()"-Aufrufe an wichtigen Punkten im Code eingefügt, wobei der Kontotyp jedem Aufruf als Eigenschaft angefügt wird. Dadurch wurde das Herausfiltern bloß dieser Ablaufverfolgungen bei der Diagnosesuche erleichtert. Außerdem hat das Team Parameterwerte als Eigenschaften und Kennzahlen an die Ablaufverfolgungsaufrufe angefügt.
 
-## Fehlerkorrektur
-Nachdem Sie das Problem diagnostiziert haben, arbeiten Sie einen Plan zu seiner Korrektur aus. Vielleicht müssen Sie eine zuletzt erfolgte Änderung rückgängig machen oder können das Probleme ohne diesen Schritt angehen. Nachdem die Korrektur erfolgt ist, informiert Application Insights Sie, ob Sie erfolgreich waren.
+## <a name="dealing-with-it"></a>Fehlerkorrektur
+Nachdem Sie das Problem diagnostiziert haben, arbeiten Sie einen Plan zu seiner Korrektur aus. Vielleicht müssen Sie eine zuletzt erfolgte Änderung rückgängig machen oder können das Probleme ohne diesen Schritt angehen. Nachdem die Korrektur erfolgt ist, informiert Application Insights Sie, ob Sie erfolgreich waren.  
 
 Das Entwicklungsteam der Fabrikam Bank befolgt nun einen strukturierteren Ansatz bei der Leistungsmessung als vor dem Einsatz von Application Insights.
 
 * Es legt auf der Übersichtsseite von Application Insights Leistungsziele in Bezug auf bestimmte Kennzahlen fest.
-* Das Team integriert von Anfang an Leistungsmessungen in die Anwendung, z. B. in Form von Metriken, die den Benutzerfortschritt in "Trichtern" messen.
+* Das Team integriert von Anfang an Leistungsmessungen in die Anwendung, z. B. in Form von Metriken, die den Benutzerfortschritt in "Trichtern" messen.  
 
-## Verwendung
-Application Insights kann auch genutzt werden, um zu erfahren, welche Aktionen Benutzer in einer Anwendung ausführen. Sobald sie reibungslos läuft, möchte das Team wissen, welche Funktionen am häufigsten genutzt werden, was Benutzer mögen, womit sie Schwierigkeiten haben und wie oft sie zurückkehren. Dadurch können die anstehenden Aufgaben mit Prioritäten versehen werden. Und außerdem kann das Team das Messen des Erfolg der einzelnen Features im Rahmen des Entwicklungszyklus planen. [Weitere Informationen][usage]
+## <a name="usage"></a>Verwendung
+Application Insights kann auch genutzt werden, um zu erfahren, welche Aktionen Benutzer in einer Anwendung ausführen. Sobald sie reibungslos läuft, möchte das Team wissen, welche Funktionen am häufigsten genutzt werden, was Benutzer mögen, womit sie Schwierigkeiten haben und wie oft sie zurückkehren. Dadurch können die anstehenden Aufgaben mit Prioritäten versehen werden. Und außerdem kann das Team das Messen des Erfolg der einzelnen Features im Rahmen des Entwicklungszyklus planen. [Weitere Informationen](app-insights-web-track-usage.md)
 
-## Ihre Anwendungen
-Ein Team kann also Application Insights nicht nur nutzen, um einzelne Probleme zu beheben, sondern auch um seine Softwareentwicklung zu verbessern. Ich hoffe, dass ich Ihnen einige Ideen vermitteln konnte, wie Sie Application Insights die Leistung Ihrer Anwendungen verbessern können.
+## <a name="your-applications"></a>Ihre Anwendungen
+Ein Team kann also Application Insights nicht nur nutzen, um einzelne Probleme zu beheben, sondern auch um seine Softwareentwicklung zu verbessern. Ich hoffe, dass ich Ihnen einige Ideen vermitteln konnte, wie Application Insights Sie bei der Verwaltung der Leistung Ihrer Anwendungen unterstützen kann.
 
-## Video
-[!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
+## <a name="next-steps"></a>Nächste Schritte
+Der Einstieg kann auf verschiedene Weise je nach den Eigenschaften Ihrer Anwendung erfolgen. Treffen Sie Ihre Auswahl:
 
-
-<!--Link references-->
-
-[api]: app-insights-api-custom-events-metrics.md
-[availability]: app-insights-monitor-web-app-availability.md
-[diagnostic]: app-insights-diagnostic-search.md
-[metrics]: app-insights-metrics-explorer.md
-[perf]: app-insights-web-monitor-performance.md
-[usage]: app-insights-web-track-usage.md
+* [ASP.NET-Webanwendung](app-insights-asp-net.md)
+* [Java-Webanwendung](app-insights-java-get-started.md)
+* [Node.js-Webanwendung](app-insights-nodejs.md)
+* Bereits bereitgestellte Apps, gehostet über [IIS](app-insights-monitor-web-app-availability.md), [J2EE](app-insights-java-live.md) oder [Azure](app-insights-azure.md).
+* [Webseiten:](app-insights-javascript.md) Einzelseiten-App oder gewöhnliche Webseite – eigenständig genutzt oder als Ergänzung zu den Serveroptionen.
+* [Verfügbarkeitstests:](app-insights-monitor-web-app-availability.md) zum Testen Ihrer App über das öffentliche Internet.
 
 
-<!---HONumber=AcomDC_0309_2016-->
+
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

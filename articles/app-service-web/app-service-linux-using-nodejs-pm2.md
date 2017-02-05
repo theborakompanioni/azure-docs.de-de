@@ -1,13 +1,13 @@
 ---
-title: Using PM2 Configuration for NodeJS in Web Apps on Linux | Microsoft Docs
-description: Using PM2 Configuration for NodeJS in Web Apps on Linux
-keywords: azure app service, web app, nodejs, pm2, linux, oss
+title: "Verwenden der PM2-Konfiguration für Node.js in Web-Apps unter Linux | Microsoft-Dokumentation"
+description: "Verwenden der PM2-Konfiguration für Node.js in Web-Apps unter Linux"
+keywords: Azure App Service, Web-App, Nodejs, PM2, Linux, OSS
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: naziml
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: fb420f32-6d74-49c7-992f-0ed5616e66e7
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,24 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a46f52198e956406c2384c45ed4323aff27259a0
+
 
 ---
-# <a name="using-pm2-configuration-for-node.js-in-web-apps-on-linux"></a>Using PM2 Configuration for Node.js in Web Apps on Linux
-If you set the application stack to Node.js for Web Apps on Linux, you will get the option to set a Node.js startup file as shown in the image below.
+# <a name="use-pm2-configuration-for-nodejs-in-web-apps-on-linux"></a>Verwenden der PM2-Konfiguration für Node.js in Web-Apps unter Linux
+Wenn Sie für Web-Apps unter Linux als Anwendungsstapel „Node.js“ festlegen, haben Sie die Option, eine Node.js-Startdatei anzugeben, wie in der folgenden Abbildung gezeigt:
 
-![][1]
+![Festlegen einer Node.js-Startdatei][1]
 
-You can use this to either
+Dadurch können Sie eine der folgenden Aufgaben ausführen:
 
-* Specify the startup script for your Node.js app (for example: /bin/server.js)
-* Specify the PM2 configuration file to use for your Node.js app (for example: /foo/process.json)
+* Angeben des Startskripts für Ihre Node.js-App (Beispiel: /bin/server.js)
+* Angeben der PM2-Konfigurationsdatei, die für Ihre Node.js-App verwendet werden soll (Beispiel: /foo/process.json)
   
   > [!NOTE]
-  > If you want your Node processes to automatically restart when certain files are modified, you will need to use PM2 configuration. Otherwise your application will not restart when it receives change notifications from things like continuous deployment when your application code changes.
+  > Verwenden Sie die PM2-Konfiguration, wenn die Node.js-Prozesse bei der Änderung bestimmter Dateien automatisch neu gestartet werden sollen. Andernfalls wird Ihre Anwendung nicht neu gestartet, wenn sie Änderungsbenachrichtigungen erhält (beispielsweise bei Änderungen des Anwendungscodes).
   > 
   > 
 
-You can check the Node.js [process file documentation](http://pm2.keymetrics.io/docs/usage/application-declaration/) for all the options, but below is a sample of what you would use as your process.json file
+Die [Dokumentation zur Prozessdatei](http://pm2.keymetrics.io/docs/usage/application-declaration/) für Node.js enthält alle Optionen. Nachfolgend ist jedoch ein Beispiel für eine Konfiguration aufgeführt, die Sie in Ihrer Datei „process.json“ verwenden können:
 
         {
           "name"        : "worker",
@@ -48,20 +52,21 @@ You can check the Node.js [process file documentation](http://pm2.keymetrics.io/
           }
         }
 
-Important things to note in this configuration are 
+Wichtige Hinweise zu dieser Konfiguration:
 
-* The "script" property specifies your application's start script.
-* The "instances" property specifies how many instances of the node process to launch. If you are running your application on larger VM sizes that have multiple cores, you want to maximize your resources by setting a higher value here.
-* The "watch" array specifies all files for whose change you want to restart your node processes.
-* For the "watch_options", you currently need to specify "usePolling" as true because of the way your application content is mounted.
+* Die Eigenschaft „script“ gibt das Startskript Ihrer Anwendung an.
+* Die Eigenschaft „instances“ gibt an, wie viele Instanzen des Knotenprozesses gestartet werden sollen. Wenn Ihre Anwendung auf größeren virtuellen Computern mit mehreren Kernen ausgeführt wird, wird empfohlen, die Ressourcen zu maximieren, indem Sie hier einen höheren Wert angeben.
+* Das Array „watch“ gibt alle Dateien an, für die der Knotenprozess bei einer Änderung neu gestartet werden soll.
+* Bei „watch_options“ müssen Sie aufgrund der Bereitstellung des Anwendungsinhalts für „usePolling“ derzeit „true“ angeben.
 
-## <a name="next-steps"></a>Next Steps
-* [What is App Service on Linux?](app-service-linux-intro.md)
+## <a name="next-steps"></a>Nächste Schritte
+* [Was ist App Service unter Linux](app-service-linux-intro.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-nodejs-pm2/nodejs-startup-file.png
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

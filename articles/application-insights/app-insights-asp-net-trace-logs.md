@@ -5,7 +5,7 @@ services: application-insights
 documentationcenter: .net
 author: alancameronwills
 manager: douge
-
+ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,17 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
+ms.openlocfilehash: d46407da69184da6b1dba72aeb86e97cf1cae725
+
 
 ---
-# Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights
-Wenn Sie NLog, log4Net oder System.Diagnostics.Trace für die Diagnoseablaufverfolgung in Ihrer ASP.NET-Anwendung verwenden, können Sie Ihre Protokolle an [Visual Studio Application Insights][start] senden, um sie dort zu untersuchen und zu durchsuchen. Die Protokolle werden mit den anderen Telemetriedaten aus Ihrer Anwendung zusammengeführt, damit Sie die Ablaufverfolgungen für die Verarbeitung der einzelnen Benutzeranforderungen identifizieren und mit anderen Ereignissen und Ausnahmeberichten in Beziehung setzen können.
+# <a name="explore-net-trace-logs-in-application-insights"></a>Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights
+Wenn Sie NLog, log4Net oder System.Diagnostics.Trace für die Diagnoseablaufverfolgung in Ihrer ASP.NET-Anwendung verwenden, können Sie Ihre Protokolle an [Azure Application Insights][start] senden, um sie dort zu untersuchen und zu durchsuchen. Die Protokolle werden mit den anderen Telemetriedaten aus Ihrer Anwendung zusammengeführt, damit Sie die Ablaufverfolgungen für die Verarbeitung der einzelnen Benutzeranforderungen identifizieren und mit anderen Ereignissen und Ausnahmeberichten in Beziehung setzen können.
 
 > [!NOTE]
 > Benötigen Sie das Protokollerfassungsmodul? Dabei handelt es sich um einen nützlichen Adapter für die Protokollierung von Drittanbietern. Falls Sie nicht bereits NLog, log4Net oder „System.Diagnostics.Trace“ verwenden, können Sie auch einfach direkt [Application Insights TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) aufrufen.
 > 
 > 
 
-## Installieren der Protokollierung in Ihrer App
+## <a name="install-logging-on-your-app"></a>Installieren der Protokollierung in Ihrer App
 Installieren Sie das ausgewählte Protokollierungsframework in Ihrem Projekt. Damit sollte ein Eintrag in der Datei „app.config“ oder „web.config“ vorgenommen werden.
 
 Wenn Sie System.Diagnostics.Trace verwenden, müssen Sie einen Eintrag in „web.config“ hinzufügen:
@@ -44,18 +48,18 @@ Wenn Sie System.Diagnostics.Trace verwenden, müssen Sie einen Eintrag in „web
    </configuration>
 ```
 
-## Konfigurieren von Application Insights für das Erfassen von Protokollen
+## <a name="configure-application-insights-to-collect-logs"></a>Konfigurieren von Application Insights für das Erfassen von Protokollen
 Falls Sie dies noch nicht getan haben, **[fügen Sie Ihrem Projekt Application Insights hinzu](app-insights-asp-net.md)**. Es wird eine Option angezeigt, mit der Sie den Log Collector einfügen können.
 
-Sie können auch im Projektmappen-Explorer mit der rechten Maustaste auf **Application Insights konfigurieren** klicken. Wählen Sie die Option aus, mit der Sie den Log Collector einfügen.
+Sie können auch im Projektmappen-Explorer mit der rechten Maustaste auf **Application Insights konfigurieren** klicken. Wählen Sie die Option **Ablaufverfolgungssammlung konfigurieren**.
 
-*Kein Application Insights-Menü und keine Log Collector-Option?* Lesen Sie in der [Problembehandlung](#troubleshooting) nach.
+*Kein Application Insights-Menü und keine Log Collector-Option?* Lesen Sie in der [Problembehandlung](#troubleshooting)nach.
 
-## Manuelle Installation
-Verwenden Sie diese Methode, wenn der Projekttyp vom Application Insights-Installationsprogramm nicht unterstützt wird (z. B. bei einem Windows-Desktopprojekt).
+## <a name="manual-installation"></a>Manuelle Installation
+Verwenden Sie diese Methode, wenn der Projekttyp vom Application Insights-Installationsprogramm nicht unterstützt wird (z. B. bei einem Windows-Desktopprojekt). 
 
-1. Wenn Sie log4Net oder NLog verwenden möchten, installieren Sie es in Ihrem Projekt.
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie dann **NuGet-Pakete verwalten** aus.
+1. Wenn Sie log4Net oder NLog verwenden möchten, installieren Sie es in Ihrem Projekt. 
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie dann **NuGet-Pakete verwalten**aus.
 3. Suchen Sie nach "Application Insights".
    
     ![Vorabversion des entsprechenden Adapters auswählen](./media/app-insights-asp-net-trace-logs/appinsights-36nuget.png)
@@ -67,7 +71,7 @@ Verwenden Sie diese Methode, wenn der Projekttyp vom Application Insights-Instal
 
 Das NuGet-Paket installiert die erforderlichen Assemblys und ändert auch die Datei "web.config" oder "app.config".
 
-## Einfügen von Diagnoseprotokollaufrufen
+## <a name="insert-diagnostic-log-calls"></a>Einfügen von Diagnoseprotokollaufrufen
 Wenn Sie System.Diagnostics.Trace verwenden, wäre ein typischer Aufruf:
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
@@ -77,79 +81,79 @@ Wenn Sie log4net oder NLog bevorzugen:
     logger.Warn("Slow response - database01");
 
 
-## Direktes Verwenden der Ablaufverfolgungs-API
-Sie können die API zur Application Insights-Ablaufverfolgung direkt aufrufen. Die Protokollierungsadapter verwenden diese API.
+## <a name="using-the-trace-api-directly"></a>Direktes Verwenden der Ablaufverfolgungs-API
+Sie können die API zur Application Insights-Ablaufverfolgung direkt aufrufen. Die Protokollierungsadapter verwenden diese API. 
 
 Beispiel:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
-Ein Vorteil von TrackTrace ist, dass relativ lange Daten in die Nachricht eingefügt werden können. Sie können dort z. B. POST-Daten codieren.
+Ein Vorteil von TrackTrace ist, dass relativ lange Daten in die Nachricht eingefügt werden können. Sie können dort z. B. POST-Daten codieren. 
 
-Darüber hinaus können Sie Ihrer Nachricht einen Schweregrad hinzufügen. Wie andere Telemetriedaten können Sie Eigenschaftswerte hinzufügen, die Sie verwenden können, um zu filtern oder nach verschiedene Spuren zu suchen. Zum Beispiel:
+Darüber hinaus können Sie Ihrer Nachricht einen Schweregrad hinzufügen. Wie andere Telemetriedaten können Sie Eigenschaftswerte hinzufügen, die Sie verwenden können, um zu filtern oder nach verschiedene Spuren zu suchen. Beispiel:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-Auf diese Weise können Sie in der [Suche][diagnostic] alle Nachrichten eines bestimmten Schweregrads, die im Zusammenhang mit einer bestimmten Datenbank stehen, einfach herausfiltern.
+Auf diese Weise können Sie in der [Suche][diagnostic] problemlos alle Nachrichten eines bestimmten Schweregrads herausfiltern, die im Zusammenhang mit einer bestimmten Datenbank stehen.
 
-## Untersuchen Ihrer Protokolle
+## <a name="explore-your-logs"></a>Untersuchen Ihrer Protokolle
 Führen Sie die App im Debugmodus aus, oder stellen Sie sie live bereit.
 
-Wählen Sie im Übersichtsblatt im [Application Insights-Portal][portal] die Option [Suchen][diagnostic].
+Wählen Sie auf dem Übersichtsblatt im [Application Insights-Portal][portal] die Option [Suchen][diagnostic].
 
 ![Wählen Sie in Application Insights die Option "Suchen".](./media/app-insights-asp-net-trace-logs/020-diagnostic-search.png)
 
-![Suchen](./media/app-insights-asp-net-trace-logs/10-diagnostics.png)
+![Suche](./media/app-insights-asp-net-trace-logs/10-diagnostics.png)
 
 Sie haben beispielsweise folgende Möglichkeiten:
 
 * Filtern nach Protokollablaufverfolgungen oder nach Elementen mit bestimmten Eigenschaften
 * Untersuchen eines bestimmten Elements im Detail
-* Finden weiterer Telemetriedaten im Zusammenhang mit derselben Benutzeranforderung (d. h. mit derselben OperationId)
+* Finden weiterer Telemetriedaten im Zusammenhang mit derselben Benutzeranforderung (d. h. mit derselben OperationId) 
 * Speichern der Konfiguration dieser Seite als Favorit
 
 > [!NOTE]
-> **Stichproben** Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
+> **Stichproben**  Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [Diagnostizieren von Fehlern und Ausnahmen in ASP.NET][exceptions]
 
-[Weitere Informationen zur Suche][diagnostic].
+[Weitere Informationen zur Suche][diagnostic]
 
-## Problembehandlung
-### Wie geht das mit Java?
+## <a name="troubleshooting"></a>Problembehandlung
+### <a name="how-do-i-do-this-for-java"></a>Wie geht das mit Java?
 Verwenden Sie die [Java-Protokolladapter](app-insights-java-trace-logs.md).
 
-### Keine Application Insights-Option im Kontextmenü des Projekts
+### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Keine Application Insights-Option im Kontextmenü des Projekts
 * Überprüfen Sie, ob die Application Insights-Tools auf diesem Entwicklungscomputer installiert sind. Suchen Sie in Visual Studio im Menü „Extras“ unter „Erweiterungen und Updates“ nach „Application Insights-Tools“. Wenn die Option nicht auf der Registerkarte „Installiert“ angezeigt wird, öffnen Sie die Registerkarte „Online“ und installieren sie.
 * Möglicherweise wird das Projekt von den Application Insights-Tools nicht unterstützt. Verwenden Sie die [manuelle Installation](#manual-installation).
 
-### Keine Option für die Protokolladapter im Konfigurationstool
+### <a name="no-log-adapter-option-in-the-configuration-tool"></a>Keine Option für die Protokolladapter im Konfigurationstool
 * Sie müssen zunächst das Protokollierungsframework installieren.
-* Wenn Sie System.Diagnostics.Trace verwenden, müssen Sie die [Konfiguration in `web.config` vornehmen](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
+* Wenn Sie „System.Diagnostics.Trace“ verwenden, müssen Sie die [Konfiguration in `web.config` vornehmen](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
 * Haben Sie die neueste Version der Application Insights-Tools? Wählen Sie in Visual Studio im Menü **Extras** die Option **Erweiterungen und Updates** aus, und öffnen Sie die Registerkarte **Updates**. Wenn die Application Insights-Tools hier aufgeführt werden, klicken Sie darauf, um sie zu aktualisieren.
 
-### <a name="emptykey"></a>Eine Fehlermeldung "Instrumentationsschlüssel darf nicht leer sein" wird angezeigt.
+### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>Eine Fehlermeldung "Instrumentationsschlüssel darf nicht leer sein" wird angezeigt.
 Anscheinend haben Sie das Protokollierungsadapter-Nuget-Paket installiert, ohne Application Insights zu installieren.
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Ein Dialogfeld wird angezeigt, das Sie zur Anmeldung bei Azure und zum Erstellen einer Application Insights-Ressource oder dem Wiederverwenden einer vorhandenen Ressource einlädt. Damit sollte das Problem behoben sein.
 
-### Ablaufverfolgungen werden in der Diagnosesuche angezeigt, aber nicht die anderen Ereignisse.
+### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>Ablaufverfolgungen werden in der Diagnosesuche angezeigt, aber nicht die anderen Ereignisse.
 Manchmal kann es eine Weile dauern, bis alle Ereignisse und Anforderungen über die Pipeline abgerufen werden.
 
-### <a name="limits"></a>Wie viele Daten werden beibehalten?
+### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>Wie viele Daten werden beibehalten?
 Bis zu 500 Ereignisse pro Sekunde für jede Anwendung. Ereignisse werden sieben Tage lang aufbewahrt.
 
-### Ich kann einige erwartete Protokolleinträge nicht finden.
-Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
+### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>Ich kann einige erwartete Protokolleinträge nicht finden.
+ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 
-## <a name="add"></a>Nächste Schritte
+## <a name="a-nameaddanext-steps"></a><a name="add"></a>Nächste Schritte
 * [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit][availability]
 * [Problembehandlung][qna]
 
@@ -164,4 +168,8 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 
 
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

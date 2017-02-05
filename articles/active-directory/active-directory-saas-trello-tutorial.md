@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Trello | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Trello konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5af430daa609f1838c640949f535f1d84cbe5f13
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-trello"></a>Tutorial: Azure Active Directory-Integration mit Trello
+# <a name="tutorial-azure-active-directory-integration-with-trello"></a>Tutorial: Azure Active Directory-Integration mit Trello
 In diesem Tutorial erfahren Sie, wie Sie Trello in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Trello in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Trello hat.
+* Sie können in Azure AD steuern, wer Zugriff auf Trello hat.
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Trello anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Trello konfigurieren zu können, benötigen Sie Folgendes:
@@ -77,12 +81,12 @@ Zum Konfigurieren der Integration von Trello in Azure AD müssen Sie Trello aus 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Trello mithilfe eines Testbenutzers namens Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Trello als Gegenbenutzer für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Trello muss eine Verknüpfungsbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Trello als Gegenbenutzer für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Trello muss eine Verknüpfungsbeziehung eingerichtet werden.
 Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen**** in Azure AD als Benutzernamen**** in Trello zuweisen. Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Trello müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Trello-Testbenutzers](#creating-a-the-funding-portal-test-user)** , um eine Entsprechung von Britta Simon in Trello zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen eines Trello-Testbenutzers](#creating-a-the-funding-portal-test-user)** , um eine Entsprechung von Britta Simon in Trello zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -100,11 +104,11 @@ Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute ent
     ![Einmaliges Anmelden konfigurieren][5]
 2. Führen Sie im Dialogfeld **SAML-Tokenattribute** für jede Zeile in der folgenden Tabelle die folgenden Schritte aus:
 
-      | Attributname | Attributwert |
-      | --- | --- |    
-      | User.Email | user.mail |
-      | User.FirstName | user.givenname |
-      | User.LastName | user.surname |
+    | Attributname | Attributwert |
+    | --- | --- |    
+    | User.Email | user.mail |
+    | User.FirstName | user.givenname |
+    | User.LastName | user.surname |
 
     a. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
@@ -262,6 +266,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Trello“ klicken, sollten Sie aut
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

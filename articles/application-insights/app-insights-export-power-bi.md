@@ -1,253 +1,97 @@
 ---
-title: Datenexport nach Power BI aus Application Insights
-description: Artikel
+title: Exportieren nach Power BI aus Application Insights | Microsoft Docs
+description: "Analytics-Abfragen können in Power BI angezeigt werden."
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: noamben
 manager: douge
-
+ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2016
+ms.date: 10/18/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
+ms.openlocfilehash: dba7f1ac2257246f14acf79de6e9fc714689b276
+
 
 ---
-# Datenimport nach Power BI aus Application Insights
-[Power BI](http://www.powerbi.com/) ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten und Teilen von Einblicken. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, beispielsweise auch aus [Visual Studio Application Insights](app-insights-overview.md).
+# <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
+[Power BI](http://www.powerbi.com/) ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten und Teilen von Einblicken. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](app-insights-overview.md).
 
-Informationen für den Einstieg finden Sie unter [Anzeigen von Application Insights-Daten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-application-insights/).
+Es gibt drei empfohlene Methoden zum Exportieren von Application Insights-Daten nach Power BI. Diese können Sie separat oder zusammen verwenden.
 
-Sie erhalten ein anfängliches Dashboard, das Sie anpassen können, indem Sie die Application Insights-Diagramme mit denen aus anderen Quellen kombinieren. Es gibt einen Katalog mit visuellen Elementen, in dem weitere Diagramme bereitgestellt werden. Jedes dieser Diagramme verfügt über Parameter, die Sie festlegen können.
+* [**Power BI-Adapter**](#power-pi-adapter): Richten Sie ein vollständiges Dashboard mit den Telemetriedaten Ihrer App ein. Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
+* [**Exportieren von Analytics-Abfragen**](#export-analytics-queries): Schreiben Sie mit Analytics eine beliebige Abfrage, und exportieren Sie sie nach Power BI. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
+* [**Fortlaufender Export und Stream Analytics**](app-insights-export-stream-analytics.md): Hierfür fällt mehr Einrichtungsaufwand an. Dies ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume aufbewahren möchten. Andernfalls sind eher die anderen Methoden zu empfehlen.
 
-![](./media/app-insights-export-power-bi/010.png)
+## <a name="power-bi-adapter"></a>Power BI-Adapter
+Mit dieser Methode wird für Sie ein vollständiges Dashboard mit Telemetriedaten erstellt. Das anfängliche Dataset ist vordefiniert, aber Sie können weitere Daten hinzufügen.
+
+### <a name="get-the-adapter"></a>Abrufen des Adapters
+1. Melden Sie sich bei [Power BI](https://app.powerbi.com/) an.
+2. Öffnen Sie **Get Data** (Daten abrufen), **Services** (Dienste), **Application Insights**.
+   
+    ![Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/power-bi-adapter.png)
+3. Geben Sie die Details Ihrer Application Insights-Ressource an.
+   
+    ![Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/azure-subscription-resource-group-name.png)
+4. Warten Sie ein oder zwei Minuten, bis die Daten importiert wurden.
+   
+    ![Power BI-Adapter](./media/app-insights-export-power-bi/010.png)
+
+Sie können das Dashboard bearbeiten und die Application Insights-Diagramme mit den Diagrammen anderer Quellen und mit Analytics-Abfragen kombinieren. Es gibt einen Katalog mit visuellen Elementen, in dem weitere Diagramme bereitgestellt werden. Jedes dieser Diagramme verfügt über Parameter, die Sie festlegen können.
 
 Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich aktualisiert. Sie können den Aktualisierungszeitplan im Dataset steuern.
 
-**Stichproben** Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. Dasselbe gilt, wenn Sie die Stichprobenerstellung entweder im SDK oder bei der Erfassung manuell festgelegt haben. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
+## <a name="export-analytics-queries"></a>Exportieren von Analytics-Abfragen
+Mit dieser Route können Sie eine beliebige Analytics-Abfrage schreiben und dann in ein Power BI-Dashboard exportieren. (Sie können dem mit dem Adapter erstellten Dashboard Elemente hinzufügen.)
 
-## Alternative Möglichkeiten zur Anzeige von Application Insights-Daten
-* [Azure-Dashboards, die Application Insights-Diagramme enthalten](app-insights-dashboards.md): Diese sind möglicherweise besser geeignet, wenn Sie ausschließlich Azure-Daten anzeigen möchten. Wenn Sie beispielsweise ein Dashboard mit Application Insights-Diagrammen einrichten möchten, über die verschiedene Komponenten eines Systems gemeinsam mit einigen Azure-Dienstmonitoren überwacht werden, stellt ein Azure-Dashboard die ideale Wahl dar. Es wird standardmäßig häufiger aktualisiert. 
-* [Fortlaufender Export](app-insights-export-telemetry.md): Hierbei werden Ihre eingehenden Daten in Azure-Speicher kopiert. Von dort aus können Sie die Daten dann verschieben und in der beliebiger Weise verarbeiten.
-* [Analytics](app-insights-analytics.md): Ermöglicht die Ausführung komplexer Abfragen für die in Application Insights enthaltenen Rohdaten.
+### <a name="one-time-install-power-bi-desktop"></a>Einmalig: Installieren von Power BI Desktop
+Zum Importieren Ihrer Application Insights-Abfrage verwenden Sie die Desktopversion von Power BI. Diese können Sie dann aber im Web oder in Ihrem Power BI-Cloudarbeitsbereich veröffentlichen. 
 
-## Erstellen eines eigenen Power BI-Adapters mit Stream Analytics
-Das Power BI-Inhaltspaket für Application Insights zeigt eine nützliche Teilmenge Ihrer App-Telemetriedaten an, die für Ihre Anforderungen sehr wahrscheinlich ausreicht. Wenn Sie aber umfangreichere Telemetriedaten benötigen oder einige Daten aus den unverarbeiteten Telemetriedaten berechnen möchten, können Sie über den Azure Stream Analytics-Dienst einen eigenen Adapter erstellen.
+Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
-In diesem Fall werden Daten aus Application Insights in den Azure-Speicher exportiert. [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ruft die Daten von dort ab, benennt einige Felder um, verarbeitet sie und reicht die Daten an Power BI weiter. Stream Analytics ist ein Dienst, der einen fortlaufenden Datenstrom filtern, aggregrieren und Berechnungen für diesen durchführen kann.
+### <a name="export-an-analytics-query"></a>Exportieren einer Analytics-Abfrage
+1. [Öffnen Sie Analytics, und schreiben Sie Ihre Abfrage](app-insights-analytics-tour.md).
+2. Testen und optimieren Sie die Abfrage, bis Sie mit den Ergebnissen zufrieden sind.
 
-![Blockdiagramm für Export über SA nach PBI](./media/app-insights-export-power-bi/020.png)
-
-> [!TIP]
-> **Sie müssen das im verbleibenden Teil dieses Artikels beschriebene Verfahren (mit Stream Analytics) nicht ausführen**, um Application Insights-Daten in Power BI anzuzeigen. Es geht viel einfacher! [Verwenden Sie stattdessen den kostenlosen Adapter](https://powerbi.microsoft.com/documentation/powerbi-content-pack-application-insights/). Führen Sie das im weiteren Verlauf dieses Artikels beschriebene Verfahren nur dann aus, wenn dieser Adapter nicht alle benötigten Daten bietet oder Sie eigene Aggregationen oder Funktionen für Ihre Daten definierten möchten.
-> 
-> 
-
-### Erstellen von Speicher in Azure
-Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto übertragen, daher müssen Sie zuerst Speicher erstellen.
-
-1. Haben Sie das [Power BI-Powerpack für Application Insights](https://powerbi.microsoft.com/documentation/powerbi-content-pack-application-insights/) ausprobiert? Wenn dieses für Ihre Anforderungen ausreicht, benötigen Sie die weiteren Informationen in diesem Artikel nicht.
-2. Erstellen Sie ein „klassisches“ Speicherkonto in Ihrem Abonnement im [Azure-Portal](https://portal.azure.com).
+   **Stellen Sie sicher, dass die Abfrage ordnungsgemäß in Analytics ausgeführt wird, bevor Sie sie exportieren.**
+3. Wählen Sie im Menü **Exportieren** die Option **Power BI (M)**. Speichern Sie die Textdatei.
    
-   ![Wählen Sie im Azure-Portal „Neu“ > „Daten“ > „Speicher“ aus.](./media/app-insights-export-power-bi/030.png)
-3. Erstellen eines Containers
+    ![Exportieren der Power BI-Abfrage](./media/app-insights-export-power-bi/analytics-export-power-bi.png)
+4. Wählen Sie in Power BI Desktop die Option **Get Data (Daten abrufen) > Leere Abfrage**, und wählen Sie anschließend im Abfrage-Editor unter **Ansicht** die Option **Advanced Query Editor** (Editor für erweiterte Abfragen).
+
+    Fügen Sie das exportierte M-Sprachskript in den Editor für erweiterte Abfragen ein.
+
+    ![Editor für erweiterte Abfragen](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
+
+1. Unter Umständen müssen Sie Anmeldeinformationen angeben, um für Power BI den Zugriff auf Azure zuzulassen. Verwenden Sie die Option „Organisationskonto“, um sich mit Ihrem Microsoft-Konto anzumelden.
    
-    ![Wählen Sie im neuen Speicher „Container“ aus, klicken Sie auf die Kachel „Container“ und anschließend auf „Hinzufügen“.](./media/app-insights-export-power-bi/040.png)
-4. Kopieren Sie den Speicherzugriffsschlüssel.
+    ![Angeben von Azure-Anmeldeinformationen zum Zulassen der Ausführung von Application Insights-Abfragen für Power BI](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
+
+    (Wenn Sie die Anmeldeinformationen überprüfen müssen, verwenden Sie den Menübefehl „Datenquelleneinstellungen“ im Abfrage-Editor. Sie müssen unbedingt Ihre Anmeldeinformationen für Azure verwenden, die sich von denen für Power BI möglicherweise unterscheiden.)
+2. Wählen Sie eine Visualisierung für Ihre Abfrage aus, und wählen Sie die Felder für x-Achse, y-Achse und Segmentierungsdimension.
    
-    Sie benötigen ihn bald, um die Eingabe für den Stream Analytics-Dienst einzurichten.
+    ![Auswählen der Visualisierung](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
+3. Veröffentlichen Sie den Bericht in Ihrem Power BI-Cloudarbeitsbereich. Von hier aus können Sie eine synchronisierte Version in andere Webseiten einbetten.
    
-    ![Öffnen Sie im Speicher die Optionen „Einstellungen“, „Schlüssel“, und kopieren Sie den primären Zugriffsschlüssel.](./media/app-insights-export-power-bi/045.png)
+    ![Auswählen der Visualisierung](./media/app-insights-export-power-bi/publish-power-bi.png)
+4. Aktualisieren Sie den Bericht in bestimmten Abständen manuell, oder richten Sie auf der Seite mit den Optionen eine geplante Aktualisierung ein.
 
-### Starten des fortlaufenden Exports in den Azure-Speicher
-Mit dem [fortlaufenden Export](app-insights-export-telemetry.md) werden Daten aus Application Insights in den Azure-Speicher verschoben.
+## <a name="about-sampling"></a>Informationen zur Stichprobenerstellung (Sampling)
+Wenn für Ihre Anwendung große Datenmengen gesendet werden, wird ggf. die Funktion für die Adaptive Stichprobenerstellung verwendet und nur ein prozentualer Anteil der Telemetriedaten gesendet. Dasselbe gilt, wenn Sie die Stichprobenerstellung entweder im SDK oder bei der Erfassung manuell festgelegt haben. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 
-1. Navigieren Sie im Azure-Portal zu der Application Insights-Ressource, die Sie für Ihre Anwendung erstellt haben.
-   
-    ![Wählen Sie „Durchsuchen“, „Application Insights“ und Ihre Anwendung aus.](./media/app-insights-export-power-bi/050.png)
-2. Erstellen Sie einen fortlaufenden Export.
-   
-    ![Wählen Sie „Einstellungen“ > „Fortlaufender Export“ > „Hinzufügen“.](./media/app-insights-export-power-bi/060.png)
+## <a name="next-steps"></a>Nächste Schritte
+* [Power BI – Informationen](http://www.powerbi.com/learning/)
+* [Analytics-Tutorial](app-insights-analytics-tour.md)
 
-    Wählen Sie das zuvor erstellte Speicherkonto aus:
 
-    ![Legen Sie das Exportziel fest.](./media/app-insights-export-power-bi/070.png)
 
-    Legen Sie die Ereignistypen fest, die Sie anzeigen möchten:
 
-    ![Wählen Sie Ereignistypen aus.](./media/app-insights-export-power-bi/080.png)
+<!--HONumber=Nov16_HO3-->
 
-1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](app-insights-metrics-explorer.md) sowie einzelne Ereignisse in der [Diagnosesuche](app-insights-diagnostic-search.md).
-   
-    Darüber hinaus werden die Daten in Ihren Speicher exportiert.
-2. Überprüfen Sie die exportierten Daten. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld „Neues Projekt“ und anschließend „Visual C# / Cloud / Microsoft Azure SDK für .NET abrufen“.)
-   
-    ![](./media/app-insights-export-power-bi/04-data.png)
-   
-    Notieren Sie sich den gemeinsamen Teil des Pfadnamens, der sich vom Anwendungsnamen und vom Instrumentierungsschlüssel ableitet.
 
-Die Ereignisse werden in Blobdateien im JSON-Format geschrieben. Jede Datei kann ein oder mehrere Ereignisse enthalten. Daher möchten wir die Ereignisdaten lesen und die gewünschten Felder herausfiltern. Es gibt viele verschiedene Möglichkeiten zur Nutzung der Daten, aber unser Plan besteht darin, die Daten mit Stream Analytics per Pipe an Power BI weiterzureichen.
-
-### Erstellen einer Azure Stream Analytics-Instanz
-Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrags:
-
-![](./media/app-insights-export-power-bi/090.png)
-
-![](./media/app-insights-export-power-bi/100.png)
-
-Wenn der neue Auftrag erstellt ist, erweitern Sie die Details:
-
-![](./media/app-insights-export-power-bi/110.png)
-
-#### Festlegen des Blobspeicherorts
-Legen Sie den Auftrag so fest, dass er Eingaben vom Blob für den fortlaufenden Export erhält:
-
-![](./media/app-insights-export-power-bi/120.png)
-
-Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, den Sie zuvor notiert haben. Legen Sie diesen als Speicherkontoschlüssel fest.
-
-![](./media/app-insights-export-power-bi/130.png)
-
-#### Festlegen des Präfixmusters des Pfads
-![](./media/app-insights-export-power-bi/140.png)
-
-**Achten Sie darauf, dass das Datum das Format „JJJJ-MM-TT“ (mit Bindestrichen) aufweist.**
-
-Das Präfixmuster des Pfads gibt an, wo Stream Analytics die Eingabedateien im Speicher findet. Sie müssen es so einstellen, dass es der Speicherung der Daten durch den fortlaufenden Export entspricht. Legen Sie ihn wie folgt fest:
-
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
-
-In diesem Beispiel:
-
-* `webapplication27` ist der Name der Application Insights-Ressource in **Kleinbuchstaben**.
-* `1234...` ist der Instrumentierungsschlüssel der Application Insights-Ressource **ohne Bindestriche**. 
-* `PageViews` ist der zu analysierende Datentyp. Die verfügbaren Typen sind abhängig von dem Filter, den Sie im fortlaufenden Export festlegen. Untersuchen Sie die exportierten Daten, um die anderen verfügbaren Typen anzuzeigen, und sehen Sie sich das [Exportdatenmodell](app-insights-export-data-model.md) an.
-* `/{date}/{time}` ist ein als Literal geschriebenes Muster.
-
-> [!NOTE]
-> Überprüfen Sie den Speicher, um sicherzustellen, dass der Pfad stimmt.
-> 
-> 
-
-#### Fertig stellen des ersten Setups
-Bestätigen Sie das Serialisierungsformat:
-
-![Bestätigen Sie den Vorgang, und schließen Sie den Assistenten.](./media/app-insights-export-power-bi/150.png)
-
-Schließen Sie den Assistenten, und warten Sie, bis das Setup abgeschlossen ist.
-
-> [!TIP]
-> Verwenden Sie den Beispielbefehl, um einige Daten herunterzuladen. Behalten Sie ihn als Testbeispiel, um Ihre Abfrage zu debuggen.
-> 
-> 
-
-### Festlegen der Ausgabe
-Nun wählen Sie Ihren Auftrag aus und legen die Ausgabe fest.
-
-![Wählen Sie den neuen Kanal aus, klicken Sie auf „Ausgaben“ > „Hinzufügen“ > „Power BI“.](./media/app-insights-export-power-bi/160.png)
-
-Geben Sie Ihr **Geschäfts- oder Schulkonto** an, um Stream Analytics für den Zugriff auf Ihre Power BI-Ressource zu autorisieren. Geben Sie anschließend Namen für die Ausgabe sowie für den Power BI-Zieldatensatz und die Zieltabelle an.
-
-![Erfinden Sie drei Namen.](./media/app-insights-export-power-bi/170.png)
-
-### Festlegen der Abfrage
-Die Abfrage bestimmt die Übersetzung von der Eingabe zur Ausgabe.
-
-![Wählen Sie den Auftrag aus, und klicken Sie auf „Abfrage“. Fügen Sie das folgenden Beispiel ein.](./media/app-insights-export-power-bi/180.png)
-
-Überprüfen Sie mithilfe der Testfunktion, ob Sie die richtige Ausgabe erhalten. Geben Sie die Beispieldaten an, die Sie der Eingabeseite entnommen haben.
-
-#### Abfrage zum Anzeigen der Anzahl von Ereignissen
-Fügen Sie diese Abfrage ein:
-
-```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
-```
-
-* „export-input“ ist der Alias, den wir der Datenstromeingabe gegeben haben.
-* „pbi-outout“ ist der definierte Ausgabealias.
-* Wir verwenden [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx), da sich der Ereignisname in einem geschachtelten JSON-Arrray befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx)-Klausel gruppiert die Elemente in Zeiträume von einer Minute.
-
-#### Abfrage zum Anzeigen metrischer Werte
-```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
-
-* Diese Abfrage führt einen Drilldown in die Telemetrie der Metriken durch, um die Uhrzeit und den metrischen Wert des Ereignisses abzurufen. Die metrischen Werte befinden sich in einem Array, daher verwenden wir das Muster „OUTER APPLY GetElements“ zum Extrahieren der Zeilen. In diesem Fall lautet der Name der Metrik „myMetric“. 
-
-#### Abfrage zum Anzeigen von Dimensionseigenschaften
-```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
-```
-
-* Diese Abfrage enthält Dimensionseigenschaftswerte, ohne dabei davon abhängig zu sein, dass eine bestimmte Dimension in einem festen Index im Dimensionsarray liegt.
-
-### Ausführen des Auftrags
-Sie können ein Datum in der Vergangenheit auswählen, ab dem der Auftrag ausgeführt werden soll.
-
-![Wählen Sie den Auftrag aus, und klicken Sie auf „Abfrage“. Fügen Sie das folgenden Beispiel ein.](./media/app-insights-export-power-bi/190.png)
-
-Warten Sie, bis der Auftrag ausgeführt wird.
-
-### Anzeigen der Ergebnisse in Power BI
-Öffnen Sie Power BI mit Ihrem Geschäfts- oder Schulkonto, und wählen Sie das Dataset und die Tabelle aus, die Sie als Ausgabe des Stream Analytics-Auftrags definiert haben.
-
-![Wählen Sie in Power BI Ihr Dataset und Felder aus.](./media/app-insights-export-power-bi/200.png)
-
-Jetzt können Sie dieses Dataset in Berichten und Dashboards in [Power BI](https://powerbi.microsoft.com) verwenden.
-
-![Wählen Sie in Power BI Ihr Dataset und Felder aus.](./media/app-insights-export-power-bi/210.png)
-
-### Sie sehen keine Daten?
-* Überprüfen Sie, ob das [Datumsformat](#set-path-prefix-pattern) ordnungsgemäß auf JJJJ-MM-TT (mit Bindestrichen) festgelegt ist.
-
-### Video
-Noam Ben Zeev zeigt, wie nach Power BI exportiert wird.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Export-to-Power-BI-from-Application-Insights/player]
-> 
-> 
-
-## Verwandte Themen
-* [Fortlaufendem Export](app-insights-export-telemetry.md)
-* [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](app-insights-export-data-model.md)
-* [Application Insights](app-insights-overview.md)
-* [Weitere Beispiele und exemplarische Vorgehensweisen](app-insights-code-samples.md)
-
-<!---HONumber=AcomDC_0420_2016-->

@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Nomadesk | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Nomadesk konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: d261b776-b48e-45f0-9722-0297adefabb8
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3be980b1428c19c7f1f6eb2c165758281d6e46b2
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-nomadesk"></a>Tutorial: Azure Active Directory-Integration mit Nomadesk
+# <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>Tutorial: Azure Active Directory-Integration mit Nomadesk
 Dieses Tutorial soll Ihnen zeigen, wie Sie Nomadesk in Azure Active Directory (Azure AD) integrieren können.
 
 Die Integration von Nomadesk in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Nomadesk hat.
+* Sie können in Azure AD steuern, wer Zugriff auf Nomadesk hat.
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Nomadesk anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Nomadesk konfigurieren zu können, benötigen Sie Folgendes:
@@ -44,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 * Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. 
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
@@ -56,7 +60,7 @@ Zum Konfigurieren der Integration von Nomadesk in Azure AD müssen Sie Nomadesk 
 
 **Um Nomadesk aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals**auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals**auf **Active Directory**.
    
     ![Active Directory][1]
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
@@ -77,7 +81,7 @@ Zum Konfigurieren der Integration von Nomadesk in Azure AD müssen Sie Nomadesk 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_02.png)
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD mit Nomadesk konfiguriert und getestet werden kann.
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD mit Nomadesk konfiguriert und getestet werden kann.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Nomadesk als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Nomadesk muss eine Linkbeziehung eingerichtet werden.
 
@@ -98,23 +102,23 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden in Azure AD im 
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Nomadesk** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren][6] 
+    ![Einmaliges Anmelden konfigurieren][6]
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Nomadesk anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_03.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_03.png)
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_04.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_04.png)
    
     a. Geben Sie im Textfeld „Anmelde-URL“ die URL ein, die von Ihren Benutzern nach folgendem Muster zur Anmeldung bei der Nomadesk-Anwendung verwendet wird: **https://mynomadesk.com/logon/saml/TENANTID**. Beim Verweisen auf einen generischen Namen muss **TENANTID** durch eine tatsächliche Mandanten-ID ersetzt werden.
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Nomadesk** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_05.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_05.png)
    
     a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
     b. Klicken Sie auf **Weiter**.
-5. Wenden Sie sich unter [mailto:support@nomadesk.com](support@nomadesk.com). Hängen Sie die heruntergeladene Zertifikatdatei an Ihre E-Mail-Nachricht an, und teilen Sie dem Nomadesk-Team die Metadaten-URLs (Entitäts-ID, Anmelde-URL und Abmelde-URL für SSO) zum Einrichten von SSO auf seiner Seite mit.
+5. Um SSO für Ihre Anwendung zu konfigurieren, wenden Sie sich unter support@nomadesk.com. an Ihr Nomadesk-Supportteam. Hängen Sie die heruntergeladene Zertifikatdatei an Ihre E-Mail-Nachricht an, und teilen Sie dem Nomadesk-Team die Metadaten-URLs (Entitäts-ID, Anmelde-URL und Abmelde-URL für SSO) zum Einrichten von SSO auf ihrer Seite mit.
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -131,17 +135,17 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_09.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_09.png)
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_03.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_03.png)
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_04.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_04.png)
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_05.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_05.png)
    
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
    
@@ -150,7 +154,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
     c. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_06.png) 
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_06.png)
    
    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
@@ -163,10 +167,10 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
    e. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_07.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_07.png)
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_08.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_08.png)
    
     a. Notieren Sie den Wert von **Neues Kennwort**.
    
@@ -175,7 +179,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 ### <a name="creating-a-nomadesk-test-user"></a>Erstellen einen Nomadesk-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Nomadesk. Nomadesk unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Nomadesk ein neuer Benutzer erstellt. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on).
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Nomadesk ein neuer Benutzer erstellt. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on).
 
 > [!NOTE]
 > Setzen Sie sich mit dem Supportteam von Nomadesk in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
@@ -185,19 +189,19 @@ Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens bei Azure zu ermöglichen, indem sie Zugriff auf Nomadesk erhält.
 
-![Benutzer zuweisen][200] 
+![Benutzer zuweisen][200]
 
 **Um Britta Simon Nomadesk zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Benutzer zuweisen][201] 
+    ![Benutzer zuweisen][201]
 2. Wählen Sie in der Anwendungsliste den Eintrag **Nomadesk**aus.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_50.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_50.png)
 3. Klicken Sie im oberen Menü auf **Benutzer**.
    
-    ![Benutzer zuweisen][203] 
+    ![Benutzer zuweisen][203]
 4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
 5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
    
@@ -232,6 +236,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Nomadesk“ klicken, sollten Sie a
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

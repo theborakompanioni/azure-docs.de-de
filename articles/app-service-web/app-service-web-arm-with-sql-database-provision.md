@@ -1,12 +1,12 @@
 ---
 title: Bereitstellen einer Web-App, die eine SQL-Datenbank verwendet
-description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App bereitzustellen, die eine SQL-Datenbank enthält.
+description: "Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine Web-App bereitzustellen, die eine SQL-Datenbank enthält."
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: cephalin
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: fb9648e1-9bf2-4537-bc4a-ab8d4953168c
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 461b97b56058620202a5f7f69171ffa0f2cb25cb
+
 
 ---
-# Bereitstellen einer Web-App mit einer SQL-Datenbank
+# <a name="provision-a-web-app-with-a-sql-database"></a>Bereitstellen einer Web-App mit einer SQL-Datenbank
 In diesem Thema erfahren Sie, wie Sie eine Azure-Ressourcen-Manager-Vorlage erstellen, die eine Web-App und eine SQL-Datenbank bereitstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
@@ -27,7 +31,7 @@ Die vollständige Vorlage finden Sie unter [Web-App mit SQL-Datenbankvorlage](ht
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## Was Sie bereitstellen
+## <a name="what-you-will-deploy"></a>Was Sie bereitstellen
 In dieser Vorlage stellen Sie Folgendes bereit:
 
 * eine Web-App
@@ -41,24 +45,24 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 
 [![Bereitstellen in Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
-## Anzugebende Parameter
+## <a name="parameters-to-specify"></a>Anzugebende Parameter
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
-### administratorLogin
+### <a name="administratorlogin"></a>administratorLogin
 Der Kontoname für den Datenbankserveradministrator.
 
     "administratorLogin": {
       "type": "string"
     }
 
-### administratorLoginPassword
+### <a name="administratorloginpassword"></a>administratorLoginPassword
 Das Kennwort für den Datenbankserveradministrator.
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
-### databaseName
+### <a name="databasename"></a>databaseName
 Der Name der zu erstellenden neuen Datenbank.
 
     "databaseName": {
@@ -66,7 +70,7 @@ Der Name der zu erstellenden neuen Datenbank.
       "defaultValue": "sampledb"
     }
 
-### collation
+### <a name="collation"></a>collation
 Die Datenbanksortierung zum Steuern der ordnungsgemäßen Verwendung von Zeichen.
 
     "collation": {
@@ -74,7 +78,7 @@ Die Datenbanksortierung zum Steuern der ordnungsgemäßen Verwendung von Zeichen
       "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
     }
 
-### Edition
+### <a name="edition"></a>Edition
 Der Typ der zu erstellenden Datenbank.
 
     "edition": {
@@ -90,7 +94,7 @@ Der Typ der zu erstellenden Datenbank.
       }
     }
 
-### maxSizeBytes
+### <a name="maxsizebytes"></a>maxSizeBytes
 Die maximale Größe (in Bytes) der Datenbank.
 
     "maxSizeBytes": {
@@ -98,8 +102,8 @@ Die maximale Größe (in Bytes) der Datenbank.
       "defaultValue": "1073741824"
     }
 
-### requestedServiceObjectiveName
-Der Name entsprechend der Leistungsebene der Edition.
+### <a name="requestedserviceobjectivename"></a>requestedServiceObjectiveName
+Der Name entsprechend der Leistungsebene der Edition. 
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -118,8 +122,8 @@ Der Name entsprechend der Leistungsebene der Edition.
       }
     }
 
-## Variablen für Namen
-Diese Vorlage enthält Variablen, die die in der Vorlage verwendeten Namen erstellen. Die Variablenwerte verwenden die **uniqueString**-Funktion, um aus der Ressourcengruppen-ID einen Namen zu generieren.
+## <a name="variables-for-names"></a>Variablen für Namen
+Diese Vorlage enthält Variablen, die die in der Vorlage verwendeten Namen erstellen. Die Variablenwerte verwenden die **uniqueString** -Funktion, um aus der Ressourcengruppen-ID einen Namen zu generieren.
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -128,9 +132,9 @@ Diese Vorlage enthält Variablen, die die in der Vorlage verwendeten Namen erste
     },
 
 
-## Bereitzustellende Ressourcen
-### SQL-Server und Datenbank
-Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im **serverName**-Parameter und der Speicherort im **serverLocation**-Parameter angegeben. Wenn Sie den neuen Server erstellen, müssen Sie einen Benutzernamen und ein Kennwort für den Datenbankserveradministrator bereitstellen.
+## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
+### <a name="sql-server-and-database"></a>SQL-Server und Datenbank
+Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im **serverName**-Parameter und der Speicherort im **serverLocation**-Parameter angegeben. Wenn Sie den neuen Server erstellen, müssen Sie einen Benutzernamen und ein Kennwort für den Datenbankserveradministrator bereitstellen. 
 
     {
       "name": "[variables('sqlserverName')]",
@@ -181,7 +185,7 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
 
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### Web-App
+### <a name="web-app"></a>Web-App
     {
       "apiVersion": "2015-08-01",
       "name": "[variables('webSiteName')]",
@@ -217,7 +221,7 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
     },
 
 
-### AutoScale
+### <a name="autoscale"></a>AutoScale
     {
       "apiVersion": "2014-04-01",
       "name": "[concat(variables('hostingPlanName'), '-', resourceGroup().name)]",
@@ -286,7 +290,7 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
     },
 
 
-### Warnregeln für Statuscodes 403 und 500er, hohe CPU-Auslastung und HTTP-Warteschlangenlänge
+### <a name="alert-rules-for-status-codes-403-and-500s-high-cpu-and-http-queue-length"></a>Warnregeln für Statuscodes 403 und 500er, hohe CPU-Auslastung und HTTP-Warteschlangenlänge
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('ServerErrors ', variables('webSiteName'))]",
@@ -424,7 +428,7 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
       }
     },
 
-### App Insights
+### <a name="app-insights"></a>App Insights
     {
       "apiVersion": "2014-04-01",
       "name": "[concat('AppInsights', variables('webSiteName'))]",
@@ -442,16 +446,20 @@ Erstellt einen neuen SQL-Server und eine Datenbank. Der Name des Servers wird im
       }
     }
 
-## Befehle zum Ausführen der Bereitstellung
+## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### PowerShell
+### <a name="powershell"></a>PowerShell
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
-### Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 
 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

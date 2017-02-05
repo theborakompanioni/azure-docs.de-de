@@ -1,19 +1,23 @@
 ---
-title: Dienstlimits und -einschränkungen für Azure Active Directory
-description: Verwendungs- und andere Einschränkungen für den Azure Active Directory-Dienst.
+title: "Dienstlimits und -einschränkungen für Azure Active Directory"
+description: "Verwendungs- und andere Einschränkungen für den Azure Active Directory-Dienst."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: curtand
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e4166a30-eb45-43b8-a466-6254b664fd1a
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2016
+ms.date: 11/09/2016
 ms.author: curtand
+translationtype: Human Translation
+ms.sourcegitcommit: ba3690084439aac83c91a1b4cfb7171b74c814f8
+ms.openlocfilehash: ed2f15550626dc030733214564f7c9fa6da38d1c
+
 
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Dienst- und andere Einschränkungen für Azure AD
@@ -21,10 +25,12 @@ Dieser Artikel beschreibt die Nutzungsbeschränkungen und andere Diensteinschrä
 
 [!INCLUDE [AAD-service-limits](../../includes/active-directory-service-limits-include.md)]
 
-## <a name="what's-next"></a>Nächste Schritte
+## <a name="whats-next"></a>Nächste Schritte
 * [Als Organisation für Azure registrieren](sign-up-organization.md)
-* [Verknüpfung von Azure-Abonnements mit Azure AD](active-directory-how-subscriptions-associated-directory.md)
+* [Verknüpfung von Azure-Abonnements mit Azure AD](active-directory-how-subscriptions-associated-directory.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 
