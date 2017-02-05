@@ -1,5 +1,5 @@
 
-## Ressourcen
+## <a name="resources"></a>Ressourcen
 * [Vollständige WebJobs-Ressourcenliste](../articles/app-service-web/websites-webjobs-resources.md)
 * [Erste Schritte mit dem Azure WebJobs SDK](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
 * [Verwenden von Azure-Warteschlangenspeicher mit dem WebJobs-SDK](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)
@@ -16,7 +16,7 @@
 * [Schreiben von Protokollen mit dem WebJobs-SDK und Anzeigen im Dashboard](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
 * [Remotedebuggen von WebJobs](../articles/app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebugwj)
 
-## Videos
+## <a name="videos"></a>Videos
 * [WebJobs und das WebJobs-SDK](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-153-WebJobs-with-Pranav-Rastogi?utm_source=dlvr.it&utm_medium=twitter)
 * [Videoreihe zu Azure WebJobs auf Channel 9](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 * [Einführung in WebJobs-Tools für Visual Studio](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster)
@@ -24,4 +24,8 @@
 * [Horizontales Skalieren von WebJobs](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 * [Videos zu Azure WebJobs von Magnus Mårtensson](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

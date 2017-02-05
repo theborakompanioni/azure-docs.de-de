@@ -114,7 +114,7 @@ Der von Azure bereitgestellte DNS-Dienst ist ein von Microsoft angebotener mehri
 > 
 > 
 
-### <a name="can-i-override-my-dns-settings-on-a-per-vm-service-basis"></a>Können DNS-Einstellungen für einzelne virtuelle Computer und Dienste überschrieben werden?
+### <a name="can-i-override-my-dns-settings-on-a-per-vm--service-basis"></a>Können DNS-Einstellungen für einzelne virtuelle Computer und Dienste überschrieben werden?
 Ja. Sie können DNS-Server pro Clouddienst festlegen, um die standardmäßigen Netzwerkeinstellungen zu überschreiben. Es wird jedoch empfohlen, nach Möglichkeit den netzwerkweiten DNS-Server zu verwenden.
 
 ### <a name="can-i-bring-my-own-dns-suffix"></a>Können benutzerdefinierte DNS-Suffixe angegeben werden?

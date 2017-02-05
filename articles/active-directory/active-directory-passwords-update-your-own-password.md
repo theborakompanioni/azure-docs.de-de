@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1535ce0e68b710feed6c7c063a7e0570535fe3dc
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 1a8a0a9f69438bfe93515d702fe4a8e593e0f1ab
 
 
 ---
@@ -91,10 +91,10 @@ Führen Sie die folgenden Schritte aus, um das Kennwort für Ihr Geschäfts- ode
 > 
 > 
 
-1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts-, Schul- oder Unikonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“. oder „Haben Sie Ihr Kennwort vergessen?“. oder navigieren Sie direkt zu https://passwordreset.microsoftonline.com.
+1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts-, Schul- oder Unikonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“  oder auf „Haben Sie Ihr Kennwort vergessen?“ , oder navigieren Sie direkt zu „https://passwordreset.microsoftonline.com“.
    
    ![][001]
-2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts, Schul- oder Unikontos an, und beweisen Sie mit der CAPTCHA-Prüfung, dass Sie kein Roboter sind.
+2. Geben Sie auf der Seite „Wie heißen Sie?“  die ID Ihres Geschäfts, Schul- oder Unikontos an, und beweisen Sie mit der CAPTCHA-Prüfung, dass Sie kein Roboter sind.
    
    ![][002]
 3. Klicken Sie auf die Schaltfläche „Weiter“.
@@ -137,10 +137,10 @@ Führen Sie die folgenden Schritte aus, um Ihr lokales Konto in einem beliebigen
 > 
 > 
 
-1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts-, Schul- oder Unikonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“. oder „Haben Sie Ihr Kennwort vergessen?“. oder navigieren Sie direkt zu https://passwordreset.microsoftonline.com.
+1. Klicken Sie auf einer beliebigen Anmeldeseite für Geschäfts-, Schul- oder Unikonten entweder auf den Link „Kein Zugriff auf Ihr Konto?“  oder auf „Haben Sie Ihr Kennwort vergessen?“ , oder navigieren Sie direkt zu „https://passwordreset.microsoftonline.com“.
    
    ![][001]
-2. Geben Sie auf der Seite „Wie heißen Sie?“ die ID Ihres Geschäfts, Schul- oder Unikontos an, und beweisen Sie mit der CAPTCHA-Prüfung, dass Sie kein Roboter sind.
+2. Geben Sie auf der Seite „Wie heißen Sie?“  die ID Ihres Geschäfts, Schul- oder Unikontos an, und beweisen Sie mit der CAPTCHA-Prüfung, dass Sie kein Roboter sind.
    
    ![][002]
 3. Klicken Sie auf die Schaltfläche „Weiter“.
@@ -261,6 +261,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 
