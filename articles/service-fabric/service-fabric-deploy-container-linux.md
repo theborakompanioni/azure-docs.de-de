@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2016
-ms.author: msfussell
+ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 9c45513f7d2987a83026adab39257d298292b7a5
+ms.sourcegitcommit: f31c8ab3d2b4fd871c92ac0e7d04bc8d5ab86830
+ms.openlocfilehash: 963ca79f83d9ae4b3c5a0e5da6c5fb7985e9ca77
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 9c45513f7d2987a83026adab39257d298292b7a5
 
 Dieser Artikel zeigt Ihnen, wie Sie unter Linux Dienste in Docker-Containern erstellen.
 
-Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung von Anwendungen, die sich aus Microservices in Containern zusammensetzen. Diese werden als Dienste in Containern bezeichnet.
+Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung von Anwendungen, die sich aus Microservices in Containern zusammensetzen. Diese Dienste werden als Dienste in Containern bezeichnet.
 
 Die Funktionen sind:
 
@@ -48,8 +48,8 @@ Eine Service Fabric-Anwendung kann einen oder mehrere Container enthalten, die j
 ## <a name="create-the-application"></a>Erstellen der Anwendung
 1. Geben Sie in einem Terminal die Zeichenfolge **yo azuresfguest** ein.
 2. Wählen Sie für das Framework **Container** aus.
-3. Nennen Sie die Anwendung z. B. „SimpleContainerApp“.
-4. Geben Sie die URL für das Containerimage aus einem DockerHub-Repository an. Die URL hat das Format [Repository]/[Imagename].
+3. Nennen Sie die Anwendung z.B. „SimpleContainerApp“.
+4. Geben Sie die URL für das Containerimage aus einem DockerHub-Repository an. Der image-Parameter hat das Format [Repository]/[Imagename].
 
 ![Service Fabric-Yeoman-Generator für Container][sf-yeoman]
 
@@ -74,6 +74,14 @@ Die erstellte Anwendung kann mithilfe der Azure-Befehlszeilenschnittstelle im lo
     ./uninstall.sh
     ```
 
+## <a name="adding-more-services-to-an-existing-application"></a>Hinzufügen weiterer Dienste zu einer vorhandenen Anwendung
+
+Führen Sie zum Hinzufügen eines weiteren Containerdiensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus: 
+1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
+2. Führen Sie `yo azuresfguest:AddService` aus.
+
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Service Fabric und Container](service-fabric-containers-overview.md)
 * [Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle](service-fabric-azure-cli.md)
@@ -83,6 +91,6 @@ Die erstellte Anwendung kann mithilfe der Azure-Befehlszeilenschnittstelle im lo
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 
