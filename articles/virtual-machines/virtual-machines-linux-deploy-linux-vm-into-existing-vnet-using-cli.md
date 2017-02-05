@@ -13,86 +13,27 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 12/05/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2fad20978f40150ef9f1cb44054da2ba66848bda
-ms.openlocfilehash: 613ce9b27bc26643b2f46c490d7f550b370df998
+ms.sourcegitcommit: 9b053a618dd7a4e198b558402eb09ffdfbe2919a
+ms.openlocfilehash: b2153097ef33ec323070253e379050f9024449f5
 
 
 ---
 
-# <a name="deploy-a-linux-vm-into-an-existing-vnet--nsg-using-the-cli"></a>Bereitstellen einer Linux-VM in einem vorhandenen VNET & NSG mithilfe der CLI
+# <a name="deploy-a-linux-vm-into-an-existing-azure-virtual-network-using-the-cli"></a>Bereitstellen einer Linux-VM in einem vorhandenen virtuellen Azure-Netzwerk mithilfe der CLI
 
-Dieser Artikel zeigt, wie Sie CLI-Flags verwenden, um eine VM in einem vorhandenen virtuellen Netzwerk (VNET) bereitzustellen, die mit einer vorhandenen Netzwerksicherheitsgruppe (NSG) gesichert ist.  Folgende Anforderungen müssen erfüllt sein:
+In diesem Artikel wird das Bereitstellen einer VM in einem vorhandenen virtuellen Netzwerk (VNET) mit CLI-Flags veranschaulicht.  Folgende Anforderungen müssen erfüllt sein:
 
 - [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
-
 - [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
-Ersetzen Sie alle Beispiele durch Ihre eigenen Einstellungen.
+Im folgenden Abschnitt werden die Befehle beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#detailed-walkthrough)).
 
-### <a name="create-the-resource-group"></a>Erstellen der Ressourcengruppe
-
-```azurecli
-azure group create myResourceGroup \
--l westus
-```
-
-### <a name="create-the-vnet"></a>Erstellen des VNET
-
-```azurecli
-azure network vnet create myVNet \
--g myResourceGroup \
--a 10.10.0.0/24 \
--l westus
-```
-
-### <a name="create-the-nsg"></a>Erstellen der NSG
-
-```azurecli
-azure network nsg create myNSG \
--g myResourceGroup \
--l westus
-```
-
-### <a name="add-an-inbound-ssh-allow-rule"></a>Hinzufügen einer eingehenden SSH-Zulassungsregel
-
-```azurecli
-azure network nsg rule create inboundSSH \
--g myResourceGroup \
--a myNSG \
--c Allow \
--p Tcp \
--r Inbound \
--y 100 \
--f Internet \
--o 22 \
--e 10.10.0.0/24 \
--u 22
-```
-
-### <a name="add-a-subnet-to-the-vnet"></a>Hinzufügen eines Subnetz im VNET
-
-```azurecli
-azure network vnet subnet create mySubNet \
--g myResourceGroup \
--e myVNet \
--a 10.10.0.0/26 \
--o myNSG
-```
-
-### <a name="add-a-vnic-to-the-subnet"></a>Hinzufügen einer VNic zum Subnetz
-
-```azurecli
-azure network nic create myVNic \
--g myResourceGroup \
--l westus \
--m myVNet \
--k mySubNet
-```
+Voraussetzungen: Ressourcengruppe, VNET, NSG mit SSH für eingehende Daten, Subnetz. Ersetzen Sie alle Beispiele durch Ihre eigenen Einstellungen.
 
 ### <a name="deploy-the-vm-into-the-vnet-nsg-and-connect-the-vnic"></a>Bereitstellen der VM im VNET, NSG und Verbinden der VNic
 
@@ -220,6 +161,6 @@ Mithilfe der CLI-Flags zum Aufruf vorhandener Ressourcen weisen wir Azure an, di
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

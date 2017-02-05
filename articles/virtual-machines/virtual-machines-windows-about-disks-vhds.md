@@ -1,24 +1,28 @@
 ---
-title: Informationen zu Datenträgern und VHDs für virtuelle Windows-Computer | Microsoft Docs
-description: Machen Sie sich mit den Grundlagen zu Datenträgern und VHDs für virtuelle Windows-Computer in Azure vertraut.
+title: "Informationen zu Datenträgern und VHDs für virtuelle Windows-Computer | Microsoft Docs"
+description: "Machen Sie sich mit den Grundlagen zu Datenträgern und VHDs für virtuelle Windows-Computer in Azure vertraut."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: 0142c64d-5e8c-4d62-aa6f-06d6261f485a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 11/18/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 3549272a74ebf7b5e37a70dbb8d7ce3b539c8103
+ms.openlocfilehash: b5161e7e4b8b0127d63804161bfd82e3b057e3f0
+
 
 ---
 # <a name="about-disks-and-vhds-for-azure-virtual-machines"></a>Informationen zu Datenträgern und VHDs für virtuelle Azure-Computer
-Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Datenträger, auf dem das Betriebssystem, Anwendungen und Daten gespeichert sind. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Windows-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden. Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-about-disks-vhds.md)verfügbar.
+Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Datenträger, auf dem das Betriebssystem, Anwendungen und Daten gespeichert sind. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Windows-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden. Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügbar.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -28,10 +32,10 @@ Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Der Da
 ## <a name="temporary-disk"></a>Temporärer Datenträger
 Der temporäre Datenträger wird automatisch für Sie erstellt. Der temporäre Datenträger ist standardmäßig als Laufwerk „D:“ gekennzeichnet. Er wird zum Speichern von „pagefile.sys“ verwendet. 
 
-Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md).
+Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!WARNING]
-> Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten-oder Auslagerungsdateien zu speichern. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem anderen Laufwerkbuchstaben finden Sie unter [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md).
+> Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem anderen Laufwerkbuchstaben finden Sie unter [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 > 
 > 
 
@@ -41,7 +45,7 @@ Weitere Informationen zur Verwendung des temporären Datenträgers in Azure find
 Ein Datenträger ist eine VHD, die zum Speichern von Anwendungsdaten oder anderen Daten, die Sie aufbewahren müssen, an einen virtuellen Computer angebunden ist. Datenträger werden als SCSI-Laufwerke registriert und mit einem von Ihnen ausgewählten Buchstaben gekennzeichnet.  Jeder Datenträger hat eine maximale Kapazität von 1023 GB. Die Größe des virtuellen Computers bestimmt die Anzahl der Datenträger, die Sie anfügen können, und den Typ des Speichers, den Sie zum Hosten der Datenträger verwenden können.
 
 > [!NOTE]
-> Weitere Informationen zu Kapazitäten virtueller Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md).
+> Weitere Informationen zu Kapazitäten virtueller Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 > 
 > 
 
@@ -65,11 +69,31 @@ Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, ind
 > 
 > 
 
-## <a name="next-steps"></a>Nächste Schritte
-* [Anfügen eines Datenträgers](virtual-machines-windows-attach-disk-portal.md) , um zusätzlichen Speicherplatz für den virtuellen Computer hinzuzufügen.
-* [Hochladen eines Windows-VM-Images in Azure](virtual-machines-windows-upload-image.md) , das beim Erstellen eines neuen virtuellen Computers verwendet wird.
-* [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md) , damit die Anwendung das Laufwerk „D:“ für Daten verwenden kann.
+## <a name="use-trim-with-standard-storage"></a>Verwenden von TRIM mit dem Standardspeicher
 
-<!--HONumber=Oct16_HO2-->
+Wenn Sie den Standardspeicher (HDD) verwenden, sollten Sie TRIM aktivieren. Mit TRIM werden ungenutzte Blöcke auf dem Datenträger verworfen, sodass nur der Speicher in Rechnung gestellt wird, den Sie tatsächlich verwenden. Dies kann Kosten sparen, wenn Sie große Dateien erstellen und dann löschen. 
+
+Sie können den folgenden Befehl ausführen, um die TRIM-Einstellung zu überprüfen. Öffnen Sie eine Eingabeaufforderung auf dem virtuellen Windows-Computer, und geben Sie Folgendes ein:
+
+```
+fsutil behavior query DisableDeleteNotify
+```
+
+Wenn „0“ zurückgegeben wird, ist TRIM ordnungsgemäß aktiviert. Wenn „1“ zurückgegeben wird, führen Sie den folgenden Befehl aus, um TRIM zu aktivieren:
+```
+fsutil behavior set DisableDeleteNotify 0
+```
+
+
+
+## <a name="next-steps"></a>Nächste Schritte
+* [Anfügen eines Datenträgers](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , um zusätzlichen Speicherplatz für den virtuellen Computer hinzuzufügen.
+* [Hochladen eines Windows-VM-Images in Azure](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , das beim Erstellen eines neuen virtuellen Computers verwendet wird.
+* [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) , damit die Anwendung das Laufwerk „D:“ für Daten verwenden kann.
+
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 
