@@ -60,6 +60,6 @@ Die DocumentDB-Indizierung ist für Speichereffizienz und Mehrinstanzfähigkeit 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

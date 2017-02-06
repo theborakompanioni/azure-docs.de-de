@@ -199,6 +199,6 @@ Nachdem Sie erfahren haben, wie Sie JDBC mit Hive verwenden, können Sie mithilf
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

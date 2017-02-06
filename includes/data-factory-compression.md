@@ -49,6 +49,6 @@ Wenn Sie die `compression`-Eigenschaft in einem JSON-Eingabedataset angeben, kan
 * Lesen Sie GZIP-komprimierte Daten aus einem Azure-Blob, dekomprimieren Sie sie, komprimieren Sie sie mit BZIP2, und schreiben Sie die resultierenden Daten in einen Azure-Blob. In diesem Fall definieren Sie für das Azure-Blob-Eingabedataset die Einstellung GZIP als `compression` `type` und für das Ausgabedataset BZIP2 als `compression` `type`.   
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

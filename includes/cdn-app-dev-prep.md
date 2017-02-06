@@ -53,6 +53,6 @@ Wenn Sie statt eines Dienstprinzipals lieber eine interaktive individuelle Benut
     ![Individueller Benutzerzugriff](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

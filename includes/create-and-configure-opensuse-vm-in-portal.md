@@ -55,6 +55,6 @@ In Abhängigkeit von dem Betriebssystem auf dem Computer, über den Sie eine Ver
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

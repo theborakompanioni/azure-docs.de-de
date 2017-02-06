@@ -63,6 +63,6 @@ Um den Dienst „Microsoft-Konto“ als Identitätsanbieter in Azure Active Dire
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

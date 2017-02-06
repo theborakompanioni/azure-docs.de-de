@@ -3,7 +3,7 @@ title: Azure AD Privileged Identity Management | Microsoft Docs
 description: "Ein Thema, in dem erläutert wird, was Azure AD Privileged Identity Management ist und wie Sie damit die Sicherheit in Ihrer Cloud erhöhen."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
@@ -12,8 +12,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
-ms.author: kgremban
+ms.date: 02/03/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 71eb6a2fecbd76c9715b9a556a7ffd31b5b4950e
 ms.openlocfilehash: 6b788b3120565895e908bdfc4c9267e715bc5bec
@@ -25,8 +25,6 @@ Mit Azure Active Directory (AD) Privileged Identity Management können Sie den Z
 
 > [!NOTE]
 > Privileged Identity Management ist nur mit der Premium P2 Edition von Azure Active Directory verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
->
->
 
 Organisationen möchten die Anzahl der Personen minimieren, die auf sichere Informationen oder Ressourcen zugreifen können, da dadurch das Risiko reduziert wird, dass ein böswilligen Benutzers Zugriff hat. Benutzer müssen jedoch immer noch in der Lage sein, in Azure-, Office 365- oder SaaS-Apps privilegierte Vorgänge auszuführen. Organisationen gewähren Benutzern privilegierten Zugriff in Azure AD, ohne zu überwachen, was Benutzer mit ihren Administratorberechtigungen machen. Mit Azure AD Privileged Identity Management können Sie dieses Risiko in den Griff bekommen.  
 
@@ -53,8 +51,6 @@ Im [Azure-Portal](https://portal.azure.com/)können Sie mit der Nutzung von Azur
 
 > [!NOTE]
 > Sie müssen ein globaler Administrator mit einem Geschäftskonto (wie @yourdomain.com),) und keinem Microsoft-Konto (wie @outlook.com),) sein, um Azure AD Privileged Identity Management für ein Verzeichnis zu aktivieren.
->
->
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
 2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen. Wählen Sie das Verzeichnis aus, in dem Sie Azure AD Privileged Identity Management verwenden möchten.

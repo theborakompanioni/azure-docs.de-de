@@ -92,6 +92,6 @@ Unter [Übermitteln von Hive-Abfragen](machine-learning-data-science-move-hive-t
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -168,6 +168,6 @@ Laden Sie das Azure [DNS .NET SDK-Beispielprojekt](https://www.microsoft.com/en-
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

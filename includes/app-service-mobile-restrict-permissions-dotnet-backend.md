@@ -20,6 +20,6 @@ Standardmäßig können APIs auf Mobile Apps-Back-Ends anonym aufgerufen werden.
     Ausführlichere Informationen finden Sie unter [Erzwingen der Authentifizierung für den Zugriff auf Tabellen](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). Informationen zum Herunterladen des Schnellstart-Codeprojekts von Ihrer Website finden Sie unter [Herunterladen des Schnellstart-Codeprojekts für das Node.js-Back-End mithilfe von Git](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

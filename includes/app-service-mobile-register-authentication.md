@@ -14,6 +14,6 @@ Zuerst müssen Sie Ihre App auf der Website eines Identitätsanbieters registrie
 [Azure portal]: https://portal.azure.com/
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

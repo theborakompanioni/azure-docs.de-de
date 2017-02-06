@@ -677,6 +677,6 @@ In diesem Tutorial haben Sie gelernt, wie ein Oozie-Workflow definiert und wie e
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

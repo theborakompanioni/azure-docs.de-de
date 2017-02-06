@@ -138,6 +138,6 @@ Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigu
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

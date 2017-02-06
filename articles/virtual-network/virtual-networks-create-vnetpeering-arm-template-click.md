@@ -382,6 +382,6 @@ Nach dem Peering zwischen einem klassischen VNet und einem Resource Manager-VNet
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 
