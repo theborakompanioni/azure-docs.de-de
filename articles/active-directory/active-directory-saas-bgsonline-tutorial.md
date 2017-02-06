@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 42911ac76e2aa887460abd44e462a8d288d55f91
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b42fe210ecfe2243aa2461bd542e73f7b9aa25cc
 
 
 ---
@@ -231,6 +231,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „BGS Online“ klicken, sollten Sie
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

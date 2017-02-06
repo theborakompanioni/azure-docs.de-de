@@ -25,7 +25,7 @@ ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
 Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die von einem Angreifer ausgenutzt werden können. Es wird empfohlen, dass Sie diese Sicherheitsrisiken entschärfen, um den Sicherheitsstatus Ihrer Organisation zu verbessern und Angreifer daran zu hindern, diese Schwachstellen auszunutzen.
 
 
-![Sicherheitsrisiken](./media/active-directory-identityprotection-vulnerabilities/101.png "Sicherheitsrisiken")
+![Sicherheitsrisiken](./media/active-directory-identityprotection-vulnerabilities/101.png "vulnerabilities")
 
 
 
@@ -64,6 +64,6 @@ Ausführliche Informationen finden Sie unter [Azure AD Privileged Identity Manag
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 
