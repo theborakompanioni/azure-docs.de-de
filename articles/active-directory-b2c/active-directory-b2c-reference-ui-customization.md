@@ -1,23 +1,27 @@
 ---
-title: 'Azure Active Directory B2C: Anpassung der Benutzeroberfläche (UI) | Microsoft Docs'
-description: Ein Thema über die Anpassungsfeatures für die Benutzeroberfläche (UI) in Azure Active Directory B2C
+title: "Azure Active Directory B2C: Anpassung der Benutzeroberfläche (UI) | Microsoft Docs"
+description: "Ein Thema über die Anpassungsfeatures für die Benutzeroberfläche (UI) in Azure Active Directory B2C"
 services: active-directory-b2c
-documentationcenter: ''
+documentationcenter: 
 author: swkrish
 manager: mbaldwin
 editor: bryanla
-
+ms.assetid: 99f5a391-5328-471d-a15c-a2fafafe233d
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 12/06/2016
 ms.author: swkrish
+translationtype: Human Translation
+ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
+ms.openlocfilehash: bcb91660500484210c342a84595386ebb5e0bbbd
+
 
 ---
-# Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
-Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend. Dies ist der Unterschied zwischen einer guten Anwendung und einer hervorragenden – und zwischen lediglich aktiven Consumern und wirklich engagierten. Azure Active Directory (Azure AD) B2C ermöglicht es Ihnen, die Seiten für die Registrierung und Anmeldung von Endkunden (*siehe Hinweis unten*), für die Profilbearbeitung und für die Kennwortzurücksetzung mit einer präzisen Kontrolle anzupassen.
+# <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
+Benutzerfreundlichkeit ist in einer kundenorientierten Anwendung entscheidend. Dies ist der Unterschied zwischen einer guten Anwendung und einer hervorragenden – und zwischen lediglich aktiven Consumern und wirklich engagierten. Azure Active Directory (Azure AD) B2C ermöglicht es Ihnen, die Seiten für die Registrierung und Anmeldung von Endkunden (*siehe Hinweis unten*), für die Profilbearbeitung und für die Kennwortzurücksetzung mit einer präzisen Kontrolle anzupassen.
 
 > [!NOTE]
 > Derzeit können Anmeldeseiten für lokale Konten, die zugehörigen Seiten für die Kennwortzurücksetzung und Überprüfungs-E-Mails nur mithilfe des [Features für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) angepasst werden. Mit den Mechanismen, die in diesem Artikel beschrieben werden, ist dies nicht möglich.
@@ -31,7 +35,7 @@ Dieser Artikel enthält Folgendes:
 * Die wichtigsten UI-Elemente in jedem Seitentyp.
 * Bewährte Methoden beim Üben des Umgangs mit diesem Feature.
 
-## Das Anpassungsfeature für die Seiten-UI
+## <a name="the-page-ui-customization-feature"></a>Das Anpassungsfeature für die Seiten-UI
 Mit dem Anpassungsfeature für die Seiten-UI können Sie das Aussehen und Verhalten der Seiten für die Registrierung, Anmeldung, Kennwortzurücksetzung und Profilbearbeitung von Endkunden anpassen (durch Konfigurieren von [Richtlinien](active-directory-b2c-reference-policies.md)). Beim Navigieren zwischen der Anwendung und den Seiten, die von Azure AD B2C verarbeitet werden, wird den Endkunden eine nahtlose Benutzeroberfläche angeboten.
 
 Im Gegensatz zu anderen Diensten, in denen UI-Optionen beschränkt oder nur über APIs verfügbar sind, verwendet Azure AD B2C eine moderne (und einfachere) Vorgehensweise bei der Anpassung der Seiten-UI.
@@ -42,7 +46,7 @@ So funktioniert es: Azure AD B2C führt Code im Browser des Consumers aus und ve
 2. Hosten Sie diese Inhalte auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist).
 3. Formatieren Sie die Elemente der Benutzeroberfläche, die von Azure AD B2C einfügt werden.
 
-## Testen des Anpassungsfeatures für die Benutzeroberfläche (UI)
+## <a name="test-out-the-ui-customization-feature"></a>Testen des Anpassungsfeatures für die Benutzeroberfläche (UI)
 Wenn Sie das UI-Anpassungsfeature anhand der HTML- und CSS-Beispielinhalte ausprobieren möchten, können Sie unser [einfaches Hilfsprogramm](active-directory-b2c-reference-ui-customization-helper-tool.md) zum Hochladen und Konfigurieren der Beispielinhalte in Ihren Azure-Blobspeicher verwenden.
 
 > [!NOTE]
@@ -50,7 +54,7 @@ Wenn Sie das UI-Anpassungsfeature anhand der HTML- und CSS-Beispielinhalte auspr
 > 
 > 
 
-### Grundlegende HTML-Inhalte für Tests
+### <a name="the-most-basic-html-content-for-testing"></a>Grundlegende HTML-Inhalte für Tests
 Unten sind grundlegende HTML-Inhalte dargestellt, die Sie zum Testen dieser Funktion verwenden können. Nutzen Sie dasselbe Hilfsprogramm wie oben, um diese Inhalte in den Azure-Blobspeicher hochzuladen und zu konfigurieren. So können Sie sicherstellen, dass die grundlegenden unformatierten Schaltflächen und Formularfelder auf jeder Seite angezeigt werden und funktionieren.
 
 ```HTML
@@ -67,10 +71,10 @@ Unten sind grundlegende HTML-Inhalte dargestellt, die Sie zum Testen dieser Funk
 
 ```
 
-## Die wichtigsten UI-Elemente in den einzelnen Seitentypen
-In den folgenden Abschnitten finden Sie Beispiele für HTML5-Fragmente, die Azure AD B2C im `<div id="api"></div>`-Element in Ihrem Inhalt zusammenführt. **Fügen Sie diese Fragmente nicht in Ihren HTML5-Inhalt ein.** Sie werden vom Azure AD B2C-Dienst zur Laufzeit eingefügt. Verwenden Sie diese Beispiele, um Ihre eigenen Stylesheets zu entwerfen.
+## <a name="the-core-ui-elements-in-each-type-of-page"></a>Die wichtigsten UI-Elemente in den einzelnen Seitentypen
+In den folgenden Abschnitten finden Sie Beispiele für HTML5-Fragmente, die Azure AD B2C im `<div id="api"></div>` -Element in Ihrem Inhalt zusammenführt. **Fügen Sie diese Fragmente nicht in Ihren HTML5-Inhalt ein.**  Sie werden vom Azure AD B2C-Dienst zur Laufzeit eingefügt. Verwenden Sie diese Beispiele, um Ihre eigenen Stylesheets zu entwerfen.
 
-### Auf der „Auswahlseite für Identitätsanbieter“ eingefügte Azure AD B2C-Inhalte
+### <a name="azure-ad-b2c-content-inserted-into-the-identity-provider-selection-page"></a>Auf der „Auswahlseite für Identitätsanbieter“ eingefügte Azure AD B2C-Inhalte
 Diese Seite enthält eine Liste der Identitätsanbieter, aus denen der Benutzer bei der Registrierung oder Anmeldung auswählen kann. Dabei handelt es sich entweder um Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder um lokale Konten (basierend auf E-Mail-Adressen oder Benutzernamen).
 
 ```HTML
@@ -97,8 +101,8 @@ Diese Seite enthält eine Liste der Identitätsanbieter, aus denen der Benutzer 
 
 ```
 
-### Auf der „Registrierungsseite für lokales Konto“ eingefügte Azure AD B2C-Inhalte
-Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Registrierung für ein lokales Konto ausfüllen muss, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert. Das Formular kann verschiedene Eingabesteuerelemente enthalten, z. B. Texteingabefelder, Kennworteingabefelder, Optionsfelder, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen.
+### <a name="azure-ad-b2c-content-inserted-into-the-local-account-sign-up-page"></a>Auf der „Registrierungsseite für lokales Konto“ eingefügte Azure AD B2C-Inhalte
+Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Registrierung für ein lokales Konto ausfüllen muss, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert.  Das Formular kann verschiedene Eingabesteuerelemente enthalten, z. B. Texteingabefelder, Kennworteingabefelder, Optionsfelder, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen.
 
 ```HTML
 
@@ -146,14 +150,14 @@ Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Regist
                     <div class="attrEntry">
                         <div class="helpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
                         <label>Enter password</label>
-                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*-_+=[]{}|\\:',?/`~";();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ "; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
+                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
                     </div>
                 </li>
                 <li>
                     <div class="attrEntry">
                         <div class="helpText"> This information is required</div>
                         <label>Reenter password</label>
-                        <input id="reenterPassword" class="textInput" type="password" placeholder="Reenter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*-_+=[]{}|\\:',?/`~";();!]|\.(?!@)){8,16}$" title=" " required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Reenter password');" class="tiny">What is this?</a>
+                        <input id="reenterPassword" class="textInput" type="password" placeholder="Reenter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title=" " required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Reenter password');" class="tiny">What is this?</a>
                     </div>
                 </li>
                 <li>
@@ -213,10 +217,10 @@ Diese Seite enthält ein Registrierungsformular, das der Benutzer bei der Regist
 
 ```
 
-### Auf der „Registrierungsseite für Konten sozialer Netzwerke“ eingefügte Azure AD B2C-Inhalte
+### <a name="azure-ad-b2c-content-inserted-into-the-social-account-sign-up-page"></a>Auf der „Registrierungsseite für Konten sozialer Netzwerke“ eingefügte Azure AD B2C-Inhalte
 Diese Seite enthält ein Registrierungsformular, das der Consumer ausfüllen muss, wenn die Registrierung mit einem vorhandenen Konto bei einem sozialen Netzwerk wie Facebook oder Google+ als Identitätsanbieter erfolgt. Diese Seite ähnelt der Registrierungsseite für lokale Konten (siehe Abschnitt oben), eine Ausnahme bilden die Kennworteingabefelder.
 
-### Auf der „Seite für einheitliche Registrierung oder Anmeldung“ eingefügte Azure AD B2C-Inhalte
+### <a name="azure-ad-b2c-content-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Auf der „Seite für einheitliche Registrierung oder Anmeldung“ eingefügte Azure AD B2C-Inhalte
 Diese Seite verarbeitet sowohl die Registrierung als auch die Anmeldung von Consumern. Diese können als Identitätsanbieter soziale Netzwerke wie z.B. Facebook oder Google+ oder lokale Konten verwenden.
 
 ```HTML
@@ -270,7 +274,7 @@ Diese Seite verarbeitet sowohl die Registrierung als auch die Anmeldung von Cons
 
 ```
 
-### Auf der „Seite für die mehrstufige Authentifizierung“ eingefügte Azure AD B2C-Inhalte
+### <a name="azure-ad-b2c-content-inserted-into-the-multi-factor-authentication-page"></a>Auf der „Seite für die mehrstufige Authentifizierung“ eingefügte Azure AD B2C-Inhalte
 Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre Telefonnummern überprüfen (per SMS oder Sprachnachricht).
 
 ```HTML
@@ -315,7 +319,7 @@ Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre
 
 ```
 
-### Auf der „Fehlerseite“ eingefügte Azure AD B2C-Inhalte
+### <a name="azure-ad-b2c-content-inserted-into-the-error-page"></a>Auf der „Fehlerseite“ eingefügte Azure AD B2C-Inhalte
 ```HTML
 
 <div id="api" class="error-page-content" data-name="GlobalException">
@@ -331,11 +335,11 @@ Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre
 
 ```
 
-## Wichtige Aspekte beim Erstellen eigener Inhalte
+## <a name="things-to-remember-when-building-your-own-content"></a>Wichtige Aspekte beim Erstellen eigener Inhalte
 Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten Sie die folgenden bewährten Methoden:
 
 * Kopieren und ändern Sie den Azure AD B2C-Standardinhalt nicht. Es wird empfohlen, eigene HTML5-Inhalte von Grund auf neu zu erstellen und den Standardinhalt als Referenz zu verwenden.
-* Auf allen Seiten (mit Ausnahme der Fehlerseiten), die von den Richtlinien für die Registrierung, Anmeldung und Profilbearbeitung bereitgestellt werden, müssen die von Ihnen angegebenen Stylesheets die Standard-Stylesheets außer Kraft setzen, die wir auf diesen Seiten in den <head>-Fragmenten hinzufügen. Für alle Seiten, die von den Richtlinien für die Registrierung, Anmeldung und Kennwortzurücksetzung bereitgestellt werden, und für die Fehlerseiten aller Richtlinien müssen Sie die gesamte Formatierung selbst angeben.
+* Auf allen Seiten (mit Ausnahme der Fehlerseiten), die von den Richtlinien für die Registrierung, Anmeldung und Profilbearbeitung bereitgestellt werden, müssen die von Ihnen angegebenen Stylesheets die Standard-Stylesheets außer Kraft setzen, die wir auf diesen Seiten in den <head> -Fragmenten hinzufügen. Für alle Seiten, die von den Richtlinien für die Registrierung, Anmeldung und Kennwortzurücksetzung bereitgestellt werden, und für die Fehlerseiten aller Richtlinien müssen Sie die gesamte Formatierung selbst angeben.
 * Aus Gründen der Sicherheit ist es nicht zulässig, JavaScript in Ihren Inhalt aufzunehmen. Das meiste, was Sie benötigen, sollte im Programmumfang enthalten sein. Falls nicht, fordern Sie über [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) neue Funktionen an.
 * Unterstützte Browserversionen:
   * Internet Explorer 11
@@ -347,4 +351,9 @@ Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten S
   * Mozilla Firefox 38.0
   * Mozilla Firefox 37.0
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Dec16_HO4-->
+
+

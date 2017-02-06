@@ -53,6 +53,6 @@ Azure AD-Funktionen bieten eine Lösung für jedes der in diesem Artikel beschri
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

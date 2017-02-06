@@ -98,6 +98,6 @@ Wenn Sie in Ihrem B2C-Mandanten über mehrere Anwendungen und Richtlinien verfü
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 
