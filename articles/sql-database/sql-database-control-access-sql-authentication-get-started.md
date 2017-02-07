@@ -17,12 +17,12 @@ ms.topic: hero-article
 ms.date: 01/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 356cc4c6d8e25d36880e4b12bf471326e61990c3
-ms.openlocfilehash: 275a33567fa1472573bc8abc87948ad306e853f0
+ms.sourcegitcommit: 9d92b6401b70bbfce33fec053e3134a8bd7b4805
+ms.openlocfilehash: e86e20dbc38cc575542193002e6b86aa608e80e5
 
 
 ---
-# <a name="sql-database-tutorial-sql-server-authentication-logins-and-user-accounts-database-roles-permissions-server-level-firewall-rules-and-database-level-firewall-rules"></a>Tutorial zu SQL-Datenbank: SQL Server-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene
+# <a name="sql-database-tutorial-sql-server-authentication-access-and-database-level-firewall-rules"></a>SQL-Datenbank-Tutorial: SQL Server-Authentifizierung, Zugriff und Firewallregeln auf Datenbankebene
 In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie mithilfe von SQL Server Management Studio SQL Server-Authentifizierung, -Anmeldenamen, -Benutzer und -Datenbankrollen verwenden, die Zugriff auf und Berechtigungen für Server und Datenbanken von Azure SQL-Datenbank gewähren. Folgendes wird beschrieben:
 
 - Anzeigen von Benutzerberechtigungen in der Masterdatenbank und in Benutzerdatenbanken
@@ -429,6 +429,6 @@ CREATE USER blankdbuser1
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 
