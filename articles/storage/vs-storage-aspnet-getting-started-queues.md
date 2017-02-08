@@ -1,146 +1,224 @@
 ---
-title: Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft Docs
-description: Erfahren Sie etwas über die ersten Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
+title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft-Dokumentation
+description: "Erfahren Sie mehr über die ersten Schritte mit Azure Queue Storage in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 94ca3413-5497-433f-abbe-836f83a9de72
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 12/02/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: f58c2b522f81dc2dc86f0d2c6bc4872504cf7377
+ms.openlocfilehash: 70875287e79aaf49e1b8802cf2953cd5381b97f4
+
 
 ---
-# Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten
+# <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## Übersicht
-Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure-Warteschlangenspeicher in Visual Studio aussehen, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem ASP.NET-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben.
+## <a name="overview"></a>Übersicht
 
-Wir zeigen Ihnen, wie Sie eine Azure-Warteschlange in Ihrem Speicherkonto erstellen und darauf zugreifen. Außerdem wird gezeigt, wie Sie grundlegende Warteschlangenvorgänge, etwa Hinzufügen, Ändern, Lesen und Entfernen von Warteschlangennachrichten ausführen. Die Beispiele sind in C# geschrieben und greifen auf die [Microsoft Azure-Speicherclientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) zurück. Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](http://www.asp.net).
+Azure Queue Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, auf die über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann eine unbegrenzte Anzahl von Nachrichten enthalten, die nur durch die Gesamtkapazität des Speicherkontos begrenzt wird.
 
-Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
+In diesem Artikel wird beschrieben, wie Sie Azure Queue Storage-Entitäten programmgesteuert verwalten, allgemeine Aufgaben wie das Erstellen einer Azure-Warteschlange ausführen sowie Nachrichten in Warteschlangen hinzufügen, ändern, lesen und entfernen.
 
-## Zugriff auf Warteschlangen in Code
-Um auf Warteschlangen in ASP.NET-Projekten zuzugreifen, müssen Sie die folgenden Elemente zu jeder C#-Quelldatei hinzufügen, in der auf Azure-Warteschlangenspeicher zugegriffen wird.
+> [!NOTE]
+> 
+> In den Codeabschnitten in diesem Artikel wird davon ausgegangen, dass Sie bereits über Verbundene Dienste eine Verbindung mit einem Azure-Speicherkonto hergestellt haben. Verbundene Dienste wird konfiguriert, indem Sie den Visual Studio Projektmappen-Explorer öffnen, mit der rechten Maustaste auf das Projekt klicken und dann im Kontextmenü **Hinzufügen->Verbundener Dienst** auswählen. Befolgen Sie die Anleitungen im eingeblendeten Dialogfeld zum Herstellen der Verbindung mit dem gewünschten Azure-Speicherkonto.      
 
-1. Vergewissern Sie sich, dass die Namespacedeklarationen am Anfang der C#-Datei diese **using**-Anweisungen enthalten.
+## <a name="create-a-queue"></a>Erstellen einer Warteschlange
+
+Die folgenden Schritte beschreiben, wie Sie eine Warteschlange programmgesteuert erstellen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden.
+
+1. Fügen Sie die folgenden *using*-Direktiven hinzu:
    
-        using Microsoft.Framework.Configuration;
+        using Microsoft.Azure;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Queue;
-2. Rufen Sie ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um Ihre Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen.
-   
+
+2. Rufen Sie ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-3. Rufen Sie ein **CloudQueueClient**-Objekt ab, um auf die Warteschlangenobjekte in Ihrem Speicherkonto zu verweisen.
-   
-        // Create the CloudQueueClient object for this storage account.
+
+3. Rufen Sie ein **CloudQueueClient**-Objekt ab, das einen Warteschlangendienstclient darstellt.
+
         CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-4. Abrufen eines **CloudQueue**-Objekts, das auf eine bestimmte Warteschlange verweist.
+
+4. Rufen Sie ein **CloudQueue**-Objekt ab, das einen Verweis auf den gewünschten Warteschlangennamen darstellt. (Ändern Sie *<queue-name>* in den Namen der Warteschlange, den Sie erstellen möchten.)
+
+        CloudQueue queue = queueClient.GetQueueReference(<queue-name>);
+
+5. Rufen Sie die **CloudQueue.CreateIfNotExists**-Methode auf, um die Warteschlange zu erstellen, falls noch nicht vorhanden. 
+
+        queue.CreateIfNotExists();
+
+
+## <a name="add-a-message-to-a-queue"></a>Hinzufügen von Nachrichten zu einer Warteschlange
+
+Die folgenden Schritte beschreiben, wie Sie eine Nachricht einer Warteschlange programmgesteuert hinzufügen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden.
+
+1. Fügen Sie die folgenden *using*-Direktiven hinzu:
    
-        // Get a reference to a queue named "messageQueue"
-        CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
+        using Microsoft.Azure;
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Queue;
 
-**HINWEIS**: Verwenden Sie den gesamten obigen Code vor dem Code in den folgenden Beispielen.
+2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
 
-## Erstellen einer Warteschlange in Code
-Fügen Sie zum Erstellen einer Azure-Warteschlange in Code dem obigen Code einfach einen Aufruf von **CreateIfNotExists** hinzu.
+         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
-    // Create the messageQueue if it does not exist
-    messageQueue.CreateIfNotExists();
+3. Rufen Sie ein **CloudQueueClient**-Objekt ab, das einen Warteschlangendienstclient darstellt.
 
-## Hinzufügen von Nachrichten zu einer Warteschlange
-Wenn Sie eine Nachricht in eine vorhandene Warteschlange einfügen möchten, erstellen Sie zuerst ein neues **CloudQueueMessage**-Objekt, und rufen Sie dann die **AddMessage**-Methode auf.
+        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-Ein **CloudQueueMessage**-Objekt kann aus einer Zeichenfolge (im UTF-8-Format) oder aus einem Bytearray erstellt werden.
+4. Rufen Sie ein **CloudQueue**-Objekt ab, das einen Verweis auf den gewünschten Warteschlangennamen darstellt. (Ändern Sie *<queue-name>* in den Namen der Warteschlange, der Sie die Nachricht hinzufügen möchten.)
 
-Hier ist ein Beispiel, dass die Nachricht "Hello, World" eingefügt.
+        CloudQueue queue = queueClient.GetQueueReference(<queue-name>);
 
-    // Create a message and add it to the queue.
-    CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-    messageQueue.AddMessage(message);
+5. Erstellen Sie das **CloudQueueMessage**-Objekt, das die Nachricht darstellt, die Sie der Warteschlange hinzufügen möchten. Ein **CloudQueueMessage** -Objekt kann aus einer Zeichenfolge (im UTF-8-Format) oder aus einem Bytearray erstellt werden. (Ändern Sie *<queue-message>* in die Nachricht, die Sie hinzufügen möchten.
 
-## Lesen von Nachrichten in einer Warteschlange
-Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode PeekMessage() aufrufen.
+        CloudQueueMessage message = new CloudQueueMessage(<queue-message>);
 
-    // Peek at the next message
-    CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
+6. Rufen Sie die **CloudQueue.AddMessage**-Methode auf, um die Nachricht der Warteschlange hinzuzufügen.
 
-## Lesen und Entfernen von Nachrichten in einer Warteschlange
-Ihr Code kann eine Nachricht in zwei Schritten aus der Warteschlange entfernen.
+        queue.AddMessage(message);
 
-1. Rufen Sie GetMessage() auf, um die nächste Nachricht in einer Warteschlange abzurufen. eine von GetMessage() zurückgegebene Nachricht ist für anderen Code nicht mehr sichtbar, der Nachrichten aus dieser Warteschlange liest. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar.
-2. Wenn Sie die Nachricht endgültig aus der Warteschlange entfernen möchten, rufen Sie **DeleteMessage** auf.
+## <a name="read-a-message-from-a-queue-without-removing-it"></a>Lesen einer Nachricht in einer Warteschlange, ohne sie zu entfernen
 
-Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. Der folgende Code ruft **DeleteMessage** direkt nach der Verarbeitung der Nachricht auf.
+Die folgenden Schritte veranschaulichen, wie Sie programmgesteuert einen Blick auf die Nachricht in der Warteschlange werfen (die Nachricht lesen, ohne sie zu entfernen). In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden. 
 
-    // Get the next message in the queue.
-    CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
+1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+   
+        using Microsoft.Azure;
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Queue;
 
-    // Process the message in less than 30 seconds
+2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
 
-    // Then delete the message.
-    await messageQueue.DeleteMessage(retrievedMessage);
+         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
+3. Rufen Sie ein **CloudQueueClient**-Objekt ab, das einen Warteschlangendienstclient darstellt.
 
-## Verwenden zusätzlicher Optionen für Nachrichten aus der Warteschlange
-Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können. Erstens können Sie einen Nachrichtenstapel abrufen (bis zu 32). Zweitens können Sie das Unsichtbarkeits-Zeitlimit verkürzen oder verlängern, sodass der Code mehr oder weniger Zeit zur vollständigen Verarbeitung jeder Nachricht benötigt. Im folgenden Codebeispiel wird **GetMessages** verwendet, um 20 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer **foreach**-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt. Beachten Sie, dass die 5 Minuten für alle Nachrichten gleichzeitig beginnen, sodass 5 Minuten nach dem Aufruf von **GetMessages** alle Nachrichten, die nicht gelöscht wurden, wieder sichtbar werden.
+        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Create the queue client.
-    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+4. Rufen Sie ein **CloudQueue**-Objekt ab, das einen Verweis auf die Warteschlange darstellt. (Ändern Sie *<queue-name>* in den Namen der Warteschlange, in der Sie die Nachricht lesen möchten.)
 
-    // Retrieve a reference to a queue.
-    CloudQueue queue = queueClient.GetQueueReference("myqueue");
+        CloudQueue queue = queueClient.GetQueueReference(<queue-name>);
 
-    foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes(5)))
-    {
-        // Process all messages in less than 5 minutes, deleting each message after processing.
+5. Rufen Sie die **CloudQueue.PeekMessage**-Methode auf, um die Nachricht am Anfang einer Warteschlange zu lesen, ohne sie daraus zu entfernen.
+
+        CloudQueueMessage message = queue.PeekMessage();
+
+6. Greifen Sie auf den Wert des **CloudQueueMessage**-Objekts mithilfe der **CloudQueueMessage.AsBytes**- oder **CloudQueueMessage.AsString**-Eigenschaft zu.
+
+        string messageAsString = message.AsString;
+        byte[] messageAsBytes = message.AsBytes;
+
+## <a name="read-and-remove-a-message-from-a-queue"></a>Lesen und Entfernen von Nachrichten aus einer Warteschlange
+
+Die folgenden Schritte beschreiben, wie Sie eine Nachricht in einer Warteschlange programmgesteuert lesen und anschließend löschen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden. 
+
+1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+   
+        using Microsoft.Azure;
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Queue;
+
+2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+
+         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+
+3. Rufen Sie ein **CloudQueueClient**-Objekt ab, das einen Warteschlangendienstclient darstellt.
+
+        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+
+4. Rufen Sie ein **CloudQueue**-Objekt ab, das einen Verweis auf die Warteschlange darstellt. (Ändern Sie *<queue-name>* in den Namen der Warteschlange, in der Sie die Nachricht lesen möchten.)
+
+        CloudQueue queue = queueClient.GetQueueReference(<queue-name>);
+
+5. Rufen Sie die **CloudQueue.GetMessage**-Methode auf, um die erste Nachricht in der Warteschlange zu lesen. Die **CloudQueue.GetMessage**-Methode macht die Nachricht (standardmäßig) für anderen Code zum Lesen von Nachrichten für 30 Sekunden unsichtbar, sodass kein anderer Code die Nachricht ändern oder lesen kann, während Sie sie verarbeiten. Um die Zeitspanne zu ändern, in der die Nachricht nicht sichtbar ist, ändern Sie den **VisibilityTimeout**-Parameter, der an die **CloudQueue.GetMessage**-Methode übergeben wurde.
+
+        // This message will be invisible to other code for 30 seconds.
+        CloudQueueMessage message = queue.GetMessage();     
+
+6. Rufen Sie die **CloudQueueMessage.Delete**-Methode auf, um die Nachricht aus der Warteschlange zu löschen.
+
         queue.DeleteMessage(message);
-    }
 
-## Abrufen der Warteschlangenlänge
-Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die **FetchAttributes**-Methode ruft die Warteschlangenattribute inklusive der Nachrichtenanzahl vom Warteschlangendienst ab. Die **ApproximateMethodCount**-Eigenschaft gibt den letzten von der **FetchAttributes**-Methode abgerufenen Wert zurück, ohne den Warteschlangendienst aufzurufen.
+## <a name="get-the-queue-length"></a>Abrufen der Warteschlangenlänge
 
-    // Fetch the queue attributes.
-    messageQueue.FetchAttributes();
+Die folgenden Schritte beschreiben, wie Sie die Länge einer Warteschlange (Anzahl der Nachrichten) programmgesteuert abrufen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden. 
 
-    // Retrieve the cached approximate message count.
-    int? cachedMessageCount = messageQueue.ApproximateMessageCount;
+1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+   
+        using Microsoft.Azure;
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Queue;
 
-    // Display number of messages.
-    Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
+2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
 
-## Verwenden des Async-Await-Musters mit allgemeinen Warteschlangen-APIs
-In diesem Beispiel wird veranschaulicht, wie das Async-Await-Muster mit allgemeinen Warteschlangen-API verwendet wird. Im Beispiel werden jeweils die asynchronen Versionen der angegebenen Methoden aufgerufen, was am Postfix Async der einzelnen Methoden erkennbar ist. Wenn eine asynchrone Methode verwendet wird, hält das Async-Await-Muster die lokale Ausführung an, bis der Aufruf abgeschlossen ist. Durch dieses Verhalten kann der aktuelle Thread eine andere Aktion ausführen, wodurch Leistungsengpässe vermieden werden und die allgemeine Reaktionsfähigkeit der Anwendung verbessert wird. Weitere Informationen zur Verwendung des Async-Await-Musters in .NET finden Sie unter [Async und Await (C# und Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
+         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
-    // Create a message to put in the queue
-    CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
+3. Rufen Sie ein **CloudQueueClient**-Objekt ab, das einen Warteschlangendienstclient darstellt.
 
-    // Async enqueue the message
-    await messageQueue.AddMessageAsync(cloudQueueMessage);
-    Console.WriteLine("Message added");
+        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Async dequeue the message
-    CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
-    Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
+4. Rufen Sie ein **CloudQueue**-Objekt ab, das einen Verweis auf die Warteschlange darstellt. (Ändern Sie *<queue-name>* in den Namen der Warteschlange, deren Länge Sie abfragen.)
 
-    // Async delete the message
-    await messageQueue.DeleteMessageAsync(retrievedMessage);
-    Console.WriteLine("Deleted message");
+        CloudQueue queue = queueClient.GetQueueReference(<queue-name>);
 
-## Löschen einer Warteschlange
-Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **Delete** für das Warteschlangenobjekt auf.
+5. Rufen Sie die **CloudQueue.FetchAttributes**-Methode auf, um die Attribute der Warteschlange (einschließlich Länge) abzurufen. 
 
-    // Delete the queue.
-    messageQueue.Delete();
+        queue.FetchAttributes();
 
-## Nächste Schritte
+6. Greifen Sie auf die **CloudQueue.ApproximateMessageCount**-Eigenschaft zu, um die Länge der Warteschlange abzurufen.
+ 
+        int? nMessages = queue.ApproximateMessageCount;
+
+## <a name="delete-a-queue"></a>Löschen einer Warteschlange
+Die folgenden Schritte beschreiben, wie Sie eine Warteschlange programmgesteuert löschen. 
+
+1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+   
+        using Microsoft.Azure;
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Queue;
+
+2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+
+         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+
+3. Rufen Sie ein **CloudQueueClient**-Objekt ab, das einen Warteschlangendienstclient darstellt.
+
+        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+
+4. Rufen Sie ein **CloudQueue**-Objekt ab, das einen Verweis auf die Warteschlange darstellt. (Ändern Sie *<queue-name>* in den Namen der Warteschlange, deren Länge Sie abfragen.)
+
+        CloudQueue queue = queueClient.GetQueueReference(<queue-name>);
+
+5. Rufen Sie die **CloudQueue.Delete**-Methode zum Löschen der Warteschlange auf, die vom **CloudQueue**-Objekt dargestellt wird.
+
+        messageQueue.Delete();
+
+## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

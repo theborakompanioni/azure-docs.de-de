@@ -1,13 +1,13 @@
 ---
-title: Verwenden von Hadoop Sqoop in HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie Azure PowerShell auf einer Arbeitsstation verwenden können, um Sqoop-Importe und -Exporte zwischen einem Hadoop-Cluster und einer Azure SQL-Datenbank auszuführen.
+title: Verwenden von Hadoop Sqoop in HDInsight | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Azure PowerShell auf einer Arbeitsstation verwenden können, um Sqoop-Importe und -Exporte zwischen einem Hadoop-Cluster und einer Azure SQL-Datenbank auszuführen."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
-
+ms.assetid: bbb6f53a-e019-4d01-92bd-92c208c760b6
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,10 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 08f91860ef5cc44d15621e2c465e0510e2f1c5bd
+
 
 ---
-# Ausführen von Sqoop-Aufträgen mit Azure PowerShell für Hadoop in HDInsight
-[!INCLUDE [Sqoop-Auswahl](../../includes/hdinsight-selector-use-sqoop.md)]
+# <a name="run-sqoop-jobs-using-azure-powershell-for-hadoop-in-hdinsight"></a>Ausführen von Sqoop-Aufträgen mit Azure PowerShell für Hadoop in HDInsight
+[!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
 Erfahren Sie, wie Azure PowerShell zum Ausführen von Sqoop-Aufträgen in HDInsight zum Importieren und Exportieren zwischen HDInsight-Cluster und Azure SQL-Datenbank oder SQL Server-Datenbank verwendet werden kann.
 
@@ -27,7 +31,7 @@ Erfahren Sie, wie Azure PowerShell zum Ausführen von Sqoop-Aufträgen in HDInsi
 > 
 > 
 
-### Voraussetzungen
+### <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 * **Eine Arbeitsstation mit Azure PowerShell**.
@@ -35,7 +39,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
     [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 * **Einen Hadoop-Cluster in HDInsight**. Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## Führen Sie Sqoop mit PowerShell aus:
+## <a name="run-sqoop-using-powershell"></a>Führen Sie Sqoop mit PowerShell aus:
 Das folgende PowerShell-Skript verarbeitet vorab die Quelldatei und exportiert sie in eine Azure SQL-Datenbank:
 
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -160,11 +164,11 @@ Das folgende PowerShell-Skript verarbeitet vorab die Quelldatei und exportiert s
     Get-AzureRmHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardOutput
     #endregion
 
-## Einschränkungen
+## <a name="limitations"></a>Einschränkungen
 * Massenexport: Bei Linux-basiertem HDInsight unterstützt der zum Exportieren von Daten nach Microsoft SQL Server oder Azure SQL-Datenbank verwendete Sqoop-Connector derzeit keine Masseneinfügungen.
 * Batchverarbeitung: Wenn Sie in Linux-basiertem HDInsight zum Ausführen von Einfügevorgängen den Schalter `-batch` verwenden, führt Sqoop mehrere Einfügevorgänge aus, anstatt diese zu einem Batch zusammenzufassen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unter:
 
 * [Verwenden von Oozie mit HDInsight](hdinsight-use-oozie.md): Verwenden der Sqoop-Aktion in einem Oozie-Workflow.
@@ -173,4 +177,8 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

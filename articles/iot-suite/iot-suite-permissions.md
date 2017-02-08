@@ -131,6 +131,6 @@ Wenn Sie mehr über IoT Suite erfahren möchten, lesen Sie, wie Sie [eine vorkon
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

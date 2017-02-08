@@ -1,12 +1,12 @@
 ---
-title: Häufig gestellte Fragen | Microsoft Docs
-description: Häufig gestellte Fragen (FAQs)
+title: "Häufig gestellte Fragen | Microsoft-Dokumentation"
+description: "Häufig gestellte Fragen (FAQs)"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 5374f7f4-c189-43ef-8b7f-f2f4141e2748
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,17 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 6972550d74965fa6a7c69a5903b3287d5d219851
+
 
 ---
-# Häufig gestellte Fragen
-## Allgemeine häufig gestellte Fragen zu AMS
+# <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+## <a name="general-ams-faqs"></a>Allgemeine häufig gestellte Fragen zu AMS
 F: Wie wird die Indizierung skaliert?
 
-A: Die reservierten Einheiten für Codierungs- und Indizierungsaufgaben sind identisch. Folgen Sie den Anweisungen unter [Skalieren von für die Codierung reservierten Einheiten](media-services-scale-media-processing-overview.md). **Hinweis**: Die Indizierungsleistung für Typen reservierter Einheiten ist nicht herabgesetzt.
+A: Die reservierten Einheiten für Codierungs- und Indizierungsaufgaben sind identisch. Folgen Sie den Anweisungen unter [Skalieren von für die Codierung reservierten Einheiten](media-services-scale-media-processing-overview.md). **Hinweis** : Die Indizierungsleistung für Typen reservierter Einheiten ist nicht herabgesetzt.
 
 F: Ich habe ein Video hochgeladen, codiert und veröffentlicht. Was könnte die Ursache dafür sein, dass das Video nicht wiedergegeben wird, wenn ich versuche, es zu streamen?
 
-A: Einer der häufigsten Gründe ist, dass Sie für den Streamingendpunkt, von dem Sie die Wiedergabe versuchen, nicht über mindestens eine reservierte Einheit für das Streaming verfügen. Folgen Sie den Anweisungen unter [Skalieren von reservierten Einheiten für das Streaming](media-services-portal-scale-streaming-endpoints.md).
+A: Einer der häufigsten Gründe ist, dass Sie für den Streamingendpunkt, von dem Sie die Wiedergabe versuchen, nicht über mindestens eine reservierte Einheit für das Streaming verfügen.  Folgen Sie den Anweisungen unter [Skalieren von reservierten Einheiten für das Streaming](media-services-portal-scale-streaming-endpoints.md).
 
 F: Ist ein Zusammensetzen bei einem Livestream möglich?
 
@@ -32,11 +36,11 @@ A: Das Zusammensetzen (Compositing) von Livestreams wird derzeit nicht in Azure 
 
 F: Kann ich das Azure CDN für das Livestreaming verwenden?
 
-A: Media Services unterstützt die Integration im Azure CDN. (Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md).) Sie können Livestreaming mit CDN verwenden. Azure Media Services ermöglicht die Smooth Streaming-, HLS- und MPEG-DASH-Ausgabe. Alle diese Formate verwenden HTTP zum Übertragen von Daten und bieten damit die Vorteile der HTTP-Zwischenspeicherung. Beim Livestreaming werden die eigentlichen Video- oder Audiodaten in Fragmente aufgeteilt, da dann einzeln im CDN zwischengespeichert werden. Die einzigen zu aktualisierenden Daten sind die Manifestdaten. CDN aktualisiert die Manifestdaten regelmäßig.
+A: Media Services unterstützt die Integration im Azure CDN. (Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md).)  Sie können Livestreaming mit CDN verwenden. Azure Media Services ermöglicht die Smooth Streaming-, HLS- und MPEG-DASH-Ausgabe. Alle diese Formate verwenden HTTP zum Übertragen von Daten und bieten damit die Vorteile der HTTP-Zwischenspeicherung. Beim Livestreaming werden die eigentlichen Video- oder Audiodaten in Fragmente aufgeteilt, da dann einzeln im CDN zwischengespeichert werden. Die einzigen zu aktualisierenden Daten sind die Manifestdaten. CDN aktualisiert die Manifestdaten regelmäßig.
 
 F: Unterstützt Azure Media Services das Speichern von Bildern?
 
-A: Wenn Sie nur JPEG- oder PNG-Bilder speichern möchten, sollten Sie diese im Azure-BLOB-Speicher belassen. Es ergeben sich keine Vorteile daraus, sie in Ihrem Media Services-Konto zu speichern, außer Sie möchten sie zusammen mit Ihren Video- oder Audio-Medienobjekten aufbewahren. Dies gilt auch, wenn Sie die Bilder als Overlays im Video-Encoder verwenden möchten. Media Encoder Standard unterstützt die Überlagerung von Videos mit Bildern, und daher werden JPEG und PNG auch als unterstützte Eingabeformate aufgelistet. Weitere Informationen finden Sie unter [Erstellen von Überlagerungen](media-services-custom-mes-presets-with-dotnet.md#overlay).
+A: Wenn Sie nur JPEG- oder PNG-Bilder speichern möchten, sollten Sie diese im Azure-BLOB-Speicher belassen. Es ergeben sich keine Vorteile daraus, sie in Ihrem Media Services-Konto zu speichern, außer Sie möchten sie zusammen mit Ihren Video- oder Audio-Medienobjekten aufbewahren. Dies gilt auch, wenn Sie die Bilder als Overlays im Video-Encoder verwenden möchten. Media Encoder Standard unterstützt die Überlagerung von Videos mit Bildern, und daher werden JPEG und PNG auch als unterstützte Eingabeformate aufgelistet. Weitere Informationen finden Sie unter [Erstellen von Überlagerungen](media-services-advanced-encoding-with-mes.md#overlay).
 
 F: Wie kann ich Medienobjekte von einem Media Services-Konto in ein anderes kopieren?
 
@@ -44,15 +48,15 @@ A: Um Medienobjekte unter Verwendung von .NET von einem Media Services-Konto in 
 
 F: Welche Zeichen werden in Dateinamen bei der Arbeit mit AMS unterstützt?
 
-A: Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.). Aus diesem Grund ist die Prozentcodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen enthalten](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
+A: Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z.B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Es darf außerdem nur ein „.“ für die Dateinamenerweiterung vorhanden sein.
 
 F: Wie wird eine Verbindung mithilfe von REST hergestellt?
 
-A: Nach der erfolgreichen Verbindung mit https://media.windows.net erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md) müssen Sie nachfolgende Aufrufe an den neuen URI senden.
+A: Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden.
 
 F: Wie kann ich ein Video während des Codierungsvorgangs drehen?
 
-A: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) unterstützt Drehungen in den Winkeln 90/180/270 Grad. Das Standardverhalten ist „Auto“. Dabei wird versucht, die Rotationsmetadaten in der eingehenden MP4-/MOV-Datei zu erkennen und auszugleichen. Schließen Sie das folgende **Sources**-Element in einer der [hier](http://msdn.microsoft.com/library/azure/mt269960.aspx) definierten JSON-Voreinstellungen ein:
+A: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) unterstützt Drehungen um 90/180/270 Grad. Das Standardverhalten ist „Auto“. Dabei wird versucht, die Rotationsmetadaten in der eingehenden MP4-/MOV-Datei zu erkennen und auszugleichen. Schließen Sie das folgende **Sources**-Element in einer der [hier](http://msdn.microsoft.com/library/azure/mt269960.aspx) definierten JSON-Voreinstellungen ein:
 
     "Version": 1.0,
     "Sources": [
@@ -70,10 +74,14 @@ A: [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-stan
 
 
 
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

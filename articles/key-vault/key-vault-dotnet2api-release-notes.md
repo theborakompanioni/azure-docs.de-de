@@ -1,65 +1,69 @@
 ---
-title: Key Vault .NET 2.x API Release Notes| Microsoft Docs
-description: .NET developers will use this API to code for Azure Key Vault
+title: "Key Vault .NET 2.x-API – Versionshinweise | Microsoft-Dokumentation"
+description: ".NET-Entwickler verwenden diese API für die Programmierung für Azure Key Vault"
 services: key-vault
-documentationcenter: ''
+documentationcenter: 
 author: BrucePerlerMS
 manager: mbaldwin
 editor: bruceper
-
+ms.assetid: 1cccf21b-5be9-4a49-8145-483b695124ba
 ms.service: key-vault
 ms.devlang: CSharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/07/2016
+ms.date: 01/07/2017
 ms.author: bruceper
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d4dc8dea5c6e371db29fb9f85cfa635802cc0c52
+
 
 ---
-# <a name="azure-key-vault-.net-2.0---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - Release Notes and Migration Guide
-The following notes and guidance are for developers working with the Azure Key Vault .NET / C# library. In the change from the 1.0 version to the 2.0 version, a number of updates have been made that will require migration work in your code in order for you to benefit from the functional improvements and feature additions such as Key Vault certificates support.
+# <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – Versionshinweise und Migrationshandbuch
+Die folgenden Hinweise und Anweisungen richten sich an Entwickler, die die .NET-/C#-Bibliothek für Azure Key Vault verwenden. Von Version 1.0 zu Version 2.0 wurde eine Reihe von Updates vorgenommen, die Migrationsschritte in Ihrem Code erforderlich machen, damit Sie von den verbesserten und zusätzlichen Funktionen (etwa der Unterstützung von Key Vault-Zertifikaten) profitieren.
 
-Key Vault certificates support provides for management of your x509 certificates and the following behaviors:  
+Die Unterstützung von Key Vault-Zertifikaten ermöglicht die Verwaltung Ihrer x509-Zertifikate sowie folgende Szenarien:  
 
-* Allows a certificate owner to create a certificate through a Key Vault creation process or through the import of an existing certificate. This includes both self-signed and Certificate Authority generated certificates.
-* Allows a Key Vault certificate owner to implement secure storage and management of X509 certificates without interaction with private key material.  
-* Allows a certificate owner to create a policy that directs Key Vault to manage the life-cycle of a certificate.  
-* Allows certificate owners to provide contact information for notification about life-cycle events of expiration and renewal of certificate.  
-* Supports automatic renewal with selected issuers - Key Vault partner X509 certificate providers / certificate authorities.
+* Ermöglicht einem Zertifikatbesitzer die Erstellung eines Zertifikats über einen Key Vault-Erstellungsvorgang oder durch den Import eines vorhandenen Zertifikats. Dies schließt sowohl selbstsignierte als auch von einer Zertifizierungsstelle generierte Zertifikate ein.
+* Ermöglicht dem Besitzer eines Key Vault-Zertifikats die Implementierung von sicherem Speicher sowie die Verwaltung von X509-Zertifikaten ohne Interaktion mit privaten Schlüsseln.  
+* Ermöglicht einem Zertifikatbesitzer die Erstellung einer Richtlinie, die Key Vault anweist, den Lebenszyklus eines Zertifikats zu verwalten.  
+* Ermöglicht Zertifikatbesitzern die Angabe von Kontaktinformationen zur Benachrichtigung über Lebenszyklusereignisse wie Ablauf und Verlängerung eines Zertifikats.  
+* Unterstützt die automatische Verlängerung mit dem ausgewählten Aussteller – Key Vault-Partneranbieter oder -Partnerzertifizierungsstellen für X509-Zertifikate.
   
-  * NOTE - Non-partnered providers/authorities are also allowed but, will not support the auto renewal feature.
+  * HINWEIS: Anbieter/Zertifizierungsstellen, mit denen keine Partnerschaft besteht, sind ebenfalls zulässig. Das Feature für die automatische Verlängerung wird von ihnen jedoch nicht unterstützt.
 
-## <a name=".net-support"></a>.NET support
-* **.NET 4.0** is not supported by the 2.0 version of the Azure Key Vault .NET/C# library
-* **.NET Core** is supported by the 2.0 version of the Azure Key Vault .NET/C# library
+## <a name="net-support"></a>Unterstützung von .NET
+* **.NET 4.0** wird von Version 2.0 der .NET-/C#-Bibliothek für Azure Key Vault nicht unterstützt.
+* **.NET Core** wird von Version 2.0 der .NET-/C#-Bibliothek für Azure Key Vault unterstützt.
 
 ## <a name="namespaces"></a>Namespaces
-* The namespace for **models** is changed from **Microsoft.Azure.KeyVault** to **Microsoft.Azure.KeyVault.Models**.
-* The **Microsoft.Azure.KeyVault.Internal** namespace is dropped.
-* The Azure SDK dependencies namespace are changed from **Hyak.Common** and **Hyak.Common.Internals** to **Microsoft.Rest** and **Microsoft.Rest.Serialization**
+* Der Namespace für **Modelle** wurde von **Microsoft.Azure.KeyVault** in **Microsoft.Azure.KeyVault.Models** geändert.
+* Der Namespace **Microsoft.Azure.KeyVault.Internal** wurde gelöscht.
+* Die Namespaces der Azure SDK-Abhängigkeiten wurden von **Hyak.Common** und **Hyak.Common.Internals** in **Microsoft.Rest** und **Microsoft.Rest.Serialization** geändert.
 
-## <a name="type-changes"></a>Type changes
-* *Secret* changed to *SecretBundle*
-* *Dictionary* changed to *IDictionary*
-* *List<T>, string []* changed to *IList<T>*
-* *NextList* changed to  *NextPageLink*
+## <a name="type-changes"></a>Typänderungen
+* *Secret* wurde in *SecretBundle* geändert.
+* *Dictionary* wurde in *IDictionary* geändert.
+* *List<T>, string []* wurde in *IList<T>* geändert.
+* *NextList* wurde in *NextPageLink* geändert.
 
-## <a name="return-types"></a>Return types
-* **KeyList** and **SecretList** will return *IPage<T>* instead of *ListKeysResponseMessage*
-* The generated **BackupKeyAsync** will return *BackupKeyResult* which contains *Value* (back-up blob). Before the method was wrapped and returning only the value.
+## <a name="return-types"></a>Rückgabetypen
+* **KeyList** und **SecretList** geben *IPage<T>* anstelle von *ListKeysResponseMessage* zurück.
+* Das generierte **BackupKeyAsync**-Element gibt *BackupKeyResult* mit *Value* (Backupblob) zurück. Zuvor wurde die Methode eingeschlossen, und es wurde nur der Wert zurückgegeben.
 
-## <a name="exceptions"></a>Exceptions
-* *KeyVaultClientException* is changed to *KeyVaultErrorException*
-* The service error is changed from *exception.Error* to *exception.Body.Error.Message*.
-* Removed additional info from the error message for **[JsonExtensionData]**.
+## <a name="exceptions"></a>Ausnahmen
+* *KeyVaultClientException* wird in *KeyVaultErrorException* geändert.
+* Der Dienstfehler wird von *exception.Error* in *exception.Body.Error.Message* geändert.
+* Aus der Fehlermeldung für **[JsonExtensionData]** wurden zusätzliche Informationen entfernt.
 
-## <a name="constructors"></a>Constructors
-* Instead of accepting an *HttpClient* as a constructor argument, the constructor only accepts *HttpClientHandler* or *DelegatingHandler[]*.
+## <a name="constructors"></a>Konstruktoren
+* Der Konstruktor akzeptiert statt eines *HttpClient*-Elements als Konstruktorargument nur *HttpClientHandler* oder *DelegatingHandler[]*.
 
-## <a name="downloaded-packages"></a>Downloaded packages
-When a client is processing a  dependency on Key Vault the following were downloaded
+## <a name="downloaded-packages"></a>Heruntergeladene Pakete
+Bei der Verarbeitung einer Abhängigkeit für Key Vault durch einen Client wurden die folgenden Pakete heruntergeladen:
 
-#### <a name="previous-package-list"></a>Previous package list
+#### <a name="previous-package-list"></a>Vorherige Paketliste
 * package id="Hyak.Common" version="1.0.2" targetFramework="net45"
 * package id="Microsoft.Azure.Common" version="2.0.4" targetFramework="net45"
 * package id="Microsoft.Azure.Common.Dependencies" version="1.0.0" targetFramework="net45"
@@ -69,26 +73,29 @@ When a client is processing a  dependency on Key Vault the following were downlo
 * package id="Microsoft.Bcl.Build" version="1.0.14" targetFramework="net45"
 * package id="Microsoft.Net.Http" version="2.2.22" targetFramework="net45"
 
-#### <a name="current-package-list"></a>Current package list
+#### <a name="current-package-list"></a>Aktuelle Paketliste
 * package id="Microsoft.Azure.KeyVault" version="2.0.0-preview" targetFramework="net45"
 * package id="Microsoft.Rest.ClientRuntime" version="2.2.0" targetFramework="net45"
 * package id="Microsoft.Rest.ClientRuntime.Azure" version="3.2.0" targetFramework="net45"
 
-## <a name="class-changes"></a>Class changes
-* **UnixEpoch** class has been removed
-* **Base64UrlConverter** class is renamed to **Base64UrlJsonConverter**
+## <a name="class-changes"></a>Klassenänderungen
+* Die **UnixEpoch**-Klasse wurde entfernt.
+* Die **Base64UrlConverter**-Klasse wurde in **Base64UrlJsonConverter** umbenannt.
 
-## <a name="other-changes"></a>Other changes
-* Support for the configuration of KV operation retry policy on transient failures has been added to this version of the API.
+## <a name="other-changes"></a>Weitere Änderungen
+* Dieser API-Version wurde Unterstützung für die Konfiguration der KV-Vorgangswiederholungsrichtlinie für vorübergehende Fehler hinzugefügt.
 
-## <a name="microsoft.azure.management.keyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
-* For the operations that returned a *vault*, the return type was a class that contained a Vault property. The return type is now *Vault*.
-* *PermissionsToKeys* and *PermissionsToSecrets* are now *Permissions.Keys* and *Permissions.Secrets*
-* Some of the return types changes apply to the control-plane as well.
+## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
+* Bei den Vorgängen, die ein *vault*-Element zurückgegeben haben, handelt es sich beim Rückgabetyp um eine Klasse, die eine Vault-Eigenschaft enthielt. Der Rückgabetyp lautet jetzt *Vault*.
+* *PermissionsToKeys* und *PermissionsToSecrets* heißen jetzt *Permissions.Keys* und *Permissions.Secrets*.
+* Einige der Rückgabetypänderungen gelten auch für die Steuerungsebene.
 
-## <a name="microsoft.azure.keyvault.extensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
-* The package is broken up to **Microsoft.Azure.KeyVault.Extensions** and **Microsoft.Azure.KeyVault.Cryptography** for the cryptography operations.
+## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
+* Für Kryptografievorgänge wurde das Paket in **Microsoft.Azure.KeyVault.Extensions** und **Microsoft.Azure.KeyVault.Cryptography** unterteilt.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

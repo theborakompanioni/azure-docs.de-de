@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 012a62131792315dbd84d3acceb69f6e0d68a546
+ms.sourcegitcommit: b5fafb9603957a93a0ca8fbc6dd53798070641a4
+ms.openlocfilehash: da013207a2c804898d1a93dfd7875ed2a2deed22
 
 
 ---
@@ -25,6 +25,9 @@ ms.openlocfilehash: 012a62131792315dbd84d3acceb69f6e0d68a546
 Eine **Skriptaktion** kann während der Clustererstellung zum Aufrufen [benutzerdefinierter Skripts](hdinsight-hadoop-script-actions.md) verwendet werden, um zusätzliche Software auf einem Cluster zu installieren.
 
 Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zu Linux-basierten Clustern finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 HDInsight-Cluster können auch auf verschiedene andere Weisen angepasst werden, z.B. durch Hinzufügen von Azure-Speicherkonten, Ändern der Hadoop-Konfigurationsdateien („core-site.xml“, „hive-site.xml“ usw.) oder Hinzufügen gemeinsam genutzter Bibliotheken (z.B. Hive, Oozie) zu allgemeinen Speicherorten im Cluster. Diese Anpassungen können über Azure PowerShell, das Azure HDInsight .NET SDK oder das Azure-Portal erfolgen. Weitere Informationen finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision-cluster].
 
@@ -73,7 +76,7 @@ HDInsight verfügt über mehrere Skripts zum Installieren der folgenden Komponen
         <tr><td>Haupt-/Workerknoten</td>
             <td>Geben Sie die Knoten (**Hauptknoten** oder **Workerknoten**) an, für die das Anpassungsskript ausgeführt wird.</b>.
         <tr><td>Parameter</td>
-            <td>Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist.</td></tr>
+            <td>Geben Sie die Parameter an, wenn dies für das Skript erforderlich ist.</td></tr>
     </table>
 
     Drücken Sie die EINGABETASTE, um dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzuzufügen.
@@ -285,7 +288,7 @@ Das folgende Beispiel veranschaulicht das Installieren von Spark auf HDInsight-C
 5. Drücken Sie **F5**, um die Anwendung auszuführen.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Unterstützung für Open-Source-Software in HDInsight-Clustern
-Der Microsoft Azure HDInsight-Dienst ist eine flexible Plattform, die es Ihnen ermöglicht, Big Data-Anwendungen in der Cloud innerhalb des Ökosystems der Open-Source-Technologien rund um Hadoop zu erstellen. Microsoft Azure bietet allgemeinen Support für Open Source-Technologien. Siehe den Abschnitt **Supportumfang** auf der Website <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure-Support-FAQ</a>. Der HDInsight-Dienst bietet, wie nachstehend beschrieben, zusätzliche Unterstützung für einige der Komponenten.
+Der Microsoft Azure HDInsight-Dienst ist eine flexible Plattform, die es Ihnen ermöglicht, Big Data-Anwendungen in der Cloud innerhalb des Ökosystems der Open-Source-Technologien rund um Hadoop zu erstellen. Microsoft Azure bietet allgemeinen Support für Open-Source-Technologien. Siehe den Abschnitt **Supportumfang** auf der Website <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure-Support-FAQ</a>. Der HDInsight-Dienst bietet, wie nachstehend beschrieben, zusätzliche Unterstützung für einige der Komponenten.
 
 Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügbar sind:
 
@@ -297,7 +300,7 @@ Integrierte Komponenten werden vollständig unterstützt, und Microsoft Support 
 > [!WARNING]
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z.B. viele Communitywebsites verwendet werden: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es Projektwebsites auf [http://apache.org](http://apache.org), zum Beispiel: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es Projektwebsites auf [http://apache.org](http://apache.org), zum Beispiel: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 >
 >
 
@@ -305,7 +308,7 @@ Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponent
 
 1. Senden des Auftrags – Hadoop- oder andere Auftragstypen, die benutzerdefinierte Komponenten ausführen oder verwenden, können zum Cluster gesendet werden.
 2. Clusteranpassung – Während der Clustererstellung können Sie zusätzliche Einstellungen und benutzerdefinierte Komponenten angeben, die auf den Clusterknoten installiert werden.
-3. Beispiele – Für beliebte benutzerdefinierte Komponenten stellen Microsoft und andere Anbieter u.U. Beispiele dafür bereit, wie diese Komponenten in den HDInsight-Clustern verwendet werden können. Für diese Beispiele wird kein Support bereitgestellt.
+3. Beispiele – Für beliebte benutzerdefinierte Komponenten stellen Microsoft und andere Anbieter u. U. Beispiele dafür bereit, wie diese Komponenten in den HDInsight-Clustern verwendet werden können. Für diese Beispiele wird kein Support bereitgestellt.
 
 ## <a name="develop-script-action-scripts"></a>Entwickeln von Skriptaktionskripts
 Siehe [Entwickeln von Skriptaktionsskripts für HDInsight][hdinsight-write-script].
@@ -329,6 +332,6 @@ Siehe [Entwickeln von Skriptaktionsskripts für HDInsight][hdinsight-write-scrip
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: 'FAQ: Azure AD-Kennwortverwaltung | Microsoft Docs'
-description: Häufig gestellte Fragen (FAQ) zur Kennwortverwaltung in Azure AD, einschließlich Kennwortzurücksetzung, Registrierung, Berichten und Rückschreibung in das lokale Active Directory.
+title: "Häufig gestellte Fragen zur Azure AD-Kennwortverwaltung | Microsoft Docs"
+description: "Häufig gestellte Fragen (FAQ) zur Kennwortverwaltung in Azure AD, einschließlich Kennwortzurücksetzung, Registrierung, Berichten und Rückschreibung in das lokale Active Directory."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asteen
 manager: femila
 editor: curtand
-
+ms.assetid: 3a157d27-a410-4371-bcbf-8312941ae9d1
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,17 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: asteen
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 33d837c6f52d6b24a6636f398c1d5209ebf8da21
+
 
 ---
-# Häufig gestellte Fragen zur Kennwortverwaltung
+# <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 > 
 > 
 
 Im Folgenden werden einige häufig gestellte Fragen rund um die Kennwortverwaltung aufgeführt.
 
-Wenn Sie eine Frage haben, die Sie nicht beantworten können, oder zu einem bestimmten Problem Hilfe benötigen, können Sie hier weiterlesen und nachsehen, ob wir das Thema bereits behandelt haben. Falls dies nicht der Fall sein sollte: Stellen Sie gerne jede Frage, die hier in den [Azure AD-Foren](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD) noch nicht aufgeführt ist, und wir melden uns so bald wie möglich.
+Wenn Sie eine Frage haben, die Sie nicht beantworten können, oder zu einem bestimmten Problem Hilfe benötigen, können Sie hier weiterlesen und nachsehen, ob wir das Thema bereits behandelt haben.  Falls dies nicht der Fall sein sollte: Stellen Sie gerne jede Frage, die hier in den [Azure AD-Foren](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD) noch nicht aufgeführt ist, und wir melden uns so bald wie möglich.
 
 Diese FAQ sind in folgende Abschnitte unterteilt:
 
@@ -33,10 +37,10 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * [**Fragen zu Kennwortverwaltungsberichten**](#password-management-reports)
 * [**Fragen zur Kennwortrückschreibung**](#password-writeback)
 
-## Registrieren für die Kennwortzurücksetzung
+## <a name="password-reset-registration"></a>Registrieren für die Kennwortzurücksetzung
 * **F: Können meine Benutzer ihre eigenen Daten zur Kennwortzurücksetzung registrieren?**
   
-  > **A:** Ja, solange die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Registrierungsportal für die Kennwortzurücksetzung unter http://aka.ms/ssprsetup öffnen und ihre Authentifizierungsinformationen registrieren, die beim Zurücksetzen des Kennworts verwendet werden. Benutzer können sich auch registrieren, indem sie in den Zugriffsbereich unter http://myapps.microsoft.com wechseln und auf die Profilregisterkarte und dann auf die Option "Für die Kennwortzurücksetzung registrieren" klicken. Weitere Informationen zur Konfiguration Ihrer Benutzer für die Kennwortzurücksetzung finden Sie unter "So konfigurieren Sie Benutzer für das Zurücksetzen von Kennwörtern".
+  > **A:** Ja, wenn die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Kennwortregistrierungsportal auf „http://aka.ms/ssprsetup“ öffnen und ihre Authentifizierungsdaten registrieren, die beim Zurücksetzen des Kennworts verwendet werden. Benutzer können sich auch registrieren, indem sie in den Zugriffsbereich unter „http://myapps.microsoft.com“ wechseln und auf die Registerkarte für die Kennwortzurücksetzung klicken. Weitere Informationen zur Konfiguration Ihrer Benutzer für die Kennwortzurücksetzung finden Sie unter "So konfigurieren Sie Benutzer für das Zurücksetzen von Kennwörtern".
   > 
   > 
 * **F: Kann ich im Namen meiner Benutzer Daten zur Kennwortzurücksetzung definieren?**
@@ -59,23 +63,23 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > **A:** Nein, wenn Sie genügend Authentifizierungsinformationen in ihrem Auftrag definieren, müssen Benutzer sich nicht registrieren. Das Zurücksetzen des Kennworts funktioniert, solange Sie in den entsprechenden Feldern im Verzeichnis ordnungsgemäß formatierte Daten gespeichert haben. Weitere Informationen finden Sie unter "Verwendung von Daten für die Kennwortzurücksetzung".
   > 
   > 
-* **F: Kann ich die Felder "Telefon für Authentifizierung", "E-Mail-Adresse zur Authentifizierung" oder "Alternatives Telefon für Authentifizierung" im Namen meiner Benutzer synchronisieren oder festlegen?**
+* **F: Kann ich die Felder „Telefon für Authentifizierung“, „E-Mail-Adresse zur Authentifizierung“ oder „Alternatives Telefon für Authentifizierung“ im Namen meiner Benutzer synchronisieren oder festlegen?**
   
   > **A:** Derzeit nicht, aber wir ziehen diese Möglichkeit in Betracht.
   > 
   > 
 * **F: Wie erkennt das Registrierungsportal, welche Optionen meinen Benutzern angezeigt werden sollen?**
   
-  > **A:** Das Portal Registrierungsportal für die Kennwortzurücksetzung zeigt nur die Optionen an, die Sie auf der Registerkarte „Konfigurieren“ Ihres Verzeichnisses im Abschnitt zur Kennwortzurücksetzungsrichtlinie für Ihre Benutzer aktiviert haben. Wenn Sie also z. B. die Sicherheitsfragen nicht aktivieren, können Benutzer sich für diese Option nicht registrieren.
+  > **A:** Das Registrierungsportal für die Kennwortzurücksetzung zeigt nur die Optionen an, die Sie auf der Registerkarte „Konfigurieren“ Ihres Verzeichnisses im Abschnitt zur Kennwortzurücksetzungsrichtlinie für Ihre Benutzer aktiviert haben. Wenn Sie also z. B. die Sicherheitsfragen nicht aktivieren, können Benutzer sich für diese Option nicht registrieren.
   > 
   > 
 * **F: Wann gilt ein Benutzer als registriert?**
   
-  > **A:** Ein Benutzer gilt als registriert, wenn für ihn mindestens N Authentifizierungsinformationen definiert wurden, wobei N die Anzahl erforderlicher Authentifizierungsmethoden bezeichnet, die Sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) festgelegt haben. Weitere Informationen hierzu finden Sie unter "Anpassen der Richtlinie zum Zurücksetzen des Benutzerkennworts".
+  > **A:** Ein Benutzer gilt als registriert, wenn für ihn mindestens N Authentifizierungsinformationen definiert wurden, wobei N die Anzahl erforderlicher Authentifizierungsmethoden bezeichnet, die Sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com)festgelegt haben. Weitere Informationen hierzu finden Sie unter "Anpassen der Richtlinie zum Zurücksetzen des Benutzerkennworts".
   > 
   > 
 
-## Zurücksetzen des Kennworts
+## <a name="password-reset"></a>Zurücksetzen des Kennworts
 * **F: Wie lange muss ich warten, bis eine E-Mail, eine SMS oder ein Anruf von der Kennwortzurücksetzung eintrifft?**
   
   > **A:** E-Mail, SMS-Nachrichten und Telefonanrufe sollten in weniger als 1 Minute, normalerweise innerhalb von 5-20 Sekunden eingehen. Wenn Sie in diesem Zeitraum keine Benachrichtigung erhalten, überprüfen Sie den Junk-Ordner, stellen Sie sicher, dass die Nummer / E-Mail-Adresse richtig ist und dass die Authentifizierungsdaten im Verzeichnis richtig formatiert sind. Weitere Informationen zur Formatierung von Telefonnummern und E-Mail-Adressen für die Kennwortzurücksetzung finden Sie unter "Verwendung von Daten für die Kennwortzurücksetzung".
@@ -86,7 +90,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > **A:** Die Benutzeroberfläche der Kennwortzurücksetzung, die SMS-Nachrichten und die Sprachanrufe wurden in dieselben 40 Sprachen lokalisiert, die in Office 365 unterstützt werden. Diese sind: Arabisch, Bulgarisch, vereinfachtes Chinesisch, traditionelles Chinesisch, Kroatisch, Tschechisch, Dänisch, Niederländisch, Englisch, Estnisch, Finnisch, Französisch, Deutsch, Griechisch, Hebräisch, Hindi, Ungarisch, Indonesisch, Italienisch, Japanisch, Kasachisch, Koreanisch, Lettisch, Litauisch, Malaiisch (Malaysia), Norwegisch (Bokmål), Polnisch, Portugiesisch (Brasilien), Portugiesisch (Portugal), Rumänisch, Russisch, Serbisch (Lateinisch), Slowakisch, Slowenisch, Spanisch, Schwedisch, Thai, Türkisch, Ukrainisch und Vietnamesisch.
   > 
   > 
-* **F: Welche Teile der Oberfläche zum Zurücksetzen von Kennwörtern werden angepasst, wenn ich organisationsspezifisches Branding auf der Registerkarte "Konfigurieren" für mein Verzeichnis festlege?**
+* **F: Welche Teile der Benutzeroberfläche zum Zurücksetzen von Kennwörtern werden angepasst, wenn ich organisationsspezifisches Branding auf der Registerkarte „Konfigurieren“ für mein Verzeichnis festlege?**
   
   > **A:** Das Portal für die Kennwortzurücksetzung zeigt das Logo Ihrer Organisation und erlaubt Ihnen zudem, den Link „Wenden Sie sich an Ihren Administrator“ so zu konfigurieren, dass er auf eine benutzerdefinierte E-Mail-Adresse oder eine URL verweist. E-Mails, die von der Kennwortzurücksetzung gesendet werden, enthalten das Logo, die Farben (in diesem Fall rot) sowie den Namen Ihrer Organisation im Nachrichtentext der E-Mail. Zudem weisen sie einen angepassten "Von"-Namen auf. Unten sehen Sie ein Beispiel mit allen organisationsspezifisch angepassten Elementen. Weitere Informationen finden Sie unter "Anpassen des Aussehens und Verhaltens der Kennwortzurücksetzung".
   > 
@@ -95,7 +99,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   ![][001]
 * **F: Wie informiere ich meine Benutzer, wo sie ihre Kennwörter zurücksetzen können?**
   
-  > **A:** Sie können Ihre Benutzer direkt an https://passwordreset.microsoftonline.com weiterleiten, oder Sie können sie auffordern, auf den Link „Sie können nicht auf Ihr Konto zugreifen“ zu klicken, der auf jedem Anmeldebildschirm für eine Schul- oder Geschäfts-ID angezeigt wird. Sie können diese Links an jeder Stelle veröffentlichen (oder URL-Umleitungen darauf erstellen), die für die Benutzer leicht zugänglich ist.
+  > **A:** Sie können Ihre Benutzer direkt an „https://passwordreset.microsoftonline.com“ weiterleiten, oder Sie können sie auffordern, auf den Link „Sie können nicht auf Ihr Konto zugreifen?“ zu klicken, der auf jedem Anmeldebildschirm für eine Geschäfts-, Schul- oder Uni-ID angezeigt wird. Sie können diese Links an jeder Stelle veröffentlichen (oder URL-Umleitungen darauf erstellen), die für die Benutzer leicht zugänglich ist.
   > 
   > 
 * **F: Kann ich diese Seite von einem mobilen Gerät aus verwenden?**
@@ -120,7 +124,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > 
 * **F: Wie viele Fragen können wir für die Authentifizierungsoption mit Sicherheitsfragen konfigurieren?**
   
-  > **A:** Sie können bis zu 20 benutzerdefinierte Sicherheitsfragen im [Azure-Verwaltungsportal](https://manage.windowsazure.com) konfigurieren.
+  > **A:** Sie können bis zu 20 benutzerdefinierte Sicherheitsfragen im [Azure-Verwaltungsportal](https://manage.windowsazure.com)konfigurieren.
   > 
   > 
 * **F: Wie lang dürfen die Sicherheitsfragen sein?**
@@ -164,7 +168,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > 
   > 
 
-## Berichte zur Kennwortverwaltung
+## <a name="password-management-reports"></a>Berichte zur Kennwortverwaltung
 * **F: Wie lange dauert es, bis Daten in den Berichten zur Kennwortverwaltung angezeigt werden?**
   
   > **A:** Daten sollten innerhalb von 5 bis 10 Minuten in den Berichten zur Kennwortverwaltung angezeigt werden. In manchen Fällen kann es bis zu einer Stunde dauern.
@@ -179,7 +183,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   ![][002]
 * **F: Wie hoch ist die maximale Anzahl der Ereignisse, die in den Kennwortverwaltungsberichten gespeichert werden?**
   
-  > **A**: Bis zu 1.000 Kennwortzurücksetzungsereignisse oder Ereignisse bezüglich des Registrierens für die Kennwortzurücksetzung werden in den Kennwortverwaltungsberichten gespeichert. Eine Erweiterung dieser Anzahl der Ereignisse ist in Arbeit.
+  > **A** : Bis zu 1.000 Kennwortzurücksetzungsereignisse oder Ereignisse bezüglich des Registrierens für die Kennwortzurücksetzung werden in den Kennwortverwaltungsberichten gespeichert.  Eine Erweiterung dieser Anzahl der Ereignisse ist in Arbeit.
   > 
   > 
 * **F: Wie weit reichen die Berichte zur Kennwortverwaltung zurück?**
@@ -194,17 +198,17 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > 
 * **F: Gibt es eine API, um auf die Daten der Kennwortzurücksetzung oder des Registrierens für die Kennwortzurücksetzung zuzugreifen?**
   
-  > **A**: Ja, in der folgenden Dokumentation finden Sie Angaben dazu, wie der Zugriff auf den Berichtdatenstrom über die Kennwortzurücksetzung möglich ist. [Azure AD-Berichte und -Ereignisse (Vorschau)](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+  > **A** : Ja, in der folgenden Dokumentation finden Sie Angaben dazu, wie der Zugriff auf den Berichtdatenstrom über die Kennwortzurücksetzung möglich ist.  [Azure AD-Berichte und -Ereignisse (Vorschau)](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
   > 
   > 
 
-## Rückschreiben von Kennwörtern
+## <a name="password-writeback"></a>Rückschreiben von Kennwörtern
 * **F: Wie funktioniert das Rückschreiben von Kennwörtern im Detail?**
   
   > **A:** Unter [Funktionsweise der Kennwortrückschreibung](active-directory-passwords-learn-more.md#how-password-writeback-works) finden Sie eine detaillierte Erläuterung der Vorgänge bei einer Kennwortrückschreibung sowie zum Datenfluss durch das System zurück in die lokale Umgebung. Unter [Sicherheitsmodell für die Kennwortrückschreibung](active-directory-passwords-learn-more.md#password-writeback-security-model) im Artikel „Weitere Informationen zur Kennwortverwaltung“ erfahren Sie, wie wir sicherstellen, dass die Kennwortrückschreibung ein sehr sicherer Dienst ist.
   > 
   > 
-* **F: Wie lange dauert es, bis das Rückschreiben von Kennwörtern funktioniert? Gibt es eine Synchronisierungsverzögerung wie bei der Kennworthashsynchronisierung?**
+* **F: Wie lange dauert es, bis das Rückschreiben von Kennwörtern funktioniert?  Gibt es eine Synchronisierungsverzögerung wie bei der Kennworthashsynchronisierung?**
   
   > **A:** Die Kennwortrückschreibung findet sofort statt. Sie ist eine synchrone Pipeline, die grundlegend anders funktioniert als die Kennworthashsynchronisierung. Durch die Kennwortrückschreibung erhalten Benutzer in Echtzeit Feedback über den Erfolg der Kennwortzurücksetzung oder -änderung. Die durchschnittliche Zeit für das erfolgreiche Rückschreiben eines Kennworts liegt bei unter 500 ms.
   > 
@@ -219,16 +223,16 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > **A:** Ja, die Kennwortrückschreibung setzt das Kennwortalter, den Verlauf, die Komplexität, Filter und alle anderen Einschränkungen durch, die Sie in Ihrer lokalen Domäne für Kennwörter festlegen können.
   > 
   > 
-* **Q: Ist die Kennwortrückschreibung sicher? Wie kann ich sicher sein, dass ich nicht gehackt werde?**
+* **Q: Ist die Kennwortrückschreibung sicher?  Wie kann ich sicher sein, dass ich nicht gehackt werde?**
   
   > **A:** Ja, die Kennwortrückschreibung ist extrem sicher. Weitere Informationen zu den vier Sicherheitsstufen, die durch den Dienst zur Kennwortrückschreibung implementiert werden, finden Sie unter [Sicherheitsmodell für das Rückschreiben von Kennwörtern](active-directory-passwords-learn-more.md#password-writeback-security-model) im Artikel „Weitere Informationen zur Kennwortverwaltung“.
   > 
   > 
 
-## Links zur Dokumentation für die Kennwortzurücksetzung
-Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
+## <a name="links-to-password-reset-documentation"></a>Links zur Dokumentation für die Kennwortzurücksetzung
+Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
@@ -240,4 +244,8 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Dec16_HO4-->
+
+

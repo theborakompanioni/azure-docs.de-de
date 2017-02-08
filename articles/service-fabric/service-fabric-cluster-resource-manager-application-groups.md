@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/19/2016
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 775232c406cd44fa1c7cd9094484f11ab42d3ae8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4be5a8bca1816446d846357896b1be27821fe47b
 
 
 ---
@@ -170,11 +170,11 @@ Diese Einschränkungen gelten, damit der Clusterressourcen-Manager die optimale 
 * Weitere Informationen zur Funktionsweise von Metriken im Allgemeinen finden Sie unter [Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken](service-fabric-cluster-resource-manager-metrics.md)
 * Der Clusterressourcen-Manager bietet viele Optionen für die Beschreibung des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md)
 
-[Bild1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
-[Bild2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
+[Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
+[Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

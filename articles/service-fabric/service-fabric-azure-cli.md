@@ -5,8 +5,8 @@ services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: c3ec8ff3-3b78-420c-a7ea-0c5e443fb10e
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/24/2016
 ms.author: subramar
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: caf6dd414bd8f8180c90835dd9744dcd98f7709c
+
 
 ---
 # <a name="using-the-azure-cli-to-interact-with-a-service-fabric-cluster"></a>Interagieren mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
@@ -77,7 +81,8 @@ Ersetzen Sie das PublicIPorFQDN-Tag durch die tatsächliche IP-Adresse oder den 
 
 Für die Interaktion mit Ihrem Linux-basierten Service Fabric-Cluster, den Sie über das Azure-Portal erstellt haben, können Sie PowerShell oder die Befehlszeilenschnittstelle verwenden. 
 
-**Vorsicht:** Da diese Cluster nicht sicher sind, setzen Sie Ihre One-Box unter Umständen einem Risiko aus, wenn Sie die öffentliche IP-Adresse dem Clustermanifest hinzufügen.
+> [!WARNING]
+> Da diese Cluster nicht sicher sind, setzen Sie Ihre One-Box unter Umständen einem Risiko aus, wenn Sie die öffentliche IP-Adresse dem Clustermanifest hinzufügen.
 
 ## <a name="using-the-azure-cli-to-connect-to-a-service-fabric-cluster"></a>Herstellen einer Verbindung mit einem Service Fabric-Cluster mithilfe der Azure-Befehlszeilenschnittstelle
 Mit den folgenden Befehlen der Azure-Befehlszeilenschnittstelle können Sie eine Verbindung mit einem sicheren Cluster herstellen. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
@@ -145,6 +150,24 @@ Nun können Sie das Anwendungsupgrade mithilfe des folgenden Befehls starten:
 
 Das Anwendungsupgrade kann daraufhin mit SFX überwacht werden. Die Aktualisierung der Anwendung dauert nur wenige Minuten.  Sie können auch eine aktualisierte Anwendung mit einem Fehler ausprobieren und die automatische Rollbackfunktion in Service Fabric testen.
 
+## <a name="converting-from-pfx-to-pem-and-vice-versa"></a>Konvertieren von PFX zu PEM und umgekehrt
+
+Unter Umständen müssen Sie auf Ihrem lokalen Computer (unter Windows oder Linux) ein Zertifikat installieren, um auf sichere Cluster zuzugreifen, die sich möglicherweise in einer anderen Umgebung befinden. Wenn Sie also beispielsweise über einen Windows-Computer auf einen geschützten Linux-Cluster zugreifen, müssen Sie Ihr Zertifikat ggf. von PFX in PEM konvertieren (und umgekehrt). 
+
+Mit dem folgenden Befehl konvertieren Sie eine PEM-Datei in eine PFX-Datei:
+
+```bash
+openssl pkcs12 -export -out certificate.pfx -inkey mycert.pem -in mycert.pem -certfile mycert.pem
+```
+
+Mit dem folgenden Befehl konvertieren Sie eine PFX-Datei in eine PEM-Datei:
+
+```bash
+openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
+```
+
+Ausführliche Informationen finden Sie in der [OpenSSL-Dokumentation](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html).
+
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="copying-of-the-application-package-does-not-succeed"></a>Das Anwendungspaket kann nicht kopiert werden.
 Überprüfen Sie, ob `openssh` installiert ist. Diese Komponente ist unter Ubuntu Desktop standardmäßig nicht installiert. Installieren Sie sie mithilfe des folgenden Befehls:
@@ -172,9 +195,14 @@ Tritt das Problem immer noch auf, führen Sie die folgenden Befehle aus, um die 
 ```
 Da bei der ssh-Authentifizierung noch keine Schlüssel unterstützt werden (weil die Plattform ssh verwendet, um Pakete zu kopieren), muss stattdessen die Kennwortauthentifizierung verwendet werden.
 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 Richten Sie die Entwicklungsumgebung ein, und stellen Sie eine Service Fabric-Anwendung in einem Linux-Cluster bereit.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

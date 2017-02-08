@@ -98,6 +98,6 @@ Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Zertifikats 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

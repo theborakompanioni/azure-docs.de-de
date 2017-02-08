@@ -1,84 +1,87 @@
 ---
-title: Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store | Microsoft Docs
-description: 'Grundlegendes zum Einrichten von Diagnoseprotokollen und Zugriff darauf für Azure Data Lake Store '
+title: "Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store | Microsoft Docs"
+description: "Grundlegendes zum Einrichten von Diagnoseprotokollen und Zugriff darauf für Azure Data Lake Store  "
 services: data-lake-store
-documentationcenter: ''
+documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/19/2016
+ms.date: 10/05/2016
 ms.author: nitinme
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 276033907d454a54b2d9d5354f8e1dc48a7b01d4
+
 
 ---
-# Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
+# <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Data Lake Store-Konto aktivieren, und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
 
 Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Store-Konten zum Erfassen von Datenzugriffs-Überwachungspfaden aktivieren, die Informationen wie die Liste der Benutzer, die auf die Daten zugreifen, die Häufigkeit des Zugriffs auf die Daten, die Größe der im Konto gespeicherten Datenmenge usw. liefern.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
-* **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md) aus.
+* **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md)aus.
 
-## Aktivieren der Diagnoseprotokollierung für Ihr Data Lake Store-Konto
-1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com) an.
+## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Aktivieren der Diagnoseprotokollierung für Ihr Data Lake Store-Konto
+1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com)an.
 2. Öffnen Sie Ihr Data Lake Store-Konto, und klicken Sie auf Ihrem Data Lake Store-Kontoblatt auf **Einstellungen** und dann auf **Diagnoseeinstellungen**.
-3. Nehmen Sie auf dem Blatt **Diagnose**die folgenden Änderungen vor, um die Diagnoseprotokollierung zu konfigurieren.
+3. Nehmen Sie auf dem Blatt **Diagnose** die folgenden Änderungen vor, um die Diagnoseprotokollierung zu konfigurieren.
    
-    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
+    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Enable diagnostic logs")
    
    * Legen Sie **Status** auf **Ein** fest, um die Diagnoseprotokollierung zu aktivieren.
    * Sie können die Daten auf zwei verschiedene Arten speichern/verarbeiten.
-     * Wählen Sie die Option **Nach Event Hub Exportieren**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
-     * Wählen Sie die Option **Nach Speicherkonto exportieren**, um Protokolle in einem Azure Storage-Konto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten, die zu einem späteren Zeitpunkt der Batchverarbeitung unterzogen werden sollen. Bei Auswahl dieser Option müssen Sie ein Azure Storage-Konto zum Speichern der Protokolle bereitstellen.
+     * Wählen Sie die Option **Nach Event Hub Exportieren** , um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
+     * Wählen Sie die Option **Nach Speicherkonto exportieren** , um Protokolle in einem Azure Storage-Konto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten, die zu einem späteren Zeitpunkt der Batchverarbeitung unterzogen werden sollen. Bei Auswahl dieser Option müssen Sie ein Azure Storage-Konto zum Speichern der Protokolle bereitstellen.
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
    * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen.
    * Klicken Sie auf **Speichern**.
 
 Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokolle auf der Registerkarte **Diagnoseprotokolle** verfolgen.
 
-## Anzeigen der Diagnoseprotokolle für Ihr Data Lake Store-Konto
+## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>Anzeigen der Diagnoseprotokolle für Ihr Data Lake Store-Konto
 Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Store-Kontos anzuzeigen:
 
 * Über die Ansicht „Einstellungen“ des Data Lake Store-Kontos
 * Über das Azure Storage-Konto, in dem die Daten gespeichert sind
 
-### Verwenden der Data Lake Store-Ansicht „Einstellungen“
+### <a name="using-the-data-lake-store-settings-view"></a>Verwenden der Data Lake Store-Ansicht „Einstellungen“
 1. Klicken Sie in Ihrem Data Lake Store-Konto auf dem Blatt **Einstellungen** auf **Diagnoseprotokolle**.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Anzeigen der Diagnoseprotokolle")
+    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "View diagnostic logs") 
 2. Auf dem Blatt **Diagnoseprotokolle** sollten die Protokolle nach **Überwachungsprotokollen** und **Anforderungsprotokollen** kategorisiert sein.
    
    * Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Store-Konto.
    * Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge, die auf dem Data Lake Store-Konto ausgeführt werden. Ein einzelner API-Hochladeaufruf in Anforderungsprotokollen könnte möglicherweise in den Überwachungsprotokollen in mehreren „Anfügen“-Vorgängen resultieren.
-3. Klicken Sie für jeden Protokolleintrag auf den Link **Herunterladen**, um die Protokolle herunterzuladen.
+3. Klicken Sie für jeden Protokolleintrag auf den Link **Herunterladen** , um die Protokolle herunterzuladen.
 
-### Im Azure Storage-Konto, das die Protokolldaten enthält
+### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
 1. Öffnen Sie das Azure Storage-Kontoblatt, das zur Protokollierung dem Data Lake Store zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blobdienst** werden zwei Container aufgelistet.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen der Diagnoseprotokolle")
+    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "View diagnostic logs")
    
    * Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
    * Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
 2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen der Diagnoseprotokolle")
+    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "View diagnostic logs")
    
     Der vollständige Pfad zu einem Überwachungsprotokoll könnte z.B. folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
     Entsprechend könnte der vollständige Pfad zu einem Anforderungsprotokoll folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
-## Grundlegendes zur Struktur der Protokolldaten
+## <a name="understand-the-structure-of-the-log-data"></a>Grundlegendes zur Struktur der Protokolldaten
 Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In diesem Abschnitt betrachten wir die Struktur von JSON für Anforderungs- und Überwachungsprotokolle.
 
-### Anforderungsprotokolle
-Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records**, das ein Array mit Protokollobjekten enthält.
+### <a name="request-logs"></a>Anforderungsprotokollen
+Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 
     {
     "records": 
@@ -101,7 +104,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
       ]
     }
 
-#### Anforderungsprotokollschema
+#### <a name="request-log-schema"></a>Anforderungsprotokollschema
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | in |String |Der Zeitstempel (UTC) des Protokolls. |
@@ -114,7 +117,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 | Identität |Objekt |Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften |JSON |Weitere Informationen siehe unten. |
 
-#### Eigenschaftenschema des Anforderungsprotokolls
+#### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | HttpMethod |String |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
@@ -124,8 +127,8 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 | StartTime |String |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
 | EndTime |String |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
-### Überwachungsprotokolle
-Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jeder Blob hat ein Stammobjekt namens **records**, das ein Array von Protokollobjekten enthält.
+### <a name="audit-logs"></a>Überwachungsprotokolle
+Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jeder Blob hat ein Stammobjekt namens **records** , das ein Array von Protokollobjekten enthält.
 
     {
     "records": 
@@ -147,7 +150,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
       ]
     }
 
-#### Überwachungsprotokollschema
+#### <a name="audit-log-schema"></a>Überwachungsprotokollschema
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | in |String |Der Zeitstempel (UTC) des Protokolls. |
@@ -159,16 +162,21 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 | Identität |Objekt |Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften |JSON |Weitere Informationen siehe unten. |
 
-#### Eigenschaftenschema des Überwachungsprotokolls
+#### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
 | Name | Typ | Beschreibung |
 | --- | --- | --- |
 | StreamName |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
-## Beispiele für die Verarbeitung der Protokolldaten
-Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel hier: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+## <a name="samples-to-process-the-log-data"></a>Beispiele für die Verarbeitung der Protokolldaten
+Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel hier: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

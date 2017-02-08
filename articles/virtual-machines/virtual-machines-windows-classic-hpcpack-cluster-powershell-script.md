@@ -1,13 +1,13 @@
 ---
 title: PowerShell-Skript zum Bereitstellen eines Windows-HPC-Clusters | Microsoft Docs
-description: Ausführen eines PowerShell-Skripts zum Bereitstellen eines Windows HPC Pack-Clusters auf virtuellen Azure-Computern
+description: "Ausführen eines PowerShell-Skripts zum Bereitstellen eines Windows HPC Pack-Clusters auf virtuellen Azure-Computern"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: dlepow
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,hpc-pack
-
+ms.assetid: 286b2be8-2533-40df-b02a-26156b1f1133
 ms.service: virtual-machines-windows
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/07/2016
 ms.author: danlep
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 84a18dbe0f6f588c6ace16dda2b84a8aaa056b97
+
 
 ---
-# <a name="create-a-windows-high-performance-computing-(hpc)-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Erstellen eines Windows-High Performance Computing (HPC)-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript
-Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung aus, um einen vollständigen HPC Pack-Cluster für Windows-Workloads auf virtuellen Azure-Computern bereitzustellen. Der Cluster besteht aus einem mit Active Directory verknüpften Hauptknoten mit Windows Server und Microsoft HPC Pack sowie weiteren von Ihnen angegebenen Windows-Computeressourcen. Falls Sie einen HPC Pack-Cluster in Azure für Linux-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Linux-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md). Sie können auch eine Azure-Ressourcen-Manager-Vorlage verwenden, um einen HPC Pack-Cluster bereitzustellen. Beispiele finden Sie unter [Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) (Erstellen eines HPC-Clusters) und [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/) (Erstellen eines HPC-Clusters mit einem benutzerdefinierten Computeknotenimage).
+# <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Erstellen eines Windows-High Performance Computing (HPC)-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript
+Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung aus, um einen vollständigen HPC Pack-Cluster für Windows-Workloads auf virtuellen Azure-Computern bereitzustellen. Der Cluster besteht aus einem mit Active Directory verknüpften Hauptknoten mit Windows Server und Microsoft HPC Pack sowie weiteren von Ihnen angegebenen Windows-Computeressourcen. Falls Sie einen HPC Pack-Cluster in Azure für Linux-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Linux-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json). Sie können auch eine Azure-Ressourcen-Manager-Vorlage verwenden, um einen HPC Pack-Cluster bereitzustellen. Beispiele finden Sie unter [Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) (Erstellen eines HPC-Clusters) und [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/) (Erstellen eines HPC-Clusters mit einem benutzerdefinierten Computeknotenimage).
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
@@ -263,10 +268,13 @@ Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhand
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Führen Sie eine Test-Workload auf dem Cluster aus. Ein Beispiel hierzu finden Sie im [Leitfaden für die ersten Schritte](https://technet.microsoft.com/library/jj884144)von HPC Pack.
-* Ein Tutorial für ein Skript zur Cluster-Bereitstellung und zur Ausführung einer HPC-Workload, finden Sie unter [Erste Schritte mit Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure](virtual-machines-windows-excel-cluster-hpcpack.md).
-* Probieren Sie die Tools von HPC Pack zum Starten, Beenden, Hinzufügen und Entfernen von Computeknoten von einem von Ihnen erstellten Cluster aus. Weitere Informationen finden Sie unter [Verwalten von Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md).
-* Informationen zum Übermitteln von Aufträgen an den Cluster von einem lokalen Computer finden Sie unter [Übermitteln von HPC-Aufträgen von einem lokalen Computer an einen in Azure bereitgestellten HPC Pack-Cluster](virtual-machines-windows-hpcpack-cluster-submit-jobs.md).
+* Ein Tutorial für ein Skript zur Cluster-Bereitstellung und zur Ausführung einer HPC-Workload, finden Sie unter [Erste Schritte mit Excel- und SOA-Workloads in einem HPC Pack-Cluster in Azure](virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Probieren Sie die Tools von HPC Pack zum Starten, Beenden, Hinzufügen und Entfernen von Computeknoten von einem von Ihnen erstellten Cluster aus. Weitere Informationen finden Sie unter [Verwalten von Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Informationen zum Übermitteln von Aufträgen an den Cluster von einem lokalen Computer finden Sie unter [Übermitteln von HPC-Aufträgen von einem lokalen Computer an einen in Azure bereitgestellten HPC Pack-Cluster](virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO1-->
 
 

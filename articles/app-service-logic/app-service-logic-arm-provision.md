@@ -1,12 +1,12 @@
 ---
-title: Erstellen einer Logik-App mit Azure-Ressourcen-Manager-Vorlagen in Azure App Service | Microsoft Docs
+title: Erstellen einer Logik-App mit Azure Resource Manager-Vorlagen in Azure App Service | Microsoft-Dokumentation
 description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um eine leere Logik-App zum Definieren von Workflows bereitzustellen.
 services: logic-apps
-documentationcenter: ''
+documentationcenter: 
 author: MSFTMan
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,42 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: deonhe
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 61ab873e77e3f7a691c815ba48c7f29b45269db9
+
 
 ---
-# Erstellen einer Logik-App mithilfe einer Vorlage
+# <a name="create-a-logic-app-using-a-template"></a>Erstellen einer Logik-App mithilfe einer Vorlage
 Erstellen Sie mit einer Azure-Ressourcen-Manager-Vorlage eine leere Logik-App, die zum Definieren von Workflows verwendet werden kann. Sie können definieren, welche Ressourcen bereitgestellt werden, und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zu den Eigenschaften der Logik-App finden Sie unter [API für die Workflowverwaltung einer Logik-App](https://msdn.microsoft.com/library/azure/mt643788.aspx).
+Weitere Informationen zu den Eigenschaften der Logik-App finden Sie unter [API für die Workflowverwaltung einer Logik-App](https://msdn.microsoft.com/library/azure/mt643788.aspx). 
 
-Beispiele für die Definition selbst finden Sie unter [Schreiben von Logik-App-Definitionen](app-service-logic-author-definitions.md).
+Beispiele für die Definition selbst finden Sie unter [Schreiben von Logik-App-Definitionen](app-service-logic-author-definitions.md). 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
 
 Die vollständige Vorlage finden Sie unter [Logik-App-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
 
-## Was Sie bereitstellen
+## <a name="what-you-will-deploy"></a>Was Sie bereitstellen
 Mit dieser Vorlage stellen Sie eine Logik-App bereit.
 
-Wählen Sie die folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
+Wählen Sie die folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:  
 
 [![Bereitstellen in Azure](media/app-service-logic-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-## Parameter
+## <a name="parameters"></a>Parameter
 [!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
 
-### testUri
+### <a name="testuri"></a>testUri
      "testUri": {
         "type": "string",
-        "defaultValue": "http://azure.microsoft.com/status/feed/"
+        "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
       }
 
-## Bereitzustellende Ressourcen
-### Logik-App
+## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
+### <a name="logic-app"></a>Logik-App
 Erstellt die Logik-App.
 
-Die Vorlage erstellt einen Parameterwert für den Namen der Logik-App. Sie legt den Speicherort der Logik-App auf den Speicherort für die Ressourcengruppe fest.
+Die Vorlage erstellt einen Parameterwert für den Namen der Logik-App. Sie legt den Speicherort der Logik-App auf den Speicherort für die Ressourcengruppe fest. 
 
-Diese spezifische Definition wird einmal pro Stunde ausgeführt und pingt den im Parameter **testUri** angegebenen Speicherort.
+Diese spezifische Definition wird einmal pro Stunde ausgeführt und pingt den im Parameter **testUri** angegebenen Speicherort. 
 
     {
       "type": "Microsoft.Logic/workflows",
@@ -95,16 +99,20 @@ Diese spezifische Definition wird einmal pro Stunde ausgeführt und pingt den im
     }
 
 
-## Befehle zum Ausführen der Bereitstellung
+## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### PowerShell
+### <a name="powershell"></a>PowerShell
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
-### Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
 
 
 
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

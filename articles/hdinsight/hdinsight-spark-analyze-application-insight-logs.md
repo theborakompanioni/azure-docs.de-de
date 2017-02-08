@@ -1,29 +1,33 @@
 ---
-title: Analysieren von Application Insight-Protokollen mit Spark in HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie Application Insights-Protokolle in Blobspeicher exportieren und die Protokolle anschließend mit Spark in HDInsight analysieren.
+title: Analysieren von Application Insight-Protokollen mit Spark in HDInsight | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Application Insights-Protokolle in Blobspeicher exportieren und die Protokolle anschließend mit Spark in HDInsight analysieren."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 883beae6-9839-45b5-94f7-7eb0f4534ad5
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2016
+ms.date: 11/01/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: dcb28a67ef21728d9b21159f356ed122e0b7a1be
+
 
 ---
-# Analysieren von Application Insights-Telemetrieprotokollen mit Spark in HDInsight
+# <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Analysieren von Application Insights-Telemetrieprotokollen mit Spark in HDInsight
 [Visual Studio Application Insights](../application-insights/app-insights-overview.md) ist ein Analysedienst, der Ihre Webanwendungen überwacht. Von Application Insights generierte Telemetriedaten können nach Azure Storage exportiert und von dort aus über HDInsight analysiert werden.
 
 In diesem Dokument erfahren Sie, wie Sie HDInsight zum Analysieren von Application Insights-Telemetriedaten unter Verwendung von Apache Spark nutzen.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement.
-* Eine Anwendung, die zur Verwendung von Application Insights konfiguriert ist.
+* Eine Anwendung, die zur Verwendung von Application Insights konfiguriert ist. 
 * Sie müssen mit der Erstellung eines Linux-basierten HDInsight-Clusters vertraut sein. Wenn Sie nicht mit dem Vorgang zum Erstellen eines Clusters vertraut sind, finden Sie unter [Erstellen von Spark in HDInsight-Clustern](hdinsight-apache-spark-jupyter-spark-sql.md) weitere Informationen.
   
   > [!NOTE]
@@ -37,12 +41,12 @@ Für Entwicklung und Test dieses Dokuments wurden die folgenden Komponenten eing
 * Die Application Insights-Telemetriedaten wurden mit einer [Node.js-Web-App generiert, die zur Verwendung von Application Insights konfiguriert wurde](../application-insights/app-insights-nodejs.md).
 * Zur Analyse der Daten wurde ein Linux-basierter Spark in HDInsight-Cluster der Version 3.4 verwendet.
 
-## Architektur und Planung
+## <a name="architecture-and-planning"></a>Architektur und Planung
 Das folgende Diagramm zeigt die grundlegende Dienstarchitektur für dieses Beispiel:
 
 ![Diagramm zum Datenfluss von Application Insights zum Blobspeicher und anschließende Verarbeitung durch Spark in HDInsight](./media/hdinsight-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
-### Azure-Speicher
+### <a name="azure-storage"></a>Azure-Speicher
 Ein HDInsight-Cluster kann direkt auf Blockblobs eines Azure Storage-Kontos zugreifen, und Application Insights kann zum fortlaufenden Export von Telemetriedaten in Blobs in Azure Storage konfiguriert werden. Es gelten jedoch einige Anforderungen, die erfüllt werden müssen:
 
 * **Standort**: Das Speicherkonto muss sich in derselben Region wie HDInsight befinden. Dies verringert die Latenz beim Zugriff auf die Daten und verhindert Kosten für ausgehende Datenübertragungen, die beim Verschieben von Daten zwischen Regionen anfallen.
@@ -51,30 +55,30 @@ Ein HDInsight-Cluster kann direkt auf Blockblobs eines Azure Storage-Kontos zugr
   
     Stattdessen wird empfohlen, separate Speicherkonten für HDInsight und Application Insights-Telemetriedaten zu verwenden und [Shared Access Signatures (SAS) zu verwenden, um den Datenzugriff aus HDInsight zu beschränken](hdinsight-storage-sharedaccesssignature-permissions.md). Mithilfe einer SAS können Sie HDInsight Lesezugriff auf die Telemetriedaten gewähren.
 
-### Datenschema
+### <a name="data-schema"></a>Datenschema
 Application Insights bietet Informationen zum [Exportdatenmodell](../application-insights/app-insights-export-data-model.md) für das Telemetriedatenformat, das in Blobs exportiert wird. In diesem Dokument wird Spark SQL für die Arbeit mit den Daten verwendet. Spark SQL kann automatisch ein Schema für die JSON-Datenstruktur generieren, das von Application Insights protokolliert wird, deshalb müssen Sie das Schema beim Ausführen einer Analyse nicht manuell definieren.
 
-## Exportieren von Telemetriedaten
+## <a name="export-telemetry-data"></a>Exportieren von Telemetriedaten
 Führen Sie die Schritte unter [Einrichten des fortlaufenden Exports](../application-insights/app-insights-export-telemetry.md) aus, um Application Insights für den Export von Telemetriedaten in einen Azure-Speicherblob zu konfigurieren.
 
-## Konfigurieren von HDInsight für den Datenzugriff
-Verwenden Sie die Informationen unter [Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md), um eine SAS für den Blobcontainer zu erstellen, der die exportierten Telemetriedaten enthält. Die SAS sollte Lesezugriff auf die Daten gewähren.
+## <a name="configure-hdinsight-to-access-the-data"></a>Konfigurieren von HDInsight für den Datenzugriff
+Verwenden Sie die Informationen unter [Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md) , um eine SAS für den Blobcontainer zu erstellen, der die exportierten Telemetriedaten enthält. Die SAS sollte Lesezugriff auf die Daten gewähren.
 
 Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vorhandenen Linux-basierten HDInsight-Cluster hinzufügen. Darüber hinaus werden Informationen dazu bereitgestellt, wie Sie den SAS-Speicher beim Erstellen eines neuen HDInsight-Clusters hinzufügen.
 
-## Analysieren der Daten mithilfe von Python (PySpark)
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
+## <a name="analyze-the-data-using-python-pyspark"></a>Analysieren der Daten mithilfe von Python (PySpark)
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
    
     ![Clusterdashboards](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 2. Wählen Sie oben rechts auf der Jupyter-Seite **Neu** und anschließend **PySpark** aus. Daraufhin wird eine neue Browserregisterkarte geöffnet, die ein Python-basiertes Jupyter Notebook enthält.
-3. Geben Sie in das erste Feld (als **Zelle** bezeichnet) auf der Seite Folgendes ein:
+3. Geben Sie in das erste Feld (als **Zelle**bezeichnet) auf der Seite Folgendes ein:
    
         sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    
     Auf diese Weise kann Spark rekursiv auf die Verzeichnisstruktur für die Eingabedaten zugreifen. Die Application Insights-Telemetriedaten werden in einer Verzeichnisstruktur ähnlich der folgenden protokolliert:
    
         /{telemetry type}/YYYY-MM-DD/{##}/
-4. Verwenden Sie **UMSCHALT+EINGABETASTE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein „*“ in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird das „*“ in eine Zahl geändert, und eine Ausgabe ähnlich der folgenden wird unterhalb der Zelle angezeigt:
+4. Verwenden Sie **UMSCHALT+EINGABE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein \* in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird \* in eine Zahl geändert, und eine Ausgabe ähnlich der folgenden wird unterhalb der Zelle angezeigt:
    
         Creating SparkContext as 'sc'
    
@@ -83,7 +87,7 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
    
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie Folgendes in die neue Zelle ein. Ersetzen Sie hierbei **CONTAINER** und **STORAGEACCOUNT** durch den Azure Storage-Kontonamen und den Namen des Blobcontainers, den Sie beim Konfigurieren des fortlaufenden Application Insights-Exports verwendet haben.
+5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie Folgendes in die neue Zelle ein. Ersetzen Sie hierbei **CONTAINER** und **STORAGEACCOUNT** durch den Azure Storage-Kontonamen und den Namen des Blobcontainers, die Sie beim Konfigurieren des fortlaufenden Application Insights-Exports verwendet haben.
    
         %%bash
         hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
@@ -93,7 +97,7 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
    
-    Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABETASTE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
+    Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
    
    > [!NOTE]
    > Für die verbleibenden Schritte in diesem Abschnitt wurde das Verzeichnis `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` verwendet. Dieses Verzeichnis ist nur vorhanden, wenn Ihre Telemetriedaten aus einer Web-App stammen. Wenn Sie Telemetriedaten verwendet, die kein Anforderungsverzeichnis umfassen, wählen Sie ein anderes Verzeichnis aus, und passen Sie die übrigen Schritte auf die Verwendung dieses Verzeichnisses und des Schemas für die darin gespeicherten Daten an.
@@ -195,19 +199,19 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
         ...
         +---------+
 
-## Analysieren der Daten mit Scala
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
+## <a name="analyze-the-data-using-scala"></a>Analysieren der Daten mit Scala
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
    
     ![Clusterdashboards](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 2. Wählen Sie oben rechts auf der Jupyter-Seite **Neu** und anschließend **Scala** aus. Daraufhin wird eine neue Browserregisterkarte geöffnet, die ein Scala-basiertes Jupyter Notebook enthält.
-3. Geben Sie in das erste Feld (als **Zelle** bezeichnet) auf der Seite Folgendes ein:
+3. Geben Sie in das erste Feld (als **Zelle**bezeichnet) auf der Seite Folgendes ein:
    
         sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    
     Auf diese Weise kann Spark rekursiv auf die Verzeichnisstruktur für die Eingabedaten zugreifen. Die Application Insights-Telemetriedaten werden in einer Verzeichnisstruktur ähnlich der folgenden protokolliert:
    
         /{telemetry type}/YYYY-MM-DD/{##}/
-4. Verwenden Sie **UMSCHALT+EINGABETASTE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein „*“ in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird das „*“ in eine Zahl geändert, und eine Ausgabe ähnlich der folgenden wird unterhalb der Zelle angezeigt:
+4. Verwenden Sie **UMSCHALT+EINGABE**, um den Code auszuführen. Auf der linken Seite der Zelle wird ein \* in Klammern angezeigt. Dies weist darauf hin, dass der Code in dieser Zelle ausgeführt wird. Nach Abschluss der Ausführung wird \* in eine Zahl geändert, und eine Ausgabe ähnlich der folgenden wird unterhalb der Zelle angezeigt:
    
         Creating SparkContext as 'sc'
    
@@ -216,7 +220,7 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
    
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie Folgendes in die neue Zelle ein. Ersetzen Sie hierbei **CONTAINER** und **STORAGEACCOUNT** durch den Azure Storage-Kontonamen und den Namen des Blobcontainers, den Sie beim Konfigurieren des fortlaufenden Application Insights-Exports verwendet haben.
+5. Unterhalb der ersten Zelle wird eine neu erstellte Zelle angezeigt. Geben Sie Folgendes in die neue Zelle ein. Ersetzen Sie hierbei **CONTAINER** und **STORAGEACCOUNT** durch den Azure Storage-Kontonamen und den Namen des Blobcontainers, die Sie beim Konfigurieren des fortlaufenden Application Insights-Exports verwendet haben.
    
         %%bash
         hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
@@ -226,7 +230,7 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
    
-    Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABETASTE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
+    Der zurückgegebene WASB-Pfad ist der Speicherort der Application Insights-Telemetriedaten. Ändern Sie die Zeile `hdfs dfs -ls` in der Zelle so ab, dass der zurückgegebene WASB-Pfad verwendet wird, und führen Sie dann über **UMSCHALT+EINGABE** die Zelle erneut aus. Jetzt sollten die Ergebnisse die Verzeichnisse anzeigen, die Telemetriedaten enthalten.
    
    > [!NOTE]
    > Für die verbleibenden Schritte in diesem Abschnitt wurde das Verzeichnis `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` verwendet. Dieses Verzeichnis ist nur vorhanden, wenn Ihre Telemetriedaten aus einer Web-App stammen. Wenn Sie Telemetriedaten verwendet, die kein Anforderungsverzeichnis umfassen, wählen Sie ein anderes Verzeichnis aus, und passen Sie die übrigen Schritte auf die Verwendung dieses Verzeichnisses und des Schemas für die darin gespeicherten Daten an.
@@ -328,7 +332,7 @@ Das SAS-Dokument bietet Informationen dazu, wie Sie den SAS-Speicher zu einem vo
         ...
         +---------+
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Beispiele zur Verwendung von Spark für die Arbeit mit Daten und Diensten in Azure finden Sie in den folgenden Dokumenten:
 
 * [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](hdinsight-apache-spark-use-bi-tools.md)
@@ -342,4 +346,9 @@ Informationen zum Erstellen und Ausführen von Spark-Anwendungen finden Sie in d
 * [Erstellen einer eigenständigen Anwendung mit Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Remoteausführung von Aufträgen in einem Spark-Cluster mithilfe von Livy](hdinsight-apache-spark-livy-rest-interface.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

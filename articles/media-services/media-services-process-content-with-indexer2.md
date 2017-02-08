@@ -1,24 +1,28 @@
 ---
 title: Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2 | Microsoft Docs
-description: Mit dem Azure Media Indexer können Sie die Inhalte Ihrer Mediendateien durchsuchbar machen und eine Volltext-Aufzeichnung für Untertitel und Schlüsselwörter generieren. In diesem Thema wird die Verwendung von Media Indexer 2 Preview erläutert.
+description: "Mit dem Azure Media Indexer können Sie die Inhalte Ihrer Mediendateien durchsuchbar machen und eine Volltext-Aufzeichnung für Untertitel und Schlüsselwörter generieren. In diesem Thema wird die Verwendung von Media Indexer 2 Preview erläutert."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 85d25525-a498-44eb-ae3a-2ca5ceb8e53d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 12/07/2016
 ms.author: adsolank;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 7065d5e87dbf47153bc89b37b56af81927b8b92b
+ms.openlocfilehash: 902e872b224b267c989f741345efdd8ef3fa8ce3
+
 
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indizieren von Mediendateien mit Azure Media Indexer 2 Preview
 ## <a name="overview"></a>Übersicht
-Mit dem Medienprozessor (MP) **Azure Media Indexer 2 Preview** können Sie Mediendateien und Inhalte durchsuchbar machen sowie Untertitelspuren und Schlüsselwörter generieren. Verglichen mit der vorherigen Version des [Azure Media Indexer](media-services-index-content.md)führt **Azure Media Indexer 2 Preview** eine schnellere Indizierung durch und bietet eine breitere Sprachunterstützung. Die unterstützten Sprachen beinhalten Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch, Portugiesisch und Arabisch.
+Mit dem Medienprozessor (MP) **Azure Media Indexer 2 Preview** können Sie Mediendateien und Inhalte durchsuchbar machen sowie Untertitelspuren und Schlüsselwörter generieren. Verglichen mit der vorherigen Version des [Azure Media Indexer](media-services-index-content.md)führt **Azure Media Indexer 2 Preview** eine schnellere Indizierung durch und bietet eine breitere Sprachunterstützung. Zu den unterstützten Sprachen zählen Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch (Mandarin, vereinfacht), Portugiesisch, Arabisch und Japanisch.
 
 Der Medienprozessor von **Azure Media Indexer 2 Preview** befindet sich derzeit in der Vorschauphase.
 
@@ -28,8 +32,6 @@ In diesem Thema wird dargestellt, wie Sie Indizierungsaufträge mit **Azure Medi
 > Es gelten die folgenden Bedingungen:
 > 
 > Indexer 2 wird in Azure China und Azure Government nicht unterstützt.
-> 
-> Die Preview kann nicht länger als ca. zehn Minuten am Stück genutzt werden, steht allen Kunden jedoch kostenlos zur Verfügung.
 > 
 > Stellen Sie beim Indizieren von Inhalten sicher, dass Mediendateien verwendet werden, die sehr klare Sprache enthalten (ohne Hintergrundmusik, Lärm, Effekte oder Mikrofonrauschen). Die folgenden Beispiele sind geeignete Inhalte: aufgezeichnete Besprechungen, Vorträge oder Präsentationen. Folgende Inhalte sind für die Indizierung ggf. nicht geeignet: Filme, Fernsehsendungen, Material mit gemischten Audio- und Soundeffekten, schlecht aufgezeichnete Inhalte mit Hintergrundgeräuschen (Rauschen).
 > 
@@ -50,7 +52,7 @@ Ein Indizierungsauftrag kann Untertiteldateien in den folgenden Formaten generie
 
 Untertiteldateien in diesen Formaten können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen.
 
-## <a name="task-configuration-(preset)"></a>Aufgabenkonfiguration (Voreinstellung)
+## <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
 Wenn Sie eine Indizierungsaufgabe mit **Azure Media Indexer 2 Preview**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben.
 
 Die folgende JSON legt verfügbare Parameter fest.
@@ -74,14 +76,16 @@ Azure Media Indexer 2 Preview unterstützt Sprache in Text für die folgenden Sp
 
 * Englisch [EnUs]
 * Spanisch [EsEs]
-* Chinesisch [ZhCn]
+* Chinesisch (Mandarin, vereinfacht) [ZhCn]
 * Französisch [FrFr]
 * Deutsch [DeDe]
 * Italienisch [ItIt]
 * Portugiesisch [PtBr]
 * Arabisch (ägyptisch) [ArEg]
+* Japanisch [JaJp]
 
 ## <a name="sample-code"></a>Beispielcode
+
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
@@ -275,6 +279,9 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO1-->
 
 

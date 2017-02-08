@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 13d0a71762d3cba05c3dccb647d0890862307327
-ms.openlocfilehash: 9593804ba5baa4ffe4cf49e21b5698c5fd3d157e
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 409e1a104fa73d911ea508cbff311cb48fc20f9f
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 9593804ba5baa4ffe4cf49e21b5698c5fd3d157e
 >
 >
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
+Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) beschrieben.
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Der Outlook.com-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
@@ -746,10 +746,10 @@ Kontakt aktualisieren: Aktualisiert einen Kontakt teilweise.
 | DisplayName |string |Nein |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit der Media Services-REST-API | Microsoft Docs
-description: In diesem Thema wird die Konfiguration verschiedener Übermittlungsrichtlinien für Medienobjekte mit der Media Services-REST-API erläutert.
+title: "Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit der Media Services-REST-API | Microsoft Docs"
+description: "In diesem Thema wird die Konfiguration verschiedener Übermittlungsrichtlinien für Medienobjekte mit der Media Services-REST-API erläutert."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 5cb9d32a-e68b-4585-aa82-58dded0691d0
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,12 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8e5b098c7cd1de5b06809787ac61393e45d17eab
+
 
 ---
-# Konfigurieren von Übermittlungsrichtlinien für Medienobjekte
+# <a name="configuring-asset-delivery-policies"></a>Konfigurieren von Übermittlungsrichtlinien für Medienobjekte
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-Wenn Sie dynamisch verschlüsselte Medienobjekte übermitteln möchten, ist einer der Schritte im Workflow zur Inhaltsübermittlung in Media Services das Konfigurieren von Übermittlungsrichtlinien. Anhand der Übermittlungsrichtlinie für Medienobjekte kann Media Services ermitteln, wie das Medienobjekt übermittelt werden soll, also mit welchem Streamingprotokoll das Medienobjekt dynamisch verpackt werden soll (z. B. MPEG-DASH, HLS, Smooth Streaming oder alle) und ob und wie das Medienobjekt ggf. dynamisch verschlüsselt werden soll (Umschlag- oder allgemeine Verschlüsselung).
+Wenn Sie dynamisch verschlüsselte Medienobjekte übermitteln möchten, ist einer der Schritte im Workflow zur Inhaltsübermittlung in Media Services das Konfigurieren von Übermittlungsrichtlinien. Anhand der Übermittlungsrichtlinie für Medienobjekte kann Media Services ermitteln, wie das Medienobjekt übermittelt werden soll, also mit welchem Streamingprotokoll das Medienobjekt dynamisch verpackt werden soll (z. B. MPEG-DASH, HLS, Smooth Streaming oder alle) und ob und wie das Medienobjekt ggf. dynamisch verschlüsselt werden soll (Umschlag- oder allgemeine Verschlüsselung).
 
 In diesem Thema wird erläutert, warum und wie Übermittlungsrichtlinien für Medienobjekte erstellt und konfiguriert werden.
 
@@ -30,9 +34,9 @@ In diesem Thema wird erläutert, warum und wie Übermittlungsrichtlinien für Me
 > 
 > 
 
-Sie können verschiedene Richtlinien auf dasselbe Medienobjekt anwenden. Sie könnten z. B. eine PlayReady-Verschlüsselung auf Smooth Streaming und AES-Umschlagverschlüsselung auf MPEG-DASH und HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
+Sie können verschiedene Richtlinien auf dasselbe Medienobjekt anwenden. Sie könnten z. B. eine PlayReady-Verschlüsselung auf Smooth Streaming und AES-Umschlagverschlüsselung auf MPEG-DASH und HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
 
-Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Wenn Sie ein Medienobjekt für die Übermittlung beispielsweise mit einem Schlüssel für die AES (Advanced Encryption Standard)-Umschlagverschlüsselung verschlüsseln möchten, legen Sie den Richtlinientyp auf **DynamicEnvelopeEncryption** fest. Um die Speicherverschlüsselung zu entfernen und das Medienobjekt unverschlüsselt zu streamen, legen Sie den Richtlinientyp auf **NoDynamicEncryption** fest. In den folgenden Beispielen wird die Konfiguration dieser Richtlinientypen veranschaulicht.
+Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Wenn Sie ein Medienobjekt für die Übermittlung beispielsweise mit einem Schlüssel für die AES (Advanced Encryption Standard)-Umschlagverschlüsselung verschlüsseln möchten, legen Sie den Richtlinientyp auf **DynamicEnvelopeEncryption**fest. Um die Speicherverschlüsselung zu entfernen und das Medienobjekt unverschlüsselt zu streamen, legen Sie den Richtlinientyp auf **NoDynamicEncryption**fest. In den folgenden Beispielen wird die Konfiguration dieser Richtlinientypen veranschaulicht.
 
 Je nachdem, wie Sie die Übermittlungsrichtlinie für Medienobjekte konfigurieren, können Sie die folgenden Streamingprotokolle dynamisch verpacken, dynamisch verschlüsseln und streamen: Smooth Streaming-, HLS-, MPEG DASH- und HDS-Streams.
 
@@ -56,26 +60,26 @@ HDS
 
 Anweisungen zum Veröffentlichen eines Medienobjekts und Erstellen einer Streaming-URL finden Sie unter [Erstellen einer Streaming-URL](media-services-deliver-streaming-content.md).
 
-## Überlegungen
+## <a name="considerations"></a>Überlegungen
 * Sie können eine mit einem Asset verknüpfte AssetDeliveryPolicy nicht löschen, solange ein OnDemand-Locator (Streaminglocator) für dieses Asset vorhanden ist. Es wird empfohlen, die Richtlinie aus dem Asset zu entfernen, bevor Sie die Richtlinie löschen.
-* Ein Streaminglocator kann nicht auf einem speicherverschlüsselten Asset erstellt werden, wenn keine Übermittlungsrichtlinie für das Asset festgelegt ist. Wenn das Asset nicht speicherverschlüsselt ist, lässt Sie das System einen Locator erstellen und das Asset in Klartext ohne Übermittlungsrichtlinie streamen.
-* Sie haben die Möglichkeit, mehrere Übermittlungsrichtlinien für ein einzelnes Asset zu verwenden, aber Sie dürfen nur eine Möglichkeit zum Verarbeiten eines bestimmten AssetDeliveryProtocol angeben. Wenn Sie also versuchen, zwei Richtlinien zu verknüpfen, die das AssetDeliveryProtocol.SmoothStreaming-Protokoll angeben, führt dies zu einem Fehler, da das System nicht weiß, welche Richtlinie angewendet werden soll, wenn ein Client eine Smooth Streaming-Anforderung sendet.
-* Wenn Sie über ein Asset mit einem vorhandenen Streaminglocator verfügen, können Sie keine neue Richtlinie mit dem Asset verknüpfen, eine vorhandene Verknüpfung vom Asset aufheben oder eine Übermittlungsrichtlinie aktualisieren, die dem Asset zugeordnet ist. Sie müssen zuerst den Streaminglocator entfernen, die Richtlinien anpassen und dann den Streaminglocator neu erstellen. Sie können die gleiche Locator-ID verwenden, wenn Sie den Streaminglocator neu erstellen. Allerdings sollten Sie sicherstellen, dass dadurch keine Probleme für Clients auftreten, da Inhalte nach Ursprung oder einem nachgelagerten CDN zwischengespeichert werden können.
+* Ein Streaminglocator kann nicht auf einem speicherverschlüsselten Asset erstellt werden, wenn keine Übermittlungsrichtlinie für das Asset festgelegt ist.  Wenn das Asset nicht speicherverschlüsselt ist, lässt Sie das System einen Locator erstellen und das Asset in Klartext ohne Übermittlungsrichtlinie streamen.
+* Sie haben die Möglichkeit, mehrere Übermittlungsrichtlinien für ein einzelnes Asset zu verwenden, aber Sie dürfen nur eine Möglichkeit zum Verarbeiten eines bestimmten AssetDeliveryProtocol angeben.  Wenn Sie also versuchen, zwei Richtlinien zu verknüpfen, die das AssetDeliveryProtocol.SmoothStreaming-Protokoll angeben, führt dies zu einem Fehler, da das System nicht weiß, welche Richtlinie angewendet werden soll, wenn ein Client eine Smooth Streaming-Anforderung sendet.
+* Wenn Sie über ein Asset mit einem vorhandenen Streaminglocator verfügen, können Sie keine neue Richtlinie mit dem Asset verknüpfen, eine vorhandene Verknüpfung vom Asset aufheben oder eine Übermittlungsrichtlinie aktualisieren, die dem Asset zugeordnet ist.  Sie müssen zuerst den Streaminglocator entfernen, die Richtlinien anpassen und dann den Streaminglocator neu erstellen.  Sie können die gleiche Locator-ID verwenden, wenn Sie den Streaminglocator neu erstellen. Allerdings sollten Sie sicherstellen, dass dadurch keine Probleme für Clients auftreten, da Inhalte nach Ursprung oder einem nachgelagerten CDN zwischengespeichert werden können.
 
 > [!NOTE]
 > Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
 > 
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
-> Nach der erfolgreichen Verbindung mit https://media.windows.net erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md) müssen Sie nachfolgende Aufrufe an den neuen URI senden.
+> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden.
 > 
 > 
 
-## Löschen einer Übermittlungsrichtlinie für Medienobjekte
-### <a id="create_asset_delivery_policy"></a>Erstellen einer Übermittlungsrichtlinie für Medienobjekte
-Durch die folgende HTTP-Anforderung wird eine Übermittlungsrichtlinie für Medienobjekte erstellt. Diese gibt an, dass keine dynamische Verschlüsselung angewendet und der Stream mit einem der folgenden Protokolle übermittelt wird: MPEG DASH, HLS und Smooth Streaming-Protokolle.
+## <a name="clear-asset-delivery-policy"></a>Löschen einer Übermittlungsrichtlinie für Medienobjekte
+### <a name="a-idcreateassetdeliverypolicyacreate-asset-delivery-policy"></a><a id="create_asset_delivery_policy"></a>Erstellen einer Übermittlungsrichtlinie für Medienobjekte
+Durch die folgende HTTP-Anforderung wird eine Übermittlungsrichtlinie für Medienobjekte erstellt. Diese gibt an, dass keine dynamische Verschlüsselung angewendet und der Stream mit einem der folgenden Protokolle übermittelt wird: MPEG DASH, HLS und Smooth Streaming-Protokolle. 
 
-Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben
+Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben   
 
 Anforderung:
 
@@ -121,7 +125,7 @@ Antwort:
     "Created":"2015-02-08T06:21:27.6908329Z",
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
-### <a id="link_asset_with_asset_delivery_policy"></a>Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
+### <a name="a-idlinkassetwithassetdeliverypolicyalink-asset-with-asset-delivery-policy"></a><a id="link_asset_with_asset_delivery_policy"></a>Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
 Die folgende HTTP-Anforderung verknüpft das angegebene Medienobjekt mit der Übermittlungsrichtlinie für Medienobjekte.
 
 Anforderung:
@@ -144,11 +148,11 @@ Antwort:
     HTTP/1.1 204 No Content
 
 
-## DynamicEnvelopeEncryption-Übermittlungsrichtlinie für Medienobjekte
-### Erstellen eines Inhaltsschlüssels des EnvelopeEncryption-Typs und Verknüpfen des Schlüssels mit dem Medienobjekt
+## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption-Übermittlungsrichtlinie für Medienobjekte
+### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Erstellen eines Inhaltsschlüssels des EnvelopeEncryption-Typs und Verknüpfen des Schlüssels mit dem Medienobjekt
 Wenn Sie die DynamicEnvelopeEncryption-Übermittlungsrichtlinie angeben, müssen Sie sicherstellen, dass Ihr Medienobjekt mit einem Inhaltsschlüssel des EnvelopeEncryption-Typs verknüpft wird. Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-rest-create-contentkey.md)).
 
-### <a id="get_delivery_url"></a>Abrufen der Übermittlungs-URL
+### <a name="a-idgetdeliveryurlaget-delivery-url"></a><a id="get_delivery_url"></a>Abrufen der Übermittlungs-URL
 Rufen Sie die Übermittlungs-URL für die angegebene Übermittlungsmethode des Inhaltsschlüssels auf, den Sie im vorherigen Schritt erstellt haben. Ein Client verwendet die zurückgegebene URL, um einen AES-Schlüssel oder eine PlayReady-Lizenz zur Wiedergabe des geschützten Inhalts anzufordern.
 
 Geben Sie den Typ der abzurufenden URL im Text der HTTP-Anforderung an. Wenn Sie Ihre Inhalte mit PlayReady schützen, fordern Sie eine Media Services PlayReady-Lizenzerwerbs-URL an, indem Sie für keyDeliveryType den Wert 1 angeben: {"keyDeliveryType":1}. Wenn Sie Ihre Inhalte mit der Umschlagverschlüsselung schützen, fordern Sie eine Schlüsselerwerbs-URL an, indem Sie für keyDeliveryType den Wert 2 angeben: {"keyDeliveryType":2}.
@@ -186,10 +190,10 @@ Antwort:
     {"odata.metadata":"media.windows.net/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.windows.net/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
 
 
-### Erstellen einer Übermittlungsrichtlinie für Medienobjekte
-Durch die folgende HTTP-Anforderung wird die **AssetDeliveryPolicy** erstellt. Die Richtlinie ist so konfiguriert, dass sie die dynamische Umschlagsverschlüsselung (**DynamicEnvelopeEncryption**) auf das **HLS**-Protokoll anwendet (andere Protokolle in diesem Beispiel sind vom Streaming ausgeschlossen).
+### <a name="create-asset-delivery-policy"></a>Erstellen einer Übermittlungsrichtlinie für Medienobjekte
+Durch die folgende HTTP-Anforderung wird die **AssetDeliveryPolicy** erstellt. Die Richtlinie ist so konfiguriert, dass sie die dynamische Umschlagsverschlüsselung (**DynamicEnvelopeEncryption**) auf das **HLS**-Protokoll anwendet (andere Protokolle in diesem Beispiel sind vom Streaming ausgeschlossen). 
 
-Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben
+Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben   
 
 Anforderung:
 
@@ -205,7 +209,7 @@ Anforderung:
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.windows.net
 
-    {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/"}]"}
+    {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/\"}]"}
 
 
 Antwort:
@@ -224,23 +228,23 @@ Antwort:
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     Date: Mon, 09 Feb 2015 05:24:38 GMT
 
-    {"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
+    {"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/\"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
 
 
-### Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
-Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte](#link_asset_with_asset_delivery_policy).
+### <a name="link-asset-with-asset-delivery-policy"></a>Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
+Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte](#link_asset_with_asset_delivery_policy)
 
-## DynamicCommonEncryption-Übermittlungsrichtlinie für Medienobjekte
-### Erstellen eines Inhaltsschlüssels des CommonEncryption-Typs und Verknüpfen des Schlüssels mit dem Medienobjekt
+## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption-Übermittlungsrichtlinie für Medienobjekte
+### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Erstellen eines Inhaltsschlüssels des CommonEncryption-Typs und Verknüpfen des Schlüssels mit dem Medienobjekt
 Wenn Sie die DynamicCommonEncryption-Übermittlungsrichtlinie angeben, müssen Sie sicherstellen, dass Ihr Medienobjekt mit einem Inhaltsschlüssel des CommonEncryption-Typs verknüpft wird. Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-rest-create-contentkey.md)).
 
-### Abrufen der übermittlungs-URL
+### <a name="get-delivery-url"></a>Abrufen der Übermittlungs-URL
 Rufen Sie die Übermittlungs-URL für die PlayReady-Übermittlungsmethode des Inhaltsschlüssels auf, den Sie im vorherigen Schritt erstellt haben. Ein Client verwendet die zurückgegebene URL, um eine PlayReady-Lizenz zur Wiedergabe des geschützten Inhalts anzufordern. Weitere Informationen finden Sie unter [Abrufen der Übermittlungs-URL](#get_delivery_url).
 
-### Erstellen einer Übermittlungsrichtlinie für Medienobjekte
-Durch die folgende HTTP-Anforderung wird die **AssetDeliveryPolicy** erstellt. Die Richtlinie ist so konfiguriert, dass sie die dynamische allgemeine Verschlüsselung (**DynamicCommonEncryption**) auf das **Smooth Streaming**-Protokoll anwendet (andere Protokolle in diesem Beispiel sind vom Streaming ausgeschlossen).
+### <a name="create-asset-delivery-policy"></a>Erstellen einer Übermittlungsrichtlinie für Medienobjekte
+Durch die folgende HTTP-Anforderung wird die **AssetDeliveryPolicy** erstellt. Die Richtlinie ist so konfiguriert, dass sie die dynamische allgemeine Verschlüsselung (**DynamicCommonEncryption**) auf das **Smooth Streaming**-Protokoll anwendet (andere Protokolle in diesem Beispiel sind vom Streaming ausgeschlossen). 
 
-Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben
+Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben   
 
 Anforderung:
 
@@ -256,25 +260,25 @@ Anforderung:
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.windows.net
 
-    {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
+    {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Wenn Sie Ihre Inhalte mithilfe von Widevine DRM schützen möchten, aktualisieren Sie die AssetDeliveryConfiguration-Werte so, dass WidevineLicenseAcquisitionUrl (hat den Wert 7) verwendet wird, und geben Sie die URL eines Lizenzübermittlungsdiensts an. Sie können sich von folgenden AMS-Partnern bei der Übermittlung von Widevine-Lizenzen unterstützen lassen: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [CastLabs](http://castlabs.com/company/partners/azure/).
+Wenn Sie Ihre Inhalte mithilfe von Widevine DRM schützen möchten, aktualisieren Sie die AssetDeliveryConfiguration-Werte so, dass WidevineLicenseAcquisitionUrl (hat den Wert 7) verwendet wird, und geben Sie die URL eines Lizenzübermittlungsdiensts an. Sie können sich von folgenden AMS-Partnern bei der Übermittlung von Widevine-Lizenzen unterstützen lassen: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
 
-Beispiel:
+Beispiel: 
 
-    {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":7,"Value":"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
+    {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
 > [!NOTE]
 > Wenn Sie mit Widevine verschlüsseln, können Sie nur über DASH übermitteln. Geben Sie DASH (2) im Übermittlungsprotokoll für Medienobjekte an.
 > 
 > 
 
-### Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
-Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte](#link_asset_with_asset_delivery_policy).
+### <a name="link-asset-with-asset-delivery-policy"></a>Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
+Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte](#link_asset_with_asset_delivery_policy)
 
-## <a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
-### AssetDeliveryProtocol
+## <a name="a-idtypesatypes-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
+### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
     /// <summary>
     /// Delivery protocol for an asset delivery policy.
     /// </summary>
@@ -312,7 +316,7 @@ Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer 
         All = 0xFFFF
     }
 
-### AssetDeliveryPolicyType
+### <a name="assetdeliverypolicytype"></a>AssetDeliveryPolicyType
     /// <summary>
     /// Policy type for dynamic encryption of assets.
     /// </summary>
@@ -345,7 +349,7 @@ Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer 
         DynamicCommonEncryption
         }
 
-### ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
     /// <summary>
     /// Delivery method of the content key to the client.
     ///
@@ -379,7 +383,7 @@ Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer 
     }
 
 
-### AssetDeliveryPolicyConfigurationKey
+### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
     /// <summary>
     /// Keys used to get specific configuration for an asset delivery policy.
     /// </summary>
@@ -428,10 +432,15 @@ Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer 
     }
 
 
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

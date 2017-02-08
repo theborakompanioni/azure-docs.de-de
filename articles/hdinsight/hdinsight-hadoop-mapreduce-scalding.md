@@ -1,39 +1,43 @@
 ---
-title: Entwickeln von Scalding-MapReduce-Aufträgen mit Maven | Microsoft Docs
-description: Erfahren Sie, wie Sie Maven verwenden können, um einen Scalding-MapReduce-Auftrag zu erstellen und den Auftrag anschließend in einem Hadoop-Cluster in HDInsight bereitzustellen und auszuführen.
+title: "Entwickeln von Scalding-MapReduce-Aufträgen mit Maven | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie Maven verwenden können, um einen Scalding-MapReduce-Auftrag zu erstellen und den Auftrag anschließend in einem Hadoop-Cluster in HDInsight bereitzustellen und auszuführen."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 26a4d4e8-2623-4fae-a0ca-17792b7a5713
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/02/2016
+ms.date: 10/18/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d83a1f9755d22512834d23b8fd12f740c4198a85
+
 
 ---
-# Entwickeln Sie Scalding MapReduce-Aufträge mit Apache Hadoop in HDInsight
+# <a name="develop-scalding-mapreduce-jobs-with-apache-hadoop-on-hdinsight"></a>Entwickeln Sie Scalding MapReduce-Aufträge mit Apache Hadoop in HDInsight
 Scalding ist eine Scala-Bibliothek, die das einfache Erstellen von Hadoop MapReduce-Aufträgen ermöglicht. Sie bietet eine kurze Syntax sowie die enge Integration mit Scala.
 
 Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen MapReduce-Auftrag zum Zählen von Wörtern zu erstellen, der in Scalding geschrieben wird. Anschließend erfahren Sie, wie dieser Auftrag in einem HDInsight-Cluster bereitgestellt und ausgeführt wird.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Einen Windows- oder Linux-basierten Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Bereitstellung von Linux-basierten Hadoop in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) oder [Bereitstellung von Windows-basierten Hadoop in HDInsight](hdinsight-provision-clusters.md).
+* **Einen Windows- oder Linux-basierten Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) oder [Erstellen Windows-basierter Hadoop-Cluster in HDInsight](hdinsight-provision-clusters.md).
 * **[Maven](http://maven.apache.org/)**
 * **[Java-Plattform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 oder höher**
 
-## Erstellen Sie das Projekt
+## <a name="create-and-build-the-project"></a>Erstellen Sie das Projekt
 1. Verwenden Sie den folgenden Befehl, um ein neues Maven-Projekt zu erstellen:
    
         mvn archetype:generate -DgroupId=com.microsoft.example -DartifactId=scaldingwordcount -DarchetypeGroupId=org.scala-tools.archetypes -DarchetypeArtifactId=scala-archetype-simple -DinteractiveMode=false
    
-    Dieser Befehl erstellt ein neues Verzeichnis namens **scaldingwordcount** und das Gerüst für eine Scala-Anwendung.
+    Dieser Befehl erstellt ein neues Verzeichnis namens **scaldingwordcount**und das Gerüst für eine Scala-Anwendung.
 2. Öffnen Sie die Datei **pom.xml** im Verzeichnis **scaldingwordcount**, und ersetzen Sie den Inhalt durch Folgendes:
    
         <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -132,14 +136,14 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
    
    * **maven.compiler.source** und **maven.compiler.target**: Legt die Java-Version für dieses Projekt fest.
    * **repositories**: Die Bibliotheken, die die von diesem Projekt verwendeten Abhängigkeitsdateien enthalten.
-   * **scalding-core\_2.11** und **hadoop-core**: Dieses Projekts hängt sowohl von den Scalding- und als auch den Hadoop-Core-Paketen ab.
+   * **scalding-core_2.11** und **hadoop-core**: Dieses Projekts hängt sowohl von den Scalding- und als auch den Hadoop-Core-Paketen ab.
    * **maven-scala-plugin**: Plug-In zur Kompilierung von Scala-Anwendungen.
    * **maven-shade-plugin**: Plug-In zum erstellen von Shade-Jars (Fatjars). Dieses Plug-In verwendet Filter und Transformationen, im Besonderen:
      
      * **Filter**: Durch die angewendeten Filter ändern sich die in der JAR-Datei enthalten Metainformationen. Um zu verhindern, dass Ausnahmen zur Laufzeit signiert werden, schließen diese Filter verschiedene Signaturdateien aus, die andernfalls mit Abhängigkeiten enthalten wären.
      * **Ausführungen**: Die Ausführungskonfiguration für die Paketierungsphase legt die Klasse **com.twitter.scalding.Tool** als Hauptklasse für das Paket fest. Andernfalls müssten Sie "com.twitter.scalding.Tool" wie auch die Klasse mit der Anwendungslogik bei der Ausführung des Auftrags mit dem Hadoop-Befehl angeben.
-3. Löschen Sie das **Src/Test**-Verzeichnis, da Sie keine Tests in diesem Beispiel erstellen.
-4. Öffnen Sie die Datei **src/main/scala/com/microsoft/example/app.scala** und ersetzen Sie den Inhalt durch Folgendes:
+3. Löschen Sie das **Src/Test** -Verzeichnis, da Sie keine Tests in diesem Beispiel erstellen.
+4. Öffnen Sie die Datei **src/main/scala/com/microsoft/example/app.scala**, und ersetzen Sie den Inhalt durch Folgendes:
    
         package com.microsoft.example
    
@@ -163,13 +167,13 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
    
     Implementiert einen einfachen Wortzählauftrag.
 5. Speichern und schließen Sie die Dateien.
-6. Verwenden Sie den folgenden Befehl im **scaldingwordcount**-Verzeichnis zum Erstellen und Verpacken der Anwendung:
+6. Verwenden Sie den folgenden Befehl im **scaldingwordcount** -Verzeichnis zum Erstellen und Verpacken der Anwendung:
    
         mvn package
    
     Wenn dieser Auftrag abgeschlossen ist, finden Sie das Paket mit der WordCount-Anwendung unter **target/scaldingwordcount-1.0-SNAPSHOT.jar**.
 
-## Führen Sie den Auftrag auf einem Linux-basierten Cluster aus
+## <a name="run-the-job-on-a-linux-based-cluster"></a>Führen Sie den Auftrag auf einem Linux-basierten Cluster aus
 > [!NOTE]
 > Die folgenden Schritte verwenden den SSH- und den Hadoop-Befehl. Weitere Methoden zur Ausführung von MapReduce-Aufträgen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md).
 > 
@@ -182,7 +186,7 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
     Dadurch werden die Dateien aus dem lokalen System auf den Stammknoten kopiert.
    
    > [!NOTE]
-   > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i`-Parameter und den Pfad zum privaten Schlüssel angeben. Zum Beispiel, `scp -i /path/to/private/key target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.net:.`
+   > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i` -Parameter und den Pfad zum privaten Schlüssel angeben. Zum Beispiel, `scp -i /path/to/private/key target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.net:.`
    > 
    > 
 2. Verwenden Sie den folgenden Befehl für die Verbindung zum Hauptknoten des Clusters:
@@ -190,7 +194,7 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
         ssh username@clustername-ssh.azurehdinsight.net
    
    > [!NOTE]
-   > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i`-Parameter und den Pfad zum privaten Schlüssel angeben. Beispiel: `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`
+   > Wenn Sie zum Schutz Ihres SSH-Kontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel verwendet haben, müssen Sie möglicherweise den `-i` -Parameter und den Pfad zum privaten Schlüssel angeben. Zum Beispiel, `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`
    > 
    > 
 3. Nachdem eine Verbindung mit dem Hauptknoten hergestellt wurde, verwenden Sie den folgenden Befehl zum Ausführen des Wortzählauftrags.
@@ -218,7 +222,7 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
         wrotefootnote   1
         wrought 7
 
-## Führen Sie den Auftrag auf einem Windows-basierten Cluster aus
+## <a name="run-the-job-on-a-windows-based-cluster"></a>Führen Sie den Auftrag auf einem Windows-basierten Cluster aus
 Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Methoden zur Ausführung von MapReduce-Aufträgen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md).
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
@@ -241,14 +245,14 @@ Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Method
 3. Verwenden Sie das folgende Skript, um den WordCount-Auftrag hochzuladen und auszuführen. Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters, und stellen Sie sicher, dass `$fileToUpload` der richtige Pfad zur Datei **scaldingwordcount-1.0-SNAPSHOT.jar** ist.
    
         #Cluster name, file to be uploaded, and where to upload it
-        $clustername = "CLUSTERNAME"
-        $fileToUpload = "scaldingwordcount-1.0-SNAPSHOT.jar"
+        $clustername = Read-Host -Prompt "Enter the HDInsight cluster name"
+        $fileToUpload = Read-Host -Prompt "Enter the path to the scaldingwordcount-1.0-SNAPSHOT.jar file"
         $blobPath = "example/jars/scaldingwordcount-1.0-SNAPSHOT.jar"
    
         #Login to your Azure subscription
         Login-AzureRmAccount
         #Get HTTPS/Admin credentials for submitting the job later
-        $creds = Get-Credential
+        $creds = Get-Credential -Message "Enter the login credentials for the cluster"
         #Get the cluster info so we can get the resource group, storage, etc.
         $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
         $resourceGroup = $clusterInfo.ResourceGroup
@@ -275,10 +279,10 @@ Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Method
             -JarFile wasbs:///example/jars/scaldingwordcount-1.0-SNAPSHOT.jar `
             -ClassName com.microsoft.example.WordCount `
             -arguments "--hdfs", `
-                       "--input", `
-                       "wasbs:///example/data/gutenberg/davinci.txt", `
-                       "--output", `
-                       "wasbs:///example/wordcountout"
+                        "--input", `
+                        "wasbs:///example/data/gutenberg/davinci.txt", `
+                        "--output", `
+                        "wasbs:///example/wordcountout"
         $job = Start-AzureRmHDInsightJob `
             -clustername $clusterName `
             -jobdefinition $jobDef `
@@ -325,11 +329,16 @@ Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Method
         wrotefootnote   1
         wrought 7
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie erfahren haben, wie mit Scalding MapReduce-Aufträge für HDInsight erstellt werden, können Sie mithilfe der folgenden Links weitere Möglichkeiten entdecken, mit Azure HDInsight zu arbeiten.
 
 * [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

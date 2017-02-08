@@ -1,12 +1,12 @@
 ---
-title: Veröffentlichen von Azure Media Services-Inhalten mit .NET
-description: Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET.
+title: "Veröffentlichen von Azure Media Services-Inhalten mit .NET"
+description: "Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET."
 author: juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: c53b1f83-4cb1-4b09-840f-9c145b7d6f8d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f566b8f75d26e3d786ce3396dd133478af38da76
+
 
 ---
-# Veröffentlichen von Azure Media Services-Inhalten mit .NET
+# <a name="publish-azure-media-services-content-using-net"></a>Veröffentlichen von Azure Media Services-Inhalten mit .NET
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -24,30 +28,30 @@ ms.author: juliako
 > 
 > 
 
-## Übersicht
-Sie können einen MP4-Satz mit adaptiver Bitrate streamen, indem Sie einen OnDemand-Streaminglocator und eine Streaming-URL erstellen. Im Thema [Codieren eines Medienobjekts](media-services-encode-asset.md) wird die Codierung in einen MP4-Satz mit adaptiver Bitrate erläutert.
+## <a name="overview"></a>Übersicht
+Sie können einen MP4-Satz mit adaptiver Bitrate streamen, indem Sie einen OnDemand-Streaminglocator und eine Streaming-URL erstellen. Im Thema [Codieren eines Medienobjekts](media-services-encode-asset.md) wird die Codierung in einen MP4-Satz mit adaptiver Bitrate erläutert. 
 
 > [!NOTE]
-> Wenn Ihr Inhalt verschlüsselt ist, konfigurieren Sie vor dem Erstellen eines Locators die Bereitstellungsrichtlinie für Medienobjekte (wie in [diesem](media-services-dotnet-configure-asset-delivery-policy.md) Thema beschrieben).
+> Wenn Ihr Inhalt verschlüsselt ist, konfigurieren Sie vor dem Erstellen eines Locators die Bereitstellungsrichtlinie für Medienobjekte (wie in [diesem Thema](media-services-dotnet-configure-asset-delivery-policy.md) beschrieben). 
 > 
 > 
 
-Sie können auch einen OnDemand-Streaminglocator zum Erstellen von URLs verwenden, die auf MP4-Dateien verweisen, die progressiv heruntergeladen werden können.
+Sie können auch einen OnDemand-Streaminglocator zum Erstellen von URLs verwenden, die auf MP4-Dateien verweisen, die progressiv heruntergeladen werden können.  
 
-In diesem Thema wird erläutert, wie Sie einen OnDemand-Streaminglocator erstellen, um Ihr Medienobjekt zu veröffentlichen und Smooth-, MPEG-DASH- sowie HLS-Streaming-URLs zu erstellen. Außerdem wird veranschaulicht, wie Sie URLs für progressive Downloads erstellen.
+In diesem Thema wird erläutert, wie Sie einen OnDemand-Streaminglocator erstellen, um Ihr Medienobjekt zu veröffentlichen und Smooth-, MPEG-DASH- sowie HLS-Streaming-URLs zu erstellen. Außerdem wird veranschaulicht, wie Sie URLs für progressive Downloads erstellen. 
 
-## Erstellen eines OnDemand-Streaminglocators
+## <a name="create-an-ondemand-streaming-locator"></a>Erstellen eines OnDemand-Streaminglocators
 Verfahren Sie zum Erstellen des OnDemand-Streaminglocators und Abrufen von URLs wie folgt:
 
 1. Wenn der Inhalt verschlüsselt ist, definieren Sie eine Zugriffsrichtlinie.
 2. Erstellen Sie einen OnDemand-Streaminglocator.
-3. Wenn Sie ein Streaming planen, rufen Sie die Streaming-Manifestdatei (ISM) im Medienobjekt ab.
+3. Wenn Sie ein Streaming planen, rufen Sie die Streaming-Manifestdatei (ISM) im Medienobjekt ab. 
    
-   Wenn Sie einen progressiven Download ausführen möchten, rufen Sie die Namen der MP4-Dateien im Medienobjekt ab.
-4. Erstellen Sie URLs für die Manifestdatei oder MP4-Dateien.
+   Wenn Sie einen progressiven Download ausführen möchten, rufen Sie die Namen der MP4-Dateien im Medienobjekt ab.  
+4. Erstellen Sie URLs für die Manifestdatei oder MP4-Dateien. 
 
-### Verwenden des Media Services .NET SDKs
-Erstellen von Streaming-URLs
+### <a name="use-media-services-net-sdk"></a>Verwenden des Media Services .NET SDKs
+Erstellen von Streaming-URLs 
 
     private static void BuildStreamingURLs(IAsset asset)
     {
@@ -97,11 +101,11 @@ Codeausgabe:
 
 
 > [!NOTE]
-> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen.
+> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. 
 > 
 > 
 
-Erstellen von URLs für progressive Downloads
+Erstellen von URLs für progressive Downloads 
 
     private static void BuildProgressiveDownloadURLs(IAsset asset)
     {
@@ -140,7 +144,7 @@ Codeausgabe:
 
     . . . 
 
-### Verwenden von Media Services .NET SDK-Erweiterungen
+### <a name="use-media-services-net-sdk-extensions"></a>Verwenden von Media Services .NET SDK-Erweiterungen
 Im folgenden Code werden .NET SDK-Erweiterungsmethoden aufgerufen, durch die ein Locator erstellt und die Smooth Streaming-, HLS- und MPEG-DASH-URLs für adaptives Streaming generiert werden.
 
     // Create a loctor.
@@ -160,13 +164,19 @@ Im folgenden Code werden .NET SDK-Erweiterungsmethoden aufgerufen, durch die ein
     Console.WriteLine(mpegDashUri);
 
 
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## Weitere Informationen
-[Herunterladen von Assets](media-services-deliver-asset-download.md) [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md)
+## <a name="see-also"></a>Weitere Informationen
+[Herunterladen von Assets](media-services-deliver-asset-download.md)
+[Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

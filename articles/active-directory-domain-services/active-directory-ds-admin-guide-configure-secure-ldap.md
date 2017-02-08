@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von sicherem LDAP (LDAPS) in Azure AD Domain Services | Microsoft Docs
-description: "Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne"
+description: "Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -232,6 +232,6 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

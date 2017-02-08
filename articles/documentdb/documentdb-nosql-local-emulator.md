@@ -1,5 +1,5 @@
 ---
-title: Lokale Entwicklung mit dem DocumentDB-Emulator | Microsoft Docs
+title: Lokale Entwicklung mit dem DocumentDB-Emulator | Microsoft-Dokumentation
 description: "Mit dem DocumentDB-Emulator können Sie Ihre Anwendung kostenlos lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen."
 services: documentdb
 documentationcenter: 

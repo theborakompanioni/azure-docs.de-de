@@ -68,6 +68,6 @@ Sie müssen eine Hostroute der Azure-BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät hi
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

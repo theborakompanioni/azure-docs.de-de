@@ -1,19 +1,23 @@
 ---
-title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
-description: Antworten auf häufig gestellte Fragen zum Log Analytics-Dienst.
+title: "Häufig gestellte Fragen zu Log Analytics | Microsoft Docs"
+description: "Antworten auf häufig gestellte Fragen zum Log Analytics-Dienst."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e24e6f9cc383be77dc631a0dd67db099906dccc0
+
 
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
@@ -45,7 +49,7 @@ Die Ausführung als Clouddienst bedeutet auch, dass sich nicht um den laufenden 
 ## <a name="configuration"></a>Konfiguration
 **F: Kann ich den Namen der Tabelle bzw. des Blobcontainers zum Einlesen von Daten aus Azure-Diagnose (WAD) ändern?**  
 
-A:  Nein, dies ist derzeit nicht möglich, aber für eine künftige Version geplant.
+A:    Nein, dies ist derzeit nicht möglich, aber für eine künftige Version geplant.
 
 **F: Welche IP-Adressen verwenden die OMS-Dienste? Wie stelle ich sicher, dass meine Firewall nur Datenverkehr zu den OMS-Diensten zulässt?**  
 
@@ -118,6 +122,8 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit Log Analytics](log-analytics-get-started.md). Hier erfahren Sie mehr über Log Analytics und wie Sie binnen Minuten loslegen können.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

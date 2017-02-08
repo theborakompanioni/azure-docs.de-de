@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Proofpoint on Demand | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Proofpoint on Demand.
+title: 'Tutorial: Azure Active Directory-Integration mit Proofpoint on Demand | Microsoft Docs'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Proofpoint on Demand konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: 773e7f7d-ec31-411b-860d-6a6633335d43
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,202 +14,193 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5c6129050dacf098fa60439175b91b3a2d219182
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-proofpoint-on-demand"></a>Tutorial: Azure Active Directory integration with Proofpoint on Demand
-In this tutorial, you learn how to integrate Proofpoint on Demand with Azure Active Directory (Azure AD).
+# <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Tutorial: Azure Active Directory-Integration mit Proofpoint on Demand
+In diesem Tutorial erfahren Sie, wie Sie Proofpoint on Demand in Azure Active Directory (Azure AD) integrieren.
 
-Integrating Proofpoint on Demand with Azure AD provides you with the following benefits:
+Die Integration von Proofpoint on Demand in Azure AD bietet die folgenden Vorteile:
 
-* You can control in Azure AD who has access to Proofpoint on Demand
-* You can enable your users to automatically get signed-on to Proofpoint on Demand (Single Sign-On) with their Azure AD accounts
-* You can manage your accounts in one central location - the Azure classic portal
+* Sie können in Azure AD steuern, wer Zugriff auf Proofpoint on Demand hat.
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Proofpoint on Demand anzumelden (einmaliges Anmelden, SSO).
+* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Prerequisites
-To configure Azure AD integration with Proofpoint on Demand, you need the following items:
+## <a name="prerequisites"></a>Voraussetzungen
+Um die Azure AD-Integration mit Proofpoint on Demand konfigurieren zu können, benötigen Sie Folgendes:
 
-* An Azure AD subscription
-* A Proofpoint on Demand single-sign on enabled subscription
+* Ein Azure AD-Abonnement
+* Ein Proofpoint on Demand-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
-> 
-> 
+Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
 
-To test the steps in this tutorial, you should follow these recommendations:
+* Verwenden Sie keine Produktionsumgebung, sofern dies nicht erforderlich ist.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
-* You should not use your production environment, unless this is necessary.
-* If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment.
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-The scenario outlined in this tutorial consists of two main building blocks:
+1. Hinzufügen von Proofpoint on Demand aus dem Katalog
+2. Konfigurieren und testen Sie das einmalige Anmelden in Azure AD.
 
-1. Adding Proofpoint on Demand from the gallery
-2. Configuring and testing Azure AD single sign-on
+## <a name="add-proofpoint-on-demand-from-the-gallery"></a>Hinzufügen von Proofpoint on Demand aus dem Katalog
+Um die Integration von Proofpoint on Demand in Azure AD zu konfigurieren, müssen Sie Proofpoint on Demand über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-## <a name="adding-proofpoint-on-demand-from-the-gallery"></a>Adding Proofpoint on Demand from the gallery
-To configure the integration of Proofpoint on Demand into Azure AD, you need to add Proofpoint on Demand from the gallery to your list of managed SaaS apps.
+1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
+   
+    ![Active Directory-Symbol][1]
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der Verzeichnisansicht oben im Menü auf **ANWENDUNGEN**.
+   
+    ![Menüelement „ANWENDUNGEN“][2]
+4. Klicken Sie unten auf der Seite auf **HINZUFÜGEN**.
+   
+    ![Schaltfläche „HINZUFÜGEN“][3]
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+   
+    ![Auswahl: Hinzufügen einer Anwendung aus dem Katalog][4]
+6. Geben Sie im Suchfeld als Suchbegriff **Proofpoint on Demand** ein.
+   
+    ![Feld zum Eingeben von „Proofpoint on Demand“](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_01.png)
+7. Wählen Sie im Ergebnisbereich **Proofpoint on Demand** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-**To add Proofpoint on Demand from the gallery, perform the following steps:**
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit Proofpoint on Demand.
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
-   
-    ![Active Directory][1]
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
-   
-    ![Applications][2]
-4. Click **Add** at the bottom of the page.
-   
-    ![Applications][3]
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
-   
-    ![Applications][4]
-6. In the search box, type **Proofpoint on Demand**.
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_01.png)
-7. In the results pane, select **Proofpoint on Demand**, and then click **Complete** to add the application.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Proofpoint on Demand als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Sie müssen zwischen einem Azure AD-Benutzer und dem dazugehörigen Benutzer in Proofpoint on Demand eine Linkbeziehung einrichten.
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with Proofpoint on Demand based on a test user called "Britta Simon".
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD dem **Benutzernamen** in Proofpoint on Demand zuweisen.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Proofpoint on Demand is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Proofpoint on Demand needs to be established.
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden in Azure AD mit Proofpoint on Demand zu konfigurieren und zu testen:
 
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Proofpoint on Demand.
+1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on), um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. [Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. [Erstellen eines Proofpoint on Demand-Testbenutzers](#creating-a-proofpoint-ondemand-test-user), um eine Entsprechung von Britta Simon in Proofpoint on Demand zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. [Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. [Testen des einmaligen Anmeldens](#testing-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
 
-To configure and test Azure AD single sign-on with Proofpoint on Demand, you need to complete the following building blocks:
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Proofpoint on Demand-Anwendung.
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a Proofpoint on Demand test user](#creating-a-proofpoint-ondemand-test-user)** - to have a counterpart of Britta Simon in Proofpoint on Demand that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Proofpoint on Demand** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+   
+    ![Schaltfläche „Einmaliges Anmelden konfigurieren“][6]
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Proofpoint on Demand anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+   
+    ![Optionsfeld „Microsoft Azure AD – einmaliges Anmelden“](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_03.png)
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+   
+    ![Seite „App-Einstellungen konfigurieren“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_04.png)
+   
+    a. Geben Sie im Feld **ANMELDE-URL** die URL ein, unter der sich Benutzer an Ihrer Proofpoint on Demand-Anwendung anmelden. Verwenden Sie das folgende Muster: **https://\<hostname\>.pphosted.com/ppssamlsp_hostname**.
+   
+    b. Geben Sie im Feld **BEZEICHNER** die URL im folgenden Format ein: **https://\<hostname/>.pphosted.com/ppssamlsp**.
+   
+    c. Geben Sie im Feld **ANTWORT-URL** die URL im folgenden Format ein: **https://\<hostname/>.pphosted.com:portnummer/v1/samlauth/samlconsumer**.
+   
+    d. Klicken Sie auf **Weiter**.
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Proofpoint on Demand** die folgenden Schritte aus:
+   
+    ![Seite „Einmaliges Anmelden konfigurieren für Proofpoint on Demand“ mit der Schaltfläche „Zertifikat herunterladen“](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_05.png)
+   
+    a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+   
+    b. Klicken Sie auf **Weiter**.
+5. Wenden Sie sich an das Supportteam von Proofpoint on Demand, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie dazu Folgendes bereit:
+   
+    • Das heruntergeladene Zertifikat
+   
+    • Die Entitäts-ID
+   
+    • Die SAML-SSO-URL
+6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+   
+    ![Kontrollkästchen zur Bestätigung, dass Sie das einmalige Anmelden konfiguriert haben][10]
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+   
+    ![Bestätigungsseite][11]
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
-In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your Proofpoint on Demand application.
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
-**To configure Azure AD single sign-on with Proofpoint on Demand, perform the following steps:**
+![Testbenutzer in der Liste mit den Benutzern][20]
 
-1. In the classic portal, on the **Proofpoint on Demand** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
-    ![Configure Single Sign-On][6] 
-2. On the **How would you like users to sign on to Proofpoint on Demand** page, select **Azure AD Single Sign-On**, and then click **Next**.
+    ![Active Directory-Symbol](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_09.png)
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+3. Klicken Sie im Menü oben auf **BENUTZER**, um die Liste mit den Benutzern anzuzeigen.
    
-    ![Configure Single Sign-On](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_03.png) 
-3. On the **Configure App Settings** dialog page, perform the following steps:
+    ![Menüelement „BENUTZER“](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_03.png)
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie unten in der Symbolleiste auf **BENUTZER HINZUFÜGEN**.
    
-    ![Configure Single Sign-On](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_04.png) 
+    ![Schaltfläche „BENUTZER HINZUFÜGEN“](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_04.png)
+5. Führen Sie auf der Seite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Seite „Informationen über diesen Benutzer“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png)
    
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Proofpoint on Demand application using the following pattern: **https://\<hostname\>.pphosted.com/ppssamlsp_hostname**.
+    a. Wählen Sie im Feld **Art des Benutzers** die Option **Neuer Benutzer in Ihrem Unternehmen**.
    
-    b. In the **Identifier** textbox type the URL using the following pattern: **https://\<hostname/>.pphosted.com/ppssamlsp**
+    b. Geben Sie in das Feld **BENUTZERNAME** den Namen **BrittaSimon** ein.
    
-    c. In the **Reply URL** textbox type the URL using the following pattern: **https://\<hostname/>.pphosted.com:portnumber/v1/samlauth/samlconsumer**
+    c. Klicken Sie auf **Weiter**.
+6. Führen Sie auf der Seite **Benutzerprofil** die folgenden Schritte aus: ![Seite „Benutzerprofil“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)
    
-    d. click **Next**
-4. On the **Configure single sign-on at Proofpoint on Demand** page, perform the following steps:
+   a. Geben Sie in das Feld **VORNAME** den Namen **Britta** ein.  
    
-    ![Configure Single Sign-On](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_05.png)
+   b. Geben Sie in das Feld **NACHNAME** den Namen **Simon** ein.
    
-    a. Click **Download certificate**, and then save the file on your computer.
+   c. Geben Sie in das Feld **ANZEIGENAME** den Namen **Britta Simon** ein.
    
-    b. Click **Next**.
-5. To get SSO configured for your application, contact Proofpoint on Demand support team and provide them with the following:
+   d. Wählen Sie in der Liste **ROLLE** die Option **Benutzer** aus.
    
-    • The downloaded **certificate**
+   e. Klicken Sie auf **Weiter**.
+7. Klicken Sie auf der Seite **Temporäres Kennwort abrufen** auf **Erstellen**.
    
-    • The **Entity ID**
+    ![Schaltfläche zum Erstellen eines temporären Kennworts](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png)
+8. Führen Sie auf der Seite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    • The **SAML SSO URL**
-6. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    ![Seite „Vorübergehendes Kennwort abrufen“ mit Kennwortinformationen](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png)
    
-    ![Azure AD Single Sign-On][10]
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+    a. Notieren Sie den Wert des Felds **NEUES KENNWORT**.
    
-    ![Azure AD Single Sign-On][11]
+    b. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-In this section, you create a test user in the classic portal called Britta Simon.
+### <a name="create-a-proofpoint-on-demand-test-user"></a>Erstellen eines Proofpoint on Demand-Testbenutzers
+In diesem Abschnitt erstellen Sie in Proofpoint on Demand einen Benutzer namens Britta Simon. Wenden Sie sich an das Supportteam von Proofpoint on Demand, um Benutzer der Proofpoint on Demand-Plattform hinzufügen zu lassen.
 
-![Create Azure AD User][20]
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf Proofpoint on Demand gewähren.
 
-**To create a test user in Azure AD, perform the following steps:**
+![Benutzerinformationen: mit direkter Methode aktivierter Zugriff][200]
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. Klicken Sie in der Verzeichnisansicht des klassischen Portals oben im Menü auf **ANWENDUNGEN**, um die Anwendungsansicht zu öffnen.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_09.png) 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To display the list of users, in the menu on the top, click **Users**.
+    ![Menüelement „ANWENDUNGEN“][201]
+2. Wählen Sie in der Liste mit den Anwendungen die Option **Proofpoint on Demand**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_03.png) 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+    ![Anwendungsliste mit Auswahl von Proofpoint on Demand](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_50.png)
+3. Klicken Sie oben im Menü auf **BENUTZER**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_04.png) 
-5. On the **Tell us about this user** dialog page, perform the following steps:  ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png) 
+    ![Menüelement „BENUTZER“][203]
+4. Wählen Sie in der Liste mit den Benutzern den Eintrag **Britta Simon**.
+5. Klicken Sie unten in der Symbolleiste auf **ZUWEISEN**.
    
-    a. As Type Of User, select New user in your organization.
-   
-    b. In the User Name **textbox**, type **BrittaSimon**.
-   
-    c. Click **Next**.
-6. On the **User Profile** dialog page, perform the following steps: ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png) 
-   
-   a. In the **First Name** textbox, type **Britta**.  
-   
-   b. In the **Last Name** textbox, type, **Simon**.
-   
-   c. In the **Display Name** textbox, type **Britta Simon**.
-   
-   d. In the **Role** list, select **User**.
-   
-   e. Click **Next**.
-7. On the **Get temporary password** dialog page, click **create**.
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png) 
-8. On the **Get temporary password** dialog page, perform the following steps:
-   
-    ![Creating an Azure AD test user](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png) 
-   
-    a. Write down the value of the **New Password**.
-   
-    b. Click **Complete**.   
+    ![Schaltfläche „Zuweisen“][205]
 
-### <a name="creating-an-proofpoint-on-demand-test-user"></a>Creating an Proofpoint on Demand test user
-In this section, you create a user called Britta Simon in Proofpoint on Demand. Please work with Proofpoint on Demand support team to add the users in the Proofpoint on Demand platform.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-In this section, you enable Britta Simon to use Azure single sign-on by granting her access to Proofpoint on Demand.
+Wenn Sie im Zugriffsbereich auf die Kachel **Proofpoint on Demand** klicken, sollten Sie automatisch an Ihrer Proofpoint on Demand-Anwendung angemeldet werden.
 
-![Assign User][200] 
-
-**To assign Britta Simon to Proofpoint on Demand, perform the following steps:**
-
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
-   
-    ![Assign User][201] 
-2. In the applications list, select **Proofpoint on Demand**.
-   
-    ![Configure Single Sign-On](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_50.png) 
-3. In the menu on the top, click **Users**.
-   
-    ![Assign User][203]
-4. In the Users list, select **Britta Simon**.
-5. In the toolbar on the bottom, click **Assign**.
-   
-    ![Assign User][205]
-
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
-
-When you click the Proofpoint on Demand tile in the Access Panel, you should get automatically signed-on to your Proofpoint on Demand application.
-
-## <a name="additional-resources"></a>Additional resources
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -231,6 +222,6 @@ When you click the Proofpoint on Demand tile in the Access Panel, you should get
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

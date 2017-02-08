@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: sutalasi
 translationtype: Human Translation
-ms.sourcegitcommit: 740c03f7785017e8c778c034491585b3addb765d
-ms.openlocfilehash: 151234a5a357cec808ad5deeef0d4150cb794f8e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 82d46a833c5aa36b1526e6ae7a2a9a6ebc76dc77
 
 
 ---
@@ -77,7 +77,7 @@ Weitere Informationen zur Konfiguration von VMM-Netzwerken finden Sie in unten s
 [hier](site-recovery-network-mapping.md) .
 
 ### <a name="powershell-prerequisites"></a>PowerShell-Voraussetzungen
-Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell bereits verwenden, müssen Sie auf Version 0.8.10 oder höher aktualisieren. Informationen zum Einrichten von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Nach dem Einrichten und Konfigurieren von PowerShell können Sie alle verfügbaren Cmdlets für den Dienst [hier](https://msdn.microsoft.com/library/dn850420.aspx)anzeigen. 
+Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell bereits verwenden, müssen Sie auf Version 0.8.10 oder höher aktualisieren. Informationen zum Einrichten von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Nach dem Einrichten und Konfigurieren von PowerShell können Sie alle verfügbaren Cmdlets für den Dienst [hier](https://msdn.microsoft.com/library/dn850420.aspx)anzeigen. 
 
 Tipps für die Verwendung von Cmdlets, beispielsweise wie Parameterwerte, Eingaben und Ausgaben in der Regel in Azure PowerShell behandelt werden, finden Sie unter [Erste Schritte mit Azure-Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx).
 
@@ -323,6 +323,6 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

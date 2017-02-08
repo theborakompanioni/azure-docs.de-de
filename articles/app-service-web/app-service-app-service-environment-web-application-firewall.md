@@ -1,12 +1,12 @@
 ---
-title: Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
+title: "Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung"
 description: Erfahren Sie, wie eine Ihrer App Service-Umgebung vorgelagerte Web Application Firewall konfigurieren.
 services: app-service\web
-documentationcenter: ''
+documentationcenter: 
 author: naziml
 manager: wpickett
 editor: jimbe
-
+ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,38 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: naziml
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d4378398e666fe5ae2c7c55b377ae74880b857de
+
 
 ---
-# Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
-## Übersicht
-Web Application Firewalls wie [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) (im [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) verfügbar) dienen zum Schützen Ihrer Webanwendungen, indem eingehender Webdatenverkehr untersucht wird, um SQL-Injections, Cross-Site Scripting, das Hochladen von Schadsoftware sowie DDoS- und andere Angriffe zu blockieren. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Zusammen mit der von App Service-Umgebungen bereitgestellten Isolierung und zusätzlichen Skalierung ergibt sich dadurch eine ideale Umgebung für das Hosten geschäftswichtiger Webanwendungen, die böswilligen Anforderungen abwehren und hohe Datenverkehrsvolumen bewältigen müssen.
+# <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
+## <a name="overview"></a>Übersicht
+Web Application Firewalls wie [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) (im [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) verfügbar) dienen zum Schützen Ihrer Webanwendungen, indem eingehender Webdatenverkehr untersucht wird, um Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS- und andere Angriffe zu blockieren. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Zusammen mit der von App Service-Umgebungen bereitgestellten Isolierung und zusätzlichen Skalierung ergibt sich dadurch eine ideale Umgebung für das Hosten geschäftswichtiger Webanwendungen, die böswilligen Anforderungen abwehren und hohe Datenverkehrsvolumen bewältigen müssen.
 
-\+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
++[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## Einrichtung
+## <a name="setup"></a>Einrichtung
 Für dieses Dokument konfigurieren wir unsere App Service-Umgebung hinter mehreren Barracuda WAF-Instanzen mit Lastenausgleich, sodass nur Datenverkehr von der WAF die App Service-Umgebung erreichen kann und kein Zugriff aus der DMZ möglich ist. Außerdem haben wir Azure Traffic Manager unseren Barracuda WAF-Instanzen für den Lastenausgleich von Azure-Datencentern und Regionen vorgelagert. Ein allgemeines Diagramm der Einrichtung wird nachstehend gezeigt.
 
-![Architektur][Architecture]
+![Architektur][Architecture] 
 
-> Hinweis: Mit der Einführung der [ILB-Unterstützung für die App Service-Umgebung](app-service-environment-with-internal-load-balancer.md) können Sie die ASE so konfigurieren, dass darauf von der DMZ nicht zugegriffen werden kann und sie nur im privaten Netzwerk zur Verfügung steht.
+> Hinweis: Mit der Einführung der [ILB-Unterstützung für die App Service-Umgebung](app-service-environment-with-internal-load-balancer.md)können Sie die ASE so konfigurieren, dass darauf von der DMZ nicht zugegriffen werden kann und sie nur im privaten Netzwerk zur Verfügung steht. 
 > 
 > 
 
-## Konfigurieren der App Service-Umgebung
-Informationen zum Konfigurieren einer App Service-Umgebung finden Sie in [unserer Dokumentation](app-service-web-how-to-create-an-app-service-environment.md) zu diesem Thema. Sobald Sie ein App Service-Umgebung eingerichtet haben, können Sie in dieser Umgebung [Web Apps](app-service-web-overview.md), [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) und [mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) erstellen, die alle hinter der WAF geschützt werden, die wir im nächsten Abschnitt konfigurieren.
+## <a name="configuring-your-app-service-environment"></a>Konfigurieren der App Service-Umgebung
+Informationen zum Konfigurieren einer App Service-Umgebung finden Sie in [unserer Dokumentation](app-service-web-how-to-create-an-app-service-environment.md) zu diesem Thema. Sobald Sie ein App Service-Umgebung eingerichtet haben, können Sie in dieser Umgebung [Web-Apps](app-service-web-overview.md), [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) und [mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) erstellen, die alle hinter der WAF geschützt werden, die wir im nächsten Abschnitt konfigurieren.
 
-## Konfiguration des Barracuda WAF-Clouddiensts
+## <a name="configuring-your-barracuda-waf-cloud-service"></a>Konfiguration des Barracuda WAF-Clouddiensts
 Barracuda hat einen [ausführlichen Artikel](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) zur Bereitstellung seiner WAF auf einem virtuellen Computer in Azure verfasst. Wir befolgen diese Anweisungen, wollen aber zugleich Redundanz und keine einzelne Fehlerquelle hinzufügen, weshalb wir mindestens 2 VMs mit WAF-Instanzen im selben Clouddienst bereitstellen.
 
-### Hinzufügen von Endpunkten zum Clouddienst
+### <a name="adding-endpoints-to-cloud-service"></a>Hinzufügen von Endpunkten zum Clouddienst
 Sobald Ihr Clouddienst zwei oder mehr WAF VM-Instanzen aufweist, können Sie im [Azure-Portal](https://portal.azure.com/) HTTP- und HTTPS-Endpunkte hinzufügen, die von Ihrer Anwendung verwendet werden (siehe folgende Abbildung).
 
 ![Endpunkt konfigurieren][ConfigureEndpoint]
 
-Wenn Ihre Anwendungen andere Endpunkte verwenden, sollten Sie diese auch unbedingt dieser Liste hinzufügen.
+Wenn Ihre Anwendungen andere Endpunkte verwenden, sollten Sie diese auch unbedingt dieser Liste hinzufügen. 
 
-### Konfigurieren von Barracuda WAF über das zugehörige Verwaltungsportal
-Barracuda WAF verwendet für die Konfiguration über sein Verwaltungsportal den TCP-Port 8000. Da wir mehrere Instanzen von WAF-VMs haben, müssen Sie die Schritte hier für jede VM-Instanz wiederholen.
+### <a name="configuring-barracuda-waf-through-its-management-portal"></a>Konfigurieren von Barracuda WAF über das zugehörige Verwaltungsportal
+Barracuda WAF verwendet für die Konfiguration über sein Verwaltungsportal den TCP-Port 8000. Da wir mehrere Instanzen von WAF-VMs haben, müssen Sie die Schritte hier für jede VM-Instanz wiederholen. 
 
 > Hinweis: Sobald Sie die WAF-Konfiguration abgeschlossen haben, entfernen Sie den TCP/8000-Endpunkt aus allen WAF-VMs, um Ihre WAF zu schützen.
 > 
@@ -55,7 +59,7 @@ Fügen Sie, wie in der folgenden Abbildung gezeigt, den Verwaltungsendpunkt hinz
 
 ![Verwaltungsendpunkt hinzufügen][AddManagementEndpoint]
 
-Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst "test.cloudapp.net" heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu http://test.cloudapp.net:8000 navigieren. Es sollte, wie nachstehend gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
+Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst „test.cloudapp.net“ heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu „http://test.cloudapp.net:8000“ navigieren. Es sollte, wie nachstehend gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
 
 ![Anmeldeseite für die Verwaltung][ManagementLoginPage]
 
@@ -71,12 +75,12 @@ Auf der Registerkarte "Dienste" können Sie Ihre WAF für die Dienste konfigurie
 > 
 > 
 
-## Konfigurieren von Microsoft Azure Traffic Manager (optional)
-Wenn Ihre Anwendung in mehreren Regionen verfügbar ist, sollten Sie mithilfe von [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) für einen Lastenausgleich sorgen. Fügen Sie hierzu im [klassischen Azure-Portal](https://manage.azure.com) einen Endpunkt unter Angabe des Clouddienstnamens für Ihre WAF dem Traffic Manager-Profil hinzu (siehe die folgende Abbildung).
+## <a name="configuring-microsoft-azure-traffic-manager-optional"></a>Konfigurieren von Microsoft Azure Traffic Manager (optional)
+Wenn Ihre Anwendung in mehreren Regionen verfügbar ist, sollten Sie mithilfe von [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)für einen Lastenausgleich sorgen. Fügen Sie hierzu im [klassischen Azure-Portal](https://manage.azure.com) einen Endpunkt unter Angabe des Clouddienstnamens für Ihre WAF dem Traffic Manager-Profil hinzu (siehe die folgende Abbildung). 
 
 ![Traffic Manager-Endpunkt][TrafficManagerEndpoint]
 
-Wenn Ihre Anwendung eine Authentifizierung erfordert, stellen Sie sicher, dass Sie über eine Ressource verfügen, die keine Authentifizierung bei Traffic Manager benötigt, um ein Pingsignal zum Prüfen der Verfügbarkeit der Anwendung senden zu können. Sie können die URL im [klassischen Azure-Portal](https://manage.azure.com), wie nachstehend gezeigt, im Abschnitt "Konfigurieren" konfigurieren.
+Wenn Ihre Anwendung eine Authentifizierung erfordert, stellen Sie sicher, dass Sie über eine Ressource verfügen, die keine Authentifizierung bei Traffic Manager benötigt, um ein Pingsignal zum Prüfen der Verfügbarkeit der Anwendung senden zu können. Sie können die URL im [klassischen Azure-Portal](https://manage.azure.com) , wie nachstehend gezeigt, im Abschnitt "Konfigurieren" konfigurieren.
 
 ![Traffic Manager konfigurieren][ConfigureTrafficManager]
 
@@ -84,19 +88,19 @@ Zum Weiterleiten der Traffic Manager-Pingsignale von Ihrer WAF zu Ihrer Anwendun
 
 ![Websiteübersetzungen][WebsiteTranslations]
 
-## Schützen des Datenverkehrs zu einer App Service-Umgebung mithilfe von Netzwerksicherheitsgruppen (NSGs)
-In der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) finden Sie ausführliche Informationen zum Einschränken des Datenverkehrs zu Ihrer App Service-Umgebung von der WAF nur durch Verwenden der VIP-Adresse Ihres Clouddiensts. Hier ist ein PowerShell-Beispielbefehl zur Durchführung dieser Aufgabe für TCP-Port 80.
+## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Schützen des Datenverkehrs zu einer App Service-Umgebung mithilfe von Netzwerksicherheitsgruppen (NSGs)
+In der [Dokumentation zum Steuern des eingehenden Datenverkehrs](app-service-app-service-environment-control-inbound-traffic.md) finden Sie ausführliche Informationen zum Einschränken des Datenverkehrs zu Ihrer App Service-Umgebung von der WAF nur durch Verwenden der VIP-Adresse Ihres Clouddiensts. Hier ist ein PowerShell-Beispielbefehl zur Durchführung dieser Aufgabe für TCP-Port 80.
 
     Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
 
 Ersetzen Sie "SourceAddressPrefix" durch die virtuelle IP-Adresse (VIP) des Clouddiensts Ihrer WAF.
 
-> Hinweis: Die VIP Ihres Clouddiensts ändert sich, wenn Sie diesen löschen und neu erstellen. Stellen Sie sicher, dass Sie nach diesem Schritt die IP-Adresse in der Netzwerkressourcengruppe ändern.
+> Hinweis: Die VIP Ihres Clouddiensts ändert sich, wenn Sie diesen löschen und neu erstellen. Stellen Sie sicher, dass Sie nach diesem Schritt die IP-Adresse in der Netzwerkressourcengruppe ändern. 
 > 
 > 
 
 <!-- IMAGES -->
-[Architecture]: ./media/app-service-app-service-environment-web-application-firewall/Architecture.png
+[Architektur]: ./media/app-service-app-service-environment-web-application-firewall/Architecture.png
 [ConfigureEndpoint]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureEndpoint.png
 [AddManagementEndpoint]: ./media/app-service-app-service-environment-web-application-firewall/AddManagementEndpoint.png
 [ManagementAddServices]: ./media/app-service-app-service-environment-web-application-firewall/ManagementAddServices.png
@@ -106,4 +110,8 @@ Ersetzen Sie "SourceAddressPrefix" durch die virtuelle IP-Adresse (VIP) des Clou
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -16,13 +16,17 @@ ms.topic: get-started-article
 ms.date: 07/06/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fc65ebe89e1242e7fda00cede9211e267f2061f5
+ms.sourcegitcommit: 0ab72bd4ad531d1162726c6f5548fa253a4f5265
+ms.openlocfilehash: 6e5ccae8837491e042b85ba4b7d42227e194cb94
 
 
 ---
 # <a name="my-first-graphical-runbook"></a>Mein erstes grafisches Runbook
-> [AZURE.SELECTOR] - [Grafisch](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-powershell.md) - [PowerShell-Workflow](automation-first-runbook-textual.md)
+
+> [!div class="op_single_selector"]
+> * [Grafisch](automation-first-runbook-graphical.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell-Workflow](automation-first-runbook-textual.md)
 > 
 > 
 
@@ -35,7 +39,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * [ausführende Azure-Konto](automation-sec-configure-azure-runas-account.md) dient zur Aufbewahrung des Runbooks und zur Authentifizierung gegenüber Azure-Ressourcen.  Dieses Konto muss über die Berechtigung zum Starten und Beenden des virtuellen Computers verfügen.
 * Einen virtuellen Azure-Computer.  Da dieser Computer gestartet und beendet wird, darf er sich nicht in der Produktionsumgebung befinden.
 
-## <a name="step-1-create-new-runbook"></a>Schritt 1: Erstellen eines neuen Runbooks
+## <a name="step-1---create-new-runbook"></a>Schritt 1: Erstellen eines neuen Runbooks
 Wir erstellen zunächst ein einfaches Runbook, das den Text *Hello World*ausgibt.
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.  
@@ -46,7 +50,7 @@ Wir erstellen zunächst ein einfaches Runbook, das den Text *Hello World*ausgibt
 5. Da wir in diesem Fall ein [grafisches Runbook](automation-graphical-authoring-intro.md) erstellen, legen Sie den **Runbooktyp** auf **Grafisch** fest.<br> ![Neues Runbook](media/automation-first-runbook-graphical/create-new-runbook.png)<br>
 6. Klicken Sie auf **Erstellen** , um das Runbook zu erstellen und den grafischen Editor zu öffnen.
 
-## <a name="step-2-add-activities-to-the-runbook"></a>Schritt 2: Hinzufügen von Aktivitäten zum Runbook
+## <a name="step-2---add-activities-to-the-runbook"></a>Schritt 2: Hinzufügen von Aktivitäten zum Runbook
 Mithilfe des Bibliotheksteuerelements auf der linken Seite des Editors können Sie Aktivitäten auswählen und Ihrem Runbook hinzufügen.  Wir fügen ein **Write-Output** -Cmdlet hinzu, um Text aus dem Runbook auszugeben.
 
 1. Klicken Sie im Bibliotheksteuerelement auf das Textfeld für die Suche, und geben Sie **Write-Output**ein.  Die Suchergebnisse werden darunter angezeigt. <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
@@ -61,7 +65,7 @@ Mithilfe des Bibliotheksteuerelements auf der linken Seite des Editors können S
 8. Geben Sie im Feld **Ausdruck** die Zeichenfolge *"Hello World"* ein, und klicken Sie dann zweimal auf **OK**, um zum Zeichenbereich zurückzukehren.<br> ![PowerShell Expression](media/automation-first-runbook-graphical/expression-hello-world.png)
 9. Klicken Sie auf **Speichern**, um das Runbook zu speichern.<br> ![Runbook speichern](media/automation-first-runbook-graphical/runbook-toolbar-save-revised20165.png)
 
-## <a name="step-3-test-the-runbook"></a>Schritt 3: Testen des Runbooks
+## <a name="step-3---test-the-runbook"></a>Schritt 3: Testen des Runbooks
 Bevor wir das Runbook für die Verwendung in der Produktionsumgebung veröffentlichen, möchten wir uns vergewissern, dass es ordnungsgemäß funktioniert.  Beim Testen eines Runbooks führen Sie die **Entwurfsversion** des Runbooks aus und sehen sich interaktiv die Ausgabe an.
 
 1. Klicken Sie auf **Testbereich**, um das Blatt „Test“ zu öffnen.<br> ![Testbereich](media/automation-first-runbook-graphical/runbook-toolbar-test-revised20165.png)
@@ -71,7 +75,7 @@ Bevor wir das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 4. Nach Abschluss des Runbookauftrags wird die Ausgabe angezeigt. In unserem Fall: *Hello World*.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 5. Schließen Sie das Testblatt, um zum Zeichenbereich zurückzukehren.
 
-## <a name="step-4-publish-and-start-the-runbook"></a>Schritt 4: Veröffentlichen und Starten des Runbooks
+## <a name="step-4---publish-and-start-the-runbook"></a>Schritt 4: Veröffentlichen und Starten des Runbooks
 Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müssen das Runbook veröffentlichen, um es in der Produktionsumgebung ausführen zu können.  Beim Veröffentlichen eines Runbooks wird die vorhandene veröffentlichte Version durch die Entwurfsversion überschrieben.  In unserem Fall ist noch keine veröffentlichte Version vorhanden, da wir das Runbook gerade erst erstellt haben.
 
 1. Klicken Sie auf **Veröffentlichen**, um das Runbook zu veröffentlichen, und bestätigen Sie den Vorgang mit **Ja**.<br> ![Veröffentlichen](media/automation-first-runbook-graphical/runbook-toolbar-publish-revised20166.png)
@@ -88,7 +92,7 @@ Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müs
 11. Klicken Sie auf **Aufträge** , um das Blatt „Aufträge“ für dieses Runbook zu öffnen.  Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier wird nur ein einzelner Auftrag aufgeführt, da wir den Auftrag bislang erst einmal ausgeführt haben.<br> ![Aufträge](media/automation-first-runbook-graphical/runbook-control-jobs.png)
 12. Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den wir uns beim Starten des Runbooks angesehen haben.  So können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
 
-## <a name="step-5-create-variable-assets"></a>Schritt 5: Erstellen variabler Ressourcen
+## <a name="step-5---create-variable-assets"></a>Schritt 5: Erstellen variabler Ressourcen
 Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Wir möchten damit Azure-Ressourcen verwalten.  Vor dem Konfigurieren des Runbooks für die Authentifizierung erstellen wir eine Variable zum Speichern der Abonnement-ID, auf die wir dann in Schritt 6 nach dem Einrichten der Authentifizierungsaktivität verweisen können.  Das Einfügen eines Verweises in den Abonnementkontext ermöglicht Ihnen die einfache Nutzung mehrerer Abonnements.  Kopieren Sie Ihre Abonnement-ID aus der Option „Abonnements“ (im Navigationsbereich), bevor Sie fortfahren.  
 
 1. Klicken Sie auf dem Blatt „Automation-Konten“ auf die Kachel **Ressourcen**, um das Blatt **Ressourcen** zu öffnen.
@@ -97,7 +101,7 @@ Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang is
 4. Geben Sie auf dem Blatt „Neue Variable“ im Feld **Name** die Zeichenfolge **AzureSubscriptionId** und im Feld **Wert** Ihre Abonnement-ID ein.  Behalten Sie unter **Typ** die Option *Zeichenfolge* sowie den Standardwert für **Verschlüsselung** bei.  
 5. Klicken Sie auf **Erstellen** , um die Variable zu erstellen.  
 
-## <a name="step-6-add-authentication-to-manage-azure-resources"></a>Schritt 6: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
+## <a name="step-6---add-authentication-to-manage-azure-resources"></a>Schritt 6: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
 Nachdem wir nun über eine Variable für unsere Abonnement-ID verfügen, können wir unser Runbook für die Authentifizierung mit den Anmeldeinformationen für das ausführende Konto konfigurieren, die unter [Voraussetzungen](#prerequisites)angegeben sind.  Hierzu fügen wir dem Zeichenbereich die **Ressource** für die Verbindung mit dem ausführenden Azure-Konto und das **Add-AzureRMAccount**-Cmdlet hinzu.  
 
 1. Klicken Sie auf dem Blatt „MyFirstRunbook“ auf **Bearbeiten**, um den grafischen Editor zu öffnen.<br> ![Runbook bearbeiten](media/automation-first-runbook-graphical/runbook-controls-edit-revised20165.png)
@@ -126,7 +130,7 @@ Nachdem wir nun über eine Variable für unsere Abonnement-ID verfügen, können
 
 Ihr Runbook sollte nun wie folgt aussehen:  <br>![Konfiguration der Runbook-Authentifizierung](media/automation-first-runbook-graphical/runbook-auth-config.png)
 
-## <a name="step-7-add-activity-to-start-a-virtual-machine"></a>Schritt 7: Hinzufügen einer Aktivität zum Starten eines virtuellen Computers
+## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>Schritt 7: Hinzufügen einer Aktivität zum Starten eines virtuellen Computers
 In diesem Schritt fügen wir eine Aktivität vom Typ **Start-AzureRmVM** hinzu, um einen virtuellen Computer zu starten.  Sie können einen beliebigen virtuellen Computer in Ihrem Azure-Abonnement auswählen. Wir werden den Namen vorerst innerhalb des Cmdlets hartcodieren.
 
 1. Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Start-AzureRm** ein.
@@ -140,7 +144,7 @@ In diesem Schritt fügen wir eine Aktivität vom Typ **Start-AzureRmVM** hinzu, 
 
 Ihr Runbook sollte nun wie folgt aussehen:  <br>![Konfiguration der Runbook-Authentifizierung](media/automation-first-runbook-graphical/runbook-startvm.png)
 
-## <a name="step-8-add-additional-input-parameters-to-the-runbook"></a>Schritt 8: Hinzufügen zusätzlicher Eingabeparameter für das Runbook
+## <a name="step-8---add-additional-input-parameters-to-the-runbook"></a>Schritt 8: Hinzufügen zusätzlicher Eingabeparameter für das Runbook
 Unser Runbook startet zwar nun den virtuellen Computer in der Ressourcengruppe, die wir im Cmdlet **Start-AzureRmVM** angegeben haben. Es wäre aber praktischer, wenn wir beim Start des Runbooks beides angeben könnten.  Zu diesem Zweck fügen wir dem Runbook nun Eingabeparameter hinzu.
 
 1. Öffnen Sie den grafischen Editor, indem Sie im Bereich **MyFirstRunbook** auf **Bearbeiten** klicken.
@@ -157,7 +161,7 @@ Unser Runbook startet zwar nun den virtuellen Computer in der Ressourcengruppe, 
 12. Klicken Sie auf **Starten** , um das Runbook zu starten.  Geben Sie **VMName** und **ResourceGroupName** für den virtuellen Computer ein, den Sie starten möchten.<br> ![Start Runbook](media/automation-first-runbook-graphical/runbook-start-inputparams.png)
 13. Vergewissern Sie sich nach Abschluss des Runbooks, dass der virtuelle Computer gestartet wurde.
 
-## <a name="step-9-create-a-conditional-link"></a>Schritt 9: Erstellen einer bedingten Verknüpfung
+## <a name="step-9---create-a-conditional-link"></a>Schritt 9: Erstellen einer bedingten Verknüpfung
 In diesem Schritt passen wir das Runbook so an, dass der virtuelle Computer nur gestartet wird, wenn er noch nicht gestartet wurde.  Zu diesem Zweck fügen wir dem Runbook ein Cmdlet vom Typ **Get-AzureRmVM** hinzu, das den Instanzebenenstatus des virtuellen Computers abruft. Anschließend fügen wir ein PowerShell-Workflow-Codemodul namens **Get Status** mit einem PowerShell-Codeausschnitt hinzu, mit dem ermittelt wird, ob der virtuelle Computer ausgeführt wird oder beendet ist.  Eine bedingte Verknüpfung des Moduls **Get Status** führt **Start-AzureRmVM** nur dann aus, wenn der aktuelle Ausführungszustand angibt, dass der virtuelle Computer beendet ist.  Schließlich geben wir mithilfe des PowerShell-Cmdlets „Write-Output“ noch eine Nachricht aus, die darüber informiert, ob der virtuelle Computer erfolgreich gestartet wurde.
 
 1. Öffnen Sie **MyFirstRunbook** im grafischen Editor.

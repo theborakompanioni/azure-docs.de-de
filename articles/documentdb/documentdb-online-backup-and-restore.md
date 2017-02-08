@@ -1,20 +1,24 @@
 ---
 title: Onlinesicherung und -wiederherstellung mit DocumentDB | Microsoft Docs
-description: Erfahren Sie mehr über das automatische Sichern und Wiederherstellen von NoSQL-Datenbanken mit Azure DocumentDB.
+description: "Erfahren Sie mehr über das automatische Sichern und Wiederherstellen von NoSQL-Datenbanken mit Azure DocumentDB."
 keywords: Sicherung und Wiederherstellung, Onlinesicherung
 services: documentdb
-documentationcenter: ''
+documentationcenter: 
 author: RahulPrasad16
 manager: jhubbard
 editor: monicar
-
+ms.assetid: 98eade4a-7ef4-4667-b167-6603ecd80b79
 ms.service: documentdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/23/2016
+ms.date: 01/04/2017
 ms.author: raprasa
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 23f6049bc0df133966911b2352b044cdbc777b36
+
 
 ---
 # <a name="automatic-online-backup-and-restore-with-documentdb"></a>Automatische Onlinesicherung und -wiederherstellung mit DocumentDB
@@ -33,7 +37,7 @@ Die folgende Abbildung veranschaulicht das hohe Maß an Redundanz dank DocumentD
 
 ![Hohes Maß an Redundanz mit DocumentDB](./media/documentdb-online-backup-and-restore/azure-documentdb-nosql-database-global-distribution.png)
 
-## <a name="full,-automatic,-online-backups"></a>Vollständige, automatische Onlinesicherungen
+## <a name="full-automatic-online-backups"></a>Vollständige, automatische Onlinesicherungen
 Huch, ich habe leider meine Sammlung bzw. Datenbank gelöscht! DocumentDB sorgt nicht nur dafür, dass Ihre Daten, sondern auch die Sicherungen Ihrer Daten überaus redundant und gegen regionale Katastrophen geschützt sind. Diese automatisierte Sicherungen werden derzeit ungefähr alle vier Stunden ausgeführt. 
 
 Die Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit Ihrer Datenbanken. DocumentDB erstellt die Sicherung im Hintergrund, ohne Ihre bereitgestellten Anforderungseinheiten zu beanspruchen bzw. die Leistung oder die Verfügbarkeit Ihrer NoSQL-Datenbank zu beeinträchtigen. 
@@ -55,6 +59,9 @@ Wie Sie die NoSQL-Datenbank in mehrere Rechenzentren replizieren, erfahren Sie u
 
 Zum Kontaktieren des Azure-Supports [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

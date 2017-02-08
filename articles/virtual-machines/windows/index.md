@@ -1,14 +1,13 @@
 ---
 layout: LandingPage
-description: "Hier erfahren Sie, wie Sie virtuelle Windows-Computer erstellen. Die Dokumentation unterstützt Sie beim Planen, Bereitstellen und Verwalten einer VM-Computerumgebung in der Cloud."
 translationtype: Human Translation
-ms.sourcegitcommit: 0970a23966dc099fe4d145ddc66f9a73c109e8a1
-ms.openlocfilehash: 1c56e72a39ff0ea47dcda600b61c937691c63dab
+ms.sourcegitcommit: cd8dfa8b436cd165b3438a1823a571feebb0f4f4
+ms.openlocfilehash: 0a2b4c08e5da4d9c16e12f33c5f1a3f9ae863498
 
 ---
-# <a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
+#<a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
 
-Hier erfahren Sie, wie Sie virtuelle Windows-Computer erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine VM-Computerumgebung in der Cloud planen, bereitstellen und verwalten.
+Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsgesteuerten, skalierbaren Computerressourcen, die von Azure angeboten werden. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit der der virtuelle Computer betrieben wird. Und Sie behalten die Kontrolle über das Konfigurieren, Patchen und Installieren der Software, die auf dem virtuellen Computer ausgeführt wird.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -159,6 +158,6 @@ Herunterladen der Dokumentation zu virtuellen Windows-Computern </div>
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

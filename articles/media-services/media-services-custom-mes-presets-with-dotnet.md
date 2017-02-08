@@ -1,12 +1,12 @@
 ---
-title: Erweiterte Codierung mit Media Encoder Standard | Microsoft Docs
-description: In diesem Thema wird erläutert, wie Sie die erweiterte Codierung durch Anpassen der Aufgabenvoreinstellungen von Media Encoder Standard ausführen. In diesem Thema wird die Verwendung des Media Services .NET SDK zum Erstellen einer Aufgabe und eines Auftrags für die Codierung erläutert. Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für den Codierungsauftrag angeben.
+title: Erweiterte Codierung mit Media Encoder Standard | Microsoft-Dokumentation
+description: "In diesem Thema wird erläutert, wie Sie die erweiterte Codierung durch Anpassen der Aufgabenvoreinstellungen von Media Encoder Standard ausführen. In diesem Thema wird die Verwendung des Media Services .NET SDK zum Erstellen einer Aufgabe und eines Auftrags für die Codierung erläutert. Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für den Codierungsauftrag angeben."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e85bc8a1e9193474fa3c9ef3f19ead25f314ecac
+
 
 ---
 # <a name="advanced-encoding-with-media-encoder-standard"></a>Erweiterte Codierung mit Media Encoder-Standard
@@ -29,7 +33,7 @@ Die benutzerdefinierten Voreinstellungen, die die folgenden Codierungsaufgaben a
 * [Deaktivieren des automatischen Deinterlacings](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 * [Nur Audio-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md#audio_only)
 
-## <a name="<a-id="encoding_with_dotnet"></a>encoding-with-media-services-.net-sdk"></a><a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
+## <a name="a-idencodingwithdotnetaencoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
 
 * Erstellen eines Codierungsauftrags.
@@ -230,7 +234,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
         }
 
 
-## <a name="<a-id="thumbnails"></a>generate-thumbnails"></a><a id="thumbnails"></a>Generieren von Miniaturansichten
+## <a name="a-idthumbnailsagenerate-thumbnails"></a><a id="thumbnails"></a>Generieren von Miniaturansichten
 In diesem Abschnitt erfahren Sie, wie Sie eine Voreinstellung anpassen, die Miniaturansichten generiert. Die unten definierte Voreinstellung enthält Informationen zum Codieren Ihrer Datei sowie die erforderlichen Informationen zum Generieren von Miniaturansichten. Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und Code hinzufügen, mit dem Miniaturansichten generiert werden.  
 
 > [!NOTE]
@@ -242,7 +246,7 @@ Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/libra
 
 Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-custom-mes-presets-with-dotnet.md#considerations) .
 
-### <a name="<a-id="json"></a>json-preset"></a><a id="json"></a>JSON-Voreinstellung
+### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Codecs": [
@@ -342,7 +346,7 @@ Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-custom-mes-pres
     }
 
 
-### <a name="<a-id="xml"></a>xml-preset"></a><a id="xml"></a>XML-Voreinstellung
+### <a name="a-idxmlaxml-preset"></a><a id="xml"></a>XML-Voreinstellung
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -421,22 +425,22 @@ Es gelten die folgenden Bedingungen:
 * Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 * Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf. Diese können folgendermaßen interpretiert werden:
   
-  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z. B. "Start": "120",
-  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z. B. "Start": "15%" ODER
+  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z. B. "Start": "120",
+  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z. B. "Start": "15%" ODER
   * Zeitstempel bei Ausdrücken im HH:MM:SS...- Format. Beispiel: "Start" : "00:01:00"
     
     Sie können die Formate nach Belieben mischen.
     
-    „Start“ unterstützt darüber hinaus auch das spezielle Makro „{Best}“, das versucht, den ersten „interessanten“ Frame des Inhalts zu ermitteln. (HINWEIS: „Step“ und „Range“ werden ignoriert, wenn „Start“ auf „{Best}“ festgelegt ist.)
+    "Start" unterstützt darüber hinaus auch das spezielle Makro "{Best}", das versucht, den ersten "interessanten" Frame des Inhalts zu ermitteln. (HINWEIS: "Step" und "Range" werden ignoriert, wenn "Start" auf "{Best}" festgelegt ist.)
   * Standardwerte: Start:{Best}
 * Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Wenn vorhanden, ordnet MES "JpgVideo" "JpgFormat" zu usw. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
-## <a name="<a-id="trim_video"></a>trim-a-video-(clipping)"></a><a id="trim_video"></a>Kürzen eines Videos (Clipping)
+## <a name="a-idtrimvideoatrim-a-video-clipping"></a><a id="trim_video"></a>Kürzen eines Videos (Clipping)
 Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Medienobjekts verwendet werden, das aus einem Livedatenstrom erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie in [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources** -Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. Beachten Sie, dass **Sources** oben im Schema platziert werden muss. 
+Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources** -Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. Beachten Sie, dass **Sources** oben im Schema platziert werden muss. 
 
-### <a name="<a-id="json"></a>json-preset"></a><a id="json"></a>JSON-Voreinstellung
+### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Sources": [
@@ -673,12 +677,12 @@ Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/libr
       </Outputs>
     </Preset>
 
-## <a name="<a-id="overlay"></a>create-an-overlay"></a><a id="overlay"></a>Erstellen einer Überlagerung
+## <a name="a-idoverlayacreate-an-overlay"></a><a id="overlay"></a>Erstellen einer Überlagerung
 Media Encoder Standard ermöglicht die Überlagerung eines Bildes mit einem vorhandenen Video. Derzeit werden die folgenden Formate unterstützt: png, jpg, gif und bmp. Die unten definierte Voreinstellung ist ein einfaches Beispiel einer Videoüberlagerung.
 
 Zusätzlich zur Definition einer Voreinstellungsdatei müssen Sie Media Services darüber informieren, welche Datei im Asset das Überlagerungsbild und welche Datei das Quellvideo darstellt, das mit dem Bild überlagert werden soll. Die Videodatei muss die **primäre** Datei sein. 
 
-Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z.B. die darauf folgende Voreinstellung) zum Erstellen des Codierungstasks. 
+Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z.B. die darauf folgende Voreinstellung) zum Erstellen des Codierungstasks. 
 
 > [!NOTE]
 > Aktuelle Einschränkungen:
@@ -827,7 +831,7 @@ Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder*
       </Outputs>
     </Preset>
 
-## <a name="<a-id="silent_audio"></a>insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
+## <a name="a-idsilentaudioainsert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
 Wenn Sie eine Eingabe an den Encoder senden, die keine Audiodaten, sondern nur Videodaten enthält, besteht das Ausgabeasset standardmäßig nur aus Dateien mit Videodaten. Einige Player können derartige Ausgabedatenströme möglicherweise nicht verarbeiten. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine stille Audiospur hinzuzufügen.
 
 Um zu erzwingen, dass der Encoder ein Asset erstellt, das bei einer Eingabe ohne Audio eine stille Audiospur enthält, geben Sie den Wert „InsertSilenceIfNoAudio“ an.
@@ -850,7 +854,7 @@ Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx)dokumen
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a name="<a-id="deinterlacing"></a>disable-auto-de-interlacing"></a><a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
+## <a name="a-iddeinterlacingadisable-auto-de-interlacing"></a><a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
 Kunden müssen nichts tun, wenn sie wünschen, dass das Interlacing der die Interlace-Inhalte automatisch aufgehoben wird. Bei Aktivierung des automatischen De-Interlacings (Standard) übernimmt MWS die automatische Erkennung von Frames mit Zeilensprung und hebt das Interlacing nur für Frames auf, die als Interlaced markiert sind.
 
 Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedoch nicht empfohlen.
@@ -878,7 +882,7 @@ Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedo
     </Sources>
 
 
-## <a name="<a-id="audio_only"></a>audio-only-presets"></a><a id="audio_only"></a>Nur Audio-Voreinstellungen
+## <a name="a-idaudioonlyaaudio-only-presets"></a><a id="audio_only"></a>Nur Audio-Voreinstellungen
 Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio und AAC Good Quality Audio.
 
 ### <a name="aac-audio"></a>AAC Audio
@@ -934,6 +938,9 @@ Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio 
 ## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

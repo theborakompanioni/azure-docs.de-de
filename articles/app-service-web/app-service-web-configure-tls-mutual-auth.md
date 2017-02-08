@@ -1,12 +1,12 @@
 ---
-title: Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
-description: Erfahren Sie, wie Sie Ihre Webanwendung für die Clientzertifikatauthentifizierung für TLS konfigurieren.
+title: "Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App"
+description: "Erfahren Sie, wie Sie Ihre Webanwendung für die Clientzertifikatauthentifizierung für TLS konfigurieren."
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: naziml
 manager: wpickett
 editor: jimbe
-
+ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: db2f48b248e2232f913a99b4ffbc0d18b77407e8
+
 
 ---
-# Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
-## Übersicht
+# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
+## <a name="overview"></a>Übersicht
 Sie können den Zugriff auf Ihre Azure-Web-App einschränken, indem Sie verschiedene Arten von Authentifizierung für sie aktivieren. Eine Möglichkeit hierzu ist die Authentifizierung mithilfe eines Clientzertifikats, wenn die Anforderung über TLS/SSL erfolgt. Dieser Mechanismus wird gegenseitige TLS-Authentifizierung oder Clientzertifikatauthentifizierung genannt. In diesem Artikel wird das Einrichten Ihrer Web-App für die Clientzertifikatauthentifizierung ausführlich beschrieben.
 
 > **Hinweis:** Wenn Sie über HTTP und nicht HTTPS auf Ihre Website zugreifen, erhalten Sie kein Clientzertifikat. Wenn Ihre Anwendung also Clientzertifikate erfordert, sollten Sie keine Anfragen an Ihre Anwendung über HTTP zulassen.
@@ -26,7 +30,7 @@ Sie können den Zugriff auf Ihre Azure-Web-App einschränken, indem Sie verschie
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## Konfigurieren einer Web-App für die Clientzertifikatauthentifizierung
+## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurieren einer Web-App für die Clientzertifikatauthentifizierung 
 Zum Einrichten Ihrer Web-App für das Anfordern von Clientzertifikaten müssen Sie Ihrer Web-App die Website-Einstellung "clientCertEnabled" hinzufügen und diese auf "true" festlegen. Diese Einstellung ist derzeit nicht auf der Verwaltungsoberfläche im Portal verfügbar, weshalb Sie dazu die REST-API verwenden müssen.
 
 Sie können das Tool [ARMClient](https://github.com/projectkudu/ARMClient) zum Vereinfachen des REST-API-Aufrufs verwenden. Nachdem Sie sich mit dem Tool angemeldet haben, müssen Sie den folgenden Befehl aufrufen:
@@ -35,7 +39,9 @@ Sie können das Tool [ARMClient](https://github.com/projectkudu/ARMClient) zum V
 
 Ersetzen Sie alles in {} durch Informationen für Ihre Web-App, und erstellen Sie eine Datei namens "enableclientcert.json" mit dem folgenden JSON-Inhalt:
 
-> { "location": "Speicherort meiner Web-App", "properties": { "clientCertEnabled": true } }
+> { "location": "My Web App Location",   
+> "properties": {  
+> "clientCertEnabled": true } }  
 > 
 > 
 
@@ -45,10 +51,10 @@ Passen Sie den Wert von "location" an die Region Ihrer Web-App an, z. B. USA, No
 > 
 > 
 
-## Zugreifen auf das Clientzertifikat in Web-Apps
-Wenn Sie ASP.NET verwenden und Ihre App für die Authentifizierung mit Clientzertifikaten konfigurieren, ist das Zertifikat über die **HttpRequest.ClientCertificate**-Eigenschaft verfügbar. Für andere Anwendungsstapel steht das Clientzertifikat Ihrer App über einen mit Base64 codierten Wert im Anforderungsheader „X-ARR-ClientCert“ zur Verfügung. Ihre Anwendung kann anhand dieses Werts ein Zertifikat erstellen und es für Authentifizierungs- und Autorisierungszwecke in Ihrer Anwendung verwenden.
+## <a name="accessing-the-client-certificate-from-your-web-app"></a>Zugreifen auf das Clientzertifikat in Web-Apps
+Wenn Sie ASP.NET verwenden und Ihre App für die Authentifizierung mit Clientzertifikaten konfigurieren, ist das Zertifikat über die **HttpRequest.ClientCertificate** -Eigenschaft verfügbar. Für andere Anwendungsstapel steht das Clientzertifikat Ihrer App über einen mit Base64 codierten Wert im Anforderungsheader „X-ARR-ClientCert“ zur Verfügung. Ihre Anwendung kann anhand dieses Werts ein Zertifikat erstellen und es für Authentifizierungs- und Autorisierungszwecke in Ihrer Anwendung verwenden.
 
-## Besondere Aspekte bei der Zertifikatüberprüfung
+## <a name="special-considerations-for-certificate-validation"></a>Besondere Aspekte bei der Zertifikatüberprüfung
 Das Clientzertifikat, das an die Anwendung gesendet wird, durchläuft keinerlei Überprüfung seitens der Azure Web Apps-Plattform. Für das Überprüfen dieses Zertifikats ist die Web-App zuständig. Hier ist ASP.NET-Beispielcode, mit dem die Zertifikateigenschaften zum Zweck der Authentifizierung überprüft werden.
 
     using System;
@@ -186,4 +192,8 @@ Das Clientzertifikat, das an die Anwendung gesendet wird, durchläuft keinerlei 
         }
     }
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

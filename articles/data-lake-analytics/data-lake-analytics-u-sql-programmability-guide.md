@@ -1288,7 +1288,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 ### <a name="udts-from-built-in-types"></a>UDTs aus integrierten Typen
 In Kürze verfügbar
 
-## <a name="user-defined-aggregates-udagg"></a>Benutzerdefinierte Aggregate – (UDAGG, User-Defined Aggregates)
+## <a name="user-defined-aggregates--udagg"></a>Benutzerdefinierte Aggregate – (UDAGG, User-Defined Aggregates)
 Benutzerdefinierte Aggregate sind alle Funktionen im Zusammenhang mit Aggregation, die nicht standardmäßig in U-SQL verfügbar sind. Das Beispiel kann ein Aggregat zur Durchführung einer benutzerdefinierten mathematischen Berechnung, von Zeichenfolgenverkettungen oder Bearbeitungen mit Zeichenfolgen usw. sein.
 
 Die Basisklassendefinition eines benutzerdefinierten Aggregats ist:
@@ -1424,7 +1424,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 In diesem Anwendungsfall verketten wir Klassen-GUIDs für den bestimmten Benutzer.
 
-## <a name="user-defined-objects-udo"></a>Benutzerdefinierte Objekte – (UDO, User-Defined Objects)
+## <a name="user-defined-objects--udo"></a>Benutzerdefinierte Objekte – (UDO, User-Defined Objects)
 U-SQL bietet eine Möglichkeit zum Definieren benutzerdefinierter Programmierbarkeitsobjekte, die als benutzerdefinierte Objekte oder UDOs bezeichnet werden.
 
 Liste von UDOs in U-SQL

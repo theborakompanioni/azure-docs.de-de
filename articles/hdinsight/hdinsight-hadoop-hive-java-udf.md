@@ -1,12 +1,12 @@
 ---
-title: Verwenden einer benutzerdefinierte Java-Funktion (UDF) mit Hive in HDInsight | Microsoft Docs
+title: Verwenden einer benutzerdefinierten Java-Funktion (UDF) mit Hive in HDInsight | Microsoft-Dokumentation
 description: Informationen zum Erstellen und Verwenden einer benutzerdefinierten Java-Funktion (UDF) in Hive in HDInsight.
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
 ms.devlang: java
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
+
 
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion in HDInsight
@@ -46,7 +50,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
    > 
    > 
    
-    Dadurch wird ein neues Verzeichnis namens __exampleudf__erstellt, welches das Maven-Projekt enthält.
+    Dadurch wird ein neues Verzeichnis namens **exampleudf**erstellt, welches das Maven-Projekt enthält.
 2. Nachdem das Projekt erstellt wurde, löschen Sie das Verzeichnis **exampleudf/src/test**, das als Teil des Projekts erstellt wurde. Es wird in diesem Beispiel nicht verwendet.
 3. Öffnen Sie die Datei **exampleudf/pom.xml**, und ersetzen Sie den vorhandenen Eintrag `<dependencies>` durch den folgenden Eintrag:
    
@@ -155,7 +159,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
    
         mvn compile package
    
-    Dadurch wird die UDF in __exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar__erstellt und gepackt.
+    Dadurch wird die UDF in **exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar**erstellt und gepackt.
 2. Kopieren Sie die Datei mit dem Befehl `scp` in den HDInsight-Cluster.
    
         scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
@@ -209,6 +213,9 @@ Andere Möglichkeiten zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive
 
 Weitere Informationen zu benutzerdefinierten Hive-Funktionen finden Sie im Abschnitt [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Hive-Operatoren und benutzerdefinierte Funktionen) des Hive-Wikis unter apache.org.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cbed591d15daf8060f13d0e9b009d65c85d256aa
-ms.openlocfilehash: ad8666b46a5b404ab1caf85c32549a1a01de3b73
+ms.sourcegitcommit: 6cc30ace0b57555ea2b5815906d3e6a4f79d8fce
+ms.openlocfilehash: 94bf7729ceb55eaed5efc0290c1a34227888211f
 
 
 ---
 # <a name="configuring-service-map-solution-in-operations-management-suite-oms"></a>Konfigurieren von Service Map in der Operations Management Suite (OMS)
-![Symbol „Alert Management“](media/oms-service-map/icon.png) Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen.  Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
+Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen.  Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
 
 In diesem Artikel werden das Konfigurieren von Service Map und das Onboarding von Agents beschrieben.  Weitere Informationen zum Verwenden von Service Map finden Sie unter [Using Service Map solution in Operations Management Suite (OMS)](operations-management-suite-service-map.md) (Verwenden von Service Map in der Operations Management Suite [OMS]).
 
@@ -93,27 +93,27 @@ Um den Dependency-Agent herunterzuladen, klicken Sie in der Kachel **Service Map
 #### <a name="microsoft-windows"></a>Microsoft Windows
 Zum Installieren oder Deinstallieren des Agent sind Administratorrechte erforderlich.
 
-Der Dependency-Agent wird auf Windows-Computern mithilfe von „Dependency-Agent-Windows.exe“ installiert. Wenn Sie diese ausführbare Datei ohne Optionen ausführen, wird ein Assistent gestartet, mit dem Sie die Installation interaktiv ausführen können.  
+Der Dependency-Agent wird auf Windows-Computern mithilfe von „InstallDependencyAgent-Windows.exe“ installiert. Wenn Sie diese ausführbare Datei ohne Optionen ausführen, wird ein Assistent gestartet, mit dem Sie die Installation interaktiv ausführen können.  
 
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Windows-Computer zu installieren:
 
 1.  Stellen Sie mithilfe der Anweisungen zum direkten Verbinden von Computern mit OMS sicher, dass der OMS-Agent installiert ist.
-2.  Laden Sie den Windows-Agent herunter, und starten Sie ihn mit dem folgenden Befehl: <br>*Dependency-Agent-Windows.exe*
+2.  Laden Sie den Windows-Agent herunter, und starten Sie ihn mit dem folgenden Befehl: <br>*InstallDependencyAgent-Windows.exe*
 3.  Folgen Sie den Anweisungen des Assistenten, um den Assistenten zu installieren.
 4.  Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis *C:\Programme\Microsoft Dependency Agent\logs*. 
 
 Der Dependency-Agent für Windows kann von einem Administrator über die Systemsteuerung deinstalliert werden.
 
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 Zum Installieren oder Konfigurieren des Agent ist Root-Zugriff erforderlich.
 
-Der Dependency-Agent wird auf Linux-Computern mit „Dependency-Agent-Linux64.bin“ installiert, einem Shellskript mit einer selbstextrahierenden Binärdatei. Sie können die Datei mit „sh“ ausführen oder der Datei selbst Ausführungsberechtigungen hinzufügen.
+Der Dependency-Agent wird auf Linux-Computern mit „InstallDependencyAgent-Linux64.bin“ installiert, einem Shellskript mit einer selbstextrahierenden Binärdatei. Sie können die Datei mit „sh“ ausführen oder der Datei selbst Ausführungsberechtigungen hinzufügen.
  
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Linux-Computer zu installieren:
 
 1.  Stellen Sie mithilfe der Anweisungen unter [Verbinden von Linux-Computern mit Log Analytics  ](https://technet.microsoft.com/library/mt622052.aspx) sicher, dass der OMS-Agent installiert ist. Der OMS-Agent muss vor dem Dependency-Agent für Linux installiert werden.
-2.  Installieren Sie mit Root-Berechtigungen den Dependency-Agent für Linux mit dem folgenden Befehl:<br>*sh Dependency-Agent-Linux64.bin*.
+2.  Installieren Sie mit Root-Berechtigungen den Dependency-Agent für Linux mit dem folgenden Befehl:<br>*sh InstallDependencyAgent-Linux64.bin*.
 3.  Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Linux-Agents lautet das Protokollverzeichnis */var/opt/microsoft/dependency-agent/log*.
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>Deinstallieren des Dependency-Agent für Linux
@@ -128,7 +128,7 @@ Der vorherige Abschnitt enthält Hinweise zum Installieren des Dependency-Agent 
 #### <a name="windows"></a>Windows
 Verwenden Sie Optionen aus der folgenden Tabelle, um über die Befehlszeile zu installieren. Um eine Liste der Installationsflags anzuzeigen, führen Sie das Installationsprogramm wie folgt mit dem Flag „/?“ aus.
 
-    Dependency-Agent-Windows.exe /?
+    InstallDependencyAgent-Windows.exe /?
 
 | Flag | Beschreibung |
 |:--|:--|
@@ -137,10 +137,10 @@ Verwenden Sie Optionen aus der folgenden Tabelle, um über die Befehlszeile zu i
 Der Standardspeicherort von Dateien des Dependency-Agent für Windows lautet *C:\Programme\Microsoft Dependency Agent*.
 
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 Verwenden Sie Optionen aus der folgenden Tabelle zur Installation. Um eine Liste der Installationsflags anzuzeigen, führen Sie das Installationsprogramm wie folgt mit dem Flag „-help“ aus.
 
-    Dependency-Agent-Linux64.bin -help
+    InstallDependencyAgent-Linux64.bin -help
 
 | Beschreibung des Flags
 |:--|:--|
@@ -167,7 +167,7 @@ Wenn bei Service Map Probleme auftreten, können Sie anhand der folgenden Angabe
 #### <a name="microsoft-dependency-agent"></a>Microsoft Dependency-Agent
 Um Problembehandlungsdaten aus dem Dependency-Agent zu generieren, öffnen Sie als Administrator eine Eingabeaufforderung, und führen Sie mit dem folgenden Befehl das Skript „CollectDependencyAgentData.vbs“ aus.  Sie können das Flag „--help“ hinzufügen, um zusätzliche Optionen anzuzeigen.
 
-    cd C:\Program Files\Bluestripe\Collector\scripts
+    cd C:\Program Files\Microsoft Dependency Agent\scripts
     cscript CollectDependencyData.vbs
 
 Das Supportdatenpaket wird im Verzeichnis „%USERPROFILE%“ für den aktuellen Benutzer gespeichert.  Mit der Option „--file <filename>“ können Sie das Paket in einem anderen Verzeichnis speichern.
@@ -325,6 +325,6 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

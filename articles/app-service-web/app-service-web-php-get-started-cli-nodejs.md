@@ -1,5 +1,5 @@
 ---
-title: Erstellen, Konfigurieren und Bereitstellen einer PHP-Web-App in Azure | Microsoft Docs
+title: Erstellen, Konfigurieren und Bereitstellen einer PHP-Web-App in Azure | Microsoft-Dokumentation
 description: "In diesem Tutorial wird gezeigt, wie Sie eine PHP-Web-App (Laravel) in Azure App Service ausführen. Es wird beschrieben, wie Sie Azure App Service so konfigurieren, dass die Anforderungen des von Ihnen gewählten PHP-Frameworks erfüllt werden."
 services: app-service\web
 documentationcenter: php
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 8cdbc6e5fccfce56b6c33720e3d442821d26fbd4
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 4e1c3e8fa45f4ef4ee7df7e6bc9ea4aa4fe1b1aa
 
 
 ---
@@ -53,7 +53,7 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Sehen Sie sich eine Web-App in Aktion an: [Probieren Sie App Service gleich aus](http://go.microsoft.com/fwlink/?LinkId=523751), und erstellen Sie eine kurzzeitige Start-App – ohne Kreditkarte oder weitere Verpflichtungen.
+> Sehen Sie sich eine Web-App in Aktion an: [Probieren Sie App Service gleich aus](https://azure.microsoft.com/try/app-service/), und erstellen Sie eine kurzzeitige Start-App – ohne Kreditkarte oder weitere Verpflichtungen.
 > 
 > 
 
@@ -254,6 +254,6 @@ Informieren Sie sich darüber, wie Sie Ihrer App Daten hinzufügen, indem Sie [i
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

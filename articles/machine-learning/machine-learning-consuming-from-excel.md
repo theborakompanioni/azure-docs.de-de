@@ -2,29 +2,33 @@
 title: Verwenden eines Machine Learning-Webdiensts aus Excel | Microsoft Docs
 description: Verwenden eines Azure Machine Learning-Webdiensts aus Excel
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: tedway
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 3f3cdd2f-1816-487e-ab78-530e01e9788f
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2016
+ms.date: 11/15/2016
 ms.author: tedway
+translationtype: Human Translation
+ms.sourcegitcommit: 2725357b2effe7c75d7a9e1462568706497757df
+ms.openlocfilehash: b1bc047d5361a4e2c6e9c946f470037fa3c45b3c
+
 
 ---
-# Verwenden eines Azure Machine Learning-Webdiensts aus Excel
+# <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>Verwenden eines Azure Machine Learning-Webdiensts aus Excel
  Mit Azure Machine Learning Studio können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
 
 Wenn Sie Excel 2013 (oder höher) oder Excel Online verwenden, empfehlen wir die Verwendung des [Excel-Add-Ins](machine-learning-excel-add-in-for-web-services.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Schritte
-Veröffentlichen eines Webdiensts. Auf [dieser Seite](machine-learning-walkthrough-5-publish-web-service.md) wird dies erläutert. Die Excel-Arbeitsmappenfunktion wird derzeit nur für Antwort-/Anfrage-Dienste unterstützt, die eine einzelne Ausgabe aufweisen (d. h. eine einzelne Bewertungsbezeichnung).
+## <a name="steps"></a>Schritte
+Veröffentlichen eines Webdiensts. Auf [dieser Seite](machine-learning-walkthrough-5-publish-web-service.md) wird dies erläutert. Die Excel-Arbeitsmappenfunktion wird derzeit nur für Antwort-/Anfrage-Dienste unterstützt, die eine einzelne Ausgabe aufweisen (d. h. eine einzelne Bewertungsbezeichnung). 
 
 Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der linken Seite in Studio und wählen Sie den aus Excel zu verwendenden Webdienst aus.
 
@@ -37,7 +41,7 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 
 **Neuer Webdienst**
 
-1. Wählen Sie im Azure Machine Learning Web Service-Portal **Consume** aus.
+1. Wählen Sie im Azure Machine Learning Web Service-Portal **Consume**aus.
 2. Klicken Sie auf der Seite „Consume“ im Abschnitt **Web service consumption options** auf das Excel-Symbol.
 
 **Verwenden der Arbeitsmappe**
@@ -49,20 +53,20 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 3. Es wird eine Sicherheitswarnung angezeigt. Klicken Sie auf die Schaltfläche **Inhalt aktivieren** zum Ausführen von Makros im Arbeitsblatt.
    
     ![][3]
-4. Sobald Makros aktiviert sind, wird eine Tabelle generiert. Spalten in Blau sind als Eingabe für den RRS-Webdienst oder als **PARAMETER** erforderlich. Beachten Sie die Ausgaben des RRS-Diensts **PREDICTED VALUES** in Grün. Wenn alle Spalten für eine bestimmte Zeile gefüllt wurden, ruft die Arbeitsmappe automatisch die Bewertungs-API auf und zeigt die bewerteten Ergebnisse an.
+4. Sobald Makros aktiviert sind, wird eine Tabelle generiert. Spalten in Blau sind als Eingabe für den RRS-Webdienst oder als **PARAMETER**erforderlich. Beachten Sie die Ausgaben des RRS-Diensts **PREDICTED VALUES** in Grün. Wenn alle Spalten für eine bestimmte Zeile gefüllt wurden, ruft die Arbeitsmappe automatisch die Bewertungs-API auf und zeigt die bewerteten Ergebnisse an.
    
     ![][4]
 5. Um mehr als eine Zeile zu bewerten, geben Sie in der zweiten Zeile Daten ein. Daraufhin werden die Vorhersagewerte erzeugt. Sie können auch gleichzeitig mehrere Zeilen einfügen.
 
-Sie können beliebige Excel-Funktionen (Diagramme, Power Map, bedingte Formatierungen usw.) mit den Vorhersagewerten verwenden, um die Daten zu visualisieren.
+Sie können beliebige Excel-Funktionen (Diagramme, Power Map, bedingte Formatierungen usw.) mit den Vorhersagewerten verwenden, um die Daten zu visualisieren.    
 
-## Freigeben Ihrer Arbeitsmappe
+## <a name="sharing-your-workbook"></a>Freigeben Ihrer Arbeitsmappe
 Damit die Makros funktionieren, muss der API-Schlüssel Teil des Arbeitsblatts sein. Das bedeutet, dass Sie die Arbeitsmappe nur für Entitäten und Personen freigeben sollten, denen Sie vertrauen.
 
-## Automatische Aktualisierungen
+## <a name="automatic-updates"></a>Automatische Aktualisierungen
 RRS-Aufrufe werden in diesen beiden Situationen ausgeführt:
 
-1. Beim ersten Mal, wenn in einer Zeile in jedem **PARAMETER** Inhalte vorhanden sind.
+1. Beim ersten Mal, wenn in einer Zeile in jedem **PARAMETER**
 2. Jedes Mal, wenn einer der **PARAMETER** in einer Zeile, in der alle **PARAMETER** vorhanden sind, geändert wird.
 
 [1]: ./media/machine-learning-consuming-from-excel/excellink.png
@@ -70,4 +74,8 @@ RRS-Aufrufe werden in diesen beiden Situationen ausgeführt:
 [3]: ./media/machine-learning-consuming-from-excel/enablecontent.png
 [4]: ./media/machine-learning-consuming-from-excel/sampletable.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

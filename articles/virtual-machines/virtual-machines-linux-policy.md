@@ -2,12 +2,12 @@
 title: Anwenden von Richtlinien auf virtuelle Computer des Azure Resource Manager | Microsoft Docs
 description: 'Anwenden einer Richtlinie auf einen virtuellen Linux-Computer des Azure Resource Manager '
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: singhkays
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 71036b1aa9915750992d9d671af6b1023def41c3
+
 
 ---
-# Verwenden Sie für virtuelle Azure Resource Manager-Computer diese PowerShell:
+# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Verwenden Sie für virtuelle Azure Resource Manager-Computer diese PowerShell:
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
 
 Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
@@ -27,13 +31,14 @@ Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
 3. Erstellen der Richtlinie
 4. Anwenden der Richtlinie
 
-## Grundlagen zu Azure Resource Manager-Richtlinien
+## <a name="azure-resource-manager-policy-101"></a>Grundlagen zu Azure Resource Manager-Richtlinien
 Für die ersten Schritte mit Azure Resource Manager-Richtlinien empfehlen wir zunächst, den folgenden Artikel zu lesen. Danach können Sie mit den Schritten in diesem Artikel fortfahren. Der unten stehende Artikel beschreibt die grundlegende Definition und die Struktur einer Richtlinie sowie die Art und Weise, wie Richtlinien ausgewertet werden. Darüber hinaus enthält er verschiedene Beispiele für Richtliniendefinitionen.
 
 * [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](../resource-manager-policy.md)
 
-## Definieren einer Richtlinie für den virtuellen Computer
-Ein allgemeines Szenario für ein Unternehmen besteht z. B. darin, es den Benutzern nur über bestimmte Betriebssysteme zu ermöglichen, die auf Kompatibilität mit einer LOB-Anwendung getestet wurden, virtuelle Computer zu erstellen. Mithilfe einer Azure Resource Manager-Richtlinie kann diese Aufgabe in wenigen Schritten durchgeführt werden. In dieser Beispielrichtlinie lassen wir nur das Erstellen von virtuellen Ubuntu 14.04.2-LTS-Computern zu. Die Richtliniendefinition sieht wie folgt aus:
+## <a name="define-a-policy-for-your-virtual-machine"></a>Definieren einer Richtlinie für den virtuellen Computer
+Ein allgemeines Szenario für ein Unternehmen besteht z. B. darin, es den Benutzern nur über bestimmte Betriebssysteme zu ermöglichen, die auf Kompatibilität mit einer LOB-Anwendung getestet wurden, virtuelle Computer zu erstellen. Mithilfe einer Azure Resource Manager-Richtlinie kann diese Aufgabe in wenigen Schritten durchgeführt werden.
+In dieser Beispielrichtlinie lassen wir nur das Erstellen von virtuellen Ubuntu 14.04.2-LTS-Computern zu. Die Richtliniendefinition sieht wie folgt aus:
 
 ```
 "if": {
@@ -76,10 +81,8 @@ Die oben beschriebene Richtlinie kann problemlos für ein Szenario geändert wer
 }
 ```
 
-#### Eigenschaftenfelder für virtuelle Computer
-In der folgenden Tabelle werden die Eigenschaften des virtuellen Computers beschrieben, die als Felder in der Richtliniendefinition verwendet werden können. Weitere Informationen zu Richtlinienfeldern finden Sie im folgenden Artikel:
-
-* [Felder und Quellen](../resource-manager-policy.md#fields-and-sources)
+#### <a name="virtual-machine-property-fields"></a>Eigenschaftenfelder für virtuelle Computer
+In der folgenden Tabelle werden die Eigenschaften des virtuellen Computers beschrieben, die als Felder in der Richtliniendefinition verwendet werden können. Weitere Informationen zu Richtlinienfeldern finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](../azure-resource-manager/resource-manager-policy.md#conditions).
 
 | Feldname | Beschreibung |
 | --- | --- |
@@ -88,14 +91,14 @@ In der folgenden Tabelle werden die Eigenschaften des virtuellen Computers besch
 | imageSku |Gibt die SKU für das ausgewählte Angebot an. |
 | imageVersion |Gibt die Imageversion für die ausgewählte SKU an. |
 
-## Erstellen der Richtlinie
-Eine Richtlinie kann problemlos über die REST-API direkt oder über PowerShell-Cmdlets erstellt werden. Informationen zum Erstellen der Richtlinie finden Sie im folgenden Artikel:
+## <a name="create-the-policy"></a>Erstellen der Richtlinie
+Eine Richtlinie kann problemlos über die REST-API direkt oder über PowerShell-Cmdlets erstellt werden. Informieren Sie sich weiter über das [Erstellen und Zuweisen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy).
 
-* [Erstellen einer Richtlinie](../resource-manager-policy.md#creating-a-policy)
+## <a name="apply-the-policy"></a>Anwenden der Richtlinie
+Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, eine Ressourcengruppe oder die Ressource handeln. Informieren Sie sich weiter über das [Erstellen und Zuweisen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy).
 
-## Anwenden der Richtlinie
-Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, eine Ressourcengruppe oder die Ressource handeln. Informationen zum Anwenden der Richtlinie finden Sie im folgenden Artikel:
 
-* [Erstellen einer Richtlinie](../resource-manager-policy.md#applying-a-policy)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--HONumber=Dec16_HO2-->
+
+

@@ -15,13 +15,15 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 033fd0cb3512a22bb05488fe83aa2ffa9d81def3
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: d0f7412571da30febff1ec8ffd92ea52b3c0a1e3
 
 
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Kontinuierliche Bereitstellung in Azure App Service
 In diesem Tutorial erfahren Sie, wie Sie einen Workflow für die kontinuierliche Bereitstellung für Ihre [Azure App Service]-App konfigurieren. Die Integration von App Service in BitBucket, GitHub und Visual Studio Team Services (VSTS) ermöglicht einen Workflow für die kontinuierliche Bereitstellung. Hierbei werden die neuesten Updates aus Ihrem Projekt, das in einem der genannten Dienste veröffentlicht ist, per Pull nach Azure übertragen. Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden.
+
+Informationen zum manuellen Konfigurieren der kontinuierlichen Bereitstellung in einem Cloudrepository, das nicht im Azure-Portal aufgeführt ist (etwa [GitLab](https://gitlab.com/)), finden Sie unter [Setting up continuous deployment using manual steps](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps) (Manuelles Einrichten der kontinuierlichen Bereitstellung).
 
 ## <a name="a-nameoverviewaenable-continuous-deployment"></a><a name="overview"></a>Aktivieren der kontinuierlichen Bereitstellung
 Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu aktivieren:
@@ -78,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 * [Projekt Kudu](https://github.com/projectkudu/kudu/wiki)
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -97,6 +99,6 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

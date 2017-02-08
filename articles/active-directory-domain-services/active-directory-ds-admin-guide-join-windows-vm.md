@@ -90,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um den virtuellen Windows Server-Compute
     ![Anmeldeinformationen für den Domänenbeitritt angeben](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 6. Sie können Anmeldeinformationen auf eine der folgenden Arten eingeben:
    
-   * UPN-Format: Hierbei handelt es sich um das UPN-Suffix für das Benutzerkonto, wie in Azure AD konfiguriert. In diesem Beispiel lautet das UPN-Suffix des Benutzers „Bob“ 'bob@domainservicespreview.onmicrosoft.com'.
+   * UPN-Format: Hierbei handelt es sich um das UPN-Suffix für das Benutzerkonto, wie in Azure AD konfiguriert. Das UPN-Suffix des Benutzers „bob“ in diesem Beispiel lautet „bob@domainservicespreview.onmicrosoft.com“.
    * SAMAccountName-Format: Sie können den Kontonamen im Format „SAMAccountName“ angeben. Der Benutzer „bob“ würde in diesem Beispiel „CONTOSO100\bob“ eingeben.
      
      > [!NOTE]
@@ -122,12 +122,12 @@ Führen Sie folgende Schritte aus, wenn Probleme mit Anmeldeinformationen auftre
 * Stellen Sie sicher, dass Sie lange genug warten, damit die Kennwortsynchronisierung abgeschlossen ist, wie im Leitfaden „Erste Schritte“ angegeben.
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
+* [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

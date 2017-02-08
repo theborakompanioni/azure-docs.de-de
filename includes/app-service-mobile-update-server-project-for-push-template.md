@@ -95,6 +95,6 @@ Wählen Sie ein geeignetes Verfahren für die Art Ihres Back-End-Projekts ([.NET
 3. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

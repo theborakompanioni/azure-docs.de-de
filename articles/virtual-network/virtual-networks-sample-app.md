@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4d3f5e759f46bd4c4998c5d4bf70d64190ad972e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 416fb49a9ec2972c3a03fb883888fb9dc679d4d0
 
 
 ---
 # <a name="sample-application-for-use-with-security-boundary-environments"></a>Beispielanwendung zur Verwendung in Umgebungen mit Sicherheitsbegrenzung
-[Zurück zur Seite mit bewährten Methoden zu Sicherheitsgrenzen][HOME]
+[Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
 
 Diese PowerShell-Skripts können lokal auf den Servern IIS01 und AppVM01 ausgeführt werden, um eine einfache Webanwendung zu installieren und zu konfigurieren, die eine HTML-Seite vom Front-End-Server IIS01 mit Inhalten vom Back-End-Server AppVM01 anzeigt.
 
@@ -196,6 +196,6 @@ Diese Beispielanwendung enthält kein Skript zum Einrichten des DNS-Servers. Wen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

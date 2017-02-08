@@ -1,12 +1,12 @@
 ---
-title: Übersicht über Data Science mit Spark in Azure HDInsight | Microsoft Docs
+title: "Übersicht über Data Science mit Spark in Azure HDInsight | Microsoft Docs"
 description: Das Spark MLlib-Toolkit bringt wesentliche Machine Learning-Modellierungsfunktionen in die verteilte HDInsight-Umgebung ein.
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: a4e1de99-a554-4240-9647-2c6d669593c8
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: ca799d03076175d6a7193c0e58b349a6cb61693b
+ms.openlocfilehash: 35f07fba1421af1db9c8b6190737c3c220a911e1
+
+
 
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Übersicht über Data Science mit Spark in Azure HDInsight
@@ -29,6 +34,7 @@ Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Sie benötigen ein Azure-Abonnement. Wenn Sie noch keins besitzen, lesen Sie den Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(Gewusst wie: Erhalten einer Azure-Testversion zum Testen von Hadoop in HDInsight).
+
 2. Sie benötigen einen HDInsight 3.4 Spark 1.6-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erstellen eines solchen Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Clustertyp und Version werden im Menü **Clustertyp auswählen** angegeben. 
 
 ![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
@@ -47,9 +53,9 @@ Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen 
 > 
 
 ## <a name="the-nyc-2013-taxi-data"></a>Die NYC-2013-Taxidaten
-Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (ca. 48 GB unkomprimiert) mit mehr als 173 Mio. einzelnen Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
+Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (ca. 48 GB unkomprimiert) mit mehr als 173 Mio. einzelnen Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
-1. Die CSV-Dateien des Typs „trip_data“ enthalten Fahrtendetails, z. B. die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
+1. Die CSV-Dateien des Typs „trip_data“ enthalten Fahrtendetails, z. B. die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -136,7 +142,7 @@ Sie können jetzt:
 
 ![ROC-Kurve der logistischen Regression für die allgemeine Methode](./media/machine-learning-data-science-spark-overview/pyspark-jupyter-autovisualization.png)
 
-## <a name="what's-next?"></a>Wie geht es weiter?
+## <a name="whats-next"></a>Wie geht es weiter?
 Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks hochgeladen haben, können Sie nun die Themen für diese drei PySpark-Notebooks durcharbeiten. Darin erfahren Sie, wie Sie Ihre Daten durchsuchen sowie Modelle erstellen und nutzen. Das Notebook zum erweiterten Durchsuchen von Daten und Modellieren zeigt, wie Sie die Kreuzvalidierung, das Hyper-Parameter-Sweeping und die Auswertung von Modellen einbeziehen können. 
 
 **Durchsuchen von Daten und Modellieren mit Spark:** Durchsuchen Sie das Dataset, und erstellen und bewerten Sie die Machine Learning-Modelle. Arbeiten Sie dazu das Thema [Erstellen von binären Klassifizierungs- und Regressionsmodellen für Daten mit dem Spark MLib-Toolkit](machine-learning-data-science-spark-data-exploration-modeling.md) durch.
@@ -145,6 +151,9 @@ Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks
 
 **Kreuzvalidierung und Hyperparameter-Sweeping:**Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

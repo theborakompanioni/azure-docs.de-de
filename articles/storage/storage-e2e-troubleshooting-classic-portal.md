@@ -4,18 +4,22 @@ description: Ein Lernprogramm zur End-to-End-Problembehandlung mit Azure-Speiche
 services: storage
 documentationcenter: dotnet
 author: robinsh
-manager: carmonm
-
+manager: timlt
+ms.assetid: 6b23cba5-0d53-439e-870b-de8e406107d8
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 12/08/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 82f0e5b9d0bfca1921367a2fd91259eeb4254285
+
 
 ---
-# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging,-azcopy,-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollen sowie AzCopy und Message Analyzer
+# <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollen sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
 ## <a name="overview"></a>Übersicht
@@ -99,33 +103,36 @@ Folgen Sie zum Konfigurieren der Protokollierung und der Metriken für das Speic
 
 **Über PowerShell**
 
-Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Informationen zum Einstieg in PowerShell für Azure finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 1. Verwenden Sie das [Add-AzureAccount](http://msdn.microsoft.com/library/azure/dn722528.aspx) -Cmdlet, um Ihr Azure-Benutzerkonto dem PowerShell-Fenster hinzuzufügen:
    
+    ```powershell
+     Add-AzureAccount
     ```
-    Add-AzureAccount
-    ```
+
 2. Geben Sie im Fenster **Bei Microsoft Azure anmelden** die dem Konto zugeordnete E-Mail-Adresse und das zugehörige Kennwort ein. Die Anmeldeinformationen werden von Azure authentifiziert und gespeichert, dann wird das Fenster geschlossen.
 3. Legen Sie als Standardspeicherkonto das Speicherkonto fest, das Sie für das Lernprogramm verwenden, indem Sie die folgenden Befehle im PowerShell-Fenster ausführen:
    
-    ```
+    ```powershell
     $SubscriptionName = 'Your subscription name'
     $StorageAccountName = 'yourstorageaccount' 
     Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName 
     ```
+
 4. Aktivieren Sie die Speicherprotokollierung für den Blobdienst: 
    
-    ```
+    ```powershell
     Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0 
     ```
+
 5. Aktivieren Sie die Speichermetriken für den Blob-Dienst, und stellen Sie dabei sicher, dass **-MetricsType** auf `Minute` festgelegt ist:
    
-    ```
+    ```powershell
     Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0 
     ```
 
-### <a name="configure-.net-client-side-logging"></a>Konfigurieren der clientseitigen .NET-Protokollierung
+### <a name="configure-net-client-side-logging"></a>Konfigurieren der clientseitigen .NET-Protokollierung
 Aktivieren Sie zum Konfigurieren der clientseitigen Protokollierung für eine .NET-Anwendung die .NET-Diagnose in der Konfigurationsdatei der Anwendung (web.config oder app.config). Weitere Informationen finden Sie unter [Client-side Logging with the .NET Storage Client Library](http://msdn.microsoft.com/library/azure/dn782839.aspx) (Clientseitige Protokollierung mit der .NET-Speicherclientbibliothek) und [Client-side Logging with the Microsoft Azure Storage SDK for Java](http://msdn.microsoft.com/library/azure/dn782844.aspx) (Clientseitige Protokollierung mit dem Microsoft Azure Storage SDK für Java).
 
 Das clientseitige Protokoll enthält detaillierte Informationen darüber, wie der Client die Anfrage vorbereitet und die Antwort empfängt und verarbeitet.
@@ -150,10 +157,11 @@ Erfassen und speichern Sie für das Lernprogramm zunächst eine Netzwerkablaufve
 4. Wählen Sie rechts neben dem ETW-Anbieter **Microsoft-Pef-WebProxy** die Option **Configure** (Konfigurieren).
 5. Klicken Sie im Dialogfeld **Advanced Settings** (Erweiterte Einstellungen) auf die Registerkarte **Provider** (Anbieter).
 6. Geben Sie im Feld **Hostname Filter** die Speicherendpunkte an (getrennt durch Leerzeichen). Sie können beispielsweise Ihre Endpunkte wie folgt angeben (ändern Sie hierbei `storagesample` in den Namen Ihres Speicherkontos):
-   
-    ``` 
+
+    ```   
     storagesample.blob.core.windows.net storagesample.queue.core.windows.net storagesample.table.core.windows.net 
     ```
+   
 7. Schließen Sie das Dialogfeld, und klicken Sie auf **Restart** , um mit dem Erfassen der Ablaufverfolgung mit dem Hostnamensfilter zu beginnen, sodass nur der Azure-Speichernetzwerkverkehr in die Ablaufverfolgung einbezogen wird.
 
 > [!NOTE]
@@ -186,9 +194,11 @@ Weitere Informationen zum Hinzufügen von Metriken auf der Seite "Überwachen" f
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Verwenden von AzCopy zum Kopieren von Serverprotokollen in ein lokales Verzeichnis
 Azure Storage schreibt Serverprotokolldaten in Blobs, während Metriken in Tabellen geschrieben werden. Protokoll-Blobs finden Sie im wohlbekannten Container `$logs` für Ihr Speicherkonto. Protokoll-Blobs werden hierarchisch nach Jahr, Monat, Tag und Stunde benannt, damit Sie problemlos auf den Zeitbereich zugreifen können, den Sie untersuchen möchten. Der Container für die Protokoll-Blobs im Konto `storagesample` für den 02.01.2015 von 8:00 bis 9:00 Uhr lautet beispielsweise `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Die einzelnen Blobs in diesem Container werden sequenziell benannt, beginnend mit `000000.log`.
 
-Sie können das AzCopy-Befehlszeilentool verwenden, um diese serverseitigen Protokolldateien an einen beliebigen Speicherort auf dem lokalen Computer herunterzuladen. Sie können z. B. den folgenden Befehl zum Herunterladen von Protokolldateien für Blobvorgänge verwenden, die am 2. Januar 2015 in den Ordner `C:\Temp\Logs\Server` stattgefunden haben. Ersetzen Sie hierbei `<storageaccountname>` durch den Namen Ihres Speicherkontos und `<storageaccountkey>` durch Ihren Zugriffsschlüssel:
+Sie können das AzCopy-Befehlszeilentool verwenden, um diese serverseitigen Protokolldateien an einen beliebigen Speicherort auf dem lokalen Computer herunterzuladen. Sie können z. B. den folgenden Befehl zum Herunterladen von Protokolldateien für Blobvorgänge verwenden, die am 2. Januar 2015 in den Ordner `C:\Temp\Logs\Server` stattgefunden haben. Ersetzen Sie hierbei `<storageaccountname>` durch den Namen Ihres Speicherkontos und `<storageaccountkey>` durch Ihren Zugriffsschlüssel:
 
-    AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+```azcopy
+AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+```
 
 AzCopy steht zum Download auf der Seite [Azure-Downloads](https://azure.microsoft.com/downloads/) zur Verfügung. Details zur Verwendung von AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
 
@@ -280,8 +290,10 @@ Als Nächstes gruppieren und filtern wir die Protokolldaten, um alle Fehler im B
 2. Gruppieren Sie daraufhin die Spalte **ClientRequestId** . Die Daten im Analyseraster werden daraufhin nach Statuscode und Clientanfragen-ID sortiert.
 3. Öffnen Sie das Toolfenster "View Window", wenn es nicht bereits angezeigt wird. Wählen Sie auf der Symbolleiste die Option **Tool Windows** (Werkzeug „Fenster“) und dann **View Filter** (Filter anzeigen).
 4. Um die Protokolldaten zur Anzeige der Fehler im Bereich 400 zu filtern, fügen Sie die folgenden Filterkriterien im Fenster **View Filter** (Filter anzeigen) ein, und klicken Sie auf **Apply** (Übernehmen):
-   
-        (AzureStorageLog.StatusCode >= 400 && AzureStorageLog.StatusCode <=499) || (HTTP.StatusCode >= 400 && HTTP.StatusCode <= 499)
+
+    ```   
+    (AzureStorageLog.StatusCode >= 400 && AzureStorageLog.StatusCode <=499) || (HTTP.StatusCode >= 400 && HTTP.StatusCode <= 499)
+    ```
 
 Die folgende Abbildung zeigt die Ergebnisse dieser Gruppierung und Filterung. Durch Erweitern des Felds **ClientRequestID** unter der Gruppierung für den Statuscode 409 wird beispielsweise der Vorgang angezeigt, der diesen Statuscode verursacht hat.
 
@@ -306,9 +318,11 @@ Die Speicherressourcen enthalten vordefinierte Filter, die Sie verwenden können
 3. Öffnen Sie das Menü **Library** (Bibliothek) erneut, und wählen Sie **Global Time Filter** (Globaler Zeitfilter) aus.
 4. Ändern Sie die im Filter angezeigten Zeitstempel zu dem gewünschten Zeitraum. So können Sie den Zeitraum der zu analysierenden Daten eingrenzen.
 5. Der Filter wird ähnlich wie im folgenden Beispiel angezeigt. Klicken Sie auf **Apply** , um den Filter auf das Analyseraster anzuwenden.
-   
-        ((AzureStorageLog.StatusCode == 404 || HTTP.StatusCode == 404)) And 
-        (#Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39)
+
+    ```   
+    ((AzureStorageLog.StatusCode == 404 || HTTP.StatusCode == 404)) And 
+    (#Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39)
+    ```
 
 ![Layout: Azure-Speicheransicht](./media/storage-e2e-troubleshooting-classic-portal/404-filtered-errors1.png)
 
@@ -325,8 +339,10 @@ Als Nächstes müssen wir diese Clientanfragen-ID den Clientprotokolldaten zuord
 2. Wählen Sie auf der Symbolleiste **New Viewer** (Neue Anzeige) und dann **Analysis Grid** (Analyseraster) aus, um eine neue Registerkarte zu öffnen. Die neue Registerkarte zeigt alle Daten in den Protokolldateien ohne Gruppierung, Filterung oder Farbregeln an. 
 3. Wählen Sie auf der Symbolleiste die Option **View Layout** (Layout anzeigen) und dann im Bereich **Azure Storage** die Option **All .NET Client Columns** (Alle .NET-Clientspalten). Dieses Ansichtslayout zeigt Daten aus dem Clientprotokoll sowie den Server- und Netzwerkablaufverfolgungs-Protokollen an. Standardmäßig wird die Anzeige nach der Spalte **MessageNumber** sortiert.
 4. Als Nächstes durchsuchen wir das Clientprotokoll nach der Clientanfragen-ID. Wählen Sie auf der Symbolleiste die Option **Find Messages** (Nachrichten suchen), und legen Sie dann einen benutzerdefinierten Filter für die Clientanfragen-ID im Feld **Find** (Suchen) fest. Verwenden Sie folgende Syntax für den Filter unter Angabe Ihrer eigenen Clientanfragen-ID:
-   
-        *ClientRequestId == "398bac41-7725-484b-8a69-2a9e48fc669a"
+
+    ```  
+    *ClientRequestId == "398bac41-7725-484b-8a69-2a9e48fc669a"
+    ```
 
 Message Analyzer sucht den ersten Protokolleintrag, bei dem die Clientanfragen-ID den Suchkriterien entspricht, und wählt ihn aus. Im Clientprotokoll sind mehrere Einträge für jede Clientanfragen-ID vorhanden, Sie sollten sie also nach dem Feld **ClientRequestId** gruppieren, um die Anzeige aller entsprechenden Elemente zu erleichtern. Die folgende Abbildung zeigt alle Nachrichten im Clientprotokoll für die angegebene Clientanfragen-ID. 
 
@@ -366,6 +382,7 @@ Weitere Informationen zur Problembehandlung in End-to-End-Szenarien im Azure-Spe
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide (in englischer Sprache)](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO1-->
 
 

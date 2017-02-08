@@ -1,12 +1,12 @@
 ---
-title: Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service (GoDaddy)
-description: Erfahren Sie, wie Sie einen Domänennamen von GoDaddy mit Azure-Web-Apps verwenden
+title: "Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service (GoDaddy)"
+description: "Erfahren Sie, wie Sie einen Domänennamen von GoDaddy mit Azure-Web-Apps verwenden"
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: erikre
 manager: wpickett
 editor: jimbe
-
+ms.assetid: 33233e30-5846-488f-83f3-b32e5c114564
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: fe8b4b097f7ff157d624c09b8dbf26f94401395c
+
 
 ---
-# <a name="configure-a-custom-domain-name-in-azure-app-service-(purchased-directly-from-godaddy)"></a>Konfigurieren eines benutzerdefinierten (direkt von GoDaddy erworbenen) Domänennamens in Azure App Service
+# <a name="configure-a-custom-domain-name-in-azure-app-service-purchased-directly-from-godaddy"></a>Konfigurieren eines benutzerdefinierten (direkt von GoDaddy erworbenen) Domänennamens in Azure App Service
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
 
-Wenn Sie eine Domäne über Azure App Service-Web-Apps erworben haben, lesen Sie den letzten Schritt zum [Erwerben einer Domäne für Web-Apps](custom-dns-web-site-buydomains-web-app.md).
+Wenn Sie eine Domäne über Azure App Service-Web-Apps erworben haben, lesen Sie den letzten Schritt zum [Erwerben einer Domäne für Web-Apps](custom-dns-web-site-buydomains-web-app.md).
 
 Dieser Artikel enthält Anweisungen zur Verwendung eines benutzerdefinierten Domänennamens, der mit [App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714) direkt bei [GoDaddy](https://godaddy.com) erworben wurde.
 
@@ -77,13 +81,16 @@ Um Ihre benutzerdefinierte Domäne mit einer Web-App im App Service zu verknüpf
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
-## <a name="what's-changed"></a>Änderungen
+## <a name="whats-changed"></a>Änderungen
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Jan17_HO3-->
 
 

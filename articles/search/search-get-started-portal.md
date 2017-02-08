@@ -161,7 +161,7 @@ Im Folgenden erhalten Sie eine allgemeine Anleitung, die aber nicht alle Aspekte
 8. Navigieren Sie unter **Dokument hochladen**zu dem lokalen Ordner, der die zuvor heruntergeladenen JSON-Dateien enthält. Wählen Sie JSON-Dateien in Gruppen von maximal 100 Dateien aus.
    * 386.json
    * 387.json
-   *  zu erstellen und zu verwalten.  erforderlich.  zu erstellen und zu verwalten.
+   * . . .
    * 486. json
 9. Wiederholen Sie diesen Schritt, um die nächste Gruppe von Dateien hochzuladen, bis Sie die letzte Datei (669.json) hochgeladen haben.
 10. Klicken Sie auf **Abfrage-Explorer** , um zu überprüfen, ob die Daten hochgeladen wurden und die Uploadanforderungen von Dokument-Explorer erfüllt wurden.

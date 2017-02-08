@@ -1,12 +1,12 @@
 ---
-title: Verarbeiten von Ereignissen aus Event Hubs mit Storm in HDInsight mit Java | Microsoft Docs
+title: Verarbeiten von Ereignissen aus Event Hubs mit Storm in HDInsight mit Java | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Daten von Event Hubs mit einer mit Maven erstellten Java Storm-Topologie erstellen.
 services: hdinsight,notification hubs
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 453fa7b0-c8a6-413e-8747-3ac3b71bed86
 ms.service: hdinsight
 ms.devlang: dotnet
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eaa86b706a538543816b59d8cd09ee54df43b26d
+
 
 ---
-# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-(java)"></a>Verarbeiten von Ereignissen aus Azure Event Hubs mit Storm in HDInsight (Java)
+# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-java"></a>Verarbeiten von Ereignissen aus Azure Event Hubs mit Storm in HDInsight (Java)
 Azure Event Hubs ermöglichen Ihnen die Verarbeitung sehr großer Datenmengen aus Websites, Apps und Geräten. Der Event Hubs-Spout vereinfacht die Verwendung von Apache Storm in HDInsight, um diese Daten in Echtzeit zu analysieren. Sie können auch Daten aus Storm mithilfe des Event Hubs-Bolts in Event Hub schreiben.
 
 In diesem Lernprogramm erfahren Sie, wie Sie den Event-Hub-Spout und Bolt zum Lesen und Schreiben von Daten in einer Java-basierten Storm-Topologie verwenden.
@@ -34,7 +38,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie den Event-Hub-Spout und Bolt zum Le
     > 
     > 
 * Ein [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-* [Oracle Java Developer Kit (JDK) Version 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder Äquivalent, z. B. [OpenJDK](http://openjdk.java.net/)
+* [Oracle Java Developer Kit (JDK) Version 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder Äquivalent, z. B. [OpenJDK](http://openjdk.java.net/)
 * [Maven](https://maven.apache.org/download.cgi)ist ein Projekterstellungssystem für Java-Projekte
 * Ein Texteditor oder eine integrierte Entwicklungsumgebung (IDE) für Java
   
@@ -47,7 +51,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie den Event-Hub-Spout und Bolt zum Le
     
     * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
     * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-* Ein SCP-Client. Dieser wird auf allen Linux-, Unix- und OS X-Systemen bereitgestellt. Bei Windows-Clients empfehlen wir PSCP, der auf der [PuTTY-Downloadseite](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)verfügbar ist.
+* Ein SCP-Client. Dieser wird auf allen Linux-, Unix- und OS X-Systemen bereitgestellt. Bei Windows-Clients empfehlen wir PSCP, der auf der [PuTTY-Downloadseite](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)verfügbar ist.
 
 ## <a name="understanding-the-example"></a>Grundlegendes zum Beispiel
 Das [hdinsight-java-storm-eventub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) Beispiel enthält zwei Topologien:
@@ -142,7 +146,7 @@ Der HdfsBolt wird in der Regel zum Speichern von Daten im Hadoop Distributed Fil
       </configuration>
     </plugin>
 
-Dadurch erfährt Maven, dass das Projekt mit Kompatibilität für Java 7 kompiliert werden soll, da diese Version von HDInsight-Clustern verwendet wird.
+Dadurch erfährt Maven, dass das Projekt mit Kompatibilität für Java 7 kompiliert werden soll, da diese Version von HDInsight-Clustern verwendet wird.
 
 #### <a name="the-maven-shade-plugin"></a>Das maven-shade-plugin
       <!-- build an uber jar -->
@@ -234,7 +238,7 @@ Sie müssen für beide Informationen zu Ihrem Event Hub und HDInsight-Cluster ei
 ## <a name="configure-environment-variables"></a>Konfigurieren von Umgebungsvariablen
 Bei der Installation von Java und dem JDK auf Ihrer Entwicklungsworkstation können die folgenden Umgebungsvariablen festgelegt werden. Sie sollten dennoch prüfen, ob die Variablen vorhanden sind und korrekte Werte für Ihr System enthalten.
 
-* **JAVA_HOME** – sollte auf das Verzeichnis verweisen, in dem die Java-Laufzeitumgebung (Java Runtime Environment, JRE) installiert ist. Für eine Unix- oder Linux-Distribution sollte z. B. ein Wert wie `/usr/lib/jvm/java-7-oracle` verwendet werden. Unter Windows sollte der Wert so ähnlich sein wie `c:\Program Files (x86)\Java\jre1.7`
+* **JAVA_HOME** – sollte auf das Verzeichnis verweisen, in dem die Java-Laufzeitumgebung (Java Runtime Environment, JRE) installiert ist. Für eine Unix- oder Linux-Distribution sollte z. B. ein Wert wie `/usr/lib/jvm/java-7-oracle` verwendet werden. Unter Windows sollte der Wert so ähnlich sein wie `c:\Program Files (x86)\Java\jre1.7`
 * **PATH** – sollte die folgenden Pfade enthalten:
   
   * **JAVA_HOME** (oder den entsprechenden Pfad)
@@ -376,7 +380,7 @@ Die von diesem Projekt erstellte JAR-Datei enthält zwei Topologien: **com.micro
         create external table devicedata (deviceid string, devicevalue int) row format delimited fields terminated by ',' stored as textfile location 'wasbs:///devicedata/';
         select * from devicedata limit 10;
    
-    Klicken Sie auf **Auswählen** , um die Abfrage auszuführen. Dadurch werden 10 Zeilen der Daten ausgegeben, die vom EventHubReader im Azure-Speicher (WASB) geschrieben wurden. Nach Abschluss der Abfrage sollten Sie eine Ausgabe ähnlich der folgenden erhalten:
+    Klicken Sie auf **Auswählen** , um die Abfrage auszuführen. Dadurch werden 10 Zeilen der Daten ausgegeben, die vom EventHubReader im Azure-Speicher (WASB) geschrieben wurden. Nach Abschluss der Abfrage sollten Sie eine Ausgabe ähnlich der folgenden erhalten:
    
         3409e622-c85d-4d64-8622-af45e30bf774,848981614
         c3305f7e-6948-4cce-89b0-d9fbc2330c36,-1638780537
@@ -429,6 +433,9 @@ Weitere Informationen zur Storm-Benutzeroberfläche finden Sie in den folgenden 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Beispiele für Storm-Topologien für Storm in HDInsight](hdinsight-storm-example-topology.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

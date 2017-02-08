@@ -223,6 +223,6 @@ Wir erstellen jetzt eine einfache Pushbenachrichtigungskampagne, die eine Pushbe
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO2-->
 
 

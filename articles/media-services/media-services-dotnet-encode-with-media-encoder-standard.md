@@ -150,6 +150,6 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

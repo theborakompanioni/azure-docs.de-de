@@ -2,11 +2,11 @@
 title: Unterschied im Anteilstest | Microsoft Docs
 description: Unterschied im Anteilstest
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: aniedea
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 9356b821-5345-44f6-8e26-719f2dea5e6d
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
 ms.author: aniedea
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 27e1626e72f9740e73a19e078868a7c4392baf1e
+
 
 ---
-# Unterschied im Anteilstest
-Unterscheiden sich zwei Anteile statistisch? Angenommen, ein Benutzer möchte zwei Filme vergleichen, um zu bestimmen, ob ein Film einen wesentlich höheren Anteil an "Likes" im Vergleich zum anderen hat. Mit einer umfangreichen Stichprobe kann sich eine statistisch relevante Abweichung zwischen den Anteilen 0,50 und 0,51 ergeben. Mit einer kleinen Stichprobe sind möglicherweise nicht genügend Daten vorhanden, um zu bestimmen, ob sich diese Anteile tatsächlich unterscheiden.
+# <a name="difference-in-proportions-test"></a>Unterschied im Anteilstest
+Unterscheiden sich zwei Anteile statistisch? Angenommen, ein Benutzer möchte zwei Filme vergleichen, um zu bestimmen, ob ein Film einen wesentlich höheren Anteil an "Likes" im Vergleich zum anderen hat. Mit einer umfangreichen Stichprobe kann sich eine statistisch relevante Abweichung zwischen den Anteilen 0,50 und 0,51 ergeben. Mit einer kleinen Stichprobe sind möglicherweise nicht genügend Daten vorhanden, um zu bestimmen, ob sich diese Anteile tatsächlich unterscheiden. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -27,25 +31,25 @@ Dieser [Webdienst](https://datamarket.azure.com/dataset/aml_labs/prop_test) füh
 > 
 > 
 
-## Nutzung des Webdiensts
+## <a name="consumption-of-web-service"></a>Nutzung des Webdiensts
 Dieser Dienst akzeptiert vier Argumente und testet eine Hypothese zu den Anteilen.
 
 Die Eingabeargumente sind:
 
-* Successes1 – Anzahl von Erfolgsereignissen in Stichprobe 1
-* Successes2 – Anzahl von Erfolgsereignissen in Stichprobe 2
+* Successes1 – Anzahl von Erfolgsereignissen in Stichprobe 1
+* Successes2 – Anzahl von Erfolgsereignissen in Stichprobe 2
 * Total1 – Größe von Stichprobe 1
-* Total2 – Größe von Stichprobe 2
+* Total2 – Größe von Stichprobe 2
 
-Die Ausgabe des Diensts ist das Ergebnis des Hypothesentests, gemeinsam mit Chi-Quadrat-Statistik, df, p-Wert und Anteil in Stichprobe 1/2 und Vertrauensbereichsgrenzen.
+Die Ausgabe des Diensts ist das Ergebnis des Hypothesentests, gemeinsam mit Chi-Quadrat-Statistik, df, p-Wert und Anteil in Stichprobe 1/2 und Vertrauensbereichsgrenzen.
 
-> Dieser Dienst, der im Azure Marketplace gehostet wird, ist ein OData-Dienst. Diese Dienste können durch POST- oder GET-Methoden aufgerufen werden.
+> Dieser Dienst, der im Azure Marketplace gehostet wird, ist ein OData-Dienst. Diese Dienste können durch POST- oder GET-Methoden aufgerufen werden. 
 > 
 > 
 
 Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([hier](http://microsoftazuremachinelearning.azurewebsites.net/DifferenceInProportionsTest.aspx) finden Sie eine Beispiel-App).
 
-### Starten von C#-Code für Webdienstnutzung:
+### <a name="starting-c-code-for-web-service-consumption"></a>Starten von C#-Code für Webdienstnutzung:
     public class Input
     {
             public string successes1;
@@ -76,24 +80,24 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
     }
 
 
-## Erstellen des Webdiensts
+## <a name="creation-of-web-service"></a>Erstellen des Webdiensts
 > Dieser Webdienst wurde mithilfe von Azure Machine Learning erstellt. Eine kostenlose Testversion sowie Einführungsvideos zum Erstellen von Experimenten und [Veröffentlichen von Webdiensten](machine-learning-publish-a-machine-learning-web-service.md) finden Sie unter [azure.com/ml](http://azure.com/ml). Im Folgenden finden Sie einen Screenshot des Experiments, mit dem der Webdienst erstellt wurde und Beispielcode für die einzelnen Module im Experiment.
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment mit zwei [Execute R Script][execute-r-script]-Modulen erstellt. Im ersten Modul wird das Schema definiert, während das zweite Modul den prop.test-Befehl in R verwendet, um die Hypothese für zwei Anteile zu testen.
+In Azure Machine Learning wurde ein neues leeres Experiment mit zwei [Execute R Script][execute-r-script]-Modulen erstellt. Im ersten Modul wird das Schema definiert, während das zweite Modul den prop.test-Befehl in R verwendet, um die Hypothese für zwei Anteile zu testen. 
 
-### Experimentablauf:
+### <a name="experiment-flow"></a>Experimentablauf:
 ![Experimentablauf][2]
 
-#### Modul 1:
+#### <a name="module-1"></a>Modul 1:
     ####Schema definition  
     data.set=data.frame(successes1=50,successes2=60,total1=100,total2=100);
     maml.mapOutputPort("data.set"); #send data to output port
     dataset1 = maml.mapInputPort(1) #read data from input port
 
 
-#### Modul 2:
+#### <a name="module-2"></a>Modul 2:
     test=prop.test(c(dataset1$successes1[1],dataset1$successes2[1]),c(dataset1$total1[1],dataset1$total2[1])) #conduct hypothesis test
 
     result=data.frame(
@@ -109,10 +113,10 @@ In Azure Machine Learning wurde ein neues leeres Experiment mit zwei [Execute R 
     maml.mapOutputPort("result"); #output port
 
 
-## Einschränkungen
+## <a name="limitations"></a>Einschränkungen
 Dies ist ein sehr einfaches Beispiel für das Testen des Unterschieds bei zwei Anteilen. Wie aus den oben stehenden Beispielcode ersichtlich ist, wird kein Abfangen von Fehlern implementiert und der Dienst geht davon aus, dass alle Variablen kontinuierlich sind.
 
-## Häufig gestellte Fragen
+## <a name="faq"></a>Häufig gestellte Fragen
 Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im Azure Marketplace finden Sie [hier](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-difference-in-two-proportions/hyptest-img1.png
@@ -123,4 +127,8 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,20 +1,24 @@
 ---
-title: Erstellen einer IoT-Lösung mithilfe von Stream Analytics | Microsoft Docs
-description: Enthält ein Tutorial zu den ersten Schritten für die Stream Analytics-IoT-Lösung für ein Mauthäuschen-Szenario.
-keywords: IoT-Lösung, Fensterfunktionen
-documentationcenter: ''
+title: "Erstellen einer IoT-Lösung mithilfe von Stream Analytics | Microsoft Docs"
+description: "Enthält ein Tutorial zu den ersten Schritten für die Stream Analytics-IoT-Lösung für ein Mauthäuschen-Szenario."
+keywords: "IoT-Lösung, Fensterfunktionen"
+documentationcenter: 
 services: stream-analytics
 author: jeffstokes72
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 11/16/2016
 ms.author: jeffstok
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 65dea49959402b66ba7513051dfe16d91d68ef3b
+
 
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
@@ -32,14 +36,14 @@ Nach Abschluss dieses Tutorials, werden Sie in der Lage sein, folgende Aufgaben 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
-* Aktuelle Version von [Azure PowerShell](../powershell-install-configure.md)
+* Aktuelle Version von [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * Visual Studio 2015 oder die kostenlose [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Ein Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/)
 * Administratorrechte auf dem Computer
 * Download von [TollApp.zip](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) aus dem Microsoft Download Center
 * Optional: Quellcode für den TollApp-Ereignisgenerator in [GitHub](https://aka.ms/azure-stream-analytics-toll-source)
 
-## <a name="scenario-introduction:-“hello,-toll!”"></a>Einführung in das Szenario: „Hallo, Maut!“
+## <a name="scenario-introduction-hello-toll"></a>Einführung in das Szenario: „Hallo, Maut!“
 Eine Mautstation ist eine bekannte Einrichtung. Es gibt sie auf vielen Autobahnen und an Brücken und Tunneln auf der ganzen Welt. Jede Mautstation umfasst mehrere Mauthäuschen. An Häuschen mit manueller Bezahlung halten Sie an und entrichten den Mautbetrag bei der zuständigen Person. Bei Häuschen mit automatisierter Bezahlung wird mit einem Sensor oben auf dem Häuschen eine RFID-Karte abgetastet, die an der Windschutzscheibe Ihres Fahrzeugs angebracht ist, während Sie das Mauthäuschen passieren. Es ist einfach, die Durchfahrt von Fahrzeugen durch diese Mautstellen als einen Strom von Ereignissen zu visualisieren, über den interessante Vorgänge ausgeführt werden können.
 
 ![Bild mit Fahrzeugen an Mauthäuschen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
@@ -133,9 +137,9 @@ Sie können das Skript „Setup.ps1“ im Ordner TollApp auf GitHub verwenden, u
 
 Laden Sie die unterstützenden [TollApp](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) -Ordner und -Dateien herunter, und speichern Sie sie.
 
-Öffnen Sie ein **Microsoft Azure PowerShell** -Fenster *als Administrator*. Falls Sie Azure PowerShell noch nicht besitzen, können Sie die Installationsanleitung unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
+Öffnen Sie ein **Microsoft Azure PowerShell** -Fenster *als Administrator*. Falls Sie Azure PowerShell noch nicht besitzen, können Sie die Installationsanleitung unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) befolgen.
 
-Da Windows PS1-, DLL- und EXE-Dateien automatisch blockiert, müssen Sie die Ausführungsrichtlinie festlegen, bevor Sie das Skript ausführen. Stellen Sie sicher, dass das Azure PowerShell-Fenster _als Administrator_ausgeführt wird. Führen Sie **Set-ExecutionPolicy unrestricted**aus. Geben Sie **Y**ein, wenn Sie dazu aufgefordert werden.
+Da Windows PS1-, DLL- und EXE-Dateien automatisch blockiert, müssen Sie die Ausführungsrichtlinie festlegen, bevor Sie das Skript ausführen. Stellen Sie sicher, dass das Azure PowerShell-Fenster *als Administrator*ausgeführt wird. Führen Sie **Set-ExecutionPolicy unrestricted**aus. Geben Sie **Y**ein, wenn Sie dazu aufgefordert werden.
 
 ![Screenshot der Ausführung von „Set-ExecutionPolicy unrestricted“ im Azure PowerShell-Fenster](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image2.png)
 
@@ -168,40 +172,34 @@ Sie sehen ein anderes Fenster, das etwa wie im folgenden Screenshot aussieht. Di
 
 ![Screenshot zum „Senden von Event Hub-Daten“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image7.png)
 
-Nun sollten alle erstellten Ressourcen im Azure-Portal angezeigt werden. Navigieren Sie zu <https://manage.windowsazure.com>, und melden Sie sich mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
+Nun sollten alle Ihre Ressourcen im Azure-Portal angezeigt werden. Navigieren Sie zu <https://portal.azure.com>, und melden Sie sich mit Ihren Anmeldeinformationen an. Beachten Sie, dass einige Funktionen derzeit das klassische Portal verwenden. Diese Schritte werden eindeutig angegeben.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
-Klicken Sie links im Azure-Portal auf **SERVICE BUS** , um Event Hubs anzuzeigen, die vom Skript im vorherigen Abschnitt erstellt wurden.
+Klicken Sie im Azure-Portal unten im linken Verwaltungsbereich auf **More services** (Weitere Dienste). Geben Sie im vorgegebenen Feld **Event Hubs** ein, und klicken Sie auf **Event Hubs**. Daraufhin wird ein neues Browserfenster geöffnet, das den Bereich **SERVICE BUS** im **klassischen Portal** anzeigt. Hier sehen Sie den Event Hub, der durch das Skript „Setup.ps1“ erstellt wurde.
 
 ![SERVICE BUS](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
 
-Sie sehen alle verfügbaren Namespaces in Ihrem Abonnement. Klicken Sie auf den Eintrag, der mit *tolldata* beginnt (in unserem Beispiel „tolldata4637388511“). Klicken Sie auf die Registerkarte **EVENT HUBS** .
+Klicken Sie auf den Eintrag, der mit *tolldata* beginnt. Klicken Sie auf die Registerkarte **EVENT HUBS** . Sie sehen zwei Event Hubs namens *entry* und *exit*, die in diesem Namespace erstellt wurden.
 
-![Registerkarte „Event Hubs“ im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
-
-Sie sehen zwei Event Hubs namens *entry* und *exit*, die in diesem Namespace erstellt wurden.
-
-![Screenshot von Event Hubs („entry“ und „exit“) im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
+![Registerkarte „Event Hubs“ im klassischen Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
 
 ### <a name="azure-storage-container"></a>Azure Storage-Container
-1. Klicken Sie links im Azure-Portal auf **SPEICHER** , um den Azure Storage-Container anzuzeigen, der im Tutorial verwendet wird.
+1. Wechseln Sie zurück zur Registerkarte, in der das Azure-Portal geöffnet ist. Klicken Sie links im Azure-Portal auf **SPEICHER** , um den Azure Storage-Container anzuzeigen, der im Tutorial verwendet wird.
    
     ![Menüelement „Speicher“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image11.png)
-2. Klicken Sie auf den Eintrag, der mit *tolldata* beginnt (in unserem Beispiel „tolldata4637388511“). Klicken Sie auf die Registerkarte **CONTAINER** , um den erstellten Container anzuzeigen.
+2. Klicken Sie auf den Eintrag, der mit *tolldata* beginnt. Klicken Sie auf die Registerkarte **CONTAINER** , um den erstellten Container anzuzeigen.
    
-    ![Registerkarte „Container“ im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
+    ![Registerkarte „Container“ im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
 3. Klicken Sie auf den Container **tolldata** , um die hochgeladene JSON-Datei mit den Daten zur Fahrzeugregistrierung anzuzeigen.
    
-    ![Screenshot der Datei „registration.json“ im Container](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image13.png)
+    ![Screenshot der Datei „registration.json“ im Container](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
 
 ### <a name="azure-sql-database"></a>Azure SQL-Datenbank
-1. Klicken Sie links im Azure-Portal auf **SQL-DATENBANKEN** , um die SQL-Datenbank anzuzeigen, die im Tutorial verwendet wird.
-   
-    ![SQL-DATENBANKEN](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image14.png)
-2. Klicken Sie auf **tolldatadb**.
+1. Wechseln Sie zur ersten Registerkarte im Azure-Portal zurück, die Sie im Browser geöffnet haben. Klicken Sie links im Azure-Portal auf **SQL-Datenbanken**, um die SQL-Datenbank anzuzeigen, die im Tutorial verwendet wird. Klicken Sie anschließend auf **tolldatadb**.
    
     ![Screenshot der erstellten SQL-Datenbank](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
-3. Kopieren Sie den Servernamen ohne die Portnummer (z.B. *servername*.database.windows.net).
+2. Kopieren Sie den Servernamen ohne die Portnummer (z.B. *servername*.database.windows.net).
+    ![Screenshot der erstellten SQL-Datenbank](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15a.png)
 
 ## <a name="connect-to-the-database-from-visual-studio"></a>Herstellen einer Verbindung mit der Datenbank über Visual Studio
 Verwenden Sie Visual Studio, um auf Abfrageergebnisse in der Ausgabedatenbank zuzugreifen.
@@ -226,7 +224,7 @@ Gehen Sie wie folgt vor, um über Visual Studio eine Verbindung mit der SQL-Date
    
     ![Tabellen in der Datenbank „TollDataDB“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
 
-## <a name="event-generator:-tollapp-sample-project"></a>Ereignisgenerator: TollApp-Beispielprojekt
+## <a name="event-generator-tollapp-sample-project"></a>Ereignisgenerator: TollApp-Beispielprojekt
 Das PowerShell-Skript beginnt automatisch damit, Ereignisse zu senden, indem es die TollApp-Beispielanwendung verwendet. Sie müssen keine zusätzlichen Schritte ausführen.
 
 Falls Sie an Details zur Implementierung interessiert sind, finden Sie den Quellcode der TollApp-Anwendung in GitHub unter [samples/TollApp](https://aka.ms/azure-stream-analytics-toll-source).
@@ -234,82 +232,71 @@ Falls Sie an Details zur Implementierung interessiert sind, finden Sie den Quell
 ![Screenshot des Beispielcodes in Visual Studio](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image20.png)
 
 ## <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
-1. Öffnen Sie Stream Analytics im Azure-Portal, und klicken Sie in der unteren linken Ecke der Seite auf **NEU** , um einen neuen Analytics-Auftrag zu erstellen.
+1. Klicken Sie im Azure-Portal auf das grüne Plus-Zeichen in der oberen linken Ecke der Seite, um einen neuen Stream Analytics-Auftrag zu erstellen. Wählen Sie **Intelligence + Analyse** aus, und klicken Sie anschließend auf **Stream Analytics-Auftrag**.
    
     ![Schaltfläche "Neu"](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image21.png)
-2. Klicken Sie auf **SCHNELLERFASSUNG**. Wählen Sie die Region aus, in der das Skript Ihre anderen Ressourcen erstellt.
-3. Wählen Sie für die Einstellung **SPEICHERKONTO FÜR REGIONALE ÜBERWACHUNG** die Option **NEUES SPEICHERKONTO ERSTELLEN** aus, und versehen Sie das Konto mit einem eindeutigen Namen. Azure Stream Analytics verwendet dieses Konto, um Überwachungsinformationen für alle Ihre zukünftigen Aufträge zu speichern.
-4. Klicken Sie am Ende der Seite auf **STREAM ANALYTICS-AUFTRAG ERSTELLEN** .
+2. Geben Sie einen Auftragsnamen an, überprüfen Sie, ob es sich um das richtige Abonnement handelt, und erstellen Sie anschließend eine neue Ressourcengruppe in der gleichen Region wie der Event Hub-Speicher (Standardwert für das Skript ist USA, Süden-Mitte).
+3. Klicken Sie auf **An Dashboard anheften** und anschließend am unteren Rand der Seite auf **ERSTELLEN**.
    
     ![Option „Stream Analytics-Auftrag erstellen“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image22.png)
 
 ## <a name="define-input-sources"></a>Definieren von Eingabequellen
-1. Klicken Sie im Portal auf den erstellten Analytics-Auftrag.
-   
-    ![Screenshot des Analytics-Auftrags im Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image23.jpg)
+1. Der Auftrag wird erstellt und öffnet die Auftragsseite. Alternativ können Sie auf den erstellten Analytics-Auftrag im Dashboard des Portals klicken.
+
 2. Öffnen Sie die Registerkarte **EINGABEN** , um die Quelldaten zu definieren.
    
-    ![Registerkarte „Eingaben“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image24.jpg)
+    ![Registerkarte „Eingaben“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image24.png)
 3. Klicken Sie auf **EINGABE HINZUFÜGEN**.
    
     ![Option „Eingabe hinzufügen“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image25.png)
-4. Klicken Sie auf der ersten Seite auf die Option **DATENSTROM** .
-   
-    ![Option „Datenstrom“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image26.png)
-5. Wählen Sie auf der zweiten Seite des Assistenten die Option **EVENT HUB** .
-   
-    ![Option „Event Hub“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image27.png)
-6. Geben Sie **EntryStream** als **EINGABEALIAS** ein.
-7. Klicken Sie auf die Dropdownliste **Event Hub**, und wählen Sie den Eintrag aus, der mit „TollData“ beginnt (z.B. TollData9518658221).
-8. Wählen Sie **entry** als Name des Event Hub und **all** als Name der Event Hubrichtlinie aus.
+4. Geben Sie **EntryStream** als **EINGABEALIAS** ein.
+5. Der Quelltyp ist **Datenstrom**.
+6. Die Quelle lautet **Event Hub**.
+7. **Service Bus-Namespace** sollte der erste TollData-Eintrag in der Dropdownliste sein.
+8. **Event Hub-Name** sollte als **Eintrag** festgelegt werden.
+9. **Event Hub-Richtlinienname* ist **RootManageSharedAccessKey** (Standardwert).
+10. Wählen Sie **JSON** als **Ereignisserialisierungsformat** und **UTF8** als **Codierung** aus.
    
     Ihre Einstellungen sehen nun folgendermaßen aus:
    
     ![Event Hub-Einstellungen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image28.png)
-9. Wählen Sie auf der nächsten Seite **JSON** für **EREIGNISSERIALISIERUNGSFORMAT** und **UTF8** für **CODIERUNG** aus.
-   
-    ![Serialisierungseinstellungen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image29.png)
-10. Klicken Sie am unteren Rand der Seite auf **OK** , um den Assistenten zu beenden.
+
+10. Klicken Sie am unteren Rand der Seite auf **Erstellen**, um den Assistenten zu beenden.
     
-    ![Screenshot der EntryStream-Eingabe im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image30.jpg)
-    
-    Nachdem Sie nun den Eingabedatenstrom erstellt haben, führen Sie die gleichen Schritte zum Erstellen des Ausgabedatenstroms aus. Achten Sie darauf, dass Sie die Werte auf der dritten Seite des Assistenten wie im folgenden Screenshot eingeben:
+    Nachdem Sie nun den Eingabedatenstrom erstellt haben, führen Sie die gleichen Schritte zum Erstellen des Ausgabedatenstroms aus. Achten Sie darauf, dass Sie die Werte wie im folgenden Screenshot eingeben:
     
     ![Einstellungen für Ausgabedatenstrom](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image31.png)
     
     Sie haben zwei Eingabedatenströme definiert:
     
-    ![Definierte Eingabedatenströme im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image32.jpg)
+    ![Definierte Eingabedatenströme im Azure-Portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image32.png)
     
     Als Nächstes fügen Sie die Referenzdateneingabe für die Blobdatei hinzu, in der die Fahrzeugregistrierungsdaten enthalten sind.
-11. Klicken Sie auf **EINGABE HINZUFÜGEN** und dann auf **REFERENZDATEN**.
-    
-    ![Option „Eingabe hinzufügen“ mit ausgewählten Referenzdaten](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image33.png)
-12. Wählen Sie auf der nächsten Seite das Speicherkonto, das mit **tolldata**beginnt. Der Name des Containers sollte **tolldata** und der Blobname unter **PFADMUSTER** sollte **registration.json** lauten. Für diesen Dateinamen wird die Groß-/Kleinschreibung berücksichtigt, und er sollte nur Kleinbuchstaben enthalten.
+11. Klicken Sie auf **Hinzufügen**, und gehen Sie anschließend genauso wie bei der Datenstromeingabe vor. Wählen Sie jedoch **Referenzdaten** anstelle von **Datenstrom** aus. Wählen Sie als **Eingabealias** den Eintrag **Registrierung** aus.
+
+12. Wählen Sie das Speicherkonto, das mit **tolldata** beginnt. Der Name des Containers sollte **tolldata** sein, und das **Pfadmuster** sollte **registration.json** lauten. Für diesen Dateinamen wird die Groß-/Kleinschreibung berücksichtigt, und er sollte nur **Kleinbuchstaben** enthalten.
     
     ![Blogspeichereinstellungen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image34.png)
-13. Wählen Sie auf der nächsten Seite die Werte wie im folgenden Screenshot aus, und klicken Sie auf **OK** , um den Assistenten zu beenden.
-    
-    ![Auswahl von „JSON“ für „Ereignisserialisierungsformat“ und „UTF8“ für „Codierung“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image35.png)
+13. Klicken Sie auf **Erstellen**, um den Assistenten zu beenden.
 
 Jetzt sind alle Eingaben definiert.
 
-![Screenshot der drei definierten Eingaben](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image36.jpg)
-
 ## <a name="define-output"></a>Definieren der Ausgabe
-1. Klicken Sie auf die Registerkarte **AUSGABE** und dann auf **AUSGABE HINZUFÜGEN**.
+1. Wählen Sie im Bereich der Stream Analytics-Auftragsübersicht **Ausgaben** aus.
    
-    ![Registerkarte „Ausgabe“ und Option „Ausgabe hinzufügen“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image37.jpg)
-2. Klicken Sie auf **SQL Database**.
+    ![Registerkarte „Ausgabe“ und Option „Ausgabe hinzufügen“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image37.png)
+2. Klicken Sie auf **Hinzufügen**.
+3. Legen Sie den **Ausgabealias** auf „Ausgabe“ und anschließend den Eintrag für **Senke** auf **SQL-Datenbank** fest.
 3. Wählen Sie den Namen des Servers, der im Abschnitt „Herstellen einer Verbindung mit der Datenbank über Visual Studio“ des Artikels verwendet wurde. Der Datenbankname ist **TollDataDB**.
 4. Geben Sie im Feld **BENUTZERNAME** den Text **tolladmin**, **123toll!** im Feld **KENNWORT** den Text und im Feld **TABELLE** **TollDataRefJoinein**.
    
-    ![SQL-Datenbankeinstellungen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.jpg)
+    ![SQL-Datenbankeinstellungen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image38.png)
+5. Klicken Sie auf **Erstellen**.
 
 ## <a name="azure-stream-analytics-query"></a>Azure Stream Analytics-Abfragen
 Die Registerkarte **ABFRAGE** enthält eine SQL-Abfrage, mit der die eingehenden Daten transformiert werden.
 
-![Hinzugefügte Abfrage auf der Registerkarte „Abfrage“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image39.jpg)
+![Hinzugefügte Abfrage auf der Registerkarte „Abfrage“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image39.png)
 
 In diesem Tutorial versuchen wir, einige geschäftliche Fragen zu beantworten, die im Zusammenhang mit Mautdaten stehen. Außerdem werden Stream Analytics-Abfragen erstellt, die in Azure Stream Analytics verwendet werden können, um eine relevante Antwort zu liefern.
 
@@ -340,18 +327,20 @@ Dieser Ordner enthält die folgenden Dateien:
 * Exit.json
 * registration.json
 
-## <a name="question-1:-number-of-vehicles-entering-a-toll-booth"></a>Frage 1: Wie viele Fahrzeuge passieren ein Mauthäuschen?
+## <a name="question-1-number-of-vehicles-entering-a-toll-booth"></a>Frage 1: Wie viele Fahrzeuge passieren ein Mauthäuschen?
 1. Öffnen Sie das Azure-Portal, und navigieren Sie zum erstellten Azure Stream Analytics-Auftrag. Klicken Sie auf die Registerkarte **ABFRAGE** , und fügen Sie die Abfrage aus dem vorherigen Abschnitt ein.
-   
-    ![Auf Registerkarte „Abfrage“ eingefügte Abfrage](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image40.png)
-2. Um diese Abfrage mit Beispieldaten zu überprüfen, klicken Sie auf die Schaltfläche **Test**. Navigieren Sie im sich öffnenden Dialogfeld zu „Entry.json“. Diese Datei enthält Beispieldaten aus dem **EntryTime**-Ereignisstrom.
-   
+
+2. Um diese Abfrage anhand von Beispieldaten zu überprüfen, laden Sie die Daten in die EntryStream-Eingabe, indem Sie auf das ...-Symbol klicken und **Beispieldaten aus Datei hochladen** auswählen.
+
     ![Screenshot der Datei „Entry.json“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image41.png)
+3. Wählen Sie im angezeigten Bereich die Datei (Entry.json) auf dem lokalen Computer aus, und klicken Sie auf **OK**. Das **Test**-Symbol leuchtet auf, und Sie können darauf klicken.
+   
+    ![Screenshot der Datei „Entry.json“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image42.png)
 3. Überprüfen Sie, ob die Abfrage wie erwartet ausgegeben wird.
    
-    ![Ergebnisse des Tests](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image42.jpg)
+    ![Ergebnisse des Tests](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image43.png)
 
-## <a name="question-2:-report-total-time-for-each-car-to-pass-through-the-toll-booth"></a>Frage 2: Wie lange benötigt ein einzelnes Auto, um das Mauthäuschen zu passieren?
+## <a name="question-2-report-total-time-for-each-car-to-pass-through-the-toll-booth"></a>Frage 2: Wie lange benötigt ein einzelnes Auto, um das Mauthäuschen zu passieren?
 Die durchschnittliche Zeit, die ein Fahrzeug zum Passieren des Mauthäuschens benötigt, trägt zur Bewertung der Effizienz des Prozesses und der Benutzerfreundlichkeit für Kunden bei.
 
 Zur Ermittlung der Gesamtzeit müssen Sie den EntryTime-Datenstrom mit dem ExitTime-Datenstrom verknüpfen. Sie fügen die Datenströme in den Spalten „TollId“ und „LicencePlate“ zusammen. Beim Operator **JOIN** müssen Sie einen zeitlichen Spielraum angeben, um die akzeptable Zeitdifferenz zwischen den verknüpften Ereignissen zu beschreiben. Sie verwenden die Funktion **DATEDIFF** , um anzugeben, dass Ereignisse nicht mehr als 15 Minuten auseinander liegen sollen. Sie wenden außerdem die Funktion **DATEDIFF** auf Ausfahrts- und Einfahrtszeiten an, um die genaue Zeit zu berechnen, die ein Auto in der Mautstation verbringt. Beachten Sie den Unterschied bei der Verwendung der Funktion **DATEDIFF** in einer **SELECT**-Anweisung im Vergleich zu einer **JOIN**-Bedingung.
@@ -362,50 +351,47 @@ Zur Ermittlung der Gesamtzeit müssen Sie den EntryTime-Datenstrom mit dem ExitT
     ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
     AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
-1. Aktualisieren Sie die Abfrage auf der Registerkarte **ABFRAGE** Ihres Auftrags, um sie zu testen:
+1. Aktualisieren Sie diese Abfrage auf der Registerkarte **ABFRAGE** Ihres Auftrags, um sie zu testen. Fügen Sie die Testdatei für **ExitStream** genauso hinzu wie Sie zuvor **EntryStream** eingegeben haben.
    
-    ![Aktualisierte Abfrage auf der Registerkarte „Abfrage“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image43.jpg)
-2. Klicken Sie auf **Test** , und geben Sie Beispieleingabedateien für die Einfahrts- und Ausfahrtszeit (EntryTime und ExitTime) an.
-   
-    ![Screenshot von ausgewählten Eingabedateien](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image44.png)
+2. Klicken Sie auf **Test**.
+
 3. Aktivieren Sie das Kontrollkästchen, um die Abfrage zu testen und die Ausgabe anzuzeigen:
    
     ![Ausgabe des Tests](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image45.png)
 
-## <a name="question-3:-report-all-commercial-vehicles-with-expired-registration"></a>Frage 3: Welche Nutzfahrzeuge sind nicht mehr registriert?
+## <a name="question-3-report-all-commercial-vehicles-with-expired-registration"></a>Frage 3: Welche Nutzfahrzeuge sind nicht mehr registriert?
 Azure Stream Analytics kann statische Momentaufnahmen von Daten mit temporären Datenströmen verknüpfen. Um diese Funktion zu demonstrieren, verwenden wir die folgende Beispielfrage.
 
 Wenn ein Nutzfahrzeug bei einer Mautfirma registriert ist, kann es das Mauthäuschen passieren, ohne für eine Kontrolle angehalten zu werden. Sie verwenden die Nachschlagetabellen für die Nutzfahrzeugregistrierung, um alle Nutzfahrzeuge mit abgelaufener Registrierung zu identifizieren.
 
-    SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN Registration
-    ON EntryStream.LicensePlate = Registration.LicensePlate
-    WHERE Registration.Expired = '1'
+```
+SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
+FROM EntryStream TIMESTAMP BY EntryTime
+JOIN Registration
+ON EntryStream.LicensePlate = Registration.LicensePlate
+WHERE Registration.Expired = '1'
+```
 
 Um eine Abfrage mit Referenzdaten zu testen, müssen Sie eine Eingabequelle für die Referenzdaten definieren. Dies haben Sie bereits durchgeführt.
 
-1. Um diese Abfrage zu testen, fügen Sie die Abfrage in die Registerkarte **ABFRAGE** ein, klicken Sie auf **Test**, und geben Sie zwei Eingabequellen an:
+Um diese Abfrage zu testen, fügen Sie die Abfrage in die Registerkarte **ABFRAGE** ein, und klicken Sie auf **Test**. Geben Sie die beiden Eingabequellen und die Beispieldaten für die Registrierung ein, und klicken Sie auf **Test**.  
    
-    ![Screenshot von ausgewählten Eingabedateien](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image46.png)
-2. Betrachten Sie die Ausgabe der Abfrage.
-   
-    ![Screenshot der Abfrageausgabe](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image47.png)
+![Ausgabe des Tests](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image46.png)
 
 ## <a name="start-the-stream-analytics-job"></a>Starten des Stream Analytics-Auftrags
 Jetzt beenden Sie die Konfiguration und starten den Auftrag. Speichern Sie die Abfrage aus Frage 3, um eine Ausgabe gemäß dem Schema der Ausgabetabelle **TollDataRefJoin** zu erzeugen.
 
 Navigieren Sie zum **DASHBOARD** des Auftrags, und klicken Sie auf **START**.
 
-![Screenshot der Schaltfläche „Start“ im Dashboard des Auftrags](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image48.jpg)
+![Screenshot der Schaltfläche „Start“ im Dashboard des Auftrags](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image48.png)
 
-Ändern Sie im sich öffnenden Dialogfeld die Zeitangabe für **AUSGABE STARTEN** in **BENUTZERDEFINIERTE UHRZEIT**. Ändern Sie die Stunde in eine Stunde vor der aktuellen Zeit. Mit dieser Änderung wird sichergestellt, dass alle Ereignisse aus dem Event Hub seit dem Beginn der Generierung von Ereignissen am Anfang des Tutorials verarbeitet werden. Klicken Sie auf das Häkchen, um den Auftrag zu starten.
+Ändern Sie im sich öffnenden Dialogfeld die Zeitangabe für **AUSGABE STARTEN** in **BENUTZERDEFINIERTE UHRZEIT**. Ändern Sie die Stunde in eine Stunde vor der aktuellen Zeit. Mit dieser Änderung wird sichergestellt, dass alle Ereignisse aus dem Event Hub seit dem Beginn der Generierung von Ereignissen am Anfang des Tutorials verarbeitet werden. Klicken Sie auf die Schaltfläche **Start**, um den Test zu starten.
 
 ![Auswahl der benutzerdefinierten Zeit](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image49.png)
 
 Das Starten des Auftrags kann einige Minuten dauern. Der Status wird auf der obersten Seite von Stream Analytics angezeigt.
 
-![Screenshot des Auftragsstatus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.jpg)
+![Screenshot des Auftragsstatus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image50.png)
 
 ## <a name="check-results-in-visual-studio"></a>Überprüfen Sie die Ergebnisse in Visual Studio
 1. Öffnen Sie Visual Studio Server-Explorer, und klicken Sie mit der rechten Maustaste auf die Tabelle **TollDataRefJoin** .
@@ -420,30 +406,23 @@ Azure Stream Analytics ist für die elastische Skalierung ausgelegt, damit groß
     FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
     GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
-1. Beenden Sie den aktuellen Auftrag, aktualisieren Sie die Abfrage auf der Registerkarte **ABFRAGE**, und öffnen Sie die Registerkarte **SKALIEREN**.
+1. Unterbrechen Sie den aktuellen Auftrag, aktualisieren Sie die Abfrage auf der Registerkarte **ABFRAGE**, und öffnen Sie die Registerkarte **Einstellungen** im Dashboard für die Aufträge. Klicken Sie auf **Skalieren**.
    
     **STREAMINGEINHEITEN** definieren die Menge an Rechenleistung, die der Auftrag erhalten kann.
-2. Verschieben Sie den Schieberegler auf 6.
+2. Ändern Sie den Dropdowneintrag nach unten, von 1 auf 6.
    
-    ![Screenshot der Auswahl von sechs Streamingeinheiten](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image52.jpg)
+    ![Screenshot der Auswahl von sechs Streamingeinheiten](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image52.png)
 3. Wechseln Sie zur Registerkarte **AUSGABE**, und ändern Sie den Namen der SQL-Tabelle in **TollDataTumblingCountPartitioned**.
 
 Wenn Sie den Auftrag jetzt starten, kann Azure Stream Analytics die Arbeit auf mehrere Computeressourcen verteilen und einen besseren Durchsatz erzielen. Bitte beachten Sie, dass die TollApp-Anwendung auch Ereignisse sendet, die nach der TollId partitioniert sind.
 
-## <a name="monitor"></a>Monitor
-Die Registerkarte **MONITOR** (ÜBERWACHEN) enthält Statistiken zum laufenden Auftrag.
+## <a name="monitor"></a>Überwachen
+Der Bereich **MONITOR** (ÜBERWACHEN) enthält Statistiken zum laufenden Auftrag. Um das Speicherkonto in der gleichen Region zu verwenden, ist eine erstmalige Konfiguration erforderlich (die Mautstation muss wie der Rest des Dokuments bezeichnet werden).   
 
-![Screenshot der Statistiken zu ausgeführten Aufträgen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image53.png)
+![Screenshot der Überwachung](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
 
-Sie können auf die **Vorgangsprotokolle** über die Registerkarte **DASHBOARD** zugreifen.
+Sie können auf die **Aktivitätsprotokolle** auch über das Dashboard für Aufträge im Bereich **Einstellungen** zugreifen.
 
-![Option „Vorgangsprotokolle“](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image54.jpg)
-
-![Screenshot mit Vorgangsprotokollen und dem Status von Aufträgen](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image55.png)
-
-Um weitere Informationen zu einem bestimmten Ereignis anzuzeigen, klicken Sie auf das Ereignis und dann auf die Schaltfläche **DETAILS** .
-
-![Screenshot mit Details zu einem ausgewählten Ereignis](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image56.png)
 
 ## <a name="conclusion"></a>Zusammenfassung
 In diesem Tutorial haben Sie eine Einführung in den Azure Stream Analytics-Dienst erhalten. Es wurde gezeigt, wie Sie Eingaben und Ausgaben für den Stream Analytics-Auftrag konfigurieren. Anhand des Mautdatenszenarios wurden die häufigsten Probleme erläutert, die im Bereich der Daten in Bewegung vorkommen, und aufgezeigt, wie diese mithilfe von einfachen SQL-ähnlichen Abfragen in Azure Stream Analytics behoben werden können. Im Tutorial wurden SQL-Erweiterungskonstrukte für die Arbeit mit temporären Datenströmen beschrieben. Es wurde veranschaulicht, wie Sie Datenströme verknüpfen, den Datenstrom um statische Referenzdaten erweitern und eine Abfrage horizontal hochskalieren, um einen höheren Durchsatz zu erzielen.
@@ -461,9 +440,11 @@ Weitere Informationen zu Azure Stream Analytics finden Sie in der [Onlinedokumen
    > Ressourcen werden anhand des Namens identifiziert. Stellen Sie sicher, dass Sie jedes Element sorgfältig überprüfen, bevor Sie das Entfernen bestätigen.
    > 
    > 
-   
-    ![Screenshot des Bereinigungsprozesses](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

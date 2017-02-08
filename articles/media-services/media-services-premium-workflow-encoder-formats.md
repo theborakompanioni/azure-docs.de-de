@@ -1,12 +1,12 @@
 ---
 title: Media Encoder Premium Workflow-Formate und -Codecs | Microsoft Docs
-description: Dieses Thema bietet eine Übersicht über Media Encoder Premium Workflow-Formate und -Codecs
+description: "Dieses Thema bietet eine Übersicht über Media Encoder Premium Workflow-Formate und -Codecs"
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erik43
-editor: ''
-
+editor: 
+ms.assetid: b197fce8-3b9b-4189-8d08-486810c0426f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako;anilmur
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d7e3bc0ac0c1f0c6bbce0cc25fe7a8df2cc53836
+
 
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow-Formate und -Codecs
@@ -32,10 +36,10 @@ Dieses Dokument enthält eine Liste von Eingabe- und Ausgabedateiformaten sowie 
 
 **Medienencoder-Premium-Workflow** unterstützt Untertitel, wie in [diesem](#closed_captioning) Abschnitt beschrieben. 
 
-## <a name="<a-id="input_formats"></a>media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
+## <a name="a-idinputformatsamedia-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
 Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Medienprozessor als Eingabe unterstützt.
 
-### <a name="input-container/file-formats"></a>Eingabecontainer/Dateiformate
+### <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
 * Adobe® Flash® F4V
 * MXF/SMPTE 377M
 * GXF
@@ -64,10 +68,10 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 * Windows Media Audio
 * WAV/PCM
 
-## <a name="<a-id="output_format"></a>media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
+## <a name="a-idoutputformatamedia-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
 Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als Ausgabe für diesen Medienprozessor unterstützt werden.
 
-### <a name="output-container/file-formats"></a>Ausgabecontainer/Dateiformate
+### <a name="output-containerfile-formats"></a>Ausgabecontainer/Dateiformate
 * Adobe® Flash® F4V
 * MXF (OP1a, XDCAM und AS02)
 * DPP (einschließlich AS11)
@@ -96,7 +100,7 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media Audio
 
-## <a name="<a-id="closed_captioning"></a>support-for-closed-captioning"></a><a id="closed_captioning"></a>Unterstützung für Untertitel
+## <a name="a-idclosedcaptioningasupport-for-closed-captioning"></a><a id="closed_captioning"></a>Unterstützung für Untertitel
 Bei der Erfassung unterstützt **Medienencoder-Premium-Workflow** Folgendes:
 
 1. SCC-Dateien
@@ -124,6 +128,9 @@ Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjek
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

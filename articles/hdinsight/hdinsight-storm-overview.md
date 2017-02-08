@@ -236,6 +236,6 @@ Weitere Informationen zu Lösungen für Echtzeitanalysen mit Apache Storm in HDI
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

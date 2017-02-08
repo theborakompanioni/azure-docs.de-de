@@ -2,32 +2,36 @@
 title: Verwalten von VMs in einer VM-Skalierungsgruppe | Microsoft Docs
 description: Verwalten virtueller Computer in einer VM-Skalierungsgruppe mit Azure PowerShell.
 services: virtual-machine-scale-sets
-documentationcenter: ''
-author: davidmu1
+documentationcenter: 
+author: Thraka
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2016
-ms.author: davidmu
+ms.date: 09/27/2016
+ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
+
 
 ---
-# Verwalten virtueller Computer in einer VM-Skalierungsgruppe
-Verwalten Sie mit den in diesem Artikel beschriebenen Aufgaben VM-Ressourcen in Ihrer VM-Skalierungsgruppe.
+# <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>Verwalten virtueller Computer in einer VM-Skalierungsgruppe
+Verwalten Sie mit den in diesem Artikel beschriebenen Aufgaben VMs in Ihrer VM-Skalierungsgruppe.
 
-Alle Aufgaben im Zusammenhang mit dem Verwalten eines virtuellen Computers in einer Skalierungsgruppe erfordern, dass Sie die Instanz-ID des Computers kennen, den Sie verwalten möchten. Sie können mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com) die Instanz-ID eines virtuellen Computers in einer Skalierungsgruppe finden. Sie können mit dem Ressourcen-Explorer auch den Status der Aufgaben überprüfen, die Sie fertig stellen.
+Die meisten Aufgaben im Zusammenhang mit dem Verwalten eines virtuellen Computers in einer Skalierungsgruppe erfordern, dass Sie die Instanz-ID des Computers kennen, den Sie verwalten möchten. Sie können mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com) die Instanz-ID eines virtuellen Computers in einer Skalierungsgruppe finden. Sie können mit dem Ressourcen-Explorer auch den Status der Aufgaben überprüfen, die Sie fertig stellen.
 
-Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich beim Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
 
-## Anzeigen von Informationen zu einer VM-Skalierungsgruppe
-Sie können allgemeine Informationen über eine Skalierungsgruppe abrufen, was auch als Instanzansicht bezeichnet wird. Oder Sie können spezifischere Informationen abrufen, z.B. Informationen zu den Ressourcen in der Gruppe.
+## <a name="display-information-about-a-scale-set"></a>Anzeigen von Informationen zu einer Skalierungsgruppe
+Sie können allgemeine Informationen über eine Skalierungsgruppe abrufen, was auch als Instanzansicht bezeichnet wird. Oder Sie können spezifischere Informationen abrufen, z.B. Informationen zu den Ressourcen in der Skalierungsgruppe.
 
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, und *scale set name* durch den Namen der VM-Skalierungsgruppe, und führen Sie dann den Befehl aus:
+Ersetzen Sie die Werte in Anführungszeichen mit dem Namen Ihrer Ressourcengruppe und Skalierungsgruppe, und führen Sie den Befehl aus:
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
@@ -87,11 +91,11 @@ Folgendes sollte angezeigt werden:
         Settings                                : {"xmlCfg":"...","storageAccount":"astore"}
     ProvisioningState                           : Succeeded
 
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der VM-Skalierungsgruppe und *#* durch den Instanzbezeichner der VM, über die Sie Informationen abrufen möchten, und führen Sie dann den Befehl aus:
+Ersetzen Sie die Werte in Anführungszeichen mit dem Namen Ihrer Ressourcengruppe und Skalierungsgruppe. Ersetzen Sie *#* mit dem Instanzbezeichner des virtuellen Computers, über den Sie Informationen erhalten möchten, und führen Sie den Befehl aus:
 
     Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-Folgendes sollte angezeigt werden:
+Die Rückgabe sollte in etwa wie das folgende Beispiel aussehen:
 
     Id                            : /subscriptions/{sub-id}/resourceGroups/myrg1/providers/Microsoft.Compute/
                                     virtualMachineScaleSets/myvmss1/virtualMachines/0
@@ -140,12 +144,12 @@ Folgendes sollte angezeigt werden:
       Settings                    : {"xmlCfg":"...","storageAccount":"astore"}
       ProvisioningState           : Succeeded
 
-## Starten eines virtuellen Computers in einer Skalierungsgruppe
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie starten möchten, und führen Sie dann den Befehl aus:
+## <a name="start-a-virtual-machine-in-a-scale-set"></a>Starten eines virtuellen Computers in einer Skalierungsgruppe
+Ersetzen Sie die Werte in Anführungszeichen mit dem Namen Ihrer Ressourcengruppe und Skalierungsgruppe. Ersetzen Sie *#* mit dem Bezeichner des virtuellen Computers, den Sie starten möchten, und führen Sie den Befehl aus:
 
     Start-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **running** ist:
+Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **running**ist:
 
     "statuses": [
       {
@@ -161,14 +165,14 @@ Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **running** ist:
       }
     ]
 
-Sie können alle virtuellen Computer in der Gruppe starten, indem Sie nicht den -InstanceId-Parameter verwenden.
+Sie können alle virtuellen Computer in der Skalierungsgruppe starten, indem Sie nicht den -InstanceId-Parameter verwenden.
 
-## Stoppen eines virtuellen Computers in einer Skalierungsgruppe
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie beenden möchten, und führen Sie dann den Befehl aus:
+## <a name="stop-a-virtual-machine-in-a-scale-set"></a>Stoppen eines virtuellen Computers in einer Skalierungsgruppe
+Ersetzen Sie die Werte in Anführungszeichen mit dem Namen Ihrer Ressourcengruppe und Skalierungsgruppe. Ersetzen Sie *#* mit dem Bezeichner des virtuellen Computers, den Sie anhalten möchten, und führen Sie den Befehl aus:
 
     Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **deallocated** ist:
+Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **deallocated**ist:
 
     "statuses": [
       {
@@ -184,20 +188,34 @@ Im Ressourcen-Explorer sehen wir, dass der Status der Instanz **deallocated** is
       }
     ]
 
-Um einen virtuellen Computer zu beenden und dessen Zuordnung nicht aufzuheben, verwenden Sie den -StayProvisioned-Parameter. Sie können alle virtuellen Computer in der Gruppe beenden, indem Sie nicht den -InstanceId-Parameter verwenden.
+Um einen virtuellen Computer zu beenden und dessen Zuordnung nicht aufzuheben, verwenden Sie den -StayProvisioned-Parameter. Sie können alle virtuellen Computer in der Gruppe anhalten, indem Sie nicht den -InstanceId-Parameter verwenden.
 
-## Neustarten eines virtuellen Computers in einer Skalierungsgruppe
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie neu starten möchten, und führen Sie dann den Befehl aus:
+## <a name="restart-a-virtual-machine-in-a-scale-set"></a>Neustarten eines virtuellen Computers in einer Skalierungsgruppe
+Ersetzen Sie die Werte in Anführungszeichen mit dem Namen Ihrer Ressourcengruppe und der Skalierungsgruppe. Ersetzen Sie *#* mit dem Bezeichner des virtuellen Computers, den Sie neu starten möchten, und führen Sie den Befehl aus:
 
     Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
 Sie können alle virtuellen Computer in der Gruppe neu starten, indem Sie nicht den -InstanceId-Parameter verwenden.
 
-## Entfernen eines virtuellen Computers aus einer Skalierungsgruppe
-Ersetzen Sie in diesem Befehl *resource group name* durch den Namen der Ressourcengruppe, die die VM-Skalierungsgruppe enthält, *scale set name* durch den Namen der Skalierungsgruppe und *#* durch den Bezeichner der VM, die Sie aus der Skalierungsgruppe entfernen möchten, und führen Sie dann den Befehl aus:
+## <a name="remove-a-virtual-machine-from-a-scale-set"></a>Entfernen eines virtuellen Computers aus einer Skalierungsgruppe
+Ersetzen Sie die Werte in Anführungszeichen mit dem Namen Ihrer Ressourcengruppe und der Skalierungsgruppe. Ersetzen Sie *#* mit dem Bezeichner des virtuellen Computers, den Sie entfernen möchten, und führen Sie den Befehl aus:  
 
     Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
 
 Sie können die gesamte VM-Skalierungsgruppe entfernen, indem Sie nicht den -InstanceId-Parameter verwenden.
 
-<!---HONumber=AcomDC_0720_2016-->
+## <a name="change-the-capacity-of-a-scale-set"></a>Ändern der Kapazität einer Skalierungsgruppe
+Sie können virtuelle Computer hinzufügen oder entfernen, indem Sie die Kapazität der Gruppe ändern. Rufen Sie die Skalierungsgruppe auf, die Sie ändern möchten, legen Sie die Kapazität auf den gewünschten Wert fest, und aktualisieren Sie dann die Skalierungsgruppe mit der neuen Kapazität. Ersetzen Sie in diesen Befehlen die Werte in Anführungszeichen mit dem Namen Ihrer Ressourcengruppe und der Skalierungsgruppe.
+
+    $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+    $vmss.sku.capacity = 5
+    Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
+
+Wenn Sie virtuelle Computer aus der Skalierungsgruppe entfernen, werden die virtuellen Computer mit den höchsten IDs zuerst entfernt.
+
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

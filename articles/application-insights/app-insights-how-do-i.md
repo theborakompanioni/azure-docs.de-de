@@ -19,7 +19,7 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 
 
 ---
-# <a name="how-do-i-in-application-insights"></a>Gewusst wie – in Application Insights
+# <a name="how-do-i--in-application-insights"></a>Gewusst wie – in Application Insights
 ## <a name="get-an-email-when-"></a>Wie erhalte ich eine E-Mail-Nachricht, wenn...
 ### <a name="email-if-my-site-goes-down"></a>E-Mail, wenn die Website nicht mehr funktioniert
 Richten Sie einen [Webtest zur Verfügbarkeit](app-insights-monitor-web-app-availability.md)ein.

@@ -1,12 +1,12 @@
 ---
 title: 'Schritt 3: Erstellen eines neuen Machine Learning-Experiments | Microsoft Docs'
-description: 'Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 3: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio.'
+description: "Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 3: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ec6ca6b1f06223b1ce3d38e22117e63f438859ce
+
 
 ---
-# <a name="walkthrough-step-3:-create-a-new-azure-machine-learning-experiment"></a>Exemplarische Vorgehensweise, Schritt 3: Erstellen eines neuen Azure Machine Learning-Experiments
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Exemplarische Vorgehensweise, Schritt 3: Erstellen eines neuen Azure Machine Learning-Experiments
 Dies ist der dritte Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Erstellen eines Machine Learning-Arbeitsbereichs](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -40,7 +44,7 @@ Der nächste Schritt in dieser exemplarischen Vorgehensweise ist die Erstellung 
 4. Suchen Sie das Dataset, das Sie unter **Meine Datasets** erstellt haben, und ziehen Sie es in den Bereich. Sie können auch nach dem Dataset suchen, indem Sie den Namen in das Feld **Suchen** oberhalb der Palette eingeben.  
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
-Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen, indem Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten) klicken und die Option **Visualize**auswählen.  
+Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen, indem Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten) klicken und die Option **Visualize**auswählen.  
 
 Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.*) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn später das Modell in einem Webdienst veröffentlicht wird, kann der Benutzer des Diensts die Spalten anhand der Überschriften auch leichter identifizieren.  
 
@@ -67,9 +71,9 @@ Zum Verwenden von [Edit Metadata][edit-metadata] müssen Sie zuerst die zu ände
 5. Wählen Sie im Dialogfeld **Select columns** in **Available Columns** alle Zeilen aus, und klicken Sie auf „>“, um sie in **Selected Columns** zu verschieben.
    Das Dialogfeld sollte wie folgt aussehen: ![Spaltenauswahl, alle Spalten ausgewählt][4]
 6. Klicken Sie auf das Häkchen **OK** .
-7. Suchen Sie im Bereich **Properties** nach dem Parameter **New column name**. Geben Sie in diesem Feld eine Liste der Namen für die 21 Spalten im Dataset ein, durch Kommas getrennt und in der Reihenfolge der Spalten. Die Spaltennamen können Sie der Datasetdokumentation auf der UCI-Website entnehmen, oder Sie können einfach die folgende Liste kopieren und einfügen:  
+7. Suchen Sie im Bereich **Properties** nach dem Parameter **New column name**. Geben Sie in diesem Feld eine Liste der Namen für die 21 Spalten im Dataset ein, durch Kommas getrennt und in der Reihenfolge der Spalten. Die Spaltennamen können Sie der Datasetdokumentation auf der UCI-Website entnehmen, oder Sie können einfach die folgende Liste kopieren und einfügen:  
    
-         Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+       Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    
    Der Eigenschaftenbereich sieht folgendermaßen aus:
    
@@ -89,7 +93,7 @@ Dafür wird das Modul [Split Data][split] verwendet.
 2. Standardmäßig beträgt das Aufteilungsverhältnis 0,5, und der Parameter **Zufällige Aufteilung** ist festgelegt. Das bedeutet, dass eine zufällig ausgewählte Hälfte der Daten über einen Port des Moduls [Split Data][split] ausgegeben wird, die andere Hälfte über den anderen Port. Sie können diese Werte und den Parameter **Random seed** anpassen, um die Aufteilung zwischen Trainings- und Bewertungsdaten zu ändern. Für dieses Beispiel bleiben die Werte unverändert.
    
    > [!TIP]
-   > Die Eigenschaft **Fraction of rows in the first output dataset** bestimmt, welcher Anteil der Daten über den linken Ausgabeport ausgegeben werden. Wenn Sie z. B. ein Aufteilungsverhältnis von 0,7 festlegen, werden 70 % der Daten über den linken Port und 30 % der Daten über den rechten Port ausgegeben.  
+   > Die Eigenschaft **Fraction of rows in the first output dataset** bestimmt, welcher Anteil der Daten über den linken Ausgabeport ausgegeben werden. Wenn Sie z. B. ein Aufteilungsverhältnis von 0,7 festlegen, werden 70 % der Daten über den linken Port und 30 % der Daten über den rechten Port ausgegeben.  
    > 
    > 
 3. Doppelklicken Sie auf das Modul [Split Data][split], und geben Sie den Kommentar „Aufteilung zwischen Trainings- und Testdaten 50 %“ ein. 
@@ -104,11 +108,11 @@ Für diese Replikation kann der R-Code verwendet werden:
 2. Doppelklicken Sie auf das Modul [Execute R Script][execute-r-script], und geben Sie den Kommentar „Kostenanpassung festlegen“ ein.
 3. Löschen Sie im Bereich mit den **Eigenschaften** den Standardtext im Parameter **R Script**, und geben Sie dieses Skript ein:
    
-         dataset1 <- maml.mapInputPort(1)
-         data.set<-dataset1[dataset1[,21]==1,]
-         pos<-dataset1[dataset1[,21]==2,]
-         for (i in 1:5) data.set<-rbind(data.set,pos)
-         maml.mapOutputPort("data.set")
+       dataset1 <- maml.mapInputPort(1)
+       data.set<-dataset1[dataset1[,21]==1,]
+       pos<-dataset1[dataset1[,21]==2,]
+       for (i in 1:5) data.set<-rbind(data.set,pos)
+       maml.mapOutputPort("data.set")
 
 Wir müssen den gleichen Replikationsvorgang für jede Ausgabe des Moduls [Split Data][split] durchführen, damit die Trainings- und die Testdaten die gleiche Kostenanpassung haben.
 
@@ -143,6 +147,6 @@ Weitere Informationen zum Verwenden von R-Skripts in Ihren Experimenten finden S
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

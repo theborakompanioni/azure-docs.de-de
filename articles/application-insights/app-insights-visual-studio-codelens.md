@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 11/14/2016
 ms.author: daviste
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a42d55df223c25a26111bbcc05628ff7f4ff7204
+ms.sourcegitcommit: ebfed89674dc132bd5d93f34a8b5ed5ab12bd73e
+ms.openlocfilehash: 3e7cb9dfbc3a0985794294c94d331f12829c2bdc
 
 
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights-Telemetrie in Visual Studio CodeLens
-Methoden im Code Ihrer Web-App können mit Telemetrie zu Laufzeitausnahmen und Anforderungsantwortzeiten kommentiert werden. Wenn Sie [Visual Studio Application Insights](app-insights-overview.md) in Ihrer Anwendung installieren, wird die Telemetrie in Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) angezeigt. Hierbei handelt es sich um die praktischen Hinweise am Anfang jeder Funktion, die Aufschluss darüber geben, an wie vielen Stellen auf die Funktion verwiesen wird oder von wem sie zuletzt bearbeitet wurde.
+Methoden im Code Ihrer Web-App können mit Telemetrie zu Laufzeitausnahmen und Anforderungsantwortzeiten kommentiert werden. Wenn Sie [Azure Application Insights](app-insights-overview.md) in Ihrer Anwendung installieren, wird die Telemetrie in Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) angezeigt. Hierbei handelt es sich um die praktischen Hinweise am Anfang jeder Funktion, die Aufschluss darüber geben, an wie vielen Stellen auf die Funktion verwiesen wird oder von wem sie zuletzt bearbeitet wurde.
 
 ![CodeLens](./media/app-insights-visual-studio-codelens/codelens-overview.png)
 
@@ -82,6 +82,6 @@ Durch Klicken auf den CodeLens-Anforderungsindikator werden weitere Details ange
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

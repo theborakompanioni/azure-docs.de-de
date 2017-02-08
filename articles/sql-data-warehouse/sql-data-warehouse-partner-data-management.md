@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2b29a041a005a6d6aa60c45dc39f151647e35646
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 5e038b3675e0e196698419718433895f8d5ed45f
 
 
 ---
@@ -100,6 +100,6 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Int
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

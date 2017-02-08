@@ -87,6 +87,6 @@ Das Microsoft Azure-Portal vereinfacht die Erstellung und Verwaltung Ihrer Anwen
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

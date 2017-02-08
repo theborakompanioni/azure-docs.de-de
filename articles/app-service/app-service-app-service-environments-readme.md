@@ -1,48 +1,52 @@
 ---
-title: App Service-Umgebung | Microsoft Docs
-description: Was ist eine Azure App Service-Umgebung? Einführung in die App Service-Umgebung.
+title: App Service-Umgebung | Microsoft-Dokumentation
+description: "Was ist eine Azure App Service-Umgebung? Einführung in die App Service-Umgebung."
 keywords: Azure App Service-Umgebung, virtuelles Netzwerk, sicheres Netzwerk
 services: app-service
-documentationcenter: ''
-author: yochay
+documentationcenter: 
+author: stefsch
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: 1db5c057-3c56-4537-b580-cdd21fe3f3a7
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2016
+ms.date: 10/04/2016
 ms.author: stefsch
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ad067e4152191cd0b324775f16c5dedfeee4a071
+
 
 ---
-# Dokumentation zur App Service-Umgebung
-Eine App Service-Umgebung ist eine Option des [Premium][PremiumTier]-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung zahlreicher Azure App Service-Apps einschließlich [Web-Apps][WebApps], [Mobile Apps][MobileApps] und [API-Apps][APIApps] bereitstellt.
+# <a name="app-service-environment-documentation"></a>Dokumentation zur App Service-Umgebung
+Eine App Service-Umgebung ist eine Option des [Premium][PremiumTier]-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung zahlreicher Azure App Service-Apps einschließlich [Web-Apps][WebApps], [Mobile Apps][MobileApps] und [API-Apps][APIApps] bereitstellt.  
 
 App Service-Umgebungen sind ideal für Anwendungsworkloads mit folgenden Anforderungen:
 
 * Unterstützung sehr vieler Apps
 * Isolierung und sicherer Netzwerkzugriff
 
-Kunden können mehrere App Service-Umgebungen innerhalb einer einzelnen Azure-Region sowie über mehrere Azure-Regionen verteilt einrichten. Dadurch eignen sich App Service-Umgebungen hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
+Kunden können mehrere App Service-Umgebungen innerhalb einer einzelnen Azure-Region sowie über mehrere Azure-Regionen verteilt einrichten.  Dadurch eignen sich App Service-Umgebungen hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
 
-Aufgrund der Isolierung werden in App Service-Umgebungen nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt. Kunden haben präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung, indem sie [Netzwerksicherheitsgruppen][NetworkSecurityGroups] verwenden. Anwendungen können auch schnelle, sichere Verbindungen über virtuelle Netzwerke zu lokalen Unternehmensressourcen einrichten.
+Aufgrund der Isolierung werden in App Service-Umgebungen nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt.  Kunden haben mit [Netzwerksicherheitsgruppen][NetworkSecurityGroups] präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung.  Anwendungen können auch schnelle, sichere Verbindungen über virtuelle Netzwerke zu lokalen Unternehmensressourcen einrichten.
 
-Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. In App Service-Umgebungen ausgeführte Apps haben Zugriff auf Ressourcen über [Standort-zu-Standort-][SiteToSite] VPN und [Azure ExpressRoute][ExpressRoute]-Verbindungen.
+Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen.  In App Service-Umgebungen ausgeführte Apps haben Zugriff auf Ressourcen über [Site-to-Site][SiteToSite]-VPN und [Azure ExpressRoute][ExpressRoute]-Verbindungen.
 
 * [Was ist eine App Service-Umgebung?](../app-service-web/app-service-app-service-environment-intro.md)
 * [Erstellen einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
 * [Erstellen von Apps in einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
 * [Erstellen und Verwenden eines internen Load Balancers mit App Service-Umgebungen](../app-service-web/app-service-environment-with-internal-load-balancer.md)
-* [Konfigurieren einer App Service-Umgebung](../app-service-web/app-service-web-configure-an-app-service-environment.md)
+* [Konfigurieren einer App Service-Umgebung](../app-service-web/app-service-web-configure-an-app-service-environment.md) 
 * [Skalieren von Apps in einer App Service-Umgebung](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 * [Netzwerksicherheit und -architektur](../app-service-web/app-service-app-service-environment-network-architecture-overview.md)
 
-## Anleitungen zur Vorgehensweise
+## <a name="how-tos"></a>Anleitungen
 [!INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
 
-## Videos
+## <a name="videos"></a>Videos
 [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON325/player]
 
 
@@ -59,4 +63,8 @@ Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webd
 [SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit CA PPM | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und CA PPM konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: ca9d5e71-e429-4891-8d10-3498e7210e89
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5bccef79845fc16c0154ec774817156f5be95884
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-ca-ppm"></a>Tutorial: Azure Active Directory-Integration mit CA PPM
+# <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>Tutorial: Azure Active Directory-Integration mit CA PPM
 In diesem Tutorial erfahren Sie, wie Sie CA PPM in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von CA PPM in Azure AD bietet die folgenden Vorteile:
@@ -25,7 +29,7 @@ Die Integration von CA PPM in Azure AD bietet die folgenden Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CA PPM anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit CA PPM konfigurieren zu können, benötigen Sie Folgendes:
@@ -229,6 +233,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „CA PPM“ klicken, sollten Sie aut
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

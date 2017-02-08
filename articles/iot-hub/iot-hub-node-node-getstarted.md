@@ -12,11 +12,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
+ms.date: 09/12/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
-ms.openlocfilehash: 5d005e3259333f79b9b9852e325864745ee54b84
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 6a4275b7fb7501fec4e98f87b09e20b2114b556b
 
 
 ---
@@ -27,7 +27,7 @@ Am Ende dieses Tutorials verfügen Sie über drei Node.js-Konsolen-Apps:
 
 * **CreateDeviceIdentity.js**: Hiermit werden eine Geräteidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden mit Ihrer simulierten Geräte-App erstellt.
 * **ReadDeviceToCloudMessages.js**: Hiermit wird die Telemetrie angezeigt, die Ihre simulierte Geräte-App sendet.
-* **SimulatedDevice.js**: Hiermit wird mithilfe der zuvor erstellten Geräteidentität eine Verbindung mit Ihrem IoT Hub hergestellt und jede Sekunde unter Verwendung des MQTT-Protokolls eine Telemetrienachricht gesendet.
+* **SimulatedDevice.js**: Hiermit wird mithilfe der zuvor erstellten Geräteidentität eine Verbindung mit Ihrem IoT Hub hergestellt und jede Sekunde unter Verwendung des AMQP-Protokolls eine Telemetrienachricht gesendet.
 
 > [!NOTE]
 > Im Artikel [IoT Hub SDKs][lnk-hub-sdks] finden Sie Informationen über die verschiedenen Azure IoT SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können.
@@ -44,7 +44,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 Sie haben nun Ihren IoT Hub erstellt. Sie verfügen über den IoT Hub-Hostnamen und die IoT Hub-Verbindungszeichenfolge, die Sie für die weiteren Schritte in diesem Tutorial benötigen.
 
 ## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteidentität in der Identitätsregistrierung Ihres IoT Hubs erstellt. Ein Gerät kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt **Identitätsregistrierung** des [IoT Hub-Entwicklerhandbuchs][lnk-devguide-identity]. Beim Ausführen dieser Konsolen-App werden eine eindeutige Geräte-ID und ein Schlüssel erstellt, mit denen sich das Gerät beim Senden von D2C-Nachrichten (Device-to-Cloud, Gerät-an-Cloud) beim IoT Hub identifizieren kann.
+In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteidentität in der Identitätsregistrierung Ihres IoT Hubs erstellt. Ein Gerät kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt **Identitätsregistrierung** des [Entwicklungsleitfadens für IoT Hub][lnk-devguide-identity]. Beim Ausführen dieser Konsolen-App werden eine eindeutige Geräte-ID und ein Schlüssel erstellt, mit denen sich das Gerät beim Senden von D2C-Nachrichten (Device-to-Cloud, Gerät-an-Cloud) beim IoT Hub identifizieren kann.
 
 1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **createdeviceidentity**. Erstellen Sie im Ordner **createdeviceidentity** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
@@ -109,11 +109,11 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Geräteide
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten (Device-to-Cloud) aus dem IoT Hub liest. Ein IoT-Hub macht einen mit [Event Hubs][lnk-event-hubs-overview] kompatiblen Endpunkt verfügbar, der Ihnen das Lesen von D2C-Nachrichten ermöglicht. Zur Vereinfachung wird in diesem Tutorial ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial] wird gezeigt, wie Sie D2C-Nachrichten mit Skalierung verarbeiten. Das Tutorial [Erste Schritte mit Event Hubs][lnk-eventhubs-tutorial] enthält weitere Informationen zum Verarbeiten der Nachrichten von Event Hubs und gilt für Endpunkte, die mit IoT Hub-Event Hubs kompatibel sind.
 
 > [!NOTE]
-> Der mit Event Hubs kompatible Endpunkt zum Lesen von D2C-Nachrichten verwendet immer das AMQP-Protokoll.
+> Der mit Event Hub kompatible Endpunkt zum Lesen von D2C-Nachrichten verwendet immer das AMQP-Protokoll.
 > 
 > 
 
-1. Erstellen Sie einen leeren Ordner mit dem Namen **readdevicetocloudmessages**. Erstellen Sie im Ordner **readdevicetocloudmessages** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **readdevicetocloudmessages**. Erstellen Sie im Ordner **readdevicetocloudmessages** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -149,7 +149,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten
       console.log('');
     };
     ```
-7. Fügen Sie den folgenden Code hinzu, um das **EventHubClient**-Element zu erstellen, öffnen Sie die Verbindung mit Ihrem IoT Hub, und erstellen Sie ein Receiver-Element für jede Partition. Bei dieser Anwendung wird beim Erstellen eines Receiver-Elements ein Filter verwendet, damit das Receiver-Element nur Nachrichten liest, die nach Beginn der Ausführung des Receiver-Elements an IoT Hub gesendet werden. Dies ist in einer Testumgebung hilfreich, damit Sie die Anzeige auf die aktuelle Gruppe von Nachrichten begrenzen können. In einer Produktionsumgebung sollte mit Ihrem Code sichergestellt werden, dass alle Nachrichten verarbeitet werden. Weitere Informationen finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial]:
+7. Fügen Sie den folgenden Code hinzu, um das **EventHubClient**-Element zu erstellen, öffnen Sie die Verbindung mit Ihrem IoT Hub, und erstellen Sie ein Receiver-Element für jede Partition. Bei dieser Anwendung wird beim Erstellen eines Receiver-Elements ein Filter verwendet, damit das Receiver-Element nur Nachrichten liest, die nach Beginn der Ausführung des Receiver-Elements an IoT Hub gesendet werden. Dies ist in einer Testumgebung hilfreich, damit Sie die Anzeige auf die aktuelle Gruppe von Nachrichten begrenzen können. In einer Produktionsumgebung sollte mit Ihrem Code sichergestellt werden, dass alle Nachrichten verarbeitet werden. Weitere Informationen hierzu finden Sie im Tutorial [Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-process-d2c-tutorial]:
    
     ```
     var client = EventHubClient.fromConnectionString(connectionString);
@@ -171,23 +171,23 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die D2C-Nachrichten
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die ein Gerät simuliert, mit dem D2C-Nachrichten (Device-to-Cloud) an einen IoT Hub gesendet werden.
 
-1. Erstellen Sie einen leeren Ordner mit dem Namen **simulateddevice**. Erstellen Sie im Ordner **simulateddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulateddevice**. Erstellen Sie im Ordner **simulateddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
     ```
-2. Führen Sie an der Eingabeaufforderung im Ordner **simulateddevice** den folgenden Befehl aus, um das Geräte-SDK-Paket **azure-iot-device** und das Paket **azure-iot-device-mqtt** zu installieren:
+2. Führen Sie an der Eingabeaufforderung im Ordner **simulateddevice** den folgenden Befehl aus, um das Dienst-SDK-Paket **azure-iot-device** und das Paket **azure-iot-device-amqp** zu installieren:
    
     ```
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-amqp --save
     ```
-3. Erstellen Sie mit einem Text-Editor im Ordner **simulateddevice** die Datei **SimulatedDevice.js**.
+3. Erstellen Sie mit einem Text-Editor im Ordner **simulateddevice** die neue Datei **SimulatedDevice.js**.
 4. Fügen Sie am Anfang der Datei **SimulatedDevice.js** die folgenden `require`-Anweisungen hinzu:
    
     ```
     'use strict';
    
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var clientFromConnectionString = require('azure-iot-device-amqp').clientFromConnectionString;
     var Message = require('azure-iot-device').Message;
     ```
 5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz. Ersetzen Sie **{youriothostname}** durch den Namen des IoT Hubs, den Sie im Abschnitt *Erstellen eines IoT Hubs* erstellt haben. Ersetzen Sie **{yourdevicekey}** durch den Geräteschlüsselwert, den Sie im Abschnitt *Erstellen einer Geräteidentität* generiert haben:
@@ -207,7 +207,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die ein Gerät
       };
     }
     ```
-7. Erstellen Sie einen Rückruf, und verwenden Sie die Funktion **setInterval** , um jede Sekunde eine Nachricht an Ihren IoT Hub zu senden:
+7. Erstellen Sie einen Rückruf, und verwenden Sie die Funktion **setInterval** , um jede Sekunde eine neue Nachricht an Ihren IoT Hub zu senden:
    
     ```
     var connectCallback = function (err) {
@@ -235,7 +235,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die ein Gerät
 9. Speichern und schließen Sie die Datei **SimulatedDevice.js** .
 
 > [!NOTE]
-> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Transient Fault Handling (Behandeln vorübergehender Fehler)][lnk-transient-faults] beschrieben.
+> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler][lnk-transient-faults] beschrieben.
 > 
 > 
 
@@ -296,6 +296,6 @@ Informationen dazu, wie Sie Ihre IoT-Lösung erweitern und Ihre D2C-Nachrichten 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,19 +1,23 @@
 ---
 title: Verwenden von PowerShell zum Verwalten von Service Bus- und Event Hubs-Ressourcen | Microsoft Docs
 description: Verwenden von PowerShell zum Erstellen und Verwalten von Service Bus- und Event Hubs-Ressourcen
-services: service-bus,event-hubs
+services: service-bus-messaging,event-hubs
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: f6436f6f-2156-41ea-a4ca-08cfaecbb778
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
+ms.openlocfilehash: 41bef0e62c86e5cc3c27d02702a1b330fc76c915
+
 
 ---
 # <a name="use-powershell-to-manage-service-bus-and-event-hubs-resources"></a>Verwenden von PowerShell zum Verwalten von Service Bus- und Event Hubs-Ressourcen
@@ -22,11 +26,11 @@ Microsoft Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellu
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie beginnen, benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][], [Spezielle Angebote][Spezielle Angebote] oder [Erstellen Sie noch heute Ihr kostenloses Azure-Konto][].
-* Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][Installieren und Konfigurieren von Azure PowerShell].
+* Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][purchase options], [Spezielle Angebote][member offers] oder [Erstellen Sie noch heute Ihr kostenloses Azure-Konto][free account].
+* Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][Install and configure Azure PowerShell].
 * Allgemeine Kenntnisse über PowerShell-Skripts, NuGet-Pakete und .NET Framework.
 
-## <a name="include-a-reference-to-the-.net-assembly-for-service-bus"></a>Einfügen eines Verweises auf die .NET-Assembly für Service Bus
+## <a name="include-a-reference-to-the-net-assembly-for-service-bus"></a>Einfügen eines Verweises auf die .NET-Assembly für Service Bus
 Es gibt eine begrenzte Anzahl von PowerShell-Cmdlets zur Verwaltung von Service Bus. Für die Bereitstellung von Entitäten, die nicht über die vorhandenen Cmdlets verfügbar gemacht werden, können Sie den .NET-Client für Service Bus aus PowerShell heraus verwenden, indem Sie auf das [Service Bus-NuGet-Paket] verweisen.
 
 Sie müssen zunächst sicherstellen, dass Ihr Skript die Assembly **Microsoft.ServiceBus.dll** findet, die zusammen mit dem NuGet-Paket installiert wird. Aus Gründen der Flexibilität führt das Skript folgende Schritte aus:
@@ -109,7 +113,7 @@ Dieser Teil des Skripts führt Folgendes aus:
     ```
 
 ## <a name="provisioning-other-service-bus-entities"></a>Bereitstellen weiterer Service Bus-Entitäten
-Um weitere Entitäten wie etwa Warteschlangen, Themen und Event Hubs bereitzustellen, können Sie die [.NET-API für Service Bus][] verwenden. Am Ende dieses Artikels finden Sie einige ausführlichere Beispiele, einschließlich anderer Entitäten.
+Um weitere Entitäten wie etwa Warteschlangen, Themen und Event Hubs bereitzustellen, können Sie die [.NET-API für Service Bus][.NET API for Service Bus] verwenden. Am Ende dieses Artikels finden Sie einige ausführlichere Beispiele, einschließlich anderer Entitäten.
 
 ### <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 In diesem Teil des Skripts werden vier weitere lokale Variablen erstellt. Diese Variablen werden zum Instanziieren eines `EventHubDescription` -Objekts verwendet. Das Skript führt Folgendes aus:
@@ -255,18 +259,18 @@ Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
 
 <!--Anchors-->
 
-[Kaufoptionen]: http://azure.microsoft.com/pricing/purchase-options/
-[Spezielle Angebote]: http://azure.microsoft.com/pricing/member-offers/
-[Kostenloses Konto]: http://azure.microsoft.com/pricing/free-trial/
+[purchase options]: http://azure.microsoft.com/pricing/purchase-options/
+[member offers]: http://azure.microsoft.com/pricing/member-offers/
+[free account]: http://azure.microsoft.com/pricing/free-trial/
 [Service Bus-NuGet-Paket]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
-[.NET API für Servicebus]: https://msdn.microsoft.com/en-us/library/azure/mt419900.aspx
-[Installieren und Konfigurieren von Azure PowerShell]: ../powershell-install-configure.md
+[.NET API for Service Bus]: https://msdn.microsoft.com/en-us/library/azure/mt419900.aspx
+[Install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

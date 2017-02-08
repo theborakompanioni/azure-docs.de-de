@@ -1,12 +1,12 @@
 ---
-title: Übersicht über das Skript des Bereitstellungsprojekts für Azure-Ressourcengruppen | Microsoft Docs
-description: Beschreibt die Funktionsweise des PowerShell-Skripts im Bereitstellungsprojekt für Azure-Ressourcengruppen.
+title: "Übersicht über das Skript des Bereitstellungsprojekts für Azure-Ressourcengruppen | Microsoft Docs"
+description: "Beschreibt die Funktionsweise des PowerShell-Skripts im Bereitstellungsprojekt für Azure-Ressourcengruppen."
 services: visual-studio-online
 documentationcenter: na
 author: tfitzmac
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: fecfb74f-363f-4cc8-9743-36e5ddd879c0
 ms.service: azure-resource-manager
 ms.devlang: multiple
 ms.topic: article
@@ -14,12 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2016
 ms.author: tomfitz
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a0695e51b595874ce3d4ccd2dca863e883e2840b
+
 
 ---
-# Übersicht über das Skript des Bereitstellungsprojekts für Azure-Ressourcengruppen
+# <a name="overview-of-the-azure-resource-group-project-deployment-script"></a>Übersicht über das Skript des Bereitstellungsprojekts für Azure-Ressourcengruppen
 Bereitstellungsprojekte für Azure-Ressourcengruppen helfen Ihnen beim Staging und Bereitstellen von Dateien und anderen Artefakten in Azure. Wenn Sie ein Azure-Ressourcen-Manager-Bereitstellungsprojekt in Visual Studio erstellen, wird dem Projekt ein PowerShell-Skript namens **Deploy-AzureResourceGroup.ps1** hinzugefügt. Dieses Thema enthält Details zur Funktionsweise dieses Skripts und sowie zur Ausführung sowohl innerhalb als auch außerhalb von Visual Studio.
 
-## Wie funktioniert das Skript?
+## <a name="what-does-the-script-do"></a>Wie funktioniert das Skript?
 Das Skript „Deploy-AzureResourceGroup.ps1“ führt zwei Aktionen aus, die für den Bereitstellungsworkflow von Bedeutung sind.
 
 * Hochladen von Dateien oder Artefakten, die für die Vorlagenbereitstellung erforderlich sind
@@ -27,13 +31,13 @@ Das Skript „Deploy-AzureResourceGroup.ps1“ führt zwei Aktionen aus, die fü
 
 Der erste Teil des Skripts lädt die Dateien und Artefakte hoch, und das letzte Cmdlet in das Skript stellt die Vorlage bereit. Wenn beispielsweise eine virtuelle Maschine mit einem Skript konfiguriert werden muss, lädt das Bereitstellungsskript zunächst das Konfigurationsskript sicher in ein Azure-Speicherkonto hoch. Dadurch wird es für den Azure-Ressourcen-Manager zur Konfiguration der virtuellen Maschine während der Bereitstellung verfügbar.
 
-Da nicht alle Vorlagenbereitstellungen das Hochladen zusätzlicher Elemente erfordern, wird ein Switch-Parameter namens *UploadArtifacts* ausgewertet. Wenn Artefakte hochgeladen werden müssen, geben Sie beim Aufrufen des Skripts den Switch *UploadArtifacts* an. Beachten Sie, dass die Hauptvorlagendatei und die Parameterdatei nicht hochgeladen werden müssen. Nur andere Dateien, z. B. Konfigurationsskripts, geschachtelte Bereitstellungsvorlagen und Anwendungsdateien müssen übertragen werden.
+Da nicht alle Vorlagenbereitstellungen das Hochladen zusätzlicher Elemente erfordern, wird ein Switch-Parameter namens *UploadArtifacts* ausgewertet. Wenn Artefakte hochgeladen werden müssen, geben Sie beim Aufrufen des Skripts den Switch *UploadArtifacts* an. Beachten Sie, dass die Hauptvorlagendatei und die Parameterdatei nicht hochgeladen werden müssen. Nur andere Dateien, z. B. Konfigurationsskripts, geschachtelte Bereitstellungsvorlagen und Anwendungsdateien müssen übertragen werden.
 
-## Ausführliche Skriptbeschreibung
+## <a name="detailed-script-description"></a>Ausführliche Skriptbeschreibung
 Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure PowerShell-Skripts „Deploy-AzureResourceGroup.ps1“.
 
 > [!NOTE]
-> Hier wird Version 1.0 des Skripts „Deploy-AzureResourceGroup.ps1“ beschrieben.
+> Hier wird Version 1.0 des Skripts „Deploy-AzureResourceGroup.ps1“ beschrieben.
 > 
 > 
 
@@ -57,7 +61,7 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
    
    | Parameter | Beschreibung |
    | --- | --- |
-   | $ResourceGroupLocation |Die Region bzw. der Standort des Rechenzentrums für die Ressourcengruppe, z. B. **Westen der USA** oder **Ostasien**. |
+   | $ResourceGroupLocation |Die Region bzw. der Standort des Rechenzentrums für die Ressourcengruppe, z.B. **USA, Westen** oder **Asien, Osten**. |
    | $ResourceGroupName |Name der Azure-Ressourcengruppe |
    | $UploadArtifacts |Ein binärer Wert, der angibt, ob Artefakte aus dem System in Azure hochgeladen werden müssen |
    | $StorageAccountName |Name des Azure-Speicherkontos, in das Ihre Artefakte hochgeladen werden |
@@ -67,16 +71,16 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
    | $TemplateParametersFile |Pfad zur Parameterdatei (`<app name>.parameters.json`) in Ihrem Azure-Ressourcengruppenprojekt |
    | $ArtifactStagingDirectory |Der Pfad auf dem System, in dem Artefakte lokal hochgeladen werden, einschließlich des Stammordners des PowerShell-Skripts Dieser Pfad kann absolut oder relativ zum Skriptspeicherort sein. |
    | $AzCopyPath |Der Pfad, in den das Tool „AzCopy.exe“ die ZIP-Dateien kopiert, einschließlich des Stammordners des PowerShell-Skripts. Dieser Pfad kann absolut oder relativ zum Skriptspeicherort sein. |
-   | $DSCSourceFolder |Der Pfad für den DSC (Desired State Configuration)-Quellordner, einschließlich des Stammordners des PowerShell-Skripts. Dieser Pfad kann absolut oder relativ zum Skriptspeicherort sein. Weitere Informationen finden Sie ggf. unter [Einführung in die Azure PowerShell-Erweiterung DSC (Desired State Configuration)](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx). |
+   | $DSCSourceFolder |Der Pfad für den DSC (Desired State Configuration)-Quellordner, einschließlich des Stammordners des PowerShell-Skripts. Dieser Pfad kann absolut oder relativ zum Skriptspeicherort sein. Weitere Informationen finden Sie ggf. unter [Introducing the Azure PowerShell DSC (Desired State Configuration) extension](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx) (Einführung in die Azure PowerShell-Erweiterung DSC (Desired State Configuration)). |
 2. Überprüfen Sie, ob Artefakte in Azure hochgeladen werden müssen. Wenn dies nicht der Fall ist, fahren Sie mit Schritt 11 fort. Andernfalls führen Sie die folgenden Schritte aus:
-3. Konvertieren Sie alle Variablen mit relativen Pfade in absolute Pfade. Ändern Sie z. B. einen Pfad wie `..\Tools\AzCopy.exe` zu `C:\YourFolder\Tools\AzCopy.exe`. Initialisieren Sie außerdem die Variablen *ArtifactsLocationName* und *ArtifactsLocationSasTokenName* auf NULL. *ArtifactsLocation* und *SaSToken* können als Parameter für die Vorlage verwendet werden. Wenn nach dem Lesen in der Parameterdatei ihre Werte NULL sind, generiert das Skript die Werte für sie.
+3. Konvertieren Sie alle Variablen mit relativen Pfade in absolute Pfade. Ändern Sie z. B. einen Pfad wie `..\Tools\AzCopy.exe` zu `C:\YourFolder\Tools\AzCopy.exe`. Initialisieren Sie außerdem die Variablen *ArtifactsLocationName* und *ArtifactsLocationSasTokenName* auf NULL. *ArtifactsLocation* und *SaSToken* können als Parameter für die Vorlage verwendet werden. Wenn nach dem Lesen in der Parameterdatei ihre Werte NULL sind, generiert das Skript die Werte für sie.
    
-   Die Azure-Tools verwenden die Parameterwerte *\_artifactsLocation* und *\_artifactsLocationSasToken* in der Vorlage zur Verwaltung von Artefakten. Wenn das PowerShell-Skript Parameter mit diesen Namen findet, die Parameterwerte jedoch nicht bereitgestellt sind, lädt das Skript die Artefakte hoch und gibt die entsprechenden Werte für diese Parameter zurück. Anschließend übergibt es die Werte über `@OptionsParameters` an das Cmdlet.
+   Die Azure-Tools verwenden die Parameterwerte* _artifactsLocation* und *_artifactsLocationSasToken* in der Vorlage zur Verwaltung von Artefakten. Wenn das PowerShell-Skript Parameter mit diesen Namen findet, die Parameterwerte jedoch nicht bereitgestellt sind, lädt das Skript die Artefakte hoch und gibt die entsprechenden Werte für diese Parameter zurück. Anschließend übergibt es die Werte über `@OptionsParameters`an das Cmdlet.
    
    | Variable | Beschreibung |
    | --- | --- |
    | ArtifactsLocationName |Der Pfad, in dem sich die Azure-Artefakte befinden |
-   | ArtifactsLocationSasTokenName |Der Name des vom Skript zur Authentifizierung bei Service Bus verwendeten SAS (Shared Access Signature)-Tokens Weitere Informationen finden Sie unter [SAS-Authentifizierung (Shared Access Signature) mit Service Bus](service-bus/service-bus-shared-access-signature-authentication.md). |
+   | ArtifactsLocationSasTokenName |Der Name des vom Skript zur Authentifizierung bei Service Bus verwendeten SAS (Shared Access Signature)-Tokens Weitere Informationen finden Sie unter [Shared Access Signature Authentication with Service Bus](service-bus-messaging/service-bus-shared-access-signature-authentication.md) (SAS-Authentifizierung (Shared Access Signature) mit Service Bus). |
    
    ```
    if ($UploadArtifacts) {
@@ -91,7 +95,7 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
    $OptionalParameters.Add($ArtifactsLocationName, $null)
    $OptionalParameters.Add($ArtifactsLocationSasTokenName, $null)
    ```
-4. Dieser Abschnitt überprüft, ob die Datei „<App-Name>.parameters.json“ (als „Parameterdatei“ bezeichnet) über einen übergeordneten Knoten mit dem Namen **Parameter** (im `else`-Block) verfügt. Andernfalls hat sie keinen übergeordneten Knoten. Beide Formate sind zulässig.
+4. Dieser Abschnitt überprüft, ob die Datei „<app name>.parameters.json“ (als „Parameterdatei“ bezeichnet) über einen übergeordneten Knoten mit dem Namen **Parameter** (im `else`-Block) verfügt. Andernfalls hat sie keinen übergeordneten Knoten. Beide Formate sind zulässig.
    
    ```
    if ($JsonParameters -eq $null) {
@@ -101,7 +105,7 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
          $JsonParameters = $JsonContent.parameters
      }
    ```
-5. Durchlaufen Sie die Auflistung der JSON-Parameter. Wenn „ *\_artifactsLocation* “ oder „ *\_artifactsLocationSasToken* “ ein Parameterwert zugewiesen wurde, geben Sie die Variable *$OptionalParameters* mit diesen Werten an. Dadurch wird verhindert, dass das Skript versehentlich Parameterwerte überschreibt, die Sie bereitstellen.
+5. Durchlaufen Sie die Auflistung der JSON-Parameter. Wenn *_artifactsLocation* oder *_artifactsLocationSasToken* ein Parameterwert zugewiesen wurde, geben Sie die Variable *$OptionalParameters* mit diesen Werten an. Dadurch wird verhindert, dass das Skript versehentlich Parameterwerte überschreibt, die Sie bereitstellen.
    
    ```
    $JsonParameters | Get-Member -Type NoteProperty | ForEach-Object {
@@ -140,7 +144,7 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
      $OptionalParameters[$ArtifactsLocationName] = $ArtifactsLocation
    }
    ```
-9. Verwenden Sie das Dienstprogramm **AzCopy** (im Order **Tools** Ihres Bereitstellungsprojekts für Azure-Ressourcengruppen), um Dateien aus Ihrem lokalen Speicherablagepfad in Ihr Azure-Onlinespeicherkonto zu kopieren. Wenn dieser Schritt fehlschlägt, beenden Sie das Skript, da die Bereitstellung ohne die erforderlichen Elemente wahrscheinlich nicht erfolgreich ist.
+9. Verwenden Sie das Dienstprogramm **AzCopy** (im Order **Tools** Ihres Bereitstellungsprojekts für Azure-Ressourcengruppen), um Dateien aus Ihrem lokalen Speicherablagepfad in Ihr Azure Storage-Onlinekonto zu kopieren. Wenn dieser Schritt fehlschlägt, beenden Sie das Skript, da die Bereitstellung ohne die erforderlichen Elemente wahrscheinlich nicht erfolgreich ist.
    
    ```
    # Use AzCopy to copy files from the local storage drop path to the storage account container
@@ -178,12 +182,12 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
          -Force -Verbose
      ```
 
-## Bereitstellung der Ressourcengruppe
-### So stellen Sie die Ressourcengruppe in Visual Studio bereit
-1. Wählen Sie im Kontextmenü Azure-Ressourcengruppenprojekts die Optionen **Bereitstellen** > **Neue Bereitstellung**.
+## <a name="deploy-the-resource-group"></a>Bereitstellung der Ressourcengruppe
+### <a name="to-deploy-the-resource-group-in-visual-studio"></a>So stellen Sie die Ressourcengruppe in Visual Studio bereit
+1. Wählen Sie im Kontextmenü des Azure-Ressourcengruppenprojekts die Optionen **Bereitstellen** > **Neue Bereitstellung**.
    
     ![][0]
-2. Wählen Sie im Dialogfeld **Für Ressourcengruppe bereitstellen** entweder eine vorhandene Ressourcengruppe aus der Dropdownliste zur Bereitstellung aus, oder wählen Sie **&lt;Neu erstellen…&gt;**, um eine neue Ressourcengruppe zu erstellen.
+2. Wählen Sie im Dialogfeld **Für Ressourcengruppe bereitstellen** entweder eine vorhandene Ressourcengruppe aus der Dropdownliste zur Bereitstellung aus, oder wählen Sie **&lt;Neu erstellen…&gt;**. , um eine neue Ressourcengruppe zu erstellen.
    
     ![][1]
 3. Wenn Sie dazu aufgefordert werden, geben Sie im Dialogfeld **Ressourcengruppe erstellen** einen Namen und einen Speicherort für die Ressourcengruppe ein und wählen dann die Schaltfläche **Erstellen**.
@@ -203,25 +207,25 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
    
     Das Bereitstellungsskript (Deploy-AzureResourceGroup.ps1) wird ausgeführt, und Ihre Vorlage sowie alle Artefakte werden in Azure bereitgestellt.
 
-### So stellen Sie die Ressourcengruppe mithilfe von PowerShell bereit
-Wenn Sie das Skript ohne den Visual Studio-Befehl und Benutzeroberfläche ausführen möchten, wählen Sie im Kontextmenü für das Skript die Option **Mit PowerShell ISE öffnen**.
+### <a name="to-deploy-the-resource-group-by-using-powershell"></a>So stellen Sie die Ressourcengruppe mithilfe von PowerShell bereit
+Wenn Sie das Skript ohne den Visual Studio-Befehl und Benutzeroberfläche ausführen möchten, wählen Sie im Kontextmenü für das Skript die Option **Mit PowerShell ISE öffnen**.
 
 ![][5]
 
-## Beispiele für die Bereitstellung von Befehlen
-### Bereitstellung mit Standardwerten
+## <a name="command-deployment-examples"></a>Beispiele für die Bereitstellung von Befehlen
+### <a name="deploy-using-default-values"></a>Bereitstellung mit Standardwerten
 In diesem Beispiel wird die Ausführung des Skripts mit den Standardwerten für Parameter veranschaulicht. (Da der Standortparameter keinen Standardwert aufweist, müssen Sie einen bereitstellen.)
 
 `.\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation eastus`
 
-### Bereitstellung durch Überschreiben der Standardwerte
+### <a name="deploy-overriding-the-default-values"></a>Bereitstellung durch Überschreiben der Standardwerte
 Dieses Beispiel veranschaulicht die Ausführung des Skripts zur Bereitstellung von Vorlagen- und Parameterdateien, die von den Standardwerten abweichen.
 
 ```
 .\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation eastus –TemplateFile ..\templates\AnotherTemplate.json –TemplateParametersFile ..\templates\AnotherTemplate.parameters.json
 ```
 
-### Bereitstellung durch Staging mithilfe von „UploadArtifacts“
+### <a name="deploy-using-uploadartifacts-for-staging"></a>Bereitstellung durch Staging mithilfe von „UploadArtifacts“
 Dieses Beispiel veranschaulicht die Ausführung des Skripts zum Hochladen von Artefakten aus dem Freigabeordner und zum Bereitstellen von nicht standardmäßigen Vorlagen.
 
 ```
@@ -234,10 +238,10 @@ Dieses Beispiel veranschaulicht die Ausführung des Skript in einer Azure PowerS
 $(Build.StagingDirectory)/AzureResourceGroup1/Scripts/Deploy-AzureResourceGroup.ps1 -StorageAccountName 'mystorage' -StorageAccountResourceGroupName 'Default-Storage-EastUS' -ResourceGroupName 'myResourceGroup' -ResourceGroupLocation 'eastus' -TemplateFile '..\templates\windowsvirtualmachine.json' -TemplateParametersFile '..\templates\windowsvirtualmachine.parameters.json' -UploadArtifacts -ArtifactStagingDirectory $(Build.StagingDirectory)
 ```
 
-## Nächste Schritte
-Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md).
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
 
-Weitere Beispiele zum Arbeiten mit Azure-Ressourcengruppenprojekten finden Sie unter [Bereitstellen und Verwalten von Azure-Ressourcen](https://github.com/Microsoft/HealthClinic.biz/wiki/Deploy-and-manage-Azure-resources) aus der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der Demo „HealthClinic.biz“ finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).
+Weitere Beispiele zum Arbeiten mit Azure-Ressourcengruppenprojekten finden Sie unter [Bereitstellen und Verwalten von Azure-Ressourcen](https://github.com/Microsoft/HealthClinic.biz/wiki/Deploy-and-manage-Azure-resources) aus der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect[-Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)(Schnellstarts zu Azure-Entwicklungstools).
 
 [0]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy1c.png
 [1]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy2bc.png
@@ -246,4 +250,8 @@ Weitere Beispiele zum Arbeiten mit Azure-Ressourcengruppenprojekten finden Sie u
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

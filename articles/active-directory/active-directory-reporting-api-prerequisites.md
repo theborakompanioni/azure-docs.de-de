@@ -1,12 +1,12 @@
 ---
 title: Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API | Microsoft Docs
-description: Erfahren Sie, welche Voraussetzungen für den Zugriff auf die Azure AD-Berichterstellungs-API gelten.
+description: "Erfahren Sie, welche Voraussetzungen für den Zugriff auf die Azure AD-Berichterstellungs-API gelten."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b0f23cc578fb946247d492b9dee92cf7a9daafa1
+
 
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API
@@ -111,7 +115,7 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/12.png) 
 
-### <a name="get-the-application's-client-id"></a>Abrufen der Client-ID der Anwendung
+### <a name="get-the-applications-client-id"></a>Abrufen der Client-ID der Anwendung
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com)auf **Active Directory**.
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/01.png) 
@@ -129,7 +133,7 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
    
     ![Registrieren einer Anwendung](./media/active-directory-reporting-api-prerequisites/13.png)
 
-### <a name="get-the-application's-client-secret"></a>Abrufen des geheimen Clientschlüssels der Anwendung
+### <a name="get-the-applications-client-secret"></a>Abrufen des geheimen Clientschlüssels der Anwendung
 Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen neuen Schlüssel erstellen und dessen Wert beim Speichern des neuen Schlüssels speichern, weil dieser Wert später nicht mehr abgerufen werden kann.
 
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com)auf **Active Directory**.
@@ -161,6 +165,9 @@ Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen ne
 * Möchten Sie programmgesteuert auf die Daten der Azure AD-Berichterstellungs-API zugreifen? Dann lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

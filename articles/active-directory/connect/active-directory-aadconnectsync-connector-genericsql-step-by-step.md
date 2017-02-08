@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/04/2017
 ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
@@ -34,7 +34,7 @@ Der generische SQL-Connector verwendet ODBC für die Verbindung mit dem Remotese
 
 1. Starten Sie das ODBC-Verwaltungshilfsprogramm auf Ihrem Server:   
    ![ODBC](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc.png)
-2. Wählen Sie die Registerkarte **Datei-DSN**. Klicken Sie auf **Hinzufügen...**.
+2. Wählen Sie die Registerkarte **Datei-DSN**. Klicken Sie auf **Hinzufügen...**.  
    ![ODBC 1](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc1.png)
 3. Der Standardtreiber funktioniert gut. Wählen Sie ihn also aus, und klicken Sie auf **Weiter>**.  
    ![ODBC 2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/odbc2.png)
@@ -87,7 +87,7 @@ Jetzt verfügen Sie über die benötigte Datei und können mit dem Erstellen des
    ![Ausführungsprofil 2](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile2.png)
 3. Wählen Sie die Partition **OBJECT=User**aus.  
    ![Ausführungsprofil 3](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile3.png)
-4. Wählen Sie **Tabelle** aus, und geben Sie **[USERS]** ein. Führen Sie einen Bildlauf zum Abschnitt für den Objekttyp mit mehreren Werten aus, und geben Sie die Daten wie in der folgenden Abbildung ein. Wählen Sie **Fertig stellen** , um den Schritt zu speichern.
+4. Wählen Sie **Tabelle** aus, und geben Sie **[USERS]** ein. Führen Sie einen Bildlauf zum Abschnitt für den Objekttyp mit mehreren Werten aus, und geben Sie die Daten wie in der folgenden Abbildung ein. Wählen Sie **Fertig stellen** , um den Schritt zu speichern.  
    ![Ausführungsprofil 4a](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile4a.png)  
    ![Ausführungsprofil 4b](./media/active-directory-aadconnectsync-connector-genericsql-step-by-step/runprofile4b.png)  
 5. Wählen Sie **Neuer Schritt**. Wählen Sie dieses Mal **OBJECT=Group**aus. Verwenden Sie auf der letzten Seite die Konfiguration wie in der folgenden Abbildung. Klicken Sie auf **Fertig stellen**.  

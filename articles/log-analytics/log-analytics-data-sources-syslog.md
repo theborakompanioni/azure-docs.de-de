@@ -1,19 +1,23 @@
 ---
 title: Syslog-Nachrichten in Log Analytics | Microsoft Docs
-description: Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.   Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden.
+description: "Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.   Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 724567b853bec19cb41ef6a78b7d25a665830897
+
 
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Syslog-Datenquellen in Log Analytics
@@ -69,7 +73,7 @@ Die Konfigurationsdatei für rsyslog befindet sich unter **/etc/rsyslog.d/95-oms
 
 Sie können eine Einrichtung entfernen, indem Sie ihren Abschnitt aus der Konfigurationsdatei entfernen.  Sie können die Schweregrade, die für eine bestimmte Einrichtung gesammelt werden, durch Ändern des Eintrags dieser Einrichtung beschränken.  Um z.B. die Einrichtung „user“ auf Nachrichten mit mindestens Fehlerschweregrad zu begrenzen, ändern Sie diese Zeile der Konfigurationsdatei wie folgt:
 
-    user.error  @127.0.0.1:25224
+    user.error    @127.0.0.1:25224
 
 
 #### <a name="syslog-ng"></a>syslog-ng
@@ -175,6 +179,9 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Sy
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
 * [Konfigurieren Sie Linux-Agents](log-analytics-linux-agents.md) zum Sammeln anderer Datentypen. 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

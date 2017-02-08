@@ -1,12 +1,12 @@
 ---
 title: Windows- und Linux-Leistungsindikatoren in Log Analytics | Microsoft Docs
-description: Daten aus Leistungsindikatoren werden von Log Analytics gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im OMS-Repository gespeichert werden und wie sie im OMS-Portal analysiert werden können.
+description: "Daten aus Leistungsindikatoren werden von Log Analytics gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im OMS-Repository gespeichert werden und wie sie im OMS-Portal analysiert werden können."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b4d326064059b42cf2bf059184066c9acb4dcfd0
+
 
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows- und Linux-Leistungsindikatoren in Log Analytics
@@ -98,6 +102,9 @@ Informationen zum Aggregieren von Leistungsdaten in einer Protokollsuche finden 
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 * Exportieren Sie gesammelte Daten nach [Power BI](log-analytics-powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,42 +1,44 @@
 ---
-title: Bewährte Methoden für die IoT-Sicherheit | Microsoft Docs
-description: Bewährte Methoden für die Sicherheit Ihrer IoT-Infrastruktur
+title: "Bewährte Methoden für die IoT-Sicherheit | Microsoft Docs"
+description: "Bewährte Methoden für die Sicherheit Ihrer IoT-Infrastruktur"
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: YuriDio
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 84f9ce2b-e8b5-4239-b262-13d0637efc2b
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2016
+ms.date: 10/17/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3cb4764b6c824790bf5864d2446435168db4d708
+
 
 ---
 [!INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
-## Nächste Schritte
+## <a name="see-also"></a>Siehe auch
 Weitere Informationen zum Schützen Ihrer IoT-Lösung finden Sie hier:
 
-* [IoT-Sicherheitsarchitektur][lnk-security-architecture]
+* [Internet der Dinge – Sicherheitsarchitektur][lnk-security-architecture]
 * [Schützen Ihrer IoT-Bereitstellung][lnk-security-deployment]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwerfen Ihrer Lösung][lnk-design]
-* [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
-* [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
-* [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
+* [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
 
 [lnk-security-architecture]: iot-hub-security-architecture.md
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
-[lnk-design]: iot-hub-guidance.md
-[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-[lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

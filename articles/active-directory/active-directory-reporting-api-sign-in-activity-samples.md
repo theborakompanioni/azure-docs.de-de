@@ -1,12 +1,12 @@
 ---
-title: Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API | Microsoft Docs
+title: "Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API | Microsoft Docs"
 description: Vorgehensweise zum Einstieg in die Azure Active Directory Berichterstellungs-API
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2016
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e6b1137c8ca33774ef9852b9441b541cf7723ebd
+
 
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Beispiele zur Azure Active Directory-Anmeldeaktivitätsbericht-API
@@ -84,6 +88,9 @@ Das Skript gibt die Ausgabe des Anmeldeberichts im JSON-Format zurück. Darüber
 * Eine vollständige Übersicht zur Verwendung der Azure Active Directory-Berichterstellungs-API finden Sie im Artikel [Erste Schritte mit der Azure Active Directory-Berichterstellungs-API](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

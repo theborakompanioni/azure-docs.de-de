@@ -1,19 +1,23 @@
 ---
 title: Protokollsuchen in Log Analytics | Microsoft Docs
-description: Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung.
+description: "Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
-manager: jwhit
-editor: ''
-
+manager: carmonm
+editor: 
+ms.assetid: 0d7b6712-1722-423b-a60f-05389cde3625
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/02/2017
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3e1810850651cff4680ea558178ebf92aeac4faa
+
 
 ---
 # <a name="log-searches-in-log-analytics"></a>Protokollsuchen in Log Analytics
@@ -176,8 +180,8 @@ Type=Event EventLog="Operations Manager" EventID:[2100..2199]
 
 > [!NOTE]
 > Die zu verwendende Bereichssyntax ist der Doppelpunkt (:) "Feld:Trennzeichen"  und *nicht* das Gleichheitszeichen (=). Schließen Sie das untere und obere Ende des Bereichs in eckige Klammern ein, und trennen Sie diese durch zwei Punkte (..).
-> 
-> 
+>
+>
 
 ## <a name="manipulate-search-results"></a>Bearbeiten von Suchergebnissen
 Wenn Sie nach Daten suchen, sollten Sie Ihre Suchabfrage verfeinern und die Ergebnisse gut kontrollieren können. Wenn Ergebnisse abgerufen werden, können Sie die Befehle anwenden, um sie zu verändern.
@@ -246,7 +250,7 @@ Dieser Befehl ist besonders nützlich, wenn Sie die Suchergebnisse steuern möch
 ## <a name="use-the-measure-command"></a>Verwenden des "Measure"-Befehls
 MEASURE ist einer der vielseitigsten Befehle von Log Analytics-Suchen. Sie können damit statistische *Funktionen* auf Ihre Daten anwenden und die Ergebnisse nach einem bestimmten Feld gruppieren. Es gibt mehrere statistische Funktionen, die "Measure" unterstützt.
 
-### <a name="measure-count()"></a>"Measure count()"
+### <a name="measure-count"></a>"Measure count()"
 Die erste statistische Funktion, die verwendet werden kann und leicht zu verstehen ist, ist die *count()* -Funktion.
 
 Ergebnisse aus einer beliebigen Suchabfrage wie z. B. `Type=Event` zeigen auf der linken Seite der Suchergebnisse Filter, die auch als Facetten bezeichnet werden. Die Filter zeigen eine Verteilung der Werte anhand eines bestimmten Felds für die Ergebnisse in der ausgeführten Suche an.
@@ -571,6 +575,8 @@ Weitere Informationen zu Protokollsuchen finden Sie hier:
 * Verwenden Sie [benutzerdefinierte Felder in Log Analytics](log-analytics-custom-fields.md) , um Protokollsuchen zu erweitern.
 * Lesen Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md) durch, um sich über alle Suchfelder und Facetten zu informieren, die in Log Analytics verfügbar sind.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

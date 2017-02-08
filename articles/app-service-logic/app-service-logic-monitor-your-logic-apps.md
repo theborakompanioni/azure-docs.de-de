@@ -1,12 +1,12 @@
 ---
-title: Überwachen Ihrer Logik-Apps in Azure App Service | Microsoft Docs
-description: Erfahren Sie, wie Sie die Ergebnisse Ihrer Logik-Apps überprüfen können.
+title: "Überwachen Ihrer Logik-Apps in Azure App Service | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie die Ergebnisse Ihrer Logik-Apps überprüfen können."
 author: jeffhollan
 manager: erikre
-editor: ''
+editor: 
 services: logic-apps
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: cc73caf6ffdc47199369112a5310a3f4dd0cc9bf
+
 
 ---
 # <a name="monitor-your-logic-apps"></a>Überwachen von Logik-Apps
@@ -134,6 +138,9 @@ Sie können diese Telemetrie aus dem Event Hub oder dem Speicher auch in anderen
 * [Erstellen einer Bereitstellungsvorlage für Logik-Apps](app-service-logic-create-deploy-template.md)
 * [Unternehmensintegrationsfeatures](app-service-logic-enterprise-integration-overview.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

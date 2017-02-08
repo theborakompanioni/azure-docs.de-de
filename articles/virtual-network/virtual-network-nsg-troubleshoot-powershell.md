@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 10a56e134f0e31e60758d6e616b771dabc0f4dad
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 13ffe90e03dbe99366fb4f6e2788ba7a3c968a30
 
 
 ---
@@ -44,7 +44,7 @@ Obwohl in diesem Beispiel TCP-Port 3389 verwendet wird, können anhand der folge
 ## <a name="detailed-troubleshooting-steps"></a>Ausführliche Schritte zur Problembehandlung
 Führen Sie die folgenden Schritte aus, um Probleme bei NSGs für einen virtuellen Computer zu beheben:
 
-1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 2. Geben Sie den folgenden Befehl ein, damit alle NSG-Regeln zurückgegeben werden, die auf die NIC *VM1-NIC1* in der Ressourcengruppe *RG1* angewendet werden:
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -201,6 +201,6 @@ Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Pu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -5,20 +5,23 @@ services: application-gateway
 documentationcenter: na
 author: georgewallace
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/09/2016
+ms.date: 11/16/2016
 ms.author: gwallace
+translationtype: Human Translation
+ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
+ms.openlocfilehash: 3e3e563f941ad4ad58f96b03e98f49a7d99844d9
+
 
 ---
-# Erstellen eines Anwendungsgateways mithilfe der Azure-CLI
-Für das Azure Application Gateway wird ein Load Balancer auf Schicht 7 (Anwendungsschicht) verwendet. Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet folgende Funktionen für die Anwendungsbereitstellung: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mithilfe der Azure-CLI
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-create-gateway-portal.md)
@@ -29,15 +32,19 @@ Für das Azure Application Gateway wird ein Load Balancer auf Schicht 7 (Anwendu
 > 
 > 
 
-## Voraussetzung: Installieren der Azure-Befehlszeilenschnittstelle
-Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](../xplat-cli-install.md) und sich [bei Azure anmelden](../xplat-cli-connect.md).
+Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet folgende Funktionen für die Anwendungsbereitstellung: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+
+## <a name="prerequisite-install-the-azure-cli"></a>Voraussetzung: Installieren der Azure-Befehlszeilenschnittstelle
+
+Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows (Azure CLI) installieren](../xplat-cli-install.md) und sich [bei Azure anmelden](../xplat-cli-connect.md). 
 
 > [!NOTE]
-> Wenn Sie über kein Azure-Konto verfügen, müssen Sie eines erstellen. Sie können sich [hier](../active-directory/sign-up-organization.md) für eine kostenlose Testversion registrieren.
+> Wenn Sie über kein Azure-Konto verfügen, müssen Sie eines erstellen. Sie können sich [hier](../active-directory/sign-up-organization.md)für eine kostenlose Testversion registrieren.
 > 
 > 
 
-## Szenario
+## <a name="scenario"></a>Szenario
+
 In diesem Szenario erfahren Sie, wie Sie ein Anwendungsgateway über das Azure-Portal erstellen.
 
 Dieses Szenario umfasst Folgendes:
@@ -54,15 +61,19 @@ Dieses Szenario umfasst Folgendes:
 > 
 > 
 
-## Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
+
 Für Azure Application Gateway ist ein eigenes Subnetz erforderlich. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass der Adressbereich für mehrere Subnetze ausreicht. Sobald Sie ein Anwendungsgateway in einem Subnetz bereitstellen, können nur zusätzliche Anwendungsgateways zum Subnetz hinzugefügt werden.
 
-## Anmelden an Azure
-Öffnen Sie die **Microsoft Azure-Eingabeaufforderung**, und melden Sie sich an.
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-    azure login
+Öffnen Sie die **Microsoft Azure-Eingabeaufforderung**, und melden Sie sich an. 
 
-Wenn Sie das vorherige Beispiel eingeben, erhalten Sie einen Code. Navigieren Sie in einem Browser zu https://aka.ms/devicelogin, und setzen Sie den Anmeldeprozess fort.
+```azurecli
+azure login
+```
+
+Wenn Sie das vorherige Beispiel eingeben, erhalten Sie einen Code. Navigieren Sie in einem Browser zu „https://aka.ms/devicelogin“, und setzen Sie den Anmeldeprozess fort.
 
 ![CMD mit Geräteanmeldung][1]
 
@@ -74,37 +85,57 @@ Wenn Sie den Code eingegeben haben, sind Sie angemeldet. Schließen Sie dann den
 
 ![Erfolgreich angemeldet][3]
 
-## Wechseln in den Ressource Manager-Modus
-    azure config mode arm
+## <a name="switch-to-resource-manager-mode"></a>Wechseln in den Ressource Manager-Modus
 
-## Ressourcengruppe erstellen
+```azurecli
+azure config mode arm
+```
+
+## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
+
 Vor dem Erstellen des Anwendungsgateways wird eine Ressourcengruppe erstellt, die das Anwendungsgateway enthält. Hier sehen Sie den Befehl:
 
-    azure group create -n AdatumAppGatewayRG -l eastus
+```azurecli
+azure group create -n AdatumAppGatewayRG -l eastus
+```
 
-## Erstellen eines virtuellen Netzwerks
-Sobald die Ressourcengruppe erstellt wurde, wird ein virtuelles Netzwerk für das Anwendungsgateway erstellt. Im folgenden Beispiel lautet der Adressraum 10.0.0.0/16, wie in den obigen Szenariohinweisen angegeben.
+## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-    azure network vnet create -n AdatumAppGatewayVNET -a 10.0.0.0/16 -g AdatumAppGatewayRG -l eastus
+Sobald die Ressourcengruppe erstellt wurde, wird ein virtuelles Netzwerk für das Anwendungsgateway erstellt.  Im folgenden Beispiel lautet der Adressraum 10.0.0.0/16, wie in den obigen Szenariohinweisen angegeben.
 
-## Erstellen eines Subnetzes
-Nach der Erstellung des virtuellen Netzwerks wird ein Subnetz für das Anwendungsgateway hinzugefügt. Wenn Sie ein Anwendungsgateway mit einer Web-App verwenden, die im selben virtuellen Netzwerk wie das Anwendungsgateway gehostet wird, lassen Sie ausreichend Platz für ein weiteres Subnetz.
+```azurecli
+azure network vnet create -n AdatumAppGatewayVNET -a 10.0.0.0/16 -g AdatumAppGatewayRG -l eastus
+```
 
-    azure network vnet subnet create -g AdatumAppGatewayRG -n Appgatewaysubnet -v AdatumAppGatewayVNET -a 10.0.0.0/28 
+## <a name="create-a-subnet"></a>Erstellen eines Subnetzes
 
-## Erstellen des Anwendungsgateways
+Nach der Erstellung des virtuellen Netzwerks wird ein Subnetz für das Anwendungsgateway hinzugefügt.  Wenn Sie ein Anwendungsgateway mit einer Web-App verwenden, die im selben virtuellen Netzwerk wie das Anwendungsgateway gehostet wird, lassen Sie ausreichend Platz für ein weiteres Subnetz.
+
+```azurecli
+azure network vnet subnet create -g AdatumAppGatewayRG -n Appgatewaysubnet -v AdatumAppGatewayVNET -a 10.0.0.0/28 
+```
+
+## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
+
 Sobald das virtuelle Netzwerk und das Subnetz erstellt wurden, sind die Voraussetzungen für das Anwendungsgateway erfüllt. Für den folgenden Schritt sind darüber hinaus ein zuvor exportiertes PFX-Zertifikat und das Kennwort für das Zertifikat erforderlich: Bei den für das Back-End verwendeten IP-Adressen handelt es sich um die IP-Adressen für Ihren Back-End-Server. Diese Werte können entweder private IPs im virtuellen Netzwerk, öffentliche IPs oder vollqualifizierte Domänennamen für Ihre Back-End-Server sein.
 
-    azure network application-gateway create -n AdatumAppGateway -l eastus -g AdatumAppGatewayRG -e AdatumAppGatewayVNET -m Appgatewaysubnet -r 134.170.185.46,134.170.188.221,134.170.185.50 -y c:\AdatumAppGateway\adatumcert.pfx -x P@ssw0rd -z 2 -a Standard_Medium -w Basic -j 443 -f Enabled -o 80 -i http -b https -u Standard
+```azurecli
+azure network application-gateway create -n AdatumAppGateway -l eastus -g AdatumAppGatewayRG -e AdatumAppGatewayVNET -m Appgatewaysubnet -r 134.170.185.46,134.170.188.221,134.170.185.50 -y c:\AdatumAppGateway\adatumcert.pfx -x P@ssw0rd -z 2 -a Standard_Medium -w Basic -j 443 -f Enabled -o 80 -i http -b https -u Standard
+```
 
+> [!NOTE]
+> Um eine Liste mit Parametern zu erhalten, die während der Erstellung bereitgestellt werden kann, führen Sie den folgenden Befehl aus: **azure network application-gateway create --help**.
+> 
+> 
 
+Mit diesem Beispiel wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Darüber hinaus wird die SSL-Auslagerung konfiguriert. Nach der erfolgreichen Bereitstellung können Sie diese Einstellungen an Ihre Anforderungen anpassen.
+Wenn Sie Ihre Webanwendung bereits mit dem Back-End-Pool in den vorherigen Schritten definiert haben, beginnt nach dem Erstellen der Lastenausgleich.
 
-Mit diesem Beispiel wird ein einfaches Anwendungsgateway mit Standardeinstellungen für Listener, Back-End-Pool, Back-End-HTTP-Einstellungen und Regeln erstellt. Darüber hinaus wird die SSL-Auslagerung konfiguriert. Nach der erfolgreichen Bereitstellung können Sie diese Einstellungen an Ihre Anforderungen anpassen. Wenn Sie Ihre Webanwendung bereits mit dem Back-End-Pool in den vorherigen Schritten definiert haben, beginnt nach dem Erstellen der Lastenausgleich.
+## <a name="next-steps"></a>Nächste Schritte
 
-## Nächste Schritte
-Unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-probe-portal.md) erfahren Sie, wie benutzerdefinierte Integritätstests erstellt werden.
+Unter [Erstellen eines benutzerdefinierten Integritätstests](application-gateway-create-probe-portal.md)
 
-Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) wird beschrieben, wie Sie die SSL-Auslagerung konfigurieren, damit Ihre Webserver nicht länger eine kostenintensive SSL-Entschlüsselung durchführen müssen.
+Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 
@@ -113,4 +144,8 @@ Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) wird b
 [2]: ./media/application-gateway-create-gateway-cli/figure2.png
 [3]: ./media/application-gateway-create-gateway-cli/figure3.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

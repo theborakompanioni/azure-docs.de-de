@@ -1,13 +1,13 @@
 ---
-title: Windows 10-Roamingeinstellungen – Referenz | Microsoft Docs
-description: Vollständige Liste mit allen Einstellungen, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird.
+title: "Windows 10-Roamingeinstellungen – Referenz | Microsoft Docs"
+description: "Vollständige Liste mit allen Einstellungen, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird."
 services: active-directory
 keywords: Enterprise State Roaming, Windows-Cloud
-documentationcenter: ''
+documentationcenter: 
 author: femila
 manager: swadhwa
 editor: curtand
-
+ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,13 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e38fd24edb0cb6cee0552a3cbdb282aae870d737
+
 
 ---
-# <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
-Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
+# <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
+Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
 
 ## <a name="devices-and-endpoints"></a>Geräte und Endpunkte
-Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, die unter Windows 10 vom Framework für die Synchronisierung, Sicherung und Wiederherstellung unterstützt werden.
+Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, die unter Windows 10 vom Framework für die Synchronisierung, Sicherung und Wiederherstellung unterstützt werden.
 
 | Kontotyp und Vorgang | Desktop | Mobile |
 | --- | --- | --- |
@@ -30,11 +34,11 @@ Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, d
 | Microsoft-Konto: Synchronisierung |Ja |Ja |
 | Microsoft-Konto: Sicherung/Wiederherstellung |Nein |Ja |
 
-## <a name="what-is-backup?"></a>Was ist die Sicherung?
-Windows-Einstellungen werden normalerweise standardmäßig synchronisiert. Einige Einstellungen werden aber nur gesichert, z. B. die Liste mit den installierten Anwendungen auf einem Gerät. Sicherungen können nur für mobile Geräte angewendet werden und sind zurzeit für Enterprise State Roaming-Benutzer nicht verfügbar. Bei der Sicherung wird ein Microsoft-Konto verwendet, die Einstellungen und Anwendungsdaten werden in OneDrive gespeichert. Wenn ein Benutzer die Synchronisierung auf dem Gerät mit der Einstellungen-App deaktiviert, werden die Anwendungsdaten, die normalerweise synchronisiert werden, nur noch gesichert. Auf Sicherungsdaten kann nur über den Wiederherstellungsvorgang während der ersten Ausführung eines neuen Geräts zugegriffen werden. Sicherungen können über die Geräteeinstellungen deaktiviert und über das OneDrive-Konto des Benutzers verwaltet und gelöscht werden.
+## <a name="what-is-backup"></a>Was ist die Sicherung?
+Windows-Einstellungen werden normalerweise standardmäßig synchronisiert. Einige Einstellungen werden aber nur gesichert, z. B. die Liste mit den installierten Anwendungen auf einem Gerät. Sicherungen können nur für mobile Geräte angewendet werden und sind zurzeit für Enterprise State Roaming-Benutzer nicht verfügbar. Bei der Sicherung wird ein Microsoft-Konto verwendet, die Einstellungen und Anwendungsdaten werden in OneDrive gespeichert. Wenn ein Benutzer die Synchronisierung auf dem Gerät mit der Einstellungen-App deaktiviert, werden die Anwendungsdaten, die normalerweise synchronisiert werden, nur noch gesichert. Auf Sicherungsdaten kann nur über den Wiederherstellungsvorgang während der ersten Ausführung eines neuen Geräts zugegriffen werden. Sicherungen können über die Geräteeinstellungen deaktiviert und über das OneDrive-Konto des Benutzers verwaltet und gelöscht werden.
 
 ## <a name="windows-settings-overview"></a>Übersicht über die Windows-Einstellungen
-Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einstellungssynchronisierung auf Windows 10-Geräten zu aktivieren oder zu deaktivieren.
+Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einstellungssynchronisierung auf Windows 10-Geräten zu aktivieren oder zu deaktivieren.
 
 * Design: Desktophintergrund, Benutzerkachel, Taskleistenposition usw. 
 * Internet Explorer-Einstellungen: Browserverlauf, eingegebene URLs, Favoriten usw. 
@@ -119,7 +123,7 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Sprache**: CHS WUBI – Eingabemodus für einzelne Zeichen |sync |X |Sprache |
 | **Sprache**: CHS WUBI – verbleibende Codierung des Kandidaten anzeigen |sync |X |Sprache |
 | **Sprache**: CHS WUBI – Signalton bei ungültigem 4-Code |sync |X |Sprache |
-| **Sprache**: CHS Bopomofo – CJK-Erweiterung A einschließen |sync |X |Sprache |
+| **Sprache**: CHS Bopomofo – CJK-Erweiterung A einschließen |sync |X |Sprache |
 | **Sprache**: Japanisches IME – Eingabevorhersage und benutzerdefinierte Wörter |sync |sync |Sprache |
 | **Sprache**: Koreanisches (KOR) IME |X |X |Sprache |
 | **Sprache**: Handschrifterkennung |X |X |Sprache |
@@ -166,6 +170,9 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 * [Roaming von Einstellungen und Daten – Häufig gestellte Fragen](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

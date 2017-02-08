@@ -2,35 +2,38 @@
 title: Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management
 description: Erfahren Sie, wie Sie Benachrichtigungen und E-Mail-Vorlagen in Azure API Management konfigurieren.
 services: api-management
-documentationcenter: ''
+documentationcenter: 
 author: steved0x
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: ee25f26d-4752-433b-af9c-3817db38aed5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2016
+ms.date: 10/25/2016
 ms.author: sdanie
+translationtype: Human Translation
+ms.sourcegitcommit: d99e2d885d56e3752a3b1caf51e52c801acaab52
+ms.openlocfilehash: 8e3c98108672dcd2ae48da7b2a9eeb174cee76e1
+
 
 ---
-# Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management
+# <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management
 API Management bietet die Möglichkeit, Benachrichtigungen über spezifische Ereignisse sowie die E-Mail-Vorlagen zu konfigurieren, die zur Kommunikation mit Administratoren und Entwicklern einer API Management-Instanz verwendet werden. Dieses Thema beschreibt die Konfiguration von Benachrichtigungen für verfügbare Ereignisse und bietet eine Übersicht über die Konfiguration der E-Mail-Vorlagen für diese Ereignisse.
 
 ## <a name="publisher-notifications"> </a>Konfigurieren von Herausgeberbenachrichtigungen
-Um Benachrichtigungen zu konfigurieren, klicken Sie im klassischen Azure-Portal für Ihren API Management-Dienst auf **Verwalten**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
+Um Benachrichtigungen zu konfigurieren, klicken Sie im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
 
 ![Herausgeberportal][api-management-management-console]
 
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] im Lernprogramm [Erste Schritte mit API Management][Erste Schritte mit API Management].
-> 
-> 
+> [!NOTE] 
+> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] im Tutorial [Erste Schritte mit Azure API Management][Erste Schritte mit Azure API Management].
 
-Klicken Sie auf **Benachrichtigungen** im Menü **API Management** auf der linken Seite, um die verfügbaren Benachrichtigungen anzuzeigen.
+Klicken Sie im Menü **API Management** auf der linken Seite auf **Benachrichtigungen**, um die verfügbaren Benachrichtigungen anzuzeigen.
 
-![Herausgeber-Benachrichtigungen][api-management-publisher-notifications]
+![Publisher Notifications][api-management-publisher-notifications]
 
 Die folgenden Ereignisse können für Benachrichtigungen konfiguriert werden.
 
@@ -50,15 +53,15 @@ Geben Sie die E-Mail-Adressen einfach in das Textfeld ein, um die zu benachricht
 
 Um die zu benachrichtigenden Benutzer zu konfigurieren, klicken Sie auf **Empfänger hinzufügen**, markieren Sie die Kontrollkästchen neben den entsprechenden Benutzern, und klicken Sie auf **OK**.
 
-> Beachten Sie, dass nur Administratoren in der Liste angezeigt werden.
-> 
-> 
+> [!NOTE] 
+> Nur Administratoren werden in der Liste angezeigt.
 
-Klicken Sie nach der Konfiguration der Benachrichtigungsempfänger auf **Speichern**, um die Änderungen zu übernehmen.
 
+Klicken Sie nach der Konfiguration der Benachrichtigungsempfänger auf **Speichern** , um die Änderungen zu übernehmen.
+
+> [!NOTE] 
 > Wenn Sie die Registerkarte **Publisher Notifications** verlassen, warnt Sie das Herausgeberportal über nicht gespeicherte Änderungen.
-> 
-> 
+
 
 ## <a name="email-templates"> </a>Konfigurieren von E-Mail-Vorlagen
 API Management enthält E-Mail-Vorlagen für die E-Mail-Nachrichten, die im Rahmen von Verwaltung und Nutzung des Diensts verschickt werden. Die folgenden E-Mail-Vorlagen werden angeboten.
@@ -76,11 +79,11 @@ API Management enthält E-Mail-Vorlagen für die E-Mail-Nachrichten, die im Rahm
 
 Diese Vorlagen können nach Belieben angepasst werden.
 
-Um die E-Mail-Vorlagen für Ihre API Management-Instanz anzuzeigen, klicken Sie auf **Benachrichtigungen** im Menü **API Management** auf der linken Seite, und wählen Sie die Registerkarte **E-Mail-Vorlagen** aus.
+Klicken Sie zum Anzeigen und Konfigurieren der E-Mail-Vorlagen für Ihre API Management-Instanz im Menü **API Management** auf der linken Seite auf **Benachrichtigungen**, und wählen Sie die Registerkarte **E-Mail-Vorlagen**.
 
 ![E-Mail-Vorlagen][api-management-email-templates]
 
-Wählen Sie eine Vorlage aus der **Vorlagen**-Dropdownliste aus, um diese anzuzeigen oder zu bearbeiten.
+Wählen Sie eine Vorlage aus der **Vorlagen** -Dropdownliste aus, um diese anzuzeigen oder zu bearbeiten.
 
 ![E-Mail-Vorlagenliste][api-management-email-templates-list]
 
@@ -92,11 +95,11 @@ Die **Parameter** aus der Liste können in den Betreff oder den Text eingefügt 
 
 Klicken Sie auf **Vorschau** oder auf **Test senden**, um eine Vorschau der E-Mail zu sehen oder eine Test-E-Mail zu verschicken.
 
-> Beachten Sie, dass die Parameter in der Vorschau und beim Testversand nicht durch tatsächliche Werte ersetzt werden.
-> 
-> Klicken Sie auf **Speichern**, um die Änderungen an der E-Mail-Vorlage zu speichern, oder auf **Abbrechen**, um die Änderungen zu verwerfen.
-> 
-> 
+> [!NOTE] 
+> Die Parameter in der Vorschau und beim Testversand werden nicht durch tatsächliche Werte ersetzt.
+
+Klicken Sie auf **Speichern**, um die Änderungen an der E-Mail-Vorlage zu speichern, oder auf **Abbrechen**, um die Änderungen zu verwerfen.
+ 
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png
@@ -108,13 +111,17 @@ Klicken Sie auf **Vorschau** oder auf **Test senden**, um eine Vorschau der E-Ma
 [api-management-email-template]: ./media/api-management-howto-configure-notifications/api-management-email-template.png
 
 
-[Configure publisher notifications]: #publisher-notifications
-[Configure email templates]: #email-templates
+[Konfigurieren von Herausgeberbenachrichtigungen]: #publisher-notifications
+[Konfigurieren von E-Mail-Vorlagen]: #email-templates
 
-[How to create and use groups]: api-management-howto-create-groups.md
-[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
+[Erstellen und Verwenden von Gruppen]: api-management-howto-create-groups.md
+[Zuordnen von Entwicklern zu Gruppen]: api-management-howto-create-groups.md#associate-group-developer
 
-[Erste Schritte mit API Management]: api-management-get-started.md
+[Erste Schritte mit Azure API Management]: api-management-get-started.md
 [Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

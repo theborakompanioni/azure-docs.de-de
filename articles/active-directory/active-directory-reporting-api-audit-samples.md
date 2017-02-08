@@ -1,19 +1,23 @@
 ---
-title: Beispiele zur Azure Active Directory-Überwachungs-API | Microsoft Docs
-description: Vorgehensweise zum Einstieg in die Azure Active Directory-Berichterstellungs-API
+title: "Beispiele zur Überwachungs-API für die Azure Active Directory-Berichterstellung | Microsoft Docs"
+description: Vorgehensweise zum Einstieg in die Azure Active Directory Berichterstellungs-API
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: dhanyahk
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: de8b8ec3-49b3-4aa8-93fb-e38f52c99743
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/28/2016
+ms.date: 01/10/2017
 ms.author: dhanyahk;markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 665b613db31b15b6f6d2826a0795be6275c832ca
+ms.openlocfilehash: 8216fa7ab092b2d0225d075d933fa56fbab56f40
+
 
 ---
 # <a name="azure-active-directory-reporting-audit-api-samples"></a>Beispiele zur Azure Active Directory-Überwachungs-API
@@ -27,6 +31,7 @@ Siehe:
 * [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md) finden Sie weitere Informationen zur Berichterstellungs-API.
 
 Bei Fragen, Problemen oder zum Senden von Feedback wenden Sie sich an das [Hilfeteam für die AAD-Berichterstellung](mailto:aadreportinghelp@microsoft.com).
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Damit Sie die Beispielen in diesem Thema verwenden können, müssen die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](active-directory-reporting-api-prerequisites.md)erfüllt sein.  
@@ -54,7 +59,7 @@ Die App-Authentifizierung funktioniert nicht, wenn sich Ihr Mandant in der Regio
     if ($oauth.access_token -ne $null) {   
         $i=0
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-        $url = 'https://graph.windows.net/' + $tenantdomain + 'activities/audit?api-version=beta&`$filter=eventTime gt ' + $7daysago
+        $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&`$filter=activityDate gt ' + $7daysago
 
         # loop through each query page (1 through n)
         Do{
@@ -105,7 +110,7 @@ Das Skript gibt die Ausgabe des Überwachungsberichts im JSON-Format zurück. Da
 
     YESTERDAY=$(date --date='1 day ago' +'%Y-%m-%d')
 
-    URL="https://graph.windows.net/$TENANT_DOMAIN/activities/audit?api-version=beta&$filter=eventTime%20gt%20$YESTERDAY"
+    URL="https://graph.windows.net/$TENANT_DOMAIN/activities/audit?api-version=beta&$filter=activityDate%20gt%20$YESTERDAY"
 
 
     REPORT=$(curl -s --header "Authorization: $TOKEN_TYPE $ACCESS_TOKEN" $URL)
@@ -145,7 +150,7 @@ Das Skript gibt die Ausgabe des Überwachungsberichts im JSON-Format zurück. Da
     yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
 
     header_params = {'Authorization': token_type + ' ' + access_token}
-    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=eventTime%20gt%20' + yesterday   
+    request_string = 'https://graph.windows.net/' + tenant_domain + 'activities/audit?api-version=beta&$filter=activityDate%20gt%20' + yesterday   
     response = requests.get(request_string, headers = header_params)
 
     if response.status_code is 200:
@@ -162,6 +167,9 @@ Das Skript gibt die Ausgabe des Überwachungsberichts im JSON-Format zurück. Da
 * Eine vollständige Übersicht zur Verwendung der Azure Active Directory-Berichterstellungs-API finden Sie im Artikel [Erste Schritte mit der Azure Active Directory-Berichterstellungs-API](active-directory-reporting-api-getting-started.md).
 * Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO4-->
 
 

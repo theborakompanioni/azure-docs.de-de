@@ -1,12 +1,12 @@
 ---
-title: Implementieren des Failoverstreamingszenarios | Microsoft Docs
+title: Implementieren des Failoverstreamingszenarios | Microsoft-Dokumentation
 description: Dieses Thema zeigt die Implementierung eines Failoverstreamingszenarios.
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: fc45d849-eb0d-4739-ae91-0ff648113445
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 95447f7b77297fbcdf5b01408543b0787fc42081
+
 
 ---
 # <a name="implementing-failover-streaming-scenario"></a>Implementieren des Failoverstreamingszenarios
 Diese exemplarische Vorgehensweise zeigt, wie Inhalte (Blobs) aus einem Medienobjekt in ein anderes Medienobjekt kopiert werden, um die Redundanz für On-Demand-Streaming zu verarbeiten. Dieses Szenario ist nützlich für Kunden, die ihr CDN (Content Delivery Network, Netzwerk für die Inhaltsübermittlung) für einen Failovervorgang zwischen zwei Datencentern einrichten möchten, damit ein Ausfall in einem unserer Datencenter kompensiert werden kann.
 Diese exemplarische Vorgehensweise verwendet das Microsoft Azure Media Services-SDK, die Microsoft Azure Media Services-REST-API und das Azure Storage-SDK, um die folgenden Aufgaben zu erläutern.
 
-1. Einrichten eines Media Services-Kontos im "Data Center A".
+1. Einrichten eines Media Services-Kontos im "Data Center A".
 2. Hochladen einer Mezzanine-Datei in ein Quellmedienobjekt.
 3. Codieren des Medienobjekts in MP4-Dateien mit mehreren Bitraten. 
 4. Erstellen eines schreibgeschützten SAS-Locators für das Quellmedienobjekt, um Lesezugriff auf den Container im Storage-Konto zu erlangen, das dem Quellmedienobjekt zugeordnet ist.
@@ -29,7 +33,7 @@ Diese exemplarische Vorgehensweise verwendet das Microsoft Azure Media Services-
 
 Anschließende Aufgaben zum Verarbeiten des Failovers:
 
-1. Einrichten eines Media Services-Kontos im "Data Center B".
+1. Einrichten eines Media Services-Kontos im "Data Center B".
 2. Erstellen eines leeren Zielmedienobjekts im Media Services-Zielkonto.
 3. Erstellen eines SAS-Locators mit Schreibberechtigungen für das leere Zielmedienobjekt, um Schreibzugriff auf den Container im Storage-Konto zu erlangen, das dem Zielmedienobjekt zugeordnet ist.
 4. Verwenden des Azure Storage-SDKs zum Kopieren von Blobs (Medienobjektdateien) zwischen dem Quellspeicherkonto in "Data Center A" und dem Zielspeicherkonto in "Data Center B" (diese Speicherkonten sind den jeweiligen Medienobjekten zugeordnet).
@@ -53,9 +57,9 @@ Es gelten die folgenden Bedingungen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Zwei Media Services-Konten in einem neuen oder vorhandenen Azure-Abonnement. Informationen hierzu finden Sie unter [Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
-* Betriebssystem: Windows 7, Windows 2008 R2 oder Windows 8.
+* Betriebssystem: Windows 7, Windows 2008 R2 oder Windows 8.
 * .NET Framework 4.5 oder .NET Framework 4.
-* Visual Studio 2010 SP1 oder höher (Professional, Premium, Ultimate oder Express).
+* Visual Studio 2010 SP1 oder höher (Professional, Premium, Ultimate oder Express).
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 In diesem Abschnitt werden Sie ein C#-Konsolenanwendungsprojekt erstellen und einrichten.
@@ -96,7 +100,7 @@ In diesem Abschnitt werden Sie ein C#-Konsolenanwendungsprojekt erstellen und ei
           <add key="MediaServicesStorageAccountKeyTarget" value=" Media-Services-Storage-Account-Key-Target" />
         </appSettings>
 
-## <a name="add-code-that-handles-redundancy-for-on-demand-streaming."></a>Fügen Sie Code hinzu, der die Redundanz für On-Demand-Streaming verarbeitet.
+## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Fügen Sie Code hinzu, der die Redundanz für On-Demand-Streaming verarbeitet.
 1. Fügen Sie der Klasse "Program" die folgenden Felder auf Klassenebene hinzu.
    
         // Read values from the App.config file.
@@ -957,6 +961,9 @@ Sie können nun einen Traffic Manager zum Weiterleiten von Anforderungen zwische
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

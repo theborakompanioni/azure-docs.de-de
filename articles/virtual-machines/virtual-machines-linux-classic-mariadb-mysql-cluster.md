@@ -1,33 +1,38 @@
 ---
-title: Ausführen eines MariaDB (MySQL)-Clusters in Azure
+title: "Ausführen eines MariaDB (MySQL)-Clusters in Azure"
 description: Erstellen eines MariaDB- + Galera MySQL-Clusters auf virtuellen Azure-Computern
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: sabbour
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: d0d21937-7aac-4222-8255-2fdc4f2ea65b
 ms.service: virtual-machines-linux
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
-ms.author: v-ahsab
+ms.author: asabbour
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: ace15c99b53b786de9924a6dbe2c8a86645709e9
+
 
 ---
-# MariaDB (MySQL)-Cluster - Azure-Lernprogramm
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+# <a name="mariadb-mysql-cluster---azure-tutorial"></a>MariaDB (MySQL)-Cluster - Azure-Lernprogramm
+> [!IMPORTANT] 
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 > [!NOTE]
-> Das MariaDB Enterprise-Cluster ist jetzt in Azure Marketplace verfügbar. Mit dem neuen Angebot wird automatisch ein MariaDB Galera-Cluster im ARM bereitgestellt. Verwenden Sie nach Möglichkeit das Angebot unter https://azure.microsoft.com/de-DE/marketplace/partners/mariadb/cluster-maxscale/.
+> Das MariaDB Enterprise-Cluster ist jetzt in Azure Marketplace verfügbar.  Mit dem neuen Angebot wird automatisch ein MariaDB Galera-Cluster im ARM bereitgestellt. Sie sollten das neue Angebot aus https://azure.microsoft.com/de-de/marketplace/partners/mariadb/cluster-maxscale/ verwenden. 
 > 
 > 
 
 Wir erstellen einen Multimaster-[Galera](http://galeracluster.com/products/)-Cluster von [MariaDBs](https://mariadb.org/en/about/), ein robuster, skalierbarer und zuverlässiger Ersatz für MySQL für das Arbeiten in einer hoch verfügbaren Umgebung auf virtuellen Azure-Computern.
 
-## Übersicht über die Architektur
+## <a name="architecture-overview"></a>Übersicht über die Architektur
 Dieses Thema umfasst die folgenden Schritte:
 
 1. Erstellen eines Clusters mit 3 Knoten
@@ -39,12 +44,12 @@ Dieses Thema umfasst die folgenden Schritte:
 ![Architektur](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> In diesem Thema werden die Tools der [Azure-Befehlszeilenschnittstelle] verwendet. Laden Sie diese daher herunter, und verknüpfen Sie sie gemäß den Anweisungen mit Ihrem Azure-Abonnement. Referenzinformationen zu den Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Befehlsreferenz zur Azure-Befehlszeilenschnittstelle]. Darüber hinaus müssen Sie [einen SSH-Schlüssel für die Authentifizierung erstellen] und sich den **Speicherort der PEM-Datei** notieren.
+> In diesem Thema werden die [Azure-CLI](../xplat-cli-install.md)-Tools verwendet, deshalb denken Sie daran, sie herunterzuladen und gemäß den Anweisungen mit Ihrem Azure-Abonnement zu verbinden. Referenzinformationen zu den Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Befehlsreferenz zur Azure-Befehlszeilenschnittstelle](../virtual-machines-command-line-tools.md). Darüber hinaus müssen Sie einen [SSH-Schlüssel für die Authentifizierung erstellen] und sich den **Speicherort der PEM-Datei** notieren.
 > 
 > 
 
-## Erstellen der Vorlage
-### Infrastruktur
+## <a name="creating-the-template"></a>Erstellen der Vorlage
+### <a name="infrastructure"></a>Infrastruktur
 1. Erstellen Sie eine Affinitätsgruppe, um die Ressourcen zusammenzuhalten.
    
         azure account affinity-group create mariadbcluster --location "North Europe" --label "MariaDB Cluster"
@@ -66,7 +71,7 @@ Dieses Thema umfasst die folgenden Schritte:
         FOR /L %d IN (1,1,4) DO azure vm disk attach-new mariadbhatemplate 512 http://mariadbstorage.blob.core.windows.net/vhds/mariadbhatemplate-data-%d.vhd
 7. Kopieren Sie den SSH-Schlüssel in die Vorlage des virtuellen Computers, die Sie unter **mariadbhatemplate.cloudapp.net:22** erstellt haben, und stellen Sie unter Verwendung Ihres privaten Schlüssels eine Verbindung her.
 
-### Software
+### <a name="software"></a>Software
 1. Rufen Sie den Stamm ab.
    
         sudo su
@@ -125,11 +130,11 @@ Dieses Thema umfasst die folgenden Schritte:
    * Erstellen Sie einen Symlink, der vom alten Verzeichnis auf den neuen Speicherort auf der RAID-Partition verweist.
      
           ln -s /mnt/data/mysql /var/lib/mysql
-5. Da [SELinux die Clustervorgänge beeinträchtigt](http://galeracluster.com/documentation-webpages/configuration.html#selinux), müssen Sie es für die aktuelle Sitzung deaktivieren (bis eine kompatible Version vorhanden ist). Bearbeiten Sie `/etc/selinux/config`, um es für weitere Neustarts zu deaktivieren:
+5. Da [SELinux die Clustervorgänge beeinträchtigt](http://galeracluster.com/documentation-webpages/configuration.html#selinux), müssen Sie es für die aktuelle Sitzung deaktivieren (bis eine kompatible Version vorhanden ist). Bearbeiten Sie `/etc/selinux/config` , um es für weitere Neustarts zu deaktivieren:
    
             setenforce 0
    
-       Bearbeiten Sie anschließend `/etc/selinux/config`, um `SELINUX=permissive` festzulegen.
+       then editing `/etc/selinux/config` to set `SELINUX=permissive`
 6. Validieren von MySQL-Ausführungen
    
    * Starten Sie MySQL.
@@ -153,7 +158,7 @@ Dieses Thema umfasst die folgenden Schritte:
      
            vi /etc/my.cnf.d/server.cnf
    * Bearbeiten Sie den Abschnitt **[galera]**, und bereinigen Sie ihn.
-   * Bearbeiten Sie den Abschnitt **[mariadb]**.
+   * Bearbeiten Sie den Abschnitt **[mariadb]** .
      
            wsrep_provider=/usr/lib64/galera/libgalera_smm.so
            binlog_format=ROW
@@ -174,15 +179,15 @@ Dieses Thema umfasst die folgenden Schritte:
    * GALERA IST: `firewall-cmd --zone=public --add-port=4568/tcp --permanent`
    * RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
    * Laden Sie die Firewall neu: `firewall-cmd --reload`
-9. Optimieren Sie die Leistung des Systems. Ausführlichere Informationen finden Sie in [diesem Artikel zur Strategie für die Leistungsoptimierung].
+9. Optimieren Sie die Leistung des Systems. Ausführlichere Informationen finden Sie in diesem Artikel zur [Strategie für die Leistungsoptimierung](virtual-machines-linux-classic-optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
    
    * Bearbeiten Sie die MySQL-Konfigurationsdatei erneut.
      
            vi /etc/my.cnf.d/server.cnf
-   * Bearbeiten Sie den Abschnitt **[mariadb]**, und fügen Sie Folgendes an:
+   * Bearbeiten Sie den Abschnitt **[mariadb]** , und fügen Sie Folgendes an:
    
    > [!NOTE]
-   > Es empfiehlt sich, **innodb\_buffer\_pool\_size** auf 70 Prozent des Arbeitsspeichers Ihres virtuellen Computers festzulegen. In diesem Fall wurde sie für den mittleren virtuellen Azure-Computer mit 3,5 GB RAM auf 2,45 GB festgelegt.
+   > Es empfiehlt sich, **innodb\_buffer\_pool_size** auf 70 Prozent des Arbeitsspeichers Ihres virtuellen Computers festzulegen. In diesem Fall wurde sie für den mittleren virtuellen Azure-Computer mit 3,5 GB RAM auf 2,45 GB festgelegt.
    > 
    > 
    
@@ -198,15 +203,17 @@ Dieses Thema umfasst die folgenden Schritte:
         service mysql stop
         chkconfig mysql off
         waagent -deprovision
-11. Erfassen Sie den virtuellen Computer über das Portal: (Derzeit wird unter dem [Problem 1268] für die Tools der Azure-Befehlszeilenschnittstelle beschrieben, dass bei Images, die mit den Tools der Azure-Befehlszeilenschnittstelle erfasst werden, die angeschlossenen Datenträger nicht erfasst werden.
+11. Erfassen Sie den virtuellen Computer über das Portal: (Derzeit wird unter dem [Problem 1268 für die Tools der Azure-Befehlszeilenschnittstelle] beschrieben, dass bei Images, die mit den Tools der Azure-Befehlszeilenschnittstelle erfasst werden, die angeschlossenen Datenträger nicht erfasst werden.)
     
     * Fahren Sie den Computer über das Portal herunter.
-    * Klicken Sie auf „Erfassen“, und geben Sie den Namen des Image als **mariadb-galera-image** an. Geben Sie auch eine Beschreibung ein, und aktivieren Sie „Ich habe waagent ausgeführt“. ![Erfassen des virtuellen Computers](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Capture.png) ![Erfassen des virtuellen Computers](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Capture2.PNG)
+    * Klicken Sie auf „Erfassen“, und geben Sie den Namen des Image als **mariadb-galera-image** an. Geben Sie auch eine Beschreibung ein, und aktivieren Sie „Ich habe waagent ausgeführt“.
+      ![Erfassen des virtuellen Computers](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Capture.png)
+      ![Erfassen des virtuellen Computers](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Capture2.PNG)
 
-## Erstellen des Clusters
+## <a name="creating-the-cluster"></a>Erstellen des Clusters
 Erstellen Sie drei virtuelle Computer aus der Vorlage, die Sie gerade erstellt haben, und konfigurieren und starten Sie dann den Cluster.
 
-1. Erstellen Sie den ersten virtuellen CentOS 7-Computer auf der Grundlage des erstellten Image **mariadb-galera-image**, und geben Sie den Namen des virtuellen Netzwerks (**mariadbvnet**), das Subnetz (**mariadb**) und die Computergröße **Mittel** an. Übergeben Sie den Namen des Clouddiensts als **mariadbha** (bzw. als beliebigen Namen, auf den über „mariadbha.cloudapp.net“ zugegriffen werden soll), wobei der Name dieses Computers **mariadb1** und der Benutzername **azureuser** lauten und der SSH-Zugriff aktiviert sein soll, die PEM-SSH-Zertifikatsdatei übergeben wird und **/path/to/key.pem** durch den Pfad ersetzt wird, an dem Sie den generierten PEM-SSH-Schlüssel gespeichert haben.
+1. Erstellen Sie den ersten virtuellen CentOS 7-Computer auf der Grundlage des erstellten Image **mariadb-galera-image**, und geben Sie den Namen des virtuellen Netzwerks (**mariadbvnet**), das Subnetz (**mariadb**) und die Computergröße **Mittel** an. Übergeben Sie den Namen des Clouddiensts als **mariadbha** (bzw. als beliebigen Namen, auf den über „mariadbha.cloudapp.net“ zugegriffen werden soll), wobei der Name dieses Computers **mariadb1** und der Benutzername **azureuser** lauten und der SSH-Zugriff aktiviert sein soll, die PEM-SSH-Zertifikatsdatei übergeben wird und **/path/to/key.pem** durch den Pfad ersetzt wird, in dem Sie den generierten PEM-SSH-Schlüssel gespeichert haben.
    
    > [!NOTE]
    > Die folgenden Befehle sind aus Gründen der Übersichtlichkeit auf mehrere Zeilen aufgeteilt, Sie sollten jedoch jeden Befehl als eine Zeile eingeben.
@@ -223,7 +230,7 @@ Erstellen Sie drei virtuelle Computer aus der Vorlage, die Sie gerade erstellt h
         --ssh 22
         --vm-name mariadb1
         mariadbha mariadb-galera-image azureuser
-2. Erstellen Sie zwei weitere virtuelle Computer, indem Sie jeweils eine *Verbindung* mit dem gerade erstellten Clouddienst **mariadbha** herstellen, und ändern Sie dabei den Namen des virtuellen Computers sowie den SSH-Port in einen eindeutigen Port, der nicht mit anderen virtuellen Computern im gleichen Clouddienst in Konflikt steht.
+2. Erstellen Sie zwei weitere virtuelle Computer, indem Sie jeweils eine *Verbindung* mit dem gerade erstellten Clouddienst **mariadbha** herstellen, und ändern Sie dabei den **Namen des virtuellen Computers** sowie den **SSH-Port** in einen eindeutigen Port, der nicht mit anderen virtuellen Computern im gleichen Clouddienst in Konflikt steht.
    
         azure vm create
         --virtual-network-name mariadbvnet
@@ -254,7 +261,8 @@ Erstellen Sie drei virtuelle Computer aus der Vorlage, die Sie gerade erstellt h
    
         sudo vi /etc/my.cnf.d/server.cnf
    
-    und kommentieren Sie dabei **`wsrep_cluster_name`** und **`wsrep_cluster_address`** aus, indem Sie **#** am Anfang entfernen und überprüfen, ob sie tatsächlich Ihren Vorstellungen entsprechen. Ersetzen Sie außerdem **`<ServerIP>`** in **`wsrep_node_address`** und **`<NodeName>`** in **`wsrep_node_name`** durch die IP-Adresse bzw. den Namen des virtuellen Computers, und kommentieren Sie auch diese Zeilen aus.
+    und kommentieren Sie dabei **`wsrep_cluster_name`** und **`wsrep_cluster_address`** aus, indem Sie **#** am Anfang entfernen und überprüfen, ob sie tatsächlich Ihren Vorstellungen entsprechen.
+    Ersetzen Sie außerdem **`<ServerIP>`** in **`wsrep_node_address`** und **`<NodeName>`** in **`wsrep_node_name`** durch die IP-Adresse bzw. den Namen des virtuellen Computers, und kommentieren Sie auch diese Zeilen aus.
 5. Starten Sie den Cluster auf MariaDB1, und führen Sie ihn beim Start aus.
    
         sudo service mysql bootstrap
@@ -264,18 +272,19 @@ Erstellen Sie drei virtuelle Computer aus der Vorlage, die Sie gerade erstellt h
         sudo service mysql start
         chkconfig mysql on
 
-## Lastenausgleich für den Cluster
+## <a name="load-balancing-the-cluster"></a>Lastenausgleich für den Cluster
 Als Sie die gruppierten virtuellen Computer erstellt haben, haben Sie sie einer Verfügbarkeitsgruppen mit dem Namen **clusteravset** hinzugefügt, um sicherzustellen, dass sie in unterschiedlichen Fehler- und Updatedomänen platziert werden und dass von Azure niemals eine Wartung auf allen Computern gleichzeitig ausgeführt wird. Diese Konfiguration erfüllt die Anforderungen, die von diesem Azure Service Level Agreement (SLA) unterstützt werden sollen.
 
 Jetzt können Sie den Azure-Lastenausgleich verwenden, um Anforderungen zwischen den drei Knoten auszugleichen.
 
-Führen Sie die folgenden Befehle auf Ihrem Computer mithilfe der Azure-Befehlszeilenschnittstelle aus. Struktur der Befehlsparameter: `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
+Führen Sie die folgenden Befehle auf Ihrem Computer mithilfe der Azure-Befehlszeilenschnittstelle aus.
+Struktur der Befehlsparameter: `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
     azure vm endpoint create-multiple mariadb1 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb3 3306:3306:tcp:false:MySQL:tcp:3306
 
-Da das Testintervall des Lastenausgleichs von der Befehlszeilenschnittstelle auf 15 Sekunden festgelegt wird (was möglicherweise etwas zu lang ist), ändern Sie es als letzten Schritt im Portal unter **Endpunkte** für alle virtuellen Computer,
+Da das Testintervall des Lastenausgleichs von der Befehlszeilenschnittstelle auf 15 Sekunden festgelegt wird (was möglicherweise etwas zu lang ist), ändern Sie es als letzten Schritt im Portal unter **Endpunkte** für alle virtuellen Computer,
 
 ![Endpunkt bearbeiten](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Endpoint.PNG)
 
@@ -287,7 +296,7 @@ und klicken Sie dann auf "Gruppe mit Lastenausgleich neu konfigurieren" und dann
 
 ![Testintervall ändern](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Endpoint3.PNG)
 
-## Überprüfen des Clusters
+## <a name="validating-the-cluster"></a>Überprüfen des Clusters
 Die harte Arbeit ist nun erledigt. Der Cluster ist jetzt unter `mariadbha.cloudapp.net:3306` für den Lastenausgleich erreichbar und leitet Anforderungen zwischen den drei virtuellen Computern reibungslos und effektiv weiter.
 
 Verwenden Sie Ihren bevorzugten MySQL-Client, um eine Verbindung herzustellen, oder stellen Sie einfach eine Verbindung von einem der virtuellen Computer her, um zu überprüfen, dass dieser Cluster funktioniert.
@@ -314,10 +323,10 @@ Das Ergebnis sieht folgendermaßen aus:
     2 rows in set (0.00 sec)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie einen hoch verfügbaren MariaDB + Galera-Cluster mit drei Knoten auf virtuellen Azure-Computern erstellt, auf denen CentOS 7 ausgeführt wird. Der Lastenausgleich für die virtuellen Computer erfolgt mit dem Azure-Lastenausgleich.
 
-Es empfiehlt sich unter Umständen, sich über eine [weitere Möglichkeit zur Gruppierung von MySQL unter Linux] sowie über [Möglichkeiten zum Optimieren und Testen der MySQL-Leistung auf virtuellen Azure-Computern mit Linux] zu informieren.
+Es empfiehlt sich unter Umständen, sich über [eine weitere Möglichkeit zur Gruppierung von MySQL unter Linux](virtual-machines-linux-classic-mysql-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) sowie über Möglichkeiten zum [Optimieren und Testen der MySQL-Leistung auf virtuellen Azure-Computern mit Linux](virtual-machines-linux-classic-optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) zu informieren.
 
 <!--Anchors-->
 [Architecture overview]: #architecture-overview
@@ -332,12 +341,11 @@ Es empfiehlt sich unter Umständen, sich über eine [weitere Möglichkeit zur Gr
 <!--Link references-->
 [Galera]: http://galeracluster.com/products/
 [MariaDBs]: https://mariadb.org/en/about/
-[Azure-Befehlszeilenschnittstelle]: ../xplat-cli.md
-[Befehlsreferenz zur Azure-Befehlszeilenschnittstelle]: ../virtual-machines-command-line-tools.md
-[einen SSH-Schlüssel für die Authentifizierung erstellen]: http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
-[diesem Artikel zur Strategie für die Leistungsoptimierung]: virtual-machines-linux-optimize-mysql-perf.md
-[Möglichkeiten zum Optimieren und Testen der MySQL-Leistung auf virtuellen Azure-Computern mit Linux]: virtual-machines-linux-optimize-mysql-perf.md
-[Problem 1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
-[weitere Möglichkeit zur Gruppierung von MySQL unter Linux]: virtual-machines-linux-mysql-cluster.md
+[SSH-Schlüssel für die Authentifizierung erstellen]:http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
+[Problem 1268 für die Tools der Azure-Befehlszeilenschnittstelle]:https://github.com/Azure/azure-xplat-cli/issues/1268
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Dec16_HO1-->
+
+

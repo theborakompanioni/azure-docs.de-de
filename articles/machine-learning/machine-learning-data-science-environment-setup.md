@@ -1,31 +1,40 @@
 ---
-title: Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess | Microsoft Docs
-description: Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess
+title: "Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess | Microsoft Docs"
+description: "Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess"
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 481cfa6a-7ea3-46ac-b0f9-2e3982c37153
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2016
+ms.date: 11/01/2016
 ms.author: bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6c7fc92d72504e853a1c4cf4aaac309097e44c44
+
 
 ---
-# Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess
-Der Team Data Science-Prozess verwendet eine Reihe von Data Science-Umgebungen für die Speicherung, Verarbeitung und Analyse von Daten. Dazu zählen Azure-Blobspeicher, verschiedene Typen von virtuellen Azure-Computern, HDInsight (Hadoop)-Cluster und Azure Machine Learning-Arbeitsbereiche. Die Entscheidung, welche Art von Umgebung Sie verwenden, hängt von der Art und der Menge der Daten ab, die mit Machine Learning modelliert werden sollen, sowie vom Ziel für die Daten in der Cloud.
+# <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess
+Der Team Data Science-Prozess verwendet verschiedene Data Science-Umgebungen für die Speicherung, Verarbeitung und Analyse von Daten. Dazu zählen Azure Blob Storage, verschiedene Typen von virtuellen Azure-Computern, HDInsight (Hadoop)-Cluster und Azure Machine Learning-Arbeitsbereiche. Die Entscheidung, welche Art von Umgebung Sie verwenden, hängt von der Art und der Menge der Daten ab, die modelliert werden sollen, sowie vom Ziel für die Daten in der Cloud. 
 
-* Hilfe bei dieser Entscheidung finden Sie unter [Planen der Azure Machine Learning Data Science-Umgebung](machine-learning-data-science-plan-your-environment.md).
-* Einen Katalog mit einigen Szenarien für die erweiterte Analyse finden Sie unter [Szenarien für den Team Data Science-Prozess](machine-learning-data-science-plan-sample-scenarios.md).
+* Hilfe bei dieser Entscheidung finden Sie unter [Planen der Azure Machine Learning Data Science-Umgebung](machine-learning-data-science-plan-your-environment.md). 
+* Einen Katalog mit einigen Szenarien für die erweiterte Analyse finden Sie unter [Szenarien für den Team Data Science-Prozess](machine-learning-data-science-plan-sample-scenarios.md)
 
 Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen, die vom Team Data Science-Prozess verwendet werden, beschrieben wird.
 
 [!INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-Die **Microsoft Data Science Virtual Machine** ist auch als Image eines virtuellen Azure-Computers verfügbar, in dem bereits einige gängige Tools vorinstalliert und konfiguriert sind, die häufig für Datenanalysen und Machine Learning verwendet werden. Informationen zum Verwenden dieses virtuellen Computers finden Sie unter [Bereitstellen der Microsoft Data Science Virtual Machine](machine-learning-data-science-provision-vm.md).
+Die **Microsoft Data Science Virtual Machine (DSVM)** ist auch als Image des virtuellen Azure-Computers (VM) verfügbar. Diese VM ist vorinstalliert und mit einigen gängigen Tools konfiguriert, die häufig für Datenanalysen und Machine Learning verwendet werden. Die DSVM steht unter Windows und Linux zur Verfügung. Weitere Informationen finden Sie unter [Einführung in den Cloud-basierten virtuellen Computer für Data Science für Linux und Windows](machine-learning-data-science-virtual-machine-overview.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

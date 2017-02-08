@@ -1,13 +1,13 @@
 ---
 title: Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus | Microsoft Docs
-description: Es werden Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI) im Dienstverwaltungsmodus beschrieben, mit denen Bereitstellungen im klassischen Bereitstellungsmodell verwaltet werden können.
+description: "Es werden Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI) im Dienstverwaltungsmodus beschrieben, mit denen Bereitstellungen im klassischen Bereitstellungsmodell verwaltet werden können."
 services: virtual-machines-linux,virtual-machines-windows,mobile-services, cloud-services
-documentationcenter: ''
+documentationcenter: 
 author: dlepow
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: b9ccdeed-0ab8-4de2-937f-4046c7918bd8
 ms.service: multiple
 ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
@@ -15,12 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2016
 ms.author: danlep
+translationtype: Human Translation
+ms.sourcegitcommit: cff4e05de2a9e2f0603fd4beebe26e44b4652dc8
+ms.openlocfilehash: d168c6e477eff07b8f499c1be869f85506c2fabc
+
 
 ---
-# <a name="azure-cli-commands-in-azure-service-management-(asm)-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)
-[!INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)]
-
-Sie können sich auch [über alle Befehle des Resource Manager-Modells informieren](virtual-machines/azure-cli-arm-commands.md) und die Befehlszeilenschnittstelle zum [Migrieren von Ressourcen](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md) aus dem klassischen Modell in das Resource Manager-Modell verwenden.
+# <a name="azure-cli-commands-in-azure-service-management-asm-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)
+> [!IMPORTANT]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../articles/azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Sie können sich auch [über alle Befehle des Resource Manager-Modells informieren](virtual-machines/azure-cli-arm-commands.md) und die Befehlszeilenschnittstelle zum [Migrieren von Ressourcen](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md) aus dem klassischen Modell in das Resource Manager-Modell verwenden.
 
 Dieser Artikel enthält die Syntax und Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie normalerweise zum Erstellen und Verwalten von Azure-Ressourcen im klassischen Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM) ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. 
 
@@ -921,7 +924,7 @@ Dieser Befehl listet Ihre Web-App-Zertifikate auf.
     Web site name: mydemosite
     + Getting sites
     + Getting site information
-    data:    Subject                       Expiration Date                    Thumbprint
+    data:    Subject                       Expiration Date                      Thumbprint
     data:    ----------------------------  -----------------------------------------
     ----------------  ----------------------------------------
     data:    *.msopentech.com              Fri Nov 28 2014 09:49:57 GMT-0800 (Pacific Standard Time)  A40E82D3DC0286D1F58650E570ECF8224F69A148
@@ -1144,7 +1147,7 @@ Die folgenden Optionen sind für die meisten Mobile Services-Befehle gültig:
 * **-v** oder **--verbose**: Ausführliche Ausgabe.
 * **--json**: JSON-Ausgabe.
 
-### <a name="<a-name="mobile_services"></a>commands-to-manage-mobile-service-instances"></a><a name="Mobile_Services"></a>Befehle zum Verwalten von Mobile Services-Instanzen
+### <a name="a-namemobileservicesacommands-to-manage-mobile-service-instances"></a><a name="Mobile_Services"></a>Befehle zum Verwalten von Mobile Services-Instanzen
 **mobile locations [Optionen]**
 
 Dieser Befehl listet die von Mobile Services unterstützten geografischen Standorte auf.
@@ -1300,7 +1303,7 @@ Mögliche Schlüsseltypen sind `master` und `application`.
 
 Dieser Befehl legt den Schlüssel des Mobile Service auf einen bestimmten Wert fest.
 
-### <a name="<a-name="mobile_configuration"></a>commands-to-manage-mobile-service-configuration"></a><a name="Mobile_Configuration"></a>Befehle zum Verwalten der Mobile Services-Konfiguration
+### <a name="a-namemobileconfigurationacommands-to-manage-mobile-service-configuration"></a><a name="Mobile_Configuration"></a>Befehle zum Verwalten der Mobile Services-Konfiguration
 **mobile config list [Optionen] [Dienstname]**
 
 Dieser Befehl listet Konfigurationsoptionen für einen Mobile Service auf.
@@ -1341,7 +1344,7 @@ Dieser Befehl ändert den Wert einer bestimmten Konfigurationsoption für einen 
     info:    mobile config set command OK
 
 
-### <a name="<a-name="mobile_tables"></a>commands-to-manage-mobile-service-tables"></a><a name="Mobile_Tables"></a>Befehle zum Verwalten von Mobile Services-Tabellen
+### <a name="a-namemobiletablesacommands-to-manage-mobile-service-tables"></a><a name="Mobile_Tables"></a>Befehle zum Verwalten von Mobile Services-Tabellen
 **mobile table list [Optionen] [Dienstname]**
 
 Dieser Befehl listet alle Tabellen in Ihrem Mobile Service auf.
@@ -1453,8 +1456,8 @@ Dieser Befehl entfernt alle Datenzeilen aus der Tabelle.
     info:    mobile data truncate command OK
 
 
-### <a name="<a-name="mobile_scripts"></a>commands-to-manage-scripts"></a><a name="Mobile_Scripts"></a>Befehle zum Verwalten von Skripts
-Mit den Befehlen in diesem Abschnitt können Sie die Serverskripts eines Mobile Service verwalten. Weitere Informationen erhalten Sie unter [Verwenden von Serverskripts in Mobile Services](mobile-services/mobile-services-how-to-use-server-scripts.md).
+### <a name="a-namemobilescriptsacommands-to-manage-scripts"></a><a name="Mobile_Scripts"></a>Befehle zum Verwalten von Skripts
+Mit den Befehlen in diesem Abschnitt können Sie die Serverskripts eines Mobile Service verwalten. Weitere Informationen erhalten Sie unter [Verwenden von Serverskripts in Mobile Services](https://github.com/Azure/azure-mobile-services/blob/master/docs/mobile-services-how-to-use-server-scripts.md).
 
 **mobile script list [Optionen] [Dienstname]**
 
@@ -1510,7 +1513,7 @@ Dieser Befehl löscht das existierende insert-Skript aus der Tabelle TodoItem.
     info:    Executing command mobile script delete
     info:    mobile script delete command OK
 
-### <a name="<a-name="mobile_jobs"></a>commands-to-manage-scheduled-jobs"></a><a name="Mobile_Jobs"></a>Befehle zum Verwalten geplanter Aufträge
+### <a name="a-namemobilejobsacommands-to-manage-scheduled-jobs"></a><a name="Mobile_Jobs"></a>Befehle zum Verwalten geplanter Aufträge
 Mit den Befehlen in diesem Abschnitt können Sie geplante Aufträge eines Mobile Service verwalten. Weitere Informationen finden Sie unter [Planen von Aufträgen](http://msdn.microsoft.com/library/windowsazure/jj860528.aspx).
 
 **mobile job list [Optionen] [Dienstname]**
@@ -1585,7 +1588,7 @@ Dieser Befehl löscht die geplante Aufgabe getUpdates vom Server TodoList.
 > 
 > 
 
-### <a name="<a-name="mobile_scale"></a>commands-to-scale-a-mobile-service"></a><a name="Mobile_Scale"></a>Befehle zum Skalieren eines Mobile Service
+### <a name="a-namemobilescaleacommands-to-scale-a-mobile-service"></a><a name="Mobile_Scale"></a>Befehle zum Skalieren eines Mobile Service
 Mit den Befehlen in diesem Abschnitt können Sie einen Mobile Service skalieren. Weitere Informationen finden Sie unter [Skalieren eines mobilen Diensts](http://msdn.microsoft.com/library/windowsazure/jj193178.aspx).
 
 **mobile scale show [Optionen] [Dienstname]**
@@ -2047,7 +2050,7 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 ## <a name="commands-to-manage-sql-databases"></a>Befehle zum Verwalten von SQL-Datenbanken
 Mit diesen Befehlen können Sie Ihre Azure SQL-Datenbanken verwalten
 
-### <a name="commands-to-manage-sql-servers."></a>Befehle zum Verwalten von SQL-Servern
+### <a name="commands-to-manage-sql-servers"></a>Befehle zum Verwalten von SQL-Servern
 Mit diesen Befehlen können Sie Ihre SQL-Server verwalten
 
 **sql server create &lt;Admin-Benutzername> &lt;Admin-Kennwort> &lt;Ort>**
@@ -2350,6 +2353,6 @@ Löscht einen DNS-Servereintrag aus der Netzwerkkonfiguration.
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

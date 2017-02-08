@@ -8,6 +8,6 @@ Ihr Dienst ist jetzt so konfiguriert, dass er mit Pushbenachrichtigungen unter i
 [1]: ./media/app-service-mobile-apns-configure-push/mobile-push-notification-hub.png
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

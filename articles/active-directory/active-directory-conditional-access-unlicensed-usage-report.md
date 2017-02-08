@@ -2,26 +2,29 @@
 title: Bericht zu nicht lizenzierter Nutzung | Microsoft Docs
 description: Der Bericht zu nicht lizenzierter Nutzung hilft Ihnen dabei, nicht lizenzierte Benutzer zu finden, die kostenpflichtige Azure AD-Funktionen nutzen.
 services: active-directory
-documentationcenter: ''
-author: markusvi
+documentationcenter: 
+author: MarkusVi
 manager: femila
-editor: ''
-
+ms.assetid: 92138f43-9528-4c8a-b834-66a47da476e3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 01/10/2017
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 3400d00112b4b66cceef602dba5cb8666e49e0e4
+
 
 ---
-# Bericht zu nicht lizenzierter Nutzung
-Der Bericht zu nicht lizenzierter Nutzung hilft Ihnen dabei, nicht lizenzierte Benutzer zu finden, die kostenpflichtige Azure AD-Funktionen nutzen. Somit können Sie Ihre gekauften Lizenzen besser nutzen und leichter ermitteln, wann Sie weitere Lizenzen benötigen.
+# <a name="unlicensed-usage-report"></a>Bericht zu nicht lizenzierter Nutzung
+Der Bericht zu nicht lizenzierter Nutzung hilft Ihnen dabei, nicht lizenzierte Benutzer zu finden, die kostenpflichtige Azure AD-Funktionen nutzen. Somit können Sie Ihre gekauften Lizenzen besser nutzen und leichter ermitteln, wann Sie weitere Lizenzen benötigen. 
 
-Der Bericht zeigt, welche kostenpflichtigen Funktionen in den letzten 30 Tagen aktiv genutzt wurden.
+Der Bericht zeigt, welche kostenpflichtigen Funktionen in den letzten 30 Tagen aktiv genutzt wurden. 
 
-## Berichtsstruktur
+## <a name="report-structure"></a>Berichtsstruktur
 | Spaltenname | Beschreibung |
 |:--- |:--- |
 | Nicht lizenzierter Benutzer |Name des Benutzers |
@@ -33,13 +36,18 @@ Der Bericht zeigt, welche kostenpflichtigen Funktionen in den letzten 30 Tagen a
 > 
 > 
 
-## Feature für den bedingten Zugriff
-Nicht lizenzierte Benutzer werden beim Zugriff auf einen Dienst, auf den eine Richtlinie für den bedingten Zugriff angewendet wird, gekennzeichnet, wenn sie nicht über eine Azure AD Premium-Lizenz verfügen.
+## <a name="conditional-access-feature"></a>Feature für den bedingten Zugriff
+Nicht lizenzierte Benutzer werden beim Zugriff auf einen Dienst, auf den eine Richtlinie für den bedingten Zugriff angewendet wird, gekennzeichnet, wenn sie nicht über eine Azure AD Premium-Lizenz verfügen. 
 
 Dies gilt für MFA-/Standortrichtlinien sowie Geräterichtlinien, die Intune verwenden.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [Verwenden von bedingtem Zugriff mit Office 365 und anderen verbundenen Azure Active Directory-Apps](active-directory-conditional-access.md)
-* [Erste Schritte mit bedingtem Zugriff auf Azure AD](active-directory-conditional-access-azuread-connected-apps.md)
+* [Erste Schritte mit bedingtem Zugriff auf Azure AD](active-directory-conditional-access-azuread-connected-apps.md) 
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Dec16_HO4-->
+
+

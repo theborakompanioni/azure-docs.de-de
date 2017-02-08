@@ -1,24 +1,29 @@
 ---
-title: Verwenden von Hadoop Pig mit HDInsight Curl | Microsoft Docs
-description: Erfahren Sie, wie Sie mit Curl Pig Latin-Aufträge in einem Hadoop-Cluster in Azure HDInsight ausführen können.
+title: Verwenden von Hadoop Pig mit Curl in HDInsight | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie mit Curl Pig Latin-Aufträge in einem Hadoop-Cluster in Azure HDInsight ausführen können."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: ed5e10d1-4f47-459c-a0d6-7ff967b468c4
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2016
+ms.date: 11/08/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 476af10550075cde145a9cf2153330f063ad17b3
+
 
 ---
-# Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von Curl
-[!INCLUDE [Pig-Selektor](../../includes/hdinsight-selector-use-pig.md)]
+# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-curl"></a>Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von Curl
+
+[!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
 In diesem Dokument erfahren Sie, wie mithilfe von Curl Pig Latin-Aufträge auf einem HDInsight-Cluster ausgeführt werden. Mit der Programmiersprache Pig Latin können Sie Transformationen beschreiben, die auf die Eingabedaten angewendet werden, um die gewünschte Ausgabe zu generieren.
 
@@ -26,25 +31,27 @@ Curl wird verwendet, um zu veranschaulichen, wie Sie über unformatierte HTTP-An
 
 > [!NOTE]
 > Wenn Sie bereits mit der Verwendung von Linux-basierten Hadoop-Servern vertraut sind, Ihnen HDInsight jedoch neu ist, finden Sie weitere Informationen unter [Tipps zu Linux-basiertem HDInsight](hdinsight-hadoop-linux-information.md).
-> 
-> 
 
-## <a id="prereq"></a>Voraussetzungen
+## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>Voraussetzungen
+
 Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
 
 * Einen Azure HDInsight-Cluster (Hadoop in HDInsight), der auf Linux oder Windows basiert
+
+  > [!IMPORTANT]
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+
 * [Curl](http://curl.haxx.se/)
 * [jq](http://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Ausführen von Pig-Aufträgen mit Curl
+## <a name="a-idcurlarun-pig-jobs-by-using-curl"></a><a id="curl"></a>Ausführen von Pig-Aufträgen mit Curl
+
 > [!NOTE]
 > Wenn Sie Curl oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen. Sie müssen auch den Clusternamen als Teil des URI (Uniform Resource Identifier) verwenden, der zum Senden der Anforderungen an den Server genutzt wird.
 > 
 > Ersetzen Sie für die Befehle in diesem Abschnitt die Option **BENUTZERNAME** zur Authentifizierung im Cluster durch den Benutzer und die Option **KENNWORT** durch das Kennwort für das Benutzerkonto. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters.
 > 
-> Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication) gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
-> 
-> 
+> Die REST-API wird durch [Standardauthentifizierung](http://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
 1. Verwenden Sie den folgenden Befehl in einer Befehlszeile, um zu überprüfen, ob Sie die Verbindung zum HDInsight-Cluster herstellen können:
    
@@ -56,45 +63,44 @@ Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Fol
    
     Folgende Parameter werden in diesem Befehl verwendet:
    
-   * **-u** – Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
-   * **-G**: Gibt an, dass dies eine GET-Anforderung ist
+    * **-u**– Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
+    * **-G**: Gibt an, dass dies eine GET-Anforderung ist
      
      Der Anfang der URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch. Der Pfad **/status** gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt.
+
 2. Verwenden Sie den folgenden Code, um einen Pig Latin-Auftrag an den Cluster zu übermitteln.
    
         curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="LOGS=LOAD+'wasbs:///example/data/sample.log';LEVELS=foreach+LOGS+generate+REGEX_EXTRACT($0,'(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)',1)+as+LOGLEVEL;FILTEREDLEVELS=FILTER+LEVELS+by+LOGLEVEL+is+not+null;GROUPEDLEVELS=GROUP+FILTEREDLEVELS+by+LOGLEVEL;FREQUENCIES=foreach+GROUPEDLEVELS+generate+group+as+LOGLEVEL,COUNT(FILTEREDLEVELS.LOGLEVEL)+as+count;RESULT=order+FREQUENCIES+by+COUNT+desc;DUMP+RESULT;" -d statusdir="wasbs:///example/pigcurl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/pig
    
     Folgende Parameter werden in diesem Befehl verwendet:
    
-   * **-d** – Da `-G` nicht verwendet wird, ist die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
+    * **-d**: Da `-G` nicht verwendet wird, verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
+    
+    * **user.name**: Der Benutzer, der den Befehl ausführt
+    * **execute**: Die auszuführenden Pig Latin-Anweisungen
+    * **statusdir**– Das Verzeichnis, in das die Statusangaben für diesen Auftrag geschrieben werden.
+    
+    > [!NOTE]
+    > Beachten Sie, dass die Leerzeichen in Pig Latin-Anweisungen bei Curl durch das Zeichen `+` ersetzt werden.
+    
+    Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann. Beispiel:
      
-     * **user.name**: Der Benutzer, der den Befehl ausführt
-     * **execute**: Die auszuführenden Pig Latin-Anweisungen
-     * **statusdir** – Das Verzeichnis, in das die Statusangaben für diesen Auftrag geschrieben werden.
-     
-     > [!NOTE]
-     > Beachten Sie, dass die Leerzeichen in Pig Latin-Anweisungen bei Curl durch das Zeichen `+` ersetzt werden.
-     > 
-     > 
-     
-     Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann. Beispiel:
-     
-       {"id":"job_1415651640909_0026"}
-3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen. Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die **JOBID** `job_1415651640909_0026` .
+        {"id":"job_1415651640909_0026"}
+
+3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen. Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die **JOBID** `job_1415651640909_0026`.
    
         curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
    
-    Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH** angezeigt.
+    Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH**angezeigt.
    
-   > [!NOTE]
-   > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück, und mithilfe von "jq" wird nur der Statuswert abgerufen.
-   > 
-   > 
+    > [!NOTE]
+    > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück, und mithilfe von "jq" wird nur der Statuswert abgerufen.
 
-## <a id="results"></a>Anzeigen der Ergebnisse
-Sobald der Status des Auftrags zu **SUCCEEDED** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure-Blobspeicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall **wasbs:///example/pigcurl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/pigcurl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
+## <a name="a-idresultsaview-results"></a><a id="results"></a>Anzeigen der Ergebnisse
 
-Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auflisten und herunterladen. Wenn Sie z. B. Dateien im Verzeichnis **example/pigcurl** auflisten möchten, verwenden Sie den folgenden Befehl:
+Sobald der Status des Auftrags in **SUCCEEDED** wechselt, können Sie die Ergebnisse des Auftrags aus Azure Blob Storage abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies **wasbs:///example/pigcurl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/pigcurl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
+
+Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auflisten und herunterladen. Wenn Sie beispielsweise Dateien im Verzeichnis **example/pigcurl** auflisten möchten, verwenden Sie den folgenden Befehl:
 
     azure storage blob list <container-name> example/pigcurl
 
@@ -104,15 +110,15 @@ Verwenden Sie den folgenden Befehl, um eine Datei herunterzuladen:
 
 > [!NOTE]
 > Sie müssen den Namen des Speicherkontos, das den Blob enthält, mithilfe der Parameter `-a` und `-k` angeben oder die Umgebungsvariablen **AZURE\_STORAGE\_ACCOUNT** und **AZURE\_STORAGE\_ACCESS\_KEY** festlegen.
-> 
-> 
 
-## <a id="summary"></a>Zusammenfassung
+## <a name="a-idsummaryasummary"></a><a id="summary"></a>Zusammenfassung
+
 Wie in diesem Dokument veranschaulicht, können Sie unformatierte HTTP-Anforderungen dazu verwenden, um Pig-Aufträge auf dem HDInsight-Cluster auszuführen, zu überwachen und deren Ergebnisse anzuzeigen.
 
 Weitere Informationen zur REST-Schnittstelle, die in diesem Artikel verwendet wird, finden Sie in der [WebHCat-Referenz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
 
-## <a id="nextsteps"></a>Nächste Schritte
+## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>Nächste Schritte
+
 Allgemeine Informationen zu Pig in HDInsight:
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
@@ -122,4 +128,9 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 * [Verwenden von Hive mit Hadoop in HDInsight](hdinsight-use-hive.md)
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Feb17_HO1-->
+
+

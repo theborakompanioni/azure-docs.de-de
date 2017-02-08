@@ -11,12 +11,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/12/2016
+ms.topic: deprecated
+ms.date: 01/18/2017
 ms.author: zhangya;bradsev
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-data-science-create-features
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1d29f416fe7d5ef3f74cf64122a84acc4a4535da
+ms.sourcegitcommit: ba61d00f277af579c87a130336ead9879b82a6de
+ms.openlocfilehash: c6b88355df430e78594fc1283c9df01ad6e27e20
 
 
 ---
@@ -68,7 +70,7 @@ Um effektive Features in den Trainingsdaten zu entwickeln, werden vier Regressio
 
 Neben Featuregruppe A, die bereits in den ursprünglichen Rohdaten vorhanden ist, werden die anderen drei Featuregruppen über den Featureentwicklungsprozess erstellt. Featuregruppe B erfasst die jüngste Nachfrage nach Fahrrädern. Featuregruppe C erfasst die Nachfrage nach Fahrrädern zu einer bestimmten Stunde Featuregruppe D erfasst die Nachfrage nach Fahrrädern zu bestimmten Uhrzeiten an bestimmten Wochentagen. Jeder der vier Trainingsdatasets umfasst Featuregruppe A, A+B, A+B+C und A+B+C+D.
 
-Diese vier Trainingsdatasets werden im Azure Machine Learning-Experiment über vier Verzweigungen aus den vorbearbeiteten Eingabedatasets gebildet. Mit Ausnahme der am weitesten links liegenden Verzweigung enthält jede dieser Verzweigungen ein Modul [Execute R Script][execute-r-script], in dem eine Reihe von abgeleiteten Features (Featuregruppe B, C und D) jeweils erstellt und dem importierten Dataset angehängt werden. Die folgende Abbildung veranschaulicht das R-Skript, das zur Erstellung der Featuregruppe B in der zweiten Verzweigung von links verwendet wird.
+Diese vier Trainingsdatasets werden im Azure Machine Learning-Experiment über vier Verzweigungen aus den vorbearbeiteten Eingabedatasets gebildet. Mit Ausnahme der am weitesten links liegenden Verzweigung enthält jede dieser Verzweigungen ein [Execute R Script][execute-r-script]-Modul, in dem eine Reihe von abgeleiteten Features (Featuregruppe B, C und D) jeweils erstellt und dem importierten Dataset angehängt werden. Die folgende Abbildung veranschaulicht das R-Skript, das zur Erstellung der Featuregruppe B in der zweiten Verzweigung von links verwendet wird.
 
 ![Erstellen einer Featuregruppe](./media/machine-learning-feature-selection-and-engineering/addFeature-Rscripts.png)
 
@@ -81,7 +83,7 @@ Die Featureentwicklung wird häufig in Aufgaben verwendet, die mit Text Mining i
 
 Für diese Aufgabe wird ein Verfahren namens *Feature Hashing* angewendet, um beliebige Textfeatures effizient in Indizes zu verwandeln. Statt jedes Textfeature (Wörter bzw. Ausdrücke) einem bestimmten Index zuzuweisen, wird bei dieser Methode durch Anwenden einer Hashfunktion auf die Features und die direkte Verwendung ihrer Hashwerte als Indizes ein Ergebnis erzielt.
 
-Azure Machine Learning enthält ein Modul [Feature Hashing][feature-hashing], das diese Wort- oder Ausdruck-Features bequem erstellt. Die folgende Abbildung zeigt ein Beispiel für die Verwendung dieses Moduls. Das Eingabedataset enthält zwei Spalten: die Buchbewertung, die im Bereich von 1 bis 5 liegt, und den tatsächlichen Inhalt der Bewertung. Das Ziel dieses [Feature Hashing][feature-hashing]-Moduls ist, eine Reihe von neuen Features abzurufen, die die Häufigkeit des Auftretens entsprechender Wörter oder Ausdrücke innerhalb der jeweiligen Buchbewertung zeigen. Um dieses Modul zu verwenden, müssen Sie die folgenden Schritte ausführen:
+Azure Machine Learning enthält ein [Feature Hashing][feature-hashing]-Modul, das diese Wort- oder Ausdrucksfeatures erstellt. Die folgende Abbildung zeigt ein Beispiel für die Verwendung dieses Moduls. Das Eingabedataset enthält zwei Spalten: die Buchbewertung, die im Bereich von 1 bis 5 liegt, und den tatsächlichen Inhalt der Bewertung. Das Ziel dieses [Feature Hashing][feature-hashing]-Moduls besteht darin, eine Reihe von neuen Features abzurufen, die die Häufigkeit entsprechender Wörter oder Ausdrücke innerhalb der jeweiligen Buchbewertung zeigen. Um dieses Modul zu verwenden, müssen Sie die folgenden Schritte ausführen:
 
 1. Wählen Sie die Spalte, die den eingegebenen Text enthält (in diesem Beispiel **Col2**).
 2. Legen Sie dann *Hashing bitsize* auf 8 fest, d.h. 2^8=256 Features werden erstellt. Die Wörter bzw. Ausdrücke im gesamten Text werden anschließend auf 256 Indizes gehasht. Der Parameter *Hashing bitsize* reicht von 1 bis 31. Wenn der Parameter auf einen höheren Wert festgelegt wird, werden die Wörter oder Ausdrücke mit geringerer Wahrscheinlichkeit in den gleichen Index gehasht.
@@ -103,11 +105,11 @@ Obwohl die Featureauswahl die Anzahl von Features im Dataset reduzieren soll, di
 
 Eine häufig angewendete Kategorie von Featureauswahlmethoden in einem überwachten Kontext ist die filterbasierte Featureauswahl. Durch Auswerten der Korrelation zwischen den einzelnen Features und dem Zielattribut wenden diese Methoden ein statistisches Maß an, um jedem Feature eine Bewertung zuzuweisen. Die Features werden dann nach dem Ergebnis geordnet. Hiermit können Sie den Schwellenwert zum Beibehalten oder Entfernen eines bestimmten Features festlegen. Beispiele für die statistischen Mittel in diesen Methoden sind Pearson-Korrelation, gegenseitige Information und der Chi-Quadrat-Test.
 
-Azure Machine Learning Studio enthält Module zur Featureauswahl. Wie in der folgenden Abbildung gezeigt, gehören hierzu die Module [Filterbasierte Featureauswahl][filter-based-feature-selection] und [Fisher’sche Diskriminanzfunktion][fisher-linear-discriminant-analysis].
+Azure Machine Learning Studio enthält Module zur Featureauswahl. Hierzu gehören die Module [Filter-Based Feature Selection][filter-based-feature-selection] und [Fisher Linear Discriminant Analysis][fisher-linear-discriminant-analysis], wie in der folgenden Abbildung zu sehen.
 
 ![Beispiel für Featureauswahl](./media/machine-learning-feature-selection-and-engineering/feature-Selection.png)
 
-Verwenden Sie z.B. das Modul [Filterbasierte Featureauswahl][filter-based-feature-selection] mit dem zuvor beschriebenen Text Mining-Beispiel. Es wird vorausgesetzt, dass ein Regressionsmodell erstellt werden soll, nachdem ein Satz von 256 Features über das [Feature Hashing][feature-hashing]-Modul erstellt wurde, dass die Antwortvariable **Col1** ist und eine Buchbewertung mit Bewertungen im Bereich von 1 bis 5 darstellt. Setzen Sie die **Feature scoring method** (Featurebewertungsmethode) auf **Pearson Correlation** (Pearson-Korrelation), die **Target Column** (Zielspalte) auf **Col1** und die **Number of desired features** (Anzahl gewünschter Features) auf **50**. Dann erzeugt das Modul [Filterbasierte Featureauswahl][filter-based-feature-selection] ein DataSet mit 50 Features mit dem Zieltattribut **Col1**. Die folgende Abbildung zeigt den Ablauf dieses Experiments und die Eingabeparameter.
+Verwenden Sie beispielsweise das [Filter-Based Feature Selection][filter-based-feature-selection]-Modul mit dem zuvor beschriebenen Text Mining-Beispiel. Nehmen wir an, Sie möchten ein Regressionsmodell erstellen, nachdem über das [Feature Hashing][feature-hashing]-Modul ein Satz mit 256 Features erstellt wurde, und nehmen wir weiter an, dass die Antwortvariable **Col1** lautet und eine Buchbewertung mit Bewertungen im Bereich von 1 bis 5 darstellt. Setzen Sie die **Feature scoring method** (Featurebewertungsmethode) auf **Pearson Correlation** (Pearson-Korrelation), die **Target Column** (Zielspalte) auf **Col1** und die **Number of desired features** (Anzahl gewünschter Features) auf **50**. Das [Filter-Based Feature Selection][filter-based-feature-selection]-Modul erzeugt ein Dataset mit 50 Features und dem Zielattribut **Col1**. Die folgende Abbildung zeigt den Ablauf dieses Experiments und die Eingabeparameter.
 
 ![Beispiel für Featureauswahl](./media/machine-learning-feature-selection-and-engineering/feature-Selection1.png)
 
@@ -119,7 +121,7 @@ Die folgende Abbildung zeigt die entsprechenden Ergebnisse der ausgewählten Fea
 
 ![Ergebnisse der ausgewählten Features](./media/machine-learning-feature-selection-and-engineering/feature-Selection3.png)
 
-Durch Anwenden dieses [Filterbasierte Featureauswahl][filter-based-feature-selection]-Moduls werden 50 von 256 Features ausgewählt, da hierbei auf Grundlage der Bewertungsmethode **Pearson-Korrelation** die meisten mit der Zielvariablen **Col1** korrelierten Features vorliegen.
+Durch Anwenden dieses [Filter-Based Feature Selection][filter-based-feature-selection]-Moduls werden 50 von 256 Features ausgewählt, da diese auf der Grundlage der Bewertungsmethode **Pearson Correlation** die meisten korrelierten Features mit der Zielvariablen **Col1** aufweisen.
 
 ## <a name="conclusion"></a>Zusammenfassung
 Entwicklung und Auswahl von Features sind zwei häufig ausgeführte Schritte zum Vorbereiten von Trainingsdaten beim Erstellen eines Machine Learning-Modells. Normalerweise wird die Featureentwicklung zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die Featureauswahl ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
@@ -134,6 +136,6 @@ Die Entwicklung bzw. Auswahl von Features muss nicht immer unbedingt erfolgen. O
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

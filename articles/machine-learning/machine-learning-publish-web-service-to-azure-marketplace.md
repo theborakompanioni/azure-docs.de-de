@@ -80,8 +80,8 @@ Stellen Sie den Dienst in der Produktionsumgebung bereit.
 13. Wenn alle Metadaten für Ihr Angebot eingegeben wurden, klicken Sie auf **Veröffentlichen** und dann auf **Push to Staging**. An diesem Punkt werden Sie auf alle verbleibenden Probleme hingewiesen, die Sie beheben müssen.
 14. Nachdem Sie alle ausstehenden Probleme behoben haben, klicken Sie auf **Request approval to push to Production**. Der Veröffentlichungsprozess kann einige Geschäftstage in Anspruch nehmen. 
 
-[Bild1]:./media/machine-learning-publish-web-service-to-azure-marketplace/image1.png
-[Abbildung 2]:./media/machine-learning-publish-web-service-to-azure-marketplace/image2.png
+[image1]:./media/machine-learning-publish-web-service-to-azure-marketplace/image1.png
+[image2]:./media/machine-learning-publish-web-service-to-azure-marketplace/image2.png
 [workspace]:./media/machine-learning-publish-web-service-to-azure-marketplace/selectworkspace.png
 [apikey]:./media/machine-learning-publish-web-service-to-azure-marketplace/apikey.png
 [odata]:./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png

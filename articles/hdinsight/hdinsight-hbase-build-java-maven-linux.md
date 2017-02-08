@@ -1,35 +1,39 @@
 ---
 title: Erstellen einer HBase-Anwendung mit Maven und Java und Bereitstellen in Linux-basiertem HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HBase-Anwendung erstellen und anschließend in einem Linux-basierten HDInsight-Cluster in der Azure-Cloud bereitstellen.
+description: "Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HBase-Anwendung erstellen und anschließend in einem Linux-basierten HDInsight-Cluster in der Azure-Cloud bereitstellen."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 10/03/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0f321065b9c24075837bebb71251cbc5751a1854
+
 
 ---
-# Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Linux-basiertem HDInsight (Hadoop) nutzen
-Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in Java mithilfe von Apache Maven erstellen und entwickeln. Verwenden Sie dann die Anwendung mit einem Linux-basierten HDInsight-Cluster.
+# <a name="use-maven-to-build-java-applications-that-use-hbase-with-linux-based-hdinsight-hadoop"></a>Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Linux-basiertem HDInsight (Hadoop) nutzen
+Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/) -Anwendung in Java mithilfe von Apache Maven erstellen und entwickeln. Verwenden Sie dann die Anwendung mit einem Linux-basierten HDInsight-Cluster.
 
 [Maven](http://maven.apache.org/) ist ein Projektmanagement- und Verständnistool, mit dem Sie Software, Dokumentationen und Berichte für Java-Projekte erstellen können. In diesem Artikel erfahren Sie, wie Sie das Tool zum Erstellen einer einfachen Java-Anwendung einsetzen, die eine HBase-Tabelle auf einem Linux-basierten HDInsight-Cluster erstellt, abfragt und löscht.
 
 > [!NOTE]
-> Die Schritte in diesem Artikel setzen voraus, dass Sie einen Linux-basierten HDInsight-Cluster verwenden. Informationen zur Verwendung eines Windows-basierten HDInsight-Clusters finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven.md).
+> Die Schritte in diesem Artikel setzen voraus, dass Sie einen Linux-basierten HDInsight-Cluster verwenden. Informationen zur Verwendung eines Windows-basierten HDInsight-Clusters finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven.md)
 > 
 > 
 
-## Anforderungen
+## <a name="requirements"></a>Anforderungen
 * [Java-Plattform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 oder höher
 * [Maven](http://maven.apache.org/)
-* [Linux-basierter Azure HDInsight-Cluster mit HBase](../hdinsight-hbase-get-started-linux.md#create-hbase-cluster)
+* [Linux-basierter Azure HDInsight-Cluster mit HBase](hdinsight-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
   
   > [!NOTE]
   > Die Schritte in diesem Dokument wurden mit HDInsight-Clustern der Versionen 3.2, 3.3 und 3.4 getestet. Die Standardwerte in den Beispielen gelten für einen Cluster mit HDInsight 3.4.
@@ -40,20 +44,20 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
   * **Linux-, Unix- oder OS X-Clients**: Siehe [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, OS X oder Unix](hdinsight-hadoop-linux-use-ssh-unix.md)
   * **Windows-Clients**: Siehe [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-## Erstellen des Projekts
+## <a name="create-the-project"></a>Erstellen des Projekts
 1. Ändern Sie an der Befehlszeile Ihrer Entwicklungsumgebung die Verzeichnisse auf den Speicherort, an dem Sie das Projekt erstellen möchten, beispielsweise `cd code/hdinsight`.
-2. Verwenden Sie den Befehl **mvn**, der mit Maven installiert wird, um das Gerüst für das Projekt zu erstellen.
+2. Verwenden Sie den Befehl **mvn** , der mit Maven installiert wird, um das Gerüst für das Projekt zu erstellen.
    
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    
     Damit wird ein neues Verzeichnis im aktuellen erstellt, das den Namen trägt, der vom Parameter **artifactID** (in diesem Beispiel **hbaseapp**) festgelegt wurde. Dieses Verzeichnis enthält die folgenden Elemente:
    
    * **pom.xml**: Das Projektobjektmodell ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) enthält Informationen und Konfigurationsdetails zum Erstellen des Projekts.
-   * **src**: Das Verzeichnis, das das Verzeichnis **main/java/com/microsoft/examples** enthält, in dem Sie die Anwendung erstellen.
+   * **src**: Das Verzeichnis mit dem Verzeichnis **main/java/com/microsoft/examples**, in dem Sie die Anwendung erstellen.
 3. Löschen Sie die Datei **src/test/java/com/microsoft/examples/apptest.java**, da sie in diesem Beispiel nicht verwendet wird.
 
-## Aktualisieren des Projektobjektmodells
-1. Bearbeiten Sie die Datei **pom.xml**, und fügen Sie folgenden Code im Abschnitt `<dependencies>` ein.
+## <a name="update-the-project-object-model"></a>Aktualisieren des Projektobjektmodells
+1. Bearbeiten Sie die Datei **pom.xml**, und fügen Sie folgenden Code im Abschnitt `<dependencies>` ein:
    
         <dependency>
             <groupId>org.apache.hbase</groupId>
@@ -70,11 +74,11 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
    
    | HDInsight-Clusterversion | Zu verwendende HBase-Version |
    | --- | --- |
-   | 3\.2 |0\.98.4-hadoop2 |
-   | 3\.3 und 3.4 |1\.1.2 |
+   | 3.2 |0.98.4-hadoop2 |
+   | 3.3 und 3.4 |1.1.2 |
    
     Weitere Informationen zu HDInsight-Versionen und Komponenten finden Sie unter [Was sind die verschiedenen Hadoop-Komponenten, die in HDInsight verfügbar sind?](hdinsight-component-versioning.md).
-2. Wenn Sie einen HDInsight 3.3- oder 3.4-Cluster verwenden, müssen Sie dem `<dependencies>`-Abschnitt auch Folgendes hinzufügen:
+2. Wenn Sie einen HDInsight 3.3- oder 3.4-Cluster verwenden, müssen Sie dem `<dependencies>` -Abschnitt auch Folgendes hinzufügen:
    
         <dependency>
             <groupId>org.apache.phoenix</groupId>
@@ -135,24 +139,24 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
    > 
    > 
    
-    Damit werden auch das [Maven Compiler-Plug-In](http://maven.apache.org/plugins/maven-compiler-plugin/) und das [Maven Shade-Plug-In](http://maven.apache.org/plugins/maven-shade-plugin/) konfiguriert. Das Compiler-Plug-In wird zum Kompilieren der Topologie verwendet. Das Shade-Plug-In wird verwendet, um die Lizenzduplizierung in dem von Maven erstellten JAR-Paket zu verhindern. Es wird deshalb verwendet, weil die doppelten Lizenzdateien bei der Laufzeit einen Fehler auf dem HDInsight-Cluster verursachen. Wird maven-shade-plugin mit der `ApacheLicenseResourceTransformer`-Implementierung verwendet, so wird dieser Fehler verhindert.
+    Damit werden auch das [Maven Compiler-Plug-In](http://maven.apache.org/plugins/maven-compiler-plugin/) und das [Maven Shade-Plug-In](http://maven.apache.org/plugins/maven-shade-plugin/) konfiguriert. Das Compiler-Plug-In wird zum Kompilieren der Topologie verwendet. Das Shade-Plug-In wird verwendet, um die Lizenzduplizierung in dem von Maven erstellten JAR-Paket zu verhindern. Es wird deshalb verwendet, weil die doppelten Lizenzdateien bei der Laufzeit einen Fehler auf dem HDInsight-Cluster verursachen. Wird maven-shade-plugin mit der `ApacheLicenseResourceTransformer` -Implementierung verwendet, so wird dieser Fehler verhindert.
    
     Das maven-shade-plugin erzeugt außerdem ein Uberjar (oder Fatjar), das alle Abhängigkeiten enthält, die von der Anwendung benötigt werden.
-4. Speichern Sie die Datei **pom.xml**.
-5. Erstellen Sie ein neues Verzeichnis namens **conf** im Verzeichnis **hbaseapp**. Dies wird zum Speichern von Konfigurationsinformationen für die HBase-Verbindung verwendet.
+4. Speichern Sie die Datei **pom.xml** .
+5. Erstellen Sie ein neues Verzeichnis mit dem Namen **conf** im Verzeichnis **hbaseapp**. Dies wird zum Speichern von Konfigurationsinformationen für die HBase-Verbindung verwendet.
 6. Verwenden Sie den folgenden Befehl, um die HBase-Konfiguration vom HDInsight-Server in das Verzeichnis **conf** zu kopieren. Ersetzen Sie **USERNAME** durch den Namen der SSH-Anmeldung. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters:
    
         scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
    
    > [!NOTE]
-   > Wenn Sie ein Kennwort für das SSH-Konto verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel mit dem Konto verwendet haben, müssen Sie möglicherweise den `-i`-Parameter verwenden, um den Pfad zur Schlüsseldatei anzugeben. Im folgenden Beispiel wird der private Schlüssel aus `~/.ssh/id_rsa` geladen:
+   > Wenn Sie ein Kennwort für das SSH-Konto verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel mit dem Konto verwendet haben, müssen Sie möglicherweise den `-i` -Parameter verwenden, um den Pfad zur Schlüsseldatei anzugeben. Im folgenden Beispiel wird der private Schlüssel aus `~/.ssh/id_rsa`geladen:
    > 
    > `scp -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml`
    > 
    > 
 
-## Erstellen der Anwendung
-1. Wechseln Sie zum Verzeichnis **hbaseapp/src/main/java/com/microsoft/examples**, und benennen Sie die Datei "app.java" in **CreateTable.java** um.
+## <a name="create-the-application"></a>Erstellen der Anwendung
+1. Wechseln Sie zum Verzeichnis **hbaseapp/src/main/java/com/microsoft/examples**, und benennen Sie die Datei „app.java“ in **CreateTable.java** um.
 2. Öffnen Sie die Datei **CreateTable.java**, und ersetzen Sie die vorhandenen Inhalte wie folgt:
    
         package com.microsoft.examples;
@@ -223,7 +227,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           }
         }
    
-    Das ist die Klasse **CreateTable**, die eine Tabelle namens **people** erzeugt und sie mit einigen vordefinierten Benutzern füllt.
+    Dies ist die **CreateTable**-Klasse, die eine Tabelle namens **people** erzeugt und sie mit einigen vordefinierten Benutzern füllt.
 3. Speichern Sie die Datei **CreateTable.java**.
 4. Erstellen Sie im Verzeichnis **hbaseapp/src/main/java/com/microsoft/examples** eine Datei mit dem Namen **SearchByEmail.java**. Fügen Sie Folgendes als Inhalt der Datei hinzu:
    
@@ -298,9 +302,9 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           }
         }
    
-    Die Klasse **SearchByEmail** kann zur Abfrage von Zeilen nach E-Mail-Adresse verwendet werden. Da sie einen Filter für reguläre Ausdrücke verwendet, können Sie beim Einsatz der Klasse entweder eine Zeichenfolge angeben oder einen regulären Ausdruck.
+    Die **SearchByEmail**-Klasse kann für Abfragen von Zeilen nach der E-Mail-Adresse verwendet werden. Da sie einen Filter für reguläre Ausdrücke verwendet, können Sie beim Einsatz der Klasse entweder eine Zeichenfolge angeben oder einen regulären Ausdruck.
 5. Speichern Sie die Datei **SearchByEmail.java**.
-6. Erstellen Sie im Verzeichnis **hbaseapp/src/main/hava/com/microsoft/examples** eine Datei mit dem Namen **DeleteTable.java**. Fügen Sie Folgendes als Inhalt der Datei hinzu:
+6. Erstellen Sie im Verzeichnis **hbaseapp/src/main/java/com/microsoft/examples** eine Datei mit dem Namen **DeleteTable.java**. Fügen Sie Folgendes als Inhalt der Datei hinzu:
    
         package com.microsoft.examples;
         import java.io.IOException;
@@ -322,10 +326,10 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
           }
         }
    
-    Diese Klasse dient zum Aufräumen dieses Beispiels. Sie deaktiviert die von der Klasse **CreateTable** erstellte Tabelle und verwirft sie.
+    Diese Klasse dient zum Aufräumen dieses Beispiels. Sie deaktiviert die von der **CreateTable**-Klasse erstellte Tabelle und verwirft sie.
 7. Speichern Sie die Datei **DeleteTable.java**.
 
-## Erstellen und Packen der Anwendung
+## <a name="build-and-package-the-application"></a>Erstellen und Packen der Anwendung
 1. Verwenden Sie im Verzeichnis **hbaseapp** den folgenden Befehl, um eine JAR-Datei zu erstellen, die die Anwendung enthält:
    
         mvn clean package
@@ -338,7 +342,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
    > 
    > 
 
-## Hochladen der JAR-Datei und Ausführen von Aufträgen
+## <a name="upload-the-jar-file-and-run-jobs"></a>Hochladen der JAR-Datei und Ausführen von Aufträgen
 1. Verwenden Sie den folgenden Befehl, um die JAR-Datei in den HDInsight-Cluster hochzuladen. Ersetzen Sie **USERNAME** durch den Namen der SSH-Anmeldung. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters:
    
         scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
@@ -346,7 +350,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
     Dadurch wird die Datei in das Basisverzeichnis für Ihr SSH-Benutzerkonto hochgeladen.
    
    > [!NOTE]
-   > Wenn Sie ein Kennwort für das SSH-Konto verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel mit dem Konto verwendet haben, müssen Sie möglicherweise den `-i`-Parameter verwenden, um den Pfad zur Schlüsseldatei anzugeben. Im folgenden Beispiel wird der private Schlüssel aus `~/.ssh/id_rsa` geladen:
+   > Wenn Sie ein Kennwort für das SSH-Konto verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel mit dem Konto verwendet haben, müssen Sie möglicherweise den `-i` -Parameter verwenden, um den Pfad zur Schlüsseldatei anzugeben. Im folgenden Beispiel wird der private Schlüssel aus `~/.ssh/id_rsa`geladen:
    > 
    > `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
    > 
@@ -356,7 +360,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
    > [!NOTE]
-   > Wenn Sie ein Kennwort für das SSH-Konto verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel mit dem Konto verwendet haben, müssen Sie möglicherweise den `-i`-Parameter verwenden, um den Pfad zur Schlüsseldatei anzugeben. Im folgenden Beispiel wird der private Schlüssel aus `~/.ssh/id_rsa` geladen:
+   > Wenn Sie ein Kennwort für das SSH-Konto verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen SSH-Schlüssel mit dem Konto verwendet haben, müssen Sie möglicherweise den `-i` -Parameter verwenden, um den Pfad zur Schlüsseldatei anzugeben. Im folgenden Beispiel wird der private Schlüssel aus `~/.ssh/id_rsa`geladen:
    > 
    > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
    > 
@@ -379,9 +383,14 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-## Löschen der Tabelle
-Wenn Sie mit dem Beispiel fertig sind, verwenden Sie den folgenden Befehl aus der Azure PowerShell-Sitzung zum Löschen der Tabelle **people**, die in diesem Beispiel verwendet wurde.
+## <a name="delete-the-table"></a>Löschen der Tabelle
+Wenn Sie mit dem Beispiel fertig sind, verwenden Sie den folgenden Befehl aus der Azure PowerShell-Sitzung zum Löschen der Tabelle **people**, die in diesem Beispiel verwendet wurde:
 
     hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

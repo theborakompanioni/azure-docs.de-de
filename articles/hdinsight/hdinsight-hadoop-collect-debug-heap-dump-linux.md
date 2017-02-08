@@ -1,13 +1,13 @@
 ---
-title: Aktivieren von Heapdumps für Hadoop-Dienste auf HDInsight | Microsoft Docs
-description: Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen.
+title: "Aktivieren von Heapdumps für Hadoop-Dienste auf HDInsight | Microsoft-Dokumentation"
+description: "Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4bbd6f0033fd148832e56d0e0abef50c84a8422f
+
 
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight-(preview)"></a>Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern (Vorschau)
+# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight-preview"></a>Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern (Vorschau)
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
 Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließlich der Werte von Variablen zum Zeitpunkt der Dumperstellung. Daher sind sie sehr nützlich zum Diagnostizieren von Problemen, die bei der Ausführung auftreten.
@@ -27,7 +31,7 @@ Heapdumps enthalten eine Momentaufnahme des Speichers der Anwendung, einschließ
 > 
 > 
 
-## <a name="<a-name="whichservices"></a>services"></a><a name="whichServices"></a>Dienste
+## <a name="a-namewhichservicesaservices"></a><a name="whichServices"></a>Dienste
 Sie können Heapdumps für die folgenden Dienste aktivieren:
 
 * **hcatalog** : tempelton
@@ -38,7 +42,7 @@ Sie können Heapdumps für die folgenden Dienste aktivieren:
 
 Sie können Heapdumps auch für die Mapper- und Reducer-Prozesse aktivieren, die von HDInsight ausgeführt wurden.
 
-## <a name="<a-name="configuration"></a>understanding-heap-dump-configuration"></a><a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
+## <a name="a-nameconfigurationaunderstanding-heap-dump-configuration"></a><a name="configuration"></a>Grundlegendes zur Konfiguration von Heapdumps
 Heapdumps werden aktiviert, indem Optionen (oder Parameter) an die JVM übergeben werden, wenn ein Dienst gestartet wird. Für die meisten Hadoop-Dienste kann dies erreicht werden, indem das Shellskript geändert wird, das zum Starten des Diensts verwendet wird.
 
 In jedem Skript ist ein Export für **\*\_OPTS** vorhanden, der die an die JVM übergebenen Optionen enthält. Beispiel: Im Skript **hadoop-env.sh** enthält die Zeile, die mit `export HADOOP_NAMENODE_OPTS=` beginnt, die Optionen für den NameNode-Dienst.
@@ -127,6 +131,9 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
    > 
 8. Verwenden Sie nach dem Neustart der Dienste die Schaltfläche **Service Actions**, um **Turn Off Maintenance Mode** auszuwählen. Dadurch setzt Ambari das Überwachen auf Warnungen für den Dienst fort.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

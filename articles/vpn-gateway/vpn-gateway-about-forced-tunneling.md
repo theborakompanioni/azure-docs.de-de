@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc58780b3f278ef8a0ad46b507dec8f3e7bf364c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 33ca336c6ae3ffc68997d21c4d7da9275ff48a00
 
 
 ---
@@ -69,7 +69,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 * Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 * Ein konfiguriertes virtuelles Netzwerk. 
-* Die neueste Version der Azure PowerShell-Cmdlets. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+* Die neueste Version der Azure PowerShell-Cmdlets. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 ## <a name="configure-forced-tunneling"></a>Konfigurieren der Tunnelerzwingung
 Das folgende Verfahren hilft Ihnen bei der Angabe der Tunnelerzwingung für ein virtuelles Netzwerk. Die Konfigurationsschritte entsprechen der VNet-Netzwerkkonfigurationsdatei.
@@ -163,6 +163,6 @@ Mithilfe der Schritte wird festgelegt, dass *DefaultSiteHQ* die Standard-Standor
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

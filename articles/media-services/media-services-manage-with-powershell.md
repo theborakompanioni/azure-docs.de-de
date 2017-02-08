@@ -3,40 +3,44 @@ title: Verwalten von Azure Media Services-Konten mit PowerShell
 description: Erfahren Sie, wie Sie Azure Media Services-Konten mit PowerShell-Cmdlets verwalten.
 author: Juliako
 manager: erikre
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 17a10c25-d94f-421c-b6bc-ae0958e2ac96
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2016
+ms.date: 10/03/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2549c876ee35d6a7fa425d43e2f86d24131ca791
+ms.openlocfilehash: 3d999d9e27844bc0164cc3572522b9ec022118a1
+
 
 ---
-# Verwalten von Azure Media Services-Konten mit PowerShell
+# <a name="manage-azure-media-services-accounts-with-powershell"></a>Verwalten von Azure Media Services-Konten mit PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-create-account.md)
 > * [PowerShell](media-services-manage-with-powershell.md)
-> * [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
+> * [REST](https://docs.microsoft.com/rest/api/media/mediaservice)
 > 
 > [!NOTE]
 > Um ein Azure Media Services-Konto erstellen zu können, müssen Sie ein Azure-Konto besitzen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Kostenlose Azure-Testversion</a>.
 > 
 > 
 
-## Übersicht
-In diesem Artikel sind die Azure PowerShell-Cmdlets für Azure Media Services (AMS) im Azure Resource Manager-Framework aufgeführt. Die Cmdlets sind im **Microsoft.Azure.Commands.Media**-Namespace vorhanden.
+## <a name="overview"></a>Übersicht
+In diesem Artikel sind die Azure PowerShell-Cmdlets für Azure Media Services (AMS) im Azure Resource Manager-Framework aufgeführt. Die Cmdlets sind im **Microsoft.Azure.Commands.Media** -Namespace vorhanden.
 
-## Versionen
-**ApiVersion**: „2015-10-01“
+## <a name="versions"></a>Versionen
+**ApiVersion**:   "2015-10-01"
 
-## New-AzureRmMediaService
+## <a name="new-azurermmediaservice"></a>New-AzureRmMediaService
 Erstellt einen Mediendienst.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 Parametersatz: StorageAccountIdParamSet
 
     New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccountId] <string> [-Tags <hashtable>]  [<CommonParameters>]
@@ -45,7 +49,7 @@ Parametersatz: StorageAccountsParamSet
 
     New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccounts] <PSStorageAccount[]> [-Tags <hashtable>]  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameter
 **-ResourceGroupName &lt;String&gt;**
 
 Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
@@ -98,7 +102,7 @@ Gibt ein primäres Speicherkonto an, das dem Mediendienst zugeordnet ist.
 | Parametersatzname |StorageAccountIdParamSet |
 | Platzhalterzeichen akzeptieren? |false |
 
-**-StorageAccounts &lt;PSStorageAccount[]&gt;**
+**-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
 Gibt Speicherkonten an, die dem Mediendienst zugeordnet sind.
 
@@ -133,19 +137,19 @@ Gibt eine Hashtabelle mit den Tags an, die dem Mediendienst zugeordnet sind.
 
 Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Eingaben
 Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
 
-### Ausgaben
+### <a name="outputs"></a>Ausgaben
 Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
 
-## Set-AzureRmMediaService
+## <a name="set-azurermmediaservice"></a>Set-AzureRmMediaService
 Aktualisiert einen Mediendienst.
 
-### Syntax
+### <a name="syntax"></a>Syntax
     Set-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Tags <hashtable>] [-StorageAccounts <PSStorageAccount[]>]  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameter
 **-ResourceGroupName &lt;String&gt;**
 
 Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
@@ -155,7 +159,7 @@ Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
 | Erforderlich |true |
 | Position? |0 |
 | Standardwert |(Keine) |
-| Akzeptiert Pipeline-Eingabe? |true(ByPropertyName) |
+| Pipelineeingabe akzeptieren? |true(ByPropertyName) |
 | Platzhalterzeichen akzeptieren? |false |
 
 **-AccountName &lt;String&gt;**
@@ -164,13 +168,13 @@ Gibt den Namen des Mediendiensts an.
 
 | Aliase | Name |
 | --- | --- |
-| Erforderlich |True |
+| Erforderlich |true |
 | Position? |1 |
-| Standardwert |Keine |
+| Standardwert |(Keine) |
 | Pipelineeingabe akzeptieren? |true(ByPropertyName) |
 | Platzhalterzeichen akzeptieren? |False |
 
-**-StorageAccounts &lt;PSStorageAccount[]&gt;**
+**-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
 Gibt Speicherkonten an, die dem Mediendienst zugeordnet sind.
 
@@ -181,7 +185,7 @@ Gibt Speicherkonten an, die dem Mediendienst zugeordnet sind.
 | Aliase | (Keine) |
 | --- | --- |
 | Erforderlich |false |
-| Position? |Benannt |
+| Position? |benannt |
 | Standardwert |(Keine) |
 | Pipelineeingabe akzeptieren? |true(ByPropertyName) |
 | Parametersatzname |StorageAccountsParamSet |
@@ -195,9 +199,9 @@ Gibt eine Hashtabelle mit den Tags an, die diesem Mediendienst zugeordnet sind.
 
 | Aliase | (Keine) |
 | --- | --- |
-| Erforderlich |False |
-| Position? |Benannt |
-| Standardwert |Keine |
+| Erforderlich |false |
+| Position? |benannt |
+| Standardwert |(Keine) |
 | Pipelineeingabe akzeptieren? |true(ByPropertyName) |
 | Platzhalterzeichen akzeptieren? |false |
 
@@ -205,19 +209,19 @@ Gibt eine Hashtabelle mit den Tags an, die diesem Mediendienst zugeordnet sind.
 
 Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Eingaben
 Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
 
-### Ausgaben
+### <a name="outputs"></a>Ausgaben
 Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
 
-## Remove-AzureRmMediaService
+## <a name="remove-azurermmediaservice"></a>Remove-AzureRmMediaService
 Entfernt einen Mediendienst.
 
-### Syntax
+### <a name="syntax"></a>Syntax
     Remove-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameter
 **-ResourceGroupName &lt;String&gt;**
 
 Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
@@ -238,7 +242,7 @@ Gibt den Namen des Mediendiensts an.
 | --- | --- |
 | Erforderlich |true |
 | Position? |2 |
-| Standardwert |Keine |
+| Standardwert |(Keine) |
 | Pipelineeingabe akzeptieren? |true(ByPropertyName) |
 | Platzhalterzeichen akzeptieren? |False |
 
@@ -246,16 +250,16 @@ Gibt den Namen des Mediendiensts an.
 
 Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Eingaben
 Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
 
-### Ausgaben
+### <a name="outputs"></a>Ausgaben
 Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
 
-## Get-AzureRmMediaService
+## <a name="get-azurermmediaservice"></a>Get-AzureRmMediaService
 Ruft alle Mediendienste in einer Ressourcengruppe oder einen Mediendienst mit einem bestimmten Namen ab.
 
-### Syntax
+### <a name="syntax"></a>Syntax
 ParameterSet: ResourceGroupParameterSet
 
     Get-AzureRmMediaService [-ResourceGroupName] <string>  [<CommonParameters>]    
@@ -264,7 +268,7 @@ ParameterSet: AccountNameParameterSet
 
     Get-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameter
 **-ResourceGroupName &lt;String&gt;**
 
 Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
@@ -277,7 +281,7 @@ Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
 | Pipelineeingabe akzeptieren? |true(ByPropertyName) |
 | Parametersatzname |ResourceGroupParameterSet, AccountNameParameterSet |
 
-Platzhalterzeichen akzeptieren? false
+Platzhalterzeichen akzeptieren?   false
 
 **-AccountName &lt;String&gt;**
 
@@ -296,19 +300,19 @@ Gibt den Namen des Mediendiensts an.
 
 Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Eingaben
 Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
 
-### Ausgaben
+### <a name="outputs"></a>Ausgaben
 Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
 
-## Get-AzureRmMediaServiceKeys
+## <a name="get-azurermmediaservicekeys"></a>Get-AzureRmMediaServiceKeys
 Ruft die Schlüssel eines Mediendiensts ab.
 
-### Syntax
+### <a name="syntax"></a>Syntax
     Get-AzureRmMediaServiceKeys [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameter
 **-ResourceGroupName &lt;String&gt;**
 
 Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
@@ -337,19 +341,19 @@ Gibt den Namen des Mediendiensts an.
 
 Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Eingaben
 Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
 
-### Ausgaben
+### <a name="outputs"></a>Ausgaben
 Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
 
-## Set-AzureRmMediaServiceKey
+## <a name="set-azurermmediaservicekey"></a>Set-AzureRmMediaServiceKey
 Generiert einen primären oder sekundären Schlüssel eines Mediendiensts neu.
 
-### Syntax
+### <a name="syntax"></a>Syntax
     Set-AzureRmMediaServiceKey [-ResourceGroupName] <string> [-AccountName] <string> [-KeyType] <KeyType> {Primary | Secondary}  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameter
 **-ResourceGroupName &lt;String&gt;**
 
 Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
@@ -392,19 +396,19 @@ Gibt den Schlüsseltyp des Mediendiensts an.
 
 Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Eingaben
 Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
 
-### Ausgaben
+### <a name="outputs"></a>Ausgaben
 Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
 
-## Sync-AzureRmMediaServiceStorageKeys
+## <a name="sync-azurermmediaservicestoragekeys"></a>Sync-AzureRmMediaServiceStorageKeys
 Synchronisiert Speicherkontoschlüssel für ein Speicherkonto, das dem Mediendienst zugeordnet ist.
 
-### Syntax
-    Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountName] <string>  [<CommonParameters>]
+### <a name="syntax"></a>Syntax
+    Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountId] <string>  [<CommonParameters>]
 
-### Parameter
+### <a name="parameters"></a>Parameter
 **-ResourceGroupName &lt;String&gt;**
 
 Gibt den Namen der Ressourcengruppe an, zu der der Mediendienst gehört.
@@ -445,18 +449,23 @@ Gibt das Speicherkonto an, das dem Mediendienst zugeordnet ist.
 
 Dieses Cmdlet unterstützt diese gängigen Parameter: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction und -WarningVariable.
 
-### Eingaben
+### <a name="inputs"></a>Eingaben
 Der Eingabetyp ist der Typ der Objekte, die Sie an das Cmdlet übergeben können.
 
-### Ausgaben
+### <a name="outputs"></a>Ausgaben
 Der Ausgabetyp ist der Typ der Objekte, die vom Cmdlet ausgegeben werden.
 
-## Nächster Schritt
+## <a name="next-step"></a>Nächster Schritt
 Informieren Sie sich über die Media Services-Lernpfade.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Feb17_HO1-->
+
+

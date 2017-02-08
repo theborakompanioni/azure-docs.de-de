@@ -1,12 +1,12 @@
 ---
-title: Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel mit dem Media Services .NET SDK | Microsoft Docs
-description: Erfahren Sie, wie Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel mit Media Services .NET SDK konfigurieren.
+title: "Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel mit dem Media Services .NET SDK | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel mit Media Services .NET SDK konfigurieren."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Mingfeiy
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,21 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: juliako;mingfeiy
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7a90634ecc8712b7b94567c3b1cea574d544075b
+
 
 ---
-# Dynamische Verschlüsselung: Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel
+# <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamische Verschlüsselung: Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## Übersicht
-Mit Microsoft Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und HTTP-Live-Streaming-Datenströme (HLS) übermitteln, die mit Advanced Encryption Standards (AES) (mit 128-Bit-Verschlüsselungschlüsseln) oder [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) geschützt sind. AMS ermöglicht Ihnen auch, mit Widevine DRM verschlüsselte DASH-Datenströme bereitzustellen. PlayReady und Widevine sind gemäß der Spezifikation Common Encryption (ISO/IEC 23001-7 CENC) verschlüsselt.
+## <a name="overview"></a>Übersicht
+Mit Microsoft Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und HTTP-Live-Streaming-Datenströme (HLS) übermitteln, die mit Advanced Encryption Standards (AES) (mit 128-Bit-Verschlüsselungschlüsseln) oder [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/)geschützt sind. AMS ermöglicht Ihnen auch, mit Widevine DRM verschlüsselte DASH-Datenströme bereitzustellen. PlayReady und Widevine sind gemäß der Spezifikation Common Encryption (ISO/IEC 23001-7 CENC) verschlüsselt.
 
-Media Services bietet einen **Schlüssel-/Lizenzübermittlungsdienst**, von dem die Clients AES-Schlüssel oder PlayReady/Widevine-Lizenzen zur Wiedergabe von verschlüsselten Inhalten abrufen können.
+Media Services bietet einen **Schlüssel-/Lizenzübermittlungsdienst** , von dem die Clients AES-Schlüssel oder PlayReady/Widevine-Lizenzen zur Wiedergabe von verschlüsselten Inhalten abrufen können.
 
 Wenn ein Medienobjekt durch Media Services verschlüsselt werden soll, müssen Sie ihm einen Verschlüsselungsschlüssel (**CommonEncryption** oder **EnvelopeEncryption**) zuordnen (wie [hier](media-services-dotnet-create-contentkey.md) beschrieben) und zusätzlich Autorisierungsrichtlinien für den Schlüssel konfigurieren (wie in diesem Artikel beschrieben).
 
 Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um den Inhalt mit AES- oder DRM-Verschlüsselung dynamisch zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
-Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Tokeneinschränkung**. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im Format **Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und im Format **JSON Web Token** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)).
+Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Token**. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im **Simple Web Tokens**-Format ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und **JSON Web Token**-Format ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)).
 
 Secure Token Services werden von Media Services nicht bereitgestellt. Sie können einen benutzerdefinierten STS erstellen oder Microsoft Azure ACS zum Ausstellen von Token nutzen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausgabe von Ansprüchen konfiguriert sein, die Sie in der Konfiguration der Token-Einschränkung angegeben haben (wie in diesem Artikel beschrieben). Der Schlüsselübermittlungsdienst von Media Services gibt den Verschlüsselungsschlüssel an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Inhaltsschlüssel konfigurierten Ansprüchen übereinstimmen.
 
@@ -40,22 +44,24 @@ Weitere Informationen finden Sie unter
 
 [Ausstellen von Token mithilfe von Azure ACS](http://mingfeiy.com/acs-with-key-services)
 
-### Folgende Überlegungen sollten berücksichtigt werden:
+### <a name="some-considerations-apply"></a>Folgende Überlegungen sollten berücksichtigt werden:
 * Zur Verwendung der dynamischen Paketerstellung und Verschlüsselung müssen Sie über mindestens eine reservierte Einheit für das Streaming verfügen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-portal-manage-streaming-endpoints.md).
 * Ihr Medienobjekt muss einen Satz von MP4-Dateien bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-encode-asset.md).
-* Zum Hochladen und Codieren Ihrer Medienobjekte verwenden Sie die Option **AssetCreationOptions.StorageEncrypted**.
+* Zum Hochladen und Codieren Ihrer Medienobjekte verwenden Sie die Option **AssetCreationOptions.StorageEncrypted** .
 * Wenn Sie mehrere Inhaltsschlüssel verwenden möchten, die dieselbe Richtlinienkonfiguration erfordern, wird empfohlen, eine einzelne Autorisierungsrichtlinie zu erstellen und für mehrere Inhaltsschlüssel wiederzuverwenden.
-* ContentKeyAuthorizationPolicy und die zugehörigen Objekte (Richtlinienoptionen und Einschränkungen) werden vom Schlüsselübermittlungsdienst für 15 Minuten zwischengespeichert. Wenn Sie ContentKeyAuthorizationPolicy erstellen und angeben, dass eine „Token“-Einschränkung verwendet werden soll, diese anschließend testen und dann die Richtlinie auf eine „Open“-Einschränkung aktualisieren, dauert es ungefähr 15 Minuten, bis die Richtlinie zur „Open“-Version der Richtlinie wechselt.
+* ContentKeyAuthorizationPolicy und die zugehörigen Objekte (Richtlinienoptionen und Einschränkungen) werden vom Schlüsselübermittlungsdienst für 15 Minuten zwischengespeichert.  Wenn Sie ContentKeyAuthorizationPolicy erstellen und angeben, dass eine „Token“-Einschränkung verwendet werden soll, diese anschließend testen und dann die Richtlinie auf eine „Open“-Einschränkung aktualisieren, dauert es ungefähr 15 Minuten, bis die Richtlinie zur „Open“-Version der Richtlinie wechselt.
 * Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie einen vorhandenen Locator (sofern vorhanden) löschen und einen neuen Locator erstellen.
 * Derzeit können Sie das HDS-Streamingformat oder progressive Downloads nicht verschlüsseln.
 
-## Dynamische AES-128-Verschlüsselung
-### Open-Einschränkung
+## <a name="aes-128-dynamic-encryption"></a>Dynamische AES-128-Verschlüsselung
+### <a name="open-restriction"></a>Open-Einschränkung
 Bei Verwendung einer Open-Einschränkung übermittelt das System den Schlüssel an jeden, der einen Schlüssel anfordert. Diese Einschränkung kann zu Testzwecken nützlich sein.
 
 Im folgenden Beispiel wird eine Open-Autorisierungsrichtlinie erstellt und dem Inhaltsschlüssel hinzugefügt.
 
-static public void AddOpenAuthorizationPolicy(IContentKey contentKey) { // Create ContentKeyAuthorizationPolicy with Open restrictions // and create authorization policy IContentKeyAuthorizationPolicy policy = \_context. ContentKeyAuthorizationPolicies. CreateAsync("Open Authorization Policy").Result;
+static public void AddOpenAuthorizationPolicy(IContentKey contentKey) { // Create ContentKeyAuthorizationPolicy with Open restrictions // and create authorization policy IContentKeyAuthorizationPolicy policy = _context.
+ContentKeyAuthorizationPolicies.
+CreateAsync("Open Authorization Policy").Result;
 
 List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>();
 
@@ -85,12 +91,12 @@ List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKe
     }
 
 
-### Token-Einschränkung
+### <a name="token-restriction"></a>Token-Einschränkung
 In diesem Abschnitt wird beschrieben, wie eine Autorisierungsrichtlinie für Inhaltsschlüssel erstellt und dem Inhaltsschlüssel zugeordnet wird. Durch die Autorisierungsrichtlinie wird beschrieben, welche Autorisierungsanforderungen der Benutzer erfüllen muss, um den Schlüssel zu erhalten (beispielsweise wird überprüft, ob der Schlüssel, mit dem das Token signiert wurde, in der Liste der Überprüfungsschlüssel enthalten ist).
 
 Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanforderungen des Tokens in XML beschrieben werden. Die XML für die Konfiguration der Token-Einschränkung muss folgendem XML-Schema entsprechen.
 
-#### <a id="schema"></a>Schema für die Tokeneinschränkung
+#### <a name="a-idschemaatoken-restriction-schema"></a><a id="schema"></a>Schema für die Tokeneinschränkung
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -138,9 +144,10 @@ Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanfo
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Bei der Konfiguration der Richtlinie mit **Token**-Einschränkung müssen die Parameter **PrimaryVerificationKey**, **Issuer** und **Audience** angegeben werden. **PrimaryVerificationKey** enthält den Schlüssel, mit dem das Token signiert wurde, und **Issuer** ist der STS (Secure Token Service), von dem das Token ausgestellt wurde. **audience** (manchmal auch **scope**) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
+Bei der Konfiguration der Richtlinie mit **Token**-Einschränkung müssen die Parameter **PrimaryVerificationKey**, **issuer** und **audience** angegeben werden. **primaryVerificationKey** enthält den Schlüssel, mit dem das Token signiert wurde, und **Issuer** ist der Sicherheitstokendienst (Secure Token Service, STS), von dem das Token ausgestellt wurde. **audience** (manchmal auch **scope**) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen. 
 
-Bei Verwendung des **Media Services SDK für .NET** können Sie die **TokenRestrictionTemplate**-Klasse zum Generieren des Einschränkungstokens verwenden. Im folgenden Beispiel wird eine Autorisierungsrichtlinie mit einer Token-Einschränkung erstellt. In diesem Beispiel müsste der Client ein Token vorlegen, das einen Signaturschlüssel (VerificationKey), einen Tokenherausgeber und erforderliche Ansprüche enthält.
+Bei Verwendung des **Media Services SDK für .NET** können Sie die **TokenRestrictionTemplate**-Klasse zum Generieren des Einschränkungstokens verwenden.
+Im folgenden Beispiel wird eine Autorisierungsrichtlinie mit einer Token-Einschränkung erstellt. In diesem Beispiel müsste der Client ein Token vorlegen, das einen Signaturschlüssel (VerificationKey), einen Tokenherausgeber und erforderliche Ansprüche enthält.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
@@ -196,7 +203,7 @@ Bei Verwendung des **Media Services SDK für .NET** können Sie die **TokenRestr
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
 
-#### <a id="test"></a>Testtoken
+#### <a name="a-idtestatest-token"></a><a id="test"></a>Testtoken
 Gehen Sie wie folgt vor, um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für die Schlüssel-Autorisierungsrichtlinie verwendet wurde.
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
@@ -216,14 +223,14 @@ Gehen Sie wie folgt vor, um ein Testtoken abzurufen, das auf der Token-Einschrä
     Console.WriteLine();
 
 
-## Dynamische PlayReady-Verschlüsselung
-Mithilfe von Media Services können Sie die Rechte und Einschränkungen konfigurieren, die für die PlayReady-DRM-Laufzeit erzwungen werden sollen, wenn ein Benutzer versucht, geschützte Inhalte wiederzugeben.
+## <a name="playready-dynamic-encryption"></a>Dynamische PlayReady-Verschlüsselung
+Mithilfe von Media Services können Sie die Rechte und Einschränkungen konfigurieren, die für die PlayReady-DRM-Laufzeit erzwungen werden sollen, wenn ein Benutzer versucht, geschützte Inhalte wiederzugeben. 
 
-Wenn Sie Inhalte mit PlayReady schützen, müssen Sie in Ihrer Autorisierungsrichtlinie u. a. eine XML-Zeichenfolge zur Definition der [PlayReady-Lizenzvorlage](media-services-playready-license-template-overview.md) angeben. Die **PlayReadyLicenseResponseTemplate**-Klasse und die **PlayReadyLicenseTemplate**-Klasse im Media Services SDK für .NET unterstützen Sie bei der Definition der PlayReady-Lizenzvorlage.
+Wenn Sie Inhalte mit PlayReady schützen, müssen Sie in Ihrer Autorisierungsrichtlinie u.a. eine XML-Zeichenfolge zur Definition der [PlayReady-Lizenzvorlage](media-services-playready-license-template-overview.md) angeben. Die **PlayReadyLicenseResponseTemplate**-Klasse und die **PlayReadyLicenseTemplate**-Klasse im Media Services SDK für .NET unterstützen Sie bei der Definition der PlayReady-Lizenzvorlage.
 
 [Dieses Thema](media-services-protect-with-drm.md) veranschaulicht, wie Sie Ihren Inhalt mit **PlayReady** und **Widevine** verschlüsseln können.
 
-### Open-Einschränkung
+### <a name="open-restriction"></a>Open-Einschränkung
 Bei Verwendung einer Open-Einschränkung übermittelt das System den Schlüssel an jeden, der einen Schlüssel anfordert. Diese Einschränkung kann zu Testzwecken nützlich sein.
 
 Im folgenden Beispiel wird eine Open-Autorisierungsrichtlinie erstellt und dem Inhaltsschlüssel hinzugefügt.
@@ -265,7 +272,7 @@ Im folgenden Beispiel wird eine Open-Autorisierungsrichtlinie erstellt und dem I
         contentKey = contentKey.UpdateAsync().Result;
     }
 
-### Token-Einschränkung
+### <a name="token-restriction"></a>Token-Einschränkung
 Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanforderungen des Tokens in XML beschrieben werden. Der XML-Code für die Konfiguration der Token-Einschränkung muss dem in [diesem Abschnitt](#schema) beschriebenen XML-Schema entsprechen.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
@@ -375,10 +382,10 @@ Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanfo
     }
 
 
-Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für die Schlüssel-Autorisierungsrichtlinie verwendet wurde, lesen Sie [diesen Abschnitt](#test).
+Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für die Schlüssel-Autorisierungsrichtlinie verwendet wurde, lesen Sie [diesen Abschnitt](#test) . 
 
-## <a id="types"></a>Beim Definieren von ContentKeyAuthorizationPolicy verwendete Typen
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="a-idtypesatypes-used-when-defining-contentkeyauthorizationpolicy"></a><a id="types"></a>Beim Definieren von ContentKeyAuthorizationPolicy verwendete Typen
+### <a name="a-idcontentkeyrestrictiontypeacontentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -386,7 +393,7 @@ Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für d
         IPRestricted = 2,
     }
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="a-idcontentkeydeliverytypeacontentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
       None = 0,
@@ -395,7 +402,7 @@ Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für d
       Widevine = 3
     }
 
-### <a id="TokenType"></a>TokenType
+### <a name="a-idtokentypeatokentype"></a><a id="TokenType"></a>TokenType
     public enum TokenType
     {
         Undefined = 0,
@@ -405,13 +412,18 @@ Um ein Testtoken abzurufen, das auf der Token-Einschränkung basiert, die für d
 
 
 
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## Nächster Schritt
+## <a name="next-step"></a>Nächster Schritt
 Nachdem Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel konfiguriert haben, fahren Sie mit dem Thema [Konfigurieren einer Übermittlungsrichtlinie für Medienobjekte](media-services-dotnet-configure-asset-delivery-policy.md) fort.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,24 +1,29 @@
 ---
 title: Rechenintensive Java-Anwendung auf einem virtuellen Computer | Microsoft Docs
-description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer erstellen können, der eine rechenintensive Java-Anwendung ausführt, die durch eine andere Java-Anwendung überwacht werden kann.
+description: "Erfahren Sie, wie Sie einen virtuellen Azure-Computer erstellen können, der eine rechenintensive Java-Anwendung ausführt, die durch eine andere Java-Anwendung überwacht werden kann."
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
-manager: wpickett
-editor: ''
+manager: erikre
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: ae6f2737-94c7-4569-9913-d871450c2827
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 12/22/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: c3f5fd335da2d1ed4e3c68223c3195d4a81c1a5c
+
 
 ---
-# Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+# <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer
+> [!IMPORTANT] 
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 Mit Azure können Sie einen virtuellen Computer zum Verarbeiten rechenintensiver Aufgaben verwenden. Ein virtueller Computer kann beispielsweise Aufgaben verarbeiten und Clientcomputern oder mobilen Anwendungen Ergebnisse bereitstellen. Nach dem Lesen dieses Artikels wissen Sie, wie ein virtueller Computer erstellt wird, der eine rechenintensive Java-Anwendung ausführt, die durch eine andere Java-Anwendung überwacht werden kann.
 
@@ -44,61 +49,68 @@ Es folgt ein Beispiel für die Java-Anwendung, die die rechenintensive Aufgabe �
 
 [!INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
-## So erstellen Sie einen virtuellen Computer
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
-2. Klicken Sie auf **Neu**, auf **Compute** auf **Virtueller Computer** und dann auf **Aus Galerie**.
-3. Wählen Sie im Dialogfeld **Image des virtuellen Computers auswählen** die Option **JDK 7 Windows Server 2012** aus. Beachten Sie, dass **JDK 6 Windows Server 2012** verfügbar ist, wenn Sie Legacyanwendungen haben, die noch nicht in JDK 7 ausgeführt werden können.
+## <a name="to-create-a-virtual-machine"></a>So erstellen Sie einen virtuellen Computer
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
+2. Klicken Sie nacheinander auf **Neu**, **Compute**, **Virtueller Computer** und **Aus Katalog**.
+3. Wählen Sie im Dialogfeld **Image ds virtuellen Computers auswählen** die Option **JDK 7 Windows Server 2012** aus.
+   Beachten Sie, dass **JDK 6 Windows Server 2012** verfügbar ist, wenn Sie Legacyanwendungen haben, die noch nicht in JDK 7 ausgeführt werden können.
 4. Klicken Sie auf **Weiter**.
 5. Gehen Sie im Dialogfeld **Konfiguration des virtuellen Computers** wie folgt vor:
    1. Geben Sie einen Namen für den virtuellen Computer an.
    2. Geben Sie die Größe für den virtuellen Computer an.
    3. Geben Sie im Feld **Benutzername** einen Namen für den Administrator ein. Merken Sie sich diesen Namen und das als nächstes eingegebene Kennwort. Sie benötigen diese Daten, wenn Sie sich von einem Remotestandort aus an dem virtuellen Computer anmelden.
-   4. Geben Sie ein Kennwort in das Feld **Neues Kennwort** ein, und geben Sie das Kennwort dann erneut in das Feld **Kennwort bestätigen** ein. Dies ist das Kennwort für das Administratorkonto.
-   5. Klicken Sie auf **Next**.
+   4. Geben Sie im Feld **Neues Kennwort** ein Kennwort ein, und geben Sie dieses erneut im Feld **Kennwort bestätigen** ein. Dies ist das Kennwort für das Administratorkonto.
+   5. Klicken Sie auf **Weiter**.
 6. Gehen Sie im nächsten Dialogfeld **Konfiguration des virtuellen Computers** wie folgt vor:
    1. Verwenden Sie für den **Clouddienst** die Standardeinstellung **Neuen Clouddienst erstellen**.
    2. Der Wert für **DNS-Name des Clouddiensts** muss auf cloudapp.net eindeutig sein. Ändern Sie wenn nötig diesen Wert, sodass Azure angibt, dass er eindeutig ist.
-   3. Geben Sie eine Region, eine Affinitätsgruppe oder ein virtuelles Netzwerk an. Geben Sie für dieses Lernprogramm als Region **West-USA** an.
+   3. Geben Sie eine Region, eine Affinitätsgruppe oder ein virtuelles Netzwerk an. Geben Sie für dieses Lernprogramm als Region **West-USA**an.
    4. Wählen Sie unter **Speicherkonto** die Option **Automatisch generiertes Speicherkonto verwenden** aus.
-   5. Wählen Sie unter **Verfügbarkeitssatz** die Option **(Keine)** aus.
+   5. Wählen Sie unter **Verfügbarkeitsgruppe** die Option **(Keine)** aus.
    6. Klicken Sie auf **Weiter**.
 7. Gehen Sie im letzten Dialogfeld **Konfiguration des virtuellen Computers** wie folgt vor:
    1. Akzeptieren Sie die Standardeinträge für Endpunkte.
    2. Klicken Sie auf **Fertig stellen**.
 
-## So melden Sie sich von einem Remotestandort aus an Ihrem virtuellen Computer an
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+## <a name="to-remotely-log-in-to-your-virtual-machine"></a>So melden Sie sich von einem Remotestandort aus an Ihrem virtuellen Computer an
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
 2. Klicken Sie auf **Virtuelle Computer**.
 3. Klicken Sie auf den Namen des virtuellen Computers, an dem Sie sich anmelden möchten.
 4. Klicken Sie auf **Verbinden**.
 5. Befolgen Sie die Anweisungen, um eine Verbindung mit dem virtuellen Computer herzustellen. Wenn Sie zur Eingabe des Administratornamens und des Kennworts aufgefordert werden, verwenden Sie die Werte, die Sie beim Erstellen des virtuellen Computers bereitgestellt haben.
 
-Beachten Sie, dass die Azure Service Bus-Funktion erfordert, dass das Baltimore CyberTrust-Stammzertifikat als Teil des JRE-**cacerts**-Stores installiert wird. Dieses Zertifikat ist automatisch in der in diesem Lernprogramm verwendeten JRE (Java Runtime Environment) enthalten. Falls Sie dieses Zertifikat nicht in Ihrem JRE-**cacerts**-Store haben, finden Sie Informationen zum Hinzufügen (und zum Anzeigen der Zertifikate in Ihrem cacerts-Store) unter [Hinzufügen eines Zertifikats zum Java CA-Zertifikatspeicher][add_ca_cert].
+Beachten Sie, dass die Azure Service Bus-Funktion erfordert, dass das Baltimore CyberTrust-Stammzertifikat als Teil des JRE- **cacerts** -Stores installiert wird. Dieses Zertifikat ist automatisch in der in diesem Lernprogramm verwendeten JRE (Java Runtime Environment) enthalten. Falls dieses Zertifikat nicht in Ihrem JRE-**cacerts**-Speicher vorhanden ist, finden Sie Informationen zum Hinzufügen (sowie zum Anzeigen der Zertifikate in Ihrem cacerts-Store) unter [Hinzufügen eines Zertifikats zum Java-Zertifizierungsstellen-Zertifikatspeicher][add_ca_cert].
 
-## Erstellen eines Service Bus-Namespace
+## <a name="how-to-create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespace
 Um Service Bus-Warteschlangen in Azure zu verwenden, müssen Sie zunächst einen Dienstnamespace erstellen. Ein Dienstnamespace ist eine Bereichseinheit zur Adressierung von Servicebus-Ressourcen innerhalb Ihrer Anwendung.
 
 So erstellen Sie einen Dienstnamespace:
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
-2. Klicken Sie unten links im Navigationsbereich des klassischen Azure-Portals auf **Servicebus, Zugriffssteuerung und Cache**.
-3. Klicken Sie im klassischen Azure-Portal links oben auf den Knoten **Service Bus** und dann auf die Schaltfläche **Neu**. ![Screenshot des Service Bus-Knotens][svc_bus_node]
-4. Geben Sie im Dialogfeld zum Erstellen eines neuen Dienstnamespace einen **Namespace** ein, und klicken Sie dann auf die Schaltfläche **Verfügbarkeit prüfen**, um sicherzustellen, dass er eindeutig ist. ![Screenshot des Erstellens eines neuen Namespace][create_namespace]
-5. Nachdem Sie sichergestellt haben, dass der Namespace verfügbar ist, wählen Sie das Land oder die Region aus, in dem bzw. der Ihr Namespace gehostet werden soll, und klicken Sie dann auf die Schaltfläche **Create Namespace**.
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
+2. Klicken Sie unten links im Navigationsbereich des klassischen Azure-Portals auf **Service Bus, Zugriffssteuerung und Cache**.
+3. Klicken Sie im klassischen Azure-Portal links oben auf den Knoten **Service Bus** und dann auf die Schaltfläche **Neu**.  
+   ![Screenshot des Service Bus-Knotens][svc_bus_node]
+4. Geben Sie im Dialogfeld **Neuen Dienstnamespace erstellen** einen **Namespace** ein, und klicken Sie dann auf die Schaltfläche **Verfügbarkeit prüfen**, um sicherzustellen, dass er eindeutig ist.  
+   ![Screenshot des Erstellens eines neuen Namespace][create_namespace]
+5. Nachdem Sie sichergestellt haben, dass der Namespace verfügbar ist, wählen Sie das Land oder die Region aus, in dem bzw. der Ihr Namespace gehostet werden soll, und klicken Sie dann auf die Schaltfläche **Namespace erstellen**.  
    
    Der erstellte Namespace wird dann im klassischen Azure-Portal angezeigt und nach einem Moment aktiviert. Warten Sie, bis **Active** als Status angezeigt wird, bevor Sie mit dem nächsten Schritt fortfahren.
 
-## Abrufen der Standard-Anmeldeinformationen für die Namespaceverwaltung
+## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>Abrufen der Standard-Anmeldeinformationen für die Namespaceverwaltung
 Um Verwaltungsvorgänge im neuen Namespace auszuführen, wie zum Beispiel das Erstellen einer Warteschlange, müssen Sie die Verwaltungsanmeldeinformationen für den Namespace abrufen.
 
-1. Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste der verfügbaren Namespaces anzuzeigen: ![Screenshot der verfügbaren Namespaces][avail_namespaces]
-2. Wählen Sie in der angezeigten Liste den Namespace, den Sie gerade erstellt haben: ![Screenshot der Namespaceliste][namespace_list]
-3. Im Bereich **Eigenschaften** auf der rechten Seite werden die Eigenschaften des neuen Namespace aufgelistet. ![Screenshot des Eigenschaftenbereichs][properties_pane]
-4. Der **Standardschlüssel** ist ausgeblendet. Klicken Sie auf die Schaltfläche **Anzeigen**, um die Sicherheitsanmeldeinformationen anzuzeigen. ![Screenshot des Standardschlüssels][default_key]
+1. Klicken Sie im linken Navigationsbereich auf den Knoten **Service Bus**, um die Liste der verfügbaren Namespaces anzuzeigen.
+   ![Screenshot der verfügbaren Namespaces][avail_namespaces]
+2. Wählen Sie in der angezeigten Liste den Namespace, den Sie gerade erstellt haben.
+   ![Screenshot der Namespaceliste][namespace_list]
+3. Im Bereich **Eigenschaften** auf der rechten Seite werden die Eigenschaften des neuen Namespace aufgelistet.
+   ![Screenshot des Eigenschaftenbereichs][properties_pane]
+4. Der **Standardschlüssel** ist ausgeblendet. Klicken Sie auf die Schaltfläche **Anzeigen** , um die Sicherheitsanmeldeinformationen anzuzeigen.
+   ![Screenshot des Standardschlüssels][default_key]
 5. Notieren Sie sich den **Standardaussteller** und den **Standardschlüssel**, da Sie diese Informationen weiter unten zum Durchführen von Vorgängen mit dem Namespace verwenden werden.
 
-## Erstellen einer Java-Anwendung für die Ausführung einer rechenintensiven Aufgabe
-1. Laden Sie auf dem Entwicklungscomputer (der nicht mit dem erstellten virtuellen Computer identisch sein muss) das [Azure-SDK für Java](https://azure.microsoft.com/develop/java/) herunter.
+## <a name="how-to-create-a-java-application-that-performs-a-compute-intensive-task"></a>Erstellen einer Java-Anwendung für die Ausführung einer rechenintensiven Aufgabe
+1. Laden Sie auf dem Entwicklungscomputer (der nicht mit dem erstellten virtuellen Computer identisch sein muss) das [Azure-SDK für Java](https://azure.microsoft.com/develop/java/)herunter.
 2. Erstellen Sie eine Java-Konsolenanwendung mithilfe des Beispielcodes am Ende dieses Abschnitts. In diesem Tutorial wird **TSPSolver.java** als Java-Dateiname verwendet. Ändern Sie die Platzhalter **your\_service\_bus\_namespace**, **your\_service\_bus\_owner** und **your\_service\_bus\_key** so, dass Ihre Service Bus-Werte für **Namespace**, **Standardaussteller** und **Standardschlüssel** verwendet werden.
 3. Exportieren Sie die Anwendung nach der Programmierung in ein ausführbares Java-Archiv (JAR), und packen Sie die erforderlichen Bibliotheken in die erzeugte JAR-Datei. In diesem Tutorial wird **TSPSolver.jar** als Name der erzeugten JAR-Datei verwendet.
 
@@ -287,8 +299,8 @@ Um Verwaltungsvorgänge im neuen Namespace auszuführen, wie zum Beispiel das Er
 
 
 
-## Erstellen einer Java-Anwendung zum Überwachen des Fortschritts der rechenintensiven Aufgabe
-1. Erstellen Sie auf dem Entwicklungscomputer eine Java-Konsolenanwendung mithilfe des Beispielcodes am Ende dieses Abschnitts. In diesem Tutorial wird **TSPClient.java** als Java-Dateiname verwendet. Ändern Sie wie zuvor gezeigt die Platzhalter **your\_service\_bus\_namespace**, **your\_service\_bus\_owner** und **your\_service\_bus\_key** so, dass Ihre Service Bus-Werte für **Namespace**, **Standardaussteller** und **Standardschlüssel** verwendet werden.
+## <a name="how-to-create-a-java-application-that-monitors-the-progress-of-the-compute-intensive-task"></a>Erstellen einer Java-Anwendung zum Überwachen des Fortschritts der rechenintensiven Aufgabe
+1. Erstellen Sie auf dem Entwicklungscomputer eine Java-Konsolenanwendung mithilfe des Beispielcodes am Ende dieses Abschnitts. In diesem Tutorial wird **TSPClient.java** als Java-Dateiname verwendet. Wie oben gezeigt, ändern Sie die Platzhalter **your\_service\_bus\_namespace**, **your\_service\_bus\_owner** und **your\_service\_bus\_key** so, dass Ihre Service Bus-Werte für **Namespace**, **Standardaussteller** und **Standardschlüssel** verwendet werden.
 2. Exportieren Sie die Anwendung in ein ausführbares Java-Archiv (JAR), und packen Sie die erforderlichen Bibliotheken in die erzeugte JAR-Datei. In diesem Tutorial wird **TSPClient.jar** als Name der erzeugten JAR-Datei verwendet.
 
 <p/>
@@ -403,14 +415,14 @@ Um Verwaltungsvorgänge im neuen Namespace auszuführen, wie zum Beispiel das Er
 
     }
 
-## Ausführen der Java-Anwendungen
+## <a name="how-to-run-the-java-applications"></a>Ausführen der Java-Anwendungen
 Führen Sie die rechenintensive Anwendung aus, zunächst um die Warteschlage zu erstellen, dann um das "Traveling Salesman"-Problem zu lösen. Dadurch wird die aktuelle beste Route zur Service Bus-Warteschlange hinzugefügt. Während die rechenintensive Anwendung ausgeführt wird (oder danach), führen Sie den Client aus, um Ergebnisse aus der Service Bus-Warteschlange anzuzeigen.
 
-### So führen Sie die rechenintensive Anwendung aus
+### <a name="to-run-the-compute-intensive-application"></a>So führen Sie die rechenintensive Anwendung aus
 1. Melden Sie sich am virtuellen Computer an.
-2. Erstellen Sie einen Ordner, in dem die Anwendung ausgeführt wird. Zum Beispiel **c:\\TSP**.
-3. Kopieren Sie **TSPSolver.jar** nach **c:\\TSP**.
-4. Erstellen Sie eine Datei namens **c:\\TSP\\cities.txt** mit folgendem Inhalt:
+2. Erstellen Sie einen Ordner, in dem die Anwendung ausgeführt wird. Zum Beispiel **c:\TSP**.
+3. Kopieren Sie **TSPSolver.jar** nach **c:\TSP**.
+4. Erstellen Sie eine Datei namens **c:\TSP\cities.txt** mit folgendem Inhalt.
    
         City_1, 1002.81, -1841.35
         City_2, -953.55, -229.6
@@ -462,7 +474,7 @@ Führen Sie die rechenintensive Anwendung aus, zunächst um die Warteschlage zu 
         City_48, 363.68, 768.21
         City_49, -120.3, -463.13
         City_50, 588.51, 679.33
-5. Wechseln Sie an einer Eingabeaufforderung zum Verzeichnis "c:\\TSP".
+5. Wechseln Sie an einer Eingabeaufforderung zum Verzeichnis "c:\TSP".
 6. Stellen Sie sicher, dass sich der Ordner "bin" der JRE in der PATH-Umgebungsvariable befindet.
 7. Sie müssen die Service Bus-Warteschlange erstellen, bevor Sie die TSP-Solver-Permutationen ausführen. Führen Sie den folgenden Befehl aus, um die Service Bus-Warteschlange zu erstellen:
    
@@ -478,27 +490,27 @@ Führen Sie die rechenintensive Anwendung aus, zunächst um die Warteschlage zu 
 > 
 > 
 
-### Ausführen der überwachenden Clientanwendung
-1. Melden Sie sich an dem Computer an, auf dem die Clientanwendung ausgeführt wird. Dieser Computer muss nicht zwingend mit dem Computer identisch sein, auf dem die **TSPSolver**-Anwendung ausgeführt wird.
-2. Erstellen Sie einen Ordner, in dem die Anwendung ausgeführt wird. Zum Beispiel **c:\\TSP**.
-3. Kopieren Sie **TSPClient.jar** nach **c:\\TSP**,
+### <a name="how-to-run-the-monitoring-client-application"></a>Ausführen der überwachenden Clientanwendung
+1. Melden Sie sich an dem Computer an, auf dem die Clientanwendung ausgeführt wird. Dieser Computer muss nicht zwingend mit dem Computer identisch sein, auf dem die **TSPSolver** -Anwendung ausgeführt wird.
+2. Erstellen Sie einen Ordner, in dem die Anwendung ausgeführt wird. Zum Beispiel **c:\TSP**.
+3. Kopieren Sie **TSPClient.jar** nach **c:\TSP**.
 4. Stellen Sie sicher, dass sich der Ordner "bin" der JRE in der PATH-Umgebungsvariable befindet.
-5. Wechseln Sie an einer Eingabeaufforderung zum Verzeichnis "c:\\TSP".
+5. Wechseln Sie an einer Eingabeaufforderung zum Verzeichnis "c:\TSP".
 6. Führen Sie den folgenden Befehl aus:
    
         java -jar TSPClient.jar
    
-    Geben Sie optional die Pause zwischen den Überprüfungen der Warteschlange in Minuten an, indem Sie ein Befehlszeilenargument übergeben. Die Standardpause beim Überprüfen der Warteschlange ist drei Minuten. Dieser Wert wird verwendet, wenn kein Befehlszeilenargument an **TSPClient** übergeben wird. Wenn Sie einen anderen Wert für das Intervall verwenden möchten, zum Beispiel eine Minute, führen Sie den folgenden Befehl aus:
+    Geben Sie optional die Pause zwischen den Überprüfungen der Warteschlange in Minuten an, indem Sie ein Befehlszeilenargument übergeben. Die Standardpause beim Überprüfen der Warteschlange beträgt drei Minuten. Dieser Wert wird verwendet, wenn kein Befehlszeilenargument an **TSPClient** übergeben wird. Wenn Sie einen anderen Wert für das Intervall verwenden möchten, zum Beispiel eine Minute, führen Sie den folgenden Befehl aus:
    
         java -jar TSPClient.jar 1
    
-    Der Client wird ausgeführt, bis er die Warteschlangenmeldung "Complete" erhält. Beachten Sie, dass Sie beim Ausführen mehrerer Instanzen des Solvers ohne Ausführen des Clients den Client möglicherweise mehrfach ausführen müssen, um die Warteschlange vollständig zu leeren. Alternativ können Sie auch die Warteschlange löschen und dann neu erstellen. Um die Warteschlange zu löschen, führen Sie den folgenden **TSPSolver**-Befehl (nicht **TSPClient**-Befehl) aus:
+    Der Client wird ausgeführt, bis er die Warteschlangenmeldung "Complete" erhält. Beachten Sie, dass Sie beim Ausführen mehrerer Instanzen des Solvers ohne Ausführen des Clients den Client möglicherweise mehrfach ausführen müssen, um die Warteschlange vollständig zu leeren. Alternativ können Sie auch die Warteschlange löschen und dann neu erstellen. Um die Warteschlange zu löschen, führen Sie den folgenden **TSPSolver**-Befehl (nicht **TSPClient**-Befehl) aus.
    
         java -jar TSPSolver.jar deletequeue
    
     Der Solver wird ausgeführt, bis alle Routen untersucht wurden.
 
-## Anhalten der Java-Anwendungen
+## <a name="how-to-stop-the-java-applications"></a>Anhalten der Java-Anwendungen
 Für Solver- und Clientanwendungen können Sie **Strg+C** drücken, um die Anwendung vor dem normalen Abschluss zu beenden.
 
 [solver_output]: ./media/virtual-machines-windows-classic-java-run-compute-intensive-task/WA_JavaTSPSolver.png
@@ -511,4 +523,8 @@ Für Solver- und Clientanwendungen können Sie **Strg+C** drücken, um die Anwen
 [default_key]: ./media/virtual-machines-windows-classic-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Dec16_HO1-->
+
+

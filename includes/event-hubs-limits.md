@@ -14,6 +14,6 @@ In der folgenden Tabelle sind für Azure Event Hubs spezifische Kontingente und 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

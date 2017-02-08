@@ -1,19 +1,23 @@
 ---
-title: Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen | Microsoft Docs
-description: Beispiele für Hive-Abfragen, mit denen Funktionen in den Daten erstellt werden, die in einem Azure HDInsight Hadoop-Cluster gespeichert sind.
+title: "Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen | Microsoft Docs"
+description: "Beispiele für Hive-Abfragen, mit denen Funktionen in den Daten erstellt werden, die in einem Azure HDInsight Hadoop-Cluster gespeichert sind."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: e8a94c71-979b-4707-b8fd-85b47d309a30
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/09/2016
 ms.author: hangzh;bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7f34a63acf5720ef880193b08f3a90d1f904774d
+
 
 ---
 # <a name="create-features-for-data-in-an-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
@@ -35,7 +39,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 * Sie haben die Daten in Hive-Tabellen auf Azure HDInsight Hadoop-Clustern hochgeladen. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](machine-learning-data-science-move-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
 * Sie haben den Remotezugriff auf den Cluster aktiviert. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
 
-## <a name="a-namehivefeatureengineeringafeature-generation"></a><a name="hive-featureengineering"></a>Generieren von Funktionen
+## <a name="a-namehive-featureengineeringafeature-generation"></a><a name="hive-featureengineering"></a>Generieren von Funktionen
 In diesem Abschnitt sind verschiedene Beispiele dafür enthalten, wie Funktionen mithilfe von Hive-Abfragen generiert werden können. Wenn Sie zusätzliche Funktionen generiert haben, können Sie diese als Spalten in der vorhandenen Tabelle hinzufügen oder eine neue Tabelle mit den zusätzlichen Funktionen und einem Primärschlüssel erstellen, die dann mit der ursprünglichen Tabelle zusammengeführt werden kann. Beispiele:
 
 1. [Häufigkeitsbasierte Funktionsgenerierung](#hive-frequencyfeature)
@@ -44,7 +48,7 @@ In diesem Abschnitt sind verschiedene Beispiele dafür enthalten, wie Funktionen
 4. [Extrahieren von Funktionen aus "Text"-Feldern](#hive-textfeatures)
 5. [Berechnen der Entfernung zwischen GPS-Koordinaten](#hive-gpsdistance)
 
-### <a name="a-namehivefrequencyfeatureafrequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>Häufigkeitsbasierte Funktionsgenerierung
+### <a name="a-namehive-frequencyfeatureafrequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>Häufigkeitsbasierte Funktionsgenerierung
 Oft ist es sinnvoll, die Häufigkeit der Ebenen einer kategorischen Variable oder die Häufigkeiten von bestimmten Ebenenkombinationen aus mehreren kategorischen Variablen zu berechnen. Mit dem folgenden Skript können Sie die Häufigkeiten berechnen:
 
         select
@@ -58,7 +62,7 @@ Oft ist es sinnvoll, die Häufigkeit der Ebenen einer kategorischen Variable ode
         order by frequency desc;
 
 
-### <a name="a-namehiveriskfeaturearisks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>Risiken kategorischer Variablen in binären Klassifizierungen
+### <a name="a-namehive-riskfeaturearisks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>Risiken kategorischer Variablen in binären Klassifizierungen
 Bei binären Klassifizierungen müssen manchmal nicht numerische kategorische Variablen in numerische Funktionen umgewandelt werden, wenn die Modelle nur numerische Funktionen akzeptieren. Dazu werden die nicht numerischen Ebenen durch numerische Risiken ersetzt. In diesem Abschnitt werden einige generische Hive-Abfragen zur Berechnung der Risikowerte (logarithmische Wahrscheinlichkeiten) einer kategorischen Variable gezeigt.
 
         set smooth_param1=1;
@@ -83,8 +87,8 @@ In diesem Beispiel werden die Variablen `smooth_param1` und `smooth_param2` zum 
 
 Nach dem Berechnen der Risikotabelle können Sie einer Tabelle Risikowerte zuweisen, indem Sie sie mit der Risikotabelle zusammenführen. Die Hive-Abfrage für das Zusammenführen wurde im vorherigen Abschnitt beschrieben.
 
-### <a name="a-namehivedatefeaturesaextract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>Extrahieren von Funktionen aus "datetime"-Feldern
-Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In Hive lautet das Standardformat für "datetime" "JJJJ-MM-TT 00:00:00" (wie z. B. in "1970-01-01 12:21:32"). In diesem Abschnitt werden Beispiele für das Extrahieren des Tags eines Monats und des Monats aus einem "datetime"-Feld gezeigt. Außerdem gibt es Beispiele zum Konvertieren einer "datetime"-Zeichenfolge in ein anderes Format als das Standardformat.
+### <a name="a-namehive-datefeaturesaextract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>Extrahieren von Funktionen aus "datetime"-Feldern
+Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In Hive lautet das Standardformat für "datetime" "JJJJ-MM-TT 00:00:00" (wie z. B. in "1970-01-01 12:21:32"). In diesem Abschnitt werden Beispiele für das Extrahieren des Tags eines Monats und des Monats aus einem "datetime"-Feld gezeigt. Außerdem gibt es Beispiele zum Konvertieren einer "datetime"-Zeichenfolge in ein anderes Format als das Standardformat.
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
@@ -103,13 +107,13 @@ Wenn das *&#60;Datum/Uhrzeit-Feld>* bei dieser Abfrage das Muster *03/26/2015 12
 
 Die Tabelle *hivesampletable* in dieser Abfrage enthält in der Voreinstellung alle Azure HDInsight Hadoop-Cluster, wenn die Cluster bereitgestellt wurden.
 
-### <a name="a-namehivetextfeaturesaextract-features-from-text-fields"></a><a name="hive-textfeatures"></a>Extrahieren von Funktionen aus "Text"-Feldern
+### <a name="a-namehive-textfeaturesaextract-features-from-text-fields"></a><a name="hive-textfeatures"></a>Extrahieren von Funktionen aus "Text"-Feldern
 Wenn die Hive-Tabelle ein Textfeld enthält, das eine Zeichenfolge von durch Leerzeichen voneinander getrennten Wörtern ist, können Sie mit der folgenden Abfrage die Länge der Zeichenfolge und die Anzahl der Wörter in der Zeichenfolge extrahieren.
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-### <a name="a-namehivegpsdistanceacalculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
+### <a name="a-namehive-gpsdistanceacalculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
 Die in diesem Abschnitt angegebene Abfrage kann direkt auf die "NYC Taxi Trip"-Daten angewendet werden. Diese Abfrage soll veranschaulichen, wie Sie die eingebetteten mathematischen Funktionen in Hive zum Generieren von Funktionen verwenden.
 
 Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zielorten mit den Bezeichnungen *pickup\_longitude*, *pickup\_latitude*, *dropoff\_longitude* und *dropoff\_latitude*. Die Abfragen zur Berechnung der direkten Entfernung zwischen den Start- und Zielkoordinaten sind:
@@ -144,9 +148,9 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Dieser Parameter ordnet dem Java-Heapspeicher 4 GB Arbeitsspeicher zu. Außerdem macht er die Sortierung effizienter, da er ihr mehr Arbeitsspeicher zuweist. Sie sollten etwas mit diesen Zuordnungen experimentieren, wenn bei einem Auftrag Fehler im Zusammenhang mit dem Heapspeicher auftreten.
+    Dieser Parameter ordnet dem Java-Heapspeicher 4 GB Arbeitsspeicher zu. Außerdem macht er die Sortierung effizienter, da er ihr mehr Arbeitsspeicher zuweist. Sie sollten etwas mit diesen Zuordnungen experimentieren, wenn bei einem Auftrag Fehler im Zusammenhang mit dem Heapspeicher auftreten.
 
-1. **DFS-Blockgröße**: Mit diesem Parameter wird die kleinste Dateneinheit festgelegt, die das Dateisystem speichert. Wenn beispielsweise die DFS-Blockgröße 128 MB beträgt, werden alle Daten bis zu einer Größe von 128 MB in einem Block gespeichert. Daten, die größer als 128 MB sind, werden zusätzliche Blöcke zugewiesen. Die Auswahl einer sehr geringen Blockgröße führt zu starkem zusätzlichem Verbrauch in Hadoop, da der Namensknoten viel mehr Anforderungen verarbeiten muss, um den entsprechenden Block für die Datei zu finden. Eine empfohlene Einstellung bei der Arbeit mit Daten im Gigabytebereich (oder größer) ist:
+1. **DFS-Blockgröße**: Mit diesem Parameter wird die kleinste Dateneinheit festgelegt, die das Dateisystem speichert. Wenn beispielsweise die DFS-Blockgröße 128 MB beträgt, werden alle Daten bis zu einer Größe von 128 MB in einem Block gespeichert. Daten, die größer als 128 MB sind, werden zusätzliche Blöcke zugewiesen. Die Auswahl einer sehr geringen Blockgröße führt zu starkem zusätzlichem Verbrauch in Hadoop, da der Namensknoten viel mehr Anforderungen verarbeiten muss, um den entsprechenden Block für die Datei zu finden. Eine empfohlene Einstellung bei der Arbeit mit Daten im Gigabytebereich (oder größer) ist:
    
         set dfs.block.size=128m;
 2. **Optimieren von Join-Vorgängen in Hive**: Join-Vorgänge im Map/Reduce-Framework erfolgen meist in der Reduce-Phase. In einigen Fällen können jedoch enorme Vorteile erzielt werden, indem die Join-Vorgänge in die Map-Phase verlegt werden (so genannte „mapjoins“). Damit Hive dies möglichst häufig durchführt, legen Sie Folgendes fest:
@@ -156,7 +160,7 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
-    Der Standardwert von *mapred.min.split.size* ist 0, der von *mapred.max.split.size* ist **Long.MAX** und der von *dfs.block.size* ist 64 MB. Bei entsprechender Datengröße können Sie durch Festlegen dieser Parameter die Anzahl der verwendeten Mapper optimieren.
+    Der Standardwert von *mapred.min.split.size* ist 0, der von *mapred.max.split.size* ist **Long.MAX** und der von *dfs.block.size* ist 64 MB. Bei entsprechender Datengröße können Sie durch Festlegen dieser Parameter die Anzahl der verwendeten Mapper optimieren.
 4. Einige andere **weiterführende Optionen** zur Optimierung der Hive-Leistung finden Sie unten. Diese ermöglichen das Festlegen des zugeordneten Speichers für "map"- und "reduce"-Aufgaben, die beim Optimieren der Leistung nützlich sein können. Beachten Sie aber, dass *mapreduce.reduce.memory.mb* nicht größer sein darf als die Größe des physischen Speichers der einzelnen Workerknoten im Hadoop-Cluster.
    
         set mapreduce.map.memory.mb = 2048;
@@ -165,6 +169,9 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
         set mapred.reduce.tasks=128;
         set mapred.tasktracker.reduce.tasks.maximum=128;
 
-<!---HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

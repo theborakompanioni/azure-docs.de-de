@@ -1,12 +1,12 @@
 ---
-title: 'Azure Media Services-Community: Übersicht | Microsoft Docs'
-description: 'Auf dieser Seite der Azure Media Services-Community (AMS) lernen Sie verschiedene Möglichkeiten kennen, wie Sie Neuigkeiten zu AMS erfahren, sich neue Videos und Podcasts ansehen, Fragen stellen und Feedback geben können. '
+title: "Azure Media Services-Community: Übersicht | Microsoft-Dokumentation"
+description: "Auf dieser Seite der Azure Media Services-Community (AMS) lernen Sie verschiedene Möglichkeiten kennen, wie Sie Neuigkeiten zu AMS erfahren, sich neue Videos und Podcasts ansehen, Fragen stellen und Feedback geben können. "
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0df020f4-8297-4f31-92bf-de098283e997
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 735f8d81ce089727b14b8b67de7233ab71fc5abd
+
 
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-Community
@@ -56,6 +60,9 @@ Die folgende Tabelle enthält die E-Mail-Adressen der Teams der einzelnen Featur
 | Azure Media Explorer |amse@microsoft.com |
 | Workflow-Designer |mepd@microsoft.com |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

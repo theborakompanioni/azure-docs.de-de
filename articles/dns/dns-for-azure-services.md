@@ -1,23 +1,27 @@
 ---
 title: Verwenden von Azure DNS mit anderen Azure-Diensten | Microsoft Docs
-description: Grundlegendes zum Verwenden von Azure DNS zum Auflösen von Namen für andere Azure-Dienste
+description: "Grundlegendes zum Verwenden von Azure DNS zum Auflösen von Namen für andere Azure-Dienste"
 services: dns
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
-editor: ''
+author: georgewallace
+manager: timlt
+editor: 
 tags: azure dns
-
+ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: sewhee
+ms.author: gwallace
+translationtype: Human Translation
+ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
+ms.openlocfilehash: 15412e67b6785812d00438e1819f24a6cb4fd0a8
 
 ---
 # <a name="using-azure-dns-with-other-azure-services"></a>Verwenden von Azure DNS mit anderen Azure-Diensten
+
 Azure DNS ist ein gehosteter Dienst für die DNS-Verwaltung und -Namensauflösung. Der Dienst ermöglicht Ihnen das Erstellen öffentlicher DNS-Namen für andere Anwendungen und Dienste, die Sie in Azure bereitgestellt haben. Das Erstellen eines Namens für einen Azure-Dienst in Ihrer benutzerdefinierten Domäne ist so einfach wie das Hinzufügen eines Datensatzes mit dem richtigen Typ für Ihren Dienst.
 
 * Für dynamisch zugewiesene IP-Adressen müssen Sie einen DNS CNAME-Eintrag erstellen, der dem DNS-Namen zugeordnet ist, den Azure für Ihren Dienst erstellt hat. DNS-Standards hindern Sie am Verwenden eines CNAME-Eintrags für die oberste Ebene der Zone.
@@ -35,6 +39,9 @@ Die folgende Tabelle enthält die unterstützten Eintragstypen, die für verschi
 | Resource Manager-VMs |Öffentliche IP-Adresse |Resource Manager-VMs können öffentliche IP-Adressen haben. Eine VM mit einer öffentlichen IP-Adresse befindet sich möglicherweise hinter einem Load Balancer. Sie können einen DNS A- oder CNAME-Eintrag für die öffentliche IP-Adresse erstellen. Dieser benutzerdefinierte Name kann verwendet werden, um die VIP-Adresse des Lastenausgleichs zu umgehen. |
 | Klassische virtuelle Computer |Öffentliche IP-Adresse |Mithilfe von PowerShell oder der CLI erstellte klassische VMs können mit einer dynamischen oder statischen (reservierten) virtuellen IP-Adresse konfiguriert werden. Sie können einen DNS-Eintrag des Typs „CNAME“ oder „A“ erstellen. |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

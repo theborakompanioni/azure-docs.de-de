@@ -1,26 +1,30 @@
 ---
-title: Netzwerkleistungsmonitor-Lösung in OMS | Microsoft Docs
-description: Mit dem Netzwerkleistungsmonitor können Sie die Leistung Ihrer Netzwerke quasi in Echtzeit überwachen, um Leistungsengpässe im Netzwerk zu erkennen und zu lokalisieren.
+title: "Netzwerkleistungsmonitor-Lösung in OMS | Microsoft Docs"
+description: "Mit dem Netzwerkleistungsmonitor können Sie die Leistung Ihrer Netzwerke quasi in Echtzeit überwachen, um Leistungsengpässe im Netzwerk zu erkennen und zu lokalisieren."
 services: log-analytics
-documentationcenter: ''
+documentationcenter: 
 author: bandersmsft
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
+ms.date: 11/09/2016
 ms.author: banders
+translationtype: Human Translation
+ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
+ms.openlocfilehash: 4f5c7208cabc565c4f5dddc917c4756ae4776c33
+
 
 ---
-# <a name="network-performance-monitor-(preview)-solution-in-oms"></a>Netzwerkleistungsmonitor-Lösung (Preview) in OMS
+# <a name="network-performance-monitor-preview-solution-in-oms"></a>Netzwerkleistungsmonitor-Lösung (Preview) in OMS
 > [!NOTE]
 > Dies ist eine [Previewlösung](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features).
-> 
-> 
+>
+>
 
 In diesem Dokument wird das Einrichten und Verwenden der Netzwerkleistungsmonitor-Lösung in OMS beschrieben, mit der Sie die Leistung Ihrer Netzwerke quasi in Echtzeit überwachen und Leistungsengpässe im Netzwerk erkennen und lokalisieren können. Mit der Netzwerkleistungsmonitor-Lösung können Sie den Paketverlust und die Latenz zwischen zwei Netzwerken, Subnetzen oder Servern überwachen. Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Der Netzwerkleistungsmonitor generiert Warnungen und gibt eine Benachrichtigung aus, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Diese Schwellenwerte können automatisch vom System erlernt werden, oder Sie können die Werte so konfigurieren, dass benutzerdefinierte Warnungsregeln verwendet werden. Der Netzwerkleistungsmonitor gewährleistet das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu.
 
@@ -48,8 +52,8 @@ Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter 
 
 > [!NOTE]
 > Sie müssen mindestens zwei Agents installieren, damit genügend Daten zum Ermitteln und Überwachen Ihrer Netzwerkressourcen vorhanden sind. Andernfalls verharrt die Lösung im Konfigurierungsstatus, bis Sie weitere Agents installieren und konfigurieren.
-> 
-> 
+>
+>
 
 ### <a name="where-to-install-the-agents"></a>Bestimmen des Installationsorts für die Agents
 Bevor Sie Agents installieren, sollten Sie sich Gedanken über die Topologie Ihres Netzwerks und die zu überwachenden Bereiche des Netzwerks machen. Es wird empfohlen, für jedes zu überwachende Subnetz mehrere Agents zu installieren. Für jedes Subnetz, das Sie überwachen möchten, wählen Sie also mindestens zwei Server oder VMs aus, auf denen Sie einen Agent installieren.
@@ -67,8 +71,8 @@ Standardmäßig wird Port 8084 geöffnet. Sie können einen benutzerdefinierten 
 
 > [!NOTE]
 > Das Skript „EnableRules.ps1“ konfiguriert die Windows-Firewallregeln nur auf dem Computer, auf dem das Skript ausgeführt wird. Bei Verwendung einer Netzwerkfirewall sollten Sie sicherstellen, dass diese den Datenverkehr zum TCP-Port erlaubt, der vom Netzwerkleistungsmonitor verwendet wird.
-> 
-> 
+>
+>
 
 ## <a name="configuring-the-solution"></a>Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
@@ -158,8 +162,8 @@ Die Lösung nutzt synthetische Transaktionen, um die Integrität des Netzwerks z
 
 > [!NOTE]
 > Obwohl die Agents häufig miteinander kommunizieren, generieren sie bei den Tests nur wenig Netzwerkdatenverkehr. Agents bedienen sich lediglich der TCP SYN-SYNACK-ACK-Handshakepakete, um die Datenverluste und die Latenz zu ermitteln. Sie tauschen keine Datenpakete aus. Bei diesem Vorgang kommunizieren die Agents nur bei Bedarf miteinander, und die Kommunikationstopologie der Agents ist optimiert, um den Netzwerkdatenverkehr zu reduzieren.
-> 
-> 
+>
+>
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 In diesem Abschnitt werden alle Dashboardfunktionen einschließlich ihrer Verwendung erläutert.
@@ -233,13 +237,15 @@ Nachdem Sie nun mit dem Netzwerkleistungsmonitor vertraut sind, erfahren Sie in 
 5. Alle Pfade zwischen den beiden ausgewählten Knoten werden in die Topologiekarte gezeichnet. Sie können die Hop-by-Hop-Topologie der Routen zwischen zwei Knoten in der Topologiekarte grafisch darstellen. So wissen Sie genau, wie viele Routen es zwischen den beiden Knoten gibt und welche Pfade die Datenpakete verwenden. Leistungsengpässe im Netzwerk werden rot gekennzeichnet. Sie finden eine fehlerhafte Netzwerkverbindung bzw. ein fehlerhaftes Netzwerkgerät, indem Sie in der Topologiekarte nach rot gekennzeichneten Elementen suchen.  
    ![Beispiel für eine Ansicht mit einer fehlerhaften Topologie](./media/log-analytics-network-performance-monitor/npm-investigation05.png)
 6. Verlust, Latenz und Anzahl der Hops in jedem Pfad können im Bereich **Pfaddetails** überprüft werden. In diesem Beispiel sehen Sie, dass – wie im Bereich angegeben – drei fehlerhafte Pfade vorhanden sind. Verwenden Sie die Bildlaufleiste, um die Details dieser fehlerhaften Pfade anzuzeigen.  Verwenden Sie die Kontrollkästchen, um einen der Pfade auszuwählen, sodass nur die Topologie eines einzigen Pfads zu sehen ist. Mit dem Mausrad können Sie die Topologiekarte vergrößern oder verkleinern.
-   
+
    In der Abbildung unten ist anhand der rot gekennzeichneten Pfade und Hops deutlich erkennbar, wo die Ursache für die Problembereiche im betreffenden Abschnitt des Netzwerks liegt. Durch Klicken auf einen Knoten in der Topologiekarte werden die Eigenschaften des Knotens einschließlich FQDN und IP-Adresse angezeigt. Durch Klicken auf einen Hop wird die IP-Adresse des Hops angezeigt.  
    ![Fehlerhafte Topologie – Beispiel für Pfaddetails](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Mit [Protokollsuchen](log-analytics-log-searches.md) können Sie Detaildatensätze mit Netzwerkleistungsdaten anzeigen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

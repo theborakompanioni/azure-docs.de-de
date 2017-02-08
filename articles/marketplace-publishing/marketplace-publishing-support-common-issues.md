@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/21/2016
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3849aa88b5314d36a98d3caf5f3307e656e1a931
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 11b5fb0ed1b3939d8278156fcf2c831befc5f7ff
 
 
 ---
@@ -101,7 +101,7 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 4. Fügen Sie die E-Mail-Adresse des Co-Administrators hinzu, den Sie hinzufügen oder entfernen möchten.
 5. Wählen Sie **Speichern**aus.
 
-## <a name="next-steps-other-support-queries"></a>Nächste Schritte: Andere Supportanfragen
+## <a name="next-steps--other-support-queries"></a>Nächste Schritte: Andere Supportanfragen
 Übermitteln Sie für die folgenden Probleme eine Anfrage unter [https://portal.azure.com](https://portal.azure.com):
 
 * Wie melde ich einen Fehler in der Rechnung?
@@ -124,6 +124,6 @@ Wenn Sie Ihr Herausgeberprofil aktualisieren möchten, kann dies über das Micro
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

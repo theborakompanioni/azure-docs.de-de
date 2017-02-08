@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 01/07/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2f8ff117966b11e7415abaa5e7a0735742d7ef99
+ms.sourcegitcommit: c0d101266fecf04a84b5717c1b81cefed90cab40
+ms.openlocfilehash: 2d16a04bb261552dc9eb86bde301d4285dbf4434
 
 
 ---
@@ -134,7 +134,7 @@ Azure bietet verschiedene Möglichkeiten zur Überwachung Ihrer Dienste – von 
 
 * [Azure Monitor:](http://aka.ms/azmondocs) bietet Visualisierung, Abfrage, Weiterleitung, Warnung, automatische Skalierung und Automatisierung für Daten sowohl aus der Azure-Infrastruktur (Aktivitätsprotokoll) als auch aus jeder einzelnen Azure-Ressource (Diagnoseprotokolle). Dieser Artikel ist Teil der Azure Monitor-Dokumentation. Der Name „Azure Monitor“ wurde am 25. September bei der Ignite 2016 bekannt gegeben.  Der vorherige Name lautete „Azure Insights“.  
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) : Bietet umfangreiche Erkennungs- und Diagnosefunktionen für Probleme auf der Anwendungsebene des Diensts sowie Integration in die Daten der Azure-Überwachung. Es handelt sich um die Standarddiagnoseplattform für App Service-Web-Apps.  Sie können Daten von anderen Diensten an sie weiterleiten.  
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/), Teil der [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite): bietet eine vollständige IT-Verwaltungslösung für lokale und cloudbasierte Infrastrukturen (z.B. AWS) zusätzlich zu Azure-Ressourcen.  Daten von Azure Monitor können direkt an Log Analytics weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.     
+* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/), Teil der [Operations Management Suite](https://www.microsoft.com/oms/): bietet eine vollständige IT-Verwaltungslösung für lokale und cloudbasierte Infrastrukturen (z.B. AWS) zusätzlich zu Azure-Ressourcen.  Daten von Azure Monitor können direkt an Log Analytics weitergeleitet werden, sodass Sie die Metriken und Protokolle für Ihre gesamte Umgebung an einem Ort finden.     
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen
@@ -144,10 +144,10 @@ Weitere Informationen
 * [Azure-Diagnose](../azure-diagnostics.md) : Diagnostizieren Sie Probleme mit Ihren Clouddiensten, virtuellen Computern oder der Service Fabric-Anwendung.
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) : Diagnostizieren Sie Probleme mit Ihrer App Service-Web-App.
 * [Problembehandlung für Azure Storage](../storage/storage-e2e-troubleshooting.md) : Lösen Sie Probleme mit Storage-Blobs, Tabellen oder Warteschlangen.
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) und die [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)
+* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) und die [Operations Management Suite](https://www.microsoft.com/oms/)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

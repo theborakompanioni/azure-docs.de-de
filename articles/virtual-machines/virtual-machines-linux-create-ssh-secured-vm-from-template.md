@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff7ea65c329a37acf8b2febb52fd140954d81e97
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: ea1274dd53a93f00fa251ed03684b17b58b009c2
 
 
 ---
@@ -28,7 +28,7 @@ Dieser Artikel zeigt, wie Sie mithilfe einer Azure-Vorlage schnell einen virtuel
 * [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), angemeldet mit `azure login`
 * Die Azure-Befehlszeilenschnittstelle *muss* im Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden.
 
-Sie können eine Vorlage für eine Linux-VM auch schnell über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md) bereitstellen.
+Sie können eine Vorlage für eine Linux-VM auch schnell über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereitstellen.
 
 ## <a name="quick-command-summary"></a>Kurze Zusammenfassung der Befehle
 ```azurecli

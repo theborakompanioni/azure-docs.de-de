@@ -13,7 +13,7 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: 8ba7633f7d5c4bf9e7160b27f5d5552676653d55
@@ -143,6 +143,7 @@ Der [Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%
 * In einigen Fällen ist der Azure Linux-Agent möglicherweise nicht mit dem NetworkManager kompatibel. Viele der über die Distributionen bereitgestellten RPM-/DEB-Pakete konfigurieren den NetworkManager im Widerspruch zum waagent-Paket. Daher wird beim Installieren des Linux Agent-Pakets der NetworkManager deinstalliert.
 
 ## <a name="general-linux-system-requirements"></a>Allgemeine Linux-Systemanforderungen
+
 * Ändern Sie die Kernel-Boot-Zeile in Grub oder Grub2, um die folgenden Parameter einzubinden. Dadurch wird zudem sichergestellt, dass alle Konsolennachrichten zum ersten seriellen Port gesendet werden. Dieser kann Azure bei der Behebung von Fehlern unterstützen:
   
         console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
@@ -153,13 +154,14 @@ Der [Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%
   
         rhgb quiet crashkernel=auto
   
-    Weder der Graphical Boot noch der Quiet Boot sind in einer Cloudumgebung nützlich, in der alle Protokolle an den seriellen Port gesendet werden sollen.
-  
-    Die Option `crashkernel` kann bei Bedarf konfiguriert bleiben. Beachten Sie jedoch, dass dieser Parameter die Menge an verfügbarem Arbeitsspeicher im virtuellen Computer um 128 MB oder mehr reduziert, was bei kleineren virtuellen Computern problematisch sein kann.
+    Weder der Graphical Boot noch der Quiet Boot sind in einer Cloudumgebung nützlich, in der alle Protokolle an den seriellen Port gesendet werden sollen. Die Option `crashkernel` kann bei Bedarf konfiguriert bleiben. Beachten Sie jedoch, dass dieser Parameter die Menge an verfügbarem Arbeitsspeicher im virtuellen Computer um 128 MB oder mehr reduziert, was bei kleineren virtuellen Computern problematisch sein kann.
+
 * Installieren des Azure Linux-Agents
   
     Der Azure Linux-Agent ist für das Bereitstellen eines Linux-Images auf Azure erforderlich.  Viele Distributionen stellen den Agent als ein RPM- oder DEB-Paket (das Paket heißt für gewöhnlich „WALinuxAgent“ oder „walinuxagent“) bereit.  Der Agent kann zudem manuell installiert werden, indem die folgenden Schritte im [Linux Agent Guide](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)eingehalten werden.
+
 * Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt.  Dies ist für gewöhnlich die Standardeinstellung.
+
 * Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
   
     Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Modifizieren Sie nach dem Installieren des Azure Linux Agent (siehe vorheriger Schritt) die folgenden Parameter in /etc/waagent.conf entsprechend:
@@ -169,6 +171,7 @@ Der [Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+
 * Führen Sie abschließend Befehle zum Rückgängigmachen des virtuellen Computers aus:
   
         # sudo waagent -force -deprovision
@@ -179,6 +182,7 @@ Der [Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%
   > In Virtualbox wird nach dem Ausführen von „waagent -force -deprovision“ möglicherweise der folgende Fehler angezeigt: `[Errno 5] Input/output error`. Diese Fehlermeldung ist nicht kritisch und kann ignoriert werden.
   > 
   > 
+
 * Sie müssen den virtuellen Computer anschließend herunterfahren und die virtuelle Festplatte in Azure hochladen.
 
 

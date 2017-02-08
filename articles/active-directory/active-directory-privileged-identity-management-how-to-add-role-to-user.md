@@ -3,7 +3,7 @@ title: "Hinzufügen oder Entfernen einer Benutzerrolle | Microsoft Docs"
 description: "Erfahren Sie, wie Sie mit der Anwendung Azure Active Directory Privileged Identity Management Rollen zu privilegierten Identitäten hinzufügen."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 6a47ced8-cf34-4ce8-bea2-e4fc548cfe22
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
-ms.author: kgremban
+ms.date: 02/03/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5dde6b98f72306d6fe78f3c12377d3ce2ec5ddea
@@ -32,8 +32,6 @@ Um einen Benutzer mithilfe von PIM (Privileged Identity Management) einer Rolle 
 
 > [!NOTE]
 > Wenn PIM im Azure-Portal noch nicht aktiviert ist, finden Sie die erforderlichen Informationen unter [Erste Schritte mit Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) .
-> 
-> 
 
 Wenn Sie einem anderen Benutzer Zugriff zu PIM gewähren möchten, werden die Rollen, die ein Benutzer für PIM benötigt, unter [Gewähren von Zugriff auf PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)beschrieben.
 
@@ -49,8 +47,6 @@ Wenn Sie einem anderen Benutzer Zugriff zu PIM gewähren möchten, werden die Ro
 > [!NOTE]
 > Neue Benutzer in einer Rolle sind standardmäßig für die Rolle nur berechtigt. Wenn die Rolle permanent sein soll, klicken Sie auf den Benutzer in der Liste. Die Informationen des Benutzers werden auf einem neuen Blatt angezeigt. Wählen Sie im Menü mit den Benutzerinformationen **Als permanent festlegen** aus.  
 > Wenn sich ein Benutzer nicht für Azure Multi-Factor Authentication (MFA) registrieren kann oder ein Microsoft-Konto nutzt (in der Regel @outlook.com),, müssen Sie ihn in allen Rollen als permanent einrichten. Geeignete Administratoren werden während der Aktivierung aufgefordert, sich für MFA zu registrieren.
-> 
-> 
 
 Nachdem der Benutzer für eine Rolle geeignet ist, informieren Sie ihn darüber, dass er die Rolle entsprechend den Anweisungen unter [Gewusst wie: Aktivieren oder Deaktivieren einer Rolle](active-directory-privileged-identity-management-how-to-activate-role.md)aktivieren kann.
 
@@ -66,7 +62,6 @@ Führen Sie die folgenden Schritte aus, um einen bestimmten Benutzer aus einer R
 
 Wenn Sie nicht sicher sind, welche Benutzer ihre Rollenzuweisungen noch benötigen, können Sie [eine Zugriffsüberprüfung für die Rolle starten](active-directory-privileged-identity-management-how-to-start-security-review.md).
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

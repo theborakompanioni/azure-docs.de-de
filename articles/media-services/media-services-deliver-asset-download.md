@@ -1,12 +1,12 @@
 ---
 title: Medienobjekt herunterladen
-description: Erfahren Sie, wie Sie Medienobjekte auf Ihren Computer herunterladen. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET.
+description: "Erfahren Sie, wie Sie Medienobjekte auf Ihren Computer herunterladen. Die Codebeispiele sind in C# geschrieben und verwenden das Media Services SDK für .NET."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 8908a1dd-3ffb-4f18-955d-4c8e2d82fc5d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 25b74bdcdbc5ec5a134bb2f800cd687de6ebc1e7
+
 
 ---
-# <a name="how-to:-deliver-an-asset-by-download"></a>Gewusst wie: Bereitstellen eines Medienobjekts durch Herunterladen
+# <a name="how-to-deliver-an-asset-by-download"></a>Gewusst wie: Bereitstellen eines Medienobjekts durch Herunterladen
 Dieser Artikel beschreibt Optionen zur Bereitstellung von Medienobjekten, die in Media Services hochgeladen wurden. Sie können Media Services-Inhalte in verschiedenen Anwendungsszenarien bereitstellen. Sie können Medienobjekte herunterladen oder über einen Locator abrufen. Sie können Medieninhalte an andere Anwendungen oder andere Inhaltsanbieter senden. Für verbesserte Leistung und Skalierbarkeit können Sie Inhalte auch über ein Netzwerk für die Inhaltsübermittlung (Content Delivery Network, CDN) anbieten.
 
 Dieses Beispiel zeigt, wie Sie Medienobjekte von Media Services auf Ihren lokalen Computer herunterladen können. Der Code fragt die Jobs des Media Services-Kontos nach Job-ID ab und greift auf die **OutputMediaAssets**-Sammlung zu (eine Sammlung mit einem oder mehreren Ausgabemedienobjekten als Ergebnis einer Jobausführung). Dieses Beispiel zeigt, wie Sie Ausgabemedienobjekte eines Jobs herunterladen können. Dieser Ansatz funktioniert auch für den Download anderer Medienobjekte.
@@ -81,6 +85,9 @@ Dieses Beispiel zeigt, wie Sie Medienobjekte von Media Services auf Ihren lokale
 ## <a name="see-also"></a>Weitere Informationen
 [Bereitstellen von Streaming-Inhalten](media-services-deliver-streaming-content.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

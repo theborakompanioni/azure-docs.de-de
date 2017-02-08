@@ -1,77 +1,80 @@
 ---
-title: Erstellen und verwalten einer DNS-Zone im Azure-Portal | Microsoft Docs
-description: Erfahren Sie mehr über das Erstellen von DNS-Zonen für Azure DNS. Dies ist eine Schritt-für-Schritt-Anleitung zum Erstellen und Verwalten Ihres ersten DNS und zum Hosten Ihrer DNS-Domäne mit dem Azure-Portal.
+title: Erstellen und Verwalten einer DNS-Zone im Azure-Portal | Microsoft Docs
+description: "Erfahren Sie, wie Sie DNS-Zonen in Azure DNS erstellen. Dies ist eine Schritt-für-Schritt-Anleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone über das Azure-Portal."
 services: dns
 documentationcenter: na
-author: cherylmc
-manager: carmonm
-editor: ''
+author: georgewallace
+manager: timlt
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: f44c5ea1-4c85-469e-888e-5f5b34451664
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
-ms.author: cherylmc
+ms.date: 12/05/2016
+ms.author: gwallace
+translationtype: Human Translation
+ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
+ms.openlocfilehash: c9bebc8f54d3f732b3014f6885ee65a067e9d1d8
 
 ---
-# Erstellen einer DNS-Zone im Azure-Portal
+
+# <a name="create-a-dns-zone-in-the-azure-portal"></a>Erstellen einer DNS-Zone im Azure-Portal
+
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-getstarted-create-dnszone-portal.md)
 > * [PowerShell](dns-getstarted-create-dnszone.md)
 > * [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-dnszone-cli.md)
-> 
-> 
 
 Dieser Artikel führt Sie Schritt für Schritt durch die Erstellung einer DNS-Zone mithilfe des Azure-Portals. Sie können die DNS-Zone auch mithilfe von PowerShell oder der Befehlszeilenschnittstelle (CLI) erstellen.
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-### Informationen zu Tags für Azure DNS
-Tags sind eine Liste von Name-Wert-Paaren, die von Azure Resource Manager zum Beschriften von Ressourcen zu Abrechnungs- oder Gruppierungszwecken verwendet werden. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../resource-group-using-tags.md).
+## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
-Sie können im Azure-Portal Tags über das Blatt **Einstellungen** Ihrer DNS-Zone hinzufügen.
-
-## Erstellen einer DNS-Zone
 1. Melden Sie sich auf dem Azure-Portal an.
-2. Klicken Sie im Hubmenü auf **Neu > Netzwerk** und dann auf **DNS-Zone**, um das Blatt der DNS-Zone zu öffnen.
-   
-    ![DNS-Zone](./media/dns-getstarted-create-dnszone-portal/openzone650.png)
-3. Klicken Sie unten auf dem Blatt **DNS-Zone** auf **Erstellen**. Das Blatt **DNS-Zone erstellen** wird geöffnet.
-   
-    ![Erstellen einer Zone](./media/dns-getstarted-create-dnszone-portal/newzone250.png)
-4. Geben Sie Ihrer DNS-Zone auf dem Blatt **DNS-Zone erstellen** einen Namen. Beispiel: *contoso.com*. Weitere Informationen finden Sie im obigen Abschnitt [Informationen zu DNS-Zonennamen](#names).
-5. Geben Sie als nächstes die gewünschte Ressourcengruppe an. Sie können entweder eine neue Ressourcengruppe erstellen oder eine bereits vorhandene auswählen.
-6. Geben Sie im Dropdownmenü **Speicherort** den Speicherort der Ressourcengruppe an. Beachten Sie, dass sich diese Einstellung auf den Speicherort der Ressourcengruppe, nicht den Speicherort der DNS-Zone bezieht. Die eigentliche DNS-Zonenressource ist automatisch allgemeingültig und kann und muss nicht im Portal angegeben werden.
-7. Sie können das Kontrollkästchen **An Dashboard anheften** aktiviert lassen, um Ihre neue Zone auf dem Dashboard leichter wiederzufinden. Klicken Sie dann auf **Erstellen**.
-   
-    ![An das Dashboard anheften](./media/dns-getstarted-create-dnszone-portal/pindashboard150.png)
-8. Nachdem Sie auf „Erstellen“ klicken, sehen Sie, wie Ihre neue Zone auf dem Dashboard konfiguriert wird.
-   
-    ![Wird erstellt](./media/dns-getstarted-create-dnszone-portal/creating150.png)
-9. Wenn Ihre neue Zone erstellt wurde, wird das Blatt Ihrer neuen Zone auf dem Dashboard geöffnet.
+2. Klicken Sie im Hubmenü auf **Neu > Netzwerk** und anschließend auf **DNS-Zone**, um das Blatt „DNS-Zone erstellen“ zu öffnen.
 
-## Anzeigen von Datensätzen
+    ![DNS-Zone](./media/dns-getstarted-create-dnszone-portal/openzone650.png)
+
+4. Geben Sie Ihrer DNS-Zone auf dem Blatt **DNS-Zone erstellen** einen Namen. Beispiel: *contoso.com*.
+ 
+    ![Erstellen einer Zone](./media/dns-getstarted-create-dnszone-portal/newzone250.png)
+
+5. Geben Sie als nächstes die gewünschte Ressourcengruppe an. Sie können entweder eine neue Ressourcengruppe erstellen oder eine bereits vorhandene auswählen. Wenn Sie eine neue Ressourcengruppe erstellen möchten, verwenden Sie die Dropdownliste **Speicherort**, um den Speicherort der Ressourcengruppe anzugeben. Diese Einstellung bezieht sich auf den Speicherort der Ressourcengruppe und hat keine Auswirkung auf die DNS-Zone. Der Speicherort der DNS-Zone ist immer global und wird nicht angezeigt.
+
+6. Sie können das Kontrollkästchen **An Dashboard anheften** aktiviert lassen, um Ihre neue Zone auf dem Dashboard leichter wiederzufinden. Klicken Sie dann auf **Erstellen**.
+
+    ![An Dashboard anheften](./media/dns-getstarted-create-dnszone-portal/pindashboard150.png)
+
+7. Nachdem Sie auf „Erstellen“ klicken, sehen Sie, wie Ihre neue Zone auf dem Dashboard konfiguriert wird.
+
+    ![Wird erstellt](./media/dns-getstarted-create-dnszone-portal/creating150.png)
+
+8. Wenn Ihre neue Zone erstellt wurde, wird das Blatt Ihrer neuen Zone auf dem Dashboard geöffnet.
+
+## <a name="view-records"></a>Anzeigen von Datensätzen
+
 Beim Erstellen einer DNS-Zone werden auch die folgenden Einträge erstellt:
 
 * Der Eintrag „Autoritätsursprung“ (SOA). Der SOA ist im Stamm jeder DNS-Zone vorhanden.
-* Die autoritativen Namenserver (NS)-Einträge. Diese zeigen, welche Namenserver die Zone hosten. Azure DNS verwendet einen Pool von Namenservern, sodass verschiedene Namenserver verschiedenen Zonen in Azure DNS zugewiesen werden können. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
+* Die autoritativen Namenserver (NS)-Einträge. Diese zeigen, welche Namenserver die Zone hosten. Azure DNS verwendet einen Pool von Namenservern, sodass verschiedene Namenserver verschiedenen Zonen in Azure DNS zugewiesen werden können. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md) .
 
-Sie können die Einträge über das Azure-Portal anzeigen.
+Im unteren Teil des Blatts „DNS-Zone“ finden Sie die Ressourceneintragssätze für die DNS-Zone.
 
-1. Klicken Sie auf dem Blatt **DNS-Zone** auf **Alle Einstellungen**, um das Blatt **Einstellungen** der DNS-Zone zu öffnen.
-   
-    ![Zone](./media/dns-getstarted-create-dnszone-portal/viewzonens500.png)
-2. Im unteren Teil des Bereichs „Essentials“ finden Sie die Ressourceneintragssätze für die DNS-Zone.
+![Zone](./media/dns-getstarted-create-dnszone-portal/viewzone500.png)
 
-    ![Zone](./media/dns-getstarted-create-dnszone-portal/viewzone500.png)
+## <a name="test-name-servers"></a>Testen der Namenserver
 
-## Test
-Sie können Ihre DNS-Zone mit DNS-Tools wie nslookup, dig oder mit dem [PowerShell-Cmdlet Resolve-DnsName](https://technet.microsoft.com/library/jj590781.aspx) testen.
+Mithilfe von DNS-Tools wie nslookup oder dig oder mit dem [PowerShell-Cmdlet Resolve-DnsName](https://technet.microsoft.com/library/jj590781.aspx) können Sie testen, ob Ihre DNS-Zone auf den Azure DNS-Namenservern vorhanden ist.
 
-Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für die Zone sind in den NS-Einträgen enthalten, die von `Get-AzureRmDnsRecordSet` (oben) aufgelistet werden. Ersetzen Sie im folgenden Befehl die Werte durch die für Ihre Zone ordnungsgemäßen Werte.
+Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie die DNS-Abfrage direkt auf einen der Namenserver für die Zone leiten. Die Namenserver für Ihre Zone sind im Azure-Portal angegeben:
+    
+![Zone](./media/dns-getstarted-create-dnszone-portal/viewzonens500.png)
+
+Verwenden Sie im folgenden Befehl den korrekten Namenserver für Ihre Zone.
 
     nslookup
     > set type=SOA
@@ -83,22 +86,20 @@ Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS 
 
     contoso.com
             primary name server = ns1-01.azure-dns.com
-            responsible mail addr = msnhst.microsoft.com
+            responsible mail addr = azuredns-hostmaster.microsoft.com
             serial  = 1
-            refresh = 900 (15 mins)
+            refresh = 3600 (1 hour)
             retry   = 300 (5 mins)
-            expire  = 604800 (7 days)
+            expire  = 2419200 (28 days)
             default TTL = 300 (5 mins)
 
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Erstellen einer DNS-Zone müssen Sie [Ressourceneintragssätze und Einträge erstellen](dns-getstarted-create-recordset-portal.md), um DNS-Einträge für Ihre Internetdomäne zu erstellen.
 
 
-## Löschen einer DNS-Zone
-Sie können die DNS-Zone direkt aus dem Portal löschen. Vor dem Löschen einer DNS-Zone in Azure DNS müssen Sie alle Datensatzgruppen löschen, mit Ausnahme der NS- und SOA-Einträge im Zonenstamm, die beim Erstellen der Zone automatisch erstellt wurden.
 
-1. Suchen Sie das Blatt **DNS-Zone** der Zone, die Sie löschen möchten, und klicken Sie dann oben auf dem Blatt auf **Löschen**.
-2. Eine Meldung informiert Sie darüber, dass Sie alle Ressourceneintragssätze löschen müssen, mit Ausnahme der automatisch erstellten NS- und SOA-Einträge. Wenn Sie die Ressourceneintragssätze gelöscht haben, klicken Sie auf **Ja**. Beachten Sie, dass beim Löschen einer DNS-Zone aus dem Portal die Ressourcengruppe, die der DNS-Zone zugeordnet ist, nicht gelöscht wird.
 
-## Nächste Schritte
-Nach dem Erstellen einer DNS-Zone müssen [Ressourceneintragssätze und Einträge](dns-getstarted-create-recordset-portal.md) zum Auflösen von Namen für Ihre Internetdomäne erstellt werden.
+<!--HONumber=Feb17_HO1-->
 
-<!---HONumber=AcomDC_0817_2016-->
+

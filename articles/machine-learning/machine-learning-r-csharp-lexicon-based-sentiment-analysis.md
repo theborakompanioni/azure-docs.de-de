@@ -2,11 +2,11 @@
 title: Lexikonbasierte Stimmungsanalyse | Microsoft Docs
 description: Lexikonbasierte Stimmungsanalyse
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: pengxia
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 912f41af-966c-4d79-a413-6f9fc02823df
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,31 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: pengxia
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c702fda88e0af40084958b1ad51e7156c7f4aee3
+
 
 ---
-# Lexikonbasierte Stimmungsanalyse
+# <a name="lexicon-based-sentiment-analysis"></a>Lexikonbasierte Stimmungsanalyse
 Wie können Sie die Meinungen und Einstellungen Ihrer Benutzer zu Marken oder Themen in sozialen Netzwerken wie z.B. Facebook-Beiträgen, Tweets, Rezensionen usw. messen? Die Stimmungsanalyse bietet eine Methode, solche Fragen zu analysieren.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Es gibt im Allgemeinen zwei Methoden für die Stimmungsanalyse. Bei der einen Methode handelt es sich um einen überwachten Lernalgorithmus, die andere wird als "nicht überwachtes Lernen" bezeichnet. Ein überwachter Lernalgorithmus erstellt in der Regel ein Klassifizierungsmodell auf Basis eines großen Korpus mit Anmerkungen. Die Genauigkeit hierbei basiert hauptsächlich auf der Qualität der Anmerkungen, und das Training dauert in der Regel sehr lange. Außerdem ist beim Anwenden des Algorithmus auf eine andere Domäne das Ergebnis in der Regel nicht gut. Im Gegensatz zum überwachten Lernen wird beim lexikonbasierten nicht überwachten Lernen ein Simmungswörterbuch verwendet. Für diese Methode muss kein großer Datenkorpus gespeichert werden, und sie erfordert kein Training, wodurch der gesamte Prozess deutlich schneller ist.
+Es gibt im Allgemeinen zwei Methoden für die Stimmungsanalyse. Bei der einen Methode handelt es sich um einen überwachten Lernalgorithmus, die andere wird als "nicht überwachtes Lernen" bezeichnet. Ein überwachter Lernalgorithmus erstellt in der Regel ein Klassifizierungsmodell auf Basis eines großen Korpus mit Anmerkungen. Die Genauigkeit hierbei basiert hauptsächlich auf der Qualität der Anmerkungen, und das Training dauert in der Regel sehr lange. Außerdem ist beim Anwenden des Algorithmus auf eine andere Domäne das Ergebnis in der Regel nicht gut. Im Gegensatz zum überwachten Lernen wird beim lexikonbasierten nicht überwachten Lernen ein Simmungswörterbuch verwendet. Für diese Methode muss kein großer Datenkorpus gespeichert werden, und sie erfordert kein Training, wodurch der gesamte Prozess deutlich schneller ist. 
 
-Unser [Dienst](https://datamarket.azure.com/dataset/aml_labs/lexicon_based_sentiment_analysis) basiert auf dem MPQA Subjectivity Lexicon (http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/), einem der am häufigsten verwendeten Subjektivitätslexika. Es gibt 5.097 negative und 2.533 positive Wörter im MPQA. Und all diese Wörter sind als stark oder schwach gekennzeichnet. Der gesamte Korpus befindet sich unter der GNU General Public License. Der Webdienst kann auf alle kurzen Sätze wie Tweets und Facebook-Beiträge angewendet werden.
+Unser [Dienst](https://datamarket.azure.com/dataset/aml_labs/lexicon_based_sentiment_analysis) basiert auf dem MPQA Subjectivity Lexicon (http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/), einem der am häufigsten verwendeten Subjektivitätslexika. Es gibt 5.097 negative und 2.533 positive Wörter im MPQA. Und all diese Wörter sind als stark oder schwach gekennzeichnet. Der gesamte Korpus befindet sich unter der GNU General Public License. Der Webdienst kann auf alle kurzen Sätze wie Tweets und Facebook-Beiträge angewendet werden. 
 
 > Dieser Webdienst kann von Benutzern verwendet werden – beispielsweise über eine mobile App, eine Website oder sogar über einen lokalen Computer. Dieser Webdienst ist jedoch auch ein gutes Beispiel dafür, wie Azure Machine Learning zum Erstellen von Webdiensten basierend auf R-Code verwendet werden kann. Mit nur wenigen Codezeilen R-Code und einigen Klicks in Azure Machine Learning Studio können Sie ein Experiment mit R-Code erstellen und als Webdienst veröffentlichen. Der Webdienst kann dann im Azure Marketplace veröffentlicht und von Benutzern und Geräten auf der ganzen Welt genutzt werden – ohne Einrichtung einer Infrastruktur durch den Autor des Webdiensts.
 > 
 > 
 
-## Nutzung des Webdiensts
-Die Eingabedaten können ein beliebiger Text sein, aber der Webdienst funktioniert besser mit kurzen Sätzen. Die Ausgabe ist ein numerischer Wert zwischen-1 und 1. Jeder Wert unter 0 zeigt, dass die Stimmung des Texts negativ ist. Bei jedem Wert über 0 ist sie positiv. Der absolute Wert des Ergebnisses zeigt die Stärke der zugehörigen Stimmung.
+## <a name="consumption-of-web-service"></a>Nutzung des Webdiensts
+Die Eingabedaten können ein beliebiger Text sein, aber der Webdienst funktioniert besser mit kurzen Sätzen. Die Ausgabe ist ein numerischer Wert zwischen-1 und 1. Jeder Wert unter 0 zeigt, dass die Stimmung des Texts negativ ist. Bei jedem Wert über 0 ist sie positiv. Der absolute Wert des Ergebnisses zeigt die Stärke der zugehörigen Stimmung. 
 
-> Dieser Dienst, der im Azure Marketplace gehostet wird, ist ein OData-Dienst. Diese Dienste können durch POST- oder GET-Methoden aufgerufen werden.
+> Dieser Dienst, der im Azure Marketplace gehostet wird, ist ein OData-Dienst. Diese Dienste können durch POST- oder GET-Methoden aufgerufen werden. 
 > 
 > 
 
 Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([hier](http://microsoftazuremachinelearning.azurewebsites.net/) finden Sie eine Beispiel-App).
 
-### Starten von C#-Code für Webdienstnutzung:
+### <a name="starting-c-code-for-web-service-consumption"></a>Starten von C#-Code für Webdienstnutzung:
     public class ScoreResult
     {
             [DataMember]
@@ -68,24 +72,29 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
 
 
 
-Die Eingabe lautet: "Today is a good day." Die Ausgabe lautet "1", was darauf hinweist, dass mit dem Eingabesatz eine positive Bedeutung assoziiert wird.
+Die Eingabe lautet: "Today is a good day." Die Ausgabe lautet "1", was darauf hinweist, dass mit dem Eingabesatz eine positive Bedeutung assoziiert wird. 
 
-## Erstellen des Webdiensts
+## <a name="creation-of-web-service"></a>Erstellen des Webdiensts
 > Dieser Webdienst wurde mithilfe von Azure Machine Learning erstellt. Eine kostenlose Testversion sowie Einführungsvideos zum Erstellen von Experimenten und [Veröffentlichen von Webdiensten](machine-learning-publish-a-machine-learning-web-service.md) finden Sie unter [azure.com/ml](http://azure.com/ml). Im Folgenden finden Sie einen Screenshot des Experiments, mit dem der Webdienst erstellt wurde und Beispielcode für die einzelnen Module im Experiment.
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Die nachfolgende Abbildung zeigt den Experimentablauf bei der lexikonbasierten Stimmungsanalyse. Die Datei "sent\_dict.csv" befindet sich im MPQA-Subjektivitätslexikon und ist als eine der Eingaben für [Execute R Script][execute-r-script] festgelegt. Eine andere Eingabe ist eine Stichprobe des Amazon-Bewertungsdatasets zum Testen, bei der Vorgänge für Auswahl, Modifizieren des Spaltennamens und Aufteilen ausgeführt wurden. Sie verwenden ein Hashpaket, um das Subjektivitätslexikon im Arbeitsspeicher zu speichern und den Prozess der Bewertungsberechnung zu beschleunigen. Der gesamte Text wird vom von "tm"-Paket in Token umgesetzt und mit dem Wort im Stimmungswörterbuch verglichen. Schließlich wird ein Ergebnis berechnet, indem die Gewichtung aller subjektiven Wörter im Text hinzugefügt wird.
+In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Die nachfolgende Abbildung zeigt den Experimentablauf bei der lexikonbasierten Stimmungsanalyse. Die Datei „sent_dict.csv“ befindet sich im MPQA-Subjektivitätslexikon und ist als eine der Eingaben für [Execute R Script][execute-r-script] festgelegt. Eine andere Eingabe ist eine Stichprobe des Amazon-Bewertungsdatasets zum Testen, bei der Vorgänge für Auswahl, Modifizieren des Spaltennamens und Aufteilen ausgeführt wurden. Sie verwenden ein Hashpaket, um das Subjektivitätslexikon im Arbeitsspeicher zu speichern und den Prozess der Bewertungsberechnung zu beschleunigen. Der gesamte Text wird vom von "tm"-Paket in Token umgesetzt und mit dem Wort im Stimmungswörterbuch verglichen. Schließlich wird ein Ergebnis berechnet, indem die Gewichtung aller subjektiven Wörter im Text hinzugefügt wird. 
 
-### Experimentablauf:
+### <a name="experiment-flow"></a>Experimentablauf:
 ![Experimentablauf][2]
 
-#### Modul 1:
+#### <a name="module-1"></a>Modul 1:
     # Map 1-based optional input ports to variables
     sent_dict_data<- maml.mapInputPort(1) # class: data.frame
     dataset2 <- maml.mapInputPort(2) # class: data.frame
 
-# Install hash package install.packages("src/hash\_2.2.6.zip", lib = ".", repos = NULL, verbose = TRUE) success <- library("hash", lib.loc = ".", logical.return = TRUE, verbose = TRUE) library(tm) library(stringr)
+# <a name="install-hash-package"></a>Hashpaket installieren
+    install.packages("src/hash_2.2.6.zip", lib = ".", repos = NULL, verbose = TRUE)
+    success <- library("hash", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
+    library(tm)
+    library(stringr)
+
     #create sentiment dictionary
     negation_word <- c("not","nor", "no")
     result <- c()
@@ -132,10 +141,10 @@ In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Die nachfo
 
 
 
-## Einschränkungen
-Hinsichtlich des Algorithmus ist die lexikonbasierte Stimmungsanalyse ein allgemeines Stimmungsanalysetool, das für bestimmte Felder möglicherweise keine bessere Leistung bietet als die Klassifizierungsmethode. Das Problem der Negation wird nicht gut gelöst. Sie hartcodieren mehrere Negation Wörter im Programm, eine bessere Möglichkeit ist jedoch die Verwendung eines Negationswörterbuchs und die Erstellung einiger Regeln. Der Webdienst bietet eine bessere Leistung bei kurzen und einfachen Sätzen, wie z. B. Tweets und Facebook-Beiträgen, als bei langen und komplexen Sätzen wie z. B. Rezensionen auf Amazon.
+## <a name="limitations"></a>Einschränkungen
+Hinsichtlich des Algorithmus ist die lexikonbasierte Stimmungsanalyse ein allgemeines Stimmungsanalysetool, das für bestimmte Felder möglicherweise keine bessere Leistung bietet als die Klassifizierungsmethode. Das Problem der Negation wird nicht gut gelöst. Sie hartcodieren mehrere Negation Wörter im Programm, eine bessere Möglichkeit ist jedoch die Verwendung eines Negationswörterbuchs und die Erstellung einiger Regeln. Der Webdienst bietet eine bessere Leistung bei kurzen und einfachen Sätzen, wie z. B. Tweets und Facebook-Beiträgen, als bei langen und komplexen Sätzen wie z. B. Rezensionen auf Amazon. 
 
-## Häufig gestellte Fragen
+## <a name="faq"></a>Häufig gestellte Fragen
 Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im Azure Marketplace finden Sie [hier](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-lexicon-based-sentiment-analysis/sentiment_analysis_1.png
@@ -147,4 +156,8 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

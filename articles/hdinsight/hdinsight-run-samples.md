@@ -1,34 +1,38 @@
 ---
-title: Ausführen der Hadoop-Beispiele in HDInsight | Microsoft Docs
-description: Erste Schritte mit dem Azure HDInsight-Dienst mit den mitgelieferten Beispielen. Verwenden von PowerShell-Skripts, die MapReduce-Programme auf Datenclustern ausführen.
+title: "Ausführen der Hadoop-Beispiele in HDInsight | Microsoft Docs"
+description: "Erste Schritte mit dem Azure HDInsight-Dienst mit den mitgelieferten Beispielen. Verwenden von PowerShell-Skripts, die MapReduce-Programme auf Datenclustern ausführen."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: bf76d452-abb4-4210-87bd-a2067778c6ed
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 10/21/2016
 ms.author: jgao
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: dbc14234200c7e4995464e2a8ed4009b963eaff4
+
 
 ---
-# Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
-[!INCLUDE [Beispielauswahl](../../includes/hdinsight-run-samples-selector.md)]
+# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
+[!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
 Wir haben verschiedene Beispiele bereitgestellt, um Ihnen die ersten Schritte beim Ausführen von MapReduce-Aufträgen auf Hadoop-Clustern in Azure HDInsight zu erleichtern. Diese Beispiele sind in allen von HDInsight verwalteten Clustern verfügbar, die Sie erstellen. Führen Sie diese Beispiele aus, um sich mit der Verwendung der Azure PowerShell-Cmdlets für die Ausführung von Aufträgen in Hadoop-Clustern vertraut zu machen.
 
-* [**Wortzählung**][hdinsight-sample-wordcount]\: Zählt die Vorkommen von Wörtern in einer Textdatei.
-* [**Wortzählung – C#-Streaming**][hdinsight-sample-csharp-streaming]\: Zählt die Vorkommen von Wörtern in einer Textdatei mithilfe der Hadoop-Streamingschnittstelle.
-* [**Pi-Schätzung**][hdinsight-sample-pi-estimator]\: Verwendet eine statistische (Quasi-Monte Carlo) Methode, um den Wert von Pi zu schätzen.
-* [**10-GB-Graysort**][hdinsight-sample-10gb-graysort]\: Zeigt die Ausführung eines allgemeinen GraySort für eine 10-GB-Datei mithilfe von HDInsight. Drei Aufträge müssen ausgeführt werden: Teragen zum Generieren der Daten, Terasort zum Sortieren der Daten und Teravalidate zur Überprüfung der richtigen Sortierung der Daten.
+* [**Wortzählung**][hdinsight-sample-wordcount]: Zählt die Vorkommen von Wörtern in einer Textdatei.
+* [**Wortzählung – C#-Streaming**][hdinsight-sample-csharp-streaming]: Zählt die Vorkommen von Wörtern in einer Textdatei mithilfe der Hadoop-Streamingschnittstelle.
+* [**Pi-Schätzung**][hdinsight-sample-pi-estimator]: Verwendet eine statistische (Quasi-Monte Carlo) Methode, um den Wert von Pi zu schätzen.
+* [**10-GB-Graysort**][hdinsight-sample-10gb-graysort]: Zeigt die Ausführung eines allgemeinen GraySort für eine 10-GB-Datei mithilfe von HDInsight. Drei Aufträge müssen ausgeführt werden: Teragen zum Generieren der Daten, Terasort zum Sortieren der Daten und Teravalidate zur Überprüfung der richtigen Sortierung der Daten.
 
 > [!NOTE]
-> Den Quellcode finden Sie im Anhang.
+> Den Quellcode finden Sie im Anhang. 
 > 
 > 
 
@@ -38,7 +42,7 @@ Im Internet finden Sie umfangreiche Dokumentationen zu Hadoop-verwandten Technol
 * [Übermitteln von Hadoop-Aufträgen in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md)
 * [Einführung in Azure HDInsight][hdinsight-introduction]
 
-Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für MapReduce. Weitere Informationen finden Sie unter:
+Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für MapReduce.  Weitere Informationen finden Sie unter:
 
 * [Verwenden von Hive in HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig in HDInsight](hdinsight-use-pig.md)
@@ -51,12 +55,12 @@ Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für M
   
     [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-## <a name="hdinsight-sample-wordcount"></a>Wortzählung – Java
-Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d. h. „wasbs:///example/jars/hadoop-mapreduce-examples.jar**“, den Klassennamen und die Argumente an. Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
+## <a name="a-namehdinsight-sample-wordcountaword-count---java"></a><a name="hdinsight-sample-wordcount"></a>Wortzählung – Java
+Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d.h. **wasbs:///example/jars/hadoop-mapreduce-examples.jar**, den Klassennamen und die Argumente an.  Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
 
 Den Quellcode finden Sie in [Anhang A](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md).
+Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entwickeln von Java MapReduce-Programmen für Hadoop in HDInsight](hdinsight-develop-deploy-java-mapreduce-linux.md)
 
 **So übermitteln Sie einen MapReduce-Auftrag zur Wortzählung**
 
@@ -112,10 +116,10 @@ Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entw
         # Display the output file
         cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
    
-    Der MapReduce-Auftrag erzeugt die Datei *part-r-00000*, welche die Wörter und deren Anzahl enthält. Das Skript verwendet den **findstr**-Befehl, um alle Wörter aufzulisten, die *"there"* enthalten.
+    Der MapReduce-Auftrag erzeugt die Datei *part-r-00000*, welche die Wörter und deren Anzahl enthält. Das Skript verwendet den **findstr** -Befehl, um alle Wörter aufzulisten, die *"there"*enthalten.
 3. Legen Sie die ersten drei Variablen fest, und führen Sie das Skript aus.
 
-## <a name="hdinsight-sample-csharp-streaming"></a>Wortzählung – C#-Streaming
+## <a name="a-namehdinsight-sample-csharp-streamingaword-count---c-streaming"></a><a name="hdinsight-sample-csharp-streaming"></a>Wortzählung – C#-Streaming
 Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map- und Reduce-Funktionen in anderen Sprache als Java schreiben können.
 
 > [!NOTE]
@@ -123,15 +127,15 @@ Hadoop stellt eine Streaming-API für MapReduce zur Verfügung, mit der Sie Map-
 > 
 > 
 
-In diesem Beispiel sind sowohl Mapper als auch Reducer ausführbare Dateien, die die Eingabe (zeilenweise) von [stdin][stdin-stdout-stderr] lesen und die Ausgabe über [stdout][stdin-stdout-stderr] ausgeben. Das Programm zählt alle Wörter im Text.
+In diesem Beispiel sind Mapper und Reducer ausführbare Dateien, die die Eingabe von [stdin][stdin-stdout-stderr] (zeilenweise) lesen und die Ausgabe über [stdout][stdin-stdout-stderr] ausgeben. Das Programm zählt alle Wörter im Text.
 
-Wenn eine ausführbare Datei für **Mapper** angegeben wird, ruft jede Mapper-Task die ausführbare Datei als separaten Prozess auf, wenn der Mapper initialisiert wird. Während der Ausführung der Mapper-Task wird die Eingabe in Zeilen konvertiert, und diese Zeilen werden an die Eingabe ([stdin][stdin-stdout-stderr]) des Prozesses übermittelt.
+Wenn eine ausführbare Datei für **Mapper**angegeben wird, ruft jede Mapper-Task die ausführbare Datei als separaten Prozess auf, wenn der Mapper initialisiert wird. Während der Ausführung des Mapper-Tasks werden die Eingaben in Zeilen konvertiert und die Zeilen dem [stdin][stdin-stdout-stderr] des Prozesses zugeführt.
 
 In der Zwischenzeit sammelt der Mapper die zeilenorientierte Ausgabe von der Ausgabe (stdout) des Prozesses. Jede Zeile wird in ein Schlüssel/Wert-Paar konvertiert, das als Ausgabe des Mappers erfasst wird. Standardmäßig ist das Präfix einer Zeile bis zum ersten Tabulatorzeichen der Schlüssel, und der Rest der Zeile (mit Ausnahme des Tabulatorzeichens) ist der Wert. Wenn die Zeile kein Tabulatorzeichen enthält, wird die gesamte Zeile als Schlüssel betrachtet, und der Wert ist NULL.
 
-Wenn eine ausführbare Datei für **Reducer** angegeben wird, ruft jede Reducer-Task die ausführbare Datei als separaten Prozess auf, wenn der Reducer initialisiert wird. Während der Ausführung der Reducer-Task werden die eingegebenen Schlüssel/Wert-Paare in Zeilen konvertiert, und diese Zeilen werden an die Eingabe ([stdin][stdin-stdout-stderr]) des Prozesses übermittelt.
+Wenn eine ausführbare Datei für **Reducer**angegeben wird, ruft jede Reducer-Task die ausführbare Datei als separaten Prozess auf, wenn der Reducer initialisiert wird. Während der Ausführung des Reducer-Tasks werden die eingegebenen Schlüssel-Wert-Paare in Zeilen konvertiert und die Zeilen dem [stdin][stdin-stdout-stderr] des Prozesses zugeführt.
 
-In der Zwischenzeit sammelt der Reducer die zeilenorientierte Ausgabe von der Ausgabe ([stdout][stdin-stdout-stderr]) des Prozesses. Jede Zeile wird in ein Schlüssel/Wert-Paar konvertiert, das als Ausgabe des Reducers erfasst wird. Standardmäßig ist das Präfix einer Zeile bis zum ersten Tabulatorzeichen der Schlüssel, und der Rest der Zeile (mit Ausnahme des Tabulatorzeichens) ist der Wert.
+In der Zwischenzeit sammelt der Reducer die zeilenorientierte Ausgabe von [stdout][stdin-stdout-stderr] im Prozess. Jede Zeile wird in ein Schlüssel/Wert-Paar konvertiert, das als Ausgabe des Reducers erfasst wird. Standardmäßig ist das Präfix einer Zeile bis zum ersten Tabulatorzeichen der Schlüssel, und der Rest der Zeile (mit Ausnahme des Tabulatorzeichens) ist der Wert.
 
 Weitere Informationen zur Hadoop-Streamingschnittstelle finden Sie unter [Hadoop-Streaming][hadoop-streaming].
 
@@ -150,7 +154,7 @@ Weitere Informationen zur Hadoop-Streamingschnittstelle finden Sie unter [Hadoop
 
         example/data/StreamingOutput/wc.txt/part-00000        
 
-## <a name="hdinsight-sample-pi-estimator"></a>Pi-Schätzung
+## <a name="a-namehdinsight-sample-pi-estimatorapi-estimator"></a><a name="hdinsight-sample-pi-estimator"></a>Pi-Schätzung
 Die Pi-Schätzung verwendet eine statistische (Quasi-Monte Carlo) Methode, um den Wert von Pi zu schätzen. Zufällig platzierte Punkte in einem Einheitsquadrat liegen mit einer Wahrscheinlichkeit gleich der Kreisoberfläche Pi/4 innerhalb eines Kreises, der sich im Quadrat befindet. Der Wert für Pi kann aus dem Wert 4R ermittelt werden, wobei R das Verhältnis zwischen der Anzahl der Punkte innerhalb des Kreises zur Gesamtanzahl der Punkte innerhalb des Quadrats ist. Je größer die Anzahl der Punkte, desto genauer die Schätzung.
 
 Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit 16 Maps ausgeführt, die gemäß der Parameterwerte jeweils 10 Millionen Beispielpunkte berechnen. Sie können diese Parameterwerte ändern, um die Genauigkeit der Pi-Schätzung zu verbessern. Als Referenz: die ersten 10 Dezimalstellen von Pi lauten 3,1415926535.
@@ -164,8 +168,8 @@ Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit
                                     -ClassName "pi" `
                                     -Arguments "16", "10000000"
 
-## <a name="hdinsight-sample-10gb-graysort"></a>10-GB-Graysort
-Dieses Beispiel verwendet bescheidene 10 GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen ("daytona") Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/).
+## <a name="a-namehdinsight-sample-10gb-graysorta10-gb-graysort"></a><a name="hdinsight-sample-10gb-graysort"></a>10-GB-Graysort
+Dieses Beispiel verwendet bescheidene 10 GB an Daten, um eine zügige Ausführung zu ermöglichen. Die Anwendung verwendet die MapReduce-Anwendungen von Owen O'Malley und Arun Murthy, die im Jahr 2009 den jährlichen allgemeinen ("daytona") Terabyte-Sortier-Benchmark mit einem Durchsatz von 0,578 TB/Min (100 TB in 173 Minuten) gewonnen haben. Weitere Informationen zu diesem und anderen Sortier-Benchmarks finden Sie unter [Sortbenchmark](http://sortbenchmark.org/) .
 
 Dieses Beispiel verwendet drei Sätze von MapReduce-Programmen:
 
@@ -187,27 +191,33 @@ Für das Beispiel müssen drei Aufgaben ausgeführt werden, die den einzelnen Ma
   
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `
   
-                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "teragen" ` -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input"
+                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" `
+                                -ClassName "teragen" `
+                                -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input"
   
     $terasort = New-AzureRmHDInsightMapReduceJobDefinition `
   
-                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "terasort" ` -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-input", "/example/data/10GB-sort-output"
+                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" `
+                                -ClassName "terasort" `
+                                -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-input", "/example/data/10GB-sort-output"
   
     $teravalidate = New-AzureRmHDInsightMapReduceJobDefinition `
   
-                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" ` -ClassName "teravalidate" ` -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate"
+                                -JarFile "/example/jars/hadoop-mapreduce-examples.jar" `
+                                -ClassName "teravalidate" `
+                                -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate"
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel und den Artikeln zu den einzelnen Beispielen haben Sie gelernt, wie Sie die in HDInsight-Clustern enthaltenen Beispiele mithilfe von Azure PowerShell ausführen können. Lernprogramme zu Pig, Hive und MapReduce mit HDInsight finden Sie in den folgenden Themen:
 
-* [Erste Schritte bei der Nutzung von Hadoop mit Hive in HDInsight zur Analyse der Verwendung von Mobiltelefonen][hdinsight-get-started]
+* [Erste Schritte bei der Verwendung von Hadoop mit Hive in HDInsight zum Analysieren der Nutzung von Mobiltelefonen][hdinsight-get-started]
 * [Verwenden von Pig mit Hadoop in HDInsight][hdinsight-use-pig]
 * [Verwenden von Hive mit Hadoop in HDInsight][hdinsight-use-hive]
 * [Übermitteln von Hadoop-Aufträgen in HDInsight][hdinsight-submit-jobs]
-* [Azure HDInsight SDK-Dokumentation][hdinsight-sdk-documentation]
+* [Dokumentation zum Azure HDInsight SDK][hdinsight-sdk-documentation]
 * [Debuggen von Hadoop in HDInsight: Fehlermeldungen][hdinsight-errors]
 
-## Anhang A – Quellcode für die Wortzählung
+## <a name="appendix-a---the-word-count-source-code"></a>Anhang A – Quellcode für die Wortzählung
     package org.apache.hadoop.examples;
     import java.io.IOException;
     import java.util.StringTokenizer;
@@ -277,7 +287,7 @@ In diesem Artikel und den Artikeln zu den einzelnen Beispielen haben Sie gelernt
       }
 
 
-## Anhang B – Quellcode für die Streamingwortzählung
+## <a name="appendix-b---the-word-count-streaming-source-code"></a>Anhang B – Quellcode für die Streamingwortzählung
 Das MapReduce-Programm verwendet die Anwendung "cat.exe" als Mapping-Schnittstelle zum Streamen des Texts in die Konsole und die Anwendung "wc.exe" als Reduce-Schnittstelle zum Zählen der Anzahl von Wörtern, die aus dem Dokument übertragen werden. Sowohl der Mapper als auch der Reducer lesen Zeichen zeilenweise aus dem Standard-Eingabedatenstrom (stdin) und schreiben in den Standard-Ausgabedatenstrom (stdout).
 
     // The source code for the cat.exe (Mapper).
@@ -307,7 +317,7 @@ Das MapReduce-Programm verwendet die Anwendung "cat.exe" als Mapping-Schnittstel
 
 
 
-Der Mapper-Code in der Datei "cat.cs" verwendet ein [StreamReader][streamreader]-Objekt, um die Zeichen des eingehenden Datenstroms in die Konsole einzulesen, die ihrerseits den Datenstrom mit der statischen [Console.Writeline][console-writeline]-Methode in den Standard-Ausgabedatenstrom schreibt.
+Der Mapper-Code in der Datei „cat.cs“ verwendet ein [StreamReader][streamreader]-Objekt, um die Zeichen des eingehenden Datenstroms in die Konsole einzulesen, die ihrerseits den Datenstrom mit der statischen [Console.Writeline][console-writeline]-Methode in den Standard-Ausgabedatenstrom schreibt.
 
     // The source code for wc.exe (Reducer) is:
 
@@ -337,9 +347,9 @@ Der Mapper-Code in der Datei "cat.cs" verwendet ein [StreamReader][streamreader]
     }
 
 
-Der Reducer-Code in der Datei "wc.cs" verwendet ein [StreamReader][streamreader]-Objekt zum Lesen von Zeichen aus dem Standard-Eingabedatenstrom, die vom cat.exe-Mapper ausgegeben wurden. Während des Einlesens der Zeichen mit der [Console.Writeline][console-writeline]-Methode werden die Wörter gezählt, indem die Leerzeichen und Zeilenendezeichen am Ende der einzelnen Wörter gezählt werden. Die Summe wird mit der [Console.Writeline][console-writeline]-Methode in den Standard-Ausgabedatenstrom geschrieben.
+Der Reducer-Code in der Datei „wc.cs“ verwendet ein [StreamReader][streamreader]-Objekt zum Lesen von Zeichen aus dem Standard-Eingabedatenstrom, die vom cat.exe-Mapper ausgegeben wurden. Während des Einlesens der Zeichen mit der [Console.Writeline][console-writeline]-Methode werden die Wörter gezählt, indem die Leerzeichen und Zeilenendezeichen am Ende der einzelnen Wörter gezählt werden. Die Summe wird mit der [Console.Writeline][console-writeline]-Methode in den Standard-Ausgabedatenstrom geschrieben.
 
-## Anhang C – Quellcode für die Pi-Schätzung
+## <a name="appendix-c---the-pi-estimator-source-code"></a>Anhang C – Quellcode für die Pi-Schätzung
 Sie finden den Javacode zur Pi-Schätzung mit den Mapper- und Reducer-Funktionen zu Ihrer Information weiter unten. Das Mapper-Programm generiert eine bestimmte Anzahl Punkte an zufälligen Orten innerhalb eines Einheits-Quadrats und zählt anschließend, wie viele dieser Punkte innerhalb des Kreises liegen. Das Reducer-Programm sammelt die von den Mappern gezählten Punkte und schätzt anschließend den Wert von Pi mit der Formel 4R, wobei R das Verhältnis zwischen der Anzahl der Punkte innerhalb des Kreises zur Gesamtanzahl der Punkte innerhalb des Quadrats ist.
 
      /**
@@ -679,7 +689,7 @@ Sie finden den Javacode zur Pi-Schätzung mit den Mapper- und Reducer-Funktionen
      }
      }
 
-## Anhang D – Quellcode für 10-GB-Graysort
+## <a name="appendix-d---the-10gb-graysort-source-code"></a>Anhang D – Quellcode für 10-GB-Graysort
 Sie finden den Code für das TeraSort MapReduce-Programm in diesem Abschnitt zu Ihrer Information.
 
     /**
@@ -989,4 +999,8 @@ Sie finden den Code für das TeraSort MapReduce-Programm in diesem Abschnitt zu 
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 [stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

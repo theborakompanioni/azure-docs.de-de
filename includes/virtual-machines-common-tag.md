@@ -1,10 +1,10 @@
 
 
 
-## Markieren eines virtuellen Computers mittels Vorlagen
+## <a name="tagging-a-virtual-machine-through-templates"></a>Markieren eines virtuellen Computers mittels Vorlagen
 Zunächst sehen wir uns das Verwenden von Tags mithilfe von Vorlagen an. [Diese Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) platziert Tags auf den folgenden Ressourcen: Compute (virtueller Computer), Speicher (Storage-Konto) und Netzwerk (öffentliche IP-Adresse, Virtual Network und Netzwerkschnittstelle). Diese Vorlage gilt für einen virtuellen Windows-Computer, kann aber für virtuelle Linux-Computer angepasst werden.
 
-Klicken Sie unter dem [Vorlagenlink](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) auf die Schaltfläche **Bereitstellen in Azure**. Dadurch werden Sie zum [Azure-Portal](https://portal.azure.com/) weitergeleitet, in dem Sie diese Vorlage bereitstellen können.
+Klicken Sie unter dem **Vorlagenlink** auf die Schaltfläche [Bereitstellen in Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Dadurch werden Sie zum [Azure-Portal](https://portal.azure.com/) weitergeleitet, in dem Sie diese Vorlage bereitstellen können.
 
 ![Einfache Bereitstellung mit Tags](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
@@ -25,9 +25,9 @@ Anschließend können Sie im Abschnitt **Parameter bearbeiten** die Werte für d
 
 ![Bearbeiten von Tags im Azure-Portal](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
 
-Klicken Sie auf **Erstellen**, um diese Vorlage mit Ihren Tagwerten bereitzustellen.
+Klicken Sie auf **Erstellen** , um diese Vorlage mit Ihren Tagwerten bereitzustellen.
 
-## Tags über das Portal erstellen
+## <a name="tagging-through-the-portal"></a>Tags über das Portal erstellen
 Nachdem Sie Ihre Ressourcen mit Tags erstellt haben, können Sie sie im Portal anzeigen, hinzufügen und löschen.
 
 Wählen Sie das Tag-Symbol, um die Tags anzuzeigen:
@@ -42,4 +42,8 @@ Ihr neues Tag sollte jetzt in der Liste der Tags für die Ressource angezeigt we
 
 ![Neues gespeichertes Tag im Azure-Portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

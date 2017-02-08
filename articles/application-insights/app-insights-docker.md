@@ -109,7 +109,7 @@ Leistungsindikatoren für Prozessorzeit und verfügbaren Arbeitsspeicher, erweit
 
 ![Beispiel](./media/app-insights-docker/15.png)
 
-## <a name="q-a"></a>Fragen und Antworten
+## <a name="q--a"></a>Fragen und Antworten
 *Was bietet mir Application Insights, das Docker nicht leisten kann?*
 
 * Eine detaillierte Aufschlüsselung der Leistungsindikatoren nach Container und Image.

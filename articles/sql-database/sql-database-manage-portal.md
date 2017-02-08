@@ -1,26 +1,27 @@
 ---
 title: "Verwalten von Azure SQL-Datenbanken über das Azure-Portal | Microsoft Docs"
-description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um eine relationale Datenbank mithilfe des Azure-Portals in der Cloud zu verwalten.
+description: "Kurzübersicht über die Verwendung des Azure-Portals zum Verwalten einer relationalen Datenbank mithilfe des Azure-Portals in der Cloud"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 3a56e9de-c21a-40ba-9a35-958172cb4e5b
 ms.service: sql-database
+ms.custom: how to
 ms.devlang: NA
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.date: 09/19/2016
-ms.author: sstein
+ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: dde22adda13b88a6cd0f1d033c2730ddc3288050
 
 
 ---
-# <a name="managing-azure-sql-databases-using-the-azure-portal"></a>Verwalten von Azure SQL-Datenbanken über das Azure-Portal
+# <a name="manage-azure-sql-databases-using-the-azure-portal"></a>Verwalten von Azure SQL-Datenbanken über das Azure-Portal
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-database-manage-portal.md)
 > * [SSMS](sql-database-manage-azure-ssms.md)
@@ -88,7 +89,7 @@ Zum Überwachen und Verbessern der Leistungsmerkmale einer SQL-Datenbank klicken
 ## <a name="how-do-i-configure-geo-replication"></a>Wie konfiguriere ich die Georeplikation?
 Zum Einrichten der Georeplikation für eine SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Georeplikation**. Details finden Sie unter [Konfigurieren der Georeplikation für Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md).
 
-## <a name="how-do-i-failover-to-a-geo-replicated-sql-database"></a>Wie führe ich ein Failover auf eine georeplizierte sekundäre Datenbank durch?
+## <a name="how-do-i-fail-over-to-a-geo-replicated-sql-database"></a>Wie führe ich ein Failover auf eine georeplizierte sekundäre Datenbank durch?
 Für ein Failover auf eine georeplizierte sekundäre Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Georeplikation** und anschließend auf **Failover**. Details finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-failover-portal.md).
 
 ## <a name="how-do-i-copy-a-sql-database"></a>Wie kopiere ich eine SQL-Datenbank?
@@ -126,6 +127,6 @@ Zum Löschen einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

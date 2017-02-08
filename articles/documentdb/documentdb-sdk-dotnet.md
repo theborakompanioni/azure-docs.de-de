@@ -179,7 +179,7 @@ ms.openlocfilehash: 1a4a2ed7cd2b8cfe3ed328c696cd6ba4d2cc03bc
 ### <a name="a-name09x-preview09x-previewhttpswwwnugetorgpackagesmicrosoftazuredocumentsclient"></a><a name="0.9.x-preview"/>[0.9.x-preview](https://www.nuget.org/packages/Microsoft.Azure.Documents.Client)
 * SDK-Vorschauversionen [Veraltet]
 
-## <a name="release-retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
+## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren. 

@@ -1,23 +1,27 @@
 ---
 title: Erweiterte Codierung mit Media Encoder-Standard
-description: In diesem Thema wird erläutert, wie Sie die erweiterte Codierung durch Anpassen der Aufgabenvoreinstellungen von Media Encoder Standard ausführen. In diesem Thema wird die Verwendung des Media Services .NET SDK zum Erstellen einer Aufgabe und eines Auftrags für die Codierung erläutert. Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für den Codierungsauftrag angeben.
+description: "In diesem Thema wird erläutert, wie Sie die erweiterte Codierung durch Anpassen der Aufgabenvoreinstellungen von Media Encoder Standard ausführen. In diesem Thema wird die Verwendung des Media Services .NET SDK zum Erstellen einer Aufgabe und eines Auftrags für die Codierung erläutert. Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für den Codierungsauftrag angeben."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 2a4ade25-e600-4bce-a66e-e29cf4a38369
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 09/25/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
+ms.openlocfilehash: 0d60d491c459c96cb0f507e52159d0b60e38ac33
+
 
 ---
-# Erweiterte Codierung mit Media Encoder-Standard
-## Übersicht
+# <a name="advanced-encoding-with-media-encoder-standard"></a>Erweiterte Codierung mit Media Encoder-Standard
+## <a name="overview"></a>Übersicht
 In diesem Thema wird erläutert, wie Sie die erweiterten Codierungsaufgaben mithilfe von Media Encoder-Standard ausführen. Das Thema zeigt die [Verwendung von .NET zum Erstellen einer Codierungsaufgabe und eines Auftrags, der diese Aufgabe ausführt](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet). Darüber hinaus wird veranschaulicht, wie Sie benutzerdefinierte Voreinstellungen für die Codierungsaufgabe angeben. Eine Beschreibung der Elemente, die von den Voreinstellungen verwendet werden, finden Sie in [diesem Dokument](https://msdn.microsoft.com/library/mt269962.aspx).
 
 Die benutzerdefinierten Voreinstellungen, die die folgenden Codierungsaufgaben ausführen, werden veranschaulicht:
@@ -28,17 +32,18 @@ Die benutzerdefinierten Voreinstellungen, die die folgenden Codierungsaufgaben a
 * [Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio](media-services-custom-mes-presets-with-dotnet.md#silent_audio)
 * [Deaktivieren des automatischen Deinterlacings](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 * [Nur Audio-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md#audio_only)
-* [Verketten von zwei oder mehr Videodateien](media-services-custom-mes-presets-with-dotnet.md#concatenate)
-* [Zuschneiden von Videos mit Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#crop)
-* [Einfügen einer Videospur, wenn die Eingabe kein Video enthält](media-services-custom-mes-presets-with-dotnet.md#no_video)
+* [Verketten von zwei oder mehr Videodateien](#concatenate)
+* [Zuschneiden von Videos mit Media Encoder Standard](#crop)
+* [Einfügen einer Videospur, wenn die Eingabe kein Video enthält](#no_video)
+* [Drehen eines Videos](#rotate_video)
 
-## <a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
+## <a name="a-idencodingwithdotnetaencoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
 
 * Erstellen eines Codierungsauftrags.
 * Abrufen eines Verweises auf den Media Encoder Standard-Encoder
 * Laden der benutzerdefinierten XML- oder JSON-Voreinstellung. Sie können die XML- oder JSON-Voreinstellung (z.B. [XML](media-services-custom-mes-presets-with-dotnet.md#xml) oder [JSON](media-services-custom-mes-presets-with-dotnet.md#json)) in einer Datei speichern und die Datei mit dem folgenden Code laden.
-  
+
         // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(fileName);  
 * Hinzufügen einer Codierungsaufgabe zum Auftrag
@@ -46,7 +51,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 * Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.
 * Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
 * Übermitteln Sie den Auftrag.
-  
+
         using System;
         using System.Collections.Generic;
         using System.Configuration;
@@ -63,7 +68,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
         using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
         using System.Web;
         using System.Globalization;
-  
+
         namespace CustomizeMESPresests
         {
             class Program
@@ -73,17 +78,17 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
                     ConfigurationManager.AppSettings["MediaServicesAccountName"];
                 private static readonly string _mediaServicesAccountKey =
                     ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-  
+
                 // Field for service context.
                 private static CloudMediaContext _context = null;
                 private static MediaServicesCredentials _cachedCredentials = null;
-  
+
                 private static readonly string _mediaFiles =
                     Path.GetFullPath(@"../..\Media");
-  
+
                 private static readonly string _singleMP4File =
                     Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-  
+
                 static void Main(string[] args)
                 {
                     // Create and cache the Media Services credentials in a static class variable.
@@ -92,21 +97,21 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
                                     _mediaServicesAccountKey);
                     // Used the chached credentials to create CloudMediaContext.
                     _context = new CloudMediaContext(_cachedCredentials);
-  
+
                     // Get an uploaded asset.
                     var asset = _context.Assets.FirstOrDefault();
-  
+
                     // Encode and generate the output using custom presets.
                     EncodeToAdaptiveBitrateMP4Set(asset);
-  
+
                     Console.ReadLine();
                 }
-  
+
                 static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
                 {
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-                    // Get a media processor reference, and pass to it the name of the 
+                    // Get a media processor reference, and pass to it the name of the
                     // processor to use for the specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
@@ -121,9 +126,9 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
                     // Specify the input asset to be encoded.
                     task.InputAssets.Add(asset);
-                    // Add an output asset to contain the results of the job. 
-                    // This output is specified as AssetCreationOptions.None, which 
-                    // means the output asset is not encrypted. 
+                    // Add an output asset to contain the results of the job.
+                    // This output is specified as AssetCreationOptions.None, which
+                    // means the output asset is not encrypted.
                     task.OutputAssets.AddNew("Output asset",
                         AssetCreationOptions.None);
 
@@ -140,7 +145,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
                     foreach (var af in asset.AssetFiles)
                     {
-                        // The following code assumes 
+                        // The following code assumes
                         // you have an input folder with one MP4 and one overlay image file.
                         if (af.Name.Contains(".mp4"))
                             af.IsPrimary = true;
@@ -158,7 +163,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
                 {
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-                    // Get a media processor reference, and pass to it the name of the 
+                    // Get a media processor reference, and pass to it the name of the
                     // processor to use for the specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
@@ -175,7 +180,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
                     // This asset contains a source file and an overlay file.
                     task.InputAssets.Add(assetSource);
 
-                    // Add an output asset to contain the results of the job. 
+                    // Add an output asset to contain the results of the job.
                     task.OutputAssets.AddNew("Output asset",
                         AssetCreationOptions.None);
 
@@ -233,30 +238,30 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
         }
 
 
-## Unterstützung relativer Größen
+## <a name="support-for-relative-sizes"></a>Unterstützung relativer Größen
 Beim Generieren von Miniaturansichten müssen Sie nicht immer die Breite und Höhe der Ausgabe in Pixel angeben. Sie können sie in Prozent im Bereich [1 %, ..., 100 %] angeben.
 
-### JSON-Voreinstellung
+### <a name="json-preset"></a>JSON-Voreinstellung
     "Width": "100%",
     "Height": "100%"
 
-### XML-Voreinstellung
+### <a name="xml-preset"></a>XML-Voreinstellung
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a id="thumbnails"></a>Generieren von Miniaturansichten
-In diesem Abschnitt erfahren Sie, wie Sie eine Voreinstellung anpassen, die Miniaturansichten generiert. Die unten definierte Voreinstellung enthält Informationen zum Codieren Ihrer Datei sowie die erforderlichen Informationen zum Generieren von Miniaturansichten. Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und Code hinzufügen, mit dem Miniaturansichten generiert werden.
+## <a name="a-idthumbnailsagenerate-thumbnails"></a><a id="thumbnails"></a>Generieren von Miniaturansichten
+In diesem Abschnitt erfahren Sie, wie Sie eine Voreinstellung anpassen, die Miniaturansichten generiert. Die unten definierte Voreinstellung enthält Informationen zum Codieren Ihrer Datei sowie die erforderlichen Informationen zum Generieren von Miniaturansichten. Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und Code hinzufügen, mit dem Miniaturansichten generiert werden.  
 
 > [!NOTE]
-> Die Einstellung **SceneChangeDetection** in der folgenden Voreinstellung kann nur auf TRUE festgelegt werden, wenn eine Codierung als Single-Bitrate-Video erfolgt. Wenn eine Codierung als Video mit variabler Bitrate erfolgt und **SceneChangeDetection** auf TRUE festgelegt ist, gibt der Encoder einen Fehler zurück.
-> 
-> 
+> Die Einstellung **SceneChangeDetection** in der folgenden Voreinstellung kann nur auf „true“ festgelegt werden, wenn eine Codierung als Single-Bitrate-Video erfolgt. Wenn eine Codierung als Video mit variabler Bitrate erfolgt und **SceneChangeDetection** auf TRUE festgelegt ist, gibt der Encoder einen Fehler zurück.  
+>
+>
 
 Informationen zum Schema finden Sie in [diesem](https://msdn.microsoft.com/library/mt269962.aspx) Thema.
 
-Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-custom-mes-presets-with-dotnet.md#considerations).
+Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-custom-mes-presets-with-dotnet.md#considerations) .
 
-### <a id="json"></a>JSON-Voreinstellung
+### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Codecs": [
@@ -356,7 +361,7 @@ Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-custom-mes-pres
     }
 
 
-### <a id="xml"></a>XML-Voreinstellung
+### <a name="a-idxmlaxml-preset"></a><a id="xml"></a>XML-Voreinstellung
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -429,28 +434,28 @@ Lesen Sie unbedingt den Abschnitt [Überlegungen](media-services-custom-mes-pres
       </Outputs>
     </Preset>
 
-### Überlegungen
+### <a name="considerations"></a>Überlegungen
 Es gelten die folgenden Bedingungen:
 
 * Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 * Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf, die folgendermaßen interpretiert werden können:
-  
+
   * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z.B. "Start": "120",
   * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z.B. "Start": "15%" ODER
-  * Zeitstempel bei Ausdrücken im Format "HH:MM:SS", z.B. "Start" : "00:01:00"
-    
+  * Zeitstempel bei Ausdrücken im HH:MM:SS...- "Start" : "00:01:00"
+
     Sie können die Formate nach Belieben mischen.
-    
+
     "Start" unterstützt darüber hinaus auch das spezielle Makro "{Best}", das versucht, den ersten "interessanten" Frame des Inhalts zu ermitteln. (HINWEIS: "Step" und "Range" werden ignoriert, wenn "Start" auf "{Best}" festgelegt ist.)
   * Standardwerte: Start:{Best}
 * Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
-## <a id="trim_video"></a>Kürzen eines Videos (Clipping)
+## <a name="a-idtrimvideoatrim-a-video-clipping"></a><a id="trim_video"></a>Kürzen eines Videos (Clipping)
 Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Medienobjekts verwendet werden, das aus einem Livedatenstrom erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie in [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. **Sources** muss am Beginn der Voreinstellung platziert werden.
+Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources** -Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. **Sources** muss am Beginn der Voreinstellung platziert werden.
 
-### <a id="json"></a>JSON-Voreinstellung
+### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Sources": [
@@ -567,10 +572,10 @@ Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/libr
           }
         }
       ]
-    } 
+    }
 
-### XML-Voreinstellung
-Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern.
+### <a name="xml-preset"></a>XML-Voreinstellung
+Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources** -Element (wie unten gezeigt) ändern.
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -687,23 +692,23 @@ Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/libr
       </Outputs>
     </Preset>
 
-## <a id="overlay"></a>Erstellen einer Überlagerung
+## <a name="a-idoverlayacreate-an-overlay"></a><a id="overlay"></a>Erstellen einer Überlagerung
 Media Encoder Standard ermöglicht die Überlagerung eines Bildes mit einem vorhandenen Video. Derzeit werden die folgenden Formate unterstützt: png, jpg, gif und bmp. Die unten definierte Voreinstellung ist ein einfaches Beispiel einer Videoüberlagerung.
 
 Zusätzlich zur Definition einer Voreinstellungsdatei müssen Sie Media Services darüber informieren, welche Datei im Asset das Überlagerungsbild und welche Datei das Quellvideo darstellt, das mit dem Bild überlagert werden soll. Die Videodatei muss die **primäre** Datei sein.
 
-Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z.B. die darauf folgende Voreinstellung) zum Erstellen der Codierungsaufgabe.
+Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z.B. die darauf folgende Voreinstellung) zum Erstellen des Codierungstasks.
 
 > [!NOTE]
 > Aktuelle Einschränkungen:
-> 
+>
 > Die Einstellung für die Deckkraft der Überlagerung wird nicht unterstützt.
-> 
+>
 > Ihre Quellvideodatei und die Überlagerungsbilddatei müssen sich im gleichen Medienobjekt befinden, und die Videodatei muss in diesem Medienobjekt als primäre Datei festgelegt sein.
-> 
-> 
+>
+>
 
-### JSON-Voreinstellung
+### <a name="json-preset"></a>JSON-Voreinstellung
     {
       "Version": 1.0,
       "Sources": [
@@ -780,7 +785,7 @@ Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder*
     }
 
 
-### XML-Voreinstellung
+### <a name="xml-preset"></a>XML-Voreinstellung
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
@@ -843,14 +848,14 @@ Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder*
     </Preset>
 
 
-## <a id="silent_audio"></a>Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
+## <a name="a-idsilentaudioainsert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
 Wenn Sie eine Eingabe an den Encoder senden, die keine Audiodaten, sondern nur Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig nur aus Dateien mit Videodaten. Einige Player können derartige Ausgabedatenströme möglicherweise nicht verarbeiten. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine stille Audiospur hinzuzufügen.
 
 Um zu erzwingen, dass der Encoder ein Asset erstellt, das bei einer Eingabe ohne Audio eine stille Audiospur enthält, geben Sie den Wert „InsertSilenceIfNoAudio“ an.
 
-Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
+Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx)dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
 
-### JSON-Voreinstellung
+### <a name="json-preset"></a>JSON-Voreinstellung
     {
       "Channels": 2,
       "SamplingRate": 44100,
@@ -859,19 +864,19 @@ Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokume
       "Condition": "InsertSilenceIfNoAudio"
     }
 
-### XML-Voreinstellung
+### <a name="xml-preset"></a>XML-Voreinstellung
     <AACAudio Condition="InsertSilenceIfNoAudio">
       <Channels>2</Channels>
       <SamplingRate>44100</SamplingRate>
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
+## <a name="a-iddeinterlacingadisable-auto-de-interlacing"></a><a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
 Kunden müssen nichts tun, wenn sie wünschen, dass das Interlacing der die Interlace-Inhalte automatisch aufgehoben wird. Bei Aktivierung des automatischen De-Interlacings (Standard) übernimmt MWS die automatische Erkennung von Frames mit Zeilensprung und hebt das Interlacing nur für Frames auf, die als Interlaced markiert sind.
 
 Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedoch nicht empfohlen.
 
-### JSON-Voreinstellung
+### <a name="json-preset"></a>JSON-Voreinstellung
     "Sources": [
     {
      "Filters": {
@@ -882,7 +887,7 @@ Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedo
     }
     ]
 
-### XML-Voreinstellung
+### <a name="xml-preset"></a>XML-Voreinstellung
     <Sources>
     <Source>
       <Filters>
@@ -894,10 +899,10 @@ Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedo
     </Sources>
 
 
-## <a id="audio_only"></a>Nur Audio-Voreinstellungen
+## <a name="a-idaudioonlyaaudio-only-presets"></a><a id="audio_only"></a>Nur Audio-Voreinstellungen
 Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio und AAC Good Quality Audio.
 
-### AAC Audio
+### <a name="aac-audio"></a>AAC Audio
     {
       "Version": 1.0,
       "Codecs": [
@@ -919,7 +924,7 @@ Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio 
       ]
     }
 
-### AAC Good Quality Audio
+### <a name="aac-good-quality-audio"></a>AAC Good Quality Audio
     {
       "Version": 1.0,
       "Codecs": [
@@ -941,29 +946,29 @@ Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio 
       ]
     }
 
-## <a id="concatenate"></a>Verketten von zwei oder mehr Videodateien
-Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, um zwei oder mehr Videodateien zu verketten. Das häufigste Szenario hierfür ist das Hinzufügen eines Vor- oder Nachspanns zum Hauptvideo. Der Zweck ist, dass die Videodateien, die gemeinsam bearbeitet werden, über die gleichen Eigenschaften verfügen (Videoauflösung, Framerate, Anzahl von Audiospuren usw.). Sie sollten darauf achten, Videos mit verschiedenen Frameraten oder einer unterschiedlichen Anzahl von Audiospuren nicht gemeinsam zu verwenden.
+## <a name="a-idconcatenateaconcatenate-two-or-more-video-files"></a><a id="concatenate"></a>Verketten von zwei oder mehr Videodateien
+Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, um zwei oder mehr Videodateien zu verketten. Das häufigste Szenario hierfür ist das Hinzufügen eines Vor- oder Nachspanns zum Hauptvideo. er Zweck ist, dass die Videodateien, die gemeinsam bearbeitet werden, über die gleichen Eigenschaften verfügen (Videoauflösung, Framerate, Anzahl von Audiospuren usw.). Sie sollten darauf achten, Videos mit verschiedenen Frameraten oder einer unterschiedlichen Anzahl von Audiospuren nicht gemeinsam zu verwenden.
 
-### Anforderungen und Überlegungen
+### <a name="requirements-and-considerations"></a>Anforderungen und Überlegungen
 * Eingabevideos sollten nur eine Audiospur aufweisen.
 * Alle Eingabevideos sollten die gleiche Framerate aufweisen.
 * Sie müssen Ihre Videos in separate Medienobjekte hochladen und die Videos in jedem Medienobjekt als primäre Datei festlegen.
 * Sie müssen die Länge der Videos kennen.
 * Bei den unten gezeigten Voreinstellungsbeispielen wird davon ausgegangen, dass alle Eingabevideos mit dem Zeitstempel 0 starten. Wenn die Videos unterschiedliche Startzeitstempel aufweisen, was bei Live-Archiven häufig vorkommt, müssen Sie die StartTime-Werte ändern.
 * Die JSON-Voreinstellung verweist explizit auf die AssetID-Werte der Eingabemedienobjekte.
-* Im Beispielcode wird davon ausgegangen, dass die JSON-Voreinstellung in einer lokalen Datei gespeichert wurde, beispielsweise „C:\\supportFiles\\preset.json“. Es wird ebenfalls angenommen, dass durch Hochladen von zwei Videodateien zwei Medienobjekte erstellt wurden und dass Sie die resultierenden AssetID-Werte kennen.
+* Im Beispielcode wird davon ausgegangen, dass die JSON-Voreinstellung in einer lokalen Datei gespeichert wurde, beispielsweise „C:\supportFiles\preset.json“. Es wird ebenfalls angenommen, dass durch Hochladen von zwei Videodateien zwei Medienobjekte erstellt wurden und dass Sie die resultierenden AssetID-Werte kennen.
 * Der Codeausschnitt und die JSON-Voreinstellung zeigen ein Beispiel für das Verketten von zwei Videodateien. Sie können den Vorgang folgendermaßen auf mehr als zwei Videos erweitern:
-  
+
   1. Wiederholtes Aufrufen von task.InputAssets.Add(), um weitere Videos in einer bestimmten Reihenfolge hinzuzufügen.
   2. Ändern des Sources-Elements in der JSON-Voreinstellung durch Hinzufügen weiterer Einträge in der gleichen Reihenfolge.
 
-### .NET code
+### <a name="net-code"></a>.NET code
     IAsset asset1 = _context.Assets.Where(asset => asset.Id == "nb:cid:UUID:606db602-efd7-4436-97b4-c0b867ba195b").FirstOrDefault();
     IAsset asset2 = _context.Assets.Where(asset => asset.Id == "nb:cid:UUID:a7e2b90f-0565-4a94-87fe-0a9fa07b9c7e").FirstOrDefault();
 
     // Declare a new job.
     IJob job = _context.Jobs.Create("Media Encoder Standard Job for Concatenating Videos");
-    // Get a media processor reference, and pass to it the name of the 
+    // Get a media processor reference, and pass to it the name of the
     // processor to use for the specific task.
     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
@@ -979,9 +984,9 @@ Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, u
     // Specify the input videos to be concatenated (in order).
     task.InputAssets.Add(asset1);
     task.InputAssets.Add(asset2);
-    // Add an output asset to contain the results of the job. 
-    // This output is specified as AssetCreationOptions.None, which 
-    // means the output asset is not encrypted. 
+    // Add an output asset to contain the results of the job.
+    // This output is specified as AssetCreationOptions.None, which
+    // means the output asset is not encrypted.
     task.OutputAssets.AddNew("Output asset",
         AssetCreationOptions.None);
 
@@ -989,7 +994,7 @@ Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, u
     job.Submit();
     job.GetExecutionProgressTask(CancellationToken.None).Wait();
 
-### JSON-Voreinstellung
+### <a name="json-preset"></a>JSON-Voreinstellung
 Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medienobjekte, die Sie verketten möchten, und mit dem geeigneten Zeitsegment für jedes Video.
 
     {
@@ -1044,23 +1049,23 @@ Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medieno
       ]
     }
 
-## <a id="crop"></a>Zuschneiden von Videos mit Media Encoder Standard
-Siehe das Thema [Zuschneiden von Videos mit Media Encoder Standard](media-services-crop-video.md).
+## <a name="a-idcropacrop-videos-with-media-encoder-standard"></a><a id="crop"></a>Zuschneiden von Videos mit Media Encoder Standard
+Siehe das Thema [Zuschneiden von Videos mit Media Encoder Standard](media-services-crop-video.md) .
 
-## <a id="no_video"></a>Einfügen einer Videospur, wenn die Eingabe kein Video enthält
+## <a name="a-idnovideoainsert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>Einfügen einer Videospur, wenn die Eingabe kein Video enthält
 Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig aus Dateien mit ausschließlich Audiodaten. Einige Player, einschließlich Azure Media Player (siehe [hier](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)), solche Streams möglicherweise nicht handhaben. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine monochrome Videospur hinzuzufügen.
 
 > [!NOTE]
 > Wenn der Encoder gezwungen wird, eine Ausgabevideospur einzufügen, erhöht sich die Größe des Ausgabemedienobjekts und dadurch die für die Codierungsaufgabe anfallenden Kosten. Führen Sie Tests aus, um sicherzustellen, dass diese resultierende Zunahme nur geringe Auswirkungen auf Ihre monatlichen Gebühren hat.
-> 
-> 
+>
+>
 
-### Einfügen von Videoinhalten mit ausschließlich der niedrigsten Bitrate
-Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](https://msdn.microsoft.com/library/mt269960.aspx), um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur mit ausschließlich der niedrigsten Bitrate anstatt Video mit jeder Ausgabebitrate hinzuzufügen. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideoBottomLayerOnly“ angeben.
+### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Einfügen von Videoinhalten mit ausschließlich der niedrigsten Bitrate
+Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](https://msdn.microsoft.com/library/mt269960.aspx) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur mit ausschließlich der niedrigsten Bitrate anstatt Video mit jeder Ausgabebitrate hinzuzufügen. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideoBottomLayerOnly“ angeben.
 
-Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
+Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx)dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
 
-#### JSON-Voreinstellung
+#### <a name="json-preset"></a>JSON-Voreinstellung
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -1070,17 +1075,17 @@ Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokume
           ]
     }
 
-#### XML-Voreinstellung
+#### <a name="xml-preset"></a>XML-Voreinstellung
     <KeyFrameInterval>00:00:02</KeyFrameInterval>
     <StretchMode>AutoSize</StretchMode>
     <Condition>InsertBlackIfNoVideoBottomLayerOnly</Condition>
 
-### Einfügen von Video mit allen Ausgabebitraten
-Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](https://msdn.microsoft.com/library/mt269960.aspx), um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur für alle Ausgabebitraten hinzuzufügen. Dadurch wird sichergestellt, dass alle Ausgabemedienobjekte in Bezug auf die Anzahl der Video- und Audiospuren homogen sind. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideo“ angeben.
+### <a name="inserting-video-at-all-output-bitrates"></a>Einfügen von Video mit allen Ausgabebitraten
+Angenommen, Sie verwenden eine Codierungsvoreinstellung mit mehreren Bitraten wie [H264 Multiple Bitrate 720p](https://msdn.microsoft.com/library/mt269960.aspx) , um Ihren gesamten Eingabekatalog für das Streaming zu codieren, der eine Mischung aus Videodateien und reinen Audiodateien enthält. Wenn in diesem Szenario die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur für alle Ausgabebitraten hinzuzufügen. Dadurch wird sichergestellt, dass alle Ausgabemedienobjekte in Bezug auf die Anzahl der Video- und Audiospuren homogen sind. Um dies zu erreichen, müssen Sie das Flag „InsertBlackIfNoVideo“ angeben.
 
-Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
+Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx)dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
 
-#### JSON-Voreinstellung
+#### <a name="json-preset"></a>JSON-Voreinstellung
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -1090,18 +1095,51 @@ Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokume
           ]
     }
 
-#### XML-Voreinstellung
+#### <a name="xml-preset"></a>XML-Voreinstellung
     <KeyFrameInterval>00:00:02</KeyFrameInterval>
     <StretchMode>AutoSize</StretchMode>
     <Condition>InsertBlackIfNoVideo</Condition>
 
-## Media Services-Lernpfade
+## <a name="a-idrotatevideoarotate-a-video"></a><a id="rotate_video"></a>Drehen eines Videos
+Der [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) unterstützt Drehungen in den Winkeln 0/90/180/270 Grad. Das Standardverhalten ist „Auto“. Dabei wird versucht, die Rotationsmetadaten in der eingehenden Videodatei zu erkennen und auszugleichen. Schließen Sie das folgende **Sources**-Element in einer der [hier](http://msdn.microsoft.com/library/azure/mt269960.aspx) definierten JSON-Voreinstellungen ein:
+
+### <a name="json-preset"></a>JSON-Voreinstellung
+    "Sources": [
+    {
+      "Streams": [],
+      "Filters": {
+        "Rotation": "90"
+      }
+    }
+    ],
+    "Codecs": [
+
+    ...
+### <a name="xml-preset"></a>XML-Voreinstellung
+    <Sources>
+           <Source>
+          <Streams />
+          <Filters>
+            <Rotation>90</Rotation>
+          </Filters>
+        </Source>
+    </Sources>
+
+In [diesem](https://msdn.microsoft.com/library/azure/mt269962.aspx#PreserveResolutionAfterRotation) Thema erhalten Sie weitere Informationen dazu, wie der Encoder die Breiten- und Höheneinstellungen in der Voreinstellung interpretiert, wenn die Rotationskompensierung ausgelöst wird.
+
+Mit dem Wert „0“ können Sie den Encoder anweisen, Rotationsmetadaten im Videoeingang zu ignorieren (falls vorhanden).
+
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

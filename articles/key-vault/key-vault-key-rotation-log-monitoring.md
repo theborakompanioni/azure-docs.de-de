@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
 translationtype: Human Translation
-ms.sourcegitcommit: 4115a3638519896c3710ddc33dd0caa2e8d9d720
-ms.openlocfilehash: 05e33c56e6aa6bedfa2e6b8ff18fe182d87ed80e
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: cc872e8d9bc0662f46d5f394f9c98885e34fe67a
 
 
 ---
@@ -416,7 +416,7 @@ An diesem Punkt ist die Funktion fertig. Wechseln Sie zurück zur Registerkarte 
 ### <a name="azure-logic-app"></a>Azure-Logik-App
 Als Nächstes müssen Sie eine Azure-Logik-App erstellen, die die Ereignisse verarbeitet, die die Funktion in die Service Bus-Warteschlange überträgt, den Inhalt analysiert und basierend auf einer erfüllten Bedingung eine E-Mail sendet.
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) über **Neu > Logik-App**.
+[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) über **Neu > Logik-App**.
 
 Sobald die Logik-App erstellt wurde, navigieren Sie zu ihr und wählen **Bearbeiten**aus. Wählen Sie im Logik-App-Editor **Service Bus-Warteschlange** aus, und geben Sie Ihre Service Bus-Anmeldeinformationen ein, um sie mit der Warteschlange zu verbinden.
 
@@ -440,6 +440,6 @@ An diesem Punkt haben Sie eine lückenlose Pipeline, die einmal pro Minute eine 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

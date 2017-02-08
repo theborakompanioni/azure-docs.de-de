@@ -1,12 +1,12 @@
 ---
 title: 'Schritt 1: Erstellen eines Machine Learning-Arbeitsbereichs | Microsoft Docs'
-description: 'Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 1: Erfahren Sie, wie Sie einen neuen Azure Machine Learning Studio-Arbeitsbereich einrichten.'
+description: "Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 1: Erfahren Sie, wie Sie einen neuen Azure Machine Learning Studio-Arbeitsbereich einrichten."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2016
 ms.author: garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4a2d71016eee5dfee1085be0380d79ba4a4f8d8f
+
 
 ---
-# Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Machine Learning-Arbeitsbereichs
+# <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Machine Learning-Arbeitsbereichs
 Dies ist der erste Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
 1. **Erstellen eines Machine Learning-Arbeitsbereichs**
@@ -29,11 +33,12 @@ Dies ist der erste Schritt der exemplarischen Vorgehensweise zum [Entwickeln ein
 - - -
 <!-- This needs to be updated to refer to the new way of creating workspaces in the Ibiza portal -->
 
-Um Machine Learning Studio verwenden zu können, benötigen Sie einen Microsoft Azure Machine Learning-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
+Um Machine Learning Studio verwenden zu können, benötigen Sie einen Microsoft Azure Machine Learning-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.  
 
-## Erstellen eines Arbeitsbereichs
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
-2. Klicken Sie im Azure-Dienstbereich auf **MACHINE LEARNING**. ![Arbeitsbereich erstellen][1]
+## <a name="to-create-a-workspace"></a>Erstellen eines Arbeitsbereichs
+1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
+2. Klicken Sie im Azure-Dienstbereich auf **MACHINE LEARNING**.  
+   ![Arbeitsbereich erstellen][1]
 3. Klicken Sie auf **ML-ARBEITSBEREICH ERSTELLEN**.
 4. Geben Sie auf der Seite **SCHNELLERFASSUNG** Ihre Arbeitsbereichsinformationen ein, und klicken Sie dann auf **ML-ARBEITSBEREICH ERSTELLEN**.
 
@@ -49,4 +54,8 @@ Nach dem Erstellen Ihres Machine Learning-Arbeitsbereichs wird dieser im klassis
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

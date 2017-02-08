@@ -1,28 +1,32 @@
 ---
-title: Erstellen eines benutzerdefinierten Vorlagenimages für Azure RemoteApp | Microsoft Docs
-description: Erfahren Sie, wie Sie ein benutzerdefiniertes Vorlagenimage für Azure RemoteApp erstellen. Sie können diese Vorlage entweder mit einer Hybrid- oder einer Cloudsammlung verwenden.
+title: "Erstellen eines benutzerdefinierten Vorlagenimages für Azure RemoteApp | Microsoft Docs"
+description: "Erfahren Sie, wie Sie ein benutzerdefiniertes Vorlagenimage für Azure RemoteApp erstellen. Sie können diese Vorlage entweder mit einer Hybrid- oder einer Cloudsammlung verwenden."
 services: remoteapp
-documentationcenter: ''
-author: lizap
+documentationcenter: 
+author: msmbaldwin
 manager: mbaldwin
-editor: ''
-
+editor: 
+ms.assetid: b9ec5b51-f7cd-470b-8545-d0fd714c5982
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e28f4004e3cafcfa09309ff0143c83af5fa5493a
+
 
 ---
-# Erstellen eines benutzerdefinierten Vorlagenimages für Azure RemoteApp
+# <a name="how-to-create-a-custom-template-image-for-azure-remoteapp"></a>Erstellen eines benutzerdefinierten Vorlagenimages für Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
-Azure RemoteApp verwendet ein Windows Server 2012 R2-Vorlagenimage, um alle Programme zu hosten, die Sie an die Benutzer freigeben möchten. Um ein benutzerdefiniertes RemoteApp-Vorlagenimage zu erstellen, beginnen Sie mit einem bestehenden Abbild oder erstellen Sie ein neues.
+Azure RemoteApp verwendet ein Windows Server 2012 R2-Vorlagenimage, um alle Programme zu hosten, die Sie an die Benutzer freigeben möchten. Um ein benutzerdefiniertes RemoteApp-Vorlagenimage zu erstellen, beginnen Sie mit einem bestehenden Abbild oder erstellen Sie ein neues. 
 
 > [!TIP]
 > Wussten Sie, dass Sie für eine Azure-VM ein Image erstellen können? Das stimmt. So wird der Zeitaufwand für das Importieren des Images reduziert. Die entsprechenden Schritte sind [hier](remoteapp-image-on-azurevm.md) angegeben.
@@ -31,8 +35,8 @@ Azure RemoteApp verwendet ein Windows Server 2012 R2-Vorlagenimage, um alle Prog
 
 Das Abbild, das für die Verwendung mit Azure RemoteApp hochgeladen werden soll, muss folgende Anforderungen erfüllen:
 
-* Die Größe des Abbilds sollte ein Vielfaches der Einheit MB (1.024 KB) betragen. Wenn Sie versuchen, ein Abbild hochzuladen, das kein exaktes Vielfaches ist, treten beim Upload Fehler auf.
-* Das Abbild darf nicht größer als 127 GB sein.
+* Die Größe des Abbilds sollte ein Vielfaches der Einheit MB (1.024 KB) betragen. Wenn Sie versuchen, ein Abbild hochzuladen, das kein exaktes Vielfaches ist, treten beim Upload Fehler auf.
+* Das Abbild darf nicht größer als 127 GB sein.
 * Es muss sich auf einer VHD-Datei befinden (VHDX-Dateien [Hyper-V Virtual Hard Drives] werden derzeit nicht unterstützt).
 * Die VHD darf kein virtueller Computer der 2. Generation sein.
 * Die VHD kann eine feste Größe haben oder dynamisch erweiterbar sein. Wir empfehlen eine dynamisch erweiterbare VHD, da das Hochladen dieser in Azure weniger Zeit in Anspruch nimmt.
@@ -49,20 +53,20 @@ Das Abbild, das für die Verwendung mit Azure RemoteApp hochgeladen werden soll,
 Bevor Sie mit der Erstellung des Dienstes beginnen, führen Sie Folgendes aus:
 
 * [Melden](https://azure.microsoft.com/services/remoteapp/) Sie sich für RemoteApp an.
-* Erstellen Sie ein Benutzerkonto in Active Directory, das als Konto für den RemoteApp-Dienst dient. Beschränken Sie die Berechtigungen für dieses Konto, sodass es nur Computer in die Domäne einbinden kann. Weitere Informationen finden Sie unter [Konfigurieren von Active Directory für Azure RemoteApp](remoteapp-ad.md).
+* Erstellen Sie ein Benutzerkonto in Active Directory, das als Konto für den RemoteApp-Dienst dient. Beschränken Sie die Berechtigungen für dieses Konto, sodass es nur Computer in die Domäne einbinden kann. Weitere Informationen finden Sie unter [Konfigurieren von Active Directory für Azure RemoteApp](remoteapp-ad.md) .
 * Sammeln Sie Informationen zu Ihrem lokalen Netzwerk: IP-Adressdaten und Details zum VPN-Gerät.
-* Installieren Sie das [Azure PowerShell](../powershell-install-configure.md)-Modul.
+* Installieren Sie das [Azure PowerShell](/powershell/azureps-cmdlets-docs) -Modul.
 * Sammeln Sie Informationen zu den Benutzern, denen Sie Zugriff gewähren möchten. Dies können Informationen zu Microsoft-Konten oder Active Directory-Geschäftskonten für Benutzer sein.
 
-## Erstellen eines Vorlagenimage.
+## <a name="create-a-template-image"></a>Erstellen eines Vorlagenimage.
 Grundsätzlich müssen diese Schritte ausgeführt werden, um ein neues Vorlagenimage zu erstellen:
 
-1. Suchen Sie nach einem DVD- oder ISO-Image mit dem Windows Server 2012 R2 Update.
+1. Suchen Sie nach einem DVD- oder ISO-Image mit dem Windows Server 2012 R2 Update.
 2. Erstellen Sie eine VHD-Datei.
 3. Installieren Sie Windows Server 2012 R2
 4. Installieren Sie die RDSH-Rolle (Remote Desktop Session Host) und das Desktopdarstellung-Feature.
 5. Installieren Sie weitere, von den Anwendungen benötigte Features.
-6. Installieren und konfigurieren Sie die Anwendungen. Um die gemeinsame Nutzung von Apps zu vereinfachen, fügen Sie alle Apps oder Programme, die Sie freigeben möchten, in das **Startmenü** des Images hinzu, insbesondere in „**%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start \\Programme“.
+6. Installieren und konfigurieren Sie die Anwendungen. Um die gemeinsame Nutzung von Apps zu vereinfachen, fügen Sie alle Apps oder Programme, die Sie freigeben möchten, in das Startmenü des Images hinzu, insbesondere in ****%systemdrive%\ProgramData\Microsoft\Windows\Start \Programme**.
 7. Führen Sie weitere, von den Anwendungen benötigte Windows-Konfigurationen aus.
 8. Deaktivieren Sie Encrypting File System (EFS).
 9. **ERFORDERLICH:** Wechseln Sie zu Windows Update, und installieren Sie alle wichtigen Updates.
@@ -70,7 +74,7 @@ Grundsätzlich müssen diese Schritte ausgeführt werden, um ein neues Vorlageni
 
 Dies sind die einzelnen Schritte zum Erstellen eines neuen Abbilds:
 
-1. Suchen Sie nach einem DVD- oder ISO-Image mit dem Windows Server 2012 R2 Update.
+1. Suchen Sie nach einem DVD- oder ISO-Image mit dem Windows Server 2012 R2 Update.
 2. Erstellen Sie mithilfe der Datenträgerverwaltung eine VHD-Datei.
    
    1. Starten Sie die Datenträgerverwaltung (diskmgmt.msc).
@@ -87,16 +91,16 @@ Dies sind die einzelnen Schritte zum Erstellen eines neuen Abbilds:
 3. Installieren von Windows Server 2012 R2:
    
    1. Erstellen Sie einen neuen virtuellen Computer. Verwenden Sie den Assistenten für neue virtuelle Computer im Hyper-V Manager oder Hyper-V für Clients.
-      1. Wählen Sie auf der Seite "Generation angeben" die Option **Generation 1** aus.
-      2. Wählen Sie auf der Seite "Virtuelle Festplatte anschließen" **Vorhandene virtuelle Festplatte verwenden** und gehen Sie zu der im vorhergehenden Schritt erstellten VHD.
-      3. Wählen Sie auf der Seite "Installationsoptionen" **Betriebssystem von Start-CD/DVD\_ROM installieren** und wählen Sie dann den Ort der Windows Server 2012 R2-Installationsdatenträger.
+      1. Wählen Sie auf der Seite „Generation angeben“ die Option **Generation 1** aus.
+      2. Wählen Sie auf der Seite "Virtuelle Festplatte anschließen" **Vorhandene virtuelle Festplatte verwenden**und gehen Sie zu der im vorhergehenden Schritt erstellten VHD.
+      3. Wählen Sie auf der Seite „Installationsoptionen“ **Betriebssystem von Start-CD/DVD_ROM installieren** aus, und wählen Sie dann den Speicherort der Windows Server 2012 R2-Installationsmedien aus.
       4. Wählen Sie im Assistenten die weiteren Optionen, die für die Installation von Windows und der Anwendungen erforderlich sind. Beenden Sie den Assistenten.
-   2. Bearbeiten Sie nach Abschluss des Assistenten die Einstellungen des virtuellen Computers, und nehmen Sie alle für die Installation von Windows und Ihrer Programme erforderlichen Änderungen vor, z. B. bezüglich der Zahl der virtuellen Prozessoren. Klicken Sie dann auf **OK**.
-   3. Stellen Sie eine Verbindung mit dem virtuellen Computer her, und installieren Sie Windows Server 2012 R2.
+   2. Bearbeiten Sie nach Abschluss des Assistenten die Einstellungen des virtuellen Computers, und nehmen Sie alle für die Installation von Windows und Ihrer Programme erforderlichen Änderungen vor, z. B. bezüglich der Zahl der virtuellen Prozessoren. Klicken Sie dann auf **OK**.
+   3. Stellen Sie eine Verbindung mit dem virtuellen Computer her, und installieren Sie Windows Server 2012 R2.
 4. Installieren Sie die RDSH-Rolle (Remote Desktop Session Host) und das Desktopdarstellung-Feature:
    1. Starten Sie den Server-Manager.
    2. Klicken Sie auf dem Willkommensbildschirm oder im Menü **Verwalten** auf **Rollen und Features hinzufügen**.
-   3. Klicken Sie auf der Seite "Vorbemerkungen" auf **Weiter**.
+   3. Klicken Sie auf der Seite "Vorbemerkungen" auf **Weiter** .
    4. Wählen Sie **Rollenbasierte oder featurebasierte Installation** und klicken Sie auf **Weiter**.
    5. Wählen Sie den lokalen Computer aus der Liste und klicken Sie auf **Weiter**.
    6. Wählen Sie **Remotedesktopdienste** und klicken Sie dann auf **Weiter**.
@@ -105,7 +109,7 @@ Dies sind die einzelnen Schritte zum Erstellen eines neuen Abbilds:
    9. Klicken Sie auf der Seite "Remotedesktopdienste" auf **Weiter**.
    10. Klicken Sie auf **Remotedesktop-Sitzungshost**.
    11. Klicken Sie auf **Features hinzufügen** und anschließend auf **Weiter**.
-   12. Wählen Sie auf der Seite "Installationsauswahl bestätigen" falls erforderlich **Zielserver automatisch neu starten**, und klicken Sie bei Anzeige der Neustartwarnung auf **Ja**.
+   12. Wählen Sie auf der Seite "Installationsauswahl bestätigen" bei Bedarf **Zielserver automatisch neu starten aus**, und klicken Sie bei Anzeige der Neustartwarnung auf **Ja**.
    13. Klicken Sie auf **Installieren**. Der Computer wird neu gestartet.
 5. Installieren Sie die für Ihre Anwendungen benötigten zusätzlichen Features, wie z. B. .NET Framework 3.5. Führen Sie dazu den Assistenten zum Hinzufügen von Rollen und Features aus.
 6. Installieren und konfigurieren Sie die Programme und Anwendungen, die Sie über RemoteApp veröffentlichen möchten.
@@ -113,7 +117,7 @@ Dies sind die einzelnen Schritte zum Erstellen eines neuen Abbilds:
 > [!IMPORTANT]
 > Installieren Sie die RDSH-Rolle, bevor Sie Anwendungen installieren. So wird sichergestellt, dass Probleme mit der Anwendungskompatibilität vor dem Hochladen des Images in RemoteApp erkannt werden.
 > 
-> Stellen Sie sicher, dass für alle Benutzer eine Verknüpfung zu Ihrer Anwendung (**.lnk**) im **Startmenü** erscheint („%systemdrive%\\ProgramData\\Microsoft\\Windows\\Startmenue\\Programme“). Stellen Sie außerdem sicher, dass das im **Startmenü** angezeigte Symbol demjenigen entspricht, das den Benutzern angezeigt werden soll. Wenn dies nicht der Fall ist, ändern Sie es. (Sie *müssen* die Anwendung nicht zum Startmenü hinzufügen, vereinfachen damit jedoch die Veröffentlichung der Anwendung in RemoteApp. Andernfalls müssen Sie den Installationspfad für die Anwendung bereitstellen, wenn Sie die Anwendung veröffentlichen.)
+> Stellen Sie sicher, dass für alle Benutzer eine Verknüpfung zu Ihrer Anwendung (**.lnk**) im Startmenü erscheint (**%systemdrive%\ProgramData\Microsoft\Windows\Startmenue\Programme**). Stellen Sie außerdem sicher, dass das im **Startmenü** angezeigte Symbol demjenigen entspricht, das den Benutzern angezeigt werden soll. Wenn dies nicht der Fall ist, ändern Sie es. (Sie *müssen* die Anwendung nicht zum Startmenü hinzufügen, vereinfachen damit jedoch die Veröffentlichung der Anwendung in RemoteApp. Andernfalls müssen Sie den Installationspfad für die Anwendung bereitstellen, wenn Sie die Anwendung veröffentlichen.)
 > 
 > 
 
@@ -125,18 +129,23 @@ Dies sind die einzelnen Schritte zum Erstellen eines neuen Abbilds:
    Alternativ können Sie in der Registrierung den folgenden DWORD-Wert festlegen oder hinzufügen:
    
      HKLM\System\CurrentControlSet\Control\FileSystem\NtfsDisableEncryption = 1
-3. Wenn Sie das Abbild in einem virtuellen Azure-Computer erstellen, müssen Sie die Datei **\\%windir%\\Panther\\Unattend.xml** umbenennen, da sie anderenfalls das Uploadskript blockiert, das in einem der folgenden Schritte verwendet wird. Benennen Sie diese Datei in "Unattend.old" um, damit sie ggf. darauf zurückgreifen können, falls Sie die Bereitstellung rückgängig machen müssen.
+3. Wenn Sie das Abbild in einem virtuellen Azure-Computer erstellen, müssen Sie die Datei **\%\%windir%\Panther\Unattend.xml** umbenennen, da sie anderenfalls das Uploadskript blockiert, das in einem der folgenden Schritte verwendet wird. Benennen Sie diese Datei in "Unattend.old" um, damit sie ggf. darauf zurückgreifen können, falls Sie die Bereitstellung rückgängig machen müssen.
 4. Wechseln Sie zu Windows Update, und installieren Sie alle wichtigen Updates. Möglicherweise müssen Sie Windows Update mehrmals ausführen, um alle Updates zu erhalten. (Manchmal ist für ein von Ihnen installiertes Update direkt ein weiteres Update erforderlich.)
 5. Bereiten Sie das Abbild mit SYSPREP vor. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten den folgenden Befehl aus:
    
-   **C:\\Windows\\System32\\sysprep\\sysprep.exe /generalize /oobe /shutdown**
+   **C:\Windows\System32\sysprep\sysprep.exe /generalize /oobe /shutdown**
    
-   **Hinweis:** Verwenden Sie nicht den Schalter **/mode:vm** für den SYSPREP-Befehls, auch wenn es sich um einen virtuellen Computer handelt.
+   **Hinweis**: Verwenden Sie nicht den Schalter **/mode:vm** für den SYSPREP-Befehls, auch wenn es sich um einen virtuellen Computer handelt.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Nach dem Erstellen des benutzerdefinierten Vorlagenimages müssen Sie dieses Image in die RemoteApp-Sammlung hochladen. Informationen zum Erstellen Ihrer Sammlung finden Sie in den folgenden Artikeln:
 
 * [Erstellen einer Hybrid-Sammlung von RemoteApp](remoteapp-create-hybrid-deployment.md)
 * [Erstellen einer Cloud-Sammlung von RemoteApp](remoteapp-create-cloud-deployment.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

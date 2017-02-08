@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/22/2016
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 357e149121d4cd9b56dd17e7a7429b11e4f192db
-ms.openlocfilehash: f30e31a11ee08601b1c1d8db84031c8db5a15a71
+ms.sourcegitcommit: e651c6f081c14044602c1dc8f8e6d34ffddbf4ea
+ms.openlocfilehash: 7ce4151189eb6aaba3509878fb2e18d04f0c3e59
 
 
 ---
@@ -58,18 +58,20 @@ Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknü
 ### <a name="example"></a>Beispiel
 Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsight verknüpften Dienst. Der Data Factory-Dienst erstellt bei der Verarbeitung eines Datenslices automatisch einen **Linux-basierten** HDInsight-Cluster. 
 
-    {
-        "name": "HDInsightOnDemandLinkedService",
-        "properties": {
-            "type": "HDInsightOnDemand",
-            "typeProperties": {
-                "clusterSize": 4,
-                "timeToLive": "00:05:00",
-                "osType": "linux",
-                "linkedServiceName": "StorageLinkedService"
-            }
+```json
+{
+    "name": "HDInsightOnDemandLinkedService",
+    "properties": {
+        "type": "HDInsightOnDemand",
+        "typeProperties": {
+            "clusterSize": 4,
+            "timeToLive": "00:05:00",
+            "osType": "linux",
+            "linkedServiceName": "StorageLinkedService"
         }
     }
+}
+```
 
 Legen Sie zum Verwenden eines Windows-basierten HDInsight-Clusters **osType** auf **windows** fest, oder verwenden Sie die Eigenschaft nicht, wenn der Standardwert „windows“ ist.  
 
@@ -93,10 +95,13 @@ Legen Sie zum Verwenden eines Windows-basierten HDInsight-Clusters **osType** au
 | hcatalogLinkedServiceName |Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mit der Azure SQL-Datenbank als Metastore erstellt. |Nein |
 
 #### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames (JSON-Beispiel)
-    "additionalLinkedServiceNames": [
-        "otherLinkedServiceName1",
-        "otherLinkedServiceName2"
-      ]
+
+```json
+"additionalLinkedServiceNames": [
+    "otherLinkedServiceName1",
+    "otherLinkedServiceName2"
+  ]
+```
 
 ### <a name="advanced-properties"></a>Erweiterte Eigenschaften
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften festlegen.
@@ -112,39 +117,42 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 | stormConfiguration |Gibt die Storm-Konfigurationsparameter (storm-site.xml) für den HDInsight-Cluster an. |Nein |
 | yarnConfiguration |Gibt die Yarn-Konfigurationsparameter (yarn-site.xml) für den HDInsight-Cluster an. |Nein |
 
-#### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Beispiel: Konfiguration eines bedarfsgesteuerten HDInsight-Clusters mit erweiterten Eigenschaften
-    {
-      "name": " HDInsightOnDemandLinkedService",
-      "properties": {
-        "type": "HDInsightOnDemand",
-        "typeProperties": {
-          "clusterSize": 16,
-          "timeToLive": "01:30:00",
-          "linkedServiceName": "adfods1",
-          "coreConfiguration": {
-            "templeton.mapper.memory.mb": "5000"
-          },
-          "hiveConfiguration": {
-            "templeton.mapper.memory.mb": "5000"
-          },
-          "mapReduceConfiguration": {
-            "mapreduce.reduce.java.opts": "-Xmx4000m",
-            "mapreduce.map.java.opts": "-Xmx4000m",
-            "mapreduce.map.memory.mb": "5000",
-            "mapreduce.reduce.memory.mb": "5000",
-            "mapreduce.job.reduce.slowstart.completedmaps": "0.8"
-          },
-          "yarnConfiguration": {
-            "yarn.app.mapreduce.am.resource.mb": "5000",
-            "mapreduce.map.memory.mb": "5000"
-          },
-          "additionalLinkedServiceNames": [
-            "datafeeds",
-            "adobedatafeed"
-          ]
-        }
-      }
+#### <a name="example--on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Beispiel: Konfiguration eines bedarfsgesteuerten HDInsight-Clusters mit erweiterten Eigenschaften
+
+```json
+{
+  "name": " HDInsightOnDemandLinkedService",
+  "properties": {
+    "type": "HDInsightOnDemand",
+    "typeProperties": {
+      "clusterSize": 16,
+      "timeToLive": "01:30:00",
+      "linkedServiceName": "adfods1",
+      "coreConfiguration": {
+        "templeton.mapper.memory.mb": "5000"
+      },
+      "hiveConfiguration": {
+        "templeton.mapper.memory.mb": "5000"
+      },
+      "mapReduceConfiguration": {
+        "mapreduce.reduce.java.opts": "-Xmx4000m",
+        "mapreduce.map.java.opts": "-Xmx4000m",
+        "mapreduce.map.memory.mb": "5000",
+        "mapreduce.reduce.memory.mb": "5000",
+        "mapreduce.job.reduce.slowstart.completedmaps": "0.8"
+      },
+      "yarnConfiguration": {
+        "yarn.app.mapreduce.am.resource.mb": "5000",
+        "mapreduce.map.memory.mb": "5000"
+      },
+      "additionalLinkedServiceNames": [
+        "datafeeds",
+        "adobedatafeed"
+      ]
     }
+  }
+}
+```
 
 ### <a name="node-sizes"></a>Knotengrößen
 Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden Eigenschaften angeben: 
@@ -156,12 +164,14 @@ Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden
 | zookeeperNodeSize |Gibt die Größe des Zoo Keeper-Knotens an. Der Standardwert ist „Standard_D3“. |Nein |
 
 #### <a name="specifying-node-sizes"></a>Knotengrößen angeben
-Lesen Sie den Artikel [Größen von virtuellen Computern](../virtual-machines/virtual-machines-linux-sizes.md#size-tables?toc=%2fazure%2fdata-factory%2ftoc.json), um Näheres zu Zeichenfolgenwerten zu erfahren, die Sie für die oben aufgeführten Eigenschaften angeben müssen. Die Werte müssen den **CMDLETs und APIs** entsprechen, auf die im Artikel verwiesen wird. Wie Sie in diesem Artikel sehen können, hat der Datenknoten „Large“ (Standard) 7 GB Arbeitsspeicher, was für Ihr Szenario möglicherweise nicht ausreichend ist. 
+Lesen Sie den Artikel [Größen von virtuellen Computern](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fdata-factory%2ftoc.json#size-tables), um Näheres zu Zeichenfolgenwerten zu erfahren, die Sie für die oben aufgeführten Eigenschaften angeben müssen. Die Werte müssen den **CMDLETs und APIs** entsprechen, auf die im Artikel verwiesen wird. Wie Sie in diesem Artikel sehen können, hat der Datenknoten „Large“ (Standard) 7 GB Arbeitsspeicher, was für Ihr Szenario möglicherweise nicht ausreichend ist. 
 
 Wenn Sie Hauptknoten und Workerknoten der Größe D4 erstellen möchten, müssen Sie **Standard_D4** als Wert für die Eigenschaften headNodeSize und dataNodeSize angeben. 
 
-    "headNodeSize": "Standard_D4",    
-    "dataNodeSize": "Standard_D4",
+```json
+"headNodeSize": "Standard_D4",    
+"dataNodeSize": "Standard_D4",
+```
 
 Wenn Sie einen falschen Wert für diese Eigenschaften angeben, erhalten Sie möglicherweise den folgenden **Fehler:** Fehler beim Erstellen des Clusters. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: "Fehler". Nachricht: "PreClusterCreationValidationFailure" Wenn Sie diesen Fehler erhalten, achten Sie darauf, dass Sie den Namen der **CMDLETs und APIs** aus der Tabelle im oben genannten Artikel verwenden.  
 
@@ -178,18 +188,21 @@ Diese Art von Konfiguration wird für die folgenden Compute-Umgebungen unterstü
 Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigenen HDInsight-Cluster für Data  Factory zu registrieren.
 
 ### <a name="example"></a>Beispiel
-    {
-      "name": "HDInsightLinkedService",
-      "properties": {
-        "type": "HDInsight",
-        "typeProperties": {
-          "clusterUri": " https://<hdinsightclustername>.azurehdinsight.net/",
-          "userName": "admin",
-          "password": "<password>",
-          "linkedServiceName": "MyHDInsightStoragelinkedService"
-        }
-      }
+
+```json
+{
+  "name": "HDInsightLinkedService",
+  "properties": {
+    "type": "HDInsight",
+    "typeProperties": {
+      "clusterUri": " https://<hdinsightclustername>.azurehdinsight.net/",
+      "userName": "admin",
+      "password": "<password>",
+      "linkedServiceName": "MyHDInsightStoragelinkedService"
     }
+  }
+}
+```
 
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft | Beschreibung | Erforderlich |
@@ -210,27 +223,34 @@ Lesen Sie die folgenden Themen, wenn Sie noch nicht mit dem Azure Batch-Dienst v
 * [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) , um einen Azure Batch-Pool zu erstellen.
 
 ### <a name="example"></a>Beispiel
-    {
-      "name": "AzureBatchLinkedService",
-      "properties": {
-        "type": "AzureBatch",
-        "typeProperties": {
-          "accountName": "<Azure Batch account name>",
-          "accessKey": "<Azure Batch account key>",
-          "poolName": "<Azure Batch pool name>",
-          "linkedServiceName": "<Specify associated storage linked service reference here>"
-        }
-      }
+
+```json
+{
+  "name": "AzureBatchLinkedService",
+  "properties": {
+    "type": "AzureBatch",
+    "typeProperties": {
+      "accountName": "<Azure Batch account name>",
+      "accessKey": "<Azure Batch account key>",
+      "poolName": "<Azure Batch pool name>",
+      "linkedServiceName": "<Specify associated storage linked service reference here>"
     }
+  }
+}
+```
 
 Erweitern Sie den Namen Ihres Batch-Kontos für die Eigenschaft **accountName** um „**.<Name der Region**“. Beispiel:
 
-            "accountName": "mybatchaccount.eastus"
+```json
+"accountName": "mybatchaccount.eastus"
+```
 
 Außerdem kann auch der batchUri-Endpunkt angegeben werden, wie nachfolgend gezeigt.  
 
-            "accountName": "adfteam",
-            "batchUri": "https://eastus.batch.azure.com",
+```json
+"accountName": "adfteam",
+"batchUri": "https://eastus.batch.azure.com",
+```
 
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft | Beschreibung | Erforderlich |
@@ -245,16 +265,19 @@ Außerdem kann auch der batchUri-Endpunkt angegeben werden, wie nachfolgend geze
 Sie können einen verknüpften Azure Machine Learning-Dienst erstellen, um einen Machine Learning-Batchbewertungsendpunkt für Data Factory zu registrieren.
 
 ### <a name="example"></a>Beispiel
-    {
-      "name": "AzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch scoring endpoint]/jobs",
-          "apiKey": "<apikey>"
-        }
-      }
+
+```json
+{
+  "name": "AzureMLLinkedService",
+  "properties": {
+    "type": "AzureML",
+    "typeProperties": {
+      "mlEndpoint": "https://[batch scoring endpoint]/jobs",
+      "apiKey": "<apikey>"
     }
+  }
+}
+```
 
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft | Beschreibung | Erforderlich |
@@ -268,21 +291,22 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 Das folgende Beispiel enthält eine JSON-Definition für einen mit Azure Data Lake Analytics verknüpften Dienst.
 
-    {
-        "name": "AzureDataLakeAnalyticsLinkedService",
-        "properties": {
-            "type": "AzureDataLakeAnalytics",
-            "typeProperties": {
-                "accountName": "adftestaccount",
-                "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
-                "authorization": "<authcode>",
-                "sessionId": "<session ID>",
-                "subscriptionId": "<subscription id>",
-                "resourceGroupName": "<resource group name>"
-            }
+```json
+{
+    "name": "AzureDataLakeAnalyticsLinkedService",
+    "properties": {
+        "type": "AzureDataLakeAnalytics",
+        "typeProperties": {
+            "accountName": "adftestaccount",
+            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+            "authorization": "<authcode>",
+            "sessionId": "<session ID>",
+            "subscriptionId": "<subscription id>",
+            "resourceGroupName": "<resource group name>"
         }
     }
-
+}
+```
 
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der JSON-Definition verwendet werden.
 
@@ -308,28 +332,31 @@ Um diesen Fehler zu vermeiden/beheben, müssen Sie sich durch Klicken auf die Sc
 ### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>So generieren Sie programmgesteuert Werte für „sessionId“ und „authorization“
 Der folgende Code generiert Werte für **sessionId** und **authorization**.  
 
-    if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
-        linkedService.Properties.TypeProperties is AzureDataLakeAnalyticsLinkedService)
+```CSharp
+
+if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
+    linkedService.Properties.TypeProperties is AzureDataLakeAnalyticsLinkedService)
+{
+    AuthorizationSessionGetResponse authorizationSession = this.Client.OAuth.Get(this.ResourceGroupName, this.DataFactoryName, linkedService.Properties.Type);
+
+    WindowsFormsWebAuthenticationDialog authenticationDialog = new WindowsFormsWebAuthenticationDialog(null);
+    string authorization = authenticationDialog.AuthenticateAAD(authorizationSession.AuthorizationSession.Endpoint, new Uri("urn:ietf:wg:oauth:2.0:oob"));
+
+    AzureDataLakeStoreLinkedService azureDataLakeStoreProperties = linkedService.Properties.TypeProperties as AzureDataLakeStoreLinkedService;
+    if (azureDataLakeStoreProperties != null)
     {
-        AuthorizationSessionGetResponse authorizationSession = this.Client.OAuth.Get(this.ResourceGroupName, this.DataFactoryName, linkedService.Properties.Type);
-
-        WindowsFormsWebAuthenticationDialog authenticationDialog = new WindowsFormsWebAuthenticationDialog(null);
-        string authorization = authenticationDialog.AuthenticateAAD(authorizationSession.AuthorizationSession.Endpoint, new Uri("urn:ietf:wg:oauth:2.0:oob"));
-
-        AzureDataLakeStoreLinkedService azureDataLakeStoreProperties = linkedService.Properties.TypeProperties as AzureDataLakeStoreLinkedService;
-        if (azureDataLakeStoreProperties != null)
-        {
-            azureDataLakeStoreProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
-            azureDataLakeStoreProperties.Authorization = authorization;
-        }
-
-        AzureDataLakeAnalyticsLinkedService azureDataLakeAnalyticsProperties = linkedService.Properties.TypeProperties as AzureDataLakeAnalyticsLinkedService;
-        if (azureDataLakeAnalyticsProperties != null)
-        {
-            azureDataLakeAnalyticsProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
-            azureDataLakeAnalyticsProperties.Authorization = authorization;
-        }
+        azureDataLakeStoreProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
+        azureDataLakeStoreProperties.Authorization = authorization;
     }
+
+    AzureDataLakeAnalyticsLinkedService azureDataLakeAnalyticsProperties = linkedService.Properties.TypeProperties as AzureDataLakeAnalyticsLinkedService;
+    if (azureDataLakeAnalyticsProperties != null)
+    {
+        azureDataLakeAnalyticsProperties.SessionId = authorizationSession.AuthorizationSession.SessionId;
+        azureDataLakeAnalyticsProperties.Authorization = authorization;
+    }
+}
+```
 
 Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) und [AuthorizationSessionGetResponse-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Sie müssen für die WindowsFormsWebAuthenticationDialog-Klasse einen Verweis hinzufügen auf: „Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll“. 
 
@@ -345,6 +372,6 @@ Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

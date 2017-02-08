@@ -1,38 +1,42 @@
 ---
-title: Untersuchen von Daten im Azure-Blob-Speicher mit Pandas | Microsoft Docs
+title: Untersuchen von Daten im Azure-Blobspeicher mit Pandas | Microsoft Docs
 description: Untersuchen von Daten, die in einem Azure-Blob-Container gespeichert sind, mithilfe von Pandas
 services: machine-learning,storage
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: feaa9e54-01e0-48c8-a917-1eba0f9d9ec7
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 12/09/2016
 ms.author: bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b663a9df7e8cb692f4156f2609fb515265526868
+
 
 ---
-# Untersuchen von Daten im Azure-Blob-Speicher mit Pandas
-In diesem Dokument wird erläutert, wie Sie in einem Azure-Blob-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets untersuchen.
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Untersuchen von Daten im Azure-Blob-Speicher mit Pandas
+In diesem Dokument wird erläutert, wie Sie in einem Azure-Blob-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/) -Python-Pakets untersuchen.
 
 Das folgende **Menü** enthält Links zu den Themen, in denen die Verwendung dieser Tools zum Untersuchen von Daten aus verschiedenen Speicherumgebungen beschrieben wird. Dieser Task ist ein Schritt im [Data Science-Prozess]().
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../storage/storage-create-storage-account.md)
-* Die Daten wurden in einem Azure-Blob-Speicherkonto gespeichert. Wenn Sie Anweisungen benötigen, lesen Sie [Verschieben von Daten in und aus Azure Storage](../storage/storage-moving-data.md).
+* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
+* Die Daten wurden in einem Azure-Blob-Speicherkonto gespeichert. Anweisungen finden Sie unter [Verschieben von Daten in und aus Azure Storage](../storage/storage-moving-data.md)
 
-## Laden der Daten in ein Pandas-DataFrame
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Laden der Daten in ein Pandas-DataFrame
 Damit ein Dataset untersucht und bearbeitet werden kann, muss es zuerst aus der Blobquelle in eine lokale Datei heruntergeladen werden, die anschließend in ein Pandas-DataFrame geladen werden kann. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:
 
-1. Laden Sie die Daten mithilfe des Blob-Diensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im folgenden Code durch die für Ihre Umgebung geltenden Werte:
+1. Laden Sie die Daten mithilfe des Blob-Diensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im folgenden Code durch die für Ihre Umgebung geltenden Werte: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -56,10 +60,10 @@ Damit ein Dataset untersucht und bearbeitet werden kann, muss es zuerst aus der 
 
 Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generieren.
 
-## <a name="blob-dataexploration"></a>Beispiele für das Untersuchen von Daten mithilfe von Pandas
+## <a name="a-nameblob-dataexplorationaexamples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Beispiele für das Untersuchen von Daten mithilfe von Pandas
 Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilfe von Pandas:
 
-1. Untersuchen der **Anzahl von Zeilen und Spalten**
+1. Untersuchen der **Anzahl von Zeilen und Spalten** 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 2. **Überprüfen** der ersten oder letzten **Zeilen** im folgenden Dataset:
@@ -83,13 +87,12 @@ Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilf
         print miss_num
 7. Löschen **fehlender Werte** in einer bestimmten Spalte aus den Daten:
    
-     dataframe_blobdata_noNA = dataframe_blobdata.dropna()
-     dataframe_blobdata_noNA.shape
+     dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape
    
    Alternatives Ersetzen der fehlenden Werte mit der "mode"-Funktion:
    
      dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. Erstellen eines **Histogramms** mithilfe der Variablenanzahl von Gruppen zur Darstellung der Verteilung einer Variablen:
+8. Erstellen eines **Histogramms** mithilfe der Variablenanzahl von Gruppen zur Darstellung der Verteilung einer Variablen:    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
@@ -102,4 +105,9 @@ Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilf
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

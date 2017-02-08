@@ -2,11 +2,11 @@
 title: Debuggen Ihres Modells in Azure Machine Learning | Microsoft Docs
 description: Erfahren Sie, wie Sie Ihr Modell in Azure Machine Learning debuggen.
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,17 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2016
 ms.author: bradsev;garye
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4f2b0dc14f887d9b3a9bffaa579a56954ba32204
+
 
 ---
-# Debuggen Ihres Modells in Azure Machine Learning
+# <a name="debug-your-model-in-azure-machine-learning"></a>Debuggen Ihres Modells in Azure Machine Learning
 In diesem Artikel wird erläutert, wie Sie Ihre Modelle in Microsoft Azure Machine Learning debuggen. Er behandelt insbesondere die möglichen Gründe, warum bei der Ausführung eines Modells die folgenden zwei Fehlerszenarios auftreten können:
 
-* Das [Train Model][train-model]-Modul löst einen Fehler aus.
-* Das [Score Model][score-model]-Modul liefert falsche Ergebnisse.
+* Das [Train Model][train-model]-Modul löst einen Fehler aus. 
+* Das [Score Model][score-model]-Modul liefert falsche Ergebnisse. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## "Train Model"-Modul löst einen Fehler aus
+## <a name="train-model-module-throws-an-error"></a>"Train Model"-Modul löst einen Fehler aus
 ![Bild1](./media/machine-learning-debug-models/train_model-1.png)
 
 Für das [Train Model][train-model]-Modul werden die folgenden 2 Eingaben erwartet:
@@ -34,12 +38,12 @@ Für das [Train Model][train-model]-Modul werden die folgenden 2 Eingaben erwart
 
 Dieses Modul löst in den folgenden Fällen einen Fehler aus:
 
-1. Die Spalte "Label" wurde falsch angegeben, da entweder als Bezeichner (Label) mehrere Spalten ausgewählt sind oder ein falscher Spaltenindex ausgewählt ist. Der zweite Fall gilt beispielsweise, wenn der Spaltenindex "30" für ein Eingabe-Dataset verwendet wurde, das nur 25 Spalten umfasst.
-2. Das Dataset enthält keine Spalten mit Funktionen. Wenn das Eingabe-Dataset beispielsweise nur 1 Spalte umfasst, die als Spalte "Label" gekennzeichnet ist, sind keine Funktionen vorhanden, mit denen das Modell erstellt werden kann. In diesem Fall löst das [Train Model][train-model]-Modul einen Fehler aus.
+1. Die Spalte "Label" wurde falsch angegeben, da entweder als Bezeichner (Label) mehrere Spalten ausgewählt sind oder ein falscher Spaltenindex ausgewählt ist. Der zweite Fall gilt beispielsweise, wenn der Spaltenindex "30" für ein Eingabe-Dataset verwendet wurde, das nur 25 Spalten umfasst.
+2. Das Dataset enthält keine Spalten mit Funktionen. Wenn das Eingabe-Dataset beispielsweise nur 1 Spalte umfasst, die als Spalte "Label" gekennzeichnet ist, sind keine Funktionen vorhanden, mit denen das Modell erstellt werden kann. In diesem Fall löst das [Train Model][train-model]-Modul einen Fehler aus.
 3. Das Eingabe-Dataset (Funktionen oder Bezeichner) enthält "Infinity" als Wert.
 
-## "Score Model"-Modul liefert falsche Ergebnisse
-![image2](./media/machine-learning-debug-models/train_test-2.png)
+## <a name="score-model-module-does-not-produce-correct-results"></a>"Score Model"-Modul liefert falsche Ergebnisse
+![Bild2](./media/machine-learning-debug-models/train_test-2.png)
 
 In einem typischen Trainings- und Testdiagramm für das beaufsichtigte Lernen teilt das [Split Data][split]-Modul das ursprüngliche Dataset in zwei Teile auf: in einen Teil, der zum Trainieren des Modells verwendet wird, und in einen zweiten Teil, mit dem die Leistung des trainierten Modells für Daten bewertet wird, für die es nicht trainiert wurde. Mit dem trainierten Modell werden dann die Testdaten bewertet und anschließend die Ergebnisse evaluiert, um die Genauigkeit des Modells zu bestimmen.
 
@@ -50,11 +54,11 @@ Für das [Score Model][score-model]-Modul sind zwei Eingaben erforderlich:
 
 Es kann vorkommen, dass das [Score Model][score-model]-Modul falsche Ergebnisse liefert, auch wenn das Experiment erfolgreich ausgeführt wird. Dies kann durch verschiedene Szenarios verursacht werden:
 
-1. Wenn der angegebene Bezeichner kategorisch ist und ein Regressionsmodell für die Daten trainiert wird, gibt das [Score Model][score-model]-Modul eine falsche Ausgabe aus. Dies ist darauf zurückzuführen, dass für die Regression eine stetige Antwortvariable erforderlich ist. In diesem Fall empfiehlt sich die Verwendung eines Klassifizierungsmodells.
+1. Wenn der angegebene Bezeichner kategorisch ist und ein Regressionsmodell für die Daten trainiert wird, gibt das [Score Model][score-model]-Modul eine falsche Ausgabe aus. Dies ist darauf zurückzuführen, dass für die Regression eine stetige Antwortvariable erforderlich ist. In diesem Fall empfiehlt sich die Verwendung eines Klassifizierungsmodells. 
 2. In ähnlicher Weise liefert ein Klassifizierungsmodell möglicherweise unerwünschte Ergebnisse, wenn es für ein Dataset mit Gleitkommazahlen in der Spalte "Label" trainiert wird. Dies liegt daran, dass für die Klassifizierung eine diskrete Antwortvariable erforderlich ist, die nur Werte zulässt, die innerhalb einer begrenzten und normalerweise eher kleinen Gruppe von Klassen liegen.
 3. Wenn das Dataset für die Bewertung nicht alle Funktionen enthält, mit denen das Modell trainiert wird, gibt das [Score Model][score-model]-Modul einen Fehler aus.
 4. Das [Score Model][score-model]-Modul gibt keine Ergebnisse für eine Zeile im Dataset für die Bewertung aus, die keinen Wert oder einen unendlichen Wert für die zugehörigen Funktionen enthält.
-5. Das [Score Model][score-model]-Modul generiert möglicherweise identische Ausgaben für alle Zeilen im Dataset für die Bewertung. Dies ist z. B. möglich, wenn bei der Klassifizierung mithilfe von Decision Forests die ausgewählte minimale Anzahl der Stichproben pro Leaf-Knoten höher ist als die Anzahl der verfügbaren Trainingsbeispiele.
+5. Das [Score Model][score-model]-Modul generiert möglicherweise identische Ausgaben für alle Zeilen im Dataset für die Bewertung. Dies ist z. B. möglich, wenn bei der Klassifizierung mithilfe von Decision Forests die ausgewählte minimale Anzahl der Stichproben pro Leaf-Knoten höher ist als die Anzahl der verfügbaren Trainingsbeispiele.
 
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
@@ -62,4 +66,8 @@ Es kann vorkommen, dass das [Score Model][score-model]-Modul falsche Ergebnisse 
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

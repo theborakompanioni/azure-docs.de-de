@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
+ms.date: 12/06/2016
 ms.author: dkshir;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 913726bb57f727bd62cdee0aee16bc886b38884f
+ms.sourcegitcommit: 6db229794c90e985de834bd3bfb6e0b030de2df5
+ms.openlocfilehash: 0cb59a2e94a9c985cb56d9dd20c05e2e22a45151
 
 
 ---
@@ -26,7 +26,7 @@ Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebi
 Dieser Artikel führt Sie durch die Schritte zum lokalen Erstellen eines Clusters mithilfe des eigenständigen Pakets für Service Fabric, aber es kann auch problemlos für jede andere Umgebung angepasst werden, z.B. andere Cloudanbieter.
 
 > [!NOTE]
-> Dieses eigenständige Paket für Windows Server kann Features enthalten, die sich derzeit in der Vorschauphase befinden und deshalb nicht für die kommerzielle Nutzung unterstützt werden. Die Liste der Funktionen, die sich in der Vorschau befinden, finden Sie unter „Features in der Vorschauphase in diesem Paket“. Sie können jetzt auch [eine Kopie des Endbenutzer-Lizenzvertrags herunterladen](http://go.microsoft.com/fwlink/?LinkID=733084).
+> Dieses eigenständige Windows Server-Paket ist im Handel erhältlich und für Produktionsbereitstellungen geeignet. Das Paket enthält unter Umständen neue Service Fabric-Features, die sich in der Vorschauphase befinden. Scrollen Sie nach unten zum Abschnitt „Features in der Vorschauphase in diesem Paket“, um zur Liste mit den Vorschaufeatures zu gelangen. Sie können jetzt [eine Kopie des Endbenutzer-Lizenzvertrags herunterladen](http://go.microsoft.com/fwlink/?LinkID=733084).
 > 
 > 
 
@@ -35,6 +35,7 @@ Dieser Artikel führt Sie durch die Schritte zum lokalen Erstellen eines Cluster
 ## <a name="get-support-for-the-service-fabric-standalone-package"></a>Support für das eigenständige Service Fabric-Paket
 * Befragen Sie im [Azure Service Fabric-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) die Community zum eigenständigen Service Fabric-Paket für Windows Server.
 * Erstellen Sie ein Ticket für [Professional Support für Service Fabric](http://support.microsoft.com/oas/default.aspx?prid=16146).  Weitere Informationen zu Professional Support von Microsoft finden Sie [hier](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+* Unterstützung für dieses Paket wird auch im Rahmen von [Microsoft Premier Support](https://support.microsoft.com/en-us/premier) bereitgestellt. 
 
 <a id="downloadpackage"></a>
 
@@ -127,7 +128,7 @@ Der Cluster wird in der Datei „ClusterConfig.json“ beschrieben. Ausführlich
 | **Konfigurationseinstellung** | **Beschreibung** |
 | --- | --- |
 | **NodeTypes** |Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale: <br> **Name**: Dies ist der Knotentypname. <br>**Endpunktports**: Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Elementen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem (virtuellen) Computer verwendet wird. <br> **Platzierungseigenschaften**: Eigenschaften für diesen Knotentyp, die Sie später als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften wären etwa die Angabe, ob der Knoten über eine Festplatte oder Grafikkarte verfügt, die Anzahl von Spindeln des Festplattenlaufwerks, die Anzahl von Kernen und andere physische Eigenschaften. <br> **Kapazitäten**: Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Diese Kapazitäten werden zur Laufzeit verwendet, um sicherzustellen, dass Dienste, die bestimmte Ressourcenmengen beanspruchen, auf Knoten mit den verfügbaren Ressourcen in der benötigten Menge platziert werden.<br>**IsPrimary**: Wenn Sie mehr als ein NodeType-Element definiert haben, sollten Sie sicherstellen, dass nur ein Element mit dem Wert *TRUE* als primäres Element festgelegt ist. Auf diesem Element werden die Systemdienste ausgeführt. Alle anderen Knotentypen sollten auf den Wert *FALSE* festgelegt werden. |
-| **Nodes** |Dies sind die Details für jeden Knoten, der Teil des Clusters ist (Knotentyp, Knotenname, IP-Adresse, Fehlerdomäne und Upgradedomäne des Knotens). Die Computer, aus denen Sie den Cluster erstellen möchten, müssen mit ihren IP-Adressen hier aufgeführt werden. <br>  Wenn Sie die gleiche IP-Adresse für alle Knoten verwenden, wird ein Cluster mit einem Computer erstellt, den Sie für Tests verwenden können. Cluster mit einem Computer dürfen nicht zur Bereitstellung von Produktionsworkloads verwendet werden. |
+| **Nodes** |Dies sind die Details für jeden Knoten, der Teil des Clusters ist (Knotentyp, Knotenname, IP-Adresse, Fehlerdomäne und Upgradedomäne des Knotens). Die Computer, aus denen Sie den Cluster erstellen möchten, müssen mit ihren IP-Adressen hier aufgeführt werden. <br> Wenn Sie die gleiche IP-Adresse für alle Knoten verwenden, wird ein Cluster mit einem Computer erstellt, den Sie für Tests verwenden können. Cluster mit einem Computer dürfen nicht zur Bereitstellung von Produktionsworkloads verwendet werden. |
 
 ### <a name="step-2-run-the-testconfiguration-script"></a>Schritt 2: Ausführen des TestConfiguration-Skripts
 Das TestConfiguration-Skript testet Ihre Infrastruktur auf der Grundlage von „cluster.json“, um unter anderem zu überprüfen, ob die erforderlichen Berechtigungen zugewiesen sind, die Computer miteinander verbunden sind, und andere Attribute definiert sind, damit die Bereitstellung erfolgreich durchgeführt werden kann. Es ist im Grunde ein einfacher Best Practices Analyzer. Das Tool wird nach und nach mit zusätzlichen Überprüfungen erweitert, um es robuster zu machen.
@@ -241,23 +242,25 @@ Fügen Sie zum Deaktivieren der Telemetriedaten dem *properties*-Element Ihrer C
 ## <a name="preview-features-included-in-this-package"></a>Features in der Vorschauphase in diesem Paket
 Keine
 
+
 > [!NOTE]
-> Mit der neuen [GA-Version des eigenständigen Clusters für Windows Server (Version 5.3.204.x)](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/) können Sie ein Upgrade des Clusters auf zukünftige Versionen manuell oder automatisch durchführen. Da dieses Feature nicht in den Vorschauversionen verfügbar ist, müssen Sie einen Cluster mithilfe der GA-Version erstellen und Ihre Daten und Anwendungen aus der Vorabversion des Clusters migrieren. Halten Sie sich für mehr Details zu diesem Feature auf dem Laufenden.
+> Ab der neuen [GA-Version des eigenständigen Clusters für Windows Server (Version 5.3.204.x)](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/) können Sie Ihren Cluster manuell oder automatisch auf zukünftige Versionen upgraden. Ausführliche Informationen finden Sie im Dokument [Aktualisieren des eigenständigen Service Fabric-Clusters unter Windows Server](service-fabric-cluster-upgrade-windows-server.md).
 > 
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md)
 * [Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [Aktualisieren des eigenständigen Service Fabric-Clusters unter Windows Server](service-fabric-cluster-upgrade-windows-server.md)
 * [Erstellen eines eigenständigen Service Fabric-Clusters mit drei Knoten und Azure-VMs mit Windows Server](service-fabric-cluster-creation-with-windows-azure-vms.md)
 * [Schützen eines eigenständigen Windows-Clusters mithilfe von Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md)
 * [Schützen des eigenständigen Windows-Clusters mit Zertifikaten](service-fabric-windows-cluster-x509-security.md)
 
 <!--Image references-->
-[Vertrauenswürdige Zonen]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
+[Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

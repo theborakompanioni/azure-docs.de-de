@@ -1,78 +1,116 @@
 ---
-title: Azure Government documentation | Microsoft Docs
-description: This provides a comparision of features and guidance on developing applications for Azure Government
+title: "Azure Government-Überwachung und -Verwaltung | Microsoft Docs"
+description: "Diese bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government."
 services: Azure-Government
 cloud: gov
-documentationcenter: ''
+documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: ''
-
+editor: 
+ms.assetid: 4b7720c1-699e-432b-9246-6e49fb77f497
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/12/2016
+ms.date: 10/31/2016
 ms.author: ryansoc
+translationtype: Human Translation
+ms.sourcegitcommit: 722c53f819126791073575da04eded2ec5465764
+ms.openlocfilehash: 9d4ba4eff1c9768a11c18cbf531b252d767bc9f2
+
 
 ---
-# <a name="azure-government-monitoring-and-management"></a>Azure Government Monitoring and Management
+# <a name="azure-government-monitoring--management"></a>Azure Government-Überwachung und -Verwaltung
+In diesem Artikel werden die Varianten und Überlegungen zu Überwachungs- und Verwaltungsdiensten für die Azure Government-Umgebung beschrieben.
+
+## <a name="automation"></a>Automation
+Automation ist allgemein in Azure Government verfügbar.
+
+### <a name="variations"></a>Variationen
+Die folgenden Automation-Features sind aktuell nicht in Azure Government verfügbar.
+
+* Erstellen von Speicherdienstprinzip-Anmeldeinformationen zur Authentifizierung
+
+Weitere Informationen finden Sie in der [öffentlichen Dokumentation zu Automation](../automation/automation-intro.md).
+
+## <a name="backup"></a>Sicherung
+Backup ist in Azure Government allgemein verfügbar.
+
+Weitere Informationen finden Sie unter [Azure Government Backup](documentation-government-services-backup.md).
+
+### <a name="variations"></a>Variationen
+Die folgenden Backup-Features sind aktuell nicht in Azure Government verfügbar:
+
+* Azure Resource Manager-Tresore
+* Verwaltung mit dem Azure-Portal (das klassische Azure-Portal wird unterstützt)
+
 ## <a name="log-analytics"></a>Log Analytics
-Log Analytics is generally available in Azure Government.
+Log Analytics ist allgemein in Azure Government verfügbar.
 
-### <a name="variations---differences-from-public-azure"></a>Variations - Differences from public Azure
-The following Log Analytics features and solutions are not currently available in Azure Government. This list is updated when the status of features / solutions changes.
+### <a name="variations"></a>Variationen
+Die folgenden Log Analytics-Features und -Lösungen sind aktuell nicht in Azure Government verfügbar.
 
-* Solutions that are in preview in public Azure, including:
-  * Network Monitoring solution
-  * Azure Networking Analytics solution
-  * Office 365 solution
-  * Windows 10 Upgrade Analytics solution
-  * Application Dependency Monitoring
-  * Application Insights
-  * Azure Activity Logs
-  * Azure Automation Analytics
-  * Key Vault Analytics
-* Solutions and features that require Azure Automation, including:
-  * Update Management
-  * Change Management
-  * Alerts that trigger an Azure Automation runbook
-* Solutions and features that require updates to on-premises software, including
-  * Integration with System Center Operations Manager 2016
-  * Computers Groups from System Center Configuration Manager
-  * Surface Hub solution
-* Features that are in preview in public Azure, including
-  * Export of data to PowerBI
-* Azure portal integration
-  * Selecting Azure storage accounts to monitor must be done through PowerShell or Resource Manager templates
-  * Selecting virtual machines to enable the Log Analytics agent must be done through PowerShell or Resource Manager templates
-  * Azure metrics and Azure diagnostics
-* OMS Mobile applications
-* OMS Linux Agent VM Extension
-* Usage data
+* Lösungen, die als Vorschau in Microsoft Azure enthalten sind, einschließlich:
+  * Netzwerküberwachungslösung
+  * Anwendungsabhängigkeitsüberwachungs-Lösung
+  * Office 365-Lösung
+  * Windows 10 Upgrade Analytics-Lösung
+  * Application Insights-Lösung
+  * Azure Networking Analytics-Lösung
+  * Azure Automation Analytics-Lösung
+  * Key Vault Analytics-Lösung
+* Lösungen und Funktionen, die Updates von lokaler Software erfordern, einschließlich:
+  * Integration in System Center Operations Manager 2016 (frühere Versionen von Operations Manager werden unterstützt)
+  * Computergruppen aus „System Center Configuration Manager“
+  * Surface Hub-Lösung
+* Funktionen, die als Vorschau im öffentlichen Azure enthalten sind, einschließlich:
+  * Exportieren von Daten nach Power BI
+* Azure-Metriken und Azure-Diagnose
+* Operations Management Suite - mobile Anwendungen
 
-The following Log Analytics features have different behavior in Azure Government:
+Die URLs für Log Analytics unterscheiden sich in Azure Government:
 
-* The Windows agent must be downloaded from the [Log Analytics portal](https://oms.microsoft.us) for Azure Government.
-* Uploading data using the Data Collector API requires the use of the Azure Government URL, https://*workspaceId*.ods.opinsights.azure.us where *workspaceId* is the Workspace Id from the OMS portal.
-* To connect your System Center Operations Manager management server to Log Analytics, you need to download and import updated Management Packs.
-  1. Download and save the [updated management packs](http://go.microsoft.com/fwlink/?LinkId=828749)
-  2. Unzip the file you have downloaded
-  3. Import the management packs into Operations Manager. For information about how to import a management pack from a disk, see the [How to Import an Operations Manager Management Pack](http://technet.microsoft.com/library/hh212691.aspx) topic on the Microsoft TechNet website.
-  4. To connect Operations Manager to Log Analytics, follow the steps in [Connect Operations Manager to Log Analytics](../log-analytics/log-analytics-om-agents.md)
+| Azure – Öffentlich | Azure Government | Hinweise |
+| --- | --- | --- |
+| mms.microsoft.com |oms.microsoft.us |Log Analytics-Portal |
+| *workspaceId*.ods.opinsights.azure.com |*workspaceId*.ods.opinsights.azure.us |[Data collector API (Datensammler-API)](../log-analytics/log-analytics-data-collector-api.md) |
+| \*.ods.opinsights.azure.com |\*.ods.opinsights.azure.us |Agent-Kommunikation – [Konfigurieren von Firewalleinstellungen](../log-analytics/log-analytics-proxy-firewall.md) |
+| \*.oms.opinsights.azure.com |\*.oms.opinsights.azure.us |Agent-Kommunikation – [Konfigurieren von Firewalleinstellungen](../log-analytics/log-analytics-proxy-firewall.md) |
+| \*.blob.core.windows.net |\*.blob.core.usgovcloudapi.net |Agent-Kommunikation – [Konfigurieren von Firewalleinstellungen](../log-analytics/log-analytics-proxy-firewall.md) |
 
-### <a name="frequently-asked-questions"></a>Frequently asked questions
-* Can I migrate data from Log Analytics in public Azure to Azure Government?
-  * No. It is not possible to move data or your workspace from public Azure to Azure Government.
-* Can I switch between public Azure and Azure Government workspaces from the OMS Log Analytics portal?
-  * No. The portals for public Azure and Azure Government are separate and do not share information.
+Die folgenden Log Analytics-Features verhalten sich in Azure Government anders:
 
-For more information, see [Log Analytics public documentation](../log-analytics/log-analytics-overview.md).
+* Der Windows-Agent muss für Azure Government aus dem [Log Analytics-Portal](https://oms.microsoft.us) heruntergeladen werden.
+* Zum Verbinden Ihres System Center Operations Manager-Verwaltungsservers mit Log Analytics müssen Sie aktualisierte Management Packs herunterladen und importieren.
+  1. Laden Sie die [aktualisierten Management Packs](http://go.microsoft.com/fwlink/?LinkId=828749) herunter, und speichern Sie sie.
+  2. Entzippen Sie die heruntergeladene Datei.
+  3. Importieren Sie die Management Packs in Operations Manager. Informationen zum Importieren eines Management Packs von einem Datenträger finden Sie auf der TechNet-Website im Thema [Importieren eines Management Packs von Operations Manager](http://technet.microsoft.com/library/hh212691.aspx).
+  4. Zum Verbinden von Operations Manager mit Log Analytics führen Sie die Schritte in [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../log-analytics/log-analytics-om-agents.md) aus.
 
-## <a name="next-steps"></a>Next Steps
-For supplemental information and updates, subscribe to the <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government Blog. </a>
+### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+* Kann ich Daten aus Log Analytics in Microsoft Azure zu Azure Government migrieren?
+  * Nein. Es ist nicht möglich, Daten oder Ihren Arbeitsbereich aus Microsoft Azure in Azure Government zu verschieben.
+* Kann ich zwischen Microsoft Azure- und Azure Government-Arbeitsbereichen aus dem Operations Management Suite Log Analytics-Portal wechseln?
+  * Nein. Die Portale für Microsoft Azure und Azure Government sind getrennt, und nutzen Informationen nicht gemeinsam.
 
-<!--HONumber=Oct16_HO2-->
+Weitere Informationen finden Sie in der [öffentlichen Log Analytics-Dokumentation](../log-analytics/log-analytics-overview.md).
+
+## <a name="site-recovery"></a>Site Recovery
+Site Recovery ist in Azure Government allgemein verfügbar.
+
+Weitere Informationen finden Sie in der [öffentlichen Site Recovery-Dokumentation](../site-recovery/site-recovery-overview.md).
+
+### <a name="variations"></a>Variationen
+Die folgenden Site Recovery-Features sind aktuell nicht in Azure Government verfügbar:
+
+* Azure Resource Manager-Site Recovery-Tresore
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

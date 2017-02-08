@@ -3,6 +3,6 @@
 * Als Nächstes erstellen Sie zum [Vorbereiten der Konfiguration von Pushbenachrichtigungen](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6) ein SSL-Zertifikat für die „Entwicklung“ oder für die „Verteilung“.
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

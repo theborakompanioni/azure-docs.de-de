@@ -20,7 +20,7 @@ ms.openlocfilehash: b7e47a469127d2a06aa1be07f46ef04a2c23d351
 
 
 ---
-# <a name="expressroute-prerequisites-checklist"></a>Voraussetzungen und Checkliste für ExpressRoute
+# <a name="expressroute-prerequisites--checklist"></a>Voraussetzungen und Checkliste für ExpressRoute
 Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRoute müssen Sie sicherstellen, dass die in den Abschnitten unten genannten Voraussetzungen erfüllt sind.
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]

@@ -1,12 +1,12 @@
 ---
 title: Erweitertes Untersuchen von Daten und Modellierung mit Spark | Microsoft Docs
-description: Verwenden Sie HDInsight Spark zum Untersuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression mithilfe der Kreuzvalidierung und Hyperparameteroptimierung.
+description: "Verwenden Sie HDInsight Spark zum Untersuchen von Daten und Trainieren von Modellen für die binäre Klassifizierung und Regression mithilfe der Kreuzvalidierung und Hyperparameteroptimierung."
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: f90d9a80-4eaf-437b-a914-23514390cd60
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c844eeb0e01422dac468484a8458f243a2afb87d
+
 
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
@@ -51,7 +55,7 @@ Sie benötigen ein Azure-Konto und HDInsight Spark. Zum Durcharbeiten dieser exe
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup:-storage-locations,-libraries,-and-the-preset-spark-context"></a>Setup: Speicherorte, Bibliotheken und vorab festgelegter Spark-Kontext
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Setup: Speicherorte, Bibliotheken und vorab festgelegter Spark-Kontext
 Spark kann aus dem Azure Storage-Blob (auch bekannt als WASB) lesen und darin schreiben. Es können also alle Ihre vorhandenen Daten mithilfe von Spark verarbeitet und die Ergebnisse wieder im WASB gespeichert werden.
 
 Um Modelle oder Dateien im WASB zu speichern, muss der Pfad korrekt angegeben werden. Auf den an den Spark-Cluster angefügten Standardcontainer können Sie mit einem Pfad verweisen, der mit „wasb:///“ beginnt. Auf andere Speicherorte wird mit „wasb://“ verwiesen.
@@ -109,7 +113,7 @@ Der PySpark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefinie
 
 Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen vordefinierten „Magics“ finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
-## <a name="data-ingestion-from-public-blob:"></a>Datenerfassung über das öffentliche Blob:
+## <a name="data-ingestion-from-public-blob"></a>Datenerfassung über das öffentliche Blob:
 Der erste Schritt im Data Science-Prozess ist das Erfassen der zu analysierenden Daten aus Quellen in der Umgebung, die Sie zum Durchsuchen und Modellieren von Daten nutzen. In dieser exemplarischen Vorgehensweise ist Spark diese Umgebung. Dieser Abschnitt enthält den Code zur Ausführung einer Reihe von Aufgaben:
 
 * Erfassen des zu modellierenden Datenbeispiels
@@ -180,13 +184,13 @@ Hier ist der Code für die Datenerfassung.
 
 Time taken to execute above cell: 276.62 seconds
 
-## <a name="data-exploration-&-visualization"></a>Durchsuchen und Visualisierung von Daten
+## <a name="data-exploration--visualization"></a>Durchsuchen und Visualisierung von Daten
 Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Data Science-Prozess darin, durch Durchsuchen und Visualisieren eine tiefer gehende Einsicht in die Daten zu erhalten. In diesem Abschnitt untersuchen wir die Taxidaten mit SQL-Abfragen und zeichnen Diagramme der Zielvariablen und künftigen Merkmale zur Sichtprüfung. Insbesondere stellen wir die Häufigkeit der Fahrgastzahlen bei Taxifahrten, die Häufigkeit der Trinkgeldbeträge und die Variation der Trinkgelder nach Zahlungsbetrag und -art im Diagramm dar.
 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Zeichnen eines Histogramms der Häufigkeit der Fahrgastzahlen im Taxifahrtenbeispiel
 In diesem Code und den nachfolgenden Codeausschnitten werden SQL-Magic-Befehle verwendet, um das Beispiel abzufragen, und lokale Magic-Befehle, um die Daten in einem Diagramm darzustellen.
 
-* **SQL magic (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den sqlContext. Mit dem Argument (-o VARIABLE_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
+* **SQL magic (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für „sqlContext“. Mit dem Argument (-o VARIABLE_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
 * Der Befehl **`%%local` magic** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dies ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
 
 Die Ausgabe wird automatisch visualisiert, nachdem Sie den Code ausgeführt haben.
@@ -236,7 +240,7 @@ Hier ist der Code zum Plotten der Fahrten nach der Fahrgastanzahl angegeben:
 
 Sie können zwischen verschiedenen Arten von Visualisierungen auswählen (Tabelle, Kreis, Linie, Fläche oder Balken), indem Sie im Notebook die Menüschaltflächen unter **Typ** verwenden. Hier ist das Balkendiagramm dargestellt.
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts."></a>Zeichnen eines Histogramms des Trinkgeldbetrags und der Variation des Trinkgeldbetrags nach Anzahl der Fahrgäste und Höhe des Fahrpreises
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Zeichnen eines Histogramms des Trinkgeldbetrags und der Variation des Trinkgeldbetrags nach Anzahl der Fahrgäste und Höhe des Fahrpreises
 Verwenden Sie eine SQL-Abfrage, um Beispieldaten zu erstellen.
 
     # SQL SQUERY
@@ -291,7 +295,7 @@ In dieser Codezelle wird die SQL-Abfrage verwendet, um drei Diagramme der Daten 
 
 ![Trinkgeldbetrag nach Höhe des Fahrpreises](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering,-transformation-and-data-preparation-for-modeling"></a>Feature Engineering, Transformation und Datenvorbereitung für die Modellierung
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Feature Engineering, Transformation und Datenvorbereitung für die Modellierung
 Dieser Abschnitt enthält den Code für die Prozeduren zum Vorbereiten von Daten für die Verwendung in der ML-Modellierung und deren Beschreibung. Hier erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
 
 * Erstellen eines neuen Features durch Diskretisieren von Stunden in Verkehrszeitbuckets
@@ -791,7 +795,7 @@ Der Code in diesem Abschnitt zeigt, wie das logistische Regressionsmodell für d
 
 Time taken to execute above cell: 34.57 seconds
 
-### <a name="use-mllib's-crossvalidator-pipeline-function-with-logistic-regression-(elastic-regression)-model"></a>Verwenden der CrossValidator-Pipeline-Funktion von MLlib mit dem logistischen Regressionsmodell (elastische Regression)
+### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>Verwenden der CrossValidator-Pipeline-Funktion von MLlib mit dem logistischen Regressionsmodell (elastische Regression)
 Der Code in diesem Abschnitt zeigt, wie ein logistisches Regressionsmodell, das im Dataset der Taxifahrten und Fahrpreise in NYC vorhersagt, ob ein Trinkgeld für eine Fahrt gezahlt wird, mit [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) trainiert, evaluiert und gespeichert werden kann. Das Modell wird mithilfe der Kreuzvalidierung und des Hyperparameter-Sweeping trainiert. Dies wurde mit der MLlib CrossValidator-Pipeline-Funktion für die Kreuzvalidierung mit Hyperparameter-Sweeping implementiert.   
 
 > [!NOTE]
@@ -978,7 +982,7 @@ Area under ROC = 0.985336538462
 
 Time taken to execute above cell: 28.13 seconds
 
-## <a name="predict-tip-amount-with-regression-models-(not-using-cv)"></a>Vorhersage von Trinkgeldbeträgen mit Regressionsmodellen (ohne Kreuzvalidierung)
+## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>Vorhersage von Trinkgeldbeträgen mit Regressionsmodellen (ohne Kreuzvalidierung)
 Dieser Abschnitt zeigt Ihnen die Verwendung von drei Modellen für die Regressionsaufgabe der Vorhersage des Trinkgeldbetrags, der für eine Taxifahrt gezahlt wird, auf der Basis anderer Trinkgeldfeatures. Die präsentierten Modelle sind:
 
 * Normalisierte lineare Regression
@@ -1191,7 +1195,7 @@ Hier ist der Code zum Plotten der Daten mit dem Jupyter-Server angegeben.
 
 ![Actual-vs-predicted-tip-amounts](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="appendix:-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>Anhang: Zusätzliche Regressionsaufgaben mithilfe der Kreuzvalidierung mit Parameter-Sweeping
+## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>Anhang: Zusätzliche Regressionsaufgaben mithilfe der Kreuzvalidierung mit Parameter-Sweeping
 Dieser Anhang enthält Code, der zeigt, wie die Kreuzvalidierung mithilfe von Elastic Net für die lineare Regression und mit Parameter-Sweeping mithilfe von benutzerdefiniertem Code für die Regression der Random Forest verwendet wird.
 
 ### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>Kreuzvalidierung mithilfe von Elastic Net für die lineare Regression
@@ -1428,11 +1432,14 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="what's-next?"></a>Wie geht es weiter?
+## <a name="whats-next"></a>Wie geht es weiter?
 Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt haben, können Sie jetzt lernen, wie diese Modelle bewertet und evaluiert werden.
 
 **Modellnutzung:** Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 12/1/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: b1369c742c0ee1eac7638ca20598060c8542c75f
+ms.sourcegitcommit: 638e3e59f91202d55347c830542801ccead1b90f
+ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Verwalten des StorSimple Virtual Array mithilfe des StorSimple Geräte-Manager-Diensts
@@ -41,11 +41,11 @@ Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er st
 
 #### <a name="to-connect-to-the-service"></a>So stellen Sie eine Verbindung mit dem Dienst her
 1. Wechseln Sie zu [https://ms.portal.azure.com](https://ms.portal.azure.com).
-2. Melden Sie sich mit den Anmeldeinformationen Ihres Microsoft-Kontos beim klassischen Microsoft Azure-Portal (rechts oben) an.
-3. Führen Sie im linken Navigationsbereich einen Bildlauf nach unten durch, um auf den StorSimple-Geräte-Manager-Dienst zuzugreifen.
+2. Melden Sie sich mit den Anmeldeinformationen Ihres Microsoft-Kontos beim Microsoft Azure-Portal (rechts oben) an.
+3. Navigieren Sie zu „Durchsuchen“ > „Filter“ unter „StorSimple-Geräte-Manager“, um alle Geräte-Manager in einem bestimmten Abonnement anzuzeigen.
 
 ## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Durchführen von Verwaltungsaufgaben
-Die folgende Tabelle zeigt eine Zusammenfassung der allgemeinen Verwaltungsaufgaben und komplexen Workflows, die auf der Benutzeroberfläche des StorSimple-Geräte-Manager-Diensts ausgeführt werden können. Diese Aufgaben sind nach der Benutzeroberflächenseite strukturiert, auf der sie jeweils initiiert werden.
+Die folgende Tabelle enthält eine Zusammenfassung aller allgemeinen Verwaltungsaufgaben und komplexen Workflows, die in der Benutzeroberfläche des Übersichtsblatts für den StorSimple-Geräte-Manager-Dienst ausgeführt werden können. Diese Aufgaben sind nach den Blättern organisiert, auf denen sie jeweils initiiert werden.
 
 Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den einzelnen Workflows zu erhalten.
 
@@ -53,11 +53,11 @@ Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den ei
 | Gewünschte Aktion | Verfahren |
 | --- | --- | --- |
 | Dienst erstellen</br>Löschen von Diensten</br>Abrufen des Dienstregistrierungsschlüssels</br>Dienstregistrierungsschlüssel erneut generieren |[Bereitstellen des StorSimple-Geräte-Manager-Diensts](storsimple-virtual-array-manage-service.md) |
-| Ändern des Dienstdaten-Verschlüsselungsschlüssels</br>Anzeigen der Aktivitätsprotokolle |[Verwenden der StorSimple-Dienstübersicht](storsimple-virtual-array-service-summary.md) |
+| Anzeigen der Aktivitätsprotokolle |[Verwenden der StorSimple-Dienstübersicht](storsimple-virtual-array-service-summary.md) |
 | Deaktivieren eines Virtual Arrays</br>Löschen eines Virtual Arrays |[Deaktivieren oder Löschen eines Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md) |
-| Notfallwiederherstellung und Gerätefailover</br>Failovervoraussetzungen</br>Durchführen eines Failovers auf ein virtuelles Gerät</br>Business Continuity Disaster Recovery (BCDR)</br>Fehler während der Notfallwiederherstellung |[Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md) |
+| Notfallwiederherstellung und Gerätefailover</br>Failovervoraussetzungen</br>Business Continuity Disaster Recovery (BCDR)</br>Fehler während der Notfallwiederherstellung |[Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md) |
 | Sichern von Freigaben und Volumes</br>Erstellen einer manuellen Sicherung</br>Ändern des Sicherungszeitplans</br>Anzeigen von vorhandenen Backups |[Sichern des StorSimple Virtual Array](storsimple-virtual-array-backup.md) |
-| Wiederherstellen von Freigaben aus einem Sicherungssatz</br>Wiederherstellen von Volumes aus einem Sicherungssatz</br>Wiederherstellung auf Elementebene (nur Dateiserver) |[Wiederherstellen aus einer Sicherung des StorSimple Virtual Array](storsimple-virtual-array-clone.md) |
+| Klonen von Freigaben aus einem Sicherungssatz</br>Klonen von Volumes aus einem Sicherungssatz</br>Wiederherstellung auf Elementebene (nur Dateiserver) |[Klonen aus einer Sicherung des StorSimple Virtual Array](storsimple-virtual-array-clone.md) |
 | Informationen zu Speicherkonten</br>Hinzufügen von Speicherkonten</br>Bearbeiten eines Speicherkontos</br>Löschen eines Speicherkontos |[Verwalten von Speicherkonten für das StorSimple Virtual Array](storsimple-virtual-array-manage-storage-accounts.md) |
 | Informationen zu Access Control-Datensätzen</br>Hinzufügen oder Ändern von Access Control-Datensätzen </br>Löschen von Access Control-Datensätzen |[Verwalten von Access Control-Datensätzen für das StorSimple Virtual Array](storsimple-virtual-array-manage-acrs.md) |
 | Anzeigen von Auftragsdetails |[Verwalten von StorSimple Virtual Array-Aufträgen](storsimple-virtual-array-manage-jobs.md) |
@@ -80,6 +80,6 @@ Informationen zur Webbenutzeroberfläche und ihrer Verwendung finden Sie unter [
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,19 +1,23 @@
 ---
 title: Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen | Microsoft Docs
-description: Hier erfahren Sie, wie Sie ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
+description: Erfahren Sie, wie Sie ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Azure Machine Learning verwendet.
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: raymondlaghaeian
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8544f04360c44d54b9c3e69448b6d5b29826f06c
+
 
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen
@@ -21,12 +25,12 @@ In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie einen Azure Machin
 
 Nachdem Sie das Modell neu trainiert haben, veranschaulichen die folgenden exemplarischen Vorgehensweisen das Aktualisieren des Modells in Ihrem Vorhersagewebdienst:
 
-* Wenn Sie im Machine Learning Web Services-Portal einen klassischen Webdienst bereitgestellt haben, siehe [Erneutes Trainieren eines klassischen Webdiensts](machine-learning-retrain-a-classic-web-service.md). 
-* Wenn Sie einen neuen Webdienst bereitgestellt haben, siehe [Erneutes Trainieren eines neuen Webdiensts mithilfe der Cmdlets für die Verwaltung von Machine Learning](machine-learning-retrain-new-web-service-using-powershell.md).
+* Wenn Sie im Machine Learning-Webdienstportal einen klassischen Webdienst bereitgestellt haben, lesen Sie [Erneutes Trainieren eines klassischen Webdiensts](machine-learning-retrain-a-classic-web-service.md). 
+* Wenn Sie einen neuen Webdienst bereitgestellt haben, lesen Sie [Erneutes Trainieren eines neuen Webdiensts mithilfe der Cmdlets für die Verwaltung von Machine Learning](machine-learning-retrain-new-web-service-using-powershell.md).
 
 Eine Übersicht über den Prozess zum erneuten Trainieren finden Sie unter [Erneutes Trainieren eines Machine Learning-Modells](machine-learning-retrain-machine-learning-model.md).
 
-Wenn Sie mit Ihrem vorhandenen neuen auf Azure Resource Manager basierenden Webdienst beginnen möchten, siehe [Erneutes Trainieren eines vorhandenen Vorhersagewebdiensts](machine-learning-retrain-existing-resource-manager-based-web-service.md).
+Wenn Sie mit Ihrem vorhandenen neuen auf Azure Resource Manager basierenden Webdienst beginnen möchten, lesen Sie [Erneutes Trainieren eines vorhandenen Vorhersagewebdiensts](machine-learning-retrain-existing-resource-manager-based-web-service.md).
 
 ## <a name="create-a-training-experiment"></a>Erstellen eines Trainingsexperiments
 In diesem Beispiel verwenden Sie „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ aus den Microsoft Azure Machine Learning-Beispielen. 
@@ -53,12 +57,12 @@ Erstellen Sie als Nächstes ein Vorhersageexperiment.
 3. Klicken Sie nach der Ausführung des Experiments auf **Deploy Web Service [Classic]** oder auf **Deploy Web Service [New]**.
 
 ## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>Bereitstellen des Trainingsexperiments als Trainingswebdienst
-Um das trainierte Modell erneut zu trainieren, müssen Sie das erstellte Trainingsexperiment als Webdienst für erneutes Training bereitstellen. Dieser Webdienst benötigt ein *Web Service Output*-Moduls, das mit dem *[Train Model][train-model]*-Modul verbunden sein muss, um neue trainierte Modelle erzeugen zu können.
+Um das trainierte Modell erneut zu trainieren, müssen Sie das erstellte Trainingsexperiment als Webdienst für erneutes Training bereitstellen. Dieser Webdienst benötigt ein mit dem Modul *[Train Model][train-model]* verbundenes *Webdienst-Ausgabemodul*, um neue trainierte Modelle erzeugen zu können.
 
 1. Um zum Trainingsexperiment zurückzukehren, klicken Sie im linken Bereich auf das Symbol für Experimente, und klicken Sie dann auf das Experiment namens „Census Model“.  
-2. Geben Sie im Suchfeld „Search Experiment Items“ (Experimentelemente suchen) den Suchbegriff „Webdienst“ ein. 
+2. Geben Sie im Suchfeld „Search Experiment Items“ den Suchbegriff „Webdienst“ ein. 
 3. Ziehen Sie ein *Web Service Input*-Modul in den Experimentbereich, und stellen Sie eine Verbindung zwischen der Ausgabe und dem *Clean Missing Data*-Modul her.  Dadurch wird sichergestellt, dass Ihre Daten für das erneute Training genau so verarbeitet werden wie Ihre ursprünglichen Trainingsdaten.
-4. Ziehen Sie zwei *Web service Output*-Module in den Experimentbereich. Verbinden Sie die Ausgabe des *Train Model*-Moduls mit dem einem Modul und die Ausgabe des *Evaluate Model*-Moduls mit dem anderen Modul. Die Webdienstausgabe für **Train Model** liefert das neue trainierte Modell. Die mit **Evaluate Model** verknüpfte Ausgabe gibt die Ausgabe dieses Moduls zurück (die Leistungsergebnisse).
+4. Ziehen Sie zwei *Web Service Output*-Module in den Experimentbereich. Verbinden Sie die Ausgabe des *Train Model*-Moduls mit dem einem Modul und die Ausgabe des *Evaluate Model*-Moduls mit dem anderen Modul. Die Webdienstausgabe für **Train Model** liefert das neue trainierte Modell. Die mit **Evaluate Model** verknüpfte Ausgabe gibt die Ausgabe dieses Moduls zurück (die Leistungsergebnisse).
 5. Klicken Sie auf **Run**(Ausführen). 
 
 Als Nächstes müssen Sie das Trainingsexperiment als Webdienst bereitstellen, der ein trainiertes Modell und Modellauswertungsergebnisse erzeugt. Ihre nächsten Schritte hängen davon ab, ob Sie einen klassischen oder einen neuen Webdienst verwenden.  
@@ -84,13 +88,13 @@ So rufen Sie die APIs zum erneuten Trainieren auf
 
 1. Erstellen Sie eine neue C#-Konsolenanwendung in Visual Studio (Neu > Projekt > Windows-Desktop > Konsolenanwendung).
 2. Melden Sie sich beim Machine Learning-Webdienstportal an.
-3. Klicken Sie bei Verwendung eines klassischen Webdiensts auf **Classic Web Services**(Klassische Webdienste).
+3. Klicken Sie bei Verwendung eines klassischen Webdiensts auf **Classic Web Services**.
    1. Klicken Sie auf den verwendeten Webdienst.
    2. Klicken Sie auf den Standardendpunkt.
    3. Klicken Sie auf **Consume**.
    4. Klicken Sie am unteren Rand der Seite **Consume** im Abschnitt **Sample Code** auf **Batch**.
    5. Fahren Sie mit Schritt 5 dieses Verfahrens fort.
-4. Klicken Sie bei Verwendung eines neuen Webdiensts auf **Webdienste**.
+4. Klicken Sie bei Verwendung eines neuen Webdiensts auf **Web Services**.
    1. Klicken Sie auf den verwendeten Webdienst.
    2. Klicken Sie auf **Consume**.
    3. Klicken Sie am unteren Rand der Seite „Consume“ im Abschnitt **Sample Code** auf **Batch**.
@@ -160,11 +164,11 @@ Sie können die Leistungsergebnisse des erneut trainierten Modells anzeigen, ind
 Kopieren Sie die Werte für *BaseLocation*, *RelativeLocation* und *SasBlobToken* aus den Ausgabeergebnissen. Diese werden für den Prozess zum erneuten Trainieren benötigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Retrain a Classic Web service](machine-learning-retrain-a-classic-web-service.md)
+Wenn Sie den Vorhersagewebdienst durch Klicken auf **Deploy Web Service [Classic]** bereitgestellt haben, finden Sie weitere Informationen unter [Erneutes Trainieren eines klassischen Webdiensts](machine-learning-retrain-a-classic-web-service.md).
 
-[Retrain a New Web service using the Machine Learning Management cmdlets](machine-learning-retrain-new-web-service-using-powershell.md)
+Wenn Sie den Vorhersagewebdienst durch Klicken auf **Deploy Web Service [New]** bereitgestellt haben, finden Sie weitere Informationen unter [Erneutes Trainieren eines neuen Webdiensts mithilfe der Cmdlets für die Verwaltung von Machine Learning](machine-learning-retrain-new-web-service-using-powershell.md).
 
-<!-- Retrain a New Web service using the Machine Learning Management REST API -->
+<!-- Retrain a New web service using the Machine Learning Management REST API -->
 
 
 [1]: ./media/machine-learning-retrain-models-programmatically/machine-learning-retrain-models-programmatically-IMAGE01.png
@@ -180,6 +184,7 @@ Kopieren Sie die Werte für *BaseLocation*, *RelativeLocation* und *SasBlobToken
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO2-->
 
 

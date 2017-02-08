@@ -43,6 +43,6 @@ Die folgenden Features sind in Domänen verfügbar, die in Azure AD Domain Servi
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

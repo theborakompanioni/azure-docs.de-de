@@ -93,6 +93,6 @@ Während der Beurteilungsphase fallen für das VNet-Peering keine Kosten an. Nac
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

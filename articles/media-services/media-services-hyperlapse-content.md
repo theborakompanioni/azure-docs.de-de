@@ -1,12 +1,12 @@
 ---
-title: Hyperlapsing von Mediendateien mit Azure Media Hyperlapse | Microsoft Docs
-description: Azure Media Hyperlapse erzeugt ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten. In diesem Thema wird die Verwendung von Media Indexer erläutert.
+title: Hyperlapsing von Mediendateien mit Azure Media Hyperlapse | Microsoft-Dokumentation
+description: "Azure Media Hyperlapse erzeugt ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten. In diesem Thema wird die Verwendung von Media Indexer erläutert."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: asolanki
 manager: johndeu
-editor: ''
-
+editor: 
+ms.assetid: 37d54db6-9cf3-4ae9-b3c6-0d29c744e965
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,25 +14,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: adsolank
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eb99c9139c71221a75d5d4c7db0407a39a8fc39f
+
 
 ---
-# Hyperlapsing von Mediendateien mit Azure Media Hyperlapse
-Azure Media Hyperlapse ist ein Medienprozessor, der ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten erzeugt. Als cloudbasiertes Pendant zu [Desktop Hyperlapse Pro von Microsoft Research und dem smartphonebasierten Hyperlapse Mobile](http://aka.ms/hyperlapse) nutzt Microsoft Hyperlapse für Azure Media Services die umfassende Skalierbarkeit der Medienverarbeitungsplattform von Azure Media Services zum horizontalen Skalieren und Parallelisieren der Hyperlapse-Massenverarbeitung.
+# <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapsing von Mediendateien mit Azure Media Hyperlapse
+Azure Media Hyperlapse ist ein Medienprozessor, der ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten erzeugt.  Als cloudbasiertes Pendant zu [Desktop Hyperlapse Pro von Microsoft Research und dem smartphonebasierten Hyperlapse Mobile](http://aka.ms/hyperlapse)nutzt Microsoft Hyperlapse für Azure Media Services die umfassende Skalierbarkeit der Medienverarbeitungsplattform von Azure Media Services zum horizontalen Skalieren und Parallelisieren der Hyperlapse-Massenverarbeitung.
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse ist auf das Arbeiten mit Inhalten aus der Ich-Perspektive mit einer sich bewegenden Kamera ausgelegt. Obwohl Fotokameras ggf. auch geeignet sind, können die Leistung und Qualität des Azure Media Hyperlapse-Medienprozessors für andere Arten von Inhalten nicht garantiert werden. Weitere Informationen zu Microsoft Hyperlapse für Azure Media Services und einige Beispielvideos finden Sie im zur öffentlichen Vorschauversion gehörenden [einführenden Blogbeitrag](http://aka.ms/azurehyperlapseblog).
+> Microsoft Hyperlapse ist auf das Arbeiten mit Inhalten aus der Ich-Perspektive mit einer sich bewegenden Kamera ausgelegt.  Obwohl Fotokameras ggf. auch geeignet sind, können die Leistung und Qualität des Azure Media Hyperlapse-Medienprozessors für andere Arten von Inhalten nicht garantiert werden.  Weitere Informationen zu Microsoft Hyperlapse für Azure Media Services und einige Beispielvideos finden Sie im zur öffentlichen Vorschauversion gehörenden [einführenden Blogbeitrag](http://aka.ms/azurehyperlapseblog).
 > 
 > 
 
-Ein Azure Media Hyperlapse-Auftrag verwendet als Eingabe eine MP4-, MOV- oder WMV-Mediendatei zusammen mit einer Konfigurationsdatei, die die Videoframes für den Zeitraffer und die Geschwindigkeit (z. B. 10.000 Frames bei doppelter Geschwindigkeit) angibt. Die Ausgabe ist eine stabilisierte Zeitrafferwiedergabe der Videoeingabe.
+Ein Azure Media Hyperlapse-Auftrag verwendet als Eingabe eine MP4-, MOV- oder WMV-Mediendatei zusammen mit einer Konfigurationsdatei, die die Videoframes für den Zeitraffer und die Geschwindigkeit (z. B. 10.000 Frames bei doppelter Geschwindigkeit) angibt.  Die Ausgabe ist eine stabilisierte Zeitrafferwiedergabe der Videoeingabe.
 
 Die neuesten Informationen zu Azure Media Hyperlapse finden Sie in den [Media Services-Blogs](https://azure.microsoft.com/blog/topics/media-services/).
 
-## Hyperlapsing eines Medienobjekts
-Zuerst müssen Sie die gewünschte Eingabedatei in Azure Media Services hochladen. Weitere Informationen zu den Konzepten zum Hochladen und Verwalten von Inhalten finden Sie im [Content Management-Artikel](media-services-portal-vod-get-started.md).
+## <a name="hyperlapse-an-asset"></a>Hyperlapsing eines Medienobjekts
+Zuerst müssen Sie die gewünschte Eingabedatei in Azure Media Services hochladen.  Weitere Informationen zu den Konzepten zum Hochladen und Verwalten von Inhalten finden Sie im [Content Management-Artikel](media-services-portal-vod-get-started.md).
 
-### <a id="configuration"></a>Konfigurationsvoreinstellung für Hyperlapse
-Sobald Ihre Inhalte sich in Ihrem Media Services-Konto befinden, müssen Sie die Konfigurationsvoreinstellung festlegen. Die folgende Tabelle erläutert die benutzerdefinierten Felder:
+### <a name="a-idconfigurationaconfiguration-preset-for-hyperlapse"></a><a id="configuration"></a>Konfigurationsvoreinstellung für Hyperlapse
+Sobald Ihre Inhalte sich in Ihrem Media Services-Konto befinden, müssen Sie die Konfigurationsvoreinstellung festlegen.  Die folgende Tabelle erläutert die benutzerdefinierten Felder:
 
 | Feld | Beschreibung |
 | --- | --- |
@@ -70,11 +74,11 @@ Es folgt ein Beispiel einer geeigneten Konfigurationsdatei in XML und JSON:
         }
     }
 
-### <a id="sample_code"></a> Microsoft Hyperlapse mit dem AMS .NET SDK
+### <a name="a-idsamplecodea-microsoft-hyperlapse-with-the-ams-net-sdk"></a><a id="sample_code"></a> Microsoft Hyperlapse mit dem AMS .NET SDK
 Mit der folgenden Methode werden eine Mediendatei als Asset hochgeladen und ein Auftrag mit dem Azure Media Hyperlapse-Medienprozessor erstellt.
 
 > [!NOTE]
-> Sie sollten bereits über einen CloudMediaContext verfügen, der den Namen „Context“ enthält, damit dieser Code funktioniert. Weitere Informationen dazu finden Sie im [Content Management-Artikel](media-services-dotnet-get-started.md).
+> Sie sollten bereits über einen CloudMediaContext verfügen, der den Namen „Context“ enthält, damit dieser Code funktioniert.  Weitere Informationen dazu finden Sie im [Content Management-Artikel](media-services-dotnet-get-started.md).
 > 
 > [!NOTE]
 > Das Zeichenfolgenargument „HyperConfig“ muss (wie zuvor beschrieben) eine geeignete Konfigurationsvoreinstellung in XML oder JSON sein.
@@ -97,7 +101,7 @@ job.Submit();
 
 // Create progress printing and querying tasks Task progressPrintTask = new Task(() => {
 
-IJob jobQuery = null; do { var progressContext = context; jobQuery = progressContext.Jobs .Where(j => j.Id == job.Id) .First(); Console.WriteLine(string.Format("{0}\\t{1}\\t{2}", DateTime.Now, jobQuery.State, jobQuery.Tasks[0].Progress)); Thread.Sleep(10000); } while (jobQuery.State != JobState.Finished && jobQuery.State != JobState.Error && jobQuery.State != JobState.Canceled); }); progressPrintTask.Start();
+IJob jobQuery = null; do { var progressContext = context; jobQuery = progressContext.Jobs .Where(j => j.Id == job.Id) .First(); Console.WriteLine(string.Format("{0}\t{1}\t{2}", DateTime.Now, jobQuery.State, jobQuery.Tasks[0].Progress)); Thread.Sleep(10000); } while (jobQuery.State != JobState.Finished && jobQuery.State != JobState.Error && jobQuery.State != JobState.Canceled); }); progressPrintTask.Start();
 
             Task progressJobTask = job.GetExecutionProgressTask(
                                                  CancellationToken.None);
@@ -153,20 +157,25 @@ IJob jobQuery = null; do { var progressContext = context; jobQuery = progressCon
         return processor;
     }
 
-### <a id="file_types"></a>Unterstützte Dateitypen
+### <a name="a-idfiletypesasupported-file-types"></a><a id="file_types"></a>Unterstützte Dateitypen
 * MP4
 * MOV
 * WMV
 
-## Media Services-Lernpfade
+## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Feedback geben
+## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## Verwandte Links
+## <a name="related-links"></a>Verwandte Links
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
