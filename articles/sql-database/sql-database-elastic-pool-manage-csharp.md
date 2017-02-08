@@ -1,6 +1,6 @@
 ---
-title: "Überwachen und Verwalten eines Pools für elastische Datenbanken mit C# | Microsoft Docs"
-description: "Methoden zur Entwicklung von C#-Datenbanken verwenden, um einen Pool für elastische Azure SQL-Datenbanken zu verwalten"
+title: "Überwachen und Verwalten eines elastischen Pools mit C# | Microsoft Docs"
+description: Verwenden von Methoden zur Entwicklung von C#-Datenbanken, um einen elastischen Pool in Azure SQL-Datenbank zu verwalten.
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: f6e6ff3b-6b60-43c1-afe9-575991e38237
 ms.service: sql-database
-ms.custom: sharded databases pool; how to
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: csharp
@@ -16,12 +16,12 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: a6d5b0ccb1b160be4f8f3c09814202634759c8c6
 
 
 ---
-# <a name="monitor-and-manage-an-elastic-database-pool-with-cx23"></a>Überwachen und Verwalten eines Pools für elastische Datenbanken mit C&#x23;
+# <a name="monitor-and-manage-an-elastic-pool-with-cx23"></a>Überwachen und Verwalten eines elastischen Pools mit C&#x23;
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-database-elastic-pool-manage-portal.md)
 > * [PowerShell](sql-database-elastic-pool-manage-powershell.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 62e13424d8dd652bc20c5746f81df7958963c43a
 > 
 > 
 
-Erfahren Sie, wie Sie einen [Pool für elastische Datenbanken](sql-database-elastic-pool.md) mithilfe von C&#x23; verwalten. 
+Erfahren Sie, wie Sie einen [elastischen Pool](sql-database-elastic-pool.md) mithilfe von C&#x23; verwalten. 
 
 > [!NOTE]
 > Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../azure-resource-manager/resource-group-overview.md) unterstützt. Daher wird empfohlen, stets die aktuelle **Azure SQL-Datenbank-Verwaltungsbibliothek für .NET zu verwenden ([Dokumentationen](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Die älteren [auf dem klassischen Bereitstellungsmodell basierenden Bibliotheken](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) werden nur zum Zweck der Abwärtskompatibilität unterstützt. Daher wird die Verwendung der neueren Resource Manager-basierten Bibliotheken empfohlen.
@@ -39,7 +39,7 @@ Erfahren Sie, wie Sie einen [Pool für elastische Datenbanken](sql-database-elas
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-* Einen elastischen Pool (den Pool, den Sie verwalten möchten). Informationen zum Erstellen eines Pools finden Sie unter [Erstellen eines Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-create-csharp.md).
+* Einen elastischen Pool (den Pool, den Sie verwalten möchten). Informationen zum Erstellen eines Pools finden Sie unter [Erstellen eines elastischen Pools mit C#](sql-database-elastic-pool-create-csharp.md).
 * Visual Studio. Eine kostenlose Version von Visual Studio finden Sie auf der Seite [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) .
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>Verschieben einer Datenbank in einen elastischen Pool
@@ -107,13 +107,13 @@ Rufen Sie die vorhandenen Pooleigenschaften ab. Ändern Sie die Werte, und führ
 * [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
 * [SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 * [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
-* [Erstellen eines neuen Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-create-csharp.md)
-* [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md)
+* [Erstellen eines neuen elastischen Pools mit C#](sql-database-elastic-pool-create-csharp.md)
+* [Wann sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md)
 * Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md)finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Hochskalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

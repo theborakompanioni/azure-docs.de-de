@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/18/2016
+ms.date: 12/07/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 8b9a3b853adcbdfd2a5d4113489e8fcad26d9f59
+ms.sourcegitcommit: b60f957cce6225894f656b20d32604f55b418311
+ms.openlocfilehash: aa37f2113ac3aceda99c9987eacff2424e9b4434
 
 
 ---
@@ -34,12 +34,13 @@ Azure HDInsight bietet derzeit fünf verschiedene Typen von Clustern mit einer R
 
 | Clustertyp | Funktionalität |
 | --- | --- |
-| Hadoop |Abfragen und Analysen (Batchaufträge) |
-| HBase |NoSQL-Datenspeicher |
-| Storm |Ereignisverarbeitung in Echtzeit |
-| Spark |Arbeitsspeicherinterne Verarbeitung, interaktive Abfragen, Microbatch-Datenstromverarbeitung |
+| [Hadoop](hdinsight-hadoop-introduction.md) |Abfragen und Analysen (Batchaufträge) |
+| [HBase](hdinsight-hbase-overview.md) |NoSQL-Datenspeicher |
+| [Storm](hdinsight-storm-overview.md) |Ereignisverarbeitung in Echtzeit |
+| [Spark](hdinsight-apache-spark-overview.md) |Arbeitsspeicherinterne Verarbeitung, interaktive Abfragen, Microbatch-Datenstromverarbeitung |
 | [Interactive Hive (Vorschau)](hdinsight-hadoop-use-interactive-hive.md) |Interaktive und schnellere Hive-Abfragen durch speicherinternes Caching |
-| R Server auf Spark (Vorschau) |Umfasst eine Vielzahl von Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen. |
+| [R Server auf Spark (Vorschau)](hdinsight-hadoop-r-server-overview.md) |Umfasst eine Vielzahl von Big Data-Statistiken, Vorhersagemodellierung und Machine Learning-Funktionen. |
+| [Kafka (Vorschau)](hdinsight-apache-kafka-introduction.md) | Dies ist eine verteilte Open-Source-Streamingplattform, die zum Erstellen von Datenpipelines und Anwendungen mit Echtzeitstreaming verwendet werden kann. |
 
 Jeder Clustertyp verfügt über eine eigene Anzahl von Knoten im Cluster, Terminologie für Knoten im Cluster und eine VM-Standardgröße für jeden Knotentyp. In der folgenden Tabelle ist die Anzahl von Knoten für jeden Knotentyp jeweils in Klammern angegeben.
 
@@ -77,7 +78,8 @@ Die folgende Tabelle enthält die Standard-VM-Größen für HDInsight:
   | Edge – Standard-VM-Größen | | | | |Windows: D12; Linux: D4 |
   | Edge – empfohlene VM-Größen | | | | |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
 
-Beachten Sie, dass Head für den Storm-Clustertyp als *Nimbus* bezeichnet wird. „Worker“ wird für den HBase-Clustertyp als *Region* und für den Storm-Clustertyp als *Supervisor* bezeichnet.
+> [!NOTE]
+> Head wird für den Storm-Clustertyp als *Nimbus* bezeichnet. „Worker“ wird für den HBase-Clustertyp als *Region* und für den Storm-Clustertyp als *Supervisor* bezeichnet.
 
 > [!IMPORTANT]
 > Wenn Sie mehr als 32 Workerknoten planen – entweder bei Erstellung des Clusters oder durch Skalierung des Clusters nach der Erstellung – müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB RAM auswählen.
@@ -91,7 +93,7 @@ Sie können zu diesen grundlegenden Typen mithilfe von [Skriptaktionen](#customi
 > 
 > 
 
-Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, sollten Sie ein Azure Virtual Network erstellen und die erforderlichen Clustertypen dann in dem virtuellen Netzwerk erstellen. So können die Cluster und der gesamte Code, den Sie dafür bereitstellen, direkt miteinander kommunizieren.
+Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, sollten Sie ein Azure Virtual Network erstellen und die erforderlichen Clustertypen dann in dem virtuellen Netzwerk erstellen. Durch diese Konfiguration können die Cluster und der gesamte Code, den Sie dafür bereitstellen, direkt miteinander kommunizieren.
 
 Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks finden Sie unter [Erweitern von HDInsight mit virtuellen Azure-Netzwerken](hdinsight-extend-hadoop-virtual-network.md).
 
@@ -208,30 +210,30 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größen in Po
 * Standard_A3 ist „Groß“
 * Standard_A4 ist „Extragroß“
 
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils 1023 GB) | Max. IOPS (500 pro Datenträger) |
+| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils&1023; GB) | Max. IOPS (500 pro Datenträger) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A3\Groß |4 |7 GB |2 |Temporär = 285 GB |8 |8 x 500 |
-| Standard_A4\ExtraGroß |8 |14 GB |4 |Temporär = 605 GB |16 |16 x 500 |
-| Standard_A6 |4 |28 GB |2 |Temporär = 285 GB |8 |8 x 500 |
-| Standard_A7 |8 |56 GB |4 |Temporär = 605 GB |16 |16 x 500 |
+| Standard_A3\Groß |4 |7 GB |2 |Temporär = 285 GB |8 |8 x&500; |
+| Standard_A4\ExtraGroß |8 |14 GB |4 |Temporär = 605 GB |16 |16 x&500; |
+| Standard_A6 |4 |28 GB |2 |Temporär = 285 GB |8 |8 x&500; |
+| Standard_A7 |8 |56 GB |4 |Temporär = 605 GB |16 |16 x&500; |
 
 #### <a name="standard-tier-d-series"></a>Standard-Ebene: D-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils 1023 GB) | Max. IOPS (500 pro Datenträger) |
+| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils&1023; GB) | Max. IOPS (500 pro Datenträger) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3 |4 |14 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
-| Standard_D4 |8 |28 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
-| Standard_D12 |4 |28 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
-| Standard_D13 |8 |56 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
-| Standard_D14 |16 |112 GB |8 |Temporär (SSD) = 800 GB |32 |32 x 500 |
+| Standard_D3 |4 |14 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
+| Standard_D4 |8 |28 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
+| Standard_D12 |4 |28 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
+| Standard_D13 |8 |56 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
+| Standard_D14 |16 |112 GB |8 |Temporär (SSD) =&800; GB |32 |32 x&500; |
 
 #### <a name="standard-tier-dv2-series"></a>Standard-Ebene: Dv2-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils 1023 GB) | Max. IOPS (500 pro Datenträger) |
+| Größe | CPU-Kerne | Arbeitsspeicher | Netzwerkkarten (max.) | Max. Datenträgergröße | Maximal Datenträger (jeweils&1023; GB) | Max. IOPS (500 pro Datenträger) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3_v2 |4 |14 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
-| Standard_D4_v2 |8 |28 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
-| Standard_D12_v2 |4 |28 GB |4 |Temporär (SSD) = 200 GB |8 |8 x 500 |
-| Standard_D13_v2 |8 |56 GB |8 |Temporär (SSD) = 400 GB |16 |16 x 500 |
-| Standard_D14_v2 |16 |112 GB |8 |Temporär (SSD) = 800 GB |32 |32 x 500 |
+| Standard_D3_v2 |4 |14 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
+| Standard_D4_v2 |8 |28 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
+| Standard_D12_v2 |4 |28 GB |4 |Temporär (SSD) =&200; GB |8 |8 x&500; |
+| Standard_D13_v2 |8 |56 GB |8 |Temporär (SSD) =&400; GB |16 |16 x&500; |
+| Standard_D14_v2 |16 |112 GB |8 |Temporär (SSD) =&800; GB |32 |32 x&500; |
 
 Überlegungen zur Bereitstellung, die Sie im Hinblick auf die Verwendung dieser Ressourcen berücksichtigen sollten, finden Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight).   
 
@@ -278,7 +280,7 @@ Mit einem [virtuellen Azure-Netzwerk](https://azure.microsoft.com/documentation/
 | --- | --- |
 | Mit einer Standort-zu-Standort-Konfiguration können Sie mehrere Ressourcen aus Ihrem Datencenter mit dem virtuellen Azure-Netzwerk über ein Hardware-VPN oder den Routing- und RAS-Dienst verbinden.<br />![Diagramm der Standort-zu-Standort-Konfiguration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-site-to-site.png) |Bei der Point-to-Site-Konfiguration können Sie eine bestimmte Ressource über ein Software-VPN mit dem virtuellen Azure-Netzwerk verbinden.<br />![Diagramm der Punkt-zu-Standort-Konfiguration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-point-to-site.png) |
 
-Für Windows-basierte Cluster ist ein virtuelles Netzwerk der Version 1 (klassisch) erforderlich, für Linux-basierte Cluster dagegen ein virtuelles Netzwerk der Version 2 (Azure Resource Manager). Wenn nicht der richtige Netzwerktyp vorhanden ist, kann das Netzwerk nicht zum Erstellen des Clusters verwendet werden.
+Für Windows-basierte Cluster ist ein virtuelles Netzwerk der Version&1; (klassisch) erforderlich, für Linux-basierte Cluster dagegen ein virtuelles Netzwerk der Version&2; (Azure Resource Manager). Wenn nicht der richtige Netzwerktyp vorhanden ist, kann das Netzwerk nicht zum Erstellen des Clusters verwendet werden.
 
 Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
@@ -339,6 +341,6 @@ In diesem Artikel haben Sie grundlegende Informationen zum Erstellen eines Linux
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 
