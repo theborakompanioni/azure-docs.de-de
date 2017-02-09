@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2016
+ms.date: 11/15/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7d833b7aaab8680d555f6503ec27994134a2519d
+ms.sourcegitcommit: 3ed7c49603891b9719819143003d27888f800a95
+ms.openlocfilehash: 21a7feb9eb2588643ffc67408de9f8e60aff7798
 
 
 ---
@@ -50,9 +50,9 @@ Wenn Sie eine Vorlage erneut bereitstellen, um die Kapazität zu erhöhen, könn
 Die Schritte, mit denen eine Skalierungsgruppe erstellt wird, die automatisch skaliert wird, werden unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-autoscale.md)
 
 ## <a name="monitoring-your-vm-scale-set"></a>Überwachen der VM-Skalierungsgruppe
-Im [Azure-Portal](https://portal.azure.com) sind Skalierungsgruppen und allgemeine Eigenschaften sowie die virtuellen Computer in der Gruppe aufgeführt. Wenn Sie ausführlichere Informationen benötigen, können Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) verwenden, um VM-Skalierungsgruppen anzuzeigen. Bei VM-Skalierungsgruppen handelt es sich um Ressourcen unter „Microsoft.Compute“. Sie können sie daher anzeigen, indem Sie auf dieser Website die folgenden Links öffnen:
+Im [Azure-Portal](https://portal.azure.com) werden Skalierungsgruppen ausgelistet, und es werden grundlegende Eigenschaften und Vorgänge angezeigt, z.B. eine Auflistung der VMs in der Gruppe und ein Graph zur Ressourcenverwendung. Wenn Sie ausführlichere Informationen benötigen, können Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) verwenden, um VM-Skalierungsgruppen anzuzeigen. Bei VM-Skalierungsgruppen handelt es sich um Ressourcen unter „Microsoft.Compute“. Sie können sie daher anzeigen, indem Sie auf dieser Website die folgenden Links öffnen:
 
-    subscriptions -> your subscription -> resourceGroups -> providers -> Microsoft.Compute -> virtualMachineScaleSets -> your VM scale set -> etc.
+**Abonnements > Ihr Abonnement > resourceGroups > providers > Microsoft.Compute > virtualMachineScaleSets > Ihre VM-Skalierungsgruppe > usw.**
 
 ## <a name="vm-scale-set-scenarios"></a>Szenarien für VM-Skalierungsgruppen
 Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. Einige auf höherer Ebene angesiedelte Azure-Dienste (wie Batch, Service Fabric und Azure Container Service) verwenden diese Szenarien.
@@ -71,15 +71,15 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
    Hier ist ein Beispiel, bei dem dasselbe mit RDP (Remote Desktop Protocol) und Windows erreicht wird: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat)
 * **Herstellen einer Verbindung mit VMs mithilfe einer „Jumpbox“**: Wenn Sie eine VM-Skalierungsgruppe und einen eigenständigen virtuellen Computer in demselben VNET erstellen, können der eigenständige virtuelle Computer und die virtuellen Computer in der VM-Skalierungsgruppe eine Verbindung miteinander herstellen, indem sie ihre internen IP-Adressen verwenden, die durch das VNet/Subnetz definiert sind. Wenn Sie eine öffentliche IP-Adresse erstellen und dem eigenständigen virtuellen Computer zuweisen, können Sie mit RDP oder SSH eine Verbindung mit dem eigenständigen virtuellen Computer herstellen. Anschließend können Sie von diesem Computer aus eine Verbindung mit den VM-Skalierungsgruppeninstanzen herstellen. Vielleicht erkennen Sie an dieser Stelle, dass eine einfache VM-Skalierungsgruppe inhärent sicherer ist als ein einfacher eigenständiger virtueller Computer in Standardkonfiguration mit einer öffentlichen IP-Adresse.
   
-   [Als Beispiel für diese Herangehensweise erstellt die folgende Vorlage einen einfachen Mesos-Cluster mit einem eigenständigen virtuellen Mastercomputer, der einen auf einer VM-Skalierungsgruppe basierenden Cluster von virtuellen Computern verwaltet.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
+   Mit dieser Vorlage wird beispielsweise eine einfache Skalierungsgruppe mit einer eigenständigen VM bereitgestellt: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-jumpbox](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-jumpbox)
 * **Lastenausgleich für VM-Skalierungsgruppeninstanzen**: Wenn Sie eine Workload per Roundrobin an einen Computecluster aus virtuellen Computern übergeben möchten, können Sie einen Azure Load Balancer mit entsprechenden Lastenausgleichsregeln konfigurieren. Sie können Tests definieren, um zu überprüfen, ob Ihre Anwendung ordnungsgemäß ausgeführt wird. Diese Tests pingen die Ports mit einem festgelegten Protokoll in vorgegebenen Zeitabständen und mit einem angegebenen Anforderungspfad. Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) unterstützt darüber hinaus Skalierungsgruppen sowie anspruchsvollere Lastenausgleichsszenarien.
   
-   [Im folgenden Beispiel wird eine VM-Skalierungsgruppe mit virtuellen Computern erstellt, auf denen ein IIS-Webserver ausgeführt wird. Dabei wird die Last für die einzelnen virtuellen Computer mit einem Load Balancer ausgeglichen. Es wird außerdem das HTTP-Protokoll verwendet, um eine bestimmte URL auf jedem virtuellen Computer zu pingen.](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json)  (Sehen Sie sich hier besonders den Ressourcentyp „Microsoft.Network/loadBalancers“ sowie „networkProfile“ und „extensionProfile“ in „virtualMachineScaleSet“ an.)
-* **Bereitstellen einer VM-Skalierungsgruppe als Computecluster in einem PaaS-Cluster-Manager** : VM-Skalierungsgruppen werden mitunter als Workerrolle der nächsten Generation beschrieben. Diese Beschreibung ist zwar zutreffend, aber sie lädt zu Verwechslungen zwischen den Features von Skalierungsgruppen und PaaS v1-Workerrollen ein. In einem bestimmten Sinn stellen VM-Skalierungsgruppen tatsächlich eine „Workerrolle“ oder eine Workerressource bereit: Sie bieten eine generalisierte Computeressource, die von  Plattformen und Laufzeitumgebungen unabhängig ist, sich anpassen lässt und in die Azure-Ressourcen-Manager-IaaS integriert ist.
+   Hier ist ein Beispiel angegeben, in dem eine VM-Skalierungsgruppe mit Ausführung von Apache-Webservern erstellt und ein Lastenausgleich verwendet wird, um die Last für die einzelnen VMs zu verteilen: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-ubuntu-web-ssl](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-ubuntu-web-ssl). (Achten Sie auf den Ressourcentyp „Microsoft.Network/loadBalancers“ und „networkProfile“ und „extensionProfile“ in „virtualMachineScaleSet“.)
+* **Bereitstellen einer VM-Skalierungsgruppe als Computecluster in einem PaaS-Cluster-Manager** : VM-Skalierungsgruppen werden mitunter als Workerrolle der nächsten Generation beschrieben. Diese Beschreibung ist zwar zutreffend, aber sie kann zu Verwechslungen zwischen den Features von Skalierungsgruppen und PaaS v1-Workerrollen führen. In einem bestimmten Sinn stellen VM-Skalierungsgruppen tatsächlich eine „Workerrolle“ oder eine Workerressource bereit: Sie bieten eine generalisierte Computeressource, die von  Plattformen und Laufzeitumgebungen unabhängig ist, sich anpassen lässt und in die Azure-Ressourcen-Manager-IaaS integriert ist.
   
    Eine PaaS v1-Workerrolle ist zwar im Hinblick auf die Unterstützung für Plattformen/Laufzeitumgebungen eingeschränkt (nur für Images der Windows-Plattform), aber sie bietet auch Dienste wie VIP-Austausch, konfigurierbare Upgradeeinstellungen und Einstellungen für laufzeitumgebungs- und anwendungsspezifische Bereitstellungen, die entweder *noch* nicht in VM-Skalierungsgruppen zur Verfügung stehen oder die durch auf höherer Ebene angesiedelte PaaS-Dienste wie Service Fabric umgesetzt werden. Vor diesem Hintergrund können Sie VM-Skalierungsgruppen als eine Infrastruktur betrachten, die PaaS unterstützt. Das heißt: PaaS-Lösungen wie Service Fabric oder Cluster-Manager wie Mesos können auf VM-Skalierungsgruppen aufsetzen, um eine skalierbare Compute-Ebene zu bilden.
   
-   [Als Beispiel für diese Herangehensweise erstellt die folgende Vorlage einen einfachen Mesos-Cluster mit einem eigenständigen virtuellen Mastercomputer, der einen auf einer VM-Skalierungsgruppe basierenden Cluster von virtuellen Computern verwaltet.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json) Bei künftigen Versionen des [Azure Container Service](https://azure.microsoft.com/blog/azure-container-service-now-and-the-future/) werden komplexere und besser geschützte Versionen dieses auf VM-Skalierungsgruppen beruhenden Szenarios bereitgestellt.
+   In einem Beispiel für diesen Ansatz stellt der Azure Container Service einen Cluster basierend auf Skalierungsgruppen mit einem „Orchestrator“ für Container bereit: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos).
 
 ## <a name="vm-scale-set-performance-and-scale-guidance"></a>Richtlinien zur Leistungsfähigkeit von VM-Skalierungsgruppen und zum Skalieren
 * Erstellen Sie höchstens 500 virtuelle Computer in mehreren VM-Skalierungsgruppen gleichzeitig.
@@ -100,7 +100,7 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **F.**  Werden Datenträger innerhalb von VM-Skalierungsgruppen unterstützt?
 
-**A.**  Nicht in der ersten Version. Zum Speichern von Daten haben Sie folgende Möglichkeiten:
+**A.** Nicht in der ersten Version (Datenträger für Daten sind in der Vorschauversion aber derzeit verfügbar). Zum Speichern von Daten haben Sie folgende Möglichkeiten:
 
 * Azure-Dateien (SMB-freigegebene Laufwerke)
 * Betriebssystemlaufwerk
@@ -148,6 +148,6 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,22 +1,26 @@
 ---
-title: Konfigurieren eines Azure-Clouddienstprojekts mit Visual Studio | Microsoft Docs
-description: In diesem Artikel erfahren Sie, wie Sie ein Azure-Clouddienstprojekt abhängig von den Anforderungen für dieses Projekt in Visual Studio konfigurieren.
+title: Konfigurieren eines Azure Cloud Services-Projekt mit Visual Studio | Microsoft Docs
+description: "In diesem Artikel erfahren Sie, wie Sie ein Azure-Clouddienstprojekt abhängig von den Anforderungen für dieses Projekt in Visual Studio konfigurieren."
 services: visual-studio-online
 documentationcenter: na
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 609d6965-05cc-47b1-82dc-c76a92d4f295
 ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 08/15/2016
+ms.date: 11/11/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 33d6b242c5562bd0aba4786ff70782c697ca7cd7
+
 
 ---
-# Konfigurieren eines Azure-Clouddienstprojekts mit Visual Studio
+# <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>Konfigurieren eines Azure-Clouddienstprojekts mit Visual Studio
 Sie können ein Azure-Clouddienstprojekt abhängig von den Anforderungen für dieses Projekt konfigurieren. Sie können für die folgenden Kategorien Eigenschaften für das Projekt festlegen:
 
 * **Veröffentlichen eines Clouddiensts in Azure**
@@ -33,12 +37,12 @@ Die folgende Abbildung zeigt das Auswählen einer Konfiguration, die beim lokale
 
 ![Konfigurieren eines Microsoft Azure-Projekts](./media/vs-azure-tools-configuring-an-azure-project/IC713462.png)
 
-## So konfigurieren Sie ein Azure-Clouddienstprojekt
+## <a name="to-configure-an-azure-cloud-service-project"></a>So konfigurieren Sie ein Azure-Clouddienstprojekt
 1. Öffnen Sie zum Konfigurieren eines Clouddienstprojekts im **Projektmappen-Explorer** das Kontextmenü für das Clouddienstprojekt, und wählen Sie dann **Eigenschaften** aus.
    
    Eine Seite mit dem Namen des Clouddienstprojekts wird im Visual Studio-Editor angezeigt.
-2. Öffnen Sie die Registerkarte **Entwicklung**.
-3. Um sicherzustellen, dass Sie nicht versehentlich eine vorhandene Bereitstellung in Azure löschen, wählen Sie in der Aufforderung vor der Liste zum Löschen einer vorhandenen Bereitstellung **True** aus.
+2. Öffnen Sie die Registerkarte **Entwicklung** .
+3. Um sicherzustellen, dass Sie nicht versehentlich eine vorhandene Bereitstellung in Azure löschen, wählen Sie in der Aufforderung vor der Liste zum Löschen einer vorhandenen Bereitstellung **True**aus.
 4. Wählen Sie zum Auswählen der Dienstkonfiguration, die beim lokalen Ausführen oder Debuggen des Clouddiensts verwendet werden soll, in der Liste **Dienstkonfiguration** die Dienstkonfiguration aus.
    
    > [!NOTE]
@@ -47,10 +51,15 @@ Die folgende Abbildung zeigt das Auswählen einer Konfiguration, die beim lokale
    > 
 5. Wählen Sie zum Starten des Azure-Speicheremulators beim lokalen Ausführen oder Debuggen des Clouddiensts unter **Azure-Speicheremulator starten** die Option **True** aus.
 6. Um sicherzustellen, dass die Veröffentlichung bei Paketvalidierungsfehlern nicht möglich ist, wählen Sie unter **Warnungen als Fehler behandeln** die Option **True** aus.
-7. Um sicherzustellen, dass die Webrolle bei jedem lokalen Start in IIS Express den gleichen Port verwendet, wählen Sie unter **Webprojektports verwenden** die Option **True** aus. Wenn ein bestimmter Port für ein bestimmtes Webprojekt verwendet werden soll, öffnen Sie das Kontextmenü für das Webprojekt, wählen Sie die Registerkarte **Eigenschaften** aus, wählen Sie die Registerkarte **Web** aus, und ändern Sie die Portnummer in der Einstellung **Projekt-URL** im Abschnitt **IIS Express**. Geben Sie beispielsweise `http://localhost:14020` als Projekt-URL ein.
+7. Um sicherzustellen, dass die Webrolle bei jedem lokalen Start in IIS Express den gleichen Port verwendet, wählen Sie unter **Webprojektports verwenden** die Option **True** aus. Wenn ein bestimmter Port für ein bestimmtes Webprojekt verwendet werden soll, öffnen Sie das Kontextmenü für das Webprojekt, wählen Sie die Registerkarte **Eigenschaften** und danach die Registerkarte **Web** aus, und ändern Sie die Portnummer in der Einstellung **Projekt-URL** im Abschnitt **IIS Express**. Geben Sie beispielsweise `http://localhost:14020` als Projekt-URL ein.
 8. Wählen Sie zum Speichern der Änderungen, die Sie an den Eigenschaften des Clouddienstprojekts vorgenommen haben, auf der Symbolleiste die Schaltfläche **Speichern** aus.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Konfigurieren von Azure-Clouddienstprojekten in Visual Studio finden Sie im Artikel zum [Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen](vs-azure-tools-multiple-services-project-configurations.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+
